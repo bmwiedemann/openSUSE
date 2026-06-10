@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:57:10 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Adapt license
+
+-------------------------------------------------------------------
 Thu Nov  6 12:20:07 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - cyrus-imapd don't start because of missing "Requires=var-run.mount" from systemd

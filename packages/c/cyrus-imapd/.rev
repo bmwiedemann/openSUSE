@@ -52,4 +52,12 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/CUQSL
   Remove var-run.mount from Requires and After</comment>
     <requestid>1316014</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>084d3d63a2339f8994339900c7314261</srcmd5>
+    <version>3.8.6</version>
+    <time>1781105801</time>
+    <user>anag_factory</user>
+    <comment>- Adapt license</comment>
+    <requestid>1358542</requestid>
+  </revision>
 </revisionlist>

@@ -33,7 +33,7 @@ Name:           cyrus-imapd
 Version:        3.8.6
 Release:        0
 Summary:        The Cyrus IMAP and POP Mail Server
-License:        BSD-3-Clause
+License:        CMU-Mach
 Group:          Productivity/Networking/Email/Servers
 URL:            http://www.cyrusimap.org
 # Upstream sources
