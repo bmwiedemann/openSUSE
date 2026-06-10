@@ -8299,6 +8299,7 @@ unsorted:
   - gude-mouseclock-udev 
   - gudev-sharp 
   - gudev-sharp-devel 
+  - guest-components 
   - guestfs-tools 
   - guestfs-tools-bash-completion 
   - guestfs-tools-man-pages-ja 
@@ -12795,7 +12796,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_43 
+  - libcpp-httplib0_46 
   - libcpptrace1 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -13300,6 +13301,7 @@ unsorted:
   - libfl2 
   - libfl2-32bit 
   - libflann1_9 
+  - libflashrom1 
   - libflatbuffers25_2_10 
   - libflickcurl-devel 
   - libflickcurl0 
@@ -13439,6 +13441,7 @@ unsorted:
   - libfsxfs1 
   - libftdi0-devel 
   - libftdi1 
+  - libftdi1-2 
   - libftdi1-devel 
   - libftgl2 
   - libftxf-devel 
@@ -14250,12 +14253,15 @@ unsorted:
   - libjasper-devel 
   - libjasper7-32bit 
   - libjavamapscript 
+  - libjaylink 
   - libjaylink-devel 
+  - libjaylink0 
   - libjbig-devel 
   - libjbig-devel-32bit 
   - libjbig2-32bit 
   - libjbig2dec0 
   - libjcat-devel 
+  - libjcat1 
   - libjim0_82 
   - libjodycode-devel 
   - libjodycode4 
@@ -18797,7 +18803,6 @@ unsorted:
   - maven-surefire-plugins-javadoc 
   - maven-surefire-provider-junit 
   - maven-surefire-provider-junit5 
-  - maven-surefire-provider-junit5-javadoc 
   - maven-surefire-provider-testng 
   - maven-surefire-report-parser 
   - maven-surefire-report-plugin 
@@ -19181,8 +19186,11 @@ unsorted:
   - moc 
   - mockery 
   - mockito 
+  - mockito-bom 
   - mockito-javadoc 
   - mockito-junit-jupiter 
+  - mockito-proxy 
+  - mockito-subclass 
   - mod_spatialite 
   - modello 
   - modello-javadoc 
@@ -27546,7 +27554,6 @@ unsorted:
   - python311-s3transfer 
   - python311-sadisplay 
   - python311-safe-netrc 
-  - python311-safetensors 
   - python311-salt-testsuite 
   - python311-sambacc 
   - python311-samplerate 
@@ -27894,7 +27901,6 @@ unsorted:
   - python311-traittypes 
   - python311-trakit 
   - python311-transaction 
-  - python311-transformers 
   - python311-transip 
   - python311-transitions 
   - python311-translate-toolkit 
@@ -31497,7 +31503,6 @@ unsorted:
   - python313-s3transfer 
   - python313-sadisplay 
   - python313-safe-netrc 
-  - python313-safetensors 
   - python313-salt 
   - python313-salt-testsuite 
   - python313-sambacc 
@@ -31855,7 +31860,6 @@ unsorted:
   - python313-traittypes 
   - python313-trakit 
   - python313-transaction 
-  - python313-transformers 
   - python313-transip 
   - python313-transitions 
   - python313-translate-toolkit 
@@ -35045,6 +35049,7 @@ unsorted:
   - python314-pypubsub 
   - python314-pypuppetdb 
   - python314-pyqt-builder 
+  - python314-pyqtgraph 
   - python314-pyquery 
   - python314-pyrad 
   - python314-pyrage 
@@ -38848,6 +38853,12 @@ unsorted:
   - system-user-aesmd 
   - system-user-alloy 
   - system-user-bitlbee 
+  - system-user-coco_api_server 
+  - system-user-coco_as 
+  - system-user-coco_cdh 
+  - system-user-coco_kbs 
+  - system-user-coco_rvps 
+  - system-user-coco_trustee 
   - system-user-cscreen 
   - system-user-games 
   - system-user-grafana 
@@ -49169,6 +49180,7 @@ unsorted:
   - trang 
   - transactional-update-doc 
   - transactional-update-up-as-default 
+  - transactional-wrapper 
   - transconnect 
   - transfig 
   - translate-suse-desktop 
@@ -49393,6 +49405,7 @@ unsorted:
   - trufflehog 
   - trurl 
   - trurl-zsh-completion 
+  - trustee 
   - truth 
   - truth-javadoc 
   - tryton 

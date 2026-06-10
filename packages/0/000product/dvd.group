@@ -1912,7 +1912,6 @@
     <package name="libfido2-udev" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfile1_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfind4_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libflashrom1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libflatpak0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libflite1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfltk1_3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -1931,7 +1930,6 @@
     <package name="libfreshclam4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libfribidi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfstrm0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libftdi1-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfuse2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfuse3-4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfwupd3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -2176,10 +2174,7 @@
     <package name="libjasper7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjavascriptcoregtk-4_1-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjavascriptcoregtk-6_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libjaylink" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libjaylink0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjbig2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libjcat1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjemalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjitterentropy3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libjitterentropy3-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
