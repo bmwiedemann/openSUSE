@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jun  3 07:15:04 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update doclayout to version 0.5.0.3.
+  ## 0.5.0.3
+
+    * Tests: Go back to using withMaxSuccess for compatibility with older
+      QuickCheck versions.
+
+  ## 0.5.0.2
+
+    * Performance optimizations:
+
+      + Fuse double modify calls in outp, newline, and FCookedText handler.
+
+      + Cache polymorphic prefix in RenderState. Add prefixA, prefixTrimmedA,
+        and prefixLen fields to RenderState that cache the polymorphic
+        conversions of the Text prefix. This eliminates
+        the per-line fromString/T.unpack/realLength conversions in outp,
+        newline, and the FCookedText handler. Add a setPrefix helper that
+        updates all cached fields atomically. The block handler computes the
+        space-appended prefix incrementally to avoid expensive recomputation
+        on deeply nested blocks.
+
+      + Avoid redundant realLength calls in mergeBlocks padding.
+        Thread precomputed line widths through the merge process by changing
+        the internal representation from (Int, [a]) to (Int, [(Int, a)]) where
+        the inner Int is each line's rendered width. This avoids calling
+        realLength on every line during every merge pass; widths are computed
+        once in toBlockSpec and carried through.
+
+      + Remove redundant normalize in flatten for Prefixed. renderList
+        already normalizes when processing FPrefixed. This removes the
+        double traversal.
+
+      + Use strict foldl' in Attributed foldlChar instance.
+
+      + Add shortcuts for Thai, emoji modifiers, CJK, and fullwidth chars.
+        Add new shortcuts to updateMatchStateNarrow and updateMatchStateWide:
+
+        - Thai script (U+0E00-U+0E7F) with combining marks for vowels/tones
+        - Zero-width joiner (U+200D) with inline emoji-joining logic
+        - Emoji presentation variation selector (U+FE0F)
+        - Emoji skin tone modifiers (U+1F3FB-U+1F3FF)
+        - CJK Compatibility Ideographs (U+F900-U+FAFF)
+        - Fullwidth forms (U+FF01-U+FF60, U+FFE0-U+FFE6)
+        - Supplementary CJK Extension B+ (U+20000-U+3FFFF)
+
+    * Use withNumTests instead of deprecated withMaxSuccess in test suite.
+
+-------------------------------------------------------------------
 Wed Sep  3 17:45:56 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update doclayout to version 0.5.0.1.
