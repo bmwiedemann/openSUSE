@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:00:46 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.13
+  * stricter basic auth handling for web seed
+  * fix bug in tracker announcements involving i2p trackers
+  * improve performance of disk job pool
+  * fix race when removing an auto managed torrent
+  * fix bug in post_download_queue() when a torrent complete
+  * in create_torrent, store symbolic links according to BEP 47
+  * strengthen peer encryption (obfuscation)
+  * improve HTTP response parsing
+  * optimize sanitization of symlinks when loading torrents
+  * stricter checking of tracker URLs
+  * fixed piece-picker accounting issue for filtered pieces
+  * add setting for NAT-PMP lease duration
+  * optimize v2 request sizes
+  * fix socks5 issues
+  * fix issue in loading v2 resume data merkle trees
+
+-------------------------------------------------------------------
 Sat Mar 14 04:41:04 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.12
