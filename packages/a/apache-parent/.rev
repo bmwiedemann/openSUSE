@@ -85,4 +85,12 @@
     <comment>version 38</comment>
     <requestid>1352509</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>9b0e728f7d4c84b3c292ca0b035d3daf</srcmd5>
+    <version>38</version>
+    <time>1781099471</time>
+    <user>anag_factory</user>
+    <comment>Stray emoji in changelog</comment>
+    <requestid>1358238</requestid>
+  </revision>
 </revisionlist>
