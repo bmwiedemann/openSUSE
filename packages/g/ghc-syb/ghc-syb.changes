@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Mar  7 17:18:44 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update syb to version 0.7.4.
+  # 0.7.4
+
+  - Export new function `gshowsF` that allows more flexibility than `gshows`.
+    It allows users to override how some children types should be printed. (https://github.com/dreixel/syb/pull/55)
+
+-------------------------------------------------------------------
 Thu Aug 21 20:31:01 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update syb to version 0.7.3.
