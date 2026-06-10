@@ -1,0 +1,46 @@
+Name:                timezone-olson
+Version:             0.2.1
+x-revision: 1
+Synopsis:            A pure Haskell parser and renderer for binary Olson timezone files
+Description:         A parser and renderer for binary Olson timezone
+                     files whose format is specified by the tzfile(5)
+                     man page on Unix-like systems. For more
+                     information about this format, see
+                     <http://www.iana.org/time-zones/repository/tz-link.html>.
+                     Functions are provided for converting the parsed data into
+                     'TimeZoneSeries' objects from the timezone-series
+                     package. On many platforms, binary Olson timezone
+                     files suitable for use with this package are
+                     available in the directory /usr/share/zoneinfo
+                     and its subdirectories on your computer.
+                     For a way to read binary Olson timezone files at compile
+                     time, see the timezone-olson-th package
+                     (<http://hackage.haskell.org/package/timezone-olson-th>).
+Homepage:            http://projects.haskell.org/time-ng/
+License:             BSD3
+License-file:        LICENSE
+Author:              Yitzchak Gale
+Maintainer:          yitz@sefer.org
+Copyright:           Copyright (c) 2010-2021 Yitzchak Gale. All rights reserved.
+Category:            Data
+Build-type:          Simple
+Extra-source-files:  README.md, catTZ.hs, hzdump.hs
+Cabal-version:       >=1.10
+Tested-with:         GHC ==9.0.1 || ==8.10.7 || ==8.8.4
+
+Source-repository HEAD
+  type:              git
+  location:          https://github.com/ygale/timezone-olson.git
+
+Library
+  Default-language:    Haskell2010
+  Exposed-modules:    Data.Time.LocalTime.TimeZone.Olson
+                    , Data.Time.LocalTime.TimeZone.Olson.Parse
+                    , Data.Time.LocalTime.TimeZone.Olson.Render
+                    , Data.Time.LocalTime.TimeZone.Olson.Types
+  Build-depends:       base >= 3.0 && < 5.0,
+                       timezone-series >= 0.1.0 && < 0.2,
+                       time >= 1.6 && < 1.15,
+                       binary >= 0.4.1 && < 0.11,
+                       bytestring >= 0.9 && < 1.0,
+                       extensible-exceptions >= 0.1.0 && < 0.2
