@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:05:43 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-cli to version 1.4.4.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/hslua-cli-1.4.4/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Fri Jun 28 09:49:39 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-cli to version 1.4.3.
