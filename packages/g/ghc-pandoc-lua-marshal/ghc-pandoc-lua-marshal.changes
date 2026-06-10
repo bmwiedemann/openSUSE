@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jan  9 08:07:58 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.3.2.1.
+  ## 0.3.2.1
+
+  Released 2026-01-09.
+
+    * Added missing entry `test/test-table.lua` to
+      *extra-source-files* in cabal file.
+
+-------------------------------------------------------------------
+Thu Jan  8 16:25:27 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update pandoc-lua-marshal to version 0.3.2.
+  ## 0.3.2
+
+  Released 2026-01-08.
+
+    * Added a docstring to the `Pandoc.normalize` method.
+
+    * Added `TableBody` constructor. (Sean Soon)
+
+    * Fixed comments in files `TableFoot.hs` and `TableHead.hs`
+      (Sean Soon).
+
+    * Allow hslua-2.5 and containers-0.8.\*.
+
+-------------------------------------------------------------------
 Mon Jun 23 10:28:08 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update pandoc-lua-marshal to version 0.3.1.
