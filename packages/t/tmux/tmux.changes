@@ -4,6 +4,7 @@ Thu May 21 09:25:15 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 - tmux 3.6b:
   * Remove images from the correct list when they are removed while in the
     alternate screen.
+- fixes CVE-2026-11623 [bsc#1267942]
 
 -------------------------------------------------------------------
 Fri Dec  5 16:06:23 UTC 2025 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
