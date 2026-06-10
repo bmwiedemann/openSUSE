@@ -1,7 +1,7 @@
 #
 # spec file for package o2scl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %define pname o2scl
 %define shlib lib%{pname}0
 
-%ifnarch aarch64 %{arm}
+%ifnarch aarch64 %{arm} riscv64
 %define needlibquadmath 1
 %endif
 
