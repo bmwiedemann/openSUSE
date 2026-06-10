@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jan  6 19:33:05 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update data-default to version 0.8.0.2.
+  ## 0.8.0.2 -- 2026-01-06
+
+  - Make the code compatible with MicroHs (which basically means removing the
+    tuple instances of size 16+ as those don't exist in MicroHs). This does not
+    affect the GHC version of this module, which is unchanged.
+
+  - Relax upper version bound on containers from `<0.8` to `<0.9` (technically
+    this change was already applied to version 0.8.0.1 on hackage).
+
+-------------------------------------------------------------------
+Thu Jan  1 18:05:02 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update data-default to version 0.8.0.1 revision 1.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Sun Mar 16 21:34:57 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update data-default to version 0.8.0.1.
