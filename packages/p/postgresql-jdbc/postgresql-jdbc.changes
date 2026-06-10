@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon May 11 14:20:45 UTC 2026 - Thomas Florio <thomas.florio@suse.com>
+
+- Upgrade to upstream version 42.7.11
+  - security: Limit SCRAM PBKDF2 iterations accepted from the
+    server - CVE-2026-42198 (bsc#1264174)
+  - feat: implement require_auth connection property, aligning with
+    libpq behavior
+  - fix: ensure extended protocol messages end with Sync message
+  - fix: enable cursor-based fetching in extended protocol when
+    transaction started via SQL command
+  - fix: retry with SSL on IOException when sslMode=ALLOW
+  - fix: make sure the driver honours connectTimeout when retrying the
+    connection
+  - fix: allow fallback to non-SSL connection when sslMode=prefer and
+    sslResponseTimeout kicks in
+  - fix: catch SecurityException from setContextClassLoader on
+    ForkJoinPool workers
+  - fix: use compareTo for LogSequenceNumber comparison to handle
+    unsigned values correctly
+  - fix: release COPY lock on IOException to prevent connection hang
+  - fix: return jsonb as PGObject instead of String
+  - fix: align SSL key file permission check with libpq
+  - fix: guard connection closed flag with a reentrant lock to protect
+    against concurrent close
+
+-------------------------------------------------------------------
 Thu Jun 12 09:15:13 UTC 2025 - Michael Calmer <mc@suse.com>
 
 - Upgrade to upstream version 42.7.7

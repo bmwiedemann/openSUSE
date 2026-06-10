@@ -1,7 +1,7 @@
 #
 # spec file for package postgresql-jdbc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2000-2005, JPackage Project
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           postgresql-jdbc
-Version:        42.7.7
+Version:        42.7.11
 Release:        0
 Summary:        JDBC driver for PostgreSQL
 License:        BSD-2-Clause
@@ -27,6 +27,7 @@ Source0:        https://repo1.maven.org/maven2/org/postgresql/postgresql/%{versi
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(com.ongres.scram:scram-client) >= 3.1
+BuildRequires:  mvn(org.junit:junit-bom:pom:)
 BuildArch:      noarch
 
 %description
