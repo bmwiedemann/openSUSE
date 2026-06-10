@@ -2024,4 +2024,12 @@
 - Add haring as haproxy-haring</comment>
     <requestid>1357984</requestid>
   </revision>
+  <revision rev="186" vrev="2">
+    <srcmd5>72eb10ec53b75452f8e1043e13a36dec</srcmd5>
+    <version>3.4.0+git0.64a335366</version>
+    <time>1781099420</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358200</requestid>
+  </revision>
 </revisionlist>

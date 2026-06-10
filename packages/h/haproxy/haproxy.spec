@@ -25,6 +25,10 @@
 
 %bcond_with awslc
 
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
+%define force_gcc_version 15
+%endif
+
 %if 0%{?suse_version} >= 1699  || %{with awslc}
 %bcond_without quic
 %else
@@ -76,6 +80,7 @@ Patch2:         haproxy-1.6.0-makefile_lib.patch
 Patch3:         haproxy-1.6.0-sec-options.patch
 # PATCH-OPENSUSE
 Patch4:         haproxy-service.patch
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  libgcrypt-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  pkgconfig
@@ -173,6 +178,10 @@ cp %{SOURCE7} .
 
 %build
 %global shared_make_flags \\\
+    %if 0%{?force_gcc_version} \
+    CC="gcc-%{?force_gcc_version}" \\\
+    CXX="g++-%{?force_gcc_version}" \\\
+    %endif \
     TARGET=linux-glibc \\\
     USE_RELRO_NOW=1 \\\
     USE_STACKPROTECTOR=1 \\\

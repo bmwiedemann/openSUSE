@@ -1,11 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  9 14:24:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Force gcc 15 on 16.x to workaround an ICE on s390x/ppc64le
+
+-------------------------------------------------------------------
+Fri Jun  5 00:43:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- one more path for the cpu handling in apparmor 
+
+-------------------------------------------------------------------
 Wed Jun 03 14:29:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.4.0+git0.64a335366:
   - https://www.haproxy.com/blog/announcing-haproxy-3-4
   - https://www.mail-archive.com/haproxy@formilux.org/msg47182.html
 - Update apparmor profile to match 3.4
-- The package can now be built with opentelemtry support (off by
+- The package can now be built with opentelemetry support (off by
   default) at 849ecaf
 
   In opentelemetry mode, 2 new subpackages get created with the
@@ -16,7 +26,6 @@ Wed Jun 03 14:29:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
   By default it will pull haproxy-normal but it can be replaced
   with haproxy-opentelemetry
-
 
 -------------------------------------------------------------------
 Fri May 29 18:51:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
