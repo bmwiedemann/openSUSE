@@ -1825,4 +1825,31 @@ SPDX format (forwarded request 126065 from babelworx)</comment>
   * Avoid many false positive on windows file test</comment>
     <requestid>1356380</requestid>
   </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>0acd0f7f74f36d9ceee2f680cfd21a3b</srcmd5>
+    <version>5.48</version>
+    <time>1781099242</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.48:
+  * add landlock support (valoq)
+  * add BE/LE GUID
+  * multiple fixes to prevent integer overflow in 32 bits (kerwin)
+  * PR/745: bitstreamout: Don't flush when trying to set negative offsets
+            on pipes, just continue, fixes 'cat file.zip | file -'
+  * PR/753: vmihalko: Fix race is magic_getpath()
+  * PR/728: Anton Monroe: Reinstate regex/c
+- Port patch file-5.47.dif and rename it to file-5.48.dif
+- Port patches
+  * file-4.21-xcursor.dif
+  * file-5.19-biorad.dif
+  * file-5.19-printf.dif
+  * file-5.22-elf.dif
+  * file-5.28-btrfs-image.dif
+  * file-secure_getenv.patch
+- Remove patches now upstream
+  * file-5.47-regression.dif
+  * file-5.47-s390x.patch
+  * file-5.47-stanza.patch</comment>
+    <requestid>1357998</requestid>
+  </revision>
 </revisionlist>

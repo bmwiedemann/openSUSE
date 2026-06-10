@@ -37,7 +37,7 @@ Obsoletes:      file-64bit
 %endif
 #
 # Set Version also in python-magic.spec
-Version:        5.47
+Version:        5.48
 Release:        0
 Summary:        A Tool to Determine File Types
 License:        BSD-2-Clause
@@ -46,10 +46,9 @@ Source0:        https://www.astron.com/pub/file/file-%{version}.tar.gz
 Source3:        file-rpmlintrc
 Source4:        https://www.astron.com/pub/file/file-%{version}.tar.gz.asc
 Source5:        file.keyring
-Patch0:         file-5.47.dif
+Patch0:         file-5.48.dif
 Patch1:         file-5.19-misc.dif
 Patch2:         file-5.47-fdf.dif
-Patch3:         file-5.47-regression.dif
 Patch4:         file-4.24-autoconf.dif
 Patch7:         file-4.20-ssd.dif
 Patch9:         file-5.22-elf.dif
@@ -61,9 +60,7 @@ Patch26:        file-5.19-solv.dif
 Patch27:        file-5.19-zip2.0.dif
 Patch31:        file-5.19-biorad.dif
 Patch32:        file-5.19-clicfs.dif
-Patch36:        file-5.47-stanza.patch
 Patch37:        file-secure_getenv.patch
-Patch38:        file-5.47-s390x.patch
 Patch39:        file-5.28-btrfs-image.dif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %global         _sysconfdir /etc
@@ -114,7 +111,6 @@ sed -ri 's/	/        /' python/magic.py
 %if %{with debugmagic}
 %patch -P 1  -p0 -b .misc
 %patch -P 2  -p0 -b .fdf
-%patch -P 3  -p0 -b .regress
 %endif
 %patch -P 4  -p0 -b .conf
 %if %{with debugmagic}
@@ -131,9 +127,7 @@ sed -ri 's/	/        /' python/magic.py
 %patch -P 31 -p0 -b .biorad
 %patch -P 32 -p0 -b .clicfs
 %endif
-%patch -P 36 -p0 -b .stanza
 %patch -P 37 -p1 -b .getenv
-%patch -P 38 -p0 -b .endianess
 %if %{with debugmagic}
 %patch -P 39 -p1 -b .btrfs
 %endif

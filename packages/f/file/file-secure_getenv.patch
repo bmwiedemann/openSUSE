@@ -6,7 +6,7 @@
 
 --- file-5.42/configure.ac
 +++ file-5.42/configure.ac	2022-06-13 08:34:50.347521415 +0000
-@@ -138,6 +138,8 @@ if test "$enable_xzlib" != "no"; then
+@@ -143,6 +143,8 @@ if test "$enable_xzlib" != "no"; then
  fi
  AC_CHECK_TYPE([sig_t],[AC_DEFINE([HAVE_SIG_T],1,[Have sig_t type])],,[#include <signal.h>])
  
@@ -17,7 +17,7 @@
  AC_TYPE_SIZE_T
 --- file-5.47/src/file.h
 +++ file-5.47/src/file.h	2026-02-27 10:50:37.160814338 +0000
-@@ -739,6 +739,14 @@ static const char *rcsid(const char *p)
+@@ -748,6 +748,14 @@ static const char *rcsid(const char *p)
  #define __RCSID(a)
  #endif
  
@@ -34,16 +34,16 @@
  
 --- file-5.42/src/magic.c
 +++ file-5.42/src/magic.c	2022-06-13 08:36:49.997304349 +0000
-@@ -185,7 +185,7 @@ get_default_magic(void)
- 		free(default_magic);
- 		default_magic = NULL;
- 	}
+@@ -181,7 +181,7 @@ get_default_magic(void)
+ #ifndef WIN32
+ 	struct stat st;
+ 
 -	if ((home = getenv("HOME")) == NULL)
 +	if ((home = secure_getenv("HOME")) == NULL)
  		return MAGIC;
  
  	if (asprintf(&hmagicpath, "%s/.magic.mgc", home) < 0)
-@@ -222,20 +222,20 @@ out:
+@@ -221,20 +221,20 @@ out:
  	}
  
  	/* Before anything else, try to get a magic file from user HOME */
@@ -68,7 +68,7 @@
  		_w32_append_path(&hmagicpath, "%s%s", home, hmagic);
  
  	/* Fourth, try to get magic file relative to exe location */
-@@ -256,7 +256,7 @@ magic_getpath(const char *magicfile, int
+@@ -257,7 +257,7 @@ magic_getpath(const char *magicfile, int
  	if (magicfile != NULL)
  		return magicfile;
  

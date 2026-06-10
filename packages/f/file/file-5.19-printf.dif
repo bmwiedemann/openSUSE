@@ -6,7 +6,7 @@ Index: src/apprentice.c
 ===================================================================
 --- src/apprentice.c.orig
 +++ src/apprentice.c
-@@ -2676,7 +2676,7 @@ check_format_type(const char *ptr, int t
+@@ -2665,7 +2665,7 @@ check_format_type(const char *ptr, int t
  			}
  		} else
  			h = 0;

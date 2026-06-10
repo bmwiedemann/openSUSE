@@ -20,7 +20,7 @@
 %define file_magic_version 0.4.0
 %global         _miscdir    %{_datadir}/misc
 Name:           python-magic
-Version:        5.47
+Version:        5.48
 Release:        0
 Summary:        Python module to use libmagic
 License:        BSD-3-Clause AND BSD-4-Clause

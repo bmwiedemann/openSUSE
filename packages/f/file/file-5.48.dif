@@ -42,17 +42,8 @@
  
  # hooray, there's a DOS extender using the PE format, with a valid PE
  # executable inside (which just prints a message and exits if run in win)
-@@ -1506,7 +1506,7 @@
- >1		leshort	<-259
- # that offset must be accessible
- # add 10000h to jump at end of 64 KiB segment, add 1 for jump instruction and 2 for 16-bit offset
-->>(1,s+65539)   byte    x
-+>>(1.s+65539)   byte    x
- # after jump next instruction for DEBUGGING!
- #>>>&-1		ubelong	x	\b, NEXT instruction %#8.8x
- >>>0        use msdos-com
 --- magic/Makefile.am
-+++ magic/Makefile.am	2026-02-27 10:51:00.600392145 +0000
++++ magic/Makefile.am	2026-06-08 12:18:36.995156628 +0000
 @@ -5,7 +5,7 @@ MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
@@ -62,7 +53,7 @@
  
  MAGIC_FRAGMENTS = \
  $(MAGIC_DIR)/Header \
-@@ -24,7 +24,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
+@@ -26,7 +26,6 @@ $(MAGIC_FRAGMENT_DIR)/animation \
  $(MAGIC_FRAGMENT_DIR)/aout \
  $(MAGIC_FRAGMENT_DIR)/apache \
  $(MAGIC_FRAGMENT_DIR)/apl \
@@ -70,7 +61,7 @@
  $(MAGIC_FRAGMENT_DIR)/application \
  $(MAGIC_FRAGMENT_DIR)/applix \
  $(MAGIC_FRAGMENT_DIR)/apt \
-@@ -108,7 +107,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
+@@ -111,7 +110,6 @@ $(MAGIC_FRAGMENT_DIR)/erlang \
  $(MAGIC_FRAGMENT_DIR)/espressif \
  $(MAGIC_FRAGMENT_DIR)/esri \
  $(MAGIC_FRAGMENT_DIR)/fcs \
@@ -78,16 +69,16 @@
  $(MAGIC_FRAGMENT_DIR)/finger \
  $(MAGIC_FRAGMENT_DIR)/firmware \
  $(MAGIC_FRAGMENT_DIR)/flash \
-@@ -156,6 +154,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
+@@ -159,6 +157,8 @@ $(MAGIC_FRAGMENT_DIR)/isz \
  $(MAGIC_FRAGMENT_DIR)/java \
  $(MAGIC_FRAGMENT_DIR)/javascript \
  $(MAGIC_FRAGMENT_DIR)/jpeg \
 +$(MAGIC_FRAGMENT_DIR)/linux \
 +$(MAGIC_FRAGMENT_DIR)/filesystems \
+ $(MAGIC_FRAGMENT_DIR)/k9 \
  $(MAGIC_FRAGMENT_DIR)/karma \
  $(MAGIC_FRAGMENT_DIR)/kde \
- $(MAGIC_FRAGMENT_DIR)/keepass \
-@@ -168,7 +168,6 @@ $(MAGIC_FRAGMENT_DIR)/lauterbach \
+@@ -172,7 +172,6 @@ $(MAGIC_FRAGMENT_DIR)/lauterbach \
  $(MAGIC_FRAGMENT_DIR)/lecter \
  $(MAGIC_FRAGMENT_DIR)/lex \
  $(MAGIC_FRAGMENT_DIR)/lif \
@@ -95,7 +86,7 @@
  $(MAGIC_FRAGMENT_DIR)/lisp \
  $(MAGIC_FRAGMENT_DIR)/llvm \
  $(MAGIC_FRAGMENT_DIR)/locoscript \
-@@ -176,7 +175,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
+@@ -180,7 +179,6 @@ $(MAGIC_FRAGMENT_DIR)/lua \
  $(MAGIC_FRAGMENT_DIR)/luks \
  $(MAGIC_FRAGMENT_DIR)/m4 \
  $(MAGIC_FRAGMENT_DIR)/mach \
@@ -103,7 +94,7 @@
  $(MAGIC_FRAGMENT_DIR)/macos \
  $(MAGIC_FRAGMENT_DIR)/magic \
  $(MAGIC_FRAGMENT_DIR)/mail.news \
-@@ -200,11 +198,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
+@@ -204,11 +202,11 @@ $(MAGIC_FRAGMENT_DIR)/misctools \
  $(MAGIC_FRAGMENT_DIR)/mkid \
  $(MAGIC_FRAGMENT_DIR)/mlssa \
  $(MAGIC_FRAGMENT_DIR)/mmdf \
@@ -116,16 +107,16 @@
  $(MAGIC_FRAGMENT_DIR)/msooxml \
  $(MAGIC_FRAGMENT_DIR)/msvc \
  $(MAGIC_FRAGMENT_DIR)/msx \
-@@ -269,6 +267,8 @@ $(MAGIC_FRAGMENT_DIR)/r \
+@@ -274,6 +272,8 @@ $(MAGIC_FRAGMENT_DIR)/qt \
+ $(MAGIC_FRAGMENT_DIR)/r \
  $(MAGIC_FRAGMENT_DIR)/revision \
- $(MAGIC_FRAGMENT_DIR)/ringdove \
  $(MAGIC_FRAGMENT_DIR)/riff \
 +$(MAGIC_FRAGMENT_DIR)/apple \
 +$(MAGIC_FRAGMENT_DIR)/macintosh \
+ $(MAGIC_FRAGMENT_DIR)/ringdove \
  $(MAGIC_FRAGMENT_DIR)/rpi \
  $(MAGIC_FRAGMENT_DIR)/rpm \
- $(MAGIC_FRAGMENT_DIR)/rpmsg \
-@@ -365,9 +365,21 @@ EXTRA_DIST = \
+@@ -371,9 +371,21 @@ EXTRA_DIST = \
  $(MAGIC_DIR)/scripts/create_filemagic_flac \
  $(MAGIC_FRAGMENTS)
  
@@ -149,7 +140,7 @@
  
  # FIXME: Build file natively as well so that it can be used to compile
  # the target's magic file; for now we bail if the local version does not match
-@@ -379,19 +391,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
+@@ -385,19 +397,22 @@ FILE_COMPILE = $(top_builddir)/src/file$
  FILE_COMPILE_DEP = $(FILE_COMPILE)
  endif
  
@@ -190,7 +181,7 @@
 +#	@rm -fr magic
 --- magic/Makefile.in
 +++ magic/Makefile.in	2026-02-27 10:51:00.600392145 +0000
-@@ -284,7 +284,7 @@ top_srcdir = @top_srcdir@
+@@ -287,7 +287,7 @@ top_srcdir = @top_srcdir@
  MAGIC_FRAGMENT_BASE = Magdir
  MAGIC_DIR = $(top_srcdir)/magic
  MAGIC_FRAGMENT_DIR = $(MAGIC_DIR)/$(MAGIC_FRAGMENT_BASE)
