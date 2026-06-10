@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jan  8 15:34:31 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hslua-typing to version 0.2.0.
+  ## hslua-typing-0.2.0
+
+  Released 2026-01-08.
+
+  - Drop type *TypeDocs* together with the peeker and pusher
+    functions `peekTypeDoc` and `pushTypeDoc`.
+
+-------------------------------------------------------------------
 Thu Jan 18 17:08:57 UTC 2024 - Peter Simons <psimons@suse.com>
 
 - Update hslua-typing to version 0.1.1.
