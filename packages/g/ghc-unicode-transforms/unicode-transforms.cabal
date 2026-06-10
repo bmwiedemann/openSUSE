@@ -2,7 +2,7 @@ cabal-version: 2.2
 
 name:           unicode-transforms
 version:        0.4.0.1
-x-revision: 8
+x-revision:     9
 synopsis:       Unicode normalization
 description:    Fast Unicode 14.0.0 normalization in Haskell (NFC, NFKC, NFD, NFKD).
 category:       Data,Text,Unicode
@@ -23,9 +23,12 @@ tested-with:    GHC==8.0.2
               , GHC==8.10.7
               , GHC==9.0.2
               , GHC==9.2.8
-              , GHC==9.4.7
-              , GHC==9.6.3
-              , GHC==9.8.1
+              , GHC==9.4.8
+              , GHC==9.6.7
+              , GHC==9.8.4
+              , GHC==9.10.3
+              , GHC==9.12.2
+              , GHC==9.14.1
 build-type:     Simple
 extra-source-files:
     Changelog.md
@@ -86,7 +89,7 @@ library
   hs-source-dirs: .
   ghc-options: -Wall -fwarn-identities -fwarn-incomplete-record-updates -fwarn-incomplete-uni-patterns -fwarn-tabs
   build-depends:
-      base         >= 4.8 && < 4.22
+      base         >= 4.8 && < 4.23
     , unicode-data >= 0.2 && < 0.9
     , bytestring   >= 0.9 && < 0.13
     , ghc-prim     >= 0.2 && < 0.14
@@ -111,7 +114,7 @@ test-suite extras
       test
   ghc-options: -Wall -fwarn-identities -fwarn-incomplete-record-updates -fwarn-incomplete-uni-patterns -fwarn-tabs
   build-depends:
-      QuickCheck >=2.1 && <2.16
+      QuickCheck >=2.1 && <2.18
     , base
     , deepseq >=1.1 && <1.6
     , text
@@ -189,7 +192,7 @@ benchmark bench
   if flag(use-gauge)
     build-depends: gauge >=0.2.0 && <0.3
   else
-    build-depends: tasty-bench>= 0.2.5 && <0.4
+    build-depends: tasty-bench>= 0.2.5 && <0.6
     mixins: tasty-bench (Test.Tasty.Bench as Gauge.Main)
   if flag(dev)
     ghc-options: -O0
