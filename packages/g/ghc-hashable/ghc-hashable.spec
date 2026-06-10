@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-hashable
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.5.0.0
+Version:        1.5.1.0
 Release:        0
 Summary:        A class for types that can be converted to a hash value
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -45,22 +44,16 @@ BuildRequires:  ghc-text-devel
 BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
-BuildRequires:  ghc-HUnit-devel
-BuildRequires:  ghc-HUnit-prof
 BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-primitive-devel
 BuildRequires:  ghc-primitive-prof
-BuildRequires:  ghc-random-devel
-BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-tasty-devel
 BuildRequires:  ghc-tasty-hunit-devel
 BuildRequires:  ghc-tasty-hunit-prof
 BuildRequires:  ghc-tasty-prof
 BuildRequires:  ghc-tasty-quickcheck-devel
 BuildRequires:  ghc-tasty-quickcheck-prof
-BuildRequires:  ghc-unix-devel
-BuildRequires:  ghc-unix-prof
 %endif
 
 %description
@@ -109,7 +102,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %define cabal_configure_options -f-arch-native
