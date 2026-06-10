@@ -101,4 +101,14 @@ update to 0.28.5</comment>
   apparently no code changes, only an empty commit</comment>
     <requestid>1341914</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2a14b523ff40c50dd8a5431b530a868e</srcmd5>
+    <version>0.30.4</version>
+    <time>1781099806</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.30.4:
+  Mostly updating dependencies. For the whole list see:
+  https://github.com/smallstep/cli/releases/tag/v0.30.4</comment>
+    <requestid>1358310</requestid>
+  </revision>
 </revisionlist>
