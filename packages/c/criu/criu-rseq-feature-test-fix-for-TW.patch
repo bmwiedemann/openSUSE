@@ -1,0 +1,14 @@
+diff --git a/scripts/feature-tests.mak b/scripts/feature-tests.mak
+index 727e9689ea77..65f686f8f372 100644
+--- a/scripts/feature-tests.mak
++++ b/scripts/feature-tests.mak
+@@ -165,8 +165,7 @@ define FEATURE_TEST_NO_LIBC_RSEQ_DEFS
+ #endif
+ 
+ enum rseq_cpu_id_state {
+-	RSEQ_CPU_ID_UNINITIALIZED = -1,
+-	RSEQ_CPU_ID_REGISTRATION_FAILED = -2,
++	XXX_RSEQ_CPU_ID_UNINITIALIZED = -1, // let conflict
+ };
+ 
+ int main(void)

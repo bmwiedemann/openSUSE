@@ -48,6 +48,7 @@ Patch101:       criu-py-install-fix.diff
 Patch102:       0002-Fix-build-with-nftables-installed-in-different-direc.patch
 Patch104:       plugin-dir-path.patch
 Patch105:       criu-ns-python3-shebang.patch
+Patch106:       criu-rseq-feature-test-fix-for-TW.patch
 BuildRequires:  libcap-devel
 BuildRequires:  libgnutls-devel
 BuildRequires:  libnet-devel
