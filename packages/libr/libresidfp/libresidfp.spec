@@ -20,7 +20,7 @@ Name:           libresidfp
 Version:        1.0.2
 Release:        0
 Summary:        Cycle exact SID emulation
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 URL:            https://github.com/libsidplayfp/libresidfp
 Source0:        https://github.com/libsidplayfp/libresidfp/releases/download/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
