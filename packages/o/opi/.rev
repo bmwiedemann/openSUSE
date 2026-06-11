@@ -840,4 +840,13 @@
   * get chrome repos via https</comment>
     <requestid>1338755</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>7e89ff73fb2a0ad9f6527ab4a268dfee</srcmd5>
+    <version>5.13.0</version>
+    <time>1781191731</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.13.0
+  * Add Tolaria plugin</comment>
+    <requestid>1358677</requestid>
+  </revision>
 </revisionlist>
