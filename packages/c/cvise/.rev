@@ -1235,4 +1235,12 @@
     <comment></comment>
     <requestid>1311246</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>d9898b38abfa2f6e86ca977c0cb587dc</srcmd5>
+    <version>2.12.0+git.20260418.64ff7de2</version>
+    <time>1781191610</time>
+    <user>anag_factory</user>
+    <comment>- Fix requirement of python3-procps (forwarded request 1358562 from gbelinassi)</comment>
+    <requestid>1358579</requestid>
+  </revision>
 </revisionlist>

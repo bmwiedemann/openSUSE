@@ -1,7 +1,7 @@
 #
 # spec file for package cvise
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.12.0+git.20251010.334b9acf
+Version:        2.12.0+git.20260418.64ff7de2
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -36,6 +36,7 @@ BuildRequires:  mold
 BuildRequires:  indent
 BuildRequires:  llvm-devel
 BuildRequires:  ncurses-devel
+BuildRequires:  procps
 BuildRequires:  python3 >= 3.8
 BuildRequires:  python3-Pebble
 BuildRequires:  python3-chardet
