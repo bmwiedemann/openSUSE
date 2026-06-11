@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 17:57:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.3:
+  * Sync with scintilla 5.6.3; no scite specific code changes.
+- Changes from version 5.6.2:
+  * Fix spurious error message when an untitled buffer has a
+    filter command executed on it. Bug #2504.  
+- Changes from version 5.6.1:
+  * For GTK, replace deprecated or removed function
+    gdk_pixbuf_new_from_xpm_data. Bug #2498. 
+
+-------------------------------------------------------------------
 Mon Mar  2 10:38:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.0:

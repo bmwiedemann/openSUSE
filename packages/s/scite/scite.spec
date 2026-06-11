@@ -17,9 +17,9 @@
 #
 
 
-%define tar_ver 560
+%define tar_ver 563
 Name:           scite
-Version:        5.6.0
+Version:        5.6.3
 Release:        0
 Summary:        Source Code Editor based on Scintilla
 License:        MIT
