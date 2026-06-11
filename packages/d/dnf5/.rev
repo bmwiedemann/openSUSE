@@ -166,4 +166,19 @@
   + dnf5-disable-Werror.patch</comment>
     <requestid>1333830</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>e1acee58c486de1c959669acd0678be8</srcmd5>
+    <version>5.4.2.1</version>
+    <time>1781191535</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.4.2.1
+  + 5.4.2.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.2.1
+  + 5.4.2.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.2.0
+  + 5.4.1.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.1.0
+- Refresh patches
+  + dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + dnf5-disable-Werror.patch
+- Add SUSE Linux family default settings</comment>
+    <requestid>1358499</requestid>
+  </revision>
 </revisionlist>

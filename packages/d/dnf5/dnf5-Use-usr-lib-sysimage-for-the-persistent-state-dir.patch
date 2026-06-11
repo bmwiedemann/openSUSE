@@ -1,22 +1,20 @@
-From fabefa9f45bff103b644ea2a9c8c4d4c54eaeb45 Mon Sep 17 00:00:00 2001
+From c4eea3eea06e7ff8712c75e71d1ab1bf9b6a6585 Mon Sep 17 00:00:00 2001
 From: Neal Gompa <ngompa@opensuse.org>
-Date: Wed, 19 Jul 2023 08:07:52 -0400
+Date: Sat, 6 Jun 2026 19:05:33 -0400
 Subject: [PATCH] Use /usr/lib/sysimage for the persistent state directory
 
 This aligns us with the location where the RPM database is stored.
 ---
- doc/dnf5.8.rst                      | 2 +-
- include/libdnf5/conf/const.hpp      | 2 +-
- libdnf5/transaction/Swdb.cpp        | 2 +-
- libdnf5/transaction/Swdb.hpp        | 2 +-
- libdnf5/transaction/Transformer.cpp | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ doc/dnf5.8.rst                 | 2 +-
+ doc/dnf5.conf.5.rst            | 2 +-
+ include/libdnf5/conf/const.hpp | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
 diff --git a/doc/dnf5.8.rst b/doc/dnf5.8.rst
-index 6dc341cd..ee691780 100644
+index 9c8f2451..4fae3be8 100644
 --- a/doc/dnf5.8.rst
 +++ b/doc/dnf5.8.rst
-@@ -411,7 +411,7 @@ Files
+@@ -414,7 +414,7 @@ Files
      /etc/yum.repos.d/
  
  ``Repository Persistence``
@@ -25,6 +23,19 @@ index 6dc341cd..ee691780 100644
  
  ``System State``
      /usr/lib/sysimage/libdnf5/
+diff --git a/doc/dnf5.conf.5.rst b/doc/dnf5.conf.5.rst
+index 10aff9b3..aa00df53 100644
+--- a/doc/dnf5.conf.5.rst
++++ b/doc/dnf5.conf.5.rst
+@@ -428,7 +428,7 @@ repository configuration file should aside from repo ID consists of baseurl, met
+ 
+     Directory where DNF5 stores its persistent data between runs.
+ 
+-    Default: ``/var/lib/dnf``.
++    Default: ``/usr/lib/sysimage/dnf``.
+ 
+ .. _pluginconfpath_options-label:
+ 
 diff --git a/include/libdnf5/conf/const.hpp b/include/libdnf5/conf/const.hpp
 index 2aa933fc..fcfed080 100644
 --- a/include/libdnf5/conf/const.hpp
@@ -38,45 +49,6 @@ index 2aa933fc..fcfed080 100644
  constexpr const char * SYSTEM_STATE_DIR = "/usr/lib/sysimage/libdnf5";
  constexpr const char * SYSTEM_CACHEDIR = "/var/cache/libdnf5";
  
-diff --git a/libdnf5/transaction/Swdb.cpp b/libdnf5/transaction/Swdb.cpp
-index 06b6cbb9..6acb692e 100644
---- a/libdnf5/transaction/Swdb.cpp
-+++ b/libdnf5/transaction/Swdb.cpp
-@@ -51,7 +51,7 @@ Swdb::Swdb(const std::string & path) : conn(nullptr), autoClose(true) {
-     } else if (!std::filesystem::exists(path.c_str())) {
-         // writing to a file that doesn't exist and must be created
- 
--        // extract persistdir from path - "/var/lib/dnf/"
-+        // extract persistdir from path - "/usr/lib/sysimage/dnf/"
-         auto found = path.find_last_of("/");
- 
-         Transformer transformer(path.substr(0, found), path);
-diff --git a/libdnf5/transaction/Swdb.hpp b/libdnf5/transaction/Swdb.hpp
-index e4bfcc07..e8f16a7b 100644
---- a/libdnf5/transaction/Swdb.hpp
-+++ b/libdnf5/transaction/Swdb.hpp
-@@ -54,7 +54,7 @@ public:
- 
-     // Database
-     // FIXME load this from conf
--    static constexpr const char * defaultPath = "/var/lib/dnf/history.sqlite";
-+    static constexpr const char * defaultPath = "/usr/lib/sysimage/dnf/history.sqlite";
-     static constexpr const char * defaultDatabaseName = "history.sqlite";
- 
-     const std::string & getPath() { return conn->get_path(); }
-diff --git a/libdnf5/transaction/Transformer.cpp b/libdnf5/transaction/Transformer.cpp
-index 52b25b68..dbb0f1eb 100644
---- a/libdnf5/transaction/Transformer.cpp
-+++ b/libdnf5/transaction/Transformer.cpp
-@@ -99,7 +99,7 @@ TransactionItemReason Transformer::getReason(const std::string & reason) {
- /**
-  * Default constructor of the Transformer object
-  * \param outputFile path to output SQLite3 database
-- * \param inputDir directory to load data from (e.g. `/var/lib/dnf/`)
-+ * \param inputDir directory to load data from (e.g. `/usr/lib/sysimage/dnf/`)
-  */
- Transformer::Transformer(const std::string & inputDir, const std::string & outputFile)
-     : inputDir(inputDir),
 -- 
-2.53.0
+2.54.0
 

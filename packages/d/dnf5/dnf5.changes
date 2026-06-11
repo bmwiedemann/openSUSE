@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun  6 22:47:23 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Update to 5.4.2.1
+  + 5.4.2.1 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.2.1
+  + 5.4.2.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.2.0
+  + 5.4.1.0 changelog: https://github.com/rpm-software-management/dnf5/releases/tag/5.4.1.0
+- Refresh patches
+  + dnf5-Use-usr-lib-sysimage-for-the-persistent-state-dir.patch
+  + dnf5-disable-Werror.patch
+- Add SUSE Linux family default settings
+
+-------------------------------------------------------------------
 Thu Feb 19 00:00:18 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 5.4.0.0

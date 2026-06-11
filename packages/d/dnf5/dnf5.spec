@@ -78,12 +78,15 @@
 %global devcliname %{libcliprefix}-devel
 
 Name:           dnf5
-Version:        5.4.0.0
+Version:        5.4.2.1
 Release:        0
 Summary:        Next generation RPM package manager
 License:        GPL-2.0-or-later
 URL:            https://github.com/rpm-software-management/dnf5
 Source0:        %{url}/archive/%{version}/dnf5-%{version}.tar.gz
+
+# Distribution family defaults
+Source10:       20-suse-defaults.conf
 
 # Backports from upstream
 
@@ -323,8 +326,9 @@ It supports RPM packages, modulemd modules, and comps groups & environments.
 %dir %{_datadir}/bash-completion/
 %dir %{_datadir}/bash-completion/completions/
 %{_datadir}/bash-completion/completions/dnf*
+%dir %{_datadir}/zsh/site-functions
+%{_datadir}/zsh/site-functions/_dnf*
 %dir %{_prefix}/lib/sysimage/dnf
-%verify(not md5 size mtime) %ghost %{_prefix}/lib/sysimage/dnf/*
 %license COPYING.md
 %license gpl-2.0.txt
 %if %{with as_dnf}
@@ -423,8 +427,10 @@ Package management library.
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/packages.toml
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/system.toml
 %verify(not md5 size mtime) %attr(0644, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/transaction_history.sqlite{,-shm,-wal}
-%verify(not md5 size mtime) %attr(0664, root, root) %ghost %{_prefix}/lib/sysimage/libdnf5/system-repo.lock
+%dir %{_prefix}/lib/sysimage/dnf
+%verify(not md5 size mtime) %attr(0664, root, root) %ghost %{_prefix}/lib/sysimage/dnf/system-repo.lock
 %dir %{_datadir}/dnf5/libdnf.conf.d
+%{_datadir}/dnf5/libdnf.conf.d/20-suse-defaults.conf
 %dir %{_sysconfdir}/dnf/libdnf5.conf.d
 %dir %{_datadir}/dnf5/repos.override.d
 %dir %{_sysconfdir}/dnf/repos.override.d
@@ -784,7 +790,7 @@ Package management service with a DBus interface.
 %if %{with dnf5_plugins}
 %package -n dnf5-plugins
 Summary:        Plugins for dnf5
-License:        LGPL-2.1-or-later
+License:        LGPL-2.1-or-later AND GPL-2.0-or-later
 Requires:       %{libcliname}%{?_isa} = %{version}-%{release}
 Requires:       dnf5%{?_isa} = %{version}-%{release}
 Requires:       libcurl4%{?_isa} >= %{libcurl_version}
@@ -931,16 +937,20 @@ DNF5 plugin for working with RPM package manifest files.
 %cmake_install
 
 # own dirs and files that dnf5 creates on runtime
-mkdir -p %{buildroot}%{_prefix}/lib/sysimage/dnf
-for files in \
-    groups.toml modules.toml nevras.toml packages.toml \
-    system.toml transaction_history.sqlite \
-    transaction_history.sqlite-shm \
-    transaction_history.sqlite-wal userinstalled.toml \
-    system-repo.lock
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5
+for file in \
+    environments.toml groups.toml modules.toml nevras.toml packages.toml \
+    system.toml \
+    transaction_history.sqlite transaction_history.sqlite-shm \
+    transaction_history.sqlite-wal
 do
-    touch %{buildroot}%{_prefix}/lib/sysimage/dnf/$files
+    touch %{buildroot}%{_prefix}/lib/sysimage/libdnf5/$file
 done
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/comps_groups
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/offline
+touch %{buildroot}%{_sysconfdir}/dnf/versionlock.toml
+mkdir -p %{buildroot}%{_prefix}/lib/sysimage/dnf
+touch %{buildroot}%{_prefix}/lib/sysimage/dnf/system-repo.lock
 
 # own the offline transaction target
 mkdir -p %{buildroot}%{_unitdir}/system-update.target.wants/
@@ -983,24 +993,12 @@ rm %{buildroot}%{_sysconfdir}/dnf/dnf.conf
 rm %{buildroot}%{_bindir}/dnf-automatic
 %endif
 
-# own dirs and files that dnf5 creates on runtime
-mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5
-for file in \
-    environments.toml groups.toml modules.toml nevras.toml packages.toml \
-    system.toml \
-    transaction_history.sqlite transaction_history.sqlite-shm \
-    transaction_history.sqlite-wal
-do
-    touch %{buildroot}%{_prefix}/lib/sysimage/libdnf5/$file
-done
-mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/comps_groups
-
-mkdir -p %{buildroot}%{_prefix}/lib/sysimage/libdnf5/offline
-touch %{buildroot}%{_sysconfdir}/dnf/versionlock.toml
-
 %if %{with as_yum}
 ln -sr %{buildroot}%{_bindir}/dnf5 %{buildroot}%{_bindir}/yum
 %endif
+
+# Install DNF 5 configuration defaults
+install -Dm0644 %{S:10} -t %{buildroot}%{_datadir}/dnf5/libdnf.conf.d/
 
 # Do not deliver polkit rule allowing privileged actions for wheel (bsc#1245451)
 rm -rf %{buildroot}%{_datadir}/polkit-1/rules.d
