@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1235287</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6f77ad8ba34f6dd525dff3dad8a4887d</srcmd5>
+    <version>1.20.0</version>
+    <time>1781191793</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.20.0 (1.02)
+   see /usr/share/doc/packages/perl-Mojo-JWT/Changes
+  1.02 2026-06-03
+    - This release contains fixes for security issues, everybody should upgrade!
+    - Improved security of decode to prevent timing side-channel attacks in symmetric signatures</comment>
+    <requestid>1358714</requestid>
+  </revision>
 </revisionlist>

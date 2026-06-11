@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-JWT
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,25 @@
 
 %define cpan_name Mojo-JWT
 Name:           perl-Mojo-JWT
-Version:        1.10.0
+Version:        1.20.0
 Release:        0
-# 1.01 -> normalize -> 1.10.0
-%define cpan_version 1.01
+# 1.02 -> normalize -> 1.20.0
+%define cpan_version 1.02
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        JSON Web Token the Mojo way
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JB/JBERGER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CryptX) >= 0.029
+BuildRequires:  perl(CryptX) >= 0.29
 BuildRequires:  perl(Module::Build)
 BuildRequires:  perl(Module::Build::Tiny)
-BuildRequires:  perl(Mojolicious) >= 5.00
-Requires:       perl(CryptX) >= 0.029
-Requires:       perl(Mojolicious) >= 5.00
+BuildRequires:  perl(Mojolicious) >= 5.0
+Requires:       perl(CryptX) >= 0.29
+Requires:       perl(Mojolicious) >= 5.0
 Provides:       perl(Mojo::JWT) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -54,7 +55,7 @@ the data is not encrypted, so don't use it to send secrets over clear
 channels.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Build.PL --installdirs=vendor
