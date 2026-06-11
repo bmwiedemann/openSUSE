@@ -1,0 +1,6 @@
+<package name="ashell" project="openSUSE:Factory">
+  <title>A Wayland status bar for Hyprland and Niri</title>
+  <description>A Wayland status bar for the Hyprland compositor, written in Rust.
+It provides workspace, system, media, and privacy widgets.</description>
+  <url>https://github.com/MalpenZibo/ashell</url>
+</package>

@@ -1,0 +1,26 @@
+-------------------------------------------------------------------
+Mon Jun  8 12:55:54 UTC 2026 - malcolmlewis@opensuse.org
+
+- Updated to version 0.9.0:
+  + Notification system: optionally works as a notification daemon.
+  + OSD system: optionally show OSD information through the new
+    IPC system.
+  + IPC over a Unix socket: a way to control ashell externally.
+  + Internationalization: the foundation for localized formatting
+    and translations.
+  + Experimental animations: work-in-progress animation support.
+  + Official iced: thanks to iced_layershell, we now use the
+    official upstream iced instead of the custom pop-os fork.
+  + Relicensed from MIT to GPL-3.0-or-later.
+  + See CHANGELOG.md for more details.
+
+-------------------------------------------------------------------
+Wed May 20 17:25:16 UTC 2026 - malcolmlewis@opensuse.org
+
+- Add sample config.toml as a %%doc.
+
+-------------------------------------------------------------------
+Wed May 20 13:19:55 UTC 2026 - malcolmlewis@opensuse.org
+
+- Initial build at version 0.8.0+466.
+
