@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun  8 09:17:14 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Reintroduce sandbox package (bsc#1266226) and a couple quality of life
+  improvements:
+    add policycoreutils-sandbox-fix-cleanup.patch
+    add sandbox-sandbox-fix-saving-file-changes.patch
+
+-------------------------------------------------------------------
 Tue Mar  3 07:55:28 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Drop use of update-desktop-files (jsc#PED-15235). We will not
