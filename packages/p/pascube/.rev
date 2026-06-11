@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>12ec985c78e0ea3bd1a9e29607885cc4</srcmd5>
+    <version>1.7.0</version>
+    <time>1781191605</time>
+    <user>anag_factory</user>
+    <comment>A simple Vulkan spinning cube written in Pascal using Lazarus,
+Qt6 and PasVulkan.
+
+It is also one of the add-ons used in new version of Goverlay that are missing in the distro
+
+Supersede: Fix 'nothing provides qt6-base' error by removing unused requires </comment>
+    <requestid>1358267</requestid>
+  </revision>
+</revisionlist>
