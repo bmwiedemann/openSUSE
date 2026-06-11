@@ -1,7 +1,7 @@
 #
 # spec file for package scons
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -27,6 +27,8 @@ License:        MIT
 Group:          Development/Tools/Building
 URL:            https://www.scons.org/
 Source:         http://prdownloads.sourceforge.net/scons/SCons-%{version}.tar.gz
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,16 +48,16 @@ sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
     SCons/Tool/qt3.py
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files
 %license LICENSE
 %{_bindir}/*
 %{python_sitelib}/SCons
-%{python_sitelib}/SCons-%{version}-py*.egg-info
+%{python_sitelib}/[Ss][Cc]ons-%{version}.dist-info
 
 %changelog
