@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Wed Jun 10 18:07:10 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.29.0:
+  * Feature: Limited support for python_requires in workspace,
+    only in conanws.yml file (gh#conan-io/conan#20028).
+  * Feature: Added new public attribute binaries to the
+    MesonToolchain generator (gh#conan-io/conan#20017).
+  * Feature: Add support for Apple OS 26.5 release
+    (gh#conan-io/conan#19976).
+  * Feature: Document RemoveAPI (gh#conan-io/conan#19930).
+  * Feature: New global_user.conf file to locally customize
+    global.conf (gh#conan-io/conan#19923).
+  * Feature: Add support for GCC 16 (gh#conan-io/conan#19921).
+  * Fix: Forward -vxxx verbosity argument to conan workspace
+    build/install packages (gh#conan-io/conan#20015).
+  * Fix: Add message when no packages found in conan list command
+    (gh#conan-io/conan#20013).
+  * Fix: source_credentials.json now supports supplying only
+    headers (gh#conan-io/conan#20004).
+  * Fix: conan workspace add --output-folder now properly updates
+    the output_folder of an existing package entry in conanws.yml
+    instead of ignoring it (gh#conan-io/conan#19988).
+  * Fix: Default variant for QNX and VxWorks in default
+    settings.yml should be null, not None. Also, add qcc=12.2
+    version (gh#conan-io/conan#19981).
+  * Fix: runtime_deploy: avoid crashing when overriding existing
+    symlinks (gh#conan-io/conan#19977).
+  * Fix: AutotoolsDeps will link with -rpath on shared package
+    types and components correctly (gh#conan-io/conan#19975).
+  * Fix: Warn and re-fetch when requested URLs conflict with
+    existing ones with the same SHA256 (gh#conan-io/conan#19969).
+  * Fix: cppstd_flag for clang-cl now correctly maps C++23, C++26
+    and gnu++ standards instead of producing invalid /std: flags
+    (gh#conan-io/conan#19965).
+  * Fix: Correct the conan workspace init docstring
+    (gh#conan-io/conan#19950).
+  * Fix: Allow workspaces root Conanfile to have a name to apply
+    conf with patterns that would match that name
+    (gh#conan-io/conan#19927).
+  * Fix: Fix meson_lib missing deps, meson_exe layout & install
+    verbosity (gh#conan-io/conan#19918).
+  * Bugfix: Raise an error if package_type and shared option
+    mismatch (package-type is set to shared-library and
+    shared=False or package_type=static-library and shared=True)
+    (gh#conan-io/conan#20023).
+  * BugFix: Fix the computation of options in graph build-order
+    (gh#conan-io/conan#19950).
+  * Bugfix: Fix requirement definition for multilib components
+    without explicit requirements for CMakeConfigDeps
+    (gh#conan-io/conan#19942).
+  * Bugfix: MSBuildDeps no longer generates duplicate include and
+    library directory paths in multi-component packages
+    (gh#conan-io/conan#19937).
+
+-------------------------------------------------------------------
 Mon May  4 18:57:33 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.28.1:
