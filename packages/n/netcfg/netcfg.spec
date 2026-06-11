@@ -1,7 +1,7 @@
 #
 # spec file for package netcfg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -39,7 +39,6 @@ Source103:      services_UPDATING
 Patch0:         services-suse.diff
 BuildRequires:  libnss_usrfiles2
 Requires:       libnss_usrfiles2
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -50,6 +49,9 @@ These are often used by network routines in the C library and therefore
 must be installed for all network programs.
 
 %prep
+cp %{SOURCE11} .
+bunzip2 services.bz2
+%patch -P 0
 
 %build
 cp %{SOURCE16} .
@@ -60,12 +62,11 @@ for i in hostname aliases exports host.conf hosts ethertypes; do
   install $RPM_SOURCE_DIR/$i %{buildroot}/%{_sysconfdir}
 done
 mkdir -p %{buildroot}%{_prefix}%{_sysconfdir}
-for i in networks protocols services.bz2; do
+for i in networks protocols; do
   install $RPM_SOURCE_DIR/$i %{buildroot}%{_prefix}%{_sysconfdir}
 done
-bunzip2 %{buildroot}%{_prefix}%{_sysconfdir}/services.bz2
-patch -p0 %{buildroot}%{_prefix}%{_sysconfdir}/services < $RPM_SOURCE_DIR/services-suse.diff
-rm -f %{buildroot}%{_prefix}%{_sysconfdir}/services.orig
+# Copy patched services
+install services %{buildroot}%{_prefix}%{_sysconfdir}
 
 install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
 
@@ -73,7 +74,7 @@ install -d -m 0755 %{buildroot}/%{_sysconfdir}/exports.d
 %defattr(644,root,root,755)
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hostname
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/aliases
-%verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/exports
+%verify(not md5 size mtime mode) %config(noreplace) %{_sysconfdir}/exports
 %config(noreplace) %{_sysconfdir}/host.conf
 %verify(not md5 size mtime) %config(noreplace) %{_sysconfdir}/hosts
 %{_prefix}%{_sysconfdir}/networks

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:25:55 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Patch services file in %prep instead of in %install
+- Spec cleanup
+
+-------------------------------------------------------------------
+Wed Jun  3 10:16:18 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add missing %verify(not mode) (boo#1263098) 
+
+-------------------------------------------------------------------
+Tue May 27 09:34:12 UTC 2025 - Stefan Seyfried <seife+obs@b1-systems.com>
+
+- services: remove invalid SIEVE entry, again (was fixed and
+  broken again in 2013 already) boo#1243708, boo#822653
+
+-------------------------------------------------------------------
 Mon Jan  1 05:06:05 UTC 2024 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add krb-prop entry, fix for bsc#1211886.

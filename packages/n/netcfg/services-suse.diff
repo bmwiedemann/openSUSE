@@ -1,5 +1,5 @@
---- ./services	2019/04/26 12:53:51	1.1
-+++ ./services	2019/04/26 13:01:49
+--- services	2019-04-17 09:31:02.000000000 +0200
++++ services	2025-05-27 11:33:07.544845095 +0200
 @@ -1,4 +1,16 @@
  #
 +# Network services, Internet style
@@ -47,17 +47,7 @@
  smpnameres         901/tcp      # SMPNAMERES  [Leif_Ekblad]
  smpnameres         901/udp      # SMPNAMERES  [Leif_Ekblad]
  ideafarm-door      902/tcp      # self documenting Telnet Door 
-@@ -3515,6 +3528,9 @@
- x25-svc-port       1998/udp     # cisco X.25 service (XOT) 
- tcp-id-port        1999/tcp     # cisco identification port 
- tcp-id-port        1999/udp     # cisco identification port 
-+# Port 2000 is illegal used by sieve
-+sieve              2000/tcp   # Cyrus SIEVE
-+sieve              2000/udp   # Cyrus SIEVE
- cisco-sccp         2000/tcp     # Cisco SCCP  [Dan_Wing]
- cisco-sccp         2000/udp     # Cisco SCCp  [Dan_Wing]
- dc                 2001/tcp     
-@@ -3614,8 +3630,8 @@
+@@ -3614,8 +3627,8 @@
  dls                2047/udp     
  dls-monitor        2048/tcp     
  dls-monitor        2048/udp     
@@ -68,7 +58,7 @@
  nfs                2049/tcp     # Network File System - Sun Microsystems  [Brent_Callaghan]
  nfs                2049/udp     # Network File System - Sun Microsystems  [Brent_Callaghan]
  nfs                2049/sctp    # Network File System  [RFC5665]
-@@ -6114,8 +6130,8 @@
+@@ -6114,8 +6127,8 @@
  sysopt             3281/udp     # SYSOPT  [Tony_Hoffman]
  datusorb           3282/tcp     # Datusorb  [Thomas_Martin]
  datusorb           3282/udp     # Datusorb  [Thomas_Martin]
@@ -79,7 +69,7 @@
  4talk              3284/tcp     # 4Talk  [Tony_Bushnell]
  4talk              3284/udp     # 4Talk  [Tony_Bushnell]
  plato              3285/tcp     # Plato  [Jim_Battin]
-@@ -6887,8 +6903,8 @@
+@@ -6887,8 +6900,8 @@
  roverlog           3677/udp     # RoverLog IPC  [Tom_Mayo]
  ipr-dglt           3678/tcp     # DataGuardianLT  [Bruce_Carlson]
  ipr-dglt           3678/udp     # DataGuardianLT  [Bruce_Carlson]
@@ -90,7 +80,7 @@
  npds-tracker       3680/tcp     # NPDS Tracker  [Paul_Guyot]
  npds-tracker       3680/udp     # NPDS Tracker  [Paul_Guyot]
  bts-x73            3681/tcp     # BTS X73 Port  [Todd_Cooper]
-@@ -9154,6 +9170,7 @@
+@@ -9154,6 +9167,7 @@
  #                  5474/tcp     Reserved 
  apsolab-data       5475/tcp     # The Apsolab company's data retrieval protocol  [Apsolab_Inc] [Jean-Francois_Gauthier]
  #                  5475/udp     Reserved 
@@ -98,7 +88,7 @@
  fcp-addr-srvr1     5500/tcp     # fcp-addr-srvr1  [Ken_Wittmer]
  fcp-addr-srvr1     5500/udp     # fcp-addr-srvr1  [Ken_Wittmer]
  fcp-addr-srvr2     5501/tcp     # fcp-addr-srvr2  [Ken_Wittmer]
-@@ -9176,6 +9193,7 @@
+@@ -9176,6 +9190,7 @@
  sgi-eventmond      5553/udp     # SGI Eventmond Port  [Andrei_Vilkotski]
  sgi-esphttp        5554/tcp     # SGI ESP HTTP  [Vladimir_Legalov]
  sgi-esphttp        5554/udp     # SGI ESP HTTP  [Vladimir_Legalov]
@@ -106,7 +96,7 @@
  personal-agent     5555/tcp     # Personal Agent  [Jackie_Wu]
  personal-agent     5555/udp     # Personal Agent  [Jackie_Wu]
  freeciv            5556/tcp     # Freeciv gameplay  [Reinier_Post_and_Pau]
-@@ -9418,8 +9436,8 @@
+@@ -9418,8 +9433,8 @@
  #                  5868/udp     Reserved 
  diameters          5868/sctp    # Diameter over DTLS/SCTP  [IESG] [IETF_Chair] [RFC6733]
  jute               5883/tcp     # Javascript Unit Test Environment  [Mark_Ethan_Trostler]
@@ -117,7 +107,7 @@
  cm                 5910/tcp     # Context Management  [Eivan_Cerasi]
  cm                 5910/udp     # Context Management  [Eivan_Cerasi]
  cm                 5910/sctp    # Context Management  [Justin_Yu]
-@@ -11691,7 +11709,12 @@
+@@ -11691,7 +11706,12 @@
  hde-lcesrvr-2      14937/udp    # hde-lcesrvr-2  [Horizon_Digital_Ente]
  hydap              15000/tcp    # Hypack Data Aquisition (updated 2011-10-27) [HYPACK_Inc] [Mircea_Neacsu]
  hydap              15000/udp    # Hypack Data Aquisition (updated 2011-10-27) [HYPACK_Inc] [Mircea_Neacsu]
@@ -131,7 +121,7 @@
  #                  15002/udp    Reserved 
  #                  15118/tcp    Reserved 
  v2g-secc           15118/udp    # v2g Supply Equipment Communication Controller Discovery Protocol  [Holger_Lochner]
-@@ -11966,6 +11989,13 @@
+@@ -11966,6 +11986,13 @@
  #                  22128/udp    Reserved 
  easyengine         22222/tcp    # EasyEngine is CLI tool to manage WordPress Sites on Nginx server  [rtCamp_Solutions_Private_Limited] [Rahul_Bansal]
  #                  22222/udp    Reserved 
@@ -145,7 +135,7 @@
  wnn6               22273/tcp    # wnn6  [Yasunari_Gon_Yamasit]
  wnn6               22273/udp    # wnn6  [Yasunari_Gon_Yamasit]
  cis                22305/tcp    # CompactIS Tunnel  [Justin_Paupore]
-@@ -12531,3 +12561,15 @@
+@@ -12531,3 +12558,15 @@
  nusdp-disc         49001/udp    # Nuance Unity Service Discovery Protocol  [Nuance_Communications_Inc3] [Andrew_Andrews]
  inspider           49150/tcp    # InSpider System  [AnRobot] [Zhang_Xinnan]
  #                  49150/udp    Reserved 
