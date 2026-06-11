@@ -101,4 +101,13 @@
 - Remove Leap 15 packaging (forwarded request 1355316 from rrahl0)</comment>
     <requestid>1355317</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f583a4ed4181f964d5d191947c89539c</srcmd5>
+    <version>0.3.0</version>
+    <time>1781191733</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.0:
+  + Update dependencies (forwarded request 1358682 from rrahl0)</comment>
+    <requestid>1358683</requestid>
+  </revision>
 </revisionlist>
