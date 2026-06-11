@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 11 04:57:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.12:
+  * Fixed
+    - discovery: normalize path_relative_to output to forward
+      slashes on Windows (36c8fd9)
+    - lsp: apply document fixes through the FixCoordinator
+      (a5c5da1)
+    - stdin: lint stdin through the shared engine (065c4d2)
+  * - Update to version 0.2.11:
+  * Fixed
+    - lsp: rebuild and prune workspace index when configuration
+      changes (9ca9049)
+    - lsp: align workspace file discovery with CLI semantics
+      (7a5d6aa)
+
+-------------------------------------------------------------------
 Tue Jun 09 05:09:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.10:
