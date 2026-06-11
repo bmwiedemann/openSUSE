@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun 10 21:55:30 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.6.1:
+  * chore: release v17.6.1 (#2085)
+  * chore: release v17.6.0 (#2070)
+  * fix(needrestart): skip if hooks already run it (#2066)
+  * chore(pre-commit): autoupdate (#2079)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.3 (#2071)
+  * chore(deps): update github/codeql-action action to v4.36.2 (#2073)
+  * chore(deps): lock file maintenance (#2078)
+  * chore(deps): lock file maintenance (#2061)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.2 (#2054)
+  * chore(deps): update rust to v1.96.0 (#2058)
+  * chore(deps): update github/codeql-action action to v4.36.1 (#2069)
+  * chore(deps): update actions/checkout action to v6.0.3 (#2068)
+  * chore(pre-commit): autoupdate (#2064)
+  * chore(pre-commit): autoupdate (#2053)
+  * chore(deps): update github/codeql-action action to v4.36.0 (#2047)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.1 (#2051)
+  * chore(deps): lock file maintenance (#2052)
+  * feat(vim): add opt-in vim.pack pruning (#2044)
+  * refactor: improve path handling in config, node steps, and build (#2015)
+  * fix(tmux): update path to tpm update script (#2050)
+  * fix(jetbrains-toolbox): skip step when Toolbox is not installed, but remotely managed IDEs are installed (#2038)
+  * fix(jetbrains-toolbox): fix breakage on new Toolbox version by switching to different update finished line (#2039)
+
+-------------------------------------------------------------------
 Sun May 24 23:09:44 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.5.1:
