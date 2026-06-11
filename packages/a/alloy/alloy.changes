@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun  9 11:29:33 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-41889: Fix SQL injection by bumping github.com/jackc/pgx
+                  to version 5.9.2 (bsc#1265440)
+  - add patch 0003-Bump-jackc-pgx.patch
+
+-------------------------------------------------------------------
 Wed May  6 14:48:09 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 1.16.1

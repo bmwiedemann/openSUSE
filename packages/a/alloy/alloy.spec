@@ -31,6 +31,7 @@ Source5:        prepare_webassets_and_vendor_go_modules.sh
 Source6:        alloy.tmpfiles
 Patch1:         0001-Bump-sql_exporter.patch
 Patch2:         0002-Bump-Apache-Thrift.patch
+Patch3:         0003-Bump-jackc-pgx.patch
 BuildRequires:  go1.26 >= 1.26.2
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  user(alloy)

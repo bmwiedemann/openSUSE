@@ -58,6 +58,7 @@ echo "##########"
 echo "Vendoring the go modules"
 patch --no-backup-if-mismatch -p1 -i ${working_directory}/0001-Bump-sql_exporter.patch
 patch --no-backup-if-mismatch -p1 -i ${working_directory}/0002-Bump-Apache-Thrift.patch
+patch --no-backup-if-mismatch -p1 -i ${working_directory}/0003-Bump-jackc-pgx.patch
 pushd collector/ || exit 31
 go mod download || exit 33
 go mod vendor || exit 35
