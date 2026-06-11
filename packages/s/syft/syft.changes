@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 08 05:43:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.45.1:
+  * Bug Fixes
+    - bump stereoscope to pull in fix for registry client hanging
+      [#4934 @anchore-oss-update-bot]
+  * Dependencies
+    - chore(deps): bump the go-minor-patch group across 1 directory
+      with 3 updates (#4957)
+    - chore(deps): update tool versions (#4724)
+    - chore(deps): bump the go-minor-patch group across 2
+      directories with 14 updates (#4947)
+    - chore: bump golang.org/x/crypto (#4955)
+
+-------------------------------------------------------------------
 Wed Jun 03 04:36:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.45.0:
