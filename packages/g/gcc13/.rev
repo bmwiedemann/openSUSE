@@ -503,4 +503,15 @@ that go1.21 can be build.  I believe Staging:L for now.
   versions if update-alternatives are still in use (SLE 15 and older)</comment>
     <requestid>1345660</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>983880b57f8c33be4e42ae78e45ee15b</srcmd5>
+    <version>13.4.1+git10355</version>
+    <time>1781191543</time>
+    <user>anag_factory</user>
+    <comment>- Update to gcc-13 branch head, 1990e6544b9f0db39c470b999, git10355
+  * pulls fix for haproxy build [bsc#1267998]
+
+- disabled -fhardened</comment>
+    <requestid>1358536</requestid>
+  </revision>
 </revisionlist>

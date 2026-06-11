@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:09:00 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 1990e6544b9f0db39c470b999, git10355
+  * pulls fix for haproxy build [bsc#1267998]
+
+-------------------------------------------------------------------
+Mon May 25 11:54:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- disabled -fhardened
+
+-------------------------------------------------------------------
 Thu Apr  9 07:31:15 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, 0cc1f282d5bc63745cb3b873c, git10254
