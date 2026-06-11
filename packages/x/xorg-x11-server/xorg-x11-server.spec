@@ -650,7 +650,7 @@ fi
 %if 0%{?build_suid_wrapper} == 1
 %files wrapper
 %defattr(-,root,root)
-%attr(4755,root,root) %{suid_wrapper_dir}/Xorg.wrap
+%verify(not mode) %attr(4755,root,root) %{suid_wrapper_dir}/Xorg.wrap
 %endif
 
 %files extra

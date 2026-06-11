@@ -4448,4 +4448,12 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * DRI2 DRIGetBuffers/DRIGetBuffersWithFormat Out-Of-Bounds Write (CVE-2026-XXXX9, bsc#1266302)</comment>
     <requestid>1356612</requestid>
   </revision>
+  <revision rev="451" vrev="7">
+    <srcmd5>aba2fb9a730ac32ec7e9c28a68fde097</srcmd5>
+    <version>21.1.21</version>
+    <time>1781191531</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358311</requestid>
+  </revision>
 </revisionlist>

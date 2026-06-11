@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun  3 10:23:18 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add missing %verify(not mode) (boo#1263098).
+
+-------------------------------------------------------------------
 Tue May 26 13:38:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
