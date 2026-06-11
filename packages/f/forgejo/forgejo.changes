@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:13:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to 15.0.3:
+  + fix: prevent stored XSS in user display name on Actions page
+  + fix: LFS locks must belong to the intended repo, port from Gitea
+  + fix: prevent unauthorized access to draft releases via API
+  + fix: prevent writes to OpenID visibility which may affect other users
+  + fix: prevent viewing private PRs that are linked to public issues on public projects
+  + fix: do not migrate confidential issues and internal notes from Gitlab
+  + fix: improve visibility of mismatched repository & package visibility
+  + fix: display the actions trust management panel on merged and closed pull requests
+  + fix(ui): improve contrast of checkboxes in markup
+  + fix(ui): hide some disallowed actions that lead to 404 errors in archived repos
+  + fix(ui): do not clip overflow in workflow dispatch menu
+  + fix: show the actions trust management panel when runs from trusted users are pending approval
+  + fix: always display the pull request merge box if there are actions pending approval
+  + fix(ui): fix typo in issue sort dropdown; relevance was misnamed as relevency
+  + fix: do not hide previous attempts without task for latest attempt
+  + fix(ui): use URL query escaping for SSH key verification reload token link
+  + fix(doctor): ensure the doctor runs with the same settings.AppPath as Forgejo
+  + fix: make email token extraction case-insensitive
+  + fix: cancel dependent jobs when rerunning jobs
+  + fix: check quota in LFS uploads against the repository owner, not operating user
+  + fix: load repo language for converting to api struct
+  + fix: workflow with pull_request trigger and path filter not run when merging
+  + fix: update statuses in phases to prevent out of order updates from stalling workflows
+  + fix: return 404 instead of 500 for non-existing SHA in commit status endpoint
+  + fix(issue-search): single exclude query was erroneosly considered as must
+  + fix: remove link to artefacts that have expired
+  + fix: wipe run artifacts before rerun
+
+-------------------------------------------------------------------
+Sun Jun  7 00:43:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- apparmor profile: allow reading of credential files. This fixes
+  migration of private repositories
+
+-------------------------------------------------------------------
 Fri Jun  5 00:57:41 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 15.0.2:
