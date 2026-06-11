@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 11 04:59:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.0:
+  * feat(qemu): add QEMU_NET_CIDR to override SLIRP internal
+    network (#2564)
+  * ci: remove stale wolfi-presubmit package matrix entries (#2566)
+  * chore(source): allow GitHub verified signatures (#2565)
+  * fix(renovate): bump git-checkout regardless of tag if there is
+    only one (#2562)
+
+-------------------------------------------------------------------
 Mon Jun 08 04:47:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.52.1:
