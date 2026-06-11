@@ -17,7 +17,7 @@
 
 
 Name:           xournalpp
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Notetaking software designed around a tablet
 License:        GPL-2.0-or-later
