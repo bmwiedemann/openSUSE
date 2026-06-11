@@ -1386,4 +1386,12 @@
     <comment>- Add perl(Parse::RecDescent) to perl-biber requirements (boo#1265577)</comment>
     <requestid>1354018</requestid>
   </revision>
+  <revision rev="117" vrev="120">
+    <srcmd5>e9cfdc14bfb952c83a124e83218e4ac0</srcmd5>
+    <version>unknown</version>
+    <time>1781191545</time>
+    <user>anag_factory</user>
+    <comment>- Skip verification of the mode of the public binary (boo#1263098)</comment>
+    <requestid>1358538</requestid>
+  </revision>
 </revisionlist>

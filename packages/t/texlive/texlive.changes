@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:12:28 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Skip verification of the mode of the public binary (boo#1263098)
+
+-------------------------------------------------------------------
 Tue May 19 12:29:21 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add perl(Parse::RecDescent) to perl-biber requirements (boo#1265577) 

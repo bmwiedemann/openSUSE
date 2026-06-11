@@ -5754,7 +5754,7 @@ fi
 %{_bindir}/kpsestat
 %{_bindir}/kpsewhich
 %{_bindir}/mktexlsr
-%attr(2755,root,%{texgrp}) %{_libexecdir}/mktex/public
+%verify(not mode) %attr(2755,root,%{texgrp}) %{_libexecdir}/mktex/public
 %{_libexecdir}/mktex/*tex*
 
 %files l3build-bin
