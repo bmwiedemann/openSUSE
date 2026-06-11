@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Jun 05 05:45:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.20.0:
+  * fix(analytics): change customer_id to customer_name in PostHog
+    properties (#5031)
+  * fix: update vulnerable dependencies and pin base image digests
+    (#5028)
+  * feat(analytics): add PostHog analytics backend with image_build
+    event (#5016)
+  * chore(deps): Update module github.com/containerd/containerd/v2
+    to v2.2.4 [SECURITY] (#5027)
+  * build(deps): bump renovatebot/github-action from 46.1.13 to
+    46.1.14 (#5018)
+  * build(deps): bump github.com/in-toto/in-toto-golang from 0.9.0
+    to 0.11.0 (#5015)
+  * chore(deps): Update module sigs.k8s.io/gateway-api to v1.5.1
+    (#5014)
+  * chore(deps): Update golang-stdlib-extensions (#5010)
+  * revert: downgrade github.com/go-git/go-git/v5 to v5.16.5
+    (Okteto 3.18 baseline) (#5011)
+  * build(deps): bump renovatebot/github-action from 46.1.12 to
+    46.1.13 (#5008)
+  * chore(deps): Update module github.com/docker/cli to
+    v29.4.0+incompatible (#5009)
+  * chore(deps): Update module
+    github.com/santhosh-tekuri/jsonschema/v6 to v6.0.2 (#5007)
+  * build(deps): bump renovatebot/github-action from 46.1.11 to
+    46.1.12 (#5005)
+
+-------------------------------------------------------------------
 Thu May 07 11:38:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.19.0:
