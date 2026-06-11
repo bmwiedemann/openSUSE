@@ -20,6 +20,7 @@ Name:           open-vmdk
 Version:        0.3.12
 Release:        0
 Summary:        Tools to create OVA files from raw disk images
+# Legal-Review-Notice: pytest/configs/EULA.txt contains VMware proprietary EULA text, but it is only pytest test fixture data. It is not installed, not shipped in the binary RPM, and is not required for building or running open-vmdk/vmdk-tools. The actual package code is licensed under Apache-2.0.
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/vmware/open-vmdk
