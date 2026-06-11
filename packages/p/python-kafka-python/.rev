@@ -110,4 +110,41 @@
 - Less globs in %files.</comment>
     <requestid>1159168</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>63554cdfd60e3440c2644f575009b648</srcmd5>
+    <version>2.3.2</version>
+    <time>1781191786</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.3.2 (bsc#1268081, CVE-2026-10142, bsc#1268082, CVE-2026-10143):
+  * kafka.conn: Improve error handling for sasl authenticate
+    mechanisms
+  * kafka.net: Validate SASL/SCRAM iterations (#3026)
+  * KafkaProtocol: validate network frame size (backport of #3019)
+  * Clear _callbacks/_errbacks list when future is_done to avoid
+    reference cycles (#2891)
+2.3.1:
+  * Fix TaggedFields value encoding; add test coverage (#2725)
+  * Fix zstd multi-frame decompression failure (#2717)
+  * Fix KeyError in KafkaConsumer.committed() (#2710)
+  * Fix VarInt/VarLong encoding; move tests to test/protocol/ (#2706)
+  * Fix Fetcher._fetch_offsets_by_times retry handling (#2833)
+  * Fixes to support integration testing with external KAFKA_URI
+    (#2838)
+  * Minor py2 fixes: consumer integration test; dont pip install
+    python-snappy
+2.3.0:
+  # CLI
+  * python -m cli interfaces for kafka.admin, kafka.consumer, kafka.producer (#2650)
+  # Producer
+  * KIP-654: Abort transaction with pending data with
+    TransactionAbortedError (#2662)
+  * KafkaProducer: Handle UnknownProducerIdError (#2663)
+  * KIP-467: Augment ProduceResponse error messaging for specific
+    culprit records (#2661)
+  # Consumer
+  * KIP-345: Consumer group static membership (#2625)
+  * KIP-207: Add ListOffsetsRequest v5 / handle
+    OffsetNotAvailableError (#2657)</comment>
+    <requestid>1358696</requestid>
+  </revision>
 </revisionlist>

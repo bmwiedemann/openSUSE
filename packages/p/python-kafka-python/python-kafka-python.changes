@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:09:52 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.3.2 (bsc#1268081, CVE-2026-10142, bsc#1268082, CVE-2026-10143):
+  * kafka.conn: Improve error handling for sasl authenticate
+    mechanisms
+  * kafka.net: Validate SASL/SCRAM iterations (#3026)
+  * KafkaProtocol: validate network frame size (backport of #3019)
+  * Clear _callbacks/_errbacks list when future is_done to avoid
+    reference cycles (#2891)
+2.3.1:
+  * Fix TaggedFields value encoding; add test coverage (#2725)
+  * Fix zstd multi-frame decompression failure (#2717)
+  * Fix KeyError in KafkaConsumer.committed() (#2710)
+  * Fix VarInt/VarLong encoding; move tests to test/protocol/ (#2706)
+  * Fix Fetcher._fetch_offsets_by_times retry handling (#2833)
+  * Fixes to support integration testing with external KAFKA_URI
+    (#2838)
+  * Minor py2 fixes: consumer integration test; dont pip install
+    python-snappy
+2.3.0:
+  # CLI
+  * python -m cli interfaces for kafka.admin, kafka.consumer, kafka.producer (#2650)
+  # Producer
+  * KIP-654: Abort transaction with pending data with
+    TransactionAbortedError (#2662)
+  * KafkaProducer: Handle UnknownProducerIdError (#2663)
+  * KIP-467: Augment ProduceResponse error messaging for specific
+    culprit records (#2661)
+  # Consumer
+  * KIP-345: Consumer group static membership (#2625)
+  * KIP-207: Add ListOffsetsRequest v5 / handle
+    OffsetNotAvailableError (#2657)
+  * Fetcher: Add missing argument in debug log (#2665)
+  # AdminClient
+  * KIP-430: Return Authorized Operations in Describe Responses (#2656)
+  * Add send_request() and send_requests() to KafkaAdminClient (#2649)
+  # Maintenance
+  * Remove old/unused kafka.protocol.pickle (#2653)
+  * Switch protocol code to getattr/setattr from dict (#2654)
+  * Drop unused imports (#2651)
+
+Full changelog: https://kafka-python.readthedocs.io/en/master/changelog.html
+
+- Drop not needed patches:
+  * remove-mock.patch
+  * slightly-patch-out-six.patch
+  * python-311.patch
+
+-------------------------------------------------------------------
 Tue Mar 19 04:01:27 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch slightly-patch-out-six.patch:

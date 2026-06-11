@@ -1,7 +1,7 @@
 #
 # spec file for package python-kafka-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,12 @@
 
 
 Name:           python-kafka-python
-Version:        2.0.2
+Version:        2.3.2
 Release:        0
 Summary:        Pure Python client for Apache Kafka
 License:        Apache-2.0
-URL:            https://github.com/mumrah/kafka-python
-Source:         https://files.pythonhosted.org/packages/source/k/kafka-python/kafka-python-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/dpkp/kafka-python/master/servers/0.11.0.3/resources/zookeeper.properties
-Source2:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/conftest.py
-Source3:        fixtures.py
-Source4:        https://raw.githubusercontent.com/dpkp/kafka-python/master/test/service.py
-# PATCH-FIX-OPENSUSE Remove use of mock module
-Patch0:         remove-mock.patch
-# PATCH-FIX-UPSTREAM fix tests for py3.11 gh#dpkp/kafka-python#2358
-Patch1:         python-311.patch
-# PATCH-FIX-OPENSUSE Remove circular imports involving vendored modules
-Patch2:         slightly-patch-out-six.patch
+URL:            https://github.com/dpkp/kafka-python
+Source:         https://github.com/dpkp/kafka-python/archive/%version.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -46,6 +36,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-snappy}
 BuildRequires:  %{python_module xxhash}
@@ -61,11 +52,10 @@ is also supported for message sets.
 
 %prep
 %autosetup -p1 -n kafka-python-%{version}
-mkdir -p servers/0.11.0.2/resources/
-cp %{SOURCE1} servers/0.11.0.2/resources/
-
-cp %{SOURCE2} %{SOURCE3} %{SOURCE4} test/
-touch test/__init__.py
+# Do not distribute tests
+sed -i 's/exclude = ."test"./exclude = ["test*"]/' pyproject.toml
+# remove all shebang from non-executable scripts
+find . -name "*.py" -exec sed -i '/#!\/usr\/bin\/env python/d'  {} \;
 
 %build
 %pyproject_wheel
@@ -75,9 +65,9 @@ touch test/__init__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# test_kafka_producer_gc_cleanup is sometimes off by 1
-# test_send broken with Python 3.12
-%pytest -rs -k 'not (test_kafka_consumer_offsets_for_time_old or test_kafka_producer_gc_cleanup or test_send)'
+# python-crc32c not available
+donttest="test_crc32c[None]"
+%pytest test -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE
