@@ -5555,6 +5555,10 @@ unsorted:
   - ghc-cryptohash-sha256-doc 
   - ghc-cryptohash-sha256-prof 
   - ghc-crypton 
+  - ghc-crypton-conduit 
+  - ghc-crypton-conduit-devel 
+  - ghc-crypton-conduit-doc 
+  - ghc-crypton-conduit-prof 
   - ghc-crypton-connection 
   - ghc-crypton-connection-devel 
   - ghc-crypton-connection-doc 
