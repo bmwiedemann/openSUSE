@@ -4383,4 +4383,13 @@
   * Fix a typo + follow symlinks in alljava</comment>
     <requestid>1356655</requestid>
   </revision>
+  <revision rev="519" vrev="1">
+    <srcmd5>ac6d842e76707ad719bec712a5107b50</srcmd5>
+    <version>84.87+git20260610.3b5a868c</version>
+    <time>1781191512</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260610.3b5a868c:
+  * Add missing &quot;=&quot; in alljava.csh (boo#1267423)</comment>
+    <requestid>1358507</requestid>
+  </revision>
 </revisionlist>
