@@ -1082,4 +1082,12 @@ Please do not fwd without building it, and checking new rpmlint warnings we may 
     <comment></comment>
     <requestid>1358149</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>afddcf46bdba4fa59698f3484514ad89</srcmd5>
+    <version>2.1.5</version>
+    <time>1781191585</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358585</requestid>
+  </revision>
 </revisionlist>

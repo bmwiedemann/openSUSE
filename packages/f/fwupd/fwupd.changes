@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:14:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.5:
+  + This release adds the following features:
+    - Allow overriding the detected CPU vendor to allow more self tests
+    - Allow updating the Windows-specific UEFI CA on dual boot machines
+    - Install the db updates on broken hardware with new firmware
+  + This release fixes the following bugs:
+    - Add tests for the vbe, upower, uefi-sbat, pci-bcr, mtd, gpio and msr plugins
+    - Check the array index in some runtime-generated code
+    - Claim the udev netlink backend before old libusb versions
+    - Expand the netlink socket buffer to prevent packet loss during event floods
+    - Fix a msgpack regression when updating some Huddly cameras
+    - Fix HID feature read buffer size in goodix-tp device probe
+    - Fix reproducible builds
+    - Fix the check-reboot-needed command
+    - Increase the i2c-hid re-bind delay for synaptics-rmi PID 0x96e7
+    - Parse the dell-dock marketing name in a more safe way
+    - Set a firmware size limit on intel-gsc aux and oprom firmware types
+    - Simplify the engine by only loading the config object once
+    - Use a cryptographically secure RNG when building the idle and inhibit IDs
+    - Use a more appropriate firmware maximum size for Huddly cameras
+  + This release adds support for the following hardware:
+    - Elan touchscreens
+
+-------------------------------------------------------------------
 Fri May 29 15:25:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.1.4:
