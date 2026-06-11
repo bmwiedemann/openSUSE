@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:51:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.20
+ * Enhancements
+  * Add --emit-index-url and --emit-find-links to uv export 
+  * Add --find-links support for uv pip list 
+  * Group executable install errors during uv python install 
+  * Use ICF in macOS release builds to reduce binary sizes 
+  * Always compute SHA256 for remote distributions 
+  * Add PyEmscripten platform (PEP 783) 
+  * Add Pyodide 2025 target triple 
+ * Preview features
+  * Add initial hidden uv upgrade command 
+  * Reject Git revisions in uv upgrade 
+  * Make preview features for commands have names that aren't ambiguous with the command 
+  * Respect --isolated in uv check 
+ * Configuration
+  * Recognize UV_NO_INSTALL_PROJECT, UV_NO_INSTALL_WORKSPACE, UV_NO_INSTALL_LOCAL 
+ * Performance
+  * Speed up discovery of large workspaces 
+ * Bug fixes
+  * Allow unknown preview flags with a warning again 
+  * Apply dependency exclusions to direct requirements 
+  * Avoid following external symlinks during cache clean 
+  * Avoid following symlinks during cache prune 
+  * Fix Git cache keys for worktrees and packed refs 
+  * Make resolver error handling iterative to avoid stack overflows 
+  * Pass VIRTUAL_ENV through cygpath inside fish on Windows 
+  * Rebuild explicit local directory tool installs 
+  * Validate egg top-level entries as identifiers 
+  * Continue tool uninstall after dangling receipts 
+  * Skip Unix-specific installation steps when cross-installing Windows Python distributions 
+ * Documentation
+  * Document --find-links caching behavior 
+  * Add a small section for malware checks 
+
+-------------------------------------------------------------------
 Thu Jun  4 09:13:42 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.18 
