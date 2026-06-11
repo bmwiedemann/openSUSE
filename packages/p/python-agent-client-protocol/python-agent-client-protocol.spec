@@ -17,7 +17,7 @@
 
 
 Name:           python-agent-client-protocol
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        A Python implement of Agent Client Protocol (ACP, by Zed Industries)
 License:        Apache-2.0

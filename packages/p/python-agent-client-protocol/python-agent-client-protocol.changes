@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:47:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.10.1:
+  - fix(examples): improve gemini.py CLI experience
+  - fix: assign receive-loop attributes before spawning recv task
+- Update to 0.10.0:
+  - fix: reject pending requests on EOF to prevent infinite hang
+  - feat: bump acp protocol to 0.12.2
+  - fix(schema): coerce string protocolVersion in
+    InitializeRequest
+  - fix: skip blank/whitespace lines in receive loop
+  - feat: add receive_timeout parameter to Connection class
+
+-------------------------------------------------------------------
 Tue Apr 14 14:58:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.9.0:
