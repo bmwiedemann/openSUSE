@@ -146,4 +146,41 @@
 - Update build and use requirements for this package.</comment>
     <requestid>1356059</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1690df6853d268b5d54f8c401abf730f</srcmd5>
+    <version>2.14.1</version>
+    <time>1781191624</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.14.1:
+  - Added
+    - /teleport slash command exposed over ACP, mirroring the TUI
+      command for IDE integrations
+    - Startup prompt to install a pending Vibe update before
+      continuing the session
+  - Fixed
+    - JetBrains IDEs no longer trigger a preemptive auth prompt
+      over ACP and no longer drop terminal arguments
+    - Initial ACP slash-command advertisement is delayed so Zed
+      registers commands like /help instead of rejecting them
+    - Built-in tool prompts no longer reference the removed
+      search_replace name and now point to edit
+- Update to 2.14.0:
+  - Added
+    - Image attachments via @-mentions in the TUI for
+      vision-capable models
+    - Session deletion, exposed over ACP as the session/delete
+      extension method
+    - Browser sign-in now shows a copyable fallback URL when the
+      browser does not open, so SSH and remote sessions can
+      complete onboarding
+    - Toast notification when a SKILL.md file fails to parse
+      instead of silently dropping the skill
+    - Trust prompt now proposes the git repository ancestor as
+      a trust target
+    - EnvironmentLayer in the layered configuration, populated
+      from VIBE_-prefixed environment variables
+  - Changed
+    - New tool-call format for read and the file edit tool</comment>
+    <requestid>1358613</requestid>
+  </revision>
 </revisionlist>
