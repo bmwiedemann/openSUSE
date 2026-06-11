@@ -1,0 +1,239 @@
+From 601854d970f2c2e3f40d4a5c43acf1d816f4728f Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 11 Jun 2026 12:01:43 +1000
+Subject: [PATCH] Remove six and Python 2 compatibility code
+
+Now that Python 3.4 is the lowest supported version, we can remove a
+large amount of code that support versions before it, as well as use of
+six, as well as the entire _compat module. Drive-by removing the
+pkg_resources check from setup.py since setuptools 39 is now ten years
+old.
+---
+ setup.cfg            |  3 ---
+ setup.py             | 10 --------
+ wirerope/_compat.py  | 13 ----------
+ wirerope/callable.py | 57 ++++++++++++--------------------------------
+ wirerope/rope.py     | 14 +++--------
+ wirerope/wire.py     |  8 +------
+ 6 files changed, 19 insertions(+), 86 deletions(-)
+ delete mode 100644 wirerope/_compat.py
+
+diff --git a/setup.cfg b/setup.cfg
+index 80dc8cf..2cd90a4 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -25,9 +25,6 @@ keywords = ring,methodtools,hack,method
+ [options]
+ packages = wirerope
+ install_requires=
+-    six>=1.11.0
+-    inspect2>=0.1.0;python_version<"3"
+-    singledispatch>=3.4.0.3;python_version<"3.4"
+ [options.extras_require]
+ test =
+     pytest>=4.6.7
+diff --git a/setup.py b/setup.py
+index cf5756f..b908cbe 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,13 +1,3 @@
+ import setuptools
+-from pkg_resources import get_distribution
+-
+-try:
+-    get_distribution("setuptools>=39.2.0")
+-except Exception as e:
+-    raise AssertionError(
+-        "Please upgrade setuptools by `pip install -U setuptools`: {}".format(
+-            e
+-        )
+-    )
+ 
+ setuptools.setup()
+diff --git a/wirerope/_compat.py b/wirerope/_compat.py
+deleted file mode 100644
+index 7600f7e..0000000
+--- a/wirerope/_compat.py
++++ /dev/null
+@@ -1,13 +0,0 @@
+-from __future__ import absolute_import
+-
+-import six
+-
+-import functools
+-if not hasattr(functools, 'singledispatch'):
+-    import singledispatch
+-    functools.singledispatch = singledispatch.singledispatch
+-
+-if six.PY3:
+-    import inspect
+-else:
+-    import inspect2 as inspect  # noqa
+diff --git a/wirerope/callable.py b/wirerope/callable.py
+index 73c3123..775dc82 100644
+--- a/wirerope/callable.py
++++ b/wirerope/callable.py
+@@ -1,9 +1,8 @@
+ from __future__ import absolute_import
+ 
++import inspect
+ import types
+-import six
+ from ._util import cached_property
+-from ._compat import inspect
+ 
+ __all__ = ('Callable', )
+ 
+@@ -135,27 +134,16 @@ def is_boundmethod(self):
+             return False
+         new_bound = self.wrapped_object.__get__(object())
+         try:
+-            if six.PY2:
+-                return new_bound is self.wrapped_object
+-            else:
+-                return type(new_bound) is type(self.wrapped_object)  # noqa
++            return type(new_bound) is type(self.wrapped_object)  # noqa
+         except Exception:
+             return False
+ 
+-    if six.PY2:
+-        @property
+-        def is_unboundmethod(self):
+-            return type(self.wrapped_object) is type(Callable.__init__)  # noqa
+-
+     @cached_property
+     def is_descriptor(self):
+         if self.is_boundmethod:
+             return False
+         is_descriptor = type(self.wrapped_object).__get__ \
+             is not types.FunctionType.__get__  # noqa
+-        if six.PY2:
+-            is_descriptor = is_descriptor and \
+-                not (self.is_unboundmethod or self.is_boundmethod)
+         return is_descriptor
+ 
+     @cached_property
+@@ -168,24 +156,11 @@ def is_property(self):
+             (self.is_descriptor and self.descriptor.detect_property(
+                 _reagent, _Reagent))
+ 
+-    if six.PY34:
+-        @cached_property
+-        def is_barefunction(self):
+-            cc = self.wrapped_callable
+-            method_name = cc.__qualname__.split('<locals>.')[-1]
+-            if method_name == cc.__name__:
+-                return True
+-            return False
+-    else:
+-        @cached_property
+-        def is_barefunction(self):
+-            # im_class does not exist at this point
+-            if self.is_descriptor:
+-                return False
+-            if six.PY2:
+-                if self.is_unboundmethod:
+-                    return False
+-            return not (self.is_membermethod or self.is_classmethod)
++    @cached_property
++    def is_barefunction(self):
++        cc = self.wrapped_callable
++        method_name = cc.__qualname__.split('<locals>.')[-1]
++        return method_name == cc.__name__
+ 
+     @cached_property
+     def is_member(self):
+@@ -196,11 +171,10 @@ def is_member(self):
+         :note: The test is partially based on the first parameter name.
+             The test result might be wrong.
+         """
+-        if six.PY34:
+-            if self.is_barefunction:
+-                return False
+-            if not self.is_descriptor:
+-                return True
++        if self.is_barefunction:
++            return False
++        if not self.is_descriptor:
++            return True
+         return self.first_parameter is not None \
+             and self.first_parameter.name == 'self'
+ 
+@@ -230,11 +204,10 @@ def is_classmethod(self):
+         """
+         if isinstance(self.wrapped_object, classmethod):
+             return True
+-        if six.PY34:
+-            if self.is_barefunction:
+-                return False
+-            if not self.is_descriptor:
+-                return False
++        if self.is_barefunction:
++            return False
++        if not self.is_descriptor:
++            return False
+ 
+         return self.first_parameter is not None \
+             and self.first_parameter.name == 'cls'
+diff --git a/wirerope/rope.py b/wirerope/rope.py
+index aba90b1..16aa468 100644
+--- a/wirerope/rope.py
++++ b/wirerope/rope.py
+@@ -1,10 +1,9 @@
+ """:mod:`wirerope.rope` --- Wire access dispatcher for descriptor type.
+ =======================================================================
+ """
+-import six
++import functools
+ from .callable import Callable
+ from .wire import descriptor_bind
+-from ._compat import functools
+ 
+ __all__ = 'WireRope', 'RopeCore'
+ 
+@@ -159,15 +158,8 @@ def __call__(self, function):
+         if cw.is_barefunction or cw.is_boundmethod:
+             rope_class = self.callable_function_rope
+             wire_class_call = self.wire_class.__call__
+-            if six.PY3:
+-                if wire_class_call.__qualname__ == 'type.__call__':
+-                    rope_class = self.function_rope
+-            else:
+-                # method-wrapper test for CPython2.7
+-                # im_class == type test for PyPy2.7
+-                if type(wire_class_call).__name__ == 'method-wrapper' or \
+-                        wire_class_call.im_class == type:
+-                    rope_class = self.function_rope
++            if wire_class_call.__qualname__ == 'type.__call__':
++                rope_class = self.function_rope
+         elif cw.is_property:
+             rope_class = self.property_rope
+         else:
+diff --git a/wirerope/wire.py b/wirerope/wire.py
+index 974d601..1ee3290 100644
+--- a/wirerope/wire.py
++++ b/wirerope/wire.py
+@@ -1,10 +1,9 @@
+ """:mod:`wirerope.wire` --- end-point instant for each bound method
+ ===================================================================
+ """
+-import six
++import functools
+ import types
+ from .callable import Descriptor
+-from ._compat import functools
+ 
+ __all__ = 'Wire',
+ 
+@@ -44,11 +43,6 @@ def __init__(self, rope, owner, binding):
+             func = self._callable.wrapped_object.__get__
+             if self._callable.is_property:
+                 wrapped = functools.partial(func, *binding)
+-                if six.PY2:
+-                    # functools.wraps requires those attributes but
+-                    # py2 functools.partial doesn't have them
+-                    wrapped.__module__ = owner.__module__
+-                    wrapped.__name__ = func.__name__
+                 self.__func__ = wrapped
+             else:
+                 self.__func__ = func(*binding)

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 02:28:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-six.patch:
+  * Drop use of six and Python 2 compat code.
+
+-------------------------------------------------------------------
 Mon Nov 10 08:35:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:

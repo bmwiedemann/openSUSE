@@ -51,4 +51,13 @@
   * drop python 2 support</comment>
     <requestid>1316830</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>d7eb9fc28bb46ac0fd9c7e31300c28e3</srcmd5>
+    <version>1.0.0</version>
+    <time>1781191661</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-six.patch:
+  * Drop use of six and Python 2 compat code.</comment>
+    <requestid>1358625</requestid>
+  </revision>
 </revisionlist>
