@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  9 20:52:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.482.0 (3.482)
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+
+  * Verilog-Perl 3.482 2024-01-22
+  ***   Support IEEE 1800-2023 language keywords. (No other 2023 support yet.)
+  ****  Fix t/03_spaces.t test for Debian (#1675). [Gregor Herrmann]
+  ****  Fix GCC 11 false free-nonheap-obj warning.
+
+-------------------------------------------------------------------
 Fri Sep  2 03:12:20 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.480

@@ -86,4 +86,17 @@
     <comment></comment>
     <requestid>1002188</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb70c162775644507067e05ec472f30b</srcmd5>
+    <version>3.482.0</version>
+    <time>1781191796</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.482.0 (3.482)
+   see /usr/share/doc/packages/perl-Verilog-Perl/Changes
+  * Verilog-Perl 3.482 2024-01-22
+  ***   Support IEEE 1800-2023 language keywords. (No other 2023 support yet.)
+  ****  Fix t/03_spaces.t test for Debian (#1675). [Gregor Herrmann]
+  ****  Fix GCC 11 false free-nonheap-obj warning.</comment>
+    <requestid>1358716</requestid>
+  </revision>
 </revisionlist>

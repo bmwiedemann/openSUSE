@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Verilog-Perl
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,30 @@
 
 %define cpan_name Verilog-Perl
 Name:           perl-Verilog-Perl
-Version:        3.480
+Version:        3.482.0
 Release:        0
+# 3.482 -> normalize -> 3.482.0
+%define cpan_version 3.482
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Verilog language utilities and parsing
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/W/WS/WSNYDER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/W/WS/WSNYDER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Digest::SHA)
 BuildRequires:  perl(Pod::Usage) >= 1.34
 Requires:       perl(Pod::Usage) >= 1.34
+Provides:       perl(Verilog::EditFiles) = %{version}
+Provides:       perl(Verilog::Getopt) = %{version}
+Provides:       perl(Verilog::Language) = %{version}
+Provides:       perl(Verilog::Netlist) = %{version}
+Provides:       perl(Verilog::Std) = %{version}
+Provides:       perl(process)
+Provides:       perl(semaphore)
+Provides:       perl(std)
+%undefine       __perllib_provides
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  bison
@@ -41,8 +53,9 @@ BuildRequires:  gcc-c++
 Verilog language utilities and parsing
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
