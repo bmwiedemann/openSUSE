@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun  8 02:07:50 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
+
+- Fix _service info
+
+-------------------------------------------------------------------
 Fri May 29 07:50:16 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Build only on x86_64 as supported NPU are Intel based only
