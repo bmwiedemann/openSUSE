@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jun 05 20:56:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 48.1+6:
+  + metainfo: Update the help URL
+  + Call parent class on state event
+  + Updated translations.
+- Use meson_test macro instead of manual call to validate desktop
+  file.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:28:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

@@ -286,4 +286,17 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342945</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>54b15f129b32f9e20830fa0febef137f</srcmd5>
+    <version>48.1+6</version>
+    <time>1781195077</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.1+6:
+  + metainfo: Update the help URL
+  + Call parent class on state event
+  + Updated translations.
+- Use meson_test macro instead of manual call to validate desktop
+  file.</comment>
+    <requestid>1358737</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           five-or-more
-Version:        48.1
+Version:        48.1+6
 Release:        0
 Summary:        "Five or More" Game for GNOME
 License:        GPL-2.0-or-later
@@ -77,7 +77,7 @@ This package contains the help documentation for Five or More.
 %fdupes %{buildroot}/%{_datadir}
 
 %check
-desktop-file-validate $RPM_BUILD_ROOT%{_datadir}/applications/*.desktop
+%meson_test
 
 %files
 %license COPYING
