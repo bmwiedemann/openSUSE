@@ -33,7 +33,7 @@
 %endif
 
 Name:           nlopt%{?psuffix}
-Version:        2.10.1
+Version:        2.11.0
 Release:        0
 Summary:        A library for nonlinear optimization
 License:        LGPL-2.1-or-later
@@ -187,7 +187,7 @@ pushd ../${PYTHON}_build
 %files -n %{pname}-devel
 %license COPYING
 %doc AUTHORS NEWS.md README.md TODO
-%{_includedir}/*
+%{_includedir}/%{pname}.*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/%{pname}.pc
 %{_libdir}/cmake/%{pname}/
@@ -199,7 +199,7 @@ pushd ../${PYTHON}_build
 %license COPYING
 %{python_sitearch}/nlopt-%{version}*.*-info/
 %{python_sitearch}/nlopt.py
-%{python_sitearch}/*.so
+%{python_sitearch}/_nlopt.so
 
 %files -n octave-nlopt_optimize
 %license COPYING
