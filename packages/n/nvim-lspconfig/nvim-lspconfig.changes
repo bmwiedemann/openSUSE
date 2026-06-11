@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 10 20:32:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.10.0:
+  + fix: logic bugs found by AI
+  + feat(dexter): add dexter LSP for large Elixir codebases
+  + feat: improve emmylua_ls
+  + feat: add support for hare-lsp
+  + docs(emmylua_ls): fix config example
+  + feat(harper_ls): add tex filetype
+  + docs(emmylua_ls): fix docstring
+  + docs: fix broken helptag
+  + Attach zizmor languange server to action.yaml
+  + feat: update oxfmt and oxlint to detect vite plus
+  + feat: add shuck language server
+  + fix(ruby-lsp): reuse_client issue in ruby lsp to avoid spawning extra LSP instances
+  + fix(oxc): fix oxlint and oxfmt vite plus config search
+  + fix(roslyn_ls): remove unnecessary code and recommend maintained plugin for razor
+  + docs(roslyn_ls): add instructions to install the server as a dotnet tool
+  + feat: slang-server
+  + fix(flow): resolve project-local binary before npx fallback
+  + fix(rescript): default parameters do not enable incremental typechecking
+  + feat(jls): added jls config
+  + feat(oxlint): check if tsgolint bin exists inside project
+  + feat(gopls): semantic tokens enabled by default on client side
+  + feat: cqlls
+  + fix(emmylua_ls): move settings under emmylua section
+
+-------------------------------------------------------------------
 Wed May 27 08:51:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.9.0:
