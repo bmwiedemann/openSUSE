@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:33:20 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 11.0.15:
+  + fix: LFS locks must belong to the intended repo, port from Gitea
+  + fix: prevent unauthorized access to draft releases via API
+  + fix: prevent writes to OpenID visibility which may affect other users
+  + fix: prevent viewing private PRs that are linked to public issues
+    on public projects
+- apparmor profile: allow reading of credential files. This fixes
+  migration of private repositories
+
+-------------------------------------------------------------------
 Fri Jun  5 01:14:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 11.0.14:

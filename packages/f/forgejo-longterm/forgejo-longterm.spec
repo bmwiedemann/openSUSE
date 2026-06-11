@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo-longterm
-Version:        11.0.14
+Version:        11.0.15
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -46,7 +46,6 @@ Source10:       forgejo.apparmor
 Source11:       forgejo.firewalld
 Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
-Source14:       node_modules.sums
 Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
 BuildRequires:  golang(API) >= 1.25

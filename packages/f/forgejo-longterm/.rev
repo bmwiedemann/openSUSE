@@ -182,4 +182,19 @@
   + Allow SSH mirroring and template customization in AppArmor profile (forwarded request 1357583 from rrahl0)</comment>
     <requestid>1357584</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1f0030e244eb833fa983dccd0d62492c</srcmd5>
+    <version>11.0.15</version>
+    <time>1781191785</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 11.0.15:
+  + fix: LFS locks must belong to the intended repo, port from Gitea
+  + fix: prevent unauthorized access to draft releases via API
+  + fix: prevent writes to OpenID visibility which may affect other users
+  + fix: prevent viewing private PRs that are linked to public issues
+    on public projects
+- apparmor profile: allow reading of credential files. This fixes
+  migration of private repositories (forwarded request 1358691 from rrahl0)</comment>
+    <requestid>1358692</requestid>
+  </revision>
 </revisionlist>
