@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpath-python
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-jsonpath-python
-Version:        1.0.6
+Version:        1.1.6
 Release:        0
 Summary:        A more powerful JSONPath implementation in modern Python
 License:        MIT
 URL:            https://github.com/zhangxianbing/jsonpath-python
-Source:         https://files.pythonhosted.org/packages/source/j/jsonpath-python/jsonpath-python-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
+Source:         https://files.pythonhosted.org/packages/source/j/jsonpath_python/jsonpath_python-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
 
@@ -46,7 +46,7 @@ Features
 * Support output modes: VALUE, PATH.
 
 %prep
-%autosetup -p1 -n jsonpath-python-%{version}
+%autosetup -p1 -n jsonpath_python-%{version}
 
 %build
 %pyproject_wheel
