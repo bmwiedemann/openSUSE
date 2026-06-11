@@ -21,8 +21,9 @@
 %define services  cert-renewer.target ssh-cert-renewer.timer ssh-cert-renewer@.timer cert-renewer@.timer ssh-cert-renewer.service ssh-cert-renewer@.service cert-renewer@.service
 %define pkg_name cli
 %define pkg_version %{version}
+
 Name:           step-cli
-Version:        0.30.4
+Version:        0.30.6
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0

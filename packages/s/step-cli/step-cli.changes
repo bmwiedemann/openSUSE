@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 10 20:58:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.30.6:
+  - bump for the build pipeline
+
+-------------------------------------------------------------------
+Wed Jun 10 18:55:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.30.5:
+  - Fix release workflow to work with immutable releases setting
+    (#1650)
+
+-------------------------------------------------------------------
 Wed Jun 10 07:38:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.30.4:
