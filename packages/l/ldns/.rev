@@ -440,4 +440,17 @@ Index: ldns-1.7.1.tar.gz.asc
 - ldns-1.8.4-swig-3.4.0.patch: removed, included upstream</comment>
     <requestid>1352409</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b0bdacdfce2117ed6054b4f8dc609e05</srcmd5>
+    <version>1.9.2</version>
+    <time>1781191600</time>
+    <user>anag_factory</user>
+    <comment>fixes soname issues with 1.9.1
+
+- Update to version 1.9.2
+  Insufficient verification that responses belong to a query
+  (CVE-2026-10846, bsc#1267670)
+- ldns.keyring: updated from https://nlnetlabs.nl/signing-keys/</comment>
+    <requestid>1358586</requestid>
+  </revision>
 </revisionlist>

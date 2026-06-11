@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:14:16 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.9.2
+  Insufficient verification that responses belong to a query
+  (CVE-2026-10846, bsc#1267670)
+- ldns.keyring: updated from https://nlnetlabs.nl/signing-keys/
+
+-------------------------------------------------------------------
 Fri May  8 22:43:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing tarball for 1.9.0 release.

@@ -19,7 +19,7 @@
 
 %define libname libldns3
 Name:           ldns
-Version:        1.9.0
+Version:        1.9.2
 Release:        0
 Summary:        A library for developing the Domain Name System
 License:        BSD-3-Clause
