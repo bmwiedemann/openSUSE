@@ -2392,4 +2392,20 @@ Needs to go together with libsemanage change</comment>
     <comment>fixes</comment>
     <requestid>1355167</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>a323d6afa57b331f617cd1477aecb4f3</srcmd5>
+    <version>20260605</version>
+    <time>1780920313</time>
+    <user>anag_factory</user>
+    <comment>policy update june</comment>
+    <requestid>1357545</requestid>
+  </revision>
+  <revision rev="162" vrev="2">
+    <srcmd5>fb6dc3d4dd3f68abfeecdd1333df7337</srcmd5>
+    <version>20260605</version>
+    <time>1781191534</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1358495</requestid>
+  </revision>
 </revisionlist>

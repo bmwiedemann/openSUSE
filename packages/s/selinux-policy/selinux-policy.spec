@@ -36,7 +36,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20260526
+Version:        20260605
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -767,8 +767,11 @@ SELinux policy targeted base module.
 %preInstall targeted
 %preMigration $1 targeted
 
-%posttrans targeted
+# move from %posttrans to %post fixes boo#1264463
+%post targeted
 %postMigration $1 targeted
+
+%posttrans targeted
 %postInstall $1 targeted
 exit 0
 
@@ -810,8 +813,11 @@ if [ "$1" -ne 1 ]; then
 fi
 
 
-%posttrans minimum
+# move from %posttrans to %post fixes boo#1264463
+%post minimum
 %postMigration $1 minimum
+
+%posttrans minimum
 %postInstallMinimum $1
 exit 0
 
@@ -846,8 +852,11 @@ SELinux policy mls base module.
 %preInstall mls
 %preMigration $1 mls
 
-%posttrans mls
+# move from %posttrans to %post fixes boo#1264463
+%post mls
 %postMigration $1 mls
+
+%posttrans mls
 %postInstall $1 mls
 
 %postun mls

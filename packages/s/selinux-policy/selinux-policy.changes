@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun  6 08:35:16 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- move %postMigration from %posttrans to %post to finish migration
+  and copy user/custom modules to /etc when zypper dup is aborted
+  due different package issue or semodu invocation (fixes boo#1264463)
+
+-------------------------------------------------------------------
+Fri Jun 05 13:22:02 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260605:
+  * Update dbus_role_template() with communication over unix dgram socket
+  * Allow staff user read nsfs files
+  * Allow staff user additional sandboxing permissions
+  * Dontaudit sa-update perfmon and sys_admin capabilities
+  * packit: Stop notifying martinpitt for Cockpit test failures
+  * Allow the kernel to execute also special files
+  * Bring back execmem permission for svirt_tcg_t
+  * Dontaudit tlp_t requesting dac_read_search (bsc#1265386)
+  * Leave content of virtqemud_use_execmem empty
+  * Dontaudit libvirt-daemons execmem
+  * Allow virtstoraged to setattr fixed disk devices
+  * Dontaudit ksmtuned dac_read_search and dac_override capabilities
+  * Remove unused hypervkvp_unit_file_t
+  * Allow mock create and use its private tmpfs files
+  * Allow samba-bgqd send to nmbd over a unix datagram socket
+  * Vibecode Gitlab CI smoke test for Leap 16.0+
+- Syncing with upstream rawhide selinux-policy up to:
+  * 443befa43872b63a5c1d7773fca159fda2abf772
+- Update embedded container-selinux version to commit:
+  * d3e0ce57e97c38e1403c0eb5a29b10d5d6dd82c6 (v2.249.0)
+
+-------------------------------------------------------------------
 Tue May 26 08:30:09 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260526:
