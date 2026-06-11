@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Tty
 Name:           perl-IO-Tty
-Version:        1.290.0
+Version:        1.310.0
 Release:        0
-# 1.29 -> normalize -> 1.290.0
-%define cpan_version 1.29
+# 1.31 -> normalize -> 1.310.0
+%define cpan_version 1.31
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Pseudo ttys and constants
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,6 +32,7 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 Provides:       perl(IO::Pty) = %{version}
 Provides:       perl(IO::Tty) = %{version}
+Provides:       perl(IO::Tty::Constant) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -73,6 +74,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc AI_POLICY.md ChangeLog README.md try
+%doc AI_POLICY.md ChangeLog CONTRIBUTING.md README.md SECURITY.md try
+%license LICENSE
 
 %changelog

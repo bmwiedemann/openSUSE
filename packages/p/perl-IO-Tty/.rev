@@ -289,4 +289,34 @@
       * PR #76, PR #79 - Fix diagnostic warnings being silently suppressed when</comment>
     <requestid>1353766</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fb202a9b70c14e18266ea5101d85aaa0</srcmd5>
+    <version>1.310.0</version>
+    <time>1781191554</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.310.0 (1.31)
+   see /usr/share/doc/packages/perl-IO-Tty/ChangeLog
+  1.31 2026-05-24 Todd Rinaldo &lt;toddr@cpan.org&gt;
+    Bug Fixes:
+      * GH #91, PR #94 - Fix v1.27 regression where _open_tty() always passed
+        O_NOCTTY, preventing make_slave_controlling_terminal() from acquiring
+        a controlling terminal via the POSIX-standard open-without-O_NOCTTY
+        mechanism (it was forced to fall through to an explicit TIOCSCTTY
+        ioctl). _open_tty() now takes an optional noctty flag (default 1 for
+        backward compatibility); make_slave_controlling_terminal() passes 0.
+      * GH #92, PR #93 - Fix openpty() detection on Fedora 33-34 / glibc
+        2.32-2.33 where LTO flags (-flto=auto) caused the libc-only compile
+        probe to falsely succeed, producing &quot;undefined symbol: openpty&quot; at
+        runtime. Try -lutil before libc; harmless on systems where openpty
+        lives in libc (glibc 2.34+, musl) and necessary where it doesn't.
+    Maintenance:
+      * PR #90 - Address CPANTS kwalitee issues: add LICENSE, SECURITY.md,
+        and CONTRIBUTING.md; add META `provides` for IO::Tty, IO::Pty, and
+        IO::Tty::Constant; use --format=ustar in TARFLAGS to prevent
+        PaxHeader entries in distribution tarballs.
+      * Clean up MANIFEST.SKIP: add #!include_default so ExtUtils::Manifest's
+        built-in skip list is in effect, drop five entries that duplicate
+        those defaults, and add a ^\.claude/ rule.</comment>
+    <requestid>1358547</requestid>
+  </revision>
 </revisionlist>
