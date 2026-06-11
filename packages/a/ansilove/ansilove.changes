@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 19:21:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.2
+  * Fix "Amiga Topaz 1" font selection from SAUCE metadata.
+  * Fix font table entry count to make topaz500+ reachable.
+
+-------------------------------------------------------------------
 Mon Mar 24 18:41:49 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.1

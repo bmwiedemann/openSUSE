@@ -1,8 +1,8 @@
 #
 # spec file for package ansilove
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2019-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           ansilove
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        ANSI and ASCII art to PNG converter
 License:        BSD-2-Clause
