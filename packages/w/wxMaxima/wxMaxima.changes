@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:59:58 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.06.1:
+  * Fix syntax errors caused by sending duplicate/consecutive
+    command delimiters to Maxima by filtering out delimiter-only
+    commands and correctly handling unicode non-breaking space
+    characters during ending checks.
+  * Fix a rare access violation (crash) when activating or
+    clicking on an EditorCell that has a null or detached group
+    cell pointer.
+  * Fix mouse capture lost warning messages by correctly marking
+    mouse capture loss events as handled in the table of contents
+    and worksheet.
+  * Fix the error status being immediately replaced by "awaiting
+    input" on the status bar and taskbar when Maxima encounters an
+    error.
+  * Fix layout recalculation of images and plots when window
+    height changes (e.g. at startup or on vertical resizing).
+  * Fix duplicate evaluation triggers (sending known answers
+    twice) when Maxima questions are received in multiple chunks.
+  * Fix scroll position tracking: call
+    ScrolledAwayFromEvaluation(true) when the user manually
+    scrolls so that the active cell is completely outside the
+    visible portion of the worksheet.
+  * Fix inserting a new cell (via hCaret) on large worksheets
+    causing the scroll range to shrink to the first screen and the
+    view to jump to the top.
+- Changes from version 26.06.0:
+  * Optimize drawing during mouse moves (bracket autohide): redraw
+    only the actual height of the cell, rather than drawing all
+    the way to the absolute bottom coordinate.
+  * Change the "Jump to first error" menu item to "Jump to last
+    error" and fix its implementation to scroll to the most recent
+    error cell.
+  * Fix handling of to_lisp() and (to-maxima).
+  * Fix redundant Maxima process spawns when opening worksheets
+    and in batch mode.
+  * A Diff Viewer that compares two wxmx files from the same
+    origin that were saved with this wxMaxima version or newer.
+  * Fix startup keyboard focus: The worksheet now correctly gains
+    focus on application start.
+  * New wx_matrix() command for advanced matrix formatting (lines,
+    headers, custom brackets).
+  * Persistent matrix formatting: Style flags are now saved within
+    the matrix object.
+  * Major XML performance optimization: Faster worksheet loading
+    via hash-based attribute filtering.
+  * Improved XML integrity: Automated validation tests to prevent
+    duplicate attributes and malformed files.
+  * Windows Accessibility: Fixed several bugs in the wxAccessible
+    implementation for better screen reader support.
+  * Script rendering: Fixed issues where complex
+    subscripts/superscripts would flatten into standard
+    subscripts.
+  * High-DPI: Optimized SVG rendering and resolved redundant
+    resource requests.
+  * Editor performance: Optimized drawing by rendering only
+    visible text tokens.
+  * Non-interactive mode: Automated tests now skip most blocking
+    modal dialogues.
+  * The log now contains errors maxima encountered.
+  * Many improvements to the Doxygen documentation.
+  * Fix the cursor position after autocompletion (#2090).
+  * Fix XML for saving as wxmx, when Maxima warnings are displayed
+    (#2092).
+  * Fix XML output for definite integrals. It was saved without
+    the limits.
+  * Resolved a Crash on encountering some integrals (#2095)
+  * A complete overhaul of the worksheet's layout and display
+    engine.
+  * Opening <file.wxmx>#UUID opens the file and scrolls to the
+    Group with that UUID
+  * Many stability improvements, most of these AI-driven (#2072,
+    #2061)
+  * The size of subscripts is now calculated correctly
+  * The table of contents can now show section numbers
+  * Massive improvement of the search within the worksheet
+  * Ctrl+G now interrupts the current command again on MS windows
+  * Reduced the time windows in which wxMaxima blocks because it
+    is processing data
+  * Fixed a deadlock when closing the application while background
+    autocompletion tasks were running.
+  * Fixed a bug where finding an item in an output cell didn't
+    trigger a scroll to the found item.
+  * Fixed a bug where text from long output cells couldn't be
+    selected if the beginning of the cell was scrolled out of view
+    (#2069)
+  * MS Windows: The "maxima is running" indicator should now work
+    correctly
+  * HI-DPI improvements
+  * A few Autocompletion fixes
+  * Better SVGZ support
+  * Some fixes for selection of output
+  * Improved MathML and RTF output
+  * Big find-and-replace functionality additions
+  * A compiler supporting C++20 is required now
+  * Files opened by double-clicking now have a consistent layout
+  * Added automatic tests and repaired others.
+
+-------------------------------------------------------------------
 Mon May  4 19:32:57 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 26.05.0:
