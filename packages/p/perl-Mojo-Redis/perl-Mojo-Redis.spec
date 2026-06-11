@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojo-Redis
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,32 @@
 
 %define cpan_name Mojo-Redis
 Name:           perl-Mojo-Redis
-Version:        3.29
+Version:        3.310.0
 Release:        0
+# 3.31 -> normalize -> 3.310.0
+%define cpan_version 3.31
 License:        Artistic-2.0
 Summary:        Redis driver based on Mojo::IOLoop
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Mojolicious) >= 8.50
-BuildRequires:  perl(Protocol::Redis::Faster) >= 0.002
+BuildRequires:  perl(Mojolicious) >= 8.500
+BuildRequires:  perl(Protocol::Redis::Faster) >= 0.2
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(Mojolicious) >= 8.50
-Requires:       perl(Protocol::Redis::Faster) >= 0.002
+Requires:       perl(Mojolicious) >= 8.500
+Requires:       perl(Protocol::Redis::Faster) >= 0.2
+Provides:       perl(Mojo::Redis) = %{version}
+Provides:       perl(Mojo::Redis::Cache)
+Provides:       perl(Mojo::Redis::Connection)
+Provides:       perl(Mojo::Redis::Connection::Offline)
+Provides:       perl(Mojo::Redis::Cursor)
+Provides:       perl(Mojo::Redis::Database)
+Provides:       perl(Mojo::Redis::PubSub)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -53,7 +64,7 @@ useful, annoying or if you simply find bugs. Feedback can also be sent to
 'jhthorsen@cpan.org'.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

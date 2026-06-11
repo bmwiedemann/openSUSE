@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:39:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.310.0 (3.31)
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+
+  3.31 2026-06-04T10:49:00
+   - Allow TLS-related query params in Redis URL #80 #84
+     Contributor: Alexander Karelas, hazemkmammu
+
+  3.30 2026-06-04T10:37:00
+   - Fix connecting through sentinels #78
+     Contributor: Jan "Yenya" Kasprzak
+
+-------------------------------------------------------------------
 Thu Feb 24 03:08:29 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.29

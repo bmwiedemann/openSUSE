@@ -56,4 +56,19 @@
     <comment></comment>
     <requestid>960194</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9c902e2e0bc1b63b8928f8f60854d9a</srcmd5>
+    <version>3.310.0</version>
+    <time>1781191791</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.310.0 (3.31)
+   see /usr/share/doc/packages/perl-Mojo-Redis/Changes
+  3.31 2026-06-04T10:49:00
+   - Allow TLS-related query params in Redis URL #80 #84
+     Contributor: Alexander Karelas, hazemkmammu
+  3.30 2026-06-04T10:37:00
+   - Fix connecting through sentinels #78
+     Contributor: Jan &quot;Yenya&quot; Kasprzak</comment>
+    <requestid>1358713</requestid>
+  </revision>
 </revisionlist>
