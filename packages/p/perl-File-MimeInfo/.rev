@@ -72,4 +72,27 @@
     <comment></comment>
     <requestid>1174466</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a5744af77d6fa24edf440a3031b8b8f9</srcmd5>
+    <version>0.370.0</version>
+    <time>1781191798</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+  0.37  2026-05-19
+   - Honor XDG_DATA_HOME precedence for extension globs, so a glob entry
+     from a higher-priority data dir overrides one from a lower-priority
+     dir instead of being silently shadowed (#62, liujianqiang-niu).
+   - Fix open() precedence and stale filehandle bugs in
+     File::MimeInfo::default and File::MimeInfo::Magic.
+   - Don't die when @ARGV contains bytes that are invalid in the current
+     locale; decode leniently and continue.
+   - Refactor resolvelink to use Cwd::abs_path instead of a hand-rolled
+     loop.
+   - mimetype/mimeopen: quote filenames in diagnostic output via
+     B::cstring so unusual characters render unambiguously.
+  0.36  2026-01-11
+   - Move to Codeberg</comment>
+    <requestid>1358719</requestid>
+  </revision>
 </revisionlist>

@@ -7,5 +7,4 @@ This package only uses the globs file. No real magic checking is used. The File:
 If you want to determine the mimetype of data in a memory buffer you should use File::MimeInfo::Magic in combination with IO::Scalar.
 
 This module loads the various data files when needed. If you want to hash data earlier see the 'rehash' methods below.</description>
-  <devel project="devel:languages:perl" package="perl-File-MimeInfo"/>
 </package>

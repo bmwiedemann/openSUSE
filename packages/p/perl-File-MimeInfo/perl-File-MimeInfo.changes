@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu May 21 10:02:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-File-MimeInfo/Changes
+
+  0.37  2026-05-19
+   - Honor XDG_DATA_HOME precedence for extension globs, so a glob entry
+     from a higher-priority data dir overrides one from a lower-priority
+     dir instead of being silently shadowed (#62, liujianqiang-niu).
+   - Fix open() precedence and stale filehandle bugs in
+     File::MimeInfo::default and File::MimeInfo::Magic.
+   - Don't die when @ARGV contains bytes that are invalid in the current
+     locale; decode leniently and continue.
+   - Refactor resolvelink to use Cwd::abs_path instead of a hand-rolled
+     loop.
+   - mimetype/mimeopen: quote filenames in diagnostic output via
+     B::cstring so unusual characters render unambiguously.
+
+  0.36  2026-01-11
+   - Move to Codeberg
+
+-------------------------------------------------------------------
 Fri Apr 26 03:09:22 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.35
