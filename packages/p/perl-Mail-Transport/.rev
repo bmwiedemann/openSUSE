@@ -36,4 +36,29 @@
   	- smtp when the message body does not naturally end on a blank.</comment>
     <requestid>1309977</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>01cb35577c7bc8931538b2de98425fdb</srcmd5>
+    <version>4.10.0</version>
+    <time>1781191795</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.10.0 (4.01)
+   see /usr/share/doc/packages/perl-Mail-Transport/ChangeLog
+  #!!! Mail::Box 3 compatibility is still maintained on github in branch
+  #!!! maint3, and published.  So: you may find newer versions with major
+  #!!! number 3.  Use (at least) version 4 for new developments.
+  #!!! Convert? See https://github.com/markov2/perl5-Mail-Box/wiki/
+  version 4.01: Sat 13 Dec 12:18:33 CET 2025
+  	Fixes:
+  	- three messages logged the old way.
+  version 4.00: Thu 11 Dec 13:42:25 CET 2025
+  	Changes:
+  	- use Mail::Box 4 exception model: use Log::Report
+  	- remove Carp
+  version 3.008:
+  	Improvements:
+  	- convert install to OODoc 3.05
+  	- restyle code to OODoc 3 standard
+  	- explicitly depend on Mail::Message v3, not 4</comment>
+    <requestid>1358715</requestid>
+  </revision>
 </revisionlist>
