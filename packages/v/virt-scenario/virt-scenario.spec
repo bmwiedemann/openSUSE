@@ -1,7 +1,7 @@
 #
 # spec file for package virt-scenario
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%{?!python_module:%define python_module() python3-%{**}}
 %define pythons python3
 
 Name:           virt-scenario
@@ -29,9 +28,11 @@ URL:            https://github.com/aginies/virt-scenario
 Source:         %{name}-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module libvirt-python}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pyudev}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 #Buildrequires:	pandoc
@@ -60,10 +61,10 @@ This is the Gtk interface for %{name}.
 %autosetup
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 # move yaml file to /etc/virt-scenario
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}/vmconfig
 mv %{buildroot}%{_datadir}/%{name}/*.yaml %{buildroot}%{_sysconfdir}/%{name}/
@@ -79,7 +80,7 @@ mv src/demo_api_usage.py %{buildroot}%{_datadir}/%{name}/
 %{python_sitelib}/virtscenario
 %{python_sitelib}/virt_select_firmware
 %{python_sitelib}/virtscenario_launch
-%{python_sitelib}/*.egg-info
+%{python_sitelib}/virt_scenario-%{version}.dist-info
 #%attr(0644,root,root) %{_datadir}/%name
 %{_mandir}/man1/%{name}.1%{ext_man}
 %{_mandir}/man1/%{name}-settings.1%{ext_man}
