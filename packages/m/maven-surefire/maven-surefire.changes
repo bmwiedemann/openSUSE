@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 15:44:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Obsolete the separate maven-surefire-provider-junit5-javadoc,
+  since it is now included in the javadoc of this package
+
+-------------------------------------------------------------------
 Tue Jun  9 12:21:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Fold maven-surefire-provider-junit5 into the main spec file

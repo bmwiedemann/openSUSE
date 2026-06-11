@@ -160,4 +160,12 @@ put into adi:2</comment>
     <comment>Fold maven-surefire-provider-junit5 into the main spec file</comment>
     <requestid>1358230</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>0a96c928cafc5e0b9641f976665f8175</srcmd5>
+    <version>3.5.6</version>
+    <time>1781191633</time>
+    <user>anag_factory</user>
+    <comment>Follow-up SR: fix removal of now not existing maven-surefire-provider-junit5-javadoc</comment>
+    <requestid>1358588</requestid>
+  </revision>
 </revisionlist>

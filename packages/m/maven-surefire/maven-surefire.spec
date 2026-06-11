@@ -142,6 +142,8 @@ to execute.
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
+Provides:       %{name}-provider-junit5-javadoc
+Obsoletes:      %{name}-provider-junit5-javadoc
 
 %description javadoc
 Javadoc for %{name}.
