@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 10 17:52:57 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.6.3:
+  * Restore selection and scroll position for undo and redo on
+    additional views instead of just the view performing the undo
+    or redo. Notepad++ Pull Request #18014.
+  * Improve performance of rectangular paste when many spaces must
+    be inserted. Bug #2302.
+  * On Qt with Wayland, fix failures with displaying calltips and
+    autocompletion lists.
+- Changes from version 5.6.2:
+  * Add error status SC_STATUS_OUTSIDE_DOCUMENT that is set when
+    operations are attempted on a position outside the document.
+- Changes from version 5.6.1:
+  * Add mode to draw tabs as [HT] blobs with
+    SCI_SETTABDRAWMODE(SCTD_CONTROLCHAR).
+  * Improve mouse drag behaviour when drag and drop disabled.
+    Feature #1581.
+  * Fix regression in SCI_CONVERTEOLS that may not convert whole
+    file. Bug #2501.
+
+-------------------------------------------------------------------
 Mon Mar  2 10:35:24 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.0:
