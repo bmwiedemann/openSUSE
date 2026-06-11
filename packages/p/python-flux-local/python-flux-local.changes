@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:11:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.3.0:
+  * fix: have renovate pin github actions digests by @bo0tzz in
+    #1100
+  * fix: guard strip_resource_attributes against non-dict
+    spec.template by @dbrkv in #1099
+  * Add tests for helm template flags by @neodejack in #1098
+  * fix: if oci digest is set, dont pass helm version by @tholinka
+    in #1103
+  * chore(deps): bump gitpython to >= 3.1.47 for CVEs by @johanot
+    in #1104
+  * chore(deps): pin dependencies by @renovate[bot] in #1105
+  * chore(deps): update docker/metadata-action action to v6 by
+    @renovate[bot] in #1117
+  * chore(deps): update docker/login-action action to v4 by
+    @renovate[bot] in #1116
+  * chore(deps): update docker/build-push-action action to v7 by
+    @renovate[bot] in #1115
+  * chore(deps): update codecov/codecov-action action to v6 by
+    @renovate[bot] in #1113
+  * chore(deps): update astral-sh/setup-uv action to v8 by
+    @renovate[bot] in #1112
+  * chore(deps): update actions/upload-pages-artifact action to v5
+    by @renovate[bot] in #1111
+  * chore(deps): update actions/configure-pages action to v6 by
+    @renovate[bot] in #1109
+  * chore(deps): update actions/deploy-pages action to v5 by
+    @renovate[bot] in #1110
+  * Apply cruft updates by @allenporter in #1106
+  * chore(deps): update mshick/add-pr-comment action to v3 by
+    @renovate[bot] in #1120
+  * chore(deps): update docker/setup-buildx-action action to v4 by
+    @renovate[bot] in #1118
+  * chore(deps): update codecov/codecov-action action to v7 by
+    @renovate[bot] in #1122
+  * chore(deps): update docker/setup-qemu-action action to v4 by
+    @renovate[bot] in #1119
+
+-------------------------------------------------------------------
 Sat Apr 11 07:43:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.2.0:

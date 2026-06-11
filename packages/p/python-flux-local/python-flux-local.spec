@@ -21,7 +21,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-flux-local
-Version:        8.2.0
+Version:        8.3.0
 Release:        0
 Summary:        Set of tools for managing a flux gitops repository
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 #
 BuildRequires:  %{python_module base >= 3.13}
-BuildRequires:  %{python_module GitPython >= 3.1.30}
+BuildRequires:  %{python_module GitPython >= 3.1.47}
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module aiofiles >= 22.1.0}
 BuildRequires:  %{python_module mashumaro >= 3.12}
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module pytest-asyncio >= 0.20.3}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-GitPython >= 3.1.30
+Requires:       python-GitPython >= 3.1.47
 Requires:       python-PyYAML >= 6.0
 Requires:       python-aiofiles >= 22.1.0
 Requires:       python-base >= 3.13
