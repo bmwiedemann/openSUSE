@@ -30,7 +30,7 @@
 %define support_environment_generators 1
 %endif
 Name:           flatpak
-Version:        1.16.6
+Version:        1.18.0
 Release:        0
 Summary:        OSTree based application bundles management
 License:        LGPL-2.1-or-later
@@ -44,8 +44,6 @@ Source4:        update-user-flatpaks.timer
 Source5:        https://flathub.org/repo/flathub.flatpakrepo
 # PATCH-FEATURE-OPENSUSE polkit_rules_usability.patch -- Make the rules comply with openSUSE expectations
 Patch0:         polkit_rules_usability.patch
-# PATCH-FIX-UPSTREAM flatpak-selinux needs to be in in distributed instead of contrib bsc#1262051
-Patch1:         1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch
 
 BuildRequires:  bison
 BuildRequires:  bubblewrap >= %{bubblewrap_version}
@@ -209,7 +207,6 @@ sed -i -e '1s,#!%{_bindir}/env python3,#!%{_bindir}/python3,' scripts/flatpak-*
 %build
 %meson \
         -Dsystem_bubblewrap=%{_bindir}/bwrap \
-        -Dhttp_backend=curl \
         -Ddbus_config_dir=%{_dbusconfigdir} \
         -Dsystem_dbus_proxy=%{_bindir}/xdg-dbus-proxy \
 %if !%{support_environment_generators}

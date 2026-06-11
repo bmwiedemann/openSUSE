@@ -1144,4 +1144,31 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
   + Security fixes:</comment>
     <requestid>1346811</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>eabc0d5882626d221d290c5ecd287c9f</srcmd5>
+    <version>1.18.0</version>
+    <time>1781191526</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.0:
+  + Enhancements:
+    - Improve error handling and printed output of
+      flatpak-coredumpctl
+    - Support the AMD vendor specific compute interface (/dev/kfd)
+      via the DRI device permission
+    - Improve the output of flatpak update with failure causes
+    - Improve startup time for fish shell integration
+  + Bug fixes:
+    - Fix building when HAVE_LIBSYSTEMD but not USE_SYSTEM_HELPER
+      is defined
+    - Ignore system bus failures in parental controls check
+    - Fix some return values and replace deprecated GTimeVal with
+      g_get_real_time()
+    - Suppress an unused-result warning in the tests
+  + Updated translations.
+- Stop passing http_backend=curl to meson setup, no longer needed,
+  nor recognized.
+- Drop patch fixed upstream:
+  + 1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch</comment>
+    <requestid>1358299</requestid>
+  </revision>
 </revisionlist>

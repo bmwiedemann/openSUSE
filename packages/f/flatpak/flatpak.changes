@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun  8 15:01:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.0:
+  + Enhancements:
+    - Improve error handling and printed output of
+      flatpak-coredumpctl
+    - Support the AMD vendor specific compute interface (/dev/kfd)
+      via the DRI device permission
+    - Improve the output of flatpak update with failure causes
+    - Improve startup time for fish shell integration
+  + Bug fixes:
+    - Fix building when HAVE_LIBSYSTEMD but not USE_SYSTEM_HELPER
+      is defined
+    - Ignore system bus failures in parental controls check
+    - Fix some return values and replace deprecated GTimeVal with
+      g_get_real_time()
+    - Suppress an unused-result warning in the tests
+  + Updated translations.
+- Stop passing http_backend=curl to meson setup, no longer needed,
+  nor recognized.
+- Drop patch fixed upstream:
+  + 1262051-selinux-flatpak.if-should-be-installed-in-distribute.patch
+
+-------------------------------------------------------------------
 Tue Apr 14 07:53:35 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Install flatpak-selinux.if in distributed instead of contrib
