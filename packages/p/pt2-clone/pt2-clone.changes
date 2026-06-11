@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 10 19:25:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.90
+  * Audio code has been rewritten to mainly use 32-bit
+    single-precision float instead of 64-bit double-precision
+    float, for a possible performance gain on some platforms. The
+    difference in audio quality shouldn't be audible (but is
+    measurable).
+
+-------------------------------------------------------------------
 Sun Jun  7 17:52:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.89
