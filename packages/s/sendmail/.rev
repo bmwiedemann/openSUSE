@@ -1364,4 +1364,12 @@ SUSE- proprietary prefix added until Sendmail is accepted as valid SPDX license 
     <comment>- Avoid permission checks below /var</comment>
     <requestid>1336061</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>dd474732f9dfa2bab6c25a6900f48a7e</srcmd5>
+    <version>8.18.2</version>
+    <time>1781191537</time>
+    <user>anag_factory</user>
+    <comment>- Skip verification of the mode of sendmail binary (boo#1263098)</comment>
+    <requestid>1358523</requestid>
+  </revision>
 </revisionlist>

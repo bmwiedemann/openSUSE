@@ -775,7 +775,7 @@ done
 %{_sbindir}/mailstats
 %{_sbindir}/makemap
 # Should we do 6555??
-%attr(2555,root,mail) %{_sbindir}/sendmail
+%verify(not mode) %attr(2555,root,mail) %{_sbindir}/sendmail
 %{_sbindir}/sendmail.nissl
 %{_sbindir}/rcsendmail*
 %if ! %{defined tmpfiles_create}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 10 10:52:44 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Skip verification of the mode of sendmail binary (boo#1263098)
+
+-------------------------------------------------------------------
 Tue Mar  3 13:52:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid permission checks below /var
