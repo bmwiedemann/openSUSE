@@ -1402,4 +1402,12 @@ New Features:
     <comment>CVE-2026-42050, [bsc#1265048]</comment>
     <requestid>1353738</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>86384750f5de9fa716c8b22478e9e354</srcmd5>
+    <version>1.3.47</version>
+    <time>1781191551</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-28690)., CVE-2026-33535)., CVE-2026-30883)., CVE-2026-25799).</comment>
+    <requestid>1358544</requestid>
+  </revision>
 </revisionlist>

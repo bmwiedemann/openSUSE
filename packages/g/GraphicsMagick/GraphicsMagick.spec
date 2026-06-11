@@ -24,7 +24,7 @@
 %define pp_so_ver       12
 %define wand_so_ver     2
 Name:           GraphicsMagick
-Version:        1.3.46
+Version:        1.3.47
 Release:        0
 Summary:        Viewer and Converter for Images
 License:        MIT
@@ -33,16 +33,6 @@ URL:            http://www.GraphicsMagick.org/
 Source:         https://downloads.sourceforge.net/project/graphicsmagick/graphicsmagick/%{version}/%{name}-%{version}.tar.xz
 Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
-# CVE-2026-25799 [bsc#1258786], Division-by-Zero in YUV sampling factor validation leads to crash
-Patch2:         GraphicsMagick-CVE-2026-25799.patch
-# CVE-2026-30883: missing bounds check when encoding a PNG image can lead to a heap buffer over-write (bsc#1259467)
-Patch3:         GraphicsMagick-CVE-2026-30883.patch
-# CVE-2026-28690: missing bounds check in the MNG encoder can lead to a stack buffer overflow (bsc#1259456)
-Patch4:         GraphicsMagick-CVE-2026-28690.patch
-# CVE-2026-26284: Heap overflow in pcd decoder leads to out of bounds read. [bsc#1258765]
-Patch5:         GraphicsMagick-CVE-2026-26284.patch
-# CVE-2026-33535: Out-of-Bounds write of a zero byte in X11 display interaction [bsc#1260874]
-Patch6:         GraphicsMagick-CVE-2026-33535.patch
 # CVE-2026-42050: Stack buffer overflow in XTileImage [bsc#1265048]
 Patch7:         GraphicsMagick-CVE-2026-42050.patch
 BuildRequires:  cups-client

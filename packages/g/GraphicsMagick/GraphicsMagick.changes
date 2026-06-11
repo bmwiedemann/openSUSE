@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:11:30 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 1.3.47
+  * DPX: Fix subsampling validation logic which was failing due to
+    incorrect logic. This avoids a divide by zero possibility.
+  * JNG writer: Properly handle and report the case where
+    ImageToBlob()returns NULL.
+  * MNG writer: Enforce that MNG only supports a color palette up to 256
+    colors (ImageMagick CVE-2026-28690).
+  * MagickXImageWindowCommand(): Assure that static buffer does not
+    overflow if the user keeps a numeric key depressed (ImageMagick
+    CVE-2026-33535).
+  * PCD: Prevent an out of bounds read (ImageMagick security advisory
+    GHSA-wrhr-rf8j-r842).
+  * PNG writer: Detect and report an excessively large profile, an other
+    unexpected conditions (ImageMagick CVE-2026-30883).
+  * RenderFreetype(): Use MagickConfirmAccess() to verify that font file
+    name is allowed to be read.
+  * TIFF EXIF IFD writer: Detect and prevent infinite looping (EXIF IFD
+    writer code may be excluded by the -DEXPERIMENTAL_EXIF_TAGS=0
+    define).
+  * TIFF EXIF IFD writer: Only transfer tags from EXIF and GPS IFDs. Do
+    not transfer tags from the main IFDs.
+  * YUV: Fix validation of 'sampling-factor' argument. (ImageMagick
+    CVE-2026-25799). Given that the argument normally comes from a user
+    (rather than an input file) this seems to be a minor security issue
+    at most.
+  * PS, PS2, PS3: Enforce that width and height dimensions, and total
+    pixels, to/from Ghostscript are within the same limits as specified
+    for GraphicsMagick.  This helps avoid Ghostscript-based denial of
+    service opportunities.
+  * SVG: Add validations for element id syntax.  Reject invalid
+    attribute values which contain single quotes.
+  * XCF: Report an error if there are no layers. Fix two unsigned
+    integer overflow cases.
+  * DescribeImage(): Avoid heap write overflow while parsing the image
+    directory.
+  * and so on, see NEWS.txt
+- modified patches
+  * GraphicsMagick-CVE-2026-42050.patch (refreshed)
+  * GraphicsMagick-disable-insecure-coders.patch (refreshed)
+  * GraphicsMagick-perl-linkage.patch (refreshed)
+- deleted patches
+  * GraphicsMagick-CVE-2026-25799.patch (upstreamed)
+  * GraphicsMagick-CVE-2026-26284.patch (upstreamed)
+  * GraphicsMagick-CVE-2026-28690.patch (upstreamed)
+  * GraphicsMagick-CVE-2026-30883.patch (upstreamed)
+  * GraphicsMagick-CVE-2026-33535.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Jun 10 12:03:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- modified patches
+  * GraphicsMagick-perl-linkage.patch (refreshed)
+
+-------------------------------------------------------------------
 Mon May 18 09:20:27 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
