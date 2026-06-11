@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun  8 16:06:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.22.0:
+  + Bug Fixes:
+    - Correct passing icon GVariant around in the Dynamic Launcher
+      Portal
+    - Improve Document Portal document path resolving for the File
+      Chooser and OpenURI Portals
+
+-------------------------------------------------------------------
 Wed Apr  8 06:01:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.20.4:

@@ -560,4 +560,17 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346792</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>f8873b73677d4eaa197c5fd9f9b66548</srcmd5>
+    <version>1.22.0</version>
+    <time>1781191528</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.22.0:
+  + Bug Fixes:
+    - Correct passing icon GVariant around in the Dynamic Launcher
+      Portal
+    - Improve Document Portal document path resolving for the File
+      Chooser and OpenURI Portals</comment>
+    <requestid>1358300</requestid>
+  </revision>
 </revisionlist>
