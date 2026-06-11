@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:59:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add patch use-django-rq-commit-mode.patch to fix tests with
+  python-django-rq >= 4.0
+
+-------------------------------------------------------------------
+Wed May 27 20:52:35 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 1.14.3:
+  - Update Poetry's package dependencies
+
+-------------------------------------------------------------------
 Fri Mar 13 20:39:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.14.2:

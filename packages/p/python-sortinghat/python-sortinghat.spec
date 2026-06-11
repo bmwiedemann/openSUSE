@@ -17,7 +17,7 @@
 
 
 Name:           python-sortinghat
-Version:        1.14.2
+Version:        1.14.3
 Release:        0
 Summary:        A tool to manage identities
 License:        GPL-3.0-only
@@ -27,6 +27,9 @@ Source:         https://github.com/chaoss/grimoirelab-sortinghat/archive/refs/ta
 Patch0:         allow-database-config-overrides.patch
 # PATCH-FIX-OPENSUSE Do not use testcontainers module
 Patch1:         no-testcontainers.patch
+# PATCH-FIX-OPENSUSE use-django-rq-commit-mode.patch
+# Make it compatible with django-rq >= 4.0, use COMMIT_MODE = 'auto'
+Patch2:         use-django-rq-commit-mode.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}

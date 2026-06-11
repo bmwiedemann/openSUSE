@@ -1,0 +1,12 @@
+Index: grimoirelab-sortinghat-1.14.3/config/settings/config_testing.py
+===================================================================
+--- grimoirelab-sortinghat-1.14.3.orig/config/settings/config_testing.py
++++ grimoirelab-sortinghat-1.14.3/config/settings/config_testing.py
+@@ -116,3 +116,7 @@ RQ_QUEUES = {
+         'DB': 0
+     }
+ }
++
++RQ = {
++    'COMMIT_MODE': 'auto',
++}

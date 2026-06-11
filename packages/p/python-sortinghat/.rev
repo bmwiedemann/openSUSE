@@ -278,4 +278,16 @@
   * Support for static files in AWS</comment>
     <requestid>1338809</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0de028558fc0c150c89d0a35c78d3e72</srcmd5>
+    <version>1.14.3</version>
+    <time>1781191608</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-django-rq-commit-mode.patch to fix tests with
+  python-django-rq &gt;= 4.0
+
+- update to 1.14.3:
+  - Update Poetry's package dependencies</comment>
+    <requestid>1358552</requestid>
+  </revision>
 </revisionlist>
