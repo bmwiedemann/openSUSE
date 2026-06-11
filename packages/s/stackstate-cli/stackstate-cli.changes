@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 11 08:59:26 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 3.3.6:
+  * STAC-0: fix docker registry (#148)
+  * STAC-0: update dockerhub creds (#147)
+  * STAC-24562: update stackstate openapi models after otel input action field type change (#143)
+  * STAC-0: consolidate stackpack 2.0 feature flags (#146)
+  * STAC-0: rename stackpack delete version flag to stackpack-version (#145)
+  * STAC-24593 Update openapi spec
+  * STAC-24574: Make sure text/plain bodies are printed upon cli error
+  * Commit mise.toml
+  * STAC-0 Rename flag
+  * Support deletion of stackpack versions
+
+-------------------------------------------------------------------
 Sun Apr 05 08:41:53 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 3.3.3:
