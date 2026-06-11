@@ -6472,4 +6472,12 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
     <comment>Chromium 149 (149.0.7827.53) stable (boo#1267706)  changelog update</comment>
     <requestid>1357256</requestid>
   </revision>
+  <revision rev="524" vrev="1">
+    <srcmd5>0146f25ba6cc2e4b3bf868e14c95ce11</srcmd5>
+    <version>149.0.7827.102</version>
+    <time>1781191602</time>
+    <user>anag_factory</user>
+    <comment>Chromium 149.0.7827.102 (boo#1267911)</comment>
+    <requestid>1358111</requestid>
+  </revision>
 </revisionlist>
