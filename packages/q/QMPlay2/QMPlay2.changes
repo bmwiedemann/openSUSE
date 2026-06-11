@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:09:13 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Change hard-dependency on deno to softer nodejs-based
+  dependencies.
+- Adjust 0001-add-opensuse-customizations.patch to allow QMPlay2
+  to use alternative javascript engines for yt-dlp
+
+-------------------------------------------------------------------
 Thu May  7 05:34:19 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - USE_CHIPTUNE_SID set to OFF due to build error because of Sidplayfp

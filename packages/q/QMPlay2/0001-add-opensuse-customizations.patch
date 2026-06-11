@@ -7,9 +7,9 @@ It also adds openSUSE branding to the about screen.
 
 --- a/src/qmplay2/YouTubeDL.cpp
 +++ b/src/qmplay2/YouTubeDL.cpp
-@@ -467,29 +467,9 @@
+@@ -499,29 +499,19 @@
      QString program = m_ytDlPath;
-
+ 
  #ifndef Q_OS_WIN
 -    QFile ytDlFile(program);
 -    if (ytDlFile.open(QFile::ReadOnly))
@@ -34,11 +34,21 @@ It also adds openSUSE branding to the about screen.
 -        }
 -        ytDlFile.close();
 -    }
-+    //Enforce execution command as "python3", disable automatic detection
++    //Enforce execution command as "python3", disable automatic detection, enable openSUSE's nodejs runtimes
++    QString jsRuntimeArgs = "--js-runtimes";
++    QString denoArgs = "deno";
++    QString nodeArgs = "node";
++    QString quickjsArgs = "quickjs";
++    args.append(jsRuntimeArgs);
++    args.append(denoArgs);
++    args.append(jsRuntimeArgs);
++    args.append(nodeArgs);
++    args.append(jsRuntimeArgs);
++    args.append(quickjsArgs);
 +    args.prepend(program);
 +    program = "python3";
  #endif
-
+ 
      m_process.start(program, args);
 
 --- a/src/gui/AboutWidget.cpp

@@ -96,7 +96,7 @@ Requires(postun): shared-mime-info
 Requires(postun): update-desktop-files
 Recommends:     yt-dlp
 %if 0%{?suse_version} >= 1699
-Requires:       deno
+Requires:       (deno or nodejs >= 20 or quickjs >= 20250913)
 %endif
 Requires:       python3
 
