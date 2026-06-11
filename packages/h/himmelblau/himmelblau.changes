@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 10 20:29:37 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.6+git0.102ee045:
+  * Fix cargo-fuzz install in fuzz CI
+  * cargo vet
+  * Update ldap3_proto to 0.6.2
+  * Update `openssl` from 0.10.79 to 0.10.80
+  * Version 3.1.6
+  * Update cargo vet audits for backport
+  * Work around resume lockout on network down
+  * Reset Hello TOTP when passwd changes Hello key
+  * Clear Hello TOTP keys during full cache clear
+  * Add automatic fallback when requested MFA method is unavailable
+  * Fix SSHd configuration load order on Fedora/RHEL systems
+  * himmelblau-init-hsm-pin: don't bind the hsm-pin to PCR7
+  * qr-greeter: support GNOME Shell 50
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 2 updates
+
+-------------------------------------------------------------------
 Thu May 07 19:15:04 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.5+git0.445569d9:
