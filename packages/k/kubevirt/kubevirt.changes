@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 07 00:00:00 UTC 2026 - Victor Carvalho <vcarvalho@suse.com>
+
+- Update to version 1.8.3
+  Release notes https://github.com/kubevirt/kubevirt/releases/tag/v1.8.3
+  bsc#1260234 (CVE-2026-33186), bsc#1265467 (CVE-2026-7374),
+  bsc#1266733 (CVE-2026-9804)
+
+-------------------------------------------------------------------
 Wed Apr 16 14:30:00 UTC 2026 - Victor Carvalho <vcarvalho@suse.com>
 
 - Update to version 1.8.0
