@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 11 20:12:12 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.55.4:
+  + Another small round of patches on top of 0.55.3.
+  + Fixes backported:
+    - config/lua: fix layout ctx checking the wrong argument (#15061)
+    - desktop/popup: fix subsurface scaling (#14936)
+    - gestures: fix live cursorZoom anchoring to a mid-animation
+      value (#14996)
+    - gestures: fix toggle cursorZoom sharing a single on/off flag
+      (#14998)
+    - groups: fix border color for locked groups (#15015)
+    - protocols/foreignToplevel: fix class and title reporting on map
+      and afterwards (#15037)
+    - protocols/pointerWarp: fix crash when warp is on a non
+      interactive surf (#15021)
+    - renderer: fix SEGV on monitor disconnect (#15048)
+    - gestures: clamp toggle cursorZoom like mult and live (#14997)
+    - gestures: configure client to final size on fullscreen/float
+      gesture completion (#14981)
+
+-------------------------------------------------------------------
 Mon Jun  8 12:14:02 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to version 0.55.3:
