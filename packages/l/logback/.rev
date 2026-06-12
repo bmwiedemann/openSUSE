@@ -103,4 +103,12 @@
     <comment>1.5.34 with security fixes</comment>
     <requestid>1358269</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>672c0c628d445073f39e411636c0a80f</srcmd5>
+    <version>1.5.34</version>
+    <time>1781285281</time>
+    <user>anag_factory</user>
+    <comment>Sync changes</comment>
+    <requestid>1358810</requestid>
+  </revision>
 </revisionlist>

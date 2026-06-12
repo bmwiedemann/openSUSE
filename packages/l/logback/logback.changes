@@ -9,15 +9,34 @@ Wed Jun 10 04:23:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       Java EE, whereas in logback versions 1.4.x/1.5.x, these
       optional components depend on Jakarta EE. The 1.5.x series
       continues the 1.4.x series, but with logback-access relocated
-      to its own repository.
+      to its own repository
   * Fixes
     + In case certain StackTraceElement values returned by the
       Throwable.getStackTrace method are null,
       StackTraceElementProxy substitutes a dummy instance instead of
-      throwing an IllegalArgumentException. (#1040)
+      throwing an IllegalArgumentException (#1040)
     + HardenedObjectInputStream will now throw an
       InvalidClassException during deserialization attempts of Proxy
-      classes. (bsc#1266783, CVE-2026-10532)
+      classes (bsc#1266783, CVE-2026-10532)
+    + PropertiesConfiguratorModelHandler now registers properties
+      file URLs to the ConfigurationWatchList when scan is enabled
+      (via local scan="true" attribute or top-level configuration
+      scan), ensuring changes are detected and reconfiguration
+      occurs (issues/1034)
+    + When processing <conversionRule> elements and both class and
+      converterClass attributes are specified, silently use the
+      class attribute without issuing a warning. However, if the
+      attribute values differ, a warning will be issued (issues/1031)
+    + HardenedModelInputStream will no longer accept to deserialize
+      all classes located under the "java.lang" and "java.util"
+      packages but only a limited number of explicitly authorized
+      classes in those packages (bsc#1266783, CVE-2026-9828)
+    + SSL parameters for SSLSocketAppender now enable hostname
+      verification by default. Moreover, the default protocol is now
+      "TLSv1.2"
+    + When printing the status message field,
+      ViewStatusMessagesServletBase now escapes special characters
+      such as "&" as character entities
 - Removed patches:
   * logback-1.2.3-getCallerClass.patch
   * logback-CVE-2024-12801-CVE-2024-12798.patch
