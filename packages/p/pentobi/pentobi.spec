@@ -1,7 +1,7 @@
 #
 # spec file for package pentobi
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,20 +17,19 @@
 
 
 Name:           pentobi
-Version:        28.0
+Version:        30.2
 Release:        0
 Summary:        Program to play the board game Blokus
 License:        GPL-3.0-only
 Group:          Amusements/Games/Strategy/Other
 URL:            https://pentobi.sourceforge.net/
 Source:         https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.xz
-BuildRequires:  cmake >= 3.18
-# For hicolor dirs ownership
+BuildRequires:  cmake >= 3.22
+BuildRequires:  gettext-runtime >= 0.23
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  itstool
 BuildRequires:  rsvg-convert
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core) >= 6.5
+BuildRequires:  cmake(Qt6Core) >= 6.9
 BuildRequires:  cmake(Qt6LinguistTools)
 BuildRequires:  cmake(Qt6QuickControls2)
 BuildRequires:  cmake(Qt6Xml)
@@ -42,7 +41,7 @@ Different levels of playing strength are available. Pentobi can
 save and load games along with comments and move variations.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake_qt6 -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON
