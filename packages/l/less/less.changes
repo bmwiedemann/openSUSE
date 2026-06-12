@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  8 18:47:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 704:
+  * Fix possibly passing unsafe options to man when opening an OSC
+    8 link
+  * Fix possibly sending unsafe OSC sequence to terminal when file
+    contains an unterminated OSC sequence
+  * In Examine and Shell commands, expand % and # to shell-escaped
+    filenames
+
+-------------------------------------------------------------------
 Mon May 25 07:40:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 702:
