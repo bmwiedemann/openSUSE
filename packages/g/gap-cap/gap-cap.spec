@@ -1,7 +1,7 @@
 #
 # spec file for package gap-cap
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-cap
-Version:        2025.09.04
-%define sillyver 2025.09-04
+Version:        2026.05.08
+%define sillyver 2026.05-08
 Release:        0
 Summary:        GAP: Categories, Algorithms and Programming
 License:        GPL-2.0-only
@@ -31,9 +31,9 @@ BuildRequires:  gap-rpm-devel
 BuildArch:      noarch
 Requires:       gap-core >= 4.13.0
 Requires:       gap-io
-Requires:       gap-toolsforhomalg >= 2023.11.01
+Requires:       gap-toolsforhomalg >= 2026.04.01
 Suggests:       gap-browse >= 1.5
-Suggests:       gap-compilerforcap >= 2021.12.05
+Suggests:       gap-compilerforcap >= 2026.04.01
 
 %description
 CAP is a package for category theory. It facilitates the
