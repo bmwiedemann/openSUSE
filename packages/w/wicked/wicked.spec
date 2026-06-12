@@ -1,7 +1,7 @@
 #
 # spec file for package wicked
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.78
+Version:        0.6.79
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -42,7 +42,7 @@ BuildRequires:  libtool
 BuildRequires:  make
 %if %{with wicked_devel}
 # libwicked-%%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_78 = %{version}-%{release}
+Provides:       libwicked-0_6_79 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
@@ -97,6 +97,7 @@ Requires(pre):       util-linux
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
+%{?regenerate_initrd_requires}
 %if 0%{?suse_version:1}
 Requires(pre):  %fillup_prereq
 Requires:       sysconfig-netconfig
@@ -164,7 +165,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_78 = %{version}-%{release}
+Requires:       libwicked-0_6_79 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -269,6 +270,15 @@ esac
 # restart wickedd after upgrade
 %{service_del_postun wickedd.service}
 
+%pre
+version=$(wicked --version 2>/dev/null)
+version="${version#* }"
+version="9${version//./}"
+# regenereate initrd in case wicked is used in it (bsc#1265221)
+if test $(($version)) -le 90678 ; then
+	%__mkdir_p -m 0755 "%{wicked_statedir}/regenerate-initrd" || :
+fi
+
 %post
 /sbin/ldconfig
 %{fillup_only -dns config wicked network}
@@ -282,6 +292,16 @@ if test -f %_sysconfdir/wicked/client-redfish.xml -a \
 		 %_sysconfdir/wicked/client-firmware.xml || :
 fi
 rm -f -- %_sysconfdir/wicked/client-redfish.xml || :
+if test -d "%{wicked_statedir}/regenerate-initrd" ; then
+	%{?regenerate_initrd_post}
+	:
+fi
+
+%posttrans
+if test -d "%{wicked_statedir}/regenerate-initrd" ; then
+	%{?regenerate_initrd_posttrans}
+	:
+fi
 
 %postun
 /sbin/ldconfig

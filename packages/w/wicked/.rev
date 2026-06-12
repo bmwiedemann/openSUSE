@@ -1990,4 +1990,26 @@
   - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045)</comment>
     <requestid>1235890</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>be4f72bec2fef5aa6f52d6a7e74d831f</srcmd5>
+    <version>0.6.79</version>
+    <time>1781285102</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.79 (bsc#1265221,CVE-2026-44932)
+  - Fix an indirect remote shell command injection via unsanitized
+    dhcp strings and leaseinfo dump (bsc#1265221,CVE-2026-44932):
+    - Fix to escape single-quotes in leaseinfo dump output used by the
+      `wicked test dhcp4` and `wicked test dhcp6` and written to the
+      /run/wicked/leaseinfo.* files, e.g. to pass them to netconfig.
+      A netconfig modify filtered for strict key='value' lines without
+      any escaped quotes and discarded these lines already before.
+    - Fix posix-tz-dbname and tz-string option processing checks to
+      permit only valid characters according to RFC4833.
+    - Discard string values containing single-quotes in other options.
+    - Trigger to regenerate initrd that may contain wicked binaries on
+      updates from wicked versions &lt;= 0.6.78.
+
+  - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045)</comment>
+    <requestid>1358674</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 27 12:38:40 UTC 2026 - Marius Tomaschewski <mt@suse.com>
+
+- Update to version 0.6.79
+  - Fix an indirect remote shell command injection via unsanitized
+    dhcp strings and leaseinfo dump (bsc#1265221,CVE-2026-44932):
+    - Fix to escape single-quotes in leaseinfo dump output used by the
+      `wicked test dhcp4` and `wicked test dhcp6` and written to the
+      /run/wicked/leaseinfo.* files, e.g. to pass them to netconfig.
+      A netconfig modify filtered for strict key='value' lines without
+      any escaped quotes and discarded these lines already before.
+    - Fix posix-tz-dbname and tz-string option processing checks to
+      permit only valid characters according to RFC4833.
+    - Discard string values containing single-quotes in other options.
+    - Trigger to regenerate initrd that may contain wicked binaries on
+      updates from wicked versions <= 0.6.78.
+
+-------------------------------------------------------------------
 Wed Jan  8 10:20:17 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update to version 0.6.78
@@ -9,7 +26,7 @@ Wed Jan  8 10:20:17 UTC 2025 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
   - ifxml: migrate and generate lower configs/policies (gh#opensuse/wicked#1048)
   - fsm: use refcount and array macros in worker and policy (gh#opensuse/wicked#1047)
   - route: use refcounted array and fix error leaks (gh#opensuse/wicked#1046)
-  - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045) 
+  - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045)
 
 -------------------------------------------------------------------
 Fri Oct 25 13:24:54 UTC 2024 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
