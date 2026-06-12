@@ -294,4 +294,15 @@
 </comment>
     <requestid>1352209</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>9ff40312f1927ab3a6716226028eef58</srcmd5>
+    <version>18.1.8</version>
+    <time>1781285168</time>
+    <user>anag_factory</user>
+    <comment>- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.
+</comment>
+    <requestid>1358707</requestid>
+  </revision>
 </revisionlist>
