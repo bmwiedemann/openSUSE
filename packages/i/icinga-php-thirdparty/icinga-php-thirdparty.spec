@@ -20,7 +20,7 @@
 %global module_name icinga-php-thirdparty
 %global basedir %{_datadir}/icinga-php/vendor
 Name:           %{module_name}
-Version:        0.15.2
+Version:        0.15.3
 Release:        %{revision}%{?dist}
 Summary:        Icinga PHP Thirdparty for Icinga Web 2
 License:        MIT
