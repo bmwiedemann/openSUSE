@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 11 15:47:43 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.7+git0.f4e43ca0:
+  * cargo vet
+  * Version 3.1.7
+  * sso: fix Chrome ExtensionInstallForcelist missing update URL
+  * Continue the never-ending chase for SELinux support
+  * Respect configured remote service deny list
+  * Retry enrollment with MFA on strong auth errors
+  * nss: reject non-directory names before GetCredentialType probe
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 10 updates
+  * ci: automate OBS stable branch submissions
+
+-------------------------------------------------------------------
 Wed Jun 10 20:29:37 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.6+git0.102ee045:
