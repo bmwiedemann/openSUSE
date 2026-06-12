@@ -18,7 +18,7 @@
 
 %define lname	libcdirectory1
 Name:           libcdirectory
-Version:        20260530
+Version:        20260612
 Release:        0
 Summary:        Library for Windows NT data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -29,9 +29,9 @@ Source2:        https://github.com/libyal/libcdirectory/releases/download/%versi
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20260513
-BuildRequires:  pkgconfig(libclocale) >= 20260520
-BuildRequires:  pkgconfig(libuna) >= 20260522
+BuildRequires:  pkgconfig(libcerror) >= 20260612
+BuildRequires:  pkgconfig(libclocale) >= 20260612
+BuildRequires:  pkgconfig(libuna) >= 20260602
 # Various notes: https://en.opensuse.org/libyal
 
 %description
