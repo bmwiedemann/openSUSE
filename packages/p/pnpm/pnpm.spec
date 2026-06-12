@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pnpm
-Version:        11.5.2
+Version:        11.6.0
 Release:        0
 Summary:        Package manager for node.js
 License:        MIT

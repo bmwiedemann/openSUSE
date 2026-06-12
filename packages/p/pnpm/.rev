@@ -1026,4 +1026,267 @@ Patch Changes
   * Requires at least Node.js v22.13</comment>
     <requestid>1357616</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e16727836f5539f624c827f5847643f1</srcmd5>
+    <version>11.6.0</version>
+    <time>1781285240</time>
+    <user>anag_factory</user>
+    <comment>- Update to 11.6.0:
+  * pnpm install completes without re-resolving when pnpm-lock.
+    yaml was deleted but node_modules is intact: the up-to-date
+    check now treats the current lockfile (node_modules/.pnpm/lock.
+    yaml) — the record of what the previous install materialized —
+    as the wanted lockfile, verifies the manifests still match it,
+    restores pnpm-lock.yaml from it, and reports &quot;Already up to date&quot;.
+    Previously this scenario triggered a full resolution and a re-
+    verification of every locked package against the registry.
+  * 615c669: Added support for configuring URL-scoped registry
+    settings through npm_config_//… and pnpm_config_//…
+    environment variables, for example:
+  * Improved the warning printed when a project .npmrc uses an
+    environment variable in a registry/proxy URL or in registry
+    credentials. The message now explains why the setting was
+    ignored and how to migrate it to a trusted source — for example
+    by moving the line to the user-level ~/.npmrc or running pnpm
+    config set &quot;&lt;key&gt;&quot; &lt;value&gt; — with a link to https://pnpm.io/npmrc.
+    The pnpm config set example is only suggested when the key has
+    no ${...} placeholder, so the snippet is always safe to copy-paste.
+  * Print a &quot;Lockfile passes supply-chain policies (verified 2h
+    ago)&quot; message when lockfile verification is skipped because a
+    cached verdict for the same lockfile content and policy is reused.
+    Previously the cached short-circuit was completely silent,
+    which made it look like the policy gate never ran #12324.
+  * Platform-specific optional dependencies are now skipped even
+    when their os/cpu/libc fields are missing from the registry
+    metadata or the lockfile. Some registries strip these fields
+    from the package metadata, which made pnpm download and install
+    the binaries of every platform regardless of
+    supportedArchitectures. The missing platform fields of an
+    optional dependency are now inferred from its name (e.g. @nx/nx-
+    win32-arm64-msvc → os: win32, cpu: arm64), so foreign-platform
+    binaries are skipped without even downloading them #11702.
+
+- Update to 11.5.3:
+  *⚠️ Security fix — environment variables in a project .npmrc
+  * Stopped expanding environment variables in repository-
+    controlled registry/proxy request destinations and registry
+    credential values from .npmrc, and in workspace registry URLs
+    from pnpm-workspace.yaml. Move dynamic registry URL and token
+    configuration to trusted user, global, CLI, or environment config.
+  * Resolve package-manager bootstrap dependencies with trusted
+    user or CLI registry and network config, and reject package-
+    manager env-lockfile records that do not use registry package
+    paths with integrity-only resolutions before auto-switch execution.
+  * Avoid writing packageManagerDependencies to pnpm-lock.yaml
+    when package manager policy is set to onFail: ignore or
+    pmOnFail: ignore #12228.
+  * Avoid running dependency-status auto-install when the
+    dependency status is unavailable without a project manifest.
+  * Using the $ version reference syntax in overrides (e.g. &quot;react&quot;: &quot;$react&quot;)
+    now prints a deprecation warning. The syntax still works, but
+    catalogs are the recommended way to keep an overridden
+    version in sync with the rest of the workspace. Reference a
+    catalog entry with the catalog: protocol instead.
+  * Fixed pnpm config get globalconfig to return the global config
+    .yaml path again pnpm/pnpm#11962.
+  * Fixed bare --color so it does not consume the following CLI
+    flag, allowing command shorthands like --parallel to expand
+    correctly and forms like pnpm --color with current &lt;command&gt;
+    to dispatch the inner command instead of failing with MISSING_WITH_CURRENT_CMD.
+  * Fix pnpm install ignoring enableGlobalVirtualStore toggle by
+    including it in the workspace state settings check #12142.
+  * Security: pnpm now verifies the npm registry signature of a
+    package-manager binary before spawning it, so a cloned
+    repository cannot make pnpm download and execute an arbitrary native binary.
+  * Made peer-dependent deduplication deterministic. When a peer-
+    suffixed package variant was a subset of two or more mutually
+    incompatible larger variants, the variant it collapsed into
+    depended on the order importers were resolved in, which
+    varies between machines. This could resolve the same
+    workspace to different lockfiles on different platforms and
+    make pnpm dedupe --check alternate between passing and failing.
+  * Reject invalid package names and versions from staged tarball
+    manifests before deriving filenames for pnpm stage download.
+  * Clarified in CLI help that the pnpm store is trusted shared
+    state and store integrity checks are corruption detection,
+    not a tamper boundary for untrusted store writers.
+  * Reject reserved manifest bin names (&quot;&quot;, &quot;.&quot;, &quot;..&quot;, and scoped
+    forms such as @scope/..) when resolving a package's bins.
+    These names previously passed the bin-name guard and, when
+    joined to the global bin directory during global remove/update
+    /add operations, could resolve to the global bin directory
+    itself or its parent and have it recursively deleted.
+  * Require trusted package identity before package-name
+    allowBuilds entries can approve lifecycle scripts for git, git
+    -hosted tarball, direct tarball, and local directory artifacts.
+    To approve one of those artifacts explicitly, use its peer-
+    suffix-free lockfile depPath as the allowBuilds key. Lockfile
+    verification now rejects lockfiles where a registry-style
+    dependency path (name@semver) is backed by a git, directory,
+    or git-hosted tarball resolution (
+    ERR_PNPM_RESOLUTION_SHAPE_MISMATCH), so the dependency path
+    is a reliable artifact identity by the time scripts can run.
+  * Security: pnpm now verifies the OpenPGP signature of a
+    downloaded Node.js runtime's SHASUMS256.txt before trusting
+    its integrity hashes.
+
+old: openSUSE:Factory/pnpm
+new: devel:languages:nodejs/pnpm rev 117
+Index: _scmsync.obsinfo
+===================================================================
+--- _scmsync.obsinfo (revision 57)
++++ _scmsync.obsinfo (revision 117)
+@@ -1,5 +1,5 @@
+-mtime: 1780688011
+-commit: 689963951c1f094406a113d08252730ed06b417d18cbb31dd5f832fb3867e10b
++mtime: 1781226166
++commit: 7c0a18ed5e74768a44c097c4ab2ce3f7049f81343fcaca8793c993bd1f2b8af9
+ url: https://src.opensuse.org/nodejs/pnpm
+-revision: 689963951c1f094406a113d08252730ed06b417d18cbb31dd5f832fb3867e10b
++revision: 7c0a18ed5e74768a44c097c4ab2ce3f7049f81343fcaca8793c993bd1f2b8af9
+ projectscmsync: https://src.opensuse.org/nodejs/_ObsPrj.git
+Index: build.specials.obscpio
+===================================================================
+--- build.specials.obscpio (revision 57)
++++ build.specials.obscpio (revision 117)
+Binary files build.specials.obscpio (revision 57) and build.specials.obscpio (revision 117) differ
+Index: pnpm.changes
+===================================================================
+--- pnpm.changes (revision 57)
++++ pnpm.changes (revision 117)
+@@ -1,4 +1,109 @@
+ -------------------------------------------------------------------
++Fri Jun 12 00:59:48 UTC 2026 - Avindra Goolcharan &lt;avindra@opensuse.org&gt;
++
++- Update to 11.6.0:
++  * pnpm install completes without re-resolving when pnpm-lock.
++    yaml was deleted but node_modules is intact: the up-to-date
++    check now treats the current lockfile (node_modules/.pnpm/lock.
++    yaml) — the record of what the previous install materialized —
++    as the wanted lockfile, verifies the manifests still match it,
++    restores pnpm-lock.yaml from it, and reports &quot;Already up to date&quot;.
++    Previously this scenario triggered a full resolution and a re-
++    verification of every locked package against the registry.
++  * 615c669: Added support for configuring URL-scoped registry
++    settings through npm_config_//… and pnpm_config_//…
++    environment variables, for example:
++  * Improved the warning printed when a project .npmrc uses an
++    environment variable in a registry/proxy URL or in registry
++    credentials. The message now explains why the setting was
++    ignored and how to migrate it to a trusted source — for example
++    by moving the line to the user-level ~/.npmrc or running pnpm
++    config set &quot;&lt;key&gt;&quot; &lt;value&gt; — with a link to https://pnpm.io/npmrc.
++    The pnpm config set example is only suggested when the key has
++    no ${...} placeholder, so the snippet is always safe to copy-paste.
++  * Print a &quot;Lockfile passes supply-chain policies (verified 2h
++    ago)&quot; message when lockfile verification is skipped because a
++    cached verdict for the same lockfile content and policy is reused.
++    Previously the cached short-circuit was completely silent,
++    which made it look like the policy gate never ran #12324.
++  * Platform-specific optional dependencies are now skipped even
++    when their os/cpu/libc fields are missing from the registry
++    metadata or the lockfile. Some registries strip these fields
++    from the package metadata, which made pnpm download and install
++    the binaries of every platform regardless of
++    supportedArchitectures. The missing platform fields of an
++    optional dependency are now inferred from its name (e.g. @nx/nx-
++    win32-arm64-msvc → os: win32, cpu: arm64), so foreign-platform
++    binaries are skipped without even downloading them #11702.
++
++-------------------------------------------------------------------
++Thu Jun 11 19:52:40 UTC 2026 - Avindra Goolcharan &lt;avindra@opensuse.org&gt;
++
++- Update to 11.5.3:
++  *⚠️ Security fix — environment variables in a project .npmrc
++  * Stopped expanding environment variables in repository-
++    controlled registry/proxy request destinations and registry
++    credential values from .npmrc, and in workspace registry URLs
++    from pnpm-workspace.yaml. Move dynamic registry URL and token
++    configuration to trusted user, global, CLI, or environment config.
++  * Resolve package-manager bootstrap dependencies with trusted
++    user or CLI registry and network config, and reject package-
++    manager env-lockfile records that do not use registry package
++    paths with integrity-only resolutions before auto-switch execution.
++  * Avoid writing packageManagerDependencies to pnpm-lock.yaml
++    when package manager policy is set to onFail: ignore or
++    pmOnFail: ignore #12228.
++  * Avoid running dependency-status auto-install when the
++    dependency status is unavailable without a project manifest.
++  * Using the $ version reference syntax in overrides (e.g. &quot;react&quot;: &quot;$react&quot;)
++    now prints a deprecation warning. The syntax still works, but
++    catalogs are the recommended way to keep an overridden
++    version in sync with the rest of the workspace. Reference a
++    catalog entry with the catalog: protocol instead.
++  * Fixed pnpm config get globalconfig to return the global config
++    .yaml path again pnpm/pnpm#11962.
++  * Fixed bare --color so it does not consume the following CLI
++    flag, allowing command shorthands like --parallel to expand
++    correctly and forms like pnpm --color with current &lt;command&gt;
++    to dispatch the inner command instead of failing with MISSING_WITH_CURRENT_CMD.
++  * Fix pnpm install ignoring enableGlobalVirtualStore toggle by
++    including it in the workspace state settings check #12142.
++  * Security: pnpm now verifies the npm registry signature of a
++    package-manager binary before spawning it, so a cloned
++    repository cannot make pnpm download and execute an arbitrary native binary.
++  * Made peer-dependent deduplication deterministic. When a peer-
++    suffixed package variant was a subset of two or more mutually
++    incompatible larger variants, the variant it collapsed into
++    depended on the order importers were resolved in, which
++    varies between machines. This could resolve the same
++    workspace to different lockfiles on different platforms and
++    make pnpm dedupe --check alternate between passing and failing.
++  * Reject invalid package names and versions from staged tarball
++    manifests before deriving filenames for pnpm stage download.
++  * Clarified in CLI help that the pnpm store is trusted shared
++    state and store integrity checks are corruption detection,
++    not a tamper boundary for untrusted store writers.
++  * Reject reserved manifest bin names (&quot;&quot;, &quot;.&quot;, &quot;..&quot;, and scoped
++    forms such as @scope/..) when resolving a package's bins.
++    These names previously passed the bin-name guard and, when
++    joined to the global bin directory during global remove/update
++    /add operations, could resolve to the global bin directory
++    itself or its parent and have it recursively deleted.
++  * Require trusted package identity before package-name
++    allowBuilds entries can approve lifecycle scripts for git, git
++    -hosted tarball, direct tarball, and local directory artifacts.
++    To approve one of those artifacts explicitly, use its peer-
++    suffix-free lockfile depPath as the allowBuilds key. Lockfile
++    verification now rejects lockfiles where a registry-style
++    dependency path (name@semver) is backed by a git, directory,
++    or git-hosted tarball resolution (
++    ERR_PNPM_RESOLUTION_SHAPE_MISMATCH), so the dependency path
++    is a reliable artifact identity by the time scripts can run.
++  * Security: pnpm now verifies the OpenPGP signature of a
++    downloaded Node.js runtime's SHASUMS256.txt before trusting
++    its integrity hashes.
++
++-------------------------------------------------------------------
+ Fri Jun  5 19:31:21 UTC 2026 - Avindra Goolcharan &lt;avindra@opensuse.org&gt;
+ 
+ - Update to 11.5.2:
+Index: pnpm.spec
+===================================================================
+--- pnpm.spec (revision 57)
++++ pnpm.spec (revision 117)
+@@ -23,7 +23,7 @@
+ %global __nodejs_provides %{nil}
+ %global __nodejs_requires %{nil}
+ Name:           pnpm
+-Version:        11.5.2
++Version:        11.6.0
+ Release:        0
+ Summary:        Package manager for node.js
+ License:        MIT
+Index: pnpm-11.6.0.tgz
+===================================================================
+--- pnpm-11.6.0.tgz (added)
++++ pnpm-11.6.0.tgz (revision 117)
+Binary file pnpm-11.6.0.tgz (revision 117) added
+Index: pnpm-11.5.2.tgz
+===================================================================
+--- pnpm-11.5.2.tgz (revision 57)
++++ pnpm-11.5.2.tgz (deleted)
+Binary file pnpm-11.5.2.tgz (revision 57) deleted</comment>
+    <requestid>1358804</requestid>
+  </revision>
 </revisionlist>
