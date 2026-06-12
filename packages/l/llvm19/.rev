@@ -186,4 +186,16 @@
 </comment>
     <requestid>1352208</requestid>
   </revision>
+  <revision rev="18" vrev="12">
+    <srcmd5>438cdccf42c85934e0001ab680480b5a</srcmd5>
+    <version>19.1.7</version>
+    <time>1781285150</time>
+    <user>anag_factory</user>
+    <comment>- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.
+- Enable LLDB Python bindings on Leap 15.6 and newer.
+</comment>
+    <requestid>1358706</requestid>
+  </revision>
 </revisionlist>
