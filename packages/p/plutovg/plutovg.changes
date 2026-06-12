@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Apr 13 05:04:47 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.3.2:
+  * plutovgConfig.cmake.in: add Threads find_dependency.
+  * Fixed duplicated macro warning for enabled Unity builds.
+  * Check c11 threads.h presence before using.
+  * Bump minimum required meson version to 1.3.0.
+  * Font-Face Cache System.
+  * Canvas Font Integration.
+  * Point Containment Queries.
+  * Atomic Reference Counting.
+  * Mutex Abstraction.
+
+-------------------------------------------------------------------
 Fri Jun  6 14:15:57 UTC 2025 - Yunhe Guo <i@guoyunhe.me>
 
 - Version 1.1.0

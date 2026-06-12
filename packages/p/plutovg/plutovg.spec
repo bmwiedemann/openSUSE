@@ -18,13 +18,13 @@
 
 %define soversion 1
 Name:           plutovg
-Version:        1.1.0
+Version:        1.3.2
 Release:        0
 Summary:        Tiny 2D vector graphics library in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/sammycage/%{name}
-Source:         https://github.com/sammycage/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
