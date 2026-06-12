@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri May 15 16:51:25 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
+
+- update to 2.1.0
+  * Documentation and dockerfile updates 
+  * Update QAT driver version from QAT20.L.1.2.30-00090 to QAT20.L.1.2.30-00109 
+  * Update sub-modules to latest stable version
+  * Coverity 03.2025 fixes for symmetric algorithms. 
+  * Coverity 03.2025 fixes for asymmetric algorithms. 
+  * Updated copyright headers
+  * Fix resource leaks in RSA signature sign and verify fallback paths 
+  * Handle unsupported algorithms in QAT provider
+  * Provider co-existence ECDHX25519 performance improvements 
+  * Update crypto_mb library fetch from /usr/local/lib/intel64 
+  * ECDHX25519 and ECDHX448 Provider perf improvement. 
+  * Provider co-existence performance improvements
+  * Add QAT 1.9 Device ID in update_config.sh
+  * Fix NID-based cipher caching in provider fallback path for CBC, CCM and GCM.
+  * Add NID_md5_sha1 support for TLS 1.0/1.1 RSA signature verification
+  * Qatprovider: Fix EC cert/key generation, AES-CCM implicit warnings and SM4-CBC co-ex warnings
+  * Move AES-128-CBC-HMAC-SHA256 cipher to insecure algorithms list for QAT provider builds. 
+  * Fix C89 compliance: add null statements after labels 
+  * Add export and import routines for X448 provider. 
+  * Fix Co-ex issue with provider 
+  * Fix QAT_SW P256 & P384 Performance regression 
+  * Coexistence: Implement congestion API-based HW/SW offload 
+  * Fix static analysis issues reported by cppcheck, Clang and GCC in QAT provider. 
+  * Fix QAT Provider RSA certificate/key generation 
+  * Fix OpenScanHub resource leaks reported on QAT provider.
+  * Qatprovider: Refactor End Blocks for GCC 8.5 Compatibility 
+  * QAT_SW unsupported RSA 8K and ECDSA P-521 detection and returning failure in async mode. 
+  * Qatprovider: Optimize crypto_mb Algo Fallback for Client Platforms 
+
+- update to 2.0.0
+  * QAT_SW library INSTALL section update 
+  * Dockerfile version bump for v2.0.0 
+  * Fix OpenSSL SW fallback usecase for RSA provider sign and verify 
+  * Added ECX import, import types functions for FIPS
+  * Version bump and README update to v2.0.0 
+  * Fix QAT_SW ECDH/ECDSA curves Registration 
+  * Fix pthread condition variable lifecycle 
+  * Refactor RSA sign, verify, cipher and keymanagement modules in QAT provider 
+  * Add co-existence support for BoringSSL on FreeBSD and enabling runtime bitmap configuration 
+  * Refactor EC key management and clean up legacy code 
+  * Remove legacy CRYPTO_THREAD_lock usage and update ECX key management for OpenSSL 3.x 
+  * Refactor reference counting to use atomic operations 
+  * Increase QAT_MAX_CRYPTO_INSTANCES to 2048 for Enhanced Device Support
+  * Add compatibility support for OpenSSL 3.5 in QAT Provider 
+  * Add compatibility with the latest BoringSSL API 
+  * Fix ICP warnings for QAT.L.4.28.0-00004 driver 
+  * Fix possible NULL pointer dereference for SM4-CCM 
+  * Add update_config.sh to dynamically update driver config files 
+
+-------------------------------------------------------------------
 Tue May 20 13:05:21 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.9.0:
@@ -15,7 +68,6 @@ Tue May 20 13:05:21 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
   * Fixed offload issue for qat hw aes-ccm and sm3 when modules removed
   * Added QAT_SW Provider support for RSA encrypt and decrypt
   * Algorithms with AES-128 and AES-192 keys added to insecure list and disabled by default
-
 
 -------------------------------------------------------------------
 Fri Dec  6 16:11:21 UTC 2024 - Torsten Duwe <duwe@suse.com>
