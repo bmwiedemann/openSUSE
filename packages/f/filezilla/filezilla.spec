@@ -16,12 +16,12 @@
 #
 
 
-%define libversion 3.70.5
-%define libfilezillaversion 0.55.5
-%define libfzsshversion 1.2.1
+%define libversion 3.70.6
+%define libfilezillaversion 0.56.1
+%define libfzsshversion 1.3.0
 
 Name:           filezilla
-Version:        3.70.5
+Version:        3.70.6
 Release:        0
 Summary:        A GUI FTP and SFTP Client
 License:        GPL-2.0-or-later
