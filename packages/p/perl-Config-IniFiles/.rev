@@ -388,4 +388,13 @@
     <comment></comment>
     <requestid>788142</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>90003f1e7130459e343b6974cccff714</srcmd5>
+    <version>3.001000</version>
+    <time>1781285114</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.001000
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes</comment>
+    <requestid>1358718</requestid>
+  </revision>
 </revisionlist>

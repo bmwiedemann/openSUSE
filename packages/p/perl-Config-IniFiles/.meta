@@ -4,5 +4,4 @@
 outside your Perl script. Configurations can be imported (inherited,
 stacked,...), sections can be grouped, and settings can be accessed from a
 tied hash.</description>
-  <devel project="devel:languages:perl" package="perl-Config-IniFiles"/>
 </package>

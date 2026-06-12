@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Config-IniFiles
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,24 +16,24 @@
 #
 
 
-Name:           perl-Config-IniFiles
-Version:        3.000003
-Release:        0
 %define cpan_name Config-IniFiles
-Summary:        Module for reading .ini-style configuration files
+Name:           perl-Config-IniFiles
+Version:        3.001000
+Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
-Url:            https://metacpan.org/release/%{cpan_name}
+Summary:        Module for reading .ini-style configuration files
+URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SH/SHLOMIF/%{cpan_name}-%{version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(IO::Scalar)
 BuildRequires:  perl(List::Util) >= 1.33
-BuildRequires:  perl(Module::Build) >= 0.280000
+BuildRequires:  perl(Module::Build) >= 0.280
 BuildRequires:  perl(Test::More) >= 0.88
+BuildRequires:  perl(autodie)
 BuildRequires:  perl(parent)
 Requires:       perl(IO::Scalar)
 Requires:       perl(List::Util) >= 1.33
@@ -46,21 +46,20 @@ stacked,...), sections can be grouped, and settings can be accessed from a
 tied hash.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes OLD-Changes.txt README
 %license LICENSE
 
