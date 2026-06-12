@@ -346,4 +346,31 @@
     <comment></comment>
     <requestid>1183685</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>0bca8c39064e21ee5f6c79a8b95c9b64</srcmd5>
+    <version>2.860.0</version>
+    <time>1781285110</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.860.0 (2.86)
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+  2.86    * Fix CVE-2026-11526, command injection via 2-arg open() in _make_filehandle.
+  	  CWE-78, CWE-73 (Reported and fixed by Paul Johnson)
+  2.85    * Tolerate runtime TIFF decode failures in autodetect (GH #62)
+  	* Replace cpm with cpanm in github actions
+  	* Fixed a minor precedence bug in t/z_manifest.t
+  2.84    * Added Makefile.PL --with and --without options to bypass autodetection
+  	  errors or upstream libgd or subsequent library errors, as
+  	  libtiff 4.5.1+git230720 wrongly packaged on ubuntu/debian (GH #55).
+  	* Better support MSWin32 without gdlib.pc. Requires manual --options and
+  	  --lib_gd_path.
+  	* Workaround broken ExtUtils::PkgConfig-&gt;find (GH #61)
+  	* Fixed snprintf for newer MSVC (&gt;= VS 2015)
+  	* Added GD::Image::supported() image types method.
+  	* Added newFromTiffData() method.
+  	* Fixed t/GD.t for unsupported image types.
+  	* Add GIFANIM to the default since 2.0.33 (PeterCJ GH #56)
+  	* Honor PKG_CONFIG_PATH for finding gdlib.pc (PeterCJ GH #57)
+  	* Add demos/png2jpeg.pl</comment>
+    <requestid>1358717</requestid>
+  </revision>
 </revisionlist>

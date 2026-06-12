@@ -4,5 +4,4 @@
 (version 2.01 or higher; see below). GD allows you to create color drawings
 using a large number of graphics primitives, and emit the drawings as PNG
 files.</description>
-  <devel project="devel:languages:perl" package="perl-GD"/>
 </package>
