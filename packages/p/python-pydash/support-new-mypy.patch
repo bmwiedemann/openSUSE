@@ -15,130 +15,912 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_arrays.py
 ===================================================================
 --- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_arrays.py
 +++ pydash-8.0.6/tests/pytest_mypy_testing/test_arrays.py
-@@ -93,8 +93,8 @@ def test_mypy_find_last_index() -> None:
+@@ -7,32 +7,32 @@ import pydash as _
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_chunk() -> None:
+-    reveal_type(_.chunk([1, 2, 3, 4, 5], 2))  # R: builtins.list[typing.Sequence[builtins.int]]
++    reveal_type(_.chunk([1, 2, 3, 4, 5], 2))  # R: list[typing.Sequence[int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_compact() -> None:
+-    reveal_type(_.compact([True, False, None]))  # R: builtins.list[builtins.bool]
+-    reveal_type(_.compact(['', 'hello', None]))  # R: builtins.list[builtins.str]
+-    reveal_type(_.compact([0, 1, None]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.compact([0, 1]))  # R: builtins.list[builtins.int]
++    reveal_type(_.compact([True, False, None]))  # R: list[bool]
++    reveal_type(_.compact(['', 'hello', None]))  # R: list[str]
++    reveal_type(_.compact([0, 1, None]))  # R: list[int]
++    reveal_type(_.compact([0, 1]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_concat() -> None:
+-    reveal_type(_.concat([1, 2], [3, 4]))  # R: builtins.list[builtins.int]
++    reveal_type(_.concat([1, 2], [3, 4]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_difference() -> None:
+-    reveal_type(_.difference([1, 2, 3], [1], [2]))  # R: builtins.list[builtins.int]
++    reveal_type(_.difference([1, 2, 3], [1], [2]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_difference_by() -> None:
+-    reveal_type(_.difference_by([1.2, 1.5, 1.7, 2.8], [0.9, 3.2], round))  # R: builtins.list[builtins.float]
++    reveal_type(_.difference_by([1.2, 1.5, 1.7, 2.8], [0.9, 3.2], round))  # R: list[float]
+ 
+-    reveal_type(_.difference_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.difference_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -42,118 +42,118 @@ def test_mypy_difference_with() -> None:
+     def comparator(a: str, b: str) -> bool:
+         return a[0] == b[0]
+ 
+-    reveal_type(_.difference_with(array, *others, comparator=comparator))  # R: builtins.list[builtins.str]
++    reveal_type(_.difference_with(array, *others, comparator=comparator))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_drop() -> None:
+-    reveal_type(_.drop([1, 2, 3, 4], 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.drop([1, 2, 3, 4], 2))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_drop_right() -> None:
+-    reveal_type(_.drop_right([1, 2, 3, 4], 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.drop_right([1, 2, 3, 4], 2))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_drop_right_while() -> None:
+-    reveal_type(_.drop_right_while([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.drop_right_while([1, 2, 3, 4], lambda x: x >= 3))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_drop_while() -> None:
+-    reveal_type(_.drop_while([1, 2, 3, 4], lambda x: x < 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.drop_while([1, 2, 3, 4], lambda x: x < 3))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_duplicates() -> None:
+-    reveal_type(_.duplicates([0, 1, 3, 2, 3, 1]))  # R: builtins.list[builtins.int]
++    reveal_type(_.duplicates([0, 1, 3, 2, 3, 1]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_fill() -> None:
+-    reveal_type(_.fill([1, 2, 3, 4, 5], 0))  # R: builtins.list[builtins.int]
+-    reveal_type(_.fill([1, 2, 3, 4, 5], 0, 1, 3))  # R: builtins.list[builtins.int]
+-    reveal_type(_.fill([1, 2, 3, 4, 5], 0, 0, 100))  # R: builtins.list[builtins.int]
++    reveal_type(_.fill([1, 2, 3, 4, 5], 0))  # R: list[int]
++    reveal_type(_.fill([1, 2, 3, 4, 5], 0, 1, 3))  # R: list[int]
++    reveal_type(_.fill([1, 2, 3, 4, 5], 0, 0, 100))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find_index() -> None:
+-    reveal_type(_.find_index([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int
+-    reveal_type(_.find_index([1, 2, 3, 4], lambda x: x > 4))  # R: builtins.int
+-    reveal_type(_.find_index([{"a": 0, "b": 3}, {"a": "1", "c": 5}], {"a": 0}))  # R: builtins.int
++    reveal_type(_.find_index([1, 2, 3, 4], lambda x: x >= 3))  # R: int
++    reveal_type(_.find_index([1, 2, 3, 4], lambda x: x > 4))  # R: int
++    reveal_type(_.find_index([{"a": 0, "b": 3}, {"a": "1", "c": 5}], {"a": 0}))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find_last_index() -> None:
+-    reveal_type(_.find_last_index([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int
+-    reveal_type(_.find_last_index([1, 2, 3, 4], lambda x: x > 4))  # R: builtins.int
+-    reveal_type(_.find_last_index([{"a": 0, "b": 3}, {"a": "1", "c": 5}], {"a": 0}))  # R: builtins.int
++    reveal_type(_.find_last_index([1, 2, 3, 4], lambda x: x >= 3))  # R: int
++    reveal_type(_.find_last_index([1, 2, 3, 4], lambda x: x > 4))  # R: int
++    reveal_type(_.find_last_index([{"a": 0, "b": 3}, {"a": "1", "c": 5}], {"a": 0}))  # R: int
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_flatten() -> None:
--    my_list: t.List[t.List[t.Union[int, t.List[int]]]] = [[1], [2, [3]], [[4]]]
+     my_list: t.List[t.List[t.Union[int, t.List[int]]]] = [[1], [2, [3]], [[4]]]
 -    reveal_type(_.flatten(my_list))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int]]]
-+    my_list: t.List[t.List[int | t.List[int]]] = [[1], [2, [3]], [[4]]]
-+    reveal_type(_.flatten(my_list))  # R: builtins.list[builtins.int | builtins.list[builtins.int]]
++    reveal_type(_.flatten(my_list))  # R: list[int | list[int]]
  
  
  @pytest.mark.mypy_testing
-@@ -109,8 +109,8 @@ def test_mypy_flatten_depth() -> None:
+ def test_mypy_flatten_deep() -> None:
+-    reveal_type(_.flatten_deep([[1], [2, [3]], [[4]]]))  # R: builtins.list[Any]
++    reveal_type(_.flatten_deep([[1], [2, [3]], [[4]]]))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_flatten_depth() -> None:
+-    reveal_type(_.flatten_depth([[[1], [2, [3]], [[4]]]], 1))  # R: builtins.list[Any]
++    reveal_type(_.flatten_depth([[[1], [2, [3]], [[4]]]], 1))  # R: list[Any]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_from_pairs() -> None:
--    my_list: t.List[t.List[t.Union[str, int]]] = [['a', 1], ['b', 2]]
+     my_list: t.List[t.List[t.Union[str, int]]] = [['a', 1], ['b', 2]]
 -    reveal_type(_.from_pairs(my_list))  # R: builtins.dict[Union[builtins.str, builtins.int], Union[builtins.str, builtins.int]]
-+    my_list: t.List[t.List[str | int]] = [['a', 1], ['b', 2]]
-+    reveal_type(_.from_pairs(my_list))  # R: builtins.dict[builtins.str | builtins.int, builtins.str | builtins.int]
++    reveal_type(_.from_pairs(my_list))  # R: dict[str | int, str | int]
  
      my_list2: t.List[t.Tuple[str, int]] = [('a', 1), ('b', 2)]
-     reveal_type(_.from_pairs(my_list2))  # R: builtins.dict[builtins.str, builtins.int]
-@@ -118,7 +118,7 @@ def test_mypy_from_pairs() -> None:
+-    reveal_type(_.from_pairs(my_list2))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.from_pairs(my_list2))  # R: dict[str, int]
+ #
  #
  @pytest.mark.mypy_testing
  def test_mypy_head() -> None:
 -    reveal_type(_.head([1, 2, 3, 4]))  # R: Union[builtins.int, None]
-+    reveal_type(_.head([1, 2, 3, 4]))  # R: builtins.int | None
++    reveal_type(_.head([1, 2, 3, 4]))  # R: int | None
  
  
  @pytest.mark.mypy_testing
-@@ -135,7 +135,8 @@ def test_mypy_initial() -> None:
+ def test_mypy_index_of() -> None:
+-    reveal_type(_.index_of([1, 2, 3, 4], 2))  # R: builtins.int
+-    reveal_type(_.index_of([2, 1, 2, 3], 2, from_index=1))  # R: builtins.int
++    reveal_type(_.index_of([1, 2, 3, 4], 2))  # R: int
++    reveal_type(_.index_of([2, 1, 2, 3], 2, from_index=1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_initial() -> None:
+-    reveal_type(_.initial([1, 2, 3, 4]))  # R: typing.Sequence[builtins.int]
++    reveal_type(_.initial([1, 2, 3, 4]))  # R: typing.Sequence[int]
+ 
+ 
  @pytest.mark.mypy_testing
  def test_mypy_intercalate() -> None:
      my_list: t.List[t.List[int]] = [[2], [3]]
 -    reveal_type(_.intercalate(my_list, 'x'))  # R: builtins.list[Union[builtins.int, builtins.str]]
-+    reveal_type(_.intercalate(my_list, 'x'))  # R: builtins.list[builtins.int | builtins.str]
-+
++    reveal_type(_.intercalate(my_list, 'x'))  # R: list[int | str]
  
  
  @pytest.mark.mypy_testing
-@@ -168,13 +169,13 @@ def test_mypy_intersection_with() -> Non
+ def test_mypy_interleave() -> None:
+-    reveal_type(_.interleave([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: builtins.list[builtins.int]
++    reveal_type(_.interleave([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_intersection() -> None:
+-    reveal_type(_.intersection([1, 2, 3], [1, 2, 3, 4, 5], [2, 3]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.intersection([1, 2, 3]))  # R: builtins.list[builtins.int]
++    reveal_type(_.intersection([1, 2, 3], [1, 2, 3, 4, 5], [2, 3]))  # R: list[int]
++    reveal_type(_.intersection([1, 2, 3]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_intersection_by() -> None:
+-    reveal_type(_.intersection_by([1.2, 1.5, 1.7, 2.8], [0.9, 3.2], round))  # R: builtins.list[builtins.float]
++    reveal_type(_.intersection_by([1.2, 1.5, 1.7, 2.8], [0.9, 3.2], round))  # R: list[float]
+ 
+-    reveal_type(_.intersection_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.intersection_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -163,24 +163,24 @@ def test_mypy_intersection_with() -> Non
+     def comparator(a: str, b:str) -> bool:
+         return a[0] == b[0]
+ 
+-    reveal_type(_.intersection_with(array, *others, comparator=comparator))  # R: builtins.list[builtins.str]
++    reveal_type(_.intersection_with(array, *others, comparator=comparator))  # R: list[str]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_intersperse() -> None:
--    my_list: t.List[t.Union[int, t.List[int]]] = [1, [2], [3], 4]
+     my_list: t.List[t.Union[int, t.List[int]]] = [1, [2], [3], 4]
 -    reveal_type(_.intersperse(my_list, 'x'))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int], builtins.str]]
-+   my_list: t.List[int | t.List[int]] = [1, [2], [3], 4]
-+   reveal_type(_.intersperse(my_list, 'x'))  # R: builtins.list[builtins.int | builtins.list[builtins.int] | builtins.str]
++    reveal_type(_.intersperse(my_list, 'x'))  # R: list[int | list[int] | str]
  
  
  @pytest.mark.mypy_testing
  def test_mypy_last() -> None:
 -    reveal_type(_.last([1, 2, 3, 4]))  # R: Union[builtins.int, None]
-+    reveal_type(_.last([1, 2, 3, 4]))  # R: builtins.int | None
++    reveal_type(_.last([1, 2, 3, 4]))  # R: int | None
  
  
  @pytest.mark.mypy_testing
-@@ -193,8 +194,8 @@ def test_mypy_mapcat() -> None:
+ def test_mypy_last_index_of() -> None:
+-    reveal_type(_.last_index_of([1, 2, 2, 4], 2))  # R: builtins.int
+-    reveal_type(_.last_index_of([1, 2, 2, 4], 2, from_index=1))  # R: builtins.int
++    reveal_type(_.last_index_of([1, 2, 2, 4], 2))  # R: int
++    reveal_type(_.last_index_of([1, 2, 2, 4], 2, from_index=1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -188,227 +188,227 @@ def test_mypy_mapcat() -> None:
+     def to_list(x: int) -> t.List[int]:
+         return list(range(x))
+ 
+-    reveal_type(_.mapcat(list(range(4)), to_list))  # R: builtins.list[builtins.int]
++    reveal_type(_.mapcat(list(range(4)), to_list))  # R: list[int]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_nth() -> None:
 -    reveal_type(_.nth([1, 2, 3], 0))  # R: Union[builtins.int, None]
 -    reveal_type(_.nth([11, 22, 33]))  # R: Union[builtins.int, None]
-+    reveal_type(_.nth([1, 2, 3], 0))  # R: builtins.int | None
-+    reveal_type(_.nth([11, 22, 33]))  # R: builtins.int | None
++    reveal_type(_.nth([1, 2, 3], 0))  # R: int | None
++    reveal_type(_.nth([11, 22, 33]))  # R: int | None
  
  
  @pytest.mark.mypy_testing
-@@ -235,8 +236,7 @@ def test_mypy_pull_at() -> None:
+ def test_mypy_pop() -> None:
+     array = [1, 2, 3, 4]
+-    reveal_type(_.pop(array))  # R: builtins.int
+-    reveal_type(_.pop(array, index=0))  # R: builtins.int
++    reveal_type(_.pop(array))  # R: int
++    reveal_type(_.pop(array, index=0))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pull() -> None:
+-    reveal_type(_.pull([1, 2, 2, 3, 3, 4], 2, 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.pull([1, 2, 2, 3, 3, 4], 2, 3))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pull_all() -> None:
+-    reveal_type(_.pull_all([1, 2, 2, 3, 3, 4], [2, 3]))  # R: builtins.list[builtins.int]
++    reveal_type(_.pull_all([1, 2, 2, 3, 3, 4], [2, 3]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pull_all_by() -> None:
+     array = [{'x': 1}, {'x': 2}, {'x': 3}, {'x': 1}]
+-    reveal_type(_.pull_all_by(array, [{'x': 1}, {'x': 3}], 'x'))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.pull_all_by(array, [{'x': 1}, {'x': 3}], 'x'))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pull_all_with() -> None:
+     array = [{'x': 1, 'y': 2}, {'x': 3, 'y': 4}, {'x': 5, 'y': 6}]
+-    reveal_type(_.pull_all_with(array, [{'x': 3, 'y': 4}], lambda a, b: a == b))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
+-    reveal_type(_.pull_all_with(array, [{'x': 3, 'y': 4}], lambda a, b: a != b))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.pull_all_with(array, [{'x': 3, 'y': 4}], lambda a, b: a == b))  # R: list[dict[str, int]]
++    reveal_type(_.pull_all_with(array, [{'x': 3, 'y': 4}], lambda a, b: a != b))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pull_at() -> None:
+-    reveal_type(_.pull_at([1, 2, 3, 4], 0, 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.pull_at([1, 2, 3, 4], 0, 2))  # R: list[int]
+ 
+ 
  @pytest.mark.mypy_testing
  def test_mypy_push() -> None:
      array = [1, 2, 3]
 -    reveal_type(_.push(array, [4], [6]))  # R: builtins.list[Union[builtins.int, builtins.list[builtins.int]]]
--
-+    reveal_type(_.push(array, [4], [6]))  # R: builtins.list[builtins.int | builtins.list[builtins.int]]
++    reveal_type(_.push(array, [4], [6]))  # R: list[int | list[int]]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_remove() -> None:
-@@ -366,7 +366,7 @@ def test_mypy_take_while() -> None:
+-    reveal_type(_.remove([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.remove([1, 2, 3, 4], lambda x: x >= 3))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reverse() -> None:
+-    reveal_type(_.reverse([1, 2, 3, 4]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.reverse("hello"))  # R: builtins.str
++    reveal_type(_.reverse([1, 2, 3, 4]))  # R: list[int]
++    reveal_type(_.reverse("hello"))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_shift() -> None:
+     array = [1, 2, 3, 4]
+-    reveal_type(_.shift(array))  # R: builtins.int
++    reveal_type(_.shift(array))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_slice_() -> None:
+-    reveal_type(_.slice_([1, 2, 3, 4]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.slice_([1, 2, 3, 4], 1))  # R: builtins.list[builtins.int]
+-    reveal_type(_.slice_([1, 2, 3, 4], 1, 3))  # R: builtins.list[builtins.int]
+-    reveal_type(_.slice_("hello", 1, 3))  # R: builtins.str
++    reveal_type(_.slice_([1, 2, 3, 4]))  # R: list[int]
++    reveal_type(_.slice_([1, 2, 3, 4], 1))  # R: list[int]
++    reveal_type(_.slice_([1, 2, 3, 4], 1, 3))  # R: list[int]
++    reveal_type(_.slice_("hello", 1, 3))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sort() -> None:
+-    reveal_type(_.sort([2, 1, 4, 3]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.sort([2, 1, 4, 3], reverse=True))  # R: builtins.list[builtins.int]
++    reveal_type(_.sort([2, 1, 4, 3]))  # R: list[int]
++    reveal_type(_.sort([2, 1, 4, 3], reverse=True))  # R: list[int]
+ 
+     value = _.sort(
+         [{'a': 2, 'b': 1}, {'a': 3, 'b': 2}, {'a': 0, 'b': 3}],
+         key=lambda item: item['a']
+     )
+-    reveal_type(value)  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(value)  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_index() -> None:
+-    reveal_type(_.sorted_index([1, 2, 2, 3, 4], 2))  # R: builtins.int
++    reveal_type(_.sorted_index([1, 2, 2, 3, 4], 2))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_index_by() -> None:
+     array = [{'x': 4}, {'x': 5}]
+-    reveal_type(_.sorted_index_by(array, {'x': 4}, lambda o: o['x']))  # R: builtins.int
+-    reveal_type(_.sorted_index_by(array, {'x': 4}, 'x'))  # R: builtins.int
++    reveal_type(_.sorted_index_by(array, {'x': 4}, lambda o: o['x']))  # R: int
++    reveal_type(_.sorted_index_by(array, {'x': 4}, 'x'))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_index_of() -> None:
+-    reveal_type(_.sorted_index_of([3, 5, 7, 10], 3))  # R: builtins.int
+-    reveal_type(_.sorted_index_of([10, 10, 5, 7, 3], 10))  # R: builtins.int
++    reveal_type(_.sorted_index_of([3, 5, 7, 10], 3))  # R: int
++    reveal_type(_.sorted_index_of([10, 10, 5, 7, 3], 10))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_last_index() -> None:
+-    reveal_type(_.sorted_last_index([1, 2, 2, 3, 4], 2))  # R: builtins.int
++    reveal_type(_.sorted_last_index([1, 2, 2, 3, 4], 2))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_last_index_by() -> None:
+     array = [{'x': 4}, {'x': 5}]
+-    reveal_type(_.sorted_last_index_by(array, {'x': 4}, lambda o: o['x']))  # R: builtins.int
+-    reveal_type(_.sorted_last_index_by(array, {'x': 4}, 'x'))  # R: builtins.int
++    reveal_type(_.sorted_last_index_by(array, {'x': 4}, lambda o: o['x']))  # R: int
++    reveal_type(_.sorted_last_index_by(array, {'x': 4}, 'x'))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_last_index_of() -> None:
+-    reveal_type(_.sorted_last_index_of([4, 5, 5, 5, 6], 5))  # R: builtins.int
+-    reveal_type(_.sorted_last_index_of([6, 5, 5, 5, 4], 6))  # R: builtins.int
++    reveal_type(_.sorted_last_index_of([4, 5, 5, 5, 6], 5))  # R: int
++    reveal_type(_.sorted_last_index_of([6, 5, 5, 5, 4], 6))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_uniq() -> None:
+-    reveal_type(_.sorted_uniq([4, 2, 2, 5]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.sorted_uniq([-2, -2, 4, 1]))  # R: builtins.list[builtins.int]
++    reveal_type(_.sorted_uniq([4, 2, 2, 5]))  # R: list[int]
++    reveal_type(_.sorted_uniq([-2, -2, 4, 1]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sorted_uniq_by() -> None:
+-    reveal_type(_.sorted_uniq_by([3, 2, 1, 3, 2, 1], lambda val: val % 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.sorted_uniq_by([3, 2, 1, 3, 2, 1], lambda val: val % 2))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_splice() -> None:
+     array = [1, 2, 3, 4]
+-    reveal_type(_.splice(array, 1))  # R: builtins.list[builtins.int]
++    reveal_type(_.splice(array, 1))  # R: list[int]
+ 
+     array = [1, 2, 3, 4]
+-    reveal_type(_.splice(array, 1, 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.splice(array, 1, 2))  # R: list[int]
+ 
+-    reveal_type(_.splice(array, 1, 2, 0, 0))  # R: builtins.list[builtins.int]
++    reveal_type(_.splice(array, 1, 2, 0, 0))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_split_at() -> None:
+-    reveal_type(_.split_at([1, 2, 3, 4], 2))  # R: builtins.list[typing.Sequence[builtins.int]]
++    reveal_type(_.split_at([1, 2, 3, 4], 2))  # R: list[typing.Sequence[int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_tail() -> None:
+-    reveal_type(_.tail([1, 2, 3, 4]))  # R: typing.Sequence[builtins.int]
++    reveal_type(_.tail([1, 2, 3, 4]))  # R: typing.Sequence[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_take() -> None:
+-    reveal_type(_.take([1, 2, 3, 4], 2))  # R: typing.Sequence[builtins.int]
++    reveal_type(_.take([1, 2, 3, 4], 2))  # R: typing.Sequence[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_take_right() -> None:
+-    reveal_type(_.take_right([1, 2, 3, 4], 2))  # R: typing.Sequence[builtins.int]
++    reveal_type(_.take_right([1, 2, 3, 4], 2))  # R: typing.Sequence[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_take_right_while() -> None:
+-    reveal_type(_.take_right_while([1, 2, 3, 4], lambda x: x >= 3))  # R: typing.Sequence[builtins.int]
++    reveal_type(_.take_right_while([1, 2, 3, 4], lambda x: x >= 3))  # R: typing.Sequence[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_take_while() -> None:
+-    reveal_type(_.take_while([1, 2, 3, 4], lambda x: x < 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.take_while([1, 2, 3, 4], lambda x: x < 3))  # R: list[int]
+ 
+ 
  @pytest.mark.mypy_testing
  def test_mypy_union() -> None:
-     reveal_type(_.union([1, 2, 3], [2, 3, 4], [3, 4, 5]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.union([1, 2, 3], [2, 3, 4], [3, 4, 5]))  # R: builtins.list[builtins.int]
 -    reveal_type(_.union([1, 2, 3], ["hello"]))  # R: builtins.list[Union[builtins.int, builtins.str]]
-+    reveal_type(_.union([1, 2, 3], ["hello"]))  # R: builtins.list[builtins.int | builtins.str]
++    reveal_type(_.union([1, 2, 3], [2, 3, 4], [3, 4, 5]))  # R: list[int]
++    reveal_type(_.union([1, 2, 3], ["hello"]))  # R: list[int | str]
  
  
  @pytest.mark.mypy_testing
-@@ -403,12 +403,12 @@ def test_mypy_uniq_with() -> None:
+ def test_mypy_union_by() -> None:
+-    reveal_type(_.union_by([1, 2, 3], [2, 3, 4], iteratee=lambda x: x % 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.union_by([1, 2, 3], [2, 3, 4], iteratee=lambda x: x % 2))  # R: list[int]
+ 
+-    reveal_type(_.union_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.union_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_union_with() -> None:
+     comparator = lambda a, b: (a % 2) == (b % 2)
+-    reveal_type(_.union_with([1, 2, 3], [2, 3, 4], comparator=comparator))  # R: builtins.list[builtins.int]
+-    reveal_type(_.union_with([1, 2, 3], [2, 3, 4]))  # R: builtins.list[builtins.int]
++    reveal_type(_.union_with([1, 2, 3], [2, 3, 4], comparator=comparator))  # R: list[int]
++    reveal_type(_.union_with([1, 2, 3], [2, 3, 4]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_uniq() -> None:
+-    reveal_type(_.uniq([1, 2, 3, 1, 2, 3]))  # R: builtins.list[builtins.int]
++    reveal_type(_.uniq([1, 2, 3, 1, 2, 3]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_uniq_by() -> None:
+-    reveal_type(_.uniq_by([1, 2, 3, 1, 2, 3], lambda val: val % 2))  # R: builtins.list[builtins.int]
+-    reveal_type(_.uniq_by([{"hello": 1}, {"hello": 1}], lambda val: val["hello"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.uniq_by([1, 2, 3, 1, 2, 3], lambda val: val % 2))  # R: list[int]
++    reveal_type(_.uniq_by([{"hello": 1}, {"hello": 1}], lambda val: val["hello"]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_uniq_with() -> None:
+-    reveal_type(_.uniq_with([1, 2, 3, 4, 5], lambda a, b: (a % 2) == (b % 2)))  # R: builtins.list[builtins.int]
++    reveal_type(_.uniq_with([1, 2, 3, 4, 5], lambda a, b: (a % 2) == (b % 2)))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
  def test_mypy_unshift() -> None:
      array = [1, 2, 3, 4]
-     reveal_type(_.unshift(array, -1, -2))  # R: builtins.list[builtins.int]
+-    reveal_type(_.unshift(array, -1, -2))  # R: builtins.list[builtins.int]
 -    reveal_type(_.unshift(array, "hello"))  # R: builtins.list[Union[builtins.int, builtins.str]]
-+    reveal_type(_.unshift(array, "hello"))  # R: builtins.list[builtins.int | builtins.str]
++    reveal_type(_.unshift(array, -1, -2))  # R: list[int]
++    reveal_type(_.unshift(array, "hello"))  # R: list[int | str]
  
  
  @pytest.mark.mypy_testing
  def test_mypy_unzip() -> None:
 -    reveal_type(_.unzip([(1, 4, 7), (2, 5, 8), (3, 6, 9)]))  # R: builtins.list[Tuple[builtins.int, builtins.int, builtins.int]]
-+    reveal_type(_.unzip([(1, 4, 7), (2, 5, 8), (3, 6, 9)]))  # R: builtins.list[tuple[builtins.int, builtins.int, builtins.int]]
++    reveal_type(_.unzip([(1, 4, 7), (2, 5, 8), (3, 6, 9)]))  # R: list[tuple[int, int, int]]
  
  
  @pytest.mark.mypy_testing
-@@ -446,8 +446,8 @@ def test_mypy_xor_with() -> None:
+@@ -416,52 +416,52 @@ def test_mypy_unzip_with() -> None:
+     def add(x: int, y: int) -> int:
+         return x + y
+ 
+-    reveal_type(_.unzip_with([[1, 10, 100], [2, 20, 200]], add))  # R: builtins.list[builtins.int]
++    reveal_type(_.unzip_with([[1, 10, 100], [2, 20, 200]], add))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_without() -> None:
+-    reveal_type(_.without([1, 2, 3, 2, 4, 4], 2, 4))  # R: builtins.list[builtins.int]
++    reveal_type(_.without([1, 2, 3, 2, 4, 4], 2, 4))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_xor() -> None:
+-    reveal_type(_.xor([1, 3, 4], [1, 2, 4], [2]))  # R: builtins.list[builtins.int]
++    reveal_type(_.xor([1, 3, 4], [1, 2, 4], [2]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_xor_by() -> None:
+-    reveal_type(_.xor_by([2.1, 1.2], [2.3, 3.4], round))  # R: builtins.list[builtins.float]
+-    reveal_type(_.xor_by([{'x': 1}], [{'x': 2}, {'x': 1}], iteratee='x'))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.xor_by([2.1, 1.2], [2.3, 3.4], round))  # R: list[float]
++    reveal_type(_.xor_by([{'x': 1}], [{'x': 2}, {'x': 1}], iteratee='x'))  # R: list[dict[str, int]]
+ 
+-    reveal_type(_.xor_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.xor_by([{"hello": 1}], [{"hello": 2}], lambda d: d["hello"]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_xor_with() -> None:
+     objects = [{'x': 1, 'y': 2}, {'x': 2, 'y': 1}]
+     others = [{'x': 1, 'y': 1}, {'x': 1, 'y': 2}]
+-    reveal_type(_.xor_with(objects, others, lambda a, b: a == b))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.xor_with(objects, others, lambda a, b: a == b))  # R: list[dict[str, int]]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_zip_() -> None:
 -    reveal_type(_.zip_([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: builtins.list[Tuple[builtins.int, builtins.int, builtins.int]]
 -    reveal_type(_.zip_([1, 2, 3], ["one", "two", "three"]))  # R: builtins.list[Tuple[builtins.int, builtins.str]]
-+    reveal_type(_.zip_([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: builtins.list[tuple[builtins.int, builtins.int, builtins.int]]
-+    reveal_type(_.zip_([1, 2, 3], ["one", "two", "three"]))  # R: builtins.list[tuple[builtins.int, builtins.str]]
++    reveal_type(_.zip_([1, 2, 3], [4, 5, 6], [7, 8, 9]))  # R: list[tuple[int, int, int]]
++    reveal_type(_.zip_([1, 2, 3], ["one", "two", "three"]))  # R: list[tuple[int, str]]
  
  
  @pytest.mark.mypy_testing
+ def test_mypy_zip_object() -> None:
+-    reveal_type(_.zip_object([1, 2, 3], [4, 5, 6]))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.zip_object([1, 2, 3], ["hello", "good", "friend"]))  # R: builtins.dict[builtins.int, builtins.str]
++    reveal_type(_.zip_object([1, 2, 3], [4, 5, 6]))  # R: dict[int, int]
++    reveal_type(_.zip_object([1, 2, 3], ["hello", "good", "friend"]))  # R: dict[int, str]
+ 
+     my_list: t.List[t.Tuple[int, str]] = [(1, "hello"), (2, "good"), (3, "friend")]
+-    reveal_type(_.zip_object(my_list))  # R: builtins.dict[builtins.int, builtins.str]
++    reveal_type(_.zip_object(my_list))  # R: dict[int, str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_zip_object_deep() -> None:
+-    reveal_type(_.zip_object_deep(['a.b.c', 'a.b.d'], [1, 2]))  # R: builtins.dict[Any, Any]
++    reveal_type(_.zip_object_deep(['a.b.c', 'a.b.d'], [1, 2]))  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -469,10 +469,10 @@ def test_mypy_zip_with() -> None:
+     def add(x: int, y: int) -> int:
+         return x + y
+ 
+-    reveal_type(_.zip_with([1, 2], [10, 20], add))  # R: builtins.list[builtins.int]
+-    reveal_type(_.zip_with([1, 2], [10, 20], [100, 200], iteratee=add))  # R: builtins.list[builtins.int]
++    reveal_type(_.zip_with([1, 2], [10, 20], add))  # R: list[int]
++    reveal_type(_.zip_with([1, 2], [10, 20], [100, 200], iteratee=add))  # R: list[int]
+ 
+     def more_hello(s: str, n: int) -> str:
+         return s * n
+ 
+-    reveal_type(_.zip_with(["hello", "hello", "hello"], [1, 2, 3], iteratee=more_hello))  # R: builtins.list[builtins.str]
++    reveal_type(_.zip_with(["hello", "hello", "hello"], [1, 2, 3], iteratee=more_hello))  # R: list[str]
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_chaining.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_chaining.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_chaining.py
+@@ -5,26 +5,26 @@ import pydash as _
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_chain() -> None:
+-    reveal_type(_.chain([1, 2, 3, 4]).map(lambda x: x * 2).sum().value())  # R: builtins.int
++    reveal_type(_.chain([1, 2, 3, 4]).map(lambda x: x * 2).sum().value())  # R: int
+ 
+     summer = _.chain([1, 2, 3, 4]).sum()
+-    reveal_type(summer)  # R: pydash.chaining.chaining.Chain[builtins.int]
++    reveal_type(summer)  # R: pydash.chaining.chaining.Chain[int]
+ 
+     new_summer = summer.plant([1, 2])
+-    reveal_type(new_summer)  # R: pydash.chaining.chaining.Chain[builtins.int]
++    reveal_type(new_summer)  # R: pydash.chaining.chaining.Chain[int]
+ 
+-    reveal_type(new_summer.value())  # R: builtins.int
+-    reveal_type(summer.value())  # R: builtins.int
++    reveal_type(new_summer.value())  # R: int
++    reveal_type(summer.value())  # R: int
+ 
+     def echo(item):
+         print(item)
+ 
+     summer = _.chain([1, 2, 3, 4]).for_each(echo).sum()
+     committed = summer.commit()
+-    reveal_type(committed)  # R: pydash.chaining.chaining.Chain[builtins.int]
++    reveal_type(committed)  # R: pydash.chaining.chaining.Chain[int]
+ 
+-    reveal_type(committed.value())  # R: builtins.int
+-    reveal_type(summer.value())  # R: builtins.int
++    reveal_type(committed.value())  # R: int
++    reveal_type(summer.value())  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -34,4 +34,4 @@ def test_mypy_tap() -> None:
+     def log(value):
+         data.append(value)
+ 
+-    reveal_type(_.chain([1, 2, 3, 4]).map(lambda x: x * 2).tap(log).value())  # R: builtins.list[builtins.int]
++    reveal_type(_.chain([1, 2, 3, 4]).map(lambda x: x * 2).tap(log).value())  # R: list[int]
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_collections.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
+@@ -7,45 +7,45 @@ import pydash as _
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_at() -> None:
+-    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: builtins.list[Union[builtins.int, None]]
+-    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: builtins.list[Union[builtins.int, None]]
+-    reveal_type(_.at({"a": 1, "b": 2, "c": {"d": {"e": 3}}}, "a", ["c", "d", "e"]))  # R: builtins.list[Any]
++    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: list[int | None]
++    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: list[int | None]
++    reveal_type(_.at({"a": 1, "b": 2, "c": {"d": {"e": 3}}}, "a", ["c", "d", "e"]))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_count_by() -> None:
+-    reveal_type(_.count_by([1, 2, 1, 2, 3, 4]))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.count_by(["a", "A", "B", "b"], lambda x: x.lower()))  # R: builtins.dict[builtins.str, builtins.int]
+-    reveal_type(_.count_by({"a": 1, "b": 1, "c": 3, "d": 3}))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.count_by({"5": 5, "6": 6}, lambda x: int(x)))  # R: builtins.dict[builtins.int, builtins.int]
++    reveal_type(_.count_by([1, 2, 1, 2, 3, 4]))  # R: dict[int, int]
++    reveal_type(_.count_by(["a", "A", "B", "b"], lambda x: x.lower()))  # R: dict[str, int]
++    reveal_type(_.count_by({"a": 1, "b": 1, "c": 3, "d": 3}))  # R: dict[int, int]
++    reveal_type(_.count_by({"5": 5, "6": 6}, lambda x: int(x)))  # R: dict[int, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_every() -> None:
+-    reveal_type(_.every([1, True, "hello"]))  # R: builtins.bool
+-    reveal_type(_.every([1, False, "hello"]))  # R: builtins.bool
+-    reveal_type(_.every([{"a": 1}, {"a": True}, {"a": "hello"}], "a"))  # R: builtins.bool
+-    reveal_type(_.every([{"a": 1}, {"a": False}, {"a": "hello"}], "a"))  # R: builtins.bool
+-    reveal_type(_.every([{"a": 1}, {"a": 1}], {"a": 1}))  # R: builtins.bool
+-    reveal_type(_.every([{"a": 1}, {"a": 2}], {"a": 1}))  # R: builtins.bool
++    reveal_type(_.every([1, True, "hello"]))  # R: bool
++    reveal_type(_.every([1, False, "hello"]))  # R: bool
++    reveal_type(_.every([{"a": 1}, {"a": True}, {"a": "hello"}], "a"))  # R: bool
++    reveal_type(_.every([{"a": 1}, {"a": False}, {"a": "hello"}], "a"))  # R: bool
++    reveal_type(_.every([{"a": 1}, {"a": 1}], {"a": 1}))  # R: bool
++    reveal_type(_.every([{"a": 1}, {"a": 2}], {"a": 1}))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_filter_() -> None:
+-    reveal_type(_.filter_([{"a": 1}, {"b": 2}, {"a": 1, "b": 3}], {"a": 1}))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
+-    reveal_type(_.filter_([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.list[builtins.int]
++    reveal_type(_.filter_([{"a": 1}, {"b": 2}, {"a": 1, "b": 3}], {"a": 1}))  # R: list[dict[str, int]]
++    reveal_type(_.filter_([1, 2, 3, 4], lambda x: x >= 3))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find() -> None:
+-    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
+-    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
++    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: int | None
++    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: dict[str, int] | None
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_find_last() -> None:
+-    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
+-    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
++    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: int | None
++    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: dict[str, int] | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -53,18 +53,18 @@ def test_mypy_flat_map() -> None:
+     def listify(n: int) -> t.List[t.List[int]]:
+         return [[n, n]]
+ 
+-    reveal_type(_.flat_map([1, 2], listify))  # R: builtins.list[builtins.list[builtins.int]]
++    reveal_type(_.flat_map([1, 2], listify))  # R: list[list[int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_flat_map_deep() -> None:
+-    reveal_type(_.flat_map_deep([1, 2], lambda n: [[n, n]]))  # R: builtins.list[Any]
++    reveal_type(_.flat_map_deep([1, 2], lambda n: [[n, n]]))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_flat_map_depth() -> None:
+-    reveal_type(_.flat_map_depth([1, 2], lambda n: [[n, n]], 1))  # R: builtins.list[Any]
+-    reveal_type(_.flat_map_depth([1, 2], lambda n: [[n, n]], 2))  # R: builtins.list[Any]
++    reveal_type(_.flat_map_depth([1, 2], lambda n: [[n, n]], 1))  # R: list[Any]
++    reveal_type(_.flat_map_depth([1, 2], lambda n: [[n, n]], 2))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -74,7 +74,7 @@ def test_mypy_for_each() -> None:
+     def cb(x):
+         results[x] = x**2
+ 
+-    reveal_type(_.for_each([1, 2, 3, 4], cb))  # R: builtins.list[builtins.int]
++    reveal_type(_.for_each([1, 2, 3, 4], cb))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -84,37 +84,37 @@ def test_mypy_for_each_right() -> None:
+     def cb(x):
+         results["total"] = x * results["total"]
+ 
+-    reveal_type(_.for_each_right([1, 2, 3, 4], cb))  # R: builtins.list[builtins.int]
++    reveal_type(_.for_each_right([1, 2, 3, 4], cb))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_group_by() -> None:
+-    reveal_type(_.group_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], "a"))  # R: builtins.dict[Any, builtins.list[builtins.dict[builtins.str, builtins.int]]]
+-    reveal_type(_.group_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], lambda d: d == {"a": 1}))  # R: builtins.dict[builtins.bool, builtins.list[builtins.dict[builtins.str, builtins.int]]]
++    reveal_type(_.group_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], "a"))  # R: dict[Any, list[dict[str, int]]]
++    reveal_type(_.group_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], lambda d: d == {"a": 1}))  # R: dict[bool, list[dict[str, int]]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_includes() -> None:
+-    reveal_type(_.includes([1, 2, 3, 4], 2))  # R: builtins.bool
+-    reveal_type(_.includes([1, 2, 3, 4], 2, from_index=2))  # R: builtins.bool
+-    reveal_type(_.includes({"a": 1, "b": 2, "c": 3, "d": 4}, 2))  # R: builtins.bool
++    reveal_type(_.includes([1, 2, 3, 4], 2))  # R: bool
++    reveal_type(_.includes([1, 2, 3, 4], 2, from_index=2))  # R: bool
++    reveal_type(_.includes({"a": 1, "b": 2, "c": 3, "d": 4}, 2))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_invoke_map() -> None:
+-    reveal_type(_.invoke_map([{"a": [{"b": 1}]}, {"a": [{"c": 2}]}], "a[0].items"))  # R: builtins.list[Any]
++    reveal_type(_.invoke_map([{"a": [{"b": 1}]}, {"a": [{"c": 2}]}], "a[0].items"))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_key_by() -> None:
+-    reveal_type(_.key_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], "a"))  # R: builtins.dict[Any, Any]
+-    reveal_type(_.key_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], lambda d: d["a"]))  # R: builtins.dict[builtins.int, builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.key_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], "a"))  # R: dict[Any, Any]
++    reveal_type(_.key_by([{"a": 1, "b": 2}, {"a": 3, "b": 4}], lambda d: d["a"]))  # R: dict[int, dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_map_() -> None:
+-    reveal_type(_.map_([1, 2, 3, 4], str))  # R: builtins.list[builtins.str]
+-    reveal_type(_.map_([{"a": 1, "b": 2}, {"a": 3, "b": 4}, {"a": 5, "b": 6}], "a"))  # R: builtins.list[Any]
++    reveal_type(_.map_([1, 2, 3, 4], str))  # R: list[str]
++    reveal_type(_.map_([{"a": 1, "b": 2}, {"a": 3, "b": 4}, {"a": 5, "b": 6}], "a"))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -126,83 +126,83 @@ def test_mypy_nest() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_order_by() -> None:
+-    reveal_type(_.order_by([{"a": 2, "b": 1}, {"a": 3, "b": 2}, {"a": 1, "b": 3}], ["b", "a"]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
+-    reveal_type(_.order_by([{"a": 2, "b": 1}, {"a": 3, "b": 2}, {"a": 1, "b": 3}], ["a", "b"], [False, True]))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.order_by([{"a": 2, "b": 1}, {"a": 3, "b": 2}, {"a": 1, "b": 3}], ["b", "a"]))  # R: list[dict[str, int]]
++    reveal_type(_.order_by([{"a": 2, "b": 1}, {"a": 3, "b": 2}, {"a": 1, "b": 3}], ["a", "b"], [False, True]))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_partition() -> None:
+-    reveal_type(_.partition([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.list[builtins.list[builtins.int]]
++    reveal_type(_.partition([1, 2, 3, 4], lambda x: x >= 3))  # R: list[list[int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pluck() -> None:
+-    reveal_type(_.pluck([{"a": 1, "b": 2}, {"a": 3, "b": 4}, {"a": 5, "b": 6}], "a"))  # R: builtins.list[Any]
+-    reveal_type(_.pluck([[[0, 1]], [[2, 3]], [[4, 5]]], "0.1"))  # R: builtins.list[Any]
+-    reveal_type(_.pluck([{"a": {"b": [0, 1]}}, {"a": {"b": [2, 3]}}], ["a", "b", 1]))  # R: builtins.list[Any]
++    reveal_type(_.pluck([{"a": 1, "b": 2}, {"a": 3, "b": 4}, {"a": 5, "b": 6}], "a"))  # R: list[Any]
++    reveal_type(_.pluck([[[0, 1]], [[2, 3]], [[4, 5]]], "0.1"))  # R: list[Any]
++    reveal_type(_.pluck([{"a": {"b": [0, 1]}}, {"a": {"b": [2, 3]}}], ["a", "b", 1]))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reduce_() -> None:
+-    reveal_type(_.reduce_([1, 2, 3, 4], lambda total, x: total * x))  # R: builtins.int
+-    reveal_type(_.reduce_(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: builtins.int
++    reveal_type(_.reduce_([1, 2, 3, 4], lambda total, x: total * x))  # R: int
++    reveal_type(_.reduce_(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reduce_right() -> None:
+-    reveal_type(_.reduce_right([1, 2, 3, 4], lambda total, x: total * x))  # R: builtins.int
+-    reveal_type(_.reduce_right(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: builtins.int
++    reveal_type(_.reduce_right([1, 2, 3, 4], lambda total, x: total * x))  # R: int
++    reveal_type(_.reduce_right(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reductions() -> None:
+-    reveal_type(_.reductions([1, 2, 3, 4], lambda total, x: total * x))  # R: builtins.list[builtins.int]
+-    reveal_type(_.reductions(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: builtins.list[builtins.int]
++    reveal_type(_.reductions([1, 2, 3, 4], lambda total, x: total * x))  # R: list[int]
++    reveal_type(_.reductions(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reductions_right() -> None:
+-    reveal_type(_.reductions_right([1, 2, 3, 4], lambda total, x: total * x))  # R: builtins.list[builtins.int]
+-    reveal_type(_.reductions_right(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: builtins.list[builtins.int]
++    reveal_type(_.reductions_right([1, 2, 3, 4], lambda total, x: total * x))  # R: list[int]
++    reveal_type(_.reductions_right(["a", "b", "c"], lambda x, y: x + 1 if y == "b" else x, 1))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reject() -> None:
+-    reveal_type(_.reject([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.list[builtins.int]
+-    reveal_type(_.reject([{"a": 0}, {"a": 1}, {"a": 2}], "a"))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
+-    reveal_type(_.reject([{"a": 0}, {"a": 1}, {"a": 2}], {"a": 1}))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.reject([1, 2, 3, 4], lambda x: x >= 3))  # R: list[int]
++    reveal_type(_.reject([{"a": 0}, {"a": 1}, {"a": 2}], "a"))  # R: list[dict[str, int]]
++    reveal_type(_.reject([{"a": 0}, {"a": 1}, {"a": 2}], {"a": 1}))  # R: list[dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sample() -> None:
+-    reveal_type(_.sample([1, 2, 3, 4, 5]))  # R: builtins.int
++    reveal_type(_.sample([1, 2, 3, 4, 5]))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sample_size() -> None:
+-    reveal_type(_.sample_size([1, 2, 3, 4, 5], 2))  # R: builtins.list[builtins.int]
++    reveal_type(_.sample_size([1, 2, 3, 4, 5], 2))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_shuffle() -> None:
+-    reveal_type(_.shuffle([1, 2, 3, 4]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.shuffle({1: "a", 2: "b"}))  # R: builtins.list[builtins.str]
++    reveal_type(_.shuffle([1, 2, 3, 4]))  # R: list[int]
++    reveal_type(_.shuffle({1: "a", 2: "b"}))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_size() -> None:
+-    reveal_type(_.size([1, 2, 3, 4]))  # R: builtins.int
+-    reveal_type(_.size({"a": 1, "b": 1}))  # R: builtins.int
++    reveal_type(_.size([1, 2, 3, 4]))  # R: int
++    reveal_type(_.size({"a": 1, "b": 1}))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_some() -> None:
+-    reveal_type(_.some([False, True, 0]))  # R: builtins.bool
+-    reveal_type(_.some([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.bool
++    reveal_type(_.some([False, True, 0]))  # R: bool
++    reveal_type(_.some([1, 2, 3, 4], lambda x: x >= 3))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sort_by() -> None:
+-    reveal_type(_.sort_by({"a": 2, "b": 3, "c": 1}))  # R: builtins.list[builtins.int]
+-    reveal_type(_.sort_by({"a": 2, "b": 3, "c": 1}, reverse=True))  # R: builtins.list[builtins.int]
+-    reveal_type(_.sort_by([{"a": 2}, {"a": 3}, {"a": 1}], "a"))  # R: builtins.list[builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.sort_by({"a": 2, "b": 3, "c": 1}))  # R: list[int]
++    reveal_type(_.sort_by({"a": 2, "b": 3, "c": 1}, reverse=True))  # R: list[int]
++    reveal_type(_.sort_by([{"a": 2}, {"a": 3}, {"a": 1}], "a"))  # R: list[dict[str, int]]
 Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
 ===================================================================
 --- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_functions.py
 +++ pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
-@@ -12,7 +12,7 @@ def test_mypy_after() -> None:
+@@ -11,8 +11,8 @@ def test_mypy_after() -> None:
+         return f"{a} {b} {c!r}"
  
      after_func = _.after(func, 1)
-     reveal_type(after_func)  # R: pydash.functions.After[[a: builtins.int, b: builtins.dict[builtins.str, builtins.int], c: builtins.bytes], builtins.str]
+-    reveal_type(after_func)  # R: pydash.functions.After[[a: builtins.int, b: builtins.dict[builtins.str, builtins.int], c: builtins.bytes], builtins.str]
 -    reveal_type(after_func(1, {}, b""))  # R: Union[builtins.str, None]
-+    reveal_type(after_func(1, {}, b""))  # R: builtins.str | None
++    reveal_type(after_func)  # R: pydash.functions.After[[a: int, b: dict[str, int], c: bytes], str]
++    reveal_type(after_func(1, {}, b""))  # R: str | None
  
  
  @pytest.mark.mypy_testing
@@ -148,8 +930,8 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
      ary_func = _.ary(func, 2)
 -    reveal_type(ary_func(1, 2, 3, 4, 5, 6))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
 -    reveal_type(ary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
-+    reveal_type(ary_func(1, 2, 3, 4, 5, 6))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
-+    reveal_type(ary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(ary_func(1, 2, 3, 4, 5, 6))  # R: tuple[int, int, int, int]
++    reveal_type(ary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[int, int, int, int]
  
  
  @pytest.mark.mypy_testing
@@ -158,7 +940,16 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
  
      before_func = _.before(func, 3)
 -    reveal_type(before_func(1, 2, 3))  # R: Union[Tuple[builtins.int, builtins.int, builtins.int], None]
-+    reveal_type(before_func(1, 2, 3))  # R: tuple[builtins.int, builtins.int, builtins.int] | None
++    reveal_type(before_func(1, 2, 3))  # R: tuple[int, int, int] | None
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -42,7 +42,7 @@ def test_mypy_conjoin() -> None:
+         return isinstance(x, int)
+     conjoiner = _.conjoin(is_int, up_3)
+ 
+-    reveal_type(conjoiner([1, 2, 3]))  # R: builtins.bool
++    reveal_type(conjoiner([1, 2, 3]))  # R: bool
  
  
  @pytest.mark.mypy_testing
@@ -167,19 +958,19 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
  
      currier = _.curry(func)
 -    reveal_type(currier)  # R: pydash.functions.CurryThree[builtins.int, builtins.str, builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier)  # R: pydash.functions.CurryThree[builtins.int, builtins.str, builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier)  # R: pydash.functions.CurryThree[int, str, bytes, tuple[int, str, bytes]]
  
      currier1 = currier(1)
 -    reveal_type(currier1)  # R: pydash.functions.CurryTwo[builtins.str, builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier1)  # R: pydash.functions.CurryTwo[builtins.str, builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier1)  # R: pydash.functions.CurryTwo[str, bytes, tuple[int, str, bytes]]
  
      currier2 = currier1("hi")
 -    reveal_type(currier2)  # R: pydash.functions.CurryOne[builtins.bytes, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier2)  # R: pydash.functions.CurryOne[builtins.bytes, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier2)  # R: pydash.functions.CurryOne[bytes, tuple[int, str, bytes]]
  
      currier3 = currier2(b"hi again")
 -    reveal_type(currier3)  # R: Tuple[builtins.int, builtins.str, builtins.bytes]
-+    reveal_type(currier3)  # R: tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(currier3)  # R: tuple[int, str, bytes]
  
  
  @pytest.mark.mypy_testing
@@ -188,19 +979,19 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
  
      currier = _.curry_right(func)
 -    reveal_type(currier)  # R: pydash.functions.CurryRightThree[builtins.bytes, builtins.str, builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier)  # R: pydash.functions.CurryRightThree[builtins.bytes, builtins.str, builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier)  # R: pydash.functions.CurryRightThree[bytes, str, int, tuple[int, str, bytes]]
  
      currier1 = currier(b"hi again")
 -    reveal_type(currier1)  # R: pydash.functions.CurryRightTwo[builtins.str, builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier1)  # R: pydash.functions.CurryRightTwo[builtins.str, builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier1)  # R: pydash.functions.CurryRightTwo[str, int, tuple[int, str, bytes]]
  
      currier2 = currier1("hi")
 -    reveal_type(currier2)  # R: pydash.functions.CurryRightOne[builtins.int, Tuple[builtins.int, builtins.str, builtins.bytes]]
-+    reveal_type(currier2)  # R: pydash.functions.CurryRightOne[builtins.int, tuple[builtins.int, builtins.str, builtins.bytes]]
++    reveal_type(currier2)  # R: pydash.functions.CurryRightOne[int, tuple[int, str, bytes]]
  
      currier3 = currier2(1)
 -    reveal_type(currier3)  # R: Tuple[builtins.int, builtins.str, builtins.bytes]
-+    reveal_type(currier3)  # R: tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(currier3)  # R: tuple[int, str, bytes]
  
  
  @pytest.mark.mypy_testing
@@ -210,8 +1001,8 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
  
 -    reveal_type(debounced)  # R: pydash.functions.Debounce[[a: builtins.int, b: builtins.str], Tuple[builtins.int, builtins.str]]
 -    reveal_type(debounced(5, "hi"))  # R: Tuple[builtins.int, builtins.str]
-+    reveal_type(debounced)  # R: pydash.functions.Debounce[[a: builtins.int, b: builtins.str], tuple[builtins.int, builtins.str]]
-+    reveal_type(debounced(5, "hi"))  # R: tuple[builtins.int, builtins.str]
++    reveal_type(debounced)  # R: pydash.functions.Debounce[[a: int, b: str], tuple[int, str]]
++    reveal_type(debounced(5, "hi"))  # R: tuple[int, str]
  
  
  @pytest.mark.mypy_testing
@@ -220,7 +1011,20 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
          return (a, b)
  
 -    reveal_type(_.delay(func, 0, 5, "hi"))  # R: Tuple[builtins.int, builtins.str]
-+    reveal_type(_.delay(func, 0, 5, "hi"))  # R: tuple[builtins.int, builtins.str]
++    reveal_type(_.delay(func, 0, 5, "hi"))  # R: tuple[int, str]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -109,9 +109,9 @@ def test_mypy_disjoin() -> None:
+     disjoiner = _.disjoin(is_float, is_int)
+ 
+     reveal_type(disjoiner)  # R: pydash.functions.Disjoin[Any]
+-    reveal_type(disjoiner([1, '2', '3']))  # R: builtins.bool
+-    reveal_type(disjoiner([1.0, '2', '3']))  # R: builtins.bool
+-    reveal_type(disjoiner(['1', '2', '3']))  # R: builtins.bool
++    reveal_type(disjoiner([1, '2', '3']))  # R: bool
++    reveal_type(disjoiner([1.0, '2', '3']))  # R: bool
++    reveal_type(disjoiner(['1', '2', '3']))  # R: bool
  
  
  @pytest.mark.mypy_testing
@@ -229,10 +1033,147 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
          return (a, b, c)
  
 -    reveal_type(_.flip(func))  # R: def (builtins.bytes, builtins.str, builtins.int) -> Tuple[builtins.int, builtins.str, builtins.bytes]
-+    reveal_type(_.flip(func))  # R: def (builtins.bytes, builtins.str, builtins.int) -> tuple[builtins.int, builtins.str, builtins.bytes]
++    reveal_type(_.flip(func))  # R: def (bytes, str, int) -> tuple[int, str, bytes]
  
  
  @pytest.mark.mypy_testing
+@@ -134,8 +134,8 @@ def test_mypy_flow() -> None:
+         return sum(x)
+ 
+     ops = _.flow(sum_list, mult_5, div_10, pow_2)
+-    reveal_type(ops)  # R: pydash.functions.Flow[[x: builtins.list[builtins.int]], builtins.float]
+-    reveal_type(ops([1, 2, 3, 4]))  # R: builtins.float
++    reveal_type(ops)  # R: pydash.functions.Flow[[x: list[int]], float]
++    reveal_type(ops([1, 2, 3, 4]))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -150,8 +150,8 @@ def test_mypy_flow_right() -> None:
+         return sum(x)
+ 
+     ops = _.flow_right(mult_5, div_10, pow_2, sum_list)
+-    reveal_type(ops)  # R: pydash.functions.Flow[[x: builtins.list[builtins.int]], builtins.float]
+-    reveal_type(ops([1, 2, 3, 4]))  # R: builtins.float
++    reveal_type(ops)  # R: pydash.functions.Flow[[x: list[int]], float]
++    reveal_type(ops([1, 2, 3, 4]))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -160,9 +160,9 @@ def test_mypy_iterated() -> None:
+         return x * 2
+ 
+     doubler = _.iterated(double)
+-    reveal_type(doubler)  # R: pydash.functions.Iterated[builtins.int]
++    reveal_type(doubler)  # R: pydash.functions.Iterated[int]
+ 
+-    reveal_type(doubler(4, 5))  # R: builtins.int
++    reveal_type(doubler(4, 5))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -175,8 +175,8 @@ def test_mypy_juxtapose() -> None:
+         return x * 4
+ 
+     f = _.juxtapose(double, triple, quadruple)
+-    reveal_type(f)  # R: pydash.functions.Juxtapose[[x: builtins.int], builtins.int]
+-    reveal_type(f(5))  # R: builtins.list[builtins.int]
++    reveal_type(f)  # R: pydash.functions.Juxtapose[[x: int], int]
++    reveal_type(f(5))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -186,7 +186,7 @@ def test_mypy_negate() -> None:
+ 
+     not_is_number = _.negate(is_number)
+     reveal_type(not_is_number)  # R: pydash.functions.Negate[[x: Any]]
+-    reveal_type(not_is_number('1'))  # R: builtins.bool
++    reveal_type(not_is_number('1'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -195,8 +195,8 @@ def test_mypy_once() -> None:
+         return args[0]
+ 
+     oncer = _.once(first_arg)
+-    reveal_type(oncer)  # R: pydash.functions.Once[[*args: builtins.int], builtins.int]
+-    reveal_type(oncer(6))  # R: builtins.int
++    reveal_type(oncer)  # R: pydash.functions.Once[[*args: int], int]
++    reveal_type(oncer(6))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -209,8 +209,8 @@ def test_mypy_over_args() -> None:
+         return [x, y]
+ 
+     modder = _.over_args(in_list, squared, double)
+-    reveal_type(modder)  # R: def (builtins.int, builtins.int) -> builtins.list[builtins.int]
+-    reveal_type(modder(5, 10))  # R: builtins.list[builtins.int]
++    reveal_type(modder)  # R: def (int, int) -> list[int]
++    reveal_type(modder(5, 10))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -219,12 +219,12 @@ def test_mypy_partial() -> None:
+         return array[n:]
+ 
+     dropper = _.partial(cut, [1, 2, 3, 4])
+-    reveal_type(dropper)  # R: pydash.functions.Partial[builtins.list[builtins.int]]
+-    reveal_type(dropper(2))  # R: builtins.list[builtins.int]
++    reveal_type(dropper)  # R: pydash.functions.Partial[list[int]]
++    reveal_type(dropper(2))  # R: list[int]
+ 
+     myrest = _.partial(cut, n=1)
+-    reveal_type(myrest)  # R: pydash.functions.Partial[builtins.list[builtins.int]]
+-    reveal_type(myrest([1, 2, 3, 4]))  # R: builtins.list[builtins.int]
++    reveal_type(myrest)  # R: pydash.functions.Partial[list[int]]
++    reveal_type(myrest([1, 2, 3, 4]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -233,8 +233,8 @@ def test_mypy_partial_right() -> None:
+         return array[n:]
+ 
+     myrest = _.partial_right(cut, 1)
+-    reveal_type(myrest)  # R: pydash.functions.Partial[builtins.list[builtins.int]]
+-    reveal_type(myrest([1, 2, 3, 4]))  # R: builtins.list[builtins.int]
++    reveal_type(myrest)  # R: pydash.functions.Partial[list[int]]
++    reveal_type(myrest([1, 2, 3, 4]))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -243,8 +243,8 @@ def test_mypy_rearg() -> None:
+         return [x, y]
+ 
+     jumble = _.rearg(func, 1, 2, 3)
+-    reveal_type(jumble)  # R: pydash.functions.Rearg[[x: builtins.int, y: builtins.int], builtins.list[builtins.int]]
+-    reveal_type(jumble(1, 2))  # R: builtins.list[builtins.int]
++    reveal_type(jumble)  # R: pydash.functions.Rearg[[x: int, y: int], list[int]]
++    reveal_type(jumble(1, 2))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -253,8 +253,8 @@ def test_mypy_spread() -> None:
+         return 'Hello ' + ', '.join(people) + '!'
+ 
+     greet = _.spread(greet_people)
+-    reveal_type(greet)  # R: pydash.functions.Spread[builtins.str]
+-    reveal_type(greet(['Mike', 'Don', 'Leo']))  # R: builtins.str
++    reveal_type(greet)  # R: pydash.functions.Spread[str]
++    reveal_type(greet(['Mike', 'Don', 'Leo']))  # R: str
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_throttle() -> None:
+@@ -262,8 +262,8 @@ def test_mypy_throttle() -> None:
+         return x
+ 
+     throttled = _.throttle(func, 0)
+-    reveal_type(throttled)  # R: pydash.functions.Throttle[[x: builtins.int], builtins.int]
+-    reveal_type(throttled(5))  # R: builtins.int
++    reveal_type(throttled)  # R: pydash.functions.Throttle[[x: int], int]
++    reveal_type(throttled(5))  # R: int
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unary() -> None:
 @@ -271,9 +271,9 @@ def test_mypy_unary() -> None:
          return (a, b, c, d)
  
@@ -240,9 +1181,9 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
 -    reveal_type(unary_func)  # R: pydash.functions.Ary[Tuple[builtins.int, builtins.int, builtins.int, builtins.int]]
 -    reveal_type(unary_func(1, 2, 3, 4, 5, 6))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
 -    reveal_type(unary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: Tuple[builtins.int, builtins.int, builtins.int, builtins.int]
-+    reveal_type(unary_func)  # R: pydash.functions.Ary[tuple[builtins.int, builtins.int, builtins.int, builtins.int]]
-+    reveal_type(unary_func(1, 2, 3, 4, 5, 6))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
-+    reveal_type(unary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[builtins.int, builtins.int, builtins.int, builtins.int]
++    reveal_type(unary_func)  # R: pydash.functions.Ary[tuple[int, int, int, int]]
++    reveal_type(unary_func(1, 2, 3, 4, 5, 6))  # R: tuple[int, int, int, int]
++    reveal_type(unary_func(1, 2, 3, 4, 5, 6, c=10, d=20))  # R: tuple[int, int, int, int]
  
  
  @pytest.mark.mypy_testing
@@ -252,20 +1193,323 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_functions.py
      wrapper = _.wrap('hello', as_tuple)
 -    reveal_type(wrapper)  # R: pydash.functions.Partial[Tuple[builtins.str, builtins.int]]
 -    reveal_type(wrapper(1))  # R: Tuple[builtins.str, builtins.int]
-+    reveal_type(wrapper)  # R: pydash.functions.Partial[tuple[builtins.str, builtins.int]]
-+    reveal_type(wrapper(1))  # R: tuple[builtins.str, builtins.int]
++    reveal_type(wrapper)  # R: pydash.functions.Partial[tuple[str, int]]
++    reveal_type(wrapper(1))  # R: tuple[str, int]
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
+===================================================================
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_numerical.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
+@@ -8,69 +8,69 @@ import pydash as _
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_add() -> None:
+-    reveal_type(_.add(10, 5))  # R: builtins.int
+-    reveal_type(_.add(10.1, 5))  # R: builtins.float
+-    reveal_type(_.add(10, 5.5))  # R: builtins.float
++    reveal_type(_.add(10, 5))  # R: int
++    reveal_type(_.add(10.1, 5))  # R: float
++    reveal_type(_.add(10, 5.5))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sum_() -> None:
+-    reveal_type(_.sum_([1, 2, 3, 4]))  # R: builtins.int
+-    reveal_type(_.sum_([1.5, 2, 3, 4]))  # R: builtins.float
+-    reveal_type(_.sum_({"hello": 1, "bye": 2}))  # R: builtins.int
++    reveal_type(_.sum_([1, 2, 3, 4]))  # R: int
++    reveal_type(_.sum_([1.5, 2, 3, 4]))  # R: float
++    reveal_type(_.sum_({"hello": 1, "bye": 2}))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_sum_by() -> None:
+-    reveal_type(_.sum_by([1, 2, 3, 4], lambda x: x ** 2))  # R: builtins.int
++    reveal_type(_.sum_by([1, 2, 3, 4], lambda x: x ** 2))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_mean() -> None:
+-    reveal_type(_.mean([1, 2, 3, 4]))  # R: builtins.float
++    reveal_type(_.mean([1, 2, 3, 4]))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_mean_by() -> None:
+-    reveal_type(_.mean_by([1, 2, 3, 4], lambda x: x ** 2))  # R: builtins.float
++    reveal_type(_.mean_by([1, 2, 3, 4], lambda x: x ** 2))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_ceil() -> None:
+-    reveal_type(_.ceil(3.275))  # R: builtins.float
+-    reveal_type(_.ceil(3.215, 1))  # R: builtins.float
+-    reveal_type(_.ceil(6.004, 2))  # R: builtins.float
++    reveal_type(_.ceil(3.275))  # R: float
++    reveal_type(_.ceil(3.215, 1))  # R: float
++    reveal_type(_.ceil(6.004, 2))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_clamp() -> None:
+-    reveal_type(_.clamp(-10, -5, 5))  # R: builtins.int
+-    reveal_type(_.clamp(10, -5, 5))  # R: builtins.int
+-    reveal_type(_.clamp(10, 5))  # R: builtins.int
+-    reveal_type(_.clamp(-10, 5))  # R: builtins.int
++    reveal_type(_.clamp(-10, -5, 5))  # R: int
++    reveal_type(_.clamp(10, -5, 5))  # R: int
++    reveal_type(_.clamp(10, 5))  # R: int
++    reveal_type(_.clamp(-10, 5))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_divide() -> None:
+-    reveal_type(_.divide(20, 5))  # R: builtins.float
+-    reveal_type(_.divide(1.5, 3))  # R: builtins.float
+-    reveal_type(_.divide(None, None))  # R: builtins.float
+-    reveal_type(_.divide(5, None))  # R: builtins.float
++    reveal_type(_.divide(20, 5))  # R: float
++    reveal_type(_.divide(1.5, 3))  # R: float
++    reveal_type(_.divide(None, None))  # R: float
++    reveal_type(_.divide(5, None))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_floor() -> None:
+-    reveal_type(_.floor(3.75))  # R: builtins.float
+-    reveal_type(_.floor(3.215, 1))  # R: builtins.float
+-    reveal_type(_.floor(0.046, 2))  # R: builtins.float
++    reveal_type(_.floor(3.75))  # R: float
++    reveal_type(_.floor(3.215, 1))  # R: float
++    reveal_type(_.floor(0.046, 2))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_max_() -> None:
+-    reveal_type(_.max_([1, 2, 3, 4]))  # R: builtins.int
++    reveal_type(_.max_([1, 2, 3, 4]))  # R: int
+ 
+     empty_int_list: t.List[int] = []
+-    reveal_type(_.max_(empty_int_list, default=-1))  # R: builtins.int
++    reveal_type(_.max_(empty_int_list, default=-1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -78,25 +78,25 @@ def test_mypy_max_by() -> None:
+     def floor(x: float) -> int:
+         return math.floor(x)
+ 
+-    reveal_type(_.max_by([1.0, 1.5, 1.8], floor))  # R: builtins.float
+-    reveal_type(_.max_by([{'a': 1}, {'a': 2}, {'a': 3}], 'a'))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.max_by([1.0, 1.5, 1.8], floor))  # R: float
++    reveal_type(_.max_by([{'a': 1}, {'a': 2}, {'a': 3}], 'a'))  # R: dict[str, int]
+ 
+     empty_int_list: t.List[int] = []
+-    reveal_type(_.max_by(empty_int_list, default=-1))  # R: builtins.int
++    reveal_type(_.max_by(empty_int_list, default=-1))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_median() -> None:
+-    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: Union[builtins.float, builtins.int]
+-    reveal_type(_.median([1, 2, 3, 4]))  # R: Union[builtins.float, builtins.int]
++    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: float | int
++    reveal_type(_.median([1, 2, 3, 4]))  # R: float | int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_min_() -> None:
+-    reveal_type(_.min_([1, 2, 3, 4]))  # R: builtins.int
++    reveal_type(_.min_([1, 2, 3, 4]))  # R: int
+ 
+     empty_int_list: t.List[int] = []
+-    reveal_type(_.min_(empty_int_list, default=100))  # R: builtins.int
++    reveal_type(_.min_(empty_int_list, default=100))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -104,75 +104,75 @@ def test_mypy_min_by() -> None:
+     def floor(x: float) -> int:
+         return math.floor(x)
+ 
+-    reveal_type(_.min_by([1.8, 1.5, 1.0], floor))  # R: builtins.float
+-    reveal_type(_.min_by([{'a': 1}, {'a': 2}, {'a': 3}], 'a'))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.min_by([1.8, 1.5, 1.0], floor))  # R: float
++    reveal_type(_.min_by([{'a': 1}, {'a': 2}, {'a': 3}], 'a'))  # R: dict[str, int]
+ 
+     empty_int_list: t.List[int] = []
+-    reveal_type(_.min_by(empty_int_list, default=100))  # R: builtins.int
++    reveal_type(_.min_by(empty_int_list, default=100))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_moving_mean() -> None:
+-    reveal_type(_.moving_mean(range(10), 1))  # R: builtins.list[builtins.float]
++    reveal_type(_.moving_mean(range(10), 1))  # R: list[float]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_multiply() -> None:
+-    reveal_type(_.multiply(4, 5))  # R: builtins.int
+-    reveal_type(_.multiply(10.5, 4))  # R: builtins.float
+-    reveal_type(_.multiply(10, 4.5))  # R: builtins.float
+-    reveal_type(_.multiply(None, 10))  # R: builtins.int
+-    reveal_type(_.multiply(10, None))  # R: builtins.int
+-    reveal_type(_.multiply(None, 5.5))  # R: builtins.float
+-    reveal_type(_.multiply(5.5, None))  # R: builtins.float
+-    reveal_type(_.multiply(None, None))  # R: builtins.int
++    reveal_type(_.multiply(4, 5))  # R: int
++    reveal_type(_.multiply(10.5, 4))  # R: float
++    reveal_type(_.multiply(10, 4.5))  # R: float
++    reveal_type(_.multiply(None, 10))  # R: int
++    reveal_type(_.multiply(10, None))  # R: int
++    reveal_type(_.multiply(None, 5.5))  # R: float
++    reveal_type(_.multiply(5.5, None))  # R: float
++    reveal_type(_.multiply(None, None))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_power() -> None:
+-    reveal_type(_.power(5, 2))  # R: Union[builtins.int, builtins.float]
+-    reveal_type(_.power(12.5, 3))  # R: builtins.float
++    reveal_type(_.power(5, 2))  # R: int | float
++    reveal_type(_.power(12.5, 3))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_round_() -> None:
+-    reveal_type(_.round_(3.275))  # R: builtins.float
+-    reveal_type(_.round_(3.275, 1))  # R: builtins.float
++    reveal_type(_.round_(3.275))  # R: float
++    reveal_type(_.round_(3.275, 1))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_scale() -> None:
+-    reveal_type(_.scale([1, 2, 3, 4]))  # R: builtins.list[builtins.float]
+-    reveal_type(_.scale([1, 2, 3, 4], 1))  # R: builtins.list[builtins.float]
++    reveal_type(_.scale([1, 2, 3, 4]))  # R: list[float]
++    reveal_type(_.scale([1, 2, 3, 4], 1))  # R: list[float]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_slope() -> None:
+-    reveal_type(_.slope((1, 2), (4, 8)))  # R: builtins.float
++    reveal_type(_.slope((1, 2), (4, 8)))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_std_deviation() -> None:
+-    reveal_type(_.std_deviation([1, 18, 20, 4]))  # R: builtins.float
++    reveal_type(_.std_deviation([1, 18, 20, 4]))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_subtract() -> None:
+-    reveal_type(_.subtract(10, 5))  # R: builtins.int
+-    reveal_type(_.subtract(-10, 4))  # R: builtins.int
+-    reveal_type(_.subtract(2, 0.5))  # R: builtins.float
++    reveal_type(_.subtract(10, 5))  # R: int
++    reveal_type(_.subtract(-10, 4))  # R: int
++    reveal_type(_.subtract(2, 0.5))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_transpose() -> None:
+-    reveal_type(_.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))  # R: builtins.list[builtins.list[builtins.int]]
++    reveal_type(_.transpose([[1, 2, 3], [4, 5, 6], [7, 8, 9]]))  # R: list[list[int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_variance() -> None:
+-    reveal_type(_.variance([1, 18, 20, 4]))  # R: builtins.float
++    reveal_type(_.variance([1, 18, 20, 4]))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_var() -> None:
+-    reveal_type(_.zscore([1, 2, 3]))  # R: builtins.list[builtins.float]
++    reveal_type(_.zscore([1, 2, 3]))  # R: list[float]
 Index: pydash-8.0.6/tests/pytest_mypy_testing/test_objects.py
 ===================================================================
 --- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_objects.py
 +++ pydash-8.0.6/tests/pytest_mypy_testing/test_objects.py
+@@ -17,7 +17,7 @@ class MyClass:
+ @pytest.mark.mypy_testing
+ def test_mypy_assign() -> None:
+     obj = {b"d": 5.5}
+-    reveal_type(_.assign(obj, {"a": 1}, {"b": 2}, {"c": 3}))  # R: builtins.dict[Union[builtins.bytes, builtins.str], Union[builtins.float, builtins.int]]
++    reveal_type(_.assign(obj, {"a": 1}, {"b": 2}, {"c": 3}))  # R: dict[bytes | str, float | int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -25,17 +25,17 @@ def test_mypy_assign_with() -> None:
+     def customizer(x: t.Union[int, None], y: int) -> float:
+         return float(y) if x is None else float(x + y)
+ 
+-    reveal_type(_.assign_with({"a": 1}, {"b": 2}, {"a": 3}, customizer=customizer))  # R: builtins.dict[builtins.str, Union[builtins.int, builtins.float]]
++    reveal_type(_.assign_with({"a": 1}, {"b": 2}, {"a": 3}, customizer=customizer))  # R: dict[str, int | float]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_callables() -> None:
+-    reveal_type(_.callables({"a": 1, "b": lambda: 2, "c": lambda: 3}))  # R: builtins.list[builtins.str]
++    reveal_type(_.callables({"a": 1, "b": lambda: 2, "c": lambda: 3}))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_clone() -> None:
+-    reveal_type(_.clone({"hello": 5}))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.clone({"hello": 5}))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -45,13 +45,13 @@ def test_mypy_clone_with() -> None:
+     def cbk(v: t.Union[int, t.Dict[str, int]], k: t.Union[str, None]) -> t.Union[int, None]:
+         return v + 2 if isinstance(v, int) and k else None
+ 
+-    reveal_type(_.clone_with(x, cbk))  # R: builtins.dict[builtins.str, Union[builtins.int, builtins.dict[builtins.str, builtins.int], None]]
++    reveal_type(_.clone_with(x, cbk))  # R: dict[str, int | dict[str, int] | None]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_clone_deep() -> None:
+     x: t.Dict[str, t.Union[int, t.Dict[str, int]]] = {"a": 1, "b": 2, "c": {"d": 3}}
+-    reveal_type(_.clone_deep(x))  # R: builtins.dict[builtins.str, Union[builtins.int, builtins.dict[builtins.str, builtins.int]]]
++    reveal_type(_.clone_deep(x))  # R: dict[str, int | dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -61,19 +61,19 @@ def test_mypy_clone_deep_with() -> None:
+     def cbk(v: t.Union[int, t.Dict[str, int]], k: t.Union[str, None]) -> t.Union[int, None]:
+         return v + 2 if isinstance(v, int) and k else None
+ 
+-    reveal_type(_.clone_deep_with(x, cbk))  # R: builtins.dict[builtins.str, Union[builtins.int, builtins.dict[builtins.str, builtins.int], None]]
++    reveal_type(_.clone_deep_with(x, cbk))  # R: dict[str, int | dict[str, int] | None]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_defaults() -> None:
+     obj = {"a": 1}
+-    reveal_type(_.defaults(obj, {"b": 2}, {"c": 3}, {"a": 4}))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.defaults(obj, {"b": 2}, {"c": 3}, {"a": 4}))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_defaults_deep() -> None:
+     obj = {"a": {"b": 1}}
+-    reveal_type(_.defaults_deep(obj, {"a": {"b": 2, "c": 3}}))  # R: builtins.dict[builtins.str, builtins.dict[builtins.str, builtins.int]]
++    reveal_type(_.defaults_deep(obj, {"a": {"b": 2, "c": 3}}))  # R: dict[str, dict[str, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
 @@ -81,8 +81,8 @@ def test_mypy_find_key() -> None:
      def is_one(x: int) -> bool:
          return x == 1
  
 -    reveal_type(_.find_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: Union[builtins.str, None]
 -    reveal_type(_.find_key([1, 2, 3, 4], is_one))  # R: Union[builtins.int, None]
-+    reveal_type(_.find_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: builtins.str | None
-+    reveal_type(_.find_key([1, 2, 3, 4], is_one))              # R: builtins.int | None
++    reveal_type(_.find_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: str | None
++    reveal_type(_.find_key([1, 2, 3, 4], is_one))  # R: int | None
  
  
  @pytest.mark.mypy_testing
@@ -275,119 +1519,1323 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_objects.py
  
 -    reveal_type(_.find_last_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: Union[builtins.str, None]
 -    reveal_type(_.find_last_key([1, 2, 3, 1], is_one))  # R: Union[builtins.int, None]
-+    reveal_type(_.find_last_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: builtins.str | None
-+    reveal_type(_.find_last_key([1, 2, 3, 1], is_one))              # R: builtins.int | None
++    reveal_type(_.find_last_key({"a": 1, "b": 2, "c": 3}, is_one))  # R: str | None
++    reveal_type(_.find_last_key([1, 2, 3, 1], is_one))  # R: int | None
  
  
  @pytest.mark.mypy_testing
-@@ -115,7 +115,7 @@ def test_mypy_get() -> None:
+@@ -99,7 +99,7 @@ def test_mypy_for_in() -> None:
+     def cb(v: int, k: str) -> None:
+         return None
+ 
+-    reveal_type(_.for_in({"a": 1, "b": 2, "c": 3}, cb))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.for_in({"a": 1, "b": 2, "c": 3}, cb))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -107,7 +107,7 @@ def test_mypy_for_in_right() -> None:
+     def cb(v: int) -> None:
+         return None
+ 
+-    reveal_type(_.for_in_right([1, 2, 3, 4], cb))  # R: builtins.list[builtins.int]
++    reveal_type(_.for_in_right([1, 2, 3, 4], cb))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -115,32 +115,32 @@ def test_mypy_get() -> None:
      reveal_type(_.get({}, "a.b.c"))  # R: Any
      reveal_type(_.get({"a": {"b": {"c": [1, 2, 3, 4]}}}, "a.b.c[1]"))  # R: Any
      reveal_type(_.get({"a": {"b": [0, {"c": [1, 2]}]}}, "a.b.1.c.2"))  # R: Any
 -    reveal_type(_.get(["a", "b"], 0))  # R: Union[builtins.str, None]
-+    reveal_type(_.get(["a", "b"], 0))  # R: builtins.str | None
-     reveal_type(_.get(["a", "b"], 0, "c"))  # R: builtins.str
+-    reveal_type(_.get(["a", "b"], 0, "c"))  # R: builtins.str
++    reveal_type(_.get(["a", "b"], 0))  # R: str | None
++    reveal_type(_.get(["a", "b"], 0, "c"))  # R: str
      reveal_type(_.get(MyClass(), "x"))  # R: Any
  
-@@ -220,8 +220,8 @@ def test_mypy_omit_by() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_has() -> None:
+-    reveal_type(_.has([1, 2, 3], 1))  # R: builtins.bool
+-    reveal_type(_.has({"a": 1, "b": 2}, "b"))  # R: builtins.bool
+-    reveal_type(_.has(MyClass(), "get_x"))  # R: builtins.bool
++    reveal_type(_.has([1, 2, 3], 1))  # R: bool
++    reveal_type(_.has({"a": 1, "b": 2}, "b"))  # R: bool
++    reveal_type(_.has(MyClass(), "get_x"))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_invert() -> None:
+-    reveal_type(_.invert({"a": 1, "b": 2, "c": 3}))  # R: builtins.dict[builtins.int, builtins.str]
++    reveal_type(_.invert({"a": 1, "b": 2, "c": 3}))  # R: dict[int, str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_invert_by() -> None:
+     obj = {"a": 1, "b": 2, "c": 1}
+-    reveal_type(_.invert_by(obj))  # R: builtins.dict[builtins.int, builtins.list[builtins.str]]
++    reveal_type(_.invert_by(obj))  # R: dict[int, list[str]]
+ 
+     def group_prefix(x: int) -> str:
+         return "group" + str(x)
+ 
+-    reveal_type(_.invert_by(obj, group_prefix))  # R: builtins.dict[builtins.str, builtins.list[builtins.str]]
++    reveal_type(_.invert_by(obj, group_prefix))  # R: dict[str, list[str]]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -152,9 +152,9 @@ def test_mypy_invoke() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_keys() -> None:
+-    reveal_type(_.keys([1, 2, 3]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.keys({"a": 1, "b": 2}))  # R: builtins.list[builtins.str]
+-    reveal_type(_.keys(MyClass()))  # R: builtins.list[Any]
++    reveal_type(_.keys([1, 2, 3]))  # R: list[int]
++    reveal_type(_.keys({"a": 1, "b": 2}))  # R: list[str]
++    reveal_type(_.keys(MyClass()))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -162,7 +162,7 @@ def test_mypy_map_keys() -> None:
+     def callback(value: int, key: str) -> str:
+         return key * 2
+ 
+-    reveal_type(_.map_keys({"a": 1, "b": 2, "c": 3}, callback))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.map_keys({"a": 1, "b": 2, "c": 3}, callback))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -170,8 +170,8 @@ def test_mypy_map_values() -> None:
+     def times_two(x: int) -> str:
+         return str(x * 2)
+ 
+-    reveal_type(_.map_values({"a": 1, "b": 2, "c": 3}, times_two))  # R: builtins.dict[builtins.str, builtins.str]
+-    reveal_type(_.map_values({"a": 1, "b": {"d": 4}, "c": 3}, {"d": 4}))  # R: builtins.dict[Any, Any]
++    reveal_type(_.map_values({"a": 1, "b": 2, "c": 3}, times_two))  # R: dict[str, str]
++    reveal_type(_.map_values({"a": 1, "b": {"d": 4}, "c": 3}, {"d": 4}))  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -187,7 +187,7 @@ def test_mypy_map_values_deep() -> None:
+ @pytest.mark.mypy_testing
+ def test_mypy_merge() -> None:
+     obj = {"a": 2}
+-    reveal_type(_.merge(obj, {"a": 1}, {"b": 2, "c": 3}, {"d": 4}))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.merge(obj, {"a": 1}, {"b": 2, "c": 3}, {"d": 4}))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -200,11 +200,11 @@ def test_mypy_merge_with() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_omit() -> None:
+-    reveal_type(_.omit({"a": 1, "b": 2, "c": 3}, "b", "c"))  # R: builtins.dict[builtins.str, builtins.int]
+-    reveal_type(_.omit({"a": 1, "b": 2, "c": 3}, ["a", "c"]))  # R: builtins.dict[builtins.str, builtins.int]
+-    reveal_type(_.omit([1, 2, 3, 4], 0, 3))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.omit({"a": {"b": {"c": "d"}}}, "a.b.c"))  # R: builtins.dict[builtins.str, builtins.dict[builtins.str, builtins.dict[builtins.str, builtins.str]]]
+-    reveal_type(_.omit(MyClass(), "x"))  # R: builtins.dict[Any, Any]
++    reveal_type(_.omit({"a": 1, "b": 2, "c": 3}, "b", "c"))  # R: dict[str, int]
++    reveal_type(_.omit({"a": 1, "b": 2, "c": 3}, ["a", "c"]))  # R: dict[str, int]
++    reveal_type(_.omit([1, 2, 3, 4], 0, 3))  # R: dict[int, int]
++    reveal_type(_.omit({"a": {"b": {"c": "d"}}}, "a.b.c"))  # R: dict[str, dict[str, dict[str, str]]]
++    reveal_type(_.omit(MyClass(), "x"))  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -213,21 +213,21 @@ def test_mypy_omit_by() -> None:
+         return isinstance(v, int)
+ 
+     obj: t.Dict[str, t.Union[str, int]] = {"a": 1, "b": "2", "c": 3}
+-    reveal_type(_.omit_by(obj, is_int))  # R: builtins.dict[builtins.str, Union[builtins.str, builtins.int]]
+-    reveal_type(_.omit_by([1, 2, 3, 4], is_int))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.omit_by(MyClass(), is_int))  # R: builtins.dict[Any, Any]
++    reveal_type(_.omit_by(obj, is_int))  # R: dict[str, str | int]
++    reveal_type(_.omit_by([1, 2, 3, 4], is_int))  # R: dict[int, int]
++    reveal_type(_.omit_by(MyClass(), is_int))  # R: dict[Any, Any]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_parse_int() -> None:
 -    reveal_type(_.parse_int("5"))  # R: Union[builtins.int, None]
 -    reveal_type(_.parse_int("12", 8))  # R: Union[builtins.int, None]
-+    reveal_type(_.parse_int("5"))        # R: builtins.int | None
-+    reveal_type(_.parse_int("12", 8))    # R: builtins.int | None
++    reveal_type(_.parse_int("5"))  # R: int | None
++    reveal_type(_.parse_int("12", 8))  # R: int | None
  
  
  @pytest.mark.mypy_testing
-@@ -260,7 +260,7 @@ def test_mypy_set_with() -> None:
+ def test_mypy_pick() -> None:
+-    reveal_type(_.pick({"a": 1, "b": 2, "c": 3}, "a", "b"))  # R: builtins.dict[builtins.str, builtins.int]
+-    reveal_type(_.pick(MyClass(), "x"))  # R: builtins.dict[Any, Any]
++    reveal_type(_.pick({"a": 1, "b": 2, "c": 3}, "a", "b"))  # R: dict[str, int]
++    reveal_type(_.pick(MyClass(), "x"))  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -237,79 +237,79 @@ def test_mypy_pick_by() -> None:
+ 
+     obj: t.Dict[str, t.Union[int, str]] = {"a": 1, "b": "2", "c": 3}
+ 
+-    reveal_type(_.pick_by(obj, is_int))  # R: builtins.dict[builtins.str, Union[builtins.int, builtins.str]]
+-    reveal_type(_.pick(MyClass(), lambda v: isinstance(v, int)))  # R: builtins.dict[Any, Any]
++    reveal_type(_.pick_by(obj, is_int))  # R: dict[str, int | str]
++    reveal_type(_.pick(MyClass(), lambda v: isinstance(v, int)))  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_rename_keys() -> None:
+-    reveal_type(_.rename_keys({"a": 1, "b": 2, "c": 3}, {"a": "A", "b": "B"}))  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(_.rename_keys({"a": 1, "b": 2, "c": 3}, {"a": "A", "b": "B"}))  # R: dict[str, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_set_() -> None:
+-    reveal_type(_.set_({}, "a.b.c", 1))  # R: builtins.dict[Never, Never]
++    reveal_type(_.set_({}, "a.b.c", 1))  # R: dict[Never, Never]
+     reveal_type(_.set_(MyClass(), "x", 10))  # R: tests.pytest_mypy_testing.test_objects.MyClass
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_set_with() -> None:
+-    reveal_type(_.set_with({}, "[0][1]", "a", lambda: {}))  # R: builtins.dict[Never, Never]
++    reveal_type(_.set_with({}, "[0][1]", "a", lambda: {}))  # R: dict[Never, Never]
+     reveal_type(_.set_with(MyClass(), "x", lambda: 10))  # R: tests.pytest_mypy_testing.test_objects.MyClass
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_to_boolean() -> None:
 -    reveal_type(_.to_boolean("true"))  # R: Union[builtins.bool, None]
-+    reveal_type(_.to_boolean("true"))  # R: builtins.bool | None
++    reveal_type(_.to_boolean("true"))  # R: bool | None
  
  
  @pytest.mark.mypy_testing
-@@ -292,15 +292,15 @@ def test_mypy_to_list() -> None:
+ def test_mypy_to_dict() -> None:
+     obj = {"a": 1, "b": 2}
+-    reveal_type(_.to_dict(obj))  # R: builtins.dict[builtins.str, builtins.int]
+-    reveal_type(_.to_dict(MyClass()))  # R: builtins.dict[Any, Any]
+-    reveal_type(_.to_dict([1, 2, 3, 4]))  # R: builtins.dict[builtins.int, builtins.int]
+-    reveal_type(_.to_dict([(1, 2), (3, 4)]))  # R: builtins.dict[builtins.int, Tuple[builtins.int, builtins.int]]
++    reveal_type(_.to_dict(obj))  # R: dict[str, int]
++    reveal_type(_.to_dict(MyClass()))  # R: dict[Any, Any]
++    reveal_type(_.to_dict([1, 2, 3, 4]))  # R: dict[int, int]
++    reveal_type(_.to_dict([(1, 2), (3, 4)]))  # R: dict[int, tuple[int, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_integer() -> None:
+-    reveal_type(_.to_integer(3.2))  # R: builtins.int
+-    reveal_type(_.to_integer("3.2"))  # R: builtins.int
+-    reveal_type(_.to_integer("invalid"))  # R: builtins.int
++    reveal_type(_.to_integer(3.2))  # R: int
++    reveal_type(_.to_integer("3.2"))  # R: int
++    reveal_type(_.to_integer("invalid"))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_list() -> None:
+-    reveal_type(_.to_list({"a": 1, "b": 2, "c": 3}))  # R: builtins.list[builtins.int]
+-    reveal_type(_.to_list((1, 2, 3, 4)))  # R: builtins.list[builtins.int]
+-    reveal_type(_.to_list(1))  # R: builtins.list[builtins.int]
+-    reveal_type(_.to_list([1]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.to_list(a for a in [1, 2, 3]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.to_list("cat"))  # R: builtins.list[builtins.str]
+-    reveal_type(_.to_list("cat", split_strings=False))  # R: builtins.list[builtins.str]
++    reveal_type(_.to_list({"a": 1, "b": 2, "c": 3}))  # R: list[int]
++    reveal_type(_.to_list((1, 2, 3, 4)))  # R: list[int]
++    reveal_type(_.to_list(1))  # R: list[int]
++    reveal_type(_.to_list([1]))  # R: list[int]
++    reveal_type(_.to_list(a for a in [1, 2, 3]))  # R: list[int]
++    reveal_type(_.to_list("cat"))  # R: list[str]
++    reveal_type(_.to_list("cat", split_strings=False))  # R: list[str]
+ 
  
  @pytest.mark.mypy_testing
  def test_mypy_to_number() -> None:
 -    reveal_type(_.to_number("1234.5678"))  # R: Union[builtins.float, None]
 -    reveal_type(_.to_number("1234.5678", 4))  # R: Union[builtins.float, None]
 -    reveal_type(_.to_number(1, 2))  # R: Union[builtins.float, None]
-+    reveal_type(_.to_number("1234.5678"))      # R: builtins.float | None
-+    reveal_type(_.to_number("1234.5678", 4))   # R: builtins.float | None
-+    reveal_type(_.to_number(1, 2))             # R: builtins.float | None
++    reveal_type(_.to_number("1234.5678"))  # R: float | None
++    reveal_type(_.to_number("1234.5678", 4))  # R: float | None
++    reveal_type(_.to_number(1, 2))  # R: float | None
  
  
  @pytest.mark.mypy_testing
  def test_mypy_to_pairs() -> None:
 -    reveal_type(_.to_pairs([1, 2, 3, 4]))  # R: builtins.list[Tuple[builtins.int, builtins.int]]
 -    reveal_type(_.to_pairs({"a": 1}))  # R: builtins.list[Tuple[builtins.str, builtins.int]]
-+    reveal_type(_.to_pairs([1, 2, 3, 4]))  # R: builtins.list[tuple[builtins.int, builtins.int]]
-+    reveal_type(_.to_pairs({"a": 1}))  # R: builtins.list[tuple[builtins.str, builtins.int]]
-     reveal_type(_.to_pairs(MyClass()))  # R: builtins.list[Any]
+-    reveal_type(_.to_pairs(MyClass()))  # R: builtins.list[Any]
++    reveal_type(_.to_pairs([1, 2, 3, 4]))  # R: list[tuple[int, int]]
++    reveal_type(_.to_pairs({"a": 1}))  # R: list[tuple[str, int]]
++    reveal_type(_.to_pairs(MyClass()))  # R: list[Any]
  
  
-Index: pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
+ @pytest.mark.mypy_testing
+ def test_mypy_to_string() -> None:
+-    reveal_type(_.to_string(1))  # R: builtins.str
+-    reveal_type(_.to_string(None))  # R: builtins.str
+-    reveal_type(_.to_string([1, 2, 3]))  # R: builtins.str
+-    reveal_type(_.to_string("a"))  # R: builtins.str
++    reveal_type(_.to_string(1))  # R: str
++    reveal_type(_.to_string(None))  # R: str
++    reveal_type(_.to_string([1, 2, 3]))  # R: str
++    reveal_type(_.to_string("a"))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -318,56 +318,56 @@ def test_mypy_transform() -> None:
+         return acc.append((k, v))
+ 
+     base_list: t.List[t.Tuple[int, int]] = []
+-    reveal_type(_.transform([1, 2, 3, 4], build_list, base_list))  # R: builtins.list[Tuple[builtins.int, builtins.int]]
++    reveal_type(_.transform([1, 2, 3, 4], build_list, base_list))  # R: list[tuple[int, int]]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_update() -> None:
+-    reveal_type(_.update({}, ["a", "b"], lambda value: value))  # R: builtins.dict[Any, Any]
+-    reveal_type(_.update([], [0, 0], lambda value: 1))  # R: builtins.list[Any]
++    reveal_type(_.update({}, ["a", "b"], lambda value: value))  # R: dict[Any, Any]
++    reveal_type(_.update([], [0, 0], lambda value: 1))  # R: list[Any]
+     reveal_type(_.update(MyClass(), "x", lambda value: 10))  # R: tests.pytest_mypy_testing.test_objects.MyClass
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_update_with() -> None:
+-    reveal_type(_.update_with({}, "[0][1]", lambda x: "a", lambda x: {}))  # R: builtins.dict[Any, Any]
+-    reveal_type(_.update_with([], [0, 0], lambda x: 1, lambda x: []))  # R: builtins.list[Any]
++    reveal_type(_.update_with({}, "[0][1]", lambda x: "a", lambda x: {}))  # R: dict[Any, Any]
++    reveal_type(_.update_with([], [0, 0], lambda x: 1, lambda x: []))  # R: list[Any]
+     reveal_type(_.update_with(MyClass(), "lst.0", lambda value: 10, lambda x: []))  # R: tests.pytest_mypy_testing.test_objects.MyClass
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unset() -> None:
+-    reveal_type(_.unset({"a": [{"b": {"c": 7}}]}, "a[0].b.c"))  # R: builtins.bool
++    reveal_type(_.unset({"a": [{"b": {"c": 7}}]}, "a[0].b.c"))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_values() -> None:
+-    reveal_type(_.values({"a": "a", "b": "b", "c": "c"}))  # R: builtins.list[builtins.str]
+-    reveal_type(_.values({"a": 1, "b": 2, "c": 3}))  # R: builtins.list[builtins.int]
+-    reveal_type(_.values([2, 4, 6, 8]))  # R: builtins.list[builtins.int]
+-    reveal_type(_.values(MyClass()))  # R: builtins.list[Any]
++    reveal_type(_.values({"a": "a", "b": "b", "c": "c"}))  # R: list[str]
++    reveal_type(_.values({"a": 1, "b": 2, "c": 3}))  # R: list[int]
++    reveal_type(_.values([2, 4, 6, 8]))  # R: list[int]
++    reveal_type(_.values(MyClass()))  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_apply() -> None:
+-    reveal_type(_.apply("1", lambda x: int(x)))  # R: builtins.int
+-    reveal_type(_.apply(1, lambda x: x + 1))  # R: builtins.int
+-    reveal_type(_.apply("hello", lambda x: x.upper()))  # R: builtins.str
++    reveal_type(_.apply("1", lambda x: int(x)))  # R: int
++    reveal_type(_.apply(1, lambda x: x + 1))  # R: int
++    reveal_type(_.apply("hello", lambda x: x.upper()))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_apply_if() -> None:
+-    reveal_type(_.apply_if("5", lambda x: int(x), lambda x: x.isdecimal()))  # R: Union[builtins.str, builtins.int]
++    reveal_type(_.apply_if("5", lambda x: int(x), lambda x: x.isdecimal()))  # R: str | int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_apply_if_not_none() -> None:
+-    reveal_type(_.apply_if_not_none(1, lambda x: x + 1))  # R: Union[builtins.int, None]
+-    reveal_type(_.apply_if_not_none(None, lambda x: x + 1))  # R: Union[builtins.int, None]
+-    reveal_type(_.apply_if_not_none("hello", lambda x: x.upper()))  # R: Union[builtins.str, None]
++    reveal_type(_.apply_if_not_none(1, lambda x: x + 1))  # R: int | None]
++    reveal_type(_.apply_if_not_none(None, lambda x: x + 1))  # R: int | None
++    reveal_type(_.apply_if_not_none("hello", lambda x: x.upper()))  # R: str | None
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_apply_catch() -> None:
+-    reveal_type(_.apply_catch(5, lambda x: x / 0, [ZeroDivisionError]))  # R: Union[builtins.int, builtins.float]
+-    reveal_type(_.apply_catch(5, lambda x: x / 0, [ZeroDivisionError], "error"))  # R: Union[builtins.float, builtins.str]
++    reveal_type(_.apply_catch(5, lambda x: x / 0, [ZeroDivisionError]))  # R: int | float
++    reveal_type(_.apply_catch(5, lambda x: x / 0, [ZeroDivisionError], "error"))  # R: float | str
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_predicates.py
 ===================================================================
---- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_collections.py
-+++ pydash-8.0.6/tests/pytest_mypy_testing/test_collections.py
-@@ -7,8 +7,8 @@ import pydash as _
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_predicates.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_predicates.py
+@@ -7,210 +7,210 @@ import pydash as _
  
  @pytest.mark.mypy_testing
- def test_mypy_at() -> None:
--    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: builtins.list[Union[builtins.int, None]]
--    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: builtins.list[Union[builtins.int, None]]
-+    reveal_type(_.at([1, 2, 3, 4], 0, 2))  # R: builtins.list[builtins.int | None]
-+    reveal_type(_.at({"a": 1, "b": 2, "c": 3, "d": 4}, "a", "c"))  # R: builtins.list[builtins.int | None]
-     reveal_type(_.at({"a": 1, "b": 2, "c": {"d": {"e": 3}}}, "a", ["c", "d", "e"]))  # R: builtins.list[Any]
- 
- 
-@@ -38,14 +38,14 @@ def test_mypy_filter_() -> None:
- 
- @pytest.mark.mypy_testing
- def test_mypy_find() -> None:
--    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
--    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
-+    reveal_type(_.find([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int | None
-+    reveal_type(_.find([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: builtins.dict[builtins.str, builtins.int] | None
+ def test_mypy_eq() -> None:
+-    reveal_type(_.eq(None, None))  # R: builtins.bool
+-    reveal_type(_.eq(None, ''))  # R: builtins.bool
+-    reveal_type(_.eq('a', 'a'))  # R: builtins.bool
+-    reveal_type(_.eq(1, str(1)))  # R: builtins.bool
++    reveal_type(_.eq(None, None))  # R: bool
++    reveal_type(_.eq(None, ''))  # R: bool
++    reveal_type(_.eq('a', 'a'))  # R: bool
++    reveal_type(_.eq(1, str(1)))  # R: bool
  
  
  @pytest.mark.mypy_testing
- def test_mypy_find_last() -> None:
--    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: Union[builtins.int, None]
--    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: Union[builtins.dict[builtins.str, builtins.int], None]
-+    reveal_type(_.find_last([1, 2, 3, 4], lambda x: x >= 3))  # R: builtins.int | None
-+    reveal_type(_.find_last([{"a": 1}, {"b": 2}, {"a": 1, "b": 2}], {"a": 1}))  # R: builtins.dict[builtins.str, builtins.int] | None
+ def test_mypy_gt() -> None:
+-    reveal_type(_.gt(5, 3))  # R: builtins.bool
++    reveal_type(_.gt(5, 3))  # R: bool
+     # _.gt({}, {})  # E: Argument 1 to "gt" has incompatible type "Dict[<nothing>, <nothing>]"; expected "SupportsDunderGT[Dict[<nothing>, <nothing>]]"
  
  
  @pytest.mark.mypy_testing
-Index: pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
+ def test_mypy_gte() -> None:
+-    reveal_type(_.gte(5, 3))  # R: builtins.bool
++    reveal_type(_.gte(5, 3))  # R: bool
+     # _.gte({}, {})  # E: Argument 1 to "gte" has incompatible type "Dict[<nothing>, <nothing>]"; expected "SupportsDunderGE[Dict[<nothing>, <nothing>]]"
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_lt() -> None:
+-    reveal_type(_.lt(5, 3))  # R: builtins.bool
++    reveal_type(_.lt(5, 3))  # R: bool
+     # _.lt({}, {})  # E: Argument 1 to "lt" has incompatible type "Dict[<nothing>, <nothing>]"; expected "SupportsDunderLT[Dict[<nothing>, <nothing>]]"
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_lte() -> None:
+-    reveal_type(_.lte(5, 3))  # R: builtins.bool
++    reveal_type(_.lte(5, 3))  # R: bool
+     # _.lte({}, {})  # E: Argument 1 to "lte" has incompatible type "Dict[<nothing>, <nothing>]"; expected "SupportsDunderLE[Dict[<nothing>, <nothing>]]"
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_in_range() -> None:
+-    reveal_type(_.in_range(4, 2))  # R: builtins.bool
+-    reveal_type(_.in_range(3, 1, 2))  # R: builtins.bool
+-    reveal_type(_.in_range(3.5, 2.5))  # R: builtins.bool
++    reveal_type(_.in_range(4, 2))  # R: bool
++    reveal_type(_.in_range(3, 1, 2))  # R: bool
++    reveal_type(_.in_range(3.5, 2.5))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_associative() -> None:
+-    reveal_type(_.is_associative([]))  # R: builtins.bool
+-    reveal_type(_.is_associative({}))  # R: builtins.bool
+-    reveal_type(_.is_associative(1))  # R: builtins.bool
+-    reveal_type(_.is_associative(True))  # R: builtins.bool
++    reveal_type(_.is_associative([]))  # R: bool
++    reveal_type(_.is_associative({}))  # R: bool
++    reveal_type(_.is_associative(1))  # R: bool
++    reveal_type(_.is_associative(True))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_blank() -> None:
+-    reveal_type(_.is_blank(''))  # R: builtins.bool
+-    reveal_type(_.is_blank(' \r\n '))  # R: builtins.bool
+-    reveal_type(_.is_blank(False))  # R: builtins.bool
++    reveal_type(_.is_blank(''))  # R: bool
++    reveal_type(_.is_blank(' \r\n '))  # R: bool
++    reveal_type(_.is_blank(False))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_blank(x):
+-        reveal_type(x)  # R: builtins.str
++        reveal_type(x)  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_boolean() -> None:
+-    reveal_type(_.is_boolean(True))  # R: builtins.bool
+-    reveal_type(_.is_boolean(False))  # R: builtins.bool
+-    reveal_type(_.is_boolean(0))  # R: builtins.bool
++    reveal_type(_.is_boolean(True))  # R: bool
++    reveal_type(_.is_boolean(False))  # R: bool
++    reveal_type(_.is_boolean(0))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_boolean(x):
+-        reveal_type(x)  # R: builtins.bool
++        reveal_type(x)  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_builtin() -> None:
+-    reveal_type(_.is_builtin(1))  # R: builtins.bool
+-    reveal_type(_.is_builtin(list))  # R: builtins.bool
+-    reveal_type(_.is_builtin('foo'))  # R: builtins.bool
++    reveal_type(_.is_builtin(1))  # R: bool
++    reveal_type(_.is_builtin(list))  # R: bool
++    reveal_type(_.is_builtin('foo'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_date() -> None:
+     import datetime
+-    reveal_type(_.is_date(datetime.date.today()))  # R: builtins.bool
+-    reveal_type(_.is_date(datetime.datetime.today()))  # R: builtins.bool
+-    reveal_type(_.is_date('2014-01-01'))  # R: builtins.bool
++    reveal_type(_.is_date(datetime.date.today()))  # R: bool
++    reveal_type(_.is_date(datetime.datetime.today()))  # R: bool
++    reveal_type(_.is_date('2014-01-01'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_decreasing() -> None:
+-    reveal_type(_.is_decreasing([5, 4, 4, 3]))  # R: builtins.bool
++    reveal_type(_.is_decreasing([5, 4, 4, 3]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_dict() -> None:
+-    reveal_type(_.is_dict({}))  # R: builtins.bool
+-    reveal_type(_.is_dict([]))  # R: builtins.bool
++    reveal_type(_.is_dict({}))  # R: bool
++    reveal_type(_.is_dict([]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_empty() -> None:
+-    reveal_type(_.is_empty(0))  # R: builtins.bool
+-    reveal_type(_.is_empty(1))  # R: builtins.bool
+-    reveal_type(_.is_empty(True))  # R: builtins.bool
+-    reveal_type(_.is_empty('foo'))  # R: builtins.bool
+-    reveal_type(_.is_empty(None))  # R: builtins.bool
+-    reveal_type(_.is_empty({}))  # R: builtins.bool
++    reveal_type(_.is_empty(0))  # R: bool
++    reveal_type(_.is_empty(1))  # R: bool
++    reveal_type(_.is_empty(True))  # R: bool
++    reveal_type(_.is_empty('foo'))  # R: bool
++    reveal_type(_.is_empty(None))  # R: bool
++    reveal_type(_.is_empty({}))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_equal() -> None:
+-    reveal_type(_.is_equal([1, 2, 3], [1, 2, 3]))  # R: builtins.bool
+-    reveal_type(_.is_equal('a', 'A'))  # R: builtins.bool
++    reveal_type(_.is_equal([1, 2, 3], [1, 2, 3]))  # R: bool
++    reveal_type(_.is_equal('a', 'A'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_equal_with() -> None:
+-    reveal_type(_.is_equal_with([1, 2, 3], [1, 2, 3], None))  # R: builtins.bool
+-    reveal_type(_.is_equal_with('a', 'A', None))  # R: builtins.bool
+-    reveal_type(_.is_equal_with('a', 'A', lambda a, b: a.lower() == b.lower()))  # R: builtins.bool
++    reveal_type(_.is_equal_with([1, 2, 3], [1, 2, 3], None))  # R: bool
++    reveal_type(_.is_equal_with('a', 'A', None))  # R: bool
++    reveal_type(_.is_equal_with('a', 'A', lambda a, b: a.lower() == b.lower()))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_error() -> None:
+-    reveal_type(_.is_error(Exception()))  # R: builtins.bool
+-    reveal_type(_.is_error(Exception))  # R: builtins.bool
+-    reveal_type(_.is_error(None))  # R: builtins.bool
++    reveal_type(_.is_error(Exception()))  # R: bool
++    reveal_type(_.is_error(Exception))  # R: bool
++    reveal_type(_.is_error(None))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_even() -> None:
+-    reveal_type(_.is_even(2))  # R: builtins.bool
+-    reveal_type(_.is_even(False))  # R: builtins.bool
++    reveal_type(_.is_even(2))  # R: bool
++    reveal_type(_.is_even(False))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_float() -> None:
+-    reveal_type(_.is_float(1.0))  # R: builtins.bool
+-    reveal_type(_.is_float(1))  # R: builtins.bool
++    reveal_type(_.is_float(1.0))  # R: bool
++    reveal_type(_.is_float(1))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_float(x):
+-        reveal_type(x)  # R: builtins.float
++        reveal_type(x)  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_function() -> None:
+-    reveal_type(_.is_function(list))  # R: builtins.bool
+-    reveal_type(_.is_function(lambda: True))  # R: builtins.bool
+-    reveal_type(_.is_function(1))  # R: builtins.bool
++    reveal_type(_.is_function(list))  # R: bool
++    reveal_type(_.is_function(lambda: True))  # R: bool
++    reveal_type(_.is_function(1))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_increasing() -> None:
+-    reveal_type(_.is_increasing([1, 3, 5]))  # R: builtins.bool
++    reveal_type(_.is_increasing([1, 3, 5]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_indexed() -> None:
+-    reveal_type(_.is_indexed(''))  # R: builtins.bool
+-    reveal_type(_.is_indexed([]))  # R: builtins.bool
+-    reveal_type(_.is_indexed(()))  # R: builtins.bool
+-    reveal_type(_.is_indexed({}))  # R: builtins.bool
++    reveal_type(_.is_indexed(''))  # R: bool
++    reveal_type(_.is_indexed([]))  # R: bool
++    reveal_type(_.is_indexed(()))  # R: bool
++    reveal_type(_.is_indexed({}))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_instance_of() -> None:
+-    reveal_type(_.is_instance_of({}, dict))  # R: builtins.bool
+-    reveal_type(_.is_instance_of({}, list))  # R: builtins.bool
++    reveal_type(_.is_instance_of({}, dict))  # R: bool
++    reveal_type(_.is_instance_of({}, list))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_integer() -> None:
+-    reveal_type(_.is_integer(1))  # R: builtins.bool
+-    reveal_type(_.is_integer(1.0))  # R: builtins.bool
+-    reveal_type(_.is_integer(True))  # R: builtins.bool
++    reveal_type(_.is_integer(1))  # R: bool
++    reveal_type(_.is_integer(1.0))  # R: bool
++    reveal_type(_.is_integer(True))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_integer(x):
+-        reveal_type(x)  # R: builtins.int
++        reveal_type(x)  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_iterable() -> None:
+-    reveal_type(_.is_iterable([]))  # R: builtins.bool
+-    reveal_type(_.is_iterable({}))  # R: builtins.bool
+-    reveal_type(_.is_iterable(()))  # R: builtins.bool
+-    reveal_type(_.is_iterable(5))  # R: builtins.bool
+-    reveal_type(_.is_iterable(True))  # R: builtins.bool
++    reveal_type(_.is_iterable([]))  # R: bool
++    reveal_type(_.is_iterable({}))  # R: bool
++    reveal_type(_.is_iterable(()))  # R: bool
++    reveal_type(_.is_iterable(5))  # R: bool
++    reveal_type(_.is_iterable(True))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_json() -> None:
+-    reveal_type(_.is_json({}))  # R: builtins.bool
+-    reveal_type(_.is_json('{}'))  # R: builtins.bool
+-    reveal_type(_.is_json({"hello": 1, "world": 2}))  # R: builtins.bool
+-    reveal_type(_.is_json('{"hello": 1, "world": 2}'))  # R: builtins.bool
++    reveal_type(_.is_json({}))  # R: bool
++    reveal_type(_.is_json('{}'))  # R: bool
++    reveal_type(_.is_json({"hello": 1, "world": 2}))  # R: bool
++    reveal_type(_.is_json('{"hello": 1, "world": 2}'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_list() -> None:
+-    reveal_type(_.is_list([]))  # R: builtins.bool
+-    reveal_type(_.is_list({}))  # R: builtins.bool
+-    reveal_type(_.is_list(()))  # R: builtins.bool
++    reveal_type(_.is_list([]))  # R: bool
++    reveal_type(_.is_list({}))  # R: bool
++    reveal_type(_.is_list(()))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_match() -> None:
+-    reveal_type(_.is_match({'a': 1, 'b': 2}, {'b': 2}))  # R: builtins.bool
+-    reveal_type(_.is_match({'a': 1, 'b': 2}, {'b': 3}))  # R: builtins.bool
++    reveal_type(_.is_match({'a': 1, 'b': 2}, {'b': 2}))  # R: bool
++    reveal_type(_.is_match({'a': 1, 'b': 2}, {'b': 3}))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -219,34 +219,34 @@ def test_mypy_is_match_with() -> None:
+     customizer = lambda ov, sv: is_greeting(ov) and is_greeting(sv)
+     obj = {'greeting': 'hello'}
+     src = {'greeting': 'hi'}
+-    reveal_type(_.is_match_with(obj, src, customizer))  # R: builtins.bool
++    reveal_type(_.is_match_with(obj, src, customizer))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_monotone() -> None:
+     import operator
+-    reveal_type(_.is_monotone([1, 1, 2, 3], operator.le))  # R: builtins.bool
+-    reveal_type(_.is_monotone([1, 1, 2, 3], operator.lt))  # R: builtins.bool
++    reveal_type(_.is_monotone([1, 1, 2, 3], operator.le))  # R: bool
++    reveal_type(_.is_monotone([1, 1, 2, 3], operator.lt))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_nan() -> None:
+-    reveal_type(_.is_nan('a'))  # R: builtins.bool
+-    reveal_type(_.is_nan(1))  # R: builtins.bool
+-    reveal_type(_.is_nan(1.0))  # R: builtins.bool
++    reveal_type(_.is_nan('a'))  # R: bool
++    reveal_type(_.is_nan(1))  # R: bool
++    reveal_type(_.is_nan(1.0))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_negative() -> None:
+-    reveal_type(_.is_negative(-1))  # R: builtins.bool
+-    reveal_type(_.is_negative(0))  # R: builtins.bool
+-    reveal_type(_.is_negative(1))  # R: builtins.bool
++    reveal_type(_.is_negative(-1))  # R: bool
++    reveal_type(_.is_negative(0))  # R: bool
++    reveal_type(_.is_negative(1))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_none() -> None:
+-    reveal_type(_.is_none(None))  # R: builtins.bool
+-    reveal_type(_.is_none(False))  # R: builtins.bool
++    reveal_type(_.is_none(None))  # R: bool
++    reveal_type(_.is_none(False))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_none(x):
+@@ -255,79 +255,79 @@ def test_mypy_is_none() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_number() -> None:
+-    reveal_type(_.is_number(1))  # R: builtins.bool
+-    reveal_type(_.is_number(1.0))  # R: builtins.bool
+-    reveal_type(_.is_number('a'))  # R: builtins.bool
++    reveal_type(_.is_number(1))  # R: bool
++    reveal_type(_.is_number(1.0))  # R: bool
++    reveal_type(_.is_number('a'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_object() -> None:
+-    reveal_type(_.is_object([]))  # R: builtins.bool
+-    reveal_type(_.is_object({}))  # R: builtins.bool
+-    reveal_type(_.is_object(()))  # R: builtins.bool
+-    reveal_type(_.is_object(1))  # R: builtins.bool
++    reveal_type(_.is_object([]))  # R: bool
++    reveal_type(_.is_object({}))  # R: bool
++    reveal_type(_.is_object(()))  # R: bool
++    reveal_type(_.is_object(1))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_odd() -> None:
+-    reveal_type(_.is_odd(3))  # R: builtins.bool
+-    reveal_type(_.is_odd('a'))  # R: builtins.bool
++    reveal_type(_.is_odd(3))  # R: bool
++    reveal_type(_.is_odd('a'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_positive() -> None:
+-    reveal_type(_.is_positive(1))  # R: builtins.bool
+-    reveal_type(_.is_positive(0))  # R: builtins.bool
+-    reveal_type(_.is_positive(-1))  # R: builtins.bool
++    reveal_type(_.is_positive(1))  # R: bool
++    reveal_type(_.is_positive(0))  # R: bool
++    reveal_type(_.is_positive(-1))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_reg_exp() -> None:
+     import re
+-    reveal_type(_.is_reg_exp(re.compile('')))  # R: builtins.bool
+-    reveal_type(_.is_reg_exp(''))  # R: builtins.bool
++    reveal_type(_.is_reg_exp(re.compile('')))  # R: bool
++    reveal_type(_.is_reg_exp(''))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_set() -> None:
+-    reveal_type(_.is_set(set([1, 2])))  # R: builtins.bool
+-    reveal_type(_.is_set([1, 2, 3]))  # R: builtins.bool
++    reveal_type(_.is_set(set([1, 2])))  # R: bool
++    reveal_type(_.is_set([1, 2, 3]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_strictly_decreasing() -> None:
+-    reveal_type(_.is_strictly_decreasing([4, 3, 2, 1]))  # R: builtins.bool
+-    reveal_type(_.is_strictly_decreasing([4, 4, 2, 1]))  # R: builtins.bool
++    reveal_type(_.is_strictly_decreasing([4, 3, 2, 1]))  # R: bool
++    reveal_type(_.is_strictly_decreasing([4, 4, 2, 1]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_strictly_increasing() -> None:
+-    reveal_type(_.is_strictly_increasing([1, 2, 3, 4]))  # R: builtins.bool
+-    reveal_type(_.is_strictly_increasing([1, 1, 3, 4]))  # R: builtins.bool
++    reveal_type(_.is_strictly_increasing([1, 2, 3, 4]))  # R: bool
++    reveal_type(_.is_strictly_increasing([1, 1, 3, 4]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_string() -> None:
+-    reveal_type(_.is_string(''))  # R: builtins.bool
+-    reveal_type(_.is_string(1))  # R: builtins.bool
++    reveal_type(_.is_string(''))  # R: bool
++    reveal_type(_.is_string(1))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_string(x):
+-        reveal_type(x)  # R: builtins.str
++        reveal_type(x)  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_tuple() -> None:
+-    reveal_type(_.is_tuple(()))  # R: builtins.bool
+-    reveal_type(_.is_tuple({}))  # R: builtins.bool
+-    reveal_type(_.is_tuple([]))  # R: builtins.bool
++    reveal_type(_.is_tuple(()))  # R: bool
++    reveal_type(_.is_tuple({}))  # R: bool
++    reveal_type(_.is_tuple([]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_is_zero() -> None:
+-    reveal_type(_.is_zero(0))  # R: builtins.bool
+-    reveal_type(_.is_zero(1))  # R: builtins.bool
++    reveal_type(_.is_zero(0))  # R: bool
++    reveal_type(_.is_zero(1))  # R: bool
+ 
+     x: t.Any = ...
+     if _.is_zero(x):
+-        reveal_type(x)  # R: builtins.int
++        reveal_type(x)  # R: int
+Index: pydash-8.0.6/tests/pytest_mypy_testing/test_strings.py
 ===================================================================
---- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_numerical.py
-+++ pydash-8.0.6/tests/pytest_mypy_testing/test_numerical.py
-@@ -87,8 +87,8 @@ def test_mypy_max_by() -> None:
+--- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_strings.py
++++ pydash-8.0.6/tests/pytest_mypy_testing/test_strings.py
+@@ -5,394 +5,394 @@ import pydash as _
  
  @pytest.mark.mypy_testing
- def test_mypy_median() -> None:
--    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: Union[builtins.float, builtins.int]
--    reveal_type(_.median([1, 2, 3, 4]))  # R: Union[builtins.float, builtins.int]
-+    reveal_type(_.median([1, 2, 3, 4, 5]))  # R: builtins.float | builtins.int
-+    reveal_type(_.median([1, 2, 3, 4]))     # R: builtins.float | builtins.int
+ def test_mypy_camel_case() -> None:
+-    reveal_type(_.camel_case('FOO BAR_bAz'))  # R: builtins.str
++    reveal_type(_.camel_case('FOO BAR_bAz'))  # R: str
  
  
  @pytest.mark.mypy_testing
-@@ -130,7 +130,7 @@ def test_mypy_multiply() -> None:
+ def test_mypy_capitalize() -> None:
+-    reveal_type(_.capitalize('once upon a TIME'))  # R: builtins.str
+-    reveal_type(_.capitalize('once upon a TIME', False))  # R: builtins.str
++    reveal_type(_.capitalize('once upon a TIME'))  # R: str
++    reveal_type(_.capitalize('once upon a TIME', False))  # R: str
+ 
  
  @pytest.mark.mypy_testing
- def test_mypy_power() -> None:
--    reveal_type(_.power(5, 2))  # R: Union[builtins.int, builtins.float]
-+    reveal_type(_.power(5, 2))     # R: builtins.int | builtins.float
-     reveal_type(_.power(12.5, 3))  # R: builtins.float
+ def test_mypy_chars() -> None:
+-    reveal_type(_.chars('onetwo'))  # R: builtins.list[builtins.str]
++    reveal_type(_.chars('onetwo'))  # R: list[str]
  
  
+ @pytest.mark.mypy_testing
+ def test_mypy_chop() -> None:
+-    reveal_type(_.chop('abcdefg', 3))  # R: builtins.list[builtins.str]
++    reveal_type(_.chop('abcdefg', 3))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_chop_right() -> None:
+-    reveal_type(_.chop_right('abcdefg', 3))  # R: builtins.list[builtins.str]
++    reveal_type(_.chop_right('abcdefg', 3))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_clean() -> None:
+-    reveal_type(_.clean('a  b   c    d'))  # R: builtins.str
++    reveal_type(_.clean('a  b   c    d'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_count_substr() -> None:
+-    reveal_type(_.count_substr('aabbccddaabbccdd', 'bc'))  # R: builtins.int
++    reveal_type(_.count_substr('aabbccddaabbccdd', 'bc'))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_deburr() -> None:
+-    reveal_type(_.deburr('déjà vu'))  # R: builtins.str
++    reveal_type(_.deburr('déjà vu'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_decapitalize() -> None:
+-    reveal_type(_.decapitalize('FOO BAR'))  # R: builtins.str
++    reveal_type(_.decapitalize('FOO BAR'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_ends_with() -> None:
+-    reveal_type(_.ends_with('abc def', 'def'))  # R: builtins.bool
+-    reveal_type(_.ends_with('abc def', 4))  # R: builtins.bool
++    reveal_type(_.ends_with('abc def', 'def'))  # R: bool
++    reveal_type(_.ends_with('abc def', 4))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_ensure_ends_with() -> None:
+-    reveal_type(_.ensure_ends_with('foo bar', '!'))  # R: builtins.str
+-    reveal_type(_.ensure_ends_with('foo bar!', '!'))  # R: builtins.str
++    reveal_type(_.ensure_ends_with('foo bar', '!'))  # R: str
++    reveal_type(_.ensure_ends_with('foo bar!', '!'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_ensure_starts_with() -> None:
+-    reveal_type(_.ensure_starts_with('foo bar', 'Oh my! '))  # R: builtins.str
+-    reveal_type(_.ensure_starts_with('Oh my! foo bar', 'Oh my! '))  # R: builtins.str
++    reveal_type(_.ensure_starts_with('foo bar', 'Oh my! '))  # R: str
++    reveal_type(_.ensure_starts_with('Oh my! foo bar', 'Oh my! '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_escape() -> None:
+-    reveal_type(_.escape('"1 > 2 && 3 < 4"'))  # R: builtins.str
++    reveal_type(_.escape('"1 > 2 && 3 < 4"'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_escape_reg_exp() -> None:
+-    reveal_type(_.escape_reg_exp('[()]'))  # R: builtins.str
++    reveal_type(_.escape_reg_exp('[()]'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_has_substr() -> None:
+-    reveal_type(_.has_substr('abcdef', 'bc'))  # R: builtins.bool
+-    reveal_type(_.has_substr('abcdef', 'bb'))  # R: builtins.bool
++    reveal_type(_.has_substr('abcdef', 'bc'))  # R: bool
++    reveal_type(_.has_substr('abcdef', 'bb'))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_human_case() -> None:
+-    reveal_type(_.human_case('abc-def_hij lmn'))  # R: builtins.str
+-    reveal_type(_.human_case('user_id'))  # R: builtins.str
++    reveal_type(_.human_case('abc-def_hij lmn'))  # R: str
++    reveal_type(_.human_case('user_id'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_insert_substr() -> None:
+-    reveal_type(_.insert_substr('abcdef', 3, '--'))  # R: builtins.str
++    reveal_type(_.insert_substr('abcdef', 3, '--'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_join() -> None:
+-    reveal_type(_.join(['a', 'b', 'c']))  # R: builtins.str
+-    reveal_type(_.join([1, 2, 3, 4], '&'))  # R: builtins.str
+-    reveal_type(_.join('abcdef', '-'))  # R: builtins.str
++    reveal_type(_.join(['a', 'b', 'c']))  # R: str
++    reveal_type(_.join([1, 2, 3, 4], '&'))  # R: str
++    reveal_type(_.join('abcdef', '-'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_kebab_case() -> None:
+-    reveal_type(_.kebab_case('a b c_d-e!f'))  # R: builtins.str
++    reveal_type(_.kebab_case('a b c_d-e!f'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_lines() -> None:
+-    reveal_type(_.lines('a\nb\r\nc'))  # R: builtins.list[builtins.str]
++    reveal_type(_.lines('a\nb\r\nc'))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_lower_case() -> None:
+-    reveal_type(_.lower_case('fooBar'))  # R: builtins.str
+-    reveal_type(_.lower_case('--foo-Bar--'))  # R: builtins.str
+-    reveal_type(_.lower_case('/?*Foo10/;"B*Ar'))  # R: builtins.str
++    reveal_type(_.lower_case('fooBar'))  # R: str
++    reveal_type(_.lower_case('--foo-Bar--'))  # R: str
++    reveal_type(_.lower_case('/?*Foo10/;"B*Ar'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_lower_first() -> None:
+-    reveal_type(_.lower_first('FRED'))  # R: builtins.str
+-    reveal_type(_.lower_first('Foo Bar'))  # R: builtins.str
+-    reveal_type(_.lower_first('1foobar'))  # R: builtins.str
+-    reveal_type(_.lower_first(';foobar'))  # R: builtins.str
++    reveal_type(_.lower_first('FRED'))  # R: str
++    reveal_type(_.lower_first('Foo Bar'))  # R: str
++    reveal_type(_.lower_first('1foobar'))  # R: str
++    reveal_type(_.lower_first(';foobar'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_number_format() -> None:
+-    reveal_type(_.number_format(1234.5678))  # R: builtins.str
+-    reveal_type(_.number_format(1234.5678, 2, ',', '.'))  # R: builtins.str
++    reveal_type(_.number_format(1234.5678))  # R: str
++    reveal_type(_.number_format(1234.5678, 2, ',', '.'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pad() -> None:
+-    reveal_type(_.pad('abc', 5))  # R: builtins.str
+-    reveal_type(_.pad('abc', 6, 'x'))  # R: builtins.str
+-    reveal_type(_.pad('abc', 5, '...'))  # R: builtins.str
++    reveal_type(_.pad('abc', 5))  # R: str
++    reveal_type(_.pad('abc', 6, 'x'))  # R: str
++    reveal_type(_.pad('abc', 5, '...'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pad_end() -> None:
+-    reveal_type(_.pad_end('abc', 5))  # R: builtins.str
+-    reveal_type(_.pad_end('abc', 5, '.'))  # R: builtins.str
++    reveal_type(_.pad_end('abc', 5))  # R: str
++    reveal_type(_.pad_end('abc', 5, '.'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pad_start() -> None:
+-    reveal_type(_.pad_start('abc', 5))  # R: builtins.str
+-    reveal_type(_.pad_start('abc', 5, '.'))  # R: builtins.str
++    reveal_type(_.pad_start('abc', 5))  # R: str
++    reveal_type(_.pad_start('abc', 5, '.'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_pascal_case() -> None:
+-    reveal_type(_.pascal_case('FOO BAR_bAz'))  # R: builtins.str
+-    reveal_type(_.pascal_case('FOO BAR_bAz', False))  # R: builtins.str
++    reveal_type(_.pascal_case('FOO BAR_bAz'))  # R: str
++    reveal_type(_.pascal_case('FOO BAR_bAz', False))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_predecessor() -> None:
+-    reveal_type(_.predecessor('c'))  # R: builtins.str
+-    reveal_type(_.predecessor('C'))  # R: builtins.str
+-    reveal_type(_.predecessor('3'))  # R: builtins.str
++    reveal_type(_.predecessor('c'))  # R: str
++    reveal_type(_.predecessor('C'))  # R: str
++    reveal_type(_.predecessor('3'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_prune() -> None:
+-    reveal_type(_.prune('Fe fi fo fum', 5))  # R: builtins.str
+-    reveal_type(_.prune('Fe fi fo fum', 6))  # R: builtins.str
+-    reveal_type(_.prune('Fe fi fo fum', 7))  # R: builtins.str
+-    reveal_type(_.prune('Fe fi fo fum', 8, ',,,'))  # R: builtins.str
++    reveal_type(_.prune('Fe fi fo fum', 5))  # R: str
++    reveal_type(_.prune('Fe fi fo fum', 6))  # R: str
++    reveal_type(_.prune('Fe fi fo fum', 7))  # R: str
++    reveal_type(_.prune('Fe fi fo fum', 8, ',,,'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_quote() -> None:
+-    reveal_type(_.quote('To be or not to be'))  # R: builtins.str
+-    reveal_type(_.quote('To be or not to be', "'"))  # R: builtins.str
++    reveal_type(_.quote('To be or not to be'))  # R: str
++    reveal_type(_.quote('To be or not to be', "'"))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reg_exp_js_match() -> None:
+-    reveal_type(_.reg_exp_js_match('aaBBcc', '/bb/'))  # R: builtins.list[builtins.str]
+-    reveal_type(_.reg_exp_js_match('aaBBcc', '/bb/i'))  # R: builtins.list[builtins.str]
+-    reveal_type(_.reg_exp_js_match('aaBBccbb', '/bb/i'))  # R: builtins.list[builtins.str]
+-    reveal_type(_.reg_exp_js_match('aaBBccbb', '/bb/gi'))  # R: builtins.list[builtins.str]
++    reveal_type(_.reg_exp_js_match('aaBBcc', '/bb/'))  # R: list[str]
++    reveal_type(_.reg_exp_js_match('aaBBcc', '/bb/i'))  # R: list[str]
++    reveal_type(_.reg_exp_js_match('aaBBccbb', '/bb/i'))  # R: list[str]
++    reveal_type(_.reg_exp_js_match('aaBBccbb', '/bb/gi'))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reg_exp_js_replace() -> None:
+-    reveal_type(_.reg_exp_js_replace('aaBBcc', '/bb/', 'X'))  # R: builtins.str
+-    reveal_type(_.reg_exp_js_replace('aaBBcc', '/bb/i', 'X'))  # R: builtins.str
+-    reveal_type(_.reg_exp_js_replace('aaBBccbb', '/bb/i', 'X'))  # R: builtins.str
+-    reveal_type(_.reg_exp_js_replace('aaBBccbb', '/bb/gi', 'X'))  # R: builtins.str
++    reveal_type(_.reg_exp_js_replace('aaBBcc', '/bb/', 'X'))  # R: str
++    reveal_type(_.reg_exp_js_replace('aaBBcc', '/bb/i', 'X'))  # R: str
++    reveal_type(_.reg_exp_js_replace('aaBBccbb', '/bb/i', 'X'))  # R: str
++    reveal_type(_.reg_exp_js_replace('aaBBccbb', '/bb/gi', 'X'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_reg_exp_replace() -> None:
+-    reveal_type(_.reg_exp_replace('aabbcc', 'b', 'X'))  # R: builtins.str
+-    reveal_type(_.reg_exp_replace('aabbcc', 'B', 'X', ignore_case=True))  # R: builtins.str
+-    reveal_type(_.reg_exp_replace('aabbcc', 'b', 'X', count=1))  # R: builtins.str
+-    reveal_type(_.reg_exp_replace('aabbcc', '[ab]', 'X'))  # R: builtins.str
++    reveal_type(_.reg_exp_replace('aabbcc', 'b', 'X'))  # R: str
++    reveal_type(_.reg_exp_replace('aabbcc', 'B', 'X', ignore_case=True))  # R: str
++    reveal_type(_.reg_exp_replace('aabbcc', 'b', 'X', count=1))  # R: str
++    reveal_type(_.reg_exp_replace('aabbcc', '[ab]', 'X'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_repeat() -> None:
+-    reveal_type(_.repeat('.', 5))  # R: builtins.str
++    reveal_type(_.repeat('.', 5))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_replace() -> None:
+-    reveal_type(_.replace('aabbcc', 'b', 'X'))  # R: builtins.str
+-    reveal_type(_.replace('aabbcc', 'B', 'X', ignore_case=True))  # R: builtins.str
+-    reveal_type(_.replace('aabbcc', 'b', 'X', count=1))  # R: builtins.str
+-    reveal_type(_.replace('aabbcc', '[ab]', 'X'))  # R: builtins.str
+-    reveal_type(_.replace('aabbcc', '[ab]', 'X', escape=False))  # R: builtins.str
++    reveal_type(_.replace('aabbcc', 'b', 'X'))  # R: str
++    reveal_type(_.replace('aabbcc', 'B', 'X', ignore_case=True))  # R: str
++    reveal_type(_.replace('aabbcc', 'b', 'X', count=1))  # R: str
++    reveal_type(_.replace('aabbcc', '[ab]', 'X'))  # R: str
++    reveal_type(_.replace('aabbcc', '[ab]', 'X', escape=False))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_replace_end() -> None:
+-    reveal_type(_.replace_end('aabbcc', 'b', 'X'))  # R: builtins.str
+-    reveal_type(_.replace_end('aabbcc', 'c', 'X'))  # R: builtins.str
++    reveal_type(_.replace_end('aabbcc', 'b', 'X'))  # R: str
++    reveal_type(_.replace_end('aabbcc', 'c', 'X'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_replace_start() -> None:
+-    reveal_type(_.replace_start('aabbcc', 'b', 'X'))  # R: builtins.str
+-    reveal_type(_.replace_start('aabbcc', 'a', 'X'))  # R: builtins.str
++    reveal_type(_.replace_start('aabbcc', 'b', 'X'))  # R: str
++    reveal_type(_.replace_start('aabbcc', 'a', 'X'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_separator_case() -> None:
+-    reveal_type(_.separator_case('a!!b___c.d', '-'))  # R: builtins.str
++    reveal_type(_.separator_case('a!!b___c.d', '-'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_series_phrase() -> None:
+-    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches']))  # R: builtins.str
+-    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches'], serial=True))  # R: builtins.str
+-    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches'], '; ', ', or '))  # R: builtins.str
++    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches']))  # R: str
++    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches'], serial=True))  # R: str
++    reveal_type(_.series_phrase(['apples', 'bananas', 'peaches'], '; ', ', or '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_series_phrase_serial() -> None:
+-    reveal_type(_.series_phrase_serial(['apples', 'bananas', 'peaches']))  # R: builtins.str
++    reveal_type(_.series_phrase_serial(['apples', 'bananas', 'peaches']))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_slugify() -> None:
+-    reveal_type(_.slugify('This is a slug.'))  # R: builtins.str
+-    reveal_type(_.slugify('This is a slug.', '+'))  # R: builtins.str
++    reveal_type(_.slugify('This is a slug.'))  # R: str
++    reveal_type(_.slugify('This is a slug.', '+'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_snake_case() -> None:
+-    reveal_type(_.snake_case('This is Snake Case!'))  # R: builtins.str
++    reveal_type(_.snake_case('This is Snake Case!'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_split() -> None:
+-    reveal_type(_.split('one potato, two potatoes, three potatoes, four!'))  # R: builtins.list[builtins.str]
+-    reveal_type(_.split('one potato, two potatoes, three potatoes, four!', ','))  # R: builtins.list[builtins.str]
++    reveal_type(_.split('one potato, two potatoes, three potatoes, four!'))  # R: list[str]
++    reveal_type(_.split('one potato, two potatoes, three potatoes, four!', ','))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_start_case() -> None:
+-    reveal_type(_.start_case("fooBar"))  # R: builtins.str
++    reveal_type(_.start_case("fooBar"))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_starts_with() -> None:
+-    reveal_type(_.starts_with('abcdef', 'a'))  # R: builtins.bool
+-    reveal_type(_.starts_with('abcdef', 'b'))  # R: builtins.bool
+-    reveal_type(_.starts_with('abcdef', 'a', 1))  # R: builtins.bool
++    reveal_type(_.starts_with('abcdef', 'a'))  # R: bool
++    reveal_type(_.starts_with('abcdef', 'b'))  # R: bool
++    reveal_type(_.starts_with('abcdef', 'a', 1))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_strip_tags() -> None:
+-    reveal_type(_.strip_tags('<a href="#">Some link</a>'))  # R: builtins.str
++    reveal_type(_.strip_tags('<a href="#">Some link</a>'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_substr_left() -> None:
+-    reveal_type(_.substr_left('abcdefcdg', 'cd'))  # R: builtins.str
++    reveal_type(_.substr_left('abcdefcdg', 'cd'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_substr_left_end() -> None:
+-    reveal_type(_.substr_left_end('abcdefcdg', 'cd'))  # R: builtins.str
++    reveal_type(_.substr_left_end('abcdefcdg', 'cd'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_substr_right() -> None:
+-    reveal_type(_.substr_right('abcdefcdg', 'cd'))  # R: builtins.str
++    reveal_type(_.substr_right('abcdefcdg', 'cd'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_substr_right_end() -> None:
+-    reveal_type(_.substr_right_end('abcdefcdg', 'cd'))  # R: builtins.str
++    reveal_type(_.substr_right_end('abcdefcdg', 'cd'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_successor() -> None:
+-    reveal_type(_.successor('b'))  # R: builtins.str
+-    reveal_type(_.successor('B'))  # R: builtins.str
+-    reveal_type(_.successor('2'))  # R: builtins.str
++    reveal_type(_.successor('b'))  # R: str
++    reveal_type(_.successor('B'))  # R: str
++    reveal_type(_.successor('2'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_surround() -> None:
+-    reveal_type(_.surround('abc', '"'))  # R: builtins.str
+-    reveal_type(_.surround('abc', '!'))  # R: builtins.str
++    reveal_type(_.surround('abc', '"'))  # R: str
++    reveal_type(_.surround('abc', '!'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_swap_case() -> None:
+-    reveal_type(_.swap_case('aBcDeF'))  # R: builtins.str
++    reveal_type(_.swap_case('aBcDeF'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_title_case() -> None:
+-    reveal_type(_.title_case("bob's shop"))  # R: builtins.str
++    reveal_type(_.title_case("bob's shop"))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_lower() -> None:
+-    reveal_type(_.to_lower('--Foo-Bar--'))  # R: builtins.str
+-    reveal_type(_.to_lower('fooBar'))  # R: builtins.str
+-    reveal_type(_.to_lower('__FOO_BAR__'))  # R: builtins.str
++    reveal_type(_.to_lower('--Foo-Bar--'))  # R: str
++    reveal_type(_.to_lower('fooBar'))  # R: str
++    reveal_type(_.to_lower('__FOO_BAR__'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_upper() -> None:
+-    reveal_type(_.to_upper('--Foo-Bar--'))  # R: builtins.str
+-    reveal_type(_.to_upper('fooBar'))  # R: builtins.str
+-    reveal_type(_.to_upper('__FOO_BAR__'))  # R: builtins.str
++    reveal_type(_.to_upper('--Foo-Bar--'))  # R: str
++    reveal_type(_.to_upper('fooBar'))  # R: str
++    reveal_type(_.to_upper('__FOO_BAR__'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_trim() -> None:
+-    reveal_type(_.trim('  abc efg\r\n '))  # R: builtins.str
++    reveal_type(_.trim('  abc efg\r\n '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_trim_end() -> None:
+-    reveal_type(_.trim_end('  abc efg\r\n '))  # R: builtins.str
++    reveal_type(_.trim_end('  abc efg\r\n '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_trim_start() -> None:
+-    reveal_type(_.trim_start('  abc efg\r\n '))  # R: builtins.str
++    reveal_type(_.trim_start('  abc efg\r\n '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_truncate() -> None:
+-    reveal_type(_.truncate('hello world', 5))  # R: builtins.str
+-    reveal_type(_.truncate('hello world', 5, '..'))  # R: builtins.str
+-    reveal_type(_.truncate('hello world', 10))  # R: builtins.str
+-    reveal_type(_.truncate('hello world', 10, separator=' '))  # R: builtins.str
++    reveal_type(_.truncate('hello world', 5))  # R: str
++    reveal_type(_.truncate('hello world', 5, '..'))  # R: str
++    reveal_type(_.truncate('hello world', 10))  # R: str
++    reveal_type(_.truncate('hello world', 10, separator=' '))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unescape() -> None:
+-    reveal_type(_.unescape('&quot;1 &gt; 2 &amp;&amp; 3 &lt; 4&quot;'))  # R: builtins.str
++    reveal_type(_.unescape('&quot;1 &gt; 2 &amp;&amp; 3 &lt; 4&quot;'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_upper_case() -> None:
+-    reveal_type(_.upper_case('--foo-bar--'))  # R: builtins.str
+-    reveal_type(_.upper_case('fooBar'))  # R: builtins.str
+-    reveal_type(_.upper_case('/?*Foo10/;"B*Ar'))  # R: builtins.str
++    reveal_type(_.upper_case('--foo-bar--'))  # R: str
++    reveal_type(_.upper_case('fooBar'))  # R: str
++    reveal_type(_.upper_case('/?*Foo10/;"B*Ar'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_upper_first() -> None:
+-    reveal_type(_.upper_first('fred'))  # R: builtins.str
+-    reveal_type(_.upper_first('foo bar'))  # R: builtins.str
+-    reveal_type(_.upper_first('1foobar'))  # R: builtins.str
+-    reveal_type(_.upper_first(';foobar'))  # R: builtins.str
++    reveal_type(_.upper_first('fred'))  # R: str
++    reveal_type(_.upper_first('foo bar'))  # R: str
++    reveal_type(_.upper_first('1foobar'))  # R: str
++    reveal_type(_.upper_first(';foobar'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unquote() -> None:
+-    reveal_type(_.unquote('"abc"'))  # R: builtins.str
+-    reveal_type(_.unquote('"abc"', '#'))  # R: builtins.str
+-    reveal_type(_.unquote('#abc', '#'))  # R: builtins.str
+-    reveal_type(_.unquote('#abc#', '#'))  # R: builtins.str
++    reveal_type(_.unquote('"abc"'))  # R: str
++    reveal_type(_.unquote('"abc"', '#'))  # R: str
++    reveal_type(_.unquote('#abc', '#'))  # R: str
++    reveal_type(_.unquote('#abc#', '#'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_url() -> None:
+-    reveal_type(_.url('a', 'b', ['c', 'd'], '/', q='X', y='Z'))  # R: builtins.str
++    reveal_type(_.url('a', 'b', ['c', 'd'], '/', q='X', y='Z'))  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_words() -> None:
+-    reveal_type(_.words('a b, c; d-e'))  # R: builtins.list[builtins.str]
+-    reveal_type(_.words('fred, barney, & pebbles', '/[^, ]+/g'))  # R: builtins.list[builtins.str]
++    reveal_type(_.words('a b, c; d-e'))  # R: list[str]
++    reveal_type(_.words('fred, barney, & pebbles', '/[^, ]+/g'))  # R: list[str]
 Index: pydash-8.0.6/tests/pytest_mypy_testing/test_utilities.py
 ===================================================================
 --- pydash-8.0.6.orig/tests/pytest_mypy_testing/test_utilities.py
@@ -397,16 +2845,263 @@ Index: pydash-8.0.6/tests/pytest_mypy_testing/test_utilities.py
          return n/0
  
 -    reveal_type(_.attempt(divide_by_zero, 1))  # R: Union[builtins.float, builtins.Exception]
-+    reveal_type(_.attempt(divide_by_zero, 1))  # R: builtins.float | builtins.Exception
++    reveal_type(_.attempt(divide_by_zero, 1))  # R: float | Exception
  
  
  @pytest.mark.mypy_testing
-@@ -182,7 +182,7 @@ def test_mypy_properties() -> None:
+@@ -22,7 +22,7 @@ def test_mypy_cond() -> None:
+             (is_1, _.constant("matches 1")),
+         ]
+     )
+-    reveal_type(func)  # R: def (*Any, **Any) -> builtins.str
++    reveal_type(func)  # R: def (*Any, **Any) -> str
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -32,44 +32,44 @@ def test_mypy_conforms() -> None:
+     def is_0(n: int) -> bool:
+         return n == 0
+ 
+-    reveal_type(_.conforms({'b': higher_than_1}))  # R: def (builtins.dict[builtins.str, builtins.int]) -> builtins.bool
+-    reveal_type(_.conforms([higher_than_1, is_0]))  # R: def (builtins.list[builtins.int]) -> builtins.bool
++    reveal_type(_.conforms({'b': higher_than_1}))  # R: def (dict[str, int]) -> bool
++    reveal_type(_.conforms([higher_than_1, is_0]))  # R: def (list[int]) -> bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_conforms_to() -> None:
+-    reveal_type(_.conforms_to({'b': 2}, {'b': lambda n: n > 1}))  # R: builtins.bool
+-    reveal_type(_.conforms_to({'b': 0}, {'b': lambda n: n > 1}))  # R: builtins.bool
+-    reveal_type(_.conforms_to([2, 0], [lambda n: n > 1, lambda n: n == 0]))  # R: builtins.bool
+-    reveal_type(_.conforms_to([0, 0], [lambda n: n > 1, lambda n: n == 0]))  # R: builtins.bool
++    reveal_type(_.conforms_to({'b': 2}, {'b': lambda n: n > 1}))  # R: bool
++    reveal_type(_.conforms_to({'b': 0}, {'b': lambda n: n > 1}))  # R: bool
++    reveal_type(_.conforms_to([2, 0], [lambda n: n > 1, lambda n: n == 0]))  # R: bool
++    reveal_type(_.conforms_to([0, 0], [lambda n: n > 1, lambda n: n == 0]))  # R: bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_constant() -> None:
+-    reveal_type(_.constant(3.14))  # R: def (*Any, **Any) -> builtins.float
+-    reveal_type(_.constant("hello"))  # R: def (*Any, **Any) -> builtins.str
++    reveal_type(_.constant(3.14))  # R: def (*Any, **Any) -> float
++    reveal_type(_.constant("hello"))  # R: def (*Any, **Any) -> str
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_default_to() -> None:
+-    reveal_type(_.default_to(1, 10))  # R: builtins.int
+-    reveal_type(_.default_to(None, 10))  # R: builtins.int
++    reveal_type(_.default_to(1, 10))  # R: int
++    reveal_type(_.default_to(None, 10))  # R: int
+     reveal_type(_.default_to(None, None))  # R: None
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_default_to_any() -> None:
+     n1, n2, n3 = 1, 10, 20
+-    reveal_type(_.default_to_any(n1, n2, n3))  # R: builtins.int
+-    reveal_type(_.default_to_any(None, n2, n3))  # R: builtins.int
+-    reveal_type(_.default_to_any(None, None, n3))  # R: builtins.int
++    reveal_type(_.default_to_any(n1, n2, n3))  # R: int
++    reveal_type(_.default_to_any(None, n2, n3))  # R: int
++    reveal_type(_.default_to_any(None, None, n3))  # R: int
+     reveal_type(_.default_to_any(None, None, None))  # R: None
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_identity() -> None:
+-    reveal_type(_.identity(1))  # R: builtins.int
+-    reveal_type(_.identity(1, 2, 3))  # R: builtins.int
++    reveal_type(_.identity(1))  # R: int
++    reveal_type(_.identity(1, 2, 3))  # R: int
+     reveal_type(_.identity())  # R: None
+ 
+ 
+@@ -80,19 +80,19 @@ def test_mypy_iteratee() -> None:
+ 
+     reveal_type(_.iteratee('data'))  # R: def (*Any, **Any) -> Any
+     reveal_type(_.iteratee({'active': True})) # R: def (*Any, **Any) -> Any
+-    reveal_type(_.iteratee(add))  # R: def (x: builtins.int, y: builtins.int) -> builtins.int
++    reveal_type(_.iteratee(add))  # R: def (x: int, y: int) -> int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_matches() -> None:
+-    reveal_type(_.matches({'a': {'b': 2}}))  # R: def (Any) -> builtins.bool
++    reveal_type(_.matches({'a': {'b': 2}}))  # R: def (Any) -> bool
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_matches_property() -> None:
+-    reveal_type(_.matches_property('a', 1))  # R: def (Any) -> builtins.bool
+-    reveal_type(_.matches_property(0, 1))  # R: def (Any) -> builtins.bool
+-    reveal_type(_.matches_property('a', 2))  # R: def (Any) -> builtins.bool
++    reveal_type(_.matches_property('a', 1))  # R: def (Any) -> bool
++    reveal_type(_.matches_property(0, 1))  # R: def (Any) -> bool
++    reveal_type(_.matches_property('a', 2))  # R: def (Any) -> bool
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -104,12 +104,12 @@ def test_mypy_memoize() -> None:
+         return x * y
+ 
+     memoized_add = _.memoize(add)
+-    reveal_type(memoized_add)  # R: pydash.utilities.MemoizedFunc[[x: builtins.int, y: builtins.int], builtins.int, builtins.str]
+-    reveal_type(memoized_add.cache)  # R: builtins.dict[builtins.str, builtins.int]
++    reveal_type(memoized_add)  # R: pydash.utilities.MemoizedFunc[[x: int, y: int], int, str]
++    reveal_type(memoized_add.cache)  # R: dict[str, int]
+ 
+     memoized_add_resolv = _.memoize(add, mul)
+-    reveal_type(memoized_add_resolv)  # R: pydash.utilities.MemoizedFunc[[x: builtins.int, y: builtins.int], builtins.int, builtins.int]
+-    reveal_type(memoized_add_resolv.cache)  # R: builtins.dict[builtins.int, builtins.int]
++    reveal_type(memoized_add_resolv)  # R: pydash.utilities.MemoizedFunc[[x: int, y: int], int, int]
++    reveal_type(memoized_add_resolv.cache)  # R: dict[int, int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -136,7 +136,7 @@ def test_mypy_nth_arg() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_now() -> None:
+-    reveal_type(_.now())  # R: builtins.int
++    reveal_type(_.now())  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -146,7 +146,7 @@ def test_mypy_over() -> None:
+     def second(*args: int) -> int:
+         return args[1]
+ 
+-    reveal_type(_.over([first, second]))  # R: def (*args: builtins.int) -> builtins.list[builtins.int]
++    reveal_type(_.over([first, second]))  # R: def (*args: int) -> list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -156,7 +156,7 @@ def test_mypy_over_every() -> None:
+     def is_one(x: int) -> bool:
+         return x == 1
+ 
+-    reveal_type(_.over_every([is_one, is_two]))  # R: def (x: builtins.int) -> builtins.bool
++    reveal_type(_.over_every([is_one, is_two]))  # R: def (x: int) -> bool
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -166,7 +166,7 @@ def test_mypy_over_some() -> None:
+     def is_one(x: int) -> bool:
+         return x == 1
+ 
+-    reveal_type(_.over_some([is_one, is_two]))  # R: def (x: builtins.int) -> builtins.bool
++    reveal_type(_.over_some([is_one, is_two]))  # R: def (x: int) -> bool
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -182,40 +182,40 @@ def test_mypy_properties() -> None:
  
  @pytest.mark.mypy_testing
  def test_mypy_property_of() -> None:
 -    reveal_type(_.property_of({'a': 1, 'b': 2, 'c': 3}))  # R: def (Union[typing.Hashable, builtins.list[typing.Hashable]]) -> Any
-+    reveal_type(_.property_of({'a': 1, 'b': 2, 'c': 3}))  # R: def (typing.Hashable | builtins.list[typing.Hashable]) -> Any
++    reveal_type(_.property_of({'a': 1, 'b': 2, 'c': 3}))  # R: def (typing.Hashable | list[typing.Hashable]) -> Any
  
  
  @pytest.mark.mypy_testing
+ def test_mypy_random() -> None:
+-    reveal_type(_.random())  # R: builtins.int
+-    reveal_type(_.random(5, 10))  # R: builtins.int
+-    reveal_type(_.random(floating=True))  # R: builtins.float
+-    reveal_type(_.random(5.4, 10))  # R: builtins.float
+-    reveal_type(_.random(5, 10.0))  # R: builtins.float
+-    reveal_type(_.random(5.5, 10.0))  # R: builtins.float
++    reveal_type(_.random())  # R: int
++    reveal_type(_.random(5, 10))  # R: int
++    reveal_type(_.random(floating=True))  # R: float
++    reveal_type(_.random(5.4, 10))  # R: float
++    reveal_type(_.random(5, 10.0))  # R: float
++    reveal_type(_.random(5.5, 10.0))  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_range_() -> None:
+-    reveal_type(list(_.range_(5)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_(1, 4)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_(0, 6, 2)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_(4, 1)))  # R: builtins.list[builtins.int]
++    reveal_type(list(_.range_(5)))  # R: list[int]
++    reveal_type(list(_.range_(1, 4)))  # R: list[int]
++    reveal_type(list(_.range_(0, 6, 2)))  # R: list[int]
++    reveal_type(list(_.range_(4, 1)))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_range_right() -> None:
+-    reveal_type(list(_.range_right(5)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_right(1, 4)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_right(0, 6, 2)))  # R: builtins.list[builtins.int]
+-    reveal_type(list(_.range_right(4, 1)))  # R: builtins.list[builtins.int]
++    reveal_type(list(_.range_right(5)))  # R: list[int]
++    reveal_type(list(_.range_right(1, 4)))  # R: list[int]
++    reveal_type(list(_.range_right(0, 6, 2)))  # R: list[int]
++    reveal_type(list(_.range_right(4, 1)))  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_result() -> None:
+     reveal_type(_.result({'a': 1, 'b': lambda: 2}, 'a'))  # R: Any
+     reveal_type(_.result(None, 'a', None))  # R: None
+-    reveal_type(_.result(None, 'a', 5))  # R: builtins.int
++    reveal_type(_.result(None, 'a', 5))  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -224,17 +224,17 @@ def test_mypy_retry() -> None:
+         return x + y
+ 
+     r = _.retry(attempts=3, delay=0)
+-    reveal_type(r(add))  # R: def (x: builtins.int, y: builtins.int) -> builtins.int
++    reveal_type(r(add))  # R: def (x: int, y: int) -> int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_stub_list() -> None:
+-    reveal_type(_.stub_list())  # R: builtins.list[Any]
++    reveal_type(_.stub_list())  # R: list[Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_stub_dict() -> None:
+-    reveal_type(_.stub_dict())  # R: builtins.dict[Any, Any]
++    reveal_type(_.stub_dict())  # R: dict[Any, Any]
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -244,7 +244,7 @@ def test_mypy_stub_false() -> None:
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_stub_string() -> None:
+-    reveal_type(_.stub_string())  # R: builtins.str
++    reveal_type(_.stub_string())  # R: str
+ 
+ 
+ @pytest.mark.mypy_testing
+@@ -257,16 +257,16 @@ def test_mypy_times() -> None:
+     def to_str(x: int) -> str:
+         return str(x)
+ 
+-    reveal_type(_.times(5))  # R: builtins.list[builtins.int]
+-    reveal_type(_.times(5, to_str))  # R: builtins.list[builtins.str]
++    reveal_type(_.times(5))  # R: list[int]
++    reveal_type(_.times(5, to_str))  # R: list[str]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_to_path() -> None:
+-    reveal_type(_.to_path('a.b.c'))  # R: builtins.list[typing.Hashable]
++    reveal_type(_.to_path('a.b.c'))  # R: list[typing.Hashable]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def test_mypy_unique_id() -> None:
+-    reveal_type(_.unique_id())  # R: builtins.str
+-    reveal_type(_.unique_id('id_'))  # R: builtins.str
++    reveal_type(_.unique_id())  # R: str
++    reveal_type(_.unique_id('id_'))  # R: str

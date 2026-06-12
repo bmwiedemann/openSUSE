@@ -26,12 +26,13 @@ URL:            https://github.com/dgilland/pydash
 Source:         https://files.pythonhosted.org/packages/source/p/pydash/pydash-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Support newer mypy
 Patch0:         support-new-mypy.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module invoke}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mypy-testing}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing_extensions >= 3.10}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

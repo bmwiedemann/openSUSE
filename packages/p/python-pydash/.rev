@@ -129,4 +129,12 @@
     <comment></comment>
     <requestid>1328661</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6295506d89a4d833f570c812f10f2390</srcmd5>
+    <version>8.0.6</version>
+    <time>1781285290</time>
+    <user>anag_factory</user>
+    <comment>- Update patch support-new-mypy.patch, once again with feeling.</comment>
+    <requestid>1358832</requestid>
+  </revision>
 </revisionlist>
