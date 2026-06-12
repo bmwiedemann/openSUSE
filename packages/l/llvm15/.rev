@@ -280,4 +280,15 @@ without RUNPATH on libc++.so.
 </comment>
     <requestid>1352210</requestid>
   </revision>
+  <revision rev="24" vrev="18">
+    <srcmd5>8954b7c27a22811cbc23de9d7a2af05c</srcmd5>
+    <version>15.0.7</version>
+    <time>1781285181</time>
+    <user>anag_factory</user>
+    <comment>- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.
+</comment>
+    <requestid>1358709</requestid>
+  </revision>
 </revisionlist>

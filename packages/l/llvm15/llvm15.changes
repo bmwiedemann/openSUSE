@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:34:50 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.
+
+-------------------------------------------------------------------
 Fri May  8 21:22:45 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Make sure we don't lose the distribution compiler flags.
