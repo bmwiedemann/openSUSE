@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 14:15:37 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
+
+- Update to 2.30.10
+- Run doctests requiring `regex` only when `regex` is available
+  (Resolves: https://github.com/mike-fabian/ibus-typing-booster/issues/909)
+- Translation update from Weblate (fa 4.7%, lt 8.5%, or 34.1%, si 1%)
+
+-------------------------------------------------------------------
 Mon Jun 01 15:26:56 UTC 2026 - Mike FABIAN <maiku.fabian@gmail.com>
 
 - Update to 2.30.9
