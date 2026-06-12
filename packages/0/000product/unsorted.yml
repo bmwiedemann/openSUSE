@@ -956,6 +956,7 @@ unsorted:
   - asco-doc 
   - asdf 
   - aseqview 
+  - ashell 
   - asio-devel 
   - asl 
   - asn1c 
@@ -21318,6 +21319,7 @@ unsorted:
   - partio-doc 
   - partitionmanager-lang 
   - parzip 
+  - pascube 
   - pass-import 
   - pass-otp 
   - passt-apparmor 
@@ -23440,6 +23442,7 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-gui 
   - policycoreutils-newrole 
+  - policycoreutils-sandbox 
   - polkit-devel 
   - polkit-doc 
   - polybar 
@@ -25409,7 +25412,6 @@ unsorted:
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
-  - python311-cx_Freeze 
   - python311-cymem 
   - python311-cymruwhois 
   - python311-cyrtranslit 
@@ -29328,7 +29330,6 @@ unsorted:
   - python313-curlylint 
   - python313-curtsies 
   - python313-cwcwidth 
-  - python313-cx_Freeze 
   - python313-cymem 
   - python313-cymruwhois 
   - python313-cyrtranslit 
@@ -35620,6 +35621,7 @@ unsorted:
   - python314-solv 
   - python314-sortedcollections 
   - python314-sortedcontainers 
+  - python314-sortinghat 
   - python314-soundcloud-v2 
   - python314-sounddevice 
   - python314-soupsieve 
@@ -50424,7 +50426,6 @@ unsorted:
   - waybar-branding-openSUSE 
   - waybar-branding-upstream 
   - waycheck 
-  - wayclip 
   - wayfire 
   - wayfire-devel 
   - wayfire-plugins-extra 
