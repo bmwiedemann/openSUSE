@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 11 15:16:08 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.0+git.1781190752.ede285d7 (bsc#1267908):
+  * Dev: hide 'Add Resource' --> 'Multi-state' menu
+
+-------------------------------------------------------------------
+Wed Jun 10 15:09:30 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.0+git.1781104125.e8be47d6:
+  * Dev: rename 'Promotable' --> 'Unpromoted' (bsc#1267454)
+  * CI/CD: use fencing-sbd in sle16, instead of stonith-sbd
+  * Test: enable both fencing-sbd and stonith-sbd
+  * Test: use another name for hot_primitive
+
+-------------------------------------------------------------------
 Mon May 25 12:50:35 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.0+git.1779713275.363148e0:
