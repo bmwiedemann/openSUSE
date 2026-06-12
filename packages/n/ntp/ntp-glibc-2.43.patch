@@ -1,0 +1,13 @@
+Index: ntp-4.2.8p18/sntp/configure.ac
+===================================================================
+--- ntp-4.2.8p18.orig/sntp/configure.ac
++++ ntp-4.2.8p18/sntp/configure.ac
+@@ -130,7 +130,7 @@ AC_DEFINE([HAVE_NO_NICE], 1, [sntp does
+ AC_DEFINE([HAVE_TERMIOS], 1, [sntp does not care about TTY stuff])
+ 
+ # Checks for library functions.
+-AC_CHECK_FUNCS([socket])
++AC_CHECK_FUNCS([socket memchr strnlen])
+ 
+ NTP_UNITYBUILD
+ 

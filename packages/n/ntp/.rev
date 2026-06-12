@@ -1365,4 +1365,12 @@ Properly categorise licenses and sync with Fedora declaration (forwarded request
 - Update source URL.</comment>
     <requestid>1301942</requestid>
   </revision>
+  <revision rev="143" vrev="3">
+    <srcmd5>65b08d4d93f3f06fad31fd5c59707067</srcmd5>
+    <version>4.2.8p18</version>
+    <time>1781285300</time>
+    <user>anag_factory</user>
+    <comment>Fix build in Factory</comment>
+    <requestid>1358846</requestid>
+  </revision>
 </revisionlist>

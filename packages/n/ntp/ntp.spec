@@ -1,7 +1,7 @@
 #
 # spec file for package ntp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -60,11 +60,13 @@ Patch34:        testdcf-gude.diff
 Patch35:        ntp-clarify-interface.patch
 Patch36:        ntp-check-argv.patch
 Patch37:        ntp-sntp-assert.patch
+Patch38:        ntp-glibc-2.43.patch
 
 BuildRequires:  avahi-compat-mDNSResponder-devel
 BuildRequires:  fdupes
 BuildRequires:  libcap-devel
 BuildRequires:  libevent-devel
+BuildRequires:  libtool
 BuildRequires:  openssl-devel
 %if 0%{?suse_version} > 1320 || 0%{?sle_version} >= 120200
 BuildRequires:  pps-tools-devel
@@ -148,11 +150,13 @@ cp %{SOURCE12} .
 %patch -P 35
 %patch -P 36
 %patch -P 37
+%patch -P 38 -p1
 
 # fix DOS line breaks
 sed -i 's/\r//g' html/scripts/{footer.txt,style.css}
 
 %build
+autoreconf -fiv
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -W -DOPENSSL_LOAD_CONF -Wall -Wstrict-prototypes -Wpointer-arith -Wno-unused-parameter -fno-strict-aliasing -fstack-protector"
 %ifarch alpha s390x
 export RPM_OPT_FLAGS="$RPM_OPT_FLAGS -O0"

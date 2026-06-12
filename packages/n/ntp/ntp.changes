@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:32:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against glibc 2.43:
+  + Add ntp-glibc-2.43.patch: detect memchr presence in glibc. In
+    the past, we did not check for it and duplictaed the function
+    prototype in the local headers. This worked, as the glibc
+    provided prototype and our own matched. With glibc 2.43, it was
+    changed to a C11 _Generic macro, resultig in a conflict
+  + Add libtool BuildRequires and call autoreconf to bootstrap the
+    modified configure.ac
+
+-------------------------------------------------------------------
 Fri Aug 29 11:24:53 UTC 2025 - Reinhard Max <max@suse.com>
 
 - bsc#1247587: Fix a crash when calling "sntp -d".
