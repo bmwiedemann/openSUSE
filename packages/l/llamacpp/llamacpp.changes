@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun  7 22:27:41 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 9553:
+  * Added new model and multimodal support, including Granite 4
+    Vision, Gemma 4 MTP, and Qwen-VL video handling via frame-merge
+    support.
+  * Improved accelerator backends with faster CUDA MTP and MoE paths,
+    SYCL multi-column MMVQ, Vulkan Intel FWHT support with safer
+    feature detection, OpenCL kernel tuning, and WASM SIMD128
+    vectorization.
+  * Extended server and API behavior with multimodal token counting,
+    a new `*/input_tokens` endpoint, reduced unnecessary checkpoint
+    restores, and disabled on-device speculative checkpoints.
+  * Updated build and packaging bits: CMake now skips CPU-only tools
+    when the CPU backend is disabled, XCFramework header and
+    module-map generation was fixed, Docker CUDA 13 moved to 13.3.0,
+    and MSYS CI dependencies were slimmed down.
+  * Improved downloader and CLI behavior by avoiding duplicate MTP
+    downloads, skipping mmproj downloads when explicitly supplied,
+    and fixing CLI model parameters not being propagated correctly.
+  * Fixed multiple conversion and model-compatibility issues,
+    including Gemma 4 unified and no-audio cases, Gemma 4 audio
+    projector sizing, and Mistral-Medium-3.5-128B GGUF conversion.
+  * Fixed GPU, layer, cache, and speculative decoding stability
+    issues, including `n_gpu_layers` handling, vocab compatibility
+    checks, and KV-cache sharing and copy assertions.
+  * Refreshed the WebUI with single-line reasoning preview, improved
+    keyboard accessibility, fixed tool selector state and counting,
+    pinned packages for reproducible installs, and enabled npm
+    install safeguards with `ignore-scripts=true`.
+  * Improved chat and tool-call interoperability by fixing LFM2 and
+    LFM2.5 tool parsing and reasoning round-trip handling, and by
+    relaxing sampler name matching to accept common alias forms.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b9500...b9553
+- Include the web ui assets in the RPM package
+
+-------------------------------------------------------------------
 Thu Jun  4 14:47:32 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Split libllama-common into its own package 

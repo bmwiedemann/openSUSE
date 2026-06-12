@@ -29,12 +29,13 @@
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        9500
+Version:        9553
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
 URL:            https://github.com/ggml-org/llama.cpp
 Source:         %{URL}/archive/b%{version}/%{name}-%{version}.tar.gz
+Source1:        %{URL}/releases/download/b%{version}/llama-b%{version}-ui.tar.gz
 BuildRequires:  cmake >= 3.14
 BuildRequires:  gcc-c++
 BuildRequires:  git
@@ -171,6 +172,8 @@ Library to handle multimodal inputs for llama.cpp.
 
 %prep
 %autosetup -p1 -n llama.cpp-b%{version}
+mkdir -p tools/ui/dist
+tar -xzf %{SOURCE1} --strip-components=1 -C tools/ui/dist
 
 %build
 
