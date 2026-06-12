@@ -11,7 +11,7 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-
+#
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
@@ -24,7 +24,6 @@ Summary:        Ruby grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-ruby
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         tree-sitter-ruby-%{version}-dependencies.patch
 BuildRequires:  tree-sitter
 %treesitter_grammars %{_name}
 
