@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:27:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.3.3
+  * Change how Projection is implemented, to avoid causing warnings
+    in other packages that provide `Projection` methods if those
+    packages get loaded after automgrp.
+
+-------------------------------------------------------------------
 Tue Oct  4 00:02:11 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.3.2

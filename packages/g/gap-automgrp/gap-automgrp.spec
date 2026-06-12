@@ -1,7 +1,7 @@
 #
 # spec file for package gap-automgrp
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           gap-automgrp
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        GAP: Automata groups
 License:        MIT
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/automgrp/
-
 Source:         https://github.com/gap-packages/automgrp/releases/download/v%version/automgrp-%version.tar.gz
 BuildRequires:  gap-rpm-devel
 BuildArch:      noarch
