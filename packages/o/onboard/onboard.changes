@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:57:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4-3:
+  * Fixes:
+    - fix: prevent crash on shutdown caused by BadWindow X error
+    - fix: suppress Gdk-CRITICAL on exit, cancel pending idle
+      handler
+    - fix: use malloc/free instead of PyMem in PoolAllocator to
+      prevent SIGSEGV on exit
+
+-------------------------------------------------------------------
 Wed May 27 08:44:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4-2:

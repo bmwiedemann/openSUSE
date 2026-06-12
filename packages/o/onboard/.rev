@@ -191,4 +191,18 @@
 - Update URL/Source to current &quot;home&quot;.</comment>
     <requestid>1356895</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>cb65ffa11fd2d6ba6533dd9e92e8e6f5</srcmd5>
+    <version>1.4.4.3</version>
+    <time>1781285214</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4-3:
+  * Fixes:
+    - fix: prevent crash on shutdown caused by BadWindow X error
+    - fix: suppress Gdk-CRITICAL on exit, cancel pending idle
+      handler
+    - fix: use malloc/free instead of PyMem in PoolAllocator to
+      prevent SIGSEGV on exit</comment>
+    <requestid>1358742</requestid>
+  </revision>
 </revisionlist>
