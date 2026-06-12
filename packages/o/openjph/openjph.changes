@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:51:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.0:
+  * AVX2 block coder optimizations #276
+
+-------------------------------------------------------------------
 Sun Jun  7 20:30:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.27.4:

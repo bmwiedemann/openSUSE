@@ -267,4 +267,13 @@
   * Bug fix #277</comment>
     <requestid>1357807</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>e219841d2ab735c650bd4a3f95c5e018</srcmd5>
+    <version>0.28.0</version>
+    <time>1781285106</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.0:
+  * AVX2 block coder optimizations #276</comment>
+    <requestid>1358679</requestid>
+  </revision>
 </revisionlist>
