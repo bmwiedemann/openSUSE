@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 12 11:18:31 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.2.23:
+  * chore: Release v0.2.23
+  * fix(DHT): refactor memory handling of loaded dht state Previous code could double-free if more than one dht states per tox-file and a following allocation fails.
+  * chore: Release v0.2.23-rc.2
+  * docs: remove todo about checksum which was resolved in 06ccdb5b91eb2f2dfc444da60db76476a9882fa8 (over 12 years ago)
+  * docs: restore old comment lost in 55621e9ceaeb1585f3b69feb65e0e1ebf8836de7
+  * fix(gca): announce max sizes where 32bytes too large
+  * fix(onion): Size GCA announce response buffer to actual content length.
+  * cleanup: Add a Tox_Pass_Salt type for the pass-key salt.
+  * fix: limit number of saved group peers when loading from disk And add unpack_gc_saved_peers bounds test.
+  * docs: Document fixed-size buffer parameters in toxencryptsave.
+  * fix: wrong comment in group code
+  * test: Fix CI build and test failures.
+  * chore: Release v0.2.23-rc.1
+  * fix(dht): Suppress the warning about IPv6 nodes when IPv6 is turned off
+  * chore(ci): The gold linker has been deprecated/removed. LTO should work fine by default on modern distros.
+  * fix(test): fix mypy failure
+  * docs: Add tool and service acknowledgment and sponsor lists
+  * cleanup: Generalise byte-array logging functions.
+  * chore: update apt repos before installing deps for sonar
+  * chore: ci restyled
+  * chore: update github actions actions/checkout -> v6 actions/github-script -> v8 actions/setup-python -> v6 actions/cache -> v5 actions/upload-artifact -> v6 actions/download-artifact -> v7
+  * cleanup: Add nullability to more function params and return types.
+  * cleanup: Remove redundant nullability annotations.
+  * fix(av): Fix Use-After-Free when peer goes offline.
+  * feat: Add `Tox_Iterate_Options` for granular control over `tox_iterate`.
+  * feat: Add a function to get the list of valid group chat numbers.
+  * test: Fix VideoTest failures via codec fallbacks and add better logging.
+  * test: Improve simulation determinism and reliability.
+  * cleanup: Use `std::size_t` in C++ to fix compilation errors.
+
+-------------------------------------------------------------------
+Fri Jun 12 11:17:24 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.2.22:
+  * chore: Release v0.2.22
+  * chore: update bootstrap docker hash
+  * test: Fix flakiness in group_moderation_test
+  * chore: Update changelog removing past RCs.
+  * cleanup: Ensure callbacks to `qsort` cast their params.
+  * chore: Release v0.2.22-rc.1
+  * chore: Update bootstrap daemon hash for release.
+  * chore: Fix tokstyle CI check.
+  * chore: Update bootstrap node sha256 hash.
+  * chore: Happy new year 2026!
+
+-------------------------------------------------------------------
 Sat Jul 19 09:00:44 UTC 2025 - marec <marec@detebe.org>
 
 - Update to 0.2.21

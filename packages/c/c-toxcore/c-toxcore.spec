@@ -1,7 +1,7 @@
 #
 # spec file for package c-toxcore
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,14 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 %define _soversion 2
 Name:           c-toxcore
-Version:        0.2.21
+Version:        0.2.23
 Release:        0
 Summary:        Secure decentralized instant messaging application
 License:        GPL-3.0-only
 Group:          Productivity/Networking/Instant Messenger
 URL:            https://tox.chat/
-Source0:        https://github.com/TokTok/c-toxcore/archive/v%{version}.tar.gz#./%{name}-%{version}.tar.gz
+#Source0:        https://github.com/TokTok/c-toxcore/archive/v%%{version}.tar.gz#./%%{name}-%%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-user.conf
 Source2:        %{name}.tmpfiles.d
 # Dont't find right key at this time. :(
