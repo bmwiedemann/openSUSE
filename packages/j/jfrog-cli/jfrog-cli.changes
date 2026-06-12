@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:08:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.108.0:
+  * New Features
+    - [build-info-go] Added pnpm package support to recognise 403
+      Forbidden output #389 (@Phavya-jfrog)
+    - [jfrog-cli] Add jf mcp command to configure the remote JFrog
+      MCP server #3533 (@ehl-jf)
+    - [jfrog-cli] Add AI context description to commands #3503
+      (@ehl-jf)
+    - [jfrog-cli] feat: add server id to login command #3394
+      (@tim-goto)
+    - [jfrog-cli] RTECO-1021 - Enhance metrics visibility by
+      including package manager context #3534 (@fluxxBot)
+    - [jfrog-cli] Make nix command visible #3539 (@reshmifrog)
+    - [jfrog-cli] Added Post Failure Run support for pnpm and Yarn
+      #3509 (@Phavya-jfrog)
+    - [jfrog-cli-artifactory] JGC-473 - Add AI-agent help text to
+      artifactory commands #455 (@ehl-jf)
+    - [jfrog-cli-artifactory] RTECO-1021 - Enhance metrics
+      visibility by including package manager context #481
+      (@fluxxBot)
+    - [jfrog-cli-artifactory] RTECO-1400 - Add path validation to
+      prevent traversal attacks in artifact handling #487
+      (@fluxxBot)
+    - [jfrog-cli-core] RTECO-1021 - Enhance metrics visibility by
+      including package manager context #1569 (@fluxxBot)
+    - [jfrog-cli-security] Support parsing SCA issues without
+      components #758 (@attiasas)
+    - [jfrog-cli-security] JGC-473 - Add AI-agent help text to
+      security commands #760 (@ehl-jf)
+    - [jfrog-cli-security] Feature/xray 138688 add yarn support for
+      jf ca #759 (@gauriy-tech)
+    - [jfrog-cli-security] XRAY-144809 - CA command [Maven]: Add
+      option to consider plugin deps #771 (@gauriy-tech)
+    - [jfrog-cli-security] Feature/xray 138688 add pnpm support for
+      jf ca #769 (@gauriy-tech)
+  * Bug Fixes
+    - [build-info-go] RTECO-1287 jf poetry install --only main
+      captures all dependency #391 (@reshmifrog)
+    - [jfrog-cli] RTECO 1296 fix repeated 401 errors before
+      fallback authentication #3537 (@reshmifrog)
+    - [jfrog-cli] RTECO-1287 jf poetry install --only main captures
+      all dependency #3530 (@reshmifrog)
+    - [jfrog-cli-artifactory] Updated logic for extracting
+      repository key in case of reverse proxy scenario #458
+      (@naveenku-jfrog)
+    - [jfrog-cli-core] Revert "Fix reference token privilege
+      escalation" #1571 (@reshmifrog)
+    - [jfrog-cli-security] XRAY-140212 - Updated gradle dep tree
+      jar with the missing deps fix #751 (@gauriy-tech)
+    - [jfrog-cli-security] fix: disable npm workspaces for native
+      config reads #762 (@omribz156)
+  * Other Changes
+    - [build-info-go] RTECO-1365 Include e2e tests from jfrog cli
+      to build-info-go #390 (@reshmifrog)
+    - [jfrog-cli-artifactory] pnpm update error output handling
+      #465 (@Phavya-jfrog)
+    - [jfrog-cli-security] Auto install Cocoapods when Podfile.lock
+      not exist #723 (@attiasas)
+    - [jfrog-client-go] Use Windows system certificate store for
+      CLI TLS transport #1351 (@RemiBou)
+
+-------------------------------------------------------------------
 Thu Jun 04 05:32:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.107.0:
