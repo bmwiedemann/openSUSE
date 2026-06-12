@@ -54,7 +54,6 @@ Patch3:         rsyncd-return-from-list-command-with-0.patch
 Patch4:         rsync-python-3.6-tests.patch
 Patch5:         rsync-openat2-glibc-missing.patch
 
-BuildRequires:  %{pythons}
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
@@ -63,6 +62,7 @@ BuildRequires:  liblz4-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
+BuildRequires:  python3-base
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 %if %{with xxhash}
