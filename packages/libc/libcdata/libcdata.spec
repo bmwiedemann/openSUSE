@@ -18,7 +18,7 @@
 
 Name:           libcdata
 %define lname	libcdata1
-Version:        20260520
+Version:        20260612
 Release:        0
 Summary:        Library for C generic data functions
 License:        LGPL-3.0-or-later
@@ -29,8 +29,8 @@ Source2:        https://github.com/libyal/libcdata/releases/download/%version/li
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20260513
-BuildRequires:  pkgconfig(libcthreads) >= 20260518
+BuildRequires:  pkgconfig(libcerror) >= 20260612
+BuildRequires:  pkgconfig(libcthreads) >= 20260612
 # Various notes: https://en.opensuse.org/libyal
 
 %description
