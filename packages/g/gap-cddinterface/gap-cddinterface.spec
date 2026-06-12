@@ -17,7 +17,7 @@
 
 
 Name:           gap-cddinterface
-Version:        2025.06.24
+Version:        2026.03.02
 Release:        0
 Summary:        GAP: Interface to cddlib
 License:        GPL-2.0-or-later
