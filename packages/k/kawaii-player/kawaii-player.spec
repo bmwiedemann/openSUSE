@@ -1,7 +1,7 @@
 #
 # spec file for package kawaii-player
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,20 @@
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
-%define _over   5.0.0-1
-%define _bver   5.0.0
+%define _over   7.0.0-1
+%define _bver   7.0.0
 Name:           kawaii-player
-Version:        5.0.0.1
+Version:        7.0.0.1
 Release:        0
 Summary:        Multimedia player, library manager and media server
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Players
 URL:            https://github.com/kanishka-linux/kawaii-player
 Source0:        https://github.com/kanishka-linux/kawaii-player/archive/v%{_over}.tar.gz#/%{name}-%{_over}.tar.gz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
+BuildRequires:  mpv-devel
+BuildRequires:  python3-Cython
 BuildRequires:  python3-devel
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
@@ -48,7 +51,6 @@ Requires:       python3-qt5
 Requires:       python3-qtwebengine-qt5
 Requires:       youtube-dl
 Suggests:       python3-pympv
-BuildArch:      noarch
 
 %description
 Kawaii-Player is an audio/video manager and multimedia player based on mpv
@@ -68,7 +70,8 @@ sed -e "s/bs4/beautifulsoup4/g" -e "s/'PyQt5',//g" -i setup.py
 mkdir -pv %{buildroot}/%{_datadir}/applications %{buildroot}/%{_datadir}/pixmaps
 install -m 0644 %{name}.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
 install -m 0644 kawaii_player/resources/tray.png %{buildroot}/%{_datadir}/pixmaps/%{name}.png
-%fdupes -s %{buildroot}%{python3_sitelib}
+ln -sf %{name} %{buildroot}%{_bindir}/%{name}-console
+%fdupes %{buildroot}%{python3_sitearch}
 
 %files
 %license LICENSE
@@ -77,7 +80,8 @@ install -m 0644 kawaii_player/resources/tray.png %{buildroot}/%{_datadir}/pixmap
 %{_bindir}/%{name}-console
 %{_datadir}/pixmaps/%{name}.png
 %{_datadir}/applications/%{name}.desktop
-%{python3_sitelib}/kawaii_player
-%{python3_sitelib}/kawaii_player-%{_bver}.dist-info
+%{python3_sitearch}/kawaii_player
+%{python3_sitearch}/kawaii_player-%{_bver}.dist-info
+%{python3_sitearch}/mpv*.so
 
 %changelog

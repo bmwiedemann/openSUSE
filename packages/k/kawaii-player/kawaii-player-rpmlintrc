@@ -1,0 +1,5 @@
+# False positive; python3-pytaglib contains 'lib' in its name but is a Python package, not a shared library.
+addFilter("explicit-lib-dependency python3-pytaglib")
+
+# Deduplicating identical/empty empty python files causes bytecode compilation timestamps to differ from targets.
+addFilter("python-bytecode-inconsistent-mtime")

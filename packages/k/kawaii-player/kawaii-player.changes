@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:29:26 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Removed BuildArch: noarch and updated file packaging targets to %{python3_sitearch} to compile separate native CPU packages on all target architectures. Required because now the package builds a native C extension module (mpv.cpython-*.so).
+- Used hardlinks instead of softlinks for the fdupes to fix mtime file issues. 
+- Added some custom rpmlint filters to filter out two false positive errors.
+
+-------------------------------------------------------------------
 Thu Oct 23 05:40:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
