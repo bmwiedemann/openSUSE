@@ -7,6 +7,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=-/etc/sysconfig/netbird-signal
+EnvironmentFile=-/etc/default/netbird-signal
 ExecStart=/usr/bin/netbird-signal run $FLAGS
 Restart=on-failure
 RestartSec=5

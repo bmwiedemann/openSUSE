@@ -7,6 +7,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=-/etc/sysconfig/netbird-management
+EnvironmentFile=-/etc/default/netbird-management
 ExecStart=/usr/bin/netbird-mgmt management $FLAGS
 Restart=on-failure
 RestartSec=5

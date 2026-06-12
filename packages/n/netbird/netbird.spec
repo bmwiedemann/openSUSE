@@ -32,7 +32,7 @@
 %bcond_with stub_config
 
 Name:           netbird
-Version:        0.72.2
+Version:        0.72.3
 Release:        0
 Summary:        Mesh VPN based on WireGuard
 License:        AGPL-3.0-only AND BSD-3-Clause
@@ -387,14 +387,17 @@ go test -skip "${disable}" ./client/...
 %endif
 
 %files management
+%license LICENSE
 %{_bindir}/%{name}-mgmt
 %{_unitdir}/%{name}-management.service
 
 %files signal
+%license LICENSE
 %{_bindir}/%{name}-signal
 %{_unitdir}/%{name}-signal.service
 
 %files relay
+%license LICENSE
 %{_bindir}/%{name}-relay
 
 %files bash-completion

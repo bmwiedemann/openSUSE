@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Jun 10 21:46:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Netbird does not really comply to the format for /etc/sysconfig/
+  so using /etc/default/${servicename} is a better idea. For
+  backwards compatibility reasons we will still load the old path
+  but the new path is preferred to be used.
+
+-------------------------------------------------------------------
+Wed Jun 10 20:20:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.72.3
+  - Client Improvements
+    - Added commands to discover and write Kubernetes
+      configuration. experimental #6260
+    - Masked sensitive data during debug bundle creation. #6364
+    - Preserved user deselect-all route preferences across
+      management syncs. #6363
+    - Fixed state manager crashes caused by concurrent iptables map
+      access. #6345
+    - Added WebSocket relay fallback when QUIC datagrams exceed
+      transport limits. #6339
+    - Filtered DNS fallback upstreams matching NetBird server IPs
+      to prevent loops. #6183
+    - Preserved posture checks on configuration-only sync updates.
+      #6373
+    - Improved embedded client shutdown by canceling context before
+      stopping the engine. #6397
+  - Management Improvements
+    - Added IPv6 default permit rules for exit node routes. #6368
+    - Logged user agent information and returned request IDs. #6380
+    - Added version gating to stop sending deprecated RemotePeers
+      field. #6371
+    - Fixed L4 service updates when no custom port is configured.
+      #6396
+  - Proxy Enhancements
+    - Added non-blocking mapping updates. #6369
+    - Improved certificate handling by notifying readiness for
+      domains covered by static certificates. #6389
+    - Switched proxy ID generation to UUIDs. #6391
+  - Infrastructure & Tooling
+    - Improved support for atomic Linux distributions in install
+      scripts and fixed Docker-related issues in
+      getting-started.sh. #6139
+    - Updated the Go toolchain version in go.mod. #6377
+
+-------------------------------------------------------------------
 Sun Jun  7 02:01:23 UTC 2026 - Holden Fried <holden@opensuse.org>
 
 - Update to 0.72.2
