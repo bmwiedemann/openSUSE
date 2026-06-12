@@ -2409,7 +2409,7 @@
     <package name="libopeniscsiusr0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libopenjp2-7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenjp2-7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libopenjph0_27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="libopenjph0_28" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libopenmpt0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libopenobex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libopenraw9" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->

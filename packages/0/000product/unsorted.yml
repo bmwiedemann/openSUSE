@@ -5067,7 +5067,6 @@ unsorted:
   - gedit-plugins 
   - gedit-plugins-lang 
   - gedit-theme-adapta 
-  - geekodoc 
   - geeqie 
   - geeqie-lang 
   - gegl 
@@ -10083,6 +10082,7 @@ unsorted:
   - kew 
   - kew-lang 
   - key-rack 
+  - key-rack-lang 
   - keybase-client 
   - keybinder-3.0-devel 
   - keychain 
@@ -15225,7 +15225,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_27-32bit 
+  - libopenjph0_28-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -20164,7 +20164,6 @@ unsorted:
   - nova-bash-completion 
   - nova-fish-completion 
   - nova-zsh-completion 
-  - novdoc 
   - novnc 
   - novprog 
   - novprog-lang 
@@ -24206,6 +24205,7 @@ unsorted:
   - python3-lldb 
   - python3-lldb15 
   - python3-lldb18 
+  - python3-lldb19 
   - python3-lldb20 
   - python3-lldb21 
   - python3-lldb22 
