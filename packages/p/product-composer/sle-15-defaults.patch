@@ -1,12 +1,23 @@
-diff --git a/src/productcomposer/defaults.py b/src/productcomposer/defaults.py
-index 4493328..1b351ef 100644
---- a/src/productcomposer/defaults.py
-+++ b/src/productcomposer/defaults.py
-@@ -7,5 +7,5 @@ and explicitly pass them to the programs.
+--- a/src/productcomposer/defaults.py.orig	2026-05-26 11:29:24.224650592 +0200
++++ a/src/productcomposer/defaults.py	2026-05-26 11:29:26.638909655 +0200
+@@ -7,6 +7,6 @@
  """
  
  
 -CREATEREPO_CHECKSUM_TYPE: str = "sha512"
 -CREATEREPO_GENERAL_COMPRESS_TYPE: str = "zstd"
+-ISO_CHECKSUM_TYPE: str = "sha512"
 +CREATEREPO_CHECKSUM_TYPE: str = "sha256"
 +CREATEREPO_GENERAL_COMPRESS_TYPE: str = "gz"
++ISO_CHECKSUM_TYPE: str = "sha256"
+--- a/pyproject.toml.orig	2026-05-26 11:33:27.458913812 +0200
++++ a/pyproject.toml	2026-05-26 11:33:51.107013277 +0200
+@@ -38,7 +38,7 @@
+ build-backend = "setuptools.build_meta"
+ 
+ [tool.setuptools_scm]
+-version_file = "src/productcomposer/__version__.py"
++write_to = "src/productcomposer/__version__.py"
+ 
+ [tool.setuptools.dynamic]
+ version = {attr = "productcomposer.__version__"}

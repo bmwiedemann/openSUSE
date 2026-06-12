@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:13:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.9.7
+  * Support of unpack rpms to agama images
+  * Support of removal of global build_options per flavor
+
+-------------------------------------------------------------------
+Tue May 26 09:34:48 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- fix sle 15 patch to support older python modules
+- enable test suite during build
+
+-------------------------------------------------------------------
 Mon Apr 27 09:46:06 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.9.6

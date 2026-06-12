@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
@@ -34,6 +34,9 @@ Source:         %name-%{version}.tar.xz
 Patch10:        sle-15-defaults.patch
 BuildRequires:  %{used_python}-pip
 BuildRequires:  %{used_python}-poetry-core
+BuildRequires:  %{used_python}-PyYAML
+BuildRequires:  %{used_python}-pydantic
+BuildRequires:  %{used_python}-pytest
 BuildRequires:  %{used_python}-setuptools
 BuildRequires:  %{used_python}-setuptools_scm
 BuildRequires:  %{used_python}-wheel
@@ -77,6 +80,14 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%version
 %python3_pyproject_install
 %endif
 mv %buildroot/usr/bin/productcomposer %buildroot%_bindir/product-composer
+
+%check
+%if "%{?sle_version}" == "150600"
+python3.11 -m pytest -v tests/
+%else
+python3 -m pytest -v tests/
+%endif
+
 
 %files
 %doc README.rst docs examples
