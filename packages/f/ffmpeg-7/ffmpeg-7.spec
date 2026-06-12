@@ -65,7 +65,7 @@
 %bcond_with    x265
 %bcond_with    xvid
 
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 %bcond_without mysofa
 %bcond_without vidstab
 %bcond_without codec2
@@ -707,22 +707,14 @@ for i in %extratools; do
 	cp -a "tools/$i" "$b/%_bindir/"
 done
 
-%post   -n libavcodec61 -p /sbin/ldconfig
-%postun -n libavcodec61 -p /sbin/ldconfig
-%post   -n libavdevice61 -p /sbin/ldconfig
-%postun -n libavdevice61 -p /sbin/ldconfig
-%post   -n libavfilter10 -p /sbin/ldconfig
-%postun -n libavfilter10 -p /sbin/ldconfig
-%post   -n libavformat61 -p /sbin/ldconfig
-%postun -n libavformat61 -p /sbin/ldconfig
-%post   -n libavutil59 -p /sbin/ldconfig
-%postun -n libavutil59 -p /sbin/ldconfig
-%post   -n libpostproc58 -p /sbin/ldconfig
-%postun -n libpostproc58 -p /sbin/ldconfig
-%post   -n libswresample5 -p /sbin/ldconfig
-%postun -n libswresample5 -p /sbin/ldconfig
-%post   -n libswscale8 -p /sbin/ldconfig
-%postun -n libswscale8 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libavcodec61
+%ldconfig_scriptlets -n libavdevice61
+%ldconfig_scriptlets -n libavfilter10
+%ldconfig_scriptlets -n libavformat61
+%ldconfig_scriptlets -n libavutil59
+%ldconfig_scriptlets -n libpostproc58
+%ldconfig_scriptlets -n libswresample5
+%ldconfig_scriptlets -n libswscale8
 
 %files
 %doc Changelog CREDITS README.md
@@ -923,8 +915,7 @@ b="%buildroot"
 %make_install
 rm -Rf "$b/%_datadir/ffmpeg/examples"
 
-%post   libs -p /sbin/ldconfig
-%postun libs -p /sbin/ldconfig
+%ldconfig_scriptlets libs
 
 %files libs
 %_libdir/libavcodec.so.*

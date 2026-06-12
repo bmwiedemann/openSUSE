@@ -3,6 +3,8 @@ Fri May 22 19:11:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 7.1.4:
   * Codec, format, filter and various other bugfixes.
+  * avcodec/av1dec: check that primary_ref_frame is within range.
+    (CVE-2026-30997, bsc#1262047)
 - Drop patches fixed upstream:
   * ffmpeg-7-CVE-2026-40962.patch
 - Rebase patches with quilt.
@@ -17,6 +19,11 @@ Wed May 13 07:13:19 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 Fri Apr  3 11:06:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable VVC decoders/encoders by default.
+
+-------------------------------------------------------------------
+Fri Mar 20 01:01:03 UTC 2026 - Federico Mena Quintero <federico@suse.com>
+
+- Update suse_version macro for 1610 (jsc#PED-15827)
 
 -------------------------------------------------------------------
 Sat Jan 10 19:44:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
