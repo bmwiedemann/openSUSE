@@ -17,8 +17,8 @@
 
 
 Name:           gap-4ti2interface
-Version:        2025.12.01
-%define sillyversion 2025.12-01
+Version:        2026.05.01
+%define sillyversion 2026.05-01
 Release:        0
 Summary:        GAP: Interface to 4ti2
 License:        GPL-2.0-only
@@ -29,7 +29,7 @@ Source:         https://github.com/homalg-project/homalg_project/releases/downlo
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       4ti2
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13
 Requires:       gap-io >= 4.2
 
 %description
