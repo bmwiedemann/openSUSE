@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 05:24:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.1:
+  * fix(qemu): skip empty QEMU_NET_CIDR instead of erroring (#2568)
+
+-------------------------------------------------------------------
 Thu Jun 11 04:59:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.0:
