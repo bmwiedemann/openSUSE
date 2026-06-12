@@ -158,4 +158,13 @@
     <comment></comment>
     <requestid>1315505</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>39280e156525f3b9fac5815cd91c3638</srcmd5>
+    <version>3.0.1+git339.902a2b5</version>
+    <time>1781285214</time>
+    <user>anag_factory</user>
+    <comment>- Add ix86 to ExcludeArch, transmission is no longer built for that
+  arch.</comment>
+    <requestid>1358736</requestid>
+  </revision>
 </revisionlist>

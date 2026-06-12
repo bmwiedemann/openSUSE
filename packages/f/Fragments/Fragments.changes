@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 17:33:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add ix86 to ExcludeArch, transmission is no longer built for that
+  arch.
+
+-------------------------------------------------------------------
 Mon Nov 03 19:16:01 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.0.1+git339.902a2b5:
