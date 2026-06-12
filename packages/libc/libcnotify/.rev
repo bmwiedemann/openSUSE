@@ -151,4 +151,12 @@ Summer 2013 libyal refresh for openSUSE 13.1 (forwarded request 184994 from greg
     <comment>- Update to release 20260602</comment>
     <requestid>1356650</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>916e3065da557ba96dd368171f14901e</srcmd5>
+    <version>20260612</version>
+    <time>1781285345</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260612</comment>
+    <requestid>1358992</requestid>
+  </revision>
 </revisionlist>
