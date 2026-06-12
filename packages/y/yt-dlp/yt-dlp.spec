@@ -27,7 +27,7 @@
 %endif
 
 Name:           yt-dlp
-Version:        2026.03.17
+Version:        2026.06.09
 %define ejsver  0.8.0
 Release:        0
 Summary:        Enhanced fork of youtube-dl, a video site downloader for offline watching
@@ -72,7 +72,7 @@ This package installs "youtube-dl" as a symlink to yt-dlp.
 Summary:        yt-dlp Python library
 Group:          Development/Languages/Python
 Requires:       ffmpeg
-Recommends:     (deno or nodejs >= 20 or quickjs >= 20250913)
+Recommends:     (deno >= 2.3.0 or nodejs >= 22 or quickjs >= 20250913)
 Suggests:       python-Brotli
 Suggests:       python-certifi
 Suggests:       python-mutagen
