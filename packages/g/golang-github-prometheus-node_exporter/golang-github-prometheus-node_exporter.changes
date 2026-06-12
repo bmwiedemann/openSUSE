@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:17:01 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-39821: Fix validation bypass and privilege escalation by
+  updating golang.org/x/net to version 0.55.0 (bsc#1266608)
+
+-------------------------------------------------------------------
 Thu Apr  9 11:46:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.11.1:
