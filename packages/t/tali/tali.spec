@@ -17,7 +17,7 @@
 
 
 Name:           tali
-Version:        40.9
+Version:        40.9+8
 Release:        0
 Summary:        Yahtzee Game for GNOME
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ Group:          Amusements/Games/Board/Other
 URL:            https://live.gnome.org/Tali
 Source0:        https://download.gnome.org/sources/tali/40/%{name}-%{version}.tar.xz
 
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson
@@ -56,13 +57,16 @@ can hold certain dice with each roll.
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc NEWS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/%{name}
 %{_datadir}/%{name}/
-%{_datadir}/metainfo/org.gnome.Tali.appdata.xml
+%{_datadir}/metainfo/org.gnome.Tali.metainfo.xml
 %{_datadir}/applications/org.gnome.Tali.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.Tali.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Tali*

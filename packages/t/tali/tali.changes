@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun  5 19:27:45 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 40.9+8:
+  + data: Rename appdata to metainfo
+  + Updated translations.
+- Add desktop-file-utils BuildRequires and check section with
+  meson_test macro, validate desktop file during build.
+
+-------------------------------------------------------------------
 Tue Jul 16 17:28:41 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

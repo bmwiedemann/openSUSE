@@ -290,4 +290,16 @@
     <comment></comment>
     <requestid>1204681</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>dbf3d00ab447a4301c1a1abadda4e647</srcmd5>
+    <version>40.9+8</version>
+    <time>1781285220</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 40.9+8:
+  + data: Rename appdata to metainfo
+  + Updated translations.
+- Add desktop-file-utils BuildRequires and check section with
+  meson_test macro, validate desktop file during build.</comment>
+    <requestid>1358743</requestid>
+  </revision>
 </revisionlist>
