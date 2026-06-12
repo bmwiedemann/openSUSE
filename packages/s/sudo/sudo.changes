@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 12:28:29 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Fix missing %verify(not mode) %{_bindir}/sudo (bsc#1263098)
+
+-------------------------------------------------------------------
 Tue Apr  7 08:31:13 UTC 2026 - Simon Lees <sflees@suse.de>
 
 - CVE-2026-35535: potential privilege escalation when running

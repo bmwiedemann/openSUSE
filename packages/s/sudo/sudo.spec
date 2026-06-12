@@ -292,6 +292,7 @@ test -f %{_sysconfdir}/sudoers.rpmsave && mv -v %{_sysconfdir}/sudoers.rpmsave %
 %config(noreplace) %{_sysconfdir}/pam.d/sudo
 %config(noreplace) %{_sysconfdir}/pam.d/sudo-i
 %endif
+%verify(not mode) %{_bindir}/sudo
 %attr(4755,root,root) %{_bindir}/sudo
 %{_bindir}/sudoedit
 %{_bindir}/sudoreplay
