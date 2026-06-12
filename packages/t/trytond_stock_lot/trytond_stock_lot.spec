@@ -1,7 +1,7 @@
 #
 # spec file for package trytond_stock_lot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014-2024 Dr. Axel Braun
 #
 # All modifications and additions to the file contributed by third parties
@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_stock_lot
-Version:        %{majorver}.5
+Version:        %{majorver}.6
 Release:        0
 Summary:        The "stock_lot" module of the Tryton ERP system
 License:        GPL-3.0-or-later
