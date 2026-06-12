@@ -27,6 +27,9 @@ URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 
+# PATCH-FIX-UPSTREAM CVE-2026-10028.patch bsc#1267979 xwang@suse.com -- tls: detect cycles when setting issuer property
+Patch0:         CVE-2026-10028.patch
+
 BuildRequires:  ca-certificates-mozilla
 # For directory ownership
 BuildRequires:  dbus-1

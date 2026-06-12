@@ -725,4 +725,14 @@ New stable rel</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342952</requestid>
   </revision>
+  <revision rev="89" vrev="3">
+    <srcmd5>0736ede6f43902e372db6ae11e7cd3d7</srcmd5>
+    <version>2.80.1</version>
+    <time>1781285125</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-10028.patch:
+  tls: detect cycles when setting issuer property
+  (CVE-2026-10028, bsc#1267979, glgo#GNOME/glib-networking!279)</comment>
+    <requestid>1358738</requestid>
+  </revision>
 </revisionlist>

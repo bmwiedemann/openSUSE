@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 01:21:39 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add CVE-2026-10028.patch:
+  tls: detect cycles when setting issuer property
+  (CVE-2026-10028, bsc#1267979, glgo#GNOME/glib-networking!279)
+
+-------------------------------------------------------------------
 Mon Mar 23 08:33:06 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
