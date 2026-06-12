@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 10 08:20:57 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Security fix for CVE-2026-11332 (bsc#1267822): argument injection in
+  ansible-galaxy role install; pass role requirements as positional
+  arguments to 'git clone' (add '--' separator). git-format-patch backport
+  of gh#ansible/ansible#87078 (commit 5ae948f, stable-2.21).
+  * add ansible-core-CVE-2026-11332.patch
+
+-------------------------------------------------------------------
 Tue May 19 11:57:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.21.0:
