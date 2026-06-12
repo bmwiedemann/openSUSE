@@ -18,7 +18,7 @@
 
 Name:           libclocale
 %define lname	libclocale1
-Version:        20260602
+Version:        20260612
 Release:        0
 Summary:        Library for C locale functions
 License:        LGPL-3.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://github.com/libyal/libclocale/releases/download/%version/
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20260513
+BuildRequires:  pkgconfig(libcerror) >= 20260612
 # Various notes: https://en.opensuse.org/libyal
 
 %description
