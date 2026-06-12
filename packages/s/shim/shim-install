@@ -35,6 +35,13 @@ fi
 
 source_shim_efi="${source_dir}/${def_shim_efi}"
 
+# non-nx shim
+def_shim_non_nx_efi="${def_shim_efi%.efi}.non-nx.efi"
+if [ ! -e "${source_dir}/${def_shim_non_nx_efi}" ]; then
+    def_shim_non_nx_efi="shim.non-nx.efi"
+fi
+source_shim_nx_efi="${source_dir}/${def_shim_non_nx_efi}"
+
 if [ x${arch} = xx86_64 ] ; then
 	grub_install_target="x86_64-efi"
 	def_boot_efi="bootx64.efi"
@@ -305,6 +312,7 @@ fi
 
 if test -n "$efidir"; then
     efi_file=shim.efi
+    efi_non_nx_file=shim.non-nx.efi
     efibootdir="$efidir/EFI/boot"
     mkdir -p "$efibootdir" || exit 1
     if test "$removable" = "yes" ; then
@@ -344,6 +352,11 @@ if test "$clean" = "yes"; then
             fgrep -i " $bootloader_id" | cut -b5-8`; do
             $efibootmgr -b "$bootnum" -B
         done
+	# Delete old entries for non-nx from the same distributor.
+	for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
+	    fgrep " $bootloader_id-non-nx" | cut -b5-8`; do
+	    $efibootmgr -b "$bootnum" -B
+	done
 	fi
 	exit 0
 fi
@@ -364,6 +377,8 @@ cp "$source_grub_efi" "${efidir}/grub.efi"
 
 if test "$efidir" != "$efibootdir" ; then 
     cp "${source_shim_efi}" "${efidir}/shim.efi"
+    # copy non-nx shim
+    cp "${source_shim_nx_efi}" "${efidir}/shim.non-nx.efi"
     if test -n "$bootloader_id"; then
         echo "shim.efi,${bootloader_id}" | iconv -f ascii -t ucs2 > "${efidir}/boot.csv"
     fi
@@ -371,6 +386,7 @@ fi
 
 if test "$update_boot" = "yes"; then
     cp "$source_shim_efi" "${efibootdir}/${def_boot_efi}"
+    # firmware only support bootx64.efi, NOT support bootx64.non-nx.efi
     if test "$removable" = "no"; then
         cp "${source_dir}/fallback.efi" "${efibootdir}"
         # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes
@@ -489,6 +505,11 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
         fgrep -i " $bootloader_id" | cut -b5-8`; do
         $efibootmgr -b "$bootnum" -B
     done
+    # Delete old entries for non-nx from the same distributor.
+    for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
+	fgrep " $bootloader_id-non-nx" | cut -b5-8`; do
+	$efibootmgr -b "$bootnum" -B
+    done
 
     # bsc#1230316 Skip the creation of the boot option for encrypted SL-Micro to make
     # the system always boot from the default boot path (\EFI\BOOT\boot<arch>.efi)
@@ -514,11 +535,17 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
                 efidir_d=${mddev#/dev/}
                 $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
                   -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
+		# handle non-nx shim
+                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+                  -L "$bootloader_id-non-nx ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
             done
         else
             efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
             $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
               -L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
+	    # handle non-nx shim
+            $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+              -L "$bootloader_id-non-nx" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
         fi
     fi
 fi

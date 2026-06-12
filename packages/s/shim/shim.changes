@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun  9 09:04:18 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Apply nx-shim, create non-nx shim boot entry
+- Use nx shim as the default shim binary.
+  Add Microsoft-signed nx-shim:
+        Source40        shim-opensuse.nx.x86.efi
+        Source41        shim-opensuse.nx.aarch64.efi
+- Use ms-signed nx shim when the version equals with the version of
+  newly built shim
+        - Version mismatch indicates development of a new shim.
+- Create non-nx shim boot entry as a fallback option
+  Because we apply nx shim as the default shim binary in
+        /boot/efi/EFI/opensuse/shim.efi
+        /boot/efi/EFI/boot/bootx64.efi or bootaa64.efi
+  In case that user got any problem when the machine boots with nx-shim,
+  so we create a new boot entry for non-nx shim as a fallback option by
+  efibootmgr.
+
+-------------------------------------------------------------------
 Thu Mar 12 08:23:36 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Modified the pretrans Lua script to work around the broken DB issue

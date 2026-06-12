@@ -79,6 +79,9 @@ Source30:	shim-opensuse.x86.efi
 Source31:	shim-opensuse.aarch64.efi
 Source32:	shim-sles.x86.efi
 Source33:	shim-sles.aarch64.efi
+# Microsoft-signed nx-shim
+Source40:       shim-opensuse.nx.x86.efi
+Source41:       shim-opensuse.nx.aarch64.efi
 # revoked certificates for dbx
 Source50:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-01.crt
 Source51:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-08.crt
@@ -231,9 +234,11 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx-opensuse.esl'
 %ifarch x86_64
 	ms_shim=%{SOURCE30}
+	ms_shim_nx=%{SOURCE40}
 %else
 	# opensuse aarch64
 	ms_shim=%{SOURCE31}
+	ms_shim_nx=%{SOURCE41}
 %endif
     elif test "$suffix" = "sles"; then
 	cert=%{SOURCE12}
@@ -242,15 +247,18 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx-sles.esl'
 %ifarch x86_64
 	ms_shim=%{SOURCE32}
+	ms_shim_nx=""
 %else
 	# sles aarch64
 	ms_shim=%{SOURCE33}
+	ms_shim_nx=""
 %endif
     elif test "$suffix" = "devel"; then
 	cert=%{_sourcedir}/_projectcert.crt
 	verify=`openssl x509 -in "$cert" -noout -email`
 	vendor_dbx='vendor-dbx.esl'
 	ms_shim=''
+	ms_shim_nx=''
 	test -e "$cert" || continue
 	openssl x509 -in $cert -inform PEM -outform DER -out shim-$suffix.der
     else
@@ -288,7 +296,6 @@ for suffix in "${suffixes[@]}"; do
     # make sure all object files gets rebuilt
     rm -f *.o
 
-%if 0%{?shim_nx:1}
     # building shim.nx.efi
     make CC=%{cc_compiler} RELEASE=0 ENABLE_CODESIGN_EKU=1 SHIMSTEM=shim.nx \
          VENDOR_CERT_FILE=shim-$suffix.der ENABLE_HTTPBOOT=1 \
@@ -299,21 +306,37 @@ for suffix in "${suffixes[@]}"; do
     #
     # assert correct certificate embedded
     grep -q "$verify" shim.nx.efi
-    mv shim.nx.efi shim-$suffix.nx.efi
+    # Use ms-signed nx shim when the version equals with the version of newly built shim
+    # Version mismatch indicates development of a new shim.
+    if test -n "$ms_shim_nx"; then
+	ms_version=$(strings "$ms_shim_nx" | grep '$Version:' | sed -e 's/^.*: //' -e 's/ \$//')
+	dev_version=$(strings shim.nx.efi | grep '$Version:' | sed -e 's/^.*: //' -e 's/ \$//')
+	if [ "$ms_version" = "$dev_version" ]; then
+		cp $ms_shim_nx shim-$suffix.nx.efi
+	else
+		cp shim.nx.efi shim-$suffix.nx.efi
+	fi
+	rm shim.nx.efi
+    else
+	# devel shim
+	mv shim.nx.efi shim-$suffix.nx.efi
+    fi
+    # FIX: using debug info from devel shim doesn't match with ms-signed shim
     mv shim.nx.efi.debug shim-$suffix.nx.debug
     # remove the build cert if exists
     rm -f shim_cert.h shim.cer shim.crt
     # make sure all object files gets rebuilt
     rm -f *.o
-%endif  # 0%{?shim_nx:1}
 done
 
-ln -s shim-${suffixes[0]}.efi shim.efi
-mv shim-${suffixes[0]}.debug shim.debug
-%if 0%{?shim_nx:1}
+# link nx and non-nx shim
+ln -s shim-${suffixes[0]}.efi shim.non-nx.efi
+mv shim-${suffixes[0]}.debug shim.non-nx.debug
 ln -s shim-${suffixes[0]}.nx.efi shim.nx.efi
 mv shim-${suffixes[0]}.nx.debug shim.nx.debug
-%endif  # 0%{?shim_nx:1}
+# default shim link to nx shim
+ln -s shim.nx.efi shim.efi
+mv shim.nx.debug shim.debug
 
 # Collect the source for debugsource
 mkdir ../source
@@ -593,9 +616,12 @@ fi
 %dir %{sysefidir}
 %{sysefidir}/shim.efi
 %{sysefidir}/shim-*.efi
+%{sysefidir}/shim.non-nx.efi
 %if 0%{?shim_nx:1}
 %exclude %{sysefidir}/shim-*.nx.efi
 %endif  # 0%{?shim_nx:1}
+%{sysefidir}/shim.nx.efi
+%{sysefidir}/shim-*.nx.efi
 %{sysefidir}/shim-*.der
 %{sysefidir}/MokManager.efi
 %{sysefidir}/fallback.efi

@@ -1589,4 +1589,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Modified the pretrans Lua script to work around the broken DB issue caused by buggy firmware when Secure Boot is disabled. (bsc#1259096)</comment>
     <requestid>1355290</requestid>
   </revision>
+  <revision rev="137" vrev="5">
+    <srcmd5>2219ef895c9c41f244748ea4bfa4fcfa</srcmd5>
+    <version>16.1</version>
+    <time>1781285095</time>
+    <user>anag_factory</user>
+    <comment>Apply nx-shim and create non-nx shim boot entry</comment>
+    <requestid>1358621</requestid>
+  </revision>
 </revisionlist>
