@@ -18,7 +18,7 @@
 
 Name:           libcerror
 %define lname	libcerror1
-Version:        20260527
+Version:        20260612
 Release:        0
 Summary:        Library for C error functions
 License:        LGPL-3.0-or-later
