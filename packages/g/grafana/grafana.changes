@@ -3,6 +3,9 @@ Fri Jun  5 13:44:04 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-39821: Fix validation bypass and privilege escalation by
   updating golang.org/x/net to version 0.55.0 (bsc#1266600)
+  * Fix multiple issues when parsing HTML files (bsc#1267153):
+    CVE-2026-25680, CVE-2026-42502, CVE-2026-27136, CVE-2026-25681,
+    CVE-2026-42506
   * Added 0009-Bump-golang.org-x-net.patch
 
 -------------------------------------------------------------------
