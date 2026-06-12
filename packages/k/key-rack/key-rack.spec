@@ -18,18 +18,19 @@
 
 %define         appname app.drey.KeyRack
 Name:           key-rack
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        New GNOME secrets manager
 License:        GPL-3.0-or-later
-URL:            https://gitlab.gnome.org/sophie-h/key-rack
+URL:            https://gitlab.gnome.org/World/key-rack
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.xz
+
 BuildRequires:  cargo-packaging
+BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.57
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk4) >= 4.6.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 
@@ -37,8 +38,10 @@ BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
 Key Rack allows to view and edit keys, like passwords or tokens, stored by apps.
 It supports Flatpak secrets as well as system wide secrets.
 
+%lang_package
+
 %prep
-%autosetup -a1
+%autosetup -a1 -p1
 
 %build
 %meson
@@ -46,19 +49,22 @@ It supports Flatpak secrets as well as system wide secrets.
 
 %install
 %meson_install
-%suse_update_desktop_file %{appname}
+%find_lang %{name} %{?no_lang_C}
 
-%check
-#non available
-%meson_test
+%dnl %check
+%dnl non available
+%dnl %meson_test
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
+%{_datadir}/dbus-1/services/%{appname}.service
 %{_datadir}/icons/hicolor/scalable/apps/%{appname}.svg
 %{_datadir}/icons/hicolor/symbolic/apps/%{appname}-symbolic.svg
 %{_datadir}/metainfo/%{appname}.metainfo.xml
+
+%files lang -f %{name}.lang
 
 %changelog

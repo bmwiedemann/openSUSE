@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:22:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.5.0:
+  * This version brings a bunch of UI refinements and support for
+    app keyrings that contain invalid entries.
+  * Updated translations.
+- Update URL to new home.
+- Drop unneeded update-desktop-files BuildRequires and macro,
+  replace with desktop-file-utils that provides the needed binary
+  update-desktop-database.
+- Add lang sub-package, we have translations now.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:54:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

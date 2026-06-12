@@ -23,4 +23,20 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342980</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>80686c320120f3893ba3024edd5a0670</srcmd5>
+    <version>0.5.0</version>
+    <time>1781285219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.0:
+  * This version brings a bunch of UI refinements and support for
+    app keyrings that contain invalid entries.
+  * Updated translations.
+- Update URL to new home.
+- Drop unneeded update-desktop-files BuildRequires and macro,
+  replace with desktop-file-utils that provides the needed binary
+  update-desktop-database.
+- Add lang sub-package, we have translations now.</comment>
+    <requestid>1358741</requestid>
+  </revision>
 </revisionlist>
