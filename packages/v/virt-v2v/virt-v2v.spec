@@ -47,6 +47,7 @@ BuildRequires:  libosinfo-devel
 BuildRequires:  libvirt-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mkisofs
+BuildRequires:  nbdkit
 BuildRequires:  ocaml-fileutils-devel
 BuildRequires:  ocaml-findlib-devel
 BuildRequires:  ocaml-gettext-devel

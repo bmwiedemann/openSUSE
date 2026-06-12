@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 13:19:28 MDT 2026 - carnold@suse.com
+
+- Fix virt-v2v: error: nbdkit is not installed or not working.
+  bsc#1266387 - virt-v2v challenges...
+  virt-v2v.spec
+
+-------------------------------------------------------------------
 Thu May 21 09:38:36 MDT 2026 - carnold@suse.com
 
 - Update to virt-v2v 2.11.8 (jsc#PED-14625)

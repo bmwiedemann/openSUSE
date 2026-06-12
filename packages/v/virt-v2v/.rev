@@ -255,4 +255,12 @@
     <comment>Update virt-v2v to version 2.11.8</comment>
     <requestid>1354506</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>71789a9fefd08dbd845a13d4dc0fe55b</srcmd5>
+    <version>2.11.8</version>
+    <time>1781285251</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1266387 - virt-v2v challenges</comment>
+    <requestid>1358791</requestid>
+  </revision>
 </revisionlist>
