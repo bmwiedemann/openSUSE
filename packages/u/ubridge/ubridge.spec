@@ -1,7 +1,7 @@
 #
 # spec file for package ubridge
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ubridge
-Version:        0.9.19
+Version:        1.0.0
 Release:        0
 Summary:        Bridging between UDP tunnels, Ethernet and TAP interfaces
 License:        GPL-3.0-only

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon May 25 15:44:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.0
+  * Fix critical memory corruption bug in free_packet_filters
+    function.
+  * Fix assignment destination_linux_raw.
+
+-------------------------------------------------------------------
 Thu Feb 27 17:54:52 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass `pkg-config --cflags iniparser` to CFLAGS to fix build.
