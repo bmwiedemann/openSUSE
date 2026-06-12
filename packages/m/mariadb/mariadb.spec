@@ -52,7 +52,7 @@
 # Build with cracklib plugin when cracklib-dict-full >= 2.9.0 is available
 %define with_cracklib_plugin 0
 Name:           mariadb
-Version:        11.8.8
+Version:        12.3.2
 Release:        0
 Summary:        Server part of MariaDB
 License:        SUSE-GPL-2.0-with-FLOSS-exception
@@ -515,9 +515,6 @@ filelist_excludes()
 # Symbols from build to go into libdir
 install -m 644 build/sql/mysqld.sym %{buildroot}%{_libdir}/mysql/mysqld.sym
 
-# INFO_SRC binary
-install -p -m 644 build/Docs/INFO_SRC %{buildroot}%{_libdir}/mysql/
-
 # Remove static libs (FIXME: don't build them at all...)
 rm %{buildroot}%{_libdir}/*.a
 
@@ -545,6 +542,7 @@ rm -f %{buildroot}%{_bindir}/wsrep_sst_xtrabackup
 rm -f %{buildroot}'%{_unitdir}/mariadb.service'
 rm -f %{buildroot}'%{_unitdir}/mariadb@.service'
 rm -f %{buildroot}'%{_unitdir}/mariadb@bootstrap.service.d/use_galera_new_cluster.conf'
+rm -rf %{buildroot}%{_unitdir}/mariadb.service.d
 
 # Remove systemd-sysusers conf file for creating of mysql user (we do it in the specfile)
 rm -f %{buildroot}%{_sysusersdir}/mariadb.conf
@@ -725,7 +723,6 @@ cd mysql-test
     --parallel=4                    \
     --force                         \
     --retry=3                       \
-    --ssl                           \
     --suite-timeout=900             \
     --testcase-timeout=30           \
     --mysqld=--binlog-format=mixed  \
@@ -858,7 +855,6 @@ exit 0
 %{_datadir}/%{name}/*.sql
 %dir %{_libdir}/mysql
 %{_libdir}/mysql/mysqld.sym
-%{_libdir}/mysql/INFO_SRC
 %dir %{_libdir}/mysql/plugin
 %{_libdir}/mysql/plugin/*.so
 %exclude %{_libdir}/mysql/plugin/dialog*.so
@@ -920,6 +916,7 @@ exit 0
 %config(noreplace) %attr(-, root, mysql) %{_sysconfdir}/my.cnf.d/50-galera.cnf
 %{_datadir}/%{name}/systemd/use_galera_new_cluster.conf
 %{_datadir}/%{name}/wsrep_notify
+%{_datadir}/%{name}/mariadb.service.d
 %endif
 
 %files errormessages -f mariadb-errormessages.files

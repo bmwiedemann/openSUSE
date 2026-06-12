@@ -60,4 +60,6 @@ mysql_sha2.ssl_auto                              : since 11.8.5 - all
 main.chained_ssl_certificates                    : since 11.8.6 - all
 compat/oracle.sp-package                         : since 11.8.6 - armv7l
 main.xml                                         : since 11.8.6 - armv7l
+main.xa                                          : since 12.3.2 - all
+innodb_fts.crash_recovery                        : since 12.3.2 - aarch64
 
