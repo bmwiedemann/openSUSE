@@ -309,4 +309,24 @@
     <comment>Update to 3.38.2 (forwarded request 850187 from dimstar)</comment>
     <requestid>851039</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>240950ecec101b1bb0255aaf8b4ed629</srcmd5>
+    <version>3.38.2+47</version>
+    <time>1781285216</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.38.2+47:
+  + Don't create window in startup phase
+  + appdata: Rename apptadata to metainfo
+  + build: Use appstreamcli
+  + appdata: Update appdata
+  + Fix setting application name
+  + Set prgname to application ID
+  + Reference of [GtkChild] fields is handled by GtkBuilder, type
+    must be unowned
+  + Updated translations.
+- Add AppStream and desktop-file-utils BuildRequires and check
+  section with meson_test macro: Validate metadata and desktop file
+  during build.</comment>
+    <requestid>1358739</requestid>
+  </revision>
 </revisionlist>

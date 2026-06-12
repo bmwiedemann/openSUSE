@@ -17,7 +17,7 @@
 
 
 Name:           gnome-klotski
-Version:        3.38.2
+Version:        3.38.2+47
 Release:        0
 Summary:        Klotski Game for GNOME
 License:        GPL-3.0-or-later
@@ -25,6 +25,8 @@ Group:          Amusements/Games/Board/Puzzle
 URL:            https://live.gnome.org/Klotski
 Source0:        https://download.gnome.org/sources/gnome-klotski/3.38/%{name}-%{version}.tar.xz
 
+BuildRequires:  AppStream
+BuildRequires:  desktop-file-utils
 BuildRequires:  itstool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
@@ -55,6 +57,9 @@ its way.
 %meson_install
 %find_lang %{name} %{?no_lang_C}
 
+%check
+%meson_test
+
 %files
 %license COPYING
 %doc NEWS
@@ -64,7 +69,7 @@ its way.
 %{_datadir}/dbus-1/services/org.gnome.Klotski.service
 %{_datadir}/glib-2.0/schemas/org.gnome.Klotski.gschema.xml
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Klotski*
-%{_datadir}/metainfo/org.gnome.Klotski.appdata.xml
+%{_datadir}/metainfo/org.gnome.Klotski.metainfo.xml
 %{_mandir}/man6/%{name}.6%{?ext_man}
 
 %files lang -f %{name}.lang
