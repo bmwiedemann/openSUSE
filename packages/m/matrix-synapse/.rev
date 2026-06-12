@@ -1736,4 +1736,14 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.154.0</comment>
     <requestid>1357195</requestid>
   </revision>
+  <revision rev="160" vrev="2">
+    <srcmd5>d118ed54ba1f4fdb664c7261dc87bfcd</srcmd5>
+    <version>1.154.0</version>
+    <time>1781285411</time>
+    <user>anag_factory</user>
+    <comment>- Fix patching of shebang lines and the service file to use the
+  proper versioned python binary instead of python3
+- disable poetry mode on 16.x</comment>
+    <requestid>1358985</requestid>
+  </revision>
 </revisionlist>

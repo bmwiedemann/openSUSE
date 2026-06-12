@@ -16,7 +16,11 @@
 #
 
 
+%if 0%{?suse_version} >= 1699
 %bcond_without use_poetry_for_dependencies
+%else
+%bcond_with    use_poetry_for_dependencies
+%endif
 
 # NOTE: Keep this is in the same order as pyproject.toml.
 # keep in sync with poetry.lock
@@ -199,6 +203,7 @@
 %define use_python python311
 %endif
 
+%define python_binary %{_bindir}/python%{python_bin_suffix}
 %define pythons %{use_python}
 
 # These come from matrix-synapse's CONDITIONAL_REQUIREMENTS.
@@ -428,10 +433,10 @@ find ./ -type f -not -path './vendor/**' -exec \
 	sed -i '1s|^#!/usr/bin/env |#!/usr/bin/|' {} \;
 # Force the usage of the default python3 sys executable
 find ./ -type f -not -path './vendor/**' \
-	-exec sed -i '1s|^#!/usr/bin/python.*$|#!%{__python3}|' {} \;
+	-exec sed -i '1s|^#!/usr/bin/python.*$|#!%{python_binary}|' {} \;
 
 # Update the python flavour in the service file.
-sed -i 's|@PYTHON_FLAVOR@|%{__python3}|g' %{S:50}
+sed -i 's|@PYTHON_FLAVOR@|%{python_binary}|g' %{S:50}
 
 %build
 export RUSTFLAGS="%{build_rustflags}"

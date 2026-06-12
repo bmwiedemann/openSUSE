@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 12 13:08:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix patching of shebang lines and the service file to use the
+  proper versioned python binary instead of python3
+- disable poetry mode on 16.x
+
+-------------------------------------------------------------------
 Fri Jun  5 00:09:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.154.0
