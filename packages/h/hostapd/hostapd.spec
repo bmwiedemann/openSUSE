@@ -1,7 +1,7 @@
 #
 # spec file for package hostapd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,6 +33,8 @@ Source4:        hostapd.service
 Source5:        apparmor-usr.sbin.hostapd
 # PATCH-FIX-UPSTREAM CVE-2025-24912.patch, bsc#1239461, CVE-2025-24912
 Patch1:         CVE-2025-24912.patch
+# PATCH-FIX-UPSTREAM bsc#1268083 hostapd segmentation fault during fast restart cycles
+Patch2:         nl80211_NULL_pointer_check_for_link.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig

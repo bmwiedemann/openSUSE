@@ -493,4 +493,13 @@ ChangeLog for hostapd since 2.4:
     <comment></comment>
     <requestid>1252730</requestid>
   </revision>
+  <revision rev="50" vrev="3">
+    <srcmd5>1836a48207c57d6d88ead79a4ff58984</srcmd5>
+    <version>2.11</version>
+    <time>1781285302</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1268083 - hostapd segmentation fault during fast restart cycles.
+  [+ nl80211_NULL_pointer_check_for_link.patch]</comment>
+    <requestid>1358931</requestid>
+  </revision>
 </revisionlist>
