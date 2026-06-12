@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 11 06:25:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.20.0:
+  * Add trace diffing (--diff) and streaming JSON output
+    (--stream-json).
+  * Add daemon mode, Prometheus exporter.
+  * Publish multi-arch container images to GHCR on release.
+  * Add interactive target selection.
+  * Use a radix trie for IX prefix lookup.
+  * Update some dependencies.
+
+-------------------------------------------------------------------
 Sat May 02 12:56:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.19.1:
