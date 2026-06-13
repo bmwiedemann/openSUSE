@@ -1,7 +1,7 @@
 #
 # spec file for package rav1e
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties

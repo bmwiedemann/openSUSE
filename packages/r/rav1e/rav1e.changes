@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 16:24:07 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update cargo dependencies (bsc#1249016 CVE-2025-58160).
+
+-------------------------------------------------------------------
 Fri Aug 15 10:18:33 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.8.1:
