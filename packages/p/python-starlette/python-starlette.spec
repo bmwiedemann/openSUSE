@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
@@ -43,6 +43,7 @@ Requires:       (python-typing_extensions >= 4.10.0 if python-base < 3.13)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module anyio >= 3.6.2}
+BuildRequires:  %{python_module starlette}
 # typing_extensions, see below
 # SECTION [full]
 BuildRequires:  %{python_module PyYAML}
@@ -90,8 +91,8 @@ building high performance asyncio services.
 # cannot just use ifarch conditionals here...
 ignored_tests="test_set_cookie"
 ignored_tests="$ignored_tests or test_expires_on_set_cookie"
-# fails to raise a deprecation warning as of 2024/04/25
-##ignored_tests="$ignored_tests or test_lifespan_with_on_events"
+# disable these until we have httpx2 packaged
+ignored_tests="$ignored_tests or test_request_headers or test_websocket_headers"
 %pytest -W ignore::PendingDeprecationWarning --asyncio-mode=strict -k "not ($ignored_tests)"
 
 %endif

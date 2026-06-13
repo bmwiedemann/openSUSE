@@ -468,4 +468,21 @@ https://build.opensuse.org/request/show/1126958
     present in `StaticFiles` #3044.</comment>
     <requestid>1343519</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a2bd3a57859da95a894bd5fb936d071d</srcmd5>
+    <version>1.2.0</version>
+    <time>1781369151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.2.0
+  * Support httpx2 in the test client
+- Update to 1.1.0
+  * Use &quot;application/octet-stream&quot; as the FileResponse media type fallback
+  * Only dispatch standard HTTP verbs in HTTPEndpoint
+  * Reject absolute paths in StaticFiles.lookup_path
+- Update to 1.0.1 (fixes CVE-2026-48710, bsc#1266369)
+  * Ignore malformed Host header when constructing request.url
+- disable some tests that require httpx2[zstd]
+</comment>
+    <requestid>1358969</requestid>
+  </revision>
 </revisionlist>

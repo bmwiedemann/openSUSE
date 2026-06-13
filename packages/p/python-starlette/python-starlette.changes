@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri May 29 08:40:00 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.2.0
+  * Support httpx2 in the test client
+- Update to 1.1.0
+  * Use "application/octet-stream" as the FileResponse media type fallback
+  * Only dispatch standard HTTP verbs in HTTPEndpoint
+  * Reject absolute paths in StaticFiles.lookup_path
+- Update to 1.0.1 (fixes CVE-2026-48710, bsc#1266369)
+  * Ignore malformed Host header when constructing request.url
+- disable some tests that require httpx2[zstd]
+
+-------------------------------------------------------------------
 Sun Mar 29 19:13:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:
