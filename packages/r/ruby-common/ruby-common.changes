@@ -1,8 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 12 09:22:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix gem_packages template for the alts case. We were always using
+  spec.name when it should have been the loop variable executable.
+
+-------------------------------------------------------------------
 Mon May 18 17:10:12 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix shebang line patching (yeah quoting through 3 layers!)
 - Have diff output so we can easily see patching worked.
+
+-------------------------------------------------------------------
+Tue May 12 13:01:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix alts support for multiple ruby versions by making the config
+  files non overlapping
+
+-------------------------------------------------------------------
+Mon May 11 22:05:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace update-alternatives with alts
+  (ref: https://en.opensuse.org/openSUSE:Migrating_to_libalternatives_with_alts) 
 
 -------------------------------------------------------------------
 Thu Jan  8 15:04:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>

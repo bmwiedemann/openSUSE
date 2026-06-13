@@ -21,6 +21,12 @@
 %define _rpmmacrodir /etc/rpm
 %endif
 
+%if 0%{suse_version} >= 1600
+%bcond_without alts
+%else
+%bcond_with alts
+%endif
+
 Name:           ruby-common
 Version:        4.0.0
 Release:        0
@@ -112,6 +118,12 @@ Some helper tools for packaging rubygems and rails apps.
 %prep
 
 %build
+%if %{with alts}
+perl -p -i.back -e 's|use_alts=false|use_alts=true|g' %{SOURCE6} %{SOURCE11}
+diff -urN %{SOURCE11}{.back,} ||:
+diff -urN %{SOURCE6}{.back,}  ||:
+%endif
+
 ruby_real_path="/usr/bin/ruby.%{rb_default_ruby_suffix}"
 for f in $(grep -r -l '^#./usr/bin/ruby' ${RPM_SOURCE_DIR}) ; do
   perl -p -i.back -e "s|^#\\!.*ruby(?<suffix>\S+)?(?<optional_args>\s+\S+.*)?|#\\!${ruby_real_path}$+{optional_args}\n|g" $f

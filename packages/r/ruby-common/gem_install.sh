@@ -38,7 +38,6 @@ options=OpenStruct.new
 options.defaultgem=nil
 options.gemfile=nil
 options.otheropts=nil
-options.buildroot=nil
 options.docfiles=[]
 options.gemname=nil
 options.gemversion=nil
@@ -51,8 +50,10 @@ options.docdir='/usr/share/doc/packages'
 options.symlinkbinaries=false
 options.verbose = false
 options.rpmsourcedir = ENV['RPM_SOURCE_DIR'] || '/home/abuild/rpmbuild/SOURCES'
-options.rpmbuildroot = ENV['RPM_BUILD_ROOT'] || '/home/abuild/rpmbuild/BUILDROOT/just-testing'
+options.buildroot=options.rpmbuildroot = ENV['RPM_BUILD_ROOT'] || '/home/abuild/rpmbuild/BUILDROOT/just-testing'
 options.parsed_config = nil
+options.use_alts=false
+options.libalternative_basedir="/usr/share/libalternatives/"
 
 GILogger = Logger.new(STDERR)
 GILogger.level=Logger::DEBUG
@@ -127,6 +128,7 @@ opt_parser = OptionParser.new do |opts|
   end
   opts.on('--build-root [BUILDROOT]', 'Path to rpm buildroot') do |buildroot|
     options.buildroot = buildroot
+    options.rpmbuildroot = buildroot
   end
   # Boolean switches
   opts.on('--[no-]symlink-binaries', 'Create all the version symlinks for the binaries') do |v|
@@ -231,12 +233,60 @@ exit status.exitstatus unless 0 == status.exitstatus
 rpmname="#{options.rubyprefix}-rubygem-#{options.gemname}#{options.gemsuffix}"
 GILogger.info "RPM name: #{rpmname}"
 pwd = Dir.pwd
-bindir = File.join(options.rpmbuildroot, Gem.bindir)
+bindir = File.join(options.buildroot, Gem.bindir)
 GILogger.info "bindir: #{bindir}"
+
+def segment_to_int(version_segments, index, default)
+  begin v=Integer(version_segments[index]) rescue v=default end
+  return v
+end
+
+def compute_segments(v1,v2,v3)
+  return v1*10000+v2*100+v3
+end
+
+spec_version_segments=spec.version.segments
+version_weight=compute_segments(
+  segment_to_int(spec_version_segments, 0, 1),
+  segment_to_int(spec_version_segments, 1, 0),
+  segment_to_int(spec_version_segments, 2, 0)
+)
+
+ruby_version_segments=Gem::Version.new(RUBY_VERSION).segments
+ruby_weight=compute_segments(
+  segment_to_int(ruby_version_segments, 0, 1),
+  segment_to_int(ruby_version_segments, 1, 0),
+  segment_to_int(ruby_version_segments, 2, 0)
+)
+
+weight=version_weight+ruby_weight
+
+def write_alts_file(alts_dir, full_versioned, target_subdir, weight)
+  config_dir=File.join(alts_dir, target_subdir)
+  config_filename=File.join(config_dir, "#{weight}.conf")
+  config_content= <<EOF
+binary=#{Gem.bindir}/#{full_versioned}
+group=#{target_subdir}
+EOF
+  if FileUtils.mkdir_p(config_dir)
+    unless File.write(config_filename, config_content)
+      GILogger.error "Creating #{config_file} failed"
+    end
+  else
+    GILogger.error "Creating #{config_dir} failed"
+  end
+end
+
 if options.symlinkbinaries && File.exist?(bindir)
-  br_ua_dir = File.join(options.rpmbuildroot, options.ua_dir)
-  GILogger.info "Creating upate-alternatives dir: #{br_ua_dir}"
-  FileUtils.mkdir_p(br_ua_dir)
+  if options.use_alts
+    br_alts_dir=File.join(options.buildroot, options.libalternative_basedir)
+    GILogger.info "Creating libalternatives dir: #{br_alts_dir}"
+    FileUtils.mkdir_p(br_alts_dir)
+  else
+    br_ua_dir = File.join(options.buildroot, options.ua_dir)
+    GILogger.info "Creating upate-alternatives dir: #{br_ua_dir}"
+    FileUtils.mkdir_p(br_ua_dir)
+  end
   begin
     Dir.chdir(bindir)
     GILogger.info "executables: #{spec.executables.inspect}"
@@ -250,14 +300,23 @@ if options.symlinkbinaries && File.exist?(bindir)
       patchfile(full_versioned,  />= 0(\.a)?/, "= #{options.gemversion}")
       # unversioned
       [unversioned, ruby_versioned, gem_versioned].each do |linkname|
-        ua_path   = File.join(options.ua_dir, linkname)
-        GILogger.info "Symlinking '#{linkname}' -> '#{ua_path}'"
-        File.symlink(ua_path, linkname) unless File.symlink? linkname
+        if options.use_alts
+          link_path = File.join(options.buildroot, Gem.bindir, linkname)
+          write_alts_file(br_alts_dir, full_versioned, linkname, weight)
+          GILogger.info "Symlinking 'alts' -> '#{link_path}'"
+          File.symlink('/usr/bin/alts', link_path) unless File.symlink? link_path
+        else
+          ua_path   = File.join(options.ua_dir, linkname)
+          GILogger.info "Symlinking '#{linkname}' -> '#{ua_path}'"
+          File.symlink(ua_path, linkname) unless File.symlink? linkname
+        end
       end
     end
   ensure
     Dir.chdir(pwd)
   end
+else
+  GILogger.error "Skipping symlinking binaries #{options.symlinkbinaries} #{File.exist?(bindir)} #{bindir}"
 end
 
 # shebang line fix
@@ -273,7 +332,7 @@ end
 
 unless options.docfiles.empty?
   GILogger.info "Linking documentation"
-  docdir = File.join(options.rpmbuildroot, options.docdir, rpmname)
+  docdir = File.join(options.buildroot, options.docdir, rpmname)
   FileUtils.mkdir_p(docdir)
 
   options.docfiles.each do |fname|
@@ -283,5 +342,5 @@ unless options.docfiles.empty?
   end
 end
 
-system("chmod -R u+w,go+rX,go-w #{options.rpmbuildroot}")
-#system("find #{options.rpmbuildroot} -ls")
+system("chmod -R u+w,go+rX,go-w #{options.buildroot}")
+#system("find #{options.buildroot} -ls")

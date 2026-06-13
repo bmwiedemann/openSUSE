@@ -1,5 +1,7 @@
 <%
 
+  use_alts=false
+
   begin
     require 'rbconfigpackagingsupport'
   rescue LoadError => ex
@@ -50,12 +52,31 @@
     return nil
   end
 
+  def self.segment_to_int(version_segments, index, default)
+    begin v=Integer(version_segments[index]) rescue v=default end
+    return v
+  end
+
+  def self.compute_segments(v1,v2,v3)
+    return v1*10000+v2*100+v3
+  end
+
   def self.get_mod_weight(spec)
-    versions=spec.version.to_s.split('.')
-    begin v1=Integer(versions[0]) rescue v1=1 end
-    begin v2=Integer(versions[1]) rescue v2=0 end
-    begin v3=Integer(versions[2]) rescue v3=0 end
-    weight=v1*10000+v2*100+v3
+    spec_version_segments=spec.version.segments
+    version_weight=self.compute_segments(
+      self.segment_to_int(spec_version_segments, 0, 1),
+      self.segment_to_int(spec_version_segments, 1, 0),
+      self.segment_to_int(spec_version_segments, 2, 0)
+    )
+
+    ruby_version_segments=Gem::Version.new(RUBY_VERSION).segments
+    ruby_weight=self.compute_segments(
+      self.segment_to_int(ruby_version_segments, 0, 1),
+      self.segment_to_int(ruby_version_segments, 1, 0),
+      self.segment_to_int(ruby_version_segments, 2, 0)
+    )
+
+    weight=version_weight+ruby_weight
   end
 
   def self.map_executable(config, executable)
@@ -114,6 +135,7 @@
 
   mod_full_name      = "#{spec.name}-#{spec.version}"
   mod_weight         = get_mod_weight(spec)
+  alts_config_filename = "#{mod_weight}.conf"
 
   gem_platform       = Gem::Platform.new(RbConfig::CONFIG["arch"]).to_s
   rb_bindir          = RbConfig::CONFIG['bindir']
@@ -152,8 +174,15 @@
 <% end -%>
 Summary:        <%= config[:summary] or spec.summary %>
 <% unless spec.executables.empty? -%>
+<% if use_alts -%>
+Requires(post):  alts
+Requires(preun): alts
+Requires:        alts
+<% else -%>
 Requires(preun): update-alternatives
-Requires(post): update-alternatives
+Requires(post):  update-alternatives
+Requires:        update-alternatives
+<% end -%>
 <% end -%>
 <% if has_plugins -%>
 Conflicts:      rubygem(<%= rb_pkg_abi %>) = %{version}
@@ -209,6 +238,7 @@ Test::Unit or RSpec files, useful for developers.
 <% end -%>
 
 <% unless spec.executables.empty? -%>
+<% unless use_alts -%>
 %post -n <%= pkg_basename %><%= config[:version_suffix] %>
 <% spec.executables.each do |executable| -%>
 /usr/sbin/update-alternatives --install \
@@ -228,6 +258,7 @@ if [ "$1" = 0 ] ; then
 <% end -%>
 fi
 <% end -%>
+<% end -%>
 
 %files -n <%= pkg_basename %><%= config[:version_suffix] %>
 %defattr(-,root,root,-)
@@ -244,9 +275,18 @@ fi
 <%= rb_bindir %>/<%= "#{executable}#{rb_suffix}" %>
 <%= rb_bindir %>/<%= "#{executable}-#{spec.version}" %>
 <%= rb_bindir %>/<%= map_executable(config, executable) %>
+<% if use_alts -%>
+%dir %{_datadir}/libalternatives/<%= executable %>-<%= spec.version -%>/
+%dir %{_datadir}/libalternatives/<%= executable %><%= rb_suffix -%>/
+%dir %{_datadir}/libalternatives/<%= executable %>/
+%{_datadir}/libalternatives/<%= executable %>-<%= spec.version -%>/<%= alts_config_filename %>
+%{_datadir}/libalternatives/<%= executable %><%= rb_suffix -%>/<%= alts_config_filename %>
+%{_datadir}/libalternatives/<%= executable %>/<%= alts_config_filename %>
+<% else -%>
 %ghost <%= rb_sysconfdir %>/alternatives/<%= map_executable(config, executable) %>
 %ghost <%= rb_sysconfdir %>/alternatives/<%= "#{executable}#{rb_suffix}" %>
 %ghost <%= rb_sysconfdir %>/alternatives/<%= "#{executable}-#{spec.version}" %>
+<% end -%>
 <% end -%>
 # cache file
 <%= gem_cache_dir %>/<%= mod_full_name %>.gem

@@ -373,4 +373,19 @@ For staging:n</comment>
 - Have diff output so we can easily see patching worked.</comment>
     <requestid>1353876</requestid>
   </revision>
+  <revision rev="35" vrev="4">
+    <srcmd5>3719d478a8011650947394d474a2dbe9</srcmd5>
+    <version>4.0.0</version>
+    <time>1781369136</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix gem_packages template for the alts case. We were always using
+  spec.name when it should have been the loop variable executable.
+
+- Fix alts support for multiple ruby versions by making the config
+  files non overlapping
+
+- replace update-alternatives with alts
+  (ref: https://en.opensuse.org/openSUSE:Migrating_to_libalternatives_with_alts)</comment>
+    <requestid>1358938</requestid>
+  </revision>
 </revisionlist>
