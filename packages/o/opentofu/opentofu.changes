@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Jun 13 10:04:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.2:
+  * SECURITY ADVISORIES:
+    - Previous releases in the v1.12 series could be affected by
+      several vulnerabilities:
+      - If for state encryption, OpenBao key provider is used with
+        wrapping algorithms, it could generate panics or hangs on
+        compromised systems where the JWE is specifically crafted.
+      This is fixed now by (#4177)
+    - Previous releases in the v1.12 series could be affected by
+      several vulnerabilities:
+      - When using SSH connections through OpenTofu, the errors
+        that were returned from attempting a connection could
+        include unescaped input bytes.
+      - If using an attacker-controlled server to run tofu against,
+        it might end up in high CPU consumption.
+      These are now fixed by (#4247)
+  * BUG FIXES:
+    - Properly handle EDEADLK during provider installation. On Unix
+      systems, the kernel may erroneously detect a deadlock between
+      tofu processes using the global plugin cache. (#4166)
+    - Fix race condition while handling closing signals during tofu
+      login, both when the signal is sent by the user and when the
+      browser fails to successfully connect. (4016)
+    - Prevent panic when using ephemeral resources during tofu
+      test`. (#4254)
+  * Dependencies
+    - [Govulncheck][v1.12] Upgrade go version 1.26.4 (#4247)
+    - [GO-2026-4945][main] Bump go-jose to the latest patched
+      version (#4203)
+
+-------------------------------------------------------------------
 Fri May 29 06:48:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.1:
