@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.15.16
+Version:        0.15.17
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
