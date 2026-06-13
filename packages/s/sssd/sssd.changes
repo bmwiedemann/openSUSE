@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 11 17:24:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.13.1
+  * Fixed an issue where SSSD fails to start when DNS is
+    unresponsive.
+  * SSSD no longer crashes if ``ldap_read_rootdse=never`` and
+    ``enumerate=true`` is set.
+- Add jwk.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 13:17:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - The logrotate fragment had a wrong systemd service name in it,

@@ -1327,4 +1327,12 @@ goes in line with 946250</comment>
   which was rectified.</comment>
     <requestid>1356985</requestid>
   </revision>
+  <revision rev="152" vrev="1">
+    <srcmd5>a994686b3848c009ebdb5fed64bd7b55</srcmd5>
+    <version>2.13.1</version>
+    <time>1781369093</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.13.1</comment>
+    <requestid>1358763</requestid>
+  </revision>
 </revisionlist>

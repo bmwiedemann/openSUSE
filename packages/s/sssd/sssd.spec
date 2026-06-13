@@ -17,7 +17,7 @@
 
 
 Name:           sssd
-Version:        2.13.0
+Version:        2.13.1
 Release:        0
 Summary:        System Security Services Daemon
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -37,6 +37,7 @@ Patch13:        harden_sssd-kcm.service.patch
 Patch14:        symvers.patch
 Patch15:        logrotate.patch
 Patch16:        0016-UsrEtc.patch
+Patch17:        jwk.patch
 BuildRequires:  autoconf >= 2.59
 BuildRequires:  automake
 BuildRequires:  bc

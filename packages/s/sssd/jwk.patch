@@ -1,0 +1,98 @@
+From 8974a2d86c9253d9759becfeb62f1af549e8e17a Mon Sep 17 00:00:00 2001
+From: Alexey Tikhonov <atikhono@redhat.com>
+Date: Thu, 11 Jun 2026 10:02:00 +0200
+Subject: [PATCH] Make: don't compile 'oidc_child_get_jwk.c'
+References: https://github.com/SSSD/sssd/issues/8804
+
+if `--without-oidc-child`
+
+Resolves: https://github.com/SSSD/sssd/issues/8803
+Reviewed-by: Sumit Bose <sbose@redhat.com>
+(cherry picked from commit 6506858fccb11b38bf633f2ae4f57419ca427cf0)
+---
+ Makefile.am                        | 8 +++++---
+ src/tests/cmocka/test_cert_utils.c | 6 ++++++
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index 0ca40d9b6..5adbea926 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -3655,14 +3655,12 @@ test_cert_utils_SOURCES = \
+     src/tests/cmocka/test_cert_utils.c \
+     src/responder/ssh/ssh_cert_to_ssh_key.c \
+     src/util/cert_derb64_to_ldap_filter.c \
+-    src/oidc_child/libcrypto/oidc_child_get_jwk.c \
+     $(NULL)
+ test_cert_utils_CFLAGS = \
+     $(AM_CFLAGS) \
+     -U SSSD_LIBEXEC_PATH -DSSSD_LIBEXEC_PATH=\"$(abs_builddir)\" \
+     -I$(abs_builddir)/src \
+     $(CRYPTO_CFLAGS) \
+-    $(JOSE_CFLAGS) \
+     $(CMOCKA_CFLAGS) \
+     $(NULL)
+ test_cert_utils_LDADD = \
+@@ -3670,13 +3668,17 @@ test_cert_utils_LDADD = \
+     $(POPT_LIBS) \
+     $(TALLOC_LIBS) \
+     $(CRYPTO_LIBS) \
+-    $(JOSE_LIBS) \
+     libsss_debug.la \
+     libsss_test_common.la \
+     libsss_cert.la \
+     libsss_crypt.la \
+     libsss_certmap.la \
+     $(NULL)
++if BUILD_OIDC_CHILD
++    test_cert_utils_SOURCES += src/oidc_child/libcrypto/oidc_child_get_jwk.c
++    test_cert_utils_CFLAGS += $(JOSE_CFLAGS)
++    test_cert_utils_LDADD += $(JOSE_LIBS)
++endif
+ 
+ test_data_provider_be_SOURCES = \
+     src/providers/data_provider_be.c \
+diff --git a/src/tests/cmocka/test_cert_utils.c b/src/tests/cmocka/test_cert_utils.c
+index 9f66644d4..e1c41152a 100644
+--- a/src/tests/cmocka/test_cert_utils.c
++++ b/src/tests/cmocka/test_cert_utils.c
+@@ -32,7 +32,9 @@
+ #include "tests/cmocka/common_mock.h"
+ #include "util/crypto/sss_crypto.h"
+ #include "responder/ssh/ssh_private.h"
++#ifdef BUILD_OIDC_CHILD
+ #include "oidc_child/oidc_child_util.h"
++#endif
+ 
+ #ifdef HAVE_TEST_CA
+ #include "tests/test_CA/SSSD_test_cert_pubsshkey_0001.h"
+@@ -830,6 +832,7 @@ void test_cert_to_ssh_2keys_with_certmap_2_send(void **state)
+     talloc_free(ev);
+ }
+ 
++#ifdef BUILD_OIDC_CHILD
+ void test_get_jwk_from_pkcs12(void **state)
+ {
+     int ret;
+@@ -871,6 +874,7 @@ void test_get_jwk_from_pkcs12(void **state)
+     talloc_free(pkcs12);
+     talloc_free(jwk);
+ }
++#endif
+ 
+ int main(int argc, const char *argv[])
+ {
+@@ -911,8 +915,10 @@ int main(int argc, const char *argv[])
+                                         setup, teardown),
+         cmocka_unit_test_setup_teardown(test_cert_to_ssh_2keys_with_certmap_2_send,
+                                         setup, teardown),
++#ifdef BUILD_OIDC_CHILD
+         cmocka_unit_test_setup_teardown(test_get_jwk_from_pkcs12,
+                                         setup, teardown),
++#endif
+ #endif
+     };
+ 
+-- 
+2.54.0
+
