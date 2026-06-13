@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Apr 11 06:16:21 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.50.0 (4.05)
+   see /usr/share/doc/packages/perl-Mail-Message/ChangeLog
+
+  version 4.05: Fri 10 Apr 11:00:52 CEST 2026
+  	Fixes:
+  	- parse X-MLServer [Edoardo Geraci]
+  	- $msg->string must end with a newline [Andy Beverley]
+  	- fold fields with newline [Edoardo Geraci]
+  	Improvements:
+  	- Mail::Message->new(message_id) replaces messageId: parameters should
+  	  not use camel-casing.  Old attribute now deprecated.
+  	- Mail::Message add clean attributes for fieldType, headType, bodyType,
+  	  and isTrusted.
+  	- remove version of introduction indicators '[3*]', because version 4 is
+  	  not backwards compatible anyway.
+  version 4.04: Wed  4 Feb 15:52:45 CET 2026
+  	Fixes:
+  	- date field parsing regression
+  	  GitHub issue #28 [Andy Beverley]
+  version 4.03: Mon 26 Jan 14:53:24 CET 2026
+  	Fixes:
+  	- field attributes must be handled case-insensitive.
+  	  GitHub issue #5 [Andy Beverley]
+  	- wrongly added LF after multipart parts which do not end in a LF
+  	  [Andy Beverly]
+  version 4.02: Thu 22 Jan 09:18:53 CET 2026
+  	Fixes:
+  	- $msg->study [Andy Beverley]
+
+-------------------------------------------------------------------
 Sun Dec 14 05:34:53 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.10.0 (4.01)

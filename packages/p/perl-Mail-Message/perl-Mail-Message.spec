@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mail-Message
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mail-Message
 Name:           perl-Mail-Message
-Version:        4.10.0
+Version:        4.50.0
 Release:        0
-# 4.01 -> normalize -> 4.10.0
-%define cpan_version 4.01
+# 4.05 -> normalize -> 4.50.0
+%define cpan_version 4.05
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Processing MIME messages
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,6 +34,7 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Date::Format)
 BuildRequires:  perl(Date::Parse)
 BuildRequires:  perl(Encode) >= 2.26
+BuildRequires:  perl(Hash::Case) >= 1.50
 BuildRequires:  perl(IO::Lines)
 BuildRequires:  perl(IO::Scalar)
 BuildRequires:  perl(Log::Report) >= 1.420
@@ -48,6 +49,7 @@ BuildRequires:  perl(User::Identity) >= 4.0
 Requires:       perl(Date::Format)
 Requires:       perl(Date::Parse)
 Requires:       perl(Encode) >= 2.26
+Requires:       perl(Hash::Case) >= 1.50
 Requires:       perl(IO::Lines)
 Requires:       perl(IO::Scalar)
 Requires:       perl(Log::Report) >= 1.420
