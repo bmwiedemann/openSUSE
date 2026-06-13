@@ -27,7 +27,12 @@
 #
 # ⚠️   11 or greater is required for a number of linker flags to be supported in sle.
 #
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150300
+%global need_gcc_version 13
+%else
 %global need_gcc_version 15
+%endif
+
 %else
 # Work around SLFO gcc mess.
 %global need_gcc_version %gcc_version
@@ -511,8 +516,6 @@ lscpu
 free -h
 df -h
 
-%build
-
 # Create exports file
 # Keep all the "export VARIABLE" together here, so they can be
 # reread in the %%install section below.
@@ -599,7 +602,7 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
 # FUTURE: See if we can build sanitizers without the full llvm bundling.
 # {?with_tier1: --enable-sanitizers} \
 
-./configure \
+%{python} src/bootstrap/configure.py \
   --build=%{rust_triple} --host=%{rust_triple} \
   --target %{rust_target_list} \
   %{?with_wasi: --set target.wasm32-wasip1.wasi-root=%{_builddir}/wasi-sysroot/ } \
@@ -639,7 +642,10 @@ RUSTC_LOG=rustc_codegen_ssa::back::link=info %{rust_root}/bin/rustc -C link-args
 # We set deny warnings to false due to a problem where rust upstream didn't test building with
 # the same version (they did previous ver)
 
+%build
+
 %if %{without test}
+. ./.env.sh
 %{python} ./x.py build
 # Debug for post build
 free -h

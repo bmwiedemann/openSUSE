@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 05:53:28 UTC 2026 - William Brown <william.brown@suse.com>
+
+- Re-add support for SLE-12-SP2
+- Move build stage to reduce check stage time consumption
+
+-------------------------------------------------------------------
 Mon Mar 16 04:48:24 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add 0001-proto-avoid-unwrapping-varint-decoding-during-parame.patch:
