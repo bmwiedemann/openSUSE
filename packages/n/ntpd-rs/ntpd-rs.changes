@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:17:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.0
+  Added
+  * Support for using openssl for cryptography, instead of
+    aws-lc-sys and rust-crypto.
+  Changed
+  * Switched to IANA early-allocated codepoints for the KELB style
+    NTS pool (experimental).
+  * Updated dependencies.
+
+-------------------------------------------------------------------
 Thu May  7 11:20:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.0
