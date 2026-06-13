@@ -38,13 +38,13 @@
 # regular cmake builddir conflicts with the python singlespec
 %global __builddir build_cmake
 Name:           tvm
-Version:        0.22.0
+Version:        0.24.0
 Release:        0
 Summary:        An end-to-end Deep Learning Compiler Stack
 License:        Apache-2.0
 URL:            https://tvm.apache.org/
 Source:         https://github.com/apache/tvm/archive/refs/tags/v%{version}.tar.gz#/tvm-%{version}.tar.gz
-Source1:        https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.0.tar.gz#/tvm-ffi.tar.gz
+Source1:        https://github.com/apache/tvm-ffi/archive/refs/tags/v0.1.11.tar.gz#/tvm-ffi.tar.gz
 # License2: MIT
 Source2:        https://github.com/dmlc/dmlc-core/archive/%{dmlc_version}.tar.gz#/dmlc-core.tar.gz
 # License3: BSD-3-Clause
@@ -61,6 +61,7 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scikit-build-core}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module synr}
@@ -210,20 +211,16 @@ popd
 %cmake_build
 cd ..
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
-pushd python
 # Fix rpm runtime dependency rpmlint error replace the shebang in all the scripts with %%{_bindir}/python3
 find . -name "*.py" -exec sed -i 's|#!%{_bindir}/env python|#!%{_bindir}/python3|' {} ";"
 %pyproject_wheel
-popd
 
 %install
 %cmake_install
 # remove endian hack
 rm -f %{buildroot}%{_includedir}/endian.h
 export TVM_LIBRARY_PATH="$(pwd)/%{__builddir}"
-pushd python
 %pyproject_install
-popd
 # Package libtvm_ffi.so
 cp build_cmake/lib/libtvm_ffi.so %{buildroot}%{_libdir}
 # Remove src,include,3rdparty dirs
@@ -323,7 +320,7 @@ donttest="$donttest or test_meta_schedule_local_runner_time_out or test_meta_sch
 %{_libdir}/cmake/tvm/*.cmake
 
 %files %{python_files}
-%{python_sitelib}/tvm
-%{python_sitelib}/tvm-*.dist-info/
+%{python_sitearch}/tvm
+%{python_sitearch}/tvm-*.dist-info/
 
 %changelog

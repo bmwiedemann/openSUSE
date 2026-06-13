@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun  9 06:26:16 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+-  Update to 0.24.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.24.0
+- Skipped 0.23.0:
+  * Release notes: https://github.com/apache/tvm/releases/tag/v0.23.0
+- Rebase patch:
+  * lib-finder-python-cmake.patch
+
+-------------------------------------------------------------------
 Fri Feb  6 09:45:41 UTC 2026 - Guillaume Gardet <guillaume@opensuse.org>
 
 - Package libtvm_ffi.so
