@@ -19,7 +19,7 @@
 %define         gst_branch      1.0
 
 Name:           gstreamer-docs
-Version:        1.28.3
+Version:        1.28.4
 Release:        0
 Summary:        GStreamer documentation
 License:        (BSD-2-Clause OR LGPL-2.1-or-later OR MIT) AND OPL-1.0 AND CC-BY-SA-4.0
@@ -35,7 +35,7 @@ License:        (BSD-2-Clause OR LGPL-2.1-or-later OR MIT) AND OPL-1.0 AND CC-BY
 #  Creative Commons CC-BY-SA-4.0 license, but some parts of the documentation
 #  may still be licensed differently (e.g. LGPLv2.1) for historical reasons.
 
-URL:            https://gstreamer.freedesktop.org/
+URL:            https://gstreamer.freedesktop.org
 Source:         %{url}/src/%{name}/%{name}-%{version}.tar.xz
 
 BuildRequires:  fdupes
