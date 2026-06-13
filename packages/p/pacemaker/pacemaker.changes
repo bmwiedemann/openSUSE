@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 09 11:33:06 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260608.b9d7133a:
+- liblrmd: Don't include internal header in lrmd.h
+
+-------------------------------------------------------------------
 Tue Jun 02 01:11:56 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.2+20260601.c75e25851c (Pacemaker-3.0.2):
