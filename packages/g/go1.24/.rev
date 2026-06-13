@@ -387,4 +387,14 @@
   * Drop go1.24 dependency on update-alternatives fixes bsc#1264393 (forwarded request 1358035 from jfkw)</comment>
     <requestid>1358042</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>8556eb279f6fba8b7cb7ba7b06687184</srcmd5>
+    <version>1.24.13</version>
+    <time>1781369104</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libalternatives only on suse_version &gt;= 1610 and keep
+  update-alternatives support for older distributions.
+- Drop the update-alternatives migration path for libalternatives builds. (forwarded request 1358782 from mschreiner)</comment>
+    <requestid>1358787</requestid>
+  </revision>
 </revisionlist>
