@@ -3172,4 +3172,13 @@ Detailed changelog:
   problems (see SR 1355200). Revert for now to get the other fixes out. (forwarded request 1355647 from cboltz)</comment>
     <requestid>1355648</requestid>
   </revision>
+  <revision rev="237" vrev="5">
+    <srcmd5>dd90af5becdfae30283aed4481f83965</srcmd5>
+    <version>5.0.0</version>
+    <time>1781369094</time>
+    <user>dimstar_suse</user>
+    <comment>- Update apparmor-lessopen-profile.patch:
+  * Allow execution of /usr/bin/zstd (bsc#1265620) (forwarded request 1358665 from dmdiss)</comment>
+    <requestid>1358767</requestid>
+  </revision>
 </revisionlist>
