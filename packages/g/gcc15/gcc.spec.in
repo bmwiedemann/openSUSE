@@ -1424,7 +1424,7 @@ for flag in $RPM_OPT_FLAGS; do
   add_flag=
   case $flag in
     -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
-    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*|-fhardened) ;;
     -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
     # -mcpu is superseded by -mtune but -mtune is not supported by

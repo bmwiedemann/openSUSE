@@ -1,7 +1,7 @@
 #
 # spec file for package cross-pru-gcc15-bootstrap
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,7 +103,7 @@ Name:           %{pkgname}
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.2.1+git10776
+Version:        15.3.0+git11272
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -276,12 +276,18 @@ Obsoletes:      cross-ppc-gcc49 <= 4.9.0+r209354
 %if 0%{!?gcc_accel:1}
 # Generally only one cross for the same target triplet can be installed
 # at the same time as we are populating a non-version-specific sysroot
-# The -bootstrap packages file-conflict with the non-bootstrap variants.
+# The -bootstrap packages file-conflict with the non-bootstrap variants
+# and between each others due to shared unsuffixed binary names unless
+# we use update-alternatives which we still do before SLE-16.
 # Even if we don't actually (want to) distribute the bootstrap variants
 # the following avoids repo-checker spamming us endlessly.
+%if 0%{!?gcc_libc_bootstrap:1} || %{suse_version} >= 1600
 Provides:       %{gcc_target_arch}-gcc
 Conflicts:      %{gcc_target_arch}-gcc
+%endif
+%if 0%{!?gcc_libc_bootstrap:1}
 Conflicts:      %{pkgname}-bootstrap
+%endif
 %endif
 #!BuildIgnore: gcc-PIE
 %if %{build_cp}
@@ -358,7 +364,7 @@ for flag in $RPM_OPT_FLAGS; do
   add_flag=
   case $flag in
     -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
-    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*|-fhardened) ;;
     -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
     # -mcpu is superseded by -mtune but -mtune is not supported by

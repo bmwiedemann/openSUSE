@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 12 06:14:26 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15.3 release 
+
+-------------------------------------------------------------------
+Fri Jun  5 12:10:20 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 15 branch head, 15.2.1+git11263, GCC 15.3 RC1
+- Drop -fhardened from RPM_OPT_FLAGS
+
+-------------------------------------------------------------------
+Thu Mar 19 12:48:48 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)
+
+-------------------------------------------------------------------
 Tue Mar  3 12:01:24 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update gcc15-Wtime_t-conversion.patch to allow conversions to/from

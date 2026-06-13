@@ -243,4 +243,24 @@ since we bumped libgo SONAME as well for 15</comment>
   D target library files.</comment>
     <requestid>1337991</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>d62034f29ccfe862edccb8b62dc69b73</srcmd5>
+    <version>15.2.1+git11263</version>
+    <time>1780920306</time>
+    <user>anag_factory</user>
+    <comment>- Update to GCC 15 branch head, 15.2.1+git11263, GCC 15.3 RC1
+- Drop -fhardened from RPM_OPT_FLAGS
+
+- Avoid conflicts between %gcc_libc_bootstrap packages of different
+  versions if update-alternatives are still in use (SLE 15 and older)</comment>
+    <requestid>1357535</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>c469b4992004b733151dfd56a66f3eb7</srcmd5>
+    <version>15.3.0+git11272</version>
+    <time>1781369082</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 15.3 release</comment>
+    <requestid>1358849</requestid>
+  </revision>
 </revisionlist>

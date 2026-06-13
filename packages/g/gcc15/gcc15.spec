@@ -1,7 +1,7 @@
 #
 # spec file for package gcc15
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -217,7 +217,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        15.2.1+git10776
+Version:        15.3.0+git11272
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2357,7 +2357,7 @@ Runtime library for the GNU GCC COBOL language.
 
 %package -n gcc15-testresults
 Summary:        Testsuite results
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 
 %description -n gcc15-testresults
@@ -2505,7 +2505,7 @@ for flag in $RPM_OPT_FLAGS; do
   add_flag=
   case $flag in
     -U_FORTIFY_SOURCE|-D_FORTIFY_SOURCE=*) ;;
-    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*) ;;
+    -fno-rtti|-fno-exceptions|-Wmissing-format-attribute|-fstack-protector*|-fhardened) ;;
     -ffortify=*|-Wall|-m32|-m64) ;;
 %ifarch %ix86
     # -mcpu is superseded by -mtune but -mtune is not supported by
