@@ -84,19 +84,13 @@
 # which denotes its priority and numbered as go_api sans dot separator
 %define go_libalternatives 121
 
-# with_libalternatives denotes whether or not libalternatives should be used
-# if it is not used, then update-alternatives is used instead
-%define with_libalternatives 0
-# Enable libalternatives for SLE16.1+ and Tumbleweed
+# Use libalternatives for SLE 16.1+ and Tumbleweed.
+# Older distributions keep using update-alternatives, as before.
 %if 0%{suse_version} >= 1610
 %define with_libalternatives 1
-%endif
-
-# with_update_alternatives is automatically defined, based on the
-# value of with_libalternatives
-%if %{with_libalternatives}
 %define with_update_alternatives 0
 %else
+%define with_libalternatives 0
 %define with_update_alternatives 1
 %endif
 
@@ -188,11 +182,12 @@ Obsoletes:      go-devel < go%{version}
 Obsoletes:      go-emacs <= 1.3.3
 Obsoletes:      go-vim <= 1.3.3
 ExclusiveArch:  %ix86 x86_64 %arm aarch64 ppc64 ppc64le s390x riscv64 loongarch64
-Requires(post): update-alternatives
 %if %{with_libalternatives}
 BuildRequires:  alts
 Requires:       alts
-%else
+%endif
+%if %{with_update_alternatives}
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 
@@ -466,25 +461,14 @@ cp -r doc/* %{buildroot}%{_docdir}/go/%{go_label}
 
 %fdupes -s %{buildroot}%{_prefix}
 
-%post
 %if %{with_update_alternatives}
+%post
 update-alternatives \
   --install %{_bindir}/go go %{_libdir}/go/%{go_label}/bin/go $((20+$(echo %{go_label} | cut -d. -f2))) \
   --slave %{_bindir}/gofmt gofmt %{_libdir}/go/%{go_label}/bin/gofmt \
   --slave %{_sysconfdir}/gdbinit.d/go.gdb go.gdb %{_libdir}/go/%{go_label}/bin/gdbinit.d/go.gdb
-%endif
-
-# this is invoked when a user is migrating from update-alternatives to
-# libalternatives, hence why we always require update-alternatives
-# during %post
-%if %{with_libalternatives}
-if [ $1 -eq 0 ] ; then
-	update-alternatives --remove go %{_libdir}/go/%{go_label}/bin/go
-fi
-%endif
 
 %postun
-%if %{with_update_alternatives}
 if [ $1 -eq 0 ] ; then
 	update-alternatives --remove go %{_libdir}/go/%{go_label}/bin/go
 fi

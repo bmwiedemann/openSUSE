@@ -407,4 +407,14 @@ Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded reques
   * Drop go1.21 dependency on update-alternatives fixes bsc#1264390 (forwarded request 1358031 from jfkw)</comment>
     <requestid>1358036</requestid>
   </revision>
+  <revision rev="27" vrev="9">
+    <srcmd5>35a8737094dd15b8d711615024b04a46</srcmd5>
+    <version>1.21.13</version>
+    <time>1781369110</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libalternatives only on suse_version &gt;= 1610 and keep
+  update-alternatives support for older distributions.
+- Drop the update-alternatives migration path for libalternatives builds. (forwarded request 1358806 from jfkw)</comment>
+    <requestid>1358807</requestid>
+  </revision>
 </revisionlist>
