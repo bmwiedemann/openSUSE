@@ -275,4 +275,12 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
     Tracking System</comment>
     <requestid>1354215</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>7157349c25d00730de61315db48fdfc6</srcmd5>
+    <version>4.0.5</version>
+    <time>1781369102</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1358785</requestid>
+  </revision>
 </revisionlist>

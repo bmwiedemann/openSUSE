@@ -73,6 +73,12 @@ Tue Apr 21 10:05:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
   https://www.ruby-lang.org/en/news/2026/04/21/ruby-4-0-3-released/
 
 -------------------------------------------------------------------
+Fri Apr  3 14:31:14 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- replace update-alternatives with alts
+  (ref: https://en.opensuse.org/openSUSE:Migrating_to_libalternatives_with_alts) 
+
+-------------------------------------------------------------------
 Tue Mar 17 08:12:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.2

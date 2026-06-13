@@ -28,6 +28,12 @@
 %define psuffix %{nil}
 %endif
 
+%if 0%{suse_version} >= 1600
+%bcond_without alts
+%else
+%bcond_with alts
+%endif
+
 ####
 #!!!
 #!!! when updating, check versions of embedded rubygems in package stdlib below
@@ -122,7 +128,17 @@ BuildRequires:  libyaml-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
+%if %{with alts}
+BuildRequires:  alts
+Requires:       alts
+Requires(post): alts
+Requires(preun): alts
+%else
 BuildRequires:  update-alternatives
+Requires:       update-alternatives
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+%endif
 %if "%{flavor}" == "testsuite"
 #!BuildIgnore: ruby
 #!BuildIgnore: ruby-common
@@ -163,7 +179,6 @@ Requires:       %{name}-stdlib = %{version}
 Provides:       %{name}-stdlib = %{version}-%{release}
 Obsoletes:      %{name}-stdlib < %{version}-%{release}
 %endif
-PreReq:         update-alternatives
 Requires:       ruby-common >= 3.2
 Summary:        An Interpreted Object-Oriented Scripting Language
 License:        BSD-2-Clause OR Ruby
@@ -385,7 +400,9 @@ done
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 install -D -m 0644 %{SOURCE3} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby4.0
+%if %{without alts}
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
+%endif
 %if 0%{?is_default_ruby}
   install -D -m 0644 %{SOURCE4} %{buildroot}%{_rpmmacrodir}/macros.suse-ruby4.0-default
   for bin in %{buildroot}%{_bindir}/{erb,gem,irb,ruby}%{rb_binary_suffix} ; do
@@ -400,12 +417,33 @@ mkdir -p %{buildroot}%{_sysconfdir}/alternatives
   ln -s lib%{rb_soname}.so %{buildroot}%{_libdir}/libruby.so
 %endif
 for bin in %{ua_binaries}; do
-  # dummy
-  mv %{buildroot}%_bindir/${bin}%{rb_binary_suffix} %{buildroot}%_bindir/$bin.ruby%{rb_binary_suffix}
+full_bin_name="${bin}.ruby%{rb_binary_suffix}"
+ruby_versioned_name="${bin}%{rb_binary_suffix}"
+
+mv %{buildroot}%_bindir/${bin}%{rb_binary_suffix} %{buildroot}%_bindir/${full_bin_name}
+
+%if %{with alts}
+  install -d \
+    %{buildroot}%{_datadir}/libalternatives/${bin} \
+    %{buildroot}%{_datadir}/libalternatives/${ruby_versioned_name}
+
+  cat > %{buildroot}%{_datadir}/libalternatives/$bin/%{rb_ua_weight}.conf <<EOF
+binary=%{_bindir}/${full_bin_name}
+group=${bin}
+EOF
+  cat > %{buildroot}%{_datadir}/libalternatives/${ruby_versioned_name}/%{rb_ua_weight}.conf <<EOF
+binary=%{_bindir}/${full_bin_name}
+group=${ruby_versioned_name}
+EOF
+
+  ln -sf alts %{buildroot}%{_bindir}/$bin
+  ln -sf alts %{buildroot}%_bindir/${ruby_versioned_name}
+%else
   #
-  ln -s %{_sysconfdir}/alternatives/$bin %{buildroot}%_bindir/$bin
+  ln -s %{_sysconfdir}/alternatives/$bin %{buildroot}%_bindir/${bin}
   #
-  ln -s %{_sysconfdir}/alternatives/$bin%{rb_binary_suffix} %{buildroot}%_bindir/$bin%{rb_binary_suffix}
+  ln -s %{_sysconfdir}/alternatives/${ruby_versioned_name} %{buildroot}%_bindir/${ruby_versioned_name}
+%endif
 done
 install -dD %{buildroot}%{rb_extdir} %{buildroot}%{rb_extarchdir} %{buildroot}%{rb_extversionedarchdir} %{buildroot}%{rb_extarchdocdir}
 chmod -R go-w,go+rX %{buildroot}%{_libdir}/ruby
@@ -419,21 +457,27 @@ find %{buildroot}/doc \( -name Makefile.ri -o -name ext -o -name page\*.ri \) -p
 find %{buildroot} -type d -name '.gem.*' -print0 | xargs -r0 rm -rv || :
 find %{buildroot} -type f -name \*.pem -delete
 
+%if %{without alts}
 %post
+full_bin_name="${bin}.ruby%{rb_binary_suffix}"
+ruby_versioned_name="${bin}%{rb_binary_suffix}"
 for bin in %{ua_binaries}; do
   %{_sbindir}/update-alternatives --install \
     %{_bindir}/$bin $bin %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
   %{_sbindir}/update-alternatives --install \
-    %{_bindir}/$bin%{rb_binary_suffix} $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
+    %{_bindir}/${ruby_versioned_name} ${ruby_versioned_name} %{_bindir}/$bin.ruby%{rb_binary_suffix} %{rb_ua_weight}
 done
 
 %preun
+full_bin_name="${bin}.ruby%{rb_binary_suffix}"
+ruby_versioned_name="${bin}%{rb_binary_suffix}"
 if [ "$1" = 0 ] ; then
   for bin in %{ua_binaries}; do
     %{_sbindir}/update-alternatives --remove $bin %{_bindir}/$bin.ruby%{rb_binary_suffix}
-    %{_sbindir}/update-alternatives --remove $bin%{rb_binary_suffix} %{_bindir}/$bin.ruby%{rb_binary_suffix}
+    %{_sbindir}/update-alternatives --remove ${ruby_versioned_name} %{_bindir}/$bin.ruby%{rb_binary_suffix}
   done
 fi
+%endif
 
 %post   -n %{libname} -p /sbin/ldconfig
 %postun -n %{libname} -p /sbin/ldconfig
@@ -455,6 +499,32 @@ make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_
 %else
 
 %files
+%if %{with alts}
+%{_datadir}/libalternatives/bundle
+%{_datadir}/libalternatives/bundle%{rb_binary_suffix}
+%{_datadir}/libalternatives/bundler
+%{_datadir}/libalternatives/bundler%{rb_binary_suffix}
+%{_datadir}/libalternatives/racc
+%{_datadir}/libalternatives/racc%{rb_binary_suffix}
+%{_datadir}/libalternatives/rake
+%{_datadir}/libalternatives/rake%{rb_binary_suffix}
+%{_datadir}/libalternatives/rbs
+%{_datadir}/libalternatives/rbs%{rb_binary_suffix}
+%{_datadir}/libalternatives/rdbg
+%{_datadir}/libalternatives/rdbg%{rb_binary_suffix}
+%{_datadir}/libalternatives/rdoc
+%{_datadir}/libalternatives/rdoc%{rb_binary_suffix}
+%{_datadir}/libalternatives/ri
+%{_datadir}/libalternatives/ri%{rb_binary_suffix}
+%{_datadir}/libalternatives/syntax_suggest
+%{_datadir}/libalternatives/syntax_suggest%{rb_binary_suffix}
+%{_datadir}/libalternatives/test-unit
+%{_datadir}/libalternatives/test-unit%{rb_binary_suffix}
+%{_datadir}/libalternatives/typeprof
+%{_datadir}/libalternatives/typeprof%{rb_binary_suffix}
+%{_datadir}/libalternatives/minitest
+%{_datadir}/libalternatives/minitest%{rb_binary_suffix}
+%else
 %ghost %{_sysconfdir}/alternatives/bundle
 %ghost %{_sysconfdir}/alternatives/bundle%{rb_binary_suffix}
 %ghost %{_sysconfdir}/alternatives/bundler
@@ -478,6 +548,7 @@ make test test-tool test-all V=1 TESTOPTS="%{?_smp_mflags} -q --tty=no $DISABLE_
 %ghost %{_sysconfdir}/alternatives/test-unit%{rb_binary_suffix}
 %ghost %{_sysconfdir}/alternatives/typeprof
 %ghost %{_sysconfdir}/alternatives/typeprof%{rb_binary_suffix}
+%endif
 %{_bindir}/bundle*
 %{_bindir}/erb*
 %{_bindir}/gem*
