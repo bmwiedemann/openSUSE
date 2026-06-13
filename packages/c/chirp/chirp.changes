@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 18:20:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260612:
+  * Add test image for Bajeton BJ7800
+  * Update RT-920 test image for FM,AM & HF memories
+  * Add new model Bajeton BJ7800 as a sub-class of  RT-920
+
+-------------------------------------------------------------------
 Sat Jun  6 14:05:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260605:
