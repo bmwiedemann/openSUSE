@@ -1,4 +1,967 @@
 -------------------------------------------------------------------
+Sat Jun 13 10:35:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.0:
+  Large update:
+  https://github.com/kumahq/kuma/releases/tag/v2.14.0
+  kumactl-related changes
+  * feat(kumactl): deprecate install observability (#15706)
+  * feat(kumactl): allow applying entire directories (#15813)
+
+  Dependencies
+  * chore(deps): bump kumahq/kuma-gui to
+    690f712dd74394a66e0f542d6d5601b90909b495 (#16942)
+  * chore(deps): bump kumahq/kuma-gui to
+    877e64dba8245cf6b5473db155eb8612dba8a322 (#16938)
+  * chore(deps): bump kumahq/kuma-gui to
+    bcde297fe1db29ff9fc0b1c1678f0875727cb3f6 (#16931)
+  * chore(deps): bump envoy from 1.38.1 to 1.38.2 (#16927)
+  * chore(deps): bump kumahq/ci-tools from v1.4.5 to v1.4.6
+    (#16928)
+  * chore(deps): bump kumahq/kuma-gui to
+    39f7bde0c666ce36689a554019370dc5e176010f (#16922)
+  * chore(deps): bump kumahq/kuma-gui to
+    97128e9534b883d302b289b537c23ec7842a26fe (#16918)
+  * chore(deps): bump kumahq/kuma-gui to
+    067d5e5ff5afde5a0ffad5e31936cdea41c671d8 (#16905)
+  * chore(deps): bump kumahq/kuma-gui to
+    5a21d2dbb1372ee97ccac094d57f52d855a9beed (#16872)
+  * chore(deps): bump envoy from 1.38.0 to 1.38.1 (#16900)
+  * chore(deps): security update (#16865)
+  * chore(deps): bump kumahq/kuma-gui to
+    5a21d2dbb1372ee97ccac094d57f52d855a9beed (#16863)
+  * chore(deps): bump kumahq/kuma-gui to
+    7a7a37b2d514ba23dc194d9d6358f9d860c9dc05 (#16862)
+  * chore(deps): bump kumahq/kuma-gui to
+    24122c5510d638e044aa34f8f134f4ff8e0e390b (#16855)
+  * chore(deps): bump kumahq/kuma-gui to
+    bc3a2c694f0eca4e6a501c8028235f068b3c66e1 (#16854)
+  * chore(deps): bump kumahq/kuma-gui to
+    9479dd8e626cac5a74827f3a79c7a453827ec7e0 (#16853)
+  * chore(deps): bump kumahq/kuma-gui to
+    5da77e3c6421a33b710c117157dc92adb81de373 (#16851)
+  * chore(deps): bump kumahq/kuma-gui to
+    5ef17e6018658a2e0fb3514094143c8048878b73 (#16845)
+  * chore(deps/dev): bump grafana/dashboard-linter from 5e22d6d to
+    0.1.1 (#16822)
+  * chore(deps): bump kumahq/kuma-gui to
+    af96b95cd2e4dedf0d7f70a5768f110a0b6b98dd (#16825)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    487f66a to 5a7b674 (#16811)
+  * chore(deps): bump google.golang.org/genproto/googleapis/api
+    from 0a33c5d to 3dc84a4 (#16813)
+  * chore(deps): bump opentelemetry-go monorepo (#16819)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.15.0 to
+    1.15.1 (#16814)
+  * chore(deps): bump golang.org/x/exp from 74f9aab to c761662
+    (#16812)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16818)
+  * chore(deps): bump opentelemetry-go-contrib monorepo from 0.68.0
+    to 0.69.0 (#16820)
+  * chore(deps): bump metallb from 0.16.0 to 0.16.1 (#16816)
+  * chore(deps): bump github.com/prometheus/common from 0.67.5 to
+    0.68.0 (#16817)
+  * chore(deps/dev): bump buf from 1.69.0 to 1.70.0 (#16821)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.15.0 to
+    1.15.1 (#16815)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.30.6 to 2.31.2
+    (#16823)
+  * chore(deps): bump kumahq/kuma-gui to
+    2f5635997e58f99ccadff235a7fe631e27d982c7 (#16780)
+  * ci(deps): skip deps with unpublished fix ver (#16770)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.30.5 to 2.30.6
+    (#16769)
+  * chore(deps): bump kumahq/kuma-gui to
+    d7c8157c0faa0efb8d2c1ba9b9d4a9127c6e1ee2 (#16767)
+  * chore(deps): bump kumahq/kuma-gui to
+    971dda7ac22ef3219e12990cc492e849452dca11 (#16761)
+  * chore(deps/dev): bump protoc from 34.1 to 35.0 (#16756)
+  * chore(deps): bump metallb from 0.15.3 to 0.16.0 (#16753)
+  * chore(deps): bump debian from 13.4 to 13.5 (#16747)
+  * chore(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+    (#16738)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.6 to
+    1.15.0 (#16748)
+  * chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+    (#16727)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.30.3 to 2.30.5
+    (#16746)
+  * chore(deps): bump golang.org/x/sys from 0.44.0 to 0.45.0
+    (#16752)
+  * chore(deps): bump github.com/exaring/otelpgx from 0.10.0 to
+    0.11.1 (#16750)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.6 to
+    1.15.0 (#16749)
+  * chore(deps): bump golangci/golangci-lint-action from 9.2.0 to
+    9.2.1 (#16745)
+  * chore(deps): bump postgres:latest from f7ce845 to 8ff36f3
+    (#16744)
+  * chore(deps): bump k8s.io/kube-openapi from ef417d0 to aa012df
+    (#16742)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    3700d41 to 0a33c5d (#16741)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16743)
+  * chore(deps/dev): bump skaffold from 2.20.0 to 2.21.0 (#16755)
+  * chore(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+    (#16751)
+  * chore(deps): bump kumahq/kuma-gui to
+    ebbe48a1dae12800473c9841db4887cadbfbdcfe (#16712)
+  * chore(deps): bump kumahq/kuma-gui to
+    6c7935431a127655e35469ea8aec636ec22e4adf (#16708)
+  * chore(deps): bump kumahq/kuma-gui to
+    04e1def90efd172e3ff58942064b53be4757fde9 (#16704)
+  * chore(deps): bump kumahq/kuma-gui to
+    932edeab5826c8f7403216837ba89fc000f83c90 (#16691)
+  * chore(deps): bump github.com/invopop/jsonschema from 0.13.0 to
+    0.14.0 (#16666)
+  * chore(deps): bump google.golang.org/grpc from 1.81.0 to 1.81.1
+    (#16656)
+  * chore(deps): bump ginkgo from 2.28.3 to 2.29.0 (#16665)
+  * chore(deps): bump kumahq/kuma-gui to
+    24dc5d43dd0e763841d421e002463743f6390a0e (#16678)
+  * chore(deps): bump kubernetes monorepo from 0.36.0 to 0.36.1
+    (#16658)
+  * chore(deps/dev): bump grpc-go/protoc-gen-go-grpc from 1.6.1 to
+    1.6.2 (#16662)
+  * chore(deps): bump kumahq/kuma-gui to
+    a70161d5f42ad12d8402bc2f13beac8d15fba136 (#16674)
+  * chore(deps): bump github.com/gruntwork-io/terratest from 0.56.0
+    to 1.0.0 (#16670)
+  * chore(deps/dev): bump controller-runtime/setup-envtest from
+    0.24.0 to 0.24.1 (#16661)
+  * chore(deps/dev): bump skaffold from 2.19.0 to 2.20.0 (#16669)
+  * chore(deps): bump k8s.io/kube-openapi from b540ad9 to ef417d0
+    (#16652)
+  * chore(deps): bump postgres:latest from 7e32e98 to f7ce845
+    (#16653)
+  * chore(deps): bump
+    gcr.io/distroless/static-debian12:debug-nonroot from afead12 to
+    f414196 (#16650)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    60b97b3 to 3700d41 (#16651)
+  * chore(deps): bump
+    gcr.io/distroless/base-nossl-debian12:debug-nonroot from
+    6cca41b to 6cec643 (#16649)
+  * chore(deps): bump gcr.io/distroless/base-nossl-debian12:debug
+    from eacaa3a to 35a3865 (#16648)
+  * chore(deps): bump kubectl from 1.36.0 to 1.36.1 (#16657)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16659)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables from 0.9.1
+    to 0.9.2 (#16654)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.24.0 to
+    0.24.1 (#16660)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.30.2 to 2.30.3
+    (#16663)
+  * chore(deps): bump github.com/onsi/gomega from 1.40.0 to 1.41.0
+    (#16667)
+  * chore(deps): bump helm from 4.1.4 to 4.2.0 (#16668)
+  * chore(deps): bump github/codeql-action from 4.35.4 to 4.35.5
+    (#16655)
+  * chore(deps): bump actions/create-github-app-token from 3.1.1 to
+    3.2.0 (#16664)
+  * chore(deps): bump kumahq/kuma-gui to
+    373511f850f7836136e0f4c4f08a9174d41023d1 (#16598)
+  * chore(deps): bump kumahq/kuma-gui to
+    4ad878a066146e15e33b150ac14e69ecc91c442e (#16585)
+  * chore(deps/dev): bump controller-tools/cmd/controller-gen from
+    0.20.1 to 0.21.0 (#16530)
+  * chore(deps): bump kumahq/kuma-gui to
+    108456eb92f55cdaa6b0aa31ff03f3ee2ec4c40c (#16561)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    7cedc36 to 60b97b3 (#16515)
+  * chore(deps): bump golang.org/x/exp from 746e56f to 74f9aab
+    (#16514)
+  * chore(deps): bump k8s.io/utils from 28399d8 to ff6756f (#16517)
+  * chore(deps): bump kumahq/kuma-gui to
+    fca9a4d0b4d59b5b2828e4685db88255ee75ed9d (#16504)
+  * chore(deps): bump k8s.io/kube-openapi from b7f5293 to b540ad9
+    (#16516)
+  * chore(deps): bump postgres:latest from 7848165 to 7e32e98
+    (#16518)
+  * chore(deps): bump redis: from 832d778 to 0c34149 (#16519)
+  * chore(deps): bump sigs.k8s.io/controller-tools from 0.20.1 to
+    0.21.0 (#16529)
+  * chore(deps): bump google.golang.org/grpc from 1.80.0 to 1.81.0
+    (#16528)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.29.2 to 2.30.2
+    (#16532)
+  * chore(deps): bump debian:13.4 from 35b8ff7 to e2d08da (#16513)
+  * chore(deps): bump golangci-lint from 2.12.1 to 2.12.2 (#16522)
+  * chore(deps): bump github/codeql-action from 4.35.3 to 4.35.4
+    (#16521)
+  * chore(deps): bump cloudsmith-io/cloudsmith-cli-action from
+    2.0.2 to 2.0.3 (#16520)
+  * chore(deps/dev): bump go from 1.26.2 to 1.26.3 (#16523)
+  * chore(deps): bump golang.org/x/tools from 0.44.0 to 0.45.0
+    (#16527)
+  * chore(deps): security update (#16506)
+  * chore(deps): bump kumahq/kuma-gui to
+    41384303f5470f8faa05303d333a7fd4145c5308 (#16500)
+  * chore(deps/dev): bump
+    oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen from 2.6.0 to
+    2.7.0 (#16482)
+  * chore(deps): bump kumahq/kuma-gui to
+    852e2da42c7cef225945f1333dcadf932375d7a5 (#16495)
+  * chore(deps): bump kumahq/kuma-gui to
+    5bc3b6c402f55180a04f20363c2fe3dc3084642d (#16491)
+  * chore(deps): bump kubernetes monorepo from 0.35.4 to 0.36.0
+    (#16401)
+  * chore(deps): bump ginkgo from 2.28.2 to 2.28.3 (#16470)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.5 to
+    1.14.6 (#16468)
+  * chore(deps/dev): bump buf from 1.68.4 to 1.69.0 (#16480)
+  * chore(deps): bump k8s.io/kube-openapi from ec9c827 to b7f5293
+    (#16467)
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.4.0
+    to 3.5.0 (#16474)
+  * chore(deps): bump prom/prometheus from 3.11.2 to 3.11.3
+    (#16472)
+  * chore(deps): bump github.com/onsi/gomega from 1.39.1 to 1.40.0
+    (#16475)
+  * chore(deps): bump projectcalico/tigera-operator from 3.31.5 to
+    3.32.0 (#16478)
+  * chore(deps): bump golangci-lint from 2.11.4 to 2.12.1 (#16477)
+  * chore(deps): bump go.uber.org/zap from 1.27.1 to 1.28.0
+    (#16476)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.5 to
+    1.14.6 (#16469)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from c8b4b9d to 0.24.0 (#16481)
+  * chore(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+    (#16471)
+  * chore(deps): bump kumahq/kuma-gui to
+    fd302e55640b31b68b9e2b890e2c7f76fbbcff1d (#16453)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    e10c466 to 7cedc36 (#16444)
+  * chore(deps): bump envoy from 1.37.2 to 1.38.0 (#16446)
+  * chore(deps): bump ginkgo from 2.28.1 to 2.28.2 (#16445)
+  * chore(deps): bump kumahq/kuma-gui to
+    8ec80744a696871597230f39d022c80ef5c52229 (#16372)
+  * chore(deps): bump debian:13.4 from 3352c2e to 35b8ff7 (#16393)
+  * chore(deps): bump postgres:latest from 52e6ffd to 7848165
+    (#16395)
+  * chore(deps): bump kubectl from 1.35.4 to 1.36.0 (#16400)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    afd174a to e10c466 (#16394)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from e4a998c to c8b4b9d (#16398)
+  * chore(deps/dev): bump skaffold from 2.18.3 to 2.19.0 (#16403)
+  * chore(deps): bump redis: from 1f07381 to 832d778 (#16396)
+  * chore(deps/dev): bump buf from 1.68.2 to 1.68.4 (#16397)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.28.0 to 2.29.2
+    (#16402)
+  * chore(deps): bump kumahq/kuma-gui to
+    5b81cc0a65d82af32b980b700efc10c5a2909310 (#16370)
+  * chore(deps): bump kumahq/kuma-gui to
+    68d4387d0eb5a990f98b327cfab41451a59b58fa (#16352)
+  * chore(deps): bump kumahq/kuma-gui to
+    35f17bc2d7fd7352103953a31ca931a960453719 (#16344)
+  * chore(deps): bump grafana/grafana from 12.4.3 to 13.0.1
+    (#16315)
+  * chore(deps): bump kumahq/kuma-gui to
+    8cb5e34c7be353928695efa9e3a5076309c387c9 (#16317)
+  * chore(deps): bump kubernetes monorepo from 0.35.3 to 0.35.4
+    (#16308)
+  * chore(deps): bump kumahq/kuma-gui to
+    1d0f6978fd33c3f6577deb2c396c233e25160be7 (#16316)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 6210f84 to e4a998c (#16310)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    6f92a3b to afd174a (#16301)
+  * chore(deps): bump k8s.io/kube-openapi from 16be699 to ec9c827
+    (#16302)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16303)
+  * chore(deps): bump actions/cache from 5.0.4 to 5.0.5 (#16304)
+  * chore(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+    (#16306)
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.9.1 to 5.9.2
+    (#16305)
+  * chore(deps): bump kubectl from 1.35.3 to 1.35.4 (#16307)
+  * chore(deps): bump projectcalico/tigera-operator from 3.31.4 to
+    3.31.5 (#16309)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.26.0 to 2.28.0
+    (#16313)
+  * chore(deps/dev): bump skaffold from 2.18.2 to 2.18.3 (#16311)
+  * chore(deps/dev): bump buf from 1.67.0 to 1.68.2 (#16312)
+  * chore(deps/dev): bump yq from 4.52.5 to 4.53.2 (#16314)
+  * chore(deps): bump kumahq/kuma-gui to
+    79cbae61c7534316734c52b9552289ec36dfd3db (#16295)
+  * chore(deps): bump kumahq/kuma-gui to
+    0d604a1e261fe43cbca5651c736c254ece23541d (#16292)
+  * chore(deps): bump github.com/moby/spdystream from 0.5.0 to
+    0.5.1 (#16291)
+  * chore(deps): bump kumahq/kuma-gui to
+    f99142bbeab86ff9cd464db4be02eb76198320db (#16259)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16244)
+  * chore(deps): bump golang.org/x/exp from 7ab1446 to 746e56f
+    (#16237)
+  * chore(deps): bump opentelemetry-go-contrib monorepo from 0.67.0
+    to 0.68.0 (#16255)
+  * chore(deps): bump golang.org/x/tools from 0.43.0 to 0.44.0
+    (#16254)
+  * chore(deps): bump envoy from 1.37.1 to 1.37.2 (#16262)
+  * chore(deps): bump github.com/testcontainers/testcontainers-go
+    from 0.41.0 to 0.42.0 (#16250)
+  * chore(deps): bump golang.org/x/text from 0.35.0 to 0.36.0
+    (#16253)
+  * chore(deps): bump debian:13.4 from 55a15a1 to 3352c2e (#16235)
+  * chore(deps/dev): bump go from 1.26.1 to 1.26.2 (#16247)
+  * chore(deps): bump kumahq/kuma-gui to
+    2c87cb7da7c7ab57c044dc83b8aa438d28d1e584 (#16211)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.4 to
+    1.14.5 (#16243)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    9d38bb4 to 6f92a3b (#16238)
+  * chore(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+    (#16240)
+  * chore(deps): bump marocchino/sticky-pull-request-comment from
+    3.0.3 to 3.0.4 (#16245)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    450ba7a to 487f66a (#16236)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables from 0.9.0
+    to 0.9.1 (#16241)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.4 to
+    1.14.5 (#16242)
+  * chore(deps): bump actions/create-github-app-token from 3.0.0 to
+    3.1.1 (#16249)
+  * chore(deps): bump peter-evans/create-pull-request from 8.1.0 to
+    8.1.1 (#16246)
+  * chore(deps/dev): bump helm from 4.1.3 to 4.1.4 (#16248)
+  * chore(deps): bump postgres:latest from a9abf42 to 52e6ffd
+    (#16239)
+  * chore(deps): bump actions/github-script from 8.0.0 to 9.0.0
+    (#16257)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.25.4 to 2.26.0
+    (#16256)
+  * chore(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0
+    (#16252)
+  * chore(deps): bump helm.sh/helm/v4 from 4.1.3 to 4.1.4 (#16216)
+  * chore(deps): bump kumahq/kuma-gui to
+    2808fc3ad45716fa6a486e16b98267cd5f818318 (#16181)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.88.1 to 1.97.3 (#16148)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/service/lambda
+    from 1.77.4 to 1.88.5 (#16147)
+  * chore(deps): bump
+    github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs from 1.58.0
+    to 1.65.0 (#16145)
+  * chore(deps): bump kumahq/kuma-gui to
+    39e776acb6254da28d97a70c41999fb965097b23 (#16125)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16115)
+  * chore(deps): bump registry.k8s.io/pause to ee6521f (#16110)
+  * chore(deps): bump opentelemetry-go monorepo (#16121)
+  * chore(deps/dev): bump actionlint from 1.7.11 to 1.7.12 (#16117)
+  * chore(deps): bump google.golang.org/grpc from 1.79.3 to 1.80.0
+    (#16120)
+  * chore(deps): bump regclient/actions: from 7c7e6f0 to f07124f
+    (#16114)
+  * chore(deps): bump reviewdog/action-actionlint from 1.71.0 to
+    1.72.0 (#16122)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    462ad14 to 450ba7a (#16111)
+  * chore(deps): bump marocchino/sticky-pull-request-comment from
+    3.0.2 to 3.0.3 (#16116)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from bce0ec7 to 6210f84 (#16118)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    d00831a to 9d38bb4 (#16112)
+  * chore(deps): bump k8s.io/kube-openapi from 5883c5e to 16be699
+    (#16113)
+  * chore(deps/dev): bump buf from 1.66.1 to 1.67.0 (#16123)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.25.1 to 2.25.4
+    (#16119)
+  * chore(deps): bump kumahq/kuma-gui to
+    d220980407b84e4d21f8555db5b229eeeb9623d2 (#16103)
+  * chore(deps): bump kumahq/.github: from 30a74b0 to d266a51
+    (#16100)
+  * chore(deps): bump kumahq/kuma-gui to
+    ad8ab1a80c71b6c6d31f17aae10de3b9c738b614 (#16079)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 6c9615a to bce0ec7 (#16037)
+  * chore(deps): bump kumahq/kuma-gui to
+    ff30c6993c8ddd7d794c5e47fb483f9c29212721 (#16045)
+  * chore(deps): bump kumactl install demo|observability images
+    (#16036)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    bd6c598 to 462ad14 (#16035)
+  * chore(deps/dev): bump yq from 4.52.4 to 4.52.5 (#16039)
+  * chore(deps/dev): bump skaffold from 2.18.1 to 2.18.2 (#16038)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.24.0 to 2.25.1
+    (#16040)
+  * chore(deps): bump github/codeql-action from 4.34.1 to 4.35.1
+    (#16031)
+  * chore(deps): bump kumahq/kuma-gui to
+    7a863ee88de7b59b5259a9f73dd697defae2a4f7 (#16026)
+  * chore(deps): bump kumahq/.github: from cef9faf to 30a74b0
+    (#16013)
+  * chore(deps): bump sigs.k8s.io/gateway-api from 1.5.0 to 1.5.1
+    (#15948)
+  * chore(deps): bump kumahq/kuma-gui to
+    5ecb52407568153b5bd68d2ac59b216117b6ce71 (#15992)
+  * chore(deps): bump kumahq/kuma-gui to
+    26ccc5ce20287bda6359cbde400d883cbb8adaec (#15971)
+  * chore(deps): bump coredns to v1.14.2 (#15975)
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.9.0 to 5.9.1
+    (#15965)
+  * chore(deps): bump kubernetes monorepo from 0.35.2 to 0.35.3
+    (#15947)
+  * chore(deps/dev): bump kube-linter from 0.8.1 to 0.8.3 (#15968)
+  * chore(deps): bump jdx/mise-action from 4.0.0 to 4.0.1 (#15967)
+  * chore(deps): bump golangci-lint from 2.11.3 to 2.11.4 (#15966)
+  * chore(deps): bump regclient/actions: from 9f6c88d to 7c7e6f0
+    (#15964)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.2 to
+    1.14.4 (#15943)
+  * chore(deps): bump kubectl from 1.35.2 to 1.35.3 (#15946)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 37c380b to 6c9615a (#15949)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.2 to
+    1.14.4 (#15944)
+  * chore(deps): bump github.com/containernetworking/plugins from
+    1.9.0 to 1.9.1 (#15945)
+  * chore(deps): bump redis: from 1c054d5 to 315270d (#15941)
+  * chore(deps): bump k8s.io/utils from b8788ab to 28399d8 (#15939)
+  * chore(deps): bump kindest/node from 1.31.14 to 1.35.1 (#15954)
+  * chore(deps): bump k8s.io/kube-openapi from 5b3e3fd to 5883c5e
+    (#15938)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    89d4405 to bd6c598 (#15936)
+  * chore(deps/dev): bump skaffold from 2.18.0 to 2.18.1 (#15950)
+  * chore(deps): bump debian from 13.3 to 13.4 (#15951)
+  * chore(deps/dev): bump protoc from 34.0 to 34.1 (#15956)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.21.1 to 2.24.0
+    (#15955)
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.8.0 to 5.9.0
+    (#15952)
+  * chore(deps): bump postgres:latest from 69e8582 to a9abf42
+    (#15940)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    84a4fc4 to d00831a (#15937)
+  * chore(deps): bump nick-fields/retry from 3.0.2 to 4.0.0
+    (#15957)
+  * chore(deps): bump github/codeql-action from 4.32.6 to 4.34.1
+    (#15953)
+  * chore(deps): bump actions/cache from 5.0.3 to 5.0.4 (#15942)
+  * chore(deps): bump sigs.k8s.io/gateway-api from 1.4.1 to 1.5.0
+    (#15734)
+  * chore(deps): bump github.com/envoyproxy/go-control-plane*
+    (#15930)
+  * chore(deps): bump kumahq/kuma-gui to
+    acd661ce7b66d311fed347369860f7a12fa4f1ba (#15925)
+  * chore(deps): bump kumahq/kuma-gui to
+    080fabd4be1017ecf6a7532b0c20e876e3d2070c (#15886)
+  * chore(deps): upgrade envoy from v1.37.0 to 1.37.1 (#15905)
+  * chore(deps): bump github.com/buger/jsonparser from 1.1.1 to
+    1.1.2 (#15904)
+  * chore(deps): bump opentelemetry-go monorepo (#15893)
+  * chore(deps): bump kumahq/kuma-gui to
+    f0b1dc4325062fe5872587e840aa2ebc0ef1f555 (#15871)
+  * chore(deps): security update (#15874)
+  * chore(deps): bump kumahq/kuma-gui to
+    a28d4f23848a961ee273e9d72f68ca4d89c35ebd (#15869)
+  * chore(deps): bump helm from 4.1.1 to 4.1.3 (#15822)
+  * chore(deps): bump opentelemetry-go monorepo (#15257)
+  * chore(deps): bump kumahq/kuma-gui to
+    414459278b0974be03f40a290238fc18504d93ad (#15842)
+  * chore(deps): bump go.opentelemetry.io/proto/otlp from 1.9.0 to
+    1.10.0 (#15827)
+  * chore(deps): bump golangci-lint from 2.11.2 to 2.11.3 (#15820)
+  * chore(deps): bump golang.org/x/exp from 3dfff04 to 7ab1446
+    (#15814)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.20.4 to 2.21.1
+    (#15831)
+  * chore(deps): bump actions/download-artifact from 8.0.0 to 8.0.1
+    (#15818)
+  * chore(deps): bump github.com/testcontainers/testcontainers-go
+    from 0.40.0 to 0.41.0 (#15826)
+  * chore(deps): bump kumahq/kuma-gui to
+    e34eb696942b0847822731a236405af5b179e2fd (#15810)
+  * chore(deps): bump grafana/grafana from 12.4.0 to 12.4.1
+    (#15821)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from ea483b9 to 37c380b (#15824)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    a57be14 to 84a4fc4 (#15815)
+  * chore(deps): bump regclient/actions: from c1f0aeb to 9f6c88d
+    (#15816)
+  * chore(deps/dev): bump buf from 1.66.0 to 1.66.1 (#15823)
+  * chore(deps): bump golang.org/x/tools from 0.42.0 to 0.43.0
+    (#15830)
+  * chore(deps/dev): bump skaffold from 2.17.3 to 2.18.0 (#15832)
+  * chore(deps): bump actions/create-github-app-token from 2.2.1 to
+    3.0.0 (#15833)
+  * chore(deps): bump dorny/paths-filter from 3.0.2 to 4.0.1
+    (#15834)
+  * chore(deps): bump jdx/mise-action from 3.6.3 to 4.0.0 (#15835)
+  * chore(deps): bump marocchino/sticky-pull-request-comment from
+    2.9.4 to 3.0.2 (#15836)
+  * chore(deps/dev): bump kube-linter from 0.7.6 to 0.8.2 (#15331)
+  * chore(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+    (#15778)
+  * chore(deps): bump kumahq/kuma-gui to
+    7e4339976bbc68058ce5d89821ffb63e6657866c (#15804)
+  * chore(deps): bump k8s.io/kube-openapi from a19766b to 5b3e3fd
+    (#15764)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.1 to
+    1.14.2 (#15767)
+  * chore(deps): bump kumahq/kuma-gui to
+    f6a2b1ca8e8986353233db97a56efcedbfed169f (#15792)
+  * chore(deps/dev): bump go from 1.26.0 to 1.26.1 (#15773)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from e4c1c38 to ea483b9 (#15772)
+  * chore(deps): bump github.com/cilium/ebpf from 0.20.0 to 0.21.0
+    (#15777)
+  * chore(deps/dev): bump skaffold from 2.17.2 to 2.17.3 (#15775)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.23.1 to
+    0.23.3 (#15771)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.1 to
+    1.14.2 (#15766)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    51500d9 to 89d4405 (#15763)
+  * chore(deps): bump golang.org/x/sys from 0.41.0 to 0.42.0
+    (#15779)
+  * chore(deps): bump opentelemetry-go-contrib monorepo from 0.65.0
+    to 0.67.0 (#15783)
+  * chore(deps): bump k8s.io/klog/v2 from 2.130.1 to 2.140.0
+    (#15781)
+  * chore(deps): bump regclient/actions: from da9319d to c1f0aeb
+    (#15765)
+  * chore(deps): bump jdx/mise-action from 3.6.1 to 3.6.3 (#15770)
+  * chore(deps): bump endersonmenezes/free-disk-space from 3.1.0 to
+    3.2.2 (#15776)
+  * chore(deps): bump github/codeql-action from 4.32.4 to 4.32.6
+    (#15768)
+  * chore(deps): bump golangci-lint from 2.10.1 to 2.11.2 (#15780)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.20.2 to 2.20.4
+    (#15774)
+  * chore(deps): security update (#15788)
+  * chore(deps): bump
+    Kong/public-shared-actions/security-actions/scan-docker-image
+    from 6.0.1 to 6.1.0 (#15782)
+  * chore(deps): bump kumahq/kuma-gui to
+    41874f3a787a8efd27fede9d6feb824be4d51afd (#15749)
+  * chore(deps): bump kumahq/ci-tools from v1.4.4 to v1.4.5
+    (#15754)
+  * chore(deps): bump kumahq/kuma-gui to
+    a346f129dcd5b19e33083a7a5ce573ca8920632c (#15747)
+  * chore(deps): bump kumahq/kuma-gui to
+    1ad97df01e4c3be26bb32729c54f1a4fbe5e14a4 (#15746)
+  * chore(deps/dev): bump protoc-gen-validate from 1.3.0 to 1.3.3
+    (#15669)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.20.0 to 2.20.2
+    (#15744)
+  * chore(deps): bump github.com/envoyproxy/protoc-gen-validate
+    from 1.3.0 to 1.3.3 (#15664)
+  * chore(deps/dev): bump protoc from 33.5 to 34.0 (#15738)
+  * chore(deps): bump kumahq/kuma-gui to
+    55bd4dc28422ed8272099d7fc740f3313d9961e5 (#15742)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 80d56e7 to e4c1c38 (#15668)
+  * chore(deps): bump golang.org/x/net from 0.50.0 to 0.51.0
+    (#15740)
+  * chore(deps): bump kumahq/kuma-gui to
+    a31919b87cf6dd6a9cae4590351f10c69d2d2065 (#15739)
+  * chore(deps): bump debian:13.3 from 2c91e48 to 3615a74 (#15725)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    cd5119e to 51500d9 (#15726)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    2f722ef to a57be14 (#15727)
+  * chore(deps): bump redis: from 5cb00b0 to 1c054d5 (#15729)
+  * chore(deps): bump postgres:latest from b6b4d0b to 69e8582
+    (#15728)
+  * chore(deps): bump kubernetes packages from 0.35.1 to 0.35.2
+    (#15731)
+  * chore(deps/dev): bump
+    oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen from 2.5.1 to
+    2.6.0 (#15736)
+  * chore(deps): bump GitHub Artifact Actions (#15737)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.19.1 to 2.20.0
+    (#15732)
+  * chore(deps): bump github.com/josephburnett/jd/v2 from 2.4.0 to
+    2.5.0 (#15733)
+  * chore(deps/dev): bump buf from 1.65.0 to 1.66.0 (#15735)
+  * chore(deps): bump kubectl from 1.35.1 to 1.35.2 (#15730)
+  * chore(deps): bump kumahq/kuma-gui to
+    17fc659a5309d20e4dd29f04ccbbf068c4e2e380 (#15721)
+  * chore(deps): bump github.com/gruntwork-io/terratest from 0.55.0
+    to 0.56.0 (#15610)
+  * chore(deps): bump kumahq/kuma-gui to
+    d7d205a513f1029201e62d8183013ab82d858858 (#15707)
+  * chore(deps): bump kumahq/kuma-gui to
+    094d2d6695ef002b94134571fffec31f0a778367 (#15705)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15666)
+  * chore(deps): bump kumahq/kuma-gui to
+    31f4376ac415afd6df94b803778bb87654ef30a8 (#15702)
+  * chore(deps): bump golang.org/x/exp from 81e46e3 to 3dfff04
+    (#15661)
+  * chore(deps): bump golangci-lint from 2.9.0 to 2.10.1 (#15670)
+  * chore(deps): bump regclient/actions: from 6c6b758 to da9319d
+    (#15663)
+  * chore(deps): bump kumahq/kuma-gui to
+    4f08552a701e49edffc7a311ac5f200b80086f40 (#15658)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    4cfbd41 to 2f722ef (#15662)
+  * chore(deps): bump reviewdog/action-actionlint from 1.70.0 to
+    1.71.0 (#15671)
+  * chore(deps): bump projectcalico/tigera-operator from 3.31.3 to
+    3.31.4 (#15667)
+  * chore(deps): bump github/codeql-action from 4.32.3 to 4.32.4
+    (#15665)
+  * chore(deps): bump kumahq/ci-tools from v1.4.3 to v1.4.4
+    (#15686)
+  * chore(deps): bump npm:@redocly/cli from 2.18.1 to 2.19.1
+    (#15647)
+  * chore(deps): bump kumahq/kuma-gui to
+    3876096bcc4d956d16e5b7eb2ce1915d43b96ad2 (#15645)
+  * chore(deps): bump kumahq/kuma-gui to
+    2f3283caa15e9ae79d0194ba710f5cccff40499b (#15636)
+  * chore(deps): security update (#15638)
+  * chore(deps): bump filippo.io/edwards25519 from 1.1.0 to 1.1.1
+    (#15643)
+  * chore(deps): bump kumahq/kuma-gui to
+    d6fded5e7e501e3f09c4098dd78b994fa3ca96c9 (#15630)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables from 0.8.8
+    to 0.9.0 (#15633)
+  * chore(deps): bump kumahq/kuma-gui to
+    4baaf7c7344673f3279e783a249082a6787d244f (#15626)
+  * chore(deps): bump kumahq/kuma-gui to
+    503caf28ec13985ad4249b523577c49f13086952 (#15624)
+  * chore(deps/dev): bump go from 1.25.7 to 1.26.0 (#15621)
+  * chore(deps): bump kumahq/kuma-gui to
+    4b4cabfa63ae68c8791bbcd0c54fb4692e18e697 (#15622)
+  * chore(deps): bump golang.org/x/exp from 716be56 to 81e46e3
+    (#15593)
+  * chore(deps/dev): bump controller-tools/cmd/controller-gen from
+    0.20.0 to 0.20.1 (#15607)
+  * chore(deps): bump helm from 4.1.0 to 4.1.1 (#15600)
+  * chore(deps/dev): bump skaffold from 2.17.1 to 2.17.2 (#15608)
+  * chore(deps): bump
+    gcr.io/distroless/base-nossl-debian12:debug-nonroot from
+    b9a1ed9 to 6cca41b (#15589)
+  * chore(deps): bump golang.org/x/tools from 0.41.0 to 0.42.0
+    (#15613)
+  * chore(deps): bump k8s.io/utils from 914a6e7 to b8788ab (#15595)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    546029d to 4cfbd41 (#15594)
+  * chore(deps): bump gcr.io/distroless/base-nossl-debian12:debug
+    from 9e9eb25 to eacaa3a (#15588)
+  * chore(deps/dev): bump npm:@redocly/cli from 2.16.0 to 2.18.1
+    (#15617)
+  * chore(deps): bump kumahq/kuma-gui to
+    75f718cf53aaf08713acf31a3dccd5394714e65b (#15618)
+  * chore(deps): bump kumahq/.github: from a7fab21 to cef9faf
+    (#15582)
+  * chore(deps): bump postgres:latest from 1090bc3 to b6b4d0b
+    (#15596)
+  * chore(deps): bump kubectl from 1.35.0 to 1.35.1 (#15601)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables from 0.8.7
+    to 0.8.8 (#15598)
+  * chore(deps): bump github/codeql-action from 4.32.2 to 4.32.3
+    (#15599)
+  * chore(deps): bump
+    gcr.io/distroless/static-debian12:debug-nonroot from eb35063 to
+    afead12 (#15590)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15603)
+  * chore(deps/dev): bump actionlint from 1.7.10 to 1.7.11 (#15605)
+  * chore(deps): bump google.golang.org/grpc from 1.78.0 to 1.79.1
+    (#15615)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    d3d4d8e to cd5119e (#15592)
+  * chore(deps): bump sigs.k8s.io/controller-tools from 0.20.0 to
+    0.20.1 (#15604)
+  * chore(deps/dev): bump yq from 4.52.2 to 4.52.4 (#15609)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 8ebd0ff to 80d56e7 (#15606)
+  * chore(deps): bump kubernetes packages from 0.35.0 to 0.35.1
+    (#15602)
+  * chore(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+    (#15611)
+  * chore(deps): bump golangci-lint from 2.8.0 to 2.9.0 (#15614)
+  * chore(deps): bump regclient/actions: from 148669f to 6c6b758
+    (#15597)
+  * chore(deps): bump kumahq/kuma-gui to
+    5ad081ef001844f55cf8dcf5e8fec0dae10930f2 (#15536)
+  * chore(deps/dev): bump grpc-go/protoc-gen-go-grpc from 1.6.0 to
+    1.6.1 (#15558)
+  * chore(deps): bump golang.org/x/sys from 0.40.0 to 0.41.0
+    (#15559)
+  * chore(deps): bump postgres:latest from 5773fe7 to 1090bc3
+    (#15554)
+  * chore(deps/dev): bump buf from 1.64.0 to 1.65.0 (#15561)
+  * chore(deps): bump opentelemetry-go-contrib monorepo from 0.64.0
+    to 0.65.0 (#15560)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15556)
+  * chore(deps): bump github/codeql-action from 4.32.0 to 4.32.2
+    (#15555)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    ce8ad4c to 546029d (#15553)
+  * chore(deps): bump github.com/cncf/xds/go from a486691 to
+    dba9d58 (#15552)
+  * chore(deps/dev): bump go from 1.25.6 to 1.25.7 (#15557)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    b7460c2 to d3d4d8e (#15551)
+  * chore(deps): bump debian:13.3 from 5cf544f to 2c91e48 (#15550)
+  * chore(deps): security update (#15546)
+  * chore(deps): upgrade kumahq/ci-tools from v1.4.2 to v1.4.3
+    (#15539)
+  * chore(deps): bump kumahq/kuma-gui to
+    04e4a449cfe6c0d28841b9b901b6b32fd0b8653f (#15533)
+  * chore(deps): bump kumahq/kuma-gui to
+    f1d27c85fe713f42ca34918f77e541a073b82fe4 (#15531)
+  * chore(deps): bump kumahq/kuma-gui to
+    d5f083ee6b77b8562ec29853f6e57f56d4722a08 (#15521)
+  * chore(deps): bump kumahq/kuma-gui to
+    2e770c5a3096b3fd33a47a9c4216352dc38e2d66 (#15514)
+  * chore(deps): bump kumahq/kuma-gui to
+    9184c5d56e4288d065c32a186907a873e0709ad0 (#15509)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    8e98ce8 to ce8ad4c (#15486)
+  * chore(deps/dev): bump protoc from 33.4 to 33.5 (#15497)
+  * chore(deps): bump ginkgo (#15494)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 82cc073 to 8ebd0ff (#15493)
+  * chore(deps): bump reviewdog/action-actionlint from 1.69.1 to
+    1.70.0 (#15496)
+  * chore(deps): bump github/codeql-action from 4.31.11 to 4.32.0
+    (#15495)
+  * chore(deps): bump github.com/golang-jwt/jwt/v5 from 5.3.0 to
+    5.3.1 (#15490)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.23.0 to
+    0.23.1 (#15492)
+  * chore(deps): bump actions/cache from 5.0.2 to 5.0.3 (#15489)
+  * chore(deps): bump k8s.io/kube-openapi from 4e65d59 to a19766b
+    (#15487)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    ccc0f37 to b7460c2 (#15485)
+  * chore(deps): bump github.com/onsi/gomega from 1.39.0 to 1.39.1
+    (#15491)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15488)
+  * chore(deps/dev): bump yq from 4.50.1 to 4.52.2 (#15498)
+  * chore(deps): upgrade coredns version from v1.13.1 to 1.14.1
+    (#15483)
+  * chore(deps): security update (#15480)
+  * chore(deps): bump debian from 13.2 to 13.3 (#15393)
+  * chore(deps): bump envoy from 1.36.4 to 1.37.0 (#15446)
+  * chore(deps): bump kumahq/kuma-gui to
+    643bfaedafc237aafd17f5c7e1e8d2f52b19c192 (#15459)
+  * chore(deps): bump kumahq/kuma-gui to
+    07b75bcd5dbbabc7f90e0f12c965c7916a6eb0ab (#15444)
+  * chore(deps): bump postgres:latest from bfe50b2 to 5773fe7
+    (#15384)
+  * chore(deps/dev): bump buf from 1.63.0 to 1.64.0 (#15428)
+  * chore(deps): bump kumahq/kuma-gui to
+    17635fb4675d087e120a8e526b72bdd48385c10b (#15375)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables from 0.8.6
+    to 0.8.7 (#15421)
+  * chore(deps): bump sigs.k8s.io/controller-runtime from 0.22.4 to
+    0.23.0 (#15427)
+  * chore(deps): bump peter-evans/create-pull-request from 8.0.0 to
+    8.1.0 (#15426)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from aebc15d to 82cc073 (#15425)
+  * chore(deps): bump jdx/mise-action from 3.6.0 to 3.6.1 (#15424)
+  * chore(deps): bump github/codeql-action from 4.31.10 to 4.31.11
+    (#15423)
+  * chore(deps): bump github.com/miekg/dns from 1.1.70 to 1.1.72
+    (#15422)
+  * chore(deps): bump actions/checkout from 6.0.1 to 6.0.2 (#15420)
+  * chore(deps): bump github.com/cncf/xds/go from ee656c7 to
+    a486691 (#15419)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.14.0 to
+    1.14.1 (#15387)
+  * chore(deps): bump golang.org/x/exp from 944ab1f to 716be56
+    (#15381)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    0a764e5 to 8e98ce8 (#15382)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15383)
+  * chore(deps): bump regclient/actions: from 109c465 to 148669f
+    (#15385)
+  * chore(deps): bump actions/cache from 5.0.1 to 5.0.2 (#15386)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.14.0 to
+    1.14.1 (#15388)
+  * chore(deps): bump github/codeql-action from 4.31.9 to 4.31.10
+    (#15389)
+  * chore(deps): bump helm from 4.0.4 to 4.1.0 (#15390)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 0c3a910 to aebc15d (#15391)
+  * chore(deps/dev): bump go from 1.25.5 to 1.25.6 (#15392)
+  * chore(deps): bump github.com/exaring/otelpgx from 0.9.4 to
+    0.10.0 (#15394)
+  * chore(deps): bump github.com/gruntwork-io/terratest from 0.54.0
+    to 0.55.0 (#15395)
+  * chore(deps): bump github.com/josephburnett/jd/v2 from 2.3.1 to
+    2.4.0 (#15396)
+  * chore(deps): bump golang.org/x/tools from 0.40.0 to 0.41.0
+    (#15398)
+  * chore(deps): bump jdx/mise-action from 3.5.1 to 3.6.0 (#15399)
+  * chore(deps): bump kumahq/kuma-gui to
+    bd08e50692ee7b3376b9d4026446d90345ff74f1 (#15374)
+  * chore(deps): bump golang.org/x/text from 0.32.0 to 0.33.0
+    (#15368)
+  * chore(deps/dev): bump protoc from 33.2 to 33.4 (#15372)
+  * chore(deps): bump github.com/onsi/gomega from 1.38.3 to 1.39.0
+    (#15366)
+  * chore(deps/dev): bump skaffold from 2.17.0 to 2.17.1 (#15365)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from adb6465 to 0c3a910 (#15364)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15363)
+  * chore(deps): bump github.com/prometheus/common from 0.67.4 to
+    0.67.5 (#15362)
+  * chore(deps): bump github.com/miekg/dns from 1.1.69 to 1.1.70
+    (#15361)
+  * chore(deps): bump regclient/actions: from 1b705e3 to 109c465
+    (#15359)
+  * chore(deps): bump k8s.io/utils from 718f0e5 to 914a6e7 (#15358)
+  * chore(deps): bump
+    gcr.io/k8s-staging-build-image/distroless-iptables:v0.8.6 from
+    4e0a77d to 8366c73 (#15357)
+  * chore(deps): bump
+    gcr.io/distroless/static-debian12:debug-nonroot from 53ced32 to
+    eb35063 (#15356)
+  * chore(deps): bump
+    gcr.io/distroless/base-nossl-debian12:debug-nonroot from
+    ef70836 to b9a1ed9 (#15355)
+  * chore(deps): bump gcr.io/distroless/base-nossl-debian12:debug
+    from 1321f45 to 9e9eb25 (#15354)
+  * chore(deps): bump kubectl from 1.34.3 to 1.35.0 (#15371)
+  * chore(deps): bump gonum.org/v1/gonum from 0.16.0 to 0.17.0
+    (#15370)
+  * chore(deps): bump golang.org/x/sys from 0.39.0 to 0.40.0
+    (#15367)
+  * chore(deps): bump golangci-lint from 2.7.2 to 2.8.0 (#15369)
+  * chore(deps): bump ginkgo from 2.27.3 to 2.27.5 (#15360)
+  * chore(deps): bump sigs.k8s.io/controller-tools from 0.19.0 to
+    0.20.0 (#15328)
+  * chore(deps): bump kumahq/kuma-gui to
+    ea998e6c7921e2562684164206eb2301b64d3900 (#15373)
+  * chore(deps): bump kumahq/kuma-gui to
+    9730c6f3706bb804b32eb877ca52a04583d39e6e (#15351)
+  * chore(deps): bump kumahq/kuma-gui to
+    3bd00a324d469cf3e1aec298c48c4bb871e37fc4 (#15349)
+  * chore(deps): bump ghcr.io/spiffe/spire-agent from 1.13.3 to
+    1.14.0 (#15286)
+  * chore(deps): bump regclient/actions: from 73d0a55 to 1b705e3
+    (#15343)
+  * chore(deps/dev): bump controller-tools/cmd/controller-gen from
+    0.19.0 to 0.20.0 (#15329)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    97cd9d5 to 0a764e5 (#15335)
+  * chore(deps): bump kubernetes packages from 0.34.3 to 0.35.0
+    (#15327)
+  * chore(deps): bump github.com/josephburnett/jd/v2 from 2.3.0 to
+    2.3.1 (#15336)
+  * chore(deps/dev): bump kubectl from 1.34.3 to 1.35.0 (#15326)
+  * chore(deps): bump github/codeql-action from 4.31.7 to 4.31.9
+    (#15337)
+  * chore(deps): bump github.com/jackc/pgx/v5 from 5.7.6 to 5.8.0
+    (#15338)
+  * chore(deps): bump google.golang.org/grpc from 1.77.0 to 1.78.0
+    (#15339)
+  * chore(deps): bump debian:13.2 from 0d01188 to c71b05e (#15340)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15342)
+  * chore(deps/dev): bump actionlint from 1.7.9 to 1.7.10 (#15344)
+  * chore(deps): bump kumahq/.github: from 717d2c4 to a7fab21
+    (#15347)
+  * chore(deps): bump postgres:latest from 38d5c9d to bfe50b2
+    (#15341)
+  * chore(deps/dev): bump buf from 1.61.0 to 1.63.0 (#15345)
+  * chore(deps): bump kumahq/kuma-gui to
+    e60fe3fe6781be4ee928cf22c6f448bb930c4dcb (#15346)
+  * chore(deps/dev): bump controller-runtime/tools/setup-envtest
+    from 607e772 to adb6465 (#15324)
+  * chore(deps/dev): bump container-structure-test from 1.22.0 to
+    1.22.1 (#15323)
+  * chore(deps): bump projectcalico/tigera-operator from 3.31.2 to
+    3.31.3 (#15322)
+  * chore(deps): bump github/codeql-action from 4.31.6 to 4.31.7
+    (#15321)
+  * chore(deps): bump regclient/actions: from 3bf6918 to 73d0a55
+    (#15320)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15319)
+  * chore(deps): bump k8s.io/utils from bc988d5 to 718f0e5 (#15318)
+  * chore(deps): bump kumahq/kuma-gui to
+    dc2b501c22a6d0d5cbaa73b0f35777849388f833 (#15313)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    9c4e99b to ccc0f37 (#15316)
+  * chore(deps): bump golang.org/x/exp from 8475f28 to 944ab1f
+    (#15317)
+  * chore(deps/dev): bump kind from 0.30.0 to 0.31.0 (#15330)
+  * chore(deps): bump kumahq/kuma-gui to
+    8091d9adbde195aefcff4427179c59ee2fe69ffa (#15312)
+  * chore(deps): bump kumahq/kuma-gui to
+    bc578f9169c0804febab9bf476942d48930cbc31 (#15311)
+  * chore(deps): bump kumahq/kuma-gui to
+    f0fb258910711dfba36c9fe3b8647a69095c0e0e (#15263)
+  * chore(deps): bump ci-tools/release-tool from 1.4.1 to 1.4.2
+    (#15332)
+  * chore(deps): bump ci-tools/release-tool from 1.4.0 to 1.4.1
+    (#15315)
+  * chore(deps): bump ci-tools/release-tool from 1.3.1 to 1.4.0
+    (#15314)
+  * chore(deps): bump kumahq/kuma-gui to
+    1847a769eab6295a2a710929ccdc0b26643b67e3 (#15310)
+  * chore(deps): bump kumahq/kuma-gui to
+    de10208ce61b47a6a5db5cb6ab2d675056f2417c (#15306)
+  * chore(deps): bump github.com/cncf/xds/go from 8bfbf64 to
+    ee656c7 (#15273)
+  * chore(deps/dev): bump yq from 4.49.2 to 4.50.1 (#15289)
+  * chore(deps/dev): bump protobuf-go/protoc-gen-go from 1.36.10 to
+    1.36.11 (#15284)
+  * chore(deps): bump kumahq/kuma-gui to
+    a97f64cda3b51067c699afa345a0a4504ee68743 (#15305)
+  * chore(deps): bump ginkgo from 2.27.2 to 2.27.3 (#15276)
+  * chore(deps): bump google.golang.org/genproto/googleapis/* from
+    ff82c1b to 97cd9d5 (#15274)
+  * chore(deps): bump google.golang.org/protobuf from 1.36.10 to
+    1.36.11 (#15281)
+  * chore(deps): bump peter-evans/create-pull-request from 7.0.11
+    to 8.0.0 (#15292)
+  * chore(deps): bump kumactl install demo|observability images
+    (#15283)
+  * chore(deps): bump github.com/onsi/gomega from 1.38.2 to 1.38.3
+    (#15279)
+  * chore(deps): bump github.com/exaring/otelpgx from 0.9.3 to
+    0.9.4 (#15277)
+  * chore(deps): bump github.com/miekg/dns from 1.1.68 to 1.1.69
+    (#15278)
+  * chore(deps): bump kumahq/kuma-gui to
+    a596526e45ac18efbf8e99c3cad42bff285aa2e8 (#15264)
+  * chore(deps): bump GitHub Artifact Actions (#15291)
+  * chore(deps): bump actions/cache from 4.3.0 to 5.0.1 (#15290)
+  * chore(deps): bump endersonmenezes/free-disk-space from 3.0.0 to
+    3.1.0 (#15285)
+  * chore(deps): bump helm from 4.0.2 to 4.0.4 (#15282)
+  * chore(deps): bump regclient/actions: from 1ea6cfd to 3bf6918
+    (#15275)
+  * chore(deps): bump ghcr.io/kumahq/ubuntu-netools:main from
+    5413786 to 9c4e99b (#15272)
+  * chore(deps): bump debian:13.2 from 8f6a88f to 0d01188 (#15271)
+  * chore(deps): bump ghcr.io/spiffe/spire-server from 1.13.3 to
+    1.14.0 (#15287)
+  * chore(deps): bump github/codeql-action from 4.31.5 to 4.31.6
+    (#15280)
+  * chore(deps): bump dependencies (#15270)
+
+-------------------------------------------------------------------
 Mon Jun 08 04:54:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.13.8:
