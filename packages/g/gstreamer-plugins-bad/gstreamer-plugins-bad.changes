@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:09:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + ahcsrc: Register exposure-mode property for GstPhotography
+    interface
+  + amc: Don't try printing NULL caps
+  + amcvideodec: Don't keep crop-rectangle uninitialized if not
+    specified
+  + androidmedia: Add various new codec mime / profile mappings
+  + androidmedia: Don't print error logs if downstream returns
+    flushing / EOS
+  + androidmedia: Fix typo in error message
+  + androidmedia: support decoding flac
+  + av1parser: Fix bytes/bits confusion when parsing tile data size
+  + camerabin: Fix caps negotiation when starting video capture
+  + d3d12decoder: Fix decoding on Qualcomm GPUs
+  + mpegtspacketizer: Do not seek before the first PCR
+  + mxfdemux: Use unsigned integers in more places and don't
+    truncate 64 bit integers
+  + svtav1enc: Scale MDCV and CLL to SVT-AV1's expected units
+  + va: drm: Fix fd leak and return type in create_va_display
+  + vajpegdecoder: Validate that enough data is available for the
+    current JPEG segment
+  + vulkanupload: Don't reallocate the pool when the framerate
+    changes
+  + wasapi2: Don't reset process loopback capture client
+  + wasapi2src hangs when using loopback-target-pid in
+    GStreamer 1.28 (regression from 1.26)
+  + tests: Fix build with glib <= 2.67.2
+  + meson: fix building -bad tests with disabled mse
+
+-------------------------------------------------------------------
 Tue May 12 07:06:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.3:
