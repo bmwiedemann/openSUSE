@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tornado6
-Version:        6.5.5
+Version:        6.5.7
 Release:        0
 Summary:        Open source version of scalable, non-blocking web server that power FriendFeed
 License:        Apache-2.0
@@ -27,9 +27,9 @@ Source:         https://files.pythonhosted.org/packages/source/t/tornado/tornado
 Source99:       python-tornado6-rpmlintrc
 # PATCH-FIX-OPENSUSE ignore-resourcewarning-doctests.patch -- ignore resource warnings on OBS
 Patch0:         ignore-resourcewarning-doctests.patch
-# PATCH-FIX-UPSTREAM fix-tests-with-curl-8-19.patch gh#tornadoweb/tornado@de5e943
-Patch1:         fix-tests-with-curl-8-19.patch
-BuildRequires:  %{python_module base >= 3.8}
+# PATCH-FIX-OPENSUSE increase compatibility with newer pycares versions
+Patch1:         pycares-getaddrinfo.patch
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycares}

@@ -1,8 +1,8 @@
-Index: tornado-6.5.5/tornado/util.py
+Index: tornado-6.5.7/tornado/util.py
 ===================================================================
---- tornado-6.5.5.orig/tornado/util.py
-+++ tornado-6.5.5/tornado/util.py
-@@ -441,5 +441,7 @@ else:
+--- tornado-6.5.7.orig/tornado/util.py
++++ tornado-6.5.7/tornado/util.py
+@@ -443,5 +443,7 @@ else:
  def doctests():
      # type: () -> unittest.TestSuite
      import doctest
@@ -10,10 +10,10 @@ Index: tornado-6.5.5/tornado/util.py
 +    warnings.simplefilter("ignore", ResourceWarning)
  
      return doctest.DocTestSuite()
-Index: tornado-6.5.5/tornado/httputil.py
+Index: tornado-6.5.7/tornado/httputil.py
 ===================================================================
---- tornado-6.5.5.orig/tornado/httputil.py
-+++ tornado-6.5.5/tornado/httputil.py
+--- tornado-6.5.7.orig/tornado/httputil.py
++++ tornado-6.5.7/tornado/httputil.py
 @@ -1295,6 +1295,8 @@ def encode_username_password(
  def doctests():
      # type: () -> unittest.TestSuite
@@ -23,10 +23,10 @@ Index: tornado-6.5.5/tornado/httputil.py
  
      return doctest.DocTestSuite(optionflags=doctest.ELLIPSIS)
  
-Index: tornado-6.5.5/tornado/iostream.py
+Index: tornado-6.5.7/tornado/iostream.py
 ===================================================================
---- tornado-6.5.5.orig/tornado/iostream.py
-+++ tornado-6.5.5/tornado/iostream.py
+--- tornado-6.5.7.orig/tornado/iostream.py
++++ tornado-6.5.7/tornado/iostream.py
 @@ -1613,5 +1613,7 @@ class PipeIOStream(BaseIOStream):
  
  def doctests() -> Any:

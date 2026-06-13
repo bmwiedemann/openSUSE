@@ -275,4 +275,45 @@
 </comment>
     <requestid>1338684</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>edfda8ebbffd85f2084e6521d25511a3</srcmd5>
+    <version>6.5.5</version>
+    <time>1774555645</time>
+    <user>anag_factory</user>
+    <comment>- add pycares-getaddrinfo.patch to increase compatibility with
+  newer pycares versions
+
+- Update to 6.4.2:</comment>
+    <requestid>1342193</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1b57247b708941c9aeb3b1d0b8067383</srcmd5>
+    <version>6.5.7</version>
+    <time>1781369108</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.5.7:
+  ## Security fixes
+  * CurlAsyncHTTPClient now fully resets the curl object before reusing it.
+    This prevents incorrectly reusing options from a previous request,
+    specifically including client SSL and credentials used for accessing
+    proxies.
+  * SimpleAsyncHTTPClient now strips the Authorization and Cookie headers
+    from the request when following a redirect to a different origin. This
+    matches the default behavior of CurlAsyncHTTPClient. Applications that
+    need different behavior here can set follow_redirects=False and handle
+    redirects manually. CVE-2026-49853
+  * SimpleAsyncHTTPClient now enforces max_body_size on the decompressed size
+    of the response, rather than the compressed size. This prevents a
+    denial-of-service attack via a very large compressed response.
+    CVE-2026-49855
+  * Fixed a bug in the C extension that could have read up to three bytes
+    past the end of an input array. CVE-2026-49854
+  * OpenIDMixin has improved parsing for the check_authentication response.
+  ## Bug fixes
+  * CurlAsyncHTTPClient has been updated to use non-deprecated APIs, avoiding
+    deprecation warnings with recent versions of pycurl.
+- Refreshed patch ignore-resourcewarning-doctests.patch
+- Drop patch fix-tests-with-curl-8-19.patch, merged upstream.</comment>
+    <requestid>1358805</requestid>
+  </revision>
 </revisionlist>
