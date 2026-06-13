@@ -1,21 +1,22 @@
---- paramiko-4.0.0.orig/tests/conftest.py	2025-08-04 01:21:13.000000000 +0200
-+++ paramiko-4.0.0/tests/conftest.py	2026-03-27 12:28:15.432058168 +0100
-@@ -4,7 +4,7 @@
- import threading
+Index: paramiko-5.0.0/tests/conftest.py
+===================================================================
+--- paramiko-5.0.0.orig/tests/conftest.py
++++ paramiko-5.0.0/tests/conftest.py
+@@ -5,9 +5,7 @@ import threading
  from pathlib import Path
  
+ import pytest
+-from icecream import ic
+-from icecream import install as install_ic
 -from invoke.vendor.lexicon import Lexicon
 +from lexicon import Lexicon
  
- import pytest
  from paramiko import (
-@@ -21,13 +21,6 @@
+     SFTP,
+@@ -23,10 +21,6 @@ from ._loop import LoopSocket
  from ._stub_sftp import StubServer, StubSFTPServer
  from ._util import _support
  
--from icecream import ic, install as install_ic
--
--
 -# Better print() for debugging - use ic()!
 -install_ic()
 -ic.configureOutput(includeContext=True)

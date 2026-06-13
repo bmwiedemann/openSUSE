@@ -839,4 +839,12 @@
     <comment></comment>
     <requestid>1343387</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>d6e38a16a99eed175292bae73444a56c</srcmd5>
+    <version>5.0.0</version>
+    <time>1781369148</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.0.0 (fixes CVE-2026-44405, bsc#1264225)</comment>
+    <requestid>1358968</requestid>
+  </revision>
 </revisionlist>

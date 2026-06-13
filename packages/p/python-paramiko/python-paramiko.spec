@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-paramiko
-Version:        4.0.0
+Version:        5.0.0
 Release:        0
 Summary:        SSH2 protocol library
 License:        LGPL-2.1-or-later
@@ -59,22 +59,8 @@ Emphasis is on using SSH2 as an alternative to SSL for making secure
 connections between python scripts.  All major ciphers and hash methods
 are supported.  SFTP client and server mode are both supported too.
 
-%package -n python-paramiko-doc
-Summary:        Documentation for %{name}
-Provides:       %{python_module paramiko-doc = %{version}}
-
-%description -n python-paramiko-doc
-This is a library for making SSH2 connections (client or server).
-Emphasis is on using SSH2 as an alternative to SSL for making secure
-connections between python scripts.  All major ciphers and hash methods
-are supported.  SFTP client and server mode are both supported too.
-
-This package contains the documentation.
-
 %prep
 %autosetup -p1 -n paramiko-%{version}
-# Fix non-executable script rpmlint issue:
-find demos -name "*.py" -exec sed -i "/#\!\/usr\/bin\/.*/d" {} \; -exec chmod -x {} \;
 
 %build
 %pyproject_wheel
@@ -97,9 +83,5 @@ rm tests/test_transport.py
 %doc README.rst
 %{python_sitelib}/paramiko
 %{python_sitelib}/paramiko-%{version}*-info
-
-%files -n python-paramiko-doc
-%license LICENSE
-%doc demos/
 
 %changelog

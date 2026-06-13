@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:31:34 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 5.0.0 (fixes CVE-2026-44405, bsc#1264225)
+  * [Feature]: Added a new, optional file_format keyword argument to
+    PKey.write_private_key and PKey.write_private_key_file to allow writing
+    out OpenSSH-style private key files in addition to the legacy PEM format.
+  * [Bug]: Added a password kwarg to PKey.from_type_string so it can handle
+    encrypted keys like most other PKey constructors already could.
+  * [Bug]: Fix Ed25519Key’s internals such that it no longer throws
+    AttributeError during calls to __repr__ when only partly initialized. This
+    isn’t a normal runtime problem (it only happens inside error handling for
+    fatal errors like “not a valid private key”) but was perennially
+    complicating test failure diagnosis and similar scenarios.
+  * [Support]: Removed the demos/ folder; they’ve become too big a support
+    burden and we’ve wanted to remove them for years.
+  * [Support]: Renamed PKey.from_path’s passphrase argument to password so
+    it’s consistent with all the other methods of instantiating PKey objects.
+  * [Support]: Removed support for verifying/signing with RSA keys using SHA-1
+    hashing. Generally, this means most cases where "ssh-rsa" was used as an
+    algorithm identifier (as opposed to a key material identifier) will no
+    longer accept that string as valid, and the relevant code that actually
+    used eg hashes.SHA1 no longer does.
+  * [Support]: Removed support for key exchange using SHA-1, meaning the kex
+    methods diffie-hellman-group-exchange-sha1, diffie-hellman-group14-sha1,
+    and diffie-hellman-group1-sha1 are now gone. Implementing classes have
+    been removed/merged/shuffled as required.
+  * [Support]: Removed GSSAPI support, as the current (buggy, no longer easily
+    testable in CI, poorly understood and not used by the core team)
+    implementation is SHA-1 based and no SHA-256 upgrade appeared to be
+    forthcoming from contributors.
+  * [Support]: Raised the minimum modulus size in
+    diffie-hellman-group-exchange-sha256 key exchange from 1024 (the original
+    spec’s minimum) to 2048 (the contemporary minimum according to RFC 9142,
+    and matching a similar change by OpenSSH ten years ago in 7.2 / 2016).
+  * [Support]: The PKey class family tree reorganized the write_private_key and
+    write_private_key_file methods; with other recent changes, having individual
+    implementations on the child classes made no sense, so key writing is now
+    implemented in PKey itself and the included child classes such as ECDSAKey
+    no longer define their own such methods, instead simply exposing their
+    underlying cryptographic private key objects as .private_key.
+- drop python-paramiko-doc subpackage as demos are no longer included
+
+-------------------------------------------------------------------
 Fri Mar 27 11:31:39 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to 4.0.0:
