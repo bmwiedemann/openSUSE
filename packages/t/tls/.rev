@@ -177,4 +177,12 @@
   TCL_PACKAGE_PATH from a Tcl list to a colon-separated Unix path.</comment>
     <requestid>1202912</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>89b67230e7c43faaeb33e8f855474d0b</srcmd5>
+    <version>2.0</version>
+    <time>1781369250</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1359041</requestid>
+  </revision>
 </revisionlist>

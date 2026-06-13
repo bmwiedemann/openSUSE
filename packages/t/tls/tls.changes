@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 29 14:59:40 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to version 2.0:
+  https://core.tcl-lang.org/tcltls/timeline
+- Obsoleted patches:
+  * certs-tests.patch
+  * cipher-tests.patch
+  * fall-through.patch
+  * hostname-tests.patch
+  * openssl3.patch
+
+-------------------------------------------------------------------
 Tue Sep 24 10:58:59 UTC 2024 - Reinhard Max <max@suse.com>
 
 - Fix build with tcl 8.6.15 by working around the change of
@@ -134,7 +146,6 @@ Fri Feb 27 16:28:47 CET 2004 - max@suse.de
 - New version: 1.5.0
 
 -------------------------------------------------------------------
-
 Wed Feb 25 16:58:57 CET 2004 - hmacht@suse.de
  
 - building as non-root (# norootforbuild)

@@ -1,7 +1,7 @@
 #
 # spec file for package tls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,14 @@
 
 
 Name:           tls
-Version:        1.7.22
+Version:        2.0
 Release:        0
 Summary:        Tcl Binding for the OpenSSL Library
 License:        BSD-3-Clause
 Group:          Development/Libraries/Tcl
 URL:            https://core.tcl-lang.org/tcltls
-Source0:        https://core.tcl-lang.org/tcltls/uv/tcltls-%{version}.tar.gz
-Patch0:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/hostname-tests.patch
-Patch1:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/cipher-tests.patch
-Patch2:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/certs-tests.patch
-Patch3:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/fall-through.patch
-Patch4:         https://salsa.debian.org/tcltk-team/tcltls/-/raw/master/debian/patches/openssl3.patch
+Source0:        https://core.tcl-lang.org/tcltls/uv/tcltls-%{version}-src.tar.gz
+%define srcdir tcltls-20260121024900-5d3e3c3bf8
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(tcl)
@@ -40,25 +36,27 @@ exactly the same as channels created using Tcl's built-in socket
 command with additional options for controlling the SSL session.
 
 %prep
-%autosetup -n tcl%{name}-%{version} -p1
+%autosetup -n %srcdir -p1
 
 %build
 export TCL_PACKAGE_PATH=%tcl_archdir
 %configure \
-	--disable-rpath		\
-	--enable-deterministic	\
-	--with-ssl-dir=%{_prefix}
+	--disable-rpath
+
 %make_build
 
 %install
 %make_install libdir=%{_libdir}/tcl
+# We don't do a devel package (yet)
+rm %{buildroot}/usr/include/tls.h
 
 %check
 %make_build test
 
 %files
 %license license.terms
-%doc ChangeLog README.txt tls.htm
+%doc ChangeLog README.txt doc/tls.html
+%doc %{_mandir}/*/*
 %{_libdir}/tcl
 
 %changelog
