@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:26:09 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + realmedia: Fixes for various out-of-bounds reads
+- Update to version 1.28.3:
+  + No changes, stable version bump only.
+
+-------------------------------------------------------------------
 Wed Apr  8 11:49:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.2:
