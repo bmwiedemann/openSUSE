@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:11:39 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + audio-resampler-neon: fix accumulated stride
+  + audio-resampler-neon: re-increment address
+  + audioaggregator: Remove brittle conversion of in-progress
+    buffers
+  + discoverer: Lock the DISCO_LOCK whenever accessing the streams
+    list
+  + gl: egl: Set TRANSFER_NEED_DOWNLOAD flag
+  + gldownload: Can't handle directly imported dmabufs from
+    glupload
+  + glupload: fix memleak on failure path
+  + glwindow: Allow setting a NULL window handle
+  + id3v2: Don't modify const data and check for enough data when
+    reading RVA2 tags
+  + id3v2: Don't unnecessarily assert on size==0 when unsyncing
+    data
+  + pbutils: Add NULL check for tmpcaps parsing
+  + pbutils: Fix possible null dereference when empty string is
+    provided
+  + rtcpbuffer: Add some missing bounds checks when parsing SDES
+  + sdp: keep level-asymmetry-allowed in the caps
+  + subparse: Avoid zero and extreme fps when parsing mdvdsub
+    subtitles
+  + uridecodebin3: Use PLAY_ITEMS_LOCK for URI-related getter
+  + uridecodebin: Protect missing_plugin_errors list from
+    concurrent access
+  + videodmabufpool: Fix debug category
+  + xmptag: Correctly initialize pointer to the end of the input
+    array
+
+-------------------------------------------------------------------
 Tue May 12 06:57:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.3:

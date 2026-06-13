@@ -20,7 +20,7 @@
 %define gst_branch 1.0
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 Name:           gstreamer-plugins-base
-Version:        1.28.3
+Version:        1.28.4
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -104,7 +104,7 @@ videos. Its plug-in-based architecture means that new data types or
 processing capabilities can be added simply by installing new plug-ins.
 
 %package        extra
-Summary:        GStreamer-plugins-bad extra plugins
+Summary:        GStreamer-plugins-base extra plugins
 Requires:       %{name}
 
 %description    extra
