@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jun 13 10:02:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.15:
+  * Fixed
+    - md038: keep whitespace-only code spans verbatim (afe5b43)
+
+-------------------------------------------------------------------
+Thu Jun 11 17:02:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.14:
+  * Added
+    - release: publish an alpine container image flavour (10fc739)
+  * Fixed
+    - discovery: honor config include patterns with non-standard
+      extensions (4436dd7)
+
+-------------------------------------------------------------------
+Thu Jun 11 12:06:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.13:
+  * Added
+    - release: publish multi-arch container image to ghcr.io
+      (2e3d70b)
+    - MD072: add required-keys option to enforce frontmatter key
+      presence (7e8c78f)
+    - config: file-precise provenance in rumdl config output
+      (f401004)
+  * Fixed
+    - config: probe the working directory for project config even
+      when it is $HOME (b49a2f8)
+
+-------------------------------------------------------------------
 Thu Jun 11 04:57:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.12:
