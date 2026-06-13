@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:28:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.72.4
+  - [client] Index peer tunnel IPs for faster PeerStateByIP lookup
+    by @mlsmaycon in #6412
+
+-------------------------------------------------------------------
 Wed Jun 10 21:46:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Netbird does not really comply to the format for /etc/sysconfig/
