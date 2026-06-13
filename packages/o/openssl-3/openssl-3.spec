@@ -178,6 +178,34 @@ Patch73:        openssl-NULL-pointer-dereference-in-ocsp_find_signer_sk.patch
 Patch74:        openssl-CVE-2026-28390.patch
 # PATCH-FIX-UPSTREAM: Optimized MLKEM NTT, supports p8 (ISA 2.07) and above architectures (jsc#PED-14569)
 Patch75:        openssl-ppc64le-Optimized-MLKEM-NTT-supports-p8-ISA-2.07-and-above-architectures.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-45447 Heap Use-After-Free in OpenSSL PKCS7_verify() (bsc#1266357)
+Patch76:        openssl-CVE-2026-45447.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-45446 Incorrect Tag Processing for Empty Messages in AES-GCM-SIV and AES-SIV modes (bsc#1266356)
+Patch77:        openssl-CVE-2026-45446.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42770 FFC-DH Peer Validation Uses Attacker-Supplied q (bsc#1266353)
+Patch78:        openssl-CVE-2026-42770.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-45445 AES-OCB IV Ignored on EVP_Cipher() Path (bsc#1266355)
+Patch79:        openssl-CVE-2026-45445.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42767 NULL Pointer Dereference in CRMF EncryptedValue Decryption (bsc#1266350)
+Patch80:        openssl-CVE-2026-42767.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42768 Multi-RecipientInfo Bleichenbacher Oracle in CMS_decrypt() and PKCS7_decrypt() (bsc#1266351)
+Patch81:        openssl-CVE-2026-42768.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42769 Trust-Anchor Substitution via cert/issuer Typo in CMP rootCaKeyUpdate (bsc#1266352)
+Patch82:        openssl-CVE-2026-42769.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42766 Possible NULL Dereference in Password-Based CMS Decryption (bsc#1266349)
+Patch83:        openssl-CVE-2026-42766.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-34183 Unbounded Memory Growth in the QUIC PATH_CHALLENGE Handler (bsc#1266345)
+Patch84:        openssl-CVE-2026-34183.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-42764 NULL pointer dereference in QUIC server initial packet handling (bsc#1266347)
+Patch85:        openssl-CVE-2026-42764.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-34182 CMS AuthEnvelopedData Processing May Accept Forged Messages (bsc#1266344)
+Patch86:        openssl-CVE-2026-34182.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-9076 Out-of-Bounds Read in CMS Password-Based Decryption (bsc#1266341)
+Patch88:        openssl-CVE-2026-9076.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-7383 Possible Heap Buffer Overflow in ASN.1 Multibyte String Conversion (bsc#1266340)
+Patch89:        openssl-CVE-2026-7383.patch
+# PATCH-FIX-UPSTREAM: CVE-2026-34180 Heap Buffer Over-read in ASN.1 Content Parsing (bsc#1266342)
+Patch90:        openssl-CVE-2026-34180.patch
 
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540

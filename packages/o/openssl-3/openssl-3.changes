@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:21:41 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Security fixes:
+  * CVE-2026-45447: Heap Use-After-Free in OpenSSL PKCS7_verify() (bsc#1266357)
+  * CVE-2026-45446: Incorrect Tag Processing for Empty Messages in AES-GCM-SIV and AES-SIV modes (bsc#1266356)
+  * CVE-2026-42770: FFC-DH Peer Validation Uses Attacker-Supplied q (bsc#1266353)
+  * CVE-2026-45445: AES-OCB IV Ignored on EVP_Cipher() Path (bsc#1266355)
+  * CVE-2026-42767: NULL Pointer Dereference in CRMF EncryptedValue Decryption (bsc#1266350)
+  * CVE-2026-42768: Multi-RecipientInfo Bleichenbacher Oracle in CMS_decrypt() and PKCS7_decrypt() (bsc#1266351)
+  * CVE-2026-42769: Trust-Anchor Substitution via cert/issuer Typo in CMP rootCaKeyUpdate (bsc#1266352)
+  * CVE-2026-42766: Possible NULL Dereference in Password-Based CMS Decryption (bsc#1266349)
+  * CVE-2026-34183: Unbounded Memory Growth in the QUIC PATH_CHALLENGE Handler (bsc#1266345)
+  * CVE-2026-42764: NULL pointer dereference in QUIC server initial packet handling (bsc#1266347)
+  * CVE-2026-34182: CMS AuthEnvelopedData Processing May Accept Forged Messages (bsc#1266344)
+  * CVE-2026-9076:  Out-of-Bounds Read in CMS Password-Based Decryption (bsc#1266341)
+  * CVE-2026-7383:  Possible Heap Buffer Overflow in ASN.1 Multibyte String Conversion (bsc#1266340)
+  * CVE-2026-34180: Heap Buffer Over-read in ASN.1 Content Parsing (bsc#1266342)
+  * Add patches:
+    openssl-CVE-2026-45447.patch
+    openssl-CVE-2026-45446.patch
+    openssl-CVE-2026-42770.patch
+    openssl-CVE-2026-45445.patch
+    openssl-CVE-2026-42767.patch
+    openssl-CVE-2026-42768.patch
+    openssl-CVE-2026-42769.patch
+    openssl-CVE-2026-42766.patch
+    openssl-CVE-2026-34183.patch
+    openssl-CVE-2026-42764.patch
+    openssl-CVE-2026-34182.patch
+    openssl-CVE-2026-9076.patch
+    openssl-CVE-2026-7383.patch
+    openssl-CVE-2026-34180.patch
+
+-------------------------------------------------------------------
 Wed May 13 17:29:43 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - POWER performance enhancements
