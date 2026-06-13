@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 10 09:05:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302220
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302220  2026-06-09 15:49:19-07:00 America/Los_Angeles
+
+      - Add [PruneCruft] to dist.ini so build artifacts (blib/, pm_to_blib, MYMETA.*) no longer leak into release tarballs.
+      - Remove Net::BitTorrent from broken list
+      - Amend tests to adapt to more accurate line number reporting in core (#1080)
+
+-------------------------------------------------------------------
 Wed Dec 10 05:37:22 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302219

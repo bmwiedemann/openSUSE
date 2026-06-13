@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Simple
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define cpan_name Test-Simple
 Name:           perl-Test-Simple
-Version:        1.302219
+Version:        1.302220
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Basic utilities for writing tests

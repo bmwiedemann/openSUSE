@@ -486,4 +486,17 @@
       - Add Test2::V1 bundle</comment>
     <requestid>1323804</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>f23475333fb11d6440478dbce10859c8</srcmd5>
+    <version>1.302220</version>
+    <time>1781369185</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.302220
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+  1.302220  2026-06-09 15:49:19-07:00 America/Los_Angeles
+      - Add [PruneCruft] to dist.ini so build artifacts (blib/, pm_to_blib, MYMETA.*) no longer leak into release tarballs.
+      - Remove Net::BitTorrent from broken list
+      - Amend tests to adapt to more accurate line number reporting in core (#1080)</comment>
+    <requestid>1359050</requestid>
+  </revision>
 </revisionlist>
