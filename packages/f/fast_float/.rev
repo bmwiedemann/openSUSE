@@ -71,4 +71,12 @@
     <comment>- Update to release 8.2.8</comment>
     <requestid>1358090</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4b6e3e0569b27e621a0c40d226c28faf</srcmd5>
+    <version>8.2.9</version>
+    <time>1781369118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.2.9</comment>
+    <requestid>1358812</requestid>
+  </revision>
 </revisionlist>

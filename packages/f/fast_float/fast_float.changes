@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 12 04:42:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.9
+  * Reject non-digit wide code units in uint8/uint16 integer
+    fast path.
+
+-------------------------------------------------------------------
 Tue Jun  9 01:50:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.8
