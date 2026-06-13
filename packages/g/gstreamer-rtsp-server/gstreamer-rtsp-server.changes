@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:27:36 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + RTSPMediaFactory: make create_pipeline virtual method
+    introspectable
+- Update to version 1.28.3:
+  + No changes, stable bump only
+
+-------------------------------------------------------------------
 Wed Apr  8 13:22:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.2:
