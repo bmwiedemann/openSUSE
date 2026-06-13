@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:08:39 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + meson: Fix libxml2 not building due to wrong option type
+
+-------------------------------------------------------------------
 Tue May 12 07:25:34 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.3:
