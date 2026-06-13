@@ -17,7 +17,7 @@
 
 
 Name:           qatzip
-Version:        1.3.1
+Version:        1.3.2
 Release:        0
 Summary:        Intel QuickAssist Technology (QAT) QATzip Library
 License:        BSD-3-Clause
@@ -26,6 +26,7 @@ URL:            https://github.com/intel/QATzip
 Source:         https://github.com/intel/QATzip/archive/refs/tags/v%{version}.tar.gz
 Patch0:         qatzip-fortify_source=3.patch
 BuildRequires:  automake
+BuildRequires:  autoconf-archive
 BuildRequires:  gcc
 BuildRequires:  liblz4-devel
 BuildRequires:  libnuma-devel
@@ -84,6 +85,7 @@ rm -vf %{buildroot}%{_libdir}/*.{la,a}
 %{_mandir}/man1/qzip.1%{?ext_man}
 %{_bindir}/qzip
 %{_bindir}/qatzip-test
+%{_mandir}/man1/qatzip-test.1%{?ext_man}
 
 %files -n libqatzip3
 %license LICENSE*
