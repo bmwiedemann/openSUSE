@@ -17,7 +17,7 @@
 
 
 Name:           qatlib
-Version:        25.08.0
+Version:        26.02.0
 Release:        0
 Summary:        Intel QuickAssist Technology Library
 License:        BSD-3-Clause
@@ -89,6 +89,7 @@ rm -f %{buildroot}%{_libdir}/*.so.[0-9]
 %{_mandir}/man8/qat*
 %{_unitdir}/qat*
 %{_sbindir}/qat*
+%{_udevrulesdir}/99-qat-vfio.rules
 
 %files -n libusdm0
 %{_libdir}/libusdm.so.0*

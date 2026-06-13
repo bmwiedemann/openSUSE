@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri May 15 16:49:10 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
+
+- version update to 26.02.0
+  * Added support to configure EPOLL/POLL mode
+  * Added USDM APIs to enable zero-copy DMA operations using IOVA mapping with user-allocated memory buffers
+  * Simplified file license headers to use SPDX identifiers and only BSD3
+  * Removed unnecessary Dual GPLv2/BSD3 license headers
+  * Aligned with CPA API v5.08
+  * Bug Fixes (See Resolved section in README.md)
+
+
+-------------------------------------------------------------------
 Wed Sep  3 13:13:26 UTC 2025 - pgajdos@suse.com
 
 - version update to 25.08.0
