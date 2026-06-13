@@ -8,6 +8,5 @@ See the PSGI manpage for the PSGI specification and the PSGI::FAQ manpage
 to know what PSGI and Plack are and why we need them.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Plack"/>
   <url>http://search.cpan.org/dist/Plack/</url>
 </package>

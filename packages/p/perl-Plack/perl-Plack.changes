@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue May  5 07:33:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.0054
+   see /usr/share/doc/packages/perl-Plack/Changes
+
+  1.0054  2026-05-04 23:38:13 PDT
+      [BUG FIXES]
+          - Revert Plack::App::File REQUEST_METHOD check after locating file due to regression #725
+  1.0053  2026-04-28 15:59:58 PDT
+      [DEPRECATIONS]
+          - Plack::Middleware::XSendfile is deprecated due to security design issues; see POD for migration examples
+      [BUG FIXES]
+          - Plack::App::File now checks REQUEST_METHOD after locating the file #681
+  1.0052  2026-04-27 12:59:19 PDT
+      [BUG FIXES]
+          - stat already open filehandle rather than filename in Plack::App::File #716
+      [IMPROVEMENTS]
+          - Updated MIME type list in Plack::MIME sourced from rack/rack #706
+          - Avoid try block just for checking $object->isa in HTTP::Message::PSGI #712
+          - Remove the last remaining uses of base.pm #707
+          - Document security trust model and frontend configuration for XSendfile middleware
+
+-------------------------------------------------------------------
 Sat Jan  6 03:09:02 UTC 2024 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.0051
