@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Jun 13 00:16:50 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.12.3:
+  + diagnostic: deprecate `format` as a table
+  + :restart: v:starttime, v:exitreason
+  + eval: treat Lua string as "blob" in writefile()
+  + treesitter: provide select()
+  + vim.pos: accept buf=0 for current buf
+  + vim.pos: pos:to_offset(), pos.offset()
+  + `opts.scope` in `vim.ui.input`
+  + vim.pos: use numeric index internally
+  + e230ff0 vim._with may silence all cmdline-errors
+  + api: adjust Visual position after nvim_buf_set_text
+  + api: don't update 'title' when renaming non-curbuf
+  + api: `LuaRef` leak in `nvim_set_keymap` on LHS too long (>=66 bytes)
+  + api: leak `preview` callback `LuaRef` in `nvim_create_user_command`
+  + channel: stack-buffer-overflow with exit during connection
+  + ci: generate more data to stress output throttling test
+  + difftool: handle filenames containing spaces
+  + eval: writestring() handling of null
+  + excmd: use realtime for v:starttime, :uptime
+  + fold: virtual lines duplicate foldopen
+  + health: set 'tags' for help filetype
+  + help: fix CTRL character issue for :help {subject}
+  + lsp: calc correct screen_width when opts.relative == 'editor'
+  + lsp: callHierarchy/outgoingCalls ranges are relative to caller, not callee
+  + lsp: check window is still valid after async request
+  + lsp: dynamic registration for off-spec method
+  + lsp: filter code_action diagnostics to the cursor
+  + lsp: handle null id in JSON-RPC responses
+  + lsp: handle self-mapped methods in supports_method
+  + lsp: malformed edit if apply_text_edits() is called twice
+  + lsp: show meaningful error on invalid completion response
+  + lsp: util.lua attempt to concatenate userdata
+  + lua: avoid `__index` when deciding if a table is a list
+  + lua: don't strip debuginfo in precompile module
+  + lua: fields of `nvim.spellfile.Opts` are optional
+  + marks: don't use spell decorations from other lines
+  + marks: read from the correct variable in conceal_lines mark collection
+  + messages: avoid recursive rtp build due to msg_show
+  + messages: reset redirection message column after :echon
+  + mouse: mouse=n should not adjust visual selection
+  + net: `:edit <uri>` should set buftype=nofile
+  + pack: only use tags that strictly comply with semver spec
+  + path: `nvim_get_runtime_file` fails on DOS 8.3 filename
+  + prompt: handle multi-element lists in prompt_appendbuf
+  + shada: bdelete'd buffers not stored in oldfiles
+  + shada: set correct buffer number for local marks on read
+  + shell: preserve CR when `:!` outputs to binary-mode buffer
+  + startup: emitting useless OptionSet
+  + statusline: no cmdline ruler for autocommand window
+  + terminal: memory leak in pending TermRequest StringBuilder
+  + terminal: memory leak when pasting '=' register
+  + test: only test for unibilium if a valid compilation string exists
+  + treesitter: crash in ts_parser_delete after gc
+  + treesitter: get_node_text() inconsistent trailing newline
+  + trust: hash unchanged empty buffers as empty files
+  + ui2: entering the pager fails if `<ESC>` is remapped to `:fclose`
+  + ui2: error E518 when typing "vim:" in cmdline
+  + unittest: preprocess failure when __typeof declarations present
+  + vim.fs: fs.dir() may return nil "type" on some filesystems
+  + vim.hl: range(0,…) highlight not cleared after buffer-switch
+  + vim.range: empty ranges semantics vs regular ranges
+  + vim.range: validate arguments on all cases
+  + vim.secure: read() command injection vulnerability
+
+-------------------------------------------------------------------
 Tue Jun  9 08:41:44 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix  %lang_package, thanks to  Edwin Török (boo#1267905)

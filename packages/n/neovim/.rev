@@ -1767,4 +1767,41 @@ FIXES (LSP):
 - disable tests on Leap16 (forwarded request 1358180 from rrahl0)</comment>
     <requestid>1358181</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>354ca7ce070f0e233761078546fd1a36</srcmd5>
+    <version>0.12.3</version>
+    <time>1781369340</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.3:
+  + diagnostic: deprecate `format` as a table
+  + :restart: v:starttime, v:exitreason
+  + eval: treat Lua string as &quot;blob&quot; in writefile()
+  + treesitter: provide select()
+  + vim.pos: accept buf=0 for current buf
+  + vim.pos: pos:to_offset(), pos.offset()
+  + `opts.scope` in `vim.ui.input`
+  + vim.pos: use numeric index internally
+  + e230ff0 vim._with may silence all cmdline-errors
+  + api: adjust Visual position after nvim_buf_set_text
+  + api: don't update 'title' when renaming non-curbuf
+  + api: `LuaRef` leak in `nvim_set_keymap` on LHS too long (&gt;=66 bytes)
+  + api: leak `preview` callback `LuaRef` in `nvim_create_user_command`
+  + channel: stack-buffer-overflow with exit during connection
+  + ci: generate more data to stress output throttling test
+  + difftool: handle filenames containing spaces
+  + eval: writestring() handling of null
+  + excmd: use realtime for v:starttime, :uptime
+  + fold: virtual lines duplicate foldopen
+  + health: set 'tags' for help filetype
+  + help: fix CTRL character issue for :help {subject}
+  + lsp: calc correct screen_width when opts.relative == 'editor'
+  + lsp: callHierarchy/outgoingCalls ranges are relative to caller, not callee
+  + lsp: check window is still valid after async request
+  + lsp: dynamic registration for off-spec method
+  + lsp: filter code_action diagnostics to the cursor
+  + lsp: handle null id in JSON-RPC responses
+  + lsp: handle self-mapped methods in supports_method
+  + lsp: malformed edit if apply_text_edits() is called twice (forwarded request 1359105 from rrahl0)</comment>
+    <requestid>1359106</requestid>
+  </revision>
 </revisionlist>
