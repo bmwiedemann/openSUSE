@@ -33,6 +33,8 @@ Source2:        %{name}-rpmlintrc
 Source3:        opensc.module
 Patch0:         opensc-gcc11.patch
 Patch1:         opensc-docbook-xsl-fix.patch
+# CVE-2026-10275: global buffer overflow during key pair generation tests due to missing input validation [bsc#1267246]
+Patch2:         opensc-CVE-2026-10275.patch
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  libxslt

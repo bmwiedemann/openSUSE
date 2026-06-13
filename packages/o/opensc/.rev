@@ -510,4 +510,12 @@
     or through custom configuration file. (forwarded request 1343964 from mnhauke)</comment>
     <requestid>1343965</requestid>
   </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>5049ca6965cc8ab6d71ae3108d8863d4</srcmd5>
+    <version>0.27.1</version>
+    <time>1781369276</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-10275, [bsc#1267246], (CVE-2026-40528, [bsc#1266963]) (forwarded request 1358723 from pgajdos)</comment>
+    <requestid>1359045</requestid>
+  </revision>
 </revisionlist>

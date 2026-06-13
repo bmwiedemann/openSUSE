@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 11:40:26 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-10275: global buffer overflow during key pair generation tests due to missing input validation [bsc#1267246]
+  * opensc-CVE-2026-10275.patch
+
+-------------------------------------------------------------------
 Tue Mar 31 14:05:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.27.1
@@ -16,7 +23,7 @@ Tue Mar 31 14:05:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
   * Fix CVE-2025-66037: Possible buffer overrun while parsing SPKI
     (bsc#1261218)
   * More low-severity data handling issues when parsing profile
-    configuration
+    configuration (CVE-2026-40528 [bsc#1266963])
   General improvements
   * Added support for PKCS#11 3.2 in tools and pkcs11-spy and
     p11test.
