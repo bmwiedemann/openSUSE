@@ -5760,4 +5760,12 @@
   + fixes for compiler warnings/cppcheck.</comment>
     <requestid>1358144</requestid>
   </revision>
+  <revision rev="335" vrev="108">
+    <srcmd5>51c4064dc3bf4858b07823f1a16e1c3d</srcmd5>
+    <version>unknown</version>
+    <time>1781369083</time>
+    <user>dimstar_suse</user>
+    <comment>- Pre work for ABI 7</comment>
+    <requestid>1358852</requestid>
+  </revision>
 </revisionlist>

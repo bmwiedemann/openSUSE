@@ -473,9 +473,11 @@ export CFLAGS_SHARED
        OPATH=$PATH
 	  CC=gcc
 	 CXX=g++
-    CFLAGS="${RPM_OPT_FLAGS} -pipe -D_REENTRANT"
+    CFLAGS="${RPM_OPT_FLAGS} -pipe"
+    CPPFLAGS="-D_REENTRANT"
     if [[ "$BUILD_BASENAME" = debug-* ]] ; then
-	CFLAGS="${CFLAGS} -g -DTRACE"
+	CFLAGS="${CFLAGS} -g"
+	CPPFLAGS="${CPPFLAGS} -DTRACE"
     fi
     echo -e 'int main() { return ((char)~1 > 0); }' | gcc -O2 -Wall -xc -o unsign -
     if ./unsign ; then
@@ -488,7 +490,6 @@ export CFLAGS_SHARED
     cflags -Wl,--hash-size=8599     LDFLAGS
     cflags -Wl,--as-needed          LDFLAGS
     CXXFLAGS=$CFLAGS
-    CPPFLAGS=
     include=
     for header in stddef.h limits.h
     do
@@ -503,7 +504,7 @@ export CFLAGS_SHARED
     done
     if test -n "$include"
     then
-        CPPFLAGS="$include"
+        CPPFLAGS="${CPPFLAGS} ${include}"
 	unset include
     fi
     test -n "$TERM" || TERM=linux
@@ -626,6 +627,11 @@ export CFLAGS_SHARED
 	    for pthreads in t ""
 	    do
 		test "$abi" = 5 -a -n "$pthreads" && continue || :
+		# commented out to get none threading libs
+		# test "$abi" = 6 -a -z "$pthreads" && continue || :
+
+		# for ABI 7 only normal, wide, and wide threaded versions
+		test "$abi" = 7 -a -n "$pthreads" -a -z "$wide" && continue || :
 
 		mkdir build.${wide}${pthreads}${abi}
 		pushd build.${wide}${pthreads}${abi}
@@ -644,12 +650,18 @@ export CFLAGS_SHARED
 		    test "$abi" = 6 -o "$abi" = 7 && \
 			echo  --enable-opaque-curses  --enable-opaque-form  --enable-opaque-menu  --enable-opaque-panel  --enable-ext-mouse  --enable-ext-colors || \
 			echo --disable-opaque-curses --disable-opaque-form --disable-opaque-menu --disable-opaque-panel --disable-ext-mouse --disable-ext-colors
+		    test "$abi" = 7 && \
+			echo --enable-ext-mouse2
 		    #
 		    # If threaded then use pthreads and weak symbols as this avoids four different libraries
 		    # Side effect is that the the threaded libraries a binary incompatible with none threaded
 		    #
+		    # NB: For ABI 7 use the full four library matrix
+		    weak_symbols=--enable-weak-symbols
+		    test "$abi" = 7 -a -n "$pthreads" && \
+			weak_symbols="--disable-weak-symbols"
 		    test -n "$pthreads" && \
-			echo    --with-pthread  --enable-pthreads-eintr  --enable-reentrant  --enable-weak-symbols || \
+			echo    --with-pthread  --enable-pthreads-eintr  --enable-reentrant  $weak_symbols || \
 			echo --without-pthread --disable-pthreads-eintr --disable-reentrant --disable-weak-symbols
 		    test -n "$wide" && \
 			echo  --enable-widec  --enable-wattr-macros || \
@@ -696,6 +708,7 @@ export CFLAGS_SHARED
 			export LD_LIBRARY_PATH=$PWD/lib/.build
 			export BUILD_TIC=$PWD/progs/tic.build
 			export BUILD_INFOCMP=$PWD/progs/infocmp.build
+			export tic_path=\$BUILD_TIC
 			EOF
 		    pushd ncurses/
 			ln -sf ../../ncurses/tinfo .
@@ -719,6 +732,7 @@ export CFLAGS_SHARED
 		    (cat > ${PWD}/.build_tic)<<-EOF
 			export BUILD_TIC=/usr/bin/tic
 			export BUILD_INFOCMP=/usr/bin/infocmp
+			export tic_path=\$BUILD_TIC
 			EOF
 %endif
 		else
@@ -731,6 +745,7 @@ export CFLAGS_SHARED
 	    done
 	done
     done
+    . ${PWD}/.build_tic
 
     pushd build.wt6
 	make install DESTDIR=%{root} includesubdir=/ncursesw
@@ -819,6 +834,7 @@ export CFLAGS_SHARED
 %install
 LANG=C.UTF-8
 export LANG
+    . ${PWD}/.build_tic
     make -C build.5  install.libs DESTDIR=%{buildroot}
     make -C build.w5 install.libs DESTDIR=%{buildroot}
     make -C build.6  install.libs DESTDIR=%{buildroot} libdir=%{_libdir}/ncurses6nt
@@ -858,12 +874,12 @@ export LANG
 	    libncursesw*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo} -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
+		echo "INPUT(${lib##*/} AS_NEEDED(-l%{soname_tinfo} -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
 		;;
 	    libncurses*)
 		rm -f ${lnk}
 		echo '/* GNU ld script */'			>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-ltinfo -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
+		echo "INPUT(${lib##*/} AS_NEEDED(-ltinfo -ldl %{?with_usepcre2:-lpcre2-posix -lpcre2-8}))" >> ${lnk}
 		;;
 	    *)	ln -sf ${lib} %{buildroot}%{_libdir}/${model}.so
 	    esac
@@ -888,12 +904,12 @@ export LANG
 	    libncursesw*)
 		rm -f "${lnk}"
 		echo '/* GNU ld script */'		>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo}))">> ${lnk}
+		echo "INPUT(${lib##*/} AS_NEEDED(-l%{soname_tinfo}))"	>> ${lnk}
 		;;
 	    libncurses*)
 		rm -f "${lnk}"
 		echo '/* GNU ld script */'		>  ${lnk}
-		echo "INPUT(${lib} AS_NEEDED(-ltinfo))"	>> ${lnk}
+		echo "INPUT(${lib##*/} AS_NEEDED(-ltinfo))"		>> ${lnk}
 		;;
 	    libtinfo*)
 		test -L "${lnk}" || continue
@@ -920,13 +936,13 @@ export LANG
 		    rm -f ${lnk}
 		    echo '/* GNU ld script */'		    >  ${lnk}
 		    echo 'SEARCH_DIR(%{_libdir}/ncurses5)'  >> ${lnk}
-		    echo "INPUT(${lib} AS_NEEDED(-l%{soname_tinfo}))">> ${lnk}
+		    echo "INPUT(${lib##*/} AS_NEEDED(-l%{soname_tinfo}))"	>> ${lnk}
 		    ;;
 		libncurses*)
 		    rm -f ${lnk}
 		    echo '/* GNU ld script */'		    >  ${lnk}
 		    echo 'SEARCH_DIR(%{_libdir}/ncurses5)'  >> ${lnk}
-		    echo "INPUT(${lib} AS_NEEDED(-ltinfo))" >> ${lnk}
+		    echo "INPUT(${lib##*/} AS_NEEDED(-ltinfo))" 		>> ${lnk}
 		    ;;
 		*)  ln -sf ${lib} %{buildroot}%{_libdir}/ncurses5/${model}.so
 	    esac
