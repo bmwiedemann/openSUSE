@@ -5,7 +5,7 @@
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gstreamer.git</param>
     <param name="subdir">subprojects/gst-devtools</param>
     <param name="filename">gst-devtools</param>
-    <param name="revision">1.28.3</param>
+    <param name="revision">1.28.4</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -14,7 +14,7 @@
   <service name="cargo_vendor" mode="manual">
 	  <param name="srcdir">gstreamer/subprojects/gst-devtools/dots-viewer</param>
 	  <param name="compression">zst</param>
-	  <param name="update">true</param>
+	  <param name="update">false</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
