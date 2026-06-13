@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:31:25 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+
+- Update to 2.13.0
+  - Security
+    * CVE-2026-48526 (bsc#1266802) — JWK JSON accepted as HMAC secret
+      (algorithm confusion). HMACAlgorithm.prepare_key previously rejected PEM-
+      and SSH-formatted asymmetric keys but did not catch a JWK passed as a raw
+      JSON string. In a verifier configured with both symmetric and asymmetric
+      algorithms in algorithms=[…] and a raw-JSON JWK as the key, an attacker
+      could forge HS256 tokens using the JWK text as the HMAC secret. The guard
+      has been extended to reject any JWK-shaped JSON.
+    * CVE-2026-48523 (bsc#1266799) — Algorithm allow-list bypass with PyJWK /
+      PyJWKClient. When verifying with a PyJWK, the caller's algorithms=[…]
+      allow-list was checked against the token header alg as a string only;
+      actual verification used the algorithm bound to the PyJWK. An attacker
+      who controlled a registered JWKS key could sign with one algorithm and
+      advertise another on the header. PyJWT now requires the token header alg
+      to match the PyJWK's algorithm before verification.
+    * CVE-2026-48525 (bsc#1266801) — DoS via base64 decode of unused payload
+      segment when b64=false. For detached-payload JWS (b64=false), the
+      compact-form payload segment was base64-decoded before being discarded in
+      favor of the caller-supplied detached_payload. An attacker could inflate
+      the unused segment to force CPU + memory cost without holding a valid
+      signature. The segment is now required to be empty per RFC 7515
+      Appendix F, and is no longer decoded.
+    * CVE-2026-48522 (bsc#1266798) — PyJWKClient accepts non-HTTP(S) URIs.
+      PyJWKClient.fetch_data passed its URI to urllib.request.urlopen, which
+      by default also handles file://, ftp://, and data: schemes. An
+      application that fed an attacker-influenced URI into PyJWKClient could be
+      coerced into reading local files or reaching other unintended schemes.
+      PyJWKClient now rejects any URI whose scheme isn't http or https.
+    * CVE-2026-48524 (bsc#1266800) — PyJWKClient cache wiped on fetch error. A
+      finally-block put(jwk_set=None) cleared the JWK Set cache whenever a
+      fetch raised, turning a transient JWKS-endpoint outage into application-
+      wide auth failure. The cache write was moved into the success path;
+      transient errors no longer evict valid cached keys.
+  - Fixed
+    * Reject empty HMAC keys outright in HMACAlgorithm.prepare_key with
+      InvalidKeyError instead of accepting them with only a warning. Defends
+      against the os.getenv("JWT_SECRET", "") footgun.
+    * Forward per-call options (including enforce_minimum_key_length) from
+      PyJWT.decode through to PyJWS._verify_signature. The option was
+      previously silently dropped between the two layers, so it only took
+      effect when set on the PyJWT instance.
+    * RFC 7797 §3 compliance for b64=false: the encoder now auto-adds "b64" to
+      crit, and the decoder rejects tokens that set b64=false without listing
+      it in crit
+  - Changed
+    * Migrate the dev, docs, and tests package extras to dependency groups
+
+-------------------------------------------------------------------
 Wed Mar 18 15:31:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip failing tests (gh#jpadilla/pyjwt#1153)
