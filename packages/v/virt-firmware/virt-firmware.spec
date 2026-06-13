@@ -1,7 +1,7 @@
 #
 # spec file for package virt-firmware
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %define pythons python3
 
 Name:           virt-firmware
-Version:        24.4
+Version:        25.12
 Release:        0
 Summary:        Tools for virtual machine firmware volumes
 License:        GPL-2.0-only
 URL:            https://gitlab.com/kraxel/virt-firmware
-Source:         https://files.pythonhosted.org/packages/source/v/virt-firmware/virt-firmware-%{version}.tar.gz
+Source:         https://gitlab.com/kraxel/virt-firmware/-/archive/v%{version}/virt-firmware-v%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -44,13 +44,23 @@ BuildArch:      noarch
 Tools for virtual machine firmware volumes.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{name}-v%{version}
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+mkdir -p %{buildroot}%{_mandir}/man1/
+install -m0644 man/*.1 %{buildroot}%{_mandir}/man1/
+
+%check
+# Fake systemd-detect-virt to avoid a BuildRequires on systemd.
+echo "#!/bin/true" | install -D -m 0755 /dev/stdin tmpbin/systemd-detect-virt
+export PATH="%{buildroot}%{_bindir}:$PATH:$PWD/tmpbin" PYTHONPATH="%{buildroot}%{python_sitelib}" PYTHONDONTWRITEBYTECODE=1
+virt-fw-vars --help
+# The other tests are Fedora-specific and not that useful.
+make test-unittest
 
 %files
 %doc README.md
@@ -59,6 +69,7 @@ Tools for virtual machine firmware volumes.
 %{_bindir}/virt-fw-vars
 %{_bindir}/virt-fw-dump
 %{_bindir}/virt-fw-sigdb
+%{_bindir}/virt-fw-measure
 %{_bindir}/migrate-vars
 %{_bindir}/kernel-bootcfg
 %{_bindir}/uefi-boot-menu
@@ -66,9 +77,11 @@ Tools for virtual machine firmware volumes.
 %{_bindir}/pe-listsigs
 %{_bindir}/pe-inspect
 %{_bindir}/pe-addsigs
+%{_bindir}/uki-addons
 %dir %{python_sitelib}/virt/
 %{python_sitelib}/virt/firmware/
 %{python_sitelib}/virt/peutils/
 %{python_sitelib}/virt_firmware-%{version}.dist-info/
+%{_mandir}/man1/*.1%{?ext_man}
 
 %changelog
