@@ -17,11 +17,11 @@
 
 
 %define _name gst-python
-%define _version 1.26.0
+%define _version 1.28.0
 
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.28.2
+Version:        1.28.4
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
