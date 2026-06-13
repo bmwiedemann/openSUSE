@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 12 15:38:49 UTC 2026 - Andreas Schneider <asn@cryptomilk.org>
+
+- Update to version 2.9.5
+  * Configurable toolchange ordering
+  * SLA Updates
+  * See https://github.com/prusa3d/PrusaSlicer/releases/tag/version_2.9.5
+- Added PrusaSlicer-2.9.5-pr15462-catch-include.patch
+
+-------------------------------------------------------------------
 Sat Feb  7 21:53:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Bundle eigen-3.4.1 for now (prusa's bundled libigl is

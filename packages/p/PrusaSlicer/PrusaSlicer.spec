@@ -16,7 +16,7 @@
 #
 
 
-%global base_version 2.9.4
+%global base_version 2.9.5
 
 %global prusa_slicer_version %{base_version}
 %global prusa_slicer_tarball_version %{base_version}
@@ -63,6 +63,8 @@ Patch17:        PrusaSlicer-2.9.1-pr14214-egl-support.patch
 # PATCH-FIX-OPENSUSE PrusaSlicer-2.9.1-pr14263-secretstorage.patch gh#prusa3d/PrusaSlicer#14263
 Patch18:        PrusaSlicer-2.9.1-pr14263-secretstorage.patch
 Patch19:        eigen.patch
+# PATCH-FIX-OPENSUSE PrusaSlicer-2.9.5-pr15462-catch-include.patch gh#prusa3d/PrusaSlicer#15462
+Patch20:        PrusaSlicer-2.9.5-pr15462-catch-include.patch
 BuildRequires:  blosc-devel
 BuildRequires:  cereal-devel
 BuildRequires:  cgal-devel >= 5.6
@@ -109,6 +111,7 @@ BuildRequires:  cmake(nlohmann_json)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(hidapi-libusb)
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(qhullcpp)
 BuildRequires:  pkgconfig(wayland-client)
@@ -206,7 +209,7 @@ find %{buildroot}%{_datadir}/%{name}/localization -type d | sed '
 %{_bindir}/prusa-gcodeviewer
 %{_libdir}/OCCTWrapper.so
 %dir %{_datadir}/%{name}/
-%{_datadir}/%{name}/{fonts,icons,models,profiles,shaders,udev,data,shapes,web}/
+%{_datadir}/%{name}/{fonts,icons,models,profiles,shaders,udev,data,shapes,web,workflows}/
 %{_datadir}/icons/hicolor/*/apps/%{name}*.png
 %{_datadir}/applications/PrusaSlicer.desktop
 %{_datadir}/applications/PrusaGcodeviewer.desktop
