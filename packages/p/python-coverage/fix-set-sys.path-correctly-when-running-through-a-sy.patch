@@ -1,0 +1,49 @@
+From f4413c6c0f196c626222ff8d13c95d3bc14302b6 Mon Sep 17 00:00:00 2001
+From: Ned Batchelder <ned@nedbatchelder.com>
+Date: Fri, 17 Apr 2026 08:36:23 -0400
+Subject: [PATCH] fix: set sys.path correctly when running through a symlink.
+ #2157
+
+---
+ CHANGES.rst           |  4 ++++
+ coverage/execfile.py  |  2 +-
+ tests/test_process.py | 10 ++++++++++
+ 3 files changed, 15 insertions(+), 1 deletion(-)
+
+diff --git a/coverage/execfile.py b/coverage/execfile.py
+index 1f8996cd..04946be8 100644
+--- a/coverage/execfile.py
++++ b/coverage/execfile.py
+@@ -101,7 +101,7 @@ class PyRunner:
+             # directory.
+             path0 = self.arg0
+         else:
+-            path0 = os.path.abspath(os.path.dirname(self.arg0))
++            path0 = os.path.abspath(os.path.dirname(os.path.realpath(self.arg0)))
+ 
+         if os.path.isdir(sys.path[0]):
+             # sys.path fakery.  If we are being run as a command, then sys.path[0]
+diff --git a/tests/test_process.py b/tests/test_process.py
+index 779ad546..1d1e233f 100644
+--- a/tests/test_process.py
++++ b/tests/test_process.py
+@@ -969,6 +969,16 @@ class EnvironmentTest(CoverageTest):
+         actual = self.run_command(f"python {cov_main} run run_me.py")
+         self.assert_tryexecfile_output(expected, actual)
+ 
++    @pytest.mark.skipif(env.WINDOWS, reason="Windows can't make symlinks")
++    def test_coverage_in_symlink_is_like_python(self) -> None:
++        # https://github.com/coveragepy/coveragepy/issues/2157
++        self.make_file("real/run_me.py", TRY_EXECFILE_CODE)
++        os.mkdir("link")
++        os.symlink("../real/run_me.py", "link/run_me.py")
++        expected = self.run_command("python link/run_me.py")
++        actual = self.run_command("coverage run link/run_me.py")
++        self.assert_tryexecfile_output(expected, actual)
++
+     @pytest.mark.skipif(env.PYVERSION < (3, 11), reason="PYTHONSAFEPATH is new in 3.11")
+     @pytest.mark.skipif(
+         env.WINDOWS,
+-- 
+2.51.0
+

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Apr 17 13:44:19 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix sys.path when running through a symlink
+  * fix-set-sys.path-correctly-when-running-through-a-sy.patch
+
+-------------------------------------------------------------------
 Mon Mar 30 09:57:34 UTC 2026 - Tuukka Pasanen <tuukka.pasanen@ilmi.fi>
 
 - update to 7.13.5:
