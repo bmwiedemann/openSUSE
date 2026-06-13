@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Validator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,32 @@
 
 %define cpan_name JSON-Validator
 Name:           perl-JSON-Validator
-Version:        5.150.0
+Version:        5.190.0
 Release:        0
-# 5.15 -> normalize -> 5.150.0
-%define cpan_version 5.15
+# 5.19 -> normalize -> 5.190.0
+%define cpan_version 5.19
 License:        Artistic-2.0
 Summary:        Validate data against a JSON schema
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/J/JH/JHTHORSEN/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Data::Validate::Domain) >= 0.110
+BuildRequires:  perl(Data::Validate::IP) >= 0.270
 BuildRequires:  perl(List::Util) >= 1.45
-BuildRequires:  perl(Mojolicious) >= 7.280
+BuildRequires:  perl(Mojolicious) >= 9.340
+BuildRequires:  perl(Net::IDN::Encode) >= 2.500
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 1.30
 BuildRequires:  perl(YAML::XS) >= 0.670
+Requires:       perl(Data::Validate::Domain) >= 0.110
+Requires:       perl(Data::Validate::IP) >= 0.270
 Requires:       perl(List::Util) >= 1.45
-Requires:       perl(Mojolicious) >= 7.280
+Requires:       perl(Mojolicious) >= 9.340
+Requires:       perl(Net::IDN::Encode) >= 2.500
 Requires:       perl(YAML::XS) >= 0.670
 Provides:       perl(JSON::Validator) = %{version}
 Provides:       perl(JSON::Validator::Error)
@@ -62,7 +69,7 @@ schema or you can use the elegant DSL schema-builder JSON::Validator::Joi
 to define the schema programmatically.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

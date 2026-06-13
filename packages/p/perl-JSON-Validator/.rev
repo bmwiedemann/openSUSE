@@ -376,4 +376,33 @@
     <comment></comment>
     <requestid>1269373</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>62ab98d772036a56b986925b39d41ab2</srcmd5>
+    <version>5.190.0</version>
+    <time>1781369259</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.190.0 (5.19)
+   see /usr/share/doc/packages/perl-JSON-Validator/Changes
+  5.19 2026-06-10T09:13:00
+   - Fix OpenAPIv3 string coercion regression #298 #299
+     Contributor: Archey Barrell
+  5.18 2026-06-08T09:53:00
+   - Bundle OpenAPI v3.0 schema 2021-09-28 as default #295, #286
+     Contributor: Henrik Andersen
+   - Fix nondeterministic false errors from the recursive_data_protection cache #272, #294
+     Contributor: Henrik Andersen
+  5.17 2026-06-04T22:32:00
+   - Add validate Mojo::Upload as binary string in OpenAPIv3 #288
+     Contributor: Archey Barrell
+  5.16 2026-06-04T10:06:00
+   - Use Mojo::File::spew instead of Mojo::File::spurt #281
+     Contributor: Emmanuel Seyman
+   - Updated dependency list #283
+   - Use negotiated content-type to select schema #289
+     Contributor: Archey Barrell
+   - Updated idn-email format verification to allow periods in local part #290
+     Contributor: Keith Carangelo
+   - Add string as valid format #293</comment>
+    <requestid>1359046</requestid>
+  </revision>
 </revisionlist>
