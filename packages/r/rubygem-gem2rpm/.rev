@@ -462,4 +462,12 @@ A    0033-Use-File.exist-instead-of-File.exists-which-was-remo.patch
   - remove unneeded buildrequires for u-a</comment>
     <requestid>1352716</requestid>
   </revision>
+  <revision rev="41" vrev="30">
+    <srcmd5>5da10d29264a9b1d3c9f70d558dab46f</srcmd5>
+    <version>0.10.1</version>
+    <time>1781369099</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1358784</requestid>
+  </revision>
 </revisionlist>

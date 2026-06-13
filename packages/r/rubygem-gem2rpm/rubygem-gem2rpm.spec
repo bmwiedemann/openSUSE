@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{suse_version} >= 1600
+%bcond_without alts
+%else
+%bcond_with alts
+%endif
+
 %bcond_without  gem2rpm_bootstrap
 %bcond_with     ruby21
 %bcond_with     ruby25
@@ -94,8 +100,15 @@ done
 %package -n ruby2.1-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby2.1-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -110,6 +123,7 @@ Requires:       ruby2.1-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby2.1-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby2.1-%{version} %{mod_weight}
@@ -124,18 +138,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby2.1-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby2.1  %{_bindir}/gem2rpm.ruby2.1-%{version}
 fi
+%endif
 
 %files -n ruby2.1-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby2.1-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby2.1-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby2.1
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby2.1
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/211*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby2.1/211*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/211*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby2.1
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby2.1
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/2.1.0/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/2.1.0/gems/gem2rpm-%{version}
@@ -152,8 +179,15 @@ fi
 %package -n ruby2.5-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby2.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -168,6 +202,7 @@ Requires:       ruby2.5-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby2.5-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby2.5-%{version} %{mod_weight}
@@ -182,18 +217,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby2.5-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby2.5  %{_bindir}/gem2rpm.ruby2.5-%{version}
 fi
+%endif
 
 %files -n ruby2.5-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby2.5-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby2.5-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby2.5
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby2.5
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/215*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby2.5/215*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/215*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby2.5
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby2.5
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/2.5.0/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/2.5.0/gems/gem2rpm-%{version}
@@ -210,8 +258,15 @@ fi
 %package -n ruby3.2-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby3.2-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -226,6 +281,7 @@ Requires:       ruby3.2-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby3.2-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.2-%{version} %{mod_weight}
@@ -240,18 +296,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.2-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby3.2  %{_bindir}/gem2rpm.ruby3.2-%{version}
 fi
+%endif
 
 %files -n ruby3.2-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby3.2-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby3.2-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby3.2
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby3.2
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/312*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby3.2/312*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/312*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby3.2
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.2
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/3.2.0/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/3.2.0/gems/gem2rpm-%{version}
@@ -268,8 +337,15 @@ fi
 %package -n ruby3.3-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby3.3-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -284,6 +360,7 @@ Requires:       ruby3.3-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby3.3-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.3-%{version} %{mod_weight}
@@ -298,18 +375,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.3-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby3.3  %{_bindir}/gem2rpm.ruby3.3-%{version}
 fi
+%endif
 
 %files -n ruby3.3-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby3.3-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby3.3-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby3.3
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby3.3
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/313*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby3.3/313*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/313*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby3.3
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.3
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/3.3.0/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/3.3.0/gems/gem2rpm-%{version}
@@ -326,8 +416,15 @@ fi
 %package -n ruby3.4-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby3.4-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -342,6 +439,7 @@ Requires:       ruby3.4-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby3.4-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.4-%{version} %{mod_weight}
@@ -356,18 +454,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.4-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby3.4  %{_bindir}/gem2rpm.ruby3.4-%{version}
 fi
+%endif
 
 %files -n ruby3.4-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby3.4-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby3.4-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby3.4
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby3.4
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/314*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby3.4/314*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/314*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby3.4
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.4
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/3.4.0/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/3.4.0/gems/gem2rpm-%{version}
@@ -386,8 +497,15 @@ fi
 %package -n ruby3.5-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby3.5-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -402,6 +520,7 @@ Requires:       ruby3.5-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby3.5-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby3.5-%{version} %{mod_weight}
@@ -416,18 +535,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby3.5-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby3.5  %{_bindir}/gem2rpm.ruby3.5-%{version}
 fi
+%endif
 
 %files -n ruby3.5-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby3.5-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby3.5-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby3.5
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby3.5
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/315*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby3.5/315*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/315*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby3.5
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby3.5
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/%{rb_350_abi}/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/%{rb_350_abi}/gems/gem2rpm-%{version}
@@ -446,8 +578,15 @@ fi
 %package -n ruby4.0-rubygem-gem2rpm
 Summary:        Generate rpm specfiles from gems
 Group:          Development/Languages/Ruby
+%if %{with alts}
+Requires(post): alts
+Requires(preun): alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(preun): update-alternatives
+Requires:       update-alternatives
+%endif
 
 %description -n ruby4.0-rubygem-gem2rpm
 Generate source rpms and rpm spec files from a Ruby Gem.
@@ -462,6 +601,7 @@ Requires:       ruby4.0-rubygem-gem2rpm = %{version}
 Documentation generated at gem installation time.
 Usually in RDoc and RI formats.
 
+%if %{without alts}
 %post -n ruby4.0-rubygem-gem2rpm
 /usr/sbin/update-alternatives --install \
     %{_bindir}/gem2rpm         gem2rpm         %{_bindir}/gem2rpm.ruby4.0-%{version} %{mod_weight}
@@ -476,18 +616,31 @@ if [ "$1" = 0 ] ; then
     /usr/sbin/update-alternatives --remove gem2rpm-%{version}    %{_bindir}/gem2rpm.ruby4.0-%{version}
     /usr/sbin/update-alternatives --remove gem2rpm.ruby4.0  %{_bindir}/gem2rpm.ruby4.0-%{version}
 fi
+%endif
 
 %files -n ruby4.0-rubygem-gem2rpm
 %defattr(-,root,root,-)
 %{_docdir}/ruby4.0-rubygem-gem2rpm
 #{_bindir}/gem2rpm-opensuse
 %{_bindir}/gem2rpm.ruby4.0-%{version}
+%if %{with alts}
+%{_bindir}/gem2rpm.ruby4.0
+%{_bindir}/gem2rpm-%{version}
+%{_bindir}/gem2rpm
+%dir %{_datadir}/libalternatives/gem2rpm/
+%dir %{_datadir}/libalternatives/gem2rpm.ruby4.0
+%dir %{_datadir}/libalternatives/gem2rpm-%{version}/
+%{_datadir}/libalternatives/gem2rpm/410*.conf
+%{_datadir}/libalternatives/gem2rpm.ruby4.0/410*.conf
+%{_datadir}/libalternatives/gem2rpm-%{version}/410*.conf
+%else
 %ghost %{_bindir}/gem2rpm.ruby4.0
 %ghost %{_bindir}/gem2rpm-%{version}
 %ghost %{_bindir}/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm
 %ghost %{_sysconfdir}/alternatives/gem2rpm.ruby4.0
 %ghost %{_sysconfdir}/alternatives/gem2rpm-%{version}
+%endif
 # cache file
 %{_libdir}/ruby/gems/%{rb_400_abi}/cache/gem2rpm-%{version}.gem
 %{_libdir}/ruby/gems/%{rb_400_abi}/gems/gem2rpm-%{version}

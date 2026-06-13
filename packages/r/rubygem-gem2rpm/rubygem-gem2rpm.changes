@@ -12,6 +12,12 @@ Mon May 11 22:58:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
   - remove unneeded buildrequires for u-a
 
 -------------------------------------------------------------------
+Mon May 11 22:20:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- replace update-alternatives with alts
+  (ref: https://en.opensuse.org/openSUSE:Migrating_to_libalternatives_with_alts)
+
+-------------------------------------------------------------------
 Thu Dec 25 12:29:21 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - use final 4.0 ABI
