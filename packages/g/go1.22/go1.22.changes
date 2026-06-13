@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 19:27:58 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Use libalternatives only on suse_version >= 1610 and keep
+  update-alternatives support for older distributions.
+- Drop the update-alternatives migration path for libalternatives builds.
+
+-------------------------------------------------------------------
 Thu Jun  4 11:32:39 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging: Enable libalternatives for SLE16.1 and Tumbleweed

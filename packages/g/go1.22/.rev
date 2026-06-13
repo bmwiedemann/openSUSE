@@ -349,4 +349,14 @@ the go metapackage to version 1.22.</comment>
   * Drop go1.22 dependency on update-alternatives fixes bsc#1264391 (forwarded request 1358032 from jfkw)</comment>
     <requestid>1358040</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>2e495dd4af8fdd8c11bc9d43753b1fbc</srcmd5>
+    <version>1.22.12</version>
+    <time>1781369115</time>
+    <user>dimstar_suse</user>
+    <comment>- Use libalternatives only on suse_version &gt;= 1610 and keep
+  update-alternatives support for older distributions.
+- Drop the update-alternatives migration path for libalternatives builds. (forwarded request 1358808 from jfkw)</comment>
+    <requestid>1358809</requestid>
+  </revision>
 </revisionlist>
