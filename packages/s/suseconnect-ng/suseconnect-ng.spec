@@ -19,7 +19,7 @@
 %global project github.com/SUSE/connect-ng
 
 Name:           suseconnect-ng
-Version:        1.22.0
+Version:        1.22.1
 Release:        0
 URL:            https://github.com/SUSE/connect-ng
 License:        LGPL-3.0-or-later
@@ -100,6 +100,14 @@ Provides:       rubygem(ruby:2.5.0:suse-connect)
 %description -n suseconnect-ruby-bindings
 This package provides bindings needed to use libsuseconnect from Ruby scripts.
 
+%package -n mcp-server-suseconnect
+Summary:        MCP server for suseconnect
+Group:          System/Management
+Requires:       suseconnect-ng = %version
+
+%description -n mcp-server-suseconnect
+This package provides an MCP server for suseconnect to enable integration into the agentic SLES framework.
+
 %prep
 %autosetup -p1 -a2 -n%{name}-%{version}
 
@@ -110,6 +118,7 @@ go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/suseconnect %{pro
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/zypper-migration %{project}/cmd/zypper-migration
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/zypper-search-packages %{project}/cmd/zypper-search-packages
 go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/suse-uptime-tracker %{project}/cmd/suse-uptime-tracker
+go build -v -ldflags "-s -w" -mod=vendor -buildmode=pie -o bin/suseconnect-mcp %{project}/cmd/suseconnect-mcp
 
 # the library
 mkdir -p %_builddir/go/lib
@@ -118,8 +127,9 @@ go build -v -ldflags "-s -w" -mod=vendor -buildmode=c-shared -o lib/libsuseconne
 %install
 # Install binary + symlinks
 install -D -m 0755 bin/suseconnect %{buildroot}/%{_bindir}/suseconnect
-install -D -m 0755 bin/suse-uptime-tracker %{buildroot}/%{_bindir}/suse-uptime-tracker
 ln -s %{_bindir}/suseconnect %{buildroot}/%{_bindir}/SUSEConnect
+install -D -m 0755 bin/suse-uptime-tracker %{buildroot}/%{_bindir}/suse-uptime-tracker
+install -D -m 0755 bin/suseconnect-mcp %{buildroot}/%{_bindir}/suseconnect-mcp
 
 install -d -m 0755 %{buildroot}/%{_sbindir}
 ln -s %{_bindir}/suseconnect %{buildroot}/%{_sbindir}/SUSEConnect
@@ -248,5 +258,8 @@ fi
 %files -n suseconnect-ruby-bindings
 %doc third_party/yast/README.md
 %{_libdir}/ruby/vendor_ruby/%rb_ver/suse
+
+%files -n mcp-server-suseconnect
+%{_bindir}/suseconnect-mcp
 
 %changelog

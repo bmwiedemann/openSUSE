@@ -711,4 +711,15 @@
   - Update config parser for suseconnect to be YAML based (jsc#SCC-730)</comment>
     <requestid>1358190</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>59f17fdeafddfe28a0818b01bbf99b6a</srcmd5>
+    <version>1.22.1</version>
+    <time>1781369090</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version to 1.22.1:
+  - library: Allow clients to disable the token handling mechanism (jsc#SCC-801)
+  - Ensure updated system certs are included when creating HTTP client
+    connections (bsc#1268017, jsc#SCC-804)</comment>
+    <requestid>1358761</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 10 18:43:58 UTC 2026 - Earl Sampson <esampson@suse.com>
+
+- Update version to 1.22.1:
+  - library: Allow clients to disable the token handling mechanism (jsc#SCC-801)
+  - Ensure updated system certs are included when creating HTTP client
+    connections (bsc#1268017, jsc#SCC-804)
+
+-------------------------------------------------------------------
 Mon Apr  6 15:40:58 UTC 2026 - Fergal Mc Carthy <fmccarthy@suse.com>
 
 - Update version to 1.22:
