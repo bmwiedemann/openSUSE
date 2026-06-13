@@ -572,4 +572,38 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1307401</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>1e5ffa18a971f971917e615f76bfe82f</srcmd5>
+    <version>1.6.17</version>
+    <time>1774555665</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1260414 - CVE-2026-33554:
+  freeipmi: improper memory handling and data validation can lead
+  to stack buffer overflows and acceptance of malformed payloads/responses
+  -&gt; This got fixed by version upgrade (fix several out of bounds
+  errors), see below
+- Update to version 1.6.17:
+  * ipmi-oem: fix several memory out of bounds errors
+  * libfreeipmi: Fix comment typo
+  * Implement tcp proxy in ipmiconsole.
+  * Refactor ipmiconsole: put most of the code from main() into functions.
+  * man/ipmiconsole.8.pre.in: fix typo
+  * libfreeipmi/locate/ipmi-locate-acpi-spmi.c: fix mem-leak</comment>
+    <requestid>1342496</requestid>
+  </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>1b00dd6db5e476ae7d03cc995011628e</srcmd5>
+    <version>1.6.18</version>
+    <time>1781369194</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.18:
+  * Fix bsc#1267605 - CVE-2026-50031:
+    + ipmi-oem/ipmi-oem-dell.c
+      (ipmi_oem_dell_get_active_directory_config): Fix potential stack
+      corruption.
+    + ipmi-oem/ipmi-oem-fujitsu.c
+      (ipmi_oem_fujitsu_get_sel_entry_long_text): Fix potential buffer
+      overflow.</comment>
+    <requestid>1359002</requestid>
+  </revision>
 </revisionlist>

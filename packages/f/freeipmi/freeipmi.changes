@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun  8 20:19:03 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 1.6.18:
+  * Fix bsc#1267605 - CVE-2026-50031:
+    + ipmi-oem/ipmi-oem-dell.c
+      (ipmi_oem_dell_get_active_directory_config): Fix potential stack
+      corruption.
+
+    + ipmi-oem/ipmi-oem-fujitsu.c
+      (ipmi_oem_fujitsu_get_sel_entry_long_text): Fix potential buffer
+      overflow.
+
+-------------------------------------------------------------------
+Tue Mar 24 22:10:42 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- bsc#1260414 - CVE-2026-33554:
+  freeipmi: improper memory handling and data validation can lead
+  to stack buffer overflows and acceptance of malformed payloads/responses
+  -> This got fixed by version upgrade (fix several out of bounds
+  errors), see below
+- Update to version 1.6.17:
+  * ipmi-oem: fix several memory out of bounds errors
+  * libfreeipmi: Fix comment typo
+  * Implement tcp proxy in ipmiconsole.
+  * Refactor ipmiconsole: put most of the code from main() into functions.
+  * man/ipmiconsole.8.pre.in: fix typo
+  * libfreeipmi/locate/ipmi-locate-acpi-spmi.c: fix mem-leak
+
+-------------------------------------------------------------------
 Fri Sep 19 14:23:33 UTC 2025 - Klaus Kämpf <kkaempf@suse.de>
 
 - fix doc packaging for non-SUSE distros

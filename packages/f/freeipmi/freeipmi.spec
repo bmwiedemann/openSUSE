@@ -37,8 +37,8 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.16
-Release:        %{release}
+Version:        1.6.18
+Release:        0%{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
 Source1:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz.sig
