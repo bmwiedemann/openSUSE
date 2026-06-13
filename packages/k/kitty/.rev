@@ -883,4 +883,29 @@
     <comment></comment>
     <requestid>1357802</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>3021eac35ebcbca8374d929b368b8a97</srcmd5>
+    <version>0.47.3</version>
+    <time>1781369217</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.47.3:
+  * macOS: Show a key symbol on the active tab if the macOS Secure Input
+    feature is enabled
+  * Fix regression that broke unserialization of splits layout in previous
+    release (#10124)
+  * Fix `focus_follows_mouse switching` the active window when returning to a
+    desktop/space, even though the mouse did not move. Now the window under a
+    stationary cursor is left alone, while moving the mouse across windows
+    still switches focus as before.
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.focus_follows_mouse
+  * Sanitise responses to color control escape codes to avoid command
+    injection for shells that do not use the kitty keyboard protocol
+    (CVE 2026-54057)
+    - https://www.cve.org/CVERecord?id=CVE-2026-54057
+  * choose fonts kitten: Fix a rare timing based race causing kitten to crash
+    at startup (#10128)
+  * Wayland: Fix mouse input getting broken when starting a tab drag and
+    releasing the mouse button before the drag is actually registered (#10136)</comment>
+    <requestid>1359012</requestid>
+  </revision>
 </revisionlist>
