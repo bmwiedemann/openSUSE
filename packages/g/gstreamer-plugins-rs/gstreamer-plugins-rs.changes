@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:23:24 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + fmp4mux: Fix draining in chunk mode after partial GOPs were
+    drained
+  + Rtp2Session: add ParamSpec for property stats
+  + rtspsrc2: Add support for SET_PARAMETER and GET_PARAMETER
+    using signals
+  + rtspsrc2: Add support for SRTP
+  + rtspsrc2: Add TLS support
+  + rtspsrc2: handle parse errors with tcp interleaved rtsp 
+    more gracefully
+  + rtspsrc2: Implement authentication support
+  + rtspsrc2: Implement support for HTTP tunnelling
+  + rtspsrc2: Implement support for keep alive
+  + rtspsrc2: Implement support for streams
+  + rtspsrc2: Include user-agent property in HTTP tunnel requests
+  + rtspsrc2: Support TLS validation flags for server certificate
+  + rtspsrc2: Support latency configuration property
+  + rtspsrc2: Update README with implemented features
+  + st2038combiner: only forward video pad segment
+  + webrtc: set level in negotiated caps only if level asymmetry
+    not allowed
+  + webrtcsink: handle payloader timestamp-offset prop type
+    variants
+  + webrtcsrc, webrtcsink: Fix SDP renegotiation bugs
+  + Added script to convert git sourced dependencies to crates.io
+    packages
+  + gst-plugin-version-helper: Relax version requirements and
+    update to 0.8.4
+
+-------------------------------------------------------------------
 Tue May 12 07:16:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.3:
