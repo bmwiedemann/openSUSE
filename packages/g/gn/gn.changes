@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 08 18:34:56 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 0.20260605:
+  * Introduce --format-width option (and format_width .gn variable).
+  * Resolve suggest inputs relative to target include directories.
+  * Consider target outputs as existing files in `gn suggest`.
+  * Reland "Fix toolchain dependencies not triggering rebuilds in Ninja"
+  * Fix build with GCC 16 on musl by adding missing <cstdint>
+  * Add module_deps[_no_self] to the default test toolchain
+  * Implement cycle detection and circular dependency handling in `gn suggest`.
+  * Reduce ResolvedTargetData lock contention by sharding targets map
+  * Implement visibility checks in `gn suggest`.
+  * Refactor `OutputSuggestions` to make it testable.
+  * Format with c++23 standard
+  * Enhance quiet mode.
+  * Fix pretty printing of string literals.
+  * Fix PointerSet and BuilderRecordMap iterators under C++23
+  * Don't print the request when there's only one.
+  * Bypass group targets for order-only deps in source set stamp files
+  * Fix complete_static_lib to include Rust libraries.
+  * Exports group's target "data" property
+  * Optimize OrderOnlyDeps computation using ResolvedTargetData caching
+  * Format gn src with run_formatter.sh
+  * gn format: 80-character comment wrapping and reflowing improvements
+  * Build with C++23
+  * Revert "Fix toolchain dependencies not triggering rebuilds in Ninja"
+  * Roll windows toolchain
+  * Fix C++23 compilation errors
+  * Fix toolchain dependencies not triggering rebuilds in Ninja
+  * [gn] Bypass groups in order-only deps to use source set linkdeps
+  * Update reference.md
+
+-------------------------------------------------------------------
 Thu Apr 30 12:27:42 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20260429:
