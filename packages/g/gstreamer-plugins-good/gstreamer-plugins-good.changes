@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 12 16:14:02 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.4:
+  + matroska-mux: Write ReferenceBlock for non-keyframe video in
+    BlockGroups
+  + osxaudio: Fix stack overflow with >64ch audio devices
+  + qtdemux: parse mastering luminance as u32 instead of u16
+  + qt6: remove an unneeded QOpenGLContext->makeCurrent()
+  + rtph265depay: fix memory leak
+  + sbcparse: Add bounds checking to header parsing
+  + tests: mpegaudioparse: Fix raciness in the state change
+    handling
+  + v4l2: Fix buffer leak on qbuf failure
+  + wavpack: Various channel / channel-mask related fixes
+  + wavpackdec: Avoid integer overflow when calculating output
+    buffer size and related fixes
+  + wavpackenc fails for channels > 2
+
+-------------------------------------------------------------------
 Tue May 12 07:01:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.3:
