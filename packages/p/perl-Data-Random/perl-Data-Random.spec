@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-Random
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Data-Random
 Name:           perl-Data-Random
-Version:        0.140.0
+Version:        0.150.0
 Release:        0
-# 0.14 -> normalize -> 0.140.0
-%define cpan_version 0.14
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl module to generate random data
 URL:            https://metacpan.org/release/%{cpan_name}

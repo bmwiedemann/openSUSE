@@ -36,4 +36,16 @@
             Thanks to JKEENAN (James E Keenan) for both fixes</comment>
     <requestid>1312568</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>55490c8c3d5b45d25c90e4af2d37d18c</srcmd5>
+    <version>0.150.0</version>
+    <time>1781369264</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-Data-Random/Changes
+  0.15      2026-03-01 00:15:18-08:00 America/Los_Angeles
+            - fix one more escaped whitespace warning missed in 0.14
+            Thanks to JKEENAN (James E Keenan) for the fix</comment>
+    <requestid>1359048</requestid>
+  </revision>
 </revisionlist>

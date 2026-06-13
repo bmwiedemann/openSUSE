@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:37:03 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-Data-Random/Changes
+
+  0.15      2026-03-01 00:15:18-08:00 America/Los_Angeles
+            - fix one more escaped whitespace warning missed in 0.14
+            Thanks to JKEENAN (James E Keenan) for the fix
+
+-------------------------------------------------------------------
 Tue Oct 14 11:45:10 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.140.0 (0.14)
