@@ -11,4 +11,12 @@ It is a great tool to launch various Doom/Heretic/Hexen source ports with maps a
 It is reasonably well maintained by upstream, with a significant update 2 months ago.</comment>
     <requestid>1357785</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8afc914e0b2044c1c8b4d3c6a15d526a</srcmd5>
+    <version>1.9.2</version>
+    <time>1781379208</time>
+    <user>dimstar_suse</user>
+    <comment>added fix-symlinks.patch</comment>
+    <requestid>1359102</requestid>
+  </revision>
 </revisionlist>

@@ -22,6 +22,8 @@ Summary:        Preset-oriented graphical launcher for Doom engine source ports
 License:        GPL-3.0-or-later
 URL:            https://github.com/Youda008/DoomRunner
 Source:         https://github.com/Youda008/DoomRunner/archive/refs/tags/v1.9.2.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM -- Commit 79a4519
+Patch0:         fix-symlinks.patch
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(Qt6Network)
@@ -35,7 +37,7 @@ It supports creating presets for each game (with mods) allowing for one-click
 switching between them.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %qmake6 QMAKE_POST_LINK='$(STRIP) $(TARGET)'

@@ -1,0 +1,23 @@
+From 3a772385a649cd01a1f1fdbcf592059d53b4d51d Mon Sep 17 00:00:00 2001
+From: nnelchior <100735206+nnelchior@users.noreply.github.com>
+Date: Wed, 10 Jun 2026 22:35:36 +0200
+Subject: [PATCH] fix: enable visibility of symbolic links in file browser
+ (#288)
+
+---
+ Sources/MainWindow.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Sources/MainWindow.cpp b/Sources/MainWindow.cpp
+index 50e29b7..a67d129 100644
+--- a/Sources/MainWindow.cpp
++++ b/Sources/MainWindow.cpp
+@@ -1124,7 +1124,7 @@ void MainWindow::setupMapPackList()
+ 	ui->mapDirView->setSelectionMode( QAbstractItemView::ExtendedSelection );
+ 
+ 	// set item filters
+-	mapModel.setFilter( QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot | QDir::NoSymLinks );
++	mapModel.setFilter( QDir::AllDirs | QDir::Files | QDir::NoDotAndDotDot );
+ 	mapModel.setNameFilters( makeFileSystemModelFilter( doom::getModSuffixes() ) );
+ 	mapModel.setNameFilterDisables( false );
+ 
