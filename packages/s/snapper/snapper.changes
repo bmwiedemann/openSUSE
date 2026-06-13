@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jun 12 09:47:19 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- add dependencies to dbus in service files (see bsc#1265853)
+
+-------------------------------------------------------------------
+Thu Jun 11 10:21:28 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- improved error handling when disconnected by dbus (see
+  gh#openSUSE/snapper#223)
+
+-------------------------------------------------------------------
+Wed Jun 10 09:13:13 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- improve error handling if uid of client cannot be detected
+  (see bsc#1265853)
+
+-------------------------------------------------------------------
+Fri Apr 24 05:05:24 UTC 2026 - Cheng-Ling Lai <jameslai.tech@gmail.com>
+
+- Add snapper-sync to synchronize the highest snapshot number
+  (gh#openSUSE/snapper#1128)
+
+-------------------------------------------------------------------
 Wed Mar 25 15:18:15 CET 2026 - Arvin Schnell <aschnell@suse.com>
 
 - fix deleting LVM configs in case of empty directories
