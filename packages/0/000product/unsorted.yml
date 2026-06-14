@@ -18850,6 +18850,7 @@ unsorted:
   - mcjoin 
   - mcomix 
   - mcp-dap-server 
+  - mcp-server-suseconnect 
   - mcp-server-systemd 
   - mcp-server-systemd-gatekeeper 
   - mcp-server-systemd-test 
@@ -24008,7 +24009,6 @@ unsorted:
   - python-oslo.utils-doc 
   - python-oslo.versionedobjects-doc 
   - python-osprofiler-doc 
-  - python-paramiko-doc 
   - python-peppercorn-doc 
   - python-pip-requirements-parser-doc 
   - python-ply-doc 
@@ -35883,6 +35883,7 @@ unsorted:
   - python314-ttp 
   - python314-ttp-templates 
   - python314-tuf 
+  - python314-tvm 
   - python314-tweepy 
   - python314-twine 
   - python314-twython 
