@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun  2 14:46:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * Drop Python 3.10
+  * tox: Use new constraints option
+  * Fix new mypy error
+  * typing: Fix return type
+  * Skip functional tests for unit test code update
+  * Skip functional jobs for git config updates
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Run functional tests in gate
+  * Remove [cache] enforce_fips_mode
+  * Create helper to document backends
+  * Update backends with tls_allowed_ciphers support
+  * Fix outdated lower bound of redis library
+  * Fix wrong module name in warning messages
+  * Drop unnecessary import
+  * Update master for stable/2026.1
+  * redis: Support tls_allowed_cipher
+  * Refactor setup of redis backend
+  * Drop verbose logs about config options
+  * Stop passing down tls_enabled argument
+
+-------------------------------------------------------------------
 Sun Mar  8 20:36:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.1:

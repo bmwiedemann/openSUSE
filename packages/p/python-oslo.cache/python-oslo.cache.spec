@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.cache
-Version:        4.1.1
+Version:        4.2.0
 Release:        0
 Summary:        Cache storage for Openstack projects
 License:        Apache-2.0
@@ -29,12 +29,13 @@ BuildRequires:  %{python_module oslo.config >= 8.1.0}
 BuildRequires:  %{python_module oslo.i18n >= 5.0.0}
 BuildRequires:  %{python_module oslo.log >= 4.2.1}
 BuildRequires:  %{python_module oslo.utils >= 4.2.0}
-BuildRequires:  %{python_module oslotest}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pymemcache}
-BuildRequires:  %{python_module python-binary-memcached}
-BuildRequires:  %{python_module python-memcached}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module pymemcache >= 3.5.0}
+BuildRequires:  %{python_module python-binary-memcached >= 0.29.0}
+BuildRequires:  %{python_module python-memcached >= 1.56}
+BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-dogpile.cache >= 1.3.3
@@ -42,7 +43,7 @@ Requires:       python-oslo.config >= 8.1.0
 Requires:       python-oslo.i18n >= 5.0.0
 Requires:       python-oslo.log >= 4.2.1
 Requires:       python-oslo.utils >= 4.2.0
-Requires:       python-python-memcached
+Requires:       python-python-memcached >= 1.56
 BuildArch:      noarch
 %python_subpackages
 
