@@ -867,4 +867,15 @@
   * Fix an issue where poetry publish --build ignored failing builds and</comment>
     <requestid>1351349</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>6488262f4d7efc69708875ab5ba0d48f</srcmd5>
+    <version>2.4.1</version>
+    <time>1781545422</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.1:
+  * Re-allow `installer==0.7.0` (#10887).
+  * Fix an issue where `poetry update &lt;package&gt;` failed when
+    `&lt;package&gt;` was a transitive dependency (#10885).</comment>
+    <requestid>1359282</requestid>
+  </revision>
 </revisionlist>

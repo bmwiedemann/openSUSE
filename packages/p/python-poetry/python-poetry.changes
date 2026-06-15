@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 17:05:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Re-allow `installer==0.7.0` (#10887).
+  * Fix an issue where `poetry update <package>` failed when
+    `<package>` was a transitive dependency (#10885).
+
+-------------------------------------------------------------------
 Thu May  7 06:02:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.0:
