@@ -217,4 +217,19 @@
     AliasChoices</comment>
     <requestid>1349277</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a3694e7be425f629cff079f5b688f761</srcmd5>
+    <version>2.14.1</version>
+    <time>1781545432</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14.1:
+  * Bump the python-packages group with 4 updates
+  * Bump the python-packages group with 5 updates
+  * Bump the github-actions group with 3 updates
+  * Bump the python-packages group with 2 updates
+  * Fix field named `cls` conflicting with classmethod parameter
+
+- Switch to using python3 -m pytest for running the testsuite.</comment>
+    <requestid>1359290</requestid>
+  </revision>
 </revisionlist>

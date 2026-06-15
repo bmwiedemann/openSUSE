@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pydantic-settings%{psuffix}
-Version:        2.14.0
+Version:        2.14.1
 Release:        0
 Summary:        Settings management using Pydantic
 License:        MIT

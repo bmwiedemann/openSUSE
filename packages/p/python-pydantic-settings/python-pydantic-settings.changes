@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 18:19:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.14.1:
+  * Bump the python-packages group with 4 updates
+  * Bump the python-packages group with 5 updates
+  * Bump the github-actions group with 3 updates
+  * Bump the python-packages group with 2 updates
+  * Fix field named `cls` conflicting with classmethod parameter
+
+-------------------------------------------------------------------
 Sat Apr 25 20:03:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.0:
@@ -49,7 +59,7 @@ Sat Apr 25 20:03:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Mar 25 03:11:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to using python3 -m pytest for running the testsuite. 
+- Switch to using python3 -m pytest for running the testsuite.
 
 -------------------------------------------------------------------
 Tue Mar 24 16:27:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
