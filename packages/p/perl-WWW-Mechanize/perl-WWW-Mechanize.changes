@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:54:42 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.210.0 (2.21)
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.21      2026-06-13 07:53:14Z
+      [FIXED]
+      - Link extraction no longer drops links which follow an unclosed <a> tag
+        (GH#212) (Olaf Alders)
+
+-------------------------------------------------------------------
 Thu Oct 23 05:34:21 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.200.0 (2.20)

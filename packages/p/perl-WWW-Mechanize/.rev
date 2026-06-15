@@ -401,4 +401,17 @@
         Alders)</comment>
     <requestid>1313397</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1b855f829eb28f48ef92661c641ac344</srcmd5>
+    <version>2.210.0</version>
+    <time>1781545260</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.210.0 (2.21)
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+  2.21      2026-06-13 07:53:14Z
+      [FIXED]
+      - Link extraction no longer drops links which follow an unclosed &lt;a&gt; tag
+        (GH#212) (Olaf Alders)</comment>
+    <requestid>1359510</requestid>
+  </revision>
 </revisionlist>
