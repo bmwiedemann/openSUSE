@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  9 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 1.1.10
+  * Added a license text field in the project properties
+  * Added author information in the preferences,
+    which are then stored in ".pxo" files
+  * Added a shortcut to rename layers. By default, it's "F2".
+  and more
+  
+- Update to 1.1.9
+  * It is now finally possible to split layers when exporting spritesheets
+  * Implemented the ability to export tilesets as images or Godot "TileSet"
+    resources from the Project Properties window
+  * Duplicating cels is now possible, either from the cel button menu,
+    or by using a shortcut, which is "Alt + D" by default
+  * Search bar has been added in the Preferences
+  * mimetype of pxo files has been changed to "application/x-pixelorama"
+  * export file directory and name are stored inside pxo files
+  * Undo/redo now works for layer properties
+  * Improved idle GPU performance because the window was being constantly
+    re-drawn, even if nothing was visibly changing
+  and more
+
+-------------------------------------------------------------------
 Thu Jan 8 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 1.1.8

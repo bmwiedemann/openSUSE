@@ -20,7 +20,7 @@
 %define nameupper Pixelorama
 
 Name:           pixelorama
-Version:        1.1.8
+Version:        1.1.10
 Release:        0
 Summary:        2D sprite editor
 License:        MIT
@@ -28,8 +28,8 @@ Group:          Productivity/Graphics/Bitmap Editors
 URL:            https://github.com/Orama-Interactive/Pixelorama
 Source0:        https://codeload.github.com/Orama-Interactive/%{nameupper}/tar.gz/refs/tags/v%{version}#/%{nameupper}-%{version}.tar.gz
 BuildRequires:  fdupes
-BuildRequires:  godot >= 4.5.1
-BuildRequires:  godot-runner >= 4.5.1
+BuildRequires:  godot >= 4.6.1
+BuildRequires:  godot-runner >= 4.6.1
 BuildRequires:  vendored_licenses_packager
 # currently no godot binary
 ExcludeArch:    %arm
