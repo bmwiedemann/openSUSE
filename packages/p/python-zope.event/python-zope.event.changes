@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:10:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.2:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Allow setuptools < 82 as build system.
+
+-------------------------------------------------------------------
 Mon Nov 10 10:30:12 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1:

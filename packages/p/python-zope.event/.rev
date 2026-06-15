@@ -209,4 +209,14 @@
 - Initial Package, Version 3.5.0</comment>
     <requestid>1346270</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5eb69b8a6e3a7a5a80d6fa2bb669114e</srcmd5>
+    <version>6.2</version>
+    <time>1781545234</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.2:
+  * Move package metadata from setup.py to pyproject.toml.
+  * Allow setuptools &lt; 82 as build system.</comment>
+    <requestid>1359305</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-zope.event
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,14 +19,15 @@
 %global modname zope_event
 %{?sle15_python_module_pythons}
 Name:           python-zope.event
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Very basic event publishing system
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/%{modname}
 Source:         https://files.pythonhosted.org/packages/source/z/zope.event/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.1.1}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Documentation requirements:
