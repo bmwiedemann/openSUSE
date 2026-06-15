@@ -239,4 +239,32 @@
 </comment>
     <requestid>1347143</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>87663ef2652dae06a19955cc830dd13f</srcmd5>
+    <version>1.8.21</version>
+    <time>1781545189</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.21:
+  * Return evaluate result in DAP response body instead of
+    writing to stdout: #2027
+  * Prevent invalid `scopes` request from crashing debug session:
+  * Skip uninitialized `__slots__` in variable resolver: #2024
+  * Handle `-c` arguments that are `bytes` instead of `str`:
+  * Fix evaluation of variables from chained exception frames:
+  * `ContinueRequest` with a specific `threadId` no longer
+    resumes all threads (in-process adapter): #2012
+  * Avoid strong reference to exceptions during unwind: #2008
+  * Show error message on evaluate failures in the hover context:
+  * Display `dlerror` output when `dlopen` fails: #2000
+  * Replace removed `pkgutil.get_loader` with
+    `importlib.util.find_spec` in `get_fullname`: #1998
+  * Enhancements:
+  * Add option to ignore all system exit codes: #2017
+  * Pull changes from pydevd up to March 2026: #2010
+  * Infrastructure work:
+  * Suppress Flawfinder false positives on Cython memcpy / read-
+    loop iterators (TSA #2816216, #2816217, #2816218, #2816219,
+    #2816220): #2028, #2029, #2030, #2031, #2032</comment>
+    <requestid>1359208</requestid>
+  </revision>
 </revisionlist>
