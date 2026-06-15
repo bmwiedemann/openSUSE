@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:16:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.136.3:
+  * Do not accept underscore headers when using
+    `convert_underscores=True` (the default).
+- update to 0.136.2:
+  * Validate Server Sent Event fields to avoid applications
+    from sending broken data.
+  * Document `--entrypoint` CLI option.
+  * Update and simplify docs about help and management.
+  * Add docs references to central contributing docs.
+  * Update security policy
+  * Improve layout and styling.
+  * Refactor opinions section with interactive tabs and new
+    logos.
+  * Add FastAPI Conf '26 announcement to docs.
+  * Update tests, don't double dispose the engine.
+  * Speed up test suite via caching and fixture scopes to make
+    it ~24% faster.
+
+-------------------------------------------------------------------
 Sun May  3 17:46:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.136.1:
