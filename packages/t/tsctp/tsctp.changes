@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 13 09:11:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.6
+  * Bugfix: return error if socket creation fails.
+  * Improved CMakeLists.txt.
+  * Improved manpage.
+
+-------------------------------------------------------------------
 Wed Apr 29 18:15:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.5
