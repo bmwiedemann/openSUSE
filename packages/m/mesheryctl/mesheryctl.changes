@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Mon Jun 15 04:59:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.43:
+  * General
+    - Bump shell-quote from 1.8.3 to 1.8.4 in
+      /install/docker-extension/ui @dependabot[bot] (#19948)
+    - [Docs] Fix broken mesheryctl reference page anchor links
+      @copilot-swe-agent[bot] (#20029)
+    - Update MAINTAINERS.md: Add Mericio's last name and adjust
+      table formatting. @simihablo (#20005)
+    - fix(tests): remove seeding assertions from
+      MapPreferencePersister test @ishwar170695 (#19602)
+    - Update integrations-updater.yml @marblom007 (#20002)
+  * Meshery CLI
+    - Restucture docs and fix 404 path resolve, toggle relative Url
+      to false @CodexRaunak (#19997)
+  * Maintenance
+    - Add sparse checkout @CodexRaunak (#19998)
+    - Update hugo.yml @CodexRaunak (#20007)
+    - ci(docs): sparse, blobless checkout for Hugo Pages deploy
+      @leecalcote (#20004)
+    - CI: Bump notify-providers to include additional provider
+      @sarajkrishnasingh (#20000)
+    - Restucture docs and fix 404 path resolve, toggle relative Url
+      to false @CodexRaunak (#19997)
+  * Documentation
+    - [Docs] Fix broken Credential Schema hyperlink @emphor11
+      (#19990)
+    - Revise description for Academies extension @winkletinkle
+      (#20026)
+    - Fix link to meshery-academy in documentation @marblom007
+      (#20027)
+    - Restucture docs and fix 404 path resolve, toggle relative Url
+      to false @CodexRaunak (#19997)
+    - [Docs] Fix broken mesheryctl registry hyperlinks in registry
+      concept … @aprv10 (#19988)
+    - fix: improve mobile search experience @Sbragul26 (#19881)
+
+-------------------------------------------------------------------
 Thu Jun 11 05:47:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.42:
