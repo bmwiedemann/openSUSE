@@ -438,4 +438,18 @@
 - add obsoletes/conflicts</comment>
     <requestid>1343461</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3d1262686fe0e91adf4db00cb8d0f4e2</srcmd5>
+    <version>8.1.0</version>
+    <time>1781545479</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.1.0:
+  * tox: Use new constraints option
+  * tests: Use subTest
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1</comment>
+    <requestid>1359326</requestid>
+  </revision>
 </revisionlist>

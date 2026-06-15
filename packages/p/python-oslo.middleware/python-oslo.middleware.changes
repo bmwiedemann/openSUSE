@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:13:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.1.0:
+  * tox: Use new constraints option
+  * tests: Use subTest
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 21:30:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.0.0:

@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.middleware
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        OpenStack oslo.middleware library
 License:        Apache-2.0
