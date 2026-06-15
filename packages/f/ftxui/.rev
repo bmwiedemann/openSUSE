@@ -61,4 +61,13 @@
     performance improvement.</comment>
     <requestid>1104996</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>83c321255f6f67b15f96ec8f35bd2b15</srcmd5>
+    <version>7.0.0</version>
+    <time>1781545558</time>
+    <user>anag_factory</user>
+    <comment>- Update to 7.0.0:
+  See https://github.com/ArthurSonzogni/FTXUI/releases/tag/v7.0.0</comment>
+    <requestid>1359355</requestid>
+  </revision>
 </revisionlist>

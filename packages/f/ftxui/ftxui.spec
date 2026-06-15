@@ -1,7 +1,7 @@
 #
 # spec file for package ftxui
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         c_lib libftxui5_0_0
+%define         c_lib libftxui7
 Name:           ftxui
-Version:        5.0.0
+Version:        7.0.0
 Release:        0
 Summary:        A C++ library for terminal based user interfaces
 License:        MIT
@@ -65,9 +65,9 @@ Development files for ftxui.
 %files -n %{c_lib}
 %license LICENSE
 %doc CHANGELOG.md README.md
-%{_libdir}/libftxui-component.so.5.0.0
-%{_libdir}/libftxui-dom.so.5.0.0
-%{_libdir}/libftxui-screen.so.5.0.0
+%{_libdir}/libftxui-component.so.*
+%{_libdir}/libftxui-dom.so.*
+%{_libdir}/libftxui-screen.so.*
 
 %files devel
 %license LICENSE
