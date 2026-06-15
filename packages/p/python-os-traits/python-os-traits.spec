@@ -17,7 +17,7 @@
 
 
 Name:           python-os-traits
-Version:        3.6.0
+Version:        3.8.0
 Release:        0
 Summary:        Library containing standardized trait strings.
 License:        Apache-2.0

@@ -7,4 +7,15 @@
     <comment></comment>
     <requestid>1337758</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3f5c35c393f0608d682c3a3a36745b4e</srcmd5>
+    <version>3.8.0</version>
+    <time>1781545481</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.8.0:
+  * Add a new trait for Intel TDX
+  * Deprecate version attribute
+  * Add a new trait for AMD SEV-SNP</comment>
+    <requestid>1359327</requestid>
+  </revision>
 </revisionlist>

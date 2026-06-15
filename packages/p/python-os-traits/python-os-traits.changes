@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:20:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.8.0:
+  * Add a new trait for Intel TDX
+  * Deprecate version attribute
+  * Add a new trait for AMD SEV-SNP
+
+-------------------------------------------------------------------
 Mon Mar  9 15:31:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.6.0:
