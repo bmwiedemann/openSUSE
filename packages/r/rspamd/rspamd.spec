@@ -29,7 +29,7 @@
 %global luajit_version luajit
 
 %ifarch %{ix86} x86_64 aarch64
-  %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+  %if 0%{?suse_version} > 1500
     %bcond_without hyperscan
   %endif
   %if 0%{?suse_version} > 1600
@@ -140,6 +140,7 @@ Requires:       (%{name}-apparmor if apparmor-abstractions)
 Requires(pre):  shadow
 Provides:       group(%{rspamd_group})
 Provides:       user(%{rspamd_user})
+ExcludeArch:    %{ix86}
 
 %description
 Rspamd is a spam filtering system that allows evaluation of messages

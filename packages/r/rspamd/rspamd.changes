@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 11:27:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Disable hyperscan on sles 15. The library seems missing
+- Disable ix86 builds
+
+-------------------------------------------------------------------
 Fri Jun  5 11:51:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.1.0
