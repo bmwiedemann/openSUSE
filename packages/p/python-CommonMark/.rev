@@ -145,4 +145,19 @@ This version fixes the conflict with the &quot;cmark&quot; package.</comment>
     <comment></comment>
     <requestid>1274650</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>18bab5e6ab6ba5f7bcdc961fdb14a1fc</srcmd5>
+    <version>0.9.2</version>
+    <time>1781545306</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.9.2:
+  * Deprecate package. Use markdown-it-py instead.
+  * Remove testing on python 3.4.
+
+- Remove test on python2 since it only works with python3
+- Drop broken %ifpython3 macro
+  * The CommonMark spec has been updated to 0.29.
+- Initial packaging on obs</comment>
+    <requestid>1359207</requestid>
+  </revision>
 </revisionlist>
