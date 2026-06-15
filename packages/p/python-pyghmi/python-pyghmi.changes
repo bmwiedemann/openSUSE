@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:49:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.17:
+  * Fix XCC firmware updates
+  * Add http boot dev
+  * Fix other redfish update backends
+  * Make changes for MegaRac
+  * Remove stray debug output
+  * More enhancements for generic MegaRAC
+  * Handle None Gateway value
+  * Change FPGA to BCD format
+  * Fix bootsourceoverridemode
+
+-------------------------------------------------------------------
 Mon May 18 16:29:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.16:

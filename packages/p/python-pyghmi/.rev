@@ -560,4 +560,21 @@
   * Add more data to service logs from XCC3</comment>
     <requestid>1353865</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2069ae687a63887b52729cf75cc4c4a8</srcmd5>
+    <version>1.6.17</version>
+    <time>1781545399</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.17:
+  * Fix XCC firmware updates
+  * Add http boot dev
+  * Fix other redfish update backends
+  * Make changes for MegaRac
+  * Remove stray debug output
+  * More enhancements for generic MegaRAC
+  * Handle None Gateway value
+  * Change FPGA to BCD format
+  * Fix bootsourceoverridemode</comment>
+    <requestid>1359269</requestid>
+  </revision>
 </revisionlist>
