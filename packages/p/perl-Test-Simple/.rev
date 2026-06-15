@@ -499,4 +499,14 @@
       - Amend tests to adapt to more accurate line number reporting in core (#1080)</comment>
     <requestid>1359050</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>9bf1ebc634c444b0794bafdc6802584b</srcmd5>
+    <version>1.302221</version>
+    <time>1781545249</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.302221
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+  1.302221  2026-06-13 22:12:23-07:00 America/Los_Angeles</comment>
+    <requestid>1359505</requestid>
+  </revision>
 </revisionlist>
