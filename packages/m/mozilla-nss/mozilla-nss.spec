@@ -17,16 +17,16 @@
 #
 
 
-%global nss_softokn_fips_version 3.123
+%global nss_softokn_fips_version 3.124
 %define NSPR_min_version 4.39
 %define nspr_ver %(rpm -q --queryformat '%%{VERSION}' mozilla-nspr)
 %define nssdbdir %{_sysconfdir}/pki/nssdb
 %global crypto_policies_version 20210218
 %define fips 0
 Name:           mozilla-nss
-Version:        3.123.1
+Version:        3.124
 Release:        0
-%define underscore_version 3_123_1
+%define underscore_version 3_124
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
@@ -89,6 +89,7 @@ BuildRequires:  gcc9-c++
 BuildRequires:  gcc-c++
 %endif
 BuildRequires:  pkgconfig
+BuildRequires:  sqlite3
 BuildRequires:  pkgconfig(nspr) >= %{NSPR_min_version}
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
@@ -381,8 +382,7 @@ cp -L  lib/libfreebl3.so \
 #cp -L  lib/libnsssqlite3.so \
 #       %{buildroot}%{_libdir}
 # copy static libs
-cp -L  lib/libcrmf.a \
-       lib/libfreebl.a \
+cp -L  lib/libfreebl.a \
        lib/libnssb.a \
        lib/libnssckfw.a \
        %{buildroot}%{_libdir}

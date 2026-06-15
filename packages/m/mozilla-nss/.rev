@@ -3656,4 +3656,41 @@
 - disabled FIPS patches temporarily (need significant rebasing)</comment>
     <requestid>1354980</requestid>
   </revision>
+  <revision rev="241" vrev="1">
+    <srcmd5>1ac379407c4dce041f2ed1d1009952b0</srcmd5>
+    <version>3.124</version>
+    <time>1781545203</time>
+    <user>anag_factory</user>
+    <comment>- update to NSS 3.124
+  * bmo#2032562 - Add test for PKCS7 digest array alignment.
+  * bmo#2030093 - Add test for rejection of excessively large ASN.1
+                  SEQUENCE OF in quickder.
+  * bmo#2030994 - Add test for CMS content size validation.
+  * bmo#2030995 - Add regression tests for DSAU signature decoding.
+  * bmo#2031030 - Add test for S/MIME profile lookup on temp certs.
+  * bmo#2031343 - Test case for post-handshake auth and many certificate
+                  requests.
+  * bmo#2019233 - Add test for intra-arena ASan redzones.
+  * bmo#2033058 - update nss_status flags one at a time.
+  * bmo#2029803 - add defensive info-&gt;len check in PK11_HPKE_SetupS and
+                  PK11_HPKE_SetupR.
+  * bmo#2029403 - avoid PORT_Strdup in ssl_DecodeResumptionToken.
+  * bmo#2020596 - add runtime check on decoded resumption token session id.
+  * bmo#2035882 - improve mach try error handling.
+  * bmo#2030798 - clang format.
+  * bmo#2030798 - add comprehensive SECItem and SECItemArray tests.
+  * bmo#2033058 - add bugzilla_cf_status_nss.py script.
+  * bmo#2033057 - regenerate some recent release notes.
+  * bmo#2033057 - fix bug list output by release note and email scripts.
+  * bmo#2031190 - test removal from trust domain email cache.
+  * bmo#2033208 - fix &quot;testing if key corruption is detected in attribute&quot;
+                  failures with sqlite-3.53.0.
+  * bmo#2035348 - build sqlite3 shell for Windows CI runners.
+  * bmo#2030366 - avoid race with module unloading in NSSTrustDomain_FindTokensByURI
+  * bmo#2030192 - add ImportEd25519WithNonEmptyAlgorithmParams test.
+  * bmo#2034258 - add CLAUDE.md and .mcp.json.
+  * bmo#2034244 - add a mach try command.
+  * bmo#2031042 - remove dead condition in sec_asn1d_check_and_subtract_length</comment>
+    <requestid>1359233</requestid>
+  </revision>
 </revisionlist>
