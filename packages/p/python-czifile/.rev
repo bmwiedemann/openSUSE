@@ -50,4 +50,22 @@
     <comment></comment>
     <requestid>1352782</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>48676b7b12cf2bcf49d163e61c74ae4f</srcmd5>
+    <version>2026.6.12</version>
+    <time>1781545326</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6.12:
+  * Add CziDirectoryEntryDV.asimage convenience method.
+  * Refactor segment, directory, and content file parsing
+    (breaking).
+  * Add memmap parameter to CziFile/imread for lock-free parallel
+    subblock reads.
+  * Add writable property to BinaryFile.
+  * Change read_content functions to accept bytes or memoryview.
+  * Remove read_array function.
+  * Require imagecodecs &gt;= 2026.6.6 for zstd1 codec.
+  * Support Python 3.15.</comment>
+    <requestid>1359230</requestid>
+  </revision>
 </revisionlist>

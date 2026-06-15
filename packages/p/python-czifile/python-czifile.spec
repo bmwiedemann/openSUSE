@@ -25,7 +25,7 @@
 %define packagename czifile
 %global skip_python311 1
 Name:           python-czifile
-Version:        2026.4.30
+Version:        2026.6.12
 Release:        0
 Summary:        Read Carl Zeiss(r) Image (CZI) files
 License:        BSD-3-Clause

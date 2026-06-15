@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 14 10:27:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6.12:
+  * Add CziDirectoryEntryDV.asimage convenience method.
+  * Refactor segment, directory, and content file parsing
+    (breaking).
+  * Add memmap parameter to CziFile/imread for lock-free parallel
+    subblock reads.
+  * Add writable property to BinaryFile.
+  * Change read_content functions to accept bytes or memoryview.
+  * Remove read_array function.
+  * Require imagecodecs >= 2026.6.6 for zstd1 codec.
+  * Support Python 3.15.
+
+-------------------------------------------------------------------
 Tue May 12 13:58:31 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - update to 2026.4.30:
