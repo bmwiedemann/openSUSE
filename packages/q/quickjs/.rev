@@ -7,4 +7,26 @@
     <comment>initial addition of quickjs, to be used by `yt-dlp` to start</comment>
     <requestid>1318365</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5007ee95986524560324be7f38a338c5</srcmd5>
+    <version>20260604</version>
+    <time>1781545511</time>
+    <user>anag_factory</user>
+    <comment>- Switch back to upstream release version
+- own lib folder from devel package
+- Update to version 2026-06-04:
+  * added custom malloc for small blocks (11% faster on bench-v8)
+  * micro optimizations (30% faster on bench-v8)
+  * added resizable array buffers
+  * added ArrayBuffer.prototype.transfer
+  * added the Iterator object and methods
+  * added set methods
+  * added Atomics.pause
+  * added added Map and WeakMap upsert methods
+  * added Math.sumPrecise()
+  * added regexp duplicate named groups
+  * added base64 and hexadecimal encodings for Uint8Array
+  * misc bug fixes</comment>
+    <requestid>1359339</requestid>
+  </revision>
 </revisionlist>

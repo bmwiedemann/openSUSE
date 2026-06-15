@@ -1,0 +1,6 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/hramrach/quickjs.git</param>
+              <param name="changesrevision">bc629c8b659edd31eb532ae7ccc5f7816098d5d6</param></service><service name="tar_scm">
+                <param name="url">https://github.com/bellard/quickjs.git</param>
+              <param name="changesrevision">a31dcef98c7d1d8927871ac169a1c24ad8875046</param></service></servicedata>

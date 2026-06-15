@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Mon Jun 15 02:22:41 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Switch back to upstream release version
+- own lib folder from devel package
+- Update to version 2026-06-04:
+  * added custom malloc for small blocks (11% faster on bench-v8)
+  * micro optimizations (30% faster on bench-v8)
+  * added resizable array buffers
+  * added ArrayBuffer.prototype.transfer
+  * added the Iterator object and methods
+  * added set methods
+  * added Atomics.pause
+  * added added Map and WeakMap upsert methods
+  * added Math.sumPrecise()
+  * added regexp duplicate named groups
+  * added base64 and hexadecimal encodings for Uint8Array
+  * misc bug fixes
+
+-------------------------------------------------------------------
+Mon Mar 23 16:39:27 UTC 2026 - msuchanek@suse.de
+
+- Update to version 20250913+git92.a31dcef (upstream git snapshot):
+  * added basic protection against too large function in serialized bytecode
+  * fixed use-after-free via re-entrant GC in FinalizationRegistry weak reference cleanup (#494)
+  * Fix async generator lifecycle bug (bnoordhuis) (quickjs-ng/quickjs#1355)
+  * fixed RegExp.escape
+  * fixed buffer overflow in Atomics with resizable typed arrays
+  * Fix memory leak in Iterator.prototype.map (saghul) (#493)
+  * fixed buffer overflow in TypedArray.prototype.with (#492)
+  * Fix stack underflow with generator in iterable (saghul) (#488)
+
+-------------------------------------------------------------------
+Mon Feb 16 11:44:51 UTC 2026 - msuchanek@suse.de
+
+- Update to version 20250913+git83.bc629c8 (upstream git snapshot + cherry-picked fixes):
+  * Fix heap buffer overflow via side-effects in js_typed_array_constructor
+  * Fix heap buffer overflow in js_typed_array_constructor_ta (bsc#1256914 CVE-2026-1145)
+  * Add tests for OOB access in atomic ops
+  * Fix use-after-free in Atomics operations with resizable ArrayBuffers (bsc#1256911 CVE-2026-1144)
+  * \x{N} is a syntax error
+  * slightly faster lexical variable assignment
+  * Don't call well-known Symbol methods for RegExp on primitive values
+  * removed use after free in js_create_module_bytecode_function() (#467)
+  * removed memory leak in case of error in cpool_add() (#468)
+  * fixed fast array extension optimization when there are multiple realms
+  * added regexp duplicate named groups - fixed reset of captures with quantizers
+  * updated to unicode 17.0.0 - updated test262 version
+  * fixed Worker freeing logic (#462)
+  * - optimized Regexp.prototype.exec - optimized String.prototype.replace - optimized 'arguments' object creation - optimized access to non strict 'arguments' elements
+  * faster and simpler implementation of regexp backtracking
+  * fixed BJSON array serialization (#457)
+  * Added Iterator.concat (initial patch by bnoordhuis)
+  * optimized add/sub int32 overflow
+  * added error checking in JS_InstantiateFunctionListItem()
+  * Closure optimization
+  * Restore a mistakenly removed goto on error in js_build_module_ns() (igorburago)
+  * fixed JS_PROP_AUTOINIT handling in js_closure_define_global_var() (#455)
+  * fixed exception handling in put_var operation (regression introduced by commit a6816be) (#454)
+  * More informative "not a constructor" error message (initial patch by bnoordhuis) (#368)
+  * Fix length check in ArrayBuffer.prototype.slice (bnoordhuis) (#451)
+  * fixed DataView resizing
+  * qjs: added --strict option
+  * Much faster destructuring at the expense of a slight incompatibility with the spec when direct evals are present (v8 behaves the same way).
+  * fixed operation order in Regexp constructor
+  * changed module rejection order according to spec change
+  * optimized Array.prototype.push
+  * added js_string_eq()
+  * fixed argument evaluation order in Date constructor and Date.UTC()
+  * faster and safer dbuf functions (#443)
+  * Faster context creation and exception checks in JS_NewContext (#404)
+  * faster appending of elements in arrays
+  * optimized string_buffer_putc()
+  * optimized post_inc and post_dec
+  * optimized array access
+  * optimized global variable access
+  * optimize the create of arrays
+  * Improve error handling in Promise.withResolvers (bnoordhuis)
+  * fixed Date parsing: "1997-03-08 11:19:10-0700" is a valid date and "1997-03-08T11:19:10-07" should yield an error
+  * added Math.sumPrecise()
+  * added Map and WeakMap upsert methods (bnoordhuis)
+  * - added Atomics.pause (bnoordhuis)
+  * - added resizable array buffers (bnoordhuis)
+  * fixed parsing of computed property name
+  * - added ArrayBuffer.prototype.transfer (Divy Srivastava)
+  * added the Iterator object
+  * added set methods (bnoordhuis)
+  * removed memory leak (#441)
+
+-------------------------------------------------------------------
+Fri Feb  6 01:23:13 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- ship libquickjs in devel, qjsc works now
+
+-------------------------------------------------------------------
 Tue Nov 18 01:35:26 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 2025-09-13:
