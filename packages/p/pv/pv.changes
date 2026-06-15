@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:42:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.11.0
+  * New --monitor option to run a command and watch its input,
+    output, or both.
+  * Allow fractional values for --rate-limit.
+
+-------------------------------------------------------------------
 Fri Apr  3 14:15:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.10.5
