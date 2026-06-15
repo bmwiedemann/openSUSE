@@ -7,4 +7,16 @@
     <comment>Yet another Azure SDK package</comment>
     <requestid>1289526</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0ae6b7f7a14c2033b5efe3c223126048</srcmd5>
+    <version>1.0.0~b2</version>
+    <time>1781545831</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0b2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1359383 from glaubitz)</comment>
+    <requestid>1359530</requestid>
+  </revision>
 </revisionlist>
