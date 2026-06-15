@@ -101,4 +101,17 @@
   * Minor infrastructure changes</comment>
     <requestid>1316823</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>83640ed88690e49b98cd7e5d8ad48337</srcmd5>
+    <version>1.4.0</version>
+    <time>1781545441</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * HSMSigner: Fix usage with multi-byte keyids
+  * SigstoreSigner: Update to current sigstore-python API
+  * Deprecate Python 3.9 support
+  * Various testing changes -- note that AWS is currently not
+    tested in CI (see #1104)</comment>
+    <requestid>1359298</requestid>
+  </revision>
 </revisionlist>

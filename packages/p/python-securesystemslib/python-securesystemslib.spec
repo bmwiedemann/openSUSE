@@ -1,7 +1,7 @@
 #
 # spec file for package python-securesystemslib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-securesystemslib
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Cryptographic and general routines for Secure Systems Lab
 License:        MIT
@@ -26,15 +26,15 @@ URL:            https://github.com/secure-systems-lab/securesystemslib
 Source:         https://files.pythonhosted.org/packages/source/s/securesystemslib/securesystemslib-%{version}.tar.gz
 BuildRequires:  %{python_module PyKCS11}
 BuildRequires:  %{python_module asn1crypto}
-BuildRequires:  %{python_module cryptography >= 3.3.2}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module cryptography >= 40.0.0}
+BuildRequires:  %{python_module hatchling >= 1.29.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyKCS11
 Requires:       python-asn1crypto
-Requires:       python-cryptography
+Requires:       python-cryptography >= 40.0.0
 BuildArch:      noarch
 %python_subpackages
 
