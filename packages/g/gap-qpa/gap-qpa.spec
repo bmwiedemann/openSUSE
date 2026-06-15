@@ -17,7 +17,7 @@
 
 
 Name:           gap-qpa
-Version:        1.36
+Version:        1.37
 Release:        0
 Summary:        GAP: Quivers and Path Algebras
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ Source:         https://github.com/gap-packages/qpa/archive/refs/tags/v%version.
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
-Requires:       gap-core >= 4.5
+Requires:       gap-core >= 4.11
 Requires:       gap-gbnp >= 0.9.5
 
 %description
