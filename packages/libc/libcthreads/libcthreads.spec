@@ -18,7 +18,7 @@
 
 Name:           libcthreads
 %define lname	libcthreads1
-Version:        20260612
+Version:        20260615
 Release:        0
 Summary:        Library for C threads functions
 License:        LGPL-3.0-or-later
