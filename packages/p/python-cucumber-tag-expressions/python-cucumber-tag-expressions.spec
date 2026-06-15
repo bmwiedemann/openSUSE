@@ -17,7 +17,7 @@
 
 
 Name:           python-cucumber-tag-expressions
-Version:        9.1.0
+Version:        10.0.0
 Release:        0
 Summary:        Provides a tag-expression parser and evaluation logic for cucumber/behave
 License:        MIT

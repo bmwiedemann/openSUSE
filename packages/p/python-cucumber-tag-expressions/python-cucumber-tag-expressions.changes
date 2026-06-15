@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:39:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.0.0:
+  * [NET] - Upgraded Test project dependencies and adjusted test
+    code due to breaking changes in MSTest v4.
+
+-------------------------------------------------------------------
 Fri Mar 27 10:39:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.1.0:

@@ -22,4 +22,14 @@
   * Improve error message for missing operands</comment>
     <requestid>1343153</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5e3fa6535c1057d16299e2dedadce626</srcmd5>
+    <version>10.0.0</version>
+    <time>1781545318</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.0.0:
+  * [NET] - Upgraded Test project dependencies and adjusted test
+    code due to breaking changes in MSTest v4.</comment>
+    <requestid>1359219</requestid>
+  </revision>
 </revisionlist>
