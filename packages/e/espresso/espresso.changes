@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  9 18:18:10 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Buildrequire Boost >= 1.83.0 rather than a fixed version
+- Only build with SHARED_MEMORY_PARALLELISM if kokkos-devel is >= 4.6
+
+-------------------------------------------------------------------
 Mon Mar  2 13:06:42 UTC 2026 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
 
 - Update to 5.0.0:

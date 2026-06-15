@@ -1,7 +1,7 @@
 #
 # spec file for package espresso
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Christoph Junghans
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,6 @@
 %define pkgname espresso
 %define modname %{pkgname}md
 # Build with OpenMPI
-%define boostver      1_90_0
 %define mypy_sitearch %{python313_sitearch}
 %define py_dot_version %(echo %{modern_python} | sed -e 's/^python//' -e 's/\\([0-9]\\)/\\1./')
 
@@ -54,8 +53,8 @@ BuildRequires:  git
 BuildRequires:  gsl-devel
 BuildRequires:  hdf5-%{mpiver}-devel
 BuildRequires:  kokkos-devel
-BuildRequires:  libboost_mpi%{boostver}-devel
-BuildRequires:  libboost_test%{boostver}-devel
+BuildRequires:  libboost_mpi-devel >= 1.83
+BuildRequires:  libboost_test-devel >= 1.83
 BuildRequires:  nlopt-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
@@ -125,7 +124,11 @@ source %{_libdir}/mpi/gcc/%{mpiver}/bin/mpivars.sh
   -DESPRESSO_BUILD_WITH_FFTW=ON \
   -DESPRESSO_BUILD_WITH_WALBERLA=ON \
   -DESPRESSO_BUILD_WITH_WALBERLA_AVX=OFF \
+%if %{pkg_vcmp kokkos-devel >= 4.6}
   -DESPRESSO_BUILD_WITH_SHARED_MEMORY_PARALLELISM=ON \
+%else
+  -DESPRESSO_BUILD_WITH_SHARED_MEMORY_PARALLELISM=OFF \
+%endif
   -DESPRESSO_BUILD_WITH_NLOPT=ON \
   -DESPRESSO_BUILD_WITH_HDF5=OFF \
   -DESPRESSO_BUILD_WITH_GSL=ON \
