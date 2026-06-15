@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:11:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.149.16 (CVE-2026-48487, bsc#1268235):
+  * Re-release for GHSA-qc2x-6f54-m6h9
+  * Preserve scope_id when scoped AAAA arrives alongside unscoped
+  * Skip NSEC records in ServiceBrowser to suppress spurious
+  * Add blockbuster to detect blocking calls in asyncio tests
+  * Scale aggregation timings 10x to speed up timing-dependent
+    tests
+  * Shave loopback timing overhead from remaining slow tests
+  * Widen QM follow-up window in info_asking_default test
+  * Bound record payload reads against rdlength overrun
+  * Extract loopback Zeroconf fixtures and mock_incoming_msg
+    helper
+
+-------------------------------------------------------------------
 Sat Apr 25 22:13:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.148.0:

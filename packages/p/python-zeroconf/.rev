@@ -522,4 +522,23 @@
   * feat: reduce size of binaries</comment>
     <requestid>1349314</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f6e84bc3f80fb5e5fd70fc0eea910cbe</srcmd5>
+    <version>0.149.16</version>
+    <time>1781545463</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.149.16 (CVE-2026-48487, bsc#1268235):
+  * Re-release for GHSA-qc2x-6f54-m6h9
+  * Preserve scope_id when scoped AAAA arrives alongside unscoped
+  * Skip NSEC records in ServiceBrowser to suppress spurious
+  * Add blockbuster to detect blocking calls in asyncio tests
+  * Scale aggregation timings 10x to speed up timing-dependent
+    tests
+  * Shave loopback timing overhead from remaining slow tests
+  * Widen QM follow-up window in info_asking_default test
+  * Bound record payload reads against rdlength overrun
+  * Extract loopback Zeroconf fixtures and mock_incoming_msg
+    helper</comment>
+    <requestid>1359378</requestid>
+  </revision>
 </revisionlist>
