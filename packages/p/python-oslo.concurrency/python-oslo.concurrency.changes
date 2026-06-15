@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon May 18 22:10:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.5.0:
+  * tox: Use new constraints option
+  * Install runtime dependencies in tests
+  * Fix multiprocessing tests under Python 3.14
+  * Silence warnings from eventlet itself
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Make lock_path_prefix optional again
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+
+-------------------------------------------------------------------
 Sun Apr 19 21:30:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.4.1:

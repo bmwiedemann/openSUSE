@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.concurrency
-Version:        7.4.1
+Version:        7.5.0
 Release:        0
 Summary:        OpenStack oslo.concurrency library
 License:        Apache-2.0

@@ -436,4 +436,20 @@
   * Update .gitreview for stable/2026.1</comment>
     <requestid>1348084</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>bae83b99b4109c76a78582478f886d24</srcmd5>
+    <version>7.5.0</version>
+    <time>1781545476</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.5.0:
+  * tox: Use new constraints option
+  * Install runtime dependencies in tests
+  * Fix multiprocessing tests under Python 3.14
+  * Silence warnings from eventlet itself
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Make lock_path_prefix optional again
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter</comment>
+    <requestid>1359325</requestid>
+  </revision>
 </revisionlist>
