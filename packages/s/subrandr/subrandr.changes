@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 11 02:27:41 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to version 1.3.0:
+  * Trim dead code and minimize item visibility in software rasterizer
+  * Fix HarfBuzz glyph offset being applied in wrong coordinate space
+  * Reuse single strip rasterizer within a `sw::Rasterizer`
+  * Avoid hinting FreeType outline glyphs twice
+  * Cache texture blurs in `sw::Rasterizer`
+  * Get rid of generic `RenderTarget` and simplify `Rasterizer` trait API
+  * Add some logging to `sw::Rasterizer` subscene handling
+  * Cache subscenes in `sw::Rasterizer`
+  * Don't recreate software rasterizer for each `Renderer::render`
+  * Remove `DeferredBitmaps` scene node and render method `user_data`
+  * Switch glyph rendering to rasterizer subscenes
+  * Close unclosed contours when flattening `Outline`s
+  * Allow specifying placeholder color in rasterizer scene
+  * Add `FilledOutline` rasterizer scene node
+  * Allow applying blur/extract_alpha filter to `Subscene`s
+  * Add `ExternalSubscene` rasterizer subscene kind
+  * Refactor rasterizer scene construction to compute final positions early
+  * Remove `wgpu` rasterizer
+  * Fix infinite recursion on missing RTL glyphs in some cases
+  * Remove useless cloning in text shaper
+  * Release v1.3.0
+  * Update CHANGELOG.md
+  * Fix clippy warnings in fontconfig weight mapping
+  * Correctly refcount fontconfig config
+  * Update dead spec link in comment
+  * Fix WebVTT multi-element ruby base construction
+  * Remove unused layout test snapshot file
+  * Fix `InlineContentBuilder` inserting normal spans into ruby containers
+  * Add a subtitle event iterator API
+  * Move subtitle-related C API functions to a separate file
+  * Move `sbr_library_close_font` to `sbr_wasm_close_font`
+  * Remove unused `sbr_library_open_font_from_memory` from C API
+  * Remove unused field from `COutputImage`
+  * Fix missing `return`
+  * Fix inconsistent tense in C API doc comments
+  * Share common styles between layout test modules
+  * Box `BlockContainer` field in `InlineBlock` item
+  * Fix nightly clippy warnings
+  * Switch `GlyphString` to logical glyph order
+  * Add a layout test for reattempted shaping at the edges of a string
+  * Simplify inline layout's `split_on_leaves`
+  * Store `GlyphString` segments in a `Vec` instead of `LinkedList`
+  * Simplify flow of shaping-related parameters in inline layout
+
+-------------------------------------------------------------------
 Fri Mar 27 13:56:09 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.2.0:

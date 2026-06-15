@@ -119,4 +119,13 @@ DPIs other than 72.
   * Implement SRV3 window style `mh` attribute support</comment>
     <requestid>1343212</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7b2bc1e2e2e7c077f4c3af8071da3fcd</srcmd5>
+    <version>1.3.0</version>
+    <time>1781545295</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.3.0:
+</comment>
+    <requestid>1359126</requestid>
+  </revision>
 </revisionlist>
