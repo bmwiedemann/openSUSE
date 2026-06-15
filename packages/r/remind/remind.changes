@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun  8 13:06:31 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.07 - 2026-06-05
+
+- IMPROVEMENT: tkremind: Make tooltip colors configurable.  Patch courtesy
+  of Paolo Donadeo.
+
+- IMPROVEMENT: remind: Allow a tdelta to cross day boundaries.  In the
+  past, a reminder such as this:
+
+      REM Tue AT 00:05 +10 *5 MSG foo
+
+  would not be triggered at 23:55 on a Monday.  Now it will.  Similarly,
+  reminders using a SCHED function to schedule queued reminders can
+  cross day boundaries if the result of calling sched_func(1)
+  is a sufficiently-large negative number.
+
+- MINOR FIXES: Some man page clarifications and typo fixes. 
+
+-------------------------------------------------------------------
 Mon May 18 08:08:47 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.06 - 2026-05-15
