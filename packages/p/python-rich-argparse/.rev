@@ -26,4 +26,19 @@
     <comment>- Add upstream py3141.patch to fix tests on Python 3.14.1+</comment>
     <requestid>1333857</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>28cc82fb5ba5d9c27e54bfdad7292682</srcmd5>
+    <version>1.8.0</version>
+    <time>1781545237</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * Python 3.8 is no longer supported (EOL since 7/10/2024)
+  * Add support for PyPy 3.11
+  * Add `ExtendedParagraphRichHelpFormatter` to
+    `rich_argparse.contrib`. This is similar to
+    `ParagraphRichHelpFormatter` but with better support for
+    paragraph spacing.
+- drop fix-tests.patch, py3141.patch: upstream</comment>
+    <requestid>1359312</requestid>
+  </revision>
 </revisionlist>

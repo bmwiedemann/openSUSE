@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:12:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * Python 3.8 is no longer supported (EOL since 7/10/2024)
+  * Add support for PyPy 3.11
+  * Add `ExtendedParagraphRichHelpFormatter` to
+    `rich_argparse.contrib`. This is similar to
+    `ParagraphRichHelpFormatter` but with better support for
+    paragraph spacing.
+- drop fix-tests.patch, py3141.patch: upstream
+
+-------------------------------------------------------------------
 Thu Feb 19 06:36:39 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py3141.patch to fix tests on Python 3.14.1+

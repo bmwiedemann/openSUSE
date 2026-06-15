@@ -17,16 +17,12 @@
 
 
 Name:           python-rich-argparse
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 Summary:        Rich help formatters for argparse and optparse
 License:        MIT
 URL:            https://github.com/hamdanal/rich-argparse
 Source:         https://files.pythonhosted.org/packages/source/r/rich-argparse/rich_argparse-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests.patch https://github.com/hamdanal/rich-argparse/pull/178
-Patch0:         fix-tests.patch
-# PATCH-FIX-UPSTREAM py3141.patch https://github.com/hamdanal/rich-argparse/pull/172
-Patch1:         py3141.patch
 BuildRequires:  %{python_module hatchling >= 1.11.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
