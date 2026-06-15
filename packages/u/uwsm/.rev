@@ -41,4 +41,25 @@ Meson clean up and fixes regression on Leap 15.6.</comment>
   * Added support for DESKTOP_ENTRY_* metadata vars in app wrapper</comment>
     <requestid>1333434</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7e11bf829e31f744d5362443563a72ba</srcmd5>
+    <version>0.26.4</version>
+    <time>1771605824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.26.4:
+  * fix: make CompGlobals.id_unit_string accessible to autoready fork again
+  * fix: move up login shell check in may-start</comment>
+    <requestid>1334088</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>604eebb467ebfebe6dd809df221aa3bc</srcmd5>
+    <version>0.26.5</version>
+    <time>1781545292</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.26.5:
+  * fix(app): fall back to local file if exists on invalid entry ID, fixes #214
+  * fix(app): split explicitly by &quot;.desktop:&quot;, abs path for SourcePath value
+</comment>
+    <requestid>1359122</requestid>
+  </revision>
 </revisionlist>

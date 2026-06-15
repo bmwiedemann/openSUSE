@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 13 22:29:45 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.26.5:
+  * fix(app): fall back to local file if exists on invalid entry ID, fixes #214
+  * fix(app): split explicitly by ".desktop:", abs path for SourcePath value
+
+-------------------------------------------------------------------
+Thu Feb 19 23:41:03 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.26.4:
+  * fix: make CompGlobals.id_unit_string accessible to autoready fork again
+  * fix: move up login shell check in may-start
+
+-------------------------------------------------------------------
 Mon Feb 16 17:36:27 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
 
 - Update to version 0.26.3:
