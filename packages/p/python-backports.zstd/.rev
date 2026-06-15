@@ -17,4 +17,21 @@
 - drop do-not-abort-with-python313.patch (upstream)</comment>
     <requestid>1343408</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>7a3ee97b972f3fba2466e24faa66a1b3</srcmd5>
+    <version>1.3.0</version>
+    <time>1775743775</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1345316</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9e419f747ed4ae03882d880fbbb93a6e</srcmd5>
+    <version>1.6.0</version>
+    <time>1781545330</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.0:
+  * Update code with CPython 3.14.6 version</comment>
+    <requestid>1359232</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:50:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.0:
+  * Update code with CPython 3.14.6 version
+
+-------------------------------------------------------------------
+Thu Apr  2 04:18:30 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add %{?sle15_python_module_pythons}.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:23:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3.0:
