@@ -157,4 +157,23 @@
   * MNT: do not use deprecated load_module method</comment>
     <requestid>1344804</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6b2cdd6976be51841d68c65fd53b2e92</srcmd5>
+    <version>3.4.0</version>
+    <time>1781545382</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Add support for building and releasing hiredis-py on Windows
+    ARM64
+  * Use hiredis v1.4.0 with improved floating-point number
+    parsing
+  * Drop python and pypy 3.8 support, test against pypy-3.11
+  * Update dependencies and fix CI
+  * Fix benchmarking for hiredis-py
+  * Update workflow versions to address Node v20 deprecation
+  * Run integration tests on Windows ARM64 for Python 3.11 and
+  * MNT: do not use deprecated load_module method
+  * Use Python 3.11 in FreeBSD CI run</comment>
+    <requestid>1359262</requestid>
+  </revision>
 </revisionlist>

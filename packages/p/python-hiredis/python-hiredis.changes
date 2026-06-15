@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:22:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Add support for building and releasing hiredis-py on Windows
+    ARM64
+  * Use hiredis v1.4.0 with improved floating-point number
+    parsing
+  * Drop python and pypy 3.8 support, test against pypy-3.11
+  * Update dependencies and fix CI
+  * Fix benchmarking for hiredis-py
+  * Update workflow versions to address Node v20 deprecation
+  * Run integration tests on Windows ARM64 for Python 3.11 and
+  * MNT: do not use deprecated load_module method
+  * Use Python 3.11 in FreeBSD CI run
+
+-------------------------------------------------------------------
 Mon Apr  6 21:06:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:
