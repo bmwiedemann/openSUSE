@@ -129,4 +129,21 @@
     - Added automation-policy.json to the distribution.</comment>
     <requestid>1356942</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>398a276a1fa8ceb9c1ade7b03fbc6f1b</srcmd5>
+    <version>0.220.0</version>
+    <time>1781545802</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.220.0 (0.22)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+  0.22      2026-06-13 14:44:25+01:00 Europe/London
+    [Toolchain]
+    - Set the static install flag
+    - Adjusted build prerequisites to be recommended instead of required.
+    - Sign distribution with SigStore.
+    [Tests]
+    - Added author tests.
+    - Update minimum prereqs for some tests.</comment>
+    <requestid>1359504</requestid>
+  </revision>
 </revisionlist>

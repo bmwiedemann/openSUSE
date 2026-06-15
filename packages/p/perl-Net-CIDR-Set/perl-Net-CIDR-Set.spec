@@ -18,10 +18,10 @@
 
 %define cpan_name Net-CIDR-Set
 Name:           perl-Net-CIDR-Set
-Version:        0.210.0
+Version:        0.220.0
 Release:        0
-# 0.21 -> normalize -> 0.210.0
-%define cpan_version 0.21
+# 0.22 -> normalize -> 0.220.0
+%define cpan_version 0.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Manipulate sets of IP addresses
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,8 +30,8 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.22
-BuildRequires:  perl(Module::Metadata) >= 1.000015
+BuildRequires:  perl(Data::Dumper) >= 2.154
+BuildRequires:  perl(Module::Metadata)
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(namespace::autoclean)

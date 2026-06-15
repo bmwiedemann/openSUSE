@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:51:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.220.0 (0.22)
+   see /usr/share/doc/packages/perl-Net-CIDR-Set/Changes
+
+  0.22      2026-06-13 14:44:25+01:00 Europe/London
+    [Toolchain]
+    - Set the static install flag
+    - Adjusted build prerequisites to be recommended instead of required.
+    - Sign distribution with SigStore.
+    [Tests]
+    - Added author tests.
+    - Update minimum prereqs for some tests.
+
+-------------------------------------------------------------------
 Wed Jun  3 10:07:49 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.210.0 (0.21)
