@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:43:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.13.1
+  * null-terminate server_name in stun_is_challenge_response_str.
+  * Canonicalize all IPv4-in-IPv6 encodings before peer-IP checks.
+  * Auto-deny coturn's own database backend endpoints as relay
+    peers.
+  * Deny link-local / ULA / site-local relay peers by default.
+
+-------------------------------------------------------------------
+Sun Jun 14 11:46:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.13.0
+  * Wrap atomic everywhere.
+  * Fix sendmmsg stride bug in multiplex-peer UDP batch flush.
+  * Reap TURN permissions/channels via a per-thread sweep instead
+    of per-object timers.
+  * Add --udp-sendmmsg-log to observe egress sendmmsg/UDP-GSO
+    batching.
+  * Expose recvmmsg/sendmmsg UDP batch sizes as Prometheus metrics
+  * Restrict recvmmsg fast path to shared fan-in sockets
+    (make --udp-recvmmsg useful standalone).
+  * Enable --udp-recvmmsg by default on Linux.
+  * Security hardening: port parsing, admin brute-force throttle,
+    credential log redaction, constant-time compare, OAuth bounds
+    checks, permission cap (#1932).
+  * Add continuous latency mode to stunclient.
+  * Fix test_redis_format link failure.
+  * Fix configure MANPREFIX typo.
+  * Fix missing sqlite3 dependendcy.
+  * Fix UDP receive buffer ownership.
+
+-------------------------------------------------------------------
 Mon May 25 09:16:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.12.0
