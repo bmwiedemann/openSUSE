@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jun 15 05:00:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.17:
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.43.0 to
+    1.44.0 (#2256)
+  * build(deps): bump go.opentelemetry.io/otel from 1.43.0 to
+    1.44.0 (#2258)
+  * build(deps): bump go.step.sm/crypto from 0.81.0 to 0.82.0
+    (#2270)
+  * build(deps): bump chainguard.dev/sdk from 0.1.55 to 0.1.57
+    (#2275)
+  * build(deps): bump golang.org/x/sync from 0.20.0 to 0.21.0
+    (#2265)
+  * build(deps): bump google.golang.org/api from 0.280.0 to 0.283.0
+    (#2262)
+  * fix(auth): let chainctl write to terminal for interactive login
+    (#2276)
+  * paths: preserve setuid/setgid/sticky bits in permissions
+    (#2274)
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3 (#2264)
+  * build(deps): bump golang.org/x/sys from 0.45.0 to 0.46.0
+    (#2266)
+  * build(deps): bump github/codeql-action from 4.36.0 to 4.36.2
+    (#2267)
+  * build(deps): bump chainguard-dev/actions from 1.6.19 to 1.6.22
+    (#2272)
+  * build(deps): bump gopkg.in/ini.v1 from 1.67.2 to 1.67.3 (#2273)
+  * Match apk-tools' provider comparison ordering in the solver
+    (#2271)
+  * expandapk: materialize uncompressed .dat.tar atomically (#2269)
+
+-------------------------------------------------------------------
 Mon Jun 08 04:46:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.16:
