@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:10:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.11.0:
+  * A big win for this release is priortization of grouped/tagged
+    content. Basically, this release allows you to tag multiple
+    items and provide a weight to them.   Apprise will attempt to
+    notify the highest priority/weighted services first (of same
+    level), and only if this level fails will it try the next.
+    Tagging is no longer just a `tag`.  It's now `weight:tag`
+    too;  for example `100:friends`  associates the weight of
+    `100` with the tag `friends`.  You can still continue to
+    notify friends with your Apprise calls, but if there are
+    weight categories, then these will be factored into the
+    order.  Highest priority (weighted) tags have a lower integer
+    value (zero being the  higest priority).  Only the next
+    priority will be notified if the first fails.
+  * This releae also allows you to set up a notifiation service
+    to gracefully fail and not have Apprise itself report a
+    failure.  This is useful for situations where you notify
+    several end points and you really don't care if they're
+    unavailable or not.   Apprise wil do it's usual best effort
+    to send the notification, but not treat it as a failure if it
+    can't get through. Use `optional=yes` on your Apprise URL.
+  * Thirdly, this release introduces retries! You can now have
+    Apprise attempt to notify your endpoint a second, or a third,
+    (up to 10x) tries before giving up and deeming it unable to
+    send the notification.  Use `retry=X` on your Apprise URL
+
+-------------------------------------------------------------------
 Sun May  3 18:31:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10.0:

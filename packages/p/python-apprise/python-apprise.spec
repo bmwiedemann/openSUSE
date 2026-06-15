@@ -25,7 +25,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-apprise
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Group:          Development/Libraries/Python
 Summary:        A simple wrapper to many popular notification services used today
