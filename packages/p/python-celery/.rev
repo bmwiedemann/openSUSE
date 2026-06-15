@@ -597,4 +597,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348023</requestid>
   </revision>
+  <revision rev="56" vrev="2">
+    <srcmd5>ec12a08e6509d803f53aef2ceacc8a44</srcmd5>
+    <version>5.6.3</version>
+    <time>1781545828</time>
+    <user>anag_factory</user>
+    <comment>- Return click-plugins to requiremets, still needed</comment>
+    <requestid>1359528</requestid>
+  </revision>
 </revisionlist>

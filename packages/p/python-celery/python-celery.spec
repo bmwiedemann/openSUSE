@@ -47,6 +47,7 @@ Requires:       alts
 Requires:       python-billiard >= 4.2.1
 Requires:       python-click >= 8.1.2
 Requires:       python-click-didyoumean >= 0.3.0
+Requires:       python-click-plugins >= 1.1.1
 Requires:       python-click-repl >= 0.2.0
 Requires:       python-dbm
 Requires:       python-kombu >= 5.6.0
