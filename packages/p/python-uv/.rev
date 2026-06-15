@@ -2715,4 +2715,41 @@
   * Skip Unix-specific installation steps when cross-installing Windows Python distributions</comment>
     <requestid>1358728</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>918a825ab75825d5795d2faa5c98b2e2</srcmd5>
+    <version>0.11.21</version>
+    <time>1781545495</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.21:
+  * Add CPython 3.13.14 and 3.14.6
+  * Add `environment.root` to `uv workspace metadata --sync`
+  * Allow `uv upgrade` to update a single dependency constraint
+  * Compute and pass `uv workspace metadata` payload in `ty
+    check`
+  * Make packaged applications the default for `uv init`
+  * Add parallel discovery of Python versions for `uv python
+    list`
+  * Avoid normalizing source distribution names twice
+  * Improve cache robustness and pruning behavior
+  * Allow CI cache pruning without an sdist bucket
+  * Avoid overflow when reading malformed cache entries
+  * Preserve cached Python downloads during cache pruning
+  * Reject running inside the cache
+  * Fix Python discovery and version request edge cases
+  * Avoid panics for Unicode Python version requests
+  * Fix handling of non-critical errors in `uv python list` with
+    path requests
+  * Fix stop-discovery-at regression
+  * Harden parsing and validation for package metadata,
+    requirements, markers, URLs, and conflict sets
+  * Allow trailing commas in version specifiers
+  * Avoid panics for invalid UTF-8 URL credentials
+  * Avoid panics for malformed source distribution filenames
+  * Avoid panics for trailing extra separators
+  * Avoid stack overflow for recursive requirements path aliases
+  * Ignore reversed string compatible-release markers
+  * Reject duplicate entries in conflict sets
+  * Reject malformed hash options in requirements files</comment>
+    <requestid>1359308</requestid>
+  </revision>
 </revisionlist>

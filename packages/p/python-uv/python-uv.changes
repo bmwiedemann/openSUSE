@@ -1,109 +1,153 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:06:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.21:
+  * Add CPython 3.13.14 and 3.14.6
+  * Add `environment.root` to `uv workspace metadata --sync`
+  * Allow `uv upgrade` to update a single dependency constraint
+  * Compute and pass `uv workspace metadata` payload in `ty
+    check`
+  * Make packaged applications the default for `uv init`
+  * Add parallel discovery of Python versions for `uv python
+    list`
+  * Avoid normalizing source distribution names twice
+  * Improve cache robustness and pruning behavior
+  * Allow CI cache pruning without an sdist bucket
+  * Avoid overflow when reading malformed cache entries
+  * Preserve cached Python downloads during cache pruning
+  * Reject running inside the cache
+  * Fix Python discovery and version request edge cases
+  * Avoid panics for Unicode Python version requests
+  * Fix handling of non-critical errors in `uv python list` with
+    path requests
+  * Fix stop-discovery-at regression
+  * Harden parsing and validation for package metadata,
+    requirements, markers, URLs, and conflict sets
+  * Allow trailing commas in version specifiers
+  * Avoid panics for invalid UTF-8 URL credentials
+  * Avoid panics for malformed source distribution filenames
+  * Avoid panics for trailing extra separators
+  * Avoid stack overflow for recursive requirements path aliases
+  * Ignore reversed string compatible-release markers
+  * Reject duplicate entries in conflict sets
+  * Reject malformed hash options in requirements files
+  * Reject source distribution filenames without a separator
+  * Use UTF-8 lengths for requirement errors
+  * Use UTF-8 lengths for trailing marker errors
+  * Use byte offsets when peeking over requirements
+  * Validate GraalPy ABI suffixes
+  * Improve wheel entry-point error handling and virtual
+    environment activation quoting
+  * Propagate errors when reading wheel entry points
+  * Quote virtual environment activation paths with shell
+    metacharacters
+
+-------------------------------------------------------------------
 Thu Jun 11 12:51:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.20
  * Enhancements
-  * Add --emit-index-url and --emit-find-links to uv export 
-  * Add --find-links support for uv pip list 
-  * Group executable install errors during uv python install 
-  * Use ICF in macOS release builds to reduce binary sizes 
-  * Always compute SHA256 for remote distributions 
-  * Add PyEmscripten platform (PEP 783) 
-  * Add Pyodide 2025 target triple 
+  * Add --emit-index-url and --emit-find-links to uv export
+  * Add --find-links support for uv pip list
+  * Group executable install errors during uv python install
+  * Use ICF in macOS release builds to reduce binary sizes
+  * Always compute SHA256 for remote distributions
+  * Add PyEmscripten platform (PEP 783)
+  * Add Pyodide 2025 target triple
  * Preview features
-  * Add initial hidden uv upgrade command 
-  * Reject Git revisions in uv upgrade 
-  * Make preview features for commands have names that aren't ambiguous with the command 
-  * Respect --isolated in uv check 
+  * Add initial hidden uv upgrade command
+  * Reject Git revisions in uv upgrade
+  * Make preview features for commands have names that aren't ambiguous with the command
+  * Respect --isolated in uv check
  * Configuration
-  * Recognize UV_NO_INSTALL_PROJECT, UV_NO_INSTALL_WORKSPACE, UV_NO_INSTALL_LOCAL 
+  * Recognize UV_NO_INSTALL_PROJECT, UV_NO_INSTALL_WORKSPACE, UV_NO_INSTALL_LOCAL
  * Performance
-  * Speed up discovery of large workspaces 
+  * Speed up discovery of large workspaces
  * Bug fixes
-  * Allow unknown preview flags with a warning again 
-  * Apply dependency exclusions to direct requirements 
-  * Avoid following external symlinks during cache clean 
-  * Avoid following symlinks during cache prune 
-  * Fix Git cache keys for worktrees and packed refs 
-  * Make resolver error handling iterative to avoid stack overflows 
-  * Pass VIRTUAL_ENV through cygpath inside fish on Windows 
-  * Rebuild explicit local directory tool installs 
-  * Validate egg top-level entries as identifiers 
-  * Continue tool uninstall after dangling receipts 
-  * Skip Unix-specific installation steps when cross-installing Windows Python distributions 
+  * Allow unknown preview flags with a warning again
+  * Apply dependency exclusions to direct requirements
+  * Avoid following external symlinks during cache clean
+  * Avoid following symlinks during cache prune
+  * Fix Git cache keys for worktrees and packed refs
+  * Make resolver error handling iterative to avoid stack overflows
+  * Pass VIRTUAL_ENV through cygpath inside fish on Windows
+  * Rebuild explicit local directory tool installs
+  * Validate egg top-level entries as identifiers
+  * Continue tool uninstall after dangling receipts
+  * Skip Unix-specific installation steps when cross-installing Windows Python distributions
  * Documentation
-  * Document --find-links caching behavior 
-  * Add a small section for malware checks 
+  * Document --find-links caching behavior
+  * Add a small section for malware checks
 
 -------------------------------------------------------------------
 Thu Jun  4 09:13:42 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.18 
+- update to 0.11.18
  * Enhancements
-  * Always compute SHA256 for remote distributions 
-  * Add PyEmscripten platform (PEP 783) 
-  * Add Pyodide 2025 target triple 
+  * Always compute SHA256 for remote distributions
+  * Add PyEmscripten platform (PEP 783)
+  * Add Pyodide 2025 target triple
  * Preview features
-  * Make preview features for commands have names that aren't ambiguous with the command 
-  * Respect --isolated in uv check 
-  * Add uv check to run ty from uv 
+  * Make preview features for commands have names that aren't ambiguous with the command
+  * Respect --isolated in uv check
+  * Add uv check to run ty from uv
  * Bug fixes
-  * Update activation scripts with upstream fixes 
-  * Continue tool uninstall after dangling receipts 
-  * Skip Unix-specific installation steps when cross-installing Windows Python distributions 
+  * Update activation scripts with upstream fixes
+  * Continue tool uninstall after dangling receipts
+  * Skip Unix-specific installation steps when cross-installing Windows Python distributions
  * Performance
-  * Fix performance regression in unzip of local wheels 
+  * Fix performance regression in unzip of local wheels
  * Other changes
-  * Bump MSRV to 1.94 
+  * Bump MSRV to 1.94
 
 -------------------------------------------------------------------
 Fri May 29 08:15:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.17
  * Enhancements
-  * Add a diagnostic for uv add with standard library modules 
-  * Expose uv workspace and its list subcommand in help output 
-  * Improve the "403 forbidden" hint to suggest ignore-error-codes when applicable 
-  * Skip direct URL lock freshness checks while offline 
-  * Add import-names and import-namespaces support to uv-build (PEP 794) 
-  * Add a --no-editable-package flag to various commands 
-  * Infer Python version requests from source trees in uv tool invocations 
+  * Add a diagnostic for uv add with standard library modules
+  * Expose uv workspace and its list subcommand in help output
+  * Improve the "403 forbidden" hint to suggest ignore-error-codes when applicable
+  * Skip direct URL lock freshness checks while offline
+  * Add import-names and import-namespaces support to uv-build (PEP 794)
+  * Add a --no-editable-package flag to various commands
+  * Infer Python version requests from source trees in uv tool invocations
  * Preview features
-  * Add module owners to uv workspace metadata 
-  * Do not allow uv venv --clear to remove non-virtual environments 
+  * Add module owners to uv workspace metadata
+  * Do not allow uv venv --clear to remove non-virtual environments
  * Bug fixes
-  * Improve the performance of large entries in tool.uv.conflicts 
-  * Avoid modifying the parent process' env with --env-file in uv run 
-  * Fix script environment creation for scripts with long filenames 
-  * Fix transitive Git archive dependencies in lockfiles 
-  * Preserve Git repository URLs in direct URL metadata 
-  * Support redirects in --check-url 
-  * Accept case-insensitive HTML tags in --find-links parsing 
-  * Reject duplicate script metadata blocks 
+  * Improve the performance of large entries in tool.uv.conflicts
+  * Avoid modifying the parent process' env with --env-file in uv run
+  * Fix script environment creation for scripts with long filenames
+  * Fix transitive Git archive dependencies in lockfiles
+  * Preserve Git repository URLs in direct URL metadata
+  * Support redirects in --check-url
+  * Accept case-insensitive HTML tags in --find-links parsing
+  * Reject duplicate script metadata blocks
   * Ban names like "python3" as script entry points
-  * Validate Git LFS artifacts for Git archives 
-  * Use a relative path when creating symlinks in cache to improve relocatability 
+  * Validate Git LFS artifacts for Git archives
+  * Use a relative path when creating symlinks in cache to improve relocatability
  * Documentation
-  * Fix malformed positional anchors in the CLI reference 
+  * Fix malformed positional anchors in the CLI reference
 
 -------------------------------------------------------------------
 Sun May 24 10:46:06 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.16 
+- update to 0.11.16
  * Enhancements
-  * Add support for direct archive dependencies in Git 
-  * Adjust hint rendering 
+  * Add support for direct archive dependencies in Git
+  * Adjust hint rendering
  * Preview features
-  * uv audit: specialize malformed OSV error 
-  * Reject locked malware installations 
+  * uv audit: specialize malformed OSV error
+  * Reject locked malware installations
  * Configuration
-  * Allow disabling reading the system config with UV_NO_SYSTEM_CONFIG 
+  * Allow disabling reading the system config with UV_NO_SYSTEM_CONFIG
  * Bug fixes
-  * Allow environment variables that take a list to be empty 
-  * Ensure that incompatible wheel hints do not leak secrets 
-  * Reject unsafe entry points in uv-build 
-  * Restrict delimiters in entry point parsing 
-  * uv-netrc: fix multi-word no-space comment lines causing parse errors 
+  * Allow environment variables that take a list to be empty
+  * Ensure that incompatible wheel hints do not leak secrets
+  * Reject unsafe entry points in uv-build
+  * Restrict delimiters in entry point parsing
+  * uv-netrc: fix multi-word no-space comment lines causing parse errors
  * Documentation
   * Document and test relative exclude-newer support for uv pip
 
@@ -112,204 +156,204 @@ Thu May 21 15:11:28 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.15
  * Security
-  * Fix a TAR parser differential, see GHSA-3cv2-h65g-fgmm 
-  * Enforce that entry points cannot escape in the scripts directory, see GHSA-4gg8-gxpx-9rph 
+  * Fix a TAR parser differential, see GHSA-3cv2-h65g-fgmm
+  * Enforce that entry points cannot escape in the scripts directory, see GHSA-4gg8-gxpx-9rph
  * Enhancements
-  * Add TOML v1.1 -> v1.0 backwards compatibility for source distributions 
-  * Add support for Azure request signing 
-  * Apply stricter validation to all wheel filename segments 
-  * Reject empty strings as an invalid package name 
-  * Use structured errors for signing authentication failures 
+  * Add TOML v1.1 -> v1.0 backwards compatibility for source distributions
+  * Add support for Azure request signing
+  * Apply stricter validation to all wheel filename segments
+  * Reject empty strings as an invalid package name
+  * Use structured errors for signing authentication failures
  * Preview
-  * uv audit: Add JSON output 
+  * uv audit: Add JSON output
  * Configuration
-  * Respect required-environments in uv pip compile 
+  * Respect required-environments in uv pip compile
  * Performance
-  * Avoid parsing JSON manifest when local Python is available 
-  * Avoid walking nested directories in linker conflict registration 
-  * Optimize async wheel ZIP writing 
-  * Fix dead "already trimmed" fast-path in Version::only_release_trimmed 
+  * Avoid parsing JSON manifest when local Python is available
+  * Avoid walking nested directories in linker conflict registration
+  * Optimize async wheel ZIP writing
+  * Fix dead "already trimmed" fast-path in Version::only_release_trimmed
  * Bug fixes
-  * Apply workspace-member [tool.uv.sources] credentials under uv sync --frozen 
-  * Skip empty directories in uv build outputs 
-  * Fix Git submodule handling when using relative paths 
-  * Fix line number reporting in netrc parsing 
+  * Apply workspace-member [tool.uv.sources] credentials under uv sync --frozen
+  * Skip empty directories in uv build outputs
+  * Fix Git submodule handling when using relative paths
+  * Fix line number reporting in netrc parsing
  * Documentation
-  * Move Bazel auth helper setup into integration guide 
+  * Move Bazel auth helper setup into integration guide
 
 -------------------------------------------------------------------
 Wed May 13 10:12:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.14 
+- update to 0.11.14
  * Enhancements
-  * Add Astral mirror URL override 
-  * Ignore top_level.txt entries in uninstall that are not valid Python identifiers 
+  * Add Astral mirror URL override
+  * Ignore top_level.txt entries in uninstall that are not valid Python identifiers
  * Bug fixes
-  * Avoid applying .env files in parent process 
-  * Filter ANSI codes in logging output 
-  * Fix uv tree showing extra-conditional deps for packages required without extras 
-  * Respect build options (e.g., --no-build) during lock validation 
+  * Avoid applying .env files in parent process
+  * Filter ANSI codes in logging output
+  * Fix uv tree showing extra-conditional deps for packages required without extras
+  * Respect build options (e.g., --no-build) during lock validation
 
 -------------------------------------------------------------------
 Mon May 11 13:28:49 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.13
  * Bug fixes
-  * Include data files in editable builds 
-  * Respect --require-hashes when installing from pylock.toml files 
-  * Respect --no-dev over UV_DEV=1 
+  * Include data files in editable builds
+  * Respect --require-hashes when installing from pylock.toml files
+  * Respect --no-dev over UV_DEV=1
   * Don't suggest non-existent --no-frozen flag
  * Enhancements
-  * Add --no-editable support to uv pip install 
-  * Require git refs in URLs to be percent-encoded 
+  * Add --no-editable support to uv pip install
+  * Require git refs in URLs to be percent-encoded
  * Documentation
-  * Fix bug from inconsistent workflow name in GHA-PyPI guide example 
+  * Fix bug from inconsistent workflow name in GHA-PyPI guide example
 
 -------------------------------------------------------------------
 Thu May  7 16:50:46 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.11 
+- update to 0.11.11
  * Bug fixes
    - Accept legacy ID format from pre-0.11.9 cache entries
 
 -------------------------------------------------------------------
 Wed May  6 15:26:15 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.10 
+- update to 0.11.10
  * Enhancements
-  * Omit compatible release desugaring for pre-release hints 
-  * Fix file locks on Android 
+  * Omit compatible release desugaring for pre-release hints
+  * Fix file locks on Android
  * Preview
-  * uv audit add reporting for adverse project statuses 
+  * uv audit add reporting for adverse project statuses
  * Bug fixes
   * Allow pre-release Python requests with non-zero patch versions
-  * Discover versioned Python executables when requires-python pins a version 
-  * Fix URL prefix matching to require path boundaries 
-  * Fix transitive Git path dependencies in lockfiles 
-  * Handle incorrect unlock error in LockedFile::drop on Wine 
-  * Prevent uninstalling site-packages for empty top_level.txt in .egg-info 
-  * Use symlinks instead of junctions on Wine 
-  * Fix floating-point environment handling on ARMv7 
-  * Redact credentials from remote requirements URL in offline errors 
-  * Windows tramplolines no longer set PYTHONHOME and only set __PYVENV_LAUNCHER__ for virtual environments 
+  * Discover versioned Python executables when requires-python pins a version
+  * Fix URL prefix matching to require path boundaries
+  * Fix transitive Git path dependencies in lockfiles
+  * Handle incorrect unlock error in LockedFile::drop on Wine
+  * Prevent uninstalling site-packages for empty top_level.txt in .egg-info
+  * Use symlinks instead of junctions on Wine
+  * Fix floating-point environment handling on ARMv7
+  * Redact credentials from remote requirements URL in offline errors
+  * Windows tramplolines no longer set PYTHONHOME and only set __PYVENV_LAUNCHER__ for virtual environments
  * Documentation
-  * Mark --native-tls and UV_NATIVE_TLS as deprecated 
-  * Re-add pytorch-triton-rocm to PyTorch ROCm docs 
-  * Add 'Exporting lockfiles' to the Concepts->Projects index 
-  * Clarify that uv init creates git files / folders in the projects guide 
+  * Mark --native-tls and UV_NATIVE_TLS as deprecated
+  * Re-add pytorch-triton-rocm to PyTorch ROCm docs
+  * Add 'Exporting lockfiles' to the Concepts->Projects index
+  * Clarify that uv init creates git files / folders in the projects guide
 
 -------------------------------------------------------------------
 Tue Apr 28 10:13:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.8 
+- update to 0.11.8
  * Enhancements
-  * Add --python-downloads-json-url to python pin 
-  * Fetch uv from Astral mirror during self-update 
-  * Support pip uninstall -y 
-  * Allow exclude-newer to be missing from the lockfile when exclude-newer-span is present 
-  * Only show the version number in uv self version --short 
-  * Silence warnings on empty SSL_CERT_DIR directory 
+  * Add --python-downloads-json-url to python pin
+  * Fetch uv from Astral mirror during self-update
+  * Support pip uninstall -y
+  * Allow exclude-newer to be missing from the lockfile when exclude-newer-span is present
+  * Only show the version number in uv self version --short
+  * Silence warnings on empty SSL_CERT_DIR directory
   * Use a sentinel timestamp for relative exclude-newer and exclude-newer-package values in lockfiles (#19022, #19101)
  * Configuration
-  * Add UV_PYTHON_NO_REGISTRY 
-  * Add an environment variable for UV_NO_PROJECT 
-  * Expose UV_PYTHON_SEARCH_PATH for Python discovery PATH overrides 
+  * Add UV_PYTHON_NO_REGISTRY
+  * Add an environment variable for UV_NO_PROJECT
+  * Expose UV_PYTHON_SEARCH_PATH for Python discovery PATH overrides
  * Bug fixes
-  * Add rust-toolchain.toml to uv-build sdist 
-  * Ensure uv invocations of git do not inherit repository location environment variables 
-  * Redact pre-signed upload URLs in verbose output 
+  * Add rust-toolchain.toml to uv-build sdist
+  * Ensure uv invocations of git do not inherit repository location environment variables
+  * Redact pre-signed upload URLs in verbose output
   * Handle transitive URL dependencies in PEP 517 build requirements (#19076, #19086)
-  * Support uv lock on a pyproject.toml that only contains dependency-groups 
-  * Disable transparent Python upgrades in projects when a patch version is requested via .python-version 
-  * Fix Python variant tagging in the Windows registry 
-  * Ban external symlinks in .tar.zst wheels 
+  * Support uv lock on a pyproject.toml that only contains dependency-groups
+  * Disable transparent Python upgrades in projects when a patch version is requested via .python-version
+  * Fix Python variant tagging in the Windows registry
+  * Ban external symlinks in .tar.zst wheels
  * Distributions
-  * Remove deprecated license classifiers from uv-build and add Python 3.14 classifier 
+  * Remove deprecated license classifiers from uv-build and add Python 3.14 classifier
  * Documentation
-  * Bump astral-sh/setup-uv version in docs 
-  * Update PyTorch documentation for PyTorch 2.11 
+  * Bump astral-sh/setup-uv version in docs
+  * Update PyTorch documentation for PyTorch 2.11
 
 -------------------------------------------------------------------
 Thu Apr 16 08:27:33 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.7 
+- update to 0.11.7
  * Enhancements
-  * Elevate configuration errors to required-version mismatches 
-  * Further improve TLS certificate validation messages 
-  * Improve --exclude-newer hints 
+  * Elevate configuration errors to required-version mismatches
+  * Further improve TLS certificate validation messages
+  * Improve --exclude-newer hints
  * Preview features
-  * Fix --script handling in uv audit 
-  * Fix traversal of extras in uv audit 
+  * Fix --script handling in uv audit
+  * Fix traversal of extras in uv audit
  * Bug fixes
-  * De-quote workspace metadata in linehaul data 
-  * Avoid installing tool workspace member dependencies as editable 
-  * Emit JSON report for uv sync --check failures 
-  * Filter and warn on invalid TLS certificates 
-  * Fix equality comparisons for version specifiers with ~= operators 
-  * Fix stale Python upgrade preview feature check in project environment construction 
-  * Improve Windows path normalization 
+  * De-quote workspace metadata in linehaul data
+  * Avoid installing tool workspace member dependencies as editable
+  * Emit JSON report for uv sync --check failures
+  * Filter and warn on invalid TLS certificates
+  * Fix equality comparisons for version specifiers with ~= operators
+  * Fix stale Python upgrade preview feature check in project environment construction
+  * Improve Windows path normalization
 
 -------------------------------------------------------------------
 Fri Apr 10 09:55:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.6 
+- update to 0.11.6
  * This release resolves a low severity security advisory in which wheels with malformed RECORD
     entries could delete arbitrary files on uninstall. See GHSA-pjjw-68hj-v9mw for details.
 
 -------------------------------------------------------------------
 Thu Apr  9 12:59:56 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.5 
+- update to 0.11.5
  * Bug fixes
-  * Do not remove files outside the venv on uninstall 
-  * Validate and heal wheel RECORD during installation 
-  * Avoid uv cache clean errors due to Win32 path normalization 
+  * Do not remove files outside the venv on uninstall
+  * Validate and heal wheel RECORD during installation
+  * Avoid uv cache clean errors due to Win32 path normalization
 
 -------------------------------------------------------------------
 Wed Apr  8 18:38:46 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.4 
+- update to 0.11.4
  * Enhancements
-  * Add support for --upgrade-group 
-  * Merge repeated archive URL hashes by version ID 
-  * Require all direct URL hash algorithms to match 
+  * Add support for --upgrade-group
+  * Merge repeated archive URL hashes by version ID
+  * Require all direct URL hash algorithms to match
  * Bug fixes
-  * Avoid panics in environment finding via cycle detection 
-  * Enforce direct URL hashes for pyproject.toml dependencies 
-  * Error on --locked and --frozen when script lockfile is missing 
-  * Fix uv export extra resolution for workspace member and conflicting extras 
-  * Include conflicts defined in virtual workspace root 
-  * Recompute relative exclude-newer values during uv tree --outdated 
-  * Respect --exclude-newer in uv tool list --outdated 
-  * Sort by comparator to break specifier ties 
-  * Store relative timestamps in tool receipts 
-  * Track newly-activated extras when determining conflicts 
-  * Patch Cargo.lock in uv-build source distributions 
+  * Avoid panics in environment finding via cycle detection
+  * Enforce direct URL hashes for pyproject.toml dependencies
+  * Error on --locked and --frozen when script lockfile is missing
+  * Fix uv export extra resolution for workspace member and conflicting extras
+  * Include conflicts defined in virtual workspace root
+  * Recompute relative exclude-newer values during uv tree --outdated
+  * Respect --exclude-newer in uv tool list --outdated
+  * Sort by comparator to break specifier ties
+  * Store relative timestamps in tool receipts
+  * Track newly-activated extras when determining conflicts
+  * Patch Cargo.lock in uv-build source distributions
  * Documentation
-  * Clarify that --exclude-newer compares artifact upload times 
+  * Clarify that --exclude-newer compares artifact upload times
 
 -------------------------------------------------------------------
 Tue Apr  7 08:24:47 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.3 
+- update to 0.11.3
  * Enhancements
-  * Add progress bar for hashing phase in uv publish 
-  * Add support for ROCm 7.2 
-  * Emit abi3t tags for every abi3 version 
-  * Expand uv workspace metadata with dependency information from the lock 
-  * Implement support for PEP 803 
-  * Pretty-print platform in built wheel errors 
-  * Publish installers to /installers/uv/latest on the mirror 
-  * Show free-threaded Python in built-wheel errors 
+  * Add progress bar for hashing phase in uv publish
+  * Add support for ROCm 7.2
+  * Emit abi3t tags for every abi3 version
+  * Expand uv workspace metadata with dependency information from the lock
+  * Implement support for PEP 803
+  * Pretty-print platform in built wheel errors
+  * Publish installers to /installers/uv/latest on the mirror
+  * Show free-threaded Python in built-wheel errors
  * Preview features
-  * Add --ignore and --ignore-until-fixed to uv audit 
+  * Add --ignore and --ignore-until-fixed to uv audit
  * Bug fixes
-  * Bump simple API cache 
-  * Don't drop blake2b hashes 
-  * Handle broken range request implementations 
-  * Remove powerpc64-unknown-linux-gnu from release build targets 
-  * Respect dependency metadata overrides in uv pip check 
-  * Support debug CPython ABI tags in environment compatibility 
+  * Bump simple API cache
+  * Don't drop blake2b hashes
+  * Handle broken range request implementations
+  * Remove powerpc64-unknown-linux-gnu from release build targets
+  * Respect dependency metadata overrides in uv pip check
+  * Support debug CPython ABI tags in environment compatibility
  * Documentation
   * Document false opt-out for exclude-newer-package
 
@@ -318,28 +362,28 @@ Sat Mar 28 13:25:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.2
  * Enhancements
-  * Add a dedicated Windows PE editing error 
-  * Make uv self update fetch the manifest from the mirror first 
-  * Use uv reqwest client for self update 
-  * Show uv self update success and failure messages with --quiet 
+  * Add a dedicated Windows PE editing error
+  * Make uv self update fetch the manifest from the mirror first
+  * Use uv reqwest client for self update
+  * Show uv self update success and failure messages with --quiet
  * Preview features
-  * Evaluate extras and groups when determining auditable packages 
+  * Evaluate extras and groups when determining auditable packages
  * Bug fixes
-  * Skip redundant project configuration parsing for uv run 
+  * Skip redundant project configuration parsing for uv run
 
 -------------------------------------------------------------------
 Wed Mar 25 17:07:29 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.11.1 
+- update to 0.11.1
  * Bug fixes
-  * Add missing hash verification for riscv64gc-unknown-linux-musl 
-  * Fallback to direct download when direct URL streaming is unsupported 
-  * Revert treating 'Dynamic' values as case-insensitive 
-  * Remove torchdata from list of packages to source from the PyTorch index 
-  * Special-case == Python version request ranges 
+  * Add missing hash verification for riscv64gc-unknown-linux-musl
+  * Fallback to direct download when direct URL streaming is unsupported
+  * Revert treating 'Dynamic' values as case-insensitive
+  * Remove torchdata from list of packages to source from the PyTorch index
+  * Special-case == Python version request ranges
  * Documentation
-  * Cover --python <dir> in "Using arbitrary Python environments" 
-  * Fix version annotations for PS_MODULE_PATH and UV_WORKING_DIR 
+  * Cover --python <dir> in "Using arbitrary Python environments"
+  * Fix version annotations for PS_MODULE_PATH and UV_WORKING_DIR
 
 -------------------------------------------------------------------
 Tue Mar 24 11:39:23 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -352,67 +396,67 @@ Tue Mar 24 11:39:23 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
   * Building uv on x86-64 and i686 Windows requires NASM
   * Empty SSL_CERT_FILE values are ignored (for consistency with SSL_CERT_DIR)
  * Enhancements
-  * Treat 'Dynamic' values as case-insensitive 
-  * Use a dedicated error for invalid cache control headers 
-  * Enable checksum verification in the generated installer script 
+  * Treat 'Dynamic' values as case-insensitive
+  * Use a dedicated error for invalid cache control headers
+  * Enable checksum verification in the generated installer script
  * Preview features
-  * Add --service-format and --service-url to uv audit 
+  * Add --service-format and --service-url to uv audit
  * Performance
-  * Avoid holding flat index lock across indexes 
+  * Avoid holding flat index lock across indexes
  * Bug fixes
-  * Find the dynamic linker on the file system when sniffing binaries fails 
-  * Fix export of conflicting workspace members with dependencies 
-  * Respect installed settings in uv tool list --outdated 
-  * Treat paths originating as PEP 508 URLs which contain expanded variables as relative 
-  * Fix uv export for workspace member packages with conflicts 
-  * Continue to alternative authentication providers when the pyx store has no token 
-  * Use redacted URLs for log messages in cached client 
+  * Find the dynamic linker on the file system when sniffing binaries fails
+  * Fix export of conflicting workspace members with dependencies
+  * Respect installed settings in uv tool list --outdated
+  * Treat paths originating as PEP 508 URLs which contain expanded variables as relative
+  * Fix uv export for workspace member packages with conflicts
+  * Continue to alternative authentication providers when the pyx store has no token
+  * Use redacted URLs for log messages in cached client
  * Documentation
-  * Add details on Linux versions to the platform policy 
-  * Clarify FLASH_ATTENTION_SKIP_CUDA_BUILD guidance for flash-attn installs 
-  * Split the dependency bots page into two separate pages 
-  * Split the alternative indexes page into separate pages 
+  * Add details on Linux versions to the platform policy
+  * Clarify FLASH_ATTENTION_SKIP_CUDA_BUILD guidance for flash-attn installs
+  * Split the dependency bots page into two separate pages
+  * Split the alternative indexes page into separate pages
 
 -------------------------------------------------------------------
 Fri Mar 20 11:37:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.12
  * Enhancements
-  * Include uv's target triple in version report 
-  * Allow comma separated values in --no-emit-package 
+  * Include uv's target triple in version report
+  * Allow comma separated values in --no-emit-package
  * Preview features
-  * Show uv audit in the CLI help 
+  * Show uv audit in the CLI help
  * Bug fixes
-  * Improve reporting of managed interpreter symlinks in uv python list 
-  * Preserve end-of-line comments on previous entries when removing dependencies 
-  * Treat abi3 wheel Python version as a lower bound 
-  * Detect hard-float support on aarch64 kernels running armv7 userspace 
+  * Improve reporting of managed interpreter symlinks in uv python list
+  * Preserve end-of-line comments on previous entries when removing dependencies
+  * Treat abi3 wheel Python version as a lower bound
+  * Detect hard-float support on aarch64 kernels running armv7 userspace
  * Documentation
-  * Add Python 3.15 to supported versions 
-  * Adjust the PyPy note 
-  * Move Pyodide to Tier 2 in the Python support policy 
-  * Move Rust and Python version support out of the Platform support policy 
-  * Update Docker guide with changes from uv-docker-example 
-  * Update the Python version policy 
+  * Add Python 3.15 to supported versions
+  * Adjust the PyPy note
+  * Move Pyodide to Tier 2 in the Python support policy
+  * Move Rust and Python version support out of the Platform support policy
+  * Update Docker guide with changes from uv-docker-example
+  * Update the Python version policy
 
 -------------------------------------------------------------------
 Tue Mar 17 11:34:26 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.10.11 
+- update to 0.10.11
  * Enhancements
-  * Fetch Ruff release metadata from an Astral mirror 
-  * Use PEP 639 license metadata for uv itself 
+  * Fetch Ruff release metadata from an Astral mirror
+  * Use PEP 639 license metadata for uv itself
  * Performance
-  * Improve distribution id performance 
+  * Improve distribution id performance
  * Bug fixes
-  * Allow --project to refer to a pyproject.toml directly and reduce to a warning on other files 
-  * Disable SYSTEM_VERSION_COMPAT when querying interpreters on macOS 
-  * Enforce available distributions for supported environments 
-  * Fix uv sync --active recreating active environments when UV_PYTHON_INSTALL_DIR is relative 
+  * Allow --project to refer to a pyproject.toml directly and reduce to a warning on other files
+  * Disable SYSTEM_VERSION_COMPAT when querying interpreters on macOS
+  * Enforce available distributions for supported environments
+  * Fix uv sync --active recreating active environments when UV_PYTHON_INSTALL_DIR is relative
  * Documentation
-  * Add missing -o requirements.txt in uv pip compile example 
-  * Link to organization security policy 
-  * Link to the AI policy in the contributing guide 
+  * Add missing -o requirements.txt in uv pip compile example
+  * Link to organization security policy
+  * Link to the AI policy in the contributing guide
 
 -------------------------------------------------------------------
 Mon Mar 16 09:29:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
@@ -424,87 +468,87 @@ Mon Mar 16 09:29:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
   https://rustsec.org/advisories/RUSTSEC-2023-0071.html
 - update to 0.10.10
   * Enhancements
-    * Add --outdated flag to uv tool list 
-    * Add riscv64 musl target to build-release-binaries workflow 
-    * Fetch Ruff from an Astral mirror 
-    * Improve error handling for platform detection in Python downloads 
-    * Warn if --project directory does not exist 
-    * Warn when workspace member scripts are skipped due to missing build system 
-    * Update build backend versions used in uv init 
-    * Log explicit config file path in verbose output 
-    * Make uv cache clear an alias of uv cache clean 
-    * Reject invalid classifiers, warn on license classifiers in uv_build 
+    * Add --outdated flag to uv tool list
+    * Add riscv64 musl target to build-release-binaries workflow
+    * Fetch Ruff from an Astral mirror
+    * Improve error handling for platform detection in Python downloads
+    * Warn if --project directory does not exist
+    * Warn when workspace member scripts are skipped due to missing build system
+    * Update build backend versions used in uv init
+    * Log explicit config file path in verbose output
+    * Make uv cache clear an alias of uv cache clean
+    * Reject invalid classifiers, warn on license classifiers in uv_build
   * Preview features
-    * Add links to uv audit output 
-    * Output/report formatting for uv audit 
-    * Switch to batched OSV queries for uv audit 
+    * Add links to uv audit output
+    * Output/report formatting for uv audit
+    * Switch to batched OSV queries for uv audit
   * Bug fixes
-    * Avoid sharing version metadata across indexes 
-    * Bump zlib-rs to 0.6.2 to fix panic on decompression of large wheels on Windows 
-    * Filter out unsupported environment wheels 
-    * Preserve absolute/relative paths in lockfiles 
-    * Recreate Python environments under uv tool install --force 
-    * Respect timestamp and other cache keys in cached environments 
-    * Simplify selected extra markers in uv export 
-    * Send pyx mint-token requests with a proper Content-Type 
-    * Fix Windows operating system and version reporting 
+    * Avoid sharing version metadata across indexes
+    * Bump zlib-rs to 0.6.2 to fix panic on decompression of large wheels on Windows
+    * Filter out unsupported environment wheels
+    * Preserve absolute/relative paths in lockfiles
+    * Recreate Python environments under uv tool install --force
+    * Respect timestamp and other cache keys in cached environments
+    * Simplify selected extra markers in uv export
+    * Send pyx mint-token requests with a proper Content-Type
+    * Fix Windows operating system and version reporting
   * Documentation
-    * Update the platform support policy with a tier 3 section including freebsd and 32-bit windows 
+    * Update the platform support policy with a tier 3 section including freebsd and 32-bit windows
 
 -------------------------------------------------------------------
 Tue Mar 10 11:21:07 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.10.9 
+- update to 0.10.9
  * Enhancements
-  * Add fbgemm-gpu, fbgemm-gpu-genai, torchrec, and torchtune to the PyTorch list 
-  * Add torchcodec to PyTorch List 
-  * Log the duration we took before erroring 
-  * Warn when using uv_build settings without uv_build 
-  * Add fallback to /usr/lib/os-release on Linux system lookup failure 
-  * Use cargo auditable to include SBOM in uv builds 
+  * Add fbgemm-gpu, fbgemm-gpu-genai, torchrec, and torchtune to the PyTorch list
+  * Add torchcodec to PyTorch List
+  * Log the duration we took before erroring
+  * Warn when using uv_build settings without uv_build
+  * Add fallback to /usr/lib/os-release on Linux system lookup failure
+  * Use cargo auditable to include SBOM in uv builds
  * Configuration
-  * Add an environment variable for UV_VENV_RELOCATABLE 
+  * Add an environment variable for UV_VENV_RELOCATABLE
  * Performance
-  * Avoid toml Document overhead 
-  * Use a single global workspace cache 
+  * Avoid toml Document overhead
+  * Use a single global workspace cache
  * Bug fixes
-  * Continue on trampoline job assignment failures 
-  * Handle the hard link limit gracefully instead of failing 
-  * Respect build constraints for workspace members 
-  * Revalidate editables and other dependencies in scripts 
-  * Support Python 3.13+ on Android 
-  * Support cp3-none-any 
-  * Skip tool environments with broken links to Python on Windows 
+  * Continue on trampoline job assignment failures
+  * Handle the hard link limit gracefully instead of failing
+  * Respect build constraints for workspace members
+  * Revalidate editables and other dependencies in scripts
+  * Support Python 3.13+ on Android
+  * Support cp3-none-any
+  * Skip tool environments with broken links to Python on Windows
  * Documentation
-  * Add documentation for common marker values 
-  * Improve documentation on virtual dependencies 
+  * Add documentation for common marker values
+  * Improve documentation on virtual dependencies
 
 -------------------------------------------------------------------
 Wed Mar  4 17:40:36 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.10.8 
+- update to 0.10.8
  * Enhancements
-  * Add Docker images based on Docker Hardened Images 
-  * Add resolver hint when --exclude-newer filters out all versions of a package 
-  * Configure a real retry minimum delay of 1s 
-  * Expand uv_build direct build compatibility 
-  * Fetch CPython from an Astral mirror by default 
-  * Download uv releases from an Astral mirror in installers by default 
-  * Add SBOM attestations to Docker images 
-  * Improve hint for installing meson-python when missing as build backend 
+  * Add Docker images based on Docker Hardened Images
+  * Add resolver hint when --exclude-newer filters out all versions of a package
+  * Configure a real retry minimum delay of 1s
+  * Expand uv_build direct build compatibility
+  * Fetch CPython from an Astral mirror by default
+  * Download uv releases from an Astral mirror in installers by default
+  * Add SBOM attestations to Docker images
+  * Improve hint for installing meson-python when missing as build backend
  * Configuration
-  * Add UV_INIT_BARE environment variable for uv init 
+  * Add UV_INIT_BARE environment variable for uv init
  * Bug fixes
-  * Prevent uv tool upgrade from installing excluded dependencies 
-  * Promote authentication policy when saving tool receipts 
-  * Respect exclusions in scripts 
-  * Retain default-branch Git SHAs in pylock.toml files 
-  * Skip installed Python check for URL dependencies 
-  * Respect constraints during --upgrade 
-  * Fix uv tree orphaned roots and premature deduplication 
+  * Prevent uv tool upgrade from installing excluded dependencies
+  * Promote authentication policy when saving tool receipts
+  * Respect exclusions in scripts
+  * Retain default-branch Git SHAs in pylock.toml files
+  * Skip installed Python check for URL dependencies
+  * Respect constraints during --upgrade
+  * Fix uv tree orphaned roots and premature deduplication
  * Documentation
-  * Mention cooldown and tweak inline script metadata in dependency bots documentation 
-  * Move cache prune in GitLab to after_script 
+  * Mention cooldown and tweak inline script metadata in dependency bots documentation
+  * Move cache prune in GitLab to after_script
 
 -------------------------------------------------------------------
 Wed Mar  4 12:45:01 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
@@ -560,41 +604,41 @@ Tue Feb 24 18:03:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Mon Feb 16 20:07:52 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.10.3: 
+- update to 0.10.3:
  * Enhancements
-  * Don't open file locks for writing 
-  * Make Windows trampoline error messages consistent with uv proper 
-  * Log which preview features are enabled 
+  * Don't open file locks for writing
+  * Make Windows trampoline error messages consistent with uv proper
+  * Log which preview features are enabled
  * Preview features
-  * Add support for ruff version constraints and exclude-newer in uv format 
-  * Fix script path handling when target-workspace-discovery is enabled 
-  * Use version constraints to select the default ruff version used by uv format 
+  * Add support for ruff version constraints and exclude-newer in uv format
+  * Fix script path handling when target-workspace-discovery is enabled
+  * Use version constraints to select the default ruff version used by uv format
  * Bug fixes
-  * Avoid matching managed Python versions by prefixes, e.g. don't match CPython 3.10 when cpython-3.1 is specified 
-  * Fix handling of --allow-existing with minor version links on Windows 
-  * Fix panic when encountering unmanaged workspace members 
-  * Improve accuracy of request timing 
-  * Reject u64::MAX in version segments to prevent overflow 
+  * Avoid matching managed Python versions by prefixes, e.g. don't match CPython 3.10 when cpython-3.1 is specified
+  * Fix handling of --allow-existing with minor version links on Windows
+  * Fix panic when encountering unmanaged workspace members
+  * Improve accuracy of request timing
+  * Reject u64::MAX in version segments to prevent overflow
 
 -------------------------------------------------------------------
 Wed Feb 11 11:12:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.10.2
  * Enhancements
-  * Deprecate unexpected ZIP compression methods 
+  * Deprecate unexpected ZIP compression methods
  * Bug fixes
-  * Fix cargo-install failing due to missing uv-test dependency 
+  * Fix cargo-install failing due to missing uv-test dependency
 
 -------------------------------------------------------------------
 Tue Feb 10 17:43:48 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.10.1 
+- update to 0.10.1
  * Enhancements
-  * Don't panic on metadata read errors 
-  * Skip empty workspace members instead of failing 
-  * Don't fail creating a read-only sdist-vX/.git if it already exists 
+  * Don't panic on metadata read errors
+  * Skip empty workspace members instead of failing
+  * Don't fail creating a read-only sdist-vX/.git if it already exists
  * Documentation
-  * Suggest uv python update-shell over uv tool update-shell in Python docs 
+  * Suggest uv python update-shell over uv tool update-shell in Python docs
 
 
 -------------------------------------------------------------------
@@ -609,282 +653,282 @@ Thu Feb  5 23:06:10 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
   * Respect global Python version pins in uv tool run and uv tool install
   * Require username when multiple credentials match a URL
   * Avoid invalidating the lockfile versions after an exclude-newer change
-  * Upgrade uv format to Ruff 0.15.0 
+  * Upgrade uv format to Ruff 0.15.0
  * Stabilizations
   * uv python upgrade and uv python install --upgrade
   * uv add --bounds and the add-bounds configuration option
   * uv workspace list and uv workspace dir
   * extra-build-dependencies
  * Enhancements
-  * Improve ABI tag error message phrasing 
-  * Introduce a 10s connect timeout 
-  * Allow using pyx.dev as a target in uv auth commands despite PYX_API_URL differing 
+  * Improve ABI tag error message phrasing
+  * Introduce a 10s connect timeout
+  * Allow using pyx.dev as a target in uv auth commands despite PYX_API_URL differing
  * Bug fixes
-  * Support all CPython ABI tag suffixes properly 
-  * Add support for detecting PowerShell on Linux and macOS 
-  * Retry timeout errors for streams 
+  * Support all CPython ABI tag suffixes properly
+  * Add support for detecting PowerShell on Linux and macOS
+  * Retry timeout errors for streams
 
 -------------------------------------------------------------------
 Thu Feb  5 11:33:19 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.30
  * Enhancements
-  * Add wheel-tag-style aliases for manylinux platform names 
-  * Hint on uv version --bump dev similar to pre-release bumps 
-  * Improve display of RFC 9457 Problem Detail responses in uv publish server errors 
-  * Improve the wording of publish errors during dry-run 
-  * Set backoff to 10 retries 
-  * Add properties to synthentic and project roots in Cyclone DX exports 
-  * Identify the invidividual clients in uv publish trace logs 
-  * Allow comma-separated values for --extra option 
-  * Check all files during a dry-run publish instead of stopping at the first failure 
-  * Clarify UV_HTTP_TIMEOUT error message 
+  * Add wheel-tag-style aliases for manylinux platform names
+  * Hint on uv version --bump dev similar to pre-release bumps
+  * Improve display of RFC 9457 Problem Detail responses in uv publish server errors
+  * Improve the wording of publish errors during dry-run
+  * Set backoff to 10 retries
+  * Add properties to synthentic and project roots in Cyclone DX exports
+  * Identify the invidividual clients in uv publish trace logs
+  * Allow comma-separated values for --extra option
+  * Check all files during a dry-run publish instead of stopping at the first failure
+  * Clarify UV_HTTP_TIMEOUT error message
  * Preview features
-  * Use relocatable virtual environments by default 
-  * Remove special casing for base and default conda environment names 
+  * Use relocatable virtual environments by default
+  * Remove special casing for base and default conda environment names
  * Bug fixes
-  * Fix PYTHONHOME inheritance when spawning different Python versions 
-  * Fix wheel rejections on freethreading+debug builds 
-  * Pad with zeros during comparisons in EqualStar and NotEqualStar operators 
-  * Reject unknown field names in conflict declarations 
-  * Fix panics in system-configuration in sandboxes 
-  * Fix deadlock on token refresh in uv publish when using pyx 
-  * Ignore global Python pins when incompatible with project 
+  * Fix PYTHONHOME inheritance when spawning different Python versions
+  * Fix wheel rejections on freethreading+debug builds
+  * Pad with zeros during comparisons in EqualStar and NotEqualStar operators
+  * Reject unknown field names in conflict declarations
+  * Fix panics in system-configuration in sandboxes
+  * Fix deadlock on token refresh in uv publish when using pyx
+  * Ignore global Python pins when incompatible with project
  * Documentation
-  * Update pip pre-release compatibility information 
+  * Update pip pre-release compatibility information
  * Security
-  * Hide a subset of environment variable values in --help 
+  * Hide a subset of environment variable values in --help
 
 -------------------------------------------------------------------
 Fri Jan 30 13:14:35 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to  0.9.28
  * Enhancements
-  * Add support for Pyodide interpreter on Windows 
-  * Warn if multiple indexes include default = true 
-  * Skip uploads when validation reports 'Already uploaded' 
-  * Add -t shortform for --target to uv pip subcommands 
-  * Add support for ROCm 7.0 and 7.1 accelerator backends 
-  * Further improve free-threading ABI incompatibility errors 
-  * Implement uv pip freeze --exclude flag 
-  * Improve warnings for --system and --no-system in uv venv 
-  * Make uv pip compile attempt to download a specified --python-version if it can. 
-  * Support Trusted Publishing with pyx 
-  * Fix JSON schema for exclude-newer-package 
+  * Add support for Pyodide interpreter on Windows
+  * Warn if multiple indexes include default = true
+  * Skip uploads when validation reports 'Already uploaded'
+  * Add -t shortform for --target to uv pip subcommands
+  * Add support for ROCm 7.0 and 7.1 accelerator backends
+  * Further improve free-threading ABI incompatibility errors
+  * Implement uv pip freeze --exclude flag
+  * Improve warnings for --system and --no-system in uv venv
+  * Make uv pip compile attempt to download a specified --python-version if it can.
+  * Support Trusted Publishing with pyx
+  * Fix JSON schema for exclude-newer-package
  * Preview features
-  * Better detection for conflicting packages 
-  * Upgrade based on outdated build versions in uv python upgrade 
+  * Better detection for conflicting packages
+  * Upgrade based on outdated build versions in uv python upgrade
  * Bug fixes
-  * Ensure uv.exe exits when uvw.exe or uvx.exe is killed 
-  * Change chocolatey system test to ensure uv uses the right python 
-  * Fix infinite loop when SSL_CERT_FILE is a directory 
+  * Ensure uv.exe exits when uvw.exe or uvx.exe is killed
+  * Change chocolatey system test to ensure uv uses the right python
+  * Fix infinite loop when SSL_CERT_FILE is a directory
  * Documentation
-  * Add cargo-xwin to the CONTRIBUTING guide 
-  * Fix typo in the documentation of UV_PUBLISH_INDEX 
-  * Move MSRV to platform support section 
-  * Update the testing instructions in the CONTRIBUTING guide 
-  * Use --locked to install cargo-xwin in guide 
-  * Warn about PyPy being unmaintained 
-  * docs: Correct gitlab-ci.yml to .gitlab-ci.yml 
+  * Add cargo-xwin to the CONTRIBUTING guide
+  * Fix typo in the documentation of UV_PUBLISH_INDEX
+  * Move MSRV to platform support section
+  * Update the testing instructions in the CONTRIBUTING guide
+  * Use --locked to install cargo-xwin in guide
+  * Warn about PyPy being unmaintained
+  * docs: Correct gitlab-ci.yml to .gitlab-ci.yml
  * Other changes
-  * Update MSRV to 1.91 
+  * Update MSRV to 1.91
  * Configuration
-  * Add a reflink alias for the "clone" link mode 
+  * Add a reflink alias for the "clone" link mode
 
 -------------------------------------------------------------------
 Fri Jan 16 14:35:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.26 
+- update to 0.9.26
  * Enhancements
-  * Add a hint to update uv when a managed Python download is not found 
-  * Improve cache initialization failure error message 
-  * Improve error message for abi3 wheels on free-threaded Python 
-  * Add support for --no-sources-package 
+  * Add a hint to update uv when a managed Python download is not found
+  * Improve cache initialization failure error message
+  * Improve error message for abi3 wheels on free-threaded Python
+  * Add support for --no-sources-package
  * Preview features
-  * Add METADATA.json and WHEEL.json in uv build backend 
-  * Add support for GCS request signing 
-  * Adjust the process ulimit to the maximum allowed on startup 
+  * Add METADATA.json and WHEEL.json in uv build backend
+  * Add support for GCS request signing
+  * Adjust the process ulimit to the maximum allowed on startup
  * Bug fixes
-  * Lock to avoid concurrent refresh of pyx tokens 
+  * Lock to avoid concurrent refresh of pyx tokens
  * Documentation
-  * Add linting and formatting instructions to the CONTRIBUTING guide 
-  * Avoid rendering pyproject.toml examples for more system-level settings 
+  * Add linting and formatting instructions to the CONTRIBUTING guide
+  * Avoid rendering pyproject.toml examples for more system-level settings
 
 -------------------------------------------------------------------
 Wed Jan 14 09:37:28 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.25
  * Enhancements
-  * Add --compile-bytecode to uv python install and uv python upgrade to compile the standard library 
-  * Allow disabling exclude-newer per package 
-  * Broadcast WM_SETTINGCHANGE on uv tool update-shell 
+  * Add --compile-bytecode to uv python install and uv python upgrade to compile the standard library
+  * Allow disabling exclude-newer per package
+  * Broadcast WM_SETTINGCHANGE on uv tool update-shell
  * Preview features
-  * Detect workspace from uv run target 
+  * Detect workspace from uv run target
  * Bug fixes
-  * Avoid unwrapping size for file responses 
-  * Use keyring authentication when retrieving tool@latest version 
-  * Use latest Pyodide version for each python version 
-  * Improve trampoline file handle closing 
-  * Fix error message when installing musl python on armv7 
+  * Avoid unwrapping size for file responses
+  * Use keyring authentication when retrieving tool@latest version
+  * Use latest Pyodide version for each python version
+  * Improve trampoline file handle closing
+  * Fix error message when installing musl python on armv7
 
 -------------------------------------------------------------------
 Sun Jan 11 16:45:37 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.24 
+- update to 0.9.24
  * Enhancements
-  * Use a dedicated error message when lockfile can't be found 
-  * Only write portable paths in RECORD files 
-  * Support relative paths in UV_PYTHON_BIN_DIR and UV_TOOL_BIN_DIR 
+  * Use a dedicated error message when lockfile can't be found
+  * Only write portable paths in RECORD files
+  * Support relative paths in UV_PYTHON_BIN_DIR and UV_TOOL_BIN_DIR
  * Preview features
-  * Enable uploads to S3 via pre-signed URLs 
+  * Enable uploads to S3 via pre-signed URLs
  * Configuration
-  * Allow setting proxy variables via global / user configuration 
-  * Manually parse and reconcile Boolean environment variables 
+  * Allow setting proxy variables via global / user configuration
+  * Manually parse and reconcile Boolean environment variables
  * Bug fixes
-  * Fix handling of UV_NO_SYNC=1 uv run ... 
-  * Rebuild dynamic distribution when version changes with --no-cache 
-  * Filter unusable wheels from the lockfile for more architectures 
-  * Correctly count retries originating from early middleware errors 
-  * Avoid broken build artifacts on build failure 
-  * Fix missing dependencies on synthetic root in SBOM export 
-  * Recognize armv8l as an alias for armv7l in platform tag parsing 
-  * Fix redaction of a URL in a middleware trace log 
+  * Fix handling of UV_NO_SYNC=1 uv run ...
+  * Rebuild dynamic distribution when version changes with --no-cache
+  * Filter unusable wheels from the lockfile for more architectures
+  * Correctly count retries originating from early middleware errors
+  * Avoid broken build artifacts on build failure
+  * Fix missing dependencies on synthetic root in SBOM export
+  * Recognize armv8l as an alias for armv7l in platform tag parsing
+  * Fix redaction of a URL in a middleware trace log
  * Documentation
-  * Add index.md suggestion to llms.txt 
-  * Clarify that uv run uses inexact syncing by default 
-  * Clarify requirements file format in docs 
-  * Add Rust language classifier 
+  * Add index.md suggestion to llms.txt
+  * Clarify that uv run uses inexact syncing by default
+  * Clarify requirements file format in docs
+  * Add Rust language classifier
 
 -------------------------------------------------------------------
 Sat Jan  3 20:53:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.21 
+- update to 0.9.21
  * Bug fixes
-  * Avoid enforcing incorrect hash in mixed-hash settings 
-  * Fix retry counts in cached client 
-  * Respect UV_PYTHON_DOWNLOAD_MIRROR in uv python list 
-  * Support remote pylock.toml files 
-  * Avoid flagging proxied Git URLs as ambiguous authority 
-  * Fix dropped support of - in pip constraints, overrides, and excludes 
-  * Fix regression where zstd distribution hashes were not considered valid 
+  * Avoid enforcing incorrect hash in mixed-hash settings
+  * Fix retry counts in cached client
+  * Respect UV_PYTHON_DOWNLOAD_MIRROR in uv python list
+  * Support remote pylock.toml files
+  * Avoid flagging proxied Git URLs as ambiguous authority
+  * Fix dropped support of - in pip constraints, overrides, and excludes
+  * Fix regression where zstd distribution hashes were not considered valid
  * Documentation
-  * Fix a typo in the resolution documentation 
-  * Fix a typo in python install --default documentation 
+  * Fix a typo in the resolution documentation
+  * Fix a typo in python install --default documentation
  * Enhancements
-  * Allow uv pip compile to install missing python interpreters in cases where it would otherwise fail 
-  * Avoid creating file contents with uv init --bare --script 
-  * Respect --torch-backend in uv tool commands 
-  * Support comma-separated values in --no-binary and --only-binary 
+  * Allow uv pip compile to install missing python interpreters in cases where it would otherwise fail
+  * Avoid creating file contents with uv init --bare --script
+  * Respect --torch-backend in uv tool commands
+  * Support comma-separated values in --no-binary and --only-binary
  * Preview features
-  * Summarize package changes in uv sync with JSON output format 
+  * Summarize package changes in uv sync with JSON output format
  * Performance
-  * Avoid two hot String allocations in deserialization 
-  * Cache NVIDIA-hosted wheels by default 
+  * Avoid two hot String allocations in deserialization
+  * Cache NVIDIA-hosted wheels by default
 
 -------------------------------------------------------------------
 Sun Dec 21 12:43:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.18 
+- update to 0.9.18
  * Enhancements
-  * Add value hints to command line arguments to improve shell completion accuracy 
-  * Improve error handling in uv publish 
-  * Improve rendering of multiline error messages 
-  * Support redirects in uv publish 
+  * Add value hints to command line arguments to improve shell completion accuracy
+  * Improve error handling in uv publish
+  * Improve rendering of multiline error messages
+  * Support redirects in uv publish
  * Configuration
-  * Accept --torch-backend in [tool.uv] 
+  * Accept --torch-backend in [tool.uv]
  * Performance
-  * Speed up uv cache size 
-  * Initialize S3 signer once 
+  * Speed up uv cache size
+  * Initialize S3 signer once
  * Bug fixes
-  * Avoid panics due to reads on failed requests 
-  * Enforce latest-version in @latest requests 
-  * Explicitly set EntryType for file entries in tar 
-  * Ignore pyproject.toml index username in lockfile comparison 
-  * Relax error when using uv add with UV_GIT_LFS set 
-  * Change schema for exclude-newer into optional string 
+  * Avoid panics due to reads on failed requests
+  * Enforce latest-version in @latest requests
+  * Explicitly set EntryType for file entries in tar
+  * Ignore pyproject.toml index username in lockfile comparison
+  * Relax error when using uv add with UV_GIT_LFS set
+  * Change schema for exclude-newer into optional string
  * Documentation
-  * Fix version reference in resolver example 
-  * Better documentation for exclude-newer* 
+  * Fix version reference in resolver example
+  * Better documentation for exclude-newer*
 
 -------------------------------------------------------------------
 Wed Dec 10 21:09:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.17
  * Enhancements
-  * Add torch-tensorrt and torchao to the PyTorch list 
-  * Add hint for misplaced --verbose in uv tool run 
-  * Add support for relative durations in exclude-newer (a.k.a., dependency cooldowns) 
-  * Add support for relocatable nushell activation script 
+  * Add torch-tensorrt and torchao to the PyTorch list
+  * Add hint for misplaced --verbose in uv tool run
+  * Add support for relative durations in exclude-newer (a.k.a., dependency cooldowns)
+  * Add support for relocatable nushell activation script
  * Bug fixes
-  * Respect dropped (but explicit) indexes in dependency groups 
+  * Respect dropped (but explicit) indexes in dependency groups
  * Documentation
-  * Improve source-exclude reference docs 
-  * Recommend UV_NO_DEV in Docker installs 
-  * Update UV_VERSION in docs for GitLab CI/CD 
+  * Improve source-exclude reference docs
+  * Recommend UV_NO_DEV in Docker installs
+  * Update UV_VERSION in docs for GitLab CI/CD
 
 -------------------------------------------------------------------
 Mon Dec  8 08:45:18 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.16 
+- update to 0.9.16
  * Enhancements
-  * Add a 5m default timeout to acquiring file locks to fail faster on deadlock 
-  * Add a stub debug subcommand to uv pip announcing its intentional absence 
-  * Add bounds in uv add --script 
-  * Add brew specific message for uv self update 
-  * Error when built wheel is for the wrong platform 
-  * Filter wheels from PEP 751 files based on --no-binary et al in uv pip compile 
-  * Support --target and --prefix in uv pip list, uv pip freeze, and uv pip show 
-  * Tweak language for build backend validation errors 
-  * Use explicit credentials cache instead of global static 
-  * Enable SIMD in HTML parsing 
+  * Add a 5m default timeout to acquiring file locks to fail faster on deadlock
+  * Add a stub debug subcommand to uv pip announcing its intentional absence
+  * Add bounds in uv add --script
+  * Add brew specific message for uv self update
+  * Error when built wheel is for the wrong platform
+  * Filter wheels from PEP 751 files based on --no-binary et al in uv pip compile
+  * Support --target and --prefix in uv pip list, uv pip freeze, and uv pip show
+  * Tweak language for build backend validation errors
+  * Use explicit credentials cache instead of global static
+  * Enable SIMD in HTML parsing
  * Preview features
-  * Fix missing preview warning in uv workspace metadata 
-  * Add a uv auth helper --protocol bazel command 
+  * Fix missing preview warning in uv workspace metadata
+  * Add a uv auth helper --protocol bazel command
  * Bug fixes
-  * Fix Pyston wheel compatibility tags 
-  * Allow redundant entries in tool.uv.build-backend.module-name but emit warnings 
-  * Fix infinite loop in non-attribute re-treats during HTML parsing 
+  * Fix Pyston wheel compatibility tags
+  * Allow redundant entries in tool.uv.build-backend.module-name but emit warnings
+  * Fix infinite loop in non-attribute re-treats during HTML parsing
  * Documentation
-  * Clarify --project flag help text to indicate project discovery 
-  * Regenerate the crates.io READMEs on release 
-  * Update Docker integration guide to prefer COPY over ADD for simple cases 
-  * Update PyTorch documentation to include information about supporting CUDA 13.0.x 
-  * Update the versioning policy 
-  * Upgrade PyTorch documentation to latest versions 
+  * Clarify --project flag help text to indicate project discovery
+  * Regenerate the crates.io READMEs on release
+  * Update Docker integration guide to prefer COPY over ADD for simple cases
+  * Update PyTorch documentation to include information about supporting CUDA 13.0.x
+  * Update the versioning policy
+  * Upgrade PyTorch documentation to latest versions
 
 -------------------------------------------------------------------
 Wed Dec  3 15:49:50 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.15 
+- update to 0.9.15
  * Enhancements
-  * Add ROCm 6.4 to --torch-backend=auto 
-  * Add a Windows manifest to uv binaries 
-  * Add LFS toggle to Git sources 
-  * Cache source reads during resolution 
-  * Allow reading requirements from scripts without an extension 
-  * Allow reading requirements from scripts with HTTP(S) paths 
+  * Add ROCm 6.4 to --torch-backend=auto
+  * Add a Windows manifest to uv binaries
+  * Add LFS toggle to Git sources
+  * Cache source reads during resolution
+  * Allow reading requirements from scripts without an extension
+  * Allow reading requirements from scripts with HTTP(S) paths
  * Configuration
-  * Add UV_HIDE_BUILD_OUTPUT to omit build logs 
+  * Add UV_HIDE_BUILD_OUTPUT to omit build logs
  * Bug fixes
-  * Fix uv-trampoline-builder builds from crates.io by moving bundled executables 
-  * Respect NO_COLOR and always show the command as a header when paging uv help output 
-  * Use 0o666 permissions for flock files instead of 0o777 
+  * Fix uv-trampoline-builder builds from crates.io by moving bundled executables
+  * Respect NO_COLOR and always show the command as a header when paging uv help output
+  * Use 0o666 permissions for flock files instead of 0o777
   * Revert "Bump astral-tl to v0.7.10 " to narrow down a regression causing hangs in metadata retrieval (#16938)
  * Documentation
-  * Link to the uv version in crates.io member READMEs 
+  * Link to the uv version in crates.io member READMEs
 
 -------------------------------------------------------------------
 Tue Dec  2 09:35:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.14 
+- update to 0.9.14
  * Performance
-  * Bump astral-tl to v0.7.10 to enable SIMD for HTML parsing 
+  * Bump astral-tl to v0.7.10 to enable SIMD for HTML parsing
  * Bug fixes
-  * Allow earlier post releases with exclusive ordering 
-  * Prefer updating existing .zshenv over creating a new one in tool update-shell 
-  * Respect -e flags in uv add 
+  * Allow earlier post releases with exclusive ordering
+  * Prefer updating existing .zshenv over creating a new one in tool update-shell
+  * Respect -e flags in uv add
  * Enhancements
-  * Attach subcommand to User-Agent string 
+  * Attach subcommand to User-Agent string
   * Prefer UV_WORKING_DIR over UV_WORKING_DIRECTORY for consistency
 
 -------------------------------------------------------------------
@@ -892,62 +936,62 @@ Thu Nov 27 13:14:15 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.13
  * Bug fixes
-  * Validate URL wheel tags against Requires-Python and required environments 
+  * Validate URL wheel tags against Requires-Python and required environments
  * Enhancements
-  * Allow --with-requirements to load extensionless inline-metadata scripts 
-  * Collect and upload PEP 740 attestations during uv publish 
-  * Prevent uv export from overwriting pyproject.toml 
+  * Allow --with-requirements to load extensionless inline-metadata scripts
+  * Collect and upload PEP 740 attestations during uv publish
+  * Prevent uv export from overwriting pyproject.toml
  * Documentation
-  * Drop unpublished crates from the uv crates.io README 
-  * Fix the links to uv in crates.io member READMEs 
-  * Add a crates.io README for uv 
-  * Add documentation for intermediate Docker layers in a workspace 
-  * Enumerate workspace members in the uv crate README 
-  * Fix documentation links for crates 
-  * Generate a crates.io README for uv workspace members 
-  * Move the "Export" guide to the projects concept section 
-  * Update the cargo install recommendation to use crates 
-  * Use the word "internal" in crate descriptions 
+  * Drop unpublished crates from the uv crates.io README
+  * Fix the links to uv in crates.io member READMEs
+  * Add a crates.io README for uv
+  * Add documentation for intermediate Docker layers in a workspace
+  * Enumerate workspace members in the uv crate README
+  * Fix documentation links for crates
+  * Generate a crates.io README for uv workspace members
+  * Move the "Export" guide to the projects concept section
+  * Update the cargo install recommendation to use crates
+  * Use the word "internal" in crate descriptions
 
 -------------------------------------------------------------------
 Mon Nov 24 10:17:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.11
  * Enhancements
-  * Add SBOM support to uv export 
-  * Publish to crates.io 
+  * Add SBOM support to uv export
+  * Publish to crates.io
  * Preview features
-  * Add uv workspace list --paths 
-  * Fix the preview warning on uv workspace dir 
+  * Add uv workspace list --paths
+  * Fix the preview warning on uv workspace dir
  * Bug fixes
-  * Fix uv init author serialization via toml_edit inline tables 
-  * Fix status messages without TTY 
-  * Preserve end-of-line comment whitespace when editing pyproject.toml 
-  * Disable always-authenticate when running under Dependabot 
+  * Fix uv init author serialization via toml_edit inline tables
+  * Fix status messages without TTY
+  * Preserve end-of-line comment whitespace when editing pyproject.toml
+  * Disable always-authenticate when running under Dependabot
  * Documentation
-  * Document the new behavior for free-threaded python versions 
-  * Improve note about build system in publish guide 
-  * Move do not upload publish note out of the guide into concepts 
+  * Document the new behavior for free-threaded python versions
+  * Improve note about build system in publish guide
+  * Move do not upload publish note out of the guide into concepts
 
 -------------------------------------------------------------------
 Tue Nov 18 15:27:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.10
  * Enhancements
-  * Add support for SSL_CERT_DIR 
-  * Enforce UTF‑8-encoded license files during uv build 
-  * Error when a project.license-files glob matches nothing 
-  * pip install --target (and sync) install Python if necessary 
-  * Account for python_downloads_json_url in pre-release Python version warnings 
-  * Support HTTP/HTTPS URLs in uv python --python-downloads-json-url 
+  * Add support for SSL_CERT_DIR
+  * Enforce UTF‑8-encoded license files during uv build
+  * Error when a project.license-files glob matches nothing
+  * pip install --target (and sync) install Python if necessary
+  * Account for python_downloads_json_url in pre-release Python version warnings
+  * Support HTTP/HTTPS URLs in uv python --python-downloads-json-url
  * Preview features
-  * Add support for --upgrade in uv python install 
-  * Fix handling of python install --default for pre-release Python versions 
-  * Add uv workspace list to list workspace members 
+  * Add support for --upgrade in uv python install
+  * Fix handling of python install --default for pre-release Python versions
+  * Add uv workspace list to list workspace members
  * Bug fixes
-  * Don't check file URLs for ambiguously parsed credentials 
+  * Don't check file URLs for ambiguously parsed credentials
  * Documentation
-  * Add a "storage" reference document 
+  * Add a "storage" reference document
 
 -------------------------------------------------------------------
 Mon Nov 17 10:24:20 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
@@ -979,64 +1023,64 @@ Mon Nov 10 10:23:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.8
  * Enhancements
-  * Accept multiple packages in uv export 
-  * Accept multiple packages in uv sync 
-  * Add a uv cache size command 
-  * Add prerelease guidance for build-system resolution failures 
-  * Allow Python requests to include +gil to require a GIL-enabled interpreter 
-  * Avoid pluralizing 'retry' for single value 
-  * Enable first-class dependency exclusions 
-  * Fix inclusive constraints on available package versions in resolver errors 
-  * Improve uv init error for invalid directory names 
-  * Show help on uv build -h 
-  * Include the Python variant suffix in "Using Python ..." messages 
-  * Log most recently modified file for cache-keys 
+  * Accept multiple packages in uv export
+  * Accept multiple packages in uv sync
+  * Add a uv cache size command
+  * Add prerelease guidance for build-system resolution failures
+  * Allow Python requests to include +gil to require a GIL-enabled interpreter
+  * Avoid pluralizing 'retry' for single value
+  * Enable first-class dependency exclusions
+  * Fix inclusive constraints on available package versions in resolver errors
+  * Improve uv init error for invalid directory names
+  * Show help on uv build -h
+  * Include the Python variant suffix in "Using Python ..." messages
+  * Log most recently modified file for cache-keys
  * Configuration
-  * Expose UV_NO_GROUP as an environment variable 
-  * Add UV_NO_SOURCES as an environment variable 
+  * Expose UV_NO_GROUP as an environment variable
+  * Add UV_NO_SOURCES as an environment variable
  * Bug fixes
-  * Allow --check and --locked to be used together in uv lock 
+  * Allow --check and --locked to be used together in uv lock
   * Allow for unnormalized names in the METADATA file
-  * Fix missing value_type for default-groups in schema 
-  * Respect multi-GPU outputs in nvidia-smi 
+  * Fix missing value_type for default-groups in schema
+  * Respect multi-GPU outputs in nvidia-smi
  * Documentation
-  * Fix typo in uv tool list doc 
-  * Note uv pip list name normalization in docs 
+  * Fix typo in uv tool list doc
+  * Note uv pip list name normalization in docs
 
 -------------------------------------------------------------------
 Sat Nov  1 13:56:32 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update to 0.9.7 
+- Update to 0.9.7
  * Enhancements
-  * Add Windows x86-32 emulation support to interpreter architecture checks 
-  * Improve readability of progress bars 
-  * Add GitHub attestations for uv release artifacts 
-  * Add --clear to uv build to remove old build artifacts 
-  * Add --no-create-gitignore to uv build 
-  * Do not error when a virtual environment directory cannot be removed due to a busy error 
-  * Improve hint on pip install --system when externally managed 
-  * Running uv lock --check with outdated lockfile will print that --check was passed, instead of --locked 
-  * Update uv init template for Maturin 
-  * Improve ordering of Python sources in logs 
-  * Restore DockerHub release images and annotations 
+  * Add Windows x86-32 emulation support to interpreter architecture checks
+  * Improve readability of progress bars
+  * Add GitHub attestations for uv release artifacts
+  * Add --clear to uv build to remove old build artifacts
+  * Add --no-create-gitignore to uv build
+  * Do not error when a virtual environment directory cannot be removed due to a busy error
+  * Improve hint on pip install --system when externally managed
+  * Running uv lock --check with outdated lockfile will print that --check was passed, instead of --locked
+  * Update uv init template for Maturin
+  * Improve ordering of Python sources in logs
+  * Restore DockerHub release images and annotations
  * Bug fixes
-  * Check for matching Python implementation during uv python upgrade 
-  * Deterministically order --find-links distributions 
-  * Don't panic in uv export --frozen when the lockfile is outdated 
-  * Fix root of uv tree when --package is used with circular dependencies 
-  * Show package list with pip freeze --quiet 
-  * Limit uv auth login pyx.dev retries to 60s 
-  * Add an empty group with uv add --group ... -r ... 
-  * Drop terminal coloring from uv auth token output 
-  * Don't use UV_LOCKED to enable --check flag 
+  * Check for matching Python implementation during uv python upgrade
+  * Deterministically order --find-links distributions
+  * Don't panic in uv export --frozen when the lockfile is outdated
+  * Fix root of uv tree when --package is used with circular dependencies
+  * Show package list with pip freeze --quiet
+  * Limit uv auth login pyx.dev retries to 60s
+  * Add an empty group with uv add --group ... -r ...
+  * Drop terminal coloring from uv auth token output
+  * Don't use UV_LOCKED to enable --check flag
 - This release contains an upgrade to Astral's fork of async_zip, which addresses potential sources of ZIP
    parsing differentials between uv and other Python packaging tooling.
    See GHSA-pqhf-p39g-3x64 for additional details.
  * Security
   * Address ZIP parsing differentials (GHSA-pqhf-p39g-3x64)
  * Documentation
-  * Update docs for maturin build backend init template 
-  * Update docs to reflect previous changes to signal forwarding semantics 
+  * Update docs for maturin build backend init template
+  * Update docs to reflect previous changes to signal forwarding semantics
 
 -------------------------------------------------------------------
 Wed Oct 22 05:48:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
@@ -1077,13 +1121,13 @@ Wed Oct 22 05:48:12 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Sun Oct 19 22:01:08 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.9.4 
+- update to 0.9.4
  * Enhancements
-  * Add CUDA 13.0 support 
-  * Add auto-detection for Intel GPU on Windows 
-  * Implement display of RFC 9457 HTTP error contexts 
+  * Add CUDA 13.0 support
+  * Add auto-detection for Intel GPU on Windows
+  * Implement display of RFC 9457 HTTP error contexts
  * Bug fixes
-  * Avoid obfuscating pyx tokens in uv auth token output 
+  * Avoid obfuscating pyx tokens in uv auth token output
 
 -------------------------------------------------------------------
 Thu Oct 16 22:24:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1099,44 +1143,44 @@ Fri Oct 10 21:02:22 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.2
  * Enhancements
-  * Log Python choice in uv init 
-  * Fix pylock.toml config conflict error messages 
-  * Avoid inferring check URLs for pyx in uv publish 
-  * Add uv tool list --show-python 
+  * Log Python choice in uv init
+  * Fix pylock.toml config conflict error messages
+  * Avoid inferring check URLs for pyx in uv publish
+  * Add uv tool list --show-python
  * Configuration
-  * 
-  * Add UV_UPLOAD_HTTP_TIMEOUT and respect UV_HTTP_TIMEOUT in uploads 
-  * Support UV_WORKING_DIRECTORY for setting --directory 
+  *
+  * Add UV_UPLOAD_HTTP_TIMEOUT and respect UV_HTTP_TIMEOUT in uploads
+  * Support UV_WORKING_DIRECTORY for setting --directory
  * Bug fixes
-  * Allow missing Scripts directory 
-  * Fix handling of Python requests with pre-releases in ranges 
-  * Preserve comments on version bump 
-  * Retry all HTTP/2 errors 
-  * Treat deleted Windows registry keys as equivalent to missing ones 
-  * Ignore pre-release Python versions when a patch version is requested 
+  * Allow missing Scripts directory
+  * Fix handling of Python requests with pre-releases in ranges
+  * Preserve comments on version bump
+  * Retry all HTTP/2 errors
+  * Treat deleted Windows registry keys as equivalent to missing ones
+  * Ignore pre-release Python versions when a patch version is requested
  * Documentation
-  * Document why uv discards upper bounds on requires-python 
-  * Document uv version environment variables were added in 
-  * Add missing "added in" to new environment variables in reference 
+  * Document why uv discards upper bounds on requires-python
+  * Document uv version environment variables were added in
+  * Add missing "added in" to new environment variables in reference
 
 -------------------------------------------------------------------
 Wed Oct  8 17:16:36 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.9.0:
  * Enhancements
-  * Don't warn when a dependency is constrained by another dependency 
+  * Don't warn when a dependency is constrained by another dependency
  * Bug fixes
-  * Fix uv python upgrade / install output when there is a no-op for one request 
-  * Surface pinned-version hint when uv tool upgrade can’t move the tool 
-  * Ban pre-release versions in uv python upgrade requests 
-  * Fix uv python upgrade replacement of installed binaries on pre-release to stable 
+  * Fix uv python upgrade / install output when there is a no-op for one request
+  * Surface pinned-version hint when uv tool upgrade can’t move the tool
+  * Ban pre-release versions in uv python upgrade requests
+  * Fix uv python upgrade replacement of installed binaries on pre-release to stable
  * Documentation
-  * Update uv pip compile args in layout.md 
+  * Update uv pip compile args in layout.md
 
 -------------------------------------------------------------------
 Tue Oct  7 12:04:24 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.8.24 
+- update to 0.8.24
  * Enhancements
   * Add UV_SKIP_WHEEL_FILENAME_CHECK to allow installing invalid wheels
   * Emit a message on cache clean and prune when lock is held
@@ -1151,7 +1195,7 @@ Tue Oct  7 12:04:24 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
   * Confirm that the directory name is a valid Python install key during managed check
   * Ignore origin when comparing installed tools
   * Make cache control lookups robust to username
-  * Re-order lock validation checks by severity 
+  * Re-order lock validation checks by severity
   * Remove tracking of inferred dependency conflicts
   * Respect --no-color on the CLI
   * Deduplicate marker-specific dependencies in uv pip tree output
@@ -1168,28 +1212,28 @@ Thu Sep 25 13:48:30 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update 0.8.22
  * Security
-  * Upgrade astral-tokio-tar to 0.5.5 which hardens tar archive extraction 
+  * Upgrade astral-tokio-tar to 0.5.5 which hardens tar archive extraction
  * Preview features
-  * Add support for S3 request signing 
-  * Allow upgrading pre-release versions of the same minor Python version 
+  * Add support for S3 request signing
+  * Allow upgrading pre-release versions of the same minor Python version
  * Enhancements
-  * Refresh lockfile when --refresh is provided 
-  * Add --force flag for uv cache clean 
-  * Improve resolution errors with proxied packages 
+  * Refresh lockfile when --refresh is provided
+  * Add --force flag for uv cache clean
+  * Improve resolution errors with proxied packages
  * Bug fixes
-  * Hide freethreaded+debug Python downloads in uv python list 
-  * Retain the cache lock and temporary caches during uv run and uvx 
+  * Hide freethreaded+debug Python downloads in uv python list
+  * Retain the cache lock and temporary caches during uv run and uvx
  * Documentation
-  * Add package level conflicts to the conflicting dependencies docs 
-  * Document pyodide support 
-  * Document support for free-threaded and debug Python versions 
-  * Expand the contribution docs on issue selection 
-  * Tweak title for viewing version in project guide 
+  * Add package level conflicts to the conflicting dependencies docs
+  * Document pyodide support
+  * Document support for free-threaded and debug Python versions
+  * Expand the contribution docs on issue selection
+  * Tweak title for viewing version in project guide
 
 -------------------------------------------------------------------
 Mon Sep 22 15:21:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.8.19 
+- update to 0.8.19
 * Bug fixes
  * Make uv cache clean parallel process safe
  * Fix implied platform_machine marker for win_arm64 platform tag
@@ -1199,49 +1243,49 @@ Thu Sep 18 09:47:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - upate to 0.8.18
  * Enhancements
-  * Add PyG packages to torch backend 
-  * Add handling for unnamed conda environments in base environment detection 
-  * Allow selection of debug build interpreters 
-  * Improve uv init defaults for native build backend cache keys 
-  * Error when pyproject.toml target does not exist for dependency groups 
-  * Infer check URL from publish URL when known 
-  * Support Gitlab CI/CD as a trusted publisher 
-  * Add GraalPy 25.0.0 with support for Python 3.12 
-  * Add --no-clear to uv venv to disable removal prompts 
-  * Add conflict detection between --only-group and --extra flags 
-  * Allow [project] to be missing from a pyproject.toml 
-  * Always treat conda environments named base and root as base environments 
-  * Improve log message when direct build for uv_build is skipped 
-  * Log when the cache is disabled 
-  * Show pyx organization name after authenticating 
-  * Use _CONDA_ROOT to detect Conda base environments 
-  * Include blake2b hash in uv publish upload form 
-  * Fix misleading debug message when removing environments in uv sync 
+  * Add PyG packages to torch backend
+  * Add handling for unnamed conda environments in base environment detection
+  * Allow selection of debug build interpreters
+  * Improve uv init defaults for native build backend cache keys
+  * Error when pyproject.toml target does not exist for dependency groups
+  * Infer check URL from publish URL when known
+  * Support Gitlab CI/CD as a trusted publisher
+  * Add GraalPy 25.0.0 with support for Python 3.12
+  * Add --no-clear to uv venv to disable removal prompts
+  * Add conflict detection between --only-group and --extra flags
+  * Allow [project] to be missing from a pyproject.toml
+  * Always treat conda environments named base and root as base environments
+  * Improve log message when direct build for uv_build is skipped
+  * Log when the cache is disabled
+  * Show pyx organization name after authenticating
+  * Use _CONDA_ROOT to detect Conda base environments
+  * Include blake2b hash in uv publish upload form
+  * Fix misleading debug message when removing environments in uv sync
  * Deprecations
-  * Deprecate tool.uv.dev-dependencies 
+  * Deprecate tool.uv.dev-dependencies
  * Preview features
-  * Propagate preview flag to client for native-auth feature 
-  * Store native credentials for realms with the https scheme stripped 
-  * Use the root index URL when retrieving credentials from the native store 
+  * Propagate preview flag to client for native-auth feature
+  * Store native credentials for realms with the https scheme stripped
+  * Use the root index URL when retrieving credentials from the native store
  * Bug fixes
-  * Fix uv sync --no-sources not switching from editable to registry installations 
-  * Avoid display of an empty string when a path is the working directory 
-  * Allow cached environment reuse with @latest 
-  * Allow escaping spaces in --env-file handling 
-  * Avoid ANSI codes in debug! messages 
-  * Improve BSD tag construction 
-  * Include SHA when listing lockfile changes 
-  * Invert the logic for determining if a path is a base conda environment 
-  * Load credentials for explicit members when lowering 
-  * Re-add triton as a torch backend package 
-  * Respect UV_INSECURE_NO_ZIP_VALIDATION=1 in duplicate header errors 
+  * Fix uv sync --no-sources not switching from editable to registry installations
+  * Avoid display of an empty string when a path is the working directory
+  * Allow cached environment reuse with @latest
+  * Allow escaping spaces in --env-file handling
+  * Avoid ANSI codes in debug! messages
+  * Improve BSD tag construction
+  * Include SHA when listing lockfile changes
+  * Invert the logic for determining if a path is a base conda environment
+  * Load credentials for explicit members when lowering
+  * Re-add triton as a torch backend package
+  * Respect UV_INSECURE_NO_ZIP_VALIDATION=1 in duplicate header errors
  * Documentation
-  * Add GitHub Actions to PyPI trusted publishing example 
-  * Add Coiled integration documentation 
-  * Add verbose output to the getting help section 
-  * Document NO_PROXY support 
-  * Document cache-keys for native build backends 
-  * Add documentation for dependency group requires-python 
+  * Add GitHub Actions to PyPI trusted publishing example
+  * Add Coiled integration documentation
+  * Add verbose output to the getting help section
+  * Document NO_PROXY support
+  * Document cache-keys for native build backends
+  * Add documentation for dependency group requires-python
 
 -------------------------------------------------------------------
 Fri Sep 12 09:13:31 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
@@ -1261,253 +1305,253 @@ Thu Sep 11 12:04:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to  0.8.17
  * Enhancements
-  * Improve error message for HTTP validation in auth services 
-  * Respect PYX_API_URL when suggesting uv auth login on 401 
-  * Add pyx as a supported PyTorch index URL 
+  * Improve error message for HTTP validation in auth services
+  * Respect PYX_API_URL when suggesting uv auth login on 401
+  * Add pyx as a supported PyTorch index URL
  * Bug fixes
-  * Avoid initiating login flow for invalid API keys 
-  * Do not search for a password for requests with a token attached already 
-  * Filter pre-release Python versions in uv init --script 
+  * Avoid initiating login flow for invalid API keys
+  * Do not search for a password for requests with a token attached already
+  * Filter pre-release Python versions in uv init --script
 
 -------------------------------------------------------------------
 Wed Sep 10 11:03:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.16
  * Enhancements
-  * Allow --editable to override editable = false annotations 
-  * Allow editable = false for workspace sources 
-  * Show a dedicated error for virtual environments in source trees on build 
-  * Support Android platform tags 
-  * Support iOS platform tags 
-  * Support scripts with inline metadata in --with-requirements and --requirements 
+  * Allow --editable to override editable = false annotations
+  * Allow editable = false for workspace sources
+  * Show a dedicated error for virtual environments in source trees on build
+  * Support Android platform tags
+  * Support iOS platform tags
+  * Support scripts with inline metadata in --with-requirements and --requirements
  * Preview features
-  * Support --no-project in uv format 
-  * Allow uv format in unmanaged projects 
+  * Support --no-project in uv format
+  * Allow uv format in unmanaged projects
  * Bug fixes
-  * Avoid erroring when match-runtime target is optional 
-  * Ban empty usernames and passwords in uv auth 
-  * Error early for parent path in build backend 
-  * Retry on IO errors during HTTP/2 streaming 
-  * Support recursive requirements and constraints inclusion 
-  * Use token store credentials for uv publish 
-  * Fix virtual environment activation script compatibility with latest nushell 
-  * Skip Python interpreters that cannot be queried with permission errors 
+  * Avoid erroring when match-runtime target is optional
+  * Ban empty usernames and passwords in uv auth
+  * Error early for parent path in build backend
+  * Retry on IO errors during HTTP/2 streaming
+  * Support recursive requirements and constraints inclusion
+  * Use token store credentials for uv publish
+  * Fix virtual environment activation script compatibility with latest nushell
+  * Skip Python interpreters that cannot be queried with permission errors
  * Documentation
-  * Clarify that uv auth commands take a URL 
-  * Improve the CLI help for options that accept requirements files 
-  * Adds example for caching for managed Python downloads in Docker builds 
+  * Clarify that uv auth commands take a URL
+  * Improve the CLI help for options that accept requirements files
+  * Adds example for caching for managed Python downloads in Docker builds
 
 -------------------------------------------------------------------
 Thu Sep  4 11:03:52 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.15
  * Enhancements
-  * Add uv auth commands for credential management 
-  * Add pyx support to uv auth commands 
-  * Add uv tree --show-sizes to show package sizes 
-  * Add --python-platform riscv64-unknown-linux 
-  * Add --python-platform to uv run and uv tool 
-  * Add uv publish --dry-run 
-  * Add zstandard support for wheels 
-  * Allow registries to pre-provide core metadata 
-  * Retry streaming Python and binary download errors 
+  * Add uv auth commands for credential management
+  * Add pyx support to uv auth commands
+  * Add uv tree --show-sizes to show package sizes
+  * Add --python-platform riscv64-unknown-linux
+  * Add --python-platform to uv run and uv tool
+  * Add uv publish --dry-run
+  * Add zstandard support for wheels
+  * Allow registries to pre-provide core metadata
+  * Retry streaming Python and binary download errors
  * Bug fixes
-  * Fix settings rendering for extra-build-dependencies 
-  * Skip non-existent directories in bytecode compilation 
+  * Fix settings rendering for extra-build-dependencies
+  * Skip non-existent directories in bytecode compilation
  * Error messages
-  * Add error trace to invalid package format 
+  * Add error trace to invalid package format
 
 -------------------------------------------------------------------
 Tue Sep  2 14:56:39 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
-- Update vendor tarball to fix CVE-2025-58160 (bsc#1249011) 
+- Update vendor tarball to fix CVE-2025-58160 (bsc#1249011)
 
 -------------------------------------------------------------------
 Thu Aug 28 22:10:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.14
  * Enhancements
-  * Add --python-platform to uv pip check 
-  * Add an environment variable for UV_ISOLATED 
-  * Add logging to the uv build backend 
-  * Allow more trailing null bytes in zip files 
-  * Allow pinning managed Python versions to specific build versions 
-  * Cache PyTorch wheels by default 
-  * Reject already-installed wheels that don't match the target platform 
-  * Add --no-install-local option to uv sync, uv add and uv export 
-  * Include cycle error message in uv pip CLI 
+  * Add --python-platform to uv pip check
+  * Add an environment variable for UV_ISOLATED
+  * Add logging to the uv build backend
+  * Allow more trailing null bytes in zip files
+  * Allow pinning managed Python versions to specific build versions
+  * Cache PyTorch wheels by default
+  * Reject already-installed wheels that don't match the target platform
+  * Add --no-install-local option to uv sync, uv add and uv export
+  * Include cycle error message in uv pip CLI
  * Preview features
-  * Fix format of {version} on uv format failure 
-  * Lock during installs in uv format to prevent races 
-  * Respect --project in uv format 
-  * Run uv format in the project root 
+  * Fix format of {version} on uv format failure
+  * Lock during installs in uv format to prevent races
+  * Respect --project in uv format
+  * Run uv format in the project root
  * Configuration
-  * Add file-to-CLI overrides for build isolation configuration 
-  * Add file-to-CLI overrides for reinstall configuration 
+  * Add file-to-CLI overrides for build isolation configuration
+  * Add file-to-CLI overrides for reinstall configuration
  * Performance
-  * Cache WHEEL and METADATA reads in installed distributions 
+  * Cache WHEEL and METADATA reads in installed distributions
  * Bug fixes
-  * Avoid erroring when creating venv in current working directory 
-  * Avoid introducing unnecessary system dependency on CUDA 
-  * Clear discovered site packages when creating virtual environment 
-  * Read index credentials from the environment during uv publish checks 
-  * Refuse to remove non-virtual environments in uv venv 
-  * Stop setting CLICOLOR_FORCE=1 when calling build backends 
-  * Support file or directory removal for Windows symlinks 
+  * Avoid erroring when creating venv in current working directory
+  * Avoid introducing unnecessary system dependency on CUDA
+  * Clear discovered site packages when creating virtual environment
+  * Read index credentials from the environment during uv publish checks
+  * Refuse to remove non-virtual environments in uv venv
+  * Stop setting CLICOLOR_FORCE=1 when calling build backends
+  * Support file or directory removal for Windows symlinks
  * Documentation
-  * Fix GitHub guide highlight lines 
-  * Move Resolver to new Internals section in the Reference 
-  * Split the "Authentication" page into sections 
-  * Update uninstall docs to mention uvw.exe needs to be removed 
+  * Fix GitHub guide highlight lines
+  * Move Resolver to new Internals section in the Reference
+  * Split the "Authentication" page into sections
+  * Update uninstall docs to mention uvw.exe needs to be removed
 
 -------------------------------------------------------------------
 Fri Aug 22 13:54:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.13
  * Enhancements
-  * Add --no-install-* arguments to uv add 
-  * Initialize Git prior to reading author in uv init 
-  * Add CUDA 129 to available torch backends 
-  * Update Pyodide to 0.28.2 
+  * Add --no-install-* arguments to uv add
+  * Initialize Git prior to reading author in uv init
+  * Add CUDA 129 to available torch backends
+  * Update Pyodide to 0.28.2
  * Preview features
-  * Add an experimental uv format command 
-  * Allow version specifiers in extra-build-dependencies if match-runtime is explicitly false 
+  * Add an experimental uv format command
+  * Allow version specifiers in extra-build-dependencies if match-runtime is explicitly false
  * Bug fixes
-  * Add triton to torch-backend manifest 
-  * Avoid panicking when resolver returns stale distributions 
-  * Fix uv_build wheel hashes 
-  * Treat --upgrade-package on the command-line as overriding upgrade = false in configuration 
+  * Add triton to torch-backend manifest
+  * Avoid panicking when resolver returns stale distributions
+  * Fix uv_build wheel hashes
+  * Treat --upgrade-package on the command-line as overriding upgrade = false in configuration
 
 -------------------------------------------------------------------
 Wed Aug 20 09:03:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.12
  * Enhancements
-  * Add an aarch64-pc-windows-msvc target for python-platform 
-  * Add fallback parent process detection to uv tool update-shell 
-  * Install non-build-isolation packages in a second phase 
-  * Add hint when virtual environments are included in source distributions 
-  * Add Docker images derived from buildpack-deps:trixie, debian:trixie-slim, alpine:3.22 
+  * Add an aarch64-pc-windows-msvc target for python-platform
+  * Add fallback parent process detection to uv tool update-shell
+  * Install non-build-isolation packages in a second phase
+  * Add hint when virtual environments are included in source distributions
+  * Add Docker images derived from buildpack-deps:trixie, debian:trixie-slim, alpine:3.22
  * Bug fixes
-  * Reject already-installed wheels built with outdated settings 
-  * Skip interpreters that are not found on query 
-  * Handle dotted package names in script path resolution 
-  * Reject match-runtime = true for dynamic packages 
+  * Reject already-installed wheels built with outdated settings
+  * Skip interpreters that are not found on query
+  * Handle dotted package names in script path resolution
+  * Reject match-runtime = true for dynamic packages
  * Documentation
-  * Document improvements to build-isolation setups 
-  * Fix reference documentation recommendation to use uv cache clean instead of clear 
+  * Document improvements to build-isolation setups
+  * Fix reference documentation recommendation to use uv cache clean instead of clear
 
 -------------------------------------------------------------------
 Fri Aug 15 17:37:36 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.11
  * Enhancements
-  * Add extra-build-dependencies hint for any missing module on build failure 
-  * Make 'v' prefix cyan in overlap warnings 
+  * Add extra-build-dependencies hint for any missing module on build failure
+  * Make 'v' prefix cyan in overlap warnings
  * Bug fixes
-  * Fix missing uv version in extended Docker image tags 
-  * Persist cache info when re-installing cached wheels 
+  * Fix missing uv version in extended Docker image tags
+  * Persist cache info when re-installing cached wheels
  * Rust API
   *Allow passing custom reqwest clients to RegistryClient
 
 -------------------------------------------------------------------
 Thu Aug 14 09:13:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.8.10 
+- update to 0.8.10
  * Enhancements
-  * Allow Python requests with missing segments, e.g., just aarch64 
+  * Allow Python requests with missing segments, e.g., just aarch64
  * Preview
-  * Move warnings for conflicting modules into preview 
+  * Move warnings for conflicting modules into preview
 
 -------------------------------------------------------------------
 Tue Aug 12 09:30:49 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.9
  * Enhancements
-  * Add --reinstall flag to uv python upgrade 
+  * Add --reinstall flag to uv python upgrade
  * Bug fixes
-  * Include build settings in cache key for registry source distribution lookups 
-  * Avoid creating bin links on uv python upgrade if they don't already exist 
-  * Respect system proxies on macOS and Windows 
+  * Include build settings in cache key for registry source distribution lookups
+  * Avoid creating bin links on uv python upgrade if they don't already exist
+  * Respect system proxies on macOS and Windows
  * Documentation
-  * Add the 3.14 classifier 
+  * Add the 3.14 classifier
 
 -------------------------------------------------------------------
 Sat Aug  9 10:32:25 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.8
  - long changelog at https://github.com/astral-sh/uv/blob/main/CHANGELOG.mode
- - fixed CVE-2025-54368 - boo#1247829 
+ - fixed CVE-2025-54368 - boo#1247829
 
 -------------------------------------------------------------------
 Wed Aug  6 12:36:01 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.5
  * Enhancements
-  * Enable uv run with a GitHub Gist 
-  * Improve HTTP response caching log messages 
-  * Show wheel tag hints in install plan 
-  * Support installing additional executables in uv tool install 
+  * Enable uv run with a GitHub Gist
+  * Improve HTTP response caching log messages
+  * Show wheel tag hints in install plan
+  * Support installing additional executables in uv tool install
  * Preview features
-  * Enable extra build dependencies to 'match runtime' versions 
-  * Remove duplicate extra-build-dependencies warnings for uv pip 
-  * Use "option" instead of "setting" in pylock warning 
-  * Respect extra build requires when reading from wheel cache 
-  * Preserve lowered extra build dependencies 
+  * Enable extra build dependencies to 'match runtime' versions
+  * Remove duplicate extra-build-dependencies warnings for uv pip
+  * Use "option" instead of "setting" in pylock warning
+  * Respect extra build requires when reading from wheel cache
+  * Preserve lowered extra build dependencies
  * Bug fixes
-  * Add Python versions to markers implied from wheels 
-  * Ensure consistent indentation when adding dependencies 
-  * Fix handling of python-preference = system when managed interpreters are on the PATH 
-  * Fix symlink preservation in virtual environment creation 
-  * Gracefully handle entrypoint permission errors 
-  * Include wheel hashes from local Simple indexes 
-  * Prefer system Python installations over managed ones when --system is used 
-  * Remove retry wrapper when matching on error kind 
-  * Revert h2 upgrade 
+  * Add Python versions to markers implied from wheels
+  * Ensure consistent indentation when adding dependencies
+  * Fix handling of python-preference = system when managed interpreters are on the PATH
+  * Fix symlink preservation in virtual environment creation
+  * Gracefully handle entrypoint permission errors
+  * Include wheel hashes from local Simple indexes
+  * Prefer system Python installations over managed ones when --system is used
+  * Remove retry wrapper when matching on error kind
+  * Revert h2 upgrade
  * Documentation
-  * Improve visibility of copy and line separator in dark mode 
+  * Improve visibility of copy and line separator in dark mode
 
 -------------------------------------------------------------------
 Thu Jul 31 15:49:55 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.4
  * Enhancements
-  * Improve styling of warning cause chains 
-  * Extend wheel filtering to Android tags 
-  * Perform wheel lockfile filtering based on platform and OS intersection 
-  * Clarify messaging when a new resolution needs to be performed 
+  * Improve styling of warning cause chains
+  * Extend wheel filtering to Android tags
+  * Perform wheel lockfile filtering based on platform and OS intersection
+  * Clarify messaging when a new resolution needs to be performed
  * Preview features
-  * Add support for extending package's build dependencies with extra-build-dependencies 
-  * Split preview mode into separate feature flags 
+  * Add support for extending package's build dependencies with extra-build-dependencies
+  * Split preview mode into separate feature flags
  * Configuration
-  * Add support for package specific exclude-newer dates via exclude-newer-package 
+  * Add support for package specific exclude-newer dates via exclude-newer-package
  * Bug fixes
-  * Avoid invalidating lockfile when path or workspace dependencies define explicit indexes 
-  * Copy entrypoints that have a shebang that differs in python vs python3 
-  * Fix incorrect file permissions in wheel packages 
-  * Update validation for environments and required-environments in uv.toml 
+  * Avoid invalidating lockfile when path or workspace dependencies define explicit indexes
+  * Copy entrypoints that have a shebang that differs in python vs python3
+  * Fix incorrect file permissions in wheel packages
+  * Update validation for environments and required-environments in uv.toml
  * Documentation
-  * Show uv_build in projects documentation 
-  * Add UV_ prefix to installer environment variables 
-  * Un-hide uv from --build-backend options 
-  * Update documentation for preview flags 
+  * Show uv_build in projects documentation
+  * Add UV_ prefix to installer environment variables
+  * Un-hide uv from --build-backend options
+  * Update documentation for preview flags
 
 -------------------------------------------------------------------
 Sun Jul 27 20:33:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.8.3:
  * Enhancements
-  * Allow non-standard entrypoint names in uv_build 
-  * Publish riscv64 wheels to PyPI 
+  * Allow non-standard entrypoint names in uv_build
+  * Publish riscv64 wheels to PyPI
  * Bug fixes
-  * Avoid writing redacted credentials to tool receipt 
-  * Respect --with versions over base environment versions 
-  * Respect credentials from all defined indexes 
-  * Fix missed stabilization of removal of registry entry during Python uninstall 
-  * Improve concurrency safety of Python downloads into cache 
+  * Avoid writing redacted credentials to tool receipt
+  * Respect --with versions over base environment versions
+  * Respect credentials from all defined indexes
+  * Fix missed stabilization of removal of registry entry during Python uninstall
+  * Improve concurrency safety of Python downloads into cache
  * Documentation
-  * Fix typos in uv_build reference documentation 
-  * Move the "Cargo" install method further down in docs 
+  * Fix typos in uv_build reference documentation
+  * Move the "Cargo" install method further down in docs
 
 -------------------------------------------------------------------
 Wed Jul 23 17:58:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1515,38 +1559,38 @@ Wed Jul 23 17:58:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 - update to 0.8.2
 
  * Configuration
-   * Add UV_INIT_BUILD_BACKEND 
+   * Add UV_INIT_BUILD_BACKEND
  * Rust API
-   * Expose tls_built_in_root_certs for client 
+   * Expose tls_built_in_root_certs for client
  * Enhancements
-   * Add derivation chains for dependency errors 
-   * Add support for HF_TOKEN 
-   * Allow --config-settings-package to apply configuration settings at the package level 
-   * Create (e.g.) python3.13t executables in uv venv 
-   * Disallow writing symlinks outside the source distribution target directory 
-   * Elide traceback when python -m uv in interrupted with Ctrl-C on Windows 
-   * Match --bounds formatting for uv_build bounds in uv init 
-   * Support extras and dependency_groups markers in PEP 508 grammar 
-   * Support extras and dependency_groups markers on uv pip install and uv pip sync 
-   * Add hint to use uv self version when uv version cannot find a project 
-   * Improve error reporting when removing Python versions from the Windows registry 
-   * Make warnings about masked [tool.uv] fields more precise 
+   * Add derivation chains for dependency errors
+   * Add support for HF_TOKEN
+   * Allow --config-settings-package to apply configuration settings at the package level
+   * Create (e.g.) python3.13t executables in uv venv
+   * Disallow writing symlinks outside the source distribution target directory
+   * Elide traceback when python -m uv in interrupted with Ctrl-C on Windows
+   * Match --bounds formatting for uv_build bounds in uv init
+   * Support extras and dependency_groups markers in PEP 508 grammar
+   * Support extras and dependency_groups markers on uv pip install and uv pip sync
+   * Add hint to use uv self version when uv version cannot find a project
+   * Improve error reporting when removing Python versions from the Windows registry
+   * Make warnings about masked [tool.uv] fields more precise
  * Preview features
-   * Emit JSON output in uv sync with --quiet 
+   * Emit JSON output in uv sync with --quiet
  * Bug fixes
-   * Avoid reading files in the environment bin that are not entrypoints 
-   * Avoid removing empty directories when constructing virtual environments 
-   * Preserve index URL priority order when writing to pyproject.toml 
-   * Allow removal of virtual environments with missing interpreters 
-   * Apply Cache-Control overrides to response, not request headers 
-   * Copy entry points into ephemeral environments to ensure layers are respected 
-   * Workaround Jupyter Lab application directory discovery in ephemeral environments 
-   * Enforce requires-python in pylock.toml 
-   * Fix kebab casing of README variants in build backend 
-   * Improve concurrency resilience of removing Python versions from the Windows registry 
-   * Retry HTTP requests on invalid data errors 
-   * Update virtual environment removal to delete pyvenv.cfg last 
-   * Error on unknown fields in dependency-metadata 
+   * Avoid reading files in the environment bin that are not entrypoints
+   * Avoid removing empty directories when constructing virtual environments
+   * Preserve index URL priority order when writing to pyproject.toml
+   * Allow removal of virtual environments with missing interpreters
+   * Apply Cache-Control overrides to response, not request headers
+   * Copy entry points into ephemeral environments to ensure layers are respected
+   * Workaround Jupyter Lab application directory discovery in ephemeral environments
+   * Enforce requires-python in pylock.toml
+   * Fix kebab casing of README variants in build backend
+   * Improve concurrency resilience of removing Python versions from the Windows registry
+   * Retry HTTP requests on invalid data errors
+   * Update virtual environment removal to delete pyvenv.cfg last
+   * Error on unknown fields in dependency-metadata
 
 -------------------------------------------------------------------
 Fri Jul 18 18:14:03 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1570,72 +1614,72 @@ Fri Jul 18 18:14:03 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
    * Default to --workspace when adding subdirectories
    * Add missing validations for disallowed uv.toml fields
  * Configuration
-   * Add support for toggling Python bin and registry install options via env vars 
-   * Add UV_COMPILE_BYTECODE_TIMEOUT environment variable 
-   * Allow users to override index cache-control headers 
-   * Add UV_LIBC to override libc selection in multi-libc environment 
+   * Add support for toggling Python bin and registry install options via env vars
+   * Add UV_COMPILE_BYTECODE_TIMEOUT environment variable
+   * Allow users to override index cache-control headers
+   * Add UV_LIBC to override libc selection in multi-libc environment
  * Bug fixes
-   * Fix --all-arches when paired with --only-downloads 
-   * Skip Windows Python interpreters that return a broken MSIX package code 
-   * Warn on invalid uv.toml when provided via direct path 
-   * Improve async signal safety in Windows exception handler 
+   * Fix --all-arches when paired with --only-downloads
+   * Skip Windows Python interpreters that return a broken MSIX package code
+   * Warn on invalid uv.toml when provided via direct path
+   * Improve async signal safety in Windows exception handler
  * Documentation
-   * Mention the revision in the lockfile versioning doc 
-   * Move "Conflicting dependencies" to the "Resolution" page 
-   * Rename "Dependency specifiers" section to exclude PEP 508 reference 
-   * Suggest uv cache clean prior to --reinstall 
+   * Mention the revision in the lockfile versioning doc
+   * Move "Conflicting dependencies" to the "Resolution" page
+   * Rename "Dependency specifiers" section to exclude PEP 508 reference
+   * Suggest uv cache clean prior to --reinstall
  * Preview features
-   * Make preview Python registration on Windows non-fatal 
-   * Update preview installation of Python executables to be non-fatal 
-   * Add uv python update-shell 
+   * Make preview Python registration on Windows non-fatal
+   * Update preview installation of Python executables to be non-fatal
+   * Add uv python update-shell
 
 -------------------------------------------------------------------
 Tue Jul 15 08:11:49 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.21
  * Enhancements
-   * Add --python-platform to uv sync 
-   * Support pre-releases in uv version --bump 
-   * Add -w shorthand for --with 
-   * Add an exception handler on Windows to display information on crash 
-   * Add hint when Python downloads are disabled 
-   * Add UV_HTTP_RETRIES to customize retry counts 
-   * Follow leaf symlinks matched by globs in cache-key 
-   * Support parent path components (..) in globs in cache-key 
-   * Improve cache-key performance 
+   * Add --python-platform to uv sync
+   * Support pre-releases in uv version --bump
+   * Add -w shorthand for --with
+   * Add an exception handler on Windows to display information on crash
+   * Add hint when Python downloads are disabled
+   * Add UV_HTTP_RETRIES to customize retry counts
+   * Follow leaf symlinks matched by globs in cache-key
+   * Support parent path components (..) in globs in cache-key
+   * Improve cache-key performance
  * Preview features
-   * Add uv sync --output-format json 
+   * Add uv sync --output-format json
  * Bug fixes
-   * Do not re-resolve with a new Python version in uv tool if it is incompatible with --python 
+   * Do not re-resolve with a new Python version in uv tool if it is incompatible with --python
  * Documentation
-   * Document how to nest dependency groups with include-group 
-   * Fix repeated word in Pyodide doc 
-   * Update CONTRIBUTING.md with instructions to format Markdown files via Docker 
-   * Fix version number for setup-python 
+   * Document how to nest dependency groups with include-group
+   * Fix repeated word in Pyodide doc
+   * Update CONTRIBUTING.md with instructions to format Markdown files via Docker
+   * Fix version number for setup-python
 
 -------------------------------------------------------------------
 Sun Jul 13 13:50:02 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.20
  * Enhancements
-   * Add --workspace flag to uv add 
-   * Add auto-detection for Intel GPUs 
-   * Drop trailing arguments when writing shebangs 
-   * Add debug message when skipping Python downloads 
-   * Add support for declaring multiple modules in namespace packages 
+   * Add --workspace flag to uv add
+   * Add auto-detection for Intel GPUs
+   * Drop trailing arguments when writing shebangs
+   * Add debug message when skipping Python downloads
+   * Add support for declaring multiple modules in namespace packages
  * Bug fixes
-   * Revert normalization of trailing slashes on index URLs 
-   * Fix forced resolution with all extras in uv version 
-   * Fix handling of pre-releases in preferences 
-   * Remove transparent variants in uv-extract to enable retries 
+   * Revert normalization of trailing slashes on index URLs
+   * Fix forced resolution with all extras in uv version
+   * Fix handling of pre-releases in preferences
+   * Remove transparent variants in uv-extract to enable retries
  * Rust API
-   * Add method to get packages involved in a NoSolutionError 
-   * Make ErrorTree for NoSolutionError public 
+   * Add method to get packages involved in a NoSolutionError
+   * Make ErrorTree for NoSolutionError public
  * Documentation
-   * Finish incomplete sentence in pip migration guide 
-   * Remove cache-dependency-glob examples for setup-uv 
-   * Remove uv pip sync suggestion with pyproject.toml 
-   * Update documentation for GitHub to use setup-uv@v6 
+   * Finish incomplete sentence in pip migration guide
+   * Remove cache-dependency-glob examples for setup-uv
+   * Remove uv pip sync suggestion with pyproject.toml
+   * Update documentation for GitHub to use setup-uv@v6
 
 -------------------------------------------------------------------
 Sat Jul  5 00:05:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1648,9 +1692,9 @@ Sat Jul  5 00:05:00 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
    * Clarify behavior and hint on tool install when no executables are available
  * Bug fixes
    * Make project and interpreter lock acquisition non-fatal
-   * Includes sys.prefix in cached environment keys to avoid --with collisions across projects 
+   * Includes sys.prefix in cached environment keys to avoid --with collisions across projects
  * Documentation
-   * Add a migration guide from pip to uv projects 
+   * Add a migration guide from pip to uv projects
 
 -------------------------------------------------------------------
 Wed Jul  2 10:33:55 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
@@ -1663,172 +1707,172 @@ Wed Jul  2 08:35:47 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.18
  * Enhancements
-   * Keep track of retries in ManagedPythonDownload::fetch_with_retry 
-   * Reuse build (virtual) environments across resolution and installation 
-   * Improve trace message for cached Python interpreter query 
-   * Use parsed URLs for conflicting URL error message 
+   * Keep track of retries in ManagedPythonDownload::fetch_with_retry
+   * Reuse build (virtual) environments across resolution and installation
+   * Improve trace message for cached Python interpreter query
+   * Use parsed URLs for conflicting URL error message
  * Preview features
-   * Ignore invalid build backend settings when not building 
+   * Ignore invalid build backend settings when not building
  * Bug fixes
-   * Fix equals-star and tilde-equals with python_version and python_full_version 
-   * Include the canonical path in the interpreter query cache key 
-   * Only drop build directories on program exit 
-   * Error instead of panic on conflict between global and subcommand flags 
-   * Consistently normalize trailing slashes on URLs with no path segments 
+   * Fix equals-star and tilde-equals with python_version and python_full_version
+   * Include the canonical path in the interpreter query cache key
+   * Only drop build directories on program exit
+   * Error instead of panic on conflict between global and subcommand flags
+   * Consistently normalize trailing slashes on URLs with no path segments
  * Documentation
-   * Add instructions for publishing to JFrog's Artifactory 
-   * Edits to the build backend documentation 
+   * Add instructions for publishing to JFrog's Artifactory
+   * Edits to the build backend documentation
 
 -------------------------------------------------------------------
 Sun Jun 29 20:36:01 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.17
  * Bug fixes
-  * Apply build constraints when resolving --with dependencies 
-  * Drop trailing slashes when converting index URL from URL 
-  * Ignore UV_PYTHON_CACHE_DIR when empty 
-  * Fix error message ordering for pyvenv.cfg version conflict 
+  * Apply build constraints when resolving --with dependencies
+  * Drop trailing slashes when converting index URL from URL
+  * Ignore UV_PYTHON_CACHE_DIR when empty
+  * Fix error message ordering for pyvenv.cfg version conflict
 
 -------------------------------------------------------------------
 Sat Jun 28 16:40:25 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.7.16 
+- update to 0.7.16
  * Enhancements
-   * Include path or URL when failing to convert in lockfile 
-   * Warn when ~= is used as a Python version specifier without a patch version 
+   * Include path or URL when failing to convert in lockfile
+   * Warn when ~= is used as a Python version specifier without a patch version
  * Preview features
-   * Ensure preview default Python installs are upgradeable 
+   * Ensure preview default Python installs are upgradeable
  * Performance
-   * Share workspace cache between lock and sync operations 
+   * Share workspace cache between lock and sync operations
  * Bug fixes
-   * Allow local indexes to reference remote files 
-   * Avoid rendering desugared prefix matches in error messages 
-   * Avoid using path URL for workspace Git dependencies in requirements.txt 
-   * Normalize index URLs to remove trailing slash 
-   * Respect URL-encoded credentials in redirect location 
-   * Lock the source tree when running setuptools, to protect concurrent builds 
+   * Allow local indexes to reference remote files
+   * Avoid rendering desugared prefix matches in error messages
+   * Avoid using path URL for workspace Git dependencies in requirements.txt
+   * Normalize index URLs to remove trailing slash
+   * Respect URL-encoded credentials in redirect location
+   * Lock the source tree when running setuptools, to protect concurrent builds
  * Documentation
-   * Note that GCP Artifact Registry download URLs must have /simple component 
+   * Note that GCP Artifact Registry download URLs must have /simple component
 
 -------------------------------------------------------------------
 Wed Jun 25 12:03:39 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.15:
 * Enhancements
-  * Consistently use Ordering::Relaxed for standalone atomic use cases 
-  * Warn on ambiguous relative paths for --index 
-  * Skip GitHub fast path when rate-limited 
-  * Preserve newlines in schema.json descriptions 
+  * Consistently use Ordering::Relaxed for standalone atomic use cases
+  * Warn on ambiguous relative paths for --index
+  * Skip GitHub fast path when rate-limited
+  * Preserve newlines in schema.json descriptions
 * Bug fixes
-  * Add check for using minor version link when creating a venv on Windows 
-  * Strip query parameters when parsing source URL 
+  * Add check for using minor version link when creating a venv on Windows
+  * Strip query parameters when parsing source URL
 * Documentation
-  * Add a link to PyPI FAQ to clarify what per-project token is 
+  * Add a link to PyPI FAQ to clarify what per-project token is
 * Preview features
-  * Allow symlinks in the build backend 
+  * Allow symlinks in the build backend
 
 -------------------------------------------------------------------
 Mon Jun 23 23:15:06 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.14:
  * Enhancements
-   * Add XPU to --torch-backend 
-   * Add ROCm backends to --torch-backend 
-   * Remove preview label from --torch-backend 
-   * Add [tool.uv.dependency-groups].mygroup.requires-python 
-   * Add auto-detection for AMD GPUs 
-   * Show retries for HTTP status code errors 
-   * Support transparent Python patch version upgrades 
-   * Warn on empty index directory 
-   * Publish to DockerHub 
+   * Add XPU to --torch-backend
+   * Add ROCm backends to --torch-backend
+   * Remove preview label from --torch-backend
+   * Add [tool.uv.dependency-groups].mygroup.requires-python
+   * Add auto-detection for AMD GPUs
+   * Show retries for HTTP status code errors
+   * Support transparent Python patch version upgrades
+   * Warn on empty index directory
+   * Publish to DockerHub
  * Performance
-   * Make cold resolves about 10% faster 
+   * Make cold resolves about 10% faster
  * Bug fixes
-   * Don't use walrus operator in interpreter query script 
-   * Fix handling of changes to requires-python 
-   * Fix implied platform_machine marker for win_amd64 platform tag 
-   * Only update existing symlink directories on preview uninstall 
-   * Serialize Python requests for tools as canonicalized strings 
-   * Support netrc and same-origin credential propagation on index redirects 
-   * Support reading dependency-groups from pyproject.tomls with no [project] 
-   * Handle an existing shebang in uv init --script 
-   * Prevent concurrent updates of the environment in uv run 
-   * Filter managed Python distributions by platform before querying when included in request 
+   * Don't use walrus operator in interpreter query script
+   * Fix handling of changes to requires-python
+   * Fix implied platform_machine marker for win_amd64 platform tag
+   * Only update existing symlink directories on preview uninstall
+   * Serialize Python requests for tools as canonicalized strings
+   * Support netrc and same-origin credential propagation on index redirects
+   * Support reading dependency-groups from pyproject.tomls with no [project]
+   * Handle an existing shebang in uv init --script
+   * Prevent concurrent updates of the environment in uv run
+   * Filter managed Python distributions by platform before querying when included in request
  * Documentation
-   * Replace cuda124 with cuda128 
-   * Document the way member sources shadow workspace sources 
-   * Sync documented PyTorch integration index for CUDA and ROCm versions from PyTorch website 
+   * Replace cuda124 with cuda128
+   * Document the way member sources shadow workspace sources
+   * Sync documented PyTorch integration index for CUDA and ROCm versions from PyTorch website
 
 -------------------------------------------------------------------
 Fri Jun 13 14:36:19 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.13:
  * Enhancements
-   * Download versions in uv python pin if not found 
-   * Use TTY detection to determine if SIGINT forwarding is enabled 
-   * Avoid fetching an exact, cached Git commit, even if it isn't locked 
-   * Add zstd and deflate to Accept-Encoding 
-   * Build binaries for riscv64 
+   * Download versions in uv python pin if not found
+   * Use TTY detection to determine if SIGINT forwarding is enabled
+   * Avoid fetching an exact, cached Git commit, even if it isn't locked
+   * Add zstd and deflate to Accept-Encoding
+   * Build binaries for riscv64
  * Bug fixes
-   * Check if relative URL is valid directory before treating as index 
-   * Ignore Python discovery errors during uv python pin 
-   * Do not allow uv add --group ... --script 
+   * Check if relative URL is valid directory before treating as index
+   * Ignore Python discovery errors during uv python pin
+   * Do not allow uv add --group ... --script
  * Preview changes
-   * Build backend: Support namespace packages 
+   * Build backend: Support namespace packages
  * Documentation
-   * Add 3.14 to the supported platform reference 
-   * Add an llms.txt to uv 
-   * Add supported macOS version to the platform reference 
-   * Update platform support reference to include Python implementation list 
-   * Update pytorch.md 
-   * Update the CLI help and reference to include references to the Python bin directory 
+   * Add 3.14 to the supported platform reference
+   * Add an llms.txt to uv
+   * Add supported macOS version to the platform reference
+   * Update platform support reference to include Python implementation list
+   * Update pytorch.md
+   * Update the CLI help and reference to include references to the Python bin directory
 
 -------------------------------------------------------------------
 Mon Jun  9 09:33:13 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 0.7.12: 
+- update to 0.7.12:
  * Enhancements
-   * Add uv python pin --rm to remove .python-version pins 
-   * Don't hint at versions removed by excluded-newer 
-   * Add hint to use tool.uv.environments on resolution error 
-   * Add hint to use tool.uv.required-environments on resolution error 
-   * Improve python pin error messages 
+   * Add uv python pin --rm to remove .python-version pins
+   * Don't hint at versions removed by excluded-newer
+   * Add hint to use tool.uv.environments on resolution error
+   * Add hint to use tool.uv.required-environments on resolution error
+   * Improve python pin error messages
  * Bug fixes
-   * Lock environments during uv sync, uv add and uv remove to prevent race conditions 
-   * Add --no-editable to uv export for pylock.toml 
+   * Lock environments during uv sync, uv add and uv remove to prevent race conditions
+   * Add --no-editable to uv export for pylock.toml
  * Documentation
-   * List .gitignore in project init files 
-   * Move the pip interface documentation into the concepts section 
-   * Remove the configuration section in favor of concepts / reference 
-   * Update Git and GitHub Actions docs to mention gh auth login 
+   * List .gitignore in project init files
+   * Move the pip interface documentation into the concepts section
+   * Remove the configuration section in favor of concepts / reference
+   * Update Git and GitHub Actions docs to mention gh auth login
  * Preview
-   * Fix directory glob traversal fallback preventing exclusion of all files 
+   * Fix directory glob traversal fallback preventing exclusion of all files
 
 -------------------------------------------------------------------
 Fri Jun  6 07:53:14 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.11:
  * Enhancements
-   * Add Pyodide support 
-   * Better error message for version specifier with missing operator 
+   * Add Pyodide support
+   * Better error message for version specifier with missing operator
  * Bug fixes
-   * Downgrade reqwest and hyper-util to resolve connection reset errors over IPv6 
-   * Prefer uv's binary's version when checking if it's up to date 
+   * Downgrade reqwest and hyper-util to resolve connection reset errors over IPv6
+   * Prefer uv's binary's version when checking if it's up to date
  * Documentation
-   * Use "terminal driver" instead of "shell" in SIGINT docs  
+   * Use "terminal driver" instead of "shell" in SIGINT docs
 
 -------------------------------------------------------------------
 Wed Jun  4 15:02:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.10:
  * Enhancements
-   * Add --show-extras to uv tool list 
-   * Add dynamically generated sysconfig replacement mappings 
-   * Add data locations to install wheel logs 
+   * Add --show-extras to uv tool list
+   * Add dynamically generated sysconfig replacement mappings
+   * Add data locations to install wheel logs
  * Bug fixes
-   * Avoid redaction of placeholder git username when using SSH authentication 
-   * Propagate credentials to files on devpi indexes ending in /+simple 
-   * Restore retention of credentials for direct URLs in uv export 
+   * Avoid redaction of placeholder git username when using SSH authentication
+   * Propagate credentials to files on devpi indexes ending in /+simple
+   * Restore retention of credentials for direct URLs in uv export
 
 -------------------------------------------------------------------
 Sun Jun  1 23:09:48 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1837,39 +1881,39 @@ Sun Jun  1 23:09:48 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
    * The changes reverted in 0.7.8 have been restored.
    * See the python-build-standalone release notes for more details.
  * Enhancements
-   * Improve obfuscation of credentials in URLs 
-   * Allow running non-default Python implementations via uvx 
-   * Add uvw as alias for uv without console window on Windows 
-   * Allow discovery of x86-64 managed Python builds on macOS 
-   * Differentiate between implicit vs explicit architecture requests 
-   * Implement ordering for Python architectures to prefer native installations 
-   * Only show the first match per platform (and architecture) by default in uv python list 
-   * Write the path of the parent environment to an extends-environment key in the pyvenv.cfg file of an ephemeral environment 
-   * Improve the error message when libc cannot be found, e.g., when using the distroless containers 
+   * Improve obfuscation of credentials in URLs
+   * Allow running non-default Python implementations via uvx
+   * Add uvw as alias for uv without console window on Windows
+   * Allow discovery of x86-64 managed Python builds on macOS
+   * Differentiate between implicit vs explicit architecture requests
+   * Implement ordering for Python architectures to prefer native installations
+   * Only show the first match per platform (and architecture) by default in uv python list
+   * Write the path of the parent environment to an extends-environment key in the pyvenv.cfg file of an ephemeral environment
+   * Improve the error message when libc cannot be found, e.g., when using the distroless containers
  * Performance
-   * Avoid rendering info log level 
-   * Improve performance of uv-python crate's manylinux submodule 
-   * Optimize Version display 
-   * Reduce number of reference-checks for uv cache clean 
+   * Avoid rendering info log level
+   * Improve performance of uv-python crate's manylinux submodule
+   * Optimize Version display
+   * Reduce number of reference-checks for uv cache clean
  * Bug fixes
-   * Avoid reinstalling dependency group members with --all-packages 
-   * Don't fail direct URL hash checking with dependency metadata 
-   * Exit early on self update if global --offline is set 
-   * Fix cases where the uv lock is incorrectly marked as out of date 
-   * Include pre-release versions in uv python install --reinstall 
-   * Set LC_ALL=C for git when checking git worktree 
-   * Avoid rejecting Windows paths for remote Python download JSON targets 
+   * Avoid reinstalling dependency group members with --all-packages
+   * Don't fail direct URL hash checking with dependency metadata
+   * Exit early on self update if global --offline is set
+   * Fix cases where the uv lock is incorrectly marked as out of date
+   * Include pre-release versions in uv python install --reinstall
+   * Set LC_ALL=C for git when checking git worktree
+   * Avoid rejecting Windows paths for remote Python download JSON targets
  * Preview
-   * Add uv add --bounds to configure version constraints 
+   * Add uv add --bounds to configure version constraints
  * Documentation
-   * Add documentation about Python versions to Tools concept page 
-   * Add example of enabling Dependabot 
-   * Fix exclude-newer date format for persistent configuration files 
-   * Quote versions variables in GitLab documentation 
-   * Update Dependabot support status 
-   * Explicitly specify to add a new repo entry to the repos list item in the .pre-commit-config.yaml 
-   * Add integration with marimo guide 
-   * Add pronunciation to README 
+   * Add documentation about Python versions to Tools concept page
+   * Add example of enabling Dependabot
+   * Fix exclude-newer date format for persistent configuration files
+   * Quote versions variables in GitLab documentation
+   * Update Dependabot support status
+   * Explicitly specify to add a new repo entry to the repos list item in the .pre-commit-config.yaml
+   * Add integration with marimo guide
+   * Add pronunciation to README
 
 -------------------------------------------------------------------
 Mon May 26 08:51:37 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -1890,7 +1934,7 @@ Fri May 23 13:15:53 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
    * See the python-build-standalone release notes for more details.
  * Bug fixes
    * Make uv version lock and sync
-   * Fix references to ldd in diagnostics to correctly refer to ld.so 
+   * Fix references to ldd in diagnostics to correctly refer to ld.so
  * Documentation
    * Clarify adding SSH Git dependencies
 
@@ -1906,51 +1950,51 @@ Tue May 20 09:04:07 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
    * Statically link libpython into the interpreter on Linux for a significant performance boost
    * See the python-build-standalone release notes for more details.
  * Enhancements
-   * Improve compatibility of VIRTUAL_ENV_PROMPT value 
-   * Bump MSRV to 1.85 and Edition 2024 
+   * Improve compatibility of VIRTUAL_ENV_PROMPT value
+   * Bump MSRV to 1.85 and Edition 2024
  * Bug fixes
-   * Respect default extras in uv remove 
+   * Respect default extras in uv remove
  * Documentation
-   * Fix PowerShell code blocks 
+   * Fix PowerShell code blocks
 
 -------------------------------------------------------------------
 Mon May 19 14:54:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.5:
  * Enhancements
-   * Add more context to external errors 
-   * Align indentation of long arguments 
-   * Preserve order of dependencies which are sorted naively 
-   * Align progress bars by largest name length 
-   * Reinstall local packages in uv add 
-   * Rename --raw-sources to --raw 
-   * Show 'Downgraded' when self update is used to install an older version 
-   * Suggest uv self update if required uv version is newer 
-   * Add 3.14 beta images to uv Docker images 
-   * Add comma after "i.e." in Conda environment error 
-   * Be more precise in unpinned packages warning 
-   * Fix detection of sorted dependencies when include-group is used 
-   * Fix display of HTTP responses in trace logs for retry of errors 
-   * Log skip reasons during Python installation key interpreter match checks 
-   * Redact credentials when displaying URLs 
+   * Add more context to external errors
+   * Align indentation of long arguments
+   * Preserve order of dependencies which are sorted naively
+   * Align progress bars by largest name length
+   * Reinstall local packages in uv add
+   * Rename --raw-sources to --raw
+   * Show 'Downgraded' when self update is used to install an older version
+   * Suggest uv self update if required uv version is newer
+   * Add 3.14 beta images to uv Docker images
+   * Add comma after "i.e." in Conda environment error
+   * Be more precise in unpinned packages warning
+   * Fix detection of sorted dependencies when include-group is used
+   * Fix display of HTTP responses in trace logs for retry of errors
+   * Log skip reasons during Python installation key interpreter match checks
+   * Redact credentials when displaying URLs
  * Bug fixes
-   * Support case-sensitive module discovery in the build backend 
-   * Bump Simple cache bucket to v16 
-   * Don't error when the script is too short for the buffer 
-   * Add missing word in "script not supported" error 
-   * Avoid erroring on pylock.toml dependency entries 
-   * Avoid panics for cannot-be-a-base URLs 
-   * Ensure cached realm credentials are applied if no password is found for index URL 
-   * Fix .tgz parsing to respect true extension 
-   * Fix double self-dependency 
-   * Reject pylock.toml in uv add -r 
-   * Retain dot-separated wheel tags during cache prune 
-   * Retain trailing comments after PEP 723 metadata block 
+   * Support case-sensitive module discovery in the build backend
+   * Bump Simple cache bucket to v16
+   * Don't error when the script is too short for the buffer
+   * Add missing word in "script not supported" error
+   * Avoid erroring on pylock.toml dependency entries
+   * Avoid panics for cannot-be-a-base URLs
+   * Ensure cached realm credentials are applied if no password is found for index URL
+   * Fix .tgz parsing to respect true extension
+   * Fix double self-dependency
+   * Reject pylock.toml in uv add -r
+   * Retain dot-separated wheel tags during cache prune
+   * Retain trailing comments after PEP 723 metadata block
  * Documentation
-   * Use "export" instead of "install" in uv export arguments 
-   * Remove extra newline 
+   * Use "export" instead of "install" in uv export arguments
+   * Remove extra newline
  * Preview features
-   * Build backend: Normalize glob paths 
+   * Build backend: Normalize glob paths
 
 -------------------------------------------------------------------
 Sat May 10 16:36:30 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
@@ -1962,46 +2006,46 @@ Fri May  9 10:59:10 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.3
  * Enhancements
-   * Add --dry-run support to uv self update 
-   * Add --show-with to uv tool list to list packages included by --with 
-   * De-duplicate fetched index URLs 
-   * Support more zip compression formats: bzip2, lzma, xz, zstd 
-   * Add support for downloading GraalPy 
-   * Improve error message when a virtual environment Python symlink is broken 
-   * Use fs_err for paths in symlinking errors 
-   * Minify and embed managed Python JSON at compile time 
+   * Add --dry-run support to uv self update
+   * Add --show-with to uv tool list to list packages included by --with
+   * De-duplicate fetched index URLs
+   * Support more zip compression formats: bzip2, lzma, xz, zstd
+   * Add support for downloading GraalPy
+   * Improve error message when a virtual environment Python symlink is broken
+   * Use fs_err for paths in symlinking errors
+   * Minify and embed managed Python JSON at compile time
  * Preview features
-   * Build backend: Make preview default and add configuration docs 
-   * Build backend: Allow escaping in globs 
-   * Build backend: Make builds reproducible across operating systems 
+   * Build backend: Make preview default and add configuration docs
+   * Build backend: Allow escaping in globs
+   * Build backend: Make builds reproducible across operating systems
  * Configuration
-   * Add python-downloads-json-url option for uv.toml to configure custom Python installations via JSON URL 
+   * Add python-downloads-json-url option for uv.toml to configure custom Python installations via JSON URL
  * Bug fixes
-   * Check nested IO errors for retries 
-   * Accept musllinux_1_0 as a valid platform tag 
-   * Fix discovery of pre-release managed Python versions in range requests 
-   * Respect locked script preferences in uv run --with 
-   * Retry streaming downloads on broken pipe errors 
-   * Treat already-installed base environment packages as preferences in uv run --with 
-   * Avoid enumerating sources in errors for path Python requests 
-   * Avoid re-creating virtual environment with --no-sync 
+   * Check nested IO errors for retries
+   * Accept musllinux_1_0 as a valid platform tag
+   * Fix discovery of pre-release managed Python versions in range requests
+   * Respect locked script preferences in uv run --with
+   * Retry streaming downloads on broken pipe errors
+   * Treat already-installed base environment packages as preferences in uv run --with
+   * Avoid enumerating sources in errors for path Python requests
+   * Avoid re-creating virtual environment with --no-sync
  * Documentation
-   * Remove outdated description of index strategy 
-   * Update "Viewing the version" docs 
+   * Remove outdated description of index strategy
+   * Update "Viewing the version" docs
 
 -------------------------------------------------------------------
 Fri May  2 18:16:12 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.7.2
  * Enhancements
-  * Improve trace log for retryable errors 
-  * Use "error" instead of "warning" for self-update message 
-  * Error when uv version is used with project-specific flags but no project is found 
-  * Add support for BLAKE2b-256 
+  * Improve trace log for retryable errors
+  * Use "error" instead of "warning" for self-update message
+  * Error when uv version is used with project-specific flags but no project is found
+  * Add support for BLAKE2b-256
  * Bug fixes
-  * Fix incorrect virtual environment invalidation for pre-release Python versions 
-  * Fix patching of clang in managed Python sysconfig 
-  * Respect --project in uv version 
+  * Fix incorrect virtual environment invalidation for pre-release Python versions
+  * Fix patching of clang in managed Python sysconfig
+  * Respect --project in uv version
   * Revert fix handling of authentication when encountering redirects
 
 -------------------------------------------------------------------
@@ -2021,22 +2065,22 @@ Wed Apr 30 09:34:05 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
   * Make --frozen and --no-sources conflicting options
   * Treat empty UV_PYTHON_INSTALL_DIR and UV_TOOL_DIR as unset
  * Enhancements
-  * Disallow mixing requirements across PyTorch indexes 
-  * Add optional managed Python archive download cache 
-  * Add poetry-core as a uv init build backend option 
-  * Show tag hints when failing to find a compatible wheel in pylock.toml 
-  * Report Python versions in pyvenv.cfg version mismatch 
+  * Disallow mixing requirements across PyTorch indexes
+  * Add optional managed Python archive download cache
+  * Add poetry-core as a uv init build backend option
+  * Show tag hints when failing to find a compatible wheel in pylock.toml
+  * Report Python versions in pyvenv.cfg version mismatch
  * Bug fixes
-  * Avoid erroring on omitted wheel-only packages in pylock.toml 
-  * Fix display name for uvx --version 
-  * Restore handling of authentication when encountering redirects 
-  * Respect build options (--no-binary et al) in pylock.toml 
-  * Use upload-time rather than upload_time in uv.lock 
+  * Avoid erroring on omitted wheel-only packages in pylock.toml
+  * Fix display name for uvx --version
+  * Restore handling of authentication when encountering redirects
+  * Respect build options (--no-binary et al) in pylock.toml
+  * Use upload-time rather than upload_time in uv.lock
  * Documentation
-  * Changed fish completions append >> to overwrite > 
-  * Add pylock.toml mentions where relevant 
-  * Add ROCm example to the PyTorch guide 
-  * Upgrade PyTorch guide to CUDA 12.8 and PyTorch 2.7 
+  * Changed fish completions append >> to overwrite >
+  * Add pylock.toml mentions where relevant
+  * Add ROCm example to the PyTorch guide
+  * Upgrade PyTorch guide to CUDA 12.8 and PyTorch 2.7
 
 -------------------------------------------------------------------
 Wed Apr 23 13:41:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
@@ -2050,141 +2094,141 @@ Wed Apr 23 13:41:43 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
      * To generate a pylock.toml file from a set of requirements, run: uv pip compile -o pylock.toml -r requirements.in
      * To install from a pylock.toml file, run: uv pip sync pylock.toml or uv pip install -r pylock.toml
  * Enhancements
-   * Add PEP 751 support to uv pip compile 
-   * Add uv export support for PEP 751 
-   * Accept requirements.txt (verbatim) as a format on the CLI 
-   * Add UV_NO_EDITABLE environment variable to set --no-editable on all invocations 
-   * Add pylock.toml to uv pip install and uv pip sync 
-   * Add a brief sleep before sending SIGINT to child processes 
-   * Add upload time to uv.lock 
-   * Allow updating Git sources by name 
-   * Cache which git in uv init 
-   * Enable --dry-run with --locked / --frozen for uv sync 
-   * Infer output type in uv export 
-   * Make uv init resilient against broken git 
-   * Respect build constraints for uv run --with dependencies 
-   * Split UV_INDEX on all whitespace 
-   * Support build constraints in uv tool and PEP723 scripts. 
-   * Use suffix from uvx binary when searching for uv binary 
-   * Update version formatting to use cyan color 
-   * Add debug logs for version file search 
-   * Fix SourceNotAllowed error message during Python discovery 
-   * Obfuscate password in credentials debug messages 
-   * Obfuscate possible tokens in URL logs 
-   * Validate that PEP 751 entries don't include multiple sources 
-   * Add uv-build and uv_build aliases to uv init --build-backend 
-   * Emit dedicated error message for Conda environment.yml files 
+   * Add PEP 751 support to uv pip compile
+   * Add uv export support for PEP 751
+   * Accept requirements.txt (verbatim) as a format on the CLI
+   * Add UV_NO_EDITABLE environment variable to set --no-editable on all invocations
+   * Add pylock.toml to uv pip install and uv pip sync
+   * Add a brief sleep before sending SIGINT to child processes
+   * Add upload time to uv.lock
+   * Allow updating Git sources by name
+   * Cache which git in uv init
+   * Enable --dry-run with --locked / --frozen for uv sync
+   * Infer output type in uv export
+   * Make uv init resilient against broken git
+   * Respect build constraints for uv run --with dependencies
+   * Split UV_INDEX on all whitespace
+   * Support build constraints in uv tool and PEP723 scripts.
+   * Use suffix from uvx binary when searching for uv binary
+   * Update version formatting to use cyan color
+   * Add debug logs for version file search
+   * Fix SourceNotAllowed error message during Python discovery
+   * Obfuscate password in credentials debug messages
+   * Obfuscate possible tokens in URL logs
+   * Validate that PEP 751 entries don't include multiple sources
+   * Add uv-build and uv_build aliases to uv init --build-backend
+   * Emit dedicated error message for Conda environment.yml files
  * Preview features
-   * Build backend: Add reference docs and schema 
-   * Build backend: Check module dir exists for sdist build 
-   * Build backend: Fix sdist with long directories 
+   * Build backend: Add reference docs and schema
+   * Build backend: Check module dir exists for sdist build
+   * Build backend: Fix sdist with long directories
  * Bug fixes
-   * Align supported config-settings with example in docs 
-   * Ensure virtual environment is compatible with interpreter on sync 
-   * Fix PythonDownloadRequest parsing for partial keys 
-   * Fix pre-release exclusive comparison operator in uv-pep440 
-   * Forward additional signals to the child process in uv run 
-   * Omit PEP 751 version for source trees 
-   * Patch CC and CCX entries in sysconfig for cross-compiled aarch64 Python distributions 
-   * Properly handle authentication for HTTP 302 redirect URLs 
-   * Set 4MB stack size for all threads, introduce UV_STACK_SIZE 
-   * Show PyPy downloads during uv python list 
-   * Add subdirectory to Direct URL for local directories 
-   * Prefer stable releases over pre-releases in uv python install 
-   * Write requested Python variant to pin file in uv init 
-   * Revert "Properly handle authentication for 302 redirect URLs" 
-   * Error when tool.uv.sources is set in system-level configuration file 
-   * Split workspace members onto their own lines in uv init 
+   * Align supported config-settings with example in docs
+   * Ensure virtual environment is compatible with interpreter on sync
+   * Fix PythonDownloadRequest parsing for partial keys
+   * Fix pre-release exclusive comparison operator in uv-pep440
+   * Forward additional signals to the child process in uv run
+   * Omit PEP 751 version for source trees
+   * Patch CC and CCX entries in sysconfig for cross-compiled aarch64 Python distributions
+   * Properly handle authentication for HTTP 302 redirect URLs
+   * Set 4MB stack size for all threads, introduce UV_STACK_SIZE
+   * Show PyPy downloads during uv python list
+   * Add subdirectory to Direct URL for local directories
+   * Prefer stable releases over pre-releases in uv python install
+   * Write requested Python variant to pin file in uv init
+   * Revert "Properly handle authentication for 302 redirect URLs"
+   * Error when tool.uv.sources is set in system-level configuration file
+   * Split workspace members onto their own lines in uv init
  * Documentation
-   * Fix CLI reference with code block 
-   * Fix lockfile note 
-   * Fix typo in a reference 
-   * Improve docs for uv python list --only-downloads and --only-installed 
-   * Update note on lack of musl distributions to ARM-only 
-   * Add section on shebangs for scripts 
-   * Display aliases for long and short args in the CLI reference 
-   * Fix highlight line in explicit index documentation 
-   * Add explicit source (matching PyTorch guide) 
-   * Fix link to issue 
-   * Fix grammatical error in FastAPI guide 
-   * Add --locked to uv sync in GitHub Actions guide 
-   * Improve formatting for "all" default-groups setting documentation 
-   * Replace --frozen with --locked in Docker integration guide 
-   * Add lockfile note about PEP 751 
-   * Extend the reference documentation for uv pip sync 
-   * Fix mismatched pip interface header / nav titles 
+   * Fix CLI reference with code block
+   * Fix lockfile note
+   * Fix typo in a reference
+   * Improve docs for uv python list --only-downloads and --only-installed
+   * Update note on lack of musl distributions to ARM-only
+   * Add section on shebangs for scripts
+   * Display aliases for long and short args in the CLI reference
+   * Fix highlight line in explicit index documentation
+   * Add explicit source (matching PyTorch guide)
+   * Fix link to issue
+   * Fix grammatical error in FastAPI guide
+   * Add --locked to uv sync in GitHub Actions guide
+   * Improve formatting for "all" default-groups setting documentation
+   * Replace --frozen with --locked in Docker integration guide
+   * Add lockfile note about PEP 751
+   * Extend the reference documentation for uv pip sync
+   * Fix mismatched pip interface header / nav titles
  * Performance
-   * Avoid querying GitHub on repeated install invocations 
+   * Avoid querying GitHub on repeated install invocations
 
 -------------------------------------------------------------------
 Tue Apr  8 16:43:40 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.6.13
  * Enhancements
-   * Add --show-version to uv python find 
-   * Remove --no-config warning from uv pip compile and uv pip sync 
-   * Skip repeated directories in PATH when searching for Python interpreters 
-   * Unset SCRIPT_PATH in relocatable activation script 
-   * Add UV_PYTHON_DOWNLOADS_JSON_URL to set custom managed python sources 
-   * Reject pyproject.toml files in uv pip compile -o 
-   * Respect the --offline flag for Git operations 
+   * Add --show-version to uv python find
+   * Remove --no-config warning from uv pip compile and uv pip sync
+   * Skip repeated directories in PATH when searching for Python interpreters
+   * Unset SCRIPT_PATH in relocatable activation script
+   * Add UV_PYTHON_DOWNLOADS_JSON_URL to set custom managed python sources
+   * Reject pyproject.toml files in uv pip compile -o
+   * Respect the --offline flag for Git operations
  * Bug fixes
-   * Warn instead of error if CRC appears to be missing 
-   * Avoid infinite loop in uv export with conflicts 
+   * Warn instead of error if CRC appears to be missing
+   * Avoid infinite loop in uv export with conflicts
  * Rust API
-   * Update MSRV to 1.84 
+   * Update MSRV to 1.84
 
 -------------------------------------------------------------------
 Sun Apr  6 18:03:23 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 0.6.12
  * Enhancements
-   * Report the queried executable path in uv python list 
-   * Improve archive unpack error messages 
+   * Report the queried executable path in uv python list
+   * Improve archive unpack error messages
  * Bug fixes
-   * Respect authenticate when using explicit = true 
-   * Normalize extra and group names in uv add and uv remove 
-   * Enforce CRC-32 checks when unpacking archives 
-   * Fix parsing of python-platform in settings files 
+   * Respect authenticate when using explicit = true
+   * Normalize extra and group names in uv add and uv remove
+   * Enforce CRC-32 checks when unpacking archives
+   * Fix parsing of python-platform in settings files
  * Documentation
-   * Add note about uv build to package = false 
-   * Add index fallback note to authenticate = always documentation 
-   * Fix invalid 'kind' reference in flat index docs 
+   * Add note about uv build to package = false
+   * Add index fallback note to authenticate = always documentation
+   * Fix invalid 'kind' reference in flat index docs
 
 -------------------------------------------------------------------
 Wed Apr  2 17:02:20 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- Update to 0.6.11 
+- Update to 0.6.11
  * Enhancements
-   * Add dependents ("via ..." comments) in uv export command 
-   * Bump least-recent non-EOL macOS version to 13.0 
-   * Support --find-links-style "flat" indexes in [[tool.uv.index]] 
-   * Distinguish between -q and -qq 
-   * Add uv sync --check flag 
-   * Add support for Python version requests in uv python list 
-   * Support .env files in uv tool run 
-   * Support python find --script 
+   * Add dependents ("via ..." comments) in uv export command
+   * Bump least-recent non-EOL macOS version to 13.0
+   * Support --find-links-style "flat" indexes in [[tool.uv.index]]
+   * Distinguish between -q and -qq
+   * Add uv sync --check flag
+   * Add support for Python version requests in uv python list
+   * Support .env files in uv tool run
+   * Support python find --script
  * Configuration
-   * Support UV_PROJECT environment to set project directory. 
+   * Support UV_PROJECT environment to set project directory.
  * Performance
-   * Use a boxed slice for various requirement types 
-   * Use a boxed slice for extras and groups 
-   * Use small string for index name type 
+   * Use a boxed slice for various requirement types
+   * Use a boxed slice for extras and groups
+   * Use small string for index name type
  * Bug fixes
-   * Add a newline after metadata when initializing scripts with other metadata blocks 
-   * Avoid writing empty requires-python to script blocks 
-   * Respect build constraints in uv sync 
-   * Respect transitive dependencies in uv tree --only-group 
-   * Allow virtual packages with --no-build 
-   * Ignore --find-links entries for pinned indexes 
-   * Omit wheels from lockfile based on --exclude-newer 
-   * Retain end-of-line comment position when adding dependency 
-   * Omit fragment when querying for wheels in Simple HTML API 
-   * Error on missing argument in requirements.txt 
-   * Support modules with different casing in build backend 
-   * Add authentication policy support for pip commands 
+   * Add a newline after metadata when initializing scripts with other metadata blocks
+   * Avoid writing empty requires-python to script blocks
+   * Respect build constraints in uv sync
+   * Respect transitive dependencies in uv tree --only-group
+   * Allow virtual packages with --no-build
+   * Ignore --find-links entries for pinned indexes
+   * Omit wheels from lockfile based on --exclude-newer
+   * Retain end-of-line comment position when adding dependency
+   * Omit fragment when querying for wheels in Simple HTML API
+   * Error on missing argument in requirements.txt
+   * Support modules with different casing in build backend
+   * Add authentication policy support for pip commands
  * Preview features
-   * Check all compatible torch indexes when --torch-backend is enabled 
+   * Check all compatible torch indexes when --torch-backend is enabled
 
 -------------------------------------------------------------------
 Tue Mar 25 16:09:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
@@ -2201,7 +2245,7 @@ Tue Mar 25 16:09:11 UTC 2025 - Markéta Machová <mmachova@suse.com>
   * uv publish is no longer in preview
   * Allow users to mark platforms as "required" for wheel coverage
   * Use an Arc for index URLs
-  * Add support for constraining build dependencies with 
+  * Add support for constraining build dependencies with
     tool.uv.build-constraint-dependencies
   * Allow quotes around command-line options in requirement.txt files
   * Reduce overhead in converting resolutions
@@ -2687,11 +2731,11 @@ Thu Oct 17 08:09:23 UTC 2024 - Adrian Schröter <adrian@suse.de>
 Sat Oct 12 23:18:11 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
 
 - Update to version 0.4.20:
-  * Add managed downloads for CPython 3.13.0 (final) 
-  * Python 3.13 is the default version for uv python install 
-  * Hint at wrong endpoint in uv publish failures 
-  * List available scripts when a command is not specified for uv run 
-  * Fill in authors field during uv init 
+  * Add managed downloads for CPython 3.13.0 (final)
+  * Python 3.13 is the default version for uv python install
+  * Hint at wrong endpoint in uv publish failures
+  * List available scripts when a command is not specified for uv run
+  * Fill in authors field during uv init
 
 -------------------------------------------------------------------
 Mon Oct  7 23:27:10 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
@@ -3040,7 +3084,7 @@ Tue Sep 10 13:12:45 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
   - Add docs for inline exclude newer in PEP 723 scripts
   - Enumerate available Docker tags
   - Omit `[pip]` section from configuration file docs
-  - Update `project.urls` in `pyproject.toml` 
+  - Update `project.urls` in `pyproject.toml`
   - Add docs for AWS CodeArtifact usage
       This release adds first-class support for Python projects that are not designed as Python packages (e.g., web applications, data science projects, etc.).
       In doing so, it includes some breaking changes around uv's handling of projects. Previously, uv required that all projects could be built into distributable Python packages, and installed them into the virtual environment. Projects created by `uv init` always included a `[build-system]` definition and existing projects that did not define a `[build-system]` would use the legacy setuptools build backend by default.
@@ -3058,7 +3102,7 @@ Tue Sep 10 13:12:45 UTC 2024 - Soc Virnyl Estela <obs@uncomfyhalomacro.pl>
   - Add first-class support for non-packaged projects
   - Add `--app` and `--lib` options to `uv init`
   - Use `virtual` source label in lockfile for non-packaged dependencies
-  - Read hash from URL fragment if `--hashes` are omitted 
+  - Read hash from URL fragment if `--hashes` are omitted
   - Support `{package}@{version}` in `uv tool install`
   - Publish additional Docker tags without patch version
   - Accept either strings or structs for hosts
