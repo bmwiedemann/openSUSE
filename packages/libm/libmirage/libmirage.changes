@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:57:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.2
+  * ISZ filter: add support for alternative multi-part naming
+    schemes
+  * ISZ filter: implement decryption support
+  * ISZ filter: add missing g_variant_unref() call
+  * DMG filter: fix memory leaks in rsrc_fork_read_binary()
+  * DAA filter: fix support for large (>= 4GB) images
+  * DMG filter: fix stream opening on multi-segment DMG images
+  * DMG filter: fix multi-segment file naming scheme
+  * DMG filter: EncrCDSA stream: add support for AES-encrypted key
+  * DMG filter: add support for segmented encrypted images
+  * TOC image: fix handling of DATAFILE without offset or length
+  * fragment: Add fast versions of reading main channel and
+    subchannel data
+
+-------------------------------------------------------------------
+Wed Mar 25 14:30:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.3.1
+  * harddisk parser: turn apm_flag_t and gpt_attr_t enums into macros
+  * MDS parser: fix num_layers detection
+  * MDX parser: support for descriptor decryption, basic MDX/MDSv2
+    descriptor parsing, password-less data encryption, parsing of
+    DPM data, handling of fragment lengths, support for compressed
+    images, encryption, subchannel data, parsing CD-TEXT data, and
+    parsing disc structures
+  * MDX parser: disable track-length verification for TAGES images
+
+-------------------------------------------------------------------
 Sun Mar 30 11:04:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.10:

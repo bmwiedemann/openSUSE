@@ -1,7 +1,7 @@
 #
 # spec file for package libmirage
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           libmirage
-%define lname   libmirage11
-%define pname	3_2
+%define lname   libmirage12
+%define pname	3_3
+%define typlibver 3_2
+Version:        3.3.2
+Release:        0
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
-Version:        3.2.10
-Release:        0
 URL:            https://cdemu.sourceforge.io/about/libmirage/
-#Git-Clone:     https://github.com/cdemu/cdemu.git
+#Git-Clone:     https://github.com/cdemu/cdemu
 Source:         http://downloads.sourceforge.net/cdemu/%name-%version.tar.xz
-BuildRequires:  cmake >= 3.7
+BuildRequires:  cmake >= 3.16
 BuildRequires:  intltool >= 0.21
 BuildRequires:  pkg-config >= 0.16
 BuildRequires:  pkgconfig(bzip2) >= 1.0.0
@@ -37,6 +38,8 @@ BuildRequires:  pkgconfig(gmodule-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.38
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.30.0
 BuildRequires:  pkgconfig(gtk-doc) >= 1.4
+#BuildRequires:  pkgconfig(libchdr) >= 0.3.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.2.0
 BuildRequires:  pkgconfig(liblzma) >= 5.0.0
 BuildRequires:  pkgconfig(samplerate) >= 0.1.0
 BuildRequires:  pkgconfig(shared-mime-info)
@@ -129,11 +132,11 @@ file.
 
 This package contains the Vala bindings to libmirage
 
-%package -n typelib-1_0-libmirage-%pname
+%package -n typelib-1_0-libmirage-%typlibver
 Summary:        Introspection bindings for the libmirage CD-ROM image access library
 Group:          System/Libraries
 
-%description -n typelib-1_0-libmirage-%pname
+%description -n typelib-1_0-libmirage-%typlibver
 libmirage provides uniform access to the data stored in different
 image formats by creating a representation of disc stored in image
 file.
@@ -153,8 +156,7 @@ This package provides the GObject Introspection bindings for libmirage.
 %cmake_install
 %find_lang %name
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %post data
 %mime_database_post
@@ -163,7 +165,7 @@ This package provides the GObject Introspection bindings for libmirage.
 %mime_database_postun
 
 %files -n %lname
-%_libdir/libmirage.so.11*
+%_libdir/libmirage.so.*
 
 %files %pname
 %_libdir/libmirage-3*/
@@ -184,7 +186,7 @@ This package provides the GObject Introspection bindings for libmirage.
 
 %files lang -f %name.lang
 
-%files -n typelib-1_0-libmirage-%pname
+%files -n typelib-1_0-libmirage-%typlibver
 %_libdir/girepository-1.0
 
 %changelog
