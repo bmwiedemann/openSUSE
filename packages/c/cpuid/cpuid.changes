@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:05:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260503
+  * Added synth decoding for Medusa Point, Fire Range, Granite
+    Ridge, Ryzen 200, Hawk Point Refresh, Bartlett Lake, Xbox
+    Series S/X (ProjectX), Zhaoxin KaiXian/KX-7000, Wildcat Lake
+  * Added showing CPPC floor performance counter, Matrix Multiple &
+    Reversal instruction availability, RMPCHKD instruction
+    availability.
+
+-------------------------------------------------------------------
 Mon Mar 30 14:22:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260220
