@@ -161,4 +161,38 @@
       different redis databases. Dropped pytest-django.</comment>
     <requestid>1308665</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c43212813d6500962cf09a02fc8c6c03</srcmd5>
+    <version>7.0.0</version>
+    <time>1781545332</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0.0:
+  * Added the ability to pass redis username in the cache options
+  * `RedisCache` does not attempt to close clients which have not
+    been initialized.
+  * Add sorted set operations (zadd, zrange, zrem, etc.) and
+    mixins for RedisCache
+  * Centralize configuration in `pyproject.toml`, drop EoL Python
+    &amp; Django versions, and add support &amp; testing for modern Python &amp;
+    Django versions.
+  * Provide TypeVar defaults &amp; provide initial typing for
+    `RedisCache`.
+  * Fix IntEnum encoding
+  * Fix incorrect Redis typing that relied on the legacy `types-
+    redis` package, and update the public API to avoid exposing
+    redis-py key types (the encode/decode/make_key methods allow
+    a different API surface).
+
+  * Add support for django 4
+    not read Django settings in import time.
+  * Skipping pickle serializer test for django &gt;= 4.2
+    and larger itersize
+    exceptions
+  * Fix mypy linting
+  * Added support for python 3.11
+  * Fix CI, running tox&lt;4 to still support Python 3.6.
+  * Dropped support for django 2.2 and 3.1
+  * Run actions &amp; tox against Django 4..2</comment>
+    <requestid>1359223</requestid>
+  </revision>
 </revisionlist>
