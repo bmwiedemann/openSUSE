@@ -15,6 +15,7 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           pascube
 Version:        1.7.0
 Release:        0
@@ -22,13 +23,13 @@ Summary:        Simple Vulkan spinning cube written in Pascal
 License:        GPL-2.0-or-later
 URL:            https://github.com/benjamimgois/pascube
 Source0:        https://github.com/benjamimgois/pascube/archive/refs/tags/%{version}.tar.gz#/pascube-%{version}.tar.gz
-BuildRequires:  gcc-c++
+BuildRequires:  SDL2-devel
 BuildRequires:  clang
 BuildRequires:  fpc
 BuildRequires:  fpc-src
+BuildRequires:  gcc-c++
 BuildRequires:  lazarus
 BuildRequires:  libQt6Pas-devel
-BuildRequires:  SDL2-devel
 Requires:       Mesa-libGL1
 
 %description

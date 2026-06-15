@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:34:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Drop stale _scmsync.obsinfo: file comes from a request
+  originating from a git managed source into a non-git-managed
+  devel package.
+
+-------------------------------------------------------------------
 Tue Jun  9 22:58:05 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix 'nothing provides qt6-base' error by removing unused requires 
