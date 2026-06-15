@@ -19,7 +19,7 @@
 %define mod_name pika
 %{?sle15_python_module_pythons}
 Name:           python-%{mod_name}
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        Pika Python AMQP Client Library
 License:        BSD-3-Clause

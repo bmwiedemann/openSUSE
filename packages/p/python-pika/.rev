@@ -267,4 +267,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1354985</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>4011d8b26c303de2fc24433d04106bf3</srcmd5>
+    <version>1.4.1</version>
+    <time>1781545501</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.1:
+  * Fix Channel.close() for channels with multiple consumers</comment>
+    <requestid>1359333</requestid>
+  </revision>
 </revisionlist>
