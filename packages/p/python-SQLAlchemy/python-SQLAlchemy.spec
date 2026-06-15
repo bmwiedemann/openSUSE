@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-SQLAlchemy
-Version:        2.0.49
+Version:        2.0.50
 Release:        0
 Summary:        Database Abstraction Library
 License:        MIT

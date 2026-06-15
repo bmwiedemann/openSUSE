@@ -1339,4 +1339,13 @@ Remove 0001-fix-sqlite3.10.0-test.patch. Applied upstream.</comment>
   * https://docs.sqlalchemy.org/en/21/changelog/changelog_20.html#change-2.0.49</comment>
     <requestid>1346273</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>a830711a6be4184e0fe68ff743a571ad</srcmd5>
+    <version>2.0.50</version>
+    <time>1781545229</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.50:
+  * https://docs.sqlalchemy.org/en/21/changelog/changelog_20.html#change-2.0.50</comment>
+    <requestid>1359300</requestid>
+  </revision>
 </revisionlist>
