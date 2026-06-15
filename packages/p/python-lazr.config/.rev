@@ -52,4 +52,14 @@
     <comment></comment>
     <requestid>1281353</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5cf64dbf4bd3ca78778cae8fa29d1100</srcmd5>
+    <version>3.1</version>
+    <time>1781545389</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1:
+  * Add support for Python 3.12 and 3.13.
+  * Remove support for Python 3.7 and below.</comment>
+    <requestid>1359265</requestid>
+  </revision>
 </revisionlist>

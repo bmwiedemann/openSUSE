@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazr.config
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazr.config
-Version:        3.0
+Version:        3.1
 Release:        0
 Summary:        Create configuration schemas, and process and validate configurations
 License:        LGPL-3.0-only
 URL:            https://launchpad.net/lazr.config
-Source:         https://files.pythonhosted.org/packages/source/l/lazr.config/lazr.config-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/lazr.config/lazr_config-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -43,7 +43,7 @@ BuildRequires:  %{python_module zope.interface}
 Create configuration schemas, and process and validate configurations.
 
 %prep
-%setup -q -n lazr.config-%{version}
+%setup -q -n lazr_config-%{version}
 
 %build
 %pyproject_wheel
