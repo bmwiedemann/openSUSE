@@ -222,4 +222,15 @@
   * or see CHANGELOG.md</comment>
     <requestid>1335900</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d41d1678e5da91a69186ba6710668f3d</srcmd5>
+    <version>2.5.0</version>
+    <time>1781545508</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.0:
+  * 5,000+ files changed across 833 commits
+  * see https://github.com/biomejs/biome/compare/%40biomejs/biome%402.4.5...%40biomejs/biome%402.5.0
+  * or see CHANGELOG.md</comment>
+    <requestid>1359336</requestid>
+  </revision>
 </revisionlist>

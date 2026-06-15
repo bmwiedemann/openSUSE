@@ -3,6 +3,9 @@
   <service name="cargo_vendor" mode="manual">
      <param name="src">biome*.tar.gz</param>
      <param name="filter">true</param>
+     <param name="method">vendor</param>
+     <param name="respect-lockfile">true</param>
+     <param name="update">false</param>
   </service>
 </services>
 

@@ -18,7 +18,7 @@
 
 
 Name:           biome
-Version:        2.4.5
+Version:        2.5.0
 Release:        0
 Summary:        A JavaScript and TypeScript toolchain
 License:        Apache-2.0 AND MIT
