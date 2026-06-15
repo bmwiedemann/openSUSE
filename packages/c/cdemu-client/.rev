@@ -140,4 +140,20 @@
     <comment>- Update to 3.2.5</comment>
     <requestid>888532</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d4a709bfa363dbd9cf22064304fe75bc</srcmd5>
+    <version>3.3.0</version>
+    <time>1774470123</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.0</comment>
+    <requestid>1342515</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>132cb15cbd4adb034eec52b4f52e7549</srcmd5>
+    <version>3.3.1</version>
+    <time>1781545415</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.1</comment>
+    <requestid>1359280</requestid>
+  </revision>
 </revisionlist>

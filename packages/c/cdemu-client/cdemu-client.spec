@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-client
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,15 @@
 
 
 Name:           cdemu-client
-Version:        3.2.5
+Version:        3.3.1
 Release:        0
 Summary:        Command-line client to control cdemu-daemon
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://cdemu.sourceforge.io/about/client/
-
 #Git-Clone:	https://github.com/cdemu/cdemu
 Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
-BuildRequires:  cmake >= 3.7
+BuildRequires:  cmake >= 3.16
 BuildRequires:  gettext-tools >= 0.15
 BuildRequires:  gobject-introspection
 BuildRequires:  intltool >= 0.21
