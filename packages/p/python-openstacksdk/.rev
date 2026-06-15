@@ -747,4 +747,41 @@
   * typing: Add remaining types to Resource</comment>
     <requestid>1353901</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>42cabc803bd9a6e0d5475aa4c5475213</srcmd5>
+    <version>4.15.0</version>
+    <time>1781545395</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.15.0:
+  * mypy: Remove unnecessary ignore
+  * Add support for share snapshot manage, unmanage
+  * Add support for share, share snapshot reset_state,
+    force_delete
+  * Add quota set resource to shared file system
+  * Add share types resource to shared file system
+  * Add support for share soft delete, restore
+  * Add share snapshot metadata resource to shared file system
+  * Add share network subnet metadata resource to shared file
+    system
+  * Add ServerExternalEvents resource for os-server-external-
+    events API
+  * Add service resource to shared file system
+  * trivial: Order share proxy methods
+  * key-manager: add secret consumer support
+  * Add share replica resource to shared file system
+  * network: Extend add_interface_to_router with advertise_host
+  * docs: Use glob for resources docs
+  * Migrate resources to Resource.create_opts (2/2)
+  * Migrate resources to Resource.create_opts (1/2)
+  * resource: Add Resource.create_opts
+  * Make use of _transform_create_request helper
+  * resource: Drop Resource.create_exclude_id_from_body
+  * resource: Add _transform_create_response helper
+  * typing: Invert checks
+  * typing: Add annotations to remaining methods (workflow)
+  * typing: Add annotations to remaining methods
+    (shared_file_system)
+  * typing: Add annotations to remaining methods (placement)</comment>
+    <requestid>1359268</requestid>
+  </revision>
 </revisionlist>

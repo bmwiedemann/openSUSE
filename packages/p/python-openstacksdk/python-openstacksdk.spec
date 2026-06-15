@@ -17,7 +17,7 @@
 
 
 Name:           python-openstacksdk
-Version:        4.13.0
+Version:        4.15.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module keystoneauth1 >= 5.12.0}
 BuildRequires:  %{python_module os-service-types >= 1.8.1}
 BuildRequires:  %{python_module oslo.config >= 6.1.0}
 BuildRequires:  %{python_module oslotest >= 3.2.0}
-BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 3}
 BuildRequires:  %{python_module prometheus_client >= 0.4.2}

@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:46:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.0:
+  * mypy: Remove unnecessary ignore
+  * Add support for share snapshot manage, unmanage
+  * Add support for share, share snapshot reset_state,
+    force_delete
+  * Add quota set resource to shared file system
+  * Add share types resource to shared file system
+  * Add support for share soft delete, restore
+  * Add share snapshot metadata resource to shared file system
+  * Add share network subnet metadata resource to shared file
+    system
+  * Add ServerExternalEvents resource for os-server-external-
+    events API
+  * Add service resource to shared file system
+  * trivial: Order share proxy methods
+  * key-manager: add secret consumer support
+  * Add share replica resource to shared file system
+  * network: Extend add_interface_to_router with advertise_host
+  * docs: Use glob for resources docs
+  * Migrate resources to Resource.create_opts (2/2)
+  * Migrate resources to Resource.create_opts (1/2)
+  * resource: Add Resource.create_opts
+  * Make use of _transform_create_request helper
+  * resource: Drop Resource.create_exclude_id_from_body
+  * resource: Add _transform_create_response helper
+  * typing: Invert checks
+  * typing: Add annotations to remaining methods (workflow)
+  * typing: Add annotations to remaining methods
+    (shared_file_system)
+  * typing: Add annotations to remaining methods (placement)
+  * typing: Add annotations to remaining methods (orchestration)
+  * typing: Add annotations to remaining methods (object_store)
+  * typing: Add annotations to remaining methods (network)
+  * typing: Add annotations to remaining methods (message)
+  * typing: Add annotations to remaining methods (load_balancer)
+  * typing: Add annotations to remaining methods (instance_ha)
+  * typing: Add annotations to remaining methods (image)
+  * typing: Add annotations to remaining methods (identity)
+  * Add router_route field to network Quota resources
+  * drop deprecated openstack.version
+  * typing: Fix some bugs in compute proxy
+  * shared_file_system: set min microversion for availability
+    zones
+  * Identity: Deprecate find_policy()
+  * Stop Proxy.request() from shadowing connect_retries
+  * Add reproducer tests for connect_retries being ignored
+  * Add comprehensive functional tests for Identity v3 Service
+    resource
+  * typing: Add annotations to remaining methods (dns)
+  * typing: Add annotations to remaining methods (database)
+  * typing: Add annotations to remaining methods
+    (container_infrastructure_management)
+  * typing: Add annotations to remaining methods (compute)
+  * typing: Add annotations to remaining methods (clustering)
+  * typing: Add annotations to remaining methods (block_storage)
+  * typing: Add annotations to remaining methods
+    (baremetal_introspection)
+  * typing: Add annotations to remaining methods (baremetal)
+  * typing: Add annotations to remaining methods (accelerator)
+  * Add share transfer to shared file system
+  * proxy: Add Proxy._update helper
+  * resource: Deprecate find_* ignore_missing param
+  * block storage: Add QoSSpec
+  * cloud: Deprecate nova-network support
+  * trivial: Remove dead code
+  * Remove tests.fakes module
+  * Remove dead fakes
+  * volume v2: Add missing attach, detach params
+  * trivial: Cleanup remaining proxy docstrings
+  * Deprecate incorrect update_* methods
+  * typing: Add annotations to all Proxy.patch_* methods
+  * Deprecate support for passing individual patches
+  * Add support for key manager quota API
+  * baremetal: Use Proxy._list for list operations
+  * typing: Add annotations to all Proxy.*s methods
+  * typing: Add annotations to all Proxy.update_* methods
+  * Deprecate incorrect get_*_metadata methods
+  * typing: Add annotations to all Proxy.get_* methods
+  * typing: Add annotations to all Proxy.delete_* methods
+  * tests: Fix intermittent JSONDecodeError in unit test setUp
+  * trivial: Clean up docstrings in all Proxy.create_* methods
+  * trivial: Clean up docstrings in all Proxy.find_* methods
+  * trivial: Clean up docstrings for Resource
+  * trivial: Clean up docstrings for Proxy
+  * Drop _id suffix from proxy methods
+  * tests: Correct types of IDs
+  * typing: Sync wait_for_delete signatures
+  * typing: Prefer Mapping, Sequence
+  * typing: Add types to fixtures
+  * Drop Python 3.10 support
+
+-------------------------------------------------------------------
 Mon May 18 11:18:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.13.0:
