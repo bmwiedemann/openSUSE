@@ -318,4 +318,41 @@
     `SetupIntentModifyParamsPaymentMethodDatum`</comment>
     <requestid>1349308</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>5e98f45862a78e32ed4caa49d484fde0</srcmd5>
+    <version>15.2.1</version>
+    <time>1781545455</time>
+    <user>anag_factory</user>
+    <comment>- update to 15.2.1:
+  * #1825 Add &quot;source&quot; field to user-agent header
+- update to 15.2.0:
+  * #1816 Update generated code
+  * Add support for new resource
+    `v2.commerce.ProductCatalogImport`
+  * Add support for `create` and `retrieve` methods on resource
+    `v2.commerce.ProductCatalogImport`
+  * Add support for `bizum_payments` and `scalapay_payments` on
+    `Account.Capability`, `AccountCreateParamsCapability`, and
+    `AccountModifyParamsCapability`
+  * Add support for `automatic_transfer_rules_by_currency` on
+    `BalanceSettings.Payment.Payout` and
+    `BalanceSettingsModifyParamsPaymentPayout`
+  * Add support for `start_of_day` on
+    `BalanceSettings.Payment.SettlementTiming` and
+    `BalanceSettingsModifyParamsPaymentSettlementTiming`
+  * Add support for `description` on
+    `ChargeCreateParamsTransferDatum`,
+    `PaymentIntent.TransferDatum`,
+    `PaymentIntentCreateParamsTransferDatum`, and
+    `PaymentIntentModifyParamsTransferDatum`
+  * Add support for `bizum` on `Charge.PaymentMethodDetail`,
+    `ConfirmationToken.PaymentMethodPreview`,
+    `ConfirmationTokenCreateParamsPaymentMethodDatum`,
+    `PaymentAttemptRecord.PaymentMethodDetail`,
+    `PaymentIntent.PaymentMethodOption`,
+    `PaymentIntentConfirmParamsPaymentMethodDatum`,
+    `PaymentIntentConfirmParamsPaymentMethodOption`,
+    `PaymentIntentCreateParamsPaymentMethodDatum`,</comment>
+    <requestid>1359304</requestid>
+  </revision>
 </revisionlist>
