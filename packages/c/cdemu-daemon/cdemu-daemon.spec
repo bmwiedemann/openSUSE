@@ -1,7 +1,7 @@
 #
 # spec file for package cdemu-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,32 +18,31 @@
 
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
+	%define _fillupdir /var/adm/fillup-templates
 %endif
 
 Name:           cdemu-daemon
-Version:        3.2.7
+Version:        3.3.1
 Release:        0
 Summary:        Device daemon for cdemu, a virtual CD-ROM device emulator
 License:        GPL-2.0-or-later
 Group:          System/Daemons
 URL:            https://cdemu.sourceforge.io/about/daemon/
-
 #Git-Clone:	https://github.com/cdemu/cdemu
 Source:         https://downloads.sf.net/cdemu/%name-%version.tar.xz
 Source2:        60-vhba.rules
 Source3:        cdemu-daemon.sysconfig
 Source4:        cdemu-daemon.service
-BuildRequires:  cmake >= 2.8.5
+BuildRequires:  cmake >= 3.16
 BuildRequires:  intltool >= 0.21
 BuildRequires:  pkg-config >= 0.16
 BuildRequires:  pkgconfig(ao) >= 0.8.0
-BuildRequires:  pkgconfig(gio-2.0) >= 2.30
-BuildRequires:  pkgconfig(glib-2.0) >= 2.30
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.30
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.30
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.30
-BuildRequires:  pkgconfig(libmirage) >= 3.2.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.38
+BuildRequires:  pkgconfig(glib-2.0) >= 2.38
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.38
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.38
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.38
+BuildRequires:  pkgconfig(libmirage) >= 3.3.2
 Requires(pre):  %fillup_prereq
 Requires:       vhba-kmp
 Recommends:     %name-lang

@@ -246,4 +246,20 @@
     <comment>- Update to release 3.2.7</comment>
     <requestid>1199825</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>fa5b2cd2f7896d304b67c45735061226</srcmd5>
+    <version>3.3.0</version>
+    <time>1774470122</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.0</comment>
+    <requestid>1342514</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>96d6eb47c8e7bb98b8e213b1e00adb2e</srcmd5>
+    <version>3.3.1</version>
+    <time>1781545412</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.1</comment>
+    <requestid>1359279</requestid>
+  </revision>
 </revisionlist>
