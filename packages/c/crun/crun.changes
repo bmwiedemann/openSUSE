@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 12 09:44:45 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 1.28:
+  * NEWS: tag 1.28
+  * Do not follow rootfs /dev symlinks (bsc#1268302, CVE-2026-47766)
+  * krun: request enabling DHCP client
+  * krun: check krun_add_net_unixstream dlsym
+  * tests: add libzstd-devel to fuzzing Dockerfile
+  * tests, system-blake3: drop libyajl-dev
+
+-------------------------------------------------------------------
 Mon May  4 07:36:19 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - update to 1.27.1:

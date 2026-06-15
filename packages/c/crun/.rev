@@ -322,4 +322,19 @@
     <comment></comment>
     <requestid>1350632</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>086cfc27b376c0f4ff2c2025af7f6b77</srcmd5>
+    <version>1.28</version>
+    <time>1781545879</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.28:
+  * NEWS: tag 1.28
+  * Do not follow rootfs /dev symlinks (bsc#1268302, CVE-2026-47766)
+  * krun: request enabling DHCP client
+  * krun: check krun_add_net_unixstream dlsym
+  * tests: add libzstd-devel to fuzzing Dockerfile
+  * tests, system-blake3: drop libyajl-dev
+</comment>
+    <requestid>1359591</requestid>
+  </revision>
 </revisionlist>

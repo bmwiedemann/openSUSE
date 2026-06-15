@@ -27,15 +27,12 @@
 %endif
 
 Name:           crun
-Version:        1.27.1
+Version:        1.28
 Release:        0
 Summary:        OCI runtime written in C
 License:        GPL-2.0-or-later
 URL:            https://github.com/containers/crun
-Source0:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        %{URL}/releases/download/%{version}/%{name}-%{version}.tar.gz.asc
-# From <https://github.com/giuseppe.gpg>. See <https://github.com/containers/crun/issues/1423>.
-Source2:        %{name}.keyring
+Source0:        %{name}-%{version}.tar.gz
 # We always run autogen.sh
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -44,6 +41,7 @@ BuildRequires:  gettext
 BuildRequires:  glibc-devel-static
 BuildRequires:  go-md2man
 BuildRequires:  libcap-devel
+BuildRequires:  libjson-c-devel
 BuildRequires:  libprotobuf-c-devel
 BuildRequires:  libseccomp-devel
 BuildRequires:  libtool
@@ -68,6 +66,7 @@ crun is a runtime for running OCI containers. It is built with libkrun support
 
 %prep
 %autosetup -p1
+echo '#define GIT_VERSION "%{version}"' > git-version.h
 
 %build
 %ifarch x86_64 aarch64
