@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:52:51 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.92.0 (0.092)
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+
+  0.092		2026-06-13	T. R. Wyant
+      Remove references to the RT bug tracking system.
+      Replace wyant@cpan.org with harryfmudd@comcast.net.
+      Correct documentation errors.
+      No functional changes.
+
+-------------------------------------------------------------------
 Thu Oct  9 20:26:29 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.91.0 (0.091)

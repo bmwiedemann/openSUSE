@@ -638,4 +638,18 @@
       up and providing the pull request.</comment>
     <requestid>1310547</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>abcb67ed4f7e5cd5b83b041b1a6292f8</srcmd5>
+    <version>0.92.0</version>
+    <time>1781545252</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.92.0 (0.092)
+   see /usr/share/doc/packages/perl-PPIx-Regexp/Changes
+  0.092		2026-06-13	T. R. Wyant
+      Remove references to the RT bug tracking system.
+      Replace wyant@cpan.org with harryfmudd@comcast.net.
+      Correct documentation errors.
+      No functional changes.</comment>
+    <requestid>1359506</requestid>
+  </revision>
 </revisionlist>

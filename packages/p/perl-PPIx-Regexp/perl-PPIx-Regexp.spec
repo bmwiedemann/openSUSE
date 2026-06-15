@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-Regexp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name PPIx-Regexp
 Name:           perl-PPIx-Regexp
-Version:        0.91.0
+Version:        0.92.0
 Release:        0
-# 0.091 -> normalize -> 0.91.0
-%define cpan_version 0.091
+# 0.092 -> normalize -> 0.92.0
+%define cpan_version 0.092
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse regular expressions
 URL:            https://metacpan.org/release/%{cpan_name}
