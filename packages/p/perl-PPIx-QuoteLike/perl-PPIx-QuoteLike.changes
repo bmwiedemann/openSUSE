@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 14 08:51:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.24.0 (0.024)
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+
+  0.024		2026-06-13	T. R. Wyant
+      Remove references to the RT bug tracking system.
+      Replace wyant@cpan.org with harryfmudd@comcast.net.
+      Repackage licenses so that GitHub can find them (maybe).
+      Thanks to Mikko Koivunalho (specifically his blog post
+      https://blogs.perl.org/users/mikko_koivunalho/2025/11/github-and-the-perl-license.html
+      for the how-to.
+      Add SECURITY policy.
+      No functional changes.
+
+-------------------------------------------------------------------
 Sat Sep 17 03:07:18 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.023

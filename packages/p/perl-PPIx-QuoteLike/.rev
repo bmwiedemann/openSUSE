@@ -143,4 +143,22 @@
     <comment></comment>
     <requestid>1006448</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8304d0a5c6fefdaaa67e42d52686a351</srcmd5>
+    <version>0.24.0</version>
+    <time>1781545254</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.24.0 (0.024)
+   see /usr/share/doc/packages/perl-PPIx-QuoteLike/Changes
+  0.024		2026-06-13	T. R. Wyant
+      Remove references to the RT bug tracking system.
+      Replace wyant@cpan.org with harryfmudd@comcast.net.
+      Repackage licenses so that GitHub can find them (maybe).
+      Thanks to Mikko Koivunalho (specifically his blog post
+      https://blogs.perl.org/users/mikko_koivunalho/2025/11/github-and-the-perl-license.html
+      for the how-to.
+      Add SECURITY policy.
+      No functional changes.</comment>
+    <requestid>1359507</requestid>
+  </revision>
 </revisionlist>

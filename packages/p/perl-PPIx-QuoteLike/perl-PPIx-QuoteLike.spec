@@ -1,7 +1,7 @@
 #
 # spec file for package perl-PPIx-QuoteLike
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define cpan_name PPIx-QuoteLike
 Name:           perl-PPIx-QuoteLike
-Version:        0.023
+Version:        0.24.0
 Release:        0
+# 0.024 -> normalize -> 0.24.0
+%define cpan_version 0.024
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse Perl string literals and string-literal-like things
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/W/WY/WYANT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -36,6 +39,19 @@ BuildRequires:  perl(Test::More) >= 0.88
 Requires:       perl(PPI::Document) >= 1.238
 Requires:       perl(PPI::Dumper) >= 1.238
 Requires:       perl(Readonly)
+Provides:       perl(PPIx::QuoteLike) = %{version}
+Provides:       perl(PPIx::QuoteLike::Constant) = %{version}
+Provides:       perl(PPIx::QuoteLike::Dumper) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Control) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Delimiter) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Interpolation) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::String) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Structure) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Unknown) = %{version}
+Provides:       perl(PPIx::QuoteLike::Token::Whitespace) = %{version}
+Provides:       perl(PPIx::QuoteLike::Utils) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -50,21 +66,23 @@ But there is at least one quote-like thing that probably needs some
 explanation.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -name "configure" -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-perl Build.PL installdirs=vendor
-./Build build flags=%{?_smp_mflags}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
 ./Build test
 
 %install
-./Build install destdir=%{buildroot} create_packlist=0
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CONTRIBUTING README
+%doc Changes CONTRIBUTING README SECURITY
+%license LICENSE-Artistic LICENSE-GPL
 
 %changelog
