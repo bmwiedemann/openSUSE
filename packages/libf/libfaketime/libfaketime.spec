@@ -1,7 +1,7 @@
 #
 # spec file for package libfaketime
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,27 +16,53 @@
 #
 
 
+%define _lto_cflags %{nil}
+
 Name:           libfaketime
 Version:        0.9.12
 Release:        0
 Summary:        FakeTime Preload Library
 License:        GPL-2.0-only
-Group:          System/Libraries
 URL:            https://github.com/wolfcw/libfaketime
-Source:         https://github.com/wolfcw/libfaketime/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-build-with-ISO_C23.patch gh#wolfcw/libfaketime#524
+Patch0:         fix-build-with-ISO_C23.patch
+# PATCH-FIX-UPSTREAM fix-build-with-gcc-16.patch gh#wolfcw/libfaketime#528
+Patch1:         fix-build-with-gcc-16.patch
+BuildRequires:  bash
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  perl
 
 %description
-report faked system time to programs without having to change the system-wide time
+Report faked system time to programs without having to change the system-wide time.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-make %{?_smp_mflags} PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name}
+%ifarch ppc64le
+export FAKETIME_COMPILE_CFLAGS="-DFORCE_PTHREAD_NONVER"
+%endif
+%ifarch riscv64
+export FAKETIME_COMPILE_CFLAGS="-DFORCE_MONOTONIC_FIX -DFORCE_PTHREAD_NONVER"
+%endif
+%{set_build_flags}
+%make_build PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name}
 
 %install
-make install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name}
-rm %{buildroot}%{_datadir}/doc/faketime/*
+%make_install PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name}
+chmod -c 0755 %{buildroot}%{_libdir}/%{name}/libfaketime*.so.1
+rm -r %{buildroot}%{_datadir}/doc/faketime
+
+%check
+%ifarch ppc64le
+export FAKETIME_COMPILE_CFLAGS="-DFORCE_PTHREAD_NONVER"
+%endif
+%ifarch riscv64
+export FAKETIME_COMPILE_CFLAGS="-DFORCE_MONOTONIC_FIX -DFORCE_PTHREAD_NONVER"
+%endif
+make PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name} -C test
 
 %files
 %doc NEWS README

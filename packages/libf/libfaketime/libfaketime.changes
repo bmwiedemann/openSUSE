@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 10 04:03:12 UTC 2026 - munix9@googlemail.com
+
+- Disable lto
+- Add fix-build-with-ISO_C23.patch (gh#wolfcw/libfaketime#524)
+- Add fix-build-with-gcc-16.patch (gh#wolfcw/libfaketime#528)
+- Add %{set_build_flags}
+- Add %check/test section
+- Add FAKETIME_COMPILE_CFLAGS for ppc64le & riscv64
+- Make the libraries executable, needed for stripping them
+
+-------------------------------------------------------------------
 Sun Nov 23 13:43:51 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.9.12
