@@ -591,4 +591,12 @@
   * Update utf8proc to v2.11.0, supporting Unicode 17.</comment>
     <requestid>1305318</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>fa770b10dd2b9cfc938cb121de5d6cc5</srcmd5>
+    <version>2.6.1</version>
+    <time>1781545560</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359348</requestid>
+  </revision>
 </revisionlist>
