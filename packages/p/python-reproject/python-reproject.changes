@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:37:40 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- skip builds for python311 for the test flavor. 
+
+-------------------------------------------------------------------
+Sun Jun 14 20:22:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * Support 32-bit floats in reproject_adaptive
+  * Fix setting shape which is deprecated, and use reshape()
+    instead
+  * Improve accuracy for high-resolution images in
+    reproject_exact
+  * Added Python 3.14 CI jobs
+  * Add a new Montage accuracy test in ICRS
+  * Clean up private/public API
+  * Migrate to new astropy-unified theme
+  * BLD: cleanup manifest template
+  * Upgrade PyPI CI publishing to use Trusted Publishing
+  * Enable limited API builds only when building wheels for
+    publishing
+  * Fix caplog-related failures in
+    test_reproject_parallel_broadcasting
+
+-------------------------------------------------------------------
 Sun Mar  1 23:41:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.19.0:

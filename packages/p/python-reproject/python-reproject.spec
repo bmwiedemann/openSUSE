@@ -17,6 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%global skip_python311 1
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
@@ -25,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-reproject%{psuffix}
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Reproject astronomical images
 License:        BSD-3-Clause

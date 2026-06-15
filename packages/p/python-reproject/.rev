@@ -103,4 +103,29 @@
   * Use APE-14 compliant pixel scale calculation in reproject.hips</comment>
     <requestid>1335668</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f30f7f45b190a761596c91a59d90efb8</srcmd5>
+    <version>0.20.0</version>
+    <time>1781545847</time>
+    <user>anag_factory</user>
+    <comment>- skip builds for python311 for the test flavor. 
+
+- update to 0.20.0:
+  * Support 32-bit floats in reproject_adaptive
+  * Fix setting shape which is deprecated, and use reshape()
+    instead
+  * Improve accuracy for high-resolution images in
+    reproject_exact
+  * Added Python 3.14 CI jobs
+  * Add a new Montage accuracy test in ICRS
+  * Clean up private/public API
+  * Migrate to new astropy-unified theme
+  * BLD: cleanup manifest template
+  * Upgrade PyPI CI publishing to use Trusted Publishing
+  * Enable limited API builds only when building wheels for
+    publishing
+  * Fix caplog-related failures in
+    test_reproject_parallel_broadcasting</comment>
+    <requestid>1359568</requestid>
+  </revision>
 </revisionlist>
