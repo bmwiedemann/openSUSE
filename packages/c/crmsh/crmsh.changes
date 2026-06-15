@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 15 10:14:21 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260615.8409ea5a:
+  * Dev: bootstrap: add a warning about deprecating unencrypted/unauthenticated knet transport (jsc#PED-16433)
+  * Dev: bootstrap: update warning about deprecating legacy transports (jsc#PED-16433)
+
+-------------------------------------------------------------------
+Thu Jun 11 07:56:57 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260611.7998ffe4:
+  * Dev: help: Refactor to encapsulate alias help logic in subclass
+  * Dev: help: Give the correct level index to fuzzy search for topic help
+  * Dev: help: Show alias command info
+  * Dev: crm.8.adoc: Improve crm.8.adoc
+
+-------------------------------------------------------------------
 Wed Jun 10 10:59:29 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260610.968f62d8:
