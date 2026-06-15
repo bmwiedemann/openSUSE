@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 10:28:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Explicitly check for invalid versions in more places
+
+-------------------------------------------------------------------
 Wed Feb  4 05:10:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-packaging-26.0.patch:

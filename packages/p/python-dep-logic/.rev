@@ -87,4 +87,13 @@
   * Support changes required by packaging 26.0.</comment>
     <requestid>1330842</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9f29ec421f28462853cf715f86bd0a86</srcmd5>
+    <version>0.6.0</version>
+    <time>1781545329</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.0:
+  * Explicitly check for invalid versions in more places</comment>
+    <requestid>1359231</requestid>
+  </revision>
 </revisionlist>
