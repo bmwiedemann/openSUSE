@@ -80,4 +80,17 @@
   * Recompute relative `exclude-newer` values during `uv tree</comment>
     <requestid>1345975</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>86080bcb8ae5405f33ce4f9d53974bfd</srcmd5>
+    <version>0.11.7</version>
+    <time>1781545244</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.7:
+  * Upgrade CPython build to 20260414 including an OpenSSL
+    security upgrade
+  * Elevate configuration errors to `required-version` mismatches
+  * Further improve TLS certificate validation messages
+  * Improve `--exclude-newer` hints</comment>
+    <requestid>1359334</requestid>
+  </revision>
 </revisionlist>

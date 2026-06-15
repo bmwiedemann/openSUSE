@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 18:59:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.7:
+  * Upgrade CPython build to 20260414 including an OpenSSL
+    security upgrade
+  * Elevate configuration errors to `required-version` mismatches
+  * Further improve TLS certificate validation messages
+  * Improve `--exclude-newer` hints
+
+-------------------------------------------------------------------
 Fri Apr 10 23:51:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.6:
