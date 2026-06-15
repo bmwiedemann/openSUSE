@@ -156,4 +156,19 @@
   * fix: improve RTL data</comment>
     <requestid>1346241</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>dc8829b898ba4fbef674e4f8ad198521</srcmd5>
+    <version>2026.8</version>
+    <time>1781545435</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.8:
+  * ### Changes and improvements
+  * feat: cover all Debian supported locales
+  * feat: incorporate population data from wikidata
+  * fix: use Sorani / Kurmanji to name Kurdish variants
+  * chore: make the generated md compatible with the formatter
+  * fix: add type annotations
+  * feat: add Scots (Ulster)</comment>
+    <requestid>1359293</requestid>
+  </revision>
 </revisionlist>

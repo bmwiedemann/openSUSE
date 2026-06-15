@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 14 18:49:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.8:
+  * ### Changes and improvements
+  * feat: cover all Debian supported locales
+  * feat: incorporate population data from wikidata
+  * fix: use Sorani / Kurmanji to name Kurdish variants
+  * chore: make the generated md compatible with the formatter
+  * fix: add type annotations
+  * feat: add Scots (Ulster)
+
+-------------------------------------------------------------------
 Sun Apr 12 19:29:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.7:
