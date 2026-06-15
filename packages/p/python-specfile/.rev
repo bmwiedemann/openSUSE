@@ -442,4 +442,15 @@
     <comment></comment>
     <requestid>1349769</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>59fd90ae86be8c2ecf5af74d0a0c7d60</srcmd5>
+    <version>0.41.0</version>
+    <time>1781545458</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.41.0:
+  * Fixed an issue where the value of a tag could have been
+    incorrectly expanded if the spec file contained a macro
+    definition shadowing the tag name</comment>
+    <requestid>1359306</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:48:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.41.0:
+  * Fixed an issue where the value of a tag could have been
+    incorrectly expanded if the spec file contained a macro
+    definition shadowing the tag name
+
+-------------------------------------------------------------------
 Tue Apr 28 09:25:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.40.2

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-specfile
-Version:        0.40.2
+Version:        0.41.0
 Release:        0
 Summary:        A library for parsing and manipulating RPM spec files
 License:        MIT
