@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtplib
-Version:        5.1.0
+Version:        5.1.1
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
