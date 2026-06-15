@@ -17,7 +17,7 @@
 
 
 Name:           go-passbolt-cli
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        A CLI tool to interact with Passbolt
 License:        MIT
@@ -25,7 +25,7 @@ Group:          Productivity/Security
 URL:            https://github.com/passbolt/go-passbolt-cli
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.21
+BuildRequires:  golang(API) >= 1.25
 
 %define bin_name passbolt
 

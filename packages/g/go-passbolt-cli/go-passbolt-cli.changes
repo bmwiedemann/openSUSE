@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Jun  6 17:00:13 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- spec: Bump minimum go version to >=1.25
+
+-------------------------------------------------------------------
+Sat Jun 06 16:49:55 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 0.5.0:
+  * PB-52065 - Go-cli expose more attributes from API
+  * PB-52118 - Bump go SDK to v0.8.0
+  * PB-50545 - Go - phase 1 - SDK and CLI integration tests
+  * PB-51584 - Create Github secrets to use in CI
+  * PB-52063 - Go-cli Unify column selectors
+  * PB-50545 - Run go mod tidy
+  * PB-50545 - Pin docker imagrs using hash
+  * PB-50545 - Go - phase 1 - SDK and CLI integration tests
+  * PB-50544 - Go - phase 1 - Add unit test coverage to CI
+  * PB-51583 - Fix doc and completion generation job
+  * PB-51565 - Update Go SDK in Go CLI
+  * PB-50546 - Go - phase 1 - CLI test infrastructure
+  * PB-50163 - Go-Cli : schema-driven resource type support
+  * PB-51449 - Fix homebrew release producing wrong hashes in tap
+  * PB-51397 - 3rd party Github Actions should be pinned (High)
+  * PB-51394 - Update go dependencies
+  * PB-50130 - Go-Cli: Add a manual workflow step to be able to manually execute the releases
+  * PB-50128 - Go-cli : Fix release failure
+  * PB-50004 - Go-cli: Adapt readme to create community managed version section
+
+-------------------------------------------------------------------
 Mon Jun 01 17:05:15 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - Update to version 0.4.2:
