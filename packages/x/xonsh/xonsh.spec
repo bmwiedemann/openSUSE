@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.23.1
+Version:        0.23.8
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -74,9 +74,9 @@ sed -i '1s/^#!.*//' xonsh/xoreutils/_which.py xonsh/webconfig/main.py xonsh/xore
 %{_bindir}/xonsh-cat
 %{_bindir}/xonsh-uptime
 %{_bindir}/xonsh-uname
-%doc README.rst logo.txt CHANGELOG.md
+%doc README.rst CHANGELOG.md
 %doc xontrib
-%license license
+%license LICENSE
 
 %files doc
 %doc docs

@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Mon Jun  8 05:31:54 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- update to version 0.23.8:
+ * Features
+ - Add `events.on_completer_filter` to skip certain completer if needed ([#6453](https://github.com/xonsh/xonsh/issues/6453)) ([ea747d2](https://github.com/xonsh/xonsh/commit/ea747d276aa9f3646bfbc6d01dc84b5888a508b0))
+ - Builtins: source-foreign: Add ash, dash, ksh as reference to sh ([#6459](https://github.com/xonsh/xonsh/issues/6459)) ([9bb681f](https://github.com/xonsh/xonsh/commit/9bb681f8e30d29b1d2011d47b6d3428368c554f0))
+ - Parser: Support multiline string with logical subprocess ([#6465](https://github.com/xonsh/xonsh/issues/6465)) ([78d9c53](https://github.com/xonsh/xonsh/commit/78d9c532aebf6374bbecdb795edce4b285a33a6f))
+ - Support SSH escape sequences ([#6462](https://github.com/xonsh/xonsh/issues/6462)) ([c5300ed](https://github.com/xonsh/xonsh/commit/c5300ed1be96aad8cbe94351b11fe8f575122ea9))
+ * Fixes
+ - Builtins: source-foreign: Show more detailed error, add `source-sh` ([#6458](https://github.com/xonsh/xonsh/issues/6458)) ([8ef52c1](https://github.com/xonsh/xonsh/commit/8ef52c167f5838887ced87be81f6974712ec58b9))
+ - Builtins: trace: Fix lags issue by avoiding settrace for all files. Also improve output flushing ([#6460](https://github.com/xonsh/xonsh/issues/6460)) ([da4e2c9](https://github.com/xonsh/xonsh/commit/da4e2c99f759e15615b2d38b26a5b0e5b49dbd7c))
+ - **completer:** Source user bash completion scripts ([#6464](https://github.com/xonsh/xonsh/issues/6464)) ([a17c6f6](https://github.com/xonsh/xonsh/commit/a17c6f6c9d56453a3082d8afe642e89c24299c2e))
+ - Parser: Treat `!` inside f-string `{…}` as conversion ([#6466](https://github.com/xonsh/xonsh/issues/6466)) ([6f52fdc](https://github.com/xonsh/xonsh/commit/6f52fdccf5c77f1d5235f8f05ebac64fffa8094e))
+ - **parser:** treat ``!`` inside f-string ``{…}`` as conversion, not macro ([b41ba78](https://github.com/xonsh/xonsh/commit/b41ba78a10bd0c56e49e083c1bb40df8a886e49b))
+ - Proc: Additional polling return code  ([#6457](https://github.com/xonsh/xonsh/issues/6457)) ([0549cc5](https://github.com/xonsh/xonsh/commit/0549cc51b00b3d5c495a3e0145f0c7b57e48f472))
+ - Readline: Completer: Fix file with space in name ([#6455](https://github.com/xonsh/xonsh/issues/6455)) ([d7a2811](https://github.com/xonsh/xonsh/commit/d7a2811a4eb6a5d86de8c1670bce6f52f85d9d9e))
+ - **tests:** Add pytest-xdist support  ([#6454](https://github.com/xonsh/xonsh/issues/6454)) ([85f6c55](https://github.com/xonsh/xonsh/commit/85f6c55590e64a07097b2e91a486273ad25825cd))
+ - TTY: termios error ([#6461](https://github.com/xonsh/xonsh/issues/6461)) ([b8e51f0](https://github.com/xonsh/xonsh/commit/b8e51f0ee2c7c7a8f38dc090e503e2ed1762a3e6))
+ - xcontext: Show both path and resolved path ([#6448](https://github.com/xonsh/xonsh/issues/6448)) ([8b75ce2](https://github.com/xonsh/xonsh/commit/8b75ce20c71c72f8e50aa1a55148bf895fa6a243))
+ - **xontribs:** Invalidate import caches before loading xontribs ([#6452](https://github.com/xonsh/xonsh/issues/6452)) ([794b53c](https://github.com/xonsh/xonsh/commit/794b53c609df0e3166b584300c3473ffa061f244))
+ * Refactoring
+ - Remove docstring shenanigans from events ([#6449](https://github.com/xonsh/xonsh/issues/6449)) ([8bc46d0](https://github.com/xonsh/xonsh/commit/8bc46d046d386b7128e1c778ba476f771f859f75))
+- update to version 0.23.7:
+ * Features
+ - Add `[@toml](https://github.com/toml)` command decorator e.g. `data = $([@toml](https://github.com/toml) cat pyproject.toml)` ([#6436](https://github.com/xonsh/xonsh/issues/6436)) ([97f701d](https://github.com/xonsh/xonsh/commit/97f701dfe8910585a85c16407b5f19cd719d86fc))
+ - Add dedicated `sudo` completer ([#6433](https://github.com/xonsh/xonsh/issues/6433)) ([f7f2d27](https://github.com/xonsh/xonsh/commit/f7f2d2734df90bad335b0f9b1e2f0e17cb6656e2))
+ - Add sentinel `@.env.DELETE_VAR` to removing env variables using env swap/layouts/specs ([#6427](https://github.com/xonsh/xonsh/issues/6427)) ([7e66501](https://github.com/xonsh/xonsh/commit/7e66501c89c8bae0c236a8bdaad26b51095f0d7d))
+ * Fixes
+ - `exit N` aborts execution immediately ([#6429](https://github.com/xonsh/xonsh/issues/6429)) ([eb916a0](https://github.com/xonsh/xonsh/commit/eb916a0ddf8d1c3faa21df881ba517c953a095ce))
+ - Add repr to DecoratorAlias and ArgParserAlias ([#6443](https://github.com/xonsh/xonsh/issues/6443)) ([554b675](https://github.com/xonsh/xonsh/commit/554b675257a0f208eb33ead7192975b90e250448))
+ - **environ:** pop __THREAD_LOCAL__ from inherited os.environ in default_env ([#6434](https://github.com/xonsh/xonsh/issues/6434)) ([4d966d2](https://github.com/xonsh/xonsh/commit/4d966d2b764d1571dbf0101d1d4f52c828b07392))
+ - Proc: Fix alias with pipe backgrounding ([#6439](https://github.com/xonsh/xonsh/issues/6439)) ([208d359](https://github.com/xonsh/xonsh/commit/208d359a84bffd624942a365672d46a2baaebd18))
+ - **tests:** forward $PATH in foreign shell tests so they work in Nix sandbox ([#6430](https://github.com/xonsh/xonsh/issues/6430)) ([#6431](https://github.com/xonsh/xonsh/issues/6431)) ([afb2eda](https://github.com/xonsh/xonsh/commit/afb2eda1ef4f4c59784a8c36db5bc3b18223cb74))
+ * Documentation
+ - Capitalize docs title ([#6441](https://github.com/xonsh/xonsh/issues/6441)) ([c458ba4](https://github.com/xonsh/xonsh/commit/c458ba4d940f78041f886b474991a94d37702d18))
+- update to version 0.23.6:
+ * Features
+ - Add `--show-output` to source foreign ([#6421](https://github.com/xonsh/xonsh/issues/6421)) ([23e26b8](https://github.com/xonsh/xonsh/commit/23e26b8983b877e816b6021f811c97b21c520cea))
+ - Add `xontrib info <xontrib_name>` ([#6407](https://github.com/xonsh/xonsh/issues/6407)) ([6fe1e11](https://github.com/xonsh/xonsh/commit/6fe1e114f1b956bee30bb7d74377a059210eb81d))
+ - Add checksums for artifacts on release page and on nightly build page ([#6420](https://github.com/xonsh/xonsh/issues/6420)) ([cf0ee6b](https://github.com/xonsh/xonsh/commit/cf0ee6b349469fee0dc7184f32eb0ba3a561b9b4))
+ - **Completer:** Show alias body in description if no docstring ([#6408](https://github.com/xonsh/xonsh/issues/6408)) ([fe6472e](https://github.com/xonsh/xonsh/commit/fe6472ef603d9dc896cdab017db308c13fcf1835))
+ - Parser: Allow comments in multiline commands ([#6417](https://github.com/xonsh/xonsh/issues/6417)) ([081deeb](https://github.com/xonsh/xonsh/commit/081deebfbcef640d03cf25568374ada1f2f5cead))
+ * Fixes
+ - AppImage: Remove legacy logic from entrypoint ([#6415](https://github.com/xonsh/xonsh/issues/6415)) ([ab26546](https://github.com/xonsh/xonsh/commit/ab26546f27df5cacc5a202fbeb40763fa70a930b))
+ - **Completer:** Fix completer in case of xontrib load with unknown arg ([#6405](https://github.com/xonsh/xonsh/issues/6405)) ([68c234a](https://github.com/xonsh/xonsh/commit/68c234a740fea5999fe098b3b2249ac2db436af9))
+ - Conda on Windows: `conda init xonsh` produces TypeError. Also fixed conda activate/deactivate aliases when conda is on $PATH ([#6423](https://github.com/xonsh/xonsh/issues/6423)) ([6708eee](https://github.com/xonsh/xonsh/commit/6708eeedcd77d7bc70eb8795125b8608b4d89195))
+ - **docs:** Fix code highlighting ([#6418](https://github.com/xonsh/xonsh/issues/6418)) ([b009635](https://github.com/xonsh/xonsh/commit/b0096358e97aadd1933558199e7baf062dafb8be))
+ - **Docs:** Highlight xonsh code block in docs/xonshrc ([#6419](https://github.com/xonsh/xonsh/issues/6419)) ([bfb4667](https://github.com/xonsh/xonsh/commit/bfb46672489599ac58f70847e6dd98b4210aaf0d))
+ - Environ: EnvPath should preserve empty values in the general case ([#6416](https://github.com/xonsh/xonsh/issues/6416)) ([3e63379](https://github.com/xonsh/xonsh/commit/3e63379a65089f9f5c9703f8eadce38e1c260e2f))
+ - Foreign shell function aliases now stream their output through the caller-supplied stdout/stderr instead of inheriting xonsh's terminal fds ([#6409](https://github.com/xonsh/xonsh/issues/6409)) ([c40cfc5](https://github.com/xonsh/xonsh/commit/c40cfc5574fe9ad122d25a04a09c4ec7b9349abd))
+ - **Prompt:** Fix exception in case IGNOREEOF + ^D ([#6413](https://github.com/xonsh/xonsh/issues/6413)) ([03cd547](https://github.com/xonsh/xonsh/commit/03cd547406ef9b7b06119634c37c3f967f754089))
+ - Windows: Aliases: Fix sudo shadowing and significantly improve win_sudo logic ([#6410](https://github.com/xonsh/xonsh/issues/6410)) ([58b835b](https://github.com/xonsh/xonsh/commit/58b835b265d37ef90641b6955510d5afd73fa2ef))
+- update to version 0.23.5:
+ * Features
+ - Show alias description in completion menu ([#6399](https://github.com/xonsh/xonsh/issues/6399)) ([cf6db23](https://github.com/xonsh/xonsh/commit/cf6db2352949b8d630dc22ed67d9673d9999cfc9))
+ - Xonsh code formatter alpha version. Run `xonsh format file.xsh` ([#6401](https://github.com/xonsh/xonsh/issues/6401)) ([8c3191e](https://github.com/xonsh/xonsh/commit/8c3191eee70295e6d840d2031092af6444a2e1b0))
+ * Fixes
+ - **completer:** Allow completion of explicit dot-dirs ([#6402](https://github.com/xonsh/xonsh/issues/6402)) ([343f5fd](https://github.com/xonsh/xonsh/commit/343f5fd9bbea3c143b6bc5ec6e0816d78a1e8b17))
+ - **completer:** Fix parent directory completion ([#6404](https://github.com/xonsh/xonsh/issues/6404)) ([0d5a2fc](https://github.com/xonsh/xonsh/commit/0d5a2fc7c130314dcfe8f3a873cf6e3346a163d6))
+ - Fix webconfig test with prevent adding tail to global xonsh RC ([#6400](https://github.com/xonsh/xonsh/issues/6400)) ([a94eb6a](https://github.com/xonsh/xonsh/commit/a94eb6ad77a4a0741d9d589bb63ce79ca18b1035))
+ * Documentation
+ - **editors:** Add JetBrains plugin ([#6396](https://github.com/xonsh/xonsh/issues/6396)) ([6d6640b](https://github.com/xonsh/xonsh/commit/6d6640b689ba305e9ef4da5d0ee9d05d472738d8))
+- update to version 0.23.4:
+ * Fixes
+ - AssertionError: wrong color format 'blink' ([#6391](https://github.com/xonsh/xonsh/issues/6391)) ([a31a53e](https://github.com/xonsh/xonsh/commit/a31a53ec610c75782f5b52fb2eaa9c1aae09c550))
+ - **chore:** Added smoke tests ([#6393](https://github.com/xonsh/xonsh/issues/6393)) ([c5c2a3f](https://github.com/xonsh/xonsh/commit/c5c2a3fb3b82423318c0690fe2d350bc320c0b47))
+ - Cross-platform: Jupyter: pyghooks lexer crash when XSH.aliases is None ([#6384](https://github.com/xonsh/xonsh/issues/6384)) ([dc16ca6](https://github.com/xonsh/xonsh/commit/dc16ca691007d436ca2339ad122a976a631ac51c))
+ - f-strings: SyntaxError with int formatting ([#6390](https://github.com/xonsh/xonsh/issues/6390)) ([f5ca787](https://github.com/xonsh/xonsh/commit/f5ca7878f089bec57ff5a975f736544a6dfc5d9d))
+ - **nix:** fix nix build ([#6388](https://github.com/xonsh/xonsh/issues/6388)) ([5831959](https://github.com/xonsh/xonsh/commit/5831959d066c5d0411f626d749e00eecc58ce2aa))
+ - **parser:** Fix lost LHS in `cmd && ![…]` chain wrap ([#6392](https://github.com/xonsh/xonsh/issues/6392)) ([4daff85](https://github.com/xonsh/xonsh/commit/4daff85ebe45c69679639239bb20730a5bc642c3))
+ - Xontrib load using entrypoint e.g. coconut ([#6394](https://github.com/xonsh/xonsh/issues/6394)) ([d68e39c](https://github.com/xonsh/xonsh/commit/d68e39ce711b308e10d526e183e6d563ee379de4))
+- update to version 0.23.3:
+ * Features
+ - Add frame to `@.debug.breakpoint()` ([#6376](https://github.com/xonsh/xonsh/issues/6376)) ([8e17615](https://github.com/xonsh/xonsh/commit/8e176151831c4552804426c9657f72ca0c82692e))
+ - Better Android/Termux support ([#6382](https://github.com/xonsh/xonsh/issues/6382)) ([c3aefaf](https://github.com/xonsh/xonsh/commit/c3aefafb351caabbea0874217abeebe47e8afb0a))
+ - Better FreeBSD support: defaults, jail tests and fixes ([#6375](https://github.com/xonsh/xonsh/issues/6375)) ([ced252e](https://github.com/xonsh/xonsh/commit/ced252e399ef0bf035658e8771eab4aebbcdb28b))
+ * Fixes
+ - Debug: Show debug warning in case of worker thread ([#6378](https://github.com/xonsh/xonsh/issues/6378)) ([58b66d5](https://github.com/xonsh/xonsh/commit/58b66d5a360eb26684d270adedd9d15fb7f1c288))
+ - **parser:** Fix SyntaxError in case `cmd && @() && cmd` ([#6380](https://github.com/xonsh/xonsh/issues/6380)) ([759f9bb](https://github.com/xonsh/xonsh/commit/759f9bbec7dfa60a76f327b067e0d048c6353964))
+- update to version 0.23.2:
+ * Features
+ - Added `@.debug` with `breakpoint` and `replace_builtin_breakpoint` ([#6363](https://github.com/xonsh/xonsh/issues/6363)) ([f092a8c](https://github.com/xonsh/xonsh/commit/f092a8ca0c99bffcd69044c61de109e0ceb2ceb4))
+ - **completer:** Use quotation only if needed - bash completer ([#6367](https://github.com/xonsh/xonsh/issues/6367)) ([9cca19e](https://github.com/xonsh/xonsh/commit/9cca19efe7c6f6c2761bfb237667ec5ed3b049ab))
+ - **completer:** Use quotation only if needed + some fixes ([#6366](https://github.com/xonsh/xonsh/issues/6366)) ([4fd3667](https://github.com/xonsh/xonsh/commit/4fd36675945c11deb881aee115b3d03581c5d8dc))
+ * Fixes
+ - **completer:** Fix `@.<obj>.<tab>` completion ([#6364](https://github.com/xonsh/xonsh/issues/6364)) ([23e4652](https://github.com/xonsh/xonsh/commit/23e46520e2fbd906eefcf366c1400466f49db43d))
+ - **completer:** Fix bash completer quotation ([#6370](https://github.com/xonsh/xonsh/issues/6370)) ([b711c4a](https://github.com/xonsh/xonsh/commit/b711c4a51754d61173b19a49e984b6316d17abe1))
+ - **completer:** Hide syntax and private methods if line is empty ([#6372](https://github.com/xonsh/xonsh/issues/6372)) ([94d7753](https://github.com/xonsh/xonsh/commit/94d775348f672b756816ea6f3c241e7fc89d317e))
+ - Nix: Now flake uses the package built from source ([#6361](https://github.com/xonsh/xonsh/issues/6361)) ([f6d458c](https://github.com/xonsh/xonsh/commit/f6d458c641da5d87374e02ff68e56aa25719eb6d))
+ * Documentation
+ - Add Github Actions ([c27c97e](https://github.com/xonsh/xonsh/commit/c27c97e02ff7f1c6943777548055d0402c608ed6))
+ - fix dockerhub container name ([8b323de](https://github.com/xonsh/xonsh/commit/8b323def0ffebffc73937c1aac3b1d09ef081657))
+ - fix dockerhub container name ([0d929c9](https://github.com/xonsh/xonsh/commit/0d929c96f365d3dd10f44cb7d525d06dd6f7f2a2))
+ - Replace xonshrc mentions to the link with xonshrc.rst ([#6365](https://github.com/xonsh/xonsh/issues/6365)) ([6032abc](https://github.com/xonsh/xonsh/commit/6032abc2665a0fd57d0625691b1d39c4464c9ce0))
+ - update index.html for i18n support ([#6359](https://github.com/xonsh/xonsh/issues/6359)) ([cac1476](https://github.com/xonsh/xonsh/commit/cac1476cb845a9ec751bf4aa1c1a894c0eb91a62))
+
+-------------------------------------------------------------------
 Sat Apr 25 07:49:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.23.1:
