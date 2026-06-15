@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:31:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- update to 1.19.3:
+  * Memory fixes #1368 #1417 #1443
+  * Fix Repository.ident #1461
+  * Documentation and annotation fixes #410 #1289 #1323 #1333 #1458 #1460
+
+-------------------------------------------------------------------
+Wed Apr  8 22:26:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.19.2:
+  * Fix refcount and error handling issues in
+    `filter_register(...)`
+  * Fix config with valueless keys
+  * New `Repository.load_filter_list(...)` and `FilterList`
+  * New `Odb.read_header(...)` and now `Odb.read(...)` returns
+    `enums.ObjectType` instead of int
+
+-------------------------------------------------------------------
 Tue Mar  3 20:42:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.19.1:

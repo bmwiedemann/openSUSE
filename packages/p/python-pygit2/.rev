@@ -538,4 +538,29 @@ Update to pygit2 1.17.0 and make sure it builds with libgit2 1.9.
     `Blob.diff_to_buffer(...)`</comment>
     <requestid>1336212</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>7baaedc06b8dbf30ad1851115c9e87e4</srcmd5>
+    <version>1.19.2</version>
+    <time>1775743771</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.19.2:
+  * Fix refcount and error handling issues in
+    `filter_register(...)`
+  * Fix config with valueless keys
+  * New `Repository.load_filter_list(...)` and `FilterList`
+  * New `Odb.read_header(...)` and now `Odb.read(...)` returns
+    `enums.ObjectType` instead of int</comment>
+    <requestid>1345300</requestid>
+  </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>8f578fe2dd2d7024072372bd21c7fa6a</srcmd5>
+    <version>1.19.3</version>
+    <time>1781545757</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.19.3 (bsc#1267855):
+  * Memory fixes #1368 #1417 #1443
+  * Fix Repository.ident #1461
+  * Documentation and annotation fixes #410 #1289 #1323 #1333 #1458 #1460</comment>
+    <requestid>1359492</requestid>
+  </revision>
 </revisionlist>
