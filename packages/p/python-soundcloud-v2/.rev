@@ -19,4 +19,14 @@
 - Initial release of 1.6.0.</comment>
     <requestid>1343970</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a8961f362dd4f1e1c2abb56649e94bdd</srcmd5>
+    <version>1.7.0</version>
+    <time>1781545461</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.0:
+  * fix: use curl_cffi to bypass TLS fingerprinting on
+    /users/{id}/tracks</comment>
+    <requestid>1359307</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-soundcloud-v2
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Python wrapper for the internal v2 SoundCloud API
 License:        MIT
