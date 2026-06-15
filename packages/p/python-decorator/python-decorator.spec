@@ -20,7 +20,7 @@
 #
 %{?sle15_python_module_pythons}
 Name:           python-decorator
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Decorators for Humans
 License:        BSD-2-Clause

@@ -279,4 +279,14 @@
 - Update to upstream tarball, no code changes</comment>
     <requestid>1353608</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>944e2b3469cc238ad4212164fd53ea3a</srcmd5>
+    <version>5.3.1</version>
+    <time>1781545198</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.1:
+  * Added license SPDX identifier to pyproject.toml (reported by
+  * Christian Lackas).</comment>
+    <requestid>1359222</requestid>
+  </revision>
 </revisionlist>

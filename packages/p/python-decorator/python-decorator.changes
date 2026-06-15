@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:46:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.1:
+  * Added license SPDX identifier to pyproject.toml (reported by
+  * Christian Lackas).
+
+-------------------------------------------------------------------
 Sun May 17 18:49:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.0:
