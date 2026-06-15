@@ -968,4 +968,20 @@ all changed Requires/Buildrequires seem to be available
   * Replace usage of undocumented logging.WARN</comment>
     <requestid>1353904</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>7ed2cb9d9460e5441f43cedf0e0d9c3f</srcmd5>
+    <version>10.5.0</version>
+    <time>1781545908</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.5.0:
+  * typing: Accept tuples to exception
+  * Bump python version in mypy check
+  * fix: setuptools.package.find is a glob
+  * cfg: Accepts string groups for RequiredOptError
+  * Drop Python 3.10
+  * trivial: Remove unnecessary :type: docstrings
+  * Remove unnecessary annotation
+  * Deprecate version module</comment>
+    <requestid>1359321</requestid>
+  </revision>
 </revisionlist>

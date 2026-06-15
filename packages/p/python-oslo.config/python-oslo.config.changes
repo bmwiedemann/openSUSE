@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:50:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.5.0:
+  * typing: Accept tuples to exception
+  * Bump python version in mypy check
+  * fix: setuptools.package.find is a glob
+  * cfg: Accepts string groups for RequiredOptError
+  * Drop Python 3.10
+  * trivial: Remove unnecessary :type: docstrings
+  * Remove unnecessary annotation
+  * Deprecate version module
+
+-------------------------------------------------------------------
 Mon May 18 22:11:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.4.0:
