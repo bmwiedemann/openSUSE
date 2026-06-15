@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 16:55:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.1:
+  * fix: satisfy clippy -D warnings
+  * fix: create backup with owner-only permissions
+  * docs: fix typos again
+  * feat: made interval step and min interval configurable
+  * feat: support for increasing and decreasing interval
+
+-------------------------------------------------------------------
 Tue Dec 03 20:04:42 UTC 2024 - mardnh@gmx.de
 
 - Update to version 1.3.0:

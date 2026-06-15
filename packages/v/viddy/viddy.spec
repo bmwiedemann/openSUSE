@@ -1,7 +1,7 @@
 #
 # spec file for package viddy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           viddy
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        A modern watch command
 License:        MIT
