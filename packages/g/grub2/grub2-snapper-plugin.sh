@@ -124,6 +124,14 @@ EOF
   return 0
 }
 
+rm_grub_snapper_cfg () {
+  dir="$1"
+  cfg="${dir}/${snapshot_submenu_name}"
+  if [ -f "$cfg" ]; then
+    rm -f "$cfg"
+  fi
+}
+
 snapper_snapshots_cfg_refresh () {
 
   if [ ! -d "$snapper_snapshot_path" ]; then
@@ -144,11 +152,7 @@ snapper_snapshots_cfg_refresh () {
 ${cs}"
     else
       # cleanup any grub-snapshot.cfg without associated snapshot info
-      snapper_cfg="${s_dir}/${snapshot_submenu_name}"
-      if [ -f "$snapper_cfg" ]; then
-	rm -f "$snapper_cfg"
-	rmdir "$s_dir" 2>/dev/null || true
-      fi
+      rm_grub_snapper_cfg "$s_dir"
       continue
     fi
 
@@ -184,22 +188,14 @@ EOF
 
 }
 
-
 snapshot_submenu_clean () {
 
   for s_dir in ${snapper_snapshot_path}/*; do
-
-    snapper_cfg="${s_dir}/${snapshot_submenu_name}"
-
-    if [ -f "$snapper_cfg" ]; then
-      rm -f "$snapper_cfg"
-      rmdir "$s_dir" 2>/dev/null || true
-    fi
-
+    rm_grub_snapper_cfg "${s_dir}"
   done
 
-  if [ -f "${snapper_snapshot_path}/${snapshot_submenu_name}" ]; then
-    rm -f "${snapper_snapshot_path}/${snapshot_submenu_name}"
+  if [ -f "${snapper_snapshots_cfg}" ]; then
+    rm -f "${snapper_snapshots_cfg}"
   fi
 
 }
@@ -236,10 +232,21 @@ do
   -c | --clean)
   opt_clean=true
   ;;
+  delete-snapshot-pre)
+  # Deleting grub-snapshot.cfg so no leftover could interfere with snapper's
+  # delete operation.
+
+  # Use shift to skip subvolume and fstype
+  shift && shift && del_num="$1" || :
+  ;;
   -*)
   ;;
   esac
 done
+
+if [ "x${del_num}" != "x" ]; then
+  rm_grub_snapper_cfg "${snapper_snapshot_path}/${del_num}"
+fi
 
 if [ "x${opt_enable}" = "xtrue" ]; then
   snapper_snapshots_cfg_refresh

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:02:28 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix the potential crash when enabling hardware acceleration for
+  libgcrypt
+  * 0001-lib-hwfeatures-gcry-Fix-write_cr0-writing-to-CR4.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 08:47:01 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix 00-grub script deletes snapshot directory (bsc#1267884)
+  * grub2-snapper-plugin.sh
+
+-------------------------------------------------------------------
 Mon Jun  1 13:01:44 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Fix build with GCC 16

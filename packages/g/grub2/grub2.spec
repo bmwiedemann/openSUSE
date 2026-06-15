@@ -407,6 +407,7 @@ Patch426:       0002-util-resolve-Save-str-r-chr-ret-val-to-const-data-pt.patch
 Patch427:       0001-Fix-problematic-utf8-conversion-in-bli-patches.patch
 Patch428:       0001-bls-fix-default-entry-and-bumpcounter-for-BLS-boot-c.patch
 Patch429:       gcc16.patch
+Patch430:       0001-lib-hwfeatures-gcry-Fix-write_cr0-writing-to-CR4.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
