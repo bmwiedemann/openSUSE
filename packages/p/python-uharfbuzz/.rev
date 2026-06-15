@@ -146,4 +146,22 @@
   * Update HarfBuzz to main branch</comment>
     <requestid>1354111</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3e19899af96be115f6d40c0c5df18638</srcmd5>
+    <version>0.55.0</version>
+    <time>1781545498</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.55.0:
+  * Bump urllib3 from 2.6.3 to 2.7.0 in /docs
+  * Bump idna from 3.10 to 3.15 in /docs
+  * Warn when using deprecated .create() methods
+  * Render Sphinx deprecation notice from @deprecated decorator
+  * Fix get_nominal_glyph and get_metric_position return
+    annotations
+  * Fix get_metric_position_with_fallback to use self
+  * Fix get_axis_range return annotation
+  * Update to HarfBuzz 14.2.1
+  * Bind hb_face_set_get_table_tags_func()</comment>
+    <requestid>1359316</requestid>
+  </revision>
 </revisionlist>
