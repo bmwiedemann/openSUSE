@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 13:14:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.14
+  * Deprecated or removed commands: `file.append`, `encoding.add`,
+    `throttle.ip`, `dht.throttle.name`
+  * DHT is now auto by default if session.path is set.
+  * Max memory usage is now 32Gb by default on 64-bit platforms,
+    and 1Gb on 32-bit platforms. As such there's no need for most
+    users to change this value.
+
+-------------------------------------------------------------------
 Fri Jun  5 06:54:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.13
