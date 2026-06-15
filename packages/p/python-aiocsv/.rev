@@ -40,4 +40,15 @@
   * fix type checking issues with new quote settings</comment>
     <requestid>1307719</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5e34722414d55f38b135062741e58b4c</srcmd5>
+    <version>1.4.1</version>
+    <time>1781545316</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.1:
+  * python 3.14 and free-threading
+  * Prevent _parser.Parser from being shared across threads
+  * Add missing Py_CLEAR(Parser-&gt;buffer_str)</comment>
+    <requestid>1359218</requestid>
+  </revision>
 </revisionlist>
