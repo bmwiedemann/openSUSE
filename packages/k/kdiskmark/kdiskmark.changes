@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 00:42:04 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 3.3.0
+  * Added interactive terminal interface (TUI)
+  * New configuration option to enable/disable --refill_buffers
+  * Added Korean (ko_KR) localization
+  * Fixed halved results with multiple jobs, now using fio --group_reporting
+- Use upstream release assets for SingleApplication dependency
+- Use Qt6 for build
+
+-------------------------------------------------------------------
 Mon Jun 24 20:15:17 UTC 2025 - Dmitry Sidorov <jonmagon@gmail.com>
 
 - Update to version 3.2.0

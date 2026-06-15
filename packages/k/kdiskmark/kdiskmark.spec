@@ -19,14 +19,12 @@
 
 %define _singleapplication_version 3.3.4
 Name:           kdiskmark
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        A simple open-source disk benchmark tool for Linux distros
 License:        GPL-3.0-only
 URL:            https://github.com/JonMagon/KDiskMark
-Source0:        %{url}/archive/%{version}.tar.gz#/KDiskMark-%{version}.tar.gz
-# SingleApplication is licensed under MIT
-Source1:        https://github.com/itay-grudev/SingleApplication/archive/v%{_singleapplication_version}.tar.gz#/SingleApplication-%{_singleapplication_version}.tar.gz
+Source0:        %{url}/releases/download/%{version}/kdiskmark-%{version}-source.tar.gz
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
@@ -43,15 +41,14 @@ Provides:       bundled(singleapplication) = %{_singleapplication_version}
 KDiskMark is an HDD and SSD benchmark tool with a very friendly graphical user interface.
 
 %prep
-%setup -q -n KDiskMark-%{version} -a1
-mv SingleApplication-%{_singleapplication_version}/* src/singleapplication/
+%autosetup
 
 %build
-%cmake_kf5 -d build
+%cmake
 %cmake_build
 
 %install
-%kf5_makeinstall -C build
+%cmake_install
 
 %suse_update_desktop_file -i %{name} System Filesystem
 %find_lang %{name} --with-qt
@@ -59,17 +56,17 @@ mv SingleApplication-%{_singleapplication_version}/* src/singleapplication/
 %files
 %license LICENSE
 %doc README.md
-%{_kf5_applicationsdir}/%{name}.desktop
-%{_kf5_bindir}/%{name}
-%{_kf5_iconsdir}/hicolor
-%{_kf5_iconsdir}/hicolor/*/*/*
-%dir %{_kf5_sharedir}/%{name}
-%dir %{_kf5_sharedir}/%{name}/%{name}
-%{_kf5_sharedir}/%{name}/%{name}/translations
+%{_kf6_applicationsdir}/%{name}.desktop
+%{_kf6_bindir}/%{name}
+%{_kf6_iconsdir}/hicolor
+%{_kf6_iconsdir}/hicolor/*/*/*
+%dir %{_kf6_sharedir}/%{name}
+%dir %{_kf6_sharedir}/%{name}/%{name}
+%{_kf6_sharedir}/%{name}/%{name}/translations
 # Helper files
 %{_libexecdir}/kdiskmark_helper
-%{_kf5_dbuspolicydir}/dev.jonmagon.kdiskmark.helperinterface.conf
-%{_kf5_sharedir}/dbus-1/system-services/dev.jonmagon.kdiskmark.helperinterface.service
-%{_kf5_sharedir}/polkit-1/actions/dev.jonmagon.kdiskmark.helper.policy
+%{_kf6_dbuspolicydir}/dev.jonmagon.kdiskmark.helperinterface.conf
+%{_kf6_sharedir}/dbus-1/system-services/dev.jonmagon.kdiskmark.helperinterface.service
+%{_kf6_sharedir}/polkit-1/actions/dev.jonmagon.kdiskmark.helper.policy
 
 %changelog
