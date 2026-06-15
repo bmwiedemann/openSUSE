@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:06:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.0
+  * Interleave threads in serialized scheduling test by @sfod in (#797)
+  * builder -> v0.9.92 and clang-latest by @sbSteveK in (#800)
+  * Support s2n-tls on macOS by @sfod in (#799)
+
+-------------------------------------------------------------------
+Mon Mar 23 11:09:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.26.3
+  * Add default non-pq policy by @WillChilds-Klein in (#796)
+- from version 0.26.2
+  * Fix compilation warnings by @sfod in (#795)
+  * Only invoke shutdown callbacks if the setup was successful
+    by @bretambrose in (#794)
+
+-------------------------------------------------------------------
 Fri Feb  6 12:03:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.26.1
