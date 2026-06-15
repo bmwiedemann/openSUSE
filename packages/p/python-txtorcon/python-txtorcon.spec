@@ -1,7 +1,7 @@
 #
 # spec file for package python-txtorcon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-txtorcon
-Version:        24.8.0
+Version:        26.6.0
 Release:        0
 Summary:        Twisted-based asynchronous Tor control protocol implementation
 License:        MIT
@@ -67,7 +67,8 @@ $python -m twisted.trial test
 }
 
 %files %{python_files}
-%license LICENSE docs/*.rst
+%license LICENSE
+%doc README.rst docs/*.rst
 %{python_sitelib}/txtorcon
 %{python_sitelib}/txtorcon-%{version}.dist-info
 %{python_sitelib}/twisted/plugins/*

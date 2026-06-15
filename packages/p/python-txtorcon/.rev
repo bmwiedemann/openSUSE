@@ -149,4 +149,18 @@
   * Remove usage of &quot;six&quot;</comment>
     <requestid>1202567</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1681cff2fe668187c3049971ce6f80b1</srcmd5>
+    <version>26.6.0</version>
+    <time>1781545451</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.6.0:
+ * eliminate GeoIP as a dependency (#409)
+   This will still load Tor's geoip-db if GeoIP is installed, and
+   the database is found database. Essentially this is just
+   optimization: txtorcon will ask Tor for
+   the country-code of anything interesting via the existing
+   `get_location()` API.  +</comment>
+    <requestid>1359303</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:40:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.6.0:
+ * eliminate GeoIP as a dependency (#409)
+   This will still load Tor's geoip-db if GeoIP is installed, and
+   the database is found database. Essentially this is just
+   optimization: txtorcon will ask Tor for
+   the country-code of anything interesting via the existing
+   `get_location()` API.  +
+
+-------------------------------------------------------------------
 Mon Sep 23 08:49:42 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 24.8.0:
