@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 12:49:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.14
+  * Removed encoding name/path attribute handling.
+  * Removed address based throttling.
+
+-------------------------------------------------------------------
 Fri Jun  5 05:43:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.13
