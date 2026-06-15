@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:11:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * ``lmdb.aio`` async wrapper methods (on ``AsyncEnvironment``,
+    ``AsyncTransaction``, and ``AsyncCursor``) are now real class
+    attributes rather than synthesized by ``__getattr__``, making
+    them visible to ``dir()``, ``inspect.signature()``, ``help()``,
+    IPython, and stubtest. Non-callable attributes still proxy through.
+  * Added type stubs for the ``lmdb.aio`` module.
+  * Fix a segmentation fault on Linux/aarch64 when an
+    ``Environment`` is closed from a different thread than the one
+    holding an active write transaction. ``Environment.close()``
+    now waits for the owning thread to release the write
+    transaction before unmapping the lock file.
+  * Reject adversarial on-disk values that could overflow size
+    arithmetic or cause implementation-defined narrowing of
+    ``mv_size`` when reading crafted databases. (#462, #463)
+  * Fix crashes on out-of-memory conditions in the CPython
+    extension's error paths. (#453)
+  * Remove remaining Python 2 compatibility code.
+
+-------------------------------------------------------------------
 Wed Apr  1 16:50:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
