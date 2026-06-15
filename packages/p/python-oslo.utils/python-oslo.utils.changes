@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.1.1:
+  * typing: Fix hint for time_it
+  * tests: Tweak subprocess.check_output
+  * tests: Fix occasional failure in format tests
+  * LUKSInspector: Decrypt the first block
+  * Add params to FileInspector and associated tools
+  * Add ContainerFileInspector for wrapper formats
+  * typing: Add overloads for
+    excutils.forever_retry_uncaught_exceptions
+  * typing: Add overloads for netutils.parse_host_port
+  * Fix typo
+  * Deprecate version module
+  * tox: Use new constraints option
+  * Refactor _UTCNow class to utcnow() function
+  * Deprecate legacy time override functions
+  * typing: Add type annotations for testscenarios in
+    StringToBytesTest
+  * typing: Allow None default for bool_from_string
+  * typing: Improve netutils.urlsplit signature
+  * typing: Improve timeutils.StopWatch signature
+  * Fix return type of raise_with_cause
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Remove `debtcollector` dependency
+  * Fix shallow masking of secrets
+  * Update CLI to allow enabling logging output
+  * Refactor force_reraise
+  * fix force_reraise to be annotated as NoReturn
+- add 0001-Refactor-TimeFixture-to-use-unittest.mock.patch
+
+-------------------------------------------------------------------
 Sun Apr 12 18:52:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.0.1:

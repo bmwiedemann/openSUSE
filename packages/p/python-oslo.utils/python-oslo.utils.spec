@@ -17,13 +17,14 @@
 
 
 Name:           python-oslo.utils
-Version:        10.0.1
+Version:        10.1.1
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/oslo.utils
 Source0:        https://files.pythonhosted.org/packages/source/o/oslo_utils/oslo_utils-%{version}.tar.gz
+Patch0:         0001-Refactor-TimeFixture-to-use-unittest.mock.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module ddt}
 BuildRequires:  %{python_module debtcollector >= 1.2.0}

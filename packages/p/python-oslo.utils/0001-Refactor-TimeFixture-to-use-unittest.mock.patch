@@ -1,0 +1,150 @@
+From da53be5965ae376b373b552cfb46f83cbd6f808c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Herv=C3=A9=20Beraud?= <herveberaud.pro@gmail.com>
+Date: Thu, 9 Apr 2026 15:10:08 +0200
+Subject: [PATCH] Refactor TimeFixture to use unittest.mock
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Refactor the TimeFixture class to use unittest.mock internally instead
+of the deprecated time override functions. This modernizes the fixture
+implementation while preserving its public API.
+
+The TimeFixture now:
+- Uses mock.patch.object() to patch timeutils.utcnow()
+- Maintains state internally with _current_time instead of relying on
+  global state
+- Provides the same advance_time_delta() and advance_time_seconds()
+  methods
+
+This change provides users with a modern, best-practice example of how
+to mock time in tests while maintaining backward compatibility for
+existing code using TimeFixture.
+
+Partial-Bug: #1266962
+Change-Id: I576f4e8ca08a299567d292bb82d7ca8c66d4654a
+Signed-off-by: Hervé Beraud <herveberaud.pro@gmail.com>
+Assisted-By: Claude Sonnet 4.5
+---
+ oslo_utils/fixture.py                         | 39 +++++++++++++++----
+ oslo_utils/tests/test_fixture.py              | 16 +++++---
+ ...efixture-to-use-mock-3f7e8d9c4b2a1f5e.yaml |  8 ++++
+ 3 files changed, 50 insertions(+), 13 deletions(-)
+ create mode 100644 releasenotes/notes/refactor-timefixture-to-use-mock-3f7e8d9c4b2a1f5e.yaml
+
+diff --git a/oslo_utils/fixture.py b/oslo_utils/fixture.py
+index bc10aec..44ee9c9 100644
+--- a/oslo_utils/fixture.py
++++ b/oslo_utils/fixture.py
+@@ -21,6 +21,7 @@ Test fixtures.
+ 
+ import datetime
+ import threading
++from unittest import mock
+ 
+ import fixtures
+ 
+@@ -31,26 +32,50 @@ from oslo_utils import uuidutils
+ class TimeFixture(fixtures.Fixture):
+     """A fixture for overriding the time returned by timeutils.utcnow().
+ 
+-    :param override_time: datetime instance or list thereof. If not given,
+-        defaults to the current UTC time.
++    This fixture uses unittest.mock to patch timeutils.utcnow() and provides
++    methods to advance the mocked time during tests.
++
++    :param override_time: datetime instance. If not given, defaults to the
++        current UTC time.
+     """
+ 
+     def __init__(self, override_time: datetime.datetime | None = None) -> None:
+         super().__init__()
+-        self._override_time = override_time
++        if override_time is None:
++            override_time = datetime.datetime.now(
++                datetime.timezone.utc
++            ).replace(tzinfo=None)
++        self._current_time = override_time
++
++    def _mock_utcnow(self, with_timezone: bool = False) -> datetime.datetime:
++        """Mock implementation of utcnow that returns controlled time.
++
++        :param with_timezone: If True, return a timezone-aware datetime
++                              with UTC timezone. If False (default), return
++                              a naive datetime representing UTC time.
++        :returns: controlled time as a datetime object
++        """
++        if with_timezone:
++            import iso8601
++
++            return self._current_time.replace(tzinfo=iso8601.iso8601.UTC)
++        return self._current_time
+ 
+     def setUp(self) -> None:
+         super().setUp()
+-        timeutils.set_time_override(self._override_time)
+-        self.addCleanup(timeutils.clear_time_override)
++        patcher = mock.patch.object(
++            timeutils, 'utcnow', side_effect=self._mock_utcnow
++        )
++        patcher.start()
++        self.addCleanup(patcher.stop)
+ 
+     def advance_time_delta(self, timedelta: datetime.timedelta) -> None:
+         """Advance overridden time using a datetime.timedelta."""
+-        timeutils.advance_time_delta(timedelta)
++        self._current_time += timedelta
+ 
+     def advance_time_seconds(self, seconds: int | float) -> None:
+         """Advance overridden time by seconds."""
+-        timeutils.advance_time_seconds(seconds)
++        self.advance_time_delta(datetime.timedelta(seconds=seconds))
+ 
+ 
+ class _UUIDSentinels:
+diff --git a/oslo_utils/tests/test_fixture.py b/oslo_utils/tests/test_fixture.py
+index 748f520..c48966a 100644
+--- a/oslo_utils/tests/test_fixture.py
++++ b/oslo_utils/tests/test_fixture.py
+@@ -25,14 +25,18 @@ from oslo_utils import uuidutils
+ 
+ class TimeFixtureTest(test_base.BaseTestCase):
+     def test_set_time_override_using_default(self):
+-        # When the fixture is used with its default constructor, the
+-        # override_time is set to the current timestamp.
+-        # Also, when the fixture is cleaned up, the override_time is reset.
++        # When the fixture is used with its default constructor,
++        # utcnow() returns a fixed time.
++        # After cleanup, utcnow() returns the real current time.
+ 
+-        self.assertIsNone(timeutils._override_time)
++        before_fixture = timeutils.utcnow()
+         with fixture.TimeFixture():
+-            self.assertIsNotNone(timeutils._override_time)
+-        self.assertIsNone(timeutils._override_time)
++            in_fixture = timeutils.utcnow()
++            # Time should be frozen
++            self.assertEqual(in_fixture, timeutils.utcnow())
++        after_fixture = timeutils.utcnow()
++        # After cleanup, time should advance normally
++        self.assertNotEqual(before_fixture, after_fixture)
+ 
+     def test_set_time_override(self):
+         # When the fixture is used to set a time, utcnow returns that time.
+diff --git a/releasenotes/notes/refactor-timefixture-to-use-mock-3f7e8d9c4b2a1f5e.yaml b/releasenotes/notes/refactor-timefixture-to-use-mock-3f7e8d9c4b2a1f5e.yaml
+new file mode 100644
+index 0000000..4037923
+--- /dev/null
++++ b/releasenotes/notes/refactor-timefixture-to-use-mock-3f7e8d9c4b2a1f5e.yaml
+@@ -0,0 +1,8 @@
++---
++upgrade:
++  - |
++    The ``TimeFixture`` fixture has been refactored to use ``unittest.mock``
++    internally instead of the deprecated time override functions. The public
++    API remains unchanged, but the internal implementation now patches
++    ``timeutils.utcnow()`` using ``unittest.mock.patch()``.
++    This may have a knock-on impact for some end-users.
+-- 
+2.54.0
+
