@@ -435,4 +435,13 @@
     <comment>- Add missing BR openssl for `/etc/ssl/ca-bundle.pem`.</comment>
     <requestid>1354228</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>94464122dfb948fe33578329aeefa4e8</srcmd5>
+    <version>2026.5.20</version>
+    <time>1781545200</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.20:
+  * remove O=Chunghwa Telecom Co., Ltd. OU=ePKI Root Certification Authority</comment>
+    <requestid>1359225</requestid>
+  </revision>
 </revisionlist>

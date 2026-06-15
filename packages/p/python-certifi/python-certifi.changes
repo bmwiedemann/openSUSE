@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:57:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.20:
+  * remove O=Chunghwa Telecom Co., Ltd. OU=ePKI Root Certification Authority
+
+-------------------------------------------------------------------
 Wed May 20 11:39:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing BR openssl for `/etc/ssl/ca-bundle.pem`.
