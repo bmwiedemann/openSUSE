@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 12:15:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.1.1
+  * Fixed compatibility with SageMath 10.7, 10.8, 10.9
+  * Fixed an issue in `fmpz_poly_num_real_roots_0_1_sturm` where
+    sometimes the number of sign changes in the Sturm sequence was
+    miscounted.
+  * Fixed failing doctest due to noisy deprecation warning from
+    cppyy.
+
+-------------------------------------------------------------------
 Tue May  6 23:34:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.0

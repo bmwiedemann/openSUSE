@@ -1,7 +1,7 @@
 #
 # spec file for package e-antic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define lname	libeantic3
 Name:           e-antic
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Real Embedded Algebraic Number Theory in C
 License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
@@ -30,7 +30,6 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
 BuildRequires:  cereal-devel
 BuildRequires:  fdupes
-BuildRequires:  pkgconfig(flint) >= 3
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libboost_headers-devel
@@ -38,6 +37,7 @@ BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 BuildRequires:  unique-factory-devel
 BuildRequires:  pkgconfig(catch2)
+BuildRequires:  pkgconfig(flint) >= 3
 Obsoletes:      python-pyeantic < %version-%release
 Provides:       python-pyeantic = %version-%release
 %python_subpackages
