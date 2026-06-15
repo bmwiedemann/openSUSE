@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 13 22:05:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.46.0:
+  * fix(core): harden PTY resize against native crashes
+  * Changelog for v0.45.0-preview.0
+  * Changelog for v0.44.0
+  * fix(cli): prevent spam loop when preferredEditor is invalid
+  * Adding quote
+  * Transition to flash GA model when experiment flag is present.
+  * chore(ci): add optimized PR size labeler and batch workflows
+  * fix(ci): use pull_request_target trigger to grant write
+    access on fork PRs
+  * fix(patch): cherry-pick e4315b3 to
+    release/v0.46.0-preview.0-pr-27645 to patch version
+    v0.46.0-preview.0 and create version 0.46.0-preview.1
+  * fix(patch): cherry-pick f40498d to
+    release/v0.46.0-preview.1-pr-27676 to patch version
+    v0.46.0-preview.1 and create version 0.46.0-preview.2
+  * fix(patch): cherry-pick f08b4af to
+    release/v0.46.0-preview.2-pr-27749 to patch version
+    v0.46.0-preview.2 and create version 0.46.0-preview.3
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.45.3...v0.46.0
+- update to 0.45.3:
+  * fix(patch): cherry-pick f08b4af to release/v0.45.2-pr-27749
+    to patch version v0.45.2 and create version 0.45.3
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.45.2...v0.45.3
+
+-------------------------------------------------------------------
 Sun Jun  7 18:59:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.45.2:
