@@ -142,4 +142,30 @@
     <comment></comment>
     <requestid>1303568</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a28533b0336ccde16515e93bc18ea357</srcmd5>
+    <version>0.18.1</version>
+    <time>1781545319</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.18.1:
+  * Fix an AssertionError in stack-size computation when a single
+    exception region is split into multiple TryBegin instances
+    sharing one handler (as produced by bytecode-rewriting tools
+    that wrap a whole function body in a single handler).
+    TryBegin/TryEnd are now matched on the handler block rather
+    than on TryBegin identity.
+  * drop support for Python 3.9 and 3.10 PR #180
+  * Replace string literal type annotations with postponed
+    evaluation using from __future__ import annotations PR #191
+  * multiple performance improvements PRs #172, #193, #196, #194,
+    #197, #198, #199, #200, #201, #202, #203
+  * BasicBlock, Bytecode, and ConcreteBytecode now validate
+    inserted instructions at insertion time (append, extend,
+    insert, __setitem__) rather than during iteration. Code that
+    relied on catching ValueError from list(block) or for instr
+    in block: must wrap the insertion call instead. PR #199
+  * Fix handling of END_ASYNC_FOR which is a backward jump PR
+    #179</comment>
+    <requestid>1359220</requestid>
+  </revision>
 </revisionlist>

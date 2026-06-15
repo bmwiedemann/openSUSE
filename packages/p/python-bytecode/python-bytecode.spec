@@ -1,7 +1,7 @@
 #
 # spec file for package python-bytecode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bytecode
-Version:        0.17.0
+Version:        0.18.1
 Release:        0
 Summary:        Python module to generate and modify bytecode
 License:        MIT
-URL:            https://github.com/vstinner/bytecode
+URL:            https://github.com/MatthieuDartiailh/bytecode
 Source:         https://files.pythonhosted.org/packages/source/b/bytecode/bytecode-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest >= 8}
 # /SECTION
 %python_subpackages
 
