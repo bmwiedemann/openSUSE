@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 15 06:58:22 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- dealers-choice 0.0.15:
+  * regression fix: joining a hand in progress no longer crashes the client 
+  * deckhandler: shuffle and recycle the discard pile when the deck runs out
+    mid-draw, fixing duplicate cards dealt in multi-player draw games
+  * pokeval: fix California lowball tie-breaks
+
+-------------------------------------------------------------------
 Tue Jun  9 00:50:57 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - dealers-choice 0.0.14

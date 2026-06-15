@@ -17,7 +17,7 @@
 
 
 Name:           dealers-choice
-Version:        0.0.14
+Version:        0.0.15
 Release:        0
 Summary:        Online Multiplayer Stud and Draw Poker, Texas Hold'em and Omaha
 License:        MIT
