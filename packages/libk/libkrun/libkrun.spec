@@ -32,16 +32,13 @@ complexity that comes from Virtual Machine management, offering users a simple C
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 Name:           libkrun
-Version:        1.18.0
+Version:        1.19.0
 Release:        0
 Summary:        A dynamic library providing KVM-based process isolation capabilities
 License:        Apache-2.0
 URL:            https://github.com/containers/libkrun
 Source0:        libkrun-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch0:         fix-libspa-pipewire-1.4-opaque-builder.patch
-# PATCH-FIX-UPSTREAM: https://github.com/containers/libkrun/pull/680
-Patch1:         devices-vsock-support-multi-descriptor-TX-chains.patch
 ExclusiveArch:  x86_64 aarch64
 BuildRequires:  binutils
 BuildRequires:  cargo >= 1.43.0

@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Jun 12 11:02:48 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 1.19.0:
+  * Bump minor version to 1.19.0
+  * libkrun: expose init-blob in krun_has_feature()
+  * Makefile: support INIT_BLOB=0 to disable bundled init binary
+  * libkrun: add "init-blob" cargo feature to gate bundled init binary
+  * init_blob: align crate with the workspace
+  * fs/macos: on readdir, refresh directory on rewind
+  * tests/virtiofs-misc: add rename-overwrite fchmod subtest
+  * fs/macos: preserve the inode a rename overwrites
+  * init: loosen perms on /dev/kvm if it exists
+  * virtio/fs: report actual bytes written in used ring len
+  * tests/virtiofs-misc: add mid-iteration duplicate detection subtest
+  * tests/virtiofs-misc: add DirStream cache coherence subtests
+  * tests/virtiofs-misc: run subtests with catch_unwind
+  * balloon: use MADV_FREE to reclaim memory on macOS
+  * init/dhcp: only overwrite resolv.conf with DNS
+  * virtio/net: fix ENAMETOOLONG on long gvproxy socket paths
+  * init: replace dummy IP address
+  * virtio/fs: inline do_lookup() into lookup()
+  * CI: enable BLK=1 and install e2fsprogs in integration tests
+  * tests: add root-disk-remount integration test
+  * tests: add augmentfs integration test
+  * virtio/fs: move EXIT_CODE ioctl to AugmentFs
+  * virtio/fs: remove REMOVE_ROOT_DIR ioctl and allow_root_dir_delete
+  * lib: rewrite krun_set_root_disk_remount to use NullFs
+  * virtio/fs: add NullFs, a minimal empty-root FileSystem
+  * libkrun.h: document that implicit resource creation will become opt-in
+  * lib: add krun_get_default_init()
+  * lib: add krun_fs_add_overlay_file(), krun_fs_add_overlay_dir() APIs
+  * lib: add krun_disable_implicit_init()
+  * virtio/fs: introduce generic AugmentFs overlay for files like init.krun
+  * virtio/fs: introduce InodeAllocator for shared inode numbering
+  * virtio/fs: extract init binary blob into its own crate
+  * tests: add virtiofs-misc test for fallocate operations
+  * tests: pass TestSetup to check() for host-side verification
+  * tests: introduce pjdfstest POSIX filesystem conformance tests
+  * Bump patch version to 1.18.1
+  * devices/vsock: support multi-descriptor TX chains
+  * rutabaga_gfx/cross_domain: fix audio glitches by dropping write lock
+  * add musl cfg flag musl_v1_2_3 to enable statx
+  * init: fix unescape_string() not advancing past escape characters
+  * rutabaga_gfx/cross_domain: handle CMD_WRITE on Eventfd items
+  * vsock/tsi_dgram: Make sendto_addr bind to correct socket adress structs
+  * virtio/vsock: use device's peer_buf_alloc
+  * Bump libspa to v0.9
+  * init: Set up a dummy network interface with TSI
+
+- Patches removed:
+  * devices-vsock-support-multi-descriptor-TX-chains.patch (included upstream)
+  * fix-libspa-pipewire-1.4-opaque-builder.patch (no longer necessary)
+-------------------------------------------------------------------
 Tue May 19 15:33:39 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix for newer kernel when header + one data descriptior are combined in a
