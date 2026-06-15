@@ -68,8 +68,8 @@
 
 %define         _lto_cflags %{nil}
 Name:           wine%{psuffix}
-%define downloadver  11.10
-Version:        11.10
+%define downloadver  11.11
+Version:        11.11
 Release:        0
 Summary:        An MS Windows Emulator
 Group:          System/Emulators/PC
@@ -389,7 +389,7 @@ ln -sf /usr/lib64/wine/x86_64-unix /usr/lib/wine/
 /sbin/ldconfig
 
 %files
-%license LICENSE LICENSE.OLD
+%license LICENSE
 %doc ANNOUNCE.md AUTHORS README.md
 %{_bindir}/function_grep.pl
 %{_bindir}/msidb

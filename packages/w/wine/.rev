@@ -5909,4 +5909,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.10 release</comment>
     <requestid>1356206</requestid>
   </revision>
+  <revision rev="494" vrev="1">
+    <srcmd5>e982d6354ca71e06e29002ce46e91685</srcmd5>
+    <version>11.11</version>
+    <time>1781545591</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.11 release
+  - Bundled SymCrypt library, to replace TomCrypt.
+  - More USER32 window information moved to shared memory.
+  - Layered windows in the Wayland driver.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.11 release</comment>
+    <requestid>1359385</requestid>
+  </revision>
 </revisionlist>

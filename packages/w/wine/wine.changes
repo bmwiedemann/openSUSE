@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 13 08:29:39 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.11 release
+  - Bundled SymCrypt library, to replace TomCrypt.
+  - More USER32 window information moved to shared memory.
+  - Layered windows in the Wayland driver.
+  - More VBScript compatibility improvements.
+  - Various bug fixes.
+- update staging to 11.11 release
+
+-------------------------------------------------------------------
 Sat May 30 10:15:03 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.10 release
