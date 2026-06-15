@@ -7,4 +7,16 @@
     <comment>We plan to use this in openQA</comment>
     <requestid>1303629</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>489330b6ba56d99b5113617c0cbea8ea</srcmd5>
+    <version>5.120.0</version>
+    <time>1781545805</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.120.0 (5.12)
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-OpenAPI/Changes
+  5.12 2026-06-06T21:34:00
+   - Combine body_params and uploads on multipart/form-data requests #267
+     Contributor: Archey Barrell</comment>
+    <requestid>1359508</requestid>
+  </revision>
 </revisionlist>

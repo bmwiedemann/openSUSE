@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Mojolicious-Plugin-OpenAPI
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Mojolicious-Plugin-OpenAPI
 Name:           perl-Mojolicious-Plugin-OpenAPI
-Version:        5.110.0
+Version:        5.120.0
 Release:        0
-# 5.11 -> normalize -> 5.110.0
-%define cpan_version 5.11
+# 5.12 -> normalize -> 5.120.0
+%define cpan_version 5.12
 License:        Artistic-2.0
 Summary:        OpenAPI / Swagger plugin for Mojolicious
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -30,10 +30,10 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(JSON::Validator) >= 5.130
+BuildRequires:  perl(JSON::Validator) >= 5.170
 BuildRequires:  perl(Mojolicious) >= 9.0
 BuildRequires:  perl(Test::More) >= 0.88
-Requires:       perl(JSON::Validator) >= 5.130
+Requires:       perl(JSON::Validator) >= 5.170
 Requires:       perl(Mojolicious) >= 9.0
 Provides:       perl(Mojolicious::Plugin::OpenAPI) = %{version}
 Provides:       perl(Mojolicious::Plugin::OpenAPI::Cors)

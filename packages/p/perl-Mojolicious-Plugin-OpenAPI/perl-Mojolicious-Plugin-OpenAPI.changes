@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun  7 00:40:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.120.0 (5.12)
+   see /usr/share/doc/packages/perl-Mojolicious-Plugin-OpenAPI/Changes
+
+  5.12 2026-06-06T21:34:00
+   - Combine body_params and uploads on multipart/form-data requests #267
+     Contributor: Archey Barrell
+
+-------------------------------------------------------------------
 Sun Aug  3 22:01:10 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 5.110.0 (5.11)
