@@ -114,4 +114,12 @@
 - switch to fuse3, add ifuse-1.1.4-fuse3.patch from upstream</comment>
     <requestid>1286907</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bd175b52926a9c9707d912dac5e09556</srcmd5>
+    <version>1.2.1</version>
+    <time>1781545427</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.1:</comment>
+    <requestid>1359287</requestid>
+  </revision>
 </revisionlist>

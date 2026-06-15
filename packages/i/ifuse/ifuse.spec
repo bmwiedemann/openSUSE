@@ -18,17 +18,14 @@
 
 
 Name:           ifuse
-Version:        1.1.4
+Version:        1.2.1
 Release:        0
 Summary:        Filesystem access for Apple devices
 License:        LGPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://www.libimobiledevice.org
 Source:         https://github.com/libimobiledevice/ifuse/releases/download/%{version}/%{name}-%{version}.tar.bz2
-Patch0:         ifuse-1.1.4-fuse3.patch
-# for ifuse-1.1.4-fuse3.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+
 BuildRequires:  libimobiledevice-devel >= 1.3.0
 BuildRequires:  libplist-2_0-devel >= 2.2.0
 BuildRequires:  pkgconfig
@@ -45,8 +42,6 @@ to access the iPhone's, iPod Touch's or iPad's media files under Linux.
 
 %build
 export CPPFLAGS=-D_FILE_OFFSET_BITS=64
-# for ifuse-1.1.4-fuse3.patch
-autoreconf -fiv
 %configure
 %make_build
 

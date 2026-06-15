@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 03 15:40:25 UTC 2026 - Kilian Knörzer <k.knoerzer@gmail.com>
+
+- Update to version 1.2.1:
+  * Fixed several issues and updated compatibility with newer iOS
+    devices.
+- Delete ifuse-1.1.4-fuse3.patch
+
+-------------------------------------------------------------------
 Thu Jun 19 11:08:52 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix build on 32bit
