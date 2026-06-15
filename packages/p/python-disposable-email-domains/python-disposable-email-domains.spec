@@ -17,7 +17,7 @@
 
 
 Name:           python-disposable-email-domains
-Version:        0.0.185
+Version:        0.0.202
 Release:        0
 Summary:        A set of disposable email domains
 # the "Homepage" link on PyPi is not the source repository for the PyPI tarball and is licensed under CC
