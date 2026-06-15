@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 12 08:59:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260611.00
+  * Add unit tests for policies/policies.go PART 5 (#998)
+- from version 20260610.00
+  * Add unit tests for policies/policies.go PART 4 (#997)
+- from version 20260609.02
+  * squash commits (#936)
+- from version 20260609.01
+  * Add unit tests for policies/policies.go PART 3 (#996)
+- from version 20260609.00
+  * Add unit tests for policies/policies.go PART 2 (#991)
+- from version 20260602.01
+  * Align format of dates and timestamp collected across Windows packages (#973)
+- from version 20260602.00
+  * Add unit tests for config/config,go (#979)
+- from version 20260528.00
+  * Bump github.com/containerd/containerd (#990)
+- from version 20260521.00
+  * Cover agentconfig functionality by unit tests (#925)
+- from version 20260520.04
+  * Add unit tests for policies/googet.go (#961)
+  * Bump github.com/go-git/go-git/v5 (#987)
+- from version 20260520.02
+  * Add unit tests for policies/yum.go (#952)
+  * Add unit tests for policies/apt.go PART 3 (#951)
+- from version 20260520.00
+  * Add unit tests for policies/zypper.go (#953)
+- from version 20260519.00
+  * Add unit tests for policies/policies.go PART 1 (#949)
+- from version 20260513.01
+  * Bump github.com/go-git/go-git/v5 (#981), this also updates
+    golang.org/x/net to v0.53.0 (bsc#1265762, CVE-2026-33814)
+- from version 20260513.00
+  * upgrade a few packages (#980)
+- from version 20260512.02
+  * Add/improve unit tests for agentendpoint/exec_task.go (#933)
+- from version 20260512.01
+  * Cover google_update.go by unit tests (#941)
+- from version 20260512.00
+  * Change zone for arm64 builds because of stockout (#978)
+
+-------------------------------------------------------------------
 Wed May 13 07:43:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260511.00
