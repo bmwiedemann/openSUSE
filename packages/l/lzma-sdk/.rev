@@ -258,4 +258,12 @@
     <comment>- Edit lzma-sdk-shlib.patch to produces the same libname as Fedora.</comment>
     <requestid>1301133</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a1af238bf2b942b2fac2f48d952277f0</srcmd5>
+    <version>26.01</version>
+    <time>1781545851</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 26.01</comment>
+    <requestid>1359564</requestid>
+  </revision>
 </revisionlist>
