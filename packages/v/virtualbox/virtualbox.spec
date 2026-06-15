@@ -1,7 +1,7 @@
 #
 # spec file for package virtualbox
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,6 +14,7 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
 
 %if "@BUILD_FLAVOR@" == "kmp"
 	# macros for virtualbox-kmp
@@ -68,8 +69,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.6
-%define rversion 7.2.6
+Version:        7.2.8
+%define rversion 7.2.8
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -132,10 +133,9 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
+Patch13:        0001-7.2-Backported-r173880-Linux-vboxdrv-Add-initial-sup.patch
+Patch14:        0001-7.2-Backported-r173857-Additions-Linux-vboxsf-Add-in.patch
 Patch20:        gentoo-C23.patch
-Patch21:        kernel-6.19.patch
-# Patch for Leap 16.1
-Patch30:        leap16.1-kmp-fixes.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -178,10 +178,10 @@ BuildRequires:  libzio-devel
 BuildRequires:  lzfse
 BuildRequires:  lzfse-devel
 %if "%mypython" != ""
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{mypython}-devel
-BuildRequires:  %{mypython}-setuptools
 BuildRequires:  %{mypython}-pip
+BuildRequires:  %{mypython}-setuptools
+BuildRequires:  python-rpm-macros
 %endif
 BuildRequires:  qt6-tools-linguist
 BuildRequires:  rpm

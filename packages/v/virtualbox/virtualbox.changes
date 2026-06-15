@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 11 07:27:32 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- support kernel 7.1 (bsc#1268088)
+  * 0001-7.2-Backported-r173880-Linux-vboxdrv-Add-initial-sup.patch
+  * 0001-7.2-Backported-r173857-Additions-Linux-vboxsf-Add-in.patch
+
+-------------------------------------------------------------------
+Sun Apr 26 12:52:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.8
+  * VMM: Fixed issue which caused a Guru Meditation with
+    VERR_IEM_IPE_4 if the guest was trying to execute the wrong
+    hypercall instruction but injected a UD exception instead
+  * Fixed crash on FreeBSD 16.0 shutdown with multiple devices
+    attached to LSI Logic SAS controller
+  * Added support for Linux 6.19, 7.0
+  * Added support for guest time accounting
+  * Deprecated the vboxvideo kernel module for guest kernels
+    7.0 and newer
+- Delete kernel-6.19.patch, leap16.1-kmp-fixes.patch
+  (unapplicable)
+
+-------------------------------------------------------------------
 Thu Apr 16 11:08:46 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Tweak the build conditions according to %suse_version=1610 change

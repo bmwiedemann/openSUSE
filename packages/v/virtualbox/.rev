@@ -2879,4 +2879,12 @@ we must have vb7.1.10.</comment>
     <comment>- Tweak the build conditions according to %suse_version=1610 change</comment>
     <requestid>1347279</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>b13783db58e6d111c4fd47c473cccb7e</srcmd5>
+    <version>7.2.8</version>
+    <time>1781545187</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.8</comment>
+    <requestid>1359115</requestid>
+  </revision>
 </revisionlist>
