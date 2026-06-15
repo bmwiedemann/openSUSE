@@ -1,7 +1,7 @@
 #
 # spec file for package libetpan
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 %bcond_with     libetpan_fsanitize
-%define sover 20
+%define sover 26
 Name:           libetpan
-Version:        1.10
+Version:        1.10.1
 Release:        0
 Summary:        Mail Handling Library
 License:        BSD-3-Clause
@@ -75,12 +75,11 @@ and message / MIME parsing.
 %build
 touch README INSTALL COPYING
 env NOCONFIGURE=1 ./autogen.sh
+CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11'
 %if %{with libetpan_fsanitize}
-CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11 -fsanitize=address,undefined'
+CFLAGS="$CFLAGS -fsanitize=address,undefined"
 sed -i~ 's|^Cflags:|Cflags: -fsanitize=address,undefined|' libetpan.pc.in
 diff -u "$_"~ "$_" && exit 123
-%else
-CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11'
 %endif
 %configure \
 	--without-curl \
@@ -100,15 +99,13 @@ CFLAGS='%optflags -Wno-unused-function -Wno-unused-parameter -std=gnu11'
 # remove unneeded *.la files
 rm %{buildroot}%{_libdir}/libetpan.la
 
-%post   -n libetpan%{sover} -p /sbin/ldconfig
-%postun -n libetpan%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libetpan%{sover}
 
 %files -n libetpan%{sover}
-%doc ChangeLog NEWS doc/README*
+%license COPYRIGHT
 %{_libdir}/libetpan.so.%{sover}*
 
 %files -n libetpan-devel
-%doc doc/API* doc/DOCUMENTATION
 %{_includedir}/libetpan/
 %{_includedir}/libetpan.h
 %{_libdir}/libetpan.so

@@ -1,5 +1,11 @@
 -------------------------------------------------------------------
-Fri May 22 22:22:22 UTC 2026 - olaf@aepfle.de
+Sun Jun 14 14:14:14 UTC 2026 - X <olaf@aepfle.de>
+
+- update to 1.10.1 (e02145e) via _service
+  cosmetic correction to version.h, and new SONAME
+
+-------------------------------------------------------------------
+Fri May 22 22:22:22 UTC 2026 - X <olaf@aepfle.de>
 
 - update to 1.10 (1bac78a) via _service
   add libetpan.patch

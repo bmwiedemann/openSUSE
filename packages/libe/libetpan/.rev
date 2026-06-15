@@ -233,4 +233,12 @@
 enable --with-poll to remove filedescriptor limit</comment>
     <requestid>1356075</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b92628d5c45b9a4f5ba6f610a3c46332</srcmd5>
+    <version>1.10.1</version>
+    <time>1781545578</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10.1</comment>
+    <requestid>1359370</requestid>
+  </revision>
 </revisionlist>

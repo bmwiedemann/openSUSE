@@ -12,13 +12,11 @@
     <param name="exclude">travis</param>
     <param name="exclude">unittest</param>
     <param name="filename">libetpan</param>
-    <param name="revision">1bac78abe207f078c918e9e86faaed13035f4b1f</param>
+    <param name="revision">1.10.1</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dinhvh/libetpan</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
   </service>
   <service mode="manual" name="recompress">
     <param name="compression">xz</param>
