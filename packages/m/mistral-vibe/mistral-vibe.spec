@@ -16,7 +16,7 @@
 #
 
 Name:           mistral-vibe
-Version:        2.14.1
+Version:        2.15.0
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -25,6 +25,9 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mistral_vibe/mi
 # PATCH-FIX-UPSTREAM build-tests.patch mcepl@suse.com
 # make tests pass
 Patch0:         build-tests.patch
+# PATCH-FIX-UPSTREAM fix_tests.patch gh#mistralai/mistral-vibe!796 mcepl@suse.com
+# Fix test failures in build environments
+Patch1:         fix_tests.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -33,6 +36,7 @@ BuildRequires:  python3-hatch-vcs
 BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
 Requires:       python3-GitPython >= 3.1.47
+Requires:       python3-Jinja2
 Requires:       python3-PyYAML >= 6.0.3
 Requires:       python3-agent-client-protocol >= 0.10.1
 Requires:       python3-attrs >= 26.1.0
@@ -49,7 +53,6 @@ Requires:       python3-jaraco.classes >= 3.4.0
 Requires:       python3-jaraco.context >= 6.1.2
 Requires:       python3-jaraco.functools >= 4.4.0
 Requires:       python3-jeepney >= 0.9.0
-Requires:       python3-Jinja2
 Requires:       python3-jsonpatch >= 1.33
 Requires:       python3-jsonpath-python >= 1.1.5
 Requires:       python3-jsonpointer >= 3.1.1
@@ -62,7 +65,6 @@ Requires:       python3-markdownify >= 1.2.2
 Requires:       python3-mcp >= 1.27.1
 Requires:       python3-mdit-py-plugins >= 0.5.0
 Requires:       python3-mdurl >= 0.1.2
-Requires:       python3-mcp >= 1.27.1
 Requires:       python3-mistralai >= 2.4.4
 Requires:       python3-more-itertools >= 11.0.2
 Requires:       python3-opentelemetry-api >= 1.39.1
@@ -76,7 +78,6 @@ Requires:       python3-pyperclip >= 1.11.0
 Requires:       python3-python-dotenv >= 1.2.2
 Requires:       python3-rich >= 15.0.0
 Requires:       python3-sounddevice >= 0.5.5
-Requires:       python3-truststore >= 0.10.4
 Requires:       python3-syrupy
 Requires:       python3-textual >= 8.2.7
 Requires:       python3-textual-speedups >= 0.2.1
@@ -84,6 +85,7 @@ Requires:       python3-tomli-w >= 1.2.0
 Requires:       python3-tomlkit
 Requires:       python3-tree-sitter >= 0.25.2
 Requires:       python3-tree-sitter-bash >= 0.25.1
+Requires:       python3-truststore >= 0.10.4
 Requires:       python3-watchfiles >= 1.1.1
 Requires:       python3-websockets >= 16.0
 Requires:       python3-zstandard >= 0.25.0
@@ -95,7 +97,10 @@ Provides:       python314-mistral-vibe = %{version}
 Obsoletes:      python314-mistral-vibe < %{version}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  ca-certificates
+BuildRequires:  ca-certificates-mozilla
 BuildRequires:  python3-GitPython >= 3.1.47
+BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML >= 6.0.3
 BuildRequires:  python3-agent-client-protocol >= 0.10.1
 BuildRequires:  python3-attrs >= 26.1.0
@@ -111,7 +116,6 @@ BuildRequires:  python3-jaraco.classes >= 3.4.0
 BuildRequires:  python3-jaraco.context >= 6.1.2
 BuildRequires:  python3-jaraco.functools >= 4.4.0
 BuildRequires:  python3-jeepney >= 0.9.0
-BuildRequires:  python3-Jinja2
 BuildRequires:  python3-jsonpatch >= 1.33
 BuildRequires:  python3-jsonpath-python >= 1.1.5
 BuildRequires:  python3-jsonpointer >= 3.1.1
@@ -142,7 +146,6 @@ BuildRequires:  python3-python-dotenv >= 1.2.2
 BuildRequires:  python3-respx >= 0.22.0
 BuildRequires:  python3-rich >= 15.0.0
 BuildRequires:  python3-sounddevice >= 0.5.5
-BuildRequires:  python3-truststore >= 0.10.4
 BuildRequires:  python3-syrupy
 BuildRequires:  python3-textual >= 8.2.7
 BuildRequires:  python3-textual-speedups >= 0.2.1
@@ -150,10 +153,11 @@ BuildRequires:  python3-tomli-w >= 1.2.0
 BuildRequires:  python3-tomlkit
 BuildRequires:  python3-tree-sitter >= 0.25.2
 BuildRequires:  python3-tree-sitter-bash >= 0.25.1
+BuildRequires:  python3-truststore >= 0.10.4
+BuildRequires:  python3-uv
 BuildRequires:  python3-watchfiles >= 1.1.1
 BuildRequires:  python3-websockets >= 16.0
 BuildRequires:  python3-zstandard >= 0.25.0
-BuildRequires:  python3-uv
 # /SECTION
 
 %description

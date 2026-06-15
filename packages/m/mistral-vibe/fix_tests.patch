@@ -1,0 +1,39 @@
+---
+ tests/core/test_build_ssl_context.py |    1 +
+ vibe/core/tools/builtins/grep.py     |    4 ++--
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: mistral_vibe-2.15.0/tests/core/test_build_ssl_context.py
+===================================================================
+--- mistral_vibe-2.15.0.orig/tests/core/test_build_ssl_context.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.15.0/tests/core/test_build_ssl_context.py	2026-06-12 22:54:46.798767652 +0200
+@@ -28,6 +28,7 @@
+ 
+     mock_ctx = MagicMock(spec=ssl.SSLContext)
+     with (
++        patch("vibe.core.utils.http.os.path.exists", return_value=True),
+         patch("vibe.core.utils.http.certifi.where", return_value="/certifi.pem"),
+         patch(
+             "vibe.core.utils.http.ssl.create_default_context", return_value=mock_ctx
+Index: mistral_vibe-2.15.0/vibe/core/tools/builtins/grep.py
+===================================================================
+--- mistral_vibe-2.15.0.orig/vibe/core/tools/builtins/grep.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.15.0/vibe/core/tools/builtins/grep.py	2026-06-12 23:41:13.954665850 +0200
+@@ -241,7 +241,7 @@
+             "--no-heading",
+             "--with-filename",
+             "--smart-case",
+-            "--no-binary",
++            "--text",
+             # Request one extra to detect truncation
+             "--max-count",
+             str(max_matches + 1),
+@@ -262,7 +262,7 @@
+     ) -> list[str]:
+         max_matches = args.max_matches or self.config.default_max_matches
+ 
+-        cmd = ["grep", "-r", "-n", "-H", "-I", "-E", f"--max-count={max_matches + 1}"]
++        cmd = ["grep", "-r", "-n", "-H", "-a", "-E", f"--max-count={max_matches + 1}"]
+ 
+         if args.pattern.islower():
+             cmd.append("-i")

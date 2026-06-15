@@ -183,4 +183,41 @@
     - New tool-call format for read and the file edit tool</comment>
     <requestid>1358613</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e767567307d5abe27ef759c76d301588</srcmd5>
+    <version>2.15.0</version>
+    <time>1781545890</time>
+    <user>anag_factory</user>
+    <comment>- Add fix_tests.patch (gh#mistralai/mistral-vibe!796) which fixes
+  test failures in build environments
+
+- Update to 2.15.0:
+  - Added
+    - **[Experimental]** `before_tool` and `after_tool` hooks:
+      shell scripts declared in `hooks.toml` that fire around
+      every tool call; hooks can deny the call, rewrite tool
+      inputs, or append context to the output — enable with
+      `enable_experimental_hooks = true`
+    - Message queue: messages typed while the agent or a `!bash`
+      command is running are queued and shown above the input;
+      Esc pauses the queue, Ctrl+C drops the last queued message
+      (LIFO), Enter flushes the queue when paused
+    - Tool result output is now collapsed by default to keep
+      responses scannable
+    - Common read-only shell commands (`ls`, `cat`, `pwd`, etc.)
+      are allowed without approval by default
+    - Session deletion available directly from the resume picker
+    - `[mcp_servers.auth]` block in config for per-server MCP
+      authentication
+    - Collapsed web tool output now shows the URL and search
+      query at a glance
+    - `max_turns` support exposed over ACP via
+      `set_config_option`
+  - Changed
+    - Compaction now re-injects prior user messages so the agent
+      retains the original task goals across context resets
+    - **[Breaking — experimental hooks]** `post_agent_turn`
+      retries no longer use exit code `2`; hooks must now exit</comment>
+    <requestid>1359582</requestid>
+  </revision>
 </revisionlist>
