@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:20:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.1:
+  * GitHub workflows for testing the code (on pushes and pulls to
+    `main` and `dev`) and for uploading to PyPI (on new release).
+  * Created a pyproject.toml
+  * Add CONTRIBUTING.md for instructions on how to contribute to
+    the project
+  * `seedir.fakedir.fakedir_fromstring` has been refactored.  The
+    logic is essentially the same, but there have been some
+    simplifications and more comments have been added.
+  * The `itemlimit` now accepts a 2-tuple as an argument,
+    indicating a separate limit for folders and files
+    (respectively).
+  * Added two parameters for handling errors when trying to list
+    the children of a directory:
+  * `acceptable_listdir_errors`: One or more error types
+    (`Exceptions`) which are ignored when occurring during a
+    directory listing call.  E.g., a permissions error.
+  * `denied_string`: String to add to follow directory entries
+    for which the error was triggered.
+  * More test cases added
+  * The main algorithm for folder tree traversal has been
+    refactored.
+  * The unit tests are now structured for pytest.
+  * `seedir.folderstructure.FolderStructure` is now an abstract
+    class that cannot be directly instantiated.  The functions
+    that previously needed to be provided as arguments for the
+    constructor must now be implemented as part of a subclass
+    (see getting started for an example)
+  * `slash` is now totally deprecated; use `folderend` instead.
+
+-------------------------------------------------------------------
 Wed May  8 04:03:55 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 0.4.2. 
+- Initial release of 0.4.2.

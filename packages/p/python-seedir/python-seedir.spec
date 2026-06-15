@@ -1,7 +1,7 @@
 #
 # spec file for package python-seedir
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-seedir
-Version:        0.4.2
+Version:        0.5.1
 Release:        0
 Summary:        Package for creating, editing, and reading folder tree diagrams
 License:        MIT
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module natsort}
+BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-natsort
@@ -53,7 +54,10 @@ Package for creating, editing, and reading folder tree diagrams.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec -m tests.tests
+%pytest
+
+%pre
+%python_libalternatives_reset_alternative seedir
 
 %post
 %python_install_alternative seedir
