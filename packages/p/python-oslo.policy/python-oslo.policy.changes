@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:53:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * tox: Use new constraints option
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Replace usage of undocumented logging.WARN
+
+-------------------------------------------------------------------
 Sun Mar  8 21:02:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.0:

@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.policy
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        OpenStack Oslo Policy library
 License:        Apache-2.0

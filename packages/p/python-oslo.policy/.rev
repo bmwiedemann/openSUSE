@@ -465,4 +465,18 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337525</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>6d78a7efa3ea19cdd89e3f4c64ecddb8</srcmd5>
+    <version>5.1.0</version>
+    <time>1781545466</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.0:
+  * tox: Use new constraints option
+  * typing: Fix compatibility with typed testtools, oslotest
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+  * Replace usage of undocumented logging.WARN</comment>
+    <requestid>1359322</requestid>
+  </revision>
 </revisionlist>
