@@ -7,4 +7,22 @@
     <comment></comment>
     <requestid>895150</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e2745ddab2aab6261f40ffe8130ceb97</srcmd5>
+    <version>0.261630</version>
+    <time>1781545806</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.261630
+   see /usr/share/doc/packages/perl-Crypt-PBKDF2/Changes
+  Version 0.261630: 2026-06-11
+    * Change the default hash algorithm to HMAC-SHA256, and increase the
+      default number of iterations to 600,000, in line with current OWASP
+      recommendations (CVE-2026-9641). bsc#1268234
+    * Generate salts using Crypt::URandom (a strong system RNG) instead of
+      perl's builtin `rand()`, which is not cryptographically secure
+      (CVE-2026-9638). bsc#1268233
+    * Use a constant-time comparison in `validate` to avoid timing attacks
+      (CVE-2017-20240). bsc#1268232</comment>
+    <requestid>1359511</requestid>
+  </revision>
 </revisionlist>
