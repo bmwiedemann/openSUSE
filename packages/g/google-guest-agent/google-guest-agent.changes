@@ -3,6 +3,10 @@ Mon Jun  1 10:48:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 
 - Update to version 20260529.00
   * Dependency updates (#616) (bsc#1266603, CVE-2026-39821)
+    (bsc#1266171, CVE-2026-39827, CVE-2026-39834, CVE-2026-39828,
+     CVE-2026-39829, CVE-2026-39831, CVE-2026-42508, CVE-2026-39833,
+     CVE-2026-39830, CVE-2026-39832, CVE-2026-46597, CVE-2026-46598,
+     CVE-2026-46595, CVE-2026-39835)
 - from version 20260522.00
   * Fix improper umask calculation on socket creation (#614)
 - from version 20260520.01

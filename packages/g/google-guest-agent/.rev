@@ -1090,4 +1090,12 @@
   * Bump google.golang.org/grpc from 1.75.0 to 1.79.3 (#602) (bsc#1260264, CVE-2026-33186) (forwarded request 1356339 from glaubitz)</comment>
     <requestid>1356390</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>d334513154711e83ea04a64d1cdc1539</srcmd5>
+    <version>20260529.00</version>
+    <time>1781545823</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla reference for bsc#1266171 (multiple CVEs in x/crypto) (forwarded request 1359513 from glaubitz)</comment>
+    <requestid>1359527</requestid>
+  </revision>
 </revisionlist>
