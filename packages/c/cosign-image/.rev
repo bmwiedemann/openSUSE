@@ -159,4 +159,20 @@
     <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
     <requestid>1338156</requestid>
   </revision>
+  <revision rev="21" vrev="21">
+    <srcmd5>646365dda9612229ad56d84ebb7c0a14</srcmd5>
+    <version>unknown</version>
+    <time>1774555904</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1342894</requestid>
+  </revision>
+  <revision rev="22" vrev="22">
+    <srcmd5>4d0d39305b1c3d5495c670c932b9fc6e</srcmd5>
+    <version>unknown</version>
+    <time>1781545745</time>
+    <user>anag_factory</user>
+    <comment>🤖: sync package with devel:BCI:Tumbleweed from OBS</comment>
+    <requestid>1359476</requestid>
+  </revision>
 </revisionlist>
