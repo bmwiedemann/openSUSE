@@ -22,9 +22,9 @@
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
 %define ada_ver   3.4.4
 %define owt_ver   git20250512
-%define td_ver    git20260516
+%define td_ver    git20260613
 Name:           telegram-desktop
-Version:        6.9.1
+Version:        6.9.3
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -42,7 +42,6 @@ BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libboost_program_options-devel
 BuildRequires:  libboost_regex-devel
-BuildRequires:  libdispatch-devel
 BuildRequires:  mold
 BuildRequires:  ninja
 BuildRequires:  noopenh264-devel
