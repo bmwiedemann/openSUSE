@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:07:04 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.6.0:
+  * chore: update changelog for 2.6.0
+  * fix(import): respect --name verbatim, ignoring stgit.namelength
+  * test(refresh): use test_when_finished for status.renames cleanup
+  * expect over unwrap for test
+  * bugfix: issue #615, add Copied variant to Status enum and move panic to a copied status, add integration test
+  * docs: Update copyright year
+  * chore: update gix to 0.83 (CVE-2026-40034, bsc#1266429)
+  * chore: update compatible transitive dependencies
+  * chore: update winnow to 1.0.3
+  * chore: update jiff to 0.2.24
+  * ci: drop dead CARGO_TARGET_*_STRIP env vars from package build
+  * ci: soft-pin cargo-deb to ^3.0
+  * ci: bump cargo-generate-rpm pin to ^0.20.0
+  * ci: bump GitHub Actions to Node 24 runtimes
+  * chore: update winnow to 1.0.1
+  * chore: update clap to 4.6.1
+  * chore: update gix to 0.81
+  * chore: bump MSRV to 1.85
+  * chore: update transitive deps
+  * chore: update winnow to 0.7.15
+  * chore: update thiserror to 2.0.18
+  * chore: update tempfile to 3.27.0
+  * chore: update tar to 0.4.45
+  * chore: update serde_json to 1.0.149
+  * chore: update jiff to 0.2.23
+  * chore: update indexmap to 2.14.0
+  * chore: update flate2 to 1.1.9
+  * chore: update ctrlc to 3.5.2
+  * chore: update clap to 4.5.61
+  * chore: update anyhow to 1.0.102
+  * chore: update anstyle to 1.0.14
+
+-------------------------------------------------------------------
 Mon Mar 30 20:25:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 2.5.5:
