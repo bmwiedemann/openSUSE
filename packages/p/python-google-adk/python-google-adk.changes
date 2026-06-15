@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Thu Apr 16 15:55:00 UTC 2026 - Gemini CLI <gemini-cli@google.com>
+
+- Drop adk-suppress-warnings.pth file into site-packages instead of 
+  patching the source. This automatically sets the environment 
+  variable ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS=1 during 
+  Python initialization to reduce warning noise from the CLI.
+
+-------------------------------------------------------------------
+Wed Apr 15 07:49:53 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- use python-arrow instead of pyarrow 
+
+-------------------------------------------------------------------
+Mon Apr 13 08:28:35 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- initial commit pf python-google-adk 
