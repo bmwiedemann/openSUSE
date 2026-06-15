@@ -1,7 +1,7 @@
 #
 # spec file for package libbfio
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libbfio
 %define lname	libbfio1
-Version:        20240414
+Version:        20260612
 Release:        0
 Summary:        Library to provide basic file input/output abstraction
 License:        LGPL-3.0-or-later
@@ -29,15 +29,15 @@ Source2:        https://github.com/libyal/libbfio/releases/download/%version/lib
 Source9:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libcdata) >= 20260612
+BuildRequires:  pkgconfig(libcerror) >= 20260612
+BuildRequires:  pkgconfig(libcfile) >= 20260612
+BuildRequires:  pkgconfig(libclocale) >= 20260612
+BuildRequires:  pkgconfig(libcnotify) >= 20260612
+BuildRequires:  pkgconfig(libcpath) >= 20260612
+BuildRequires:  pkgconfig(libcsplit) >= 20260612
+BuildRequires:  pkgconfig(libcthreads) >= 20260612
+BuildRequires:  pkgconfig(libuna) >= 20260602
 # Various notes: https://en.opensuse.org/libyal
 
 %description

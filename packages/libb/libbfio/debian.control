@@ -1,0 +1,28 @@
+Source: libbfio
+Priority: optional
+Section: libs
+Maintainer: openSUSE <opensuse@opensuse.xz>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: libbfio1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library to provide basic file input/output abstraction
+ libbfio is used in multiple other libraries like libewf, libmsiecf,
+ libnk2, libolecf and libpff. It is used to chain I/O to support
+ file-in-file access.
+ 
+Package: libbfio-dev
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libbfio1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Development files for libbfio, a basic file input/output abstraction library
+ libbfio is used in multiple other libraries like libewf, libmsiecf,
+ libnk2, libolecf and libpff. It is used to chain I/O to support
+ file-in-file access.
+ .
+ This subpackage contains libraries and header files for developing
+ applications that want to make use of libbfio.
