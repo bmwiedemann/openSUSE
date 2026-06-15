@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Jun 13 14:45:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.14.4:
+  * plugin/proxyproto: Prevent nil pointer dereference when dropping malformed
+    PROXY packets
+  * Bump dependencies
+  * plugin/cache: allow cache TTLs above default 3600s
+  * plugin/dnssec: sign each RRset with the zone that owns its name, not the
+    query zone
+  * dnsserver: use http.LocalAddrContextKey for DoH local address
+  * build: add loong64 arch support
+  * core: bound HTTP/3 request header size for DoH3
+  * fix: reject invalid any and local config
+  * plugin/forward: add hostname resolution support for TO endpoints
+  * fix(kubernetes): remove debug fmt.Println from multicluster zone validation
+  * feat(core): expose TLS ConnectionState (SNI) for DoQ
+  * fix: use descriptive error for unknown block options in health and log 
+    plugins
+  * plugin/forward: Forward NODATA responses to Next handler
+  * fix: reject unknown chaos block options
+  * fix: reject unknown trace and dnstap block options
+  * fix: reject unknown ready plugin properties
+  * pkg/tls: remove duplicate cipher suites
+  * fix(azure): apply `access` mode to every zone in the same block
+  * feat(secondary): add fallthrough support
+  * fix(cache): prefer positive cache over SERVFAIL in ncache
+  * plugin/file: trigger reload of zones based on mtime
+  * plugin/dnstap: feature: added incoming connection support
+  * plugin/file: canonicalize escape form in owner names
+  * feat(cache): add optional verify timeout to serve_stale
+
+-------------------------------------------------------------------
 Sun May 03 14:56:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.14.3:
