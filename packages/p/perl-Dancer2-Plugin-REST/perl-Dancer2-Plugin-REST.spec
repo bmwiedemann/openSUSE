@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Dancer2-Plugin-REST
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,22 @@
 #
 
 
-Name:           perl-Dancer2-Plugin-REST
-Version:        1.02
-Release:        0
 %define cpan_name Dancer2-Plugin-REST
-Summary:        Plugin for writing RESTful apps with Dancer2
+Name:           perl-Dancer2-Plugin-REST
+Version:        1.30.0
+Release:        0
+# 1.03 -> normalize -> 1.30.0
+%define cpan_version 1.03
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Plugin for writing RESTful apps with Dancer2
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Y/YA/YANICK/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Dancer2) >= 0.203000
-BuildRequires:  perl(Dancer2::Core::HTTP) >= 0.203000
+BuildRequires:  perl(Dancer2) >= 0.203
+BuildRequires:  perl(Dancer2::Core::HTTP) >= 0.203
 BuildRequires:  perl(Dancer2::Core::Request)
 BuildRequires:  perl(Dancer2::Plugin)
 BuildRequires:  perl(Dancer2::Serializer::Mutable)
@@ -39,23 +40,26 @@ BuildRequires:  perl(JSON)
 BuildRequires:  perl(Module::Runtime)
 BuildRequires:  perl(Moo)
 BuildRequires:  perl(Plack::Test)
+BuildRequires:  perl(Test2::Bundle::More)
 BuildRequires:  perl(Test::Requires)
-Requires:       perl(Dancer2) >= 0.203000
-Requires:       perl(Dancer2::Core::HTTP) >= 0.203000
+Requires:       perl(Dancer2) >= 0.203
+Requires:       perl(Dancer2::Core::HTTP) >= 0.203
 Requires:       perl(Dancer2::Plugin)
 Requires:       perl(Dancer2::Serializer::Mutable)
 Requires:       perl(Moo)
+Provides:       perl(Dancer2::Plugin::REST) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
 This plugin helps you write a RESTful webservice with Dancer2.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -66,8 +70,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes doap.xml README README.mkdn
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md doap.xml README README.mkdn SECURITY.md
 %license LICENSE
 
 %changelog

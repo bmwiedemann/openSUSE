@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Mar 30 07:04:54 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-REST/Changes
+
+  1.03 2026-03-29
+   [API CHANGES]
+   [BUG FIXES]
+   - Seems like JSON::PP sometimes serialize numbers as strings. Tweaked the
+     tests not to hard-fail when that happens. (GH#19, eseyman)
+
+   [DOCUMENTATION]
+   [ENHANCEMENTS]
+   [NEW FEATURES]
+   [STATISTICS]
+   - code churn: 13 files changed, 174 insertions(+), 19 deletions(-)
+
+-------------------------------------------------------------------
 Wed Nov  4 10:28:51 UTC 2020 - Frank Schreiner <FSchreiner@suse.com>
 
 initial package 1.02

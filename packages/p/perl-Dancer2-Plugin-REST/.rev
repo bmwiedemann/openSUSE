@@ -7,4 +7,23 @@
     <comment>Requirement for kanku in Factory</comment>
     <requestid>847139</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3f3b465d9e02fc8164b6df2dac08fff</srcmd5>
+    <version>1.30.0</version>
+    <time>1781545355</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-Dancer2-Plugin-REST/Changes
+  1.03 2026-03-29
+   [API CHANGES]
+   [BUG FIXES]
+   - Seems like JSON::PP sometimes serialize numbers as strings. Tweaked the
+     tests not to hard-fail when that happens. (GH#19, eseyman)
+   [DOCUMENTATION]
+   [ENHANCEMENTS]
+   [NEW FEATURES]
+   [STATISTICS]
+   - code churn: 13 files changed, 174 insertions(+), 19 deletions(-)</comment>
+    <requestid>1359241</requestid>
+  </revision>
 </revisionlist>
