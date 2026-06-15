@@ -18,7 +18,7 @@
 
 %define apiver  v61
 # Required for RC builds, in this case version contains ~rc, src_ver -rc
-%define pkg_ver 11.1.0
+%define pkg_ver 11.3.0
 %define src_ver %{pkg_ver}
 # Image processing library
 %if 0

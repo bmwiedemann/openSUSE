@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Jun 10 05:25:33 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.3.0:
+  - Fix returning reciprocal condition number as second output
+    from det for triangular dense matrices.
+- Changes from version 11.2.0:
+  * Improvements and fixes:
+    - Speed up pkg install and provide more output with -verbose.
+    - cmach-info.h: Add visibility attribute to function
+      declarations.
+    - Re-implement weboptions and affected functions webread,
+      webwrite (bug #68079).
+    - Remove semicolon after function definitions.
+    - Fix possible out-of-bound indexing in N-D Array assignment.
+    - Allow classdef constructor to return a classdef array of
+      itself (bug #59775).
+    - Fix pager in CLI on Windows and disable it in the GUI (bug
+      #68112).
+    - Deprecate all and any for non-numeric/non-logical types (bug
+      #68172).
+    - Silence compiler warning about possible use of uninitialized
+      variable.
+    - Fix input validation of permB input to eigs().
+    - Check floating point subscripts before converting to
+      octave_idx_type (bug #68167). Reject non-finite,
+      non-integer, and out-of-range floating-point index values
+      before casting them to octave_idx_type.
+    - Fix norm (S, 2) for all-zero sparse matrices (bug #68254).
+    - colorbar.m: Change %!demo #3 to use new syntax with
+      "location" first.
+    - max: Avoid potential integer overflow.
+  * GUI fixes:
+    - Remove accidental double spaces in language translation
+      files.
+    - Use form of “bearbeiten” instead of “editieren” in German
+      translation.
+    - Include missing .svg icon in GUI resources (bug #68389).
+    - Use mouse cursor shape from Qt if possible or SVG (bug
+      #68389).
+  * Build fixes and improvements:
+    - Create Info documentation in build directory, not source
+      directory.
+    - Fix Qt help generator for Texinfo 7.3 Function-Index output.
+    - Fix run-octave to locate documentation in either srcdir or
+      builddir.
+    - system: Silence output of self-test.
+    - Disable delete warning locally in BISTs as part of cset e17e4e419245.
+  * Documentation updates.
+
+-------------------------------------------------------------------
 Thu Mar 26 18:44:48 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix regression for RPM macros, pkg builtin no longer glob's the
