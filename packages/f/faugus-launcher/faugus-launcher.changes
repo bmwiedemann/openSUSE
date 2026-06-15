@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Jun 15 01:54:41 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to verion 1.22.4
+- Upstream changes:
+  * Fixed launch arguments with spaces
+- For version 1.22.3:
+  * Updated screenshots
+  * Updated Portuguese translation
+  * Remove game from custom order
+  * New Launch Arguments UI
+  * italian translation for 1.22
+  * Update proton_manager.py
+  * Revert "Merge pull request #730 from Ganeron11/clean"
+  * Update proton_manager.py
+  * centralize .exe icon extraction into utils.py
+- For version 1.22.2:
+  * Revert "centralize .exe icon extraction into utils.py"
+  * centralize variant config into VARIANTS dict and throttle progress updates
+  * Add files via upload
+  * Update faugus-launcher.po ja 1.22.1
+  * code cleanup
+- For version 1.22.1:
+  * Updated screenshots
+  * Show icon when moving game
+  * Removed the HDR option
+  * Updated Portuguese translation
+  * Added custom sort
+  * remove unused variables
+  * Clean up launcher.py
+  * remove unused imports
+  * Sort alphabetically when menu is not displayed
+  * Fixed category ids
+  * Added another lsfg-vk path
+  * Updated Portuguese translation
+  * Remember sort and category
+  * remove redundant nested condition and simplify validate_settings_field
+  * Fixed latest played and update list
+  * translate backup and window settings
+  * Renamed categories checkbox
+  * Added sort button
+  * Reworked Categories interface
+  * centralize json operations to utils.py
+  * centralize game field mapping to uitls.py
+  * Added zoom slider for banners
+  * centralize .exe icon extraction into utils.py
+  * extract duplicated image file filter into shared function
+  * use shared ConfigManager instead of local implementation
+  * centralize update_games_json to utils.py
+  * centralize on_button_kofi_clicked and on_button_paypal_clicked to utils.py
+  * centralize on_button_search_protonfix_clicked to utils.py
+  * centralize find_largest_resolution to utils.py
+  * centralize on_entry_query_tooltip to utils.py
+  * centralize on_entry_changed to utils.py
+  * Updated the Chinese (Traditional) translation
+  * centralize is_valid_image to utils.py
+  * skip update_icon() in check_running() when no games active
+  * centralize path constants in path_manager.py
+  * extract common command check helper
+  * polish(zh-CN): change 3 entries
+  * centralize lossless scaling env vars into utils.py
+  * fix(zh-CN): correct 1 entry
+  * centralize IS_FLATPAK to path_manager_py
+  * centralize canberra-gtk-play calls into play_notification_sound()
+  * italian translation for 1.21
+  * add_windows_file_filters to utils.py
+  * refactor: move format_title to utils.py
+  * remove redundant LOG_DIR lookup
+  * translate(zh-CN): completed chinese simplified translation and polished old entries
+
+-------------------------------------------------------------------
 Sun Jun 07 22:04:22 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.21.1

@@ -600,4 +600,41 @@
   * Fix command injection via executable filename</comment>
     <requestid>1357813</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>4c18294c4bf4265898fcc8dee50ae664</srcmd5>
+    <version>1.22.4</version>
+    <time>1781545513</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.22.4
+- Upstream changes:
+  * Fixed launch arguments with spaces
+- For version 1.22.3:
+  * Updated screenshots
+  * Updated Portuguese translation
+  * Remove game from custom order
+  * New Launch Arguments UI
+  * italian translation for 1.22
+  * Update proton_manager.py
+  * Revert &quot;Merge pull request #730 from Ganeron11/clean&quot;
+  * Update proton_manager.py
+  * centralize .exe icon extraction into utils.py
+- For version 1.22.2:
+  * Revert &quot;centralize .exe icon extraction into utils.py&quot;
+  * centralize variant config into VARIANTS dict and throttle progress updates
+  * Add files via upload
+  * Update faugus-launcher.po ja 1.22.1
+  * code cleanup
+- For version 1.22.1:
+  * Updated screenshots
+  * Show icon when moving game
+  * Removed the HDR option
+  * Updated Portuguese translation
+  * Added custom sort
+  * remove unused variables
+  * Clean up launcher.py
+  * remove unused imports
+  * Sort alphabetically when menu is not displayed
+  * Fixed category ids</comment>
+    <requestid>1359340</requestid>
+  </revision>
 </revisionlist>
