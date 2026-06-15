@@ -276,4 +276,15 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update sha sum</comment>
     <requestid>1357814</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d6958c483a6bcd73f312a4302b2ad3ba</srcmd5>
+    <version>1.9.2</version>
+    <time>1781545515</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.9.2
+- Upstream changes:
+  * feat: GOG store support (#50)
+  * Update sums</comment>
+    <requestid>1359341</requestid>
+  </revision>
 </revisionlist>
