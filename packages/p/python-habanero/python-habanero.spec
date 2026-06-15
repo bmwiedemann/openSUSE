@@ -1,7 +1,7 @@
 #
 # spec file for package python-habanero
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-habanero
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Low Level Client for Crossref Search API
 License:        MIT
@@ -28,7 +28,6 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 6.0.2
 Requires:       python-httpx >= 0.27.2
 Requires:       python-packaging >= 24.1
 Requires:       python-tqdm >= 4.66.5

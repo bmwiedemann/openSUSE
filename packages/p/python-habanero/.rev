@@ -31,4 +31,21 @@
 - Switch to pyproject macros.</comment>
     <requestid>1290080</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2cbb570c1216ed99dca92964af6da8c</srcmd5>
+    <version>2.4.0</version>
+    <time>1781545369</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.0:
+  * fixed return type declaration for Crossref.works (#204)
+    thanks @StarryWorm
+  * use with open() context manager to properly close files in
+    tests (#206) thanks @Stephen0512
+  * pyyaml package moved from dependencies to the optional dev
+    depencies group (#210) thanks @hseg
+  * updated package for new filters; now documented options for
+    the select parameter; documented new field queries;
+    documented new facet count options</comment>
+    <requestid>1359255</requestid>
+  </revision>
 </revisionlist>
