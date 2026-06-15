@@ -17,7 +17,7 @@
 
 
 Name:           golang-github-prometheus-alertmanager
-Version:        0.32.2
+Version:        0.33.0
 Release:        0
 Summary:        Prometheus Alertmanager
 License:        Apache-2.0
@@ -36,7 +36,7 @@ Source13:       prepare_webassets.sh
 Patch1:         0001-Default-settings.patch
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu >= 0.12.0
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 Requires(pre):  group(prometheus)
 Requires(pre):  user(prometheus)
 Provides:       prometheus-alertmanager = %{version}
