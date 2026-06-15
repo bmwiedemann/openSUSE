@@ -587,4 +587,23 @@ update to version 1.10.0
 </comment>
     <requestid>1356314</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>25ad7707bb2131c42e2ab75703de2d2d</srcmd5>
+    <version>6.1.0</version>
+    <time>1781545484</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.1.0:
+  * Replace OVN Metadata agent with OVN agent
+  * Follow up on share replica metadata changes
+  * fix stale API examble and typo in user/api.rst
+  * update stale OpenStack references in README.rst
+  * fix formatting errors in pyproject.toml
+  * doc: fix share network docstrings
+  * doc: Fix wrong class references in manager docstrings
+  * doc: Update OS_TENANT_NAME to OS_PROJECT_NAME
+  * Fix typo 'occured' should be 'occurred'
+  * Fix option to override API endpoint
+  * Update master for stable/2026.1</comment>
+    <requestid>1359329</requestid>
+  </revision>
 </revisionlist>

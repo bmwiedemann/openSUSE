@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:27:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.0:
+  * Replace OVN Metadata agent with OVN agent
+  * Follow up on share replica metadata changes
+  * fix stale API examble and typo in user/api.rst
+  * update stale OpenStack references in README.rst
+  * fix formatting errors in pyproject.toml
+  * doc: fix share network docstrings
+  * doc: Fix wrong class references in manager docstrings
+  * doc: Update OS_TENANT_NAME to OS_PROJECT_NAME
+  * Fix typo 'occured' should be 'occurred'
+  * Fix option to override API endpoint
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 21:54:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.0.0:
