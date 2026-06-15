@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 15 06:10:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.3.0
+  * Fixed issue #118: scan failures when the DC avoidance algorithm
+    is enabled.
+  * Cleaned up various GUI elements.
+  * Added missing ITU code table entries for ITU Region 3: Asia
+    and the Pacific.
+  * Renamed Ensemble List filter labels for improved clarity.
+  * Added several minor fixes and improvements.
+
+-------------------------------------------------------------------
 Sat Jun  6 07:12:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to versino 5.2.0
