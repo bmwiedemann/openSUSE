@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:44:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.2.10
+  * Detect uint64 overflow that wraps past min_safe in
+    parse_int_string.
+  * Replace checked re-parse with O(1) simdjson-style overflow
+    check.
+
+-------------------------------------------------------------------
 Fri Jun 12 04:42:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.9

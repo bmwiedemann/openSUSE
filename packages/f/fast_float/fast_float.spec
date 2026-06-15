@@ -17,7 +17,7 @@
 
 
 Name:           fast_float
-Version:        8.2.9
+Version:        8.2.10
 Release:        0
 Summary:        Re-implementation of std::from_chars for parsing strings into numbers
 License:        Apache-2.0 OR BSL-1.0 OR MIT
