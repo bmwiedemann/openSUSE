@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Thu Jun 11 08:09:20 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Address factory-auto's comment about sources
+
+-------------------------------------------------------------------
+Thu May 07 11:13:05 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Update to version 0.1.1:
+  * Release 0.1.1.
+  * hall: Refresh.
+  * doc: Add clearer documentation for argument-parser.
+  * doc: Update manual.
+
+-------------------------------------------------------------------
+Mon May  4 22:44:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete/replace old specfile constructs and adhere to
+  description guideline
+
+-------------------------------------------------------------------
+Mon May  4 13:22:06 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Init package
