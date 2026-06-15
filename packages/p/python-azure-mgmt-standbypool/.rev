@@ -18,4 +18,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1271574 from glaubitz)</comment>
     <requestid>1271841</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cfed7f61ff1e509db39422d696a36e61</srcmd5>
+    <version>2.1.0</version>
+    <time>1781545833</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1359394 from glaubitz)</comment>
+    <requestid>1359531</requestid>
+  </revision>
 </revisionlist>
