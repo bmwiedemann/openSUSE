@@ -65,4 +65,16 @@
     <comment></comment>
     <requestid>1315349</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>06772b760204bdde5cda685f00fb63a5</srcmd5>
+    <version>3.1.0</version>
+    <time>1781545835</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1359403 from glaubitz)</comment>
+    <requestid>1359540</requestid>
+  </revision>
 </revisionlist>
