@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun  8 07:18:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.0
+  * base64 decode fix by @TingDaoK in (#1248)
+
+-------------------------------------------------------------------
 Thu May 21 11:46:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.13.1
