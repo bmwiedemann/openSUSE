@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Wed Jun 10 06:37:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.1
+  * BGP: Fix crash when incoming connection for disabled protocol
+    arrives.
+  * BGP: Fix parsing labelled NLRIs with no next hop.
+  * BGP: Fix cork behavior in collision with graceful restart.
+  * BGP: Fix crash on dumping pending export statistics.
+  * BGP: Fix several issues in Flowspec handling.
+  * BMP/Nest: No refeed after listener or protocol restart.
+  * MPLS: Fix crash on reconfiguring CS_DOWN channel.
+  * OSPF: Fix handling of LLS data length field.
+  * OSPF: Fix OOB read in authentication check.
+  * OSPF: Fix OOB read in Router-LSA validation.
+  * Proto: Fix regression in protocol enabling.
+  * Channel: Fix refeeds and reloads during graceful restart.
+  * Export: Mitigate duplicate withdrawals.
+  * Filters: Fix crash when setting gateway on recursive nexthops.
+  * Filters: Fix path matching when AS path is too long.
+  * Table: Fix RCU double-anchor.
+  * Table: Propagate thread group config into aux.
+  * RCU: Catch leaks sooner.
+
+-------------------------------------------------------------------
+Mon May 25 18:09:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.0
+  * BGP: Export memory consumption optimization.
+  * BGP: Fix hostentry handling of MPLS and EVPN routes.
+  * BGP: Block connections on explicitly disabled instances.
+  * Proto/CLI: Lock show-commands.
+  * Proto: Loop persists through down state.
+  * Nest/CLI: Show only the longest prefix match in
+    'show route for'.
+  * Nest: Lockless attribute cache.
+  * Removed locking in random number generation.
+  * ASPA: Fix downstream validation.
+  * BMP: Fix route sending.
+  * BGP: Fix route refresh after restart.
+  * BGP: Fix dynamic peer connection.
+  * Filters: Fix string attributes.
+  * Filters: Fix ROA check autoreload reconfiguration.
+  * Logging: Fix error handling.
+  * Kernel: Fix graceful recovery.
+  * Pipe: Fix rare collision bug.
+  * Config: Allow keyword redefinition.
+
+-------------------------------------------------------------------
 Tue Apr  7 21:36:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.1
