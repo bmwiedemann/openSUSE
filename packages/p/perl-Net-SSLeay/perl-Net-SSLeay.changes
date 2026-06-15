@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Jun 14 13:21:04 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Remove test-32_x509_get_cert_info-allow-single-colon.patch (fixed upstream)
+
+-------------------------------------------------------------------
+Sun Mar 22 06:15:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.960.0 (1.96)
+   see /usr/share/doc/packages/perl-Net-SSLeay/Changes
+
+  1.96 2026-03-21
+  	- New stable release incorporating all changes from developer releases
+  	  1.95_01 to 1.95_03.
+  	- Summary of major changes since version 1.94:
+  	  - Net::SSLeay now officially supports all stable releases of OpenSSL
+  	    3.3 - 3.6 and LibreSSL 3.9 - 4.2, including the vendor-supplied
+  	    version of OpenSSL 3 on VMS.
+  	  - Several libssl functions allowing for the control of supported
+  	    signature algorithms are now exposed.
+  1.95_03 2026-03-20
+  	- In 67_sigalgs.t, load the certificates and keys before forking
+  	  to avoid a failure on MSWin32.
+  1.95_02 2026-03-18
+  	- Support SSL_CTX_set1_sigalgs_list and
+  	  SSL_CTX_set1_client_sigalgs_list. Contributed by Wes Malone.
+  	- Support SSL_set1_sigalgs_list, SSL_set1_client_sigalgs_list,
+  	  SSL_get_sigalgs and SSL_get_shared_sigalgs, and add the
+  	  function SSL_CTX_set_cert_cb.
+  	- Add test file 67_sigalgs.t for the sigalgs functions.
+  1.95_01 2026-02-05
+  	- Skip NPN tests when NPN is disabled in OpenSSL instead o
+  	  assuming NPN is always enabled. Reported by GitHub user
+  	  dilyanpalauzov Дилян Палаузов.
+  	- Update GitHub Actions CI workflow. A number of test jobs
+  	  were broken because some GitHub runners were discontinued,
+  	  changes in QEMU setup, changes in Cygwin, etc.
+  	- Adjust test 32_x509_get_cert_info.t to match formatting
+  	  changes in OpenSSL 3.4.0 and 3.4.1. Thanks to Sebastian
+  	  Andrzej Siewior for the patches.
+  	- OpenSSL 3.9.0 and later remove EVP_add_digest(). Thanks to
+  	  Derrik Pates for the report and patch.
+  	- Increase timeout in 62_threads-ctx_new-deadlock.t to allow
+  	  the test to pass on very slow platforms.
+  	- Add missing documentation for STACK_OF() free functions
+  	  sk_X509_free and sk_X509_INFO_free. Contributed by Marc
+  	  Reisner
+  	- Add $prefx/lib/64 to lib paths in Makefile.PL for
+  	  Illumos. Contributed by Marcel Telka.
+  	- Support vendor-supplied OpenSSL 3.x on VMS and update %ENV
+  	  modification in test 10_rand.t to work on VMS. Contributed
+  	  by Craig Barry.
+  	- Compiler -D switches Makefile.PL sets are no longer added to
+  	  the MakeMaker CCFLAG attribute because of portability
+  	  reasons. The switches are now passed either via
+  	  WriteMakefile() or appending them to 'perl Makefile.PL ...'
+  	  DEFINE argument. CCFLAG problem diagnosed by Craig
+  	  Barry. Fixes by Craig Barry and Heikki Vatiainen.
+  	- Update GitHub Actions CI testing:
+  	  - Perl on Ubuntu 24.04: Add Perl 5.38, 5.40 and 5.42, add
+  	    OpenSSL 3.3, 3.4 and 3.5 minor releases, add LibreSSL 3.9,
+  	    4.0 and 4.1 release branches.
+  	  - Alpine Linux: Remove 3.15, 3.16 and 3.17. Add 3.19, 3.20,
+  	    3.21 and 3.22.
+  	  - Freebsd: Add 14.3 and replace 13.2 with 13.5.
+  	  - OpenBSD: Add 7.6 and 7.7. Remove 7.2 and 7.3.
+  	  - NetBSD: Add 10.1 and replace 9.3 with 9.4.
+  	- Update test 62_threads-ctx_new-deadlock.t to work with
+  	  LibreSSL 4.1.0.
+
+-------------------------------------------------------------------
 Wed Apr  9 20:34:23 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Fix build with openssl >= 3.4.1

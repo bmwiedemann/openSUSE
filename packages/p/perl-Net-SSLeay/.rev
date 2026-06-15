@@ -386,4 +386,41 @@
   * Add patch test-32_x509_get_cert_info-allow-single-colon.patch (forwarded request 1268244 from lmulling)</comment>
     <requestid>1269239</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>c40a6e3c8d0175f558eb74370127c7b7</srcmd5>
+    <version>1.960.0</version>
+    <time>1781545258</time>
+    <user>anag_factory</user>
+    <comment>- Remove test-32_x509_get_cert_info-allow-single-colon.patch (fixed upstream)
+
+- updated to 1.960.0 (1.96)
+   see /usr/share/doc/packages/perl-Net-SSLeay/Changes
+  1.96 2026-03-21
+  	- New stable release incorporating all changes from developer releases
+  	  1.95_01 to 1.95_03.
+  	- Summary of major changes since version 1.94:
+  	  - Net::SSLeay now officially supports all stable releases of OpenSSL
+  	    3.3 - 3.6 and LibreSSL 3.9 - 4.2, including the vendor-supplied
+  	    version of OpenSSL 3 on VMS.
+  	  - Several libssl functions allowing for the control of supported
+  	    signature algorithms are now exposed.
+  1.95_03 2026-03-20
+  	- In 67_sigalgs.t, load the certificates and keys before forking
+  	  to avoid a failure on MSWin32.
+  1.95_02 2026-03-18
+  	- Support SSL_CTX_set1_sigalgs_list and
+  	  SSL_CTX_set1_client_sigalgs_list. Contributed by Wes Malone.
+  	- Support SSL_set1_sigalgs_list, SSL_set1_client_sigalgs_list,
+  	  SSL_get_sigalgs and SSL_get_shared_sigalgs, and add the
+  	  function SSL_CTX_set_cert_cb.
+  	- Add test file 67_sigalgs.t for the sigalgs functions.
+  1.95_01 2026-02-05
+  	- Skip NPN tests when NPN is disabled in OpenSSL instead o
+  	  assuming NPN is always enabled. Reported by GitHub user
+  	  dilyanpalauzov Дилян Палаузов.
+  	- Update GitHub Actions CI workflow. A number of test jobs
+  	  were broken because some GitHub runners were discontinued,
+  	  changes in QEMU setup, changes in Cygwin, etc.</comment>
+    <requestid>1359509</requestid>
+  </revision>
 </revisionlist>
