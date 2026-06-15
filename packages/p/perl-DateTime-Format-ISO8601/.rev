@@ -46,4 +46,24 @@
     <comment></comment>
     <requestid>1269363</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ee79e875988089104a2d35b03ab829ea</srcmd5>
+    <version>0.190.0</version>
+    <time>1781545358</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.190.0 (0.19)
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+  0.19     2026-03-12
+  - Release version 0.18-TRIAL as production release.
+  - 0.18-TRIAL Fixed an issue calculating nanoseconds on certain architectures where the precision
+  of integers caused the nanoseconds calculation to round incorrectly.  Occurred on
+  Raspberry Pi with -Duselongdouble (arm64). Fixed by @timlegge (Timothy Legge).
+  Fixes GH #16 via PR #19.
+  0.18     2026-03-10 (TRIAL RELEASE)
+  - Fixed an issue calculating nanoseconds on certain architectures where the precision
+  of integers caused the nanoseconds calculation to round incorrectly.  Occurred on
+  Raspberry Pi with -Duselongdouble (arm64). Fixed by @timlegge (Timothy Legge).
+  Fixes GH #16 via PR #19.</comment>
+    <requestid>1359242</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Mar 14 06:03:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.190.0 (0.19)
+   see /usr/share/doc/packages/perl-DateTime-Format-ISO8601/Changes
+
+  0.19     2026-03-12
+  - Release version 0.18-TRIAL as production release.
+  - 0.18-TRIAL Fixed an issue calculating nanoseconds on certain architectures where the precision
+  of integers caused the nanoseconds calculation to round incorrectly.  Occurred on
+  Raspberry Pi with -Duselongdouble (arm64). Fixed by @timlegge (Timothy Legge).
+  Fixes GH #16 via PR #19.
+  0.18     2026-03-10 (TRIAL RELEASE)
+  - Fixed an issue calculating nanoseconds on certain architectures where the precision
+  of integers caused the nanoseconds calculation to round incorrectly.  Occurred on
+  Raspberry Pi with -Duselongdouble (arm64). Fixed by @timlegge (Timothy Legge).
+  Fixes GH #16 via PR #19.
+
+-------------------------------------------------------------------
 Sun Feb 23 05:31:55 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.170.0 (0.17)
