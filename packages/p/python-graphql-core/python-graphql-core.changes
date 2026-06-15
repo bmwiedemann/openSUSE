@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:10:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.11:
+  * Allow configuration of the `ofType` introspection depth
+  * Add support for directives on directive definitions
+  * Restore variable own-property checks in `value_from_ast`
+  * Remove unused variable-definition tracking in
+    `ValuesOfCorrectTypeRule`
+- update to 3.2.10:
+  * New features:
+  * Add support for schema coordinates (parsing and resolving)
+  * Support descriptions on executable definitions (e.g. variable
+    definitions)
+  * Add a `max_coercion_errors` option
+  * Fix incorrect validation errors when variable descriptions
+    are used
+  * Don't add sibling errors after null propagation has occurred
+  * Remove erroneous `oneOf` validation from the "values of
+    correct type" rule
+  * Validate that nullable variables aren't passed to `oneOf`
+    input object fields (per spec)
+  * Catch unhandled exceptions during abstract type resolution
+- update to 3.2.9:
+  * Fix `OverlappingFieldsCanBeMergedRule` to catch field-merge
+    conflicts hidden behind nested fragments
+  * Fix handling of empty selection sets
+  * Correctly type extensions in `GraphQLFormattedError`
+  * Add `kind` to the introspection query/mutation/subscription
+    root types
+  * Expose `token_count` on `DocumentNode`
+  * Preserve schema and input-field properties (e.g.
+    descriptions) when sorting
+
+-------------------------------------------------------------------
 Mon Mar 23 10:39:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.8:

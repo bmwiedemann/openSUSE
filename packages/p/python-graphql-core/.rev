@@ -108,4 +108,41 @@
   * match GrapqhQL.js v15.1.0</comment>
     <requestid>1342011</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f0b9568a1cfff0ad6a9b70b2be8f39ca</srcmd5>
+    <version>3.2.11</version>
+    <time>1781545373</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.11:
+  * Allow configuration of the `ofType` introspection depth
+  * Add support for directives on directive definitions
+  * Restore variable own-property checks in `value_from_ast`
+  * Remove unused variable-definition tracking in
+    `ValuesOfCorrectTypeRule`
+- update to 3.2.10:
+  * New features:
+  * Add support for schema coordinates (parsing and resolving)
+  * Support descriptions on executable definitions (e.g. variable
+    definitions)
+  * Add a `max_coercion_errors` option
+  * Fix incorrect validation errors when variable descriptions
+    are used
+  * Don't add sibling errors after null propagation has occurred
+  * Remove erroneous `oneOf` validation from the &quot;values of
+    correct type&quot; rule
+  * Validate that nullable variables aren't passed to `oneOf`
+    input object fields (per spec)
+  * Catch unhandled exceptions during abstract type resolution
+- update to 3.2.9:
+  * Fix `OverlappingFieldsCanBeMergedRule` to catch field-merge
+    conflicts hidden behind nested fragments
+  * Fix handling of empty selection sets
+  * Correctly type extensions in `GraphQLFormattedError`
+  * Add `kind` to the introspection query/mutation/subscription
+    root types
+  * Expose `token_count` on `DocumentNode`
+  * Preserve schema and input-field properties (e.g.
+    descriptions) when sorting</comment>
+    <requestid>1359257</requestid>
+  </revision>
 </revisionlist>
