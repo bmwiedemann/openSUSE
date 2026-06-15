@@ -1,0 +1,26 @@
+From 4196617a1817a29ddf54a7a666099aa02fe510f1 Mon Sep 17 00:00:00 2001
+From: Nils Goroll <nils.goroll@uplex.de>
+Date: Mon, 23 Mar 2026 17:24:26 +0100
+Subject: [PATCH] Fix DESTDIR builds
+
+Ref 43dcc6f024a8a2bd6bc6f2970046c08859e17749
+---
+ Makefile.am | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index e77d54187..c1f87a253 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -44,7 +44,7 @@ AM_DISTCHECK_CONFIGURE_FLAGS += --with-unwind
+ endif
+ 
+ install-data-local:
+-	$(install_sh) -d -m 0755 "${VINYL_STATE_DIR}"
++	$(install_sh) -d -m 0755 "$(DESTDIR)/${VINYL_STATE_DIR}"
+ 
+ distclean-local:
+ 	-find . '(' -name '*.gcda' -o -name '*.gcda' ')' -exec rm '{}' ';'
+-- 
+2.54.0
+

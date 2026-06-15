@@ -25,7 +25,7 @@
 %define _fillupdir %_localstatedir/adm/fillup-templates
 %endif
 Name:           vinyl-cache
-Version:        9.0.0
+Version:        9.0.1
 Release:        0
 Summary:        Accelerator for HTTP services
 License:        BSD-2-Clause
@@ -38,7 +38,10 @@ Source5:        vinyl-cache.logrotate
 Source7:        vinyl-cache.service
 Source8:        vinyl-cachelog.service
 Source9:        vinyl-cache_reload_vcl
+Patch1:         0001-Fix-DESTDIR-builds.patch
 Patch2:         uninit.patch
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  libxslt-devel
 BuildRequires:  netcfg
 BuildRequires:  ncurses-devel
@@ -105,8 +108,8 @@ export CFLAGS="%optflags -fcommon -fstack-protector"
 %ifarch %ix86
 export CFLAGS="$CFLAGS -ffloat-store -fexcess-precision=standard"
 %endif
-%configure --disable-static --docdir="%_docdir/%name" \
-           --localstatedir="%_localstatedir/cache/"
+autoreconf -fiv
+%configure --disable-static --docdir="%_docdir/%name"
 %make_build V=1
 
 %install

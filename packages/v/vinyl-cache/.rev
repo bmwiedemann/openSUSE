@@ -7,4 +7,12 @@
     <comment>conflict; not only are manpages shared, but there is no ideal way to automatically move config files from varnish to become vinyl</comment>
     <requestid>1352430</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60181c881a8ce586262d65823096857b</srcmd5>
+    <version>9.0.1</version>
+    <time>1781545811</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 9.0.1</comment>
+    <requestid>1359515</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:29:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 9.0.1
+  * A deficiency in HTTP/2 request parsing has been fixed by
+    properly comparing pseudo-header names instead of doing a
+    prefix match. [boo#1267553, CVE-2026-50052]
+- Add 0001-Fix-DESTDIR-builds.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 15:04:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 9.0.0
