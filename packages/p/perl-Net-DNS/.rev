@@ -667,4 +667,13 @@ Personally I would make this even &quot;required&quot; instead of
    see /usr/share/doc/packages/perl-Net-DNS/Changes</comment>
     <requestid>1328816</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>55c0ef5b12239b5db1dc957364b4b2e0</srcmd5>
+    <version>1.550.0</version>
+    <time>1781545208</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.550.0 (1.55)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes</comment>
+    <requestid>1359243</requestid>
+  </revision>
 </revisionlist>
