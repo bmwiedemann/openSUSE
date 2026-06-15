@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:43:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.0:
+  * Add install_patch() function for easy usage, updated docs
+
+-------------------------------------------------------------------
 Wed Dec 10 08:55:19 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Initial packaging effort for python-eval-type-backport 0.3.1.

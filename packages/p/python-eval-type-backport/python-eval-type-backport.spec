@@ -1,7 +1,7 @@
 #
-# spec file for package python-eval_type_backport
+# spec file for package python-eval-type-backport
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-eval-type-backport
-Version:        0.3.1
+Version:        0.4.0
 Release:        0
 Summary:        `typing._eval_type` for older Python versions
 License:        MIT
