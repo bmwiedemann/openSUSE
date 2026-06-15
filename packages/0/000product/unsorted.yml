@@ -8317,6 +8317,7 @@ unsorted:
   - guice-parent 
   - guice-servlet 
   - guice-throwingproviders 
+  - guile-arguments 
   - guile-bytestructures 
   - guile-cairo 
   - guile-cairo-devel 
@@ -12164,10 +12165,10 @@ unsorted:
   - libaudaspace-py1_9 
   - libaudaspace1_9 
   - libaudcore6 
-  - libaudgui6 
+  - libaudgui7 
   - libaudiofile1 
   - libaudqt4 
-  - libaudtag3 
+  - libaudtag4 
   - libaugeas0-32bit 
   - libauparse0-32bit 
   - libautotrace3 
@@ -13136,7 +13137,7 @@ unsorted:
   - libetonyek-devel-doc 
   - libetonyek-tools 
   - libetpan-devel 
-  - libetpan20 
+  - libetpan26 
   - libetrophy0 
   - libev-devel 
   - libev-libevent-devel 
@@ -13453,7 +13454,7 @@ unsorted:
   - libftxf1 
   - libftxr-devel 
   - libftxr1 
-  - libftxui5_0_0 
+  - libftxui7 
   - libfunambol-9_0_1 
   - libfunambol-devel 
   - libfuse2-32bit 
@@ -14612,8 +14613,8 @@ unsorted:
   - liblz4-1-32bit 
   - liblz4-devel 
   - liblzma5-32bit 
-  - liblzmasdk25 
-  - liblzmasdk25-x86-64-v3 
+  - liblzmasdk26 
+  - liblzmasdk26-x86-64-v3 
   - liblzo2-2-32bit 
   - libm2cor18 
   - libm2cor18-32bit 
@@ -16749,7 +16750,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent43 
+  - libtorrent44 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -24260,8 +24261,6 @@ unsorted:
   - python3-pycadf-common 
   - python3-pycadf-doc 
   - python3-pycdlib-common 
-  - python3-pyginac 
-  - python3-pyginac-devel 
   - python3-pylibiio 
   - python3-pymod2pkg 
   - python3-pynest2d 
@@ -24965,6 +24964,7 @@ unsorted:
   - python311-azure-mgmt-hardwaresecuritymodules 
   - python311-azure-mgmt-hdinsight 
   - python311-azure-mgmt-hdinsightcontainers 
+  - python311-azure-mgmt-healthbot 
   - python311-azure-mgmt-healthcareapis 
   - python311-azure-mgmt-healthdataaiservices 
   - python311-azure-mgmt-horizondb 
@@ -25016,6 +25016,7 @@ unsorted:
   - python311-azure-mgmt-monitor 
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-mysqlflexibleservers 
+  - python311-azure-mgmt-napsteromniagentapi 
   - python311-azure-mgmt-neonpostgres 
   - python311-azure-mgmt-netapp 
   - python311-azure-mgmt-network 
@@ -25872,6 +25873,7 @@ unsorted:
   - python311-gobject-devel 
   - python311-gobject-stubs 
   - python311-gobject-stubs-gtk3 
+  - python311-google-adk 
   - python311-google-ai-generativelanguage 
   - python311-google-api-core 
   - python311-google-api-python-client 
@@ -27478,7 +27480,6 @@ unsorted:
   - python311-repoze.lru 
   - python311-repoze.sphinx.autointerface 
   - python311-repoze.who 
-  - python311-reproject 
   - python311-requestbuilder 
   - python311-requests-aws 
   - python311-requests-cache 
@@ -28881,6 +28882,7 @@ unsorted:
   - python313-azure-mgmt-hardwaresecuritymodules 
   - python313-azure-mgmt-hdinsight 
   - python313-azure-mgmt-hdinsightcontainers 
+  - python313-azure-mgmt-healthbot 
   - python313-azure-mgmt-healthcareapis 
   - python313-azure-mgmt-healthdataaiservices 
   - python313-azure-mgmt-horizondb 
@@ -28932,6 +28934,7 @@ unsorted:
   - python313-azure-mgmt-monitor 
   - python313-azure-mgmt-msi 
   - python313-azure-mgmt-mysqlflexibleservers 
+  - python313-azure-mgmt-napsteromniagentapi 
   - python313-azure-mgmt-neonpostgres 
   - python313-azure-mgmt-netapp 
   - python313-azure-mgmt-network 
@@ -29795,6 +29798,7 @@ unsorted:
   - python313-gobject-devel 
   - python313-gobject-stubs 
   - python313-gobject-stubs-gtk3 
+  - python313-google-adk 
   - python313-google-ai-generativelanguage 
   - python313-google-api-core 
   - python313-google-api-python-client 
@@ -32830,6 +32834,7 @@ unsorted:
   - python314-azure-mgmt-hardwaresecuritymodules 
   - python314-azure-mgmt-hdinsight 
   - python314-azure-mgmt-hdinsightcontainers 
+  - python314-azure-mgmt-healthbot 
   - python314-azure-mgmt-healthcareapis 
   - python314-azure-mgmt-healthdataaiservices 
   - python314-azure-mgmt-horizondb 
@@ -32881,6 +32886,7 @@ unsorted:
   - python314-azure-mgmt-monitor 
   - python314-azure-mgmt-msi 
   - python314-azure-mgmt-mysqlflexibleservers 
+  - python314-azure-mgmt-napsteromniagentapi 
   - python314-azure-mgmt-neonpostgres 
   - python314-azure-mgmt-netapp 
   - python314-azure-mgmt-network 
@@ -33757,6 +33763,7 @@ unsorted:
   - python314-gobject-devel 
   - python314-gobject-stubs 
   - python314-gobject-stubs-gtk3 
+  - python314-google-adk 
   - python314-google-ai-generativelanguage 
   - python314-google-api-core 
   - python314-google-api-python-client 
