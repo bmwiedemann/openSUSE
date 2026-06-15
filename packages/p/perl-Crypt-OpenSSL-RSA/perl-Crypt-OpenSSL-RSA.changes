@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 12:50:31 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Rebase Crypt-OpenSSL-RSA.patch
+
+-------------------------------------------------------------------
+Sun Jun 14 12:37:07 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- updated to 0.410.0 (0.41)
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-RSA/Changes
+
+-------------------------------------------------------------------
 Thu Oct 30 05:32:10 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.370.0 (0.37)

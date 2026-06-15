@@ -1,10 +1,10 @@
-Index: Crypt-OpenSSL-RSA-0.32/RSA.xs
-===================================================================
---- Crypt-OpenSSL-RSA-0.32.orig/RSA.xs
-+++ Crypt-OpenSSL-RSA-0.32/RSA.xs
-@@ -40,7 +40,7 @@ void croakSsl(char* p_file, int p_line)
- 
- #define CHECK_OPEN_SSL(p_result) if (!(p_result)) croakSsl(__FILE__, __LINE__);
+diff --git a/RSA.xs b/RSA.xs
+index 238bebb..377d30d 100644
+--- a/RSA.xs
++++ b/RSA.xs
+@@ -138,7 +138,7 @@ void croakSsl(char* p_file, int p_line)
+ #define CHECK_OPEN_SSL_BIO(p_result, bio) \
+     if (!(p_result)) { BIO_free(bio); croakSsl(__FILE__, __LINE__); }
  
 -#define PACKAGE_CROAK(p_message) croak("%s", (p_message))
 +#define PACKAGE_CROAK(p_message) croak("%s:%d: %s", __FILE__, __LINE__, (p_message))

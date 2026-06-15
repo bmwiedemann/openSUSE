@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Crypt-OpenSSL-RSA
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name Crypt-OpenSSL-RSA
 Name:           perl-Crypt-OpenSSL-RSA
-Version:        0.370.0
+Version:        0.410.0
 Release:        0
-# 0.37 -> normalize -> 0.370.0
-%define cpan_version 0.37
+# 0.41 -> normalize -> 0.410.0
+%define cpan_version 0.41
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        RSA encoding and decoding, using the openSSL libraries
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/T/TO/TODDR/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TIMLEGGE/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
 Patch0:         Crypt-OpenSSL-RSA.patch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Crypt::OpenSSL::Bignum)
 BuildRequires:  perl(Crypt::OpenSSL::Guess) >= 0.110
 BuildRequires:  perl(Crypt::OpenSSL::Random)
+Requires:       perl(Crypt::OpenSSL::Bignum)
 Requires:       perl(Crypt::OpenSSL::Random)
 Provides:       perl(Crypt::OpenSSL::RSA) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(Crypt::OpenSSL::Bignum)
 %{perl_requires}
 # MANUAL BEGIN
 BuildRequires:  openssl-devel
@@ -68,7 +69,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README README.md
+%doc AI_POLICY.md Changes CONTRIBUTING.md README.md SECURITY.md
 %license LICENSE
 
 %changelog

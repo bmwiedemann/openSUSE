@@ -220,4 +220,15 @@
        - Add support for use_pkcs1_pss_padding with fatal error if RSA-PSS is used for encryption operations</comment>
     <requestid>1317137</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>30372f5184a7717a45e23351b70c44bc</srcmd5>
+    <version>0.410.0</version>
+    <time>1781545209</time>
+    <user>anag_factory</user>
+    <comment>- Rebase Crypt-OpenSSL-RSA.patch
+
+- updated to 0.410.0 (0.41)
+   see /usr/share/doc/packages/perl-Crypt-OpenSSL-RSA/Changes</comment>
+    <requestid>1359244</requestid>
+  </revision>
 </revisionlist>
