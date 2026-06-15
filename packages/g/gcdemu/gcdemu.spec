@@ -1,7 +1,7 @@
 #
 # spec file for package gcdemu
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %define __requires_exclude typelib\\(AppIndicator(|3)\\)
 Name:           gcdemu
-Version:        3.2.6
+Version:        3.3.1
 Release:        0
 Summary:        GTK+ application for controlling CDEmu daemon
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://cdemu.sourceforge.io/
-Source0:        https://sourceforge.net/projects/cdemu/files/gcdemu/gcdemu-%{version}.tar.xz
+Source0:        https://sourceforge.net/projects/cdemu/files/gcdemu/gcdemu-%version.tar.xz
 BuildRequires:  cmake >= 3.7
 BuildRequires:  gdk-pixbuf
 BuildRequires:  gettext >= 0.15
@@ -35,7 +35,7 @@ BuildRequires:  python3-gobject >= 3.0.0
 BuildRequires:  update-desktop-files
 Requires:       cdemu-daemon >= 3.0.0
 Requires:       python3-gobject-Gdk
-Recommends:     %{name}-lang
+Recommends:     %name-lang
 Recommends:     typelib(AppIndicator3)
 BuildArch:      noarch
 %glib2_gsettings_schema_requires
@@ -68,8 +68,8 @@ Features:
 
 %install
 %cmake_install
-%suse_update_desktop_file -r %{name} System Filesystem
-%find_lang %{name}
+%suse_update_desktop_file -r %name System Filesystem
+%find_lang %name
 
 %post
 %glib2_gsettings_schema_post
@@ -80,12 +80,11 @@ Features:
 %files
 %license COPYING
 %doc AUTHORS README
-%{_bindir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{name}*
-%{_datadir}/glib-2.0/schemas/*%{name}.gschema.xml
+%_bindir/%name
+%_datadir/applications/%name.desktop
+%_datadir/pixmaps/%{name}*
+%_datadir/glib-2.0/schemas/*%name.gschema.xml
 
-%files lang -f %{name}.lang
-%defattr(-,root,root)
+%files lang -f %name.lang
 
 %changelog

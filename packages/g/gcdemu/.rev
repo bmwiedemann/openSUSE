@@ -55,4 +55,31 @@
     <comment>- Update to version 3.2.6:</comment>
     <requestid>1035777</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c32b7a14fb296f0b82b544487d8f0d51</srcmd5>
+    <version>3.3.0</version>
+    <time>1774470073</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.0:
+  * Bump CMake requirement to 3.16.
+  * Bump Python requirement to 3.8 and modernize code to
+    Python 3 only.
+  * Add AppStream metadata.
+  * Add Georgian translation.
+  * Modernize Python code: drop Python 2 compatibility, use
+    f-strings, super(), and refactored GObject Introspection
+    imports.
+  * Improve D-Bus communication, signal handling, and error
+    reporting.
+  * General code cleanup and minor bug fixes. (forwarded request 1342313 from dirkmueller)</comment>
+    <requestid>1342486</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>c2e776617069ebaad6f8083bc708c44d</srcmd5>
+    <version>3.3.1</version>
+    <time>1781545404</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.1</comment>
+    <requestid>1359281</requestid>
+  </revision>
 </revisionlist>
