@@ -518,4 +518,26 @@
   * apply patch for in row splitting</comment>
     <requestid>1329544</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>464fb901e90ea20b0679eb5711df70f8</srcmd5>
+    <version>4.5.1</version>
+    <time>1781545438</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.5.1:
+  * fix tests/runAll.py to avoid issues with sys.args
+  * fix no such attribute in lib.utils.rl_warn
+  * SVGCanvas new keyword argument fontSizer defaulting to 'px'
+  * add rl_warn to lib/utils.py and use in tables (via extra
+    allowTableBoundsErrors bits).
+  * rl_config.register_reset can have callback and now handles
+    methods
+  * shapes.py fix Group.asDrawing
+  * fix __rl_get_module__ for Python 3.15
+  * moved extformat.py elsewhere
+  * added combineTransforms
+  * improve colors.cssParse
+  * change None to mean no-draw in acroform.py
+  * extend allowTableBoundsErrors scope</comment>
+    <requestid>1359295</requestid>
+  </revision>
 </revisionlist>

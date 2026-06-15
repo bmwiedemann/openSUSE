@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 14 18:54:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.5.1:
+  * fix tests/runAll.py to avoid issues with sys.args
+  * fix no such attribute in lib.utils.rl_warn
+  * SVGCanvas new keyword argument fontSizer defaulting to 'px'
+  * add rl_warn to lib/utils.py and use in tables (via extra
+    allowTableBoundsErrors bits).
+  * rl_config.register_reset can have callback and now handles
+    methods
+  * shapes.py fix Group.asDrawing
+  * fix __rl_get_module__ for Python 3.15
+  * moved extformat.py elsewhere
+  * added combineTransforms
+  * improve colors.cssParse
+  * change None to mean no-draw in acroform.py
+  * extend allowTableBoundsErrors scope
+
+-------------------------------------------------------------------
 Tue Jan 27 17:20:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.9:
