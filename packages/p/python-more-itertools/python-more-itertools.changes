@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:49:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 11.1.0:
+  * `numeric_range` was updated to fix its handling of empty
+    ranges (thanks to rhettinger)
+  * `peekable` was updated to fix typing issues (thanks to
+    DORI2001, powellnorma, Pandede, m9810223, and rhettinger)
+  * `islice_extended` was optimized for memory usage and speed
+    (thanks to ben42code, rhettinger, and pochmann)
+  * `serialize` now supports the generator methods `throw`,
+    `send`, and `close` (thanks to rhettinger)
+  * `seekable` now supports implements `__getitem__` for cached
+    elements (thanks to SAY-5, jenstroeger, and JamesParrott)
+
+-------------------------------------------------------------------
 Fri Apr 10 23:28:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.0.2:

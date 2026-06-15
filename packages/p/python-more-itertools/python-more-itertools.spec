@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-more-itertools
-Version:        11.0.2
+Version:        11.1.0
 Release:        0
 Summary:        More routines for operating on iterables, beyond itertools
 License:        MIT

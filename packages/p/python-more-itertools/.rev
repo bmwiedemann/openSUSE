@@ -554,4 +554,22 @@
     enforce sequential access</comment>
     <requestid>1345972</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>eef027c3f6f7c10abb58f8c10dc325ed</srcmd5>
+    <version>11.1.0</version>
+    <time>1781545215</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.1.0:
+  * `numeric_range` was updated to fix its handling of empty
+    ranges (thanks to rhettinger)
+  * `peekable` was updated to fix typing issues (thanks to
+    DORI2001, powellnorma, Pandede, m9810223, and rhettinger)
+  * `islice_extended` was optimized for memory usage and speed
+    (thanks to ben42code, rhettinger, and pochmann)
+  * `serialize` now supports the generator methods `throw`,
+    `send`, and `close` (thanks to rhettinger)
+  * `seekable` now supports implements `__getitem__` for cached
+    elements (thanks to SAY-5, jenstroeger, and JamesParrott)</comment>
+    <requestid>1359270</requestid>
+  </revision>
 </revisionlist>
