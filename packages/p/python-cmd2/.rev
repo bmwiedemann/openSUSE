@@ -719,4 +719,44 @@
     argument to be consistent with the `rich.console.Console` class.</comment>
     <requestid>1339303</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>71d77b17e2b50d5a589602096e41756d</srcmd5>
+    <version>3.5.1</version>
+    <time>1780920317</time>
+    <user>anag_factory</user>
+    <comment>- Add failing_tests.patch (gh#python-cmd2/cmd2!1678) to make the
+  test suite work with the latest version of rich.
+- Update to 3.5.1:
+  - Fixed ArgparseCompleter.print_help() not passing file stream
+    to recursive call.
+  - Fixed issue where constants.REDIRECTION_TOKENS was being
+    mutated.
+- Update to 3.5.0:
+  - Fixed issue where Rich stripped colors from text in test
+    environments where TERM=dumb.
+</comment>
+    <requestid>1357682</requestid>
+  </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>de653fd442f917b1a1246ad0aca28a0e</srcmd5>
+    <version>4.0.0</version>
+    <time>1781545241</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.0:
+  * Previously, `cmd2` relied on the GNU Readline library for
+    command history. As of version 4.0.0,
+  * `cmd2` has migrated to prompt-toolkit for
+  * all input and history handling.
+  * [cmd2.Cmd][] uses `prompt-toolkit` to provide familiar
+    command-line history capabilities while also
+  * `prompt-toolkit` saves everything you type, whether it is a
+    valid command or not. `cmd2` only saves input to internal
+    history if the command parses successfully and is a valid
+    command. This design choice was intentional, because the
+    contents of history can be saved to a file as a script, or
+    can be re-run. Not saving invalid input reduces unintentional
+    errors when doing so.
+- drop failing_tests.patch (upstream)</comment>
+    <requestid>1359331</requestid>
+  </revision>
 </revisionlist>

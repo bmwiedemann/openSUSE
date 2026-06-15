@@ -17,12 +17,14 @@
 
 
 Name:           python-cmd2
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        Extra features for standard library's cmd module
 License:        MIT
 URL:            https://github.com/python-cmd2/cmd2
 Source:         https://github.com/python-cmd2/cmd2/archive/refs/tags/%{version}.tar.gz#/cmd2-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE cmd2-no-coverage-tests.patch mcepl@suse.com
+# switch off code coverage measurement
 Patch0:         cmd2-no-coverage-tests.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
@@ -31,16 +33,18 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  vim
 Requires:       python
+Requires:       python-prompt-toolkit >= 3.0.52
 Requires:       python-pyperclip >= 1.8.2
-Requires:       python-rich >= 14.3.0
-Requires:       python-rich-argparse >= 1.7.1
+Requires:       python-rich >= 15.0.0
+Requires:       python-rich-argparse >= 1.7.2
 BuildArch:      noarch
 # SECTION Test requirements
+BuildRequires:  %{python_module prompt-toolkit >= 3.0.52}
 BuildRequires:  %{python_module pyperclip >= 1.8.2}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rich >= 14.3.0}
-BuildRequires:  %{python_module rich-argparse >= 1.7.1}
+BuildRequires:  %{python_module pytest >= 8.1.1}
+BuildRequires:  %{python_module pytest-mock >= 3.14.1}
+BuildRequires:  %{python_module rich >= 15.0.0}
+BuildRequires:  %{python_module rich-argparse >= 1.7.2}
 BuildRequires:  vim
 # /SECTION
 %python_subpackages

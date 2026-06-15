@@ -1,8 +1,12 @@
-Index: cmd2-3.2.0/pyproject.toml
+---
+ pyproject.toml |    6 ------
+ 1 file changed, 6 deletions(-)
+
+Index: cmd2-4.0.0/pyproject.toml
 ===================================================================
---- cmd2-3.2.0.orig/pyproject.toml
-+++ cmd2-3.2.0/pyproject.toml
-@@ -97,12 +97,6 @@ warn_unused_ignores = false
+--- cmd2-4.0.0.orig/pyproject.toml
++++ cmd2-4.0.0/pyproject.toml
+@@ -93,12 +93,6 @@ warn_unused_ignores = false
  
  [tool.pytest.ini_options]
  testpaths = ["tests"]
