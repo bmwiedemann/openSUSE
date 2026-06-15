@@ -82,4 +82,33 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264865</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1aeb7980de7cc0442cc87487a5931473</srcmd5>
+    <version>5.0.1</version>
+    <time>1781545385</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.0.1:
+  * Fix a false recognition of Microsoft bounces from the
+    Groupwise detector. :GL:`16` Found and fixed by Mark Sapiro.
+  * Major project management modernization.
+  * Add Mark as a named co-owner.
+  * Drop Python 3.9, add Python 3.13, 3.14, and 3.15.
+  * Added recognition for a non-compliant Earthlink DSN.
+  * Fixed a long-standing bug in the Caiwireless detector that
+    returned a set of individual address characters instead of
+    the bouncing address itself, and added a test exercising the
+    previously buggy return path.
+  * Replaced deprecated/removed pkg_resources.
+  * Replaced the zope.interface dependency with typing.Protocol;
+    the IBounceDetector marker interface has been renamed to
+    BounceDetector.  This is a backwards incompatible change.
+  * The return types of scan_message, all_failures, and detector
+    process methods are now frozenset[bytes] instead of mutable
+    set[bytes]; the NoTemporaryFailures, NoPermanentFailures, and
+    NoFailures sentinel constants are correspondingly empty
+    frozensets rather than empty tuples.  This is a backwards
+    incompatible change.
+- Remove use-correct-assertion-methods.patch (obsolete).</comment>
+    <requestid>1359263</requestid>
+  </revision>
 </revisionlist>
