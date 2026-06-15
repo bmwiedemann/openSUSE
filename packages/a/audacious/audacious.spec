@@ -19,9 +19,9 @@
 %define aud_plugin_ver_min 4.6
 %define aud_plugin_ver_max 4.6.99
 %define core_soname 6
-%define gtk_soname 6
+%define gtk_soname 7
 %define qt_soname 4
-%define tag_soname 3
+%define tag_soname 4
 
 %if 0%{?suse_version} < 1600
 # on Leap/SLE 15 force gcc-13 as QT6 requires C++17 compatibility
@@ -29,7 +29,7 @@
 %endif
 
 Name:           audacious
-Version:        4.6
+Version:        4.6.1
 Release:        0
 Summary:        Audio player with graphical UI and library functionality
 License:        BSD-2-Clause
