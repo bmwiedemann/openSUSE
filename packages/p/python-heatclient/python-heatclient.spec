@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-heatclient
-Version:        5.1.0
+Version:        5.2.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Heat
 License:        Apache-2.0

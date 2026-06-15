@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 14 21:28:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.2.0:
+  * tox: Use new constraints option
+  * tox: Use new constraints option
+  * Fix: Add event ID to default stack event list output
+  * Fix: Python 3.14 compatibility for file URL construction
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 18:11:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:

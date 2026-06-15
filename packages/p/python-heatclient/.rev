@@ -749,4 +749,17 @@
   * Update master for stable/2025.2</comment>
     <requestid>1337816</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9ba89566d1867a4efaed13c78761f8b4</srcmd5>
+    <version>5.2.0</version>
+    <time>1781545488</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.2.0:
+  * tox: Use new constraints option
+  * tox: Use new constraints option
+  * Fix: Add event ID to default stack event list output
+  * Fix: Python 3.14 compatibility for file URL construction
+  * Update master for stable/2026.1</comment>
+    <requestid>1359330</requestid>
+  </revision>
 </revisionlist>
