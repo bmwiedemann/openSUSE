@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:10:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0:
+  * Updated Python versions. 3.8 and 3.9 still works, but is
+    officially unsupported, added 3.13, 3.14 and 3.15 to the
+    supported versions.
+  * Speeding up diffing by using dequeue [barucden]
+  * Support namespace-prefixed move nodes [barucden]
+  * Improved matching in certain cases [barucden]
+  * UpdateTextIn() and UpdateTextAfter() now also has optional
+    parameters "oldtext" which contains the text before update,
+    or None, if there was no text.
+  * Fixed a bug in the parsing of diff files.
+- drop fix-error-type.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Aug  1 12:32:54 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - add fix-error-type.patch to fix tests
@@ -58,7 +74,7 @@ Fri Oct 14 12:10:39 UTC 2022 - pgajdos@suse.com
   + python-xmldiff-src-upgrades.patch
   https://github.com/Shoobx/xmldiff/issues/93
   + python-xmldiff-no-six-remains.patch
-  
+
 -------------------------------------------------------------------
 Thu Jun  3 13:19:51 UTC 2021 - pgajdos@suse.com
 
