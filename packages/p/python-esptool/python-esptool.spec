@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-esptool
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        A serial utility to communicate & flash code to Espressif ESP8266 & ESP32 chips
 License:        GPL-2.0-or-later

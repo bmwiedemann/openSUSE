@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:14:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3.0:
+  * **reset**: support hardware flow control adapters
+  * **espefuse**: Update efuse table for ESP32-H21
+  * **flasher_stub**: Support USB-Serial/JTAG on ESP32-S31,
+    prevent crashes during clock init
+  * **espefuse**: Update efuses for ESP32S31
+  * **espefuse**: add raw_value to JSON summary output
+  * **esp32s31**: Add stub flasher support
+  * **espefuse**: Add calib efuse fields for ESP32C5
+  * **esptool**: Adds efuse version and pkg efuses for ESP32H4
+  * **espefuse**: Update efuse table for ESP32H4
+  * **esptool**: Disallow erasing key recovery info sectors when
+    FE using KM is enabled
+  * **esp32-p4**: Support ECO7 (rev3.2)
+  * **stub_flasher**: Print a message when the new stub flasher
+    is being used
+  * **esp32c61**: Add large flash support
+  * **stub_flasher**: Bump new stub to v0.3.0 with ESP32-C2 fixes
+    and ESP32-C61 large flash
+  * **write-flash**: Log which file is being flashed when
+    multiple files are given
+  * **write-flash**: Fully reflash all data when fast reflash
+    verification fails
+  * **espefuse**: Add --after option to reset the chip after the
+    operation is finished
+  * Use vid pid detection instead of UARTDEV_BUF_NO
+  * Add support for plugin system for optionally loading stub
+    features
+  * improve flash connection verification with SFDP register
+    check
+
+-------------------------------------------------------------------
 Tue Mar 31 09:29:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.2.0:
