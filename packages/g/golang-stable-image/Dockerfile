@@ -28,7 +28,7 @@ RUN set -euo pipefail; \
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
-    rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
+    rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
@@ -65,7 +65,7 @@ ENV PATH="/go/bin:/usr/local/go/bin:/root/go/bin/:/usr/local/sbin:/usr/local/bin
 RUN set -euo pipefail; if zypper -n install go1.26-race; then zypper -n clean -a; fi
 WORKDIR /go
 RUN set -euo pipefail; install -m 755 -d /go/bin /go/src
-RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}; \
+RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
     rm -rf {/target,}/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
