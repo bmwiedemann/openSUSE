@@ -138,4 +138,18 @@
   * Exclude test code from coverage report</comment>
     <requestid>1337531</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e9877748d4464d5c2f97ed3c462f57f</srcmd5>
+    <version>0.16.0</version>
+    <time>1781545470</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.16.0:
+  * tox: Use new constraints option
+  * Use built-in fail method
+  * tests: Drop invalid method
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1</comment>
+    <requestid>1359323</requestid>
+  </revision>
 </revisionlist>

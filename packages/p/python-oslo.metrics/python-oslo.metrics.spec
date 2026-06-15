@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.metrics
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Collect metrics data from other Oslo libraries
 License:        Apache-2.0
@@ -27,11 +27,11 @@ Source0:        https://files.pythonhosted.org/packages/source/o/oslo_metrics/os
 BuildRequires:  %{python_module oslo.config >= 6.9.0}
 BuildRequires:  %{python_module oslo.log >= 3.44.0}
 BuildRequires:  %{python_module oslo.utils >= 3.41.0}
-BuildRequires:  %{python_module oslotest}
-BuildRequires:  %{python_module pbr >= 3.1.1}
+BuildRequires:  %{python_module oslotest >= 3.2.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module prometheus-client >= 0.6.0}
-BuildRequires:  %{python_module stestr}
+BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  openstack-macros
 Requires:       python-oslo.config >= 6.9.0

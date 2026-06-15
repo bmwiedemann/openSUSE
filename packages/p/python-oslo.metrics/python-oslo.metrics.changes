@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 20:55:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.16.0:
+  * tox: Use new constraints option
+  * Use built-in fail method
+  * tests: Drop invalid method
+  * Update packaging configuration
+  * ruff: Configure hacking as external linter
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Sun Mar  8 21:09:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.15.1:
