@@ -342,4 +342,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352302</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>65ace2bf0e1bcb4d6fd293fc68a5d4b2</srcmd5>
+    <version>7.1.4</version>
+    <time>1781545195</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.1.4:
+  * Minor unit test improvements.
+  * Update build environment.
+  * Minor type stub improvements.
+  * Update build environment.
+  * Minor type stub improvements.
+  * Minor documentation improvements.
+  * Modernize build environment.
+  * Various type stub improvements.</comment>
+    <requestid>1359221</requestid>
+  </revision>
 </revisionlist>

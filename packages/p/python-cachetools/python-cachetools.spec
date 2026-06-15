@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cachetools
-Version:        7.1.0
+Version:        7.1.4
 Release:        0
 Summary:        Extensible memoizing collections and decorators
 License:        MIT
