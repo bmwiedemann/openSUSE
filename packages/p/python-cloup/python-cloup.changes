@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 14 10:06:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.0:
+  * Drop support for Click < 8.1.0. Previous Cloup versions have
+    a bug with path parameter types in Click < 8.1.0, since they
+    pass the `executable` kwarg to `click.Path`, a kwarg added in
+    Click 8.1.
+  * Fix type error related to checking if Command is a
+    MultiCommand (deprecated since Click 8.2) (see #202).
+  * Fix ParamType typing for Click 8.4
+
+-------------------------------------------------------------------
 Sun Apr 19 16:07:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.9:

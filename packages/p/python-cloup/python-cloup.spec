@@ -17,7 +17,7 @@
 
 
 Name:           python-cloup
-Version:        3.0.9
+Version:        3.1.0
 Release:        0
 Summary:        Option groups, constraints, subcommand sections and help themes for Click
 License:        BSD-3-Clause
@@ -29,11 +29,11 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 8.0
+Requires:       python-click >= 8.1
 Requires:       python-typing-extensions
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module click >= 8.0}
+BuildRequires:  %{python_module click >= 8.1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module typing-extensions}
 # /SECTION

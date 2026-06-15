@@ -143,4 +143,19 @@ Following https://opensuse.github.io/scm-staging/user_guide.html pt 4
   * Pin setuptools_scm&lt;10 in setup_requires</comment>
     <requestid>1348055</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bb4138f414bf94c473ae82741af55646</srcmd5>
+    <version>3.1.0</version>
+    <time>1781545321</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.0:
+  * Drop support for Click &lt; 8.1.0. Previous Cloup versions have
+    a bug with path parameter types in Click &lt; 8.1.0, since they
+    pass the `executable` kwarg to `click.Path`, a kwarg added in
+    Click 8.1.
+  * Fix type error related to checking if Command is a
+    MultiCommand (deprecated since Click 8.2) (see #202).
+  * Fix ParamType typing for Click 8.4</comment>
+    <requestid>1359226</requestid>
+  </revision>
 </revisionlist>
