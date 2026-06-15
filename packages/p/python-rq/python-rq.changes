@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:23:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * `Job.create()` now supports `retry` argument. Thanks
+    @sethuvishal!
+  * Add compatibility with `redis-py` >= 8. Thanks @selwin!
+  * Added `json` and `pickle` shorthand aliases for serializers.
+    These can now be used when creating queues/workers and with
+    the `--serializer` CLI option. Thanks @selwin!
+  * Fixed a bug where `SpawnWorker` does not use user supplied
+    serializer. Thanks @selwin!
+  * `Queue.parse_args()` now returns a `EnqueueArgs` named tuple.
+    Thanks @libmilos-so!
+  * Fixed a race condition that could cause worker keys in Redis
+    to get out of sync when Redis is under load. Thanks
+    @terencehonles!
+  * Enqueueing deferred jobs now removes them from
+    `DeferredJobRegistry`. Thanks @selwin!
+  * `SpawnWorker` now uses `repr()` when reconstructing worker,
+    job and queue identifiers in child processes. Thanks @selwin!
+
+-------------------------------------------------------------------
 Mon May  4 21:26:15 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 2.8
@@ -105,50 +127,50 @@ Thu Nov  7 15:28:00 UTC 2024 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.0.0
   New Features
-  * Multiple job executions: a job can now have multiple executions 
-    running simultaneously. This will enable future support for long 
+  * Multiple job executions: a job can now have multiple executions
+    running simultaneously. This will enable future support for long
     running scheduled jobs. Thanks @selwin!
-  * Worker(default_worker_ttl=10) is deprecated in favor of 
+  * Worker(default_worker_ttl=10) is deprecated in favor of
     Worker(worker_ttl=10). Thanks @stv8!
-  * Added a cleanup parameter to registry.get_job_ids() and 
+  * Added a cleanup parameter to registry.get_job_ids() and
     registry.get_job_count(). Thanks @anton-daneyko-ultramarin!
-  * Added support for AWS Elasticache Serverless Redis. 
+  * Added support for AWS Elasticache Serverless Redis.
     Thanks @bobbywatson3!
   * You can now specify TTL for deferred jobs. Thanks @hberntsen!
   * RQ's code base is now typed (mostly). Thanks @terencehonles!
-  * Other minor fixes and improvements. 
+  * Other minor fixes and improvements.
     Thanks @hongquan, @rbange, @jackkinsella, @terencehonles, @wckao, @sim6!
   Breaking Changes
   * Dropped support for Redis server < 4
-  * RoundRobinWorker and RandomWorker are deprecated. 
+  * RoundRobinWorker and RandomWorker are deprecated.
     Use --dequeue-strategy <round-robin/random> instead.
   * Job.__init__ requires both id and connection to be passed in.
   * Job.exists() requires connection argument to be passed in.
   * Queue.all() requires connection argument.
   * @job decorator now requires connection argument.
-  * Built in Sentry integration has been removed. 
+  * Built in Sentry integration has been removed.
     To use Sentry with RQ, please refer to Sentry's docs.
   Bug Fixes
-  * Fixed an issue where abandoned jobs are sometimes not enqueued. 
+  * Fixed an issue where abandoned jobs are sometimes not enqueued.
     Thanks @Marishka17!
-  * Fixes an issue where Redis connection does not expose name attribute. 
+  * Fixes an issue where Redis connection does not expose name attribute.
     Thanks @wckao!
-  * job.get_status() will now always return JobStatus enum. 
+  * job.get_status() will now always return JobStatus enum.
     Thanks @indepndnt!
-  * Queue key should always be created even if jobs are deferred. 
+  * Queue key should always be created even if jobs are deferred.
     Thanks @sim6!
-  * RQ's pubsub thread will now attempt to reconnect on 
+  * RQ's pubsub thread will now attempt to reconnect on
     Redis connection errors. Thanks @fcharlier!
 - Update to 1.16.2
-  * Fixed a bug that may cause jobs from intermediate queue to be moved 
+  * Fixed a bug that may cause jobs from intermediate queue to be moved
     to FailedJobRegistry. Thanks @selwin!
 - Update to 1.16.1
-  * Added worker_pool.get_worker_process() to make WorkerPool easier 
+  * Added worker_pool.get_worker_process() to make WorkerPool easier
     to extend. Thanks @selwin!
 - Update to 1.16.0
-  * Added a way for jobs to wait for latest result 
+  * Added a way for jobs to wait for latest result
     job.latest_result(timeout=60). Thanks @ajnisbet!
-  * Fixed an issue where stopped_callback is not respected when job 
+  * Fixed an issue where stopped_callback is not respected when job
     is enqueued via enqueue_many(). Thanks @eswolinsky3241!
   * worker-pool no longer ignores --quiet. Thanks @Mindiell!
   * Added compatibility with AWS Serverless Redis. Thanks @peter-gy!

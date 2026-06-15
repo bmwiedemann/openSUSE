@@ -227,4 +227,41 @@
     <comment></comment>
     <requestid>1351291</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>049e19fdedee55ed30e308ce63909266</srcmd5>
+    <version>2.9.1</version>
+    <time>1781545443</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.9.1:
+  * `Job.create()` now supports `retry` argument. Thanks
+    @sethuvishal!
+  * Add compatibility with `redis-py` &gt;= 8. Thanks @selwin!
+  * Added `json` and `pickle` shorthand aliases for serializers.
+    These can now be used when creating queues/workers and with
+    the `--serializer` CLI option. Thanks @selwin!
+  * Fixed a bug where `SpawnWorker` does not use user supplied
+    serializer. Thanks @selwin!
+  * `Queue.parse_args()` now returns a `EnqueueArgs` named tuple.
+    Thanks @libmilos-so!
+  * Fixed a race condition that could cause worker keys in Redis
+    to get out of sync when Redis is under load. Thanks
+    @terencehonles!
+  * Enqueueing deferred jobs now removes them from
+    `DeferredJobRegistry`. Thanks @selwin!
+  * `SpawnWorker` now uses `repr()` when reconstructing worker,
+    job and queue identifiers in child processes. Thanks @selwin!
+
+  * Multiple job executions: a job can now have multiple executions
+    running simultaneously. This will enable future support for long
+  * Worker(default_worker_ttl=10) is deprecated in favor of
+  * Added a cleanup parameter to registry.get_job_ids() and
+  * Added support for AWS Elasticache Serverless Redis.
+  * Other minor fixes and improvements.
+  * RoundRobinWorker and RandomWorker are deprecated.
+  * Built in Sentry integration has been removed.
+  * Fixed an issue where abandoned jobs are sometimes not enqueued.
+  * Fixes an issue where Redis connection does not expose name attribute.
+  * job.get_status() will now always return JobStatus enum.</comment>
+    <requestid>1359299</requestid>
+  </revision>
 </revisionlist>
