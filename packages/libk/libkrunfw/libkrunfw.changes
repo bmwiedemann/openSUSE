@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Jun 12 10:13:38 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to 5.5.0
+  * Rebase on a 6.12.91 kernel and sync main config files
+  * config: add MQUEUE, BRIDGE, NETFILTER support
+
+- Update to 5.4.1
+  * vsock: backport SIOCINQ support
+
+- Update to 5.4.0
+  * config-libkrunfw_x86_64: Enable virtio-snd driver support
+  * Enable CONFIG_DUMMY
+  * libkrunfw: Add virtio-CAN driver support
+  * config-libkrunfw: Enable virtio-input driver support
+  * config: enable EROFS xattr and security support on x86_64
+  * libkrunfw: Add virtio-rtc driver support
+  * add Windows (WHP) cross-compilation support
+  * Rebase on a 6.12.87 kernel
+  * config: enable KVM in embedded kernel
+
+- Update to 5.3.0
+  * Rebase to 6.12.76 and fix various vsock issues 
+
+-------------------------------------------------------------------
 Tue Mar 10 07:35:03 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to v5.2.1
