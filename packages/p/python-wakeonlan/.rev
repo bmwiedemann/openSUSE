@@ -41,4 +41,14 @@
   * Add Typing :: Typed classifier</comment>
     <requestid>1132140</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f028b302f1af84d7fdc2e621d49d3087</srcmd5>
+    <version>3.3.0</version>
+    <time>1781545446</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.3.0:
+  * Add support for SecureOn password
+  * Use trusted publishing</comment>
+    <requestid>1359301</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-wakeonlan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-wakeonlan
-Version:        3.1.0
+Version:        3.3.0
 Release:        0
 Summary:        A small python module for wake on lan
 License:        MIT
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
