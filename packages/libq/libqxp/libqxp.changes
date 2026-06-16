@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 15 07:09:33 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Add autoreconf to fix configure not detecting boost headers
+- Force -std=gnu++17 when compiling with GCC >= 16 to fix
+  deprecation warnings
+
+-------------------------------------------------------------------
 Tue Jun  2 12:02:51 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - update to 0.0.3:

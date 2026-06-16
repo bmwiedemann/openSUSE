@@ -26,10 +26,13 @@ License:        MPL-2.0
 Group:          Development/Libraries/C and C++
 URL:            http://wiki.documentfoundation.org/DLP/Libraries/libqxp
 Source:         http://dev-www.libreoffice.org/src/%{name}/%{name}-%{version}.tar.xz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  xz
 BuildRequires:  pkgconfig(cppunit)
@@ -85,6 +88,12 @@ Currently supported: SVG, plain text, raw.
 %setup -q
 
 %build
+
+%if %{pkg_vcmp gcc >= 16}
+  export CXXFLAGS="$CXXFLAGS -std=gnu++17"
+%endif
+
+autoreconf -vfi
 %configure \
 	--disable-silent-rules \
 	--disable-static \
