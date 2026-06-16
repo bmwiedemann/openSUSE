@@ -197,4 +197,20 @@
   migration of private repositories (forwarded request 1358691 from rrahl0)</comment>
     <requestid>1358692</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d71dce47081028180d9dc60ed893cc94</srcmd5>
+    <version>15.0.3</version>
+    <time>1781611062</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 15.0.3:
+  + Changelog for versions:
+    - 15.0.3: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.3.md
+    - 15.0.2: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.2.md
+    - 15.0.1: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.1.md
+    - 15.0.0: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.0.md
+    - 14.0.0: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/14.0.0.md
+    - 13.0.0: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/13.0.0.md
+    - 12.0.0: https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/12.0.0.md (forwarded request 1359667 from rrahl0)</comment>
+    <requestid>1359668</requestid>
+  </revision>
 </revisionlist>
