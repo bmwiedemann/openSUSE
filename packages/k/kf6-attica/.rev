@@ -215,4 +215,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352177</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4f2ba5711b876e5c93f85ab73c6b44ac</srcmd5>
+    <version>6.27.0</version>
+    <time>1781610457</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.27 (forwarded request 1358688 from krop)</comment>
+    <requestid>1358856</requestid>
+  </revision>
 </revisionlist>
