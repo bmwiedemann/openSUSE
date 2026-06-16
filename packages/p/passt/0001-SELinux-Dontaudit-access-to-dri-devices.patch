@@ -1,0 +1,32 @@
+From d494560b7e91d519c79b7f258e559b5d15b3fa36 Mon Sep 17 00:00:00 2001
+From: Johannes Segitz <jsegitz@suse.de>
+Date: Mon, 30 Mar 2026 13:02:36 +0200
+Subject: [PATCH] SELinux: Dontaudit access to dri devices
+
+Currently podman can pass a FD to a DRI device to pasta, leading to AVCs
+like this:
+avc:  denied  { read write }
+comm="pasta" path="/dev/dri/renderD128"
+scontext=unconfined_u:unconfined_r:pasta_t:s0-s0:c0.c1023
+tcontext=system_u:object_r:dri_device_t:s0
+tclass=chr_file
+These are harmless, so dontaudit them
+
+Signed-off-by: Johannes Segitz <jsegitz@suse.de>
+---
+ contrib/selinux/pasta.te | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/contrib/selinux/pasta.te b/contrib/selinux/pasta.te
+index ff74dd7..d9c4aed 100644
+--- a/contrib/selinux/pasta.te
++++ b/contrib/selinux/pasta.te
+@@ -264,3 +264,5 @@ if (pasta_bind_all_ports) {
+ 	allow pasta_t port_type:tcp_socket { accept getopt name_bind name_connect };
+ 	allow pasta_t port_type:udp_socket { accept getopt name_bind };
+ }
++
++dev_dontaudit_rw_dri(pasta_t)
+-- 
+2.54.0
+

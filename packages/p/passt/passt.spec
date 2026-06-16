@@ -45,13 +45,14 @@
 
 %global selinuxtype targeted
 Name:           passt
-Version:        20260120.386b5f5
+Version:        20260612.a9c61ff
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
 Group:          System/Daemons
 URL:            https://passt.top/
 Source:         %{name}-%{version}.tar.zst
+Patch0:         0001-SELinux-Dontaudit-access-to-dri-devices.patch
 
 BuildRequires:  zstd
 BuildRequires:  gcc, make
@@ -100,11 +101,11 @@ Recommends:         selinux-policy-%{selinuxtype}
 %{selinux_requires_min}
 
 %description selinux
-This package adds SELinux enforcement to passt(1) and pasta(1).
+This package adds SELinux enforcement to passt(1), pasta(1) and pesto(1).
 %endif
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %set_build_flags
@@ -149,6 +150,7 @@ make -f %{_datadir}/selinux/devel/Makefile
 install -p -m 644 -D passt.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
 install -p -m 644 -D passt-repair.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
 install -p -m 644 -D pasta.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
+install -p -m 644 -D pesto.pp %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/pesto.pp
 install -p -m 644 -D passt.if %{buildroot}%{_datadir}/selinux/devel/include/distributed/passt.if
 popd
 %endif
@@ -164,11 +166,11 @@ popd
 %selinux_relabel_pre -s %{selinuxtype}
 
 %post selinux
-%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/passt.pp %{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp %{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/passt.pp %{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp %{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp %{_datadir}/selinux/packages/%{selinuxtype}/pesto.pp
 
 %postun selinux
 if [ $1 -eq 0 ]; then
-        %selinux_modules_uninstall -s %{selinuxtype} passt pasta passt-repair
+        %selinux_modules_uninstall -s %{selinuxtype} passt pasta passt-repair pesto
 fi
 
 %posttrans selinux
@@ -184,10 +186,12 @@ fi
 %{_bindir}/pasta
 %{_bindir}/qrap
 %{_bindir}/passt-repair
+%{_bindir}/pesto
 %{_mandir}/man1/passt.1*
 %{_mandir}/man1/pasta.1*
 %{_mandir}/man1/qrap.1*
 %{_mandir}/man1/passt-repair.1*
+%{_mandir}/man1/pesto.1*
 %ifarch x86_64
 %{_bindir}/passt.avx2
 %{_mandir}/man1/passt.avx2.1*
@@ -201,6 +205,7 @@ fi
 %{_datadir}/selinux/packages/%{selinuxtype}/passt.pp
 %{_datadir}/selinux/packages/%{selinuxtype}/pasta.pp
 %{_datadir}/selinux/packages/%{selinuxtype}/passt-repair.pp
+%{_datadir}/selinux/packages/%{selinuxtype}/pesto.pp
 %dir %{_datadir}/selinux/devel/include/distributed
 %{_datadir}/selinux/devel/include/distributed/passt.if
 %endif

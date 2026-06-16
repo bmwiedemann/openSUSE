@@ -1,4 +1,200 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:30:19 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Add 0001-SELinux-Dontaudit-access-to-dri-devices.patch to dontaudit DRI
+  AVCs for pasta (bsc#1259898)
+
+-------------------------------------------------------------------
+Mon Jun 15 13:21:30 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Install pesto, its SELinux policy and man page
+- Update to version 20260612.a9c61ff:
+  * util, passt: Close daemon-lifetime fds on exit to avoid Coverity warning
+  * conf, util: Disable IPv6 if explicit IPv6 socket probe fails
+  * tcp_splice: Improve EOF and read stall exit conditions
+  * passt, tcp: Inline CALL_PROTO_HANDLER() and merge tcp_timer()
+  * tcp_splice: Remove questionable "optimisation" of pending bytes tracking
+  * tcp_splice: Simplify / correct OUT_WAIT flag handling
+  * tcp_splice: Simplify shutdown(2) handling
+  * tcp_splice: Remove goto from forwarding loop
+  * tcp_splice: Improve EOF exit condition for the loop
+  * tcp_splice: Simplify EPOLLRDHUP / eof / FIN handling
+  * tcp_splice: Remove never-invoked SO_RCVLOWAT logic
+  * tcp: Don't leak sockets on error paths
+  * tcp, tcp_splice: Make helper for setting SO_LINGER socket option
+  * vhost_user: Offer VIRTIO_NET_F_GUEST_CSUM
+  * ip: Wrap CASE macro body in braces for pre-C23 compatibility
+  * tcp_splice: Simplify tracking of read/written bytes
+  * tcp_splice: Clean up flow control path for splice forwarding
+  * tcp_splice: Avoid missing EOF recognition while forwarding
+  * tcp_splice: Improve error reporting
+  * tcp_vu: Support multibuffer frames in tcp_vu_send_flag()
+  * tcp_vu: Support multibuffer frames in tcp_vu_sock_recv()
+  * tcp_vu: Build headers on the stack and write them into the iovec
+  * tcp: Encode checksum computation flags in a single parameter
+  * udp: Pass iov_tail to udp_update_hdr4()/udp_update_hdr6()
+  * iov: Introduce IOV_PUSH_HEADER() macro
+  * udp_vu: Allow virtqueue elements with multiple iovec entries
+  * selinux: Allow pasta to create and use its control socket when started by Podman
+  * Makefile: Remove misleading comments on BASE_*FLAGS
+  * netlink: Fix comments to variables for netlink sockets and sequence
+  * netlink: Use regular request/response netlink socket for initial neighbour sync
+  * conf, repair, tap: Document reasons for blocking Unix sockets
+  * tap: Report accept() errors
+  * treewide: Add SOCK_CLOEXEC to accept() calls that are missing it
+  * vhost-user: Centralise Ethernet frame padding in vu_collect() and vu_pad()
+  * tcp: Pass explicit data length to tcp_fill_headers()
+  * vu_common: Pass explicit frame length to vu_flush()
+  * pcap: Pass explicit L2 length to pcap_iov()
+  * checksum: Pass explicit L4 length to checksum functions
+  * udp_vu: Pass iov explicitly to helpers instead of using file-scoped array
+  * udp_vu: Move virtqueue management from udp_vu_sock_recv() to its caller
+  * vu_common: Move vnethdr setup into vu_flush()
+  * iov: Add iov_memcpy() to copy data between iovec arrays
+  * iov: Introduce iov_memset()
+  * util: Fix changes to assert_with_msg()
+  * fwd_rule: Allow parsing * as a forwarding address
+  * fwd_rule: Don't attempt dual stack listen()s if only one IP family
+  * test: Add test for builds with -DNDEBUG
+  * Fix build with -DNDEBUG
+  * test: Extend exeter build tests to cover more recent binaries
+  * lib/term: Quote tr character ranges to prevent glob expansion
+  * pesto: Run static checkers on pesto sources
+  * passt-repair: Run static checkers
+  * passt-repair: Simplify construction of Unix path from inotify
+  * passt-repair: Split out inotify handling to its own function
+  * Makefile: Split static checker targets
+  * cppcheck, clang-tidy: Static checkers don't need non-preprocessor flags
+  * Makefile: Split $(FLAGS) into cpp and cc components
+  * Makefile: Add header dependencies for secondary binaries
+  * Makefile: Remove unhelpful $(HEADERS) variable
+  * Makefile: Use common binary compilation rule
+  * Makefile: Make conditional definition of $(BIN) clearer
+  * Makefile: Use make variables for static checker configuration
+  * clang-tidy: Suppress some new unhelpful new warnings
+  * treewide: Make some additional variables static
+  * packet, clang-tidy: Packet pool buffers are not NULL
+  * clang-tidy: Suppress sscanf() warning harder
+  * clang-tidy: Squash inconsistent brace warnings in foreach macros
+  * conf: Fix not-actually-const parameter to conf_runas() and conf_ugid()
+  * virtio: Reduce scope of variable
+  * netlink: erromsg should be const in nl_status()
+  * hooks: Copy static build of pesto and related man page to server
+  * fedora: Install pesto, its SELinux policy, and the man page from the spec file
+  * selinux: Add file context and type enforcement for pesto
+  * apparmor: Add policy file for pesto
+  * pesto, conf, fwd_rule: Add options and modes to add, delete, clear rules
+  * fwd_rule: Fix static checkers warnings in fwd_rule_add()
+  * conf, fwd: Allow switching to new rules received from pesto
+  * pesto, conf: Send updated rules from pesto back to passt/pasta
+  * pesto: Parse and add new rules from command line
+  * pesto: Read current ruleset from passt/pasta and optionally display it
+  * inany: Prepare inany.[ch] for sharing with pesto tool
+  * ip: Prepare ip.[ch] for sharing with pesto tool
+  * pesto: Expose list of pifs to pesto and display them
+  * pesto, conf: Have pesto connect to passt and check versions
+  * pesto, log: Share log.h (but not log.c) with pesto tool
+  * pesto: Introduce stub configuration tool
+  * fwd_rule: Fix some format specifiers
+  * pif: Limit pif names to 128 bytes
+  * fwd: Generalise fwd_rules_info()
+  * fwd_rule: Move conflict checking back within fwd_rule_add()
+  * fwd, conf: Move rule parsing code to fwd_rule.[ch]
+  * fwd_rule: Move ephemeral port probing to fwd_rule.c
+  * conf, fwd: Stricter rule checking in fwd_rule_add()
+  * tcp: Use SO_MEMINFO for accurate send buffer overhead accounting
+  * tcp: Handle errors from tcp_send_flag()
+  * fwd, conf: Add capabilities bits to each forwarding table
+  * conf: Don't pass raw commandline argument to conf_ports_spec()
+  * conf: Move SO_BINDTODEVICE workaround to conf_ports()
+  * conf: Allow user-specified auto-scanned port forwarding ranges
+  * conf: Move "all" handling to port specifier
+  * doc: Rework man page description of port specifiers
+  * tcp: Replace send buffer boost with EPOLLOUT monitoring
+  * conf: Rework checking for garbage after a range
+  * conf: Rework stepping through chunks of port specifiers
+  * conf: Don't be strict about exclusivity of forwarding mode
+  * fwd: Improve error handling in fwd_rule_add()
+  * fwd_rule: Move rule conflict checking from fwd_rule_add() to caller
+  * fwd: Split rule building from rule adding
+  * conf: Pass protocol explicitly to conf_ports_range_except()
+  * fwd_rule: Move forwarding rule formatting
+  * fwd: Better split forwarding rule specification from associated sockets
+  * conf: Permit -[tTuU] all in pasta mode
+  * doc: Consolidate -[tu] option descriptions for passt and pasta
+  * conf: Move first pass handling of -[TU] next to handling of -[tu]
+  * conf: Simplify handling of default forwarding mode
+  * conf: Split parsing of port specifiers from the rest of -[tuTU] parsing
+  * tap, tcp, udp: Use rate-limited logging
+  * conf: use a single buffer for print formatting in conf_print()
+  * log: Add rate-limiting macros for log messages
+  * fwd: Split forwarding rule specification from its implementation state
+  * bitmap: Split bitmap helper functions into their own module
+  * ip: Define a bound for the string returned by ipproto_name()
+  * conf: Remove redundant warning when SO_BINDTODEVICE is unavailable
+  * conf: Move check for disabled interfaces earlier
+  * conf: Move check for mapping port 0 to caller
+  * conf: Don't bother complaining about overlapping excluded ranges
+  * fwd, conf: Expose ephemeral ports as bitmap rather than function
+  * fwd: Allow FWD_DUAL_STACK_ANY flag to be passed directly to fwd_rule_add()
+  * fwd: Store forwarding tables indexed by (origin) pif
+  * fwd: Look up rule index in fwd_sync_one()
+  * fwd: Move selecting correct scan bitmap into fwd_sync_one()
+  * serialise: Add helpers for serialising unsigned integers
+  * serialise: Split functions user for serialisation from util.c
+  * vhost_user: Fix assorted minor cppcheck warnings
+  * fwd: Comparing rule can be const
+  * conf: runas can be const
+  * treewide: Spell ASSERT() as assert()
+  * vu_common: Move iovec management into vu_collect()
+  * vu_handle_tx: Pass actual remaining out_sg capacity to vu_queue_pop()
+  * virtio: Pass iovec arrays as separate parameters to vu_queue_pop()
+  * pif: Remove unused PIF_NAMELEN
+  * doc: Fix formatting of (DEPRECATED) notes in man page
+  * Makefile: Use $^ to avoid duplication in static checker rules
+  * conf: Parse all forwarding options at the same time
+  * conf: Don't defer handling of --dns option
+  * fwd: Always open /proc/net{tcp,tcp6,udp,udp6} in pasta mode
+  * fwd: Unify TCP and UDP forwarding tables
+  * fwd: Split forwarding table from port scanning state
+  * Fix misnamed field in struct ctx comments
+  * fwd: Don't initialise unused port bitmaps
+  * tcp: Remove stale description of port_to_tap field
+  * conf, fwd: Make overall forwarding mode local to conf path
+  * netlink: Allow NULL to be passed as addr parameter to nl_addr_get (again)
+  * netlink: Return prefix length for IPv6 addresses in nl_addr_get()
+  * iov: Add iov_truncate() helper and use it in vu handlers
+  * tcp: Avoid comparison of expressions with different signedness in RTT_SET()
+  * tcp: Avoid comparison of expressions with different signedness in tcp_timer_handler()
+  * migrate: Rename v1 address functions to v2 for clarity
+  * vu_common: Always set num_buffers in virtio-net header
+  * clang-tidy: Don't insist on #ifdef over #if defined()
+  * fwd, pif: Replace with pif_sock_l4() with pif_listen()
+  * tcp: Use flow_foreach_of_type() in tcp_{keepalive,inactivity}
+  * Add missing includes to headers
+  * tcp: Send TCP keepalive segments after a period of tap-side inactivity
+  * tcp: Extend tcp_send_flag() to send TCP keepalive segments
+  * tcp: Re-introduce inactivity timeouts based on a clock algorithm
+  * tcp: Remove non-working activity timeout mechanism
+  * tcp_vu, udp_vu: Fix comment headers for header length functions
+  * Fix build when HAS_GETRANDOM is undefined
+  * tcp_vu, udp_vu: Account for virtio net header in minimum frame size
+  * tcp_vu: vu_pad() expects l2 length
+  * conf: Support CIDR notation for -a/--address option
+  * virtio: Introduce VNET_HLEN macro for virtio net header length
+  * tcp: Move tap header update out of tcp_fill_headers()
+  * udp: Split activity timeouts for UDP flows
+  * checksum: add VSX fast path for POWER8/POWER9
+  * migrate: Use forward table information to close() listening sockets
+  * tcp, tcp_splice: Check for failures of shutdown(2)
+  * tcp: Eliminate FIN_TIMEOUT
+  * tcp: Retransmit FINs like data segments
+  * tcp_splice: Force TCP RST on abnormal close conditions
+  * tcp: Properly propagate tap-side RST to socket side
+  * doc: Add test program verifying socket RST behaviour
+  * tcp: Add error checking for flow_epoll_set() in tcp_flow_migrate_target()
+
+-------------------------------------------------------------------
 Tue Apr 14 06:31:00 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 20260120.386b5f5:
