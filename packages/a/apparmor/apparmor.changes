@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 14 18:44:18 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
+
+- update to AppArmor 5.0.1
+  - several fixes (including boo#1267425)
+  - new profiles: glycin.bwrap and glycin.loaders
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.1
+    for the upstream changelog
+- remove upstream(ed) patches:
+  - changes-since-v5.0.0.diff
+  - curl.diff
+  - who.diff
+- remove revert-plasmashell.diff, profile was fixed upstream
+- add lsblk-mr2147.diff: fix FSTYPE and UUID in lsblk (boo#1267853)
+
+-------------------------------------------------------------------
 Thu May 28 14:05:15 UTC 2026 - Christian Boltz <suse-beta@cboltz.de>
 
 - add revert-plasmashell.diff - the profile changes caused strange

@@ -17,10 +17,10 @@
 #
 
 
-%define tarversion v5.0.0
+%define tarversion v5.0.1
 
 Name:           libapparmor
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Utility library for AppArmor
 License:        LGPL-2.1-or-later

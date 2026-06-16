@@ -1,0 +1,24 @@
+commit 0655df94d6ebcf5685bb70ce5221b2b407270aad
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Sun Jun 14 17:38:24 2026 +0200
+
+    lsblk: allow reading / to fix FSTYPE and UUID listing
+    
+    Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1267853
+    
+    The bugreport contains some strace output showing what's going on, and
+    why this is needed.
+
+diff --git a/profiles/apparmor.d/lsblk b/profiles/apparmor.d/lsblk
+index d5ac7f155..a0fef19ea 100644
+--- a/profiles/apparmor.d/lsblk
++++ b/profiles/apparmor.d/lsblk
+@@ -28,7 +28,7 @@ profile lsblk /usr/bin/lsblk {
+   @{sys}/devices/platform/** r,
+ 
+   # needed for --fs (show filesystem information)
+-  deny / r, # no idea why this would be needed (only seen for --fs)
++  / r, # needed for FSTYPE and UUID, see https://bugzilla.opensuse.org/show_bug.cgi?id=1267853
+   /dev/nvme* r,
+   /dev/dm-* r,
+   /dev/sd* r,

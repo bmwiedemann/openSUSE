@@ -3181,4 +3181,22 @@ Detailed changelog:
   * Allow execution of /usr/bin/zstd (bsc#1265620) (forwarded request 1358665 from dmdiss)</comment>
     <requestid>1358767</requestid>
   </revision>
+  <revision rev="238" vrev="1">
+    <srcmd5>d590b2d27805058ef6edf7e6d6dd44a2</srcmd5>
+    <version>5.0.1</version>
+    <time>1781610403</time>
+    <user>anag_factory</user>
+    <comment>- update to AppArmor 5.0.1
+  - several fixes (including boo#1267425)
+  - new profiles: glycin.bwrap and glycin.loaders
+  - see https://gitlab.com/apparmor/apparmor/-/wikis/Release_Notes_5.0.1
+    for the upstream changelog
+- remove upstream(ed) patches:
+  - changes-since-v5.0.0.diff
+  - curl.diff
+  - who.diff
+- remove revert-plasmashell.diff, profile was fixed upstream
+- add lsblk-mr2147.diff: fix FSTYPE and UUID in lsblk (boo#1267853) (forwarded request 1359558 from cboltz)</comment>
+    <requestid>1359559</requestid>
+  </revision>
 </revisionlist>

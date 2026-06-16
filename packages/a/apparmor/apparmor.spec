@@ -51,11 +51,11 @@
 %define CATALINA_HOME /usr/share/tomcat6
 %define JAR_FILE changeHatValve.jar
 
-%define tarversion v5.0.0
-%define pyeggversion 5.0.0
+%define tarversion v5.0.1
+%define pyeggversion 5.0.1
 
 Name:           apparmor
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        AppArmor userlevel parser utility
 License:        GPL-2.0-or-later
@@ -86,20 +86,11 @@ Patch7:         apparmor-enable-precompiled-cache.diff
 # /usr/etc/krb5.conf - boo#1246689 - not submitted upstream yet since https://github.com/krb5/krb5/pull/1437/ is still open
 Patch11:        kerberosclient-usrmerge.diff
 
-# upstream changes in the 5.0 branch since 5.0.0 release
-Patch12:        changes-since-v5.0.0.diff
+# lsblk: fix FSTYPE and UUID - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2147
+Patch12:        lsblk-mr2147.diff
 
 # fix wg-quick profile - boo#1265394 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
 Patch13:        wg-quick.diff
-
-# fix curl profile for usage with rpmdevtools - boo#1266273 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2125
-Patch14:        curl.diff
-
-# fix who profile - boo#1265860 - https://gitlab.com/apparmor/apparmor/-/merge_requests/2109 merged into master, not picked into 5.0 branch yet
-Patch15:        who.diff
-
-# revert plasmashell changes - causes strange errors in openQA (to be debugged)
-Patch16:        revert-plasmashell.diff
 
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -373,9 +364,6 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
-%patch -P 16 -p1
 
 %build
 export SUSE_ASNEEDED=0
@@ -650,6 +638,8 @@ rm -fv %{buildroot}%{_libdir}/libapparmor.la
 %config(noreplace) %{_sysconfdir}/apparmor.d/free
 %config(noreplace) %{_sysconfdir}/apparmor.d/fusermount3
 %config(noreplace) %{_sysconfdir}/apparmor.d/gs
+%config(noreplace) %{_sysconfdir}/apparmor.d/glycin.bwrap
+%config(noreplace) %{_sysconfdir}/apparmor.d/glycin.loaders
 %config(noreplace) %{_sysconfdir}/apparmor.d/hostname
 %config(noreplace) %{_sysconfdir}/apparmor.d/iotop-c
 %config(noreplace) %{_sysconfdir}/apparmor.d/isisd
