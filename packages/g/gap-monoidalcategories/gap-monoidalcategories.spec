@@ -1,7 +1,7 @@
 #
 # spec file for package gap-monoidalcategories
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-monoidalcategories
-Version:        2025.08.02
-%define sillyver 2025.08-02
+Version:        2026.05.02
+%define sillyver 2026.05-02
 Release:        0
 Summary:        GAP: Monoidal and monoidal (co-)closed categories
 License:        GPL-2.0-or-later
@@ -28,7 +28,7 @@ Source:         https://github.com/homalg-project/CAP_project/releases/download/
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 Requires:       gap-cap >= 2025.03.04
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13.0
 Requires:       gap-toolsforhomalg >= 2018.05.22
 
 %description
