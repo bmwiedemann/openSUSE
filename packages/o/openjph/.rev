@@ -276,4 +276,13 @@
   * AVX2 block coder optimizations #276</comment>
     <requestid>1358679</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>6ec7ebf6a2d113386ff58f5d4fa2b5ea</srcmd5>
+    <version>0.28.1</version>
+    <time>1781610371</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.28.1:
+  * Fix 32-bit x86 build of the AVX2 block decoder #281</comment>
+    <requestid>1359356</requestid>
+  </revision>
 </revisionlist>

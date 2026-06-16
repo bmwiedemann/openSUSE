@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 05:56:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.28.1:
+  * Fix 32-bit x86 build of the AVX2 block decoder #281
+
+-------------------------------------------------------------------
 Thu Jun 11 05:51:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.28.0:
