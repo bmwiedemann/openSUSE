@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname bluez-qt
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-bluez-qt
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Async Bluez wrapper library
 License:        LGPL-2.1-or-later
@@ -64,6 +64,7 @@ QML imports.
 Summary:        Async Bluez wrapper library - development files
 Requires:       libKF6BluezQt6 = %{version}
 Requires:       cmake(Qt6Core) >= %{qt6_version}
+Requires:       cmake(Qt6DBus) >= %{qt6_version}
 
 %description devel
 Development files for QBluez Async Bluez wrapper library.
