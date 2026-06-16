@@ -17,7 +17,7 @@
 
 
 Name:           exfatprogs
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        Utilities for exFAT file system maintenance
 License:        GPL-2.0-or-later
@@ -78,7 +78,7 @@ autoreconf -fi
 %{_sbindir}/mkfs.exfat
 %{_sbindir}/tune.exfat
 %{_sbindir}/exfat2img
-%{_sbindir}/chdosattr
-%{_sbindir}/lsdosattr
+%{_bindir}/chdosattr
+%{_bindir}/lsdosattr
 
 %changelog

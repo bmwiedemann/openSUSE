@@ -373,4 +373,17 @@
     512-byte clusters on very small devices.</comment>
     <requestid>1356305</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8e35d1c69ee6644c73920029ec916637</srcmd5>
+    <version>1.4.2</version>
+    <time>1781610367</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.2:
+  Changes:
+  * exfatprogs: install lsdosattr and chdosattr in /bin instead of
+    /sbin.
+  Bug fixes:
+  * dump.exfat: prevent heap buffer overflow in name parsing.</comment>
+    <requestid>1359352</requestid>
+  </revision>
 </revisionlist>

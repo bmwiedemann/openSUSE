@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 15 05:21:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.4.2:
+  Changes:
+  * exfatprogs: install lsdosattr and chdosattr in /bin instead of
+    /sbin.
+  Bug fixes:
+  * dump.exfat: prevent heap buffer overflow in name parsing.
+
+-------------------------------------------------------------------
 Mon Jun  1 07:56:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.4.1:
