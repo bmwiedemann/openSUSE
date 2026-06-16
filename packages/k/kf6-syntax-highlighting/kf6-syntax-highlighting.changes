@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Add missing license texts
+  * YAML: fix quoted no-string in list (kde#500809)
+  * Add syntax highlighting for Slint files
+  * Minor fixes on gemtext syntax and reference
+  * add BNF and ABNF syntax highlighting (kde#518109)
+  * Breeze Dark theme: less vibrant color for BracketMatching to make dsFunction color visible (kde#519805)
+  * theme_contrast_checker.py: use Okl as default color space
+  * theme_contrast_checker.py: add --neighbor-color and --neighbor-distance to filter colors that are close to a specific color
+  * theme_contrast_checker.py: add --bg-color to view colors of a theme with a specific background color
+  * Fish: update to latest version and fix various bugs (kde#519060)
+  * LaTeX: fix optional parameter with minted shortcuts (kde#514536)
+  * J: update to latest version from github (kde#518108)
+  * Raku: bump highlighting definition version
+  * Raku: Allow - inside
+  * Raku: Fix breakage of double backslash before ending single quote
+  * Raku: Allow signatures on token/rule/regex declarations
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:55 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
