@@ -63,6 +63,13 @@
 
 # Set the OS / architecture specific special cases
 
+# 32-bit QEMU no longer available in Factory and SLES >= 16.1
+%if 0%{?suse_version} >= 1610
+    %ifarch %{ix86} %{arm}
+        %define with_qemu  0
+    %endif
+%endif
+
 # Xen is only available on x86_64
 %ifnarch x86_64
     %define with_libxl     0
@@ -190,6 +197,8 @@ BuildRequires:  xen-devel
 %if %{with_qemu}
 # For managing ACLs
 BuildRequires:  libacl-devel
+# Used by virstoragetest
+BuildRequires:  qemu-tools
 %endif
 BuildRequires:  bash-completion-devel >= 2.0
 BuildRequires:  glib2-devel >= 2.66
@@ -1459,7 +1468,6 @@ fi
 %dir %{_libdir}/%{name}
 %dir %{_libdir}/%{name}/connection-driver/
 %attr(0755, root, root) %{_libexecdir}/libvirt-guests.sh
-%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_unitdir}/libvirt-guests.service
 %{_unitdir}/virt-guest-shutdown.target
 %{_bindir}/virt-admin
@@ -1511,7 +1519,9 @@ fi
 %{_datadir}/augeas/lenses/virtlockd.aug
 %{_datadir}/augeas/lenses/tests/test_virtlockd.aug
 %{_datadir}/augeas/lenses/libvirt_lockd.aug
+%if %{with_qemu}
 %{_datadir}/augeas/lenses/tests/test_libvirt_lockd.aug
+%endif
 %doc %{_mandir}/man8/virtlockd.8*
 
 %files daemon-plugin-lockd
@@ -1543,6 +1553,7 @@ fi
 
 %if %{with_qemu}
 %files daemon-hooks
+%dir %attr(0700, root, root) %{_sysconfdir}/%{name}/hooks
 %{_sysconfdir}/%{name}/hooks/qemu
 %endif
 

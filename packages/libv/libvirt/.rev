@@ -5064,4 +5064,25 @@ a previous changelog entry.
     https://libvirt.org/news.html#v12-4-0-2026-06-01</comment>
     <requestid>1356453</requestid>
   </revision>
+  <revision rev="441" vrev="2">
+    <srcmd5>c71cb7196b876160cc571135d20ec82a</srcmd5>
+    <version>12.4.0</version>
+    <time>1781610360</time>
+    <user>anag_factory</user>
+    <comment>Along with improving libvirt's interaction with numa-preplace,
+this request includes a better approach to handling the
+deprecation of 32-bit QEMU.
+
+Please stage with the QEMU request deprecating 32-bit support
+
+https://build.opensuse.org/requests/1354518
+
+- qemu: Fix invocation of numa-preplace when hugepages requested,
+  but page size not specified
+  bsc#1266364
+
+- spec: Disable building 32-bit QEMU support
+  bsc#1263564</comment>
+    <requestid>1358815</requestid>
+  </revision>
 </revisionlist>

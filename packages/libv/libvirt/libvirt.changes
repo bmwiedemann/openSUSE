@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 11 17:28:05 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix invocation of numa-preplace when hugepages requested,
+  but page size not specified
+  bsc#1266364
+
+-------------------------------------------------------------------
+Thu Jun 11 16:57:48 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- spec: Disable building 32-bit QEMU support
+  bsc#1263564
+
+-------------------------------------------------------------------
 Mon Jun  1 16:46:54 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.4.0
