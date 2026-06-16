@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * configure_package_config_file: drop unused PATH_VARS CMAKE_INSTALL_PREFIX
+  * Replace Acrobat branding with Okular iconography (kde#487595)
+  * Remove im-[company logo] icons
+  * Remove acroread icon
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
