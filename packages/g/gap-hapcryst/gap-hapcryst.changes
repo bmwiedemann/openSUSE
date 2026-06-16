@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 15 17:30:54 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.2.0
+  * Change `TranslationsToBox` back to returning a list, resolve
+    inconsistencies between its documentation and behavior.
+  * Fix `DimensionSquareMat` to actually reject non-square
+    matrices, and also to return `fail` instead of raising an error
+    for bad inputs (as documented).
+  * Fix `IsSquareMat` to not return true for every matrix.
+
+-------------------------------------------------------------------
 Sat Nov 19 00:16:09 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.1.15

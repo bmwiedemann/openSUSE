@@ -1,7 +1,7 @@
 #
 # spec file for package gap-hapcryst
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,15 +12,15 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           gap-hapcryst
-Summary:        GAP: A HAP extension for crytallographic groups
-Version:        0.1.15
+Version:        0.2.0
 Release:        0
-License:        GPL-2.0+
+Summary:        GAP: A HAP extension for crytallographic groups
+License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/hapcryst/
 #Git-Clone:     https://github.com/gap-packages/hapcryst
@@ -29,11 +29,11 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 Requires:       gap-aclib >= 1.1
-Requires:       gap-core >= 4.9
+Requires:       gap-core >= 4.12
 Requires:       gap-cryst >= 4.1.5
 Requires:       gap-hap >= 1.8
 Requires:       gap-polycyclic >= 2.8.1
-Requires:       gap-polymaking >= 0.7.9
+Requires:       gap-polymaking >= 0.8.6
 Requires:       polymake
 Suggests:       gap-carat >= 1.1
 Suggests:       gap-crystcat >= 1.1.2
