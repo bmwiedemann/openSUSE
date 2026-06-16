@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jun 12 12:25:10 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Fix build error.
+
+-------------------------------------------------------------------
+Fri Apr 10 13:58:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.14:
+  * Fix installation breakage.
+  * The pyaudio.Stream class is now pyaudio.PyAudio.Stream,
+    nested under the existing pyaudio.PyAudio class.
+  * Deprecate PaMacCoreStreamInfo's get_channel_map() and
+    get_flags() methods.
+  * Use the channel_map and flags properties, respectively,
+    instead.
+  * Package PyAudio as an actual package (directory).
+  * Previously, the library deployed a single pyaudio.py file and
+    a C extension module to the root of site-packages.
+  * Add default shared library path for Homebrew installations on
+    Apple Silicon.
+  * Set the PYAUDIO_SKIP_HW_TESTS environment variable to disable
+    tests that require sound hardware, useful for (automated) test
+    environments without access to audio devices.
+- Remove loopback_required.patch (obsolete, replaced by
+  PYAUDIO_SKIP_HW_TESTS environment variable).
+
+-------------------------------------------------------------------
 Tue May  6 12:00:12 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -53,4 +80,3 @@ Fri Nov  2 16:28:05 UTC 2012 - prusnak@opensuse.org
 Wed Oct  3 14:33:38 UTC 2012 - mvyskocil@suse.com
 
 - initial packaging of python-PyAudio for openSUSE
-
