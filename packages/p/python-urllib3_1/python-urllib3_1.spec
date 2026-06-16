@@ -146,6 +146,9 @@ skiplist+=" or test_recent_date"
 skiplist+=" or test_requesting_large_resources_via_ssl"
 # Latest tornado raises an exception on bad header so this test fails
 skiplist+=" or test_skip_header"
+# pycryptography 49 warnings
+skiplist+=" or test_verified_with_context or test_ssl_wrong_system_time or test_context_combines_with_ca_certs or test_ssl_correct_system_time"
+skiplist+=" or test_no_tls_version_deprecation_with_ssl_version or test_default_tls_version_deprecations or test_ca_dir_verified or test_no_tls_version_deprecation_with_ssl_context or test_verified"
 # Python 3.12: SSL requests to localhost hang during handshake
 python312_skip=" or TestClientCerts or TestSSL or test_cannot_import_ssl or (TestProxyManager and test_connect)"
 %pytest -k "not (${skiplist} ${$python_skip})"  --no-success-flaky-report

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:35:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- skip more testcases with warnings for cryptography >= 49
+
+-------------------------------------------------------------------
 Tue May 19 08:39:33 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - CVE-2026-44431: sensitive information disclosure due to sensitive

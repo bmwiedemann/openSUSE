@@ -479,4 +479,12 @@ Index: filter-pyopenssl-deprecationwarning.patch
   Add patch CVE-2026-44431.patch</comment>
     <requestid>1353971</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>4b44e43148115808e66ee2c7bb305155</srcmd5>
+    <version>1.26.20</version>
+    <time>1781627358</time>
+    <user>anag_factory</user>
+    <comment>- skip more testcases with warnings for cryptography &gt;= 49</comment>
+    <requestid>1359739</requestid>
+  </revision>
 </revisionlist>
