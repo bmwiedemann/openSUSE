@@ -1,9 +1,59 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:28:37 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update from 1.29.0 to 2.2.0
+- ADK 2.0 General Availability: Production-grade foundations for
+  multi-agent workflows and advanced dynamic agent collaboration
+- BREAKING CHANGES:
+  * LlmAgent default model changed from gemini-2.5-flash to
+    gemini-3-flash-preview (set model="gemini-2.5-flash" explicitly
+    to retain prior behavior)
+  * GenAI SDK v2.0.0 renames turn-based helpers in interactions_utils.py
+    (e.g., convert_contents_to_turns → convert_contents_to_steps)
+  * ADK 2.0 sessions generated are readable by ADK 1.28+ but
+    incompatible with older 1.x versions
+- New Features in v2.x:
+  * Multi-Agent Workflow Engine with flexible execution graphs
+  * Native Inter-Agent Routing and dynamic agent collaboration
+  * AutoTracingPlugin for OpenTelemetry auto-instrumentation
+  * RubricBasedMultiTurnTrajectoryEvaluator
+  * BigQuery Agent Analytics reliability fixes
+  * Native OTel gen_ai.client metrics
+  * Support for Anthropic's thinking blocks
+  * Vertex AI Agent Engine Sandbox integration for computer use
+  * Live avatar functionality and Gemini Live API support
+- New Features in v1.30-1.35:
+  * Support for Gemma 4 models
+  * BigQuery tools promoted to Stable status
+  * Parameter Manager and Artifact Service integration
+  * Firestore support
+  * New Live UI with redesigned real-time chat interface
+  * Session display names for better organization
+  * New Graph View for visualizing agent architectures
+  * Computer Use View for screenshots and logs
+- Security Fixes:
+  * Fixed credential leakage vulnerability in Agent Registry
+  * Validated user_id and session_id against path traversal
+  * Fixed SSRF and local-file access in load_web_page
+  * Block RCE vulnerability via nested YAML configurations
+  * Block path traversal in Agent Builder file tools
+  * Fix path traversal in GCS skill extraction (Zip Slip)
+  * Bumped starlette and fastapi to address CVE-2026-48710
+- Bug Fixes:
+  * Resolved 1007 error and support Gemini 3.1 Flash Live protocol
+  * Prevent grounding metadata loss in Gemini 3.1
+  * Fix bug where grounding metadata in Gemini 3.1 live was silently discarded
+  * Prevent initialization hangs and task group leaks (MCP)
+  * Preserve function call IDs for Anthropic models
+  * Support generalized history config injection for Gemini 3.1 Live
+  * Fixed input and output transcription finished events for Gemini v3.1
+
+-------------------------------------------------------------------
 Thu Apr 16 15:55:00 UTC 2026 - Gemini CLI <gemini-cli@google.com>
 
-- Drop adk-suppress-warnings.pth file into site-packages instead of 
-  patching the source. This automatically sets the environment 
-  variable ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS=1 during 
+- Drop adk-suppress-warnings.pth file into site-packages instead of
+  patching the source. This automatically sets the environment
+  variable ADK_SUPPRESS_EXPERIMENTAL_FEATURE_WARNINGS=1 during
   Python initialization to reduce warning noise from the CLI.
 
 -------------------------------------------------------------------

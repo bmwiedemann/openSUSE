@@ -14,25 +14,27 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+
+
 %{?sle15_python_module_pythons}
 Name:           python-google-adk
-Version:        1.29.0
+Version:        2.2.0
 Release:        0
 Summary:        An open-source, code-first Python toolkit for building AI agents
 License:        Apache-2.0
 URL:            https://github.com/google/adk-python
 Source:         https://github.com/google/adk-python/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # Core dependencies
 BuildRequires:  %{python_module PyYAML}
+BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module aiosqlite}
 BuildRequires:  %{python_module anyio}
-BuildRequires:  %{python_module Authlib}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module fastapi}
 BuildRequires:  %{python_module google-api-python-client}
@@ -60,10 +62,11 @@ BuildRequires:  %{python_module opentelemetry-exporter-gcp-trace}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http}
 BuildRequires:  %{python_module opentelemetry-resourcedetector-gcp}
 BuildRequires:  %{python_module opentelemetry-sdk}
-BuildRequires:  %{python_module arrow}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module python-dotenv}
+BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sqlalchemy-spanner}
 BuildRequires:  %{python_module sqlalchemy}
@@ -81,6 +84,7 @@ Requires(postun): update-alternatives
 BuildArch:      noarch
 # Runtime dependencies
 Requires:       python-PyYAML
+Requires:       python-Authlib
 Requires:       python-aiosqlite
 Requires:       python-anyio
 Requires:       python-click
@@ -110,10 +114,10 @@ Requires:       python-opentelemetry-exporter-gcp-trace
 Requires:       python-opentelemetry-exporter-otlp-proto-http
 Requires:       python-opentelemetry-resourcedetector-gcp
 Requires:       python-opentelemetry-sdk
-Requires:       python-arrow
 Requires:       python-pydantic
 Requires:       python-python-dateutil
 Requires:       python-python-dotenv
+Requires:       python-python-multipart
 Requires:       python-requests
 Requires:       python-sqlalchemy
 Requires:       python-sqlalchemy-spanner
