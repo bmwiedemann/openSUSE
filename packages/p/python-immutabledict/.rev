@@ -109,4 +109,12 @@
     issue</comment>
     <requestid>1338100</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>bc63635a9a7ff4f332c0a255b065550d</srcmd5>
+    <version>4.3.1</version>
+    <time>1781611054</time>
+    <user>anag_factory</user>
+    <comment>- skip performance tests in OBS</comment>
+    <requestid>1359665</requestid>
+  </revision>
 </revisionlist>
