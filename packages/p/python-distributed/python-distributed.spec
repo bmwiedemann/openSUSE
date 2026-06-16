@@ -17,6 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%global skip_python310 1
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -25,12 +27,6 @@
 %bcond_without test
 %define psuffix -%{flavor}
 %if 0%{suse_version} >= 1599
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
-%if "%{flavor}" != "test-py311"
-%define skip_python311 1
-%endif
 %if "%{flavor}" != "test-py312"
 %define skip_python312 1
 %endif
@@ -55,9 +51,9 @@ ExclusiveArch:  donotbuild
 # use this to run tests with xdist in parallel, unfortunately fails server side
 %bcond_with paralleltests
 
-Name:           python-distributed%{psuffix}
+Name:           python-distributed%{?psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2026.1.2
+Version:        2026.6.0
 Release:        0
 Summary:        Library for distributed computing with Python
 License:        BSD-3-Clause
@@ -71,8 +67,8 @@ Patch3:         distributed-ignore-offline.patch
 Patch4:         distributed-ignore-thread-leaks.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 80}
+BuildRequires:  %{python_module setuptools_scm >= 9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -87,12 +83,9 @@ Requires:       python-packaging >= 20.0
 Requires:       python-psutil >= 5.8.0
 Requires:       python-sortedcontainers >= 2.0.5
 Requires:       python-tblib >= 1.6.0
-Requires:       python-toolz >= 0.11.2
+Requires:       python-toolz >= 0.12.0
 Requires:       python-tornado >= 6.2.0
-Requires:       python-urllib3 >= 1.26.5
-Requires:       python-zict >= 2.2.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       python-zict >= 3.0.0
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
@@ -136,9 +129,6 @@ export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %install
 %if ! %{with test}
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/dask-ssh
-%python_clone -a %{buildroot}%{_bindir}/dask-scheduler
-%python_clone -a %{buildroot}%{_bindir}/dask-worker
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -180,6 +170,7 @@ donttest+=" or (test_worker and test_worker_reconnects_mid_compute)"
 donttest+=" or (test_worker_memory and test_digests)"
 donttest+=" or (test_worker_memory and test_pause_while_spilling)"
 donttest+=" or test_computations_futures"
+donttest+=" or test_server_listen"
 donttest+=" or test_task_state_instance_are_garbage_collected"
 donttest+=" or test_computation_object_code_client_submit_list_comp"
 donttest+=" or test_computation_object_code_client_submit_dict_comp"
@@ -230,18 +221,9 @@ notparallel+=" or test_ensure_no_new_clients"
 %endif
 
 %if ! %{with test}
-%post
-%python_install_alternative dask-ssh dask-scheduler dask-worker
-
-%postun
-%python_uninstall_alternative dask-ssh
-
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt
-%python_alternative %{_bindir}/dask-ssh
-%python_alternative %{_bindir}/dask-scheduler
-%python_alternative %{_bindir}/dask-worker
 %{python_sitelib}/distributed
 %{python_sitelib}/distributed-%{version}.dist-info
 

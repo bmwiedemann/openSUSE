@@ -1,8 +1,8 @@
-Index: distributed-2024.2.0/pyproject.toml
+Index: distributed-2026.6.0/pyproject.toml
 ===================================================================
---- distributed-2024.2.0.orig/pyproject.toml
-+++ distributed-2024.2.0/pyproject.toml
-@@ -117,7 +117,7 @@ filterwarnings = [
+--- distributed-2026.6.0.orig/pyproject.toml
++++ distributed-2026.6.0/pyproject.toml
+@@ -141,7 +141,7 @@ filterwarnings = [
      '''ignore:unclosed transport <_SelectorSocketTransport.*:ResourceWarning''',
      '''ignore:unclosed transport <asyncio\.sslproto\..*:ResourceWarning''',
      '''ignore:unclosed cluster SSHCluster.*:ResourceWarning''',

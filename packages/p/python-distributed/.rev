@@ -1206,4 +1206,41 @@
 - Drop patch distributed-ignore-rerun.patch, no longer required.</comment>
     <requestid>1338177</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>7d3e4e217f8af1a16e338a7004a1e396</srcmd5>
+    <version>2026.6.0</version>
+    <time>1781611042</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6.0:
+  * Add PyPI release workflow @mrocklin
+  * Fix test failures caused by port 8787 already in use
+    @crusaderky
+  * Migrate from black to `ruff format` @crusaderky
+  * SubprocessCluster: fix random crash on start @crusaderky
+  * Refactor get_task_stream @crusaderky
+  * fix: use task-stream index instead of wall clock in
+    get_task_stream context manager (#9253) @MohammadYusif
+  * Bump actions/checkout from 6.0.2 to 6.0.3
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Bump codecov/codecov-action from 6 to 7
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Do not build the distributed pixi package twice @crusaderky
+  * Fix flaky `test_steal_twice` and `test_steal_when_more_tasks`
+    @crusaderky
+  * Clarify scheduler unpickling in protocol docs @peter941221
+  * Reinstate no-queue tests @crusaderky
+  * Bump release-drafter/release-drafter from 6 to 7
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Clarify unsatisfied resource restrictions in resource docs
+    @peter941221
+  * Fix import-time coverage @crusaderky
+  * Improve CLI error message for unknown options to dask worker
+    (#9094) @ernestprovo23
+  * Run (most) CUDA tests in pixi @crusaderky
+  * Migrate CI to pixi @crusaderky
+  * Add AGENTS.md / CLAUDE.md; add guidelines re. AI pull
+    requests @crusaderky
+  * Fix tests vs. NumPy nightly builds @crusaderky</comment>
+    <requestid>1359663</requestid>
+  </revision>
 </revisionlist>

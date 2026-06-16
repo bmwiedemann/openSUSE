@@ -1,4 +1,126 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6.0:
+  * Add PyPI release workflow @mrocklin
+  * Fix test failures caused by port 8787 already in use
+    @crusaderky
+  * Migrate from black to `ruff format` @crusaderky
+  * SubprocessCluster: fix random crash on start @crusaderky
+  * Refactor get_task_stream @crusaderky
+  * fix: use task-stream index instead of wall clock in
+    get_task_stream context manager (#9253) @MohammadYusif
+  * Bump actions/checkout from 6.0.2 to 6.0.3
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Bump codecov/codecov-action from 6 to 7
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Do not build the distributed pixi package twice @crusaderky
+  * Fix flaky `test_steal_twice` and `test_steal_when_more_tasks`
+    @crusaderky
+  * Clarify scheduler unpickling in protocol docs @peter941221
+  * Reinstate no-queue tests @crusaderky
+  * Bump release-drafter/release-drafter from 6 to 7
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Clarify unsatisfied resource restrictions in resource docs
+    @peter941221
+  * Fix import-time coverage @crusaderky
+  * Improve CLI error message for unknown options to dask worker
+    (#9094) @ernestprovo23
+  * Run (most) CUDA tests in pixi @crusaderky
+  * Migrate CI to pixi @crusaderky
+  * Add AGENTS.md / CLAUDE.md; add guidelines re. AI pull
+    requests @crusaderky
+  * Fix tests vs. NumPy nightly builds @crusaderky
+  * uvloop tests @crusaderky
+  * Fix flaky `test_call_stack_future` @crusaderky
+  * drop dependency on 'urllib3' @jameslamb
+  * Remove `avoid_ci` mark @crusaderky
+  * Print host_info in CI without needing NumPy @crusaderky
+  * Fix typos @crusaderky
+  * Support pixi in dask/dask CI @crusaderky
+  * Truncate large coro repr in retry log output @ernestprovo23
+  * Add explicit check for name not None @maneesh29s
+  * XFAIL `test_scheduler_bokeh.py::test_simple` in Windows
+    @crusaderky
+  * Clean up deprecated loop properties and parameters
+    @crusaderky
+  * Clean up deprecations in Scheduler, Worker, Nanny @crusaderky
+  * Clean up deprecated client context in different tasks/threads
+    @crusaderky
+  * Clean up deprecated Prometheus metrics @crusaderky
+  * Clean up deprecations in `distributed.deploy` @crusaderky
+  * Clean up deprecated `stream` RPC handler argument @crusaderky
+  * Clean up deprecations in CLI @crusaderky
+  * Clean up deprecations in `security` @crusaderky
+  * Clean up deprecated rpc synchronous context manager
+    @crusaderky
+  * Clean up deprecated async listener.stop() @crusaderky
+  * Clean up deprecations in register_plugin @crusaderky
+  * Clean up deprecations in `SchedulerPlugin.remove_worker`
+    @crusaderky
+  * Clean up minimum pyarrow version checks @crusaderky
+  * Partial review of task streams @crusaderky
+  * Update outdated work stealing docs regarding worker
+    restrictions @kevinziroldi
+  * Fix memray CI; move back from mamba to conda @crusaderky
+  * Install keras with conda @crusaderky
+  * Clean up Cython @crusaderky
+  * Use `@dataclass(slots=True)` (with constraints from Python
+    <3.14) @crusaderky
+  * Type annotations for `client.Future` @crusaderky
+  * Clean up deprecated Lock client parameter @crusaderky
+  * Clean up deprecated nested_deserialize @crusaderky
+  * Clean up deprecations in `distributed.compatibility`
+    @crusaderky
+  * Clean up deprecations in utils_test @crusaderky
+  * Clean up deprecations in `distributed.utils` @crusaderky
+  * Clean up deprecations in ProgressBar @crusaderky
+  * Run more tests when requests is not installed @crusaderky
+  * Standardize and increase async_poll_for timeout @crusaderky
+  * Relax unreasonably short test timeouts @crusaderky
+  * Use f-strings @DimitriPapadopoulos
+  * Bump actions/checkout from 4.1.3 to 6.0.2
+    @DimitriPapadopoulos
+  * [trivial] Update link to bokeh sources in comment @crusaderky
+  * Apply ruff/pyupgrade rule UP031 @DimitriPapadopoulos
+  * Homogeneous environment names @DimitriPapadopoulos
+  * Bump codecov/codecov-action from 3 to 6
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Overhaul `publish_dataset` extension @crusaderky
+  * Fix flaky `test_mixing_clients_same_scheduler` @crusaderky
+  * `@contextmanager` should return `Generator[T]` @crusaderky
+  * Fix flaky `test_actor.py::test_failed_worker` @crusaderky
+  * Clean up info parameters in transition to memory @crusaderky
+  * Move state validation from Scheduler to SchedulerState
+    @crusaderky
+  * Bump to black 26.3.1 @crusaderky
+  * Tweak scheduler annotations @crusaderky
+  * Bump conda-incubator/setup-miniconda from 3.2.0 to 4.0.1
+    @[dependabot[bot]](https://github.com/apps/dependabot)
+  * Fix typos @DimitriPapadopoulos
+  * Bug: dashboard would not show no-worker tasks @crusaderky
+  * See the Changelog for more information.
+
+-------------------------------------------------------------------
+Mon Jun 15 13:20:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- skip building + testing for python 3.11
+
+-------------------------------------------------------------------
+Sat Apr 11 12:15:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.0:
+  * Fix CI — bokeh 3.9.0 @DimitriPapadopoulos
+  * setproctitle: avoid being caught by dask.config; add to test
+    envs @crusaderky
+  * docs: fix Scheduler.close docstring @cnaples79
+  * Fix Total CPU % on /workers tab to normalize by total
+    nthreads @ernestprovo23
+  * XFAIL test\_handle\_null\_partitions\_2 @crusaderky
+  * Type hints for Future.status @nadzhou
+  * Pin sphinx=8 @crusaderky
+
+-------------------------------------------------------------------
 Wed Mar 11 00:23:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2026.1.2:
