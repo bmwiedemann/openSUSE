@@ -20,7 +20,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-cryptography-vectors
 # ALWAYS KEEP IN SYNC WITH python-cryptography!
-Version:        48.0.0
+Version:        49.0.0
 Release:        0
 Summary:        Test vectors for the cryptography package
 License:        Apache-2.0 OR BSD-3-Clause
