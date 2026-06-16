@@ -1939,4 +1939,41 @@
   * Several Dask Array bug fixes</comment>
     <requestid>1338176</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>3e040bc09fbda97126b5fd3f8a5c39bb</srcmd5>
+    <version>2026.6.0</version>
+    <time>1781611046</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6.0:
+  * Improve pandas 3.1 compatibility, including
+    add_prefix/add_suffix and DataFrame.drop changes
+    (:pr:`12414`, :pr:`12447`) `Guido Imperiale`_
+  * Fix groupby compatibility with pandas 2.2 and 2.3 and test
+    against intermediate NumPy and pandas versions (:pr:`12372`)
+    `Guido Imperiale`_
+  * Store empty arrays with Zarr 3.2.0 (:pr:`12366`) `Guido
+    Imperiale`_
+  * Fix quantile and nanquantile behavior (:pr:`12380`) `Guido
+    Imperiale`_
+  * Add support for Cholesky decomposition with complex dtypes
+    (:pr:`12416`) `Niclas Rieger`_
+  * Fix dataframe correctness issues in DataFrame.merge and
+    Series.map (:pr:`12430`, :pr:`12432`) `nn`_, `Mike
+    Evdokimov`_
+  * Overhaul the publish_dataset extension (:pr-
+    distributed:`9217`) `Guido Imperiale`_
+  * Overhaul task stream handling (:pr-distributed:`9230`, :pr-
+    distributed:`9282`, :pr-distributed:`9293`) `Guido
+    Imperiale`_, `MohammadYusif`_
+  * Fix a race condition in SubprocessCluster startup (:pr-
+    distributed:`9292`) `Guido Imperiale`_
+  * Clean up deprecated Distributed APIs across scheduler,
+    worker, CLI, plugin, and progress handling (:pr-
+    distributed:`9222`, :pr-distributed:`9225`, :pr-
+    distributed:`9238`, :pr-distributed:`9240`, :pr-
+    distributed:`9250`) `Guido Imperiale`_
+  * Migrate CI and local workflows to Pixi (:pr:`12389`, :pr-
+    distributed:`9276`) `Guido Imperiale`_</comment>
+    <requestid>1359664</requestid>
+  </revision>
 </revisionlist>

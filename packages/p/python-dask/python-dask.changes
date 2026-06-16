@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:28:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6.0:
+  * Improve pandas 3.1 compatibility, including
+    add_prefix/add_suffix and DataFrame.drop changes
+    (:pr:`12414`, :pr:`12447`) `Guido Imperiale`_
+  * Fix groupby compatibility with pandas 2.2 and 2.3 and test
+    against intermediate NumPy and pandas versions (:pr:`12372`)
+    `Guido Imperiale`_
+  * Store empty arrays with Zarr 3.2.0 (:pr:`12366`) `Guido
+    Imperiale`_
+  * Fix quantile and nanquantile behavior (:pr:`12380`) `Guido
+    Imperiale`_
+  * Add support for Cholesky decomposition with complex dtypes
+    (:pr:`12416`) `Niclas Rieger`_
+  * Fix dataframe correctness issues in DataFrame.merge and
+    Series.map (:pr:`12430`, :pr:`12432`) `nn`_, `Mike
+    Evdokimov`_
+  * Overhaul the publish_dataset extension (:pr-
+    distributed:`9217`) `Guido Imperiale`_
+  * Overhaul task stream handling (:pr-distributed:`9230`, :pr-
+    distributed:`9282`, :pr-distributed:`9293`) `Guido
+    Imperiale`_, `MohammadYusif`_
+  * Fix a race condition in SubprocessCluster startup (:pr-
+    distributed:`9292`) `Guido Imperiale`_
+  * Clean up deprecated Distributed APIs across scheduler,
+    worker, CLI, plugin, and progress handling (:pr-
+    distributed:`9222`, :pr-distributed:`9225`, :pr-
+    distributed:`9238`, :pr-distributed:`9240`, :pr-
+    distributed:`9250`) `Guido Imperiale`_
+  * Migrate CI and local workflows to Pixi (:pr:`12389`, :pr-
+    distributed:`9276`) `Guido Imperiale`_
+  * Add AI contribution guidance with AGENTS.md and CLAUDE.md
+    (:pr:`12415`, :pr-distributed:`9279`) `Guido Imperiale`_
+  * Add PyPI release workflows with GitHub Actions Trusted
+    Publishing (:pr:`12452`, :pr-distributed:`9297`) `Matthew
+    Rocklin`_
+
+-------------------------------------------------------------------
+Mon Jun 15 13:19:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- stop testing for python 3.10 and 3.11
+
+-------------------------------------------------------------------
+Thu May 28 14:34:38 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Skip python311-zarr
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file
+  (bsc#1263906)
+
+-------------------------------------------------------------------
+Wed May 27 15:32:29 UTC 2026 - Benjamin Greiner <code@bnavigator.de>
+
+- Don't test with python311-xarray: It got removed
+
+-------------------------------------------------------------------
+Sat Apr 11 12:19:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.3.0:
+  * Preliminary Python 3.14t support
+  * Bokeh 3.9.0 compatibility
+
+-------------------------------------------------------------------
 Wed Mar 11 00:23:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2026.1.2:

@@ -17,6 +17,8 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%global skip_python310 1
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -54,7 +56,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2026.1.2
+Version:        2026.6.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -64,18 +66,18 @@ Source0:        https://files.pythonhosted.org/packages/source/d/dask/dask-%{ver
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 80}
+BuildRequires:  %{python_module setuptools_scm >= 9}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 5.3.1
+Requires:       python-PyYAML >= 5.4.1
 Requires:       python-click >= 8.1
-Requires:       python-cloudpickle >= 3.0
-Requires:       python-fsspec >= 2021.9
+Requires:       python-cloudpickle >= 3.0.0
+Requires:       python-fsspec >= 2021.09.0
 Requires:       python-packaging >= 20.0
 Requires:       python-partd >= 1.4.0
-Requires:       python-toolz >= 0.10.0
+Requires:       python-toolz >= 0.12.0
 Requires:       (python-cloudpickle >= 3.1 if python-base >= 3.13)
 Requires:       (python-importlib-metadata >= 4.13.0 if python-base < 3.12)
 Requires(post): update-alternatives
@@ -139,8 +141,8 @@ BuildRequires:  %{python_module scikit-image if %python-base < 3.13}
 BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module sparse}
 BuildRequires:  %{python_module tables}
-BuildRequires:  %{python_module xarray}
-BuildRequires:  %{python_module zarr}
+BuildRequires:  %{python_module xarray if %python-base >= 3.12}
+BuildRequires:  %{python_module zarr if %python-base >= 3.12}
 # /SECTION
 %endif
 %python_subpackages
@@ -166,7 +168,7 @@ Requires:       %{name}-dataframe = %{version}
 Requires:       %{name}-diagnostics = %{version}
 Requires:       %{name}-distributed = %{version}
 Requires:       python-lz4 >= 4.3.2
-Requires:       python-pyarrow >= 14.0.1
+Requires:       python-pyarrow >= 16.0
 Provides:       %{name}-all = %{version}-%{release}
 Obsoletes:      %{name}-all < %{version}-%{release}
 
@@ -188,7 +190,7 @@ This package pulls in all the optional dask components.
 Summary:        Numpy-like array data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-delayed = %{version}
-Requires:       python-numpy >= 1.21
+Requires:       python-numpy >= 1.24
 Recommends:     python-scipy
 
 %description array
@@ -212,8 +214,8 @@ arrays using blocked algorithms and task scheduling.
 Summary:        Pandas-like DataFrame data structure for dask
 Requires:       %{name} = %{version}
 Requires:       %{name}-array = %{version}
-Requires:       python-pandas >= 2
-Requires:       python-pyarrow >= 14.0.1
+Requires:       python-pandas >= 2.0
+Requires:       python-pyarrow >= 16.0
 
 %description dataframe
 A flexible library for parallel computing in Python.
@@ -258,7 +260,7 @@ This meta package pulls in the distributed module into the dask namespace.
 Summary:        Diagnostics for dask
 Requires:       %{name} = %{version}
 Requires:       python-Jinja2 >= 2.10.3
-Requires:       python-bokeh >= 3.1
+Requires:       python-bokeh >= 3.1.0
 
 %description diagnostics
 A flexible library for parallel computing in Python.
