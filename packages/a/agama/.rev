@@ -978,4 +978,41 @@
 - Prevent the monitor from blocking (related to bsc#1265431).</comment>
     <requestid>1357933</requestid>
   </revision>
+  <revision rev="47" vrev="47">
+    <srcmd5>0d4d60e254787e7e602a6e24f128581a</srcmd5>
+    <version>0</version>
+    <time>1781610440</time>
+    <user>anag_factory</user>
+    <comment>- Version 22
+
+- Unify text with the UI (gh#agama-project/agama#3637).
+
+- Fixed copying URL credentials to the target system (bsc#1267881)
+
+- Improve the &quot;agama monitor&quot; and &quot;agama status&quot; texts
+  (gh#agama-project/agama#3621).
+
+- Mark properly autoinst retry question as the one that should
+  return value for new url (gh#agama-project/agama#3623)
+
+- The list of products only contains the products and modes
+  descriptions for the current language
+  (gh#agama-project/agama#3619).
+
+- Adapt storate schemas to allow configuring filesystem options
+  (gh#agama-project/agama#3620).
+
+- Use the same format to display the result on &quot;validate&quot; and
+  &quot;validate --local&quot; (gh#agama-project/agama#3616).
+- Reduce the validation attempts on &quot;agama config load&quot;.
+
+- Print the status after running the &quot;monitor&quot;, &quot;config load&quot;,
+  &quot;config edit&quot; and &quot;install&quot; commands (gh#agama-project/agama#3615).
+
+- Add to `agama monitor` ability to answer questions
+  (gh#agama-project/agama#3606)
+
+- Implement the RFC9457 for error reporting (gh#agama-project/agama#3611).</comment>
+    <requestid>1359651</requestid>
+  </revision>
 </revisionlist>
