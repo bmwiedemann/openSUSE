@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Remove polyfill imports for SafeArea API
+  * Don't apply safe area margin to page bottom when there's a footer
+  * Only apply safe area margins when we have a parent
+  * Fix top margin in Page overlayItem
+  * Heading: set the color to Platform.Theme.textColor for heading
+  * Explicitly layout the window content item vertically as well
+  * Fix toolbar size with non-zero SafeArea margins
+  * controls/Badge: avoid binding loop
+  * Fix access to ScenePosition attached property in DrawerHandle
+  * GlobalDrawer: top-align topContent (kde#520337)
+  * Add basic tests for some components
+  * Don't handle back key twice
+  * FormLayout: Fix FormData namespace alias (kde#520076)
+  * Revert "Disable qmllint for some modules"
+  * Form: Guard root.Forms.FormAlignmentGroup.group
+  * GlobalDrawer: Use implicitWidth, set preferredHeight in item (kde#517091)
+  * Remove unused import
+  * Clean up internal imports
+  * controls: Remove defunct onCompleted block in AbstractApplicationWindow
+  * controls: Don't break width/height bindings in AbstractApplicationWindow
+  * Remove duplicate ecm_qt_install_logging_categories
+  * Use default DEFAULT_SEVERITY for logging
+  * Action: Notify fromQActinChanged when the QAction changed
+  * Form: Introduce FormAlignmentGroup
+  * Install Qt metatypes
+  * ToolbarLayout: don't crash when moreButton is not valid
+  * Fixs subtitle  padding calculation in forms flat mode
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
