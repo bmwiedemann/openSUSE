@@ -1,7 +1,7 @@
 #
 # spec file for package libtcnative-1-0
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libtcnative-1-0
-Version:        1.3.7
+Version:        1.3.8
 Release:        0
 Summary:        Tomcat resources for performance, compatibility, etc
 License:        Apache-2.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 05:31:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 1.3.8
+  * Changes
+    + Fix a memory leak when parsing certificates
+    + Fix two potential memory leaks on error paths identified by
+      Copilot
+    + Fix post handshake authentication when Tomcat is configured
+      with a trust store using JSSE style configuration
+    + Correct expected size of tickets when calling
+      SSLContext.setSessionTicketKeys
+
+-------------------------------------------------------------------
 Wed Mar 25 10:13:33 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Update to 1.3.7: [bsc#1260322]
