@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 15 08:24:40 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to alsa-lib 1.2.16.1:
+  a minor fix release, updating UCM and conf API.
+  For details, see:
+    https://www.alsa-project.org/wiki/Changes_v1.2.16_v1.2.16.1#alsa-lib
+
+-------------------------------------------------------------------
 Tue Jun  2 07:05:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to alsa-lib 1.2.16:
