@@ -24,6 +24,8 @@ License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/requests-cache/requests-cache
 Source:         https://github.com/requests-cache/requests-cache/archive/refs/tags/v%{version}.tar.gz#/requests-cache-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch1:         avoid-vacuum-in-transaction.patch
 BuildRequires:  %{python_module hatchling >= 1.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -79,7 +81,7 @@ If you need library which knows how to use HTTP headers and status codes,
 take a look at `CacheControl <https://github.com/ionrock/cachecontrol>`_.
 
 %prep
-%setup -q -n requests-cache-%{version}
+%autosetup -p1 -n requests-cache-%{version}
 
 %build
 %pyproject_wheel

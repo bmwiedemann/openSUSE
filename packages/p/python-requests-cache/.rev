@@ -164,4 +164,12 @@
     libraries</comment>
     <requestid>1355081</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>af76f0f632f168f41e29300908a82f2a</srcmd5>
+    <version>1.3.2</version>
+    <time>1781611057</time>
+    <user>anag_factory</user>
+    <comment>- add avoid-vacuum-in-transaction.patch</comment>
+    <requestid>1359666</requestid>
+  </revision>
 </revisionlist>
