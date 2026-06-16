@@ -273,4 +273,22 @@ update to version v2.5
   * of the CVE-2024-3651 mitigation. [CVE-2026-45409]</comment>
     <requestid>1353725</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fe77a91efc82b5d9ff027e749a0b2749</srcmd5>
+    <version>3.18</version>
+    <time>1781628123</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.18:
+  * Add a display argument to decode() that passes through invalid
+    labels rather than raising an exception.
+  * Substantial 75% reduction in memory usage through new data
+    structures and processing speed optimizations.
+  * Added a general 1024-character input length cap to the public
+    validation, conversion, and codec entry points.
+  * Add a command-line interface (python -m idna, also available as
+    the idna script).
+  * Raise the minimum supported Python version to 3.9.
+  * Various code quality improvements.</comment>
+    <requestid>1359264</requestid>
+  </revision>
 </revisionlist>

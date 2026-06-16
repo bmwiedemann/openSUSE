@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 14 15:30:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 3.18:
+  * Add a display argument to decode() that passes through invalid
+    labels rather than raising an exception.
+  * Substantial 75% reduction in memory usage through new data
+    structures and processing speed optimizations.
+  * Added a general 1024-character input length cap to the public
+    validation, conversion, and codec entry points.
+  * Add a command-line interface (python -m idna, also available as
+    the idna script).
+  * Raise the minimum supported Python version to 3.9.
+  * Various code quality improvements.
+
+-------------------------------------------------------------------
 Sun May 17 21:35:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.15 (bsc#1265413, CVE-2026-45409):

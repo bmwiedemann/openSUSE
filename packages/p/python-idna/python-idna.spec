@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-idna
-Version:        3.15
+Version:        3.18
 Release:        0
 Summary:        Internationalized Domain Names in Applications (IDNA)
 License:        BSD-3-Clause
@@ -30,6 +35,13 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros >= 20220106.80d3756
 BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -51,14 +63,25 @@ library but currently only supports the older 2003 specification.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/idna
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pyunittest discover -v
 
+%pre
+%python_libalternatives_reset_alternative idna
+
+%post
+%python_install_alternative idna
+
+%postun
+%python_uninstall_alternative idna
+
 %files %{python_files}
 %license LICENSE.md
 %doc README.md HISTORY.md
+%python_alternative %{_bindir}/idna
 %{python_sitelib}/idna
 %{python_sitelib}/idna-%{version}*-info
 
