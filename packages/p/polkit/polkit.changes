@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 12 13:51:17 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- remove memory limits in systemd service, this causes performance loss (bsc#1266994)
+  0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch
+
+-------------------------------------------------------------------
 Fri Mar 27 14:19:04 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - avoid reading endless amounts of memory (CVE-2026-4897 bsc#1260859)

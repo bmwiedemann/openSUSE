@@ -951,4 +951,12 @@ can switch the default compiler. (forwarded request 1187079 from jamborm)</comme
 - removed 0001-Nested-.policy-files-cause-xml-parsing-overflow-lead.patch: upstream</comment>
     <requestid>1343588</requestid>
   </revision>
+  <revision rev="102" vrev="6">
+    <srcmd5>b13edc3aff2dadc9a7c6420bfced577c</srcmd5>
+    <version>127</version>
+    <time>1781610423</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359595</requestid>
+  </revision>
 </revisionlist>

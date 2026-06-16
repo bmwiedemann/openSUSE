@@ -1,0 +1,32 @@
+From 44365bbd482377dae6e115c5751c3b57b9558ab3 Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <luca.boccassi@gmail.com>
+Date: Fri, 24 Apr 2026 14:19:31 +0100
+Subject: [PATCH] Revert "memory limits in systemd unit to mitigate memory
+ leaks"
+
+This causes breakages when running with system-wide sanitizers,
+and it's a poor band-aid anyway. If there are any memory leaks,
+they need to be found with profiling and fixed.
+
+This reverts commit 7d9c06c58a957ee3f2a4383ade6f207b05207e3e.
+---
+ data/polkit.service.in | 6 ------
+ 1 file changed, 6 deletions(-)
+
+diff --git a/data/polkit.service.in b/data/polkit.service.in
+index 22b7b95..f1b6d91 100644
+--- a/data/polkit.service.in
++++ b/data/polkit.service.in
+@@ -33,9 +33,3 @@ RestrictSUIDSGID=yes
+ SystemCallArchitectures=native
+ SystemCallFilter=@system-service
+ UMask=0077
+-
+-# Mitigate memory leaks
+-MemoryMax=32M
+-MemorySwapMax=32M
+-OOMPolicy=stop
+-Restart=on-failure
+-- 
+2.51.0
+

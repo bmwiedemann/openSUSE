@@ -51,6 +51,9 @@ Patch4:         polkit-adjust-libexec-path.patch
 # PATCH-FIX-UPSTREAM 0001-CVE-2026-4897-getline-string-overflow.patch -- bsc#1260859  ... use a limited getline buffer to avoid endless reads
 Patch5:         0001-CVE-2026-4897-getline-string-overflow.patch
 
+# PATCH-FIX-UPSTREAM 0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch -- bsc#1266994 ... enabling this causes quite some performance drop
+Patch6:         0001-Revert-memory-limits-in-systemd-unit-to-mitigate-mem.patch
+
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  gtk-doc
