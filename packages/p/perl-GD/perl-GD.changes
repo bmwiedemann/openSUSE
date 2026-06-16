@@ -5,7 +5,7 @@ Wed Jun 10 09:02:07 UTC 2026 - Tina Müller <timueller+perl@suse.de>
    see /usr/share/doc/packages/perl-GD/ChangeLog
 
   2.86    * Fix CVE-2026-11526, command injection via 2-arg open() in _make_filehandle.
-  	  CWE-78, CWE-73 (Reported and fixed by Paul Johnson)
+  	  CWE-78, CWE-73 (Reported and fixed by Paul Johnson) bsc#1268240
   2.85    * Tolerate runtime TIFF decode failures in autodetect (GH #62)
   	* Replace cpm with cpanm in github actions
   	* Fixed a minor precedence bug in t/z_manifest.t

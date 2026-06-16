@@ -373,4 +373,12 @@
   	* Add demos/png2jpeg.pl</comment>
     <requestid>1358717</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>0763097d9a478bc579b91808386974a1</srcmd5>
+    <version>2.860.0</version>
+    <time>1781610388</time>
+    <user>anag_factory</user>
+    <comment>Add bsc reference bsc#1268240</comment>
+    <requestid>1359517</requestid>
+  </revision>
 </revisionlist>
