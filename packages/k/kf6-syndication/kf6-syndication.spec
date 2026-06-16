@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname syndication
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-syndication
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        RSS/Atom parsing library
 License:        LGPL-2.1-or-later
@@ -55,6 +55,7 @@ This package contains the base library.
 %package devel
 Summary:        RSS/Atom parsing library - development headers
 Requires:       libKF6Syndication6 = %{version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
 
 %description devel
 KF6Syndication is an RSS/Atom parsing library, which
