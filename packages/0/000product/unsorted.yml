@@ -3026,7 +3026,6 @@ unsorted:
   - ctlptl-bash-completion 
   - ctlptl-fish-completion 
   - ctlptl-zsh-completion 
-  - ctop 
   - ctranslate2 
   - ctranslate2-devel 
   - ctre-devel 
@@ -9256,6 +9255,8 @@ unsorted:
   - jakarta-inject-javadoc 
   - jakarta-mail 
   - jakarta-mail-javadoc 
+  - jakarta-messaging 
+  - jakarta-messaging-javadoc 
   - jakarta-pages 
   - jakarta-pages-javadoc 
   - jakarta-servlet 
@@ -18851,10 +18852,12 @@ unsorted:
   - mcjoin 
   - mcomix 
   - mcp-dap-server 
+  - mcp-server-snapper 
+  - mcp-server-snapper-testsuite 
   - mcp-server-suseconnect 
   - mcp-server-systemd 
   - mcp-server-systemd-gatekeeper 
-  - mcp-server-systemd-test 
+  - mcp-server-systemd-testsuite 
   - mcphost 
   - mcphost-bash-completion 
   - mcphost-fish-completion 
@@ -25426,13 +25429,6 @@ unsorted:
   - python311-dash-html-components 
   - python311-dash-renderer 
   - python311-dash-table 
-  - python311-dask 
-  - python311-dask-array 
-  - python311-dask-complete 
-  - python311-dask-dataframe 
-  - python311-dask-diagnostics 
-  - python311-dask-distributed 
-  - python311-dask-test 
   - python311-dataclasses-json 
   - python311-datadiff 
   - python311-datamodel-code-generator 
@@ -25495,7 +25491,6 @@ unsorted:
   - python311-dist-meta 
   - python311-distlib 
   - python311-distorm3 
-  - python311-distributed 
   - python311-distroinfo 
   - python311-distutils-extra 
   - python311-dj-database-url 
@@ -26011,6 +26006,7 @@ unsorted:
   - python311-http-parser 
   - python311-httpagentparser 
   - python311-httpbin 
+  - python311-httpcore2 
   - python311-httplib2 
   - python311-httpretty 
   - python311-httpsig_cffi 
@@ -26018,6 +26014,7 @@ unsorted:
   - python311-httpx-socks 
   - python311-httpx-sse 
   - python311-httpx-ws 
+  - python311-httpx2 
   - python311-huey 
   - python311-huggingface-hub 
   - python311-humanfriendly 
@@ -27943,7 +27940,6 @@ unsorted:
   - python311-typeguard 
   - python311-typepy 
   - python311-typer 
-  - python311-typer-slim 
   - python311-types-Pillow 
   - python311-types-PyYAML 
   - python311-types-humanfriendly 
@@ -29938,6 +29934,7 @@ unsorted:
   - python313-httpagentparser 
   - python313-httpbin 
   - python313-httpcore 
+  - python313-httpcore2 
   - python313-httplib2 
   - python313-httpretty 
   - python313-httpsig_cffi 
@@ -29946,6 +29943,7 @@ unsorted:
   - python313-httpx-socks 
   - python313-httpx-sse 
   - python313-httpx-ws 
+  - python313-httpx2 
   - python313-huey 
   - python313-huggingface-hub 
   - python313-humanfriendly 
@@ -31623,6 +31621,7 @@ unsorted:
   - python313-snuggs 
   - python313-social-auth-app-django 
   - python313-social-auth-core 
+  - python313-socksio 
   - python313-softlayer 
   - python313-softlayer-zeep 
   - python313-solv 
@@ -31904,7 +31903,6 @@ unsorted:
   - python313-typeguard 
   - python313-typepy 
   - python313-typer 
-  - python313-typer-slim 
   - python313-types-Pillow 
   - python313-types-PyYAML 
   - python313-types-humanfriendly 
@@ -33907,6 +33905,7 @@ unsorted:
   - python314-httpagentparser 
   - python314-httpbin 
   - python314-httpcore 
+  - python314-httpcore2 
   - python314-httplib2 
   - python314-httpretty 
   - python314-httpsig_cffi 
@@ -33915,6 +33914,7 @@ unsorted:
   - python314-httpx-socks 
   - python314-httpx-sse 
   - python314-httpx-ws 
+  - python314-httpx2 
   - python314-huey 
   - python314-huggingface-hub 
   - python314-humanfriendly 
@@ -35623,6 +35623,7 @@ unsorted:
   - python314-snuggs 
   - python314-social-auth-app-django 
   - python314-social-auth-core 
+  - python314-socksio 
   - python314-softlayer 
   - python314-softlayer-zeep 
   - python314-solv 
@@ -35904,7 +35905,6 @@ unsorted:
   - python314-typeguard 
   - python314-typepy 
   - python314-typer 
-  - python314-typer-slim 
   - python314-types-Pillow 
   - python314-types-PyYAML 
   - python314-types-humanfriendly 
