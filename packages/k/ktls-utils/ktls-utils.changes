@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 12 14:45:50 UTC 2026 - Ales Novak <alnovak@suse.com>
+
+- Update to version 1.4.0+5.gddea5b0:
+  * tlshd/handshake: handle the UNKNOWN_PSK_IDENTITY alert
+  * tlshd: fix keyring cert retrieval
+  * tlshd: Add runtime check for ML-DSA support in gnutls
+  * tlshd: Update the "Handshake timed out" warning
+
+-------------------------------------------------------------------
 Tue Apr 07 06:42:22 UTC 2026 - Ales Novak <alnovak@suse.com>
 
 - Update to version 0.10+188.g61787a1:
