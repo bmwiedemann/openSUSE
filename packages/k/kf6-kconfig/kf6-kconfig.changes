@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Do not inherit publicly from std::map
+  * KConfigSkeleton: Fix reading value for deleted entry with system default (kde#509416)
+  * KConfigXT: Add addItemPathList and addItemUrlList
+  * CMake config file: check private QtDBus dependency only for static builds
+  * Drop unneeded moc include
+  * Fix build warnings with -Wnoexcept (kde#384583)
+  * Add autotest for KCoreConfigSkeleton::useDefaults
+  * kconfig_compiler: Fix QML forward declarations when using a namespace (kde#510091)
+  * kwindowstatesaverquick: Do not force-show windows
+  * CMake config file: remove no longer used Qt6Xml dep with (static) libs
+  * Add test for ADMIN_ACCOUNT environment variable override
+  * Fix wrong usage of qEnvironmentVariable function
+  * CMake config file: add missing Qt6Core & Qt6Gui dependency check
+  * kconfig_compiler: Consistently accept lowercase type names
+  * Install Qt metatypes
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0

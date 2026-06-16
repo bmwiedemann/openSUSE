@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname kconfig
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kconfig
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Advanced configuration system
 License:        LGPL-2.1-or-later AND GPL-2.0-or-later
@@ -114,9 +114,10 @@ Requires:       kconf_update6 = %{version}
 Requires:       libKF6ConfigCore6 = %{version}
 Requires:       libKF6ConfigGui6 = %{version}
 Requires:       libKF6ConfigQml6 = %{version}
+Requires:       cmake(Qt6Core) >= %{qt6_version}
 Requires:       cmake(Qt6DBus) >= %{qt6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 Requires:       cmake(Qt6Qml) >= %{qt6_version}
-Requires:       cmake(Qt6Xml) >= %{qt6_version}
 
 %description devel
 KConfig provides an advanced configuration system. It is made of two parts:
@@ -187,6 +188,8 @@ their changes to their respective configuration files. Development files.
 %{_kf6_libdir}/libKF6ConfigGui.so
 %{_kf6_libdir}/libKF6ConfigQml.so
 %{_kf6_libexecdir}/kconfig_compiler_kf6
+%{_qt6_metatypesdir}/qt6kf6configcore_metatypes.json
+%{_qt6_metatypesdir}/qt6kf6configgui_metatypes.json
 
 %files -n libKF6ConfigCore6-lang -f kconfig6.lang
 
