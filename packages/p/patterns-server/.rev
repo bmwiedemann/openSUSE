@@ -192,4 +192,12 @@
     <comment></comment>
     <requestid>1349822</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>428aaf2a0093a427b703c68ffd9e59be</srcmd5>
+    <version>20250313</version>
+    <time>1781610363</time>
+    <user>anag_factory</user>
+    <comment>- Only require libvirt-daemon-qemu on supported architectures.</comment>
+    <requestid>1359009</requestid>
+  </revision>
 </revisionlist>

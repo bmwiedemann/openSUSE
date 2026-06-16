@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -44,6 +44,7 @@ This particular package contains all the server related patterns
 
 
 ################################################################################
+
 %package dhcp_dns_server
 %pattern_serverfunctions
 Summary:        DHCP and DNS Server
@@ -214,7 +215,9 @@ Provides:       pattern-order() = 3099
 Provides:       pattern-visible()
 Requires:       libvirt-daemon-config-network
 Requires:       libvirt-daemon-driver-network
+%ifnarch %{ix86} %{arm}
 Requires:       libvirt-daemon-driver-qemu
+%endif
 Requires:       libvirt-daemon-driver-storage-core
 Requires:       tftp
 Requires:       pattern() = basesystem
@@ -248,7 +251,9 @@ Provides:       pattern-order() = 1090
 Provides:       pattern-visible()
 Requires:       libvirt-client
 Requires:       libvirt-daemon-config-network
+%ifnarch %{ix86} %{arm}
 Requires:       libvirt-daemon-qemu
+%endif
 %{requires_on_traditional tigervnc}
 Requires:       pattern() = basesystem
 Requires:       pattern() = kvm_server
