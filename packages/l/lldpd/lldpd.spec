@@ -45,6 +45,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(libbsd)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(libxml-2.0)
 Requires(pre):  %fillup_prereq

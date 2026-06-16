@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 15 14:15:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add libcap-devel to BuildRequires to build with support for
+  libpcap.  This will allow the monitor process to drop its
+  privileges instead of running as root, improving security.
+
+-------------------------------------------------------------------
 Fri May 15 05:55:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.22
