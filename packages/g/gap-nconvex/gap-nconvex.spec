@@ -1,7 +1,7 @@
 #
 # spec file for package gap-nconvex
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-nconvex
-Version:        2024.12.01
-%define sillyver 2024.12-01
+Version:        2025.12.02
+%define sillyver 2025.12-02
 Release:        0
 Summary:        GAP: Polyhedral computations
 License:        GPL-2.0-or-later
@@ -26,9 +26,9 @@ Group:          Productivity/Scientific/Math
 URL:            https://homalg-project.github.io/pkg/NConvex
 Source:         https://github.com/homalg-project/NConvex/releases/download/v%sillyver/NConvex-%sillyver.tar.gz
 BuildRequires:  gap-rpm-devel
-Requires:       gap-autodoc >= 2018.02.14
+Requires:       gap-autodoc >= 2025.12.19
 Requires:       gap-cddinterface >= 2020.06.24
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.13.0
 Requires:       gap-modules >= 0.5
 Requires:       gap-normalizinterface >= 1.1.0
 Suggests:       gap-4ti2interface >= 2018.07.06
