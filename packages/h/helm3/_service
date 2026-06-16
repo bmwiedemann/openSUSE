@@ -5,7 +5,7 @@
     <param name="exclude">.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="revision">v3.21.0</param>
+    <param name="revision">v3.21.1</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">helm3</param>
   </service>
@@ -13,7 +13,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="replace">github.com/distribution/distribution/v3=github.com/distribution/distribution/v3@v3.1.1</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">

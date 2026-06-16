@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jun 13 10:07:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.21.1:
+  * Fixed nil pointer panic that could happen with helm template in
+    ClientOnly flows. Now correctly returns a template error #31920
+  * Bumped golang.org/x/net to v0.55.0 to address GO-2026-5026
+    #32152
+  * Bumped Go from 1.25 to 1.26 #32168
+  * Dependency version updates
+    - chore(deps): bump oras.land/oras-go/v2 from 2.6.0 to 2.6.1
+    - chore(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0
+    - chore(deps): bump golang.org/x/term from 0.43.0 to 0.44.0
+    - chore(deps): bump golang.org/x/text from 0.37.0 to 0.38.0
+    - chore(deps): bump github.com/lib/pq from 1.11.2 to 1.12.3
+    - chore(deps): bump github.com/distribution/distribution/v3
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.30 to 1.7.32
+    - chore(deps): bump github.com/Masterminds/semver/v3 from 3.4.0
+      to 3.5.0
+    - chore(deps): bump github.com/mattn/go-shellwords from 1.0.12
+      to 1.0.13
+    - chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+    - chore(deps): bump k8s.io/klog/v2 from 2.130.1 to 2.140.0
+    - chore(deps): bump golang.org/x/text from 0.35.0 to 0.37.0
+
+-------------------------------------------------------------------
 Wed May 27 21:29:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update golang/x/net to v0.55.0 (bsc#1266598, CVE-2026-39821)

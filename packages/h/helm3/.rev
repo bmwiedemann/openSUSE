@@ -133,4 +133,12 @@
     <comment>- update golang/x/net to v0.55.0 (bsc#1266598, CVE-2026-39821)</comment>
     <requestid>1355484</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d064d1fd38974e9ccb332dc07be3ce50</srcmd5>
+    <version>3.21.1</version>
+    <time>1781611081</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359671</requestid>
+  </revision>
 </revisionlist>
