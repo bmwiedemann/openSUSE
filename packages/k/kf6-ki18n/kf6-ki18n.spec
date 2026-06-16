@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname ki18n
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-ki18n
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        KDE Gettext-based UI text internationalization
 License:        LGPL-2.1-or-later
@@ -51,10 +51,6 @@ and translators can use the familiar Gettext tools and workflows.
 %package -n libKF6I18n6
 Summary:        KDE Gettext-based UI text internationalization
 Requires:       iso-codes
-%if 0%{?suse_version} == 1500
-# iso-codes and iso-codes-lang were merged, the lang package is only required on Leap 15
-Requires:       iso-codes-lang
-%endif
 Requires:       kf6-ki18n >= %{version}
 
 %description -n libKF6I18n6
