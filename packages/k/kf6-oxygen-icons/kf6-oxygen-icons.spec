@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-oxygen-icons
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %define qt6_version 6.6.0
 %define rname oxygen-icons
-# Full KF6 version (e.g. 6.0.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
-# Last major and minor KF6 version (e.g. 6.0)
-%{!?_kf6_bugfix_version: %define _kf6_bugfix_version %(echo %{_kf6_version} | awk -F. '{print $1"."$2}')}
 %bcond_with autotests
 %bcond_without released
 Name:           kf6-oxygen-icons
-Version:        6.1.0
+Version:        6.27.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
@@ -130,6 +128,7 @@ popd
 %exclude %{_kf6_iconsdir}/oxygen/base/scalable
 %exclude %{_kf6_iconsdir}/oxygen/base/128x128
 %exclude %{_kf6_iconsdir}/oxygen/base/256x256
+%{_kf6_appstreamdir}/org.kde.oxygenicon.metainfo.xml
 %{_kf6_iconsdir}/oxygen/
 
 %files large
