@@ -17,8 +17,8 @@
 
 
 Name:           gap-gradedringforhomalg
-Version:        2024.07.01
-%define sillyver 2024.07-01
+Version:        2026.04.01
+%define sillyver 2026.04-01
 Release:        0
 Summary:        GAP: Endow Commutative Rings with an Abelian Grading
 License:        GPL-2.0-only
@@ -28,12 +28,12 @@ URL:            https://homalg-project.github.io/pkg/GradedRingForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/GradedRingForHomalg-%sillyver/GradedRingForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-homalg >= 2011.08.16
-Requires:       gap-homalgtocas >= 2023.08.01
-Requires:       gap-matricesforhomalg >= 2023.08.01
-Requires:       gap-modules >= 2023.08.01
+Requires:       gap-homalgtocas >= 2026.04.01
+Requires:       gap-matricesforhomalg >= 2026.04.01
+Requires:       gap-modules >= 2026.04.01
 Requires:       gap-ringsforhomalg >= 2023.08.01
 Suggests:       gap-4ti2interface >= 2019.09.03
 Suggests:       gap-nconvex >= 2020.03.02
