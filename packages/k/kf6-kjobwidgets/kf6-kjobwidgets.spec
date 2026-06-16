@@ -22,21 +22,17 @@
 
 %bcond_without kde_python_bindings
 %if %{with kde_python_bindings}
-%if 0%{suse_version} > 1500
 %define pythons %{primary_python}
-%else
-%{?sle15_python_module_pythons}
-%endif
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kjobwidgets
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Widgets for showing progress of asynchronous jobs
 License:        LGPL-2.1-or-later
