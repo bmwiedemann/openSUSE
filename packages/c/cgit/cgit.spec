@@ -1,7 +1,7 @@
 #
 # spec file for package cgit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,9 @@
 #
 
 
-%define         git_version 2.53.0
+%define         git_version 2.54.0
 Name:           cgit
-Version:        1.3
+Version:        1.3.1
 Release:        0
 Summary:        A web frontend for git repositories
 License:        GPL-2.0-only
@@ -34,8 +34,8 @@ Source9:        cgitrc
 BuildRequires:  asciidoc
 # Requirements for cgit
 BuildRequires:  libxslt
-BuildRequires:  xz
 BuildRequires:  nginx
+BuildRequires:  xz
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
