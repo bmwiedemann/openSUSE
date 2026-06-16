@@ -1,0 +1,19 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>698b0a0d76604a8b66812b6fb1fa64c8</srcmd5>
+    <version>2.4.0</version>
+    <time>1781628140</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  * Move HTTP/2 stream events cleanup inside _state_lock.
+  * Release the HTTP/2 semaphore permit on NoAvailableStreamIDError.
+  * Use RLock instead of Lock to prevent a thread deadlock.
+  * Use truststore instead of certifi for default SSL verification, loading
+    the operating system's trust store.
+  * Rewrite _assign_requests_to_connections as a single-pass loop.
+  * Use anyio's fast_acquire for Lock and Semaphore.
+  * Use memoryview in write() to avoid copies.
+- Initial version 2.2.0</comment>
+    <requestid>1359708</requestid>
+  </revision>
+</revisionlist>
