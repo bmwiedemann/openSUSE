@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Set INTERFACE_LINK_LIBRARIES if the found library is a static library
+  * fix: translation loading location issue on macOS
+  * ECMDepreactionSettings: Set QT_DEPRECATED_WARNINGS_SINCE to current version when newer warnings should not be shown
+  * Try harder to determine a good default for the Android API level
+  * Silence more warnings in python bindings
+  * Add note to ECMGenerateQmlTypes that it's basically obsolete
+  * Add KDE_INSTALL_QTMETATYPESDIR
+  * Update version to 6.27.0
+  * Sanitizer: add support for realtime sanitizer
+
+-------------------------------------------------------------------
 Wed May  6 11:20:46 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Fix usage of %suse_version in Leap 16.1 which increases it to
