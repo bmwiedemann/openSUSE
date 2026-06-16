@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 11 17:06:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.19.0:
+  * [FEATURE] crossbuild: add --pull flag to control image pulling
+    #394
+
+-------------------------------------------------------------------
 Thu Apr  9 10:29:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.18.1:
