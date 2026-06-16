@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:45:14 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
+
+- Enable 3D video hardware acceleration for RPi5 based boards.
+
+-------------------------------------------------------------------
 Mon Apr 20 11:07:12 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Update to 832291b92d49 (2026-02-11)
