@@ -7,4 +7,15 @@
     <comment>This package (libublksrv) is required for the ublk feature of nbdkit/libnbd</comment>
     <requestid>1334240</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>65e68c8198eff865e93cdede9c5e9205</srcmd5>
+    <version>1.6</version>
+    <time>1781611086</time>
+    <user>anag_factory</user>
+    <comment>- Add 0001-targets-fix-potential-buffer-overflow-in-memmove.patch (bsc#1268274)
+- Hardcode version during compilation for --version (bsc#1268274)
+
+- Add 0001-targets-fix-potential-buffer-overflow-in-memmove.patch (bsc#1268274)</comment>
+    <requestid>1359659</requestid>
+  </revision>
 </revisionlist>

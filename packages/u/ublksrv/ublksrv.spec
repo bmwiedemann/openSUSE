@@ -31,6 +31,8 @@ BuildRequires:  libtool
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(liburing) >= 2.2
 
+Patch0:		0001-targets-fix-potential-buffer-overflow-in-memmove.patch
+
 %description
 This is the userspace daemon part(ublksrv) of the ublk framework.
 
@@ -52,6 +54,10 @@ make use of the ublk framework.
 
 %prep
 %autosetup -p1
+
+# ublksrv tries to set the version from git but that is not available
+# during packaging.
+sed "s/.*utils\/genver.sh.*/%{version},/" -i configure.ac
 
 %build
 autoreconf -fiv

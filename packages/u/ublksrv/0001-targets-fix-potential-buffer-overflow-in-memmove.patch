@@ -1,0 +1,27 @@
+From b09a15d637ed3321d86054b08fe8125d95ec95cb Mon Sep 17 00:00:00 2001
+From: Ming Lei <tom.leiming@gmail.com>
+Date: Wed, 20 Aug 2025 16:35:27 +0000
+Subject: [PATCH] targets: fix potential buffer overflow in memmove()
+
+Signed-off-by: Ming Lei <tom.leiming@gmail.com>
+---
+ targets/ublksrv_tgt.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/targets/ublksrv_tgt.cpp b/targets/ublksrv_tgt.cpp
+index d3134fa..9fa44e7 100644
+--- a/targets/ublksrv_tgt.cpp
++++ b/targets/ublksrv_tgt.cpp
+@@ -542,8 +542,8 @@ static char *ublksrv_pop_cmd(int *argc, char *argv[])
+ 		return NULL;
+ 	}
+ 
+-	memmove(&argv[1], &argv[2], *argc * sizeof(argv[0]));
+ 	(*argc)--;
++	memmove(&argv[1], &argv[2], *argc * sizeof(argv[0]));
+ 
+ 	return cmd;
+ }
+-- 
+2.54.0
+

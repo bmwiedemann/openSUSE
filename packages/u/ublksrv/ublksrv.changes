@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 15 19:24:32 UTC 2026 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Hardcode version during compilation for --version (bsc#1268274)
+
+-------------------------------------------------------------------
+Mon Jun 15 17:28:58 UTC 2026 - Gabriel Krisman Bertazi <gabriel.bertazi@suse.com>
+
+- Add 0001-targets-fix-potential-buffer-overflow-in-memmove.patch (bsc#1268274)
+
+-------------------------------------------------------------------
 Fri Feb 20 12:41:51 UTC 2026 - Markus Ebner <info@ebner-markus.de>
 
 - Initial packaging of ublksrv:
