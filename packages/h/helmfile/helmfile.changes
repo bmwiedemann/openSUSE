@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:08:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.4:
+  * build(deps): bump golang.org/x/term from 0.43.0 to 0.44.0 by
+    @dependabot[bot] in #2629
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.23 to 1.32.24 by @dependabot[bot] in #2627
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.103.2 to 1.103.3 by @dependabot[bot] in #2628
+  * fix: Fix broken trackLogs functionality in Kubedog tracker by
+    @ggillies in #2630
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.24 to 1.32.25 by @dependabot[bot] in #2632
+  * Bump Helm support to 4.2.1 and 3.21.1 by @Copilot in #2635
+  * build(deps): bump github.com/helmfile/vals from 0.44.0 to
+    0.44.1 by @dependabot[bot] in #2637
+  * build(deps): bump github.com/helmfile/chartify from 0.26.4 to
+    0.26.5 by @dependabot[bot] in #2636
+  * Add App.WithFileSystem by @toyamagu-2021 in #2638
+  * fix: include release values in .Values for patch template
+    rendering by @yxxhero in #2556
+  * build(deps): bump helm-diff to v3.15.9 by @yxxhero in #2642
+  * feat: add support for helm 4 --server-side upgrade flag by
+    @yxxhero in #2641
+
+-------------------------------------------------------------------
 Wed Jun 10 07:39:51 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.3:
