@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 13 21:32:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Require clang/llvm-devel metapackages instead of directly
+  requiring the latest version. With clang migrating away from
+  update-alternatives, the versioned packages no longer provide the
+  /usr/bin/clang symlink, which will now be contained in the
+  metapackage only. If older LLVM versions are required, the
+  compiler binary has to be provided via CLANG=clang-<N>.
+
+-------------------------------------------------------------------
 Wed May 13 08:09:50 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to version 18.4:
