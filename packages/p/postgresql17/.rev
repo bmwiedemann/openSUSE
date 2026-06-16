@@ -275,4 +275,17 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
     <comment></comment>
     <requestid>1353818</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>1569e97d2f61e6a782d1eeed133bb788</srcmd5>
+    <version>17.10</version>
+    <time>1781610858</time>
+    <user>anag_factory</user>
+    <comment>- Require clang/llvm-devel metapackages instead of directly
+  requiring the latest version. With clang migrating away from
+  update-alternatives, the versioned packages no longer provide the
+  /usr/bin/clang symlink, which will now be contained in the
+  metapackage only. If older LLVM versions are required, the
+  compiler binary has to be provided via CLANG=clang-&lt;N&gt;.</comment>
+    <requestid>1359548</requestid>
+  </revision>
 </revisionlist>

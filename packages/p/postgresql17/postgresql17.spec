@@ -144,7 +144,6 @@ BuildRequires:  %libpq
 %bcond_with     llvm
 %else
 %bcond_without  llvm
-%{!?product_libs_llvm_ver: %global product_libs_llvm_ver 15}
 %endif
 %else
 %bcond_with     llvm
@@ -165,9 +164,9 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang%{product_libs_llvm_ver}
+BuildRequires:  clang
 BuildRequires:  gcc-c++
-BuildRequires:  llvm%{product_libs_llvm_ver}-devel
+BuildRequires:  llvm-devel
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  pkg-config
