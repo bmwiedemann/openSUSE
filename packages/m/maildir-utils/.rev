@@ -997,4 +997,18 @@
   * mu4e-draft: add {sign,encrypt}-signed-replies to crypto options #2906</comment>
     <requestid>1349706</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7aade4fb41e85ad6b08fbad05956d581</srcmd5>
+    <version>1.14.2</version>
+    <time>1781627581</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.14.2:
+  * silence some MIME part errors
+  * some emacs 28.1+ modernization
+  * list org links with M-x mu4e-org-agenda-links
+  * when replying to a message with some part selected, cite only that part
+  * fix parsing of the Keywords: headers. If you use those, you're recommend to
+    re-index your message</comment>
+    <requestid>1359794</requestid>
+  </revision>
 </revisionlist>

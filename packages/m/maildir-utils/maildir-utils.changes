@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:37:25 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.14.2:
+  * silence some MIME part errors
+  * some emacs 28.1+ modernization
+  * list org links with M-x mu4e-org-agenda-links
+  * when replying to a message with some part selected, cite only that part
+  * fix parsing of the Keywords: headers. If you use those, you're recommend to
+    re-index your message
+
+-------------------------------------------------------------------
 Tue Apr 28 07:24:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.14.1:
