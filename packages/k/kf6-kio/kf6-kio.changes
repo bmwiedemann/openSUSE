@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Too many changes since 6.26.0, only listing bugfixes:
+  * kmountpoint: Iterate mountpoint backwards to handle systemd-automount (kde#518012)
+  * openurljob: respect "open in application" preference for binaries (kde#519773)
+  * KUrlNavigator: Fix double background interference when in editable mode (kde#506177)
+  * KDirModel: Use mostLocalUrl for old url (kde#509461)
+  * kprocessrunner: For apps running in terminal, use terminal emulator's appId (kde#459986)
+  * dropjob: Sanitize input URLs (kde#518481)
+  * KDirModel: Remove setting node preview on itemChanged (kde#517607)
+  * Don't show an error when the user cancels the device mounting password dialog (kde#400420)
+  * http worker: call redirection also for redirectToTrailingSlash (kde#517682)
+  * kurlnavigator: Don't show context menu targeting hidden buttons when path is compressed (kde#505197)
+  * kdiroperator, kfilewidget: Use zoomsteps when using scrollwheel (kde#494704)
+  * core/copyjob: Prompt to replace MS-DOS reserved chars for MTP (kde#489288)
+
+-------------------------------------------------------------------
 Sat May  2 07:52:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
