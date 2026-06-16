@@ -72,4 +72,16 @@
     <comment></comment>
     <requestid>1358531</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>5dafcf4ab1fdf99b282e8458964a0d69</srcmd5>
+    <version>0.3.12</version>
+    <time>1781610414</time>
+    <user>anag_factory</user>
+    <comment>- Remove Legal-Review-Notice again
+- Remove pytest/configs/EULA.txt during %prep:
+  it contains VMware proprietary EULA text used only as pytest test
+  fixture data and is not required for building or running
+  open-vmdk/vmdk-tools.</comment>
+    <requestid>1359588</requestid>
+  </revision>
 </revisionlist>

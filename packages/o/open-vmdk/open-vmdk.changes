@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:17:55 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
+
+- Remove Legal-Review-Notice again
+- Remove pytest/configs/EULA.txt during %prep:
+  it contains VMware proprietary EULA text used only as pytest test
+  fixture data and is not required for building or running
+  open-vmdk/vmdk-tools.
+
+-------------------------------------------------------------------
 Tue Jun  9 10:51:27 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
 
 - Add Legal-Review-Notice for pytest/configs/EULA.txt, which is only

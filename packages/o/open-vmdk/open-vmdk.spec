@@ -20,7 +20,6 @@ Name:           open-vmdk
 Version:        0.3.12
 Release:        0
 Summary:        Tools to create OVA files from raw disk images
-# Legal-Review-Notice: pytest/configs/EULA.txt contains VMware proprietary EULA text, but it is only pytest test fixture data. It is not installed, not shipped in the binary RPM, and is not required for building or running open-vmdk/vmdk-tools. The actual package code is licensed under Apache-2.0.
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/vmware/open-vmdk
@@ -36,13 +35,18 @@ Requires:       tar
 Requires:       util-linux
 
 %description
-Tools to create OVA files from raw disk images. This includes 'vmdk-convert'
-to create VMDKs from raw disk images, and 'ova-compose' to create OVA files
+Tools to create OVA files from raw disk images. This includes 'vmdk-convert' to
+create VMDKs from raw disk images, and 'ova-compose' to create OVA files
 that can be imported by VMware vSphere or Fusion and Workstation.
 
 %prep
 
 %setup -q
+
+# Remove VMware proprietary EULA text used only as pytest test fixture data.
+# This file is not required for building or running open-vmdk/vmdk-tools.
+rm -f pytest/configs/EULA.txt
+
 %autopatch -p1
 
 %build
