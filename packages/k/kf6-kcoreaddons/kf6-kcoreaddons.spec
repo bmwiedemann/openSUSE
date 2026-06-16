@@ -22,21 +22,17 @@
 
 %bcond_without kde_python_bindings
 %if %{with kde_python_bindings}
-%if 0%{suse_version} > 1500
 %define pythons %{primary_python}
-%else
-%{?sle15_python_module_pythons}
-%endif
 %define mypython %pythons
 %define __mypython %{expand:%%__%{mypython}}
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcoreaddons
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Utilities for core application functionality and accessing the OS
 License:        LGPL-2.1-or-later
@@ -154,6 +150,7 @@ This package provides Python bindings for kf6-kcoreaddons.
 %{_kf6_datadir}/jsonschema/kpluginmetadata.schema.json
 %{_kf6_libdir}/libKF6CoreAddons.so
 %{_kf6_pkgconfigdir}/KF6CoreAddons.pc
+%{_qt6_metatypesdir}/qt6kf6coreaddons_metatypes.json
 %if %{with kde_python_bindings}
 %dir %{_includedir}/PySide6/
 %{_includedir}/PySide6/KCoreAddons/
