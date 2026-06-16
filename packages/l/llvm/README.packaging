@@ -51,11 +51,9 @@ to be updated.
       new sources.
    4. Update the version number in the patches to match the
       new sources.
-   5. Update the "_uaver" tag in llvmX.spec to match
-      the "_relver" tag.
-   6. Confirm everything builds successfully and there are
+   5. Confirm everything builds successfully and there are
       no new rpmlint issues.
-   7. Update the llvmX.changes file.
+   6. Update the llvmX.changes file.
 
 
 =====================
@@ -87,21 +85,19 @@ needs to be created.
    7. Change the "_minor" tag in llvmX.spec to match
       the new major/minor versions.  It should be of the
       form "X.0".
-   8. Change the "_uaver" tag in llvmX.spec to match the
-      new major/minor versions. It should be of the form "X0Z".
-   9. Update the "_relver" tag and the version numbers in
+   8. Update the "_relver" tag and the version numbers in
       the patches as described in PATCH-LEVEL UPDATES above.
-  10. Confirm llvmX.spec builds successfully and there are
+   9. Confirm llvmX.spec builds successfully and there are
       no new rpmlint issues.
-  11. Check whether the .so numbers of "libc++.so.W.V" or
+  10. Check whether the .so numbers of "libc++.so.W.V" or
       "libclang.so.X" have changed. If so, change the
       "_socxx" or "_soclang" tag to match.
       It should be of the form "W" if the "V" value is 0
       or "W_V" if the "V" value is greater than 0.
-  12. Confirm everything builds successfully and there are
+  11. Confirm everything builds successfully and there are
       no new rpmlint issues.  Some patches may need to be 
       removed or rebased.
-  13. Update the llvmX.changes file.
+  12. Update the llvmX.changes file.
 2. llvm package:
    1. Change the "_sonum" tag to match the one in the
       new "llvmX.spec" file.

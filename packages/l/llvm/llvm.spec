@@ -36,9 +36,6 @@
 # obsolete_llvm_versioned() prefix postfix
 # Obsolete packages <prefix>X or <prefix>X-<postfix> with X being a set of older versions.
 %define obsolete_llvm_versioned() \
-Obsoletes:      %{1}10%{?2:-%{2}} \
-Obsoletes:      %{1}11%{?2:-%{2}} \
-Obsoletes:      %{1}12%{?2:-%{2}} \
 Obsoletes:      %{1}13%{?2:-%{2}} \
 Obsoletes:      %{1}14%{?2:-%{2}} \
 Obsoletes:      %{1}15%{?2:-%{2}} \
@@ -47,10 +44,19 @@ Obsoletes:      %{1}17%{?2:-%{2}} \
 Obsoletes:      %{1}18%{?2:-%{2}} \
 Obsoletes:      %{1}19%{?2:-%{2}} \
 Obsoletes:      %{1}20%{?2:-%{2}} \
-Obsoletes:      %{1}21%{?2:-%{2}} \
-Obsoletes:      %{1}7%{?2:-%{2}} \
-Obsoletes:      %{1}8%{?2:-%{2}} \
-Obsoletes:      %{1}9%{?2:-%{2}}
+Obsoletes:      %{1}21%{?2:-%{2}}
+
+%define conflicts_update_alternatives() \
+Conflicts:      (%{1}13 unless %{1}13-update-alternatives-removed) \
+Conflicts:      (%{1}14 unless %{1}14-update-alternatives-removed) \
+Conflicts:      (%{1}15 unless %{1}15-update-alternatives-removed) \
+Conflicts:      (%{1}16 unless %{1}16-update-alternatives-removed) \
+Conflicts:      (%{1}17 unless %{1}17-update-alternatives-removed) \
+Conflicts:      (%{1}18 unless %{1}18-update-alternatives-removed) \
+Conflicts:      (%{1}19 unless %{1}19-update-alternatives-removed) \
+Conflicts:      (%{1}20 unless %{1}20-update-alternatives-removed) \
+Conflicts:      (%{1}21 unless %{1}21-update-alternatives-removed) \
+Conflicts:      (%{1}22 unless %{1}22-update-alternatives-removed)
 
 Name:           llvm
 Version:        %{_sonum}
@@ -61,7 +67,9 @@ Group:          Development/Languages/Other
 URL:            https://www.llvm.org/
 # This file documents the process for updating llvm
 Source0:        README.packaging
+BuildRequires:  llvm%{_sonum}
 Requires:       llvm%{_sonum}
+%conflicts_update_alternatives llvm
 Suggests:       %{name}-doc
 
 %description
@@ -79,6 +87,7 @@ don't require a specific LLVM version should depend on this.
 %package devel
 Summary:        Header Files for LLVM
 Group:          Development/Libraries/C and C++
+Requires:       llvm = %{version}
 Requires:       llvm%{_sonum}-devel
 Provides:       llvm-LTO-devel = %{version}
 Obsoletes:      llvm-LTO-devel < %{version}
@@ -116,10 +125,12 @@ don't require a specific LLVM version should depend on this.
 Summary:        CLANG frontend for LLVM
 Group:          Development/Languages/C and C++
 URL:            https://clang.llvm.org/
+BuildRequires:  clang%{_sonum}
 Requires:       clang%{_sonum}
 Provides:       llvm-clang = %{version}
 Obsoletes:      llvm-clang < %{version}
 Provides:       llvm-emacs-plugins
+%conflicts_update_alternatives clang
 Suggests:       clang-doc
 
 %description -n clang
@@ -132,7 +143,9 @@ don't require a specific Clang version should depend on this.
 %package -n clang-devel
 Summary:        CLANG frontend for LLVM (devel package)
 Group:          Development/Libraries/C and C++
+Requires:       clang = %{version}
 Requires:       clang%{_sonum}-devel
+Requires:       llvm-devel = %{version}
 Provides:       llvm-clang-devel = %{version}
 Obsoletes:      llvm-clang-devel < %{version}
 Provides:       clang-devel-static = %{version}
@@ -209,10 +222,14 @@ don't require a specific LLVM version should depend on this.
 Summary:        Software debugger built using LLVM libraries
 Group:          Development/Tools/Debuggers
 URL:            https://lldb.llvm.org/
+%if 0%{?has_lldb}
+BuildRequires:  lldb%{_sonum}
+%endif
 Requires:       lldb%{_sonum}
 %if 0%{?has_lldb_python}
 Recommends:     python3-lldb
 %endif
+%conflicts_update_alternatives lldb
 
 %description -n lldb
 LLDB is a next generation, high-performance debugger. It is built as a set
@@ -227,6 +244,7 @@ don't require a specific LLDB version should depend on this.
 %package -n lldb-devel
 Summary:        Development files for LLDB
 Group:          Development/Libraries/C and C++
+Requires:       lldb = %{version}
 Requires:       lldb%{_sonum}-devel
 %obsolete_llvm_versioned lldb devel
 
@@ -265,7 +283,9 @@ don't require a specific LLDB version should depend on this.
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
+BuildRequires:  lld%{_sonum}
 Requires:       lld%{_sonum}
+%conflicts_update_alternatives lld
 
 %description -n lld
 LLD is a linker from the LLVM project. That is a drop-in replacement for
@@ -340,13 +360,20 @@ don't require a specific LLVM version should depend on this.
 echo "This is a dummy package to provide a dependency on the system compiler." > README
 
 %install
-# Not needed
+mkdir -p %{buildroot}{%{_bindir},%{_mandir}/man1}
+for pkg in llvm clang lld %{?has_lldb:lldb}
+do
+    for file in $(rpm -ql ${pkg}%{_sonum} | grep -e '^%{_bindir}/' -e '^%{_mandir}/man1/')
+    do
+        link=${file//-%{_sonum}}
+        ln -s $(basename $file) %{buildroot}$link
+        echo $link >> ${pkg}.lst
+    done
+done
 
-%files
-%doc README
+%files -f llvm.lst
 
-%files -n clang
-%doc README
+%files -n clang -f clang.lst
 
 %files gold
 %doc README
@@ -370,8 +397,7 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %doc README
 
 %if 0%{?has_lldb}
-%files -n lldb
-%doc README
+%files -n lldb -f lldb.lst
 
 %files -n lldb-devel
 %doc README
@@ -385,8 +411,7 @@ echo "This is a dummy package to provide a dependency on the system compiler." >
 %doc README
 %endif
 
-%files -n lld
-%doc README
+%files -n lld -f lld.lst
 
 %if 0%{?has_openmp}
 %files -n libomp-devel

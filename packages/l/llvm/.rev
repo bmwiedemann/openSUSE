@@ -2456,4 +2456,19 @@ So it would be very nice to get this into 12.2. As it is an isolated feature, it
 </comment>
     <requestid>1349632</requestid>
   </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>3535a80f61606418fa5dd38c0511ba9b</srcmd5>
+    <version>22</version>
+    <time>1781610353</time>
+    <user>anag_factory</user>
+    <comment>- Provide unversioned symbolic links to binaries and man pages for
+  llvm, clang, lld, and lldb, since they're no longer provided by
+  update-alternatives.
+- Clean up obsoletes for LLVM versions &lt; 13.
+- Have clang-devel require clang to ensure the chains are correct
+  (so consumers of clang-devel get /usr/bin/clang installed). Same
+  for llvm-devel, lldb-devel.
+- Also have clang-devel require llvm-devel.</comment>
+    <requestid>1359240</requestid>
+  </revision>
 </revisionlist>

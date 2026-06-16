@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 14 12:31:57 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Also have clang-devel require llvm-devel.
+
+-------------------------------------------------------------------
+Fri Jun 12 11:36:58 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Have clang-devel require clang to ensure the chains are correct
+  (so consumers of clang-devel get /usr/bin/clang installed). Same
+  for llvm-devel, lldb-devel.
+
+-------------------------------------------------------------------
+Sun Jun  7 21:54:54 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Provide unversioned symbolic links to binaries and man pages for
+  llvm, clang, lld, and lldb, since they're no longer provided by
+  update-alternatives.
+- Clean up obsoletes for LLVM versions < 13.
+
+-------------------------------------------------------------------
 Sun Apr 26 20:49:40 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Enable bolt on riscv64.
