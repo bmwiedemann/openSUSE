@@ -240,4 +240,13 @@
 </comment>
     <requestid>1306068</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>39d3fc09f939f03b60e80147d04f5050</srcmd5>
+    <version>0.6.0</version>
+    <time>1781628549</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-error-msg.patch to fix testsuite error 
+</comment>
+    <requestid>1359729</requestid>
+  </revision>
 </revisionlist>

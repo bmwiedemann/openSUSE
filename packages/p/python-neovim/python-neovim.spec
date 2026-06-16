@@ -1,7 +1,7 @@
 #
 # spec file for package python-neovim
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ License:        Apache-2.0
 Group:          Productivity/Text/Editors
 URL:            https://github.com/neovim/pynvim
 Source:         %{url}/archive/%{version}/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-error-msg.patch gh#neovim/pynvim@1950eae
+Patch0:         fix-error-msg.patch
 BuildRequires:  %{python_module greenlet}
 BuildRequires:  %{python_module msgpack}
 BuildRequires:  %{python_module pip}

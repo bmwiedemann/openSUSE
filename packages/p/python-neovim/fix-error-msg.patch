@@ -1,0 +1,36 @@
+From 1950eae0e12de9dac561f8071100c11593501c9a Mon Sep 17 00:00:00 2001
+From: Ryan Campbell <ryan@campbellr.ca>
+Date: Thu, 9 Apr 2026 09:08:06 -0600
+Subject: [PATCH] test: update asserts for Nvim 0.12 error messages #615
+
+In 0.12.0, the error message is now:
+
+  Invalid cursor line: out of range
+
+This updates the test to handle both old and new error messages.
+---
+ test/test_vim.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/test/test_vim.py b/test/test_vim.py
+index 8a76f5e6..26e2fcea 100644
+--- a/test/test_vim.py
++++ b/test/test_vim.py
+@@ -1,6 +1,7 @@
+ """Tests interaction with neovim via Nvim API (with child process)."""
+ 
+ import os
++import re
+ import sys
+ import tempfile
+ from pathlib import Path
+@@ -50,7 +51,7 @@ def test_command_output(vim: Nvim) -> None:
+ def test_command_error(vim: Nvim) -> None:
+     with pytest.raises(vim.error) as excinfo:
+         vim.current.window.cursor = -1, -1
+-    assert excinfo.value.args == ('Cursor position outside buffer',)
++    assert re.search(r"Cursor position outside buffer|Invalid cursor line", excinfo.value.args[0])
+ 
+ 
+ def test_eval(vim: Nvim) -> None:
+
