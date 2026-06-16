@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 12 20:00:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.5
+  * Fix a build issue on BigEndian architectures.
+  * Adjust the log level for unimplemented OSAL functions in
+    release builds (#1795).
+
+-------------------------------------------------------------------
 Sun Apr 19 09:58:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.4
