@@ -1,7 +1,7 @@
 #
 # spec file for package gap-io_forhomalg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-io_forhomalg
-Version:        2023.02.04
-%define sillyver 2023.02-04
+Version:        2025.12.01
+%define sillyver 2025.12-01
 Release:        0
 Summary:        GAP: IO Capabilities for the homalg Project
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ URL:            https://homalg-project.github.io/pkg/IO_ForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/IO_ForHomalg-%sillyver/IO_ForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13
 Requires:       gap-homalgtocas >= 2009.06.18
 Requires:       gap-io >= 2.3
 Suggests:       gap-gapdoc >= 1.0
