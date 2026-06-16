@@ -15,7 +15,7 @@
         <profile name="VMware" description="Minimal Image for VMware" arch="x86_64"/>
         <profile name="MS-HyperV" description="Minimal Image for Hyper-V" arch="aarch64,x86_64"/>
         <profile name="Cloud" description="Minimal Image for Cloud" arch="aarch64,x86_64"/>
-        <profile name="KubeVirt-Cloud" description="Minimal Image for KubeVirt containerdisk" arch="x86_64"/>
+        <profile name="KubeVirt-Cloud" description="Minimal Image for KubeVirt containerdisk" arch="aarch64,x86_64"/>
         <profile name="RaspberryPi" description="Minimal Image for the Raspberry Pi" arch="aarch64"/>
         <profile name="s390x-Cloud" description="Minimal Image for Cloud" arch="s390x"/>
         <profile name="s390x-dasd" description="Minimal Image for DASD on z Systems" arch="s390x"/>
@@ -245,7 +245,7 @@
             <bootloader name="grub2" timeout="1"/>
             <size unit="G">2</size>
         </type>
-        </preferences>
+    </preferences>
 
     <preferences profiles="MS-HyperV" arch="x86_64">
         <version>1.0.0</version>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 07:06:31 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Enable KubeVirt-Cloud flavor for aarch64 as well
+
+-------------------------------------------------------------------
 Tue May 12 14:24:39 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
 
 - Add iptables or nftables to Minimal image (jsc#PED-15694) 
