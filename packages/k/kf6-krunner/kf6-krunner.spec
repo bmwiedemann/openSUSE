@@ -1,7 +1,7 @@
 #
 # spec file for package kf6-krunner
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname krunner
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-krunner
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        KDE Framework for providing different actions given a string query
 License:        LGPL-2.1-or-later
@@ -94,5 +94,6 @@ Files needed for developing custom runners or frontends.
 %{_kf6_includedir}/KRunner/
 %{_kf6_libdir}/libKF6Runner.so
 %{_kf6_sharedir}/kdevappwizard/
+%{_qt6_metatypesdir}/qt6kf6runner_metatypes.json
 
 %changelog
