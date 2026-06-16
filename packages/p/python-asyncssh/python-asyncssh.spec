@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asyncssh
-Version:        2.22.0
+Version:        2.23.1
 Release:        0
 Summary:        Asynchronous SSHv2 client and server library
 License:        EPL-2.0 OR GPL-2.0-or-later
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module bcrypt >= 3.1.3}
 BuildRequires:  %{python_module cryptography >= 39.0}
 BuildRequires:  %{python_module fido2 >= 2}
 BuildRequires:  %{python_module gssapi >= 1.2.0}
+BuildRequires:  %{python_module ifaddr >= 0.2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyOpenSSL >= 17.0.0}
 BuildRequires:  %{python_module pytest}
@@ -47,6 +48,7 @@ Requires:       python-typing_extensions >= 4.0.0
 Recommends:     python-bcrypt >= 3.1.3
 Recommends:     python-fido2 >= 2
 Recommends:     python-gssapi >= 1.2.0
+Recommends:     python-ifaddr >= 0.2.0
 Recommends:     python-libnacl >= 1.4.2
 Recommends:     python-pyOpenSSL >= 23.0.0
 BuildArch:      noarch

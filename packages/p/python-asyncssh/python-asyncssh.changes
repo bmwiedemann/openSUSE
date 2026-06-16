@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:54:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.23.1
+  * Fixed an SCP path traversal issue.
+  * Expanded previous fix to block unsafe user substitutions in server config.
+  * Fixed default value for reuse_address and reuse_port, matching the
+    behavior of asyncio.create_server().
+- Update to 2.23.0 (fixes CVE-2026-45309, bsc#1268333)
+  * Added support for "Match localnetwork".
+  * Enabled support for RSA with SHA-2 signatures in ssh-agent and Pageant.
+  * Changed MAC algorithm negotation to be skipped when using AEAD ciphers.
+  * Improved graceful termination when using ProxyCommand, waiting for the
+    ProxyCommand tunnel to close when cleaning up a connection.
+  * Blocked unsafe user substitutions from being used in server config.
+  * Fixed an issue with config evaluation when "Match final" was combined
+    with Hostname directives.
+  * Fixed a resource leak in xauth support.
+  * Fixed issue with multi-hop ProxyJump directives in a config file not
+    working correctly.
+  * Fixed string encoding in SFTPName objects returned by realpath().
+
+-------------------------------------------------------------------
 Fri Apr  3 13:08:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.22.0:
