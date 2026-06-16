@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-WebOb
-Version:        1.8.9
+Version:        1.8.10
 Release:        0
 Summary:        WSGI request and response object
 License:        MIT

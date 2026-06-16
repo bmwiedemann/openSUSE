@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:39:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.8.10 (fices CVE-2026-44889, bsc#1268324)
+  * The fix for CVE-2024-42353 was incomplete: a Location value containing
+    ASCII tab, carriage return, or line feed characters between consecutive
+    slashes could still be interpreted as a protocol-relative URL by
+    ``urllib.parse.urljoin`` on Python 3.10+, allowing an open redirect.
+    See https://github.com/Pylons/webob/security/advisories/GHSA-fh3h-vg37-cc95 
+
+-------------------------------------------------------------------
 Tue Feb 17 12:18:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip boken test with latest cpython interpreters, bsc#1258223
