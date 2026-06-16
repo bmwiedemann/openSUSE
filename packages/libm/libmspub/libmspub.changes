@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 06:50:46 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Force -std=gnu++17 when compiling with GCC >= 16 to fix the
+  broken build
+
+-------------------------------------------------------------------
 Tue Jun  2 11:58:30 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - Version update to 0.1.5:

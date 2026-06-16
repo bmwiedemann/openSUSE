@@ -82,6 +82,11 @@ Command line tools to work with publications in Microsoft Publisher file-format.
 
 %build
 export CXXFLAGS="%{optflags} -fvisibility-inlines-hidden"
+
+%if %{pkg_vcmp gcc >= 16}
+  export CXXFLAGS="$CXXFLAGS -std=gnu++17"
+%endif
+
 %configure \
     --disable-silent-rules \
     --disable-werror \
