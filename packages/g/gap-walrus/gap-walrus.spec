@@ -1,7 +1,7 @@
 #
 # spec file for package gap-walrus
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-walrus
-Version:        0.9991
+Version:        0.9992
 Release:        0
 Summary:        GAP: Proving assistant for hyperbolicity
 License:        BSD-3-Clause
@@ -27,8 +27,12 @@ URL:            https://gap-packages.github.io/walrus
 Source:         https://github.com/gap-packages/walrus/releases/download/v%version/walrus-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.10
+Requires:       gap-datastructures >= 0.2.2
+Requires:       gap-digraphs >= 0.10
 Requires:       gap-gapdoc >= 1.5
+Suggests:       gap-kbmag >= 1.5.4
+Suggests:       gap-profiling >= 1.3.0
 
 %description
 An implementation of hyperbolicity testing using an idea by Holt,
