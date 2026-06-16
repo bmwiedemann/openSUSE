@@ -1453,4 +1453,41 @@
     more information.</comment>
     <requestid>1352274</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>a875b3cb6ff0cf6d26d47a4060a1af5e</srcmd5>
+    <version>49.0.0</version>
+    <time>1781627344</time>
+    <user>anag_factory</user>
+    <comment>- update to 49.0.0:
+  * BACKWARDS INCOMPATIBLE: Removed the deprecated
+    PUBLIC_KEY_TYPES, PRIVATE_KEY_TYPES,
+    CERTIFICATE_PRIVATE_KEY_TYPES,
+    CERTIFICATE_ISSUER_PUBLIC_KEY_TYPES, and
+    CERTIFICATE_PUBLIC_KEY_TYPES type aliases. Use
+    PublicKeyTypes, PrivateKeyTypes,
+    CertificateIssuerPrivateKeyTypes,
+    CertificateIssuerPublicKeyTypes, and
+    CertificatePublicKeyTypes instead. These were deprecated in
+    version 40.0.
+  * BACKWARDS INCOMPATIBLE: :class:`~cryptography.hazmat.primitiv
+    es.ciphers.algorithms.ChaCha20` now treats the first 4 bytes
+    of the nonce as a 32-bit little-endian block counter (as
+    defined in RFC 7539) and tracks the number of bytes
+    processed. Attempting to encrypt or decrypt more data than
+    the counter allows before it would overflow now raises a
+    :class:`ValueError` rather than silently diverging from RFC
+    7539. Setting the counter portion of the nonce to zero allows
+    encrypting up to 256 GiB with a given nonce.
+  * BACKWARDS INCOMPATIBLE: Loading an X.509 certificate whose
+    ECDSA or DSA signature AlgorithmIdentifier contains encoded
+    NULL parameters now raises a :class:`ValueError`. Such
+    certificates are invalid, but older versions of Java emitted
+    them; previously they loaded with a deprecation warning.
+  * Fixed cross-compilation of the CFFI bindings when
+    PYO3_CROSS_LIB_DIR is set. The build now derives the Python
+    include directory from PYO3_CROSS_LIB_DIR instead of querying
+    the host interpreter, which previously caused the build to
+    fail during cross-compilations for embedded systems, on hosts</comment>
+    <requestid>1359212</requestid>
+  </revision>
 </revisionlist>
