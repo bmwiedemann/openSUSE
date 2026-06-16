@@ -16,4 +16,14 @@
   available</comment>
     <requestid>1350685</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>4b2fd42b52680a491346fd522ba34178</srcmd5>
+    <version>0.3.4</version>
+    <time>1781627521</time>
+    <user>anag_factory</user>
+    <comment>- reworded the test package description that it is only for internal
+  tests
+- added README-TESTING.md</comment>
+    <requestid>1359776</requestid>
+  </revision>
 </revisionlist>

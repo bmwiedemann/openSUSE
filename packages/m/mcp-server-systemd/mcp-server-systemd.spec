@@ -28,6 +28,7 @@ License:        MIT
 URL:            https://github.com/openSUSE/systemd-mcp
 Source0:        https://github.com/openSUSE/systemd-mcp/archive/refs/tags/v%{vers}%{?verssuf}.tar.gz#/%{name}-%{vers}%{?verssuf}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        README-TESTING.md
 BuildRequires:  dbus-1
 BuildRequires:  go >= 1.24
 BuildRequires:  libcap-progs
@@ -53,24 +54,31 @@ logs. The service itself listens to a socket to which is sends the file descript
 to the system log if authorized via polkit.
 
 # integrated tests checking also the man tool call, so man is needed here
-%package test
-Summary:        Test files for %{name}
+%package testsuite
+Summary:        Internal test files for %{name} DO NOT INSTALL
+Obsoletes:      %{name}-test <= %{version}
 BuildArch:      noarch
 Requires:       bats
 Requires:       podman
 Requires:       man
 Requires:       go >= 1.24
 
-%description test
+%description testsuite
 The bats based tests. For testing the rpm itself the env variables TEST_CONTAINER
 TEST_BINARY must be set accordingly.
 
+NOTE: THIS PACKAGE IS FOR TESTING PURPOSES ONLY.
+IT IS INTENDED FOR USE BY QUALITY ASSURANCE AND REQUIRES A
+DEDICATED TESTING ENVIRONMENT.
+
+DO NOT INSTALL ON A PRODUCTION SYSTEM!
 
 %prep
 %autosetup -p1 -a1 -n %{gitname}-%{vers}%{?verssuf}
 
 %build
 make GOFLAGS="-buildmode=pie"
+cp %{S:2} .
 
 %install
 make install DESTDIR=%{buildroot} GOFLAGS="-buildmode=pie"
@@ -122,7 +130,8 @@ go test \
 %{_unitdir}/gatekeeper.service
 %{_unitdir}/gatekeeper.socket
 
-%files test
+%files testsuite
+%doc README-TESTING.md
 %dir %{_docdir}/%{name}/test
 %{_docdir}/%{name}/test/integrated-tests.bats
 %{_docdir}/%{name}/test/bci-init-build.docker

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:12:35 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- reworded the test package description that it is only for internal
+  tests
+- added README-TESTING.md
+
+-------------------------------------------------------------------
 Mon May  4 12:40:30 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - update to v0.3.4 which only added the man tool is man is 
