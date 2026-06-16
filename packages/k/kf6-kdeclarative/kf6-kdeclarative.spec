@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname kdeclarative
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kdeclarative
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Integration of QML and KDE workspaces
 License:        LGPL-2.1-or-later
@@ -35,6 +35,7 @@ Source2:        frameworks.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
+BuildRequires:  kf6-ki18n-imports >= %{_kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{_kf6_version}
 BuildRequires:  cmake(KF6GlobalAccel) >= %{_kf6_version}
 BuildRequires:  cmake(KF6GuiAddons) >= %{_kf6_version}
@@ -60,6 +61,7 @@ KDeclarative provides integration of QML and KDE workspaces.
 %package imports
 Summary:        KDeclarative QML imports
 Requires:       kf6-kirigami-imports >= %{_kf6_version}
+Requires:       kf6-ki18n-imports >= %{_kf6_version}
 
 %description imports
 KDeclarative provides integration of QML and KDE workspaces.
