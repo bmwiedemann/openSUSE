@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Updated documentation on memory usage
+  * JXR: add a memory allocation barrier in jxrlib
+  * EXR: reject files with dimensions exceeding 300kx300k pixels
+  * OSS Fuzz: set image allocation limit to 2000 MiB
+  * Improve size limits for AVIF, HEIF, and RAW plugins
+  * IFF: fix byte swapping in 16-bit DEEP images
+  * Add Farbfeld read only support
+  * DDS: fix mime type
+  * IFF: DEEP image support
+  * imageAlloc: add image initialization support
+  * Fix uninitialized value
+  * HEIF: image transformation support
+  * Update CI image
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
