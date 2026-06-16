@@ -1519,4 +1519,20 @@ This set of changes is not suitable for direct copy to currently released produc
     <comment>- Removed patch: btrfsprogs-libblkid-static-lib-clash.patch (upstream) (forwarded request 1317587 from dsterba)</comment>
     <requestid>1317588</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>37a9561bf86c3328fc1bed0d84cb4d37</srcmd5>
+    <version>6.19</version>
+    <time>1772127395</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.19 (forwarded request 1335139 from dsterba)</comment>
+    <requestid>1335140</requestid>
+  </revision>
+  <revision rev="172" vrev="1">
+    <srcmd5>cc300eed7d28ed6e72255f51615d016a</srcmd5>
+    <version>7.0</version>
+    <time>1781610430</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.0 (forwarded request 1359629 from dsterba)</comment>
+    <requestid>1359630</requestid>
+  </revision>
 </revisionlist>

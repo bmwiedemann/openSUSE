@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jun 15 00:00:00 UTC 2026 - David Sterba <dsterba@suse.com>
+
+- update to 7.0
+  * btrfstune: add ability to do offline conversion to the remap tree
+    (experimental feature)
+  * mkfs: add hole detection when precalculating size for --rootdir
+  * fixes: recognize fs-verity tree items in various tools (check)
+  * enable PCLMUL implementation on Musl (previously using SSE 4.2 at best)
+  * help format changed to be in line with common packages like util-linux
+  * reject writes to filesystem during check/btrfstune in case there's pending
+    state of device replace or balance
+  * other:
+     * build ARM64 static binaries (attached to GH release) backward
+        compatibility level is 'archv8-a'
+     * CI updates
+     * documentation updates
+
+-------------------------------------------------------------------
+Wed Feb 25 00:00:00 CET 2026 - dsterba@suse.cz
+
+- update to 6.19
+  * mkfs:
+    * make block-group-tree default (support since linux 6.1), use -O ^bgt to
+    * unset it for backward compatibility
+    * speed up initial device discard by procesing the ranges in order
+    * disable block-grooup-tree feature if a dependent feature is explicitly
+      unselected (like disabling no-holes), instead of erroring out
+  * check:
+    * add ability to detect and fix missing orphan items in deleted subvolumes
+    * add ability to fix inode refs from directory items
+    * enhance detection on unknown inode keys
+  * libbtrfsutil:
+    * minor version update to 1.4.0
+    * add missing aliases for API updates done in 0.1.3, C and python
+  * libbtrfs:
+    * patchlevel version update 0.1.5
+    * error handling updates
+  * fixes:
+    * with DUP profile and mixed sequential and conventional zoned make sure
+      to track the right write pointers
+    * scrub: fix ETA wraparound calculations, when many files get deleted
+      during the operation bytes_scrubbed and bytes_total get too much out of
+      sync, the ETA will be 0
+  * corrupt-block: add ability to specify key value when corrupting item keys
+  * experimental features:
+    * initial remap tree support (new logical-to-logical mapping layer),
+      coming in linux 7.0
+  * other:
+    * error handling improvements
+    * CI updates
+    * code cleanups and refactoring
+    * documentation updates
+
+-------------------------------------------------------------------
 Thu Nov 13 00:00:00 CET 2025 - dsterba@suse.cz
 
 - Removed patch: btrfsprogs-libblkid-static-lib-clash.patch (upstream)

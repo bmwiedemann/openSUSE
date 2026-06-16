@@ -11,10 +11,10 @@ Signed-off-by: Jeff Mahoney <jeffm@suse.com>
  utils.h |    4 ++++
  1 file changed, 4 insertions(+)
 
-Index: btrfs-progs-v6.13/common/fsfeatures.h
+Index: btrfs-progs-v6.19/common/fsfeatures.h
 ===================================================================
---- btrfs-progs-v6.13.orig/common/fsfeatures.h
-+++ btrfs-progs-v6.13/common/fsfeatures.h
+--- btrfs-progs-v6.19.orig/common/fsfeatures.h
++++ btrfs-progs-v6.19/common/fsfeatures.h
 @@ -22,7 +22,9 @@
  #include "kernel-lib/sizes.h"
  #include "kernel-shared/uapi/btrfs.h"
@@ -25,13 +25,14 @@ Index: btrfs-progs-v6.13/common/fsfeatures.h
  
  /*
   * Since one feature can set at least one bit in either
-@@ -45,11 +47,20 @@ struct btrfs_mkfs_features {
+@@ -45,12 +47,21 @@ struct btrfs_mkfs_features {
  #define BTRFS_FEATURE_STRING_BUF_SIZE		(512)
  
  static const struct btrfs_mkfs_features btrfs_mkfs_default_features = {
 +#ifndef BTRFS_MKFS_DEFAULT_RUNTIME_FEATURES
  	.compat_ro_flags = BTRFS_FEATURE_COMPAT_RO_FREE_SPACE_TREE |
- 			   BTRFS_FEATURE_COMPAT_RO_FREE_SPACE_TREE_VALID,
+ 			   BTRFS_FEATURE_COMPAT_RO_FREE_SPACE_TREE_VALID |
+ 			   BTRFS_FEATURE_COMPAT_RO_BLOCK_GROUP_TREE,
 +#else
 +	.compat_ro_flags = BTRFS_MKFS_DEFAULT_RUNTIME_FEATURES ,
 +#endif

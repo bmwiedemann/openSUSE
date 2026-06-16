@@ -1,7 +1,7 @@
 #
 # spec file for package btrfsprogs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
 
 Name:           btrfsprogs
-Version:        6.17.1
+Version:        7.0
 Release:        0
 Summary:        Utilities for the Btrfs filesystem
 License:        GPL-2.0-only
@@ -75,7 +75,7 @@ BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(udev)
 %if 0%{?suse_version} >= 1310
 Requires(post): coreutils
-Requires(postun):coreutils
+Requires(postun): coreutils
 %endif
 Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
