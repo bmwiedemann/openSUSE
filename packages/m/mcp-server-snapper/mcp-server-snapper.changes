@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jun 09 08:14:14 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- minor improvements from review (bsc#1261988)
+- version 0.2.0
+
+-------------------------------------------------------------------
+Wed Apr 08 10:43:25 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- build on SLE15 SP7 (with python 3.11)
+
+-------------------------------------------------------------------
+Thu Mar 26 09:00:47 CET 2026 - Arvin Schnell <aschnell@suse.com>
+
+- first version of mcp server for snapper (jsc#MCP-21)
+- version 0.1.0

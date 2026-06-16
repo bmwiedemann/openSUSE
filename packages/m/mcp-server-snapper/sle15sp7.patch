@@ -1,0 +1,10 @@
+diff --git a/src/mcp-server-snapper b/src/mcp-server-snapper
+index 77acac3..e68b097 100755
+--- a/src/mcp-server-snapper
++++ b/src/mcp-server-snapper
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python3
++#!/usr/bin/python3.11
+ 
+ from datetime import datetime
+ import argparse
