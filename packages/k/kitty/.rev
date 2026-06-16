@@ -908,4 +908,16 @@
     releasing the mouse button before the drag is actually registered (#10136)</comment>
     <requestid>1359012</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>80a9d50c8ad303c5be016f0efb9f3577</srcmd5>
+    <version>0.47.4</version>
+    <time>1781610890</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.47.4:
+  * Linux: Fix a regression in the previous release that broke rendering of
+    bitmap color fonts (#10145)
+  * Linux: Allow fake italics defined via a matrix in fontconfig settings to
+    work for fonts like Fira Code that do not ship with an italic face (#10120)</comment>
+    <requestid>1359628</requestid>
+  </revision>
 </revisionlist>

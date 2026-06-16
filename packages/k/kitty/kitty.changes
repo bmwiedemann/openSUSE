@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 15 15:24:30 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.47.4:
+  * Linux: Fix a regression in the previous release that broke rendering of
+    bitmap color fonts (#10145)
+  * Linux: Allow fake italics defined via a matrix in fontconfig settings to
+    work for fonts like Fira Code that do not ship with an italic face (#10120)
+
+-------------------------------------------------------------------
 Fri Jun 12 15:27:32 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.47.3:
