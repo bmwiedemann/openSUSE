@@ -17,13 +17,12 @@
 
 
 Name:           gap-gapdoc
-Version:        1.6.9
+Version:        1.6.10
 Release:        0
 Summary:        GAP: package for GAP Documentation
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/
-
 Source:         http://www.math.rwth-aachen.de/~Frank.Luebeck/GAPDoc/GAPDoc-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  fdupes
