@@ -22,11 +22,11 @@
 %define qt6_version 6.9.0
 
 %define rname purpose
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-purpose
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        Framework to integrate services and actions in applications
 License:        LGPL-2.1-or-later
@@ -110,6 +110,8 @@ Summary:        Framework to integrate services and actions - Build Environment
 Requires:       libKF6Purpose6 = %{version}
 Requires:       libKF6PurposeWidgets6 = %{version}
 Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
+Requires:       cmake(Qt6Widgets) >= %{qt6_version}
 
 %description devel
 This package contains development files needed to build applications which rely on the purpose framework.
