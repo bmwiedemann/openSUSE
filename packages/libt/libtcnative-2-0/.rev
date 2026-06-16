@@ -15,4 +15,12 @@
     <comment>2.0.14 + build fixes for sle15sp4+</comment>
     <requestid>1344977</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>deeade86dee3de5d22a3dee06ee924a3</srcmd5>
+    <version>2.0.15</version>
+    <time>1781627418</time>
+    <user>anag_factory</user>
+    <comment>2.0.15</comment>
+    <requestid>1359700</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 05:21:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.15
+  * Changes
+    + Fix a memory leak when parsing certificates
+    + Fix two potential memory leaks on error paths identified by
+      Copilot
+    + Fix post handshake authentication Tomcat is configured with a
+      trust store using JSSE style configuration
+    + Correct expected size of tickets when calling
+      SSLContext.setSessionTicketKeys
+
+-------------------------------------------------------------------
 Tue Apr  7 11:09:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.14
@@ -50,7 +63,7 @@ Tue Apr  7 11:09:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Mon Feb  9 12:16:17 UTC 2026 - Michele Bussolotto <michele.bussolotto@suse.com>
 
-- Add conflict to previous devel version 
+- Add conflict to previous devel version
 
 -------------------------------------------------------------------
 Thu Feb  5 14:50:36 UTC 2026 - Michele Bussolotto <michele.bussolotto@suse.com>

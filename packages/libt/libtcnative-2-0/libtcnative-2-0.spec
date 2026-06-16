@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libtcnative-2-0
-Version:        2.0.14
+Version:        2.0.15
 Release:        0
 Summary:        Tomcat resources for performance, compatibility, etc
 License:        Apache-2.0
