@@ -46,6 +46,8 @@ Patch1:         1521_delegate_parseqs_stdlib_bpo42967.patch
 Patch2:         no-cython_test_exception_raiser.patch
 # PATCH-FIX-OPENSUSE remove-dependency-version-upper-bounds.patch boo#1190036 -- run with h2 >= 4.0.0 and priority >= 2.0
 Patch3:         remove-dependency-version-upper-bounds.patch
+# PATCH-FIX-UPSTREAM: https://github.com/twisted/twisted/pull/12661
+Patch4:         pycryptography-use-csr.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}

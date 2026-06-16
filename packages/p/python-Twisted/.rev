@@ -1751,4 +1751,12 @@
     <comment>Add missing security bug reference</comment>
     <requestid>1353254</requestid>
   </revision>
+  <revision rev="80" vrev="3">
+    <srcmd5>cfa23d7db305bcd6ce261bb775194d16</srcmd5>
+    <version>26.4.0</version>
+    <time>1781627360</time>
+    <user>anag_factory</user>
+    <comment>- add pycryptography-use-csr.patch</comment>
+    <requestid>1359744</requestid>
+  </revision>
 </revisionlist>
