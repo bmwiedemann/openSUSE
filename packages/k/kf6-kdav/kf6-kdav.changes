@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Use Depth: 1 instead of Depth: 0 for multiget REPORT requests
+  * Fix percent-encoding of item hrefs in CalDAV/CardDAV multiget requests
+  * Add job to create DAV collection
+  * autotests: Add davitemsfetchjobtest
+  * test: Remove manual test server
+  * enums: Deprecate GroupDav protocol support
+  * Update version to 6.27.0
+
+-------------------------------------------------------------------
 Sat May  2 07:52:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
