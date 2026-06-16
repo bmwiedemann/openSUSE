@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 13 16:49:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 2.11.1:
+  + This is a bugfix release, fixing ATA USB device detection
+    regression, leaking systemd inhibitors and missing polkit
+    checks (CVE-2026-26103, CVE-2026-26104).
+  + Changes:
+    - lvm2: Prevent a segfault on discarded probe output
+    - udiskslinuxdevice: Fix ATA USB detection
+    - udiskslinuxnvmecontroller: Fix sanitize job start
+    - udiskslinuxpartition: Fix missing job completion in
+      handle_set_name
+    - udiskslinuxpartitiontable: Fix missing job completion on
+      overlapping partition error
+    - udiskslinuxmanagernvme: Fix UINT64 variant handling in
+      fabrics extra options
+    - udiskslinuxblock: Add missing polkit check for
+      RestoreEncryptedHeader()
+    - udiskslinuxencrypted: Add missing polkit check for
+      HeaderBackup()
+    - docs: Update links to documentation on storaged.org
+    - udiskslinuxmdraid: Fix getting bitmap location on latest
+      kernels
+    - udisksobjectinfo: Fix compiler warning with C23
+    - tests: Do not mount the loop device for SetAutoclear test
+- Drop patches fixed upstream:
+  + 0001-udiskslinuxencrypted-Add-missing-polkit-check-for-He.patch
+  + 0001-udiskslinuxblock-Add-missing-polkit-check-for-Restor.patch
+
+-------------------------------------------------------------------
 Thu Feb 26 09:31:26 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - (CVE-2026-26104) VUL-0: missing authorization check in `handle_header_backup`

@@ -528,4 +528,12 @@ Security fix: Bug 865854, CVE-2014-0004. (forwarded request 225422 from pwieczor
     <comment></comment>
     <requestid>1335266</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>ec0a1f7c5385b2cf3fa217a017585bdd</srcmd5>
+    <version>2.11.1</version>
+    <time>1781610374</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359376</requestid>
+  </revision>
 </revisionlist>

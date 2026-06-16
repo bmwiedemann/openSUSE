@@ -20,7 +20,7 @@
 %define libblockdev_version 3.4
 
 Name:           udisks2
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        Disk Manager
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
@@ -35,8 +35,6 @@ Source0:        %{url}/releases/download/udisks-%{version}/udisks-%{version}.tar
 
 Patch0:         harden_udisks2.service.patch
 Patch1:         0001-move-config-files-to-usr-etc.patch
-Patch2:         0001-udiskslinuxencrypted-Add-missing-polkit-check-for-He.patch
-Patch3:         0001-udiskslinuxblock-Add-missing-polkit-check-for-Restor.patch
 %if 0%{?suse_version} > 1500
 BuildRequires:  autoconf
 BuildRequires:  automake
