@@ -41,6 +41,8 @@ Mon May  4 14:29:36 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 - CVE-2026-41602: Fix Integer Overflow or Wraparound vulnerability
   in Apache Thrift (bsc#1263501)
   * Add 0008-Bump-github.com-apache-thrift.patch
+- CVE-2026-41607: Fix potential information disclosure in Apache
+  Thrift (bsc#1263272)
 
 -------------------------------------------------------------------
 Thu Apr 30 13:52:41 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
