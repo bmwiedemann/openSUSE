@@ -17,8 +17,8 @@
 
 
 Name:           gap-examplesforhomalg
-Version:        2023.10.01
-%define sillyver 2023.10-01
+Version:        2025.12.01
+%define sillyver 2025.12-01
 Release:        0
 Summary:        GAP: Examples for the homalg GAP Package
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ URL:            https://homalg-project.github.io/pkg/ExamplesForHomalg
 Source:         https://github.com/homalg-project/homalg_project/releases/download/ExamplesForHomalg-%sillyver/ExamplesForHomalg-%sillyver.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13
 Requires:       gap-gapdoc >= 1.1
 Requires:       gap-gaussforhomalg >= 2023.08.01
 Requires:       gap-homalg >= 2015.06.01
