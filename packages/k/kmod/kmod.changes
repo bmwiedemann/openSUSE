@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:28:49 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- riscv-hwprobe.patch: handle riscv_hwprobe in syscall wrapper, fixes testsuite
+
+-------------------------------------------------------------------
 Thu Aug 28 06:58:42 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Revert the previous workaround

@@ -1,0 +1,38 @@
+From 84db2f930f866e70b040000acb276d5621c6bd51 Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Sun, 29 Jun 2025 12:09:25 +0200
+Subject: [PATCH] testsuite/init_module: Handle __NR_riscv_hwprobe in syscall
+ wrapper
+
+The libcrypto library constructor calls the riscv_hwprobe syscall through
+the syscall wrapper.  Return an error with ENOSYS.
+
+Signed-off-by: Andreas Schwab <schwab@suse.de>
+Link: https://github.com/kmod-project/kmod/pull/387
+Signed-off-by: Lucas De Marchi <lucas.de.marchi@gmail.com>
+Reviewed-by: Emil Velikov <emil.l.velikov@gmail.com>
+---
+ testsuite/init_module.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/testsuite/init_module.c b/testsuite/init_module.c
+index 8ff2699..c419aa3 100644
+--- a/testsuite/init_module.c
++++ b/testsuite/init_module.c
+@@ -370,6 +370,13 @@ TS_EXPORT long int syscall(long int __sysno, ...)
+ 		return nextlib_syscall(__NR_gettid);
+ 	}
+ 
++#ifdef __NR_riscv_hwprobe
++	if (__sysno == __NR_riscv_hwprobe) {
++		errno = ENOSYS;
++		return -1;
++	}
++#endif
++
+ 	/*
+ 	 * FIXME: no way to call the libc function due since this is a
+ 	 * variadic argument function and we don't have a vsyscall() variant
+-- 
+2.54.0
+

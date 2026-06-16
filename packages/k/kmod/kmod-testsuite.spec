@@ -41,6 +41,7 @@ Patch4:         0010-modprobe-Implement-allow-unsupported-modules.patch
 Patch5:         0011-Do-not-filter-unsupported-modules-when-running-a-van.patch
 Patch6:         0012-modprobe-print-unsupported-status.patch
 Patch7:         Revert-build-check-for-__xstat-declarations.patch
+Patch8:         riscv-hwprobe.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets

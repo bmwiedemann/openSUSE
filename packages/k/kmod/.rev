@@ -819,4 +819,12 @@ This addition of patch not mentioned in changelog should have been rejected by t
     <comment>- Revert the previous workaround</comment>
     <requestid>1301784</requestid>
   </revision>
+  <revision rev="90" vrev="5">
+    <srcmd5>ee5862313dbed2f74b41cce2ec197de4</srcmd5>
+    <version>34.2</version>
+    <time>1781610419</time>
+    <user>anag_factory</user>
+    <comment>- add riscv-hwprobe.patch</comment>
+    <requestid>1359593</requestid>
+  </revision>
 </revisionlist>
