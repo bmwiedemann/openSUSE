@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:57:54 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.18:
+  Features:
+  * Implementation of Message Retraction (XEP-0424) as the sending side.
+  * Various improvements to the react plugin, notably a way to convert :emoji: aliases to real emojis.
+  * Overhaul of the hide_exit_join option (more in the next section).
+  * Updates to hide_exit_join
+  Fixes:
+  * The API used internally for message retraction or moderation is no longer limited to the last 100 messagess.
+  * Fixed the config file handling on Guix or related distributions where the
+    config file could actually be a symlink (in which case it produced
+    undesired behavior).
+  * Custom plugin and theme load should keep working on python 3.15, which
+    removes a number of deprecated APIs in python’s importlib.
+  * The /xhtml command had been broken for a while.
+  * Some coroutines in the admin or irc plugin were not awaited, which broke
+    functionality and produced unwanted errors in the output.
+  * Fixed a traceback when receiving reactions from an unopened conversation.
+  * Fixed a display bug in semi-anonymous rooms showing the room jid
+    (room@server/nick) for users when joining/leaving, which is useless.
+  * Fixed a case where self-ping would be disabled when the room disconnects us, instead of trying to rejoin later.
+
+-------------------------------------------------------------------
+Tue Jun 16 13:57:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17:
+  * Message Reactions
+
+-------------------------------------------------------------------
+Tue Jun 16 13:56:28 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.1:
+  Features:
+  * Handle redacted/moderated messages in /display_corrections as well
+  Fixes:
+  * A bug in occupant comparison introduced in 0.16, leading to inconsistent MUC state in some cases.
+  * Several fixes to MAM syncing and history gaps in MUC, which should be more reliable (but not perfect yet).
+  * Issues around MUC self-ping (XEP-0410) where you could not ever leave a room if it was enabled.
+  * A bug in the new tcp-reconnect plugin which would traceback when disconnected.
+  * Loading issues with plugins defined in entrypoints, of which the most common is poezio-omemo.
+  Internal:
+  * Introduction of a harsher linting pipeline.
+  * Plenty of typing and linting fixes.
+  * Added poezio-omemo to the plugins list in pyproject, for easier installation.
+
+-------------------------------------------------------------------
+Tue Jun 16 13:54:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16:
+  Features:
+  * Receiving side of moderation (XEP-0425) and retraction (XEP-0424) events
+  * New /report plugin to report spam (XEP-0377)
+  * New /tcp-reconnect to kill TCP connections on faulty networks (#3406).
+  * Due to the CA store usage default on 0.15, the historical TOFU way of
+    managing certs in poezio was broken. There is now a tls_verify_cert option
+    that can be set to false if the user wishes so.
+  Fixes:
+  * Several fixes around carbons (XEP-0280) (#3626, #3627)
+  * The roster is now kept until the XMPP session ends (which means on a
+    disconnect with smacks (XEP-0198) enabled, the roster is kept until the
+    session timeouts) (#3614)
+  * Traceback in /affiliations due to slixmpp’s rust JID rewrite
+  * Traceback in the /bookmarks tab
+  * Infinite syncing of MAM history due to bad paging
+  * Saving remote MUC bookmarks no longer force the JID as bookmark name
+  * pkg_resources is no longer used.
+  * Plenty of deprecationwarnings have been removed.
+  * /set option=value would handle the = wrong and display the wrong thing.
+  Internal:
+  * Plenty of typing updates and fixes
+  Removals:
+  * Removal of uv as a first-party target for launch/update.sh (no vcware).
+  * Removal of remaining origin-id usage.
+
+-------------------------------------------------------------------
+Tue Jun 16 13:53:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.15:
+  Features:
+  * A new moderate plugin (for XEP-0425 moderation).
+  * Better self-ping (through the use of the slixmpp now builtin XEP-0410 plugin).
+  * Use the system CA store by default.
+  * Add a Ctrl-↑ shortcut to run /correct on the last message.
+  * Poezio benefits from the recent slixmpp improvements, which means it can
+    now transparently use Direct TLS as well as StartTLS.
+  Fixes:
+  * Duplicated first message in conversation/private tab.
+  * The many "clone" users in a room roster when on a spotty connection.
+  * Python 3.13 and 3.14 compatibility (plenty of deprecations and removals).
+  * Plenty of type checking mistakes and minor bugs spotted by mypy and pylint.
+  Removals:
+  * Only python 3.11 and up is supported (was: 3.7).
+  * The OTR plugin has been removed.
+  * The launch/update.sh have been heavily simplified to use the uv tool
+    instead of custom logic. It will be updated in the future to be able to run
+    on pipx too, as uv is not available on some platforms.
+
+-------------------------------------------------------------------
 Wed Feb 21 07:41:23 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

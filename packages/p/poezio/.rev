@@ -75,4 +75,41 @@
 - Update source URL</comment>
     <requestid>1148423</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1a766698d8b9b97a860811521dee492f</srcmd5>
+    <version>0.18</version>
+    <time>1781628555</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18:
+  Features:
+  * Implementation of Message Retraction (XEP-0424) as the sending side.
+  * Various improvements to the react plugin, notably a way to convert :emoji: aliases to real emojis.
+  * Overhaul of the hide_exit_join option (more in the next section).
+  * Updates to hide_exit_join
+  Fixes:
+  * The API used internally for message retraction or moderation is no longer limited to the last 100 messagess.
+  * Fixed the config file handling on Guix or related distributions where the
+    config file could actually be a symlink (in which case it produced
+    undesired behavior).
+  * Custom plugin and theme load should keep working on python 3.15, which
+    removes a number of deprecated APIs in python’s importlib.
+  * The /xhtml command had been broken for a while.
+  * Some coroutines in the admin or irc plugin were not awaited, which broke
+    functionality and produced unwanted errors in the output.
+  * Fixed a traceback when receiving reactions from an unopened conversation.
+  * Fixed a display bug in semi-anonymous rooms showing the room jid
+    (room@server/nick) for users when joining/leaving, which is useless.
+  * Fixed a case where self-ping would be disabled when the room disconnects us, instead of trying to rejoin later.
+
+- Update to 0.17:
+  * Message Reactions
+
+- Update to 0.16.1:
+  Features:
+  * Handle redacted/moderated messages in /display_corrections as well
+  Fixes:
+  * A bug in occupant comparison introduced in 0.16, leading to inconsistent MUC state in some cases.
+  * Several fixes to MAM syncing and history gaps in MUC, which should be more reliable (but not perfect yet).</comment>
+    <requestid>1359786</requestid>
+  </revision>
 </revisionlist>

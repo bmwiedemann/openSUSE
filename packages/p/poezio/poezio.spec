@@ -18,7 +18,7 @@
 
 
 Name:           poezio
-Version:        0.14
+Version:        0.18
 Release:        0
 Summary:        XMPP Client for the Console
 License:        MIT
