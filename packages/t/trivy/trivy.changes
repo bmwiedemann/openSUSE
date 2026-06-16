@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 15 19:44:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.71.1:
+  * fix(oci): validate artifact filename
+  * fix: forward ospkg detector options through ospkg.NewScanner
+  * fix(vex): load VEX documents from within the repository
+    directory
+  * fix: surface the original analysis error instead of context
+    cancellation
+  * ci: expect GitHub App bot as backport PR author
+
+-------------------------------------------------------------------
 Mon Jun 01 14:59:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.71.0 (bsc#1267268, CVE-2026-44740):

@@ -1553,4 +1553,19 @@ dropped patch file
   * fix(image): correctly reconstruct RUN instructions built without BuildKit (#10714)</comment>
     <requestid>1356738</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>a3795da9db99b5b574ce4cf2f8d1fc48</srcmd5>
+    <version>0.71.1</version>
+    <time>1781610984</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.71.1:
+  * fix(oci): validate artifact filename
+  * fix: forward ospkg detector options through ospkg.NewScanner
+  * fix(vex): load VEX documents from within the repository
+    directory
+  * fix: surface the original analysis error instead of context
+    cancellation
+  * ci: expect GitHub App bot as backport PR author</comment>
+    <requestid>1359661</requestid>
+  </revision>
 </revisionlist>
