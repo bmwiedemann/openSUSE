@@ -180,4 +180,14 @@
 - Remove unnecessary dependency of llvm-devel on libtool.</comment>
     <requestid>1352206</requestid>
   </revision>
+  <revision rev="15" vrev="7">
+    <srcmd5>32656aeff8e7dc613f06077b4448cb3b</srcmd5>
+    <version>21.1.8</version>
+    <time>1781610350</time>
+    <user>anag_factory</user>
+    <comment>- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.</comment>
+    <requestid>1358701</requestid>
+  </revision>
 </revisionlist>
