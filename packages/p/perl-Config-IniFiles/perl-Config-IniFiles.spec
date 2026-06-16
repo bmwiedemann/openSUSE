@@ -18,7 +18,7 @@
 
 %define cpan_name Config-IniFiles
 Name:           perl-Config-IniFiles
-Version:        3.001000
+Version:        3.002000
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Module for reading .ini-style configuration files

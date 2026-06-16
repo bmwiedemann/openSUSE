@@ -397,4 +397,21 @@
    see /usr/share/doc/packages/perl-Config-IniFiles/Changes</comment>
     <requestid>1358718</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0da964d4687cb34e7c3b7c1bfa0f7511</srcmd5>
+    <version>3.002000</version>
+    <time>1781610426</time>
+    <user>anag_factory</user>
+    <comment>- updated to 3.002000
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+- updated to 3.001000
+    * Fix for CVE 2026-11527 . bsc#1268236
+        - 2 args open() call
+        - See t/38security-open.t
+    * Add t/19utf8.t .
+        - https://github.com/shlomif/perl-Config-IniFiles/issues/14
+        - Thanks to @rdiez .</comment>
+    <requestid>1359605</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 15 11:23:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.002000
+   see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+
+-------------------------------------------------------------------
 Thu Jun 11 09:20:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.001000
    see /usr/share/doc/packages/perl-Config-IniFiles/Changes
+    * Fix for CVE 2026-11527 . bsc#1268236
+        - 2 args open() call
+        - See t/38security-open.t
+    * Add t/19utf8.t .
+        - https://github.com/shlomif/perl-Config-IniFiles/issues/14
+        - Thanks to @rdiez .
 
 -------------------------------------------------------------------
 Wed Mar 25 03:07:48 UTC 2020 -  <timueller+perl@suse.de>
