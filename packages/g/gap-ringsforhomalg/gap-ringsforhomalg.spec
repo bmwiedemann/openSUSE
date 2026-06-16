@@ -1,7 +1,7 @@
 #
 # spec file for package gap-ringsforhomalg
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-ringsforhomalg
-Version:        2024.11.02
-%define sillyver 2024.11-02
+Version:        2026.05.01
+%define sillyver 2026.05-01
 Release:        0
 Summary:        GAP: Dictionaries of External Rings
 License:        GPL-2.0-only
@@ -28,7 +28,7 @@ Source:         https://github.com/homalg-project/homalg_project/releases/downlo
 BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.12.1
+Requires:       gap-core >= 4.13.0
 Requires:       gap-gapdoc >= 1.0
 Requires:       gap-gaussforhomalg >= 2023.08.01
 Requires:       gap-homalgtocas >= 2023.08.01
