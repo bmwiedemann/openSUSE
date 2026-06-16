@@ -742,4 +742,17 @@
     it ~24% faster.</comment>
     <requestid>1359261</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4e6117c5ef2c71e2d568897e060b28ff</srcmd5>
+    <version>0.137.1</version>
+    <time>1781628125</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.137.1:
+  ## Breaking Changes
+  * Refactor internals to preserve APIRouter and APIRoute instances.
+  ## Fixes
+  * Fix typing checks for APIRoute.
+  * Fix bug, allow empty path in path operation in prefixless router.</comment>
+    <requestid>1359712</requestid>
+  </revision>
 </revisionlist>

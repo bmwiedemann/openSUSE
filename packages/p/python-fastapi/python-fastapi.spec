@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-fastapi%{psuffix}
-Version:        0.136.3
+Version:        0.137.1
 Release:        0
 Summary:        FastAPI framework
 License:        MIT
@@ -69,6 +69,7 @@ BuildRequires:  %{python_module dirty-equals >= 0.9.0}
 BuildRequires:  %{python_module email-validator >= 2.0.0}
 BuildRequires:  %{python_module fastapi = %{version}}
 BuildRequires:  %{python_module httpx >= 0.23.0}
+BuildRequires:  %{python_module httpx2 >= 2.0}
 BuildRequires:  %{python_module inline-snapshot >= 0.21.1}
 BuildRequires:  %{python_module orjson >= 3.2.1}
 BuildRequires:  %{python_module passlib}
@@ -82,6 +83,7 @@ BuildRequires:  %{python_module python-jose >= 3.3}
 BuildRequires:  %{python_module python-multipart >= 0.0.18}
 BuildRequires:  %{python_module sqlmodel >= 0.0.31}
 BuildRequires:  %{python_module trio}
+BuildRequires:  %{python_module typer}
 BuildRequires:  %{python_module ujson >= 5.6}
 BuildRequires:  %{python_module uvicorn >= 0.12}
 %endif
