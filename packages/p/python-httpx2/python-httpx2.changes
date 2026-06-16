@@ -1,0 +1,30 @@
+-------------------------------------------------------------------
+Tue Jun 16 04:32:11 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.4.0:
+  ## Added
+  * Add HTTPXDeprecationWarning, a UserWarning subclass shown by default so
+    deprecations are visible without enabling warnings.
+  ## Changed
+  * Limit the number of chained Content-Encoding decoders to 5.
+  * Allow version 15 of rich in the cli extra.
+  * Use truststore instead of certifi for default SSL verification, loading
+    the operating system's trust store.
+  ## Fixed
+  * Parse an empty Digest auth realm without crashing.
+  * Decode IDNA labels in non-leading host positions.
+  * Raise when verify is a string path and a client-side cert is also
+    provided to create_ssl_context.
+  * Allow a default_encoding callable to return None.
+  * Make the zstd import optional on Python 3.14.
+  * Store elapsed time on the stream wrapper to avoid reference cycles.
+- Drop patches, merged upstream:
+  * version-fallback.patch
+  * fix-encoding-tests.patch
+
+-------------------------------------------------------------------
+Fri May 29 11:44:22 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Initial version 2.2.0
+- Add version-fallback.patch to build outside of git repo
+- Add fix-encoding-tests.patch to fix tests with chardet >= 6

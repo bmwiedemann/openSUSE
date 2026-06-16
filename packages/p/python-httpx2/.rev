@@ -1,0 +1,32 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b136054525abddde46e5fcd196ed14d1</srcmd5>
+    <version>2.4.0</version>
+    <time>1781628142</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.0:
+  ## Added
+  * Add HTTPXDeprecationWarning, a UserWarning subclass shown by default so
+    deprecations are visible without enabling warnings.
+  ## Changed
+  * Limit the number of chained Content-Encoding decoders to 5.
+  * Allow version 15 of rich in the cli extra.
+  * Use truststore instead of certifi for default SSL verification, loading
+    the operating system's trust store.
+  ## Fixed
+  * Parse an empty Digest auth realm without crashing.
+  * Decode IDNA labels in non-leading host positions.
+  * Raise when verify is a string path and a client-side cert is also
+    provided to create_ssl_context.
+  * Allow a default_encoding callable to return None.
+  * Make the zstd import optional on Python 3.14.
+  * Store elapsed time on the stream wrapper to avoid reference cycles.
+- Drop patches, merged upstream:
+  * version-fallback.patch
+  * fix-encoding-tests.patch
+- Initial version 2.2.0
+- Add version-fallback.patch to build outside of git repo
+- Add fix-encoding-tests.patch to fix tests with chardet &gt;= 6</comment>
+    <requestid>1359710</requestid>
+  </revision>
+</revisionlist>
