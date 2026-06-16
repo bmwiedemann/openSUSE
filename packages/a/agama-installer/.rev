@@ -604,4 +604,12 @@
 - Add ignition and combustion to the live image package list.</comment>
     <requestid>1357936</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9a2977792a7792c2ec32db922ab3dce7</srcmd5>
+    <version>22.0.0</version>
+    <time>1781610452</time>
+    <user>anag_factory</user>
+    <comment>- Version 22</comment>
+    <requestid>1359655</requestid>
+  </revision>
 </revisionlist>
