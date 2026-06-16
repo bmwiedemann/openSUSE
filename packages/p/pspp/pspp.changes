@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 17:05:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build with gcc15 boo#1268308, add pspp-2.1.1-fix-gcc15.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 19:26:09 UTC 2026 - <opensuse.lietuviu.kalba@gmail.com>
 
 - Remove optional free-ttf-fonts dependency to build for openSUSE 16.0.

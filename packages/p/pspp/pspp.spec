@@ -32,6 +32,7 @@ Source1:        https://ftp.gnu.org/pub/gnu/pspp/pspp-%{version}.tar.gz.sig
 Source2:        https://savannah.gnu.org/people/viewgpg.php?user_id=245#/%{name}.keyring
 Patch0:         pspp-2.1.1-gui-Avoid-using-test-splash-screen-for-odd-minor-rel.patch
 Patch1:         pspp-2.1.1-gui-Remove-test-version-from-title.patch
+Patch2:         pspp-2.1.1-fix-gcc15.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if 0%{?suse_version}
 BuildRequires:  fdupes
