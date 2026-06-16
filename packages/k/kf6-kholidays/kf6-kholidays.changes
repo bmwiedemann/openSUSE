@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jun  6 11:42:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.27.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.27.0
+- Changes since 6.26.0:
+  * Update dependency version to 6.27.0
+  * Add Bolivian Holidays (kde#520179)
+  * .clang-tidy - fix typo StringCompareLikeFuctions
+  * src/lunarphase.cpp - krazy excludeall typedefs
+  * CMakeLists.txt - update the flex and bison urls
+  * src/sunevents_p.h - fix include guard name
+  * SunRiseSet: place deprecation attribute standard-type-clang-compatible
+  * fix holidays appear twice in january (kde#498462)
+  * UA: Update Ukrainian holidays
+  * Update version to 6.27.0
+  * .gitlab-ci.yml - don't fail on clang-tidy issues
+
+-------------------------------------------------------------------
 Sat May  2 07:52:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.26.0
