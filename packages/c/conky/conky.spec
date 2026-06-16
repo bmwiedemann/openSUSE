@@ -23,8 +23,14 @@
 %else
 %bcond_with libXNVCtrl
 %endif
+%ifarch s390x %ix86
+%bcond_with docs
+%else
+%bcond_without docs
+%endif
+
 Name:           conky
-Version:        1.22.2
+Version:        1.24.0
 Release:        0
 Summary:        A System Monitor
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -46,6 +52,7 @@ BuildRequires:  gcc-c++
 %endif
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libXi-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libmicrohttpd-devel
 BuildRequires:  libmysqld-devel
@@ -54,7 +61,9 @@ BuildRequires:  libxslt-tools
 BuildRequires:  lua53-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  ninja
+%if %{with docs}
 BuildRequires:  pandoc
+%endif
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyYAML
@@ -99,6 +108,7 @@ BuildRequires:  libtolua++-5_1-devel
 %description
 Conky is an configurable system monitor.
 
+%if %{with docs}
 %package doc
 Summary:        Documentation for conky
 BuildArch:      noarch
@@ -107,6 +117,7 @@ BuildArch:      noarch
 Conky is an configurable system monitor for X.
 
 This package provides additional documentation about conky.
+%endif
 
 %package -n vim-plugin-conky
 Summary:        Conky Configuration File Support for Vim
@@ -142,21 +153,20 @@ test -x "$(type -p gcc-13)" && export CC="$_"
 test -x "$(type -p g++-13)" && export CXX="$_"
 %cmake -G Ninja \
 	-DBUILD_APCUPSD=ON \
-	-DBUILD_ARGB=ON \
 %if %{with audacious}
 	-DBUILD_AUDACIOUS=ON \
 %else
     -DBUILD_AUDACIOUS=OFF \
 %endif
-	-DBUILD_BMPX=OFF \
 %if %{with cmus}
 	-DBUILD_CMUS=ON \
 %else
     -DBUILD_CMUS=OFF \
 %endif
 	-DBUILD_CURL=ON \
+%if %{with docs}
 	-DBUILD_DOCS=ON \
-	-DBUILD_EVE=ON \
+%endif
 	-DBUILD_HDDTEMP=ON \
 	-DBUILD_HTTP=ON \
 	-DBUILD_I18N=ON \
@@ -167,12 +177,14 @@ test -x "$(type -p g++-13)" && export CXX="$_"
 	-DBUILD_IMLIB2=ON \
     -DBUILD_LUA_IMLIB2=ON \
    	-DBUILD_LUA_RSVG=ON \
+	-DBUILD_LUA_TEXT=ON \
+	-DBUILD_LUA_CAIRO_XLIB=ON \
 %if 0%{?is_opensuse}
     -DBUILD_IRC=ON \
 %else
     -DBUILD_IRC=OFF \
 %endif
-	-DBUILD_XMMS2=OFF \
+	-DBUILD_INTEL_GPU=ON \
 	-DBUILD_IOSTATS=ON \
 	-DBUILD_IPV6=ON \
 	-DBUILD_MATH=ON \
@@ -189,8 +201,6 @@ test -x "$(type -p g++-13)" && export CXX="$_"
 	-DBUILD_PULSEAUDIO=ON \
 	-DBUILD_RSS=ON \
 	-DBUILD_OLD_CONFIG=ON \
-	-DBUILD_WEATHER_METAR=ON \
-	-DBUILD_WEATHER_XOAP=ON \
 	-DBUILD_WAYLAND=ON \
   -DWayland_CLIENT_INCLUDE_DIR=/usr/include/wayland/ \
   -DWayland_SERVER_INCLUDE_DIR=/usr/include/wayland/ \
@@ -199,6 +209,7 @@ test -x "$(type -p g++-13)" && export CXX="$_"
 	-DBUILD_XDAMAGE=ON \
 	-DBUILD_XDBE=ON \
 	-DBUILD_XFT=ON \
+	-DBUILD_XMMS2=OFF \
 	-DBUILD_XSHAPE=ON \
 	-DOWN_WINDOW=ON
 
@@ -236,6 +247,7 @@ rm -rf %{buildroot}%{_libdir}/conky/*.{a,la}
 %dir %{_libdir}/conky
 %{_libdir}/conky/libcairo.so
 %{_libdir}/conky/libcairo_imlib2_helper.so
+%{_libdir}/conky/libcairo_text_helper.so
 %{_libdir}/conky/libcairo_xlib.so
 %{_libdir}/conky/libimlib2.so
 %{_libdir}/conky/librsvg.so
@@ -244,8 +256,10 @@ rm -rf %{buildroot}%{_libdir}/conky/*.{a,la}
 %{_datadir}/doc/conky-%{version}/
 %{_libdir}/libtcp-portmon.so
 
+%if %{with docs}
 %files doc
 %doc %{_mandir}/man1/conky.1%{?ext_man}
+%endif
 
 %files -n vim-plugin-conky
 %dir %{_datadir}/vim

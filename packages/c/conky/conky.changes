@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Jun 16 01:07:06 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Enable BUILD_LUA_TEXT
+- Enable BUILD_INTEL_GPU=ON
+- Enable BUILD_LUA_CAIRO_XLIB for clarity
+- Disable the following flags that are reported as unused by cmake
+  * BUILD_ARGB
+  * BUILD_BMPX
+  * BUILD_EVE
+  * BUILD_WEATHER_METAR
+  * BUILD_WEATHER_XOAP
+- Disable docs in places pandoc doesn't exist
+- Update to 1.24.0 (Combined Notes)
+  * Upgrade Notes
+    * conky_surface() is now the preferred Lua API for obtaining
+      the current Cairo drawing surface. It works across graphical
+      backends, including Wayland, and the older X11-specific
+      Cairo surface API now emits deprecation warnings.
+    * own_window_colour now carries background opacity through 
+      its alpha channel. The older own_window_argb_visual, 
+      own_window_argb_value, and own_window_transparent settings 
+      are deprecated but remain backward-compatible, aside from
+      corrected opacity resolution behavior.
+    * BUILD_ARGB was removed; ARGB support is treated as part 
+      of the X11 path.
+    * BUILD_XINPUT was removed; XInput2 is now used directly for
+      X11 mouse input, and the legacy non-XInput2 fallback was
+      removed.
+  * Lua and Graphical Output
+    * Added conky_surface() for backend-neutral Cairo drawing 
+      from Lua, including Wayland support, and updated 
+      conky_window.width / conky_window.height from 
+      Wayland output (#2342).
+    * Added conky_window.pixel_size.x, conky_window.pixel_size.y,
+      and conky_window.scale for Lua scripts that need pixel-aware
+      drawing (#2342).
+    * Simplified window background alpha handling around 
+      own_window_colour and fixed several compositor and opacity 
+      edge cases (#2344).
+    * Fixed stale window width and height updates (#2345).
+    * Fixed graph gradient rendering (#2336).
+    * Improved cairo/lua text rendering support.
+  * Text Objects
+    * Added sysfs-backed bar variables for Linux hardware 
+      monitoring: hwmonbar, i2cbar, and platformbar. These let 
+      configs render sensor values as bars without shelling out
+      through execbar.
+    * Added an optional width argument to hr and stippled_hr, 
+      allowing horizontal rules to be capped at a specific pixel 
+      width while preserving existing defaults.
+  * X11 Mouse Input
+    * Various Fixes
+  * Reliability and Diagnostics
+    * Replaced legacy stderr/debug macros with structured
+      spdlog-based logging, runtime log levels, source locations,
+      span context, and cleaner termination handling (#1899).
+    * Improved parser error recovery so invalid variables can be
+      rendered literally instead of crashing in more cases (#1899).
+  * Security and Platform Fixes
+    * Various Hardening and Security related fixes
+  * Runtime Fixes
+    * Aligned periodic updates to wall-clock second boundaries 
+      so ${time} output updates on time instead of drifting up 
+      to nearly a second late.
+    * Fixed a crash when XDG_SESSION_TYPE is present but empty.
+    * Fixed X11 mouse event propagation regressions that could 
+      duplicate clicks and scroll events on other windows.
+    * Fixed a graph argument parsing edge case for leading -m / 
+      minheight values.
+
+-------------------------------------------------------------------
 Fri Mar 27 16:11:48 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Build with wayland support
