@@ -18,11 +18,11 @@
 %define qt6_version 6.9.0
 
 %define rname kcontacts
-# Full KF6 version (e.g. 6.26.0)
+# Full KF6 version (e.g. 6.27.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcontacts
-Version:        6.26.0
+Version:        6.27.0
 Release:        0
 Summary:        KDE Frameworks based address book API
 License:        LGPL-2.1-or-later
@@ -67,6 +67,7 @@ Requires:       cmake(KF6Codecs) >= %{_kf6_version}
 Requires:       cmake(KF6Config) >= %{_kf6_version}
 Requires:       cmake(KF6CoreAddons) >= %{_kf6_version}
 Requires:       cmake(KF6I18n) >= %{_kf6_version}
+Requires:       cmake(Qt6Gui) >= %{qt6_version}
 
 %description devel
 Development files for kcontacts, a Qt library to access address books.
