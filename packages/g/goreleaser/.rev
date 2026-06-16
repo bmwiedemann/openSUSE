@@ -1057,4 +1057,12 @@
   * feat(dockers_v2): set extra.platforms in the artifact (#6628) (forwarded request 1357965 from ph03nix)</comment>
     <requestid>1357996</requestid>
   </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>26c1e5a52115562aee6272969e361f19</srcmd5>
+    <version>2.16.0</version>
+    <time>1781627578</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359780</requestid>
+  </revision>
 </revisionlist>
