@@ -723,4 +723,18 @@
   new encryptions (bsc#1265302).</comment>
     <requestid>1357935</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>2ad94a42fdb5f973164953c35b42ac5e</srcmd5>
+    <version>22</version>
+    <time>1781610437</time>
+    <user>anag_factory</user>
+    <comment>- Version 22
+
+- Extend storage model to allow configuring filesystem options
+  (gh#agama-project/agama#3620).
+
+- Avoid running DASD formatting in a separate thread (related to
+  bsc#1266276).</comment>
+    <requestid>1359650</requestid>
+  </revision>
 </revisionlist>
