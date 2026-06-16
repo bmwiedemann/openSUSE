@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 15 16:08:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.3:
+  * fix(qemu): pass SLIRP DNS address via kernel cmdline when
+    QEMU_NET_CIDR is set (#2570)
+
+-------------------------------------------------------------------
+Mon Jun 15 05:02:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.2:
+  * build(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0 in
+    the gomod group (#2569)
+  * build(deps): bump the gomod group across 1 directory with 12
+    updates (#2567)
+
+-------------------------------------------------------------------
 Fri Jun 12 05:24:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.1:
