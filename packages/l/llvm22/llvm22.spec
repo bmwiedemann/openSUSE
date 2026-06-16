@@ -19,12 +19,10 @@
 %global _sonum  22
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 6
+%global _patch_level 7
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme22 1
-# Integer version used by update-alternatives
-%global _uaver  %{_sonum}1%{_patch_level}
 %global _soclang 13
 %global _socxx  1
 
@@ -452,8 +450,6 @@ BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # llvm does not work on s390
 ExcludeArch:    s390
 %if %{with ffi}
@@ -465,6 +461,8 @@ BuildRequires:  pkgconfig(valgrind)
 %if %{with oprofile}
 BuildRequires:  oprofile-devel
 %endif
+OrderWithRequires(pre): update-alternatives
+Provides:       llvm%{_sonum}-update-alternatives-removed
 Suggests:       %{name}-doc
 
 %description
@@ -544,8 +542,8 @@ URL:            https://clang.llvm.org/
 Requires:       gcc
 Requires:       glibc-devel
 Requires:       libclang_rt%{_sonum}
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+OrderWithRequires(pre): update-alternatives
+Provides:       clang%{_sonum}-update-alternatives-removed
 Recommends:     clang-tools
 Recommends:     libstdc++-devel
 Suggests:       clang%{_sonum}-doc
@@ -760,9 +758,8 @@ frontend for LLVM.
 Summary:        Linker for Clang/LLVM
 Group:          Development/Tools/Building
 URL:            https://lld.llvm.org/
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 OrderWithRequires(pre): update-alternatives
+Provides:       lld%{_sonum}-update-alternatives-removed
 
 %description -n lld%{_sonum}
 LLD is a linker from the LLVM project. That is a drop-in replacement for system linkers and runs much faster than them. It also provides features that are useful for toolchain developers.
@@ -791,8 +788,8 @@ BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(panel)
 BuildRequires:  pkgconfig(zlib)
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+OrderWithRequires(pre): update-alternatives
+Provides:       lldb%{_sonum}-update-alternatives-removed
 Recommends:     python3-lldb%{_sonum}
 
 %description -n lldb%{_sonum}
@@ -1276,8 +1273,10 @@ rm %{buildroot}%{_mandir}/man1/llvm-{exegesis,locstats}.1
 
 # Python: fix binary libraries location.
 rm %{buildroot}%{python_pkg_sitearch}/lldb/native/_lldb.%{swig_soabi}.so
+rm %{buildroot}%{python_pkg_sitearch}/lldb/lldb-argdumper
 liblldb=$(readlink %{buildroot}%{_libdir}/liblldb.so)
 ln -vsf "../../../../${liblldb}" %{buildroot}%{python_pkg_sitearch}/lldb/native/_lldb.%{swig_soabi}.so
+ln -vsf ../../../../bin/lldb-argdumper-%{_sonum} %{buildroot}%{python_pkg_sitearch}/lldb/lldb-argdumper
 %endif
 
 # Stuff we don't want to include
@@ -1294,10 +1293,7 @@ rm %{buildroot}%{_libdir}/libiomp*.so
 rm %{buildroot}%{_libdir}/libarcher_static.a
 %endif
 
-# Prepare for update-alternatives usage
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-
-# Fix the clang -> clang-X symlink to work with update-alternatives
+# Move clang-X to clang because we're going to add a version to all binaries.
 mv %{buildroot}%{_bindir}/clang-%{_sonum} %{buildroot}%{_bindir}/clang
 
 # Rewrite symlinks to point to new location
@@ -1308,11 +1304,9 @@ for p in %{shrink:%binfiles} ; do
 done
 for p in %{shrink:%binfiles} ; do
     mv %{buildroot}%{_bindir}/$p %{buildroot}%{_bindir}/$p-%{_sonum}
-    ln -s -f %{_sysconfdir}/alternatives/$p %{buildroot}%{_bindir}/$p
 done
 for p in %{shrink:%manfiles} ; do
     mv %{buildroot}%{_mandir}/man1/$p.1 %{buildroot}%{_mandir}/man1/$p-%{_sonum}.1
-    ln -s -f %{_sysconfdir}/alternatives/$p.1%{ext_man} %{buildroot}%{_mandir}/man1/$p.1%{ext_man}
 done
 
 # Also rewrite the CMake files referring to the binaries.
@@ -1509,116 +1503,53 @@ rm -rf ./stage1 ./build
 %endif
 %endif
 
-%global ua_install() %{_sbindir}/update-alternatives \\\
-    --install %{_bindir}/%1 %1 %{_bindir}/%1-%{_sonum} %{_uaver}
-%global ua_bin_slave() \\\
-    --slave %{_bindir}/%1 %1 %{_bindir}/%1-%{_sonum}
-%global ua_man_slave() \\\
-    --slave %{_mandir}/man1/%1.1%{ext_man} %1.1%{ext_man} %{_mandir}/man1/%1-%{_sonum}.1%{ext_man}
-%global ua_remove() \
-if [ ! -f %{_bindir}/%1-%{_sonum} ] ; then \
+%global ua_final_remove() \
+if [ $1 -gt 1 ] && [ -f %{_sysconfdir}/alternatives/%1 ] ; then \
     %{_sbindir}/update-alternatives --remove %1 %{_bindir}/%1-%{_sonum} \
 fi
 
-%post
-%{ua_install %llvm_ua_anchor} \
-    %{lapply -p ua_bin_slave %llvm_tools} \
-    %{lapply -p ua_bin_slave %llvm_ir_tools} \
-    %{lapply -p ua_bin_slave %llvm_elf_dwarf_tools} \
-    %{lapply -p ua_bin_slave %llvm_abi_coff_macho_tools} \
-    %{lapply -p ua_bin_slave %llvm_instr_devel_tools} \
-    %{lapply -p ua_man_slave %llvm_man} \
-    %{lapply -p ua_man_slave %llvm_bin_utils_man} \
-    %{lapply -p ua_man_slave %llvm_devel_utils_man}
+%pre
+%{ua_final_remove %llvm_ua_anchor}
 
-%postun
-%{ua_remove %llvm_ua_anchor}
-
-%post -n clang%{_sonum}
-%{ua_install %clang_ua_anchor} \
-    %{lapply -p ua_bin_slave %clang_binfiles} \
-    %{lapply -p ua_bin_slave %clang_tools_extra_binfiles} \
-    %{lapply -p ua_man_slave %clang_manfiles}
-
-%postun -n clang%{_sonum}
-%{ua_remove %clang_ua_anchor}
+%pre -n clang%{_sonum}
+%{ua_final_remove %clang_ua_anchor}
 
 %if %{with lld}
 %pre -n lld%{_sonum}
 if [ $1 -gt 1 ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
     %{_sbindir}/update-alternatives --remove ld %{_bindir}/ld.lld
 fi
-
-%post -n lld%{_sonum}
-%{ua_install %lld_ua_anchor} \
-    %{lapply -p ua_bin_slave %lld_binfiles}
-
-%postun -n lld%{_sonum}
-%{ua_remove %lld_ua_anchor}
+%{ua_final_remove %lld_ua_anchor}
 %endif
 
 %if %{with lldb}
-%post -n lldb%{_sonum}
-%{ua_install %lldb_ua_anchor} \
-    %{lapply -p ua_bin_slave %lldb_binfiles}
-
-%postun -n lldb%{_sonum}
-%{ua_remove %lldb_ua_anchor}
+%pre -n lldb%{_sonum}
+%{ua_final_remove %lldb_ua_anchor}
 %endif
 
-%global bin_path() \
-%{_bindir}/%1
 %global bin_sonum_path() \
 %{_bindir}/%1-%{_sonum}
-%global ghost_ua_bin_link() \
-%ghost %{_sysconfdir}/alternatives/%1
-%global man_path() \
-%{_mandir}/man1/%1.1%{ext_man}
 %global man_sonum_path() \
 %{_mandir}/man1/%1-%{_sonum}.1%{ext_man}
-%global ghost_ua_man_link() \
-%ghost %{_sysconfdir}/alternatives/%1.1%{ext_man}
 
 %files
 %license llvm/CREDITS.TXT llvm/LICENSE.TXT
-%{lapply -p bin_path %llvm_ua_anchor %llvm_tools}
-%{lapply -p bin_path %llvm_ua_anchor %llvm_ir_tools}
-%{lapply -p bin_path %llvm_elf_dwarf_tools}
-%{lapply -p bin_path %llvm_abi_coff_macho_tools}
-%{lapply -p bin_path %llvm_instr_devel_tools}
 %{lapply -p bin_sonum_path %llvm_ua_anchor %llvm_tools}
-%{lapply -p bin_sonum_path %llvm_ua_anchor %llvm_ir_tools}
+%{lapply -p bin_sonum_path %llvm_ir_tools}
 %{lapply -p bin_sonum_path %llvm_elf_dwarf_tools}
 %{lapply -p bin_sonum_path %llvm_abi_coff_macho_tools}
 %{lapply -p bin_sonum_path %llvm_instr_devel_tools}
-%{lapply -p ghost_ua_bin_link %llvm_ua_anchor %llvm_tools}
-%{lapply -p ghost_ua_bin_link %llvm_ua_anchor %llvm_ir_tools}
-%{lapply -p ghost_ua_bin_link %llvm_elf_dwarf_tools}
-%{lapply -p ghost_ua_bin_link %llvm_abi_coff_macho_tools}
-%{lapply -p ghost_ua_bin_link %llvm_instr_devel_tools}
 
-%{lapply -p man_path %llvm_man}
-%{lapply -p man_path %llvm_bin_utils_man}
-%{lapply -p man_path %llvm_devel_utils_man}
 %{lapply -p man_sonum_path %llvm_man}
 %{lapply -p man_sonum_path %llvm_bin_utils_man}
 %{lapply -p man_sonum_path %llvm_devel_utils_man}
-%{lapply -p ghost_ua_man_link %llvm_man}
-%{lapply -p ghost_ua_man_link %llvm_bin_utils_man}
-%{lapply -p ghost_ua_man_link %llvm_devel_utils_man}
 
 %files -n clang%{_sonum}
 %license clang/LICENSE.TXT
-%{lapply -p bin_path %clang_ua_anchor %clang_binfiles}
-%{lapply -p bin_path %clang_tools_extra_binfiles}
 %{lapply -p bin_sonum_path %clang_ua_anchor %clang_binfiles}
 %{lapply -p bin_sonum_path %clang_tools_extra_binfiles}
-%{lapply -p ghost_ua_bin_link %clang_ua_anchor %clang_binfiles}
-%{lapply -p ghost_ua_bin_link %clang_tools_extra_binfiles}
 
-%{lapply -p man_path %clang_manfiles}
 %{lapply -p man_sonum_path %clang_manfiles}
-%{lapply -p ghost_ua_man_link %clang_manfiles}
 
 %dir %{_libdir}/clang
 %dir %{_libdir}/clang/%{_sonum}
@@ -1792,17 +1723,13 @@ fi
 %if %{with lld}
 %files -n lld%{_sonum}
 %license lld/LICENSE.TXT
-%{lapply -p bin_path %lld_ua_anchor %lld_binfiles}
 %{lapply -p bin_sonum_path %lld_ua_anchor %lld_binfiles}
-%{lapply -p ghost_ua_bin_link %lld_ua_anchor %lld_binfiles}
 %endif
 
 %if %{with lldb}
 %files -n lldb%{_sonum}
 %license lldb/LICENSE.TXT
-%{lapply -p bin_path %lldb_ua_anchor %lldb_binfiles}
 %{lapply -p bin_sonum_path %lldb_ua_anchor %lldb_binfiles}
-%{lapply -p ghost_ua_bin_link %lldb_ua_anchor %lldb_binfiles}
 
 %if %{with lldb_python}
 %files -n python3-lldb%{_sonum}

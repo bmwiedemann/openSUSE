@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 10 21:20:13 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.7.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+
+-------------------------------------------------------------------
+Sun Jun  7 21:34:50 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage will
+  provide symbolic links to the current distro default version.
+
+-------------------------------------------------------------------
 Sun May 31 14:38:46 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.6.

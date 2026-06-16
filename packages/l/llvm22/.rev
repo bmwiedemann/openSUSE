@@ -77,4 +77,17 @@
     This release is API and ABI compatible with 22.1.0.</comment>
     <requestid>1356234</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>7ab4216dc27946d5310442d6ad1ff943</srcmd5>
+    <version>22.1.7</version>
+    <time>1781610346</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 22.1.7.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.
+- Migrate away from update-alternatives. The packages only provide
+  versioned binaries and man pages now. The metapackage wil
+  provide symbolic links to the current distro default version.</comment>
+    <requestid>1358700</requestid>
+  </revision>
 </revisionlist>
