@@ -1,7 +1,7 @@
 #
 # spec file for package gap-gauss
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           gap-gauss
-Version:        2024.11.01
-%define sillyver 2024.11-01
+Version:        2025.12.01
+%define sillyver 2025.12-01
 Release:        0
 Summary:        GAP: Extended Gauss Functionality for GAP
 License:        GPL-2.0-or-later
@@ -27,10 +27,10 @@ URL:            https://homalg-project.github.io/pkg/Gauss
 #Git-Clone:	https://github.com/homalg-project/homalg_project
 #Git-Web:	https://github.com/homalg-project/Gauss
 Source:         https://github.com/homalg-project/homalg_project/releases/download/Gauss-%sillyver/Gauss-%sillyver.tar.gz
-BuildRequires:  gap-devel >= 4.11
+BuildRequires:  gap-devel >= 4.13
 BuildRequires:  gap-rpm-devel
 BuildRequires:  gmp-devel
-Requires:       gap-core >= 4.11.1
+Requires:       gap-core >= 4.13
 Suggests:       gap-gapdoc >= 1.0
 
 %description
