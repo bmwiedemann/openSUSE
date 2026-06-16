@@ -863,4 +863,41 @@
 - Unify first-user and root authentication configuration into a</comment>
     <requestid>1357934</requestid>
   </revision>
+  <revision rev="45" vrev="45">
+    <srcmd5>098c848417df08638cbceee9f48d9b7a</srcmd5>
+    <version>0</version>
+    <time>1781610449</time>
+    <user>anag_factory</user>
+    <comment>- Version 22
+
+- Fix the configuration dialog: keep the JSON preview read-only
+  and avoid the duplicated &quot;.json&quot; extension in the downloaded
+  file name (gh#agama-project/agama#3631).
+
+- Unify some texts with the command-line tools
+  (gh#agama-project/agama#3634).
+
+- Minor text update in the dialog to retry loading the configuration
+  (gh#agama-project/agama#3621).
+
+- Redesing storage forms (format disk, partition and logical
+  volume) and migrate them to TanStack Form
+  (gh#agama-project/agama#3610).
+
+- Standardize form Cancel actions across the application, add a
+  link back to the installation summary in the form submission
+  alerts, and fix empty toast containers blocking the header
+  toolbar (gh#agama-project/agama#3613).
+
+- Redesign the installer header: replace the &quot;Review and Install&quot;
+  button with breadcrumb navigation, show the product and the
+  installer tools (localization, configuration, appearance and
+  status) on every page, and add tooltips, clearer labels and a
+  customizable icon size scale (gh#agama-project/agama#3607).
+
+- Improve retry popup when failed to load unattended profile. It
+  now allows to change URL and also improve its UX.
+  (gh#agama-project/agama#3589)</comment>
+    <requestid>1359654</requestid>
+  </revision>
 </revisionlist>
