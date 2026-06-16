@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:18:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- skip some tests with pycryptography >= 49
+
+-------------------------------------------------------------------
 Thu May 14 12:56:09 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.7.0 (CVE-2026-44432, bsc#1265266, CVE-2026-44431, bsc#1265267):

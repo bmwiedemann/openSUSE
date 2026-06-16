@@ -989,4 +989,12 @@
     were passed to HTTPConnectionPool.urlopen(). (#3352)</comment>
     <requestid>1353180</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>e4b864a45399953007883af8504eafff</srcmd5>
+    <version>2.7.0</version>
+    <time>1781627356</time>
+    <user>anag_factory</user>
+    <comment>- skip some tests with pycryptography &gt;= 49</comment>
+    <requestid>1359736</requestid>
+  </revision>
 </revisionlist>
