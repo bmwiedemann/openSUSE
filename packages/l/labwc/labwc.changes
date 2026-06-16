@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:39:02 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to version 0.20.1:
+  * Bug fix release:
+  https://github.com/labwc/labwc/releases/tag/0.20.1
+
+- Update to version 0.20.0:
+  * Release changelog:
+  https://github.com/labwc/labwc/releases/tag/0.20.0
+  * Noteworthy highlights *
+  * Add support for HDR10 output
+  * Implement menu accelerators (one-letter mnemonics to quickly 
+  select/exec items from the current menu)
+  * Install labwc-session.target systemd user unit when the systemd
+  dependency is available 
+  * Add action ToggleShowDesktop to hide/unhide windows
+  * Add support for color-management-v1 and 
+  color-representation-manager-v1
+
+-------------------------------------------------------------------
 Sun Mar 15 21:30:07 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.9.6:

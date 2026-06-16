@@ -2,7 +2,7 @@
 # spec file for package labwc
 #
 # Copyright (c) 2026 mantarimay
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define slname  libsfdo
 %define slver   0.1.4
 Name:           labwc
-Version:        0.9.6
+Version:        0.20.1
 Release:        0
 Summary:        A Wayland window-stacking compositor
 License:        GPL-2.0-only
@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb)
 BuildRequires:  pkgconfig(xwaylandproto)
 %else
-BuildRequires:  pkgconfig(wlroots-0.19)
+BuildRequires:  pkgconfig(wlroots-0.20)
 %endif
 %if %{with xwayland}
 BuildRequires:  pkgconfig(xcb-errors)
@@ -73,6 +73,7 @@ BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(wayland-server)
 BuildRequires:  pkgconfig(xkbcommon)
@@ -135,6 +136,7 @@ install -Dm 0644 docs/*.xml -t %{buildroot}%{_sysconfdir}/xdg/%{name}/
 %{_mandir}/man?/%{name}*.?%{?ext_man}
 %{_mandir}/man?/labnag*.?%{?ext_man}
 %{_datadir}/doc/%{name}/
+%{_userunitdir}/%{name}-session.target
 
 %files lang -f %{name}.lang
 
