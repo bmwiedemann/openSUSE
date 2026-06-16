@@ -17,7 +17,7 @@
 
 
 Name:           alsa-ucm-conf
-Version:        1.2.16
+Version:        1.2.16.1
 Release:        0
 Summary:        ALSA UCM Profiles
 License:        BSD-3-Clause
