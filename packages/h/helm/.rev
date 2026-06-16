@@ -1202,4 +1202,12 @@ See changelog in:
     <comment>- update golang/x/net to v0.55.0 (bsc#1266598, CVE-2026-39821)</comment>
     <requestid>1355483</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>780f20123c19430a51023c4ac8a089d2</srcmd5>
+    <version>4.2.1</version>
+    <time>1781611069</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359670</requestid>
+  </revision>
 </revisionlist>
