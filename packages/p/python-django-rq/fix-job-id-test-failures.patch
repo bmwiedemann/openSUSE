@@ -1,0 +1,24 @@
+From 7aa920acd594cc89210749de6415a4a24d30e5b5 Mon Sep 17 00:00:00 2001
+From: Selwin Ong <selwin.ong@gmail.com>
+Date: Sun, 26 Apr 2026 21:46:28 +0800
+Subject: [PATCH] Fix job ID test failure (#786)
+
+---
+ tests/test_views.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/test_views.py b/tests/test_views.py
+index baacb85b..b098528b 100644
+--- a/tests/test_views.py
++++ b/tests/test_views.py
+@@ -335,8 +335,8 @@ def test_scheduled_jobs(self):
+         response = self.client.get(reverse('admin:django_rq_scheduled_jobs', args=[queue_index]))
+         self.assertEqual(response.context['jobs'], [job])
+ 
+-        # Test that page doesn't crash when job_id has special characters (exclude :)
+-        queue.enqueue_at(datetime.now(), access_self, job_id="job-!@#$%^&*()_=+[]{};',.<>?|`~")
++        # Test that page doesn't crash when job_id contains allowed non-alphanumeric characters.
++        queue.enqueue_at(datetime.now(), access_self, job_id="job-with_allowed-chars_123")
+         response = self.client.get(reverse('admin:django_rq_scheduled_jobs', args=[queue_index]))
+         self.assertEqual(response.status_code, 200)
+ 

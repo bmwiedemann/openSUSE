@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 12:06:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-job-id-test-failures.patch, to fix tests with
+  latest python-req. gh#rq/django-rq@7aa920acd594
+
+-------------------------------------------------------------------
 Sun Apr 19 15:58:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1:

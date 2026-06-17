@@ -156,4 +156,12 @@ already being maintained over a long period by https://build.opensuse.org/users/
     SSL connections. Thanks @selwin!</comment>
     <requestid>1348052</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>bfa5544e17458d8cc06491ae558454cc</srcmd5>
+    <version>4.1</version>
+    <time>1781706484</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1360041</requestid>
+  </revision>
 </revisionlist>
