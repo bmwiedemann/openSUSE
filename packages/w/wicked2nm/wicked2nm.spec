@@ -23,6 +23,7 @@ License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/wicked2nm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  cargo >= 1.78
 BuildRequires:  cargo-packaging
 ExclusiveArch:  %{rust_arches}
 

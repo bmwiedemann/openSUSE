@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:15:52 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Require minimum cargo version 1.78 for lockfile version 4 parsing
+
+-------------------------------------------------------------------
 Tue May 12 15:58:32 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update v1.5.0

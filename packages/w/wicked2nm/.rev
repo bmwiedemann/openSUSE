@@ -106,4 +106,12 @@
 - Reenable `update` in cargo vendor service</comment>
     <requestid>1352790</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>5673baed2d9fd8da5b70370a84d55922</srcmd5>
+    <version>1.5.0</version>
+    <time>1781705870</time>
+    <user>anag_factory</user>
+    <comment>- Require minimum cargo version 1.78 for lockfile version 4 parsing</comment>
+    <requestid>1359737</requestid>
+  </revision>
 </revisionlist>
