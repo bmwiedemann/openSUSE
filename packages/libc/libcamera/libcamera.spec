@@ -29,7 +29,7 @@
 %bcond_with    signed_ipa
 
 Name:           libcamera%extname
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -177,7 +177,7 @@ Python bindings for libcamera.
 %if "@BUILD_FLAVOR@" != ""
 	-Dqcam=enabled \
 %else
-	-Dqcam=disabled \
+	-Dqcam=disabled -Dcam-output-sdl2=disabled \
 %endif
 	-Drpi-awb-nn=disabled \
 	-Dv4l2=false -Dtracing=disabled \
@@ -207,6 +207,7 @@ rm -v usr/bin/cam
 
 %files devel
 %license LICENSES/*GPL*
+%_bindir/libcamera-bug-report
 %_includedir/libcamera/
 %_libdir/libcamera-base.so
 %_libdir/libcamera.so

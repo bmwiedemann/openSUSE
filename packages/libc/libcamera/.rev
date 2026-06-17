@@ -296,4 +296,12 @@
     <comment>- Add libcamera-ov02e10-initial-support.patch</comment>
     <requestid>1349817</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>319d781764634cf3879d57db082a5fcf</srcmd5>
+    <version>0.7.1</version>
+    <time>1781705789</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.7.1</comment>
+    <requestid>1359702</requestid>
+  </revision>
 </revisionlist>

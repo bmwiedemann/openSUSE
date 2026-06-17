@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 15 17:33:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.1
+  * The software now uses the C++20 dialect.
+  * The "SoftISP" now supports multi-threaded Debaying.
+  * Improved the RKISP1 IPA and Mali-C55 hardware specific code,
+    including for enabling cmaera support on Renesas RZ/V2H and
+    RZ/V2NP platforms.
+
+-------------------------------------------------------------------
 Sun Apr 26 18:27:42 UTC 2026 - Marcel Berger <marbe@gmx.de>
 
 - Add libcamera-ov02e10-initial-support.patch
