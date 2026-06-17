@@ -28,7 +28,7 @@ RUN set -euo pipefail; \
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf {/target,}/run/*; \
+    rm -rf /target/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
@@ -59,7 +59,7 @@ LABEL usage="This container should only be used on a FIPS-140-3-enabled host (fi
 RUN set -euo pipefail; fips-mode-setup --enable --no-bootcfg
 RUN set -euo pipefail; rpm -e crypto-policies-scripts libpython3_13-1_0 python313-base update-bootloader
 RUN set -euo pipefail; rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf {/target,}/run/*; \
+    rm -rf /target/run/*; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
