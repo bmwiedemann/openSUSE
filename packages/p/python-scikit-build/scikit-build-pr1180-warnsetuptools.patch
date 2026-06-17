@@ -1,0 +1,21 @@
+From e1c0d6786268299e1e2645c0193c852cf2f5756d Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <HenrySchreinerIII@gmail.com>
+Date: Mon, 4 May 2026 12:55:12 -0400
+Subject: [PATCH 4/5] Add warning ignore for cmake-example version
+
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+Index: scikit_build-0.19.0/pyproject.toml
+===================================================================
+--- scikit_build-0.19.0.orig/pyproject.toml
++++ scikit_build-0.19.0/pyproject.toml
+@@ -185,6 +185,7 @@ filterwarnings = [
+   'ignore:pkg_resources is deprecated as an API:DeprecationWarning',
+   'ignore:onerror argument is deprecated, use onexc instead:DeprecationWarning',  # Caused by wheel and Python 3.12
+   'ignore:(ast.Str|Attribute s|ast.NameConstant|ast.Num) is deprecated:DeprecationWarning:_pytest',
++  "ignore:No GlobalOverrides context is active:UserWarning",  # Caused by setuptoools-scm 9+ being installed
+ ]
+ log_level = "INFO"
+ markers = [

@@ -27,17 +27,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
-Version:        0.18.1
+Version:        0.19.0
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
-# PATCH-FIX-UPSTREAM scikit-build-pr1120-upddistutils.patch gh#scikit-build/scikit-build#1120
-Patch0:         scikit-build-pr1120-upddistutils.patch
-# PATCH-FIX-OPENSUSE Support newer cmake
-Patch1:         support-new-cmake.patch
+# PATCH-FIX-UPSTREAM scikit-build-pr1180-warnsetuptools.patch gh#scikit-build/scikit-build#1180
+Patch0:         scikit-build-pr1180-warnsetuptools.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
@@ -51,9 +49,6 @@ Requires:       python-distro
 Requires:       python-packaging
 Requires:       python-setuptools >= 42.0.0
 Requires:       python-wheel >= 0.32.0
-%if %{python_version_nodots} < 38
-Requires:       python-typing-extensions >= 3.7
-%endif
 %if %{python_version_nodots} < 311
 Requires:       python-tomli
 %endif
@@ -61,7 +56,6 @@ Requires:       python-tomli
 # Note: When tests fail try `osc build ---clean` in order to get rid of remnant numpy typing stubs in $HOME
 BuildRequires:  %{python_module Cython >= 0.25.1}
 BuildRequires:  %{python_module build >= 0.7}
-BuildRequires:  %{python_module importlib-metadata if %python-base < 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.21}
 BuildRequires:  %{python_module pytest >= 6.0.0}
 BuildRequires:  %{python_module pytest-mock >= 1.10.4}
@@ -80,7 +74,7 @@ BuildArch:      noarch
 Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
-%autosetup -p1 -n scikit_build-%{version}
+%autosetup -n scikit_build-%{version}
 %if %{with test}
 # some tests call setup.py develop|install|test, which by default write to /usr
 # This is not allowed in OBS
@@ -114,7 +108,7 @@ donttestmarker+=" or nosetuptoolsscm"
 
 %if !%{with test}
 %files %{python_files}
-%doc AUTHORS.rst README.rst CONTRIBUTING.rst docs/
+%doc CHANGES.rst README.rst docs/
 %license LICENSE
 %{python_sitelib}/skbuild
 %{python_sitelib}/scikit_build-%{version}.dist-info

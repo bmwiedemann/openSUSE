@@ -308,4 +308,34 @@ This is for updated setuptools in Staging:B</comment>
     <comment>- Do not test 'setup.py develop'.</comment>
     <requestid>1333833</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2bb10c7da3c76406742cfacf82f0dff0</srcmd5>
+    <version>0.19.0</version>
+    <time>1781710873</time>
+    <user>anag_factory</user>
+    <comment>- Add scikit-build-pr1180-warnsetuptools.patch
+  gh#scikit-build/scikit-build#1180
+
+- update to 0.19.0:
+  * Drop Python 3.7 in :pr:`1134`
+  * Update for newer setuptools in :pr:`1120`
+  * setuptools_wrap.py: parse CMAKE_ARGS with shlex.split like
+    elsewhere by :user:`haampie` in :pr:`1126`
+  * Drop dry-run (removed in setuptools) in :pr:`1166`
+  * Ensure generic f2py executable is looked up first by
+    :user:`smiet` in :pr:`1111`
+  * Support Python 3.14 in CI in :pr:`1167`
+  * pytest log_level is better than log_cli_level in :pr:`1164`
+  * Bot suffix now required for changelog filtering in :pr:`1168`
+- drop scikit-build-pr1120-upddistutils.patch,
+  support-new-cmake.patch: upstream
+
+- Update to version 0.11.1
+    and gh#scikit-build/scikit-build#488.
+- Changelog for version 0.11.0
+- Remove obsolete patches
+- back to sitelib
+- cleaned up spec using spec-cleaner</comment>
+    <requestid>1360069</requestid>
+  </revision>
 </revisionlist>
