@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 16 23:57:19 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.9
+  * Added track waypoints display option.
+  * Major GUI polishing on macOS.
+  * Minor GUI polishing on other platforms.
+  * GeoTIFF images on Windows now support JPEG compression like on
+    Linux.
+
+-------------------------------------------------------------------
+Sun Jun  7 09:57:03 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.8
+  * Fixed broken non-UTF encodings(codepage) handling on macOS.
+  * Fixed missing Qt(system) localization/translations on macOS.
+  * Adjusted the macOS App icon to the platform’s visual language.
+  * Now using macos-26/Xcode 26.4.1 for the macOS builds.
+
+-------------------------------------------------------------------
 Fri May 15 22:37:29 CEST 2026 - tumic@gpxsee.org
 
 - Update to version 16.7

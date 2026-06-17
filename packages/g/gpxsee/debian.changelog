@@ -1,3 +1,22 @@
+gpxsee (16.9) stable; urgency=low
+
+  * Added track waypoints display option.
+  * Major GUI polishing on macOS.
+  * Minor GUI polishing on other platforms.
+  * GeoTIFF images on Windows now support JPEG compression like on
+    Linux.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Tue, 16 Jun 2026 23:59:00 +0200
+
+gpxsee (16.8) stable; urgency=low
+
+  * Fixed broken non-UTF encodings(codepage) handling on macOS.
+  * Fixed missing Qt(system) localization/translations on macOS.
+  * Adjusted the macOS App icon to the platform’s visual language.
+  * Now using macos-26/Xcode 26.4.1 for the macOS builds.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sun, 07 Jun 2026 10:00:12 +0200
+
 gpxsee (16.7) stable; urgency=low
 
   * Request media location permissions on Android when needed.
