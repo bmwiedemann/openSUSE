@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Wed Jun 10 07:48:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.0.5:
+  4.0.5 (released 18.05.2026)
+    * [Security] Fix generation of files and directories outside
+      the given extraction directory when extracting TAR (.tar) archives
+      with the Python tarfile module for Python < 3.12.
+    * [Feature] Expose the format option in CLI and API to bypass automatic
+      format detection, ie. "patool list archive --format 7z".
+      Thanks jpsnyder for the patch and pull request.
+  4.0.4 (released 19.01.2026)
+    * Do not propagate log messages.
+      Thanks MatteoH2O1999 for the bug report and suggested fix.
+      Closes: GH bug #187
+    * Updated dev dependencies, now requires Python >= 3.12
+  4.0.3 (released 11.12.2025)
+    * Added support for FREEARC (.arc) archives. Peazip can create and extract these.
+    * Set SOURCE_DATE_EPOCH to latest git commit date instead of zero.
+      Fixes test failures on some platforms.
+      Closes: GH bug #186
+    * Updated dev dependencies
+  4.0.2 (released 14.10.2025)
+    * Allow stdin when interactive mode is requested.
+      Closes: GH bug #184
+    * Use the Python module "compression.zstd" for Python version >= 3.14 to
+      extract and create ZSTD (.zst) files.
+    * Updated dev dependencies
+    * Replace pytype type checks with ty
+    * Added Python 3.14 to the test matrix
+  4.0.1 (released 02.05.2025)
+    * Updated dev dependencies; support reproducible builds with setuptools_reproducible.
+    * Fix command options for star.
+      Thanks Robert-André Mauchin for the patch!
+  4.0.0 (released 28.02.2025)
+    * Detect and use archive programs from Peazip installations.
+      Closes: GH bug #51
+    * Require Python >= 3.11
+  3.1.3 (released 15.02.2025)
+    * Expand rar detection logic to all 7zip programs
+      Thanks Alfred Wingate for the patch!
+    * Detect if 7zip programs support COMPRESS (.Z) archives, since 7za 24.09 does not support it anymore.
+      This fixes test errors on newer Ubuntu systems.
+  3.1.2 (released 14.02.2025)
+    * Add workaround for an error using uv publish.
+  3.1.1 (released 14.02.2025)
+    * Improved RAR support detection for the 7-Zip archiver.
+      Closes: GH bug #175, #176
+    * Enable file(1) detection of ALZ archives, and improved handling of RAR detection for file 5.46.
+      Thanks Alfred Wingate for the patches!
+  3.1.0 (released 19.11.2024)
+    * Added support for UDF (.udf) archives with 7z.
+      Closes: GH bug #80
+    * The options --quiet and --verbose are now mutually exclusive options.
+    * When --quiet is given twice, output on stderr from archive commands is 
+      suppressed. When using the API functions, set verbosity to -2.
+  3.0.3 (released 04.11.2024)
+    * Fix UnicodeDecode errors when logging, especially on windows systems.
+      Closes: GH bug #170
+    * Added support for WIM (windows image) archives with 7z.
+    * If the MIME database cannot detect the file type, check again with a lowercase filenanme extension.
+    * Use 7z option -aou to rename files when extracting instead of overwriting them.
+    * Use rar option -or to rename files when extracting instead of overwriting them.
+    * Use rar option -kb to keep files when extracting broken RAR archives.
+  3.0.2 (released 21.10.2024)
+    * When running in verbose mode (-vv), print mime and compression info.
+    * Use official github command line client "gh" for releases.
+    * Added type annotations.
+  3.0.1 (released 06.10.2024)
+    * Use more uv command to replace other build tools, ie. twine.
+    * Add new --quiet option to suppress command output.
+    * Document that Windows needs a file program to be able to determine file types without extensions.
+      Closes: GH bug #152
+  3.0.0 (released 25.09.2024)
+    * When a program does not support a compression type, try to find other programs instead of failing.
+      This changes some library functions which are not part of the official API, but might be used by
+      other programs, hence the major version upgrade.
+      Thanks to github user benjaminwinger for the idea and initial patch!
+      Closes: GH bug #87
+    * Better detection for tar programs which compression is supported.
+      Closes: GH bug #86
+    * The Python module "tarfile" supports LZMA and XZ compressed archives.
+      Added tests for these archive formats (.tar.lzma and .tar.xz).
+    * Do not print program output when running with verbosity=-1.
+      Closes: GH bug #157
+  2.4.0 (released 21.08.2024)
+    * Document that patool extracts the archive for the search and repack commands.
+      Closes: GH bug #154
+    * Add supported_formats() API function listing supported formats and operations
+      for each format.
+      Idea and patch by github user nohr-ai, thanks!
+  2.3.0 (released 26.06.2024)
+    * Add linting check to github workflow CI.
+      Idea and patch by sorairolake, thanks!
+    * Format the python code with ruff, and
+      add a check to github workflow CI.
+      Idea and initial patch by sorairolake, thanks!
+      Closes: GH bug #151
+    * Support tar --zstd for extracting TAR archives compressed with ZSTANDARD.
+      Closes: GH bug #162
+    * Use locale.getpreferredencoding() instead of sys.stderr.encoding for
+      logging output encoding.
+      Closes: GH bug #158
+  2.2.0 (released 14.02.2024)
+  * Improved detection when running under pythonw.exe.
+    Also fixes the output problems on Windows systems.
+    Closes: GH bug #147, #142
+  * Document API functions.
+  2.1.1 (released 26.01.2024)
+  * Added support for 7zz and 7zzs programs from the Linux-specific release
+    of 7-Zip.
+    Closes: GH bug #145
+  2.1.0 (released 17.01.2024)
+  * Document all functions and modules, and add linting rule for it.
+  * Remove spaces between function and argument list
+    Closes: GH bug #100
+  * Log warnings when subprocesses in utility functions return errors
+    that are ignored.
+  * Fix a TypeError when using unar with passwords.
+    Thanks to Kevin Matt for the patch.
+    Closes: GH bug #144
+  * Catch errors when using file --uncompress on system which do not support this.
+    Closes: GH bug #141
+  2.0.0 (released 14.11.2023)
+  * Require Python >= 3.10
+  * Use Python logging module instead of print() for diagnostic output.
+    Diagnostic output of patool will now be printed on stderr instead of
+    stdout.
+    This change is the reason for the major version number increase.
+    Closes: GH bug #37
+  * Support the jar program to list and extract ZIP archives.
+  * Do not use the -v option when extracting or testing ZIP archives
+    with unzip, since -v lists files instead of printing verbose output.
+    Closes: GH bug #49
+  * Use the -sae option for 7z to use the provided archive name.
+    Closes: GH bug #72
+  * Add error message about temporary directory when extraction fails.
+    Closes: GH bug #57
+  * Removed the recompress command.
+  * Use the new filter option when extracting TAR archives with the tarfile
+    module in Python >= 3.12 to detect unsafe archive entries.
+  * Added new command "patool version" to print version information.
+  * Do not use maximum compression anymore, the default settings should
+    be good enough for our standard use case.
+  * Restore original file name for GZIP (.gz) archives.
+    Closes: GH bug #67
+  1.15.0 (released 28.10.2023)
+  * Added support for LZ4 archives with the lz4 tool.
+    Closes: GH bug #46
+  * Use correct registry key flag for 32-bit Python on 64-bit Windows
+    when detecting 7z.
+    Closes: GH bug #35
+  * Fix configuration for listing .bz2 and .bz3 archives.
+  * Added support for the unar program which can extract a lot of
+    archive formats, for example ZIP, RAR, 7Z, TAR, GZIP, BZIP2 etc.
+    Closes: GH bug #39
+  * Document how to enable bash completion.
+    Closes: GH bug #127
+  1.14.1 (released 26.10.2023)
+  * Fix wrong option in bzip3, and add tests.
+    Closes: GH bug #134
+  * Create non-existing directories when using the --outdir option
+    with patool extract.
+    Closes: GH bug #117, #132
+  * Ensure log output does not have a UnicodeEncodeError
+    Closes: GH bug #122, #121, #52, #29
+  * Don't open new console windows for subprocesses on Windows.
+    Closes: GH bug #85
+  * Use 7z to extract, list and test CHM (.chm) archives.
+    Closes: GH bug #78
+  1.14.0 (released 25.10.2023)
+  * Test if tar supports --force-local on macOS systems.
+    Closes: GH bug #125
+  * Enable archive header encryption for 7z
+    Thanks to Michael Serajnik for the initial patch.
+    Closes: GH bug #102
+  * Added support for BZIP3 archives with the bzip3 tool.
+    Closes: GH bug #129
+  * Fix Windows tar doesn't use --force-local
+    Thanks to Jack Cherng for the patch.
+  * Include tests data in the source distribution.
+    Thanks to Alfred Wingate for the patch.
+  1.13 (released 24.10.2023)
+  * Added support for ZSTANDARD archives with the zstd tool.
+  * Improved patool diff output: when two archives each have
+    only one entry, compare those entries directly instead of
+    the parent directory.
+  * Replace deprecated distutils with setuptools to fix build errors
+    with modern Python environments.
+    Closes: GH bug #114, #103
+  * Disable password prompting with 7z in non-interactive mode with
+    the option "-p-".
+    Thanks to Pascua Theus for the patch.
+  * Disable sandbox mode for file(1) to fix detection of compressed tar
+    archives on systems with libseccomp.
+    Thanks to Alfred Wingate for the patch.
+  * Remove read-only directories after a diff comparison of two archives.
+    Thanks to c01o for the patch.
+- remove the bash-completion subpackage, as upstream no longer contains
+  the files
+
+-------------------------------------------------------------------
 Fri May 14 15:13:58 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix up dependency of -bash-completion subpackage:

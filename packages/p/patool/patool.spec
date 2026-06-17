@@ -2,7 +2,7 @@
 #
 # spec file for package patool
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,19 +19,23 @@
 
 
 Name:           patool
-Version:        1.12
+Version:        4.0.5
 Release:        0
 Summary:        Portable Command Line Archive File Manager
 License:        GPL-3.0-or-later
 Group:          Productivity/Archiving/Compression
 URL:            https://github.com/wummel/patool
-Source:         https://github.com/wummel/patool/archive/upstream/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  bash-completion
+Source:         https://github.com/wummel/patool/releases/download/%{version}/patool-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base >= 3.11
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildArch:      noarch
+
+# upstream no longer provides a bash completion file
+Obsoletes:      %{name}-bash-completion
+Provides:       %{name}-bash-completion
 
 %description
 patool is a portable command line archive file manager. Various archive types
@@ -48,19 +52,8 @@ RPM (.rpm), RAR (.rar), TAR (.tar), XZ (.xz), and ZIP (.zip, .jar) formats.
 
 It relies on helper applications to handle those archive formats.
 
-%package bash-completion
-Summary:        Bash Completion for patool
-Group:          Productivity/Archiving/Compression
-Requires:       %{name}
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-
-%description bash-completion
-This package contains bash completion for patool, a portable command line
-archive file manager.
-
 %prep
-%setup -q -n patool-upstream-%{version}
+%autosetup -n patool-%{version}
 
 %build
 %python3_build
@@ -68,16 +61,10 @@ archive file manager.
 %install
 %python3_install
 %fdupes %{buildroot}
-install -Dpm 0644 patool.bash-completion \
-  %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 
 %files
 %doc COPYING doc/*.txt
 %{_bindir}/patool
 %{python3_sitelib}/*
-%{_mandir}/man1/patool.1%{ext_man}
-
-%files bash-completion
-%{_datadir}/bash-completion/completions/%{name}
 
 %changelog
