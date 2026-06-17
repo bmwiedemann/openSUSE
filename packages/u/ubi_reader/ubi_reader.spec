@@ -1,8 +1,8 @@
 #
 # spec file for package ubi_reader
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2018-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,24 @@
 #
 
 
-%define pythons python3
+%define primary_python python313
+%define pythons %{primary_python}
 Name:           ubi_reader
-Version:        0.8.12
+Version:        0.8.14
 Release:        0
 Summary:        Extract files from UBI and UBIFS images
 License:        LGPL-3.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/onekey-sec/ubi_reader
 Source:         https://github.com/onekey-sec/ubi_reader/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
+BuildRequires:  %{primary_python}
+BuildRequires:  %{primary_python}-pip
+BuildRequires:  %{primary_python}-poetry
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       %{primary_python}-cryptography
+Requires:       %{primary_python}-lzallright
+Requires:       %{primary_python}-zstandard
 BuildArch:      noarch
 
 %description

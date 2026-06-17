@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jun 17 07:00:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.14
+  * fix: handle negative node read size in ubifs walk.
+  * Fix master node error #126
+  * feat: add support for zstd compressed inodes #131
+
+-------------------------------------------------------------------
+Fri Feb 20 14:17:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.13
+  * Update output.py to support timestamp for symbolic link.
+  * refactor: moved duplicated function _process_reg_file to misc,
+    remove ...
+  * Add type hints to the codebase.
+  * drop support for python 3.9.
+  * Allow ubireader_list_files to recursively list files under
+    a path.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:31:58 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.8.12
