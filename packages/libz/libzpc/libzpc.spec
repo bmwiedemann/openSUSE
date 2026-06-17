@@ -1,7 +1,7 @@
 #
 # spec file for package libzpc
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,31 @@
 
 
 Name:           libzpc
-Version:        1.5.0
+Version:        2.0.0
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
-Source:         https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
+Source0:        https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
+Source1:        libzpc-man-%{version}.tar.gz
+
+BuildRequires:  clang
 BuildRequires:  cmake >= 3.10
-BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
-BuildRequires:  texlive-bibtex-bin
+
+BuildRequires:  pkgconfig(libcrypto) >= 3.0.7
+BuildRequires:  pkgconfig(libssl) >= 3.0.7
+
 ExclusiveArch:  s390x
+
+# Upgrade path handling for v2.0.0 architectural split.
+# The current architecture of libzpc 2.0.0
+# does not support a development package.
+### Obsoletes:      libzpc1 < %%{version}-%%{release}
+### Obsoletes:      libzpc-devel < %%{version}-%%{release}
+### Provides:       libzpc = %%{version}-%%{release}
 
 %description
 The IBM Z Protected-key Crypto library libzpc is a library targeting
@@ -39,48 +51,29 @@ z/Architecture's performance-boosting hardware support and its
 protected-key feature which ensures that key material is never present
 in main memory at any time.
 
-%package -n libzpc1
-Summary:        IBM Z Protected-key Crypto library
-Group:          System/Libraries
-
-%description -n libzpc1
-This package contains the shared library to work with the
-IBM protected-key cryptography hardware
-
-%package devel
-Summary:        Header files for the IBM Z Protected-key Crypto library
-Group:          Productivity/Security
-Requires:       libzpc1 = %{version}-%{release}
-
-%description devel
-This package provides the header files and symbolic link to the
-shared library for the libzpc RPM.
-
 %prep
 %autosetup -p1
 
 %build
-%cmake -DBUILD_DOC=ON
+%cmake -DBUILD_DOC=OFF
 %make_build
 
 %install
 cd build
+# Create dummy files so the installer doesn't crash when BUILD_DOC=OFF
+touch zpckey.1 hbkzpcprovider.conf.5 hbkzpcprovider.7
 %make_install
 
-%post -n libzpc1 -p /sbin/ldconfig
+# Overwrite the dummy files with the real pre-generated man pages
+tar -xzf %{SOURCE1} -C %{buildroot}%{_datadir}/
 
-%postun -n libzpc1 -p /sbin/ldconfig
-
-%files -n libzpc1
-%doc README.md
+%files
 %license LICENSE
-%{_libdir}/%{name}.so.1
-%{_libdir}/%{name}.so.%{version}
-
-%files devel
-%dir %{_includedir}/zpc
-%{_includedir}/zpc/*.h
-%{_libdir}/%{name}.so
-%{_libdir}/pkgconfig/%{name}.pc
+%doc README.md
+%{_bindir}/zpckey
+%{_libdir}/ossl-modules/zpcprovider.so
+%{_mandir}/man1/zpckey.1*
+%{_mandir}/man5/hbkzpcprovider.conf.5*
+%{_mandir}/man7/hbkzpcprovider.7*
 
 %changelog
