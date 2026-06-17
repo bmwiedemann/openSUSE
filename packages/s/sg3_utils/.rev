@@ -708,4 +708,38 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
     <comment>merged SLFO:Main code into factory, no code changes</comment>
     <requestid>1338079</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>abb6d89e3e17fdac95dd854ff10e965b</srcmd5>
+    <version>1.48+35.c49e7c08</version>
+    <time>1781705809</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.48+35.c49e7c08:
+  * configure.ac: reset version to 1.48
+
+- Update to version 1.48+34.3c93ead5
+- sg_inq: --export output conformance for SCSI name string and ATA fields (github: PR #83)
+  (bsc#1267823, gh#doug-gilbert/sg3_utils#83)
+- Upstream fixes backported (bsc#1268201):
+  * sg_logs: correct tape Device statisitics lpage [0x14] serial number parameters [0x40 and 0x41] per https://github.com/doug-gilbert/sg3_utils/issues/45
+  * sg_wr_mode: fix --contents and --cfile= handling; https://github.com/doug-gilbert/sg3_utils/issues/40
+  * rescan-scsi-bus.sh: github issue #76 a few shellcheck fixes; scsi_logging_level: add MIT license Xose Vazquez Perez; sg_ses: restore some help text, github PR #79 Paul Evans
+  * sg_ses: re-add help description lost in v1.48 restructure
+  * utils/hxascdmp: sprintf --&gt; snprintf [From: orbisai0security &lt;mediratta01.pally@gmail.com&gt;]
+  * rescan-scsi-bus.sh: fix broken command existence checks for dmsetup and multipath
+  * rescan-scsi-bus.sh: quote $id_serial in findmultipath call
+  * sg_copy_results: bound device-reported sense data length to buffer size
+  * sg_xcopy: fix undefined behaviour and out-of-bounds read
+  * sginfo: set MODE SENSE(10) response length to buffer size
+  * sg_vpd_vendor: fix buffer overflows from device-controlled data
+  * rescan-scsi-bus.sh: Immediately check removable in testonline()
+  * rescan-scsi-bus.sh Replace 'which' with build in 'command -v'
+  * rescan-scsi-bus.sh Correctly read RMB bit on enquiry
+  * sg_ses: fixed AES EI validation when EIIOE=1
+  * sg_logs: Fix parameter lengths in show_data_compression_page
+  * configure.ac: Fix the getrandom() test
+  * [PATCH 2/2] ci: Use the latest version of the Android NDK
+  * [PATCH 1/2] Unbreak the Android build
+  * sg_inq: fix indentation in std_inq_decode sgj_pr_hr strings (match main)</comment>
+    <requestid>1359746</requestid>
+  </revision>
 </revisionlist>
