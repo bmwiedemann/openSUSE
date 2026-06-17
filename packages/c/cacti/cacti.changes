@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:46:13 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git0.1e8eaca2:
+  * Prepare for 1.2.31 release
+  * chore:Remove entry from CHANGELOG from PHP deprecation (#7207)
+  * Fix: #6945 PHP 8.5 Deprecation Warning (#7205)
+  * fix #7202 uninstalling plugins may leave orphan entries in tables (#7203)
+  * fix 7199 - import color (#7201)
+  * hardening(1.2.x): input validation, path containment, and auth boundary tightening (#7194)
+  * security(hardening): cacti_form_action_label() and html_escape graph_list (1.2.x) (#7171)
+  * fix(rrdcheck): RRA comparison and info-parse correctness (#7184)
+  * fix(test): align OrderBySessionHardeningTest with shipped get_order_string (#7185)
+  * fix(rrd): correctness fixes in graph rendering and rrdtool output handling (#7183)
+  * fix(sanitize_uri): stop stripping URL-valid chars (+ ( ) |) from query strings (#7182)
+  * fix(poller): coerce invalid SCRIPT/SCRIPT_PHP output to U in cmd.php (#7180)
+  * security(hardening): escape SNMP trap notification arguments per-arg (#7179)
+  * fix(security): anchor thumbnails filter and parameterize header-node query (#7176)
+
+-------------------------------------------------------------------
 Mon Jun  1 13:36:05 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Update to version 1.2.30+git457.e55c2aea:
@@ -28,28 +47,6 @@ Thu May 14 15:10:25 UTC 2026 - obs@mtlfab.com
   * fix: Minor wording missed in last pull (#7144)
   * Data input push issues (#7143)
   * fix: cacti_input_string_is_safe rejected quoted and digit-suffixed placeholders (#7130)
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
   * Update translation files
   * fix(poller-cache): four integrity bugs in lib/utility.php (#7134)
   * Checkbox defaults and unsafe metachars (#7141)
@@ -86,54 +83,8 @@ Thu May 14 15:10:25 UTC 2026 - obs@mtlfab.com
   * fix: Reduce navigation nonces (#7087)
   * security: CVE In tree rules interface (#7086)
   * fix: Add nonces to script tags (#7085)
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
   * fix: Adjust placement and wording, update cacti.pot (#7079)
   * security(csp): nonce mode behind config flag + 3-page pilot + tests (1.2.x) (#7071)
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
-  * Update translation files
   * feat(security): architectural security helpers — eliminate vulnerability classes at root (#7054)
   * docs(changelog): add 12 CVE-2026 security entries resolved in 1.2.31 (#7059)
 
@@ -192,10 +143,6 @@ Tue Apr 21 20:28:22 UTC 2026 - obs@mtlfab.com
   * security: harden SQL query construction against injection (1.2.x backport) (#6897)
   * security: fix XSS, path traversal, open redirect, and IDOR (1.2.x backport) (#6899)
   * security: fix unsafe deserialization in managers.php (1.2.x backport) (#6898)
-  * Update translation files
-  * Translated using Weblate (Swedish)
-  * Update translation files
-  * Translated using Weblate (Swedish)
   * Update translation files
   * Translated using Weblate (Swedish)
   * fix(1.2.x): correct codespell-detected spelling errors in PHP source files (#6808)
