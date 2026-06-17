@@ -360,4 +360,12 @@
 Should be clean now that https://build.opensuse.org/requests/1335341 has been accepted. </comment>
     <requestid>1335483</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>56a1a75cf1fc054b39ad96324da57911</srcmd5>
+    <version>1.2.31</version>
+    <time>1781705998</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359830</requestid>
+  </revision>
 </revisionlist>

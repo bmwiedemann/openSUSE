@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:03:50 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- cacti-spine1.2.31
+  * issue#365: Removing Backtrace Support
+  * issue#366: Failing to actually a poll device that returns "NoSuchObject"
+  * issue#370: Errors experienced with very long OIDs
+  * issue#373: Spine SNMPv3 SHA-512 auth doesn't work
+  * issue#374: Error DES is no longer supported on this system
+  * issue#383: Spine returns Segmentation fault
+  * issue#384: ICMP Buffer overflows on Debian/Unbuntu related recvfrom() calls
+  * issue: Clear up a few very minor leaks in spine
+- Removed cacti-spine-gcc15.patch. no longer needed.
+
+-------------------------------------------------------------------
 Thu Feb 26 17:45:32 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - spec file caclulates version number for Cacti to handle +git in version

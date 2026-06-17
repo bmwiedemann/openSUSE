@@ -19,7 +19,7 @@
 
 %{!?make_build: %define make_build make %{?_smp_mflags}}
 Name:           cacti-spine
-Version:        1.2.30
+Version:        1.2.31
 %global base_version %(echo %{version} | sed 's/+[^+]*//')
 %global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0
@@ -29,7 +29,7 @@ URL:            https://www.cacti.net/spine_info.php
 Group:          System/Monitoring
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
 # https://github.com/Cacti/spine/issues/368
-Patch0:          cacti-spine-gcc15.patch
+#Patch0:          cacti-spine-gcc15.patch
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
