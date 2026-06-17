@@ -721,4 +721,12 @@
    0002-Fix-ODR-violation-due-to-multiple-definition-of-COL_.patch</comment>
     <requestid>1343877</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>08069b8e58df9f3f9fe4110d95ffb301</srcmd5>
+    <version>10.0.3</version>
+    <time>1781706058</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359855</requestid>
+  </revision>
 </revisionlist>

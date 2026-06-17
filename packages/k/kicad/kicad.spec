@@ -20,8 +20,8 @@
 # symbol libraries from version 10.0.0
 %define compatversion 10.0.0
 Name:           kicad
-Version:        10.0.0
-%define file_version 10.0.0
+Version:        10.0.3
+%define file_version 10.0.3
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -34,12 +34,7 @@ Patch1:         0002-Fix-ODR-violation-due-to-multiple-definition-of-COL_.patch
 BuildRequires:  cmake >= 3.16
 BuildRequires:  fdupes
 # Requires charconv from C++17
-%if 0%{?suse_version} >= 1550
 BuildRequires:  gcc-c++ >= 8
-%else
-BuildRequires:  gcc11-PIE
-BuildRequires:  gcc11-c++ >= 8
-%endif
 BuildRequires:  gettext
 BuildRequires:  glm-devel >= 0.9.8
 BuildRequires:  libboost_filesystem-devel-impl
@@ -135,16 +130,13 @@ Provides translations for the "%{name}" package.
 
 %prep
 %autosetup -p1 -n kicad-%{file_version}
-%if 0%{?suse_version} < 1550
-sed -i -e '/cmake_minimum_required/ s/3.21/3.16/' CMakeLists.txt
-sed -i -e '/SWIG/ s/4.0/3.0/' CMakeLists.txt
-sed -i -e '/SWIG_OPTS/ { s/ -O/ -py3/ ; s/ -fastdispatch//}' pcbnew/CMakeLists.txt
-%endif
+# Fix leftover old version in QA data
+find . -type f -iname \*json \
+  -exec grep '10\.0\..' '{}' \; -print \
+  -exec sed -i -e '/kicad_version/ s/10\.0\../%{version}/' '{}' \; \
+  -exec grep 'version' '{}' \;
 
 %build
-%if 0%{?suse_version} < 1550
-export CXX=g++-11 CC=gcc-11
-%endif
 %limit_build -m 1500
 %cmake \
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
@@ -182,9 +174,13 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 %ctest --exclude-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
 
 %ifnarch %{ix86}
-%ctest --tests-regex 'qa_spice|qa_cli|qa_common'
+%ctest --tests-regex 'qa_spice|qa_cli'
 # Occasionally fails
 %ctest --repeat until-fail:5 --tests-regex 'qa_pcbnew'
+# the ProjectFile test has a side effect on the VCS eval test,
+# see https://gitlab.com/kicad/code/kicad/-/work_items/23959
+./build/qa/tests/common/qa_common -t '!ProjectFile'
+./build/qa/tests/common/qa_common -t 'ProjectFile'
 %endif
 
 %ifarch %{ix86}
