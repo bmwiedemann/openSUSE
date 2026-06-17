@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 16 17:22:48 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.4:
+  * fix signature duplication
+  * fix lints
+  * housekeeping - deps update and ci cleanup
+  * build(deps): Bump chainguard-dev/actions in the all group
+  * build(deps): Bump chainguard-dev/actions in the all group
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump github.com/sigstore/sigstore in the all group
+  * build(deps): Bump github.com/sigstore/rekor in the all group
+  * build(deps): Bump golangci/golangci-lint-action in the all group
+
+-------------------------------------------------------------------
 Wed May 20 12:22:59 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.1+git147.b7e6ef0:

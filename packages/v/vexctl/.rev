@@ -230,4 +230,21 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * Bump the all group with 2 updates (forwarded request 1354237 from jfkw)</comment>
     <requestid>1354340</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>d0c73be1e3fdb8fab0d9f49a5aeec706</srcmd5>
+    <version>0.4.4</version>
+    <time>1781705983</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.4:
+  * fix signature duplication
+  * fix lints
+  * housekeeping - deps update and ci cleanup
+  * build(deps): Bump chainguard-dev/actions in the all group
+  * build(deps): Bump chainguard-dev/actions in the all group
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump github.com/sigstore/sigstore in the all group
+  * build(deps): Bump github.com/sigstore/rekor in the all group
+  * build(deps): Bump golangci/golangci-lint-action in the all group (forwarded request 1359834 from jfkw)</comment>
+    <requestid>1359835</requestid>
+  </revision>
 </revisionlist>
