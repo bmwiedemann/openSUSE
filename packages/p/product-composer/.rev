@@ -656,4 +656,13 @@
     <comment>update</comment>
     <requestid>1358951</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>4e84e31582984ee28d2daf61b9b32434</srcmd5>
+    <version>0.9.8</version>
+    <time>1781706481</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.9.8
+  * Support/fix checksums configurations per flavor</comment>
+    <requestid>1360027</requestid>
+  </revision>
 </revisionlist>

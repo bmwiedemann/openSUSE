@@ -23,7 +23,7 @@
 %endif
 
 Name:           product-composer
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Product Composer
 License:        GPL-2.0-or-later
