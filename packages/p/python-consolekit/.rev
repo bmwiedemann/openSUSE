@@ -40,4 +40,23 @@
     <comment></comment>
     <requestid>1288850</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>f9ef823c58995084b010389d957b2d50</srcmd5>
+    <version>1.13.0</version>
+    <time>1774469853</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1342393</requestid>
+  </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>7df4209f4ca3fd58f0910b22dc0cdce7</srcmd5>
+    <version>1.13.0</version>
+    <time>1781705848</time>
+    <user>anag_factory</user>
+    <comment>Should fix python-consolekit with sr#1359491
+
+- Add upstream patch click-8.4.0.patch, to fix tests with click &gt;=
+  8.4.0: gh#domdfcoding/consolekit#133</comment>
+    <requestid>1360012</requestid>
+  </revision>
 </revisionlist>

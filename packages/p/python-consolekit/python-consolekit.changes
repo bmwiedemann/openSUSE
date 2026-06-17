@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:36:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch click-8.4.0.patch, to fix tests with click >=
+  8.4.0: gh#domdfcoding/consolekit#133
+
+-------------------------------------------------------------------
+Wed Mar 18 08:03:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to 1.13.0:
+  * Added version_callback_option utility in consolekit.versions.
+  * Added name parameter to the Colour class in consolekit.terminal_colours.
+  * Added PromptOption, ChoiceOption, and LazyChoice classes in consolekit.options.
+  * Added the echo utility function in consolekit.utils.
+  * Support for click 8.3.
+  * Updated build and testing environments.
+
+-------------------------------------------------------------------
 Wed Jun 25 13:15:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.0
