@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 11 23:36:08 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Fix soversion to 18 [1001-fix-soversion.patch] (bsc#1268056)
+- Add autoreconf to regenerate configure script after patching
+
+-------------------------------------------------------------------
 Sun May 31 19:10:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.8.1 (includes 0.8.0):
@@ -84,7 +90,7 @@ Fri Jun 28 08:56:52 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
   * Support heterogeneous RAW dumps in cpu_identify_all()
   * Support for Intel Meteor Lake, including detection of LP E-Cores
   * Support for Intel Emerald Rapids-SP
-  * Support for more AMD Van Gogh 
+  * Support for more AMD Van Gogh
 
 -------------------------------------------------------------------
 Wed Nov  1 20:53:39 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
@@ -137,7 +143,7 @@ Fri Dec  2 21:09:08 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Support for AMD Mendocino
   * Support for Intel Ice Lake (Xeon-D)
   * Support for AMD Zen 2 Desktop Kit CPUs (4700S + 4800S)
-  * Support for AMD Athlon 64 Sherman 
+  * Support for AMD Athlon 64 Sherman
 
 -------------------------------------------------------------------
 Wed Oct 12 10:25:10 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
@@ -166,7 +172,7 @@ Sat Oct  1 07:59:30 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * Support for AMD Steppe Eagle
   * Support for more AMD Kabini (Sempron + Athlon)
   * Improve msr_serialize_raw_data()
-  * Support for AMD Zen 2 custom APU for Steam Deck 
+  * Support for AMD Zen 2 custom APU for Steam Deck
 
 -------------------------------------------------------------------
 Wed Feb  9 12:40:00 UTC 2022 - Martin Pluskal <mpluskal@suse.com>
@@ -380,4 +386,3 @@ Thu Jul 31 15:07:19 UTC 2014 - dap.darkness@gmail.com
 Sun Feb  2 13:39:36 UTC 2014 - dap.darkness@gmail.com
 
 - Initial build.
-

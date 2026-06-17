@@ -277,4 +277,12 @@
     <comment>Update to 0.8.1 (incl. 0.8.0): many new Intel/AMD/ARM CPUs, technology_node field, ARMv9.5-A; drop git-LFS-stub *.test.xz test data from the release tarball so %check runs</comment>
     <requestid>1356228</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>f25a07b5e5f389ca767ccf4d1e80d73f</srcmd5>
+    <version>0.8.1</version>
+    <time>1781706052</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1359843</requestid>
+  </revision>
 </revisionlist>

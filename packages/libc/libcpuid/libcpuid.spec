@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver  17
+%define so_ver  18
 Name:           libcpuid
 Version:        0.8.1
 Release:        0
@@ -24,7 +24,11 @@ Summary:        Library providing x86 CPU identification
 License:        BSD-2-Clause
 URL:            https://github.com/anrieff/libcpuid
 Source0:        https://github.com/anrieff/libcpuid/releases/download/v%{version}/libcpuid-%{version}.tar.gz
+Patch1:         1001-fix-soversion.patch
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  help2man
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 ExclusiveArch:  %{arm64} %{arm32} %{ix86} %{x86_64} riscv64
@@ -56,7 +60,7 @@ Libcpuid provides CPU identification for the x86 (and x86_64)
 architectures.
 
 %prep
-%autosetup
+%autosetup -p1
 
 # The upstream release tarball ships the *.test.xz test-data files as
 # git-LFS pointer stubs (not the real compressed data), so the test
@@ -64,6 +68,7 @@ architectures.
 find tests -name '*.test.xz' -delete
 
 %build
+autoreconf -f -i
 %configure \
   --enable-static=no
 %make_build
