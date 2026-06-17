@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Jun  8 08:04:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0
+  * logging: introduced embedded logging functionality.
+    + supports global and custom logs with minimal computational
+      overhead.
+    + selectable level at run-time to increase/decrease verbosity
+      as needed.
+    + support for logging to files.
+    + color output for enhanced visibility (optionally disabled).
+    + compile time configurations for enhanced customization.
+  * autotest
+    + refactored testing infrastructure to include test-specific
+      metadata, estimated 'cost' (execution time), description,
+      and keywords
+    + overhauled all tests to use new harness; tests now
+      thread-safe and statically defined.
+    + increased testing: 1,300+ tests, 716,000+ checks, covering
+      82% of entire project.
+  * build
+    + performed a static memory analysis test to substantially
+      reduce memory used on the stack in favor of dynamically
+      allocating it on the stack; improves stability for
+      multi-threaded processing
+    + introduced new argument parsing header to simplify creating
+      variables, parsing command-line options, printing help, and
+      validating results;
+    + refactored examples and removed over 2,000 lines of redundant
+      code.
+    + added CMake rules to create exportable interface, option for
+      building.shared vs. static library, and simplified directory
+      inclusion.
+    + fixed annoying deprecation warnings.
+    + added generated pkg-config file.
+    + added support for building either/both static and shared
+      libraries.
+    + adding separate option to find SIMD vs. use it with explicit
+      options cleaned up descriptions for most interfaces in header
+      file.
+    + removed gentab (generated tables) from build environment;
+      added pre-generated source to version control.
+    + fixed cmake x86 SIMD detection.
+    + fixed many typos via codespell.
+  * core
+    + new module to include core functionality to liquid-dsp
+      including logging and error-handling.
+    + error-handling macros moved to global header to allow global
+      use.
+  * fft
+    + asgram: adding option for auto-scaling output.
+  * filter
+    + rresamp: fixed aliasing issue with default operation.
+    + symsync: added methods to explicitly get/set rate and del
+      values.
+    + firdespm: devising halfband filter design with desired stop
+      band firfilt: fix recreate() storing coefficients in reverse
+      order.
+  * framing
+    + fskframe: refactored object to allow for dynamically-sized
+      payload, but removed ability to specify CRC and FEC for now.
+    + added ability to initialize qdsync on cpfsk.
+    + framesync64: adding option to set detection range.
+    + qdetector: improved reliability, speed, interface
+  * vector
+    + added more SIMD methods for AVX, NEON extensions.
+    + added more benchmarks to identify areas for speed improvement
+- Drop patch:
+  * fix-chromosome-32bit.patch
+- Add patch:
+  * liquid-dsp-libsuffix.patch
+
+-------------------------------------------------------------------
 Sun Feb 23 13:42:21 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - switch to cmake and remove spec constructs no longer needed

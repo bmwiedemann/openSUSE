@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 07c1238..bcf880f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -515,10 +515,10 @@ install(TARGETS ${LIQUID_TARGETS}
+     LIBRARY
+         COMPONENT Runtime
+         NAMELINK_COMPONENT Development
+-        DESTINATION lib
++        DESTINATION "lib${LIB_SUFFIX}"
+     ARCHIVE
+         COMPONENT Runtime
+-        DESTINATION lib
++        DESTINATION "lib${LIB_SUFFIX}"
+     PUBLIC_HEADER
+         COMPONENT Development
+         DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/liquid

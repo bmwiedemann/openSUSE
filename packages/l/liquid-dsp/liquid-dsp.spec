@@ -1,8 +1,8 @@
 #
 # spec file for package liquid-dsp
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2017-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2017-2026, Martin Hauke <mardnh@gmx.de>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 %define sover 1
 %define libname libliquid%{sover}
 Name:           liquid-dsp
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Digital signal processing library for software-defined radios
 License:        MIT
@@ -29,7 +29,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://liquidsdr.org
 #Git-Clone:     https://github.com/jgaeddert/liquid-dsp.git
 Source:         https://github.com/jgaeddert/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         fix-chromosome-32bit.patch
+Patch0:         liquid-dsp-libsuffix.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.10
 
@@ -92,5 +92,7 @@ applications that want to make use of libliquid.
 %license LICENSE
 %{_includedir}/liquid
 %{_libdir}/libliquid.so
+%{_libdir}/cmake/liquid
+%{_libdir}/pkgconfig/liquid-dsp.pc
 
 %changelog
