@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 04 10:42:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.10:
+  * Add ROCm / HIP backend
+    Full AMD GPU backend using the HIP runtime. Includes the.
+    complete benchmark suite as it becomes available on each GPU.
+    family:
+    + Compute throughput — FP64/FP32/FP16/BF16/INT32 vector kernels
+      with vector-width ILP variants.
+    + INT8 DP4a — sudot4 instruction on CDNA3 / RDNA3-4.
+    + Raw MFMA matrix-core peak — FP16, BF16, INT8, FP8 (CDNA
+      architectures).
+    + 2:4 structured-sparse MFMA (smfmac) — FP16, BF16, FP8.
+    + FP4 matrix-core (MXFP4) — Instinct MI300+.
+    + Native WMMA peak — RDNA3/4, covering FP16, BF16,
+      FP8 E4M3/E5M2.
+    + rocBLAS — FP16, BF16, FP8 GEMM.
+    + hipBLASLt — FP8 GEMM.
+    + Memory bandwidth — global, local, host-device transfer.
+  * Add oneAPI / SYCL backend
+    Intel GPU backend compiled with icpx -fsycl. Requires the
+    Intel oneAPI Base Toolkit.
+    + Compute throughput — FP64/FP32/FP16/BF16/INT32/INT8 vector
+      kernels with vector-width sweeps.
+    + joint_matrix peak — device-queried shapes, VNNI B layout,
+      TF32; per-device capability diagnostics.
+    + oneMKL GEMM — FP16, BF16, FP32 (where supported).
+    + Memory bandwidth.
+    + Falls back to CPU/accelerator device when no GPU is visible.
+  * New Benchmarks (CUDA)
+    + NVFP4 matrix-core — mma FP4 benchmarks for Ada/Hopper.
+    + FP4 2:4 sparse mma.sp — Blackwell (SM 12.0+), with corrected
+      .scale_vec::4X selectors.
+  * CLI Changes
+    + --verbose - Print backend debug logs: kernel build logs,
+      API errors, and library exceptions that are suppressed by
+      default.
+  * Device selection: now accepts comma-separated index lists.
+  * Removed flags
+    + --cl-platform-name <str>
+      OpenCL platform name matching removed; use --cl-platform
+      <index>.
+    + --cl-device-name <str>
+      OpenCL device name matching removed; use --cl-device <index>
+    + --int4-packed-compute / --no-int4-packed-compute.
+      Emulated INT4 benchmark removed.
+
+-------------------------------------------------------------------
 Thu May 21 13:10:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.9
