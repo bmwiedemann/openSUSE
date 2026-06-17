@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:18:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update nettle-sys in vendored dependencies to fix compilation
+  with LLVM / clang 22, see upstream MR#34
+
+-------------------------------------------------------------------
 Mon May 19 14:38:16 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 1.3.0:

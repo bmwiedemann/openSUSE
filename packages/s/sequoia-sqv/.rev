@@ -15,4 +15,13 @@
     <comment>Update to version 1.3.0</comment>
     <requestid>1278424</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>96fc6bcad1cb4243427052a6eba276ad</srcmd5>
+    <version>1.3.0</version>
+    <time>1781705855</time>
+    <user>anag_factory</user>
+    <comment>- update nettle-sys in vendored dependencies to fix compilation
+  with LLVM / clang 22, see upstream MR#34 (forwarded request 1359707 from AndreasStieger)</comment>
+    <requestid>1359713</requestid>
+  </revision>
 </revisionlist>
