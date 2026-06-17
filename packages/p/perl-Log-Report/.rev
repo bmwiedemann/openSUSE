@@ -27,4 +27,19 @@
   	  [Andy Beverley] github issue #20</comment>
     <requestid>1353851</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2603309f7094fe8fb70ec5b23b24f272</srcmd5>
+    <version>1.460.0</version>
+    <time>1781706450</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+  version 1.46: Tue 16 Jun 10:14:47 CEST 2026
+  	Fixes:
+  	- select specific dispatcher try.
+  	  [Andy Berverley] github issue #21
+  	Improvements:
+  	- add Log::Report::default_dispatcher_mode()</comment>
+    <requestid>1360006</requestid>
+  </revision>
 </revisionlist>

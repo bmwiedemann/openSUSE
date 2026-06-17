@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:22:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Log-Report/ChangeLog
+
+  version 1.46: Tue 16 Jun 10:14:47 CEST 2026
+
+  	Fixes:
+  	- select specific dispatcher try.
+  	  [Andy Berverley] github issue #21
+
+  	Improvements:
+  	- add Log::Report::default_dispatcher_mode()
+
+-------------------------------------------------------------------
 Tue Apr 14 07:04:10 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.450.0 (1.45)
