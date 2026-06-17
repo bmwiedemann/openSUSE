@@ -1,0 +1,18 @@
+Even though we are passing 0o755 to ntfs_chmod, it appears to be setting up
+the directories for the Administrator as Read only instead of Read/Execute.
+This causes a failure to execute the extracted setup.exe.
+
+--- ./convert/convert_windows.ml.orig	2026-06-16 15:29:28.948498219 -0600
++++ ./convert/convert_windows.ml	2026-06-16 15:29:47.856499039 -0600
+@@ -958,9 +958,9 @@ let post_convert (g : G.guestfs) inspect
+    *)
+   let path = "/Program Files/Guestfs" in
+   debug "info: fixing NTFS permissions on %s" path;
+-  try g#ntfs_chmod inspect.i_root 0o755 path ~recursive:true
++  (* try g#ntfs_chmod inspect.i_root 0o755 path ~recursive:true
+   with G.Error msg ->
+-    warning (f_"ntfs_chmod on %s failed: %s") path msg
++    warning (f_"ntfs_chmod on %s failed: %s") path msg *)
+ 
+ module Convert_windows = struct
+   let name = "windows"

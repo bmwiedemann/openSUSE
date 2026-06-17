@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 16 16:00:16 MDT 2026 - carnold@suse.com
+
+- bsc#1268361 - virt-v2v prevents vmdp from running on first boot
+  for Windows VMs
+  dont-chmod-windows-paths.patch
+  revert01-convert-Use-quoted-string-literals-in-many-places.patch
+  revert02-remove-timeout-before-installing-virtio-win-drivers.patch
+  revert03-Ignore-ERROR_NO_MORE_ITEMS-status-from-PnPUtil.patch
+  revert04-Modify-configure_pnputil_install-script.patch
+  revert05-firstboot.bat-must-not-reboot-VM-on-error-code-250.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 13:19:28 MDT 2026 - carnold@suse.com
 
 - Fix virt-v2v: error: nbdkit is not installed or not working.

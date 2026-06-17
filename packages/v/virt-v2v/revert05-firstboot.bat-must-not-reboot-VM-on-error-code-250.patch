@@ -1,0 +1,62 @@
+From: Srihari Parimi sparimi@redhat.com Wed Apr 29 09:06:54 2026 +0530
+Subject: mlcustomize: firstboot.bat must not reboot VM on error code 250
+Date: Fri May 1 16:35:04 2026 +0100:
+Git: 228449739684b8ed699cac03cf1f5bbe9ada4f26
+
+The firstboot.bat script should not reboot the VM if any of the
+batch scripts return error code 250. This avoids unnecessary reboots,
+effectively reducing the overall boot time during conversion.
+
+Testing done
++ Created 2 batch scripts
+  1. test-script-noreboot.bat exits with error code 250
+  2. test-script-reboot.bat exits with error code 0
++ Converted Windows 11 VM by running virt-v2v command below
+
+virt-v2v -i vmx ~/VirtualMachines/testvm0_win11_x64/testvm0_win11_x64.vmx -o local -os ~/var/tmp/ --firstboot ~/VirtualMachines/imgdata/test-script-noreboot.bat --firstboot ~/VirtualMachines/imgdata/test-script-reboot.bat
+
+  The order of passing script to virt-v2v - test-script-noreboot.bat
+  followed by test-script-reboot.bat via --firstboot argument. This
+  ensures that the reboot happens only after the call to 2nd script
+
++ Booted Windows 11 VM using virt-manager
++ Logs created by the two batch files show that there was no reboot
+  after test-script-noreboot.bat (based on timestamp). Logs below
+
+C:\>more virt-v2v-test.log
+Firstboot script-noreboot started at 17:59:26.33
+Testing magic exit code
+Firstboot script-reboot started at 17:59:26.34
+Test default behaviour
+
+Fixes: https://redhat.atlassian.net/browse/RHEL-170706
+
+diff --git a/common/mlcustomize/firstboot.ml b/common/mlcustomize/firstboot.ml
+index 543e98f..366beca 100644
+--- a/common/mlcustomize/firstboot.ml
++++ b/common/mlcustomize/firstboot.ml
+@@ -320,18 +320,13 @@ for %%%%f in ("%%scripts%%"\*.bat) do (
+     echo Script failed, will retry on next boot
+   )
+ 
++  :: Reboot the computer.  This is necessary to free any locked
++  :: files which may prevent later scripts from running.
++  shutdown /r /t 0 /y
+-  :: Reboot the computer only if exit code indicates.
+-  :: Exit code 250 means do not reboot, otherwise reboot
+-  :: Reboot is necessary to free any locked files which
+-  :: may prevent later scripts from running.
+-  if !elvl! NEQ 250 (
+-    shutdown /r /t 0 /y
+ 
++  :: Exit the script (in case shutdown returns before rebooting).
++  :: On next boot, the whole firstboot service will be called again.
++  exit /b
+-    :: Exit the script (in case shutdown returns before rebooting).
+-    :: On next boot, the whole firstboot service will be called again.
+-
+-    exit /b
+-  )
+ )
+ 
+ :: Fallthrough here if there are no scripts.

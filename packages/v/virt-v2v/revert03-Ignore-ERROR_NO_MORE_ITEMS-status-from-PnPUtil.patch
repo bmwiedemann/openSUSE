@@ -1,0 +1,21 @@
+From: Vadim Rozenfeld vrozenfe@redhat.com Tue Jul 15 18:35:16 2025 +1000
+Subject: Ignore ERROR_NO_MORE_ITEMS status from PnPUtil.
+Date: Tue Jul 15 10:31:28 2025 +0100:
+Git: 523aff28975532a4fe715193c28c2ede21741392
+
+This status indicates the target device already has a
+better or newer driver installed.
+
+Signed-off-by: Vadim Rozenfeld <vrozenfe@redhat.com>
+
+--- a/convert/convert_windows.ml
++++ b/convert/convert_windows.ml
+@@ -389,7 +389,7 @@ let convert (g : G.guestfs) source inspe
+                      for %%f in (\"%inf_dir%*.inf\") do (\n\
+                      echo Installing: %%~nxf.\n\
+                      %systemroot%\\Sysnative\\PnPutil -i -a \"%%f\"\n\
+-                     if !errorlevel! neq 0 if !errorlevel! neq 259 (\n\
++                     if !errorlevel! NEQ 0 (\n\
+                      echo Failed to install %%~nxf.\n\
+                      exit /b 249\n\
+                      ) else (\n\

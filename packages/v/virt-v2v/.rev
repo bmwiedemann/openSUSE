@@ -263,4 +263,12 @@
     <comment>Fix for bsc#1266387 - virt-v2v challenges</comment>
     <requestid>1358791</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>4a64b1193f15896c8f2dc069808614fc</srcmd5>
+    <version>2.11.8</version>
+    <time>1781706129</time>
+    <user>anag_factory</user>
+    <comment>Fix for bsc#1268361 - virt-v2v prevents vmdp from running on first boot for Windows VMs</comment>
+    <requestid>1359861</requestid>
+  </revision>
 </revisionlist>

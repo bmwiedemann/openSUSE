@@ -33,6 +33,13 @@ Source0:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{n
 Source1:        https://download.libguestfs.org/virt-v2v/%{source_directory}/%{name}-%{version}.tar.gz.sig
 
 Patch1:         revert-Use-caml_unix_error-instead-of-unix_error.patch
+Patch2:         dont-chmod-windows-paths.patch
+# These patches temporarily address upstream issue https://github.com/libguestfs/virt-v2v/issues/159
+Patch3:         revert01-convert-Use-quoted-string-literals-in-many-places.patch
+Patch4:         revert02-remove-timeout-before-installing-virtio-win-drivers.patch
+Patch5:         revert03-Ignore-ERROR_NO_MORE_ITEMS-status-from-PnPUtil.patch
+Patch6:         revert04-Modify-configure_pnputil_install-script.patch
+Patch7:         revert05-firstboot.bat-must-not-reboot-VM-on-error-code-250.patch
 
 BuildRequires:  augeas-devel
 BuildRequires:  file-devel

@@ -1,0 +1,18 @@
+From: Vadim Rozenfeld vrozenfe@redhat.com Fri Jul 18 19:31:34 2025 +1000
+Subject: remove timeout before installing virtio-win drivers
+Date: Fri Jul 18 10:50:35 2025 +0100:
+Git: 07192e2bf5e73dd4d3d7d3c1faa940c7a67e2d72
+
+Signed-off-by: Vadim Rozenfeld <vrozenfe@redhat.com>
+
+--- a/convert/convert_windows.ml
++++ b/convert/convert_windows.ml
+@@ -359,6 +359,8 @@ let convert (g : G.guestfs) source inspe
+                      echo Installing drivers from %inf_dir%\n\
+                      set REBOOT_PENDING=0\n\
+                      \n\
++                     timeout /t 10 /nobreak\n\
++                     \n\
+                      reg query \"HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\WindowsUpdate\\Auto Update\\RebootRequired\"\n\
+                      if %errorlevel%==0 (\n\
+                      echo Windows Update: Reboot required.\n\
