@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 12 21:30:29 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 14:
+  + Call rooms are identified with a camera icon in the sidebar and
+    show a banner to warn that other users might not read messages
+    in these rooms
+  + Calls are rendered in the timeline and incoming calls trigger a
+    notification. We still don’t support calls, but at least now you
+    know when someone is calling and can open another client to
+    answer
+  + While we still support signing in via SSO, we have dropped
+    support for identity providers, to simplify our code and a
+    have a closer experience to signing in with OAuth 2.0
+  + The sidebar room filter has been improved: Enter goes to first
+    room result, and there’s an empty state when no results match
+    the term
+  + The performance of the room list has also been improved, it
+    should be mostly noticeable for accounts that have joined a lot
+    of rooms
+  + Informative events (Unable to decrypt, server notices…) are now
+    styled differently to reflect their special nature and
+    differentiate them from regular text messages that anyone can
+    send
+  + Sending files & location is properly disabled while
+    editing/replying, as it doesn’t work anyway
+- Remove the is_beta build option, as for some reason, the build
+  system built the package in beta mode anyway (and we never used
+  it to build beta tarballs
+- Update the minimum BuildRequires versions, as fractal targets now
+  GNOME 50 (and add the glycin dependency)
+
+-------------------------------------------------------------------
 Mon May 11 07:40:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update constraints to 28 GB, needed for aarch64 to complete build
