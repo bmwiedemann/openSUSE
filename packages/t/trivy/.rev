@@ -1568,4 +1568,13 @@ dropped patch file
   * ci: expect GitHub App bot as backport PR author</comment>
     <requestid>1359661</requestid>
   </revision>
+  <revision rev="93" vrev="2">
+    <srcmd5>9719679a2617bfece9981c7a31d02b3e</srcmd5>
+    <version>0.71.1</version>
+    <time>1781705977</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.71.0 (bsc#1267268, CVE-2026-44740,
+    bsc#1268356, CVE-2026-46680):</comment>
+    <requestid>1359836</requestid>
+  </revision>
 </revisionlist>
