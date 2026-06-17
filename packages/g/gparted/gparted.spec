@@ -17,16 +17,17 @@
 
 
 Name:           gparted
-Version:        1.7.0
+Version:        1.8.1
 Release:        0
 Summary:        Gnome Partition Editor
-License:        GPL-2.0-only
+License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://gparted.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz
 Source1:        https://downloads.sourceforge.net/project/gparted/gparted/gparted-%{version}/%{name}-%{version}.tar.gz.sig
 Source98:       %{name}.policy
 Source99:       %{name}.keyring
+
 BuildRequires:  polkit-devel
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  fdupes
@@ -36,7 +37,6 @@ BuildRequires:  perl-XML-Parser
 BuildRequires:  pkgconfig
 BuildRequires:  polkit
 BuildRequires:  pkexec
-BuildRequires:  update-desktop-files
 BuildRequires:  xfsprogs-devel
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(glibmm-2.4) >= 2.32
@@ -62,9 +62,6 @@ Recommends:     udftools
 Recommends:     xfsprogs
 Recommends:     bcachefs-tools
 Requires:       pkexec
-%if !0%{?is_opensuse}
-BuildRequires:  translation-update-upstream
-%endif
 
 %description
 GParted is a utility for creating, destroying, resizing, moving,
@@ -77,9 +74,6 @@ partition with another (disk imaging).
 
 %prep
 %autosetup -p1
-%if !0%{?is_opensuse}
-translation-update-upstream
-%endif
 
 %build
 export GKSUPROG="pkexec"
@@ -95,7 +89,6 @@ install -Dm0644 %{SOURCE98} %{buildroot}%{_datadir}/polkit-1/actions/org.opensus
 # Here we remove upstream policy file since we have our own
 rm %{buildroot}%{_datadir}/polkit-1/actions/org.gnome.%{name}.policy
 
-%suse_update_desktop_file %{name}
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
