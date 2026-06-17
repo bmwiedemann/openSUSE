@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 05:37:57 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.5.5:
+  * fix: restore s3:: vhost-style remote source support (#2643) by
+    @yxxhero in #2644
+  * feat: add helm 4 --server-side flag support for diff and bump
+    helm-diff to v3.15.10 by @yxxhero in #2645
+
+-------------------------------------------------------------------
 Tue Jun 16 08:08:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.4:
