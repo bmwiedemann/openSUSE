@@ -16,43 +16,33 @@
 #
 
 
-%global provider        github
-%global provider_tld    com
-%global project         GoogleCloudPlatform
-%global repo            osconfig
-%global provider_prefix %{provider}.%{provider_tld}/%{project}/%{repo}
-%global import_path     %{provider_prefix}
+%define shortname osconfig
 
 Name:           google-osconfig-agent
-Version:        20260611.00
+Version:        20260615.01
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
 Group:          System/Daemons
-URL:            https://%{provider_prefix}
-Source0:        %{repo}-%{version}.tar.gz
+URL:            https://github.com/GoogleCloudPlatform/osconfig
+Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-BuildRequires:  golang(API) >= 1.24.5
-BuildRequires:  golang-packaging
+BuildRequires:  golang(API) >= 1.25.5
 Requires:       google-guest-configs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-
-
-
-%{go_nostrip}
-%{go_provides}
 
 %description
 Google Cloud OSConfig Agent
 
 %prep
-%setup -q -n %{repo}-%{version}
-%setup -q -D -T -a 1 -n %{repo}-%{version}
+%setup -n %{shortname}-%{version} -a1
 
 %build
-%goprep %{import_path}
-CGO_ENABLED=0 go build -buildmode=pie -ldflags="-s -w -X main.version=%{version}-%{release}" -mod=vendor -o google_osconfig_agent
+%ifnarch ppc64
+export GOFLAGS="-buildmode=pie"
+%endif
+go build -o google_osconfig_agent
 
 %install
 install -d %{buildroot}%{_bindir}

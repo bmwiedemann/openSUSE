@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:54:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Packaging improvements:
+  * Remove define github project name components no longer needed
+  * Define shortname corresponding to binary name when different
+    from package name. Use shortname where applicable to normalize
+    common lines across Go app packages, similar to name macro.
+  * Drop BuildRequires: golang-packaging. The original macros for
+    file movements into GOPATH are obsolete with Go modules. Macro
+    go_nostrip is no longer needed with current binutils and Go.
+  * Remove go_nostrip macro which is no longer recommended
+  * Re-enable binary stripping and debuginfo boo#1210938
+  * Remove goprep macro which is no longer recommended
+  * Build PIE with pattern that may become recommended procedure:
+    %%ifnarch ppc64 GOFLAGS="-buildmode=pie" %%endif go build
+    A go toolchain buildmode default config would be preferable
+    but none exist at this time.
+  * Drop export CGO_ENABLED="0". Use the default unless there is a
+    defined requirement or benefit.
+  * For this package, we were seeing the expected error
+    "-buildmode=pie requires external (cgo) linking, but cgo is not
+    enabled" when using buildmode=pie and CGO_ENABLED=0. The error
+    manifested only on s390x and i586 architectures, which was not
+    expected. Resolve by using default CGO_ENABLED.
+  * Remove ldflags -s (Omit symbol table and debug info) and -w
+    (Omit DWARF symbol table). This information is used to produce
+    separate debuginfo packages and binaries are stripped for
+    reduced size by GNU strip during RPM build.
+  * Remove ldflags -X entry for embedding build version metadata.
+    This information is embedded in binaries with go1.18+ and
+    available via go version -m or runtime/debug.ReadBuildInfo().
+  * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+  * Raise minimum golang API version to 1.25.5 to match go.mod file
+  * Use explicit upstream GitHub homepage in URL field
+  * Use single invocation of %setup with -a1 to unpack both tarballs
+
+-------------------------------------------------------------------
+Tue Jun 16 08:06:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260615.01
+  * Upgrade golang.org/x/crypto & golang.org/x/net (#1006)
+    (bsc#1266171, CVE-2026-39827, CVE-2026-39834, CVE-2026-39828,
+     CVE-2026-39829, CVE-2026-39831, CVE-2026-42508, CVE-2026-39833,
+     CVE-2026-39830, CVE-2026-39832, CVE-2026-46597, CVE-2026-46598,
+     CVE-2026-46595, CVE-2026-39835) (bsc#1266603, CVE-2026-39821)
+- from version 20260615.00
+  * Add unit tests for ospatch_apt_upgrade.go (#938)
+
+-------------------------------------------------------------------
 Fri Jun 12 08:59:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260611.00
