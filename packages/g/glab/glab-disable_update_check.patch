@@ -7,7 +7,6 @@ Signed-off-by: Johannes Kastl <git@johannes-kastl.de>
 ---
  commands/config/config.go        | 199 +++++++++++++++++++++++++++++++
  internal/config/config.yaml.lock |   2 +-
- internal/config/config_stub.go   |   2 +-
  3 files changed, 201 insertions(+), 2 deletions(-)
  create mode 100644 commands/config/config.go
 
@@ -216,32 +215,6 @@ index 00000000..e71fe0a1
 +	cmd.Flags().BoolVarP(&isLocal, "local", "l", false, "Open '.git/glab-cli/config.yml' file instead of the global '~/.config/glab-cli/config.yml' file.")
 +	return cmd
 +}
-diff --git a/internal/config/config.yaml.lock b/internal/config/config.yaml.lock
-index b6c44150..a762d84e 100644
---- a/internal/config/config.yaml.lock
-+++ b/internal/config/config.yaml.lock
-@@ -7,7 +7,7 @@ browser:
- # Set your desired Markdown renderer style. Available options are [dark, light, notty]. To set a custom style, refer to https://github.com/charmbracelet/glamour#styles
- glamour_style: dark
- # Allow glab to automatically check for updates and notify you when there are new updates.
--check_update: true
-+check_update: false
- # Last update check timestamp, used for checking when the last update check was performed.
- last_update_check_timestamp:
- # Whether or not to display hyperlinks in terminal output. Defaults to true (enabled for TTYs). Set to false to disable. Force hyperlinks in non-TTY environments by setting FORCE_HYPERLINKS=1.
-diff --git a/internal/config/config_stub.go b/internal/config/config_stub.go
-index 0b490cf1..e9308b8b 100644
---- a/internal/config/config_stub.go
-+++ b/internal/config/config_stub.go
-@@ -57,7 +57,7 @@ func rootConfig() *yaml.Node {
- 					},
- 					{
- 						Kind:  yaml.ScalarNode,
--						Value: "true",
-+						Value: "false",
- 					},
- 					{
- 						HeadComment: "# Last update check timestamp, used for checking when the last update check was performed.",
 -- 
 2.51.2
 

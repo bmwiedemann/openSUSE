@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Jun 08 05:28:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.102.0:
+  * Features
+    - 044e5b03: feat(api): forward DUO_WORKFLOW_WORKFLOW_ID as
+      X-Gitlab-Duo-Workflow-Id header (Eduardo Bonet
+      ebonet@gitlab.com)
+    - 12cfcf44: feat(api): forward GITLAB_DUO_SESSION_ID as
+      X-Gitlab-Duo-Session-Id header (Eduardo Bonet
+      ebonet@gitlab.com)
+    - d64700ce: feat(repo): add prune command to delete merged
+      local branches (Kai Armstrong karmstrong@gitlab.com)
+    - e1cd4cf0: feat(skills): notify when installed skills have
+      updates (Kai Armstrong karmstrong@gitlab.com)
+    - fadd3939: feat(whatsnew): add command and post-upgrade banner
+      (Kai Armstrong karmstrong@gitlab.com)
+  * Bug Fixes
+    - d914d050: fix(api): URL-encode magic placeholder
+      substitutions (Kai Armstrong karmstrong@gitlab.com)
+    - 98a00775: fix(binarymgr): sort packages by semver client-side
+      (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 65169664: docs(duo): expand MR review instructions from 3 to
+      17 blocks (Kai Armstrong karmstrong@gitlab.com)
+    - 38602dd2: docs(iteration): add synopsis and examples to
+      iteration commands (Brendan Lynch blynch@gitlab.com)
+    - 2f6cb6d5: docs(mr): add synopsis and examples to mr commands
+      (Brendan Lynch blynch@gitlab.com)
+    - 40d9474f: docs(opentofu): add synopsis and examples to
+      opentofu commands (Brendan Lynch blynch@gitlab.com)
+    - a9fe77fd: docs(release): add synopsis and examples to release
+      commands (Brendan Lynch blynch@gitlab.com)
+    - ecd623cb: docs(repo): add synopsis and fix usage notation in
+      repo commands (Brendan Lynch blynch@gitlab.com)
+    - d788de5e: docs(snippet): add synopsis and examples to snippet
+      commands (Brendan Lynch blynch@gitlab.com)
+    - 49f80867: docs(todo): add synopsis and examples to todo
+      commands (Brendan Lynch blynch@gitlab.com)
+    - 42fb614b: docs: Format quoted command references as code in
+      env vars table (Ben Bodenmiller bbodenmiller@gmail.com)
+    - c9507bbf: docs: add synopsis and examples to issue and
+      incident commands (Brendan Lynch blynch@gitlab.com)
+    - eb4fec3f: docs: add synopsis and examples to misc standalone
+      commands (Brendan Lynch blynch@gitlab.com)
+    - 5f87ec4c: docs: document GLAB_NO_PROMPT and mark NO_PROMPT
+      deprecated (Ben Bodenmiller bbodenmiller@gmail.com)
+    - f4b2593b: docs: fix flag punctuation and example formatting
+      (quick wins) (Brendan Lynch blynch@gitlab.com)
+    - d9a6681e: docs: update AGENTS.md with comprehensive agent
+      instructions (Brendan Lynch blynch@gitlab.com)
+    - 2e64fa29: docs: update README environment variables (Brendan
+      Lynch blynch@gitlab.com)
+    - 6734e7ab: docs: update env vars table to use GLAB_ prefixed
+      names (Kate Grechishkina khrechyshkina@gitlab.com)
+  * Dependencies
+    - d8ca77c7: chore(deps): update dependency
+      @commitlint/config-conventional to ^21.0.2 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 21f186ce: chore(deps): update dependency @commitlint/read to
+      ^21.0.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - d4a4afeb: chore(lint): enable 19 new linters and address
+      violations (Kai Armstrong karmstrong@gitlab.com)
+    - 19c91cc9: refactor(config): canonical schema with config set
+      validation (Kai Armstrong karmstrong@gitlab.com)
+    - 98cbeebf: refactor(config): do not use StubConfig in tests
+      (Timo Furrer tfurrer@gitlab.com)
+    - 1e5735ef: refactor(config): follow ups (Timo Furrer
+      tfurrer@gitlab.com)
+    - bced871c: refactor(config): give each Config its own
+      persistence directory (Timo Furrer tfurrer@gitlab.com)
+    - a95fae2a: refactor(config): remove global config stubbers
+      (Timo Furrer tfurrer@gitlab.com)
+    - 769e47ec: refactor(glrepo): inject config instead of reaching
+      for the global (Timo Furrer tfurrer@gitlab.com)
+- refactor patch glab-disable_update_check.patch to have it apply
+  to the current code base
+
+-------------------------------------------------------------------
 Tue Jun 02 04:34:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.101.0:
