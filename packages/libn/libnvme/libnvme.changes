@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:24:13 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 1.16.2:
+  * tree: fix nvme_subsystem_scan_namespaces() return handling
+  * fabrics: issue a warning on invalid traddr format (bsc#1248750)
+  * fabrics: sanitize FC traddr (bsc#1248750)
+  * nvme: expose tls mode in use (bsc#1259672)
+  * fabrics: add helper to update tls and concat (bsc#1259672)
+  * tree: avoid updating --tls in nvme_read_sysfs_tls() (bsc#1259672)
+  * fabrics: add additional debug messages for --tls and --concat (bsc#1256043)
+  * fabrics: add error if no dhchap-secret is specified with --concat (bsc#1256043)
+  * fabrics: add error if --tls and --concat are invoked together (bsc#1256043)
+  * fabrics: fix concat during nvme connect-all (bsc#1256043)
+  * tree: Fix potential NULL pointer dereference in nvme_host_get_ids()
+
+-------------------------------------------------------------------
 Fri Jan 09 16:12:25 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 1.16.1:
