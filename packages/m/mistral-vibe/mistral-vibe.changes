@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:56:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.16.1:
+  - Added
+    - ACP workspace trust gated behind the workspace-trust client
+      capability
+  - Changed
+    - /resume now opens much faster
+    - Startup update-failure message is now gentler and no longer
+      alarms when an update can't be applied
+
+-------------------------------------------------------------------
+Mon Jun 15 16:41:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.16.0:
+  - Added
+    - Fuzzy search in slash command autocomplete
+    - Syntax-highlighted, line-numbered, theme-aware diffs for
+      file edits
+  - Changed
+    - `/resume` now scopes the session picker to the current
+      folder
+    - Clipboard copy confirmations now appear inline instead of
+      stacking toast notifications
+    - ACP teleports now use the client title as the Vibe Code
+      project name when no explicit project name is co nfigured
+  - Fixed
+    - ACP max-output-token responses now stop gracefully with
+      `max_tokens` instead of surfacing internal error s
+    - Context-too-long responses wrapped as HTTP 422 are now
+      classified correctly
+    - SSE streams are parsed on CR/LF boundaries only, avoiding
+      crashes on valid Unicode line separators in JS ON strings
+    - CLI banner now shows the Free plan correctly
+    - Mistral backend no longer sends reasoning content when
+      model thinking is off
+
+-------------------------------------------------------------------
 Mon Jun 15 13:55:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add fix_tests.patch (gh#mistralai/mistral-vibe!796) which fixes

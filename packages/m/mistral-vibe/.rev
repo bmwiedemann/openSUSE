@@ -220,4 +220,43 @@
       retries no longer use exit code `2`; hooks must now exit</comment>
     <requestid>1359582</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>83c205ff172ebfb3ad6ae13bb936ba55</srcmd5>
+    <version>2.16.1</version>
+    <time>1781706140</time>
+    <user>anag_factory</user>
+    <comment>REQUIRES https://build.opensuse.org/requests/1359862
+
+- Update to 2.16.1:
+  - Added
+    - ACP workspace trust gated behind the workspace-trust client
+      capability
+  - Changed
+    - /resume now opens much faster
+    - Startup update-failure message is now gentler and no longer
+      alarms when an update can't be applied
+
+- Update to 2.16.0:
+  - Added
+    - Fuzzy search in slash command autocomplete
+    - Syntax-highlighted, line-numbered, theme-aware diffs for
+      file edits
+  - Changed
+    - `/resume` now scopes the session picker to the current
+      folder
+    - Clipboard copy confirmations now appear inline instead of
+      stacking toast notifications
+    - ACP teleports now use the client title as the Vibe Code
+      project name when no explicit project name is co nfigured
+  - Fixed
+    - ACP max-output-token responses now stop gracefully with
+      `max_tokens` instead of surfacing internal error s
+    - Context-too-long responses wrapped as HTTP 422 are now
+      classified correctly
+    - SSE streams are parsed on CR/LF boundaries only, avoiding
+      crashes on valid Unicode line separators in JS ON strings
+    - CLI banner now shows the Free plan correctly
+    - Mistral backend no longer sends reasoning content when</comment>
+    <requestid>1359864</requestid>
+  </revision>
 </revisionlist>
