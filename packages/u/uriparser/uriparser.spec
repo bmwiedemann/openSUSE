@@ -24,13 +24,14 @@
 
 %define so_ver  1
 Name:           uriparser
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        A strictly RFC 3986 compliant URI parsing library
 License:        Apache-2.0 AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://uriparser.github.io
 Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.xz
+Patch1:         cmake_fixes.patch
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  doxygen
@@ -95,11 +96,12 @@ and supports Unicode.
 This subpackage contains the documentation for %{name}.
 
 %prep
-%setup -q -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %cmake \
     -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+    -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DURIPARSER_BUILD_CHAR:BOOL=ON \
     -DURIPARSER_BUILD_DOCS:BOOL=ON \

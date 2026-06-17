@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 15:22:18 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update to version 1.0.2:
+  * Fixed: [CVE-2026-44927, bsc#1264578] Stop truncating ptrdiff_t to int
+  * Fixed: [CVE-2026-44928, bsc#1264579] Fix EqualsUri with regard to .absolutePath
+  * Fixed: [CVE-2026-42371, bsc#1262999] Protect from integer overflow in text range comparison
+  * Fixed: Fix OOM related memory leak in CopyUriMm
+  * Improved: Simplify internal function CompareRange into RangeEquals
+  * Improved: Make function RangeEquals use size_t internally
+
+- cmake_fixes.patch: fix compilation with newer GTest
+
+-------------------------------------------------------------------
 Tue Jan 13 14:05:09 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 1.0.0 (bsc#1255000, CVE-2025-67899)
