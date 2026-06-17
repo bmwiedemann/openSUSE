@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/mirceanton/kubectl-switch</param>
-              <param name="changesrevision">c757c381f7a19467719f680aabd0dbcf13889ef8</param></service></servicedata>
+              <param name="changesrevision">c757c381f7a19467719f680aabd0dbcf13889ef8</param></service><service name="tar_scm">
+                <param name="url">https://github.com/mirceanton/kubectl-switch.git</param>
+              <param name="changesrevision">1ec87ef650405d47258586dc16fb0828983f9d56</param></service></servicedata>

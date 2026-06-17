@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 13 10:17:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.21:
+  * Bug Fixes
+    - 83cb33a: fix(go): update charm.land/lipgloss/v2 ( v2.0.3 →
+      v2.0.4 ) (@mr-borboto[bot])
+    - 1ec87ef: fix(go): update kubernetes monorepo ( v0.36.1 →
+      v0.36.2 ) (@mr-borboto[bot])
+  * Chores
+    - 247d061: chore(mise): update go ( 1.26.3 → 1.26.4 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Tue Jun 02 04:40:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.20:
