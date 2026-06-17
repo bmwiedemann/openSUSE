@@ -56,4 +56,15 @@
     <comment></comment>
     <requestid>1241536</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>76b1502a46e777f3f6deb129d4b75437</srcmd5>
+    <version>0.370.0</version>
+    <time>1781706456</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.370.0 (0.37)
+   see /usr/share/doc/packages/perl-Spreadsheet-ParseXLSX/Changes
+  0.37  2026-06-16
+       - fixed build on open suse by adding NoLWP to XML::Twig constructor</comment>
+    <requestid>1360009</requestid>
+  </revision>
 </revisionlist>

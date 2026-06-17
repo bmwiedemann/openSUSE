@@ -7,6 +7,5 @@ Spreadsheet::ParseExcel::Workbook, Spreadsheet::ParseExcel::Worksheet, and
 Spreadsheet::ParseExcel::Cell.
 
 </description>
-  <devel project="devel:languages:perl" package="perl-Spreadsheet-ParseXLSX"/>
   <url>http://search.cpan.org/dist/Spreadsheet-ParseXLSX/</url>
 </package>

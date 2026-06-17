@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Spreadsheet-ParseXLSX
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,19 @@
 
 %define cpan_name Spreadsheet-ParseXLSX
 Name:           perl-Spreadsheet-ParseXLSX
-Version:        0.360.0
+Version:        0.370.0
 Release:        0
-# 0.36 -> normalize -> 0.360.0
-%define cpan_version 0.36
+# 0.37 -> normalize -> 0.370.0
+%define cpan_version 0.37
 License:        MIT
 Summary:        Parse XLSX files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/N/NU/NUDDLEGG/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Archive::Zip) >= 1.34
+BuildRequires:  perl(Archive::Zip) >= 1.340
 BuildRequires:  perl(Crypt::Mode::CBC)
 BuildRequires:  perl(Crypt::Mode::ECB)
 BuildRequires:  perl(Digest::SHA)
@@ -41,7 +42,7 @@ BuildRequires:  perl(Spreadsheet::ParseExcel::Utility)
 BuildRequires:  perl(Spreadsheet::ParseExcel::Worksheet)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(XML::Twig)
-Requires:       perl(Archive::Zip) >= 1.34
+Requires:       perl(Archive::Zip) >= 1.340
 Requires:       perl(Crypt::Mode::CBC)
 Requires:       perl(Crypt::Mode::ECB)
 Requires:       perl(Digest::SHA)
@@ -68,7 +69,7 @@ Spreadsheet::ParseExcel::Workbook, Spreadsheet::ParseExcel::Worksheet, and
 Spreadsheet::ParseExcel::Cell.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
