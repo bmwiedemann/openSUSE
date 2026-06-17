@@ -1,0 +1,29 @@
+From f4b9e2c2e10b47c94259ac432b8d63e59fa1d2a8 Mon Sep 17 00:00:00 2001
+From: Marius Wachtler <undingen@gmail.com>
+Date: Sun, 20 Oct 2024 21:50:58 +0700
+Subject: [PATCH] Fix Segmentation fault in -e mode when environment variable
+ is not set.
+
+`hide_password()` dereferenced the NULL pointer `args.orig_password`
+---
+ main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/main.c b/main.c
+index 2bad28b..2cc272c 100644
+--- a/main.c
++++ b/main.c
+@@ -175,8 +175,8 @@ static int parse_options( int argc, char *argv[] )
+ 
+                 error=RETURN_INVALID_ARGUMENTS;
+             }
+-
+-            hide_password();
++            else
++                hide_password();
+             unsetenv(optarg);
+             break;
+         case '?':
+-- 
+2.54.0
+

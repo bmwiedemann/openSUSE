@@ -1,7 +1,7 @@
 #
 # spec file for package sshpass
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/Management
 URL:            https://sshpass.sourceforge.net/
 Source0:        https://downloads.sourceforge.net/sshpass/sshpass-%{version}.tar.gz
+Patch0:         0001-Fix-Segmentation-fault-in-e-mode-when-environment-va.patch
 
 %description
 Tool for non-interactively performing password authentication with so called
@@ -31,7 +32,7 @@ Tool for non-interactively performing password authentication with so called
 more secure public key authentication of SSH instead.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure

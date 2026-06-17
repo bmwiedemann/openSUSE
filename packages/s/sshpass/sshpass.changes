@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:45:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add
+  0001-Fix-Segmentation-fault-in-e-mode-when-environment-va.patch
+  (bsc#1268297)
+
+-------------------------------------------------------------------
 Tue Mar  7 07:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.10:
