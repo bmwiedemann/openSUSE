@@ -590,4 +590,23 @@
     <comment></comment>
     <requestid>1344749</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>52a7b2c26d8a45af124629ed74e0c405</srcmd5>
+    <version>4.1.0</version>
+    <time>1781706158</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.1.0, a breaking major release of the Mbed TLS 4.x line:
+  * Cryptography moved to the separate TF-PSA-Crypto library
+    (libtfpsacrypto.so.2); libmbedcrypto is now a compat library
+  * SONAMEs bumped: libmbedtls 21-&gt;23, libmbedx509 7-&gt;9, libmbedcrypto 16-&gt;18
+  * New libtfpsacrypto2 subpackage; dropped libeverest/libp256m
+  * Consumers must be rebuilt against the 4.x libraries
+- Switch to official mbedtls-4.1.0.tar.bz2; drop the _service git checkout
+- Drop mbedtls-enable-pthread.patch / mbedtls-enable-srtp.patch; set
+  threading and DTLS-SRTP via scripts/config.py
+- Add mbedtls-fix-libmbedcrypto-compat-install.patch (gh#Mbed-TLS/mbedtls#10777)
+NOTE: 4.x is a breaking ABI change; reverse-dependencies need rebuilding
+and may require coordinated staging.</comment>
+    <requestid>1359879</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package mbedtls
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,25 +16,22 @@
 #
 
 
-%define lib_tls     libmbedtls21
-%define lib_crypto  libmbedcrypto16
-%define lib_x509    libmbedx509-7
-%define lib_everest libeverest
-%define lib_p256m   libp256m
+%define lib_tls     libmbedtls23
+%define lib_x509    libmbedx509-9
+%define lib_tfpsa   libtfpsacrypto2
 Name:           mbedtls
-Version:        3.6.6
+Version:        4.1.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
-URL:            https://tls.mbed.org
-Source:         %{name}-%{version}.tar.gz
+URL:            https://www.trustedfirmware.org/projects/mbed-tls/
+Source:         https://github.com/Mbed-TLS/mbedtls/releases/download/mbedtls-%{version}/mbedtls-%{version}.tar.bz2
 Source99:       baselibs.conf
-# PATCH-FEATURE-OPENSUSE - enable MBEDTLS_THREADING_PTHREAD and MBEDTLS_THREADING_C
-Patch1:         mbedtls-enable-pthread.patch
-# PATCH-FEATURE-OPENSUSE - enable MBEDTLS_SSL_DTLS_SRTP
-Patch2:         mbedtls-enable-srtp.patch
+# PATCH-FIX-UPSTREAM mbedtls-fix-libmbedcrypto-compat-install.patch gh#Mbed-TLS/mbedtls#10777 -- install the libmbedcrypto compat library with executable permissions
+Patch0:         mbedtls-fix-libmbedcrypto-compat-install.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
+BuildRequires:  python3
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -58,14 +55,6 @@ supports a number of extensions such as SSL Session Tickets (RFC
 understands the RSA, (EC)DH(E)-RSA, (EC)DH(E)-PSK and RSA-PSK key
 exchanges.
 
-%package -n %{lib_crypto}
-Summary:        Cryptographic base library for mbedtls
-
-%description -n %{lib_crypto}
-This subpackage of mbedtls contains a library that exposes
-cryptographic ciphers, hashes, algorithms and format support such as
-AES, MD5, SHA, Elliptic Curves, BigNum, PKCS, ASN.1, BASE64.
-
 %package -n %{lib_x509}
 Summary:        Library to work with X.509 certificates
 
@@ -74,23 +63,19 @@ This subpackage of mbedtls contains a library that can read, verify
 and write X.509 certificates, read/write Certificate Signing Requests
 and read Certificate Revocation Lists.
 
-%package -n %{lib_everest}
-Summary:        Library libeverest
+%package -n %{lib_tfpsa}
+Summary:        Trusted Firmware PSA cryptography library
 
-%description -n %{lib_everest}
-This subpackage of mbedtls contains libeverest
+%description -n %{lib_tfpsa}
+TF-PSA-Crypto is the reference implementation of the PSA cryptography
+API. It provides the cryptographic primitives used by Mbed TLS 4.x.
 
-%package -n %{lib_p256m}
-Summary:        Library libp256m
-
-%description -n %{lib_p256m}
-This subpackage of mbedtls contains libp256m
+This package also ships the libmbedcrypto backward-compatibility
+library, which has the same SONAME (libtfpsacrypto.so.2).
 
 %package devel
 Summary:        Development files for mbedtls, a SSL/TLS library
-Requires:       %{lib_crypto} = %{version}
-Requires:       %{lib_everest} = %{version}
-Requires:       %{lib_p256m} = %{version}
+Requires:       %{lib_tfpsa} = %{version}
 Requires:       %{lib_tls} = %{version}
 Requires:       %{lib_x509} = %{version}
 
@@ -101,77 +86,69 @@ SSL/TLS protocol suite.
 
 %prep
 %autosetup -p1
+# Enable threading and DTLS-SRTP support (previously carried as
+# the mbedtls-enable-pthread.patch / mbedtls-enable-srtp.patch
+# downstream patches, now set via the upstream config tool).
+python3 scripts/config.py set MBEDTLS_THREADING_C
+python3 scripts/config.py set MBEDTLS_THREADING_PTHREAD
+python3 scripts/config.py set MBEDTLS_SSL_DTLS_SRTP
 
 %build
 %define __builder ninja
-export CFLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
-export CXXLAGS="%{optflags} -Wno-stringop-overflow -Wno-maybe-uninitialized"
 %cmake \
-  -DUNSAFE_BUILD=ON \
-  -DLINK_WITH_PTHREAD=ON \
-  -DINSTALL_MBEDTLS_HEADERS=ON \
   -DUSE_SHARED_MBEDTLS_LIBRARY=ON \
   -DUSE_STATIC_MBEDTLS_LIBRARY=OFF \
+  -DUSE_SHARED_TF_PSA_CRYPTO_LIBRARY=ON \
+  -DUSE_STATIC_TF_PSA_CRYPTO_LIBRARY=OFF \
   -DENABLE_PROGRAMS=OFF \
-  -DCMAKE_POLICY_DEFAULT_CMP0012=NEW
+  -DMBEDTLS_FATAL_WARNINGS=OFF \
+  -DTF_PSA_CRYPTO_FATAL_WARNINGS=OFF \
+  -DLINK_WITH_PTHREAD=ON
 %cmake_build
 
 %install
 %cmake_install
+# Create the libmbedcrypto compatibility symlinks. Upstream creates these
+# via an install(CODE) rule that does not reach the staged (DESTDIR) tree.
+ln -sf libmbedcrypto.so.%{version} %{buildroot}%{_libdir}/libmbedcrypto.so.18
+ln -sf libmbedcrypto.so.18 %{buildroot}%{_libdir}/libmbedcrypto.so
 
 %check
 pushd build
 LD_LIBRARY_PATH=%{buildroot}%{_libdir} \
  %{_bindir}/ctest --output-on-failure --force-new-ctest-process
+popd
 
 %ldconfig_scriptlets -n %{lib_tls}
-%ldconfig_scriptlets -n %{lib_crypto}
 %ldconfig_scriptlets -n %{lib_x509}
-%ldconfig_scriptlets -n %{lib_everest}
-%ldconfig_scriptlets -n %{lib_p256m}
+%ldconfig_scriptlets -n %{lib_tfpsa}
 
 %files devel
 %license LICENSE
 %doc ChangeLog README.md
-%dir %{_includedir}/mbedtls
-%dir %{_includedir}/psa
-%dir %{_includedir}/everest
-%dir %{_includedir}/everest/kremlin
-%dir %{_includedir}/everest/kremlin/internal
-%dir %{_includedir}/everest/kremlib
-%dir %{_includedir}/everest/vs2013
-%dir %{_libdir}/cmake/MbedTLS
-%{_libdir}/cmake/MbedTLS/*
-%{_includedir}/mbedtls/*.h
-%{_includedir}/psa/*.h
-%{_includedir}/everest/*.h
-%{_includedir}/everest/kremlin/*.h
-%{_includedir}/everest/kremlin/internal/*.h
-%{_includedir}/everest/kremlib/*.h
-%{_includedir}/everest/vs2013/*.h
+%{_includedir}/mbedtls/
+%{_includedir}/psa/
+%{_includedir}/tf-psa-crypto/
 %{_libdir}/libmbedtls.so
 %{_libdir}/libmbedcrypto.so
 %{_libdir}/libmbedx509.so
+%{_libdir}/libtfpsacrypto.so
 %{_libdir}/pkgconfig/*.pc
+%{_libdir}/cmake/
 
 %files -n %{lib_tls}
 %license LICENSE
 %{_libdir}/libmbedtls.so.*
 
-%files -n %{lib_crypto}
-%license LICENSE
-%{_libdir}/libmbedcrypto.so.*
-
 %files -n %{lib_x509}
 %license LICENSE
 %{_libdir}/libmbedx509.so.*
 
-%files -n %{lib_everest}
+%files -n %{lib_tfpsa}
 %license LICENSE
-%{_libdir}/libeverest.so
-
-%files -n %{lib_p256m}
-%license LICENSE
-%{_libdir}/libp256m.so
+%{_libdir}/libtfpsacrypto.so.*
+# libmbedcrypto backward-compatibility library (SONAME libtfpsacrypto.so.2)
+%{_libdir}/libmbedcrypto.so.18
+%{_libdir}/libmbedcrypto.so.%{version}
 
 %changelog

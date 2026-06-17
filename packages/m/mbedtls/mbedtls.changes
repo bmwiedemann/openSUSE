@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jun 17 05:22:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.1.0, a breaking major release of the Mbed TLS 4.x
+  line:
+  * The cryptography implementation has moved to the separate
+    TF-PSA-Crypto library (libtfpsacrypto.so.2); PSA Crypto is
+    now the primary cryptographic interface
+  * libmbedcrypto is now a backward-compatibility library sharing
+    the TF-PSA-Crypto SONAME
+  * Numerous API/ABI changes; consumers must be rebuilt against
+    the 4.x libraries
+- Packaging changes for the 4.x library layout:
+  * SONAMEs bumped: libmbedtls 21 -> 23, libmbedx509 7 -> 9,
+    libmbedcrypto 16 -> 18
+  * New subpackage libtfpsacrypto2, which also ships the
+    libmbedcrypto compatibility library (same SONAME)
+  * Dropped the libeverest and libp256m subpackages; these are no
+    longer built as separate shared libraries
+- Switch to the official mbedtls-4.1.0.tar.bz2 release tarball
+  (bundles TF-PSA-Crypto) and drop the _service git checkout
+- Drop mbedtls-enable-pthread.patch and mbedtls-enable-srtp.patch;
+  enable MBEDTLS_THREADING_C, MBEDTLS_THREADING_PTHREAD and
+  MBEDTLS_SSL_DTLS_SRTP via the upstream scripts/config.py tool
+- Add mbedtls-fix-libmbedcrypto-compat-install.patch to install
+  the libmbedcrypto compatibility library with executable
+  permissions (gh#Mbed-TLS/mbedtls#10777)
+
+-------------------------------------------------------------------
 Sat Apr  4 04:51:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.6.6:

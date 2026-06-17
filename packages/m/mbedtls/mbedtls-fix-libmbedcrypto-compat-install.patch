@@ -1,0 +1,24 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Tue, 16 Jun 2026 00:00:00 +0000
+Subject: [PATCH] cmake: install libmbedcrypto compat library as a program
+Upstream-PR: https://github.com/Mbed-TLS/mbedtls/pull/10777
+
+The libmbedcrypto backward-compatibility library was installed with
+install(FILES ...), which uses 0644 permissions. The resulting shared
+object is therefore not executable, so packaging tools (e.g. rpm) fail
+to recognise it as a shared library: no dependency information is
+generated and debug symbols are not stripped from it. Install it with
+install(PROGRAMS ...) instead, matching the 0755 permissions used for
+ordinary shared libraries.
+---
+--- a/library/CMakeLists.txt	2026-06-16 23:52:09.042506838 +0200
++++ b/library/CMakeLists.txt	2026-06-16 23:52:09.622571855 +0200
+@@ -356,7 +356,7 @@
+                       libmbedcrypto.so.${MBEDTLS_CRYPTO_SOVERSION}
+                       libmbedcrypto.so
+             )
+-            install(FILES $<TARGET_FILE:${target}>
++            install(PROGRAMS $<TARGET_FILE:${target}>
+                     DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                     RENAME "libmbedcrypto.so.${MBEDTLS_VERSION}"
+             )
