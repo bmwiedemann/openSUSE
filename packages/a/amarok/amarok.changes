@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun  2 12:46:39 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
+
+- Add gcc16.patch to fix the broken build with GCC 16 
+
+-------------------------------------------------------------------
 Tue Jan 20 17:47:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 3.3.2

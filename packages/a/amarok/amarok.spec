@@ -1,7 +1,7 @@
 #
 # spec file for package amarok
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,8 +38,10 @@ Patch0:         flac_mimetype_bnc671581.diff
 Patch1:         disable-web-plugins-by-default.patch
 # PATCH-FIX-OPENSUSE
 Patch2:         0001-Work-around-QTBUG-75797-for-openQA.patch
-BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
+# PATCH-FIX-OPENSUSE
+Patch3:         gcc16.patch
 BuildRequires:  fdupes
+BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  libmariadbd-devel
 BuildRequires:  mariadb
 BuildRequires:  pkgconfig
@@ -70,7 +72,6 @@ BuildRequires:  cmake(KF6ThreadWeaver) >= %{kf6_version}
 BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
-BuildRequires:  cmake(lastfm6)
 BuildRequires:  cmake(Mygpo-qt6)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
@@ -83,9 +84,10 @@ BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6SvgWidgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
+BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
-BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
+BuildRequires:  cmake(lastfm6)
 %ifarch x86_64 %{x86_64} aarch64 riscv64
 BuildRequires:  cmake(Qt6WebEngineWidgets) >= %{qt6_version}
 %endif
