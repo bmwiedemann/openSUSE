@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:30:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781620242.0160257:
+  * fix: Fix comment about OVMF firmware locations
+  * fix(test): fix Test::More precedence in autotest
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * feat: Avoid silent fallback to MS certs with `UEFI_PFLASH_CERTS`
+  * fix: Fix enrolling cert in UEFI firmware vars for SecureBoot
+
+-------------------------------------------------------------------
 Fri Jun 05 07:56:11 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1780506677.7bacdcd:
