@@ -53,6 +53,8 @@ Source3:        https://github.com/tlc-pack/libbacktrace/archive/%{libbacktrace_
 Patch1:         lib-finder-python-cmake.patch
 # PATCH-FIX-OPENSUSE tvm-disable-vulkan-test-check.patch -- Cannot test in OBS despite enabled in library
 Patch2:         tvm-disable-vulkan-test-check.patch
+# PATCH-FIX-UPSTREAM - https://github.com/apache/tvm/pull/19786
+Patch3:         tvm-pr19786.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module cloudpickle}

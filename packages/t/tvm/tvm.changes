@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:22:29 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix tests on aarch64:
+  * tvm-pr19786.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 06:26:16 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 -  Update to 0.24.0:

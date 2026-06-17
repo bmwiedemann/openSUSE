@@ -1,0 +1,30 @@
+From 71dfa40ca9b8bae106493887eb9280246820611c Mon Sep 17 00:00:00 2001
+From: tlopex <820958424@qq.com>
+Date: Mon, 15 Jun 2026 23:55:40 -0400
+Subject: [PATCH] [Tests] Make TargetCreation.DeduplicateKeys host-agnostic on
+ AArch64
+
+The test asserted target->attrs.size()==2, which is host-specific: LLVM
+target canonicalization legitimately adds host attrs (feature.has_sve /
+has_asimd / is_aarch64 / mtriple on AArch64), so the target ends up with 9
+attrs there and the assertion fails, while it happens to be 2 on x86. The
+test only means to verify that duplicate keys are deduplicated, so assert
+that the "keys" entry did not leak into the generic attrs map instead of
+pinning the host-specific attr count.
+---
+ tests/cpp/target_test.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/cpp/target_test.cc b/tests/cpp/target_test.cc
+index e6e73e84d626..d842c868d50b 100644
+--- a/tests/cpp/target_test.cc
++++ b/tests/cpp/target_test.cc
+@@ -379,7 +379,7 @@ TEST(TargetCreation, DeduplicateKeys) {
+   TVM_FFI_ICHECK_EQ(target->keys.size(), 2U);
+   TVM_FFI_ICHECK_EQ(target->keys[0], "cpu");
+   TVM_FFI_ICHECK_EQ(target->keys[1], "arm_cpu");
+-  TVM_FFI_ICHECK_EQ(target->attrs.size(), 2U);
++  TVM_FFI_ICHECK_EQ(target->attrs.count("keys"), 0U);
+   TVM_FFI_ICHECK_EQ(target->GetAttr<ffi::String>("device"), "arm_cpu");
+ }
+ 
