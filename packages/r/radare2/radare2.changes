@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 16 15:20:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- switch to python311 for sle15 build
+
+-------------------------------------------------------------------
 Tue May 19 00:36:32 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Add CVE-2026-8695.patch (bsc#1265403) 
+- Add CVE-2026-8695.patch (bsc#1265403)
 
 -------------------------------------------------------------------
 Tue Apr 14 22:46:31 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>

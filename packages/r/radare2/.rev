@@ -153,4 +153,14 @@
     <comment>- Add CVE-2026-8695.patch (bsc#1265403)</comment>
     <requestid>1353910</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>3796eb87c0631f392fb57fd1fc57a244</srcmd5>
+    <version>6.1.4</version>
+    <time>1781705920</time>
+    <user>anag_factory</user>
+    <comment>- switch to python311 for sle15 build
+
+- Add CVE-2026-8695.patch (bsc#1265403)</comment>
+    <requestid>1359803</requestid>
+  </revision>
 </revisionlist>

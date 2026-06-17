@@ -43,7 +43,11 @@ BuildRequires:  file-devel
 BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+%if 0%{?suse_version} == 1500
+BuildRequires:  python311
+%else
 BuildRequires:  python3
+%endif
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libuv)
@@ -107,6 +111,11 @@ mkdir -p test/bins
 tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}
 
 %build
+%if 0%{?suse_version} == 1500
+mkdir my-bin
+ln -s /usr/bin/python3.11 my-bin/python3
+export PATH=$PWD/my-bin:$PATH
+%endif
 %{__meson} subprojects packagefiles --apply
 
 %meson \
