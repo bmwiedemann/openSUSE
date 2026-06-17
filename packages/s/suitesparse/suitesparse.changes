@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 13:45:03 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+-  Don't build with openblas for SLE 16.1
+
+-------------------------------------------------------------------
 Sun Mar  1 20:58:24 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Update to 7.12.2

@@ -23,7 +23,12 @@
 %ifarch m68k
 %bcond_with openblas
 %else
+# For SLE16.1 also no openblas
+%if 0%{?suse_version} >= 1610 && !%{is_opensuse}
+%bcond_with openblas
+%else
 %bcond_without openblas
+%endif
 %endif
 
 Name:           suitesparse
