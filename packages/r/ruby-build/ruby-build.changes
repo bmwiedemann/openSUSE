@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 16 16:20:26 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260616.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260616
+  * Mark Ruby 3.2 as EOL by @CamJN in #2623
+  * Add JRuby 9.4.15.0 by @headius in #2627
+  * Add JRuby 10.0.6.0 by @headius in #2628
+
+-------------------------------------------------------------------
 Wed May 20 21:19:35 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260520.
