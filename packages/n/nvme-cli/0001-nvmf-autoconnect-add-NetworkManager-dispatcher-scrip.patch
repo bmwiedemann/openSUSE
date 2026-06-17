@@ -1,0 +1,107 @@
+From 979201ab0b851ec1df783e544e9008cedd0ad0fd Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Fri, 27 Feb 2026 18:05:41 +0100
+Subject: nvmf-autoconnect: add NetworkManager dispatcher script
+
+If an interface is brought up that is configured in the NVMeoF
+Boot Firmware Table (NBFT), we need to establish possibly missing
+NVMe connections from the NBFT. This can happen if an interface couldn't be
+brought up during initramfs processing, but is activated later on.
+
+Add a NM-dispatcher script that takes care of the connection attempt.
+
+Signed-off-by: Martin Wilck <mwilck@suse.com>
+---
+ meson.build                                   | 16 +++++++++++
+ meson_options.txt                             |  6 +++++
+ .../nm-dispatcher/80-nvmf-connect-nbft.sh.in  | 27 +++++++++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100644 nvmf-autoconnect/nm-dispatcher/80-nvmf-connect-nbft.sh.in
+
+diff --git a/meson.build b/meson.build
+index 0633325742eb..b25e285bd285 100644
+--- a/meson.build
++++ b/meson.build
+@@ -27,6 +27,7 @@ sysconfdir = join_paths(prefixdir, get_option('sysconfdir'))
+ udevrulesdir   = join_paths(prefixdir, get_option('udevrulesdir'))
+ dracutrulesdir = join_paths(prefixdir, get_option('dracutrulesdir'))
+ systemddir     = join_paths(prefixdir, get_option('systemddir'))
++nmdispatchdir  = join_paths(prefixdir, get_option('nmdispatchdir'))
+ rundir         = join_paths(prefixdir, get_option('rundir'))
+ 
+ ###############################################################################
+@@ -280,6 +281,21 @@ foreach file : udev_files
+   )
+ endforeach
+ 
++nm_dispatcher_files = [
++  '80-nvmf-connect-nbft.sh'
++]
++
++foreach file : nm_dispatcher_files
++  configure_file(
++    input: 'nvmf-autoconnect/nm-dispatcher/' + file + '.in',
++    output: file,
++    configuration: substs,
++    install: true,
++    install_mode: 'rwxr-xr-x',
++    install_dir: nmdispatchdir
++  )
++endforeach
++
+ ################################################################################
+ add_project_arguments(['-fomit-frame-pointer', '-D_GNU_SOURCE',
+                        '-include', 'config.h'], language : 'c')
+diff --git a/meson_options.txt b/meson_options.txt
+index c61dae0fff56..d98c11b5de41 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -65,6 +65,12 @@ option(
+   value : 'lib/udev/rules.d',
+   description : 'directory for udev rules files'
+ )
++option(
++  'nmdispatchdir',
++  type : 'string',
++  value : 'lib/NetworkManager/dispatcher.d',
++  description : 'directory for NetworkManager dispatcher scripts'
++)
+ option(
+   'version-tag',
+   type : 'string',
+diff --git a/nvmf-autoconnect/nm-dispatcher/80-nvmf-connect-nbft.sh.in b/nvmf-autoconnect/nm-dispatcher/80-nvmf-connect-nbft.sh.in
+new file mode 100644
+index 000000000000..38b9f88c9883
+--- /dev/null
++++ b/nvmf-autoconnect/nm-dispatcher/80-nvmf-connect-nbft.sh.in
+@@ -0,0 +1,27 @@
++#! /bin/sh
++# SPDX-License-Identifier: GPL-2.0-or-later
++#
++# If an interface is brought up that is configured in the NVMeoF
++# Boot Firmware Table (NBFT), try to establish possibly missing
++# NVMe connections from the NBFT.
++# This can happen if an interface couldn't be brought up during
++# initramfs processing, but is activated later on.
++
++start_nvmf=
++
++if [ "$2" = up ]; then
++    case $1 in
++	nbft*)
++	    start_nvmf=yes
++	    ;;
++    esac
++    case $CONNECTION_ID in
++        "NBFT connection HFI"*)
++	    start_nvmf=yes
++            ;;
++    esac
++fi
++
++if [ "$start_nvmf" ]; then
++    @SYSTEMCTL@ --no-block start nvmf-connect-nbft.service || true
++fi
+-- 
+2.54.0
+

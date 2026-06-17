@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 16 11:54:00 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- fabrics: add helper to update tls and concat (bsc#1259672)
+- nvmf-autoconnect: add NetworkManager dispatcher script (jsc#PED-14314)
+- updated spec:
+  * add 0001-nvmf-autoconnect-add-NetworkManager-dispatcher-scrip.patch
+  * add 0002-fabrics-add-helper-to-update-tls-and-concat.patch
+  * install 80-nvmf-connect-nbft.sh
+
+-------------------------------------------------------------------
 Fri Jan 09 16:22:17 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 2.16:

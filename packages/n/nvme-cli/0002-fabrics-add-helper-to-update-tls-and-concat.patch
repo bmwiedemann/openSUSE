@@ -1,0 +1,77 @@
+From 881f14769acec9a136491a649ee52f455a5c8e20 Mon Sep 17 00:00:00 2001
+From: Daniel Wagner <wagi@kernel.org>
+Date: Thu, 9 Apr 2026 15:17:30 +0200
+Subject: fabrics: add helper to update tls and concat
+
+Only --tls was properly updated in nbft_connect(), and not
+--concat. But this is properly done in nvmf_connect_disc_entry()
+already. So add a helper function to update both --tls and
+--concat and invoke the same from nvmf_connect_disc_entry() and
+nbft_connect() respectively.
+
+Signed-off-by: Martin George <marting@netapp.com>
+[wagi: reformated the function to improve readability]
+(cherry picked from 99dd46fdff25)
+Signed-off-by: Daniel Wagner <wagi@kernel.org>
+(cherry picked from commit 4963779e6b25aa02dd6c1541b6046a59f9ef9607)
+Signed-off-by: Daniel Wagner <dwagner@suse.de>
+---
+ nbft.c | 35 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 30 insertions(+), 5 deletions(-)
+
+diff --git a/nbft.c b/nbft.c
+index b5c82b07ca2b..26758b550656 100644
+--- a/nbft.c
++++ b/nbft.c
+@@ -103,6 +103,34 @@ static bool validate_uri(struct nbft_info_discovery *dd,
+ 	return true;
+ }
+ 
++static void update_tls_concat(struct nvmf_disc_log_entry *e,
++		struct nvme_fabrics_config *cfg)
++{
++	if (e->trtype != NVMF_TRTYPE_TCP ||
++	    e->tsas.tcp.sectype == NVMF_TCP_SECTYPE_NONE)
++		return;
++
++	if (e->treq & NVMF_TREQ_REQUIRED) {
++		fprintf(stderr,
++			"setting --tls due to treq %s and sectype %s\n",
++			nvmf_treq_str(e->treq),
++			nvmf_sectype_str(e->tsas.tcp.sectype));
++
++		cfg->tls = true;
++		return;
++	}
++
++	if (e->treq & NVMF_TREQ_NOT_REQUIRED) {
++		fprintf(stderr,
++			"setting --concat due to treq %s and sectype %s\n",
++			nvmf_treq_str(e->treq),
++			nvmf_sectype_str(e->tsas.tcp.sectype));
++
++		cfg->concat = true;
++		return;
++	}
++}
++
+ /* returns 0 for success or negative errno otherwise */
+ static int do_connect(nvme_root_t r,
+ 		      nvme_host_t h,
+@@ -138,11 +166,8 @@ static int do_connect(nvme_root_t r,
+ 		nvme_init_logging(r, -1, false, false);
+ 	}
+ 
+-	if (e) {
+-		if (e->trtype == NVMF_TRTYPE_TCP &&
+-		    e->tsas.tcp.sectype != NVMF_TCP_SECTYPE_NONE)
+-			cfg->tls = true;
+-	}
++	/* Update tls or concat */
++	update_tls_concat(e, cfg);
+ 
+ 	errno = 0;
+ 	ret = nvmf_add_ctrl(h, c, cfg);
+-- 
+2.54.0
+

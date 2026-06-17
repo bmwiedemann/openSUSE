@@ -27,6 +27,8 @@ Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
 Source1:        nvme-cli-rpmlintrc
+Patch0:         0001-nvmf-autoconnect-add-NetworkManager-dispatcher-scrip.patch
+Patch1:         0002-fabrics-add-helper-to-update-tls-and-concat.patch
 BuildRequires:  asciidoc
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -180,6 +182,9 @@ fi
 %{_unitdir}/nvmf-connect-nbft.service
 %{_unitdir}/nvmf-connect.target
 %{_unitdir}/nvmf-connect@.service
+%dir %{_prefix}/lib/NetworkManager
+%dir %{_prefix}/lib/NetworkManager/dispatcher.d
+%{_prefix}/lib/NetworkManager/dispatcher.d/80-nvmf-connect-nbft.sh
 %dir %{_sysconfdir}/nvme/
 %ghost %{_sysconfdir}/nvme/hostnqn
 %ghost %{_sysconfdir}/nvme/hostid
