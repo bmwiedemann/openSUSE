@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:04:52 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- support unprivileged operation
+
+-------------------------------------------------------------------
+Tue Jun 16 20:28:07 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- fixes for 1.7 (better launcher config; adding synchronizer)
+
+-------------------------------------------------------------------
+Tue Jun 16 19:54:52 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- do not rm /run in the build stage
+
+-------------------------------------------------------------------
 Mon Jun 15 08:02:42 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - improve image cleaning

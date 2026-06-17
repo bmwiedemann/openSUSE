@@ -42,6 +42,13 @@ The template above is then rendered to `/etc/nginx/conf.d/default.conf` as follo
 listen  80;
 ```
 
+## Running nginx as a non-root user
+To run the image as a less privileged user using the `nginx` user, do the following:
+```ShellSession
+$ podman run -it --user nginx --rm -p 8080:8080 -v /path/to/html/:/srv/www/htdocs/:Z registry.opensuse.org/opensuse/nginx:1.31
+```
+**Note:** When running as the `nginx` user the default port is 8080.
+
 ## Environment variables
 
 ### NGINX_ENTRYPOINT_QUIET_LOGS
