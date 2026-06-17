@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 16 17:09:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.155.0
+  - Bugfixes
+    - Limit the to-device EDU size to a reasonable value to
+      mitigate long queues of to-device messages preventing
+      outgoing federation because of the size of the transaction.
+      (#19617)
+    - Work around bug that sometimes breaks joining restricted
+      rooms that require a remote join. Contributed by @tulir @
+      Beeper. (#19730)
+    - Update Sliding Sync to return a new response immediately if a
+      room subscription has changed and produced a new response.
+      (#19734, #19792)
+    - Fix the /capabilities endpoint returning a 500 error on
+      non-media workers when MSC4452: Preview URL capabilities API
+      is enabled. (#19839)
+  - Improved Documentation
+    - Document how to see Rust build failure output when using
+      poetry install. (#19818)
+    - Document that the SQLite version included in Ubuntu LTS,
+      aside from ESM-only versions, is included in our support
+      policy. (#19823)
+  - Internal Changes
+    - Port the Python Event classes to Rust. (#19701, #19816,
+      #19817, #19819)
+    - Added tests to ensure that email notification links are
+      sanitized. Contributed by Noah Markert. (#19741)
+    - Add GcpJsonFormatter logging formatter for use with Google
+      Cloud Logging and GKE deployments. (#19775)
+    - Add more logging to the to-device message replication stream.
+      (#19801, #19821)
+    - Port Requester class to Rust. (#19828)
+
+-------------------------------------------------------------------
 Fri Jun 12 13:08:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Fix patching of shebang lines and the service file to use the

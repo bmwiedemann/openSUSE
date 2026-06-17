@@ -1746,4 +1746,43 @@ mostly-working synapse than nothing at all) and the package has been update to
 - disable poetry mode on 16.x</comment>
     <requestid>1358985</requestid>
   </revision>
+  <revision rev="161" vrev="1">
+    <srcmd5>dc6c3d618890a7ac3f4374e7d72b961c</srcmd5>
+    <version>1.155.0</version>
+    <time>1781705942</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1359813 from darix
+
+- Update to 1.155.0
+  - Bugfixes
+    - Limit the to-device EDU size to a reasonable value to
+      mitigate long queues of to-device messages preventing
+      outgoing federation because of the size of the transaction.
+      (#19617)
+    - Work around bug that sometimes breaks joining restricted
+      rooms that require a remote join. Contributed by @tulir @
+      Beeper. (#19730)
+    - Update Sliding Sync to return a new response immediately if a
+      room subscription has changed and produced a new response.
+      (#19734, #19792)
+    - Fix the /capabilities endpoint returning a 500 error on
+      non-media workers when MSC4452: Preview URL capabilities API
+      is enabled. (#19839)
+  - Improved Documentation
+    - Document how to see Rust build failure output when using
+      poetry install. (#19818)
+    - Document that the SQLite version included in Ubuntu LTS,
+      aside from ESM-only versions, is included in our support
+      policy. (#19823)
+  - Internal Changes
+    - Port the Python Event classes to Rust. (#19701, #19816,
+      #19817, #19819)
+    - Added tests to ensure that email notification links are
+      sanitized. Contributed by Noah Markert. (#19741)
+    - Add GcpJsonFormatter logging formatter for use with Google
+      Cloud Logging and GKE deployments. (#19775)
+    - Add more logging to the to-device message replication stream.
+      (#19801, #19821)</comment>
+    <requestid>1359815</requestid>
+  </revision>
 </revisionlist>
