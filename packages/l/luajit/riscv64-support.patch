@@ -6553,7 +6553,7 @@ Index: luajit2-2.1-20250826/src/vm_riscv64.dasc
 ===================================================================
 --- /dev/null
 +++ luajit2-2.1-20250826/src/vm_riscv64.dasc
-@@ -0,0 +1,4813 @@
+@@ -0,0 +1,4815 @@
 +|// Low-level VM code for RISC-V 64 CPUs.
 +|// Bytecode interpreter, fast functions and helper functions.
 +|// Copyright (C) 2005-2025 Mike Pall. See Copyright Notice in luajit.h
@@ -9396,8 +9396,10 @@ Index: luajit2-2.1-20250826/src/vm_riscv64.dasc
 +    |  // Check if RA or RD is a cdata.
 +    |  xori TMP0, CARG3, LJ_TCDATA
 +    |  xori TMP1, CARG4, LJ_TCDATA
-+    |  and TMP0, TMP0, TMP1
-+    |  bxeqz TMP0, ->vmeta_equal_cd
++    |  seqz TMP0, TMP0
++    |  seqz TMP1, TMP1
++    |  or TMP0, TMP0, TMP1
++    |  bxnez TMP0, ->vmeta_equal_cd
 +    |.endif
 +    |  lui TMP3, (-(BCBIAS_J*4 >> 12)) & 0xfffff		// -BCBIAS_J*4
 +    |  decode_BC4b TMP2

@@ -532,4 +532,13 @@
 - loong64-support.patch: rediff</comment>
     <requestid>1314054</requestid>
   </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>798308a0c26854527dd8fbb47149a8fa</srcmd5>
+    <version>2.1.20250826</version>
+    <time>1781705778</time>
+    <user>anag_factory</user>
+    <comment>- riscv64-support.patch: apply bugfix from
+  openresty/luajit2/pull/236#issuecomment-4706366520</comment>
+    <requestid>1359644</requestid>
+  </revision>
 </revisionlist>
