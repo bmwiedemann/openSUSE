@@ -17,7 +17,7 @@
 
 
 Name:           facetimehd
-Version:        0.7.0.1
+Version:        0.7.0.2
 Release:        0
 Summary:        Kernel driver for the Apple FacetimeHD webcams
 License:        GPL-2.0-only

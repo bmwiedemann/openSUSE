@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 08:30:50 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
+
+- Update to version 0.7.0.2
+  * Fixes apps that need sequence and timestamps (PipeWire / gstreamer)
+
+-------------------------------------------------------------------
 Fri Apr 17 09:55:51 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Update to version 0.7.0.1
