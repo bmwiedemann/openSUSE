@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jun 16 06:27:59 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update tp version 5.2.2
+  Added features:
+  * Use D-Bus to show file in file managers
+  Bug fixes:
+  * Fix friendlyUnitCompact precision calculation
+  * Remove all top-level folders
+  * Use proper API for checking exit status
+  * Delete stale lockfile when hostname mismatch
+  * Fix wrong removal procedure of watched folder paths
+  * Don't reannounce before interface changes are applied
+  * Use Latin script for Bosnian locale name
+  Web UI:
+  * Fix performance of global checkbox toggling
+  * Fix Safari transfer list header misalignment
+  * Fix error when submitting magnet before metadata loads
+  * Use correct row id when updating Rss Downloader feed selection
+  * Use SameSite=Lax for session cookie to fix cross-site login
+  * Bring back properties panel expand/collapse button
+  Web API:
+  * Only use X-Forwarded-Host header when reverse proxy support is
+    enabled
+  RSS:
+  * Fix "RSS Smart Episode Filter" RegEx
+  * Fix previously matched episode format
+
+-------------------------------------------------------------------
 Tue May 26 04:46:41 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.2.1
