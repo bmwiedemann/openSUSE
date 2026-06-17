@@ -1,4 +1,717 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:43:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.26.0
+  * Added
+    + Add a new ConfigurationFactory::getConfiguration method
+      accepting multiple URIs
+    + Add and export org.apache.logging.log4j.core.pattern
+      .NamedInstantPattern enabling users to programmatically access
+      named date & time patterns supported by Pattern Layout
+    + Add log4j.plugin.processor.minAllowedMessageKind annotation
+      processor option to PluginProcessor to filter diagnostic
+      messages by severity. This allows builds that treat compiler
+      notes as errors (e.g. Maven with -Werror) to suppress
+      informational notes emitted during normal plugin processing
+    + Add missing setters to Rfc5424LayoutBuilder
+  * Changed
+    + Ensure scripts in the global Scripts element have explicit
+      names by throwing a ConfigurationException for unnamed ones
+    + Simplify file manager registry factory methods
+  * Deprecated
+    + Deprecated withers in builder classes in favor of setters.
+      This change improves API consistency with Log4j Core 3 and
+      helps users adapt to the upcoming changes
+  * Fixed
+    + Fix script resolution failure when the Scripts element is
+      placed after a ScriptRef in the configuration
+    + Fix ArrayIndexOutOfBoundsException thrown by
+      ThrowableStackTraceRenderer when the stack trace is modified
+      concurrently
+    + Fix SLF4JLogger.atFatal() returning atLevel(Level.TRACE)
+      instead of atLevel(Level.FATAL). This was causing FATAL-level
+      log events to be silently discarded when using the fluent API
+      through the log4j-to-slf4j bridge
+    + Fix Javadoc references across module boundaries (i.e.,
+      cross-references)
+    + Fix header write in RollingRandomAccessFileManager that was
+      being incorrectly skipped if append=true and the file didn't
+      exist before
+    + Fix a properties file configuration regression caused by not
+      referenced loggers, appenders, and filters
+  * Removed
+    + Remove the jvmrunargs lookup.
+  * Updated
+    + Update org.junit:junit-bom to version 5.13.4
+    + Update org.mongodb:bson to version 5.6.1
+    + Update org.xerial.snappy:snappy-java to version 1.1.10.8
+
+-------------------------------------------------------------------
+Tue Jun 16 14:27:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.25.4
+  * Fixed
+    + Don't issue warnings if extra argument in parameterized
+      logging is null
+    + Restore support for documented Rfc5424Layout parameter names
+    + Take Throwable#toString() into account while rendering stack
+      traces in Pattern Layout
+    + Added debug level logs for successful resource loading in
+      Loader class
+    + Align SslConfiguration factory method usage with Log4j 2.12+
+      API. The verifyHostname attribute is now correctly recognized
+      (bsc#1262050, CVE-2026-34477)
+    + Fix sanitization of structured data parameter names in RFC5424
+      layout
+    + Replace invalid characters in XmlLayout output with the
+      Unicode replacement character (U+FFFD)
+      (bsc#1262092, CVE-2026-34480)
+    + Replace invalid characters in Log4j1XmlLayout output with the
+      Unicode replacement character (U+FFFD)
+      (bsc#1262091, log4j-CVE-2026-34479)
+    + Replace invalid characters in MapMessage.asXml() output with
+      the Unicode replacement character (U+FFFD)
+    + Write non-finite floating-point numbers as strings in
+      JsonWriter (bsc#1262093, CVE-2026-34481)
+- Removed patches:
+  * 0002-Remove-usage-of-toolchains.patch
+  * log4j-CVE-2026-34477.patch
+  * log4j-CVE-2026-34479.patch
+  * log4j-CVE-2026-34480.patch
+  * log4j-CVE-2026-34481.patch
+  * log4j-jackson-databind.patch
+  * logging-log4j-Remove-unsupported-EventDataConverter.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Tue Jun 16 14:24:06 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.25.3
+  * Changed
+    + Optimize DefaultThreadContextMap.getCopy() performance by
+      avoiding megamorphic calls in HashMap constructor
+  * Fixed
+    + Fix GraalVM metadata for nested classes to use binary names
+      instead of canonical names
+    + Fix failures caused by null SslConfiguration
+    + Fix incorrect handling of the host name verification in
+      SSL/TLS configuration, which is used by Socket Appender when
+      SSL/TLS is enabled (bsc#1255427, CVE-2025-68161)
+  * Removed
+    + Remove the com.github.spotbugs:spotbugs-annotations dependency
+- Removed patch:
+  * log4j-CVE-2025-68161.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Tue Jun 16 14:19:45 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.25.2
+  * Fixed
+    + Fix potential memory leak involving LogBuilder in Log4j API to
+      Logback bridge
+    + Prevent unnecessary warnings in
+      AbstractDriverManagerConnectionSource
+    + Fix missing newlines in default logging configuration for
+      log4j-core
+    + Fix missing default Target value in Console Appender
+    + Discard the sub-second part while obtaining the initial time
+      (i.e., creation time) of a file in RollingFileManager
+    + Fix Pattern Layout exception stack trace converters to no
+      longer prepend newlines based on context
+    + Fix the com.google.errorprone:error_prone_annotations
+      dependency whose version property gets erased due to
+      flattening
+    + Fix detection of Throwable converters inside nested Pattern
+      Layout patterns when applying alwaysWriteExceptions
+    + Fix parsing and merging of literals in
+      InstantPatternDynamicFormatter
+
+-------------------------------------------------------------------
+Tue Jun 16 14:15:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.25.1
+  * Fixed
+    + Fix detection of the Disruptor major version in environments
+      with non-standard thread context classloader
+    + Downgrade spotbugs-annotations to resolve Gradle build
+      failures
+    + Fix incorrect version resolution of jspecify and
+      error_prone_annotations dependencies in published POM files
+    + Restore compatibility with Spring Boot by allowing
+      reconfiguration using the LoggerContext.start method
+    + Allow omission of the -Alog4j.graalvm.groupId and
+      -Alog4j.graalvm.artifactId arguments when building Log4j
+      plugins
+    + Broaden the OSGi manifest's Import-Package constraints to
+      support Jakarta Servlet API up to version 6.
+    + Enable the resource: protocol for configuration files by
+      default when running on GraalVM.
+    + Fix timestamp formatting concurrency issue, when
+      log4j2.enabledThreadlocals is true
+    + Fix GraalVM reachability metadata generation for methods with
+      annotated array type parameters, such as @Nullable String[]
+    + Resolve PropertiesConfiguration compatibility issues with
+      GraalVM and address additional minor reflection-related
+      problems
+    + Fixes NullPointerException thrown by
+      ThrowableStackTraceRenderer when suppressed exceptions are
+      mutated concurrently
+
+-------------------------------------------------------------------
+Tue Jun 16 13:56:10 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.25.0
+  * Added
+    + Add Google OSS-Fuzz integration
+    + Add a GraalVmProcessor annotation processor to generate
+      GraalVM reachability metadata.
+    + Add MonitorResource configuration option to support the
+      monitoring of external files in addition to the configuration
+      file itself.
+    + Fixed typo in "LoggerConfig.RootLogger
+      .Builder#withtFilter(...​)" method. Created new corrected
+      'withFilter()' method and deprecated old method.
+    + Add collectionName and databaseName arguments to the MongoDB
+      appender
+  * Changed
+    + Remove JAnsi library support. Windows 10 console has supported
+      ANSI escapes since 2017
+    + Consolidate exception rendering logic and improve circular
+      reference support in Pattern Layout
+    + Rewrite JAnsiTextRenderer to work without JAnsi library
+    + Switch prefixing stack traces in Pattern Layout from
+      whitespace to newline
+    + Changes the layout used by the default configuration.
+    + Switch to using Java's DateTimeFormatter for date & time
+      formatting of log event instants
+    + Switch the default exception converter from the extended
+      exception converter to the plain exception converter
+    + Don't close StringReaders because of batching.
+    + Switch prefixing stack traces in Status Logger from whitespace
+      to newline
+    + The MongoDb Appender shouldn't log a deprecation warning,
+    + Add improved validation to StringMatchFilter for null/empty
+      text
+    + Currently Java 8 users do not have access to timestamps with
+      sub-millisecond precision. This change moves the SystemClock
+      implementation from log4j-core-java9 to log4j-core, overriding
+      the current one, so that java 8 users can benefit from it.
+    + Don't overwrite configured configuration name if the
+      configuration has no loggers / no root logger.
+    + Update GcpLayout.json JSON Template Layout event template to
+      support automatic timestamp recognition by the Google Cloud
+      Logging. This also changes exception, thread, logger fields,
+      and removes insertId field.
+    + Have org.apache.logging.log4j.util.Base64Util invoke
+      java.util.Base64 directly instead of reflectively.
+    + Improve implementations of LogEvent.toImmutable() and
+      ReusableMessage.memento() and remove usage of ThrowableProxy
+  * Deprecated
+    + Deprecate ThrowableProxy and all its usages
+    + Deprecate AbstractLogger.checkMessageFactory(), since all
+      created Loggers are already MessageFactory-namespaced
+    + Deprecated FixedDateTime, FastDateTime, and supporting classes
+    + Use hard references to Loggers in LoggerRegistry
+  * Fixed
+    + Switch MongoDB tests to use Docker.
+    + Add a Jakarta-based JMS Appender module log4j-jakarta-jms and
+      deprecate the Javax version
+    + Fix RollingFileManager to reopen the log file when the
+      rollover was unsuccessful
+    + Fix certain exception rendering issues in Pattern Layout
+    + Reload key & trust stores while reconfiguring network
+      appenders containing a TLS (formerly known as SSL)
+      configuration
+    + Simplify the SSLContext instantiation for the TLS (formerly
+      known as SSL) configuration
+    + Adding a compilation warning for Plugin Builder Attributes
+      that do not have a public setter.
+    + Fix reloading of the configuration from an HTTP(S) source
+    + Fix putAll() in the default thread context map implementation
+    + Improves validation of HTTP Appender.
+    + Fix getLogger() source incompatibility in Log4j 1 to Log4j 2
+      API Bridge (i.e., log4j-1.2-api)
+    + Fix property extraction from the root exception in Pattern
+      Layout
+    + Fix key removal issues in Thread Context
+    + Fix Android-related issues in Log4j Core.
+    + Fix the leak of non-Log4j dependencies in log4j-bom
+    + Fix the conversion of o.a.l.Priority classes to Log4j 2 levels
+    + Ensures synchronization between j.u.l.Logger.getLevel() and
+      j.u.l.Logger.setLevel() methods.
+    + Add improved validation to AsyncWaitStrategyFactoryConfig for
+      null/empty factoryClassName.
+    + Fix NullPointerException when using rootLogger = LEVEL
+      shorthand in properties without appender.
+    + Fix ArrayIndexOutOfBoundsException in JSON Template Layout
+      truncated exception resolver
+    + Properly handle null 'replacement' parameter in
+      RegexReplacement#createRegexReplacement.
+    + Fix detection of location requirements in AsyncAppender.
+    + Fix detection of location requirements in FailoverAppender.
+    + Corrected @return javadoc for AbstractFilterable#isFiltered()
+    + TypeConverters convert for "Level" incorrectly documented
+      behaviour for invalid value - updated javadoc.
+    + Fix loading of the effective RecyclerFactoryConverter in JSON
+      Template Layout
+    + Minimize lock usage in InternalLoggerRegistry.
+    + Improved expunging of stale entries in InternalLoggerRegistry
+      to prevent potential memory leaks
+    + Make annotation libraries visible transitively at compile time
+      for Gradle users through Gradle Module Metadata and for JPMS
+      users through requires static directives in module-info.java
+      files
+    + Fix shutdownDisable configuration does not take effect
+    + Fix ArrayIndexOutOfBoundsException on
+      StatusData#getFormattedStatus.
+    + Deprecate or remove static hiding methods.
+    + Verify the capability of SecurityManager so that platforms not
+      (fully) supporting it will not poison the stack trace
+    + Improve performance and avoid memory consumption if logging
+      primitive arrays as parameters
+    + Fix ArrayIndexOutOfBoundsException on invocation of Message
+      .getFormattedMessage() when any thread has no stack trace,
+      which occurs on some JVM implementations
+    + StatusLogger now writes to standard error by default. This
+      fixes a regression introduced in 2.23.0
+    + The ReadOnlyStringMap implementations now support equality
+      comparisons against each other
+    + Fixes OSGi descriptor to accept Disruptor 4
+    + Avoid surrogate character handling in JsonWriter
+  * Removed
+    + Remove support for the {ansi} option in Pattern Layout
+      exception converters
+  * Updated
+    + Update actions/stale to version 9.1.0
+    + Update ch.qos.logback:logback-core to version 1.3.15
+    + Update com.fasterxml.jackson:jackson-bom to version 2.19.0
+    + Update com.github.spotbugs:spotbugs-annotations to version
+      4.9.3
+    + Update io.fabric8:docker-maven-plugin to version 0.46.0
+    + Update org.apache.cassandra:cassandra-all to version 3.11.19
+    + Update org.apache.commons:commons-csv to version 1.14.0
+    + Update org.apache.commons:commons-dbcp2 to version 2.13.0
+    + Update org.apache.commons:commons-pool2 to version 2.12.1
+    + Update org.apache.kafka:kafka-clients to version 3.9.1
+    + Update org.apache.logging:logging-parent to version 12.1.1
+    + Update org.apache.tomcat:tomcat-juli to version 10.1.30
+    + Update org.eclipse.jetty:jetty-util to version
+      9.4.57.v20241219
+    + Update org.jmdns:jmdns to version 3.6.1
+    + Update org.mongodb:bson to version 5.5.1
+    + Update org.slf4j:slf4j-api to version 2.0.17
+    + Update org.springframework.cloud:spring-cloud-context to
+      version 4.3.0
+
+-------------------------------------------------------------------
+Tue Jun 16 13:54:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.24.3
+  * Fixed
+    + Fix ConcurrentModificationException, if multiple threads
+      modify loggers concurrently. This bug affects users that
+      modify logger levels programmatically
+    + Fix for RegexCreator NPE, the constructor expects a boolean
+      primitive, but the createFilter static method was boxed.
+      Fixed that to remove the NPE issues
+    + Protects PropertiesUtil against property sources that call
+      PropertiesUtil recursively. In some cases such a property
+      source can even cause deadlocks
+
+-------------------------------------------------------------------
+Tue Jun 16 13:52:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.24.2
+  * Fixed
+    + Fix key removal issues in Thread Context
+    + Use hard references to Loggers in LoggerRegistry
+    + Fix ArrayIndexOutOfBoundsException in JSON Template Layout
+      truncated exception resolver
+
+-------------------------------------------------------------------
+Tue Jun 16 13:50:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.24.1
+  * Changed
+    + Rework LoggerRegistry to make it MessageFactory-namespaced.
+      This effectively allows loggers of same name, but different
+      message factory
+    + Enable Docker-based tests in CI for JSON Template Layout
+  * Fixed
+    + Switch MongoDB tests to use Docker.
+    + Fix reloading of the configuration from an HTTP(S) source
+    + Fix putAll() in the default thread context map implementation
+  * Updated
+    + Update org.apache.logging:logging-parent to version 11.3.0
+
+-------------------------------------------------------------------
+Tue Jun 16 13:41:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.24.0
+  * Added
+    + Add a faster DefaultThreadContextMap implementation
+    + Add Logback throwable-consuming semantics as an option in
+      log4j-slf4j-impl and log4j-slf4j2-impl. Users can enable it by
+      setting the property log4j2.messageFactory to org.apache
+      .logging.slf4j.message.ThrowableConsumingMessageFactory
+    + Add trace context fields to GcpLayout.json
+    + Add "Plugin Reference" to the website. It is a
+      Javadoc-on-steroids focusing on Log4j plugins
+    + Automate website deployment using the new CI infrastructure
+      shipped with org.apache.logging:logging-parent:11.0.0
+  * Changed
+    + Fix usage of log4j-api in GraalVM without additional
+      reachability data
+    + Ignore exceptions thrown by PropertySources
+    + Add logging to PropertiesUtil and fix Duration parser
+    + Disable level modification via JUL by default
+    + Centralize initialization in the Provider class and deprecate
+      the log4j2.loggerContextFactory property
+    + Remove log4j-kubernetes lookup. User should migrate to
+      io.fabric8:kubernetes-log4j
+    + Disable JMX support by default. Requires log4j2.disableJmx to
+      be set to false to enable JMX support
+    + Replace some usages of DateTimeFormatter#toString() with
+      DateTimeFormatter#formatTo(StringBuilder) to cut down on
+      allocations
+    + Disable programmatic configuration in Log4j 1 Bridge if
+      log4j1.compatibility is false
+    + Improve missing plugin descriptor warnings
+    + Remove configuration properties caching and (undocumented)
+      fuzzy property name matching
+    + Fixes property source ordering to account for different
+      sources with the same priority
+    + Prioritize user-defined values of log4j2.enableThreadlocals,
+      log4j2.garbagefreeThreadContextMap and
+      log4j2.shutdownHookEnabled over the value of log4j2.isWebapp
+    + Disallow duplicate keys in JSON Template Layout templates
+    + Deprecate log4j2.defaultStatusLevel property in Log4j Core in
+      favor of log4j2.statusLoggerLevel
+  * Deprecated
+    + Deprecate Message#getFormat() due to unclear semantics and
+      inconsistent implementations
+    + Deprecate org.apache.logging.log4j.EventLogger for removal
+    + Deprecate org.apache.logging.log4j.core.appender.rolling
+      .action.Duration class for removal
+    + Deprecate the log4j-mongodb4 module in favor of log4j-mongodb
+  * Fixed
+    + Use FQDN in RFC5424 Layout
+    + Fix custom thread-context data provider handling in lookups
+      and filters
+    + Fix handling of log4j2.messageFactory and
+      log4j2.flowMessageFactory properties
+    + Discard blank keys in PropertiesUtil
+    + Fix handling of log4j2.debug
+    + Fix location requirement for the %F and %file keys in Pattern
+      Layout
+    + Fix JsonLayout failure under JPMS
+    + Fix empty string handling for TruncatingBufferedWriter
+    + Fix that parameterized message formatting throws an exception
+      when there are insufficient number of parameters. It
+      previously simply didn't replace the '{}' sequence. The
+      behavior changed in 2.21.0 and should be restored for backward
+      compatibility
+    + Fix ClassCastException in LMAX Disruptor 3 initialization
+    + Fix requirement on the java.management module when JMX is
+      disabled, which is the default
+    + Website is migrated to Antora with several formatting and link
+      fixes
+  * Removed
+    + Move Flume Appender to its own release lifecycle
+  * Updated
+    + Add module log4j-mongodb to track the current MongoDB driver
+      (currently version 5)
+    + Remove module log4j-mongodb3, use log4j-mongodb instead,
+      log4j-mongodb4 is deprecated for removal
+    + Update com.fasterxml.jackson:jackson-bom to version 2.17.2
+    + Update com.github.luben:zstd-jni to version 1.5.6-5
+    + Update commons-codec:commons-codec to version 1.17.1
+    + Update commons-logging:commons-logging to version 1.3.4
+    + Update github/codeql-action to version 3.25.1
+    + Update io.fabric8:docker-maven-plugin to version 0.45.0
+    + Update org.apache.cassandra:cassandra-all to version 3.11.17
+    + Update org.apache.commons:commons-compress to version 1.27.1
+    + Update org.apache.commons:commons-csv to version 1.11.0
+    + Update org.apache.commons:commons-lang3 to version 3.17.0
+    + Update org.apache.kafka:kafka-clients to version 3.8.0
+    + Update org.apache.logging:logging-parent to version 11.2.0
+    + Update org.eclipse.jetty:jetty-bom to version 9.4.56.v20240826
+    + Update org.jctools:jctools-core to version 4.0.5
+    + Update log4j-mongodb4 org.mongodb:* from 4.11.1 to 4.11.2
+    + Update org.mongodb:bson to version 4.11.4
+    + Update org.slf4j:slf4j-api to version 2.0.16
+    + Update org.springframework:spring-framework-bom to version
+      5.3.39
+
+-------------------------------------------------------------------
+Tue Jun 16 13:37:10 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.23.1
+  * Changed
+    + Fix handling of LoggerContextAware lookups
+    + Fix NPE in PatternProcessor for a UNIX_MILLIS pattern
+    + Improve performance of CloseableThreadContext#closeMap()
+  * Fixed
+    + Fix that parameterized message formatting doesn't throw an
+      exception when there are insufficient number of parameters
+    + Fix StatusLogger log level filtering when debug mode is
+      enabled
+    + Add log4j2.statusLoggerDateFormatZone system property to set
+      the time-zone StatusLogger uses to format java.time.Instant.
+      Without this, formatting patterns accessing to
+      time-zone-specific fields (e.g., year-of-era) cause failures.
+    + Fix StatusLogger to correctly read
+      log4j2.StatusLogger.properties resource
+    + Fix stack overflow in StatusLogger
+  * Updated
+    + Update jakarta.activation:jakarta.activation-api to version
+      2.1.3
+    + Update jakarta.mail:jakarta.mail-api to version 2.1.3
+    + Update org.apache.commons:commons-compress to version 1.26.0
+    + Update org.apache.commons:commons-dbcp2 to version 2.12.0
+    + Update org.apache.kafka:kafka-clients to version 3.7.0
+    + Update org.eclipse.angus:angus-activation to version 2.0.2
+    + Update org.eclipse.angus:jakarta.mail to version 2.0.3
+
+-------------------------------------------------------------------
+Tue Jun 16 13:32:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.23.0
+  * Added
+    + Added support for LMAX Disruptor 4.x
+  * Changed
+    + Make StatusLogger self-contained and testable
+    + Simplify BND configuration after upgrade from version 6.4.1 to
+      7.0.0
+  * Deprecated
+    + Deprecate the configuration attribute verbose (i.e.,
+      <Configuration verbose="...​") and StatusConsoleListener filters
+    + Deprecated the RingBufferLogEventHandler class for removal
+      from the public API in 3.x
+  * Fixed
+    + Fix regression in JdkMapAdapterStringMap performance
+    + Fix the behavior of Logger#setLevel and Logger#getLevel in the
+      Log4j 1.2 bridge
+    + Fix the behavior of CoreLogger#getLevel and
+      CoreLogger#setLevel in the log4j-jul module
+    + Allow deserialization of all arrays of allowed classes
+    + Allow the <Properties> node to appear in any position in the
+      configuration element
+    + Fix forgotten threadName field in RingBufferLogEvent#clear()
+    + Fix StringBuilder cache corruption on recursive access
+    + Fixed use of SecurityManager in LoaderUtil where
+      AccessController::doPrivileged should only be invoked when a
+      SecurityManager is installed. Some runtimes do not seem to
+      have this method available
+    + Fix log4j-spring-cloud-config-client dependencies to include
+      only those required
+    + Fix typo in Kubernetes clientKeyData configuration property
+  * Updated
+    + Update com.fasterxml.jackson:jackson-bom to version 2.16.1
+    + Update commons-codec:commons-codec to version 1.16.1
+    + Update io.netty:netty-bom to version 4.1.107.Final
+    + Update org.apache.logging:logging-parent to version 10.6.0
+    + Update org.eclipse.jetty:jetty-bom to version 9.4.54.v20240208
+    + Update org.jctools:jctools-core to version 4.0.3
+    + Update org.springframework:spring-framework-bom to version
+      5.3.32
+    + Update org.zeromq:jeromq to version 0.6.0
+
+-------------------------------------------------------------------
+Tue Jun 16 13:28:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.22.1
+  * Fixed
+    + Mark JdkMapAdapterStringMap as frozen if map is immutable
+    + Fix NPE in CloseableThreadContext
+    + Use the module name of Conversant Media Disruptor from
+      version 1.2.16+ of the library
+    + Fix NPE in RollingFileManager
+    + Fix log4j-to-slf4j JPMS and OSGi descriptors
+    + Workaround a Coursier/Ivy dependency resolution bug affecting
+      log4j-slf4j-impl and log4j-mongodb3
+  * Updated
+    + Bumped the minimum Java version required for the build to
+      Java 17. Runtime requirements remain unchanged
+    + Update com.github.luben:zstd-jni to version 1.5.5-11
+    + Update com.google.guava:guava to version 33.0.0-jre
+    + Update commons-codec:commons-codec to version 1.16.0
+    + Update commons-io:commons-io to version 2.15.1
+    + Update commons-logging:commons-logging to version 1.3.0
+    + Update io.netty:netty-bom to version 4.1.104.Final
+    + Update org.apache.commons:commons-compress to version 1.25.0
+    + Update org.apache.commons:commons-dbcp2 to version 2.11.0
+    + Update org.apache.commons:commons-lang3 to version 3.14.0
+    + Update org.apache.commons:commons-pool2 to version 2.12.0
+    + Update org.apache.kafka:kafka-clients to version 3.6.1
+    + Update org.apache.logging:logging-parent to version 10.5.0
+    + Update org.jctools:jctools-core to version 4.0.2
+    + Update org.springframework.boot:spring-boot to version 2.7.18
+    + Update org.springframework.cloud:spring-cloud-dependencies to
+      version 2021.0.9
+
+-------------------------------------------------------------------
+Tue Jun 16 13:21:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.22.0
+  * Changed
+    + Change the order of evaluation of FormattedMessage formatters.
+      Messages are evaluated using java.util.Format only if they
+      don't comply to the java.text.MessageFormat or
+      ParameterizedMessage format
+    + Change default encoding of HTTP Basic Authentication to UTF-8
+      and add log4j2.configurationAuthorizationEncoding property to
+      overwrite it
+  * Fixed
+    + Harden deserialization process by requiring the usage of
+      FilteredObjectInputStream on Java 8 and ObjectInputFilter on
+      Java 9+ to deserialize custom classes
+    + Fix MDC pattern converter causing issues for %notEmpty
+    + Export missing OSGi & JPMS modules in
+      log4j-layout-template-json and log4j-1.2-api
+    + Fix spring-test dependency scope change
+    + Fix JPMS descriptors causing jlink issues
+    + Add missing Implementation- and Specification- entries to
+      MANIFEST.MF (implemented by logging-parent version 10.3.0
+      update)
+    + Fix NotSerializableException thrown when Logger is serialized
+      with a ReusableMessageFactory
+  * Removed
+    + Removed unused FastDateParser which was causing unnecessary
+      heap overhead
+  * Updated
+    + Update com.fasterxml.jackson:jackson-bom to version 2.16.0
+    + Update com.github.luben:zstd-jni to version 1.5.5-10
+    + Update com.google.guava:guava to version 32.1.3-jre
+    + Update io.netty:netty-bom to version 4.1.101.Final
+    + Update org.eclipse.persistence:org.eclipse.persistence.jpa to
+      version 2.7.13
+    + Update org.fusesource.jansi:jansi to version 2.4.1
+    + Update org.mongodb:bson to version 4.11.1
+    + Update org.springframework:spring-framework-bom to version
+      5.3.30
+    + Update org.springframework.boot:spring-boot to version 2.7.17
+    + Update org.springframework:spring-framework-bom to version
+      5.3.31
+    + Update org.zeromq:jeromq to version 0.5.4
+
+-------------------------------------------------------------------
+Tue Jun 16 13:20:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.21.1
+  * Fixed
+    + Fixes the Apache Commons Logging (JCL) bridge: log4j-jcl
+
+-------------------------------------------------------------------
+Tue Jun 16 13:03:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.21.0
+  * Added
+    + Added marker parent support to JsonTemplateLayout
+    + Added ZStandard compression support
+    + Added a warning for incorrect syntax of highlighting styles
+  * Changed
+    + Open FileExtension methods to allow their usage in custom
+      RolloverStrategys
+    + Bumped the minimum Java version required for the build to
+      JDK 11. Runtime requirements remain unchanged
+    + Set the default minLevel and maxLevel of LevelRangeFilter to
+      OFF and ALL, respectively
+    + Removed additional isFiltered checks in AsyncLoggerConfig
+    + Use Java version-specific warnings in StackLocator
+    + Started logging a status error event instead of an NPE in
+      OsgiServiceLocator.loadServices(Class, Lookup, boolean) when a
+      bundle has no valid BundleContext for a service type
+    + Implemented a CI-based release process
+  * Fixed
+    + Added validation to rolling file manager path conditions
+    + Adapted the OSGi metadata of log4j-to-slf4j to work with
+      SLF4J 1 and 2. To achieve that used a version range of [1.7,3)
+      for the imported SLF4J packages
+    + Fixed Javadoc failures
+    + Removed locale-dependent toLowerCase/toUpperCase calls
+    + Redirected old /<module>/apidocs URLs
+    + Added environment variable arbiter
+    + Fixed logging of java.sql.Date objects by appending it before
+      Log4J tries to call java.util.Date.toInstant() on it
+    + Adapted the OSGi metadata of log4j-api, log4j-core,
+      log4j-slf4j-impl and log4j-slf4j2-impl to activate the bundle
+      when it is accessed. To achieve that set the
+      Bundle-ActivationPolicy to lazy for the log4j bundles
+    + Avoided using released objects in StackTraceStringResolver of
+      JsonTemplateLayout
+    + Added missing setter for connectionStringSource in
+      MongoDb4Provider builder
+    + Fixed NPE in PluginElementVisitor
+    + Added columnType as alias for the column mapping type attribute
+    + Restored Log4jMarker visibility in SLF4J adapters
+    + Fixed buffer size in Log4jFixedFormatter date time formatter
+    + Fixed the propagation of synchronous action failures in
+      RollingFileManager and FileRenameAction
+    + Fixed RollingFileManager to propagate failed synchronous
+      actions correctly
+    + Replaced the usage of System.out in StackLocator for warnings
+      with System.err
+    + Fixed concurrent date-time formatting issue in PatternLayout
+    + Fixed runtime dependencies documentation
+    + Allowed to override FQCN in Log4jEventBuilder by implementing
+      CallerBoundaryAware
+    + Migrated MongoDB tests to JUnit 5 and Flapdoodle Embedded
+      MongoDB 4
+    + Rewrote message parameter formatter with improved escape
+      handling
+    + Improved formatting and serialization of StackTraceElement on
+      JDK 9+
+    + Fixed MemoryMappedFileAppender buffer unmapping on JRE 9+
+    + Fixed rollover strategy in the Log4j 1.x compatibility layer
+    + Removed incorrect mention of base64 lookup and improve the
+      rest of the lookup manual
+    + Implemented LocationAware for JsonTemplateLayout, since this
+      was causing location not being passed to underlying appenders
+    + Added support for long values in MongoDb 4 appender to
+      configure collectionSize
+    + Only shutdown Log4j after last Log4jServletContextListener is
+      executed
+    + Allowed using Spring Arbiter without a Spring environment
+    + Fixed context data loss if <AsyncLogger> components are used
+      with an all async logger context
+    + Fixed JsonTemplateLayout NPE thrown on custom log levels
+    + Improved Log4j-config.xsd schema
+    + Fixed NPE in ContextSelector
+    + Avoided allocating ThreadLocals in AbstractLogger when they
+      are disabled, since this was causing memory leaks due to
+      retained reference to class loaders in web applications
+    + Fixed %notEmpty directive of PatternLayout for empty MDC/NDC
+      inputs
+    + Fixed file descriptor leak on Tomcat
+    + Ensured FileOutputStream is closed in CommonsCompressAction
+      .execute()
+  * Removed
+    + Moved log4j-jmx-gui to its own repository along with its own
+      release cycle
+  * Updated
+    + Update Eclipse Angus Activation to version 2.0.1
+    + Update Eclipse Angus Mail to version 2.0.2
+    + Update com.datastax.cassandra:cassandra-driver-core to version
+      3.11.5
+    + Update Apache Cassandra to version 3.11.16
+    + Update Apache Commons Compress to version 1.24.0
+    + Update Apache Commons CSV to version 1.10.0
+    + Update Jackson to version 2.15.2
+    + Update Jakarta Activation API to version 2.1.2
+    + Update Jakarta Mail API to version 2.1.2
+    + Update JCTools to version 4.0.1
+    + Update Apache Kafka to version 3.4.0
+    + Update Kubernetes client to version 5.12.4
+    + Update org.mongodb:mongodb-driver-core to version 4.10.2
+    + Update io.netty:netty-bom to version 4.1.97
+    + Update Spring Boot to version 2.7.15
+    + Update Spring Framework to version 5.3.29
+    + Update Tomcat JULI to version 10.0.27
+    + Update Woodstox to version 6.5.1
+
+-------------------------------------------------------------------
 Tue Apr 14 12:49:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patches:
@@ -62,7 +775,7 @@ Mon Jan  5 18:13:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + Fix resolution of non-Log4j properties.
     + Fixes Spring Boot logging system registration in a
       multi-application environment.
-    + JAR file containing Log4j configuration isn’t closed.
+    + JAR file containing Log4j configuration isn't closed.
     + Properties defined in configuration using a value attribute
       (as opposed to element) are read correctly.
     + Syslog appender lacks the SocketOptions setting.
@@ -84,10 +797,10 @@ Mon Jan  5 18:13:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       index to use during startup.
     + Async Loggers were including the location information by
       default.
-    + ClassArbiter’s newBuilder method referenced the wrong class.
-    + Don’t use Paths.get() to avoid circular file systems.
+    + ClassArbiter's newBuilder method referenced the wrong class.
+    + Don't use Paths.get() to avoid circular file systems.
     + Fix parsing error, when XInclude is disabled.
-    + Fix LevelRangeFilterBuilder to align with log4j1’s behavior.
+    + Fix LevelRangeFilterBuilder to align with log4j1's behavior.
     + Fixes problem with wrong ANSI escape code for bright colors
     + Log4j 1.2 bridge should generate Log4j 2.x messages based on
       the parameter runtime type.
@@ -114,7 +827,7 @@ Mon Jan  5 18:13:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + Fix NPE in log4j-to-jul in the case the root logger level is
       null.
     + Fix RollingRandomAccessFileAppender with
-      DirectWriteRolloverStrategy can’t create the first log file of
+      DirectWriteRolloverStrategy can't create the first log file of
       different directory.
     + Generate new SSL certs for testing.
     + Fix ServiceLoaderUtil behavior in the presence of a
@@ -239,131 +952,131 @@ Thu Mar 10 11:20:50 UTC 2022 - David Anes <david.anes@suse.com>
 - Update to 2.17.2
   * New Features
     - Limit loading of configuration via a url to https by default.
-    - Require log4j2.Script.enableLanguages to be specified to 
+    - Require log4j2.Script.enableLanguages to be specified to
       enable scripting for specific languages.
     - Add TB support to FileSize.
     - Add the log4j-to-jul JDK Logging Bridge.
     - Add org.apache.logging.log4j.core.appender.AsyncAppender.getAppenders()
       to more easily port from org.apache.log4j.AsyncAppender.getAllAppenders().
-    - Add Configurator.setLevel(Logger, Level), 
+    - Add Configurator.setLevel(Logger, Level),
       setLevel(String, String), and setLevel(Class, Level).
     - Add shorthand syntax for properties configuration format for
       specifying a logger level and appender refs.
     - Add optional additional fields to NoSQLAppender.
   * Fixed Bugs
-    - Flag LogManager as initiialized if the LoggerFactory is 
+    - Flag LogManager as initiialized if the LoggerFactory is
       provided as a property.
     - Fix DefaultConfiguration leak in PatternLayout.
-    - Document that the Spring Boot Lookup requires the 
+    - Document that the Spring Boot Lookup requires the
       log4j-spring-boot dependency.
-    - Fix RoutingAppender backcompat and disallow recursive 
-      evaluation of lookup results outside of configuration 
+    - Fix RoutingAppender backcompat and disallow recursive
+      evaluation of lookup results outside of configuration
       properties.
     - Fix ThreadContextDataInjector initialization deadlock.
     - Fix substitutions when programmatic configuration is used.
     - OptionConverter could cause a StackOverflowError.
-    - Log4j 1.2 bridge class ConsoleAppender should extend 
-      WriterAppender and provide better compatibility with custom 
+    - Log4j 1.2 bridge class ConsoleAppender should extend
+      WriterAppender and provide better compatibility with custom
       appenders.
-    - Log4j 1.2 bridge method NDC.inherit(Stack) should not use 
+    - Log4j 1.2 bridge method NDC.inherit(Stack) should not use
       generics to provide source compatibility.
-    - Log4j 1.2 bridge class PatternLayout is missing constants 
+    - Log4j 1.2 bridge class PatternLayout is missing constants
       DEFAULT_CONVERSION_PATTERN and TTCC_CONVERSION_PATTERN.
-    - Log4j 1.2 bridge class PropertyConfigurator should implement 
+    - Log4j 1.2 bridge class PropertyConfigurator should implement
       Configurator.
-    - Log4j 1.2 bridge interface Configurator doConfigure() methods 
+    - Log4j 1.2 bridge interface Configurator doConfigure() methods
       should use LoggerRepository, not LoggerContext.
-    - Log4j 1.2 bridge class OptionConverter is missing 
+    - Log4j 1.2 bridge class OptionConverter is missing
       selectAndConfigure() methods.
-    - Log4j 1.2 bridge class Category should implement 
+    - Log4j 1.2 bridge class Category should implement
       AppenderAttachable.
-    - Log4j 1.2 bridge method Category.exists(String) should be 
+    - Log4j 1.2 bridge method Category.exists(String) should be
       static.
-    - Log4j 1.2 bridge methods missing in org.apache.log4j.Category: 
+    - Log4j 1.2 bridge methods missing in org.apache.log4j.Category:
       getDefaultHierarchy(), getHierarchy(), getLoggerRepository().
-    - Log4j 1.2 bridge class LogManager default constructor should 
+    - Log4j 1.2 bridge class LogManager default constructor should
       be public.
     - Log4j 1.2 bridge interface org.apache.log4j.spi.RendererSupport
       was in the wrong package and incomplete.
-    - Log4j 1.2 bridge interfaces missing from package 
-      org.apache.log4j.spi: ThrowableRenderer, 
+    - Log4j 1.2 bridge interfaces missing from package
+      org.apache.log4j.spi: ThrowableRenderer,
       ThrowableRendererSupport, TriggeringEventEvaluator.
     - Log4j 1.2 bridge missing class org.apache.log4j.or.RendererMap.
-    - Log4j 1.2 bridge PropertiesConfiguration.buildAppender not 
+    - Log4j 1.2 bridge PropertiesConfiguration.buildAppender not
       adding filters to custom appender.
     - Log4j 1.2 bridge should ignore case in properties file keys.
     - Log4j 1.2 bridge adds org.apache.log4j.component.helpers.Constants.
     - Log4j 1.2 bridge adds org.apache.log4j.helpers.LogLog.
     - Log4j 1.2 bridge adds org.apache.log4j.helpers.Loader.
     - Log4j 1.2 bridge adds org.apache.log4j.spi.RootLogger.
-    - Log4j 1.2 bridge class Category is missing some protected 
+    - Log4j 1.2 bridge class Category is missing some protected
       instance variables.
     - Log4j 1.2 bridge adds org.apache.log4j.Hierarchy.
-    - Log4j 1.2 bridge methods Category.getChainedPriority() and 
+    - Log4j 1.2 bridge methods Category.getChainedPriority() and
       getEffectiveLevel() should not be final.
-    - Log4j 1.2 bridge adds org.apache.log4j.spi.NOPLoggerRepository 
+    - Log4j 1.2 bridge adds org.apache.log4j.spi.NOPLoggerRepository
       and NOPLogger.
     - Log4j 1.2 bridge adds org.apache.log4j.spi.DefaultRepositorySelector.
-    - Log4j 1.2 bridge implements LogManager.getCurrentLoggers() 
+    - Log4j 1.2 bridge implements LogManager.getCurrentLoggers()
       fully.
-    - Log4j 1.2 bridge fixes parsing filters in properties 
+    - Log4j 1.2 bridge fixes parsing filters in properties
       configuration file #680.
     - Log4j 1.2 bridge missing OptionConverter.instantiateByKey(
       Properties, String, Class, Object).
-    - Log4j 1.2 bridge class org.apache.log4j.spi.LoggingEvent 
-      missing constructors and public instance variable.  
-    - Log4j 1.2 bridge does not support system properties in log4j.xml.  
-    - Log4j 1.2 bridge now logs a warning instead of throwing an 
-      NullPointerException when building a Syslog appender with a 
-      missing "SyslogHost" param.  
-    - Log4j 1.2 bridge should allow property and XML attributes to 
-      start with either an upper-case or lower-case letter. 
-    - Log4j 1.2 bridge uses the wrong default values for a 
-      TTCCLayout. 
-    - Log4j 1.2 bridge throws ClassCastException when using 
+    - Log4j 1.2 bridge class org.apache.log4j.spi.LoggingEvent
+      missing constructors and public instance variable.
+    - Log4j 1.2 bridge does not support system properties in log4j.xml.
+    - Log4j 1.2 bridge now logs a warning instead of throwing an
+      NullPointerException when building a Syslog appender with a
+      missing "SyslogHost" param.
+    - Log4j 1.2 bridge should allow property and XML attributes to
+      start with either an upper-case or lower-case letter.
+    - Log4j 1.2 bridge uses the wrong default values for a
+      TTCCLayout.
+    - Log4j 1.2 bridge throws ClassCastException when using
       SimpleLayout and others.
-    - Log4j 1.2 bridge uses the wrong file pattern for rolling file 
+    - Log4j 1.2 bridge uses the wrong file pattern for rolling file
       appenders.
-    - Log4j 1.2 bridge throws ClassCastException when using 
+    - Log4j 1.2 bridge throws ClassCastException when using
       SimpleLayout and others.
     - Log4j 1.2 bridge creates a SocketAppender instead of a
-      SyslogAppender.  
+      SyslogAppender.
     - Log4j 1.2 bridge uses some incorrect default property values
       in some appenders.
-    - Log4j 1.2 bridge supports the SocketAppender.  
-    - Log4j 1.2 bridge missing DefaultThrowableRenderer.  
-    - Log4j 1.2 bridge missing some ThrowableInformation constructors.  
-    - Log4j 1.2 bridge missing some LocationInfo constructors.  
-    - Log4j 1.2 bridge missed  
-    - Log4j 1.2 bridge missed org.apache.log4j.pattern.FormattingInfo.  
-    - Log4j 1.2 bridge missed org.apache.log4j.pattern.NameAbbreviator.  
-    - Log4j 1.2 bridge missing UtilLoggingLevel.  
-    - Log4j 1.2 bridge missing FormattingInfo.  
-    - Log4j 1.2 bridge missing PatternConverter.  
-    - Log4j 1.2 bridge missing PatternParser.  
+    - Log4j 1.2 bridge supports the SocketAppender.
+    - Log4j 1.2 bridge missing DefaultThrowableRenderer.
+    - Log4j 1.2 bridge missing some ThrowableInformation constructors.
+    - Log4j 1.2 bridge missing some LocationInfo constructors.
+    - Log4j 1.2 bridge missed
+    - Log4j 1.2 bridge missed org.apache.log4j.pattern.FormattingInfo.
+    - Log4j 1.2 bridge missed org.apache.log4j.pattern.NameAbbreviator.
+    - Log4j 1.2 bridge missing UtilLoggingLevel.
+    - Log4j 1.2 bridge missing FormattingInfo.
+    - Log4j 1.2 bridge missing PatternConverter.
+    - Log4j 1.2 bridge missing PatternParser.
     - Log4j 1.2 bridge issues with filters.
-    - Log4j 1.2 bridge implements most of DOMConfigurator.  
-    - JndiManager reverts to 2.17.0 behavior: Read the system 
+    - Log4j 1.2 bridge implements most of DOMConfigurator.
+    - JndiManager reverts to 2.17.0 behavior: Read the system
       property for each call.
     - Configurator.setLevel not fetching the correct LoggerContext.
     - Fix DTD error: Add missing ELEMENT for Marker.
     - Fix log4j-jakarta-web service file.
-    - AppenderLoggingException logging any exception to a MongoDB 
+    - AppenderLoggingException logging any exception to a MongoDB
       Appender.
-    - Possible NullPointerException in MongoDb4DocumentObject, 
-      MongoDbDocumentObject, DefaultNoSqlObject.  
-    - Trim whitespace before parsing a String into an Integer.  
-    - Log4j 1.2 bridge throws a ClassCastException when logging a 
+    - Possible NullPointerException in MongoDb4DocumentObject,
+      MongoDbDocumentObject, DefaultNoSqlObject.
+    - Trim whitespace before parsing a String into an Integer.
+    - Log4j 1.2 bridge throws a ClassCastException when logging a
       Map with non-String keys.
     - Log4j 1.2 bridge Check for non-existent appender when parsing
       properties #761. Thanks to Kenny MacLeod.
     - Log4j 1.2 bridge supports global threshold.
   * Changes
-    - Change modifier of method 
-      org.apache.logging.log4j.core.tools.Generate#generate to 
+    - Change modifier of method
+      org.apache.logging.log4j.core.tools.Generate#generate to
       public (was package private) to facilitate automated code
       generation.
- 
+
 -------------------------------------------------------------------
 Tue Feb 22 08:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 
@@ -373,10 +1086,10 @@ Tue Feb 22 08:24:25 UTC 2022 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Wed Dec 29 08:34:08 UTC 2021 - David Anes <david.anes@suse.com>
 
-- Update to 2.17.1 [bsc#1194127, CVE-2021-44832] 
+- Update to 2.17.1 [bsc#1194127, CVE-2021-44832]
   * Fixed bugs:
     - JdbcAppender now uses JndiManager to access JNDI resources.
-      JNDI is only enabled when system property log4j2.enableJndiJdbc 
+      JNDI is only enabled when system property log4j2.enableJndiJdbc
       is set to true.
     - Remove unused method.
     - ExtendedLoggerWrapper.logMessage no longer double-logs when
@@ -386,9 +1099,9 @@ Wed Dec 29 08:34:08 UTC 2021 - David Anes <david.anes@suse.com>
     - Correct SpringLookup package name in Interpolator.
     - log4j-to-slf4j takes the provided MessageFactory into account.
     - Fix MapLookup to lookup MapMessage before DefaultMap.
-    - Buffered I/O checked had inverted logic in 
+    - Buffered I/O checked had inverted logic in
       RollingFileAppenderBuidler.
-    - Fix NPE when input is null in 
+    - Fix NPE when input is null in
       StrSubstitutor.replace(String, Properties).
     - Lookups with no prefix only read values from the configuration
       properties as expected.
@@ -406,18 +1119,18 @@ Sat Dec 18 11:16:56 UTC 2021 - David Anes <david.anes@suse.com>
   * Fixed Bugs
     - Fix string substitution recursion.
     - Limit JNDI to the java protocol only. JNDI will remain disabled
-      by default. Rename JNDI enablement property from 
-      'log4j2.enableJndi' to 'log4j2.enableJndiLookup', 
+      by default. Rename JNDI enablement property from
+      'log4j2.enableJndi' to 'log4j2.enableJndiLookup',
       'log4j2.enableJndiJms', and 'log4j2.enableJndiContextSelector'.
     - Limit JNDI to the java protocol only. JNDI will remain disabled
-      by default. The enablement property has been renamed to 
+      by default. The enablement property has been renamed to
       'log4j2.enableJndiJava'
-    - Do not declare log4j-api-java9 and log4j-core-java9 as 
-      dependencies as it causes problems with the Maven enforcer 
+    - Do not declare log4j-api-java9 and log4j-core-java9 as
+      dependencies as it causes problems with the Maven enforcer
       plugin.
     - PropertiesConfiguration.parseAppenderFilters NPE when parsing
       properties file filters.
-    - Log4j 1.2 bridge for Syslog Appender defaults to port 512 
+    - Log4j 1.2 bridge for Syslog Appender defaults to port 512
       instead of 514.
     - Log4j 1.2 bridge API hard codes the Syslog protocol to TCP.
 
@@ -432,7 +1145,7 @@ Wed Dec 15 02:06:55 UTC 2021 - Simon Lees <sflees@suse.de>
     - More flexible configuration of the Disruptor WaitStrategy.
       Thanks to Stepan Gorban.
   * Bugfixes and minor enhancements
-    - It was found that the fix to address CVE-2021-44228 in Apache 
+    - It was found that the fix to address CVE-2021-44228 in Apache
       Log4j 2.15.0 was incomplete in certain non-default
       configurations.
       This could allows attackers with control over Thread Context
@@ -447,7 +1160,7 @@ Wed Dec 15 02:06:55 UTC 2021 - Simon Lees <sflees@suse.de>
       log4j2.noFormatMsgLookup to true do NOT mitigate this specific
       vulnerability.
     - Upstream initial fix for bsc#1193611, CVE-2021-44228
-    - Numerous other minor bugfixes 
+    - Numerous other minor bugfixes
   * Drop CVE-2021-44228.patch and disable-jndi-by-default.patch
     included upstream
   * To make the bots happy this stream isn't affected by
@@ -653,7 +1366,7 @@ Tue Oct  1 14:23:32 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 - Upgrade to apache-log4j-2.11.1
 - Drop the log4j vs. log4j-mini split
   * the bootstrapping is done using the log4j12/log4j12-mini
-    compatibility packages 
+    compatibility packages
 - Removed patches:
   * log4j-javadoc-xlink.patch
   * log4j-logfactor5-userdir.patch
@@ -681,7 +1394,7 @@ Thu Dec 13 15:36:59 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 -------------------------------------------------------------------
 Thu Oct 18 11:50:32 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
-- Install and package the maven pom and metadata files for the 
+- Install and package the maven pom and metadata files for the
   non-bootstrap log4j
 
 -------------------------------------------------------------------
@@ -721,7 +1434,7 @@ Mon Mar  2 12:37:05 UTC 2015 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu Sep 12 08:44:08 UTC 2013 - mvyskocil@suse.com
 
-- log4j and log4j-mini are in conflict 
+- log4j and log4j-mini are in conflict
 
 -------------------------------------------------------------------
 Mon Sep  9 11:06:12 UTC 2013 - tchvatal@suse.com
@@ -763,16 +1476,16 @@ Tue Apr  8 11:26:43 CEST 2008 - mvyskocil@suse.cz
 - updated to 1.2.5 [bnc#355798]
 - merged a spec with jpackage 1.7
   - the ant arguments was splitted to several lines
-  - new BuildRequires: 
+  - new BuildRequires:
     - classpathx-javamail
     - geronimo-jaf
     - geronimo-jms
-  - a new patches to break of a dependendy on Sun's HtmlAdaptorServer 
+  - a new patches to break of a dependendy on Sun's HtmlAdaptorServer
     (replaced by HttpAdaptor from mx4j package)
   - added a gjc build branch
 - created an autogenerated -mini specfile used for bootstrap (hint from sbrabec@suse.cz)
   - added an explicit provides of log4j symbol for log4j-mini (automatically by script)
-- replaced a name `macro' by `real', because the -mini package has a different name
+- replaced a name 'macro' by 'real', because the -mini package has a different name
 - disable the javadoc and manual subpackages for -mini build
 
 -------------------------------------------------------------------
@@ -783,12 +1496,12 @@ Thu Jun  7 15:35:03 CEST 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri May 18 11:48:26 CEST 2007 - dbornkessel@suse.de
 
-- removed mx4j BuildReq to avoid build cycle ... apparently it was not used at compile time 
+- removed mx4j BuildReq to avoid build cycle ... apparently it was not used at compile time
 
 -------------------------------------------------------------------
 Tue May  8 17:10:47 CEST 2007 - dbornkessel@suse.de
 
-- use mx4j instead of jmx 
+- use mx4j instead of jmx
 
 -------------------------------------------------------------------
 Wed Feb 15 10:14:39 CET 2006 - stbinner@suse.de
@@ -813,12 +1526,12 @@ Thu Sep 29 00:25:43 CEST 2005 - dmueller@suse.de
 -------------------------------------------------------------------
 Thu Nov 25 02:36:46 CET 2004 - ro@suse.de
 
-- added suse_update_desktop_file 
+- added suse_update_desktop_file
 
 -------------------------------------------------------------------
 Thu Sep 23 14:19:10 CEST 2004 - mskibbe@suse.de
 
-- change specfile(suse_update_desktop_file) 
+- change specfile(suse_update_desktop_file)
 
 -------------------------------------------------------------------
 Thu Sep 16 14:26:11 CEST 2004 - skh@suse.de
