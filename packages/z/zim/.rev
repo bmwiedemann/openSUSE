@@ -198,4 +198,28 @@
     <comment></comment>
     <requestid>1344084</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d4dffbcea8440bdfc5e0fe5eda2b5a5e</srcmd5>
+    <version>0.77.0</version>
+    <time>1781705897</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.77.0:
+  * Merge markdown support as source format for notebooks
+    (experimental)
+  * Allow multiple source formats in one notebook
+  * Refactor page search to be extendable improve speed
+  * Support options for 'case sensitive' and 'word boundaries' in
+    page search
+  * Let find match glob patterns like search
+  * Add search query support for tasklist filtering
+  * Add default page template to notebook properties
+  * Add input for alternate text in Insert Image Dialog
+  * Remove overruling window positioning
+  * Fix latex templates for working with pdflatex, xelatex and
+    lualatex
+  * Fix bug with _object_widgets.remove()
+- Drop upstreamed 0001-Fix-bug-with-_object_widgets-weakset.patch
+</comment>
+    <requestid>1359790</requestid>
+  </revision>
 </revisionlist>

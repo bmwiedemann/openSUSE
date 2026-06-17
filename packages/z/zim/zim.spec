@@ -21,14 +21,13 @@
 %define hierarchical_name org.zim_wiki.Zim
 
 Name:           zim
-Version:        0.76.3
+Version:        0.77.0
 Release:        0
 Summary:        A Desktop Wiki
 License:        GPL-2.0-or-later
 Group:          Productivity/Office/Organizers
 URL:            https://zim-wiki.org
 Source:         https://zim-wiki.org/downloads/%{name}-%{version}.tar.gz
-Patch1:         0001-Fix-bug-with-_object_widgets-weakset.patch
 BuildRequires:  fdupes
 # For directory ownership
 BuildRequires:  %{python_module gobject >= 3.2}

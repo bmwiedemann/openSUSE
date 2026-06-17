@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:43:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.77.0:
+  * Merge markdown support as source format for notebooks
+    (experimental)
+  * Allow multiple source formats in one notebook
+  * Refactor page search to be extendable improve speed
+  * Support options for 'case sensitive' and 'word boundaries' in
+    page search
+  * Let find match glob patterns like search
+  * Add search query support for tasklist filtering
+  * Add default page template to notebook properties
+  * Add input for alternate text in Insert Image Dialog
+  * Remove overruling window positioning
+  * Fix latex templates for working with pdflatex, xelatex and
+    lualatex
+  * Fix bug with _object_widgets.remove()
+- Drop upstreamed 0001-Fix-bug-with-_object_widgets-weakset.patch
+
+-------------------------------------------------------------------
 Wed Apr  1 09:57:24 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add patch to fix issue with python-gobject to 3.56.0
