@@ -17,8 +17,8 @@
 
 
 Name:           gap-localizeringforhomalg
-Version:        2026.04.01
-%define sillyver 2026.04-01
+Version:        2026.05.01
+%define sillyver 2026.05-01
 Release:        0
 Summary:        GAP: A Package for Localization of Polynomial Rings
 License:        GPL-2.0-only
