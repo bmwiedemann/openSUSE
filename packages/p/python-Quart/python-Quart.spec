@@ -90,7 +90,8 @@ Quart is an async Python web microframework. Using Quart you can,
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# https://github.com/pallets/quart/issues/465
+%pytest -k 'not test_cli_blueprints'
 
 %post
 %python_install_alternative quart
