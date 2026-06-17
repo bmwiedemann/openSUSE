@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:39:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.7.0:
+  * CI: adding workflow dispatch
+  * MNT: Use hash for Action workflow versions and update if needed
+  * MAINT: remove py37
+  * CI: update macos version
+  * MNT: drop deprecated License classifier, update related metadata
+    (PEP 639)
+  * Fix compatibility with pytest-run-parallel and add free-threaded CI jobs
+
+-------------------------------------------------------------------
 Tue Jan 20 12:45:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Do not use %pytest macro for running tests as it conflicts with

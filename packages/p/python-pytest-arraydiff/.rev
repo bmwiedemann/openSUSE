@@ -58,4 +58,19 @@
   internal .astropy/config</comment>
     <requestid>1328263</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5d7d2e50292ee7d2b48d8f9c3d6a3c7c</srcmd5>
+    <version>0.7.0</version>
+    <time>1781706163</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.0:
+  * CI: adding workflow dispatch
+  * MNT: Use hash for Action workflow versions and update if needed
+  * MAINT: remove py37
+  * CI: update macos version
+  * MNT: drop deprecated License classifier, update related metadata
+    (PEP 639)
+  * Fix compatibility with pytest-run-parallel and add free-threaded CI jobs</comment>
+    <requestid>1359896</requestid>
+  </revision>
 </revisionlist>

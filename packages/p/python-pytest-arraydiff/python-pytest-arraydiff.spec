@@ -26,13 +26,13 @@
 %endif
 
 Name:           python-pytest-arraydiff%{psuffix}
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        Pytest plugin to help with comparing array output from tests
 License:        BSD-2-Clause
 URL:            https://github.com/astropy/pytest-arraydiff
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-arraydiff/pytest-arraydiff-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-arraydiff/pytest_arraydiff-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -40,12 +40,11 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-numpy
-Requires:       python-pytest >= 4.6
+Requires:       python-pytest >= 6.2
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module astropy}
-BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest >= 4.6}
+BuildRequires:  %{python_module pytest-arraydiff = %{version}}
 %endif
 %python_subpackages
 
@@ -66,7 +65,7 @@ At the moment, the supported file formats for the reference files are:
    can return either a Numpy array for a FITS HDU object.
 
 %prep
-%setup -q -n pytest-arraydiff-%{version}
+%setup -q -n pytest_arraydiff-%{version}
 
 %if !%{with test}
 %build
@@ -79,10 +78,6 @@ At the moment, the supported file formats for the reference files are:
 
 %if %{with test}
 %check
-# not installed in :test multiflavor
-export PYTHONPATH="$PWD"
-BASEPATH=$PYTHONPATH
-
 # Don't run the tests with %%pytest macro as it sets the
 # XDG_CONFIG_HOME env variable that conflicts with the .astropy/config
 # folder.
@@ -98,7 +93,7 @@ $python -m pytest -v
 %doc CHANGES.md README.rst
 %license LICENSE
 %{python_sitelib}/pytest_arraydiff
-%{python_sitelib}/pytest_arraydiff-%{version}*-info
+%{python_sitelib}/pytest_arraydiff-%{version}.dist-info
 %endif
 
 %changelog
