@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:22:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.185.3 (v0.185.3)
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+
+  ## 0.185.3 — 2026-06-15
+
+  ## What's Changed
+  * Fix/93 moo meta no moose by @geofffranks in https://github.com/geofffranks/test-mockmodule/pull/94
+
+  **Full Changelog**: https://github.com/geofffranks/test-mockmodule/compare/0.185.2...0.185.3
+
+-------------------------------------------------------------------
 Sat May 30 07:52:54 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.185.2 (v0.185.2)

@@ -18,10 +18,10 @@
 
 %define cpan_name Test-MockModule
 Name:           perl-Test-MockModule
-Version:        0.185.2
+Version:        0.185.3
 Release:        0
-# v0.185.2 -> normalize -> 0.185.2
-%define cpan_version v0.185.2
+# v0.185.3 -> normalize -> 0.185.3
+%define cpan_version v0.185.3
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Override subroutines in a module for unit testing
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -37,6 +37,7 @@ BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warnings)
 Requires:       perl(SUPER) >= 1.200
 Recommends:     perl(Class::Load)
+Recommends:     perl(Moo)
 Recommends:     perl(Moose)
 Recommends:     perl(Mouse)
 Recommends:     perl(Test::Exception)

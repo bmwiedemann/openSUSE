@@ -203,4 +203,17 @@
   **Full Changelog**: https://github.com/geofffranks/test-mockmodule/compare/0.185.0...0.185.1</comment>
     <requestid>1357566</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e0ce6b23fe7f9aad0bd4678b872b2899</srcmd5>
+    <version>0.185.3</version>
+    <time>1781706452</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.185.3 (v0.185.3)
+   see /usr/share/doc/packages/perl-Test-MockModule/Changes
+  ## 0.185.3 — 2026-06-15
+  ## What's Changed
+  * Fix/93 moo meta no moose by @geofffranks in https://github.com/geofffranks/test-mockmodule/pull/94
+  **Full Changelog**: https://github.com/geofffranks/test-mockmodule/compare/0.185.2...0.185.3</comment>
+    <requestid>1360007</requestid>
+  </revision>
 </revisionlist>
