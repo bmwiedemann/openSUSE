@@ -252,4 +252,41 @@
     updates.</comment>
     <requestid>1355928</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>aa1bc21341c2f337a2bb8ef881bb3a80</srcmd5>
+    <version>1.16.12</version>
+    <time>1781706464</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.16.12:
+  + This is a security bugfix release.
+  + Fixes a RCE vulnerability when importing OPML files containing
+    script commands. Now script commands from untrusted OPML files
+    are always dropped.
+  + Fixes a RCE vulnerability in the download manager plugin where
+    a command could have been injected into file paths.
+
+- Update to version 1.16.11:
+  + This is a security bugfix. Please urgently upgrade if you use
+    Liferea with Reedah or TheOldReader sync!
+  + If you use TinyTinyRSS sync please upgrade to fix a synching
+    issue. Security Issue with Reedah + TheOldReader sync support.
+  + Sadly there is a long-standing security bug causing unencrypted
+    connections when fetching feed content for those two backends.
+    When doing such requests via http:// your auth token got
+    exposed and could allow malicious 3rd parties to manipulate
+    your Reedah / TheOldReader accounts.
+  + Note: the login request itself (including) your password was
+    not affected, still I advise to upgrade to the newest Liferea
+    release 1.16.11 or 2.0-RC3 verify your Reedah / TheOldReader
+    subscriptions change your Reedah / TheOldReader password just
+    to be safe.
+  + Changes:
+    - Fixes a long-standing security bug that caused unencrypted
+      connection when fetching feed content from Reedah and
+      TheOldReader. Please upgrade and change your Reedah /
+      TheOldReader password afterwards!
+    - Fixes: TinyTinyRSS not working anymore due to
+      Content-Encoding header not indicating JSON</comment>
+    <requestid>1360018</requestid>
+  </revision>
 </revisionlist>
