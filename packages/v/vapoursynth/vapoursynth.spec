@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        76
+Version:        77
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
@@ -26,8 +26,6 @@ URL:            https://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, and give libvsscript a soversion
 Patch0:         vapoursynth-fhs-install.patch
-# PATCH-FIX-OPENSUSE vapoursynth-system-zimg.patch -- link against the shared system zimg instead of bundling it statically
-Patch1:         vapoursynth-system-zimg.patch
 BuildRequires:  chrpath
 BuildRequires:  gcc-c++
 BuildRequires:  meson

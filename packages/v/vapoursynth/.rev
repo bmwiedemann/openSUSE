@@ -348,4 +348,18 @@
 Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
     <requestid>1357025</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d2f2cd0aaddefc4c04d7fe0fbb03c7f1</srcmd5>
+    <version>77</version>
+    <time>1781706047</time>
+    <user>anag_factory</user>
+    <comment>- Update to R77:
+  * Fixed deadlock introduced in R76
+  * MaskedMerge/PreMultiply chroma location awareness
+  * RISC-V now a proper target with compilation fixes
+  * proptoclip takes an index for the property
+  * many minor fixes after an AI audit of the code
+- Drop vapoursynth-system-zimg.patch (adopted upstream)</comment>
+    <requestid>1359847</requestid>
+  </revision>
 </revisionlist>

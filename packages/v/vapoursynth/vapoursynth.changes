@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:33:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to R77:
+  * Fixed deadlock introduced in R76
+  * MaskedMerge and PreMultiply now take chroma location into
+    account when resizing the mask/alpha channel (may raise
+    errors in rare cases due to new chroma location checks)
+  * RISC-V is now detected as a proper target, with compilation
+    fixes
+  * proptoclip now also takes an index for the property
+  * Many minor issues (filter argument validation, overflows and
+    other rare problems) fixed after an AI audit of the code
+- Drop vapoursynth-system-zimg.patch: linking against the shared
+  system zimg was adopted upstream (the bundled-static dependency
+  is gone)
+
+-------------------------------------------------------------------
 Wed Jun  3 18:22:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to R76:
