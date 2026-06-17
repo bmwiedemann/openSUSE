@@ -1,0 +1,12 @@
+diff a/libsoup/meson.build b/libsoup/meson.build
+--- a/libsoup/meson.build
++++ b/libsoup/meson.build
+@@ -263,8 +263,6 @@ if enable_introspection or enable_vapi
+ 
+    libsoup_gir_extra_args = [
+      libsoup_c_args,
+-     '--warn-all',
+-     '--quiet',
+    ]
+    if gir.version().version_compare('>=1.83.2')
+      libsoup_gir_extra_args += [

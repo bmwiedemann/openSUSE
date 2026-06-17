@@ -26,22 +26,26 @@ Group:          Development/Libraries/GNOME
 URL:            https://wiki.gnome.org/Projects/libsoup
 Source0:        %{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0719.patch bsc#1256399, CVE-2026-0719, glgo#GNOME/libsoup!493 alynx.zhou@suse.com -- Fix overflow for password md4sum
-Patch10:        libsoup-CVE-2026-0719.patch
-
+Patch1:         libsoup-CVE-2026-0719.patch
 # PATCH-FIX-OPENSUSE libsoup-CVE-2025-32049.patch bsc#1240751 mgorse@suse.com -- add size limit for total message size.
-Patch14:        libsoup-CVE-2025-32049.patch
-
+Patch2:         libsoup-CVE-2025-32049.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-2708.patch bsc#1258508 mgorse@suse.com -- do not allow adding multiple content length values to headers.
-Patch17:        libsoup-CVE-2026-2708.patch
+Patch3:         libsoup-CVE-2026-2708.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-1539.patch bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489 -- Also remove Proxy-Authorization header on cross origin redirect
-Patch18:        libsoup-CVE-2026-1539.patch
+Patch4:         libsoup-CVE-2026-1539.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
-Patch19:        libsoup-CVE-2026-0716.patch
+Patch5:         libsoup-CVE-2026-0716.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-4271.patch bsc#1259767 xwang@suse.com -- protect message io while reading and writing
-Patch20:        libsoup-CVE-2026-4271.patch
-
+Patch6:         libsoup-CVE-2026-4271.patch
+# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch qzhao@suse.com -- Revert upstream e315cf2d to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
+Patch1000:      libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
+# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch qzhao@suse.com -- Revert upstream 6b34bc58 to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
+Patch1001:      libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch
+# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-part01-4209dbec.patch qzhao@suse.com -- Revert upstream 4209dbec to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
+Patch1002:      libsoup-revert-dep-meson-0.62-part01-4209dbec.patch
+# PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch qzhao@suse.com -- Revert upstream fd7ce01a to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
+Patch1003:      libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig
@@ -130,7 +134,11 @@ Features:
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%autopatch -p1 -M 999
+%if 0%{?sle_version} >= 150400 && 0%{?sle_version} <= 155000 
+%autopatch -p1 -m 1000
+%endif
 
 %build
 %meson \

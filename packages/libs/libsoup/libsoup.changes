@@ -1,8 +1,47 @@
 -------------------------------------------------------------------
+Fri May 29 10:33:40 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
+  Revert upstream commit fd7ce01a, this request drop methods
+  path() and build_root() which are deprecated on 0.62 but existed
+  in 0.54.
+- This fix could enable the libsoup update to the latest verion in
+  SLE-15-SP4 and SP5, which fix many CVE bugs.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+
+-------------------------------------------------------------------
+Fri May 29 10:25:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add libsoup-revert-dep-meson-0.62-part01-4209dbec.patch:
+  Revert upstream commit 4209dbec, this request bump meson version
+  from 0.54 to 0.62.
+- This fix could enable the libsoup update to the latest verion in
+  SLE-15-SP4 and SP5, which fix many CVE bugs.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+  
+-------------------------------------------------------------------
+Fri May 29 10:18:43 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch:
+  Revert upstream commit 6b34bc58, this request tell gir that
+  doc-format is gi-docgen, this version() check function requires
+  meson 0.62.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+  
+-------------------------------------------------------------------
+Fri May 29 10:02:12 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch:
+  Revert upstream commit e315cf2d, this request add --quiet and
+  --warn-all args to gir in meson.build.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+
+-------------------------------------------------------------------
 Wed May 27 00:41:20 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
-- Add libsoup-CVE-2026-4271.patch: Protect message io while reading
-  and writing (bsc#1259767, CVE-2026-4271, glgo#GNOME/libsoup#496).
+- Add libsoup-CVE-2026-4271.patch:
+  Protect message io while reading and writing.
+  (bsc#1259767, CVE-2026-4271, glgo#GNOME/libsoup#496)
 
 -------------------------------------------------------------------
 Mon Mar 23 08:11:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -12,16 +51,16 @@ Mon Mar 23 08:11:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Thu Mar  5 19:58:46 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
-- Add libsoup-CVE-2026-0716.patch:  Fix out-of-bounds read when
-  reading unmasked frame (bsc#1256418 CVE-2026-0716
-  glgo#GNOME/libsoup!518).
+- Add libsoup-CVE-2026-0716.patch:
+  Fix out-of-bounds read when reading unmasked frame.
+  (bsc#1256418, CVE-2026-0716, glgo#GNOME/libsoup!518)
 
 -------------------------------------------------------------------
 Wed Feb 25 02:47:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
-- Add libsoup-CVE-2026-1539.patch: Also remove Proxy-Authorization
-  header on cross origin redirect
-  (bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489).
+- Add libsoup-CVE-2026-1539.patch:
+  Also remove Proxy-Authorization header on cross origin redirect.
+  (bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489)
 
 -------------------------------------------------------------------
 Fri Feb 20 16:21:32 UTC 2026 - Michael Gorse <mgorse@suse.com>

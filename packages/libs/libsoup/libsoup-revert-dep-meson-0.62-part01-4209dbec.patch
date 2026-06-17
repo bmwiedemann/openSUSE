@@ -1,0 +1,11 @@
+diff a/meson.build b/meson.build
+--- a/meson.build
++++ b/meson.build
+@@ -1,6 +1,6 @@
+ project('libsoup', 'c',
+         version: '3.6.6',
+-        meson_version : '>= 0.62',
++        meson_version : '>= 0.54',
+         license : 'LGPL-2.0-or-later',
+         default_options : [
+           'c_std=gnu99',

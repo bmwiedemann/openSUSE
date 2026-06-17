@@ -1421,4 +1421,41 @@
   and writing (bsc#1259767, CVE-2026-4271, glgo#GNOME/libsoup#496).</comment>
     <requestid>1355867</requestid>
   </revision>
+  <revision rev="170" vrev="6">
+    <srcmd5>0f7961cf6b088fa9bbc03fbbb7d7b7b4</srcmd5>
+    <version>3.6.6</version>
+    <time>1781705823</time>
+    <user>anag_factory</user>
+    <comment>- Add libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
+  Revert upstream commit fd7ce01a, this request drop methods
+  path() and build_root() which are deprecated on 0.62 but existed
+  in 0.54.
+- This fix could enable the libsoup update to the latest verion in
+  SLE-15-SP4 and SP5, which fix many CVE bugs.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+
+- Add libsoup-revert-dep-meson-0.62-part01-4209dbec.patch:
+  Revert upstream commit 4209dbec, this request bump meson version
+  from 0.54 to 0.62.
+- This fix could enable the libsoup update to the latest verion in
+  SLE-15-SP4 and SP5, which fix many CVE bugs.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+  
+
+- Add libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch:
+  Revert upstream commit 6b34bc58, this request tell gir that
+  doc-format is gi-docgen, this version() check function requires
+  meson 0.62.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+  
+
+- Add libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch:
+  Revert upstream commit e315cf2d, this request add --quiet and
+  --warn-all args to gir in meson.build.
+- This fix only enable on SLE-15-SP4 and SP5 in SPEC file.
+
+- Add libsoup-CVE-2026-4271.patch:
+  Protect message io while reading and writing.</comment>
+    <requestid>1359806</requestid>
+  </revision>
 </revisionlist>
