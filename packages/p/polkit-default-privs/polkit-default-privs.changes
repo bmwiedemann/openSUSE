@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 16 09:40:40 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1550+20260616.1f348eb:
+  * profiles: added new systemd actions (bsc#1267504)
+
+-------------------------------------------------------------------
 Wed Jun 03 11:07:03 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1550+20260603.7a43683:
