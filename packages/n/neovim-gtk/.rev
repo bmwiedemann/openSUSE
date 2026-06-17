@@ -99,4 +99,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1235686</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e8337780e92ee27fb4c95fdd4f7c58a</srcmd5>
+    <version>1.0.1+279</version>
+    <time>1781706169</time>
+    <user>anag_factory</user>
+    <comment>- Update to git snapshot 1.0.1+279:
+  * Update to gtk-rs 0.21 / gtk4-rs 0.10 and nvim-rs 0.9.0
+  * Fix tree filename sorting total order (panics with dead symlinks, #138)
+  * Emulate 'l' when pasting in insert/normal mode (#82)
+  * Avoid panics during shutdown
+  * Don't warn about the nocombine highlight attribute (Neovim 0.11+)
+- Restrict source service tag matching to v* so the upstream rolling
+  nightly tag no longer breaks version detection</comment>
+    <requestid>1359890</requestid>
+  </revision>
 </revisionlist>

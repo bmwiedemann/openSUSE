@@ -1,7 +1,7 @@
 #
 # spec file for package neovim-gtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         _name nvim-gtk
 %define         appid com.github.Lyude.neovim-gtk
 Name:           neovim-gtk
-Version:        1.0.1+196
+Version:        1.0.1+279
 Release:        0
 Summary:        GTK UI for Neovim
 License:        GPL-3.0-only

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:16:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1+279 (git snapshot):
+  * Update to gtk-rs 0.21 / gtk4-rs 0.10 and nvim-rs 0.9.0
+  * Fix tree filename sorting to implement a total order,
+    avoiding panics with dead symlinks (gh#Lyude/neovim-gtk#138)
+  * Emulate 'l' when pasting in insert/normal mode so the cursor
+    moves after the pasted text (gh#Lyude/neovim-gtk#82)
+  * Avoid panics during shutdown (missing nvim client, UI shut
+    down before command completion)
+  * Don't warn about the nocombine highlight attribute (used by
+    Neovim 0.11 and newer)
+  * Various dependency updates
+- Restrict the source service tag matching to v* so the upstream
+  rolling "nightly" tag no longer breaks version detection
+
+-------------------------------------------------------------------
 Tue Dec 31 16:17:56 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - switch to a new upstream url, as main repo is unmaintained
