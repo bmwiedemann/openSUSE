@@ -17,8 +17,8 @@
 
 
 Name:           gap-linearalgebraforcap
-Version:        2026.04.01
-%define sillyver 2026.04-01
+Version:        2026.05.04
+%define sillyver 2026.05-04
 Release:        0
 Summary:        GAP: Category of Matrices over a Field for CAP
 License:        GPL-2.0-or-later
@@ -28,11 +28,11 @@ URL:            https://homalg-project.github.io/pkg/LinearAlgebraForCAP
 Source:         https://github.com/homalg-project/CAP_project/releases/download/LinearAlgebraForCAP-%sillyver/LinearAlgebraForCAP-%sillyver.tar.gz
 BuildRequires:  gap-devel >= 4.13.0
 BuildRequires:  gap-rpm-devel
-Requires:       gap-cap >= 2026.04.01
+Requires:       gap-cap >= 2026.05.02
 Requires:       gap-core >= 4.13.0
 Requires:       gap-gaussforhomalg >= 2026.04.01
 Requires:       gap-matricesforhomalg >= 2026.04.01
-Requires:       gap-monoidalcategories >= 2025.08.01
+Requires:       gap-monoidalcategories >= 2026.05.02
 Requires:       gap-toolsforhomalg >= 2026.04.01
 
 %description
