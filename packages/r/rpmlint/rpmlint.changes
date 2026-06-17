@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:16:57 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.9.0+git20260528.2490edb3:
+  * dbus-services: whitelist qSnapper (bsc#1261537)
+  * Bump github/codeql-action from 4.35.2 to 4.36.0
+  * BuildRootAndDateCheck: Convert date errs to warning
+  * Bump github/codeql-action from 4.35.1 to 4.35.2
+  * Update openSUSE's licenses.toml
+  * Fix: Add sysusers.d to usrlibbinaryexception
+  * SpecCheck: Fix typo in the 'no-%check-section' explanation
+  * Bump github/codeql-action from 4.34.1 to 4.35.1
+  * test: Add PKG-INFO to egg-info mocks for Python 3.15 compatibility
+  * Reorder param doc rpmlint/checks/TagsCheck.py
+  * test: Add more tests for dependencies
+  * test: Add tests for SELinuxIndependentModuleCheck
+  * TagsCheck: Reorder is_devel and is_source parameters
+  * Add SELinuxIndependentModuleCheck to test_lint.py
+  * Set scoring for selinux-incorrect-if-file-location
+  * Add check for SELinux Independent Modules
+
+-------------------------------------------------------------------
 Thu May 28 07:04:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base BR

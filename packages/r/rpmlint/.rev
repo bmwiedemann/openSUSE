@@ -5674,4 +5674,29 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
     <comment></comment>
     <requestid>1355605</requestid>
   </revision>
+  <revision rev="541" vrev="1">
+    <srcmd5>ecf3ff78a903b1a4826f249c74a3df08</srcmd5>
+    <version>2.9.0+git20260528.2490edb3</version>
+    <time>1781705832</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260528.2490edb3:
+  * dbus-services: whitelist qSnapper (bsc#1261537)
+  * Bump github/codeql-action from 4.35.2 to 4.36.0
+  * BuildRootAndDateCheck: Convert date errs to warning
+  * Bump github/codeql-action from 4.35.1 to 4.35.2
+  * Update openSUSE's licenses.toml
+  * Fix: Add sysusers.d to usrlibbinaryexception
+  * SpecCheck: Fix typo in the 'no-%check-section' explanation
+  * Bump github/codeql-action from 4.34.1 to 4.35.1
+  * test: Add PKG-INFO to egg-info mocks for Python 3.15 compatibility
+  * Reorder param doc rpmlint/checks/TagsCheck.py
+  * test: Add more tests for dependencies
+  * test: Add tests for SELinuxIndependentModuleCheck
+  * TagsCheck: Reorder is_devel and is_source parameters
+  * Add SELinuxIndependentModuleCheck to test_lint.py
+  * Set scoring for selinux-incorrect-if-file-location
+  * Add check for SELinux Independent Modules
+</comment>
+    <requestid>1359486</requestid>
+  </revision>
 </revisionlist>
