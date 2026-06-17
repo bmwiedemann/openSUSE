@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:44:15 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.16.0:
+  Breaking changes:
+  * The get_certs method on XEP_0257 is now an async function, which breaks compatibility with previous usages.
+  New plugins:
+  * Stickers (XEP-0449).
+  * MUC Affiliation Versioning (XEP-0463).
+  Other improvements:
+  * MUC (XEP-0045) and PubSub (XEP-0060): items can now be retreived as a
+    collection on the parent element using the items interface.
+  Fixes:
+  * Crash when receiving presences with invalid JIDs (as a component).
+  * Wrong plugin description for Mentions (XEP-0513).
+  * Added a missing variable in the RPC (XEP-0009) plugin, which caused a specific error handling path to always be false.
+  Internal / process:
+  * Fill the __all__ sections for XEP plugins, for nicer library use and less linter warnings.
+  * Plenty of automated fixes (extra empty lines, ; characters, unused imports…, newlines at file ends…).
+  * More type hints.
+  * Enabled use of prek, and toggled harsher linting in CI.
+  * Explicit section in CONTRIBUTING about LLM use.
+  * The XEP-0257 plugin now has more tests and docs.
+  * XEP-0045 are now typed as floats and not ints.
+
+-------------------------------------------------------------------
+Tue Jun 16 13:43:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.15.0:
+  Features:
+  * New plugin: XEP-0513 (Explicit Mentions)
+  * In XEP-0424, the message sent for the retraction is now returned after being sent.
+  Fixes:
+  * The XEP-0045 plugin will now raise exceptions if the wrong parameters are
+    provided (e.g. specifying a "pfrom" when not running as a component).
+  * Passing the iterator parameter to get_items() in XEP-0030 was broken.
+  Build:
+  * The rust build is now optional
+
+-------------------------------------------------------------------
 Tue Mar 24 03:20:14 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use setuptools-rust rather than Cython, since it's Rust, not C.
