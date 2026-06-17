@@ -22,8 +22,8 @@
  %define xx_binary g++-13
 %else
  %define cc_package clang%{product_libs_llvm_ver}
- %define cc_binary clang
- %define xx_binary clang++
+ %define cc_binary clang-%{product_libs_llvm_ver}
+ %define xx_binary clang++-%{product_libs_llvm_ver}
 %endif
 
 Name:           bpftrace
