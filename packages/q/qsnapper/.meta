@@ -1,0 +1,5 @@
+<package name="qsnapper" project="openSUSE:Factory">
+  <title>qsnapper</title>
+  <description>qSnapper is a graphical user interface for the Snapper snapshot management tool. It provides an intuitive way to create, browse, and manage filesystem snapshots on Btrfs and other supported filesystems.</description>
+  <url>https://github.com/presire/qSnapper</url>
+</package>

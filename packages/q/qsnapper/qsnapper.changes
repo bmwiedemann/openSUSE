@@ -1,0 +1,31 @@
+-------------------------------------------------------------------
+Sun Jun 14 20:07:02 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Add 0001-improve-translation-installation.patch
+
+-------------------------------------------------------------------
+Wed May 27 14:24:06 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Release 1.3.3:
+  * This release addresses five CVE class security issues:
+    - CVE-2026-41045 Polkit authentication bypass via misuse of
+      Unix ProcessSubject (boo#1261795)
+    - CVE-2026-41046 Path traversal via configName leading to local
+      DoS and information disclosure (boo#1261889)
+    - CVE-2026-41047 Information disclosure through diff/list
+      operations reachable without admin authentication
+      (boo#1261890)
+    - CVE-2026-41048 Authentication bypass across D-Bus clients via
+      shared m_authenticated flag (boo#1262218)
+    - CVE-2026-41049 Authentication bypass by implicit carry-over
+      between different Polkit actions (boo#1262218)
+  * Realign project license from GPL-3.0 to GPL-2.0-or-later to
+    match libbtrfsutil (LGPL-2.1)
+  * Known Limitation - The TOCTOU concern in
+    restoreFilesImpl()/copyRegularFile() is tracked for v1.3.4 to
+    be addressed openly after the coordinated release
+
+-------------------------------------------------------------------
+Sat Apr  4 14:33:57 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
+
+- Initial Packaging

@@ -1,0 +1,37 @@
+From a4e5e3749cb29f09c80f080644ffbd58a9e400df Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Sun, 14 Jun 2026 04:52:23 -0700
+Subject: [PATCH] improve translation installation
+
+---
+ CMakeLists.txt | 7 +++----
+ 1 file changed, 3 insertions(+), 4 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e6cbae5..6aa0e86 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -93,7 +93,7 @@ qt6_add_resources(qsnapper "icons"
+ # 翻訳ファイルの設定
+ qt6_add_translations(qsnapper
+     TS_FILES translations/qsnapper_ja.ts translations/qsnapper_de.ts
+-    RESOURCE_PREFIX /i18n
++    QM_FILES_OUTPUT_VARIABLE qm_files
+ )
+ 
+ target_compile_definitions(qsnapper PRIVATE
+@@ -115,9 +115,8 @@ install(TARGETS qsnapper
+ )
+ 
+ # 翻訳ファイルのインストール
+-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/translations
+-    DESTINATION ${CMAKE_INSTALL_DATADIR}/qsnapper
+-    FILES_MATCHING PATTERN "*.qm"
++install(FILES ${qm_files}
++    DESTINATION ${CMAKE_INSTALL_DATADIR}/qsnapper/translations
+ )
+ 
+ # D-Busサービス
+-- 
+2.54.0
+
