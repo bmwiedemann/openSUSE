@@ -16,9 +16,9 @@
 #
 
 
-%define reltag 6.1.1-RELEASE
+%define reltag 6.3.2-RELEASE
 Name:           libdispatch
-Version:        6.1.1
+Version:        6.3.2
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
@@ -27,8 +27,6 @@ Source0:        https://github.com/swiftlang/swift-corelibs-libdispatch/archive/
 Source1:        libdispatch-rpmlintrc
 # PATCH-FIX-OPENSUSE set library versions
 Patch0:         soversion.patch
-# PATCH-FIX-UPSTREAM https://github.com/swiftlang/swift-corelibs-libdispatch/pull/880
-Patch1:         silence-signedness-change-through-implicit-conversion-error.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
 BuildRequires:  cmake

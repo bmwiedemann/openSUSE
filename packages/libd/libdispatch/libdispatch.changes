@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:46:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.3.2 (swift-6.3.2-RELEASE), tracking the
+  Swift 6.3.2 release; notable changes since 6.1.1:
+  * Worker-thread names and basic thread prioritisation on Linux
+  * 16 KB page alignment on 64-bit Android
+  * Support for building libdispatch statically
+  * Build-system updates: CMake minimum requirement bumped,
+    cross-compilation support removed, FreeBSD/OpenBSD fixes
+- Drop silence-signedness-change-through-implicit-conversion-error.patch:
+  merged upstream (PR #880)
+- Rebase soversion.patch for the restructured src CMakeLists
+
+-------------------------------------------------------------------
 Wed Jun  3 18:51:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.1.1 (swift-6.1.1-RELEASE):

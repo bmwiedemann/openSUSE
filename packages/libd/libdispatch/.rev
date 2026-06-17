@@ -86,4 +86,18 @@
     <comment>Update to 6.1.1: Musl libc support, Linux build IDs, un-hardcoded CMake install dirs, Android/Windows fixes; spec cleanup</comment>
     <requestid>1357028</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>91ad641dd01d874b02f8e2482de0b038</srcmd5>
+    <version>6.3.2</version>
+    <time>1781706041</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.3.2 (swift-6.3.2-RELEASE):
+  * Linux worker-thread names and basic thread prioritisation
+  * 16 KB page alignment on 64-bit Android
+  * Static library build support
+  * Build-system updates (CMake bump, FreeBSD/OpenBSD fixes)
+- Drop silence-signedness-...-error.patch (merged upstream PR #880)
+- Rebase soversion.patch for restructured CMakeLists</comment>
+    <requestid>1359848</requestid>
+  </revision>
 </revisionlist>
