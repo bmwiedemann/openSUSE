@@ -1,7 +1,7 @@
 #
 # spec file for package python-w3lib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-w3lib
-Version:        2.2.1
+Version:        2.4.1
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/w3lib
 Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Do not check invalid IPv6 addresses
-Patch0:         do-not-add-invalid-ipv6.patch
+BuildRequires:  %{python_module hatchling >= 1.27.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

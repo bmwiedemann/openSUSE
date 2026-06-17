@@ -134,4 +134,17 @@
   * Do not check invalid IPv6 addresses.</comment>
     <requestid>1227705</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>90a7ebbe97f4b471bab4e7e18bb12fff</srcmd5>
+    <version>2.4.1</version>
+    <time>1781706427</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.4.1:
+  * safe_url_string preserves IPv6 brackets in the URL netloc
+  * Dropped Python 3.9, added Python 3.14 support
+  * Performance improvements; removed functions deprecated in 2.0.0
+- Switch to the hatchling build backend
+- Drop obsolete do-not-add-invalid-ipv6.patch (test suite passes without it)</comment>
+    <requestid>1360010</requestid>
+  </revision>
 </revisionlist>

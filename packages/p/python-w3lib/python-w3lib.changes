@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:24:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.4.1:
+  * safe_url_string now preserves IPv6 brackets in the URL netloc
+  * Dropped Python 3.9 support; added Python 3.14 support
+  * Improved performance of headers_raw_to_dict and
+    headers_dict_to_raw
+  * Removed the functions deprecated in 2.0.0 (str_to_unicode,
+    to_native_str, unicode_to_str)
+  * Fixed running tests with newer Python 3.10/3.11 point releases
+- Switch to the hatchling build backend
+- Drop do-not-add-invalid-ipv6.patch: upstream's test version
+  gating now correctly excludes the openSUSE interpreters, so the
+  test suite passes without it
+
+-------------------------------------------------------------------
 Tue Nov 26 03:01:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch do-not-add-invalid-ipv6.patch:
