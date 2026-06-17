@@ -1151,4 +1151,12 @@
     <comment>- Fix bug boo#1225398 that is link libast.so against -lm</comment>
     <requestid>1306964</requestid>
   </revision>
+  <revision rev="120" vrev="13">
+    <srcmd5>6f75779364a765ac9eea6e7f7194eb75</srcmd5>
+    <version>93vu</version>
+    <time>1781706182</time>
+    <user>anag_factory</user>
+    <comment>Fix overlapping memory copy in hist_word [bsc#1261689]</comment>
+    <requestid>1359902</requestid>
+  </revision>
 </revisionlist>

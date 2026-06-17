@@ -1,0 +1,123 @@
+--- src/cmd/ksh93/edit/edit.c.orig	2024-08-01 12:12:48.681007001 +0000
++++ src/cmd/ksh93/edit/edit.c	2026-06-16 13:06:41.742890734 +0000
+@@ -746,7 +746,7 @@ void	ed_setup(register Edit_t *ep, int f
+ 		register int shift = 7-ep->e_wsize;
+ 		ep->e_wsize = 7;
+ 		pp = ep->e_prompt+1;
+-		strcpy(pp,pp+shift);
++		strcopy(pp,pp+shift);
+ 		ep->e_plen -= shift;
+ 		last[-ep->e_plen-2] = '\r';
+ 	}
+@@ -779,9 +779,9 @@ void	ed_setup(register Edit_t *ep, int f
+ 		{
+ 			sh_trap(".sh.subscript=$(tput cuu1 2>/dev/null)",0);
+ 			if(pp=nv_getval(SH_SUBSCRNOD))
+-				strncpy(CURSOR_UP,pp,sizeof(CURSOR_UP)-1);
++				strncopy(CURSOR_UP,pp,sizeof(CURSOR_UP)-1);
+ 			nv_unset(SH_SUBSCRNOD);
+-			strcpy(ep->e_termname,term);
++			strcopy(ep->e_termname,term);
+ 		}
+ #endif
+ 		ep->e_wsize = MAXLINE - (ep->e_plen+1);
+@@ -1425,7 +1425,7 @@ int	ed_external(const genchar *src, char
+ #ifdef _lib_wcscpy
+ 		wcscpy((wchar_t *)dest,(const wchar_t *)buffer);
+ #else
+-		strcpy(dest,buffer);
++		strcopy(dest,buffer);
+ #endif
+ 		return(c);
+ 	}
+@@ -1606,7 +1606,7 @@ static int keytrap(Edit_t *ep,char *inbu
+ 		nv_unset(ED_CHRNOD);
+ 	else if(bufsize>0)
+ 	{
+-		strncpy(inbuff,cp,bufsize);
++		strncopy(inbuff,cp,bufsize);
+ 		inbuff[bufsize-1]='\0';
+ 		insize = strlen(inbuff);
+ 	}
+--- src/cmd/ksh93/edit/emacs.c.orig	2024-08-01 12:12:48.681007001 +0000
++++ src/cmd/ksh93/edit/emacs.c	2026-06-16 13:08:27.714783242 +0000
+@@ -96,8 +96,8 @@ One line screen editor for any program
+ #   define  isword(c)	_isword(out[c])
+ 
+ #else
+-#   define gencpy(a,b)	strcpy((char*)(a),(char*)(b))
+-#   define genncpy(a,b,n)	strncpy((char*)(a),(char*)(b),n)
++#   define gencpy(a,b)	strcopy((char*)(a),(char*)(b))
++#   define genncpy(a,b,n)	strncopy((char*)(a),(char*)(b),n)
+ #   define genlen(str)	strlen(str)
+ #   define print(c)	isprint(c)
+ #   define isword(c)	(isalnum(out[c]) || (out[c]=='_'))
+@@ -1299,7 +1299,7 @@ static void search(Emacs_t* ep,genchar *
+ #if SHOPT_MULTIBYTE
+ 		ed_external(string,(char*)string);
+ #endif /* SHOPT_MULTIBYTE */
+-		strncpy(lstring,((char*)string)+2,SEARCHSIZE);
++		strncopy(lstring,((char*)string)+2,SEARCHSIZE-1);
+ 		lstring[SEARCHSIZE-1] = 0;
+ 		ep->prevdirection = direction;
+ 	}
+--- src/cmd/ksh93/edit/history.c.orig	2026-06-16 12:44:40.972279007 +0000
++++ src/cmd/ksh93/edit/history.c	2026-06-16 13:09:11.246739087 +0000
+@@ -1124,7 +1124,7 @@ char *hist_word(char *string,int size,in
+ 	}
+ 	*cp = 0;
+ 	if(s1 != string)
+-		strcpy(string,s1);
++		strcopy(string,s1);
+ 	return(string);
+ }
+ 
+--- src/cmd/ksh93/edit/vi.c.orig	2024-08-01 12:12:48.681007001 +0000
++++ src/cmd/ksh93/edit/vi.c	2026-06-16 13:10:12.598676856 +0000
+@@ -85,8 +85,8 @@
+ #   define ismetach(v)	_ismetach(virtual[v])
+ #else
+     static genchar	_c;
+-#   define gencpy(a,b)	strcpy((char*)(a),(char*)(b))
+-#   define genncpy(a,b,n) strncpy((char*)(a),(char*)(b),n)
++#   define gencpy(a,b)	strcopy((char*)(a),(char*)(b))
++#   define genncpy(a,b,n) strncopy((char*)(a),(char*)(b),n)
+ #   define genlen(str)	strlen(str)
+ #   define isalph(v)	((_c=virtual[v])=='_'||isalnum(_c))
+ #   undef  isblank
+@@ -934,7 +934,7 @@ static int cntlmode(Vi_t *vp)
+ 				hist_copy((char*)virtual, MAXLINE, curhline,-1);
+ 			else
+ 			{
+-				strcpy((char*)virtual,(char*)vp->u_space);
++				strcopy((char*)virtual,(char*)vp->u_space);
+ #if SHOPT_MULTIBYTE
+ 				ed_internal((char*)vp->u_space,vp->u_space);
+ #endif /* SHOPT_MULTIBYTE */
+@@ -1651,7 +1651,7 @@ static int mvcursor(register Vi_t* vp,re
+ #if SHOPT_MULTIBYTE
+ 				ed_external(virtual,lsearch+1);
+ #else
+-				strcpy(lsearch+1,virtual);
++				strcopy(lsearch+1,virtual);
+ #endif /* SHOPT_MULTIBYTE */
+ 				*lsearch = '^';
+ 				vp->direction = -2;
+@@ -2261,7 +2261,7 @@ static int search(register Vi_t* vp,regi
+ 	{
+ 		/*** user wants repeat of last search ***/
+ 		del_line(vp,BAD);
+-		strcpy( ((char*)virtual)+1, lsearch);
++		strcopy( ((char*)virtual)+1, lsearch);
+ #if SHOPT_MULTIBYTE
+ 		*((char*)virtual) = '/';
+ 		ed_internal((char*)virtual,virtual);
+@@ -2293,7 +2293,7 @@ static int search(register Vi_t* vp,regi
+ 		location = hist_find(shgd->hist_ptr,((char*)virtual)+1, curhline, 1, new_direction);
+ 	}
+ 	cur_virt = i;
+-	strncpy(lsearch, ((char*)virtual)+1, SEARCHSIZE);
++	strncopy(lsearch, ((char*)virtual)+1, SEARCHSIZE-1);
+ 	lsearch[SEARCHSIZE-1] = 0;
+ 	if( (curhline=location.hist_command) >=0 )
+ 	{

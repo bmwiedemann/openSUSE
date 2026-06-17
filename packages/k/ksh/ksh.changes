@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 14:49:32 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- Fix overlapping memory copy in hist_word [bsc#1261689]
+  new patch: ksh93-edit_strcpy.dif
+- Fix wrong unset of LC_ env variables [bsc#1239568]
+
+-------------------------------------------------------------------
 Wed Sep 24 11:21:55 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Fix bug boo#1225398 that is link libast.so against -lm 

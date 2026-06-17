@@ -1,6 +1,7 @@
 #
 # spec file for package ksh
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -169,6 +170,7 @@ Patch56:        ksh93-filedefined.dif
 Patch57:        ksh93-no-sysctl.dif
 Patch58:        ksh93-putval.dif
 Patch59:        ksh93-untrustedenv.dif
+Patch60:        ksh93-edit_strcpy.dif
 Patch62:        ksh-locale.patch
 Patch63:        cpp.patch
 
@@ -283,6 +285,7 @@ fi
 %patch -P 57
 %patch -P 58
 %patch -P 59
+%patch -P 60
 
 %patch -P 63 -p 1
 
@@ -336,7 +339,7 @@ fi
   # comment and the line below.
   RPM_OPT_FLAGS="${RPM_OPT_FLAGS//-as-needed/-no-as-needed/}"
   # Use POSIX as environment
-  test -n "${!LC_*}" && unset "${!LC_*}"
+  test -n "${!LC_*}" && unset "${!LC_@}"
   # ksh currently does not build with -Werror=return-type
   RPM_OPT_FLAGS="${RPM_OPT_FLAGS//-Werror=return-type/}"
   cflags ()
