@@ -26,4 +26,13 @@
   + Add man pages</comment>
     <requestid>1356225</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eddae47679dd01c9ce35c825ebc3bee0</srcmd5>
+    <version>0.3.0</version>
+    <time>1781705786</time>
+    <user>anag_factory</user>
+    <comment>- Backport fix from upstream to fix linking with libtukit
+  + Patch: 3add4c39b5506f8bfafd1daca3bf6165e55c5e18.patch</comment>
+    <requestid>1359669</requestid>
+  </revision>
 </revisionlist>

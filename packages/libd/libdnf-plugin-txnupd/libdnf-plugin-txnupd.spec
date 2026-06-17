@@ -29,6 +29,9 @@ License:        LGPL-2.1-or-later
 URL:            https://gitlab.com/VelocityLimitless/Projects/libdnf-plugin-txnupd
 Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.gz
 
+# Backports from upstream
+Patch0001:      %{url}/-/commit/3add4c39b5506f8bfafd1daca3bf6165e55c5e18.patch
+
 BuildRequires:  cmake
 BuildRequires:  make
 BuildRequires:  gcc-c++ >= 13

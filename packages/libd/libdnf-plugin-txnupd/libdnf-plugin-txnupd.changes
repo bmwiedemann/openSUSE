@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 20:57:50 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
+
+- Backport fix from upstream to fix linking with libtukit
+  + Patch: 3add4c39b5506f8bfafd1daca3bf6165e55c5e18.patch
+
+-------------------------------------------------------------------
 Sun May 31 18:58:21 UTC 2026 - Neal Gompa <ngompa@opensuse.org>
 
 - Update to 0.3.0

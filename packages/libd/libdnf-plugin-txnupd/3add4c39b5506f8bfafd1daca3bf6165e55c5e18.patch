@@ -1,0 +1,38 @@
+From 3add4c39b5506f8bfafd1daca3bf6165e55c5e18 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Mon, 15 Jun 2026 12:51:43 -0700
+Subject: [PATCH] add linking for libtukit
+
+Missed when adding the txnupd handling for the new commands
+---
+ CMakeLists.txt                 | 1 +
+ src/dnf5-plugin/CMakeLists.txt | 1 +
+ 2 files changed, 2 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 0bbd592..21bc582 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -52,6 +52,7 @@ add_compile_definitions(
+ # Shared utility code (PUBLIC includes so plugin subdirs inherit the path)
+ add_library(txnupd_util STATIC src/txnupd_util.cpp)
+ target_include_directories(txnupd_util PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/src)
++target_link_libraries(txnupd_util PUBLIC PkgConfig::TUKIT)
+ 
+ add_subdirectory(src/libdnf5-plugin)
+ add_subdirectory(src/dnf5-plugin)
+diff --git a/src/dnf5-plugin/CMakeLists.txt b/src/dnf5-plugin/CMakeLists.txt
+index 35555eb..5f6d0c3 100644
+--- a/src/dnf5-plugin/CMakeLists.txt
++++ b/src/dnf5-plugin/CMakeLists.txt
+@@ -8,6 +8,7 @@ target_include_directories(txnupd_dnf5_cmd PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+ target_link_libraries(txnupd_dnf5_cmd PRIVATE
+     PkgConfig::LIBDNF5
+     PkgConfig::LIBDNF5_CLI
++    PkgConfig::TUKIT
+     ${DNF5_LIB}
+     txnupd_util
+ )
+-- 
+GitLab
+
