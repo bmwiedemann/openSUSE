@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:28:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.9.0
+  * tls: remove deprecated TLS_METHOD_xxx.
+  * ci related changes.
+
+-------------------------------------------------------------------
 Fri May 29 07:53:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.8.1
