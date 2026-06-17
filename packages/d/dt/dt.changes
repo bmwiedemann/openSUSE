@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 16 21:06:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26:
+  * Add I/O latency support to dt workloads
+  * Fix writing files with random read percentages and
+    variable file sizes
+  * Fix creating subdirectories with a relative directory path
+  * Add new workloads and help files (many dirs, hammer, sio)
+- Drop dt-manpage.patch: merged upstream (.tP -> .TP, issue #4)
+- Spec cleanup:
+  * Use %make_build for the build step
+  * Drop obsolete Group tag
+  * Use %{version} consistently in the Source URL
+
+-------------------------------------------------------------------
 Thu Sep 18 13:08:49 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 25

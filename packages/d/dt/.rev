@@ -39,4 +39,18 @@
     <comment></comment>
     <requestid>1310987</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8d0bd4169a918872dd6f3618a2c3aabe</srcmd5>
+    <version>26</version>
+    <time>1781706123</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 26:
+  * Add I/O latency support to dt workloads
+  * Fix writing files with random read percentages and variable file sizes
+  * Fix creating subdirectories with a relative directory path
+  * Add new workloads and help files (many dirs, hammer, sio)
+- Drop dt-manpage.patch: merged upstream (.tP -&gt; .TP, issue #4)
+- Spec cleanup (use %make_build, drop Group, %{version} in Source)</comment>
+    <requestid>1359851</requestid>
+  </revision>
 </revisionlist>

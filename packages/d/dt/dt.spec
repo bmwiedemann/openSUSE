@@ -1,7 +1,7 @@
 #
 # spec file for package dt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,12 @@
 
 
 Name:           dt
-Version:        25
+Version:        26
 Release:        0
 Summary:        Generic data test program
 License:        MIT
-Group:          System/Filesystems
 URL:            https://github.com/RobinTMiller/dt
-Source:         https://github.com/RobinTMiller/dt/archive/refs/tags/dt.v25.tar.gz#/dt-dt.v%{version}.tar.gz
-# PATCH-FIX-UPSTREAM dt-manpage.patch -- https://github.com/RobinTMiller/dt/issues/4
-Patch0:         dt-manpage.patch
+Source:         https://github.com/RobinTMiller/dt/archive/refs/tags/dt.v%{version}.tar.gz#/dt-dt.v%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(uuid)
 
@@ -47,7 +44,7 @@ export LIBS=$(pkg-config --libs uuid)
 export LDFLAGS="-Wl,--no-undefined -Wl,-z,now"
 mkdir build
 cd build
-make %{?_smp_mflags} \
+%make_build \
   LIBS="$LIBS" \
   CFLAGS="$CFLAGS" \
   LDFLAGS="$LDFLAGS" \
