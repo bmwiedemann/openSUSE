@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:31:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versoin 4.9.0
+  * tls: change to non-deprecated TLS_METHOD_XXX.
+  * ua: emit event for failed incoming INVITE.
+  * ua: avoid fallback 500 after unsupported address family.
+  * ua: stop processing INVITE after 421 response.
+  * test: add 100rel required reject testcase.
+  * docs: minor cleanup of example config.
+  * contact: add command to clear all contacts.
+  * uag: check registration state of fallback UA.
+  * call: make call_supported() input argument const.
+
+-------------------------------------------------------------------
 Thu May 14 10:28:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.8.0
