@@ -264,4 +264,25 @@
     Inactive” in “View” menu hides the terminal automatically when</comment>
     <requestid>1356762</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>1d0fb9d4769652e8bcba316cf5dfe1ce</srcmd5>
+    <version>2.0.3</version>
+    <time>1781706470</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.3:
+  + This release fixes the following bugs:
+    - JPEG images marked as rotated in metadata weren’t displayed
+      rotated
+    - Search dialog: “Case sensitive” button for content search had
+      reversed effect
+    - Size of the Search dialog wasn’t restored after restarting
+      application
+    - Bogus keyboard input focus after clicking toolbar buttons
+    - File list theme wasn’t applied in the Search dialog
+    - Overlong contents in file list cells were cut off, not
+      ellipsized
+    - Internal viewer: incorrect handling of the file start when
+      searching for a single character backwards</comment>
+    <requestid>1360020</requestid>
+  </revision>
 </revisionlist>
