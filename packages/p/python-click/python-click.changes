@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Mon Jun 15 07:40:40 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 8.4.1:
+  * get_parameter_source() is available during eager callbacks and
+    type conversion again.
+  * Zsh completion scripts parse correctly on Windows.
+  * Shell completion of Enum values used as Choice options produces a
+    valid completion result.
+  * Fix empty byte-string handling in echo.
+  * Fix closed file error with echo_via_pager.
+  * Fix open_url on Windows when the file path contains spaces.
+
+Version 8.4.0:
+  * ParamType typing improvements.
+    - ParamType is now a generic abstract base class, parameterized by
+      its converted value type.
+    - ~ParamType.convert return types are narrowed on all concrete
+      types (str for STRING, int for INT, etc.).
+    - ~ParamType.to_info_dict returns specific ~typing.TypedDict
+      subclasses instead of dict[str, Any].
+    - CompositeParamType and the number-range base are now generic
+      with abstract methods.
+  * Refactor convert_type to extract type inference into a private
+    _guess_type helper, and add typing.overload signatures.
+  * Parameter typing improvements.
+    - Parameter is now an abstract base class, making explicit that it
+      cannot be instantiated directly.
+    - Parameter.name is now str instead of str | None. When
+      expose_value=False, the name is set to "" instead of None.
+    - The ctx parameter of Parameter.get_error_hint is now typed
+      as Context | None, matching the runtime behavior.
+  * Split string values from default_map for parameters with nargs > 1
+    or Tuple type, matching environment variable behavior.
+  * Auto-detect type=UNPROCESSED for flag_value of non-basic types
+    (not str, int, float, or bool), so programmer-provided Python
+    objects like classes and enum members are passed through unchanged
+    instead of being stringified. Previously type=click.UNPROCESSED
+    had to be set explicitly.
+  * The error hint now uses Command.get_help_option_names to
+    pick non-shadowed help option names, so Try '... -h' no longer
+    points to a subcommand option that shadows -h. The longest
+    surviving name is shown (--help over -h) for readability.
+  * Fix readline functionality on non-Windows platforms. Prompt text
+    is now passed directly to readline instead of being printed
+    separately, allowing proper backspace, line editing, and line
+    wrapping behavior.
+  * Use os.startfile on Windows to open URLs in open_url,
+    replacing the start built-in which cannot be invoked without
+    shell=True.
+  * Fix Fish shell completion errors when option help text contains
+    newlines.
+  * Add NoSuchCommand exception with suggestions for misspelled
+    commands.
+  * Use ValueError message when conversion in FuncParamType would
+    fail.
+  * Add click.get_pager_file for file-like access to an output pager.
+  * ~click.formatting.wrap_text now measures line width in visible
+    characters, ignoring ANSI escape sequences.
+  * Fix HelpFormatter.write_usage emitting only a blank line
+    when called without args. The usage prefix and program name are
+    now written even when no arguments follow, and the trailing
+    separator space is stripped so the line ends at the program name.
+  * Show custom error messages from types when prompt with
+    hide_input=True fails validation, instead of always showing a
+    generic message. Built-in type messages mask the input value.
+  * Add capture parameter to CliRunner with two modes: sys
+    (default) and fd. fd redirects file descriptors 1 and 2 via
+    os.dup2 so output that bypasses sys.stdout (stale stream
+    references, C extensions, subprocesses, faulthandler) is captured
+    with proper isolation.
+  * Revert the 8.3.3 change that exposed the original file descriptor
+    via fileno() on the redirected CliRunner streams in the default
+    capture mode. os.dup2(w, sys.stdout.fileno()) calls inside a CLI
+    no longer mutate the host runner's stdout, which broke Pytest's
+    fd-level capture teardown. C-level consumers that need a real fd
+    should use capture="fd".
+  * Mark additional built-in strings with gettext() to extend
+    translation coverage.
+  * Fix feature switch groups (several flag_value options sharing one
+    parameter name) silently dropping an explicit default when a
+    sibling option without an explicit default was declared first.
+    Arbitration is now source-aware: a more explicit
+    ParameterSource always wins, and within
+    ParameterSource.DEFAULT, an option that received an explicit
+    default= keyword wins over a sibling whose default was
+    auto-derived. The 8.3.x first-wins fallback for remaining ties was
+    reverted to the pre-8.3.x last-wins fallback.
+  * Fix missing space between option help text and the (DEPRECATED)
+    label, and localize the option label so it matches the command
+    label. The label and the DeprecationWarning reason suffix are now
+    produced by shared helpers.
+  * Document short option stacking (-abc is parsed as -a -b -c) and
+    clarify that multi-character short option names are not supported.
+
+-------------------------------------------------------------------
 Sun Apr 26 09:33:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.3.3 (bsc#1263898, CVE-2026-7246):

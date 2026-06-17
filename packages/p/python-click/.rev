@@ -419,4 +419,41 @@ https://pypi.org/project/click/8.2.2/
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352736</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>608a62c85ffbad13908f5049cbdfc11f</srcmd5>
+    <version>8.4.1</version>
+    <time>1781705839</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.4.1:
+  * get_parameter_source() is available during eager callbacks and
+    type conversion again.
+  * Zsh completion scripts parse correctly on Windows.
+  * Shell completion of Enum values used as Choice options produces a
+    valid completion result.
+  * Fix empty byte-string handling in echo.
+  * Fix closed file error with echo_via_pager.
+  * Fix open_url on Windows when the file path contains spaces.
+Version 8.4.0:
+  * ParamType typing improvements.
+    - ParamType is now a generic abstract base class, parameterized by
+      its converted value type.
+    - ~ParamType.convert return types are narrowed on all concrete
+      types (str for STRING, int for INT, etc.).
+    - ~ParamType.to_info_dict returns specific ~typing.TypedDict
+      subclasses instead of dict[str, Any].
+    - CompositeParamType and the number-range base are now generic
+      with abstract methods.
+  * Refactor convert_type to extract type inference into a private
+    _guess_type helper, and add typing.overload signatures.
+  * Parameter typing improvements.
+    - Parameter is now an abstract base class, making explicit that it
+      cannot be instantiated directly.
+    - Parameter.name is now str instead of str | None. When
+      expose_value=False, the name is set to &quot;&quot; instead of None.
+    - The ctx parameter of Parameter.get_error_hint is now typed
+      as Context | None, matching the runtime behavior.
+  * Split string values from default_map for parameters with nargs &gt; 1
+    or Tuple type, matching environment variable behavior.</comment>
+    <requestid>1359491</requestid>
+  </revision>
 </revisionlist>

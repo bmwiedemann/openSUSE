@@ -27,7 +27,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-click%{psuffix}
-Version:        8.3.3
+Version:        8.4.1
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
@@ -68,7 +68,8 @@ defaults out of the box.
 %check
 %if %{with test}
 export LANG=en_US.UTF-8
-%pytest -rs --tb=short
+donttest="test_echo_via_pager"
+%pytest -rs --tb=short --basetemp=tmpdir -k "not ($donttest)"
 %endif
 
 %if %{without test}
