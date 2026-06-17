@@ -29,7 +29,7 @@
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.6.5
+Version:        4.7.0
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
@@ -54,7 +54,6 @@ BuildRequires:  iproute2
 BuildRequires:  libgpg-error-devel
 BuildRequires:  logrotate
 BuildRequires:  make
-BuildRequires:  munge
 BuildRequires:  sysuser-tools
 BuildRequires:  tftp
 BuildRequires:  yq
@@ -106,18 +105,6 @@ BuildArch:      noarch
 
 %description reference-doc
 Reference documentation for warewulf4.
-
-%package overlay-slurm
-Summary:        Configuration template for slurm
-Requires:       %{name} = %{version}
-Recommends:     slurm
-BuildArch:      noarch
-Obsoletes:      warewulf4-slurm <= 4.4.0
-Provides:       warewulf4-slurm = %version
-
-%description overlay-slurm
-This package installs the necessary configuration files in order to run a slurm
-cluster on the configured warewulf nodes.
 
 %package overlay-rke2
 Summary:        Configuration template for RKE2
@@ -215,18 +202,6 @@ install -D -m 644 system-user-%{name}.conf %{buildroot}%{_sysusersdir}/system-us
 install -D -m 755 %{S:10} %{buildroot}%{ww4dir}/warewulf/scripts/config-warewulf.sh
 install -D -m 755 %{S:11} %{buildroot}%{ww4dir}/warewulf/scripts/adjust_overlays.sh
 
-# get the slurm package ready
-mkdir -p %{buildroot}%{ww4dir}/warewulf/overlays/host/rootfs/etc/slurm
-mv %{buildroot}%{_sysconfdir}/warewulf/examples/slurm.conf.ww %{buildroot}%{ww4dir}/warewulf/overlays/host/rootfs/etc/slurm
-mkdir -p %{buildroot}%{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge
-cat >  %{buildroot}%{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge/munge.key.ww <<EOF
-{{ Include "/etc/munge/munge.key" -}}
-EOF
-chmod 600 %{buildroot}%{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge/munge.key.ww
-mkdir -p %{buildroot}%{ww4dir}/warewulf/overlays/slurm/rootfs/etc/slurm
-cat >  %{buildroot}%{ww4dir}/warewulf/overlays/slurm/rootfs/etc/slurm/slurm.conf.ww <<EOF
-{{ Include "/etc/slurm/slurm.conf" }}
-EOF
 # prepare RKE2 configuration template
 mkdir -p %{buildroot}%{ww4dir}/warewulf/overlays/rke2-config/etc/rancher/rke2
 cat > %{buildroot}%{ww4dir}/warewulf/overlays/rke2-config/etc/rancher/rke2/config.yaml.ww <<EOF
@@ -252,8 +227,8 @@ mv ./userdocs/_build/latex/warewulfuserguide.pdf ./userdocs/_build/latex/warewul
 %post
 %service_add_post warewulfd.service
 if [ $1 -eq 1 ] ; then
-    cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.5.x
-    cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.5.x
+    cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.6.x
+    cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.6.x
     %{_bindir}/wwctl upgrade nodes --replace-overlay --add-defaults
     %{_bindir}/wwctl upgrade config
 else
@@ -303,17 +278,8 @@ fi
 # nodes, so when modified we do not replace them as sensible
 # admin will read the changelog
 %{ww4dir}/warewulf/overlays
-%exclude %{ww4dir}/warewulf/overlays/host/rootfs/etc/slurm
-%exclude %{ww4dir}/warewulf/overlays/slurm/rootfs/etc/slurm
 %exclude %{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge
 %exclude %{ww4dir}/warewulf/overlays/rke2-config
-
-%files overlay-slurm
-%dir %{ww4dir}/warewulf/overlays/host/rootfs/etc/slurm
-%{ww4dir}/warewulf/overlays/host/rootfs/etc/slurm/slurm.conf.ww
-%{ww4dir}/warewulf/overlays/slurm
-%dir %attr(0700,munge,munge) %{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge
-%attr(0600,munge,munge) %config(noreplace) %{ww4dir}/warewulf/overlays/slurm/rootfs/etc/munge/munge.key.ww
 
 %files overlay-rke2
 %doc README.RKE2.md

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:29:49 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updating to v4.7.0 with following security fixes
+ * CVE-2026-39821 tracked at bsc#1266483
+ * CVE-2026-33814 tracked at bsc#1265653
+- v4.7.0 with significant changes relative to the v4.6.x series which are:
+  * New wwctl unset command
+  * Refactored server routes (URLs)
+  * New /files/ route for serving individual files and templates
+  * Server TLS support
+  * Removed support for fetching individual overlays and individual files from overlays
+  * Fixed whitespace handling around template functions
+  * Security fixes, including updated Go and library versions
+- changes from v4.6.5:
+  * new wwctl overlay info command
+  * fixed wwctl image import --update option
+  * cross-arch support for wwclient
+  * improved IPv6 support
+  * improved support for bonded interfaces
+  * renamed debian.interfaces overlay to ifupdown
+  * new systemd-networkd overlay
+  * warewulf-dracut fixes, including "provision-to-disk" fixes
+- remove slurm-overlay package
+
+-------------------------------------------------------------------
 Mon Feb 23 09:29:32 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - fix CVE-2025-69725 by updating chi
