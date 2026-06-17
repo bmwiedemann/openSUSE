@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 14 17:21:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.10.0
+  * Fix parse_uri mis-parsing of encoded colon in issuer/account
+    name.
+  * Simplified and improved generate_otp() performance in Steam
+    class.
+  * Check digest function to prevent error on OTP Generation.
+  * Ignore non-standard otpauth parameters.
+  * use strings as immutable default arguments.
+
+-------------------------------------------------------------------
 Tue Jun 10 11:25:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
