@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%bcond_with doc
 
-%define lname   libabigail8
+%define lname   libabigail9
 Name:           libabigail
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Application Binary Interface Generic Analysis and Instrumentation Library
 License:        Apache-2.0 WITH LLVM-exception
@@ -27,19 +28,20 @@ Group:          Development/Libraries/C and C++
 URL:            https://sourceware.org/libabigail/
 Source:         http://mirrors.kernel.org/sourceware/libabigail/%name-%version.tar.xz
 BuildRequires:  binutils-devel
-BuildRequires:  dpkg
 BuildRequires:  gcc-c++ >= 4.7
 BuildRequires:  libbpf-devel
 BuildRequires:  libdw-devel >= 0.170
 BuildRequires:  libtool >= 2.2
 BuildRequires:  libzip-devel
-BuildRequires:  makeinfo
 BuildRequires:  pkg-config
-BuildRequires:  python3-Sphinx
 BuildRequires:  xz
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.22
 BuildRequires:  pkgconfig(libxxhash) >= 0.8.0
 BuildRequires:  pkgconfig(libzip) >= 0.10
+%if %{with doc}
+BuildRequires:  makeinfo
+BuildRequiers:  python3-Sphinx
+%endif
 
 %description
 ABIGAIL constructs, manipulates, (de-)serializes ABI-relevant
@@ -92,18 +94,22 @@ interesting conclusions about these differences.
 %configure --includedir="%_includedir/%name" --docdir="%_docdir/%name" \
 	--disable-static --enable-cxx11 --disable-silent-rules
 %make_build
-pushd doc/manuals
+%if %{with doc}
+cd doc/manuals
 # generate doc non-parallel to avoid triggering https://github.com/sphinx-doc/sphinx/issues/2946
 %make_build man info -j1
-popd
+cd -
+%endif
 
 %install
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-pushd doc/manuals
+%if %{with doc}
+cd doc/manuals
 make DESTDIR="%buildroot" install-man-and-info-doc
-popd
+cd -
+%endif
 
 %ldconfig_scriptlets -n %lname
 
@@ -115,14 +121,18 @@ popd
 %_libdir/libabigail.so
 %_libdir/pkgconfig/*.pc
 %_datadir/aclocal/
+%if %{with doc}
 %_mandir/man7/libabigail.7*
+%endif
 
 %files tools
 %license LICENSE.txt
 %_bindir/abi*
 %_bindir/kmidiff
+%if %{with doc}
 %_mandir/man1/abi*.1*
 %_infodir/abigail.info*
+%endif
 %_libdir/%name/
 
 %changelog
