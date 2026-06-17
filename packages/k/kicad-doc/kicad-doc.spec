@@ -36,7 +36,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           kicad-doc%{?pkg_suffix}
-Version:        10.0.0
+Version:        10.0.3
 Release:        0
 Summary:        Documentation and tutorials for KiCad
 License:        CC-BY-SA-3.0 AND GPL-3.0-or-later
@@ -170,14 +170,12 @@ This package contains Chinese documentation and tutorials for KiCad
 %prep
 %autosetup -p0 -n %{sname}-%{version}
 
-# asciidoc errors out if the `[code]` style is used with an unknown language
-# https://gitlab.com/kicad/services/kicad-doc/-/issues/851
-%dnl find . -iname \*adoc -exec sed -i -e 's/\[code/\[source/' '{}' \;
+# asciidoc errors out if the `[source]` style is used without language
+# assume lisp for s-expressions
+find . -iname \*adoc -exec sed -i -e 's/\[source]/\[source,lisp]/' '{}' \;
 # Fix incorrect column with specifiers
 # https://gitlab.com/kicad/services/kicad-doc/-/issues/852
 find . -iname \*adoc -exec sed -i -e '/\[.*cols=/ { :m s/\(cols=.*\)\([0-9]\)%/\1\2/g ; t m }' '{}' \;
-# asciidoc interprets the '[--...]' on a new line as a style name
-%dnl find . -iname cli.adoc -exec sed -i -e 's/^\[--/ \[--/' '{}' \;
 
 %build
 # Supported output formats: html;pdf;epub;
