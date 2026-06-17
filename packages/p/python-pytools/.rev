@@ -261,4 +261,21 @@
   * PersistentDict: concurrency improvements</comment>
     <requestid>1183034</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>6eae331952f7ceff90c7e9bc42c853e1</srcmd5>
+    <version>2026.1.1</version>
+    <time>1781706424</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.1.1:
+  * Add graph utilities for tag propagation
+  * Extensive type-annotation coverage; dependency/tooling updates
+- Switch to the hatchling build backend
+- Add python-siphash24 as a new mandatory dependency
+- typing_extensions (&gt;= 4.5) is now unconditional
+- numpy is now optional (Recommends instead of Requires)
+
+Note: depends on python-siphash24 (new package), submitted to Factory
+in parallel; please stage together.</comment>
+    <requestid>1360004</requestid>
+  </revision>
 </revisionlist>

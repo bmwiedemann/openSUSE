@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:06:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.1.1:
+  * Add graph utilities for tag propagation
+  * Extensive type-annotation coverage across the codebase
+  * Numerous dependency and tooling updates
+- Switch to the hatchling build backend
+- Add python-siphash24 as a new mandatory dependency
+- typing_extensions (>= 4.5) is now an unconditional dependency
+- numpy is now an optional dependency, expressed as a Recommends
+  instead of a hard Requires
+
+-------------------------------------------------------------------
 Mon Jun 24 15:31:19 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2024.1.5:

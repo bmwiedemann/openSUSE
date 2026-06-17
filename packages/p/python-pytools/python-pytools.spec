@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,28 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytools
-Version:        2024.1.5
+Version:        2026.1.1
 Release:        0
 Summary:        A collection of tools for Python
 License:        MIT
 URL:            https://pypi.python.org/pypi/pytools
 Source0:        https://files.pythonhosted.org/packages/source/p/pytools/pytools-%{version}.tar.gz
-BuildRequires:  %{python_module base}
-BuildRequires:  %{python_module numpy >= 1.6.0}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module platformdirs >= 2.2.0}
+BuildRequires:  %{python_module platformdirs >= 2.2}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module siphash24 >= 1.6}
 BuildRequires:  %{python_module sqlite3}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
+BuildRequires:  %{python_module typing_extensions >= 4.5}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.6.0
-Requires:       python-platformdirs
-%if %{python_version_nodots} < 311
-Requires:       python-typing_extensions
-%endif
+Requires:       python-platformdirs >= 2.2
+Requires:       python-siphash24 >= 1.6
+Requires:       python-typing_extensions >= 4.5
+# numpy is an optional dependency enabling the numpy-aware helpers
+Recommends:     python-numpy >= 1.6
 BuildArch:      noarch
 %python_subpackages
 
