@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 13 14:32:08 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 1.10.6:
+  * Fix WebSocket request traffic logging
+
+-------------------------------------------------------------------
 Sat May 16 14:39:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.10.5:
