@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:56:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.0:
+  * Security fix GHSA-j5pc-g362-c5xp (no CVE assigned upstream):
+    repair could follow dangling symlinks and write outside the
+    repair base path
+  * Security fix GHSA-3c2j-rccw-j2vj (no CVE assigned upstream):
+    heap out-of-bounds write from an unchecked source block
+    count wrap
+  * Take input files from stdin (standard input)
+  * Fix failure with input file count over 2000 with defaults,
+    plus a related edge case
+  * Fix a missing include and RAM detection
+  * Improve and sync the man pages with the command-line help
+
+-------------------------------------------------------------------
 Thu May 28 08:31:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.1.1:

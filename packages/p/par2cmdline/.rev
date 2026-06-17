@@ -64,4 +64,20 @@
 - Drop obsolete Group: tag; add explicit BuildRequires: make.</comment>
     <requestid>1355585</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fee59c634e2c240373408218555e7cf9</srcmd5>
+    <version>1.2.0</version>
+    <time>1781706023</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.0:
+  * Security fix GHSA-j5pc-g362-c5xp (no CVE): repair could follow
+    dangling symlinks and write outside the repair base path
+  * Security fix GHSA-3c2j-rccw-j2vj (no CVE): heap out-of-bounds
+    write from an unchecked source block count wrap
+  * Take input files from stdin
+  * Fix input file count over 2000 failing with defaults
+  * Fix missing include and RAM detection
+  * Improve and sync man pages with the command line</comment>
+    <requestid>1359850</requestid>
+  </revision>
 </revisionlist>
