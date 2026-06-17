@@ -7938,7 +7938,6 @@ unsorted:
   - grafana-sap-netweaver-dashboards 
   - grafana-sap-providers 
   - grafana-sleha-provider 
-  - grafana-status-panel 
   - grafx2 
   - grail 
   - grail-devel 
@@ -11807,7 +11806,7 @@ unsorted:
   - liba52-devel 
   - libabigail-devel 
   - libabigail-tools 
-  - libabigail8 
+  - libabigail9 
   - libabiword-3_0 
   - libabiword-3_0-devel 
   - libabsl_base2601_0_0-32bit 
@@ -12243,7 +12242,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot4 
-  - libbaresip27 
+  - libbaresip28 
   - libbarvinok23 
   - libbase 
   - libbase-javadoc 
@@ -12812,7 +12811,7 @@ unsorted:
   - libcpr1 
   - libcpuid-devel 
   - libcpuid-tools 
-  - libcpuid17 
+  - libcpuid18 
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
@@ -13151,8 +13150,6 @@ unsorted:
   - libevent-2_1-7-32bit 
   - libevent-devel 
   - libevent-devel-static 
-  - libeverest 
-  - libeverest-x86-64-v3 
   - libevt-devel 
   - libevt-tools 
   - libevt1 
@@ -14709,18 +14706,16 @@ unsorted:
   - libmatrix_client0_10_1 
   - libmatroska-devel 
   - libmaxminddb-devel 
-  - libmbedcrypto16 
-  - libmbedcrypto16-x86-64-v3 
   - libmbedcrypto7 
   - libmbedcrypto7-x86-64-v3 
   - libmbedtls14 
   - libmbedtls14-x86-64-v3 
-  - libmbedtls21 
-  - libmbedtls21-x86-64-v3 
+  - libmbedtls23 
+  - libmbedtls23-x86-64-v3 
   - libmbedx509-1 
   - libmbedx509-1-x86-64-v3 
-  - libmbedx509-7 
-  - libmbedx509-7-x86-64-v3 
+  - libmbedx509-9 
+  - libmbedx509-9-x86-64-v3 
   - libmbim-devel 
   - libmbus 
   - libmbus-devel 
@@ -15366,8 +15361,6 @@ unsorted:
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-devel 
-  - libp256m 
-  - libp256m-x86-64-v3 
   - libp8-platform2 
   - libpackagekit-glib2-devel 
   - libpagemaker-devel 
@@ -15939,7 +15932,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre42 
+  - libre43 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -16687,6 +16680,8 @@ unsorted:
   - libtextstyle-devel 
   - libtextstyle0-32bit 
   - libtfm1 
+  - libtfpsacrypto2 
+  - libtfpsacrypto2-x86-64-v3 
   - libthai-devel 
   - libthai0-32bit 
   - libtheora-devel 
@@ -17823,7 +17818,6 @@ unsorted:
   - log4j-bom 
   - log4j-javadoc 
   - log4j-jcl 
-  - log4j-jmx-gui 
   - log4j-nosql 
   - log4j-over-slf4j 
   - log4j-over-slf4j2 
@@ -21340,7 +21334,6 @@ unsorted:
   - patchelf 
   - patchutils 
   - patool 
-  - patool-bash-completion 
   - patterns-aeon-base 
   - patterns-ansible-automation 
   - patterns-ansible-devtools 
@@ -27646,6 +27639,7 @@ unsorted:
   - python311-sip4 
   - python311-sip4-devel 
   - python311-sip6-devel 
+  - python311-siphash24 
   - python311-siphashc 
   - python311-six 
   - python311-sklearn-crfsuite 
@@ -31600,6 +31594,7 @@ unsorted:
   - python313-sip4 
   - python313-sip4-devel 
   - python313-sip6-devel 
+  - python313-siphash24 
   - python313-siphashc 
   - python313-sklearn-crfsuite 
   - python313-sklearn-pandas 
@@ -35601,6 +35596,7 @@ unsorted:
   - python314-sip4 
   - python314-sip4-devel 
   - python314-sip6-devel 
+  - python314-siphash24 
   - python314-siphashc 
   - python314-six 
   - python314-sklearn-crfsuite 
@@ -50404,7 +50400,6 @@ unsorted:
   - warewulf4-man 
   - warewulf4-overlay 
   - warewulf4-overlay-rke2 
-  - warewulf4-overlay-slurm 
   - warewulf4-reference-doc 
   - warp 
   - warp-lang 
