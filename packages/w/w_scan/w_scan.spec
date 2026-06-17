@@ -17,12 +17,14 @@
 
 
 Name:           w_scan
-Version:        20170107
+Version:        20210218
 Release:        0
 Summary:        Tool for scanning DVB transponders
 License:        GPL-2.0-only
 URL:            http://wirbel.htpc-forum.de/w_scan/index2.html
-Source0:        http://wirbel.htpc-forum.de/w_scan/w_scan-%{version}.tar.bz2
+# The original upstream site is gone; the final 20210218 release is
+# mirrored as the pristine orig tarball in Debian.
+Source0:        https://deb.debian.org/debian/pool/main/w/w-scan/w-scan_%{version}.orig.tar.bz2#/%{name}-%{version}.tar.bz2
 # build with gcc 15
 Patch0:         w_scan-gcc15.patch
 BuildRequires:  gcc

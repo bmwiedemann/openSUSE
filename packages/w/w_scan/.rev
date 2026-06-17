@@ -40,4 +40,16 @@
     <comment>Spec cleanup: add gcc+make BRs, drop Group</comment>
     <requestid>1356430</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6ae7ef57548cc15295685a3ccc671130</srcmd5>
+    <version>20210218</version>
+    <time>1781706154</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20210218 (upstream's final release):
+  * Repackage of 20170107 with gcc-10 compile fixes only; no
+    functional source changes
+- Fetch the tarball from the Debian source mirror, as the original
+  upstream site is no longer available</comment>
+    <requestid>1359883</requestid>
+  </revision>
 </revisionlist>

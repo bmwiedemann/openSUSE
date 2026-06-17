@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 17 05:40:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 20210218 (upstream's final release):
+  * Repackage of 20170107 with gcc-10 compile fixes only; no
+    functional source changes
+  * Upstream notes no newer versions are expected (development
+    continues separately as w_scan_cpp)
+- Fetch the tarball from the Debian source mirror, as the
+  original upstream site is no longer available
+
+-------------------------------------------------------------------
 Mon Jun  1 18:02:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:
