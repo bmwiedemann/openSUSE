@@ -37,6 +37,10 @@ Source2:        %{name}.keyring
 # skip failing test_ocr and test_ocr_backend
 # most probably some issue on our side
 Patch:          skip-test_ocr.patch
+# PATCH-FIX-UPSTREAM CVE-2026-45106.patch bsc#1268130
+Patch:          CVE-2026-45106.patch
+# PATCH-FIX-UPSTREAM CVE-2026-50127.patch bsc#1268134
+Patch:          CVE-2026-50127.patch
 BuildRequires:  bitstream-vera
 BuildRequires:  borgbackup >= 1.4.0
 BuildRequires:  fdupes

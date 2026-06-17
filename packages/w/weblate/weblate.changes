@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 15 12:27:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-45106: stored HTML injection in editor search preview
+  (bsc#1268130)
+  * CVE-2026-45106.patch
+- CVE-2026-50127: VCS_RESTRICT_PRIVATE did not properly account for
+  some transitional IPv6 ranges, multicast addresses, or some
+  semi-private IPv4 ranges (bsc#1268134)
+  * CVE-2026-50127.patch
+
+-------------------------------------------------------------------
 Tue May 26 13:55:39 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.17.1
