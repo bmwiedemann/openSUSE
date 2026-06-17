@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:03:30 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to 0.21.03:
+  * New stressors
+    * acct - acct(2) system call exercising stressor
+  * Notable bug fixes
+    * core-setting: ensure global setting flag is set for global stressor name 
+
+-------------------------------------------------------------------
 Tue Jun  2 12:38:40 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to 0.21.02:
