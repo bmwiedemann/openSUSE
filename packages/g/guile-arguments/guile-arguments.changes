@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 17 08:44:52 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Update to version 0.2.0:
+  * Release 0.2.0.
+  * arguments: Add structured subcommand support.
+  * arguments: Document why record predicates are duplicated.
+
+-------------------------------------------------------------------
 Thu Jun 11 08:09:20 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
 
 - Address factory-auto's comment about sources

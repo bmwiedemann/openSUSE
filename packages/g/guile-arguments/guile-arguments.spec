@@ -17,7 +17,7 @@
 
 
 Name:           guile-arguments
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Parser for breaking down command line arguments into structured objects
 License:        GPL-3.0-or-later
