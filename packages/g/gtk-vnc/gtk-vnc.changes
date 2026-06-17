@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:20:51 MDT 2026 - carnold@suse.com
+
+- bsc#1266272 - "virt-manager" is crashing.
+  bsc#1266372 - virt-manager SIGSEGV after few minutes in
+  on_primary_owner_change (.... at ../src/vncdisplay.c:1944
+  009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
+
+-------------------------------------------------------------------
 Mon Nov  3 13:38:54 MST 2025 - carnold@suse.com
 
 - bsc#1251850 - removal of spice leads to regression in

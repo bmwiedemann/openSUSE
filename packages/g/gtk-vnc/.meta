@@ -3,5 +3,4 @@
   <description>gtk-vnc is a VNC viewer widget for GTK+. It is built using coroutines
 allowing it to be completely asynchronous while remaining single
 threaded.</description>
-  <devel project="GNOME:Factory" package="gtk-vnc"/>
 </package>

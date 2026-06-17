@@ -1,7 +1,7 @@
 #
 # spec file for package gtk-vnc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ Patch5:         005-Flush-pending-clipboard-on-focus-in-event.patch
 Patch6:         006-Implement-response-to-server-clipboard-REQUEST-action.patch
 Patch7:         007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
 Patch8:         008-Complete-server-to-client-data-sync-PROVIDE.patch
+Patch9:         009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4

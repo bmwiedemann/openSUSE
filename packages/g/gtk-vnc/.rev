@@ -479,4 +479,15 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
     <comment>Upstream patches to fix bsc#1251850. Adds copy and paste ability between host and guest when using VNC Display instead of Spice. (forwarded request 1321847 from charlesa)</comment>
     <requestid>1323138</requestid>
   </revision>
+  <revision rev="60" vrev="3">
+    <srcmd5>cdbdb0314df51bc46e6c4bbe0a8768e1</srcmd5>
+    <version>1.5.0</version>
+    <time>1781705825</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1266272 - &quot;virt-manager&quot; is crashing.
+  bsc#1266372 - virt-manager SIGSEGV after few minutes in
+  on_primary_owner_change (.... at ../src/vncdisplay.c:1944
+  009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch</comment>
+    <requestid>1359808</requestid>
+  </revision>
 </revisionlist>
