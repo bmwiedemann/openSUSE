@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 16 23:55:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20260616T235518 2026-06-16T23:55:18Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-5041 CVE-2026-44981 GHSA-273h-gvwr-c3qj
+  * GO-2026-5042 CVE-2026-47243 GHSA-2gv2-cffp-j227
+  * GO-2026-5043 CVE-2026-30963 GHSA-2ww6-hf35-mfjm
+  * GO-2026-5049 CVE-2026-47725 GHSA-273q-qgh5-wrj6
+  * GO-2026-5054 CVE-2026-48113 GHSA-24fp-5v3p-rvpw
+  * GO-2026-5055 CVE-2026-54094 GHSA-239w-m3h6-ch8v
+
+-------------------------------------------------------------------
+Tue Jun  2 21:39:47 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.0.20260602T213947 2026-06-02T21:39:47Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4960 CVE-2026-39386 GHSA-2gw9-c2r2-f5qf
+  * GO-2026-5031 CVE-2026-42500
+  * GO-2026-5032 CVE-2026-46599
+  * GO-2026-5037 CVE-2026-27145
+  * GO-2026-5038 CVE-2026-42504
+  * GO-2026-5039 CVE-2026-42507
+
+-------------------------------------------------------------------
 Tue May 26 22:49:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.0.20260526T224918 2026-05-26T22:49:18Z.
