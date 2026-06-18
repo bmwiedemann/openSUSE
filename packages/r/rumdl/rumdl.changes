@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:39:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.18:
+  * Fixed
+    - md013: preserve MyST directives and roles during reflow
+      (a31a602)
+    - positions: char-based marker columns in MD018, MD029, MD069
+      (97212f3)
+    - positions: address review - MD037 filter, boundary-safe
+      parser conversions, MD063 column (6fd43f7)
+    - positions: char-based end column in MD070; document the
+      column convention (039a334)
+    - positions: use character-based end columns across remaining
+      rules (efc29da)
+    - positions: report character-based columns in inline-content
+      rules (e7fd2ee)
+    - positions: make shared column helpers character-based
+      (5ca4814)
+    - md057: report character-based columns for non-ASCII lines
+      (d8d07eb)
+- Update to version 0.2.17:
+  * Fixed
+    - md077: skip footnote definition bodies in list continuation
+      check (#669) (388b63f) - thanks @vEnhance
+    - lsp: offer quick fixes across a diagnostic's full line span
+      (c533b75)
+
+-------------------------------------------------------------------
+Sat Jun 13 15:11:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.16:
+  * Added
+    - config: expand environment variables in extends paths
+      (ee98810)
+
+-------------------------------------------------------------------
 Sat Jun 13 10:02:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.15:
