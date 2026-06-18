@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 14:46:09 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.3.1
+  * Fix bug where add_history_entry incorrectly used a custom
+    schema if available. #2044
+
+-------------------------------------------------------------------
 Tue Apr 28 08:22:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.0:

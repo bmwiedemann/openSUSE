@@ -442,4 +442,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350920</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>ca7e798869830b162e28921b0d0ad56a</srcmd5>
+    <version>5.3.1</version>
+    <time>1781801113</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.3.1
+  * Fix bug where add_history_entry incorrectly used a custom
+    schema if available. #2044</comment>
+    <requestid>1360273</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-asdf%{psuffix}
-Version:        5.3.0
+Version:        5.3.1
 Release:        0
 Summary:        Python tools to handle ASDF files
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -43,7 +43,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6.0
 Requires:       python-asdf-standard >= 1.1.0
-Requires:       python-asdf-transform-schemas >= 0.3
 Requires:       python-attrs >= 22.2
 %if %{python_version_nodots} < 312
 Requires:       python-importlib-metadata >= 4.11.4
