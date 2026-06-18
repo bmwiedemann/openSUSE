@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 18 05:04:14 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260618:
+  * Assigned RUSTSEC-2026-0184 to git2
+  * Update git2 advisory for release of 0.21.0
+  * Add advisory for git2: buffer-created BlameHunk leads to null pointers
+  * Assigned RUSTSEC-2026-0183 to git2
+  * Update git2 advisory for release of 0.21.0
+  * Add advisory for git2: Remote::list() with an empty list triggers UB
+  * Assigned RUSTSEC-2026-0182 to wasmtime-wasi
+  * Add a new Wasmtime advisory
+  * Bump actions/checkout from 6.0.2 to 6.0.3
+  * Assigned RUSTSEC-2026-0181 to vibeio-http
+
+-------------------------------------------------------------------
 Thu Feb 26 03:49:21 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260226:
