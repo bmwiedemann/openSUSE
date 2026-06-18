@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jun 17 07:28:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Disable Kameleon QMK integration for now, review still pending
+  (boo#1267818)
+
+-------------------------------------------------------------------
+Fri Jun 12 19:07:19 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Ensure that color picker applet is not bigger than its container (kde#517052)
+  * applets/weather: reset busy state when offline update is queued (kde#517280)
+  * Webbrowser: Use rtl symbolic icons if needed (kde#518935)
+  * Fix comic applet button icons in RtL (kde#518932)
+  * Fix removing items from a grouping applet (kde#517043)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * applets/weather: remove conditional anchors and correct broken State
+  * applets/weather: center badge if needed
+  * applets/weather: properly wait until ion finishes
+  * kwin/effects/cube: Use Offscreen rendering mode (kde#520198)
+  * kwin/effects/cube: Fix unnecessary rotation when the effect starts
+  * Skip kcm smoke tests with kcmutils < 6.27.0
+  * applets/weather: Guard for location reset during KIO job
+
+-------------------------------------------------------------------
+Sun May 24 11:16:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May 12 13:57:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:

@@ -343,4 +343,13 @@
     <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
     <requestid>1352836</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f7bfc7a15f12707aa11c2ef4bfa91b28</srcmd5>
+    <version>6.7.0</version>
+    <time>1781811395</time>
+    <user>anag_factory</user>
+    <comment>- Disable Kameleon QMK integration for now, review still pending
+  (boo#1267818) (forwarded request 1359910 from Vogtinator)</comment>
+    <requestid>1359913</requestid>
+  </revision>
 </revisionlist>

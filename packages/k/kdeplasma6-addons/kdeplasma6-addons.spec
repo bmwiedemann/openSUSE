@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname kdeplasma-addons
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,18 +26,20 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+Source3:        vendor.tar.zst
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
+BuildRequires:  cmake(Corrosion)
 BuildRequires:  cmake(KF6Auth) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -70,13 +72,16 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 %ifarch x86_64 aarch64 riscv64
 BuildRequires:  cmake(Qt6WebEngineQuick) >= %{qt6_version}
 %endif
+BuildRequires:  zstd
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(icu-i18n)
 BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libudev)
 Requires:       kf6-kitemmodels-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
 Requires:       kirigami-addons6
 Requires:       plasma5support6 >= %{_plasma6_bugfix}
+Requires:       qt6-quick3d-imports >= %{qt6_version}
 Provides:       plasma-addons = %{version}
 Obsoletes:      plasma-addons < %{version}
 Provides:       plasma5-addons = %{version}
@@ -98,7 +103,7 @@ the Plasma desktop.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{rname}-%{version}
+%autosetup -p1 -a3 -n %{rname}-%{version}
 
 %build
 %cmake_kf6
@@ -108,20 +113,26 @@ the Plasma desktop.
 %install
 %kf6_install
 
+rm %{buildroot}%{_kf6_dbuspolicydir}/org.kde.kameleon.qmk.helper.conf
+rm %{buildroot}%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleon.qmk.helper.service
+rm %{buildroot}%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.policy
+
 %find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
+#%{_kf6_dbuspolicydir}/org.kde.kameleon.qmk.helper.conf
 %{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %{_kf6_debugdir}/kdeplasma-addons.renamecategories
 %{_kf6_iconsdir}/hicolor/scalable/apps/accessories-dictionary.svgz
 %{_kf6_knsrcfilesdir}/comic.knsrc
+%{_kf6_libdir}/libplasmapotdprovidercore.so.*
 %{_kf6_libdir}/libplasmaweatherdata.so.*
 %{_kf6_libdir}/libplasmaweatherion.so.*
-%{_kf6_libdir}/libplasmapotdprovidercore.so.*
+%{_kf6_libexecdir}/kameleon-qmk-helper
 %{_kf6_libexecdir}/kauth/kameleonhelper
 %{_kf6_notificationsdir}/plasma_applet_timer.notifyrc
 %{_kf6_plasmadir}/desktoptheme/
@@ -143,14 +154,18 @@ the Plasma desktop.
 %{_kf6_plugindir}/potd/
 %{_kf6_qmldir}/org/kde/plasma/*
 %{_kf6_qmldir}/org/kde/plasmacalendar/
+#%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleon.qmk.helper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleonhelper.service
 %{_kf6_sharedir}/kwin/
+#%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kameleonhelper.policy
 
 %files devel
 %dir %{_includedir}/plasma
 %{_includedir}/plasma/potdprovider/
+%{_includedir}/plasma/weather/
 %{_kf6_cmakedir}/PlasmaPotdProvider/
+%{_kf6_cmakedir}/PlasmaWeather/
 %{_kf6_libdir}/libplasmapotdprovidercore.so
 %{_kf6_libdir}/libplasmaweatherdata.so
 %{_kf6_libdir}/libplasmaweatherion.so
