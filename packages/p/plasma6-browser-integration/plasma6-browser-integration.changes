@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:57 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+
+-------------------------------------------------------------------
+Thu May 28 18:44:47 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+
+-------------------------------------------------------------------
+Sun May 24 11:19:02 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * CI: Require passing tests on all jobs
+  * Fixed build with "QT_NO_DEBUG_OUTPUT"
+  * Add outline to scroll bar
+  * Bump manifest version
+  * options: Disable spellcheck and autocomplete on domain input
+  * options: Remove history permission code
+  * Bump manifest version
+  * Support dark mode in Breeze scroll bars
+  * Remove hover from scroll bar track
+  * purpose: Don't determine MIME type from the host
+  * reminder: Set XDG activation token on ApplicationLauncherJob
+  * kdeconnect: Don't offer to call phone numbers on a desktop/laptop
+  * Block new Teams URL from media controls (kde#514870)
+  * feat: add waterfox support (kde#462520)
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:59:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
