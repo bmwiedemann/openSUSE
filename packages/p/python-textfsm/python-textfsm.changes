@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 11 01:45:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Drop no longer required {Build,}Requires on six.
+
+-------------------------------------------------------------------
 Thu Apr 17 06:48:35 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
