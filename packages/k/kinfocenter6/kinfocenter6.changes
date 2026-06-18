@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Add missing qqml.h include
+
+-------------------------------------------------------------------
+Thu May 28 18:44:20 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+
+-------------------------------------------------------------------
+Sun May 24 11:17:03 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * update version for new release
+  * Sensors: Use Fahrenheit if the locale uses it
+  * kcms/energy: Install using kinfocenter_add_kcm and remove unused metadata
+  * Port badges to Kirigami.Badge
+  * Re-arrange versions to make appstream happy
+  * update version for new release
+  * energy: Set PlainText for labels
+  * energy: Sort batteries by name and put power supply batteries first
+  * energy: Drop "Unknown" battery
+  * energy: Show battery percentage in icon and use it als for unknown
+  * energy: Hide more unavailable values
+  * update version for new release
+  * Add vulkaninfo to the keywords for Vulkan KCM
+  * documentation.yml is no more needed
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:58:00 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:

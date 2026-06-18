@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.kinfocenter\\.private.*
 
@@ -28,14 +28,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           kinfocenter6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Utility that provides information about a computer system
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -113,19 +113,18 @@ KDE Utility that provides information about a computer system.
 %doc %lang(en) %{_kf6_htmldir}/en/kinfocenter/
 %{_libexecdir}/kinfocenter-vulkan-helper
 %{_kf6_applicationsdir}/kcm_about-distro.desktop
-%{_kf6_applicationsdir}/kcm_energyinfo.desktop
 %{_kf6_applicationsdir}/org.kde.kinfocenter.desktop
 %{_kf6_appstreamdir}/org.kde.kinfocenter.appdata.xml
 %{_kf6_bindir}/kinfocenter
 %{_kf6_libdir}/libKInfoCenterInternal.so
 %{_kf6_plugindir}/plasma/kcms/kcm_about-distro.so
-%{_kf6_plugindir}/plasma/kcms/kcm_energyinfo.so
 %dir %{_kf6_plugindir}/plasma/kcms/kinfocenter/
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_audio_information.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_block_devices.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_cpu.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_edid.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_egl.so
+%{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_energyinfo.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_firmware_security.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_glx.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_interrupts.so
@@ -140,6 +139,7 @@ KDE Utility that provides information about a computer system.
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_vulkan.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_wayland.so
 %{_kf6_plugindir}/plasma/kcms/kinfocenter/kcm_xserver.so
+
 %{_kf6_qmldir}/org/kde/kinfocenter/
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kinfocenter.dmidecode.service
 %{_kf6_dbuspolicydir}/org.kde.kinfocenter.dmidecode.conf
