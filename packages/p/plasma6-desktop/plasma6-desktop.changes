@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:08:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * applets/kicker: fix queued fast launching
+  * Add missing KSharedConfig include
+  * applets/kicker: set runner column currentIndex on becoming visible
+  * CMake: Drop obsolete libxft feature info
+  * applets/pager: Allow to build without X11-enabled KWindowSystem and PW
+  * imports/activitymanager: Allow to build w/o X11-enabled KWindowSystem
+  * ConfigureChecks.cmake: Cleanup unused Xrandr detection
+  * Drop obsolete HAVE_XCURSOR
+  * kcms: landingpage: Drop obsolete X11 link
+  * applets/kickoff: don't use binding to center grid (kde#521068)
+  * runners/keys: Don't show actions that are handled by other runners
+  * applets/kicker: check activeFocus of list instead of column
+  * applets/kicker: set margins for scrollview
+  * Add missing qqml.h include
+  * kcms/mouse: Fix incorrect divisor in pointer acceleration comparison
+  * Add missing qqml.h include
+  * applets/kicker: fix typo
+  * applets/kicker: don't show icon on drag&drop placeholder
+  * applets/kickoff: move highlight to delegate (kde#426015)
+  * applets/taskmanager: fix move to current desktop for grouped tasks (kde#520777)
+  * applets/kicker: fix placeholder
+  * applets/kicker: use resultsPresent property
+  * emojier: Fix i18n use (kde#520827)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * CompactApplet: Enable mainItem based on dialog visibility (kde#515280)
+  * Positioner: Fix disappearing icons on rename (kde#520633,kde#511920)
+  * Update version for new release 6.6.91
+  * Move old wallpaper, add new one, update previews
+  * appiumtests/kcms: fix kcm_kded_test
+  * applets/kicker: activate submenus on Space
+  * containments/desktop: adjust edit height onTextChanged (kde#520621)
+  * applets/kicker: avoid warning when search returns nothing
+  * applets/taskmanager: re-introduce dynamic badge sizing (kde#520447)
+  * Fix memory leak in Rules::readRules
+  * 🍒 applets/keyboardlayout: partially undo zero paddings for badge
+  * applets/taskmanager: position badges correctly while audio is playing
+  * kcms/access: hide cursor visibility option on Wayland
+  * TaskList: Use maxStripes when forceStripes is enabled (kde#515152)
+  * kcms/mouse: Guard against an empty backend
+  * kickoff: drop preferredWidth/Height (kde#515116)
+  * kcms/keys: Ensure an expanded item gets fully scrolled into view
+  * kcms/keys: Use QPersistentModelIndex to store global shortcut conflicts
+  * kcms/keys: Handle multiple shortcut conflicts
+  * Drop unnecessary KF6Auth dependency
+
+-------------------------------------------------------------------
+Sun May 24 11:19:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May 12 13:59:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
