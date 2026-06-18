@@ -18,12 +18,18 @@
 
 %define         short_name os-autoinst-devel
 Name:           %{short_name}-test
-Version:        5.1781620242.0160257
+Version:        5.1781702821.22ced0d
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
 BuildRequires:  %{short_name} == %{version}
 ExcludeArch:    %{ix86}
+
+# disable os-autoinst-devel-test in consistency with use of `%bcond_with devel_package`
+# in the main os-autoinst spec file
+%if !(0%{?is_opensuse} && 0%{?suse_version} >= 1600)
+ExclusiveArch:  do_not_build
+%endif
 
 %description
 .

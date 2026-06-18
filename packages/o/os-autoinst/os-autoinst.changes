@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:56:34 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781702821.22ced0d:
+  * ci: Avoid unresolvable os-autoinst-openvswitch-test package for SLE-SP7
+  * fix: Avoid unresolvable os-autoinst-devel-test package for SLE-SP7
+  * feat: expose detect_serial_marker_capability as public
+  * chore(mergify): adjust expectations to current OBS checks
+  * style(perlcritic): Add BuiltinFunctions::RequireBlockGrep
+
+-------------------------------------------------------------------
 Tue Jun 16 14:30:52 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1781620242.0160257:
