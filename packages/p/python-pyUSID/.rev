@@ -140,4 +140,12 @@
 - Remove upper bound on numpy.</comment>
     <requestid>1319855</requestid>
   </revision>
+  <revision rev="16" vrev="6">
+    <srcmd5>c43be6ef8b99b20dfd8b237a83b3a137</srcmd5>
+    <version>0.0.12</version>
+    <time>1781801122</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360287</requestid>
+  </revision>
 </revisionlist>

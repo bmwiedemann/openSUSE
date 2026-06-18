@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyUSID
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 %{?sle15_python_module_pythons}
 Name:           python-pyUSID
 Version:        0.0.12

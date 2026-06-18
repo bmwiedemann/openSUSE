@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 09:09:04 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- skip build for python311  
+
+-------------------------------------------------------------------
 Tue Nov 25 03:07:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-numpy-2.patch:
