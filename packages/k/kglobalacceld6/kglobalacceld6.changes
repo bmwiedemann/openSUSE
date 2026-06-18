@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+
+-------------------------------------------------------------------
+Thu May 28 18:44:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * Make actionList report information about GlobalShortcut with the smallest serial
+  * Port GlobalShortcut away from GlobalShortcutsRegistry::getShortcutByKey()
+  * Make GlobalShortcutsRegistry::getShortcutsByKey() report all matching shortcuts
+  * Refactor how Component objects are created at runtime
+  * Fix loading settings from null KConfigGroup
+  * Workaround kglobalacceld not grabbing some modifier-only combinations (kde#520100)
+
+-------------------------------------------------------------------
+Sun May 24 11:16:59 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * Use categorized logging
+  * Serialize empty QKeySequence object as none
+  * Use default DEFAULT_SEVERITY for logging
+  * Fix dbus registration order
+  * Drop KGLOBALACCEL_TEST_MODE
+  * Make GlobalShortcut serials persistent
+  * Stabilize shortcutstest
+  * Improve duplicate shortcut key registration with GlobalShortcutsRegistry
+  * Avoid resetting global shortcut keys without explicit user input (kde#484597)
+  * autotests: Remove leftovers from previous test runs
+  * autotests: Speed up the shortcuts test
+  * Store key sequences in a set
+  * Load shortcuts from desktop file and config in the same order
+  * Remove duplicate key sanitization logic
+  * Clean up XCB connection
+  * Enable LSAN in CI
+  * Fix some deprecation notices to refer to actual member functions
+  * Swap log print lines so they match their if-condition
+  * Format C++ files with clang-format
+  * docs: Add documentation for shortcut allowlist feature
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:57:56 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
