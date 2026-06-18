@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:08 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Add missing qqml.h include
+  * updates: Do not treat the initial state as "up-to-date"
+
+-------------------------------------------------------------------
+Thu May 28 18:43:42 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * flatpak: Fix flatpaktest
+  * DiscoverWindow: Don't change window height in binding (kde#520462)
+  * Don't try to load version and size of a flatpak repo (kde#520371)
+  * libdiscover/TransactionModel: Report same string for SetupStatus and QueuedStatus
+  * libdiscover/TransactionListener: Fix incorrect isActive (kde#520028)
+  * actions: add accessibility onPressAction
+  * Ensure that loading message shows up correctly
+
+-------------------------------------------------------------------
+Sun May 24 11:16:16 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May 12 13:57:19 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
