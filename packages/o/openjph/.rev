@@ -285,4 +285,16 @@
   * Fix 32-bit x86 build of the AVX2 block decoder #281</comment>
     <requestid>1359356</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>2599bc8afc6fca1c240c67b97135ffda</srcmd5>
+    <version>0.29.0</version>
+    <time>1781800701</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.29.0:
+  * Bug fixes #284
+  * fix: size precinct_scratch from per-component (COC) geometry #286
+  * A bug fix #288
+  * S390x Support #290</comment>
+    <requestid>1359889</requestid>
+  </revision>
 </revisionlist>

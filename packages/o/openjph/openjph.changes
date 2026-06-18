@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 06:07:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.29.0:
+  * Bug fixes #284
+  * fix: size precinct_scratch from per-component (COC) geometry #286
+  * A bug fix #288
+  * S390x Support #290
+
+-------------------------------------------------------------------
 Mon Jun 15 05:56:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.28.1:
