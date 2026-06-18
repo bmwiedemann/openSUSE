@@ -11,4 +11,4 @@ Build-Depends: debhelper (>= 4.1.16), acl-dev, btrfs-progs, dbus, g++, libboost-
 #  423a20ae6e882d44e65a4eff97f2269f 630905 snapper-0.2.8.tar.gz
 #
 Files:
-c47cc48bec9ce7bf56feebd9ef8c7f66 605128 snapper-0.13.1.tar.xz
+5db8ef29f8de81627f17a718d01a9cd0 605224 snapper-0.13.1.tar.xz

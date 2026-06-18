@@ -41,7 +41,7 @@ Summary:        Tool for filesystem snapshot management
 License:        GPL-2.0-only
 Group:          System/Packages
 URL:            http://snapper.io/
-Source:         snapper-%{version}+gite8edac1.tar.xz
+Source:         snapper-%{version}+git0a4846f.tar.xz
 %if 0%{?suse_version}
 BuildRequires:  libboost_thread-devel
 BuildRequires:  libboost_test-devel
