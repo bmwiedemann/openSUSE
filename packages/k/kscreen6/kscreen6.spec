@@ -18,13 +18,13 @@
 
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.private\\.kscreen.*
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname kscreen
 %bcond_without released
 Name:           kscreen6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -33,9 +33,9 @@ Release:        0
 Summary:        Screen management software by KDE
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -62,6 +62,8 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.41
 BuildRequires:  pkgconfig(xcb-atom)
 BuildRequires:  pkgconfig(xi)
+BuildRequires:  qt6qmlimport(org.kde.kitemmodels)
+BuildRequires:  qt6qmlimport(org.kde.plasma.plasma5support)
 Requires:       kf6-kded
 Requires:       libkscreen6-plugin >= %{_plasma6_bugfix}
 # For graz.avif
