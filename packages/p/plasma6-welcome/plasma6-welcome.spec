@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname plasma-welcome
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-welcome
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Onboarding wizard for Plasma
 License:        GPL-2.0-only OR GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-welcome
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 # PATCH-FIX-OPENSUSE
@@ -42,7 +42,9 @@ BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KAccounts6)
 BuildRequires:  cmake(KF6ConfigWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6DBusAddons) >= %{kf6_version}
+BuildRequires:  cmake(KF6GlobalAccel) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
