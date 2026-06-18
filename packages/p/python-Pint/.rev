@@ -398,4 +398,12 @@
 - Only require pytest-subtests with pytest &lt; 9.</comment>
     <requestid>1345810</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>1fcab9125136e67830bb052403da3bc7</srcmd5>
+    <version>0.25.3</version>
+    <time>1781801118</time>
+    <user>anag_factory</user>
+    <comment>- Don't test with python311-dask-array: no longer available, SPEC 0</comment>
+    <requestid>1360276</requestid>
+  </revision>
 </revisionlist>

@@ -41,7 +41,7 @@ Recommends:     python-uncertainties >= 3.1.6
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module flexcache >= 0.3}
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-array if %python-base >= 3.12}
 BuildRequires:  %{python_module flexparser >= 0.4}
 BuildRequires:  %{python_module numpy >= 1.21}
 BuildRequires:  %{python_module packaging}
