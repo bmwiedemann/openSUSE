@@ -210,6 +210,7 @@ BuildRequires:  libxml2-devel
 BuildRequires:  libxslt
 BuildRequires:  perl
 BuildRequires:  python3
+BuildRequires:  python3-base
 BuildRequires:  python3-docutils
 BuildRequires:  python3-pytest
 BuildRequires:  readline-devel

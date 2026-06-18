@@ -5085,4 +5085,12 @@ https://build.opensuse.org/requests/1354518
   bsc#1263564</comment>
     <requestid>1358815</requestid>
   </revision>
+  <revision rev="442" vrev="3">
+    <srcmd5>c3832337e6c7e49d062f96bed7399b0d</srcmd5>
+    <version>12.4.0</version>
+    <time>1781800695</time>
+    <user>anag_factory</user>
+    <comment>- spec: Add 'BuildRequires: python3-base' to fix build in SLFO:Main</comment>
+    <requestid>1359865</requestid>
+  </revision>
 </revisionlist>

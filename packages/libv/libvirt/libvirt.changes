@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 16 23:08:24 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- spec: Add 'BuildRequires: python3-base' to fix build in SLFO:Main
+
+-------------------------------------------------------------------
 Thu Jun 11 17:28:05 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix invocation of numa-preplace when hugepages requested,
