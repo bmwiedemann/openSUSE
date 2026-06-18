@@ -348,4 +348,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
     <requestid>1352882</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>fda0455533c6c238a9f2fb0577c0b412</srcmd5>
+    <version>6.7.0</version>
+    <time>1781811439</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.0 (maybe). K:F already publish disabled. (forwarded request 1359107 from Vogtinator)</comment>
+    <requestid>1359194</requestid>
+  </revision>
 </revisionlist>
