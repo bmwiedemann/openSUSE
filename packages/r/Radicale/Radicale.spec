@@ -28,7 +28,7 @@
 %define py_min_ver 3.9
 %define vo_min_ver 0.9.6
 Name:           Radicale
-Version:        3.7.2
+Version:        3.7.4
 Release:        0
 Summary:        A CalDAV calendar and CardDav contact server
 License:        GPL-3.0-or-later
@@ -83,7 +83,7 @@ Radicale is a server for CalDAV (calendars, to-do lists) and CardDAV (contacts).
 
 %prep
 %autosetup
-test -f setup.py || echo 'import setuptools; setuptools.setup()' > setup.py
+mv setup.py.legacy setup.py
 
 # Restore "passlib" requirement until libpass files for PEP 541
 # https://github.com/Kozea/Radicale/issues/1980

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 11 10:01:07 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Update to 3.7.4
+  * Fix: sharing: PROPFIND returns now empty owner element in case of a mapped share as clients try PROPFIND on this not accessable href
+  * Fix: WebUI hide copy button in insecure environments
+  * Fix: sharing: bday conversion hrefs for vCard filenames ending in v/c/f
+  * Improve: sharing: PROPFIND returns also privilege "write" in case "write-content" and "write-properties" is permitted
+  * Improve: WebUI decode URL in text field for better readability
+  * Extension: WebUI dark theme with automatic browser/OS color scheme detection
+  * Add: [web] prefer_browser_login option
+
+- Update to 3.7.3
+  * Fix: sharing: GET request on single item with bday conversion
+  * Fix: sharing: PROPFIND response on single item with bday conversion
+  * Fix: sharing: PROPFIND response related to C:supported-calendar-component-set
+  * Fix: user/path validation related to 'unicode-letter'
+  * Extension: expose RADICALE:version for authenticated users via PROPFIND
+  * Feature: conditional log of request/response header/content by new options *_on_notice_condition 
+
+-------------------------------------------------------------------
 Sun May 10 15:43:09 UTC 2026 - Ákos Szőts <akos@szots.dev>
 
 - Update to 3.7.2
