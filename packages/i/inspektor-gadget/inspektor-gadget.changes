@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:09:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.53.2:
+  * Bugfixes
+    - [Backport] container-hook: avoid fanotify self-deadlock by
+      caching config.json by @burak-ok in #5574, original PR by
+      @alban in #5572
+  * Security
+    - Bump Go toolchain and builder image pins to 1.26.4
+      (CVE-2026-42504) (#5558)
+
+-------------------------------------------------------------------
 Fri Jun 05 06:11:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.1:
