@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname oxygen
 
@@ -34,14 +34,14 @@
 # Latest ABI-stable Plasma (e.g. 6.0 in KF6, but 6.0.80 in KUF)
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 Name:           oxygen6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Oxygen style, KWin decoration and cursors
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -135,6 +135,13 @@ Obsoletes:      oxygen5-decoration < %{version}
 %description decoration
 This package contains the Oxygen's KWin decoration.
 
+%package wallpapers
+Summary:        Oxygen wallpapers
+BuildArch:      noarch
+
+%description wallpapers
+This package provides Oxygen wallpapers.
+
 %lang_package -n %{name}-style
 
 %prep
@@ -172,6 +179,7 @@ This package contains the Oxygen's KWin decoration.
 %{_kf6_plasmadir}/look-and-feel/
 %dir %{_kf6_plasmadir}/desktoptheme/
 %{_kf6_plasmadir}/desktoptheme/oxygen/
+%{_kf6_plasmadir}/desktoptheme/air/
 %{_kf6_plugindir}/styles/
 %{_kf6_plugindir}/kstyle_config/
 %{_kf6_applicationsdir}/kcm_oxygendecoration.desktop
@@ -195,6 +203,12 @@ This package contains the Oxygen's KWin decoration.
 %license LICENSES/*
 %{_kf6_iconsdir}/Oxygen_*/
 %{_kf6_iconsdir}/KDE_Classic/
+
+%files wallpapers
+%license LICENSES/*
+%dir %{_kf6_sharedir}/wallpapers
+%{_kf6_sharedir}/wallpapers/Air/
+%{_kf6_sharedir}/wallpapers/Horos/
 
 %files style-lang -f %{name}.lang
 
