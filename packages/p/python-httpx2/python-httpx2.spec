@@ -36,7 +36,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-dynamic-versioning >= 0.8.0}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 9.0.3}
+BuildRequires:  %{python_module pytest >= 8.3}
 BuildRequires:  %{python_module Werkzeug >= 3.1.6}
 BuildRequires:  %{python_module anyio}
 BuildRequires:  %{python_module chardet >= 5.2.0}
@@ -46,9 +46,10 @@ BuildRequires:  %{python_module hpack}
 BuildRequires:  %{python_module httpcore2 == %{version}}
 BuildRequires:  %{python_module hyperframe}
 BuildRequires:  %{python_module idna >= 3.18}
-BuildRequires:  %{python_module pytest-codspeed >= 4.1.1}
+BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest-httpbin >= 2.0.0}
 BuildRequires:  %{python_module pytest-trio >= 0.8.0}
+BuildRequires:  %{python_module rich >= 10}
 BuildRequires:  %{python_module socksio}
 BuildRequires:  %{python_module trio >= 0.31.0}
 BuildRequires:  %{python_module trustme >= 1.2.1}
@@ -61,7 +62,7 @@ Requires:       python-anyio
 Requires:       python-httpcore2 == %{version}
 Requires:       python-idna >= 3.18
 Requires:       python-truststore >= 0.10
-%if %python_version_nodots < 313
+%if 0%{?python_version_nodots} < 313
 Requires:       python-typing-extensions >= 4.5.0
 %endif
 Suggests:       python-brotli
@@ -70,7 +71,7 @@ Suggests:       python-pygments >= 2.0.0
 Suggests:       python-rich >= 10
 Suggests:       python-h2 >= 3
 Suggests:       python-socksio >= 1.0.0
-%if %python_version_nodots < 314
+%if 0%{?python_version_nodots} < 314
 Suggests:       python-zstandard >= 0.18.0
 %endif
 %if %{with libalternatives}

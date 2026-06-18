@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 02:31:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pytest-benchmark rather than pytest-codspeed.
+- Loosen pytest requirement.
+
+-------------------------------------------------------------------
 Tue Jun 16 04:32:11 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.4.0:

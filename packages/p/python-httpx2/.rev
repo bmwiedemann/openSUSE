@@ -29,4 +29,13 @@
 - Add fix-encoding-tests.patch to fix tests with chardet &gt;= 6</comment>
     <requestid>1359710</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>3646de20da11535154cf8255ac7d7729</srcmd5>
+    <version>2.4.0</version>
+    <time>1781800697</time>
+    <user>anag_factory</user>
+    <comment>- Use pytest-benchmark rather than pytest-codspeed.
+- Loosen pytest requirement.</comment>
+    <requestid>1359871</requestid>
+  </revision>
 </revisionlist>
