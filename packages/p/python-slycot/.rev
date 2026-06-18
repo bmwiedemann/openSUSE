@@ -189,4 +189,13 @@
   * Updated licensing data format; Slycot had deprecated format.</comment>
     <requestid>1318917</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b3ac96cc6a5a3ca0ccafe5bd4763f20e</srcmd5>
+    <version>0.7.0</version>
+    <time>1781800792</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.7.0
+  * Switch build system to scikit-build-core.</comment>
+    <requestid>1360074</requestid>
+  </revision>
 </revisionlist>

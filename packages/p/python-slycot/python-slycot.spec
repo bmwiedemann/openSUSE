@@ -1,7 +1,7 @@
 #
 # spec file for package python-slycot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-slycot
-Version:        0.6.1
+Version:        0.7.0
 Release:        0
 Summary:        A wrapper for the SLICOT control and systems library
 License:        BSD-3-Clause AND GPL-2.0-only
@@ -25,12 +25,10 @@ Group:          Development/Languages/Python
 URL:            https://github.com/python-control/Slycot
 Source0:        https://files.pythonhosted.org/packages/source/s/slycot/slycot-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.10}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scikit-build >= 0.15}
-BuildRequires:  %{python_module setuptools >= 45}
-BuildRequires:  %{python_module setuptools_scm >= 7.0}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module scikit-build-core}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  blas-devel
 BuildRequires:  cmake >= 3.14
 BuildRequires:  fdupes
@@ -53,9 +51,9 @@ Slycot is a wrapper for the SLICOT control and systems library.
 cp slycot/src/SLICOT-Reference/LICENSE LICENSE-SLICOT
 
 %build
+export SKBUILD_CMAKE_BUILD_TYPE=RelWithDebInfo
 export CFLAGS="%{optflags}"
 export FFLAGS="%{optflags}"
-export CMAKE_GENERATOR="Unix Makefiles"
 # openblas-devel is pulled in by numpy-devel, but we link against the
 # generic BLAS/LAPACK binaries so that update-alternatives can choose
 # the implementation for runtime.
@@ -80,7 +78,7 @@ export LANG="en_US.UTF-8"
 
 %files %{python_files}
 %doc README.rst
-%license COPYING LICENSE-SLICOT
+%license LICENSE.txt LICENSE-SLICOT
 %{python_sitearch}/slycot
 %{python_sitearch}/slycot-%{version}.dist-info
 

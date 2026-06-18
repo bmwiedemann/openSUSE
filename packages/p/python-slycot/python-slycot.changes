@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 15:38:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 0.7.0
+  * Switch build system to scikit-build-core.
+
+-------------------------------------------------------------------
 Thu Nov 20 17:33:56 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.6.1
