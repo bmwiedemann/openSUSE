@@ -1,0 +1,1940 @@
+From 67238b4dd6ab6f799b329d354893a021789c2380 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Mon, 8 Jun 2026 11:39:24 +0100
+Subject: [PATCH] Fix deprecation warnings when running on Python 3.13
+ (Leap 16.0)
+
+* Harden Python 3.12+ datetime and tar extraction usage
+
+Route naive UTC time through salt.utils.timeutil (utcnow and utcfromtimestamp) across Salt modules, tests, and tooling instead of deprecated datetime constructors.
+
+Add salt.utils.tarfileutil for tarfile extraction with PEP 706 filter=data on Python 3.12+, and use it from archive state, state.pkg, SPM local installs, and the salt-ssh shim. Keep bandit annotations where extraction remains inherently trusted.
+
+Register warning filters for third-party datetime deprecation noise in salt.__init__. Extend unit tests for timeutil and tarfileutil.
+
+* Migrate utcnow() leftovers to use salt.utils.timeutil
+
+* `re.split`: replace 3rd arg with `maxsplit=`
+
+`maxsplit` as positional argument is deprecated since Python 3.13.
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dan.woz@gmail.com>
+Co-authored-by: Zaz Brown <zazbrown@zazbrown.com>
+---
+ salt/__init__.py                              | 13 ++++
+ salt/beacons/status.py                        |  5 +-
+ salt/client/ssh/__init__.py                   | 25 +++----
+ salt/client/ssh/ssh_py_shim.py                | 10 ++-
+ salt/cloud/clouds/ec2.py                      |  5 +-
+ salt/cloud/clouds/joyent.py                   |  4 +-
+ salt/ext/tornado/locale.py                    |  4 +-
+ salt/ext/tornado/test/httpclient_test.py      |  5 +-
+ salt/ext/tornado/test/locale_test.py          |  9 +--
+ salt/ext/tornado/test/web_test.py             |  6 +-
+ salt/ext/tornado/web.py                       |  8 ++-
+ salt/grains/core.py                           |  5 +-
+ salt/modules/aptpkg.py                        |  4 +-
+ salt/modules/btrfs.py                         |  2 +-
+ salt/modules/dpkg_lowpkg.py                   |  9 ++-
+ salt/modules/inspectlib/fsdb.py               |  5 +-
+ salt/modules/netbsd_sysctl.py                 |  2 +-
+ salt/modules/pkgin.py                         |  2 +-
+ salt/modules/purefa.py                        |  4 +-
+ salt/modules/purefb.py                        |  4 +-
+ salt/modules/rpm_lowpkg.py                    |  5 +-
+ salt/modules/saltsupport.py                   |  4 +-
+ salt/modules/state.py                         |  3 +-
+ salt/modules/status.py                        |  5 +-
+ salt/modules/system.py                        |  3 +-
+ salt/modules/tls.py                           | 11 ++--
+ salt/modules/vsphere.py                       |  5 +-
+ salt/modules/win_timezone.py                  |  6 +-
+ salt/modules/x509.py                          |  5 +-
+ salt/modules/x509_v2.py                       |  3 +-
+ salt/renderers/stateconf.py                   |  2 +-
+ salt/spm/pkgdb/sqlite3.py                     |  6 +-
+ salt/spm/pkgfiles/local.py                    |  3 +-
+ salt/state.py                                 | 25 +++----
+ salt/states/archive.py                        |  5 +-
+ salt/states/boto_dynamodb.py                  |  3 +-
+ salt/states/boto_iot.py                       |  3 +-
+ salt/states/github.py                         |  4 +-
+ salt/states/x509_v2.py                        |  5 +-
+ salt/utils/aws.py                             | 10 +--
+ salt/utils/event.py                           |  5 +-
+ salt/utils/jid.py                             |  3 +-
+ salt/utils/tarfileutil.py                     | 61 +++++++++++++++++
+ salt/utils/timeutil.py                        | 43 +++++++++++-
+ salt/utils/versions.py                        |  2 +-
+ salt/utils/x509.py                            |  9 +--
+ setup.py                                      |  8 ++-
+ .../pytests/functional/modules/test_system.py | 17 ++---
+ .../pytests/unit/modules/state/test_state.py  |  2 +-
+ tests/pytests/unit/states/file/test_tidied.py | 31 ++++++---
+ tests/pytests/unit/test_fileserver.py         |  3 +-
+ tests/pytests/unit/utils/test_tarfileutil.py  | 65 +++++++++++++++++++
+ tests/unit/modules/test_saltsupport.py        | 12 ++--
+ tests/unit/modules/test_x509.py               |  7 +-
+ tools/changelog.py                            |  4 +-
+ 55 files changed, 379 insertions(+), 140 deletions(-)
+ create mode 100644 salt/utils/tarfileutil.py
+ create mode 100644 tests/pytests/unit/utils/test_tarfileutil.py
+
+diff --git a/salt/__init__.py b/salt/__init__.py
+index 1946561b53b..b0cae8816d2 100644
+--- a/salt/__init__.py
++++ b/salt/__init__.py
+@@ -109,6 +109,19 @@ def __getdefaultlocale(envvars=("LC_ALL", "LC_CTYPE", "LANG", "LANGUAGE")):
+         localename = "C"
+     return locale._parse_localename(localename)
+ 
++# Filter deprecated datetime calls in third-party libraries (like dateutil)
++# All core Salt code has been migrated to use salt.utils.timeutil wrappers.
++warnings.filterwarnings(
++    "ignore",
++    message="datetime.datetime.utcfromtimestamp\\(\\) is deprecated and scheduled for removal.*",
++    category=DeprecationWarning,
++)
++warnings.filterwarnings(
++    "ignore",
++    message="datetime.datetime.utcnow\\(\\) is deprecated and scheduled for removal.*",
++    category=DeprecationWarning,
++)
++
+ 
+ def __define_global_system_encoding_variable__():
+     import sys
+diff --git a/salt/beacons/status.py b/salt/beacons/status.py
+index e2c3177ea81..7cdf4e61fa8 100644
+--- a/salt/beacons/status.py
++++ b/salt/beacons/status.py
+@@ -87,11 +87,12 @@ markers for specific list items:
+     to check the minion log for errors after configuring this beacon.
+ 
+ """
+-import datetime
++
+ import logging
+ 
+ import salt.exceptions
+ import salt.utils.platform
++import salt.utils.timeutil
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -116,7 +117,7 @@ def beacon(config):
+     Return status for requested information
+     """
+     log.debug(config)
+-    ctime = datetime.datetime.utcnow().isoformat()
++    ctime = salt.utils.timeutil.utcnow().isoformat()
+ 
+     if not config:
+         config = [
+diff --git a/salt/client/ssh/__init__.py b/salt/client/ssh/__init__.py
+index 6025b76c3b6..2e1aebf9015 100644
+--- a/salt/client/ssh/__init__.py
++++ b/salt/client/ssh/__init__.py
+@@ -47,6 +47,7 @@ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.stringutils
+ import salt.utils.thin
++import salt.utils.timeutil
+ import salt.utils.url
+ import salt.utils.verify
+ from salt._logging import LOG_LEVELS
+@@ -456,7 +457,7 @@ class SSH(MultiprocessingStateMixin):
+                         '# Automatically added by "{s_user}" at {s_time}\n{hostname}:\n'
+                         "    host: {hostname}\n    user: {user}\n    passwd: {passwd}\n".format(
+                             s_user=getpass.getuser(),
+-                            s_time=datetime.datetime.utcnow().isoformat(),
++                            s_time=salt.utils.timeutil.utcnow().isoformat(),
+                             hostname=hostname if hostname else self.opts.get("tgt", ""),
+                             user=user if user else self.opts.get("ssh_user", ""),
+                             passwd=self.opts.get("ssh_passwd", ""),
+@@ -1635,9 +1636,9 @@ ARGS = {arguments}\n'''.format(
+                 saltwinshell.deploy_python(self)
+                 stdout, stderr, retcode = self.shim_cmd(cmd_str)
+                 while re.search(RSTR_RE, stdout):
+-                    stdout = re.split(RSTR_RE, stdout, 1)[1].strip()
++                    stdout = re.split(RSTR_RE, stdout, maxsplit=1)[1].strip()
+                 while re.search(RSTR_RE, stderr):
+-                    stderr = re.split(RSTR_RE, stderr, 1)[1].strip()
++                    stderr = re.split(RSTR_RE, stderr, maxsplit=1)[1].strip()
+             elif error == "Undefined SHIM state":
+                 self.deploy()
+                 stdout, stderr, retcode = self.shim_cmd(cmd_str)
+@@ -1652,27 +1653,27 @@ ARGS = {arguments}\n'''.format(
+                         retcode,
+                     )
+                 while re.search(RSTR_RE, stdout):
+-                    stdout = re.split(RSTR_RE, stdout, 1)[1].strip()
++                    stdout = re.split(RSTR_RE, stdout, maxsplit=1)[1].strip()
+                 while re.search(RSTR_RE, stderr):
+-                    stderr = re.split(RSTR_RE, stderr, 1)[1].strip()
++                    stderr = re.split(RSTR_RE, stderr, maxsplit=1)[1].strip()
+             else:
+                 return "ERROR: {}".format(error), stderr, retcode
+ 
+         # FIXME: this discards output from ssh_shim if the shim succeeds.  It should
+         # always save the shim output regardless of shim success or failure.
+         while re.search(RSTR_RE, stdout):
+-            stdout = re.split(RSTR_RE, stdout, 1)[1].strip()
++            stdout = re.split(RSTR_RE, stdout, maxsplit=1)[1].strip()
+ 
+         if re.search(RSTR_RE, stderr):
+             # Found RSTR in stderr which means SHIM completed and only
+             # and remaining output is only from salt.
+             while re.search(RSTR_RE, stderr):
+-                stderr = re.split(RSTR_RE, stderr, 1)[1].strip()
++                stderr = re.split(RSTR_RE, stderr, maxsplit=1)[1].strip()
+ 
+         else:
+             # RSTR was found in stdout but not stderr - which means there
+             # is a SHIM command for the master.
+-            shim_command = re.split(r"\r?\n", stdout, 1)[0].strip()
++            shim_command = re.split(r"\r?\n", stdout, maxsplit=1)[0].strip()
+             log.debug("SHIM retcode(%s) and command: %s", retcode, shim_command)
+             if (
+                 "deploy" == shim_command
+@@ -1703,12 +1704,12 @@ ARGS = {arguments}\n'''.format(
+                             retcode,
+                         )
+                 while re.search(RSTR_RE, stdout):
+-                    stdout = re.split(RSTR_RE, stdout, 1)[1].strip()
++                    stdout = re.split(RSTR_RE, stdout, maxsplit=1)[1].strip()
+                 if self.tty:
+                     stderr = ""
+                 else:
+                     while re.search(RSTR_RE, stderr):
+-                        stderr = re.split(RSTR_RE, stderr, 1)[1].strip()
++                        stderr = re.split(RSTR_RE, stderr, maxsplit=1)[1].strip()
+             elif "ext_mods" == shim_command:
+                 self.deploy_ext()
+                 stdout, stderr, retcode = self.shim_cmd(cmd_str)
+@@ -1721,9 +1722,9 @@ ARGS = {arguments}\n'''.format(
+                         retcode,
+                     )
+                 while re.search(RSTR_RE, stdout):
+-                    stdout = re.split(RSTR_RE, stdout, 1)[1].strip()
++                    stdout = re.split(RSTR_RE, stdout, maxsplit=1)[1].strip()
+                 while re.search(RSTR_RE, stderr):
+-                    stderr = re.split(RSTR_RE, stderr, 1)[1].strip()
++                    stderr = re.split(RSTR_RE, stderr, maxsplit=1)[1].strip()
+ 
+         return stdout, stderr, retcode
+ 
+diff --git a/salt/client/ssh/ssh_py_shim.py b/salt/client/ssh/ssh_py_shim.py
+index 95171f7aea2..5ef07ca29ff 100644
+--- a/salt/client/ssh/ssh_py_shim.py
++++ b/salt/client/ssh/ssh_py_shim.py
+@@ -170,7 +170,10 @@ def unpack_thin(thin_path):
+     """
+     tfile = tarfile.TarFile.gzopen(thin_path)
+     old_umask = os.umask(0o077)  # pylint: disable=blacklisted-function
+-    tfile.extractall(path=OPTIONS.saltdir)
++    if sys.version_info >= (3, 12):
++        tfile.extractall(path=OPTIONS.saltdir, filter="data")  # nosec B202
++    else:
++        tfile.extractall(path=OPTIONS.saltdir)  # nosec B202
+     tfile.close()
+     os.umask(old_umask)  # pylint: disable=blacklisted-function
+     try:
+@@ -197,7 +200,10 @@ def unpack_ext(ext_path):
+     )
+     tfile = tarfile.TarFile.gzopen(ext_path)
+     old_umask = os.umask(0o077)  # pylint: disable=blacklisted-function
+-    tfile.extractall(path=modcache)
++    if sys.version_info >= (3, 12):
++        tfile.extractall(path=modcache, filter="data")  # nosec B202
++    else:
++        tfile.extractall(path=modcache)  # nosec B202
+     tfile.close()
+     os.umask(old_umask)  # pylint: disable=blacklisted-function
+     os.unlink(ext_path)
+diff --git a/salt/cloud/clouds/ec2.py b/salt/cloud/clouds/ec2.py
+index 3c8ea286bce..5495b245e2a 100644
+--- a/salt/cloud/clouds/ec2.py
++++ b/salt/cloud/clouds/ec2.py
+@@ -104,6 +104,7 @@ import salt.utils.hashutils
+ import salt.utils.http as http
+ import salt.utils.json
+ import salt.utils.msgpack
++import salt.utils.timeutil
+ import salt.utils.stringutils
+ import salt.utils.yaml
+ from salt.exceptions import (
+@@ -290,7 +291,7 @@ def query(
+     attempts = 0
+     while attempts < aws.AWS_MAX_RETRIES:
+         params_with_headers = params.copy()
+-        timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
++        timestamp = salt.utils.timeutil.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
+ 
+         if not location:
+             location = get_location()
+@@ -327,7 +328,7 @@ def query(
+         host = endpoint.strip()
+ 
+         # Create a date for headers and the credential string
+-        t = datetime.datetime.utcnow()
++        t = salt.utils.timeutil.utcnow()
+         amz_date = t.strftime("%Y%m%dT%H%M%SZ")  # Format date as YYYYMMDD'T'HHMMSS'Z'
+         datestamp = t.strftime("%Y%m%d")  # Date w/o time, used in credential scope
+ 
+diff --git a/salt/cloud/clouds/joyent.py b/salt/cloud/clouds/joyent.py
+index 58b853b3f00..78803b50e9e 100644
+--- a/salt/cloud/clouds/joyent.py
++++ b/salt/cloud/clouds/joyent.py
+@@ -49,7 +49,6 @@ included:
+ """
+ 
+ import base64
+-import datetime
+ import http.client
+ import inspect
+ import logging
+@@ -61,6 +60,7 @@ import salt.utils.cloud
+ import salt.utils.files
+ import salt.utils.http
+ import salt.utils.json
++import salt.utils.timeutil
+ import salt.utils.yaml
+ from salt.exceptions import (
+     SaltCloudExecutionFailure,
+@@ -1159,7 +1159,7 @@ def query(action=None, command=None, args=None, method="GET", location=None, dat
+     if (not user) or (not ssh_keyfile) or (not ssh_keyname) or (not location):
+         return None
+ 
+-    timenow = datetime.datetime.utcnow()
++    timenow = salt.utils.timeutil.utcnow()
+     timestamp = timenow.strftime("%a, %d %b %Y %H:%M:%S %Z").strip()
+     rsa_key = salt.crypt.get_rsa_key(ssh_keyfile, None)
+     if HAS_M2:
+diff --git a/salt/ext/tornado/locale.py b/salt/ext/tornado/locale.py
+index 3ae56429c02..57366178589 100644
+--- a/salt/ext/tornado/locale.py
++++ b/salt/ext/tornado/locale.py
+@@ -50,6 +50,8 @@ import numbers
+ import os
+ import re
+ 
++import salt.utils.timeutil
++
+ from salt.ext.tornado import escape
+ from salt.ext.tornado.log import gen_log
+ from salt.ext.tornado.util import PY3
+@@ -321,7 +323,7 @@ class Locale(object):
+         """
+         if isinstance(date, numbers.Real):
+             date = datetime.datetime.utcfromtimestamp(date)
+-        now = datetime.datetime.utcnow()
++        now = salt.utils.timeutil.utcnow()
+         if date > now:
+             if relative and (date - now).seconds < 60:
+                 # Due to click skew, things are some things slightly
+diff --git a/salt/ext/tornado/test/httpclient_test.py b/salt/ext/tornado/test/httpclient_test.py
+index 9aa17c43464..7d3970b479b 100644
+--- a/salt/ext/tornado/test/httpclient_test.py
++++ b/salt/ext/tornado/test/httpclient_test.py
+@@ -10,9 +10,10 @@ import copy
+ import functools
+ import sys
+ import threading
+-import datetime
+ from io import BytesIO
+ 
++import salt.utils.timeutil
++
+ from salt.ext.tornado.escape import utf8, native_str
+ from salt.ext.tornado import gen
+ from salt.ext.tornado.httpclient import HTTPRequest, HTTPResponse, _RequestProxy, HTTPError, HTTPClient
+@@ -659,7 +660,7 @@ class HTTPRequestTestCase(unittest.TestCase):
+         self.assertEqual(request.body, utf8('foo'))
+ 
+     def test_if_modified_since(self):
+-        http_date = datetime.datetime.utcnow()
++        http_date = salt.utils.timeutil.utcnow()
+         request = HTTPRequest('http://example.com', if_modified_since=http_date)
+         self.assertEqual(request.headers,
+                          {'If-Modified-Since': format_timestamp(http_date)})
+diff --git a/salt/ext/tornado/test/locale_test.py b/salt/ext/tornado/test/locale_test.py
+index cda98eed869..0bf21ee61a6 100644
+--- a/salt/ext/tornado/test/locale_test.py
++++ b/salt/ext/tornado/test/locale_test.py
+@@ -6,6 +6,7 @@ import os
+ import shutil
+ import tempfile
+ 
++import salt.utils.timeutil
+ import salt.ext.tornado.locale
+ from salt.ext.tornado.escape import utf8, to_unicode
+ from salt.ext.tornado.test.util import unittest, skipOnAppEngine
+@@ -90,14 +91,14 @@ class EnglishTest(unittest.TestCase):
+         self.assertEqual(locale.format_date(date, full_format=True),
+                          'April 28, 2013 at 6:35 pm')
+ 
+-        self.assertEqual(locale.format_date(datetime.datetime.utcnow() - datetime.timedelta(seconds=2), full_format=False),
++        self.assertEqual(locale.format_date(salt.utils.timeutil.utcnow() - datetime.timedelta(seconds=2), full_format=False),
+                          '2 seconds ago')
+-        self.assertEqual(locale.format_date(datetime.datetime.utcnow() - datetime.timedelta(minutes=2), full_format=False),
++        self.assertEqual(locale.format_date(salt.utils.timeutil.utcnow() - datetime.timedelta(minutes=2), full_format=False),
+                          '2 minutes ago')
+-        self.assertEqual(locale.format_date(datetime.datetime.utcnow() - datetime.timedelta(hours=2), full_format=False),
++        self.assertEqual(locale.format_date(salt.utils.timeutil.utcnow() - datetime.timedelta(hours=2), full_format=False),
+                          '2 hours ago')
+ 
+-        now = datetime.datetime.utcnow()
++        now = salt.utils.timeutil.utcnow()
+         self.assertEqual(locale.format_date(now - datetime.timedelta(days=1), full_format=False, shorter=True),
+                          'yesterday')
+ 
+diff --git a/salt/ext/tornado/test/web_test.py b/salt/ext/tornado/test/web_test.py
+index 469dfc04286..b8968ab3a05 100644
+--- a/salt/ext/tornado/test/web_test.py
++++ b/salt/ext/tornado/test/web_test.py
+@@ -29,6 +29,8 @@ import os
+ import re
+ import socket
+ 
++import salt.utils.timeutil
++
+ if PY3:
+     import urllib.parse as urllib_parse  # py3
+ else:
+@@ -372,7 +374,7 @@ class CookieTest(WebTestCase):
+         match = re.match("foo=bar; expires=(?P<expires>.+); Path=/", header)
+         self.assertIsNotNone(match)
+ 
+-        expires = datetime.datetime.utcnow() + datetime.timedelta(days=10)
++        expires = salt.utils.timeutil.utcnow() + datetime.timedelta(days=10)
+         header_expires = datetime.datetime(
+             *email.utils.parsedate(match.groupdict()["expires"])[:6])
+         self.assertTrue(abs(timedelta_to_seconds(expires - header_expires)) < 10)
+@@ -1570,7 +1572,7 @@ class DateHeaderTest(SimpleHandlerTestCase):
+         response = self.fetch('/')
+         header_date = datetime.datetime(
+             *email.utils.parsedate(response.headers['Date'])[:6])
+-        self.assertTrue(header_date - datetime.datetime.utcnow() <
++        self.assertTrue(header_date - salt.utils.timeutil.utcnow() <
+                         datetime.timedelta(seconds=2))
+ 
+ 
+diff --git a/salt/ext/tornado/web.py b/salt/ext/tornado/web.py
+index ce381ea9113..b2e521374d3 100644
+--- a/salt/ext/tornado/web.py
++++ b/salt/ext/tornado/web.py
+@@ -80,6 +80,8 @@ import types
+ from inspect import isclass
+ from io import BytesIO
+ 
++import salt.utils.timeutil
++
+ import salt.ext.tornado
+ from salt.ext.tornado.concurrent import Future
+ from salt.ext.tornado import escape
+@@ -583,7 +585,7 @@ class RequestHandler(object):
+         if domain:
+             morsel["domain"] = domain
+         if expires_days is not None and not expires:
+-            expires = datetime.datetime.utcnow() + datetime.timedelta(
++            expires = salt.utils.timeutil.utcnow() + datetime.timedelta(
+                 days=expires_days)
+         if expires:
+             morsel["expires"] = httputil.format_timestamp(expires)
+@@ -610,7 +612,7 @@ class RequestHandler(object):
+         was set (but there is no way to find out on the server side
+         which values were used for a given cookie).
+         """
+-        expires = datetime.datetime.utcnow() - datetime.timedelta(days=365)
++        expires = salt.utils.timeutil.utcnow() - datetime.timedelta(days=365)
+         self.set_cookie(name, value="", path=path, expires=expires,
+                         domain=domain)
+ 
+@@ -2504,7 +2506,7 @@ class StaticFileHandler(RequestHandler):
+         cache_time = self.get_cache_time(self.path, self.modified,
+                                          content_type)
+         if cache_time > 0:
+-            self.set_header("Expires", datetime.datetime.utcnow() +
++            self.set_header("Expires", salt.utils.timeutil.utcnow() +
+                             datetime.timedelta(seconds=cache_time))
+             self.set_header("Cache-Control", "max-age=" + str(cache_time))
+ 
+diff --git a/salt/grains/core.py b/salt/grains/core.py
+index 7b61db10ee7..91ad041b7d7 100644
+--- a/salt/grains/core.py
++++ b/salt/grains/core.py
+@@ -38,6 +38,7 @@ import salt.utils.network
+ import salt.utils.path
+ import salt.utils.pkg.rpm
+ import salt.utils.platform
++import salt.utils.timeutil
+ import salt.utils.stringutils
+ from salt.utils.network import _clear_interfaces, _get_interfaces
+ from salt.utils.platform import linux_distribution as _linux_distribution
+@@ -2878,11 +2879,11 @@ def ip_fqdn():
+             ret[key] = []
+         else:
+             try:
+-                start_time = datetime.datetime.utcnow()
++                start_time = salt.utils.timeutil.utcnow()
+                 info = socket.getaddrinfo(_fqdn, None, socket_type)
+                 ret[key] = list({item[4][0] for item in info})
+             except (OSError, UnicodeError):
+-                timediff = datetime.datetime.utcnow() - start_time
++                timediff = salt.utils.timeutil.utcnow() - start_time
+                 if timediff.seconds > 5 and __opts__["__role"] == "master":
+                     log.warning(
+                         'Unable to find IPv%s record for "%s" causing a %s '
+diff --git a/salt/modules/aptpkg.py b/salt/modules/aptpkg.py
+index 2775c321779..d14bf1eb610 100644
+--- a/salt/modules/aptpkg.py
++++ b/salt/modules/aptpkg.py
+@@ -9,7 +9,6 @@ Support for APT (Advanced Packaging Tool)
+ """
+ 
+ import copy
+-import datetime
+ import fnmatch
+ import logging
+ import os
+@@ -33,6 +32,7 @@ import salt.utils.pkg
+ import salt.utils.pkg.deb
+ import salt.utils.stringutils
+ import salt.utils.systemd
++import salt.utils.timeutil
+ import salt.utils.versions
+ import salt.utils.yaml
+ from salt.exceptions import (
+@@ -3278,7 +3278,7 @@ def list_downloaded(root=None, **kwargs):
+                 "path": package_path,
+                 "size": os.path.getsize(package_path),
+                 "creation_date_time_t": pkg_timestamp,
+-                "creation_date_time": datetime.datetime.utcfromtimestamp(
++                "creation_date_time": salt.utils.timeutil.utcfromtimestamp(
+                     pkg_timestamp
+                 ).isoformat(),
+             }
+diff --git a/salt/modules/btrfs.py b/salt/modules/btrfs.py
+index 4b02eb21afa..1b05f00608e 100644
+--- a/salt/modules/btrfs.py
++++ b/salt/modules/btrfs.py
+@@ -680,7 +680,7 @@ def _parse_proplist(data):
+     """
+     out = {}
+     for line in data.split("\n"):
+-        line = re.split(r"\s+", line, 1)
++        line = re.split(r"\s+", line, maxsplit=1)
+         if len(line) == 2:
+             out[line[0]] = line[1]
+ 
+diff --git a/salt/modules/dpkg_lowpkg.py b/salt/modules/dpkg_lowpkg.py
+index 78990492cf0..307172b9a77 100644
+--- a/salt/modules/dpkg_lowpkg.py
++++ b/salt/modules/dpkg_lowpkg.py
+@@ -2,7 +2,6 @@
+ Support for DEB packages
+ """
+ 
+-import datetime
+ import logging
+ import os
+ import re
+@@ -12,6 +11,7 @@ import salt.utils.data
+ import salt.utils.files
+ import salt.utils.path
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ 
+ log = logging.getLogger(__name__)
+@@ -388,10 +388,9 @@ def _get_pkg_install_time(pkg, arch):
+         locations.append(os.path.join(loc_root, "{}.list".format(pkg)))
+         for location in locations:
+             try:
+-                iso_time_t = int(os.path.getmtime(location))
+-                iso_time = (
+-                    datetime.datetime.utcfromtimestamp(iso_time_t).isoformat() + "Z"
+-                )
++                iso_time = salt.utils.timeutil.utcfromtimestamp(
++                    int(os.path.getmtime(location))
++                ).isoformat() + "Z"
+                 break
+             except OSError:
+                 pass
+diff --git a/salt/modules/inspectlib/fsdb.py b/salt/modules/inspectlib/fsdb.py
+index b834b8f6783..aa876c02477 100644
+--- a/salt/modules/inspectlib/fsdb.py
++++ b/salt/modules/inspectlib/fsdb.py
+@@ -19,7 +19,6 @@
+ 
+ 
+ import csv
+-import datetime
+ import gzip
+ import os
+ import re
+@@ -28,6 +27,8 @@ import sys
+ 
+ from salt.utils.odict import OrderedDict
+ 
++import salt.utils.timeutil
++
+ 
+ class CsvDBEntity:
+     """
+@@ -72,7 +73,7 @@ class CsvDB:
+ 
+         :return:
+         """
+-        return datetime.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
++        return salt.utils.timeutil.utcnow().strftime("%Y%m%d-%H%M%S")
+ 
+     def new(self):
+         """
+diff --git a/salt/modules/netbsd_sysctl.py b/salt/modules/netbsd_sysctl.py
+index 648120b59b6..1e342404102 100644
+--- a/salt/modules/netbsd_sysctl.py
++++ b/salt/modules/netbsd_sysctl.py
+@@ -59,7 +59,7 @@ def show(config_file=False):
+     comps = [""]
+     for line in out.splitlines():
+         if any([line.startswith("{}.".format(root)) for root in roots]):
+-            comps = re.split("[=:]", line, 1)
++            comps = re.split("[=:]", line, maxsplit=1)
+             ret[comps[0]] = comps[1]
+         elif comps[0]:
+             ret[comps[0]] += "{}\n".format(line)
+diff --git a/salt/modules/pkgin.py b/salt/modules/pkgin.py
+index c27b6ed8fce..6ec41020751 100644
+--- a/salt/modules/pkgin.py
++++ b/salt/modules/pkgin.py
+@@ -301,7 +301,7 @@ def list_pkgs(versions_as_list=False, **kwargs):
+         try:
+             # Some versions of pkgin check isatty unfortunately
+             # this results in cases where a ' ' or ';' can be used
+-            pkg, ver = re.split("[; ]", line, 1)[0].rsplit("-", 1)
++            pkg, ver = re.split("[; ]", line, maxsplit=1)[0].rsplit("-", 1)
+         except ValueError:
+             continue
+         __salt__["pkg_resource.add_pkg"](ret, pkg, ver)
+diff --git a/salt/modules/purefa.py b/salt/modules/purefa.py
+index 984384c8771..f011b2e4a23 100644
+--- a/salt/modules/purefa.py
++++ b/salt/modules/purefa.py
+@@ -56,6 +56,8 @@ from datetime import datetime
+ 
+ from salt.exceptions import CommandExecutionError
+ 
++import salt.utils.timeutil
++
+ # Import 3rd party modules
+ try:
+     import purestorage
+@@ -235,7 +237,7 @@ def snap_create(name, suffix=None):
+     array = _get_system()
+     if suffix is None:
+         suffix = "snap-" + str(
+-            (datetime.utcnow() - datetime(1970, 1, 1, 0, 0, 0, 0)).total_seconds()
++            (salt.utils.timeutil.utcnow() - datetime(1970, 1, 1, 0, 0, 0, 0)).total_seconds()
+         )
+         suffix = suffix.replace(".", "")
+     if _get_volume(name, array) is not None:
+diff --git a/salt/modules/purefb.py b/salt/modules/purefb.py
+index 787c77446b8..6183e6ce83f 100644
+--- a/salt/modules/purefb.py
++++ b/salt/modules/purefb.py
+@@ -55,6 +55,8 @@ from datetime import datetime
+ 
+ from salt.exceptions import CommandExecutionError
+ 
++import salt.utils.timeutil
++
+ try:
+     from purity_fb import (
+         FileSystem,
+@@ -195,7 +197,7 @@ def snap_create(name, suffix=None):
+     blade = _get_blade()
+     if suffix is None:
+         suffix = "snap-" + str(
+-            (datetime.utcnow() - datetime(1970, 1, 1, 0, 0, 0, 0)).total_seconds()
++            (salt.utils.timeutil.utcnow() - datetime(1970, 1, 1, 0, 0, 0, 0)).total_seconds()
+         )
+         suffix = suffix.replace(".", "")
+     if _get_fs(name, blade) is not None:
+diff --git a/salt/modules/rpm_lowpkg.py b/salt/modules/rpm_lowpkg.py
+index b360ec8df3c..ee1a836ffba 100644
+--- a/salt/modules/rpm_lowpkg.py
++++ b/salt/modules/rpm_lowpkg.py
+@@ -2,7 +2,6 @@
+ Support for rpm
+ """
+ 
+-import datetime
+ import logging
+ import os
+ import re
+@@ -12,6 +11,7 @@ import salt.utils.itertools
+ import salt.utils.path
+ import salt.utils.pkg.rpm
+ import salt.utils.versions
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.utils.versions import LooseVersion
+ 
+@@ -649,7 +649,8 @@ def info(*packages, **kwargs):
+             if key in ["build_date", "install_date"]:
+                 try:
+                     pkg_data[key] = (
+-                        datetime.datetime.utcfromtimestamp(int(value)).isoformat() + "Z"
++                        salt.utils.timeutil.utcfromtimestamp(int(value)).isoformat()
++                        + "Z"
+                     )
+                 except ValueError:
+                     log.warning('Could not convert "%s" into Unix time', value)
+diff --git a/salt/modules/saltsupport.py b/salt/modules/saltsupport.py
+index e800e3bf1f8..137cd5fc5ed 100644
+--- a/salt/modules/saltsupport.py
++++ b/salt/modules/saltsupport.py
+@@ -21,7 +21,6 @@ Module to run salt-support within Salt.
+ # pylint: disable=W0231,W0221
+ 
+ 
+-import datetime
+ import logging
+ import os
+ import re
+@@ -38,6 +37,7 @@ import salt.utils.dictupdate
+ import salt.utils.odict
+ import salt.utils.path
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.cli.support.collector import SaltSupport, SupportDataCollector
+ 
+ __virtualname__ = "support"
+@@ -58,7 +58,7 @@ class LogCollector:
+             list.append(
+                 self,
+                 "{} - {}".format(
+-                    datetime.datetime.utcnow().strftime("%T.%f")[:-3], obj
++                    salt.utils.timeutil.utcnow().strftime("%T.%f")[:-3], obj
+                 ),
+             )
+ 
+diff --git a/salt/modules/state.py b/salt/modules/state.py
+index 72baf47f488..a0bc0ac7f5b 100644
+--- a/salt/modules/state.py
++++ b/salt/modules/state.py
+@@ -34,6 +34,7 @@ import salt.utils.msgpack
+ import salt.utils.platform
+ import salt.utils.state
+ import salt.utils.stringutils
++import salt.utils.tarfileutil
+ import salt.utils.url
+ import salt.utils.versions
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+@@ -2344,7 +2345,7 @@ def pkg(pkg_path, pkg_sum, hash_type, test=None, **kwargs):
+             return {}
+         elif "..{}".format(os.sep) in salt.utils.stringutils.to_unicode(member.path):
+             return {}
+-    s_pkg.extractall(root)
++    salt.utils.tarfileutil.extractall(s_pkg, root)  # nosec B202
+     s_pkg.close()
+     lowstate_json = os.path.join(root, "lowstate.json")
+     with salt.utils.files.fopen(lowstate_json, "r") as fp_:
+diff --git a/salt/modules/status.py b/salt/modules/status.py
+index 8d6241a9dce..ae370b45e77 100644
+--- a/salt/modules/status.py
++++ b/salt/modules/status.py
+@@ -22,6 +22,7 @@ import salt.utils.network
+ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError
+ 
+ log = logging.getLogger(__file__)
+@@ -257,8 +258,8 @@ def uptime():
+         return __salt__["cmd.run"]("uptime")
+ 
+     # Setup datetime and timedelta objects
+-    boot_time = datetime.datetime.utcfromtimestamp(curr_seconds - seconds)
+-    curr_time = datetime.datetime.utcfromtimestamp(curr_seconds)
++    boot_time = salt.utils.timeutil.utcfromtimestamp(curr_seconds - seconds)
++    curr_time = salt.utils.timeutil.utcfromtimestamp(curr_seconds)
+     up_time = curr_time - boot_time
+ 
+     # Construct return information
+diff --git a/salt/modules/system.py b/salt/modules/system.py
+index 5d1be5f6fd2..28578b46a1e 100644
+--- a/salt/modules/system.py
++++ b/salt/modules/system.py
+@@ -19,6 +19,7 @@ from datetime import datetime, timedelta, tzinfo
+ import salt.utils.files
+ import salt.utils.path
+ import salt.utils.platform
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.utils.decorators import depends
+ 
+@@ -255,7 +256,7 @@ def _get_offset_time(utc_offset):
+     if utc_offset is not None:
+         minutes = _offset_to_min(utc_offset)
+         offset = timedelta(minutes=minutes)
+-        offset_time = datetime.utcnow() + offset
++        offset_time = salt.utils.timeutil.utcnow() + offset
+         offset_time = offset_time.replace(tzinfo=_FixedOffset(minutes))
+     else:
+         offset_time = datetime.now()
+diff --git a/salt/modules/tls.py b/salt/modules/tls.py
+index 4d7db87f933..c774715d6f4 100644
+--- a/salt/modules/tls.py
++++ b/salt/modules/tls.py
+@@ -111,6 +111,7 @@ from datetime import datetime
+ import salt.utils.data
+ import salt.utils.files
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError
+ from salt.utils.versions import Version
+ 
+@@ -363,7 +364,7 @@ def maybe_fix_ssl_version(ca_name, cacert_path=None, ca_filename=None):
+                 try:
+                     days = (
+                         datetime.strptime(cert.get_notAfter(), "%Y%m%d%H%M%SZ")
+-                        - datetime.utcnow()
++                        - salt.utils.timeutil.utcnow()
+                     ).days
+                 except (ValueError, TypeError):
+                     days = 365
+@@ -769,7 +770,7 @@ def create_ca(
+                     err,
+                 )
+                 bck = "{}.unloadable.{}".format(
+-                    ca_keyp, datetime.utcnow().strftime("%Y%m%d%H%M%S")
++                    ca_keyp, salt.utils.timeutil.utcnow().strftime("%Y%m%d%H%M%S")
+                 )
+                 log.info("Saving unloadable CA ssl key in %s", bck)
+                 os.rename(ca_keyp, bck)
+@@ -827,7 +828,9 @@ def create_ca(
+     keycontent = OpenSSL.crypto.dump_privatekey(OpenSSL.crypto.FILETYPE_PEM, key)
+     write_key = True
+     if os.path.exists(ca_keyp):
+-        bck = "{}.{}".format(ca_keyp, datetime.utcnow().strftime("%Y%m%d%H%M%S"))
++        bck = "{}.{}".format(
++            ca_keyp, salt.utils.timeutil.utcnow().strftime("%Y%m%d%H%M%S")
++        )
+         with salt.utils.files.fopen(ca_keyp) as fic:
+             old_key = salt.utils.stringutils.to_unicode(fic.read()).strip()
+             if old_key.strip() == keycontent.strip():
+@@ -1953,7 +1956,7 @@ def revoke_cert(
+     )
+     index_r_data = "R\t{}\t{}\t{}".format(
+         expire_date,
+-        _four_digit_year_to_two_digit(datetime.utcnow()),
++        _four_digit_year_to_two_digit(salt.utils.timeutil.utcnow()),
+         index_serial_subject,
+     )
+ 
+diff --git a/salt/modules/vsphere.py b/salt/modules/vsphere.py
+index 29aa68cf4da..51d45949954 100644
+--- a/salt/modules/vsphere.py
++++ b/salt/modules/vsphere.py
+@@ -181,8 +181,6 @@ connection credentials are used instead of vCenter credentials, the ``host_names
+                     6500
+ """
+ 
+-
+-import datetime
+ import logging
+ import sys
+ from functools import wraps
+@@ -192,6 +190,7 @@ import salt.utils.dictupdate as dictupdate
+ import salt.utils.http
+ import salt.utils.path
+ import salt.utils.pbm
++import salt.utils.timeutil
+ import salt.utils.vmware
+ import salt.utils.vsan
+ from salt.config.schemas.esxcluster import (
+@@ -3902,7 +3901,7 @@ def update_host_datetime(
+         host_ref = _get_host_ref(service_instance, host, host_name=host_name)
+         date_time_manager = _get_date_time_mgr(host_ref)
+         try:
+-            date_time_manager.UpdateDateTime(datetime.datetime.utcnow())
++            date_time_manager.UpdateDateTime(salt.utils.timeutil.utcnow())
+         except vim.fault.HostConfigFault as err:
+             msg = "'vsphere.update_date_time' failed for host {}: {}".format(
+                 host_name, err
+diff --git a/salt/modules/win_timezone.py b/salt/modules/win_timezone.py
+index d8c3c82bb23..ed9c5fc53cc 100644
+--- a/salt/modules/win_timezone.py
++++ b/salt/modules/win_timezone.py
+@@ -2,8 +2,8 @@
+ Module for managing timezone on Windows systems.
+ """
+ import logging
+-from datetime import datetime
+ 
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError
+ 
+ try:
+@@ -240,7 +240,7 @@ def get_offset():
+     """
+     # http://craigglennie.com/programming/python/2013/07/21/working-with-timezones-using-Python-and-pytz-localize-vs-normalize/
+     tz_object = pytz.timezone(get_zone())
+-    utc_time = pytz.utc.localize(datetime.utcnow())
++    utc_time = pytz.utc.localize(salt.utils.timeutil.utcnow())
+     loc_time = utc_time.astimezone(tz_object)
+     norm_time = tz_object.normalize(loc_time)
+     return norm_time.strftime("%z")
+@@ -260,7 +260,7 @@ def get_zonecode():
+         salt '*' timezone.get_zonecode
+     """
+     tz_object = pytz.timezone(get_zone())
+-    loc_time = tz_object.localize(datetime.utcnow())
++    loc_time = tz_object.localize(salt.utils.timeutil.utcnow())
+     return loc_time.tzname()
+ 
+ 
+diff --git a/salt/modules/x509.py b/salt/modules/x509.py
+index 373e3948563..b2b0e4dbfa6 100644
+--- a/salt/modules/x509.py
++++ b/salt/modules/x509.py
+@@ -36,6 +36,7 @@ import salt.utils.files
+ import salt.utils.path
+ import salt.utils.platform
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ import salt.utils.versions
+ from salt.state import STATE_INTERNAL_KEYWORDS as _STATE_INTERNAL_KEYWORDS
+ from salt.utils.odict import OrderedDict
+@@ -1999,7 +2000,7 @@ def expired(certificate):
+             ret["path"] = certificate
+             cert = _get_certificate_obj(certificate)
+ 
+-            _now = datetime.datetime.utcnow()
++            _now = salt.utils.timeutil.utcnow()
+             _expiration_date = cert.get_not_after().get_datetime()
+ 
+             ret["cn"] = _parse_subject(cert.get_subject())["CN"]
+@@ -2045,7 +2046,7 @@ def will_expire(certificate, days):
+ 
+             cert = _get_certificate_obj(certificate)
+ 
+-            _check_time = datetime.datetime.utcnow() + datetime.timedelta(days=days)
++            _check_time = salt.utils.timeutil.utcnow() + datetime.timedelta(days=days)
+             _expiration_date = cert.get_not_after().get_datetime()
+ 
+             ret["cn"] = _parse_subject(cert.get_subject())["CN"]
+diff --git a/salt/modules/x509_v2.py b/salt/modules/x509_v2.py
+index b46d4cf57d7..4c9db42f636 100644
+--- a/salt/modules/x509_v2.py
++++ b/salt/modules/x509_v2.py
+@@ -154,6 +154,7 @@ except ImportError:
+ import salt.utils.dictupdate
+ import salt.utils.files
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.utils.odict import OrderedDict
+ 
+@@ -1348,7 +1349,7 @@ def expires(certificate, days=0):
+     """
+     cert = x509util.load_cert(certificate)
+     # dates are encoded in UTC/GMT, they are returned as a naive datetime object
+-    return cert.not_valid_after <= datetime.datetime.utcnow() + datetime.timedelta(
++    return cert.not_valid_after <= salt.utils.timeutil.utcnow() + datetime.timedelta(
+         days=days
+     )
+ 
+diff --git a/salt/renderers/stateconf.py b/salt/renderers/stateconf.py
+index 3b0348633af..a71a8f43f47 100644
+--- a/salt/renderers/stateconf.py
++++ b/salt/renderers/stateconf.py
+@@ -185,7 +185,7 @@ def render(input, saltenv="base", sls="", argline="", **kws):
+         # backslash. A backslash preceded dot will be replaced with just dot.
+         args = [
+             arg.strip().replace("\\.", ".")
+-            for arg in re.split(r"\s+(?<!\\)\.\s+", argline, 1)
++            for arg in re.split(r"\s+(?<!\\)\.\s+", argline, maxsplit=1)
+         ]
+         try:
+             name, rd_argline = (args[0] + " ").split(" ", 1)
+diff --git a/salt/spm/pkgdb/sqlite3.py b/salt/spm/pkgdb/sqlite3.py
+index 48a23e0109a..71dd3090ef5 100644
+--- a/salt/spm/pkgdb/sqlite3.py
++++ b/salt/spm/pkgdb/sqlite3.py
+@@ -4,13 +4,13 @@ This module allows SPM to use sqlite3 as the backend for SPM's package database.
+ .. versionadded:: 2015.8.0
+ """
+ 
+-
+-import datetime
+ import logging
+ import os
+ import sqlite3
+ from sqlite3 import OperationalError
+ 
++import salt.utils.timeutil
++
+ # Get logging started
+ log = logging.getLogger(__name__)
+ 
+@@ -167,7 +167,7 @@ def register_pkg(name, formula_def, conn=None):
+             name,
+             formula_def["version"],
+             formula_def["release"],
+-            datetime.datetime.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT"),
++            salt.utils.timeutil.utcnow().strftime("%a, %d %b %Y %H:%M:%S GMT"),
+             formula_def.get("os", None),
+             formula_def.get("os_family", None),
+             formula_def.get("dependencies", None),
+diff --git a/salt/spm/pkgfiles/local.py b/salt/spm/pkgfiles/local.py
+index b75a1457448..9a25366ec98 100644
+--- a/salt/spm/pkgfiles/local.py
++++ b/salt/spm/pkgfiles/local.py
+@@ -12,6 +12,7 @@ import os.path
+ import salt.syspaths
+ import salt.utils.files
+ import salt.utils.stringutils
++import salt.utils.tarfileutil
+ 
+ # Get logging started
+ log = logging.getLogger(__name__)
+@@ -162,7 +163,7 @@ def install_file(package, formula_tar, member, formula_def, conn=None):
+         member.path = "/".join(comps[1:])
+ 
+     log.debug("Installing package file %s to %s", member.name, out_path)
+-    formula_tar.extract(member, out_path)
++    salt.utils.tarfileutil.extract(formula_tar, member, out_path)
+ 
+     return out_path
+ 
+diff --git a/salt/state.py b/salt/state.py
+index a559622b701..cf28f331d1a 100644
+--- a/salt/state.py
++++ b/salt/state.py
+@@ -46,6 +46,7 @@ import salt.utils.immutabletypes as immutabletypes
+ import salt.utils.msgpack
+ import salt.utils.platform
+ import salt.utils.process
++import salt.utils.timeutil
+ import salt.utils.url
+ 
+ # Explicit late import to avoid circular import. DO NOT MOVE THIS.
+@@ -175,11 +176,11 @@ def _calculate_fake_duration():
+     Generate a NULL duration for when states do not run
+     but we want the results to be consistent.
+     """
+-    utc_start_time = datetime.datetime.utcnow()
++    utc_start_time = salt.utils.timeutil.utcnow()
+     local_start_time = utc_start_time - (
+-        datetime.datetime.utcnow() - datetime.datetime.now()
++        salt.utils.timeutil.utcnow() - datetime.datetime.now()
+     )
+-    utc_finish_time = datetime.datetime.utcnow()
++    utc_finish_time = salt.utils.timeutil.utcnow()
+     start_time = local_start_time.time().isoformat()
+     delta = utc_finish_time - utc_start_time
+     # duration in milliseconds.microseconds
+@@ -2116,7 +2117,7 @@ class State:
+             instance = cls(**init_kwargs)
+         # we need to re-record start/end duration here because it is impossible to
+         # correctly calculate further down the chain
+-        utc_start_time = datetime.datetime.utcnow()
++        utc_start_time = salt.utils.timeutil.utcnow()
+ 
+         instance.format_slots(cdata)
+         tag = _gen_tag(low)
+@@ -2136,8 +2137,8 @@ class State:
+                 "comment": "An exception occurred in this state: {}".format(trb),
+             }
+ 
+-        utc_finish_time = datetime.datetime.utcnow()
+-        timezone_delta = datetime.datetime.utcnow() - datetime.datetime.now()
++        utc_finish_time = salt.utils.timeutil.utcnow()
++        timezone_delta = salt.utils.timeutil.utcnow() - datetime.datetime.now()
+         local_finish_time = utc_finish_time - timezone_delta
+         local_start_time = utc_start_time - timezone_delta
+         ret["start_time"] = local_start_time.time().isoformat()
+@@ -2171,8 +2172,8 @@ class State:
+                         *cdata["args"], **cdata["kwargs"]
+                     )
+ 
+-                    utc_start_time = datetime.datetime.utcnow()
+-                    utc_finish_time = datetime.datetime.utcnow()
++                    utc_start_time = salt.utils.timeutil.utcnow()
++                    utc_finish_time = salt.utils.timeutil.utcnow()
+                     delta = utc_finish_time - utc_start_time
+                     duration = (delta.seconds * 1000000 + delta.microseconds) / 1000.0
+                     retry_ret["duration"] = duration
+@@ -2259,9 +2260,9 @@ class State:
+         Call a state directly with the low data structure, verify data
+         before processing.
+         """
+-        utc_start_time = datetime.datetime.utcnow()
++        utc_start_time = salt.utils.timeutil.utcnow()
+         local_start_time = utc_start_time - (
+-            datetime.datetime.utcnow() - datetime.datetime.now()
++            salt.utils.timeutil.utcnow() - datetime.datetime.now()
+         )
+         log.info(
+             "Running state [%s] at time %s",
+@@ -2461,8 +2462,8 @@ class State:
+         self.__run_num += 1
+         format_log(ret)
+         self.check_refresh(low, ret)
+-        utc_finish_time = datetime.datetime.utcnow()
+-        timezone_delta = datetime.datetime.utcnow() - datetime.datetime.now()
++        utc_finish_time = salt.utils.timeutil.utcnow()
++        timezone_delta = salt.utils.timeutil.utcnow() - datetime.datetime.now()
+         local_finish_time = utc_finish_time - timezone_delta
+         local_start_time = utc_start_time - timezone_delta
+         ret["start_time"] = local_start_time.time().isoformat()
+diff --git a/salt/states/archive.py b/salt/states/archive.py
+index f3405b6ea0a..ce61d857722 100644
+--- a/salt/states/archive.py
++++ b/salt/states/archive.py
+@@ -20,6 +20,7 @@ import salt.utils.files
+ import salt.utils.hashutils
+ import salt.utils.path
+ import salt.utils.platform
++import salt.utils.tarfileutil
+ import salt.utils.url
+ from salt.exceptions import CommandExecutionError, CommandNotFoundError
+ 
+@@ -1423,7 +1424,9 @@ def extracted(
+                 if options is None:
+                     try:
+                         with closing(tarfile.open(cached, "r")) as tar:
+-                            tar.extractall(salt.utils.stringutils.to_str(name))
++                            salt.utils.tarfileutil.extractall(  # nosec B202
++                                tar, salt.utils.stringutils.to_str(name)
++                            )
+                             files = tar.getnames()
+                             if trim_output:
+                                 files = files[:trim_output]
+diff --git a/salt/states/boto_dynamodb.py b/salt/states/boto_dynamodb.py
+index 8e563ba0574..ee66fb4d17f 100644
+--- a/salt/states/boto_dynamodb.py
++++ b/salt/states/boto_dynamodb.py
+@@ -161,6 +161,7 @@ import math
+ import sys
+ 
+ import salt.utils.dictupdate as dictupdate
++import salt.utils.timeutil
+ 
+ logging.basicConfig(
+     level=logging.INFO,
+@@ -830,7 +831,7 @@ def _next_datetime_with_utc_hour(table_name, utc_hour):
+         second=_get_deterministic_value_for_table_name(table_name, 60),
+     )
+ 
+-    if start_date_time < datetime.datetime.utcnow():
++    if start_date_time < salt.utils.timeutil.utcnow():
+         one_day = datetime.timedelta(days=1)
+         start_date_time += one_day
+ 
+diff --git a/salt/states/boto_iot.py b/salt/states/boto_iot.py
+index e14d1541949..12f4287f40a 100644
+--- a/salt/states/boto_iot.py
++++ b/salt/states/boto_iot.py
+@@ -77,6 +77,7 @@ import time
+ 
+ import salt.utils.data
+ import salt.utils.json
++import salt.utils.timeutil
+ 
+ log = logging.getLogger(__name__)
+ 
+@@ -288,7 +289,7 @@ def thing_type_absent(
+                 _deprecation_date_str, "%Y-%m-%d %H:%M:%S.%f"
+             )
+ 
+-            _elapsed_time_delta = datetime.datetime.utcnow() - _deprecation_date
++            _elapsed_time_delta = salt.utils.timeutil.utcnow() - _deprecation_date
+             if _elapsed_time_delta.seconds >= 300:
+                 _delete_wait_timer = 0
+             else:
+diff --git a/salt/states/github.py b/salt/states/github.py
+index f93e6e8799d..5bac42f7625 100644
+--- a/salt/states/github.py
++++ b/salt/states/github.py
+@@ -20,6 +20,8 @@ import time
+ 
+ from salt.exceptions import CommandExecutionError
+ 
++import salt.utils.timeutil
++
+ log = logging.getLogger(__name__)
+ 
+ 
+@@ -335,7 +337,7 @@ def team_present(
+ 
+     manage_members = members is not None
+ 
+-    mfa_deadline = datetime.datetime.utcnow() - datetime.timedelta(
++    mfa_deadline = salt.utils.timeutil.utcnow() - datetime.timedelta(
+         seconds=no_mfa_grace_seconds
+     )
+     members_no_mfa = __salt__["github.list_members_without_mfa"](profile=profile)
+diff --git a/salt/states/x509_v2.py b/salt/states/x509_v2.py
+index 35790fff24a..c045ad465b2 100644
+--- a/salt/states/x509_v2.py
++++ b/salt/states/x509_v2.py
+@@ -187,6 +187,7 @@ import logging
+ import os.path
+ 
+ import salt.utils.files
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.features import features
+ from salt.state import STATE_INTERNAL_KEYWORDS as _STATE_INTERNAL_KEYWORDS
+@@ -490,7 +491,7 @@ def certificate_managed(
+ 
+                 if (
+                     current.not_valid_after
+-                    < datetime.datetime.utcnow()
++                    < salt.utils.timeutil.utcnow()
+                     + datetime.timedelta(days=days_remaining)
+                 ):
+                     changes["expiration"] = True
+@@ -898,7 +899,7 @@ def crl_managed(
+                     changes["encoding"] = encoding
+                 if days_remaining and (
+                     current.next_update
+-                    < datetime.datetime.utcnow()
++                    < salt.utils.timeutil.utcnow()
+                     + datetime.timedelta(days=days_remaining)
+                 ):
+                     changes["expiration"] = True
+diff --git a/salt/utils/aws.py b/salt/utils/aws.py
+index 3ee8734caba..700d564de0a 100644
+--- a/salt/utils/aws.py
++++ b/salt/utils/aws.py
+@@ -14,10 +14,10 @@ import logging
+ import random
+ import re
+ import time
+-from datetime import datetime
+ 
+ import salt.config
+ import salt.utils.hashutils
++import salt.utils.timeutil
+ import salt.utils.xmlutil as xml
+ 
+ try:
+@@ -145,7 +145,7 @@ def creds(provider):
+     if provider["id"] == IROLE_CODE or provider["key"] == IROLE_CODE:
+         # Check to see if we have cache credentials that are still good
+         if __Expiration__ != "":
+-            timenow = datetime.utcnow()
++            timenow = salt.utils.timeutil.utcnow()
+             timestamp = timenow.strftime("%Y-%m-%dT%H:%M:%SZ")
+             if timestamp < __Expiration__:
+                 # Current timestamp less than expiration fo cached credentials
+@@ -191,7 +191,7 @@ def sig2(method, endpoint, params, provider, aws_api_version):
+ 
+     http://docs.aws.amazon.com/general/latest/gr/signature-version-2.html
+     """
+-    timenow = datetime.utcnow()
++    timenow = salt.utils.timeutil.utcnow()
+     timestamp = timenow.strftime("%Y-%m-%dT%H:%M:%SZ")
+ 
+     # Retrieve access credentials from meta-data, or use provided
+@@ -228,7 +228,7 @@ def assumed_creds(prov_dict, role_arn, location=None):
+     valid_session_name_re = re.compile("[^a-z0-9A-Z+=,.@-]")
+ 
+     # current time in epoch seconds
+-    now = time.mktime(datetime.utcnow().timetuple())
++    now = time.mktime(salt.utils.timeutil.utcnow().timetuple())
+ 
+     for key, creds in __AssumeCache__.items():
+         if (creds["Expiration"] - now) <= 120:
+@@ -301,7 +301,7 @@ def sig4(
+     http://docs.aws.amazon.com/general/latest/gr/sigv4-signed-request-examples.html
+     http://docs.aws.amazon.com/general/latest/gr/sigv4-create-canonical-request.html
+     """
+-    timenow = datetime.utcnow()
++    timenow = salt.utils.timeutil.utcnow()
+ 
+     # Retrieve access credentials from meta-data, or use provided
+     if role_arn is None:
+diff --git a/salt/utils/event.py b/salt/utils/event.py
+index 964dc5caa85..20fa5702f7a 100644
+--- a/salt/utils/event.py
++++ b/salt/utils/event.py
+@@ -74,6 +74,7 @@ import salt.utils.files
+ import salt.utils.platform
+ import salt.utils.process
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ import salt.utils.zeromq
+ from salt.exceptions import SaltDeserializationError
+ 
+@@ -767,7 +768,7 @@ class SaltEvent:
+             if not self.connect_pull(timeout=timeout_s):
+                 return False
+ 
+-        data["_stamp"] = datetime.datetime.utcnow().isoformat()
++        data["_stamp"] = salt.utils.timeutil.utcnow().isoformat()
+ 
+         tagend = TAGEND
+         # Since the pack / unpack logic here is for local events only,
+@@ -819,7 +820,7 @@ class SaltEvent:
+             if not self.connect_pull(timeout=timeout_s):
+                 return False
+ 
+-        data["_stamp"] = datetime.datetime.utcnow().isoformat()
++        data["_stamp"] = salt.utils.timeutil.utcnow().isoformat()
+ 
+         tagend = TAGEND
+         # Since the pack / unpack logic here is for local events only,
+diff --git a/salt/utils/jid.py b/salt/utils/jid.py
+index c3dbf8a078a..b6f274e95a5 100644
+--- a/salt/utils/jid.py
++++ b/salt/utils/jid.py
+@@ -8,6 +8,7 @@ import os
+ from calendar import month_abbr as months
+ 
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ 
+ LAST_JID_DATETIME = None
+ 
+@@ -16,7 +17,7 @@ def _utc_now():
+     """
+     Helper method so tests do not have to patch the built-in method.
+     """
+-    return datetime.datetime.utcnow()
++    return salt.utils.timeutil.utcnow()
+ 
+ 
+ def gen_jid(opts):
+diff --git a/salt/utils/tarfileutil.py b/salt/utils/tarfileutil.py
+new file mode 100644
+index 00000000000..ac7c9da80b1
+--- /dev/null
++++ b/salt/utils/tarfileutil.py
+@@ -0,0 +1,61 @@
++"""
++Helpers for :mod:`tarfile` across Python versions.
++
++Python 3.12 added optional extraction filters (PEP 706). Passing
++``filter='data'`` limits surprising or unsafe features when unpacking
++archives from less trusted sources.
++"""
++
++import sys
++import tarfile
++
++
++def extractall(
++    tar: tarfile.TarFile,
++    path: str = "",
++    members=None,
++    *,
++    numeric_owner: bool = False,
++) -> None:
++    """
++    Like :meth:`tarfile.TarFile.extractall` but use ``filter='data'`` on
++    Python 3.12+ when supported.
++    """
++    if sys.version_info >= (3, 12):
++        tar.extractall(  # nosec B202
++            path,
++            members,
++            numeric_owner=numeric_owner,
++            filter="data",
++        )
++    else:
++        tar.extractall(path, members, numeric_owner=numeric_owner)  # nosec B202
++
++
++def extract(
++    tar: tarfile.TarFile,
++    member,
++    path: str = "",
++    *,
++    set_attrs: bool = True,
++    numeric_owner: bool = False,
++) -> None:
++    """
++    Like :meth:`tarfile.TarFile.extract` but use ``filter='data'`` on
++    Python 3.12+ when supported.
++    """
++    if sys.version_info >= (3, 12):
++        tar.extract(  # nosec B202
++            member,
++            path,
++            set_attrs=set_attrs,
++            numeric_owner=numeric_owner,
++            filter="data",
++        )
++    else:
++        tar.extract(  # nosec B202
++            member,
++            path,
++            set_attrs=set_attrs,
++            numeric_owner=numeric_owner,
++        )
+diff --git a/salt/utils/timeutil.py b/salt/utils/timeutil.py
+index 1da17906db4..b34d7199b4b 100644
+--- a/salt/utils/timeutil.py
++++ b/salt/utils/timeutil.py
+@@ -4,14 +4,53 @@ Functions various time manipulations.
+ 
+ # Import Python
+ import logging
++import sys
+ import time
+-from datetime import datetime, timedelta
++from datetime import datetime, timedelta, timezone
+ 
+ # Import Salt modules
+ 
+ log = logging.getLogger(__name__)
+ 
+ 
++def utcnow():
++    """
++    Return current UTC time as a naive datetime object.
++
++    In Python 3.12+, ``datetime.utcnow()`` is deprecated in favor of
++    ``datetime.now(timezone.utc)``. However, because Salt's internal
++    logic and event data predominantly use naive datetimes, this function
++    provides compatibility by returning a naive datetime (without timezone
++    info).
++
++    Returning an aware datetime would cause ``TypeError`` when comparing
++    against existing naive datetime objects found throughout the codebase.
++    """
++    if sys.version_info >= (3, 12):
++        return datetime.now(timezone.utc).replace(tzinfo=None)
++    else:
++        return datetime.utcnow()
++
++
++def utcfromtimestamp(timestamp):
++    """
++    Return a naive datetime from a POSIX timestamp.
++
++    In Python 3.12+, ``datetime.utcfromtimestamp()`` is deprecated in favor
++    of ``datetime.fromtimestamp(timestamp, tz=timezone.utc)``. This function
++    provides compatibility by returning a naive datetime (without timezone
++    info) to match the behavior of the deprecated function and ensure
++    compatibility with Salt's internal naive datetime logic.
++
++    Args:
++        timestamp: POSIX timestamp (seconds since epoch)
++    """
++    if sys.version_info >= (3, 12):
++        return datetime.fromtimestamp(timestamp, tz=timezone.utc).replace(tzinfo=None)
++    else:
++        return datetime.utcfromtimestamp(timestamp)
++
++
+ def get_timestamp_at(time_in=None, time_at=None):
+     """
+     Computes the timestamp for a future event that may occur in ``time_in`` time
+@@ -33,7 +72,7 @@ def get_timestamp_at(time_in=None, time_at=None):
+                 minutes = 0
+             hours, minutes = int(hours), int(minutes)
+         dt = timedelta(hours=hours, minutes=minutes)
+-        time_now = datetime.utcnow()
++        time_now = utcnow()
+         time_at = time_now + dt
+         return time.mktime(time_at.timetuple())
+     elif time_at:
+diff --git a/salt/utils/versions.py b/salt/utils/versions.py
+index 2f11766b223..2426f47b6b4 100644
+--- a/salt/utils/versions.py
++++ b/salt/utils/versions.py
+@@ -236,7 +236,7 @@ def warn_until_date(
+         # Attribute the warning to the calling function, not to warn_until_date()
+         stacklevel = 2
+ 
+-    today = _current_date or datetime.datetime.utcnow().date()
++    today = _current_date or datetime.datetime.now(datetime.timezone.utc).date()
+     if today >= date:
+         caller = inspect.getframeinfo(sys._getframe(stacklevel - 1))
+         raise RuntimeError(
+diff --git a/salt/utils/x509.py b/salt/utils/x509.py
+index f9fdca64d9f..651b0bf91d2 100644
+--- a/salt/utils/x509.py
++++ b/salt/utils/x509.py
+@@ -19,6 +19,7 @@ from cryptography.x509.oid import SubjectInformationAccessOID
+ import salt.utils.files
+ import salt.utils.immutabletypes as immutabletypes
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ import salt.utils.versions
+ from salt.exceptions import CommandExecutionError, SaltInvocationError
+ from salt.utils.odict import OrderedDict
+@@ -315,12 +316,12 @@ def build_crt(
+     not_before = (
+         datetime.datetime.strptime(not_before, TIME_FMT)
+         if not_before
+-        else datetime.datetime.utcnow()
++        else salt.utils.timeutil.utcnow()
+     )
+     not_after = (
+         datetime.datetime.strptime(not_after, TIME_FMT)
+         if not_after
+-        else datetime.datetime.utcnow() + datetime.timedelta(days=days_valid)
++        else salt.utils.timeutil.utcnow() + datetime.timedelta(days=days_valid)
+     )
+     builder = builder.not_valid_before(not_before).not_valid_after(not_after)
+ 
+@@ -440,14 +441,14 @@ def build_crl(
+             raise SaltInvocationError("Need serial_number or certificate")
+         serial_number = _get_serial_number(serial_number)
+         if not_after and not include_expired:
+-            if datetime.datetime.utcnow() > not_after:
++            if salt.utils.timeutil.utcnow() > not_after:
+                 continue
+         if "revocation_date" in rev:
+             revocation_date = datetime.datetime.strptime(
+                 rev["revocation_date"], TIME_FMT
+             )
+         else:
+-            revocation_date = datetime.datetime.utcnow()
++            revocation_date = salt.utils.timeutil.utcnow()
+ 
+         revoked_cert = cx509.RevokedCertificateBuilder(
+             serial_number=serial_number, revocation_date=revocation_date
+diff --git a/setup.py b/setup.py
+index cf7e54f9307..c226dd0ac3c 100755
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@ import glob
+ import os
+ import sys
+ import warnings
+-from datetime import datetime
++from datetime import datetime, timezone
+ 
+ # pylint: disable=no-name-in-module
+ from distutils import log
+@@ -52,9 +52,11 @@ except ImportError:
+     HAS_ZMQ = False
+ 
+ try:
+-    DATE = datetime.utcfromtimestamp(int(os.environ["SOURCE_DATE_EPOCH"]))
++    DATE = datetime.fromtimestamp(
++        int(os.environ["SOURCE_DATE_EPOCH"]), tz=timezone.utc
++    ).replace(tzinfo=None)
+ except (KeyError, ValueError):
+-    DATE = datetime.utcnow()
++    DATE = datetime.now(timezone.utc).replace(tzinfo=None)
+ 
+ # Change to salt source's directory prior to running any command
+ try:
+diff --git a/tests/pytests/functional/modules/test_system.py b/tests/pytests/functional/modules/test_system.py
+index 367fa5d6aa9..06a6f1bd556 100644
+--- a/tests/pytests/functional/modules/test_system.py
++++ b/tests/pytests/functional/modules/test_system.py
+@@ -10,6 +10,7 @@ import time
+ import pytest
+ 
+ import salt.utils.files
++import salt.utils.timeutil
+ from salt.exceptions import CommandExecutionError
+ 
+ INSIDE_CONTAINER = os.getenv("HOSTNAME", "") == "salt-test-container"
+@@ -55,7 +56,7 @@ def fmt_str():
+ 
+ @pytest.fixture(scope="function")
+ def setup_teardown_vars(file, service, system):
+-    _orig_time = datetime.datetime.utcnow()
++    _orig_time = salt.utils.timeutil.utcnow()
+ 
+     if os.path.isfile("/etc/machine-info"):
+         with salt.utils.files.fopen("/etc/machine-info", "r") as mach_info:
+@@ -203,7 +204,7 @@ def test_get_system_date_time_utc(setup_teardown_vars, system, fmt_str):
+     """
+     Test we are able to get the correct time with utc
+     """
+-    t1 = datetime.datetime.utcnow()
++    t1 = salt.utils.timeutil.utcnow()
+     res = system.get_system_date_time("+0000")
+     t2 = datetime.datetime.strptime(res, fmt_str)
+     msg = "Difference in times is too large. Now: {} Fake: {}".format(t1, t2)
+@@ -239,10 +240,10 @@ def test_set_system_date_time_utc(setup_teardown_vars, system, hwclock_has_compa
+     Test changing the system clock. We are only able to set it up to a
+     resolution of a second so this test may appear to run in negative time.
+     """
+-    cmp_time = datetime.datetime.utcnow() - datetime.timedelta(days=7)
++    cmp_time = salt.utils.timeutil.utcnow() - datetime.timedelta(days=7)
+     result = _set_time(system, cmp_time, offset="+0000")
+ 
+-    time_now = datetime.datetime.utcnow()
++    time_now = salt.utils.timeutil.utcnow()
+ 
+     msg = "Difference in times is too large. Now: {} Fake: {}".format(
+         time_now, cmp_time
+@@ -262,11 +263,11 @@ def test_set_system_date_time_utcoffset_east(
+     Test changing the system clock. We are only able to set it up to a
+     resolution of a second so this test may appear to run in negative time.
+     """
+-    cmp_time = datetime.datetime.utcnow() - datetime.timedelta(days=7)
++    cmp_time = salt.utils.timeutil.utcnow() - datetime.timedelta(days=7)
+     # 25200 seconds = 7 hours
+     time_to_set = cmp_time - datetime.timedelta(seconds=25200)
+     result = _set_time(system, time_to_set, offset="-0700")
+-    time_now = datetime.datetime.utcnow()
++    time_now = salt.utils.timeutil.utcnow()
+ 
+     msg = "Difference in times is too large. Now: {} Fake: {}".format(
+         time_now, cmp_time
+@@ -286,11 +287,11 @@ def test_set_system_date_time_utcoffset_west(
+     Test changing the system clock. We are only able to set it up to a
+     resolution of a second so this test may appear to run in negative time.
+     """
+-    cmp_time = datetime.datetime.utcnow() - datetime.timedelta(days=7)
++    cmp_time = salt.utils.timeutil.utcnow() - datetime.timedelta(days=7)
+     # 7200 seconds = 2 hours
+     time_to_set = cmp_time + datetime.timedelta(seconds=7200)
+     result = _set_time(system, time_to_set, offset="+0200")
+-    time_now = datetime.datetime.utcnow()
++    time_now = salt.utils.timeutil.utcnow()
+ 
+     msg = "Difference in times is too large. Now: {} Fake: {}".format(
+         time_now, cmp_time
+diff --git a/tests/pytests/unit/modules/state/test_state.py b/tests/pytests/unit/modules/state/test_state.py
+index cff66defa9d..8b90a8871a3 100644
+--- a/tests/pytests/unit/modules/state/test_state.py
++++ b/tests/pytests/unit/modules/state/test_state.py
+@@ -280,7 +280,7 @@ class MockTarFile:
+         return [MockTarFile]
+ 
+     @staticmethod
+-    def extractall(data):
++    def extractall(data, *args, **kwargs):
+         """
+         Mock extractall method
+         """
+diff --git a/tests/pytests/unit/states/file/test_tidied.py b/tests/pytests/unit/states/file/test_tidied.py
+index e31e33293e6..38476bfbce1 100644
+--- a/tests/pytests/unit/states/file/test_tidied.py
++++ b/tests/pytests/unit/states/file/test_tidied.py
+@@ -8,6 +8,7 @@ import salt.states.file as filestate
+ import salt.utils.files
+ import salt.utils.json
+ import salt.utils.platform
++import salt.utils.timeutil
+ import salt.utils.win_functions
+ import salt.utils.yaml
+ from tests.support.mock import MagicMock, PropertyMock, patch
+@@ -30,7 +31,7 @@ def test__tidied():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = datetime.today() - datetime.utcfromtimestamp(0)
++    today_delta = datetime.today() - salt.utils.timeutil.utcfromtimestamp(0)
+     remove = MagicMock(name="file.remove")
+ 
+     mystat = MagicMock()
+@@ -140,7 +141,7 @@ def test_tidied_with_exclude():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = datetime.today() - datetime.utcfromtimestamp(0)
++    today_delta = datetime.today() - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+@@ -272,7 +273,7 @@ def test_tidied_with_full_path_exclude():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = datetime.today() - datetime.utcfromtimestamp(0)
++    today_delta = datetime.today() - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+@@ -411,7 +412,9 @@ def test_tidied_age_size_args_AND_operator_age_not_size():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+     remove = MagicMock(name="file.remove")
+     with patch("os.walk", return_value=walker), patch(
+         "os.path.islink", return_value=False
+@@ -452,7 +455,9 @@ def test_tidied_age_size_args_AND_operator_age_not_size_age_only():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+@@ -516,7 +521,9 @@ def test_tidied_age_size_args_AND_operator_size_not_age():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+     remove = MagicMock(name="file.remove")
+     with patch("os.walk", return_value=walker), patch(
+         "os.path.islink", return_value=False
+@@ -557,7 +564,9 @@ def test_tidied_age_size_args_AND_operator_size_not_age_size_only():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+@@ -621,7 +630,9 @@ def test_tidied_age_size_args_AND_operator_size_and_age():
+         (os.path.join("test", "test2"), ["test3"], ["file2"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+@@ -713,7 +724,9 @@ def test_tidied_rmlinks():
+         (os.path.join("test", "test2"), ["test3"], ["link1"]),
+         ("test", ["test1", "test2"], ["file3"]),
+     ]
+-    today_delta = (datetime.today() - timedelta(days=14)) - datetime.utcfromtimestamp(0)
++    today_delta = (
++        datetime.today() - timedelta(days=14)
++    ) - salt.utils.timeutil.utcfromtimestamp(0)
+ 
+     mystat = MagicMock()
+     mystat.st_atime = today_delta.total_seconds()
+diff --git a/tests/pytests/unit/test_fileserver.py b/tests/pytests/unit/test_fileserver.py
+index 49be3967dc4..9ed0ee564fa 100644
+--- a/tests/pytests/unit/test_fileserver.py
++++ b/tests/pytests/unit/test_fileserver.py
+@@ -4,6 +4,7 @@ import time
+ 
+ import salt.fileserver
+ import salt.utils.files
++import salt.utils.timeutil
+ 
+ 
+ def test_diff_with_diffent_keys():
+@@ -52,7 +53,7 @@ def test_future_file_list_cache_file_ignored(tmp_path):
+                 _f.write(b"\x80")
+ 
+     # Set modification time to file list cache file to 1 year in the future
+-    now = datetime.datetime.utcnow()
++    now = salt.utils.timeutil.utcnow()
+     future = now + datetime.timedelta(days=365)
+     mod_time = time.mktime(future.timetuple())
+     os.utime(os.path.join(back_cachedir, "base.p"), (mod_time, mod_time))
+diff --git a/tests/pytests/unit/utils/test_tarfileutil.py b/tests/pytests/unit/utils/test_tarfileutil.py
+new file mode 100644
+index 00000000000..039b3a13897
+--- /dev/null
++++ b/tests/pytests/unit/utils/test_tarfileutil.py
+@@ -0,0 +1,65 @@
++import io
++import sys
++import tarfile
++
++import pytest
++
++import salt.utils.tarfileutil as tfutil
++from tests.support.mock import patch
++
++
++def _minimal_tar_bytes(name: str = "hello.txt", data: bytes = b"hi") -> bytes:
++    buf = io.BytesIO()
++    with tarfile.open(fileobj=buf, mode="w") as tf:
++        ti = tarfile.TarInfo(name=name)
++        ti.size = len(data)
++        tf.addfile(ti, io.BytesIO(data))
++    return buf.getvalue()
++
++
++def test_extractall_writes_member(tmp_path):
++    data = _minimal_tar_bytes()
++    with tarfile.open(fileobj=io.BytesIO(data), mode="r") as tar:
++        tfutil.extractall(tar, str(tmp_path))  # nosec B202
++    assert (tmp_path / "hello.txt").read_bytes() == b"hi"
++
++
++def test_extract_writes_member(tmp_path):
++    data = _minimal_tar_bytes()
++    with tarfile.open(fileobj=io.BytesIO(data), mode="r") as tar:
++        member = tar.getmember("hello.txt")
++        tfutil.extract(tar, member, str(tmp_path))
++    assert (tmp_path / "hello.txt").read_bytes() == b"hi"
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 12), reason="filter kw only enforced on 3.12+"
++)
++def test_extractall_passes_data_filter_on_py312(tmp_path):
++    data = _minimal_tar_bytes()
++    tar = tarfile.open(fileobj=io.BytesIO(data), mode="r")
++    try:
++        with patch.object(tar, "extractall", wraps=tar.extractall) as m:
++            tfutil.extractall(tar, str(tmp_path))  # nosec B202
++        m.assert_called_once()
++        _, kwargs = m.call_args
++        assert kwargs.get("filter") == "data"
++    finally:
++        tar.close()
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 12), reason="filter kw only enforced on 3.12+"
++)
++def test_extract_passes_data_filter_on_py312(tmp_path):
++    data = _minimal_tar_bytes()
++    tar = tarfile.open(fileobj=io.BytesIO(data), mode="r")
++    try:
++        member = tar.getmember("hello.txt")
++        with patch.object(tar, "extract", wraps=tar.extract) as m:
++            tfutil.extract(tar, member, str(tmp_path))
++        m.assert_called_once()
++        _, kwargs = m.call_args
++        assert kwargs.get("filter") == "data"
++    finally:
++        tar.close()
+diff --git a/tests/unit/modules/test_saltsupport.py b/tests/unit/modules/test_saltsupport.py
+index 2afdd69b3ee..b4099461eeb 100644
+--- a/tests/unit/modules/test_saltsupport.py
++++ b/tests/unit/modules/test_saltsupport.py
+@@ -376,7 +376,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             msg = "Upgrading /dev/null device"
+             out = saltsupport.LogCollector()
+             out.msg(msg, title="Here")
+@@ -397,7 +397,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             msg = "SIMM crosstalk during tectonic stress"
+             out = saltsupport.LogCollector()
+             out.info(msg)
+@@ -418,7 +418,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             msg = "Webmaster kidnapped by evil cult"
+             out = saltsupport.LogCollector()
+             out.put(msg)
+@@ -439,7 +439,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             msg = "Your e-mail is now being delivered by USPS"
+             out = saltsupport.LogCollector()
+             out.warning(msg)
+@@ -460,7 +460,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             msg = "Learning curve appears to be fractal"
+             out = saltsupport.LogCollector()
+             out.error(msg)
+@@ -481,7 +481,7 @@ class LogCollectorTestCase(TestCase, LoaderModuleMockMixin):
+         """
+         utcmock = MagicMock()
+         utcmock.utcnow = MagicMock(return_value=datetime.datetime.utcfromtimestamp(0))
+-        with patch("datetime.datetime", utcmock):
++        with patch("salt.utils.timeutil", utcmock):
+             out = saltsupport.LogCollector()
+             out.highlight("The {} TTYs became {} TTYs and vice versa", "real", "pseudo")
+             assert saltsupport.LogCollector.INFO in out.messages
+diff --git a/tests/unit/modules/test_x509.py b/tests/unit/modules/test_x509.py
+index a5c44f0ed2b..9f7c67b59d0 100644
+--- a/tests/unit/modules/test_x509.py
++++ b/tests/unit/modules/test_x509.py
+@@ -22,6 +22,7 @@ import pytest
+ 
+ import salt.utils.files
+ import salt.utils.stringutils
++import salt.utils.timeutil
+ from salt.modules import x509
+ from tests.support.helpers import dedent
+ from tests.support.mixins import LoaderModuleMockMixin
+@@ -185,7 +186,7 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+ 
+         fmt = "%Y-%m-%d %H:%M:%S"
+         # We also gonna use the current date in UTC format for verification
+-        not_after = datetime.datetime.utcnow()
++        not_after = salt.utils.timeutil.utcnow()
+         # And set the UTC timezone to the naive datetime resulting from parsing
+         not_after = not_after.replace(tzinfo=M2Crypto.ASN1.UTC)
+         not_after_str = datetime.datetime.strftime(not_after, fmt)
+@@ -226,7 +227,7 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+ 
+         fmt = "%Y-%m-%d %H:%M:%S"
+         # We also gonna use the current date in UTC format for verification
+-        not_before = datetime.datetime.utcnow()
++        not_before = salt.utils.timeutil.utcnow()
+         # And set the UTC timezone to the naive datetime resulting from parsing
+         not_before = not_before.replace(tzinfo=M2Crypto.ASN1.UTC)
+         not_before_str = datetime.datetime.strftime(not_before, fmt)
+@@ -319,7 +320,7 @@ class X509TestCase(TestCase, LoaderModuleMockMixin):
+         fmt = "%Y-%m-%d %H:%M:%S"
+         # Here we gonna use the current date as the not_before date
+         # First we again take the UTC for verification
+-        not_before = datetime.datetime.utcnow()
++        not_before = salt.utils.timeutil.utcnow()
+         # And set the UTC timezone to the naive datetime resulting from parsing
+         not_before = not_before.replace(tzinfo=M2Crypto.ASN1.UTC)
+         not_before_str = datetime.datetime.strftime(not_before, fmt)
+diff --git a/tools/changelog.py b/tools/changelog.py
+index d4d8b662829..2edcc085b04 100644
+--- a/tools/changelog.py
++++ b/tools/changelog.py
+@@ -215,7 +215,7 @@ def update_rpm(ctx: Context, salt_version: Version, draft: bool = False):
+         capture=True,
+         check=True,
+     ).stdout.decode()
+-    dt = datetime.datetime.utcnow()
++    dt = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+     date = dt.strftime("%a %b %d %Y")
+     header = f"* {date} Salt Project Packaging <saltproject-packaging@vmware.com> - {str_salt_version}\n"
+     parts = orig.split("%changelog")
+@@ -258,7 +258,7 @@ def update_deb(ctx: Context, salt_version: Version, draft: bool = False):
+         salt_version = _get_salt_version(ctx)
+     changes = _get_pkg_changelog_contents(ctx, salt_version)
+     formated = "\n".join([f"  {_.replace('-', '*', 1)}" for _ in changes.split("\n")])
+-    dt = datetime.datetime.utcnow()
++    dt = datetime.datetime.now(datetime.timezone.utc).replace(tzinfo=None)
+     date = dt.strftime("%a, %d %b %Y %H:%M:%S +0000")
+     tmpchanges = "pkg/rpm/salt.spec.1"
+     debian_changelog_path = "pkg/debian/changelog"
+-- 
+2.54.0
+

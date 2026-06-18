@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jun 10 11:55:14 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix ImportError during reentrant SIGTERM shutdown
+- Fix broken "pkg.info_installed" after migration to salt.utils.timeutil
+
+- Added:
+  * fix-importerror-during-reentrant-sigterm-shutdown.patch
+  * fix-broken-pkg.info_installed-after-moving-to-salt.u.patch
+
+-------------------------------------------------------------------
+Mon Jun  8 11:59:43 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix deprecation warnings when running on Python 3.13
+
+- Added:
+  * fix-deprecation-warnings-when-running-on-python-3.13.patch
+
+-------------------------------------------------------------------
 Fri May 29 14:35:44 UTC 2026 - Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
 
 - Calculate UUID grain for Xen PV guests (bsc#1255418)

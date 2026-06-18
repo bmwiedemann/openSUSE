@@ -1,0 +1,145 @@
+From 9361aba5c1b96c25634fe729685b29a216b664f2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Wed, 10 Jun 2026 12:42:05 +0100
+Subject: [PATCH] Fix "ImportError" during reentrant SIGTERM shutdown
+
+* Fix ImportError during reentrant SIGTERM shutdown
+
+multiprocessing.popen_fork.Popen.wait() does a lazy
+`from multiprocessing.connection import wait` on first use. During
+salt-master/minion shutdown, a second SIGTERM that arrives while
+ProcessManager.kill_children() is mid Process.join(0) re-enters
+_handle_signals at a Python bytecode boundary (for example inside
+log.trace -> logging.isEnabledFor) and triggers the same import a
+second time before the first has finished. The second import sees
+multiprocessing.connection in sys.modules but with the wait attribute
+not yet bound, raising:
+
+  ImportError: cannot import name 'wait' from partially initialized
+  module 'multiprocessing.connection' (most likely due to a circular
+  import)
+
+Eagerly import multiprocessing.connection at salt.utils.process
+load time so the module is fully initialised before any signal
+handler can run.
+
+Fixes #68573
+
+* Fix test when running in Python 3.6
+
+* Drop non compatible tests after backporting
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@broadcom.com>
+---
+ changelog/68573.fixed.md                      |  1 +
+ salt/utils/process.py                         | 10 ++++
+ .../pytests/functional/utils/test_process.py  | 57 +++++++++++++++++++
+ 3 files changed, 68 insertions(+)
+ create mode 100644 changelog/68573.fixed.md
+
+diff --git a/changelog/68573.fixed.md b/changelog/68573.fixed.md
+new file mode 100644
+index 00000000000..a786a52dad9
+--- /dev/null
++++ b/changelog/68573.fixed.md
+@@ -0,0 +1 @@
++Fixed `ImportError: cannot import name 'wait' from partially initialized module 'multiprocessing.connection'` raised during salt-master/minion shutdown when a reentrant SIGTERM hit `ProcessManager.kill_children()` mid `Process.join(0)`. `salt.utils.process` now eagerly imports `multiprocessing.connection` so the module is fully initialised before any signal handler can trigger its lazy import.
+diff --git a/salt/utils/process.py b/salt/utils/process.py
+index 9d7b53aa112..2ec8b4643ae 100644
+--- a/salt/utils/process.py
++++ b/salt/utils/process.py
+@@ -10,6 +10,16 @@ import io
+ import json
+ import logging
+ import multiprocessing
++
++# Eagerly import multiprocessing.connection so the lazy ``from
++# multiprocessing.connection import wait`` inside
++# multiprocessing.popen_fork.Popen.wait() is resolved at startup. If a
++# reentrant SIGTERM arrives while ProcessManager.kill_children() is mid
++# Process.join(0), a second handler invocation can hit that lazy import
++# while the module is still partially initialised, raising
++# "ImportError: cannot import name 'wait' from partially initialized
++# module 'multiprocessing.connection'". See issue #68573.
++import multiprocessing.connection  # noqa: F401
+ import multiprocessing.util
+ import os
+ import queue
+diff --git a/tests/pytests/functional/utils/test_process.py b/tests/pytests/functional/utils/test_process.py
+index 6c420b95f48..30f39e04633 100644
+--- a/tests/pytests/functional/utils/test_process.py
++++ b/tests/pytests/functional/utils/test_process.py
+@@ -6,6 +6,10 @@ Test salt's process utility module
+ """
+ import pytest
+ 
++import pathlib
++import subprocess
++import sys
++
+ import salt.utils.process
+ 
+ 
+@@ -30,3 +34,56 @@ def test_process_manager_60749(process_manager):
+ 
+     process_manager.add_process(Process)
+     process_manager.check_children()
++
++
++def test_process_preimports_multiprocessing_connection_68573(tmp_path):
++    """
++    Regression test for issue #68573.
++
++    multiprocessing.popen_fork.Popen.wait() does a lazy
++    ``from multiprocessing.connection import wait`` on first use. When a
++    second SIGTERM is delivered during the shutdown path that handler
++    re-enters salt.utils.process.ProcessManager.kill_children -> join(0),
++    which tries the same import while the module is partially
++    initialised, producing::
++
++        ImportError: cannot import name 'wait' from partially initialized
++        module 'multiprocessing.connection'
++
++    Importing salt.utils.process must therefore eagerly import
++    multiprocessing.connection so the module is fully initialised before
++    any signal handler can run.
++
++    Must run in a fresh subprocess: in-process pytest pollutes
++    sys.modules with multiprocessing.connection long before this test
++    runs.
++    """
++    # Make the subprocess load the same salt package the test imports.
++    # Locally, this might be the editable install in the venv; in CI it is
++    # the in-tree code. Both cases work because we explicitly prepend the
++    # directory containing the salt package to sys.path.
++    salt_module = pathlib.Path(salt.utils.process.__file__).resolve()
++    code_dir = salt_module.parent.parent.parent
++    script = tmp_path / "check_preimport.py"
++    script.write_text(
++        "import sys\n"
++        f"sys.path.insert(0, {str(code_dir)!r})\n"
++        "assert 'multiprocessing.connection' not in sys.modules, (\n"
++        "    'precondition failed: multiprocessing.connection already imported'\n"
++        ")\n"
++        "import salt.utils.process  # noqa: F401\n"
++        "assert 'multiprocessing.connection' in sys.modules, (\n"
++        "    'salt.utils.process must pre-import multiprocessing.connection '\n"
++        "    'to avoid a partially-initialised-module ImportError when a '\n"
++        "    'reentrant SIGTERM hits Process.join(0); see issue #68573'\n"
++        ")\n"
++    )
++    result = subprocess.run(
++        [sys.executable, str(script)],
++        stdout=subprocess.PIPE,
++        stderr=subprocess.PIPE,
++        universal_newlines=True,
++        check=False,
++        cwd=str(tmp_path),
++    )
++    assert result.returncode == 0, f"stdout={result.stdout!r} stderr={result.stderr!r}"
+-- 
+2.54.0
+
