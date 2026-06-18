@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:27 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * DMABufhandler: Use a private implementation (kde#520258)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:22 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+
+-------------------------------------------------------------------
+Sun May 24 11:17:18 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * LibWebPEncoder: Set preset to text
+  * LibWebPEncoder: Support setting the quality
+  * Use default DEFAULT_SEVERITY for logging
+  * Downgrade qCInfo to qCDebug
+  * Connect to streams using object.serial instead of nodeId
+  * libx264encoder: fix division by two
+  * gifencoder: optimize filesizes by using a static palette, diff mode and bayer dither
+  * Spruce up README a bit
+  * recording: Use the current session render node consistently across recording (kde#518008)
+  * Fix cmake warnings
+  * fix error logging function name for EGL display and initialization failures
+  * recording: Disable frame repeat timer for recording to file (kde#518009)
+  * libx264: Use CRF instead of global_quality for constant-quality encoding (kde#518009)
+  * PipewireSourceItem: Simplify cleanup
+  * Remove unneeded Qt version check
+  * Add an autotest to verify encoders initialize properly
+  * Fix filter graph for openh264/libx264 encoders
+  * ffmpeg compat: define correct variable for file
+  * glhelpers: use named initializers
+  * dmabufhandler: cleanup gl resources in scopeguard
+  * dmabufhandler: init some variables
+  * pipewirestreamsource: initialize some variables
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:58:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
