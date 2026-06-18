@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun  3 07:07:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26.06.0:
+  + core:
+    * Improve annotations initialization thread-safety
+    * CairoFontEngine: Properly honor font face index
+    * Internal code improvements
+    * Fix crashes in malformed documents
+- Bump poppler_sover to 161 following upstream changes.
+
+-------------------------------------------------------------------
 Mon May  4 06:23:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 26.05.0:
@@ -42,7 +53,7 @@ Mon May  4 06:23:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     lines
   + glib: Mark structure_element_iter_new as nullable
   + build system: Remove USE_FLOAT cmake option
-- Bump popper_sover to 160 following upstream changes.
+- Bump poppler_sover to 160 following upstream changes.
 - Bump dependencies required versions in spec file to match
   versions in CMakeLists.txt
 
