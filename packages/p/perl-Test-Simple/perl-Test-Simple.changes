@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 10:23:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.302222
+   see /usr/share/doc/packages/perl-Test-Simple/Changes
+
+  1.302222  2026-06-15 10:18:50-07:00 America/Los_Angeles
+
+      - Add missing Changes entry
+      - Fix test that fails on some windows versions due to path seperators
+
+-------------------------------------------------------------------
 Sun Jun 14 08:53:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.302221
