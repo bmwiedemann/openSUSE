@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:19:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.12.0
+  * Bug Fixes
+    + Fix ZIP CRC regression in OffloadingOutputStream
+    + Fix NPE when reading posixfileattributes on windows
+  * Dependency updates
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+    + Bump org.codehaus.plexus:plexus-utils from 3.6.0 to 3.6.1
+    + Bump com.github.luben:zstd-jni from 1.5.7-6 to 1.5.7-9
+    + Bump org.tukaani:xz from 1.11 to 1.12
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 0.9.0.M4
+      to 1.0.0
+    + Bump org.assertj:assertj-core from 3.27.6 to 3.27.7
+    + Bump release-drafter/release-drafter from 6 to 7
+
+-------------------------------------------------------------------
 Mon May 11 13:03:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

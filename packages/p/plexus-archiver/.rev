@@ -104,4 +104,12 @@
     <comment>Restore the zstd support</comment>
     <requestid>1352811</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>723576377e1b755b1bb738220f8d74a0</srcmd5>
+    <version>4.12.0</version>
+    <time>1781801070</time>
+    <user>anag_factory</user>
+    <comment>4.12.0</comment>
+    <requestid>1360248</requestid>
+  </revision>
 </revisionlist>

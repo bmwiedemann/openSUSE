@@ -17,7 +17,7 @@
 
 
 Name:           plexus-archiver
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Plexus Archiver Component
 License:        Apache-2.0
