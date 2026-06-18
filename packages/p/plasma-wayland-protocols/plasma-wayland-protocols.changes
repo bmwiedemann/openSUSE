@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun  5 09:23:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.21.0
+  * Bump version to 1.21.0
+  * outputdevice,-management: add abm level setting
+  * output device, management: add support for HDR ICC profiles
+  * screencast: Add event for pipewire object serial
+  * autotests: Make generated protocol files a fixture for build tests
+  * Add support for per-output virtual desktops
+  * Fix kde_output_device_mode_v2 version
+  * Add kde-output-device-registry-v2 interface
+
+-------------------------------------------------------------------
 Tue Jan 13 11:44:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 1.20.0:
