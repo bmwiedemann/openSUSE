@@ -1,7 +1,7 @@
 #
 # spec file for package lhasa
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,17 @@
 
 Name:           lhasa
 %define lname	liblhasa0
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Program to unpack LHARC archives
 License:        ISC
 Group:          Productivity/Archiving/Compression
 URL:            http://fragglet.github.com/lhasa/
-
 #Git-Clone:	git://github.com/fragglet/lhasa
 Source:         http://www.soulsphere.org/projects/lhasa/lhasa-%version.tar.gz
 Source2:        http://www.soulsphere.org/projects/lhasa/lhasa-%version.tar.gz.asc
 Source3:        %name.keyring
 BuildRequires:  pkg-config
-BuildRequires:  xz
 
 %description
 Lhasa is a replacement for the Unix LHA tool, for decompressing
@@ -67,8 +65,7 @@ in %lname.
 %make_install
 rm -f "%buildroot/%_libdir"/*.la
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/lha
