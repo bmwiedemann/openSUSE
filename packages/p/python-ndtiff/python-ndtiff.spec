@@ -1,7 +1,7 @@
 #
 # spec file for package python-ndtiff
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,6 +16,7 @@
 #
 
 
+%global skip_python311 1
 %define commit 6f4a5eed38ca466c529fca210fb37494bbd3890f
 Name:           python-ndtiff
 Version:        3.1.0
