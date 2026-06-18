@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:38:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.109.0:
+  * New Features
+    - [jfrog-cli] Add AI-agent help text to mcp and uv commands
+      #3545 (@ehl-jf)
+    - [jfrog-cli-artifactory] JGC-492 - Add --format flag for
+      release-bundle-create, promote, and distribute #488 (@ehl-jf)
+  * Bug Fixes
+    - [build-info-go] RTECO-1187 - Updated logic to skip cache
+      check for empty depedency project #392 (@naveenku-jfrog)
+  * Other Changes
+    - [jfrog-cli-core] JGC-501 - Force non-interactive mode when
+      CLI is invoked by an agent #1573 (@ehl-jf)
+
+-------------------------------------------------------------------
 Thu Jun 11 05:08:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.108.0:
