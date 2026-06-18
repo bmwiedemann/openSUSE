@@ -3,6 +3,10 @@ Fri Jun  5 10:03:45 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to version 3.53.2:
   * Fixes for problems in 3.53.0 reported by users.
+  * bsc#1268013, CVE-2026-11824: heap-based buffer overflow
+    vulnerability in the FTS5 full-text search extension.
+  * bsc#1268012, CVE-2026-11822: memory corruption vulnerabilities
+    in the FTS5 full-text search extension.
   * See the check-in timeline for details:
     https://sqlite.org/src/timeline?from=version-3.53.1&to=version-3.53.2
 
