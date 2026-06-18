@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Fri Jun 12 19:08:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * WordWrap: Fix enum parsing (kde#521210)
+  * kirigami/Chip: Fix icon position, add Mnemonics, change color
+  * popups: Add tooltip text color (kde#521024)
+  * input/css/breeze: Match DialogButtonBox spacing to desktop style
+  * input/css/breeze: Remove horizontal padding from checkbox/radio/switch (kde#520156)
+  * output/quick: Use nearest filtering for Icon's texture (kde#520155)
+  * text-wrap-mode: Use QTextOption enum (kde#520918,kde#520154)
+  * WidgetStyle: Disable X-KDE-CustomElements (kde#520776)
+  * Add themerc files
+  * Don't install a .so link for internal libraries
+- Drop patches, now upstream:
+  * 0001-Don-t-install-a-.so-link-for-internal-libraries.patch
+
+-------------------------------------------------------------------
+Thu May 28 18:45:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Heading: use Heading kirigami template as base and don't override color
+  * Set the Union Widgets output enabled again
+  * Update version for new release 6.6.91
+  * output/quick: Set menu popup type to Item
+  * output/quick: Add a Changed event to Positioner and use it in PositionerLayout (kde#518917)
+  * Place exported targets into Union:: namespace
+  * CMake config file: fix required dependencies, include targets file
+  * Use KDECompilerSettings, not KF-only KDEFrameworkCompilerSettings
+- Add patch to avoid unnecessary .so files:
+  * 0001-Don-t-install-a-.so-link-for-internal-libraries.patch
+
+-------------------------------------------------------------------
+Fri May 15 07:51:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Init union6
