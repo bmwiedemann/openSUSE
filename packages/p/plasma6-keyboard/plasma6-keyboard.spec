@@ -30,14 +30,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-keyboard
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Virtual Keyboard for Qt based desktops
 License:        GPL-2.0-or-later AND GPL-3.0-only
 URL:            https://invent.kde.org/plasma/plasma-keyboard
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 
@@ -52,6 +52,7 @@ BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6Crash) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
 BuildRequires:  cmake(KF6KCMUtils) >= %{kf6_version}
+BuildRequires:  cmake(PlasmaQuick)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
@@ -115,6 +116,7 @@ desktop-file-validate %{buildroot}%{_kf6_applicationsdir}/org.kde.plasma.keyboar
 %{_kf6_appstreamdir}/org.kde.plasma.keyboard.metainfo.xml
 %dir %{_kf6_plasmadir}/keyboard
 %{_kf6_plasmadir}/keyboard/layouts
+%{_kf6_plasmadir}//keyboard/diacritics/
 
 %files kcm -f kcm_plasmakeyboard.lang
 %{_kf6_applicationsdir}/kcm_plasmakeyboard.desktop
