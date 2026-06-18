@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:30:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 1.17.0:
+  * Features
+    Add GraphQL server and gql subcommand
+    otelcol: Add Nginx receiver
+    otelcol.exporter.prometheus: Convert classic histograms to NHCB
+    database_observability: Various enhancements for MySQL and Postgres
+    faro.receiver: Support gzip-compressed request bodies
+    Update to Beyla 3.9.8
+  * Bug Fixes
+    Address Critical CVE's From Scanner
+    security: Update x/crypto, x/net, jackc/pgx/v5, and obi
+    cluster: Fix nodes failing to join the cluster with TLS enabled
+    loki.process: Fix potential deadlocks and limit stage shutdown
+    Update go to v1.26.4
+  * CVE-2026-44740: Fix potential DoS via infinite loops, panics or
+                    resource consumption by bumping
+                    go-git/go-billy/v5 to 5.9.0 (bsc#1267333)
+  * CVE-2026-45678: Fix Postgres BIND parsing by bumping
+                    go.opentelemetry.io/obi to 0.9.0 (bsc#1267481)
+  * CVE-2026-45682: Fix memory leak in OpenTelemetry eBPF
+                    instrumentation by bumping
+                    go.opentelemetry.io/obi to 0.9.0 (bsc#1267485)
+  * CVE-2026-45686: Fix integer overflow in memcached text protocol
+                    parser by bumping go.opentelemetry.io/obi to
+                    version 0.9.0 (bsc#1267489)
+  * CVE-2026-45685: Fix DoS in MongoDB TCP parser by bumping
+                    go.opentelemetry.io/obi to 0.9.0 (bsc#1267488)
+- Drop patches:
+  * 0001-Bump-sql_exporter.patch
+  * 0002-Bump-Apache-Thrift.patch
+  * 0003-Bump-jackc-pgx.patch
+
+- Update to version 1.16.3:
+  * Bug Fixes
+    cluster: Fix nodes failing to join the cluster when TLS is
+             enabled
+
+- Update to version 1.16.2:
+  * Bug Fixes
+    loki.process: No longer mutate rules in stage.truncate causing
+                  every config update to reload pipeline when this
+                  stage is used
+    loki.process: Potential deadlock on update with stage and
+                  receiver changes
+    otelcol.exporter.awss3: Add missing unique_key_func_name
+                            attribute
+    security: Address Critical CVE's From Scanner
+    security: Update x/crypto and x/net for CVEs: CVE-2026-39827,
+              CVE-2026-39834, CVE-2026-39828, CVE-2026-39829,
+              CVE-2026-39831, CVE-2026-42508, CVE-2026-39833,
+              CVE-2026-39830, CVE-2026-39832, CVE-2026-46597,
+              CVE-2026-46598, CVE-2026-46595, CVE-2026-39835
+              (bsc#1266196)
+    CVE-2026-39821: Fix validation bypass and privilege escalation
+                    by bumping x/net/idna (bsc#1266654)
+    security: Fix multiple issues when parsing HTML files:
+              CVE-2026-25680, CVE-2026-42502, CVE-2026-27136,
+              CVE-2026-25681, CVE-2026-42506 (bsc#1267185)
+    CVE-2026-33532: Remove dependency on vulnerable yaml library
+                    (bsc#1260981)
+
+-------------------------------------------------------------------
 Tue Jun  9 11:29:33 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-41889: Fix SQL injection by bumping github.com/jackc/pgx
