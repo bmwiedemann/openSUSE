@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-magic
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,30 +18,48 @@
 
 %global pkg_name magic
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.1
+Version:        1.1.2
 Release:        0
 Summary:        Interface to C file/magic library
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-BuildRequires:  file-devel
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-bytestring-devel
+BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libmagic)
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-HUnit-devel
+BuildRequires:  ghc-HUnit-prof
+BuildRequires:  ghc-directory-devel
+BuildRequires:  ghc-directory-prof
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
+BuildRequires:  ghc-unix-devel
+BuildRequires:  ghc-unix-prof
+%endif
 
 %description
 This package provides a Haskell interface to the C libmagic library.
 With it, you can determine the type of a file by examining its contents rather
 than its name. The Haskell interface provides a full-featured binding.
 
+Note: this package requires the C libmagic library (part of the 'file' package)
+and its development headers to be installed at build time.
+
 %package devel
 Summary:        Haskell %{pkg_name} library development files
 Requires:       %{name} = %{version}-%{release}
-Requires:       file-devel
 Requires:       ghc-compiler = %{ghc_version}
+Requires:       pkgconfig
+Requires:       pkgconfig(libmagic)
 Requires(post): ghc-compiler = %{ghc_version}
 Requires(postun): ghc-compiler = %{ghc_version}
 
@@ -73,6 +91,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 %install
 %ghc_lib_install
 
+%check
+%cabal_test
+
 %post devel
 %ghc_pkg_recache
 
@@ -83,6 +104,7 @@ This package provides the Haskell %{pkg_name} profiling library.
 %license COPYING
 
 %files devel -f %{name}-devel.files
+%doc CHANGELOG.md README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license COPYING
