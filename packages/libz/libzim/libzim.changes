@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 17 20:17:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.8.0:
+  * Speed-up ZIM creation with buffered IO
+  * Allow compiling only the reader part of the library
+  * Make the code base C++23 compatible
+  * Fix compilation against Xapian 2.0
+  * Better handling of ICU library dependence
+  * Documentation improvements and CI updates
+
+-------------------------------------------------------------------
 Wed Jun  3 13:10:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 9.7.0:

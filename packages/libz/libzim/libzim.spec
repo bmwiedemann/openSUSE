@@ -18,7 +18,7 @@
 
 %define  sover  9
 Name:           libzim
-Version:        9.7.0
+Version:        9.8.0
 Release:        0
 Summary:        Reference implementation for the ZIM file format
 License:        GPL-2.0-or-later
