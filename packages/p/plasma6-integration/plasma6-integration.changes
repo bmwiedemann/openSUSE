@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:08:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Message dialogs: Fix standard button codes for custom buttons
+  * Fix wrong return code when exec'ing our implementation of QMessageDialog (kde#520747)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * KDEPlatformTheme: Set Union quick style enabled if Union widgets style is set
+  * Update version for new release 6.6.91
+  * Set theme name to lower and compare it
+  * Disable Union again
+  * kde-ci.yml: Update dependencies after 186ae66
+  * Drop unused dependencies
+
+-------------------------------------------------------------------
+Sun May 24 11:19:31 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * KDEPlatformTheme: Check for Union widgetstyle too
+  * DEFAULT_UNION_STYLE is default to ON
+  * kdeplatformfiledialoghelper: Initialize dialog early on pre-show selectNameFilter() (kde#516399)
+  * Add QMessageBox backend for MessageDialog
+  * qt6/KFontSettingsData: Chop off extra fontString items for versions under 6.11 (kde#519185)
+  * Default to union under a CMake option
+  * README.md kdesrc-build -> kde-builder
+  * qt5: Handle Qt 6.11 font settings (kde#518570)
+  * systemtray: Don't delete KSNI menu (kde#517599)
+  * a11y: Support QAccessibilityHints::motionPreference (Qt >= 6.12)
+  * (Qt5) Remove KDirSelectDialog and KFileTreeView, use KFileWidget instead (kde#197938,kde#515728)
+  * (Qt6) Remove KDirSelectDialog and KFileTreeView, use KFileWidget instead (kde#197938,kde#515728)
+  * qt6: Prevent qtquick settings from creating opengl context
+  * Remove unneeded Qt version check
+  * Never overwrite QtQuick Controls style if user requested a specific style
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:59:44 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
