@@ -826,4 +826,12 @@
     <comment></comment>
     <requestid>1354712</requestid>
   </revision>
+  <revision rev="100" vrev="3">
+    <srcmd5>fa3d2259476aff7b9d282f3a6b789a24</srcmd5>
+    <version>1.6.6</version>
+    <time>1781800650</time>
+    <user>anag_factory</user>
+    <comment>poppler 26.06 build fixes, 2nd attempt</comment>
+    <requestid>1359135</requestid>
+  </revision>
 </revisionlist>

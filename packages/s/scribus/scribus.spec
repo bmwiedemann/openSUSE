@@ -53,7 +53,10 @@ Source2:        scribus.keyring
 Patch0:         0001-Make-sure-information-displayed-on-the-about-window-.patch
 # PATCH-FIX-UPSTREAM 14a287fc1db2a44abfe1743260554447b31b4adf.patch -- Fix failure to build with poppler 26.05.0
 Patch1:         14a287fc1db2a44abfe1743260554447b31b4adf.patch
-
+# PATCH-FIX-UPSTREAM poppler 26.06.0 compat
+Patch2:         scribus_poppler_26_06_0.patch
+Patch3:         scribus_poppler_26_06_0_part2.patch
+Patch4:         scribus_poppler_26_06_0_part3.patch
 BuildRequires:  cmake >= 3.14.0
 BuildRequires:  cups-devel
 BuildRequires:  dos2unix

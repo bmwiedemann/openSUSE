@@ -1,0 +1,27 @@
+From b99c4573817af756ca50f4d859cdc8448aca0a98 Mon Sep 17 00:00:00 2001
+From: Jean Ghali <jghali@libertysurf.fr>
+Date: Thu, 11 Jun 2026 19:02:55 +0000
+Subject: [PATCH] #17832: Additional fix for failure to build with poppler
+ 26.06.0
+
+git-svn-id: svn://scribus.net/branches/Version16x/Scribus@27641 11d20701-8431-0410-a711-e3c959e3b870
+---
+ scribus/plugins/import/pdf/slaoutput.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scribus/plugins/import/pdf/slaoutput.cpp b/scribus/plugins/import/pdf/slaoutput.cpp
+index 27c521c5f..313572aae 100644
+--- a/scribus/plugins/import/pdf/slaoutput.cpp
++++ b/scribus/plugins/import/pdf/slaoutput.cpp
+@@ -744,7 +744,7 @@ bool SlaOutputDev::handleWidgetAnnot(Annot* annota, double xCoor, double yCoor,
+ 			}
+ 			ite->setIsAnnotation(true);
+ 			ite->AutoName = false;
+-			AnnotBorder *brd = annota->getBorder();
++			const AnnotBorder *brd = annota->getBorder();
+ 			if (brd)
+ 			{
+ 				int bsty = brd->getStyle();
+-- 
+2.54.0
+

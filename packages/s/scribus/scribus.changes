@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 14 07:22:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add more upstream changes:
+  * scribus_poppler_26_06_0_part2.patch
+  * scribus_poppler_26_06_0_part3.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 16:01:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change:
+  * scribus_poppler_26_06_0.patch
+
+-------------------------------------------------------------------
 Fri May 22 06:31:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 14a287fc1db2a44abfe1743260554447b31b4adf.patch: Fix failure
