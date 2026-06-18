@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 18 03:22:42 UTC 2026 - Shung-Hsi Yu <shung-hsi.yu@suse.com>
+
+- Add version postfix when calling clang and llvm-strip
+
+-------------------------------------------------------------------
+Fri Jun 12 10:37:13 UTC 2026 - Avinesh Kumar <avinesh.kumar@suse.com>
+
+- Backport upstream patch clang-Add-microsoft-extensions-build-flags
+  (gh#iovisor/bcc#5488)
+  * add 0001-clang-Add-microsoft-extensions-build-flags.patch
+
+-------------------------------------------------------------------
 Thu May 14 09:45:16 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Remove redundant CMake build flags

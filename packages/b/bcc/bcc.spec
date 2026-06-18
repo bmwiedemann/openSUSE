@@ -41,6 +41,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-Fix-build-with-LLVM-22.patch
+Patch1:         0001-clang-Add-microsoft-extensions-build-flags.patch
 Source100:      bcc-rpmlintrc
 ExcludeArch:    ppc s390
 BuildRequires:  bison
@@ -204,6 +205,8 @@ find tools/ examples/ -type f -exec \
 pushd libbpf-tools
 %make_build LIBBPF_OBJ=%{_libdir}/libbpf.a \
             BPFTOOL=%{_sbindir}/bpftool \
+            CLANG=clang-%{product_libs_llvm_ver} \
+            LLVM_STRIP=llvm-strip-%{product_libs_llvm_ver} \
             CFLAGS="%{optflags}"
 popd
 %endif
