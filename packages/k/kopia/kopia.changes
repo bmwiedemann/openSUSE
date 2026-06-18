@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 17 17:46:07 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
+
+- Update to version 0.23.1:
+  * Summary
+    - Bugfix release which fixes a rare race condition which might lead to a data loss - an upgrade is recommended
+  * Repository
+    - Basic tests for getting epoch manager blob set (#5418) by Julio López
+    - selection of next epoch to compact (#5373) by Julio López
+  * Storage Providers
+    - no_extra_providers build tag (#5375) by Julio López
+  * Linter
+    - annotations for other platforms (#5413) by Julio López
+
+-------------------------------------------------------------------
 Tue May 12 04:54:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.23.0:
