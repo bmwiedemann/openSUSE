@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 16:46:26 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Don't test dask-array on python311: No longer available, SPEC 0
+
+-------------------------------------------------------------------
 Fri Mar  6 01:10:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.18.0:

@@ -228,4 +228,12 @@
   * API: Initial finch_backend</comment>
     <requestid>1337149</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>1723599dc3f4f27a11a6aab371475dcc</srcmd5>
+    <version>0.18.0</version>
+    <time>1781811470</time>
+    <user>anag_factory</user>
+    <comment>- Don't test dask-array on python311: No longer available, SPEC 0</comment>
+    <requestid>1360293</requestid>
+  </revision>
 </revisionlist>

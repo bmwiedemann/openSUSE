@@ -47,7 +47,7 @@ Requires:       python-numba >= 0.49
 Requires:       python-numpy >= 1.17
 Requires:       python-scipy >= 0.19
 %if %{with test}
-BuildRequires:  %{python_module dask-array}
+BuildRequires:  %{python_module dask-array if %python-base >= 3.12}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sparse = %{version}}
@@ -82,7 +82,9 @@ find . -name '*.md' -size 0 -delete
 
 %if %{with test}
 %check
-%pytest -n auto
+# No more dask in python311 (SPEC 0)
+python311_ignore="--ignore sparse/numba_backend/tests/test_dask_interop.py"
+%pytest -n auto ${$python_ignore}
 %endif
 
 %if !%{with test}
