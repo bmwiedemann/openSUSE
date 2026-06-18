@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:08:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Don't call activateWindow() from the constructor
+
+-------------------------------------------------------------------
+Thu May 28 18:45:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * ci: depend on @same plasma-activities version
+
+-------------------------------------------------------------------
+Sun May 24 11:21:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * Set accessible text for back button (kde#519333)
+  * Fix empty category in sidebar when "Highlight Changed Settings" is enabled (kde#518868)
+  * systemsettingsrunner: add correct file URLs to the kickoff and krunner entries. (kde#500259)
+  * Ignore warnings from qt.qpa.services
+  * Show proper page header for QML KCM loading error page
+  * ModuleView: disable KTitleWidget text selection
+  * Port to Kirigami.Badge
+  * Default KDE_KIRIGAMI_FORMS_STYLE to "flat"
+  * Fix cmake warnings
+  * Also push subcategory page after clicking on a search result
+  * MenuProxyModel: For categories also check whether any children are relevant
+  * documentation.yml is no more needed
+  * SubCategoryPage: use "Back" text for back button label
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 14:01:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
