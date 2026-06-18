@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Wed Jun 17 16:41:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.25.4): the falcosecurity libs (libscap
+  and libsinsp) built as shared libraries
+- Enable the inspector thread pool (ENABLE_THREAD_POOL) using the
+  system bshoshany-thread-pool
+- Run the libsinsp gtest unit-test suite (844 tests) during %%check
+- Ship the libscap test_input engine: with CREATE_TEST_TARGETS libsinsp
+  links it (DT_NEEDED), so libsinsp0 needs it at runtime
+- Restrict to the arches whose modern-BPF vmlinux.h is vendored
+  (x86_64 aarch64 ppc64le s390x)
+- Trim BuildRequires to the set the build actually uses (drop unused
+  grpc/protobuf/libcurl/libcares/openssl/luajit/ncurses/yaml-cpp/
+  libb64/libjq) and drop cmake flags that are not real options in
+  this release

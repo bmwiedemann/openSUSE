@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>94e233b32a04d4286005c55b57320d0b</srcmd5>
+    <version>0.25.4</version>
+    <time>1781804435</time>
+    <user>anag_factory</user>
+    <comment>falco-libs 0.25.4: ship the libscap test_input engine (libsinsp links it via DT_NEEDED under CREATE_TEST_TARGETS, so libsinsp0 needs it at runtime); restrict to the modern-BPF vmlinux.h arches</comment>
+    <requestid>1360226</requestid>
+  </revision>
+</revisionlist>

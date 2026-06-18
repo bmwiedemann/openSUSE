@@ -1,0 +1,8 @@
+<package name="falco-libs" project="openSUSE:Factory">
+  <title>Libraries for system inspection (libscap and libsinsp)</title>
+  <description>The falcosecurity libs are the core libraries behind Falco and sysdig:
+libscap (system capture) reads kernel events from the various drivers and
+capture files; libsinsp (system inspection) provides the state engine,
+filtering, event formatting and plugin framework on top of libscap.</description>
+  <url>https://github.com/falcosecurity/libs</url>
+</package>
