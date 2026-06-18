@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 17 14:07:03 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 3.1.0
+  * new:usr: Add include/exclude restore filtering using archive-relative paths
+
+- Update to version 3.0.8
+
+  * fix:usr: Unnecessary passphrase prompt with --encrypt-key --no-check-remote.
+  * fix:usr: Handle local version identifiers in b2backend
+  * temporarily disable remote validation introduced in 3.0.6.3
+    (gl#duplicity/duplicity#924)
+  * new:usr: Add --full-if-n-inc flag for count-based full backup.
+  * fix:usr: Fix so GNUPGHOME is not changed in production.
+    (gl#duplicity/duplity#922)
+  
+-------------------------------------------------------------------
 Mon Feb  2 00:48:23 UTC 2026 - malcolmlewis@opensuse.org
 
 - Fix "Cannot understand duplicity version" error, add requires on
