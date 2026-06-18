@@ -1,8 +1,7 @@
 #
 # spec file for package cargo-audit
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +20,7 @@
 %global workspace_name rustsec
 
 Name:           cargo-audit
-Version:        0.22.1~git0.efcde93
+Version:        0.22.2~git0.281452c
 Release:        0
 Summary:        Audit rust sources for known security vulnerabilities
 License:        ( 0BSD OR MIT OR Apache-2.0 ) AND ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR MIT ) AND ( MIT OR Zlib OR Apache-2.0 ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND MIT AND MPL-2.0 AND MPL-2.0+

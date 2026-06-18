@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sat Jun 06 03:19:15 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.22.2~git0.281452c:
+  * Bump `cargo-audit` version
+  * rustsec: bump version to 0.33
+  * admin: error if ID replacement fails
+  * admin: inline single-use intermediate bindings
+  * admin: improve error handling in assigner
+  * admin: simplify collection handling
+  * admin: be stricter about ID line input
+  * admin: lint that ID in drafts is the placeholder
+  * admin: import more items
+  * build(deps): bump toml_edit
+  * build(deps): bump jiff from 0.2.24 to 0.2.27
+  * build(deps): bump gix from 0.83.0 to 0.84.0
+  * Validate advisory dates with jiff crate (#1603)
+  * cargo-audit: add test case for affected function filtering
+  * cargo-audit: drop empty paths
+  * cargo-audit: replace HashSet with Vec in SymbolSet
+  * cargo-audit: hoist affected symbol cleanup out of inner loop
+  * cargo-audit: inline single-use function function_path_matches_symbol()
+  * cargo-audit: inline single-use function remove_function_path_parameters()
+  * cargo-audit: simplify logic for remove_function_path_parameters()
+  * cargo-audit: add comment to clarify handling of generics
+  * cargo-audit: hoist filter wrappers out
+  * cargo-audit: replace iterator chain with loop
+  * cargo-audit: show warning on failure to parse binary
+  * cargo-audit: move comment closer to relevant code
+  * cargo-audit: simplify interface for SymbolSet::from_file()
+  * cargo-audit: inline trivial test helper function
+  * cargo-audit: re-order items in tests module to be top-down
+  * cargo-audit: clean up import blocks in presenter module
+  * build(deps): bump atom_syndication from 0.12.7 to 0.12.8
+  * print the invalid char when linting affected functions
+  * Take semver-compatible dependency updates
+  * build(deps): bump askama from 0.15.6 to 0.16.0
+  * Revert "Document to use cargo install with --locked (fixes #1152)"
+  * build(deps): bump gix from 0.81.0 to 0.83.0
+  * build(deps): bump tame-index from 0.26.2 to 0.26.3
+  * Take semver-compatible dependency updates
+  * build(deps): bump object from 0.38.1 to 0.39.0
+  * cargo-audit: when run with -q, suppress dependency trees
+  * cargo-audit: simplify default for OutputConfig::show_tree
+  * Upgrade to comrak 0.52
+  * Take semver-compatible dependency updates
+  * Lift `print_tree` calls into `print_report`
+  * Show affected functions in binaries
+  * Add note for experimental tool reachsec
+  * build(deps): bump actions/cache from 5.0.4 to 5.0.5
+  * build(deps): bump softprops/action-gh-release from 2.6.1 to 3.0.0
+  * build(deps): bump obi1kenobi/cargo-semver-checks-action from 2.8 to 2.9
+  * cargo-audit: optionally override auditable payload size limit
+  * cargo-audit: cap input size for audit bin
+  * cargo-audit: add CLI option to skip checking for yanked crates
+  * rustsec: avoid warning about packages that are not from crates.io
+  * Upgrade to gix 0.81
+  * Take semver-compatible dependency updates
+  * build(deps): bump askama from 0.15.4 to 0.15.5
+  * build(deps): bump actions/cache from 5.0.3 to 5.0.4
+  * platforms: bump version to 3.10
+  * platforms: update data with MSAN/TSAN targets
+  * build(deps): bump tame-index from 0.26.0 to 0.26.1
+  * build(deps): bump Swatinem/rust-cache from 2.8.2 to 2.9.1
+  * build(deps): bump softprops/action-gh-release from 2.5.0 to 2.6.1
+  * Bump deps affected by today's advisories.
+  * Change generated title for malicious crates.
+  * build(deps): bump comrak from 0.50.0 to 0.51.0
+  * Add `malicious` as an explicit category.
+  * Take semver-compatible dependency updates
+  * platforms: bump version to 3.9.0
+  * platforms: update data
+  * Take semver-compatible dependency updates
+  * build(deps): bump gix from 0.79.0 to 0.80.0
+  * Disable embedded file timestamps in rust-embed
+  * Install rustfmt for the platforms update workflow (#1552)
+  * Website: theme fixes
+  * Website: Improve light theme
+  * Hide the link to crates.io for expect_deleted crates
+  * Bump MSRV for rustsec to 1.88 (for time)
+  * Take semver-compatible dependency updates
+  * ci: fix incorrect path to script
+  * build(deps): bump fs-err from 3.2.2 to 3.3.0
+  * build(deps): bump gix from 0.78.0 to 0.79.0
+  * build(deps): bump toml from 0.9.11+spec-1.1.0 to 1.0.1+spec-1.1.0
+  * build(deps): bump toml_edit from 0.24.0+spec-1.1.0 to 0.25.1+spec-1.1.0
+  * Sort paths in `lint` function
+  * Website: fix broken WG url (#1536)
+  * build(deps): bump actions/cache from 5.0.2 to 5.0.3
+  * cargo-lock: fix extra empty line at end of file (#1532)
+  * admin: display error chain for lint errors
+  * admin: don't rely on cached data
+
+-------------------------------------------------------------------
 Wed Feb 11 02:11:20 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1257929 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
