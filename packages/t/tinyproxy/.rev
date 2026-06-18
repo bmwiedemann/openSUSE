@@ -184,4 +184,14 @@
   [boo#1261024] [CVE-2026-3945]</comment>
     <requestid>1343915</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>53dce1be65fd23e959cc79cf4cabc53c</srcmd5>
+    <version>1.11.3</version>
+    <time>1781801067</time>
+    <user>anag_factory</user>
+    <comment>  [boo#1268474, CVE-2026-54387]
+  [boo#1268475, CVE-2026-54388]
+  [boo#1268476, CVE-2026-55202]</comment>
+    <requestid>1360242</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,29 @@
+From 364cdb67e0ea00a8e4a7037e2693e0711e816adb Mon Sep 17 00:00:00 2001
+From: rofl0r <rofl0r@users.noreply.github.com>
+Date: Thu, 7 May 2026 16:39:48 +0000
+Subject: [PATCH] reqs: prevent multiple content-lengths getting emitted
+
+addressing point 2 of #609
+---
+ src/reqs.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/src/reqs.c b/src/reqs.c
+index ac30967..0998324 100644
+--- a/src/reqs.c
++++ b/src/reqs.c
+@@ -643,6 +643,11 @@ add_header_to_connection (pseudomap *hashofheaders, char *header, size_t len)
+         /* Calculate the new length of just the data */
+         len -= sep - header - 1;
+ 
++        /* prevent multiple content-length headers from being inserted */
++        if (!strcasecmp(header, "content-length") &&
++            pseudomap_find (hashofheaders, "content-length"))
++                return 0;
++
+         return pseudomap_append (hashofheaders, header, sep);
+ }
+ 
+-- 
+2.54.0
+

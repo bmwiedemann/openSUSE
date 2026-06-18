@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:03:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add 0001-reqs-prevent-request-smuggling-via-both-content-leng.patch
+  0001-reqs-prevent-multiple-content-lengths-getting-emitte.patch
+  [boo#1268474, CVE-2026-54387]
+  [boo#1268475, CVE-2026-54388]
+- Add 0001-reqs-improve-stathost-detection-606.patch
+  [boo#1268476, CVE-2026-55202]
+
+-------------------------------------------------------------------
 Tue Mar 31 11:04:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add 0001-reqs-prevent-potential-int-overflow-when-parsing-chu.patch

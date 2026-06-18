@@ -26,6 +26,9 @@ URL:            https://tinyproxy.github.io/
 Source:         https://github.com/tinyproxy/tinyproxy/releases/download/%version/%name-%version.tar.xz
 Source1:        %name.logrotate
 Patch1:         0001-reqs-prevent-potential-int-overflow-when-parsing-chu.patch
+Patch2:         0001-reqs-prevent-request-smuggling-via-both-content-leng.patch
+Patch3:         0001-reqs-prevent-multiple-content-lengths-getting-emitte.patch
+Patch4:         0001-reqs-improve-stathost-detection-606.patch
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  xz
