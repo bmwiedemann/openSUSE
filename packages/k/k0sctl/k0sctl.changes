@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:20:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.0:
+  * Handle unexpected names in the kubeconfig (#1087)
+  * Bump github.com/k0sproject/rig from 0.21.8 to 0.21.10 (#1104)
+  * Bump k8s.io/client-go from 0.36.1 to 0.36.2 (#1097)
+  * Bump k8s.io/apimachinery from 0.36.1 to 0.36.2 (#1098)
+  * Enable testifylint (#1102)
+  * Don't autodetect CPLB IP as host private address (#1101)
+  * Fix unnecessary reinstall when dynamicConfig is enabled (#1099)
+  * Bump golang.org/x/text from 0.37.0 to 0.38.0 (#1091)
+  * Bump github.com/go-playground/validator/v10 from 10.30.2 to
+    10.30.3 (#1090)
+  * Bump github.com/k0sproject/rig from 0.21.6 to 0.21.8 (#1089)
+  * Bump k8s.io/client-go from 0.36.0 to 0.36.1 (#1083)
+  * Bump golang.org/x/text from 0.36.0 to 0.37.0 (#1082)
+  * Update AGENTS.md
+
+-------------------------------------------------------------------
 Sun May 10 14:41:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.30.1:
