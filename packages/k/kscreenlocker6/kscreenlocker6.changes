@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * settings: fix translation for shortcut "Session Management -> Lock Session" (kde#521293)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:25 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * greeter: Include xcb::util explicitly (kde#520261)
+
+-------------------------------------------------------------------
+Sun May 24 11:17:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * Fix smartcard/PIN authentication UX issues
+  * Use default DEFAULT_SEVERITY for logging
+  * Drop custom session management code
+  * fixup! pamauthenticator: make converse a bit more modern and robust
+  * Enable LSAN in CI
+  * pamauthenticator: make converse a bit more modern and robust
+  * noaccessnetworkmanager: modernize queued execution
+  * greeterapp: make xcb code readable
+  * pamauthenticators: don't return into void
+  * greeterapp: init variable in one call
+  * greeterapp: drop unused member variable
+  * PamAuthenticator: Emit failed on authentication attempts that happen too soon (kde#515299)
+  * Port to Plasma::setupPlasmaStyle
+  * ksldapp: on Wayland, make KWin responsible for inhibiting suspend
+  * greeter: Set explicit layer surface screen
+  * On successful login exit without completing pending PAM jobs (kde#484363,kde#506567)
+  * Lower default severity to Warning
+  * greeter/fallbacktheme: Fix cannot read xyz property of null
+  * greeter/fallbacktheme: Fix Connections warnings
+  * Force animated wallpapers on the lockscreen to play uninterrupted by default (kde#460910)
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:58:24 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
