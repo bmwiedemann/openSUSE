@@ -20,8 +20,8 @@
 # MeeGo.QOfono is optional and not packaged yet
 %global __requires_exclude qmlimport\\((org\\.kde\\.phone\\.homescreen|org\\.kde\\.plasma\\.phone\\.taskpanel|org\\.kde\\.private\\.mobile\\.homescreen\\.folio|MeeGo\\.QOfono|).*
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname plasma-mobile
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,7 +30,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-mobile
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 # Full Plasma 6 version (e.g. 5.9.3)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -39,9 +39,9 @@ Release:        0
 Summary:        Plasma shell for mobile devices
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -146,6 +146,7 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %{_kf6_bindir}/plasma-mobile-envmanager
 %{_kf6_bindir}/plasma-mobile-initial-start
 %{_kf6_bindir}/startplasmamobile
+%{_kf6_debugdir}/plasmamobile.categories
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Mobile.Panels.xml
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Mobile.xml
 %{_kf6_dbusinterfacesdir}/org.kde.plasmashell.Waydroid.xml
@@ -200,7 +201,6 @@ echo > quicksettings/flashlight/kauth/CMakeLists.txt
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_mobileshell.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_waydroidintegration.so
 %dir %{_kf6_qmldir}/org/kde/plasma/
-%{_kf6_qmldir}/org/kde/plasma/mm/
 %{_kf6_qmldir}/org/kde/plasma/mobileinitialstart/
 %dir %{_kf6_qmldir}/org/kde/plasma/private/
 %{_kf6_qmldir}/org/kde/plasma/private/mobileshell/
