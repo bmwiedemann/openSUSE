@@ -1,0 +1,4 @@
+<package name="containerized-data-importer-1.65" project="openSUSE:Factory">
+  <title>Versioned CDI (containerized-data-importer 1.65)</title>
+  <description>Versioned fork for parallel-minor maintenance; Provides/Obsoletes the unversioned containerized-data-importer subpackages.</description>
+</package>
