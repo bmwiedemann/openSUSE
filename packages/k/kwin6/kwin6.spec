@@ -19,8 +19,8 @@
 # Internal QML imports
 %global __requires_exclude qt6qmlimport\\(org\\.kde\\.KWin\\.Effect\\.WindowView.*
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname   kwin
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -29,24 +29,22 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kwin6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        KDE Window Manager
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch1:         0001-core-drmdevice-correct-the-virtio-driver-name.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-# GCC 13 doesn't know std::ranges::to
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc14-PIE
-BuildRequires:  gcc14-c++
-%endif
-%if 0%{?suse_version} == 1600
+# GCC 15 needed for structured bindings
+%if 0%{?suse_version} < 1699
 BuildRequires:  gcc15-PIE
 BuildRequires:  gcc15-c++
 %endif
@@ -92,12 +90,12 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Core5Compat) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Sensors) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6UiTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  cmake(VulkanHeaders) >= 1.4
 BuildRequires:  pkgconfig(epoxy) >= 1.3
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
@@ -203,11 +201,7 @@ This package provides development files.
 
 %build
 %cmake_kf6 \
-%if 0%{?suse_version} == 1500
-  -DCMAKE_C_COMPILER:STRING=gcc-14 \
-  -DCMAKE_CXX_COMPILER:STRING=g++-14
-%endif
-%if 0%{?suse_version} == 1600
+%if 0%{?suse_version} < 1699
   -DCMAKE_C_COMPILER:STRING=gcc-15 \
   -DCMAKE_CXX_COMPILER:STRING=g++-15
 %endif
@@ -257,6 +251,7 @@ This package provides development files.
 %{_kf6_applicationsdir}/kcm_kwintabbox.desktop
 %{_kf6_applicationsdir}/kcm_kwinxwayland.desktop
 %{_kf6_applicationsdir}/kcm_virtualkeyboard.desktop
+%{_kf6_applicationsdir}/org.kde.kwin.dialoghelper.desktop
 %{_kf6_applicationsdir}/org.kde.kwin.killer.desktop
 %{_kf6_bindir}/kwin_wayland_wrapper
 %{_kf6_bindir}/kwindowprop
@@ -299,6 +294,7 @@ This package provides development files.
 %{_kf6_plugindir}/kwin/plugins/buttonsrebind.so
 %if %{pkg_vcmp pkgconfig(libeis-1.0) >= 1.4}
 %{_kf6_plugindir}/kwin/plugins/eis.so
+%{_libexecdir}/kwin_eis_prompter
 %endif
 %{_kf6_plugindir}/kwin/plugins/krunnerintegration.so
 %{_kf6_plugindir}/kwin/plugins/nightlight.so
@@ -321,6 +317,7 @@ This package provides development files.
 %{_kf6_sharedir}/kconf_update/kwin.upd
 %{_kf6_sharedir}/krunner/dbusplugins/kwin-runner-windows.desktop
 %{_kf6_sharedir}/kwin-wayland/
+%{_libexecdir}/kwin_dialog_helper
 %{_libexecdir}/kwin_killer_helper
 %{_libexecdir}/kwin-applywindowdecoration
 %{_libexecdir}/kwin-tabbox-preview
