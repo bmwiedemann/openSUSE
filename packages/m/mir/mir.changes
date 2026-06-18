@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:47:38 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.28.0:
+  * Drop 0002-correct-include-paths-pkgconfig.patch
+  * ABI Changes:
+    - mirwayland bumped to 6
+    - miroil bumped to 9
+  * Bugs Fixed:
+    - Fix FDs being removed by libinput (gh#canonical/mir#4853)
+    - restore previously active VT on LinuxVirtualTerminal teardown
+      (gh#canonical/mir#4842)
+    - (gh#canonical/mir#4552) gmtime is not thread safe
+      (gh#canonical/mir#4972)
+    - Fix input lockup after VT switch (gh#canonical/mir#4791)
+    - Fix copy-paste error with setting positioner constraint
+      adjustment (gh#canonical/mir#4869)
+    - fix leak in DisplayInfo (gh#canonical/mir#4877)
+    - fix boolean logic checking for DnD actions
+      (gh#canonical/mir#4892)
+    - fix-wrong-foreign-toplevel-logic (gh#canonical/mir#4952)
+    - apply live touchpad config at startup and correct
+      disable-with-external-mouse mapping (gh#canonical/mir#4943)
+    - Fix environment variables being overwritten when they match
+      on prefix (gh#canonical/mir#4966)
+    - Upstream fixes to application switcher
+      (gh#canonical/mir#4945)
+  * Enhancements:
+    - [wayland-rs]
+      * Generating implementation for Wayland events so that they
+        can be sent from C++ to Rust to Wayland clients
+        (gh#canonical/mir#4785)
+      * Generating global registration methods for wayland-rs
+        (gh#canonical/mir#4825)
+      * Adding the ability to post an error on any object
+        (gh#canonical/mir#4843)
+      * Implement a C++ friendly Wayland client and
+        WaylandServerNotificationHandler for recieving
+        notifications about new clients (gh#canonical/mir#4848)
+    - [live config]
+      * Re-implement array clearing in BasicStore and IniFile
+        (gh#canonical/mir#4914)
+      * Apply live configuration in start_callback()
+        (gh#canonical/mir#4978)
+      * Add tests for IniFile failure modes (gh#canonical/mir#4847)
+    - Implement org_kde_kwin_server_decoration
+      (gh#canonical/mir#4956)
+    - Accept EGL_TEXTURE_EXTERNAL_WL (gh#canonical/mir#4888)
+    - use std::format* instead of snprintf in xwayland_spawner.cpp
+      (gh#canonical/mir#4793)
+    - Fixes TICS violations in wayland_connector.cpp
+      (gh#canonical/mir#4904)
+    - Eliminate tmpnam (gh#canonical/mir#4813)
+    - Fix TICS violation of pointer arithmetic on polymorphic
+      object, Use void* as map key (gh#canonical/mir#4827)
+    - Correct include paths pkgconfig (gh#canonical/mir#4907)
+    - improve Ctrl+Shift+NumLock toggle shortcut
+      (gh#canonical/mir#4812)
+    - add MIR_PIN_COMPOSITING_TO to allow pinning a certain
+      provider for display (gh#canonical/mir#4958)
+    - Add implementation of the new logging API
+      (gh#canonical/mir#4895)
+    - Add support for WLCS keyboard (gh#canonical/mir#4716)
+
+
+-------------------------------------------------------------------
 Wed Apr 29 14:43:38 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Add Conflicts: libmircommon11 to test-tools subpackage

@@ -282,4 +282,41 @@ Will be a requirement for forthcoming miriway submission</comment>
       * Implement ext-input-triggers (gh#canonical/mir#4410)</comment>
     <requestid>1350031</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>aec9a95b2c596326e191ec40e249ebda</srcmd5>
+    <version>2.28.0</version>
+    <time>1781801100</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.28.0:
+  * Drop 0002-correct-include-paths-pkgconfig.patch
+  * ABI Changes:
+    - mirwayland bumped to 6
+    - miroil bumped to 9
+  * Bugs Fixed:
+    - Fix FDs being removed by libinput (gh#canonical/mir#4853)
+    - restore previously active VT on LinuxVirtualTerminal teardown
+      (gh#canonical/mir#4842)
+    - (gh#canonical/mir#4552) gmtime is not thread safe
+      (gh#canonical/mir#4972)
+    - Fix input lockup after VT switch (gh#canonical/mir#4791)
+    - Fix copy-paste error with setting positioner constraint
+      adjustment (gh#canonical/mir#4869)
+    - fix leak in DisplayInfo (gh#canonical/mir#4877)
+    - fix boolean logic checking for DnD actions
+      (gh#canonical/mir#4892)
+    - fix-wrong-foreign-toplevel-logic (gh#canonical/mir#4952)
+    - apply live touchpad config at startup and correct
+      disable-with-external-mouse mapping (gh#canonical/mir#4943)
+    - Fix environment variables being overwritten when they match
+      on prefix (gh#canonical/mir#4966)
+    - Upstream fixes to application switcher
+      (gh#canonical/mir#4945)
+  * Enhancements:
+    - [wayland-rs]
+      * Generating implementation for Wayland events so that they
+        can be sent from C++ to Rust to Wayland clients
+        (gh#canonical/mir#4785)
+      * Generating global registration methods for wayland-rs</comment>
+    <requestid>1360265</requestid>
+  </revision>
 </revisionlist>

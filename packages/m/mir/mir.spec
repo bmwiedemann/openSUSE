@@ -28,15 +28,15 @@
 %global commonlibsover 12
 %global mircoresover 2
 %global mirplatformsover 34
-%global lomirisover 8
+%global lomirisover 9
 %global miralsover 7
 %global mirserversover 67
-%global mirwaylandsover 5
+%global mirwaylandsover 6
 %global mirserverplatformsover 23
 %global mirevdevsover 10
 
 Name:           mir
-Version:        2.26.0
+Version:        2.28.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -45,8 +45,6 @@ Source0:        https://github.com/canonical/%{name}/releases/download/v%{versio
 Source1:        vendor.tar.zst
 # PATCH-FIX-OPENSUSE 0001-remove-use-of-env-to-call-bash.patch <sfalken@opensuse.org>
 Patch1:         0001-remove-use-of-env-to-call-bash.patch
-# PATCH-FIX-UPSTREAM 0002-correct-include-paths-pkgconfig.patch <sfalken@opensuse.org> (gh#canonical/mir#4573)
-Patch2:         0002-correct-include-paths-pkgconfig.patch
 
 BuildRequires:  boost-devel
 BuildRequires:  cargo
