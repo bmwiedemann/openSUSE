@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 06:19:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.1
+  New Features
+  * TUI Dashboard (--tui).
+  * TTL Self-Destruct (--ttl).
+  Changes
+  * ConPtyShell no longer embedded in the binary.
+
+-------------------------------------------------------------------
 Fri May 29 12:45:10 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.0
