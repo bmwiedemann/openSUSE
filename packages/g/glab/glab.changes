@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:09:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.103.0:
+  * Features
+    - b39a801c: feat(container-registry): add container registry
+      repository and tag commands (Jeroen Monteban
+      jeroen.monteban@mgb.ch)
+    - ea9fd25a: feat(packages): add packages command group with
+      list (Oscar Tovar otovar@gitlab.com)
+    - 1dd20b11: feat(stack): make switch interactive (Ahmed
+      Abdelbaset a7med3bdulbaset@gmail.com)
+    - 7b9703ab: feat(stacked-diffs): add --no-verify to 'stack
+      amend' command (Kev Kloss kkloss@gitlab.com)
+    - 6e4e3284: feat(stacked-diffs): add --no-verify to 'stack
+      save' command (Kev Kloss kkloss@gitlab.com)
+    - 481f63fb: feat: Handle glab mr checkout failure when there
+      are non fast-forwarding conflicts (Gabriel Mazzetto
+      gabriel@gitlab.com)
+    - 84fd9f33: feat: compile arm64 windows bianry (Andrei Zubov
+      azubov@gitlab.com)
+  * Bug Fixes
+    - 91eb7aad: fix(ci): set release token inline so project
+      GITLAB_TOKEN can't shadow it (Jay McCure jmccure@gitlab.com)
+    - 10561d78: fix(mcp): add content to structuredContent (Florian
+      Imdahl git@ffflorian.de)
+    - bcf700bd: fix(orbit): install dependency-free Linux build to
+      fix glibc version errors (Dmitry Gruzd dgruzd@gitlab.com)
+    - 0a119c02: fix(stacks): share stacks across worktrees (Ahmed
+      Abdelbaset a7med3bdulbaset@gmail.com)
+    - e3236d94: fix(update): give post-upgrade and skill nudges
+      breathing room (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 913e5d9d: docs(api): add GLAB_DEBUG_HTTP example for
+      debugging requests (Kai Armstrong karmstrong@gitlab.com)
+    - 3a983d41: docs(variable): add synopsis and examples to
+      variable commands (Brendan Lynch blynch@gitlab.com)
+    - 98e70a25: docs: Remove manual (default false) flag
+      annotations (Brendan Lynch blynch@gitlab.com)
+    - 6c71e24c: docs: add troubleshooting guide for invalid_client
+      OAuth error (Stan Hu stanhu@gmail.com)
+    - e73a8cde: docs: move troubleshooting guide to the generated
+      CLI docs page (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 7779ffec: chore(deps): bump go to v1.26.4 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 39cda83f: chore(deps): update dependency @commitlint/cli to
+      ^21.0.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - f434057f: chore(deps): update dependency @commitlint/lint to
+      ^21.0.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - c583440d: chore(deps): update module charm.land/bubbletea/v2
+      to v2.0.7 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - a1898d01: chore(deps): update module github.com/docker/cli to
+      v29.5.1+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - f1b74aae: chore(deps): update module github.com/docker/cli to
+      v29.5.2+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 6131acf7: chore(deps): update module github.com/docker/cli to
+      v29.5.3+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 9b83a7ff: chore(deps): update module
+      github.com/docker/docker-credential-helpers to v0.9.8 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 0767cd08: chore(deps): update module
+      github.com/mattn/go-colorable to v0.1.15 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 765b526d: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.24 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 756377a6: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.36.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 55a4f6b3: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.36.2 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 34a8e5b0: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.36.3 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - e500b3f4: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.39.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - bda16f22: chore(deps): update module golang.org/x/sync to
+      v0.21.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - a27fa5a4: chore(deps): update module golang.org/x/term to
+      v0.44.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 79575672: chore(deps): update module golang.org/x/text to
+      v0.38.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 4c0cc23d: chore(ci): automate weekly release via pipeline
+      schedule (Jay McCure jmccure@gitlab.com)
+    - d0d9bc3e: chore: Refactor mr_checkout removing global var and
+      moving dependencies to struct (Gabriel Mazzetto
+      gabriel@gitlab.com)
+    - 47eeadad: chore: Update MR review instructions YAML (Brendan
+      Lynch blynch@gitlab.com)
+    - b5ac12f9: chore: add support for modern linux-x64 duo cli
+      binary (Andrei Zubov azubov@gitlab.com)
+    - 7d26ca46: ci: update code-intelligence job to fix job
+      failures (Oscar Tovar otovar@gitlab.com)
+    - 45b9fcc3: ci: wire ci/cd inputs to release variables (Oscar
+      Tovar otovar@gitlab.com)
+  * Others
+    - 080c4e2c: test: add archived field to label list JSON
+      expectation (Tomas Vik tvik@gitlab.com)
+
+-------------------------------------------------------------------
 Mon Jun 08 05:28:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.102.0:
