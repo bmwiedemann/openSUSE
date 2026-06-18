@@ -17,8 +17,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname krdp
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -27,14 +27,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           krdp6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        RDP Server for Plasma
 License:        LGPL-2.1-or-later
 URL:            https://invent.kde.org/plasma/krdp
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
@@ -61,6 +61,7 @@ BuildRequires:  cmake(Qt6Quick)
 BuildRequires:  cmake(Qt6WaylandClient)
 BuildRequires:  cmake(WinPR) >= 3.1
 BuildRequires:  pkgconfig(pam)
+BuildRequires:  qt6qmlimport(org.kde.kirigamiaddons.formcard)
 
 %description
 RDP Server with settings Module for Plasma.
