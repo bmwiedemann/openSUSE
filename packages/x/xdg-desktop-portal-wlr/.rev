@@ -145,4 +145,14 @@
   * Various bugfixes and improvements.</comment>
     <requestid>1347741</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>aa129f6ece993ee9274151a0d12d8679</srcmd5>
+    <version>0.8.3</version>
+    <time>1781803290</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.3:
+  * Fix low FPS during screencasting.
+  * Update maintainer GPG key.</comment>
+    <requestid>1360282</requestid>
+  </revision>
 </revisionlist>
