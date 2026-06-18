@@ -359,4 +359,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355139</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>26483f185dd1e1b7d7ab4581a72270a5</srcmd5>
+    <version>6.7.0</version>
+    <time>1781811379</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.0 (maybe). K:F already publish disabled. (forwarded request 1359107 from Vogtinator)</comment>
+    <requestid>1359196</requestid>
+  </revision>
 </revisionlist>
