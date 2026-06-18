@@ -39,15 +39,9 @@ cd "${BASENAME}" || exit 23
 ls -lah
 
 echo "##########"
-echo "Cloning gha-bump and fstail"
-FSTAIL_COMMIT="$(awk -F '-' '/^\sgithub.com\/alexellis\/fstail/ {print $NF}' go.mod)"
+echo "Cloning gha-bump"
 GHABUMP_COMMIT="$(awk '/^require github.com\/alexellis\/gha-bump/ {print $NF}' go.mod)"
-
 git clone https://github.com/alexellis/gha-bump ../gha-bump || exit 25
-git clone https://github.com/alexellis/fstail ../fstail || exit 27
-cd ../fstail || exit 28
-git checkout "${FSTAIL_COMMIT:0:8}" . || exit 29
-cd "${tmpdir}/${BASENAME}" || exit 30
 
 echo "##########"
 echo "Vendoring the go modules"

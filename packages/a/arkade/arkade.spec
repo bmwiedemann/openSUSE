@@ -17,7 +17,7 @@
 
 
 Name:           arkade
-Version:        0.11.99
+Version:        0.11.100
 Release:        0
 Summary:        Open Source Kubernetes Marketplace
 License:        Apache-2.0
@@ -25,7 +25,6 @@ URL:            https://github.com/alexellis/arkade
 Source:         arkade-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        gha-bump.tar.gz
-Source3:        fstail.tar.gz
 #
 Source11:       Makefile
 Source12:       PACKAGING_README.md
@@ -64,7 +63,6 @@ zsh command line completion support for %{name}.
 %prep
 %autosetup -p 1 -a 1
 tar xvf %{SOURCE2} --directory ../
-tar xvf %{SOURCE3} --directory ../
 
 %build
 # hash will be shortened by COMMIT_HASH:0:8 later

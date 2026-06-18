@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:56:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.100:
+  * Include commit and build date on version and bump vendor
+  * Use fstail directly instead of via go replace
+
+-------------------------------------------------------------------
 Tue Jun 09 08:57:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.99:
