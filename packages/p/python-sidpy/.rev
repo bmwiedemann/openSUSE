@@ -172,4 +172,12 @@
 - Remove upper bound on numpy.</comment>
     <requestid>1319626</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>92e0d4038906303512065efd407b5639</srcmd5>
+    <version>0.12.8</version>
+    <time>1781800944</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360197</requestid>
+  </revision>
 </revisionlist>
