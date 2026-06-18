@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260617" schemaversion="4.1">
+<image name="OBS__MicroOS___20260618" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260617</productvar>
+      <productvar name="VERSION">20260618</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260617,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260618,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260617/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260618/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -678,6 +678,7 @@
       <repopackage name="libgdbm6"/>
       <repopackage name="libgdbm_compat4"/>
       <repopackage name="libgdk_pixbuf-2_0-0"/>
+      <repopackage name="libgif7"/>
       <repopackage name="libgio-2_0-0"/>
       <repopackage name="libgirepository-1_0-1"/>
       <repopackage name="libgirepository-2_0-0"/>
@@ -784,7 +785,6 @@
       <repopackage name="libKF5IconThemes5"/>
       <repopackage name="libKF5ItemViews5"/>
       <repopackage name="libKF5JobWidgets5"/>
-      <repopackage name="libKF5Kirigami2-5"/>
       <repopackage name="libKF5Notifications5"/>
       <repopackage name="libKF5Solid5"/>
       <repopackage name="libKF5SonnetCore5"/>
@@ -903,6 +903,7 @@
       <repopackage name="libldap2"/>
       <repopackage name="libldb2"/>
       <repopackage name="libleancrypto1"/>
+      <repopackage name="libleptonica6"/>
       <repopackage name="libLerc4"/>
       <repopackage name="liblilv-0-0"/>
       <repopackage name="liblirc_client0"/>
@@ -977,7 +978,7 @@
       <repopackage name="libopenh264-8"/>
       <repopackage name="libopeniscsiusr0"/>
       <repopackage name="libopenjp2-7"/>
-      <repopackage name="libopenjph0_28"/>
+      <repopackage name="libopenjph0_29"/>
       <repopackage name="libopenmpt0"/>
       <repopackage name="libopenssl3"/>
       <repopackage name="libopus0"/>
@@ -1016,7 +1017,7 @@
       <repopackage name="libpolkit-qt6-1-1"/>
       <repopackage name="libpoppler-cpp3"/>
       <repopackage name="libpoppler-qt6-3"/>
-      <repopackage name="libpoppler160"/>
+      <repopackage name="libpoppler161"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libppd"/>
       <repopackage name="libppd2"/>
@@ -1213,6 +1214,7 @@
       <repopackage name="libtasn1-6"/>
       <repopackage name="libtbb12"/>
       <repopackage name="libtdb1"/>
+      <repopackage name="libtesseract5"/>
       <repopackage name="libtevent0"/>
       <repopackage name="libtextstyle0"/>
       <repopackage name="libthai-data"/>
@@ -1698,6 +1700,8 @@
       <repopackage name="sysvinit-tools"/>
       <repopackage name="tar"/>
       <repopackage name="terminfo-base"/>
+      <repopackage name="tesseract-ocr-common"/>
+      <repopackage name="tesseract-ocr-traineddata-ces"/>
       <repopackage name="thin-provisioning-tools"/>
       <repopackage name="timezone"/>
       <repopackage name="toolbox"/>

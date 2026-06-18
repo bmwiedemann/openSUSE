@@ -1682,6 +1682,7 @@ unsorted:
   - bsh2-demo 
   - bsh2-javadoc 
   - bsh2-manual 
+  - bshoshany-thread-pool-devel 
   - bson-devel 
   - bspwm 
   - bspwm-bash-completion 
@@ -2612,6 +2613,14 @@ unsorted:
   - container-suseconnect 
   - containerd-ctr 
   - containerd-devel 
+  - containerized-data-importer-1.65-api 
+  - containerized-data-importer-1.65-cloner 
+  - containerized-data-importer-1.65-controller 
+  - containerized-data-importer-1.65-importer 
+  - containerized-data-importer-1.65-manifests 
+  - containerized-data-importer-1.65-operator 
+  - containerized-data-importer-1.65-uploadproxy 
+  - containerized-data-importer-1.65-uploadserver 
   - containerized-data-importer-api 
   - containerized-data-importer-cloner 
   - containerized-data-importer-controller 
@@ -4005,10 +4014,12 @@ unsorted:
   - fake-hwclock 
   - fakechroot 
   - fakeroot 
+  - falco-libs-devel 
   - falcoctl 
   - falcoctl-bash-completion 
   - falcoctl-fish-completion 
   - falcoctl-zsh-completion 
+  - falcosecurity-container-plugin 
   - falcosidekick 
   - falkon-lang 
   - fanficfare 
@@ -10284,7 +10295,9 @@ unsorted:
   - kirigami-addons6-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
+  - kirigami2 
   - kirigami2-devel 
+  - kirigami2-lang 
   - kiriki 
   - kiriki-lang 
   - kismet 
@@ -10738,6 +10751,20 @@ unsorted:
   - kubetrim 
   - kubetui 
   - kubeval 
+  - kubevirt-1.8-container-disk 
+  - kubevirt-1.8-manifests 
+  - kubevirt-1.8-pr-helper-conf 
+  - kubevirt-1.8-sidecar-shim 
+  - kubevirt-1.8-tests 
+  - kubevirt-1.8-virt-api 
+  - kubevirt-1.8-virt-controller 
+  - kubevirt-1.8-virt-exportproxy 
+  - kubevirt-1.8-virt-exportserver 
+  - kubevirt-1.8-virt-handler 
+  - kubevirt-1.8-virt-launcher 
+  - kubevirt-1.8-virt-operator 
+  - kubevirt-1.8-virt-synchronization-controller 
+  - kubevirt-1.8-virtctl 
   - kubevirt-container-disk 
   - kubevirt-manifests 
   - kubevirt-pr-helper-conf 
@@ -11256,6 +11283,7 @@ unsorted:
   - libKF5KCMUtils5-lang 
   - libKF5KCMUtilsCore5 
   - libKF5KDELibs4Support5 
+  - libKF5Kirigami2-5 
   - libKF5NewStuff5 
   - libKF5NewStuff5-lang 
   - libKF5NewStuffCore5 
@@ -12093,8 +12121,8 @@ unsorted:
   - libargtable2-0 
   - libargtable2-devel 
   - libaria2-0 
-  - libarm_compute52 
-  - libarm_compute_graph52 
+  - libarm_compute53 
+  - libarm_compute_graph53 
   - libarmadillo15 
   - libarmnn36 
   - libarmnn36-opencl 
@@ -14284,8 +14312,8 @@ unsorted:
   - libjson-c-doc 
   - libjson-c5-32bit 
   - libjson-glib-1_0-0-32bit 
-  - libjsoncpp26 
-  - libjsoncpp26-x86-64-v3 
+  - libjsoncpp27 
+  - libjsoncpp27-x86-64-v3 
   - libjsonrpc-glib-1_0-1 
   - libjte-devel 
   - libjthread1_3_3 
@@ -14503,7 +14531,6 @@ unsorted:
   - liblightdm-qt6-3-0 
   - liblightgrep-devel 
   - liblightgrep0 
-  - liblightmediascanner0 
   - liblilv-0-0-32bit 
   - liblilv-0-devel 
   - liblinbox0 
@@ -14800,11 +14827,11 @@ unsorted:
   - libmirevdev10 
   - libmirisdr-devel 
   - libmirisdr0 
-  - libmiroil8 
+  - libmiroil9 
   - libmirplatform34 
   - libmirserver67 
   - libmirserverplatform23 
-  - libmirwayland5 
+  - libmirwayland6 
   - libmission-control-plugins0 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
@@ -15222,7 +15249,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_28-32bit 
+  - libopenjph0_29-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -15467,7 +15494,7 @@ unsorted:
   - libplacebo-devel 
   - libplacebo360-32bit 
   - libplacebo5-devel 
-  - libplanarity2 
+  - libplanarity4 
   - libplanify-0 
   - libplasma6-devel 
   - libplayerctl2 
@@ -15535,7 +15562,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler160-32bit 
+  - libpoppler161-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -15743,6 +15770,7 @@ unsorted:
   - libqt5-qtgamepad-examples 
   - libqt5-qtgamepad-imports 
   - libqt5-qtgamepad-private-headers-devel 
+  - libqt5-qtgraphicaleffects 
   - libqt5-qtimageformats-devel 
   - libqt5-qtlocation-devel 
   - libqt5-qtlocation-devel-32bit 
@@ -15768,6 +15796,7 @@ unsorted:
   - libqt5-qtquick3d-tools 
   - libqt5-qtquickcontrols 
   - libqt5-qtquickcontrols-examples 
+  - libqt5-qtquickcontrols2 
   - libqt5-qtquickcontrols2-examples 
   - libqt5-qtquickcontrols2-private-headers-devel 
   - libqt5-qtquicktimeline 
@@ -15955,6 +15984,7 @@ unsorted:
   - libredwg-devel 
   - libredwg-tools 
   - libredwg0 
+  - libreflex6 
   - libregf-devel 
   - libregf-tools 
   - libregf1 
@@ -16202,6 +16232,7 @@ unsorted:
   - libscamperctrl4 
   - libscamperfile-devel 
   - libscamperfile13 
+  - libscap0 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -16311,6 +16342,7 @@ unsorted:
   - libsigsegv2 
   - libsingular_resources-4_4_1 
   - libsingular_resources-devel 
+  - libsinsp0 
   - libsioclient1 
   - libsirocco0 
   - libsispmctl0 
@@ -16430,8 +16462,8 @@ unsorted:
   - libspooles2_2-openmpi 
   - libspqr4 
   - libspread-sheet-widget0 
-  - libsqlcipher-3_46_1-0 
-  - libsqlcipher-3_46_1-0-x86-64-v3 
+  - libsqlcipher0 
+  - libsqlcipher0-x86-64-v3 
   - libsqlite3-0-32bit 
   - libsqlitecpp0 
   - libsquashfuse0 
@@ -17579,8 +17611,6 @@ unsorted:
   - lightdm-slick-greeter-branding-openSUSE 
   - lightdm-slick-greeter-branding-upstream 
   - lightdm-slick-greeter-lang 
-  - lightmediascanner 
-  - lightmediascanner-devel 
   - lighttpd 
   - lighttpd-mod_authn_dbi 
   - lighttpd-mod_authn_gssapi 
@@ -20303,6 +20333,7 @@ unsorted:
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
+  - obs-service-cdi-1.65_containers_meta 
   - obs-service-cdi_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
@@ -20315,6 +20346,7 @@ unsorted:
   - obs-service-go_modules 
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
+  - obs-service-kubevirt-1.8_containers_meta 
   - obs-service-kubevirt_containers_meta 
   - obs-service-node_modules 
   - obs-service-obs_scm 
@@ -21099,6 +21131,7 @@ unsorted:
   - oxygen6-decoration 
   - oxygen6-style 
   - oxygen6-style-lang 
+  - oxygen6-wallpapers 
   - p0f 
   - p11-kit-32bit 
   - p11-kit-devel 
@@ -23249,6 +23282,8 @@ unsorted:
   - plasma6-activities-devel 
   - plasma6-activities-stats-devel 
   - plasma6-activities-tools 
+  - plasma6-bigscreen 
+  - plasma6-bigscreen-lang 
   - plasma6-firewall 
   - plasma6-firewall-lang 
   - plasma6-keyboard 
@@ -23344,6 +23379,7 @@ unsorted:
   - plotutils-doc 
   - plowshare 
   - plplay 
+  - plugin-sdk-cpp-devel 
   - pluma 
   - pluma-devel 
   - pluma-lang 
@@ -24659,7 +24695,6 @@ unsorted:
   - python311-asdf-coordinates-schemas 
   - python311-asdf-standard 
   - python311-asdf-transform-schemas 
-  - python311-asdf-unit-schemas 
   - python311-asdf-wcs-schemas 
   - python311-ase 
   - python311-asgi-lifespan 
@@ -25425,7 +25460,6 @@ unsorted:
   - python311-dataclasses-json 
   - python311-datadiff 
   - python311-datamodel-code-generator 
-  - python311-datashader 
   - python311-dateparser 
   - python311-dateutils 
   - python311-datrie 
@@ -26538,7 +26572,6 @@ unsorted:
   - python311-ndg-httpsclient 
   - python311-ndindex 
   - python311-ndjson 
-  - python311-ndtiff 
   - python311-neovim 
   - python311-nest-asyncio 
   - python311-net-snmp 
@@ -26922,7 +26955,6 @@ unsorted:
   - python311-pyPEG2 
   - python311-pyRFC3339 
   - python311-pyRXP 
-  - python311-pyUSID 
   - python311-pyVows 
   - python311-pyacoustid 
   - python311-pyaes 
@@ -27620,7 +27652,6 @@ unsorted:
   - python311-show-in-file-manager 
   - python311-shtab 
   - python311-sidecar 
-  - python311-sidpy 
   - python311-sievelib 
   - python311-signedjson 
   - python311-signxml 
@@ -28570,7 +28601,6 @@ unsorted:
   - python313-asdf-coordinates-schemas 
   - python313-asdf-standard 
   - python313-asdf-transform-schemas 
-  - python313-asdf-unit-schemas 
   - python313-asdf-wcs-schemas 
   - python313-ase 
   - python313-asgi-lifespan 
@@ -32524,7 +32554,6 @@ unsorted:
   - python314-asdf-coordinates-schemas 
   - python314-asdf-standard 
   - python314-asdf-transform-schemas 
-  - python314-asdf-unit-schemas 
   - python314-asdf-wcs-schemas 
   - python314-ase 
   - python314-asgi-lifespan 
@@ -36349,7 +36378,9 @@ unsorted:
   - qps-lang 
   - qpwgraph 
   - qqc2-breeze-style6-devel 
+  - qqc2-desktop-style 
   - qqc2-desktop-style-devel 
+  - qqc2-desktop-style-lang 
   - qqwing 
   - qqwing-devel 
   - qrencode-devel 
@@ -37041,7 +37072,6 @@ unsorted:
   - renovate-pretty-log 
   - replacer 
   - replacer-javadoc 
-  - replay-sorcery 
   - reprepro 
   - reproc-devel 
   - reproducible-faketools 
@@ -38125,7 +38155,6 @@ unsorted:
   - sil-gentium-fonts 
   - sil-mondulkiri-fonts 
   - sil-padauk-fonts 
-  - silan 
   - sile 
   - sile-bash-completion 
   - sile-fish-completion 
@@ -38353,6 +38382,7 @@ unsorted:
   - sonivox 
   - sonivox-devel 
   - sonnet-devel 
+  - sonnet-imports 
   - sonnet-voikko 
   - sonobuoy 
   - sonobuoy-bash-completion 
@@ -38984,7 +39014,6 @@ unsorted:
   - tcl-brlapi 
   - tcl-devel 
   - tcl-rrdtool 
-  - tcl-sqlcipher 
   - tcl-tktray 
   - tcl8-xapian 
   - tclap 
@@ -49901,6 +49930,8 @@ unsorted:
   - unified-runtime 
   - unified-runtime-devel 
   - unifraktur-fonts 
+  - union6 
+  - union6-devel 
   - unionfs-fuse 
   - unique-factory-devel 
   - unison-doc 
