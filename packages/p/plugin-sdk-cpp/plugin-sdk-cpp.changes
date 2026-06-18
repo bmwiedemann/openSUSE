@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jun 17 20:48:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.3.0):
+  * Header-only C++ SDK for writing Falcosecurity plugins; build
+    dependency of the falcosecurity container plugin.

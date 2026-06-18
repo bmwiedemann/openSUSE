@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3f32e328e019bd3fcf9357ba1cb530ed</srcmd5>
+    <version>0.3.0</version>
+    <time>1781804424</time>
+    <user>anag_factory</user>
+    <comment>New package: plugin-sdk-cpp 0.3.0
+
+Header-only C++ SDK for writing Falcosecurity plugins. Build dependency
+of the falcosecurity container plugin (next submission).</comment>
+    <requestid>1360103</requestid>
+  </revision>
+</revisionlist>

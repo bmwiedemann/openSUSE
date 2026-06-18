@@ -1,0 +1,6 @@
+<package name="plugin-sdk-cpp" project="openSUSE:Factory">
+  <title>C++ SDK for writing Falcosecurity plugins</title>
+  <description>Header-only C++ SDK wrapping the Falcosecurity plugin API, used to
+write Falco/libsinsp plugins in C++.</description>
+  <url>https://github.com/falcosecurity/plugin-sdk-cpp</url>
+</package>
