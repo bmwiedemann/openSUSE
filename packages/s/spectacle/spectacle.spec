@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 %define rname spectacle
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %global _plasma6_bugfix %{version}}
@@ -25,17 +25,15 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           spectacle
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Screen Capture Program
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://apps.kde.org/spectacle
-Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source0:        %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
-# PATCH-FIX-UPSTREAM -- incorrect libtesseract name
-Patch0:         0001-libtesseract.patch
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  kquickimageeditor6-devel >= 0.6.0
@@ -77,6 +75,7 @@ BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(ZXing) >= 1.2.0
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(xcb-cursor)
@@ -84,7 +83,6 @@ BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-util)
 BuildRequires:  pkgconfig(xcb-xfixes)
-Recommends:     libtesseract5
 Requires:       kquickimageeditor6-imports
 Requires:       qt6-imageformats >= %{qt6_version}
 
