@@ -444,4 +444,17 @@
   * remove O=Chunghwa Telecom Co., Ltd. OU=ePKI Root Certification Authority</comment>
     <requestid>1359225</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>032055bcf1c7e0994cefddcafedb94b3</srcmd5>
+    <version>2026.5.20</version>
+    <time>1781800692</time>
+    <user>anag_factory</user>
+    <comment>- Modify python-certifi-shipped-requests-cabundle.patch so that
+  certifi.where() returns file path of CA Bundle only when it
+  actually exists, otherwise return None, which should make
+  ctx = ssl.create_default_context(cafile=certifi.where())
+  work with the system defaults.
+</comment>
+    <requestid>1359862</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 16 22:22:02 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Modify python-certifi-shipped-requests-cabundle.patch so that
+  certifi.where() returns file path of CA Bundle only when it
+  actually exists, otherwise return None, which should make
+
+  ctx = ssl.create_default_context(cafile=certifi.where())
+
+  work with the system defaults.
+
+-------------------------------------------------------------------
 Sun Jun 14 09:57:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.5.20:
