@@ -1,8 +1,8 @@
 #
 # spec file for package wireguard-tools
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2020-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           wireguard-tools
-Version:        1.0.20250521
+Version:        1.0.20260223
 Release:        0
 Summary:        WireGuard userspace tools
 License:        GPL-2.0-only
@@ -28,6 +28,7 @@ Source:         https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%
 Source1:        https://git.zx2c4.com/wireguard-tools/snapshot/wireguard-tools-%{version}.tar.asc
 Source99:       https://www.zx2c4.com/keys/AB9942E6D4A4CFC3412620A749FC7012A5DE03AE.asc#/WireGuard.keyring
 Patch1:         Support-systemd-resolved-split-dns-setup.patch
+Patch2:         Revert-dns-hatchet-apply-resolv.conf-s-selinux-conte.patch
 BuildRequires:  bash-completion
 BuildRequires:  pkgconfig
 %{?systemd_ordering}

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 18 08:29:05 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Remove selinux specific code from dns hatchet, as it allows for a
+  cleaner handling in the selinux policy (bsc#1243148)
+  adding Revert-dns-hatchet-apply-resolv.conf-s-selinux-conte.patch
+
+-------------------------------------------------------------------
+Sat Mar  7 07:46:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0.20260223
+  * syncconf: account for persistent keepalive removed from config
+    file.
+  * config: preserve const correctness.
+  * wg-quick@.service: add deps on wg-quick.target.
+  * wg-quick: linux: do not unnecessarily set sysctl.
+  * wg-quick: use addconf instead of setconf.
+  * wg-quick: linux: deal with resolvconf migration more gracefully.
+  * wg-quick: pass on # comments to {Pre,Post}{Up,Down}.
+  * syncconf: account for psks removed from config file.
+  * wg-quick: linux: use smallest mtu, not largest.
+
+-------------------------------------------------------------------
 Wed Jun 18 12:31:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.0.20250521

@@ -1,0 +1,46 @@
+From e6068d00e8dc5bd878f49aa7257fb709d8a2ef3b Mon Sep 17 00:00:00 2001
+From: Robert Frohl <rfrohl@suse.com>
+Date: Thu, 23 Apr 2026 10:33:21 +0200
+Subject: [PATCH] Revert "dns-hatchet: apply resolv.conf's selinux context to
+ new resolv.conf"
+
+This reverts commit 2ce4680bd34f371aacd3c09673c3c907274321cd.
+
+selinux does not allow every domain to set file contexts and will raise
+relabelto/relabelfrom AVCs and block these changes if a domain tries to update
+the selinux context.
+
+It is better to ignore selinux and leave the proper labeling to the
+selinux policy, which can add proper file transitions for the right
+context.
+
+This also allows for a cleaner change in the selinux policy, because
+otherwise it will need infrastructure to hide the relabel AVCs as well.
+
+For reference please see the selinux policy PR:
+  https://github.com/fedora-selinux/selinux-policy/pull/3030
+
+Signed-off-by: Robert Frohl <rfrohl@suse.com>
+---
+ contrib/dns-hatchet/hatchet.bash | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/contrib/dns-hatchet/hatchet.bash b/contrib/dns-hatchet/hatchet.bash
+index bc4d090..6f167cc 100644
+--- a/contrib/dns-hatchet/hatchet.bash
++++ b/contrib/dns-hatchet/hatchet.bash
+@@ -20,11 +20,9 @@ set_dns() {
+ 		[[ ${#DNS_SEARCH[@]} -eq 0 ]] || printf 'search %s\n' "${DNS_SEARCH[*]}"
+ 		} | unshare -m --propagation shared bash -c "$(cat <<-_EOF
+ 			set -e
+-			context="\$(stat -c %C /etc/resolv.conf 2>/dev/null)" || unset context
+ 			mount --make-private /dev/shm
+ 			mount -t tmpfs none /dev/shm
+ 			cat > /dev/shm/resolv.conf
+-			[[ -z \$context || \$context == "?" ]] || chcon "\$context" /dev/shm/resolv.conf 2>/dev/null || true
+ 			mount -o remount,ro /dev/shm
+ 			mount -o bind,ro /dev/shm/resolv.conf /etc/resolv.conf
+ 		_EOF
+-- 
+2.54.0
+
