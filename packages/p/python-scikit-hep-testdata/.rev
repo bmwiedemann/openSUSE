@@ -234,4 +234,29 @@
     <comment></comment>
     <requestid>1285919</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>84a45229c87d1629622c1ad29955ad59</srcmd5>
+    <version>0.6.5</version>
+    <time>1781803294</time>
+    <user>anag_factory</user>
+    <comment>- Update from 0.5.4 to 0.6.5
+  * feat: add more MC lhe files for pylhe by @APN-Pucky in #180
+  * feat: add unbinned HS3 workspace for pyhs3 validation tests by
+    @kratsg in #182
+  * fix: Add JSON file as valid extension for file list by @kratsg
+    in #184
+  * feat: add imported NanoAOD RNTuple by @ariostas in #186
+  * refactor: Use pathlib over os by @matthewfeickert in #196
+  * fix: use the same cache directory for remote and local files by
+    @ariostas in #197
+  * feat: Migrate project metadata to pyproject.toml by
+    @matthewfeickert in #201
+  * fix: Update HS3 Workspace to match schema changes by @kratsg in
+    #212
+  * feat: add RNTuple with inherited structs by @mrzimu in #216
+  * feat: add large-valued int{16,32,64} field rntuples by
+    @wdconinc in #218
+  * feat: read TMatrixTSym from TTree by @mrzimu in #220</comment>
+    <requestid>1360284</requestid>
+  </revision>
 </revisionlist>

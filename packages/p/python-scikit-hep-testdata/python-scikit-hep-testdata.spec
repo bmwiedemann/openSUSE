@@ -1,7 +1,7 @@
 #
 # spec file for package python-scikit-hep-testdata
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define srcname scikit-hep-testdata
 %define modname %( echo %{srcname} | tr '-' '_' )
 Name:           python-scikit-hep-testdata
-Version:        0.5.4
+Version:        0.6.5
 Release:        0
 Summary:        Example HEP files for testing and demonstrating
 License:        BSD-3-Clause
@@ -28,7 +28,7 @@ Source:         https://github.com/scikit-hep/scikit-hep-testdata/archive/v%{ver
 # PATCH-FEATURE-OPENSUSE scikit-hep-testdata-datadir.patch -- change the install location of the datadir code@bnavigator.de
 Patch1:         scikit-hep-testdata-datadir.patch
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module importlib-resources >= 1.3 if %python-base < 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools_scm}
@@ -42,9 +42,6 @@ BuildRequires:  %{python_module pytest}
 # /SECTION
 Requires:       python-PyYAML
 Requires:       python-requests
-%if %python_version_nodots < 39
-Requires:       python-importlib-resources >= 1.3
-%endif
 Requires:       scikit-hep-testdata-files = %{version}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
