@@ -25,9 +25,10 @@ Group:          Productivity/Scientific/Math
 URL:            https://digraphs.github.io/Digraphs/
 #Git-Clone:     https://github.com/digraphs/Digraphs
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
+Patch1:         eaps5.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  edge-addition-planarity-suite-devel >= 4
+BuildRequires:  edge-addition-planarity-suite-devel >= 5
 BuildRequires:  fdupes
 BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
@@ -51,12 +52,10 @@ and multidigraphs.
 
 %prep
 %autosetup -n digraphs-%version -p1
+rm -Rf extern/edge*
 
 %build
-if [ ! -e configure ]; then
-	ls -al
-	./autogen.sh
-fi
+autoreconf -fi
 %configure --with-gaproot="%gapdir" --without-intrinsics \
 	--with-external-planarity
 %make_build

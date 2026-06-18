@@ -1,0 +1,104 @@
+From 73a8763180efbc79a8d5d0f7ebe0a737000523af Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 17 Jun 2026 20:23:06 +0200
+Subject: [PATCH] build: support EAPS 5
+References: https://github.com/digraphs/Digraphs/pull/937
+
+They renamed a few functions as far as gap-digraphs is concerned,
+but other than that, the EAPS API is the same.
+---
+ configure.ac             |  2 +-
+ m4/ax_check_planarity.m4 |  2 +-
+ src/planar.c             | 16 ++++++++--------
+ 3 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 56b4aea7..6b7e89da 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -94,7 +94,7 @@ AS_IF([test "x$enable_compile_warnings" != "xno"],
+ 
+ AX_CHECK_PLANARITY
+ if test "x$with_external_planarity" = xno ; then
+-  PLANARITY_SUITE_DIR=extern/edge-addition-planarity-suite-Version_4.0.0.0
++  PLANARITY_SUITE_DIR=extern/edge-addition-planarity-suite-Version_5.0.0.0
+   AC_SUBST(PLANARITY_SUITE_DIR)
+ fi
+ 
+diff --git a/m4/ax_check_planarity.m4 b/m4/ax_check_planarity.m4
+index 4f1c66d5..70af478a 100644
+--- a/m4/ax_check_planarity.m4
++++ b/m4/ax_check_planarity.m4
+@@ -23,7 +23,7 @@ AC_DEFUN([AX_CHECK_PLANARITY], [
+           #else
+           #error too old
+           #endif
+-          int main(void) { gp_InitGraph(0, 0); }
++          int main(void) { gp_EnsureVertexCapacity(0, 0); }
+         ])], [
+           AC_MSG_RESULT([yes])
+         ], [
+diff --git a/src/planar.c b/src/planar.c
+index 72e5b304..aa4aff25 100644
+--- a/src/planar.c
++++ b/src/planar.c
+@@ -33,12 +33,12 @@
+ #pragma GCC diagnostic ignored "-Wswitch-default"
+ #endif
+ #ifdef DIGRAPHS_WITH_INCLUDED_PLANARITY
+-#include "c/graph.h"
++#include "c/graphLib.h"
+ #include "c/graphLib/homeomorphSearch/graphK23Search.h"
+ #include "c/graphLib/homeomorphSearch/graphK33Search.h"
+ #include "c/graphLib/homeomorphSearch/graphK4Search.h"
+ #else
+-#include "planarity/graph.h"
++#include "planarity/graphLib.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK23Search.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK33Search.h"
+ #include "planarity/c/graphLib/homeomorphSearch/graphK4Search.h"
+@@ -169,13 +169,13 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+ 
+   graphP theGraph = gp_New();
+ 
+-  if (gp_InitGraph(theGraph, V) != OK) {
++  if (gp_EnsureVertexCapacity(theGraph, V) != OK) {
+     gp_Free(&theGraph);
+     ErrorQuit("Digraphs: boyers_planarity_check (C): invalid number of nodes!",
+               0L,
+               0L);
+     return 0L;
+-  } else if (gp_EnsureArcCapacity(theGraph, 2 * E) != OK) {
++  } else if (gp_EnsureEdgeCapacity(theGraph, 2 * E) != OK) {
+     gp_Free(&theGraph);
+     ErrorQuit("Digraphs: boyers_planarity_check (C): invalid number of edges!",
+               0L,
+@@ -185,13 +185,13 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+ 
+   switch (flags) {
+     case EMBEDFLAGS_SEARCHFORK33:
+-      gp_AttachK33Search(theGraph);
++      gp_ExtendWith_K33Search(theGraph);
+       break;
+     case EMBEDFLAGS_SEARCHFORK23:
+-      gp_AttachK23Search(theGraph);
++      gp_ExtendWith_K23Search(theGraph);
+       break;
+     case EMBEDFLAGS_SEARCHFORK4:
+-      gp_AttachK4Search(theGraph);
++      gp_ExtendWith_K4Search(theGraph);
+       break;
+     default:
+       break;
+@@ -203,7 +203,7 @@ Obj boyers_planarity_check(Obj digraph, int flags, bool krtwsk) {
+   // Construct the antisymmetric digraph with no loops
+   for (Int v = 1; v <= LEN_LIST(out); ++v) {
+     DIGRAPHS_ASSERT(gp_VertexInRange(theGraph, v));
+-    gp_SetVertexIndex(theGraph, v, v);
++    gp_SetIndex(theGraph, v, v);
+     Obj const out_v = ELM_LIST(out, v);
+     for (Int w = 1; w <= LEN_LIST(out_v); ++w) {
+       DIGRAPHS_ASSERT(gp_VertexInRange(theGraph, w));
+-- 
+2.54.0
+

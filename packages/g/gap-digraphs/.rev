@@ -119,4 +119,12 @@
     <comment>- Update to release 1.14.0</comment>
     <requestid>1328940</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>682af2315861327b1ecfba74d4f0f888</srcmd5>
+    <version>1.14.0</version>
+    <time>1781800823</time>
+    <user>anag_factory</user>
+    <comment>- Add eaps5.patch</comment>
+    <requestid>1360087</requestid>
+  </revision>
 </revisionlist>
