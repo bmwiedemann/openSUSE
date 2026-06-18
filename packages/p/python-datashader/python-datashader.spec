@@ -1,7 +1,7 @@
 #
 # spec file for package python-datashader
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%global skip_python311 1
 %if "%{flavor}" == "test"
 %define psuffix -test
 ExclusiveArch:  x86_64
@@ -29,7 +30,7 @@ BuildArch:      noarch
 
 %{?sle15_python_module_pythons}
 Name:           python-datashader%{psuffix}
-Version:        0.18.2
+Version:        0.19.0
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -45,9 +46,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyct}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Pillow
 Requires:       python-colorcet
-Requires:       python-dask-dataframe
 Requires:       python-multipledispatch
 Requires:       python-numba
 Requires:       python-numpy
@@ -59,12 +58,14 @@ Requires:       python-requests
 Requires:       python-scipy
 Requires:       python-toolz
 Requires:       python-xarray
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Recommends:     python-Pillow
+Recommends:     python-dask-dataframe
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
 BuildRequires:  %{python_module datashader = %{version}}
+BuildRequires:  %{python_module dask-dataframe}
 BuildRequires:  %{python_module fastparquet}
+BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module matplotlib >= 3.3}
 BuildRequires:  %{python_module nbconvert}
 BuildRequires:  %{python_module nbformat}
@@ -107,7 +108,6 @@ saturation, overplotting, or underplotting issues.
 %install
 %if ! %{with test}
 %pyproject_install
-%python_clone -a %{buildroot}%{_bindir}/datashader
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
@@ -120,16 +120,9 @@ donttest="test_raster_quadmesh_autorange_reversed[dask.array]"
 %endif
 
 %if ! %{with test}
-%post
-%python_install_alternative datashader
-
-%postun
-%python_uninstall_alternative datashader
-
 %files %{python_files}
 %doc README.md
 %license LICENSE.txt
-%python_alternative %{_bindir}/datashader
 %{python_sitelib}/datashader
 %{python_sitelib}/datashader-%{version}.dist-info
 %endif

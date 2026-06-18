@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu May 28 14:41:30 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+  (bsc#1263906)
+
+-------------------------------------------------------------------
+Fri Apr  3 13:49:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * Deprecate pyct functions fetch_data, copy_examples, examples
+  * Optimized numba code for QuadMesh (3D support)
+  * Add support for Python 3.14
+  * Improved performance for dask-based raster
+  * Compatibility:
+    + Compatibility with Pandas 3.0
+    + Compatibility with Numpy 2.0
+- Move Pillow and dask-dataframe to Recommends as they are now optional.
+
+-------------------------------------------------------------------
 Sat Dec 20 18:46:49 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Remove deprecated nbsmoke from test dependencies
@@ -44,7 +63,7 @@ Fri Aug 30 13:04:26 UTC 2024 - Ben Greiner <code@bnavigator.de>
 -------------------------------------------------------------------
 Thu Jul 11 03:34:03 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Restrict numpy to < 2. 
+- Restrict numpy to < 2.
 
 -------------------------------------------------------------------
 Mon Jul  8 09:03:05 UTC 2024 - Dirk Müller <dmueller@suse.com>
