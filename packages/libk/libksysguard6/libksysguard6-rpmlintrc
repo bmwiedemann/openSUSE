@@ -4,4 +4,4 @@
 addFilter("shlib-policy-name-error SONAME: libKSysGuardFormatter.so.2");
 addFilter("shlib-policy-name-error SONAME: libKSysGuardSensorFaces.so.2");
 addFilter("shlib-policy-name-error SONAME: libKSysGuardSensors.so.2");
-addFilter("shlib-policy-name-error SONAME: libprocesscore.so.10");
+addFilter("shlib-policy-name-error SONAME: libprocesscore.so.11");

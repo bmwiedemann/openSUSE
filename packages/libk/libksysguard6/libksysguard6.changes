@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * processcore: Do not return unformatted data for formatted data in ProcessSensor
+  * Fix precision for doubles passed as strings (kde#521041)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:38 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+
+-------------------------------------------------------------------
+Sun May 24 11:18:12 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * extended_process_list: Return raw ProcessStatus as value
+  * process_attribute: Add formattedData method
+  * Remove duplicate headers in cpp file
+  * Choices.qml: Add Kirigami.OverlayZStacking
+  * processcore: Show gpu names instead of numbers for better usability, use udev for determining the name analogous to ksystemstats
+  * fix gpu usage and memory graph scaling and inf values
+  * fix nvidia-smi process leak
+  * Follow the user preference when formatting byte values
+  * processcore: Use imprecise swap data for imprecise memory information
+  * processcore: Also record precise swap usage when updating precise memory usage
+  * processcore: Stop processing `status` after 7 fields, not 6
+  * Fix NaN in PercentageSensor when max value is 0
+  * processcore: Add missing copyright information to identifytool main.cpp
+  * processcore: Add a small tool to help debug incorrect application matching
+  * processcore: Make KService a public link rather than private
+  * processcore: Drop filtering of dbus-prefixed applications in AppDataModel
+  * processcore: Add "dbus" as a valid prefix for cgroup app ID matching (kde#510235)
+  * processcore: Expose estimated application ID in CGroup
+  * processcore:Make CGroup constructor public
+  * Fix and improve OpenBSD support
+  * Update version for new release 6.6.80
+- Update sovers in libksysguard6-rpmlintrc
+
+-------------------------------------------------------------------
 Tue May 12 13:58:55 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
