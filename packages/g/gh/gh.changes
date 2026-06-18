@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:58:15 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.94.0:
+  * Add gh discussion and Issues 2.0 reference to the `gh` skill, plus a README note (#13631)
+  * fix(discussion comment): fix bug in requiring body/body-file in add/edit mode
+  * chore(discussion/client): rename client files
+  * test(acceptance): fix discussion comment acceptance tests
+  * fix(discussion/shared): error on out-of-range discussion number in URL
+  * fix(discussion view): print only requested items in non-tty output
+  * docs(discussion list): clarify answered examples refer to Q&A discussions
+  * fix(discussion view): show comments and replies in chronological order
+  * refactor(discussion list): simplify no-results message and use success icon helper
+  * fix(discussion view): use color scheme method for success icon
+  * fix(discussion view): error when --comments is used with a comment argument
+  * test(acceptance): use positional comment argument in discussion view test
+  * refactor(discussion/client): take host instead of repo in GetComment
+  * refactor(discussion view): replace --replies flag with positional comment argument
+  * chore: fix formatting
+  * test(acceptance): cover discussion comment URLs in comment and view tests
+  * feat(discussion): support comment URLs in --replies and comment command
+  * test(discussion comment): add non-tty delete flag validation test case
+  * test(acceptance): add discussion comment acceptance test
+  * refactor(acceptance): use discussion comment command instead of raw API calls
+  * feat(discussion): add discussion comment command
+  * feat(discussion/client): add comment manipulation methods
+  * chore: apply formatting
+  * chore(discussion): remove unused HttpClient field from create and edit
+  * fix(discussion): remove redundant error wrapping on ListCategories
+  * test(discussion list): rename TestNewCmdList2 to TestNewCmdList
+  * Add terminal-mockup canvas extension for marketing screenshots (#13612)
+  * fix(discussion): add missing repo flag override
+  * test(discussion list): consolidate tests into table-driven format
+  * docs(acceptance): add new jq2env and jq-assert functions
+  * test(discussion): add acceptance tests for discussion commands
+  * fix(discussion list): print "answered" instead of checkmark in non-tty mode
+  * refactor(discussion/client): precheck discussions enabled via getRepositoryMeta
+  * refactor(discussion): add Cursor field and ExportData to DiscussionListResult
+  * feat(extension): alias `uninstall` to `remove`
+  * chore(deps): bump actions/checkout from 6.0.2 to 6.0.3
+  * chore(deps): bump github/codeql-action from 4.36.0 to 4.36.1
+  * chore(deps): bump charm.land/bubbletea/v2 from 2.0.6 to 2.0.7
+  * docs(discussion view): improve long help text for clarity
+  * fix(discussion): handle partial failure on create/update label mutations
+  * Clean up deferred issue update helper (#13584)
+  * Auto-install official extension stubs in CI (#13581)
+  * chore(discussion/client): fix formatting
+  * docs(discussion/client): add godoc to exported consts
+  * refactor(discussion list): make pager call/error consistent with view command
+  * refactor(discussion): extract command-level consts for enums
+  * fix(discussion): various polish and small fixes
+  * Merge pull request #13057 from cli/kw/issues-2.0
+  * Bump Go to 1.26.4
+  * chore(deps): bump github.com/mattn/go-colorable from 0.1.14 to 0.1.15
+  * address review comments
+  * feat(discussion edit): add discussion edit command
+  * feat(discussion create): add discussion create command
+  * feat(discussion view): add discussion view command
+  * feat(discussion list): add discussion list command
+  * feat(discussion/shared): add shared utilities for discussion commands
+  * feat(discussion/client): add discussion client package
+  * Use github-copilot agent ID in skill list tests and help text
+  * Rename hosts field and helpers to agentHosts in skill list
+  * Stat SKILL.md before reading in skill list
+  * Sanitize terminal control characters in skill list output
+  * chore(deps): bump golangci/golangci-lint-action from 9.2.0 to 9.2.1
+  * chore(deps): bump github.com/gdamore/tcell/v2 from 2.13.9 to 2.13.10
+  * address copilot comments, clarify text
+  * address copilot comments
+  * handle skills in skills/ folder when running list command, by marking them as published
+  * address bagtoad's feedback
+  * add --all flag to install all skills in a repo
+  * fix warning message to make it clear
+  * skip prompting for skills without metadata when running gh skill update --all
+  * add logic to preview too
+  * fix discovery support in nested dirs
+  * fix test
+  * fix tests
+  * fix linting
+  * add skill list command
+
+-------------------------------------------------------------------
 Thu May 28 12:48:07 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.93.0:
