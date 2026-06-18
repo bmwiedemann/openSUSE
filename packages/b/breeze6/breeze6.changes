@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Fix crash in WindowManager::registerQuickItem (kde#491000)
+  * BreezeStyle: Fix ViewItemDecoration/Indicator adjustment on RTL style (kde#518835,kde#518837)
+  * BreezeHelper: Use brush instead of color for renderFocusRect
+
+-------------------------------------------------------------------
+Thu May 28 18:43:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * Move old wallpaper, add new one, update previews
+  * Skip kcm smoke tests with kcmutils < 6.27.0
+
+-------------------------------------------------------------------
+Sun May 24 11:16:06 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May 12 13:57:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
