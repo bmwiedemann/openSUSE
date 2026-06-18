@@ -533,19 +533,21 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
                 efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
                 efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
                 efidir_d=${mddev#/dev/}
-                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-                  -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
-		# handle non-nx shim
+		# create boot entry for non-nx shim
                 $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
                   -L "$bootloader_id-non-nx ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
+		# create boot entry for default shim (nx)
+                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+                  -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
             done
         else
             efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
-            $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-              -L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
-	    # handle non-nx shim
+	    # create boot entry for default shim (nx)
             $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
               -L "$bootloader_id-non-nx" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
+	    # create boot entry for default shim (nx)
+            $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+              -L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
         fi
     fi
 fi

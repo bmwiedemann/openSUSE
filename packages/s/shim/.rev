@@ -1597,4 +1597,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Apply nx-shim and create non-nx shim boot entry</comment>
     <requestid>1358621</requestid>
   </revision>
+  <revision rev="138" vrev="6">
+    <srcmd5>7f20e3e745346ae552a43be786728a9c</srcmd5>
+    <version>16.1</version>
+    <time>1781800736</time>
+    <user>anag_factory</user>
+    <comment>shim-install Create non-NX shim boot entry first to prioritize NX shim</comment>
+    <requestid>1360052</requestid>
+  </revision>
 </revisionlist>

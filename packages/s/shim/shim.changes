@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 17 10:21:38 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim-install: Create non-NX shim boot entry first to prioritize NX shim
+
+  Use the NX shim as the default binary for system booting. By creating
+  the boot entry for the non-NX shim prior to the default NX shim, the
+  standard NX shim entry will automatically gain a higher priority in the
+  UEFI BootOrder. This ensures the system boots using the secure NX shim
+  by default while keeping the non-NX shim as a fallback option.
+
+-------------------------------------------------------------------
 Tue Jun  9 09:04:18 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Apply nx-shim, create non-nx shim boot entry
