@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>72f8fe46e2802eafc266e0bfbf9936d7</srcmd5>
+    <version>0.7.1</version>
+    <time>1781804431</time>
+    <user>anag_factory</user>
+    <comment>New package: falcosecurity-container-plugin 0.7.1
+
+The falcosecurity container plugin (libcontainer.so), unbundled from the
+copy in sysdig/falco. C++ plugin with a vendored Go worker; loaded at
+runtime by the system libsinsp.
+
+INTERDEPENDENT REQUESTS - please stage together (this package will not
+build until these land):
+  * sr#1360103 - plugin-sdk-cpp (new, build dep)
+  * sr#1360178 - re-flex 6.0.0 (build dep; adds the shared libreflex.so.6
+    this package links - current Factory re-flex ships no linkable lib)
+  * sr#1360164 - falco-libs (runtime: the libsinsp that loads the plugin)
+  * sr#1360104 - bshoshany-thread-pool (pulled in via falco-libs)</comment>
+    <requestid>1360182</requestid>
+  </revision>
+</revisionlist>

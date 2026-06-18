@@ -1,0 +1,140 @@
+--- a/cmake/modules/fmt.cmake	2026-06-18 08:47:32.879998842 +0200
++++ b/cmake/modules/fmt.cmake	2026-06-18 08:49:07.006549254 +0200
+@@ -1,5 +1,3 @@
+-include(FetchContent)
+-FetchContent_Declare(fmt
+-        GIT_REPOSITORY https://github.com/fmtlib/fmt.git
+-        GIT_TAG 11.1.4)
+-FetchContent_MakeAvailable(fmt)
+\ No newline at end of file
++# SPDX-License-Identifier: Apache-2.0
++# openSUSE: use the system fmt (provides the fmt::fmt-header-only target)
++find_package(fmt REQUIRED)
+--- a/cmake/modules/reflex.cmake	2026-06-18 08:47:32.879998842 +0200
++++ b/cmake/modules/reflex.cmake	2026-06-18 09:36:31.889427610 +0200
+@@ -1,9 +1,8 @@
+-include(FetchContent)
+-FetchContent_Declare(
+-        reflex
+-        GIT_REPOSITORY https://github.com/Genivia/RE-flex.git
+-        GIT_TAG v5.3.0
+-        UPDATE_DISCONNECTED TRUE
+-        EXCLUDE_FROM_ALL TRUE
+-)
+-FetchContent_MakeAvailable(reflex)
++# SPDX-License-Identifier: Apache-2.0
++# openSUSE: use the system re-flex shared library via its CMake package instead
++# of fetching RE-flex. The plugin links a target named ReflexLibStatic, so alias
++# that onto the system shared target Reflex::ReflexLib (openSUSE re-flex ships
++# only the shared library).
++find_package(Reflex REQUIRED)
++add_library(ReflexLibStatic INTERFACE)
++target_link_libraries(ReflexLibStatic INTERFACE Reflex::ReflexLib)
+--- a/cmake/modules/plugin-sdk-cpp.cmake	2026-06-18 08:47:32.879998842 +0200
++++ b/cmake/modules/plugin-sdk-cpp.cmake	2026-06-18 08:49:18.387824954 +0200
+@@ -1,18 +1,5 @@
+-include(FetchContent)
+-
+-message(
+-  STATUS
+-    "Fetching plugin-sdk-cpp at 'https://github.com/falcosecurity/plugin-sdk-cpp.git'"
+-)
+-
+-FetchContent_Declare(
+-  plugin-sdk-cpp
+-  GIT_REPOSITORY https://github.com/falcosecurity/plugin-sdk-cpp.git
+-  GIT_TAG 0.3.0
+-)
+-
+-FetchContent_MakeAvailable(plugin-sdk-cpp)
+-set(PLUGIN_SDK_INCLUDE "${plugin-sdk-cpp_SOURCE_DIR}/include")
+-# Since we use nlohmann-json provided by the sdk-cpp plugin, we need to also use use this one
+-set(PLUGIN_SDK_DEPS_INCLUDE "${plugin-sdk-cpp_SOURCE_DIR}/include/falcosecurity/internal/deps")
+-message(STATUS "Using plugin-sdk-cpp include at '${PLUGIN_SDK_INCLUDE}'")
++# SPDX-License-Identifier: Apache-2.0
++# openSUSE: use the system plugin-sdk-cpp headers instead of fetching them
++set(PLUGIN_SDK_INCLUDE "${CMAKE_INSTALL_PREFIX}/include")
++set(PLUGIN_SDK_DEPS_INCLUDE "${CMAKE_INSTALL_PREFIX}/include/falcosecurity/internal/deps")
++message(STATUS "Using system plugin-sdk-cpp include at '${PLUGIN_SDK_INCLUDE}'")
+--- a/cmake/modules/btrfs.cmake	2026-06-18 08:47:32.879998842 +0200
++++ b/cmake/modules/btrfs.cmake	2026-06-18 08:49:28.933006937 +0200
+@@ -1,33 +1,4 @@
+-# NOTE: containerd go package does only depend on the
+-# header files from libbtrfs.
+-# Therefore we just fetch the repo and fixup the paths to the
+-# header files, without building the library.
+-
+-set(BTRFS_SRC "${PROJECT_BINARY_DIR}/_deps/btrfs-src")
+-set(LIBBTRFS_SRC "${BTRFS_SRC}/libbtrfs")
+-
+-include(FetchContent)
+-
+-FetchContent_Declare(
+-        btrfs
+-        GIT_REPOSITORY https://github.com/kdave/btrfs-progs.git
+-        GIT_TAG v6.13
+-)
+-FetchContent_MakeAvailable(btrfs)
+-
+-# Configure version.h.in with pre-defined values
+-# (same values of v6.13).
+-# See https://github.com/kdave/btrfs-progs/blob/devel/configure.ac#L18
+-set(LIBBTRFS_MAJOR 0)
+-set(LIBBTRFS_MINOR 1)
+-set(LIBBTRFS_PATCHLEVEL 4)
+-set(PACKAGE_VERSION v6.13)
+-configure_file(${LIBBTRFS_SRC}/version.h.in ${LIBBTRFS_SRC}/version.h)
+-
+-# Create a `btrfs` folder and move required `*.h` there,
+-# since the includes will be <btrfs/foo.h>
+-file(GLOB LIBBTRFS_HEADERS "${LIBBTRFS_SRC}/*.h" "${BTRFS_SRC}/kernel-lib/*.h")
+-file(MAKE_DIRECTORY ${LIBBTRFS_SRC}/btrfs)
+-file(COPY ${LIBBTRFS_HEADERS} DESTINATION ${LIBBTRFS_SRC}/btrfs/)
+-
+-set(BTRFS_CGO_CFLAG -e CGO_CFLAGS=-I${LIBBTRFS_SRC})
+\ No newline at end of file
++# SPDX-License-Identifier: Apache-2.0
++# openSUSE: use the system libbtrfs headers (libbtrfs-devel ships <btrfs/*.h>)
++# instead of fetching and building btrfs-progs just for the CGO include path.
++set(BTRFS_CGO_CFLAG -e CGO_CFLAGS=-I${CMAKE_INSTALL_PREFIX}/include)
+--- a/cmake/modules/go-worker.cmake	2026-06-18 08:47:32.879998842 +0200
++++ b/cmake/modules/go-worker.cmake	2026-06-18 09:20:51.908066032 +0200
+@@ -1,25 +1,20 @@
+ include(ExternalProject)
+-
+ message(STATUS "Building go-worker static library")
+-
+ if(CMAKE_HOST_SYSTEM_NAME STREQUAL "Linux")
+-    # btrfs cmake dep
+     include(btrfs)
+ endif()
+-
++# openSUSE: declare the byproducts with absolute paths. CMake resolves a relative
++# BUILD_BYPRODUCTS against the top build tree, but WORKER_LIB below points into the
++# source tree (BUILD_IN_SOURCE), so with Ninja + an out-of-source build the two
++# disagree and Ninja reports "no known rule to make libworker.a".
+ ExternalProject_Add(go-worker
+         SOURCE_DIR ${CMAKE_SOURCE_DIR}/go-worker
+         BUILD_IN_SOURCE 1
+         CONFIGURE_COMMAND ""
+         BUILD_COMMAND make ${BTRFS_CGO_CFLAG} lib
+-        BUILD_BYPRODUCTS libworker.a libworker.h
++        BUILD_BYPRODUCTS ${CMAKE_SOURCE_DIR}/go-worker/libworker.a ${CMAKE_SOURCE_DIR}/go-worker/libworker.h
+         INSTALL_COMMAND ""
+ )
+-
+-# https://tip.golang.org/doc/go1.20#cgo:
+-# > A consequence is that, on macOS, if Go code that uses the net package is built with -buildmode=c-archive,
+-# linking the resulting archive into a C program requires passing -lresolv when linking the C code.
+-# So, properly link resolv library; also, we need foundation library.
+ if(APPLE)
+     find_library(SECURITY_FRAMEWORK Security REQUIRED)
+     find_library(RESOLV resolv REQUIRED)
+@@ -28,5 +23,4 @@
+ endif()
+ set(WORKER_LIB ${CMAKE_SOURCE_DIR}/go-worker/libworker.a)
+ set(WORKER_INCLUDE ${CMAKE_SOURCE_DIR}/go-worker)
+-
+-message(STATUS "Using worker library at '${WORKER_LIB}' with header in ${WORKER_INCLUDE}")
+\ No newline at end of file
++message(STATUS "Using worker library at '${WORKER_LIB}' with header in ${WORKER_INCLUDE}")

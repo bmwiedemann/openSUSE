@@ -1,0 +1,22 @@
+<services>
+  <!-- Fetch only the plugins/container subtree of the falcosecurity/plugins
+       monorepo at the container-plugin tag, the thin-provisioning-tools way.
+       Everything is mode="manual" so a single `osc service manualrun` produces
+       all artifacts (source tarball + vendor.tar.gz) unattended. -->
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/falcosecurity/plugins.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/plugins/container/v0.7.1</param>
+    <param name="subdir">plugins/container</param>
+    <param name="filename">container-plugin</param>
+    <param name="versionformat">0.7.1</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="set_version" mode="manual"/>
+  <!-- Vendor the Go module under go-worker/ into vendor.tar.gz -->
+  <service name="go_modules" mode="manual">
+    <param name="subdir">go-worker</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

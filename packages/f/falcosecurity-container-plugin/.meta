@@ -1,0 +1,7 @@
+<package name="falcosecurity-container-plugin" project="openSUSE:Factory">
+  <title>Falcosecurity plugin providing container metadata</title>
+  <description>The container plugin (libcontainer.so) enriches Falco/libsinsp events
+with container metadata from the local container runtimes. Built from the
+falcosecurity/plugins monorepo (plugins/container).</description>
+  <url>https://github.com/falcosecurity/plugins/tree/main/plugins/container</url>
+</package>

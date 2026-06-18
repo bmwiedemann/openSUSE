@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Jun 18 07:54:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.7.1):
+  * Falcosecurity container plugin (libcontainer.so), split out of the
+    copy bundled in falco/sysdig. C++ plugin with a vendored Go worker
+    (libworker.a); loaded at runtime by the system libsinsp, so it links
+    only the header-only plugin SDK, fmt and the shared re-flex - not
+    libsinsp (ENABLE_TESTS=OFF avoids the from-source libsinsp the test
+    suite would otherwise pull in).
+  * container-plugin-use-system-deps.patch redirects the cmake
+    FetchContent modules (fmt, re-flex, plugin-sdk-cpp, btrfs) to the
+    system copies and fixes the go-worker byproduct path for Ninja.
