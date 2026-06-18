@@ -7,4 +7,13 @@
     <comment>uv style dynamic versioning for hatchling</comment>
     <requestid>1357751</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>804a75ef9001c51caad879a81416332f</srcmd5>
+    <version>0.14.0</version>
+    <time>1781800700</time>
+    <user>anag_factory</user>
+    <comment>- Enable the testsuite.
+- Add missing BuildRequires on update-alternatives.</comment>
+    <requestid>1359874</requestid>
+  </revision>
 </revisionlist>

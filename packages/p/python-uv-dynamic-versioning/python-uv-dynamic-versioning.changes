@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 02:50:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Enable the testsuite.
+- Add missing BuildRequires on update-alternatives.
+
+-------------------------------------------------------------------
 Sun Jun  7 10:08:12 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.14.0 

@@ -29,15 +29,19 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module dunamai >= 1.26}
-BuildRequires:  %{python_module hatchling >= 1.26}
+BuildRequires:  %{python_module GitPython}
 BuildRequires:  %{python_module jinja2 >= 3.0}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module tomlkit >= 0.13}
+BuildRequires:  git
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-dunamai >= 1.26
 Requires:       python-hatchling >= 1.26
 Requires:       python-jinja2 >= 3.0
 Requires:       python-tomlkit >= 0.13
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -55,9 +59,12 @@ BuildArch:      noarch
 %python_clone -a %{buildroot}%{_bindir}/uv-dynamic-versioning
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
-# TODO
-# check
-# CHOOSE: pytest OR pyunittest -v OR CUSTOM
+%check
+git init
+git config user.email "nobody@build.opensuse.org"
+git add pyproject.toml
+git commit -m "need at least one commit"
+%pytest
 
 %post
 %python_install_alternative uv-dynamic-versioning

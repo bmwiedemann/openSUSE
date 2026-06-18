@@ -1,4 +1,5 @@
 <package name="python-uv-dynamic-versioning" project="openSUSE:Factory">
   <title></title>
   <description>Required by FastMCP</description>
+  <devel project="devel:languages:python" package="python-uv-dynamic-versioning"/>
 </package>
