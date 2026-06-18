@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+
+-------------------------------------------------------------------
+Thu May 28 18:43:38 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * Skip kcm_smoketest with kcmutils < 6.27.0
+
+-------------------------------------------------------------------
+Sun May 24 11:15:53 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Update version for new release 6.6.90
+  * CI: Require passing tests on all jobs
+  * Add smoke test for KCM
+  * applet: show battery charge information first (kde#515090)
+  * applet/devicesstateproxymodel: update connectionFailed on connect (kde#515189)
+  * Revert "fix pairing bug"
+  * applet: don't draw extra separator
+  * Enable LSAN in CI
+  * Improve device action notification titles
+  * Update version for new release 6.6.80
+
+-------------------------------------------------------------------
 Tue May 12 13:57:05 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
