@@ -2,7 +2,7 @@ Cabal-Version:  3.0
 Build-Type:     Simple
 Name:           vector
 Version:        0.13.2.0
-x-revision: 2
+x-revision: 4
 -- don't forget to update the changelog file!
 License:        BSD-3-Clause
 License-File:   LICENSE
@@ -191,7 +191,7 @@ common tests-common
                , vector
                , primitive
                , random
-               , QuickCheck >= 2.9 && < 2.16
+               , QuickCheck >= 2.9 && < 2.19
                , tasty
                , tasty-hunit
                , tasty-quickcheck
