@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:44:30 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Update to 5.7.4
+  * fix: issues with freethreading and include Python 3.14t in CI
+    by @ariostas in #1619
+  * fix: TProfile reading and writing logic by @ariostas in #1609
+  * fix: FreeSegments end calculation when crossing 2 GB boundary
+    by @ariostas in #1622
+- Release v5.7.3
+  ## New features
+  * feat: add awkward_form method for TMatrixTSym-v5 model by
+    @mrzimu in #1610
+  ## Bug-fixes and performance
+  * fix: logical bug in boundary check for unique RField names by
+    @mrzimu in #1602
+  * fix: bug in num_entries to properly use regularize_files by
+    @nickwp in #1603
+  * fix: resolve issue mktree/mkrntuple creating subdirectories by
+    @ariostas in #1599
+  * fix: fix rare issue that causes corrupted free_num_bytes by
+    @ariostas in #1601
+  * fix: allow tuples and slightly more generic NumPy dtypes in
+    mktree and mkrntuple by @ariostas in #1604
+  * fix: use Python ints for start/stop when reading a single
+    basket by @ariostas in #1605
+  * fix: make step sizes of iterate more accurate by @ariostas in
+    #1606
+- Release v5.7.2
+  ## Bug-fixes and performance
+  * fix: make Library.eq safe for invalid comparisons by @Rachit931
+    in #1565
+  * fix: respect entry bounds for RNTuple.iterate and add of
+    regressions tests for out of bounds by @KaranSinghDev in #1573
+  * fix: resolve issues with pyroot buffer reallocation by
+    @ariostas in #1569
+  * fix: GPU interpretation of RNTuple data working and implement
+    nvCOMP decompression with nvCOMP library by @fstrug in #1557
+  * fix: allow mkrntuple to accept wider range of objects that can
+    be reduced to RecordArray/RecordForm by @ariostas in #1577
+  * fix: ensure RNTuple _from_zigzag applies bit shift on unsigned
+    integers by @wdconinc in #1593
+  * fix: make inherited fields accessible by @ariostas in #1589
+  * fix: reading RNTuple fields into NumPy by @ariostas in #1591
+  * refactor: Removes optional handling for required dependencies.
+    by @Rachit931 in #1579
+- Release v5.7.1
+  ## Bug-fixes and performance
+  * fix: Defer default timeouts to underlying libraries where
+    possible by @chaen in #1560
+- Release v5.7.0
+  ## New features
+  * feat: set divisions to unknown if we expect a read error report
+    in uproot.dask by @ikrommyd in #1543
+  ## Bug-fixes and performance
+  * fix: Remove spaces in class names when TBranch matching
+    streamer by @mrzimu in #1542
+  * fix: allow start=stop=0 for empty files in uproot.dask by
+    @ikrommyd in #1540
+  * fix: exit early from uproot.iterate when no branches/fields
+    match the filters by @Rachit931 in #1554
+- More changes sbetwen 5.6.2 and 5.7.0 see
+  https://uproot.readthedocs.io/en/latest/changelog.html
+
+-------------------------------------------------------------------
 Sun Jun 15 20:31:23 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.2:

@@ -338,4 +338,41 @@ Numpy
     <comment></comment>
     <requestid>1286070</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>27a4a245a5fb6312ffb359ebc9047b20</srcmd5>
+    <version>5.7.4</version>
+    <time>1781811474</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.7.4
+  * fix: issues with freethreading and include Python 3.14t in CI
+    by @ariostas in #1619
+  * fix: TProfile reading and writing logic by @ariostas in #1609
+  * fix: FreeSegments end calculation when crossing 2 GB boundary
+    by @ariostas in #1622
+- Release v5.7.3
+  ## New features
+  * feat: add awkward_form method for TMatrixTSym-v5 model by
+    @mrzimu in #1610
+  ## Bug-fixes and performance
+  * fix: logical bug in boundary check for unique RField names by
+    @mrzimu in #1602
+  * fix: bug in num_entries to properly use regularize_files by
+    @nickwp in #1603
+  * fix: resolve issue mktree/mkrntuple creating subdirectories by
+    @ariostas in #1599
+  * fix: fix rare issue that causes corrupted free_num_bytes by
+    @ariostas in #1601
+  * fix: allow tuples and slightly more generic NumPy dtypes in
+    mktree and mkrntuple by @ariostas in #1604
+  * fix: use Python ints for start/stop when reading a single
+    basket by @ariostas in #1605
+  * fix: make step sizes of iterate more accurate by @ariostas in
+    #1606
+- Release v5.7.2
+  ## Bug-fixes and performance
+  * fix: make Library.eq safe for invalid comparisons by @Rachit931
+    in #1565
+  * fix: respect entry bounds for RNTuple.iterate and add of</comment>
+    <requestid>1360285</requestid>
+  </revision>
 </revisionlist>
