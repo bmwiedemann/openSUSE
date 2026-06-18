@@ -29,6 +29,8 @@ Source1:        openSUSE.gpl
 Source2:        inkscape-split-extensions-extra.py
 # PATCH-FIX-UPSTREAM 98828255aa0c1212329236b3ff4ac7f41efb4a67.patch -- fix: support for poppler >= 26.05 font encoding change
 Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/98828255aa0c1212329236b3ff4ac7f41efb4a67.patch
+# PATCH-FIX-UPSTREAM fix_build_with_poppler_26.06.patch -- Fix support for poppler >= 26.06
+Patch1:         fix_build_with_poppler_26.06.patch
 
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
@@ -153,7 +155,12 @@ Inkscape is a vector graphics editor.
 %lang_package
 
 %prep
-%autosetup -p1
+%autosetup -N
+%if %{pkg_vcmp libpoppler-glib8 >= 26.06.0}
+%autopatch -p1
+%else
+%patch -P0 -p1
+%endif
 
 %build
 %ifarch %{arm}
