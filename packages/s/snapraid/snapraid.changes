@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 11 15:03:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.7:
+  * Fix the 'touch' command on Windows for files with the read-only
+    attribute. The read-only attribute is temporarily removed and
+    then restored. No need to update if you are not on Windows.
+
+-------------------------------------------------------------------
 Mon Jun  8 08:29:56 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.6:
