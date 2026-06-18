@@ -283,4 +283,19 @@
     <comment></comment>
     <requestid>1219075</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>7f3f196327647bfad74c41246ba5bdb3</srcmd5>
+    <version>1.9.8</version>
+    <time>1781800690</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.8:
+  * Fix C++11 ABI breakage when compiled with C++17 (restore legacy
+    const char*/const String&amp; overloads)
+  * Fix CMake 4.0 compatibility in jsoncppConfig.cmake.in
+  * Prevent JSON_HAS_INT64 macro redefinition
+  * Strict semantic versioning; soversion stays 27
+- Fix baselibs.conf: libjsoncpp26 -&gt; libjsoncpp27
+- Drop obsolete Group tags</comment>
+    <requestid>1359852</requestid>
+  </revision>
 </revisionlist>

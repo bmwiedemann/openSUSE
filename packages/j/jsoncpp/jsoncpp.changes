@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jun 16 21:13:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.8:
+  * Fix C++11 ABI breakage when compiled with C++17: restore
+    the legacy const char*/const String& overloads that were
+    dropped when JSONCPP_HAS_STRING_VIEW was defined
+  * Fix CMake 4.0 compatibility in jsoncppConfig.cmake.in
+    (minimum policy version raised to 3.5)
+  * Prevent JSON_HAS_INT64 macro redefinition
+  * Move to strict semantic versioning (qualifier removed from
+    the version string); soversion stays 27
+- Fix baselibs.conf: libjsoncpp26 -> libjsoncpp27 to match the
+  current library soname
+- Drop obsolete Group tags
+
+-------------------------------------------------------------------
+Wed Mar 25 18:23:33 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Update to 1.9.7:
+  * Fixes PreventInSourceBuilds.cmake to work with add_subdirectory
+  * json_value.cpp bug in the edges of uint/int
+  * Release 1.9.6 and move versions to 1.9.7
+  * Fixed work secure_allocator on old compiers
+  * Fix flag -DJSONCPP_USE_SECURE_MEMORY:BOOL=TRUE
+  * fix(build): remove check_required_components for meson build
+  * the cgi module was removed from Python3.13
+  * Fix name of static library when targeting MinGW.
+  * Fix comparison warnings caused by 54fc4e2
+  * Drop pre-C++11 alternatives
+  * feat: support std::string_view in Value API
+  * Added Value::findType with String key
+  * Set up for Bazel module builds.
+  * Add a BUILD.bazel file for //example.
+  * Fix "include what you use" issue
+  * Make the build configuration under Bazel more correct.
+  * Add Bazel tests
+  * Return false in Reader::readValue when stack limit is exceeded
+  * Remove deprecated/removed clang-tidy key AnalyzeTemporaryDtors (#1614)
+  * [docs] Consuming JSONCpp via Conan package manager
+  * Cleanup README.md, fix broken link.
+  * Add gcovr.cfg to fix CI coverage merge errors
+  * Remove build directory exclusion from gcovr config
+  * Add test for allowDroppedNullPlaceholders
+  * Prevent test colision when running in parallel via RESOURCE_LOCK
+  * fixup project version updater
+  * Update README with project status and focus
+  * Adding a cmake option to exclude the jsoncpp files from install.
+  * Change stack depth limit to 256
+  * Fix uninitialized CMake variable in version.in
+  * Fix CMake deprecation warning for compatibility with CMake < 3.10
+  * Scope JSON_DLL_BUILD to shared lib target only
+  * Fix number parsing failing under non-C locales
+  * Reject unescaped control characters in JSON strings
+  * Fix MSAN issue in #1626
+  * Fix string_view ABI mismatch between library and consumers
+  * Revert "Fix number parsing failing under non-C locales"
+  * Fix use-after-free in Reader::parse(std::istream&)
+  * Update bazel config for 9.x
+- Switch to CMake build (gh#open-source-parsers/jsoncpp#1669)
+
+-------------------------------------------------------------------
 Tue Oct 29 15:03:24 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 1.9.6:

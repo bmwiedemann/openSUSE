@@ -1,7 +1,7 @@
 #
 # spec file for package jsoncpp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define sover   26
+%define sover   27
 Name:           jsoncpp
-Version:        1.9.6
+Version:        1.9.8
 Release:        0
 Summary:        C++ library that allows manipulating with JSON
 License:        MIT
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/open-source-parsers/jsoncpp
 Source0:        https://github.com/open-source-parsers/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 %{?suse_build_hwcaps_libs}
@@ -43,7 +42,6 @@ format to store user input files.
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Languages/C and C++
 Requires:       lib%{name}%{sover} = %{version}
 
 %description devel
@@ -57,7 +55,6 @@ format to store user input files.
 
 %package -n lib%{name}%{sover}
 Summary:        Shared library for %{name}
-Group:          System/Libraries
 
 %description -n lib%{name}%{sover}
 JSON is a lightweight data-interchange format. It can represent numbers,
@@ -72,11 +69,13 @@ format to store user input files.
 %autosetup
 
 %build
-%meson
-%meson_build
+%cmake \
+	-D CMAKE_BUILD_TYPE="Release" \
+	-D BUILD_OBJECT_LIBS=OFF
+%cmake_build
 
 %install
-%meson_install
+%cmake_install
 pushd %{buildroot}%{_includedir}/json/
 # From 1.9.1 to 1.9.2, features.h has been renamed json_features.h
 # so, create a symlink for compatibility
@@ -87,14 +86,14 @@ ln -s config.h autolink.h
 popd
 
 %check
-%meson_test
+%ctest
 
-%post -n lib%{name}%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
 %license LICENSE
 %{_libdir}/lib%{name}.so.%{sover}*
+%{_libdir}/lib%{name}.so.%{version}
 
 %files devel
 %license LICENSE
@@ -103,7 +102,10 @@ popd
 %dir %{_libdir}/cmake
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/%{name}/%{name}Config.cmake
+%{_libdir}/cmake/%{name}/%{name}ConfigVersion.cmake
 %{_libdir}/cmake/%{name}/%{name}-namespaced-targets.cmake
+%{_libdir}/cmake/%{name}/%{name}-targets.cmake
+%{_libdir}/cmake/%{name}/%{name}-targets-release.cmake
 %{_libdir}/lib%{name}.so
 %{_includedir}/json/
 
