@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:14:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.3.0:
+  * new AbstractMatcher methods chr_last() and wchr_last() to
+    extract the last character of a matching pattern
+  * new AbstractMatcher methods chr_next() and wchr_next() to
+    inspect the next character in the input without consuming it
+  * new AbstractMatcher method empty() to check if a match is
+    empty (same as size() == 0)
+  * add new example words.l with %option find to search input
+- Rebase reflex-shared-soversion.patch (bump library VERSION to
+  6.3.0; SOVERSION stays 6, ABI unchanged)
+
+-------------------------------------------------------------------
+Thu Jun 18 07:38:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build with CMake instead of autotools to produce a proper shared
+  library (libreflex.so.6):
+  * add reflex-shared-soversion.patch: build only the shared ReflexLib
+    (drop the static library), give it a soversion, and link the reflex
+    tool against it
+  * package the shared library in a new libreflex6 subpackage and ship
+    the CMake package config in -devel
+  * install the manpage manually (the CMake build does not)
+  * -devel requires the main package: the exported CMake config
+    references the reflex tool target, so find_package(Reflex) needs it
+
+-------------------------------------------------------------------
 Sun Jul  6 05:02:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 6.0.0:

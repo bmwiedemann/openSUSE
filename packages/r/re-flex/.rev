@@ -47,4 +47,12 @@
     <comment></comment>
     <requestid>1291084</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d2efa9238f6e3339ddc28f7260338ab3</srcmd5>
+    <version>6.3.0</version>
+    <time>1781804439</time>
+    <user>anag_factory</user>
+    <comment>re-flex 6.3.0: shared libreflex.so.6 via the upstream CMake build (supersedes the 6.0.0 conversion SR; SOVERSION unchanged at 6, ABI-stable for the falcosecurity-container-plugin that links it)</comment>
+    <requestid>1360275</requestid>
+  </revision>
 </revisionlist>
