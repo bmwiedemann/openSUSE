@@ -110,4 +110,23 @@ Add conflicts to busybox-adduser</comment>
   * verify_password: fix possible NULL pointer dereference</comment>
     <requestid>1350261</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>61f175259511caf6f8bb33ef199a3ad0</srcmd5>
+    <version>1.3.0+git20260618.66fbd03</version>
+    <time>1781811452</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3.0+git20260618.66fbd03:
+  * Release version 1.3.0
+  * meson.build: try to autodetect distribution variable if not set
+  * CI: add tests/ci, a nspawn container based test suite
+  * INSTALL.md: document -Ddistribution=suse
+  * chfn/chsh: fix return 0 in error case
+  * passwd: fix -s in getopt()
+  * pwupdd-chfn: move get peer_uid call to later when we need it
+  * pwupdd: call getpwnam after unpacking p.name
+  * Release version 1.2.1
+  * Use strlcpy instead of strcpy
+  * Fix several errors</comment>
+    <requestid>1360277</requestid>
+  </revision>
 </revisionlist>

@@ -22,7 +22,7 @@
 
 %define lname   libpwaccess0
 Name:           account-utils
-Version:        1.2.0+git20260430.a5f02f6
+Version:        1.3.0+git20260618.66fbd03
 Release:        0
 Summary:        Service for authentication and account management
 License:        GPL-2.0-or-later AND BSD-2-Clause AND LGPL-2.1-or-later

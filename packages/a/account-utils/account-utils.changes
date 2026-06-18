@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:26:28 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.3.0+git20260618.66fbd03:
+  * Release version 1.3.0
+  * meson.build: try to autodetect distribution variable if not set
+  * CI: add tests/ci, a nspawn container based test suite
+  * INSTALL.md: document -Ddistribution=suse
+  * chfn/chsh: fix return 0 in error case
+  * passwd: fix -s in getopt()
+  * pwupdd-chfn: move get peer_uid call to later when we need it
+  * pwupdd: call getpwnam after unpacking p.name
+  * Release version 1.2.1
+  * Use strlcpy instead of strcpy
+  * Fix several errors
+
+-------------------------------------------------------------------
 Thu Apr 30 13:46:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.2.0+git20260430.a5f02f6:
