@@ -4,8 +4,8 @@
 #sources:
 #  - source1
 #  - source2
-#patches:
-#  foo.patch: -p1
+patches:
+  removed-rgb-method.patch: -p1 PATCH-FIX-UPSTREAM https://github.com/lichtkind/Chart/pull/7
 #  bar.patch:
 #preamble: |-
 # BuildRequires:  gcc-c++

@@ -1,0 +1,36 @@
+From 9f504d787ac336d7a50a3ee296501cf40a9fbb7d Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Wed, 1 Apr 2026 10:48:20 +0200
+Subject: [PATCH] Adapt to removed Graphics::Toolkit::Color::rgb()
+
+Graphics-Toolkit-Color-2.00 removed a deprecated
+Graphics::Toolkit::Color::rgb() method and caused all tests to fail:
+
+    Can't locate object method "rgb" via package "Graphics::Toolkit::Color" at lib/Chart/Base.pm line 1167.
+    t/bars.t ...........
+    Dubious, test returned 25 (wstat 6400, 0x1900)
+    Failed 1/1 subtests
+
+A replacement for the method is Graphics::Toolkit::Color::values() method
+available since Graphics-Toolkit-Color-1.50.
+
+This patch uses that new method and bumps the minimal version.
+
+CPAN RT#174510
+---
+ lib/Chart/Base.pm | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/lib/Chart/Base.pm b/lib/Chart/Base.pm
+index b8b13b9..24a3b7c 100644
+--- a/lib/Chart/Base.pm
++++ b/lib/Chart/Base.pm
+@@ -1164,7 +1164,7 @@ sub _color_spec_to_rgb {
+     my ($self, $role, $spec) = @_; # color role name (from set) for error msg
+     my $color = Chart::Property::DataType::Color->new( $spec );
+     return croak "Unrecognized color for $role\n" unless ref $color;
+-    $color->rgb;
++    $color->values;
+ }
+ 
+ ## @fn private int _brushStyles_of_roles

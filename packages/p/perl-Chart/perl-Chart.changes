@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:48:55 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add removed-rgb-method.patch to fix build
+  https://github.com/lichtkind/Chart/pull/7
+
+-------------------------------------------------------------------
 Tue Nov 29 03:06:09 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.403.9
