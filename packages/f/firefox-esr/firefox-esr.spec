@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.11.0
-%define orig_version   140.11.0
+%define mainver        %major.12.0
+%define orig_version   140.12.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -52,7 +52,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    0
+%define clang_build    1
 
 %bcond_with only_print_mozconfig
 
@@ -116,8 +116,10 @@ BuildRequires:  memory-constraints
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
+BuildRequires:  libstdc++6-devel-gcc13
 %else
-BuildRequires:  gcc-c++
+BuildRequires:  gcc15-c++
+BuildRequires:  libstdc++6-devel-gcc15
 %endif
 BuildRequires:  cargo1.86
 BuildRequires:  rust1.86
@@ -167,11 +169,9 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+BuildRequires:  clang19-devel
 %if 0%{?suse_version} > 1600
-BuildRequires:  clang21-devel
-BuildRequires:  llvm21-libclang13
-%else
-BuildRequires:  clang-devel
+BuildRequires:  llvm19-libclang13
 %endif
 #!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
@@ -423,13 +423,31 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
+%if 0%{?clang_build} != 0
+export CC=clang-19
+export CXX=clang++-19
+export AR=llvm-ar-19
+export NM=llvm-nm-19
+export OBJCOPY=llvm-objcopy-19
+export OBJDUMP=llvm-objdump-19
+export RANLIB=llvm-ranlib-19
+export READELF=llvm-readelf-19
+export LLVM_AR=llvm-ar-19
+export LLVM_NM=llvm-nm-19
+export LLVM_OBJCOPY=llvm-objcopy-19
+export LLVM_OBJDUMP=llvm-objdump-19
+export LLVM_RANLIB=llvm-ranlib-19
+export LLVM_READELF=llvm-readelf-19
+%else
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 export CC=gcc-13
 export CXX=g++-13
 %else
-%if 0%{?clang_build} == 0
-export CC=gcc
-export CXX=g++
+export CC=gcc-15
+export CXX=g++-15
+export AR=gcc-ar-15
+export NM=gcc-nm-15
+export RANLIB=gcc-ranlib-15
 %endif
 %endif
 %ifarch %arm %ix86
