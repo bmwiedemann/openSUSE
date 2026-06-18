@@ -1,0 +1,6 @@
+<package name="bshoshany-thread-pool" project="openSUSE:Factory">
+  <title>Fast, lightweight C++17 thread pool library</title>
+  <description>BS::thread_pool is a header-only C++17 thread pool library for
+parallelizing tasks, with a small set of accompanying utility classes.</description>
+  <url>https://github.com/bshoshany/thread-pool</url>
+</package>

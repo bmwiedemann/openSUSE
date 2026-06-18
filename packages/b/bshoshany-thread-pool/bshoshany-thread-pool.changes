@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Wed Jun 17 20:36:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 4.1.0):
+  * Header-only BS::thread_pool C++17 thread pool library, needed to
+    enable the inspector thread pool (ENABLE_THREAD_POOL) in falco-libs.
+  * Run the upstream test suite during %%check.
