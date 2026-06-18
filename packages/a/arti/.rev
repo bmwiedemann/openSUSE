@@ -229,4 +229,12 @@ It doesn't build on 15.5 because of rust being too old
     <comment></comment>
     <requestid>1352160</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>52a415f7dec682f7c750d2b8d6835784</srcmd5>
+    <version>2.2.0</version>
+    <time>1781811459</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360289</requestid>
+  </revision>
 </revisionlist>

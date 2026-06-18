@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.85.1
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 
 %description
 Arti is a work in progress Rust-based implementation of the Tor
