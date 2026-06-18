@@ -21,8 +21,8 @@
 
 %global __requires_exclude qt6qmlimport\\((org\\.kde\\.plasma\\.private|org\\.kde\\.plasma\\.workspace|org\\.kde\\.notificationmanager|org\\.kde\\.plasma\\.lookandfeel|org\\.kde\\.plasma\\.wallpapers|org\\.kde\\.taskmanager|org\\.kde\\.holidayeventshelperplugin|org\\.kde\\.kscreenlocker).*
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 %define rname plasma-workspace
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %global _plasma6_bugfix %{version}}
@@ -30,20 +30,18 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-workspace
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        The KDE Plasma Workspace Components
 License:        GPL-2.0-or-later
 URL:            https://www.kde.org/
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 Source3:        sddm.conf
 Source4:        waitforkded.conf
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-libnotificationmanager-Return-something-of-the-corre.patch
 # PATCHES 501-??? are PATCH-FIX-OPENSUSE
 Patch501:       0001-Use-qdbus6.patch
 Patch502:       0001-Ignore-default-sddm-face-icons.patch
@@ -152,6 +150,7 @@ BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
 BuildRequires:  pkgconfig(xcb-cursor)
 BuildRequires:  pkgconfig(xcb-damage)
+BuildRequires:  pkgconfig(xcb-icccm)
 BuildRequires:  pkgconfig(xcb-image)
 BuildRequires:  pkgconfig(xcb-randr)
 BuildRequires:  pkgconfig(xcb-shm)
@@ -381,18 +380,21 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %ldconfig
 %{systemd_user_post plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
-  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service}
+  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
+  plasma-startupsound.service}
 
 %preun
 %{systemd_user_preun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
-  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service}
+  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
+  plasma-startupsound.service}
 
 %postun
 %ldconfig
 %{systemd_user_postun plasma-gmenudbusmenuproxy.service plasma-kcminit-phase1.service plasma-kcminit.service \
   plasma-krunner.service plasma-ksmserver.service plasma-plasmashell.service \
-  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service}
+  plasma-xembedsniproxy.service plasma-baloorunner.service plasma-restoresession.service plasma-ksplash.service \
+  plasma-startupsound.service}
 
 %ldconfig_scriptlets libs
 
@@ -516,7 +518,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %{_kf6_notificationsdir}/donationmessage.notifyrc
 %{_kf6_notificationsdir}/freespacenotifier.notifyrc
 %{_kf6_notificationsdir}/libnotificationmanager.notifyrc
-%{_kf6_notificationsdir}/oom-notifier.notifyrc
+%{_kf6_notificationsdir}/oom_notifier.notifyrc
 %{_kf6_plasmadir}/avatars/
 %{_kf6_plasmadir}/look-and-feel/
 %{_kf6_plasmadir}/plasmoids/
@@ -560,9 +562,12 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %dir %{_kf6_sharedir}/timezonefiles/
 %{_kf6_sharedir}/timezonefiles/timezones.json
 %dir %{_kf6_sharedir}/xdg-desktop-portal/
+%dir %{_kf6_sharedir}/xdg-desktop-portal/portals/
 %{_kf6_sharedir}/xdg-desktop-portal/kde-portals.conf
+%{_kf6_sharedir}/xdg-desktop-portal/portals/plasmanotify.portal
 %{_libexecdir}/baloorunner
 %{_libexecdir}/ksecretprompter
+%{_libexecdir}/plasma-startup-sound
 %{_kf6_libexecdir}/kauth/fontinst
 %{_kf6_libexecdir}/kauth/fontinst_helper
 %{_kf6_libexecdir}/kauth/fontinst_x11
@@ -585,6 +590,7 @@ install -Dm 0644 %{SOURCE4} %{buildroot}%{_userunitdir}/plasma-plasmashell.servi
 %dir %{_userunitdir}/plasma-plasmashell.service.d/
 %{_userunitdir}/plasma-plasmashell.service.d/waitforkded.conf
 %{_userunitdir}/plasma-restoresession.service
+%{_userunitdir}/plasma-startupsound.service
 %{_userunitdir}/plasma-workspace-{wayland,x11}.target
 %{_userunitdir}/plasma-workspace.target
 %{_userunitdir}/plasma-xembedsniproxy.service
