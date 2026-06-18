@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jun 17 16:16:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781712973.4c20e5c1:
+  * test: make search API tests robust
+  * fix: resolve openqa-llm-server crash on startup
+  * chore(deps): Dependency cron 2026-06-17
+  * feat: Improve job archive generation efficiency and UI
+  * feat: Efficiently serve job archives via web server redirect
+  * feat: Add 'Download All' ZIP archive button to job downloads page
+
+-------------------------------------------------------------------
 Tue Jun 16 14:48:47 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1781621316.6d025b35:
