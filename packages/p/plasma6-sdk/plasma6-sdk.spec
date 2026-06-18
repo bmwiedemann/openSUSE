@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname plasma-sdk
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-sdk
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Plasma SDK
 License:        GPL-2.0-only AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-breeze-icons
@@ -126,9 +126,6 @@ cp -L %{_kf6_iconsdir}/breeze/actions/22/tools-wizard.svg %{buildroot}%{_kf6_ico
 %{_kf6_plasmadir}/shells/org.kde.plasma.plasmoidviewershell/
 %dir %{_kf6_plugindir}/kf6/ktexteditor/
 %{_kf6_plugindir}/kf6/ktexteditor/iconexplorerplugin.so
-%dir %{_kf6_sharedir}/kpackage/
-%dir %{_kf6_sharedir}/kpackage/genericqml
-%{_kf6_sharedir}/kpackage/genericqml/org.kde.plasma.themeexplorer/
 %{_mandir}/man1/kqml.1%{?ext_man}
 %{_mandir}/man1/plasmaengineexplorer.1%{?ext_man}
 %{_mandir}/man1/plasmoidviewer.1%{?ext_man}
