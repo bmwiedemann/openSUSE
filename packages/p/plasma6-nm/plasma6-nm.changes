@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:08:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Update version for new release 6.7.0
+  * Fix memory leaks
+  * Mark Prison QML module as required
+  * Add missing kirigami-addons dependency
+  * Add smoke tests for KCMs
+  * Enable LSAN in CI
+  * ConnectionDetails: Make them work without a device
+  * Add missing qqml.h include
+  * Avoid use of references across a co_await (kde#519739)
+  * Fix bridge disconnect icon and add OvsBridge support (kde#517384)
+  * 802.1x: Allow "Not Required" for Private Key Passwords (kde#520449)
+
+-------------------------------------------------------------------
+Thu May 28 18:44:56 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+  * Applet: Work around qml bug that prevents loading in certain circumstances (kde#520144)
+  * WiredSecurity: Rework validity checking (kde#520336)
+
+-------------------------------------------------------------------
+Sun May 24 11:19:51 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Too many changes to list here
+
+-------------------------------------------------------------------
 Tue May 12 13:59:59 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:

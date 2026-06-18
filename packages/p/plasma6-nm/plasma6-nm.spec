@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname plasma-nm
 # Full Plasma 6 version (e.g. 6.0.0)
@@ -30,14 +30,14 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
@@ -55,19 +55,19 @@ BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(KF6ModemManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6NetworkManagerQt) >= %{kf6_version}
 BuildRequires:  cmake(KF6Notifications) >= %{kf6_version}
+BuildRequires:  cmake(KF6Prison) >= %{kf6_version}
 BuildRequires:  cmake(KF6Service) >= %{kf6_version}
 BuildRequires:  cmake(KF6Solid) >= %{kf6_version}
 BuildRequires:  cmake(KF6Svg) >= %{kf6_version}
-BuildRequires:  cmake(KF6Wallet) >= %{kf6_version}
 BuildRequires:  cmake(KF6WidgetsAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6WindowSystem) >= %{kf6_version}
 BuildRequires:  cmake(Plasma) >= %{_plasma6_bugfix}
 BuildRequires:  cmake(QCoro6Core)
 BuildRequires:  cmake(QCoro6DBus)
-BuildRequires:  cmake(Qca-qt6) >= 2.1.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6Keychain)
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
@@ -80,6 +80,7 @@ BuildRequires:  pkgconfig(mobile-broadband-provider-info)
 %if %{with openconnect}
 BuildRequires:  pkgconfig(openconnect) >= 5.2
 %endif
+BuildRequires:  pkgconfig(openssl)
 Requires:       NetworkManager
 Requires:       kf6-kded
 Requires:       kf6-kirigami-imports >= %{kf6_version}
@@ -266,6 +267,8 @@ FortiGate SSL VPN plugin for plasma-nm components.
 
 %prep
 %autosetup -p1 -n %{rname}-%{version}
+# Upstream incorrectly marks them as buildtime requirements now.
+sed -i /ecm_find_qmlmodule/d CMakeLists.txt
 
 %build
 %cmake_kf6 \
@@ -293,6 +296,7 @@ FortiGate SSL VPN plugin for plasma-nm components.
 %{_kf6_debugdir}/plasma-nm.categories
 %{_kf6_libdir}/libplasmanm_editor.so
 %{_kf6_libdir}/libplasmanm_internal.so
+%{_kf6_libdir}/libplasmanm_cellular.so
 %{_kf6_notificationsdir}/networkmanagement.notifyrc
 %{_kf6_plugindir}/kf6/kded/networkmanagement.so
 %{_kf6_plugindir}/plasma/kcms/systemsettings/kcm_cellular_network.so
