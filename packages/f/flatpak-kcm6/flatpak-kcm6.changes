@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 12 19:07:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- No code changes since 6.6.91
+
+-------------------------------------------------------------------
+Thu May 28 18:44:11 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Skip kcm_smoketest with kcmutils < 6.27.0
+
+-------------------------------------------------------------------
+Sun May 24 11:16:28 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+- Changes since 6.6.5:
+  * Add support for input capture sessions
+  * Add smoke test for KCM
+  * Make buttons and combobox the same width
+  * Align some form layout labels to the top
+  * Add button to revoke all sessions
+  * Enable LSAN in CI
+
+-------------------------------------------------------------------
 Tue May 12 13:57:28 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.6.5:
