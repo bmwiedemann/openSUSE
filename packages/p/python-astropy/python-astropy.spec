@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        7.2.0
+Version:        7.2.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -59,8 +59,6 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # Mark wcs headers as false positives for devel-file-in-non-devel-package
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/astropy/astropy/pull/19341 fix "_POSIX_C_SOURCE redefined" error and warnings
-Patch0:         posix-c-source.patch
 # https://docs.astropy.org/en/stable/install.html#requirements
 BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.11}
@@ -110,7 +108,8 @@ Suggests:       python-fsspec >= 2023.4.0
 BuildRequires:  pkgconfig(expat) >= 2.7.3
 %endif
 %if %{with system_wcslib}
-BuildRequires:  pkgconfig(wcslib) >= 8.3
+# Pin to < 8.8: See gh#astropy/astropy#19728
+BuildRequires:  (pkgconfig(wcslib) >= 8.3 with pkgconfig(wcslib) < 8.8)
 %endif
 %if %{with test}
 # SECTION [all]+[recommends]
@@ -118,7 +117,7 @@ BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module asdf-astropy >= 0.3}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
-BuildRequires:  %{python_module dask-dataframe >= 2024.8.0}
+BuildRequires:  %{python_module dask-dataframe >= 2024.8.0 if %python-base > 3.12}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py >= 3.9.0}
 BuildRequires:  %{python_module html5lib}
