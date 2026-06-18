@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 17:47:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix the build against UHD 4.x and recent Boost (the package was
+  flagged for removal by botdel after >= 6 weeks of build failures):
+  * cxx17.patch (pothosware/SoapyUHD#75): build with C++17, required by
+    UHD 4.x public headers (std::optional, std::is_convertible_v)
+  * boost-lexical-cast.patch (pothosware/SoapyUHD#76): include
+    boost/lexical_cast.hpp explicitly; recent Boost no longer pulls it
+    in transitively
+-------------------------------------------------------------------
 Tue Sep 30 12:03:26 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,

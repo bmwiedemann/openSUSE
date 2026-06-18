@@ -79,4 +79,12 @@
     <comment></comment>
     <requestid>1308179</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>a958d347a21178a4c14b030cda4b8b71</srcmd5>
+    <version>0.4.1git20250213</version>
+    <time>1781811572</time>
+    <user>anag_factory</user>
+    <comment>soapy-uhd: fix the build against UHD 4.x (C++17, needed by UHD's std::optional/std::is_convertible_v headers) and recent Boost (explicit boost/lexical_cast.hpp include), rescuing it from the botdel (SR 1360107). No version change (already at latest). Both fixes submitted upstream: pothosware/SoapyUHD#75 and #76.</comment>
+    <requestid>1360306</requestid>
+  </revision>
 </revisionlist>

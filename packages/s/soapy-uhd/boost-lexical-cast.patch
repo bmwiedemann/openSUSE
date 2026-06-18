@@ -1,0 +1,20 @@
+--- a/UHDSoapyDevice.cpp	2026-06-18 19:43:32.001219273 +0200
++++ b/UHDSoapyDevice.cpp	2026-06-18 19:43:32.017221061 +0200
+@@ -37,6 +37,7 @@
+ #include <boost/bind.hpp>
+ #include <boost/weak_ptr.hpp>
+ #include <boost/algorithm/string.hpp>
++#include <boost/lexical_cast.hpp>
+ 
+ #include <algorithm>
+ #include <cctype>
+--- a/SoapyUHDDevice.cpp	2026-06-18 19:43:32.005219720 +0200
++++ b/SoapyUHDDevice.cpp	2026-06-18 19:43:32.021221508 +0200
+@@ -22,6 +22,7 @@
+ #include <uhd/version.hpp>
+ #include <cctype>
+ #include <iostream>
++#include <boost/lexical_cast.hpp>
+ 
+ /***********************************************************************
+  * Stream wrapper

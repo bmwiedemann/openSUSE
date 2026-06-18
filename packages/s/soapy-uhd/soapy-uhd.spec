@@ -1,7 +1,7 @@
 #
 # spec file for package soapy-uhd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -30,6 +30,10 @@ URL:            https://github.com/pothosware/SoapyUHD/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyUHD.git
 Source:         https://github.com/pothosware/SoapyUHD/archive/%{name}-%{version}.tar.gz
 Patch0:         boost.patch
+# PATCH-FIX-UPSTREAM cxx17.patch pothosware/SoapyUHD#75 - build with C++17 (UHD 4.x headers use std::optional / std::is_convertible_v)
+Patch1:         cxx17.patch
+# PATCH-FIX-UPSTREAM boost-lexical-cast.patch pothosware/SoapyUHD#76 - include boost/lexical_cast.hpp explicitly (newer boost dropped the transitive include)
+Patch2:         boost-lexical-cast.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config

@@ -1,0 +1,11 @@
+--- a/CMakeLists.txt	2026-06-18 19:43:31.997218826 +0200
++++ b/CMakeLists.txt	2026-06-18 19:43:32.009220167 +0200
+@@ -25,7 +25,7 @@
+ project(SoapyUHD CXX C)
+ enable_testing()
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ #select the release build type by default to get optimization flags
+ if(NOT CMAKE_BUILD_TYPE)
