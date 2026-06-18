@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 17 18:13:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.0.0.0
+  * Refactored the libPlanarity graph library APIs. The header
+    files were reorganized so that the public APIs are exactly
+    characterized by declarations reachable by including
+    graphLib.h.
+
+-------------------------------------------------------------------
 Sun Oct 19 16:11:39 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.0.1.0
