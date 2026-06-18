@@ -244,4 +244,12 @@
 	* Fixes default log output to console for macOS</comment>
     <requestid>1229260</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>9a696fa93a57c0f0b2bac05d2d8f9fb9</srcmd5>
+    <version>4.16.0</version>
+    <time>1781800879</time>
+    <user>anag_factory</user>
+    <comment>Update to version 4.16.0; adapt packaging to upstream's new autosetup build (libsqlcipher0, drop tcl subpackage)</comment>
+    <requestid>1360165</requestid>
+  </revision>
 </revisionlist>

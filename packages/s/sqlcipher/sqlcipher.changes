@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jun 17 20:23:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.16.0:
+  * Update SQLite baseline from 3.46.1 to 3.53.1
+  * Sanitize source database name passed to sqlcipher_export
+    (security hardening reported by Deutsche Telekom Security)
+  * Add PRAGMA cipher_status to verify a database handle is
+    using encryption
+  * Restore and improve the LibTomCrypt provider; remove the
+    deprecated LibTomCrypt and NSS providers
+  * Numerous error-handling, logging and build fixes across the
+    4.7.0 - 4.16.0 releases
+- Adapt packaging to upstream's new SQLite autosetup build system,
+  which now installs sqlite3/libsqlite3 names by default:
+  * Build the shared library as libsqlcipher.so.0 via
+    --dll-basename and an explicit soname, and rename the
+    binary, manpage, pkgconfig file and headers back to
+    sqlcipher to avoid colliding with the system sqlite3
+    package (matches Debian and Arch packaging)
+  * Rename the library subpackage from libsqlcipher-3_46_1-0 to
+    the soname-based libsqlcipher0; update baselibs.conf
+  * Drop the tcl-sqlcipher subpackage: upstream's new build no
+    longer produces a standalone sqlcipher Tcl binding
+  * Select the OpenSSL crypto provider through CFLAGS defines and
+    -lcrypto instead of the removed --with-crypto-lib option
+
+-------------------------------------------------------------------
 Mon Dec  9 09:41:59 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.6.1:
