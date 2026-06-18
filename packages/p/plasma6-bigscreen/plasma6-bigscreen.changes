@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Fri Jun 12 19:07:56 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.0:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.0
+- Changes since 6.6.91:
+  * Fix CI build
+  * Fix licenses
+  * Update version for new release 6.7.0
+  * Add OnlyShowIn=KDE for .desktop files
+  * Issue #39: Support Recent apps
+  * Issue #39: Maximize app if already running
+  * inputhandler: Properly attribute app id for xdg-remote-desktop-system
+  * homescreen: Use smooth close animation when clicking out of home overlay
+  * homescreen: Cleanup and simplify favorites manager
+  * homescreen: Advertise org.kde.plasma.launchermenu
+  * inputhandler: Fix CEC button event and add home action
+  * kcms/input: Clarify states
+  * kcms: Add input KCM
+  * Add missing qqml.h include
+  * cec: Ensure CECDestroy is called
+  * Use libcec symbols directly
+  * homescreen: Filter out blocklisted apps from recents model
+  * bigscreenplugin: Don't load sounds if not enabled
+- Drop patches, now upstream:
+  * 0001-Use-libcec-symbols-directly.patch
+
+-------------------------------------------------------------------
+Mon Jun  1 12:32:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Enable libcec support
+- Add patch to properly link against libcec:
+  * 0001-Use-libcec-symbols-directly.patch
+
+-------------------------------------------------------------------
+Thu May 28 18:44:47 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.91:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.91
+- Changes since 6.6.90:
+  * Update version for new release 6.6.91
+
+-------------------------------------------------------------------
+Mon May 25 19:14:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.6.90:
+  * New feature release
+  * For more details see https://kde.org/announcements/plasma/6/6.6.90
+
+-------------------------------------------------------------------
+Fri May 15 09:07:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Init plasma6-bigscreen

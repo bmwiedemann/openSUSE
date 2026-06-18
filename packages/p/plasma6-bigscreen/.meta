@@ -1,0 +1,6 @@
+<package name="plasma6-bigscreen" project="openSUSE:Factory">
+  <title>Plasma shell for TVs</title>
+  <description>Plasma Bigscreen is a Wayland desktop environment designed for devices like
+HTPCs and SBCs connected to TVs and projectors.</description>
+  <url>https://www.kde.org/</url>
+</package>
