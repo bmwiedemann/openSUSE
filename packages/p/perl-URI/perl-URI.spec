@@ -1,7 +1,7 @@
 #
 # spec file for package perl-URI
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name URI
 Name:           perl-URI
-Version:        5.340.0
+Version:        5.350.0
 Release:        0
-# 5.34 -> normalize -> 5.340.0
-%define cpan_version 5.34
+# 5.35 -> normalize -> 5.350.0
+%define cpan_version 5.35
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Uniform Resource Identifiers (absolute and relative)
 URL:            https://metacpan.org/release/%{cpan_name}

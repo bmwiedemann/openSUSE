@@ -464,4 +464,15 @@
       - Add smtp scheme (GH#156) (SineSwiper)</comment>
     <requestid>1312554</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>21a82c59913b6718976de209e778ed16</srcmd5>
+    <version>5.350.0</version>
+    <time>1781800726</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.350.0 (5.35)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.35      2026-06-14 23:04:12Z
+      - Strip leading zeros from port numbers in canonical URIs (GH#69) (GH#162)</comment>
+    <requestid>1360005</requestid>
+  </revision>
 </revisionlist>
