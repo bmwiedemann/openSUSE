@@ -327,4 +327,12 @@
     <comment>Plasma 6.6.5 (forwarded request 1352821 from Vogtinator)</comment>
     <requestid>1352837</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9a2027cfdb20b4fda3c8235c5bb2471a</srcmd5>
+    <version>6.7.0</version>
+    <time>1781811309</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.0 (maybe). K:F already publish disabled. (forwarded request 1359107 from Vogtinator)</comment>
+    <requestid>1359149</requestid>
+  </revision>
 </revisionlist>
