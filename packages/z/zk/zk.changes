@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 15 09:04:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.15.5:
+  * List, edit and filter for broken links with --broken-links
+  * Update strftime package, supporting %g and %G formats in the 
+    {{format-date}} helper
+  * Option to append links to selected text, instead of replacing
+  * Paths with ~ and env variables no longer error when passed to
+    --notebook-dir and --working-dir
+  * Guard LSP against unnecessary erroring on missing textDocument/definition
+    capabilities
+
+-------------------------------------------------------------------
 Sun May 10 00:40:37 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.15.4:
