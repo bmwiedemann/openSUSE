@@ -1,7 +1,117 @@
 -------------------------------------------------------------------
+Sun Jun 14 11:34:10 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 152.0
+  https://www.firefox.com/en-US/firefox/152.0/releasenotes/
+  MFSA 2026-57 (bsc#1268071)
+  * CVE-2026-12289 (bmo#2023443)
+    Privilege escalation in the Graphics: WebRender component
+  * CVE-2026-12290 (bmo#2024852)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12291 (bmo#2036929)
+    Use-after-free in the Networking: HTTP component
+  * CVE-2026-12292 (bmo#2038465)
+    Incorrect boundary conditions in the Web Audio component
+  * CVE-2026-12293 (bmo#2039568)
+    Use-after-free in the Graphics: WebGPU component
+  * CVE-2026-12294 (bmo#2039873)
+    Sandbox escape in the DOM: Workers component
+  * CVE-2026-12295 (bmo#2040160)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-12296 (bmo#2040515)
+    Sandbox escape in the Security: Process Sandboxing component
+  * CVE-2026-12297 (bmo#2041610)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking component
+  * CVE-2026-12298 (bmo#2041981)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12299 (bmo#2043139)
+    JIT miscompilation in the DOM: Core & HTML component
+  * CVE-2026-12300 (bmo#1704114)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12301 (bmo#2015647)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12302 (bmo#2034489)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12303 (bmo#2034608)
+    Information disclosure due to incorrect boundary conditions
+    in the Graphics: WebGPU component
+  * CVE-2026-12304 (bmo#2034944)
+    Same-origin policy bypass in the Networking: Cookies component
+  * CVE-2026-12305 (bmo#2037290)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12306 (bmo#2037323)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12307 (bmo#2038133)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12308 (bmo#2038302)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12309 (bmo#2038476)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12310 (bmo#2039707)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12311 (bmo#2040177)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-12312 (bmo#2040383)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12313 (bmo#2040477)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-12314 (bmo#2041856)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12315 (bmo#2042058)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12316 (bmo#2045496)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12317 (bmo#2007083)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12318 (bmo#2023478)
+    Incorrect boundary conditions in the Libraries component in NSS
+  * CVE-2026-12319 (bmo#2026933)
+    Denial-of-service in the Audio/Video: Playback component
+  * CVE-2026-12320 (bmo#2027572)
+    Information disclosure in the Password Manager component
+  * CVE-2026-12321 (bmo#2032943)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-12322 (bmo#2033848)
+    Clickjacking issue in the Widget: Gtk component
+  * CVE-2026-12323 (bmo#2035027)
+    Spoofing issue in the DOM: Core & HTML component
+  * CVE-2026-12324 (bmo#2038444)
+    Incorrect boundary conditions in the Graphics: CanvasWebGL
+    component
+  * CVE-2026-12325 (bmo#2039443)
+    Denial-of-service in the Graphics: ImageLib component
+  * CVE-2026-12326 (bmo#1767455, bmo#2004308, bmo#2021955, bmo#2024445,
+    bmo#2025960, bmo#2028182, bmo#2029066, bmo#2029403, bmo#2029435,
+    bmo#2029765, bmo#2029803, bmo#2029883, bmo#2030110, bmo#2030149,
+    bmo#2030366, bmo#2030374, bmo#2030564, bmo#2030570, bmo#2030573,
+    bmo#2031120, bmo#2032264, bmo#2033234, bmo#2033411, bmo#2034816,
+    bmo#2035907, bmo#2035963, bmo#2036895, bmo#2036898, bmo#2036907,
+    bmo#2036909, bmo#2036928, bmo#2036931, bmo#2036932, bmo#2036934,
+    bmo#2038695, bmo#2039050, bmo#2039238, bmo#2039463, bmo#2041741,
+    bmo#2042465, bmo#2042718, bmo#2042760, bmo#2042781, bmo#2042907,
+    bmo#2044433, bmo#2044831, bmo#2045307, bmo#2045398, bmo#2045516,
+     bmo#2045572)
+    Memory safety bugs fixed in Firefox 152 and Thunderbird 152
+  * CVE-2026-12327 (bmo#2011842, bmo#2023902, bmo#2025512, bmo#2027312,
+    bmo#2029444, bmo#2036571, bmo#2036900, bmo#2036936, bmo#2037995,
+    bmo#2038551, bmo#2040717, bmo#2042724)
+    Memory safety bugs fixed in Firefox ESR 140.12, Thunderbird
+    ESR 140.12, Firefox 152 and Thunderbird 152
+  * CVE-2026-12328 (bmo#2029402, bmo#2038477, bmo#2039726, bmo#2041373,
+    bmo#2042268, bmo#2042451, bmo#2042782, bmo#2042858, bmo#2042929,
+    bmo#2042965, bmo#2043213)
+    Memory safety bugs fixed in Firefox ESR 115.37, Firefox ESR
+    140.12, Thunderbird ESR 140.12, Firefox 152 and Thunderbird 152
+- requires NSS 3.124
+- rebased patches
+
+-------------------------------------------------------------------
 Tue Jun  9 19:08:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Mozilla Firefox 151.0.4:
+- Mozilla Firefox 151.0.4
   * Fixed an issue where Firefox could fall back to software
     rendering on some older GPUs, reducing graphics performance
     (bmo#2043249)
@@ -11,7 +121,7 @@ Tue Jun  9 19:08:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Sun Jun  7 09:17:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Mozilla Firefox 151.0.3:
+- Mozilla Firefox 151.0.3
   MFSA 2026-54 (boo#1267841)
   * CVE-2026-10701 (bmo#2038537)
     Incorrect boundary conditions in the Graphics: Text component

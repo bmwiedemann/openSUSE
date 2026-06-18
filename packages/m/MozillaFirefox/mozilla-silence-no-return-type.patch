@@ -1,5 +1,5 @@
 # HG changeset patch
-# Parent  0ba4feb95e7f4c365dcb637fef2d16969d5231a9
+# Parent  1e47695883dc7de7bb0188b2a6c08e6a0645df13
 
 diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
 --- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
@@ -298,7 +298,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
 diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
 --- a/js/src/irregexp/imported/regexp-parser.cc
 +++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2810,16 +2810,17 @@ bool MayContainStrings(ClassSetOperandTy
+@@ -2811,16 +2811,17 @@ bool MayContainStrings(ClassSetOperandTy
        return false;
      case ClassSetOperandType::kCharacterClassEscape:
      case ClassSetOperandType::kClassStringDisjunction:
@@ -563,7 +563,7 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
 diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
 --- a/third_party/libwebrtc/media/base/codec_comparators.cc
 +++ b/third_party/libwebrtc/media/base/codec_comparators.cc
-@@ -318,16 +318,17 @@ bool MatchesWithCodecRules(const Codec& 
+@@ -325,16 +325,17 @@ bool MatchesWithCodecRules(const Codec& 
                   left_codec.bitrate == right_codec.bitrate) &&
                  ((right_codec.channels < 2 && left_codec.channels < 2) ||
                   left_codec.channels == right_codec.channels));
@@ -580,7 +580,7 @@ diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party
  
  bool MatchesWithReferenceAttributes(const Codec& codec1, const Codec& codec2) {
    return MatchesWithReferenceAttributesAndComparator(
-       codec1, codec2, [](int a, int b) { return a == b; });
+       codec1, codec2, [](PayloadType a, PayloadType b) { return a == b; });
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
@@ -622,7 +622,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_st
 diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 --- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -60,16 +60,18 @@ std::vector<float> PreprocessWeights(Arr
+@@ -60,16 +60,18 @@ std::vector<float> PreprocessWeights(std
  FunctionView<float(float)> GetActivationFunction(
      ActivationFunction activation_function) {
    switch (activation_function) {
@@ -640,7 +640,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
  FullyConnectedLayer::FullyConnectedLayer(
      const int input_size,
      const int output_size,
-     const ArrayView<const int8_t> bias,
+     const std::span<const int8_t> bias,
 diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 --- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
 +++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
@@ -966,7 +966,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_r
  }
  
  std::optional<ReconfigurationResponseParameter>
- ReconfigurationResponseParameter::Parse(webrtc::ArrayView<const uint8_t> data) {
+ ReconfigurationResponseParameter::Parse(std::span<const uint8_t> data) {
    std::optional<BoundedByteReader<kHeaderSize>> reader = ParseTLV(data);
    if (!reader.has_value()) {
      return std::nullopt;

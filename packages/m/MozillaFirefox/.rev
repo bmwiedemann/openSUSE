@@ -8274,4 +8274,41 @@
     <comment></comment>
     <requestid>1358250</requestid>
   </revision>
+  <revision rev="490" vrev="1">
+    <srcmd5>2508de5554f017edb7d0fd0458b60c50</srcmd5>
+    <version>152.0</version>
+    <time>1781800703</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 152.0
+  https://www.firefox.com/en-US/firefox/152.0/releasenotes/
+  MFSA 2026-57 (bsc#1268071)
+  * CVE-2026-12289 (bmo#2023443)
+    Privilege escalation in the Graphics: WebRender component
+  * CVE-2026-12290 (bmo#2024852)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12291 (bmo#2036929)
+    Use-after-free in the Networking: HTTP component
+  * CVE-2026-12292 (bmo#2038465)
+    Incorrect boundary conditions in the Web Audio component
+  * CVE-2026-12293 (bmo#2039568)
+    Use-after-free in the Graphics: WebGPU component
+  * CVE-2026-12294 (bmo#2039873)
+    Sandbox escape in the DOM: Workers component
+  * CVE-2026-12295 (bmo#2040160)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-12296 (bmo#2040515)
+    Sandbox escape in the Security: Process Sandboxing component
+  * CVE-2026-12297 (bmo#2041610)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking component
+  * CVE-2026-12298 (bmo#2041981)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12299 (bmo#2043139)
+    JIT miscompilation in the DOM: Core &amp; HTML component
+  * CVE-2026-12300 (bmo#1704114)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12301 (bmo#2015647)
+    Memory safety bug fixed in Firefox 152</comment>
+    <requestid>1359901</requestid>
+  </revision>
 </revisionlist>
