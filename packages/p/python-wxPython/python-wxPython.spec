@@ -90,14 +90,14 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           %{pprefix}-wxPython
-Version:        4.2.3
+Version:        4.2.5
 Release:        0
 Summary:        The "Phoenix" variant of the wxWidgets Python bindings
 License:        GPL-2.0-or-later
 Group:          System/Libraries
 URL:            https://github.com/wxWidgets/Phoenix
 # repacked  https://files.pythonhosted.org/packages/source/w/wxPython/wxPython-%%{version}.tar.gz
-Source0:        wxPython-%{version}.tar.gz
+Source0:        wxpython-%{version}.tar.gz
 Source1:        python-wxPython-rpmlintrc
 Source2:        repack
 # PATCH-FIX-OPENSUSE
@@ -111,7 +111,8 @@ Patch15:        CVE-2024-50602-no-crash-XML_ResumeParser.patch
 Patch112:       0001-Check-HSV-values-in-image-test.patch
 Patch114:       wxwidgets-3.2.5.patch
 # TODO: Replace deprecated setup.py calls in build.py with PEP517 without building wxWidgets into the wheel
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module setuptools}
@@ -161,7 +162,6 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module six}
 BuildRequires:  Mesa-dri
 # Need at least one font installed
 BuildRequires:  google-opensans-fonts
@@ -203,7 +203,7 @@ Obsoletes:      %{python_provides}-wxPython-lang < %{version}-%{release}
 Provides translations to the package %{name}.
 
 %prep
-%autosetup -n wxPython-%{version} -p1
+%autosetup -n wxpython-%{version} -p1
 # https://github.com/wxWidgets/Phoenix/issues/2105
 # https://bugzilla.suse.com/show_bug.cgi?id=670523
 find -iname *.dll | grep . && \

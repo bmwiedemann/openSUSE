@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 11 05:35:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.2.5:
+  * Change sdist filename to all lowercase
+  * Fix wx.svg to work with cython 3.1 generated code.
+  * Populate wx.svg with _nanosvg enum values.
+  * Drop Python 3.9 (EOL)
+  * Add typing-extensions to build system requirements
+  * Add enum class support to etgtools
+  * Add a sip MappedType for std::vector
+  * Update sip generator to handle constexpr's
+  * Fix bug in _archive_submodules exposed by newer wx
+  * Fix compile warning in ListClass __contains__ methods
+  * Fix build with setuptools 81+
+  * Rewrite constexpr to const in member vars
+  * Handle changes in wxGLCanvas and wxWebView in wx 3.3.2
+  * Make flatmenu's repositioning logic multi-monitor aware
+  * Add several methods to FlatMenu and FlatMenuItem to mimic wx better.
+  * Remove no-op code from aui for deleting panes created referring to
+    inexistent windows
+  * Fix SuperToolTip window too small when footerBmp is used
+  * Expose MSWEnableDarkMode/wxDarkModeSettings on all platforms at
+    compilation time
+  * Fix webview stubs for wxWidgets 3.3.x
+  * Set rpath in link arguments rather than LD_RUN_PATH
+  * Fix using setuptools.build_meta backend (#2732)
+  * Fix EOL style in wx.py.editwindow.py (#2741)
+  * Replace imp with types in wx.py.editor.py (#2745)
+  * Fix floatcanvas Text.ShiftFunDict: convert float to int (#2749)
+  * Fix up/down option not working on the initial search in wx.py.frame
+    (#2747)
+  * Fix floatcanvas Arrow, Point, Bitmap drawings (#2750)
+  * Officially support and build wheels for Python 3.14 and Windows 11 ARM
+  * Fix crash when calling wx.SystemSettings.GetAppearance() without App
+    (#2771)
+  * Enable whole word search in wx.py.editwindow (#2769)
+  * Add MaxSize limit to ScaledBitmap drawing in FloatCanvas (#2768)
+  * Fix more OGL float/int conversion issues (#2739)
+  * Major speedups and bug fixes to CustomTreeCtrl and HyperTreeList (#2088)
+  * Fix duplicated string constants in wx.propgrid (#2790)
+  * Add non-zero width and height to default tab size to avoid wxWidgets
+    warning in wx.lib.agw.aui.auibook (#2788)
+  * Fix SetHeaderHeight in UltimateListCtrl (#2239)
+  * Add ScrollLeft and ScrollDown to PlotCanvas (#2795)
+  * Add sample of PlotCanvas usage (#2794)
+  * Fix a linker issue with GCC 16+ and wxHelpControllerBase (#2807)
+
+-------------------------------------------------------------------
 Wed Mar 25 09:36:12 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Removing ext/wxWidgets vendored libraries when using syswx to make
