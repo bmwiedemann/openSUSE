@@ -16,8 +16,8 @@
 #
 
 
-%define kf6_version 6.18.0
-%define qt6_version 6.9.0
+%define kf6_version 6.26.0
+%define qt6_version 6.10.0
 
 %define rname libplasma
 %define sover 7
@@ -27,14 +27,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libplasma6
-Version:        6.6.5
+Version:        6.7.0
 Release:        0
 Summary:        Plasma library and runtime components based upon KF6 and Qt6
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -76,6 +76,7 @@ BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glesv2)
 %endif
 BuildRequires:  pkgconfig(wayland-client) >= 1.9
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-composite)
@@ -83,6 +84,9 @@ BuildRequires:  pkgconfig(xcb-damage)
 BuildRequires:  pkgconfig(xcb-render)
 BuildRequires:  pkgconfig(xcb-shape)
 BuildRequires:  pkgconfig(xcb-xfixes)
+BuildRequires:  qt6qmlimport(Qt5Compat.GraphicalEffects)
+BuildRequires:  qt6qmlimport(org.kde.config)
+BuildRequires:  qt6qmlimport(org.kde.ksvg)
 
 %description
 Plasma library and runtime components based upon KF6 and Qt6
@@ -164,8 +168,7 @@ Provides translations for the "libPlasma%{sover}" package.
 
 %build
 %cmake_kf6 \
-  -DQT_QML_NO_CACHEGEN:BOOL=TRUE \
-  -DBUILD_QCH:BOOL=TRUE
+  -DQT_QML_NO_CACHEGEN:BOOL=TRUE
 
 %kf6_build
 
@@ -218,15 +221,14 @@ fi
 %license LICENSES/*
 %doc README.md
 %{_kf6_libdir}/libPlasma.so.%{sover}
-%{_kf6_libdir}/libPlasma.so.*
+%{_kf6_libdir}/libPlasma.so.*.*
 %{_kf6_libdir}/libPlasmaQuick.so.%{sover}
-%{_kf6_libdir}/libPlasmaQuick.so.*
+%{_kf6_libdir}/libPlasmaQuick.so.*.*
 
 %files desktoptheme
 %{_kf6_plasmadir}/desktoptheme/
 
 %files devel
-%doc %{_kf6_qchdir}/Plasma.*
 %{_kf6_cmakedir}/Plasma/
 %{_kf6_cmakedir}/PlasmaQuick/
 %{_includedir}/Plasma/
