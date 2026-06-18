@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jun 18 07:28:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.6.2:
+  * chore(build): update golang to 1.25.11 (#15378)
+  * build(deps): bump golang.org/x/tools from 0.45.0 to 0.46.0
+    (#15375)
+  * build(deps): bump memchr from 2.8.1 to 2.8.2 (#15377)
+  * build(deps): bump smallvec from 1.15.1 to 1.15.2 (#15376)
+  * build(deps): bump regex from 1.12.3 to 1.12.4 (#15371)
+  * build(deps): bump zerocopy from 0.8.50 to 0.8.52 (#15370)
+  * build(deps): bump regex-syntax from 0.8.10 to 0.8.11 (#15369)
+  * build(deps): bump docker/setup-qemu-action (#15368)
+  * build(deps): bump codecov/codecov-action from 6.0.1 to 7.0.0
+    (#15367)
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3 (#15366)
+  * build(deps): bump linkerd2-proxy-api from 0.18.0 to 0.20.0
+    (#15353)
+  * build(deps-dev): bump @babel/preset-env in /web/app (#15359)
+  * build(deps): bump DavidAnson/markdownlint-cli2-action (#15241)
+  * build(deps-dev): bump babel-jest from 30.3.0 to 30.4.1 in
+    /web/app (#15281)
+  * build(deps): bump dev container to v49 (#15287)
+  * build(deps): bump codecov/codecov-action from 6.0.0 to 6.0.1
+    (#15291)
+  * build(deps): bump dessant/lock-threads from 6.0.0 to 6.0.2
+    (#15310)
+  * build(deps): bump docker/login-action from 4.1.0 to 4.2.0
+    (#15311)
+  * build(deps): bump docker/setup-buildx-action from 4.0.0 to
+    4.1.0 (#15322)
+  * build(deps-dev): bump @babel/eslint-parser in /web/app (#15360)
+  * build(deps): bump github.com/linkerd/linkerd2-proxy-api
+    (#15348)
+  * build(deps): bump the grpc group with 3 updates (#15363)
+  * build(deps-dev): bump @babel/runtime from 7.29.2 to 7.29.7 in
+    /web/app (#15361)
+  * build(deps-dev): bump @babel/core from 7.29.0 to 7.29.7 in
+    /web/app (#15362)
+  * build(deps): bump bitflags from 2.12.1 to 2.13.0 (#15364)
+  * build(deps): bump log from 0.4.30 to 0.4.32 (#15356)
+  * build(deps): bump chrono from 0.4.44 to 0.4.45 (#15355)
+  * build(deps-dev): bump webpack from 5.106.2 to 5.107.2 in
+    /web/app (#15335)
+  * build(deps): bump date-fns from 4.1.0 to 4.4.0 in /web/app
+    (#15336)
+
+-------------------------------------------------------------------
 Mon Jun 08 04:49:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.6.1:
