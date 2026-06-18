@@ -27,13 +27,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-starlette%{psuffix}
-Version:        1.2.0
+Version:        1.3.1
 Release:        0
 Summary:        Lightweight ASGI framework/toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/encode/starlette
 Source:         https://github.com/encode/starlette/archive/refs/tags/%{version}.tar.gz#/starlette-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -43,12 +43,13 @@ Requires:       (python-typing_extensions >= 4.10.0 if python-base < 3.13)
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module anyio >= 3.6.2}
-BuildRequires:  %{python_module starlette}
+BuildRequires:  %{python_module starlette = %{version}}
 # typing_extensions, see below
 # SECTION [full]
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module httpx >= 0.28}
+BuildRequires:  %{python_module httpx2 >= 2.0}
 BuildRequires:  %{python_module itsdangerous}
 BuildRequires:  %{python_module python-multipart >= 0.0.18}
 # /SECTION
@@ -61,6 +62,8 @@ BuildRequires:  %{python_module trio}
 # testing requires it for all flavors
 BuildRequires:  %{python_module typing_extensions >= 4.10.0}
 BuildRequires:  %{python_module importlib-metadata >= 7.0.1}
+# httpx2[zstd]
+BuildRequires:  %{python_module zstandard}
 # /SECITON
 %endif
 %python_subpackages
@@ -91,9 +94,7 @@ building high performance asyncio services.
 # cannot just use ifarch conditionals here...
 ignored_tests="test_set_cookie"
 ignored_tests="$ignored_tests or test_expires_on_set_cookie"
-# disable these until we have httpx2 packaged
-ignored_tests="$ignored_tests or test_request_headers or test_websocket_headers"
-%pytest -W ignore::PendingDeprecationWarning --asyncio-mode=strict -k "not ($ignored_tests)"
+%pytest -k "not ($ignored_tests)"
 
 %endif
 
