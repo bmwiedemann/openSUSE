@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 17 15:01:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream b08afae7e41fd5ca3a4101de07366783b17b3887.patch: Fix
+  build with poppler 26.06
+
+-------------------------------------------------------------------
+Tue Jun  9 17:17:52 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.2.4.2:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.2.4/RC1
+    https://wiki.documentfoundation.org/Releases/26.2.4/RC2
+
+-------------------------------------------------------------------
 Mon May 11 20:00:46 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 26.2.3.2:

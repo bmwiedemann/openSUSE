@@ -92,7 +92,7 @@
 %bcond_with system_curl
 %endif
 Name:           libreoffice
-Version:        26.2.3.2
+Version:        26.2.4.2
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+
@@ -166,6 +166,8 @@ Patch992:       python34-no-f-strings.patch
 Patch995:       reproducible-clucene.patch
 # Add .key (Apple Keynote) files to Bash completion (tdf#167995)
 Patch996:       bash-completion-key.patch
+# PATCH-FIX-UPSTREAM fix build with poppler 26.06
+Patch997:       b08afae7e41fd5ca3a4101de07366783b17b3887.patch
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -1135,6 +1137,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %patch -P 992 -p1
 %endif
 %patch -P 996 -p1
+%patch -P 997 -p1
 
 # Disable some of the failing tests (some are random)
 %if 0%{?suse_version} < 1330
