@@ -60,4 +60,41 @@
     recommended for actual optimization.</comment>
     <requestid>1343077</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9697feda3d23139eb5e93bd7e9ceed3f</srcmd5>
+    <version>0.8.1</version>
+    <time>1781811467</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1
+  * fix Contractor called with explicit backend (#83).
+- Release v0.8.0
+  ## Enhancements
+  * &quot;auto&quot; and &quot;auto-hq&quot; presets now default to parallel=&quot;auto&quot;
+  * HyperOptimizer: now defaults to using subtree reconfiguration
+    (turned off if any other refinement options are explitly given)
+  * ContractionTree.subtree_reconfigure: add maxiter=&quot;auto&quot; option,
+    which defaults to min(tree.N, maxiter_auto_cap), where
+    maxiter_auto_cap is a new argument to the preset constructors
+    (default 128 for auto and 1024 for auto-hq).
+  * Added a benchmarking example - Benchmarking and cotengra
+  * Default node type for ContractionTree changed to SSA-based
+    representation, which is faster and uses less memory for big
+    trees. Factored out node logic into a new nodeops module, with
+    dynamic namespaces supporting both frozenset-based and
+    SSA-based nodes.
+  * ContractionTree: add get_peak_size, reorder_for_peak_size, and
+    max_contraction_size.
+  * ContractionTree: support single input &quot;contractions&quot; (trivial
+    trees with a single tensor).
+  * HyperOptimizer.search: support single terms (#77).
+  * Change default finishing optimize step (e.g. for
+    slicing/subtree reconfigure) to &quot;auto&quot;.
+  * Subtree reconfigure: add select=&quot;descend&quot; mode.
+  * PartitionTreeBuilder.build_divide: default to random-greedy-128
+    for super_optimize.
+  * Greedy optimizers: add max_neighbors option to limit candidate
+    pair generation, which helps for graphs with very large batch
+    indices.</comment>
+    <requestid>1360291</requestid>
+  </revision>
 </revisionlist>

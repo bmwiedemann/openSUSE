@@ -17,13 +17,13 @@
 
 
 Name:           python-cotengra
-Version:        0.7.5
+Version:        0.8.1
 Release:        0
 Summary:        Hyper optimized contraction trees for large tensor networks and einsums
 License:        Apache-2.0
 URL:            https://github.com/jcmgray/cotengra
 Source:         https://files.pythonhosted.org/packages/source/c/cotengra/cotengra-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -33,15 +33,15 @@ Requires:       python-autoray
 Recommends:     python-cotengrust
 Recommends:     python-cytoolz
 Recommends:     python-kahypar
+Recommends:     python-matplotlib
 Recommends:     python-networkx
 Recommends:     python-numpy
 Recommends:     python-opt-einsum
 Recommends:     python-optuna
 Recommends:     python-ray
 # SECTION test requirements
-BuildRequires:  %{python_module altair}
 BuildRequires:  %{python_module autoray}
-BuildRequires:  %{python_module dask}
+BuildRequires:  %{python_module dask if %python-base >= 3.12}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module networkx}
 BuildRequires:  %{python_module numpy}
@@ -68,9 +68,6 @@ Some of the key feautures of cotengra include:
 
 %prep
 %autosetup -p1 -n cotengra-%{version}
-sed -i '/addopts/d' pyproject.toml
-rm cotengra/.gitattributes
-# Note: ignore the rust files for now gh#jcmgray/cotengra#30
 
 %build
 %pyproject_wheel
