@@ -3,6 +3,5 @@
   <description>A GIO-style async APIs for most Flatpak portals.
 
 </description>
-  <devel project="GNOME:Factory" package="libportal"/>
   <url>https://github.com/flatpak/libportal</url>
 </package>
