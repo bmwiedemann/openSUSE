@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>23dde257095987ef39c39b02760fcb29</srcmd5>
+    <version>2.0.1</version>
+    <time>1781883535</time>
+    <user>anag_factory</user>
+    <comment>New package, part of the FastMCP stack required by python-bugzilla-mcp (an MCP server for Bugzilla). Maintained in devel:languages:python.</comment>
+    <requestid>1360599</requestid>
+  </revision>
+</revisionlist>
