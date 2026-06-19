@@ -1,5 +1,21 @@
 -------------------------------------------------------------------
-Mon Jun 01 12:37:29 UTC 2026 - Alessio Biancalana <alessio.biancalana@suse.com>
+Fri Jun 19 12:56:29 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 2.1.3:
+  * nerdctl: update from v2.2.2 to v2.3.3
+  * guestagent: limit the socket access to the main user
+  * templates: update
+  * fix(makefile): propagate build failure for additional drivers
+  * krunkit: disable ssh.overVsock by default
+  * cidata: fix ubuntu-26.04 first-boot NIC rename failure
+  * templates: switch the default image from `ubuntu-25.10` to `ubuntu-26.04`
+  * fix(copytool): fallback to scp for remote src and dest in auto mode
+  * limayaml: clarify TestContainerdUserDefaultPerOS comment scope
+  * limayaml: clarify containerd.user default is Linux-only in default.yaml
+  * limayaml: do not default containerd.user=true on non-Linux guests
+
+-------------------------------------------------------------------
+Mon Jun 01 12:37:29 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 2.1.2:
   * build(deps): bump github.com/modelcontextprotocol/go-sdk
