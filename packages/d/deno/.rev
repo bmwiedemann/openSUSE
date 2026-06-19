@@ -4288,4 +4288,41 @@
   * fix(ext/node): validate execArgv and NODE_OPTIONS in worker_threads (#32066)</comment>
     <requestid>1333240</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>eab64ec6bd2af33486409a892c44adf3</srcmd5>
+    <version>2.6.10</version>
+    <time>1771605830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.6.10:
+  * 2.6.10 (#32207)
+  * fix(ext/node): normalize trailing dot in TLS servername (#32166)
+  * fix(ext/node): use primordials in ext/node/polyfills/_fs/_fs_lchown.ts (#32195)
+  * ci: fix mtime cache for node types (#32205)
+  * ci: force caches to be uploaded on main with every commit (#32204)
+  * chore: update internal dprint plugins (#32185)
+  * chore: skip internal test_util crate from publishing (#32188)
+  * fix(node/http): preserve request body on stale keepalive retry (#32148)
+  * fix(test): throw when Deno.test() is called during test execution (#32184)
+  * fix(ext/node): export File class from node:buffer module (#32182)
+  * refactor(lsp): abstraction for generic typescript backend (#32149)
+  * fix(ext/node): `assert.ok` compatibility (#32173)
+  * ci: skip lint status success on draft prs (#32189)
+  * ci: fix mtime cache (#32193)
+  * docs: add git workflow section to CLAUDE.md (#32190)
+  * ci: move generated deno_features code to out directory (#32191)
+  * fix(ext/node): process.exit() in worker immediately halts execution (#32169)
+  * chore: fix deno_features rebuilding when unnecessary (#32186)
+  * ci: split up test crate (#32174)
+  * fix(ext/node): `fs.rmdir` compatibility (#32144)
+  * fix(ext/node): support O_RDONLY | O_CREAT in fs.openSync (#32152)
+  * fix(ext/node): add parentPath to Dirent from fs.opendir and support Buffer paths in lstat (#32178)
+  * fix(ext/node): fix worker.terminate() return value and exit code (#32168)
+  * fix(ext/node): add worker_threads stdin support (#32165)
+  * fix(ext/node): make worker_threads ref/unref idempotent like Node.js (#32161)
+  * ci: add lint ci status job (#32172)
+  * Revert &quot;fix(compile): use SHT_NOTE to prevent `strip` from removing deno compiler data&quot; (#32171)
+  * fix(compile): use SHT_NOTE to prevent `strip` from removing deno compiler data (#32102)
+  * chore(deps): bump bytes from 1.10.1 to 1.11.1 (#32038)</comment>
+    <requestid>1334085</requestid>
+  </revision>
 </revisionlist>

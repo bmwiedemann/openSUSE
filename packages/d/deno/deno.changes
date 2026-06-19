@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Thu Feb 19 08:34:03 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 2.6.10:
+  * 2.6.10 (#32207)
+  * fix(ext/node): normalize trailing dot in TLS servername (#32166)
+  * fix(ext/node): use primordials in ext/node/polyfills/_fs/_fs_lchown.ts (#32195)
+  * ci: fix mtime cache for node types (#32205)
+  * ci: force caches to be uploaded on main with every commit (#32204)
+  * chore: update internal dprint plugins (#32185)
+  * chore: skip internal test_util crate from publishing (#32188)
+  * fix(node/http): preserve request body on stale keepalive retry (#32148)
+  * fix(test): throw when Deno.test() is called during test execution (#32184)
+  * fix(ext/node): export File class from node:buffer module (#32182)
+  * refactor(lsp): abstraction for generic typescript backend (#32149)
+  * fix(ext/node): `assert.ok` compatibility (#32173)
+  * ci: skip lint status success on draft prs (#32189)
+  * ci: fix mtime cache (#32193)
+  * docs: add git workflow section to CLAUDE.md (#32190)
+  * ci: move generated deno_features code to out directory (#32191)
+  * fix(ext/node): process.exit() in worker immediately halts execution (#32169)
+  * chore: fix deno_features rebuilding when unnecessary (#32186)
+  * ci: split up test crate (#32174)
+  * fix(ext/node): `fs.rmdir` compatibility (#32144)
+  * fix(ext/node): support O_RDONLY | O_CREAT in fs.openSync (#32152)
+  * fix(ext/node): add parentPath to Dirent from fs.opendir and support Buffer paths in lstat (#32178)
+  * fix(ext/node): fix worker.terminate() return value and exit code (#32168)
+  * fix(ext/node): add worker_threads stdin support (#32165)
+  * fix(ext/node): make worker_threads ref/unref idempotent like Node.js (#32161)
+  * ci: add lint ci status job (#32172)
+  * Revert "fix(compile): use SHT_NOTE to prevent `strip` from removing deno compiler data" (#32171)
+  * fix(compile): use SHT_NOTE to prevent `strip` from removing deno compiler data (#32102)
+  * chore(deps): bump bytes from 1.10.1 to 1.11.1 (#32038)
+  * ci: add build, test, wpt, and bench jobs (#32158)
+  * fix(ext/node): forward stdout from worker_threads to parent (#32160)
+  * ci: move away from a matrix (#32155)
+  * feat(ext/tls): add `SSLKEYLOGFILE` support for TLS key logging (#31867)
+  * chore: split up deno_node to improve compile times (#32142)
+  * tests(node/ext): ignore zlib kmaxlength tests (#32137)
+  * fix(ext/node): validate execArgv flags in worker_threads instead of rejecting all (#32145)
+  * tests: enable some node child-process tests (#32112)
+  * tests(ext/node): remove typo of double .js (#32146)
+  * ci: use more features from `jsr:@david/gagen` (#32134)
+  * fix(lsp): replace lsp-types with tower-lsp-community/ls-types (#32138)
+  * chore: error when creating error message in lint script (#32143)
+  * chore: update Releases.md and release_doc_template.md (#32019)
+  * fix(compile): remove data.is_empty() check (#32125)
+  * chore(deps): bump time from 0.3.36 to 0.3.47 (#32069)
+  * docs: Update example URLs to point to new example script location (#32115)
+  * fix(ext/node): fix worker exit code propagation in `worker_threads` (#32124)
+  * fix(ext/web): recheck state after signaling abort on writable stream (#32129)
+  * fix(deploy): bypass minimumDependencyAge (#32136)
+  * fix(node/ext): make zlib write callback async to match node behavior (#32130)
+  * feat(publish): support more license file types (#32133)
+  * fix(node): unconditionally call `Module.prototype._compile` with the file content in `loadMaybeCjs` (#32131)
+  * refactor: update ci.generate.ts to use `jsr:@david/gagen` (#32119)
+  * fix(install): cleanup `node_modules` folder on install (#32058)
+  * fix(ext/web): prevent GC of AbortSignal.any() (#32118)
+  * fix(ext/napi): don't mark accessor properties as read-only in napi_define_class (#32105)
+  * fix(ext/node): fix `test-worker-process-argv.js` test (#32074)
+  * refactor: add deno_lockfile, deno_npm, and eszip to repo (#32085)
+  * feat: add `deno install --compile` (#32046)
+
+-------------------------------------------------------------------
+Thu Feb 19 00:41:26 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Cleanup specfile
+- Update _constraints
+
+-------------------------------------------------------------------
 Sun Feb 15 16:05:45 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove requirement `rust-src`

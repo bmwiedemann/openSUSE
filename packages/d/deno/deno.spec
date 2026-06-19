@@ -20,8 +20,22 @@
 %global _lto_cflags %nil
 %global _v8_version 145.0.0
 %global _min_clang_version 19
+
+%if 0%{?suse_version} > 1600
+%bcond_without mold
+%else
+%bcond_with    mold
+%endif
+
+%if %{with mold}
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/mold -latomic -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%else
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/ld.lld -latomic -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%endif
+
+
 Name:           deno
-Version:        2.6.9
+Version:        2.6.10
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -37,14 +51,19 @@ BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  fdupes
-BuildRequires:  gn
-BuildRequires:  rust-bindgen
 BuildRequires:  clang >= %{_min_clang_version}
 BuildRequires:  clang-devel >= %{_min_clang_version}
 BuildRequires:  llvm >= %{_min_clang_version}
 BuildRequires:  llvm-devel >= %{_min_clang_version}
 BuildRequires:  lld >= %{_min_clang_version}
+%if 0%{?suse_version} > 1600
+BuildRequires:  mold
+%endif
+BuildRequires:  libstdc++-devel
+BuildRequires:  binutils
+BuildRequires:  fdupes
+BuildRequires:  gn
+BuildRequires:  rust-bindgen
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
@@ -57,7 +76,7 @@ BuildRequires:  pkgconfig(gmodule-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(protobuf)
-ExclusiveArch:  %{rust_tier1_arches}
+ExclusiveArch:  x86_64 x86_64_v3
 %ifarch ppc64 # wants g++ for some reason
 BuildRequires:  gcc-c++
 %endif
@@ -120,6 +139,9 @@ echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
 
 %build
 export CARGO_HOME="$PWD/.cargo"
+%ifarch aarch64
+export RUSTC_BOOTSTRAP=1
+%endif
 # Ensure that the clang version matches. This command came from Archlinux. Thanks.
 export CLANG_VERSION=$(clang --version | grep -m1 version | sed 's/.* \([0-9]\+\).*/\1/')
 export LIBCLANG_PATH=%{_libdir}
@@ -127,15 +149,32 @@ export V8_FROM_SOURCE=1
 export CLANG_BASE_PATH=%{_prefix}
 export CC=clang
 export CXX=clang++
+export AR=ar NM=nm
 export CFLAGS="%{optflags} -Wno-unknown-warning-option"
 export CXXFLAGS="%{optflags} -Wno-unknown-warning-option"
+export LDFLAGS="${LDFLAGS:-%{build_ldflags}} -latomic"
 # https://www.chromium.org/developers/gn-build-configuration
 export RUSTC_SYSROOT=$(rustc --print sysroot)
 export RUSTC_VERSION=$(rustc -V | cut -d' ' -f2)
 export GN="/usr/bin/gn"
 export NINJA="/usr/bin/ninja"
 export RUSTC="/usr/bin/rustc"
-export GN_ARGS="clang_version=${CLANG_VERSION} use_lld=true v8_symbol_level=0"
+export GN_ARGS="
+	clang_version=${CLANG_VERSION} 
+	v8_symbol_level=0 
+	custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
+	host_toolchain=\"//build/toolchain/linux/unbundle:default\"
+	fatal_linker_warnings=false
+	is_debug=false
+	use_system_libffi=true
+	use_custom_libcxx=false
+	use_sysroot=false
+	"
+export EXTRA_GN_ARGS="use_custom_libcxx=false"
+
+# Included limited debug info.
+export CARGO_PROFILE_RELEASE_DEBUG=1
+# Use "thin" instead of "fat" to speed up builds (it costs +4% binary size).
 %{__cargo} update v8 --offline
 %{cargo_build}
 
