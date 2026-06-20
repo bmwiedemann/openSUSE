@@ -209,6 +209,7 @@ unsorted:
   - OpenMoji-Black 
   - OpenMoji-Color 
   - OpenRGB 
+  - OpenRGB-systemd-unit 
   - OpenRGB-udev-rules 
   - OpenSMTPD 
   - OpenSceneGraph 
@@ -3262,10 +3263,6 @@ unsorted:
   - deluge-lang 
   - delve 
   - demumble 
-  - deno 
-  - deno-bash-completion 
-  - deno-fish-completion 
-  - deno-zsh-completion 
   - descent3 
   - deskflow 
   - deskflow-doc 
@@ -13876,7 +13873,7 @@ unsorted:
   - libgsm-devel-32bit 
   - libgsm-utils 
   - libgsm1-32bit 
-  - libgsoap-2_8_142 
+  - libgsoap-2_8_143 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -24403,6 +24400,7 @@ unsorted:
   - python311-Flask-Principal 
   - python311-Flask-RESTful 
   - python311-Flask-SQLAlchemy 
+  - python311-Flask-SQLAlchemy-Lite 
   - python311-Flask-Security 
   - python311-Flask-SocketIO 
   - python311-Flask-Versioned 
@@ -24617,6 +24615,7 @@ unsorted:
   - python311-aiocsv 
   - python311-aiodataloader 
   - python311-aiodns 
+  - python311-aiofile 
   - python311-aiofiles 
   - python311-aioftp 
   - python311-aiohappyeyeballs 
@@ -25275,6 +25274,7 @@ unsorted:
   - python311-cachetools 
   - python311-cachey 
   - python311-cachy 
+  - python311-caio 
   - python311-cairocffi 
   - python311-cairocffi-pixbuf 
   - python311-caldav 
@@ -25444,6 +25444,7 @@ unsorted:
   - python311-curlylint 
   - python311-curtsies 
   - python311-cwcwidth 
+  - python311-cyclopts 
   - python311-cymem 
   - python311-cymruwhois 
   - python311-cyrtranslit 
@@ -25760,6 +25761,8 @@ unsorted:
   - python311-fasteners 
   - python311-fastimport 
   - python311-fastjsonschema 
+  - python311-fastmcp 
+  - python311-fastmcp-slim 
   - python311-fastnumbers 
   - python311-fastparquet 
   - python311-fastremap 
@@ -26038,6 +26041,7 @@ unsorted:
   - python311-httpretty 
   - python311-httpsig_cffi 
   - python311-httptools 
+  - python311-httpx-retries 
   - python311-httpx-socks 
   - python311-httpx-sse 
   - python311-httpx-ws 
@@ -26645,6 +26649,7 @@ unsorted:
   - python311-openTSNE 
   - python311-openai 
   - python311-openapi-core 
+  - python311-openapi-pydantic 
   - python311-openapi-schema-validator 
   - python311-openapi-spec-validator 
   - python311-openapi3 
@@ -26935,6 +26940,7 @@ unsorted:
   - python311-py-deviceid 
   - python311-py-espeak-ng 
   - python311-py-gitea-opensuse-org 
+  - python311-py-key-value-aio 
   - python311-py-moneyed 
   - python311-py-obs 
   - python311-py-partiql-parser 
@@ -27545,6 +27551,7 @@ unsorted:
   - python311-rich-argparse 
   - python311-rich-click 
   - python311-rich-pixels 
+  - python311-rich-rst 
   - python311-rjsmin 
   - python311-rlPyCairo 
   - python311-rnc2rng 
@@ -27986,6 +27993,7 @@ unsorted:
   - python311-uharfbuzz 
   - python311-uhashring 
   - python311-ujson 
+  - python311-uncalled-for 
   - python311-uncertainties 
   - python311-unearth 
   - python311-unicode-segmentation-rs 
@@ -28302,6 +28310,7 @@ unsorted:
   - python313-Flask-Principal 
   - python313-Flask-RESTful 
   - python313-Flask-SQLAlchemy 
+  - python313-Flask-SQLAlchemy-Lite 
   - python313-Flask-Security 
   - python313-Flask-SocketIO 
   - python313-Flask-Versioned 
@@ -28519,6 +28528,7 @@ unsorted:
   - python313-aiocsv 
   - python313-aiodataloader 
   - python313-aiodns 
+  - python313-aiofile 
   - python313-aiofiles 
   - python313-aioftp 
   - python313-aiohappyeyeballs 
@@ -29170,6 +29180,7 @@ unsorted:
   - python313-bsddb3-devel 
   - python313-bson 
   - python313-bugzilla 
+  - python313-bugzilla-mcp 
   - python313-bugzillatools 
   - python313-build 
   - python313-buttplug 
@@ -29180,6 +29191,7 @@ unsorted:
   - python313-cachetools 
   - python313-cachey 
   - python313-cachy 
+  - python313-caio 
   - python313-cairocffi 
   - python313-cairocffi-pixbuf 
   - python313-caldav 
@@ -29353,6 +29365,7 @@ unsorted:
   - python313-curlylint 
   - python313-curtsies 
   - python313-cwcwidth 
+  - python313-cyclopts 
   - python313-cymem 
   - python313-cymruwhois 
   - python313-cyrtranslit 
@@ -29679,6 +29692,8 @@ unsorted:
   - python313-fasteners 
   - python313-fastimport 
   - python313-fastjsonschema 
+  - python313-fastmcp 
+  - python313-fastmcp-slim 
   - python313-fastnumbers 
   - python313-fastparquet 
   - python313-fastremap 
@@ -29964,6 +29979,7 @@ unsorted:
   - python313-httpsig_cffi 
   - python313-httptools 
   - python313-httpx 
+  - python313-httpx-retries 
   - python313-httpx-socks 
   - python313-httpx-sse 
   - python313-httpx-ws 
@@ -30594,6 +30610,7 @@ unsorted:
   - python313-openTSNE 
   - python313-openai 
   - python313-openapi-core 
+  - python313-openapi-pydantic 
   - python313-openapi-schema-validator 
   - python313-openapi-spec-validator 
   - python313-openapi3 
@@ -30887,6 +30904,7 @@ unsorted:
   - python313-py-deviceid 
   - python313-py-espeak-ng 
   - python313-py-gitea-opensuse-org 
+  - python313-py-key-value-aio 
   - python313-py-moneyed 
   - python313-py-obs 
   - python313-py-partiql-parser 
@@ -31495,6 +31513,7 @@ unsorted:
   - python313-rich-argparse 
   - python313-rich-click 
   - python313-rich-pixels 
+  - python313-rich-rst 
   - python313-rjsmin 
   - python313-rlPyCairo 
   - python313-rnc2rng 
@@ -31950,6 +31969,7 @@ unsorted:
   - python313-uharfbuzz 
   - python313-uhashring 
   - python313-ujson 
+  - python313-uncalled-for 
   - python313-uncertainties 
   - python313-unearth 
   - python313-unicode-segmentation-rs 
@@ -32245,6 +32265,7 @@ unsorted:
   - python314-Flask-Principal 
   - python314-Flask-RESTful 
   - python314-Flask-SQLAlchemy 
+  - python314-Flask-SQLAlchemy-Lite 
   - python314-Flask-Security 
   - python314-Flask-SocketIO 
   - python314-Flask-Versioned 
@@ -32468,6 +32489,7 @@ unsorted:
   - python314-aiocsv 
   - python314-aiodataloader 
   - python314-aiodns 
+  - python314-aiofile 
   - python314-aiofiles 
   - python314-aioftp 
   - python314-aiohappyeyeballs 
@@ -33137,6 +33159,7 @@ unsorted:
   - python314-cachetools 
   - python314-cachey 
   - python314-cachy 
+  - python314-caio 
   - python314-cairocffi 
   - python314-cairocffi-pixbuf 
   - python314-caldav 
@@ -33315,6 +33338,7 @@ unsorted:
   - python314-curses 
   - python314-curtsies 
   - python314-cwcwidth 
+  - python314-cyclopts 
   - python314-cymem 
   - python314-cymruwhois 
   - python314-cyrtranslit 
@@ -33645,6 +33669,8 @@ unsorted:
   - python314-fasteners 
   - python314-fastimport 
   - python314-fastjsonschema 
+  - python314-fastmcp 
+  - python314-fastmcp-slim 
   - python314-fastnumbers 
   - python314-fastparquet 
   - python314-fastremap 
@@ -33935,6 +33961,7 @@ unsorted:
   - python314-httpsig_cffi 
   - python314-httptools 
   - python314-httpx 
+  - python314-httpx-retries 
   - python314-httpx-socks 
   - python314-httpx-sse 
   - python314-httpx-ws 
@@ -34570,6 +34597,7 @@ unsorted:
   - python314-openTSNE 
   - python314-openai 
   - python314-openapi-core 
+  - python314-openapi-pydantic 
   - python314-openapi-schema-validator 
   - python314-openapi-spec-validator 
   - python314-openapi3 
@@ -34868,6 +34896,7 @@ unsorted:
   - python314-py-deviceid 
   - python314-py-espeak-ng 
   - python314-py-gitea-opensuse-org 
+  - python314-py-key-value-aio 
   - python314-py-moneyed 
   - python314-py-obs 
   - python314-py-partiql-parser 
@@ -35492,6 +35521,7 @@ unsorted:
   - python314-rich-argparse 
   - python314-rich-click 
   - python314-rich-pixels 
+  - python314-rich-rst 
   - python314-rjsmin 
   - python314-rlPyCairo 
   - python314-rnc2rng 
@@ -35953,6 +35983,7 @@ unsorted:
   - python314-uharfbuzz 
   - python314-uhashring 
   - python314-ujson 
+  - python314-uncalled-for 
   - python314-uncertainties 
   - python314-unearth 
   - python314-unicode-segmentation-rs 
@@ -37768,7 +37799,6 @@ unsorted:
   - rustdesk-server-utils 
   - rustscan 
   - rustup 
-  - rusty_v8 
   - rxp 
   - rxp-devel 
   - rxtx-java 
@@ -38467,6 +38497,10 @@ unsorted:
   - splinter-devel 
   - spooles-devel 
   - spooles-openmpi-devel 
+  - spotbugs 
+  - spotbugs-annotations 
+  - spotbugs-ant 
+  - spotbugs-javadoc 
   - spotify-easyrpm 
   - spotify-launcher 
   - spotify-qt 
