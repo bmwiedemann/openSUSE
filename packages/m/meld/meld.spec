@@ -17,7 +17,7 @@
 
 
 Name:           meld
-Version:        3.23.1
+Version:        3.24.0
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later

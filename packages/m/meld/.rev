@@ -756,4 +756,28 @@
     <comment>Push from SCM</comment>
     <requestid>1343039</requestid>
   </revision>
+  <revision rev="87" vrev="1">
+    <srcmd5>52c5f8255dc5f75dba799017760f8637</srcmd5>
+    <version>3.24.0</version>
+    <time>1782142958</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.24.0:
+  + Features:
+    - Add support for building Meld as a Python wheel
+    - Add screenshot-and-exit behaviour for CI testing
+  + Fixes:
+    - Avoid leaking file descriptors during matcher shutdown
+    - Fix opening version control conflict with a single file
+      argument
+    - Fix crash when right-clicking on notebook
+    - Don't discard all sides when one side changed on disk
+    - Fix diff updating in auto-merge comparisons
+    - Allow intl-8 in addition to libintl-8 on windows, to support
+      conda
+    - Fix opening comparison from folder compare with missing left
+      file
+    - Metadata fixes
+  + Updated translations.</comment>
+    <requestid>1361059</requestid>
+  </revision>
 </revisionlist>

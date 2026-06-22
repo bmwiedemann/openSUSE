@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 20 12:18:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.0:
+  + Features:
+    - Add support for building Meld as a Python wheel
+    - Add screenshot-and-exit behaviour for CI testing
+  + Fixes:
+    - Avoid leaking file descriptors during matcher shutdown
+    - Fix opening version control conflict with a single file
+      argument
+    - Fix crash when right-clicking on notebook
+    - Don't discard all sides when one side changed on disk
+    - Fix diff updating in auto-merge comparisons
+    - Allow intl-8 in addition to libintl-8 on windows, to support
+      conda
+    - Fix opening comparison from folder compare with missing left
+      file
+    - Metadata fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
 Fri Mar 20 15:42:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
