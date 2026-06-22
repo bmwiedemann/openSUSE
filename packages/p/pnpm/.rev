@@ -1289,4 +1289,41 @@ Index: pnpm-11.5.2.tgz
 Binary file pnpm-11.5.2.tgz (revision 57) deleted</comment>
     <requestid>1358804</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>dc1e6ad7c6fe872bfb6d5ca76e91a43a</srcmd5>
+    <version>11.8.0</version>
+    <time>1782142161</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.8.0:
+  * Minor Changes
+    - c112b61: Added a --dry-run option to pnpm install. It runs a
+      full dependency resolution and reports what an install would
+      change, but writes nothing to disk (no lockfile, no
+      node_modules) and always exits with code 0. This mirrors the
+      preview semantics of npm install --dry-run #7340.
+    - 179ebc4: pnpm run --no-bail now exits with a non-zero exit
+      code when any of the executed scripts fail, while still
+      running every matched script to completion. This makes the
+      exit-code behavior of --no-bail consistent between recursive
+      and non-recursive runs (recursive runs already failed at the
+      end). Previously, a non-recursive pnpm run --no-bail always
+      exited with code 0, even when a script failed #8013.
+    - 0474a9c: Added support for generating Node.js package maps at
+      node_modules/.package-map.json during isolated and hoisted
+      installs. Added the node-experimental-package-map setting to
+      inject the generated map into pnpm-managed Node.js script
+      environments, and the node-package-map-type setting to choose
+      between standard and loose package maps.
+    - dcededc: pnpm sbom now marks components reachable only
+      through devDependencies with CycloneDX scope: &quot;excluded&quot; and
+      the cdx:npm:package:development property. The excluded scope
+      documents &quot;component usage for test and other non-runtime
+      purposes&quot;, which matches the semantics of a devDependency;
+      the property is the CycloneDX npm-taxonomy marker emitted by
+      @cyclonedx/cyclonedx-npm, so both modern (scope) and existing
+      (property) consumers are covered. Components reachable at
+      runtime (including installed optionalDependencies) omit scope
+      and default to required.</comment>
+    <requestid>1360769</requestid>
+  </revision>
 </revisionlist>
