@@ -17,7 +17,7 @@
 
 %define sover 0
 Name:           libresidfp
-Version:        1.0.2
+Version:        1.1.0
 Release:        0
 Summary:        Cycle exact SID emulation
 License:        GPL-2.0-or-later
