@@ -3463,4 +3463,41 @@
   * Allow rule names in ruff rule</comment>
     <requestid>1358965</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>4d93b5471b13e551cfb0548876601d7c</srcmd5>
+    <version>0.15.18</version>
+    <time>1782144318</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.18 
+ * Preview features
+  * Handle nested ruff:ignore comments 
+  * Stop displaying severity in output 
+  * Use human-readable names in CLI output 
+  * Use human-readable names in LSP and playground diagnostics 
+  * [pydocstyle] Prevent property docstrings starting with verbs (D421) 
+  * [flake8-pyi] Extend PYI033 to Python files 
+ * Bug fixes
+  * Detect equivalent numeric mapping keys 
+  * Detect mapping keys equivalent to booleans 
+  * Detect repeated signed and complex dictionary keys 
+ * Rule changes
+  * [flake8-pyi] Rename PYI033 to legacy-type-comment 
+ * Performance
+  * Use ThinVec for call keywords 
+  * Inline parser recovery context checks 
+  * Match parser keywords as bytes 
+  * Move value parsing out of lexing 
+ * Server
+  * Render subdiagnostics and secondary annotations as related information 
+ * Documentation
+  * Update fix availability for always-fixable rules 
+  * [flake8-tidy-imports] Add fix safety section (TID252) 
+ * Parser
+  * Reject __debug__ lambda parameters 
+  * Reject _ as a match-pattern target 
+  * Reject multiple starred names in sequence patterns 
+  * Reject parenthesized star imports 
+  * Reject starred comprehension targets</comment>
+    <requestid>1360617</requestid>
+  </revision>
 </revisionlist>
