@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Fri Jun 19 17:52:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 1.19.27
+- mihomo (formerly Clash.Meta) is the actively maintained successor to
+  the archived Dreamacro/clash; this package obsoletes both clash and
+  clash-meta

@@ -1,0 +1,7 @@
+<package name="mihomo" project="openSUSE:Factory">
+  <title>Mihomo</title>
+  <description>Another Clash Kernel by MetaCubeX, formerly known as Clash.Meta
+
+
+使用方法：修改`/etc/mihomo/config.yaml`文件，然后systemd启动mihomo.service</description>
+</package>
