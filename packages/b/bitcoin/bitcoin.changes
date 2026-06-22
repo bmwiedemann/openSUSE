@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 21 11:17:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Reference the tracking bugs for CVEs already fixed in current bitcoin
+  (the affected versions all predate the shipped release):
+  * CVE-2018-20587 (boo#1125092)
+  * CVE-2019-15947 (boo#1149711)
+  * CVE-2020-14198 (boo#1181786)
+  * CVE-2021-3195 (boo#1181784)
+  * CVE-2023-37192 (boo#1217678)
+  * CVE-2024-35202 (boo#1231507)
+
+-------------------------------------------------------------------
 Sat May 30 17:17:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 31.0 (from 28.1; includes the 29.0 and 30.0
@@ -3803,7 +3815,7 @@ Fri May 14 10:54:00 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
     * Avoid requesting fee rates multiple times during coin selection
   * RPC and other APIs:
     * Disallow sendtoaddress and sendmany when private keys disabled
-      CVE-2021-3195
+      CVE-2021-3195 (boo#1181784)
 
 -------------------------------------------------------------------
 Tue Jan 19 08:59:17 UTC 2021 - Martin Pluskal <mpluskal@suse.com>

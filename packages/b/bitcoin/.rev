@@ -643,4 +643,12 @@
     <comment>Update to 31.0 (CMake build, Qt6 GUI, Boost 1.91 fix, dropped removed deps, pkgconfig BRs with min versions, modern desktop file). Supersedes 1356066: drop the bogus 'Provides: bitcoin-qt5' per dimstar's review (keep only Obsoletes).</comment>
     <requestid>1356095</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>5650404a1f7120c089e391d1177197e2</srcmd5>
+    <version>31.0</version>
+    <time>1782142411</time>
+    <user>anag_factory</user>
+    <comment>Reference tracking bugs (boo#1125092, boo#1149711, boo#1181786, boo#1181784, boo#1217678, boo#1231507) for already-fixed CVEs</comment>
+    <requestid>1360831</requestid>
+  </revision>
 </revisionlist>
