@@ -1,0 +1,4 @@
+<package name="containerized-data-importer1.65" project="openSUSE:Factory">
+  <title>Containerized Data Importer 1.65 (versioned fork)</title>
+  <description>Versioned CDI package (1.65), named containerized-data-importer1.65 to match the kubernetes1.33 / etcd-for-k8s1.33 convention. Staging copy for the rename of containerized-data-importer-1.65 -&gt; containerized-data-importer1.65.</description>
+</package>
