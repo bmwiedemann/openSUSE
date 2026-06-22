@@ -41,4 +41,12 @@
     <comment></comment>
     <requestid>728710</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fd291e8eebd0a83ae014b75b9b17caae</srcmd5>
+    <version>5.8.16</version>
+    <time>1782141903</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.8.16 (devel project current; Factory was stuck at 1.9.0 from 2019)</comment>
+    <requestid>1360620</requestid>
+  </revision>
 </revisionlist>

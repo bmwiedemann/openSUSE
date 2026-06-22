@@ -1,7 +1,7 @@
 #
 # spec file for package pspg
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           pspg
-Version:        1.9.0
+Version:        5.8.16
 Release:        0
 Summary:        Pager for PostgreSQL, MariaDB, Percona, and MySQL
 License:        BSD-2-Clause
@@ -26,6 +26,7 @@ URL:            https://github.com/okbob/pspg
 Source:         https://github.com/okbob/pspg/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
+BuildRequires:  postgresql-devel
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(ncurses)
 
@@ -36,7 +37,7 @@ not any special support for tabular data. Tabular data related features
 are core functionality of this pager.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
