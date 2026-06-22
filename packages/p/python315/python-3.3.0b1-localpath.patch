@@ -2,12 +2,12 @@
  Lib/site.py |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: Python-3.15.0a7/Lib/site.py
+Index: Python-3.15.0b2/Lib/site.py
 ===================================================================
---- Python-3.15.0a7.orig/Lib/site.py	2026-03-10 21:55:34.774030935 +0100
-+++ Python-3.15.0a7/Lib/site.py	2026-03-10 21:55:45.838165991 +0100
-@@ -80,7 +80,7 @@
- import errno
+--- Python-3.15.0b2.orig/Lib/site.py	2026-06-16 20:06:48.442161632 +0200
++++ Python-3.15.0b2/Lib/site.py	2026-06-16 20:07:29.659404808 +0200
+@@ -54,7 +54,7 @@
+ lazy import warnings
  
  # Prefixes for site-packages; add additional prefixes like /usr/local here
 -PREFIXES = [sys.prefix, sys.exec_prefix]

@@ -1,0 +1,40 @@
+---
+ Lib/test/test_socket.py |   18 +++++++++++++++++-
+ 1 file changed, 17 insertions(+), 1 deletion(-)
+
+Index: Python-3.15.0b2/Lib/test/test_socket.py
+===================================================================
+--- Python-3.15.0b2.orig/Lib/test/test_socket.py	2026-06-16 20:06:50.647664953 +0200
++++ Python-3.15.0b2/Lib/test/test_socket.py	2026-06-16 20:07:44.984538637 +0200
+@@ -170,6 +170,22 @@
+     return (cid is not None)
+ 
+ 
++def _have_socket_udplite():
++    """Check whether UDPLITE sockets are supported on this host."""
++    if not hasattr(socket, "IPPROTO_UDPLITE"):
++        return False
++    # Older Android versions block UDPLITE with SELinux.
++    if support.is_android and platform.android_ver().api_level < 29:
++        return False
++    try:
++        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDPLITE)
++    except (AttributeError, OSError):
++        return False
++    else:
++        s.close()
++    return True
++
++
+ def _have_socket_bluetooth():
+     """Check whether AF_BLUETOOTH sockets are supported on this host."""
+     try:
+@@ -266,7 +282,7 @@
+ 
+ HAVE_SOCKET_VSOCK = _have_socket_vsock()
+ 
+-HAVE_SOCKET_UDPLITE = _have_udp_lite()
++HAVE_SOCKET_UDPLITE = _have_socket_udplite()
+ 
+ HAVE_SOCKET_BLUETOOTH = _have_socket_bluetooth()
+ 

@@ -304,4 +304,41 @@ covered).</comment>
   CVE-2026-6100-use-after-free-decompression.patch</comment>
     <requestid>1349863</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f227f1d52d403cb6a63b8a53dbf0cedd</srcmd5>
+    <version>3.15.0~b2</version>
+    <time>1782142145</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.15.0~b2
+  - Security
+    - gh-149698: Update bundled libexpat to version 2.8.1 for the
+      fix for CVE 2026-45186.
+    - gh-87451: The ftplib module’s undocumented ftpcp function
+      no longer trusts the IPv4 address value returned from the
+      source server in response to the PASV command by default,
+      completing the fix for CVE-2021-4189. As with ftplib.FTP,
+      the former behavior can be re-enabled by setting the
+      trust_server_pasv_ipv4_address attribute on the source
+      ftplib.FTP instance to True. Thanks to Qi Deng at Aurascape
+      AI for the report. (bsc#1265268, CVE-2026-8328)
+    - gh-149474: Fix the binary writer in profiling.sampling not
+      firing the audit (PEP 578) when creating the output file.
+      The writer and the reader now accept any path-like object.
+      Patch by Maurycy Pawłowski-Wieroński.
+    - gh-149486: tarfile.data_filter() now validates link targets
+      using the same normalised value that is written to disk,
+      strips trailing separators from the member name when
+      resolving a symlink’s directory, and rejects link members
+      that would replace the destination directory itself. This
+      closes several path-traversal bypasses of the data
+      extraction filter. (bsc#1267821, CVE-2026-7774)
+    - gh-149079: Fix a potential denial of service in
+      unicodedata.normalize(). The canonical ordering step of
+      Unicode normalization used a quadratic-time insertion sort
+      for reordering combining characters, which could be
+      exploited with crafted input containing many combining
+      characters in non-canonical order. Replaced with
+      a linear-time counting sort for long runs. (bsc#1267581,</comment>
+    <requestid>1360763</requestid>
+  </revision>
 </revisionlist>

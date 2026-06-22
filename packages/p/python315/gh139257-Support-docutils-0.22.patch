@@ -7,13 +7,13 @@ Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
  Doc/tools/extensions/pyspecific.py |   18 ++++++++++++++++++
  1 file changed, 18 insertions(+)
 
-Index: Python-3.15.0a8/Doc/tools/extensions/pyspecific.py
+Index: Python-3.15.0b2/Doc/tools/extensions/pyspecific.py
 ===================================================================
---- Python-3.15.0a8.orig/Doc/tools/extensions/pyspecific.py	2026-04-08 13:45:33.788093782 +0200
-+++ Python-3.15.0a8/Doc/tools/extensions/pyspecific.py	2026-04-08 13:46:02.807521346 +0200
+--- Python-3.15.0b2.orig/Doc/tools/extensions/pyspecific.py	2026-06-02 17:28:41.000000000 +0200
++++ Python-3.15.0b2/Doc/tools/extensions/pyspecific.py	2026-06-16 20:07:40.232951315 +0200
 @@ -24,6 +24,24 @@
  # Used in conf.py and updated here by python/release-tools/run_release.py
- SOURCE_URI = 'https://github.com/python/cpython/tree/main/%s'
+ SOURCE_URI = 'https://github.com/python/cpython/tree/3.15/%s'
  
 +# monkey-patch reST parser to disable alphabetic and roman enumerated lists
 +def _disable_alphabetic_and_roman(text):

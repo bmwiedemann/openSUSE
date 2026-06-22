@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0~a8
-%define         tarversion 3.15.0a8
+Version:        3.15.0~b2
+%define         tarversion 3.15.0b2
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -174,7 +174,6 @@ Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.ta
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source4:        externally_managed.in
-Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
 Source10:       pre_checkin.sh
@@ -228,24 +227,13 @@ Patch42:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM skip-test_array_alignment.patch gh#python/cpython#144725 mcepl@suse.com
 # skip failing test
 Patch43:        skip-test_array_alignment.patch
-# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
-# NULL dangling pointer to avoid use-after-free error
-Patch44:        CVE-2026-6100-use-after-free-decompression.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
-# Fix webbrowser %action substitution bypass of dash-prefix check
-Patch45:        CVE-2026-4786-webbrowser-open-action.patch
-# PATCH-FIX-UPSTREAM CVE-2026-5713-validate-debug-load.patch bsc#1262132 mcepl@suse.com
-# Validate remote debug offset tables on load
-Patch46:        CVE-2026-5713-validate-debug-load.patch
-# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
-# Reject CR/LF in HTTP tunnel request headers
-Patch47:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
-# PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
-# Base64-encode cookie values embedded in JS
-Patch48:        CVE-2026-6019-Morsel-js_output.patch
+# PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
+# improve testing of the presence of IPPROTO_UDPLITE support
+Patch49:        test_UDPLITE_support.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
@@ -261,7 +249,6 @@ BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
 %if 0%{?suse_version} >= 1550 && %{without base}
-# The provider for python(abi) is in rpm-build-python
 # Skip for the base flavor: rpm-build-python requires python3-base, which
 # creates an unresolvable dependency loop when building python3xx-base itself.
 BuildRequires:  rpm-build-python
@@ -438,7 +425,9 @@ Provides:       %{python_pkg_name}-xml = %{version}
 # Explicitly provided because rpm-build-python (which auto-generates this)
 # cannot be installed in the base flavor build root due to a bootstrap cycle:
 # rpm-build-python -> python3-base -> (this package)
+%if %{with GIL}
 Provides:       python(abi) = %{python_version}
+%endif
 
 %description -n %{python_pkg_name}-base
 Python is an interpreted, object-oriented programming language, and is
@@ -578,6 +567,7 @@ sed -e 's/-fprofile-correction//' -i Makefile.pre.in
 
 export CFLAGS="%{optflags} -IVendor/"
 
+# gh#python/cpython#151602 for that without-frame-pointers
 %configure \
     --with-platlibdir=%{_lib} \
     --docdir=%{_docdir}/python \
@@ -598,6 +588,9 @@ export CFLAGS="%{optflags} -IVendor/"
 %endif
 %if %{with experimental_jit}
     --enable-experimental-jit=yes-off \
+%endif
+%ifarch %ix86
+    --without-frame-pointers \
 %endif
 %if %{without GIL}
     --disable-gil \
@@ -736,10 +729,10 @@ for library in \
     _posixsubprocess _queue _random resource select _ssl _socket \
     _statistics _struct syslog termios _testbuffer _testimportmultiple \
     _testmultiphase unicodedata zlib _ctypes_test _testinternalcapi _testcapi \
-    _testclinic _testclinic_limited xxlimited xxlimited_35 _remote_debugging \
-    _testlimitedcapi _xxtestfuzz _elementtree pyexpat _md5 _sha1 \
+    _testclinic _testclinic_limited xxlimited xxlimited_35 xxlimited_3_13 \
+    _remote_debugging _testlimitedcapi _xxtestfuzz _elementtree pyexpat \
     _interpchannels _interpqueues _interpreters \
-    _sha2 _blake2 _sha3 _uuid _zstd _zoneinfo \
+    _md5 _sha1 _sha2 _blake2 _sha3 _uuid _zstd _zoneinfo \
     _testsinglephase xxsubtype
 do
     eval rm "%{buildroot}%{sitedir}/lib-dynload/$library.*"
@@ -851,12 +844,6 @@ sed -i "1s@#\!.*python[^ ]*@#\!%{_bindir}/python%{python_version}@" \
 
 # Remove -IVendor/ from python-config boo#1231795
 sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
-
-# RPM macros
-%if %{primary_interpreter}
-mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
-install -m 644 %{SOURCE7} %{buildroot}%{_rpmconfigdir}/macros.d/ # macros.python3
-%endif
 
 # import_failed hooks
 FAILDIR=%{buildroot}/%{sitedir}/_import_failed
@@ -1015,10 +1002,6 @@ fi
 %endif
 # license text, not a doc because the code can use it at run-time
 %{sitedir}/LICENSE.txt
-# RPM macros
-%if %{primary_interpreter}
-%{_rpmconfigdir}/macros.d/macros.python3
-%endif
 # build-details
 %{_libdir}/python3*/build-details.json
 
@@ -1074,6 +1057,7 @@ fi
 %{dynlib _uuid}
 %{dynlib xxlimited}
 %{dynlib xxlimited_35}
+%{dynlib xxlimited_3_13}
 %{dynlib xxsubtype}
 %{dynlib zlib}
 %{dynlib _zoneinfo}
