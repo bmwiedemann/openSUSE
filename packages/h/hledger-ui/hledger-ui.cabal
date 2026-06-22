@@ -6,7 +6,7 @@ cabal-version: 2.2
 
 name:           hledger-ui
 version:        1.52.1
-x-revision: 1
+x-revision: 2
 synopsis:       Terminal interface for the hledger accounting system
 description:    A simple terminal user interface for the hledger accounting system.
                 It can be a more convenient way to browse your accounts than the CLI.
@@ -100,14 +100,14 @@ library
     , time >=1.5
     , transformers
     , vector
-    , vty >=6.1 && <6.6
-    , vty-crossplatform >=0.4.0.0 && <0.6.0.0
+    , vty >=6.1
+    , vty-crossplatform >=0.4.0.0
   default-language: GHC2021
   if (flag(debug))
     cpp-options: -DDEBUG
   if os(windows)
     build-depends:
-        vty-windows >=0.2.0.1 && <0.3.0.0
+        vty-windows >=0.2.0.1
   else
     build-depends:
         unix

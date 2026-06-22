@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 15 14:09:31 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update hledger-ui to version 1.52.1 revision 2.
+  Upstream has revised the Cabal build instructions on Hackage.
+
+-------------------------------------------------------------------
 Thu Apr 30 03:33:43 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update hledger-ui to version 1.52.1 revision 1.
