@@ -141,4 +141,17 @@
     <comment></comment>
     <requestid>1359671</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2722cde5e0b2c03555b7b87f08032dac</srcmd5>
+    <version>3.21.2</version>
+    <time>1782142063</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.21.2:
+  * chore(deps): bump the k8s-io group with 2 updates 1259634
+    (dependabot[bot])
+  * fixes b52e276 (Matheus Pimenta)
+  * chore(deps): bump the k8s-io group across 1 directory with 2
+    updates 3342dbf (dependabot[bot])</comment>
+    <requestid>1360883</requestid>
+  </revision>
 </revisionlist>

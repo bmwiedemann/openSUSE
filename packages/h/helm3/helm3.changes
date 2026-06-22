@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 20 10:10:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.21.2:
+  * chore(deps): bump the k8s-io group with 2 updates 1259634
+    (dependabot[bot])
+  * fixes b52e276 (Matheus Pimenta)
+  * chore(deps): bump the k8s-io group across 1 directory with 2
+    updates 3342dbf (dependabot[bot])
+
+-------------------------------------------------------------------
 Sat Jun 13 10:07:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.21.1:
