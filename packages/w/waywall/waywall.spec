@@ -17,7 +17,7 @@
 
 %global __provides_exclude_from ^%{_libdir}/waywall-glfw/.*$
 Name:           waywall
-Version:        0.2026.02.06
+Version:        0.2026.06.13
 Release:        0
 Summary:        Wayland compositor for Minecraft speedrunning
 License:        GPL-3.0-only AND Zlib
