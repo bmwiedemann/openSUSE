@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:51:03 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 110+suse.35.g9834432:
+  * fix(fips): handle zipl (bsc#1262515)
+  * fix(network-legacy): sanitize DHCP values in dhclient-script.sh (bsc#1268322, CVE-2026-6893)
+  * fix(network-legacy): add input validation to RFC 3442 route parser
+
+-------------------------------------------------------------------
 Wed Jun 03 09:23:20 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 110+suse.32.g36b00ba7:

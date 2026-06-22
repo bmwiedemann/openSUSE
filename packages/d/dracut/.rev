@@ -2646,4 +2646,12 @@ and stuff that has no relevance to the end user (i.e CI related commits) (forwar
     <comment></comment>
     <requestid>1356924</requestid>
   </revision>
+  <revision rev="261" vrev="1">
+    <srcmd5>c30a229dfe696dd6c076514266cdfbe7</srcmd5>
+    <version>110+suse.35.g9834432</version>
+    <time>1782144298</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360541</requestid>
+  </revision>
 </revisionlist>
