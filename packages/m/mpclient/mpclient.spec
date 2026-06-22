@@ -1,8 +1,7 @@
 #
 # spec file for package mpclient
 #
-# Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,14 +21,16 @@ Version:        0.35
 Release:        0
 Summary:        A minimalist command line interface to MPD
 License:        GPL-2.0-or-later
-URL:            https://musicpd.org
+URL:            https://github.com/MusicPlayerDaemon/mpc
 Source0:        https://musicpd.org/download/mpc/0/mpc-%{version}.tar.xz
-BuildRequires:  meson >= 0.47.2
+Source1:        https://musicpd.org/download/mpc/0/mpc-%{version}.tar.xz.sig
+Source9:        %{name}.keyring
+BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Sphinx
 BuildRequires:  rsync
-BuildRequires:  pkgconfig(libmpdclient) >= 2.16
+BuildRequires:  pkgconfig(libmpdclient)
 
 %description
 A client for MPD, the Music Player Daemon. mpc connects to a MPD
@@ -37,7 +38,7 @@ running on a machine via a network. Accepts input on standard input,
 so can be easily used in scripts.
 
 %prep
-%setup -q -n mpc-%{version}
+%autosetup -p1 -n mpc-%{version}
 
 %build
 %meson
