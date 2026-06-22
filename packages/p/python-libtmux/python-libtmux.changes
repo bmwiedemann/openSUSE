@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jun 18 09:01:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.58.1:
+  libtmux 0.58.1 restores compatibility with pytest 9.1. libtmux's
+  bundled pytest plugin no longer aborts at import time, so
+  projects that rely on libtmux's fixtures can move to the latest
+  pytest without their test suite failing before collection.
+  pytest 9.1 rejects marks applied to fixture functions during
+  plugin import — before collection begins. Because the plugin
+  ships as an installed entry point, this aborted the entire test
+  session for any downstream project that has libtmux installed
+  (for example, tmuxp). The fix removes a no-op skipif mark from
+  the zshrc fixture; the real zsh handling lives in conftest.py and
+  is unchanged, so behavior is identical for zsh and non-zsh users.
+  This is a bug-fix-only patch release, per libtmux's pre-1.0
+  version policy (patch = bug fixes; minor = features/breaking
+  changes).
+  See the CHANGES entry for full details.
+  - Fix pytest 9.1 fixture-mark import failure by @tony in #687
+
+-------------------------------------------------------------------
 Fri May 29 05:55:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.58.0:
