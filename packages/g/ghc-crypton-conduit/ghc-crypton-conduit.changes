@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Mar 30 22:43:17 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-conduit to version 0.3.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/crypton-conduit-0.3.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Mon Mar 30 21:59:25 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Add crypton-conduit at version 0.2.3 revision 1.
