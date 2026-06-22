@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Jun 19 16:28:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.1
+  - Features
+    - Neural: Add pluggable feature-provider and ANN-architecture
+      registries, a sequence output mode with SIF word selection
+      for fasttext_embed, a multi-head attention pooling operator
+      in kann, and slice/concat graph transforms in lua_kann.
+    - checkv3: Negotiate representation and compression via
+      Accept/Accept-Encoding.
+    - CSS: Detect more text-hiding tricks — off-screen positioning,
+      clip, negative text-indent, and tiny fonts.
+    - Lua libraries: Bound zip-bomb expansion with opt-in
+      extraction limits (size, count, ratio) in lua_archive, add
+      byte-distribution statistics methods (entropy, byte
+      mean/deviation, serial correlation, Monte-Carlo Pi) in
+      lua_text, and expose a zlib/YARA-compatible crc32 for
+      rspamd_text, rspamd_util, and cryptobox hash.
+    - Multipattern: Add an explicit SOM (start-of-match) flag and
+      fix regex-fallback offsets.
+  - Bug fixes
+    - DNS: Do not defer resolver nameservers, fixing a SIGSEGV at
+      worker startup (regression in 4.1.0).
+    - Lua runtime: Add state/generation guards and refcounting to
+      the coroutine thread pool to prevent use-after-free on async
+      completion, and avoid a lua_worker deadlock when a spawned
+      subprocess returns an invalid value.
+    - Neural: Stabilise training on dense embedding inputs (funnel
+      architecture, input-typed learning rate, single-class quality
+      gate) and stop stranding trained ANNs behind stale
+      high-version tombstones.
+    - checkv3: Register the /checkv3 controller endpoint and use a
+      case-preserving boundary for v3 HTTP multipart parsing.
+    - URL: Scan bare query-embedded URLs containing = as a whole,
+      and stop multiplying URLs that contain multiple @ signs and
+      backslashes.
+    - CSS: Detect text hidden via overflow clipping, opacity, and
+      max-width/height.
+    - Milter: Send QUARANTINE even with a caller-supplied reply
+      (regression from 3.10.0).
+    - Checks: Classify loopback-only MX as MX_LOCAL_ONLY instead of
+      MX_BOGON_ONLY, use alphanumeric-only random DNS prefixes for
+      random_monitored RBL checks, and fix timeout inflation in
+      pre/postfilter priority grouping.
+    - Build: Fix the build with OpenSSL 4.0 opaque ASN1_STRING,
+      make the mime_string iterator const for the doctest 2.5.0
+      build, and prioritise bundled simdutf headers over system
+      ones.
+
+-------------------------------------------------------------------
 Mon Jun  8 11:27:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Disable hyperscan on sles 15. The library seems missing
