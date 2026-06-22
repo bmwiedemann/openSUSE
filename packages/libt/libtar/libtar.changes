@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:45:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add upstream-pending security fixes (backported via Fedora):
+  * libtar-1.2.20-CVE-2021-33643-CVE-2021-33644.patch: fix
+    out-of-bounds read in gnu_long{name,link}
+    (CVE-2021-33643, boo#1202316; CVE-2021-33644, boo#1202317)
+  * libtar-1.2.20-CVE-2021-33645-CVE-2021-33646.patch: free memory
+    allocated by the gnu_long{name,link} fields, fixing the memory
+    leaks (CVE-2021-33645, boo#1202319; CVE-2021-33646, boo#1202320)
+    without re-introducing the use-after-free that an incorrect leak
+    fix otherwise causes (CVE-2021-33640, boo#1206547)
+- Modernize spec: drop RPM groups, use pkgconfig(zlib) and
+  %ldconfig_scriptlets
+
+-------------------------------------------------------------------
 Fri Apr 13 08:43:24 UTC 2018 - mpluskal@suse.com
 
 - Small packaging cleanup

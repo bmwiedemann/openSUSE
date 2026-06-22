@@ -15,4 +15,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>620726</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>ebb6ebb42d3494813af27acce2e2a745</srcmd5>
+    <version>1.2.20</version>
+    <time>1782142509</time>
+    <user>anag_factory</user>
+    <comment>Backport upstream-pending security fixes (via Fedora) for CVE-2021-33640, CVE-2021-33643, CVE-2021-33644, CVE-2021-33645, CVE-2021-33646; modernize spec</comment>
+    <requestid>1360868</requestid>
+  </revision>
 </revisionlist>
