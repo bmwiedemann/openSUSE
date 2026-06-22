@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:16:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Reference the tracking bugs for the security issues already fixed in
+  the 3.2.0 update:
+  * CVE-2022-* OSS-Fuzz/TALOS batch (boo#1217676)
+  * CVE-2026-2704 (boo#1258501), CVE-2026-2705 (boo#1258507),
+    CVE-2026-3408 (boo#1259041)
+
+-------------------------------------------------------------------
 Mon Jun  1 19:49:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.2.0:
@@ -14,14 +23,15 @@ Mon Jun  1 19:49:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
   * Backwards compatible with 3.0 and 3.1
   * Fix many crash and memory-safety bugs found via OSS-Fuzz
     and TALOS, including the following security issues:
-    CVE-2022-37331, CVE-2022-41793, CVE-2022-42885,
+    CVE-2022-37331 (boo#1217676), CVE-2022-41793, CVE-2022-42885,
     CVE-2022-43467, CVE-2022-43607, CVE-2022-44451,
     CVE-2022-46280, CVE-2022-46289, CVE-2022-46290,
     CVE-2022-46291, CVE-2022-46292, CVE-2022-46294,
     CVE-2022-46295, CVE-2025-10994, CVE-2025-10995,
     CVE-2025-10996, CVE-2025-10997, CVE-2025-10998,
-    CVE-2025-10999, CVE-2025-11000, CVE-2026-2704,
-    CVE-2026-2705 and CVE-2026-3408
+    CVE-2025-10999, CVE-2025-11000,
+    CVE-2026-2704 (boo#1258501), CVE-2026-2705 (boo#1258507) and
+    CVE-2026-3408 (boo#1259041)
 - Shared library soname bumped to libopenbabel8 (SOVERSION 8)
 - Drop patches now fixed upstream:
   * openbabel-3.1.1-test-python3-escape-chars.patch
