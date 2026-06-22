@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:34:30 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update yesod-form to version 1.7.9.3.
+  ## 1.7.9.3
+
+  * Support `yesod-core` 1.7
+
+-------------------------------------------------------------------
 Sun Feb  1 18:28:21 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update yesod-form to version 1.7.9.2.

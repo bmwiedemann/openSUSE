@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.7.9.2
+Version:        1.7.9.3
 Release:        0
 Summary:        Form handling support for Yesod Web Framework
 License:        MIT
