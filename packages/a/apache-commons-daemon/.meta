@@ -7,5 +7,4 @@ method.  This specification covers the behavior and life cycle of what
 is defined as Java(tm) daemons or, in other words, noninteractive
 Java(tm) applications.
 </description>
-  <devel project="Java:packages" package="apache-commons-daemon"/>
 </package>

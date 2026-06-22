@@ -236,4 +236,12 @@
     <comment>gcc15 fix</comment>
     <requestid>1286055</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d03d2147e752237e985e463052256028</srcmd5>
+    <version>1.6.1</version>
+    <time>1782142028</time>
+    <user>anag_factory</user>
+    <comment>1.6.1</comment>
+    <requestid>1360672</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-daemon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define short_name commons-daemon
 %define _lto_cflags %{nil}
 Name:           apache-%{short_name}
-Version:        1.4.1
+Version:        1.6.1
 Release:        0
 Summary:        Commons Daemon - Controlling of Java Daemons
 License:        Apache-2.0

@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Jun 19 10:04:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.6.1
+  * Bug Fixes:
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80)
+    + Document --enable-preview
+    + Fix first appearance of --enable-native-access
+    + Procrun. Fix redirection issues on some OS versions by using
+      recommended method to redirect stdout and stderr.
+      Fixes DAEMON-398.
+    + Procrun. Fix updating of startup mode to 'Automatic (delayed)'
+      being incorrectly processed as an update to 'Manual'.
+      Fixes DAEMON-439.
+    + Procrun. Fix timeout handling #238. Fixes DAEMON-468.
+    + Procrun. Replace RTF version of license header with plain text
+      version of full license in about box for monitor application.
+      Fixes DAEMON-472.
+    + Procrun. Service should be marked as stopped if the service
+      worker crashes. Fixes DAEMON-475.
+    + jsvc. Fix compilation warnings.
+    + jsvc. Fix a regression in 1.5.1 that exposed long standing
+      bugs around the locking and unlocking of pid files. Also fix
+      the locking/unlocking bugs.
+    + Detaches from console when the service stops #307. Fixes
+      DAEMON-477.
+    + jsvc. Correct a packaging error in the 1.6.0 native source
+      tarball for *nix systems. Thanks to Michael Osipov.
+  * New Features:
+    + Add support for --enable-native-access Java startup option in
+      jsvc. Fixes DAEMON-471.
+    + Add tests for prunsrv on Windows #260.
+    + Add Java API compatibility report to the site (JApiCmp).
+    + Procun. Build binaries for Windows using the static hybrid CRT
+    strategy by default.
+    + jsvc. Use FreeBSD's setproctitle(3) to pass -procname similar
+      to daemon(8).
+    + procrun. Add ARM64 support for Windows binaries. Fixes
+      DAEMON-462.
+  * Update dependencies:
+    + Bump org.apache.commons:commons-parent from 78 to 91 #253,
+      #255, #287.
+    + Update to use new ASF logo
+    + Bump org.apache.commons:commons-parent from 93 to 99.
+    + jsvc. Consistently use strerror(3) for log output.
+
+-------------------------------------------------------------------
 Mon Jun 16 10:26:21 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
@@ -14,7 +63,7 @@ Mon Mar 31 12:38:07 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
       detection.
     + Correct several log messages where an incorrect placeholder
       led to truncation of the inserted values.
-  * New Features
+  * New Features:
     + Add protection to avoid high CPU usage for applications
       running in JVM mode that do not wait for the stop method to
       be called before the start method returns. Fixes DAEMON-460.
