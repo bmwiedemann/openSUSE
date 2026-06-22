@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 21 09:41:35 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.23
+- Allow digits in URI scheme so hysteria2/hy2 (and socks5/socks4)
+links import (thanks @warmpain9)
+- Add start/stop button
+- Update sing-box
+
+-------------------------------------------------------------------
 Tue Jun 16 23:02:20 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.22
