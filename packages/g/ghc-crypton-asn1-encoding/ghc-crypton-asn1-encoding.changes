@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Aug  1 23:07:06 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Add crypton-asn1-encoding at version 0.10.0.
+  * Fix CVE-2026-9648, bsc#1268157.
