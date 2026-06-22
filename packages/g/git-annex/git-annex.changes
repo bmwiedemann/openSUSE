@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:24:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Apply "0001-Build-with-ram-instead-of-memory-package-to-support-.patch"
+  to allow building with our patched version of aws. [bsc#1268157,
+  CVE-2026-9648]
+
+-------------------------------------------------------------------
 Mon Jun  1 16:59:32 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update git-annex to version 10.20260601.

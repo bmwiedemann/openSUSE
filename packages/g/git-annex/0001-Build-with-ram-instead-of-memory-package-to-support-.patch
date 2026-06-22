@@ -1,0 +1,23 @@
+From 8dc9fb297d3445c64f313f9d93a9562798c53c8a Mon Sep 17 00:00:00 2001
+From: Peter Simons <simons@cryp.to>
+Date: Mon, 22 Jun 2026 12:19:37 +0200
+Subject: [PATCH] Build with ram instead of memory package to support crypton
+ 1.1.x.
+
+---
+ git-annex.cabal | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/git-annex.cabal b/git-annex.cabal
+index 354fa46dfd..b2c7cea5e0 100644
+--- a/git-annex.cabal
++++ b/git-annex.cabal
+@@ -255,7 +255,7 @@
+    stm-chans,
+    securemem,
+    crypto-api,
+-   memory,
++   ram,
+    deepseq,
+    split,
+    attoparsec (>= 0.13.2.2),

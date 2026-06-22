@@ -24,6 +24,7 @@ License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT 
 URL:            https://hackage.haskell.org/package/%{name}
 Source0:        https://github.com/opensuse-haskell/git-annex/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         0001-persistent-2.12.0.1-include-the-code-from-persistent.patch
+Patch1:         0001-Build-with-ram-instead-of-memory-package-to-support-.patch
 BuildRequires:  bash-completion
 BuildRequires:  chrpath
 BuildRequires:  curl
@@ -97,8 +98,6 @@ BuildRequires:  ghc-fdo-notify-devel
 BuildRequires:  ghc-fdo-notify-prof
 BuildRequires:  ghc-feed-devel
 BuildRequires:  ghc-feed-prof
-BuildRequires:  ghc-file-io-devel
-BuildRequires:  ghc-file-io-prof
 BuildRequires:  ghc-filepath-bytestring-devel
 BuildRequires:  ghc-filepath-bytestring-prof
 BuildRequires:  ghc-filepath-devel
@@ -143,8 +142,6 @@ BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-optparse-applicative-prof
-BuildRequires:  ghc-os-string-devel
-BuildRequires:  ghc-os-string-prof
 BuildRequires:  ghc-path-pieces-devel
 BuildRequires:  ghc-path-pieces-prof
 BuildRequires:  ghc-persistent-devel
@@ -284,7 +281,7 @@ Optional dependency offering bash completion for git-annex
 %autosetup -p1
 
 %build
-%define cabal_configure_options -f+assistant -f+crypton -f+dbus -f+magicmime -f+pairing -f+production -f+servant -f+torrentparser -f-benchmark
+%define cabal_configure_options -f+assistant -f+dbus -f+magicmime -f+production -f+torrentparser -f-benchmark -f-ospath
 %ghc_bin_build
 
 %check
