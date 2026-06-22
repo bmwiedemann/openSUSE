@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 22 05:04:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.19:
+  * build(deps): bump github.com/anchore/stereoscope from 0.1.23 to
+    0.2.1 (#1993)
+  * build(deps): bump the chainguard group with 3 updates (#1992)
+  * build(deps): bump chainguard-dev/actions from 1.6.21 to 1.6.24
+    (#1997)
+
+-------------------------------------------------------------------
 Thu Jun 04 05:30:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.18:
