@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 22 05:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.6 (.5 is on the same commit hash as .4):
+  * S3: surface bucket listing failures and fix multi-role object count (#5035)
+  * close todo - embed small HTTP test fixtures (#5001)
+  * add filetype=sdist param so we get the correct response code (#4988)
+  * fix(dropbox): prevent long sl.u. tokens from being truncated before verification (#5012)
+  * Fix: Resolve known dedup issues in notifierWorker (#5028)
+  * [INS-472] [INS-515] Add user detector to defaults.go, gate it behind feat flag, update verification logic and add custom ep configuration (#5007)
+  * Fix Renovate lookup: update setup-captain version comment (#4999)
+  * [INS-469] Added Rev detectors to defaults.go and gated it behind feature flag (#5005)
+  * GitHub finegrain analyzer was improperly handling errors (#4498)
+  * set redacted value to last 4 characters of secret, to match how the secret type admin interface displays it (#5027)
+  * Replace Renovate config with shared preset (high-risk tier) (#4992)
+  * Restructure Klaviyo detector pattern tests (#5026)
+  * Updating Klaviyo PK new format (#5009)
+  * [INS-473] Add wit detector to defaults.go, gate it behind feat flag and update verification logic (#5008)
+  * [INS-470] Add Tly detector to defaults.go, gate it behind feat flag and update its verification logic (#5006)
+  * [INS-465] Add datadogapikey detector to defaults.go (#4969)
+  * Re-host pkg/handlers JSON fixtures under the org (#5023)
+  * Update test containers dependency (#4978)
+  * fix: avoid terminal probes before CLI output (#4994)
+  * Move to github.com/moby/moby/client from docker/docker (#4987)
+  * fix(postgres): honor ignore tags for default port URLs (#4968)
+  * fix: scan files with lines exceeding bufio's default 64 KB token limit (#5022)
+  * Enigma detector enhance verification to prevent false verified findings (#5011)
+
+-------------------------------------------------------------------
 Tue Jun 02 06:53:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.4:
