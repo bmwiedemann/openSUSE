@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:51:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.49:
+  * Fix site-package error when multiple versions of Python are
+    installed in system path
+  * Point at attribute's binding site in `invalid-await
+    diagnostic
+  * Report redefined legacy TypeVars
+  * Add dedicated TDDs for narrowing constraints
+  * Avoid caching same-file raw signatures
+  * Cache reachability evaluations during inference
+  * Compact retained definition maps
+  * Omit redundant definition inference owner keys
+- update to 0.0.48:
+  * Avoid redundant constraint saturation work
+  * Add support for TypedDict `extra_items`
+  * Improve `closed=True` TypedDict precision
+  * Require subtyping for transitive constraint pivots
+  * Sync vendored typeshed stubs (#25828). Typeshed diff
+- update to 0.0.47:
+  * Avoid panicking on encountering a recursive NamedTuple that
+    references a recursive NewType
+  * Fix out-of-bound panic in notebooks involving suppression
+    comments
+  * Preserve overloads through callable protocol decorators
+  * Sync vendored typeshed stubs (#25779). Typeshed diff
+  * Avoid caching specialization-invariant known instances
+  * Avoid resolving overload sets for ordinary functions
+  * Store common definition inference results inline
+  * Use `Box` etc. in `Files`
+- update to 0.0.46:
+  * Avoid crash when hovering over Callable
+  * Support `Callable()` in match statement class patterns
+  * Improve support for `enum.property`
+- update to 0.0.45:
+  * Avoid treating dynamic class attributes as instance
+    attributes
+  * Fix divergence in recursive inference due to ambiguous
+    overload
+  * Preserve literal promotion for mixed bounds
+  * ### Diagnostics
+  * Add `missing-type-argument` lint rule
+  * ### Core type checking
+  * Add support for narrowing on tuple match cases
+  * Check implicit open TypedDict extra items
+  * Create fresh copies of generic callable typevars
+  * Preserve deprecation on replacement functions
+  * Preserve intersection receivers during attribute lookup
+  * Preserve transparent callable decorators
+  * ### Performance
+  * Avoid AST load for callable description names
+  * Avoid caching absent class decorators and type parameters
+  * Avoid caching atomic type specializations
+  * Avoid caching constant constraint relations
+  * Avoid caching missing implicit attributes
+  * Avoid caching trivial class-header queries
+  * Avoid caching trivial member lookups
+  * Bypass member lookup for module imports
+  * Cache constraint implication checks
+  * Cache upper-bound satisfiability
+  * Compact retained function type signatures
+  * Compact retained use-def bindings
+  * Consolidate retained narrowing constraints
+  * Construct trivial constraint sets directly
+  * Resolve function descriptors directly
+  * Share code-generator classification across specializations
+  * Share parameter lists with `Arc`
+  * Use same-file expression inference in reachability
+- update to 0.0.44:
+  * Avoid treating `sys.implementation.version` like
+    `sys.version_info`
+  * Fix anchor point for override diagnostics
+  * Show type alias value on hover
+  * Add caching for pattern match narrowing
+  * Compact retained definition and expression identities
+  * Reuse expression cache for TypedDict union inference
+  * Upgrade Salsa
+- update to 0.0.43:
+  * Don't inject `Unknown` from non-callable elements of
+    intersection call
+  * Don't needlessly disambiguate the same type alias
+  * Fix variance inference for nested type aliases
+  * Ignore rejected member annotations for synthesized bindings
+  * Normalize dynamic class literals in cycle recovery
+  * Register file roots for first-party search paths
+  * Treat union-bound typevars like unions for `possibly-missing-
+    attribute`
+
+-------------------------------------------------------------------
 Thu Apr 30 05:15:03 UTC 2026 - Oliver Kurz <okurz@suse.com>
 
 - Fix build for Leap 16.1
