@@ -17,7 +17,7 @@
 
 
 Name:           python-jsonrpclib-pelix
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        JSPN-RPC over HTTP Library for Pelix Remote Services
 License:        Apache-2.0

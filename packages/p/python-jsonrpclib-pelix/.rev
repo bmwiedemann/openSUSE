@@ -79,4 +79,21 @@
   * Run CI with GitHub Actions instead of Travis-CI</comment>
     <requestid>1343440</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0e6e9495d681f933f178f4e2e6a8170f</srcmd5>
+    <version>1.1.0</version>
+    <time>1782142125</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.0:
+  * Fixed access to error message in results
+  * Allow the request query ID to be set to 0 or empty string
+  * Allow the definition of a classes registry to restrict
+    dynamic imports
+  * Allow the definition of a maximum content length to reject
+    large requests
+  * Overall code review
+  * Disable `cjson` and `simplejson` tests on Python 3.15
+  * Added note on expected Pydantic test failure on Python 2.7</comment>
+    <requestid>1360758</requestid>
+  </revision>
 </revisionlist>
