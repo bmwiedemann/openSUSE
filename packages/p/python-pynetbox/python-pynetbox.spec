@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pynetbox
-Version:        7.7.0
+Version:        7.8.0
 Release:        0
 Summary:        NetBox API client library
 License:        Apache-2.0
@@ -27,15 +27,18 @@ URL:            https://github.com/digitalocean/pynetbox
 Source:         https://files.pythonhosted.org/packages/source/p/pynetbox/pynetbox-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module netaddr}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module requests >= 2.32.3}
 BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module urllib3 >= 2.2.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging
-Requires:       python-requests >= 2.20.0
+Requires:       python-requests >= 2.32.3
+Requires:       python-urllib3 >= 2.2.3
 BuildArch:      noarch
 %python_subpackages
 

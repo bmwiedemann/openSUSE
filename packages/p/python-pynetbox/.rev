@@ -363,4 +363,34 @@
     <comment></comment>
     <requestid>1351287</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>8c89305a4ed9507f5fe3c70496ab7b02</srcmd5>
+    <version>7.8.0</version>
+    <time>1782142101</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 7.8.0
+  New Features
+  * Plugin Extension Framework (#774).
+  * Custom Thread Pool Executor (#633).
+  * Cursor-Based Pagination (#764).
+  Other New Features
+  * #713 - Add sync() method to the data_sources endpoint.
+  * #715 - Allow endpoints with underscores.
+  Enhancements
+  * #625 - Preserve JSON list fields instead of returning them as
+    Records.
+  Bug Fixes
+  * #701 - Fix filtering for custom fields.
+  * #749 - Don't treat Record methods as constructors in
+    _parse_values.
+  * #745 - Serialize list-Record items that lack an ID.
+  * #519 - Fix link peer casting.
+  * #688 - Skip network fetch for dunder attributes in
+    Record.__getattr__ .
+  * #748 - Stop re-sending PATCH for unchanged partial
+    custom_fields.
+  Compatibility
+  * Supports NetBox 4.6</comment>
+    <requestid>1360734</requestid>
+  </revision>
 </revisionlist>
