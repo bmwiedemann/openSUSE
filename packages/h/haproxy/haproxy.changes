@@ -1,4 +1,141 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:08:53 UTC 2026 - varkoly@suse.com
+
+- Update to version 3.4.0+git31.fc300e9f2:
+  * BUG/MEDIUM: mux-fcgi: fix uint16_t overflow in drl += drp (bsc#1268557) VUL-0: CVE-2026-55203
+  * BUG/MEDIUM: http-act: Make a copy of the sample expr in (set/add)-headers-bin
+  * BUG/MEDIUM: mux_quic: fix freeze transfer after QCS rxbuf realign
+  * BUG/MINOR: hpack-tbl: add missing NULL check after hpack_dht_defrag() (bsc#1268558) VUL-0: CVE-2026-55204
+  * BUG/MEDIUM: ssl: Don't free the early data buffer too early
+  * BUG/MINOR: quic: fix rxbuf settings on backend side
+  * BUG/MINOR: mux-h1: Properly resolve file path for 'h1-case-adjust-file'
+  * BUG/MEDIUM: http-ana: Don't ignore L7 retry errors
+  * BUG/MINOR: http-ana: Remove a debugging memset on redirect
+  * BUG/MINOR: server: fix add server with consistent hash balancing
+  * BUG/MEDIUM: h3: Properly handle PUSH_PROMISE on backend connections
+  * BUG/MINOR: cpu-topo: use ha_diag_notice() to report thread creations
+  * MINOR: errors: add ha_diag_notice() to report diag-level notifications
+  * BUG/MEDIUM: ktls: defer enabling TLS ULP on a socket until connected
+  * BUG/MEDIUM: acme: stuck ACME task when authz is already "valid"
+  * BUG/MINOR: quic: fix Initial length value in sent packets
+  * REGTESTS: Fix log matching in healthcheck-section.vtc
+  * BUG/MEDIUM: checks: Dequeue checks on purge
+  * BUG/MINOR: acl: report "ACL" not "map" in ACL ID lookup failures
+  * CLEANUP: sessions: simplify the sess_priv_conns pool name
+  * BUG/MEDIUM: xprt_qmux: implement ->get_ssl_sock_ctx() to get the SSL laye
+  * BUG/MEDIUM: threads: Fiw build when using no thread
+  * BUG/MEDIUM: regex: initialize the match array earlier during boot
+  * REGTESTS: checks: Add script for external healthchecks
+  * BUG/MINOR: tcpcheck: Override external check if healthcheck section is set
+  * BUG/MINOR: mux_quic: do not interrupt recv on error/incomplete data
+  * BUG/MEDIUM: mux_quic: prevent risk of infinite loop on recv
+  * BUG/MEDIUM: server/checks: Support healtcheck keyword on default-server lines
+  * MINOR: check: Don't dump buffers state in check traces for external checks
+  * BUG/MEDIUM: check: Ignore small-buffer option when starting an external check
+  * BUG/MEDIUM: check: Skip tcpcheck post-config for external checks
+
+-------------------------------------------------------------------
+Mon Jun 22 09:39:24 UTC 2026 - varkoly@suse.com
+
+- Update otel to version ce86d09:
+  * DOC: otel: dropped source-artifact counts from the prose
+  * DOC: otel: reconciled the docs with the current filter code
+  * BUILD: otel: added a .gitignore for build and scratch artifacts
+  * MINOR: otel: added an 'exception' span directive
+  * MINOR: otel: extended the location check to otel-group actions
+  * MINOR: otel: warned when a condition is unusable at the scope's event
+  * MINOR: otel: warned when a fetch is unusable at the scope's event
+  * MINOR: otel: set the fetch-validity bits, and fixed on-client-session-start
+  * DOC: otel: documented the flush, instruments and scopes CLI commands
+  * DOC: otel: documented HTTP/TCP proxy modes and the TCP event set
+  * MINOR: otel: test: sampled the system CPU during the speed test
+  * DOC: otel: described the metric instrument types in 'instrument'
+  * DOC: otel: documented the export-pipeline status in 'flt-otel status'
+  * MINOR: otel: showed export-pipeline state in 'flt-otel status'
+  * MINOR: otel: added a TCP-mode test configuration
+  * DOC: otel: documented TCP-mode tracing and byte counting
+  * MINOR: otel: extended tracing to TCP-mode proxies
+  * DOC: otel: documented periodic gauges via the on-idle-timeout event
+  * MINOR: otel: warned about documented limitations at config load
+  * MINOR: otel: added an 'otel.context' sample fetch
+  * MINOR: otel: logged a reused span as a reference, not referenceless
+  * CLEANUP: otel: referenced the span keyword by enum in the ID check
+  * CLEANUP: otel: initialized argc in the config-line check
+  * BUG/MINOR: otel: cast the name byte to uint8_t for the ctype check
+  * MINOR: otel: skipped a missing extract context with a debug note
+  * Revert "BUG/MINOR: otel: did not hard-fail a stream that initiates a trace"
+  * MINOR: otel: added a 'scopes' CLI introspection command
+  * MINOR: otel: added an 'instruments' CLI introspection command
+  * MINOR: otel: added a 'flush' CLI command to force an export
+  * BUG/MINOR: otel: did not reject the documented 'no log' directive
+  * DOC: otel: aligned the error-mode help text with the CLI
+  * MINOR: otel: gated the group action on flag_used like the scope dispatch
+  * DOC: otel: documented group_data smp_val as reserved for fetch validation
+  * DOC: otel: documented smp_val_fe/be as reserved for fetch validation
+  * BUG/MINOR: otel: rejected HTTP header injection at on-http-end-request
+  * DOC: otel: aligned event docs with code, documented inject limits
+  * DOC: otel: documented keyword multiplicity and closed reference gaps
+  * BUG/MINOR: otel: rejected a duplicate 'idle-timeout' in a scope
+  * CLEANUP: otel: reformatted the FLT_OTEL_KW_MAP macro definition
+  * CLEANUP: otel: unified the keyword-to-code table lookups
+  * MINOR: otel: allowed several conditional status lines per span
+  * MINOR: otel: test: defaulted the path to the sibling haproxy executable
+  * CLEANUP: otel: unified the out-of-memory error message
+  * CLEANUP: otel: made the debug output consistent and unambiguous
+  * CLEANUP: otel: deduplicated the filter error handlers
+  * BUG/MINOR: otel: corrected the debug-only diagnostics
+  * BUG/MINOR: otel: did not hard-fail a stream that initiates a trace
+  * BUG/MINOR: otel: corrected the log-record body error handling
+  * BUG/MINOR: otel: did not leak injected pairs when the injection failed
+  * BUG/MEDIUM: otel: drove the idle timer from the stream task expiry
+  * BUG/MINOR: otel: did not format a NULL detail in the var registration
+  * BUG/MINOR: otel: made the bounds qsort comparator transitive
+  * BUG/MINOR: otel: rejected duplicate span 'parent' and 'kind' arguments
+  * BUG/MINOR: otel: hardened the group action error paths
+  * CLEANUP: otel: refreshed stale function doc comments
+  * DOC: otel: corrected stale facts across the documentation
+  * BUG/MINOR: otel: hardened the string buffer handling
+  * BUG/MINOR: otel: did not dereference NULL when removing headers
+  * MINOR: otel: improved the CLI status output and command access
+  * MINOR: otel: gated the 'unset-var' keyword on a condition
+  * MINOR: otel: gated the 'set-var-ctx' keyword on a condition
+  * CLEANUP: otel: centralized the 'if'/'unless' condition detection
+  * MINOR: otel: gated the 'log-record' keyword on a condition
+  * MINOR: otel: gated the 'instrument' keyword on a condition
+  * BUG/MINOR: otel: skipped set_status() for the 'ignore' status code
+  * DOC: otel: clarified that only the 'error' status carries a description
+  * MINOR: otel: guarded the deinit callback against a NULL configuration
+  * DOC: otel: reconciled the documentation with the parser
+  * BUG/MINOR: otel: allowed any valid address in the 'log' keyword
+  * MINOR: otel: gated the 'set-var' keyword on a condition
+  * MINOR: otel: gated the 'baggage' keyword on a condition
+  * MINOR: otel: gated the 'status' keyword on a condition
+  * MINOR: otel: gated the 'event' keyword on a condition
+  * MINOR: otel: gated the 'attribute' keyword on a condition
+  * MINOR: otel: added a shared helper for an optional if/unless condition
+  * DOC: otel: documented that telemetry delivery is best-effort
+  * MINOR: otel: added attributes to the standalone 'link' keyword
+  * MINOR: otel: added a per-event timestamp to the 'event' keyword
+  * BUG/MINOR: otel: kept the span timestamp when a 'time' sample is empty
+  * MINOR: otel: added the 'kind' keyword to set the span kind
+  * MINOR: otel: started the SDK once via an atomic claim, not the HTX flag
+  * BUG/MINOR: otel: read the attach rate limit from one snapshot
+  * MINOR: otel: traced spans and contexts as the runtime context is freed
+  * BUG/MINOR: otel: allowed a span status without a description
+  * CLEANUP: otel: unified config keyword synopsis placeholders
+  * DOC: otel: documented which callback raises each scope event
+  * MINOR: otel: added the on-http-tarpit-request scope event
+  * BUG/MEDIUM: otel: stopped the idle timer from clobbering analyse_exp
+  * CLEANUP: otel: named the link target a reference instead of a span
+  * MINOR: otel: added set-var/set-var-ctx/unset-var scope directives
+  * MINOR: otel: always compiled vars.o and added by-name variable helpers
+  * MINOR: otel: added an 'otel-stop' keyword to end tracing for a connection
+  * CLEANUP: otel: factored the scope ACL test into flt_otel_cond_pass()
+  * DOC: otel: corrected the stale flt_otel_is_disabled() description
+  * MINOR: otel: test: added log-record 'time' coverage to the full test
+  * MINOR: otel: recorded the wall-clock as the log record's observed time
+
+-------------------------------------------------------------------
 Tue Jun  9 14:24:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Force gcc 15 on 16.x to workaround an ICE on s390x/ppc64le

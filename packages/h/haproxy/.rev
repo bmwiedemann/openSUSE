@@ -2032,4 +2032,41 @@
     <comment></comment>
     <requestid>1358200</requestid>
   </revision>
+  <revision rev="187" vrev="1">
+    <srcmd5>ad3b31154083e6dc0a140883eb5c4c56</srcmd5>
+    <version>3.4.0+git31.fc300e9f2</version>
+    <time>1782142968</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.4.0+git31.fc300e9f2:
+  * BUG/MEDIUM: mux-fcgi: fix uint16_t overflow in drl += drp (bsc#1268557) VUL-0: CVE-2026-55203
+  * BUG/MEDIUM: http-act: Make a copy of the sample expr in (set/add)-headers-bin
+  * BUG/MEDIUM: mux_quic: fix freeze transfer after QCS rxbuf realign
+  * BUG/MINOR: hpack-tbl: add missing NULL check after hpack_dht_defrag() (bsc#1268558) VUL-0: CVE-2026-55204
+  * BUG/MEDIUM: ssl: Don't free the early data buffer too early
+  * BUG/MINOR: quic: fix rxbuf settings on backend side
+  * BUG/MINOR: mux-h1: Properly resolve file path for 'h1-case-adjust-file'
+  * BUG/MEDIUM: http-ana: Don't ignore L7 retry errors
+  * BUG/MINOR: http-ana: Remove a debugging memset on redirect
+  * BUG/MINOR: server: fix add server with consistent hash balancing
+  * BUG/MEDIUM: h3: Properly handle PUSH_PROMISE on backend connections
+  * BUG/MINOR: cpu-topo: use ha_diag_notice() to report thread creations
+  * MINOR: errors: add ha_diag_notice() to report diag-level notifications
+  * BUG/MEDIUM: ktls: defer enabling TLS ULP on a socket until connected
+  * BUG/MEDIUM: acme: stuck ACME task when authz is already &quot;valid&quot;
+  * BUG/MINOR: quic: fix Initial length value in sent packets
+  * REGTESTS: Fix log matching in healthcheck-section.vtc
+  * BUG/MEDIUM: checks: Dequeue checks on purge
+  * BUG/MINOR: acl: report &quot;ACL&quot; not &quot;map&quot; in ACL ID lookup failures
+  * CLEANUP: sessions: simplify the sess_priv_conns pool name
+  * BUG/MEDIUM: xprt_qmux: implement -&gt;get_ssl_sock_ctx() to get the SSL laye
+  * BUG/MEDIUM: threads: Fiw build when using no thread
+  * BUG/MEDIUM: regex: initialize the match array earlier during boot
+  * REGTESTS: checks: Add script for external healthchecks
+  * BUG/MINOR: tcpcheck: Override external check if healthcheck section is set
+  * BUG/MINOR: mux_quic: do not interrupt recv on error/incomplete data
+  * BUG/MEDIUM: mux_quic: prevent risk of infinite loop on recv
+  * BUG/MEDIUM: server/checks: Support healtcheck keyword on default-server lines
+  * MINOR: check: Don't dump buffers state in check traces for external checks</comment>
+    <requestid>1361069</requestid>
+  </revision>
 </revisionlist>
