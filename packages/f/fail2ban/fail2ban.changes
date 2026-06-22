@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 19 18:13:53 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs
+- Make build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Thu Jun 19 19:00:38 UTC 2025 - chris@computersalat.de
 
 - fix build

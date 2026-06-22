@@ -1,7 +1,7 @@
 #
 # spec file for package fail2ban
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -108,18 +108,11 @@ Just have to run the following command:
   $ ./check_fail2ban --help
 
 %prep
-%setup -q
+%autosetup -p1
 install -m644 %{SOURCE8} config/paths-opensuse.conf
 
 # Use openSUSE paths
 sed -i -e 's/^before = paths-.*/before = paths-opensuse.conf/' config/jail.conf
-
-%patch -P 100 -p1
-%patch -P 201 -p1
-%patch -P 300 -p1
-%patch -P 301 -p1
-%patch -P 302 -p1
-%patch -P 303 -p1
 
 rm 	config/paths-arch.conf \
 	config/paths-debian.conf \
@@ -152,7 +145,7 @@ install -d -m 755 %{buildroot}/run
 touch %{buildroot}/run/%{name}
 
 # systemd
-if [[ ! -f build/fail2ban.service ]]; then
+if [ ! -f build/fail2ban.service ]; then
   sed -e "s|@BINDIR@|%{_bindir}|g" files/fail2ban.service.in > build/fail2ban.service
 fi
 install -D -m 644 build/fail2ban.service "%{buildroot}/%{_unitdir}/%{name}.service"

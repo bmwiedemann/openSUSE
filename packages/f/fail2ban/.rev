@@ -761,4 +761,13 @@ services protected by Fail2ban. CVE-2013-7177 (cyrus-imap) and CVE-2013-7176
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1288744</requestid>
   </revision>
+  <revision rev="76" vrev="7">
+    <srcmd5>c1a0a0e68ea8c623331cfa4bb03b5416</srcmd5>
+    <version>1.1.0</version>
+    <time>1782141991</time>
+    <user>anag_factory</user>
+    <comment>- Modernize specfile constructs
+- Make build recipe compatible with POSIX sh</comment>
+    <requestid>1360655</requestid>
+  </revision>
 </revisionlist>
