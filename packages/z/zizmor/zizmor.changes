@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Sun Jun 21 12:19:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.1:
+  This is a small corrective release for 1.26.0.
+- Update to version 1.26.0:
+  * New Features
+    - New audit: typosquat-uses detects uses: clauses that
+      reference likely typoed actions (#1985)
+    - New audit: unsound-ternary detects pseudo-ternary expressions
+      that don't evaluate as expected (#2085)
+    - New audit: adhoc-packages detects run: steps that install
+      packages in an ad-hoc manner (#2061)
+  * Enhancements
+    - The cache-poisoning audit now detects additional cache
+      disablement heuristics (#2053)
+    - The known-vulnerable-actions audit is now configurable. See
+      the configuration documentation for details (#2084)
+    - The excessive-permissions audit is now aware of the
+      code-quality permission (#2088)
+    - The unpinned-uses audit's auto-fix now uses the fully
+      qualified version tag (e.g. # v6.0.2) when fixing a
+      major-version ref (e.g. @v6) (#2127)
+  * Performance Improvements
+    - Most online audits are significantly faster, thanks to more
+      precise retry handling (#2036)
+  * Bug Fixes
+    - Fixed a bug where zizmor's LSP would not recognize
+      dependabot.yaml files in its default configuration (#2026)
+    - Fixed a bug where ref-version-mismatch would fail to fully
+      match some version comments (#2040)
+    - Fixed a bug where dependabot-cooldown would fail to honor the
+      user's configured days when performing autofixes (#2055)
+    - Steps and jobs gated by statically-false if: conditions (e.g.
+      if: false, if: ${{ false }}) are now skipped during auditing,
+      since they cannot execute (#2059, #2069)
+    - Fixed a bug where ref-version-mismatch would fail to identify
+      some valid version comments (#2073)
+    - Fixed a bug where unpinned-images would incorrectly flag
+      empty matrix expansions as unpinned container image
+      references (#2102)
+    - Fixed a bug where unpinned-images would incorrectly flag some
+      matrix expansions as unpinned (#2098)
+    - The SARIF (--format=sarif) and GitHub Annotations
+      (--format=github) output formats now provide more
+      correct/useful paths, particularly when the user provides a
+      relative path as input to zizmor rather than zizmor . (#1748,
+      #2095)
+  * Changes
+    - The impostor-commit audit no longer suggests auto-fixes, to
+      avoid incorrectly minimizing the amount of manual remediation
+      work needed (#2054)
+    - The JSON and SARIF outputs no longer contain a misleading
+      prefix key (#2095)
+  * Dependencies
+    - chore(deps): bump http from 1.4.1 to 1.4.2 in the cargo group
+      (#2125)
+    - chore(deps): bump the github-actions group across 1 directory
+      with 3 updates (#2119)
+    - chore(deps): bump the cargo group across 1 directory with 2
+      updates (#2118)
+    - chore(deps): bump CodSpeedHQ/action from 4.15.1 to 4.17.0 in
+      the github-actions group (#2109)
+    - chore(deps): bump the github-actions group with 5 updates
+      (#2091)
+    - chore(deps): bump the cargo group with 5 updates (#2090)
+    - chore(deps): bump the cargo group with 3 updates (#2066)
+    - chore(deps): bump the github-actions group with 2 updates
+      (#2067)
+    - chore(deps): bump the cargo group with 3 updates (#2034)
+    - chore(deps): bump the github-actions group with 2 updates
+      (#2035)
+
+-------------------------------------------------------------------
 Sat May 16 06:56:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.2:
