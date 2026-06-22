@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 19 17:28:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.99.4.8 (the maintained Calamaris "Version 3"
+  development line):
+  * Support for many more log formats (NetCache, Inktomi Traffic
+    Server, OOPS, Cisco Content Engines, Extended Log-file-Format, ...)
+  * Optional graphical HTML output (requires the GD::Graph and
+    NetAddr::IP Perl modules)
+  * Years of accumulated fixes since 2.59
+- Re-point Source/URL to https://cord.de/files/calamaris/
+- Drop 0001_perl.patch: the deprecated defined(%hash) construct it
+  fixed is gone upstream
+- Adjust %doc to the files shipped by this release (CHANGES is no
+  longer present)
+
+-------------------------------------------------------------------
 Mon Feb 26 10:33:20 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

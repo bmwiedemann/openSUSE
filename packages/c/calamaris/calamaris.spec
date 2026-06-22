@@ -1,7 +1,7 @@
 #
 # spec file for package calamaris
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           calamaris
-Version:        2.59
+Version:        2.99.4.8
 Release:        0
 Summary:        A Report Generator
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Web/Utilities
-URL:            http://calamaris.cord.de
-Source:         http://cord.de/%{name}-%{version}.tar.gz
-Patch0001:      0001_perl.patch
+URL:            https://calamaris.cord.de/
+Source:         https://cord.de/files/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 
 %description
@@ -32,7 +30,7 @@ Calamaris parses log files from Squid V1.1.x, V1.2.x, V2.x, and NetCache in
 native log format and generates a report.
 
 %prep
-%autosetup -p0
+%autosetup
 
 %build
 
@@ -44,7 +42,7 @@ install -Dpm 0644 calamaris.1 \
 
 %files
 %license COPYRIGHT
-%doc CHANGES EXAMPLES README
+%doc README EXAMPLES BUGS CONTRIBUTORS TODO
 %{_bindir}/calamaris
 %{_mandir}/man1/calamaris.1%{?ext_man}
 
