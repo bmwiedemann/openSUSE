@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 18:18:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.8.2
+  * clarity/wording improvements throughout project.
+  * add 'new_allocation()' to simplify 'resize()'.
+  * drop Python 3.6 support.
+
+-------------------------------------------------------------------
 Fri Apr  3 13:41:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.8.1:
