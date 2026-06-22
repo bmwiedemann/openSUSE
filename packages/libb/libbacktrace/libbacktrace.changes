@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jun 19 14:36:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20260601:
+  * libbacktrace: support compressed block with no sequences
+  * libbacktrace: Fix typos in various files
+  * libbacktrace: support multiple zstd frames
+  * libbacktrace: don't use ZSTD_CLEVEL_DEFAULT
+  * Update copyright years.
+  * Update copyright years.
+  * libbacktrace: use correct names in #undef of ELF macros
+  * libbacktrace: recognize PE bigobj objects at configure time
+  * libbacktrace: Add hpux fileline support
+  * bootstrap/119680 - fix cross-compiler build with --enable-host-shared
+  * libbacktrace: Use correct type in backtrace_atomic_store_int
+
+-------------------------------------------------------------------
 Thu Mar 13 11:48:43 UTC 2025 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20250210:

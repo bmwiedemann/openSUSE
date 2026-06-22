@@ -105,4 +105,12 @@
   * libbacktrace: use WIN32_LEAN_AND_MEAN, not WIN32_MEAN_AND_LEAN</comment>
     <requestid>1252740</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1102042d1b318ed896a8b2c78ba0c2e6</srcmd5>
+    <version>1.0+git20260601</version>
+    <time>1782144331</time>
+    <user>anag_factory</user>
+    <comment>Refresh git snapshot to 1.0+git20260601 (was git20250210, ~16 months of upstream fixes)</comment>
+    <requestid>1360632</requestid>
+  </revision>
 </revisionlist>
