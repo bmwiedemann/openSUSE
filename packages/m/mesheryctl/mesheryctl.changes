@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jun 22 05:24:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.45:
+  * General
+    - Bump go.mongodb.org/mongo-driver from 1.17.6 to 1.17.7 in
+      /server/policies/wasm @dependabot[bot] (#20154)
+  * Meshery CLI
+    - [uuid] Restore gofrs/uuid (reverse 3384af4); pin schemas
+      v1.3.13 + meshkit v1.0.16 @ritzorama (#20177)
+  * Maintenance
+    - Bump github.com/containerd/containerd from 1.7.32 to 1.7.33
+      @dependabot[bot] (#20156)
+- update to 1.0.44:
+  * General
+    - Bump github.com/containerd/containerd from 1.7.32 to 1.7.33
+      in /server/policies/wasm @dependabot[bot] (#20153)
+    - refactor(server): remove obsolete WASM filter startup seeding
+      @ishwar170695 (#20057)
+    - fix:[UI]resolve missing logo for AWS API Gateway model
+      @aprv10 (#19498)
+  * Meshery CLI
+    - refactor: migrate UUID library from gofrs/uuid to google/uuid
+      @leecalcote (#20166)
+    - refactor: consolidate ownership property naming to 'owner'
+      @leecalcote (#20147)
+  * Maintenance
+    - Bump undici in /ui @dependabot[bot] (#20152)
+    - refactor: consolidate ownership property naming to 'owner'
+      @leecalcote (#20147)
+    - ci(docs): pin peaceiris/actions-gh-pages to v4.0.0 to fix
+      intermittent deploy failures @copilot-swe-agent[bot] (#20111)
+    - Bump form-data from 4.0.5 to 4.0.6 in /provider-ui
+      @dependabot[bot] (#20106)
+    - Bump js-yaml from 4.1.1 to 4.2.0 in /provider-ui
+      @dependabot[bot] (#20107)
+    - Bump form-data from 4.0.5 to 4.0.6 in /ui @dependabot[bot]
+      (#20105)
+    - [CI] Recreate Discussion Forum data sync workflow
+      @PragalvaXFREZ (#20101)
+  * Documentation
+    - refactor: consolidate ownership property naming to 'owner'
+      @leecalcote (#20147)
+    - [docs]: update meshery-academy hyperlink and wording
+      @banana-three-join (#20126)
+    - Create index.md @YASHMAHAKAL (#20128)
+    - docs: fix make docker target to docker-build @Daniel-1600
+      (#20093)
+    - [Docs] Bringing Back Discussion Forum Shortcodes
+      @PragalvaXFREZ (#20100)
+    - Fix wording for clarity in Artifact Hub tutorial @chellej
+      (#20095)
+
+-------------------------------------------------------------------
 Mon Jun 15 04:59:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.43:
