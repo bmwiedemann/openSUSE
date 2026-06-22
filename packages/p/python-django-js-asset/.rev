@@ -85,4 +85,23 @@
 - Update to 2.2:</comment>
     <requestid>1344473</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>158b3e30be50f3e9a4c45f7213521f35</srcmd5>
+    <version>4.0.1</version>
+    <time>1782142132</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * Added js_asset.Media, a django.forms.Media subclass with two
+    extra abilities.
+  * JS and CSS now produce Django's own Script and Stylesheet
+    objects (backported via js_asset._compat on Django versions
+    that lack them) instead of being standalone dataclasses
+  * Script, Stylesheet, MediaAsset and InlineStyle can now be
+    imported from js_asset
+  * Equality now follows Django's own contract: identity is
+    attribute-aware on Django 4.2–5.1 and 6.2+,
+  * Added a static_lazy helper (a lazy wrapper around static()
+  * Removed the global importmap object</comment>
+    <requestid>1360750</requestid>
+  </revision>
 </revisionlist>

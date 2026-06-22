@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-js-asset
-Version:        3.1.2
+Version:        4.0.1
 Release:        0
 Summary:        Script tag with additional attributes for django.formsMedia
 License:        BSD-3-Clause
-URL:            https://github.com/matthiask/django-js-asset/
-Source:         https://github.com/matthiask/django-js-asset/archive/%{version}.tar.gz
+URL:            https://github.com/feincms/django-js-asset/
+Source:         https://github.com/feincms/django-js-asset/archive/%{version}.tar.gz
 BuildRequires:  %{python_module Django}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
