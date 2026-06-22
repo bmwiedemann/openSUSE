@@ -29,4 +29,17 @@
   * misc bug fixes</comment>
     <requestid>1359339</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>3dbab7a2687a4760d3b31a98a6848371</srcmd5>
+    <version>20260604</version>
+    <time>1782142196</time>
+    <user>anag_factory</user>
+    <comment>- Explicitly add -fPIC to fix:
+  /usr/lib/quickjs//libquickjs.a(libregexp.o): warning: relocation
+    against `lre_ctype_bits' in read-only section `.text'
+  /usr/lib/quickjs//libquickjs.a(quickjs.o): relocation R_X86_64_PC32
+    against symbol `lre_ctype_bits' can not be used when making a
+    shared object; recompile with -fPIC</comment>
+    <requestid>1360784</requestid>
+  </revision>
 </revisionlist>

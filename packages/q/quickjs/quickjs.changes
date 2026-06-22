@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jun 18 11:05:36 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Explicitly add -fPIC to fix:
+  /usr/lib/quickjs//libquickjs.a(libregexp.o): warning: relocation
+    against `lre_ctype_bits' in read-only section `.text'
+  /usr/lib/quickjs//libquickjs.a(quickjs.o): relocation R_X86_64_PC32
+    against symbol `lre_ctype_bits' can not be used when making a
+    shared object; recompile with -fPIC
+
+-------------------------------------------------------------------
 Mon Jun 15 02:22:41 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Switch back to upstream release version

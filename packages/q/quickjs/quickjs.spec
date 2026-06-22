@@ -53,7 +53,7 @@ Development headers for quickjs
 %setup -q -n %{name}-%{ver}
 # inject optflags (cannot be passed normally to build)
 cat >> "./Makefile" <<-EOF
-CFLAGS += %{optflags} -ffat-lto-objects
+CFLAGS += %{optflags} -fPIC -ffat-lto-objects
 LDFLAGS += %{optflags}
 EOF
 
