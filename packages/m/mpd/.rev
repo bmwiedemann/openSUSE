@@ -907,4 +907,12 @@
   * output: fixed auto-reopen after error times out</comment>
     <requestid>1351467</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>e2638e4866cf6ec73b852c31cac62bc1</srcmd5>
+    <version>0.24.12</version>
+    <time>1782142387</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360819</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 21 10:08:04 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.24.12
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/MPD/v0.24.10/NEWS
+  * protocol: fixed path traversal bug and allow empty URI
+  * playlist: do not allow newlines in song URIs
+  * decoder
+    * pcm: fixed stack buffer overflow
+    * sidplay: added fall back to SIDLiteBuilder if ReSIDfpBuilder is unavailable
+
+-------------------------------------------------------------------
 Thu May  7 15:36:58 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 0.24.10
