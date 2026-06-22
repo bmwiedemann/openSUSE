@@ -195,4 +195,12 @@ Requires python-setuptools 78 to build successfully.
   - Adjust upstream source name in spec file</comment>
     <requestid>1318486</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8208f423df7e8d4cd7a371f6593632f4</srcmd5>
+    <version>6.2</version>
+    <time>1782142563</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1360886</requestid>
+  </revision>
 </revisionlist>

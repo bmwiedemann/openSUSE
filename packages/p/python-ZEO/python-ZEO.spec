@@ -1,7 +1,7 @@
 #
 # spec file for package python-ZEO
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,9 +16,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-ZEO
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Client-Server storage implementation for ZODB
 License:        ZPL-2.1
