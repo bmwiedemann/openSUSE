@@ -614,4 +614,17 @@
 - Remove patch fix-CVE-2026-33747.patch, fixed upstream (forwarded request 1355960 from rrahl0)</comment>
     <requestid>1355961</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>709980c8756415a65e3af3eccdf5e70a</srcmd5>
+    <version>1.98.6</version>
+    <time>1782142176</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.98.6:
+  + ssh/tailssh: reject dangerous LD_/DYLD_ env vars in acceptEnv filtering
+  + go.mod,wgengine/magicsock: pull wireguard-go fix for roaming endpoints
+  + wgengine/magicsock: suppress TSMP disco advert when bestAddr is peer
+  + control/controlknobs,wgengine/magicsock: disable TSMP disco advert if
+    netmap caching is disabled (forwarded request 1360775 from rrahl0)</comment>
+    <requestid>1360776</requestid>
+  </revision>
 </revisionlist>
