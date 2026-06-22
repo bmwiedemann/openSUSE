@@ -168,4 +168,22 @@ Also a dep of fastapi (https://repology.org/project/python:fastapi/versions) and
     `parse_options_header` #270.</comment>
     <requestid>1355079</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>6e912b324ac81271ddd5017405991d8c</srcmd5>
+    <version>0.0.32</version>
+    <time>1782144316</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.32
+  * Replace per-byte partial-boundary scan with rfind lookbehind
+- Update to 0.0.31 (fixes CVE-2026-53540 (bsc#1268488))
+  * Speed up multipart header parsing and callback dispatch
+  * Bound header field name size before validating
+  * Validate Content-Length is non-negative in parse_form
+- Update to 0.0.30 (fixes CVE-2026-53537 (bsc#1268506),
+  CVE-2026-53538 (bsc#1268496), CVE-2026-53539 (bsc#1268500))
+  * Treat only &amp; as the urlencoded field separator
+  * Ignore RFC 2231 extended parameters in parse_options_header
+</comment>
+    <requestid>1360615</requestid>
+  </revision>
 </revisionlist>

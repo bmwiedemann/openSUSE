@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 19 08:50:04 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.0.32
+  * Replace per-byte partial-boundary scan with rfind lookbehind
+- Update to 0.0.31 (fixes CVE-2026-53540 (bsc#1268488))
+  * Speed up multipart header parsing and callback dispatch
+  * Bound header field name size before validating
+  * Validate Content-Length is non-negative in parse_form
+- Update to 0.0.30 (fixes CVE-2026-53537 (bsc#1268506),
+  CVE-2026-53538 (bsc#1268496), CVE-2026-53539 (bsc#1268500))
+  * Treat only & as the urlencoded field separator
+  * Ignore RFC 2231 extended parameters in parse_options_header
+
+-------------------------------------------------------------------
 Mon May 25 15:34:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.29:
