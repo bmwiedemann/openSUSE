@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jun 20 18:18:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.95.0:
+  * feat(skills): list available skills when install runs non-interactively (#13548)
+  * fix(skills): stage updates in a temp dir and swap in-place (#13449)
+  * feat: add `repo read-file` and `repo read-dir` (#13580)
+  * Bump Go in devcontainer
+  * Make filtering by bot authors more discoverable (#13642)
+  * chore(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0
+  * chore(deps): bump golang.org/x/term from 0.43.0 to 0.44.0
+  * chore(deps): bump charm.land/lipgloss/v2 from 2.0.3 to 2.0.4
+  * chore(deps): bump github.com/sigstore/sigstore-go from 1.1.4 to 1.2.1
+  * chore(deps): bump golang.org/x/text from 0.37.0 to 0.38.0
+  * test(skill): fix test case name
+  * test(skill): merge isolated test into table
+  * Potential fix for pull request finding
+  * docs(discussion): polish help docs
+  * chore(deps): bump github/codeql-action from 4.36.1 to 4.36.2
+  * fix test
+  * support custom CLAUDE_CONFIG_DIR in install
+
+-------------------------------------------------------------------
 Wed Jun 17 12:58:15 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.94.0:
