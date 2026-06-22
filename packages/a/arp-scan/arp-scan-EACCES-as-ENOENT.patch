@@ -1,0 +1,56 @@
+From edb43e2557aa1f459641060dafb77ccaf9082f2a Mon Sep 17 00:00:00 2001
+From: Roy Hills <royhills@hotmail.com>
+Date: Sat, 14 Jan 2023 15:16:56 +0000
+Subject: [PATCH] Treat EACCES as ENOENT when opening mapping files in current
+ directory (#120)
+
+* Treat EACCES as ENOENT when opening mapping files in current directory
+
+* Updated manpage and ChangeLog
+---
+ ChangeLog       | 9 +++++++++
+ arp-scan.1.dist | 6 +++---
+ arp-scan.c      | 2 +-
+ 3 files changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/arp-scan.1.dist b/arp-scan.1.dist
+index a2dcc52..1860abc 100644
+--- a/arp-scan.1.dist
++++ b/arp-scan.1.dist
+@@ -5,7 +5,7 @@
+ .\" are permitted in any medium without royalty provided the copyright
+ .\" notice and this notice are preserved.
+ .\"
+-.TH ARP-SCAN 1 "November 9, 2022"
++.TH ARP-SCAN 1 "January 14, 2023"
+ .\" Please adjust this date whenever revising the man page.
+ .SH NAME
+ arp-scan \- Send ARP requests to target hosts and display responses
+@@ -209,12 +209,12 @@ Use \fB--interface\fP to specify the interface.
+ \fB--ouifile\fP=\fI<s>\fP or \fB-O \fI<s>\fR
+ Use IEEE registry vendor mapping file \fI<s>\fP.
+ Default is \fIieee-oui.txt\fP in the current directory.
+-If that is not found \fI@PKGDATADIR@/ieee-oui.txt\fP is used.
++If that is not found or cannot be opened \fI@PKGDATADIR@/ieee-oui.txt\fP is used.
+ .TP
+ \fB--macfile\fP=\fI<s>\fP or \fB-m \fI<s>\fR
+ Use custom vendor mapping file \fI<s>\fP.
+ Default is \fImac-vendor.txt\fP in the current directory.
+-If that is not found \fI@PKGSYSCONFDIR@/mac-vendor.txt\fP is used.
++If that is not found or cannot be opened \fI@PKGSYSCONFDIR@/mac-vendor.txt\fP is used.
+ .SS "Output Format Control"
+ .TP
+ .BR --quiet " or " -q
+diff --git a/arp-scan.c b/arp-scan.c
+index 04bba56..a7babe5 100644
+--- a/arp-scan.c
++++ b/arp-scan.c
+@@ -2642,7 +2642,7 @@ get_mac_vendor_filename(const char *specified_filename,
+    if (!specified_filename) { /* No filename specified */
+       file_name = make_message("%s", default_filename);
+       status = stat(file_name, &statbuf);
+-      if (status == -1 && errno == ENOENT) {
++      if (status == -1 && (errno == ENOENT || errno == EACCES)) {
+          free(file_name);
+          file_name = make_message("%s/%s", default_datadir, default_filename);
+       }

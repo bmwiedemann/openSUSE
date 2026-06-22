@@ -1,7 +1,7 @@
 #
 # spec file for package arp-scan
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,10 @@ Release:        0
 Summary:        ARP scanning and fingerprinting tool
 # strlcpy.c and strlcat.c have ISC header and embeded {getopt,obstack}.{c,h} has LGPL-2.1
 License:        GPL-3.0-only AND LGPL-2.1-only AND ISC
-Group:          Productivity/Networking/Security
 URL:            https://github.com/royhills/arp-scan
 Source:         https://github.com/royhills/arp-scan/releases/download/%{version}/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM arp-scan-EACCES-as-ENOENT.patch boo#1210703 gh#royhills/arp-scan#120 -- treat EACCES like ENOENT when stat'ing the mapping file in CWD, so it falls through to the system datadir instead of failing with "Permission denied"
+Patch0:         arp-scan-EACCES-as-ENOENT.patch
 BuildRequires:  perl-macros
 BuildRequires:  pkgconfig
 BuildRequires:  perl(LWP::Simple)

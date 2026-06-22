@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:51:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add arp-scan-EACCES-as-ENOENT.patch: treat EACCES like ENOENT when
+  stat'ing the MAC/vendor mapping file (ieee-oui.txt / mac-vendor.txt)
+  in the current directory, so arp-scan falls through to the system
+  datadir instead of failing with "Permission denied"
+  (boo#1210703, gh#royhills/arp-scan#120)
+- Drop obsolete RPM group
+
+-------------------------------------------------------------------
 Wed Mar  1 21:49:28 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.10.0

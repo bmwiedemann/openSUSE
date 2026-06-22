@@ -86,4 +86,12 @@
     <comment></comment>
     <requestid>1068705</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>693aba3dff80d23283a21cf9d8769fe4</srcmd5>
+    <version>1.10.0</version>
+    <time>1782142721</time>
+    <user>anag_factory</user>
+    <comment>Fix 'Cannot open MAC/Vendor file ... Permission denied' (boo#1210703): backport upstream gh#royhills/arp-scan#120 so an unreadable mapping file in CWD (EACCES) falls through to the system datadir instead of failing. (forwarded request 1361008 from pluskalm)</comment>
+    <requestid>1361009</requestid>
+  </revision>
 </revisionlist>
