@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sat Jul 12 15:55:19 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Add crypton-pem at version 0.3.0.
+  * Fix CVE-2026-9648, bsc#1268157.
