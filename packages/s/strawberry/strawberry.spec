@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.19
+Version:        1.2.20
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -53,7 +53,6 @@ BuildRequires:  cmake(Qt6Network)
 BuildRequires:  cmake(Qt6Sql)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
-BuildRequires:  cmake(RapidJSON)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fftw3)
@@ -98,7 +97,7 @@ Features:
   - Edit tags on music files
   - Fetch tags from MusicBrainz
   - Album cover art from Last.fm, Musicbrainz, Discogs, Musixmatch, Deezer, Tidal, Qobuz and Spotify
-  - Song lyrics from Musixmatch, ChartLyrics, lyrics.ovh and lololyrics.com
+  - Song lyrics from multiple sources
   - Support for multiple backends
   - Audio analyzer
   - Equalizer
