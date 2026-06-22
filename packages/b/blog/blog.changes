@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Mon Jun 22 13:48:12 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.42
+  Fix possible memory leaks, eliminate type punning, and resolve I/O blocking
+  This update implements a series of systemic improvements to stability,
+  security, and performance:
+  1. Memory Safety & Leak Resolution:
+     - Implemented lcons_shutdown destructor to automatically purge the console
+       list and close FDs on exit.
+     - Fixed password buffer leak by using in closeIO, correctly matching
+       the mmap allocation in shm_malloc.
+     - Added cleanup for pwprompt in closeIO.
+  2. Elimination of Dangerous Type Punning:
+     - Replaced the unreliable &cons->node pattern with a type-safe list_t lcons
+       sentinel across the codebase.
+     - Added __attribute__((may_alias)) to list_t in listing.h to prevent
+       compiler strict aliasing optimizations from corrupting list traversals.
+  3. I/O Responsiveness & Stability:
+     - Removed tcdrain() from the high-frequency epoll_console_in path to
+       eliminate daemon freezes during heavy output.
+     - Updated consinitIO to ensure CON_SERIAL devices remain in O_NONBLOCK
+       mode, preventing freezes on slow serial lines.
+     - Extended the tcdrain skip-list in closeIO to include CON_SERIAL, ensuring
+       a hang-free shutdown.
+  4. Architectural Improvements:
+     - Redesigned shm_malloc to use a tiered mapping strategy: prefers
+       file-backed shared memory in /dev/shm with a graceful fallback
+       to MAP_ANONYMOUS.
+     - Optimized listing.h with always_inline attributes, __builtin_prefetch
+       for cache efficiency, and list poisoning for safer debugging.
+
+-------------------------------------------------------------------
+Fri Jun 19 12:45:28 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.41
+  * The __attribute__((noreturn)) for error() in libconsole.h added
+  * The variable err with 0 initialized in thread_poll()
+  * The variable cp.parity with {0} initialized in readpw()
+  * feat(blogd): handle pending systemd password requests on coldstart
+  * Initialize console pointer list as well
+  * Check peer credentials before reading command
+  * Make isinteger() string check usable for all architectures
+  * Add some comments about warnings and translation for S390
+
+-------------------------------------------------------------------
 Fri Apr 24 07:49:36 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.40
