@@ -44,4 +44,15 @@
   + Workaround for &quot;Pantum BP5100DN series&quot; initialization failure (forwarded request 1355950 from rrahl0)</comment>
     <requestid>1355951</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b3786a6fa9482db2c63e98b8befb234a</srcmd5>
+    <version>0.9.34</version>
+    <time>1782142157</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.9.34:
+  +  Remove HP X677 quirks
+  + Yet another workaround for HP LaserJet Enterprise M406 devices
+  + Added disable-scan quirk (required for HP LaserJet Enterprise M406) (forwarded request 1360770 from rrahl0)</comment>
+    <requestid>1360771</requestid>
+  </revision>
 </revisionlist>

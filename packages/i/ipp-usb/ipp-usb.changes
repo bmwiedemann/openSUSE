@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:05:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.9.34:
+  +  Remove HP X677 quirks
+  + Yet another workaround for HP LaserJet Enterprise M406 devices
+  + Added disable-scan quirk (required for HP LaserJet Enterprise M406)
+
+-------------------------------------------------------------------
 Fri May 29 19:13:17 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.9.33:
