@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:28:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 23.0.3:
+  * Bug Fixes
+    - git town continue now works with faulty Git pre-commit hooks
+      (#6242).
+    - git town ship now works from a Git worktree (#6237).
+
+-------------------------------------------------------------------
 Mon Jun 08 05:35:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 23.0.2:
