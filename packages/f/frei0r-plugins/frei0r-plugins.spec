@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        3.2.1
+Version:        3.2.2
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -25,8 +25,9 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://frei0r.dyne.org/
 Source0:        https://github.com/dyne/frei0r/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.0.0
 BuildRequires:  pkgconfig(gavl) >= 0.2.3

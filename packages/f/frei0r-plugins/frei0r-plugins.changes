@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 21 07:46:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.2.2:
+  + fix(tint0r): build with SSE4 failing on incompatible types
+  + chore: fix typo in cmake for WITHOUT_CAIRO
+  + docs: make generated api links external
+- Replace gcc-c++ with generic c++_compiler BuildRequires
+
+-------------------------------------------------------------------
 Tue Jun  9 15:30:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.2.1:
