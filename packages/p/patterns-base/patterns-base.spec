@@ -984,7 +984,7 @@ The X Window System provides the only standard platform-independent networked gr
 
 %package x11_enhanced
 %pattern_graphicalenvironments
-Summary:        X Window System
+Summary:        Enhanced X Window System
 Group:          Metapackages
 Provides:       pattern() = x11_enhanced
 Provides:       pattern-icon() = pattern-x11
@@ -1082,7 +1082,7 @@ The X Window System provides the only standard platform-independent networked gr
 %ifarch armv6hl armv7hl aarch64
 %package x11_raspberrypi
 %pattern_graphicalenvironments
-Summary:        X Window System
+Summary:        X Window System (Raspberry Pi)
 Group:          Metapackages
 Provides:       pattern() = x11_raspberrypi
 Provides:       pattern-icon() = pattern-x11

@@ -40,7 +40,7 @@ sub parse_line {
 		exit (1);
 	}
 	if ($to_parse =~ /Summary:/) {
-		return "$to_parse\n";
+		return "$to_parse (32bit)\n";
 	}
 	# XXX simplify me
 	if ($to_parse =~ /Recommends:\s*([^\s]*)\s*/) {

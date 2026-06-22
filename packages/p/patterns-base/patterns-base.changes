@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:22:02 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Disambiguate 32bit patterns and x11 patterns summaries
+  (bsc#1267854)
+
+-------------------------------------------------------------------
 Wed Jun 10 06:33:33 UTC 2026 - Max Lin <mlin@suse.com>
 
 - only do Requires: libyui-ncurses-pkg and libyui-qt-pkg if
