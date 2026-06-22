@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:27:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.47.0:
+  * New Features
+    - 5c2f7ca: feat: RiscV64 support (#1091) (@ahqsoftwares)
+    - 64b788a: feat: add Requires(Post) for RPMS (#1085)
+      (@teddelin)
+    - dc96073: feat: add fang support for styled CLI output (#1068)
+      (@caarlos0)
+  * Security updates
+    - 060af04: sec(deps): update golang.org/x/crypto (@caarlos0)
+    - f769631: sec(deps): update golang.org/x/net (@caarlos0)
+  * Bug fixes
+    - 3118ec1: fix: tolerate empty overrides packager clause
+      (#1080) (@dleske)
+  * Dependency updates
+    - a2d9ce5: feat(deps): go1.26.4 (@caarlos0)
+    - 9b16218: fix(deps): bump alpine from 3.23.3 to 3.23.4 (#1075)
+      (@dependabot[bot])
+    - e3102b3: fix(deps): bump alpine from 3.23.3 to 3.23.4 in
+      /testdata/acceptance (#1076) (@dependabot[bot])
+    - 62c555e: fix(deps): bump alpine from 3.23.4 to 3.24.0 (#1098)
+      (@dependabot[bot])
+    - 071ae18: fix(deps): bump alpine from 3.23.4 to 3.24.0 in
+      /testdata/acceptance (#1099) (@dependabot[bot])
+  * Build process updates
+    - 4c62d34: ci(deps): bump github/codeql-action in the actions
+      group (#1083) (@dependabot[bot])
+    - 38a05de: ci(deps): bump the actions group across 1 directory
+      with 3 updates (#1096) (@dependabot[bot])
+    - 6fe4da4: ci(deps): bump the actions group across 1 directory
+      with 7 updates (#1095) (@dependabot[bot])
+    - cd95f9f: ci(deps): bump the actions group with 2 updates
+      (#1078) (@dependabot[bot])
+    - 8f9cbef: ci(deps): bump the actions group with 3 updates
+      (#1090) (@dependabot[bot])
+    - 9ff0e2f: ci(deps): bump the actions group with 4 updates
+      (#1086) (@dependabot[bot])
+    - 2ce1832: ci(deps): bump the actions group with 5 updates
+      (#1074) (@dependabot[bot])
+    - 1bd2fed: ci: fix docs build test (@caarlos0)
+    - 4695cdc: ci: fix license check (@caarlos0)
+    - a40b461: ci: update build (@caarlos0)
+  * Other work
+    - d16d75f: docs(deps): update hextra (@caarlos0)
+    - c6a6a27: docs: update cmd docs (@caarlos0)
+
+-------------------------------------------------------------------
 Sat Apr 18 05:15:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.46.3:
