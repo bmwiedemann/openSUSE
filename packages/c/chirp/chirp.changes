@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:10:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260619:
+  * Add Baofeng BF-5RH as alias of UV-5RH
+  * locale: Added Czech translation
+  * generic_csv: Fix ImmutableValueError when exporting special memories
+
+-------------------------------------------------------------------
 Fri Jun 12 18:20:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260612:
