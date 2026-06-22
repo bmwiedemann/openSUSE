@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.24.4
+Version:        0.25.2
 Release:        0
 Summary:        Amazon Web Services (AWS) for Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch01:        0001-switch-from-memory-or-ram-to-allow-building-with-htt.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
@@ -55,8 +56,8 @@ BuildRequires:  ghc-conduit-extra-prof
 BuildRequires:  ghc-conduit-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-cryptonite-devel
-BuildRequires:  ghc-cryptonite-prof
+BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-directory-devel

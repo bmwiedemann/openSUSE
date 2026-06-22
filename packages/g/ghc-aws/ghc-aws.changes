@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec  8 20:44:48 UTC 2025 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.25.2.
+    - S3: Add RestoreObject command
+    - S3: Make getBucket support Google Object Storage, which does
+      not include StorageClass in its response, by defaulting to Standard.
+    - [breaking change] Added poTagging constructor to PutObject
+    - Switch from no longer maintained cryptonite to crypton.
+    - Removed support for building with network-2.x, and removed the
+      NetworkBSD build flag.
+
+- Apply "0001-switch-from-memory-or-ram-to-allow-building-with-htt.patch"
+  to support http-client-tls 0.4.x. [CVE-2026-9648, bsc#1268157]
+
+-------------------------------------------------------------------
 Mon Jan 20 23:50:32 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update aws to version 0.24.4.
@@ -67,13 +82,13 @@ Tue Oct 12 10:51:29 UTC 2021 - psimons@suse.com
 -------------------------------------------------------------------
 Thu Mar 25 15:45:21 UTC 2021 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- relax overconstrained deps on attoparsec 
+- relax overconstrained deps on attoparsec
 
 -------------------------------------------------------------------
 Thu Dec 17 12:20:00 UTC 2020 - Ondřej Súkup <mimi.vx@gmail.com>
- 
+
 - disable %{ix86} build
- 
+
 -------------------------------------------------------------------
 Wed Aug 19 06:58:51 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 
@@ -88,4 +103,3 @@ Tue Aug 18 10:44:03 UTC 2020 - Peter Simons <psimons@suse.com>
 Tue Jun  9 09:26:38 UTC 2020 - psimons@suse.com
 
 - Add aws at version 0.22.
-
