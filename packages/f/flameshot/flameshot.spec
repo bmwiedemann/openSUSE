@@ -1,7 +1,7 @@
 #
 # spec file for package flameshot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           flameshot
-Version:        13.1.0
+Version:        14.0.0
 Release:        0
 Summary:        Screenshot software
 License:        GPL-3.0-only
@@ -30,6 +30,7 @@ BuildRequires:  cmake >= 3.13.0
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 7
+BuildRequires:  pcre2-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  cmake(Qt6Core) >= 6.0.0
 BuildRequires:  cmake(Qt6DBus) >= 6.0.0
