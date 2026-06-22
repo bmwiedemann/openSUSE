@@ -16,8 +16,8 @@
 #
 
 
-%define real_version 19.0.2
-%define short_version 19.0
+%define real_version 20.0.0
+%define short_version 20.0
 %define tar_name qt-creator-opensource-src
 %define tar_suffix %{nil}
 #
@@ -29,7 +29,7 @@ ExclusiveArch:  do_not_build
 %if "%{flavor}" == "qt6"
   %define qt6 1
   %define pkgname_prefix qt6
-  %define qt_min_version 6.5.3
+  %define qt_min_version 6.8.3
   %define qtc_docdir %{_qt6_docdir}
 %endif
 #
@@ -47,7 +47,7 @@ ExclusiveArch:  do_not_build
 %bcond_without docs
 
 Name:           %{pkgname_prefix}-creator
-Version:        19.0.2
+Version:        20.0.0
 Release:        0
 Summary:        Integrated Development Environment targeting Qt apps
 # src/plugins/cmakeprojectmanager/configmodelitemdelegate.* -> LGPL-2.1-only OR LGPL-3.0-only
@@ -64,18 +64,11 @@ Patch11:        fix-application-output.patch
 Patch12:        0001-Disable-some-plugins.patch
 ##
 BuildRequires:  cmake
-# clang-devel in Leap 15 points to clang7...
-%if 0%{?suse_version} == 1500
-# Use the same version as qt6-tools
-BuildRequires:  clang19-devel
-BuildRequires:  llvm19-devel
-%else
 BuildRequires:  clang-devel >= 10.0
 BuildRequires:  llvm-devel
-%endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  python3 >= 3.5
+BuildRequires:  python3 >= 3.8
 BuildRequires:  cmake(yaml-cpp)
 BuildRequires:  pkgconfig(libdw)
 BuildRequires:  pkgconfig(libelf)
@@ -101,6 +94,7 @@ BuildRequires:  cmake(Qt6Designer) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6DesignerComponentsPrivate) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Help) >= %{qt_min_version}
+BuildRequires:  cmake(Qt6HttpServer) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6LinguistTools) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6Network) >= %{qt_min_version}
 BuildRequires:  cmake(Qt6PrintSupport) >= %{qt_min_version}
@@ -268,9 +262,11 @@ rm -r %{buildroot}%{_datadir}/qtcreator/debugger-with-python2
 %dir %{_libexecdir}/qtcreator
 %{_libexecdir}/qtcreator/buildoutputparser
 %{_libexecdir}/qtcreator/cpaster
+%{_libexecdir}/qtcreator/dlwrapper
 %{_libexecdir}/qtcreator/perf2text
 %{_libexecdir}/qtcreator/perfparser
 %{_libexecdir}/qtcreator/qmlpuppet*
+%{_libexecdir}/qtcreator/qmltraceviewer
 %{_libexecdir}/qtcreator/qtc-askpass
 %{_libexecdir}/qtcreator/qtcreator_process_stub
 %{_libexecdir}/qtcreator/qtpromaker

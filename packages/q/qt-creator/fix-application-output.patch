@@ -1,4 +1,4 @@
-From b7268e359c0c0eded7abf6115e5d8fb1a90475b7 Mon Sep 17 00:00:00 2001
+From 9de5b2d2cfb290d2d80e94db7b47ffee6317deba Mon Sep 17 00:00:00 2001
 From: Javier Llorente <javier@opensuse.org>
 Date: Tue, 8 Dec 2020 14:08:11 +0100
 Subject: [PATCH] Fix application output
@@ -10,10 +10,10 @@ Workaround: set QT_LOGGING_TO_CONSOLE and QT_FORCE_STDERR_LOGGING
  1 file changed, 4 insertions(+)
 
 diff --git a/src/app/main.cpp b/src/app/main.cpp
-index 02fb35c..5f14a9b 100644
+index 8b66cb0..19e90f5 100644
 --- a/src/app/main.cpp
 +++ b/src/app/main.cpp
-@@ -669,6 +669,10 @@ int main(int argc, char **argv)
+@@ -647,6 +647,10 @@ int main(int argc, char **argv)
      restoreEnvVarFromSquish("SQUISH_SHELL_ORIG_DYLD_LIBRARY_PATH", "DYLD_LIBRARY_PATH");
      restoreEnvVarFromSquish("SQUISH_ORIG_DYLD_FRAMEWORK_PATH", "DYLD_FRAMEWORK_PATH");
  
@@ -25,5 +25,5 @@ index 02fb35c..5f14a9b 100644
          if ((*options.userLibraryPath).isEmpty()) {
              Environment::modifySystemEnvironment(
 -- 
-2.49.0
+2.54.0
 
