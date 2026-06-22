@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Jun 20 18:09:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Make the build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Mon Jun  9 08:58:35 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc15 (-std=gnu11)

@@ -1,7 +1,7 @@
 #
 # spec file for package alpine
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -136,7 +136,8 @@ fi
 # Comment on disabled warnings: The disabled warnings are rather harmless
 # and disabling them allows to focus on the really serious warnings:
 #
-export CFLAGS="${RPM_OPT_FLAGS/-O2/-Os} \
+CFLAGS="$(echo "%optflags" | sed -e 's/-O2/-Os/g')"
+export CFLAGS="$CFLAGS \
 		-Wno-unused-value -fno-strict-aliasing -Wno-pointer-sign -Wno-unused \
 		-Wno-address \
                 -std=gnu11 \
@@ -201,8 +202,8 @@ install -D -m644 %{SOURCE4} %{buildroot}/%{_datadir}/applications/%name.desktop
 :
 ln -sf		 alpine			%{buildroot}/%{_bindir}/pine
 :
-install -m755 pico/{pico,pilot}		%{buildroot}/%{_bindir}
-install -m644 doc/man1/{pico.1,pilot.1}	%{buildroot}/%{_mandir}/man1/
+install -m755 pico/pico pico/pilot %{buildroot}/%{_bindir}/
+install -m644 doc/man1/pico.1 doc/man1/pilot.1 %{buildroot}/%{_mandir}/man1/
 
 %check
 #since there are no logs in the package at the moment, there are no checks,

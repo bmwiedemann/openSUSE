@@ -498,4 +498,12 @@
     <comment></comment>
     <requestid>1284351</requestid>
   </revision>
+  <revision rev="61" vrev="31">
+    <srcmd5>2f976081efa562dbc7532c67bebe1475</srcmd5>
+    <version>unknown</version>
+    <time>1782142154</time>
+    <user>anag_factory</user>
+    <comment>- Make the build recipe compatible with POSIX sh</comment>
+    <requestid>1360759</requestid>
+  </revision>
 </revisionlist>
