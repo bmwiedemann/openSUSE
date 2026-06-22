@@ -1,4 +1,150 @@
 -------------------------------------------------------------------
+Fri Jun 19 07:13:41 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.15:
+  * Additions & Enhancements:
+    - Added new WpPermissionManager API that centralizes access
+      control for clients, with support for attaching permission
+      managers to clients from Lua scripts; the client access
+      scripts have been completely refactored to use the new API
+      with a select-access event and a priority fallback
+      mechanism: configuration, flatpak, snap, portal, and default
+      (!797 (merged), !822 (merged), !825 (merged))
+    - Added new WpStateMetadata class that mirrors the persistent
+      state into a PipeWire metadata object, allowing users to
+      clear or change saved device profiles at runtime using
+      pw-metadata (!818 (merged))
+    - Added set_param(), enum_params_sync() and params-changed
+      signal to WpSpaDevice, and an event signal for SPA device
+      events, allowing monitors to directly interact with SPA
+      devices and react to profile changes without going through
+      the global WpDevice object (!835 (merged), !842 (merged))
+    - Added list subcommand to wpctl for displaying PipeWire
+      objects in a script-friendly format, with bash completions
+      (!805 (merged), !823 (merged))
+    - Added reset command to wpctl to reset the state of
+      WirePlumber and PipeWire to installation defaults
+      (!848 (merged), !849 (merged))
+    - Enhanced wpctl to connect to the manager socket when
+      available, giving the tool unrestricted access to the
+      PipeWire graph (!814 (merged))
+    - Added new bluetooth.profile-preference setting to
+      find-preferred-profile for selecting quality or latency A2DP
+      profiles (!819 (merged))
+    - Added a cache for camera permission checks in the portal 
+      access module to avoid frequent D-Bus calls; also added a
+      3-second timeout and fixed the Set create parameter in
+      portal-permissionstore (!820 (merged), !821 (merged))
+  * Fixes:
+    - Fixed wpctl set-volume by PID to apply the same volume level
+      to all matching nodes (#944 (closed); !829 (merged))
+    - Fixed portal clients to be un-gated immediately after
+      permission setup, preventing them from remaining blocked
+      (#941 (closed); !826 (merged))
+    - Fixed ALSA monitor to set the device profile to Off and
+      restore it when a node enters an error state, forcing a
+      close/reopen of the device to recover from broken ALSA device
+      states (!837 (merged))
+    - Fixed voice call profile selection to not skip profiles with
+      unknown availability (!834 (merged))
+    - Fixed memory leak in Lua scripting by only holding a strong
+      reference of the Lua state when a script is activated,
+      preventing leaked proxy warning messages on core disconnect
+     (!844 (merged))
+    - Fixed state-stream to only use the media.role key when its
+      value is Notification when forming the stream state lookup
+      key (!845 (merged))
+    - Fixed pw-obj-mixin to apply the active filter when
+      enumerating cached params and to deduplicate subscribed param
+      IDs (!839 (merged), !840 (merged))
+    - Fixed m-lua-scripting to validate Bool values in
+      Pod.Choice.Enum (!841 (merged))
+    - Fixed shutdown sequence to properly deactivate all objects
+      and plugins before teardown (#881; !833 (merged))
+    - Fixed Bluetooth to not set bluez5.autoswitch-routes on BT
+      devices (!811 (merged))
+    - Fixed null pointer dereference in permission-manager
+      (!812 (merged))
+    - Fixed module destructor ordering to call the parent
+      destructor before finalizing internal state (!813 (merged))
+    - Fixed nil value when logging in state-profile (!815 (merged))
+    - Fixed gobject-introspection issue on spa-pod to correctly
+      generate Python bindings (!828 (merged))
+    - Updated translations: Chinese, Serbian, Serbian Latin
+
+-------------------------------------------------------------------
+Wed Mar 25 11:34:54 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.14:
+  * Additions & Enhancements:
+    - Added per-device default volume configuration via the
+      device.routes.default-{source,sink}-volume property, allowing
+      device-specific volume defaults (e.g. a comfortable default
+      for internal speakers or no attenuation for HDMI)
+    - Added Lua 5.5 support; the bundled Lua subproject wrap has
+      also been updated to 5.5.0
+    - Enhanced libcamera monitor to load camera nodes locally
+      within the WirePlumber process instead of the PipeWire
+      daemon, eliminating race conditions that could occur during
+      initial enumeration and hotplug events
+    - Enhanced Bluetooth loopback nodes to always be created when
+      a device supports both A2DP and HSP/HFP profiles, simplifying
+      the logic and making the BT profile autoswitch setting take
+      effect immediately without requiring device reconnection
+    - Enhanced Bluetooth loopback nodes to use target.object
+      property instead of smart filters, fixing issues that
+      prevented users from setting them as default nodes and also
+      allowing smart filters to be used with them
+    - Enhanced Bluetooth profile autoswitch logic with further
+      robustness improvements, including better headset profile
+      detection using profile name patterns and resolving race
+      conditions by running profile switching after
+      device/apply-profile in a dedicated event hook
+    - Enhanced wpctl set-default command to accept virtual nodes
+      (e.g. Audio/Source/Virtual) in addition to regular device
+      nodes
+    - Improved stream linking to make the full graph rescan
+      optional when linkable items change, saving CPU on low-end
+      systems and reducing audio startup latency when connecting
+      multiple streams in quick succession (!800 (merged))
+    - Allowed installation of systemd service units without
+      libsystemd being present, useful for distributions like
+      Alpine Linux that allow systemd service subpackages
+    - Allowed the mincore syscall in the WirePlumber systemd
+      sandbox, required for Mesa/EGL (e.g. for the libcamera
+      GPUISP pipeline)
+    - Allowed passing WIREPLUMBER_CONFIG_DIR via the
+      wp-uninstalled script, useful for passing additional
+      configuration paths in an uninstalled environment
+  * Fixes:
+    - Removed Bluetooth sink loopback node, which was causing
+      issues with KDE and GNOME
+    - Fixed default audio source selection to never automatically
+      use Audio/Sink nodes as the default source unless explicitly
+      selected by the user
+    - Fixed crash in state-stream when the Format parameter has a
+      Choice for the number of channels
+    - Fixed BAP Bluetooth device set channel properties, where
+      audio.position was incorrectly serialized as a pointer
+      address instead of the channel array
+    - Fixed memory leaks in
+      wp_interest_event_hook_get_matching_event_types and in the
+      Lua LocalModule() implementation
+    - Fixed HFP HF stream media class being incorrectly assigned
+      due to api.bluez5.internal=true being set on HFP HF streams
+    - Fixed Lua 5.4 compatibility in state-stream script
+    - Updated translations: Bulgarian, Georgian, Kazakh, Swedish
+- Rebase patch:
+  * set-profile-in-service.patch
+- Drop patches already included in this version:
+  * 0001-monitors-bluez-request-device-ports-take-loopback-no.patch
+  * 0002-autoswitch-bluetooth-profile-Fix-attempt-to-index-a-.patch
+  * 0003-default-nodes-Never-consider-Audio_Sink-nodes-as-best-for.patch
+  * 0004-event-hook-fix-interest-hook-event-type-memory-leak.patch
+  * 0005-state-stream-fix-crash-in-case-the-Format-has-a-Choice-for.patch
+  * 0006-state-stream-fix-Lua-5.4-compatibility.patch
+
+-------------------------------------------------------------------
 Mon Mar  2 11:58:30 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Backport more upstream fixes:

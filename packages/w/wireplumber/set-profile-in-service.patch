@@ -4,7 +4,7 @@ Index: wireplumber-0.5.8/src/systemd/user/wireplumber.service.in
 +++ wireplumber-0.5.8/src/systemd/user/wireplumber.service.in
 @@ -11,10 +11,13 @@ NoNewPrivileges=yes
  SystemCallArchitectures=native
- SystemCallFilter=@system-service
+ SystemCallFilter=@system-service mincore
  Type=simple
 -ExecStart=@WP_BINARY@
 +ExecStart=@WP_BINARY@ -p $WIREPLUMBER_PROFILE

@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.13
+Version:        0.5.15
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -30,13 +30,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://gitlab.freedesktop.org/pipewire/wireplumber
 Source0:        wireplumber-%{version}.tar.xz
 Source1:        wireplumber.env
-# PATCH-FIX-UPSTREAM
-Patch1:         0001-monitors-bluez-request-device-ports-take-loopback-no.patch
-Patch2:         0002-autoswitch-bluetooth-profile-Fix-attempt-to-index-a-.patch
-Patch3:         0003-default-nodes-Never-consider-Audio_Sink-nodes-as-best-for.patch
-Patch4:         0004-event-hook-fix-interest-hook-event-type-memory-leak.patch
-Patch5:         0005-state-stream-fix-crash-in-case-the-Format-has-a-Choice-for.patch
-Patch6:         0006-state-stream-fix-Lua-5.4-compatibility.patch
 Patch100:       set-profile-in-service.patch
 # docs
 BuildRequires:  doxygen
