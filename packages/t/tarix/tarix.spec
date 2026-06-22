@@ -1,7 +1,7 @@
 #
 # spec file for package tarix
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ License:        GPL-2.0-only
 Group:          Productivity/Archiving/Backup
 URL:            https://github.com/fastcat/tarix
 Source:         https://github.com/fastcat/tarix/archive/tarix-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM tarix-fuse3.patch boo#1242192 -- port the FUSE filesystem from libfuse2 to libfuse3
+Patch0:         tarix-fuse3.patch
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(fuse)
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(zlib)
 
@@ -36,7 +38,7 @@ index format is simple enough to be used from a rescue disk with only mt,
 dd, and tar (though grep and sed would be very useful there).
 
 %prep
-%autosetup -n tarix-tarix-%{version}
+%autosetup -p1 -n tarix-tarix-%{version}
 
 %build
 sed -i "s|-Werror||g" Makefile

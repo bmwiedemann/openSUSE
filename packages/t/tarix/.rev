@@ -7,4 +7,12 @@
     <comment>new package</comment>
     <requestid>884947</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>1080bf9c5cbc9e5a7b366247c3e5e3be</srcmd5>
+    <version>1.0.9</version>
+    <time>1782143075</time>
+    <user>anag_factory</user>
+    <comment>Port the fuse_tarix FUSE filesystem from libfuse2 to libfuse3 (boo#1242192): add tarix-fuse3.patch (FUSE_USE_VERSION 31, fuse3 getattr/readdir/chmod/chown/truncate/utimens/rename signatures, drop the removed ftruncate op, pkg-config fuse3) and switch BuildRequires to pkgconfig(fuse3). Verified read + EROFS-write in a Tumbleweed container. (forwarded request 1361120 from pluskalm)</comment>
+    <requestid>1361121</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 11:02:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add tarix-fuse3.patch: port the FUSE filesystem (fuse_tarix) from
+  libfuse2 to libfuse3 (boo#1242192) - bump FUSE_USE_VERSION to 31,
+  update the getattr/readdir operation signatures and fuse_fill_dir_t
+  calls for the fuse3 API, and build against pkg-config fuse3
+- Switch BuildRequires from pkgconfig(fuse) to pkgconfig(fuse3)
+
+-------------------------------------------------------------------
 Tue Apr 13 11:48:58 UTC 2021 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file 
