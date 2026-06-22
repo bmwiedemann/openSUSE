@@ -20,17 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        2.1.14
+Version:        2.4.3
 Release:        0
 Summary:        TLS protocol native implementation
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-asn1-encoding-devel
-BuildRequires:  ghc-asn1-encoding-prof
-BuildRequires:  ghc-asn1-types-devel
-BuildRequires:  ghc-asn1-types-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-base16-bytestring-devel
@@ -39,6 +35,10 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-cereal-devel
 BuildRequires:  ghc-cereal-prof
+BuildRequires:  ghc-crypton-asn1-encoding-devel
+BuildRequires:  ghc-crypton-asn1-encoding-prof
+BuildRequires:  ghc-crypton-asn1-types-devel
+BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-devel
 BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-crypton-x509-devel
@@ -53,12 +53,14 @@ BuildRequires:  ghc-ech-config-devel
 BuildRequires:  ghc-ech-config-prof
 BuildRequires:  ghc-hpke-devel
 BuildRequires:  ghc-hpke-prof
-BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-memory-prof
+BuildRequires:  ghc-mlkem-devel
+BuildRequires:  ghc-mlkem-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-random-devel
 BuildRequires:  ghc-random-prof
 BuildRequires:  ghc-rpm-macros
@@ -78,10 +80,10 @@ BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
 BuildRequires:  ghc-base64-bytestring-devel
 BuildRequires:  ghc-base64-bytestring-prof
-BuildRequires:  ghc-hourglass-devel
-BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-time-hourglass-devel
+BuildRequires:  ghc-time-hourglass-prof
 %endif
 
 %description
