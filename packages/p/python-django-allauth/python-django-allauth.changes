@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:53:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 65.18.0:
+  * The password2 (password confirmation) field on the
+    set/change/reset password forms now carries
+    autocomplete="new-password", matching password1. This allows
+    browser and password manager "suggest strong password"
+    features to fill both fields as a pair.
+  * IdP: Added support for Dynamic Client Registration.
+  * IdP: Added support for client_secret_basic.
+  * IdP: Added support for Resource Indicators (RFC 8707).
+  * IdP: The .well-known/openid-configuration endpoint previously
+    derived response_types_supported and grant_types_supported
+    from configured clients. Per RFC 8414, these fields should
+    reflect server capabilities, not the configuration of
+    existing clients. They are now statically derived.
+    Additionally, scopes_supported is now included. Use the new
+    populate_server_metadata() adapter method to customize the
+    metadata.
+  * Added new socialaccount provider: Klaviyo.
+  * Rate limiting now truncates IPv6 addresses to their network
+    prefix (default /64) to prevent bypass via address rotation.
+    Configurable via ALLAUTH_RATE_LIMIT_IPV6_PREFIX.
+  * Added authenticate_by_email hook to
+    DefaultSocialAccountAdapter, allowing customization of user
+    lookup and email matching during social login.
+  * BitBucket: When using the BitBucket API, the token is passed
+    in the headers instead of the query parameters, which no
+    longer works since May 4th, 2026 (deprecation notice).
+
+-------------------------------------------------------------------
 Sun Apr 26 19:50:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 65.16.1:

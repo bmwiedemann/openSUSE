@@ -258,4 +258,38 @@
       bsc#1255012, CVE-2025-65431):</comment>
     <requestid>1350628</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>12f62897d75b8c398a5d3d8a96a077e9</srcmd5>
+    <version>65.18.0</version>
+    <time>1782142136</time>
+    <user>anag_factory</user>
+    <comment>- update to 65.18.0:
+  * The password2 (password confirmation) field on the
+    set/change/reset password forms now carries
+    autocomplete=&quot;new-password&quot;, matching password1. This allows
+    browser and password manager &quot;suggest strong password&quot;
+    features to fill both fields as a pair.
+  * IdP: Added support for Dynamic Client Registration.
+  * IdP: Added support for client_secret_basic.
+  * IdP: Added support for Resource Indicators (RFC 8707).
+  * IdP: The .well-known/openid-configuration endpoint previously
+    derived response_types_supported and grant_types_supported
+    from configured clients. Per RFC 8414, these fields should
+    reflect server capabilities, not the configuration of
+    existing clients. They are now statically derived.
+    Additionally, scopes_supported is now included. Use the new
+    populate_server_metadata() adapter method to customize the
+    metadata.
+  * Added new socialaccount provider: Klaviyo.
+  * Rate limiting now truncates IPv6 addresses to their network
+    prefix (default /64) to prevent bypass via address rotation.
+    Configurable via ALLAUTH_RATE_LIMIT_IPV6_PREFIX.
+  * Added authenticate_by_email hook to
+    DefaultSocialAccountAdapter, allowing customization of user
+    lookup and email matching during social login.
+  * BitBucket: When using the BitBucket API, the token is passed
+    in the headers instead of the query parameters, which no
+    longer works since May 4th, 2026 (deprecation notice).</comment>
+    <requestid>1360754</requestid>
+  </revision>
 </revisionlist>
