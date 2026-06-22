@@ -1,7 +1,7 @@
 #
 # spec file for package simple-obfs
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,12 @@ rmdir libcork
 mv libcork-f02984545061c924808e4b9ea7cc6749a41f1979 libcork
 autoreconf -fiv
 %configure
-make %{?_smp_mflags} V=1
+# Upstream is archived and hardcodes -Werror in AM_CFLAGS; every new GCC keeps
+# turning fresh warnings into FTBFS (GCC8/GCC9 patched downstream, now GCC15
+# -Wdiscarded-qualifiers). Neutralise upstream's blanket -Werror by appending
+# -Wno-error after it, while %%{optflags}'s -Werror=return-type still re-enables
+# the one error gate the distro cares about.
+make %{?_smp_mflags} V=1 CFLAGS="-Wno-error %{optflags}"
 
 %install
 %make_install

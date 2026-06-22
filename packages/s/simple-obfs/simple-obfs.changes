@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 19 15:44:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build with GCC 15 (rescue from [botdel]): append -Wno-error so
+  upstream's hardcoded -Werror no longer turns new
+  -Wdiscarded-qualifiers warnings into a fatal FTBFS; upstream is
+  archived, so the distro %{optflags} -Werror=return-type is kept as
+  the only error gate
+
+-------------------------------------------------------------------
 Mon Feb 26 13:18:04 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

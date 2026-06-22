@@ -52,4 +52,12 @@
     <comment></comment>
     <requestid>1152260</requestid>
   </revision>
+  <revision rev="7" vrev="6">
+    <srcmd5>5cf3264624b53e18120056b920ccfea5</srcmd5>
+    <version>0.0.5</version>
+    <time>1782141965</time>
+    <user>anag_factory</user>
+    <comment>Fix GCC 15 FTBFS (-Wdiscarded-qualifiers under upstream's hardcoded -Werror, neutralised with -Wno-error); rescues the package from [botdel] 1359689 which has been declined</comment>
+    <requestid>1360637</requestid>
+  </revision>
 </revisionlist>
