@@ -1,7 +1,7 @@
 #
 # spec file for package blockout
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -58,7 +58,7 @@ autoreconf -fi
 d="%buildroot/%_datadir/%name"
 %make_install
 mkdir -p "$d"
-mv blockout/{images,sounds} "$d/"
+mv blockout/images blockout/sounds "$d/"
 find "$d/" -type f -exec chmod a-x "{}" "+"
 
 %files

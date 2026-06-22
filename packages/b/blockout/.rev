@@ -68,4 +68,12 @@
     <comment>- Add glu.diff for a successful build with sdl_compat</comment>
     <requestid>1318318</requestid>
   </revision>
+  <revision rev="10" vrev="4">
+    <srcmd5>2a8379aa69006d8136e8b432b9145650</srcmd5>
+    <version>2.5</version>
+    <time>1782142061</time>
+    <user>anag_factory</user>
+    <comment>- Make build recipe compatible with POSIX sh</comment>
+    <requestid>1360719</requestid>
+  </revision>
 </revisionlist>
