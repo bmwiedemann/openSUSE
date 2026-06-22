@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Apr  1 00:50:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update tls-session-manager to version 0.1.0 revision 1.
+  ## 0.1.0
+
+  * Using "ram" instead of "memory"
+
+-------------------------------------------------------------------
 Fri Feb 13 05:27:06 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update tls-session-manager to version 0.0.9.
