@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:17:33 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libica to version 4.4.2
+  ( besc#1265598, bsc#1265599, bsc#1265600, bsc#1265601, bsc#1265602, bsc#1265603 ) 
+  * [FEATURE] Updates for FIPS 140-3 certification 2026
+  * [PATCH] Bug fixes
+- Added a patch
+  * libica-FIPS-SUSE-certification.patch               
+- Removed obsolete pacthes
+  * libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
+  * libica-sles15sp5-FIPS-hmac-key.patch
+  * libica-Block-SHA1-mechanism-for-FIPS-140-3.patch
+  * libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
+  * libica-Fix-mutex-thread-lock-in-drbg_uninstantiate-function.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 09:58:02 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1265607)

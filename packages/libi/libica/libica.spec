@@ -22,7 +22,7 @@
 %endif
 
 Name:           libica
-Version:        4.4.1
+Version:        4.4.2
 Release:        0
 Summary:        Library interface for the IBM Cryptographic Accelerator device driver
 License:        CPL-1.0
@@ -35,12 +35,7 @@ Source3:        z90crypt
 Source4:        z90crypt.service
 Source5:        %{name}-rpmlintrc
 ###
-Patch01:        libica-FIPS-make-it-possible-to-specify-fipshmac-binary.patch
-Patch02:        libica-sles15sp5-FIPS-hmac-key.patch
-###
-Patch10:        libica-CONFIGURE-Make-the-OpenSSL-FIPS-config-file-name-configurable.patch
-Patch11:        libica-Fix-mutex-thread-lock-in-drbg_uninstantiate-function.patch
-Patch12:        libica-Block-SHA1-mechanism-for-FIPS-140-3.patch
+Patch01:        libica-FIPS-SUSE-certification.patch
 ###
 
 BuildRequires:  autoconf

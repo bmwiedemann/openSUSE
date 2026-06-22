@@ -1,0 +1,50 @@
+diff -Naur a/src/fips.c b/src/fips.c
+--- a/src/fips.c	2026-06-22 10:00:24.000000000 +0200
++++ b/src/fips.c	2026-06-22 13:01:08.228560919 +0200
+@@ -76,8 +76,7 @@
+  * .libica.so.VERSION.hmac in the same directory as the .so module.
+  */
+ static const char hmackey[] =
+-	"0000000000000000000000000000000000000000000000000000000000000000"
+-	"0000000000000000000000000000000000000000000000000000000000000000";
++	"6f72626f44654a49544954656a7369727041444f4e6976697270556b76617250";
+ 
+ #endif /* ICA_INTERNAL_TEST */
+ 
+diff -Naur a/src/Makefile.am b/src/Makefile.am
+--- a/src/Makefile.am	2026-06-22 10:00:24.000000000 +0200
++++ b/src/Makefile.am	2026-06-22 12:53:44.403091767 +0200
+@@ -51,6 +51,7 @@
+ 	./mp.pl mp.S
+ 
+ if ICA_FIPS
++FIPSHMAC ?= ${top_srcdir}/openssl-fipshmac
+ fipsinstall:
+ 	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000000000000000000000000000 $(DESTDIR)$(libdir)/libica.so.$(VERSION1) | sed -e 's/^.* //' > $(DESTDIR)$(libdir)/.libica.so.$(VERSION1).hmac
+ 	$(AM_V_GEN) cd $(DESTDIR)$(libdir) && ln -sf .libica.so.$(VERSION1).hmac .libica.so.$(MAJOR).hmac
+@@ -62,8 +63,7 @@
+ 	$(AM_V_GEN) cd ${top_builddir}/src/.libs && ln -sf .libica-cex.so.$(VERSION1).hmac .libica-cex.so.$(MAJOR).hmac
+ 
+ hmac-file: libica.la libica-cex.la
+-	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000000000000000000000000000 ${top_builddir}/src/.libs/libica.so.$(VERSION1) | sed -e 's/^.* //' > ${top_builddir}/src/.libs/.libica.so.$(VERSION1).hmac
+-	$(AM_V_GEN) openssl dgst -sha256 -mac hmac -macopt hexkey:00000000000000000000000000000000 ${top_builddir}/src/.libs/libica-cex.so.$(VERSION1) | sed -e 's/^.* //' > ${top_builddir}/src/.libs/.libica-cex.so.$(VERSION1).hmac
++	$(AM_V_GEN) $(FIPSHMAC) ${top_builddir}/src/.libs/libica.so.$(VERSION1) ${top_builddir}/src/.libs/libica-cex.so.$(VERSION1)
+ 
+ hmac_files = hmac-file hmac-file-lnk
+ 
+diff -Naur a/src/openssl-fipshmac b/src/openssl-fipshmac
+--- a/src/openssl-fipshmac	1970-01-01 01:00:00.000000000 +0100
++++ b/src/openssl-fipshmac	2026-06-22 12:50:36.458497609 +0200
+@@ -0,0 +1,12 @@
++#!/bin/sh -e
++
++if [ "$#" -eq 0 ] ; then
++    echo "No library to hash specified." >&2
++    exit 22
++fi
++
++while [ -n "$1" ] ; do
++    dgst="$(openssl dgst -sha256 -mac hmac -macopt hexkey:6f72626f44654a49544954656a7369727041444f4e6976697270556b76617250 "$1")"
++    echo "$dgst" | sed -e 's/^.* //' > "$(dirname "$1")/.$(basename "$1")".hmac
++    shift
++done
