@@ -18,7 +18,7 @@
 
 %define         short_name openQA-devel
 Name:           %{short_name}-test
-Version:        5.1781712973.4c20e5c1
+Version:        5.1781884690.e39cc969
 Release:        0
 Summary:        Test package for %{short_name}
 License:        GPL-2.0-or-later
@@ -26,6 +26,12 @@ BuildRequires:  %{short_name} == %{version}
 ExcludeArch:   %{ix86} 
 %ifarch ppc ppc64 ppc64le s390x
 # missing chromedriver dependency
+ExclusiveArch:  do_not_build
+%endif
+
+# disable openQA-devel-test in consistency with use of `%bcond_with devel_package`
+# in the main openQA spec file
+%if (0%{?suse_version} && !0%{?is_opensuse}) || (0%{?is_opensuse} && 0%{?suse_version} < 1600)
 ExclusiveArch:  do_not_build
 %endif
 

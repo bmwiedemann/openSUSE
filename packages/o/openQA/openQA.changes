@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Jun 19 16:54:50 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781884690.e39cc969:
+  * test: Make parallel execution of the fullstack test more reliable
+  * ci: disable Mergify interactive queue controls in PR comments
+  * feat(worker): enable direct execution with podman
+  * fix(worker): add --init and --rm flags for containerized engine
+  * feat(worker): support containerized os-autoinst worker engine
+  * test: refactor archive download tests for maintainability
+  * feat: implement category-specific ZIP downloads for jobs
+  * chore(deps): Dependency cron 2026-06-19
+
+-------------------------------------------------------------------
+Fri Jun 19 01:23:13 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781832185.5ddf5343:
+  * fix: fix user namespace mapping errors in podman
+  * chore(mergify): Update the number of required checks
+  * fix: use webui cache for download all archives
+  * chore(deps): Dependency cron 2026-06-18
+  * refactor: Extract changing prio and computing sign
+  * fix: Fix typos in `t/api/04-jobs.t` and `t/config.t`
+  * feat: Throttle jobs not using Git-URL as `CASEDIR`
+  * ci: Change repo paths for SLE-15-SP7 in consistency with os-autoinst
+  * fix: Avoid unresolvable openQA-devel-test package for SLE-SP7
+  * feat: improve detection of unexpanded variables in clone-job
+  * feat: support expanding variables in openqa-clone-job
+
+-------------------------------------------------------------------
 Wed Jun 17 16:16:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1781712973.4c20e5c1:
