@@ -1,7 +1,7 @@
 #
 # spec file for package openCryptoki
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -198,8 +198,8 @@ install -d %{buildroot}%{_prefix}/lib/tmpfiles.d
 #
 cat > %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
 # Type Path        Mode UID  GID  Age Argument
-d /run/opencryptoki 0710 pkcsslotd pkcs11 - -
-d /var/lib/opencryptoki 0755 root pkcs11 - -
+d /run/opencryptoki 0770 pkcsslotd pkcs11 - -
+d /var/lib/opencryptoki 0770 root pkcs11 - -
 d /var/lib/opencryptoki/swtok 0770 root pkcs11 - -
 d /var/lib/opencryptoki/swtok/TOK_OBJ 0770 root pkcs11 - -
 d /var/lib/opencryptoki/tpm 0770 root pkcs11 - -

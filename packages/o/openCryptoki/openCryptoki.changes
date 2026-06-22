@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:09:34 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Updated the .spec file (bsc#126874)
+  * fixed the permissions in `%{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf` 
+
+-------------------------------------------------------------------
 Fri May 15 07:24:02 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade openCryptoki to version 3.27 (jsc#PED-14609)
