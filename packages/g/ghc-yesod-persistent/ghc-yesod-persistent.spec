@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod-persistent
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.0.8
+Version:        1.6.0.9
 Release:        0
 Summary:        Some helpers for using Persistent from Yesod
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch0:         https://github.com/yesodweb/yesod/pull/1798.patch#/dont-depend-on-obsolete-persistent-template.patch
+Patch0:         dont-depend-on-obsolete-persistent-template.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
@@ -89,7 +89,7 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version} -p1
 
 %build
 %ghc_lib_build
