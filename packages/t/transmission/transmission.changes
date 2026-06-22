@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 18 12:55:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add arm to ExcludeArch, 32bit arm does not build either.
+
+-------------------------------------------------------------------
 Tue Jun  2 11:56:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 4.1.2:

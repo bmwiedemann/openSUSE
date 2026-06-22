@@ -84,7 +84,7 @@ BuildRequires:  ninja
 %if %{with webui}
 BuildRequires:  npm >= 8.1.307
 %endif
-ExcludeArch: %{ix86}
+ExcludeArch: %{ix86} %{arm}
 
 %description
 Transmission is a BitTorrent client. It has GTK+ and Qt GUI clients,

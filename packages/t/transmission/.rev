@@ -1167,4 +1167,12 @@
       older Transmission servers.</comment>
     <requestid>1358235</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>bf15e72516373cc05ae842e5db46e84a</srcmd5>
+    <version>4.1.2</version>
+    <time>1782142960</time>
+    <user>anag_factory</user>
+    <comment>- Add arm to ExcludeArch, 32bit arm does not build either.</comment>
+    <requestid>1361060</requestid>
+  </revision>
 </revisionlist>
