@@ -8,7 +8,7 @@ Sun Jun  7 00:36:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
       * Correct sprintf usage for trace_msg (issue#132)
       * Add DBIXS_VERSION & DBIXS_RELEASE to dbixs_rev.h
       * Remove -Wbad-function-cast
-      * Fix possible stack overflow (old issue already noted by Tim) (CVE-2026-9698)
+      * Fix possible stack overflow (old issue already noted by Tim) (CVE-2026-9698) bsc#1267957
       * Do not allow table source locations outside explicit given folders
       * DBD::Sponge PRECISION handling (pr#12, pilcrow)
       * Fix possible buffer overflow in preparse (CVE-2026-10879) bsc#1267849

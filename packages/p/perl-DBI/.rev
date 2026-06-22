@@ -509,4 +509,13 @@
       * Fix cast warning in dbi_get_state (Greg, PR#182)</comment>
     <requestid>1357948</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>29dcb93e1ceca67fcc58cb87d3894ff6</srcmd5>
+    <version>1.648.0</version>
+    <time>1782144304</time>
+    <user>anag_factory</user>
+    <comment>Add bsc reference:
+      * Fix possible stack overflow (old issue already noted by Tim) (CVE-2026-9698) bsc#1267957</comment>
+    <requestid>1360582</requestid>
+  </revision>
 </revisionlist>
