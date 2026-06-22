@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 21 18:51:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendored containerd to 2.3.2:
+  + CVE-2026-50195 (bsc#1268399)
+  + CVE-2026-53488 (bsc#1268400)
+  + CVE-2026-53492 (bsc#1268403)
+  + CVE-2026-53489 (bsc#1268404)
+  + CVE-2026-47262 (bsc#1268440)
+
+-------------------------------------------------------------------
+Fri Jun 19 14:15:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.71.2:
+  * release: v0.71.2 [release/v0.71] (#10871)
+  * fix(deps): bump alpine to 3.24.1 [backport: release/v0.71] (#10870)
+  * chore(deps): bump the common group with 4 updates [backport: release/v0.71] (#10867)
+
+-------------------------------------------------------------------
 Mon Jun 15 19:44:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.71.1:

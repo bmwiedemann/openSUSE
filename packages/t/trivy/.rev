@@ -1577,4 +1577,22 @@ dropped patch file
     bsc#1268356, CVE-2026-46680):</comment>
     <requestid>1359836</requestid>
   </revision>
+  <revision rev="94" vrev="1">
+    <srcmd5>9e42a5653ed8f90f68310782848d6410</srcmd5>
+    <version>0.71.2</version>
+    <time>1782141930</time>
+    <user>anag_factory</user>
+    <comment>- update vendored containerd to 2.3.2:
+  + CVE-2026-50195 (bsc#1268399)
+  + CVE-2026-53488 (bsc#1268400)
+  + CVE-2026-53492 (bsc#1268403)
+  + CVE-2026-53489 (bsc#1268404)
+  + CVE-2026-47262 (bsc#1268440)
+
+- Update to version 0.71.2:
+  * release: v0.71.2 [release/v0.71] (#10871)
+  * fix(deps): bump alpine to 3.24.1 [backport: release/v0.71] (#10870)
+  * chore(deps): bump the common group with 4 updates [backport: release/v0.71] (#10867)</comment>
+    <requestid>1361075</requestid>
+  </revision>
 </revisionlist>

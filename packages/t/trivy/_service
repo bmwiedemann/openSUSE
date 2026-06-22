@@ -2,7 +2,7 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/aquasecurity/trivy</param>
     <param name="scm">git</param>
-    <param name="revision">v0.71.1</param>
+    <param name="revision">v0.71.2</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
@@ -16,6 +16,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
+    <param name="replace">github.com/containerd/containerd/v2=github.com/containerd/containerd/v2@v2.3.2</param>
   </service>
 </services>
