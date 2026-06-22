@@ -1,7 +1,7 @@
 #
 # spec file for package uki
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -170,18 +170,19 @@ install -m 644 ./%{cert_name}.der \
 
 %posttrans
 # Change type of the file system partition from 8300 to 8304
+# N.B. This hacky logic only works with e.g. /dev/sda1 but not /dev/mmcblk0p1
 dev_name=$(df -h / | tail -1 | cut -d ' ' -f1)
-dev_part=${dev_name::-1}
-dev_no=${dev_name: -1}
-if [[ $dev_no && $dev_part ]] &&\
-   [[ -b "${dev_part}${dev_no}" ]]; then
+dev_part="${dev_name%%?}"
+dev_no="${dev_name#$dev_part}"
+if [ -n "$dev_no" ] && [ -n "$dev_part" ] && \
+   [ -b "$dev_part$dev_no" ]; then
     echo "Change partition type of ${dev_part}${dev_no} in 8304"
     sgdisk -t $dev_no:8304 $dev_part || true
 fi
 # Add menuentry to bootloaders
 entry_added=0
-if [ $(command -v sdbootutil) ] && [ "$(sdbootutil bootloader)" == "systemd-boot" ]; then
-  if (command -v sdbootutil > /dev/null 2>&1); then
+if [ -n "$(command -v sdbootutil)" ] && [ "$(sdbootutil bootloader)" = "systemd-boot" ]; then
+  if command -v sdbootutil >/dev/null 2>&1; then
     if uki-tool -q sdboot \
       --add \
       --all-ukis \
@@ -194,7 +195,7 @@ if [ $(command -v sdbootutil) ] && [ "$(sdbootutil bootloader)" == "systemd-boot
     fi
   fi
 else
-  if (command -v grub2-mkconfig > /dev/null 2>&1); then
+  if command -v grub2-mkconfig >/dev/null 2>&1; then
     if uki-tool -q grub2 \
       --add \
       --all-ukis \
@@ -209,14 +210,14 @@ else
 fi
 cert_file=$(basename %{cert_install_dir}/%{efi_name}-*.crt)
 cert_file_p="%{cert_install_dir}/${cert_file}"
-if test "$entry_added" = "1" -a -f ${cert_file_p} ; then
+if [ "$entry_added" = "1" ] && [ -f "$cert_file_p" ]; then
     echo -e "\033[0;32mTo enroll the uki certificate key please run:\033[0m"
     echo -e "\033[0;32mmokutil \
 --import ${cert_file_p}\033[0m"
 fi
 
 %preun
-if [ $(command -v sdbootutil) ] && [ "$(sdbootutil bootloader)" == "systemd-boot" ]; then
+if [ -n "$(command -v sdbootutil)" ] && [ "$(sdbootutil bootloader)" = "systemd-boot" ]; then
   if uki-tool -q sdboot \
     --remove \
     --all-ukis \
@@ -227,7 +228,7 @@ if [ $(command -v sdbootutil) ] && [ "$(sdbootutil bootloader)" == "systemd-boot
     exit 0
   fi
 else
-  if (command -v grub2-mkconfig > /dev/null 2>&1); then
+  if command -v grub2-mkconfig >/dev/null 2>&1; then
     if uki-tool -q grub2 \
       --remove \
       --all-ukis \
@@ -241,7 +242,6 @@ else
 fi
 
 %files
-%defattr(-,root,root)
 %attr(0644, root, root) %{kernel_module_directory}/%{uname}/%{efi_name}.efi
 %{kernel_module_directory}/%{uname}/%{efi_name}.efi.extra.d
 %if %{cert_install}
