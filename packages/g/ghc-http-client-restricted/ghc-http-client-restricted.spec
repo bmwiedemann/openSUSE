@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-http-client-restricted
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name http-client-restricted
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.1.0
+Version:        0.1.1
 Release:        0
 Summary:        Restricting the servers that http-client will use
 License:        MIT

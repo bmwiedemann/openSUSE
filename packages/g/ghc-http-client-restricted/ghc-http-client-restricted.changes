@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jun 17 20:31:01 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update http-client-restricted to version 0.1.1.
+  http-client-restricted (0.1.1) unstable; urgency=medium
+
+    * Allow building with http-client-tls 0.4.x
+
+   -- Joey Hess <id@joeyh.name>  Wed, 17 Jun 2026 16:28:27 -0400
+
+-------------------------------------------------------------------
 Tue Aug  1 22:46:02 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Update http-client-restricted to version 0.1.0.
