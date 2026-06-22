@@ -132,4 +132,17 @@ There are still minor multi-architecture adjustments to refine, but the package 
   * Add SECURITY.md</comment>
     <requestid>1345308</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ad8524ac77dedf9a626bfc0c62724732</srcmd5>
+    <version>32.1.2</version>
+    <time>1782142199</time>
+    <user>anag_factory</user>
+    <comment>- Use mbedtls-2-devel instead of mbedtls-devel.
+  * OBS 32.1.2 bundled librtmp is incompatible with newer
+    mbedTLS API changes present in Factory, causing build
+    failures during obs-outputs compilation.
+  * Restrict builds to supported architectures (aarch64, x86_64).
+    OBS Studio no longer supports i586.</comment>
+    <requestid>1360785</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,7 @@
 #
 
 Name:           obs-studio
-Version:        32.1.1
+Version:        32.1.2
 Release:        0
 Summary:        Free and open source software for video recording and live streaming
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://obsproject.com/
 Source:         obs-studio-%{version}.tar.xz
 Patch0:         disable-x264.patch
 Patch1:         optional-browser-websocket.patch
+#Patch2:         fix-mbedtls4.patch
 BuildRequires:  AMF-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.28
@@ -33,7 +34,7 @@ BuildRequires:  extra-cmake-modules
 BuildRequires:  fdupes
 BuildRequires:  ffmpeg-7-mini-devel >= 6.1
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  mbedtls-devel >= 3.4.0
+BuildRequires:  mbedtls-2-devel
 BuildRequires:  pciutils-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
@@ -83,6 +84,7 @@ BuildRequires:  swig >= 4.0.2
 BuildRequires:  update-desktop-files
 BuildRequires:  uthash-devel >= 2.3.0
 BuildRequires:  wayland-devel
+ExclusiveArch:  aarch64 x86_64
 Recommends:     obs-vkcapture
 Recommends:     obs-pipewire-audio-capture
 Recommends:     obs-aitum-multistream
@@ -151,8 +153,8 @@ find %{buildroot}%{_libdir}/obs-scripting -type f -name "*.so" -exec %{__strip} 
 %icon_theme_cache_postun
 
 %files
-%license COPYING COMMITMENT
-%doc README.rst CONTRIBUTING.rst
+%license COPYING
+%doc README.rst SECURITY.md
 %{_bindir}/obs
 %ifarch x86_64
 %{_bindir}/obs-nvenc-test
@@ -174,6 +176,7 @@ find %{buildroot}%{_libdir}/obs-scripting -type f -name "*.so" -exec %{__strip} 
 %{_datadir}/obs
 
 %files devel
+%doc CONTRIBUTING.md CODESTYLE.md
 %{_libdir}/cmake
 %{_libdir}/libobs.so
 %{_libdir}/libobs-frontend-api.so
