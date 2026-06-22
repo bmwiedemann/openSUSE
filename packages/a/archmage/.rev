@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1327798</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5b33513ca20383516736a4d631fb2a36</srcmd5>
+    <version>0.4.2.1</version>
+    <time>1782143092</time>
+    <user>anag_factory</user>
+    <comment>Fix 'archmage -c pdf' bytes-regex crash (boo#1178542); register archmage.1 man-page update-alternatives slave (boo#1202977)</comment>
+    <requestid>1361163</requestid>
+  </revision>
 </revisionlist>

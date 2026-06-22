@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:14:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add archmage-fix-bytes-regex.patch: fix "archmage -c pdf" crashing
+  with "cannot use a string pattern on a bytes-like object" by using
+  bytes regex patterns on the bytes content (boo#1178542)
+- Register the archmage.1 man page as an update-alternatives slave so
+  the shipped /usr/share/man/man1/archmage.1.gz symlink is managed
+  (boo#1202977)
+
+-------------------------------------------------------------------
 Fri Jan  9 08:56:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Provide/obsolete the archmage basename in theprimary_python
