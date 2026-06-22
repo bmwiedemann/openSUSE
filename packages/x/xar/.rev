@@ -101,4 +101,12 @@
     <comment>Spec cleanup: add explicit gcc+make, convert library -devel BuildRequires to pkgconfig() form, drop obsolete Group tags</comment>
     <requestid>1356642</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c33a05e9385a35a1a5d6cf9f3a809992</srcmd5>
+    <version>1.8.0.0.503</version>
+    <time>1782142726</time>
+    <user>anag_factory</user>
+    <comment>Switch xar to the maintained Apple lineage (1.8.0.0.503); fixes CVE-2017-11124, CVE-2017-11125, CVE-2018-17093, CVE-2018-17094. Each added/removed patch is now named in the changelog.</comment>
+    <requestid>1361014</requestid>
+  </revision>
 </revisionlist>

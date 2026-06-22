@@ -16,20 +16,36 @@
 #
 
 
+# Apple xar build number (the actual upstream now that mackyle's fork is dead)
+%define apple 503
 %define sover 1
 Name:           xar
-Version:        1.6.1
+Version:        1.8.0.0.%{apple}
 Release:        0
 Summary:        Extensible Archive Format Tools
 License:        BSD-3-Clause
-URL:            https://mackyle.github.io/xar/
-Source:         https://github.com/mackyle/xar/archive/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ext2.patch gh#mackyle/xar#10
-Patch0:         ext2.patch
-Patch1:         openssl-checks.patch
-Patch2:         xar-fix-prototype.patch
+URL:            https://github.com/apple-oss-distributions/xar
+Source:         https://github.com/apple-oss-distributions/xar/archive/%{name}-%{apple}.tar.gz#/%{name}-%{apple}.tar.gz
+# Linux-build patch set, tracked by Gentoo (app-arch/xar) for the Apple lineage:
+# PATCH-FIX-OPENSUSE ext2.patch — build the ext2 attribute support against e2fsprogs
+Patch0:         xar-1.6.1-ext2.patch
+# PATCH-FIX-OPENSUSE safe_dirname — provide a non-Darwin safe_dirname
+Patch1:         xar-1.8-safe_dirname.patch
+# PATCH-FIX-OPENSUSE build on arm/ppc
+Patch2:         xar-1.8-arm-ppc.patch
+# PATCH-FIX-OPENSUSE build against OpenSSL 1.1+
+Patch3:         xar-1.8-openssl-1.1.patch
+# PATCH-FIX-OPENSUSE Linux portability
+Patch4:         xar-1.8.0.0.452-linux.patch
+# PATCH-FIX-OPENSUSE drop remaining Darwin-only bits
+Patch5:         xar-1.8.0.0.487-non-darwin.patch
+# PATCH-FIX-OPENSUSE fix a variable-sized object
+Patch6:         xar-1.8.0.0.487-variable-sized-object.patch
+# PATCH-FIX-OPENSUSE add missing implicit declarations
+Patch7:         xar-1.8.0.0.498-impl-decls.patch
+# PATCH-FIX-OPENSUSE resolve an fd's path via /proc/self/fd where macOS F_GETPATH is unavailable
+Patch8:         xar-1.8.0.0.503-linux-F_GETPATH.patch
 BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc
 BuildRequires:  make
@@ -78,14 +94,32 @@ files in both compressed and uncompressed form, and the ability to query the
 table of content's rich meta-data.
 
 %prep
-%setup -q -n %{name}-%{name}-%{version}
-%patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
+%setup -q -n %{name}-%{name}-%{apple}
+%patch -P 0 -p1 -d xar
+%patch -P 1 -p1 -d xar
+%patch -P 2 -p1 -d xar
+%patch -P 3 -p1 -d xar
+%patch -P 4 -p1 -d xar
+%patch -P 5 -p1 -d xar
+%patch -P 6 -p1 -d xar
+%patch -P 7 -p1 -d xar
+%patch -P 8 -p1 -d xar
+pushd xar
+# make the public headers reachable as <xar/...> and from src/ (they ship in lib/)
+mv lib/*.h include/
+ln -sf . include/xar
+# drop the macOS @RPATH@ and the CommonCrypto path (use OpenSSL on Linux)
+sed -i -e 's/@RPATH@//' src/Makefile.inc.in
+echo ".PRECIOUS: @objroot@src/%.o" >> src/Makefile.inc.in
+sed -i -e 's/__APPLE__/__NO_APPLE__/' include/archive.h lib/hash.c
+popd
 
 %build
 pushd xar
+# the shipped configure is stale vs the patched configure.ac -> regenerate
 ./autogen.sh --noconfigure
+export LIBS="$(pkg-config --libs openssl)"
+export CFLAGS="%{optflags} -Wno-unused-result"
 %configure --disable-static
 %make_build
 popd
@@ -100,18 +134,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files
 %license xar/LICENSE
-%doc xar/ChangeLog xar/NEWS
+%doc xar/ChangeLog
 %{_bindir}/xar
 %{_mandir}/man1/xar.1%{?ext_man}
 
 %files -n libxar%{sover}
 %license xar/LICENSE
-%doc xar/ChangeLog xar/NEWS
-%{_libdir}/libxar.so.%{sover}
+%{_libdir}/libxar.so.%{sover}*
 
 %files -n libxar-devel
 %license xar/LICENSE
-%doc xar/ChangeLog xar/NEWS
 %{_includedir}/xar
 %{_libdir}/libxar.so
 

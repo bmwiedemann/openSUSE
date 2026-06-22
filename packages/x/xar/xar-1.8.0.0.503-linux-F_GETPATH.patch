@@ -1,0 +1,28 @@
+--- a/lib/archive.c
++++ b/lib/archive.c
+@@ -507,10 +507,25 @@
+ 	// If there are hardlinks, the path we pick is the most recently opened by
+ 	// the filesystem; which is effectively random.
+ 	char path_buff[PATH_MAX];
++#ifdef F_GETPATH
+ 	if (fcntl(fd, F_GETPATH, path_buff) < 0) {
+ 		close(fd);
+ 		return NULL;
+ 	}
++#else
++	/* Linux has no F_GETPATH; resolve the fd's path via /proc/self/fd. */
++	{
++		char xar_fd_link[64];
++		ssize_t xar_fd_len;
++		snprintf(xar_fd_link, sizeof(xar_fd_link), "/proc/self/fd/%d", fd);
++		xar_fd_len = readlink(xar_fd_link, path_buff, sizeof(path_buff) - 1);
++		if (xar_fd_len < 0) {
++			close(fd);
++			return NULL;
++		}
++		path_buff[xar_fd_len] = '\0';
++	}
++#endif
+ 	
+ 	// Don't trust the position of the descriptor we were given, reset it back to 0
+ 	if (lseek(fd, 0, SEEK_SET) != 0) {

@@ -1,8 +1,6 @@
-Index: xar/lib/ext2.c
-===================================================================
---- xar/lib/ext2.c.orig
-+++ xar/lib/ext2.c
-@@ -140,8 +140,10 @@ int xar_ext2attr_archive(xar_t x, xar_fi
+--- a/lib/ext2.c.orig
++++ b/lib/ext2.c
+@@ -139,8 +139,10 @@
  	if(! (flags & ~EXT2_NOCOMPR_FL) )
  		x_addprop(f, "NoCompBlock");
  #endif
@@ -13,7 +11,7 @@ Index: xar/lib/ext2.c
  	if(! (flags & ~EXT2_BTREE_FL) )
  		x_addprop(f, "BTree");
  	if(! (flags & ~EXT2_INDEX_FL) )
-@@ -229,8 +231,10 @@ int xar_ext2attr_extract(xar_t x, xar_fi
+@@ -225,8 +227,10 @@
  	if( e2prop_get(f, "NoCompBlock", (char **)&tmp) == 0 )
  		flags |= EXT2_NOCOMPR_FL ;
  #endif

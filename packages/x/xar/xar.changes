@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 22 07:33:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch to the maintained Apple xar lineage (build 503, versioned
+  1.8.0.0.503): the mackyle 1.6.1 fork this package tracked has been
+  dead since 2012, and Debian, Fedora and Gentoo all moved to Apple's
+  xar (apple-oss-distributions/xar). This resolves the long-standing
+  NULL-pointer dereferences in xar_get_path() and xar_unserialize()
+  when parsing malformed archives:
+  * CVE-2017-11124 (boo#1047875)
+  * CVE-2017-11125 (boo#1047874)
+  * CVE-2018-17093 (boo#1108595)
+  * CVE-2018-17094 (boo#1108596)
+- Drop the obsolete mackyle-fork patches: ext2.patch,
+  openssl-checks.patch, xar-fix-prototype.patch
+- Add the Gentoo-tracked Linux build patch set for the Apple lineage:
+  xar-1.6.1-ext2.patch, xar-1.8-safe_dirname.patch,
+  xar-1.8-arm-ppc.patch, xar-1.8-openssl-1.1.patch,
+  xar-1.8.0.0.452-linux.patch, xar-1.8.0.0.487-non-darwin.patch,
+  xar-1.8.0.0.487-variable-sized-object.patch,
+  xar-1.8.0.0.498-impl-decls.patch
+- Add xar-1.8.0.0.503-linux-F_GETPATH.patch: resolve an fd's path via
+  /proc/self/fd on Linux, where the macOS-only F_GETPATH fcntl used by
+  the new xar_fdopen_digest_verify() is unavailable
+
+-------------------------------------------------------------------
 Tue Jun  2 07:45:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:
