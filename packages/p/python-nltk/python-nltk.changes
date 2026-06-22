@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 18 14:02:15 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.10.0rc1 (CVE-2026-54293, bsc#1268526)
+  * Let TextCat.guess_language return Unknown for ties (optional)
+  * fix(security): block XML entity expansion in downloader index parsing
+  * Fix FunctionalCategory.substitute() ignoring substituted direction
+  * Fix APP_RE rejecting variable direction underscore
+  * Precompute unigram fallback per candidate in TnT decoder
+  * fix(security): prevent DNS-rebinding SSRF in pathsec.urlopen
+  * fix(security): block URL-encoded path traversal in nltk: resource URLs
+  * fix(security): block path traversal in NKJPCorpusReader
+  * fix(security): block path traversal in FramenetCorpusReader.frame()
+  * fix(security): prevent ReDoS in ReviewsCorpusReader FEATURES regex (CWE-1333)
+  * Document NLTK's new security policy
+
+-------------------------------------------------------------------
 Thu Mar 26 11:33:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.9.4 (CVE-2026-33230, CVE-2026-33231, CVE-2026-33236, bsc#1260066,
