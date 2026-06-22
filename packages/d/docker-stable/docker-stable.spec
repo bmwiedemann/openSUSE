@@ -144,6 +144,24 @@ Patch211:       0016-bsc1254206-daemon-overlay2-remove-world-writable-per.patch
 Patch212:       0017-CVE-2025-30204-fix-Remove-strings.Split-and-add-pars.patch
 # UPSTREAM: Backport of <https://go-review.googlesource.com/c/crypto/+/721961> bsc#1253904
 Patch213:       0018-CVE-2025-58181-fix-vendor-crypto-ssh-3.patch
+# UPSTREAM: Backport of <https://github.com/moby/buildkit/commit/45b038cd0b2ec2d34013ce0f085522276f7ee0d8>
+# fixes CVE-2026-33748, bsc#1261078
+Patch214:       0019-CVE-2026-33748-Fix-git-normalize-and-validate-subdir.patch
+# UPSTREAM: Backport of <https://github.com/moby/buildkit/commit/099cf80f5ebc935c48d2925499bffe703a54cff4>
+# fixes CVE-2026-33747, bsc#1260967
+Patch215:       0020-CVE-2026-33747-Fix-executor-validate-container-IDs-c.patch
+# UPSTREAM: Backport of <https://github.com/moby/moby/commit/99a095ecf04e8849318f2811bb3f687905eab09b>
+Patch216:       0021-CVE-2026-33997-fix-for-Privilege-validation-bypass-d.patch
+#UPSTREAM: Backport of <https://github.com/moby/moby/commit/e89edb19ad7de0407a5d31e3111cb01aa10b5a38>
+Patch217:       0022-CVE-2026-34040-fix-for-Authz-zero-length-regression.patch
+#UPSTREAM: Backport of <grpc/grpc-go@72186f1>
+Patch218:       0023-CVE-2026-33186-grpc-enforce-strict-path-checking-for.patch
+#UPSTREAM: Backport of <golang/net@1e71bd8>
+Patch219:       0024-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+#UPSTREAM: Backport of <golang/net@8c4c965>
+Patch220:       0025-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+#UPSTREAM: Backport of <moby@2022313>
+Patch221:       0026-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
 # UPSTREAM: Backport of <https://github.com/moby/moby/pull/46307> and
 #                       <https://github.com/moby/moby/pull/49061>.
 Patch299:       0014-TESTS-backport-fixes-for-integration-tests.patch
@@ -453,6 +471,22 @@ cp %{SOURCE130} .
 %patch -P212 -p1
 # bsc#1253904
 %patch -P213 -p1
+# bsc#1261078
+%patch -P214 -p1
+# bsc#1260967
+%patch -P215 -p1
+# bsc#1265907
+%patch -P216 -p1
+# bsc#1265929
+%patch -P217 -p1
+# bsc#1260279
+%patch -P218 -p1
+# bsc#1265782
+%patch -P219 -p1
+# bsc#1266625
+%patch -P220 -p1
+# bsc#1267827
+%patch -P221 -p1
 %if %{with integration_tests}
 # integration-tests patches
 %patch -P299 -p1

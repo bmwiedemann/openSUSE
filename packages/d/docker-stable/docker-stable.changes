@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 18 02:50:21 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- grpc: enforce strict path checking for incoming requests on the server
+  Backport of <grpc/grpc-go@72186f1>
+  (bsc#1260279, CVE-2026-33186)
+  * 0023-CVE-2026-33186-grpc-enforce-strict-path-checking-for.patch
+
+- http2: prevent hanging Transport due to bad SETTINGS
+  Backport of <golang/net@1e71bd8>
+  (bsc#1265782, CVE-2026-33814)
+  * 0024-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+
+- idna: update from x/text, fix ToUnicode and all-ASCII xn-- labels
+  Backport of <golang/net@8c4c965#diff-6b95b04ab0c83612198e99ffb2f4411f899daf14b618d907bcff2196a9af8e6b>
+  * 0025-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+
+- daemon: Decompress archives before entering container filesystem
+  Backport of <<moby@2022313>
+  (bsc#1267827, CVE-2026-41567)
+  * 0026-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
+
+-------------------------------------------------------------------
+Tue Jun  2 05:13:15 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- fix for Privilege validation bypass during plugin
+  Backport of <https://github.com/moby/moby/commit/99a095ecf04e8849318f2811bb3f687905eab09b>
+  (bsc#1265907, CVE-2026-33997)
+  * 0021-CVE-2026-33997-fix-for-Privilege-validation-bypass-d.patch
+
+- fix for Authz zero length regression
+  Backport of <https://github.com/moby/moby/commit/e89edb19ad7de0407a5d31e3111cb01aa10b5a38>
+  (bsc#1265929, CVE-2026-34040)
+  * 0022-CVE-2026-34040-fix-for-Authz-zero-length-regression.patch 
+
+-------------------------------------------------------------------
+Thu Apr 30 10:58:12 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- executor: validate container IDs centrally
+  Backport of <https://github.com/moby/buildkit/commit/45b038cd0b2ec2d34013ce0f085522276f7ee0d8>. 
+  (bsc#1261078, CVE-2026-33748)
+  * 0019-CVE-2026-33748-Fix-git-normalize-and-validate-subdir.patch
+
+- git: normalize and validate subdir paths
+  Backport of <https://github.com/moby/buildkit/commit/099cf80f5ebc935c48d2925499bffe703a54cff4>. 
+  (bsc#1260967, CVE-2026-33747)
+  * 0020-CVE-2026-33747-Fix-executor-validate-container-IDs-c.patch
+
+-------------------------------------------------------------------
 Thu Feb 19 14:16:13 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Places a hard cap on the amount of mechanisms that can be specified and
