@@ -19,7 +19,7 @@
 %global pkg_name crypton-connection
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Simple and easy network connection API
 License:        BSD-3-Clause

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Apr  2 23:48:15 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-connection to version 0.4.6 revision 1.
+  ## Version 0.4.6
+
+  * Using tls v2.3 and crypton-x509* v1.9.
+
+-------------------------------------------------------------------
 Tue Jan 13 11:47:43 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-connection to version 0.4.5 revision 1.
