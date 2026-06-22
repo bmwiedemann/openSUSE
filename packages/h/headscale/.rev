@@ -223,4 +223,25 @@
     https://github.com/juanfont/headscale/releases/tag/v0.28.0 (forwarded request 1331073 from rrahl0)</comment>
     <requestid>1331074</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>56d8e3131ef5f184c2d8c2e2c1eade50</srcmd5>
+    <version>0.29.1</version>
+    <time>1782142180</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.29.1:
+  + Minimum supported Tailscale client version: v1.80.0
+  + Fix nodes with tags='null' losing their assigned user on upgrade
+- Update to version 0.29.0:
+  + Tailscale ACL compatibility improvements
+  + SSH check action
+  + Policy tests (beta)
+  + SSH policy tests (beta)
+  + SSH rule validation
+  + Grants
+  + Node attributes (nodeAttrs)
+  + Taildrive
+  + Hostname sanitisation
+  + HA subnet router health probing (forwarded request 1360782 from rrahl0)</comment>
+    <requestid>1360783</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:51:45 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.29.1:
+  + Minimum supported Tailscale client version: v1.80.0
+  + Fix nodes with tags='null' losing their assigned user on upgrade
+- Update to version 0.29.0:
+  + Tailscale ACL compatibility improvements
+  + SSH check action
+  + Policy tests (beta)
+  + SSH policy tests (beta)
+  + SSH rule validation
+  + Grants
+  + Node attributes (nodeAttrs)
+  + Taildrive
+  + Hostname sanitisation
+  + HA subnet router health probing
+
+-------------------------------------------------------------------
 Wed Feb  4 22:28:15 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.28.0:
