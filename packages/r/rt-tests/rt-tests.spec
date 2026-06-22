@@ -1,7 +1,7 @@
 #
 # spec file for package rt-tests
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rt-tests
-Version:        2.9
+Version:        2.10
 Release:        0
 Summary:        Realtime Kernel Testsuite
 License:        GPL-2.0-only
@@ -36,6 +36,8 @@ Inheritance Mutexes.
 
 %prep
 %autosetup -p1
+# avoid env-script-interpreter rpmlint error
+sed -i '1s|/usr/bin/env python3|/usr/bin/python3|' src/cyclictest/get_cyclictest_snapshot.py
 
 %build
 export CFLAGS="%{optflags}"

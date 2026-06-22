@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:35:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.10:
+  * hwlatdetect: add MTBF calculation and width/bounds checking
+  * cyclictest: fix the -A long option name in the manpage and drop a
+    duplicate getopt entry
+  * rt-utils: fix the write() return-value check
+
+-------------------------------------------------------------------
 Tue Sep  9 06:46:58 UTC 2025 - Petr Vorel <pvorel@suse.cz>
 
 - Update to version 2.9:
