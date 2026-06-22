@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 19 21:26:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.16.0:
+  + Depend on Birb 0.6.1 and migrate to some of its new APIs
+  + Add tests to verify that the license headers are consistent
+  + Add a Client::stopped signal
+  + Move the builders to the imfreedom organization
+  + Add a bunch of missing constants
+  + Remove the deprecated API
+  + Add constants for standard replies and metadata
+  + Add Client.connect_async and deprecate Client.connect for it
+
+-------------------------------------------------------------------
 Wed Dec 31 00:24:49 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.15.0:

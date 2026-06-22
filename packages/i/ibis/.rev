@@ -76,4 +76,20 @@
   + Add a codespell unit test (forwarded request 1324866 from rrahl0)</comment>
     <requestid>1324867</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f735d20f3582033195e0418b71c8327e</srcmd5>
+    <version>0.16.0</version>
+    <time>1782142019</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.0:
+  + Depend on Birb 0.6.1 and migrate to some of its new APIs
+  + Add tests to verify that the license headers are consistent
+  + Add a Client::stopped signal
+  + Move the builders to the imfreedom organization
+  + Add a bunch of missing constants
+  + Remove the deprecated API
+  + Add constants for standard replies and metadata
+  + Add Client.connect_async and deprecate Client.connect for it (forwarded request 1360666 from rrahl0)</comment>
+    <requestid>1360667</requestid>
+  </revision>
 </revisionlist>

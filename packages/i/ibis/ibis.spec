@@ -1,7 +1,7 @@
 #
 # spec file for package ibis
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           ibis
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        Gobject based library
 License:        GPL-2.0-or-later
@@ -29,7 +29,7 @@ Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x40de1dc7
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-gi-docgen >= 2025.3
-BuildRequires:  pkgconfig(birb) >= 0.3.1
+BuildRequires:  pkgconfig(birb) >= 0.6.1
 BuildRequires:  pkgconfig(gio-2.0) >= 2.76
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.76
