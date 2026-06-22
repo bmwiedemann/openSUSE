@@ -86,7 +86,7 @@ rm -rf %{buildroot}%{_localstatedir}/adm/perl-modules/%{name}
 # a blank configuration file
 mkdir -p %{buildroot}%{_sysconfdir}/%{name}
 cp %{SOURCE2} %{buildroot}%{_sysconfdir}/%{name}/
-cp -a $(file bin/* | awk -F ':' '/x86-64/ {print $1}') %{buildroot}%{_bindir}/
+cp -a $(file bin/* | awk -F ':' '/ELF/ {print $1}') %{buildroot}%{_bindir}/
 
 %files
 %license COPYING
