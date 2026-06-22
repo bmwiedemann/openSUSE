@@ -19,7 +19,7 @@
 %global pkg_name crypton-x509-system
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.6.8
+Version:        1.9.0
 Release:        0
 Summary:        Handle per-operating-system X.509 accessors and storage
 License:        BSD-3-Clause
@@ -32,6 +32,8 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-pem-devel
+BuildRequires:  ghc-crypton-pem-prof
 BuildRequires:  ghc-crypton-x509-devel
 BuildRequires:  ghc-crypton-x509-prof
 BuildRequires:  ghc-crypton-x509-store-devel
@@ -42,8 +44,6 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pem-devel
-BuildRequires:  ghc-pem-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
 BuildRequires:  ghc-rpm-macros
