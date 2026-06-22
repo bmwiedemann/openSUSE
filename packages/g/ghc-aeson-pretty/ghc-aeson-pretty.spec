@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aeson-pretty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name aeson-pretty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.8.10
+Version:        0.8.11
 Release:        0
 Summary:        JSON pretty-printing library and command-line tool
 License:        BSD-3-Clause
@@ -54,18 +54,14 @@ ExcludeArch:    %{ix86}
 
 %description
 A JSON pretty-printing library compatible with aeson as well as a command-line
-tool to improve readabilty of streams of JSON data.
+tool to improve readability of streams of JSON data.
 
 The /library/ provides the function "encodePretty". It is a drop-in replacement
 for aeson's "encode" function, producing JSON-ByteStrings for human readers.
 
 The /command-line tool/ reads JSON from stdin and writes prettified JSON to
 stdout. It also offers a complementary "compact"-mode, essentially the opposite
-of pretty-printing. If you specify '-flib-only' like this
-
-> cabal install -flib-only aeson-pretty
-
-the command-line tool will NOT be installed.
+of pretty-printing.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
