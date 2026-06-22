@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Wed Jun 17 16:23:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Enable clang_build to allow building with the latest versions of
+  llvm/clang due to them dropping support for update-alternatives.
+
+-------------------------------------------------------------------
+Sat Jun 13 20:25:40 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.12.0 ESR
+  MFSA 2026-61 (bsc#1268071)
+  * CVE-2026-12289 (bmo#2023443)
+    Privilege escalation in the Graphics: WebRender component
+  * CVE-2026-12290 (bmo#2024852)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12291 (bmo#2036929)
+    Use-after-free in the Networking: HTTP component
+  * CVE-2026-12292 (bmo#2038465)
+    Incorrect boundary conditions in the Web Audio component
+  * CVE-2026-12294 (bmo#2039873)
+    Sandbox escape in the DOM: Workers component
+  * CVE-2026-12295 (bmo#2040160)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-12298 (bmo#2041981)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12296 (bmo#2040515)
+    Sandbox escape in the Security: Process Sandboxing component
+  * CVE-2026-12297 (bmo#2041610)
+    Sandbox escape due to incorrect boundary conditions in the
+    Networking component
+  * CVE-2026-12299 (bmo#2043139)
+    JIT miscompilation in the DOM: Core & HTML component
+  * CVE-2026-12329 (bmo#2044738)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12302 (bmo#2034489)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12304 (bmo#2034944)
+    Same-origin policy bypass in the Networking: Cookies component
+  * CVE-2026-12305 (bmo#2037290)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12306 (bmo#2037323)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12307 (bmo#2038133)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12308 (bmo#2038302)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12309 (bmo#2038476)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12310 (bmo#2039707)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12311 (bmo#2040177)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-12312 (bmo#2040383)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12313 (bmo#2040477)
+    Information disclosure, sandbox escape in the Security:
+    Process Sandboxing component
+  * CVE-2026-12314 (bmo#2041856)
+    Memory safety bug fixed in Thunderbird ESR 140.12
+  * CVE-2026-12315 (bmo#2042058)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12330 (bmo#2029326)
+    Incorrect boundary conditions in the Internationalization
+    component
+  * CVE-2026-12324 (bmo#2038444)
+    Incorrect boundary conditions in the Graphics: CanvasWebGL
+    component
+  * CVE-2026-12325 (bmo#2039443)
+    Denial-of-service in the Graphics: ImageLib component
+  * CVE-2026-12327 (bmo#2011842, bmo#2023902, bmo#2025512, bmo#2027312,
+    bmo#2029444, bmo#2036571, bmo#2036900, bmo#2036936, bmo#2037995,
+    bmo#2038551, bmo#2040717, bmo#2042724)
+    Memory safety bugs fixed in Firefox ESR 140.12, Thunderbird
+    ESR 140.12, Firefox 152 and Thunderbird 152
+  * CVE-2026-12328 (bmo#2029402, bmo#2038477, bmo#2039726, bmo#2041373,
+    bmo#2042268, bmo#2042451, bmo#2042782, bmo#2042858, bmo#2042929,
+    bmo#2042965, bmo#2043213)
+    Memory safety bugs fixed in Firefox ESR 115.37, Firefox ESR
+    140.12, Thunderbird ESR 140.12, Firefox 152 and Thunderbird 152
+
+-------------------------------------------------------------------
 Tue May 26 11:38:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.11.1 ESR
