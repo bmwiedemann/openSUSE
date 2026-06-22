@@ -16,18 +16,21 @@
 #
 
 Name:           mistral-vibe
-Version:        2.16.1
+Version:        2.17.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
 URL:            https://github.com/mistralai/mistral-vibe
 Source0:        https://files.pythonhosted.org/packages/source/m/mistral_vibe/mistral_vibe-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM build-tests.patch mcepl@suse.com
+# PATCH-FIX-OPENSUSE build-tests.patch mcepl@suse.com
 # make tests pass
 Patch0:         build-tests.patch
 # PATCH-FIX-UPSTREAM fix_tests.patch gh#mistralai/mistral-vibe!796 mcepl@suse.com
 # Fix test failures in build environments
 Patch1:         fix_tests.patch
+# PATCH-FIX-OPENSUSE no_terminal.patch bugno mcepl@suse.com
+# we don't have access to /dev/tty
+Patch2:         no_terminal.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -180,7 +183,7 @@ with your projects through a powerful set of tools.
 PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
-%python3_pytest -m 'not network' -k 'not test_generic_backend_streaming_uses_ssl_cert_file'
+%python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file'
 
 %files
 %license LICENSE

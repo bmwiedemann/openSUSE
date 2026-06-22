@@ -1,0 +1,106 @@
+---
+ pyproject.toml                                                 |    1 +
+ tests/e2e/agent_loop_characterization/test_resume.py           |    1 +
+ tests/e2e/agent_loop_characterization/test_subagents.py        |    1 +
+ tests/e2e/agent_loop_characterization/test_tool_execution.py   |    4 +++-
+ tests/e2e/agent_loop_characterization/test_tool_permissions.py |    2 ++
+ tests/e2e/agent_loop_characterization/test_user_interaction.py |    1 +
+ 6 files changed, 9 insertions(+), 1 deletion(-)
+
+Index: mistral_vibe-2.17.1/pyproject.toml
+===================================================================
+--- mistral_vibe-2.17.1.orig/pyproject.toml	2026-06-20 14:13:38.663411326 +0200
++++ mistral_vibe-2.17.1/pyproject.toml	2026-06-20 14:13:38.691643681 +0200
+@@ -258,6 +258,7 @@
+ timeout = 10
+ markers = [
+     "network: tests that require network-capable execution environment",
++    "terminal: tests that require /dev/tty",
+ ]
+ filterwarnings = [
+     # (e2e) streaming mock server is started in a thread; and the cli is spawn in a fork
+Index: mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_resume.py
+===================================================================
+--- mistral_vibe-2.17.1.orig/tests/e2e/agent_loop_characterization/test_resume.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_resume.py	2026-06-20 14:42:17.250159252 +0200
+@@ -138,6 +138,7 @@
+     return assistant_text_chunks(RESUME_RESUMED_TURN_RESPONSE, created=60)
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(35)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+Index: mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_subagents.py
+===================================================================
+--- mistral_vibe-2.17.1.orig/tests/e2e/agent_loop_characterization/test_subagents.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_subagents.py	2026-06-20 14:22:22.132524977 +0200
+@@ -43,6 +43,7 @@
+     return assistant_text_chunks("Parent used the subagent result.", created=110)
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(30)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+Index: mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_tool_execution.py
+===================================================================
+--- mistral_vibe-2.17.1.orig/tests/e2e/agent_loop_characterization/test_tool_execution.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_tool_execution.py	2026-06-20 14:24:03.441495019 +0200
+@@ -74,6 +74,7 @@
+     return assistant_text_chunks("Both todo reads completed.", created=170)
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(25)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+@@ -119,6 +120,7 @@
+     )
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(25)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+@@ -165,7 +167,7 @@
+         expected=FAILING_BASH_STDERR,
+     )
+ 
+-
++@pytest.mark.terminal
+ @pytest.mark.timeout(25)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+Index: mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py
+===================================================================
+--- mistral_vibe-2.17.1.orig/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py	2026-06-20 14:13:38.692301200 +0200
+@@ -81,6 +81,7 @@
+     )
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(35)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+@@ -151,6 +152,7 @@
+     )
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(40)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
+Index: mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_user_interaction.py
+===================================================================
+--- mistral_vibe-2.17.1.orig/tests/e2e/agent_loop_characterization/test_user_interaction.py	2020-02-02 01:00:00.000000000 +0100
++++ mistral_vibe-2.17.1/tests/e2e/agent_loop_characterization/test_user_interaction.py	2026-06-20 14:13:38.692467975 +0200
+@@ -60,6 +60,7 @@
+     return assistant_text_chunks("The selected mode was Fast.", created=80)
+ 
+ 
++@pytest.mark.terminal
+ @pytest.mark.timeout(25)
+ @pytest.mark.parametrize(
+     "streaming_mock_server",
