@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 21 09:55:02 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.1.1+git.1782032932.309de44:
+  * Add XInputsKvGroup (bsc#1267910)
+  * Enable other Primitive-Operation attributes 
+
+-------------------------------------------------------------------
 Tue Jun  9 14:20:50 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Bump ClusterLabs/go-pacemaker v0.0.0-20260609131737-256130b189e0 (bsc#1267454)
