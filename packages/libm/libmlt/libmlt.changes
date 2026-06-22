@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 18:08:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Thu Apr 23 12:07:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 7.38.0

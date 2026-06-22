@@ -239,7 +239,7 @@ export CC=gcc-13 CXX=g++-13
 for MODULE in %{buildroot}%{_libdir}/mlt-%{sover}/libmlt*.so; do
   echo $MODULE
   MODULEDIR=%{_datadir}/mlt-%{sover}/$(echo $MODULE | sed 's|%{buildroot}%{_libdir}/mlt-%{sover}/libmlt\(.*\).so|\1|')
-  if [[ "$MODULEDIR" =~ "qt6" ]]; then
+  if echo "$MODULEDIR" | grep -q qt6; then
     echo "Ignoring $MODULEDIR"
     continue
   fi
@@ -251,9 +251,9 @@ for MODULE in %{buildroot}%{_libdir}/mlt-%{sover}/libmlt*.so; do
 done
 
 #Link man melt to man melt-7
-pushd  %{buildroot}%{_mandir}/man1/
+cd %{buildroot}%{_mandir}/man1/
 ln -s  melt-%{sover}.1 melt.1
-popd
+cd -
 
 # remove dupes
 %fdupes %{buildroot}%{_datadir}/mlt-%{sover}
