@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 19 10:13:31 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update helm to 4.2.2:
+  * Revert: Fixed a race condition in WaitForDelete where the status 
+    observer canceled the watch too early, causing intermittent 
+    failures when running a full test suite #32214 
+
+-------------------------------------------------------------------
 Sat Jun 13 10:12:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.2.1:
