@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 21 23:04:11 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to TeXstudio 4.9.5
+  * fix crash when setting explicit root doc #4469
+  * improve handling collaboration with teamtype #4454,#4466
+  * workaround win11 style, invisible red background when text not
+    found in searchpanel
+  * keep folder structure of imported macros if more than one
+    macro is imported #4484
+  * highlight more tex symbol as keyword #4465
+  * fix addresource bibfile when using citation-style-language
+    #4477
+- Change package build system to use Qt6 instead of Qt5
+
+-------------------------------------------------------------------
 Sun May 10 10:46:18 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Update to TeXstudio 4.9.4
