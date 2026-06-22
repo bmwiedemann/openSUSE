@@ -609,4 +609,12 @@ NOTE: 4.x is a breaking ABI change; reverse-dependencies need rebuilding
 and may require coordinated staging.</comment>
     <requestid>1359879</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>d522232cc8c3d4d0cd44d34b685b4580</srcmd5>
+    <version>4.1.0</version>
+    <time>1782142406</time>
+    <user>anag_factory</user>
+    <comment>Reference tracking bug boo#1201581 for CVE-2022-35409</comment>
+    <requestid>1360823</requestid>
+  </revision>
 </revisionlist>

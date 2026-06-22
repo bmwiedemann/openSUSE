@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 21 10:32:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Reference the tracking bug for the previously-listed CVE fix:
+  * CVE-2022-35409 (boo#1201581)
+
+-------------------------------------------------------------------
 Wed Jun 17 05:22:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.1.0, a breaking major release of the Mbed TLS 4.x
@@ -7353,7 +7359,7 @@ Wed Dec 21 11:10:10 UTC 2022 - Alexander Bergmann <abergmann@suse.com>
 -------------------------------------------------------------------
 Fri Nov  4 16:53:36 UTC 2022 - Mia Herkt <mia@0x0.st>
 
-- Update to 2.28.1: (CVE-2022-35409)
+- Update to 2.28.1: (CVE-2022-35409, boo#1201581)
   Default behavior changes
 
   * mbedtls_cipher_set_iv will now fail with ChaCha20 and
