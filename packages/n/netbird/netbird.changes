@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jun 19 16:34:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.73.1
+  - Client Improvements
+    - Fixed profile regressions affecting up --profile and status
+      commands. #6479
+    - Reduced false-positive DNS health warnings. #6453
+    - Fixed DNS custom zone teardown issues, including handler
+      leaks and external CNAME resolution. #6445
+  - Management Improvements
+    - Removed database calls from nested loops to improve
+      efficiency. #6470
+    - Fetched complete user data in ValidateTunnelPeer. #6457
+    - Reduced sync and login transaction overhead. #6472
+    - Added peer metadata diff logging. #6468
+  - Infrastructure & Tooling
+    - Removed the v prefix from Docker image tags. #6471
+    - Improved FreeBSD port scripts to correctly handle release
+      candidates when fetching tags. #6480
+
+-------------------------------------------------------------------
+Thu Jun 18 17:24:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.73.0
+  - Client Improvements
+    - Added MDM configuration profile support for Windows Registry
+      and macOS plist deployments. #6374
+    - Improved DNS handling by answering NODATA instead of SERVFAIL
+      when a host has no addresses of the requested family. #6418
+    - Added WASM WebSocket dialing support. #5980
+    - Added iOS debug bundle support in Go. #6270
+    - Added IsLoginRequiredCached support for iOS clients. #6447
+    - Improved exit-node handling by propagating deselect actions
+      to synthesized IPv6 routes. #6296
+    - Migrated profile identity from display name to ID and added
+      support for profile renaming. #6367
+    - Improved reliability by recovering from TUN device read/write
+      panics and automatically restarting the client. #6419
+    - Added detection and recovery for stalled signal receive
+      streams. #6459
+    - Fixed iOS route notification ordering. #6454
+    - Dropped the signaling-side ICE filter and improved overlay
+      STUN handling. #6142
+    - Exposed relay transport and connection errors in client
+      status output and metrics. #6342
+  - Management Improvements
+    - Skipped JWT group evaluation for embedded-IdP local users.
+      #6422
+    - Treated ci- builds as development builds for remote jobs.
+      #6436
+    - Optimized network map generation for affected peers. #6105
+    - Deleted targets automatically when deleting exposed services.
+      #6442
+    - Removed network map calculation from login flow. #6449
+    - Passed meta updates for browser clients. #6465
+    - Fixed flaky SaveAccount tests caused by random IP collisions.
+      #6452
+    - Synced OpenAPI specifications and added workflow validation.
+      #6437
+  - Proxy Enhancements
+    - Kept custom TCP listeners alive after mapping batches. #6415
+    - Fixed UDP relay context handling. #6444
+  - Signal Improvements
+    - Serialized concurrent sends to peer streams to improve
+      stability. #6463
+  - Infrastructure & Tooling
+    - Improved GoReleaser release candidate handling and updated
+      Docker build workflows. #6438
+
+-------------------------------------------------------------------
 Fri Jun 12 10:28:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.72.4
