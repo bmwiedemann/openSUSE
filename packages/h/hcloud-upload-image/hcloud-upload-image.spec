@@ -17,7 +17,7 @@
 
 
 Name:           hcloud-upload-image
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Quickly upload any raw disk images into your Hetzner Cloud projects
 License:        MIT

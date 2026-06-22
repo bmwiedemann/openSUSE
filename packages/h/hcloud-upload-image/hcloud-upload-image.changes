@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:30:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.5.0:
+  * BREAKING CHANGES
+    - new write-to-disk command (#178)
+  * Features
+    - new write-to-disk command (#178) (d65441f), closes #157
+  * Bug Fixes
+    - update hcloudimages module path for v2 (#184) (f4fd485)
+  * Miscellaneous Chores
+    - deps: update module
+      github.com/apricote/hcloud-upload-image/hcloudimages to
+      v2.0.1 (#186) (1b1e1af)
+  * Dependencies
+    - chore(deps): update actions/checkout action to v7 (#188)
+    - chore(main): release hcloudimages 2.0.1 (#185)
+    - chore(main): release hcloudimages 2.0.0 (#181)
+    - chore(deps): update dependency rust-lang/mdbook to v0.5.3
+      (#175)
+    - chore(deps): update go toolchain directive to v1.26.4 (#179)
+    - chore(deps): update actions/checkout digest to df4cb1c (#180)
+
+-------------------------------------------------------------------
 Fri May 15 06:51:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.0:
