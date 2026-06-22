@@ -322,4 +322,12 @@
     <comment>Spec cleanup: add explicit gcc+make BuildRequires; point URL at the upstream kernel.org git (01.org is defunct)</comment>
     <requestid>1356427</requestid>
   </revision>
+  <revision rev="35" vrev="3">
+    <srcmd5>e76e1646c62cb7ffacc460a6b620d79a</srcmd5>
+    <version>2.19</version>
+    <time>1782142425</time>
+    <user>anag_factory</user>
+    <comment>Reference tracking bugs for the ofono SMS/STK/USSD CVE fixes</comment>
+    <requestid>1360835</requestid>
+  </revision>
 </revisionlist>

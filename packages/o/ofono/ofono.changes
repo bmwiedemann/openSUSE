@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 21 12:38:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Reference the tracking bugs for the SMS/STK/USSD decoder security
+  fixes applied upstream across the 2.14-2.17 updates:
+  * SMS decoder stack buffer overflows: CVE-2023-2794 (boo#1218292),
+    CVE-2023-4232 (boo#1218293), CVE-2023-4233 (boo#1218294),
+    CVE-2023-4234 (boo#1218295), CVE-2023-4235 (boo#1218296)
+  * SMS PDU / message-list parsing overflows and OOB read:
+    CVE-2024-7537 (boo#1228903), CVE-2024-7547 (boo#1228917)
+  * AT-command / USSD response parsing overflows: CVE-2024-7538
+    (boo#1228904), CVE-2024-7539 (boo#1228905)
+  * Uninitialized-memory information disclosure: CVE-2024-7540
+    (boo#1228906), CVE-2024-7541 (boo#1228907), CVE-2024-7542
+    (boo#1228908)
+  * STK command PDU heap overflows: CVE-2024-7543 (boo#1228910),
+    CVE-2024-7544 (boo#1228913), CVE-2024-7545 (boo#1228914),
+    CVE-2024-7546 (boo#1228916)
+
+-------------------------------------------------------------------
 Mon Jun  1 17:31:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:
