@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1083991</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c350c2813a9af276f2c06c50abb6c4b8</srcmd5>
+    <version>0.660</version>
+    <time>1782142513</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.660: fixes CVE-2025-9396, CVE-2025-15570 (UAF in lzma_decompress_buf), CVE-2025-15571 (NULL deref in ucompthread); drop merged fixasmstack.patch; build from upstream GitHub tarball</comment>
+    <requestid>1360870</requestid>
+  </revision>
 </revisionlist>

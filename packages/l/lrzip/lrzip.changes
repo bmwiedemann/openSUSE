@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:57:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.660:
+  * Do not clean up thread structures in decompression failure
+    conditions, fixing a use-after-free in lzma_decompress_buf() and a
+    NULL pointer dereference in ucompthread() on corrupt/malicious
+    archives (CVE-2025-15570, boo#1258016; CVE-2025-15571, boo#1258023)
+  * Handle -L given without a parameter, fixing a NULL pointer
+    dereference (CVE-2025-9396, boo#1248598)
+  * Add write bounds checking in libzpaq and sanity checks for
+    maliciously encoded headers and oversized allocations
+  * Various STDIO, portability and build fixes (OpenBSD support,
+    non-x86 zpaq, autoconf warnings); drop Doxygen doc build
+- Switch Source to the upstream GitHub release tarball (0.660 is not
+  published on ck.kolivas.org) and run autoreconf at build time
+- Drop fixasmstack.patch (merged upstream)
+
+-------------------------------------------------------------------
 Tue May  2 08:31:26 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable asm on non-x86* architectures to fix builds

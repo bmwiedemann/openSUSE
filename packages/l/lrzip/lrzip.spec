@@ -1,7 +1,7 @@
 #
 # spec file for package lrzip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,21 +18,21 @@
 
 
 Name:           lrzip
-Version:        0.651
+Version:        0.660
 Release:        0
 Summary:        Very High Ratio and Speed Compression Designed for Large Files
 License:        GPL-2.0-only
 URL:            http://ck.kolivas.org/apps/lrzip/
-Source:         http://ck.kolivas.org/apps/lrzip/lrzip-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM https://github.com/ckolivas/lrzip/pull/243
-Patch0:         fixasmstack.patch
-BuildRequires:  doxygen
+Source:         https://github.com/ckolivas/lrzip/archive/refs/tags/v%{version}.tar.gz#/lrzip-%{version}.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  lzo-devel
+BuildRequires:  libtool
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblz4)
+BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(zlib)
 Conflicts:      rzsz
 
@@ -49,6 +49,7 @@ provide, or better speed than gzip, but with bzip2 sized compression levels.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
 %ifnarch %{ix86} x86_64
   --disable-asm \
