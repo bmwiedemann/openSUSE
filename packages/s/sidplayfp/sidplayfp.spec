@@ -18,7 +18,7 @@
 
 
 Name:           sidplayfp
-Version:        3.0.2
+Version:        3.1.0
 Release:        0
 Summary:        SID chip music module player
 License:        GPL-2.0-or-later
@@ -30,6 +30,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsidplayfp) >= 2.0
 BuildRequires:  pkgconfig(libstilview)
+Provides:       bundled(fmt)
+Provides:       bundled(ghc_filesystem)
+Provides:       bundled(miniaudio)
 
 %description
 A player for playing SID music modules originally created on the Commodore 64
