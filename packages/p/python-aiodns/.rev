@@ -145,4 +145,46 @@ for me important as dependency for XMPP client poezio, which is 7 years outdated
     <comment></comment>
     <requestid>1321786</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f3b8a67160e88e028a175c92f8b319fc</srcmd5>
+    <version>4.0.0</version>
+    <time>1774555669</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.0:
+  * Breaking change: Requires pycares &gt;= 5.0.0
+  * Added new query_dns() method returning native pycares 5.x DNSResult types
+  * Deprecated query() method - still works with backward-compatible result
+    types
+  * Deprecated gethostbyname() method - use getaddrinfo() instead
+  * Added compatibility layer for pycares 4.x result types to ease migration
+- Update URL to point to the repository itself.</comment>
+    <requestid>1342139</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>83aa2d03d63df080abbe99bc541890f8</srcmd5>
+    <version>4.0.4</version>
+    <time>1782142118</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.4:
+  * Raise ``DNSError(ARES_ENODATA)`` from ``query()`` when the
+    answer section has no records of the requested qtype,
+    restoring the pycares 4.x NODATA contract and avoiding
+    ``AttributeError`` for CNAME/SOA/PTR callers (#254).
+  * Add the missing ``build-backend`` entry to ``pyproject.toml``
+    so PEP 517 builds from the sdist work without falling back to
+    the deprecated legacy setuptools backend (#252).
+  * Restore license metadata that was dropped during the
+    ``pyproject.toml`` migration in #244, so packaging tools
+    again detect aiodns as MIT-licensed (#250).
+  * Re-release of 4.0.1; the 4.0.1 wheel build failed because the
+    release workflow still invoked ``python setup.py`` after #244
+    removed ``setup.py``, so 4.0.1 never reached PyPI. The
+    release workflow now uses ``python -m build`` (#248).
+  * Fix ``Future exception was never retrieved`` when pycares
+    raises ``AresError`` synchronously, e.g. for malformed
+    hostnames (#245, fixes #231)
+  * Modernized package setup using ``pyproject.toml`` instead of
+    ``setup.py`` (#244)</comment>
+    <requestid>1360756</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jun 14 09:05:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.4:
+  * Raise ``DNSError(ARES_ENODATA)`` from ``query()`` when the
+    answer section has no records of the requested qtype,
+    restoring the pycares 4.x NODATA contract and avoiding
+    ``AttributeError`` for CNAME/SOA/PTR callers (#254).
+  * Add the missing ``build-backend`` entry to ``pyproject.toml``
+    so PEP 517 builds from the sdist work without falling back to
+    the deprecated legacy setuptools backend (#252).
+  * Restore license metadata that was dropped during the
+    ``pyproject.toml`` migration in #244, so packaging tools
+    again detect aiodns as MIT-licensed (#250).
+  * Re-release of 4.0.1; the 4.0.1 wheel build failed because the
+    release workflow still invoked ``python setup.py`` after #244
+    removed ``setup.py``, so 4.0.1 never reached PyPI. The
+    release workflow now uses ``python -m build`` (#248).
+  * Fix ``Future exception was never retrieved`` when pycares
+    raises ``AresError`` synchronously, e.g. for malformed
+    hostnames (#245, fixes #231)
+  * Modernized package setup using ``pyproject.toml`` instead of
+    ``setup.py`` (#244)
+
+-------------------------------------------------------------------
+Tue Mar 24 03:19:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Breaking change: Requires pycares >= 5.0.0
+  * Added new query_dns() method returning native pycares 5.x DNSResult types
+  * Deprecated query() method - still works with backward-compatible result
+    types
+  * Deprecated gethostbyname() method - use getaddrinfo() instead
+  * Added compatibility layer for pycares 4.x result types to ease migration
+- Update URL to point to the repository itself.
+
+-------------------------------------------------------------------
 Tue Dec  9 11:19:10 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.6.0

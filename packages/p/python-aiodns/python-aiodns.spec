@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiodns
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,23 +20,22 @@
 %bcond_with tests
 %{?sle15_python_module_pythons}
 Name:           python-aiodns
-Version:        3.6.0
+Version:        4.0.4
 Release:        0
 Summary:        Simple DNS resolver for asyncio
 License:        MIT
-Group:          Development/Libraries/Python
-URL:            https://github.com/saghul/aiodns/releases
+URL:            https://github.com/saghul/aiodns
 Source0:        https://github.com/saghul/aiodns/archive/refs/tags/v%{version}.tar.gz#/aiodns-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pycares >= 4.0.0
+Requires:       python-pycares >= 5.0.0
 BuildArch:      noarch
 %if %{with tests}
-BuildRequires:  %{python_module pycares}
-BuildRequires:  python-typing
+BuildRequires:  %{python_module pycares >= 5.0.0}
 %endif
 %python_subpackages
 
@@ -62,6 +61,6 @@ Simple DNS resolver for asyncio module.
 %doc ChangeLog README.rst
 %license LICENSE
 %{python_sitelib}/aiodns
-%{python_sitelib}/aiodns-%{version}*-info
+%{python_sitelib}/aiodns-%{version}.dist-info
 
 %changelog
