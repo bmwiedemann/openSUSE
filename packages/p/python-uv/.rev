@@ -2752,4 +2752,41 @@
   * Reject malformed hash options in requirements files</comment>
     <requestid>1359308</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>6620c82b457729e6eb1ee09755ba7d30</srcmd5>
+    <version>0.11.23</version>
+    <time>1782141901</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.23 
+ * Bug fixes
+  - Revert &quot;Fix transparent Python upgrades in project environments&quot; to mitigate unintended breakage in pre-commit-uv 
+  - Restore old behavior where workspace members &quot;hidden&quot; by an intermediate pyproject.toml would be treated as standalone projects 
+
+- update to 0.11.22
+ * Enhancements
+  * Publish wheels before sdists in uv publish 
+  * Add TY and RUFF env vars for providing paths for binaries used by uv format and uv check 
+ * Preview features
+  * Allow configuring preview features in uv.toml and pyproject.toml 
+  * Update the lockfile during uv check --no-sync 
+  * Add --script to uv check and uv metadata 
+  * Report workspace-exclusive dependency groups in workspace metadata 
+  * Support SARIF as a uv audit output 
+ * Performance
+  * Use a more deadlock-resistant concurrent hashmap in the resolver 
+ * Bug fixes
+  * Update string marker ordering semantics to match upstream clarified rules 
+  * Reject extras that have the same normalized name 
+  * Reject dependency group include-group entries that have additional fields 
+  * Reject invalid UTF-8 URL credentials 
+  * Validate that PEP 517 backend-paths exist when building sdists 
+  * Validate that pylock.toml files do not have an unsupported a lock-version 
+  * Validate that the environment satisfies the packages.requires-python of a pylock.toml 
+  * Allow uv to be recursively invoked by PEP 517 build hooks 
+  * Allow empty credentials.toml files 
+  * Fix transparent Python upgrades in project environments 
+  * Handle non-file editable URLs in uv pip list 
+  * Fix incorrect output from uv tree --invert</comment>
+    <requestid>1360892</requestid>
+  </revision>
 </revisionlist>
