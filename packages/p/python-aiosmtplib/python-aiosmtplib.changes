@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Jun 14 09:27:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 5.1.1 (CVE-2026-53533):
+- update to 5.1.1 (CVE-2026-53533, bsc#1268219):
   * Security: Reject control characters (the C0 range 0x00-0x1F
     and DEL 0x7F, including CR, LF, and NUL) in SMTP command
     arguments, preventing command injection via input passed to
