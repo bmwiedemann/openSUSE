@@ -18,7 +18,7 @@
 
 %define lname	libfwevt1
 Name:           libfwevt
-Version:        20260602
+Version:        20260616
 Release:        0
 Summary:        Library for Windows XML Event Log (EVTX) data types
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -29,10 +29,10 @@ Source2:        https://github.com/libyal/%name/releases/download/%version/%name
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcdata) >= 20260520
+BuildRequires:  pkgconfig(libcdata) >= 20260612
 BuildRequires:  pkgconfig(libcerror) >= 20260527
-BuildRequires:  pkgconfig(libcnotify) >= 20260602
-BuildRequires:  pkgconfig(libcthreads) >= 20260530
+BuildRequires:  pkgconfig(libcnotify) >= 20260612
+BuildRequires:  pkgconfig(libcthreads) >= 20260615
 BuildRequires:  pkgconfig(libfdatetime) >= 20260521
 BuildRequires:  pkgconfig(libfguid) >= 20260521
 BuildRequires:  pkgconfig(libfvalue) >= 20260531
@@ -76,6 +76,7 @@ grep '  local' config.log && exit 1
 
 %install
 %make_install
+rm -Rfv "%buildroot/home"
 find "%buildroot" -type f -name "*.la" -delete -print
 
 %ldconfig_scriptlets -n %lname

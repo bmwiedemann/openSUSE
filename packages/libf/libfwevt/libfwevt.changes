@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 17 18:52:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260616
+  * Added support for codepages; relaxed the hardcoded treatment of
+    data items as windows-1252.
+
+-------------------------------------------------------------------
 Fri Jun 12 10:06:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260602
