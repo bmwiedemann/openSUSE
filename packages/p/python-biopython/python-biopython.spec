@@ -30,7 +30,7 @@ Source100:      python-biopython-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 74.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module xml}
 BuildRequires:  fdupes
@@ -74,7 +74,7 @@ export LANG=en_US.UTF-8
 %endif
 
 %files %{python_files}
-%doc CONTRIB.rst DEPRECATED.rst NEWS.rst README.rst
+%doc DEPRECATED.rst NEWS.rst README.rst
 %doc Doc/ examples/
 %license LICENSE.rst
 %{python_sitearch}/Bio/
