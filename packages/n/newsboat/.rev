@@ -7,4 +7,35 @@
     <comment>readd newsboat</comment>
     <requestid>1348125</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7ee7391b48220ec1666681a8ad89c7b5</srcmd5>
+    <version>2.44</version>
+    <time>1782142672</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.44:
+  Added:
+  * Table with `*-title-format` specifiers in the manpage
+  * List of available text attributes in the manpage
+  * Ability to specify initial text for `cmdline` command. This allows one to
+    write macros or new-style `bind`s to run common command-line commands
+  * Ability to open urls file at the current feed, e.g.
+    `bind E feedlist,articlelist,searchresultslist edit-urls &quot;vim +%L %f&quot;`
+    This is **not** enabled by default. See `edit-urls` docs for details.
+    (#1262, #3338, https://github.com/akrennmair/newsbeuter/issues/258 )
+  * Import feed titles from OPML when using `opml-url`
+  Changed:
+  * Bumped minimum supported Rust version to 1.92.0
+  * Updated translations
+  Fixed:
+  * OPML import mangling `exec:` and `filter` lines in the urls file (#3115)
+  * Build failure on macOS 26
+  * Build failure on OpenBSD
+  * Cursor jumping to unrelated article when `purge-deleted` is called (#1445)
+  * Applying an incorrect filter hiding all articles. Now the filter would not be
+    applied, and an error message would be shown (#2857)
+  * Missing tags if feed URL is used multiple times. Now the tags would be merged
+    (#2233)
+  * Authentication error (`&quot;error&quot;: &quot;INCORRECT_USAGE&quot;`) with TT-RSS (#3373)</comment>
+    <requestid>1360907</requestid>
+  </revision>
 </revisionlist>

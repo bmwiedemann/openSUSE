@@ -17,7 +17,7 @@
 
 
 Name:           newsboat
-Version:        2.43
+Version:        2.44
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
@@ -64,7 +64,6 @@ text terminals.
 
 %prep
 %autosetup -a3 -p1
-mkdir cargo-home
 
 # Fix badness by replacing the env interpreter
 sed -i 's|/bin/env |/bin/|' contrib/*.{pl,py,rb,sh} contrib/*/* doc/examples/*
@@ -79,13 +78,11 @@ do
 done
 
 %build
-export CARGO_HOME=`pwd`/cargo-home/
 ./config.sh
 
 %make_build OPTFLAGS="%{optflags} -Wno-unused-result"
 
 %install
-export CARGO_HOME=`pwd`/cargo-home/
 %make_install prefix="%{_prefix}" docdir=%{_docdir}/%{name}
 
 for l in zh; do
