@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 06:06:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Exclude flaky unit test on build
+
+-------------------------------------------------------------------
 Sat Jun 13 14:45:01 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.14.4:

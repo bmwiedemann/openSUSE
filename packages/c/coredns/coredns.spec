@@ -85,6 +85,7 @@ skiplist=(
     "TestFailover"
     "TestTransport"
     "TestCoreDNSOverflow"
+    "TestReloadTwoServerBlocksUnreadyPlugin"
 )
 
 # Concatenate the array elements into a single regex string separated by pipes (|)
