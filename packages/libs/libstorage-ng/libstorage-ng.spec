@@ -18,7 +18,7 @@
 
 %define libname %{name}1
 Name:           libstorage-ng
-Version:        4.5.331
+Version:        4.5.334
 Release:        0
 Summary:        Library for storage management
 License:        GPL-2.0-only
@@ -62,6 +62,7 @@ BuildRequires:  json-c-devel
 BuildRequires:  glibc-locale
 BuildRequires:  libjson-c-devel
 %endif
+BuildRequires:  strace
 
 %description
 This package contains libstorage-ng, a library for storage management.
