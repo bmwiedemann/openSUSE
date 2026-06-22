@@ -1,7 +1,7 @@
 #
 # spec file for package libmpdclient
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 2
 Name:           libmpdclient
-Version:        2.23
+Version:        2.25
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-2-Clause AND BSD-3-Clause

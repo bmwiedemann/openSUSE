@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 21 10:24:06 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.25
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.22/NEWS
+  * Supported MPD protocol 0.25.0
+    * stringnormalization
+    * song properties "RealUri", "start_ms", "end_ms"
+    * tag "DiscSubtitle"
+  * Switched to C11.
+
+-------------------------------------------------------------------
 Fri Jul  4 16:58:42 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added libmpdclient-2.23.tar.xz.sig and libmpdclient.keyring.
