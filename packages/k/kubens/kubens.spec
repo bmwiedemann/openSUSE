@@ -87,15 +87,15 @@ install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
-install -D -m 0644 completion/kubectx.bash %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
+install -D -m 0644 completion/kubens.bash %{buildroot}%{_datarootdir}/bash-completion/completions/%{name}
 
 # create the fish completion file
 mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
-install -D -m 0644 completion/kubectx.fish %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+install -D -m 0644 completion/kubens.fish %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
 
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
-install -D -m 0644 completion/_kubectx.zsh %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+install -D -m 0644 completion/_kubens.zsh %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 
 %check
 %{buildroot}/%{_bindir}/%{name} --version

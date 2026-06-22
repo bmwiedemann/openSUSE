@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 13:40:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- use kubens completions, not the kubectx ones (boo#1268539)
+
+-------------------------------------------------------------------
 Fri Mar 27 06:05:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.0:
