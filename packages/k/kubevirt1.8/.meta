@@ -1,0 +1,4 @@
+<package name="kubevirt1.8" project="openSUSE:Factory">
+  <title>KubeVirt 1.8 (versioned fork)</title>
+  <description>Versioned KubeVirt package (1.8), named kubevirt1.8 to match the kubernetes1.33 / etcd-for-k8s1.33 convention. Staging copy for the rename of kubevirt-1.8 -&gt; kubevirt1.8.</description>
+</package>
