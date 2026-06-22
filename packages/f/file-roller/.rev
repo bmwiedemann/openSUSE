@@ -1378,4 +1378,21 @@ Fixed macro (as commented) (forwarded request 885296 from susnux)</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342944</requestid>
   </revision>
+  <revision rev="171" vrev="1">
+    <srcmd5>86f4fa0fc9d0aa0183b0348bd96a12d2</srcmd5>
+    <version>44.7</version>
+    <time>1782142965</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 44.7:
+  + Bugfixes:
+    - New Archive Dialog: allow input of an absolute path directly.
+    - Check line length when parsing command output.
+    - Java Utils: make sure the package name respects the max size.
+    - Metainfo: Add screenshot caption.
+    - Flatpak Improvements: remove zstd module; improve cleanup
+      command; replace p7zip with 7zip; reduce libportal features;
+      modernize manifest.
+  + Updated translations.</comment>
+    <requestid>1361062</requestid>
+  </revision>
 </revisionlist>
