@@ -31,4 +31,13 @@
   * Remove support for Python 3.8 (@scottbelden)</comment>
     <requestid>1339138</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f84e60466593cb7cfe1a828f28f94875</srcmd5>
+    <version>1.12.2</version>
+    <time>1782142128</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.12.2:
+  * Publish wheels for Windows ARM64 (@Harishmcw)</comment>
+    <requestid>1360762</requestid>
+  </revision>
 </revisionlist>

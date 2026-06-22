@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fastavro
-Version:        1.12.1
+Version:        1.12.2
 Release:        0
 Summary:        Fast read/write of AVRO files
 License:        MIT
@@ -36,6 +36,7 @@ Suggests:       python-cramjam
 Suggests:       python-lz4
 Suggests:       python-zstandard
 # SECTION test requirements
+BuildRequires:  %{python_module backports.zstd >= 1.0.0 if %python-base < 3.14}
 BuildRequires:  %{python_module lz4}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
