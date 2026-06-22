@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:49:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.14.0:
+  * Added type annotations and matching docstring information to
+    Env methods #633.
+  * Added a Python 3.9 compatibility dependency on
+    typing_extensions for TypeAlias #633.
+  * Updated Env.read_env() to accept path-like and file-like
+    objects without closing file-like objects supplied by the
+    caller #633.
+  * Added an explicit error when Env.read_env() cannot determine
+    its caller frame while resolving the default .env path #633.
+
+-------------------------------------------------------------------
 Sat Mar 21 14:44:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:

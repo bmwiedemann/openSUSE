@@ -114,4 +114,21 @@
   * Declared support for Python 3.14 #580.</comment>
     <requestid>1341706</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>48122aa37a97826d396bff5266c11985</srcmd5>
+    <version>0.14.0</version>
+    <time>1782142134</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.14.0:
+  * Added type annotations and matching docstring information to
+    Env methods #633.
+  * Added a Python 3.9 compatibility dependency on
+    typing_extensions for TypeAlias #633.
+  * Updated Env.read_env() to accept path-like and file-like
+    objects without closing file-like objects supplied by the
+    caller #633.
+  * Added an explicit error when Env.read_env() cannot determine
+    its caller frame while resolving the default .env path #633.</comment>
+    <requestid>1360752</requestid>
+  </revision>
 </revisionlist>

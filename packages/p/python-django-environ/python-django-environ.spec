@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-environ
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Django application configuration via environment variables
 License:        MIT
