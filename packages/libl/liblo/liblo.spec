@@ -19,7 +19,7 @@
 
 %define lname	liblo7
 Name:           liblo
-Version:        0.35
+Version:        0.36
 Release:        0
 Summary:        Open Sound Control implementation
 License:        LGPL-2.1-or-later
