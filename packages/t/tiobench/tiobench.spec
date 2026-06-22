@@ -1,7 +1,7 @@
 #
 # spec file for package tiobench
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,12 @@
 
 
 Name:           tiobench
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Fully-threaded I/O benchmark program
 License:        GPL-2.0-only
-Group:          System/Benchmark
-URL:            https://sourceforge.net/projects/tiobench
-Source:         tiobench-%{version}.tar.bz2
-Patch1:         tiobench-moredigits.diff
-Patch2:         tiobench-warnings-makefile.diff
-Patch3:         tiobench-rename-conflicting-functions.diff
+URL:            https://github.com/aliceinwire/tiobench
+Source:         %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Recommends:     perl(Term::ProgressBar)
 
 %description
@@ -37,17 +33,21 @@ analyze changes ...
 
 %prep
 %autosetup -p1
+# avoid env-script-interpreter rpmlint error
+sed -i '1s|/usr/bin/env perl|/usr/bin/perl|' tiobench.pl scripts/tiosum.pl
 
 %build
 %make_build CFLAGS="%{optflags} -fgnu89-inline"
 
 %install
-make install PREFIX="%{buildroot}%{_prefix}" DOCDIR="%{buildroot}%{_docdir}/%{name}"
-chmod -x %{buildroot}%{_docdir}/%{name}/*
+# upstream's "make install" target is broken (wrong tiosum.pl path), install manually
+install -Dm0755 tiotest %{buildroot}%{_bindir}/tiotest
+install -Dm0755 tiobench.pl %{buildroot}%{_bindir}/tiobench.pl
+install -Dm0755 scripts/tiosum.pl %{buildroot}%{_bindir}/tiosum.pl
 
 %files
 %license COPYING
+%doc ChangeLog README.md TODO
 %{_bindir}/tio*
-%doc %{_docdir}/%{name}
 
 %changelog

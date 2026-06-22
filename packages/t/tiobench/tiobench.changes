@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:44:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.0:
+  * Switch to the maintained fork at github.com/aliceinwire/tiobench
+- Drop patches now merged or obsoleted upstream:
+  * tiobench-rename-conflicting-functions.diff (upstream renamed the
+    aligned_alloc helper to tt_aligned_alloc)
+  * tiobench-moredigits.diff (wider rate/latency output columns are now
+    upstream)
+  * tiobench-warnings-makefile.diff (no longer required; install uses
+    PREFIX/DOCDIR overrides)
+
+-------------------------------------------------------------------
 Wed Nov 25 11:38:09 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
