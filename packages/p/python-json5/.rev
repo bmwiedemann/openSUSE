@@ -183,4 +183,17 @@ Required by the latest version of jupyter-jupyterlab-server</comment>
   * Update BuildRequires to setuptools &gt;= 61.</comment>
     <requestid>1343435</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>206374dd16073e862fadbb5c9320711b</srcmd5>
+    <version>0.15.0</version>
+    <time>1782142545</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15.0:
+  * Fix #113: parsing of signed hexadecimal literals such as
+    &quot;-0x1f&quot; and &quot;+0xff&quot; was raising a ValueError instead of being
+    allowed.
+  * Fix #111: docstring typo fix/improvement in loads().
+  * Add explicit return type annotations to loads() and parse().</comment>
+    <requestid>1360871</requestid>
+  </revision>
 </revisionlist>

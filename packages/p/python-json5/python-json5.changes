@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 21 17:56:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * Fix #113: parsing of signed hexadecimal literals such as
+    "-0x1f" and "+0xff" was raising a ValueError instead of being
+    allowed.
+  * Fix #111: docstring typo fix/improvement in loads().
+  * Add explicit return type annotations to loads() and parse().
+
+-------------------------------------------------------------------
 Sun Mar 29 13:49:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14.0:
