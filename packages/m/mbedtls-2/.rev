@@ -138,4 +138,12 @@ Requested by @Yoshio_Sato at https://build.opensuse.org/requests/1274997 , who n
     <comment></comment>
     <requestid>1292596</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>9f84016204354817477c766083e8c114</srcmd5>
+    <version>2.28.10</version>
+    <time>1782142402</time>
+    <user>anag_factory</user>
+    <comment>Reference tracking bugs (boo#1230310, boo#1240051, boo#1240052) for listed CVE fixes</comment>
+    <requestid>1360821</requestid>
+  </revision>
 </revisionlist>
