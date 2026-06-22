@@ -20,12 +20,13 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.1.2
+Version:        1.6.1.3
 Release:        0
 Summary:        Static file serving subsite for Yesod Web Framework
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
+Patch01:        https://github.com/yesodweb/yesod/pull/1916.patch#/support-modern-crypton-versions.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-async-devel
 BuildRequires:  ghc-async-prof
@@ -69,6 +70,8 @@ BuildRequires:  ghc-mime-types-devel
 BuildRequires:  ghc-mime-types-prof
 BuildRequires:  ghc-process-devel
 BuildRequires:  ghc-process-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-template-haskell-devel
 BuildRequires:  ghc-template-haskell-prof
@@ -131,7 +134,8 @@ Supplements:    (ghc-%{pkg_name}-devel and ghc-prof)
 This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
-%autosetup -n %{pkg_name}-%{version}
+%autosetup -n %{pkg_name}-%{version} -p 2
+cabal-tweak-dep-ver ram '< 0.22' '< 1'
 
 %build
 %ghc_lib_build

@@ -1,0 +1,53 @@
+From db4217c941f1812524bc631c2553ab2e2b70a2dc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Justus=20Sagem=C3=BCller?= <justussa@kth.se>
+Date: Mon, 20 Apr 2026 12:14:37 +0200
+Subject: [PATCH] Compatibility with crypton-1.1.
+
+That package has switched from `memory` to the fork `ram`
+(https://github.com/kazu-yamamoto/crypton/commit/7912865682ad497edc04dae00ed215d8948ada30).
+`yesod-static` still imported `Data.ByteArray` from `memory` though, leading
+to a confusing error about a missing instance of `ByteArrayAccess (Digest MD5)`, because
+`ByteArrayAccess` comes from `memory` but `crypton` only defines an instance of the
+`ram` version of `ByteArrayAccess`.
+---
+ yesod-static/Yesod/Static.hs    | 7 ++++++-
+ yesod-static/yesod-static.cabal | 1 +
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/yesod-static/Yesod/Static.hs b/yesod-static/Yesod/Static.hs
+index b9316e7bc..97d7b924e 100644
+--- a/yesod-static/Yesod/Static.hs
++++ b/yesod-static/Yesod/Static.hs
+@@ -7,6 +7,7 @@
+ {-# LANGUAGE RecordWildCards #-}
+ {-# LANGUAGE TemplateHaskell #-}
+ {-# LANGUAGE TypeFamilies #-}
++{-# LANGUAGE PackageImports #-}
+ ---------------------------------------------------------
+ --
+ -- | Serve static files from a Yesod app.
+@@ -79,7 +80,11 @@ import Crypto.Hash.Conduit (hashFile, sinkHash)
+ import Crypto.Hash (MD5, Digest)
+ import Control.Monad.Trans.State
+ 
+-import qualified Data.ByteArray as ByteArray
++#if MIN_VERSION_crypton(1,1,0)
++import qualified "ram" Data.ByteArray as ByteArray
++#else
++import qualified "memory" Data.ByteArray as ByteArray
++#endif
+ import qualified Data.ByteString.Base64
+ import qualified Data.ByteString.Char8 as S8
+ import qualified Data.ByteString.Lazy as L
+diff --git a/yesod-static/yesod-static.cabal b/yesod-static/yesod-static.cabal
+index c0e639ae3..809741380 100644
+--- a/yesod-static/yesod-static.cabal
++++ b/yesod-static/yesod-static.cabal
+@@ -46,6 +46,7 @@ library
+                    , hjsmin
+                    , http-types            >= 0.7
+                    , memory
++                   , ram                   >= 0.21 && < 0.22
+                    , mime-types            >= 0.1
+                    , process
+                    , template-haskell
