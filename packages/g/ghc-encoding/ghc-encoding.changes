@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 13 20:01:49 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update encoding to version 0.10.3.
+  Changes from 0.10.2 to 0.10.3
+  ---------------------------
+
+  * Do not depend on `ghc-prim`, `extensible-exceptions`.
+  * Allow Cabal-3.16, binary-0.10 and containers-0.8.
+
+-------------------------------------------------------------------
 Tue Apr 15 19:23:26 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update encoding to version 0.10.2.

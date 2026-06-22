@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-encoding
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.10.2
+Version:        0.10.3
 Release:        0
 Summary:        A library for various character encodings
 License:        BSD-3-Clause
@@ -37,8 +37,6 @@ BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
-BuildRequires:  ghc-extensible-exceptions-devel
-BuildRequires:  ghc-extensible-exceptions-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
 BuildRequires:  ghc-regex-compat-devel
