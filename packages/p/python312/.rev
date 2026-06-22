@@ -2037,4 +2037,52 @@
   http.cookies.BaseCookie.js_output (bsc#1259734, CVE-2026-3644).</comment>
     <requestid>1343943</requestid>
   </revision>
+  <revision rev="48" vrev="5">
+    <srcmd5>a3015ceddf5bb60bcc006efcd83242fb</srcmd5>
+    <version>3.12.13</version>
+    <time>1775743730</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-3479-pkgutil_get_data.patch pkgutil.get_data() has
+  the same security model as open(). The documented limitations
+  ensure compatibility with non-filesystem loaders; Python
+  doesn't check that. (bsc#1259989, CVE-2026-3479,
+  gh#python/cpython#146121).</comment>
+    <requestid>1345203</requestid>
+  </revision>
+  <revision rev="49" vrev="6">
+    <srcmd5>c35f13e8f5057a265b76dca70c82d825</srcmd5>
+    <version>3.12.13</version>
+    <time>1782144304</time>
+    <user>anag_factory</user>
+    <comment>- Use the system-wide crypto-policies [bsc#1211301]
+  * Use the system default cipher list instead of hardcoded values
+  * Add the --with-ssl-default-suites=openssl configure option
+
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+
+- CVE-2026-1502: rejects CR/LF in HTTP tunnel request headers
+  (bsc#1261969, CVE-2026-1502, gh#python/cpython#146211).
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch
+
+- Rewrite structure of Python interpreter packages.
+  `python3*` symbols should be now provided by real python3
+  packages and its subpackages instead of the virtual provides
+  (bsc#1258364).
+
+- Add CVE-2026-3446-base64-padding.patch preventing ignoring
+  excess Base64 data after the first padded quad (bsc#1261970,
+  CVE-2026-3446, gh#python/cpython#145264).</comment>
+    <requestid>1360565</requestid>
+  </revision>
 </revisionlist>

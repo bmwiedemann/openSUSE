@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Wed May 13 14:50:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use the system-wide crypto-policies [bsc#1211301]
+  * Use the system default cipher list instead of hardcoded values
+  * Add the --with-ssl-default-suites=openssl configure option
+
+-------------------------------------------------------------------
+Mon Apr 27 13:48:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+
+-------------------------------------------------------------------
+Sat Apr 25 16:42:59 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-1502: rejects CR/LF in HTTP tunnel request headers
+  (bsc#1261969, CVE-2026-1502, gh#python/cpython#146211).
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+
+-------------------------------------------------------------------
+Sat Apr 25 00:14:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 17:15:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch
+
+-------------------------------------------------------------------
+Sat Apr 18 22:53:10 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewrite structure of Python interpreter packages.
+  `python3*` symbols should be now provided by real python3
+  packages and its subpackages instead of the virtual provides
+  (bsc#1258364).
+
+-------------------------------------------------------------------
+Wed Apr 15 18:00:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3446-base64-padding.patch preventing ignoring
+  excess Base64 data after the first padded quad (bsc#1261970,
+  CVE-2026-3446, gh#python/cpython#145264).
+
+-------------------------------------------------------------------
+Thu Apr  2 13:55:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3479-pkgutil_get_data.patch pkgutil.get_data() has
+  the same security model as open(). The documented limitations
+  ensure compatibility with non-filesystem loaders; Python
+  doesn't check that. (bsc#1259989, CVE-2026-3479,
+  gh#python/cpython#146121).
+
+-------------------------------------------------------------------
 Fri Mar 27 17:51:07 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2026-4519-webbrowser-open-dashes.patch to reject
