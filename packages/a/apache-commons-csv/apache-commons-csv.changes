@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:10:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.14.1
+  * Fixed Bugs
+    + CSV-318: CSVPrinter.printRecord(Stream) hangs if given a
+      parallel stream
+    + CSV-318: CSVPrinter now uses an internal lock instead of
+      synchronized methods
+    + org.apache.commons.csv.CSVPrinter.printRecords(ResultSet) now
+      writes one record at a time using a lock
+  * Changes
+    + Bump org.apache.commons:commons-parent from 81 to 85 #542
+    + Bump commons-io:commons-io from 2.18.0 to 2.20.0
+    + Bump com.opencsv:opencsv from 5.10 to 5.11.2 #545, #551, #553
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.18.0
+      #556
+    + Bump commons-codec:commons-codec from 1.18.0 to 1.19.0
+
+-------------------------------------------------------------------
 Fri May 30 10:46:37 UTC 2025 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to version 1.14.0

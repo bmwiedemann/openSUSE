@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-csv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           apache-commons-csv
-Version:        1.14.0
+Version:        1.14.1
 Release:        0
 Summary:        A library to read and write files in variations of the Comma Separated Value (CSV) format
 License:        Apache-2.0
@@ -28,6 +28,7 @@ Source1000:     apache-commons-csv.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
+BuildRequires:  mvn(com.github.spotbugs:spotbugs-annotations)
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildArch:      noarch
@@ -46,9 +47,7 @@ This package contains the API documentation for %{name}.
 %setup -q -n commons-csv-%{version}-src
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8
+%{mvn_build} -f -- -Dsource=8
 
 %install
 %mvn_install
