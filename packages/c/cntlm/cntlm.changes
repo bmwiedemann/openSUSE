@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 19 17:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.94.0:
+  * Source moved to the maintained fork at
+    https://github.com/versat/cntlm (upstream SourceForge has been
+    dormant since 0.92.3)
+  * Adds Kerberos authentication, IPv6 support and proxy PAC file
+    support (via a bundled duktape JS engine)
+  * Numerous bug fixes accumulated across the 0.93.x / 0.94.x series
+- Drop cntlm-0.92.3-HTTP-1.1-persistent-connections-with-HTTP-1.0-clients.patch:
+  merged upstream
+- Drop cntlm-override-CFLAGS-CXXFLAGS-makefile.patch: obsolete; the
+  CFLAGS/strip handling is done in the spec instead
+- Modernise the spec: drop the long-dead suse_version < 1230 SysV-init
+  paths and other obsolete constructs
+
+-------------------------------------------------------------------
 Mon Feb 26 10:53:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

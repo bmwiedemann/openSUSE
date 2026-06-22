@@ -1,7 +1,7 @@
 #
 # spec file for package cntlm
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2007 Scorpio IT, Deidesheim, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,41 +17,26 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
 Name:           cntlm
-Version:        0.92.3
+Version:        0.94.0
 Release:        0
 Summary:        Fast NTLM authentication proxy with tunneling
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Web/Proxy
-URL:            http://cntlm.sourceforge.net/
-Source0:        http://sourceforge.net/projects/cntlm/files/cntlm/cntlm%%20%{version}/%{name}-%{version}.tar.bz2
-Source1:        %{name}.init
+URL:            https://github.com/versat/cntlm
+Source0:        https://github.com/versat/cntlm/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source2:        %{name}.sysconfig
 Source3:        %{name}.service
 Source4:        %{name}.tmpfiles
-# PATCH-FIX-UPSTREAM cntlm-override-CFLAGS-CXXFLAGS-makefile.patch --fix empty debuginfo package
-Patch0:         cntlm-override-CFLAGS-CXXFLAGS-makefile.patch
-# PATCH-FIX-UPSTREAM cntlm-0.92.3-HTTP-1.1-persistent-connections-with-HTTP-1.0-clients.patch --cntlm doesn't handle correctly
-# between HTTP-1.0 and HTTP-1.1
-Patch1:         cntlm-0.92.3-HTTP-1.1-persistent-connections-with-HTTP-1.0-clients.patch
-Requires(pre):  grep
-Requires(pre):  pwdutils
-Requires(pre):  group(nogroup)
-Provides:       user(%{name})
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%if 0%{?suse_version} < 1230
-Requires(pre):  %fillup_prereq
-Requires(pre):  %insserv_prereq
-%else
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsystemd)
 Requires(pre):  %fillup_prereq
+Requires(pre):  grep
+Requires(pre):  group(nogroup)
+Requires(pre):  shadow
+Provides:       user(%{name})
+# PAC-file support links a bundled copy of the duktape JS engine
+Provides:       bundled(duktape) = 2.7.0
 %{?systemd_requires}
-%endif
 
 %description
 Cntlm is a fast and efficient NTLM proxy, with support for TCP/IP tunneling,
@@ -61,89 +46,59 @@ proxies, while using by orders or magnitude less RAM and CPU. Manual page
 contains detailed information.
 
 %prep
-%setup -q
-%patch -P 0 -p1
-%patch -P 1
+%autosetup -p1
+# Do not let upstream's "install -s" strip the binary at install time — it
+# empties the -debuginfo package; let the rpm debuginfo machinery handle it.
+sed -i 's/install -D -m 755 -s/install -D -m 755/' Makefile
+# The bundled duktape JS engine (PAC support) trips -Werror=uninitialized under
+# the distro's LTO (cross-unit maybe-uninitialized false positives); demote it.
+sed -i 's/-Werror=uninitialized/-Wno-error=uninitialized -Wno-error=maybe-uninitialized/' Makefile
 
 %build
-%configure
-make %{?_smp_mflags}
+# cntlm ships a hand-written configure (not autotools) that rejects the standard
+# autotools flags and then skips generating config/config.h, so run it plainly.
+# The Makefile already targets /usr and appends CFLAGS, so just export the flags.
+export CFLAGS="%{optflags}"
+./configure
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags}
+%make_install PREFIX=%{_prefix}
 
-%if 0%{?suse_version} < 1230
-install -D -m 755 %{SOURCE1} %{buildroot}/%{_initddir}/%{name}
-ln -s -f ../..%{_sysconfdir}/init.d/%{name} %{buildroot}%{_sbindir}/rc%{name}
-%else
 install -d %{buildroot}%{_localstatedir}/run/%{name}
-install -D -m 644 %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
-install -D -m 644 %{SOURCE4} %{buildroot}/%{_tmpfilesdir}/%{name}.conf
+install -D -m 644 %{SOURCE3} %{buildroot}%{_unitdir}/%{name}.service
+install -D -m 644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-%endif
 install -D -m 644 %{SOURCE2} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
 %pre
-# on `rpm -ivh` PARAM is 1
-# on `rpm -Uvh` PARAM is 2
 # user cntlm
-if [ -z  "`%{_bindir}/getent passwd "%{name}"`" ]; then
+if [ -z "`%{_bindir}/getent passwd "%{name}"`" ]; then
   %{_sbindir}/useradd -c "CNTLM Proxy Auth" -d %{_localstatedir}/run/%{name} -g nogroup \
 	-r -s /bin/false %{name};
 fi
-%if 0%{?suse_version} >= 1230
 %service_add_pre %{name}.service
-%endif
 
 %preun
-# on `rpm -e` PARAM is 0
-%if 0%{?suse_version} < 1230
-%stop_on_removal cntlm
-%else
 %service_del_preun %{name}.service
-%endif
-#if [ "$1" -eq 0 ]; then
-#  %{_sbindir}/userdel %{name}
-#fi
 
 %post
-# on `rpm -ivh` PARAM is 1
-# on `rpm -Uvh` PARAM is 2
-%if 0%{?suse_version} < 1230
-%{fillup_and_insserv cntlm}
-%else
 %fillup_only
 %service_add_post %{name}.service
-%if 0%{?suse_version} <= 1320
-systemd-tmpfiles --create %{_tmpfilesdir}/%{name}.conf || :
-%else
 %tmpfiles_create %{_tmpfilesdir}/%{name}.conf
-%endif
-%endif
 
 %postun
-# on `rpm -e` PARAM is 0
-%if 0%{?suse_version} < 1230
-%restart_on_update cntlm
-%insserv_cleanup
-%else
 %service_del_postun %{name}.service
-%endif
 
 %files
-%defattr(-,root,root,-)
 %license COPYRIGHT LICENSE
 %doc README VERSION
 %config(noreplace) %{_sysconfdir}/%{name}.conf
-%if 0%{?suse_version} < 1230
-%config(noreplace) %{_initddir}/%{name}
-%else
 %{_unitdir}/%{name}.service
 %{_tmpfilesdir}/%{name}.conf
 %ghost %dir %attr(755,%{name},root) /run/%{name}
-%endif
 %{_sbindir}/*
-%{_mandir}/man1/%{name}.1*
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_fillupdir}/sysconfig.%{name}
 
 %changelog
