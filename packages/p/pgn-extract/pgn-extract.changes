@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:53:08 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 26.04
+  * Added --fencommentformat.
+  * Added --addelotags and --addplayeridtags.
+  * ECO classification changed slightly to take into account which player is 
+    to move. This makes a difference in a few cases.
+  * Fixed a bug with -Wxolalg format which resulted in a castling move that
+    gives check outputting two + characters.
+  * Added insufficient material to --fixresulttags.
+  * Added --piececount following a suggestion by Asko Havumäki.
+
+-------------------------------------------------------------------
 Sun Jan 12 10:00:25 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 25.01

@@ -1,7 +1,7 @@
 #
 # spec file for package pgn-extract
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Packman Team <packman@links2linux.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define mver    25-01
+%define mver    26-04
 Name:           pgn-extract
-Version:        25.01
+Version:        26.04
 Release:        0
 Summary:        A CLI program for manipulating PGN files
 License:        GPL-3.0-or-later
@@ -52,7 +52,7 @@ CFLAGS="%{optflags}" make
 
 %install
 # install the binary
-install -D -m 0755 %{name} %{buildroot}%{_bindir}/%{name}
+install -D -m 0755 build/bin/%{name} %{buildroot}%{_bindir}/%{name}
 # install the default eco.pgn file
 install -D -m 0644 eco.pgn %{buildroot}%{_datadir}/%{name}/eco.pgn
 
