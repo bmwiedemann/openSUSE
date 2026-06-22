@@ -1,0 +1,85 @@
+diff --git a/hacks/glx/xlock-gl-utils.c b/hacks/glx/xlock-gl-utils.c
+index 57c7f7b..04bef61 100644
+--- a/hacks/glx/xlock-gl-utils.c
++++ b/hacks/glx/xlock-gl-utils.c
+@@ -66,6 +66,11 @@ init_GL(ModeInfo * mi)
+ # endif
+ 
+   mi->glx_context = openGL_context_for_window (screen, window);
++  if (! mi->glx_context)
++    {
++      fprintf (stderr, "%s: couldn't create GL context\n", progname);
++      exit (1);
++    }
+ 
+   /* Process the -background argument. */
+   {
+diff --git a/utils/visual-gl.c b/utils/visual-gl.c
+index 263e464..09e822e 100644
+--- a/utils/visual-gl.c
++++ b/utils/visual-gl.c
+@@ -744,7 +744,7 @@ GLXContext openGL_context_for_window (Screen *screen, Window window)
+   vi_in.visualid = XVisualIDFromVisual (visual);
+   vi_out = XGetVisualInfo (dpy, VisualScreenMask|VisualIDMask,
+ 			   &vi_in, &out_count);
+-  if (! vi_out) abort ();
++  if (! vi_out) return NULL;
+ 
+ # ifdef HAVE_EGL
+   {
+@@ -786,7 +786,11 @@ GLXContext openGL_context_for_window (Screen *screen, Window window)
+       {
+         fprintf (stderr, "%s: %d: eglGetPlatformDisplay failed (2)\n",
+                  blurb(), screen_number (screen));
+-        abort();
++        /* Don't abort: callers (e.g. the screen fade) treat a NULL return
++           as "GL is unavailable" and fall back gracefully. */
++        free (d);
++        XFree ((char *) vi_out);
++        return NULL;
+       }
+ 
+     get_egl_config (screen, d->egl_display, vid, &d->egl_config);
+@@ -809,7 +813,11 @@ GLXContext openGL_context_for_window (Screen *screen, Window window)
+         fprintf (stderr, "%s: %d: eglCreatePlatformWindowSurface failed:"
+                  " window 0x%lx visual 0x%x\n",
+                  blurb(), screen_number (screen), window, vid);
+-        abort();
++        /* Don't abort: callers (e.g. the screen fade) treat a NULL return
++           as "GL is unavailable" and fall back gracefully. */
++        free (d);
++        XFree ((char *) vi_out);
++        return NULL;
+       }
+ 
+ #ifdef HAVE_JWZGLES
+@@ -851,14 +859,27 @@ GLXContext openGL_context_for_window (Screen *screen, Window window)
+       {
+         fprintf (stderr, "%s: %d: eglCreateContext failed\n", blurb(),
+                  screen_number (screen));
+-        abort();
++        /* Don't abort: callers (e.g. the screen fade) treat a NULL return
++           as "GL is unavailable" and fall back gracefully. */
++        eglDestroySurface (d->egl_display, d->egl_surface);
++        free (d);
++        XFree ((char *) vi_out);
++        return NULL;
+       }
+ 
+     /* describe_gl_visual (stderr, screen, visual, False); */
+ 
+     if (! eglMakeCurrent (d->egl_display, d->egl_surface, d->egl_surface,
+                           d->egl_context))
+-      abort();
++      {
++        /* Don't abort: callers (e.g. the screen fade) treat a NULL return
++           as "GL is unavailable" and fall back gracefully. */
++        eglDestroyContext (d->egl_display, d->egl_context);
++        eglDestroySurface (d->egl_display, d->egl_surface);
++        free (d);
++        XFree ((char *) vi_out);
++        return NULL;
++      }
+ 
+     egl_data_ret = d;
+   }

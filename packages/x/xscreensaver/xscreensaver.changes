@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun  6 22:00:46 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add xscreensaver-screenfade.patch: don't abort in
+  openGL_context_for_window. Callers (e.g. the screen fade) treat
+  a NULL return as "GL is unavailable" and fall back gracefully
+
+-------------------------------------------------------------------
 Fri May 29 20:15:26 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add xscreensaver-systemd.patch, adapt to powerdevil changes in
