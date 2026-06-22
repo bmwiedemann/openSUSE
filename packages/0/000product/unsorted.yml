@@ -2303,7 +2303,6 @@ unsorted:
   - clapper-enhancers-recall 
   - clapper-enhancers-yt-dlp 
   - clapper-lang 
-  - clash 
   - clatd 
   - claws-mail 
   - claws-mail-devel 
@@ -2630,6 +2629,14 @@ unsorted:
   - containerized-data-importer-operator 
   - containerized-data-importer-uploadproxy 
   - containerized-data-importer-uploadserver 
+  - containerized-data-importer1.65-api 
+  - containerized-data-importer1.65-cloner 
+  - containerized-data-importer1.65-controller 
+  - containerized-data-importer1.65-importer 
+  - containerized-data-importer1.65-manifests 
+  - containerized-data-importer1.65-operator 
+  - containerized-data-importer1.65-uploadproxy 
+  - containerized-data-importer1.65-uploadserver 
   - containers-systemd 
   - containment-rpm 
   - containment-tik-img-to-rpm 
@@ -3090,10 +3097,6 @@ unsorted:
   - cyreal-marko-horobchyk-fonts 
   - cyreal-marmelad-fonts 
   - cyreal-wire-fonts 
-  - cyrus-imapd-devel 
-  - cyrus-imapd-snmp 
-  - cyrus-imapd-snmp-mibs 
-  - cyrus-imapd-utils 
   - cyrus-sasl-32bit 
   - cyrus-sasl-bdb 
   - cyrus-sasl-bdb-crammd5 
@@ -5334,14 +5337,22 @@ unsorted:
   - ghc-base-unicode-symbols-devel 
   - ghc-base-unicode-symbols-doc 
   - ghc-base-unicode-symbols-prof 
+  - ghc-base16 
   - ghc-base16-bytestring 
   - ghc-base16-bytestring-devel 
   - ghc-base16-bytestring-doc 
   - ghc-base16-bytestring-prof 
+  - ghc-base16-devel 
+  - ghc-base16-doc 
+  - ghc-base16-prof 
+  - ghc-base64 
   - ghc-base64-bytestring 
   - ghc-base64-bytestring-devel 
   - ghc-base64-bytestring-doc 
   - ghc-base64-bytestring-prof 
+  - ghc-base64-devel 
+  - ghc-base64-doc 
+  - ghc-base64-prof 
   - ghc-basement 
   - ghc-basement-devel 
   - ghc-basement-doc 
@@ -5562,6 +5573,18 @@ unsorted:
   - ghc-cryptohash-sha256-doc 
   - ghc-cryptohash-sha256-prof 
   - ghc-crypton 
+  - ghc-crypton-asn1-encoding 
+  - ghc-crypton-asn1-encoding-devel 
+  - ghc-crypton-asn1-encoding-doc 
+  - ghc-crypton-asn1-encoding-prof 
+  - ghc-crypton-asn1-parse 
+  - ghc-crypton-asn1-parse-devel 
+  - ghc-crypton-asn1-parse-doc 
+  - ghc-crypton-asn1-parse-prof 
+  - ghc-crypton-asn1-types 
+  - ghc-crypton-asn1-types-devel 
+  - ghc-crypton-asn1-types-doc 
+  - ghc-crypton-asn1-types-prof 
   - ghc-crypton-conduit 
   - ghc-crypton-conduit-devel 
   - ghc-crypton-conduit-doc 
@@ -5572,6 +5595,10 @@ unsorted:
   - ghc-crypton-connection-prof 
   - ghc-crypton-devel 
   - ghc-crypton-doc 
+  - ghc-crypton-pem 
+  - ghc-crypton-pem-devel 
+  - ghc-crypton-pem-doc 
+  - ghc-crypton-pem-prof 
   - ghc-crypton-prof 
   - ghc-crypton-socks 
   - ghc-crypton-socks-devel 
@@ -6195,6 +6222,10 @@ unsorted:
   - ghc-mime-types-devel 
   - ghc-mime-types-doc 
   - ghc-mime-types-prof 
+  - ghc-mlkem 
+  - ghc-mlkem-devel 
+  - ghc-mlkem-doc 
+  - ghc-mlkem-prof 
   - ghc-mmorph 
   - ghc-mmorph-devel 
   - ghc-mmorph-doc 
@@ -6412,6 +6443,10 @@ unsorted:
   - ghc-quote-quot-devel 
   - ghc-quote-quot-doc 
   - ghc-quote-quot-prof 
+  - ghc-ram 
+  - ghc-ram-devel 
+  - ghc-ram-doc 
+  - ghc-ram-prof 
   - ghc-random 
   - ghc-random-devel 
   - ghc-random-doc 
@@ -6753,6 +6788,10 @@ unsorted:
   - ghc-time-compat-prof 
   - ghc-time-devel 
   - ghc-time-doc 
+  - ghc-time-hourglass 
+  - ghc-time-hourglass-devel 
+  - ghc-time-hourglass-doc 
+  - ghc-time-hourglass-prof 
   - ghc-time-locale-compat 
   - ghc-time-locale-compat-devel 
   - ghc-time-locale-compat-doc 
@@ -10776,6 +10815,20 @@ unsorted:
   - kubevirt-virt-operator 
   - kubevirt-virt-synchronization-controller 
   - kubevirt-virtctl 
+  - kubevirt1.8-container-disk 
+  - kubevirt1.8-manifests 
+  - kubevirt1.8-pr-helper-conf 
+  - kubevirt1.8-sidecar-shim 
+  - kubevirt1.8-tests 
+  - kubevirt1.8-virt-api 
+  - kubevirt1.8-virt-controller 
+  - kubevirt1.8-virt-exportproxy 
+  - kubevirt1.8-virt-exportserver 
+  - kubevirt1.8-virt-handler 
+  - kubevirt1.8-virt-launcher 
+  - kubevirt1.8-virt-operator 
+  - kubevirt1.8-virt-synchronization-controller 
+  - kubevirt1.8-virtctl 
   - kubic-locale-archive 
   - kubic-pause 
   - kubie 
@@ -15046,9 +15099,8 @@ unsorted:
   - libnice 
   - libnice-devel 
   - libnice10-32bit 
-  - libnilfs0 
-  - libnilfscleaner0 
-  - libnilfsgc0 
+  - libnilfs3 
+  - libnilfsgc3 
   - libnitrokey-devel 
   - libnitrokey-udev 
   - libnitrokey3 
@@ -19007,6 +19059,7 @@ unsorted:
   - microos-devel-tools 
   - micropython 
   - micropython-lib 
+  - mihomo 
   - miller 
   - miltertest 
   - mimalloc-devel 
@@ -20331,6 +20384,7 @@ unsorted:
   - obs-service-appimage 
   - obs-service-cargo 
   - obs-service-cdi-1.65_containers_meta 
+  - obs-service-cdi1.65_containers_meta 
   - obs-service-cdi_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
@@ -20344,6 +20398,7 @@ unsorted:
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
   - obs-service-kubevirt-1.8_containers_meta 
+  - obs-service-kubevirt1.8_containers_meta 
   - obs-service-kubevirt_containers_meta 
   - obs-service-node_modules 
   - obs-service-obs_scm 
@@ -22718,6 +22773,7 @@ unsorted:
   - perl-Template-Toolkit 
   - perl-Term-Encoding 
   - perl-Term-ProgressBar 
+  - perl-Term-ReadLine-Gnu 
   - perl-Term-ReadPassword 
   - perl-Term-Size-Any 
   - perl-Term-Size-Perl 
@@ -51210,6 +51266,7 @@ unsorted:
   - xwd 
   - xwininfo 
   - xwmfs 
+  - xwpe 
   - xwud 
   - xxhash 
   - xxhash-devel 
