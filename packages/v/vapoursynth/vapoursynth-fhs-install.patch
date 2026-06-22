@@ -1,6 +1,6 @@
---- a/meson.build	2026-06-03 20:07:32.046271694 +0200
-+++ b/meson.build	2026-06-03 20:11:03.277932243 +0200
-@@ -195,7 +195,7 @@
+--- a/meson.build	2026-06-16 08:31:18.000000000 +0200
++++ b/meson.build	2026-06-21 20:03:20.989544203 +0200
+@@ -200,7 +200,7 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
@@ -9,7 +9,7 @@
      link_with: libs,
      name_prefix: '',
      soversion: soversion,
-@@ -235,7 +235,8 @@
+@@ -240,7 +240,8 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
@@ -19,7 +19,7 @@
  )
  
  vsscript_dep = declare_dependency(
-@@ -261,7 +262,7 @@
+@@ -266,7 +267,7 @@
      dependencies: vsscript_dep,
      gnu_symbol_visibility: 'hidden',
      install: true,
@@ -28,7 +28,7 @@
      install_rpath: '$ORIGIN',
      link_args: link_args,
  )
-@@ -299,7 +300,8 @@
+@@ -304,15 +305,19 @@
      'include',
      exclude_directories: 'cython',
      exclude_files: ['VapourSynth.h', 'VSHelper.h'],
@@ -38,7 +38,11 @@
  )
  
  pc_data = configuration_data()
-@@ -308,6 +310,6 @@
+ pc_data.set('version', meson.project_version())
++pc_data.set('prefix', get_option('prefix'))
++pc_data.set('includedir', get_option('prefix') / get_option('includedir'))
++pc_data.set('libdir', get_option('prefix') / get_option('libdir'))
+ configure_file(
      configuration: pc_data,
      input: 'vapoursynth.pc.in',
      install: true,
@@ -46,3 +50,18 @@
 +    install_dir: get_option('libdir') / 'pkgconfig',
      output: 'vapoursynth.pc',
  )
+--- a/vapoursynth.pc.in	2026-06-16 08:31:18.000000000 +0200
++++ b/vapoursynth.pc.in	2026-06-21 20:03:20.989544203 +0200
+@@ -1,7 +1,9 @@
+-prefix=${pcfiledir}/..
+-includedir=${prefix}/include
++prefix=@prefix@
++includedir=@includedir@
++libdir=@libdir@
+ 
+ Name: vapoursynth
+ Description: A frameserver for the 21st century
+ Version: @version@
+-Cflags: -I${includedir}
++Cflags: -I${includedir}/vapoursynth
++Libs: -L${libdir} -lvapoursynth

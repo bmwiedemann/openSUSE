@@ -362,4 +362,12 @@ Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
 - Drop vapoursynth-system-zimg.patch (adopted upstream)</comment>
     <requestid>1359847</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>90e453b27e4f857305301ca727edf126</srcmd5>
+    <version>77</version>
+    <time>1782142554</time>
+    <user>anag_factory</user>
+    <comment>Fix vapoursynth.pc (FHS-correct prefix/includedir/libdir + Libs) so dependent software (mpv) builds again; addresses the pkgconfig part of boo#1268226 and the R77 review comment (forwarded request 1360908 from pluskalm)</comment>
+    <requestid>1360909</requestid>
+  </revision>
 </revisionlist>

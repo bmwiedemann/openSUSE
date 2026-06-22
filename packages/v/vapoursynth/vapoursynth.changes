@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 21 18:03:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Extend vapoursynth-fhs-install.patch to also fix vapoursynth.pc:
+  with the headers and library relocated to FHS locations, the
+  generated pkgconfig file still derived includedir from the .pc
+  location (${pcfiledir}/../include -> /usr/lib64/include) and
+  carried no Libs, so consumers got the wrong -I path. Configure
+  prefix/includedir/libdir from meson and emit
+  -I%{_includedir}/vapoursynth plus -L%{_libdir} -lvapoursynth.
+  Fixes the pkgconfig breakage that stops dependent software (e.g.
+  mpv) from building (boo#1268226; the separate vspipe/meson-build
+  issue in that report is not addressed here).
+
+-------------------------------------------------------------------
 Tue Jun 16 20:33:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to R77:

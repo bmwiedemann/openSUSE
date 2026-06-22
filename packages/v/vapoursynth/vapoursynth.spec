@@ -24,7 +24,7 @@ Summary:        A video processing framework
 License:        LGPL-2.1-only
 URL:            https://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
-# PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, and give libvsscript a soversion
+# PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, give libvsscript a soversion, and emit FHS-correct prefix/includedir/libdir (and a Libs line) in vapoursynth.pc
 Patch0:         vapoursynth-fhs-install.patch
 BuildRequires:  chrpath
 BuildRequires:  gcc-c++
