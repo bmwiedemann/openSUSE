@@ -1,4 +1,230 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:04:58 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 0.31.0:
+  * Dockerfile: update containerd v2.2.5, v2.1.9, v1.7.33
+  * vendor: github.com/containerd/containerd/v2 v2.2.5
+  * vendor: golang.org/x/crypto v0.53.0
+  * vendor: golang.org/x/text v0.38.0
+  * vendor: golang.org/x/sync v0.21.0
+  * vendor: golang.org/x/term v0.44.0
+  * vendor: golang.org/x/sys v0.46.0
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0
+  * Dockerfile: update docker engine, cli to v29.6
+  * sourcepolicy: fix grammar in Evaluate doc comment
+  * gitutil: preserve SUDO_UID for git subprocesses
+  * Dockerfile: update runc binary to v1.3.6
+  * chore: update generated files
+  * vendor: update policy-helpers to d5411a945cfc
+  * fix: add mutex to protect Worker.Platforms from data race
+  * cniprovider: keep loopback DNS dials in caller netns
+  * cniprovider: keep proxy dials in CNI netns
+  * filesync: detect local export multi-platform transfer support
+  * ci: update docker/github-builder to v1.12.0
+  * proxyprovider: test HTTP/2 transport clone with custom dialer
+  * sourcepolicy: fix exact match convert ignoring destination
+  * proxyprovider: fix exec proxy HTTPS regressions
+  * client: update loopback condition for dockerd worker
+  * client: update dockerd test conditions after oci-mediatypes default
+  * client: fix mergeop requirements in new test for dockerd
+  * Revert "executor: fix containerd stdin close race"
+  * network: fix proxy default egress
+  * docs: update CDI example to match the current debug workers output.
+  * config: fix a default GC policy filter never matching any record
+  * exporter: use root-backed fsutil receive instead of client-side staging
+  * vendor: update github.com/tonistiigi/fsutil to 0257b3308df4
+  * client: add testExportLocalModeMultiPlatformKeepsAllPlatforms test
+  * exporter: add local exporter mode=delete
+  * vendor: github.com/urfave/cli/v3 v3.9.0
+  * deps: update golang.org/x/exp
+  * deps: align Go dependencies with Moby
+  * deps: update github.com/containerd/nydus-snapshotter to v0.15.15
+  * executor: fix containerd stdin close race
+  * test: stabilize worker exec pid1 lifetime
+  * Dockerfile update nerdctl to v2.3.1
+  * Dockerfile: update buildx to v0.34.1
+  * Dockerfile: update RootlessKit to v3.0.1
+  * Dockerfile: update containerd v2.2.4, v2.1.8, v1.7.32
+  * docs: document proxy network
+  * network: split exec proxy from net mode
+  * vendor: github.com/moby/sys/sequential v0.7.0
+  * vendor: github.com/docker/cli v29.5.3
+  * Dockerfile: update docker engine, cli to v29.5
+  * update binfmt to v10.2.3
+  * vendor: update github.com/aws/aws-sdk-go-v2 modules to latest
+  * exporter: default docker tar to OCI types
+  * testutil: match exact platform for mirrored images
+  * executor: avoid runc stdin shutdown hangs
+  * test: stabilize nested progress assertions
+  * llb: add passthrough op
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * build(deps): bump codecov/codecov-action from 6.0.1 to 7.0.0
+  * build(deps): bump github/codeql-action from 4.36.1 to 4.36.2
+  * build(deps): bump crazy-max/.github from 1.8.0 to 1.10.0
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * solver/errdefs: rm deprecated github.com/golang/protobuf/jsonpb
+  * update protoc to v3.14.0
+  * util/grpcerrors: remove import of deprecated github.com/golang/protobuf
+  * frontend/gateway: remove import of deprecated github.com/golang/protobuf
+  * bound telemetry shutdown when trace forwarding stalls
+  * control: forward traces in a non-blocking goroutine
+  * ci: switch to bento/freebsd-14 vagrant box
+  * proxyprovider: bound proxy cert cache
+  * test: cover proxy network source conversion
+  * proxyprovider: fix redirects capturing
+  * proxyprovider: better url formatting
+  * proxyprovider: avoid untracted requests because transfer encoding
+  * proxyprovider: log response status code
+  * proxyprovider: fix early context cancel
+  * buildkitd: add daemon proxy network option
+  * solver: keep runtime load opts out of LLB digests
+  * solver: log proxy network requests
+  * solver: reuse source policy for proxy network
+  * network: capture proxy exec materials
+  * solver: add proxy network mode
+  * build(deps): bump github/codeql-action from 4.36.0 to 4.36.1
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3
+  * test: cover chmod on copied parent dirs
+  * vendor: update fsutil with umask-aware MkdirAll
+  * test: avoid local source differ release race
+  * test: log integration helper timing
+  * exporter: add compatibility version 30
+  * exporter: fix OCI media type test coverage
+  * all: use well-known zstd mediaType constants
+  * exporter/containerimage: document "oci-artifact=" values
+  * exporter/containerimage: parse oci-mediatypes=bool strictly
+  * exporter/containerimage: remove unnecessary errors.Errorf
+  * exporter/containerimage: default to oci-mediatype=true
+  * exporter/containerimage: remove unused EnableForceCompression
+  * attestation: emit in-toto v1 statements directly
+  * attestation: update tests and docs for in-toto v1 statements
+  * attestation: switch exporter paths to in-toto v1 json wrapper
+  * attestation: add in-toto v1 json compatibility wrapper
+  * solver: clone fileop input ref in ExecError decoration
+  * source/http: fix resolver cache ref lookup
+  * cache: tighten parent lock scope in parentRefs.release
+  * Fix premature ref release on failed-exec output
+  * solver/file: release mutable on Commit failure in RefManager
+  * solver: release active on commit failure in exec error defer
+  * solver: release partial outputs on commit failure
+  * test: avoid shared containerd worker env
+  * solver: fix slow cache error result ownership
+  * docs: remove outdated cni-networking.md
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * Add Dexfile: a buildkit frontend; to Buildkit README.md file
+  * exporter: close local export progress writer
+  * containerimage: preserve local fallback for default image resolution
+  * session: use anonymous registry auth when sessions are unset
+  * vendor: github.com/containerd/typeurl/v2 v2.3.0
+  * source/http: release resolver cache lock on errors
+  * build(deps): bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+  * docs: clarify a caveat with `COPY --link` and overwriting directory permissions
+  * vendor: sync dependencies
+  * solver/llbsolver: emit native build-completion metrics
+  * solver: add per-step CPU and memory resource limits
+  * test: stabilize named context transfer tracking
+  * build(deps): bump github/codeql-action from 4.35.4 to 4.36.0
+  * build(deps): bump docker/build-push-action from 7.1.0 to 7.2.0
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * build(deps): bump docker/setup-buildx-action from 4.0.0 to 4.1.0
+  * build(deps): bump docker/bake-action from 7.1.0 to 7.2.0
+  * build(deps): bump docker/login-action from 4.1.0 to 4.2.0
+  * build(deps): bump github.com/containerd/containerd/v2
+  * util/resolver/limited: make registry concurrency configurable by the configuration file
+  * http: fix resolver cache nil race
+  * dockerfile/docs: fix typo  --excludes
+  * Add docs for `HTTP_AUTH_HEADER_` and `HTTP_AUTH_TOKEN_` secrets.
+  * Ensure that a wrapped nil isn't returned as it causes a SIGSEGV.
+  * Fix sigsegv by ensuring a func is returned in failure case.
+  * build(deps): bump codecov/codecov-action from 6.0.0 to 6.0.1
+  * runcexecutor: change how the runc executor kills runc processes
+  * update protolint to v0.56.4
+  * update govulncheck to v1.3.0
+  * update doctoc to v2.4.1
+  * update Buildx to v0.34.0
+  * update Delve to v1.26.3
+  * lint: modernize Go lint findings
+  * lint: update golangci-lint to v2.12.2
+  * chore: fix duplicated words in llb, executor and dockerfile_test comments
+  * dockerfile: update builtin dockerfile to 1.25
+  * hack: switch to gomod-updates
+  * test: gate merge diff tests through worker capabilities
+  * skip pin race test on workers without merge diff support
+  * ci: fix deprecated runner value in github builder workflow
+  * vendor: github.com/opencontainers/selinux v1.14.1
+  * build(deps): bump crazy-max/.github from 1.7.1 to 1.8.0
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * solver: fix race in walkProvenance
+  * Updated Coverage for dockerfile_test
+  * remotecache: propagate details field from registry when included
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.4
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * solver: fix provenance bridge races
+  * client: add `reset` option for local cache exporter
+  * Revert "session: use anonymous registry auth when sessions are unset"
+  * vendor: update policy-helpers to a39d60132186
+  * vendor: github.com/docker/cli v29.4.3
+  * build(deps): bump actions/labeler from 6.0.1 to 6.1.0
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * gateway: reduce potential lock contention in gateway forwarder
+  * feat: add log level option to buildkitd config
+  * version: expose Dockerfile frontend version
+  * provenance: add dockerfile frontend version
+  * deps: update in-toto-golang to v0.11.0.
+  * deps: update patch dependencies
+  * deps: update docker cli and seccomp
+  * session: use anonymous registry auth when sessions are unset
+  * provenance: scrub nested min request inputs
+  * vendor: go.opentelemetry.io/otel v1.43.0, otel/contrib v0.68.0
+  * vendor: google.golang.org/grpc v1.80.0
+  * vendor: golang.org/x/net v0.52.0
+  * vendor: golang.org/x/crypto v0.49.0
+  * vendor: golang.org/x/sync v0.20.0
+  * provenance: record request provenance for LLB refs
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+  * Updated Coverage for heredoc
+  * build(deps): bump docker/bake-action from 7.0.0 to 7.1.0
+  * git: fix sha256 detection for bundles
+  * git: add git bundle source support
+  * provenance: include git subdir in configSource
+  * build(deps): bump crazy-max/.github from 1.7.0 to 1.7.1
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * build(deps): bump crazy-max/.github from 1.6.0 to 1.7.0
+  * build(deps): bump the crazy-max-dot-github group with 2 updates
+  * dockerfile2llb: deep copy cloned image config state
+  * Updated Test Coverage for client
+  * Updated Test Coverage for addgit
+  * otlptracegrpc: remove errNoClient instead of a sentinel error
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+  * session: add timeout for credentialsfunc
+  * source/git: add fetch-by-commit support
+  * otel: refactor tracing helpers for child processes
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * ci(zizmor): enable secrets-outside-env
+  * ci: scope labeler concurrency to the pull request
+  * Dockerfile: update containerd v2.1.7, v1.7.31
+  * Dockerfile: update containerd v2.2.3
+  * vendor: github.com/containerd/containerd/v2 v2.2.3
+  * vendor: github.com/Microsoft/hcsshim v0.14.1
+  * ci: run compatibility releases via hack/test
+  * build(deps): bump actions/cache from 5.0.4 to 5.0.5
+  * fix: remove data race in the progress writer
+  * client: compatibility test amd64 update
+  * build(deps): bump softprops/action-gh-release from 2.6.1 to 3.0.0
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+  * build(deps): bump docker/bake-action from 7.0.0 to 7.1.0
+  * build(deps): bump actions/github-script from 8.0.0 to 9.0.0
+  * build(deps): bump docker/build-push-action from 7.0.0 to 7.1.0
+  * github: fix integration tests not running in containerd 2.0
+  * Dockerfile: update RootlessKit to v3.0.0
+  * Dockerfile: copy docker-engine stage before other stages
+  * solver: add compatibility-version support
+  * dockerfile: support SOURCE_DATE_EPOCH=<stage>
+  * dockerfile: support SOURCE_DATE_EPOCH=context
+  * session: tune session healthcheck defaults
+  * session: fail stuck session RPCs on health timeout
+
+-------------------------------------------------------------------
 Tue Apr 14 07:21:46 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.29.0:
