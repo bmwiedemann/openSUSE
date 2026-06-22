@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jun 11 09:07:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * Bash-5.3 Official patch 10 -- bash53-010
+    Under some circumstances, a subshell or asynchronous job with an active
+    EXIT trap that contains a call to `wait' can loop trying to wait for
+    processes that are not its children. It usually inherits these jobs from
+    its parent in the jobs list.
+  * Bash-5.3 Official patch 11 -- bash53-011
+    If a `mapfile' callback unsets the array variable `mapfile' is using to save
+    the lines it reads, `mapfile' can try to reference freed memory, which can
+    cause corruption or shell crashes.
+  * Bash-5.3 Official patch 12 -- bash53-012
+    If a subshell with an inherited EXIT trap receives a fatal signal before
+    it clears the exit trap, and before it restores its original signal
+    handlers, it's possible for it to inappropriately run the inherited EXIT
+    trap.
+  * Bash-5.3 Official patch 13 -- bash53-013
+    Comparing the value of a pointer returned from realloc/xrealloc to the
+    original pointer passed is technically undefined behavior, which matters
+    under some circumstances.
+  * Bash-5.3 Official patch 14 -- bash53-014
+    Bash-5.3 patch 11 included an inadvertent extra line, which this patch
+    removes. This also takes the opportunity to improve that patch, by looking
+    up the variable each time through the line-reading loop only if there is
+    a callback and it is invoked.
+  * Bash-5.3 Official patch 15 -- bash53-015
+    There are circumstances under which index -1 is used to reference into
+    the input buffer used by the `read' builtin.
+
+-------------------------------------------------------------------
 Wed Feb 11 10:41:59 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Remove obsolete qemu workaround
@@ -7,7 +38,7 @@ Wed Feb 11 10:41:59 UTC 2026 - Andreas Schwab <schwab@suse.de>
 Thu Dec 11 10:00:17 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patch
-  * Bash-5.3 Official patch 8 -- bash53-009
+  * Bash-5.3 Official patch 9 -- bash53-009
     A SIGINT during a reverse i-search can cause a segmentation fault
     due to accessing data freed by a signal handler.
 

@@ -2194,4 +2194,12 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
     <comment>- Remove obsolete qemu workaround (forwarded request 1332460 from Andreas_Schwab)</comment>
     <requestid>1332470</requestid>
   </revision>
+  <revision rev="206" vrev="7">
+    <srcmd5>07d79d3aace0c3a69c329a04bc929ae1</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1782141893</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1360230</requestid>
+  </revision>
 </revisionlist>
