@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Jun 20 10:08:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Upate to version 0.2.20:
+  * Fixed
+    - cli: redirect removed --list-rules to the canonical commands
+      (7a3842d)
+    - parser: correct code-region detection for comments and JSX
+      fences (17f975c)
+
+-------------------------------------------------------------------
+Fri Jun 19 05:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.19:
+  * Added
+    - md013: add code-spans option to exempt unbreakable inline
+      code (78896f5)
+    - lsp: document and workspace symbols for headings (2cef95b)
+  * Fixed
+    - parser: recognize reference definitions inside blockquotes
+      (82f4567)
+    - md034: don't flag reference definitions inside blockquotes
+      (faf0fa4)
+    - md013: reflow list items inside blockquotes (362b5a6)
+
+-------------------------------------------------------------------
 Thu Jun 18 07:39:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.18:
