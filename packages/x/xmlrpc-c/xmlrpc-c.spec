@@ -20,12 +20,13 @@
 %define soname 3
 %define soname_cpp 9
 Name:           xmlrpc-c
-Version:        1.60.05
+Version:        1.64.03
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
 URL:            https://xmlrpc-c.sourceforge.net/
-Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-c-%{version}.tgz
+# NB: upstream dropped the "-c" from the 1.64.x tarball/dir name (xmlrpc-X.Y.Z)
+Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-%{version}.tgz
 Source9:        %{name}-rpmlintrc
 Patch1:         skip-expat.patch
 BuildRequires:  autoconf
@@ -207,7 +208,7 @@ XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
 package is used by XML-RPC clients and servers written in C and C++.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n xmlrpc-%{version}
 echo "Not using the embedded libexpat copy"
 rm -rvf lib/expat
 
@@ -221,6 +222,7 @@ export CFLAGS_PERSONAL="%{optflags} -std=gnu11"
 # between the .osh shared objects and the .so link target, so a parallel
 # build races (the .so link starts before its .osh inputs finish). With
 # LTO this surfaces as a fatal "resolution sub id not in object file" ICE.
+# Re-verified still racing at 1.64.03 (libxmlrpc_util.so.4) without -j1.
 %make_build CADD="-fPIC -DPIC" AR=ar RANLIB=ranlib --jobs 1
 
 %check

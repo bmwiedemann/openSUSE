@@ -1,8 +1,14 @@
-Index: xmlrpc-c-1.59.03/common.mk
-===================================================================
---- xmlrpc-c-1.59.03.orig/common.mk
-+++ xmlrpc-c-1.59.03/common.mk
-@@ -472,9 +472,11 @@ $(LIBXMLRPC_UTILPP) $(LIBXMLRPC_UTILPP_A
+Use the system libxml2 XML backend instead of the bundled expat copy.
+
+Also fixes a bug in xmlrpc-c-config.test.main (the build-tree config script
+used by the test suite): with the libxml2 backend it set LIBXML via Makefile
+syntax "$(shell $(PKG_CONFIG) ...)", which in the generated shell script
+yields an empty value, so every test program failed to link -lxml2
+("undefined reference to xmlInitParser" etc.). Use shell command substitution.
+
+--- a/common.mk
++++ b/common.mk
+@@ -472,9 +472,11 @@
  	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/libutil++/Makefile \
  	    $(notdir $@)
  
@@ -14,11 +20,9 @@ Index: xmlrpc-c-1.59.03/common.mk
  
  $(LIBXMLRPC_XMLTOK) $(LIBXMLRPC_XMLTOK_A) : FORCE
  	$(MAKE) -C $(dir $@) -f $(SRCDIR)/lib/expat/xmltok/Makefile \
-Index: xmlrpc-c-1.59.03/test/Makefile
-===================================================================
---- xmlrpc-c-1.59.03.orig/test/Makefile
-+++ xmlrpc-c-1.59.03/test/Makefile
-@@ -70,7 +70,6 @@ test: \
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -70,7 +70,6 @@
    $(TEST_OBJS) $(LIBXMLRPC_A) $(LIBXMLRPC_UTIL_A) \
    $(LIBXMLRPC_SERVER_A) $(LIBXMLRPC_SERVER_ABYSS_DEP) $(LIBXMLRPC_XML) \
    $(LIBXMLRPC_CLIENT_DEP) $(LIBXMLRPC_ABYSS_DEP) \
@@ -26,3 +30,14 @@ Index: xmlrpc-c-1.59.03/test/Makefile
    $(CASPRINTF)
  	$(CCLD) -o $@ $(LDFLAGS_ALL) \
  	    $(TEST_OBJS) $(LDADD_CLIENT) $(LDADD_ABYSS_SERVER) $(CASPRINTF)
+--- a/xmlrpc-c-config.test.main
++++ b/xmlrpc-c-config.test.main
+@@ -20,7 +20,7 @@
+ packetsocket_lib=
+ 
+ if test "${ENABLE_LIBXML2_BACKEND}" = "yes"; then
+-  LIBXML=$(shell $(PKG_CONFIG) libxml-2.0 --libs)
++  LIBXML=$(pkg-config libxml-2.0 --libs)
+ else
+   LIBXML="${BLDDIR}/lib/expat/xmlparse/libxmlrpc_xmlparse.a"
+   sopath="${BLDDIR}/lib/expat/xmlparse:$sopath"

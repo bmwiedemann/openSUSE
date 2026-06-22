@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 20 16:28:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to the current super-stable release 1.64.03
+  * skip-expat.patch extended to fix xmlrpc-c-config.test.main, whose
+    libxml2-backend LIBXML used Makefile syntax (empty in the shell
+    script) and broke linking the test suite against -lxml2
+  * upstream dropped the "-c" from the tarball/directory name
+    (xmlrpc-%{version})
+
+-------------------------------------------------------------------
 Wed Jun  3 07:35:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernize spec file:
