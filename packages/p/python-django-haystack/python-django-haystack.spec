@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-haystack
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Pluggable search for Django
 License:        BSD-3-Clause

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:53:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Remove obsolete ElasticSearch2 support and tests
+  * Add Django v5.1 to the testing
+  * GitHub Actions: Add Python 3.13 to the testing
+  * Fix typo.
+  * Fix RelatedSearchQueryset.load_all() truncating results
+  * [FIXED] -- handle trailing slash in Solr index URL for core
+    reload.
+  * Bump the github-actions group with 2 updates
+  * Update license field to use proper SPDX identifier
+  * dev: Update Python dependencies
+  * dev: Update django
+  * fix: handle HEAD requests like GET in generic_views
+  * feat: Add requires-python to pyproject.toml (PEP 621)
+  * Add Python 3.14 and 3.14t to the testing
+  * Fix race condition in ConnectionRouter.routers lazy
+    initialization
+  * add postgres backend to backend_support.rst
+  * Actions: limit permissions for tests
+  * GitHub Actions: zizmor fixes
+
+-------------------------------------------------------------------
 Mon May 18 23:12:55 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Skip test_multiprocessing, which doesn't work in the osc build
