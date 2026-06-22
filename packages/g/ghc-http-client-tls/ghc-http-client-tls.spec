@@ -20,26 +20,27 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.6.4
+Version:        0.4.0
 Release:        0
 Summary:        Http-client backend using the connection package and tls library
 License:        MIT
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/3.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
+BuildRequires:  ghc-base16-devel
+BuildRequires:  ghc-base16-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
 BuildRequires:  ghc-case-insensitive-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-cryptohash-md5-devel
+BuildRequires:  ghc-cryptohash-md5-prof
 BuildRequires:  ghc-crypton-connection-devel
 BuildRequires:  ghc-crypton-connection-prof
-BuildRequires:  ghc-crypton-devel
-BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
 BuildRequires:  ghc-exceptions-devel
@@ -48,8 +49,6 @@ BuildRequires:  ghc-http-client-devel
 BuildRequires:  ghc-http-client-prof
 BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
-BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-network-uri-devel
@@ -100,7 +99,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
