@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun 12 14:58:19 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260612.e4dd77ac:
+  * gocd: Fix pipeline name
+  * Add FTBFS dashboard for openSUSE:Factory:Rebuild
+
+-------------------------------------------------------------------
+Fri Jun 12 13:37:14 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260612.f6ea0660:
+  * Implement pagination for Gitea API calls
+
+-------------------------------------------------------------------
+Thu Jun 11 12:46:56 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260611.466e394c:
+  * docker_publisher.py: Set opensuse/leap:16.0 as latest
+
+-------------------------------------------------------------------
+Wed Jun 10 09:14:24 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260610.93957ea7:
+  * gocd: Add TTM.Leap_16.0_Images
+
+-------------------------------------------------------------------
 Fri May 29 12:30:08 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260529.ebc6e9d1:
