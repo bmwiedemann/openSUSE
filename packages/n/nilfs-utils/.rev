@@ -171,4 +171,41 @@
     <comment></comment>
     <requestid>998109</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>5a1d42d73bdba8f8219db39c7696452f</srcmd5>
+    <version>2.3.1</version>
+    <time>1782142549</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.3.1:
+  * Backport a fix for a potential overflow in the library function that
+    determines if a superblock is valid (CVE-2026-55392):
+    - lib/sb: validate s_log_block_size in nilfs_sb_is_valid()
+  * Backport a cleanerd fix:
+    - cleanerd: apply missing fix for swapped segment count reduction
+  * Backport a minor correction to a footnote in the README file:
+    - README: mention libselinux-dev as a newer package name
+  * New Features:
+    - Support file/directory arguments for utilities (lscp, lssu,
+      nilfs-clean, etc.) to automatically resolve backing devices.
+    - nilfs-clean: Automatically adjust GC speed by default, eliminating
+      manual tuning.
+  * GC Daemon (cleanerd) Improvements:
+    - Cap segments per cleaning step by available free segments to
+      prevent stalling when free space is running out.  Also, cap
+      the number of segments per cleaning step to prevent theoretical
+      size_t overflow on 32-bit systems.
+    - Improve signal handling (exit cleanly on SIGINT, ignore SIGUSR2).
+    - Add state dump feature (SIGUSR1).
+  * Build System Updates:
+    - Support generating pkg-config information for shared libraries.
+    - Support pkg-config for finding dependencies (libuuid, libmount,
+      libblkid, libselinux).
+    - Do not install static libraries by default.
+    - Gather system programs directly below sbin source directory.
+  * Library Refactoring and API Changes:
+    - Reorganize APIs in libnilfs and libnilfsgc:
+      - Add/update APIs for segment I/O, resize, and freeze/thaw.
+      - Unify type definitions (use standard uint32_t/uint64_t).</comment>
+    <requestid>1360878</requestid>
+  </revision>
 </revisionlist>

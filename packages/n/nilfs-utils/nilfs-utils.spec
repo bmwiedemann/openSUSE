@@ -1,7 +1,7 @@
 #
 # spec file for package nilfs-utils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,22 @@
 #
 
 
-%define libnilfs    libnilfs0
+%define libnilfs    libnilfs3
 %define libcleaner  libnilfscleaner0
-%define libgc       libnilfsgc0
+%define libgc       libnilfsgc3
 %if 0%{?suse_version} < 1550
 %define root_sbindir	/sbin
 %else
 %define root_sbindir	%{_sbindir}
 %endif
-
 Name:           nilfs-utils
-Version:        2.2.9
+Version:        2.3.1
 Release:        0
 Summary:        Utilities for NILFS
 License:        GPL-2.0-only
 Group:          System/Filesystems
-URL:            https://nilfs.sourceforge.io/en/
-Source:         https://nilfs.sourceforge.io/download/%{name}-%{version}.tar.bz2
+URL:            https://nilfs.sourceforge.io/
+Source:         https://nilfs.sourceforge.io/download/nilfs-utils-%{version}.tar.bz2
 BuildRequires:  chrpath
 BuildRequires:  libmount-devel
 BuildRequires:  libuuid-devel
@@ -73,7 +72,7 @@ Requires:       %{libnilfs} = %{version}
 This package contains the development files for NILFS v2.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \
@@ -87,37 +86,43 @@ make install DESTDIR=%{buildroot} root_sbindir=%{root_sbindir}
 find %{buildroot} -type f -name "*.la" -delete -print
 chrpath -d %{buildroot}%{root_sbindir}/*
 
-%post -n %{libnilfs}      -p %run_ldconfig
-%post -n %{libcleaner}    -p %run_ldconfig
-%post -n %{libgc}         -p %run_ldconfig
-%postun -n %{libnilfs}    -p %run_ldconfig
-%postun -n %{libcleaner}  -p %run_ldconfig
-%postun -n %{libgc}       -p %run_ldconfig
+%ldconfig_scriptlets -n %{libnilfs}
+%ldconfig_scriptlets -n %{libcleaner}
+%ldconfig_scriptlets -n %{libgc}
 
 %files
+%license COPYING
+%doc README
 %config(noreplace) %{_sysconfdir}/nilfs_cleanerd.conf
 %if 0%{?suse_version} < 1550
 %{root_sbindir}/*
 %endif
 %{_sbindir}/*
 %{_bindir}/*
-%{_mandir}/man?/*
+%{_mandir}/man1/lscp.1.gz
+%{_mandir}/man1/lssu.1.gz
+%{_mandir}/man5/nilfs*.5.gz
+%{_mandir}/man8/chcp.8.gz
+%{_mandir}/man8/dumpseg.8.gz
+%{_mandir}/man8/mkcp.8.gz
+%{_mandir}/man8/mkfs.nilfs2.8.gz
+%{_mandir}/man8/mount.nilfs2.8.gz
+%{_mandir}/man8/nilfs.8.gz
+%{_mandir}/man8/nilfs*.8.gz
+%{_mandir}/man8/rmcp.8.gz
+%{_mandir}/man8/umount.nilfs2.8.gz
 
 %files -n %{libnilfs}
-%{_libdir}/libnilfs.so.*
-
-%files -n %{libcleaner}
-%{_libdir}/libnilfscleaner.so.*
+%{_libdir}/libnilfs.so.3*
 
 %files -n %{libgc}
-%{_libdir}/libnilfsgc.so.*
+%{_libdir}/libnilfsgc.so.3*
 
 %files devel
 %{_includedir}/nilfs.h
-%{_includedir}/nilfs2_fs.h
-%{_includedir}/nilfs_cleaner.h
+%{_includedir}/nilfs_gc.h
 %{_libdir}/libnilfs.so
-%{_libdir}/libnilfscleaner.so
 %{_libdir}/libnilfsgc.so
+%{_libdir}/pkgconfig/nil*.pc
 
 %changelog

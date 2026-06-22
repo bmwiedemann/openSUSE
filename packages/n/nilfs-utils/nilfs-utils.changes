@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Jun 21 18:33:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.1:
+  * Backport a fix for a potential overflow in the library function that
+    determines if a superblock is valid (CVE-2026-55392):
+    - lib/sb: validate s_log_block_size in nilfs_sb_is_valid()
+  * Backport a cleanerd fix:
+    - cleanerd: apply missing fix for swapped segment count reduction
+  * Backport a minor correction to a footnote in the README file:
+    - README: mention libselinux-dev as a newer package name
+  * New Features:
+    - Support file/directory arguments for utilities (lscp, lssu,
+      nilfs-clean, etc.) to automatically resolve backing devices.
+    - nilfs-clean: Automatically adjust GC speed by default, eliminating
+      manual tuning.
+  * GC Daemon (cleanerd) Improvements:
+    - Cap segments per cleaning step by available free segments to
+      prevent stalling when free space is running out.  Also, cap
+      the number of segments per cleaning step to prevent theoretical
+      size_t overflow on 32-bit systems.
+    - Improve signal handling (exit cleanly on SIGINT, ignore SIGUSR2).
+    - Add state dump feature (SIGUSR1).
+  * Build System Updates:
+    - Support generating pkg-config information for shared libraries.
+    - Support pkg-config for finding dependencies (libuuid, libmount,
+      libblkid, libselinux).
+    - Do not install static libraries by default.
+    - Gather system programs directly below sbin source directory.
+  * Library Refactoring and API Changes:
+    - Reorganize APIs in libnilfs and libnilfsgc:
+      - Add/update APIs for segment I/O, resize, and freeze/thaw.
+      - Unify type definitions (use standard uint32_t/uint64_t).
+      - Remove obsolete APIs and internal structures from public headers.
+  * Other Utilities Updates:
+    - mkfs.nilfs2: Set "block_count read-only compat" flag by default.
+    - Align help message output and exit codes with standard conventions
+      (e.g. nilfs-tune).
+    - nilfs-resize: Use new library API for layout information.
+- drop nilfs-utils-validate-s_log_block_size.patch (upstream)
+
+-------------------------------------------------------------------
+Sun Jun 21 18:03:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add nilfs-utils-validate-s_log_block_size.patch (bsc#1268553,
+  CVE-2026-55392)
+
+-------------------------------------------------------------------
 Wed Aug 17 19:24:45 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.9:
@@ -66,7 +113,7 @@ Sat May  8 19:00:38 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * lib/Makefile.am: use AM_CFLAGS and AM_CPPFLAGS for simplicity
   * lib/crc32.c: make crc32tab array static const
   * remove obsolete email addresses
-  * AUTHORS: update header line of author list 
+  * AUTHORS: update header line of author list
 
 -------------------------------------------------------------------
 Sat Jul 25 12:04:17 UTC 2015 - mpluskal@suse.com
@@ -108,7 +155,7 @@ Sat Jul 25 12:04:17 UTC 2015 - mpluskal@suse.com
   * nilfs-clean: add cmdline param min-reclaimable-blocks
   * move generic macros into util.h
   * fix coding style issues
-  * bump up version of nilfs-utils written in manpages  
+  * bump up version of nilfs-utils written in manpages
 - Build devel package
 - Split shared libraries to separate packages
 
@@ -136,7 +183,7 @@ Fri Mar 27 17:28:52 UTC 2015 - mpluskal@suse.com
   * fix many coding style issues
   * a minor update in lscp manpage
   * update README file
-  * update AUTHORS file  
+  * update AUTHORS file
 
 -------------------------------------------------------------------
 Mon Jul 23 17:39:39 CEST 2012 - tiwai@suse.de
