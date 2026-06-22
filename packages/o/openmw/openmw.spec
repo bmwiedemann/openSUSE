@@ -1,7 +1,7 @@
 #
 # spec file for package openmw
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,9 @@
 # 1.69 is the first boost version that is supposed to work with C++ 20:
 %define min_boost_version 1.69
 # RCs have archive_ver different than version
-%define archive_ver 0.50.0
+%define archive_ver 0.51.0
 Name:           openmw
-Version:        0.50.0
+Version:        0.51.0
 Release:        0
 Summary:        Reimplementation of The Elder Scrolls III: Morrowind
 License:        GPL-3.0-only AND MIT
