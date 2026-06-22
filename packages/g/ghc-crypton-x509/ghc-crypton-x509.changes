@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun  3 05:43:31 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update crypton-x509 to version 1.9.1.
+  * Implementing the X509 name constrains extension. [CVE-2026-9648, bsc#1268157]
+  * Using "ram" instead of "memory"
+  * Depend on package `time-hourglass`, rather than `hourglass`. Date and
+    time-related types and classes are now those from the former package.
+    [#18](https://github.com/kazu-yamamoto/crypton-certificate/pull/18)
+  * Depend on package `crypton-asn1-types >= 0.4.1` rather than `asn1-types`.
+    ASN.1-related types and classes are now those from the former package.
+
+-------------------------------------------------------------------
 Sat Mar  7 05:14:39 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update crypton-x509 to version 1.7.7 revision 1.
