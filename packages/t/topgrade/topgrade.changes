@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 20 12:16:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.6.2:
+  * chore: release v17.6.2 (#2089)
+  * fix(brew): add assume_yes support (#2090)
+  * chore(deps): update actions/checkout action to v7 (#2096)
+  * chore(deps): update rust crate itertools to 0.15.0 (#2095)
+  * chore(deps): lock file maintenance (#2093)
+  * docs: fix winget_silent_install key name in config.example.toml (#2092)
+  * fix(powershell): skip step if there is a wrapper script (#2087)
+  * fix(brew): don't panic when linuxbrew owner uid has no passwd entry (#2063)
+  * fix(pip3): skip self-update on Termux (#2065)
+  * fix(nix): don't skip self-upgrade on non-NixOS Linux (#2072)
+  * chore(deps): update release-plz/action action to v0.5.130 (#2084)
+
+-------------------------------------------------------------------
 Wed Jun 10 21:55:30 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.6.1:

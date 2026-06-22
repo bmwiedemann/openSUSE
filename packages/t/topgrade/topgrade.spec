@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        17.6.1
+Version:        17.6.2
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/%{name}-rs/%{name}
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  zstd
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
