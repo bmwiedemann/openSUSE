@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jun 14 10:11:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Return shapley values in original order
+  * scale ISJ bw estimate by grid range rather than data range
+  * Add kde2d functions
+  * Generalize and refactor bayes_factor
+  * Add p_worse, diff and elpd diagnostics to compare
+  * prepare release
+
+-------------------------------------------------------------------
 Sun Apr 26 09:32:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:

@@ -31,4 +31,18 @@
   * Document kwargs for kde across all layers</comment>
     <requestid>1349363</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5c75dfe8a1e9b6bf53866d6e96125f7f</srcmd5>
+    <version>1.2.0</version>
+    <time>1782142114</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * Return shapley values in original order
+  * scale ISJ bw estimate by grid range rather than data range
+  * Add kde2d functions
+  * Generalize and refactor bayes_factor
+  * Add p_worse, diff and elpd diagnostics to compare
+  * prepare release</comment>
+    <requestid>1360751</requestid>
+  </revision>
 </revisionlist>

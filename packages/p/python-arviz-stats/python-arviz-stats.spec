@@ -19,7 +19,7 @@
 # Upstream supports Python 3.12+
 %define skip_python311 1
 Name:           python-arviz-stats
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Statistical computation and diagnostics for ArviZ
 License:        Apache-2.0
