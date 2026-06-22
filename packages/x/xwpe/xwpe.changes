@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Mon Jun 22 12:32:23 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Drop the redundant download_url _service: the release tarball is referenced via Source0 and shipped in the package (matches the upstream asset, sha256 36b4c546...). Avoids a second, drifting fetch path.
+
+-------------------------------------------------------------------
+Mon Jun 22 00:37:04 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Refresh 1.6.6 tarball after the final upstream retag (adds the cross-platform test harnesses to the tag).
+
+-------------------------------------------------------------------
+Mon Jun 22 00:06:33 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Own the hicolor/scalable icon directories (fix unowned-directory build check).
+
+-------------------------------------------------------------------
+Sun Jun 21 23:59:53 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Refresh 1.6.6 tarball after upstream v1.6.6 retag (OpenBSD/reentrant-ncursesw build fixes + macOS console mouse).
+
+-------------------------------------------------------------------
+Sun Jun 21 21:59:15 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Update to 1.6.6 (BSD portability; LSP truecolor semantic tokens; e_d_quit_basic return-type build fix for -Werror=return-type).
+
+-------------------------------------------------------------------
+Sat Jun 21 12:00:00 UTC 2026 - Juan Manuel Méndez Rey <juan.mendezr@proton.me>
+
+- Initial openSUSE package (version 1.6.5).
+  xwpe is the revived Borland-style console/X11 IDE: a single binary
+  (wpe/we console, xwpe/xwe X11) with a syntax-highlighting editor,
+  project management, multi-language compiler integration and
+  source-level debugging (gdb/jdb/pdb), plus LSP and DAP clients.
+  New upstream at https://codeberg.org/mendezr/xwpe ; Debian sid already
+  tracks this fork.
