@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 12 07:39:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0+157:
+  + Fix all type_styles with gobject-linter
+  + meson: Run format
+  + Include gdk.h instead of gdkkeysyms
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:51:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

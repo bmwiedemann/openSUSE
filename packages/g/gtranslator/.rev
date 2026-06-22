@@ -498,4 +498,16 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345337</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>708daf3fe0fb145db58faac274d52cb2</srcmd5>
+    <version>50.0+157</version>
+    <time>1782142956</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.0+157:
+  + Fix all type_styles with gobject-linter
+  + meson: Run format
+  + Include gdk.h instead of gdkkeysyms
+  + Updated translations.</comment>
+    <requestid>1361057</requestid>
+  </revision>
 </revisionlist>

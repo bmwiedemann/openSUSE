@@ -17,7 +17,7 @@
 
 
 Name:           gtranslator
-Version:        50.0
+Version:        50.0+157
 Release:        0
 Summary:        A gettext po file editor for the GNOME desktop
 License:        GPL-3.0-or-later
@@ -87,7 +87,7 @@ find %{buildroot} -type f -name "gtr-marshal.h" -delete -print
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/gtksourceview-5/language-specs/*.lang
 %{_datadir}/icons/hicolor/*/apps/org.gnome.Gtranslator*.svg
-%{_datadir}/metainfo/org.gnome.Gtranslator.appdata.xml
+%{_datadir}/metainfo/org.gnome.Gtranslator.metainfo.xml
 %{_mandir}/man?/*
 
 %files lang -f %{name}.lang

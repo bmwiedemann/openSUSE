@@ -3,11 +3,11 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gtranslator.git</param>
-    <param name="revision">50.0</param>
+    <param name="revision">46336ffd</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
-    <!--    <param name="changesgenerate">enable</param> -->
+    <!--   <param name="changesgenerate">enable</param> -->
   </service>
   <service name="tar" mode="manual"/>
   <service name="recompress" mode="manual">
