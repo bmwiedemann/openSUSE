@@ -1217,4 +1217,41 @@
   * chore(deps): update rust crate napi-derive to v3.5.6 (#2642)</comment>
     <requestid>1356306</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>244f979c417147945258cfb2ae234977</srcmd5>
+    <version>0.44.0</version>
+    <time>1782142692</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.44.0:
+  * 0.44.0 bump version
+  * chore: move outline docs and benchmarks out of repo (#2763)
+  * chore(deps): update dependency smol-toml to v1.7.0 (#2762)
+  * Add JavaScript outline rules and stream JSON files (#2761)
+  * fix: update edge case fallback behavior
+  * fix: improve root multi meta var error
+  * fix: reject root multi-metavariable patterns (#2727)
+  * fix: don't leak metavar bindings across siblings in nthChild ofRule (#2677)
+  * fix: extract python from-import modules in outline (#2758)
+  * fix: match go outline types by declaration (#2759)
+  * fix: skip empty files in outline (#2757)
+  * feat: mark duplicate outline names (#2756)
+  * refactor: inline outline member kind lookup (#2755)
+  * refactor: make outline extract return iterator (#2754)
+  * refactor: stream outline extraction items (#2753)
+  * perf: use single traversal for outline extraction (#2751)
+  * perf: cache transform replace regexes (#2750)
+  * fix: don't leak metavar bindings from a negated `not` rule (#2676)
+  * refactor: fold outline extract options into extractors (#2749)
+  * refactor: split outline extract options and style (#2748)
+  * fix: remove redundant ui
+  * fix: remove unused (super) visibility
+  * refactor: map outline cli to core options (#2747)
+  * feat: apply outline extractor options (#2746)
+  * feat: add outline extractor options (#2745)
+  * fix: variable naming fix
+  * fix: simplify some code (#2744)
+  * fix: trailing ast-grep-ignore on a multi-line statement suppresses it (#2678)
+  * chore(deps): update actions/checkout action to v7 (#2731)</comment>
+    <requestid>1360914</requestid>
+  </revision>
 </revisionlist>
