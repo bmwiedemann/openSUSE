@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.0.6
+Version:        1.1.4
 Release:        0
 Summary:        Cryptography Primitives sink
 License:        BSD-3-Clause
@@ -29,15 +29,19 @@ Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
-BuildRequires:  ghc-basement-devel
-BuildRequires:  ghc-basement-prof
+BuildRequires:  ghc-base16-devel
+BuildRequires:  ghc-base16-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-deepseq-devel
 BuildRequires:  ghc-deepseq-prof
-BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-memory-prof
+BuildRequires:  ghc-primitive-devel
+BuildRequires:  ghc-primitive-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-text-devel
+BuildRequires:  ghc-text-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
