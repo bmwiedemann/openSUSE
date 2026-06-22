@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 16 20:34:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update yesod to version 1.6.2.3.
+  ## 1.6.2.3
+
+  * Support `yesod-core` 1.7
+
+  ## 1.6.2.2
+
+  * Set `base >= 4.11` for less CPP and imports [#1876](https://github.com/yesodweb/yesod/pull/1876)
+
+-------------------------------------------------------------------
 Thu Mar 30 17:09:11 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Updated spec file to conform with ghc-rpm-macros-2.5.2.

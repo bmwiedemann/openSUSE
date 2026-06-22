@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-yesod
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name yesod
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        1.6.2.1
+Version:        1.6.2.3
 Release:        0
 Summary:        Creation of type-safe, RESTful web applications
 License:        MIT
