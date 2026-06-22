@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        13.0.0
+Version:        13.0.1
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
