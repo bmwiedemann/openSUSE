@@ -17,7 +17,7 @@
 
 
 Name:           python-cucumber-expressions
-Version:        19.0.0
+Version:        20.0.0
 Release:        0
 Summary:        Cucumber Expressions - a simpler alternative to Regular Expressions
 License:        MIT
