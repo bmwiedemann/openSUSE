@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Jun 20 19:42:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 12.12.0:
+  + feat: per-label container platform specification
+  + feat(jobparser): add support for run-name
+  + fix(exec): Fix event_name/FORGEJO_EVENT_NAME not being set
+  + fix: expression evaluation fixes discovered while refactoring 'if' detection
+- Update to version 12.11.1:
+  + fix(docker): honour DOCKER_TLS_VERIFY and DOCKER_CERT_PATH when DOCKER_HOST is set
+- Update to version 12.11.0:
+  + feat(jobparser): implement jobparser capability to evaluate 'if' clauses
+  + feat: identify runner by its UUID in workflow logs
+  + feat(jobparser): provide detection capability for permissions being defined
+  + fix: evaluate if conditions of inner jobs before combining results
+  + fix: make look-up of matrix values case-insensitive when expanding workflows
+
+-------------------------------------------------------------------
+Thu Jun 18 10:54:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- fix version output
+- remove %ghost-ed configuration file
+
+-------------------------------------------------------------------
+Mon Jun 15 05:35:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add config.yaml as %ghost, use _sharedstatedir
+
+-------------------------------------------------------------------
 Fri May 29 20:08:10 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.10.2:
@@ -512,7 +540,7 @@ Wed Nov 27 10:20:13 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 Thu Nov 21 15:58:43 UTC 2024 - rrahl0@opensuse.org
 
 - Update to version 5.0.2:
-  * Fixes a regression that was introduced in version 5.0.0 by which 
+  * Fixes a regression that was introduced in version 5.0.0 by which
     skipped jobs were marked as failed instead
 
 -------------------------------------------------------------------

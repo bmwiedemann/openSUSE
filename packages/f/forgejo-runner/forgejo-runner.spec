@@ -18,7 +18,7 @@
 
 %define services %{name}.service
 Name:           forgejo-runner
-Version:        12.10.2
+Version:        12.12.0
 Release:        0
 Summary:        Daemon that connects to a Forgejo instance and runs CI jobs
 License:        GPL-3.0-or-later
@@ -80,7 +80,7 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -tags="netgo osusergo" \
-   -ldflags="-X code.forgejo.org/forgejo/runner/v11/internal/pkg/ver.version=v%{version}" \
+   -ldflags="-X code.forgejo.org/forgejo/runner/v12/internal/pkg/ver.version=v%{version}" \
    -o bin/%{name}
 
 bin/%{name} generate-config > config.yaml
@@ -106,7 +106,11 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions/
 
 install -D -m 0750 -d          %{buildroot}%{_sysconfdir}/%{name}
 install    -m 0640 config.yaml %{buildroot}%{_sysconfdir}/%{name}/config.yaml
-install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
+install -D -m 0750 -d          %{buildroot}%{_sharedstatedir}/%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} --version
+%{buildroot}/%{_bindir}/%{name} --version | grep %{version}
 
 %pre
 %service_add_pre %{services}
@@ -126,7 +130,7 @@ install -D -m 0750 -d          %{buildroot}%{_localstatedir}/lib/%{name}
 %{_bindir}/%{name}
 %{_unitdir}/forgejo-runner.service
 %config(noreplace) %{_sysconfdir}/%{name}
-%dir %{_localstatedir}/lib/%{name}
+%dir %{_sharedstatedir}/%{name}
 
 %files -n %{name}-bash-completion
 %{_datadir}/bash-completion/completions/%{name}

@@ -641,4 +641,32 @@
     <comment>No longer ship the deprecated &quot;runners&quot; file (forwarded request 1356664 from crameleon)</comment>
     <requestid>1356748</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>dbb15a0ff22f8a7b4e3f4e50a88246a7</srcmd5>
+    <version>12.10.2</version>
+    <time>1781879734</time>
+    <user>anag_factory</user>
+    <comment>fix version output and remove %ghost-ed configuration file (forwarded request 1360384 from ojkastl_buildservice)</comment>
+    <requestid>1360389</requestid>
+  </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ae89803076d6b26caf3dad72f3bc07f5</srcmd5>
+    <version>12.12.0</version>
+    <time>1782142164</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.12.0:
+  + feat: per-label container platform specification
+  + feat(jobparser): add support for run-name
+  + fix(exec): Fix event_name/FORGEJO_EVENT_NAME not being set
+  + fix: expression evaluation fixes discovered while refactoring 'if' detection
+- Update to version 12.11.1:
+  + fix(docker): honour DOCKER_TLS_VERIFY and DOCKER_CERT_PATH when DOCKER_HOST is set
+- Update to version 12.11.0:
+  + feat(jobparser): implement jobparser capability to evaluate 'if' clauses
+  + feat: identify runner by its UUID in workflow logs
+  + feat(jobparser): provide detection capability for permissions being defined
+  + fix: evaluate if conditions of inner jobs before combining results
+  + fix: make look-up of matrix values case-insensitive when expanding workflows (forwarded request 1360764 from rrahl0)</comment>
+    <requestid>1360765</requestid>
+  </revision>
 </revisionlist>
