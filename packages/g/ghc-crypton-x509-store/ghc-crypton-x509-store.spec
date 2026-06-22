@@ -20,25 +20,26 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.14
+Version:        1.9.0
 Release:        0
 Summary:        X.509 collection accessing and storing methods
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-asn1-encoding-devel
-BuildRequires:  ghc-asn1-encoding-prof
-BuildRequires:  ghc-asn1-types-devel
-BuildRequires:  ghc-asn1-types-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-asn1-encoding-devel
+BuildRequires:  ghc-crypton-asn1-encoding-prof
+BuildRequires:  ghc-crypton-asn1-types-devel
+BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-pem-devel
+BuildRequires:  ghc-crypton-pem-prof
 BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-crypton-x509-devel
 BuildRequires:  ghc-crypton-x509-prof
@@ -48,8 +49,6 @@ BuildRequires:  ghc-filepath-devel
 BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pem-devel
-BuildRequires:  ghc-pem-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
@@ -94,7 +93,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
