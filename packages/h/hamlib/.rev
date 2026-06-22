@@ -244,4 +244,12 @@
     <comment>hamlib 4.7.1 (forwarded request 1347322 from AndreasStieger)</comment>
     <requestid>1347323</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>d9b39aa7c8e703c6e467c01a3e2d49d1</srcmd5>
+    <version>4.7.2</version>
+    <time>1782142503</time>
+    <user>anag_factory</user>
+    <comment>hamlib 4.7.2 boo#1268628 boo#1268629 (forwarded request 1360852 from AndreasStieger)</comment>
+    <requestid>1360853</requestid>
+  </revision>
 </revisionlist>

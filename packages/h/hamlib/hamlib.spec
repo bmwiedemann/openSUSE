@@ -19,7 +19,7 @@
 
 %define sover   4
 Name:           hamlib
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Run-time library to control radio transcievers and receivers
 License:        LGPL-2.1-only
@@ -30,12 +30,13 @@ Source2:        https://github.com/Hamlib/Hamlib/releases/download/%{version}/%{
 # taken from debian
 Source3:        %{name}.keyring
 Patch0:         hamlib-3.0-perl_install.patch
+BuildRequires:  c++_compiler
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  perl
-BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig >= 0.29.2
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  swig
 BuildRequires:  pkgconfig(gdlib)

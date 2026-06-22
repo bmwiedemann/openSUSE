@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 21 15:27:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 4.7.2:
+  * Fix IC-7600/IC-7610 clock commands
+  * Icom: Add CWR to modes eligible for DSP filtering
+  * Kenwood: New model Hamgeek uSGX
+  * Various fixes for Skywatcher, DX-SR8, FT-710, FTX-1, IC-705, X6100
+  * rigctld: Fix send_raw stack out-of-bounds write and
+    uninitialized memory CVE-2026-54634 (boo#1268628)
+  * rigctld: Fix stack/heap overflow primitive in
+    read_string_generic + auth bypass in rigctld + weak password
+    handling (boo#1268629)
+
+-------------------------------------------------------------------
 Thu Apr 16 16:53:48 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 4.7.1:
