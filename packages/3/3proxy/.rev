@@ -50,4 +50,20 @@
   * Added new proxy service type: auto - autodetect proxy type between proxy and socks.</comment>
     <requestid>1251903</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>e3f0ac0b383898290baabc6497ac3a10</srcmd5>
+    <version>0.9.6</version>
+    <time>1782141999</time>
+    <user>anag_factory</user>
+    <comment>- Enabled http-proxy and allowed local network 192.168.0.0/16 by default. 
+- Updated to 0.9.6
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.6
+  * SSLPlugin significantly improved and bugfixed: adds ssl_client
+    and multiple configuration options.
+  * HAProxy PROXY protocol v1 support as client and server.
+  * tlspr is now supported in auto and gained a -s option to break
+    the HELLO packet and evade some SNI-based DPI.
+  * New maxseg configuration option (TCP_MAXSEG).</comment>
+    <requestid>1360665</requestid>
+  </revision>
 </revisionlist>

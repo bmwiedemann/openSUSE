@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 19 21:17:38 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Enabled http-proxy and allowed local network 192.168.0.0/16 by default. 
+- Updated to 0.9.6
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.6
+  * SSLPlugin significantly improved and bugfixed: adds ssl_client
+    and multiple configuration options.
+  * HAProxy PROXY protocol v1 support as client and server.
+  * tlspr is now supported in auto and gained a -s option to break
+    the HELLO packet and evade some SNI-based DPI.
+  * New maxseg configuration option (TCP_MAXSEG).
+
+-------------------------------------------------------------------
 Mon Mar 10 22:36:31 UTC 2025 - Илья Индиго <ilya@ilya.top>
 
 - Added plugins.

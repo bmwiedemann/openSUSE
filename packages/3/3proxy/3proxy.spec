@@ -1,7 +1,7 @@
 #
 # spec file for package 3proxy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,19 @@
 %define _home   %{_localstatedir}/lib/%{name}
 %define plugdir %{_libdir}/%{name}/plugins
 Name:           3proxy
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Tiny proxy servers set
-License:        BSD-3-Clause OR Apache-2.0 OR GPL-2.0-or-later OR LGPL-2.1-or-later
+License:        Apache-2.0 OR BSD-3-Clause OR GPL-2.0-or-later OR LGPL-2.1-or-later
 URL:            https://github.com/%{name}/%{name}
 Source0:        https://github.com/%{name}/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.service
 Source2:        %{name}-socks.firewalld
 Source3:        %{name}.cfg
-BuildRequires:  openssl-devel
-BuildRequires:  pam-devel
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(pam)
 Requires(pre):  shadow
 Provides:       group(%{_group})
 Provides:       user(%{_user})
@@ -44,11 +46,10 @@ based on username, client IP, target IP, day time, day of week, etc.
 %prep
 %autosetup -p1
 sed -i -e 's/USER/%{_user}/' -e 's/GROUP/%{_group}/' %{SOURCE1}
-sed -i -e 's/CFLAGS = -g/CFLAGS = %{optflags}/' -e 's/LDFLAGS = /LDFLAGS = %{optflags} /' Makefile.Linux
-sed -i -e '/^LIBS =/d' -e 's/^#LIBS =/LIBS =/' -e '/^PLUGINS =/d' -e 's/^#PLUGINS =/PLUGINS =/' Makefile.Linux
+sed -i -e 's/CFLAGS := -g/CFLAGS := %{optflags}/' -e 's/LDFLAGS := /LDFLAGS := %{optflags} /' Makefile.Linux
 
 %build
-%make_build -f Makefile.Linux
+%make_build -f Makefile.Linux PLUGINS="SSLPlugin StringsPlugin TrafficPlugin PCREPlugin TransparentPlugin PamAuth"
 
 %install
 mkdir -p %{buildroot}%{_bindir}
@@ -56,7 +57,7 @@ mkdir -p %{buildroot}%{plugdir}
 mkdir -p %{buildroot}%{_mandir}/man{3,8}
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
 install -pm0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
-install -pm0755 bin/*.ld.so %{buildroot}%{plugdir}
+install -pm0755 bin/{{PCRE,SSL,Strings,Traffic,Transparent}Plugin,pamauth}.ld.so %{buildroot}%{plugdir}
 install -pm0644 man/%{name}.cfg.3 %{buildroot}%{_mandir}/man3/%{name}.cfg.3
 install -pm0644 man/%{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
