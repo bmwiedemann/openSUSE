@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun May 31 01:28:10 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- update to 0.19.0:
+  * Update readme (gh#FlyGoat/RyzenAdj#348)
+  * krackan point: use full name (gh#FlyGoat/RyzenAdj#351)
+  * update for ryzen_smu 0.1.7 (gh#FlyGoat/RyzenAdj#352)
+  * add strix point table from ryzen_smu (gh#FlyGoat/RyzenAdj#353)
+  * Add basic Dragon Range and Fire Range support 
+    (gh#FlyGoat/RyzenAdj#359)
+  * wrap macro argument usage in parentheses (gh#FlyGoat/RyzenAdj#364)
+  * added support for PRO variant of HX 370 (gh#FlyGoat/RyzenAdj#360)
+  * api: add more table offsets for Strix Point 
+    (gh#FlyGoat/RyzenAdj#366)
+  * Improve Krackan Point support (gh#FlyGoat/RyzenAdj#368)
+  * lib: osdep_linux: fix license headers (gh#FlyGoat/RyzenAdj#376)
+  * main: add missing family name strings (gh#FlyGoat/RyzenAdj#378)
+  * Fix spelling mistakes across documentation, CLI, and Windows 
+    tooling (gh#FlyGoat/RyzenAdj#389)
+  * feat: add support for Strix Point PM Table version 0x005D0009 
+    (gh#FlyGoat/RyzenAdj#394)
+  * fix: PM table size mismatch on Raven/Picasso with ryzen_smu 
+    (gh#FlyGoat/RyzenAdj#399)
+  * api: add Strix Point PM table version 0x5d000b support 
+    (gh#FlyGoat/RyzenAdj#403)
+
+-------------------------------------------------------------------
 Wed May 28 14:32:56 UTC 2025 - RN <R_Nik_C@proton.me>
 
 - update to 0.17.0:

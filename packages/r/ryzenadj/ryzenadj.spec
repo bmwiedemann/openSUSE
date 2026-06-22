@@ -1,7 +1,7 @@
 #
 # spec file for package ryzenadj
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ryzenadj
-Version:        0.17.0
+Version:        0.19.0
 Release:        0
 Summary:        Settings manager for mobile AMD Ryzen processors
 License:        GPL-3.0-or-later
