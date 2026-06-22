@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:28:33 UTC 2026 - varkoly@suse.com
+
+- Update to version 4.17.0+git.1781703439.0804740:
+  * fence_openstack: fix list-action to avoid timeout when there are 100+ VMs on the hypervisor
+  * fence_ibm_vpc: set proxy when token has expired as well
+  * fence_openstack: add auth-plugin support for clouds.yaml (#651)
+  * fencing.py: change from Bash "source" to POSIX-compliant "."
+
+-------------------------------------------------------------------
+Mon Feb 23 19:09:44 UTC 2026 - trenn@suse.com
+
+- Update to version 4.17.0+git.1769693386.608dd62:
+  * fence_ibm_vpc: fix indentation
+  * fence_dummy: add recorder mode for testing fence_recorder protocol (#647)
+  * Enhancement: better alpine compatibility (#648)
+  * fence_scsi: add "mpath_register_method" parameter to allow only registering to the main multipath device
+
+-------------------------------------------------------------------
 Wed Dec 17 17:44:59 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Update to version 4.16.0+git.1765293331.d30fb54b:

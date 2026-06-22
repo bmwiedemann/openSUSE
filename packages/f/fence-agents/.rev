@@ -1276,4 +1276,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1324379</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>f9ad58f048d2f33296954054e416d6b9</srcmd5>
+    <version>4.17.0+git.1769693386.608dd62</version>
+    <time>1772050360</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335070</requestid>
+  </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>6833318252150855682681aa2404408e</srcmd5>
+    <version>4.17.0+git.1781703439.0804740</version>
+    <time>1782142971</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.17.0+git.1781703439.0804740:
+  * fence_openstack: fix list-action to avoid timeout when there are 100+ VMs on the hypervisor
+  * fence_ibm_vpc: set proxy when token has expired as well
+  * fence_openstack: add auth-plugin support for clouds.yaml (#651)
+  * fencing.py: change from Bash &quot;source&quot; to POSIX-compliant &quot;.&quot;</comment>
+    <requestid>1361074</requestid>
+  </revision>
 </revisionlist>
