@@ -1,7 +1,7 @@
 #
 # spec file for package patterns-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,7 +80,7 @@ Base fonts and font configuration.
 
 %package fonts_opt
 %pattern_graphicalenvironments
-Summary:        Fonts
+Summary:        Fonts (Extra)
 Group:          Metapackages
 Provides:       pattern() = fonts_opt
 Provides:       pattern-extends() = fonts
@@ -100,7 +100,7 @@ Recommends:     google-noto-sans-symbols-fonts
 Recommends:     google-noto-sans-symbols2-fonts
 
 %description fonts_opt
-Base fonts and font configuration.
+Extra fonts and font configuration.
 
 %files fonts_opt
 %dir %{_defaultdocdir}/patterns

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:05:14 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- Disambiguate fonts and fonts_opt pattern summaries (bsc#1267854) 
+
+-------------------------------------------------------------------
 Fri Mar 29 17:30:10 UTC 2024 - Cliff Zhao <qzhao@suse.com>
 
 - Update patterns-fonts.spec:
