@@ -1,7 +1,7 @@
 #
 # spec file for package aws-c-sdkutils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define library_pkg 1_0_0
 %define library_soversion 1
 Name:           aws-c-sdkutils
-Version:        0.2.4
+Version:        0.2.5
 Release:        0
 Summary:        AWS C SDK Utils
 License:        Apache-2.0

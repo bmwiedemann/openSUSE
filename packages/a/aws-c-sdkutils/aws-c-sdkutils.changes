@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 19 10:02:21 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.5
+  * Remove Windows 2019 and add Windows 2025 with MSVC-17 by @TingDaoK in (#55)
+  * change stale issue and discussion handling to run once a week
+    by @DmitriyMusatkin in (#57)
+  * Ingest BDD endpoints by @azkrishpy in (#60)
+  * BDD loader optimizations by @DmitriyMusatkin in (#61)
+  * Align profile name parsing with SDKs by @TingDaoK in (#65)
+
+-------------------------------------------------------------------
 Mon May 19 08:54:46 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.4
