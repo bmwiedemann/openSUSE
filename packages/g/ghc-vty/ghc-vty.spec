@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vty
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name vty
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        6.5
+Version:        6.6
 Release:        0
 Summary:        A simple terminal UI library
 License:        BSD-3-Clause
