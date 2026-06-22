@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vty-unix
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global pkg_name vty-unix
 %global pkgver %{pkg_name}-%{version}
 Name:           ghc-%{pkg_name}
-Version:        0.2.0.0
+Version:        0.3.0.0
 Release:        0
 Summary:        Unix backend for Vty
 License:        BSD-3-Clause

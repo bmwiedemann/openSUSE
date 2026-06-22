@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 15 02:33:34 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vty-unix to version 0.3.0.0.
+  Upstream has edited the change log file since the last release in
+  a non-trivial way, i.e. they did more than just add a new entry
+  at the top. You can review the file at:
+  http://hackage.haskell.org/package/vty-unix-0.3.0.0/src/CHANGELOG.md
+
+-------------------------------------------------------------------
 Wed Nov 15 16:15:01 UTC 2023 - Peter Simons <psimons@suse.com>
 
 - Add vty-unix at version 0.2.0.0.
