@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jun  7 21:51:07 UTC 2026 - andy great <andythe_great@pm.me>
+
+- Update to version 0.9.0:
+  * Switch from distutils-extra to setuptools and importlib.resources.
+  * Media, scripts, and other resources are now bundled in the python package.
+  * Install desktop file manually as setuptools doesn't handle it.
+  * Fix #834: Add support for newer GExiv2 versions.
+  * Fix #823: Fall back to convert if magick command is not found.
+  * Fix #838: Fix display mode blurring whole image.
+  * Update Spanish translations.
+- Drop obsolete patches:
+  * variety-appdata-path.patch
+  * variety-fix-data-path.patch
+- Drop obsolete VarietyIcons.tar.gz as standard-compliant icons are now upstream.
+- Add python3-setuptools-gettext and python3-packaging to BuildRequires.
+- Update to version 0.8.13:
+  * Fix #741: Fix downloading server side options (remove tiny.cc redirector)
+  * Fix #733: Fix for EarthviewDownloader
+  * Fix #704: In "smart" display mode, tile small wallpapers using ImageMagick (#727)
+  * Improvement #731: Add support for KDE 6 lockscreen
+  * Improvement #752: set_wallpaper: default to feh/nitrogen instead of hardcoding a list of WMs
+  * Feature #756: Add support for Fluxbox (via fbsetbg)
+  * Feature #619: Add regex name filter for wallpapers
+  * Update French and German translations
+
+-------------------------------------------------------------------
 Tue Feb 20 13:13:26 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
