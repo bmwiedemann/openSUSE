@@ -16,9 +16,9 @@
 #
 
 
-%define extra_version 0.128
+%define extra_version %{nil}
 Name:           perftest
-Version:        25.10.0
+Version:        26.01.5
 Release:        0
 Summary:        IB Performance tests
 License:        BSD-3-Clause OR GPL-2.0-or-later

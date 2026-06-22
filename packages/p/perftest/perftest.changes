@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat May  9 19:17:27 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Update to v26.01.5
+  - https://github.com/linux-rdma/perftest/releases/tag/perftest-26.01.5
+  - Fixes DMAH allocation issues (bsc#1263561)
+
+-------------------------------------------------------------------
 Mon Nov 17 16:53:01 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Update to v25.10.0-0.128

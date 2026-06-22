@@ -193,4 +193,14 @@ This patch is applied during compilation as perftest-license.patch</comment>
   - https://github.com/linux-rdma/perftest/releases/tag/25.10.0-0.128</comment>
     <requestid>1318730</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>a305a2013eeb0b4c57d3f68432d78099</srcmd5>
+    <version>26.01.5</version>
+    <time>1782143087</time>
+    <user>anag_factory</user>
+    <comment>- Update to v26.01.5
+  - https://github.com/linux-rdma/perftest/releases/tag/perftest-26.01.5
+  - Fixes DMAH allocation issues (bsc#1263561)</comment>
+    <requestid>1361140</requestid>
+  </revision>
 </revisionlist>
