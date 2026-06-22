@@ -1,7 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:07:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.4+24 (boo#1268406, boo#1268408,
+  boo#1268410, CVE-2026-52720, CVE-2026-52721, CVE-2026-52722):
+  + mxfdemux: fix remaining offsets index entry insertion call site
+  + mxfdemux: fix essence track offsets array population
+  + mxdemux: index entry: use intialized
+  + rtmp2: Remove socket timeout after handshake completes
+  + rtmp2: Don't retry on G_IO_ERROR_TIMED_OUT
+  + vnmdec: Avoid integer overflows when rectangle positions and
+    sizes
+  + pcapparse: Add missing bounds checks to ensure packets are
+    large enough
+  + mpegpsdemux: Release stream lock when seeking fails
+  + librfb: Validate framebuffer update rectangles against the
+    framebuffer size
+
+-------------------------------------------------------------------
 Fri Jun 12 16:09:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
-- Update to version 1.28.4:
+- Update to version 1.28.4 (boo#1268394, boo#1268401,
+  CVE-2026-52718, CVE-2026-52719):
   + ahcsrc: Register exposure-mode property for GstPhotography
     interface
   + amc: Don't try printing NULL caps
