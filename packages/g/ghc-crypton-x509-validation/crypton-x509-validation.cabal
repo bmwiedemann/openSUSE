@@ -1,64 +1,69 @@
-Name:                crypton-x509-validation
-version:             1.6.14
+cabal-version:      >=1.10
+name:               crypton-x509-validation
+version:            1.9.1
 x-revision: 1
-Description:         X.509 Certificate and CRL validation. please see README
-License:             BSD3
-License-file:        LICENSE
-Copyright:           Vincent Hanquez <vincent@snarc.org>
-Author:              Vincent Hanquez <vincent@snarc.org>
-Maintainer:          Kazu Yamamoto <kazu@iij.ad.jp>
-Synopsis:            X.509 Certificate and CRL validation
-Build-Type:          Simple
-Category:            Data
-stability:           experimental
-Homepage:            https://github.com/kazu-yamamoto/crypton-certificate
-Cabal-Version:       >= 1.10
-
-Library
-  Default-Language:  Haskell2010
-  Build-Depends:     base >= 3 && < 5
-                   , bytestring
-                   , memory
-                   , mtl
-                   , containers
-                   , hourglass
-                   , data-default
-                   , pem >= 0.1
-                   , asn1-types >= 0.3 && < 0.4
-                   , asn1-encoding >= 0.9 && < 0.10
-                   , crypton-x509 >= 1.7.5 && < 1.8
-                   , crypton-x509-store >= 1.6
-                   , crypton >= 0.24 && < 1.1
-                   , iproute >= 1.2.2
-  Exposed-modules:   Data.X509.Validation
-  Other-modules:     Data.X509.Validation.Signature
-                     Data.X509.Validation.Fingerprint
-                     Data.X509.Validation.Cache
-                     Data.X509.Validation.Types
-  ghc-options:       -Wall
-
-Test-Suite test-x509-validation
-  Default-Language:  Haskell2010
-  type:              exitcode-stdio-1.0
-  hs-source-dirs:    Tests
-  Main-is:           Tests.hs
-  Other-modules:     Certificate
-  Build-Depends:     base >= 3 && < 5
-                   , bytestring
-                   , memory
-                   , data-default
-                   , tasty
-                   , tasty-hunit
-                   , hourglass
-                   , asn1-types
-                   , asn1-encoding
-                   , crypton-x509 >= 1.7.1
-                   , crypton-x509-store
-                   , crypton-x509-validation
-                   , crypton
-  ghc-options:       -Wall
+license:            BSD3
+license-file:       LICENSE
+copyright:          Vincent Hanquez <vincent@snarc.org>
+maintainer:         Kazu Yamamoto <kazu@iij.ad.jp>
+author:             Vincent Hanquez <vincent@snarc.org>
+stability:          experimental
+homepage:           https://github.com/kazu-yamamoto/crypton-certificate
+synopsis:           X.509 Certificate and CRL validation
+description:        X.509 Certificate and CRL validation. please see README
+category:           Data
+build-type:         Simple
+extra-source-files: ChangeLog.md
 
 source-repository head
-  type:     git
-  location: https://github.com/kazu-yamamoto/crypton-certificate
-  subdir:   x509-validation
+    type:     git
+    location: https://github.com/kazu-yamamoto/crypton-certificate
+    subdir:   x509-validation
+
+library
+    exposed-modules:  Data.X509.Validation
+    other-modules:
+        Data.X509.Validation.Signature
+        Data.X509.Validation.Fingerprint
+        Data.X509.Validation.Cache
+        Data.X509.Validation.Types
+
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=3 && <5,
+        bytestring,
+        containers,
+        crypton >=1.1 && < 1.2,
+        crypton-asn1-types >=0.4.1 && <0.5,
+        crypton-asn1-encoding >=0.10.0 && <0.11,
+        crypton-pem >=0.2.4 && <0.4,
+        crypton-x509 >=1.9.1 && <1.10,
+        crypton-x509-store >=1.9.0 && <1.10,
+        data-default,
+        iproute >=1.2.2,
+        mtl,
+        ram,
+        time-hourglass
+
+test-suite test-x509-validation
+    type:             exitcode-stdio-1.0
+    main-is:          Tests.hs
+    hs-source-dirs:   Tests
+    other-modules:    Certificate
+    default-language: Haskell2010
+    ghc-options:      -Wall
+    build-depends:
+        base >=3 && <5,
+        bytestring,
+        crypton,
+        crypton-asn1-encoding,
+        crypton-asn1-types,
+        crypton-x509,
+        crypton-x509-store,
+        crypton-x509-validation,
+        data-default,
+        ram,
+        tasty,
+        tasty-hunit,
+        time-hourglass

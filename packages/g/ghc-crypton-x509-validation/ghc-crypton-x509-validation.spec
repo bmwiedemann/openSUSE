@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        1.6.14
+Version:        1.9.1
 Release:        0
 Summary:        X.509 Certificate and CRL validation
 License:        BSD-3-Clause
@@ -28,17 +28,19 @@ URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
 Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
-BuildRequires:  ghc-asn1-encoding-devel
-BuildRequires:  ghc-asn1-encoding-prof
-BuildRequires:  ghc-asn1-types-devel
-BuildRequires:  ghc-asn1-types-prof
 BuildRequires:  ghc-base-devel
 BuildRequires:  ghc-base-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-containers-devel
 BuildRequires:  ghc-containers-prof
+BuildRequires:  ghc-crypton-asn1-encoding-devel
+BuildRequires:  ghc-crypton-asn1-encoding-prof
+BuildRequires:  ghc-crypton-asn1-types-devel
+BuildRequires:  ghc-crypton-asn1-types-prof
 BuildRequires:  ghc-crypton-devel
+BuildRequires:  ghc-crypton-pem-devel
+BuildRequires:  ghc-crypton-pem-prof
 BuildRequires:  ghc-crypton-prof
 BuildRequires:  ghc-crypton-x509-devel
 BuildRequires:  ghc-crypton-x509-prof
@@ -46,17 +48,15 @@ BuildRequires:  ghc-crypton-x509-store-devel
 BuildRequires:  ghc-crypton-x509-store-prof
 BuildRequires:  ghc-data-default-devel
 BuildRequires:  ghc-data-default-prof
-BuildRequires:  ghc-hourglass-devel
-BuildRequires:  ghc-hourglass-prof
 BuildRequires:  ghc-iproute-devel
 BuildRequires:  ghc-iproute-prof
-BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-mtl-devel
 BuildRequires:  ghc-mtl-prof
-BuildRequires:  ghc-pem-devel
-BuildRequires:  ghc-pem-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-rpm-macros
+BuildRequires:  ghc-time-hourglass-devel
+BuildRequires:  ghc-time-hourglass-prof
 ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-tasty-devel
@@ -118,6 +118,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
+%doc ChangeLog.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
