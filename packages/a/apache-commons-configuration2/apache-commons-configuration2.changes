@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:01:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.15.1
+  * Fixed Bugs
+    + CONFIGURATION-856: The artifact commons-io:commons-io is a
+      normal dependency
+    + Avoid NPE when combined location strategy sub strategies is
+      immutable list (#639)
+  * Changes
+    + Bump org.apache.commons:commons-parent from 99 to 100
+
+-------------------------------------------------------------------
 Thu May 14 22:07:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.15.0

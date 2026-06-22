@@ -18,7 +18,7 @@
   <property name="project.artifactId" value="commons-configuration2"/>
 
   <property name="spec.version" value="2.15"/>
-  <property name="project.version" value="${spec.version}.0"/>
+  <property name="project.version" value="${spec.version}.1"/>
   <property name="bundle.version" value="${project.version}"/>
 
   <property name="project.name" value="Apache Commons Configuration"/>

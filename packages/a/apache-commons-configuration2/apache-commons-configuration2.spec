@@ -19,7 +19,7 @@
 %global base_name       configuration2
 %global short_name      commons-%{base_name}
 Name:           apache-commons-configuration2
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        Java library providing a generic Configuration interface
 License:        Apache-2.0
