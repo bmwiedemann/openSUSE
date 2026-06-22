@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:31:30 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.53.0:
+  + Add recipe_name() function
+  + Support markdown justfiles
+  + Allow omitting assert() message
+  + Preserve bare [arg] long key when formatting
+  + Add list concatenation operator
+  + Do not export empty lists
+  + Add split() function
+  + Make which() require set lists
+  + Make env() functions work with lists
+  + Make + and / work with lists
+  + Allow lists as regex operands of =~ and !~
+  + Allow multiple --dotenv-filename and --dotenv-path options
+  + Load multiple .env files
+  + Flatten interpreter settings
+  + Make [env] work with lists
+  + Join lists in assert() and [confirm] messages
+  + Join lists in interpolations
+  + Using lists in string contexts is an error
+  + assert(condition) evaluates to condition
+  + Make assert() evaluate to "true" when set lists is enabled
+  + Make =~ and !~ work with lists
+  + if without else evalutes to [] when false
+  + Check structural equality in != and ==
+  + Add flag [arg] attribute
+  + Make show() require set lists
+  + Add bool() function
+  + Add negation operator !
+  + Allow conditions to be used in arbitrary expressions
+  + Add show() function
+  + Print lists in --evaluate
+  + Reform booleans
+  + Add list literals
+  + Allow mapping dependencies over lists
+  + Forwards lists to dependencies
+  + Map append() and prepend() over lists
+  + Map absolute_path() over lists
+  + Add set lists
+  + Preserve variadic arguments as lists of strings
+- Update to version 1.52.0:
+  + Add [shell] attribute to override default-script setting
+  + Add default-script setting
+  + Add --default-list flag
+  + Add default-list setting
+  + Disable aliases that depend on absent modules
+  + Print formatted justfile to stdout when source is stdin
+  + Allow search directory with more subcommands
+  + Disable recipes that depend on absent modules
+  + Improve absent optional module error messages
+  + Alphabetize Attribute derive macro order
+  + Include UTF-8 byte-order mark in PowerShell scripts
+  + Remove options from --list output
+  + Switch from ansi_term to nu_ansi_term
+  + Remove redundant argument parser attributes
+
+-------------------------------------------------------------------
 Wed May 27 08:43:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.51.0:

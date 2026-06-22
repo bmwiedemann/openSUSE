@@ -650,4 +650,41 @@
   + Don't panic on invalid datetime format string (forwarded request 1355310 from rrahl0)</comment>
     <requestid>1355311</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>a03d0f130ebc040e115dee1d357db0a9</srcmd5>
+    <version>1.53.0</version>
+    <time>1782142168</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.53.0:
+  + Add recipe_name() function
+  + Support markdown justfiles
+  + Allow omitting assert() message
+  + Preserve bare [arg] long key when formatting
+  + Add list concatenation operator
+  + Do not export empty lists
+  + Add split() function
+  + Make which() require set lists
+  + Make env() functions work with lists
+  + Make + and / work with lists
+  + Allow lists as regex operands of =~ and !~
+  + Allow multiple --dotenv-filename and --dotenv-path options
+  + Load multiple .env files
+  + Flatten interpreter settings
+  + Make [env] work with lists
+  + Join lists in assert() and [confirm] messages
+  + Join lists in interpolations
+  + Using lists in string contexts is an error
+  + assert(condition) evaluates to condition
+  + Make assert() evaluate to &quot;true&quot; when set lists is enabled
+  + Make =~ and !~ work with lists
+  + if without else evalutes to [] when false
+  + Check structural equality in != and ==
+  + Add flag [arg] attribute
+  + Make show() require set lists
+  + Add bool() function
+  + Add negation operator !
+  + Allow conditions to be used in arbitrary expressions
+  + Add show() function (forwarded request 1360779 from rrahl0)</comment>
+    <requestid>1360780</requestid>
+  </revision>
 </revisionlist>
