@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:50:41 UTC 2026 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Split test package and use multibuild, so it can be excluded from
+  the build.
+
+-------------------------------------------------------------------
 Thu May 28 06:41:00 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.7.2 (bsc#1266665, CVE-2026-44681)

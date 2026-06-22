@@ -367,4 +367,13 @@
     <comment></comment>
     <requestid>1355533</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>7a84eb9ff16f57c55250f6cf2afd6d30</srcmd5>
+    <version>1.7.2</version>
+    <time>1782142574</time>
+    <user>anag_factory</user>
+    <comment>- Split test package and use multibuild, so it can be excluded from
+  the build.</comment>
+    <requestid>1360987</requestid>
+  </revision>
 </revisionlist>
