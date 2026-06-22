@@ -1,7 +1,7 @@
 #
 # spec file for package pan
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define gcc_ver 11
 %endif
 Name:           pan
-Version:        0.164
+Version:        0.165
 Release:        0
 Summary:        A Newsreader for GNOME
 License:        GPL-2.0-or-later

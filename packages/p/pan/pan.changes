@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 19 14:42:26 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.165:
+  * task-xover: fix date parsing, a potential crash and a memory
+    leak
+  * group-prefs-dialog: fix missing spellcheck language entry
+  * header-pane: fix crash when backspace key is hit wihout
+    articles
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 18 08:50:06 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 0.164:
