@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jun 19 16:56:43 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781875657.efde779:
+  * ci: disable Mergify interactive queue controls in PR comments
+  * test: assert Level 3 pretty serial markers
+  * fix: fallback pretty marker console to 'sut'
+  * test: fix color test resilience to NO_COLOR
+  * fix: stop QMP wait hangs on early QEMU exits
+  * fix: stop autodie unlink crashes in qemu backend
+  * style(perlcritic): Add Modules::ProhibitConditionalUseStatements
+
+-------------------------------------------------------------------
+Thu Jun 18 16:56:33 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1781797043.0fb1077:
+  * test: assert Level 3 pretty serial markers
+  * fix: fallback pretty marker console to 'sut'
+  * test: fix color test resilience to NO_COLOR
+  * fix: stop QMP wait hangs on early QEMU exits
+  * fix: stop autodie unlink crashes in qemu backend
+  * fix: cleanly recreate virtio console pipe if already exists
+  * fix: suppress spurious virtio console unlink warnings
+  * test: reliably assert pipe size adjustments
+
+-------------------------------------------------------------------
 Wed Jun 17 14:56:34 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1781702821.22ced0d:
