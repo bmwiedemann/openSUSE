@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:15:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.13:
+  * Vulkan: reworked coopmat shaders (independent/explicit accumulator
+    chains for ILP, specialization constants for the tile shape)
+  * Treat absent-driver / no-device init errors as success across the
+    Vulkan/CUDA/ROCm backends (real errors are still surfaced)
+  * ROCm: int8_dp4a and hipBLASLt FP4 probe stability on gfx942
+  * OpenCL: create the backend scope before the platform query so the
+    header is always printed
+  * CPU backend: print L2 numbers for all cores, mixed-precision kernel
+    refinements, gate NEON to AArch64, drop the redundant memcpy
+    bandwidth test
+  * Removed the Thread dispatch latency (CPU) and Atomic throughput tests
+
+-------------------------------------------------------------------
 Thu Jun 04 10:42:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.10:

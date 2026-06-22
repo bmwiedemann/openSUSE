@@ -18,11 +18,10 @@
 
 
 Name:           clpeak
-Version:        2.0.10
+Version:        2.0.13
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        LicenseRef-SUSE-Public-Domain
-Group:          System/Benchmark
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
