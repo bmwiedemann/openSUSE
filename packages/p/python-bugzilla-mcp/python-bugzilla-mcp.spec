@@ -19,13 +19,13 @@
 # upstream requires Python >= 3.13
 %define pythons python313
 Name:           python-bugzilla-mcp
-Version:        0.14.0
+Version:        0.15.1
 Release:        0
 Summary:        Model Context Protocol server for Bugzilla
 License:        Apache-2.0
 URL:            https://github.com/mcp-bugzilla/mcp-bugzilla
 Source:         https://files.pythonhosted.org/packages/source/m/mcp-bugzilla/mcp_bugzilla-%{version}.tar.gz
-BuildRequires:  %{python_module fastmcp >= 3.4.0}
+BuildRequires:  %{python_module fastmcp >= 3.4.2}
 BuildRequires:  %{python_module httpx-retries >= 0.5.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
@@ -34,7 +34,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Requires:       python-fastmcp >= 3.4.0
+Requires:       python-fastmcp >= 3.4.2
 Requires:       python-httpx-retries >= 0.5.0
 BuildArch:      noarch
 %python_subpackages
