@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:27:41 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 9.21:
+  * Fix infinite loop in buf_append() when output exactly fills available buffer space
+  * Accept base32 token secrets without trailing = padding
+  * Fix crash on NULL passphrase from TPM2 auth dialog
+  * Fix use of free_pass() on binary oath_secret.
+  * Fix COPR builds for Amazon Linux 2023, EPEL 7/10, and MinGW.
+  * Fix compiler warnings in fortinet.c, tun-win32.c, and compat.c.
+  * Support both old and new pyOpenSSL API in test infrastructure.
+
+- Update to release 9.20:
+  * Fix Cisco AnyConnect STRAP channel bindings with TLSv1.3
+  * Change default user-agent string to be compatible with newer Cisco servers
+  * Support JavaScript redirects from Fortinet 7.4.x.
+  * Fix GlobalProtect config-parsing bug that misidentified IPv6
+  * split-include routes as split-exclude.
+  * Handle Pulse configuration packets up to 1 MiB 
+  * fix short reads during packet reassembly
+  * Support otpauth:// URI format for HOTP/TOTP token secrets
+  * honour non-default TOTP periods from PSKC or otpauth://
+  * Fix Cisco DTLS MTU detection
+  * Handle additional oNCP framing variations
+
+
+-------------------------------------------------------------------
 Thu Mar 21 14:48:59 UTC 2024 - pgajdos@suse.com
 
 - remove dependency on /usr/bin/python3 using

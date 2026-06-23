@@ -1,7 +1,7 @@
 #
 # spec file for package openconnect
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libopenconnect5
 Name:           openconnect
-Version:        9.12
+Version:        9.21
 Release:        0
 Summary:        Client for Cisco AnyConnect VPN
 License:        LGPL-2.1-or-later
