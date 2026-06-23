@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 22 05:09:35 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 3.0.1:
+  * v3.0.1
+  * CI: update test deps
+  * port/builtin: fix UDP forwarding for non-loopback clients (#592)
+  * net/gvisor-tap-vsock: allow 169.254.169.254
+  * Build(deps): Bump golang.org/x/sys from 0.44.0 to 0.45.0
+  * Build(deps): Bump github.com/containers/gvisor-tap-vsock
+  * docs/network.md: lxc-user-nic seems to work with detach-netns
+  * Build(deps): Bump golang.org/x/sys from 0.43.0 to 0.44.0
+  * Build(deps): Bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0
+  * v3.0.0+dev
+
+-------------------------------------------------------------------
 Tue Apr 14 05:49:44 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 3.0.0:
