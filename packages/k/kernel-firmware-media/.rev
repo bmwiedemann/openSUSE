@@ -215,4 +215,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: vpu: add Gen2 firmware binary for Agatti</comment>
     <requestid>1351029</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e1b7f1882783ea80f3bb15e5a5aeae21</srcmd5>
+    <version>20260610</version>
+    <time>1782229007</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * LICENSES: rename GPL-3 to GPL-3.0-only
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361034</requestid>
+  </revision>
 </revisionlist>

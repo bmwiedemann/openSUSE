@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:15:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * LICENSES: rename GPL-3 to GPL-3.0-only
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Tue May  5 14:35:34 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260505 (git commit 027be1e3d201):
