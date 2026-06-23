@@ -321,4 +321,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * Add HP ISH firmware for Intel Panther Lake systems</comment>
     <requestid>1355551</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>9981c90e988b1f7da542a5f9236ad1e4</srcmd5>
+    <version>20260610</version>
+    <time>1782228999</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * Move firmware licenses to a LICENSES/ directory
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1361030</requestid>
+  </revision>
 </revisionlist>

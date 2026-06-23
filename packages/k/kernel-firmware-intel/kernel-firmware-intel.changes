@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:14:41 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
+Sat Jun  6 15:49:28 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * intel_vpu: Update NPU firmware
+
+-------------------------------------------------------------------
 Tue May 19 13:52:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260519 (git commit d962a6a309b7):
