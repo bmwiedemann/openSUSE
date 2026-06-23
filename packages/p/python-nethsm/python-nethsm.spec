@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nethsm
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        Python Library to manage NetHSM(s)
 License:        Apache-2.0
@@ -30,7 +30,6 @@ BuildRequires:  python-rpm-macros
 # Runtime dependencies
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module cryptography >= 41.0}
-BuildRequires:  %{python_module python-dateutil > 2 with %python-python-dateutil < 3}
 BuildRequires:  %{python_module typing_extensions >= 4.3.0 with %python-typing_extensions < 5}
 BuildRequires:  %{python_module urllib3 >= 2.0 with %python-urllib3 < 3}
 # SECTION test requirements
@@ -42,7 +41,6 @@ BuildRequires:  %{python_module pycryptodome}
 BuildRequires:  fdupes
 Requires:       python-certifi
 Requires:       python-cryptography >= 41.0
-Requires:       (python-python-dateutil > 2 with python-python-dateutil < 3)
 Requires:       (python-typing_extensions >= 4.3.0 with python-typing_extensions < 5)
 Requires:       (python-urllib3 >= 2.0 with python-urllib3 < 3)
 BuildArch:      noarch

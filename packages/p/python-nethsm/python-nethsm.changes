@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 05:10:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.1.2:
+  * Changes
+    - Patch generated client to remove the python-dateutil dependency.
+
+-------------------------------------------------------------------
 Wed May 13 04:47:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.1.1:
