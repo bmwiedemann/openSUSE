@@ -8452,4 +8452,12 @@ always built-in because vim has direct perl dependencies anyway.
  * 9.2.0372: pum: rendering issues with multibyte text and opacity</comment>
     <requestid>1349417</requestid>
   </revision>
+  <revision rev="400" vrev="1">
+    <srcmd5>51e755187db155ad24cd8a00dbb02873</srcmd5>
+    <version>9.2.0530</version>
+    <time>1782228916</time>
+    <user>anag_factory</user>
+    <comment>vim 9.2.x: wire up vim-9.1.1732-fix-inc-detection.patch (Patch16) — it was committed and documented but unreferenced in the spec (the cause of the previous decline), so the bsc#1262395 fix was not being applied</comment>
+    <requestid>1360695</requestid>
+  </revision>
 </revisionlist>

@@ -25,8 +25,8 @@
 " stick this file into ~/.vim/syntax/ and add these commands into your .vimrc
 " to have vim automagically use this syntax file for these directories:
 "
-" autocmd BufNewFile,BufRead /etc/apparmor.d/*                      set syntax=apparmor
-" autocmd BufNewFile,BufRead /usr/share/apparmor/extra-profiles/*   set syntax=apparmor
+" autocmd BufNewFile,BufRead /etc/apparmor.d/*                      set filetype=apparmor
+" autocmd BufNewFile,BufRead /usr/share/apparmor/extra-profiles/*   set filetype=apparmor
 
 " profiles are case sensitive
 syntax case match
@@ -215,80 +215,152 @@ syn region Hat start=/\v^\s+(\^|hat\s+|profile\s+)\S+\s+((flags\s*\=\s*)?\(\s*(c
 " file rules added with create_file_rule()
 
 " write + exec/mmap - danger! (known bug: accepts aw to keep things simple)
-syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(l|r|w|a|m|k|[iuUpPcC]x)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(l|r|w|a|m|k|[iuUpPcC]x)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|w|a|m|k|[iuUpPcC]x)+(\s+-\>\s+\S+)?\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|w|a|m|k|[iuUpPcC]x)+(\s+-\>\s+\S+)?\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryWriteExec  /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[lrwamk]*[iuUpPcC][iUu]?x[lrwamk]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
-" ux(mr) - unconstrained entry, flag the line red. also includes pux which is unconstrained if no profile exists
+" ux(mr) - unconfined entry, flag the line red. also includes pux which is unconfined if no profile exists
 syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|ux|pux)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ux|pux)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " Ux(mr) and PUx(mr) - like ux + clean environment
 syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|Ux|PUx)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryUXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Ux|PUx)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " px/cx/pix/cix(mrk) - standard exec entry, flag the line blue
 syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|px|cx|pix|cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|px|cx|pix|cix)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " Px/Cx/Pix/Cix(mrk) - like px/cx + clean environment
 syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|Px|Cx|Pix|Cix)+(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryPXe /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|Px|Cx|Pix|Cix)+\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " ix(mr) - standard exec entry, flag the line green
 syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|ix)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|ix)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ix)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ix)+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|ix)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ix)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|ix)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ix)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|ix)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryIX /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k|ix)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " mr - mmap with PROT_EXEC
 syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k)+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(r|m|k)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " special case: deny x is allowed (does not need to be ix, px, ux or cx)
 syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|x)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|x)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?(r|m|k|x)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?(r|m|k|x)+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|x)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*(audit\s+)?deny\s+(owner\s+|other\s+)?(r|m|k|x)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?deny\s+(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(r|m|k|x)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?deny\s+(owner\s+|other\s+)?(r|m|k|x)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?deny\s+(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(r|m|k|x)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryM /\v^\s*file\s+(audit\s+)?deny\s+(owner\s+|other\s+)?(r|m|k|x)+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " write + append is an error
 syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+\S*(w\S*a|a\S*w)\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+\S*(w\S*a|a\S*w)\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?\S*(w\S*a|a\S*w)\S*\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?\S*(w\S*a|a\S*w)\S*\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+\S*(w\S*a|a\S*w)\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?\S*(w\S*a|a\S*w)\S*\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+\S*(w\S*a|a\S*w)\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?\S*(w\S*a|a\S*w)\S*\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+\S*(w\S*a|a\S*w)\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdError /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?\S*(w\S*a|a\S*w)\S*\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+
+" link (and optionally write) entry, flag the line yellow
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rak]*l[rak]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]*l[rak]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rak]*l[rak]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]*l[rak]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rak]*l[rak]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]*l[rak]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rak]*l[rak]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]*l[rak]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " write entry, flag the line yellow
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(l|r|w|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(l|r|w|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|w|k)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|w|k)+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rak]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rak]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rak]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rak]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rak]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
-" append entry, flag the line yellow
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+(l|r|a|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+(l|r|a|k)+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|a|k)+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(l|r|a|k)+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+" link (and optionally write) entry, flag the line yellow
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rwk]*l[rwk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]*l[rwk]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rwk]*l[rwk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]*l[rwk]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rwk]*l[rwk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]*l[rwk]*\s+(\/|\@\{\S*\})\S*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rwk]*l[rwk]*(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]*l[rwk]*\s+"(\/|\@\{\S*\})\S*"(\s+-\>\s+\S+)?\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+
+" write entry, flag the line yellow
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rwk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rwk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rwk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rwk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryW /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rwk]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " read entry + locking, currently no highlighting
-syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rlk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rlk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rlk]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rlk]+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rk]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rk]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rk]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rk]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryK /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rk]+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 
 " read entry, no highlighting
-syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+[rl]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+[rl]+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rl]+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
-syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?[rl]+\s+"(\/|\@\{\S*\})\S*"+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+r+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?r+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+r+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?r+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?(\/|\@\{\S*\})\S*\s+r+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?r+\s+(\/|\@\{\S*\})\S*\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?"(\/|\@\{\S*\})\S*"\s+r+\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
+syn match  sdEntryR /\v^\s*file\s+(audit\s+)?(deny\s+|allow\s+)?(owner\s+|other\s+)?r+\s+"(\/|\@\{\S*\})\S*"\s*,(\s*$|(\s*#.*$)\@=)/ contains=sdGlob,sdComment nextgroup=@sdEntry,sdComment,sdError,sdInclude
 

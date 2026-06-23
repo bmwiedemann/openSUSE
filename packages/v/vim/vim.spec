@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.2
-%define patchlevel 0398
+%define patchlevel 0530
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim92
 %define site_runtimepath %{_datadir}/vim/site
@@ -74,6 +74,7 @@ Patch12:        %{name}73-no-static-libpython.patch
 Patch13:        %{name}-8.0.1568-defaults.patch
 Patch14:        %{name}-8.2.2411-globalvimrc.patch
 Patch15:        %{name}-9.1.1134-revert-putty-terminal-colors.patch
+Patch16:        %{name}-9.1.1732-fix-inc-detection.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -83,7 +84,6 @@ BuildRequires:  libtool
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  ruby-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  wayland-utils
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
@@ -227,6 +227,7 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch -P 13 -p1
 %patch -P 14 -p1
 %patch -P 15 -p1
+%patch -P 16 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build
@@ -410,7 +411,6 @@ install -m 0644 %{SOURCE21} %{buildroot}%{_datadir}/vim/current/plugin/spec.vim
 
 # desktop file for gvim
 install -D -m 0644 %{SOURCE19} %{buildroot}%{_datadir}/applications/gvim.desktop
-%suse_update_desktop_file gvim Utility TextEditor
 
 #
 # documentation
