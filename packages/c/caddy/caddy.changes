@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 22 21:38:46 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 2.11.4:
+  * templates: Patch for GHSA-vcc4-2c75-vc9v (#7785)
+  * httpcaddyfile: fix incorrect error message on duplicate matchers (#7780)
+  * Merge commit from fork
+  * encode: prioritize zstd and br over gzip in content negotiation (#7772)
+  * caddytls: skip idna.ToASCII for pure ASCII SNI values (#7770)
+  * perf(replacer): optimize memory allocation for file placeholders (#7773)
+  * rewrite: prevent placeholder re-expansion in injected query (#7761)
+  * Clarify policies for agents / LLM use
+  * go.mod: update x/net (#7767)
+  * go.mod: Update x/crypto
+  * caddyhttp: normalize Windows backslashes in path matcher (#7763)
+  * build(deps): bump the all-updates group across 1 directory with 9 updates (#7752)
+  * caddytls: match IDN SNI in connection policies (#7742)
+  * reverseproxy: wraps request body to prevent closing if not read (#7719)
+  * caddyfile: preserve implicit TLS issuer semantics (#7743)
+  * cmd: support caddy start on IPv6-only hosts (#7744)
+  * caddyauth: add candidate placeholders for rejected identities (#7698)
+  * reverseproxy: Add regression test for DialInfo network override (#7758)
+  * chore: clean up wording and typo fixes (#7745)
+  * caddytls: fix TLS state races and ECH rotation retry (#7756)
+  * caddyhttp: omit Last-Modified for unusable mod times (#7740)
+  * chore: deps upgrade (#7751)
+  * caddytls: Fix client auth (fix #7724) (#7727)
+  * reverseproxy: further prevent body closes from dial errors (#7715)
+
+-------------------------------------------------------------------
 Mon May 18 18:45:40 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 2.11.3:
