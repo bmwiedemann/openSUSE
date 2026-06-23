@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:18:32 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.6.0:
+  * fix: resolve symlinked plugin directories in GetPluginVersion.
+    #2661
+  * feat: add helmfile doctor command for AI-assisted diff analysis
+    #2660
+  * build(deps): bump github.com/helmfile/chartify from 0.26.5 to
+    0.27.0 #2659
+  * build(deps): bump github.com/helmfile/vals from 0.44.1 to 0.44.2
+    #2658
+  * build(deps): bump github.com/containerd/containerd from 1.7.32
+    to 1.7.33 #2657
+  * feat: parallel kubedog tracking with progress printer and safety
+    valves #2654
+  * docs: Small documentation indentation fixes #2655
+  * build(deps): bump helm to v4.2.2 (and v3.21.2 for the v3 track)
+    #2651, #2656
+  * build(deps): bump actions/checkout v6 to v7 #2649
+  * fix: helmfile deps broken for OCI charts with underscores in
+    path #2648
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.103.3 to 1.104.0
+  * docs: fix duplicated word in hcl_funcs log description #2647
+
+-------------------------------------------------------------------
 Wed Jun 17 05:37:57 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.5.5:
