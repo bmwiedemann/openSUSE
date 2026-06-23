@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:41:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.1:
+  Features:
+  * Pretty-print XML responses, see #450
+  * Add experimental HTTP message signatures (RFC 9421) support, see #448
+  Other:
+  * Upgrade to reqwest v0.13, see #441
+
+-------------------------------------------------------------------
 Tue Jan 20 09:01:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.25.3:

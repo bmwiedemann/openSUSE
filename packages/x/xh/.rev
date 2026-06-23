@@ -139,4 +139,17 @@
   * Upgrade brotli to latest version, see #438</comment>
     <requestid>1328204</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2cf11dd1b1b2ba9b491191a7d0cbbd95</srcmd5>
+    <version>0.26.1</version>
+    <time>1782229391</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.1:
+  Features:
+  * Pretty-print XML responses, see #450
+  * Add experimental HTTP message signatures (RFC 9421) support, see #448
+  Other:
+  * Upgrade to reqwest v0.13, see #441</comment>
+    <requestid>1361351</requestid>
+  </revision>
 </revisionlist>
