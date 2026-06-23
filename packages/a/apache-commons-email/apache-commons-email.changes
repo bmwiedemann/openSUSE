@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Fri Jun 19 13:50:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 1.6.0
+  * New features:
+    + Add github/codeql-action #75
+    + Add Maven plugin JapiCmp and remove Clirr
+    + EMAIL-176: Add Automatic-Module-Name MANIFEST entry for Java 9
+      compatibility.
+    + EMAIL-207: Add InputStreamDataSource
+    + EMAIL-207: Don't waste memory in
+      MimeMessageParser#createDataSource()
+    + Add EmailConstants.SOCKET_TIMEOUT and deprecate
+      SOCKET_TIMEOUT_MS
+    + Add Email.setSocketConnectionTimeout(Duration) and deprecate
+      setSocketConnectionTimeout(int)
+    + Add Email.setSocketTimeout(Duration) and deprecate
+      setSocketTimeout(int)
+    + Add PathDataSource
+    + Add DataSourcePathResolver
+    + Add MimeMessageUtils.createMimeMessage(Session, Path,
+      OpenOption...)
+    + Add MultiPartEmail.attach(Path, OpenOption...)
+  * Fixed Bugs:
+    + EMAIL-190: Fix broken JDK 9 build by updating "easymock" and
+      other dependencies
+    + Use JUnit 5 APIs #106, #108, #109, #114
+    + [StepSecurity] ci: Harden GitHub Actions #149
+    + Better use of JUnit APIs #158
+    + EMAIL-205: Update conversion code #153
+    + Email.setBounceAddress no longer accepts invalid email
+      addresses
+    + Throw more specific exceptions in MimeMessageParser #11
+    + Email.setMailSession(Session) throws the more precise
+      exception NullPointerException
+    + Avoid possible NullPointerException in
+      DataSourceClassPathResolver.resolve(String, boolean)
+    + Complete half-baked test DataSourceUrlResolverTest
+      .testResolvingHttpNonLenient()
+    + EMAIL-206: Use SharedByteArrayInputStream for memory usage
+      #157
+    + Migrate to JUnit 5 #186
+    + EMAIL-174: Bump javax.mail dependency to 1.6.1, so that i18n
+      is supported for email addresses
+    + Add missing getters and setters in EMail and subclasses;
+      deprecate access to protected instance variables
+    + DataSourceUrlResolver.resolve(String, boolean) leaks
+      InputStreams
+    + Use US-ASCII in MimeMessageUtils.createMimeMessage(Session,
+      String)
+  * Changes:
+    + Bump org.slf4j:slf4j-jdk14 from 1.7.7 to 2.0.9 #165
+    + Bump mockito-core from 4.11.0 to 5.8.0 #187
+    + Bump actions/cache from 2 to 3.0.11 #39, #48, #60, #70, #102
+    + Bump actions/checkout from 1 to 3.2.0, #25 #33, #67, #99, #117
+    + Bump actions/setup-java from 1.4.0 to v3.6.0 #30, #74, #103
+    + Bump actions/upload-artifact from 3.1.0 to 3.1.1 #110
+    + EMAIL-177: Bump from Java 6 to 7
+    + Bump from Java 7 to 8
+    + EMAIL-183: Bump javax.mail:1.6.1 to jakarta.mail:1.6.7
+    + Bump commons-parent from 50 to 65, #118, #128
+    + Bump spotbugs-maven-plugin from 4.0.0 to 4.7.2 #18
+    + Bump spotbugs from 4.0.6 to 4.7.2 #40
+    + Bump junit from 4.13 to 4.13.2 #32
+    + Bump commons-release-plugin from 1.0 to 1.7 #23
+    + Bump maven-pmd-plugin from 3.13.0 to 3.19.0 #34, #72, #79, #94
+    + Bump tests commons-io:commons-io 2.6 to 2.15.1
+    + Bump jacoco from 0.8.6 to 0.8.8; fixes jacoco on Java 17
+    + Bump org.easymock:easymock from 4.2 to 5.2.0, #107, #164
+    + Bump commons-release-plugin from 1.7 to 1.8.1 #73, #184
+    + Bump maven-checkstyle-plugin from 3.1.2 to 3.2.0 #87
+- Distribute as a maven artifact
+- Removed patches:
+  * commons-email-1.5-javadoc.patch
+  * commons-email-1.5-sourcetarget.patch
+    + not needed with this version.
+
+-------------------------------------------------------------------
 Tue Feb 20 10:43:16 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
@@ -39,7 +116,7 @@ Thu Aug 17 13:27:51 UTC 2017 - pmonrealgonzalez@suse.com
 
 - Update to version 1.5
   * Security fix [CVE-2017-9801, bsc#1051785]
-    - SMTP header injection vulnerabilty 
+    - SMTP header injection vulnerabilty
     - Added patch apache-commons-email-CVE-2017-9801.patch
   * Requires Java >= 1.6
   * Added Support for International Domain Names
@@ -66,5 +143,5 @@ Fri Jan  6 19:38:44 UTC 2012 - dmacvicar@suse.de
 -------------------------------------------------------------------
 Tue Dec 20 14:55:29 UTC 2011 - dmacvicar@suse.de
 
-- initial package based on Fedora. Removed maven stuff 
+- initial package based on Fedora. Removed maven stuff
 
