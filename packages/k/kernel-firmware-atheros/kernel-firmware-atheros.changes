@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:12:29 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Fri Apr 25 13:52:22 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Change conflicts filesystem < 84 to conflicts filesystem without
@@ -5225,7 +5232,6 @@ Wed Nov 24 20:02:38 UTC 2010 - coolo@novell.com
 - update to 20101113 tarball for 2.6.36+ kernel
 
 -------------------------------------------------------------------
-
 Thu Jul  1 17:11:34 UTC 2010 - gregkh@suse.de
 
 - update to the 20100617 tarball, which has lots of updates that
