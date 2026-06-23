@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 19 13:25:53 UTC 2026 - José Iván López González <jlopez@suse.com>
+
+- Add method to get the required package objects (needed for
+  gh#agama-project/agama#3649).
+- 5.0.49
+
+-------------------------------------------------------------------
 Fri May 15 13:43:54 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
 
 - Use the session keyring instead of the user one to communicate
   with sdbootutil (related to jsc#PED-10703).
-- 5.0.48 
+- 5.0.48
 
 -------------------------------------------------------------------
 Fri May 15 10:59:55 UTC 2026 - Ancor Gonzalez Sosa <ancor@suse.com>
