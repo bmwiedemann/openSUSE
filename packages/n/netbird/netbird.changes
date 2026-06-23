@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jun 22 19:35:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.73.2
+  - [misc] Bump the actions group across 1 directory with 9 updates
+    by @dependabot[bot] in #6451
+  - [client] Surface DNS forwarder upstream failures via Extended
+    DNS Errors by @lixmal in #6441
+  - [misc] Add TARGETPLATFORM build argument to Docker build
+    commands by @mlsmaycon in #6499
+  - [client] Add Auth.Stop() to cancel an in-progress interactive
+    login by @pappz in #6486
+  - [client] Fix engine lifecyrcle race by @pappz in #6443
+  - [client] fix WaitStreamConnected test call after ctx signature
+    change by @pappz in #6503
+  - [misc] Add enterprise getting-started and migrate script by
+    @bcmmbaga in #6501
+  - [management] do not use meta diff for login by @pascal-fischer
+    in #6502
+  - [management] validate meta change against posture checks by
+    @pascal-fischer in #6510
+  - [management] empty file check in nmap on other posturechecks by
+    @pascal-fischer in #6511
+
+-------------------------------------------------------------------
 Fri Jun 19 16:34:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.73.1
