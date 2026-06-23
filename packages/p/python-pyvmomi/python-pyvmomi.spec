@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyvmomi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,13 +19,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyvmomi
-Version:        9.0.0.0
+Version:        9.1.0.0
 Release:        0
 Summary:        VMware vSphere Python SDK
 License:        Apache-2.0
 URL:            https://github.com/vmware/pyvmomi
 Source:         https://github.com/vmware/pyvmomi/archive/v%{version}.tar.gz#/pyvmomi-%{version}.tar.gz
 #Patch0:         0001-pyVmomi-pinned-certificates-support.patch
+BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module fixtures >= 1.3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.3.0}
@@ -39,8 +40,8 @@ BuildRequires:  %{python_module testtools >= 0.9.34}
 BuildRequires:  %{python_module vcrpy}
 # /SECTION
 Requires:       python-requests >= 2.3.0
+Recommends:     python-cryptography
 Recommends:     python-lxml
-Recommends:     python-pyOpenSSL < 24.3.0
 BuildArch:      noarch
 %python_subpackages
 

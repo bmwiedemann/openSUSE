@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 23 05:58:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.1.0.0
+  Bindings
+  * Updated bindings with support for the new vSphere 9.1 APIs.
+  Changes
+  * pyVmomi supports Python 3.10+ only.
+  * When a request fails with a low-level exception the TCP
+    connection is closed.
+  * Fixed pyVim.task.WaitForTask() loop when the task life exceeds
+    VIM API session.
+  * Dependency on 'pyOpenSSL' is replaced with dependency on
+    'cryptography'.
+  Breaking changes
+  * pyVmomi.Soapadapter.ParseHttpResponse() is removed.
+  * pyVmomi.Soapadapter.HEADER_SECTION_END is removed.
+  * pyvim.connect.VimSessionOrientedStub.makeExtensionLoginMethod()
+    is removed.
+
+-------------------------------------------------------------------
 Wed Jun 18 11:12:07 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.0.0.0
