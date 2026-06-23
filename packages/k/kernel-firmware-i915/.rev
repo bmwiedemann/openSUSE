@@ -251,4 +251,18 @@ After this PR, there will be a delete request for kernel-firmware.
   * xe: Update GUC to v70.65.0 for LNL, BMG, PTL</comment>
     <requestid>1353746</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>29916beeed44fac69bdddc27c0da6fd8</srcmd5>
+    <version>20260610</version>
+    <time>1782228997</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * i915: Xe3LPD DMC v2.36
+  * i915: Xe3LPD_3002 DMC v2.31
+  * i915: Xe3p_LPD DMC v2.37</comment>
+    <requestid>1361029</requestid>
+  </revision>
 </revisionlist>

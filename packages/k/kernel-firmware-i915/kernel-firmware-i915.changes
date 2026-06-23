@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:14:34 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
+Wed May 27 11:03:53 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * i915: Xe3LPD DMC v2.36
+  * i915: Xe3LPD_3002 DMC v2.31
+  * i915: Xe3p_LPD DMC v2.37
+
+-------------------------------------------------------------------
 Sat May 16 19:10:57 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260514 (git commit 5b2bc2e7d14c):
