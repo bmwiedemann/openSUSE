@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 23 04:59:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.102:
+  * Add pluto CLI to find deprecated K8s APIs
+
+-------------------------------------------------------------------
+Tue Jun 23 04:56:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.101:
+  * Make symlink extraction in UntarNested conditional
+  * Fix symlink path-traversal escape in UntarNested
+  * Remove stray file
+
+-------------------------------------------------------------------
 Thu Jun 18 08:56:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.100:
