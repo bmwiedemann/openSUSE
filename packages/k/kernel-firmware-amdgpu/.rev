@@ -707,4 +707,29 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: DMCUB updates for various ASICs</comment>
     <requestid>1355546</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b44da94db15291b7f2a5a816e19bc47d</srcmd5>
+    <version>20260614</version>
+    <time>1782228976</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260614 (git commit 8d7543434b2d):
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * amdgpu: Update DMCUB fw for DCN314
+  * amdgpu: revert yellow carp VCN firmware
+  * amdgpu: revert vangogh VCN firmware
+  * amdgpu: revert sienna cichlid VCN firmware
+  * amdgpu: revert navy flounder VCN firmware
+  * amdgpu: revert dimgrey cavefish VCN firmware
+  * amdgpu: revert beige_goby VCN firmware
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * amdgpu: Update gc 11.0.1 microcode</comment>
+    <requestid>1361019</requestid>
+  </revision>
 </revisionlist>

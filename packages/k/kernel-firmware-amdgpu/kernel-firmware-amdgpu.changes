@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Jun 15 06:38:55 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260614 (git commit 8d7543434b2d):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Wed Jun 10 14:12:12 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
+Sat Jun  6 15:49:06 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * amdgpu: Update DMCUB fw for DCN314
+  * amdgpu: revert yellow carp VCN firmware
+  * amdgpu: revert vangogh VCN firmware
+  * amdgpu: revert sienna cichlid VCN firmware
+  * amdgpu: revert navy flounder VCN firmware
+  * amdgpu: revert dimgrey cavefish VCN firmware
+  * amdgpu: revert beige_goby VCN firmware
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Wed May 27 11:03:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * amdgpu: Update gc 11.0.1 microcode
+
+-------------------------------------------------------------------
 Tue May 19 13:52:17 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260519 (git commit d962a6a309b7):
