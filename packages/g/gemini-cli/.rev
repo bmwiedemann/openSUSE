@@ -752,4 +752,26 @@
     cli/compare/v0.45.2...v0.45.3</comment>
     <requestid>1359121</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>f70c288a5013fade5d412922ead871fe</srcmd5>
+    <version>0.47.0</version>
+    <time>1782229361</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.47.0:
+  * chore(release): bump version to
+    0.47.0-nightly.20260602.gcfcecebe8
+  * Changelog for v0.46.0-preview.0
+  * Respect backend definitions for 3.5 flash and Update auto
+    mode to use 3.5 flash when the flag is enabled.
+  * fix(policy): add EBUSY fallback and TOML parse recovery
+  * Changelog for v0.45.0
+  * update the max amount of times the Antigravity transition
+    banner can be displayed.
+  * chore: remove experimental text from browser agent docs
+  * fix(core): implement atomic update in MCP tool discovery
+  * Vertex ai model mapping fix
+  * Add documentation and migration commands for Antigravity CLI
+  * Avoid persisting empty resume sessions</comment>
+    <requestid>1361325</requestid>
+  </revision>
 </revisionlist>

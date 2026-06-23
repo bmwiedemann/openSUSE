@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:45:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.47.0:
+  * chore(release): bump version to
+    0.47.0-nightly.20260602.gcfcecebe8
+  * Changelog for v0.46.0-preview.0
+  * Respect backend definitions for 3.5 flash and Update auto
+    mode to use 3.5 flash when the flag is enabled.
+  * fix(policy): add EBUSY fallback and TOML parse recovery
+  * Changelog for v0.45.0
+  * update the max amount of times the Antigravity transition
+    banner can be displayed.
+  * chore: remove experimental text from browser agent docs
+  * fix(core): implement atomic update in MCP tool discovery
+  * Vertex ai model mapping fix
+  * Add documentation and migration commands for Antigravity CLI
+  * Avoid persisting empty resume sessions
+
+-------------------------------------------------------------------
 Sat Jun 13 22:05:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.46.0:
