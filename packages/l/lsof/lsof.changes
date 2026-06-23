@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jun 16 13:53:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.99.7:
+  * lsof_free_result(): handle result == NULL by @neek78
+  * [linux] Fix missing parenthesis in lstat error message format
+    by @cuiweixie
+  * Fix use-after-free in lsof_select_process_regex
+  * Fix truncated fd numbers in -F field output
+  * Add -J/-j options for JSON and JSON Lines output format.  -J
+    outputs a JSON envelope with process and file information; -j
+    outputs JSON Lines format where each line is a JSON object
+    representing a file descriptor
+  * Document non-UTF-8 encoding behavior in JSON output by @kurok
+  * Follow autoconf conventions for --enable/--disable help
+    output
+  * Skip building liblsof when --disable-liblsof is given
+  * [linux] Display connection state for UDP sockets with -T
+    option
+  * Add more information to the tutorial about debugging busy
+    mounts
+  * Fix case sensitivity in INSTALL commands by @AngelofVerdant
+- update to 4.99.6:
+  * [linux] Treat NFS ESTALE fds as unlinked for +L selection by
+    @x-lugoo
+  * [solaris] Update dlsof.h for Solaris NFS rnode4.h issues by
+    @nic-kulowiec
+  * [doc] fix minor doc errors in 00README by @nic-kulowiec
+  * Fix null pointer exception by @admardare-cyber
+- update to 4.99.5:
+  * [linux] fix legacy linux kernel compatibility due to missing
+    /proc/self/ns
+  * [linux] fix potential null pointer deference, reported by
+    @mono-trip
+
+-------------------------------------------------------------------
 Wed May 28 13:35:44 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Force skip NFS test, as it cannot complete properly in OBS but it
@@ -78,7 +113,7 @@ Sun Jan 22 18:20:03 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
   * Fix two potential null pointer access bug when gethostbyname2()
     returns an empty address list
   * Fix handling of empty command name
-  * Add -H switch to print human readable size, e.g. 123.4K 
+  * Add -H switch to print human readable size, e.g. 123.4K
 
 -------------------------------------------------------------------
 Wed Jan 18 09:31:01 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -165,7 +200,7 @@ Thu Jul  8 16:28:33 UTC 2021 - danilo.spinella@suse.com
 Fri Sep 11 20:40:47 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 4.93.2:
-   The maintainership is switched from Vic to lsof-org  
+   The maintainership is switched from Vic to lsof-org
    Made FreeBSD 13 adjustment.
    Fix a typo causing a build error.
    Fix a potential memory leak.
@@ -199,7 +234,7 @@ Mon Feb 19 13:07:42 UTC 2018 - kstreitova@suse.com
     for FreeBSD systems whose <sys/random.h> includes it.
   * Added support for the FreeBSD ZFUSE file system.
   * Corrected the quoting in a Darwin putchar() statement in the
-    dfile.c source file. 
+    dfile.c source file.
   * Added support for the FreeBSD DTYPE_PTS file descriptor and
     for unknown descriptors that reference the kernel's badfileops
     operation switch.  Enabled FreeBSD 12.0 support.
@@ -211,7 +246,7 @@ Mon Feb 19 13:07:42 UTC 2018 - kstreitova@suse.com
   * Installed a FreeBSD patch that prevents examining a TCP state
     structure during a race condition.
   * Updated FreeBSD for new UFS inode structure that lacks an i_dev
-    member in the most recent 12.0-CURRENT.  
+    member in the most recent 12.0-CURRENT.
   * Added "#define KLD_MODULE" to dlsof.h and dnode2.c to prevent
     <machine/cpuconf.h> from generating an "ARM_NARCH is 0" error.
     This is needed so lsof can access kernel structures.
@@ -261,7 +296,7 @@ Mon May  2 16:10:30 UTC 2016 - kstreitova@suse.com
 - Update to version 4.89
   * Applied correction from Casper Dik <Casper.Dik@oracle.com> to
     his patch for Solaris 11 that I applied incorrectly in revision
-    4.88. 
+    4.88.
   * Updated for latest version of FreeBSD 11.0-CURRENT.
   * Compensated for a missing FreeBSD 10.0 typedef of bool on the
     i386 architecture.  Allen Hewes <rallenh@hotmail.com> provided
@@ -292,7 +327,7 @@ Sun Mar  1 12:15:34 UTC 2015 - p.drouand@gmail.com
 
 - Update to version 4.88
   * Reduced to 50 the number of open file descriptors lsof attempts
-    to close while trying to protect itself from a file descriptor 
+    to close while trying to protect itself from a file descriptor
     exec() attack.  This limits the overhead lsof incurs on systems
     that have large file descriptor limits, yet provides sufficient
     open descriptors for the library functions lsof calls.
@@ -304,14 +339,14 @@ Sun Mar  1 12:15:34 UTC 2015 - p.drouand@gmail.com
   * Updated FreeBSD ZFS Configure stanza to supply a dummy opt_kdtrace.h
     when needed.
   * Added tmpfs file system support for FreeBSD.
-  * Since a test system is no longer available, dropped the claim of 
+  * Since a test system is no longer available, dropped the claim of
     FreeBSD 4.9 support.
-  * Added the +|-E options for Linux.  -E displays endpoint info; +E 
+  * Added the +|-E options for Linux.  -E displays endpoint info; +E
     displays endpoint info and endpopint files.
-  * Fixed a Linux bug handling processes whose command includes a 
+  * Fixed a Linux bug handling processes whose command includes a
     non-printing character, particularly a NEWLINE character, and
     clarified printing of single '\\' characters in command and file names.
-  * Added support for Linux RDMA and CRYPTO protocal names and UNIX 
+  * Added support for Linux RDMA and CRYPTO protocal names and UNIX
     socket type
   * Fixed field output to insure that the field descriptor field is
     always selected, since it identifies the file set.
@@ -332,7 +367,7 @@ Tue Aug 16 13:52:59 UTC 2011 - puzel@novell.com
 -------------------------------------------------------------------
 Mon Jun 27 16:17:12 CEST 2011 - ro@suse.de
 
-- change perl reference to /usr/bin/perl which actually exists 
+- change perl reference to /usr/bin/perl which actually exists
 
 -------------------------------------------------------------------
 Thu Jun  9 11:22:04 UTC 2011 - k0da@opensuse.org
@@ -342,13 +377,13 @@ Thu Jun  9 11:22:04 UTC 2011 - k0da@opensuse.org
 -------------------------------------------------------------------
 Wed Jan 12 10:51:34 UTC 2011 - puzel@novell.com
 
-- portability fixes (by Pascal) 
+- portability fixes (by Pascal)
 
 -------------------------------------------------------------------
 Sun Aug 29 18:40:53 UTC 2010 - cristian.rodriguez@opensuse.org
 
 - Do not include build host specific information including
-  date and compilation time to make build-compare happy 
+  date and compilation time to make build-compare happy
 
 -------------------------------------------------------------------
 Tue Aug 17 15:58:50 UTC 2010 - puzel@novell.com
@@ -361,9 +396,9 @@ Tue Aug 17 15:58:50 UTC 2010 - puzel@novell.com
 -------------------------------------------------------------------
 Fri Apr  9 10:40:17 UTC 2010 - puzel@novell.com
 
-- update to lsof 4.83 
-  * corrects an over-zealous test that causes lsof to produce no 
-    ouput when the HASSECURITY and HASNOSOCKSECURITTY have been 
+- update to lsof 4.83
+  * corrects an over-zealous test that causes lsof to produce no
+    ouput when the HASSECURITY and HASNOSOCKSECURITTY have been
     specified at lsof build time
   * fixes a typo with the LINUX_HASSELUNIX Configure variable
   * accepts LSOF_RANLIB from the environment
@@ -408,7 +443,7 @@ Mon Jan 19 10:56:10 CET 2009 - prusnak@suse.cz
   * At the request of Marjo F. Mercado <mmercado@xceedium.com>
     and Phil Shin <pshin@xceedium.com> applied some speed
     improvements to lsof, particularly when the files of
-    interest are /Internet files -- i.e., selected with lsof's 
+    interest are /Internet files -- i.e., selected with lsof's
     -i" option.  Added a two new options to assist the
     improvements: 1) "-c^<command>" to tell lsof to exclude the
     named command(s); and 2) "-stcp|ud>:[^]state' to tell lsof
@@ -540,7 +575,7 @@ Thu Feb 26 14:48:21 CET 2004 - mjancar@suse.cz
 -------------------------------------------------------------------
 Wed Nov  5 12:41:48 CET 2003 - ro@suse.de
 
-- fix make test as non-root 
+- fix make test as non-root
 
 -------------------------------------------------------------------
 Thu Oct 30 17:47:27 CET 2003 - mjancar@suse.cz
@@ -598,7 +633,7 @@ Mon Nov 26 17:35:40 CET 2001 - nadvornik@suse.cz
   - adds better handling of IPv6 selectors
   - makes safer lsof's ending of its child process
   - adds options to affect -v output
-- added example scripts to documentation 
+- added example scripts to documentation
 
 -------------------------------------------------------------------
 Tue Aug 14 16:19:46 CEST 2001 - nadvornik@suse.cz
@@ -634,7 +669,7 @@ Thu Jan 20 15:17:23 CET 2000 - aj@suse.de
 -------------------------------------------------------------------
 Thu Nov  4 14:32:37 CET 1999 - ro@suse.de
 
-- update to 4.46 
+- update to 4.46
 
 -------------------------------------------------------------------
 Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de

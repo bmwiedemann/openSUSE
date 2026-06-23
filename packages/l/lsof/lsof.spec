@@ -1,7 +1,7 @@
 #
 # spec file for package lsof
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           lsof
-Version:        4.99.4
+Version:        4.99.7
 Release:        0
 Summary:        A Program That Lists Information about Files Opened by Processes
 License:        Zlib
