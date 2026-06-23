@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:28:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use spotbugs annotations. They create build cycle
+
+-------------------------------------------------------------------
 Fri Jun 19 09:10:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.14.1

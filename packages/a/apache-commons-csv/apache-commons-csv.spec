@@ -27,8 +27,8 @@ Source0:        https://dlcdn.apache.org/commons/csv/source/commons-csv-%{versio
 Source1000:     apache-commons-csv.rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
+BuildRequires:  jurand
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.github.spotbugs:spotbugs-annotations)
 BuildRequires:  mvn(org.apache.commons:commons-parent:pom:)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildArch:      noarch
@@ -45,6 +45,9 @@ This package contains the API documentation for %{name}.
 
 %prep
 %setup -q -n commons-csv-%{version}-src
+
+%pom_remove_dep com.github.spotbugs:spotbugs-annotations
+%{java_remove_annotations} . -n SuppressFBWarnings
 
 %build
 %{mvn_build} -f -- -Dsource=8

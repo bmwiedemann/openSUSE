@@ -95,4 +95,12 @@
     <comment>1.14.1</comment>
     <requestid>1360671</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c7a3fb7f5f771584d9b51bc48116f030</srcmd5>
+    <version>1.14.1</version>
+    <time>1782229143</time>
+    <user>anag_factory</user>
+    <comment>Do not use spotbugs annotations. They create build cycle</comment>
+    <requestid>1361270</requestid>
+  </revision>
 </revisionlist>
