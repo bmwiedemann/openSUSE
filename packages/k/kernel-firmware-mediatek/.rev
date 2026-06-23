@@ -373,4 +373,20 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: add firmware for MT7927 WiFi device</comment>
     <requestid>1355552</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>feee61f6343178718352cb023f9bd425</srcmd5>
+    <version>20260619</version>
+    <time>1782229009</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260619 (git commit 37976b9ded44):
+  * linux-firmware: update firmware for MT7986
+  * linux-firmware: update firmware for MT7981
+  * linux-firmware: update firmware for MT7996
+  * linux-firmware: update firmware for MT7992
+  * linux-firmware: update firmware for MT7990
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361035</requestid>
+  </revision>
 </revisionlist>

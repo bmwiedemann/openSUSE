@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:59:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260619 (git commit 37976b9ded44):
+  * linux-firmware: update firmware for MT7986
+  * linux-firmware: update firmware for MT7981
+  * linux-firmware: update firmware for MT7996
+  * linux-firmware: update firmware for MT7992
+  * linux-firmware: update firmware for MT7990
+
+-------------------------------------------------------------------
+Wed Jun 10 14:15:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Tue May 19 13:52:32 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260519 (git commit d962a6a309b7):
