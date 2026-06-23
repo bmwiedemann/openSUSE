@@ -24,19 +24,6 @@ zypper --non-interactive rm -u live-add-yast-repos jdupes
 # which would avoid it being installed by the filesystem package
 rpm -e compat-usrmerge-tools
 
-# if /etc/zypp/zypp.conf exists, patch it - otherwise rely on packages providing functionality
-if [ -f /etc/zypp/zypp.conf ]; then
-        #======================================
-        # Disable recommends
-        #--------------------------------------
-        sed -i 's/.*solver.onlyRequires.*/solver.onlyRequires = true/g' /etc/zypp/zypp.conf
-        
-        #======================================
-        # Exclude docs installation
-        #--------------------------------------
-        sed -i 's/.*rpm.install.excludedocs.*/rpm.install.excludedocs = yes/g' /etc/zypp/zypp.conf
-fi
-
 #======================================
 # Remove locale files
 #--------------------------------------
@@ -62,9 +49,14 @@ rm -rf /var/cache/zypp/*
 # the host arch differs (e.g. docker with --platform doesn't affect uname)
 arch=$(rpm -q --qf %{arch} glibc)
 if [ "$arch" = "i586" ] || [ "$arch" = "i686" ]; then
-	sed -i "s/^# arch =.*\$/arch = i686/" /etc/zypp/zypp.conf
-	# Verify that it's applied
-	grep -q '^arch =' /etc/zypp/zypp.conf
+	mkdir -p /usr/etc/zypp/zypp.conf.d/
+	echo -e "[main]\narch = i686" > /usr/etc/zypp/zypp.conf.d/i686.conf
+fi
+
+# If zypp.conf exists, zypp.conf.d is not used. Error out in that case.
+if [ -f /etc/zypp/zypp.conf ]; then
+	echo "/etc/zypp/zypp.conf exists, not expected"
+	exit 1
 fi
 
 if [[ "$kiwi_profiles" == *"docker"* ]]; then

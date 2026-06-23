@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:25:24 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Complete switchover to zypp.conf.d
+
+-------------------------------------------------------------------
 Tue Apr 21 08:23:46 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop systemd-sysvinit, see SR#1348897
