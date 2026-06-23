@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:55:53 UTC 2026 - Antoine Ginies <aginies@suse.com>
+
+- version 3.1.1:
+  * Export in XML; use a common modal for howto
+  * Refactor provisioning and enhance documentation for automation
+    (use osinfo-db)
+
+-------------------------------------------------------------------
 Mon May 18 21:29:49 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - fix missing requirements
