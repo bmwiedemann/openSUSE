@@ -25,9 +25,9 @@
 %else
 %define psuffix -%{flavor}
 %bcond_without test
-%if "%{flavor}" != "test-py311"
-%define skip_python311 1
-%endif
+%global skip_python310 1
+%global skip_python311 1
+%global skip_python312 1
 %if "%{flavor}" != "test-py313"
 %define skip_python313 1
 %endif
