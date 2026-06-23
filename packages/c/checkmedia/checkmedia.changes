@@ -1,4 +1,13 @@
 --------------------------------------------------------------------
+Mon Jun 22 16:32:31 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/checkmedia#24
+- fix compiler warning and make fragment calculation more efficient
+- use libcrypto for digest calculation (bsc#1268746)
+- adjust spec file
+- 7.0
+
+--------------------------------------------------------------------
 Fri Mar 27 12:59:08 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/checkmedia#23
