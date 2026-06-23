@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jun 18 18:18:11 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 3.11.4
+  * Bug 1 (defect introduced: Postfix 3.1, date 20150607): null pointer
+    read and heap data overread in the Postfix SMTP client's
+    smtp_dns_reply_filter.
+  * Bug 2 (defect introduced: Postfix 3.6, date: 20200710): panic
+    (assertion failure and voluntary crash) while parsing a TLSA reply
+    with length 3.
+  * Bug 3 (Problem introduced: Postfix 2.9, date: 20110205) Robustness:
+    the Postfix SMTP server will no longer receive (and discard) an
+    unlimited amount of text while receiving a long SMTP command line.
+  * Bug 4 Robustness: with the above change the Postfix SMTP client will
+    no longer receive (and discard) an unlimited amount of text while
+    receiving a long SMTP response line.
+  * Bug 5 (Problem introduced: Postfix 3.4, date: 20180825) Robustness:
+    do not receive (and discard) unlimited amounts of data with BDAT
+    commands.
+
+-------------------------------------------------------------------
 Sun May 17 18:49:21 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 3.11.3
