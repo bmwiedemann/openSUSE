@@ -38,4 +38,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: extract license texts</comment>
     <requestid>1289251</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d08f027c45d37c230517c2018bb778d1</srcmd5>
+    <version>20260610</version>
+    <time>1782228989</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361025</requestid>
+  </revision>
 </revisionlist>
