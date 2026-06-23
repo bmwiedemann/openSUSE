@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 23 02:35:52 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.15.0~17:
+  * Add experimental concurrent cache support
+  * Release 0.16.0
+  * fix: strip SCCACHE_BASEDIRS from escaped-backslash paths on Windows (#2736)
+  * Ignore empty-set environment values (#2639)
+  * feat: all backends support making them as read-only (#2705)
+  * Enable RE on Linux-aarch64 (#2668)
+  * Slightly improve logging (#2734)
+  * chore: encode jwt key and cert digest with base64 in logs (#2712)
+  * chore: make clippy happy (#2727)
+  * feat: avoid sccache wrapper when resolving compiler (#2720)
+  * Fall back to direct cache write if tempfile creation on the same fs fails (#2369)
+  * remove too noisy bench
+  * feat(nvcc): support argument: `--dependency-output` (#2708)
+  * fix: add newline when printing dist-status to stdout
+  * Revert "Classify .s files as AssemblerToPreprocess so #include/#ifdef are hon…"
+  * Don't wait depfiles for gcc/clang preprocessed inputs
+  * Classify .s files as AssemblerToPreprocess so #include/#ifdef are honored
+
+-------------------------------------------------------------------
 Thu Apr 30 01:07:26 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.15.0~1:
