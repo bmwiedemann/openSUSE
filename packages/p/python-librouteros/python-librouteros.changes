@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 13:58:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.1.1
+  * Drop python 3.9 support.
+  * Fix parse_word edge case.
+
+-------------------------------------------------------------------
 Sun Apr 19 21:10:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.1:
