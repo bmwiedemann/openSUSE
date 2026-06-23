@@ -641,4 +641,30 @@ Docker 17.07.0_ce update. This SR is in conjunction with:
     <comment></comment>
     <requestid>1316646</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>93bcdacba2346ff91078b91b71d9eb0f</srcmd5>
+    <version>1.7.33</version>
+    <time>1782228968</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.33 (bsc#1262266, CVE-2026-35469,
+      bsc#1268355, CVE-2026-46680,
+      bsc#1268430, CVE-2026-53488,
+      bsc#1268441, CVE-2026-47262):
+  * https://github.com/containerd/containerd/releases/tag/v1.7.33
+  * https://github.com/containerd/containerd/releases/tag/v1.7.32
+  * https://github.com/containerd/containerd/releases/tag/v1.7.31
+  * https://github.com/containerd/containerd/releases/tag/v1.7.30
+- drop 0003-CVE-2026-34986-Bump-go-jose-to-v3.0.5.patch (upstream)
+
+- Add patch for CVE-2026-34986 (bsc#1262948)
+  * 0003-CVE-2026-34986-Bump-go-jose-to-v3.0.5.patch
+- Add patch for CVE-2026-39821 (bsc#1266640)
+  * 0004-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+- Add patch for CVE-2026-33814 (bsc#1265794)
+  * 0005-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+
+- Add patch for CVE-2026-33186 (bsc#1260296):
+  * 0002-CVE-2026-33186-containerd-google.golang.org-grpc-aut.patch</comment>
+    <requestid>1361077</requestid>
+  </revision>
 </revisionlist>

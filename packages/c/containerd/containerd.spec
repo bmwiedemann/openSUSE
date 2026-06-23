@@ -1,7 +1,7 @@
 #
 # spec file for package containerd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,14 +23,14 @@
 %endif
 
 # MANUAL: Update the git_version.
-%define git_version 442cb34bda9a6a0fed82a2ca7cade05c5c749582
-%define git_short   442cb34b
+%define git_version e8b1a9bc270f9952197c470b8bad573b03a3a608
+%define git_short   e8b1a9bc2
 
 %global provider_prefix github.com/containerd/containerd
 %global import_path %{provider_prefix}
 
 Name:           containerd
-Version:        1.7.29
+Version:        1.7.33
 Release:        0
 Summary:        Standalone OCI Container Daemon
 License:        Apache-2.0
@@ -41,6 +41,9 @@ Source1:        %{name}-rpmlintrc
 Source2:        %{name}.service
 # UPSTREAM: Revert <https://github.com/containerd/containerd/pull/7933> to fix build on SLE-12.
 Patch1:         0001-BUILD-SLE12-revert-btrfs-depend-on-kernel-UAPI-inste.patch
+Patch2:         0002-CVE-2026-33186-containerd-google.golang.org-grpc-aut.patch
+Patch4:         0004-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+Patch5:         0005-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
 BuildRequires:  fdupes
 BuildRequires:  glibc-devel-static
 BuildRequires:  go >= 1.22
@@ -103,6 +106,9 @@ reference the following Go import paths: github.com/containerd/containerd
 %if 0%{?sle_version} == 120000
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
+%patch -P 4 -p1
+%patch -P 5 -p1
 
 %build
 %goprep %{import_path}
