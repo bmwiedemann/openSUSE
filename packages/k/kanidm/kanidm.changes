@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 03:30:09 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.10.4~git0.97b1edbc4:
+  * Release 1.10.4
+  * Clippy
+  * Update ldap3_lber to 0.8.0
+  * Avoid LSE instructions in arm64 Linux builds (#4372)
+  * Release 1.10.3
+  * Resolve incorrect login in commited flag
+  * Prevent migration double-deletes
+
+-------------------------------------------------------------------
 Thu May 14 07:08:18 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.10.2~git0.f3dc9ef1f:
