@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 20 07:12:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * Removed VIF (Visual Information Fidelity) as a core VMAF
+    feature. VIF is computationally complex and did not
+    meaningfully improve accuracy after updating the other
+    features.
+  * Introduced a few CAMBI-specific optimizations, both algorithmic
+    and software.
+  * The single-threaded processing speed improved by 70% and more,
+    and still 44%+ for 16-threaded.
+  * Measured the chroma feature at a lower scale, which does not
+    hurt accuracy.
+
+-------------------------------------------------------------------
 Fri Apr  3 16:36:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.0
