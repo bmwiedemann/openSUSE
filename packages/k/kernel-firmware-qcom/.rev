@@ -489,4 +489,35 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: add CDSP firmware for shikra platform</comment>
     <requestid>1355553</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>20b30eecbd6ebfa007447ea863c34787</srcmd5>
+    <version>20260619</version>
+    <time>1782229027</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260619 (git commit 37976b9ded44):
+  * qcom: Add qdsp6sw firmware for shikra platform
+  * qcom: Update ADSP firmware for Kaanapali platform
+  * qcom: update ADSP firmware for glymur platform
+
+- Update to version 20260618 (git commit a8f9ebbaa645):
+  * qcom: update CDSP firmware for glymur platform
+  * qcom: update ADSP firmware for qcs615 platform
+
+- Update to version 20260614 (git commit 8d7543434b2d):
+  * qcom: update CDSP firmware for shikra platform
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * qcom: Update ADSP firmware for Glymur platform
+  * Move firmware licenses to a LICENSES/ directory
+  * qcom: update ADSP firmware for sm8750 platform
+  * qcom: Update DSP firmware for qcs8300 platform
+  * qcom: Update DSP firmware for sa8775p platform
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * qcom: update CDSP firmware for x1e80100 platform
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * qcom: Add gpu firmwares for Shikra chipset</comment>
+    <requestid>1361043</requestid>
+  </revision>
 </revisionlist>

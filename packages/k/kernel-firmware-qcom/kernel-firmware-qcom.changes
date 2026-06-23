@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jun 22 08:59:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260619 (git commit 37976b9ded44):
+  * qcom: Add qdsp6sw firmware for shikra platform
+  * qcom: Update ADSP firmware for Kaanapali platform
+  * qcom: update ADSP firmware for glymur platform
+
+-------------------------------------------------------------------
+Fri Jun 19 06:20:43 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260618 (git commit a8f9ebbaa645):
+  * qcom: update CDSP firmware for glymur platform
+  * qcom: update ADSP firmware for qcs615 platform
+
+-------------------------------------------------------------------
+Mon Jun 15 06:39:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260614 (git commit 8d7543434b2d):
+  * qcom: update CDSP firmware for shikra platform
+
+-------------------------------------------------------------------
+Wed Jun 10 14:18:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * qcom: Update ADSP firmware for Glymur platform
+  * Move firmware licenses to a LICENSES/ directory
+  * qcom: update ADSP firmware for sm8750 platform
+  * qcom: Update DSP firmware for qcs8300 platform
+  * qcom: Update DSP firmware for sa8775p platform
+
+-------------------------------------------------------------------
+Sat Jun  6 15:49:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * qcom: update CDSP firmware for x1e80100 platform
+
+-------------------------------------------------------------------
+Wed May 27 11:04:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * qcom: Add gpu firmwares for Shikra chipset
+
+-------------------------------------------------------------------
 Tue May 19 13:52:41 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260519 (git commit d962a6a309b7):
