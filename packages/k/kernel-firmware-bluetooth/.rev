@@ -404,4 +404,29 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtl_bt: Add missing rtl8761a_config.bin for RTL8761AU</comment>
     <requestid>1351026</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>9a536dcd6fed456710e1168ebe11e126</srcmd5>
+    <version>20260618</version>
+    <time>1782228987</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260618 (git commit a8f9ebbaa645):
+  * QCA: Add bluetooth firmware nvm files for USI/NFA725B
+  * linux-firmware: Add firmware file for Intel BlazarIW
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+
+- Update to version 20260614 (git commit 8d7543434b2d):
+  * rtl_bt: Update RTL8852A BT USB firmware to 0x244F_91B6
+  * QCA: Update Bluetooth WCN3950 firmware 1.3.0-00108 to 1.3.0-00184
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+  * QCA: Update Bluetooth WCN6856 firmware 2.1.0-00666 to 2.1.0-00669
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * QCA: Add BCS calibration binary for QCC2072
+  * QCA: Update Bluetooth firmware for QCC2072 UART interface</comment>
+    <requestid>1361024</requestid>
+  </revision>
 </revisionlist>
