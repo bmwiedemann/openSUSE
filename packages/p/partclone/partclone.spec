@@ -24,6 +24,7 @@ Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
 URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         partclone-0.3.47-fix-nilfs-utils-2.3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -60,7 +61,7 @@ Bash command-line completion support for %{name}.
 %lang_package
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 export CFLAGS="%{optflags} -fcommon"
@@ -148,8 +149,10 @@ autoreconf -fiv
 %{_mandir}/man8/partclone.xfs.8%{?ext_man}
 
 %files bash-completion
+%license COPYING
 %{_datadir}/bash-completion/completions/partclone-completion
 
 %files lang -f %{name}.lang
+%license COPYING
 
 %changelog

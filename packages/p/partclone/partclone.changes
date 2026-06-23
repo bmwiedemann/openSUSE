@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 22 20:05:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Fix build with nilfs-utils >= 2.3
+  add partclone-0.3.47-fix-nilfs-utils-2.3.patch from #300
+
+-------------------------------------------------------------------
 Wed Jun  3 11:05:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.47:

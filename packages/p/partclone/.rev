@@ -261,4 +261,12 @@
 - Packaging: new deps (libtool, xxhash, liburcu, libzstd, docbook), drop FUSE (imgfuse removed upstream), bash-completion subpackage, drop obsolete ||: workaround</comment>
     <requestid>1356945</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>bddc6c8748e25310b5060a41bcb38147</srcmd5>
+    <version>0.3.47</version>
+    <time>1782229179</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361219</requestid>
+  </revision>
 </revisionlist>
