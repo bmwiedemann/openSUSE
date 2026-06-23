@@ -2656,4 +2656,18 @@ jsc#PED-14899
 - liblrmd: Don't include internal header in lrmd.h (forwarded request 1358837 from yan_gao)</comment>
     <requestid>1358838</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>1d18c2c9c2a4e76482e9b6e2a0904f61</srcmd5>
+    <version>3.0.2+20260616.4544f351</version>
+    <time>1782229119</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.0.2+20260616.4544f351:
+- agents: Move pid file management into ClusterMon.in.
+- libcib: Remove an unnecessary coverity suppression. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix an integer overflow in pcmk__remote_send_xml. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Limit the max size of a remote message. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix integer overflow in remote message code. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix checks in localized_remote_header. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129) (forwarded request 1361166 from yan_gao)</comment>
+    <requestid>1361167</requestid>
+  </revision>
 </revisionlist>

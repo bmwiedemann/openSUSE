@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 19 09:30:14 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260616.4544f351:
+- agents: Move pid file management into ClusterMon.in.
+- libcib: Remove an unnecessary coverity suppression. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix an integer overflow in pcmk__remote_send_xml. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Limit the max size of a remote message. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix integer overflow in remote message code. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+- libcrmcommon: Fix checks in localized_remote_header. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129)
+
+-------------------------------------------------------------------
 Wed Jun 09 11:33:06 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.2+20260608.b9d7133a:
