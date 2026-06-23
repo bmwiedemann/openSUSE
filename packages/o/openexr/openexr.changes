@@ -27,6 +27,8 @@ Mon Jun  1 14:24:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * [OSS-Fuzz 512314697](https://issues.oss-fuzz.com/issues/512314697)
   * [OSS-Fuzz 508362159](https://issues.oss-fuzz.com/issues/508362159)
   * [OSS-Fuzz 507413960](https://issues.oss-fuzz.com/issues/507413960)
+- fixes CVE-2026-44663 [bsc#1268550]
+        CVE-2026-45696 [bsc#1268551]
 
 -------------------------------------------------------------------
 Tue May 12 06:33:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

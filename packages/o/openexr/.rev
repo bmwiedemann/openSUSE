@@ -1094,4 +1094,12 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
   * [OSS-Fuzz 507413960](https://issues.oss-fuzz.com/issues/507413960)</comment>
     <requestid>1357249</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>5ab9a33bb6bfc8e8dae476456232b685</srcmd5>
+    <version>3.4.12</version>
+    <time>1782228955</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-44663, [bsc#1268550], CVE-2026-45696, [bsc#1268551]</comment>
+    <requestid>1360985</requestid>
+  </revision>
 </revisionlist>
