@@ -226,4 +226,12 @@
     <comment></comment>
     <requestid>1307766</requestid>
   </revision>
+  <revision rev="31" vrev="4">
+    <srcmd5>df8fd2a7a8b8efee6b1040180d7d69cf</srcmd5>
+    <version>1.6.1</version>
+    <time>1782228949</time>
+    <user>anag_factory</user>
+    <comment>Fix incorrect exit code from 'xml fo' (returned bytes-written from xmlOutputBufferClose() instead of 0, boo#1231165); backport two fixes collected by Debian (unesc &amp;quot;/&amp;apos; off-by-one #837122, format-security); drop stale rpmlintrc; modernize BuildRequires (forwarded request 1360876 from pluskalm)</comment>
+    <requestid>1360877</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,21 @@
+Fix incorrect process exit value from "xml fo" (format).
+
+xmlOutputBufferClose() returns the number of bytes written (or -1 on
+error), not a success/failure boolean. foProcess() passed that byte
+count through as the program exit status, so "xml fo" exited with
+(bytes_written % 256) instead of 0 on success (most visible with
+--omit-decl, where no XML declaration offsets the count).
+
+See https://bugzilla.suse.com/show_bug.cgi?id=1231165
+
+--- a/src/xml_format.c
++++ b/src/xml_format.c
+@@ -339,7 +339,7 @@
+                 child = child->next;
+             }
+         }
+-        ret = xmlOutputBufferClose(buf);
++        ret = xmlOutputBufferClose(buf) >= 0 ? 0 : 1;
+     }
+     
+     xmlFreeDoc(doc);

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 21 18:20:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add xmlstarlet-fix-fo-exit-code.patch: "xml fo" (format) returned
+  the byte count from xmlOutputBufferClose() as its exit status
+  instead of 0 on success, so it exited with (bytes written % 256)
+  - most visible with --omit-decl (boo#1231165)
+- Backport two fixes collected in the Debian package:
+  * xmlstarlet-fix-unesc-dquot.patch: unesc now handles &quot; and
+    &apos; correctly (off-by-one on the entity name length,
+    Debian bug 837122)
+  * xmlstarlet-fix-format-security.patch: pass string-literal format
+    arguments to satisfy -Werror=format-security
+- Modernize spec: drop RPM group and use pkgconfig() BuildRequires
+- Drop xmlstarlet-rpmlintrc: its only filter (package-with-huge-docs)
+  no longer matches and was flagged as an unused filter
+
+-------------------------------------------------------------------
 Tue Sep 23 11:18:15 UTC 2025 - pgajdos@suse.com
 
 - fix build with libxml2 2.14
