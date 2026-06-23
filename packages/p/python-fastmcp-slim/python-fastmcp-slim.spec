@@ -17,13 +17,14 @@
 
 
 Name:           python-fastmcp-slim
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        The fast, Pythonic way to build MCP servers and clients (slim)
 License:        Apache-2.0
 URL:            https://github.com/jlowin/fastmcp
 Source:         https://files.pythonhosted.org/packages/source/f/fastmcp-slim/fastmcp_slim-%{version}.tar.gz
 BuildRequires:  %{python_module Authlib >= 1.6.11}
+BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module cyclopts >= 4.0.0}
 BuildRequires:  %{python_module email-validator}
 BuildRequires:  %{python_module exceptiongroup >= 1.2.2}
@@ -40,13 +41,13 @@ BuildRequires:  %{python_module packaging >= 24.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module platformdirs >= 4.0.0}
 BuildRequires:  %{python_module py-key-value-aio >= 0.4.4}
-BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
 BuildRequires:  %{python_module pydantic >= 2.11.7}
+BuildRequires:  %{python_module pydantic-settings >= 2.0.0}
 BuildRequires:  %{python_module pyperclip >= 1.9.0}
 BuildRequires:  %{python_module python-dotenv >= 1.1.0}
 BuildRequires:  %{python_module python-multipart >= 0.0.26}
-BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module rich >= 13.9.4}
+BuildRequires:  %{python_module starlette >= 1.0.1}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  %{python_module uncalled-for >= 0.2.0}
 BuildRequires:  %{python_module uv-dynamic-versioning >= 0.7.0}
@@ -60,6 +61,7 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # uv-backend wheels don't expose deps to pythondistdeps, so require them by hand
 Requires:       python-Authlib >= 1.6.11
+Requires:       python-PyYAML >= 6.0
 Requires:       python-cyclopts >= 4.0.0
 Requires:       python-email-validator
 Requires:       python-exceptiongroup >= 1.2.2
@@ -79,8 +81,8 @@ Requires:       python-pydantic-settings >= 2.0.0
 Requires:       python-pyperclip >= 1.9.0
 Requires:       python-python-dotenv >= 1.1.0
 Requires:       python-python-multipart >= 0.0.26
-Requires:       python-PyYAML >= 6.0
 Requires:       python-rich >= 13.9.4
+Requires:       python-starlette >= 1.0.1
 Requires:       python-typing_extensions >= 4.0.0
 Requires:       python-uncalled-for >= 0.2.0
 Requires:       python-uvicorn >= 0.35

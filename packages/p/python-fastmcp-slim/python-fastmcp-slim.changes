@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:37:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.2
+- Add missing python-starlette dependency, declared by the
+  client and server extras
+
+-------------------------------------------------------------------
 Fri Jun 19 06:12:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 3.4.0)
