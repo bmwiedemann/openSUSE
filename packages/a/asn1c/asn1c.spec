@@ -1,8 +1,8 @@
 #
 # spec file for package asn1c
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
-# Copyright (c) 2014, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2014-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 
 Name:           asn1c
-Version:        0.9.28
+Version:        0.9.29
 Release:        0
 Summary:        ASN.1 Compiler
 License:        BSD-2-Clause
-URL:            http://lionet.info/asn1c/
+URL:            https://lionet.info/asn1c/
 #Git-Clone:     https://github.com/vlm/asn1c.git
 Source:         https://github.com/vlm/asn1c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       asn1c-rpmlintrc
@@ -37,13 +37,13 @@ simply marshalled to/unmarshalled from: BER, DER, CER, BASIC-XER,
 CXER, EXTENDED-XER, PER.
 
 %prep
-%setup -q
-sed -i 's|#!/usr/bin/env perl|#!/usr/bin/perl|g' examples/crfc2asn1.pl
+%autosetup
+sed -i 's|#!%{_bindir}/env perl|#!%{_bindir}/perl|g' examples/crfc2asn1.pl
 
 %build
 autoreconf -fi
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -56,9 +56,14 @@ rm -rf %{buildroot}/%{_datadir}/doc/%{name}
 
 %files
 %license LICENSE
-%doc BUGS ChangeLog FAQ README.md TODO doc/asn1c-quick.pdf doc/asn1c-usage.pdf
-%{_bindir}/*
+%doc BUGS ChangeLog FAQ README.md doc/asn1c-quick.pdf doc/asn1c-usage.pdf
+%{_bindir}/asn1c
+%{_bindir}/crfc2asn1.pl
+%{_bindir}/enber
+%{_bindir}/unber
 %{_datadir}/asn1c
-%{_mandir}/man1/*
+%{_mandir}/man1/asn1c.1%{?ext_man}
+%{_mandir}/man1/enber.1%{?ext_man}
+%{_mandir}/man1/unber.1%{?ext_man}
 
 %changelog
