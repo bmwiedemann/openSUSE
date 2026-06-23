@@ -29,4 +29,13 @@ After this PR, there will be a delete request for kernel-firmware.
   instructing zypp about the usrmerge is perfect for this use case.</comment>
     <requestid>1272726</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a90042183ceb8b05c0a9458d1309dec2</srcmd5>
+    <version>20260610</version>
+    <time>1782229003</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361032</requestid>
+  </revision>
 </revisionlist>
