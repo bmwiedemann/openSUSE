@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:56:09 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.5.0:
+  * chore: update project version to 0.5.0 (#22)
+  * build(deps): bump actions/checkout from 6 to 7 (#21)
+  * build(deps): bump assert_cmd from 2.2.1 to 2.2.2 (#19)
+  * feat: implement model selection (#20)
+  * feat: add `pi` adapter
+
+-------------------------------------------------------------------
 Tue May 12 08:51:11 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.4.0:

@@ -16,7 +16,7 @@
 #
 
 Name:           amake
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A task runner for AI CLI tools
 # TODO: Run `cargo lock2rpmprovides --spdx` after vendoring to get the

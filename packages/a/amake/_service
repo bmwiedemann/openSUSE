@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/dottorblaster/amake.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.4.0</param>
+    <param name="revision">v0.5.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
