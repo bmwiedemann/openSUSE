@@ -343,4 +343,17 @@ Update to version 0.12.2</comment>
     widget.</comment>
     <requestid>1360890</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>f98bd401a8f70a5d17e7292cbed4c062</srcmd5>
+    <version>0.14.1</version>
+    <time>1782229173</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1361161 from mnhauke
+
+- Update to version 0.14.1:
+  * other: mention memory/network alias in deprecation warnings.
+  * deps: bump ratatui to 0.30.2 and ratatui-core to 0.1.2.
+  * docs: memory.legend_position -&gt; memory_graph.legend_position.</comment>
+    <requestid>1361209</requestid>
+  </revision>
 </revisionlist>

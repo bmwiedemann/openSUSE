@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:15:22 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.1:
+  * other: mention memory/network alias in deprecation warnings.
+  * deps: bump ratatui to 0.30.2 and ratatui-core to 0.1.2.
+  * docs: memory.legend_position -> memory_graph.legend_position.
+
+-------------------------------------------------------------------
 Sun Jun 21 14:49:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.0:

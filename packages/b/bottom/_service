@@ -1,20 +1,20 @@
 <services>
-  <service mode="manual" name="obs_scm">
+  <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/ClementTsang/bottom.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">0.14.0</param>
+    <param name="revision">0.14.1</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="manual" name="tar" />
-  <service mode="manual" name="recompress">
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service mode="manual" name="set_version"/>
+  <service name="set_version" mode="manual"/>
   <service name="cargo_vendor" mode="manual">
     <param name="srcdir">bottom</param>
     <param name="update">true</param>
