@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 12:40:48 UTC 2026 - Steven Baker <steven.baker@suse.com>
+
+- Regenerate spec file to drop update-alternatives dependency
+
+-------------------------------------------------------------------
 Tue May 21 10:25:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Replace %patchN with %patch -P N: %patchN is deprecated.

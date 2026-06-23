@@ -78,4 +78,14 @@
     <comment></comment>
     <requestid>1178697</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>bacacfaf5dbe2dfd9006f1b82acc8bb6</srcmd5>
+    <version>1.5.0</version>
+    <time>1782229124</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1360042 from srbaker
+
+Regenerate spec file to drop update-alternatives dependency</comment>
+    <requestid>1361174</requestid>
+  </revision>
 </revisionlist>
