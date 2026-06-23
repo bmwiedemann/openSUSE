@@ -402,4 +402,15 @@
   as needed by daggy (forwarded request 1324326 from AndreasStieger)</comment>
     <requestid>1324449</requestid>
   </revision>
+  <revision rev="48" vrev="3">
+    <srcmd5>68c5d6778a1f8f0de4eb458c5f17c495</srcmd5>
+    <version>1.11.1</version>
+    <time>1782229065</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-55199 (boo#1268530)
+CVE-2026-55200 (boo#1268531)
+CVE-2026-7598 (boo#1263890)
+CVE-2025-15661 (boo#1268546) (forwarded request 1361138 from AndreasStieger)</comment>
+    <requestid>1361144</requestid>
+  </revision>
 </revisionlist>

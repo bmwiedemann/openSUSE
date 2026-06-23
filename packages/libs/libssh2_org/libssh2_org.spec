@@ -2,7 +2,7 @@
 # spec file for package libssh2_org
 #
 # Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,10 @@ Source1:        https://www.libssh2.org/download/%{pkg_name}-%{version}.tar.xz.a
 Source2:        baselibs.conf
 Source3:        libssh2_org.keyring
 Patch0:         libssh2-ocloexec.patch
+Patch1:         libssh2-1.11.1-CVE-2026-55199.patch
+Patch2:         libssh2-1.11.1-CVE-2026-55200.patch
+Patch3:         libssh2-1.11.1-CVE-2026-7598.patch
+Patch4:         libssh2-1.11.1-CVE-2025-15661.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)

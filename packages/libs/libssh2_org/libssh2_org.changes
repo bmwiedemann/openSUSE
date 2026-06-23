@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:12:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- CVE-2026-55199: pre-Authentication DoS via SSH_MSG_EXT_INFO
+  Handler (boo#1268530) libssh2-1.11.1-CVE-2026-55199.patch
+- CVE-2026-55200: out-of-Bounds write via Unchecked packet_length
+  in transport.c (boo#1268531) libssh2-1.11.1-CVE-2026-55200.patch
+- CVE-2026-7598: integer overflow in function userauth_password of
+  file src/userauth.c (boo#1263890)
+  libssh2-1.11.1-CVE-2026-7598.patch
+- CVE-2025-15661: out-of-bounds heap read vulnerability in the
+  sftp_symlink() function in src/sftp.c (boo#1268546)
+  libssh2-1.11.1-CVE-2025-15661.patch
+
+-------------------------------------------------------------------
 Tue Dec 23 20:41:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - use cmake build system so that cmake build files are generated,
