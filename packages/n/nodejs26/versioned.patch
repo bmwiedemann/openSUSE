@@ -1,0 +1,227 @@
+Author: Adam Majer <amajer@suse.de>
+Date: Fri May 11 16:10:16 CEST 2018
+Summary: Generate versioned binaries
+
+Generate versioned binaries and install paths
+so we can allow concurrent installations and
+management via update_alternatives.
+
+This is also important for generation of binary
+modules for multiple versions of NodeJS
+Index: node-v26.2.0/Makefile
+===================================================================
+--- node-v26.2.0.orig/Makefile
++++ node-v26.2.0/Makefile
+@@ -77,7 +77,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+ EXEEXT := $(shell $(PYTHON) -c \
+ 		"import sys; print('.exe' if sys.platform == 'win32' else '')")
+ 
+-NODE_EXE = node$(EXEEXT)
++NODE_EXE = node26$(EXEEXT)
+ NODE_G_EXE = node_g$(EXEEXT)
+ NPM ?= ./deps/npm/bin/npm-cli.js
+ 
+Index: node-v26.2.0/tools/install.py
+===================================================================
+--- node-v26.2.0.orig/tools/install.py
++++ node-v26.2.0/tools/install.py
+@@ -93,7 +93,7 @@ def uninstall(options, paths, dest):
+     try_remove(options, path, dest)
+ 
+ def package_files(options, action, name, bins):
+-  target_path = os.path.join(libdir(options), 'node_modules', name)
++  target_path = os.path.join(libdir(options), 'node_modules', name + '26')
+ 
+   # don't install npm if the target path is a symlink, it probably means
+   # that a dev version of npm is installed there
+@@ -114,19 +114,19 @@ def package_files(options, action, name,
+     if action == uninstall:
+       action(options, [link_path], os.path.join('bin', bin_name))
+     elif action == install:
+-      try_symlink(options, os.path.join('..', libdir(options), 'node_modules', name, bin_target), link_path)
++      try_symlink(options, os.path.join('..', libdir(options), 'node_modules', name + '26', bin_target), link_path)
+     else:
+       assert 0  # unhandled action type
+ 
+ def npm_files(options, action):
+   package_files(options, action, 'npm', {
+-    'npm': 'bin/npm-cli.js',
+-    'npx': 'bin/npx-cli.js',
++    'npm26': 'bin/npm-cli.js',
++    'npx26': 'bin/npx-cli.js',
+   })
+ 
+ def corepack_files(options, action):
+   package_files(options, action, 'corepack', {
+-    'corepack': 'dist/corepack.js',
++    'corepack26': 'dist/corepack.js',
+ #   Not the default just yet:
+ #   'yarn': 'dist/yarn.js',
+ #   'yarnpkg': 'dist/yarn.js',
+@@ -155,7 +155,7 @@ def subdir_files(options, path, dest, ac
+     action(options, files_in_path, subdir + os.path.sep)
+ 
+ def files(options, action):
+-  node_bin = 'node'
++  node_bin = 'node26'
+   if options.is_win:
+     node_bin += '.exe'
+   action(options, [os.path.join(options.build_dir, node_bin)], os.path.join('bin', node_bin))
+@@ -206,7 +206,7 @@ def files(options, action):
+   if 'openbsd' in sys.platform:
+     action(options, ['doc/node.1'], 'man/man1/')
+   else:
+-    action(options, ['doc/node.1'], 'share/man/man1/')
++    action(options, ['doc/node.1'], 'share/man/man1/node26.1')
+ 
+   if 'true' == options.variables.get('node_install_npm'):
+     npm_files(options, action)
+@@ -350,28 +350,28 @@ def headers(options, action):
+     'src/node_buffer.h',
+     'src/node_object_wrap.h',
+     'src/node_version.h',
+-  ], 'include/node/')
++  ], 'include/node26/')
+ 
+   # Add the expfile that is created on AIX
+   if sys.platform.startswith('aix') or sys.platform == "os400":
+-    action(options, ['out/Release/node.exp'], 'include/node/')
++    action(options, ['out/Release/node.exp'], 'include/node26/')
+ 
+-  subdir_files(options, os.path.join(options.v8_dir, 'include'), 'include/node/', wanted_v8_headers)
++  subdir_files(options, os.path.join(options.v8_dir, 'include'), 'include/node26/', wanted_v8_headers)
+ 
+   if 'false' == options.variables.get('node_shared_libuv'):
+-    subdir_files(options, 'deps/uv/include', 'include/node/', action)
++    subdir_files(options, 'deps/uv/include', 'include/node26/', action)
+ 
+   if 'true' == options.variables.get('node_use_openssl') and \
+      'false' == options.variables.get('node_shared_openssl'):
+-    subdir_files(options, 'deps/openssl/openssl/include/openssl', 'include/node/openssl/', action)
+-    subdir_files(options, 'deps/openssl/config/archs', 'include/node/openssl/archs', action)
+-    subdir_files(options, 'deps/openssl/config', 'include/node/openssl', action)
++    subdir_files(options, 'deps/openssl/openssl/include/openssl', 'include/node26/openssl/', action)
++    subdir_files(options, 'deps/openssl/config/archs', 'include/node26/openssl/archs', action)
++    subdir_files(options, 'deps/openssl/config', 'include/node26/openssl', action)
+ 
+   if 'false' == options.variables.get('node_shared_zlib'):
+     action(options, [
+       'deps/zlib/zconf.h',
+       'deps/zlib/zlib.h',
+-    ], 'include/node/')
++    ], 'include/node26/')
+ 
+   if sys.platform == 'zos':
+     zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
+Index: node-v26.2.0/doc/node.1
+===================================================================
+--- node-v26.2.0.orig/doc/node.1
++++ node-v26.2.0/doc/node.1
+@@ -27,22 +27,22 @@
+ .Dt NODE 1
+ .
+ .Sh NAME
+-.Nm node
++.Nm node26
+ .Nd server-side JavaScript runtime
+ .
+ .Sh SYNOPSIS
+-.Nm node
++.Nm node26
+ .Op Ar options
+ .Op Ar v8 options
+ .Op Ar <program-entry-point> | Fl e Ar string | Fl -
+ .Op Ar arguments ...
+ .
+-.Nm node
++.Nm node26
+ .Cm inspect
+ .Op Ar <program-entry-point> | Fl e Ar string | Ar <host>:<port>
+ .Ar ...
+ .
+-.Nm node
++.Nm node26
+ .Op Fl -v8-options
+ .
+ .Sh DESCRIPTION
+Index: node-v26.2.0/src/node_main.cc
+===================================================================
+--- node-v26.2.0.orig/src/node_main.cc
++++ node-v26.2.0/src/node_main.cc
+@@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
+ // UNIX
+ 
+ int main(int argc, char* argv[]) {
++  setenv("NODE_VERSION", "26", 0);
+   return node::Start(argc, argv);
+ }
+ #endif
+Index: node-v26.2.0/tools/test.py
+===================================================================
+--- node-v26.2.0.orig/tools/test.py
++++ node-v26.2.0/tools/test.py
+@@ -986,7 +986,7 @@ class Context(object):
+     if self.vm is not None:
+       return self.vm
+     if arch == 'none':
+-      name = 'out/Debug/node' if mode == 'debug' else 'out/Release/node'
++      name = 'out/Debug/node' if mode == 'debug' else 'out/Release/node26'
+     else:
+       name = 'out/%s.%s/node' % (arch, mode)
+ 
+Index: node-v26.2.0/node.gyp
+===================================================================
+--- node-v26.2.0.orig/node.gyp
++++ node-v26.2.0/node.gyp
+@@ -6,10 +6,10 @@
+     'v8_enable_31bit_smis_on_64bit_arch%': 0,
+     'force_dynamic_crt%': 0,
+     'node_builtin_modules_path%': '',
+-    'node_core_target_name%': 'node',
++    'node_core_target_name%': 'node26',
+     'node_enable_v8_vtunejit%': 'false',
+     'node_intermediate_lib_type%': 'static_library',
+-    'node_lib_target_name%': 'libnode',
++    'node_lib_target_name%': 'libnode26',
+     'node_module_version%': '',
+     'node_no_browser_globals%': 'false',
+     'node_shared_brotli%': 'false',
+Index: node-v26.2.0/test/parallel/test-snapshot-warning.js
+===================================================================
+--- node-v26.2.0.orig/test/parallel/test-snapshot-warning.js
++++ node-v26.2.0/test/parallel/test-snapshot-warning.js
+@@ -60,7 +60,7 @@ tmpdir.refresh();
+     stderr(output) {
+       let match = output.match(/Warning: test warning/g);
+       assert.strictEqual(match.length, 1);
+-      match = output.match(/Use `node --trace-warnings/g);
++      match = output.match(/Use `node26 --trace-warnings/g);
+       assert.strictEqual(match.length, 1);
+       return true;
+     }
+@@ -79,7 +79,7 @@ tmpdir.refresh();
+       // Warnings should not be handled more than once.
+       let match = output.match(/Warning: test warning/g);
+       assert.strictEqual(match.length, 1);
+-      match = output.match(/Use `node --trace-warnings/g);
++      match = output.match(/Use `node26 --trace-warnings/g);
+       assert.strictEqual(match.length, 1);
+       return true;
+     }
+@@ -114,7 +114,7 @@ tmpdir.refresh();
+   console.log(warningFile1, ':', warnings1);
+   let match = warnings1.match(/Warning: test warning/g);
+   assert.strictEqual(match.length, 1);
+-  match = warnings1.match(/Use `node --trace-warnings/g);
++  match = warnings1.match(/Use `node26 --trace-warnings/g);
+   assert.strictEqual(match.length, 1);
+   fs.rmSync(warningFile1, {
+     maxRetries: 3, recursive: false, force: true
+@@ -140,6 +140,6 @@ tmpdir.refresh();
+   console.log(warningFile2, ':', warnings1);
+   match = warnings2.match(/Warning: test warning/g);
+   assert.strictEqual(match.length, 1);
+-  match = warnings2.match(/Use `node --trace-warnings/g);
++  match = warnings2.match(/Use `node26 --trace-warnings/g);
+   assert.strictEqual(match.length, 1);
+ }
