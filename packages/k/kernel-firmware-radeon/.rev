@@ -38,4 +38,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * WHENCE: some older AMD drivers are MIT licensed</comment>
     <requestid>1289256</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>c65ecfc0c548cfc6cbbabe809b9e965a</srcmd5>
+    <version>20260610</version>
+    <time>1782229031</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361045</requestid>
+  </revision>
 </revisionlist>
