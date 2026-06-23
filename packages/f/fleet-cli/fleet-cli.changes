@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 23 04:56:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.3:
+  * Validate resolved paths stay within the clone directory (#5277)
+  * Migrate integrationtests Docker SDK path (#5272)
+  * Validate kubeConfig Namespaces against known Fleet namespaces
+    (#5243)
+  * Update dependency go to v1.25.11 (#5238)
+  * self-heal BD secret when having a hash mismatch (#4963) (#5233)
+  * Update Kubernetes dependencies (release/v0.15) (#5231)
+  * [v0.15] - webhooks handling update (#5227)
+  * Fix fleet-agent bundles not deleted when cluster is deleted
+    (#5228)
+  * [v0.15] Reintroduce legacyscheme defaults for drift detection
+    (#5222)
+  * Normalize YAML flow-style docs in post-renderer [SURE-11642]
+    (#5180) (#5223)
+  * Add tests for namespace label sync (#5203)
+  * [v0.15] - Use Custom CAs when pulling OCI artifact (#5128)
+    (#5183)
+
+-------------------------------------------------------------------
 Fri May 22 06:36:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.2:

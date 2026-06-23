@@ -19,7 +19,7 @@
 %define executable_name fleet
 
 Name:           fleet-cli
-Version:        0.15.2
+Version:        0.15.3
 Release:        0
 Summary:        CLI for the Rancher Fleet GitOps tooling
 License:        Apache-2.0
