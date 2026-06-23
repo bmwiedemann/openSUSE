@@ -20,7 +20,7 @@
 %define _name gtkmm
 
 Name:           gtkmm3
-Version:        3.24.10
+Version:        3.24.11
 Release:        0
 Summary:        C++ Interface for GTK3 (a GUI Library for X)
 License:        LGPL-2.1-or-later

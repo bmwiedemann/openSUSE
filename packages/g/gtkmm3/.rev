@@ -460,4 +460,32 @@
     <comment></comment>
     <requestid>1317713</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e47e6e04c1ec5a2ab1149fca0c43e5c6</srcmd5>
+    <version>3.24.11</version>
+    <time>1782229049</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.24.11:
+  + Gdk:
+    - Pixbuf: Ignore deprecation of gdk_pixbuf_new_from_xpm_data()
+    - Ignore deprecation of GdkPixbufAnimation and
+      GdkPixbufAnimationIter. They are deprecated since gdk-pixbuf
+      2.44.
+  + Documentation:
+    - Remove obsolete FSF (Free Software Foundation) address
+    - Gtk::GestureSingle: Update class description
+    - README.win32.md: Mention Visual Studio 2026
+    - MSVC_NMake/info-msvc.mak, README.win32.md: Update build info
+    - Gtk::GestureMultiPress: Improve the class description
+  + Build:
+    - NMake, gendef.cc: Filter out Avx2WmemEnabledWeakValue
+    - Meson and NMake builds: Distinguish Visual Studio 2026 builds
+      from Visual Studio 2022 builds
+    - NMake Makefiles: Consolidate items and add flexibility
+    - NMake Makefiles: Make build process more robust
+    - Meson build: Don't require the 'dot' command to build the
+      documentation
+    - Fix build with build-deprecated-api=false.</comment>
+    <requestid>1361056</requestid>
+  </revision>
 </revisionlist>

@@ -4,5 +4,4 @@
 GTK+ 3. Highlights include typesafe callbacks, widgets extensible via
 inheritance, and a comprehensive set of widget classes that can be
 freely combined to quickly create complex user interfaces.</description>
-  <devel project="GNOME:Factory" package="gtkmm3"/>
 </package>
