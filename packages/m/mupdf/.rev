@@ -801,4 +801,12 @@
     <comment></comment>
     <requestid>1349705</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>47cf74a54a75997090d6291d8667797c</srcmd5>
+    <version>1.27.2</version>
+    <time>1782229150</time>
+    <user>anag_factory</user>
+    <comment>Build MuPDF as a shared library (boo#1165273); mupdf-devel now Obsoletes the dropped mupdf-devel-static for a clean upgrade. Supersedes SR#1361200, which staging declined for a /usr/include/mupdf header conflict between the new mupdf-devel and the lingering mupdf-devel-static.</comment>
+    <requestid>1361347</requestid>
+  </revision>
 </revisionlist>

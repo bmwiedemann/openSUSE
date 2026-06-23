@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:43:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build and ship MuPDF as a shared library (make shared=yes) instead of
+  static-only:
+  * New subpackage libmupdf27_2 carries libmupdf.so.27.2 (the SONAME
+    tracks the upstream minor.patch version).
+  * Replaced the static-only mupdf-devel-static with mupdf-devel, which
+    ships the .so symlink and a generated mupdf.pc (upstream provides no
+    pkg-config file).
+  * mupdf-devel obsoletes the dropped mupdf-devel-static so it is
+    cleanly replaced on upgrade (resolves the /usr/include/mupdf
+    header file conflict flagged in staging).
+- Consumers that statically embedded libmupdf.a (e.g. zathura's
+  pdf-mupdf plugin) failed to load with "undefined symbol:
+  jpeg_resync_to_restart" because openSUSE builds MuPDF against system
+  codec libraries and the static archive does not pull them in; linking
+  against the shared library (which carries those codecs in its own
+  NEEDED) fixes this (boo#1165273).
+
+-------------------------------------------------------------------
 Mon Apr 27 20:28:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.27.2:

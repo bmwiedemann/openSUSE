@@ -20,6 +20,9 @@
 %if 0%{suse_version} < 1600
 %define gcc_ver 11
 %endif
+# mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
+# changes on every upstream release; keep %%sover in sync with the version.
+%define sover 27_2
 Name:           mupdf
 Version:        1.27.2
 Release:        0
@@ -73,12 +76,24 @@ MuPDF supports PDF 1.7 with transparency, encryption, hyperlinks,
 annotations and search. MuPDF can also read XPS documents
 (OpenXPS/ECMA-388).
 
-%package devel-static
+%package -n libmupdf%{sover}
+Summary:        MuPDF rendering library (shared)
+Group:          System/Libraries
+
+%description -n libmupdf%{sover}
+MuPDF is a PDF and XPS viewer and parser/rendering library.
+
+This package contains the shared rendering library.
+
+%package devel
 Summary:        Development Files for mupdf
 Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       libmupdf%{sover} = %{version}
+# mupdf is now shared-only; the headers moved here from the dropped
+# mupdf-devel-static, so obsolete it for a clean upgrade (same version)
+Obsoletes:      mupdf-devel-static <= %{version}
 
-%description devel-static
+%description devel
 This package contains development files needed for developing applications
 based on mupdf.
 
@@ -104,6 +119,7 @@ echo > user.make "\
   USE_SYSTEM_ZLIB := yes
   USE_SYSTEM_GLUT := no # need freeglut2-art frok
   USE_SYSTEM_CURL := yes
+  LINUX_OR_OPENBSD := yes # ensure the shared-library SONAME symlinks are created
 "
 
 %build
@@ -111,22 +127,36 @@ echo > user.make "\
 export CC=gcc%{?gcc_ver:-%{gcc_ver}}
 export CXX=g++%{?gcc_ver:-%{gcc_ver}}
 export XCFLAGS="%{optflags} -fcommon -fPIC -DJBIG_NO_MEMENTO -DTOFU -DTOFU_CJK"
-%make_build build=release verbose=yes
+%make_build build=release shared=yes verbose=yes
 
 %install
-%make_install build=release prefix=%{_prefix} libdir=%{_libdir}
+%make_install build=release shared=yes SO_INSTALL_MODE=755 prefix=%{_prefix} libdir=%{_libdir}
 rm -rf %{buildroot}%{_datadir}/doc/%{name}
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE1}
 desktop-file-install --dir=%{buildroot}%{_datadir}/applications %{SOURCE2}
 mkdir -p %{buildroot}%{_datadir}/icons/hicolor/scalable/apps
 install -p -m644 docs/logo/mupdf-logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/mupdf.svg
 install -p -m644 docs/logo/mupdf-logo.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/mupdf-gl.svg
-## fix strange permissons
-chmod 0644 %{buildroot}%{_libdir}/*.a
+# upstream ships no usable pkg-config file; provide one so consumers can link
+# against the shared library (mupdf carries its codec deps in its own NEEDED)
+mkdir -p %{buildroot}%{_libdir}/pkgconfig
+cat > %{buildroot}%{_libdir}/pkgconfig/mupdf.pc <<EOF
+prefix=%{_prefix}
+libdir=%{_libdir}
+includedir=%{_includedir}
+
+Name:           mupdf
+Description: MuPDF rendering library
+Version:        %{version}
+Libs: -L\${libdir} -lmupdf
+Cflags: -I\${includedir}
+EOF
 find %{buildroot}/%{_mandir} -type f -exec chmod 0644 {} \;
 find %{buildroot}/%{_includedir} -type f -exec chmod 0644 {} \;
 cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
 %fdupes %{buildroot}%{_datadir}
+
+%ldconfig_scriptlets -n libmupdf%{sover}
 
 %files
 %doc README CHANGES docs/*
@@ -137,8 +167,13 @@ cd %{buildroot}/%{_bindir} && ln -s %{name}-x11 %{name}
 %{_datadir}/icons/hicolor/scalable/apps/*
 %{_mandir}/man1/*.1%{?ext_man}
 
-%files devel-static
+%files -n libmupdf%{sover}
+%license COPYING
+%{_libdir}/libmupdf.so.*
+
+%files devel
 %{_includedir}/%{name}
-%{_libdir}/lib%{name}*.a
+%{_libdir}/libmupdf.so
+%{_libdir}/pkgconfig/mupdf.pc
 
 %changelog
