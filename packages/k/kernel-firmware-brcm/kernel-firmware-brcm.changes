@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:13:44 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Mon Sep 29 16:18:54 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases for 6.17

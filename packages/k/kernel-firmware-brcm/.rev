@@ -73,4 +73,14 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases for 6.17</comment>
     <requestid>1307940</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b06696a3945507c86191cb4e7481255c</srcmd5>
+    <version>20260610</version>
+    <time>1782228991</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * LICENSES: update GPL-2.0 text and references
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361026</requestid>
+  </revision>
 </revisionlist>
