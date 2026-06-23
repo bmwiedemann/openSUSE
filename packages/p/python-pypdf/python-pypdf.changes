@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:27:34 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.14.0
+  * Apply general limit for requested image size
+  * Speed up recovery when reading broken cross-reference table
+  6.13.3
+  * Apply MAX_DECLARED_STREAM_LENGTH to streams without length as well
+  6.13.2
+  * Detect multi-hop cyclic /Pages trees in _flatten to prevent SIGSEGV
+  6.13.1 (bsc#1268787, CVE-2026-54651)
+  * Prevent infinite loops when processing threads/articles
+
+-------------------------------------------------------------------
 Mon Jun  8 07:46:31 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 6.13.0
