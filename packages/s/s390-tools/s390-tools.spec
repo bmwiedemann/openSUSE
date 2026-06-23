@@ -1,7 +1,6 @@
 #
 # spec file for package s390-tools
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -93,6 +92,7 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
+Patch001:       s390-tools-pvebc-Log-services-to-journal-plus-console.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch

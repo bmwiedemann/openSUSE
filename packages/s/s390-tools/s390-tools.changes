@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:29:47 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1268516)
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Fri May 22 14:54:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tools to version 2.42.1 (jsc#PED-14586, bsc#1266206i, bsc#1258947)
@@ -20,7 +27,7 @@ Fri May 22 14:54:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
   * sel-ebc-override-crypttab.service
   * sel-ebc-paes-enforce.service
   * sel-ebc-pvebc.service
-- Re-venor-ed vendor.tar.zst
+- Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Tue May 12 09:52:10 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -28,7 +35,7 @@ Tue May 12 09:52:10 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Updated read_values.c (bsc#1263041, bsc#1263992)
   * Includes /proc/sysinfo fallback to prevent the qclib 
     "Unable to open configuration, return_code =-2" errors. 
-- Re-venor-ed vendor.tar.zst
+- Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Mon May  4 06:21:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -61,7 +68,7 @@ Mon May  4 06:21:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Remove obsolete pacthes:
   * s390-tools-hyptop-opts-Replace-sort_field-option-with-sort.patch
   * s390-tools-hyptop-opts-Fix-long-command-line-option-abbreviations.patch
-- Re-venor-ed vendor.tar.zst
+- Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Fri Apr 17 07:43:21 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
@@ -71,7 +78,7 @@ Fri Apr 17 07:43:21 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 - Applied a modified patch (bsc#1262221)
   * s390-tools-combined.patch
 - Amended SUSE's 'pkey.conf'
-- Re-venor-ed vendor.tar.zst
+- Re-vendor-ed vendor.tar.zst
 
 -------------------------------------------------------------------
 Thu Apr 16 13:14:00 UTC 2026 - Fabian Vogt <fvogt@suse.com>
