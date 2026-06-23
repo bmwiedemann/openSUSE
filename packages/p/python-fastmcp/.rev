@@ -7,4 +7,12 @@
     <comment>New package, part of the FastMCP stack required by python-bugzilla-mcp (an MCP server for Bugzilla). Maintained in devel:languages:python.</comment>
     <requestid>1360608</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>216cacb1accb90e9b669c10c61bb76ec</srcmd5>
+    <version>3.4.2</version>
+    <time>1782229406</time>
+    <user>anag_factory</user>
+    <comment>Preserve the existing changelog entries per review (the previous entry was accidentally dropped). Supersedes the declined SR.</comment>
+    <requestid>1361363</requestid>
+  </revision>
 </revisionlist>
