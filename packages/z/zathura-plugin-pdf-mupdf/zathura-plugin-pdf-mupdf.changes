@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:14:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build against the shared MuPDF library instead of the static
+  libmupdf.a: the plugin failed to load with "undefined symbol:
+  jpeg_resync_to_restart" because openSUSE builds MuPDF against system
+  codec libraries (jpeg, openjpeg, jbig2dec, brotli) which the static
+  archive does not pull in; the shared library carries them in its own
+  NEEDED. Switch BuildRequires from mupdf-devel-static to
+  pkgconfig(mupdf) so upstream's meson links the shared library
+  (boo#1165273).
+
+-------------------------------------------------------------------
 Fri May 29 09:02:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Cleanup spec file with spec-cleaner

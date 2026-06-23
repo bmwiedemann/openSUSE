@@ -34,13 +34,14 @@ BuildRequires:  c_compiler
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson >= 1.5
-BuildRequires:  mupdf-devel-static >= 1.26
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara)
 BuildRequires:  pkgconfig(glib-2.0)
+# link against the shared MuPDF library (carries the system codec deps in its
+# own NEEDED); the static libmupdf.a left them undefined at load (boo#1165273)
+BuildRequires:  pkgconfig(mupdf) >= 1.26
 BuildRequires:  pkgconfig(zathura) >= 2026.01.30
-Requires:       mupdf >= 1.26
 Requires:       zathura >= 2026.01.30
 Conflicts:      zathura-plugin-pdf-poppler
 Provides:       %{realname}-plugin

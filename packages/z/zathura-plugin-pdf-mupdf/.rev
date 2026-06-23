@@ -125,4 +125,12 @@
   * 0002-Revert-Rework-detection-of-mupdf.patch</comment>
     <requestid>1355839</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>d586428c5090d235b756324464f31a72</srcmd5>
+    <version>2026.05.10</version>
+    <time>1782229148</time>
+    <user>anag_factory</user>
+    <comment>Build against shared MuPDF. COUPLED with the mupdf SR 1361200 (soname change) - please stage together; needs the new mupdf-devel (mupdf.pc). Fixes boo#1165273.</comment>
+    <requestid>1361202</requestid>
+  </revision>
 </revisionlist>
