@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:06:57 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- bump nokogiri-1.19.2 --> 1.19.4 (bsc#1268688,bsc#1268693,bsc#1268698,bsc#1268703,
+  bsc#1268712,bsc#1268713,bsc#1268718,bsc#1268723,bsc#1268729,bsc#1268733,bsc#1268738)
+  * nokogiri-1.19.4.gem 
+
+-------------------------------------------------------------------
 Thu Jun 11 15:16:08 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Update to version 2.7.0+git.1781190752.ede285d7 (bsc#1267908):

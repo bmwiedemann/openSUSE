@@ -101,7 +101,7 @@ Source52:       net-pop-0.1.2.gem
 Source53:       net-protocol-0.2.2.gem
 Source54:       net-smtp-0.5.1.gem
 Source55:       nio4r-2.7.5.gem
-Source56:       nokogiri-1.19.2.gem
+Source56:       nokogiri-1.19.4.gem
 Source57:       ostruct-0.6.3.gem
 Source58:       po_to_json-3.0.2.gem
 Source59:       pp-0.6.3.gem
@@ -418,8 +418,8 @@ rm -rf %{buildroot}
 %exclude %{install_gem_path}/gems/mini_portile2-2.8.9/test/assets/test-cmake-1.0/hello.c
 %exclude %{install_gem_path}/gems/nio4r-2.7.5/ext/libev/*
 %exclude %{install_gem_path}/gems/nio4r-2.7.5/ext/nio4r/*
-%exclude %{install_gem_path}/gems/nokogiri-1.19.2/ext/nokogiri/*
-%exclude %{install_gem_path}/gems/nokogiri-1.19.2/gumbo-parser/src/*
+%exclude %{install_gem_path}/gems/nokogiri-1.19.4/ext/nokogiri/*
+%exclude %{install_gem_path}/gems/nokogiri-1.19.4/gumbo-parser/src/*
 %exclude %{install_gem_path}/gems/prism-1.9.0/ext/*
 %exclude %{install_gem_path}/gems/prism-1.9.0/include/*
 %exclude %{install_gem_path}/gems/prism-1.9.0/src/*
