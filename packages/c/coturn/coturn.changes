@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:04:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.14.0
+  New
+  * No more dependency on prometheus-client-c
+  * HTTPS support for prometheus client (optional)
+  * TLS support for redis - now compatible with managed redis
+    (optional).
+  * Rate limiting "401 Unauthorized" responses - reduces
+    reflection attacks off the coturn server. This is an
+    experimental feature - not fully tested on production scale
+    deployment and massive DDoS attacks. New prometheus counters
+    should help shed some light on real life behavior and
+    performance. The feature is off by default.
+  What's Changed
+  * validate hmackey length in sqlite_get_user_key before hex
+    decode.
+  * Add out-of-tree patch to restore deprecated OpenSSL 1.1.1.
+  * Add optional TLS transport for Redis connections.
+  * Fix relay threads override.
+  * Flush prometheus hot-path counters once per second to kill
+    lock contention.
+  * fix signed-char index out-of-bounds read in base64_decode.
+  * Build Prometheus exporter from vendored local sources.
+  * Prom https.
+  * Fix realm quota data race and warnings.
+  * Add per-source rate-limiting of UDP 401 Unauthorized responses
+
+-------------------------------------------------------------------
 Mon Jun 15 13:43:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.13.1
