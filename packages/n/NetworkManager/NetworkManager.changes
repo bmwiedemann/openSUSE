@@ -1,7 +1,128 @@
 -------------------------------------------------------------------
+Tue Jun 16 15:05:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop initrd specific services, following debians workaround.
+
+-------------------------------------------------------------------
+Sun May 17 10:04:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.1:
+  + Add support for GENEVE interface.
+  + Allow persisting the managed state across reboots from nmcli
+    and the D-Bus API.
+  + Allow changing the device's administrative state in the kernel
+    at the same  time as a change to the managed state from nmcli
+    and the D-Bus API.
+
+-------------------------------------------------------------------
+Mon Apr 27 11:05:34 UTC 2026 - Jan Fooken <jan.fooken@suse.com>
+
+- Backport upstream fix for bsc#1246627 to enable and respect the
+  connection.auth-retry option for WPA-PSK secured connections:
+  * Add patch 2308.patch from
+    https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2308
+
+-------------------------------------------------------------------
+Mon Mar 23 10:32:46 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
+Wed Mar  4 17:04:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56.0:
+  + Unify the versioning to use everywhere the scheme with the -rcX
+    or -dev suffixes when appropriate. This affects, for example,
+    the URL and filename of the release tarball and the version
+    reported by nmcli and the daemon. As an exception, the C API
+    will continue to use the 90+ scheme for RC versions.
+  + nmcli now supports viewing and managing WireGuard peers.
+  + Support reapplying the "sriov.vfs" property as long as
+    "sriov.total-vfs" is not changed.
+  + Support reapplying "bond-port.vlans".
+  + Accept hostnames longer than 64 characters from DNS lookup.
+  + Make that global-dns configuration overwrites DNS searches and
+    options from connections, instead of merging all together.
+  + Add support for a new rd.net.dhcp.client-id option in
+    nm-initrd-generator.
+  + Add gsm device-uid setting to restrict the devices the
+    connection applies to.
+  + Support configuring the HSR protocol version via the
+    "hsr.protocol-version" property.
+  + Fix a bug that makes broadband connections auto-connect getting
+    blocked if the connection tries to reconnect when modem status
+    is "disconnecting" / "disconnected".
+  + Treat modem connection not having an operator code available as
+    a recoverable error.
+  + Add support for configuring systemd-resolved's DNSSEC option
+    per-connection via the "connection.dnssec" connection property.
+  + Support configuring the HSR interlink port via the
+    "hsr.interlink" property.
+  + Fix some connection properties not being applied to vpn
+    connections (connection.mdns, connection.llmnr,
+    connection.dns-over-tls, connection.mptcp-flags,
+    ipv6.ip6-privacy)
+  + Update n-acd to always compile with eBPF enabled, as support
+    for eBPF is now detected at run time.
+  + Add new MPTCP 'laminar' endpoint type, and set it by default
+    alongside the 'subflow' one.
+  + For private connections (the ones that specify a user in the
+    "connection.permissions" property), verify that the user can
+    access the 802.1X certificates and keys set in the connection.
+  + Introduce a libnm function that can be used by VPN plugins to
+    check user permissions on certificate and keys.
+
+-------------------------------------------------------------------
 Wed Dec 31 08:18:49 UTC 2025 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Use tmpfiles to create /var/lib/NetworkManager/ (PED-14769).
+
+-------------------------------------------------------------------
+Mon Dec 29 11:50:20 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.56 RC2:
+  + For private connections (the ones that specify a user in the
+    "connection.permissions" property), verify that the user can
+    access the 802.1X certificates and keys set in the connection
+  + Introduce a libnm function that can be used by VPN plugins to
+    check user permissions on certificate and keys.
+  + Add new MPTCP 'laminar' endpoint type, and set it by default
+    alongside the 'subflow' one.
+
+-------------------------------------------------------------------
+Mon Dec 29 11:45:19 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.56 RC1:
+  + nmcli now supports viewing and managing WireGuard peers.
+  + Support reapplying the "sriov.vfs" property as long as
+    "sriov.total-vfs" is not changed.
+  + Support reapplying "bond-port.vlans".
+  + Accept hostnames longer than 64 characters from DNS lookup.
+  + Make that global-dns configuration overwrites DNS searches and
+    options from connections, instead of merging all together.
+  + Add support for a new rd.net.dhcp.client-id option in
+    nm-initrd-generator.
+  + Add gsm device-uid setting to restrict the devices the
+    connection applies to.
+  + Support configuring the HSR protocol version via the
+    "hsr.protocol-version" property.
+  + Fix a bug that makes broadband connections auto-connect getting
+    blocked if the connection tries to reconnect when modem status
+    is "disconnecting" / "disconnected".
+  + Treat modem connection not having an operator code available
+    as a recoverable error.
+  + Add support for configuring systemd-resolved's DNSSEC option
+    per-connection via the "connection.dnssec" connection property.
+  + Support configuring the HSR interlink port via the
+    "hsr.interlink" property.
+  + Fix some connection properties not being applied to vpn
+    connections (connection.mdns, connection.llmnr,
+    connection.dns-over-tls, connection.mptcp-flags,
+    ipv6.ip6-privacy)
+  + Update n-acd to always compile with eBPF enabled, as support
+    for eBPF is now detected at run time.
+- Drop 2298.patch: Fixed/applied upstream.
+- Rebase patches with quilt.
 
 -------------------------------------------------------------------
 Mon Dec 29 11:45:09 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -36,6 +157,22 @@ Fri Oct 31 10:05:44 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
   upstream via 
   https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298
   and can be removed next release (bsc#1248136)
+
+-------------------------------------------------------------------
+Sat Sep 27 12:02:41 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.55.4:
+  + Support reapplying the "sriov.vfs" property as long as
+    "sriov.total-vfs" is not changed.
+
+-------------------------------------------------------------------
+Sat Sep 27 11:47:28 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.55.3:
+  + This is a snapshot of NetworkManager development. The API is
+    subject to change and not guaranteed to be compatible with
+    the later release.
+  + nmcli now supports viewing and managing WireGuard peers.
 
 -------------------------------------------------------------------
 Sat Sep 27 11:18:43 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -6,5 +6,4 @@ configuration and setup as painless and automatic as possible.	If
 using DHCP, NetworkManager is intended to replace default routes,
 obtain IP addresses from a DHCP server, and change name servers
 whenever it sees fit.</description>
-  <devel project="GNOME:Factory" package="NetworkManager"/>
 </package>

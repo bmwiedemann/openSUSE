@@ -8,15 +8,14 @@ Subject: [PATCH] man: document static ip setup differences to dracut
  man/nm-initrd-generator.xml | 12 ++++++++++++
  1 file changed, 12 insertions(+)
 
-diff --git a/man/nm-initrd-generator.xml b/man/nm-initrd-generator.xml
-index 312edff2ee..c4ea8baf8f 100644
---- a/man/nm-initrd-generator.xml
-+++ b/man/nm-initrd-generator.xml
-@@ -193,6 +193,18 @@
-         NetworkManager doesn't.</para>
+Index: NetworkManager-1.56/man/nm-initrd-generator.xml
+===================================================================
+--- NetworkManager-1.56.orig/man/nm-initrd-generator.xml
++++ NetworkManager-1.56/man/nm-initrd-generator.xml
+@@ -195,6 +195,18 @@
        </listitem>
  
-+      <listitem>
+       <listitem>
 +        <para>When an interface is configured with a static address,
 +        there is no need to disable autoconf via parameters.
 +        The netmask can be give either in four digit dot separated
@@ -28,8 +27,7 @@ index 312edff2ee..c4ea8baf8f 100644
 +        </para>
 +      </listitem>
 +
-       <listitem>
++      <listitem>
          <para>network-legacy configures interfaces one by one in the
          order in which they are announced by udev. If multiple
--- 
-2.49.0
+         interfaces specify a hostname (from command line or from

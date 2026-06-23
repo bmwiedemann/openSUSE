@@ -1,0 +1,277 @@
+From a3267aaf7bfab66604b2a6e69973301bb7f9b867 Mon Sep 17 00:00:00 2001
+From: Jan Fooken <jan.fooken@suse.com>
+Date: Tue, 4 Nov 2025 09:32:58 +0100
+Subject: [PATCH 1/5] device: add private getter for property auth-retries
+
+---
+ src/core/devices/nm-device.c | 22 +++++++++++++++++++---
+ 1 file changed, 19 insertions(+), 3 deletions(-)
+
+Index: NetworkManager-1.56.0/src/core/devices/nm-device.c
+===================================================================
+--- NetworkManager-1.56.0.orig/src/core/devices/nm-device.c
++++ NetworkManager-1.56.0/src/core/devices/nm-device.c
+@@ -18918,14 +18918,14 @@ nm_device_get_supplicant_timeout(NMDevic
+                                                        SUPPLICANT_DEFAULT_TIMEOUT);
+ }
+ 
+-gboolean
+-nm_device_auth_retries_try_next(NMDevice *self)
++static int
++_device_get_auth_retries(NMDevice *self)
+ {
+     NMDevicePrivate     *priv;
+     NMSettingConnection *s_con;
+     int                  auth_retries;
+ 
+-    g_return_val_if_fail(NM_IS_DEVICE(self), FALSE);
++    g_return_val_if_fail(NM_IS_DEVICE(self), 0);
+ 
+     priv         = NM_DEVICE_GET_PRIVATE(self);
+     auth_retries = priv->auth_retries;
+@@ -18957,13 +18957,47 @@ nm_device_auth_retries_try_next(NMDevice
+         priv->auth_retries = auth_retries;
+     }
+ 
++    return auth_retries;
++}
++
++gboolean
++nm_device_auth_retries_has_next(NMDevice *self)
++{
++    int auth_retries;
++
++    g_return_val_if_fail(NM_IS_DEVICE(self), FALSE);
++
++    auth_retries = _device_get_auth_retries(self);
++
++    if (auth_retries == NM_DEVICE_AUTH_RETRIES_INFINITY)
++        return TRUE;
++
++    if (auth_retries > 0)
++        return TRUE;
++
++    return FALSE;
++}
++
++gboolean
++nm_device_auth_retries_try_next(NMDevice *self)
++{
++    NMDevicePrivate *priv;
++    int              auth_retries;
++
++    g_return_val_if_fail(NM_IS_DEVICE(self), FALSE);
++
++    priv         = NM_DEVICE_GET_PRIVATE(self);
++    auth_retries = _device_get_auth_retries(self);
++
+     if (auth_retries == NM_DEVICE_AUTH_RETRIES_INFINITY)
+         return TRUE;
+     if (auth_retries <= 0) {
+         nm_assert(auth_retries == 0);
+         return FALSE;
+     }
++
+     priv->auth_retries--;
++
+     return TRUE;
+ }
+ 
+Index: NetworkManager-1.56.0/src/core/devices/nm-device.h
+===================================================================
+--- NetworkManager-1.56.0.orig/src/core/devices/nm-device.h
++++ NetworkManager-1.56.0/src/core/devices/nm-device.h
+@@ -791,6 +791,7 @@ void     nm_device_update_permanent_hw_a
+ void     nm_device_update_dynamic_ip_setup(NMDevice *self, const char *reason);
+ guint    nm_device_get_supplicant_timeout(NMDevice *self);
+ 
++gboolean nm_device_auth_retries_has_next(NMDevice *self);
+ gboolean nm_device_auth_retries_try_next(NMDevice *self);
+ 
+ gboolean nm_device_hw_addr_get_cloned(NMDevice     *self,
+Index: NetworkManager-1.56.0/src/core/devices/wifi/nm-device-wifi.c
+===================================================================
+--- NetworkManager-1.56.0.orig/src/core/devices/wifi/nm-device-wifi.c
++++ NetworkManager-1.56.0/src/core/devices/wifi/nm-device-wifi.c
+@@ -2244,6 +2244,26 @@ wps_timeout_cb(gpointer user_data)
+     return G_SOURCE_REMOVE;
+ }
+ 
++static gboolean
++wifi_connection_is_new(NMDeviceWifi *self)
++{
++    NMDevice             *device = NM_DEVICE(self);
++    NMActRequest         *req;
++    NMSettingsConnection *connection;
++    guint64               timestamp = 0;
++
++    req = nm_device_get_act_request(device);
++    g_return_val_if_fail(NM_IS_ACT_REQUEST(req), TRUE);
++
++    connection = nm_act_request_get_settings_connection(req);
++    g_return_val_if_fail(NM_IS_SETTINGS_CONNECTION(connection), TRUE);
++
++    if (nm_settings_connection_get_timestamp(connection, &timestamp) && timestamp != 0)
++        return FALSE;
++
++    return TRUE;
++}
++
+ static void
+ wifi_secrets_get_secrets(NMDeviceWifi                *self,
+                          const char                  *setting_name,
+@@ -2398,10 +2418,11 @@ handle_8021x_or_psk_auth_fail(NMDeviceWi
+                               NMSupplicantInterfaceState old_state,
+                               int                        disconnect_reason)
+ {
+-    NMDevice     *device = NM_DEVICE(self);
+-    NMActRequest *req;
+-    const char   *setting_name = NULL;
+-    gboolean      handled      = FALSE;
++    NMDevice                    *device = NM_DEVICE(self);
++    NMActRequest                *req;
++    const char                  *setting_name = NULL;
++    NMSecretAgentGetSecretsFlags secret_flags = NM_SECRET_AGENT_GET_SECRETS_FLAG_ALLOW_INTERACTION
++                                                | NM_SECRET_AGENT_GET_SECRETS_FLAG_REQUEST_NEW;
+ 
+     g_return_val_if_fail(new_state == NM_SUPPLICANT_INTERFACE_STATE_DISCONNECTED, FALSE);
+ 
+@@ -2411,8 +2432,7 @@ handle_8021x_or_psk_auth_fail(NMDeviceWi
+     req = nm_device_get_act_request(NM_DEVICE(self));
+     g_return_val_if_fail(req != NULL, FALSE);
+ 
+-    if (need_new_8021x_secrets(self, old_state, &setting_name)
+-        || need_new_wpa_psk(self, old_state, disconnect_reason, &setting_name)) {
++    if (need_new_8021x_secrets(self, old_state, &setting_name)) {
+         nm_act_request_clear_secrets(req);
+ 
+         _LOGI(LOGD_DEVICE | LOGD_WIFI,
+@@ -2422,14 +2442,54 @@ handle_8021x_or_psk_auth_fail(NMDeviceWi
+         nm_device_state_changed(device,
+                                 NM_DEVICE_STATE_NEED_AUTH,
+                                 NM_DEVICE_STATE_REASON_SUPPLICANT_DISCONNECT);
+-        wifi_secrets_get_secrets(self,
+-                                 setting_name,
+-                                 NM_SECRET_AGENT_GET_SECRETS_FLAG_ALLOW_INTERACTION
+-                                     | NM_SECRET_AGENT_GET_SECRETS_FLAG_REQUEST_NEW);
+-        handled = TRUE;
++        wifi_secrets_get_secrets(self, setting_name, secret_flags);
++        return TRUE;
++    }
++
++    if (need_new_wpa_psk(self, old_state, disconnect_reason, &setting_name)) {
++        nm_act_request_clear_secrets(req);
++        cleanup_association_attempt(self, TRUE);
++
++        if (wifi_connection_is_new(self)) {
++            _LOGI(LOGD_DEVICE | LOGD_WIFI,
++                  "Activation: (wifi) new connection disconnected during association, asking for "
++                  "new key");
++            nm_device_state_changed(device,
++                                    NM_DEVICE_STATE_NEED_AUTH,
++                                    NM_DEVICE_STATE_REASON_SUPPLICANT_DISCONNECT);
++            wifi_secrets_get_secrets(self, setting_name, secret_flags);
++            return TRUE;
++        }
++
++        if (!nm_device_auth_retries_try_next(device)) {
++            nm_device_state_changed(device,
++                                    NM_DEVICE_STATE_FAILED,
++                                    NM_DEVICE_STATE_REASON_NO_SECRETS);
++            return TRUE;
++        }
++
++        if (nm_device_auth_retries_has_next(device)) {
++            secret_flags &= ~NM_SECRET_AGENT_GET_SECRETS_FLAG_REQUEST_NEW;
++            _LOGI(
++                LOGD_DEVICE | LOGD_WIFI,
++                "Activation: (wifi) disconnected during association, reauthenticating connection");
++        } else {
++            _LOGI(LOGD_DEVICE | LOGD_WIFI,
++                  "Activation: (wifi) disconnected during association, asking for new key");
++        }
++
++        nm_device_state_changed(device,
++                                NM_DEVICE_STATE_NEED_AUTH,
++                                NM_DEVICE_STATE_REASON_SUPPLICANT_DISCONNECT);
++        wifi_secrets_get_secrets(self, setting_name, secret_flags);
++
++        return TRUE;
+     }
+ 
+-    return handled;
++    _LOGI(LOGD_DEVICE | LOGD_WIFI,
++          "Activation: (wifi) disconnected during association, retrying connection");
++
++    return FALSE;
+ }
+ 
+ static gboolean
+@@ -2861,6 +2921,12 @@ supplicant_iface_notify_wpa_psk_mismatch
+     if (nm_device_get_state(device) != NM_DEVICE_STATE_CONFIG)
+         return;
+ 
++    if (!wifi_connection_is_new(self) && nm_device_auth_retries_has_next(device)) {
++        _LOGI(LOGD_DEVICE | LOGD_WIFI,
++              "Activation: (wifi) psk mismatch reported by supplicant, retrying connection");
++        return;
++    }
++
+     _LOGI(LOGD_DEVICE | LOGD_WIFI,
+           "Activation: (wifi) psk mismatch reported by supplicant, asking for new key");
+ 
+Index: NetworkManager-1.56.0/src/libnm-core-impl/nm-setting-connection.c
+===================================================================
+--- NetworkManager-1.56.0.orig/src/libnm-core-impl/nm-setting-connection.c
++++ NetworkManager-1.56.0/src/libnm-core-impl/nm-setting-connection.c
+@@ -3328,9 +3328,8 @@ nm_setting_connection_class_init(NMSetti
+      *
+      * The number of retries for the authentication. Zero means to try indefinitely; -1 means
+      * to use a global default. If the global default is not set, the authentication
+-     * retries for 3 times before failing the connection.
+-     *
+-     * Currently, this only applies to 802-1x authentication.
++     * retries for 3 times before failing the connection. Connections using a pre-shared key
++     * to authenticate will only prompt for a new key during the last authentication attempt.
+      *
+      * Since: 1.10
+      **/
+Index: NetworkManager-1.56.0/src/libnmc-setting/settings-docs.h.in
+===================================================================
+--- NetworkManager-1.56.0.orig/src/libnmc-setting/settings-docs.h.in
++++ NetworkManager-1.56.0/src/libnmc-setting/settings-docs.h.in
+@@ -1,6 +1,6 @@
+ /* Generated file. Do not edit. */
+ 
+-#define DESCRIBE_DOC_NM_SETTING_CONNECTION_AUTH_RETRIES N_("The number of retries for the authentication. Zero means to try indefinitely; -1 means to use a global default. If the global default is not set, the authentication retries for 3 times before failing the connection. Currently, this only applies to 802-1x authentication.")
++#define DESCRIBE_DOC_NM_SETTING_CONNECTION_AUTH_RETRIES N_("The number of retries for the authentication. Zero means to try indefinitely; -1 means to use a global default. If the global default is not set, the authentication retries for 3 times before failing the connection. Connections using a pre-shared key to authenticate will only prompt for a new key during the last authentication attempt.")
+ #define DESCRIBE_DOC_NM_SETTING_CONNECTION_AUTOCONNECT N_("Whether or not the connection should be automatically connected by NetworkManager when the resources for the connection are available. TRUE to automatically activate the connection, FALSE to require manual intervention to activate the connection. Autoconnect happens when the circumstances are suitable. That means for example that the device is currently managed and not active. Autoconnect thus never replaces or competes with an already active profile. Note that autoconnect is not implemented for VPN profiles. See \"secondaries\" as an alternative to automatically connect VPN profiles. If multiple profiles are ready to autoconnect on the same device, the one with the better \"connection.autoconnect-priority\" is chosen. If the priorities are equal, then the most recently connected profile is activated. If the profiles were not connected earlier or their \"connection.timestamp\" is identical, the choice is undefined. Depending on \"connection.multi-connect\", a profile can (auto)connect only once at a time or multiple times.")
+ #define DESCRIBE_DOC_NM_SETTING_CONNECTION_AUTOCONNECT_PORTS N_("Whether or not ports of this connection should be automatically brought up when NetworkManager activates this connection. This only has a real effect for controller connections. The properties \"autoconnect\", \"autoconnect-priority\" and \"autoconnect-retries\" are unrelated to this setting. The permitted values are: 0: leave port connections untouched, 1: activate all the port connections with this connection, -1: default. If -1 (default) is set, global connection.autoconnect-ports is read to determine the real value. If it is default as well, this fallbacks to 0.")
+ #define DESCRIBE_DOC_NM_SETTING_CONNECTION_AUTOCONNECT_PRIORITY N_("The autoconnect priority in range -999 to 999. If the connection is set to autoconnect, connections with higher priority will be preferred. The higher number means higher priority. Defaults to 0. Note that this property only matters if there are more than one candidate profile to select for autoconnect. In case of equal priority, the profile used most recently is chosen.")
+Index: NetworkManager-1.56.0/src/nmcli/gen-metadata-nm-settings-nmcli.xml.in
+===================================================================
+--- NetworkManager-1.56.0.orig/src/nmcli/gen-metadata-nm-settings-nmcli.xml.in
++++ NetworkManager-1.56.0/src/nmcli/gen-metadata-nm-settings-nmcli.xml.in
+@@ -653,7 +653,7 @@
+                   format="choice (NMConnectionMultiConnect)"
+                   values="default (0), single (1), manual-multiple (2), multiple (3)" />
+         <property name="auth-retries"
+-                  nmcli-description="The number of retries for the authentication. Zero means to try indefinitely; -1 means to use a global default. If the global default is not set, the authentication retries for 3 times before failing the connection. Currently, this only applies to 802-1x authentication."
++                  nmcli-description="The number of retries for the authentication. Zero means to try indefinitely; -1 means to use a global default. If the global default is not set, the authentication retries for 3 times before failing the connection. Connections using a pre-shared key to authenticate will only prompt for a new key during the last authentication attempt."
+                   format="integer"
+                   values="-1 - 2147483647" />
+         <property name="timestamp"
+Index: NetworkManager-1.56.0/NEWS
+===================================================================
+--- NetworkManager-1.56.0.orig/NEWS
++++ NetworkManager-1.56.0/NEWS
+@@ -40,6 +40,9 @@ Overview of changes since NetworkManager
+   the 802.1X certificates and keys set in the connection.
+ * Introduce a libnm function that can be used by VPN plugins to check
+   user permissions on certificate and keys.
++* WIFI connections using wpa-psk respect the setting connection.auth-retry
++  and only prompt for new secrets during the last authentication attempt before
++  failing.
+ 
+ =============================================
+ NetworkManager-1.54

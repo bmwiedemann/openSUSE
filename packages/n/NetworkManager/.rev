@@ -2555,4 +2555,41 @@ New stable release</comment>
     <comment></comment>
     <requestid>1332405</requestid>
   </revision>
+  <revision rev="292" vrev="1">
+    <srcmd5>fd79e36555cc9740c8109d15565d06b3</srcmd5>
+    <version>1.56.1</version>
+    <time>1782228961</time>
+    <user>anag_factory</user>
+    <comment>- Drop initrd specific services, following debians workaround.
+
+- Update to version 1.56.1:
+  + Add support for GENEVE interface.
+  + Allow persisting the managed state across reboots from nmcli
+    and the D-Bus API.
+  + Allow changing the device's administrative state in the kernel
+    at the same  time as a change to the managed state from nmcli
+    and the D-Bus API.
+
+- Backport upstream fix for bsc#1246627 to enable and respect the
+  connection.auth-retry option for WPA-PSK secured connections:
+  * Add patch 2308.patch from
+    https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2308
+
+- Migrate to xz compression and manual service run
+
+- Update to version 1.56.0:
+  + Unify the versioning to use everywhere the scheme with the -rcX
+    or -dev suffixes when appropriate. This affects, for example,
+    the URL and filename of the release tarball and the version
+    reported by nmcli and the daemon. As an exception, the C API
+    will continue to use the 90+ scheme for RC versions.
+  + nmcli now supports viewing and managing WireGuard peers.
+  + Support reapplying the &quot;sriov.vfs&quot; property as long as
+    &quot;sriov.total-vfs&quot; is not changed.
+  + Support reapplying &quot;bond-port.vlans&quot;.
+  + Accept hostnames longer than 64 characters from DNS lookup.
+  + Make that global-dns configuration overwrites DNS searches and
+    options from connections, instead of merging all together.</comment>
+    <requestid>1360991</requestid>
+  </revision>
 </revisionlist>

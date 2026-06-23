@@ -64,13 +64,13 @@
 %endif
 
 Name:           NetworkManager
-Version:        1.54.3
+Version:        1.56.1
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/System
 URL:            https://networkmanager.dev/
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{name}-%{version}.tar.xz
 Source1:        nfs
 Source2:        NetworkManager.conf
 Source3:        baselibs.conf
@@ -98,10 +98,10 @@ Patch8:         python3.6-in-sle.patch
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 # PATCH-FIX-OPENSUSE nm-initrd-generator document static ip setup bsc#1244072
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298.patch
-Patch12:        2298.patch
 # PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2312.patch
 Patch13:        2312.patch
+# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2308.patch
+Patch14:        2308.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -299,7 +299,7 @@ NetworkManager in cloud setups. Currently only EC2 is supported.
 This tool is still experimental.
 
 %package config-server
-Summary:        NetworkManager config file for "server-like" defualts
+Summary:        NetworkManager config file for "server-like" defaults
 Group:          System Environment/Base
 Requires:       %{name} = %{version}
 BuildArch:      noarch
@@ -327,8 +327,8 @@ This package is intended to be installed by default for server deployments.
 %patch -P 9 -p1
 %endif
 %patch -P 11 -p1
-%patch -P 12 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -401,6 +401,14 @@ install -m 0644 %{SOURCE98} %{buildroot}%{_rpmmacrodir}/
 
 # drop on demand activation, it is handled as a system service
 rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkManager.service
+
+# https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/work_items/1885
+# https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1117732
+# Those initrd specific services are not actually used by dracut and
+# conflict with the main services, so remove them for now.
+rm -f %{buildroot}%{_unitdir}/NetworkManager-config-initrd.service
+rm -f %{buildroot}%{_unitdir}/NetworkManager-wait-online-initrd.service
+rm -f %{buildroot}%{_unitdir}/NetworkManager-initrd.service
 
 %pre
 %service_add_pre NetworkManager.service NetworkManager-dispatcher.service nm-priv-helper.service
@@ -495,9 +503,9 @@ rm -f %{buildroot}%{_datadir}/dbus-1/system-services/org.freedesktop.NetworkMana
 %{_datadir}/dbus-1/system-services/org.freedesktop.nm_priv_helper.service
 %{_dbusconfdir}/nm-priv-helper.conf
 %{_defaultdocdir}/NetworkManager/server.conf
-%{_unitdir}/NetworkManager-config-initrd.service
-%{_unitdir}/NetworkManager-initrd.service
-%{_unitdir}/NetworkManager-wait-online-initrd.service
+%dnl %{_unitdir}/NetworkManager-config-initrd.service
+%dnl %{_unitdir}/NetworkManager-initrd.service
+%dnl %{_unitdir}/NetworkManager-wait-online-initrd.service
 %dir %{_systemdgeneratordir}
 %{_systemdgeneratordir}/nm-initrd-generator.sh
 

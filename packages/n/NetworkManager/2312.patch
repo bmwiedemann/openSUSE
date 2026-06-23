@@ -22,10 +22,10 @@ Fixes #1814
  9 files changed, 73 insertions(+), 17 deletions(-)
  create mode 100755 src/nm-initrd-generator/nm-initrd-generator.sh
 
-diff --git a/contrib/fedora/rpm/NetworkManager.spec b/contrib/fedora/rpm/NetworkManager.spec
-index 0732fb495f2..820cfda607a 100644
---- a/contrib/fedora/rpm/NetworkManager.spec
-+++ b/contrib/fedora/rpm/NetworkManager.spec
+Index: NetworkManager-1.56/contrib/fedora/rpm/NetworkManager.spec
+===================================================================
+--- NetworkManager-1.56.orig/contrib/fedora/rpm/NetworkManager.spec
++++ NetworkManager-1.56/contrib/fedora/rpm/NetworkManager.spec
 @@ -675,6 +675,7 @@ Preferably use nmcli instead.
  	-Dsession_tracking=systemd \
  	-Dsuspend_resume=systemd \
@@ -34,7 +34,7 @@ index 0732fb495f2..820cfda607a 100644
  	-Dsystem_ca_path=/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem \
  	-Ddbus_conf_dir=%{dbus_sys_dir} \
  	-Dtests=yes \
-@@ -747,6 +748,7 @@ rm -f %{buildroot}%{_libdir}/pppd/%{ppp_version}/*.la
+@@ -747,6 +748,7 @@ rm -f %{buildroot}%{_libdir}/pppd/%{ppp_
  rm -f %{buildroot}%{nmplugindir}/*.la
  
  # Don't use the *-initrd.service files yet, wait dracut to support them
@@ -42,10 +42,10 @@ index 0732fb495f2..820cfda607a 100644
  rm -f %{buildroot}%{_unitdir}/NetworkManager-config-initrd.service
  rm -f %{buildroot}%{_unitdir}/NetworkManager-initrd.service
  rm -f %{buildroot}%{_unitdir}/NetworkManager-wait-online-initrd.service
-diff --git a/contrib/fedora/rpm/configure-for-system.sh b/contrib/fedora/rpm/configure-for-system.sh
-index 6bdf66825ab..bcf619c645a 100755
---- a/contrib/fedora/rpm/configure-for-system.sh
-+++ b/contrib/fedora/rpm/configure-for-system.sh
+Index: NetworkManager-1.56/contrib/fedora/rpm/configure-for-system.sh
+===================================================================
+--- NetworkManager-1.56.orig/contrib/fedora/rpm/configure-for-system.sh
++++ NetworkManager-1.56/contrib/fedora/rpm/configure-for-system.sh
 @@ -398,6 +398,7 @@ meson setup\
      -Dsession_tracking=systemd \
      -Dsuspend_resume=systemd \
@@ -54,10 +54,10 @@ index 6bdf66825ab..bcf619c645a 100755
      -Dsystem_ca_path=/etc/pki/tls/cert.pem \
      -Ddbus_conf_dir="$P_DBUS_SYS_DIR" \
      -Dtests=yes \
-diff --git a/data/NetworkManager-config-initrd.service.in b/data/NetworkManager-config-initrd.service.in
-index 4baf0f648ec..4f038036589 100644
---- a/data/NetworkManager-config-initrd.service.in
-+++ b/data/NetworkManager-config-initrd.service.in
+Index: NetworkManager-1.56/data/NetworkManager-config-initrd.service.in
+===================================================================
+--- NetworkManager-1.56.orig/data/NetworkManager-config-initrd.service.in
++++ NetworkManager-1.56/data/NetworkManager-config-initrd.service.in
 @@ -1,10 +1,10 @@
  [Unit]
  Description=NetworkManager Configuration (initrd)
@@ -77,10 +77,10 @@ index 4baf0f648ec..4f038036589 100644
 -
 -[Install]
 -WantedBy=initrd.target
-diff --git a/data/NetworkManager-initrd.service.in b/data/NetworkManager-initrd.service.in
-index aef73a571da..f936ffd2380 100644
---- a/data/NetworkManager-initrd.service.in
-+++ b/data/NetworkManager-initrd.service.in
+Index: NetworkManager-1.56/data/NetworkManager-initrd.service.in
+===================================================================
+--- NetworkManager-1.56.orig/data/NetworkManager-initrd.service.in
++++ NetworkManager-1.56/data/NetworkManager-initrd.service.in
 @@ -1,11 +1,11 @@
  [Unit]
  Description=NetworkManager (initrd)
@@ -106,10 +106,10 @@ index aef73a571da..f936ffd2380 100644
 -# WantedBy=network-online.target, so enabling it only has an effect if
 -# network-online.target itself is enabled or pulled in by some other unit.
 -Also=NetworkManager-config-initrd.service NetworkManager-wait-online-initrd.service
-diff --git a/data/NetworkManager-wait-online-initrd.service.in b/data/NetworkManager-wait-online-initrd.service.in
-index da4a2522340..b89aa816578 100644
---- a/data/NetworkManager-wait-online-initrd.service.in
-+++ b/data/NetworkManager-wait-online-initrd.service.in
+Index: NetworkManager-1.56/data/NetworkManager-wait-online-initrd.service.in
+===================================================================
+--- NetworkManager-1.56.orig/data/NetworkManager-wait-online-initrd.service.in
++++ NetworkManager-1.56/data/NetworkManager-wait-online-initrd.service.in
 @@ -1,10 +1,10 @@
  [Unit]
  Description=NetworkManager Wait Online (initrd)
@@ -129,11 +129,11 @@ index da4a2522340..b89aa816578 100644
 -
 -[Install]
 -WantedBy=initrd.target network-online.target
-diff --git a/meson.build b/meson.build
-index 2f9ab5c299a..56bbe281632 100644
---- a/meson.build
-+++ b/meson.build
-@@ -383,6 +383,14 @@ if install_systemdunitdir and systemd_systemdsystemunitdir == ''
+Index: NetworkManager-1.56/meson.build
+===================================================================
+--- NetworkManager-1.56.orig/meson.build
++++ NetworkManager-1.56/meson.build
+@@ -383,6 +383,14 @@ if install_systemdunitdir and systemd_sy
    systemd_systemdsystemunitdir = systemd_dep.get_variable(pkgconfig: 'systemdsystemunitdir', pkgconfig_define: ['rootprefix', nm_prefix])
  endif
  
@@ -156,10 +156,10 @@ index 2f9ab5c299a..56bbe281632 100644
  output += '  udev_dir: ' + udev_udevdir + '\n'
  output += '  nmbinary: ' + nm_pkgsbindir + '\n'
  output += '  nmconfdir: ' + nm_pkgconfdir + '\n'
-diff --git a/meson_options.txt b/meson_options.txt
-index d28cc76fc89..8ec68a46bd3 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
+Index: NetworkManager-1.56/meson_options.txt
+===================================================================
+--- NetworkManager-1.56.orig/meson_options.txt
++++ NetworkManager-1.56/meson_options.txt
 @@ -1,5 +1,6 @@
  # system paths
  option('systemdsystemunitdir', type: 'string', value: '', description: 'Directory for systemd service files')
@@ -167,10 +167,10 @@ index d28cc76fc89..8ec68a46bd3 100644
  option('system_ca_path', type: 'string', value: '/etc/ssl/certs', description: 'path to system CA certificates')
  option('udev_dir', type: 'string', value: '', description: 'Absolute path of the udev base directory. Set to \'no\' not to install the udev rule')
  option('dbus_conf_dir', type: 'string', value: '', description: 'where D-Bus system.d directory is')
-diff --git a/src/nm-initrd-generator/meson.build b/src/nm-initrd-generator/meson.build
-index 6b02e0668df..2315ebe4f29 100644
---- a/src/nm-initrd-generator/meson.build
-+++ b/src/nm-initrd-generator/meson.build
+Index: NetworkManager-1.56/src/nm-initrd-generator/meson.build
+===================================================================
+--- NetworkManager-1.56.orig/src/nm-initrd-generator/meson.build
++++ NetworkManager-1.56/src/nm-initrd-generator/meson.build
 @@ -46,3 +46,10 @@ executable(
    install: true,
    install_dir: nm_libexecdir,
@@ -182,11 +182,10 @@ index 6b02e0668df..2315ebe4f29 100644
 +    install_dir: systemd_systemdsystemgeneratordir,
 +  )
 +endif
-diff --git a/src/nm-initrd-generator/nm-initrd-generator.sh b/src/nm-initrd-generator/nm-initrd-generator.sh
-new file mode 100755
-index 00000000000..20ff78cca5f
+Index: NetworkManager-1.56/src/nm-initrd-generator/nm-initrd-generator.sh
+===================================================================
 --- /dev/null
-+++ b/src/nm-initrd-generator/nm-initrd-generator.sh
++++ NetworkManager-1.56/src/nm-initrd-generator/nm-initrd-generator.sh
 @@ -0,0 +1,50 @@
 +#!/bin/bash
 +# SPDX-License-Identifier: LGPL-2.1-or-later
@@ -238,6 +237,3 @@ index 00000000000..20ff78cca5f
 +done
 +
 +exit 0
--- 
-GitLab
-
