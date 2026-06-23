@@ -109,4 +109,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: IPQ5424 hw1.0: add board-2.bin</comment>
     <requestid>1349831</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c1c745e5d31a6c334acf154fa8186e2c</srcmd5>
+    <version>20260610</version>
+    <time>1782228982</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361022</requestid>
+  </revision>
 </revisionlist>
