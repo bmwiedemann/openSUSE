@@ -1211,4 +1211,43 @@ Everything below symbols/sun_vndr/ is CDDL-1.0 licensed (forwarded request 13624
   boo#1256912, PED-14831)</comment>
     <requestid>1342923</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>adf6bc9a5312a587fde73bbd09d71c94</srcmd5>
+    <version>2.48</version>
+    <time>1782229062</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.48
+  * ca(multix): Fixes to match the standard
+  * symbols/pl: add colemak_dh_ortho variant
+  * symbols/es: Better placement for dead_caron/doubleacute
+  * Add Old Hung. Rudimenta UE to Carpth. Hl. variants
+  * symbols: add Mara (mrh) keyboard layout
+  * Add new layout for br thinkpad with nodeadkeys
+  * ci: Fix xkbcommon job
+  * inet: Update latest keysyms from xorgproto
+  * keycodes: Add Linux 7.0 key
+  * inet: Update latest keysyms from xorgproto
+  * vt(vt105): Fix &lt;DELE&gt; mapping
+  * triage: Use bug report template by default
+  * triage: Improve issue &amp; MR templates
+  * triage: Add bugbot tags to handle non-actionable reports
+  * triage: Close stale “Needs information” report earlier
+  * triage: Fix default issue template
+  * triage: Fix tag addition
+  * rules: Add new generator
+  * rules: Remove old generator
+  * build: Drop support for Python 3.9-3.10
+  * rules: Remove $nonlatin group
+  * types: Fix default KEYPAD
+  * types: Make numpad(microsoft) an alias of numpad(pc)
+  * types: Fix FOUR_LEVEL_X and numpad(shift3)
+  * types: Fix pc(default)
+  * types: Fix FOUR_LEVEL_KEYPAD and FOUR_LEVEL_MIXED_KEYPAD
+  * types: Fix typo
+  * chore: Remove spaces before `xkb_symbols`
+  * prerelease for translation updates
+  * updated translations
+  * removed whitespace</comment>
+    <requestid>1361141</requestid>
+  </revision>
 </revisionlist>
