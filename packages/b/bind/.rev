@@ -2753,4 +2753,30 @@ New Features
     <comment>Add missing references</comment>
     <requestid>1355936</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>49fccaa86c8315862aee2be67288219e</srcmd5>
+    <version>9.20.24</version>
+    <time>1782229046</time>
+    <user>anag_factory</user>
+    <comment>- Upgrade to release 9.20.24
+  Removed Features:
+  * Remove ineffective TCP fallback after repeated UDP timeouts.
+  Feature Changes:
+  * Fall back to TCP on receipt of a UDP response with a mismatched
+    query ID.
+  * Limit the number of glue records cached from a referral.
+  * Fix a resolver stall on a CNAME response to a DS query.
+  Bug Fixes:
+  * The resolver now removes other RRsets at the same name when
+    caching a CNAME.
+  * Fix nxdomain-redirect combined with dns64.
+  * Fix DNS64 owner case after DNAME restart.
+  * Clear REDIRECT flag when it isn't needed.
+  * Disable output escaping in bind9.xsl.
+  * Fix crash on badly configured secondary signer.
+  * Fix a possible crash on concurrent TKEY DELETE for the same
+    key.
+  * Reject RRSIG records covering meta-types.</comment>
+    <requestid>1361054</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jun 22 09:59:31 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.24
+  Removed Features:
+  * Remove ineffective TCP fallback after repeated UDP timeouts.
+
+  Feature Changes:
+  * Fall back to TCP on receipt of a UDP response with a mismatched
+    query ID.
+  * Limit the number of glue records cached from a referral.
+  * Fix a resolver stall on a CNAME response to a DS query.
+
+  Bug Fixes:
+  * The resolver now removes other RRsets at the same name when
+    caching a CNAME.
+  * Fix nxdomain-redirect combined with dns64.
+  * Fix DNS64 owner case after DNAME restart.
+  * Clear REDIRECT flag when it isn't needed.
+  * Disable output escaping in bind9.xsl.
+  * Fix crash on badly configured secondary signer.
+  * Fix a possible crash on concurrent TKEY DELETE for the same
+    key.
+  * Reject RRSIG records covering meta-types.
+
+-------------------------------------------------------------------
 Tue May 26 16:02:53 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Upgrade to release 9.20.23
