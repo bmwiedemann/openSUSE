@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:11:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.65.0:
+  * chore(loadbalancer): remove local interface (#1443)
+  * fix(iaas): wrong encoding and decoding of user data attribute
+    in server commands (#1439)
+  * chore(deps): bump actions/stale from 10.2.0 to 10.3.0 (#1423)
+  * fix(iaas): update examples and fix the payload for boot volumes
+    (#1436)
+  * chore(kms): migrate kms to new multi version sdk (#1437)
+  * chore(load-balancer): sdk migration (#1432)
+  * feat(vpn): basic connection commands (#1433)
+  * fix(server): switch to flag for service account email (#1429)
+  * chore(git): migrate to new SDK structure (#1435)
+  * chore(iaas): migrate to multi version SDK
+  * chore(deps): bump actions/checkout from 6.0.2 to 6.0.3 (#1434)
+  * chore(readme): fix mise command (#1425)
+  * chore(deps): bump actions/checkout from 6 to 6.0.2 (#1428)
+  * refac(cdn): Migrate to new SDK structure (#1421)
+
+-------------------------------------------------------------------
 Fri Jun 05 13:49:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.64.0:
