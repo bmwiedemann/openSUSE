@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 17 19:57:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- User note: Transitioning between virtualbox 7.2.8-or-earlier and
+  7.2.10-or-newer requires reloading kvm.ko to avoid a kernel panic.
+  Alternatively, reboot the system.
+- Update to release 7.2.10
+  * VMM: Fixed issue when CentOS 10 VM was not booting with to the
+    message "Fatal glibc error: CPU does not support x86-64-v3".
+  * Devices/EFI: Fixed booting issue when ARM VM had less than 1024
+    MiB of RAM assigned.
+  * Storage: Fixed issue when VIRTIO-SCSI device was not recognized
+    as SSD device by guest system.
+  * Network: Fixed issue in E1000 emulation code which triggered
+    debug log creation.
+  * Network: Fixed issue in E1000 emulation code which prevented
+    OS/2 guest from booting.
+  * Linux Host: Fixed issue when VMs could not be started due to
+    kernel oops.
+  * Linux Host and Guest: Fixed issue when kernel modules were
+    failing to build with openSUSE 16.0 kernel.
+  * Linux Host and Guest: Added initial support for kernel 7.1.
+  * Linux Host and Guest: Added extra fixes for RHEL 9.8 kernel.
+  * Linux Host and Guest: Added possibility to build source code
+    using NASM instead of YASM as the assembler.
+  * Linux Guest Additions: Added initial support for Extended Data
+    Control Protocol for clipboard sharing with Plasma on Wayland
+    guests.
+  * Linux Guest Additions: Added extra fixes for preventing
+    vboxvideo kernel module build with kernel version 7.0 and
+    newer.
+  * OS/2 Guest Additions: Fixed issue when Shared Folders automount
+    and clipboard sharing stopped working.
+- Delete 0001-7.2-Backported-r173880-Linux-vboxdrv-Add-initial-sup.patch
+  (obsolete),
+  0001-7.2-Backported-r173857-Additions-Linux-vboxsf-Add-in.patch
+  (merged)
+
+-------------------------------------------------------------------
 Thu Jun 11 07:27:32 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - support kernel 7.1 (bsc#1268088)

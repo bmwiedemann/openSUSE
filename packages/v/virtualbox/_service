@@ -1,5 +1,0 @@
-<services>
-  <service name="refresh_patches" mode="disabled">
-    <param name="changesgenerate">enable</param>
-  </service>
-</services>

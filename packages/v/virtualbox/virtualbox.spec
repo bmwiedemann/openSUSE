@@ -69,8 +69,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.8
-%define rversion 7.2.8
+Version:        7.2.10
+%define rversion 7.2.10
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -133,8 +133,6 @@ Patch9:         vbox-usb-warning.diff
 Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
-Patch13:        0001-7.2-Backported-r173880-Linux-vboxdrv-Add-initial-sup.patch
-Patch14:        0001-7.2-Backported-r173857-Additions-Linux-vboxsf-Add-in.patch
 Patch20:        gentoo-C23.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
@@ -600,7 +598,8 @@ install -m 644 UnattendedTemplates/*		%{buildroot}%{_datadir}/virtualbox/Unatten
 # Workaround kvm.ko usurping VMX.
 # (Linux kernel commit b4886fab6fb620b96ad7eeefb9801c42dfa91741 is the culprit.
 # See also https://lore.kernel.org/kvm/ZwQjUSOle6sWARsr@google.com/T/ )
-echo options kvm enable_virt_at_load=0 >"%buildroot/%_modprobedir/50-virtualbox.conf"
+# This workaround only functions up to and including vbox-7.2.8.
+# echo options kvm enable_virt_at_load=0 >"%buildroot/%_modprobedir/50-virtualbox.conf"
 
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
@@ -738,6 +737,12 @@ do
 	[ "$user" = "*" ] && break
 	mv %{_sysconfdir}/vbox/user.start %{_sysconfdir}/vbox/autostart.d/.
 done
+# Make sure the old 50-virtualbox.conf is evicted from initrds
+%{?regenerate_initrd_post}
+
+%posttrans
+%{?regenerate_initrd_posttrans}
+echo INFO: Transitioning between virtualbox 7.2.8-or-earlier and 7.2.10-or-newer requires reloading kvm.ko to avoid a kernel panic. Alternatively, reboot the system.
 
 %post qt
 %set_permissions %{_vbox_instdir}/VirtualBoxVM
