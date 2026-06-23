@@ -1,7 +1,9 @@
 -------------------------------------------------------------------
-Fri Jun 19 16:54:50 UTC 2026 - okurz@suse.com
+Mon Jun 22 13:06:54 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1781884690.e39cc969:
+- Update to version 5.1782133597.39cd80e0:
+  * refactor: Calculate module category headings in frontend
+  * chore(deps): Dependency cron 2026-06-20
   * test: Make parallel execution of the fullstack test more reliable
   * ci: disable Mergify interactive queue controls in PR comments
   * feat(worker): enable direct execution with podman
