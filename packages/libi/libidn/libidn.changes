@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:55:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.44:
+  * Fix read-out-of-bounds error in ToUnicode APIs
+  * Fix strcpy buffer overflow in examples
+
+-------------------------------------------------------------------
 Sat Mar 22 16:37:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.43:

@@ -2,7 +2,7 @@
 # spec file for package libidn
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define sover	12
 Name:           libidn
-Version:        1.43
+Version:        1.44
 Release:        0
 Summary:        Support for Internationalized Domain Names (IDN)
 License:        (GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND Apache-2.0
