@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:47:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.24.0:
+  * Features
+    - ability to init ts files with WerfRenderContext type (#593)
+      (4b90254)
+    - adopt chart ts init for werf (#594) (671cf54)
+    - deno runtime for typescript (#565) (942d8aa)
+
+-------------------------------------------------------------------
 Tue Jun 09 05:25:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.23.2:
