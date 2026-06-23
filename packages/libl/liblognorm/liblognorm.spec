@@ -19,19 +19,17 @@
 
 %define sover 5
 Name:           liblognorm
-Version:        2.0.9
+Version:        2.1.0
 Release:        0
 Summary:        Library and tool to normalize log data
 License:        Apache-2.0 AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.liblognorm.com/
-Source0:        https://www.liblognorm.com/download/files/download/%{name}-%{version}.tar.gz
-Patch0:         liblognorm-2.0.6-pcre2.patch
-# for liblognorm-2.0.6-pcre2.patch
+Source0:        https://github.com/rsyslog/liblognorm/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+#
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-#
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(libestr)
 BuildRequires:  pkgconfig(libfastjson) >= 0.99.0
@@ -115,9 +113,7 @@ developing applications that use %{name}.
 %autosetup -p1
 
 %build
-# for liblognorm-2.0.6-pcre2.patch
 autoreconf -fiv
-#
 %configure \
 	--disable-static \
 	--enable-regexp \
@@ -144,7 +140,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %files devel
 %license COPYING
-%doc NEWS README AUTHORS ChangeLog
+%doc NEWS README AUTHORS ChangeLog AGENTS.md
 %{_includedir}/*
 %{_libdir}/*.so
 %{_includedir}/*.h

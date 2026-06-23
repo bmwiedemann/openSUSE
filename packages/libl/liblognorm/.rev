@@ -226,4 +226,12 @@
   - BuildRequires:  libestr-devel</comment>
     <requestid>1345956</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>6f6155db51fb1172fba95cabd836bce7</srcmd5>
+    <version>2.1.0</version>
+    <time>1782228942</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360744</requestid>
+  </revision>
 </revisionlist>
