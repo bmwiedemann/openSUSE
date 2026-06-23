@@ -791,4 +791,22 @@
     it contained some special characters. (forwarded request 1301435 from iznogood)</comment>
     <requestid>1301470</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>7922dff8f050e23578a4ca3ef35125d6</srcmd5>
+    <version>1.12.5</version>
+    <time>1782228972</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.12.5:
+  + Don't use NM_VERSION_MIN_REQUIRED and MAX_ALLOWED to fix build
+    compilation failure with libnm 1.52.2.
+  + Updated translations
+- Changes from version 1.12.4:
+  + Add tmpfiles.d and sysusers.d files so that systemd creates
+    automatically the required tmp file and user
+  + Verify file permissions for private connections to prevent
+    unprivileged user from using other user's certs (CVE-2025-9615)
+  + Updated translations
+- Enable test suite in %check section</comment>
+    <requestid>1361170</requestid>
+  </revision>
 </revisionlist>

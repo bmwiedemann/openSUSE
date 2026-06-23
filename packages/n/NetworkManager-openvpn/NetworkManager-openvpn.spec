@@ -1,7 +1,7 @@
 #
 # spec file for package NetworkManager-openvpn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           NetworkManager-openvpn
-Version:        1.12.3
+Version:        1.12.5
 Release:        0
 Summary:        NetworkManager VPN support for OpenVPN
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/System
 URL:            https://www.gnome.org/projects/NetworkManager
 Source0:        https://download.gnome.org/sources/NetworkManager-openvpn/1.12/%{name}-%{version}.tar.xz
-Source1:        system-user-nm-openvpn.conf
 # PATCH-FIX-OPENSUSE fix-for-missing-whirlpool-hmac-authentication.patch boo#1132946
 Patch0:         fix-for-missing-whirlpool-hmac-authentication.patch
 
@@ -34,7 +33,7 @@ BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.0
-BuildRequires:  pkgconfig(libnm) >= 1.46.2
+BuildRequires:  pkgconfig(libnm) >= 1.55.91
 BuildRequires:  pkgconfig(libnma) >= 1.8.0
 BuildRequires:  pkgconfig(libnma-gtk4) >= 1.8.33
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
@@ -54,7 +53,7 @@ Group:          Productivity/Networking/System
 Requires:       %{name} = %{version}-%{release}
 Provides:       %{name}-frontend
 Provides:       %{name}-gnome = %{version}
-Obsoletes:      %{name}-gnome
+Obsoletes:      %{name}-gnome < %{version}
 Supplements:    (%{name} and NetworkManager-applet)
 Supplements:    (%{name} and gnome-control-center)
 
@@ -80,8 +79,9 @@ OpenVPN.
 %make_install
 %find_lang %{name} %{?no_lang_C}
 find %{buildroot} -type f -name "*.la" -delete -print
-mkdir -p %{buildroot}%{_sysusersdir}
-install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
+
+%check
+make check
 
 %pre -f NetworkManager-openvpn.pre
 
@@ -93,7 +93,10 @@ install -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/
 %{_libexecdir}/nm-openvpn-service-openvpn-helper
 %{_vpnservicedir}/nm-openvpn-service.name
 %{_datadir}/dbus-1/system.d/nm-openvpn-service.conf
-%{_sysusersdir}/system-user-nm-openvpn.conf
+%{_sysusersdir}/nm-openvpn-sysusers.conf
+%{_tmpfilesdir}/nm-openvpn-tmpfiles.conf
+%ghost %attr(0755,root,root) %dir %{_localstatedir}/lib/openvpn
+%ghost %attr(0755,nm-openvpn,nm-openvpn) %dir %{_localstatedir}/lib/openvpn/chroot
 
 %files -n NetworkManager-applet-openvpn
 %{_datadir}/metainfo/network-manager-openvpn.metainfo.xml

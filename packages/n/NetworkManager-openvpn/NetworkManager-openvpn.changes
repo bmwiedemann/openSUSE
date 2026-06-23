@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Dec 29 11:05:49 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.5:
+  + Don't use NM_VERSION_MIN_REQUIRED and MAX_ALLOWED to fix build
+    compilation failure with libnm 1.52.2.
+  + Updated translations
+- Changes from version 1.12.4:
+  + Add tmpfiles.d and sysusers.d files so that systemd creates
+    automatically the required tmp file and user
+  + Verify file permissions for private connections to prevent
+    unprivileged user from using other user's certs (CVE-2025-9615)
+  + Updated translations
+- Enable test suite in %check section
+
+-------------------------------------------------------------------
 Tue Aug 26 12:22:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.3:
