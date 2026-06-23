@@ -104,4 +104,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * nvidia: add acr/bl symlink for booting GSP-RM on GA100</comment>
     <requestid>1345540</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f7fd8d1081142f74d5a9880f0a3f1522</srcmd5>
+    <version>20260610</version>
+    <time>1782229020</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361040</requestid>
+  </revision>
 </revisionlist>
