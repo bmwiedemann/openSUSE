@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 20 08:56:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.6.2
+  * Fix blur cache being recreated every time
+  * Traits::ImageEffects::Blur::image: Remove unnecessary format
+    conversion
+  * Add alpha channel support with non-OpenCV stack blur
+    (kde#519107)
+  * Add option to build with OpenCV (kde#519107)
+  * Reset crop rectangle on canvasRectChanged
+  * {annotation/image}document: Use QImageReader to respect
+    image transformation (kde#516546)
+
+-------------------------------------------------------------------
 Wed Mar 18 14:30:15 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 0.6.1

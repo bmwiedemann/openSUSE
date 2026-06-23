@@ -21,16 +21,16 @@
 ExclusiveArch:  do_not_build
 %endif
 %if "%{flavor}" == "qt6"
-  %define qt6 1
-  %define pkg_suffix 6
-  %define kf6_version 6.13.0
-  %define qt6_version 6.8.0
+%define qt6 1
+%define pkg_suffix 6
+%define kf6_version 6.13.0
+%define qt6_version 6.8.0
 %endif
 %define rname kquickimageeditor
 
 %bcond_without released
 Name:           kquickimageeditor%{?pkg_suffix}
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        A set of QtQuick components for image editing
 License:        LGPL-2.1-or-later
