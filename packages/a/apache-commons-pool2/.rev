@@ -55,4 +55,12 @@
     <comment>Simplify and clean up the spec file: avoid versioned jars</comment>
     <requestid>1170859</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1dd7a0006ff2676c2e43df5fc17d62de</srcmd5>
+    <version>2.13.1</version>
+    <time>1782229139</time>
+    <user>anag_factory</user>
+    <comment>2.13.1</comment>
+    <requestid>1361192</requestid>
+  </revision>
 </revisionlist>

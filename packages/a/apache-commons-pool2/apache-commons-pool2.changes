@@ -1,4 +1,512 @@
 -------------------------------------------------------------------
+Mon Jun 22 14:55:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.1
+  * Fixed Bugs:
+    + POOL-427: The fix for POOL-425 introduced a regression where
+      addObject fails when maxIdle is negative (indicating no limit)
+- Removed patch:
+  * jakarta-commons-pool-build.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Mon Jun 22 14:47:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.13.0
+  * New features:
+    + Add org.apache.commons.pool2.PooledObject
+      .nonNull(PooledObject)
+    + Add org.apache.commons.pool2.PooledObject
+      .getObject(PooledObject)
+    + Made statistics collection optional in BaseGenericObjectPool
+      #429
+  * Fixed Bugs:
+    + POOL-424: GenericObjectPool.invalidateObject() can leave other
+      threads waiting to borrow hanging. The fix for this issue
+      changes behavior of invalidateObject. This method now always
+      tries to add a new instance to the pool to replace the
+      invalidated and destroyed instance. As a result of this
+      change, abandoned object removal now attemps to replace
+      abandoned objects
+    + POOL-425: GenericObjectPool addObject does not respect maxIdle
+    + POOL-350: Make placement of calls to GKOP reuseCapacity
+      configurable
+    + POOL-290: TestSoftRefOutOfMemory (unit test) can loop
+      infinitely on failure
+    + POOL-419: GenericObjectPool counters and object collections
+      can be corrupted when returnObject and invalidate are invoked
+      concurrently by client threads on the same pooled object
+    + POOL-421: GenericObjectPool addObject should return
+      immediately when there is no capacity to add
+    + POOL-420: The maximum wait time for GenericKeyedObjectPool
+      .borrowObject(*) may exceed configured maximum wait time.
+      This is the same issue as POOL-418, but for GKOP. Also included
+      in this fix is a change to addObject that prevents it from
+      waiting for capacity to create. That method now returns
+      immediately when there is no capcity to add to the pool under
+      the given key
+    + Remove -nouses directive from maven-bundle-plugin. OSGi
+      package imports now state 'uses' definitions for package
+      imports, this doesn't affect JPMS
+      (from org.apache.commons:commons-parent:80)
+    + POOL-418: The maximum wait time for GenericObjectPool
+      .borrowObject(*) may exceed expectations due to a spurious
+      thread wakeup. he remaining duration was incorrectly
+      calculated and the method did not end up waiting long enough.
+      Recompute the remaining duration an additional time when we
+      block when exhausted
+    + Fix site link from the About page to the Download page, see
+      also #387
+    + Operation on the "idleHighWaterMark" shared variable in
+      "ErodingFactor" class is not atomic
+      [org.apache.commons.pool2.PoolUtils$ErodingFactor] At
+      PoolUtils.java:[line 98]
+      AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE
+    + org.apache.commons.pool2.impl.GenericObjectPool
+      .create(Duration) should normalize a negative duration to zero
+    + Fix potential ConcurrentModificationException in EvictionTimer
+      thread clean-up
+    + Fix potential ConcurrentModificationException in EvictionTimer
+      tasks
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 79 to 93
+    + [test] Bump commons-lang3 from 3.17.0 to 3.20.0
+
+-------------------------------------------------------------------
+Mon Jun 22 14:43:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.12.1
+  * Fixed Bugs:
+    + Use java.time.Instant precision in org.apache.commons.pool2
+      .impl.ThrowableCallStack.Snapshot throwable message
+    + GenericObjectPool.borrowObject(Duration) doesn't obey its
+      borrowMaxWait Duration argument when the argument is different
+      from GenericObjectPool.getMaxWaitDuration()
+    + POOL-418:  The maximum wait time for GenericObjectPool
+      .borrowObject(*) may exceed expectations due to a spurious
+      thread wakeup
+    + Javadoc is missing its Overview page
+    + Migrate site generation templates to
+      https://maven.apache.org/xsd/xdoc-2.0.xsd
+  * Changes:
+    + Bump org.apache.commons:commons-parent from 62 to 79
+    + [test] Bump commons-lang3 from 3.13.0 to 3.17.0
+    + [site] Pickup org.apache.bcel:bcel version from parent POM
+    + [test] Bump org.ow2.asm:asm-util from 9.5 to 9.7.1
+
+-------------------------------------------------------------------
+Mon Jun 22 14:38:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.12.0
+  * New features:
+    + Add PooledObject.getFullDuration()
+    + Add GenericKeyedObjectPool.getKeys()
+    + Add KeyedObjectPool.getKeys()
+    + Add github/codeql-action.
+    + Add BaseGenericObjectPool.Evictor.toString().
+    + Make BaseGenericObjectPool implement AutoCloseable.
+    + Add BaseGenericObjectPool methods that return Duration and
+      deprecate equivalents that return milliseconds as long
+    + Add BaseObjectPoolConfig.DEFAULT_DURATION_BETWEEN_EVICTION_RUNS
+      and deprecate BaseObjectPoolConfig
+      .DEFAULT_TIME_BETWEEN_EVICTION_RUNS
+  * Fixed Bugs:
+    + POOL-401: Ensure that capacity freed by invalidateObject is
+      available to all keyed pools
+    + POOL-391: Ensure capacity freed by clear is made available to
+      GKOP borrowers
+    + POOL-402: Check blockWhenExhausted in hasBorrowWaiters #116
+    + Simplify test assertion with similar call but simpler. #131
+    + POOL-405: NullPointerException GenericKeyedObjectPool
+      .invalidateObject(GenericKeyedObjectPool.java:1343)
+    + POOL-408: Fix a typo related to KeyedPooledObjectFactory on
+      the site and Javadoc
+    + Fail-fast on null input for DefaultPooledObjectInfo
+      .DefaultPooledObjectInfo(PooledObject) with a
+      NullPointerException
+    + POOL-393: Improve BaseGenericObjectPool's JMX Register
+      performance when creating many pools
+    + Null-guard in GenericObjectPool.use(T) like other call sites
+      of GenericObjectPool.getPooledObject(T)
+    + POOL-411: Guard against NPE when deregistering a key at the
+      end of borrow
+    + Make private GenericKeyedObjectPool.ObjectDeque class static
+    + Make private BaseGenericObjectPool.StatsStore class static
+    + [StepSecurity] ci: Harden GitHub Actions #225
+    + Fix possible NPE in DefaultPooledObjectInfo
+      .getPooledObjectToString()
+    + Fix possible NPE in DefaultPooledObjectInfo
+      .getPooledObjectType()
+  * Changes:
+    + Bump actions/cache from 2.1.6 to 3.0.10 #117, #138, #158,
+      #174, #178
+    + Bump actions/checkout from 2.3.4 to 3.0.2 #109, #112, #134
+    + Bump actions/setup-java from 2 to 3.5.1
+    + Bump spotbugs from 4.3.0 to 4.7.3 #94, #99, #106, #114, #122,
+      #129, #137, #155, #168, #187
+    + Bump spotbugs-maven-plugin from 4.3.0 to 4.7.3.0 #102, #110,
+      #119, #125, #128, #139, #149, #157, #161, #169, #180, #190
+    + Bump junit-bom from 5.8.0-M1 to 5.9.1 #96, #100, #103, #120,
+      #160, #172
+    + Bump checkstyle from 8.45.1 to 9.3 #97, #104, #111, #121,
+      #126, #132
+    + Bump maven-checkstyle-plugin from 3.1.2 to 3.2.0 #166
+    + Bump maven-pmd-plugin from 3.14.0 to 3.19.0 #101, #153, #170
+    + Bump pmd from 6.44.0 to 6.52.0
+    + Bump biz.aQute.bndlib from 5.3.0 to 6.4.1 #105, #118, #135,
+      #151, #154, #191, #223
+    + Bump maven-bundle-plugin from 5.1.3 to 5.1.8 #127, #146, #148,
+      #159, #164
+    + Bump maven-surefire-plugin from 3.0.0-M7 to 3.0.0-M6 #142,
+      #152
+    + Bump asm-util from 9.2 to 9.5 #141, #179, #220
+    + Bump commons-parent from 52 to 58 #173, #195, #204, #222
+    + Bump japicmp-maven-plugin from 0.15.3 to 0.16.0
+    + Bump animal-sniffer-maven-plugin 1.20 to 1.21
+    + Bump Apache Commons BCEL 6.5.0 to 6.7.0 #194
+    + Bump commons-lang3 from 3.12.0 to 3.13.0
+
+-------------------------------------------------------------------
+Mon Jun 22 14:31:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.11.1
+  * Fixed Bugs:
+    + Getting a PooledObject's active duration returns a negative
+      duration when the object is borrowed but not returned.
+      Affects:
+      ° PooledObject.getActiveDuration()
+      ° PooledObject.getActiveTime()
+      ° PooledObject.getActiveTimeMillis()
+    + The default implementation of TrackedUse.getLastUsedInstant()
+      uses seconds instead of milliseconds
+    + This interface is not implemented within Apache Commons Pool
+      but affects Apache Commons DBCP
+    + DefaultPooledObject.getIdleTime() drops nanoseconds on Java 9
+      and greater
+    + Fix field label in BaseGenericObjectPool toString() builder:
+      From timeBetweenEvictionRunsMillis to
+      durationBetweenEvictionRuns
+    + Fix field label in BaseObjectPoolConfig toString() builder:
+      From maxWaitMillis to maxWaitDuration
+    + Fix field label in NoSuchElementException message for
+      GenericObjectPool.borrowObject(Duration): From
+      borrowMaxWaitMillis to borrowMaxWaitDuration
+    + Reimplement DefaultPooledObject.getIdleDuration() using
+      Duration computation
+    + Reimplement BaseGenericObjectPool.maxBorrowWait as a Duration
+      instead of a long
+    + Minors Changes #89
+  * Changes:
+    + Bump checkstyle from 8.45 to 8.45.1 #93
+    + Bump spotbugs from 4.2.3 to 4.3.0 and ignore new medium
+      warnings EI_EXPOSE_REP and EI_EXPOSE_REP2
+
+-------------------------------------------------------------------
+Mon Jun 22 14:19:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.11.0
+  * New features:
+    + Track timestamps with Instants instead of longs. There is
+      currently no increased precision on Java 8, but starting with
+      Java 9, the JRE SystemClock precision is increased usually
+      down to microseconds, or tenth of microseconds, depending on
+      the OS, Hardware, and JVM implementation.
+      Add and use:
+      ° DefaultPooledObject.getCreateInstant()
+      ° DefaultPooledObject.getLastUsedInstant()
+      ° PooledObject.getCreateInstant()
+      ° PooledObject.getLastBorrowInstant()
+      ° PooledObject.getLastReturnInstant()
+      ° PooledObject.getLastUsedInstant()
+      ° TrackedUse#getLastUsedInstant()
+    + Add BaseObjectPoolConfig.setEvictorShutdownTimeoutDuration(Duration),
+      deprecate setEvictorShutdownTimeoutMillis(Duration)
+    + Add BaseGenericObjectPool.{get|set}MaxWaitDuration(Duration)
+      and deprecate {get|set}MaxWaitMillis(long)
+    + Add BaseObjectPoolConfig.{get|set}MaxWaitDuration(Duration)
+      and deprecate {get|set}MaxWaitMillis(long)
+    + Add and use Duration APIs instead of ints or longs.
+      ° Add and use Duration APIs in BaseGenericObjectPool:
+        getDurationBetweenEvictionRuns(),
+        getEvictorShutdownTimeoutDuration(),
+        getMinEvictableIdleDuration(),
+        getSoftMinEvictableIdleDuration(), setMaxWait(Duration),
+        setMinEvictableIdle(Duration),
+        setSoftMinEvictableIdle(Duration)
+      ° Add and use Duration APIs in BaseObjectPoolConfig:
+        getDurationBetweenEvictionRuns(),
+        getEvictorShutdownTimeoutDuration(),
+        getMinEvictableIdleDuration(),
+        getSoftMinEvictableIdleDuration()
+      ° Add and use Duration APIs in EvictionConfig:
+        getIdleEvictDuration(), getIdleSoftEvictDuration()
+      ° Add and use Duration APIs in PooledObject: getIdleDuration(),
+        getActiveDuration()
+      ° No need to initialize instance variables to their default
+        values
+      ° Update Javadocs.
+      ° Update toString() implementations with duration labels
+    + POOL-396: Handle validation exceptions during eviction. #85
+    + POOL-395: Improve exception thrown in GenericObjectPool
+      .borrowObject when pool is exhausted. Added
+      BaseGenericObjectPool.setMessagesStatistics(boolean)
+    + Add and use AbandonedConfig.copy(AbandonedConfig) to fix CPD
+      code duplication issues in GenericKeyedObjectPool and
+      GenericObjectPool
+    + Pull up AbandonedConfig and related methods from
+      GenericKeyedObjectPool and GenericObjectPool to
+      BaseGenericObjectPool (fix for CPD issues).
+      ° BaseGenericObjectPool.getLogAbandoned()
+      ° BaseGenericObjectPool.getRemoveAbandonedOnBorrow()
+      ° BaseGenericObjectPool.getRemoveAbandonedOnMaintenance()
+      ° BaseGenericObjectPool.getRemoveAbandonedTimeout()
+      ° BaseGenericObjectPool.getRemoveAbandonedTimeoutDuration()
+      ° BaseGenericObjectPool.isAbandonedConfig()
+      ° BaseGenericObjectPool.setAbandonedConfig(AbandonedConfig)
+  * Fixed Bugs:
+    + Fix "[WARNING] Old version of checkstyle detected. Consider
+      updating to >= v8.30." Update Checktyle to 8.44
+    + Make Duration setters use their respective default values when
+      null
+    + Call swallowException(Exception) instead of printing
+      exceptions to the console in GenericKeyedObjectPool
+      .removeAbandoned(AbandonedConfig) and GenericObjectPool
+      .removeAbandoned(AbandonedConfig)
+    + Fix Javadoc link reference #91
+    + No need to initialize to default values. #90
+    + Bump org.ow2.asm:asm-util from 9.1 to 9.2
+    + Bump com.github.spotbugs:spotbugs from 4.2.3 to 4.3.0
+    + Bump checkstyle from 8.44 to 8.45 #92
+
+-------------------------------------------------------------------
+Mon Jun 22 14:09:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.10.0
+  * New features:
+    + Add and use java.time.Duration APIs timeouts instead of using
+      ints for seconds.
+    + Implement AbandonedConfig for GenericKeyedObjectPool #67
+  * Fixed Bugs:
+    + Simplify Assertions in tests #77
+    + Replace C-style array declaration with Java style #80
+    + Use Objects.equals(); Use Anonymous type; Use method reference
+      instead Lambda; Replace Loop with Collection.removeIf(). #81
+    + Use diamond operator. #82
+    + Code clean ups. #83
+  * Changes:
+    + Bump spotbugs-maven-plugin from 4.0.4 to 4.2.1 #48, #53, #59,
+      #62
+    + Bump actions/setup-java from v1.4.2 to v2, #47
+    + Bump junit from 4.13 to 4.13.1 #50
+    + Bump biz.aQute.bndlib from 5.1.2 to 5.3.0, #51, #66
+    + POOL-389: Migrate to JUnit 5 #57
+    + POOL-389: Minor Improvements #58, #60
+    + Bump actions/checkout from v2.3.3 to v2.3.4 #54
+    + Bump maven-pmd-plugin from 3.13.0 to 3.14.0 #55
+    + Update commons.japicmp.version 0.14.3 -> 0.15.3
+    + Bump actions/cache from v2 to v2.1.6 #65, #75, #84
+    + Bump maven-checkstyle-plugin from 3.1.1 to 3.1.2 #61
+    + Bump asm-util from 9.0 to 9.1 #64
+    + Bump spotbugs from 4.2.1 to 4.2.3 #68, #73, #74
+    + Bump junit-bom from 5.7.1 to 5.8.0-M1 #76
+    + Bump maven-bundle-plugin from 5.1.1 to 5.1.2 #70
+    + Bump animal-sniffer-maven-plugin from 1.19 to 1.20
+
+-------------------------------------------------------------------
+Mon Jun 22 14:08:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.9.0
+  * Changes:
+    + POOL-387: Object factory destroy method should carry
+      information on activation context
+    + Update spotbugs from 4.0.6 to 4.1.3, #37, #41, #46
+    + Update actions/checkout from v2.3.1 to v2.3.3 #56, #45
+    + Update actions/setup-java from v1.4.0 to v1.4.2 #42
+    + Update optional asm-util from 8.0.1 to 9.0 #44
+
+-------------------------------------------------------------------
+Mon Jun 22 14:04:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.8.1
+  * New features:
+    + POOL-385: Added Automatic-Module-Name to support JPMS #31
+  * Fixed Bugs:
+    + POOL-386: Refactored EvictionTimer usage tracking to fix
+      POOL-386 and handle abandoned pools. #32
+    + [Javadoc] Add missing @throws comment in PoolUtils. #27
+  * Changes:
+    + POOL-384: Update optional library org.ow2.asm:asm-util from
+      7.2 to 8.0.1
+    + Update site reports from org.apache.bcel:bcel 6.4.1 to 6.5.0
+    + Update site reports from maven-pmd-plugin 3.12.0 to 3.13.0
+    + Update build from biz.aQute.bnd:biz.aQute.bndlib
+      5.1.0 -> 5.1.2
+    + Update actions/checkout from v1 to v2.3.1 #33
+    + Update commons-parent from 50 to 51 #36
+    + Update Checkstyle plugin from 3.0.0 to 3.1.1
+    + Update JApiCmp from 0.14.1 to 0.14.3
+    + Update animal-sniffer-maven-plugin from 1.16 to 1.19
+
+-------------------------------------------------------------------
+Mon Jun 22 14:00:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.8.0
+  * New features:
+    + POOL-378: Deprecate PoolUtils.prefill(ObjectPool, int) in
+      favor of ObjectPool.addObjects(int)
+    + POOL-379: Deprecate PoolUtils.prefill(KeyedObjectPool, K, int)
+      in favor of KeyedObjectPool.addObjects(K, int)
+    + POOL-380: Deprecate PoolUtils.prefill(KeyedObjectPool,
+      Collection, int) in favor of KeyedObjectPool
+      .addObjects(Collection, int)
+  * Fixed Bugs:
+    + POOL-374: org.apache.commons.pool2.impl.GenericKeyedObjectPool
+      .returnObject(K, T) should throw IllegalStateException instead
+      of NullPointerException when a key is not found in the pool
+      map
+    + POOL-376: Fixed regression from original fix for POOL-356
+      which could result in NPE when destroying objects
+    + POOL-326: Eliminated NPE / ISE exceptions due to keyed pools
+      being prematurely removed
+    + Close BufferedOutputStream in test before calling toString on
+      underlying BufferedOutputStream #26
+    + [Javadoc] Add missing @throws comment in
+      SoftReferenceObjectPool. #28
+  * Changes:
+    + POOL-375: Update optional library cglib from 3.2.12 to 3.3.0
+    + Update site build from Apache Commons BCEL 6.3.1 to 6.4.1
+    + POOL-377: Update optional library org.ow2.asm:asm-util from
+      7.1 to 7.2
+
+-------------------------------------------------------------------
+Mon Jun 22 13:58:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.7.0
+  * New features:
+    + POOL-370: Add org.apache.commons.pool2.PooledObject
+      #getBorrowedCount()
+    + POOL-371: Add org.apache.commons.pool2.PooledObject
+      #setRequireFullStackTrace(boolean)
+  * Fixed Bugs:
+    + POOL-361: Move validation for newly created objects into
+      create(). Fixes #23
+  * Changes:
+    + POOL-364: Update from Java 7 to Java 8
+    + POOL-365: Update ASM from 7.0 to 7.1
+    + POOL-366: Update optional library cglib from 3.2.10 to 3.2.12
+    + POOL-367: Fix typo in package private method name
+      stopEvitor() -> stopEvictor() #22
+
+-------------------------------------------------------------------
+Mon Jun 22 13:55:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.6.2
+  * Fixed Bugs:
+    + POLL-362: Always null out org.apache.commons.pool2.impl
+      .BaseGenericObjectPool.evictionIterator to match
+       org.apache.commons.pool2.impl.BaseGenericObjectPool.evictor
+    + POLL-363: Evictor Thread prevents Spring Context shutdown in
+      standalone app
+    + POLL-348: The commons-pool-evictor-thread should run as a
+      Deamon
+
+-------------------------------------------------------------------
+Mon Jun 22 13:53:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.6.1
+  * Fixed Bugs:
+    + POOL-340: Correct validateObject with concurrent borrowObject
+    + POOL-356: Fix deadlock on massive concurrent requests
+    + POOL-347: Method borrowObject waits for maxWaitMillis over in
+      pool full
+    + POOL-359: NullPointerException closing multiple
+      GenericObjectPools
+    + POOL-326: Threading issue, NullPointerException and
+      IllegalStateException in GenericKeyedObjectPool
+    + POOL-352: CallStackUtils mishandles security manager check
+      (partial fix.)
+  * Changes:
+    + POOL-345: Update optional library cglib from 3.2.6 to 3.2.9
+    + POOL-346: Move common configuration setter to
+      BaseGenericObjectPool #9
+    + POOL-349: Update optional library asm-util from 6.2 to 7.0
+    + POOL-360: Update optional library cglib from 3.2.9 to 3.2.10
+
+-------------------------------------------------------------------
+Mon Jun 22 13:50:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.6.0
+  * Fixed Bugs:
+    + POOL-337: Ensure cancelled eviction tasks are removed from
+      scheduler
+    + POOL-338: GenericObjectPool constructor may throw an exception
+      under OSGi
+    + POOL-324: org.apache.commons.pool2.impl.GenericObjectPool
+      .getFactoryType() throws java.lang.ClassCastException
+    + POOL-344: Delete repeated call startEvictor
+  * Changes:
+    + POOL-336: GenericObjectPool's borrowObject lock if create()
+      fails with Error
+    + POOL-339: Update optional library cglib from 3.2.5 to 3.2.6
+    + POOL-341: Update optional library asm-util from 6.0 to 6.1.1
+    + POOL-342: Update optional library asm-util from 6.1.1 to 6.2
+
+-------------------------------------------------------------------
+Mon Jun 22 13:48:45 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.5.0
+  * New features:
+    + POOL-332: ObjectPool and KeyedObject pool should extend
+      Closeable.
+    + POOL-335: Make abandoned logging stack trace requirements
+      configurable. This also reverts the default behavior
+      introduced by POOL-320.
+  * Changes:
+    + POOL-331: Update from Java 6 to 7.
+    + POOL-333: Update optional dependency asm-util from 5.2 to 6.0
+    + POOL-334: org.apache.commons.pool2.impl.ThrowableCallStack
+      .Snapshot is missing serialVersionUID
+
+-------------------------------------------------------------------
+Mon Jun 22 13:43:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.4.3
+  * New features:
+    + POOL-320: Use more efficient stack walking mechanisms for
+      usage tracking when possible.
+  * Fixed Bugs:
+    + POOL-328: Documentation with repeated words (sources, tests,
+      and examples)
+    + POOL-317: Correction of default value of
+      softMinEvictableIdleTimeMillis in BaseObjectPoolConfig
+    + POOL-309: Fix misspellings from "destory" to "destroy"
+    + POOL-306: Ensure BaseGenericObjectPool
+      .IdentityWrapper#equals() follows the expected contract for
+      equals()
+    + POOL-303: Ensure that threads do not block indefinitely if
+      more than maxTotal threads try to borrow an object at the same
+      time and the factory fails to create any objects.
+    + POOL-310: Ensure that threads using GKOP do not block
+      indefinitely if more than maxTotal threads try to borrow
+      objects with different keys at the same time and the factory
+      destroys objects on return
+    + Ensure that any class name used for evictionPolicyClassName
+      represents a class that implements EvictionPolicy.
+    + POOL-315: Add a configurable delay (default 10 seconds) to
+      wait when shutting down an Evictor to allow the associated
+      thread time to complete and current evictions and to terminate
+    + Ensure that a call to GKOP preparePool() takes account of
+      other threads that might create objects concurrently,
+      particularly the Evictor.
+  * Changes:
+    + POOL-280: Small refactoring of borrowObject() to reduce code
+      duplication
+    + POOL-307: Replace inefficient use of keySet with entrySet in
+      GKOP
+    + POOL-322: Update optional cglib library from 3.1 to 3.2.5.
+    + POOL-323: Update optional OW2 ASM from 5.0.4 to 5.2.
+
+-------------------------------------------------------------------
 Mon Apr 29 17:32:24 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Simplify and clean up the spec file: avoid versioned jars
@@ -71,7 +579,7 @@ Thu Mar 13 17:07:19 CET 2008 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Fri Sep 15 15:05:27 CEST 2006 - ro@suse.de
 
-- set source=1.4 for java 
+- set source=1.4 for java
 
 -------------------------------------------------------------------
 Wed Jan 25 21:46:38 CET 2006 - mls@suse.de
