@@ -454,4 +454,30 @@ After this PR, there will be a delete request for kernel-firmware.
   * ti: Add PCM6240 firmware with multiple audio profiles support</comment>
     <requestid>1355554</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>154f449e3bbe5fc46621171cffa8b423</srcmd5>
+    <version>20260618</version>
+    <time>1782229037</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260618 (git commit a8f9ebbaa645):
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a Dell laptop
+  * linux-firmware: Add RCA firmware files for tas257x projects
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for various Dell laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for a couple of Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a Lenovo laptop
+  * cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for two Dell laptops
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops</comment>
+    <requestid>1361048</requestid>
+  </revision>
 </revisionlist>

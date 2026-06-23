@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jun 19 06:21:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260618 (git commit a8f9ebbaa645):
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+
+-------------------------------------------------------------------
+Wed Jun 10 14:19:50 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
+Sat Jun  6 15:50:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a Dell laptop
+  * linux-firmware: Add RCA firmware files for tas257x projects
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for various Dell laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for a couple of Lenovo laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a Lenovo laptop
+  * cirrus: cs35l56: Add Cirrus CS35L56 firmware mappings for two Dell laptops
+
+-------------------------------------------------------------------
+Wed May 27 11:04:35 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for some Lenovo laptops
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Lenovo laptops
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops
+
+-------------------------------------------------------------------
 Tue May 19 13:53:26 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260519 (git commit d962a6a309b7):
