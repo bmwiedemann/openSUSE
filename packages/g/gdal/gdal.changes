@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:13:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the Python bindings for all supported interpreters
+  instead of only the default one (boo#1246076):
+  * compile the C++ core once and build the osgeo bindings for
+    each supported Python flavor against it
+  * move the Python command line utilities (gdal_calc.py, ...)
+    into a new noarch gdal-python-tools subpackage
+- Enable additional format drivers that are shipped by other
+  distributions:
+  * CFITSIO (FITS), Qhull, HEIF, JPEG-XL, AVIF and Blosc support
+  * enable libdeflate support explicitly
+- Drop build constructs for the now-EOL Leap 15 / SLE 15
+  codestreams (gcc 13 override, sle15 python module macros)
+
+-------------------------------------------------------------------
 Sat Jun  6 18:15:25 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - Fix boo#1264521, boo#1264522, boo#1264523, boo#1264525

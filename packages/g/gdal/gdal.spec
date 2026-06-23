@@ -26,24 +26,27 @@
 %else
 %bcond_without netcdf_support
 %endif
-%if 0%{?suse_version} > 1500
-%define pythons python3
-%else
-%define gccver 13
-%{?sle15_python_module_pythons}
-%endif
-%define mypython %{pythons}
-%define __mypython %{expand:%%__%{mypython}}
-%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
+# Build the GDAL Python bindings for the additional supported flavors in
+# addition to the default interpreter, so other packages can depend on
+# the full set and not just the primary one (boo#1246076)
+%add_python python311
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 %bcond_with kml_support
 %bcond_with sfcgal_support
 %bcond_with hdf4_support
-%bcond_with heif_support
-%bcond_with qhull_support
-%bcond_with deflate_support
+%bcond_without heif_support
+%bcond_without qhull_support
+%bcond_without deflate_support
+%bcond_without cfitsio_support
+%bcond_without jxl_support
+%bcond_without blosc_support
+# Arrow/Parquet (GeoParquet) is temporarily disabled: apache-arrow in
+# Factory still needs an older libprotobuf soname and is not installable
+# until it is rebuilt against the current protobuf
+%bcond_with arrow_support
+%bcond_without avif_support
 %bcond_with tests_support
 Name:           gdal
 Version:        3.13.1
@@ -54,10 +57,10 @@ URL:            https://www.gdal.org/
 Source0:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz
 Source1:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}-%{version}.tar.xz.md5
 Source2:        https://download.osgeo.org/%{name}/%{version}/%{sourcename}autotest-%{version}.zip
-BuildRequires:  %{mypython}-base
-BuildRequires:  %{mypython}-devel
-BuildRequires:  %{mypython}-numpy-devel
-BuildRequires:  %{mypython}-setuptools
+BuildRequires:  %{python_module base}
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
 BuildRequires:  blas-devel
@@ -66,7 +69,7 @@ BuildRequires:  curl-devel >= 7.68
 BuildRequires:  dos2unix
 BuildRequires:  doxygen >= 1.4.2
 BuildRequires:  fdupes
-BuildRequires:  gcc%{?gccver}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  geos-devel >= 3.8
 BuildRequires:  giflib-devel
 BuildRequires:  hdf5-devel >= 1.10
@@ -116,6 +119,7 @@ BuildRequires:  pkgconfig(spatialite) >= 4.1.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.31
 BuildRequires:  pkgconfig(xerces-c)
 BuildRequires:  pkgconfig(zlib) >= 1.1.4
+Recommends:     gdal-python-tools
 %if %{with netcdf_support}
 BuildRequires:  pkgconfig(netcdf)
 %endif
@@ -124,15 +128,12 @@ BuildRequires:  cmake-full
 %else
 BuildRequires:  cmake
 %endif
-%if 0%{?sle_version} == 150300 && 0%{?is_opensuse}
-BuildRequires:  python-rpm-macros
-%endif
 %if %{with tests_support}
-BuildRequires:  %{mypython}-lxml
-BuildRequires:  %{mypython}-pytest
-BuildRequires:  %{mypython}-pytest-env
-BuildRequires:  %{mypython}-pytest-sugar
 BuildRequires:  proj
+BuildRequires:  python3-lxml
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-env
+BuildRequires:  python3-pytest-sugar
 %endif
 %if %{with deflate_support}
 BuildRequires:  libdeflate-devel
@@ -155,6 +156,22 @@ BuildRequires:  hdf-devel
 %if %{with qhull_support}
 BuildRequires:  pkgconfig(qhull_r)
 %endif
+%if %{with cfitsio_support}
+BuildRequires:  pkgconfig(cfitsio)
+%endif
+%if %{with jxl_support}
+BuildRequires:  pkgconfig(libjxl)
+%endif
+%if %{with blosc_support}
+BuildRequires:  pkgconfig(blosc)
+%endif
+%if %{with arrow_support}
+BuildRequires:  apache-arrow-devel
+BuildRequires:  apache-parquet-devel
+%endif
+%if %{with avif_support}
+BuildRequires:  libavif-devel
+%endif
 %if %{with ecw5_support}
 BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 %else
@@ -162,8 +179,6 @@ BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
 BuildRequires:  libecwj2-devel
 %endif
 %endif
-# 3.9.x we stop requiring this hardly
-#Requires:       %%{mypython}-GDAL = %%{version}
 
 %description
 GDAL is a translator library for raster geospatial data formats that
@@ -200,14 +215,24 @@ Conflicts:      lib%{name}32
 %description -n lib%{name}-drivers
 Drivers information for library
 
-%package -n %{mypython}-%{pypi_package_name}
-Summary:        GDAL %{mypython} module
-Requires:       %{name} = %{version}-%{release}
-Provides:       %{mypython}-%{name} = %{version}
-Obsoletes:      %{mypython}-%{name} < %{version}
+%package -n python-%{pypi_package_name}
+Summary:        GDAL Python module
+Requires:       gdal = %{version}-%{release}
+Provides:       python-gdal = %{version}
+Obsoletes:      python-gdal < %{version}
 
-%description -n %{mypython}-%{pypi_package_name}
+%description -n python-%{pypi_package_name}
 The GDAL python modules provide support to handle multiple GIS file formats.
+
+%package -n gdal-python-tools
+Summary:        Command line tools written in Python for GDAL
+Requires:       %{name} = %{version}-%{release}
+Requires:       python3-%{pypi_package_name} = %{version}
+BuildArch:      noarch
+
+%description -n gdal-python-tools
+This package contains the command line utilities that ship with GDAL and
+are written in Python (gdal_calc.py, gdal_merge.py, gdal2tiles.py, ...).
 
 %package bash-completion
 Summary:        Bash completion for GDAL
@@ -218,6 +243,9 @@ BuildArch:      noarch
 
 %description bash-completion
 bash command line completion support for GDAL
+
+%define python_subpackage_only 1
+%python_subpackages
 
 %prep
 %autosetup -p1 -n %{sourcename}-%{version} -a2 -v
@@ -242,14 +270,12 @@ done
 find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python3/d' {} \;
 find swig/python/gdal-utils/osgeo_utils -iname '*.py' -ls -exec sed -i '/^#!\/usr\/bin\/env python/d' {} \;
 # Fix wrong /usr/bin/env python3
-find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__mypython}," {} \;
+find . -iname "*.py" -exec sed -i "s,^#!%{_bindir}/env python3,#!%{__python3}," {} \;
 
 # Remove libertiff
 sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff library")||1' -i frmts/CMakeLists.txt
 
 %build
-%{?gccver:export CC=gcc-%{gccver}}
-%{?gccver:export CXX=g++-%{gccver}}
 %cmake \
   -DGDAL_USE_INTERNAL_LIBS=OFF \
   -DGDAL_USE_EXTERNAL_LIBS=ON \
@@ -257,9 +283,30 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
   -DECW_ROOT="../ECW/Desktop_Read-Only" \
 %endif
   -DCMAKE_INSTALL_INCLUDEDIR=%{_includedir}/gdal \
+  -DPython_LOOKUP_VERSION=%{python3_version} \
   -DGDAL_USE_ARMADILLO=ON \
+%if %{with cfitsio_support}
+  -DGDAL_USE_CFITSIO=ON \
+%else
   -DGDAL_USE_CFITSIO=OFF \
+%endif
   -DGDAL_USE_CURL=ON \
+%if %{with deflate_support}
+  -DGDAL_USE_DEFLATE=ON \
+%endif
+%if %{with jxl_support}
+  -DGDAL_USE_JXL=ON \
+%endif
+%if %{with blosc_support}
+  -DGDAL_USE_BLOSC=ON \
+%endif
+%if %{with arrow_support}
+  -DGDAL_USE_ARROW=ON \
+  -DGDAL_USE_PARQUET=ON \
+%endif
+%if %{with avif_support}
+  -DGDAL_USE_AVIF=ON \
+%endif
   -DGDAL_USE_EXPAT=ON \
   -DGDAL_USE_FREEXL=ON \
   -DGDAL_USE_GEOS=ON \
@@ -321,10 +368,37 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
 
 %cmake_build
 
+# The CMake build above compiles the C++ core and the Python bindings for
+# the primary interpreter only. Build the bindings for the remaining
+# flavors against that already-built core (the core is compiled once).
+for python in %{pythons}; do
+  [ "$python" = "%{primary_python}" ] && continue
+  pybin="${python/python3/python3.}"
+  ( cd swig/python && $pybin setup.py build )
+done
+
 %install
 %cmake_install
 %{python3_fix_shebang}
-%fdupes %{buildroot}%{mypython_sitearch}
+%fdupes %{buildroot}%{python3_sitearch}
+
+# Install the Python bindings for the additional flavors built in %%build.
+# Only the compiled osgeo core and the pure-python osgeo_utils go into
+# each flavor's site-packages; the /usr/bin/*.py wrappers are shipped once
+# by the noarch gdal-python-tools subpackage, so drop the per-flavor copies.
+for python in %{pythons}; do
+  [ "$python" = "%{primary_python}" ] && continue
+  pybin="${python/python3/python3.}"
+  sitearch=$($pybin -c 'import sysconfig; print(sysconfig.get_path("platlib"))')
+  # Install only the library (osgeo + osgeo_utils) and its metadata for
+  # this flavor; the command line scripts are shipped once, by the noarch
+  # gdal-python-tools subpackage from the primary flavor's install.
+  ( cd %{__builddir}/swig/python && \
+    $pybin setup.py install_lib --skip-build --install-dir=%{buildroot}$sitearch && \
+    $pybin setup.py install_egg_info --install-dir=%{buildroot}$sitearch )
+  %fdupes %{buildroot}$sitearch
+done
+
 #remove duplicate license file
 rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
 
@@ -334,7 +408,7 @@ rm -f %{buildroot}%{_datadir}/%{name}/LICENSE.TXT
 pushd %{name}autotest-%{version}
 	export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 	export GDAL_DATA=%{buildroot}%{_datadir}/%{name}/
-    export PYTHONPATH=%{buildroot}%{mypython_sitearch}/
+    export PYTHONPATH=%{buildroot}%{python3_sitearch}/
 	export GDAL_DOWNLOAD_TEST_DATA=0
 	# Enable these tests on demand
 	#export GDAL_RUN_SLOW_TESTS=1
@@ -593,12 +667,15 @@ popd
 %{_includedir}/gdal/gdal_priv_templates.hpp
 %{_mandir}/man1/gdal-config.1%{?ext_man}
 
-%files -n %{mypython}-%{pypi_package_name}
+%files %{python_files %{pypi_package_name}}
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
-%{mypython_sitearch}/osgeo_utils
-%{mypython_sitearch}/osgeo
-%{mypython_sitearch}/GDAL-%{version}*-info
+%{python_sitearch}/osgeo
+%{python_sitearch}/osgeo_utils
+%{python_sitearch}/GDAL-%{version}*-info
+
+%files -n gdal-python-tools
+%license LICENSE.TXT
 %{_bindir}/gdalattachpct.py
 %{_bindir}/gdal2tiles.py
 %{_bindir}/gdal2xyz.py
