@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:44:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.47.0:
+  This release introduces inline status chips for CI checks,
+  dedicated PR status badges within the Info pane, and improved
+  container execution logic for custom commands. Additionally, it
+  features structural code refactoring, streamlined documentation,
+  and various dependency upgrades to enhance overall stability.
+  * Features
+    - Inline CI Status: Replaced the heavy powerline-style CI
+      summary pill with a lightweight, inline status chip next to
+      the CI Checks heading.
+    - PR Status Badges: Added colored state badges (Open, Merged,
+      Closed, Draft) directly to the Info pane for improved
+      visibility of pull/merge request status.
+    - Claude Skill for Docs Review: Introduced an AI-assisted
+      workspace skill (docs-drift-review) to systematically analyze
+      repository documentation for implementation drift, stale
+      examples, or clarity issues.
+  * Bug Fixes
+    - Container Commands Shell Wrapping: Multi-word container
+      commands are now wrapped in a shell execution (sh -c) to
+      prevent execution failures in container runtimes, and
+      environment variables are properly expanded before execution.
+    - Custom Commands Discovery: Fixed an issue where
+      container-only custom commands were omitted from the command
+      palette.
+    - Custom Theme Handling: Ensured custom themes load properly on
+      startup and dynamically reconcile with delta syntax theme
+      arguments during CLI overrides.
+    - CLI Override Scoping: Fixed a bug where unspecified
+      configuration string fields were reset to default values
+      during CLI theme overrides.
+  * Performance Improvements
+    - Badge Rendering Optimization: Extracted remote host icon
+      mapping tables to the package level to eliminate redundant
+      memory allocations, and deferred style calculations until
+      after validation to prevent unnecessary processing.
+  * Maintenance
+    - Code Refactoring: Grouped scattered Model state fields into
+      dedicated sub-structs (loadingState, detailsState,
+      pendingOpState) to improve long-term codebase
+      maintainability.
+    - Configuration Default Changes: Adjusted the default
+      refresh_interval to 10 seconds, disabled ci_auto_refresh by
+      default, mapped the manual refresh key to r, and introduced
+      the LAZYWORKTREE_DESCRIPTION variable for notes scripts.
+    - Documentation Refinement: Streamlined the user guide and
+      README by removing redundant "Refer to this page when"
+      callouts and simplifying phrasings.
+    - Test & Lint Improvements: Simplified linting targets,
+      resolved test-suite lint warnings, and disabled GPG commit
+      signing in machine test environments to prevent test
+      failures.
+    - Weekly Maintenance: Completed weekly codebase maintenance and
+      test coverage alignments (Pull Requests #66, #67, #68).
+  * Dependencies
+    - Upgraded charm.land/bubbletea/v2 to v2.0.7 (Pull Request #66)
+    - Upgraded charm.land/lipgloss/v2 to v2.0.4 (Pull Request #67)
+    - Upgraded github.com/urfave/cli/v3 to v3.10.0 (Pull Request
+      #67)
+    - Upgraded golang.org/x/term to v0.44.0 (Pull Request #67)
+    - Upgraded github.com/charmbracelet/ultraviolet to newer
+      maintenance snapshots (Pull Requests #66, #67, #68)
+
+-------------------------------------------------------------------
 Fri Jun 05 06:01:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.46.1:
