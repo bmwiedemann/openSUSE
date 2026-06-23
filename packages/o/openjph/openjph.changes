@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 05:53:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.30.1:
+  * Add accelerated PowerPC64 (little-endian) subroutines
+  * Fix many strict aliasing violations
+  * Fix undefined behaviour in ojph_block_encoder_avx2
+  * Improve CI
+
+-------------------------------------------------------------------
 Wed Jun 17 06:07:58 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.29.0:
