@@ -250,4 +250,23 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.1-rc1</comment>
     <requestid>1351034</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>115c53e902c964f0d2cc2a5ff8b2d0b5</srcmd5>
+    <version>20260614</version>
+    <time>1782229033</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260614 (git commit 8d7543434b2d):
+  * realtek: rt1321: Update the patch code to v1.10
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+- Update to version 20260605 (git commit 230073b14d6c):
+  * rtl_nic: add firmware rtl8261c.bin for RTL8261c
+
+- Update to version 20260522 (git commit adb6dceb45b9):
+  * rtw89: 8852b: update fw to v0.29.29.18
+  * rtw89: 8852bt: update fw to v0.29.122.2</comment>
+    <requestid>1361046</requestid>
+  </revision>
 </revisionlist>
