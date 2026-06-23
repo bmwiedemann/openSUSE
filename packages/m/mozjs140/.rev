@@ -117,4 +117,15 @@
   CVE-2025-70103).</comment>
     <requestid>1356902</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>bfc8756b88cf3c75f91c873aae0dc236</srcmd5>
+    <version>140.12.0</version>
+    <time>1782229054</time>
+    <user>anag_factory</user>
+    <comment>- Update to 140.12.0:
+  + Various security fixes
+  + See https://www.firefox.com/en-US/firefox/140.12.0/releasenotes/
+    https://www.firefox.com/en-US/firefox/140.11.0/releasenotes/</comment>
+    <requestid>1361061</requestid>
+  </revision>
 </revisionlist>

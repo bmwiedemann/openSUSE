@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 20 11:35:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 140.12.0:
+  + Various security fixes
+  + See https://www.firefox.com/en-US/firefox/140.12.0/releasenotes/
+    https://www.firefox.com/en-US/firefox/140.11.0/releasenotes/
+
+-------------------------------------------------------------------
 Mon Jun  1 21:40:34 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Add mozjs140-CVE-2025-70103.patch: libjxl: take EC into account
