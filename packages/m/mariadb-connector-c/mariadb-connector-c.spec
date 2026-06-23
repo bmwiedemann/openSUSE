@@ -25,7 +25,7 @@
 %endif
 %bcond_with sqlite3
 Name:           mariadb-connector-c
-Version:        3.4.8
+Version:        3.4.9
 Release:        0
 Summary:        MariaDB connector in C
 License:        LGPL-2.1-or-later
@@ -35,10 +35,7 @@ Source1:        https://archive.mariadb.org/connector-c-%{version}/%{name}-%{ver
 # Imported from keyserver based on keyid @ https://mariadb.com/kb/en/mariadb-enterprise/mariadb-enterprise-installation-guide/
 Source2:        mariadb.keyring
 Source3:        baselibs.conf
-Patch1:         mariadb-connector-c-2.3.1_unresolved_symbols.patch
 Patch4:         private_library.patch
-Patch7:         mariadb-connector-c-3.4.5-const-correctness.patch
-Patch8:         mariadb-connector-c-3.4.5-const-correctness-2.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel
 BuildRequires:  pkgconfig

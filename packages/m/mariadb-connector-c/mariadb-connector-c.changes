@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 20 06:58:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 3.4.9
+  * private_library.patch rebased onto the restructured libmariadb
+    install block (NAMELINK_COMPONENT)
+- Drop patches fixed/superseded upstream:
+  * mariadb-connector-c-3.4.5-const-correctness.patch
+  * mariadb-connector-c-3.4.5-const-correctness-2.patch (upstream now
+    uses a mutable copy instead of casting strchr)
+  * mariadb-connector-c-2.3.1_unresolved_symbols.patch (upstream links
+    the dialog plugin against ${CMAKE_DL_LIBS})
+
+-------------------------------------------------------------------
 Wed Jun  3 15:51:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 3.4.8:

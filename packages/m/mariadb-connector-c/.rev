@@ -479,4 +479,12 @@ boo#1189184, QTBUG-95071, QTBUG-95639</comment>
 - Update keyring for upstream's MariaDB .org signing key; source from archive.mariadb.org</comment>
     <requestid>1357008</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>8b5ab95bb0a3da83f39c07d951dc8d84</srcmd5>
+    <version>3.4.9</version>
+    <time>1782228921</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.9 (the 3.4.9 source is reachable on archive.mariadb.org now; we had shipped 3.4.8 as a stopgap). Drops 3 upstreamed patches, rebases private_library.patch.</comment>
+    <requestid>1360697</requestid>
+  </revision>
 </revisionlist>
