@@ -1,13 +1,36 @@
-Index: cmake-4.0.0/Modules/FindRuby.cmake
-===================================================================
---- cmake-4.0.0.orig/Modules/FindRuby.cmake
-+++ cmake-4.0.0/Modules/FindRuby.cmake
-@@ -286,7 +286,7 @@ if (Ruby_EXECUTABLE AND NOT Ruby_EXECUTA
+From c4ee728699845672c770350aba8bbbf5bab9869f Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Thu, 18 Jun 2026 10:38:51 -0400
+Subject: [PATCH] FindRuby: Fix vendor directory discovery
+
+The `ruby -r vendor-specific` module no longer exists.
+Use `ruby -r rbconfig` instead.
+
+This patch has been carried by openSUSE's cmake package:
+
+* https://build.opensuse.org/projects/openSUSE:Factory/packages/cmake/files/cmake-fix-ruby-test.patch?rev=274
+* https://build.opensuse.org/package/rdiff/openSUSE:Factory/cmake?rev=106
+* https://build.opensuse.org/package/rdiff/openSUSE:Factory/cmake?rev=57
+* https://build.opensuse.org/package/rdiff/openSUSE:Factory/cmake?rev=56
+
+Fixes: #27888
+---
+ Modules/FindRuby.cmake | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Modules/FindRuby.cmake b/Modules/FindRuby.cmake
+index 863f70a7f2..6f865da129 100644
+--- a/Modules/FindRuby.cmake
++++ b/Modules/FindRuby.cmake
+@@ -407,7 +407,7 @@ if (Ruby_EXECUTABLE AND NOT Ruby_EXECUTABLE STREQUAL "${_Ruby_EXECUTABLE_LAST_QU
    _RUBY_CONFIG_VAR("sitelibdir" Ruby_SITELIB_DIR)
  
-   # vendor_ruby available ?
--  execute_process(COMMAND ${Ruby_EXECUTABLE} -r vendor-specific -e "print 'true'"
+   # vendor_ruby - TODO - Not relevant and should be removed.
+-  execute_process(COMMAND "${Ruby_EXECUTABLE}" -r vendor-specific -e "print 'true'"
 +  execute_process(COMMAND ${Ruby_EXECUTABLE} -r rbconfig -e "print 'true' unless RbConfig::CONFIG['vendorarchdir'].nil?"
                    OUTPUT_VARIABLE Ruby_HAS_VENDOR_RUBY ERROR_QUIET)
  
    if (Ruby_HAS_VENDOR_RUBY)
+-- 
+GitLab
+

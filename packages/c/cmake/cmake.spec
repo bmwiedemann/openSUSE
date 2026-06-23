@@ -2,7 +2,7 @@
 # spec file for package cmake
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -51,7 +51,7 @@
 %define pyver 3
 %endif
 Name:           cmake%{?psuffix}
-Version:        4.2.3
+Version:        4.3.4
 Release:        0
 Summary:        Cross-platform make system
 License:        BSD-3-Clause
@@ -68,9 +68,10 @@ Source7:        cmake.keyring
 # https://gitlab.kitware.com/cmake/cmake/-/blob/261b7b933c66/Modules/FindLua.cmake
 Source50:       FindLua.cmake
 Source99:       README.SUSE
-Patch0:         cmake-fix-ruby-test.patch
 # Search for python interpreters from newest to oldest rather then picking up /usr/bin/python as first choice
 Patch1:         feature-suse-python-interp-search-order.patch
+# # PATCH-FIX-UPSTREAM https://gitlab.kitware.com/cmake/cmake/-/merge_requests/12189
+Patch2:         cmake-fix-ruby-test.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -257,8 +258,9 @@ sed -i -e "1s@#!.*python.*@#!$(realpath %{_bindir}/python3)@" %{buildroot}%{_rpm
 %else
 # dont' run failing test on 32-bit architectures due to year 2038 issue
 # dont' run Tutorial due to SSE issues https://gitlab.kitware.com/cmake/cmake/-/issues/27569
+# dont' run CommandLineTar to avoid zstd bug https://gitlab.kitware.com/cmake/cmake/-/work_items/27712
 ./bin/ctest --output-on-failure %{?_smp_mflags} \
-    -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM|RunCMake.string|Tutorial)"
+    -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM|RunCMake.string|Tutorial|CommandLineTar)"
 %endif
 %endif
 

@@ -81,3 +81,10 @@
     cd %__builddir && \
     %__ctest --output-on-failure --force-new-ctest-process %{?_smp_mflags} %** ; \
     cd ..
+
+# Declarative build system, requires RPM 4.20+ to work
+# https://rpm-software-management.github.io/rpm/manual/buildsystem.html
+%buildsystem_cmake_conf() %cmake %*
+%buildsystem_cmake_build() %cmake_build -C %__builddir %*
+%buildsystem_cmake_install() %cmake_install %*
+%buildsystem_cmake_check() %ctest %*

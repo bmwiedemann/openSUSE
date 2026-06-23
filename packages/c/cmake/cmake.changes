@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:21:12 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Reintroduce "cmake-fix-ruby-test.patch", this time as an
+  commit from upstream, see
+  https://gitlab.kitware.com/cmake/cmake/-/merge_requests/12189
+
+-------------------------------------------------------------------
+Wed Jun 17 19:38:53 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 4.3.4
+ * cmake-instrumentation(7), introduced in 4.3.0, has been changed
+   to generate index files and snippet files with a new version
+   field format.
+- update to 4.3.3
+  * The export(PACKAGE_INFO) command now writes to the
+    cps/<package-name> subdirectory of the current build directory,
+    rather than directly to the current build directory.
+-------------------------------------------------------------------
+Wed Apr 22 20:53:04 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 4.3.2
+  * file(CREATE_LINK): Fix CMP0205 to not remove content behind
+    directory symlink
+  * string(REGEX MATCH): Restore reporting of matches with
+    string(REGEX MATCH): Restore reporting of matches with semicolonssemicolons
+
+-------------------------------------------------------------------
+Tue Mar 31 14:49:52 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Exclude test RunCMake.CommandLineTar on 32-bit to work
+  around bug in zstd.
+
+-------------------------------------------------------------------
+Sat Mar 28 13:27:01 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 4.3.1:
+  * Tests: fix RunCMake.CommandLineTar
+  * Fixes affecting some C++ consumers
+
+-------------------------------------------------------------------
+Thu Mar 19 06:01:36 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to 4.3.0
+  * Support for importing and exporting packages described using the
+    Common Package Specification (CPS) was added.
+  * cmake-instrumentation was added to enable collection of timing
+    data, target information, and system diagnostic information during
+    the configure, generate, build, test, and install steps of a CMake
+    project
+  * cmake --build supports specifying a build directory and preset
+    together.  The build preset will be used with the explicit build
+    directory substituted.
+  * The "cmake -E bin2c" command-line tool was added.
+  * CMake archive operations gained support for multithreading,
+    compression levels, and new compression methods.
+  * The "get_property()" and "set_property()" commands now support a
+    "FILE_SET" scope for file set properties of a target.
+  * The CMAKE_<LANG>_LINK_FLAGS and CMAKE_<LANG>_LINK_FLAGS_<CONFIG>
+    variables were added to support per-language link flags for all
+    target types.
+  * "$<STRING:...>" generator expressions were added for query,
+    generation, and transformation operations on strings.
+- Drop cmake-fix-ruby-test.patch as the use of Ruby_HAS_VENDOR_RUBY
+  is obsolete, use Ruby gems and bundler instead.
+
+-------------------------------------------------------------------
 Wed Feb  4 01:50:26 UTC 2026 - Simon Lees <sflees@suse.de>
 
 - Exclude Tutorial Test on i586 due to SSE issues
@@ -70,6 +136,34 @@ Tue Dec  2 19:39:27 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
     processes when its TIMEOUT is reached. This was accidentally
     regressed by CMake 3.29.
 - fixes test failures with libarchive >= 3.8.2 (boo#1253745)
+
+-------------------------------------------------------------------
+Sat Oct 25 11:28:39 UTC 2025 - Mia Herkt <mia@0x0.st>
+
+* Add RPM 4.20 declarative build system macros
+
+  The feature is supported in Leap 16.0 and newer, so now is
+  probably a good time to make it available to packagers.
+
+  This allows reducing most spec file boilerplate to a simple
+  `BuildSystem: cmake`: The `%cmake*` macros can generally be
+  omitted entirely, and extra steps added by using the
+  `-a`(ppend) or `-p`(repend) flag on the corresponding section.
+  Ideally, all relevant sections - `%prep`, `%conf`, `%build`,
+  `%install`, and `%check` - can be omitted as well.
+
+  Options can be specified in the preamble using one or more
+  `BuildOption:` (or e.g. `BuildOption(check):`) tags, which
+  makes them less of a pain to use with conditional switches
+  and also allows grouping build requirements with their
+  corresponding build system options.
+
+  Real-world benefit is likely a bit smaller than with e.g. Meson
+  considering CMake-based projects often require extra steps to
+  bring them into compliance with openSUSE packaging guidelines,
+  but maybe the promise of clean and concise spec files provides
+  some encouragement for writing and upstreaming patches to iron
+  out those build system flaws ;)
 
 -------------------------------------------------------------------
 Thu Oct  2 05:45:56 UTC 2025 - Christoph G <foss@grueninger.de>
