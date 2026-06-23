@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-py7zr%{psuffix}
-Version:        1.1.0
+Version:        1.1.3
 Release:        0
 Summary:        Library and utility to support 7zip
 License:        LGPL-2.1-or-later
