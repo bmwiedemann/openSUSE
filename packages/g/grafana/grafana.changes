@@ -1,4 +1,90 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:25:41 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Require Go >= 1.26 for building
+- Add UI web assets as additional source tarball
+
+-------------------------------------------------------------------
+Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 12.4.4:
+  * Security and quality updates.
+  * Various bug fixes and enhancements.
+
+- Update to version 12.4.3:
+  * Analytics: Keep internal dashboard id.
+  * Go: Update to 1.25.9.
+  * Reporting: Correctly apply appSubURL to report settings
+               requests.
+  * Alerting: Document Grafana HA Alertmanager cluster metrics
+              prefix change.
+
+- Update to version 12.4.2:
+  * Various bug fixes and performance improvements.
+  * Dependency updates to core plugins and UI libraries.
+
+- Update to version 12.4.1:
+  * Bug fixes and minor quality-of-life enhancements.
+  * Updates to data source provisioning and dashboard schemas.
+
+- Update to version 12.4.0:
+  * Introduced dynamic dashboards in public preview.
+  * Added a new side toolbar that replaces the second top toolbar
+    to provide additional vertical space.
+  * Added the ability to create dashboards from templates using
+    sample data.
+  * Revamped the gauge visualization with rounded bars,
+    configurable bar thickness, and endpoint markers.
+  * Added support to map one variable to multiple values.
+  * CVE-2025-12141: Fixed information leakage in Grafana Alerting
+    (bsc#1262187)
+
+- Update to version 12.3.0:
+  * Released a completely redesigned logs visualization.
+  * Added the ability to export dashboards directly as PNG images.
+  * Introduced an interactive learning experience within the
+    Grafana UI.
+  * Added a Switch template variable type to quickly toggle between
+    values in queries.
+  * Added functionality to style table cells using CSS properties
+    via the field cell option.
+
+- Update to version 12.2.0:
+  * Routine feature enhancements, minor bug fixes, and security
+    patches.
+
+- Update to version 12.1.0:
+  * Added support for Entra Workload Identity to enhance
+    authentication capabilities with federated credentials.
+  * Redesigned the alert rule list page.
+  * Renamed Mute Timings to Active Time Intervals in Grafana
+    Alerting.
+  * Added support for Service Account Impersonation in the BigQuery
+    data source.
+  * Introduced the Grafana Advisor in public preview.
+
+- Update to version 12.0.0:
+  * BREAKING: Removed AngularJS and all deprecated UI Extensions
+    APIs.
+  * BREAKING: Enforced stricter version compatibility checks in
+    plugin CLI install commands.
+  * BREAKING: Enabled the failWrongDSUID feature flag by default,
+    which rejects data sources with incorrect UIDs.
+  * MIGRATION: Triggered a full-table rewrite for the annotation
+    table, which may temporarily increase disk usage.
+  * Introduced a new dashboard schema to replace the original
+    single grid layout.
+
+- Removed patches:
+  * 0002-Drop-zanzana.patch
+  * 0004-Bump-expr-lang.patch
+  * 0006-Fix-CVE-2026-21725.patch
+  * 0007-Bump-github.com-go-jose-go-jose.patch
+  * 0008-Bump-github.com-apache-thrift.patch
+  * 0009-Bump-golang.org-x-net.patch
+- Rebased 0005-Bump-edwards25519.patch
+
+-------------------------------------------------------------------
 Fri Jun  5 13:44:04 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-39821: Fix validation bypass and privilege escalation by

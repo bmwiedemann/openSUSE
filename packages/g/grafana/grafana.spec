@@ -22,31 +22,26 @@
 %endif
 
 Name:           grafana
-Version:        11.6.14+security04
+Version:        12.4.4
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
 Group:          System/Monitoring
-URL:            http://grafana.org/
-Source:         %{name}-%{version}.tar.gz
+URL:            https://github.com/grafana/grafana
+Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Source2:        %{name}-rpmlintrc
+Source2:        ui-%{version}.tar.gz
+Source3:        %{name}-rpmlintrc
 # Instructions on the build process
-Source3:        README
+Source4:        README
 # Makefile to automate build process
-Source4:        Makefile
-Source5:        0001-Add-source-code-reference.patch
-Patch2:         0002-Drop-zanzana.patch
+Source5:        Makefile
+Source6:        0001-Add-source-code-reference.patch
 Patch3:         0003-Use-bash-instead-of-env.patch
-Patch4:         0004-Bump-expr-lang.patch
 Patch5:         0005-Bump-edwards25519.patch
-Patch6:         0006-Fix-CVE-2026-21725.patch
-Patch7:         0007-Bump-github.com-go-jose-go-jose.patch
-Patch8:         0008-Bump-github.com-apache-thrift.patch
-Patch9:         0009-Bump-golang.org-x-net.patch
 BuildRequires:  fdupes
 BuildRequires:  git-core
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 Requires(post): %fillup_prereq
 Requires:       group(grafana)
 Requires:       user(grafana)
@@ -63,7 +58,8 @@ dashboards and data with teams.
 
 %prep
 %setup -q -n grafana-%{version}
-%autosetup -T -D -a 1 -p1 -n grafana-%{version}
+%setup -T -D -a 1 -n grafana-%{version}
+%autosetup -T -D -a 2 -p1 -n grafana-%{version}
 # Check if frontend assets have been built
 test -d public/build
 

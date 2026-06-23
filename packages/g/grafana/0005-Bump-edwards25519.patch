@@ -1,90 +1,104 @@
-From 25a9c949ed518c0cc6c457e299aa79ecb34ae6fe Mon Sep 17 00:00:00 2001
-From: Witek Bedyk <wbedyk@suse.com>
-Date: Tue, 31 Mar 2026 17:26:51 +0200
-Subject: [PATCH] Bump filippo.io/edwards25519 to version 1.1.1
+From 3b24a4aa224244057db2b9348910f50ec4360df6 Mon Sep 17 00:00:00 2001
+From: Matheus Macabu <macabu@users.noreply.github.com>
+Date: Tue, 10 Mar 2026 16:57:20 +0100
+Subject: [PATCH] Dependencies: Update filippo.io/edwards25519 to v1.2.0
+ (#119916)
 
-Fixes CVE-2026-26958
+* Dependencies: Update filippo.io/edwards25519 to v1.2.0
+
+* make update-workspace
 ---
- pkg/storage/unified/apistore/go.mod | 2 +-
- pkg/storage/unified/apistore/go.sum | 3 +++
- pkg/storage/unified/resource/go.mod | 2 +-
- pkg/storage/unified/resource/go.sum | 2 ++
- pkg/util/xorm/go.sum                | 2 --
- 5 files changed, 7 insertions(+), 4 deletions(-)
+ apps/advisor/go.mod       | 2 +-
+ apps/advisor/go.sum       | 3 ++-
+ apps/dashvalidator/go.mod | 2 +-
+ apps/dashvalidator/go.sum | 4 ++--
+ apps/plugins/go.mod       | 1 +
+ apps/plugins/go.sum       | 4 ++--
+ 6 files changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/pkg/storage/unified/apistore/go.mod b/pkg/storage/unified/apistore/go.mod
-index 9c8e0fae339..e21bd575fcf 100644
---- a/pkg/storage/unified/apistore/go.mod
-+++ b/pkg/storage/unified/apistore/go.mod
-@@ -41,7 +41,7 @@ require (
- 	cloud.google.com/go/spanner v1.76.1 // indirect
- 	cloud.google.com/go/storage v1.52.0 // indirect
- 	dario.cat/mergo v1.0.1 // indirect
+diff --git a/apps/advisor/go.mod b/apps/advisor/go.mod
+index aff1a6236f5..ac3ed41673f 100644
+--- a/apps/advisor/go.mod
++++ b/apps/advisor/go.mod
+@@ -62,7 +62,7 @@ require (
+ 	cel.dev/expr v0.25.1 // indirect
+ 	cloud.google.com/go/compute/metadata v0.9.0 // indirect
+ 	dario.cat/mergo v1.0.2 // indirect
 -	filippo.io/edwards25519 v1.1.0 // indirect
-+	filippo.io/edwards25519 v1.1.1 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.17.0 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.8.1 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect
-diff --git a/pkg/storage/unified/apistore/go.sum b/pkg/storage/unified/apistore/go.sum
-index 4a0532a0c38..c4d20b8cd0b 100644
---- a/pkg/storage/unified/apistore/go.sum
-+++ b/pkg/storage/unified/apistore/go.sum
-@@ -624,6 +624,8 @@ dario.cat/mergo v1.0.1/go.mod h1:uNxQE+84aUszobStD9th8a29P2fMDhsBdgRYvZOxGmk=
- dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
- filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
- filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
-+filippo.io/edwards25519 v1.1.1 h1:YpjwWWlNmGIDyXOn8zLzqiD+9TyIlPhGFG96P39uBpw=
-+filippo.io/edwards25519 v1.1.1/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
- gioui.org v0.0.0-20210308172011-57750fc8a0a6/go.mod h1:RSH6KIUZ0p2xy5zHDxgAM4zumjgTw83q2ge/PI+yyw8=
- git.sr.ht/~sbinet/gg v0.3.1/go.mod h1:KGYtlADtqsqANL9ueOFkWymvzUvLMQllU5Ixo+8v3pc=
- github.com/Azure/azure-sdk-for-go v68.0.0+incompatible h1:fcYLmCpyNYRnvJbPerq7U0hS+6+I79yEDJBqVNcqUzU=
-@@ -947,6 +949,7 @@ github.com/elazarl/goproxy v1.7.1 h1:1P7LPSxbqtNxusFnXclj6O56pjfq1xOQZ6a0mwwKUlY
- github.com/elazarl/goproxy v1.7.1/go.mod h1:82vkLNir0ALaW14Rc399OTTjyNREgmdL2cVoIbS6XaE=
- github.com/emicklei/go-restful/v3 v3.11.0 h1:rAQeMHw1c7zTmncogyy8VvRZwtkmkZ4FxERmMY4rD+g=
- github.com/emicklei/go-restful/v3 v3.11.0/go.mod h1:6n3XBCmQQb25CM2LCACGz8ukIrRry+4bhvbpWn3mrbc=
-+github.com/emirpasic/gods v1.18.1/go.mod h1:8tpGGwCnJ5H4r6BWwaV6OrWmMoPhUl5jm/FMNAnJvWQ=
- github.com/envoyproxy/go-control-plane v0.9.0/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
- github.com/envoyproxy/go-control-plane v0.9.1-0.20191026205805-5f8ba28d4473/go.mod h1:YTl/9mNaCwkRvm6d1a2C3ymFceY/DCBVvsKhRF0iEA4=
- github.com/envoyproxy/go-control-plane v0.9.4/go.mod h1:6rpuAdCZL397s3pYoYcLgu1mIlRU8Am5FuJP05cCM98=
-diff --git a/pkg/storage/unified/resource/go.mod b/pkg/storage/unified/resource/go.mod
-index 31d9a325388..3c4a021245e 100644
---- a/pkg/storage/unified/resource/go.mod
-+++ b/pkg/storage/unified/resource/go.mod
-@@ -43,7 +43,7 @@ require (
- 	cloud.google.com/go/monitoring v1.24.1 // indirect
- 	cloud.google.com/go/spanner v1.76.1 // indirect
- 	cloud.google.com/go/storage v1.52.0 // indirect
--	filippo.io/edwards25519 v1.1.0 // indirect
-+	filippo.io/edwards25519 v1.1.1 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.17.0 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.8.1 // indirect
- 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect
-diff --git a/pkg/storage/unified/resource/go.sum b/pkg/storage/unified/resource/go.sum
-index ff941a38597..c7d1f2388c5 100644
---- a/pkg/storage/unified/resource/go.sum
-+++ b/pkg/storage/unified/resource/go.sum
-@@ -624,6 +624,8 @@ dario.cat/mergo v1.0.1/go.mod h1:uNxQE+84aUszobStD9th8a29P2fMDhsBdgRYvZOxGmk=
- dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
- filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
- filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
-+filippo.io/edwards25519 v1.1.1 h1:YpjwWWlNmGIDyXOn8zLzqiD+9TyIlPhGFG96P39uBpw=
-+filippo.io/edwards25519 v1.1.1/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
- gioui.org v0.0.0-20210308172011-57750fc8a0a6/go.mod h1:RSH6KIUZ0p2xy5zHDxgAM4zumjgTw83q2ge/PI+yyw8=
- git.sr.ht/~sbinet/gg v0.3.1/go.mod h1:KGYtlADtqsqANL9ueOFkWymvzUvLMQllU5Ixo+8v3pc=
- github.com/Azure/azure-sdk-for-go v68.0.0+incompatible h1:fcYLmCpyNYRnvJbPerq7U0hS+6+I79yEDJBqVNcqUzU=
-diff --git a/pkg/util/xorm/go.sum b/pkg/util/xorm/go.sum
-index 61346d9e28f..5b07c110db4 100644
---- a/pkg/util/xorm/go.sum
-+++ b/pkg/util/xorm/go.sum
-@@ -611,8 +611,6 @@ cloud.google.com/go/workflows v1.8.0/go.mod h1:ysGhmEajwZxGn1OhGOGKsTXc5PyxOc0vf
- cloud.google.com/go/workflows v1.9.0/go.mod h1:ZGkj1aFIOd9c8Gerkjjq7OW7I5+l6cSvT3ujaO/WwSA=
- cloud.google.com/go/workflows v1.10.0/go.mod h1:fZ8LmRmZQWacon9UCX1r/g/DfAXx5VcPALq2CxzdePw=
++	filippo.io/edwards25519 v1.2.0 // indirect
+ 	github.com/Azure/azure-sdk-for-go/sdk/azcore v1.19.1 // indirect
+ 	github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.12.0 // indirect
+ 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.11.2 // indirect
+diff --git a/apps/advisor/go.sum b/apps/advisor/go.sum
+index cbac2c84d0f..bf23c05a8b1 100644
+--- a/apps/advisor/go.sum
++++ b/apps/advisor/go.sum
+@@ -75,8 +75,9 @@ cuelang.org/go v0.11.1/go.mod h1:PBY6XvPUswPPJ2inpvUozP9mebDVTXaeehQikhZPBz0=
+ dario.cat/mergo v1.0.2 h1:85+piFYR1tMbRrLcDwR18y4UKJ3aH1Tbzi24VRW1TK8=
+ dario.cat/mergo v1.0.2/go.mod h1:E/hbnu0NxMFBjpMIE34DRGLWqDy0g5FuKDhCb31ngxA=
  dmitri.shuralyov.com/gpu/mtl v0.0.0-20190408044501-666a987793e9/go.mod h1:H6x//7gZCb22OMCxBHrMx7a5I7Hp++hsVxbQ4BYO7hU=
 -filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
+ filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
++filippo.io/edwards25519 v1.2.0 h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
++filippo.io/edwards25519 v1.2.0/go.mod h1:xzAOLCNug/yB62zG1bQ8uziwrIqIuxhctzJT18Q77mc=
+ gitea.com/xorm/sqlfiddle v0.0.0-20180821085327-62ce714f951a h1:lSA0F4e9A2NcQSqGqTOXqu2aRi/XEQxDCBwM8yJtE6s=
+ gitea.com/xorm/sqlfiddle v0.0.0-20180821085327-62ce714f951a/go.mod h1:EXuID2Zs0pAQhH8yz+DNjUbjppKQzKFAn28TMYPB6IU=
+ github.com/Azure/azure-sdk-for-go v68.0.0+incompatible h1:fcYLmCpyNYRnvJbPerq7U0hS+6+I79yEDJBqVNcqUzU=
+diff --git a/apps/dashvalidator/go.mod b/apps/dashvalidator/go.mod
+index a01817f3f00..02c0ea94f2f 100644
+--- a/apps/dashvalidator/go.mod
++++ b/apps/dashvalidator/go.mod
+@@ -11,7 +11,7 @@ require (
+ )
+ 
+ require (
+-	filippo.io/edwards25519 v1.1.0 // indirect
++	filippo.io/edwards25519 v1.2.0 // indirect
+ 	github.com/Machiel/slugify v1.0.1 // indirect
+ 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
+ 	github.com/ProtonMail/go-crypto v1.3.0 // indirect
+diff --git a/apps/dashvalidator/go.sum b/apps/dashvalidator/go.sum
+index 2af47c8a21a..2ff7c9b45b1 100644
+--- a/apps/dashvalidator/go.sum
++++ b/apps/dashvalidator/go.sum
+@@ -5,8 +5,8 @@ cuelang.org/go v0.11.1 h1:pV+49MX1mmvDm8Qh3Za3M786cty8VKPWzQ1Ho4gZRP0=
+ cuelang.org/go v0.11.1/go.mod h1:PBY6XvPUswPPJ2inpvUozP9mebDVTXaeehQikhZPBz0=
+ dario.cat/mergo v1.0.2 h1:85+piFYR1tMbRrLcDwR18y4UKJ3aH1Tbzi24VRW1TK8=
+ dario.cat/mergo v1.0.2/go.mod h1:E/hbnu0NxMFBjpMIE34DRGLWqDy0g5FuKDhCb31ngxA=
+-filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
 -filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
- gioui.org v0.0.0-20210308172011-57750fc8a0a6/go.mod h1:RSH6KIUZ0p2xy5zHDxgAM4zumjgTw83q2ge/PI+yyw8=
- git.sr.ht/~sbinet/gg v0.3.1/go.mod h1:KGYtlADtqsqANL9ueOFkWymvzUvLMQllU5Ixo+8v3pc=
- github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
++filippo.io/edwards25519 v1.2.0 h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
++filippo.io/edwards25519 v1.2.0/go.mod h1:xzAOLCNug/yB62zG1bQ8uziwrIqIuxhctzJT18Q77mc=
+ gitea.com/xorm/sqlfiddle v0.0.0-20180821085327-62ce714f951a h1:lSA0F4e9A2NcQSqGqTOXqu2aRi/XEQxDCBwM8yJtE6s=
+ gitea.com/xorm/sqlfiddle v0.0.0-20180821085327-62ce714f951a/go.mod h1:EXuID2Zs0pAQhH8yz+DNjUbjppKQzKFAn28TMYPB6IU=
+ github.com/Azure/azure-sdk-for-go v68.0.0+incompatible h1:fcYLmCpyNYRnvJbPerq7U0hS+6+I79yEDJBqVNcqUzU=
+diff --git a/apps/plugins/go.mod b/apps/plugins/go.mod
+index 409a6f2e134..7d64bfb6b89 100644
+--- a/apps/plugins/go.mod
++++ b/apps/plugins/go.mod
+@@ -30,6 +30,7 @@ require (
+ 
+ require (
+ 	cel.dev/expr v0.25.1 // indirect
++	filippo.io/edwards25519 v1.2.0 // indirect
+ 	github.com/Machiel/slugify v1.0.1 // indirect
+ 	github.com/Masterminds/semver/v3 v3.4.0 // indirect
+ 	github.com/NYTimes/gziphandler v1.1.1 // indirect
+diff --git a/apps/plugins/go.sum b/apps/plugins/go.sum
+index e7fee0622fa..030bdf1d199 100644
+--- a/apps/plugins/go.sum
++++ b/apps/plugins/go.sum
+@@ -2,8 +2,8 @@ cel.dev/expr v0.25.1 h1:1KrZg61W6TWSxuNZ37Xy49ps13NUovb66QLprthtwi4=
+ cel.dev/expr v0.25.1/go.mod h1:hrXvqGP6G6gyx8UAHSHJ5RGk//1Oj5nXQ2NI02Nrsg4=
+ cloud.google.com/go v0.26.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
+ cloud.google.com/go v0.34.0/go.mod h1:aQUYkXzVsufM+DwF1aE+0xfcU+56JwCaLick0ClmMTw=
+-filippo.io/edwards25519 v1.1.0 h1:FNf4tywRC1HmFuKW5xopWpigGjJKiJSV0Cqo0cJWDaA=
+-filippo.io/edwards25519 v1.1.0/go.mod h1:BxyFTGdWcka3PhytdK4V28tE5sGfRvvvRV7EaN4VDT4=
++filippo.io/edwards25519 v1.2.0 h1:crnVqOiS4jqYleHd9vaKZ+HKtHfllngJIiOpNpoJsjo=
++filippo.io/edwards25519 v1.2.0/go.mod h1:xzAOLCNug/yB62zG1bQ8uziwrIqIuxhctzJT18Q77mc=
+ github.com/BurntSushi/toml v1.5.0 h1:W5quZX/G/csjUnuI8SUYlsHs9M38FC7znL0lIO+DvMg=
+ github.com/BurntSushi/toml v1.5.0/go.mod h1:ukJfTF/6rtPPRCnwkur4qwRxa8vTRFBF0uk2lLoLwho=
+ github.com/DataDog/datadog-go v3.2.0+incompatible/go.mod h1:LButxg5PwREeZtORoXG3tL4fMGNddJ+vMq1mwgfaqoQ=
 -- 
 2.51.0
 
