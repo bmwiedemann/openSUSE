@@ -295,4 +295,12 @@
     <comment></comment>
     <requestid>1256429</requestid>
   </revision>
+  <revision rev="42" vrev="8">
+    <srcmd5>a9af308a2f4e26bd4c70250762cee919</srcmd5>
+    <version>2.4.0</version>
+    <time>1782229399</time>
+    <user>anag_factory</user>
+    <comment>Modernize the sarg spec: drop the obsolete Group tag and redundant %defattr, convert gd/pcre2 devel deps to pkgconfig() form, use https sources, and fix the manpage permission (clears spurious-executable-perm). No functional change; the package already uses systemd timers.</comment>
+    <requestid>1361360</requestid>
+  </revision>
 </revisionlist>

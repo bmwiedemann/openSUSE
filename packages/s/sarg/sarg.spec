@@ -1,7 +1,7 @@
 #
 # spec file for package sarg
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,8 @@ Version:        2.4.0
 Release:        0
 Summary:        Squid Analysis Report Generator
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Web/Utilities
-URL:            http://sarg.sourceforge.net/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+URL:            https://sarg.sourceforge.net/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Source1:        sarg.conf
 Source2:        http://www.initzero.it/products/opensource/sarg-reports/download/sarg-reports
 Source3:        sarg.hosts
@@ -31,23 +30,24 @@ Source4:        %{name}-reports-daily.service
 Source5:        %{name}-reports-daily.timer
 Source6:        %{name}-reports-weekly.service
 Source7:        %{name}-reports-weekly.timer
-Source11:       %{name}-reports-monthly.service
-Source12:       %{name}-reports-monthly.timer
 Source8:        sarg-reports.1.gz
 Source9:        sarg-apache.conf
 Source10:       platform_suse.gif
+Source11:       %{name}-reports-monthly.service
+Source12:       %{name}-reports-monthly.timer
 # PATCH-FIX-UPSTREAM sarg-2.4.0-config.patch
 Patch0:         sarg-2.4.0-config.patch
 # PATCH-FIX-OPENSUSE do not build with werror
 Patch1:         sarg-2.4.0-no-werror.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  gd-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
-BuildRequires:  pcre2-devel
+BuildRequires:  pkgconfig
 # required for the squid user/group
 BuildRequires:  squid
+BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  pkgconfig(libpcre2-8)
 Recommends:     http_proxy
 
 %description
@@ -93,6 +93,8 @@ install -D -m 0644 %{SOURCE12} %{buildroot}/%{_unitdir}/%{name}-reports-monthly.
 install -d %{buildroot}%{_libexecdir}/%{name}
 install -d -m 755 %{buildroot}%{_mandir}/man1
 install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
+# upstream's Makefile installs the manpage with the executable bit set
+chmod 0644 %{buildroot}%{_mandir}/man1/*
 
 %pre
 %service_add_pre %{name}-reports-daily.service %{name}-reports-daily.timer
@@ -139,8 +141,6 @@ install -m 644 %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{_unitdir}/%{name}-reports-weekly.timer
 %{_unitdir}/%{name}-reports-monthly.service
 %{_unitdir}/%{name}-reports-monthly.timer
-
-%defattr(0644,root,root,0755)
 %dir /srv/www
 %dir /srv/www/htdocs
 /srv/www/htdocs/sarg-php

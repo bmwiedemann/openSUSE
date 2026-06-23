@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:27:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernize spec file:
+  * drop the obsolete Group tag and the redundant %defattr
+  * convert the gd and pcre2 devel dependencies to their
+    pkgconfig() form
+  * use https for the URL and Source
+
+-------------------------------------------------------------------
 Tue Mar 25 10:11:59 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Switch to PCRE2 
