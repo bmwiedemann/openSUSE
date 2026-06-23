@@ -68,4 +68,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath10k: WCN3990 hw1.0: update board-2.bin</comment>
     <requestid>1333330</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ccbac507764c2481afdc522c3454e756</srcmd5>
+    <version>20260610</version>
+    <time>1782228978</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361020</requestid>
+  </revision>
 </revisionlist>

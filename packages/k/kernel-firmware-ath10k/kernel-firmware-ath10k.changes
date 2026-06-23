@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:12:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Fri Feb  6 08:18:16 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260206 (git commit f2dbd7a7a74b):
