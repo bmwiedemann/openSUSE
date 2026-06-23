@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 04:56:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.3:
+  The v2.3.3 release is a patch release that fixes bugs in several
+  commands and updates dependencies.
+  * deps: Bump crossplane dependencies to v2.3.3
+  * chore(deps): update module github.com/containerd/containerd to
+    v1.7.33 [security]
+
+-------------------------------------------------------------------
 Wed Jun 10 05:15:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.2:
