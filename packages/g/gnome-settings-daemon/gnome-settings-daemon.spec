@@ -30,7 +30,7 @@
 %define base_ver 50
 
 Name:           gnome-settings-daemon
-Version:        50.1
+Version:        50.1+6
 Release:        0
 Summary:        Settings daemon for the GNOME desktop
 License:        GPL-2.0-or-later AND LGPL-2.1-only

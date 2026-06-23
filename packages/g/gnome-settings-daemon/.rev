@@ -1707,4 +1707,13 @@ work. (forwarded request 640069 from iznogood)</comment>
     <comment>- Drop unused pkgconfig(xi) and pkgconfig(xkbfile) BuildRequires.</comment>
     <requestid>1350307</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>6250ba8d3c12ac1918d782b58de9abf7</srcmd5>
+    <version>50.1+6</version>
+    <time>1782229057</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.1+6:
+  + Updated translations.</comment>
+    <requestid>1361064</requestid>
+  </revision>
 </revisionlist>
