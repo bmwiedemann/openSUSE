@@ -17,7 +17,7 @@
 
 
 Name:           resource-agents
-Version:        4.18.0rc1+git0.36fef17a
+Version:        4.18.0+git51.4e6bf13c5
 Release:        0
 Summary:        HA Reusable Cluster Resource Scripts
 License:        GPL-2.0-only AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -41,7 +41,6 @@ Patch9:         portblock.patch
 
 # PATCH-FIX-OPENSUSE: Remove deprecated perl-IO-Socket-INET6 dependency
 Patch10:        resource-agents-deprecate-INET6.patch
-Patch11:        bsc-1241692.patch
 
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module urllib3}
@@ -119,7 +118,6 @@ See 'ldirectord -h' and linux-ha/doc/ldirectord for more information.
 %patch -P 8 -p0
 %patch -P 9 -p0
 %patch -P 10 -p1
-%patch -P 11 -p1
 
 %build
 autoreconf -fvi

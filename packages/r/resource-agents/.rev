@@ -2071,4 +2071,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344751</requestid>
   </revision>
+  <revision rev="149" vrev="1">
+    <srcmd5>01aac5fc7c59fc7355f43e85c9ee1a15</srcmd5>
+    <version>4.18.0+git51.4e6bf13c5</version>
+    <time>1782229059</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.0+git51.4e6bf13c5:
+  * azure-sap-zone: add Azure cloud environment support (#2175)
+  * ganesha-nfs: add enable_nlm, grace_period and lease_lifetime parameters
+  * ganesha-nfs: add server_scope parameter
+  * ganesha-nfs: add anonuid/anongid parameters
+  * ganesha-nfs: use RecoveryRoot for the recovery directory
+  * nfsserver: monitor nfs-mountd.service for failed states
+  * iSCSILogicalUnit: apply fileio write cache mode at create time
+  * nfsserver: monitor nfsdcld.service for failures or stopped state
+  * nfsserver: dont try to stop fsidd when not present
+  * ganesha-nfs: add generated mode (render config from parameters) (#2169)
+  * portblock: fix IPv6 rule detection in the iptables backend
+  * doc: Fix links after master-&gt;main rename (#2171)
+  * conntrackd: fix monitor/start logic
+  * Low: nfsserver: Correction of magic numbers and log output.
+  * sybaseASE: dont report error about missing sybaseASE env during probe-action
+  * nfsserver: Fixes the incorrect indentation
+  * Mid: IPaddr2: To allow Pacemaker to handle error handling, it returns NOT_RUNNING even when down.
+  * Merge pull request #2148 from ryan-ronnander/rr/iscsi-block-size
+  * nfsserver: Stop fsidd when stopping nfs-server
+  * Mid: nfsserver: Change the log level for probe and process checks at startup to info.
+  * IPaddr2: fix interfaces named with keywords like primary, secondary, etc
+  * OCPBUGS-83333: podman-etcd: Add learner in notify to prevent start deadlock (#2157)
+  * OCPBUGS-82190: podman-etcd: Fixed etcd learner deadlock during machine deletion (#2156)
+  * nfsserver/nfsnotify: use chown : to avoid warnings with newer versions of chown
+  * Filesystem: always return OCF_ERR_GENERIC when another device is mounted on mountpoint to ensure relocation after trying to restart (default behaviour)
+  * podman-etcd: fix port 2380 binding race during install transition (#2152)
+  * oraasm: Avoid false positive start/monitor operation when critical processes are offline
+  * ganesha-nfs: new resource agent (#2154)
+  * azure-sap-zone: new resource agent for Azure SAP zone alignment (#2122)</comment>
+    <requestid>1361139</requestid>
+  </revision>
 </revisionlist>

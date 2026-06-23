@@ -1,6 +1,6 @@
---- a/heartbeat/Makefile.am.orig	2025-07-22 19:05:57.520867141 +0200
-+++ b/heartbeat/Makefile.am	2025-07-22 19:06:36.125190546 +0200
-@@ -50,94 +50,61 @@
+--- a/heartbeat/Makefile.am.orig	2026-06-22 13:58:33.841075476 +0200
++++ a/heartbeat/Makefile.am	2026-06-22 14:05:34.756308258 +0200
+@@ -50,39 +50,24 @@
  send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
  send_ua_LDADD           = $(LIBNETLIBS)
  
@@ -41,10 +41,7 @@
  			VirtualDomain		\
  			WAS			\
  			WAS6			\
--			WinPopup		\
--			Xen			\
- 			Xinetd			\
- 			ZFS			\
+@@ -93,14 +78,11 @@
  			aliyun-vpc-move-ip	\
  			anything		\
  			apache			\
@@ -59,9 +56,7 @@
  			corosync-qnetd		\
  			crypt			\
  			db2			\
- 			dhcpd			\
--			dnsupdate		\
-+			dnsupdate               \
+@@ -109,11 +91,8 @@
  			dummypy			\
  			docker			\
  			docker-compose		\
@@ -71,8 +66,9 @@
  			exportfs		\
 -			fio			\
  			galera			\
+ 			ganesha-nfs		\
  			garbd			\
- 			gcp-ilb			\
+@@ -121,24 +100,14 @@
  			gcp-vpc-move-ip		\
  			iSCSILogicalUnit	\
  			iSCSITarget		\
@@ -98,7 +94,7 @@
  			named			\
  			nfsnotify		\
  			nfsserver		\
-@@ -145,11 +112,6 @@
+@@ -146,11 +115,6 @@
  			nvmet-subsystem		\
  			nvmet-namespace		\
  			nvmet-port		\
@@ -110,7 +106,7 @@
  			oraasm			\
  			oracle			\
  			oralsnr			\
-@@ -157,39 +119,21 @@
+@@ -158,39 +122,21 @@
  			ovsmonitor		\
  			pgagent			\
  			pgsql			\
@@ -154,8 +150,8 @@
  
  if BUILD_AZURE_EVENTS_AZ
  ocf_SCRIPTS	     += azure-events-az
---- resource-agents/doc/man/Makefile.am.orig	2025-07-24 07:12:57.504178731 +0200
-+++ resource-agents/doc/man/Makefile.am	2025-07-24 07:21:55.135798301 +0200
+--- a/doc/man/Makefile.am.orig	2026-06-22 14:07:57.167065776 +0200
++++ a/doc/man/Makefile.am	2026-06-22 14:10:43.679951496 +0200
 @@ -77,69 +77,46 @@
  # 12126 on savannah.gnu.org. But, maybe it gets fixed soon, it was
  # first reported in 1995 and added to Savannah in in 2005...
@@ -225,9 +221,9 @@
                            ocf_heartbeat_exportfs.7 \
 -                          ocf_heartbeat_fio.7 \
                            ocf_heartbeat_galera.7 \
+                           ocf_heartbeat_ganesha-nfs.7 \
                            ocf_heartbeat_garbd.7 \
-                           ocf_heartbeat_gcp-ilb.7 \
-@@ -149,23 +126,12 @@
+@@ -150,23 +127,12 @@
                            ocf_heartbeat_iface-bridge.7 \
                            ocf_heartbeat_iface-macvlan.7 \
                            ocf_heartbeat_iface-vlan.7 \
@@ -251,7 +247,7 @@
                            ocf_heartbeat_named.7 \
                            ocf_heartbeat_nfsnotify.7 \
                            ocf_heartbeat_nfsserver.7 \
-@@ -174,10 +140,6 @@
+@@ -175,10 +141,6 @@
                            ocf_heartbeat_nvmet-namespace.7 \
                            ocf_heartbeat_nvmet-port.7 \
                            ocf_heartbeat_openstack-info.7 \
@@ -262,7 +258,7 @@
                            ocf_heartbeat_oraasm.7 \
                            ocf_heartbeat_oracle.7 \
                            ocf_heartbeat_oralsnr.7 \
-@@ -185,42 +147,25 @@
+@@ -186,42 +148,25 @@
                            ocf_heartbeat_ovsmonitor.7 \
                            ocf_heartbeat_pgagent.7 \
                            ocf_heartbeat_pgsql.7 \
