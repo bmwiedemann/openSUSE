@@ -149,4 +149,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: update firmware for an8811hb 2.5G ethernet phy</comment>
     <requestid>1344443</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>d251dfa93a2890b3a4e663acf694fa5a</srcmd5>
+    <version>20260610</version>
+    <time>1782229015</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361038</requestid>
+  </revision>
 </revisionlist>
