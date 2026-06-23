@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="commons-validator" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property file="build.properties"/>
+
+  <property name="project.groupId" value="commons-validator"/>
+  <property name="project.artifactId" value="commons-validator"/>
+  <property name="project.version" value="1.10.1"/>
+  <property name="project.name" value="Apache Commons Validator"/>
+  <property name="project.description" value="Apache Commons Validator provides the building blocks for both client-side and server-side data validation. It may be used standalone or with a framework like Struts."/>
+  <property name="project.url" value="http://commons.apache.org/proper/commons-validator/"/>
+  <property name="project.license.url" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
+
+  <property name="project.organization.name" value="The Apache Software Foundation"/>
+  <property name="project.organization.id" value="org.apache"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.resourceDir.0" value="."/>
+  <property name="build.resourceDir.1" value="src/main/resources"/>
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar">
+      </include>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}" 
+           encoding="UTF-8" 
+           nowarn="false" 
+           debug="true" 
+           optimize="false" 
+           deprecation="true"
+           release="${compiler.release}" 
+           target="${compiler.target}" 
+           verbose="false" 
+           fork="false" 
+           source="${compiler.source}">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir}/META-INF"/>
+    <copy todir="${build.outputDir}/META-INF">
+      <fileset dir="${build.resourceDir.0}">
+        <include name="NOTICE.txt"/>
+        <include name="LICENSE.txt"/>
+      </fileset>
+    </copy>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir.1}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}" 
+             packagenames="*" 
+             destdir="${reporting.outputDirectory}/apidocs" 
+             access="protected" 
+             verbose="false" 
+             encoding="UTF-8" 
+             version="true" 
+             use="true" 
+             author="true" 
+             splitindex="false" 
+             nodeprecated="false" 
+             nodeprecatedlist="false" 
+             notree="false" 
+             noindex="false" 
+             nohelp="false" 
+             nonavbar="false" 
+             serialwarn="false" 
+             docencoding="UTF-8" 
+             source="1.8" 
+             linksource="true" 
+             breakiterator="false">
+      <classpath refid="build.classpath"/>
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar" 
+         compress="true" 
+         index="false" 
+         basedir="${build.outputDir}" 
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-DocURL" value="${project.url}"/>
+        <attribute name="Bundle-License" value="${project.license.url}"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="org.apache.commons.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="org.apache.commons.validator.resources;version=&quot;${project.version}&quot;,org.apache.commons.validator.routines.checkdigit;version=&quot;${project.version}&quot;,org.apache.commons.validator.routines;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.validator.routines.checkdigit&quot;,org.apache.commons.validator.util;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.collections&quot;,org.apache.commons.validator;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.collections,org.apache.commons.digester,org.xml.sax&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.organization.id}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="org.apache.commons.beanutils,org.apache.commons.collections,org.apache.commons.digester,org.apache.commons.digester.xmlrules,org.apache.commons.logging,org.xml.sax"/>
+        <attribute name="Include-Resource" value="META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt,org/apache/commons/validator/digester-rules.xml=src/main/resources/org/apache/commons/validator/digester-rules.xml,org/apache/commons/validator/resources/validator_1_0.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_0.dtd,org/apache/commons/validator/resources/validator_1_0_1.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_0_1.dtd,org/apache/commons/validator/resources/validator_1_1.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_1.dtd,org/apache/commons/validator/resources/validator_1_1_3.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_1_3.dtd,org/apache/commons/validator/resources/validator_1_2_0.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_2_0.dtd,org/apache/commons/validator/resources/validator_1_3_0.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_3_0.dtd,org/apache/commons/validator/resources/validator_1_4_0.dtd=src/main/resources/org/apache/commons/validator/resources/validator_1_4_0.dtd"/>
+        <attribute name="Java-Version" value="8"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>

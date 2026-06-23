@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-validator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,26 +18,22 @@
 
 %define short_name commons-validator
 Name:           apache-%{short_name}
-Version:        1.5.0
+Version:        1.10.1
 Release:        0
 Summary:        Apache Commons Validator
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-validator/
 Source0:        https://archive.apache.org/dist/commons/validator/source/%{short_name}-%{version}-src.tar.gz
-Patch0:         commons-validator-1.5.0-srcencoding.patch
-Patch1:         commons-validator-1.5.0-locale.patch
+Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  ant-junit
-BuildRequires:  commons-beanutils
-BuildRequires:  commons-collections
-BuildRequires:  commons-digester >= 1.8
-BuildRequires:  commons-logging
+BuildRequires:  apache-commons-beanutils
+BuildRequires:  apache-commons-collections
+BuildRequires:  apache-commons-digester >= 1.8
+BuildRequires:  apache-commons-logging
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
-BuildRequires:  junit
-BuildRequires:  oro
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -71,47 +67,23 @@ This package contains the javadoc documentation for the Jakarta Commons
 Validator Package.
 
 %prep
-%autosetup -p1 -n %{short_name}-%{version}-src
-
-sed -i 's/\r//' LICENSE.txt
-sed -i 's/\r//' RELEASE-NOTES.txt
-sed -i 's/\r//' NOTICE.txt
+%setup -q -n %{short_name}-%{version}-src
+cp %{SOURCE1} build.xml
 
 %build
-export CLASSPATH=$(build-classpath \
-                   commons-collections \
-                   commons-logging \
-                   commons-digester \
-                   commons-beanutils \
-                   junit \
-                   hamcrest \
-                   oro )
-ant \
-    -Dcompile.source=8 -Dcompile.target=8 \
-    -Dskip.download=true -Dbuild.sysclasspath=first \
-    dist
+mkdir -p lib
+build-jar-repository -s lib \
+    commons-collections \
+    commons-logging \
+    commons-digester \
+    commons-beanutils
 
-%check
-%if 0
-export CLASSPATH=$(build-classpath \
-                   commons-collections \
-                   commons-logging \
-                   commons-digester \
-                   commons-beanutils \
-                   junit \
-                   hamcrest \
-                   oro )
-ant \
-    -Dcompile.source=8 -Dcompile.target=8 \
-    -Dant.build.javac.source=8 -Dant.build.javac.target=8 \
-    -Dskip.download=true -Dbuild.sysclasspath=first \
-    test
-%endif
+ant jar javadoc
 
 %install
 # jars
 install -d -m 0755 %{buildroot}%{_javadir}
-install -pm 644 dist/%{short_name}-%{version}-SNAPSHOT.jar %{buildroot}%{_javadir}/%{name}.jar
+install -pm 644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 ln -s %{name}.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
@@ -119,7 +91,7 @@ install -d -m 0755 %{buildroot}%{_mavenpomdir}
 %add_maven_depmap %{name}.pom %{name}.jar -a org.apache.commons:%{short_name}
 # javadoc
 install -d -m 0755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr dist/docs/api*/* %{buildroot}%{_javadocdir}/%{name}/
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}/
 
 %files -f .mfiles
