@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 22 18:56:42 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.6.4:
+  * Fixed syntax highlighting for JSON when whitespaces were not shown.
+  * Fixed tab middle clicking for Qt ≥ 6.11 (it stopped working correctly after
+    a backward-incompatible change in Qt — and just with FeatherPad).
+  * Activated the session dialog under Wayland too when it's called by another window.
+  * Fixes for Hunspell spell checking.
+  * Bumped the minimum version of Qt to 6.5 and silenced new compilation warnings.
+  * Other small fixes and enhancements.
+
+-------------------------------------------------------------------
 Mon Jan 19 20:50:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.6.3:

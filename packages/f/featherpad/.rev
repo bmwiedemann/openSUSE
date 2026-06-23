@@ -682,4 +682,19 @@
   * Fixed highlighting of C++ numbers with single quote as separator.</comment>
     <requestid>1328149</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>20bffd5c681a4e1a7f062e09e4d69379</srcmd5>
+    <version>1.6.4</version>
+    <time>1782229169</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.4:
+  * Fixed syntax highlighting for JSON when whitespaces were not shown.
+  * Fixed tab middle clicking for Qt ≥ 6.11 (it stopped working correctly after
+    a backward-incompatible change in Qt — and just with FeatherPad).
+  * Activated the session dialog under Wayland too when it's called by another window.
+  * Fixes for Hunspell spell checking.
+  * Bumped the minimum version of Qt to 6.5 and silenced new compilation warnings.
+  * Other small fixes and enhancements.</comment>
+    <requestid>1361213</requestid>
+  </revision>
 </revisionlist>

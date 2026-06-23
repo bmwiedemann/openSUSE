@@ -17,7 +17,7 @@
 
 
 Name:           featherpad
-Version:        1.6.3
+Version:        1.6.4
 Release:        0
 Summary:        Qt-based plaintext editor
 License:        GPL-3.0-only
@@ -31,7 +31,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt6LinguistTools)
-BuildRequires:  pkgconfig(Qt6Core) >= 6.2.0
+BuildRequires:  pkgconfig(Qt6Core) >= 6.5
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
