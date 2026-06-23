@@ -105,4 +105,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath11k: QCA6390 hw2.0: update board-2.bin</comment>
     <requestid>1344437</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>795a4471b3daac810ef7187ac90744af</srcmd5>
+    <version>20260610</version>
+    <time>1782228980</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361021</requestid>
+  </revision>
 </revisionlist>
