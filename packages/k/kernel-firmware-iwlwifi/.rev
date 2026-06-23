@@ -170,4 +170,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: update ty/So/Ma firmwares for core103-40 release</comment>
     <requestid>1344441</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>c5fae70d46e54fee8e9672774ff37364</srcmd5>
+    <version>20260610</version>
+    <time>1782229001</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361031</requestid>
+  </revision>
 </revisionlist>
