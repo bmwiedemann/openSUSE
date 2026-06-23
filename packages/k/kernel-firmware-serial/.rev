@@ -73,4 +73,16 @@ After this PR, there will be a delete request for kernel-firmware.
     <comment>- Update aliases from 7.0</comment>
     <requestid>1347749</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8b79016be8a4be8f0810e9922653b53f</srcmd5>
+    <version>20260610</version>
+    <time>1782229035</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260610 (git commit e7eb98afc667):
+  * Remove any files with unknown licenses
+  * LICENSES: update GPL-2.0 text and references
+  * LICENSES: rename GPL-3 to GPL-3.0-only
+  * Move firmware licenses to a LICENSES/ directory</comment>
+    <requestid>1361047</requestid>
+  </revision>
 </revisionlist>

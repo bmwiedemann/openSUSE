@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 10 14:19:41 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260610 (git commit e7eb98afc667):
+  * Remove any files with unknown licenses
+  * LICENSES: update GPL-2.0 text and references
+  * LICENSES: rename GPL-3 to GPL-3.0-only
+  * Move firmware licenses to a LICENSES/ directory
+
+-------------------------------------------------------------------
 Wed Apr 15 05:36:36 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update aliases from 7.0
