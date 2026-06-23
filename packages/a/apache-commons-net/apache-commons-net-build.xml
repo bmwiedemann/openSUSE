@@ -7,21 +7,22 @@
   <!-- ====================================================================== -->
 
   <property file="build.properties"/>
-  
+
   <property name="project.groupId" value="commons-net"/>
   <property name="project.artifactId" value="commons-net"/>
-  <property name="project.version" value="3.9.0"/>
+  <property name="project.version" value="3.13.0"/>
   <property name="project.name" value="Apache Commons Net"/>
   <property name="project.description" value="Apache Commons Net library contains a collection of network utilities and protocol implementations. Supported protocols include: Echo, Finger, FTP, NNTP, NTP, POP3(S), SMTP(S), Telnet, Whois"/>
   <property name="project.url" value="http://commons.apache.org/proper/commons-net/"/>
   <property name="project.license.url" value="https://www.apache.org/licenses/LICENSE-2.0.txt"/>
-  
+
   <property name="project.organization.name" value="The Apache Software Foundation"/>
   <property name="project.organization.id" value="org.apache"/>
-  
-  <property name="spec.version" value="3.9"/>
-  
-  <property name="compiler.source" value="1.8"/>
+
+  <property name="spec.version" value="3.13"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
   <property name="compiler.target" value="${compiler.source}"/>
 
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
@@ -30,10 +31,6 @@
   <property name="build.srcDir" value="src/main/java"/>
   <property name="build.resourceDir.0" value="src/main/resources"/>
   <property name="build.resourceDir.1" value="."/>
-  <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
-  <property name="build.testDir" value="src/test/java"/>
-  <property name="build.testResourceDir.0" value="src/test/resources"/>
-  <property name="build.testResourceDir.1" value="."/>
   <property name="test.reports" value="${build.dir}/test-reports"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
@@ -41,8 +38,12 @@
   <!-- Defining classpaths                                                    -->
   <!-- ====================================================================== -->
 
-  <path id="build.classpath"/>
-  <path id="build.test.classpath"/>
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar">
+      </include>
+    </fileset>
+  </path>
 
   <!-- ====================================================================== -->
   <!-- Cleaning up target                                                     -->
@@ -58,16 +59,17 @@
 
   <target name="compile" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
-    <javac destdir="${build.outputDir}" 
-           excludes="**/package-info.java" 
-           encoding="iso-8859-1" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
+    <javac destdir="${build.outputDir}"
+           excludes="**/package-info.java"
+           encoding="iso-8859-1"
+           nowarn="false"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           release="${compiler.release}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false"
            source="${compiler.source}">
       <src>
         <pathelement location="${build.srcDir}"/>
@@ -87,133 +89,31 @@
   </target>
 
   <!-- ====================================================================== -->
-  <!-- Test-compilation target                                                -->
-  <!-- ====================================================================== -->
-
-  <target name="compile-tests" 
-          depends="compile" 
-          description="Compile the test code" 
-          unless="test.skip">
-    <mkdir dir="${build.testOutputDir}"/>
-    <javac destdir="${build.testOutputDir}" 
-           excludes="**/package-info.java" 
-           encoding="iso-8859-1" 
-           nowarn="false" 
-           debug="true" 
-           optimize="false" 
-           deprecation="true" 
-           target="${compiler.target}" 
-           verbose="false" 
-           fork="false" 
-           source="${compiler.source}">
-      <src>
-        <pathelement location="${build.testDir}"/>
-      </src>
-      <classpath>
-        <path refid="build.test.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-      </classpath>
-    </javac>
-    <mkdir dir="${build.testOutputDir}/META-INF"/>
-    <copy todir="${build.testOutputDir}/META-INF">
-      <fileset dir="${build.testResourceDir.1}">
-        <include name="NOTICE.txt"/>
-        <include name="LICENSE.txt"/>
-      </fileset>
-    </copy>
-  </target>
-
-  <!-- ====================================================================== -->
-  <!-- Run all tests                                                          -->
-  <!-- ====================================================================== -->
-
-  <target name="test" 
-          depends="compile-tests, junit-missing" 
-          unless="junit.skipped" 
-          description="Run the test cases">
-    <mkdir dir="${test.reports}"/>
-    <junit printSummary="yes" haltonerror="true" haltonfailure="true" fork="true" dir=".">
-      <sysproperty key="basedir" value="."/>
-      <formatter type="xml"/>
-      <formatter type="plain" usefile="false"/>
-      <classpath>
-        <path refid="build.test.classpath"/>
-        <pathelement location="${build.outputDir}"/>
-        <pathelement location="${build.testOutputDir}"/>
-      </classpath>
-      <batchtest todir="${test.reports}" unless="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/Test*.java"/>
-          <include name="**/*Test.java"/>
-          <include name="**/*TestCase.java"/>
-          <exclude name="**/*FunctionalTest.java"/>
-          <exclude name="**/POP3*Test.java"/>
-        </fileset>
-      </batchtest>
-      <batchtest todir="${test.reports}" if="test">
-        <fileset dir="${build.testDir}">
-          <include name="**/${test}.java"/>
-          <exclude name="**/*FunctionalTest.java"/>
-          <exclude name="**/POP3*Test.java"/>
-        </fileset>
-      </batchtest>
-    </junit>
-  </target>
-
-  <target name="test-junit-present">
-    <available classname="junit.framework.Test" property="junit.present" classpathref="build.test.classpath"/>
-  </target>
-
-  <target name="test-junit-status" 
-          depends="test-junit-present">
-    <condition property="junit.missing">
-      <and>
-        <isfalse value="${junit.present}"/>
-        <isfalse value="${test.skip}"/>
-      </and>
-    </condition>
-    <condition property="junit.skipped">
-      <or>
-        <isfalse value="${junit.present}"/>
-        <istrue value="${test.skip}"/>
-      </or>
-    </condition>
-  </target>
-
-  <target name="junit-missing" 
-          depends="test-junit-status" 
-          if="junit.missing">
-    <echo>=================================== WARNING ===================================</echo>
-    <echo> JUnit is not present in the test classpath or your $ANT_HOME/lib directory. Tests not executed.</echo>
-    <echo>===============================================================================</echo>
-  </target>
-
-  <!-- ====================================================================== -->
   <!-- Javadoc target                                                         -->
   <!-- ====================================================================== -->
 
   <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir}" 
-             packagenames="*" 
-             destdir="${reporting.outputDirectory}/apidocs" 
-             access="protected" 
-             old="false" 
-             verbose="false" 
-             encoding="iso-8859-1" 
-             version="true" 
-             use="true" 
-             author="true" 
-             splitindex="false" 
-             nodeprecated="false" 
-             nodeprecatedlist="false" 
-             notree="false" 
-             noindex="false" 
-             nohelp="false" 
-             nonavbar="false" 
-             serialwarn="false" 
-             source="${compiler.source}" 
-             linksource="true" 
+    <javadoc sourcepath="${build.srcDir}"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             excludepackagenames="**.examples.**,**.examples"
+             verbose="false"
+             encoding="iso-8859-1"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             source="${compiler.source}"
+             linksource="true"
              breakiterator="false">
+      <classpath refid="build.classpath"/>
     </javadoc>
   </target>
 
@@ -221,38 +121,74 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="compile,test" description="Package the application">
-    <jar jarfile="${build.dir}/${build.finalName}.jar" 
-         compress="true" 
-         index="false" 
-         basedir="${build.outputDir}" 
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/examples/**,**/package.html">
+      <manifest>
+        <attribute name="Automatic-Module-Name" value="org.apache.commons.net"/>
+        <attribute name="Bundle-Description" value="${project.description}"/>
+        <attribute name="Bundle-DocURL" value="${project.url}"/>
+        <attribute name="Bundle-License" value="${project.license.url}"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.name}"/>
+        <attribute name="Bundle-SymbolicName" value="org.apache.commons.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="${project.organization.name}"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+		<attribute name="Export-Package" value="org.apache.commons.net.bsd;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.chargen;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.daytime;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.discard;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.echo;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.discard&quot;,org.apache.commons.net.examples.cidr;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.ftp;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.mail;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.nntp;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.nntp&quot;,org.apache.commons.net.examples.ntp;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.ntp&quot;,org.apache.commons.net.examples.telnet;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.telnet&quot;,org.apache.commons.net.examples.unix;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.util;version=&quot;${project.version}&quot;,org.apache.commons.net.examples;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.finger;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.ftp.parser;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.ftp&quot;,org.apache.commons.net.ftp;version=&quot;${project.version}&quot;;uses:=&quot;javax.net,javax.net.ssl,org.apache.commons.net,org.apache.commons.net.ftp.parser,org.apache.commons.net.io&quot;,org.apache.commons.net.fuzzer;version=&quot;${project.version}&quot;,org.apache.commons.net.imap;version=&quot;${project.version}&quot;;uses:=&quot;javax.net.ssl,org.apache.commons.net&quot;,org.apache.commons.net.io;version=&quot;${project.version}&quot;,org.apache.commons.net.nntp;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.ntp;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.pop3;version=&quot;${project.version}&quot;;uses:=&quot;javax.net.ssl,org.apache.commons.net&quot;,org.apache.commons.net.smtp;version=&quot;${project.version}&quot;;uses:=&quot;javax.net.ssl,org.apache.commons.net&quot;,org.apache.commons.net.telnet;version=&quot;${project.version}&quot;,org.apache.commons.net.tftp;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.time;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net&quot;,org.apache.commons.net.util;version=&quot;${project.version}&quot;;uses:=&quot;javax.net.ssl&quot;,org.apache.commons.net.whois;version=&quot;${project.version}&quot;;uses:=&quot;org.apache.commons.net.finger&quot;,org.apache.commons.net;version=&quot;${project.version}&quot;;uses:=&quot;javax.net&quot;"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-URL" value="${project.url}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.organization.id}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+		<attribute name="Import-Package" value="javax.crypto,javax.crypto.spec,javax.net,javax.net.ssl,org.apache.commons.io,org.apache.commons.io.function,org.apache.commons.io.output"/>
+		<attribute name="Include-Resource" value="org/apache/commons/net/examples/examples.properties=src/main/resources/org/apache/commons/net/examples/examples.properties,org/apache/commons/net/fuzzer/clusterfuzz-testcase-minimized-OS400FTPEntryParserFuzzer-4734635798495232=src/main/resources/org/apache/commons/net/fuzzer/clusterfuzz-testcase-minimized-OS400FTPEntryParserFuzzer-4734635798495232,META-INF/LICENSE.txt=LICENSE.txt,META-INF/NOTICE.txt=NOTICE.txt"/>
+        <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
+        <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
+        <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Private-Package" value="examples,examples.cidr,examples.ftp,examples.mail,examples.nntp,examples.ntp,examples.telnet,examples.unix,examples.util"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <attribute name="Specification-Vendor" value="${project.organization.name}"/>
+        <attribute name="Specification-Version" value="${spec.version}"/>
+      </manifest>
+    </jar>
+    <jar jarfile="${build.dir}/${build.finalName}-ftp.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
-		<attribute name="Bundle-Description" value="${project.description}"/>
-		<attribute name="Bundle-DocURL" value="${project.url}"/>
-		<attribute name="Bundle-License" value="${project.license.url}"/>
-		<attribute name="Bundle-ManifestVersion" value="2"/>
-		<attribute name="Bundle-Name" value="${project.name}"/>
-		<attribute name="Bundle-SymbolicName" value="org.apache.commons.${project.artifactId}"/>
-		<attribute name="Bundle-Vendor" value="${project.organization.name}"/>
-		<attribute name="Bundle-Version" value="${project.version}"/>
-		<attribute name="Export-Package" value="org.apache.commons.net.bsd;version=&quot;${project.version}&quot;,org.apache.commons.net.chargen;version=&quot;${project.version}&quot;,org.apache.commons.net.daytime;version=&quot;${project.version}&quot;,org.apache.commons.net.discard;version=&quot;${project.version}&quot;,org.apache.commons.net.echo;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.cidr;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.ftp;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.mail;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.nntp;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.ntp;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.telnet;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.unix;version=&quot;${project.version}&quot;,org.apache.commons.net.examples.util;version=&quot;${project.version}&quot;,org.apache.commons.net.examples;version=&quot;${project.version}&quot;,org.apache.commons.net.finger;version=&quot;${project.version}&quot;,org.apache.commons.net.ftp.parser;version=&quot;${project.version}&quot;,org.apache.commons.net.ftp;version=&quot;${project.version}&quot;,org.apache.commons.net.imap;version=&quot;${project.version}&quot;,org.apache.commons.net.io;version=&quot;${project.version}&quot;,org.apache.commons.net.nntp;version=&quot;${project.version}&quot;,org.apache.commons.net.ntp;version=&quot;${project.version}&quot;,org.apache.commons.net.pop3;version=&quot;${project.version}&quot;,org.apache.commons.net.smtp;version=&quot;${project.version}&quot;,org.apache.commons.net.telnet;version=&quot;${project.version}&quot;,org.apache.commons.net.tftp;version=&quot;${project.version}&quot;,org.apache.commons.net.time;version=&quot;${project.version}&quot;,org.apache.commons.net.util;version=&quot;${project.version}&quot;,org.apache.commons.net.whois;version=&quot;${project.version}&quot;,org.apache.commons.net;version=&quot;${project.version}&quot;"/>
-		<attribute name="Implementation-Title" value="${project.name}"/>
-		<attribute name="Implementation-URL" value="${project.url}"/>
-		<attribute name="Implementation-Vendor" value="${project.organization.name}"/>
-		<attribute name="Implementation-Vendor-Id" value="${project.organization.id}"/>
-		<attribute name="Implementation-Version" value="${project.version}"/>
-		<attribute name="Import-Package" value="javax.crypto,javax.crypto.spec,javax.net,javax.net.ssl"/>
-		<attribute name="Include-Resource" value="org/apache/commons/net/examples/examples.properties=src/main/resources/org/apache/commons/net/examples/examples.properties,META-INF/NOTICE.txt=NOTICE.txt,META-INF/LICENSE.txt=LICENSE.txt"/>
-		<attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
-		<attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
-		<attribute name="JavaPackages-Version" value="${project.version}"/>
-		<attribute name="Private-Package" value="examples,examples.cidr,examples.ftp,examples.mail,examples.nntp,examples.ntp,examples.telnet,examples.unix,examples.util"/>
-		<attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
-		<attribute name="Specification-Title" value="${project.name}"/>
-		<attribute name="Specification-Vendor" value="${project.organization.name}"/>
-		<attribute name="Specification-Version" value="${spec.version}"/>
+        <attribute name="Extension-Name" value="org.apache.commons.net"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.organization.id}"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
       </manifest>
+      <fileset dir="${build.outputDir}"
+               includes="org/apache/commons/net/ftp/**,org/apache/commons/net/*,org/apache/commons/net/io/*,org/apache/commons/net/util/*"/>
+    </jar>
+    <jar jarfile="${build.dir}/${build.finalName}-examples.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/examples/**,**/package.html">
+      <manifest>
+        <attribute name="Extension-Name" value="org.apache.commons.net"/>
+        <attribute name="Implementation-Title" value="${project.name}"/>
+        <attribute name="Implementation-Vendor" value="${project.organization.name}"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.organization.id}"/>
+        <attribute name="Specification-Title" value="${project.name}"/>
+        <!-- Helper application -->
+        <attribute name="Main-Class" value="org.apache.commons.net.examples.Main"/>
+        <!-- Allow java -jar examples.jar to work -->
+        <attribute name="Class-Path" value="${project.artifactId}.jar"/>
+      </manifest>
+      <fileset dir="${build.outputDir}" includes="**/examples/**"/>
     </jar>
   </target>
 

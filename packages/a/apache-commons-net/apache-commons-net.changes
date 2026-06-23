@@ -1,4 +1,257 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:08:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.13.0
+  * New features
+    + Add DatagramSocketClient.getDefaultTimeoutDuration() and
+      deprecate getDefaultTimeout()
+    + NET-741: Add subnet IPv6 handling with SubnetUtils6 #391
+  * Fixed Bugs
+    + DaytimeTCPClientTest now should now pass inside most VPNs
+    + Migrate tests to JUnit5 #358, #359
+    + Fix malformed Javadoc comments
+    + IMAPExportMbox now restores the current thread's interrupt
+      flag when catching InterruptedException
+    + IOUtil.readWrite() now restores the current thread's interrupt
+      flag when catching InterruptedException
+    + TelnetInputStream now restores the current thread's interrupt
+      flag when catching InterruptedException
+    + NET-740: FTP fails to parse listings for Linux vsftpd in
+      Chinese or Japanese #393
+    + TelnetInputStream.read() doesn't preserve the original
+      InterruptedException as the cause of its
+      InterruptedIOException
+    + FTPClient._storeFile(String, String, InputStream) doesn't
+      always close it's internal socket when an exception is thrown
+      early in processing
+    + ListenerList.removeListener(T) now ignores null input to avoid
+      a NullPointerException
+    + ListenerList.addListener(T) now ignores null input
+    + Fix typo in FTPConnectionClosedException message from FTP
+      .getReply(boolean)
+    + Reimplement Util.copyReader() with IOUtils.copyLarge()
+    + Reimplement Util.copyStream() with IOUtils.copyLarge()
+    + Reimplement Util.copyStream() with IOUtils.copyLarge()
+    + Deprecate Util.copyReader(Reader, Writer) in favor of IOUtils
+      .copyLarge(Reader, Writer)
+  * Changes
+    + Bump org.apache.commons:commons-parent from 85 to 97 #371,
+      #388, #389
+    + Bump org.apache.commons:commons-lang3 from 3.18.0 to 3.19.0
+    + Bump commons-io:commons-io from 2.20.0 to 2.21.0
+    + Bump Util.DEFAULT_COPY_BUFFER_SIZE from 1 KiB to 8 KiB
+
+-------------------------------------------------------------------
+Mon Jun 22 09:58:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.12.0
+  * New features
+    + Add org.apache.commons.net.nntp.Article#getChild()
+    + Add org.apache.commons.net.nntp.Article#getNext()
+    + Add private SubnetAddressStringIterable and private
+      SubnetAddressStringIterator to implement
+      SubnetInfo.iterableAddressStrings() and
+      SubnetInfo.streamAddressStrings() #298
+    + Add SubnetInfo.iterableAddressStrings()
+    + Add SubnetInfo.streamAddressStrings()
+    + Add FTPCmd.OPTS
+    + Add FTP.opts(String, String)
+    + Add FTP.opts(String...)
+    + Add FTP.setControlEncoding(Charset)
+    + Add --OPTS to FTPClientExample
+    + NET-727: Add accessing options map for TFTP request packet and
+      allow using 'blksize' option #331
+    + Add org.apache.commons.net.util.ListenerList.isEmpty()
+    + Add org.apache.commons.net.ftp.FTPClient
+      .getSystemTypeOverride()
+    + Add generics to ListenerList
+    + Add module-info.class in the JAR file instead of an
+      Automatic-Module-Name in MANIFEST.MF
+    + Fixed Bugs
+    + Increase message limit in IMAPReply.TAGGED_RESPONSE from 80 to
+      500 characters
+    + Increase message limit in IMAPReply.UNTAGGED_RESPONSE from 160
+      to 500 characters
+    + Remove InvalidKeySpecException from AuthenticatingIMAPClient
+      .auth(AUTH_METHOD, String, String) never throws, it's not
+      thrown
+    + Remove InvalidKeySpecException from AuthenticatingIMAPClient
+      .authenticate(AUTH_METHOD, String, String) never throws, it's
+      not thrown
+    + Remove InvalidKeySpecException from ExtendedPOP3Client
+      .auth(AUTH_METHOD, String, String) never throws, it's not
+      thrown
+    + Remove InvalidKeySpecException from
+      org.apache.commons.net.smtp.AuthenticatingSMTPClient
+      .auth(AUTH_METHOD, String, String) never throws, it's not
+      thrown
+    + Fix SpotBugs RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE in
+      SSLSocketUtils
+    + Fix PMD UnnecessaryFullyQualifiedName
+    + Fix PMD UnusedFormalParameter
+    + Fix PMD AvoidBranchingStatementAsLastInLoop in org.apache
+      .commons.net.bsd.RCommandClient
+    + Fix PMD UselessOverridingMethod in org.apache.commons.net
+      .telnet.TelnetClient
+    + Fix PMD UnnecessaryModifier
+    + Deprecate MLSxEntryParser default constructor in favor of
+      MLSxEntryParser.getInstance()
+    + Deprecate direct access to org.apache.commons.net.nntp.Article
+      .kid and next fields
+    + Fix SpotBugs CT_CONSTRUCTOR_THROW in Base64 by implementing
+      finalize() as a noop to avoid finalizer attacks
+    + Add missing Javadoc to ListenerList
+    + Add missing Javadoc to SubnetUtils
+    + Deprecate PrintCommandListeners.PrintCommandListeners()
+    + Deprecate NtpUtils.NtpUtils()
+    + Deprecate FTPFileFilters.FTPFileFilters()
+    + Avoid multiple possible NullPointerException in SocketClient
+      .verifyRemote(Socket)
+    + PrintCommandListener.protocolReplyReceived(ProtocolCommandEvent)
+      doesn't always use an end-of-line
+    + FTPClientExample uses the wrong FTP system type to parse file
+      lines
+    + Base64 does not call super.finalize()
+    + TFTPServer does not call super.finalize()
+    + KeyManagerUtils.loadStore(String, File, String) shouldn't
+      ignore an IOException closing a keystore stream; use
+      try-with-resources
+    + NNTPClient.readNewsgroupListing() can use an ArrayList instead
+      of a Vector
+    + Deprecate org.apache.commons.net.util.Charsets
+    + Performance: NTFTPEntryParser.parseFTPEntry(String) doesn't
+      need to parse timestamps if there is no name
+    + Improve error handling in org.apache.commons.net.ftp.parser
+      .DefaultFTPFileEntryParserFactory
+      .createFileEntryParser(String, FTPClientConfig)
+    + Fail-fast in org.apache.commons.net.PrintCommandListener
+      .PrintCommandListener(PrintWriter, boolean, char, boolean) if
+      the PrintWriter is null
+    + Avoid NullPointerException in org.apache.commons.net
+      .PrintCommandListener.protocolCommandSent(ProtocolCommandEvent)
+    + Avoid NullPointerException in org.apache.commons.net
+    .PrintCommandListener.protocolReplyReceived(ProtocolCommandEvent)
+  * Changes
+    + Bump org.apache.commons:commons-parent from 70 to 85 #261,
+      #278, #280, #285, #298, #293, #300, #345
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.18.0
+      #268, #273, #281, #354
+    + Bump commons-io:commons-io from 2.16.1 to 2.20.0 #286, #308
+    + Bump org.apache.commons:commons-collections4 from 4.5.0-M2 to
+      4.5.0 #314
+    + Bump org.apache.ftpserver:ftpserver-core from 1.2.0 to 1.2.1
+
+-------------------------------------------------------------------
+Mon Jun 22 09:57:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.11.1
+  * Fixed Bugs
+    + Allow longer data in pattern IMAPReply.UNTAGGED_RESPONSE
+    + Fix Reproducible Builds issues #259
+
+-------------------------------------------------------------------
+Mon Jun 22 09:53:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.11.0
+  * New features
+    + NET-726: Add protected getters to FTPSClient #204
+    + Add SubnetUtils.toString()
+    + Add Maven property project.build.outputTimestamp for build
+      reproducibility
+    + Add FTP.DEFLATE_TRANSFER_MODE to support the "deflate"
+      compression format in FTPClient.setFileTransferMode(int)
+    + Add org.apache.commons.net.SocketClient.checkOpenOutputStream()
+  * Fixed Bugs
+    + Precompile regular expression in UnixFTPEntryParser
+      .preParse(List<String>)
+    + Guard against polynomial regular expression used on
+      uncontrolled data in VMSVersioningFTPEntryParser.REGEX
+    + Guard against polynomial regular expression used on
+      uncontrolled data in IMAPReply.TAGGED_RESPONSE
+    + Guard against polynomial regular expression used on
+      uncontrolled data in IMAPReply.UNTAGGED_RESPONSE
+    + NET-730: Cannot connect to FTP server with HTTP proxy
+    + Base 64 Encoding with URL and Filename Safe Alphabet should
+      not chunk per RFC 4648
+    + Deprecate org.apache.commons.net.util.Charsets.Charsets() for
+      removal
+    + Deprecate org.apache.commons.net.util.TrustManagerUtils
+      .TrustManagerUtils() for removal
+  * Changes
+    + Bump commons-parent from 62 to 70 #238
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.1.0 to 3.2.0,
+      #221
+    + Bump commons-lang3 from 3.13.0 to 3.14.0
+    + Bump commons-io from 2.15.0 to 2.16.1 #236, #240
+
+-------------------------------------------------------------------
+Mon Jun 22 09:42:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 3.10.0
+  * New features
+    +  Add and use DatagramSocketClient.setDefaultTimeout(Duration)
+      and deprecate DatagramSocketClient.setDefaultTimeout(int)
+    + Add and use TFTP.DEFAULT_TIMEOUT_DURATION and deprecate
+      org.apache.commons.net.tftp.TFTP.DEFAULT_TIMEOUT
+    + Add and use DatagramSocketClient#getSoTimeoutDuration()
+    + Add and use DatagramSocketClient#setSoTimeout(Duration)
+    + Add and use DatagramSocketClient.checkOpen()
+    + Add TelnetClient.sendAYT(Duration)
+    + TFTPServer implements AutoCloseable
+    + DatagramSocketClient implements AutoCloseable
+    + Add IMAP package tests, include junit-jupiter-params artifact
+      #166
+    + Add Base64 missing tests and documentation fixes #161
+    + Add FTPFile tests and fix Javadoc typos #162
+    + Add IMAPReply tests and documentation fixes #165
+  * Fixed Bugs
+    + NET-650: Delegate host resolution to Socket.connect() #138
+    + Fixes many grammar issues and typos in JavaDoc and code
+      comments #141
+    + Remove redundant (null) initializations and other clean ups
+      #155
+    + TFTPServer.setMaxTimeoutRetries() now throws
+      IllegalArgumentException instead of RuntimeException
+    + TFTPServer.setSocketTimeout() now throws
+      IllegalArgumentException instead of RuntimeException
+    + FTPCommand.checkArray() now throws IllegalStateException
+      instead of RuntimeException
+    + org.apache.commons.net.nntp.Threader now throws
+      IllegalStateException instead of RuntimeException
+    + POP3Command static initializer now throws
+      IllegalStateException instead of RuntimeException
+    + SMTPCommand static initializer now throws
+      IllegalStateException instead of RuntimeException
+    + SubnetUtils.SubnetInfo.getPreviousAddress() now throws
+      IllegalStateException instead of RuntimeException
+    + IMAPExportMbox.MboxListener.chunkReceived(IMAP) now throws
+      UncheckedIOException instead of RuntimeException
+    + IMAPUtils.imapLogin(URI, int, ProtocolCommandListener) now
+      throws IOException instead of RuntimeException while
+      maintaining method signature source compatibility
+    + [StepSecurity] ci: Harden GitHub Actions #156
+    + NET-722: Javadoc for FtpClient
+      .setControlKeepAliveReplyTimeout(Duration) says timeout is in
+      milliseconds
+    + Change class org.apache.commons.net.ftp.parser
+      .MVSFTPEntryParser to support more datasets #182
+    + Bulletproof TFTPServerPathTest #173
+    + Deprecate org.apache.commons.net.util.Base64 in favor of
+      java.util.Base64
+    + Replace use of org.apache.commons.net.util.Base64 with
+      java.util.Base64 in org.apache.commons.net.ftp
+    + Replace use of org.apache.commons.net.util.Base64 with
+      java.util.Base64 in org.apache.commons.net.imap
+    + Replace use of org.apache.commons.net.util.Base64 with
+      java.util.Base64 in org.apache.commons.net.pop3
+    + Replace use of org.apache.commons.net.util.Base64 with
+      java.util.Base64 in org.apache.commons.net.smtp
+  * Changes
+    + Bump commons-parent from 54 to 62 #132, #137, #153
+    + Bump commons-io from 2.11.0 to 2.14.0
+    + Bump commons-lang3 from 3.12.0 to 3.13.0
+
+-------------------------------------------------------------------
 Wed Oct  2 15:32:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Spec file cleanup
@@ -156,7 +409,7 @@ Tue Jul  8 09:19:38 UTC 2014 - tchvatal@suse.com
 Wed Apr 30 16:53:41 UTC 2014 - darin@darins.net
 
 - Update project_xml patch for strict fuzz
-- Suppress bytecode check on SLES 
+- Suppress bytecode check on SLES
 - remove java-javadoc build requirement
 
 -------------------------------------------------------------------
@@ -167,7 +420,7 @@ Mon Sep  9 11:05:48 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri Sep  6 09:09:00 UTC 2013 - mvyskocil@suse.com
 
-- use add_maven_depmap 
+- use add_maven_depmap
 
 -------------------------------------------------------------------
 Thu Nov 29 13:21:56 UTC 2012 - mvyskocil@suse.com
@@ -184,15 +437,15 @@ Wed Nov 28 14:52:01 UTC 2012 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Tue Jun 26 13:40:59 UTC 2012 - mvyskocil@suse.cz
 
-- remove openjdk6 dependency 
+- remove openjdk6 dependency
 
 -------------------------------------------------------------------
 Mon Mar 12 13:58:33 UTC 2012 - mvyskocil@suse.cz
 
-- fix bnc#749895 - ant FTP action fails on the date with leap year 
+- fix bnc#749895 - ant FTP action fails on the date with leap year
 
 -------------------------------------------------------------------
 Tue Apr 28 11:00:24 CEST 2009 - mvyskocil@suse.cz
 
-- Initial SUSE packaging (version 1.4.1 from jpp5) 
+- Initial SUSE packaging (version 1.4.1 from jpp5)
 
