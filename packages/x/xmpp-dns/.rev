@@ -252,4 +252,13 @@
     introduced in v0.6.0.</comment>
     <requestid>1330288</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>bd3f21e1122ea2ef933ea7057cd844ab</srcmd5>
+    <version>0.6.3</version>
+    <time>1782229396</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.3:
+  * Add support for NO_COLOR environment variable (see https://no-color.org/).</comment>
+    <requestid>1361359</requestid>
+  </revision>
 </revisionlist>
