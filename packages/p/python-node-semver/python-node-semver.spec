@@ -1,7 +1,7 @@
 #
 # spec file for package python-node-semver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           python-node-semver
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Port of node-semver
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/podhmo/python-node-semver
 Source:         https://github.com/podhmo/python-node-semver/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  %{python_module base}

@@ -92,4 +92,12 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281967</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>fb63814feb86e2fdcc2ece563384ba2f</srcmd5>
+    <version>0.9.1</version>
+    <time>1782229433</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.1 (handle invalid versions in valid(), gh#54).</comment>
+    <requestid>1361374</requestid>
+  </revision>
 </revisionlist>
