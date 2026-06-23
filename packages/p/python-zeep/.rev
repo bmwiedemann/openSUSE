@@ -114,4 +114,21 @@
     <comment></comment>
     <requestid>1311044</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17b3b8c28a947bee3a770e5d111aa1b6</srcmd5>
+    <version>4.3.3</version>
+    <time>1782229304</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.3.3 (fixes bsc#1268679)
+  * Wire up the forbid_external setting (previously defined but unused since
+    the move off defusedxml in 4.0). When enabled, zeep refuses to transitively
+    fetch http/https resources via xsd:import, xsd:include, wsdl:import or lxml
+    entity resolution, raising zeep.exceptions.ExternalReferenceForbidden. The
+    user-supplied entry-point WSDL/schema URL is still loaded. The default
+    remains False to preserve existing behaviour; enable it when loading WSDLs
+    from untrusted sources to mitigate SSRF via attacker-controlled import
+    targets.
+</comment>
+    <requestid>1361285</requestid>
+  </revision>
 </revisionlist>
