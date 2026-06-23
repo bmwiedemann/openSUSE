@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:46:48 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.20.8
+  - Adjusted first-line indentation so it not applied to text that looks like
+    lists (starts with punctuation, numbers, etc.).
+  - Updated UI translations.
+- update to 1.20.7
+  - Fixed: Text layout overflow when monospace body appearance is enabled with
+    Gemini. (It was getting confused with normal plain text.)
+  - Fixed: Link icons not matching the body font size.
+  - Fixed: Link numbers/letters not matching the body font size.
+  - Fixed: Content width expansion in Gopher menus. (Line width measured
+    incorrectly.)
+  - Adjusted first-line indentation to only occur when both previous and current
+    paragraphs are getting wrapped.
+
+-------------------------------------------------------------------
 Mon Jun  8 20:40:26 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.20.6
