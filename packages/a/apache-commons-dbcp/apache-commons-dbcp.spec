@@ -1,7 +1,7 @@
 #
 # spec file for package apache-commons-dbcp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,27 +19,21 @@
 %define base_name       dbcp
 %define short_name      commons-%{base_name}2
 Name:           apache-commons-dbcp
-Version:        2.1.1
+Version:        2.14.0
 Release:        0
 Summary:        Jakarta Commons DataBase Pooling Package
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://commons.apache.org/proper/commons-dbcp/
 Source0:        http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz
-Source100:      http://archive.apache.org/dist/commons/%{base_name}/source/%{short_name}-%{version}-src.tar.gz.asc
-Source101:      commons.keyring
-Patch0:         apache-commons-dbcp-sourcetarget.patch
-Patch1:         apache-commons-dbcp-javadoc.patch
+Source1:        %{name}-build.xml
 BuildRequires:  ant >= 1.6.5
 BuildRequires:  apache-commons-logging
-BuildRequires:  apache-commons-pool2
+BuildRequires:  apache-commons-pool2 >= 2.13
 BuildRequires:  fdupes
-BuildRequires:  geronimo-jta-1_1-api
-BuildRequires:  java-devel >= 1.7
+BuildRequires:  glassfish-transaction-api
+BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jdbc-stdext >= 2.0
-BuildRequires:  junit >= 3.8.1
-BuildRequires:  xerces-j2
 Provides:       %{short_name} = %{version}-%{release}
 Obsoletes:      %{short_name} < %{version}-%{release}
 Provides:       jakarta-%{short_name} = %{version}-%{release}
@@ -71,36 +65,28 @@ testing for valid connections, PreparedStatement pooling, and other
 features.
 
 %prep
-%autosetup -p1 -n %{short_name}-%{version}-src
-
-# remove all binary libs
-find . -name "*.jar" -exec rm -f {} \;
+%setup -q -n %{short_name}-%{version}-src
+cp %{SOURCE1} build.xml
+%pom_change_dep jakarta.transaction:jakarta.transaction-api javax.transaction:javax.transaction-api
 
 %build
-ant \
-        -Dcommons-pool.jar=$(build-classpath commons-pool2) \
-        -Djdbc20ext.jar=$(build-classpath jdbc-stdext) \
-        -Djunit.jar=$(build-classpath junit) \
-        -Dxerces.jar=$(build-classpath xerces-j2) \
-        -Dxml-apis.jar=$(build-classpath xml-commons-jaxp-1.3-apis) \
-        -Dcommons-logging.jar=$(build-classpath commons-logging) \
-        -Djava.io.tmpdir=. \
-        -Djta-impl.jar=$(build-classpath geronimo-jta-1.1-api) \
-        dist
+mkdir -p lib
+build-jar-repository -s lib commons-logging-api commons-pool2 glassfish-transaction-api
+ant jar javadoc
 
 %install
 # jars
-install -d -m 0755 %{buildroot}%{_javadir}
-install -m 0644 dist/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}2.jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{short_name}-%{version}.jar %{buildroot}%{_javadir}/%{name}2.jar
 ln -sf %{_javadir}/%{name}2.jar %{buildroot}%{_javadir}/%{short_name}.jar
 # pom
 install -d -m 0755 %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}2.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}2.pom
 %add_maven_depmap %{name}2.pom %{name}2.jar
 
 # javadoc
 install -d -m 755 %{buildroot}%{_javadocdir}/%{name}
-cp -pr dist/docs/* %{buildroot}%{_javadocdir}/%{name}
+cp -pr target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles

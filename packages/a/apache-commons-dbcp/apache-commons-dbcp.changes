@@ -1,4 +1,792 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:42:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.14.0
+  * New features:
+    + Add org.apache.commons.dbcp2.datasources
+      .PooledConnectionManager.setPassword(char[])
+  * Fixed Bugs
+    + DBCP-597: Validation query not timing out on connections
+      managed by SharedPoolDataSource
+    + DBCP-597: Validation query not timing out on connections
+      managed by PerUserPoolDataSource
+    + DBCP-597:  KeyedCPDSConnectionFactory
+      .validateObject(UserPassKey, PooledObject) ignores timeouts
+      less than 1 second when there is no validation query
+    + Modernize tests to use JUnit 5 features
+    + Javadoc is missing its Overview page
+    + Deprecate org.apache.commons.dbcp2.Jdbc41Bridge.Jdbc41Bridge(),
+      constructor will be private in the next major release
+    + Deprecate org.apache.commons.dbcp2.Constants.Constants(),
+      constructor will be private in the next major release
+    + Fix Javadoc warnings on Java 17
+    + Fix Javadoc warnings on Java 21
+    + Remove -nouses directive from maven-bundle-plugin. OSGi package
+      imports now state 'uses' definitions for package imports, this
+      doesn't affect JPMS (from org.apache.commons:commons-parent:80)
+    + XAException thrown by LocalXAResource now all include a message
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "isSharedConnection" in one thread may not yield the value of
+      the most recent write from another thread [org.apache.commons
+      .dbcp2.managed.ManagedConnection]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "closed" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .cpdsadapter.PooledConnectionImpl]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "closed" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .DelegatingStatement] AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "cacheState" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .DelegatingConnection] AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Operation on the
+      "fatalSqlExceptionThrown" shared variable in
+      "PoolableConnection" class is not atomic [org.apache.commons
+      .dbcp2.PoolableConnection]
+      AT_NONATOMIC_OPERATIONS_ON_SHARED_VARIABLE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "clearStatementPoolOnReturn" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolingConnection]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "maxTotal" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .datasources.SharedPoolDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultBlockWhenExhausted" in one thread may not yield the
+      value of the most recent write from another thread [org.apache
+      .commons.dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultLifo" in one thread may not yield the value of the
+      most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultMaxIdle" in one thread may not yield the value of the
+      most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultMaxTotal" in one thread may not yield the value of the
+      most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultMinIdle" in one thread may not yield the value of the
+      most recent write from another thread [org.apache.commons.dbcp2
+      .datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultNumTestsPerEvictionRun" in one thread may not yield
+      the value of the most recent write from another thread
+      [org.apache.commons.dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTestOnBorrow" in one thread may not yield the value of
+      the most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTestOnCreate" in one thread may not yield the value of
+      the most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTestOnReturn" in one thread may not yield the value of
+      the most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTestWhileIdle" in one thread may not yield the value
+      of the most recent write from another thread [org.apache.commons
+      .dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTransactionIsolation" in one thread may not yield the
+      value of the most recent write from another thread [org.apache
+      .commons.dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "rollbackAfterValidation" in one thread may not yield the
+      value of the most recent write from another thread [org.apache
+      .commons.dbcp2.datasources.InstanceKeyDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "loginTimeout" in one thread may not yield the value of the
+      most recent write from another thread [org.apache.commons
+      .dbcp2.cpdsadapter.DriverAdapterCPDS] At
+      DriverAdapterCPDS.java:[line 644]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "maxIdle" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .cpdsadapter.DriverAdapterCPDS] At DriverAdapterCPDS.java:
+      [line 664] AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "maxPreparedStatements" in one thread may not yield the value
+      of the most recent write from another thread [org.apache
+      .commons.dbcp2.cpdsadapter.DriverAdapterCPDS] At
+      DriverAdapterCPDS.java:[line 673]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "numTestsPerEvictionRun" in one thread may not yield the value
+      of the most recent write from another thread [org.apache
+      .commons.dbcp2.cpdsadapter.DriverAdapterCPDS] At
+      DriverAdapterCPDS.java:[line 722]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "poolPreparedStatements" in one thread may not yield the value
+      of the most recent write from another thread [org.apache
+      .commons.dbcp2.cpdsadapter.DriverAdapterCPDS] At
+      DriverAdapterCPDS.java:[line 757]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "autoCommitOnReturn" in one thread may not yield the value of
+      the most recent write from another thread [org.apache.commons
+      .dbcp2.PoolableConnectionFactory-]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "cacheState" in one thread may not yield the value of the most
+      recent write from another thread [org.apache.commons.dbcp2
+      .PoolableConnectionFactory] AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "clearStatementPoolOnReturn" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "defaultTransactionIsolation" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "autoCommitOnReturn" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "fastFailValidation" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons .dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "maxOpenPreparedStatements" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "poolStatements" in one thread may not yield the value of the
+      most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "rollbackOnReturn" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbcp2.PoolableConnectionFactory]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "autoCommitOnReturn" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbc-p2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "cacheState" in one thread may not yield the value of the most
+      recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "clearStatementPoolOnReturn" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "autoCommitOnReturn" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "fastFailValidation" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "logExpiredConnections" in one thread may not yield the value
+      of the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "registerConnectionMBean" in one thread may not yield the
+      value of the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix SpotBugs [ERROR] Medium: Shared primitive variable
+      "rollbackOnReturn" in one thread may not yield the value of
+      the most recent write from another thread
+      [org.apache.commons.dbcp2.BasicDataSource]
+      AT_STALE_THREAD_WRITE_OF_PRIMITIVE
+    + Fix a potential resource leak if an SQLException occurs during
+      an attempt to obtain an XAConnection
+    + Minor optimisations to the processing of the
+      "connectionProperties" string
+  * Changes
+    + Update tests and CPDSConnectionFactory#invalidate to accomodate
+      changed behavior in the fix for POOL-424.
+    + Bump org.apache.commons:commons-parent from 78 to 93 #521, #537,
+      #538
+    + Bump org.apache.commons:commons-pool2 from 2.12.0 to 2.13.0 #474
+    + Port site from Doxia 1 to 2
+    + Bump commons-logging:commons-logging from 1.3.4 to 1.3.5
+    + Bump org.slf4j:slf4j-simple from 2.0.16 to 2.0.17 #481
+    + Bump org.apache.commons:commons-lang3 from 3.17.0 to 3.20.0
+      #506
+  * Removed
+    + Removed internal constructors and methods from the
+      package-private class CPDSConnectionFactory; this is binary
+      compatible
+    + Removed an internal constructor and methods from the
+      package-private class KeyedCPDSConnectionFactory; this is
+      binary compatible
+- Removed patches:
+  * apache-commons-dbcp-javadoc.patch
+  * apache-commons-dbcp-sourcetarget.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Mon Jun 22 15:38:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.13.0
+  * New features:
+    + Add support for ignoring non-fatal SQL state codes #421
+    + Add @FunctionalInterface to SwallowedExceptionListener
+    + Add missing Javadoc comments and descriptions
+    + Add tests, raise the bar for JaCoCo checks
+  * Fixed Bugs
+    + Avoid object creation when invoking
+      isDisconnectionSqlException #422
+    + DBCP-599: PoolableConnectionFactory.destroyObject() method
+      behaves incorrectly on ABANDONED connection, issue with
+      unhandled AbstractMethodError.
+      DelegatingConnection.abort(Executor) should delegate to
+      Jdbc41Bridge
+    + DelegatingConnection.setSchema(String) should delegate to
+      Jdbc41Bridge
+    + Fix possible NullPointerException in PoolingConnection.close()
+    + PerUserPoolDataSource.registerPool() incorrectly replacing a
+      CPDSConnectionFactory into managers map before throwing an
+      IllegalStateException
+    + Fix PMD UnnecessaryFullyQualifiedName in AbandonedTrace
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      PoolableCallableStatement
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      PoolablePreparedStatement
+    + Fix PMD UnnecessaryFullyQualifiedName in Utils
+    + Fix PMD UnnecessaryFullyQualifiedName in
+      LocalXAConnectionFactory
+    + Fix SpotBugs MC_OVERRIDABLE_METHOD_CALL_IN_READ_OBJECT in
+      PerUserPoolDataSource
+    + Fix SpotBugs MC_OVERRIDABLE_METHOD_CALL_IN_READ_OBJECT in
+      SharedPoolDataSource
+  * Changes
+    + Bump org.apache.commons:commons-parent from 66 to 78 #360,
+      #371, #395, #420, #426, #436, #441, #449
+    + Bump commons-logging:commons-logging from 1.3.0 to 1.3.4 #368,
+      #399, #423
+    + Bump org.apache.commons:commons-lang3 from 3.14.0 to 3.17.0
+      #404, #412, #427
+    + Bump org.hamcrest:hamcrest from 2.2 to 3.0 #410
+    + Bump org.slf4j:slf4j-simple from 2.0.13 to 2.0.16 #413, #418
+
+-------------------------------------------------------------------
+Mon Jun 22 15:35:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.12.0
+  * New features
+    + Add property project.build.outputTimestamp for build
+      reproducibility
+    + Add null guards in DelegatingDatabaseMetaData constructor #352
+    + DBCP-473: Data source bean creation failed due to mismatched
+      return type of setter and getter for connectionInitSqls in
+      BasicDataSource: Add BasicDataSource.setConnectionInitSqls(List)
+  * Fixed Bugs
+    + DBCP-590: BasicDataSource#setAbandonedUsageTracking has no
+      effect
+    + DBCP-596: PoolingConnection.toString() causes
+      StackOverflowError
+    + PooledConnectionImpl.destroyObject(PStmtKey, PooledObject) can
+      throw NullPointerException #312
+    + PoolingConnection.destroyObject(PStmtKey, PooledObject) can
+      throw NullPointerException #312
+    + DBCP-477: Fix examples in
+      src/main/java/org/apache/commons/dbcp2/package-info.java
+  * Changes
+    + Use ReentrantLock in PoolableConnection.close, #591
+    + Bump commons-lang3 from 3.13.0 to 3.14.0
+    + Bump commons-parent from 64 to 66
+    + Bump org.slf4j:slf4j-simple from 2.0.9 to 2.0.12 #349
+
+-------------------------------------------------------------------
+Mon Jun 22 15:34:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.11.0
+  * Changes
+    + Update call sites of deprecated APIs from Apache Commons Pool
+    + Add DataSourceMXBean.getUserName() and deprecate getUsername()
+    + Bump h2 from 2.2.220 to 2.2.224, #308
+    + Bump commons-parent from 60 to 64
+    + Bump org.slf4j:slf4j-simple from 2.0.7 to 2.0.9 #301
+    + Bump org.apache.commons:commons-pool2 from 2.11.1 to 2.12.0
+    + Bump jakarta.transaction:jakarta.transaction-api from 1.3.1
+      to 1.3.3
+
+-------------------------------------------------------------------
+Mon Jun 22 15:27:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.10.0
+  * New features
+    + Add and use AbandonedTrace#setLastUsed(Instant)
+      ° Add and use Duration versions of now deprecated APIs that
+        use ints and longs.
+      ° Internally track durations with Duration objects instead of
+        ints and longs.
+      ° See the JApiCmp report for the complete list
+    + Add PMD check to default Maven goal
+    + Add Utils.getDisconnectionSqlCodes() and
+      Utils.DISCONNECTION_SQL_CODES
+    + Make BasicDataSource.getConnectionPool() public
+    + Add github/codeql-action
+  * Fixed Bugs
+    + Fix StackOverflowError in PoolableConnection
+      .isDisconnectionSqlException #123
+    + PerUserPoolDataSourceFactory.getNewInstance(Reference) parsed
+      defaultMaxWaitMillis as an int instead of a long
+    + Reimplement time tracking in AbandonedTrace with an Instant
+      instead of a long
+    + Migrate away from deprecated APIs in Apache Commons Pool
+    + Fix possible NullPointerException in BasicDataSourceFactory
+      .validatePropertyNames()
+    + Fix possible NullPointerException in BasicDataSourceFactory
+      .getObjectInstance()
+    + DBCP-585: Connection level JMX queries result in concurrent
+      access to connection objects, causing errors #179
+    + UserPassKey should be Serializable
+    + LifetimeExceededException should extend SQLException
+    + Replace Exception with SQLException in some method signatures
+      (preserves binary compatibility, not source)
+    + Don't leak Connections when PoolableConnectionFactory
+      .makeObject() fails to create a JMX ObjectName
+    + Performance: No need for map lookups if we traverse map
+      entries instead of keys
+    + Performance: Refactor to use a static inner class in
+      DataSourceXAConnectionFactory
+    + Reuse pattern of throwing XAException instead of
+      NullPointerException in LocalXAConnectionFactory
+      .LocalXAResource
+    + SpotBugs: An overridable method is called from constructors in
+      PoolableCallableStatement
+    + SpotBugs: An overridable method is called from constructors in
+      PoolablePreparedStatement
+    + Wrong property name logged in ConnectionFactoryFactory
+      .createConnectionFactory(BasicDataSource, Driver)
+    + Throw SQLException instead of NullPointerException when the
+      connection is already closed
+    + CPDSConnectionFactory.makeObject() does not need to wrap and
+      rethrow SQLException
+    + PoolingDataSource.close() now always throws SQLException
+    + [StepSecurity] ci: Harden GitHub Actions #282
+    + Fixes typos, missing or misplaced characters, and grammar
+      issues #299
+  * Changes
+    + Bump actions/cache from 2.1.6 to 3.0.8 #147, #176
+    + Bump actions/checkout from 2.3.4 to 3.0.2 #139, #143, #173
+    + Bump actions/setup-java from 2 to 3.6.0 #229
+    + Bump actions/upload-artifact from 3.1.0 to 3.1.1 #231
+    + Bump checkstyle from 8.44 to 9.3 #121, #130, #149, #158, #190
+    + Bump maven-checkstyle-plugin from 3.1.2 to 3.2.0 #210
+    + Bump commons-pool2 2.10.0 to 2.11.1
+    + Bump junit-jupiter from 5.8.0-M1 to 5.9.1 #125, #136, #157,
+      #203, #218
+    + Bump spotbugs-maven-plugin from 4.3.0 to 4.7.3.0 #140, #154,
+      #161, #178, #192, #200, #204, #213, #234
+    + Bump spotbugs from 4.3.0 to 4.7.3 #124, #133, #151, #164,
+      #177, #189, #214, #230
+    + Bump org.mockito:mockito-core from 3.11.2 to 4.11.0, #128,
+      #138, #152, #175, #188. #193, #208, #215, #232, #235, #246,
+      #252
+    + Bump maven-javadoc-plugin from 3.3.0 to 3.4.1 #131, #184
+    + Bump maven-pmd-plugin from 3.14.0 to 3.19.0 #132, #172, #195
+    + Bump pmd from 6.44.0 to 6.52.0
+    + Bump narayana-jta from 5.12.0.Final to 5.12.7.Final #134,
+      #156, #163, #185, #197
+    + Bump japicmp-maven-plugin from 0.15.3 to 0.17.1 #137, #166,
+      #174, #211, #238
+    + Bump h2 from 1.4.200 to 2.2.220 #153, #183, #196, #287. Update
+      SQL for migration from H2 1.4.200 to 2.0.204 where "KEY" and
+      "VALUE" are now reserved keywords
+    + Bump jboss-logging from 3.4.2.Final to 3.4.3.Final #162
+    + Bump slf4j-simple from 1.7.30 to 1.7.36 #169
+    + Bump commons-parent from 52 to 60 #180, #219, #254, #278
+    + Bump JaCoCo from 0.8.7 to 0.8.8
+    + Bump maven-surefire-plugin 2.22.2 to 3.0.0-M7
+    + Bump apache-rat-plugin 0.13 to 0.14
+    + Bump commons-lang3 from 3.12 to 3.13.0
+
+-------------------------------------------------------------------
+Mon Jun 22 15:22:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.9.0
+  * New features
+    + Add and reuse Constants.KEY_USER and Constants.KEY_PASSWORD
+    + Add and reuse DataSourceMXBean
+    + Add and reuse DriverAdapterCPDS
+      .{get|set}DurationBetweenEvictionRuns(), deprecate
+      {get|set}TimeBetweenEvictionRunsMillis(long)
+    + Add and reuse DriverAdapterCPDS
+      .{get|set}MinEvictableIdleDuration(), deprecate
+      {get|set}MinEvictableIdleTimeMillis(int)
+    + Add and reuse CPDSConnectionFactory
+      .setMaxConnLifetime(Duration), deprecate
+      setMaxConnLifetimeMillis(long)
+    + Add and reuse KeyedCPDSConnectionFactory
+      .setMaxConnLifetime(Duration), deprecate
+      setMaxConnLifetimeMillis(long)
+    + Add and reuse KeyedCPDSConnectionFactory
+      .setMaxConnLifetime(Duration), deprecate
+      setMaxConnLifetimeMillis(long)
+    + Add and reuse InstanceKeyDataSource
+      .{get|set}DefaultMaxWait(Duration), deprecate
+      {get|set}DefaultMaxWaitMillis(long)
+  * Fixed Bugs
+    + DBCP-569: Fix test random failure on TestSynchronizationOrder
+      .testInterposedSynchronization, #84
+    + DBCP-568: ManagedConnection must clear its cached state after
+      transaction completes, #75
+    + Minor Improvements #78
+    + DBCP-567: Use abort rather than close to clean up abandoned
+      connections
+    + Performance Enhancement: Call toArray with Zero Array Size #20
+    + DBCP-562: Avoid exposing password via JMX #38
+    + DBCP-575: Remove redundant initializers #98
+    + DBCP-577: Simplify test assertions #100, #113
+    + DBCP-573: DataSource implementations do not implement Wrapper
+      interface correctly #93
+    + Replace FindBugs with SpotBugs.
+    + DataSourceConnectionFactory.getUserPassword() may expose
+      internal representation by returning
+      DataSourceConnectionFactory.userPassword.
+    + DataSourceXAConnectionFactory.getUserPassword() may expose
+      internal representation by returning
+      DataSourceXAConnectionFactory.userPassword.
+    + DriverAdapterCPDS.getPasswordCharArray() may expose internal
+      representation by returning DriverAdapterCPDS.userPassword.
+    + new org.apache.commons.dbcp2.managed
+      .DataSourceXAConnectionFactory(TransactionManager,
+      XADataSource, String, char[],
+      TransactionSynchronizationRegistry) may expose internal
+      representation by storing an externally mutable object into
+      DataSourceXAConnectionFactory.userPassword.
+    + org.apache.commons.dbcp2.managed.DataSourceXAConnectionFactory
+      .setPassword(char[]) may expose internal representation by
+      storing an externally mutable object into
+      DataSourceXAConnectionFactory.userPassword.
+    + org.apache.commons.dbcp2.PStmtKey.getColumnIndexes() may
+      expose internal representation by returning PStmtKey
+      .columnIndexes.
+    + org.apache.commons.dbcp2.PStmtKey.getColumnNames() may expose
+      internal representation by returning PStmtKey.columnNames.
+    + DBCP-578: Use Collections.synchronizedList() Instead Of Vector
+      #101
+    + DBCP-576: Simplify and inline variables #99
+    + Update PoolKey#toString() to avoid revealing a user name is
+      here
+    + Internal package private UserPassKey class stores its user
+      name as a char[] as it already does the password
+    + DBCP-579: Performance of DelegatingConnection
+      .prepareStatement(String) regressed enormously in 2.8.0
+      compared to 1.4. DelegatingConnection should also cache
+      connection schema string to avoid calling the
+      Connection#getSchema() for each key creation.
+      DelegatingConnection should also cache connection catalog
+      string to avoid calling the Connection#getCatalog() for each
+      key creation
+    + BasicDataSource should test for the presence of a security
+      manager dynamically, not once on initialization
+  * Changes
+    + Bump mockito-core from 3.5.11 to 3.11.2 #66, #72, #77, #85,
+      #91, #105, #110, #116
+    + Bump actions/checkout from v2.3.2 to v2.3.4 #65, #74
+    + Bump actions/cache from v2 to v2.1.6 #90, #108
+    + Bump commons-pool2 from 2.8.1 to 2.9.0
+    + Bump actions/setup-java from v1.4.2 to v2 #69
+    + Bump japicmp-maven-plugin from 0.14.3 to 0.15.2 #71, #82
+    + Bump maven-pmd-plugin from 3.13.0 to 3.14.0 #76
+    + Bump japicmp-maven-plugin from 0.14.4 to 0.15.3, #83
+    + Bump Hamcrest 1.3 -> 2.2 #70
+    + Bump maven-checkstyle-plugin from 3.1.1 to 3.1.2 #88
+    + Bump junit-jupiter from 5.7.0 to 5.8.0-M1, #89, #106
+    + Bump narayana-jta from 5.10.6.Final to 5.12.0.Final #103, #111
+    + Bump maven-javadoc-plugin from 3.2.0 to 3.3.0 #107
+    + Bump commons.jacoco.version 0.8.6 -> 0.8.7
+    + Bump jboss-logging from 3.4.1.Final to 3.4.2.Final #109
+    + Bump org.jboss:jboss-transaction-spi from 7.6.0.Final to
+      7.6.1.Final
+    + Bump commons-pool2 from 2.9.0 to 2.10.0
+    + Bump checkstyle to 8.44
+    + Bump spotbugs from 4.2.3 to 4.3.0 #117
+    + Bump spotbugs-maven-plugin from 4.2.3 to 4.3.0 #118
+
+-------------------------------------------------------------------
+Mon Jun 22 15:20:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.8.0
+  * New features
+    + DBCP-564: Fix BasicManagedDataSource leak of connections
+      opened after transaction is rollback-only #39
+    + DBCP-566: Add clearStatementPoolOnReturn #42
+    + DBCP-559: Add start, restart methods to BasicDataSource. #50
+  * Fixed Bugs
+    + DBCP-555: NPE when creating a SQLExceptionList with a null
+      list
+    + DBCP-558: Fix DelegatingConnection readOnly and autoCommit
+      caching mechanism #35
+    + Fix regression introduced by unreleased code clean-up #63
+  * Changes
+    + Update to PR#36 - PrepareStatement and prepareCall methods are
+      extracted #37
+    + Mask out user name and password from DriverAdapterCPDS
+      .toString()
+    + DBCP-650: Update Apache Commons Pool from 2.7.0 to 2.8.1, #48
+    + Update tests from H2 1.4.199 to 1.4.200
+    + Update tests from Mockito 3.0.0 to 3.5.11 #47, #60, #64
+    + Update tests from jboss-logging 3.4.0.Final to 3.4.1.Final
+    + Update tests from narayana-jta 5.9.5.Final to 5.10.6.Final,
+      #61
+    + Update tests from junit-jupiter 5.5.1 to 5.7.0 #62
+    + Update tests from org.slf4j:slf4j-simple 1.7.26 to 1.7.30
+    + Update build from
+      com.github.siom79.japicmp:japicmp-maven-plugin 0.13.1 to
+      0.14.3
+    + Update build from maven-javadoc-plugin 3.1.1 to 3.2.0
+    + Update build from maven-pmd-plugin 3.12.0 to 3.13.0
+    + Update org.apache.commons:commons-parent from 48 to 51
+    + Update jacoco-maven-plugin from 0.8.4 to 0.8.6
+    + Update maven-checkstyle-plugin from 3.0.0 to 3.1.1
+    + Update actions/checkout from v1 to v2.3.2, #44, #51
+    + Update actions/setup-java from v1.4.0 to v1.4.2 #58
+
+-------------------------------------------------------------------
+Mon Jun 22 15:17:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.7.0
+  * New features
+    + DBCP-539: ManagedDataSource#close() should declare used
+      exceptions
+    + DBCP-547: Add a ConnectionFactory class name setting for
+      BasicDataSource.createConnectionFactory() #33
+    + Add missing Javadocs
+  * Fixed Bugs
+    + DBCP-538: Wrong JMX base name derived in
+      BasicDataSource#updateJmxName
+    + DBCP-546: Avoid NPE when calling DriverAdapterCPDS.toString()
+    + DBCP-550: java.util.IllegalFormatException while building a
+      message for a SQLFeatureNotSupportedException in Jdbc41Bridge
+      .getObject(ResultSet,String,Class)
+    + Fix Javadoc link in README.md #21
+  * Changes
+    + DBCP-540: Close ObjectOutputStream before calling
+      toByteArray() on underlying ByteArrayOutputStream #28
+    + DBCP-541: Upgrade to JUnit Jupiter #19
+    + DBCP-542: Fix tests on Java 11
+    + DBCP-543: Update Apache Commons Pool from 2.6.1 to 2.6.2
+    + DBCP-529: Add 'jmxName' property to web configuration
+      parameters listing
+    + DBCP-548: Update Apache Commons Pool from 2.6.2 to 2.7.0
+    + DBCP-549: Make org.apache.commons.dbcp2.AbandonedTrace
+      .removeTrace(AbandonedTrace) null-safe
+    + DBCP-551: org.apache.commons.dbcp2.DelegatingStatement
+      .close() should try to close ALL of its result sets even when
+      an exception occurs
+    + DBCP-552: org.apache.commons.dbcp2.DelegatingConnection
+      .passivate() should close ALL of its resources even when an
+      exception occurs
+    + DBCP-553: org.apache.commons.dbcp2.PoolablePreparedStatement
+      .passivate() should close ALL of its resources even when an
+      exception occurs
+    + DBCP-554: org.apache.commons.dbcp2.PoolableCallableStatement
+      .passivate() should close ALL of its resources even when an
+      exception occurs
+    + Update tests from org.mockito:mockito-core 2.28.2 to 3.0.0
+    + Update tests from H2 1.4.198 to 1.4.199
+    + Update tests from com.h2database:h2 1.4.197 to 1.4.199
+    + Update tests from org.jboss.narayana.jta:narayana-jta
+      5.9.2.Final to 5.9.5.Final
+    + Update tests from org.jboss.logging:jboss-logging 3.3.2.Final
+      to 3.4.0.Final
+    + Update tests from org.mockito:mockito-core 2.24.0 to 2.28.2
+    + Update tests from org.mockito:mockito-core 2.28.2 to 3.0.0
+
+-------------------------------------------------------------------
+Mon Jun 22 15:13:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.6.0
+  * New features
+    + DBCP-534: Allow for manual connection eviction
+    + DBCP-514: Allow DBCP to register with a
+      TransactionSynchronizationRegistry for XA cases
+    + DBCP-519: Add some toString() methods for debugging (never
+      printing passwords.)
+    + DBCP-527: Add getters to some classes
+    + DBCP-528: org.apache.commons.dbcp2.DriverManagerConnectionFactory
+      should use a char[] instead of a String to store passwords
+  * Fixed Bugs
+    + DBCP-518: Allow DBCP to work with old Java 6/JDBC drivers
+      without throwing AbstractMethodError
+  * Changes
+    + DBCP-517: Make defensive copies of char[] passwords
+    + DBCP-515: Do not try to register synchronization when the
+      transaction is no longer active
+    + DBCP-516: Do not double returnObject back to the pool if there
+      is a transaction context with a shared connection
+    + DBCP-520: BasicManagedDataSource needs to pass the TSR with
+      creating DataSourceXAConnectionFactory
+    + DBCP-537: Update Apache Commons Pool from 2.6.0 to 2.6.1
+
+-------------------------------------------------------------------
+Mon Jun 22 15:12:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.5.0
+  * New features
+    + DBCP-506: Support JDBC 4.2
+    + DBCP-479: Support default schema in configuration
+  * Fixed Bugs
+    + DBCP-508: Prepared statement keys should take a Connection's
+      schema into account
+    + DBCP-512: Avoid exceptions when closing a connection in
+      mutli-threaded use case
+  * Changes
+    + DBCP-505: Update Java requirement from version 7 to 8
+    + DBCP-427: Examines 'SQLException's thrown by underlying
+      connections or statements for fatal (disconnection) errors
+    + DBCP-507: Change default for fail-fast connections from false
+      to true
+    + DBCP-504: Increase test coverage
+    + DBCP-510: Update Apache Commons Pool from 2.5.0 to 2.6.0
+
+-------------------------------------------------------------------
+Mon Jun 22 15:09:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.4.0
+  * Fixed Bugs
+    + DBCP-484: Connection leak during XATransaction in high load
+    + DBCP-496: Add support for pooling CallableStatements to the
+      org.apache.commons.dbcp2.cpdsadapter package
+  * Changes
+    + DBCP-492: Drop Ant build
+    + DBCP-491: Ensure DBCP ConnectionListener can deal with
+      transaction managers which invoke rollback in a separate
+      thread
+    + DBCP-494: org.apache.commons.dbcp2.PStmtKey should make copies
+      of given arrays in constructors
+    + DBCP-495: Remove duplicate code in org.apache.commons.dbcp2
+      .cpdsadapter.PStmtKeyCPDS
+    + DBCP-497: Deprecate use of PStmtKeyCPDS in favor of PStmtKey
+    + DBCP-498: org.apache.commons.dbcp2
+      .DataSourceConnectionFactory should use a char[] instead of a
+      String to store passwords
+    + DBCP-499: org.apache.commons.dbcp2.managed
+      .DataSourceXAConnectionFactory should use a char[] instead of
+      a String to store passwords
+    + DBCP-500: org.apache.commons.dbcp2.cpdsadapter
+      .DriverAdapterCPDS should use a char[] instead of a String to
+      store passwords
+    + DBCP-501: org.apache.commons.dbcp2.datasources
+      .CPDSConnectionFactory should use a char[] instead of a String
+      to store passwords
+    + DBCP-502: org.apache.commons.dbcp2.datasources internals
+      should use a char[] instead of a String to store passwords
+    + DBCP-503: org.apache.commons.dbcp2.datasources
+      .InstanceKeyDataSourceFactory.closeAll() does not close all
+
+-------------------------------------------------------------------
+Mon Jun 22 15:07:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.3.0
+  * Fixed Bugs
+    + DBCP-476: AbandonedTrace.getTrace() contains race condition
+    + DBCP-482: Avoid javax.management.InstanceNotFoundException on
+      shutdown when a bean is not registered
+  * Changes
+    + DBCP-483: Make constant public: org.apache.commons.dbcp2
+      .PoolingDriver.URL_PREFIX
+    + DBCP-486: DriverAdapterCPDS.setUser(), setPassword(), and
+      getPooledConnection() with null arguments throw
+      NullPointerExceptions when connection properties are set
+    + DBCP-487: Add API org.apache.commons.dbcp2.datasources
+      .PerUserPoolDataSource.clear()
+    + DBCP-488: NPE for org.apache.commons.dbcp2.cpdsadapter
+      .DriverAdapterCPDS.setConnectionProperties(null)
+    + DBCP-490: The method org.apache.commons.dbcp2.PoolingDriver
+      .getConnectionPool(String) does not tell you which pool name
+      is not registered when it throws an exception
+
+-------------------------------------------------------------------
+Mon Jun 22 15:00:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.2.0
+  * New features
+    + DBCP-451: Add constructor DriverManagerConnectionFactory(String).
+    + DBCP-462: Refactoring to prepare for a future patch to enable
+      pooling of all prepared and callable statements in
+      PoolingConnection
+    + DBCP-458: Make it simpler to extend BasicDataSource to allow
+      sub-classes to provide custom GenericObjectPool implementations
+    + DBCP-474: Enable pooling of all prepared and callable
+      statements inPoolingConnection
+  * Fixed Bugs
+    + DBCP-481: Update Apache Commons Pool from 2.4.2 to 2.5.0
+    + DBCP-454: OSGi declarations contain multiple import headers
+      for javax.transaction
+    + DBCP-478: Wrong parameter name in site documentation for
+      BasicDataSource Configuration Parameters
+    + DBCP-452: Add jmxName to properties set by
+      BasicDataSourceFactory. This enables container-managed pools
+      created from JNDI Resource definitions to enable JMX by
+      supplying a valid root JMX name
+    + DBCP-446: NullPointerException thrown when calling
+      ManagedConnection.isClosed()
+    + DBCP-444: InvalidateConnection can result in closed connection
+      returned by getConnection.
+    + DBCP-449: Complete the fix for DBCP-418, enabling
+      PoolableConnection class to load in environments (such as GAE)
+      where the JMX ManagementFactory is not available
+    + DBCP-455: Ensure that the cacheState setting is used when
+      statement pooling is disabled
+    + DBCP-453: Ensure that setSoftMinEvictableIdleTimeMillis is
+      used when working with BasicDataSource
+    + DBCP-456: Correct the name of the configuration attribute
+      softMinEvictableIdleTimeMillis
+    + DBCP-472: Avoid potential infinite loops when checking if an
+      SQLException is fatal for a connection or not
+    + DBCP-468: Expand the fail-fast for fatal connection errors
+      feature to include managed connections
+    + DBCP-463: Correct a typo in the method name
+      PoolableConnectionFactory#setMaxOpenPreparedStatements. The
+      old method remains but is deprecated so not to break clients
+      currently using the incorrect name.
+    + DBCP-459: Ensure that a thread's interrupt status is visible
+      to the caller if the thread is interrupted during a call to
+      PoolingDataSource.getConnection().
+    + DBCP-457: When using a BasicDataSource, pass changes related
+      to the handling of abandoned connections to the underlying
+      pool so that the pool configuration may be updated dynamically
+
+-------------------------------------------------------------------
 Fri Sep  5 07:37:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Do not provide the hibernate_jdbc_cache alternative
@@ -127,7 +915,7 @@ Fri May 25 09:44:21 UTC 2012 - mvyskocil@suse.cz
 Thu Nov  6 15:12:18 CET 2008 - ro@suse.de
 
 - add buildignore for jakarta-commons-dbcp-tomcat5
-  (workaround for bs bug) 
+  (workaround for bs bug)
 
 -------------------------------------------------------------------
 Thu Aug 28 14:59:09 CEST 2008 - mvyskocil@suse.cz
@@ -137,7 +925,7 @@ Thu Aug 28 14:59:09 CEST 2008 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Thu Jul 31 13:10:45 CEST 2008 - mvyskocil@suse.cz
 
-- do not add a java6 compatibility for javac 1.5.0 (fixed build on ia64) 
+- do not add a java6 compatibility for javac 1.5.0 (fixed build on ia64)
 
 -------------------------------------------------------------------
 Tue Jul 29 09:03:46 CEST 2008 - anosek@suse.cz
