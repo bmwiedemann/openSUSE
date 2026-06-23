@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jun 13 16:39:04 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.38.0:
+  + This release is highlighted by a new Norwegian grade 3
+    contraction table, the result of Lars Bjørndal's work
+    implementing the revised Braille Authority rules. The Swedish
+    tables have been thoroughly renewed and now also cover
+    Sami and Elfdalian. Malayalam has been updated to comply
+    with the new Bharati Braille 2026 rules. Several security
+    vulnerabilities were fixed, and the documentation was improved.
+
+-------------------------------------------------------------------
 Wed Mar  4 04:43:12 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.37.0:

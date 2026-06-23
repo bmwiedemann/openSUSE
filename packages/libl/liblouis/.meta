@@ -15,5 +15,4 @@ screenreader for Linux. It has, however, gone far beyond these
 routines. It is named in honor of Louis Braille.
 
 Included are also tools for testing and debugging tables.</description>
-  <devel project="GNOME:Factory" package="liblouis"/>
 </package>

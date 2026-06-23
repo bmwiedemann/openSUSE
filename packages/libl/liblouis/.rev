@@ -637,4 +637,19 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     <comment></comment>
     <requestid>1336547</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>bb9e25de0f1a7de262b699cd138f43cc</srcmd5>
+    <version>3.38.0</version>
+    <time>1782229051</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.38.0:
+  + This release is highlighted by a new Norwegian grade 3
+    contraction table, the result of Lars Bjørndal's work
+    implementing the revised Braille Authority rules. The Swedish
+    tables have been thoroughly renewed and now also cover
+    Sami and Elfdalian. Malayalam has been updated to comply
+    with the new Bharati Braille 2026 rules. Several security
+    vulnerabilities were fixed, and the documentation was improved.</comment>
+    <requestid>1361058</requestid>
+  </revision>
 </revisionlist>
