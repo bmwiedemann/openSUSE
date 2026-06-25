@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-bom
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-bom
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Bill of materials POM for Jackson projects
 License:        Apache-2.0
@@ -44,7 +44,7 @@ sed -i 's/\r//' LICENSE
 
 # Disable plugins not needed during RPM builds
 %pom_remove_plugin ":maven-enforcer-plugin" base
-%pom_remove_plugin ":nexus-staging-maven-plugin" base
+%pom_remove_plugin ":central-publishing-maven-plugin" base
 %pom_remove_dep -r :junit-bom
 
 %build
