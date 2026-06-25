@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:07:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.8
+  * No changes since 2.18.5
+  * Changes of 2.18.5
+    + #185: `ACCEPT_SINGLE_VALUE_AS_ARRAY` doesn't work on Guava
+      `ImmutableList`
+  * Changes of 2.18.0
+    + #160: (guava) Defect guava OSGi dependency version specified?
+    + HPPC dependency upgraded to 0.9.1 (from 0.8.2)
+
+-------------------------------------------------------------------
 Wed Nov  6 08:01:12 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.3
