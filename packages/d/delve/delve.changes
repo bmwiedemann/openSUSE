@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Jun 24 19:59:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 1.27.0:
+  * v1.27.0 (#4372)
+  * pkg/proc: skip TestSetVariable on riscv64
+  * pkg/proc: skip TestPanickyIterator2 on riscv64
+  * service/debugger: validate AttachPid before attempting attach
+  * service/dap: fix TestFilterGoroutines for runtime.mcall on Windows
+  * pkg/debugdetect: use dynamic port assignment in tests
+  * service/dap: fix TestNextParked for ExitedEvent ordering
+  * service/dap: fix test failures from ExitedEvent change (#4373)
+  * service/dap: send ExitedEvent before TerminatedEvent (#4371)
+  * pkg/proc: add GOEXPERIMENT=mapsplitgroup support (#4370)
+  * proc: make PushPackageVarOrSelect check local variables first (#4181)
+  * service/dap: add dap write memory request handler (#4364)
+  * proc: fix stepping test on go1.27 / arm64 (#4365)
+  * proc/test: include GOEXPERIMENT in the fixture cache key  (#4367)
+  * Revert "winarm64: remove experimental build tags (#4176)" (#4281)
+  * proc: support generic methods (#4356)
+  * proc: add test for accessing global C variables (#4358)
+  * gobuild: increase wait length for deleting binaries on Windows (#4359)
+  * proc: disable some failing tests on riscv64 (#4361)
+  * proc: add test for struct literals with embedded field selectors (#4362)
+  * proc/internal/ebpf: switch to header+param event ring buffer protocol (#4352)
+  * TeamCity: adjust execution timeout (#4354)
+  * service/dap: relax TestBadLaunchRequest (#4351)
+  * chore: fix comment to improve readability (#4350)
+  * proc: fix hasInlines in stacktrace, fix range step with inlining (#4345)
+  * Teamcity: reenable riscv64 build (#4346)
+  * chore: fix some comments to improve readability (#4344)
+  * proc: fix range over func stepping for go1.27 (#4343)
+  * proc: fix test for go1.27 regexp refactor (#4339)
+  * service/dap: add newline to the build message (#4340)
+  * proc: compile hit-condition regexp once (#4335)
+  * proc: bail out of loadArrayValues after stride overflow (#4328)
+  * dwarf/reader: propagate errors during Reader entry iteration (#4327)
+  * proc: fix OR handling in breakpointConditionSatisfiable (#4325)
+  * proc/internal/ebpf: fix AddressToOffset off-by-one at section load (#4324)
+  * proc: propagate AddrPiece ReadMemory errors in composite memory (#4323)
+  * native: propagate PtraceGetRegs error on linux/ppc64le (#4322)
+  * native: propagate PtraceSetRegs error on linux/ppc64le (#4321)
+  * proc: fix SP calculation for sigpanic frames on arm64 (#4319)
+  * proc: implement frame pointer unwinding (#4288)
+  * service/dap: avoid Session.conn race in breakpoint-after-disconnect test (#4317)
+
+-------------------------------------------------------------------
 Mon Apr 27 21:23:42 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 1.26.3:
