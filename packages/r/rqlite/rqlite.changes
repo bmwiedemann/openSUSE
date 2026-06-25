@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 23 18:39:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.2.4:
+  * Fix some non-AWS S3-compatible stores
+- includes changes from 10.2.3
+  * Check snapshot store integrity before first actual use
+  * Disable HTTP timeout for boot and restore operations via the shell
+  * HTTP layer ignores ErrNoWALToSnapshot when snapshotting
+  * Close Snapshot Streamer ASAP when restoring to local node
+
+-------------------------------------------------------------------
 Fri May 29 17:44:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.2.0:

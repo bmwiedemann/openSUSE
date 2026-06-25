@@ -401,4 +401,12 @@
     <comment>rqlite 10.2.0 (forwarded request 1355940 from AndreasStieger)</comment>
     <requestid>1355941</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>bcfc6618e6172ddf38a4fe23ecb08bcd</srcmd5>
+    <version>10.2.4</version>
+    <time>1782377533</time>
+    <user>anag_factory</user>
+    <comment>rqlite 10.2.4 (forwarded request 1361485 from AndreasStieger)</comment>
+    <requestid>1361486</requestid>
+  </revision>
 </revisionlist>
