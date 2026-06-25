@@ -18,7 +18,7 @@
 
 %define extra_version %{nil}
 Name:           perftest
-Version:        26.01.5
+Version:        26.04.17
 Release:        0
 Summary:        IB Performance tests
 License:        BSD-3-Clause OR GPL-2.0-or-later
@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/linux-rdma/perftest
 Source0:        %{name}-%{version}%{extra_version}.tar.gz
 Source100:      README.md
-Patch4:         perftest-armv6.patch
+Patch0:         perftest-armv6.patch
 # For transition to rdma-core make sure the new packages are selected
 # Once the transition is made the version check can be removed
 BuildRequires:  autoconf
