@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:37:20 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Revert unneeded policy kit rules (mainline git commit d75f2dbee4df2)
+A    policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch 
+
+-------------------------------------------------------------------
+Tue May 12 20:35:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.91.2:
+  + Feature: Skip the systemd inhibitor when performing
+    CriticalPowerAction
+  + Feature: Introduce "Auto" CriticalPowerAction using
+    systemd-logind Sleep()
+  + Fix: Test CanPowerOff() availability before calling PowerOff()
+  + Fix: Add charge limit support for systems providing only
+    charge_control_end_threshold
+- Add 25303ba52771ee514b70fb1a5318a8313889ac31.patch:
+  up-device-battery: Prefer "Standard" over "Fast" charging
+
+-------------------------------------------------------------------
 Fri Feb 13 11:04:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.91.1:

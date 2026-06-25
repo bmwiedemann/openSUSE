@@ -1,0 +1,61 @@
+From 25303ba52771ee514b70fb1a5318a8313889ac31 Mon Sep 17 00:00:00 2001
+From: Armin Wolf <W_Armin@gmx.de>
+Date: Mon, 13 Apr 2026 11:34:45 +0200
+Subject: [PATCH] up-device-battery: Prefer "Standard" over "Fast" charging
+
+When disabling the charging threshold feature upower will change the
+charging strategy from "Long Life" to "Fast" if a battery supports
+"Long Life", "Standard" and "Fast". This behavior is suboptimal
+because "Fast" charging might wear down the battery over time, while
+"Standard" is supposed to be used as the safe default.
+
+Fix this by preferring "Standard" over "Fast" charging in such
+situations.
+
+Resolves: #344
+Signed-off-by: Armin Wolf <W_Armin@gmx.de>
+---
+ src/linux/integration-test.py        | 4 ++--
+ src/linux/up-device-supply-battery.c | 6 +++---
+ 2 files changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/src/linux/integration-test.py b/src/linux/integration-test.py
+index 9ceb5820..8271e4f7 100755
+--- a/src/linux/integration-test.py
++++ b/src/linux/integration-test.py
+@@ -2364,10 +2364,10 @@ class Tests(dbusmock.DBusTestCase):
+         with open(f"/sys/class/power_supply/{battery_name}/charge_types") as fp:
+             self.assertEqual(fp.read(), "Standard")
+ 
+-        # Battery 2 switches to "Fast"
++        # Battery 2 switches to "Standard"
+         battery_name = bat2_up.split("_")[-1]
+         with open(f"/sys/class/power_supply/{battery_name}/charge_types") as fp:
+-            self.assertEqual(fp.read(), "Fast")
++            self.assertEqual(fp.read(), "Standard")
+ 
+     def test_battery_charge_limit_multiple_batteries_get_charge_threshold_settings_supported(
+         self,
+diff --git a/src/linux/up-device-supply-battery.c b/src/linux/up-device-supply-battery.c
+index 947b892c..0acc9ffe 100644
+--- a/src/linux/up-device-supply-battery.c
++++ b/src/linux/up-device-supply-battery.c
+@@ -302,12 +302,12 @@ up_device_battery_charge_find_available_charge_types_for_charging (UpDevice *dev
+ 	UpDeviceSupplyBattery *self = UP_DEVICE_SUPPLY_BATTERY (device);
+ 	UpDeviceSupplyBatteryChargeTypes charge_types = self->supported_charge_types;
+ 
+-	if (charge_types & UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_FAST)
+-		return UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_FAST;
+-
+ 	if (charge_types & UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_STANDARD)
+ 		return UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_STANDARD;
+ 
++	if (charge_types & UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_FAST)
++		return UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_FAST;
++
+ 	if (charge_types & UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_ADAPTIVE)
+ 		return UP_DEVICE_SUPPLY_BATTERY_CHARGE_TYPES_ADAPTIVE;
+ 
+-- 
+GitLab
+

@@ -1,0 +1,65 @@
+From: Kate Hsuan <hpa@redhat.com>
+Subject: policy: org.freedesktop.upower.rules: grant permission for skipping the inhibitor
+References: bsc#1265867
+Patch-Mainline: v1.91.2
+Git-commit: d75f2dbee4df2bc20df840f972a25c73ec2685ae
+Git-repo: https://gitlab.freedesktop.org/upower/upower.git
+
+The polkit rule gives upower the necessary permission to ignore the
+systemd inhibitor when upower runs the CriticalPowerAction.
+
+Signed-off-by: Kate Hsuan <hpa@redhat.com>
+
+
+Signed-off-by: Thomas Renninger <trenn@suse.de>
+diff --git b/policy/meson.build a/policy/meson.build
+index 972ccb0..3371bde 100644
+--- b/policy/meson.build
++++ a/policy/meson.build
+@@ -1,9 +1,3 @@
+-install_data(
+-  'org.freedesktop.upower.rules',
+-  install_tag: 'runtime',
+-  install_dir: join_paths(datadir, 'polkit-1', 'rules.d'),
+-)
+-
+ if polkit.found()
+   #newer polkit has the ITS rules included
+   if polkit.version().version_compare('>0.113')
+diff --git b/policy/org.freedesktop.upower.rules a/policy/org.freedesktop.upower.rules
+deleted file mode 100644
+index 8ec28b8..0000000
+--- b/policy/org.freedesktop.upower.rules
++++ /dev/null
+@@ -1,31 +0,0 @@
+-/* 
+- * Copyright (C) 2026 Kate Hsuan <hpa@redhat.com>
+- *
+- * This program is free software; you can redistribute it and/or modify
+- * it under the terms of the GNU General Public License as published by
+- * the Free Software Foundation; either version 2 of the License, or
+- * (at your option) any later version.
+- *
+- * This program is distributed in the hope that it will be useful,
+- * but WITHOUT ANY WARRANTY; without even the implied warranty of
+- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+- * GNU General Public License for more details.
+- *
+- * You should have received a copy of the GNU General Public License
+- * along with this program; if not, write to the Free Software
+- * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+- *
+- */
+-
+-
+-polkit.addRule(function(action, subject) {
+-    if ((action.id == "org.freedesktop.login1.power-off-ignore-inhibit" ||
+-         action.id == "org.freedesktop.login1.reboot-ignore-inhibit" ||
+-         action.id == "org.freedesktop.login1.halt-ignore-inhibit" ||
+-         action.id == "org.freedesktop.login1.suspend-ignore-inhibit" ||
+-         action.id == "org.freedesktop.login1.hibernate-ignore-inhibit") &&
+-        subject.user == "root") {
+-        return polkit.Result.YES;
+-    }
+-});
+-

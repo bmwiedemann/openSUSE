@@ -28,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.91.1
+Version:        1.91.2
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -39,6 +39,11 @@ Source:         %{name}-%{version}.tar.zst
 Source1:        upower.rpmlintrc
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
+# PATCH-FIX-UPSTREAM 25303ba52771ee514b70fb1a5318a8313889ac31.patch -- up-device-battery: Prefer "Standard" over "Fast" charging
+Patch2:         https://gitlab.freedesktop.org/upower/upower/-/commit/25303ba52771ee514b70fb1a5318a8313889ac31.patch
+# PATCH-FIX-OPENSUSE: No need on SUSE to grant root user addtional polkit rights, bsc#1265867
+# This is a revert of mainline commit d75f2dbee4df2bc20df840
+Patch3:         policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
@@ -170,6 +175,8 @@ system) are restricted using PolicyKit.
 %{_mandir}/man7/UPower.7%{?ext_man}
 %{_mandir}/man8/upowerd.8%{?ext_man}
 %{_datadir}/polkit-1/actions/org.freedesktop.upower.policy
+# Removed by reverting: d75f2dbee4df2
+# %%{_datadir}/polkit-1/rules.d/org.freedesktop.upower.rules
 %{_datadir}/zsh/site-functions/_upower
 
 # This is created via systemd upower.service nowadays
