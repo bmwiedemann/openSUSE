@@ -145,4 +145,15 @@
     <user>anag_factory</user>
     <comment>undeleteundelete</comment>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>99ed6099302da74279d24ac288d06ac3</srcmd5>
+    <version>595.84</version>
+    <time>1782377809</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA variant to 595.84 (boo#1268792)
+
+- changes to build also against the nvidia kernel, which is planned
+  to be available for SLE16.1-aarch64</comment>
+    <requestid>1361560</requestid>
+  </revision>
 </revisionlist>

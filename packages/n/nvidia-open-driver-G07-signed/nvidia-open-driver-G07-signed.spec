@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 595.80
+%define gfx_aarch64_version 595.84
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.80
+%define gfx_version 595.84
 %endif
 %define cuda_version 610.43.02
 
@@ -107,6 +107,12 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  kernel-source
 BuildRequires:  kernel-syms
+%ifarch aarch64
+%if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
+BuildRequires:  kernel-source-nvidia
+BuildRequires:  kernel-syms-nvidia
+%endif
+%endif
 BuildRequires:  perl-Bootloader
 BuildRequires:  pesign-obs-integration
 BuildRequires:  zstd
