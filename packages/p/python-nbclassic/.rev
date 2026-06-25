@@ -298,4 +298,50 @@
 </comment>
     <requestid>1285049</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0cb945b006762a62af838b8ae4ad8950</srcmd5>
+    <version>1.3.3</version>
+    <time>1774555813</time>
+    <user>anag_factory</user>
+    <comment>- Add CVE-2026-27601.patch to force usage of underscore &gt;= 1.13.8 and
+  revendor node_modules.tar.xz
+  (CVE-2026-27601, bsc#1259165)
+
+- Update to 1.3.3:
+  - Copy static assets to legacy paths for notebook 6 compatibility
+  ### Maintenance and upkeep improvements
+  - Bump actions/create-github-app-token from 2.1.1 to 2.1.4
+  - Copy static assets to legacy paths for notebook 6 compatibility
+  - Bump actions/setup-node from 4.4.0 to 5.0.0
+  - Bump actions/setup-python from 5.6.0 to 6.0.0
+- 1.3.2
+  - Bump actions/create-github-app-token from 2.1.0 to 2.1.1
+  - Bump actions/checkout from 4.2.2 to 5.0.0
+  - Bump actions/download-artifact from 4.3.0 to 5.0.0
+  - Bump actions/create-github-app-token from 2.0.6 to 2.1.0
+  - Bump actions/cache from 4.2.3 to 4.2.4
+  - Migrate google-caja to npm
+  - Migrate react and react-dom to npm
+  - Migrate codemirror to npm
+  - Migrate requirejs dependencies to npm
+  - Migrate es6-promise
+  - Migrate marked to npm
+  - Fix jquery npm migration
+  - Migrate MathJax to npm
+  - Migration of jquery, jquery-ui and jquery-typeahead to npm
+  - Partial migration of JS dependencies to npm
+  - Migrate font-awesome dependency to npm
+  - Bump pandoc/actions from 1.1.0 to 1.1.1
+  - Bump jupyter-server/jupyter_releaser from</comment>
+    <requestid>1342836</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>5ad4f1aa95a3688eab53e87f25af749a</srcmd5>
+    <version>1.3.3</version>
+    <time>1782400416</time>
+    <user>anag_factory</user>
+    <comment>- Revendor node_modules.tar.xz to update ws &gt;= 7.5.11
+  (CVE-2026-48779, bsc#1268958)</comment>
+    <requestid>1361697</requestid>
+  </revision>
 </revisionlist>

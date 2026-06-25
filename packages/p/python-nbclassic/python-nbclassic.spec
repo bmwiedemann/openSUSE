@@ -1,7 +1,7 @@
 #
 # spec file for package python-nbclassic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@
 # this conditional is used in the python-rpm-macros, but `osc build --without libalternatives` won't work
 %bcond_without libalternatives
 # 1.1.0 gets abbreviated by pythondistdeps
-%define shortversion 1.3.1
+%define shortversion 1.3.3
 Name:           python-nbclassic%{psuffix}
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        Jupyter Notebook as a Jupyter Server Extension
 License:        BSD-3-Clause
@@ -39,6 +39,9 @@ Source0:        https://github.com/jupyterlab/nbclassic/archive/v%{version}.tar.
 # Contains high vulnerability issues according to npm audit. Nothing of it lands in the built packages.
 Source1:        node_modules.tar.xz
 Source2:        create_node_modules.sh
+# PATCH-FIX-UPSTREAM CVE-2026-27601.patch bsc#1259165
+# Update underscore dep in package.json
+Patch0:         CVE-2026-27601.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-jupyter-builder}
@@ -100,11 +103,18 @@ This package contains the jupyterlab server configuration and desktop files
 
 %prep
 %autosetup -p1 -n nbclassic-%{version} -a1
-sed -i "s/npm run yarn && //" package.json
-ln -s $PWD/node_modules/@bower_components/ nbclassic/static/components
 
 %build
+sed -i "s/npm run yarn && //" package.json
 export HATCH_JUPYTER_BUILDER_SKIP_NPM=1
+
+# Link components
+mkdir -p nbclassic/static/components
+for c in $(cat node_modules/components.txt)
+do
+    LOWER=$(echo "$c" | tr '[:upper:]' '[:lower:]')
+    ln -s $PWD/node_modules/$LOWER nbclassic/static/components/$c
+done
 %pyproject_wheel
 
 %if !%{with test}
