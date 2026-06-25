@@ -17,7 +17,7 @@
 
 
 Name:           bshoshany-thread-pool
-Version:        4.1.0
+Version:        5.1.0
 Release:        0
 Summary:        Fast, lightweight C++17 thread pool library
 License:        MIT
@@ -38,8 +38,8 @@ Requires:       libstdc++-devel
 
 %description devel
 Header files for the BS::thread_pool C++17 thread pool library
-(header-only): BS_thread_pool.hpp and the BS_thread_pool_utils.hpp
-utility helpers.
+(header-only). Since v5 the utility helpers are part of the single
+BS_thread_pool.hpp header.
 
 %prep
 %autosetup -p1 -n thread-pool-%{version}
@@ -49,7 +49,6 @@ utility helpers.
 
 %install
 install -D -m 0644 include/BS_thread_pool.hpp %{buildroot}%{_includedir}/BS_thread_pool.hpp
-install -D -m 0644 include/BS_thread_pool_utils.hpp %{buildroot}%{_includedir}/BS_thread_pool_utils.hpp
 
 %check
 # upstream's self-contained test program (no framework); deadlock/benchmark
@@ -61,6 +60,5 @@ g++ %{optflags} -std=c++17 -pthread -Iinclude tests/BS_thread_pool_test.cpp -o b
 %license LICENSE.txt
 %doc README.md CHANGELOG.md
 %{_includedir}/BS_thread_pool.hpp
-%{_includedir}/BS_thread_pool_utils.hpp
 
 %changelog

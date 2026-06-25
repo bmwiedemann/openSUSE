@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 23 14:35:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.0 (major v5 series):
+  * v5.0.0: major release adding C++20/23 module support while
+    retaining full C++17 compatibility, with API changes (see the
+    upstream CHANGELOG for migration notes)
+  * v5.1.0: add detach_bulk()/submit_bulk() to submit tasks in bulk
+    while locking the task-queue mutex only once
+- The BS_thread_pool_utils.hpp helpers are now part of the single
+  BS_thread_pool.hpp header, so the separate utils header is no
+  longer shipped
+
+-------------------------------------------------------------------
 Wed Jun 17 20:36:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 4.1.0):
