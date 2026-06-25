@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:35:10 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to 3.1.7
+  * Changed
+    - Add Debian 13 EOL
+    - Add Fedora 43 EOL date
+    - Add AlmaLinux to EOL DB
+    - Add EOL date for Alpine 3.22
+    - Add openSUSE Leap to EOL DB
+    - Fix OS detection for CachyOS (ID=cachyos)
+    - Add CachyOS to OS end-of-life database
+    - Update software-eol.db
+    - Update RHEL 8 EOL and add RHEL 9 and 10 dates to software-eol.db
+    - add Ubuntu 25.10 EOL date
+    - Add publiccode.yml check as a GitHub workflow
+    - Add end-of-life date for Ubuntu 26.04
+    - Added EoL for Ubuntu 26.04.
+    - Add NixOS EOL data
+    - Update HAPPY_USERS.md
+    - Add Alpine 3.23 EOL date
+    - add and fix fedora dates
+- Drop 1682.patch, included upstream
+
+-------------------------------------------------------------------
 Sun Nov 16 10:45:40 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Add Patch:
