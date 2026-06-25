@@ -1,0 +1,32 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Thu, 25 Jun 2026 00:00:00 +0000
+Subject: [PATCH] gcc16: mark debug-only counters as unused
+
+GCC 16 no longer treats a bare `var++` as a use, so `count` (only read
+by a LOG_DBG that is compiled out under NDEBUG) and `focused` (only read
+by an assert() compiled out under NDEBUG) trip
+-Werror=unused-but-set-variable. Add __attribute__((unused)), matching
+the upstream fix (dnkl/yambar commit 5a515eae99).
+
+--- a/bar/wayland.c	2026-06-25 09:41:53.565875738 +0200
++++ b/bar/wayland.c	2026-06-25 09:41:53.597879318 +0200
+@@ -1223,7 +1223,7 @@
+             bool do_expose = false;
+ 
+             /* Coalesce “refresh” commands */
+-            size_t count = 0;
++            __attribute__((unused)) size_t count = 0;
+             while (true) {
+                 uint8_t command;
+                 ssize_t r = read(backend->pipe_fds[0], &command, sizeof(command));
+--- a/modules/i3.c	2026-06-25 09:41:53.573876633 +0200
++++ b/modules/i3.c	2026-06-25 09:41:53.601879766 +0200
+@@ -589,7 +589,7 @@
+     mtx_lock(&mod->lock);
+ 
+     struct workspace *ws = NULL;
+-    size_t focused = 0;
++    __attribute__((unused)) size_t focused = 0;
+     tll_foreach(m->workspaces, it)
+     {
+         if (it->item.focused) {

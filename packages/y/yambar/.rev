@@ -149,4 +149,20 @@
     <comment></comment>
     <requestid>1169767</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>97bf836bdcc9fb20ca4277c2e65b7b93</srcmd5>
+    <version>1.11.0</version>
+    <time>1781879513</time>
+    <user>anag_factory</user>
+    <comment>yambar: fix GCC 15 FTBFS (const-qualifier discard in tag.c + modules/script.c), rescuing the package from the botdel (SR 1359692). No version change (1.11.0 is latest upstream). Patch submitted upstream as dnkl/yambar#497.</comment>
+    <requestid>1360305</requestid>
+  </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>6017d5a4d0eecc281310b3408b50fe10</srcmd5>
+    <version>1.11.0</version>
+    <time>1782400425</time>
+    <user>anag_factory</user>
+    <comment>Fix FTBFS with GCC 16 (boo#1256994): add yambar-gcc16-unused-but-set.patch marking the debug-only count/focused counters __attribute__((unused)) (backport of upstream commit 5a515eae99), so -Werror=unused-but-set-variable no longer trips. Verified building under gcc-16. Also modernized the spec with spec-cleaner.</comment>
+    <requestid>1361700</requestid>
+  </revision>
 </revisionlist>

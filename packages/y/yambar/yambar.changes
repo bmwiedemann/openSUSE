@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:46:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add yambar-gcc16-unused-but-set.patch: fix build with GCC 16,
+  which no longer counts a bare increment as a use and so rejects
+  the debug-only "count"/"focused" counters under
+  -Werror=unused-but-set-variable (boo#1256994); backported from
+  upstream
+- Modernize the spec with spec-cleaner
+
+-------------------------------------------------------------------
+Thu Jun 18 17:13:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add yambar-gcc15-const.patch: fix the GCC 15 build failure
+  (-Werror=discarded-qualifiers) in tag.c and modules/script.c, where
+  strchr()/memchr() on a const string now preserve const; cast where
+  the buffer is written in place, use const where it is only read
+  (submitted upstream). Package was flagged for removal by botdel.
+- Apply patches with %%autosetup -p1 so the modules/ subdir patch lands
+-------------------------------------------------------------------
 Mon Apr 22 22:22:31 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Add keyring and signature for package.

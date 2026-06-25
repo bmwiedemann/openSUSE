@@ -1,7 +1,7 @@
 #
 # spec file for package yambar
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,17 +21,20 @@ Version:        1.11.0
 Release:        0
 Summary:        Modular statusbar for X11 and Wayland
 License:        MIT
-Group:          System/GUI/Other
 URL:            https://codeberg.org/dnkl/yambar
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
 # https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xb19964fbba09664cc81027ed5bbd4992c116573f
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM yambar-gcc15-const.patch dnkl/yambar#497 - GCC 15 rejects discarding const from strchr()/memchr() on a const string
+Patch0:         yambar-gcc15-const.patch
+# PATCH-FIX-UPSTREAM yambar-gcc16-unused-but-set.patch boo#1256994 dnkl/yambar#5a515eae99 - GCC 16 -Werror=unused-but-set-variable on debug-only counters
+Patch1:         yambar-gcc16-unused-but-set.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  meson >= 0.59
 BuildRequires:  ninja
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 BuildRequires:  scdoc
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(fcft) < 4.0.0
@@ -62,11 +65,10 @@ BuildRequires:  pkgconfig(yaml-0.1)
 Simplistic and highly configurable status panel for X and Wayland.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
 Requires:       %{name}
 BuildArch:      noarch
 
@@ -75,20 +77,19 @@ Modules for interacting and modifying yambar.
 
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%name and zsh)
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
 Zsh command-line completion support for %{name}.
 
 %build
-%{meson} -Db_lto=true -Dbackend-x11=enabled -Dbackend-wayland=enabled
-%{meson_build}
+%meson -Db_lto=true -Dbackend-x11=enabled -Dbackend-wayland=enabled
+%meson_build
 
 %install
-%{meson_install}
+%meson_install
 
 # We remove this because the docs are supplemented already
 # from the doc and license macros
