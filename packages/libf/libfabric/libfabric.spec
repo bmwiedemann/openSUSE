@@ -17,7 +17,7 @@
 
 
 #
-%define git_ver .0.5b73bf2f1
+%define git_ver .0.5de2d6a2d
 
 %ifarch aarch64 %power64 x86_64 s390x riscv64
   %if 0%{?suse_version} > 1530
@@ -30,7 +30,7 @@
 %endif
 
 Name:           libfabric
-Version:        2.5.1
+Version:        2.6.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only

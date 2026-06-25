@@ -1,4 +1,223 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:18:10 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to v2.6.0
+  - Core
+    - ofi_atomic_queue: convert from MPMC to MPSC
+    - hmem: Add additional CUDA wrapper functions
+    - man: Fix reference to fi_mr_raw_attr()
+    - common: Fix byte order of AF_IB ofi_addr_set_port
+    - common: Do not assert on truncated buffers
+    - man: Update efa man page to reflect zero copy mode deprecation
+    - configure.ac: Fix --enable-xpmem=yes
+    - man: Clarify FI_INJECT + FI_HMEM restriction
+    - core: Replace indirect held, lock, and unlock function calls
+  - CXI
+    - Fix spelling of "receive" across CXI provider
+    - Extend timeout for sw_max_recv msg test
+    - Refuse cancel for receives with RDMA in flight
+    - Add test for TLE pool sharing from the default service
+    - Added FI_SUCCESS return to rnr recv cb
+    - Minor tweak to append_oflow test
+    - Handle LE append failure for RNR recv
+    - Fix minor size check in RNR send_common
+    - Check FI_CXI_CTRL_RX_EQ_MAX_SIZE for 0
+    - New mr test to check buffer attributes
+  - EFA
+    - use cmocka's "void ** state" signature in unit tests for C23
+    - honor homogeneous_peers in efa_rdm_interop_rdma_read
+    - Drive real completion handler in local-read unit test
+    - NULL local_read_pkt_entry after data-copied hand-off
+    - Track efa_rx_pkts_held with a per-pkt flag
+    - Fix pkt leak in efa_rdm_ep_post_queued_pkts on error
+    - Fix direct_ope leak on error in efa-direct send/recv/rma
+    - remove trailing whitespaces in the mr unit test.
+    - Gate the pps interface with feature flag
+    - Add rdma-core path support for WQE-level PPS hints
+    - Implement WQE level PPS hints in data-path-direct
+    - Add efa-specific operational flags for high PPS
+    - Guard hardware counter with FI_EFA_USE_HW_CNTR
+    - Add feature flag FI_EFA_USE_HW_CNTR
+    - Use hardware counter in fi_cntr_open
+    - Add fi_cntr_wait for hardware counter
+    - Attach hardware completion counter to QP
+    - Extend GDA domain op to support hardware cntr with external memory
+    - Add hardware counter operations
+    - Advertise hardware counter max value in fi_getinfo
+    - Set the correct cntr_cnt in domain_attr
+    - Baseline the read nack extra feature
+    - Baseline the runt extra feature
+    - Baseline the connid header extra request
+    - Validate dmabuf provided when setting FI_MR_DMABUF
+    - Fix pkt_entry double-free during endpoint teardown
+    - Add missing txe release check in dc ctsdata packet
+    - Destroy buffer pools when pke_vec alloc fails in ep_open
+    - Fix info and util_ep leak on efa_recv_wr_vec calloc failure
+    - Add assert guards for iov_count bounds in atomic, rma, and srx
+    - Propagate robuf allocation failure from peer_construct
+    - Check util_cq refcount before destroying ibv_cq in close
+    - Clear EFA_RDM_PKE_RNR_RETRANSMIT in peer_destruct
+    - Bounds-check fi_mr_attr.iface before indexing g_efa_hmem_info
+    - Initialize srx_lock early in efa_domain_open
+    - Stop returning early from efa_domain_close
+    - Use ret directly in efa_domain_open
+    - Do a proper cleanup in case of a fork handler failure
+    - Do a proper cleanup in case of an unsupported endpoint type
+    - Drop dead assignment to local efa_domain
+    - Remove trailing whitespace in efa_domain.c
+    - Write CQ error instead of EQ error for unsolicited write recv
+    - Extract efa_rdm_cq_write_error() helper for CQ error with EQ fallback
+    - Always build rdma-core WQE post functions in header
+    - Fix length field in data_path_direct tracepoint
+    - Fix out-of-bounds array access in tracepoint post_send
+    - Add unit-test for util_foreach_unspec
+    - Add FI_EFA_FEATURE_OPS for runtime feature discovery
+    - test: Verify EAGAIN when pre-handshake queue is full
+    - Separate CNTR into independent efa-direct and efa-rdm implementations
+    - Suppress duplicate error CQ/counter for ops errored synchronously
+    - Add test confirming multi-packet send is not susceptible to partial-post
+    - Fix same double-free pattern in multi-segment RDMA read path
+    - Fix double-free on partial multi-segment RDMA write failure
+    - Store EFA-internal txe flags in internal_flags, not fi_flags
+    - Fix -Wpointer-arith warnings on ARM
+    - Remove handshake requirement for DC
+    - Remove zero copy receive path, keep send path for compat
+    - Move memory alignment helper to header as static inline
+    - Inline and remove efa_rdm_ep_alloc_txe
+    - Check if the send queue is full earlier
+    - Add ep->send_pkt_entry_vec_size
+    - Check all descs for HMEM in efa_post_send inline path
+    - test: Fix flaky QPN collision in implicit AV unit tests
+    - Fix NULL deref in efa_av_reverse_av_remove on QPN collision
+    - Fix FI_INJECT in efa direct
+    - Remove incorrect assert in test_efa_data_path_direct_qp_gen_initialization
+    - Improve error message for ibv_create_ah failure
+    - Subtract prefix size in inject assertion for dgram
+    - Optimize shm address retrieval in RDM operations
+    - test: Cast the qp gen when doing the comparison
+    - Fix race between fi_av_lookup and fi_av_remove
+    - Fix the max_msg_size validation for efa-direct
+    - Preserve shm MR close error in efa_rdm_mr_close
+    - Fix ineffective error check on ofi_get_page_size()
+    - Fix use-after-free when TX and RX share the same CQ
+    - Fix unchecked strndup return in get_sysfs_path
+    - Improve the warn log in efa_mr/efa_rdm_mr
+    - Introduce a warning macro for fi errno
+    - Fix unused return codes
+    - Honor user-requested QP sizes within device limits
+    - Fix missing mem_desc and iface initialization in non-p2p path
+    - Separate core MR logic from RDM-specific MR implementation
+  - LNX
+    - Update handling of deprecated FI_AV_MAP
+    - Fix lnx capability settings and checking
+    - Move environment variables into a global struct for easy access
+    - Cleanup and reorganization
+  - OPX
+    - Lower GDRcopy threshold/Allow HMEM MP Eager
+    - Initialize deferred HFISVC receive contexts
+    - Make OPENED MR notify non-owning for rzv completion
+    - Document HMEM-dependent FI_OPX_RZV_MIN_PAYLOAD_BYTES defaults
+    - Reject incompatible MR registrations when HFISVC is enabled
+    - Handle MP eager FI_CLAIM receives
+    - Drop mm lock before memory operations
+    - Remove SDMA queue ring size workaround
+    - Remove global hfi_local_info
+    - Fix origin_rx in realibility ping, ack and nack
+    - Store HFI selection per-domain
+    - Use generation-agnostic fabric name and RDMA device domain name
+    - Populate fid_nic in fi_getinfo with device/bus/link attributes
+    - Remove fabric from linked list in close paths
+    - Restore fd_verbs (hfi direct) support
+    - Dual plane: Send only context
+    - Dual plane: Environment variables
+    - Fix no common tx context error
+    - Dual Plane: Stripe data across two HFISVC clients in dual/single plane
+    - Fix reliability origin_rx access
+    - sriov support for lmc/lid hairpin
+    - Dual plane: Reliability and reply path changes
+    - tracer BEGIN/END instrumentation fixes
+    - Unsubscribe when entry is removed from cache.
+    - FI_MR_DMABUF mr_regattr using invalid addr
+    - Catch hfi config error earlier and fail
+    - Add valid() calls to opx caching
+    - Do not fail kdreg2
+    - Don't use FI_DELIVERY_COMPLETE for MSG/Tagged sends
+    - Add full FI_DELIVERY_COMPLETE support for MSG/Tagged sends
+    - HSA_STATUS_ERROR_INVALID_ARGUMENT IPC RZV Send
+    - SLES compilation fix
+    - Remove #if 0 dead code
+    - MP Eager data validation fix
+    - Dual plane - addressing, plane selection and shm
+    - Populate PCI bus attributes in fi_info from sysfs
+    - OPX Tracer v2
+    - Dual plane: Multiple tx and ibv context
+    - Restore debugging #ifdef
+    - change all CUDA calls to use ofi wrapper functions
+    - Reduce warnings
+    - Fix use_cnt/mmu windows
+    - Fix rendezvous partial registration
+    - Unlock mm in shm signal
+    - Open HFISVC completion queue on RX CQ when separate from TX CQ (#1321)
+    - Fix extended addr allocation during av insert
+    - Compute sbuf_offset for non-dmabuf MRs in hfisvc RTS
+    - Fix CTS replay payload for RMA GET
+    - Support 9B HFI Service
+    - store dmabuf base_addr as page-aligned fd start
+    - Always poll domain and CQ's HFI service completion queues during CQ Read
+    - Fix DMABUF HFISVC addr/offset calculation
+    - Fix MP Eager replays for 9B headers
+    - Sync HMEM stream before destroy
+    - Prevent RDMA lib close in uninitialized state
+    - Only close DMABUF fd when created by OPX
+    - Remove dead code in rendezvous CTS path
+    - Fixing issue in av_insert when using av_table
+    - Trivial FI_WARN update
+    - Initialize OPX ref counters
+    - Fix build error in hmem path for av_type
+    - Use ofi_atomics for reference counting.
+    - Changing av_map to work like av_table internally
+    - Invalid RDMA ops ref counter decrement
+    - Segfault with NCCL/RCCL Plugin & HFISVC
+    - Enable container build
+    - Fix non-powers of 2 rcvhdrcnt
+    - Fix mismatched alignment attribute between packet header & payload unions.
+    - Use correct device with DMABUF support
+    - Fix use of DMABUF fd in the OPX mr
+    - Update SDMA/RZV threshold for AMD GPUs
+    - fix fi_opx_open_command_queues() segfault
+    - Only require DMABUF for HFISVC for HMEM
+    - Added hmem_dev_reg_handle so receive side can use ROCr Copy
+    - Remove debug log of every reliability inject
+    - Add DMA-BUF offset to buffer offset calculation
+    - DMABUF support for HFI service
+    - MR Registration with HFI service
+    - Fix reliability key in reliability debug logs
+    - Remove unnecessary csr reads
+    - Dynamically growable access_key pool for HFI service.
+  - PSM3
+    - Internal polling must use timeout to prevent infinite loop during resources acquiring
+  - RXD
+    - Remove rxd_mr_verify dead code
+  - RXM
+    - Fix ignored domain_attr->cq_data_size hint
+  - SHM
+    - DL initialize mem and monitors
+    - Register max_gdrcopy_size env var
+    - Do not return local cmd copy in smr_discard
+    - Remove init_fn from cmd queue release path
+    - Fix the error flag propagation
+    - Let atomic_inline use smr_flags for format
+    - Revert to a lock-unlock inject pool
+    - Fix compile warning coming from shm
+    - Do not take inject for op_read_req
+    - Do not check for total_len < inject_size on rma_fast
+    - Push cmd back to stack on error
+    - remove cmd_entry ptr
+    - Remove 0-byte copy SAR
+    - Move inject pool above command stack
+    - Use hdr.sm
+
+-------------------------------------------------------------------
 Tue Apr 14 16:27:02 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to v2.5.1

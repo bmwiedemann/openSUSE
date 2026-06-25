@@ -890,4 +890,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     - Track ep in a domain list if FI_EFA_TRACK_MR</comment>
     <requestid>1348248</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d113b82c0135be81262b92676b60e5b5</srcmd5>
+    <version>2.6.0</version>
+    <time>1782377452</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.6.0
+  - Core
+    - ofi_atomic_queue: convert from MPMC to MPSC
+    - hmem: Add additional CUDA wrapper functions
+    - man: Fix reference to fi_mr_raw_attr()
+    - common: Fix byte order of AF_IB ofi_addr_set_port
+    - common: Do not assert on truncated buffers
+    - man: Update efa man page to reflect zero copy mode deprecation
+    - configure.ac: Fix --enable-xpmem=yes
+    - man: Clarify FI_INJECT + FI_HMEM restriction
+    - core: Replace indirect held, lock, and unlock function calls
+  - CXI
+    - Fix spelling of &quot;receive&quot; across CXI provider
+    - Extend timeout for sw_max_recv msg test
+    - Refuse cancel for receives with RDMA in flight
+    - Add test for TLE pool sharing from the default service
+    - Added FI_SUCCESS return to rnr recv cb
+    - Minor tweak to append_oflow test
+    - Handle LE append failure for RNR recv
+    - Fix minor size check in RNR send_common
+    - Check FI_CXI_CTRL_RX_EQ_MAX_SIZE for 0
+    - New mr test to check buffer attributes
+  - EFA
+    - use cmocka's &quot;void ** state&quot; signature in unit tests for C23
+    - honor homogeneous_peers in efa_rdm_interop_rdma_read
+    - Drive real completion handler in local-read unit test
+    - NULL local_read_pkt_entry after data-copied hand-off
+    - Track efa_rx_pkts_held with a per-pkt flag
+    - Fix pkt leak in efa_rdm_ep_post_queued_pkts on error
+    - Fix direct_ope leak on error in efa-direct send/recv/rma</comment>
+    <requestid>1361470</requestid>
+  </revision>
 </revisionlist>
