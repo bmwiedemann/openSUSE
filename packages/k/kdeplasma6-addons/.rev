@@ -352,4 +352,12 @@
   (boo#1267818) (forwarded request 1359910 from Vogtinator)</comment>
     <requestid>1359913</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>82fc19ff2ad57e6963f776fe5f89851d</srcmd5>
+    <version>6.7.1</version>
+    <time>1782377312</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
+    <requestid>1361390</requestid>
+  </revision>
 </revisionlist>
