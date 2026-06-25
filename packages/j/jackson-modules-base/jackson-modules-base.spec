@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-base
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,17 @@
 
 
 Name:           jackson-modules-base
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Jackson modules: Base
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-modules-base
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.17
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.17
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.17
-BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:) >= 2.18
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(com.google.inject:guice)
 BuildRequires:  mvn(com.thoughtworks.paranamer:paranamer)
@@ -130,7 +130,7 @@ This package contains API documentation for %{name}.
 %pom_remove_plugin -r :find-and-replace-maven-plugin
 
 # move to "old" glassfish-jaxb-api artifactId
-%pom_change_dep -r jakarta.xml.bind:jakarta.xml.bind-api javax.xml.bind:jaxb-api
+#pom_change_dep -r jakarta.xml.bind:jakarta.xml.bind-api javax.xml.bind:jaxb-api
 %pom_change_dep -r jakarta.activation:jakarta.activation-api javax.activation:javax.activation-api
 
 # Disable bundling of asm
