@@ -515,4 +515,15 @@
     <comment></comment>
     <requestid>1356834</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0145b063ee65cd80381ab27e79779a37</srcmd5>
+    <version>0.10.6</version>
+    <time>1782377813</time>
+    <user>anag_factory</user>
+    <comment>* xrdp-CVE-2026-32105-1-fips-slowpath.patch
+    * xrdp-CVE-2026-32105-2-fips-fastpath.patch
+    * xrdp-CVE-2026-32105-3-nonfips-slowpath.patch
+    * xrdp-CVE-2026-32105-4-nonfips-fastpath.patch (forwarded request 1361568 from yfjiang)</comment>
+    <requestid>1361569</requestid>
+  </revision>
 </revisionlist>

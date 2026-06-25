@@ -1,0 +1,12 @@
+Index: xrdp-0.10.6/instfiles/xrdp.service.in
+===================================================================
+--- xrdp-0.10.6.orig/instfiles/xrdp.service.in
++++ xrdp-0.10.6/instfiles/xrdp.service.in
+@@ -8,6 +8,7 @@ After=network-online.target xrdp-sesman.
+ Type=exec
+ EnvironmentFile=-@sysconfdir@/sysconfig/xrdp
+ EnvironmentFile=-@sysconfdir@/default/xrdp
++ExecStartPre=-/usr/libexec/xrdp/xrdp-ensure-cert
+ ExecStart=@sbindir@/xrdp $XRDP_OPTIONS --nodaemon
+ SystemCallArchitectures=native
+ SystemCallFilter=@system-service

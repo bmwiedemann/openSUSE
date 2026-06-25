@@ -1,4 +1,293 @@
 -------------------------------------------------------------------
+Thu Jun 18 01:28:47 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Recommend pipewire-module-xrdp to bridge pipewire audio.
+
+-------------------------------------------------------------------
+Wed Jun 17 03:49:19 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Generate key/cert pair to enable ssl security layer by default
+  + Add xrdp-ensure-cert.sh
+  + Add xrdp-ensure-cert.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 02:30:48 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update sesman.ini:
+  + Introduce MaxDisplayNumber=1000 to support SUSE large
+    X11DisplayOffset=200
+- Update xrdp.ini:
+  + Align the logo section with the latest upstream
+- Rebase patches:
+  + xrdp-support-KillDisconnected-for-Xvnc.patch
+  + xrdp-avahi.diff
+- Drop upstreamed patches:
+  + xrdp-systemd-services.patch
+  + xrdp-Moved-initgroups-call-to-before-auth_start_session.patch
+  + xrdp-Add-function-to-get-user-information-by-UID.patch
+  + xrdp-fix-username-in-env.patch
+
+-------------------------------------------------------------------
+Wed Jun 10 02:21:29 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to version 0.10.6:
+  + Security Fixes
+    * Resolved CVE-2026-32105, CVE-2026-32107, CVE-2026-32623,
+      CVE-2026-32624, CVE-2026-33145, CVE-2026-33516,
+      CVE-2026-33689, and CVE-2026-35512.
+  + Drop upstreamed patches
+    * xrdp-CVE-2026-35512.patch
+    * xrdp-CVE-2026-32624.patch
+    * xrdp-CVE-2026-32107.patch
+    * xrdp-CVE-2026-32623.patch
+    * xrdp-CVE-2026-33145.patch
+    * xrdp-CVE-2026-33689.patch
+    * xrdp-CVE-2026-32105-1-fips-slowpath.patch
+    * xrdp-CVE-2026-32105-2-fips-fastpath.patch
+    * xrdp-CVE-2026-32105-3-nonfips-slowpath.patch
+    * xrdp-CVE-2026-32105-4-nonfips-fastpath.patch
+  + New Features
+    * Added support for xorgxrdp bug fixes
+      neutrinolabs/xorgxrdp#249 and neutrinolabs/xorgxrdp#342
+      (#3721).
+  + Bug Fixes
+    * Honour pass_shell_as_env setting only if the user
+      explicitly sets a shell (#3725).
+    * Blocked attempts to create a NULL authentication file
+      when utilizing VNC over UDS (#3727).
+    * Corrected layout alignment issues with the Brazilian
+      ABNT2 keyboard mapping (#3728, #3736).
+    * Addressed a 'file exists' installation block when
+      overwriting an existing xrdp setup (#3780).
+  + Changes for Packagers or Developers
+    * The unfinished PIV smartcard support is now disabled by
+      default due to potential security risks; it can be
+      manually re-enabled via --enable-smartcard for
+      non-production environments (#3759).
+  + General & Deprecations
+    * The use_vsock parameter in xrdp.ini is deprecated. Use
+      'port=vsock://' instead.
+- Changes since 0.10.1:
+  + Update to version 0.10.5:
+    - Security Fixes
+      * Resolved CVE-2025-68670: Fixed improper bounds checking
+        on domain string lengths to prevent stack-based buffer
+        overflows.
+    - New Features
+      * Added support for running the xrdp daemon completely
+        unprivileged via the service manager (#3599, #3603).
+      * Enabled recording of TLS pre-master secrets to
+        facilitate easier network packet captures (#3617).
+      * Added FuseRootReportMaxFree parameter to mitigate 'no
+        free space' computation bugs in various file managers
+        (#3639).
+      * Allowed alternate shell names to be passed to startwm.sh
+        via environment variables for tighter system policy
+        controls (#3624, #3651).
+      * Updated fallback Xorg path hooks in sesman.ini to
+        support newer Linux distributions (#3663).
+      * Integrated a Slovenian keyboard layout mapping (#3668,
+        #3670).
+      * xrdpapi: Introduced a native binding hook to monitor
+        session connection and disconnection events (#3693).
+    - Bug Fixes
+      * Allowed empty X11 UTF8_STRING blocks to be copied and
+        pasted to the clipboard system (#3580, #3582).
+      * Patched a v0.10.x regression that broke connections to
+        VNC servers lacking ExtendedDesktopSize encoding support
+        (#3540, #3584).
+      * Fixed a v0.10.x regression impacting PAM group
+        evaluation logic (#3594).
+      * Resolved protocol inconsistencies with the [MS-RDPBCGR]
+        specification block (#3608).
+      * Cleaned up uninitialized data references inside the
+        verify_user_pam_userpass.c module (#3638).
+      * Fixed intermittent daemon crashes triggered when the RFX
+        encoder is actively resized (#3590, #3644).
+      * Corrected a GFX engine regression that disrupted proper
+        operation of the JPEG encoder sub-system (#3649).
+      * Fixed a file management regression where the xrdp PID
+        file was unexpectedly deleted (#3650).
+      * Ensured VNC ports specified directly by the user are not
+        overwritten when bypassed by sesman (#3674).
+      * Fixed a 0.9.x regression where connections failed if the
+        FreeRDP client passed the /workarea parameter (#3618,
+        #3676).
+      * Corrected a crash occurring when a display resize event
+        is triggered while drdynvc is disabled (#3672, #3680).
+      * Fixed getgrouplist() compatibility to ensure successful
+        compilation on macOS environments (#3575).
+      * Addressed various static analysis warnings raised by
+        Coverity (#3656) alongside documentation tweaks (#3665).
+    - Internal Changes
+      * Cleared an unnecessary sys/signal.h header include that
+        triggered compilation warnings on MUSL-C toolchains
+        (#3679).
+  + Update to version 0.10.4.1:
+    - Bug Fixes
+      * Fixed a critical regression that prevented xorgxrdp
+        v0.10.4 backend pairings from functioning properly with
+        this version release (#3561).
+  + Update to version 0.10.4:
+    - New Features
+      * Introduced the vmconnect configuration parameter in
+        xrdp.ini to expose additional virtualization security
+        tracking features when operating inside Hyper-V virtual
+        environments (#3524).
+      * Integrated Latvian keyboard layout support (#3511,
+        #3519).
+    - Bug Fixes
+      * Refined systemd initialization detection logic on
+        Debian-derived operating systems (#3497, #3502).
+      * Resolved an interoperability bug where xrdp sessions
+        failed when brokered by Quest/OneIdentity Safeguard for
+        Privileged Sessions (#3498, #3507).
+      * Fixed a startup race condition inside chansrv that
+        prevented the service from being cleanly terminated on
+        exit (#3482).
+      * Addressed a potential double-free hazard present during
+        chansrv exit routines (#3546).
+      * Rectified several Coverity-identified static analysis
+        warnings (#3508).
+    - Internal Changes
+      * Upgraded the embedded TOML-C99 parser dependency to the
+        latest upstream state (#3530).
+  + Update to version 0.10.3:
+    - General Announcements & Core Behavioral Shifts
+      * Introduced experimental utmp/wtmp session tracking
+        support. Actions are logged solely during session
+        creation/destruction.
+    - New Features
+      * Added configuration support to explicitly declare the
+        thread pool count assigned to the x264 compression
+        encoder (#3366, #3367).
+      * Provided a mechanism to substitute colon characters (:)
+        passed inside client share names with alternate
+        characters (#3389).
+      * Integrated a Hungarian keyboard layout configuration
+        mapping (#3424, #3430).
+      * Optimized keyboard fallback routing structures inside
+        xorgxrdp to handle complex multi-variant maps like
+        Brazil ABNT2 (#3478).
+      * Introduced a more secure 'Xvnc over Unix Domain Socket'
+        session mode for Enterprise FIPS environments (#3453).
+    - Bug Fixes
+      * Resolved several memory leak conditions (#3380, #3388).
+      * Implemented error handling path fixes for environments
+        containing a mis-installed or broken openh264 encoder
+        binary (#3405, #3432).
+      * Mitigated FIPS-compliant enterprise configuration errors
+        (Bug #2518) via the introduction of the new Unix Domain
+        Socket session architecture (#3453).
+      * Fixed a FreeBSD specific conflict where xrdp occasionally
+        attempted to claim display IDs already utilized by
+        active SSH X11-forwarding sessions (#3381, #3456).
+      * Fixed Coverity engine warnings (#3411, #3423) and
+        updated project documentation (#3403).
+    - Internal Changes
+      * Bumped the FreeBSD CI validation matrix platform up to
+        14.2 (#3427).
+    - Changes for Packagers or Developers
+      * Added configuration capability to customize the exact
+        subdirectory location for configurations (#3369).
+      * Packagers must explicitly append the --enable-utmp
+        compile flag to enable the experimental utmp framework
+        features.
+  + Update to version 0.10.2:
+    - Highlights
+      * H.264 Graphics Remoting: Officially introduced H.264
+        video stream graphics compression encoding, substantially
+        lowering bandwidth utilization.
+      * Unprivileged Daemon Operation: Officially enabled support
+        to isolate the main xrdp daemon execution block under a
+        distinct, unprivileged user account.
+    - New Features
+      * Allowed FUSE filesystem mount configurations to execute
+        direct I/O routines, bypassing the kernel block cache
+        layer (#3260).
+      * Enabled compliant remote clients to entirely skip
+        virtual channel join handshakes (#3282).
+      * Added discrete frame capture interval configuration
+        items inside xrdp for both H.264 and RFX codecs
+        independently (#3317).
+      * Added statvfs system call passthrough capabilities on
+        the FUSE storage layer backend (#3304).
+      * Allowed packagers to define a custom target log path
+        for the chansrv file logger (#3344).
+      * Integrated Czech keyboard layout support (#3348, #3358).
+    - Bug Fixes
+      * Enhanced the channel redirector pipeline by removing
+        rigid filename length caps and improving compatibility
+        hooks for FreeRDP clients (#3165, #3194).
+      * Fixed an accounting bug that led to misreported graphic
+        cache allocation limits (#3212).
+      * Clarified the inline documentation descriptions for the
+        Policy variable inside sesman.ini (#3235).
+      * Repaired a regression that broke connection pathways
+        targeting non-resizable VNC environments (#3242).
+      * Patched a chansrv functionality breakage affecting
+        standalone VNC sessions, introduced during the socket
+        directory transition (#3283).
+      * Corrected AltGr modifier mapping behaviors on standard
+        Spanish keyboard layouts (#3313).
+      * Resolved a FUSE layer conflict preventing the KDE Dolphin
+        file manager from successfully writing files back onto
+        mapped client drives (#3300).
+      * Added explicit packaging inclusions for pam_limits.so on
+        Debian and downstream targets (#3347).
+    - Internal Changes
+      * Updated internal CI code quality engines: cppcheck to
+        v2.15.0 and astyle to 3.4.14 (#3232, #3309, #3314).
+      * Dropped the legacy xrdp_sec_in_mcs_data() internal
+        function block (#3273).
+    - Changes for Packagers or Developers
+      * Modified the build sequence so xrdp.ini and sesman.ini
+        macro substitutions occur dynamically during compiling
+        (#3187, #3188).
+      * Elevated the baseline libfuse requirement to versions
+        strictly greater than > 3.1.0 (#3284).
+  + Update to version 0.10.1:
+    - Security Fixes
+      * Unauthenticated RDP security scan finding / partial auth
+        bypass (no CVE).
+    - New Features
+      * Allowed client connection quality properties to
+        dynamically dictate selected GFX-RFX lossy compression
+        levels (#3183).
+    - Bug Fixes
+      * Fixed a regression inside the creation loop of the
+        chansrv FUSE directory hierarchy (#3088).
+      * Added missing systemd dependency entries targeting
+        network-online.target (#3088).
+      * Resolved a session listing processing race that caused
+        improper display allocations (#3088).
+      * Patched a memory fault (SEGV) caused during active GFX
+        display resizing actions (#3088).
+      * Resolved tracking bugs associated with the US Dvorak
+        keyboard layout specification (#3088).
+      * Fixed a regression preventing clipboard image payloads
+        from being pasted into LibreOffice sheets and documents
+        (#3102, #3120).
+      * Corrected a GFX negotiation failure condition when the
+        max_bpp parameter configuration was set too low (#3118,
+        #3122).
+      * Fixed a coordinate placement bug causing multi-monitor
+        GFX displays to misalign upon minimize or maximize
+        actions (#3075, #3127).
+      * Fixed missing file inclusion targets within release
+        packaging tarball generation routines (#3149, #3150).
+      * Corrected logical processing for the session selection
+        assignment rule when set to policy 'I' (#3167, #3171).
+      * Cleared an unneeded licensing handshake phase that
+        caused handshake interruptions for FIPS-compliant RDP
+        clients (#3132).
+      * Extended maximum resolution display limitations to allow
+        client screens wider than 4096 pixels (#3083).
+    - Internal Changes
+      * Bumped the base FreeBSD automated regression testing
+        platform instance to 13.3 (#3088).
+
+-------------------------------------------------------------------
 Wed Jun  3 01:25:23 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Enforce the security_layer to tls by default in xrdp.ini because

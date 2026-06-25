@@ -22,7 +22,7 @@
 %endif
 
 Name:           xrdp
-Version:        0.9.27
+Version:        0.10.6
 Release:        0
 Summary:        Remote desktop protocol (RDP) server
 License:        Apache-2.0 AND GPL-2.0-or-later
@@ -34,6 +34,7 @@ Source2:        xrdp.keyring
 Source4:        sysconfig.xrdp
 Source6:        xrdp.ini
 Source7:        sesman.ini
+Source8:        xrdp-ensure-cert.sh
 Source100:      %{name}-rpmlintrc
 # PATCH-FIX-OPENSUSE xrdp-pam.patch - hfiguiere@novell.com refreshed by ftake@geeko.jp
 Patch1:         xrdp-pam.patch
@@ -41,34 +42,8 @@ Patch1:         xrdp-pam.patch
 Patch2:         xrdp-disable-8-bpp-vnc-support.patch
 # PATCH-FIX-OPENSUSE xrdp-support-KillDisconnected-for-Xvnc.patch boo#1101506 - fezhang@suse.com -- Support the KillDisconnected option for TigerVNC Xvnc sessions
 Patch3:         xrdp-support-KillDisconnected-for-Xvnc.patch
-# PATCH-FIX-OPENSUSE xrdp-systemd-services.patch boo#1138954 boo#1144327 - fezhang@suse.com -- Let systemd handle the daemons
-Patch4:         xrdp-systemd-services.patch
-# PATCH-FIX-UPSTREAM xrdp-Add-function-to-get-user-information-by-UID.patch bsc#1211740 - jcejka@suse.com -- Moved initgroups call to before auth_start_session()
-Patch21:        xrdp-Moved-initgroups-call-to-before-auth_start_session.patch
-# PATCH-FEATURE-UPSTREAM xrdp-Add-function-to-get-user-information-by-UID.patch bsc#1211740 - jcejka@suse.com -- Add function to get user information by UID
-Patch22:        xrdp-Add-function-to-get-user-information-by-UID.patch
-# PATCH-FIX-OPENSUSE xrdp-fix-username-in-env.patch bsc#1211740 - jcejka@suse.com -- convert username in USER and LOGNAME env variables to canonical form
-Patch23:        xrdp-fix-username-in-env.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32105-1-fips-slowpath.patch bsc#1262312 - yfjiang@suse.com -- Check HMAC on FIPS slowpath input
-Patch24:        xrdp-CVE-2026-32105-1-fips-slowpath.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32105-2-fips-fastpath.patch bsc#1262312 - yfjiang@suse.com -- Check HMAC on FIPS fastpath input
-Patch25:        xrdp-CVE-2026-32105-2-fips-fastpath.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32105-3-nonfips-slowpath.patch bsc#1262312 - yfjiang@suse.com -- Check HMAC on non-FIPS slowpath input
-Patch26:        xrdp-CVE-2026-32105-3-nonfips-slowpath.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32105-4-nonfips-fastpath.patch bsc#1262312 - yfjiang@suse.com -- Check HMAC on non-FIPS fastpath input
-Patch27:        xrdp-CVE-2026-32105-4-nonfips-fastpath.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32624.patch bsc#1262321 - yfjiang@suse.com -- Fix buffer overflow if domain sep used
-Patch28:        xrdp-CVE-2026-32624.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32107.patch bsc#1262313 - yfjiang@suse.com -- Exit on failure of env_set_user()
-Patch29:        xrdp-CVE-2026-32107.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-32623.patch bsc#1262316 - yfjiang@suse.com -- adding length and status checks in neutrinordp fragment reassembly
-Patch30:        xrdp-CVE-2026-32623.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-33145.patch bsc#1262331 - yfjiang@suse.com -- Default AllowAlternateShell to 'no'
-Patch31:        xrdp-CVE-2026-33145.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-33689.patch bsc#1262332 - yfjiang@suse.com -- Fix length check on channel open
-Patch32:        xrdp-CVE-2026-33689.patch
-# PATCH-FIX-UPSTREAM xrdp-CVE-2026-35512.patch bsc#1262333 - yfjiang@suse.com -- Check length for the EGFX dynamic virtual channel
-Patch33:        xrdp-CVE-2026-35512.patch
+# PATCH-FIX-OPENSUSE xrdp-ensure-cert.patch bsc#1266233 bsc#1266325 - yfjiang@suse.com -- generate key/cert to support default tls security layer
+Patch4:         xrdp-ensure-cert.patch
 # Keep SLE only patches on the bottom starting from patch number 1001
 # PATCH-FEATURE-SLE xrdp-avahi.diff bnc#586785 - hfiguiere@novell.com -- Add Avahi support.
 Patch1001:      xrdp-avahi.diff
@@ -84,7 +59,7 @@ Patch1005:      xrdp-fix-old-gcc-error.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
-BuildRequires:  fuse-devel
+BuildRequires:  imlib2-devel
 BuildRequires:  libX11-devel
 BuildRequires:  libXfixes-devel
 BuildRequires:  libXrandr-devel
@@ -94,8 +69,11 @@ BuildRequires:  nasm
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(pixman-1)
 BuildRequires:  pkgconfig(systemd)
 Requires:       xorg-x11-Xvnc
+Recommends:     pipewire-module-xrdp
 Recommends:     xorgxrdp
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -106,25 +84,9 @@ Microsoft's own terminal server / remote desktop clients.
 %package devel
 Summary:        Development files for xrdp
 Group:          Development/Libraries/C and C++
-Requires:       libpainter0 = %{version}
-Requires:       librfxencode0 = %{version}
 
 %description devel
 This package contains the development headers for xrdp.
-
-%package -n libpainter0
-Summary:        Library for manipulating memory bitmaps
-Group:          System/Libraries
-
-%description -n libpainter0
-This package contains libraries for manipulating memory bitmaps.
-
-%package -n librfxencode0
-Summary:        Library for the JPEG2000 codec for RDP
-Group:          System/Libraries
-
-%description -n librfxencode0
-This package contains libraries for the JPEG2000 codec for RDP.
 
 %prep
 %setup -q
@@ -132,19 +94,6 @@ This package contains libraries for the JPEG2000 codec for RDP.
 %patch -P 2 -p1
 %patch -P 3 -p1
 %patch -P 4 -p1
-%patch -P 21 -p1
-%patch -P 22 -p1
-%patch -P 23 -p1
-#%%patch -P 24 -p1
-#%%patch -P 25 -p1
-#%%patch -P 26 -p1
-#%%patch -P 27 -p1
-%patch -P 28 -p1
-%patch -P 29 -p1
-%patch -P 30 -p1
-%patch -P 31 -p1
-%patch -P 32 -p1
-%patch -P 33 -p1
 %if 0%{?sle_version}
 %patch -P 1001 -p1
 %patch -P 1002 -p1
@@ -157,6 +106,9 @@ This package contains libraries for the JPEG2000 codec for RDP.
 
 %build
 sh ./bootstrap
+%ifarch i586
+CFLAGS="$RPM_OPT_FLAGS -D_FILE_OFFSET_BITS=64" \
+%endif
 %configure \
    --enable-ipv6 \
    --enable-painter \
@@ -165,7 +117,8 @@ sh ./bootstrap
    --with-pamconfdir=%{_pam_vendordir} \
 %endif
    --enable-vsock \
-   --enable-fuse
+   --enable-fuse \
+   --enable-pixman
 make %{?_smp_mflags} V=1
 
 %install
@@ -175,6 +128,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 mkdir -p %{buildroot}/%{_fillupdir}
 install -m 644 %{SOURCE4} %{buildroot}/%{_fillupdir}/sysconfig.xrdp
 install -m 644 %{SOURCE6} %{SOURCE7} %{buildroot}/%{_sysconfdir}/xrdp/
+install -Dm0755 %{SOURCE8} %{buildroot}%{_libexecdir}/xrdp/xrdp-ensure-cert
 
 # remove a private key and certification file generated during make and
 # use certification file created at the post phase
@@ -220,19 +174,12 @@ exit 0
 %service_del_postun xrdp.service
 %service_del_postun xrdp-sesman.service
 
-%post -n libpainter0 -p /sbin/ldconfig
-
-%postun -n libpainter0 -p /sbin/ldconfig
-
-%post -n librfxencode0 -p /sbin/ldconfig
-
-%postun -n librfxencode0 -p /sbin/ldconfig
-
 %files
 %defattr(-,root,root)
 
 %dir %{_datadir}/xrdp
 %dir %{_libdir}/xrdp
+%dir %{_libexecdir}/xrdp
 %if 0%{?suse_version} > 1500
 %{_pam_vendordir}/xrdp-sesman
 %else
@@ -246,9 +193,14 @@ exit 0
 %{_mandir}/man5/*
 %{_mandir}/man8/*
 %{_sbindir}/xrdp*
+%{_libexecdir}/xrdp/waitforx
+%{_libexecdir}/xrdp/xrdp-sesexec
+%{_libexecdir}/xrdp/xrdp-droppriv
+%{_libexecdir}/xrdp/xrdp-ensure-cert
 %dir %{_sysconfdir}/xrdp
 %config(noreplace) %{_sysconfdir}/xrdp/km*.ini
 %dir %{_sysconfdir}/xrdp/pulse
+%config(noreplace) %{_sysconfdir}/xrdp/gfx.toml
 %config(noreplace) %{_sysconfdir}/xrdp/pulse/default.pa
 %config(noreplace) %{_sysconfdir}/xrdp/reconnectwm.sh
 %ghost %config(noreplace) %{_sysconfdir}/xrdp/rsakeys.ini
@@ -256,6 +208,9 @@ exit 0
 %config(noreplace) %{_sysconfdir}/xrdp/xrdp_keyboard.ini
 %config(noreplace) %{_sysconfdir}/xrdp/sesman.ini
 %config(noreplace) %{_sysconfdir}/xrdp/xrdp.ini
+
+%exclude %{_libdir}/libpainter.*
+%exclude %{_libdir}/pkgconfig/libpainter.pc
 
 %{_unitdir}/xrdp*
 
@@ -269,16 +224,7 @@ exit 0
 %{_includedir}/painter.h
 %{_includedir}/rfxcodec_*
 %{_includedir}/xrdp_*
-%{_libdir}/libpainter.so
-%{_libdir}/librfxencode.so
-%{_libdir}/pkgconfig/libpainter.pc
 %{_libdir}/pkgconfig/rfxcodec.pc
 %{_libdir}/pkgconfig/xrdp.pc
-
-%files -n libpainter0
-%{_libdir}/libpainter.so.*
-
-%files -n librfxencode0
-%{_libdir}/librfxencode.so.*
 
 %changelog

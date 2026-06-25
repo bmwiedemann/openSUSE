@@ -1,10 +1,10 @@
-Index: b/instfiles/pam.d/xrdp-sesman.suse
+Index: xrdp-0.10.6/instfiles/pam.d/xrdp-sesman.suse
 ===================================================================
---- a/instfiles/pam.d/xrdp-sesman.suse	2019-04-18 13:38:26.000000000 +0800
-+++ b/instfiles/pam.d/xrdp-sesman.suse	2019-08-05 12:10:27.492234081 +0800
-@@ -2,4 +2,6 @@
- auth        include     common-auth
- account     include     common-account
+--- xrdp-0.10.6.orig/instfiles/pam.d/xrdp-sesman.suse
++++ xrdp-0.10.6/instfiles/pam.d/xrdp-sesman.suse
+@@ -8,4 +8,6 @@ session    required     pam_loginuid.so
+ session    optional     pam_lastlog2.so silent
+ 
  session     include     common-session
 +session     optional    pam_keyinit.so force revoke
 +session     required    pam_loginuid.so

@@ -1,13 +1,13 @@
-Index: xrdp-0.9.27/common/guid.c
+Index: xrdp-0.10.6/common/guid.c
 ===================================================================
---- xrdp-0.9.27.orig/common/guid.c
-+++ xrdp-0.9.27/common/guid.c
-@@ -33,7 +33,7 @@
+--- xrdp-0.10.6.orig/common/guid.c
++++ xrdp-0.10.6/common/guid.c
+@@ -42,7 +42,7 @@ enum
  struct guid
  guid_new(void)
  {
 -    struct guid guid = {0};
 +    struct guid guid = {{0}};
      g_random(guid.g, sizeof(guid.g));
-     return guid;
- }
+     /* Show this UUID as conforming to RFC4122 (section 4.1.1) */
+     guid.g[E_CLOCK_SEQ_HI_AND_RESERVED] &= ~0x40; /* Clear bit 6 */

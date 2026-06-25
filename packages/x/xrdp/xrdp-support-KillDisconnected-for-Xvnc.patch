@@ -1,21 +1,32 @@
-Index: xrdp-0.9.23.1/sesman/session.c
+Index: xrdp-0.10.6/sesman/sesexec/session.c
 ===================================================================
---- xrdp-0.9.23.1.orig/sesman/session.c	2023-11-30 21:35:45.365863285 +0100
-+++ xrdp-0.9.23.1/sesman/session.c	2023-11-30 21:35:45.361863283 +0100
-@@ -825,6 +825,16 @@
+--- xrdp-0.10.6.orig/sesman/sesexec/session.c
++++ xrdp-0.10.6/sesman/sesexec/session.c
+@@ -422,6 +422,7 @@ prepare_xvnc_xserver_params(const struct
+     char screen[32] = {0}; /* display number */
+     char geometry[32] = {0};
+     char depth[32] = {0};
++    char text[256];
+     char guid_str[GUID_STR_SIZE];
+     const char *xserver;
  
-                     g_free(passwd_file);
+@@ -475,9 +476,17 @@ prepare_xvnc_xserver_params(const struct
+                                   NULL);
+         }
  
-+                    /* translate sesman.ini options KillDisconnected and DisconnectedTimeLimit
-+                     * into TigerVNC Xvnc parameteres */
-+                    if (g_cfg->sess.kill_disconnected != 0 ||
-+                        g_cfg->sess.max_disc_time != 0)
-+                    {
-+                        list_add_item(xserver_params, (tintptr)g_strdup("-MaxDisconnectionTime"));
-+                        g_snprintf(text, 255, "%d", g_cfg->sess.max_disc_time < 60 ? 60 : g_cfg->sess.max_disc_time);
-+                        list_add_item(xserver_params, (tintptr)g_strdup(text));
-+                    }
++        /* translate sesman.ini options KillDisconnected and DisconnectedTimeLimit
++         * into TigerVNC Xvnc parameteres */
++        if (g_cfg->sess.kill_disconnected != 0 ||
++            g_cfg->sess.max_disc_time != 0)
++            {
++                list_add_item(params, (tintptr)g_strdup("-MaxDisconnectionTime"));
++                g_snprintf(text, sizeof(text), "%d", g_cfg->sess.max_disc_time < 60 ? 60 : g_cfg->sess.max_disc_time);
++                list_add_item(params, (tintptr)g_strdup(text));
++            }
 +
-                     /* additional parameters from sesman.ini file */
-                     //config_read_xserver_params(SESMAN_SESSION_TYPE_XVNC,
-                     //                           xserver_params);
+         /* additional parameters from sesman.ini file */
+-        //config_read_xserver_params(SCP_SESSION_TYPE_XVNC,
+-        //                           xserver_params);
+         list_append_list_strdup(g_cfg->vnc_params, params, 1);
+     }
+     return params;
