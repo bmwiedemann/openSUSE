@@ -30,10 +30,9 @@ Release:        0
 Summary:        UEFI shim loader
 License:        BSD-2-Clause
 Group:          System/Boot
-Source0:        shim-16.1-lp156.4.1.x86_64.rpm
-Source1:        shim-16.1-lp156.4.1.aarch64.rpm
+Source0:	shim-16.1-lp156.7.1.x86_64.rpm
+Source1:	shim-16.1-lp156.7.1.aarch64.rpm
 Source2:        README
-Source3:        shim-install
 # Certificates Used to Verify the Shim (DER format)
 # SUSE CA is also built-in to the shim via VENDOR_CERT_FILE
 # openSUSE Secure Boot CA, 2013-2035
@@ -93,9 +92,6 @@ rpm2cpio $shim_rpm | cpio --extract --unconditional --preserve-modification-time
 # purely repackaged
 cp -a etc usr %{buildroot}
 cp %{S:2} .
-
-# Override shim-install
-install -m 755 %{S:3} %{buildroot}/%{_sbindir}/shim-install
 
 %if %{undefined shim_lib64_share_compat}
 # Remove the sym-links in /usr/lib64/efi
@@ -313,6 +309,9 @@ end
 %dir %{sysefidir}
 %{sysefidir}/shim.efi
 %{sysefidir}/shim-*.efi
+%{sysefidir}/shim.non-nx.efi
+%{sysefidir}/shim.nx.efi
+%{sysefidir}/shim-*.nx.efi
 %{sysefidir}/shim-*.der
 %{sysefidir}/MokManager.efi
 %{sysefidir}/fallback.efi

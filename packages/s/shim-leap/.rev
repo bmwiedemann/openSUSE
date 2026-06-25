@@ -233,4 +233,12 @@
     <comment>Modified the pretrans Lua script to work around the broken DB issue caused by buggy firmware when Secure Boot is disabled. (bsc#1259096)</comment>
     <requestid>1355291</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>4d997d8cc9c2ef5b92a136ff52492254</srcmd5>
+    <version>16.1</version>
+    <time>1782377700</time>
+    <user>anag_factory</user>
+    <comment>Apply nx-shim, create non-nx shim boot entry</comment>
+    <requestid>1361510</requestid>
+  </revision>
 </revisionlist>
