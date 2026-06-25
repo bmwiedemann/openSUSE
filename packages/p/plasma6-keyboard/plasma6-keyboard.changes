@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:00:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Changes since 6.7.0:
+  * Update version for new release 6.7.1
+  * fix: Don't try to close diacritics overlay twice
+  * fix: Don't disable key repeat when diacritics overlay is enabled
+  * fix: improve reliability of dead key and compose key handling w/ overlay (kde#518141,kde#519339,kde#520410,kde#520344)
+
+-------------------------------------------------------------------
 Fri Jun 12 19:08:06 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
