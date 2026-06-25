@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Jun 23 17:47:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.3.43):
+  * Cross-platform desktop notification library for Python; on Linux
+    it uses notify-send (libnotify) with a jeepney/D-Bus fallback
+  * Drop the bundled macOS Notificator.app (prebuilt Mach-O
+    binaries), which is useless on Linux
+  * Relax the upstream loguru <= 0.6.0 cap (overly strict poetry
+    pin; builds and imports fine against the current loguru)

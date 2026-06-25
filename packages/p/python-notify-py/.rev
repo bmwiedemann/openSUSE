@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>78e118e2451bc56a93aab93b60dae710</srcmd5>
+    <version>0.3.43</version>
+    <time>1782377521</time>
+    <user>anag_factory</user>
+    <comment>New package: notify-py, a cross-platform desktop notification library for Python (https://github.com/ms7m/notify-py).
+On Linux it uses notify-send (libnotify) with a jeepney/D-Bus fallback. The bundled prebuilt macOS Notificator.app is stripped, and the overly strict upstream loguru&lt;=0.6.0 cap is relaxed (builds and imports fine against current loguru).</comment>
+    <requestid>1361475</requestid>
+  </revision>
+</revisionlist>
