@@ -1,0 +1,18 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/SUSE/elemental-lifecycle-manager.git</param>
+    <param name="scm">git</param>
+    <param name="revision">release-0.1</param>
+    <param name="versionformat">0.1.0.%cd+%h</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">elemental-lifecycle-manager-*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">elemental-lifecycle-manager</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
+  </service>
+</services>

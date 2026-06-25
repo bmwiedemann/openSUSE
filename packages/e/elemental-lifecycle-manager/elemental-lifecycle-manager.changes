@@ -1,0 +1,50 @@
+-------------------------------------------------------------------
+Tue Jun  2 16:15:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- set version to include date so that we do not accidentally
+  downgrade
+
+-------------------------------------------------------------------
+Tue Jun  2 10:41:25 UTC 2026 - Ivo Petrov <ivo.petrov@suse.com>
+
+- Update to version 0.1.0+9ae3c44
+
+-------------------------------------------------------------------
+Tue May 26 03:32:13 UTC 2026 - Elemental Update Bot <noreply@suse.com>
+
+- Update to version 0.1.0+b3823bb
+
+-------------------------------------------------------------------
+Fri May 22 07:34:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- pin go 1.26
+
+-------------------------------------------------------------------
+Tue May 19 03:32:05 UTC 2026 - Elemental Update Bot <noreply@suse.com>
+
+- Update to version 0.1.0+27e5da8
+
+-------------------------------------------------------------------
+Thu May 14 03:32:25 UTC 2026 - Elemental Update Bot <noreply@suse.com>
+
+- Update to version 0.1.0+0f697f1
+
+-------------------------------------------------------------------
+Tue May 12 03:32:02 UTC 2026 - Elemental Update Bot <noreply@suse.com>
+
+- Update to version 0.1.0+4e5ca5c
+
+-------------------------------------------------------------------
+Wed May  6 17:43:51 UTC 2026 - Dirk Müller <dmueller@localhost>
+
+- Update to version 0.1.0+7baeded
+
+-------------------------------------------------------------------
+Tue May  5 07:44:52 UTC 2026 - Ivo Petrov <ivo.petrov@suse.com>
+
+- Update to version 0.1.0+ad8c916
+
+-------------------------------------------------------------------
+Tue Apr 28 11:05:47 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- Update to version 0.1.0+fb37d33
