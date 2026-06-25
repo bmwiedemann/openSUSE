@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:39:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.3:
+  * thin_explore: fix a panic when navigating an empty top-level
+    tree, and panics when navigating empty btrees
+  * era_invalidate: fix missing era array traversal when no
+    writesets exist
+  * thin_metadata_pack/unpack: flush the output file before
+    returning
+  * update bundled dependencies to their latest patch releases
+
+-------------------------------------------------------------------
 Fri May 22 08:41:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.3.2:

@@ -17,7 +17,7 @@
 
 
 Name:           thin-provisioning-tools
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Thin Provisioning Tools
 License:        GPL-3.0-only
@@ -26,9 +26,9 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
-BuildRequires:  device-mapper-devel
 BuildRequires:  pkgconfig
 BuildRequires:  suse-module-tools
+BuildRequires:  pkgconfig(devmapper)
 BuildRequires:  pkgconfig(libudev)
 Requires(post): coreutils
 Requires(postun): coreutils

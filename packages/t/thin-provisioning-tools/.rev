@@ -425,4 +425,12 @@
   * [pdata] Avoid unnecessary error object construction</comment>
     <requestid>1354657</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>fb3e8103bff05e5b3e366f0ace061d88</srcmd5>
+    <version>1.3.3</version>
+    <time>1782377402</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.3.3: thin_explore empty-tree/btree panic fixes, era_invalidate fix, thin_metadata_pack/unpack flush fixes, dependency refresh.</comment>
+    <requestid>1361377</requestid>
+  </revision>
 </revisionlist>
