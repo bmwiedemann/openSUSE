@@ -1691,4 +1691,19 @@ See https://bugs.kde.org/show_bug.cgi?id=290719 (forwarded request 115750 from w
     extensions 10-13.</comment>
     <requestid>1350875</requestid>
   </revision>
+  <revision rev="160" vrev="1">
+    <srcmd5>df22d04e1708ef9b0fc5ee1083d01b83</srcmd5>
+    <version>3.27.1</version>
+    <time>1782377383</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.27.1 (jsc#PED-15483):
+  * 519574  valgrind 3.27 &quot;--fair-sched=yes&quot; does not work
+  * 519613  Valgrind incorrectly unpacks the result of sys_port
+    (port_getn)
+  * on error, leading to a ~60s wallclock time delay on every
+    call
+  * n-i-bz  Update vg-lifespan (copyright) years
+  * n-i-bz  Use SSizeT for VG_(readlink) result in VG_(realpath)</comment>
+    <requestid>1361306</requestid>
+  </revision>
 </revisionlist>

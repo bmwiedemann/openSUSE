@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:04:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.27.1 (jsc#PED-15483):
+  * 519574  valgrind 3.27 "--fair-sched=yes" does not work
+  * 519613  Valgrind incorrectly unpacks the result of sys_port
+    (port_getn)
+  * on error, leading to a ~60s wallclock time delay on every
+    call
+  * n-i-bz  Update vg-lifespan (copyright) years
+  * n-i-bz  Use SSizeT for VG_(readlink) result in VG_(realpath)
+
+-------------------------------------------------------------------
 Mon May  4 21:39:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.27.0:

@@ -29,7 +29,7 @@
 %endif
 %bcond_without docs
 Name:           valgrind%{?psuffix}
-Version:        3.27.0
+Version:        3.27.1
 Release:        0
 Summary:        Memory Management Debugger
 License:        GFDL-1.2-only AND GPL-3.0-or-later
