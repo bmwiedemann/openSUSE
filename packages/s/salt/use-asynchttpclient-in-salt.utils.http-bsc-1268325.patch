@@ -1,0 +1,61 @@
+From ce09c1048d3fe71e67f54000ff290c382a3d9d45 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 23 Jun 2026 09:48:54 +0200
+Subject: [PATCH] Use AsyncHTTPClient in salt.utils.http (bsc#1268325)
+
+Backport of https://github.com/saltstack/salt/commit/0b92bfdf80ab40787072d546b6962c77dd24e0b7
+---
+ salt/utils/http.py | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/salt/utils/http.py b/salt/utils/http.py
+index 9d0669a85b..bc9e095d32 100644
+--- a/salt/utils/http.py
++++ b/salt/utils/http.py
+@@ -38,9 +38,10 @@ import salt.utils.stringutils
+ import salt.utils.xmlutil as xml
+ import salt.utils.yaml
+ import salt.version
+-from tornado.httpclient import HTTPClient
++from tornado.httpclient import AsyncHTTPClient
+ from salt.template import compile_template
+ from salt.utils.decorators.jinja import jinja_filter
++from salt.utils.asynchronous import SyncWrapper
+ 
+ try:
+     from ssl import CertificateError, match_hostname
+@@ -564,14 +565,14 @@ def query(
+                 log.error(ret["error"])
+                 return ret
+ 
+-            tornado.httpclient.AsyncHTTPClient.configure(
++            AsyncHTTPClient.configure(
+                 "tornado.curl_httpclient.CurlAsyncHTTPClient"
+             )
+             client_argspec = salt.utils.args.get_function_argspec(
+                 tornado.curl_httpclient.CurlAsyncHTTPClient.initialize
+             )
+         else:
+-            tornado.httpclient.AsyncHTTPClient.configure(None)
++            AsyncHTTPClient.configure(None)
+             client_argspec = salt.utils.args.get_function_argspec(
+                 tornado.simple_httpclient.SimpleAsyncHTTPClient.initialize
+             )
+@@ -606,10 +607,10 @@ def query(
+         req_kwargs = salt.utils.data.decode(req_kwargs, to_str=True)
+ 
+         try:
+-            download_client = (
+-                HTTPClient(max_body_size=max_body)
+-                if supports_max_body_size
+-                else HTTPClient()
++            download_client = SyncWrapper(
++                AsyncHTTPClient,
++                kwargs={"max_body_size": max_body} if supports_max_body_size else {},
++                async_methods=["fetch"],
+             )
+             result = download_client.fetch(url_full, **req_kwargs)
+         except tornado.httpclient.HTTPError as exc:
+-- 
+2.54.0
+

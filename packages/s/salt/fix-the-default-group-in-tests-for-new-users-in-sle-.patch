@@ -1,0 +1,52 @@
+From 6e555748cfc62add44a523b0aebc31d2f33f26e4 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Tue, 23 Jun 2026 09:49:52 +0200
+Subject: [PATCH] Fix the default group in tests for new users in SLE
+ 15.6
+
+In SLE 15.6 and newer, the default group changed from
+users(100) to $username(1000)
+---
+ tests/pytests/functional/states/test_user.py | 12 +++++++++---
+ 1 file changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/tests/pytests/functional/states/test_user.py b/tests/pytests/functional/states/test_user.py
+index 231841ee78..4060e049d0 100644
+--- a/tests/pytests/functional/states/test_user.py
++++ b/tests/pytests/functional/states/test_user.py
+@@ -139,7 +139,9 @@ def test_user_present_nondefault(grains, modules, states, username, user_home):
+         assert user_home.is_dir()
+ 
+     if grains["os_family"] == "Suse" and not (
+-        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++        grains.get("transactional", False)
++        or grains.get("osmajorrelease", 0) >= 16
++        or grains.get("osrelease_info", ()) >= (15, 6)
+     ):
+         expected_group_name = "users"
+     elif grains["os_family"] == "MacOS":
+@@ -388,7 +390,9 @@ def test_user_present_change_groups(
+ ):
+     expected_groups = [group_2.name, group_1.name]
+     if grains["os_family"] == "Suse" and (
+-        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++        grains.get("transactional", False)
++        or grains.get("osmajorrelease", 0) >= 16
++        or grains.get("osrelease_info", ()) >= (15, 6)
+     ):
+         expected_groups.append(username)
+ 
+@@ -422,7 +426,9 @@ def test_user_present_change_optional_groups(
+ ):
+     expected_groups = [group_2.name, group_1.name]
+     if grains["os_family"] == "Suse" and (
+-        grains.get("transactional", False) or grains.get("osmajorrelease", 0) >= 16
++        grains.get("transactional", False)
++        or grains.get("osmajorrelease", 0) >= 16
++        or grains.get("osrelease_info", ()) >= (15, 6)
+     ):
+         expected_groups.append(username)
+ 
+-- 
+2.54.0
+

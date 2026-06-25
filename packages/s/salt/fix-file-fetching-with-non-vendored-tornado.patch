@@ -1,0 +1,37 @@
+From 4b09fa3697dbf3ec27ef8b3e26ee95a498f07f99 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 23 Jun 2026 09:47:32 +0200
+Subject: [PATCH] Fix file fetching with non-vendored tornado
+
+---
+ salt/fileclient.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/salt/fileclient.py b/salt/fileclient.py
+index 82e0fc2a82..744e850ade 100644
+--- a/salt/fileclient.py
++++ b/salt/fileclient.py
+@@ -12,7 +12,6 @@ import string
+ import urllib.error
+ import urllib.parse
+ 
+-from salt import USE_VENDORED_TORNADO
+ from tornado.httputil import HTTPHeaders, HTTPInputError, parse_response_start_line
+ 
+ import salt.channel.client
+@@ -745,8 +744,10 @@ class Client:
+                 # Check the status line of the HTTP request
+                 if write_body[0] is None:
+                     try:
+-                        hdr = hdr if USE_VENDORED_TORNADO else hdr.strip()
+-                        hdr = parse_response_start_line(hdr)
++                        try:
++                            hdr = parse_response_start_line(hdr)
++                        except HTTPInputError:
++                            hdr = parse_response_start_line(hdr.strip())
+                     except HTTPInputError:
+                         # Not the first line, do nothing
+                         return
+-- 
+2.54.0
+

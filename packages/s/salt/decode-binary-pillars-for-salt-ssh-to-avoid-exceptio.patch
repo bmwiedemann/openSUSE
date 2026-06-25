@@ -1,0 +1,100 @@
+From d1a3fc8e8d65aaac500ea40ef40e2090a58ba5f6 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 23 Jun 2026 09:46:30 +0200
+Subject: [PATCH] Decode binary pillars for salt-ssh to avoid
+ exceptions (bsc#1263822)
+
+* Avoid exception on pillar data serialization with salt-ssh
+
+* Add test for prep_trans_tar binary pillar data decode
+---
+ salt/client/ssh/state.py                    |  2 +
+ tests/pytests/unit/client/ssh/test_state.py | 56 +++++++++++++++++++++
+ 2 files changed, 58 insertions(+)
+ create mode 100644 tests/pytests/unit/client/ssh/test_state.py
+
+diff --git a/salt/client/ssh/state.py b/salt/client/ssh/state.py
+index 4ee62a293a..ec5c65d7b8 100644
+--- a/salt/client/ssh/state.py
++++ b/salt/client/ssh/state.py
+@@ -15,6 +15,7 @@ import salt.loader
+ import salt.minion
+ import salt.roster
+ import salt.state
++import salt.utils.data
+ import salt.utils.files
+ import salt.utils.json
+ import salt.utils.path
+@@ -203,6 +204,7 @@ def prep_trans_tar(
+         salt.utils.json.dump(chunks, fp_)
+     if pillar:
+         with salt.utils.files.fopen(pillarfn, "w+") as fp_:
++            pillar = salt.utils.data.decode_dict(pillar)
+             salt.utils.json.dump(pillar, fp_)
+     if roster_grains:
+         with salt.utils.files.fopen(roster_grainsfn, "w+") as fp_:
+diff --git a/tests/pytests/unit/client/ssh/test_state.py b/tests/pytests/unit/client/ssh/test_state.py
+new file mode 100644
+index 0000000000..3f1424f3dd
+--- /dev/null
++++ b/tests/pytests/unit/client/ssh/test_state.py
+@@ -0,0 +1,56 @@
++import pytest
++
++from salt.client.ssh.state import prep_trans_tar
++from tests.support.mock import patch
++
++
++@pytest.mark.parametrize(
++    "inpt,expected",
++    [
++        (
++            {
++                "pillar_data_n1": 1,
++                "pillar_data_t2": "text2",
++                "pillar_data_d3": {
++                    "text1": "text1",
++                    "text2": "text2",
++                },
++            },
++            {
++                "pillar_data_n1": 1,
++                "pillar_data_t2": "text2",
++                "pillar_data_d3": {
++                    "text1": "text1",
++                    "text2": "text2",
++                },
++            },
++        ),
++        (
++            {
++                "pillar_data_n1": 1,
++                "pillar_data_t2": "text2",
++                "pillar_data_b3": b"text3",
++                "pillar_data_d4": {
++                    "bin1": b"bin1",
++                    "bin2": b"bin2",
++                },
++            },
++            {
++                "pillar_data_n1": 1,
++                "pillar_data_t2": "text2",
++                "pillar_data_b3": "text3",
++                "pillar_data_d4": {
++                    "bin1": "bin1",
++                    "bin2": "bin2",
++                },
++            },
++        ),
++    ],
++)
++def test_prep_trans_tar_with_binary_pillar(inpt, expected):
++    """
++    Test binary pillar serialization
++    """
++    with patch("salt.utils.json.dump", return_value="") as json_dump_mock:
++        trans_tar = prep_trans_tar(None, [], [], pillar=inpt)
++        assert expected == json_dump_mock.call_args[0][0]
+-- 
+2.54.0
+

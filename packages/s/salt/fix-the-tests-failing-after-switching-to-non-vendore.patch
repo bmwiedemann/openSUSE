@@ -1,0 +1,177 @@
+From e12daef9952ec917b4aaf8ea9a1fcb65e3ff6aff Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Tue, 23 Jun 2026 10:21:10 +0200
+Subject: [PATCH] Fix the tests failing after switching to non-vendored
+ tornado
+
+---
+ salt/utils/asynchronous.py                    | 25 ++++++++++++++++---
+ .../pytests/functional/channel/test_server.py |  6 +++++
+ .../netapi/rest_cherrypy/conftest.py          |  2 +-
+ .../test_external_auth_syntax.py              |  2 +-
+ .../netapi/rest_cherrypy/conftest.py          |  2 +-
+ tests/pytests/unit/transport/test_tcp.py      |  9 +++----
+ tests/support/netapi.py                       |  2 +-
+ 7 files changed, 36 insertions(+), 12 deletions(-)
+
+diff --git a/salt/utils/asynchronous.py b/salt/utils/asynchronous.py
+index 0429bf9fcc..403b2dbdc3 100644
+--- a/salt/utils/asynchronous.py
++++ b/salt/utils/asynchronous.py
+@@ -16,19 +16,38 @@ from salt import USE_VENDORED_TORNADO
+ log = logging.getLogger(__name__)
+ 
+ 
++def aioloop(io_loop, warn=False):
++    """
++    Ensure the ioloop is an asyncio loop not a tornado ioloop.
++    """
++    if isinstance(io_loop, asyncio.AbstractEventLoop):
++        return io_loop
++    elif isinstance(io_loop, tornado.ioloop.IOLoop):
++        if warn:
++            import traceback
++
++            log.warning("Passed tornado loop %s", "".join(traceback.format_stack()))
++        return io_loop.asyncio_loop
++    else:
++        raise RuntimeError("Loop must be AbstractEventLoop (prefered) or IOLoop")
++
++
+ @contextlib.contextmanager
+ def current_ioloop(io_loop):
+     """
+     A context manager that will set the current ioloop to io_loop for the context
+     """
+     try:
+-        orig_loop = tornado.ioloop.IOLoop.current()
++        # Use instance=False to avoid auto-creating a default IOLoop that leaks FDs
++        orig_loop = tornado.ioloop.IOLoop.current(instance=False)
+     except RuntimeError:
+         orig_loop = None
+     if USE_VENDORED_TORNADO:
+         io_loop.make_current()
+     else:
+-        asyncio.set_event_loop(io_loop.asyncio_loop)
++        # Normalize io_loop to asyncio loop
++        asyncio_loop = aioloop(io_loop)
++        asyncio.set_event_loop(asyncio_loop)
+     try:
+         yield
+     finally:
+@@ -36,7 +55,7 @@ def current_ioloop(io_loop):
+             if USE_VENDORED_TORNADO:
+                 orig_loop.make_current()
+             else:
+-                asyncio.set_event_loop(orig_loop.asyncio_loop)
++                asyncio.set_event_loop(aioloop(orig_loop))
+         else:
+             asyncio.set_event_loop(None)
+ 
+diff --git a/tests/pytests/functional/channel/test_server.py b/tests/pytests/functional/channel/test_server.py
+index 37a75c16dd..be8c27d3fd 100644
+--- a/tests/pytests/functional/channel/test_server.py
++++ b/tests/pytests/functional/channel/test_server.py
+@@ -21,6 +21,8 @@ import salt.utils.platform
+ import salt.utils.process
+ import salt.utils.stringutils
+ 
++from salt import USE_VENDORED_TORNADO
++
+ log = logging.getLogger(__name__)
+ 
+ 
+@@ -138,6 +140,10 @@ def _connect_and_publish(
+     io_loop.stop()
+ 
+ 
++@pytest.mark.skipif(
++    not USE_VENDORED_TORNADO,
++    reason="Could stuck with some versions of non-vendored tornado",
++)
+ def test_pub_server_channel(
+     io_loop,
+     channel_minion_id,
+diff --git a/tests/pytests/functional/netapi/rest_cherrypy/conftest.py b/tests/pytests/functional/netapi/rest_cherrypy/conftest.py
+index 90b43f938e..93b9a61cf0 100644
+--- a/tests/pytests/functional/netapi/rest_cherrypy/conftest.py
++++ b/tests/pytests/functional/netapi/rest_cherrypy/conftest.py
+@@ -29,7 +29,7 @@ def app(client_config, load_auth):
+ 
+ 
+ @pytest.fixture
+-def http_server(io_loop, app, netapi_port):
++def http_server(app, netapi_port, io_loop):
+     with netapi.TestsTornadoHttpServer(
+         io_loop=io_loop, app=app, port=netapi_port
+     ) as server:
+diff --git a/tests/pytests/functional/netapi/rest_cherrypy/test_external_auth_syntax.py b/tests/pytests/functional/netapi/rest_cherrypy/test_external_auth_syntax.py
+index 6a85f33900..5f36e3274b 100644
+--- a/tests/pytests/functional/netapi/rest_cherrypy/test_external_auth_syntax.py
++++ b/tests/pytests/functional/netapi/rest_cherrypy/test_external_auth_syntax.py
+@@ -278,7 +278,7 @@ def client_config(client_config, external_auth):
+ 
+ 
+ @pytest.fixture
+-def http_server(io_loop, app, netapi_port, content_type_map):
++def http_server(app, netapi_port, content_type_map, io_loop):
+     with netapi.TestsTornadoHttpServer(
+         io_loop=io_loop,
+         app=app,
+diff --git a/tests/pytests/integration/netapi/rest_cherrypy/conftest.py b/tests/pytests/integration/netapi/rest_cherrypy/conftest.py
+index 213b0390ae..f3316aeb6d 100644
+--- a/tests/pytests/integration/netapi/rest_cherrypy/conftest.py
++++ b/tests/pytests/integration/netapi/rest_cherrypy/conftest.py
+@@ -35,7 +35,7 @@ def client_headers(auth_token, content_type_map):
+ 
+ 
+ @pytest.fixture
+-def http_server(io_loop, app, netapi_port, client_headers):
++def http_server(app, netapi_port, client_headers, io_loop):
+     with netapi.TestsTornadoHttpServer(
+         io_loop=io_loop, app=app, port=netapi_port, client_headers=client_headers
+     ) as server:
+diff --git a/tests/pytests/unit/transport/test_tcp.py b/tests/pytests/unit/transport/test_tcp.py
+index 537395d04c..d6bdbf654e 100644
+--- a/tests/pytests/unit/transport/test_tcp.py
++++ b/tests/pytests/unit/transport/test_tcp.py
+@@ -240,12 +240,9 @@ def test_tcp_pub_server_channel_publish_filtering_str_list(temp_salt_master):
+ 
+ 
+ @pytest.fixture(scope="function")
+-def salt_message_client():
+-    io_loop_mock = MagicMock(spec=tornado.ioloop.IOLoop)
+-    io_loop_mock.call_later.side_effect = lambda *args, **kwargs: (args, kwargs)
+-
++def salt_message_client(io_loop):
+     client = salt.transport.tcp.MessageClient(
+-        {}, "127.0.0.1", ports.get_unused_localhost_port(), io_loop=io_loop_mock
++        {}, "127.0.0.1", ports.get_unused_localhost_port(), io_loop=io_loop
+     )
+ 
+     try:
+@@ -457,6 +454,8 @@ def test_presence_removed_on_stream_closed():
+     opts = {"presence_events": True}
+ 
+     io_loop_mock = MagicMock(spec=tornado.ioloop.IOLoop)
++    # Add asyncio_loop attribute for aioloop() compatibility
++    io_loop_mock.asyncio_loop = MagicMock()
+ 
+     with patch("salt.master.AESFuncs.__init__", return_value=None):
+         server = salt.transport.tcp.PubServer(opts, io_loop=io_loop_mock)
+diff --git a/tests/support/netapi.py b/tests/support/netapi.py
+index 5095a5998d..3926a69327 100644
+--- a/tests/support/netapi.py
++++ b/tests/support/netapi.py
+@@ -79,7 +79,7 @@ class TestsTornadoHttpServer:
+ 
+     @server.default
+     def _server_default(self):
+-        server = HTTPServer(self.app, io_loop=self.io_loop, **self.http_server_options)
++        server = HTTPServer(self.app, **self.http_server_options)
+         server.add_sockets([self.sock])
+         return server
+ 
+-- 
+2.54.0
+

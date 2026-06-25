@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:03:47 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Fix the tests failing after switching to non-vendored tornado
+- Fix the default group in tests for new users in SLE 15.6
+- Use AsyncHTTPClient in salt.utils.http (bsc#1268325)
+- Fix file fetching with cp module on non-vendored tornado
+- Decode binary pillars for salt-ssh to avoid exceptions (bsc#1263822)
+
+- Added:
+  * fix-the-tests-failing-after-switching-to-non-vendore.patch
+  * fix-the-default-group-in-tests-for-new-users-in-sle-.patch
+  * use-asynchttpclient-in-salt.utils.http-bsc-1268325.patch
+  * fix-file-fetching-with-non-vendored-tornado.patch
+  * decode-binary-pillars-for-salt-ssh-to-avoid-exceptio.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 11:55:14 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix ImportError during reentrant SIGTERM shutdown

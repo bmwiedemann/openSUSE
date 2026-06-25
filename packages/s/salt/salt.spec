@@ -654,6 +654,21 @@ Patch208:       fix-broken-pkg.info_installed-after-moving-to-salt.u.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/69363
 # PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/765
 Patch209:       fix-importerror-during-reentrant-sigterm-shutdown.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/pull/69405
+Patch210:       decode-binary-pillars-for-salt-ssh-to-avoid-exceptio.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/766
+# There is no upstream PR behind as upstream relies on non-vendored tornado
+# with higher version which doesn't have this issue
+Patch211:       fix-file-fetching-with-non-vendored-tornado.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/0b92bfdf80ab40787072d546b6962c77dd24e0b7
+Patch212:       use-asynchttpclient-in-salt.utils.http-bsc-1268325.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/758
+Patch213:       fix-the-default-group-in-tests-for-new-users-in-sle-.patch
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/e37d3e405a0c7d417a45804272933afa7ccae40b
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/dfe321bc1564fbaa7b6a19ff0f78a05cae45d3d0
+# PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/e8c016419b73aaefab32880fe91ad694f0c6668e
+Patch214:       fix-the-tests-failing-after-switching-to-non-vendore.patch
+
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END
 
