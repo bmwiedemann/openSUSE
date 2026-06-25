@@ -16,7 +16,6 @@
 #
 
 
-%define pythons python3
 Name:           codespell
 Version:        2.4.2
 Release:        0
@@ -27,6 +26,7 @@ URL:            https://github.com/codespell-project/codespell/
 Source0:        https://files.pythonhosted.org/packages/source/c/codespell/codespell-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  python3-chardet
 BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
@@ -49,16 +49,16 @@ misspelled words in source code, but it can be used with other files as well.
 sed -i '/\-cov/ d' pyproject.toml
 
 %build
-%pyproject_wheel
+%python3_pyproject_wheel
 
 %install
-%pyproject_install
+%python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
 %check
 # disable command test; does not work in chroot
 export PATH=$PATH:%{buildroot}%{_bindir}
-%pytest -k 'not test_command'
+%python3_pytest -k 'not test_command'
 
 %files
 %license COPYING
