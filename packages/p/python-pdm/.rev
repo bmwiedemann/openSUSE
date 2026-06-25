@@ -590,4 +590,41 @@
 - Stop skipping so many network tests.</comment>
     <requestid>1346529</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>867dc76bc3a72f95c986f61c667fcfcd</srcmd5>
+    <version>2.28.0</version>
+    <time>1782377906</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.28.0:
+  ## Breaking Changes
+  * Update the minimum required Python version to 3.10.
+  ## Features &amp; Improvements
+  * Add experimental workspace support for managing local member projects in
+    a shared root lock file.
+  * Defer startup-time imports for Python, virtualenv, and self-management
+    commands.
+  * Respect existing values of pyproject.toml when running pdm init or pdm
+    new.
+  * Move project plugin installations from .pdm-plugins under the project
+    root to an isolated cache directory, and add a fixer to migrate existing
+    plugin directories. (CVE-2026-47781, bsc#1268386)
+  * Remove legacy importlib compatibility wrappers and use standard-library
+    importlib.metadata and importlib.resources APIs directly.
+  * Support exclude-newer in pyproject.toml in the [tool.pdm.resolution]
+    table
+  * pdm lock --exclude-newer now accepts relative durations in the format
+    N{d|h|w}, such as 7d, 12h, and 3w, in addition to absolute UTC dates and
+    timestamps.
+  ## Bug Fixes
+  * Fix pdm completion bash printing __ltrim_colon_completions: command not
+    found (and a similar error for _get_comp_words_by_ref) when the generated
+    script is sourced in a bash without the bash-completion package loaded,
+    such as Git Bash on Windows or minimal Linux containers. The script now
+    defines small fallbacks for both helpers when they are not already
+    available.
+  * Avoid forwarding duplicate SIGINT in pdm run on POSIX.
+  * Fix a security issue with the installer to disallow installing to paths
+    outside of the scheme directory. (CVE-2026-47764, bsc#1268385)</comment>
+    <requestid>1361677</requestid>
+  </revision>
 </revisionlist>

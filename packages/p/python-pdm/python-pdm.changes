@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jun 23 09:17:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.28.0:
+  ## Breaking Changes
+  * Update the minimum required Python version to 3.10.
+  ## Features & Improvements
+  * Add experimental workspace support for managing local member projects in
+    a shared root lock file.
+  * Defer startup-time imports for Python, virtualenv, and self-management
+    commands.
+  * Respect existing values of pyproject.toml when running pdm init or pdm
+    new.
+  * Move project plugin installations from .pdm-plugins under the project
+    root to an isolated cache directory, and add a fixer to migrate existing
+    plugin directories. (CVE-2026-47781, bsc#1268386)
+  * Remove legacy importlib compatibility wrappers and use standard-library
+    importlib.metadata and importlib.resources APIs directly.
+  * Support exclude-newer in pyproject.toml in the [tool.pdm.resolution]
+    table
+  * pdm lock --exclude-newer now accepts relative durations in the format
+    N{d|h|w}, such as 7d, 12h, and 3w, in addition to absolute UTC dates and
+    timestamps.
+  ## Bug Fixes
+  * Fix pdm completion bash printing __ltrim_colon_completions: command not
+    found (and a similar error for _get_comp_words_by_ref) when the generated
+    script is sourced in a bash without the bash-completion package loaded,
+    such as Git Bash on Windows or minimal Linux containers. The script now
+    defines small fallbacks for both helpers when they are not already
+    available.
+  * Avoid forwarding duplicate SIGINT in pdm run on POSIX.
+  * Fix a security issue with the installer to disallow installing to paths
+    outside of the scheme directory. (CVE-2026-47764, bsc#1268385)
+  * Refuse to write project-local config and state files (pdm.toml,
+    .pdm-python, .python-version) when the destination is a symlink,
+    preventing an untrusted repository from clobbering files outside the
+    project root. (CVE-2026-47763, bsc#1268384)
+  * Fix a regression issue that PDM_LOCKFILE env var is not respected.
+  * Allow configuring the default lock --exclude-newer value with
+    strategy.exclude-newer.
+  * Preserve pylock package markers when refreshing lockfile hashes.
+  * Fixed pdm add --frozen-lockfile --no-sync to skip dependency resolution
+    and update only pyproject.toml without attempting to write the lockfile.
+  * Fix [tool.pdm.options] being loaded from the current working directory
+    instead of the target project when -p/--project is used.
+  * Put make_file_executable into pdm.utils to replace the method of the same
+    name in installer. To fix a breakage introduced by installer v1.
+  * Fix pdm init <template> overwriting the template's additions to
+    build-system.requires when build-system.build-backend matches the user's
+    selection.
+  * Fixed PySpecSet merging to handle impossible Python version ranges
+    like >=3.6,<3.4 without crashing on empty or inverted gaps.
+- Drop patch support-installer-1.0.patch, merged upstream.
+
+-------------------------------------------------------------------
 Tue Apr 14 06:46:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-installer-1.0.patch:

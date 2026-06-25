@@ -27,16 +27,13 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pdm%{psuffix}
-Version:        2.26.7
+Version:        2.28.0
 Release:        0
 Summary:        Python Development Master
 License:        MIT
 URL:            https://github.com/pdm-project/pdm/
 Source0:        https://files.pythonhosted.org/packages/source/p/pdm/pdm-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#pdm-project/pdm#3764
-Patch0:         support-installer-1.0.patch
-BuildRequires:  %{python_module base >= 3.9}
-BuildRequires:  %{python_module importlib-metadata if %python-base <= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -50,7 +47,7 @@ Requires:       python-hishel >= 1.0.0
 Requires:       python-httpcore >= 1.0.6
 Requires:       python-httpx >= 0.20
 Requires:       python-id >= 1.5.0
-Requires:       python-installer >= 0.7
+Requires:       python-installer >= 1
 Requires:       python-packaging >= 22.0
 Requires:       python-pbs-installer >= 2025.10.7
 Requires:       python-platformdirs
@@ -59,17 +56,12 @@ Requires:       python-python-dotenv >= 0.15
 Requires:       python-resolvelib >= 1.1
 Requires:       python-rich >= 12.3.0
 Requires:       python-shellingham >= 1.3.2
+Requires:       python-truststore >= 0.10.4
 Requires:       python-unearth >= 0.17.5
 Requires:       python-virtualenv >= 20
 Requires:       (python-tomlkit >= 0.11.1 with python-tomlkit < 1)
-%if 0%{?python_version_nodots} < 310
-Requires:       python-importlib-metadata >= 3.6
-%endif
 %if 0%{?python_version_nodots} < 311
 Requires:       python-tomli >= 1.1.0
-%endif
-%if 0%{?python_version_nodots} >= 310
-Requires:       python-truststore >= 0.10.4
 %endif
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
