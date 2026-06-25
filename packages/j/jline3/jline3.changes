@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 25 05:19:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jline3-GHSA-47qp-hqvx-6r3f.patch
+    + backport of the upstream fix for GHSA-47qp-hqvx-6r3f,
+      bsc#1269021: unauthenticated remote memory exhaustion via
+      unbounded Telnet 'NEW-ENVIRON variables
+
+-------------------------------------------------------------------
 Fri May 29 13:31:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with JDK that uses libalternatives instead of

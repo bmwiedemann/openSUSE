@@ -95,4 +95,12 @@
     <comment>Allow building with javas managed by libalternatives too</comment>
     <requestid>1356015</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>b537b53fe84b60a413c4deaad6a02e02</srcmd5>
+    <version>3.30.13</version>
+    <time>1782400415</time>
+    <user>anag_factory</user>
+    <comment>bsc#1269021, GHSA-47qp-hqvx-6r3f</comment>
+    <requestid>1361681</requestid>
+  </revision>
 </revisionlist>
