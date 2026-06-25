@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun 24 20:31:59 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.22.6
+- Upstream changes:
+  * fix ge proton arch in proton manager
+- For version 1.22.5:
+  * Fix GE-Proton downloading the wrong-architecture build
+  * remove duplicate faugus_png now centralized in path_manager
+  * deduplicate lsfgvk paths and icon selection to path_manager
+  * deduplicate launch args, addapp and lossless dialogs into utils
+  * Removed lossless workaround
+  * Keep lossless workaround for now
+  * Remove dead code and unnecessary lossless cenversion
+  * extract show_invalid_image_dialog() to utils.py
+  * Update runner.py
+  * Replaced run with Popen
+  * Improved playtime accuracy
+  * Fixed linux game not downloading umu
+  * Fixed Show logs option unavailable
+  * fix use elif for Proton path checks to prevent false error on Linux-Native
+  * extract write_addapp_bat to utils.py
+  * fix show game icon on splash when discrete GPU is enabled
+  * centralize populate_combobox_with_runners to utils.py
+  * Updated metadata screenshot
+  * Updated screenshot
+  * optimize logging I/O and remove unnecessary gc.collect()
+  * Simplify selected() method and add null safety to context menu handlers
+  * update(translation): updated 1.22 zh-CN.
+
+-------------------------------------------------------------------
 Mon Jun 15 01:54:41 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.22.4

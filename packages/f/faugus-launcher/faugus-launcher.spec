@@ -19,7 +19,7 @@
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        1.22.4
+Version:        1.22.6
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT and CC-BY-4.0
