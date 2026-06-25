@@ -142,4 +142,12 @@
     <comment>Spec file cleanup</comment>
     <requestid>1205242</requestid>
   </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>a791f4e21c3d6fec6d159b8012ccb547</srcmd5>
+    <version>4.3</version>
+    <time>1782377387</time>
+    <user>anag_factory</user>
+    <comment>Split package in two in order to avoid cycle with new apache-commons-logging</comment>
+    <requestid>1361307</requestid>
+  </revision>
 </revisionlist>

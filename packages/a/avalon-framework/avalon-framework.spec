@@ -1,7 +1,7 @@
 #
 # spec file for package avalon-framework
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,29 @@
 #
 
 
-Name:           avalon-framework
+%global base_name avalon-framework
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "api"
+%global build_api 1
+Name:           %{base_name}-api
+%else
+%global build_api 0
+Name:           %{base_name}
+BuildRequires:  %{base_name}-api
+BuildRequires:  commons-logging
+%endif
 Version:        4.3
 Release:        0
 Summary:        Java components interfaces
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://avalon.apache.org/
-#Source0:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-api-%{version}-src.tar.gz
-#Source1:        http://archive.apache.org/dist/excalibur/avalon-framework/source/%{name}-impl-%{version}-src.tar.gz
-Source0:        %{name}-api-%{version}-src.tar.gz
-Source1:        %{name}-impl-%{version}-src.tar.gz
+Source0:        https://archive.apache.org/dist/excalibur/excalibur-framework/source/%{base_name}-api-%{version}-src.tar.gz
+Source1:        https://archive.apache.org/dist/excalibur/excalibur-framework/source/%{base_name}-impl-%{version}-src.tar.gz
 Patch0:         0001-Port-build-script-to-Maven-3.patch
-Patch1:         %{name}-manifest.patch
+Patch1:         %{base_name}-manifest.patch
 BuildRequires:  ant
 BuildRequires:  avalon-logkit
-BuildRequires:  commons-logging
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  reload4j
@@ -49,8 +56,11 @@ ancestors and children.
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
+%if ! %{build_api}
+Requires:       %{base_name}-api-javadoc
 Provides:       %{name}-manual = %{version}-%{release}
 Obsoletes:      %{name}-manual < %{version}-%{release}
+%endif
 
 %description javadoc
 API documentation for %{name}.
@@ -60,43 +70,57 @@ API documentation for %{name}.
 %autopatch -p1
 
 %build
-pushd %{name}-api-%{version}
+%if %{build_api}
+pushd %{base_name}-api-%{version}
   mkdir -p target/lib
   build-jar-repository -s target/lib avalon-logkit
   ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd
-pushd %{name}-impl-%{version}
+%else
+pushd %{base_name}-impl-%{version}
   mkdir -p target/lib
-  build-jar-repository -s target/lib avalon-logkit reload4j commons-logging
-  cp ../%{name}-api-%{version}/target/*.jar target/lib/
+  build-jar-repository -s target/lib avalon-logkit reload4j commons-logging %{base_name}-api
   ant -Dant.build.javac.source=8 -Dant.build.javac.target=8 dist
 popd
+%endif
 
 %install
+%if %{build_api}
 # jars
 install -dm 0755 %{buildroot}%{_javadir}
-install -pm 0644 %{name}-api-%{version}/dist/%{name}-api-%{version}.jar %{buildroot}%{_javadir}/%{name}-api.jar
-install -pm 0644 %{name}-impl-%{version}/dist/%{name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{name}-impl.jar
-(cd %{buildroot}%{_javadir} && ln -s %{name}-impl.jar %{name}.jar)
+install -pm 0644 %{base_name}-api-%{version}/dist/%{base_name}-api-%{version}.jar %{buildroot}%{_javadir}/%{base_name}-api.jar
 # poms
 install -dm 0755 %{buildroot}%{_mavenpomdir}
-%{mvn_install_pom} %{name}-api-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-api.pom
-%add_maven_depmap %{name}-api.pom %{name}-api.jar -a org.apache.avalon.framework:avalon-framework-api
-%{mvn_install_pom} %{name}-impl-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{name}-impl.pom
-%add_maven_depmap %{name}-impl.pom %{name}-impl.jar -a "org.apache.avalon.framework:avalon-framework-impl","avalon-framework:avalon-framework"
+%{mvn_install_pom} %{base_name}-api-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{base_name}-api.pom
+%add_maven_depmap %{base_name}-api.pom %{base_name}-api.jar -a org.apache.avalon.framework:avalon-framework-api
 # javadoc
-mkdir -p %{buildroot}%{_javadocdir}/%{name}
-cp -pr %{name}-api-%{version}/dist/docs/api %{buildroot}%{_javadocdir}/%{name}/api
-cp -pr %{name}-impl-%{version}/dist/docs/api %{buildroot}%{_javadocdir}/%{name}/impl
+mkdir -p %{buildroot}%{_javadocdir}/%{base_name}
+cp -pr %{base_name}-api-%{version}/dist/docs/api %{buildroot}%{_javadocdir}/%{base_name}/api
 %fdupes -s %{buildroot}%{_javadocdir}
+%else
+# jars
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 %{base_name}-impl-%{version}/dist/%{base_name}-impl-%{version}.jar %{buildroot}%{_javadir}/%{base_name}-impl.jar
+(cd %{buildroot}%{_javadir} && ln -s %{base_name}-impl.jar %{base_name}.jar)
+# poms
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} %{base_name}-impl-%{version}/project.xml %{buildroot}%{_mavenpomdir}/%{base_name}-impl.pom
+%add_maven_depmap %{base_name}-impl.pom %{base_name}-impl.jar -a "org.apache.avalon.framework:avalon-framework-impl","avalon-framework:avalon-framework"
+# javadoc
+mkdir -p %{buildroot}%{_javadocdir}/%{base_name}
+cp -pr %{base_name}-impl-%{version}/dist/docs/api %{buildroot}%{_javadocdir}/%{base_name}/impl
+%fdupes -s %{buildroot}%{_javadocdir}
+%endif
 
 %files -f .mfiles
-%{_javadir}/%{name}.jar
+%if ! %{build_api}
+%{_javadir}/%{base_name}.jar
+%endif
 %license avalon-framework-api-4.3/LICENSE.txt
 %license avalon-framework-api-4.3/NOTICE.txt
 
 %files javadoc
-%{_javadocdir}/%{name}
+%{_javadocdir}/%{base_name}
 %license avalon-framework-api-4.3/LICENSE.txt
 %license avalon-framework-api-4.3/NOTICE.txt
 
