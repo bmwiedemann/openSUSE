@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:55:58 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- fixed text output during package instalation (bnc#1268009)
+- enhance migration marker cleanup in /etc/selinux to properly
+  delete markers when removing selinux-policy-FLAVOUR package
+
+-------------------------------------------------------------------
+Fri Jun 19 07:22:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Mark all bash-using sections as requiring bash
+- Delete old %defattr, it's the default now anyway
+- Reduce %if BUILD_xxx to span just %files and triggers,
+  that's all it needs
+
+-------------------------------------------------------------------
+Thu Jun 19 07:11:40 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Fix syntax in scriptlets
+
+-------------------------------------------------------------------
+Thu Jun 18 11:34:41 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260618:
+  * Allow wireguard to setup DNS using dns_hatchet (bsc#1243148)
+  * Add sysnet_mount_file() interface
+
+-------------------------------------------------------------------
 Thu Jun  6 08:35:16 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - move %postMigration from %posttrans to %post to finish migration

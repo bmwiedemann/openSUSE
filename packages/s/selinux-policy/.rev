@@ -2408,4 +2408,20 @@ Needs to go together with libsemanage change</comment>
     <comment></comment>
     <requestid>1358495</requestid>
   </revision>
+  <revision rev="163" vrev="1">
+    <srcmd5>8c2d1e9c425dfa102a2d1c0069d8030f</srcmd5>
+    <version>20260618</version>
+    <time>1781879453</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360264</requestid>
+  </revision>
+  <revision rev="164" vrev="2">
+    <srcmd5>d508225e31ff811281f642f5eda047c9</srcmd5>
+    <version>20260618</version>
+    <time>1782377407</time>
+    <user>anag_factory</user>
+    <comment>please contact Zdenek Kubala in case of issues</comment>
+    <requestid>1361460</requestid>
+  </revision>
 </revisionlist>
