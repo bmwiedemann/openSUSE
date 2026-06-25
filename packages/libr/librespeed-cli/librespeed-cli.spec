@@ -1,7 +1,7 @@
 #
 # spec file for package librespeed-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sname speedtest-cli
 Name:           librespeed-cli
-Version:        1.0.12
+Version:        1.0.13
 Release:        0
 Summary:        Command line client for LibreSpeed
 License:        LGPL-3.0-only

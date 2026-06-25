@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 20 20:17:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.13:
+  * Add --insecure option to force unencrypted HTTP (#115)
+  * New output package for clean stdout/stderr separation; dropped the
+    logrus dependency
+  * Fix critical concurrency bugs, replace go-ping with pro-bing and
+    improve performance
+  * Fix server selection based on ping results (#106)
+  * Gracefully handle an empty rawIspInfo string in GetIPInfo
+  * Fix CSV newline handling
+
+-------------------------------------------------------------------
 Wed Jun 18 11:57:09 UTC 2025 - Jan Kužílek <jan.kuzilek@suse.com>
 
 - Update to version 1.0.12:
