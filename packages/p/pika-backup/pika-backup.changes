@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 24 03:17:03 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.8.3:
+  * Add Ctrl+W shortcut to close window.
+  * Fix details page not loading information when opened after 
+    scheduled backup started. 
+
+-------------------------------------------------------------------
 Tue Apr 14 02:54:10 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.8.2:
