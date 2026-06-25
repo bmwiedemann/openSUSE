@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 24 20:02:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.8.0:
+  * Drop drop-use-of-pipes.patch (merged upstream)
+  * Centralize all output handling into a single output function
+    and fix losing log output before it is configured
+  * Add a grep_pipe() helper and drop the internal use of pipes
+  * Raise a clear error when aexpect_helper does not work
+  * Fix a race where the tail thread could be unset before a
+    close hook was added
+  * Remote door: adjust the file-transfer port for custom setups
+    and shorten control-file output to a readable length
+
+-------------------------------------------------------------------
 Tue Dec 10 04:16:23 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch drop-use-of-pipes.patch:

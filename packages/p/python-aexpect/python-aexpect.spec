@@ -1,7 +1,7 @@
 #
 # spec file for package python-aexpect
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %global         pkgname aexpect
 Name:           python-%{pkgname}
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        Python library to control interactive applications
 License:        GPL-2.0-only
-URL:            http://avocado-framework.readthedocs.org/
+URL:            https://avocado-framework.readthedocs.org/
 Source:         https://github.com/avocado-framework/aexpect/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#avocado-framework/aexpect#128
-Patch0:         drop-use-of-pipes.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -50,6 +48,8 @@ sftp, telnet, among others.
 
 %install
 %pyproject_install
+# force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/aexpect
 %python_clone -a %{buildroot}%{_bindir}/aexpect_helper
 %fdupes %{buildroot}
 

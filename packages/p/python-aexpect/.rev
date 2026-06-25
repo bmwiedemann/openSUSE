@@ -89,4 +89,12 @@
 - Switch to pyproject macros.</comment>
     <requestid>1229652</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2645b941b6fe5af74eb66b6bd7df3c1e</srcmd5>
+    <version>1.8.0</version>
+    <time>1782377895</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.8.0; drop drop-use-of-pipes.patch (merged upstream)</comment>
+    <requestid>1361664</requestid>
+  </revision>
 </revisionlist>
