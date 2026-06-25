@@ -1,0 +1,97 @@
+From 1bee3b989ada3fac97eb2bf7c26fbcebb2bc6fb1 Mon Sep 17 00:00:00 2001
+From: Andrea della Porta <andrea.porta@suse.com>
+Date: Tue, 23 Jun 2026 17:18:04 +0300
+Subject: [PATCH] arm64: dts: bcm2712: Remove rp1-hog gpio node
+
+The gpio controller node for RPi5 contains a gpio hog definition
+for the reset pin connected to the RP1.
+Some upstream changes on the gpio hog parsing function will make
+them return an error if the node containing the hog is parsed twice
+(gpiochip_add called once per each gpio bank), which is exactly
+the case for on-board gpio controller in BCM2712 SoC.
+
+While we wait for the correct fix to be upstreamed, drop the hog
+since it's just there to avoid the user to tinker with that pin.
+
+Signed-off-by: Andrea della Porta <andrea.porta@suse.com>
+---
+ .../boot/dts/broadcom/bcm2712-rpi-5-b.dts     |  7 ----
+ .../boot/dts/broadcom/bcm2712-rpi-cm5.dtsi    | 37 -------------------
+ 2 files changed, 44 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+index 1ed6b4a..cc204cd 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+@@ -624,13 +624,6 @@ spi10_cs_pins: &spi10_cs_gpio1 {};
+ 		"HDMI1_SDA", // AON_SGPIO_03
+ 		"PMIC_SCL", // AON_SGPIO_04
+ 		"PMIC_SDA"; // AON_SGPIO_05
+-
+-	rp1_run_hog {
+-		gpio-hog;
+-		gpios = <2 GPIO_ACTIVE_HIGH>;
+-		output-high;
+-		line-name = "RP1 RUN pin";
+-	};
+ };
+ 
+ &rp1_gpio {
+diff --git a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+index aba553f..51a6444 100644
+--- a/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
++++ b/arch/arm64/boot/dts/broadcom/bcm2712-rpi-cm5.dtsi
+@@ -602,29 +602,6 @@ spi10_cs_pins: &spi10_cs_gpio1 {};
+ 		"HDMI1_SDA", // AON_SGPIO_03
+ 		"PMIC_SCL", // AON_SGPIO_04
+ 		"PMIC_SDA"; // AON_SGPIO_05
+-
+-	rp1_run_hog {
+-		gpio-hog;
+-		gpios = <2 GPIO_ACTIVE_HIGH>;
+-		output-high;
+-		line-name = "RP1 RUN pin";
+-	};
+-
+-	ant1: ant1-hog {
+-		gpio-hog;
+-		gpios = <5 GPIO_ACTIVE_HIGH>;
+-		/* internal antenna enabled */
+-		output-high;
+-		line-name = "ant1";
+-	};
+-
+-	ant2: ant2-hog {
+-		gpio-hog;
+-		gpios = <6 GPIO_ACTIVE_HIGH>;
+-		/* external antenna disabled */
+-		output-low;
+-		line-name = "ant2";
+-	};
+ };
+ 
+ &rp1_gpio {
+@@ -706,20 +683,6 @@ spi10_cs_pins: &spi10_cs_gpio1 {};
+ 
+ / {
+ 	__overrides__ {
+-		ant1 =  <&ant1>,"output-high?=on",
+-			<&ant1>, "output-low?=off",
+-			<&ant2>, "output-high?=off",
+-			<&ant2>, "output-low?=on";
+-		ant2 =  <&ant1>,"output-high?=off",
+-			<&ant1>, "output-low?=on",
+-			<&ant2>, "output-high?=on",
+-			<&ant2>, "output-low?=off";
+-		noant = <&ant1>,"output-high?=off",
+-			<&ant1>, "output-low?=on",
+-			<&ant2>, "output-high?=off",
+-			<&ant2>, "output-low?=on";
+-		noanthogs = <&ant1>,"status=disabled",
+-			<&ant2>, "status=disabled";
+ 		sd = <&sdio1>, "status";
+ 		sd_poll_once = <&sdio1>, "non-removable?";
+ 		sd_cqe = <&sdio1>, "supports-cqe:0";
+-- 
+2.35.3
+

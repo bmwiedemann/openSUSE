@@ -45,6 +45,7 @@ Patch10:        0001-dts-bcm2712-Extend-PCIe-range-to-encompass-firmware-.patch
 Patch11:        0001-dts-arm64-rp1-Fix-PCIe-topology.patch
 Patch12:        0001-arm64-bcm2712-Fix-GPU-support.patch
 Patch13:        0001-arm64-dts-bcm2712-CM5-Ethernet-PHY-use-polling-mode.patch
+Patch14:	0001-arm64-dts-bcm2712-Remove-rp1-hog-gpio-node.patch
 Requires:       raspberrypi-firmware
 Requires:       kernel >= 6.19.0
 BuildRequires:  dtc

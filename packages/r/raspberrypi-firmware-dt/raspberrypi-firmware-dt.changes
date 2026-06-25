@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 23 14:46:43 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
+
+- Drop RP1 hog gpio node
+  0001-arm64-dts-bcm2712-Remove-rp1-hog-gpio-node.patch- 
+
+-------------------------------------------------------------------
 Mon May  4 15:26:37 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Use poling mode for Ethernet carrier detection on CM5
