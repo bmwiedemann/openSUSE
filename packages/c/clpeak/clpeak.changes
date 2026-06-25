@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jun 24 16:40:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.14:
+  * Gate AMX intrinsics on 64-bit targets to fix i686 builds
+  * CPU: expose every supported ISA variant as its own compute
+    test
+  * CPU: volatile-seed fp32/fp64 affine coefficients to fix the
+    SSE2 peak result under -ffast-math
+  * CPU: use matrix instruction names for ARM matrix engine
+    labels
+  * ROCm: fix bf16 and rocWMMA AOT kernel builds on ROCm 6.4,
+    tighten AOT arch groups, and fix dlopen shim compile errors
+  * Optionally build driver-only GPU binaries (AOT CUDA/ROCm,
+    optional GEMM libraries)
+- Add clpeak-install-bindir.patch: the upstream packaging rework
+  started installing the binary into the prefix root (/usr/clpeak);
+  install it into bindir via GNUInstallDirs instead (sent upstream)
+- Drop _service/_servicedata and build straight from the upstream
+  release tarball
+
+-------------------------------------------------------------------
 Sat Jun 20 20:15:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.13:

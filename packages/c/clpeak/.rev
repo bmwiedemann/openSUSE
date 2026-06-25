@@ -90,4 +90,12 @@
     <comment>Update to 2.0.13</comment>
     <requestid>1360774</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c48846c439053ddd99dbc29ff37c1d54</srcmd5>
+    <version>2.0.14</version>
+    <time>1782377881</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.14. Adds clpeak-install-bindir.patch (install binary into bindir via GNUInstallDirs; upstream PR krrishnarraj/clpeak#178). Drops _service and builds straight from the upstream release tarball.</comment>
+    <requestid>1361626</requestid>
+  </revision>
 </revisionlist>
