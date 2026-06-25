@@ -26,14 +26,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           union6
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Qt style supporting both QtQuick and QtWidgets
 License:        LGPL-2.1-or-later
 URL:            https://www.kde.org/
-Source0:        %{rname}-%{version}.tar.xz
+Source0:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}

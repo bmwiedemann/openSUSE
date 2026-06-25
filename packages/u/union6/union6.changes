@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:27:24 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Changes since 6.7.0:
+  * Update version for new release 6.7.1
+  * Guard data assignment in Color's assignment operator (kde#521578)
+  * output/quick: Use the proper export macro for event type statics
+  * Don't use `inline static` for event type defaults (kde#521637)
+  * input/css: Support loading defaults from a different path than the main style
+  * output/kirigami: Track window activation in PlatformTheme
+  * output/quick: Ensure ComboBox uses font height for implicit height even if empty
+  * output/quick: Ensure we get the right DPR for icons (kde#521331)
+  * output/quick: Ensure QtQuick relocates the ComboBox popup if outside bounds
+  * output/quick: Consider padding when determining implicit size of a combobox popup
+  * qtwidgets: For pressed buttons, check for sunken instead
+- Delete unused 0001-Don-t-install-a-.so-link-for-internal-libraries.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 19:08:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
