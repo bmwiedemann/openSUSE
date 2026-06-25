@@ -1,9 +1,52 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:38:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.8
+  * Changes of 2.18.8
+    + #696: (ion) Incomplete number length validation in Ion decoder
+      (for 'BigDecimal' and/or 'BigInteger')
+  * Changes of 2.18.6
+    + #645: (avro) Remove use of Avro 'Schema.Parser()
+      .setValidate()' to allow use of Avro core 1.12.1 (2.x)
+    + #649: (cbor, smile) 'StreamReadConstraints.maxDocumentLength'
+      not checked when creating parser with fixed buffer
+    + #651: (smile) Ensure Smile backend supports
+      'StreamReadConstraints.maxTokenCount'
+    + #652: (cbor) Ensure CBOR backend supports
+      'StreamReadConstraints.maxTokenCount'
+    + Minor fix to 'ProtobufGenerator._reportEnumError()' helper
+      method
+  * Changes of 2.18.5
+    + #599: (cbor) Unable to deserialize stringref-enabled CBOR with
+      ignored properties
+    + #623: (ion) Upgrade 'ion-java' dep to 1.11.11 (from 1.11.10)
+  * Changes of 2.18.4
+    + #569: (ion) 'IonParser' fails to parse some 'long' values
+      saying they are out of range when they are not
+    + #584: (protobuf) Missing 'JsonToken.END_OBJECT' for nested
+      Protobuf Objects
+    + (ion) Upgrade 'ion-java' to 1.11.10 (from 1.11.9)
+  * Changes of 2.18.3
+    + #541: (cbor, protobuf, smile) 'SmileParser.getValueAsString()'
+      FIELD_NAME bug
+  * Changes of 2.18.1
+    + #518: Should not read past end for CBOR string values
+  * Changes of 2.18.0
+    + #167: (avro) Incompatibility with Avro >=1.9.0 (upgrade to
+      Avro 1.11.3)
+    + #484: (protobuf) Rework synchronization in 'ProtobufMapper'
+    + #494: (avro) Avro Schema generation: allow mapping Java Enum
+      properties to Avro String values
+    + #508: (avro) Ignore 'specificData' field on serialization
+    + #509: IonValueMapper.builder() not implemented, does not
+      register modules
+
+-------------------------------------------------------------------
 Wed Nov  6 07:56:55 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.3
   * #506: (protobuf) Cannot deserialize 'UUID' values
-  * (ion) Upgrade `ion-java` to 1.11.9 (from 1.11.8)
+  * (ion) Upgrade 'ion-java' to 1.11.9 (from 1.11.8)
 
 -------------------------------------------------------------------
 Wed Aug  7 09:29:37 UTC 2024 - Fridrich Strba <fstrba@suse.com>
@@ -60,7 +103,7 @@ Mon May 20 12:21:03 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
   * #469 (ion) IonReader.newBytes() throwing
     'NegativeArraySizeException'
   * #471 (ion) 'IonReader' throws 'AssertionError' for Timestamp
-    value (contributed by @tgregg)
+    value
   * #473 (ion) 'IonReader.next()' throws
     'ArrayIndexOutOfBoundsException' for some corrupt content
   * #482 (ion): Upgrade 'ion-java' to 1.11.2 and remove handling of
