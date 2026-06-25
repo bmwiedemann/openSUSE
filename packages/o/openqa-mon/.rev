@@ -251,4 +251,19 @@
   * Update dependencies (forwarded request 1351205 from ph03nix)</comment>
     <requestid>1351229</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>21b42ee2de899b7e61e2ae97b1c5213c</srcmd5>
+    <version>1.5.2</version>
+    <time>1782377536</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.2:
+  * Remove removed 'PublicCloud SLEM 6.2 Product Increments' job group
+  * Update dependencies
+  * Prepare 1.5.2 release
+  * Bump actions/checkout from 6 to 7
+  * Style: Replace if..else if block with switch
+  * Fix: Do not crash when no jobs are returned
+  * Revert &quot;Revert &quot;Bump uncenter/setup-taplo from 1 to 2&quot;&quot; (forwarded request 1361484 from ph03nix)</comment>
+    <requestid>1361490</requestid>
+  </revision>
 </revisionlist>

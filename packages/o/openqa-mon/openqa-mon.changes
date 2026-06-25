@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 18:44:50 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.5.2:
+  * Remove removed 'PublicCloud SLEM 6.2 Product Increments' job group
+  * Update dependencies
+  * Prepare 1.5.2 release
+  * Bump actions/checkout from 6 to 7
+  * Style: Replace if..else if block with switch
+  * Fix: Do not crash when no jobs are returned
+  * Revert "Revert "Bump uncenter/setup-taplo from 1 to 2""
+
+-------------------------------------------------------------------
 Wed May 06 12:22:32 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.5.1:
