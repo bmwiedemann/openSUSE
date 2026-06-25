@@ -146,4 +146,20 @@ D    fixsymlink.patch</comment>
     <comment></comment>
     <requestid>1269780</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b8733e63c5fd53206be6381b71c80e7d</srcmd5>
+    <version>25.04.106.git+42f88c1</version>
+    <time>1772050369</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335069</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8fa44f848f10fa3c2c0488ff63045061</srcmd5>
+    <version>26.06.0.git+dae1297</version>
+    <time>1782377762</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361528</requestid>
+  </revision>
 </revisionlist>

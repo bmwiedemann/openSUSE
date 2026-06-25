@@ -1,7 +1,7 @@
 #
 # spec file for package intel-cmt-cat
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Intel Corporation
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,10 +19,10 @@
 
 # Since they ship libpqos and the binaries in one package but do not simultatious
 # updates libversion can differ from binaries version.
-%define libpqosMajor 6
+%define libpqosMajor 7
 %global make_flags EXTRA_CFLAGS="%{optflags}" SHARED=y PREFIX=%{buildroot}/%{_prefix} MAN_DIR=%{buildroot}/%{_mandir}/man8 LIB_INSTALL_DIR=%{buildroot}%{_libdir}/
 Name:           intel-cmt-cat
-Version:        24.05.17.git+f1325a9
+Version:        26.06.0.git+dae1297
 Release:        0
 Summary:        Command line interface to CMT, MBM, CAT and CDP technologies
 License:        BSD-3-Clause
@@ -93,8 +93,6 @@ make %{make_flags} NOLDCONFIG=y install
 %{_mandir}/man8/membw.8%{?ext_man}
 %{_bindir}/pqos
 %{_mandir}/man8/pqos.8%{?ext_man}
-%{_bindir}/rdtset
-%{_mandir}/man8/rdtset.8%{?ext_man}
 %{_bindir}/pqos-msr
 %{_mandir}/man8/pqos-msr.8%{?ext_man}
 %{_bindir}/pqos-os

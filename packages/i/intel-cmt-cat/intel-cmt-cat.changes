@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:09:01 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- libqpos6 -> libqpos7
+- RDT parts removed in below version
+- Update to version 26.06.0.git+dae1297:
+  * Release 7.1.0
+  * Use int for region_number in MBM counter read and rename it as region_num
+  * Change region_number as region_num and type to int in MMIO functions
+  * Improve monitoring group exhaustion diagnostics and cleanup
+  * Refine PID startup cleanup fallback path
+  * lib: cache d_name length in filter_pids loop
+  * lib: include errno string in scandir() failure log
+  * lib: handle scandir() failure in os_alloc_reset_tasks
+  * lib: use uint64_t for page offset in mmap helpers
+  * monitor: fix mmio_mon_stop for channel-based groups
+  * pqos: handle pathological PID ranges and report invalid PIDs early
+  * pqos: update outputs of --print-io-dev, --print-io-devs and --print-mem-regions commands
+  * pqos: drop --iface from I/O RDT sample commands
+  * pqos: fail clearly when required interface is unavailable
+  * pqos: remove unused pid_flag tracking in main()
+  * pqos: narrow allocation interface per association token
+  * pqos: simplify iface_mask_to_str() buffer clamping
+  * pqos: update on interface auto-selection logic
+  * pqos: narrow iface to msr/mmio for l3iordt reset options
+  * pqos: prefer mmio then msr for io device print
+  * pqos: narrow interface constraint mask to available interfaces
+  * lib: implement pqos_get_available_interfaces()
+  * lib: add pqos_get_available_interfaces() API declaration
+  * pqos: select msr for io device commands
+  * pqos: document auto interface selection in man page
+  * pqos: auto-detect --iface from command-line options
+  * Fix TOCTOU race in os_alloc_reset_tasks: add pre-check, downgrade log levels
+  * Fix artificial PID parser capacity limit in monitor parsing
+  * Fix strlisttotab error reporting and bounds checking
+  * lib: validate remaining monitoring path snprintf calls
+  * lib: validate resctrl monitoring path formatting results
+  * lib: avoid overflow in resctrl_mon_group_path path append
+  * pqos : remove mixed MSR/kernel interface warning message
+  * pqos: extract msr_l3_id_differs_from_sockets helper to remove duplication
+  * pqos: print Domain ID instead of SOCKET in -e output when L3 IDs differ from sockets
+  * pqos: print COS definitions per Domain ID when L3 IDs differ from sockets
+  * pqos: add AET telemetry events to monitor CLI and output
+  * lib: add AET telemetry support on OS monitoring interface
+  * lib: fix fd validation in perf.c to accept fd 0
+  * lib: compare read() result against value size, not pointer size
+  * lib: use logical OR in CDP/MBA change check instead of the bitwise OR
+  * lib: fix unreachable RSDP overflow guard
+  * pqos: fix Wrong variable in NULL check after malloc
+  * pqos/configs: fix 'DAMAGE.O' typo in example config files
+  * pqos: fix 'DAMAGE.O' typo in BSD license header of pqos sources
+  * lib: fix 'DAMAGE.O' typo in BSD license header of header files
+  * lib: fix 'DAMAGE.O' typo in BSD license header of source files
+  * pqos: fix misleading pqos monitor assoc return checks
+  * pqos: add units to I/O monitoring headers in csv output
+  * pqos: add units to I/O monitoring headers in text output
+  * pqos: prevented integer overflow and OOB write in realloc_and_init()
+  * pqos: enabled monitoring of cores and I/O devices simultaneously
+  * lib: read back correct region's BW in mmio_mba_set
+  * pqos: Improve error message when no RDT events available
+  * Prefer MMIO interface in AUTO selection on Linux (ERDT+MRRM sysfs detection)
+  * Adjust PCI database detection message
+  * Add custom compilation option to remove lock
+  * Fix: skip first MBM measurement output
+  * lib: rdtset tool is removed
+  * lib: snmp support is removed
+  * Release 7.0.0
+  * pqos: --alloc-mem-region is accepted in range values
+  * pqos: fixed MBA and CAT failures
+  * lib: Fixed setting of more than available L3 cache ways
+  * lib: Fixed setting of more than available I/O cache ways
+  * lib: added CXLD support in pqos
+
+-------------------------------------------------------------------
+Mon Feb 23 19:34:35 UTC 2026 - trenn@suse.com
+
+- Update to version 25.04.106.git+42f88c1:
+  * lib: Detect CPU resources on domain rather socket basis
+  * lib: fixed initial spikes in I/O RDT monitoring with MMIO interface
+  * lib: enabled I/O RDT allocation and monitoring in all L3 clusters
+  * lib: Reuse first read flag from the existing structure
+  * lib: Fix MMIO dump output for non-aligned lengths
+  * lib: Fix initial spikes in MBM MMIO interface
+  * lib: updated --print-io-devs command output
+  * lib: I/O L3CA CBM is calculated by "Number of IO L3 ways” in the ERDT RMDD ACPI table
+  * pqos: Add MMIO dump options help
+  * Licence year update
+  * pqos: monitoring group buffer size is increased
+  * pqos: Add MMIO IORDT exploring options
+  * lib: fixed Out-of-bounds read
+  * Fix CPU detection in cgroup v2 constrained environments
+  * pqos: Add MMIO IORDT monitoring options
+  * lib: Add L2 cache Non-Contiguous CBM capability detection with OS interface
+  * lib: Add L3 cache Non-Contiguous CBM capability detection with OS interface
+  * lib: Fix L3 cache Non-Contiguous CBM capability with MSR interface for AMD and Hygon
+  * pqos: Add MMIO IORDT allocation help section
+  * pqos: Show L3CA/MBA COS definitions per L3 cluster on AMD and Hygon
+  * pqos: Introduce print_per_l3_cluster_config
+  * lib: Introduce pqos_cpu_get_l3_clusters
+  * lib: Fix SNC state detection on non-SNC-capable platforms
+  * pqos: Add MMIO help section for MBA
+  * unit-tests: Adjust hardware monitoring testing
+  * unit-tests: Adjust hardware capabilities detection
+  * unit-tests: Adjust capability detection tests to modern code base
+  * unit-tests: Adjust allocation functions to the current codebase state
+  * unit-tests: Adjust various API functions to current codebase state
+  * unit-tests: Improve locking testing
+  * lib: Region Aware MBM and MBA mode is set in RDT_CTRL register while switching between msr and mmio interfaces
+  * Add MMIO monitoring commands help
+  * lib: Set fixed MBM counter length for Hygon
+  * lib: Add support for Hygon Platform QoS features
+  * lib: added support of non-sequential region numbers in --alloc-mem-region option
+  * tools/membw/Makefile: support EXTRA_CFLAGS and EXTRA_LDFLAGS
+  * lib: Fix incorrect bitmask for MBM counter length
+  * Resource leaks are fixed and format specifiers are updated
+  * tests: make style checks hermetic via local venv helper
+  * Fix some code style issues
+  * pqos: Added I/O CAT output in -s command
+  * Disable MBL and MBR monitoring if CPU doesn't support those
+  * lib: I/O RDT monitoring is started, even if IRDT and ERDT tables are mismatched
+  * pqos: style issues are fixed
+  * Add handling LLC miss and other perf fields
+  * pqos: Added a comma between RMID and IPC in CSV files. And Region Aware MBT headers are added in CSV files.
+  * pqos: --print-io-dev command is added
+  * Replace MBL with MBT in MMIO interface
+  * python and perl supports are removed
+  * lib: style issues are fixed
+  * lib: typos are fixed
+  * lib: python and perl supports are removed
+  * pqos: added --print-io-devs command. This command prints all available I/O devices in IRDT table.
+  * lib: enabled allocation of all cores into one COS by single pqos command
+  * pqos: added appropriate log messages in error cases
+  * lib: enabled to parse ERDT table with multiple domains information
+  * lib: Refactor lock initialization and handling for concurrency and robustness
+  * pqos: Added --dump-rmid-regs command with options. This command dumps MMIO registers associated with given RMID.
+  * pqos: corrected I/O RDT monitoring start failure in msr interface
+  * pqos: Enabled multiple virtual channels monitoring in I/O RDT. The virtual channels can be comma sepearated and/or in a range using - symbol.
+  * Fix IPC display with MMIO interface
+  * lib: Fix MMIO interface usage when feature is absent
+  * Implement dump RMID MMIO interface
+  * lib: Fix MMIO monitoring
+  * Remove an old refactoring comment
+  * Remove unnecessary comment on cleanup structure
+  * Clean 'refactor' on max_rmid comment
+  * unit-test: unit-test failures are fixed.
+  * lib: Fix monitoring for MMIO interface
+  * lib: Improve log information of MBM monitoring
+  * pqos: printed each domain's allocation configuration. This is printed in output of -s option. The domain_id variable defined as uint16_t in all the places.
+  * lib: detected presence of MBA 4.0 based on model & family ID
+  * pqos: enable rmid column for mmio interface. And style issue is fixed.
+  * pqos: enabled all option for cores monitoring in mmio interface
+  * lib: function comments are added in erdt and mrrm modules
+  * pqos: enable rmid column for mmio interface
+  * pqos: Implement dump MMIO API interface
+  * lib: Implement dump MMIO API interface
+  * Fix spacing style issue
+  * lib: resource leaks are fixed in erdt and mrrm modules
+  * pqos: added csv format for Region Aware MBM values
+  * lib: Setup appropriate region aware MBM/MBA mode on init/shutdown
+  * lib: added IORDT monitoring from RDT specification 1.1
+  * lib: Add domain checking for allocation
+  * fix: Compare maximum domain number with right constant
+  * lib: Fix MMIO MBA allocation for regions
+  * lib: Fix MMIO mappings for MBA allocation functions
+  * lib: Remove redudant header inclusion
+  * lib: Fix incorrect pointer passage for regions retrieval
+  * lib: Introduce MMIO API interface implementation
+  * lib: Introduce new global cores to domains dictionary
+  * lib: Use already existed variables instead new ones
+  * lib: MBA get and set functions are added for mmio interface. More logs are added.
+  * lib: Fix address arithmetic issues
+  * pqos: ACPI structure DACD information is added in --print-topology command
+  * lib: added Region Aware MBA & I/ORDT L3 CAT reset
+  * lib: added IORDT CAT from RDT specification 1.1
+  * Monitoring reset, allocation reset and capabilities discovery are added for mmio interface
+  * lib: pqos_mmap_write is used in set functions. The CBM value's data type is changed as uint64_t.
+  * pqos: --alloc-domain-id option is included
+  * lib: Implement region aware MBA API
+  * pqos: added Region Aware MBM command options from RDT 1.1 Spec
+  * lib: Introduce MMIO data layer interface
+  * pqos: added Region Aware MBA command options from RDT 1.1 Spec
+  * The ERDT & MRRM ACPI tables are added from RDT Spec 1.1. Added new interface mmio. Added new mmio commands --print-topology & --print-mem-regions.
+  * The appqos and appqos_client components are deprecated. So these components are removed.
+
+-------------------------------------------------------------------
+Mon May 05 08:05:05 UTC 2025 - Thomas Renninger <trenn@suse.de>
+
+- Update to version 25.04.0.git+17629d0:
+  * Release 6.0.1
+  * pqos: Allocation command (-a option) hangs with invalid core number. This bug is fixed.
+  * appqos_client: bump version to 1.1.2
+  * appqos_client: update dev dependency versions
+
+-------------------------------------------------------------------
 Fri Apr 11 12:42:16 UTC 2025 - trenn@suse.de
 
 - Update to version 24.05.17.git+f1325a9:

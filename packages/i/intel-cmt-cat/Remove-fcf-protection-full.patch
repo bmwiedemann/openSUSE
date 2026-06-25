@@ -24,11 +24,22 @@ Signed-off-by: Thomas Renninger <trenn@suse.de>
 
 
 Signed-off-by:  <trenn@suse.com>
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CAT_MBA/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
-@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
+---
+ examples/c/CAT_MBA/Makefile     |    3 +--
+ examples/c/CMT_MBM/Makefile     |    3 +--
+ examples/c/PSEUDO_LOCK/Makefile |    3 +--
+ lib/Makefile                    |    3 +--
+ pqos/Makefile                   |    6 ++----
+ tools/membw/Makefile            |    6 ++----
+ unit-test/lib/Makefile          |    3 +--
+ unit-test/mock/Makefile         |    3 +--
+ unit-test/output/Makefile       |    3 +--
+ unit-test/pqos/Makefile         |    5 ++---
+ 10 files changed, 13 insertions(+), 25 deletions(-)
+
+--- a/examples/c/CAT_MBA/Makefile
++++ b/examples/c/CAT_MBA/Makefile
+@@ -64,8 +64,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -38,11 +49,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
  endif
  
  # Build targets and dependencies
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CMT_MBM/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
-@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
+--- a/examples/c/CMT_MBM/Makefile
++++ b/examples/c/CMT_MBM/Makefile
+@@ -64,8 +64,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -52,11 +61,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
  endif
  
  # Build targets and dependencies
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/PSEUDO_LOCK/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
-@@ -64,8 +64,7 @@ ifeq ($(IS_GCC),1)
+--- a/examples/c/PSEUDO_LOCK/Makefile
++++ b/examples/c/PSEUDO_LOCK/Makefile
+@@ -64,8 +64,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -66,11 +73,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
  endif
  
  # Build targets and dependencies
-Index: intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/lib/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
-@@ -72,8 +72,7 @@ ifeq ($(IS_GCC),1)
+--- a/lib/Makefile
++++ b/lib/Makefile
+@@ -72,8 +72,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -80,11 +85,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
  endif
  
  # so or static build
-Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/pqos/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
-@@ -45,8 +45,7 @@ CFLAGS = -I$(LIBDIR) \
+--- a/pqos/Makefile
++++ b/pqos/Makefile
+@@ -45,8 +45,7 @@
  	-Wmissing-declarations -Wold-style-definition -Wpointer-arith \
  	-Wcast-qual -Wundef -Wwrite-strings \
  	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
@@ -94,7 +97,7 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
  ifneq ($(EXTRA_CFLAGS),)
  CFLAGS += $(EXTRA_CFLAGS)
  endif
-@@ -70,8 +69,7 @@ ifeq ($(IS_GCC),1)
+@@ -70,8 +69,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -104,35 +107,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
  endif
  
  ifeq ($(shell uname), FreeBSD)
-Index: intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/rdtset/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
-@@ -45,8 +45,7 @@ CFLAGS = -I$(LIBDIR) \
- 	-Wcast-qual -Wundef -Wwrite-strings \
- 	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
- 	-Wunreachable-code -Wsign-compare -Wno-endif-labels \
--	-D_GNU_SOURCE \
--	-fcf-protection=full
-+	-D_GNU_SOURCE
- ifneq ($(EXTRA_CFLAGS),)
- CFLAGS += $(EXTRA_CFLAGS)
- endif
-@@ -70,8 +69,7 @@ ifeq ($(IS_GCC),1)
- CFLAGS += -fno-strict-overflow \
- 	-fno-delete-null-pointer-checks \
- 	-fwrapv \
--	-fstack-clash-protection \
--	-fcf-protection=full
-+	-fstack-clash-protection
- endif
- 
- # DEBUG build
-Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/tools/membw/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
-@@ -49,8 +49,7 @@ CFLAGS=-W -Wall -Wextra -Wstrict-prototy
+--- a/tools/membw/Makefile
++++ b/tools/membw/Makefile
+@@ -49,8 +49,7 @@
  	-Wcast-qual -Wundef -Wwrite-strings \
  	-Wformat -Wformat-security -fstack-protector-strong -fPIE \
  	-Wunreachable-code -Wsign-compare -Wno-endif-labels \
@@ -140,9 +117,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
 -	-fcf-protection=full
 +	-Winline -msse4.2
  
- ifeq ($(DEBUG),y)
- CFLAGS += -O0 -g -DDEBUG
-@@ -77,8 +76,7 @@ CFLAGS += -fno-strict-overflow \
+ ifneq ($(EXTRA_CFLAGS),)
+ CFLAGS += $(EXTRA_CFLAGS)
+@@ -84,8 +83,7 @@
      -fno-delete-null-pointer-checks \
      -fwrapv \
      -fno-expensive-optimizations \
@@ -152,11 +129,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
  endif
  
  SRCS = $(sort $(wildcard *.c))
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/lib/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
-@@ -34,8 +34,7 @@ ifeq ($(IS_GCC),1)
+--- a/unit-test/lib/Makefile
++++ b/unit-test/lib/Makefile
+@@ -35,8 +35,7 @@
  CFLAGS += -fno-strict-overflow \
  	-fno-delete-null-pointer-checks \
  	-fwrapv \
@@ -166,11 +141,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
  endif
  
  # common function wrap
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/mock/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
-@@ -69,8 +69,7 @@ ifeq ($(IS_GCC),1)
+--- a/unit-test/mock/Makefile
++++ b/unit-test/mock/Makefile
+@@ -69,8 +69,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -180,11 +153,9 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
  endif
  
  # so or static build
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/output/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
-@@ -66,8 +66,7 @@ ifeq ($(IS_GCC),1)
+--- a/unit-test/output/Makefile
++++ b/unit-test/output/Makefile
+@@ -66,8 +66,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \
@@ -194,17 +165,15 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
  endif
  
  # so or static build
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/pqos/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
+--- a/unit-test/pqos/Makefile
++++ b/unit-test/pqos/Makefile
 @@ -1,4 +1,4 @@
 -###############################################################################
 +[1;115;0c###############################################################################
  # Makefile script for PQoS library and sample application
  #
  # @par
-@@ -69,8 +69,7 @@ ifeq ($(IS_GCC),1)
+@@ -69,8 +69,7 @@
  CFLAGS += -fno-strict-overflow \
      -fno-delete-null-pointer-checks \
      -fwrapv \

@@ -1,7 +1,20 @@
-Index: intel-cmt-cat-24.05.12.git+c5f4492/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/Makefile
+---
+ Makefile                        |    2 --
+ examples/c/CAT_MBA/Makefile     |    2 --
+ examples/c/CMT_MBM/Makefile     |    2 --
+ examples/c/PSEUDO_LOCK/Makefile |    2 --
+ lib/Makefile                    |    2 --
+ pqos/Makefile                   |    2 --
+ tools/membw/Makefile            |    2 --
+ unit-test/Makefile              |    2 --
+ unit-test/lib/Makefile          |    2 --
+ unit-test/mock/Makefile         |    2 --
+ unit-test/output/Makefile       |    2 --
+ unit-test/pqos/Makefile         |    2 --
+ 12 files changed, 24 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -11,10 +24,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/Makefile
  # XXX: modify as desired
  PREFIX ?= /usr/local
  export PREFIX
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CAT_MBA/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
+--- a/examples/c/CAT_MBA/Makefile
++++ b/examples/c/CAT_MBA/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -24,10 +35,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CAT_MBA/Makefile
  LIBDIR ?= ../../../lib
  CFLAGS =-I$(LIBDIR) \
  	-W -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes \
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/CMT_MBM/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
+--- a/examples/c/CMT_MBM/Makefile
++++ b/examples/c/CMT_MBM/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -37,10 +46,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/CMT_MBM/Makefile
  LIBDIR ?= ../../../lib
  CFLAGS =-I$(LIBDIR) -pthread \
  	-W -Wall -Wextra -Wstrict-prototypes -Wmissing-prototypes \
-Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/examples/c/PSEUDO_LOCK/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
+--- a/examples/c/PSEUDO_LOCK/Makefile
++++ b/examples/c/PSEUDO_LOCK/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -50,10 +57,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/examples/c/PSEUDO_LOCK/Makefile
  LIBDIR ?= ../../../lib
  LDFLAGS = -L$(LIBDIR) -pie -z noexecstack -z relro -z now
  LDLIBS = -lpqos -lrt -lpthread
-Index: intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/lib/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
+--- a/lib/Makefile
++++ b/lib/Makefile
 @@ -33,8 +33,6 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ###############################################################################
@@ -61,12 +66,10 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/lib/Makefile
 -include ../pre-build.mk
 -
  LIB = libpqos
- VERSION = 6.0.0
- SO_VERSION = 6
-Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/pqos/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
+ VERSION = 7.1.0
+ SO_VERSION = 7
+--- a/pqos/Makefile
++++ b/pqos/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -76,23 +79,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/pqos/Makefile
  OBJDIR = obj
  LIBDIR ?= ../lib
  LDFLAGS = -L$(LIBDIR) -pie -z noexecstack -z relro -z now
-Index: intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/rdtset/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/rdtset/Makefile
-@@ -34,8 +34,6 @@
- #
- ###############################################################################
- 
--include ../pre-build.mk
--
- LIBDIR ?= ../lib
- LDFLAGS = -L$(LIBDIR) -pie -z noexecstack -z relro -z now
- LDLIBS = -lpqos -lpthread
-Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/tools/membw/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
+--- a/tools/membw/Makefile
++++ b/tools/membw/Makefile
 @@ -34,8 +34,6 @@
  #
  ###############################################################################
@@ -102,30 +90,24 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/tools/membw/Makefile
  APP = membw
  MAN = membw.8
  
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/Makefile
+--- a/unit-test/Makefile
++++ b/unit-test/Makefile
 @@ -1,5 +1,3 @@
 -include ../pre-build.mk
 -
  LIB_DIR=$(CURDIR)/../lib
  
  .PHONY: run style clean
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/lib/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/lib/Makefile
+--- a/unit-test/lib/Makefile
++++ b/unit-test/lib/Makefile
 @@ -1,5 +1,3 @@
 -include ../../pre-build.mk
 -
  LIB_DIR = ../../lib
  OBJ_DIR = ./obj
  BIN_DIR = ./bin
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/mock/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
+--- a/unit-test/mock/Makefile
++++ b/unit-test/mock/Makefile
 @@ -34,8 +34,6 @@
  ###############################################################################
  
@@ -135,10 +117,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/mock/Makefile
  LIB_DIR = ../../lib
  
  LIB = libpqosmock
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/output/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
+--- a/unit-test/output/Makefile
++++ b/unit-test/output/Makefile
 @@ -33,8 +33,6 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ###############################################################################
@@ -148,10 +128,8 @@ Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/output/Makefile
  LIB = libgraboutput
  SHARED ?= y
  LDFLAGS = -L. -lpthread -z noexecstack -z relro -z now
-Index: intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
-===================================================================
---- intel-cmt-cat-24.05.12.git+c5f4492.orig/unit-test/pqos/Makefile
-+++ intel-cmt-cat-24.05.12.git+c5f4492/unit-test/pqos/Makefile
+--- a/unit-test/pqos/Makefile
++++ b/unit-test/pqos/Makefile
 @@ -33,8 +33,6 @@
  # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  ###############################################################################
