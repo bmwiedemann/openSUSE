@@ -18,7 +18,7 @@
 
 
 Name:           thextech
-Version:        1.3.7.3
+Version:        1.3.7.3.1
 Release:        0
 Summary:        A Super Mario Brothers Fan game engine (SMBX)
 License:        GPL-3.0-or-later

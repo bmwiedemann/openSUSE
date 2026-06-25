@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 25 05:54:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.7.3.1
+  This is a hotfix release for the 1.3.7.3 since there are serious
+  bugs were been found and were been fixed.
+  * Adjusted the IME start logic to enable it when direct text
+    input is enabled.
+  * Fixed behaviour of the MD5 algorithm on Big Endian hardware.
+  * Fixed a critical bug of checkpoints being reset when
+    re-entering normal level from the hub.
+  * Fixed TheXTech bug where medals were incorrectly saved after
+    death in hub worlds.
+
+-------------------------------------------------------------------
 Sat Jun 20 09:53:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.7.3
