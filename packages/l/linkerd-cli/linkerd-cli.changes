@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 05:18:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.20:
+  major update, see the release announcement
+  https://linkerd.io/2026/06/23/announcing-linkerd-2.20/
+
+-------------------------------------------------------------------
 Thu Apr 16 16:34:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - do not put the built binary into bin directory
