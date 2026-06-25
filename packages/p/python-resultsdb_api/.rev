@@ -45,4 +45,12 @@
   * Support pytest 9 changes.</comment>
     <requestid>1329394</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cce173d6d6772c9bb8a4dfff8bcbb3a3</srcmd5>
+    <version>2.1.6</version>
+    <time>1782377896</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.6; drop obsolete support-pytest-9.patch; run the mocked test suite via plain pytest</comment>
+    <requestid>1361665</requestid>
+  </revision>
 </revisionlist>

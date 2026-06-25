@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 24 20:08:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.6:
+  * Replace the deprecated logger.warn() with logger.warning()
+  * More robust HTTP error handling: cope with responses whose
+    JSON body is missing the expected message or cannot be parsed
+  * Internal code-style cleanup
+- Drop support-pytest-9.patch (the patched testing/conftest.py was
+  removed upstream); run the now fully-mocked test suite via
+  plain pytest (the --functional gate was dropped upstream)
+
+-------------------------------------------------------------------
 Tue Jan 27 01:25:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-9.patch:

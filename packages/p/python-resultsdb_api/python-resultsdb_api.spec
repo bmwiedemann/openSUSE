@@ -17,14 +17,12 @@
 
 
 Name:           python-resultsdb_api
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Library for simplifying the communication with ResultsDB
 License:        GPL-2.0-or-later
 URL:            https://pagure.io/taskotron/resultsdb_api
 Source:         https://files.pythonhosted.org/packages/source/r/resultsdb_api/resultsdb_api-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Support pytest 9 changes
-Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -36,6 +34,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module pytest >= 2.4.2}
 BuildRequires:  %{python_module requests >= 2.2.1}
+BuildRequires:  %{python_module responses}
 BuildRequires:  %{python_module simplejson >= 3.5.3}
 # /SECTION
 %python_subpackages
@@ -54,10 +53,12 @@ and parameters skipping.
 
 %install
 %pyproject_install
+# force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest --functional testing/
+%pytest testing/
 
 %files %{python_files}
 %doc README.md
