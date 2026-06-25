@@ -1,0 +1,11 @@
+--- mbedtls-3.6.2.orig/include/mbedtls/mbedtls_config.h	2025-05-06 19:21:15.440302375 +0300
++++ mbedtls-3.6.2/include/mbedtls/mbedtls_config.h	2025-05-06 19:22:15.156469574 +0300
+@@ -2024,7 +2024,7 @@
+  *
+  * Uncomment this to enable support for use_srtp extension.
+  */
+-//#define MBEDTLS_SSL_DTLS_SRTP
++#define MBEDTLS_SSL_DTLS_SRTP
+ 
+ /**
+  * \def MBEDTLS_SSL_DTLS_CLIENT_PORT_REUSE
