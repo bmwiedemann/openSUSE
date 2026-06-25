@@ -1,0 +1,36 @@
+From 12ce6458f01d97ed2070c0d6a415f5d634b5dd53 Mon Sep 17 00:00:00 2001
+From: Sebastian Chlad <sebastian.chlad@suse.com>
+Date: Tue, 23 Jun 2026 19:06:02 +0200
+Subject: [PATCH] tests/md: allow overriding minimum kernel version via
+ BLKTESTS_MD_KVER
+
+The _stacked_atomic_test_requires() function hard-codes a minimum kernel
+version of 6.14.0. This is too strict for distros that backport atomic
+write support to older kernels (e.g. 6.12-based SLES kernels).
+
+Allow the required version to be overridden via BLKTESTS_MD_KVER so
+that the tests can run on such kernels:
+
+  BLKTESTS_MD_KVER="6 12 0" ./check tests/md/
+
+When unset the default of 6 14 0 is preserved.
+---
+ tests/md/rc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/md/rc b/tests/md/rc
+index efbc234..3f9d442 100644
+--- a/tests/md/rc
++++ b/tests/md/rc
+@@ -14,7 +14,7 @@ group_requires() {
+ }
+ 
+ _stacked_atomic_test_requires() {
+-	_have_kver 6 14 0
++	_have_kver ${BLKTESTS_MD_KVER:-6 14 0}
+ 	_have_xfs_io_atomic_write
+ 	_have_driver raid0
+ 	_have_driver raid1
+-- 
+2.51.0
+

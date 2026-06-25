@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun 25 00:00:00 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Use %autosetup -p1 instead of explicit %setup + %patch
+
+-------------------------------------------------------------------
+Tue Jun 23 19:06:02 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Add 0001-tests-md-allow-overriding-minimum-kernel-version-via.patch
+  to allow overriding the minimum kernel version for md tests via
+  BLKTESTS_MD_KVER environment variable, to support distro kernels
+  with backported atomic write support
+
+-------------------------------------------------------------------
+Tue Jun 23 04:32:35 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260623.5a62429:
+  * scsi/009: fix unset bytes_to_write in TEST 8
+  * ublk: mark all tests as QUICK
+  * throtl/008: Add a test for the iocost cgroup controller
+  * nvme/059: fix unset bytes_to_write in TEST 7
+  * common/nvme, nvme/rc: use _set_attr() to trace attribute writes
+  * common/rc: add _set_attr() function to trace attribute writes
+  * check: add --cmd-trace option
+  * nbd/rc: redirect nbd-server stderr
+  * nvme/064, src/nvme-passthrough-meta.c: test a large metadata_len
+  * nvme/068: add a test for multipath delayed removal
+  * loop: add regression test for partscan double-scan race
+  * throtl/{002,003,007}, zbd/014: use _get_page_size to get PAGE_SIZE
+
+-------------------------------------------------------------------
 Thu Apr 23 12:16:00 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Add liburing-devel >= 2.2 BuildRequires on distributions where it
