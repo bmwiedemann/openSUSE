@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:39:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.5.9 (bsc#1269072, GHSA-vmhf-c436-hxj4):
+  * Use CSS anchor for prompt overlay
+  * Fix XSS in extension manager's homepage_url
+  * Forbid relative URLs in extensionmanager
+  * Fix jupyter labextension build crash on webpack ≥ 5.107
+
+-------------------------------------------------------------------
 Mon May 11 08:18:51 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 4.5.7 (bsc#1264348):

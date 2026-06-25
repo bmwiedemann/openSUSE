@@ -1379,4 +1379,12 @@
   * Remove 4.5.0 announcement from docs #18740 (@krassowski)</comment>
     <requestid>1352402</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>53e4d53fa998ffcf1e40f0f807b0c622</srcmd5>
+    <version>4.5.9</version>
+    <time>1782400451</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361731</requestid>
+  </revision>
 </revisionlist>
