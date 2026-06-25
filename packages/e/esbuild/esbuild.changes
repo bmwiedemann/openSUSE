@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 24 00:52:00 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.28.1:
+  * Disallow \ in local development server HTTP requests (GHSA-g7r4-m6w7-qqqr)
+  * Add integrity checks to the Deno API (GHSA-gv7w-rqvm-qjhr)
+  * Avoid inlining using and await using declarations (#4482)
+  * Fix module evaluation when an error is thrown (#4461, #4467)
+  * Fix some edge cases around the new operator (#4477)
+  * Fix renaming of nested var declarations (#4471)
+  * Emit var instead of const for certain TypeScript-only
+    constructs for ES5 (#4448)
+
+-------------------------------------------------------------------
 Tue May  5 20:19:40 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 0.28.0:

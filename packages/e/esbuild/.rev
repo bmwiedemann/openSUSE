@@ -478,4 +478,20 @@ Binary file esbuild-0.25.3.tar.gz (revision 17) deleted</comment>
  * Allow es2025 as a target in tsconfig.json (#4432)</comment>
     <requestid>1351063</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2a7aa51a92b967f88abdfd51c3bd288f</srcmd5>
+    <version>0.28.1</version>
+    <time>1782377692</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.28.1:
+  * Disallow \ in local development server HTTP requests (GHSA-g7r4-m6w7-qqqr)
+  * Add integrity checks to the Deno API (GHSA-gv7w-rqvm-qjhr)
+  * Avoid inlining using and await using declarations (#4482)
+  * Fix module evaluation when an error is thrown (#4461, #4467)
+  * Fix some edge cases around the new operator (#4477)
+  * Fix renaming of nested var declarations (#4471)
+  * Emit var instead of const for certain TypeScript-only
+    constructs for ES5 (#4448)</comment>
+    <requestid>1361499</requestid>
+  </revision>
 </revisionlist>
