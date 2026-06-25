@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:02:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * New Features
+    - 58781f2: feat: add --authoritative/-A flag to query the
+      domain's authoritative nameserver (@nopolabs)
+  * Bug fixes
+    - 8a97e57: fix(app): use delegated NS RRset for authoritative
+      queries (@nopolabs)
+  * Others
+    - 4c3bf3d: chore(ci): use patched Go toolchain (@mr-karan)
+    - 86ff8f4: chore(release): prepare v1.2.0 artifacts (@mr-karan)
+    - 7dbf633: docs(README): change arch package name (@Souvlaki42)
+
+-------------------------------------------------------------------
 Thu May 28 07:28:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.7:

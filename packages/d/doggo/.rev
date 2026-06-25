@@ -83,4 +83,12 @@
     <comment>update to 1.1.7 (forwarded request 1355535 from ojkastl_buildservice)</comment>
     <requestid>1355657</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7be347f2f0cc67dc2b6d21cd949e144f</srcmd5>
+    <version>1.2.0</version>
+    <time>1782377513</time>
+    <user>anag_factory</user>
+    <comment>update to 1.2.0 (forwarded request 1361296 from ojkastl_buildservice)</comment>
+    <requestid>1361467</requestid>
+  </revision>
 </revisionlist>
