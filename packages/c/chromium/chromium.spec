@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        149.0.7827.114
+Version:        149.0.7827.196
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -154,6 +154,7 @@ Source105:      INSTALL.sh
 #
 Source106:      chrome-wrapper
 Source107:      chromium.conf
+Source110:      disable-ai.json
 # global patches
 Patch0:         chromium-libusb_interrupt_event_handler.patch
 # PATCH-FIX-OPENSUSE Make the 1-click-install ymp file always download [bnc#836059]
@@ -202,6 +203,8 @@ Patch397:       chromium-146-has_no_clone.patch
 Patch398:       chromium-147-comment_safe_assert.patch
 Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 Patch400:       chromium-149-profile_no_const.patch
+Patch401:       chromium-149-strip-path.patch
+Patch410:       disable-ai.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -988,11 +991,11 @@ build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}
 %if %{with clang}
-export CC=clang
-export CXX=clang++
-export AR=llvm-ar
-export NM=llvm-nm
-export RANLIB=llvm-ranlib
+export CC=clang-%{llvm_version}
+export CXX=clang++-%{llvm_version}
+export AR=llvm-ar-%{llvm_version}
+export NM=llvm-nm-%{llvm_version}
+export RANLIB=llvm-ranlib-%{llvm_version}
 %else
 %if 0%{?suse_version} <= 1500
 export CC=gcc-%{gcc_version}
@@ -1252,6 +1255,8 @@ if [ "$clang_version" -lt 21 ] ; then
 myconf_gn+=" toolchain_supports_rust_thin_lto=false"
 fi
 myconf_gn+=" chrome_pgo_phase=0"
+myconf_gn+=" strip_binary_path=\"/usr/bin/llvm-strip-%{llvm_version}\""
+myconf_gn+=" objcopy_binary_path=\"/usr/bin/llvm-objcopy-%{llvm_version}\""
 
 # GN does not support passing cflags:
 #  https://bugs.chromium.org/p/chromium/issues/detail?id=642016
@@ -1281,7 +1286,8 @@ ln -s %{_bindir}/chromium-browser %{buildroot}%{_bindir}/chromium
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/policies
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/managed
 mkdir %{buildroot}%{_sysconfdir}/chromium/policies/recommended
-chmod -w %{buildroot}%{_sysconfdir}/chromium/policies/managed
+# disable AI
+install -m 0644 %{SOURCE110} %{buildroot}%{_sysconfdir}/chromium/policies/managed
 mkdir -p %{buildroot}%{_datadir}/chromium/extensions
 mkdir -p %{buildroot}%{_sysconfdir}/chromium/native-messaging-hosts
 # SVG
@@ -1301,10 +1307,11 @@ ccache --show-stats
 %{_datadir}/chromium
 %dir %{_sysconfdir}/chromium
 %dir %{_sysconfdir}/chromium/policies
-%dir %{_sysconfdir}/chromium/policies/managed
+%dir %attr(555,root,root) %{_sysconfdir}/chromium/policies/managed
 %dir %{_sysconfdir}/chromium/policies/recommended
 %dir %{_sysconfdir}/chromium/native-messaging-hosts
 %config %{_sysconfdir}/chromium/master_preferences
+%config %{_sysconfdir}/chromium/policies/managed/disable-ai.json
 %config(noreplace)  %{_sysconfdir}/chromium/chromium.conf
 %{_libdir}/chromium
 %{_datadir}/applications/*.desktop

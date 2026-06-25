@@ -6488,4 +6488,50 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
     <comment>Chromium 149.0.7827.114 (boo#1268158)</comment>
     <requestid>1358813</requestid>
   </revision>
+  <revision rev="526" vrev="1">
+    <srcmd5>e5dc43d8985c00e984a3a49418f04c3e</srcmd5>
+    <version>149.0.7827.155</version>
+    <time>1781879509</time>
+    <user>anag_factory</user>
+    <comment>- Use version suffix for llvm/clang commands
+- added patches:
+  * chromium-149-strip-path.patch
+
+- Chromium 149.0.7827.155 (boo#1268373):
+  * CVE-2026-12437: Use after free in WebShare
+  * CVE-2026-12438: Inappropriate implementation in WebView
+  * CVE-2026-12439: Use after free in Digital Credentials
+  * CVE-2026-12440: Use after free in DigitalCredentials
+  * CVE-2026-12441: Use after free in File Input
+  * CVE-2026-12442: Use after free in Passwords
+  * CVE-2026-12443: Use after free in Web Authentication
+  * CVE-2026-12444: Out of bounds read in Chromoting
+  * CVE-2026-12445: Use after free in Extensions
+  * CVE-2026-12446: Insufficient data validation in Passwords
+  * CVE-2026-12447: Heap buffer overflow in WebRTC
+  * CVE-2026-12448: Inappropriate implementation in WebView
+  * CVE-2026-12449: Use after free in Chromoting
+  * CVE-2026-12450: Inappropriate implementation in Media
+  * CVE-2026-12451: Use after free in DigitalCredentials
+  * CVE-2026-12452: Use after free in Downloads
+  * CVE-2026-12453: Insufficient validation of untrusted input in Input
+  * CVE-2026-12454: Race in Safe Browsing
+  * CVE-2026-12455: Use after free in Tab Strip
+  * CVE-2026-12456: Insufficient validation of untrusted input in Extensions
+  * CVE-2026-12457: Insufficient data validation in Extensions
+  * CVE-2026-12458: Incorrect security UI in Passwords
+  * CVE-2026-12459: Inappropriate implementation in Serial
+  * CVE-2026-12460: Insufficient policy enforcement in File System Access
+  * CVE-2026-12461: Out of bounds read in WebRTC</comment>
+    <requestid>1360200</requestid>
+  </revision>
+  <revision rev="527" vrev="1">
+    <srcmd5>c38ade194fbfa2144d3d9abb7eaf1cb0</srcmd5>
+    <version>149.0.7827.196</version>
+    <time>1782377537</time>
+    <user>anag_factory</user>
+    <comment>- Chromium 149.0.7827.196 (boo#1269061):
+  * stability and performance improvements</comment>
+    <requestid>1361616</requestid>
+  </revision>
 </revisionlist>

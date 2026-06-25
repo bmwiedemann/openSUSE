@@ -1,0 +1,31 @@
+--- chromium-149.0.7827.155/build/linux/strip_binary.gni	2026/06/17 23:42:50	1.1
++++ chromium-149.0.7827.155/build/linux/strip_binary.gni	2026/06/17 23:47:59
+@@ -5,6 +5,17 @@
+ import("//build/config/clang/clang.gni")
+ import("//build/toolchain/toolchain.gni")
+ 
++default_strip_binary_path = "${clang_base_path}/bin/llvm-strip"
++default_objcopy_binary_path = "${clang_base_path}/bin/llvm-objcopy"
++
++declare_args() {
++  # allow override
++  strip_binary_path = default_strip_binary_path
++
++  # allow override
++  objcopy_binary_path = default_objcopy_binary_path
++}
++
+ # Extracts symbols from a binary into a symbol file.
+ #
+ # Args:
+@@ -21,8 +32,8 @@
+                            "testonly",
+                          ])
+   action("${target_name}") {
+-    llvm_strip_binary = "${clang_base_path}/bin/llvm-strip"
+-    llvm_objcopy_binary = "${clang_base_path}/bin/llvm-objcopy"
++    llvm_strip_binary = "${strip_binary_path}"
++    llvm_objcopy_binary = "${objcopy_binary_path}"
+     script = "//build/linux/strip_binary.py"
+ 
+     if (defined(invoker.stripped_binary_output)) {
