@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>cbde76e9875bab72b1705bd5faa9d459</srcmd5>
+    <version>1.1</version>
+    <time>1782377891</time>
+    <user>anag_factory</user>
+    <comment>New package python-pydiffx: DiffX reader/writer for RBTools 6.0. Its %check BuildRequires python-kgb (submitted alongside); please co-stage. Builds clean, 176 tests pass.</comment>
+    <requestid>1361654</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Wed Jun 24 18:42:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 1.1)
+  * Needed as a dependency of RBTools 6.0
+- Add pydiffx-assertRaisesRegex.patch: fix the test suite on
+  Python 3.12+ where the removed assertRaisesRegexp alias raised
+  AttributeError (backport from upstream master)
+

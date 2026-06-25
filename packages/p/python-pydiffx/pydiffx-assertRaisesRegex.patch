@@ -1,0 +1,20 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Wed, 24 Jun 2026 00:00:00 +0000
+Subject: [PATCH] tests: use assertRaisesRegex instead of removed alias
+
+unittest.TestCase.assertRaisesRegexp has been a deprecated alias since
+Python 3.2 and was removed in Python 3.12, so the test suite errors out
+with AttributeError on 3.12+. Use the current assertRaisesRegex name.
+
+Already fixed in upstream master (post-1.1); this backports the change
+to the 1.1 release.
+
+--- a/pydiffx/tests/testcases.py
++++ b/pydiffx/tests/testcases.py
+@@ -65,5 +65,5 @@
+ 
+     @contextmanager
+     def assertRaisesMessage(self, exception, message):
+-        with self.assertRaisesRegexp(exception, re.escape(message)):
++        with self.assertRaisesRegex(exception, re.escape(message)):
+             yield
