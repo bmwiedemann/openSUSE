@@ -796,4 +796,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>1288831</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>6dda6011828c628aaeea032d2c780d75</srcmd5>
+    <version>7.6</version>
+    <time>1782377454</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361489</requestid>
+  </revision>
 </revisionlist>

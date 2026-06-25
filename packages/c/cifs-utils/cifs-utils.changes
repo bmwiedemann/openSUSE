@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:46:17 UTC 2026 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update cifs-utils to 7.6
+  * cifs.upcall: remove getpwuid() dependency
+  * smbinfo: update notify subcommand
+  * smbinfo: add filecompressioninfo subcommand
+  * cifs.upcall: Adjust log level
+  * docs: Enable debug logs
+  * cifs.upcall: add option to enable debug logs
+  * cifs.upcall: Retry krb5 TGS request with uppercase service name
+  * mount.cifs: remove runtime pass_length calculation
+  * mount.cifs: adjust get_password_from_file() buf size
+  * build_assert: add ccan build_assert.h header
+  * mount.cifs: fix buffer overrun in set_password
+  * smbinfo: fix decimated subseconds in smbinfo filebasicinfo timestamp output
+  * smbinfo: add notify subcommand
+  * docs: update username= option to drop invalid examples
+  * cifs.upcall: fix calloc() argument order in main()
+  
+  Fixes from 7.5:
+  * docs: update echo_interval description
+  * cifscreds: fix parsing of commands and parameters
+  * cifs-utils: Fix documentation for character remappings.
+
+-------------------------------------------------------------------
 Mon Jun 16 19:03:05 UTC 2025 - Henrique Carvalho <henrique.carvalho@suse.com>
 
 - Update cifs-utils to 7.4
