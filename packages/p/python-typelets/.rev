@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>00b47e90f5f2593e7cfa4d73ca252ccc</srcmd5>
+    <version>1.1</version>
+    <time>1782377890</time>
+    <user>anag_factory</user>
+    <comment>New package python-typelets: pure-python MIT dependency for RBTools 6.0. Accepted into devel:languages:python; builds clean with full test suite.</comment>
+    <requestid>1361652</requestid>
+  </revision>
+</revisionlist>
