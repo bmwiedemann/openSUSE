@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:55:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-core-drmdevice-correct-the-virtio-driver-name.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 19:04:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
