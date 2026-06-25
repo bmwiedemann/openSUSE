@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 12:20:33 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update 2.14.2 (fixes bsc#1268680)
+  * Prevent NestedSecretsSettingsSource from following symlinks outside
+    secrets_dir
+
+-------------------------------------------------------------------
 Sun Jun 14 18:19:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.14.1:
