@@ -193,7 +193,7 @@ export CFLAGS="%{optflags}"
            --enable-install-program=arch,uptime \
            --enable-manual-url \
 %if "%{name}" == "coreutils-single"
-           --enable-single-binary \
+           --enable-single-binary=hardlinks \
            --without-openssl \
            --without-gmp \
 %endif

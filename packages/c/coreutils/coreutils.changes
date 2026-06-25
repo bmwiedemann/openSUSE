@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jun 19 06:54:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch coreutils-single to build as hardlinks
+
+-------------------------------------------------------------------
 Tue May 19 21:14:56 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
 
 - coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch: Add upstream
