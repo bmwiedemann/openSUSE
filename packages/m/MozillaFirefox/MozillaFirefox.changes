@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 23 14:51:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.2
+  https://www.firefox.com/en-US/firefox/152.0.2/releasenotes/
+  * Fixed some Settings section headings showing placeholder text
+    instead of the translated name in certain languages
+    (bmo#2047983)
+  * Fixed New Tab content not matching the browser's display
+    language after it was changed. (bmo#2046945)
+  * Fixed a regression that could break playback of some MP4 video
+    files (bmo#2047467)
+  * Fixed a performance regression that could slow down sites
+    performing many encryption and decryption operations at once,
+    such as Proton Drive (bmo#2046401)
+
+-------------------------------------------------------------------
+Thu Jun 18 16:27:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.1
+  https://www.firefox.com/en-US/firefox/152.0.1/releasenotes/
+  * Fix frequent crashes affecting users with Intel Raptor Lake
+    processors (bmo#2039575)
+
+-------------------------------------------------------------------
 Sun Jun 14 11:34:10 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 152.0

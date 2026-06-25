@@ -8311,4 +8311,20 @@
     Memory safety bug fixed in Firefox 152</comment>
     <requestid>1359901</requestid>
   </revision>
+  <revision rev="491" vrev="1">
+    <srcmd5>3f4bbd8ad28263b17ac1739933f71569</srcmd5>
+    <version>152.0.1</version>
+    <time>1781879473</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360512</requestid>
+  </revision>
+  <revision rev="492" vrev="1">
+    <srcmd5>1559d67ecc919b81dc0325ad98d4145b</srcmd5>
+    <version>152.0.2</version>
+    <time>1782377407</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361461</requestid>
+  </revision>
 </revisionlist>
