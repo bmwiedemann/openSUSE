@@ -1,0 +1,43 @@
+From 9556d2926d2a2a797308da05b88f29cbf36352f7 Mon Sep 17 00:00:00 2001
+From: Pablo Marquez Tello <pablo.tello@arm.com>
+Date: Tue, 23 Jun 2026 16:57:22 +0100
+Subject: [PATCH] fix: Enable beta OpenCL(TM) extension declarations for
+ command buffers
+
+Recent Khronos OpenCL(TM) headers guard beta/provisional extension declarations behind CL_ENABLE_BETA_EXTENSIONS.
+ACL dynamically loads cl_khr_command_buffer entrypoints from OpenCL.h, so downstream builds using newer headers can fail because symbols such as clCreateCommandBufferKHR are not declared.
+
+Define CL_ENABLE_BETA_EXTENSIONS before including the Khronos OpenCL headers so the existing command-buffer function pointer declarations remain visible.
+
+Resolves MLCE-1909
+
+Signed-off-by: Pablo Marquez Tello <pablo.tello@arm.com>
+Change-Id: I678496b32a9c2576c8f142d5cff831587e2a2ea2
+---
+ arm_compute/core/CL/OpenCL.h | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/arm_compute/core/CL/OpenCL.h b/arm_compute/core/CL/OpenCL.h
+index ac89626faa0..ad1c4b39943 100644
+--- a/arm_compute/core/CL/OpenCL.h
++++ b/arm_compute/core/CL/OpenCL.h
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright (c) 2016-2023, 2025 Arm Limited.
++ * Copyright (c) 2016-2023, 2025-2026 Arm Limited.
+  *
+  * SPDX-License-Identifier: MIT
+  *
+@@ -35,7 +35,11 @@
+ #ifndef ARM_COMPUTE_NO_EXCEPTIONS
+ #define CL_HPP_ENABLE_EXCEPTIONS
+ #endif // ARM_COMPUTE_NO_EXCEPTIONS
+-#define CL_TARGET_OPENCL_VERSION      300
++#define CL_TARGET_OPENCL_VERSION 300
++// Keep provisional command-buffer declarations visible in newer Khronos headers.
++#ifndef CL_ENABLE_BETA_EXTENSIONS
++#define CL_ENABLE_BETA_EXTENSIONS
++#endif // CL_ENABLE_BETA_EXTENSIONS
+ #define CL_HPP_TARGET_OPENCL_VERSION  110
+ #define CL_HPP_MINIMUM_OPENCL_VERSION 110
+ #pragma GCC diagnostic push

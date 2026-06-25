@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 24 08:54:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Backport upstream patch to fix build of armnn:opencl
+  * 1299.patch
+
+-------------------------------------------------------------------
 Thu Jun 18 08:46:31 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Update to 53.1.0:
