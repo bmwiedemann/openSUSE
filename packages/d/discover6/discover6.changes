@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:54:32 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Changes since 6.7.0:
+  * Update version for new release 6.7.1
+  * rpm-ostree: Wait for 60 seconds before looking at deployments
+  * rpm-ostree: Limit filesystem watcher triggers (kde#519672)
+  * appiumtests: fix removeButton click
+  * Generate valid appstream:// URLs for Flatpak apps
+
+-------------------------------------------------------------------
 Fri Jun 12 19:07:08 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
