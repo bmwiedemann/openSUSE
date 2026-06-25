@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Fri Jun 05 13:12:24 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Update to version 0.7.0.4.git185.a5708584:
+  * Update golang dependencies
+    Fixes CVE-2026-34986 (bsc#1262841)
+    Fixes CVE-2026-1229 (bsc#1265479)
+    Fixes CVE-2026-33814 (bsc#1265650)
+    Fixes CVE-2026-39827 (bsc#1266059)
+    Fixes CVE-2026-39834 (bsc#1266059)
+    Fixes CVE-2026-39828 (bsc#1266059)
+    Fixes CVE-2026-39829 (bsc#1266059)
+    Fixes CVE-2026-39831 (bsc#1266059)
+    Fixes CVE-2026-42508 (bsc#1266059)
+    Fixes CVE-2026-39833 (bsc#1266059)
+    Fixes CVE-2026-39830 (bsc#1266059)
+    Fixes CVE-2026-39832 (bsc#1266059)
+    Fixes CVE-2026-46597 (bsc#1266059)
+    Fixes CVE-2026-46598 (bsc#1266059)
+    Fixes CVE-2026-46595 (bsc#1266059)
+    Fixes CVE-2026-39835 (bsc#1266059)
+    Fixes CVE-2026-39821 (bsc#1266489)
+    Fixes CVE-2026-33487
+    Fixes CVE-2026-25680 (bsc#1267056)
+    Fixes CVE-2026-42502 (bsc#1267056)
+    Fixes CVE-2026-27136 (bsc#1267056)
+    Fixes CVE-2026-25681 (bsc#1267056)
+    Fixes CVE-2026-42506 (bsc#1267056)
+    Fixes CVE-2026-33487 (bsc#1267056)
+  * Update npm packages
+    Fixes CVE-2025-27152 (bsc#1239305)
+    Fixes CVE-2026-25128 (bsc#1257518)
+    Fixes CVE-2026-26278 (bsc#1258550)
+    Fixes CVE-2026-33036 (bsc#1259978)
+    Fixes CVE-2025-5889 (bsc#1244349)
+    Fixes CVE-2025-6547 (bsc#1245281)
+    Fixes CVE-2025-6545 (bsc#1245282)
+    Fixes CVE-2025-7783 (bsc#1246811)
+    Fixes CVE-2025-64718 (bsc#1255429)
+    Fixes CVE-2025-13465 (bsc#1257322)
+    Fixes CVE-2026-26996 (bsc#1258626)
+    Fixes CVE-2026-27904 (bsc#1259007)
+    Fixes CVE-2026-2739 (bsc#1258648)
+    Fixes CVE-2026-27606 (bsc#1258877)
+    Fixes CVE-2026-42039 (bsc#1267407)
+  * Update google.golang.org/grpc to 1.79.3
+    Fixes CVE-2026-33186 (bsc#1260088)
+  * github-actions: remove failing Windows workflow
+  * Update github.com/ulikunitz/xz
+    Fixes CVE-2025-58058 (bsc#1248903)
+  * Update github.com/golang/glog
+    Fixes CVE-2024-45339 (bsc#1236562)
+  * Update github.com/gorilla/csrf v1.6.2 => v1.7.3
+    Fixes CVE-2025-24358 (bsc#1241233, bsc#1241236)
+  * Update golang.org/x/oauth2 v0.13.0 => v0.27.0
+    Fixes CVE-2025-22868 (bsc#1239201, bsc#1239234)
+  * Fix go vet non-constant format string from go1.24
+  * Fix TestHTTPComms failures from go1.24+
+  * Update golang.org/x/net to v0.45.0
+    Fixes CVE-2023-45288 (bsc#1236506)
+    Fixes CVE-2025-22869 (bsc#1239326, bsc#1239358)
+    Fixes CVE-2025-22870 (bsc#1238678)
+    Fixes CVE-2025-22872 (bsc#1241713)
+    Fixes CVE-2025-47911 (bsc#1251346)
+    Fixes CVE-2025-58181 (bsc#1253788)
+    Fixes CVE-2025-58190 (bsc#1251537)
+  * Fix symbol not found errors from SUSE.Linux.Events.Services
+
+-------------------------------------------------------------------
 Tue Feb 10 23:09:57 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Use systemd-tmpfiles to create dirs under /var/lib (jsc#PED-14744)

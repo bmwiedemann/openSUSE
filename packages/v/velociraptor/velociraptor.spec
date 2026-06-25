@@ -86,7 +86,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git169.cb4e6db8
+Version:        0.7.0.4.git185.a5708584
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -119,16 +119,16 @@ Patch3:         velociraptor-reproducible-timestamp.diff
 BuildRequires:  fileb0x
 %if 0%{?suse_version}
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.19
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  pkgconfig(libsystemd)
 %endif
 %if "%{_vendor}" == "debbuild"
-BuildRequires:  golang >= 2:1.19~0
+BuildRequires:  golang >= 2:1.25~0
 BuildRequires:  libsystemd-dev
 BuildRequires:  pkg-config
 %endif
 %if 0%{?rhel}
-BuildRequires:  golang >= 1.19
+BuildRequires:  golang >= 1.25
 BuildRequires:  python3
 BuildRequires:  systemd-devel
 BuildRequires:  pkgconfig(libsystemd)
