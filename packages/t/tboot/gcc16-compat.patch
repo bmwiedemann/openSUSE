@@ -1,7 +1,7 @@
-Index: tboot-1.11.10/safestringlib/safeclib/strpbrk_s.c
+Index: tboot-1.11.12/safestringlib/safeclib/strpbrk_s.c
 ===================================================================
---- tboot-1.11.10.orig/safestringlib/safeclib/strpbrk_s.c
-+++ tboot-1.11.10/safestringlib/safeclib/strpbrk_s.c
+--- tboot-1.11.12.orig/safestringlib/safeclib/strpbrk_s.c
++++ tboot-1.11.12/safestringlib/safeclib/strpbrk_s.c
 @@ -92,7 +92,6 @@ strpbrk_s (char *dest, rsize_t dmax,
             char *src,  rsize_t slen, char **first)
  {

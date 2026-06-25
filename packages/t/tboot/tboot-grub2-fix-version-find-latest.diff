@@ -1,0 +1,46 @@
+--- tboot-1.11.12.orig/tboot/20_linux_tboot	2026-06-24 12:39:41.510323209 +0200
++++ tboot-1.11.12/20_linux_tboot	2026-06-24 12:39:12.747557424 +0200
+@@ -210,6 +210,20 @@
+ fi
+ prepare_boot_cache=
+ 
++# version_find_latest was dropped from the grub shell utility functions, we
++# now have to use version_sort(). It expects newline-separated basenames.
++version_find_latest()
++{
++	local list="$1"
++	# translate space separated list into newline separated list
++	list=`echo $list | tr ' ' '\n'`
++	# drop the /boot prefix
++	list=`echo $list | grep -o "[^/]\+$"`
++	list=`echo $list | version_sort`
++	latest=`echo $list | tail -n 1`
++	echo "/boot/${latest}"
++}
++
+ while [ "x${tboot_list}" != "x" ] && [ "x$linux_list" != "x" ] ; do
+     list="${linux_list}"
+     current_tboot=`version_find_latest $tboot_list`
+--- tboot-1.11.12.orig/tboot/20_linux_xen_tboot	2026-06-24 12:39:41.510551291 +0200
++++ tboot-1.11.12/tboot/20_linux_xen_tboot	2026-06-24 12:39:12.747708992 +0200
+@@ -254,6 +254,20 @@
+ fi
+ prepare_boot_cache=
+ 
++# version_find_latest was dropped from the grub shell utility functions, we
++# now have to use version_sort(). It expects newline-separated basenames.
++version_find_latest()
++{
++	local list="$1"
++	# translate space separated list into newline separated list
++	list=`echo $list | tr ' ' '\n'`
++	# drop the /boot prefix
++	list=`echo $list | grep -o "[^/]\+$"`
++	list=`echo $list | version_sort`
++	latest=`echo $list | tail -n 1`
++	echo "/boot/${latest}"
++}
++
+ while [ "x${xen_list}" != "x" ] ; do
+     current_xen=`version_find_latest $xen_list`
+     xen_basename=`basename ${current_xen}`

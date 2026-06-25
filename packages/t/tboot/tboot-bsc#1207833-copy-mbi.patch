@@ -1,7 +1,7 @@
-Index: tboot-1.11.9/tboot/common/loader.c
+Index: tboot-1.11.12/tboot/common/loader.c
 ===================================================================
---- tboot-1.11.9.orig/tboot/common/loader.c
-+++ tboot-1.11.9/tboot/common/loader.c
+--- tboot-1.11.12.orig/tboot/common/loader.c
++++ tboot-1.11.12/tboot/common/loader.c
 @@ -1100,15 +1100,21 @@ void move_modules(loader_ctx *lctx)
  
      if ( below_tboot(lowest) )

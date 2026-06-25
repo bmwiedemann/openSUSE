@@ -1,7 +1,7 @@
 #
 # spec file for package tboot
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           tboot
-%define ver 1.11.10
+%define ver 1.11.12
 Version:        20250417_%{ver}
 Release:        0
 Summary:        Program for performing a verified launch using Intel TXT
@@ -33,8 +33,7 @@ Patch2:         tboot-grub2-fix-xen-submenu-name.patch
 Patch3:         tboot-distributor.patch
 Patch4:         tboot-grub2-refuse-secure-boot.patch
 Patch5:         tboot-bsc#1207833-copy-mbi.patch
-Patch6:         tboot-fix-alloc-size-warning.patch
-Patch7:         tboot-cet.patch
+Patch6:         tboot-grub2-fix-version-find-latest.diff
 Patch8:         gcc16-compat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 ExclusiveArch:  %{ix86} x86_64
