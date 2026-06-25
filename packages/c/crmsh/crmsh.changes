@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 24 04:47:36 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260624.349562dd:
+  * Dev: storage_utils: Rename blkid UUID helper
+  * Dev: storage_utils: Refactor storage helpers out of utils.py
+
+-------------------------------------------------------------------
+Mon Jun 22 08:17:20 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260622.f844a5ab:
+  * Chore: unittests: reduce output verbosity and stop printing coverage report
+
+-------------------------------------------------------------------
 Mon Jun 15 10:14:21 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260615.8409ea5a:
