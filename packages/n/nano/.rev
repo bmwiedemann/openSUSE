@@ -984,4 +984,12 @@ nano 8.7.1 boo#1258260</comment>
     <comment></comment>
     <requestid>1354642</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>96a6d78b0c0f2dabf36d8122f9d64fcf</srcmd5>
+    <version>9.1</version>
+    <time>1782377400</time>
+    <user>anag_factory</user>
+    <comment>Update to nano 9.1. Includes the history fix that creates ~/.local with limited access rights (boo#1263437; the referenced CVE-2026-40556 was rejected upstream), backup fixes, and removal of old-Mac-format support.</comment>
+    <requestid>1361371</requestid>
+  </revision>
 </revisionlist>

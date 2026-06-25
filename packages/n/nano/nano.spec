@@ -1,7 +1,7 @@
 #
 # spec file for package nano
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,11 +19,10 @@
 
 %define _version 9
 Name:           nano
-Version:        9.0
+Version:        9.1
 Release:        0
 Summary:        Pico editor clone with enhancements
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Editors
 URL:            https://nano-editor.org/
 Source0:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar.xz
 Source1:        https://nano-editor.org/dist/v%{_version}/%{name}-%{version}.tar.xz.asc

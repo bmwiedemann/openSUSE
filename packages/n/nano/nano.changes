@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.1:
+  * When searching, the viewport is placed snug left where
+    possible.
+  * The ability to read and write files in old Mac format (a lone
+    carriage return as line ending) was removed.
+  * The ^T toggle between WhereIs and GotoLine was dropped.
+  * Fix backups that were missing or had a wrong timestamp when
+    --backup is active.
+  * On a crash or kill, a .save file is no longer chmodded or
+    chowned to the base file's permissions and owner.
+  * The history code now creates the ~/.local directory with
+    limited access rights (boo#1263437; the referenced
+    CVE-2026-40556 was rejected upstream).
+  * M-Ins and M-Del have become rebindable.
+
+-------------------------------------------------------------------
 Thu Apr  9 04:27:25 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - GNU nano 9.0:
