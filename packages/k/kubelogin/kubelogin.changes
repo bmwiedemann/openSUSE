@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:23:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.19:
+  * What's Changed
+    - Add optional Azure CLI subscription selection via
+      --subscription (-s) by @Copilot in #767
+    - Return errors when cache cleanup fails by @pathei-kosmos in
+      #760
+  * Maintenance
+    - Bump golang.org/x/crypto to v0.52.0 and Go to 1.26.4 by
+      @Copilot in #781
+    - Bump MSAL Go v1.4.2→v1.7.2 and azidentity v1.8.0→v1.14.0 to
+      use form_post response mode by default for
+      AcquireTokenInteractive by @vineeth-thumma in #778
+    - Bump softprops/action-gh-release from 3.0.0 to 3.0.1 by
+      @dependabot[bot] in #779
+    - Bump actions/checkout from 6.0.3 to 7.0.0 by @dependabot[bot]
+      in #777
+    - Bump mindsers/changelog-reader-action from 2.2.2 to 2.4.0 by
+      @dependabot[bot] in #775
+    - Bump docker/login-action from 3.0.0 to 4.2.0 by
+      @dependabot[bot] in #774
+    - Bump golangci/golangci-lint-action from 8.0.0 to 9.2.1 by
+      @dependabot[bot] in #773
+    - Bump docker/build-push-action from 5.1.0 to 7.2.0 by
+      @dependabot[bot] in #772
+    - Bump actions/upload-artifact from 4 to 7 by @dependabot[bot]
+      in #771
+    - Bump softprops/action-gh-release from 1 to 3 by
+      @dependabot[bot] in #770
+    - Bump mukunku/tag-exists-action from 1.6.0 to 1.7.0 by
+      @dependabot[bot] in #769
+    - Bump codecov/codecov-action from 6.0.1 to 7.0.0 by
+      @dependabot[bot] in #768
+    - Bump actions/checkout from 3.6.0 to 6.0.3 by @dependabot[bot]
+      in #766
+    - Bump actions/setup-go from 4.1.0 to 6.4.0 by @dependabot[bot]
+      in #765
+    - Bump peaceiris/actions-gh-pages from 3.9.3 to 4.1.0 by
+      @dependabot[bot] in #764
+    - Bump actions/download-artifact from 4 to 8 by
+      @dependabot[bot] in #763
+    - Bump peter-evans/create-pull-request from 5 to 8 by
+      @dependabot[bot] in #759
+    - Bump codecov/codecov-action from 5.1.2 to 6.0.1 by
+      @dependabot[bot] in #758
+    - Bump docker/setup-buildx-action from 3.0.0 to 4.1.0 by
+      @dependabot[bot] in #757
+    - Bump actions/dependency-review-action from 2.5.1 to 5.0.0 by
+      @dependabot[bot] in #756
+
+-------------------------------------------------------------------
 Sat May 30 06:43:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.18:
