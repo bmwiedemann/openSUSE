@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 24 06:54:19 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.5:
+  * Refactor tik (#62)
+  * [10-welcome] increase btrfs filesystem size to max
+
+-------------------------------------------------------------------
 Mon Dec 01 15:27:01 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Update to version 1.4.1:

@@ -343,4 +343,14 @@
   * Make keyctl revoke non fatal (#61)</comment>
     <requestid>1320764</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>289872bf2e97e1faeca2e53400e8a3ea</srcmd5>
+    <version>1.5</version>
+    <time>1782377695</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5:
+  * Refactor tik (#62)
+  * [10-welcome] increase btrfs filesystem size to max</comment>
+    <requestid>1361550</requestid>
+  </revision>
 </revisionlist>
