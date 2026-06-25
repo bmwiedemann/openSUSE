@@ -1,7 +1,7 @@
 #
 # spec file for package python-inspektor
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,18 @@
 #
 
 
-%if 0%{suse_version} >= 1550
+%global         pkgname inspektor
+%if 0%{?suse_version} >= 1550
 # cliff and stevedore are only built for primary python3
 %define pythons python3
 %endif
-%global         pkgname inspektor
 Name:           python-%{pkgname}
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        Program used to verify the code of your python project
 License:        GPL-2.0-only
 URL:            https://github.com/avocado-framework/inspektor
-Source:         https://files.pythonhosted.org/packages/42/8a/9e375ac0bb498760fe2408a2e0f1fe09808933e593d1b6f04193492b9048/inspektor-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/i/inspektor/inspektor-%{version}.tar.gz
 BuildRequires:  %{python_module astroid >= 1.2.1}
 BuildRequires:  %{python_module cmd2}
 BuildRequires:  %{python_module devel}
@@ -69,6 +69,8 @@ Inspektor can work with Git and SVN checkouts.
 
 %install
 %pyproject_install
+# force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/inspektor
 %python_clone -a %{buildroot}%{_bindir}/inspekt
 %fdupes %{buildroot}
 
