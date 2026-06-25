@@ -29,7 +29,7 @@
 %define compiler_version_leap 13
 
 Name:           godot
-Version:        4.6.3
+Version:        4.7
 Release:        0
 Summary:        Cross-Platform Game Engine with an Integrated Editor
 License:        MIT
@@ -49,9 +49,9 @@ BuildRequires:  gcc%{compiler_version_leap}-c++
 %endif
 # pkgconfig broken for freetype2 ?
 BuildRequires:  freetype2-devel >= 2.14
-BuildRequires:  mbedtls-devel
+# BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3
+BuildRequires:  python3 > 3.9
 BuildRequires:  scons > 4.9.0
 BuildRequires:  wayland-devel
 BuildRequires:  yasm-devel
@@ -143,26 +143,28 @@ Provides:       bundled(astcenc) = 5.3.0
 Provides:       bundled(basis_universal) = b1110111d4a93c7dd7de93ce3d9ed8fcdfd114f2
 Provides:       bundled(clipper2) = 1.5.4
 Provides:       bundled(cvtt)
-Provides:       bundled(d3d12ma) = 2.1.0
-Provides:       bundled(directx_headers) = 1.618.2
+Provides:       bundled(d3d12ma) = 3.1.0
+Provides:       bundled(directx_headers) = 25411c74bb9cc7c416b2ff01b3ad8a306811dfdd
 Provides:       bundled(doctest) = 2.4.12
-Provides:       bundled(dr_libs) = 547c211a87a06a42bf62c1366616aa14b57dd429
+Provides:       bundled(dr_libs) = 5690d4671d7ad07ae6021756d7222eb159745f06
 Provides:       bundled(etcpak) = 2.0
-Provides:       bundled(glad) = 2.0.4
+Provides:       bundled(gamepadmotionhelpers) = 39b578aacf34c3a1c584d8f7f194adc776f88055
+Provides:       bundled(glad) = 2.0.8
 # same version for glslang, spirv-reflect, volk and vulkan needed
-Provides:       bundled(glslang) = sdk-1.3.283.0
+Provides:       bundled(glslang) = sdk-1.4.335.0
 Provides:       bundled(google-droid-fonts)
 Provides:       bundled(grisu2) = 667d0ed3c77f55cbda2082b034168d69898d1f88
 # gdextension crash with unbundled harfbuzz or icu4c
 # https://github.com/godotengine/godot/issues/91401
-Provides:       bundled(harfbuzz) = 12.2.0
-Provides:       bundled(icu4c) = 78.1
+Provides:       bundled(harfbuzz) = 14.2.0
+Provides:       bundled(icu4c) = 78.3
 Provides:       bundled(ifaddrs-android)
-Provides:       bundled(jolt_physics) = 5.4.0
+Provides:       bundled(jolt_physics) = 5.5.0
 Provides:       bundled(libbacktrace)
 Provides:       bundled(libktx) = 4.4.2
 Provides:       bundled(manifold) = 3.3.2
-Provides:       bundled(meshoptimizer) = 1.0
+Provides:       bundled(mbedtls) = 3.6.5
+Provides:       bundled(meshoptimizer) = 1.1
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(msdfgen) = 1.13
 Provides:       bundled(noto-sans-fonts)
@@ -173,22 +175,22 @@ Provides:       bundled(polyclipping)
 Provides:       bundled(polypartition)
 Provides:       bundled(pvrtccompressor)
 Provides:       bundled(qoa)
-Provides:       bundled(re-spirv) = c1853b0221cd43866b792406f55c4ab10a0b4503
+Provides:       bundled(re-spirv) = 29a77fca357567d00aa37b8ffde19c19cfe477c4
 Provides:       bundled(smaa)
 Provides:       bundled(smaz)
-Provides:       bundled(spirv-cross)
-Provides:       bundled(spirv-headers) = sdk-1.4.328.1
-Provides:       bundled(spirv-reflect) = sdk-1.3.283.0
+Provides:       bundled(spirv-cross) = fb0c1a307cca4b4a9d891837bf4c44d17fe2d324
+Provides:       bundled(spirv-headers) = sdk-1.4.335.0
+Provides:       bundled(spirv-reflect) = sdk-1.4.335.0
 Provides:       bundled(stb)
 Provides:       bundled(swappy-frame-pacing)
-Provides:       bundled(thorvg) = 0.15.16
-Provides:       bundled(tinyexr) = 1.0.12
-Provides:       bundled(ufbx) = 0.20.0
+Provides:       bundled(thorvg) = 1.0.3
+Provides:       bundled(tinyexr) = 1.0.13
+Provides:       bundled(ufbx) = 0.21.3
 Provides:       bundled(vhacd)
-Provides:       bundled(volk) = sdk-1.3.283.0
-Provides:       bundled(vulkan) = sdk-1.3.283.0
+Provides:       bundled(volk) = sdk-1.4.335.0
+Provides:       bundled(vulkan) = sdk-1.4.335.0
 Provides:       bundled(wayland) = 1.24.0
-Provides:       bundled(wayland-protocols) = 1.46
+Provides:       bundled(wayland-protocols) = 1.47
 Provides:       bundled(yuv2rgb)
 
 # Can be unbundled if packaged
@@ -201,17 +203,6 @@ Provides:       bundled(xatlas)
 # the required version is available.
 # Perhaps because it is build with special flags (static) for blender.
 Provides:       bundled(embree) = 4.4.0
-
-%if 0%{?suse_version} > 1600
-%else
-# see comments for freetype2, libpng and zlib Factory BuildRequires
-#Provides:       bundled(brotli) = 1.2.0
-#Provides:       bundled(freetype2) = 2.14.3
-#Provides:       bundled(graphite) = 1.3.14
-#Provides:       bundled(libpng) = 1.6.58
-#Provides:       bundled(libzstd) = 1.5.7
-#Provides:       bundled(zlib) = 1.3.2
-%endif
 
 # Build currently fails on armv7l
 ExcludeArch:    %arm
@@ -250,6 +241,7 @@ Bash command line completion support for %{name} and %{name}-runner
 %autosetup -p1 -n %{name}-%{version}-stable
 
 cp thirdparty/README.md thirdparty_README.md
+cp misc/logo/LICENSE.txt LOGO_LICENSE.txt
 
 # actual doc location in openSUSE
 sed -i 's/\/usr\/share\/doc\/godot\//\/usr\/share\/doc\/packages\/godot\//' misc/dist/linux/godot.6
@@ -259,13 +251,12 @@ cp misc/dist/shell/godot.bash-completion misc/dist/shell/godot-runner
 sed -i '$s/_complete_godot_bash godot/_complete_godot_bash godot-runner/' misc/dist/shell/godot-runner
 
 # set update check default to disabled
-sed -i 's/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_UNSTABLE;/EngineUpdateLabel::UpdateMode default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/settings/editor_settings.cpp
-sed -i 's/default_update_mode = EngineUpdateLabel::UpdateMode::NEWEST_STABLE;/default_update_mode = EngineUpdateLabel::UpdateMode::DISABLED;/' editor/settings/editor_settings.cpp
+sed -i 's/EngineUpdateLabel::UpdateMode::AUTO/EngineUpdateLabel::UpdateMode::DISABLED/' editor/settings/editor_settings.cpp
 
 %build
 # Configuring build to use some distribution libraries
 unbundle_libs=('brotli' 'certs' 'freetype' 'libjpeg_turbo' 'libogg' 'libpng' \
-               'libtheora' 'libvorbis' 'libwebp' 'mbedtls' 'miniupnpc' \
+               'libtheora' 'libvorbis' 'libwebp' 'miniupnpc' \
                'pcre2' 'sdl' 'wslay' 'zlib' 'zstd')
 
 # Adding distribution name to build name
@@ -324,7 +315,7 @@ linkflags="linkflags=-pie"
 %define build_args_common %{?_smp_mflags} \\\
         progress=no verbose=yes udev=yes lto=$use_lto debug_symbols=yes \\\
         use_static_cpp=no ccflags='%{ccflags}' $linkflags $compiler \\\
-        engine_update_check=no steamapi=no \\\
+        engine_update_check=no steamapi=no accesskit=no \\\
         system_certs_path=%{ca_bundle} $use_sowrap $system_libs
 
 %ifarch aarch64 %arm
@@ -362,8 +353,8 @@ suffix=%{__isa_name}_%{__isa_bits}
 install -D -p -m 755 bin/%{name}.linuxbsd.editor.$suffix %{buildroot}%{_bindir}/%{name}
 
 install -D -p -m 644 misc/dist/linux/godot.6 %{buildroot}/%{_mandir}/man6/%{name}.6%{?ext_man}
-install -D -p -m 644 icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
-install -D -p -m 644 icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
+install -D -p -m 644 misc/logo/icon.png %{buildroot}%{_datadir}/icons/hicolor/256x256/apps/%{name}.png
+install -D -p -m 644 misc/logo/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 install -D -p -m 644 misc/dist/linux/org.godotengine.Godot.appdata.xml  %{buildroot}%{_datadir}/metainfo/org.godotengine.Godot.appdata.xml
 install -D -m 0644 misc/dist/linux/org.godotengine.Godot.desktop %{buildroot}%{_datadir}/applications/org.godotengine.Godot.desktop
 
@@ -383,7 +374,7 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.godotengine.Godot
 
 %files
 %license LICENSE.txt LOGO_LICENSE.txt COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md
 %dir %{_datadir}/icons/hicolor
 %dir %{_datadir}/icons/hicolor/256x256
 %dir %{_datadir}/icons/hicolor/256x256/apps
@@ -398,8 +389,8 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/org.godotengine.Godot
 
 %if !0%{?faster_build}
 %files runner
-%license LICENSE.txt LOGO_LICENSE.txt COPYRIGHT.txt thirdparty_README.md
-%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md logo.svg
+%license LICENSE.txt COPYRIGHT.txt LOGO_LICENSE.txt thirdparty_README.md
+%doc AUTHORS.md CHANGELOG.md CONTRIBUTING.md DONORS.md README.md
 %{_bindir}/%{name}-runner
 %endif
 

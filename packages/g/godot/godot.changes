@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 21 12:00:00 UTC 2026 - cunix@mail.de
+
+- Update to 4.7
+  * migration guide: https://docs.godotengine.org/en/4.7/tutorials/migrating/upgrading_to_godot_4.7.html
+  * AreaLight3D for rectangular light sources
+  * Asset Store instead of  Asset Library
+  * Offset transform of Control nodes
+  * 2D scene painter tool
+  * HDR output
+  * Option for Path3D to snap to colliders
+  * 3D vertex snapping
+  * Follow moving objects in the 3D editor
+  * MeshLibrary editor
+  * Initial touch support for Wayland
+  * GDExtensions are now displayed in the Project Settings
+  * Add ability for Area3D to detect/influence SoftBody3D with Jolt Physics
+  * One-way collision direction for CollisionShape2Ds
+  * Jolt SoftBody3D: Make default mass 1 kg and fix stiffness conversion
+  * and much more: https://godotengine.github.io/godot-interactive-changelog/#4.7
+
+- use bundled mbedtls while factory currently does not have expected version
+
+-------------------------------------------------------------------
 Sat Jun  6 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.6.3
