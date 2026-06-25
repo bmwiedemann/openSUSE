@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later

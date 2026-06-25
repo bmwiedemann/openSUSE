@@ -365,4 +365,14 @@
     <comment></comment>
     <requestid>1336041</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>13d570a54e5150845699deda1107ee38</srcmd5>
+    <version>2.8</version>
+    <time>1782377900</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8:
+  + Extensive bug fixes and code improvements
+  + More progress in GTK4 migration</comment>
+    <requestid>1361671</requestid>
+  </revision>
 </revisionlist>
