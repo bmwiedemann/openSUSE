@@ -50,4 +50,16 @@
 - Update Requires from setup.py (forwarded request 1199156 from glaubitz)</comment>
     <requestid>1199674</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b3121c29bff04a0619e821c570fb5ff0</srcmd5>
+    <version>3.0.0</version>
+    <time>1782400456</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 3.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1361741 from glaubitz)</comment>
+    <requestid>1361776</requestid>
+  </revision>
 </revisionlist>
