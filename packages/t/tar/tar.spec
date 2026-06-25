@@ -54,6 +54,18 @@ Patch16:        fix-CVE-2022-48303.patch
 Patch17:        add_forgotten-tests.patch
 Patch18:        tar-fix-deletion-from-archive.patch
 Patch19:        CVE-2025-45582.patch
+# PATCH-FIX-UPSTREAM antonio.teixeira@suse.com
+# Fix tar changing dir permissions temporarily even when using --no-overwrite-dir
+Patch20:        no-overwrite-dir-fix.patch
+# PATCH-FIX-UPSTREAM antonio.teixeira@suse.com bsc#1261900
+# CVE-2026-5704 - crafted archives can be used to to hide file injection
+Patch21:        CVE-2026-5704.patch
+# PATCH-FIX-UPSTREAM antonio.teixeira@suse.com bsc#1265450
+# Fix --dereference/-h not working properly after CVE-2025-45582 fix
+Patch22:        fix-dereference.patch
+# PATCH-FIX-UPSTREAM antonio.teixeira@suse.com bsc#1267189
+# Fix extraction failure for paths like "a/./b" caused by the gnulib openat2 implementation
+Patch23:        openat2-fix-dotlike-failure.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel

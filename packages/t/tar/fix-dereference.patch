@@ -1,0 +1,141 @@
+commit 145a671e8ad0f2443e253ea4cc95b676ed7a2847
+Author: Sergey Poznyakoff <gray@gnu.org>
+Date:   Thu Jun 11 16:33:15 2026 +0300
+
+    Fix extracting over symlinks with --dereference
+    
+    Extraction over symlink to a directory was broken in 75b03fdff4.
+    See https://savannah.gnu.org/bugs/index.php?68368
+    
+    * src/tar.c (decode_options): Don't enable RESOLVE_BENEATH mode
+    if --dereference is given.
+    * tests/extrac33.at: New test.
+    * tests/Makefile.am: Add new test.
+    * tests/testsuite.at: Likewise.
+    * tests/extrac13.at: Add a keyword.
+    * tests/extrac31.at: Remove --absolute-names keyword: that option
+    is never used in the testcase. Add CVE-2025-45582 keyword instead.
+
+Index: b/src/tar.c
+===================================================================
+--- a/src/tar.c
++++ b/src/tar.c
+@@ -2633,7 +2633,7 @@ decode_options (int argc, char **argv)
+ #endif
+     open_searchdir_how.flags = (search_flags | nofollow_flag
+ 				| O_BINARY | O_CLOEXEC | O_DIRECTORY);
+-    if (!absolute_names_option
++    if (!absolute_names_option && !dereference_option
+ 	&& (subcommand_option == EXTRACT_SUBCOMMAND
+ 	    || subcommand_option == DIFF_SUBCOMMAND))
+       open_searchdir_how.resolve = RESOLVE_BENEATH;
+Index: b/tests/Makefile.am
+===================================================================
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -128,6 +128,7 @@ TESTSUITE_AT = \
+  extrac30.at\
+  extrac31.at\
+  extrac32.at\
++ extrac33.at\
+  extrac34.at\
+  filerem01.at\
+  filerem02.at\
+Index: b/tests/extrac13.at
+===================================================================
+--- a/tests/extrac13.at
++++ b/tests/extrac13.at
+@@ -24,7 +24,7 @@
+ # unless --dereference is specified.
+ 
+ AT_SETUP([extract over symlinks])
+-AT_KEYWORDS([extract extrac13 chdir])
++AT_KEYWORDS([extract extrac13 chdir --dereference])
+ 
+ AT_TAR_CHECK([
+ mkdir src dst1 dst2 dst3
+Index: b/tests/extrac31.at
+===================================================================
+--- a/tests/extrac31.at
++++ b/tests/extrac31.at
+@@ -17,8 +17,7 @@
+ # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ 
+ AT_SETUP([extracting untrusted incremental])
+-AT_KEYWORDS([extract extrac31 --absolute-names])
+-
++AT_KEYWORDS([extract extrac31 CVE-2025-45582])
+ 
+ AT_TAR_CHECK([
+ 
+Index: b/tests/extrac33.at
+===================================================================
+--- /dev/null
++++ b/tests/extrac33.at
+@@ -0,0 +1,53 @@
++# Test suite for GNU tar.                             -*- Autotest -*-
++# Copyright 2026 Free Software Foundation, Inc.
++#
++# This file is part of GNU tar.
++#
++# GNU tar is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 3 of the License, or
++# (at your option) any later version.
++#
++# GNU tar is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++#
++# You should have received a copy of the GNU General Public License
++# along with this program.  If not, see <http://www.gnu.org/licenses/>.
++
++# Description: Fixing CVE-2025-45582 (commit 75b03fdff4) broke some
++# legitimate cases of extracting over symlinks with the --dereference
++# option. Check if that is fixed.
++#
++# References: https://savannah.gnu.org/bugs/index.php?68368
++
++AT_SETUP([extract over symlink to dir with --dereference])
++AT_KEYWORDS([extract extrac33 CVE-2025-45582 --dereference])
++AT_DATA([archive.in],
++[/Td6WFoAAATm1rRGAgAhARYAAAB0L+Wj4Cf/AJxdABcLvBx9AZXAHUpGnBzE/y67neFgHitlwSWw
++/oOsdf1GACIE/0RnS0Lp6Mj1RyfaFcxOxcWz61KEu+VeJMMAUhYEcMyGrz191zPA4rOoVcIqYEm0
++B9Jiq66xT/4F6gUOeitk5fqE+uMdHKK7QTaty/dnoxtba+McJh/dXP2TUStl0xetvrnvCE1/2tKZ
++grqe/9/HpysFqZnu5sskAABO7ZNxp1eWNgABuAGAUAAA/vRJibHEZ/sCAAAAAARZWg==
++])
++AT_CHECK([base64 --help >/dev/null 2>&1 || AT_SKIP_TEST
++xz --help >/dev/null 2>&1 || AT_SKIP_TEST
++base64 -d < archive.in | xz -c -d > archive.tar
++])
++AT_CHECK([mkdir dir dir2 hdir
++cd dir
++ln -sf ../dir2 .
++cd ../hdir
++ln -sf ../dir2 .
++])
++AT_CHECK([tar -C dir -xf archive.tar || exit 1
++test -d dir/dir2
++])
++AT_CHECK([tar -C hdir -hxf archive.tar || exit 1
++test -h hdir/dir2 || exit 2
++ls dir2
++],
++[0],
++[file2
++])
++AT_CLEANUP
+Index: b/tests/testsuite.at
+===================================================================
+--- a/tests/testsuite.at
++++ b/tests/testsuite.at
+@@ -354,6 +354,7 @@ m4_include([extrac25.at])
+ m4_include([extrac30.at])
+ m4_include([extrac31.at])
+ m4_include([extrac32.at])
++m4_include([extrac33.at])
+ m4_include([extrac34.at])
+
+ m4_include([backup01.at])
+ 

@@ -1,0 +1,35 @@
+From 50d7bb88f547aff37e6279bdc84a7602e1dd3533 Mon Sep 17 00:00:00 2001
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Wed, 17 Jun 2026 00:19:35 -0700
+Subject: openat2: fix bug with trailing "/./"
+
+Problem reported by Kinan Al-Falakh in:
+https://lists.gnu.org/r/bug-gnulib/2026-06/msg00070.html
+* lib/openat2.c (do_openat2): When opening a dotlike component at
+file name end, also set the G and H indexes appropriately for ".".
+This matters if the file name ends in something like "/./" so the
+last component "." is not at file name end.
+* tests/test-openat2.c (do_test_resolve): Test for the bug.
+---
+ ChangeLog            | 11 +++++++++++
+ lib/openat2.c        |  3 ++-
+ tests/test-openat2.c | 11 +++++++++++
+ 3 files changed, 24 insertions(+), 1 deletion(-)
+
+diff --git a/gnu/openat2.c b/gnu/openat2.c
+index 2be62c921c..8c722427f7 100644
+--- a/gnu/openat2.c
++++ b/gnu/openat2.c
+@@ -320,8 +320,9 @@ do_openat2 (int *fd, char const *filename,
+             {
+               /* This is empty or the last component, and acts like ".".
+                  Use "." regardless of whether it was "" or "." or "..".  */
+-              f = sizeof ".";
++              f = g = sizeof ".";
+               e[-f] = '.';
++              h = 1;
+             }
+ 
+           /* Open the current component, as either an internal directory or
+-- 
+cgit v1.2.3
