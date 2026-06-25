@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jun 17 11:46:23 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.4.4:
+  * Fixed SirilInterface.save_undo_state in headless mode: this
+    method no longer raises an exception when Siril is run without
+    a graphical interface
+  * Fixed incorrect dimension constraint in sirilpy: setting
+    FFit.data no longer fails due to an erroneous dimensions check
+  * Fixed use-after-free crash on Python module install failure: a
+    memory safety issue that could cause a crash when the Python
+    module failed to install has been resolved
+  * Fixed Windows named pipes (#1921): corrects named pipe issue
+    specific to the Windows platform
+  * Fixed ‘Keep all samples’ option in background extraction: the
+    option now behaves as expected when generating background
+    correction samples
+  * Added None as a valid keyword value for BAYERPAT: Siril now
+    correctly handles FITS files where the BAYERPAT keyword is
+    explicitly set to None
+  * Fixed file extension handling in Save As dialog (#1748): the
+    dialog now correctly manages file extensions when saving under
+    a new name
+  * Fixed crash when loading certain Hubble images (#1932): a crash
+    affecting specific archival HST FITS files has been resolved
+  * Fixed individual frame reading in mixed-size FITS sequences
+    (!1021): browsing through a .fitseq file containing frames of
+    varying dimensions no longer produces incorrect results
+
+-------------------------------------------------------------------
 Sun Mar  1 15:08:38 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.4.2:

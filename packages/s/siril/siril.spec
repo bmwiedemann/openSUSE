@@ -27,7 +27,7 @@
 %endif
 
 Name:           siril
-Version:        1.4.2
+Version:        1.4.4
 Release:        0
 %global pkg_version %{version}
 Summary:        An astronomical image processing software for Linux. (IRIS clone)
