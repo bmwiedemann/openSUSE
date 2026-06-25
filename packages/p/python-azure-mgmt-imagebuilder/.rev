@@ -122,4 +122,19 @@
 - Update Requires from setup.py (forwarded request 1182474 from glaubitz)</comment>
     <requestid>1182475</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ab0a946c81ab6a40cd5e63b0eaad8006</srcmd5>
+    <version>2.0.0</version>
+    <time>1782377826</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1361553 from glaubitz)</comment>
+    <requestid>1361580</requestid>
+  </revision>
 </revisionlist>
