@@ -1,7 +1,7 @@
 <services>
   <service name="go_modules" mode="disabled">
    <param name="replace">
-    github.com/go-chi/chi/v5=github.com/go-chi/chi/v5@v5.2.5
+   	github.com/go-jose/go-jose/v4=github.com/go-jose/go-jose/v4@v4.1.4
    </param>
   </service>
 </services>

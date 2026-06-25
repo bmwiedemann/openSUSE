@@ -25,6 +25,12 @@
 %else
 %define srcdir warewulf-%{version}
 %endif
+%{bcond_with vulncheck}
+
+%if %{with vulncheck}
+BuildRequires:  govulncheck
+BuildRequires:  govulncheck-vulndb
+%endif
 
 ExclusiveArch:  x86_64 aarch64
 
@@ -221,6 +227,15 @@ mv %{buildroot}/%{_sysconfdir}/logrotate.d/warewulfd.conf %{buildroot}/%{_syscon
 # add version tag to documentation
 mv ./userdocs/_build/latex/warewulfuserguide.pdf ./userdocs/_build/latex/warewulfuserguide-%{version}.pdf
 
+%check
+
+%if %{with vulncheck}
+for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
+done
+%endif
+
 %pre -f %{name}.pre
 %service_add_pre warewulfd.service
 
@@ -229,7 +244,7 @@ mv ./userdocs/_build/latex/warewulfuserguide.pdf ./userdocs/_build/latex/warewul
 if [ $1 -eq 1 ] ; then
     cp %{_sysconfdir}/warewulf/nodes.conf %{_sysconfdir}/warewulf/nodes.conf.4.6.x
     cp %{_sysconfdir}/warewulf/warewulf.conf %{_sysconfdir}/warewulf/warewulf.conf.4.6.x
-    %{_bindir}/wwctl upgrade nodes --replace-overlay --add-defaults
+    %{_bindir}/wwctl upgrade nodes --replace-overlays --add-defaults
     %{_bindir}/wwctl upgrade config
 else
     %{ww4dir}/warewulf/scripts/config-warewulf.sh

@@ -486,4 +486,25 @@
 - remove slurm-overlay package</comment>
     <requestid>1360003</requestid>
   </revision>
+  <revision rev="41" vrev="2">
+    <srcmd5>c81d5c61d326ecf3f7911f891e03994e</srcmd5>
+    <version>4.7.0</version>
+    <time>1781879897</time>
+    <user>anag_factory</user>
+    <comment>- updated go-jose to fix CVE-2026-34986 (bsc#1262810)
+- chi is fixed in the upstream project
+
+ * fixed CVE-2026-39821 (bsc#1266483)
+ * fixed CVE-2026-33814 (bsc#1265653)
+- fix CVE-2025-69725 (bsc#1258511) by updating chi</comment>
+    <requestid>1360614</requestid>
+  </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>fe042d7ab54f70f43f4461a49a880c6f</srcmd5>
+    <version>4.7.0</version>
+    <time>1782377819</time>
+    <user>anag_factory</user>
+    <comment>- adding correct flag --update-overlays fixing  (bsc#1268790)</comment>
+    <requestid>1361571</requestid>
+  </revision>
 </revisionlist>

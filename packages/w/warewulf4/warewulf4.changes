@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:04:33 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- adding correct flag --update-overlays fixing  (bsc#1268790)  
+
+-------------------------------------------------------------------
+Fri Jun 19 08:26:32 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updated go-jose to fix CVE-2026-34986 (bsc#1262810)
+- chi is fixed in the upstream project
+
+-------------------------------------------------------------------
 Mon Jun 15 09:29:49 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - updating to v4.7.0 with following security fixes
- * CVE-2026-39821 tracked at bsc#1266483
- * CVE-2026-33814 tracked at bsc#1265653
+ * fixed CVE-2026-39821 (bsc#1266483)
+ * fixed CVE-2026-33814 (bsc#1265653)
 - v4.7.0 with significant changes relative to the v4.6.x series which are:
   * New wwctl unset command
   * Refactored server routes (URLs)
@@ -26,7 +37,7 @@ Mon Jun 15 09:29:49 UTC 2026 - Christian Goll <cgoll@suse.com>
 -------------------------------------------------------------------
 Mon Feb 23 09:29:32 UTC 2026 - Christian Goll <cgoll@suse.com>
 
-- fix CVE-2025-69725 by updating chi
+- fix CVE-2025-69725 (bsc#1258511) by updating chi
   added _service for module fixing
 
 -------------------------------------------------------------------
