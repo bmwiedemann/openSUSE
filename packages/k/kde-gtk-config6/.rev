@@ -335,4 +335,12 @@
     <comment>Plasma 6.7.0 (maybe). K:F already publish disabled. (forwarded request 1359107 from Vogtinator)</comment>
     <requestid>1359146</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>39bf7f5b6c5c8a4522c20ebb300e850e</srcmd5>
+    <version>6.7.1</version>
+    <time>1782377309</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
+    <requestid>1361388</requestid>
+  </revision>
 </revisionlist>
