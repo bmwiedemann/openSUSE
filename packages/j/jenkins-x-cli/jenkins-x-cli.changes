@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jun 24 09:11:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.17:
+  * Bug Fixes
+    - make jx updatebot work (Mårten Svantesson)
+  * Other Changes
+    These commits did not use Conventional Commits formatted
+    messages:
+    - Revert "fix: ensure current directory is the working
+      directory" (Mårten Svantesson)
+- Update to version 3.17.16:
+  * Bug Fixes
+    - ensure current directory is the working directory (Mårten
+      Svantesson)
+- Update to version 3.17.15:
+  * Chores
+    - deps: bump anchore/sbom-action from 0.20.5 to 0.24.0
+      (dependabot[bot])
+- Update to version 3.17.14:
+  * Chores
+    - deps: bump actions/checkout from 4 to 7 (dependabot[bot])
+- Update to version 3.17.13:
+  * Chores
+    - deps: bump actions/setup-go from 5 to 6 (dependabot[bot])
+- Update to version 3.17.12:
+  * Bug Fixes
+    - get rid of build warnings (Mårten Svantesson)
+    - try to get cosign to work (Mårten Svantesson)
+- Update to version 3.17.11:
+  * Chores
+    - deps: upgrade jenkins-x-plugins/jx-promote to version 0.6.41
+      (jenkins-x-bot-test)
+- Update to version 3.17.10:
+  * Bug Fixes
+    - change to use cosign 3 (Mårten Svantesson)
+- Update to version 3.17.9:
+  * Bug Fixes
+    - update sha (Test)
+  * Chores
+    - update coverage report to go 1.26.3 (Test)
+    - upgrade coverage-report pr step to go 1.26.3 (Test)
+    - amend all golint suggestions (Test)
+    - upgrade go 1.26.3 (mentlak)
+- Update to version 3.17.8:
+  * Chores
+    - update go releaser image 1.0.3 (Test)
+- Update to version 3.17.7:
+  * chore: change the name and website of the project
+  * chore: upgrade golang to 1.26
+
+-------------------------------------------------------------------
 Fri May 29 05:53:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.6:

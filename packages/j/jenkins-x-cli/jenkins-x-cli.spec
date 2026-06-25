@@ -19,7 +19,7 @@
 %define executable_name jx
 
 Name:           jenkins-x-cli
-Version:        3.17.6
+Version:        3.17.17
 Release:        0
 Summary:        CLI for Jenkins X
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
 Provides:       jx = %{version}
 
