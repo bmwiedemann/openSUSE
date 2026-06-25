@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-dataformats-text
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-dataformats-text
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Jackson standard text-format data format backends
 License:        Apache-2.0
@@ -26,9 +26,9 @@ Source0:        https://github.com/FasterXML/jackson-dataformats-text/archive/%{
 BuildRequires:  fdupes
 BuildRequires:  jflex
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.17
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.17
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.17
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.18
 BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)
 BuildRequires:  mvn(org.yaml:snakeyaml)
