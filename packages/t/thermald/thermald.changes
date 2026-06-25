@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jun 23 16:00:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.12.2.git+dd186d0 (snapshot of git master
+  past the 2.5.12 release; the package tracks master to avoid the
+  bogus upstream v2.15.10 tag, see upstream issue #487):
+  * New hardware: add NovaLake U/P/H/Hx CPU IDs
+  * Security hardening of the privileged daemon and its handling of
+    firmware GDDV data vaults and dbus input:
+    + open files with O_NOFOLLOW and restrict writes to /sys
+    + canonical path resolution and proper error replies in the
+      dbus helper; sanitize zone names supplied via dbus
+    + sanitize the data vault from /lib/firmware and add bounds /
+      range checks (GDDV, XML config, cpufreq/sysfs reads, max
+      power, IDSP buffer); cap cooling devices, thermal zones,
+      APCT conditions, segments, data-vault size and max exponent
+    + force null termination; drop the /dev/mem workaround
+  * Features: enable/disable features via a config file; virtual
+    sensor support with per-trip min/max cdev state via XML;
+    lockless power sensor read; ITMT hysteresis and table sanity
+    check; store and restore the RAPL register at exit
+  * Bug fixes: fix an infinite loop in update_highest_trip_temp;
+    fix a stale mutex unlock and a missing thd_engine_mutex
+    unlock; fix a regression in the rapl cdev; exception-safe
+    unique_ptr for link_sensors; fix 32-bit compilation error
+  * rapl: raise the max sane power limit from 100W to 1000W
+  * Adaptive mode: support new platforms in adaptive mode only,
+    exit adaptive mode when zones are not created
+  * Drop references to the deprecated dptfxtract and ThermalMonitor
+- Drop power_user_cleanups.patch: upstream now removes the dbus
+  "power group" machinery itself (the patch was a revert of that
+  code and no longer applies)
+- Build on aarch64 as well: upstream 2.5.12 adds a generic ARM
+  thermal backend (src/thd_platform_arm.cpp), so extend
+  ExclusiveArch with aarch64
+- Drop the now-unused dptfxtract Suggests and hicolor-icon-theme
+  BuildRequires (no GUI/icon is shipped), and the leftover
+  sysusers machinery (%sysusers_requires plus the sysuser-shadow
+  and sysuser-tools BuildRequires) since no system user is created
+
+-------------------------------------------------------------------
 Mon Feb 23 09:02:47 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Remove power group

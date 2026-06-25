@@ -256,4 +256,12 @@ D 0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
   * Use C++11 default copy constructor and operator=</comment>
     <requestid>1334572</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>01c2f4242643e1b56e8681ee71e5e91f</srcmd5>
+    <version>2.5.12.2.git+dd186d0</version>
+    <time>1782377839</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361583</requestid>
+  </revision>
 </revisionlist>
