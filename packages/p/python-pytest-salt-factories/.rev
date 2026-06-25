@@ -64,4 +64,12 @@
   * Do not overload fixture names and do not mark fixtures.</comment>
     <requestid>1320410</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5603ac43fc44be0ae771a0637c55efd1</srcmd5>
+    <version>1.0.5</version>
+    <time>1782377769</time>
+    <user>anag_factory</user>
+    <comment>- Do not build for Python 3.14 as it is incompatible (bsc#1267022)</comment>
+    <requestid>1361552</requestid>
+  </revision>
 </revisionlist>

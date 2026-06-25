@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-salt-factories
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,6 +21,8 @@
 %else
 %bcond_with libalternatives
 %endif
+
+%define skip_python314 1
 
 Name:           python-pytest-salt-factories
 Version:        1.0.5

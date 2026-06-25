@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 12:44:47 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Do not build for Python 3.14 as it is incompatible (bsc#1267022)
+
+-------------------------------------------------------------------
 Fri Nov 28 05:13:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Only require pytest-subtests with pytest < 9.
