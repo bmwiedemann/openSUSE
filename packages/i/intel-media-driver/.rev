@@ -590,4 +590,12 @@ versions of libva(2)</comment>
   + Updated supplements.inc.</comment>
     <requestid>1351001</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>d9ce7d33c620c75c92fad4d55c5691c2</srcmd5>
+    <version>26.2.2</version>
+    <time>1782400447</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1361721</requestid>
+  </revision>
 </revisionlist>

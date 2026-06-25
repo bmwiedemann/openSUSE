@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jun 21 08:37:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26.2.2:
+  + [Encode] Fix AV1 temporal MV buffer and SavedOrderHints for
+    deduplication
+- Changes from version 26.2.1:
+  + [Encode] Add DDI ETW trace and API sticker for new encode codec
+  + Add ETW-based DDI tracing and API sticker instrumentation for a
+    new encode codec on the APO D3D11 path, mirroring the existing
+    HEVC DDI trace pattern.
+  + Reserve four new encode DDI event slots in the public
+    MEDIA_EVENT
+  + enum: status report, caps, picture parameters, and API sticker.
+  + Add internal trace helpers for the new caps and
+    picture-parameter structures, and reuse the existing shared
+    status-report serializer.
+  + Instrument every DDI entry point in the new encode class with
+    API sticker start/stop events. The instrumentation uses an RAII
+    scope guard so the stop event is emitted automatically on every
+    return path (including the early returns driven by
+    DDI_CODEC_CHK_*_RETURN macros), guaranteeing matched start/stop
+    pairs in captured ETW traces. Explicit returns capture the
+    actual HRESULT.
+  + Extend the internal ETW manifest and MediaAnalyzer metadata
+    with the corresponding tasks, events, templates, and API value
+    map so the new events are decodable end-to-end.
+  + This makes the new encode DDI observable for debugging,
+    capture, and post-processing without changing any runtime
+    behavior.
+
+-------------------------------------------------------------------
 Tue May  5 10:00:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 26.2.0
