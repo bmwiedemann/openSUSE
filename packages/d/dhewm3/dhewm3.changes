@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun  9 08:46:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.5.5
+  * Build with SDL3
+  Release highlights:
+  * several sources of microstutters have been removed (like the
+   old 60 vs 62.5fps problem) so the game should run smoother than
+   before, especially when using VSync.
+  * A new feature is the support for widescreen GUIs. It requires
+    adjusting the .ui files; Arl created versions for the base
+    game, Resurrection of Evil and The Lost Mission, they are
+    provided as an optional Download (dhewm3-wide-guis-*.zip).
+  * Note that especially the main menus may have some little
+    glitches here and there - they're very big/complex, so
+    converting them to widescreen wasn't exactly straightforward.
+  * dhewm3 now supports BC7-compressed (BPTC) .dds textures. They
+    offer better quality than the older S3TC/DXT/BC1-3 texture
+    compression standard that Doom3 always supported, at the same
+    size as DXT3-5. Useful for high-res retexturing packs.
+  Full changelog:
+  * https://github.com/dhewm/dhewm3/releases/tag/1.5.5
+
+
+-------------------------------------------------------------------
 Sun Apr 13 16:51:40 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Add BuildRequires pkgconfig(x11) to fix building

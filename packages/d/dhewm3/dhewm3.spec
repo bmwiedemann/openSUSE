@@ -1,7 +1,7 @@
 #
 # spec file for package dhewm3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dhewm3
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        DOOM 3 source port
 License:        GPL-3.0-only
@@ -27,9 +27,9 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(sdl2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(openal)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(x11)
 Provides:       bundled(miniz)
 
@@ -43,12 +43,13 @@ Unlike the original DOOM 3, dhewm3 uses:
 - Better support for widescreen (and arbitrary display resolutions)
 
 %prep
-%setup -q
-%autopatch -p1
+%autosetup -p1
 
 %build
 cd neo
-%cmake -DREPRODUCIBLE_BUILD=ON ..
+%cmake \
+  -DREPRODUCIBLE_BUILD=ON \
+  -DSDL3=ON
 %make_jobs
 
 %install
