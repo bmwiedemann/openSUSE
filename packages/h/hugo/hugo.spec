@@ -17,7 +17,7 @@
 
 
 Name:           hugo
-Version:        0.161.1
+Version:        0.163.1
 Release:        0
 Summary:        Static website generator written in Go
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 Source2:        remove-wasm-tomath.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkg-config
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  pkgconfig(libsass)
 BuildRequires:  pkgconfig(libwebp)
 

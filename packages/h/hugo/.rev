@@ -1919,4 +1919,41 @@
   * Rename deprecated cascade._target to cascade.target in tests (forwarded request 1350763 from dirkmueller)</comment>
     <requestid>1350847</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>20376532dad33322cf18845f235c14a4</srcmd5>
+    <version>0.163.1</version>
+    <time>1782377884</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.163.1 (bsc#1269015, bsc#1269015):
+  * releaser: Bump versions for release of 0.163.1
+  * build(deps): bump golang.org/x/image from 0.41.0 to 0.42.0
+  * Fix multi --renderSegments merge behavior
+  * security: Normalize integer IPv4 host encodings in http.urls check
+  * Drop symlinks in os.ReadDir, os.ReadFile, os.Stat and os.FileExists
+  * Update CI workflow to exclude macOS
+  * commands: Fix convert command
+  * releaser: Prepare repository for 0.164.0-DEV
+  * releaser: Bump versions for release of 0.163.0
+  * pagesfromdata: Use relative path for content adapter template metrics
+  * ci: Re-add macos-latest to the test matrix
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * build(deps): bump github.com/tetratelabs/wazero
+  * all: Run go fix ./...
+  * images: Deprecate Imaging.Compression and move it down to webp and avif configs
+  * Only support the latest Go version
+  * resources/jsconfig: Remove deprecated baseUrl setting
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.14.1 to 1.15.0
+  * page: Add IsBranch and deprecate IsNode
+  * images: Force cache invalidation for AVIF target
+  * images: Add a per-format AVIF hint setting
+  * build(deps): bump github.com/getkin/kin-openapi from 0.138.0 to 0.139.0
+  * images: Make AVIF chroma subsampling content-aware via the hint
+  * Cap AVIF lossy quality at 99
+  * config: Deprecate the glogal imaging quality setting
+  * images: Make 60 the default quality for AVIF
+  * livereload: Disconnect from websocket server on pageswap
+  * tpl/tplimpl/embedded: Prevent leading newline in sitemap template
+  * images: Recover from memory alloc errors in WASM image processors</comment>
+    <requestid>1361628</requestid>
+  </revision>
 </revisionlist>

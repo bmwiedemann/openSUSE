@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Wed Jun 24 17:06:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.163.1 (bsc#1269015, bsc#1269015):
+  * releaser: Bump versions for release of 0.163.1
+  * build(deps): bump golang.org/x/image from 0.41.0 to 0.42.0
+  * Fix multi --renderSegments merge behavior
+  * security: Normalize integer IPv4 host encodings in http.urls check
+  * Drop symlinks in os.ReadDir, os.ReadFile, os.Stat and os.FileExists
+  * Update CI workflow to exclude macOS
+  * commands: Fix convert command
+  * releaser: Prepare repository for 0.164.0-DEV
+  * releaser: Bump versions for release of 0.163.0
+  * pagesfromdata: Use relative path for content adapter template metrics
+  * ci: Re-add macos-latest to the test matrix
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * build(deps): bump github.com/tetratelabs/wazero
+  * all: Run go fix ./...
+  * images: Deprecate Imaging.Compression and move it down to webp and avif configs
+  * Only support the latest Go version
+  * resources/jsconfig: Remove deprecated baseUrl setting
+  * build(deps): bump github.com/rogpeppe/go-internal from 1.14.1 to 1.15.0
+  * page: Add IsBranch and deprecate IsNode
+  * images: Force cache invalidation for AVIF target
+  * images: Add a per-format AVIF hint setting
+  * build(deps): bump github.com/getkin/kin-openapi from 0.138.0 to 0.139.0
+  * images: Make AVIF chroma subsampling content-aware via the hint
+  * Cap AVIF lossy quality at 99
+  * config: Deprecate the glogal imaging quality setting
+  * images: Make 60 the default quality for AVIF
+  * livereload: Disconnect from websocket server on pageswap
+  * tpl/tplimpl/embedded: Prevent leading newline in sitemap template
+  * images: Recover from memory alloc errors in WASM image processors
+  * images: Add quality setting per image format
+  * all: Adjust tests for deprecated link and image render hook settings
+  * misc: Remove duplicate words in comments
+  * Add some PNG to AVIF golden test cases
+  * releaser: Prepare repository for 0.163.0-DEV
+  * releaser: Bump versions for release of 0.162.1
+  * modules/npm: Fix false stale warning after npm pack
+  * tpl/tplimpl: Fix X shortcode test
+  * tpl: Skip broken x shortcode test
+  * Revert "tpl/collections: Make dict return nil when no values are provided"
+  * tpl/time: Fix locale-specific month abbreviations
+  * releaser: Bump versions for release of 0.162.0
+  * Disallow HTML content by default
+  * Add image processing support for AVIF
+  * config: Preserve intentionally empty maps
+  * hugolib: Fix Page.GitInfo for modules with go.mod in a repo subdirectory
+  * hugolib: Merge existing hugo_stats.json when renderSegments is set
+  * all: Replace RWMutex struct caches with ConcurrentMap
+  * tpl/tplimpl: Consolidate and improve embedded template integration tests
+  * parser: Drop empty sub maps from hugo config output
+  * markup/highlight: Allow overriding type and code via options
+  * Fix typo in CONTRIBUTING.md
+  * Remove note on refactoring contributions
+  * Update AI assistance disclosure requirements
+  * build(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+  * build(deps): bump golang.org/x/image from 0.40.0 to 0.41.0
+  * hugolib: Use AllTranslated in IsTranslated
+  * tpl: Simplify sitemap template
+  * tpl: Use AllTranslations in sitemap template
+  * tpl/collections: Make dict return nil when no values are provided
+  * Sync Go template package to 1.26.3
+  * Squashed 'docs/' changes from 0755fb534d..1f8ddb8a52
+  * resources: Fix the :counter placeholder
+  * Upgrade to Go 1.26.3
+  * ci: Check embedded template formatting with gotmplfmt
+  * tpl: Run gotmplfmt -w .
+  * build(deps): bump github.com/getkin/kin-openapi from 0.137.0 to 0.138.0
+  * build(deps): bump github.com/JohannesKaufmann/html-to-markdown/v2
+  * markup/goldmark/codeblocks: Always split Chroma options into .Options
+  * docs: Update docs.yaml
+  * hugolib: Allow empty params front matter
+  * commands: Fix import from Jekyll
+  * common/hmaps: Merge slice-valued module config into site config
+  * build(deps): bump golang.org/x/image from 0.39.0 to 0.40.0
+  * tpl: Use GetMatch for both local and global image resources
+  * Revert "markup/tableofcontents: Skip empty TOC levels"
+  * build(deps): bump golang.org/x/tools from 0.44.0 to 0.45.0
+  * tpl/templates: Reject Defer inside partialCached
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3
+  * common/hexec: Make NODE_PATH a fallback for ESM bare imports
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.3.0 to 2.3.1
+  * config: Allow repeating the root key in /config files
+  * Revise test naming guidelines in AGENTS.md
+  * Update AGENTS.md
+  * js: Return error for missing batch imports
+  * resources/images: Keep smart crop target size
+  * testing: Use synctest where relevant
+  * Fix prevention of direct symlink reads in resources.Get
+  * security: Validate redirects against security.http.urls
+  * markup/tableofcontents: Skip empty TOC levels
+  * Fall back to hugo.buildDate in hugo.BuildDate() in non-vcs builds
+  * agents: Add a note to Ai security researchers
+  * deps: Upgrade to Chroma v2.24.1
+  * commands: Fix github-dark chromastyles
+  * css: Make css.Build's file-loader URLs absolute to web context root
+  * hugolib: Don't warn about lang/kind/path coming from cascade.params
+  * markup/goldmark: Unwrap inner HTML for plain code blocks
+  * tpl/tplimpl: Extend page image lookup to include global resources
+  * security: Allow hostnames starting with digits in default http.urls
+  * commands: Improve description of command flags
+  * releaser: Prepare repository for 0.162.0-DEV
+
+-------------------------------------------------------------------
 Mon May  4 16:20:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.161.1:
