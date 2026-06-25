@@ -251,6 +251,7 @@ Summary:        System user and group 'velociraptor'
 Version:        1.0.0
 License:        Apache-2.0
 Group:          System/Monitoring
+%sysusers_requires
 Provides:       group(velociraptor)
 Provides:       user(velociraptor)
 BuildArch:      noarch

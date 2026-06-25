@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 24 15:16:54 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Add sysusers_requires macro to system-user-velociraptor
+
+-------------------------------------------------------------------
 Fri Jun 05 13:12:24 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
 
 - Update to version 0.7.0.4.git185.a5708584:
