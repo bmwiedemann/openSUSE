@@ -35,6 +35,8 @@ Patch0:         GraphicsMagick-perl-linkage.patch
 Patch1:         GraphicsMagick-disable-insecure-coders.patch
 # CVE-2026-42050: Stack buffer overflow in XTileImage [bsc#1265048]
 Patch7:         GraphicsMagick-CVE-2026-42050.patch
+# CVE-2026-46523: heap-use-after-free via a crafted MSL image [bsc#1268125]
+Patch8:         GraphicsMagick-CVE-2026-46523.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

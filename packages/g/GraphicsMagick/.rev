@@ -1418,4 +1418,12 @@ New Features:
     <comment>[bsc#1265048]</comment>
     <requestid>1358935</requestid>
   </revision>
+  <revision rev="106" vrev="3">
+    <srcmd5>67c61add4d3b2ffb0b43795f8d80b062</srcmd5>
+    <version>1.3.47</version>
+    <time>1782377393</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-46523, [bsc#1268125]</comment>
+    <requestid>1361542</requestid>
+  </revision>
 </revisionlist>
