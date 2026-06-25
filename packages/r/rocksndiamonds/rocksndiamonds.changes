@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jun 21 13:44:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4.2.2
+  * added checkbox to use fast opening and closing exits and gates.
+  * added support for non-masked drawing for game elements info
+    screen.
+  * added truncating text if it does not fit into the playfield
+    viewport.
+  * added flags for DC style behavior to fix a few old tapes.
+  * fixed visual bug with adjusting scrollbar while dragging it.
+  * fixed running program in headless mode.
+
+-------------------------------------------------------------------
+Sat Jun 13 09:16:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.4.2.1
+  * fixed animation of BD style rocket.
+  * fixed animation when collecting BD style clock.
+  * fixed animation when releasing BD diamond from wall with BD
+    jackhammer.
+  * changed pause button to behave like pause key for tape recorder
+
+-------------------------------------------------------------------
 Mon Jun  8 08:54:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.4.2.0
