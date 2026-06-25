@@ -1014,4 +1014,24 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1353993</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>35657a1922cd487929fc27c1c5a92ce3</srcmd5>
+    <version>2.93</version>
+    <time>1782377381</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.93:
+  * CVE-2026-12725, bsc#1268764: Heap buffer overflow in
+    `log_query()` when logging unsupported DS/DNSKEY replies.
+  * Fix a corner-case in DNSSEC validation with wildcards.
+  * Fix DNSSEC failure with spurious RRSIGs.
+  * Fix DNSSEC fail with CNAME replies to DS queries.
+  * Fix regression in 2.92 release which broke DHCPv6 when a DHCP
+    relay is in use.
+  * Modify the inotify implementation so that inotify watches are
+    only created after dnsmasq has changed permissions and userid.
+  * CVE-2026-2291: Rework storage allocation for domain names.
+  * Obsoletes dnsmasq-CVE-2026-6507.patch
+  * Obsoletes dnsmasq-Fix-FTBFS-nettle-4.0.patch</comment>
+    <requestid>1361305</requestid>
+  </revision>
 </revisionlist>

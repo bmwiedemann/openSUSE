@@ -27,7 +27,7 @@ Requires(pre):  group(nogroup)
 %define dnsmasq_group nogroup
 %endif
 Name:           dnsmasq
-Version:        2.92rel2
+Version:        2.93
 Release:        0
 Summary:        DNS Forwarder and DHCP Server
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -40,9 +40,6 @@ Source4:        dnsmasq.service
 Source5:        rc.dnsmasq-suse
 Source6:        system-user-dnsmasq.conf
 Patch0:         dnsmasq-groups.patch
-#PATCH-FIX-UPSTREAM bsc#1257934 FTBFS with libnettle 4.0 update
-Patch1:         dnsmasq-Fix-FTBFS-nettle-4.0.patch
-Patch2:         dnsmasq-CVE-2026-6507.patch
 BuildRequires:  dbus-1-devel
 BuildRequires:  dos2unix
 BuildRequires:  libnettle-devel

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:36:43 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 2.93:
+  * CVE-2026-12725, bsc#1268764: Heap buffer overflow in
+    `log_query()` when logging unsupported DS/DNSKEY replies.
+  * Fix a corner-case in DNSSEC validation with wildcards.
+  * Fix DNSSEC failure with spurious RRSIGs.
+  * Fix DNSSEC fail with CNAME replies to DS queries.
+  * Fix regression in 2.92 release which broke DHCPv6 when a DHCP
+    relay is in use.
+  * Modify the inotify implementation so that inotify watches are
+    only created after dnsmasq has changed permissions and userid.
+  * CVE-2026-2291: Rework storage allocation for domain names.
+  * Obsoletes dnsmasq-CVE-2026-6507.patch
+  * Obsoletes dnsmasq-Fix-FTBFS-nettle-4.0.patch
+
+-------------------------------------------------------------------
 Tue May 12 09:06:00 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to security release 2.92rel2:
