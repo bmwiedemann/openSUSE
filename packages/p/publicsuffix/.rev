@@ -1868,4 +1868,12 @@ Now with build cycle removed.</comment>
   * Add pplx.app (#2821)</comment>
     <requestid>1354634</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>3dd597c16b4b8f5c23134759ed083a94</srcmd5>
+    <version>20260622</version>
+    <time>1782377378</time>
+    <user>anag_factory</user>
+    <comment>Update to version 20260622 (latest Public Suffix List)</comment>
+    <requestid>1361300</requestid>
+  </revision>
 </revisionlist>

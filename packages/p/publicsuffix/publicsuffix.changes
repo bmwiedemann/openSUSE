@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 07:55:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260622:
+  * Add mkm.fan to private domains (#2937)
+  * util: gTLD data autopull updates for 2026-06-13T16:12:40 UTC (#2958)
+  * Add vibehost.space for cross-tenant cookie isolation (#2932)
+  * Add OpenAI private suffixes (#2930)
+  * add khsj.cn and canva.link (#2898)
+  * add ai.id (#2922)
+  * Add book.online (#2890)
+
+-------------------------------------------------------------------
 Fri May 22 08:21:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260513:
