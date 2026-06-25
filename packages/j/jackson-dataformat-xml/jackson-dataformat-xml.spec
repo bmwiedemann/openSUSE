@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-dataformat-xml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-dataformat-xml
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Jackson extension component for reading and writing XML encoded data
 License:        Apache-2.0
@@ -25,9 +25,9 @@ URL:            https://github.com/FasterXML/jackson-dataformat-xml
 Source0:        %{url}/archive/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core)
-BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind)
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-core) >= 2.18
+BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-databind) >= 2.18
 BuildRequires:  mvn(com.fasterxml.jackson:jackson-base:pom:)
 BuildRequires:  mvn(com.fasterxml.woodstox:woodstox-core)
 BuildRequires:  mvn(com.google.code.maven-replacer-plugin:replacer)

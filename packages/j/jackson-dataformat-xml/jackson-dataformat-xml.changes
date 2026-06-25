@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:57:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.18.8
+  * Changes of 2.18.8
+    + #863: Fix to support Woodstox 7.2.0 (but no dep version bump)
+  * Changes of 2.18.2
+    + #678: XML module not registered correctly when setting a
+      custom 'SerializerFactory'
+    + #682: 'MismatchedInputException' encountered while
+      deserializing XML to an Enum type using a factory method
+  * Changes of 2.18.0
+    + Remove unnecessary synchronization around 'LRUMap' in
+      'XmlRootNameLookup'
+    + Upgrade Woodstox to 7.0.0 (dependency fixes)
+
+-------------------------------------------------------------------
 Wed Nov  6 07:59:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.17.3
@@ -8,7 +24,7 @@ Wed Nov  6 07:59:22 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 Wed Aug  7 09:50:52 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.17.2
-  * #657: Nesting depth in `XmlReadContext` is not
+  * #657: Nesting depth in 'XmlReadContext' is not
     incremented/decremented on 
     JsonToken.START_OBJECT/JsonToken.END_OBJECT
   * Upgrade Woodstox to 6.7.0 (dependency fixes)
@@ -18,18 +34,18 @@ Mon May 20 12:09:23 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 2.17.1
   * #646: Deserializing fails when using builder classes with
-    `Iterable` Collection setters (fix contributed by Bas P)
+    'Iterable' Collection setters (fix contributed by Bas P)
   * Upgrade Woodstox to 6.6.2 (dependency fixes)
 - Includes changes from 2.17.0
-  * #324: Support use of `xsi:type` for polymorphic serialization
-    (`ToXmlGenerator.Feature.AUTO_DETECT_XSI_TYPE`)
-  * #618: `ArrayIndexOutOfBoundsException` thrown for invalid
+  * #324: Support use of 'xsi:type' for polymorphic serialization
+    ('ToXmlGenerator.Feature.AUTO_DETECT_XSI_TYPE')
+  * #618: 'ArrayIndexOutOfBoundsException' thrown for invalid
     ending XML string when using JDK default Stax XML parser
-  * #631: Add `XmlMapper.createGenerator(XMLStreamWriter)` and
-    `XmlMapper.createParser(XMLStreamReader)` overloads
+  * #631: Add 'XmlMapper.createGenerator(XMLStreamWriter)' and
+    'XmlMapper.createParser(XMLStreamReader)' overloads
   * #634: Support use of xsi:type for polymorphic deserialization
     (FromXmlParser.Feature.AUTO_DETECT_XSI_TYPE)
-  * #637: `JacksonXmlAnnotationIntrospector.findNamespace()` should
+  * #637: 'JacksonXmlAnnotationIntrospector.findNamespace()' should
     properly merge namespace information
   * #643: XML serialization of floating-point infinity is
     incompatible with JAXB and XML Schema (contributed by Alex H)
