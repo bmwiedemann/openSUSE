@@ -30,7 +30,7 @@
 
 %global __requires_exclude ^typelib\\(GtkosxApplication\\)|typelib\\(GdkGLExt\\)|typelib\\(GtkGLExt\\).*$
 Name:           xpra
-Version:        6.4.4
+Version:        6.5
 Release:        0
 Summary:        Remote display server for applications and desktops
 License:        BSD-3-Clause AND GPL-2.0-or-later AND LGPL-3.0-or-later AND MIT
@@ -234,6 +234,15 @@ mv %{buildroot}%{_sysconfdir}/pam.d/xpra %{buildroot}%{_pam_vendordir}
 
 %fdupes -s %{buildroot}
 rm -v %{buildroot}%{_datadir}/gnome-shell/extensions/input-source-manager@xpra_org/COPYING
+### 20260411: This is a plugin for wireshark, defaults to going in /usr - if
+###   there's a time where it's needed/requested/desired, it can be offered as
+###   a sub-package -> wireshark-plugin-xpra
+###   Maybe something like wireshark-plugin-libvirt does:
+###     /usr/lib64/wireshark/plugins/4.6/epan
+###     /usr/lib64/wireshark/plugins/4.6/epan/libvirt.so
+###
+rm -v %{buildroot}%{_prefix}/xpra_dissector.lua
+#####
 
 # 20250419: For some reason these are copied from "build/scripts-3.13",
 # then end up with "#!python" at the top ...
@@ -346,6 +355,7 @@ done
 %{_datadir}/pixmaps/xpra-mdns.png
 %{_datadir}/pixmaps/xpra-shadow.png
 %{_datadir}/pixmaps/xpra.png
+%{_datadir}/pixmaps/xpra-large.png
 %{_datadir}/mime/packages/application-x-xpraconfig.xml
 %{_datadir}/xpra/autostart.desktop
 %{_datadir}/xpra/bell.wav
