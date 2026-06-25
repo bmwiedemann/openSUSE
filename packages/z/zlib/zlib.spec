@@ -30,8 +30,6 @@ Source5:        baselibs.conf
 Source6:        zlib-rpmlintrc
 #PATCH-FIX-SUSE: compiler check of varguments passed to gzprintf
 Patch1:         zlib-format.patch
-#PATCH-FIX-SUSE do not store negative values in uInt
-Patch2:         0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
 #PATCH-FIX-SUSE do not check exact version match as the lib can be updated
 #               we should simply rely on soname versioning to protect us
 Patch3:         zlib-no-version-check.patch

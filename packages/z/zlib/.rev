@@ -794,4 +794,17 @@ Passed the spec file through spec cleaner (forwarded request 116645 from worldci
     <comment></comment>
     <requestid>1348790</requestid>
   </revision>
+  <revision rev="94" vrev="3">
+    <srcmd5>fcfea580b518d73b126fcaec64807088</srcmd5>
+    <version>1.3.1</version>
+    <time>1782377281</time>
+    <user>anag_factory</user>
+    <comment>- drop 0001-Do-not-try-to-store-negative-values-in-unsigned-int.patch
+  * effectively a noop now, as strstart and insert are unsigned,
+    hence the if condition is always true (if not equal).
+
+  * Fixed a logic error in minizip argument processing.
+- build zlib with optflags again</comment>
+    <requestid>1361292</requestid>
+  </revision>
 </revisionlist>
