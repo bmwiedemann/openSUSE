@@ -1,0 +1,59 @@
+--- a/userspace/libsinsp/sinsp_thread_pool_bs.h	2026-06-23 16:46:09.785877772 +0200
++++ b/userspace/libsinsp/sinsp_thread_pool_bs.h	2026-06-23 16:46:09.821881783 +0200
+@@ -19,9 +19,15 @@
+ 
+ #include <libsinsp/sinsp_thread_pool.h>
+ 
+-namespace BS {
+-class thread_pool;
+-};
++#include <BS_thread_pool.hpp>
++
++// BS::thread_pool became a class template in bshoshany-thread-pool v5;
++// alias it version-agnostically so this builds against both v4 and v5.
++#if defined(BS_THREAD_POOL_VERSION_MAJOR) && BS_THREAD_POOL_VERSION_MAJOR >= 5
++using bs_thread_pool_t = BS::thread_pool<>;
++#else
++using bs_thread_pool_t = BS::thread_pool;
++#endif
+ 
+ class sinsp_thread_pool_bs : public sinsp_thread_pool {
+ public:
+@@ -39,11 +45,11 @@
+ 
+ private:
+ 	struct default_bs_tp_deleter {
+-		void operator()(BS::thread_pool* __ptr) const;
++		void operator()(bs_thread_pool_t* __ptr) const;
+ 	};
+ 
+ 	void run_routine(std::shared_ptr<std::function<bool()>> id);
+ 
+-	std::unique_ptr<BS::thread_pool, default_bs_tp_deleter> m_pool;
++	std::unique_ptr<bs_thread_pool_t, default_bs_tp_deleter> m_pool;
+ 	std::list<std::shared_ptr<std::function<bool()>>> m_routines;
+ };
+--- a/userspace/libsinsp/sinsp_thread_pool_bs.cpp	2026-06-23 16:46:09.789878218 +0200
++++ b/userspace/libsinsp/sinsp_thread_pool_bs.cpp	2026-06-23 16:46:09.821881783 +0200
+@@ -20,16 +20,16 @@
+ 
+ #include <BS_thread_pool.hpp>
+ 
+-void sinsp_thread_pool_bs::default_bs_tp_deleter::operator()(BS::thread_pool* __ptr) const {
+-	std::default_delete<BS::thread_pool>{}(__ptr);
++void sinsp_thread_pool_bs::default_bs_tp_deleter::operator()(bs_thread_pool_t* __ptr) const {
++	std::default_delete<bs_thread_pool_t>{}(__ptr);
+ }
+ 
+ sinsp_thread_pool_bs::sinsp_thread_pool_bs(size_t num_workers): m_pool(nullptr), m_routines() {
+ 	if(num_workers == 0) {
+-		m_pool = std::unique_ptr<BS::thread_pool, default_bs_tp_deleter>(new BS::thread_pool());
++		m_pool = std::unique_ptr<bs_thread_pool_t, default_bs_tp_deleter>(new bs_thread_pool_t());
+ 	} else {
+-		m_pool = std::unique_ptr<BS::thread_pool, default_bs_tp_deleter>(
+-		        new BS::thread_pool(num_workers));
++		m_pool = std::unique_ptr<bs_thread_pool_t, default_bs_tp_deleter>(
++		        new bs_thread_pool_t(num_workers));
+ 	}
+ }
+ 

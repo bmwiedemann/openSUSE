@@ -7,4 +7,12 @@
     <comment>falco-libs 0.25.4: ship the libscap test_input engine (libsinsp links it via DT_NEEDED under CREATE_TEST_TARGETS, so libsinsp0 needs it at runtime); restrict to the modern-BPF vmlinux.h arches</comment>
     <requestid>1360226</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>e7f9d00e3d148416de2ed3ed5f80cfd5</srcmd5>
+    <version>0.25.4</version>
+    <time>1782377503</time>
+    <user>anag_factory</user>
+    <comment>Adapt to bshoshany-thread-pool v5 (BS::thread_pool now a class template); patch is v4/v5-compatible</comment>
+    <requestid>1361458</requestid>
+  </revision>
 </revisionlist>

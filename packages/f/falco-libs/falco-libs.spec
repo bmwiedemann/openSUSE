@@ -25,6 +25,10 @@ Summary:        Libraries for system inspection (libscap and libsinsp)
 License:        Apache-2.0
 URL:            https://github.com/falcosecurity/libs
 Source0:        https://github.com/falcosecurity/libs/archive/%{version}.tar.gz#/falco-libs-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM support-bshoshany-thread-pool-v5.patch -- build against
+# bshoshany-thread-pool v5 (BS::thread_pool is now a class template) while
+# staying compatible with v4
+Patch0:         support-bshoshany-thread-pool-v5.patch
 # abseil-cpp-devel is pulled in transitively by re2's headers
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  bpftool
