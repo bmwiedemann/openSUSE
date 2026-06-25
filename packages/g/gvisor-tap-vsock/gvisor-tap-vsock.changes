@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jun 25 06:10:02 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 0.8.9:
+  * fix: ensure IPV4Broadcast check remains for UDP
+  * doc: clarify ec2-metadata-access setting
+  * fix: apply ec2MetadataAccess bypass to UDP forwarder for link-local traffic
+  * build(deps): bump github.com/apparentlymart/go-cidr from 1.1.0 to 1.1.1
+  * unixgram transport: build for all Unix(-like) platforms again - can be used by libkrun on Linux
+  * build(deps): bump golang.org/x/net from 0.52.0 to 0.53.0
+  * Fix issue where udp_proxy enters a tight loop polling the socket if the read returns 0 with err = nil.
+  * build(deps): bump golang.org/x/mod from 0.34.0 to 0.35.0
+  * Remove duplicate check for `log-file`
+  * Fix support for 'log-file' arg
+  * test: Reword failure message
+  * build(deps): bump golang.org/x/crypto from 0.49.0 to 0.50.0
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /tools
+  * build(deps): bump golang.org/x/sys from 0.42.0 to 0.43.0
+  * build(deps): bump golang.org/x/mod from 0.33.0 to 0.34.0
+  * build(deps): bump github.com/coreos/stream-metadata-go
+  * build(deps): bump golang.org/x/crypto from 0.48.0 to 0.49.0
+  * ci: drop Go 1.24 from build matrix; align artifact upload with 1.25.x
+  * build(deps): bump golang.org/x/sync from 0.19.0 to 0.20.0
+  * fix(gvproxy): propagate --listen-stdio flag into config
+  * build(deps): bump actions/upload-artifact from 6 to 7
+  * gvproxy: Fix --log-file having no effect
+  * build(deps): bump golang.org/x/mod from 0.32.0 to 0.33.0
+  * build(deps): bump golang.org/x/crypto from 0.47.0 to 0.48.0
+
+-------------------------------------------------------------------
 Fri Feb 20 11:58:32 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 0.8.8:
