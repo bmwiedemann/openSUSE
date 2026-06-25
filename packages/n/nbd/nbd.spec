@@ -27,6 +27,8 @@ Source1:        %{name}-server.service
 Source3:        config.example
 Source4:        nbd-server.sysconfig
 Source5:        nbd-client.service
+# PATCH-FIX-UPSTREAM nbd-fix-device-parsing.patch boo#1268185 -- fix nbdtab device parsing in all netlink paths (upstream commit a80304e10e97)
+Patch0:         nbd-fix-device-parsing.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

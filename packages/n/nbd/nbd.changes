@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:41:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add nbd-fix-device-parsing.patch to fix nbdtab device parsing
+  in all netlink paths (disconnect/check/connect), which broke
+  dracut's TEST-72-NBD with nbd 3.27.1 (boo#1268185, upstream
+  commit a80304e10e97)
+
+-------------------------------------------------------------------
 Tue Jun  2 16:15:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.27.1:
