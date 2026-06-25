@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.103.0
+Version:        1.105.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT

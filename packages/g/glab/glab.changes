@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:14:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.105.0:
+  * Features
+    - c8fed254: feat(orbit): rename --format flag to
+      --response-format (Dmitry Gruzd dgruzd@gitlab.com)
+  * Bug Fixes
+    - e9a1266d: fix(orbit): handle new nested status response shape
+      (Dmitry Gruzd dgruzd@gitlab.com)
+    - 122f46f4: fix: route deprecation warnings to stderr (Kai
+      Armstrong karmstrong@gitlab.com)
+  * Dependencies
+    - ba0f56a8: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.40.1 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+- Update to version 1.104.0:
+  * Features
+    - 5380ef66: feat(duo): warn when running duo cli under snap
+      confinement (Kai Armstrong karmstrong@gitlab.com)
+    - 4ee1edf5: feat(packages): add upload command (Oscar Tovar
+      otovar@gitlab.com)
+    - 383d5994: feat: generate GitLab Docs navigation block for
+      glab (Brendan Lynch blynch@gitlab.com)
+  * Documentation
+    - 6440f987: docs(skills): improve glab threaded-reply guidance
+      (Thomas Schmidt tschmidt@gitlab.com)
+  * Dependencies
+    - 2ba749a0: chore(deps): update module charm.land/glamour/v2 to
+      v2.0.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 5f958dff: chore(deps): update module charm.land/lipgloss/v2
+      to v2.0.4 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 4e20a953: chore(deps): update module
+      github.com/coder/websocket to v1.8.15 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 2f358bfa: chore(deps): update module golang.org/x/crypto to
+      v0.53.0 (Jay McCure jmccure@gitlab.com)
+    - d9be4c7a: chore(deps): update module k8s.io/client-go to
+      v0.36.2 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - dd6eb3c8: chore: update labels in templates (Kai Armstrong
+      karmstrong@gitlab.com)
+    - 41afe2f6: refactor: uppercase initialisms in test key
+      generators (Jay McCure jmccure@gitlab.com)
+
+-------------------------------------------------------------------
 Thu Jun 18 07:09:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.103.0:
