@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:00:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Changes since 6.7.0:
+  * Update version for new release 6.7.1
+  * applets/kickoff: show sidebar highlight with switch on hover (kde#521558)
+  * applets/kickoff: explicitly set implicit sizes for fullRep StackView (kde#521383)
+  * kcms/gamecontroller: Disable gamepad input emulation by default
+  * applets/taskmanager: fix badge overflow at extreme margins of usage (kde#521562)
+  * kcms/keyboard: Ensure that keyboards without variant info don't show "undefined" as variant
+
+-------------------------------------------------------------------
 Fri Jun 12 19:08:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
