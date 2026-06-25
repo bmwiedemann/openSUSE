@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:01:02 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.1:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.1
+- Changes since 6.7.0:
+  * Update version for new release 6.7.1
+  * table: Do nothing if data() functions are passed an invalid index
+  * table: Make sure to cleanup sorted columns when using "hide column" on table
+  * table: Explicitly remove duplicate entries from sortedColumns in ColumnSFModel (kde#518073)
+
+-------------------------------------------------------------------
 Fri Jun 12 19:08:20 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.0:
