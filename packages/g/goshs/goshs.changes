@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jun 24 06:35:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.2
+  New Features
+  * Payload templating — Files can now be rendered as Go templates
+    on the fly. Request a file with the ?tpl query parameter and
+    {{.VAR}} placeholders are substituted at download time. Enable
+    with --template and pass variables via the repeatable
+    --tpl-var KEY=VALUE flag (e.g. --tpl-var LPORT=4444). Ideal for
+    serving payloads/scripts that need host- or port-specific
+    values baked in without editing files on disk.
+  * Resumable downloads (HTTP Range support) — The file handler now
+    honors Range requests, enabling partial content responses and
+    resumable/interrupted downloads of large files.
+  Security Fixes
+  * Bulk-download ACL bypass — Selecting a parent directory for
+    bulk (zip) download no longer bypasses authentication or block
+    rules defined in nested .goshs files. ACL is now enforced
+    per-file during the recursive zip walk, and .goshs files are
+    excluded from archives.
+  * WebDAV ACL enforcement — Added a .goshs guard to the WebDAV
+    interface so directory-level access controls are now applied
+    over WebDAV as well.
+  * Brute-force lockout reset — Failed-login lockouts now correctly
+    reset after the lockout duration expires instead of remaining
+    stuck.
+  * Path handling — Removed a double URL-decode in sanitizePath so
+    filenames containing literal % and + are preserved correctly.
+  * Share creation crash — Fixed a missing return after a failed
+    os.Stat in the share handler that could lead to a
+    nil-dereference, plus a related error-message typo.
+  Packaging
+  * Refreshed shell completions (bash/zsh/fish) — added --ttl and
+    --tui, and corrected the FTP flag names.
+  * Makefile cleanup and COPR spec fixes.
+  * Fixed integration tests.
+
+-------------------------------------------------------------------
 Thu Jun 18 06:19:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.1
