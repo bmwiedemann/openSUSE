@@ -1,8 +1,0 @@
-<constraints>
-  <!-- Kubevirt needs larger disk for builds -->
-  <hardware>
-    <disk>
-      <size unit="G">10</size>
-    </disk>
-  </hardware>
-</constraints>
