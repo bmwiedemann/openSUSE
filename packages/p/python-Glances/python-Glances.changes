@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:56:37 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.5.5 (fixes CVE-2026-46606 (bsc#1268800), CVE-2026-46607 
+  (bsc#1268854), CVE-2026-46608 (bsc#1268855), CVE-2026-46611 (bsc#1268856),
+  CVE-2026-53925 (bsc#1268984))
+  * /api/4/containers stays ~4-5s with ~60 Docker containers #3559
+  * Crash when using --sparkline #3547
+  * VMs section does not show LOAD 1/5/15min values #3535
+  * Fix AMD GPU detection for multi-digit DRM card numbers #3578
+  * Keep auto_unit within limits, so columns stay aligned #3558
+  * Rest status check shouldn't require auth #3544
+  * Logging configuration to use boolean value #3536
+  * Fix filesystem aliases for mixed-case mount points #3532
+  * Regression in Disk I/O reporting #3546
+  * Add meter for CPU and MEM of GPU in the Quicklook plugin #1711
+  * Add cpu limit to docker, podman and lxd containers #3557
+  * GPU Monitoring (ARM / RaspberryPi) #1048
+  * GPU plugin: display proc and temperature on NVIDIA Jetson (Tegra)
+    integrated #3580
+  * Arbitrary file write and command execution in AMP command
+    configuration - Correct CVE-2026-53925
+  * XML-RPC Server Missing Host Header Validation Enables DNS
+    Rebinding Attack - Correct CVE-2026-46611
+  * XML-RPC Multi-Origin CORS Configuration Silently Falls Back to Wildcard
+    - Correct CVE-2026-46608
+  * Insecure Pickle Deserialization in Version Cache Leads to Arbitrary Code
+    Execution - Correct CVE-2026-46607
+  * Command Injection via KVM/QEMU VM Domain Names in virsh.py - Correct
+    CVE-2026-46606
+  * Add top 10 slowest plugins summary at end of --issue output #3572
+  * Update documentation for hide/show #3546
+  * Refactor: Improve load_additional_plugins Maintainability, Safety, and
+    Plugin Discovery #3561
+  * Refactor: Reduce Cyclomatic complexity of __display_top Issue #3549
+  * Refactor: Reduce Cyclomatic complexity of display_popup() #3542
+  * Refactor: Compute spacing
+  * Refactor: handle quicklook required for display²
+  * Refactor: Get plugin Width & get stats summary
+  * Add unit test to containers/docker plugin
+
+-------------------------------------------------------------------
 Wed Apr 22 07:37:34 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 4.5.4 (bsc#1262451, bsc#1262453, bsc#1262455):

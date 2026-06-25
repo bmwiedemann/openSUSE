@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Glances
-Version:        4.5.4
+Version:        4.5.5
 Release:        0
 Summary:        A cross-platform curses-based monitoring tool
 License:        LGPL-3.0-only
 URL:            https://github.com/nicolargo/glances
-Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz
+Source:         https://github.com/nicolargo/glances/archive/v%{version}.tar.gz#/glances-%{version}.tar.gz
 Source2:        glances.service
 Source3:        glances.firewalld
 BuildRequires:  %{python_module base >= 3.10}
