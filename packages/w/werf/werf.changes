@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:13:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.71.0:
+  * Features
+    - build: add commit to build report for images and stages
+      (#7566) (38be712)
+  * Bug Fixes
+    - build, stapel, import: importing into symlinked directories
+      no longer silently loses files (#7545) (9d1bb68)
+    - deploy: autodependencies between pods/controllers,
+      rolebindings and serviceaccounts (#7567) (f152352)
+
+-------------------------------------------------------------------
 Wed Jun 10 10:50:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.70.0:
