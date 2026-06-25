@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jun 23 04:03:45 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.5.0+0:
+  * Revert addition of --release flag (#18)
+  * Don't force --locked to allow some vendoring conditions (#17)
+
+-------------------------------------------------------------------
+Thu Jun 18 02:30:32 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.4.0+0:
+  * Add missing --release flag on install step (#16)
+  * Add RPM 4.20 declarative build system macros (#15)
+
+-------------------------------------------------------------------
 Wed Sep 10 03:06:38 UTC 2025 - William Brown <william.brown@suse.com>
 
 - bsc#1249012 - CVE-2025-58160 - tracing subscriber ansi escapes
