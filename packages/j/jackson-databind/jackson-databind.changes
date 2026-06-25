@@ -1,4 +1,149 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:05:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.8
+  * Changes of 2.18.8
+    + #5950: Improve 'UUIDeserializer' error handling
+    + #5951: Improve 'InetSocketAddress' deserialization
+      (bsc#1268899, CVE-2026-54514)
+    + #5969: '@JsonView' by-passed for some "setterless" creator
+      properties
+    + #5971: '@JsonView' by-passed for unwrapped creator parameters
+    + #5974: '@JsonIgnore' on Record property ignored with
+      'PropertyNamingStrategy'
+    + #5981: 'BasicPolymorphicTypeValidator' setting
+      'allowIfSubTypeIsArray()' should validate element type
+      (bsc#1268898, CVE-2026-54513)
+    + #5988: 'PolymorphicTypeValidator' needs to validate generic
+      type parameters too
+    + #5993: 'UPPER_SNAKE_CASE' / 'LOWER_CASE' 'NamingStrategyImpls'
+      fold case using JVM default locale (Turkish-I bug)
+  * Changes of 2.18.4
+    + #4628: '@JsonIgnore' and '@JsonProperty.access=READ_ONLY' on
+      Record property ignored for deserialization
+    + #5049: Duplicate creator property "b" (index 0 vs 1) on simple
+      java record
+  * Changes of 2.18.3
+    + #4444: The 'KeyDeserializer' specified in the class with
+      '@JsonDeserialize(keyUsing = ...)' is overwritten by the
+      'KeyDeserializer' specified in the 'ObjectMapper'.
+    + #4827: Subclassed Throwable deserialization fails since
+      v2.18.0 - no creator index for property 'cause'
+    + #4844: Fix wrapped array handling wrt 'null' by
+      'StdDeserializer'
+    + #4848: Avoid type pollution in 'StringCollectionDeserializer'
+    + #4860: 'ConstructorDetector.USE_PROPERTIES_BASED' does not
+      work with multiple constructors since 2.18
+    + #4878: When serializing a Map via
+      Converter(StdDelegatingSerializer), a NullPointerException is
+      thrown due to missing key serializer
+    + #4908: Deserialization behavior change with @JsonCreator and
+      @ConstructorProperties between 2.17 and 2.18
+    + #4917: 'BigDecimal' deserialization issue when using
+      '@JsonCreator'
+    + #4920: Creator properties are ignored on abstract types when
+      collecting bean properties, breaking AsExternalTypeDeserializer
+    + #4922: Failing '@JsonMerge' with a custom Map
+    + #4932: Conversion of 'MissingNode' throws
+      'JsonProcessingException'
+  * Changes of 2.18.2
+    + #4733: Wrong serialization of Type Ids for certain types of
+      Enum values
+    + #4742: Deserialization with Builder, External type id,
+      '@JsonCreator' failing
+    + #4777: 'StdValueInstantiator.withArgsCreator' is now set for
+      creators with no arguments
+    + #4783 Possibly wrong behavior of @JsonMerge
+    + #4787: Wrong 'String.format()' in 'StdDelegatingDeserializer'
+      hides actual error
+    + #4788: 'EnumFeature.WRITE_ENUMS_TO_LOWERCASE' overrides
+      '@JsonProperty' values
+    + #4790: Fix '@JsonAnySetter' issue with "setter" method
+      (related to #4639)
+    + #4807: Improve 'FactoryBasedEnumDeserializer' to work better
+      with XML module
+    + #4810: Deserialization using '@JsonCreator' with renamed
+      property failing (since 2.18)
+  * Changes of 2.18.1
+    + #4508: Deserialized JsonAnySetter field in Kotlin data class
+      is null
+    + #4639: @JsonAnySetter on field ignoring unrecognized
+      properties if they are declared before the last recognized
+      properties in JSON
+    + #4718: Should not fail on trying to serialize
+      'java.time.DateTimeException'
+    + #4724: Deserialization behavior change with Records,
+      '@JsonCreator' and '@JsonValue' between 2.17 and 2.18
+    + #4727: Eclipse having issues due'module-info' class "lost" on
+      2.18.0 jars
+    + #4741: When 'Include.NON_DEFAULT' setting is used on POJO,
+      empty values are not included in json if default is 'null'
+    + #4749: Fixed a problem with
+      'StdDelegatingSerializer#serializeWithType' looking up the
+      serializer with the wrong argument
+  * Changes of 2.18.0
+    + #562: Allow '@JsonAnySetter' to flow through Creators
+    + #806: Problem with 'NamingStrategy', creator methods with
+      implicit names
+    + #2977: Incompatible 'FAIL_ON_MISSING_PRIMITIVE_PROPERTIES' and
+      field level '@JsonProperty'
+    + #3120: Return 'ListIterator' from 'ArrayNode.elements()'
+    + #3241: 'constructorDetector' seems to invalidate
+      'defaultSetterInfo' for nullability
+    + #3439: Java Record '@JsonAnySetter' value is null after
+      deserialization
+    + #4085: '@JsonView' does not work on class-level for records
+    + #4119: Exception when deserialization uses a record with a
+      constructor property with 'access=READ_ONLY'
+    + #4356: 'BeanDeserializerModifier::updateBuilder()' doesn't
+      work for beans with Creator methods
+    + #4407: 'null' type id handling does not work with
+      'writeTypePrefix()'
+    + #4452: '@JsonProperty' not serializing field names properly on
+      '@JsonCreator' in Record
+    + #4453: Allow JSON Integer to deserialize into a single-arg
+      constructor of parameter type 'double'
+    + #4456: Rework locking in 'DeserializerCache'
+    + #4458: Rework synchronized block from 'BeanDeserializerBase'
+    + #4464: When 'Include.NON_DEFAULT' setting is used, 'isEmpty()'
+      method is not called on the serializer
+    + #4472: Rework synchronized block in 'TypeDeserializerBase'
+    + #4483: Remove 'final' on method BeanSerializer.serialize()
+    + #4515: Rewrite Bean Property Introspection logic in Jackson
+      2.x
+    + #4545: Unexpected deserialization behavior with
+      '@JsonCreator', '@JsonProperty' and javac '-parameters'
+    + #4570: Deprecate 'ObjectMapper.canDeserialize()'/'ObjectMapper
+      .canSerialize()'
+    + #4580: Add 'MapperFeature
+      .SORT_CREATOR_PROPERTIES_BY_DECLARATION_ORDER' to use Creator
+      properties' declaration order for sorting
+    + #4584: Provide extension point for detecting "primary"
+      Constructor for Kotlin (and similar) data classes
+    + #4602: Possible wrong use of _arrayDelegateDeserializer in
+      BeanDeserializerBase::deserializeFromObjectUsingNonDefault()
+    + #4617: Record property serialization order not preserved
+    + #4626: '@JsonIgnore' on Record property ignored for
+      deserialization, if there is getter override
+    + #4630: '@JsonIncludeProperties', '@JsonIgnoreProperties'
+      ignored when serializing Records, if there is getter override
+    + #4634: '@JsonAnySetter' not working when annotated on both
+      constructor parameter & field
+    + #4678: Java records don't serialize with 'MapperFeature
+      .REQUIRE_SETTERS_FOR_GETTERS'
+    + #4688: Should allow deserializing with no-arg
+      '@JsonCreator(mode = DELEGATING)'
+    + #4694: Deserializing 'BigDecimal' with large number of
+      decimals result in incorrect value
+    + #4699: Add extra 'writeNumber()' method in 'TokenBuffer'
+    + #4709: Add 'JacksonCollectors' with 'toArrayNode()'
+      implementation
+- Added patch:
+  * jackson-databind-CVE-2026-54515.patch
+    + Fix #5962: Case-insensitive deserialization may use wrong
+      @JsonIgnoreProperties (bsc#1268902, CVE-2026-54515)
+
+-------------------------------------------------------------------
 Mon Jun 23 09:52:27 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix "Not fully interpolated version" error with Maven 4

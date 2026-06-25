@@ -5,6 +5,5 @@ Processor. It builds on core streaming parser/generator package, and uses
 Jackson Annotations for configuration.
 
 </description>
-  <devel project="Java:packages" package="jackson-databind"/>
   <url>https://github.com/FasterXML/jackson-databind/</url>
 </package>

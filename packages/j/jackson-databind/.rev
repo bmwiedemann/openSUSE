@@ -145,4 +145,12 @@
     <comment>Fix &quot;Not fully interpolated version&quot; error with Maven 4</comment>
     <requestid>1287891</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>3b6d5aad8903a3d4aec8ecbaac53deb3</srcmd5>
+    <version>2.18.8</version>
+    <time>1782400928</time>
+    <user>anag_factory</user>
+    <comment>2.18.8 + security fixes</comment>
+    <requestid>1361757</requestid>
+  </revision>
 </revisionlist>
