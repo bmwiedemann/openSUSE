@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 23 15:06:59 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 2.0.7:
+  * Add proper logging, helping people tweak their own track lists and see
+    when errors happen.
+
+-------------------------------------------------------------------
 Sat Apr 18 08:20:06 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.0.6:
