@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jun 23 10:54:46 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.1.2
+ Fixed bugs:
+ * Failed to detect if MPD is installed on some distros.
+ * Failed to detect external apps on some distros.
+ * Error checking when executing external apps.
+ * Did not check if linked docs in 'About' tab existed.
+ * Wrong # column width in playlist in recent QT versions.
+ * Jittery / slow min-max transition (removed fading).
+ Added features:
+ * Link to changelog at the bottom of the 'About' tab.
+ * Script for the (un)installation of binaries.
+ Other:
+ *  Better conversion of QString for command line output.
+
+-------------------------------------------------------------------
 Wed Jan  1 13:50:19 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.1.1

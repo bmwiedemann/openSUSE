@@ -1,7 +1,7 @@
 #
 # spec file for package quimup
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Packman team: http://packman.links2linux.org/
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,21 @@
 #
 
 
-%define _mainv  2.1.1
+%define _mainv  2.1.2
 Name:           quimup
-Version:        2.1.1
+Version:        2.1.2
 Release:        0
 Summary:        A client for the music player daemon (MPD)
 # was http://www.coonsden.com
 License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://quimup.sourceforge.io
-Source0:        https://sourceforge.net/projects/quimup/files/Quimup%20%{_mainv}/Quimup-%{version}.source.tar.gz
+Source0:        https://sourceforge.net/projects/quimup/files/Quimup%20%{_mainv}/quimup_%{version}_source.tar.gz
 BuildRequires:  hicolor-icon-theme
+%if 0%{suse_version} >= 1600 && 0%{suse_version} < 1699
+BuildRequires:  gcc15-PIE
+BuildRequires:  gcc15-c++
+%endif
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
@@ -44,9 +48,17 @@ The focus is on mouse handling: playlist management is done entirely by drag-&-d
 playback functions are directly accessible from the system tray.
 
 %prep
-%autosetup -p1 -n Quimup-%{version}.source
+%autosetup -p1 -n quimup_%{version}_source
+rm build -r
+rm .qmake.stash Makefile
+for f in changelog faq readme; do
+  mv -f RPM_DEB_build/share/doc/quimup/${f} .
+done
 
 %build
+%if 0%{suse_version} >= 1600 && 0%{suse_version} < 1699
+export CC=gcc-15 CXX=g++-15
+%endif
 %qmake6
 %qmake6_build
 
