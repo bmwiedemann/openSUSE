@@ -27,14 +27,14 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           libplasma6
-Version:        6.7.0
+Version:        6.7.1
 Release:        0
 Summary:        Plasma library and runtime components based upon KF6 and Qt6
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 URL:            https://www.kde.org
-Source:         %{rname}-%{version}.tar.xz
+Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        %{rname}-%{version}.tar.xz.sig
+Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
 BuildRequires:  doxygen
@@ -98,6 +98,8 @@ Provides:       qt6qmlimport(org.kde.plasma.configuration)
 Provides:       qt6qmlimport(org.kde.plasma.configuration.2) = 0
 Provides:       qt6qmlimport(org.kde.plasma.plasmoid)
 Provides:       qt6qmlimport(org.kde.plasma.plasmoid.2) = 0
+# Needed to make the libPlasma6-lang locale provides work
+Provides:       libPlasma6 = %{version}
 
 %description -n libPlasma%{sover}
 This package contains the core libraries needed by the Plasma framework.
