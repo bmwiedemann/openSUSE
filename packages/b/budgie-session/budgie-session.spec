@@ -1,7 +1,7 @@
 #
 # spec file for package budgie-session
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Callum Farmer <gmbr3@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,19 +16,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define major_ver 0
+
+%define major_ver 1
 Name:           budgie-session
-Version:        0.9.1
+Version:        1.0.0+0
 Release:        0
 Summary:        Fork of gnome-session
 License:        GPL-2.0-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-session
 Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  meson
-BuildRequires:  pkgconfig
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
+BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
@@ -64,7 +65,6 @@ designed to provide a stable session manager for Budgie 10.x
 %meson \
 	-D docbook=false \
 	-D systemduserunitdir=%{_userunitdir} \
-	--libexecdir=%{_libexecdir}/%{name} \
 	%{nil}
 %meson_build
 
@@ -76,7 +76,7 @@ designed to provide a stable session manager for Budgie 10.x
 %{_bindir}/budgie-session
 %{_bindir}/budgie-session-inhibit
 %{_bindir}/budgie-session-quit
-%{_libexecdir}/%{name}
+%{_libexecdir}/budgie-session*
 %{_datadir}/%{name}
 %{_datadir}/glib-2.0/schemas/org.buddiesofbudgie.SessionManager.gschema.xml
 %{_mandir}/man1/budgie-session.1%{?ext_man}

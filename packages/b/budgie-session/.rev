@@ -7,4 +7,21 @@
     <comment>Budgie 10.9</comment>
     <requestid>1143462</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6b63fb7cf1b7b54d4c0f56e40eab0c89</srcmd5>
+    <version>1.0.0+0</version>
+    <time>1782377508</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.0+0:
+  * Bump for stable release
+  * Bump release to 1.0.0-preview.2
+  * budgie-desktop Autostartfolder (#8)
+  * Bump meson version for preview 1
+  * Add a wayland compositor check executable used to test if a wayland compositor is started; primarily for wlroot based compositors where we cannot depend on the wayland-socket being set at the end of the compositor startup
+  * Cleanup using gint rather than int; add more explanatory comments
+  * Support X-GNOME-Autostart-Delay for autostart apps - Closes #3
+  * do not fail whale: prevents otherwise usable wayland session
+</comment>
+    <requestid>1361465</requestid>
+  </revision>
 </revisionlist>
