@@ -21,26 +21,18 @@
 %if 0%{?suse_version} < 1550
 %define _distconfdir %{_sysconfdir}
 %endif
-%if 0%{?suse_version} >= 1600 || 0%{?sle_version} >= 150600
-%bcond_without magpie
-%else
-%bcond_with magpie
-%endif
 Name:           budgie-desktop
-Version:        10.9.3+0
+Version:        10.10.0+13
 Release:        0
 Summary:        GTK3 Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/GUI/Other
 URL:            https://github.com/BuddiesOfBudgie/budgie-desktop
 Source0:        %{name}-%{version}.tar.xz
-# Solus stupid 1000
-BuildRequires:  budgie-screensaver
 BuildRequires:  intltool
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  sassc
-BuildRequires:  zenity
 BuildRequires:  pkgconfig(accountsservice)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(gio-2.0)
@@ -53,13 +45,8 @@ BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(ibus-1.0)
 BuildRequires:  pkgconfig(libgnome-menu-3.0)
-%if %{with magpie}
-BuildRequires:  pkgconfig(libmagpie-0)
-%else
-BuildRequires:  (pkgconfig(libmutter-11) or pkgconfig(libmutter-10))
-%endif
 BuildRequires:  pkgconfig(libnotify)
-BuildRequires:  pkgconfig(libpeas-gtk-1.0)
+BuildRequires:  pkgconfig(libpeas-2)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libwnck-3.0)
 BuildRequires:  pkgconfig(polkit-agent-1)
@@ -72,6 +59,7 @@ BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(libcanberra)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
 BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.19.3
+BuildRequires:  pkgconfig(gtk-layer-shell-0)
 BuildRequires:  pkgconfig(upower-glib) >= 1.0
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(libwacom)
@@ -83,19 +71,17 @@ Obsoletes:      budgie-trash-applet
 BuildRequires:  xdg-desktop-portal
 Requires:       xdg-desktop-portal
 Requires:       xdg-desktop-portal-gtk
+Requires:       xdg-desktop-portal-wlr
 # rebrand and gnome porting
-Requires:       (budgie-desktop-view >= 1.3+0 or nemo or desktopfolder)
-Suggests:       budgie-desktop-view >= 1.3+0
-Requires:       budgie-screensaver >= 5.1.0+0
-Requires:       typelib-1_0-Budgie-1_0 >= %{version}
-Requires:       typelib-1_0-BudgieRaven-1_0 >= %{version}
+Requires:       (budgie-desktop-view >= 10.10.0+0 or nemo or desktopfolder)
+Suggests:       budgie-desktop-view >= 10.10.0+0
+Requires:       typelib-1_0-Budgie-3_0 >= %{version}
+Requires:       typelib-1_0-BudgieRaven-3_0 >= %{version}
 Requires:       budgie-desktop-branding >= 20240412.1
-Requires:       budgie-control-center >= 1.4.1+0
-Requires:       budgie-session >= 0.9.1
-%if %{with magpie}
-Requires:       magpie >= 0.9.3+0
-%endif
+Requires:       budgie-control-center >= 2.1.0+0
+Requires:       budgie-session >= 1.0.0+0
 Requires:       budgie-backgrounds >= 3.0
+Requires:       budgie-desktop-services >= 1.0.2+0
 #
 # unchanged SOVER but new APIs
 Requires:       libraven0 >= %{version}
@@ -104,6 +90,7 @@ Requires:       libbudgie-plugin0 >= %{version}
 Requires:       libbudgie-private0 >= %{version}
 Requires:       libbudgie-appindexer0 >= %{version}
 Requires:       libbudgie-raven-plugin0 >= %{version}
+Requires:       libbudgie-windowing0 >= %{version}
 #
 Requires:       upower >= 1.0
 Requires:       gstreamer
@@ -111,11 +98,20 @@ Requires:       libnotify-tools
 Requires:       libcanberra-gtk3-module
 Requires:       gnome-settings-daemon
 Requires:       gnome-disk-utility
+Requires:       bluejay
+Requires:       python3-systemd
+Requires:       python3-gobject-Gdk
+Requires:       swaybg
+Requires:       grim
+Requires:       slurp
+Requires:       swayidle
+Requires:       swaylock
+Requires:       wlopm
+Requires:       gammastep
 Requires:       labwc
 Requires:       ibus
 Requires:       libgnomesu
 Requires:       xdg-user-dirs-gtk
-Requires:       zenity
 Requires:       NetworkManager-applet
 Requires:       (lightdm or sddm or gdm)
 Suggests:       lightdm
@@ -125,21 +121,21 @@ Requires(postun):update-alternatives
 %description
 Budgie Desktop is the flagship desktop for the Solus Operating System.
 
-%package -n typelib-1_0-Budgie-1_0
+%package -n typelib-1_0-Budgie-3_0
 Summary:        Main Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
-Requires:       typelib-1_0-PeasGtk-1_0
+Requires:       typelib-1_0-Peas-2
 
-%description -n typelib-1_0-Budgie-1_0
+%description -n typelib-1_0-Budgie-3_0
 This package provides GObject Introspection files required for
 developing Budgie Applets using interpreted languages, such as Python
 GObject Introspection bindings.
 
-%package -n typelib-1_0-BudgieRaven-1_0
+%package -n typelib-1_0-BudgieRaven-3_0
 Summary:        Raven Introspection bindings for the Budgie Desktop
 Group:          System/Libraries
 
-%description -n typelib-1_0-BudgieRaven-1_0
+%description -n typelib-1_0-BudgieRaven-3_0
 This package provides GObject Introspection files required for
 developing Budgie Raven plugins using interpreted languages, such as Python
 GObject Introspection bindings.
@@ -153,6 +149,7 @@ Requires:       libbudgie-plugin0 = %{version}
 Requires:       libbudgie-private0 = %{version}
 Requires:       libbudgie-appindexer0 = %{version}
 Requires:       libbudgie-raven-plugin0 = %{version}
+Requires:       libbudgie-windowing0 = %{version}
 
 %description devel
 This package provides development files required for software to be
@@ -210,6 +207,13 @@ Group:          System/Libraries
 %description -n libbudgie-raven-plugin0
 Shared library for budgie raven plugins to link against.
 
+%package -n libbudgie-windowing0
+Summary:        Windowing library for Budgie Desktop
+Group:          System/Libraries
+
+%description -n libbudgie-windowing0
+Windowing management library for Budgie Desktop to link against.
+
 %lang_package
 
 %prep
@@ -217,32 +221,29 @@ Shared library for budgie raven plugins to link against.
 
 %build
 export CFLAGS="%{optflags} -Wno-pedantic"
-%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart
+%meson -Dc_std=none -Dxdg-appdir=%{_distconfdir}/xdg/autostart -Dwith-runtime-dependencies=false
 %meson_build
 
 %install
 %meson_install
 
-# update-alternatives
+# Prepare for 'default.desktop' being update-alternative handled, boo#1039756
 mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-touch %{buildroot}%{_sysconfdir}/alternatives/default-xsession.desktop
-ln -s %{_sysconfdir}/alternatives/default-xsession.desktop %{buildroot}%{_datadir}/xsessions/default.desktop
+touch %{buildroot}%{_sysconfdir}/alternatives/default-waylandsession.desktop
+ln -s %{_sysconfdir}/alternatives/default-waylandsession.desktop %{buildroot}%{_datadir}/wayland-sessions/default.desktop
 
 # move bad location
 mv %{buildroot}%{_sysconfdir}/xdg/autostart/* %{buildroot}%{_distconfdir}/xdg/autostart || true
 
-# handled by budgie-screensaver
-rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopScreensaver.desktop
-
 %find_lang %{name}
 
 %post
-%{_sbindir}/update-alternatives --install %{_datadir}/xsessions/default.desktop \
-  default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop 20
+%{_sbindir}/update-alternatives --install %{_datadir}/wayland-sessions/default.desktop \
+  default-waylandsession.desktop %{_datadir}/wayland-sessions/budgie-desktop.desktop 20
 
 %postun
-[ -f %{_datadir}/xsessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
-  --remove default-xsession.desktop %{_datadir}/xsessions/budgie-desktop.desktop
+[ -f %{_datadir}/wayland-sessions/budgie-desktop.desktop ] || %{_sbindir}/update-alternatives \
+  --remove default-waylandsession.desktop %{_datadir}/wayland-sessions/budgie-desktop.desktop
 
 %ldconfig_scriptlets -n libraven0
 %ldconfig_scriptlets -n libbudgietheme0
@@ -250,33 +251,38 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %ldconfig_scriptlets -n libbudgie-private0
 %ldconfig_scriptlets -n libbudgie-appindexer0
 %ldconfig_scriptlets -n libbudgie-raven-plugin0
+%ldconfig_scriptlets -n libbudgie-windowing0
 
 %files
 %license LICENSE LICENSE.LGPL2.1
 %{_bindir}/budgie-*
+%{_bindir}/startbudgie*
 %{_bindir}/org.buddiesofbudgie*
 %{_libexecdir}/budgie-desktop
-%{_libexecdir}/bsd-power
-%{_libexecdir}/bsd-backlight-helper
-%{_libexecdir}/bsd-media-keys
-%{_libexecdir}/bsd-wacom
-%{_libexecdir}/bsd-wacom-oled-helper
+#%{_libexecdir}/bsd-power
+#%{_libexecdir}/bsd-backlight-helper
+#%{_libexecdir}/bsd-media-keys
+#%{_libexecdir}/bsd-wacom
+#%{_libexecdir}/bsd-wacom-oled-helper
 %{_mandir}/man1/*%{?ext_man}
 %{_datadir}/budgie
+%{_datadir}/budgie-desktop
 %{_datadir}/applications/*.desktop
 %{_datadir}/backgrounds
 %{_datadir}/glib-2.0/schemas/*.gschema.xml
 %{_datadir}/glib-2.0/schemas/*.gschema.override
-%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.power.policy
-%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.wacom.policy
+#%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.power.policy
+#%{_datadir}/polkit-1/actions/org.buddiesofbudgie.settings-daemon.plugins.wacom.policy
 %{_datadir}/icons/hicolor/scalable/*/*.svg
+%{_datadir}/icons/hicolor/symbolic/emblems/budgie*
 %{_datadir}/gnome-session
-%{_datadir}/xsessions/default.desktop
-%{_datadir}/xsessions/budgie-desktop.desktop
+%dir %{_datadir}/wayland-sessions
+%{_datadir}/wayland-sessions/default.desktop
+%{_datadir}/wayland-sessions/budgie-desktop.desktop
 %{_datadir}/xdg-desktop-portal/budgie-portals.conf
 %{_libdir}/budgie-desktop
 %{_distconfdir}/xdg/autostart/*.desktop
-%ghost %{_sysconfdir}/alternatives/default-xsession.desktop
+%ghost %{_sysconfdir}/alternatives/default-waylandsession.desktop
 %ghost %{_sysconfdir}/alternatives/default.desktop
 
 %files -n libraven0
@@ -299,21 +305,24 @@ rm %{buildroot}%{_distconfdir}/xdg/autostart/org.buddiesofbudgie.BudgieDesktopSc
 %files -n libbudgie-raven-plugin0
 %{_libdir}/libbudgie-raven-plugin.so.*
 
+%files -n libbudgie-windowing0
+%{_libdir}/libbudgie-windowing.so.*
+
 %files devel
 %{_includedir}/budgie-desktop
-%{_includedir}/budgie-settings-daemon-48
+#%{_includedir}/budgie-settings-daemon-48
 %{_libdir}/pkgconfig/*.pc
 %{_libdir}/*.so
-%{_datadir}/gir-1.0/Budgie-1.0.gir
-%{_datadir}/gir-1.0/BudgieRaven-1.0.gir
-%{_datadir}/vala/vapi/budgie-1.0.*
-%{_datadir}/vala/vapi/budgie-raven-plugin-1.0.*
+%{_datadir}/gir-1.0/Budgie-3.0.gir
+%{_datadir}/gir-1.0/BudgieRaven-3.0.gir
+%{_datadir}/vala/vapi/budgie-3.0.*
+%{_datadir}/vala/vapi/budgie-raven-plugin-3.0.*
 
-%files -n typelib-1_0-Budgie-1_0
-%{_libdir}/girepository-1.0/Budgie-1.0.typelib
+%files -n typelib-1_0-Budgie-3_0
+%{_libdir}/girepository-1.0/Budgie-3.0.typelib
 
-%files -n typelib-1_0-BudgieRaven-1_0
-%{_libdir}/girepository-1.0/BudgieRaven-1.0.typelib
+%files -n typelib-1_0-BudgieRaven-3_0
+%{_libdir}/girepository-1.0/BudgieRaven-3.0.typelib
 
 %files doc
 %{_datadir}/gtk-doc/html/budgie-desktop

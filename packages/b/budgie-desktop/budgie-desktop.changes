@@ -1,4 +1,193 @@
 -------------------------------------------------------------------
+Fri Jan 23 10:24:51 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 10.10.0+13:
+  * feat: bump to 10.10.1
+  * feat(panel): Add null checks for panel positioning to prevent crashes (#820)
+  * Rework our libxfce4windowing wrapper to be resilient for repeated usage (#818)
+  * chore: sync translations
+  * Add support for different windows focus mode - specifically allow sloppy focus as well as the standard click and the 10.9 mouse modes (#819)
+  * chore: update translation pot file
+  * chore: update translations
+  * Revert "Add option to disable sync with GtkSettings file (#814)" On reflection, this change isn't needed. Different accounts should be used with different sessions.  We already know that similar desktops using the same accounts causes conflicts. This reverts commit 12ea3a53207810b25be7471c66bf560dea3a09f7.
+  * Add option to disable sync with GtkSettings file (#814)
+  * Ensure sway_bg mode tracks the picture_options key value - closes #798
+  * Enable budgie to start with greetd - Closes #804 greetd doesn't start from the desktop file so it provides a dummy XDG_CURRENT_DESKTOP.  This PR ensures that if budgie isn't in the XDG_CURRENT_DESKTOP then force the setting of budgie. . The PR also logically relocated desktop services to start after the compositor check and removes the sleep statement. This noticably allows the desktop to appear faster.
+  * Latest translations POT
+  * startbudgielabwc: Ensure labwc config is writable after copying (#800)
+  * feat: tag 10.10.0
+  * chore(bridge): change how we generate environment file so we aren't enforcing a given layout default (#797)
+  * chore(panel): turn off including of keyboard-applet due to ibus related crashes
+  * chore(daemon): tweak swaybg call to set fill mode to avoid skews from aspect ratios
+  * feat: merge simple-tasklist into tasklist
+  * simple-tasklist: Add a close button to button popovers
+  * chore: remove override on size_allocation on MainPanel since we no longer do any calculations there
+  * fix: panel constrainedbox update logic to handle applet moves properly
+  * fix: reference to xfw code in showdesktopapplet
+  * feat: constrained box logic, simple tasklist fixes and iteration
+  * WIP: simple-tasklist: Get sizing working
+  * simple-tasklist: Copy icon scaling from icon-tasklist
+  * simple-tasklist: Add popovers for tasklist buttons
+  * simple-tasklist: Use Gdk constants for button presses
+  * simple-tasklist: Create buttons for open windows on start
+  * simple-tasklist: Fix build
+  * simple-tasklist: Ensure that you can't end up with buttons with no icons or labels
+  * simple-tasklist: Add settings for showing/hiding labels and icons
+  * simple-tasklist: Rename Button to TasklistButton to void GTK naming conflicts
+  * simple-tasklist: Implement drag'n'drop to reorder tasklist buttons
+  * simple-tasklist: Remove spacing between buttons
+  * simple-tasklist: Implement scroll handling to activate or minimize windows
+  * simple-tasklist: Start with a slightly larger icon size
+  * simple-tasklist: Show everything during construct instead of on every button added
+  * simple-tasklist: Make applets in the same region from being centered
+  * simple-tasklist: Migrate from Abomination to libxfce4windowing
+  * simple-tasklist: Revert the last commit, it wasn't helpful
+  * [WIP] Handle our own size allocations
+  * simple-tasklist: Add launcher class to buttons
+  * simple-tasklist: Let Pango figure out ellipsizing
+  * simple-tasklist: Cleanup applet class
+  * Remove dates from copyright headers
+  * simple-tasklist: Clean up button code
+  * Move simple-tasklist to the new panel applets directory
+  * Move App Icon retrieval logic to RunningApp
+  * Add basic icon support
+  * Add some comments
+  * fix button of apps outside of workspace being displayed when opening a new app
+  * only show buttons for apps on current workspace
+  * extract Wnck workspace bits in abomination in order to facilitate removel of wnck
+  * Start work on SimpleTasklist (again, sigh)
+  * Connect to the top-level focus-out event to to close the popover
+  * ci: update workflows to have default and legacy workflows, 10.9.x uses legacy and F43
+  * feat(session): Add BUDGIE_SESSION_VERSION for external tool handling
+  * settings_panel: Avoid panel conflicts
+  * labwc: Use new snapping range config (#786)
+  * feat: tag 10.10.preview.2
+  * fix: panel position crash on direct position flip (horizontal or vertical)
+  * Reset values of caffeine mode only if needed (#764)
+  * feat(session): Add environment variables to help running budgie in virtualbox and also help electron based apps think they are still running in GNOME (#776)
+  * build: Update libxfce4windowing to a minimum of 4.20.4 (#722)
+  * Calculate the position on the screen to show the run dialog (#765)
+  * Fix critical crashes and robustness issues across Budgie Desktop (#772)
+  * panel/plugin-manager: Don't free object owned by hashtable (#768)
+  * BudgieMenuWindow: Adapt to new BCC deskop file name
+  * feat: tag 10.10.preview.1
+  * Session management v3 (#754)
+  * Don't read settings after bind
+  * Show screenshot tool only in Budgie session
+  * Hide icon themes that marked as 'Hidden'
+  * Set colors for focused item in the main menu
+  * Fix colors in HighContrast theme
+  * Fix some colors in the built-in theme
+  * Check if GTK theme file is exists
+  * Hide 'hicolor' from icon theme list
+  * Enabling thumbnail in window switcher
+  * Ensure usage levelbar granularity is set to 0px so that bar values display correctly - closes #735 (#736)
+  * chore: update GNU pot file for translations to align with 10.10 changes
+  * chore: sync translations
+  * Bridge the icon-name so that window icons match - closes #727 (#728)
+  * Sync settings for both labwc and for apps that don't explictly take their cues from gnome gtk settings (#724)
+  * icon-tasklist: Fix crash when icons are removed (#723)
+  * panel: Don't use geometry to detect monitor (#720)
+  * panel: Remove window intersection code (#719)
+  * panel: Remove strut code (#718)
+  * Support per window keyboard layout changes as well as XKB_OPTIONS (#697)
+  * panel: Remove migration code
+  * Rework how we get the list of raven widgets so that python widgets are correctly found
+  * raven: Fix Peas requirement
+  * panel: Port the panel plugin system to Peas-2
+  * Lets nuke all the budgie-wm code and linked man file
+  * Make screenshot more keyboard friendly with sane defaults - closes #611
+  * Lets use the correct quote notation for local header file declarations
+  * Use a label to describe the single user label
+  * Make the screenshot dialog less aggressive to start when finding libxfce4windowing details. (#710)
+  * Switch from the deprecated meson.source_root to meson.project_source_root
+  * Always display the authentication user using a label if there is just one account - closes #624
+  * Only invoke one action per popup - closes #700
+  * Handle caffeine boost notifications and brightness changes
+  * data: Specify the wlroots portal backend for screensharing (#695)
+  * Partial revert of #690 (#694)
+  * Switch to the source file header rather than the generated file header for popovers
+  * Add missing header for chroot based installs
+  * Cleanup vapi pkg usage
+  * Use a static shared-library for the windowing capability to ensure chroot based packages have something to link against (#691)
+  * Removal modal dialog and unredirect support since these are mutter specific (#687)
+  * Add support for edge tiling configuration (#686)
+  * use budgie friendly folder for our labwc config file (#690)
+  * Drop the unneeded quote in the dialog desktop file
+  * Simplify shuttersound to using CanberraGtk
+  * Lets using const strings for fixed string matches
+  * Cleanup screenshot meson for unneeded package declarations
+  * Lose a redundant function throw
+  * Cleanup magic numbers and unnecessary \n chars in message strings
+  * Put the screenshot dialog under control of budgie-session
+  * More cleanup
+  * Switch to using slurp because current gtk3 methods just won't cut it
+  * Move the actual 'doing' part of screenshot to the daemon rather than hijacking the power dialog
+  * Some cleanup
+  * Move the screenshot dialog code to the more logical dialogs section This makes the whole daemon code base more robust without errors in screenshot crashing the daemon - i.e. user orientated stuff like dialogs can break stuff. We add a delay in the screenshot autostart file to ensure the autostart does not race glib - VolumeMonitor can crash if autostarted before the rest of the GUI starts
+  * Update to use our WaylandClient
+  * Add grim as a runtime dependency
+  * Straight conversion of screenshot code from mutter to wayland The budgie-wm elements have been moved to the power dialog - i.e. keeping the separate of daemon windows vs screencapture which cannot work in the same process.
+  * Bump the plugin version since the API/ABI has been updated (#685)
+  * budgie-popover: Add missing NULL terminator to g_object_new (#684)
+  * tray: Fix incorrect variant type for shortcuts (#663)
+  * Resolve vala 0.56.18 compact class inheritance removal - closes #679 (#680)
+  * Cleanup X11 compiler usage (#678)
+  * Test to see if the gammastep local folder actually exists before creating it (#676)
+  * fix(bridge): add autoEnableOutputs" no"
+  * notifications: Toggle Do Not Disturb state when middle-clicking the applet icon
+  * workspace-applet: Make add workspace button react to capabilities
+  * workspace-applet: Fix more issues related to Wayland
+  * OSD capability (#657)
+  * Add nightlight support using gammastep - closes #649 (#672)
+  * Add on-demand to the polkit window to ensure entry field is editable (#668)
+  * CI: Fix systemd issue in rawhide
+  * icon-tasklist: Remove last references to xid (#662)
+  * Abomination is no longer used since we started using libxfce4windowing
+  * meson: Allow custom prefixes for third-party packages
+  * Switch session files, leave magpie session in the code for a future release. (#661)
+  * Center the polkit dialog (#664)
+  * meson: Explicitly add gio-unix-2.0
+  * Reduce the number of variables we are using for the notification calculation
+  * Simplify calculation for positioning on the screen
+  * Switch to using layershell anchors
+  * Rejig notifications to work with layer-shell positioning
+  * Screen Dimming (#651)
+  * Add a root menu for the desktop (#654)
+  * Add our wayland compatible screenlocker (#636)
+  * Add a bridge between gsettings and labwc (#643)
+  * Change our Desktop Current Session ID to Budgie from Budgie:GNOME (#647)
+  * Session management (#638)
+  * fix: gicon resulting in extremely bright or dim icons when no icon was found (used fallback)
+  * windowing: Remove window mapper class since we don't need it on Wayland (#640)
+  * Add support for background handling via swaybg (#634)
+  * Adapt to xf4w v4.19.8 (#630)
+  * Update meson.build
+  * Update gvc submodule to 5f9768a2eac29c1ed56f1fbb449a77a3523683b6
+  * feat: implement initial wayland support in panel, panel manager, popovers, and Raven (#588)
+  * fix tasklist indicator line on right panel (#593)
+  * chore: update default background for 10.9.2 to piazza-gae-aulenti from budgie-backgrounds
+  * feat: bump to 10.9.2
+  * icon-tasklist: Fix some pinned launchers not properly updating when opened (#587)
+  * icons: Use the correct name for the reboot icon (#584)
+  * Fix end session dialog blocking authentication dialog (#576)
+  * Don't show tabswitcher if window is empty (#582)
+  * budgie-menu: Show terminal applications in the menu (#581)
+  * windowing: Set a new last active window when the last active window is closed (#566)
+  * feat: cli option for focus_quit field (#424) (#572)
+  * fix: inability for popover pin button to be themed (#563)
+  * New windowing tracker and large refactor of IconTasklist (#553)
+  * Disable C compiler warnings entirely (#555)
+  * daemon/notifications: Fix default notification action being performed (#552)
+  * Use Enum DOWN instead of LEFT to scroll in a left-wards direction (closes #541) (#542)
+  * Add am_cflags to ignore poorly generated C code from vala. Resolves #194.
+  * vapi: Update libxfce4windowing to 4.19.3 (#547)
+  * Work around even more SNI noncompliance (#540)
+  * fix: workspace applet window icon click not performing workspace switch (#525)
+  * fix: set budgie run dialog to skip pager and taskbar (#530)
+  * Switch to Fedora rawhide for CI (#526)
+
+-------------------------------------------------------------------
 Wed Dec 10 15:19:52 UTC 2025 - Callum Farmer <gmbr3@opensuse.org>
 
 - Add Requires gnome-disk-utility: used by
