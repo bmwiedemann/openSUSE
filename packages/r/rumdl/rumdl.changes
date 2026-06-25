@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:20:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.22:
+  * Added
+    - md077: add opt-in style = "aligned" for continuation indent
+      (14eebe1)
+  * Fixed
+    - md040: keep blockquote fences valid when adding default
+      language (eab51f6)
+    - md013: keep blockquote markers when reflowing a blockquote
+      nested in a list item (f601c8c)
+- Update to version 0.2.21:
+  * Fixed
+    - emphasis: align MD049 and MD037 with CommonMark flanking
+      (#681) (d1b9968)
+    - ci: bump pinned Rust toolchain to 1.96.0 to unblock mise tool
+      install (b2afd76)
+
+-------------------------------------------------------------------
 Sat Jun 20 10:08:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Upate to version 0.2.20:
