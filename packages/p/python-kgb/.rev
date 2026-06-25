@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3c71d0baede74aa708be5cc73af945c3</srcmd5>
+    <version>7.3</version>
+    <time>1782377890</time>
+    <user>anag_factory</user>
+    <comment>New package python-kgb: function-spy test helper (test dependency for python-pydiffx, RBTools 6.0 stack). Builds clean, 221 tests pass.</comment>
+    <requestid>1361653</requestid>
+  </revision>
+</revisionlist>

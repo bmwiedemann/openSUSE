@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Jun 24 18:42:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 7.3)
+  * Needed as a test dependency of python-pydiffx (RBTools 6.0 stack)
+
