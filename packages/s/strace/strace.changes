@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 15 19:20:56 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
+
+- Update to strace 7.1
+  * Implemented wall-clock-aware columns (wall-total, wall-min, wall-max,
+    wall-avg) for the -c/--summary-only report, allowing wall-clock and
+    system CPU times to be displayed side by side in a single run.
+  * Included out-of-range syscalls in the -c/--summary-only report.
+  * Updated decoding of sched_getattr syscall.
+  * Implemented decoding of FS_IOC_SHUTDOWN, PIDFD_GET_INFO, and
+    PIDFD_GET_*_NAMESPACE ioctl commands.
+  * Implemented decoding of IFLA_BR_FDB_N_LEARNED, IFLA_BR_FDB_MAX_LEARNED,
+    and IFLA_BR_STP_MODE netlink attributes.
+  * Updated lists of CLONE_*, FSMOUNT_*, KT_*, KVM_*, LANDLOCK_*, NETDEV_*,
+    NL80211_*, and PIDFD_* constants.
+  * Updated lists of ioctl commands from Linux 7.1.
+
+-------------------------------------------------------------------
 Sun Apr 26 18:17:05 UTC 2026 - Andreas Schwab <schwab@linux-m68k.org>
 
 - Update to strace 7.0
