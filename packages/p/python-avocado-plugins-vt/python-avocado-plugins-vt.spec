@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado-plugins-vt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define pythons python3
 Name:           python-avocado-plugins-vt
-Version:        88.0
+Version:        113.0
 Release:        0
 Summary:        Avocado Virt Test Plugin
 License:        GPL-2.0-only
 URL:            https://avocado-framework.readthedocs.org/
 Source0:        https://github.com/avocado-framework/avocado-vt/archive/%{version}.tar.gz#/avocado-vt-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -42,10 +43,8 @@ Requires:       make
 Requires:       netcat-openbsd
 Requires:       openvswitch
 Requires:       python-aexpect > 1.5.0
-Requires:       python-avocado >= 68.0
-Requires:       python-netaddr >= 0.7.18
-Requires:       python-netifaces >= 0.10.5
-Requires:       python-simplejson >= 3.5.3
+Requires:       python-avocado >= 82.1
+Requires:       python-packaging
 Requires:       python-six
 Requires:       qemu-kvm
 Requires:       systemtap
@@ -86,6 +85,9 @@ sed -E -i "1s|^(#\!/usr/bin/python)$|\13|" \
 %install
 %pyproject_install
 
+# force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}
+
 # Reduce duplicities
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %fdupes %{buildroot}%{_datadir}/avocado-plugins-vt
@@ -93,6 +95,7 @@ sed -E -i "1s|^(#\!/usr/bin/python)$|\13|" \
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%{_bindir}/avocado-runner-avocado-vt
 %config(noreplace)%{python_sitelib}/avocado_vt/conf.d/vt.conf
 %config(noreplace)%{python_sitelib}/avocado_vt/conf.d/vt_joblock.conf
 %{python_sitelib}/avocado_vt

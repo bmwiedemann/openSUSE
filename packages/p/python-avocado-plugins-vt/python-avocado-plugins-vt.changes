@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 24 20:19:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 113.0:
+  * Large catch-up from 88.0, tracking the avocado 113.0 release
+    and dropping Python 2 support (Python 3 only)
+  * Updated VM test providers and helpers for current QEMU,
+    libvirt and KVM, including newer guest OS variants and
+    machine types
+  * Numerous virttest utility and networking fixes and improved
+    handling of disk, migration and serial-console test scenarios
+- Adjust runtime dependencies to match upstream:
+  * Require python-avocado >= 82.1 and add python-packaging
+  * Drop python-netaddr, python-netifaces and python-simplejson,
+    which avocado-vt no longer uses
+
+-------------------------------------------------------------------
 Wed Jun  4 00:58:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

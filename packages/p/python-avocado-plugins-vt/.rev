@@ -68,4 +68,12 @@ sc
 - Tidy up %files.</comment>
     <requestid>1282464</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1ed4baf733382b2e61befa3b0bb52f99</srcmd5>
+    <version>113.0</version>
+    <time>1782377897</time>
+    <user>anag_factory</user>
+    <comment>Update avocado-vt plugin 88.0 -&gt; 113.0 (tracks avocado 113.0, Python 3 only). Adds the avocado-runner-avocado-vt runner; refreshes runtime deps to match upstream. Builds clean (0 rpmlint badness).</comment>
+    <requestid>1361668</requestid>
+  </revision>
 </revisionlist>

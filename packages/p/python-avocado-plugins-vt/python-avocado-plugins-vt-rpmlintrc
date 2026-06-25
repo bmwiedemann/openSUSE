@@ -1,0 +1,11 @@
+# avocado-vt ships guest-side test payloads and helper modules that
+# legitimately trip these checks:
+#  * .c/.cpp sources are compiled on the test guest, so they must ship
+#  * gcc/glibc-devel are real runtime requirements (vt builds those helpers)
+#  * many virttest/* modules carry a python shebang but are imported as
+#    libraries (not executed), so they are intentionally not +x
+addFilter("avocado-plugins-vt.* devel-file-in-non-devel-package .*/virttest/.*")
+addFilter("avocado-plugins-vt.* devel-dependency (glibc-devel|gcc)")
+addFilter("avocado-plugins-vt.* non-executable-script .*/virttest/.*")
+addFilter("avocado-plugins-vt.* script-without-shebang .*/virttest/.*")
+addFilter("avocado-plugins-vt.* zero-length .*/virttest/.*")
