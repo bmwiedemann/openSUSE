@@ -137,4 +137,16 @@
 - Update Requires from setup.py (forwarded request 1199161 from glaubitz)</comment>
     <requestid>1199675</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>092374b2f668cf0853c4e41535e49393</srcmd5>
+    <version>8.0.0</version>
+    <time>1782400454</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 8.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1361746 from glaubitz)</comment>
+    <requestid>1361769</requestid>
+  </revision>
 </revisionlist>
