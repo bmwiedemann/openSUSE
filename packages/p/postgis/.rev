@@ -176,4 +176,16 @@ I welcome any suggestion of improvement of this beast ;-)</comment>
     <comment></comment>
     <requestid>1352994</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>27b1620a50452437cedad0e39576206a</srcmd5>
+    <version>3.6.4</version>
+    <time>1782377850</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.4
+  see full release note especially breaking changes
+  https://gitea.osgeo.org/postgis/postgis/raw/tag/3.6.4/NEWS
+  https://gitea.osgeo.org/postgis/postgis/raw/tag/3.6.3/NEWS
+</comment>
+    <requestid>1361598</requestid>
+  </revision>
 </revisionlist>

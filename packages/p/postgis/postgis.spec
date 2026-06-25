@@ -22,7 +22,7 @@
 %define         main_version 3.5
 
 Name:           %{pg_name}-%{ext_name}
-Version:        3.6.2
+Version:        3.6.4
 Release:        0
 Summary:        Geographic Information Systems Extensions to PostgreSQL
 License:        GPL-2.0-or-later

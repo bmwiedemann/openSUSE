@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 24 13:24:52 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 3.6.4
+  see full release note especially breaking changes
+  https://gitea.osgeo.org/postgis/postgis/raw/tag/3.6.4/NEWS
+  https://gitea.osgeo.org/postgis/postgis/raw/tag/3.6.3/NEWS
+
+-------------------------------------------------------------------
 Wed May  6 09:43:06 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable postgresql13 because it is EOL.
