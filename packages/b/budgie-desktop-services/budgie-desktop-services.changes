@@ -1,0 +1,21 @@
+-------------------------------------------------------------------
+Fri Jan 23 09:44:44 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- Update to version 1.0.2+0:
+  * feat: tag 1.0.2
+  * chore(build): turn off labwc autostart file installation by default
+  * feat: tag 1.0.1
+  * fix(outputs): missing stateChanged emits on changing of various props
+  * feat: tag 1.0.0
+  * ci: allow manual dispatch of compilation test
+  * ci: start using our "CI optimized image" for b-d-s to avoid repeat dnf installations
+  * ci: fix reported "bad habit" for when
+  * ci: add missing ninja-build
+  * ci: tweak dnf command to not have newline delimiter
+- Move dbus-1 file to service directory (bsc#1261542)
+
+-------------------------------------------------------------------
+Fri Jan 23 09:01:48 UTC 2026 - Callum Farmer <gmbr3@opensuse.org>
+
+- initial package
+
