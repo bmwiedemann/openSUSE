@@ -2,10 +2,10 @@ Author: Adam Majer <amajer@suse.de>
 Date: Dec 20 09:18:49 UTC 2017
 Summary: Fix CI unit tests framework for OBS building
 
-Index: node-v24.14.1/test/parallel/test-module-loading-globalpaths.js
+Index: node-v24.17.0/test/parallel/test-module-loading-globalpaths.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-module-loading-globalpaths.js
-+++ node-v24.14.1/test/parallel/test-module-loading-globalpaths.js
+--- node-v24.17.0.orig/test/parallel/test-module-loading-globalpaths.js
++++ node-v24.17.0/test/parallel/test-module-loading-globalpaths.js
 @@ -11,6 +11,9 @@ const { addLibraryPath } = require('../c
  
  addLibraryPath(process.env);
@@ -16,10 +16,10 @@ Index: node-v24.14.1/test/parallel/test-module-loading-globalpaths.js
  if (process.argv[2] === 'child') {
    console.log(require(pkgName).string);
  } else {
-Index: node-v24.14.1/test/parallel/test-tls-passphrase.js
+Index: node-v24.17.0/test/parallel/test-tls-passphrase.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-tls-passphrase.js
-+++ node-v24.14.1/test/parallel/test-tls-passphrase.js
+--- node-v24.17.0.orig/test/parallel/test-tls-passphrase.js
++++ node-v24.17.0/test/parallel/test-tls-passphrase.js
 @@ -223,7 +223,7 @@ server.listen(0, common.mustCall(functio
    }, onSecureConnect());
  })).unref();
@@ -29,10 +29,10 @@ Index: node-v24.14.1/test/parallel/test-tls-passphrase.js
  
  // Missing passphrase
  assert.throws(function() {
-Index: node-v24.14.1/test/parallel/test-repl-envvars.js
+Index: node-v24.17.0/test/parallel/test-repl-envvars.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-repl-envvars.js
-+++ node-v24.14.1/test/parallel/test-repl-envvars.js
+--- node-v24.17.0.orig/test/parallel/test-repl-envvars.js
++++ node-v24.17.0/test/parallel/test-repl-envvars.js
 @@ -3,6 +3,8 @@
  // Flags: --expose-internals
  
@@ -42,10 +42,10 @@ Index: node-v24.14.1/test/parallel/test-repl-envvars.js
  const stream = require('stream');
  const { describe, test } = require('node:test');
  const REPL = require('internal/repl');
-Index: node-v24.14.1/Makefile
+Index: node-v24.17.0/Makefile
 ===================================================================
---- node-v24.14.1.orig/Makefile
-+++ node-v24.14.1/Makefile
+--- node-v24.17.0.orig/Makefile
++++ node-v24.17.0/Makefile
 @@ -406,7 +406,6 @@ ADDONS_HEADERS_PREREQS := tools/install.
  	$(wildcard deps/uv/include/*/*.h) \
  	$(wildcard deps/v8/include/*.h) \
@@ -72,10 +72,10 @@ Index: node-v24.14.1/Makefile
  		echo "Skipping tools/doc/node_modules (no crypto and/or no ICU)"; \
  	else \
  		cd tools/doc && $(call available-node,$(run-npm-ci)) \
-Index: node-v24.14.1/tools/test.py
+Index: node-v24.17.0/tools/test.py
 ===================================================================
---- node-v24.14.1.orig/tools/test.py
-+++ node-v24.14.1/tools/test.py
+--- node-v24.17.0.orig/tools/test.py
++++ node-v24.17.0/tools/test.py
 @@ -1399,7 +1399,7 @@ def BuildOptions():
    result.add_argument("-s", "--suite", help="A test suite",
        default=[], action="append")
@@ -85,10 +85,10 @@ Index: node-v24.14.1/tools/test.py
    result.add_argument("--arch", help='The architecture to run tests for',
        default='none')
    result.add_argument("--snapshot", help="Run the tests with snapshot turned on",
-Index: node-v24.14.1/test/parallel/test-crypto-dh.js
+Index: node-v24.17.0/test/parallel/test-crypto-dh.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-crypto-dh.js
-+++ node-v24.14.1/test/parallel/test-crypto-dh.js
+--- node-v24.17.0.orig/test/parallel/test-crypto-dh.js
++++ node-v24.17.0/test/parallel/test-crypto-dh.js
 @@ -97,7 +97,7 @@ const {
        dh3.computeSecret('');
      }, { message: hasOpenSSL3 && !hasOpenSSL3WithNewErrorMessage ?
@@ -98,10 +98,10 @@ Index: node-v24.14.1/test/parallel/test-crypto-dh.js
    }
  }
  
-Index: node-v24.14.1/test/parallel/test-dns.js
+Index: node-v24.17.0/test/parallel/test-dns.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-dns.js
-+++ node-v24.14.1/test/parallel/test-dns.js
+--- node-v24.17.0.orig/test/parallel/test-dns.js
++++ node-v24.17.0/test/parallel/test-dns.js
 @@ -401,7 +401,7 @@ assert.throws(() => {
  
    const server = dgram.createSocket('udp4');
@@ -111,10 +111,10 @@ Index: node-v24.14.1/test/parallel/test-dns.js
      const parsed = dnstools.parseDNSPacket(msg);
      const domain = parsed.questions[0].domain;
      assert.strictEqual(domain, 'example.org');
-Index: node-v24.14.1/test/wpt/test-webcrypto.js
+Index: node-v24.17.0/test/wpt/test-webcrypto.js
 ===================================================================
---- node-v24.14.1.orig/test/wpt/test-webcrypto.js
-+++ node-v24.14.1/test/wpt/test-webcrypto.js
+--- node-v24.17.0.orig/test/wpt/test-webcrypto.js
++++ node-v24.17.0/test/wpt/test-webcrypto.js
 @@ -1,7 +1,8 @@
  'use strict';
  
@@ -125,11 +125,11 @@ Index: node-v24.14.1/test/wpt/test-webcrypto.js
    common.skip('missing crypto');
  
  const { WPTRunner } = require('../common/wpt');
-Index: node-v24.14.1/test/parallel/test-sqlite.js
+Index: node-v24.17.0/test/parallel/test-sqlite.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-sqlite.js
-+++ node-v24.14.1/test/parallel/test-sqlite.js
-@@ -230,6 +230,7 @@ suite('SQL APIs enabled at build time',
+--- node-v24.17.0.orig/test/parallel/test-sqlite.js
++++ node-v24.17.0/test/parallel/test-sqlite.js
+@@ -243,6 +243,7 @@ suite('SQL APIs enabled at build time',
    });
  
    test('fts3 is enabled', (t) => {
@@ -137,15 +137,15 @@ Index: node-v24.14.1/test/parallel/test-sqlite.js
      const db = new DatabaseSync(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING fts3(content TEXT);
-@@ -245,6 +246,7 @@ suite('SQL APIs enabled at build time',
+@@ -258,6 +259,7 @@ suite('SQL APIs enabled at build time',
    });
  
-   test('fts3 parenthesis', (t) => {
-+    t.skip(); return;
+   test('fts3 parenthesis is enabled', (t) => {
++	t.skip(); return;
      const db = new DatabaseSync(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING fts3(content TEXT);
-@@ -313,6 +315,7 @@ suite('SQL APIs enabled at build time',
+@@ -326,6 +328,7 @@ suite('SQL APIs enabled at build time',
    });
  
    test('geopoly is enabled', (t) => {
@@ -153,10 +153,10 @@ Index: node-v24.14.1/test/parallel/test-sqlite.js
      const db = new DatabaseSync(':memory:');
      db.exec(`
        CREATE VIRTUAL TABLE t1 USING geopoly(a,b,c);
-Index: node-v24.14.1/test/parallel/test-internal-util-construct-sab.js
+Index: node-v24.17.0/test/parallel/test-internal-util-construct-sab.js
 ===================================================================
---- node-v24.14.1.orig/test/parallel/test-internal-util-construct-sab.js
-+++ node-v24.14.1/test/parallel/test-internal-util-construct-sab.js
+--- node-v24.17.0.orig/test/parallel/test-internal-util-construct-sab.js
++++ node-v24.17.0/test/parallel/test-internal-util-construct-sab.js
 @@ -1,7 +1,6 @@
  // Flags: --enable-sharedarraybuffer-per-context --expose-internals
  'use strict';
@@ -165,10 +165,10 @@ Index: node-v24.14.1/test/parallel/test-internal-util-construct-sab.js
  const assert = require('assert');
  const { kMaxLength } = require('buffer');
  const { isSharedArrayBuffer } = require('util/types');
-Index: node-v24.14.1/test/common/index.js
+Index: node-v24.17.0/test/common/index.js
 ===================================================================
---- node-v24.14.1.orig/test/common/index.js
-+++ node-v24.14.1/test/common/index.js
+--- node-v24.17.0.orig/test/common/index.js
++++ node-v24.17.0/test/common/index.js
 @@ -925,6 +925,7 @@ function sleepSync(ms) {
  
  const common = {
@@ -177,10 +177,10 @@ Index: node-v24.14.1/test/common/index.js
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
-Index: node-v24.14.1/test/common/index.mjs
+Index: node-v24.17.0/test/common/index.mjs
 ===================================================================
---- node-v24.14.1.orig/test/common/index.mjs
-+++ node-v24.14.1/test/common/index.mjs
+--- node-v24.17.0.orig/test/common/index.mjs
++++ node-v24.17.0/test/common/index.mjs
 @@ -5,6 +5,7 @@ const common = require('./index.js');
  
  const {
@@ -189,17 +189,3 @@ Index: node-v24.14.1/test/common/index.mjs
    buildType,
    canCreateSymLink,
    childShouldThrowAndAbort,
-Index: node-v24.14.1/test/parallel/test-buffer-concat.js
-===================================================================
---- node-v24.14.1.orig/test/parallel/test-buffer-concat.js
-+++ node-v24.14.1/test/parallel/test-buffer-concat.js
-@@ -84,8 +84,7 @@ assert.throws(() => {
-   Buffer.concat([Buffer.from('hello')], -2);
- }, {
-   code: 'ERR_OUT_OF_RANGE',
--  message: 'The value of "length" is out of range. It must be >= 0 && <= 9007199254740991. ' +
--           'Received -2'
-+  message: /^The value of "length" is out of range. It must be >= 0 && <= \d+. Received -2$/
- });
- 
- // eslint-disable-next-line node-core/crypto-check

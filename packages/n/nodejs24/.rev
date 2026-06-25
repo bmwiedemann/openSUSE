@@ -152,4 +152,36 @@ for details, see https://nodejs.org/en/blog/release/v24.14.0
   parallel/test-snapshot-reproducible testsuite failure with GCC 16</comment>
     <requestid>1348597</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3bffbb708dbae91f63e86d1d9d5ea4d0</srcmd5>
+    <version>24.17.0</version>
+    <time>1782377405</time>
+    <user>anag_factory</user>
+    <comment>- Update to 24.17.0
+  (CVE-2026-48618, bsc#1268593) tls: normalize hostname for server identity checks
+  (CVE-2026-48933, bsc#1268592) crypto: guard WebCrypto cipher output length
+  (CVE-2026-48615, bsc#1268598) lib,test: redact proxy credentials in tunnel errors
+  (CVE-2026-48619, bsc#1268618) http2: cap originSet size to prevent unbounded memory growth
+  (CVE-2026-48928, bsc#1268605) tls: fix case-sensitive SNI context matching
+  (CVE-2026-48930, bsc#1268606) dns,net: reject hostnames with embedded NUL bytes
+  (CVE-2026-48934, bsc#1268608) tls: bind reusable sessions to authenticated host
+  (CVE-2026-48617, bsc#1268554) permission: handle process.chdir on writereport
+  (CVE-2026-48931, bsc#1268611) http: fix response queue poisoning in http.Agent
+  (CVE-2026-48935, bsc#1268609) permission: disable FileHandle utimes with permission model
+  (CVE-2026-48937, bsc#1268555) http2: servers keep accepting data even after sending a `GOAWAY` frame
+  (CVE-2026-12151, bsc#1268482) undici: Denial of Service due to unbounded memory growth via WebSocket frames
+  (CVE-2026-6733,  bsc#1268479) undici: Response queue poisoning on reused keep-alive sockets can lead to incorrect response delivery
+  (CVE-2026-9679,  bsc#1268477) undici: vulnerable to HTTP header injection via Set-Cookie percent-decoding
+  (CVE-2026-11525, bsc#1268481) undici: Weakening of cookie SameSite policy due to incorrect parsing of Set-Cookie header
+  (CVE-2026-2581,  bsc#1268480) undici: Denial of Service due to uncontrolled resource consumption
+  (CVE-2026-9678,  bsc#1268478) undici: Information disclosure due to improper cache-control header parsing
+  (CVE-2026-27135, bsc#1259853) nghttp2: assertion failure due to missing state validation can lead to DoS
+- ngtcp2_bsc1262274.patch: (CVE-2026-40170, bsc#1262274) - ngtcp2: qlog parameters_set stack buffer overflow.
+- pacote-bsc1266318.patch: (CVE-2026-9496,  bsc#1266318) - pacote: excessive CPU consumption in `addGitSha` when processing a specially crafted `spec.rawSpec` value can lead to DoS
+- ip-address-bsc1268097.patch: (CVE-2026-42338, bsc#1268097) - ip-address: Cross-site scripting via improper HTML escaping of untrusted input
+- fix_ci_tests.patch: rebased
+- For changes in older versions, see
+  https://github.com/nodejs/node/releases</comment>
+    <requestid>1361450</requestid>
+  </revision>
 </revisionlist>
