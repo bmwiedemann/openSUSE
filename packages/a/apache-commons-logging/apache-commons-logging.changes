@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 21 15:44:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 1.4.0
+  * Fixed Bugs
+    + Use the new Apache oak leaf logo
+    + Fix broken URLs in website links
+    + Add support for Jakarta servlets, see org.apache.commons
+      .logging.jakarta.ServletContextCleaner #419
+  * Changes
+    + Bump org.apache.commons:commons-parent from 97 to 102
+    + Bump log4j2.version from 2.25.3 to 2.26.0
+    + Bump org.slf4j:slf4j-api from 2.0.17 to 2.0.18
+
+-------------------------------------------------------------------
 Tue May 19 08:58:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - No need to verify sources during the build
