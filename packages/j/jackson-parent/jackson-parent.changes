@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:34:19 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.4
+  * Changes of 2.18.4
+    + Update to latest 'oss-parent' (69)
+  * Changes of 2.18.3
+    + Update to latest 'oss-parent' (68)
+    + Switch to publishing via Sonatype Central Portal repo
+  * Changes of 2.18.2
+    + Update to latest 'oss-parent' (66); future-proof for Sonatype
+      Central Portal
+  * Changes of 2.18.1
+    + #15: Add override to downgrade 'moditect-maven-plugin' from
+      1.2.2 to 1.1.0 to work around Eclipse issues
+  * Changes of 2.18
+    + Update to oss-parent 61 (plugin version updates)
+
+-------------------------------------------------------------------
 Mon May 20 09:25:36 UTC 2024 - Gus Kenion <gus.kenion@suse.com>
 
 - Upgrade to 2.17
