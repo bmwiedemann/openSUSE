@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:30:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.1.7:
+  * Fix a bug copying the dir mode bits
+  * Upgrade vendored dependencies
+
+-------------------------------------------------------------------
 Thu Jul 24 19:25:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.1.1:
