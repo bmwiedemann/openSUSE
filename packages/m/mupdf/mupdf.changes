@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:26:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Modernise the spec with spec-cleaner (drop obsolete Group tags,
+  use pkgconfig() build requires).
+
+-------------------------------------------------------------------
 Tue Jun 23 11:43:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build and ship MuPDF as a shared library (make shared=yes) instead of

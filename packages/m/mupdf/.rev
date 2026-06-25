@@ -809,4 +809,12 @@
     <comment>Build MuPDF as a shared library (boo#1165273); mupdf-devel now Obsoletes the dropped mupdf-devel-static for a clean upgrade. Supersedes SR#1361200, which staging declined for a /usr/include/mupdf header conflict between the new mupdf-devel and the lingering mupdf-devel-static.</comment>
     <requestid>1361347</requestid>
   </revision>
+  <revision rev="74" vrev="3">
+    <srcmd5>15e6893b11952fd7cc34776f040fcec6</srcmd5>
+    <version>1.27.2</version>
+    <time>1782400427</time>
+    <user>anag_factory</user>
+    <comment>Modernise spec with spec-cleaner: drop obsolete Group tags and convert BuildRequires to pkgconfig() form. No functional/build change.</comment>
+    <requestid>1361704</requestid>
+  </revision>
 </revisionlist>

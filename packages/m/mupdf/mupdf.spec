@@ -17,53 +17,52 @@
 #
 
 
-%if 0%{suse_version} < 1600
-%define gcc_ver 11
-%endif
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
 %define sover 27_2
+%if 0%{?suse_version} < 1600
+%define gcc_ver 11
+%endif
 Name:           mupdf
 Version:        1.27.2
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://mupdf.com/
 Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.tar.gz
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
-BuildRequires:  Mesa-libGL-devel
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  freetype2-devel
 BuildRequires:  gcc%{?gcc_ver}-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  jbig2dec-devel
-BuildRequires:  libcurl-devel
 BuildRequires:  libjpeg-devel
-BuildRequires:  openjpeg2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(tesseract)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(zlib)
+Requires:       xdg-utils
 Provides:       bundled(freeglut) = 3.0.0
 Provides:       bundled(freeglut-art) = 3.0.0
 Provides:       bundled(gumbo-parser) = 0.10.1
 Provides:       bundled(lcms2) = 2.14
 Provides:       bundled(lcms2-art) = 2.14
 Provides:       bundled(mujs) = 1.3.2
-Requires:       xdg-utils
 
 %description
 MuPDF is a PDF and XPS viewer and parser/rendering library.
@@ -78,7 +77,6 @@ annotations and search. MuPDF can also read XPS documents
 
 %package -n libmupdf%{sover}
 Summary:        MuPDF rendering library (shared)
-Group:          System/Libraries
 
 %description -n libmupdf%{sover}
 MuPDF is a PDF and XPS viewer and parser/rendering library.
@@ -87,7 +85,6 @@ This package contains the shared rendering library.
 
 %package devel
 Summary:        Development Files for mupdf
-Group:          Development/Libraries/C and C++
 Requires:       libmupdf%{sover} = %{version}
 # mupdf is now shared-only; the headers moved here from the dropped
 # mupdf-devel-static, so obsolete it for a clean upgrade (same version)
