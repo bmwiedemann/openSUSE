@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:26:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.18.8
+  * No changes since 2.18.5
+  * Changes of 2.18.5
+    + #372: 'java.util.Optional' deserialisation fails when using
+      'TypeFactory.defaultInstance' for creating 'JavaType' for
+      'Optional<?>'
+  * Changes of 2.18.4
+    + #291: 'InstantDeserializer' fails to parse negative numeric
+      timestamp strings for pre-1970 values
+  * Changes of 2.18.3
+   + #333: 'ZonedDateTime' serialization with '@JsonFormat.pattern'
+     never uses it while 'WRITE_DATES_WITH_ZONE_ID' enabled
+  * Changes of 2.18.2
+    + #308: Can't deserialize 'OffsetDateTime.MIN': Invalid value
+      for EpochDay
+  * Changes of 2.18.1
+    + #319: 'java.time.DateTimeException' serialization fails
+  * Changes of 2.18.0
+    #124 Issue serializing and deserializing 'LocalDateTime.MAX'
+    and 'LocalDateTime.MIN'
+
+-------------------------------------------------------------------
 Wed Nov  6 08:05:26 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.17.3
@@ -35,14 +59,14 @@ Fri Mar  8 08:33:47 UTC 2024 - Gus Kenion <gkenion@suse.com>
 Wed Dec 20 19:29:17 UTC 2023 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Update to v2.16.0
-  * #263: Add `JavaTimeFeature.ALWAYS_ALLOW_STRINGIFIED_TIMESTAMPS`
+  * #263: Add 'JavaTimeFeature.ALWAYS_ALLOW_STRINGIFIED_TIMESTAMPS'
     to allow parsing quoted numbers when using a custom pattern
     (DateTimeFormatter)
   * #272: (datetime)
-    `JsonFormat.Feature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS` not
-    respected when deserialising `Instant`s
+    'JsonFormat.Feature.WRITE_DATE_TIMESTAMPS_AS_NANOSECONDS' not
+    respected when deserialising 'Instant's
   * #281: (datetime) Add
-    `JavaTimeFeature.NORMALIZE_DESERIALIZED_ZONE_ID` to allow
+    'JavaTimeFeature.NORMALIZE_DESERIALIZED_ZONE_ID' to allow
     disabling ZoneId normalization on deserialization
 
 -------------------------------------------------------------------

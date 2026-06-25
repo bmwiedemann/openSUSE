@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-modules-java8
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-modules-java8
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Set of support modules for Java 8 datatypes
 License:        Apache-2.0
