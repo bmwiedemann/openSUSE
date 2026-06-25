@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 24 00:00:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Fix-CVE-2026-26740-heap-OOB-write-in-EGifGCBToSavedE.patch
+    + fixing bsc#1259836 (CVE-2026-26740): heap out-of-bounds read
+      when processing a specially crafted GIF file containing a GCE
+      block with a truncated extension byte count
+
+-------------------------------------------------------------------
 Wed Mar 11 12:28:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

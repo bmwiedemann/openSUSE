@@ -32,6 +32,7 @@ Patch2:         reproducible.patch
 Patch3:         0001-Clean-up-memory-better-at-end-of-run-CVE-2021-40633.patch
 Patch4:         giflib-bsc1240416.patch
 Patch5:         0001-Avoid-potentuial-double-free-on-weird-images.patch
+Patch6:         0001-Fix-CVE-2026-26740-heap-OOB-write-in-EGifGCBToSavedE.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 
