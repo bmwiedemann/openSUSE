@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-codspeed
-Version:        4.3.0
+Version:        5.0.3
 Release:        0
 Summary:        A pytest plugin to create CodSpeed benchmarks
 License:        MIT
@@ -29,9 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest_codspeed
 # PATCH-FIX-UPSTREAM make_tests_work.patch gh#CodSpeedHQ/pytest-codspeed#68 mcepl@suse.com
 # add missing files
 Patch0:         make_tests_work.patch
-BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module cffi >= 1.17.1}
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-benchmark}
 BuildRequires:  %{python_module pytest >= 3.8}

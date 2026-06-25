@@ -30,4 +30,23 @@
 - Remove pointless multibuild.</comment>
     <requestid>1334610</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f4fa5c8ee968b3ba03c0bc888baebd3</srcmd5>
+    <version>5.0.3</version>
+    <time>1782377818</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.3:
+  ## Features
+  * Skip Python runtime objects in callgrind
+  * Use instrument_hooks markers in walltime
+  * Declare native extension free-thread safe
+  * Remove cffi in favor of native extension
+  * Collect Python toolchain information via instrument hooks environment
+    API
+  ## Bug Fixes
+  * Use instrument_hooks_callgrind_add_obj_skip from C API
+  * Exclude setup time from benchmark in walltime mode
+  * Fix segfault caused by multiple activate_stack_trampoline</comment>
+    <requestid>1361567</requestid>
+  </revision>
 </revisionlist>

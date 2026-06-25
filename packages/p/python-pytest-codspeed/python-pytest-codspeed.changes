@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jun 24 10:05:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.3:
+  ## Features
+  * Skip Python runtime objects in callgrind
+  * Use instrument_hooks markers in walltime
+  * Declare native extension free-thread safe
+  * Remove cffi in favor of native extension
+  * Collect Python toolchain information via instrument hooks environment
+    API
+  ## Bug Fixes
+  * Use instrument_hooks_callgrind_add_obj_skip from C API
+  * Exclude setup time from benchmark in walltime mode
+  * Fix segfault caused by multiple activate_stack_trampoline
+
+-------------------------------------------------------------------
 Mon Feb 23 23:58:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3.0:
