@@ -1,0 +1,27 @@
+From: Alexey Tikhonov <atikhono@redhat.com>
+Date: Wed, 28 Jan 2026 19:36:24 +0100
+Subject: Remove unneeded include in configure script
+Git-repo: https://github.com/gssapi/gssproxy
+Git-commit: 75362245304c43715d50743d3e37dc1ce66b704b
+
+Deprecated 'ini_config.h' is going to be removed from public API.
+
+Signed-off-by: Alexey Tikhonov <atikhono@redhat.com>
+Acked-by: Anthony Iliopoulos <ailiop@suse.com>
+---
+ external/dinglibs.m4 | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/external/dinglibs.m4 b/external/dinglibs.m4
+index 04b3acc8ad21..b1abf8ecac87 100644
+--- a/external/dinglibs.m4
++++ b/external/dinglibs.m4
+@@ -32,7 +32,6 @@ AC_RUN_IFELSE([AC_LANG_SOURCE([[
+ #include <stdlib.h>
+ #include <stdint.h>
+ #include <ini_configobj.h>
+-#include <ini_config.h>
+ 
+ static int write_to_file(char *path, char *text)
+ {
+

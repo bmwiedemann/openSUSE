@@ -1,7 +1,7 @@
 #
 # spec file for package gssproxy
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,18 @@
 
 
 Name:           gssproxy
-Version:        0.8.4
+Version:        0.9.2
 Release:        0
 Summary:        Daemon for managing gss-api requests
 License:        MIT
 Group:          Productivity/Networking/System
-URL:            https://github.com/gssapi/gssproxy 
+URL:            https://github.com/gssapi/gssproxy
 Source0:        https://github.com/gssapi/gssproxy/releases/download/v%{version}/gssproxy-%{version}.tar.gz
-Patch0:	harden_gssproxy.service.patch
+Patch0:         harden_gssproxy.service.patch
+Patch1:         Remove-unneeded-include-in-configure-script.patch
+Patch2:         Don-t-check-for-libref_array-explicitly.patch
+Patch3:         Fix-cross-compilation.patch
+Patch4:         gssproxy-Modernize-systemd.m4-macro.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  doxygen
 BuildRequires:  krb5-client
@@ -50,6 +54,7 @@ BuildRequires:  user(nobody)
 %if 0%{?suse_version} > 1315
 # in earlier versions, libverto is in krb5-devel
 BuildRequires:  pkgconfig(libverto) >= 0.2.2
+Requires:       libverto-module-base >= 0.2.2
 %endif
 
 %description
@@ -103,11 +108,16 @@ make %{?_smp_mflags} check
 %dir %{_localstatedir}/lib/gssproxy
 %dir %{_localstatedir}/lib/gssproxy/rcache
 %{_unitdir}/gssproxy.service
+%{_userunitdir}/gssuserproxy.service
+%{_userunitdir}/gssuserproxy.socket
 %{_mandir}/man5/gssproxy.conf.5%{?ext_man}
 %{_mandir}/man8/gssproxy-mech.8%{?ext_man}
 %{_mandir}/man8/gssproxy.8%{?ext_man}
 %dir %{_sysconfdir}/gssproxy
 %config %{_sysconfdir}/gssproxy/gssproxy.conf
 %config %{_sysconfdir}/gssproxy/24-nfs-server.conf
+%dir %{_sysconfdir}/gss/
+%dir %{_sysconfdir}/gss/mech.d
+%config %{_sysconfdir}/gss/mech.d/proxymech.conf
 
 %changelog

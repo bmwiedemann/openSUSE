@@ -1,0 +1,50 @@
+From: Sietse <sietse@wizdom.nu>
+Date: Fri, 25 Oct 2024 09:23:23 +0000
+Subject: Fix cross compilation
+Git-repo: https://github.com/gssapi/gssproxy
+Git-commit: 9516730337e7501397ed3efe3ca2e42db1254976
+
+Fixes Issue 106 (https://github.com/gssapi/gssproxy/issues/106)
+
+modified:   external/dinglibs.m4
+A warning message is displayed to the user to make sure lib_ini_config
+supprts extenden INI_MS_DETECT, since the test cannot be run in a cross
+compilation scenario.
+modified:   external/docbook.m4
+Autoconf Macro AC_CHECK_FILE has been replaced by an explicit if ! test
+-e ..., as AC_CHECK_FILE is not available in cross compilation scenario.
+
+Signed-off-by: Sietse <sietse@wizdom.nu>
+Acked-by: Anthony Iliopoulos <ailiop@suse.com>
+---
+ external/dinglibs.m4 | 2 +-
+ external/docbook.m4  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/external/dinglibs.m4 b/external/dinglibs.m4
+index d7a478b29c1a..5836e994750c 100644
+--- a/external/dinglibs.m4
++++ b/external/dinglibs.m4
+@@ -129,7 +129,7 @@ AC_DEFUN([WITH_LIBINI_CONFIG],
+         return ret;
+     }
+     ]])]
+-    ,, [AC_MSG_ERROR(["ini_config library must support extended INI_MS_DETECT. See: https://pagure.io/SSSD/ding-libs/pull-request/3172"])])
++    ,, [AC_MSG_ERROR(["ini_config library must support extended INI_MS_DETECT."])], AC_MSG_WARN(["Cross Compiling. Make sure your ini_config library supports extended INI_MS_DETECT"]))
+ 
+     have_libini_config=yes
+   ], [
+diff --git a/external/docbook.m4 b/external/docbook.m4
+index cae89feb1fec..b5c128a935ee 100644
+--- a/external/docbook.m4
++++ b/external/docbook.m4
+@@ -23,7 +23,7 @@ dnl Checks if the XML catalog given by FILE exists and
+ dnl if a particular URI appears in the XML catalog
+ AC_DEFUN([CHECK_STYLESHEET],
+ [
+-  AC_CHECK_FILE($1, [], [AC_MSG_ERROR([could not find XML catalog])])
++  if ! test -e $1; then AC_MSG_ERROR([could not find XML catalog]); fi
+ 
+   AC_MSG_CHECKING([for ifelse([$3],,[$2],[$3]) in XML catalog])
+   if AC_RUN_LOG([$XMLCATALOG --noout "$1" "$2" >&2]); then
+

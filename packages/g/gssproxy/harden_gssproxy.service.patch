@@ -1,24 +1,13 @@
-Index: gssproxy-0.8.4/systemd/gssproxy.service.in
+Index: gssproxy-0.9.2/systemd/gssproxy.service.in
 ===================================================================
---- gssproxy-0.8.4.orig/systemd/gssproxy.service.in
-+++ gssproxy-0.8.4/systemd/gssproxy.service.in
-@@ -5,6 +5,19 @@ After=syslog.target network.target
- Before=rpc-gssd.service
- 
- [Service]
-+# added automatically, for details please see
-+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-+ProtectSystem=full
-+ProtectHome=true
+--- gssproxy-0.9.2.orig/systemd/gssproxy.service.in
++++ gssproxy-0.9.2/systemd/gssproxy.service.in
+@@ -19,6 +19,8 @@ ProtectClock=true
+ ProtectKernelLogs=true
+ ProtectControlGroups=true
+ RestrictRealtime=true
 +PrivateDevices=true
-+ProtectHostname=true
-+ProtectClock=true
-+ProtectKernelTunables=true
 +ProtectKernelModules=true
-+ProtectKernelLogs=true
-+ProtectControlGroups=true
-+RestrictRealtime=true
-+# end of automatic additions 
- Environment=KRB5RCACHEDIR=/var/lib/gssproxy/rcache
- ExecStart=@sbindir@/gssproxy -D
- # These two should be used with traditional UNIX forking daemons
+ # NoNewPrivileges: when true breaks the ability to open a socket
+ #   under /var/lib/gssproxy so no NoNewPrivileges
+ # PrivateTmp: can't be used as it hides ccaches stored in /tmp
