@@ -20,7 +20,7 @@
 %define version_git_minor %(echo %{version} | awk 'BEGIN { FS=\".\"}; {print $2}')
 
 Name:           clusterctl
-Version:        1.13.1
+Version:        1.13.3
 Release:        0
 Summary:        CLI tool to handle the lifecycle of a Cluster API management cluster
 License:        Apache-2.0
