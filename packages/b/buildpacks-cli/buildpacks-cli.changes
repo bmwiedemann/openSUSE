@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:28:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.7:
+  * Features
+    - fix(buildpack): correct yank registry issue body (add yank =
+      true + code fence) (#2631 by @MD-Mushfiqur123)
+    - chore: remove direct dependency on github.com/docker/docker
+      (#2617 by @jjbustamante)
+    - Suggest heroku/builder:26 instead of heroku/builder:24 (#2611
+      by @runesoerensen)
+  * Dependencies
+    - build(deps): bump Go directive to 1.25.11 for stdlib security
+      fixes (#2642)
+    - build(deps): bump x/crypto, x/net, and go-git for security
+      fixes (#2641)
+    - chore: remove direct dependency on github.com/docker/docker
+      (#2617)
+
+-------------------------------------------------------------------
 Sun May 17 05:11:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.40.6:
