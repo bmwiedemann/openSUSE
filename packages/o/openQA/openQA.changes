@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 24 09:58:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782295118.57cb8aa0:
+  * chore(deps): Dependency cron 2026-06-24
+  * feat: Don't rewrite history for test result tabs
+  * chore(deps): Dependency cron 2026-06-23
+
+-------------------------------------------------------------------
 Mon Jun 22 13:06:54 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1782133597.39cd80e0:
