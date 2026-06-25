@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:31:47 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 5.8.3:
+  * Bump to v5.8.3
+  * Update release notes for v5.8.3
+  * Bump to gvisor-tap-vsock v0.8.9
+  * [v5.8] Bump Buildah to v1.43.2
+  * ci: fix validate-source checks vs stale labels
+  * Release automation: update org location
+  * ci: use env vars to avoid template expansion in code contexts
+  * ci: use --sandbox for dynamically generated sed scripts
+  * Update gh org from which releases are pulled in pswh scripts
+  * pkg/machine/e2e: set XDG_CONFIG_HOME
+  * Set permissions for win installer CI job
+  * ci: delete netavark v2
+  * ci: fix storage.conf composefs setup
+  * Update release ID in win-installer-main.ps1
+  * Use GH token to download Podman release in utils.ps1
+  * validate ci.yml file
+  * ci: add path-filter to success job
+  * CI: Adjust Mac tmpdir
+  * ci: fix validate job to actually work on push
+  * ci: skip validate-source on push
+  * ci: add GITHUB_TOKEN to win installer test
+  * test/python/docker/compat: skip test_search_image
+  * ci.yml: add macos jobs
+  * ci.yml: add windows jobs
+  * New GHA lima ci testing setup
+  * Run 'make swagger' in the validate-source GHA job
+  * Migrate 'build each commit' check from Cirrus to GHA
+  * Migrate validate-source from Cirrus to GitHub Actions
+  * Rename contrib/cirrus to hack/ci
+  * .cirrus.yml: do not run golangci-lint for freebsd and mac
+  * Makefile: run golangci-lint for all supported OSes
+  * hack/golangci-lint.sh: fix binary lookup order
+  * pkg/bindings/generator: fall back to golangci-lint from $PATH
+  * hack: reuse already installed golangci-lint
+  * ci: replace git-validation with a small shell script
+  * .editorconfig: add indentation rule for shell files
+  * ci: rm contrib/cirrus/check_go_changes.sh
+  * .golangci.yml: deny using obsoleted os.Is... checks
+  * Remove unused nolint annotations
+  * Replace os.Is* error checks with errors.Is
+  * Fix compilation of tests without CGo
+  * test/system: fix "quadlet kube - start error" flake
+  * test/system: fix can trap signal flake
+  * test/system: do not use image mount as rootfs source
+  * test/system: fix "podman kill - concurrent stop"
+  * test/system: use DISABLE_HC_SYSTEMD for 2 tests
+  * test/e2e: deduplicate some network subnets
+  * test/system: bump "unlock while waiting for timeout" timeout
+  * test/system: do not run "podman pause/unpause" in parallel
+  * test/system: fix "stop container when healthcheck runs" flake
+  * test/system: fix "podman stop - unlock while waiting for timeout"
+  * test/e2e: fix static port assignment
+  * test/system: skip one new pasta flake
+  * test/e2e: fix some duplciated network subnets
+  * test/e2e: skip "podman run --shm-size-systemd" as root
+  * test/e2e: skip "sshd and API services required"
+  * test/system: fix "add username to /etc/passwd if --userns=keep-id"
+  * test/system: skip "IPv6 default address assignment"
+  * test/system: fix quadlet - rootfs on kernel 7.1
+  * Cite go module change
+  * Install WiX v5.0.2 to build the Windows installer
+  * Bump Podman to v5.8.3-dev
+
+-------------------------------------------------------------------
 Mon Apr 27 11:37:15 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 5.8.2:
@@ -26,7 +93,7 @@ Mon Apr 27 11:37:15 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
   * libpod: Don't dereference ctrSpec.Linux if it is nil
   * quadlet: allow empty Entrypoint to clear image default
   * [v5.8] Bump Buildah to 1.43.1, c/common v0.67.1, c/image v5.39.2
-  * bump go-jose/go-jose to v4.1.4
+  * bump go-jose/go-jose to v4.1.4 (bsc#1262856)
   * [v5.8] Fix `unless-stopped` containers not restarting after ...
   * Bump Podman to v5.8.2-dev
 
