@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 22 06:23:12 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.5
+  * Fix CI failure on maybe-uninitialized compiler warning.
+  * Avoid division by zero on small windows.
+  * Work on smaller windows with no clock display.
+
+-------------------------------------------------------------------
 Sat Sep 13 06:31:21 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.4
