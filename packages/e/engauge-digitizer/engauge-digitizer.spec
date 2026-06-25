@@ -24,14 +24,17 @@ License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Other
 URL:            https://markummitchell.github.io/engauge-digitizer/
 Source0:        https://github.com/akhuettel/engauge-digitizer/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-Fix-noreturn-syntax.patch
+Patch1:         0001-Replace-log4cpp-with-Qt-categorized-logging.patch
+Patch2:         0001-Fix-ownership-of-Poppler-Document-for-Qt6.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  icns-utils
 BuildRequires:  optipng
-BuildRequires:  qt6-tools-helpgenerators
 BuildRequires:  pkgconfig
+BuildRequires:  qt6-tools-helpgenerators
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Help)
@@ -41,7 +44,6 @@ BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(log4cpp)
 BuildRequires:  pkgconfig(poppler-qt6)
 Suggests:       %{name}-doc
 

@@ -1,0 +1,172 @@
+From a2cd96dbf9a551383b901338fb7117b3dda1ae4e Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Stefan=20Br=C3=BCns?= <stefan.bruens@rwth-aachen.de>
+Date: Tue, 23 Jun 2026 16:12:50 +0200
+Subject: [PATCH] Fix ownership of Poppler::Document for Qt6
+
+The Qt6 interface uses unique_ptrs, assigning to a raw pointer drops
+the ownership and leaves a dangling pointer.
+---
+ src/Dlg/DlgImportCroppingPdf.cpp     |  3 +--
+ src/Import/ImportCroppingUtilPdf.cpp |  7 +++----
+ src/Import/ImportCroppingUtilPdf.h   |  3 ++-
+ src/Pdf/Pdf.cpp                      | 17 +++++------------
+ src/Pdf/Pdf.h                        |  3 ++-
+ 5 files changed, 13 insertions(+), 20 deletions(-)
+
+diff --git a/src/Dlg/DlgImportCroppingPdf.cpp b/src/Dlg/DlgImportCroppingPdf.cpp
+index edc04281..1d8651dd 100644
+--- a/src/Dlg/DlgImportCroppingPdf.cpp
++++ b/src/Dlg/DlgImportCroppingPdf.cpp
+@@ -189,7 +189,7 @@ QImage DlgImportCroppingPdf::loadImage (int page1Based) const
+   QImage image;
+ 
+   int page0Based = page1Based - 1;
+-  Page *page = m_document.page (page0Based).get();
++  std::unique_ptr<Page> page = m_document.page (page0Based);
+   if (page != nullptr) {
+ 
+     image = page->renderToImage (m_resolution,
+@@ -199,7 +199,6 @@ QImage DlgImportCroppingPdf::loadImage (int page1Based) const
+                                  WIDTH,
+                                  HEIGHT);
+ 
+-    delete page;
+   }
+ 
+   return image;
+diff --git a/src/Import/ImportCroppingUtilPdf.cpp b/src/Import/ImportCroppingUtilPdf.cpp
+index 14c17533..7f4d27aa 100644
+--- a/src/Import/ImportCroppingUtilPdf.cpp
++++ b/src/Import/ImportCroppingUtilPdf.cpp
+@@ -17,10 +17,9 @@ ImportCroppingUtilPdf::ImportCroppingUtilPdf()
+ bool ImportCroppingUtilPdf::applyImportCropping (bool isErrorReportRegressionTest,
+                                                  const QString &fileName,
+                                                  ImportCropping importCropping,
+-                                                 Document *&document) const
++                                                 std::unique_ptr<Document> &document) const
+ {
+-  document = nullptr;
+-
++  document.reset();
+   bool cropping = false;
+ 
+   if (!isErrorReportRegressionTest) {
+@@ -30,7 +29,7 @@ bool ImportCroppingUtilPdf::applyImportCropping (bool isErrorReportRegressionTes
+ 
+       // Try to read the file
+       QApplication::setOverrideCursor (Qt::BusyCursor); // Since load could take a while
+-      document = Document::load (fileName).get();
++      document = Document::load (fileName);
+       QApplication::restoreOverrideCursor();
+       if (document != nullptr) {
+         if (!document->isLocked ()) {
+diff --git a/src/Import/ImportCroppingUtilPdf.h b/src/Import/ImportCroppingUtilPdf.h
+index 567b55ca..ddd4f91f 100644
+--- a/src/Import/ImportCroppingUtilPdf.h
++++ b/src/Import/ImportCroppingUtilPdf.h
+@@ -9,6 +9,7 @@
+ 
+ #include "ImportCropping.h"
+ #include "ImportCroppingUtilBase.h"
++#include <memory>
+ #include <QString>
+ 
+ namespace Poppler {
+@@ -29,7 +30,7 @@ public:
+   bool applyImportCropping (bool isRegression,
+                             const QString &fileName,
+                             ImportCropping importCropping,
+-                            Poppler::Document *&document) const;
++                            std::unique_ptr<Poppler::Document> &document) const;
+ 
+ };
+ 
+diff --git a/src/Pdf/Pdf.cpp b/src/Pdf/Pdf.cpp
+index 4f104da2..e68bcd67 100644
+--- a/src/Pdf/Pdf.cpp
++++ b/src/Pdf/Pdf.cpp
+@@ -28,7 +28,7 @@ PdfReturn Pdf::load (const QString &fileName,
+                      ImportCropping importCropping,
+                      bool isErrorReportRegressionTest) const
+ {
+-  Document *document = nullptr;
++  std::unique_ptr<Document> document;
+ 
+   ImportCroppingUtilPdf importCroppingUtil;
+   bool cropping = importCroppingUtil.applyImportCropping (isErrorReportRegressionTest,
+@@ -40,7 +40,7 @@ PdfReturn Pdf::load (const QString &fileName,
+   QApplication::setOverrideCursor(Qt::BusyCursor); // Since loading can be slow
+   if (cropping) {
+ 
+-    rtn = loadWithCropping (document,
++    rtn = loadWithCropping (std::move(document),
+                             image,
+                             resolution);
+ 
+@@ -53,13 +53,10 @@ PdfReturn Pdf::load (const QString &fileName,
+   }
+   QApplication::restoreOverrideCursor();
+ 
+-  delete document;
+-  document = nullptr;
+-
+   return rtn;
+ }
+ 
+-PdfReturn Pdf::loadWithCropping (Document *document,
++PdfReturn Pdf::loadWithCropping (std::unique_ptr<Document> document,
+                                  QImage &image,
+                                  int resolution) const
+ {
+@@ -94,12 +91,12 @@ PdfReturn Pdf::loadWithoutCropping (const QString &fileName,
+   if (fileName.right (4).toLower () == ".pdf") {
+ 
+     // Try to read the file
+-    Document *document = Document::load (fileName).get();
++    std::unique_ptr<Document> document = Document::load (fileName);
+ 
+     if (document != nullptr) {
+       if (!document->isLocked ()) {
+ 
+-        Page *page = document->page (FIRST_PAGE_1_BASED - 1).get();
++        std::unique_ptr<Page> page = document->page (FIRST_PAGE_1_BASED - 1);
+         if (page != nullptr) {
+ 
+           image = page->renderToImage (resolution,
+@@ -112,12 +109,8 @@ PdfReturn Pdf::loadWithoutCropping (const QString &fileName,
+           if (!image.isNull()) {
+             pdfReturn = PDF_RETURN_SUCCESS;
+           }
+-
+-          delete page;
+         }
+       }
+-
+-      delete document;
+     }
+   }
+ 
+diff --git a/src/Pdf/Pdf.h b/src/Pdf/Pdf.h
+index 8e488d9f..f9301d29 100644
+--- a/src/Pdf/Pdf.h
++++ b/src/Pdf/Pdf.h
+@@ -8,6 +8,7 @@
+ #define PDF_H
+ 
+ #include "ImportCropping.h"
++#include <memory>
+ 
+ namespace Poppler {
+   class Document;
+@@ -40,7 +41,7 @@ public:
+ 
+ private:
+ 
+-  PdfReturn loadWithCropping (Poppler::Document *document,
++  PdfReturn loadWithCropping (std::unique_ptr<Poppler::Document> document,
+                               QImage &image,
+                               int resolution) const; // Dialog is used when not testing
+   PdfReturn loadWithoutCropping (const QString &fileName,
+-- 
+2.54.0
+

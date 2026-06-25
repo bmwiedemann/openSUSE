@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 22 23:07:17 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Replace dependency on broken log4cpp package, add
+  0001-Replace-log4cpp-with-Qt-categorized-logging.patch
+- Add 0001-Fix-noreturn-syntax.patch
+- Fix crash on PDF import, add
+  0001-Fix-ownership-of-Poppler-Document-for-Qt6.patch
+
+-------------------------------------------------------------------
 Tue Jan 13 11:37:05 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 12.9.1:
