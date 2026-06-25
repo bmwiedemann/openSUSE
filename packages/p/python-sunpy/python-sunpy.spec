@@ -151,6 +151,7 @@ chmod +x %{buildroot}%{$python_sitearch}/sunpy/extern/distro.py
 }
 
 %check
+rm -rf $HOME/.astropy
 mkdir testdir
 pushd testdir
 %{python_expand # no opencv for non-primary python3

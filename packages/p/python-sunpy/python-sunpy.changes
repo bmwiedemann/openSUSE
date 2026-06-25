@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 15:19:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Delete old astropy cache before tests 
+
+-------------------------------------------------------------------
 Sat Apr 25 22:05:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.2:
