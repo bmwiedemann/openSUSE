@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jun 25 11:45:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.8
+  * Changes of 2.18.8
+    + #1611: Apply number-length validator on streaming integer path
+      of async parser
+  * Changes of 2.18.7
+    + #1570: Fail parsing from 'DataInput' if 'StreamReadConstraints
+      .getMaxDocumentLength()' set
+      (bsc#1268603, GHSA-2m67-wjpj-xhg9)
+    + #1600: Rework 3rd party licenses in jar
+    + #1602: 'UTF8DataInputJsonParser' needs to enforce
+      'StreamReadConstraints.maxNameLength' limit
+  * Changes of 2.18.6
+    + #1512: Number-parsing fix for 'UTF8DataInputJsonParser'
+    + #1548: 'StreamReadConstraints.maxDocumentLength' not checked
+      when creating parser with fixed buffer
+    + #1555: Enforce 'StreamReadConstraints.maxNumberLength' for
+     non-blocking (async) parser
+  * Changes of 2.18.5
+    + #1433: 'JsonParser#getNumberType()' throws
+      'JsonParseException' when the current token is non-numeric
+      instead of returning null
+    + #1446: Invalid package reference to "java.lang.foreign" from
+      'com.fasterxml.jackson.core:jackson-core' (from
+      'FastDoubleParser')
+  * Changes of 2.18.3
+    + #1391: Fix issue where the parser can read back old number
+      state when parsing later numbers
+    + #1397: Jackson changes additional values to infinite in case
+      of special JSON structures and existing infinite values
+    + #1398: Fix issue that feature
+      COMBINE_UNICODE_SURROGATES_IN_UTF8 doesn't work when custom
+      characterEscape is used
+  * Changes of 2.18.2
+    + #1359: Non-surrogate characters being incorrectly combined
+      when 'JsonWriteFeature.COMBINE_UNICODE_SURROGATES_IN_UTF8' is
+      enabled
+  * Changes of 2.18.1
+    + #1353: Use fastdoubleparser 1.0.90
+  * Changes of 2.18.
+    + #223: 'UTF8JsonGenerator' writes supplementary characters as a
+      surrogate pair: should use 4-byte encoding
+    + #1230: Improve performance of 'float' and 'double' parsing
+      from 'TextBuffer'
+    + #1251: 'InternCache' replace synchronized with 'ReentrantLock'
+      - the cache size limit is no longer strictly enforced for
+      performance reasons but we should never go far about the limit
+    + #1252: 'ThreadLocalBufferManager' replace synchronized with
+      'ReentrantLock'
+    + #1257: Increase InternCache default max size from 100 to 200
+    + #1262: Add diagnostic method 'pooledCount()' in 'RecyclerPool'
+    + #1264: Rename shaded 'ch.randelshofer:fastdoubleparser'
+      classes to prevent use by downstream consumers
+    + #1271: Deprecate 'LockFreePool' implementation in 2.18 (remove
+      from 3.0)
+    + #1274: 'NUL'-corrupted keys, values on JSON serialization
+    + #1277: Add back Java 22 optimisation in FastDoubleParser
+    + #1284: Optimize 'JsonParser.getDoubleValue()/getFloatValue()
+      /getDecimalValue()' to avoid String allocation
+    + #1305: Make helper methods of 'WriterBasedJsonGenerator'
+      non-final to allow overriding
+    + #1310: Add new 'StreamReadConstraints' ('maxTokenCount') to
+      limit maximum number of Tokens allowed per document#
+    + #1331: Update to FastDoubleParser v1.0.1 to fix 'BigDecimal'
+      decoding proble
+- Modified patch:
+  * 0001-Remove-ch.randelshofer.fastdoubleparser.patch
+    + rebase
+
+-------------------------------------------------------------------
 Wed Nov  6 07:49:57 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.3

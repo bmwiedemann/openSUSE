@@ -1,4 +1,4 @@
-From 36ca1db668b34577de7586f5788cd038415ebbfe Mon Sep 17 00:00:00 2001
+From 9f0be7eee70d55cf229c900cc5dd17ad8a680f08 Mon Sep 17 00:00:00 2001
 From: Chris Kelley <ckelley@redhat.com>
 Date: Mon, 19 Jun 2023 21:07:53 +0100
 Subject: [PATCH] Remove ch.randelshofer.fastdoubleparser
@@ -6,15 +6,17 @@ Subject: [PATCH] Remove ch.randelshofer.fastdoubleparser
 It is not packaged in Fedora, and it is not enabled by default, so take
 it out. We can add it back in if we wish to package it later.
 ---
- .../jackson/core/io/BigDecimalParser.java     | 24 ----------
- .../jackson/core/io/BigIntegerParser.java     | 41 -----------------
- .../jackson/core/io/NumberInput.java          | 31 +++----------
- .../jackson/core/io/BigDecimalParserTest.java | 19 ++------
- .../jackson/core/io/BigIntegerParserTest.java | 46 -------------------
- 5 files changed, 12 insertions(+), 149 deletions(-)
+ .../jackson/core/io/BigDecimalParser.java     | 49 +----------------
+ .../jackson/core/io/BigIntegerParser.java     | 41 --------------
+ .../jackson/core/io/NumberInput.java          | 29 ++--------
+ .../jackson/core/io/BigDecimalParserTest.java | 21 ++++----
+ .../jackson/core/io/BigIntegerParserTest.java | 54 -------------------
+ 5 files changed, 14 insertions(+), 180 deletions(-)
  delete mode 100644 src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
  delete mode 100644 src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
 
+diff --git a/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java b/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
+index 2be42744c..15d015b96 100644
 --- a/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
 +++ b/src/main/java/com/fasterxml/jackson/core/io/BigDecimalParser.java
 @@ -1,7 +1,5 @@
@@ -25,11 +27,23 @@ it out. We can add it back in if we wish to package it later.
  import java.math.BigDecimal;
  
  /**
-@@ -55,10 +53,7 @@ public final class BigDecimalParser
+@@ -42,10 +40,7 @@ public final class BigDecimalParser
+      */
+     public static BigDecimal parse(String valueStr) {
+         try {
+-            if (valueStr.length() < SIZE_FOR_SWITCH_TO_FASTDOUBLEPARSER) {
+-                return new BigDecimal(valueStr);
+-            }
+-            return JavaBigDecimalParser.parseBigDecimal(valueStr);
++            return new BigDecimal(valueStr);
+ 
+             // 20-Aug-2022, tatu: Although "new BigDecimal(...)" only throws NumberFormatException
+             //    operations by "parseBigDecimal()" can throw "ArithmeticException", so handle both:
+@@ -66,10 +61,7 @@ public final class BigDecimalParser
       */
      public static BigDecimal parse(final char[] chars, final int off, final int len) {
          try {
--            if (len < 500) {
+-            if (len < SIZE_FOR_SWITCH_TO_FASTDOUBLEPARSER) {
 -                return new BigDecimal(chars, off, len);
 -            }
 -            return JavaBigDecimalParser.parseBigDecimal(chars, off, len);
@@ -37,7 +51,7 @@ it out. We can add it back in if we wish to package it later.
  
          // 20-Aug-2022, tatu: Although "new BigDecimal(...)" only throws NumberFormatException
          //    operations by "parseBigDecimal()" can throw "ArithmeticException", so handle both:
-@@ -82,43 +77,6 @@ public final class BigDecimalParser
+@@ -93,43 +85,6 @@ public final class BigDecimalParser
          return parse(chars, 0, chars.length);
      }
  
@@ -74,13 +88,16 @@ it out. We can add it back in if we wish to package it later.
 -        try {
 -            return JavaBigDecimalParser.parseBigDecimal(ch, off, len);
 -        } catch (ArithmeticException | NumberFormatException e) {
--            throw _parseFailure(e, new String(ch, off, len));
+-            throw _parseFailure(e, ch, off, len);
 -        }
 -    }
 -
      private static NumberFormatException _parseFailure(Exception e, String fullValue) {
          String desc = e.getMessage();
          // 05-Feb-2021, tatu: Alas, JDK mostly has null message so:
+diff --git a/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java b/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
+deleted file mode 100644
+index 777c3f450..000000000
 --- a/src/main/java/com/fasterxml/jackson/core/io/BigIntegerParser.java
 +++ /dev/null
 @@ -1,41 +0,0 @@
@@ -125,6 +142,8 @@ it out. We can add it back in if we wish to package it later.
 -        }
 -    }
 -}
+diff --git a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
+index 5cef8dbb3..4db891eac 100644
 --- a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 +++ b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 @@ -1,8 +1,5 @@
@@ -136,7 +155,7 @@ it out. We can add it back in if we wish to package it later.
  import java.math.BigDecimal;
  import java.math.BigInteger;
  import java.util.regex.Pattern;
-@@ -397,7 +394,7 @@ public final class NumberInput
+@@ -407,7 +404,7 @@ public final class NumberInput
       * @since v2.14
       */
      public static double parseDouble(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -145,7 +164,17 @@ it out. We can add it back in if we wish to package it later.
      }
  
      /**
-@@ -422,9 +419,6 @@ public final class NumberInput
+@@ -432,8 +429,7 @@ public final class NumberInput
+      */
+     public static double parseDouble(final char[] array, final int offset,
+                                      final int len, final boolean useFastParser) throws NumberFormatException {
+-        return useFastParser ? JavaDoubleParser.parseDouble(array, offset, len) :
+-                Double.parseDouble(new String(array, offset, len));
++        return Double.parseDouble(new String(array, offset, len));
+     }
+ 
+     /**
+@@ -458,9 +454,6 @@ public final class NumberInput
       * @since v2.14
       */
      public static float parseFloat(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -155,7 +184,17 @@ it out. We can add it back in if we wish to package it later.
          return Float.parseFloat(s);
      }
  
-@@ -448,9 +442,6 @@ public final class NumberInput
+@@ -486,8 +479,7 @@ public final class NumberInput
+      */
+     public static float parseFloat(final char[] array, final int offset,
+                                    final int len, final boolean useFastParser) throws NumberFormatException {
+-        return useFastParser ? JavaFloatParser.parseFloat(array, offset, len) :
+-                Float.parseFloat(new String(array, offset, len));
++        return Float.parseFloat(new String(array, offset, len));
+     }
+ 
+     /**
+@@ -510,9 +502,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -165,7 +204,7 @@ it out. We can add it back in if we wish to package it later.
          return BigDecimalParser.parse(s);
      }
  
-@@ -481,9 +472,6 @@ public final class NumberInput
+@@ -543,9 +532,6 @@ public final class NumberInput
                                               final boolean useFastParser)
              throws NumberFormatException
      {
@@ -175,18 +214,17 @@ it out. We can add it back in if we wish to package it later.
          return BigDecimalParser.parse(ch, off, len);
      }
  
-@@ -507,9 +495,7 @@ public final class NumberInput
+@@ -569,9 +555,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final char[] ch, final boolean useFastParser) throws NumberFormatException {
--        return useFastParser ?
--                BigDecimalParser.parseWithFastParser(ch, 0, ch.length) :
--                BigDecimalParser.parse(ch);
-+        return BigDecimalParser.parse(ch);
+-        if (useFastParser) {
+-            return BigDecimalParser.parseWithFastParser(ch, 0, ch.length);
+-        }
+         return BigDecimalParser.parse(ch);
      }
  
-     /**
-@@ -533,9 +519,6 @@ public final class NumberInput
+@@ -596,9 +579,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigInteger parseBigInteger(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -196,7 +234,7 @@ it out. We can add it back in if we wish to package it later.
          return new BigInteger(s);
      }
  
-@@ -549,9 +532,6 @@ public final class NumberInput
+@@ -612,9 +592,6 @@ public final class NumberInput
       */
      public static BigInteger parseBigIntegerWithRadix(final String s, final int radix,
              final boolean useFastParser) throws NumberFormatException {
@@ -206,9 +244,11 @@ it out. We can add it back in if we wish to package it later.
          return new BigInteger(s, radix);
      }
  
+diff --git a/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java b/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
+index 9ec4cc6cd..a57e42653 100644
 --- a/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
 +++ b/src/test/java/com/fasterxml/jackson/core/io/BigDecimalParserTest.java
-@@ -10,19 +10,13 @@ class BigDecimalParserTest extends com.f
+@@ -11,19 +11,13 @@ class BigDecimalParserTest extends com.fasterxml.jackson.core.JUnit5TestBase
  {
      @Test
      void longInvalidStringParse() {
@@ -234,7 +274,7 @@ it out. We can add it back in if we wish to package it later.
              fail("expected NumberFormatException");
          } catch (NumberFormatException nfe) {
              assertTrue(nfe.getMessage().startsWith("Value \"AAAAA"), "exception message starts as expected?");
-@@ -69,4 +63,7 @@ class BigDecimalParserTest extends com.f
+@@ -82,4 +76,7 @@ class BigDecimalParserTest extends com.fasterxml.jackson.core.JUnit5TestBase
          sb.append('1');
          return sb.toString();
      }
@@ -242,6 +282,9 @@ it out. We can add it back in if we wish to package it later.
 +        return BigIntegerParserTest.genLongString();
 +    }
  }
+diff --git a/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java b/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
+deleted file mode 100644
+index a515f6563..000000000
 --- a/src/test/java/com/fasterxml/jackson/core/io/BigIntegerParserTest.java
 +++ /dev/null
 @@ -1,54 +0,0 @@
@@ -299,3 +342,6 @@ it out. We can add it back in if we wish to package it later.
 -        return sb.toString();
 -    }
 -}
+-- 
+2.54.0
+
