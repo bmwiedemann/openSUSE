@@ -1,7 +1,7 @@
 #
 # spec file for package jackson-module-jsonSchema
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           jackson-module-jsonSchema
-Version:        2.17.3
+Version:        2.18.8
 Release:        0
 Summary:        Jackson module for JSON Schema 3 generation
 License:        Apache-2.0
