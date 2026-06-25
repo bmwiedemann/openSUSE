@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jun 24 19:32:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 113.0:
+  * Tests can now depend on virtual-machine images via the new
+    vmimage runner, with VMImage support for current openSUSE
+    Leap 15.x images
+  * Full support for running under Python 3.13
+  * HTML report can filter on negative conditions (e.g. show all
+    tests that did not pass)
+  * "avocado plugins" gained a --capabilities option
+  * Reworked logging with support for custom loggers and levels
+  * avocado.utils gained NVMe self-encrypting-drive and shared
+    namespace helpers, hugepage allocation detection, decimal
+    data-structure support, and bzip2 archive handling
+  * Numerous bug fixes (job log level handling, process.can_sudo)
+- Package the remaining optional plugins to complete the stack:
+  * python3-avocado-plugins-ansible (run Ansible modules as tests)
+  * python3-avocado-plugins-result-mail (e-mail job results)
+  * python3-avocado-plugins-spawner-remote (run tests on a
+    remote host over SSH)
+
+-------------------------------------------------------------------
 Mon Mar 17 01:08:11 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 109.0:

@@ -78,4 +78,12 @@
   Full cahngelog: https://avocado-framework.readthedocs.io/en/98.0/releases/98_0.html</comment>
     <requestid>1253574</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d9ce2b3adde29b457df47e51eaaa03ee</srcmd5>
+    <version>113.0</version>
+    <time>1782377892</time>
+    <user>anag_factory</user>
+    <comment>Update avocado 109.0 -&gt; 113.0 and complete the optional-plugin stack (new: ansible, result-mail, spawner-remote). Adds the new core vmimage runner; all 15 subpackages build clean (0 rpmlint badness).</comment>
+    <requestid>1361650</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-avocado
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,12 +20,13 @@
 %define pythons python3
 %define         pkgname avocado
 Name:           python-avocado
-Version:        109.0
+Version:        113.0
 Release:        0
 Summary:        Avocado Test Framework
 License:        GPL-2.0-only
 URL:            https://avocado-framework.github.io/
 Source:         https://github.com/avocado-framework/avocado/archive/%{version}.tar.gz#/%{pkgname}-%{version}.tar.gz
+Source1:        %{name}-rpmlintrc
 BuildRequires:  %{python_module Sphinx}
 BuildRequires:  %{python_module aexpect}
 BuildRequires:  %{python_module devel >= 3.8}
@@ -40,9 +41,13 @@ BuildRequires:  %{python_module resultsdb_api}
 BuildRequires:  %{python_module setuptools >= 18.0.0}
 BuildRequires:  fdupes
 BuildRequires:  kmod
-BuildRequires:  libvirt-devel
+BuildRequires:  pkgconfig
 BuildRequires:  procps
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libvirt)
+BuildRequires:  pkgconfig(libvirt-admin)
+BuildRequires:  pkgconfig(libvirt-lxc)
+BuildRequires:  pkgconfig(libvirt-qemu)
 Requires:       %{pkgname}-common
 Requires:       gdb
 Requires:       procps
@@ -145,6 +150,32 @@ Requires:       python3-%{pkgname} = %{version}
 This optional plugin is intended to upload the Avocado Job results to
 a dedicated sever.
 
+%package -n python3-%{pkgname}-plugins-ansible
+Summary:        Avocado plugin to run Ansible modules as tests
+Requires:       python3-%{pkgname} = %{version}
+Requires:       python3-cffi
+
+%description -n python3-%{pkgname}-plugins-ansible
+This optional plugin enables Avocado to use Ansible modules as a source
+of tests and as job dependencies.
+
+%package -n python3-%{pkgname}-plugins-result-mail
+Summary:        Avocado plugin to send job results by e-mail
+Requires:       python3-%{pkgname} = %{version}
+
+%description -n python3-%{pkgname}-plugins-result-mail
+This optional plugin sends a notification e-mail with the Avocado job
+results once a job finishes.
+
+%package -n python3-%{pkgname}-plugins-spawner-remote
+Summary:        Avocado spawner for running tests on a remote host
+Requires:       python3-%{pkgname} = %{version}
+Requires:       python3-aexpect >= 1.6.2
+
+%description -n python3-%{pkgname}-plugins-spawner-remote
+This optional plugin adds a spawner that runs Avocado tests on a remote
+host over SSH.
+
 %package -n %{pkgname}-examples
 Summary:        Avocado Test Framework Example Tests
 Requires:       %{pkgname} = %{version}
@@ -157,14 +188,14 @@ examples of how to write tests on your own.
 %prep
 %setup -q -n %{pkgname}-%{version}
 
-# fix shebang
+# fix shebang (also for the extension-less example test scripts)
 pushd examples
-find -name "*.py" -exec sed -i "s|^#!\s*%{_bindir}/env python3|#!%{_bindir}/python3|" {} \;
+find -type f -exec sed -i "1s|^#!\s*%{_bindir}/env python3|#!%{_bindir}/python3|" {} \;
 popd
 
 %build
 %pyproject_wheel
-make %{?_smp_mflags} man
+%make_build man
 
 pushd optional_plugins/html
 %pyproject_wheel
@@ -188,6 +219,15 @@ pushd optional_plugins/varianter_cit
 %pyproject_wheel
 popd
 pushd optional_plugins/result_upload
+%pyproject_wheel
+popd
+pushd optional_plugins/ansible
+%pyproject_wheel
+popd
+pushd optional_plugins/mail
+%pyproject_wheel
+popd
+pushd optional_plugins/spawner_remote
 %pyproject_wheel
 popd
 
@@ -218,9 +258,19 @@ popd
 pushd optional_plugins/result_upload
 %pyproject_install
 popd
+pushd optional_plugins/ansible
+%pyproject_install
+popd
+pushd optional_plugins/mail
+%pyproject_install
+popd
+pushd optional_plugins/spawner_remote
+%pyproject_install
+popd
 
 %python_clone -a %{buildroot}%{_bindir}/avocado
 %python_clone -a %{buildroot}%{_bindir}/avocado-external-runner
+%python_clone -a %{buildroot}%{_bindir}/avocado-runner-ansible-module
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-asset
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-avocado-instrumented
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-dry-run
@@ -234,7 +284,12 @@ popd
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-robot
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-sysinfo
 %python_clone -a %{buildroot}%{_bindir}/avocado-runner-tap
+%python_clone -a %{buildroot}%{_bindir}/avocado-runner-vmimage
 %python_clone -a %{buildroot}%{_bindir}/avocado-software-manager
+
+# force hash-based .pyc across core and all plugins
+# (avoid python-bytecode-inconsistent-mtime)
+%python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}
 
 # Reduce duplicates
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -278,15 +333,16 @@ mkdir -p %{buildroot}%{_libexecdir}/avocado
 %python_expand rm -rf %{buildroot}%{$python_sitelib}/%{pkgname}%{_sysconfdir}
 
 %post
-%{python_install_alternative avocado avocado-external-runner avocado-runner-asset avocado-runner-avocado-instrumented avocado-runner-dry-run avocado-runner-exec-test avocado-runner-golang avocado-runner-noop avocado-runner-package avocado-runner-pip avocado-runner-podman-image avocado-runner-python-unittest avocado-runner-robot avocado-runner-sysinfo avocado-runner-tap avocado-software-manager}
+%{python_install_alternative avocado avocado-external-runner avocado-runner-ansible-module avocado-runner-asset avocado-runner-avocado-instrumented avocado-runner-dry-run avocado-runner-exec-test avocado-runner-golang avocado-runner-noop avocado-runner-package avocado-runner-pip avocado-runner-podman-image avocado-runner-python-unittest avocado-runner-robot avocado-runner-sysinfo avocado-runner-tap avocado-runner-vmimage avocado-software-manager}
 
 %postun
-%{python_uninstall_alternative avocado avocado-external-runner avocado-runner-asset avocado-runner-avocado-instrumented avocado-runner-dry-run avocado-runner-exec-test avocado-runner-golang avocado-runner-noop avocado-runner-package avocado-runner-pip avocado-runner-podman-image avocado-runner-python-unittest avocado-runner-robot avocado-runner-sysinfo avocado-runner-tap avocado-software-manager}
+%{python_uninstall_alternative avocado avocado-external-runner avocado-runner-ansible-module avocado-runner-asset avocado-runner-avocado-instrumented avocado-runner-dry-run avocado-runner-exec-test avocado-runner-golang avocado-runner-noop avocado-runner-package avocado-runner-pip avocado-runner-podman-image avocado-runner-python-unittest avocado-runner-robot avocado-runner-sysinfo avocado-runner-tap avocado-runner-vmimage avocado-software-manager}
 
 %files %{python_files}
 %license LICENSE
 %python_alternative %{_bindir}/avocado
 %python_alternative %{_bindir}/avocado-external-runner
+%python_alternative %{_bindir}/avocado-runner-ansible-module
 %python_alternative %{_bindir}/avocado-runner-asset
 %python_alternative %{_bindir}/avocado-runner-avocado-instrumented
 %python_alternative %{_bindir}/avocado-runner-dry-run
@@ -300,6 +356,7 @@ mkdir -p %{buildroot}%{_libexecdir}/avocado
 %python_alternative %{_bindir}/avocado-runner-robot
 %python_alternative %{_bindir}/avocado-runner-sysinfo
 %python_alternative %{_bindir}/avocado-runner-tap
+%python_alternative %{_bindir}/avocado-runner-vmimage
 %python_alternative %{_bindir}/avocado-software-manager
 
 %dir %{python_sitelib}/%{pkgname}
@@ -367,6 +424,19 @@ mkdir -p %{buildroot}%{_libexecdir}/avocado
 %files -n python3-%{pkgname}-plugins-result-upload
 %{python3_sitelib}/avocado_result_upload
 %{python3_sitelib}/avocado_framework_plugin_result_upload-%{version}.dist-info
+
+%files -n python3-%{pkgname}-plugins-ansible
+%{python3_sitelib}/avocado_ansible
+%{python3_sitelib}/avocado_framework_plugin_ansible-%{version}.dist-info
+%{_bindir}/avocado-runner-ansible-module
+
+%files -n python3-%{pkgname}-plugins-result-mail
+%{python3_sitelib}/avocado_result_mail
+%{python3_sitelib}/avocado_framework_plugin_result_mail-%{version}.dist-info
+
+%files -n python3-%{pkgname}-plugins-spawner-remote
+%{python3_sitelib}/avocado_spawner_remote
+%{python3_sitelib}/avocado_framework_plugin_spawner_remote-%{version}.dist-info
 
 %files -n %{pkgname}-examples
 %dir %{_docdir}/avocado

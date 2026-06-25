@@ -1,0 +1,3 @@
+# The avocado example tests intentionally ship empty fixture files
+# (expected-empty output and empty input data) used by the self-tests.
+addFilter("avocado-examples.* zero-length /usr/share/doc/packages/avocado/tests/.*")
