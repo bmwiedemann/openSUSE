@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:13:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.19:
+  * paths: honor `recursive` for `type: permissions`, make uid/gid
+    nullable (#2281)
+  * Lower SBOM duplicate-package log from info to debug (#2293)
+  * build(deps): bump golang.org/x/term from 0.43.0 to 0.44.0
+    (#2277)
+  * build(deps): bump go.step.sm/crypto from 0.82.0 to 0.83.0
+    (#2280)
+  * build(deps): bump google.golang.org/api from 0.283.0 to 0.285.0
+    (#2287)
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0 (#2291)
+  * build(deps): bump chainguard.dev/sdk from 0.1.57 to 0.1.74
+    (#2290)
+  * build(deps): bump chainguard-dev/actions from 1.6.22 to 1.6.24
+    (#2292)
+
+-------------------------------------------------------------------
 Mon Jun 22 05:04:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.18:
