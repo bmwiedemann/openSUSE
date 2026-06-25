@@ -61,7 +61,7 @@ URL:            https://crash-utility.github.io/
 Summary:        Crash utility for live systems; netdump, diskdump, LKCD or mcore dumpfiles
 License:        GFDL-1.2-only AND GPL-3.0-or-later
 Group:          Development/Tools/Debuggers
-Version:        9.0.0
+Version:        9.0.2
 Release:        0
 Source:         https://github.com/crash-utility/crash/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/gdb/gdb-16.2.tar.gz
@@ -118,8 +118,11 @@ ExclusiveArch:  %ix86 x86_64 ia64 s390 s390x ppc ppc64 ppc64le alpha aarch64 %ar
 %if 0%{?build_kmp}
 BuildRequires:  kernel-syms
 %ifarch x86_64
-%if 0%{?suse_version} >= 1520 && 0%{?suse_version} < 1550
+%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1600
 BuildRequires:  kernel-syms-rt
+%endif
+%if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
+BuildRequires:  kernel-rt-devel
 %endif
 %endif
 %if 0%{?suse_version} >= 1130

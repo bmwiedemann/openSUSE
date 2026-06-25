@@ -1780,4 +1780,23 @@
  - Added gmp-devel and mpfr-devel to BuildRequires</comment>
     <requestid>1287156</requestid>
   </revision>
+  <revision rev="199" vrev="1">
+    <srcmd5>a529b69c96385bd1f391bd5ce0471132</srcmd5>
+    <version>9.0.2</version>
+    <time>1782377462</time>
+    <user>anag_factory</user>
+    <comment>- Require kernel-rt-devel on suse_version &gt;= 1610, while
+  keep pulling in kernel-syms-rt on &gt;= 1500 &lt; 1600 (RT KMP is
+  only built in 16.1+, so 16.0 is excluded)
+- Ensure we still have an upper version limit for Factory, as
+  there is no -rt kernel there
+
+- Change spec file conditional that restricts requiring
+  kernel-syms-rt to versions &gt;= 1520 and less than 1550 to
+  only restrict including it to versions &gt;= 1520. This removes
+  the upper version limit on buildrequires kernel-syms-rt
+
+- Update to crash 9.0.2</comment>
+    <requestid>1361294</requestid>
+  </revision>
 </revisionlist>
