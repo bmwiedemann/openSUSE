@@ -356,4 +356,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.7.0 (maybe). K:F already publish disabled. (forwarded request 1359107 from Vogtinator)</comment>
     <requestid>1359194</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>a811a0082fe2a5606deb58964049a976</srcmd5>
+    <version>6.7.1</version>
+    <time>1782377491</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
+    <requestid>1361436</requestid>
+  </revision>
 </revisionlist>
