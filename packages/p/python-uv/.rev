@@ -2789,4 +2789,22 @@
   * Fix incorrect output from uv tree --invert</comment>
     <requestid>1360892</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>76b144d1bb01ff4027c1dde7cb0425d4</srcmd5>
+    <version>0.11.24</version>
+    <time>1782400450</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.24 
+ * Preview features
+  * Make project environments relocatable under preview 
+ * Performance
+  * Use a compact index for lazy version maps 
+ * Bug fixes
+  * Allow disabling exclude-newer 
+  * Avoid archive id collisions 
+  * Reapply &quot;Fix transparent Python upgrades in project environments&quot; 
+  * Clean up partial tool entrypoint installs 
+  * Fix relocatable activate.fish and broaden Fish version support</comment>
+    <requestid>1361733</requestid>
+  </revision>
 </revisionlist>

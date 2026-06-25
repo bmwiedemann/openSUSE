@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 25 10:46:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.24 
+ * Preview features
+  * Make project environments relocatable under preview 
+ * Performance
+  * Use a compact index for lazy version maps 
+ * Bug fixes
+  * Allow disabling exclude-newer 
+  * Avoid archive id collisions 
+  * Reapply "Fix transparent Python upgrades in project environments" 
+  * Clean up partial tool entrypoint installs 
+  * Fix relocatable activate.fish and broaden Fish version support 
+
+-------------------------------------------------------------------
 Sun Jun 21 22:31:34 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.23 
