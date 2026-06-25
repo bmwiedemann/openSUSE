@@ -53,7 +53,7 @@ fi
 # Clean up logs and temporary files if present
 #---------------------------------------------
 rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \

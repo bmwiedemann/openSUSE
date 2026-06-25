@@ -66,7 +66,7 @@ You can contact the BCI team via https://github.com/SUSE/bci/discussions
   <packages type="bootstrap">
     <package name="bash"/>
     <package name="ca-certificates-mozilla-prebuilt"/>
-    <package name="coreutils"/>
+    <package name="coreutils-single"/>
     <package name="openSUSE-release"/>
     <package name="openSUSE-release-appliance-docker"/>
     <package name="jdupes"/>
