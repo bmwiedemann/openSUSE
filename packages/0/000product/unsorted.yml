@@ -761,6 +761,7 @@ unsorted:
   - apache-commons-lang3 
   - apache-commons-lang3-javadoc 
   - apache-commons-logging 
+  - apache-commons-logging-javadoc 
   - apache-commons-math 
   - apache-commons-math-javadoc 
   - apache-commons-net 
@@ -1174,6 +1175,8 @@ unsorted:
   - avahi-utils 
   - avahi-utils-gtk 
   - avalon-framework 
+  - avalon-framework-api 
+  - avalon-framework-api-javadoc 
   - avalon-framework-javadoc 
   - avalon-logkit 
   - avalon-logkit-javadoc 
@@ -1718,6 +1721,7 @@ unsorted:
   - budgie-desktop-devel 
   - budgie-desktop-doc 
   - budgie-desktop-lang 
+  - budgie-desktop-services 
   - budgie-desktop-view 
   - budgie-desktop-view-lang 
   - budgie-dropby-applet 
@@ -3360,6 +3364,7 @@ unsorted:
   - distcc-server 
   - distribution-gpg-keys 
   - distribution-logos-openSUSE 
+  - distribution-logos-openSUSE-Aeon 
   - distribution-logos-openSUSE-Kubic 
   - distribution-logos-openSUSE-Slowroll 
   - distribution-registry 
@@ -3705,6 +3710,9 @@ unsorted:
   - eksctl-bash-completion 
   - eksctl-fish-completion 
   - eksctl-zsh-completion 
+  - elemental-lifecycle-manager 
+  - elemental3 
+  - elemental3ctl 
   - elementary-xfce-icon-theme 
   - elftoaout 
   - elfutils-debuginfod 
@@ -10790,34 +10798,6 @@ unsorted:
   - kubetrim 
   - kubetui 
   - kubeval 
-  - kubevirt-1.8-container-disk 
-  - kubevirt-1.8-manifests 
-  - kubevirt-1.8-pr-helper-conf 
-  - kubevirt-1.8-sidecar-shim 
-  - kubevirt-1.8-tests 
-  - kubevirt-1.8-virt-api 
-  - kubevirt-1.8-virt-controller 
-  - kubevirt-1.8-virt-exportproxy 
-  - kubevirt-1.8-virt-exportserver 
-  - kubevirt-1.8-virt-handler 
-  - kubevirt-1.8-virt-launcher 
-  - kubevirt-1.8-virt-operator 
-  - kubevirt-1.8-virt-synchronization-controller 
-  - kubevirt-1.8-virtctl 
-  - kubevirt-container-disk 
-  - kubevirt-manifests 
-  - kubevirt-pr-helper-conf 
-  - kubevirt-sidecar-shim 
-  - kubevirt-tests 
-  - kubevirt-virt-api 
-  - kubevirt-virt-controller 
-  - kubevirt-virt-exportproxy 
-  - kubevirt-virt-exportserver 
-  - kubevirt-virt-handler 
-  - kubevirt-virt-launcher 
-  - kubevirt-virt-operator 
-  - kubevirt-virt-synchronization-controller 
-  - kubevirt-virtctl 
   - kubevirt1.8-container-disk 
   - kubevirt1.8-manifests 
   - kubevirt1.8-pr-helper-conf 
@@ -11447,7 +11427,6 @@ unsorted:
   - libOsiCbc3 
   - libOsiClp1 
   - libPDAL20 
-  - libPlasma6-lang 
   - libPocoActiveRecord123 
   - libPocoCppParser123 
   - libPocoCrypto123 
@@ -12606,6 +12585,7 @@ unsorted:
   - libbudgie-plugin0 
   - libbudgie-private0 
   - libbudgie-raven-plugin0 
+  - libbudgie-windowing0 
   - libbudgietheme0 
   - libbullet-devel 
   - libbullet3_25 
@@ -13231,6 +13211,8 @@ unsorted:
   - libevent-2_1-7-32bit 
   - libevent-devel 
   - libevent-devel-static 
+  - libeverest 
+  - libeverest-x86-64-v3 
   - libevt-devel 
   - libevt-tools 
   - libevt1 
@@ -14786,14 +14768,20 @@ unsorted:
   - libmatrix_client0_10_1 
   - libmatroska-devel 
   - libmaxminddb-devel 
+  - libmbedcrypto16 
+  - libmbedcrypto16-x86-64-v3 
   - libmbedcrypto7 
   - libmbedcrypto7-x86-64-v3 
   - libmbedtls14 
   - libmbedtls14-x86-64-v3 
+  - libmbedtls21 
+  - libmbedtls21-x86-64-v3 
   - libmbedtls23 
   - libmbedtls23-x86-64-v3 
   - libmbedx509-1 
   - libmbedx509-1-x86-64-v3 
+  - libmbedx509-7 
+  - libmbedx509-7-x86-64-v3 
   - libmbedx509-9 
   - libmbedx509-9-x86-64-v3 
   - libmbim-devel 
@@ -15441,6 +15429,8 @@ unsorted:
   - libowncloudsync-devel 
   - libowncloudsync0 
   - libp11-devel 
+  - libp256m 
+  - libp256m-x86-64-v3 
   - libp8-platform2 
   - libpackagekit-glib2-devel 
   - libpagemaker-devel 
@@ -15448,7 +15438,6 @@ unsorted:
   - libpagemaker-tools 
   - libpaho-mqtt-devel 
   - libpaho-mqtt1 
-  - libpainter0 
   - libpamtest-devel 
   - libpamtest-devel-doc 
   - libpamtest0 
@@ -15637,7 +15626,7 @@ unsorted:
   - libppsview4_0-5 
   - libpq5-32bit 
   - libpqos-devel 
-  - libpqos6 
+  - libpqos7 
   - libpqxx-7_10 
   - libpqxx-devel 
   - libpresage-devel 
@@ -16205,7 +16194,6 @@ unsorted:
   - librevenge-devel 
   - librevenge-doc 
   - librevenge-generators-0_0-0 
-  - librfxencode0 
   - librgw-devel 
   - librgw2 
   - librhash1 
@@ -18914,6 +18902,7 @@ unsorted:
   - maxima-lang 
   - maxima-xmaxima 
   - mbedtls-2-devel 
+  - mbedtls-3-devel 
   - mbedtls-devel 
   - mboxgrep 
   - mbpfan 
@@ -20405,9 +20394,7 @@ unsorted:
   - obs-service-go_modules 
   - obs-service-kiwi_label_helper 
   - obs-service-kiwi_metainfo_helper 
-  - obs-service-kubevirt-1.8_containers_meta 
   - obs-service-kubevirt1.8_containers_meta 
-  - obs-service-kubevirt_containers_meta 
   - obs-service-node_modules 
   - obs-service-obs_scm 
   - obs-service-obs_scm-common 
@@ -24164,11 +24151,14 @@ unsorted:
   - python3-arpack-ng 
   - python3-avahi-gtk 
   - python3-avocado 
+  - python3-avocado-plugins-ansible 
   - python3-avocado-plugins-golang 
   - python3-avocado-plugins-output-html 
+  - python3-avocado-plugins-result-mail 
   - python3-avocado-plugins-result-upload 
   - python3-avocado-plugins-resultsdb 
   - python3-avocado-plugins-robot 
+  - python3-avocado-plugins-spawner-remote 
   - python3-avocado-plugins-varianter-cit 
   - python3-avocado-plugins-varianter-pict 
   - python3-avocado-plugins-varianter-yaml-to-mux 
@@ -26093,6 +26083,7 @@ unsorted:
   - python311-hl7apy 
   - python311-holidays 
   - python311-hotdoc 
+  - python311-housekeeping 
   - python311-hsluv 
   - python311-hstspreload 
   - python311-html2text 
@@ -26318,6 +26309,7 @@ unsorted:
   - python311-keystoneauth1 
   - python311-keystoneclient 
   - python311-keystonemiddleware 
+  - python311-kgb 
   - python311-khal 
   - python311-khard 
   - python311-kismet-rest 
@@ -26673,6 +26665,7 @@ unsorted:
   - python311-nose2 
   - python311-notebook 
   - python311-notebook-shim 
+  - python311-notify-py 
   - python311-notify2 
   - python311-nox 
   - python311-npTDMS 
@@ -27084,6 +27077,7 @@ unsorted:
   - python311-pydenticon 
   - python311-pydicom 
   - python311-pydicom-data 
+  - python311-pydiffx 
   - python311-pydocstyle 
   - python311-pydot 
   - python311-pydotplus 
@@ -28037,6 +28031,7 @@ unsorted:
   - python311-ty 
   - python311-typedload 
   - python311-typeguard 
+  - python311-typelets 
   - python311-typepy 
   - python311-typer 
   - python311-types-Pillow 
@@ -30034,6 +30029,7 @@ unsorted:
   - python313-holidays 
   - python313-holoviews 
   - python313-hotdoc 
+  - python313-housekeeping 
   - python313-hsluv 
   - python313-hstspreload 
   - python313-html2text 
@@ -30263,6 +30259,7 @@ unsorted:
   - python313-keystoneauth1 
   - python313-keystoneclient 
   - python313-keystonemiddleware 
+  - python313-kgb 
   - python313-khal 
   - python313-khard 
   - python313-kismet-rest 
@@ -30638,6 +30635,7 @@ unsorted:
   - python313-nose2 
   - python313-notebook 
   - python313-notebook-shim 
+  - python313-notify-py 
   - python313-novaclient 
   - python313-nox 
   - python313-npTDMS 
@@ -31054,6 +31052,7 @@ unsorted:
   - python313-pydenticon 
   - python313-pydicom 
   - python313-pydicom-data 
+  - python313-pydiffx 
   - python313-pydocstyle 
   - python313-pydot 
   - python313-pydotplus 
@@ -32017,6 +32016,7 @@ unsorted:
   - python313-ty 
   - python313-typedload 
   - python313-typeguard 
+  - python313-typelets 
   - python313-typepy 
   - python313-typer 
   - python313-types-Pillow 
@@ -34020,6 +34020,7 @@ unsorted:
   - python314-holidays 
   - python314-holoviews 
   - python314-hotdoc 
+  - python314-housekeeping 
   - python314-hpack 
   - python314-hsluv 
   - python314-hstspreload 
@@ -34254,6 +34255,7 @@ unsorted:
   - python314-keystoneauth1 
   - python314-keystoneclient 
   - python314-keystonemiddleware 
+  - python314-kgb 
   - python314-khal 
   - python314-khard 
   - python314-kismet-rest 
@@ -34628,6 +34630,7 @@ unsorted:
   - python314-nose2 
   - python314-notebook 
   - python314-notebook-shim 
+  - python314-notify-py 
   - python314-notify2 
   - python314-nox 
   - python314-npTDMS 
@@ -35058,6 +35061,7 @@ unsorted:
   - python314-pydenticon 
   - python314-pydicom 
   - python314-pydicom-data 
+  - python314-pydiffx 
   - python314-pydocstyle 
   - python314-pydot 
   - python314-pydotplus 
@@ -36035,6 +36039,7 @@ unsorted:
   - python314-ty 
   - python314-typedload 
   - python314-typeguard 
+  - python314-typelets 
   - python314-typepy 
   - python314-typer 
   - python314-types-Pillow 
@@ -49682,8 +49687,8 @@ unsorted:
   - typelib-1_0-BlockDev-3_0 
   - typelib-1_0-BraseroBurn-3_2_0 
   - typelib-1_0-BraseroMedia-3_2_0 
-  - typelib-1_0-Budgie-1_0 
-  - typelib-1_0-BudgieRaven-1_0 
+  - typelib-1_0-Budgie-3_0 
+  - typelib-1_0-BudgieRaven-3_0 
   - typelib-1_0-CMenu-3_0 
   - typelib-1_0-CScreensaver-1_0 
   - typelib-1_0-Caja-2_0 

@@ -1403,6 +1403,7 @@
     <package name="libOpenEXRCore-3_4-33-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libPlasma5Support6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma5Support6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libPlasma6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasma7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasmaActivities7" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libPlasmaActivitiesStats1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
