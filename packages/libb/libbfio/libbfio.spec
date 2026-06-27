@@ -18,7 +18,7 @@
 
 Name:           libbfio
 %define lname	libbfio1
-Version:        20260612
+Version:        20260623
 Release:        0
 Summary:        Library to provide basic file input/output abstraction
 License:        LGPL-3.0-or-later
