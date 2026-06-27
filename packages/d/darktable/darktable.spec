@@ -90,6 +90,23 @@
 
 %bcond_without  openmp
 
+# AI features need ONNX Runtime. openSUSE has no onnxruntime package yet and
+# bundling upstream's prebuilt binary is not allowed in Factory, so AI is OFF by
+# default. Enable later on x86_64 with: rpmbuild/osc ... --with ai
+%bcond_with ai
+
+%ifarch x86_64
+%global _ai_arch_ok 1
+%else
+%global _ai_arch_ok 0
+%endif
+
+%if %{with ai} && 0%{?_ai_arch_ok}
+%global _use_ai "ON"
+%else
+%global _use_ai "OFF"
+%endif
+
 %if %{with openmp}
 %global _use_openmp "ON"
 %else
@@ -119,28 +136,33 @@
 %endif
 
 Name:           darktable
-Version:        5.4.1
+Version:        5.6.0
 Release:        0
 %global pkg_name darktable
 %global pkg_version %{version}
 URL:            http://www.darktable.org/
 Source0:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz
 Source1:        https://github.com/darktable-org/darktable/releases/download/release-%{version}/%{pkg_name}-%{version}.tar.xz.asc
-Source2:        %{pkg_name}-rpmlintrc
-Source3:        %{pkg_name}.keyring
+Source3:        %{pkg_name}-rpmlintrc
+Source4:        %{pkg_name}.keyring
 #
 Source97:       darktable.dsc
 Source98:       debian.tar.xz
 Source99:       README.openSUSE
 #
 Patch0:         darktable-rawspeed-build-type-override.patch
+# Link libwayland-client explicitly (gtk.c SSD detection calls it directly;
+# --as-needed/LTO drop the transitive dep). Upstreamable.
+Patch1:         darktable-link-wayland-client.patch
 #
 ExclusiveArch:  x86_64 aarch64 ppc64le
 # build time tools
 BuildRequires:  clang >= 13
 BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
+BuildRequires:  libarchive-devel
 BuildRequires:  llvm-devel
+BuildRequires:  potrace-devel
 %if 0%{?fedora}
 BuildRequires:  llvm-static
 %endif
@@ -179,6 +201,7 @@ BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(wayland-client)
 %if %{with flickcurl}
 BuildRequires:  pkgconfig(flickcurl)
 %endif
@@ -225,11 +248,23 @@ BuildRequires:  gmic-devel
 %if %{with avif}
 BuildRequires:  libavif-devel >= 0.9.0
 %endif
+%if %{with ai} && 0%{?_ai_arch_ok}
+# Factory-compliant ONNX Runtime: requires a system onnxruntime package.
+# NOTE: confirm the exact -devel and runtime library package names against the
+# onnxruntime package once it exists in Factory before enabling AI.
+BuildRequires:  onnxruntime-devel
+%endif
 BuildRequires:  portmidi-devel
 
 # for the sake of simplicity we do not enforce the version here
 # the package is small enough that installing it doesnt hurt
 Requires:       iso-codes
+%if %{with ai} && 0%{?_ai_arch_ok}
+# darktable dlopen()s libonnxruntime at runtime (ORT_LAZY_LOAD), so RPM's
+# automatic dependency generator will NOT pick it up — require it explicitly.
+# Runtime soname package (sover may bump with future onnxruntime releases).
+Requires:       libonnxruntime1
+%endif
 #
 # Some CSS themes suggest to use the the Roboto font family
 # https://github.com/darktable-org/darktable/releases/tag/release-3.0.0
@@ -310,6 +345,8 @@ rm -rf src/external/lua/
    -DUSE_AVIF="%{_use_avif}" \\\
    -DDONT_USE_INTERNAL_LIBRAW="%{_use_system_libraw}" \\\
    -DBUILD_NOISE_TOOLS=ON \\\
+   -DUSE_AI="%{_use_ai}" \\\
+   -DONNXRUNTIME_OFFLINE=ON \\\
    -DBUILD_CURVE_TOOLS=ON
 
 %if 0%{?force_gcc_version}

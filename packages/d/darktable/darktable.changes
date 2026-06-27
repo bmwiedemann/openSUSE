@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jun 24 11:31:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add darktable-link-wayland-client.patch: link libwayland-client
+  explicitly into lib_darktable. Fixes the "undefined reference to
+  wl_display_roundtrip" link failure of libdarktable.so under
+  --as-needed/LTO (gtk.c server-side-decoration detection added in
+  5.6.0 calls libwayland-client directly).
+- Debian/Ubuntu build fixes for 5.6.0:
+  * Add missing Build-Depends libpotrace-dev and libxml2-dev
+    (cmake find_package(Potrace/LibXml2 REQUIRED) aborted configure).
+  * Add libwayland-dev (gtk.c now includes wayland-client.h) and
+    apply darktable-link-wayland-client.patch via debian/patches/series
+    so the deb build links libwayland-client too.
+
+-------------------------------------------------------------------
+Wed Jun 24 09:40:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Disable AI/ONNX support by default  sincen onnxruntime package
+  is present in the repo.
+- Add a "--with ai" build conditional (x86_64) wired to a future
+  system onnxruntime package, so AI can be enabled once ONNX Runtime
+  is available in Factory
+
+-------------------------------------------------------------------
+Mon Jun 22 13:36:15 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.6.0:
+  * https://www.darktable.org/2026/06/darktable-5.6.0-released/
+
+-------------------------------------------------------------------
 Fri Feb  6 09:10:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.4.1:

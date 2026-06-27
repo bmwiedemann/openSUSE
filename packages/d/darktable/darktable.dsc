@@ -4,7 +4,7 @@ Section: graphics
 Priority: optional
 Binary: darktable darktable-tools-basecurve darktable-tools-noise
 Architecture: any-amd64 any-arm64 any-ppc64el
-Version: 5.4.1-1.1
+Version: 5.6.0-1.1
 Homepage: http://www.darktable.org/
 #               libavif-dev (>= 0.9.1),
 Build-Depends: cmake (>= 3.18),
@@ -38,6 +38,7 @@ Build-Depends: cmake (>= 3.18),
                libosmgpsmap-1.0-dev,
                libpng-dev,
                libportmidi-dev,
+               libpotrace-dev,
                libpugixml-dev,
                librsvg2-dev,
                libsdl2-dev,
@@ -45,7 +46,9 @@ Build-Depends: cmake (>= 3.18),
                libsoup-3.0-dev,
                libsqlite3-dev,
                libtiff-dev,
+               libwayland-dev,
                libwebp-dev,
+               libxml2-dev,
                lsb-release,
                xsltproc
 Standards-Version: 3.9.8

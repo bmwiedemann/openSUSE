@@ -1,0 +1,35 @@
+darktable 5.6.0 added server-side decoration (SSD) detection in
+src/gui/gtk.c that calls libwayland-client directly (wl_display_get_registry,
+wl_registry_add_listener, wl_display_roundtrip, wl_registry_interface) when GTK
+is built with the Wayland backend. No CMake file links wayland-client, so under
+-Wl,--as-needed / LTO the symbols are not resolved transitively through GTK and
+linking libdarktable.so fails with "undefined reference to wl_display_roundtrip".
+
+Link wayland-client explicitly when the GTK Wayland backend is present. Gated on
+gtk+-wayland-3.0, mirroring the GDK_WINDOWING_WAYLAND guard in the C source.
+
+Index: src/CMakeLists.txt
+===================================================================
+--- darktable.orig/src/CMakeLists.txt
++++ darktable/src/CMakeLists.txt
+@@ -314,6 +314,20 @@ find_package(GTK3 3.24.15 REQUIRED)
+ #add_definitions("-DGDK_VERSION_MAX_ALLOWED=GDK_VERSION_MIN_REQUIRED")
+ include_directories(SYSTEM ${GTK3_INCLUDE_DIRS})
+ list(APPEND LIBS ${GTK3_LIBRARIES})
++
++# When GTK is built with the Wayland backend, src/gui/gtk.c calls
++# libwayland-client directly (server-side decoration detection). Under
++# -Wl,--as-needed / LTO these symbols are not resolved transitively through
++# GTK, so link wayland-client explicitly. Gated on gtk+-wayland-3.0, which
++# mirrors the GDK_WINDOWING_WAYLAND guard in the C source.
++if(NOT WIN32 AND NOT APPLE)
++  pkg_check_modules(GTK3_WAYLAND QUIET gtk+-wayland-3.0)
++  if(GTK3_WAYLAND_FOUND)
++    pkg_check_modules(WAYLAND_CLIENT REQUIRED wayland-client)
++    include_directories(SYSTEM ${WAYLAND_CLIENT_INCLUDE_DIRS})
++    list(APPEND LIBS ${WAYLAND_CLIENT_LIBRARIES})
++  endif()
++endif()
+ 
+ # Check for libxml2 / broken cmake module can't be included in the foreach() below
+ find_package(LibXml2 2.6 REQUIRED)
