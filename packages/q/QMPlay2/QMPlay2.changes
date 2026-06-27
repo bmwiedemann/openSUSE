@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 12:59:53 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Added 0002-sidplayfp-v3-github-1008-or-f502b11.diff and
+  USE_CHIPTUNE_SID set to ON back.
+
+-------------------------------------------------------------------
 Thu Jun 11 05:09:13 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Change hard-dependency on deno to softer nodejs-based

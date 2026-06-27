@@ -32,6 +32,8 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
+# PATCH-FIX-UPSTREAM 0002-sidplayfp-v3-github-1008-or-f502b11.diff -- Sidplayfp v3 support.
+Patch2:         0002-sidplayfp-v3-github-1008-or-f502b11.diff
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  lld
@@ -74,7 +76,7 @@ BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
-# BuildRequires:  pkgconfig(libsidplayfp)
+BuildRequires:  pkgconfig(libsidplayfp) >= 3
 BuildRequires:  pkgconfig(libswresample) >= 3.1.100
 BuildRequires:  pkgconfig(libswscale) >= 5.1.100
 BuildRequires:  pkgconfig(libva)
@@ -145,7 +147,7 @@ It's a development package for %{name}.
 %else
   -DBUILD_WITH_QT6=OFF \
 %endif
-  -DUSE_CHIPTUNE_SID=OFF \
+  -DUSE_CHIPTUNE_SID=ON \
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
 %if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500
