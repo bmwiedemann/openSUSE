@@ -17,7 +17,7 @@
 
 
 Name:           python-opentelemetry-exporter-otlp-proto-http
-Version:        1.41.1
+Version:        1.42.1
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over HTTP Exporter
 License:        Apache-2.0
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module opentelemetry-api >= 1.15}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common = %{version}}
 BuildRequires:  %{python_module opentelemetry-proto = %{version}}
 BuildRequires:  %{python_module opentelemetry-sdk >= %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b1}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.63b1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.7}
 BuildRequires:  %{python_module responses >= 0.22.0}
