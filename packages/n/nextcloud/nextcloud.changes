@@ -1,8 +1,117 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:05:03 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.6
+
+- Update to 33.0.6
+  * server
+    - Dav: Fix fatal error when ORGANIZER is missing in CalDAV schedule (server#59350)
+    - Fix(files,files_sharing): swallow redirected navigation errors (server#59887)
+    - Fix(caldav): grant sharee Acls to the delegate (server#60646)
+    - Fix(http): avoid iconv for header ascii fallback (server#60722)
+    - Fix(DB): Enforce foreign key constraints in SQLite (server#60792)
+    - Fix(encryption): recovery keys should be shown when user keys are used (server#60799)
+    - Fix(appconfig,userconfig): restore pre-migration fallback for ownCloud migration (server#60819)
+    - Fix(files): Chromium-based browsers drag-and-drop (server#60899)
+    - Fix: actually register listener for updating stored external storage credentials (server#60905)
+    - Chore(deps): Update flake to NixOS 26.05 (server#60912)
+    - Fix(MailPlugin): Stop applying the offset twice and the limit per wide/exact (server#60920)
+    - Fix(sharing): set STATUS_ACCEPTED when creating USERGROUP subshare on… (server#60925)
+    - Fix(Share): Add missing optional parameter to IManager::shareApiAllowLinks() (server#60928)
+    - Fix(psalm): Update psalm baseline (server#60933)
+    - Test(cache): avoid ordering assumptions in testExtended (server#60935)
+    - Fix(Storage): use `proxyexclude` parameter in DAV client (server#60939)
+    - Fix(files_sharing): clear the password after saving (server#60951)
+    - Fix(files): show proper information when a move will override the target (server#60962)
+    - Fix: access shared and delegated trashbin objects (server#60967)
+    - Fix(TaskProcessing): restrict allowed_classes in Manager cache deserialization (server#60984)
+    - Master] fix(security): Update code signing revocation list (server#61002)
+    - Fix(dav): finalize upload metadata before post-write hooks (server#61070)
+    - Fix(dav): properly handle files metadata (server#61079)
+    - Fix(comments): Use capped memory cache for comments (server#61096)
+    - Fix(security): don't propagate ValueError from Crypto::decrypt() fallback (server#61104)
+    - Fix(files): make sure nested changes are propagated to sidebar tabs (server#61107)
+    - Fix: Correctly detect appid for dist css files (server#61112)
+    - Fix: use correct permissions mask for non-home storage public links (server#61117)
+    - Fix(settings): Show loading spinner while searching accounts (server#61121)
+    - Build(deps): bump the symfony group across 1 directory with 9 updates (server#61130)
+    - Master] fix(security): Update code signing revocation list (server#61134)
+    - Feat(file-search): add property to SearchQuery and check select fields to decide wheter to join extended cache (server#61156)
+    - Build(deps): bump phpseclib/phpseclib from 2.0.53 to 2.0.54 (server#61179)
+    - Fix(previews): ffprobe hangs (server#61183)
+    - Fix(files_versions): guard null path in event listeners (server#61188)
+    - Fix(SetupChecks): maintenance window length is 4h (not 6h) (server#61192)
+    - Fix(search-query): fix psalm type error (server#61196)
+    - Master] fix(security): Update code signing revocation list (server#61238)
+    - Fix(encryption): Fix endpoint /ajax/userSetRecovery to support boolean (server#61242)
+    - Fix: use card interface instead of object (server#61251)
+    - Master] fix(security): Update code signing revocation list (server#61284)
+    - Fix(twofactor_backupcodes): Add a clean helper to set code as used (server#61297)
+    - Fix(theming): preserve uploaded favicon and touch icon (server#61301)
+    - Fix: Use token expiration for ephemeral sessions (server#61306)
+    - Fix(user_ldap): Escape filter part when searching for group members (server#61326)
+    - Chore: Reduce PHPUnit test matrix on stable34 and remove coverage (server#61336)
+    - Fix: trim duplicate search results for external share (server#61339)
+    - Fix: Do not set last-password-confirm for apptoken sessions (server#61343)
+    - Fix(team-manager): ensure team resources are only retrived for members (server#61350)
+    - Fix(ocm-add-share): adjust domain validation (server#61356)
+    - Fix: ensure file names are string-typed (server#61360)
+    - Feat(oauth2): Add commands for adding and deleting clients (server#61362)
+    - Fix: prevent editing delegated admins (server#61370)
+    - Fix(caldav): respect federation settings (server#61380)
+    - Fix(files_sharing): Hide incompatible actions in shares (server#61387)
+    - Fix(files_versions): avoid version snapshot races during cross-storage renames (server#61402)
+    - Fix: Fix alignment issues of app password form (server#61405)
+    - Master] fix(security): Update code signing revocation list (server#61430)
+    - Fix(onetime-qrcode): Remove password confirmation attribute (server#61503)
+  * activity
+    - Perf(mailqueue): cover `amq_latest_send` in the affecteduser index (activity#2637)
+  * bruteforcesettings
+    - Fix: fix toggle the allow list option (bruteforcesettings#1105)
+  * circles
+    - Build: add .nextcloudignore for release builds (circles#2495)
+    - Feat: Add role-based filtering for circle member queries (circles#2504)
+    - Fix(local-controller): dont show full config int of circle for non-members (circles#2527)
+    - Fix(local-controller): validate params set on team creation (circles#2533)
+    - Adjust local controller to better handle permission checks (circles#2537)
+    - Fix(local-controller): include CFG_OPEN in config mask for visible circles (circles#2556)
+  * notifications
+    - Chore: extend testing of `encryptAndSign` and make the methods discoverable by psalm (notifications#3079)
+    - Fix(email): Correctly initialize next_send_time field (notifications#3119)
+    - Fix: Subject in encrypt method (notifications#3137)
+  * serverinfo
+    - Chore: Require PHP 8.2 (serverinfo#1021)
+  * survey_client
+    - Fix(report): Fix sending huge reports (survey_client#441)
+  * suspicious_login
+    - Fix(notifier): Fix label length limited to 32 characters (suspicious_login#1116)
+  * text
+    - Fix: disable open link button for unsafe link (text#8684)
+    - Fix(mediaHandler): strip relevant bidi chars in filenames (text#8692)
+    - Fix(Editor): emit modified fileNode size on save (text#8695)
+    - Chore(github): update workflows (text#8715)
+    - Fix(math): fix lost content after math node (text#8721)
+    - Fix(editorApi): allow to disable image lazy-loading (text#8727)
+    - Fix permission change in text doc (text#8750)
+    - Fix: show Assistant icon if only translation provider available (text#8759)
+    - Performance: Only check permissions when changing content (text#8765)
+    - Ci: remove compile command, as it happens after merge. Then, also run reuse (text#8768)
+  * viewer
+    - Fix(plyr): the speed settings button should not be cut (viewer#3198)
+    - Fix(plyr): add l10n to components (viewer#3202)
+    - Fix(plyr): the speed selection should not go out of the viewport (viewer#3208)
+    - Fix(plyr): add l10n to speed selections (viewer#3215)
+
+-------------------------------------------------------------------
 Tue Jun  2 11:01:52 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.5
 
 - Update to 33.05
-  - No changelog from upstream at this time.
+  * server
+    - Refactor: move release changelog workflow to releases repo (server#60831)
+  * notifications
+    - Fix: Add missing DI for IAppConfig to Push.php (notifications#3039)
+  * text
+    - Fix(folderDescription): always use 'Readme.md' as filename (text#8658)
+    - Fix(headings): skip headings in details in table of contents (text#8660)
+    - Test(playwright): add summary job so we can add it to merge rules (text#8663)
 
 -------------------------------------------------------------------
 Thu May 28 16:53:48 UTC 2026 - ecsos <ecsos@opensuse.org> - 33.0.4
