@@ -189,4 +189,16 @@
     CHANGELOG.md file provided with this package (forwarded request 1357549 from glaubitz)</comment>
     <requestid>1357573</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5b5d9255043e3e826599217fab1f280</srcmd5>
+    <version>1.9.0</version>
+    <time>1782576273</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 1.9.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1361861 from glaubitz)</comment>
+    <requestid>1361864</requestid>
+  </revision>
 </revisionlist>
