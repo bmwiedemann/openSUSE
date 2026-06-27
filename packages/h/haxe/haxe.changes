@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 21:28:14 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Require mbedtls-devel < 4 since newer versions are not supported
+
+-------------------------------------------------------------------
 Sat May 17 15:39:54 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Use versioned ocamlfind dependencies
