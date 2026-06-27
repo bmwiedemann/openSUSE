@@ -176,4 +176,13 @@
   (CVE-2026-34601, bsc#1261514)</comment>
     <requestid>1345154</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>fb79cea07e77cadad9d0db13db9376f5</srcmd5>
+    <version>0.5.3</version>
+    <time>1782576419</time>
+    <user>dimstar_suse</user>
+    <comment>- Refresh javascript dependencies to update ws
+  (bsc#1268933,  CVE-2026-48779)</comment>
+    <requestid>1361899</requestid>
+  </revision>
 </revisionlist>

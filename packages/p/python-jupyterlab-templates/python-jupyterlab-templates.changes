@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 10:04:30 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Refresh javascript dependencies to update ws
+  (bsc#1268933,  CVE-2026-48779)
+
+-------------------------------------------------------------------
 Wed Apr  8 10:35:00 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.5.3:
