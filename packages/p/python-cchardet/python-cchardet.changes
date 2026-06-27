@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:16:08 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update opensuse-build.patch to explicitly link against libstdc++
+  fixing build failure under Python 3.14 (undefined symbol
+  _ZTVN10__cxxabiv117__class_type_infoE)
+
+-------------------------------------------------------------------
 Fri Oct 17 15:27:10 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Provide python-faust-cchardet to avoid duplicities

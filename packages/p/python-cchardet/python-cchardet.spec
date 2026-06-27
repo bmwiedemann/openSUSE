@@ -1,7 +1,7 @@
 #
 # spec file for package python-cchardet
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,9 @@ Summary:        CChardet is high speed universal character encoding detector
 License:        GPL-2.0-or-later OR LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/faust-streaming/cChardet
 Source:         https://files.pythonhosted.org/packages/source/f/faust-cchardet/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM opensuse-build.patch gh#faust-streaming/cChardet#36 mcepl@suse.com
+# fixes to make the package building with 3.14
+Patch0:         opensuse-build.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

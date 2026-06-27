@@ -97,4 +97,12 @@
     <comment>- Provide python-faust-cchardet to avoid duplicities</comment>
     <requestid>1312076</requestid>
   </revision>
+  <revision rev="12" vrev="5">
+    <srcmd5>f751da5f97cd36a4be6180904916325d</srcmd5>
+    <version>2.1.19</version>
+    <time>1782576222</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1361711</requestid>
+  </revision>
 </revisionlist>
