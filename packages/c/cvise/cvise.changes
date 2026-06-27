@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Jun 27 07:32:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Explicitly name the test_dir_linker_duplicate_2threads.patch added
+  by Giuliano Belinassi in the previous changelog entry: it forces the
+  test_dir_linker_duplicate_var_error test case to run with two
+  threads, working around a hang on single-core build VMs
+  (bsc#1268265).
+
+-------------------------------------------------------------------
+Fri Jun 26 13:49:54 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Use 2 threads in `test_dir_linker_duplicate_var_error`A (bsc#1268265).
+
+-------------------------------------------------------------------
+Fri Jun 26 13:43:56 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Update to version 2.12.0+git.20260624.82a22c61:
+  * Fix test_dir_linker_duplicate_var_error on non-english locales (#507)
+  * CMakeLists.txt: embed unabbreviated git hash to release tarball (#506)
+
+-------------------------------------------------------------------
 Tue Jun 09 14:40:58 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
 
 - Update to version 2.12.0+git.20260418.64ff7de2:

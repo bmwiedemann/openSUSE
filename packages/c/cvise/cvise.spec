@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.12.0+git.20260418.64ff7de2
+Version:        2.12.0+git.20260624.82a22c61
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -60,6 +60,9 @@ Requires:       python3-msgspec
 Requires:       python3-psutil
 Requires:       python3-zstandard
 Requires:       unifdef
+
+# Workaround bsc#1268265
+Patch1:         test_dir_linker_duplicate_2threads.patch
 
 %description
 

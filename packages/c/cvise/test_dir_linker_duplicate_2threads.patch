@@ -1,0 +1,30 @@
+From 1137d4f3e9e72ccc17f802d12e7795c4c6e88e4a Mon Sep 17 00:00:00 2001
+From: Giuliano Belinassi <gbelinassi@suse.de>
+Date: Fri, 26 Jun 2026 10:37:31 -0300
+Subject: [PATCH] Force test_dir_linker_duplicate_var_error to run with 2
+ threads
+
+The test `test_dir_linker_duplicate_var_error` hangs on single core VMs
+because the test runs with only one thread.  Force the use of two
+threads to workaround this.
+
+Signed-off-by: Giuliano Belinassi <gbelinassi@suse.de>
+---
+ tests/test_cvise.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_cvise.py b/tests/test_cvise.py
+index fd2d6fe9..c8694239 100644
+--- a/tests/test_cvise.py
++++ b/tests/test_cvise.py
+@@ -316,6 +316,7 @@ clean:
+     # Use awk instead of grep to easily see the whole build log if the test fails.
+     proc = start_cvise(
+         [
++            '-n', '2',
+             '-c',
+             f"(LC_ALL=C make -C repro 2>&1 || true) | awk '{{ print }} /{ERROR_REGEX}/ {{ y=1 }} END {{ exit !y }}'",
+             'repro',
+-- 
+2.54.0
+

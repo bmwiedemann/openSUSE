@@ -1243,4 +1243,12 @@
     <comment>- Fix requirement of python3-procps (forwarded request 1358562 from gbelinassi)</comment>
     <requestid>1358579</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>9341e1f5bfcaaf8ca8f2de194348a1c9</srcmd5>
+    <version>2.12.0+git.20260624.82a22c61</version>
+    <time>1782576474</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit superseding declined SR#1361947. The decline was a changelog-policy issue only: the added patch test_dir_linker_duplicate_2threads.patch is now explicitly named in cvise.changes (forces test_dir_linker_duplicate_var_error to run with two threads, working around a single-core-VM hang, bsc#1268265). Sources unchanged from the declined request.</comment>
+    <requestid>1361982</requestid>
+  </revision>
 </revisionlist>
