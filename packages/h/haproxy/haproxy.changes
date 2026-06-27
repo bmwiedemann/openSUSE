@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:14:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.1+git0.3e888a769:
+  * [RELEASE] Released version 3.4.1
+
+-------------------------------------------------------------------
+Thu Jun 25 09:32:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 6344dfa:
+  * MINOR: otel: test: documented the context name header prefix in fe/be tests
+  * BUG/MINOR: otel: fixed the inject '-' autoname and its header prefix
+  * CLEANUP: otel: cast discarded prune_acl/pool_destroy returns to void
+  * MINOR: otel: returned ERR_WARN from the scope location checks
+  * DOC: otel: reconciled the README manual with the keyword reference
+  * DOC: otel: corrected the inline-link limit in the span reference
+  * DOC: otel: documented the metric create/update value-binding model
+  * MINOR: otel: demoted advisory config diagnostics to warnings
+  * MINOR: otel: waited for in-progress instrument creation before recording
+  * MINOR: otel: coerced string instrument values, warning only on failure
+  * MINOR: otel: unified the configuration parser checks and messages
+  * MINOR: otel: guarded flt_otel_pool_alloc against oversize requests
+  * DOC: otel: corrected the pool-allocator and ACL-resolution descriptions
+
+-------------------------------------------------------------------
+Thu Jun 25 09:32:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.0+git43.e5221ba2b:
+  * BUG/MEDIUM: mux-quic: Drain the given amount of data in qcs_http_reset_buf()
+  * BUG/MEDIUM: mux-spop: Truly drain outgoing data when the stream is closed
+  * BUG/MEDIUM: mux-h2: Truly drain outgoing HTX data when the stream is closed
+  * BUG/MEDIUM: mux-fcgi: Truly drain outgoing HTX data when the stream is closed
+  * REGTESTS: quic: test H3 request without content-length
+  * BUG/MEDIUM: h3: increment unknown request payload length
+  * DOC: lua: remove incorrect init tags
+  * BUG/MINOR: hq-interop: support response buffer wrapping
+  * BUG/MINOR: hq-interop: support full demux buf on large response
+  * BUG/MEDIUM: hlua: Properly report EOS when http applet exits
+  * BUG/MINOR: hq-interop: prevent reset if missing content-length
+  * BUG/MINOR: hq-interop: reject too big content
+
+-------------------------------------------------------------------
 Mon Jun 22 10:08:53 UTC 2026 - varkoly@suse.com
 
 - Update to version 3.4.0+git31.fc300e9f2:
