@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 22 15:45:26 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 9760:
+  * Server and API work added model-load progress reporting, improved
+    batch construction, and fixed several long-context and KV-cache
+    correctness issues.
+  * Vulkan gained several matmul, Flash Attention, and buffer-transfer
+    optimizations plus better memory-property handling, which should
+    mainly help prompt processing for quantized models.
+  * Additional multimodal, router, and WebUI updates landed upstream.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b9553...b9760
+
+-------------------------------------------------------------------
 Sun Jun  7 22:27:41 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 9553:

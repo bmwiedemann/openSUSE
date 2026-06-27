@@ -25,11 +25,11 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.13.1
+%global ggml_sover         0.15.2
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        9553
+Version:        9760
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
