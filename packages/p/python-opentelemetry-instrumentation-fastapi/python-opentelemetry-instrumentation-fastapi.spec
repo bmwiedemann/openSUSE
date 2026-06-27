@@ -27,12 +27,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-instrumentation-fastapi%{?psuffix}
-Version:        0.62b1
+Version:        0.63b1
 Release:        0
 Summary:        OpenTelemetry FastAPI Instrumentation
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python-contrib/tree/main/instrumentation/opentelemetry-instrumentation-fastapi
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry_instrumentation_fastapi/opentelemetry_instrumentation_fastapi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#open-telemetry/opentelemetry-python-contrib#4700
+Patch0:         support-fastapi-0.137.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
@@ -64,7 +67,7 @@ instrumenting http requests served by applications utilizing the framework.
 Auto-instrumentation using the opentelemetry-instrumentation package is also supported.
 
 %prep
-%setup -q -n opentelemetry_instrumentation_fastapi-%{version}
+%autosetup -p1 -n opentelemetry_instrumentation_fastapi-%{version}
 
 %if !%{with test}
 %build

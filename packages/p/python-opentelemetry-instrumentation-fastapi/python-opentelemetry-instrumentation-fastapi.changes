@@ -1,4 +1,199 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:15:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-fastapi-0.137.patch:
+  * Support fastapi 0.137 changes.
+
+-------------------------------------------------------------------
+Sat Jun 20 16:12:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+
+- update to 0.63b0:
+  * ### Added
+  * `opentelemetry-exporter-richconsole`: Add support for
+    suppressing resource information
+  * `opentelemetry-instrumentation`: Add experimental metrics
+    attributes Labeler utility
+  * `opentelemetry-instrumentation-logging`: Add
+    `OTEL_PYTHON_LOG_HANDLER_LEVEL` and `OTEL_PYTHON_LOG_FORMAT`
+    environment variables to configure the log level and
+    formatter of the auto-instrumented `LoggingHandler`.
+  * `opentelemetry-instrumentation-sqlite3`: Add uninstrument,
+    error status, suppress, and no-op tests
+  * Add `BaggageLogProcessor` to `opentelemetry-processor-
+    baggage`
+  * `opentelemetry-instrumentation-system-metrics`: Add support
+    for `process.disk.io` metric in system-metrics
+    instrumentation
+  * `opentelemetry-instrumentation`: Register
+    `OTEL_SEMCONV_STABILITY_OPT_IN` in `environment_variables.py`
+    so `opentelemetry-instrument` exposes a
+    `--semconv_stability_opt_in` CLI argument
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * `opentelemetry-instrumentation`: update auto-instrumentation
+    to re-inject instrumentation path after init
+  * `opentelemetry-instrumentation-dbapi`: Add Database client
+    operation duration and returned rows metrics
+  * ### Changed
+  * Remove redundant `pylint: disable=attribute-defined-outside-
+    init` comments and add rule to global `.pylintrc` disable
+    list
+  * Bump `pylint` to `4.0.5`
+  * `opentelemetry-instrumentation-logging`: Use
+    `LogRecord.getMessage()` to format and extract each log
+    record's body text to more closely match the expected usage
+    of the logging system. As a result, all OTel log record
+    bodies are now always strings. Previously, if `LogRecord.msg`
+    (which contains the format string) was set to a non-string
+    object (e.g. `logger.warning(some_dict)`), the object was
+    exported as-is to the OTLP body field. Now,
+    `LogRecord.getMessage()` will convert it to to a string. If
+    you are passing in non-strings as the format string argument
+    and your backend is expecting them as-is, you will need to
+    update accordingly.
+  * Switch to SPDX license headers and add CI enforcement
+  * `opentelemetry-instrumentation-{urllib,urllib3,requests}`:
+    switch http mock library from abandoned httpretty to mocket
+  * ### Removed
+  * Drop Python 3.9 support
+  * ### Fixed
+  * `opentelemetry-instrumentation-aiohttp-server`: Use
+    `canonical` attribute of the `Resource` as a span name
+  * Refactor unit tests to allow for population of the random
+    trace id flag in the `traceparent` header
+  * `opentelemetry-instrumentation-aws-lambda`: fix improper
+    handling of header casing
+  * `opentelemetry-instrumentation-flask`: Clean up environ keys
+    in `_teardown_request` to prevent duplicate execution
+  * `opentelemetry-instrumentation-celery`: Coerce non-string
+    values to strings in `CeleryGetter.get()` to prevent
+    `TypeError` in `TraceState.from_header()` when Celery request
+    attributes contain ints
+  * `opentelemetry-instrumentation-celery`: Coerce timelimit
+    values to strings in `set_attributes_from_context()` to
+    prevent mixed-type span attribute warning
+  * `opentelemetry-instrumentation-fastapi`: Fix `FastAPI`
+    instrumentation to correctly trace `BackgroundTasks` by
+    wrapping their execution in a dedicated span, ensuring proper
+    parent-child relationships and accurate trace timing
+  * `opentelemetry-instrumentation-flask`: Stop reading the
+    deprecated (from 3.1) `flask.__version__` attribute; resolve
+    the Flask version via `importlib.metadata`
+  * `opentelemetry-instrumentation-confluent-kafka`: Populate
+    `server.address` and `server.port` span attributes from the
+    producer/consumer `bootstrap.servers` config; previously
+    `KafkaPropertiesExtractor.extract_bootstrap_servers` was
+    defined but never called
+  * `opentelemetry-instrumentation-dbapi` Use `ObjectProxy`
+    instead of `BaseObjectProxy` for `TracedCursorProxy` to
+    restore iterability with wrapt 2.x
+  * `opentelemetry-instrumentation-pyramid`: add missing
+    `http.response.status_code` in duration metrics for stable
+    http semantic conventions
+  * `opentelemetry-instrumentation-pika` Use `ObjectProxy`
+    instead of `BaseObjectProxy` for `ReadyMessagesDequeProxy` to
+    restore iterability with wrapt 2.x
+  * `docker-tests`: Don't require sudo, debian based distro and
+    MS SQL ODBC driver to run locally. Instead require docker and
+    unixodbc
+  * `opentelemetry-instrumentation-celery`: clear completed task
+    ids from `task_id_to_start_time`
+  * `opentelemetry-instrumentation-celery`: add null guards and
+    type-safe helper handling around Celery context propagation
+    internals
+  * `opentelemetry-instrumentation-wsgi`: use `PATH_INFO` and
+    `QUERY_STRING` for URL attributes instead of parsing
+    `RAW_URI` or `REQUEST_URI`
+  * `opentelemetry-instrumentation-mysqlclient`: Update unit
+    tests to properly validate trace context trace flag values.
+  * `opentelemetry-instrumentation-pika`: pass destination to
+    `_enrich_span` instead of `task_name`
+  * `opentelemetry-instrumentation-tornado`: reduce cardinality
+    of span names and metrics attributes. This introduces a
+    breaking change in the metrics attributes for the stable
+    semantic convention by dropping the out of spec `url.query`
+    and `url.path` attributes in favor of in-spec `http.route`.
+  * `opentelemetry-instrumentation-confluent-kafka`: Declare
+    `opentelemetry-semantic-conventions` as a direct dependency
+  * `opentelemetry-instrumentation-pymssql`: Fix semconv
+    stability migration for connection attributes (host, port,
+    user) set in `wrapped_connection()` to respect
+    `OTEL_SEMCONV_STABILITY_OPT_IN`. Note: `net.peer.port` is now
+    emitted as `int` instead of `string` in default mode,
+    aligning with other DB instrumentations.
+  * Declare `opentelemetry-semantic-conventions` as a direct
+    dependency for the aio-pika, logging, pika and system-metrics
+    instrumentations, since each imports `opentelemetry.semconv`
+    directly.
+- update to opentelemetry-instrumentation-google-genai==0.7b1:
+  * This is a patch release on the previous 0.7b0 release, fixing
+    the issue(s) below.
+- update to opentelemetry-util-genai==0.4b0:
+  * Add `AgentInvocation` type with `invoke_agent` span lifecycle
+  * Add metrics support for EmbeddingInvocation
+  * Add support for workflow in genAI utils handler.
+  * Enrich ToolCall type, breaking change: usage of ToolCall
+    class renamed to ToolCallRequest
+  * Add EmbeddingInvocation span lifecycle support
+  * Populate schema_url on metrics
+  * Add workflow invocation type to genAI utils
+  * Check if upload works at startup in initializer of the
+    `UploadCompletionHook`, instead of repeatedly failing on
+    every upload (#4390).
+  * Refactor public API: add factory methods (`start_inference`,
+    `start_embedding`, `start_tool`, `start_workflow`) and
+    invocation-owned lifecycle (`invocation.stop()` /
+    `invocation.fail(exc)`); rename `LLMInvocation` →
+    `InferenceInvocation` and `ToolCall` → `ToolInvocation`.
+    Existing usages remain fully functional via deprecated
+    aliases.
+  * `TelemetryHandler` now accepts a `completion_hook` parameter
+    and calls it after each LLM invocation, passing inputs,
+    outputs, the active span, and the log record. Content capture
+    is enabled automatically when a real hook is configured.
+  * Add metrics to ToolInvocations
+  * Wrap completion hooks loaded via `load_completion_hook` so
+    exceptions raised by `on_completion` are logged and swallowed
+    instead of propagating to instrumentation call sites.
+- update to opentelemetry-instrumentation-openai-v2==2.4b0:
+  * Migrate experimental path from deprecated `LLMInvocation` to
+    `InferenceInvocation`, using `handler.start_inference()` and
+    `invocation.stop()`/`invocation.fail()` directly
+  * Use `create_duration_histogram` and `create_token_histogram`
+    from `opentelemetry-util-genai` instead of defining bucket
+    boundaries locally
+  * Import `OTEL_INSTRUMENTATION_GENAI_CAPTURE_MESSAGE_CONTENT`
+    from `opentelemetry.util.genai.environment_variables` instead
+    of re-defining it locally, making `opentelemetry-util-genai`
+    the single source of truth for this constant.
+  * Fix compatibility with wrapt 2.x by using positional
+    arguments in `wrap_function_wrapper()` calls
+  * Fix `ChoiceBuffer` crash on streaming tool-call deltas with
+    `arguments=None`
+  * Fix `StreamWrapper` missing `.headers` and other attributes
+    when using `with_raw_response` streaming
+  * Add opt-in support for latest experimental semantic
+    conventions (v1.37.0). Set `OTEL_SEMCONV_STABILITY_OPT_IN` to
+    `gen_ai_latest_experimental` to enable. Add dependency on
+    `opentelemetry-util-genai` pypi package.
+  * Add wrappers for OpenAI Responses API streams and response
+    stream managers
+  * Add async wrappers for OpenAI Responses API streams and
+    response stream managers
+  * Add strongly typed Responses API extractors with validation
+    and content extraction improvements
+  * Add completion hook support.
+  * Fix `response_format` handling: map
+    `json_object`/`json_schema` to `json` output type.
+  * Skip attribute values with `openai.Omit` value.
+  * Default empty string for `gen_ai.request.model` attribute on
+    missing model.
+
+-------------------------------------------------------------------
 Sat Apr 25 08:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.62b1:

@@ -126,4 +126,41 @@
     release</comment>
     <requestid>1349193</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4c10c4008462f2d1818a7ff367f80044</srcmd5>
+    <version>0.63b1</version>
+    <time>1782576268</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-fastapi-0.137.patch:
+  * Support fastapi 0.137 changes.
+
+- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+- update to 0.63b0:
+  * ### Added
+  * `opentelemetry-exporter-richconsole`: Add support for
+    suppressing resource information
+  * `opentelemetry-instrumentation`: Add experimental metrics
+    attributes Labeler utility
+  * `opentelemetry-instrumentation-logging`: Add
+    `OTEL_PYTHON_LOG_HANDLER_LEVEL` and `OTEL_PYTHON_LOG_FORMAT`
+    environment variables to configure the log level and
+    formatter of the auto-instrumented `LoggingHandler`.
+  * `opentelemetry-instrumentation-sqlite3`: Add uninstrument,
+    error status, suppress, and no-op tests
+  * Add `BaggageLogProcessor` to `opentelemetry-processor-
+    baggage`
+  * `opentelemetry-instrumentation-system-metrics`: Add support
+    for `process.disk.io` metric in system-metrics
+    instrumentation
+  * `opentelemetry-instrumentation`: Register
+    `OTEL_SEMCONV_STABILITY_OPT_IN` in `environment_variables.py`
+    so `opentelemetry-instrument` exposes a
+    `--semconv_stability_opt_in` CLI argument
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * `opentelemetry-instrumentation`: update auto-instrumentation</comment>
+    <requestid>1361293</requestid>
+  </revision>
 </revisionlist>
