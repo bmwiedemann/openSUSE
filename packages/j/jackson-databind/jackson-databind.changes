@@ -15,7 +15,7 @@ Thu Jun 25 12:05:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       'allowIfSubTypeIsArray()' should validate element type
       (bsc#1268898, CVE-2026-54513)
     + #5988: 'PolymorphicTypeValidator' needs to validate generic
-      type parameters too
+      type parameters too (bsc#1268897, CVE-2026-54512)
     + #5993: 'UPPER_SNAKE_CASE' / 'LOWER_CASE' 'NamingStrategyImpls'
       fold case using JVM default locale (Turkish-I bug)
   * Changes of 2.18.4

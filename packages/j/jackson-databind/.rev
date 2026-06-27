@@ -153,4 +153,12 @@
     <comment>2.18.8 + security fixes</comment>
     <requestid>1361757</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>609b81e7416a88032de94abbc631efc2</srcmd5>
+    <version>2.18.8</version>
+    <time>1782576460</time>
+    <user>dimstar_suse</user>
+    <comment>Missing CVE number</comment>
+    <requestid>1361938</requestid>
+  </revision>
 </revisionlist>
