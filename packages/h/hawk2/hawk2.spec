@@ -52,7 +52,7 @@ Source3:        actionmailbox-8.1.3.gem
 Source4:        actionmailer-8.1.3.gem
 Source5:        actionpack-8.1.3.gem
 Source6:        actiontext-8.1.3.gem
-Source7:        action_text-trix-2.1.18.gem
+Source7:        action_text-trix-2.1.19.gem
 Source8:        actionview-8.1.3.gem
 Source9:        activejob-8.1.3.gem
 Source10:       activemodel-8.1.3.gem
@@ -61,16 +61,16 @@ Source12:       activestorage-8.1.3.gem
 Source13:       activesupport-8.1.3.gem
 Source14:       axiom-types-0.1.1.gem
 Source15:       base64-0.3.0.gem
-Source16:       bigdecimal-4.1.1.gem
+Source16:       bigdecimal-4.1.2.gem
 Source17:       builder-3.3.0.gem
 Source18:       coercible-1.0.0.gem
-Source19:       concurrent-ruby-1.3.6.gem
+Source19:       concurrent-ruby-1.3.7.gem
 Source20:       connection_pool-3.0.2.gem
-Source21:       crass-1.0.6.gem
+Source21:       crass-1.0.7.gem
 Source22:       date-3.5.1.gem
 Source23:       descendants_tracker-0.0.4.gem
 Source24:       drb-2.2.3.gem
-Source25:       erb-6.0.2.gem
+Source25:       erb-6.0.4.gem
 Source26:       erubi-1.13.1.gem
 Source27:       execjs-2.10.1.gem
 Source28:       fast_gettext-4.1.1.gem
@@ -78,38 +78,38 @@ Source29:       ffi-1.17.4.gem
 Source30:       fiddle-1.1.8.gem
 Source31:       forwardable-1.4.0.gem
 Source32:       gettext-3.5.2.gem
-Source33:       gettext_i18n_rails-2.1.0.gem
-Source34:       gettext_i18n_rails_js-3.1.2.gem
-Source35:       globalid-1.3.0.gem
-Source36:       i18n-1.14.8.gem
+Source33:       gettext_i18n_rails-2.2.0.gem
+Source34:       gettext_i18n_rails_js-3.1.5.gem
+Source35:       globalid-1.4.0.gem
+Source36:       i18n-1.15.2.gem
 Source37:       ice_nine-0.11.2.gem
 Source38:       io-console-0.8.2.gem
-Source39:       irb-1.17.0.gem
-Source40:       json-2.19.3.gem
-Source41:       js-routes-2.3.6.gem
+Source39:       irb-1.18.0.gem
+Source40:       json-2.20.0.gem
+Source41:       js-routes-2.4.1.gem
 Source42:       kramdown-2.5.2.gem
 Source43:       locale-2.1.5.gem
 Source44:       logger-1.7.0.gem
 Source45:       loofah-2.25.1.gem
 Source46:       mail-2.9.0.gem
-Source47:       marcel-1.1.0.gem
+Source47:       marcel-1.2.1.gem
 Source48:       mini_mime-1.1.5.gem
 Source49:       mini_portile2-2.8.9.gem
-Source50:       minitest-6.0.3.gem
-Source51:       net-imap-0.6.4.gem
+Source50:       minitest-6.0.6.gem
+Source51:       net-imap-0.6.4.1.gem
 Source52:       net-pop-0.1.2.gem
 Source53:       net-protocol-0.2.2.gem
 Source54:       net-smtp-0.5.1.gem
 Source55:       nio4r-2.7.5.gem
 Source56:       nokogiri-1.19.4.gem
 Source57:       ostruct-0.6.3.gem
-Source58:       po_to_json-3.0.2.gem
-Source59:       pp-0.6.3.gem
+Source58:       po_to_json-3.0.5.gem
+Source59:       pp-0.6.4.gem
 Source60:       prettyprint-0.2.0.gem
 Source61:       prime-0.1.4.gem
 Source62:       prism-1.9.0.gem
-Source63:       psych-5.3.1.gem
-Source64:       puma-8.0.0.gem
+Source63:       psych-5.4.0.gem
+Source64:       puma-8.0.2.gem
 Source65:       racc-1.8.1.gem
 Source66:       rack-3.2.6.gem
 Source67:       rack-session-2.1.2.gem
@@ -119,7 +119,7 @@ Source70:       rails-8.1.3.gem
 Source71:       rails-dom-testing-2.3.0.gem
 Source72:       rails-html-sanitizer-1.7.0.gem
 Source73:       railties-8.1.3.gem
-Source74:       rake-13.3.1.gem
+Source74:       rake-13.4.2.gem
 Source75:       rdoc-7.2.0.gem
 Source76:       reline-0.6.3.gem
 Source77:       rexml-3.4.4.gem
@@ -128,7 +128,7 @@ Source79:       sassc-rails-2.1.2.gem
 Source80:       sass-rails-6.0.0.gem
 Source81:       securerandom-0.4.1.gem
 Source82:       singleton-0.3.0.gem
-Source83:       sorbet-runtime-0.6.13110.gem
+Source83:       sorbet-runtime-0.6.13316.gem
 Source84:       sprockets-4.2.2.gem
 Source85:       sprockets-rails-3.5.2.gem
 Source86:       stringio-3.2.0.gem
@@ -143,9 +143,9 @@ Source94:       uglifier-4.2.1.gem
 Source95:       uri-1.1.1.gem
 Source96:       useragent-0.16.11.gem
 Source97:       virtus-2.0.0.gem
-Source98:       websocket-driver-0.8.0.gem
+Source98:       websocket-driver-0.8.2.gem
 Source99:       websocket-extensions-0.1.5.gem
-Source100:      zeitwerk-2.7.5.gem
+Source100:      zeitwerk-2.8.2.gem
 
 Source101:      %{name}.sysusers
 Source102:      %{name}.tmpfiles.conf
@@ -178,6 +178,7 @@ Provides:       group(%{gname})
 
 BuildRequires:  distribution-release
 BuildRequires:  gcc-c++
+BuildRequires:  libffi-devel
 BuildRequires:  libxslt-devel
 BuildRequires:  libyaml-devel
 BuildRequires:  make
@@ -228,15 +229,6 @@ pushd hawk
   find vendor -name "*.so.debug" -delete
   find . -name ".*" ! -name "." ! -name ".." -exec rm -rf {} +
   find vendor/gems -type f -size 0 -exec rm -rf {} +
-
-  find vendor -type f -exec sed -i -E \
-    -e '1s|^#! */usr/bin/env ruby(\.ruby4\.0)?$|#!/usr/bin/ruby|' \
-    -e '1s|^#! */usr/bin/env ruby -wKU$|#!/usr/bin/ruby -wKU|' \
-    -e '1s|^#! */usr/bin/env bash$|#!/usr/bin/bash|' {} \;
-
-  %ruby_fix_shebang_path bin/rails
-  %ruby_fix_shebang_path bin/rake
-  %ruby_fix_shebang_path bin/bundle
 
   if [ -x /usr/bin/bundle.ruby.%{rb_suffix} ]; then
       bundlerexe=bundle.ruby.%{rb_suffix}
@@ -398,20 +390,12 @@ rm -rf %{buildroot}
 %{_unitdir}/hawk-backend.service
 %attr(-,root,root) %{_sbindir}/rchawk
 
-%exclude %{install_gem_path}/gems/bigdecimal-4.1.1/ext/bigdecimal/*
+%exclude %{install_gem_path}/gems/bigdecimal-4.1.2/ext/bigdecimal/*
 %exclude %{install_gem_path}/gems/date-3.5.1/ext/date/*
-%exclude %{install_gem_path}/gems/erb-6.0.2/ext/erb/escape/escape.c
+%exclude %{install_gem_path}/gems/erb-6.0.4/ext/erb/escape/escape.c
 %exclude %{install_gem_path}/gems/ffi-1.17.4/ext/ffi_c/*
-%exclude %{install_gem_path}/gems/gettext_i18n_rails_js-3.1.2/vendor/bundle/ruby/4.0.0/*
+%exclude %{install_gem_path}/gems/gettext_i18n_rails_js-3.1.5/vendor/bundle/ruby/4.0.0/*
 %exclude %{install_gem_path}/gems/io-console-0.8.2/ext/io/console/console.c
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/fbuffer/fbuffer.h
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/generator/generator.c
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/json.h
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/parser/parser.c
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/simd/simd.h
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/vendor/fpconv.c
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/vendor/jeaiii-ltoa.h
-%exclude %{install_gem_path}/gems/json-2.19.2/ext/json/ext/vendor/ryu.h
 %exclude %{install_gem_path}/gems/mini_portile2-2.8.9/test/assets/pkgconf/libxml2/libxml-2.0.pc
 %exclude %{install_gem_path}/gems/mini_portile2-2.8.9/test/assets/pkgconf/libxslt/libexslt.pc
 %exclude %{install_gem_path}/gems/mini_portile2-2.8.9/test/assets/pkgconf/libxslt/libxslt.pc
@@ -423,12 +407,23 @@ rm -rf %{buildroot}
 %exclude %{install_gem_path}/gems/prism-1.9.0/ext/*
 %exclude %{install_gem_path}/gems/prism-1.9.0/include/*
 %exclude %{install_gem_path}/gems/prism-1.9.0/src/*
-%exclude %{install_gem_path}/gems/psych-5.3.1/ext/psych/*
-%exclude %{install_gem_path}/gems/puma-7.2.0/ext/puma_http11/*
+%exclude %{install_gem_path}/gems/psych-5.4.0/ext/psych/*
+%exclude %{install_gem_path}/gems/puma-8.0.2/ext/puma_http11/*
 %exclude %{install_gem_path}/gems/sassc-2.4.0/ext/libsass/contrib/plugin.cpp
 %exclude %{install_gem_path}/gems/sassc-2.4.0/ext/libsass/include/*
 %exclude %{install_gem_path}/gems/sassc-2.4.0/ext/libsass/src/*
 %exclude %{install_gem_path}/gems/stringio-3.2.0/ext/stringio/stringio.c
-%exclude %{install_gem_path}/gems/websocket-driver-0.8.0/ext/websocket-driver/websocket_mask.c
+%exclude %{install_gem_path}/gems/websocket-driver-0.8.2/ext/websocket-driver/websocket_mask.c
+
+%exclude %{install_gem_path}/gems/fiddle-1.1.8/ext/fiddle/*
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/fbuffer/fbuffer.h
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/generator/generator.c
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/json.h
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/parser/parser.c
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/simd/simd.h
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/vendor/fpconv.c
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/vendor/jeaiii-ltoa.h
+%exclude %{install_gem_path}/gems/json-2.20.0/ext/json/ext/vendor/fast_float_parser.h
+%exclude %{install_gem_path}/gems/rake-13.4.2/doc/*
 
 %changelog

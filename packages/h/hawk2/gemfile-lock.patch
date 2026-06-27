@@ -31,7 +31,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +GEM
 +  remote: https://rubygems.org/
 +  specs:
-+    action_text-trix (2.1.18)
++    action_text-trix (2.1.19)
 +      railties
 +    actioncable (8.1.3)
 +      actionpack (= 8.1.3)
@@ -110,18 +110,18 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      ice_nine (~> 0.11.0)
 +      thread_safe (~> 0.3, >= 0.3.1)
 +    base64 (0.3.0)
-+    bigdecimal (4.1.1)
++    bigdecimal (4.1.2)
 +    builder (3.3.0)
 +    coercible (1.0.0)
 +      descendants_tracker (~> 0.0.1)
-+    concurrent-ruby (1.3.6)
++    concurrent-ruby (1.3.7)
 +    connection_pool (3.0.2)
-+    crass (1.0.6)
++    crass (1.0.7)
 +    date (3.5.1)
 +    descendants_tracker (0.0.4)
 +      thread_safe (~> 0.3, >= 0.3.1)
 +    drb (2.2.3)
-+    erb (6.0.2)
++    erb (6.0.4)
 +    erubi (1.13.1)
 +    execjs (2.10.1)
 +    fast_gettext (4.1.1)
@@ -136,28 +136,28 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      prime
 +      racc
 +      text (>= 1.3.0)
-+    gettext_i18n_rails (2.1.0)
++    gettext_i18n_rails (2.2.0)
 +      fast_gettext (>= 0.9.0)
-+    gettext_i18n_rails_js (3.1.2)
++    gettext_i18n_rails_js (3.1.5)
 +      gettext (>= 3.0.2)
 +      gettext_i18n_rails (>= 0.7.1)
 +      po_to_json (>= 2.0.0)
 +      rails (>= 3.2.0)
-+    globalid (1.3.0)
++    globalid (1.4.0)
 +      activesupport (>= 6.1)
-+    i18n (1.14.8)
++    i18n (1.15.2)
 +      concurrent-ruby (~> 1.0)
 +    ice_nine (0.11.2)
 +    io-console (0.8.2)
-+    irb (1.17.0)
++    irb (1.18.0)
 +      pp (>= 0.6.0)
 +      prism (>= 1.3.0)
 +      rdoc (>= 4.0.0)
 +      reline (>= 0.4.2)
-+    js-routes (2.3.6)
++    js-routes (2.4.1)
 +      railties (>= 5)
 +      sorbet-runtime
-+    json (2.19.3)
++    json (2.20.0)
 +    kramdown (2.5.2)
 +      rexml (>= 3.4.4)
 +    locale (2.1.5)
@@ -172,13 +172,13 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      net-imap
 +      net-pop
 +      net-smtp
-+    marcel (1.1.0)
++    marcel (1.2.1)
 +    mini_mime (1.1.5)
 +    mini_portile2 (2.8.9)
-+    minitest (6.0.3)
++    minitest (6.0.6)
 +      drb (~> 2.0)
 +      prism (~> 1.5)
-+    net-imap (0.6.4)
++    net-imap (0.6.4.1)
 +      date
 +      net-protocol
 +    net-pop (0.1.2)
@@ -192,19 +192,19 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      mini_portile2 (~> 2.8.2)
 +      racc (~> 1.4)
 +    ostruct (0.6.3)
-+    po_to_json (3.0.2)
++    po_to_json (3.0.5)
 +      json (>= 1.6.0)
-+    pp (0.6.3)
++    pp (0.6.4)
 +      prettyprint
 +    prettyprint (0.2.0)
 +    prime (0.1.4)
 +      forwardable
 +      singleton
 +    prism (1.9.0)
-+    psych (5.3.1)
++    psych (5.4.0)
 +      date
 +      stringio
-+    puma (8.0.0)
++    puma (8.0.2)
 +      nio4r (~> 2.0)
 +    racc (1.8.1)
 +    rack (3.2.6)
@@ -245,7 +245,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      thor (~> 1.0, >= 1.2.2)
 +      tsort (>= 0.2)
 +      zeitwerk (~> 2.6)
-+    rake (13.3.1)
++    rake (13.4.2)
 +    rdoc (7.2.0)
 +      erb
 +      psych (>= 4.0.0)
@@ -265,7 +265,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      tilt
 +    securerandom (0.4.1)
 +    singleton (0.3.0)
-+    sorbet-runtime (0.6.13110)
++    sorbet-runtime (0.6.13316)
 +    sprockets (4.2.2)
 +      concurrent-ruby (~> 1.0)
 +      logger
@@ -291,11 +291,11 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +      axiom-types (~> 0.1)
 +      coercible (~> 1.0)
 +      descendants_tracker (~> 0.0, >= 0.0.3)
-+    websocket-driver (0.8.0)
++    websocket-driver (0.8.2)
 +      base64
 +      websocket-extensions (>= 0.1.0)
 +    websocket-extensions (0.1.5)
-+    zeitwerk (2.7.5)
++    zeitwerk (2.8.2)
 +
 +PLATFORMS
 +  ruby
@@ -315,7 +315,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  virtus (>= 1.0.1)
 +
 +CHECKSUMS
-+  action_text-trix (2.1.18) sha256=3fdb83f8bff4145d098be283cdd47ac41caf5110bfa6df4695ed7127d7fb3642
++  action_text-trix (2.1.19) sha256=7012f59421009cf284aa651294896414d653a61a2417c9b8714c8476d2f74009
 +  actioncable (8.1.3) sha256=e5bc7f75e44e6a22de29c4f43176927c3a9ce4824464b74ed18d8226e75a80f0
 +  actionmailbox (8.1.3) sha256=df7da474eaa0e70df4ed5a6fef66eb3b3b0f2dbf7f14518deee8d77f1b4aae59
 +  actionmailer (8.1.3) sha256=831f724891bb70d0aaa4d76581a6321124b6a752cb655c9346aae5479318448d
@@ -329,16 +329,16 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  activesupport (8.1.3) sha256=21a5e0dfbd4c3ddd9e1317ec6a4d782fa226e7867dc70b0743acda81a1dca20e
 +  axiom-types (0.1.1) sha256=c1ff113f3de516fa195b2db7e0a9a95fd1b08475a502ff660d04507a09980383
 +  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
-+  bigdecimal (4.1.1) sha256=1c09efab961da45203c8316b0cdaec0ff391dfadb952dd459584b63ebf8054ca
++  bigdecimal (4.1.2) sha256=53d217666027eab4280346fba98e7d5b66baaae1b9c3c1c0ffe89d48188a3fbd
 +  builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
 +  coercible (1.0.0) sha256=5081ad24352cc8435ce5472bc2faa30260c7ea7f2102cc6a9f167c4d9bffaadc
-+  concurrent-ruby (1.3.6) sha256=6b56837e1e7e5292f9864f34b69c5a2cbc75c0cf5338f1ce9903d10fa762d5ab
++  concurrent-ruby (1.3.7) sha256=4412caec3a5ea2e5fdc52076724c071a81f2c0593d83b2ac8cbb8ca63b3151b0
 +  connection_pool (3.0.2) sha256=33fff5ba71a12d2aa26cb72b1db8bba2a1a01823559fb01d29eb74c286e62e0a
-+  crass (1.0.6) sha256=dc516022a56e7b3b156099abc81b6d2b08ea1ed12676ac7a5657617f012bd45d
++  crass (1.0.7) sha256=94868719948664c89ddcaf0a37c65048413dfcb1c869470a5f7a7ceb5390b295
 +  date (3.5.1) sha256=750d06384d7b9c15d562c76291407d89e368dda4d4fff957eb94962d325a0dc0
 +  descendants_tracker (0.0.4) sha256=e9c41dd4cfbb85829a9301ea7e7c48c2a03b26f09319db230e6479ccdc780897
 +  drb (2.2.3) sha256=0b00d6fdb50995fe4a45dea13663493c841112e4068656854646f418fda13373
-+  erb (6.0.2) sha256=9fe6264d44f79422c87490a1558479bd0e7dad4dd0e317656e67ea3077b5242b
++  erb (6.0.4) sha256=38e3803694be357fe2bfe312487c74beaf9fb4e5beb3e22498952fe1645b95d9
 +  erubi (1.13.1) sha256=a082103b0885dbc5ecf1172fede897f9ebdb745a4b97a5e8dc63953db1ee4ad9
 +  execjs (2.10.1) sha256=abe0ae028467eb8e30c10814eb934d07876a691aae7e803d813b7ce5a75e73f1
 +  fast_gettext (4.1.1) sha256=e8c532f6945b0dc31efb2e91366bd56630bc3ae6a05a4126937124e40366efd8
@@ -346,38 +346,38 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  fiddle (1.1.8) sha256=7fa8ee3627271497f3add5503acdbc3f40b32f610fc1cf49634f083ef3f32eee
 +  forwardable (1.4.0) sha256=f1cd40cc9812937980e1c76f1aa053660990a7c9b6a98fc37d945468afcce838
 +  gettext (3.5.2) sha256=ada02c59aa7e9f56bd2522faedaed16421dd2f3ddb5fe28628c0be5abcbf3c74
-+  gettext_i18n_rails (2.1.0) sha256=672aa595f2977ad796ec0a0f3ba1adcc606cdeff4840f53efd0c944f57bf0628
-+  gettext_i18n_rails_js (3.1.2) sha256=3fefd797d3ff06429b1f067c7375bed34fe830c4abaddb98f802b6dad4583c94
-+  globalid (1.3.0) sha256=05c639ad6eb4594522a0b07983022f04aa7254626ab69445a0e493aa3786ff11
-+  i18n (1.14.8) sha256=285778639134865c5e0f6269e0b818256017e8cde89993fdfcbfb64d088824a5
++  gettext_i18n_rails (2.2.0) sha256=3978bfd0910663ddbbbdb6ddee87a6781a570628ab0671f109b5707390a01c29
++  gettext_i18n_rails_js (3.1.5) sha256=e74d84e52994b54ff766e3b61d03af334f2c11f1a89939483c23393b8dff0cff
++  globalid (1.4.0) sha256=037f12fbf1d9d7a014d501c2d5c77356fd4ddd96d7a7991d6700bba96706f427
++  i18n (1.15.2) sha256=00f9eb62412fe593b2a65a97daa75300d37abb8f7202ec748e94b6d46a9dd1b5
 +  ice_nine (0.11.2) sha256=5d506a7d2723d5592dc121b9928e4931742730131f22a1a37649df1c1e2e63db
 +  io-console (0.8.2) sha256=d6e3ae7a7cc7574f4b8893b4fca2162e57a825b223a177b7afa236c5ef9814cc
-+  irb (1.17.0) sha256=168c4ddb93d8a361a045c41d92b2952c7a118fa73f23fe14e55609eb7a863aae
-+  js-routes (2.3.6) sha256=a46220beadddf3ee4dc7a1e0b908587c0b3418d44d84ef7970ed72e849598474
-+  json (2.19.3) sha256=289b0bb53052a1fa8c34ab33cc750b659ba14a5c45f3fcf4b18762dc67c78646
++  irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
++  js-routes (2.4.1) sha256=a2be5e33c911a7e3edd47fc1279d5dd90f12ff55bed2393642924a70b97b027d
++  json (2.20.0) sha256=9362bc6e55a952b056abf9167cf053358181c904cb70cd6eee0808ea830fc32b
 +  kramdown (2.5.2) sha256=1ba542204c66b6f9111ff00dcc26075b95b220b07f2905d8261740c82f7f02fa
 +  locale (2.1.5) sha256=1c6803e8aa6bdb2c29e91945d095050601bf6d58474993575adf6f3b89b32ef4
 +  logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
 +  loofah (2.25.1) sha256=d436c73dbd0c1147b16c4a41db097942d217303e1f7728704b37e4df9f6d2e04
 +  mail (2.9.0) sha256=6fa6673ecd71c60c2d996260f9ee3dd387d4673b8169b502134659ece6d34941
-+  marcel (1.1.0) sha256=fdcfcfa33cc52e93c4308d40e4090a5d4ea279e160a7f6af988260fa970e0bee
++  marcel (1.2.1) sha256=1678e9360e32f9eafa917c80029e2f6d10b2715c66a4b87b6d0da9b9cd1f859f
 +  mini_mime (1.1.5) sha256=8681b7e2e4215f2a159f9400b5816d85e9d8c6c6b491e96a12797e798f8bccef
 +  mini_portile2 (2.8.9) sha256=0cd7c7f824e010c072e33f68bc02d85a00aeb6fce05bb4819c03dfd3c140c289
-+  minitest (6.0.3) sha256=88ac8a1de36c00692420e7cb3cc11a0773bbcb126aee1c249f320160a7d11411
-+  net-imap (0.6.4) sha256=9a5598c67a3022c284d98430ef1d4948e7dbdb62596f61081ea8ca933270a02b
++  minitest (6.0.6) sha256=153ea36d1d987a62942382b61075745042a2b3123b1cd48f4c3675af9cc7d6f1
++  net-imap (0.6.4.1) sha256=29f0360d75a7efd3539f16ac1957dea5c0a51ddeceb348db4553c3120914ea0d
 +  net-pop (0.1.2) sha256=848b4e982013c15b2f0382792268763b748cce91c9e91e36b0f27ed26420dff3
 +  net-protocol (0.2.2) sha256=aa73e0cba6a125369de9837b8d8ef82a61849360eba0521900e2c3713aa162a8
 +  net-smtp (0.5.1) sha256=ed96a0af63c524fceb4b29b0d352195c30d82dd916a42f03c62a3a70e5b70736
 +  nio4r (2.7.5) sha256=6c90168e48fb5f8e768419c93abb94ba2b892a1d0602cb06eef16d8b7df1dca1
 +  nokogiri (1.19.4) sha256=50c951611c92bca05c51411aef45f1cbc50f2821c4802758c5c6d34696533ab5
 +  ostruct (0.6.3) sha256=95a2ed4a4bd1d190784e666b47b2d3f078e4a9efda2fccf18f84ddc6538ed912
-+  po_to_json (3.0.2) sha256=31dd7810c3ada8965a2deff74210835d03f41de1de4680822a578a78822fe904
-+  pp (0.6.3) sha256=2951d514450b93ccfeb1df7d021cae0da16e0a7f95ee1e2273719669d0ab9df6
++  po_to_json (3.0.5) sha256=7459acb3b75bac6406dd0a9e7fc69d2cb2ac63776adae5fc3a69a343042968be
++  pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
 +  prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
 +  prime (0.1.4) sha256=4d755ebf7c2994a6f3a3fee0d072063be3fff2d4042ebff6cd5eebd4747a225e
 +  prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
-+  psych (5.3.1) sha256=eb7a57cef10c9d70173ff74e739d843ac3b2c019a003de48447b2963d81b1974
-+  puma (8.0.0) sha256=1681050b8b60fab1d3033255ab58b6aec64cd063e43fc6f8204bcb8bf9364b88
++  psych (5.4.0) sha256=14f72d69a611af663d7d70e4a7b67d9eb1f3ae9f8d916b478961d5a0075ba5b7
++  puma (8.0.2) sha256=c8ed871dfbbe66448ea9ffd46692342d9804d4071522b52b5331b7b6e7b686fb
 +  racc (1.8.1) sha256=4a7f6929691dbec8b5209a0b373bc2614882b55fc5d2e447a21aaa691303d62f
 +  rack (3.2.6) sha256=5ed78e1f73b2e25679bec7d45ee2d4483cc4146eb1be0264fc4d94cb5ef212c2
 +  rack-session (2.1.2) sha256=595434f8c0c3473ae7d7ac56ecda6cc6dfd9d37c0b2b5255330aa1576967ffe8
@@ -387,7 +387,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  rails-dom-testing (2.3.0) sha256=8acc7953a7b911ca44588bf08737bc16719f431a1cc3091a292bca7317925c1d
 +  rails-html-sanitizer (1.7.0) sha256=28b145cceaf9cc214a9874feaa183c3acba036c9592b19886e0e45efc62b1e89
 +  railties (8.1.3) sha256=913eb0e0cb520aac687ffd74916bd726d48fa21f47833c6292576ef6a286de22
-+  rake (13.3.1) sha256=8c9e89d09f66a26a01264e7e3480ec0607f0c497a861ef16063604b1b08eb19c
++  rake (13.4.2) sha256=cb825b2bd5f1f8e91ca37bddb4b9aaf345551b4731da62949be002fa89283701
 +  rdoc (7.2.0) sha256=8650f76cd4009c3b54955eb5d7e3a075c60a57276766ebf36f9085e8c9f23192
 +  reline (0.6.3) sha256=1198b04973565b36ec0f11542ab3f5cfeeec34823f4e54cebde90968092b1835
 +  rexml (3.4.4) sha256=19e0a2c3425dfbf2d4fc1189747bdb2f849b6c5e74180401b15734bc97b5d142
@@ -396,7 +396,7 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  sassc-rails (2.1.2) sha256=5f4fdf3881fc9bdc8e856ffbd9850d70a2878866feae8114aa45996179952db5
 +  securerandom (0.4.1) sha256=cc5193d414a4341b6e225f0cb4446aceca8e50d5e1888743fac16987638ea0b1
 +  singleton (0.3.0) sha256=83ea1bca5f4aa34d00305ab842a7862ea5a8a11c73d362cb52379d94e9615778
-+  sorbet-runtime (0.6.13110) sha256=4f330e44a81c26d05731386cef3cfeaaa0931d217785ef2bbdcfc68a5e4a6c3e
++  sorbet-runtime (0.6.13316) sha256=c31af65275b3d2b2f52a01f2e9e2937d392d1e7fe3ccb847eb2983a755c89c6d
 +  sprockets (4.2.2) sha256=761e5a49f1c288704763f73139763564c845a8f856d52fba013458f8af1b59b1
 +  sprockets-rails (3.5.2) sha256=a9e88e6ce9f8c912d349aa5401509165ec42326baf9e942a85de4b76dbc4119e
 +  stringio (3.2.0) sha256=c37cb2e58b4ffbd33fe5cd948c05934af997b36e0b6ca6fdf43afa234cf222e1
@@ -411,9 +411,9 @@ Index: hawk2-2.6.6+git.1742310530.bfcd0e2c/hawk/Gemfile.lock
 +  uri (1.1.1) sha256=379fa58d27ffb1387eaada68c749d1426738bd0f654d812fcc07e7568f5c57c6
 +  useragent (0.16.11) sha256=700e6413ad4bb954bb63547fa098dddf7b0ebe75b40cc6f93b8d54255b173844
 +  virtus (2.0.0) sha256=8841dae4eb7fcc097320ba5ea516bf1839e5d056c61ee27138aa4bddd6e3d1c2
-+  websocket-driver (0.8.0) sha256=ed0dba4b943c22f17f9a734817e808bc84cdce6a7e22045f5315aa57676d4962
++  websocket-driver (0.8.2) sha256=97c556b019bf3410b4961002ac501621e9322d3f8a7bc02161a09301cc4c4146
 +  websocket-extensions (0.1.5) sha256=1c6ba63092cda343eb53fc657110c71c754c56484aad42578495227d717a8241
-+  zeitwerk (2.7.5) sha256=d8da92128c09ea6ec62c949011b00ed4a20242b255293dd66bf41545398f73dd
++  zeitwerk (2.8.2) sha256=7212a61311083c604184b1ea2574b9aa05cd14f855a0841c06985cabe9181d12
 +
 +BUNDLED WITH
 +  4.0.10
