@@ -347,4 +347,14 @@
     <comment>- Update to release 1.1.6</comment>
     <requestid>1321346</requestid>
   </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>eef39d69f72b7795b84296344d16c68a</srcmd5>
+    <version>1.1.6</version>
+    <time>1782576241</time>
+    <user>dimstar_suse</user>
+    <comment>- add support-reproducible-build.patch: this is a cherry pick of
+  four unreleased upstream commits which are needed to properly
+  backport the reproducible build feature.</comment>
+    <requestid>1361758</requestid>
+  </revision>
 </revisionlist>
