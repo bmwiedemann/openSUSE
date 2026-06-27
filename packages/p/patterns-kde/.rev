@@ -382,4 +382,13 @@ This also handles TW properly. (forwarded request 653860 from lslezak)</comment>
     <comment></comment>
     <requestid>1349930</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>a8d416bc9f124cc1bb00718b0c68c454</srcmd5>
+    <version>20260428</version>
+    <time>1782576213</time>
+    <user>dimstar_suse</user>
+    <comment>- Disambiguate kde_utilities and kde_utilities_opt pattern summaries
+  (bsc#1267854) (forwarded request 1361010 from epaolantonio)</comment>
+    <requestid>1361612</requestid>
+  </revision>
 </revisionlist>

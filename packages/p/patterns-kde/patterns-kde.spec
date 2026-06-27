@@ -471,8 +471,8 @@ Recommends:     pattern() = kde_pim
 Recommends:     pattern() = kde_utilities
 # Only for Tumbleweed
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
-Recommends:     pattern() = kde_yast
 Recommends:     yast2-control-center-qt
+Recommends:     pattern() = kde_yast
 %endif
 Recommends:     pattern() = multimedia
 Recommends:     pattern() = office
@@ -907,7 +907,7 @@ KDE Applications - Utilities
 
 %package kde_utilities_opt
 %pattern_kdedesktop
-Summary:        KDE Utilities
+Summary:        KDE Utilities (Additional)
 Group:          Metapackages
 Provides:       patterns-openSUSE-kde4_utilities_opt = %{version}
 Provides:       patterns-openSUSE-kde_utilities_opt = %{version}
