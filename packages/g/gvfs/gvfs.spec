@@ -20,7 +20,7 @@
 %bcond_without  onedrive
 
 Name:           gvfs
-Version:        1.60.0
+Version:        1.60.1
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -30,8 +30,6 @@ Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source99:       baselibs.conf
 
-# PATCH-FIX-UPSTREAM gvfs-fix-udisks2-crash.patch bsc#1261625, glgo#GNOME/gvfs!326 alynx.zhou@suse.com -- Fix cancelled pending operation
-Patch0:         gvfs-fix-udisks2-crash.patch
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus
 Patch1000:      gvfs-nds.patch

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:41:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.60.1:
+  + smb: Fix authentication fallback broken with Samba 4.24
+  + dav: Fix redirect handling to prevent HTTPS downgrade and
+    credential leakage
+  + Some other fixes
+  + Updated translations.
+- Drop gvfs-fix-udisks2-crash.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Thu May 28 00:43:31 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gvfs-fix-udisks2-crash.patch: Fix crash of cancelled pending

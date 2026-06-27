@@ -1661,4 +1661,18 @@ New stable rel</comment>
   operation. (bsc#1261625, glgo#GNOME/gvfs!326)</comment>
     <requestid>1355868</requestid>
   </revision>
+  <revision rev="209" vrev="1">
+    <srcmd5>29675dd5a8c41853eeffe08c74401ba8</srcmd5>
+    <version>1.60.1</version>
+    <time>1782576160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.60.1:
+  + smb: Fix authentication fallback broken with Samba 4.24
+  + dav: Fix redirect handling to prevent HTTPS downgrade and
+    credential leakage
+  + Some other fixes
+  + Updated translations.
+- Drop gvfs-fix-udisks2-crash.patch: Fixed upstream.</comment>
+    <requestid>1361821</requestid>
+  </revision>
 </revisionlist>
