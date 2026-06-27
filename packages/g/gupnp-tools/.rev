@@ -382,4 +382,13 @@ New stable rel</comment>
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342978</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>f0e189b947b4bd2ffd6c1186c08ee722</srcmd5>
+    <version>0.12.3</version>
+    <time>1782576472</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.12.3:
+  + Updated translations.</comment>
+    <requestid>1361967</requestid>
+  </revision>
 </revisionlist>
