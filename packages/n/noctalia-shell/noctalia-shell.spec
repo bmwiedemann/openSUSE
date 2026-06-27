@@ -22,16 +22,24 @@ Release:        0
 Summary:        A sleek and minimal desktop shell for Wayland
 License:        MIT
 Group:          System/GUI/Other
-URL:            https://github.com/noctalia-dev/noctalia-shell
+URL:            https://github.com/noctalia-dev/noctalia/tree/legacy-v4
 Source0:        %{name}-%{version}.tar.zst
 Source99:       %{name}-rpmlintrc
 Patch0:         001-setting-gate-automatic-network-requests.patch
+
 BuildRequires:  zstd
+
+%if 0%{?suse_version} == 1600
+Requires:       ffmpeg >= 7
+%else
+Requires:       ffmpeg-8
+%endif
 Requires:       noctalia-qs
 Requires:       ImageMagick
 Requires:       brightnessctl
 Requires:       python3
-Requires:       wlr-randr
+
+Recommends:     wlr-randr
 Recommends:     cliphist
 Recommends:     ddcutil
 Recommends:     inter-fonts
@@ -40,13 +48,10 @@ Recommends:     power-profiles-daemon
 Recommends:     upower
 Recommends:     wlsunset
 Recommends:     xdg-desktop-portal
+
 Suggests:       evolution-data-server
+
 BuildArch:      noarch
-%if 0%{?suse_version} == 1600
-Requires:       ffmpeg >= 7
-%else
-Requires:       ffmpeg-8
-%endif
 
 %description
 Noctalia is a minimal desktop shell for Wayland, built on Quickshell
@@ -88,3 +93,4 @@ rm -f %{buildroot}%{_datadir}/quickshell/noctalia-shell/LICENSE
 %{_datadir}/quickshell/noctalia-shell/
 
 %changelog
+

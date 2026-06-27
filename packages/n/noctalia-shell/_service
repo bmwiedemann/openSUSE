@@ -1,18 +1,18 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/noctalia-dev/noctalia-shell.git</param>
+    <param name="url">https://github.com/noctalia-dev/noctalia.git</param>
     <param name="scm">git</param>
-    <param name="revision">v4.7.7</param>
+    <param name="revision">legacy-v4</param>
+		<param name="version">v4.7.7</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
-    <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <param name="filename">noctalia-shell</param>
   </service>
-  <service name="tar" mode="buildtime" />
+  <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">
     <param name="file">*.tar</param>
     <param name="compression">zst</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
 </services>

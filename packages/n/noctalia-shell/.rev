@@ -36,4 +36,22 @@
   * Changed 'tar' and 'recompress' services mode to 'buildtime'</comment>
     <requestid>1353561</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>01bc74df3ce9c9993a7100f05a96e312</srcmd5>
+    <version>4.7.7</version>
+    <time>1782576468</time>
+    <user>dimstar_suse</user>
+    <comment>- _service and .spec files changes
+- Update to version 4.7.7 (commit f816591afc2f2f606d1f0cf70b51e95c04a7a8aa):
+  * chore: updated repo names in workflows
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix(ci): stop issue metadata workflow from removing unrelated labels
+  * chore(flake): update flake.lock
+  * chore(workflow): update label workflow
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock</comment>
+    <requestid>1361953</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/noctalia-dev/noctalia-shell.git</param>
-              <param name="changesrevision">3abfa1fc09b62dc4cdeeb7b787886f075696f0b7</param></service></servicedata>
+              <param name="changesrevision">3abfa1fc09b62dc4cdeeb7b787886f075696f0b7</param></service><service name="tar_scm">
+                <param name="url">https://github.com/noctalia-dev/noctalia.git</param>
+              <param name="changesrevision">f816591afc2f2f606d1f0cf70b51e95c04a7a8aa</param></service></servicedata>

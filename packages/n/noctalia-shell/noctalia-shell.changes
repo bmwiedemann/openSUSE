@@ -1,5 +1,20 @@
 -------------------------------------------------------------------
-Sat May 16 21:28:17 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+Fri Jun 26 18:41:03 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- _service and .spec files changes
+- Update to version 4.7.7 (commit f816591afc2f2f606d1f0cf70b51e95c04a7a8aa):
+  * chore: updated repo names in workflows
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * fix(ci): stop issue metadata workflow from removing unrelated labels
+  * chore(flake): update flake.lock
+  * chore(workflow): update label workflow
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+  * chore(flake): update flake.lock
+
+-------------------------------------------------------------------
+Sat May 16 21:28:17 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Changes: 
   * Removed 'matugen' as Recommends dependency (noctalia has its own built in template colors generator)
@@ -49,7 +64,7 @@ Wed May 13 18:03:24 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
   * fix problem with Airplane Mode toggle visibility &  add some default values for the Color Scheme settings
 
 -------------------------------------------------------------------
-Fri Apr 24 11:57:43 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+Fri Apr 24 11:57:43 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Removed some dependencies:
   * removed cava, it's not needed for AudioVisualizer on noctalia-shell anymore, can be installed as a standalone
