@@ -160,4 +160,21 @@
     release</comment>
     <requestid>1349196</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>731322c772edb97960d994b982a3dff7</srcmd5>
+    <version>0.63b1</version>
+    <time>1782576264</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+- update to 0.63b0:
+  * `opentelemetry-test-utils`: fix weaver live check hanging
+    when weaver log output fills the pipe buffer
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * Switch to SPDX license headers and add CI enforcement
+  * Drop Python 3.9 support</comment>
+    <requestid>1361878</requestid>
+  </revision>
 </revisionlist>

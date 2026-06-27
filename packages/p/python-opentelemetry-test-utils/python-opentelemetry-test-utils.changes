@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jun 20 16:05:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+
+- update to 0.63b0:
+  * `opentelemetry-test-utils`: fix weaver live check hanging
+    when weaver log output fills the pipe buffer
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * Switch to SPDX license headers and add CI enforcement
+  * Drop Python 3.9 support
+
+-------------------------------------------------------------------
 Sat Apr 25 08:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.62b1:
