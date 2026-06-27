@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:03:23 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 9.10.0
+  * New Features
+    - Content server: A new "modern" interface with a sidebar to ease navigation
+    - Content server: When used with HTTPS allow installation as a PWA (Progressive Web App)
+    - Edit book: Saved searches: When filtering the list of saved searches match by keywords
+    - CSS parsing: Add support for CSS Level 4 selectors
+    - Cover grid: When using an image larger than the viewport as a texture scale it to fit the viewport
+    - Annotations browser: Allow restricting displayed annotations by custom annotation styles as well
+    - Edit book: Compress images: Add option to convert PNG images to JPEG or WEBP
+  * Bug Fixes
+    - E-book viewer: Fix IME on Windows not working when typing in notes for highlights
+    - Conversion: Heuristics: Improve performance in some pathological cases
+    - SNB Input: Fix error on some input files
+    - Windows: fix rare crash when too many notifications are displayed at once
+    - Fix duplicating of books not duplicating value from enumerated columns when the column has a default value defined
+    - Fix a regression in 9.8 that caused errors from AI plugin providers to be silently swallowed and not displayed to user
+    - Fix CSV export invalid when exporting comments field
+    - Disallow Python templates when reading book metadata (CVE-2026-53511)
+
+-------------------------------------------------------------------
 Mon Jun  8 08:01:11 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Skip test_recipe_browser_webengine in qemu emulation

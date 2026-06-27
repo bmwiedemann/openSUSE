@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           calibre
-Version:        9.9.0
+Version:        9.10.0
 Release:        0
 Summary:        EBook Management Application
 License:        GPL-3.0-only
