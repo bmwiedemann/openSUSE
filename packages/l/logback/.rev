@@ -111,4 +111,12 @@
     <comment>Sync changes</comment>
     <requestid>1358810</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>65a64f567498fbc37b97ffcaa308a510</srcmd5>
+    <version>1.5.36</version>
+    <time>1782576370</time>
+    <user>dimstar_suse</user>
+    <comment>1.5.34 with bsc#1269222, CVE-2026-13006</comment>
+    <requestid>1361884</requestid>
+  </revision>
 </revisionlist>

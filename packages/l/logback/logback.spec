@@ -17,7 +17,7 @@
 
 
 Name:           logback
-Version:        1.5.34
+Version:        1.5.36
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
@@ -114,10 +114,6 @@ rm -r %{name}-*/src/test/java/*
 %pom_xpath_remove "pom:profiles"
 
 %pom_xpath_set "pom:project/pom:properties/pom:slf4j.version" 2
-
-%if %{?pkg_vcmp:%pkg_vcmp java-devel < 21}%{!?pkg_vcmp:0}
-    %pom_xpath_remove "pom:executions/pom:execution[pom:id[text()='java21-compile']]" logback-core
-%endif
 
 %{mvn_package} ":%{name}-access" access
 %{mvn_package} ":%{name}-examples" examples

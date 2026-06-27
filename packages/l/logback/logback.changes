@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Jun 26 05:56:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.5.36
+  * Changes of 1.5.36
+    + The 'condition' attribute in <if> elements now reject certain
+      references that are associated with ACE attacks
+      (bsc#1269222, CVE-2026-13006).
+  * Changes of 1.5.35
+    + The 'condition' attribute in <if> elements now rejects unicode
+      escape sequences (\u and \U). This closes a bypass of the
+      existing prohibition on the new operator in Janino-evaluated
+      conditions (bsc#1269222, CVE-2026-13006). Please note that the
+      version 1.5.36 provides the full fix to this vulnerability.
+    + Added ConfiguratorRank.AUTHENTICATING (rank 100), the highest
+      configurator rank, for certified/authenticating configurators
+      discovered via the ServiceLoader mechanism. ContextInitializer
+      now requires that at most one such configurator exist on the
+      classpath; if more than one is found, initialization aborts
+      with an error.
+    + ConsoleCharsetPropertyDefiner is no longer shipped. The Java
+      21 multi-release compilation of logback-core has been
+      disabled, which removes this class from the published
+      artifact. Configurations that referenced
+      ch.qos.logback.core.property.ConsoleCharsetPropertyDefiner
+      will need an alternative approach for console charset
+      detection.
+    + The logback-examples module is now included in the set of
+      artifacts published to Maven Central.
+    + JoranConfigurator.makeAnotherInstance() and
+      DefaultJoranConfigurator.performMultiStepConfigurationFileSearch()
+      are now protected, allowing derived configurators to override
+      these methods.
+
+-------------------------------------------------------------------
 Wed Jun 10 04:23:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.5.34
