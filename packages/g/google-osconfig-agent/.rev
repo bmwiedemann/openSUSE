@@ -892,4 +892,25 @@
   * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable (forwarded request 1360016 from glaubitz)</comment>
     <requestid>1360047</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>9f7e87fd8720eff5e3fc7fd53fcfcbad</srcmd5>
+    <version>20260624.01</version>
+    <time>1782576320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260624.01
+  * Add unit tests for agentendpoint/agentendpoint_beta.go (#983)
+- from version 20260624.00
+  * Replace yum install with yum update (#1009)
+- from version 20260623.02
+  * Bump github.com/containerd/containerd (#1013)
+- from version 20260623.01
+  * Add unit tests for policies/apt.go PART 2 (#957)
+- from version 20260623.00
+  * Add test cases for agentendpoint/task_state.go (#984)
+- from version 20260618.00
+  * Remove deprecated rhel-sap images and add new ones (#1007)
+- from version 20260616.00
+  * Add test cases for clog/clog.go (#986) (forwarded request 1361788 from glaubitz)</comment>
+    <requestid>1361799</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:34:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260624.01
+  * Add unit tests for agentendpoint/agentendpoint_beta.go (#983)
+- from version 20260624.00
+  * Replace yum install with yum update (#1009)
+- from version 20260623.02
+  * Bump github.com/containerd/containerd (#1013)
+- from version 20260623.01
+  * Add unit tests for policies/apt.go PART 2 (#957)
+- from version 20260623.00
+  * Add test cases for agentendpoint/task_state.go (#984)
+- from version 20260618.00
+  * Remove deprecated rhel-sap images and add new ones (#1007)
+- from version 20260616.00
+  * Add test cases for clog/clog.go (#986)
+
+-------------------------------------------------------------------
 Wed Jun 17 10:54:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Packaging improvements:
