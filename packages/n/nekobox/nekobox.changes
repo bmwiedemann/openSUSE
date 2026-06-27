@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:57:16 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.24
+- Updated sing-box to 1.13.14
+- Added Snell protocol support
+- Fixed startup crash (c0000005)
+- Fixed selection issues
+- Improved the basic routes grid
+- Improved feiyangqingyun theme
+- Fixed amnezia preshared_key field
+- Added a searchbox
+
+-------------------------------------------------------------------
 Sun Jun 21 09:41:35 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.23
