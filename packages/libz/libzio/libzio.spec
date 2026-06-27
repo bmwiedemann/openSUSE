@@ -18,7 +18,7 @@
 
 Name:           libzio
 %define lname   libzio1
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        A Library for Accessing Compressed Text Files
 License:        GPL-2.0-or-later

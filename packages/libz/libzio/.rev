@@ -408,4 +408,21 @@
   * Avoid signed/unsigned comparison in magic()</comment>
     <requestid>1355609</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>d36f28c6fd772d3508e3e872ecbee71f</srcmd5>
+    <version>1.15</version>
+    <time>1782576151</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.15
+  Refactored zio.c as well as optimized
+  - Functional Verification: All compression formats (gzip, bzip2, lzma, xz, zstd)
+    were validated via the test loop.
+  - Static Analysis &amp; Bugfixes:
+    - Fixed a memory leak and uninitialized value in autodetect and fzopen.
+    - Fixed Double-Free vulnerabilities in zio_open_gzip_pipe and zio_open_bzip2_pipe.
+  - Compatibility: Verified the HAS_LZMADEC_H path with the legacy lzmadec.h.
+  - Optimizations: Replaced heap allocation for the check buffer with a stack-based
+    buffer in fzopen and _knowntype_fdzopen to reduce overhead.</comment>
+    <requestid>1361705</requestid>
+  </revision>
 </revisionlist>

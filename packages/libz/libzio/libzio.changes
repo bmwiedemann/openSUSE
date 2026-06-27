@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:35:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.15
+  Refactored zio.c as well as optimized
+  - Functional Verification: All compression formats (gzip, bzip2, lzma, xz, zstd)
+    were validated via the test loop.
+  - Static Analysis & Bugfixes:
+    - Fixed a memory leak and uninitialized value in autodetect and fzopen.
+    - Fixed Double-Free vulnerabilities in zio_open_gzip_pipe and zio_open_bzip2_pipe.
+  - Compatibility: Verified the HAS_LZMADEC_H path with the legacy lzmadec.h.
+  - Optimizations: Replaced heap allocation for the check buffer with a stack-based
+    buffer in fzopen and _knowntype_fdzopen to reduce overhead.
+
+-------------------------------------------------------------------
 Thu May 28 09:31:29 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.14
