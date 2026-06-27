@@ -1,0 +1,27 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Make ValueTest/objects float check robust against x87 excess precision
+
+ValueTest/objects stores the float literal 0.12345f into a Json::Value
+(widened to the stored double) and then asserts equality against the
+original 0.12345f. On i586, where GCC defaults to x87 (-mfpmath=387)
+with 80-bit excess precision and no SSE2 in the baseline, the round-trip
+yields the exact double 0.12345 rather than the float-widened
+0.12345000356435776, so the exact double comparison fails (the library
+itself is correct).
+
+Compare the stored value narrowed back to float instead: both the
+expected literal and asFloat() collapse to the same float value on every
+architecture, so the test is precision-robust while still verifying the
+numeric round-trip.
+
+--- a/src/test_lib_json/main.cpp
++++ b/src/test_lib_json/main.cpp
+@@ -352,7 +352,7 @@
+
+   const Json::Value* numericFound = object2_.findNumeric("numeric");
+   JSONTEST_ASSERT(numericFound != nullptr);
+-  JSONTEST_ASSERT_EQUAL(0.12345f, *numericFound);
++  JSONTEST_ASSERT_EQUAL(0.12345f, numericFound->asFloat());
+   JSONTEST_ASSERT(object3_.findNumeric("numeric") == nullptr);
+
+   const Json::Value* stringFound = object2_.findString("string");

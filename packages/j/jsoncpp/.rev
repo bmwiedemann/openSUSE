@@ -298,4 +298,12 @@
 - Drop obsolete Group tags</comment>
     <requestid>1359852</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>9793e7f132d73a7ca20bb3da4e54643d</srcmd5>
+    <version>1.9.8</version>
+    <time>1782576154</time>
+    <user>dimstar_suse</user>
+    <comment>jsoncpp 1.9.8: fix the i586 FTBFS (declined sr#1361562). ValueTest/objects did an exact float-vs-double compare that x87 80-bit excess precision broke on i586 (no SSE2 in the baseline, so -mfpmath=sse is unsafe). jsoncpp-i586-float-precision.patch compares the value narrowed back to float, robust on all arches; verified i586 build now succeeds (unittest OK, Fail: 0). Submitted upstream as gh#open-source-parsers/jsoncpp#1700.</comment>
+    <requestid>1361767</requestid>
+  </revision>
 </revisionlist>

@@ -25,8 +25,12 @@ License:        MIT
 URL:            https://github.com/open-source-parsers/jsoncpp
 Source0:        https://github.com/open-source-parsers/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM jsoncpp-i586-float-precision.patch gh#open-source-parsers/jsoncpp#1700
+# - make the ValueTest/objects float check robust against x87 excess precision (i586 FTBFS)
+Patch0:         jsoncpp-i586-float-precision.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 %{?suse_build_hwcaps_libs}
@@ -66,16 +70,14 @@ existing comment in unserialization/serialization steps, making it a convenient
 format to store user input files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
-%cmake \
-	-D CMAKE_BUILD_TYPE="Release" \
-	-D BUILD_OBJECT_LIBS=OFF
-%cmake_build
+%meson --buildtype=release
+%meson_build
 
 %install
-%cmake_install
+%meson_install
 pushd %{buildroot}%{_includedir}/json/
 # From 1.9.1 to 1.9.2, features.h has been renamed json_features.h
 # so, create a symlink for compatibility
@@ -86,14 +88,13 @@ ln -s config.h autolink.h
 popd
 
 %check
-%ctest
+%meson_test
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
 
 %files -n lib%{name}%{sover}
 %license LICENSE
 %{_libdir}/lib%{name}.so.%{sover}*
-%{_libdir}/lib%{name}.so.%{version}
 
 %files devel
 %license LICENSE
@@ -102,10 +103,7 @@ popd
 %dir %{_libdir}/cmake
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/%{name}/%{name}Config.cmake
-%{_libdir}/cmake/%{name}/%{name}ConfigVersion.cmake
 %{_libdir}/cmake/%{name}/%{name}-namespaced-targets.cmake
-%{_libdir}/cmake/%{name}/%{name}-targets.cmake
-%{_libdir}/cmake/%{name}/%{name}-targets-release.cmake
 %{_libdir}/lib%{name}.so
 %{_includedir}/json/
 
