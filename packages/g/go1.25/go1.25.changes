@@ -1,9 +1,20 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:51:11 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop subpackage go1.x-libstd std library .so refs jsc#PED-1962
+  * Use of Go standard library as .so and -buildmode=shared is not
+    recommended or supported by upstream Go
+  * Subpackage go1.x-libstd was only ever built for Factory and
+    removal does not affect SLE
+  * No Go application packages in Factory use go1.x-libstd
+
+-------------------------------------------------------------------
 Thu Jun 11 19:27:01 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Use libalternatives only on suse_version >= 1610 and keep
   update-alternatives support for older distributions.
-- Drop the update-alternatives migration path for libalternatives builds. 
+- Drop the update-alternatives migration path for libalternatives builds.
 
 -------------------------------------------------------------------
 Thu Jun  4 11:32:39 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
