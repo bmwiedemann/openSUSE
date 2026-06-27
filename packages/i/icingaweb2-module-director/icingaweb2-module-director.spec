@@ -22,7 +22,7 @@
 %define icingadirector_user icingadirector
 
 Name:           icingaweb2-module-director
-Version:        1.11.8
+Version:        1.11.9
 Release:        0
 Summary:        Config module for Icinga Web 2
 License:        GPL-2.0-or-later
@@ -35,6 +35,8 @@ BuildArch:      noarch
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Requires(pre):  pwdutils
+Requires:       icinga-php-library >= 0.14.2
+Requires:       icinga-php-thirdparty >= 0.15.3
 Requires:       icinga2 >= 2.8.0
 Requires:       icingaweb2 >= 2.8.0
 Requires:       icingaweb2-module-incubator >= 0.22.0

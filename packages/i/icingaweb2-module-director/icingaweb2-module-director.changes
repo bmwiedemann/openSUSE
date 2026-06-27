@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 10:31:40 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.11.9
+
+-  Update to 1.11.9
+  * Internals
+    - Fix: Adapt to react/promise v3 and react/event-loop v1.6 (#3043)
+    - Fix: Add PromiseUtil shim for react/promise v2/v3 compatibility (#3081)
+
+-------------------------------------------------------------------
 Wed Apr  1 13:06:12 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.11.8
 
 - Update to 1.11.8
