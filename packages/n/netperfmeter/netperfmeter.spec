@@ -1,7 +1,7 @@
 #
 # spec file for package netperfmeter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,9 @@
 #
 
 
+%define services netperfmeter.service netperfmeter-module-loader.service
 Name:           netperfmeter
-Version:        1.9.4
+Version:        2.0.7
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
@@ -26,10 +27,16 @@ URL:            https://www.uni-due.de/~be0001/netperfmeter/
 Source:         https://www.uni-due.de/~be0001/netperfmeter/download/%{name}-%{version}.tar.xz
 Source1:        https://www.uni-due.de/~be0001/netperfmeter/download/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
+BuildRequires:  GraphicsMagick
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  ghostscript
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  lksctp-tools-devel
+BuildRequires:  mupdf
+BuildRequires:  pdf2svg
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  pkgconfig(bzip2)
 
 %description
@@ -60,26 +67,56 @@ cmake .. \
 %cmake_install
 chmod +x %{buildroot}/%{_bindir}/*
 
+# don't package non-standard size icons
+for i in 150 20 310 40 42 44 8; do
+  rm -rf %{buildroot}/%{_datadir}/icons/hicolor/"$i"x"$i"
+done
+
+%pre
+%service_add_pre %{services}
+
+%post
+%service_add_post %{services}
+
+%preun
+%service_del_preun %{services}
+
+%postun
+%service_del_postun %{services}
+
 %files
 %license COPYING
 %doc AUTHORS ChangeLog
+%config %{_sysconfdir}/netperfmeter.conf
 %{_bindir}/combinesummaries
 %{_bindir}/createsummary
 %{_bindir}/extractvectors
 %{_bindir}/getabstime
 %{_bindir}/netperfmeter
+%{_bindir}/netperfmeter-module-loader
 %{_bindir}/runtimeestimator
 %{_mandir}/man1/combinesummaries.1%{?ext_man}
 %{_mandir}/man1/createsummary.1%{?ext_man}
 %{_mandir}/man1/extractvectors.1%{?ext_man}
 %{_mandir}/man1/getabstime.1%{?ext_man}
 %{_mandir}/man1/netperfmeter.1%{?ext_man}
+%{_mandir}/man1/netperfmeter-module-loader.1%{?ext_man}
 %{_mandir}/man1/runtimeestimator.1%{?ext_man}
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/combinesummaries
+%{_datadir}/bash-completion/completions/createsummary
+%{_datadir}/bash-completion/completions/extractvectors
+%{_datadir}/bash-completion/completions/netperfmeter
+%{_datadir}/icons/hicolor/*/*/%{name}.*??g
+%{_datadir}/mime/packages/netperfmeter.xml
+%{_unitdir}/netperfmeter.service
+%{_unitdir}/netperfmeter-module-loader.service
 
 %package pdfproctools
 Summary:        PDF Processing Tools
 Group:          Productivity/Networking/Diagnostic
 Requires:       ghostscript
+Requires:       mupdf
 Requires:       perl >= 5.8.0
 Requires:       perl-PDF-API2
 Requires:       qpdf
@@ -100,6 +137,9 @@ This package contains tools for PDF file processing.
 %{_bindir}/setpdfmetadata
 %{_mandir}/man1/pdfembedfonts.1%{?ext_man}
 %{_mandir}/man1/setpdfmetadata.1%{?ext_man}
+%dir %{_datadir}/bash-completion/completions/
+%{_datadir}/bash-completion/completions/pdfembedfonts
+%{_datadir}/bash-completion/completions/setpdfmetadata
 
 %package plotting
 Summary:        Network Performance Meter (plotting program)
@@ -122,8 +162,9 @@ This package contains a plotting program for the results.
 %files plotting
 %{_bindir}/plot-netperfmeter-results
 %dir %{_datadir}/netperfmeter
-%{_datadir}/netperfmeter/plot-netperfmeter-results.R
-%{_datadir}/netperfmeter/plotter.R
+%{_datadir}/netperfmeter/
 %{_mandir}/man1/plot-netperfmeter-results.1%{?ext_man}
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/plot-netperfmeter-results
 
 %changelog

@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Tue Jun 23 13:13:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.7
+  * Removed usage of strcpy(), and some clean-ups.
+  * Added UTF-8 handling to setpdfmetadata, removing the ISO-8859
+    restriction for PDF metadata.
+
+-------------------------------------------------------------------
+Mon Jun 22 07:19:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.6
+  * Changed pdftocairo to mutool, due to bugs in Fedora.
+  * Code clean-up.
+
+-------------------------------------------------------------------
+Sun Jun 21 19:13:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.5
+  * Fixed includes.
+  * Manpage update.
+  * Minor clean-up.
+  * Added option to configure the separator.
+  * Improved shell completions.
+  * Improved vector counting.
+  * Options handling improvements.
+  * Using C++ memory allocation, instead of malloc() and calloc().
+  * CreateSummary: improved options handling and updated manpage.
+  * Further improvements of runtimeestimator.
+  * Improved byteswap handling.
+  * Fixed missing exit() call after usage message.
+  * Added strict compiler options.
+  * Set pipefail option in scripts.
+  * Added new QUIC client and server handshake functions, to
+    properly handle custom TLS root CA.
+  * Fixed controllocal option handling.
+  * Improved scripts and manpage.
+  * Using ggplot2 for plotting.
+  * Also using only TAB as separator in per-flow vector output.
+  * Now consistency using TAB as separator in vector output; no
+    more mix of space, spaces and TAB.
+  * Line number handling fix for CombineSummaries.
+  * Improved plotting script.
+  * Improved Wireshark configuration example.
+  * Some improvements, including option to turn off line numbering.
+  * Flow handling fix.
+  * MPTCP socket initialisation fix.
+  * Merge branch 'dreibh/tcp-graceful-shutdown'
+  * SCTP socket only needs to be closed when it has been created.
+  * Added Wireshark "Decode As" configuration.
+  * Made RetransmissionTrials configuration more readable.
+  * Added server-side QUIC stream reception.
+  * Some testing with multi-stream QUIC connection.
+  * Started multi-stream support for QUIC.
+  * One-stream QUIC connection is working now!
+  * AddFlow message's Protocol fields needs to be 16 bits. For
+    backward compatibility with NetPerfMeter 1.x, it is in Little
+    Endian.
+  * Added QUIC parameter configuration handling.
+  * Added QUIC socket to passive side.
+  * Added option parsing for QUIC.
+  * Got rid of Linux-specific PR-SCTP code for old Linux SCTP
+    versions. Linux SCTP now supports the same API as FreeBSD.
+  * Improved control channel options handling.
+  * Improved configuration of control channel protocols.
+  * Updated runtimeestimator and getabstime.
+  * Fixed control socket initialisation, to properly handle TCP or
+    MPTCP.
+  * Improved PDF fonts embedder script.
+  * Further clean-ups to remove obsolete MPTCP options code used
+    for MPTCP development version.
+
+-------------------------------------------------------------------
 Wed May  7 09:15:21 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - export CMAKE_POLICY_VERSION_MINIMUM="3.5" to ignore cmakes
