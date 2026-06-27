@@ -131,4 +131,13 @@ final releases.
 </comment>
     <requestid>1313084</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>874812a6d6427589c69687755e02986e</srcmd5>
+    <version>1.15</version>
+    <time>1782576482</time>
+    <user>dimstar_suse</user>
+    <comment>- Require mbedtls-devel &lt; 4 since newer versions are not supported
+</comment>
+    <requestid>1361985</requestid>
+  </revision>
 </revisionlist>
