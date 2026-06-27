@@ -1,7 +1,15 @@
 -------------------------------------------------------------------
+Fri Jun 26 07:16:19 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 149.0.7827.200 (boo#1269061):
+  * CVE-2026-13281: Integer overflow in Mojo
+  * CVE-2026-13282: Use after free in Payments
+  * CVE-2026-13283: Use after free in AdFilter
+
+-------------------------------------------------------------------
 Tue Jun 23 20:53:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Chromium 149.0.7827.196 (boo#1269061):
+- Chromium 149.0.7827.196:
   * stability and performance improvements
 
 -------------------------------------------------------------------

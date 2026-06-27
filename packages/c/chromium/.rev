@@ -6534,4 +6534,17 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
   * stability and performance improvements</comment>
     <requestid>1361616</requestid>
   </revision>
+  <revision rev="528" vrev="1">
+    <srcmd5>1579719ae63620c522388d2e280a023f</srcmd5>
+    <version>149.0.7827.200</version>
+    <time>1782576392</time>
+    <user>dimstar_suse</user>
+    <comment>- Chromium 149.0.7827.200 (boo#1269061):
+  * CVE-2026-13281: Integer overflow in Mojo
+  * CVE-2026-13282: Use after free in Payments
+  * CVE-2026-13283: Use after free in AdFilter
+
+boo#1269061 moved to the new release because 149.0.7827.196 did not contain security content</comment>
+    <requestid>1361903</requestid>
+  </revision>
 </revisionlist>
