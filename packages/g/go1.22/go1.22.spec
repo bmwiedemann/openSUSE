@@ -128,10 +128,6 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  %{go_bootstrap_version}
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-Suggests:       %{name}-libstd = %{version}
-%endif
 %ifarch %{tsan_arch}
 # Needed to compile compiler-rt/TSAN.
 BuildRequires:  gcc-c++
@@ -187,19 +183,6 @@ Go runtime race detector libraries. Install this package if you wish to use the
 -race option, in order to detect race conditions present in your Go programs.
 %endif
 
-%if %{with_shared}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-%package libstd
-Summary:        Go compiled shared library libstd.so
-Group:          Development/Languages/Go
-Provides:       go-libstd = %{version}
-
-%description libstd
-Go standard library compiled to a dynamically loadable shared object libstd.so
-%endif
-%endif
-
 %prep
 %ifarch %{tsan_arch}
 # compiler-rt (from LLVM)
@@ -253,28 +236,6 @@ cd ../
 %ifarch %{tsan_arch}
 # Install TSAN-friendly version of the std libraries.
 bin/go install -race std
-%endif
-
-%if %{with_shared}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-# Compile Go standard library as a dynamically loaded shared object libstd.so
-# for inclusion in a subpackage which can be installed standalone.
-# Upstream Go binary releases do not ship a compiled libstd.so.
-# Standard practice is to build Go binaries as a single executable.
-# Upstream Go discussed removing this feature, opted to fix current support:
-# Relevant upstream comments on: https://github.com/golang/go/issues/47788
-#
-# -buildmode=shared
-#    Combine all the listed non-main packages into a single shared
-#    library that will be used when building with the -linkshared
-#    option. Packages named main are ignored.
-#
-# -linkshared
-#    build code that will be linked against shared libraries previously
-#    created with -buildmode=shared.
-bin/go install -buildmode=shared std
-%endif
 %endif
 
 %check
@@ -467,15 +428,6 @@ fi
 %exclude %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
 %endif
 
-# We don't include libstd.so in the main Go package.
-%if %{with_shared}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-# ./go/1.22/pkg/linux_amd64_dynlink/libstd.so
-%exclude %{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
-%endif
-%endif
-
 %files doc
 # SLE-12 SP5 rpm macro environment does not work with single glob {*.html,godebug.md}
 %doc %{_docdir}/go/%{go_label}/*.html
@@ -484,14 +436,6 @@ fi
 %ifarch %{tsan_arch}
 %files race
 %{_datadir}/go/%{go_label}/src/runtime/race/race_linux_%{go_arch}.syso
-%endif
-
-%if %{with_shared}
-%if 0%{?suse_version} > 1500
-# openSUSE Tumbleweed
-%files libstd
-%{_libdir}/go/%{go_label}/pkg/linux_%{go_arch}_dynlink/libstd.so
-%endif
 %endif
 
 %changelog
