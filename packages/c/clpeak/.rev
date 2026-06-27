@@ -98,4 +98,12 @@
     <comment>Update to 2.0.14. Adds clpeak-install-bindir.patch (install binary into bindir via GNUInstallDirs; upstream PR krrishnarraj/clpeak#178). Drops _service and builds straight from the upstream release tarball.</comment>
     <requestid>1361626</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>bfa9ba5a346299d8cadf2bbee42112d7</srcmd5>
+    <version>2.0.16</version>
+    <time>1782576385</time>
+    <user>dimstar_suse</user>
+    <comment>Update to clpeak 2.0.16: the downstream bindir-install fix is now upstream (PR #178), LICENSE installed via CMake, C++14 build fix, and new CUDA GPU support (Blackwell Ultra/GB10/Jetson Thor). Drops clpeak-install-bindir.patch.</comment>
+    <requestid>1361855</requestid>
+  </revision>
 </revisionlist>

@@ -18,14 +18,12 @@
 
 
 Name:           clpeak
-Version:        2.0.14
+Version:        2.0.16
 Release:        0
 Summary:        Find peak OpenCL capacities like bandwidth & compute
 License:        LicenseRef-SUSE-Public-Domain
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM clpeak-install-bindir.patch -- install the binary into bindir, not the prefix root
-Patch0:         clpeak-install-bindir.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  opencl-cpp-headers

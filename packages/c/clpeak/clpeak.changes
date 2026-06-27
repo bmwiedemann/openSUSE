@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jun 26 07:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.16:
+  * The downstream fix to install the binary into the standard
+    bindir is now upstream (PR #178); install the LICENSE file via
+    CMake again.
+  * Raise the build to C++14 to fix aggregate brace-initialization
+    on strict clang.
+  * New GPU support: CUDA Blackwell Ultra (B300/GB300), GB10 and
+    Jetson Thor.
+- Drop clpeak-install-bindir.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Jun 24 16:40:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.14:
