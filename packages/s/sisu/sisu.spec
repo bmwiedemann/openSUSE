@@ -18,7 +18,7 @@
 
 %global reltype releases
 Name:           sisu
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Eclipse dependency injection framework
 License:        BSD-3-Clause AND EPL-1.0 AND EPL-2.0
@@ -26,14 +26,13 @@ Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu/
 Source0:        https://github.com/eclipse-sisu/sisu-project/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-project-%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
-Patch0:         sisu-no-dependency-on-glassfish-servlet-api.patch
-Patch1:         sisu-osgi-api.patch
-Patch2:         sisu-reproducible-index.patch
+Patch0:         sisu-reproducible-index.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  cdi-api
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
+BuildRequires:  glassfish-servlet-api
 BuildRequires:  google-guice
 BuildRequires:  guice-servlet
 BuildRequires:  jakarta-inject
@@ -84,8 +83,6 @@ This package contains %{summary}.
 %setup -q -n sisu-project-%{reltype}-%{version} -a1
 
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
 
 %build
 mkdir -p lib
@@ -93,7 +90,9 @@ build-jar-repository -s lib \
   atinject \
   cdi-api \
   glassfish-annotation-api \
+  glassfish-servlet-api \
   google-guice-no_aop \
+  guice/guice-servlet \
   jakarta-inject \
   junit \
   junit5 \

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 26 07:28:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream release 1.0.1
+  * Changes
+    + Slight dependency updates
+    + Addition of automatic module names
+
+-------------------------------------------------------------------
+Wed Apr  8 15:53:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patches:
+  * sisu-osgi-api.patch
+    + not needed any more
+  * sisu-no-dependency-on-glassfish-servlet-api.patch
+    + we can depend on that particular package
+
+-------------------------------------------------------------------
 Wed Feb 11 13:51:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 1.0.0

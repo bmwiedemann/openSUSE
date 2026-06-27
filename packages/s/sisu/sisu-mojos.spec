@@ -18,16 +18,14 @@
 
 %global reltype releases
 Name:           sisu-mojos
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Sisu plugin for Apache Maven
 License:        EPL-1.0 AND EPL-2.0
 Group:          Development/Libraries/Java
 URL:            https://www.eclipse.org/sisu
 Source0:        https://github.com/eclipse-sisu/sisu-project/archive/refs/tags/%{reltype}/%{version}.tar.gz#/sisu-project-%{version}.tar.gz
-Patch0:         sisu-no-dependency-on-glassfish-servlet-api.patch
-Patch1:         sisu-osgi-api.patch
-Patch2:         sisu-reproducible-index.patch
+Patch0:         sisu-reproducible-index.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
@@ -64,8 +62,6 @@ This package contains %{summary}.
 %setup -q -n sisu-project-%{reltype}-%{version}
 
 %patch -P 0 -p1
-%patch -P 1 -p1
-%patch -P 2 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
 %pom_remove_plugin -r :maven-invoker-plugin
