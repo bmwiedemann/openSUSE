@@ -1,0 +1,5 @@
+<package name="kf6-kmime" project="openSUSE:Factory">
+  <title>Library to assist handling MIME data</title>
+  <description>KMime is a library for handling mail messages and newsgroup articles.</description>
+  <url>https://www.kde.org</url>
+</package>
