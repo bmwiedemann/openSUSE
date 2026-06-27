@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 09:28:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.6.6:
+  + Fix binding to unicast sockets (Regression introduced by 1.6.5)
+
+-------------------------------------------------------------------
 Sun May 24 07:17:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.6.5:
