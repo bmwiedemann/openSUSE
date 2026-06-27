@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jun 26 05:51:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.3
+  New Features
+  * TFTP server (-tftp / --tftp-server) — goshs can now serve
+    files over TFTP, the one classic transfer protocol it was
+    missing (next to HTTP/WebDAV/FTP/SFTP/SMB). Listens on UDP
+    port 69 by default so built-in clients like Windows' tftp.exe
+    work out of the box, and supports both downloads (RRQ) and
+    uploads (WRQ) with blksize/tsize option negotiation. Honors the
+    IP whitelist and --read-only/--upload-only, rejects path
+    traversal, and is advertised via mDNS. Hand-rolled with zero
+    new dependencies.
+  * Reverse-shell payload generator — A new generator tab in both
+    the web UI and the --tui dashboard builds reverse-shell
+    one-liners from a shared payload database (Bash, nc, Python,
+    PHP, PowerShell, Perl, Ruby, and more), with LHOST/LPORT
+    substitution and optional URL/Base64 encoding (PowerShell
+    payloads as -EncodedCommand).
+  Bug Fixes
+  * TUI interface display (#187) — In --tui mode without an
+    explicit -i, the status line now lists every bound interface IP
+    instead of just showing 0.0.0.0.
+  * TUI template variables — The status line now reflects every
+    --tpl-var KEY=VALUE entry, not only LHOST/LPORT.
+  * TUI status line — Enabled FTP/SFTP and TFTP servers are now
+    surfaced in the status bar like the other protocols.
+  * Config ldap_jndi — The example config shipped a non-binding
+    ldap_jndi_enabled key; the correct, working key is ldap_jndi.
+  * Config ldap_wordlist — A ldap_wordlist value set via the
+    config file was silently ignored; it is now applied.
+  Packaging
+  * Shell completions (bash/zsh/fish) updated with the new -tftp /
+    --tftp-server / -tftp-port flags.
+
+-------------------------------------------------------------------
 Wed Jun 24 06:35:48 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.2
