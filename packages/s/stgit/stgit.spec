@@ -17,7 +17,7 @@
 
 
 Name:           stgit
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
 License:        GPL-2.0-or-later

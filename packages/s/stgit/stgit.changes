@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 26 14:12:02 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 2.6.1:
+  * chore: update changelog for 2.6.1
+  * chore: update transitive deps
+  * chore: update gix to 0.84
+  * chore: update tar to 0.4.46
+  * chore: update serde_json to 1.0.150
+  * chore: update jiff to 0.2.29
+  * chore: update curl to 0.4.50
+  * stgit.el: Fix Index/Work Tree incremental refresh
+  * fix(rebase): Run --exec commands also if the stack base does not change
+
+-------------------------------------------------------------------
 Mon Jun 15 09:07:04 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2.6.0:
