@@ -219,4 +219,33 @@
   * {Configure} Support BearerToken profile mode by @AllyW in (#1333) (forwarded request 1358162 from glaubitz)</comment>
     <requestid>1358168</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>18f2f7581afa519dd0f68018a38cdfb4</srcmd5>
+    <version>3.3.23</version>
+    <time>1781879877</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.23
+  * {Plugin} Allow plugins to opt out of host profile enforcement
+    by @AllyW in (#1348) (forwarded request 1360556 from glaubitz)</comment>
+    <requestid>1360557</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0dc2959f74255cde93877804963741e2</srcmd5>
+    <version>3.4.1</version>
+    <time>1782576319</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.1
+  * [Feature]Add Aliyun Lindorm CLI Subcommand by @MistySoul in (#1361)
+  * {cliext} Add aliyun spark-submit by @AllyW in (#1358)
+- from version 3.4.0
+  * feat(acrutil): extract shared binary manager and add diagnosis
+    subcommand by @copyrightpoiiiii in (#1349)
+  * [feature] add rostran sub command by @xiao201208 in (#1350)
+  * {OpenAPI} Add --cli-dry-run-json by @AllyW in (#1306)
+  * {Misc} Fix plugin three layer cmd help by @AllyW in (#1343)
+  * Feature/support anonymous by @yuexiu94 in (#1354)
+  * feat: support retry-after policy for throttling error by @yndu13
+    in (#1355) (forwarded request 1361784 from glaubitz)</comment>
+    <requestid>1361798</requestid>
+  </revision>
 </revisionlist>

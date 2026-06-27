@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:23:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.4.1
+  * [Feature]Add Aliyun Lindorm CLI Subcommand by @MistySoul in (#1361)
+  * {cliext} Add aliyun spark-submit by @AllyW in (#1358)
+- from version 3.4.0
+  * feat(acrutil): extract shared binary manager and add diagnosis
+    subcommand by @copyrightpoiiiii in (#1349)
+  * [feature] add rostran sub command by @xiao201208 in (#1350)
+  * {OpenAPI} Add --cli-dry-run-json by @AllyW in (#1306)
+  * {Misc} Fix plugin three layer cmd help by @AllyW in (#1343)
+  * Feature/support anonymous by @yuexiu94 in (#1354)
+  * feat: support retry-after policy for throttling error by @yndu13
+    in (#1355)
+
+-------------------------------------------------------------------
+Fri Jun 19 09:48:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.23
+  * {Plugin} Allow plugins to opt out of host profile enforcement
+    by @AllyW in (#1348)
+
+-------------------------------------------------------------------
 Tue Jun  9 10:28:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.22
