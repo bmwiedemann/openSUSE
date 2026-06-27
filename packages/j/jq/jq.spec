@@ -1,7 +1,6 @@
 #
 # spec file for package jq
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,27 +18,13 @@
 
 %define jq_sover 1
 Name:           jq
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A lightweight and flexible command-line JSON processor
 License:        CC-BY-3.0 AND MIT
 Group:          Productivity/Text/Utilities
 URL:            https://github.com/jqlang
 Source:         https://github.com/jqlang/jq/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
-Patch0:         CVE-2026-33948.patch
-Patch1:         CVE-2026-32316.patch
-Patch2:         CVE-2026-33947.patch
-Patch3:         CVE-2026-39956.patch
-Patch4:         CVE-2026-39979.patch
-Patch5:         CVE-2026-40164.patch
-Patch6:         CVE-2026-40612.patch
-Patch7:         CVE-2026-41256.patch
-Patch8:         CVE-2026-41257.patch
-Patch9:         CVE-2026-43894.patch
-Patch10:        CVE-2026-43895.patch
-Patch11:        CVE-2026-43896.patch
-Patch12:        CVE-2026-44777_0.patch
-Patch13:        CVE-2026-44777_1.patch
 BuildRequires:  chrpath
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(oniguruma)

@@ -1,4 +1,97 @@
 -------------------------------------------------------------------
+Sun Jun 21 16:30:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.2
+  Security fixes
+  * CVE-2026-32316: Fix heap buffer overflow in jvp_string_append
+    and jvp_string_copy_replace_bad.
+  * CVE-2026-33947: Limit path depth to prevent stack overflow in
+    jv_setpath, jv_getpath, jv_delpaths.
+  * CVE-2026-33948: Fix NUL truncation in the JSON parser.
+  * CVE-2026-39956: Fix _strindices missing runtime type checks.
+  * CVE-2026-39979: Fix out-of-bounds read in jv_parse_sized().
+  * CVE-2026-40164: Randomize hash seed to mitigate hash collision
+    DoS attacks.
+  * CVE-2026-40612: Limit containment check depth to prevent stack
+    overflow in contains.
+  * CVE-2026-41256: Fix NUL truncation in program files loaded
+    with -f.
+  * CVE-2026-41257: Fix signed-int overflow in stack_reallocate.
+  * CVE-2026-43894: Reject numeric literals longer than
+    DEC_MAX_DIGITS (999999999).
+  * CVE-2026-43895: Reject embedded NUL bytes in module import
+    paths.
+  * CVE-2026-43896: Limit recursive object merge depth to prevent
+    stack overflow.
+  * CVE-2026-44777: Detect circular module imports to prevent
+    stack overflow.
+  * CVE-2026-47770: Guard deep structural equality and comparison
+    recursion.
+  * CVE-2026-49839: Fix heap-buffer-overflow in raw file loading.
+  * CVE-2026-54679: Tighten string length bounds and propagate
+    invalid jv in implode.
+  * GHSA-gf4g-95wj-4q4r: Fix use-after-free in args2obj() array
+    argument path.
+  * GHSA-hj52-j2c9-r8r4: Fix signed-int overflow in tokenadd to
+    prevent buffer overflow.
+  * Limit the number of function parameters and definitions to
+    prevent SEGV.
+  * Pre-allocate tokenbuf for string parser to avoid undefined
+    behavior.
+  * Avoid stack overflow when freeing deeply nested values.
+  * Fix memory leaks and double frees.
+  Releasing
+  * Update GPG signing key.
+  CLI changes
+  * Improve error message truncation with closing delimiters.
+  * Remove extra space from die function output.
+  * Fix raw input flag not to corrupt multi-byte characters.
+  * Fix crash when importing a module with errors twice.
+  * Increase the maximum printing depth from 256 to 10000.
+  Changes to existing functions
+  * Fix rtrimstr("") always outputting "".
+  * Fix infinite loop and undefined behavior in del(.[nan]).
+  * Refactor @uri and @urid to fix multi-byte UTF-8 corruption.
+  * Fix tonumber and toboolean to reject strings with embedded
+    null bytes.
+  * Fix undefined behavior in modulo operator.
+  * Fix reversed pointer subtraction in f_env bounds check.
+  * Fix missing validity check in f_strflocaltime after
+    f_localtime.
+  * Fix year 2038 problem on 32-bit platforms.
+  * Use // instead of //= in from_entries definition.
+  Build and test changes
+  * Drop strptime test using non-portable %F.
+  * Limit oniguruma depth to 1024 in jq_fuzz_execute.
+  * Fix localization test for time formatting functions.
+  * Fix expected value assertion.
+  * Fix typo in tests/jq.test.
+  * Refactor tm2jv to handle fractional seconds.
+  * Fix jq_fuzz_parse_stream: use iterative parser API for
+    streaming mode.
+  * Fix crashes and resource leaks in jq_testsuite.
+  * Support building with --disable-maintainer-mode and
+    source != build dir.
+  * Respect SOURCE_DATE_EPOCH while generating man page.
+  * Fix undefined pointer arithmetic in UTF-8 helpers.
+  * Fix one-byte over-read in BASE64_DECODE_TABLE.
+- Drop not longer needed patches:
+  * CVE-2026-32316.patch
+  * CVE-2026-33947.patch
+  * CVE-2026-33948.patch
+  * CVE-2026-39956.patch
+  * CVE-2026-39979.patch
+  * CVE-2026-40164.patch
+  * CVE-2026-40612.patch
+  * CVE-2026-41256.patch
+  * CVE-2026-41257.patch
+  * CVE-2026-43894.patch
+  * CVE-2026-43895.patch
+  * CVE-2026-43896.patch
+  * CVE-2026-44777_0.patch
+  * CVE-2026-44777_1.patch
+
+-------------------------------------------------------------------
 Fri May 22 10:35:53 UTC 2026 - Nathan Cutler <ncutler@suse.com>
 
 - Add patch CVE-2026-33948.patch (CVE-2026-33948, bsc#1262043)
