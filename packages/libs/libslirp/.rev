@@ -150,4 +150,32 @@
     <comment></comment>
     <requestid>1284450</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>98c102522c014e51dfa48c5e065b5c74</srcmd5>
+    <version>4.9.3+4</version>
+    <time>1782576211</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.9.3+4:
+  * Add CVE information
+  * slirp: permit guestfwd to vhost_addr/vnameserver_addr
+  * Test qemu migration support
+  * Release v4.9.3
+  * slirp: Fix migration break on incorrect vmstate retcode
+  * Add missing diff url
+  * Release v4.9.2
+  * tcp_sockclosed: Set linger timer on remaining closing states
+  * oob: cap urgent data count to what is actually available
+  * bootp: allow https for UEFI HTTP boot
+  * ncsi: Document the Get Version ID (GVI) packet handler
+  * ncsi: Document why we fix memory alignment by adding 2-byte padding
+  * ncsi: add documentation comments to the packet handler table for improved readability
+  * Fix byte order
+  * SO_ERROR: take the errno as error hint
+  * vmstate: pass on read/write errors for state
+  * cope with SO_ERROR possibly failing
+  * Move the modified 3-Clause BSD text into LICENSE
+  * fix: honor dns server port number on macos
+- fixes CVE-2026-9539 [bsc#1268903]</comment>
+    <requestid>1361611</requestid>
+  </revision>
 </revisionlist>

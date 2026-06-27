@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jun 24 11:22:12 UTC 2026 - pgajdos@suse.com
+
+- Update to version 4.9.3+4:
+  * Add CVE information
+  * slirp: permit guestfwd to vhost_addr/vnameserver_addr
+  * Test qemu migration support
+  * Release v4.9.3
+  * slirp: Fix migration break on incorrect vmstate retcode
+  * Add missing diff url
+  * Release v4.9.2
+  * tcp_sockclosed: Set linger timer on remaining closing states
+  * oob: cap urgent data count to what is actually available
+  * bootp: allow https for UEFI HTTP boot
+  * ncsi: Document the Get Version ID (GVI) packet handler
+  * ncsi: Document why we fix memory alignment by adding 2-byte padding
+  * ncsi: add documentation comments to the packet handler table for improved readability
+  * Fix byte order
+  * SO_ERROR: take the errno as error hint
+  * vmstate: pass on read/write errors for state
+  * cope with SO_ERROR possibly failing
+  * Move the modified 3-Clause BSD text into LICENSE
+  * fix: honor dns server port number on macos
+- fixes CVE-2026-9539 [bsc#1268903]
+
+-------------------------------------------------------------------
 Mon Jun 09 07:50:06 UTC 2025 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 4.9.1+1:
