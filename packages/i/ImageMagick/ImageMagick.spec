@@ -317,7 +317,8 @@ export CONFIGURE_RELATIVE_PATH=%{config_dir}
   --without-gcc-arch \
   --enable-pipes=no \
   --enable-reproducible-build=yes \
-  --disable-openmp
+  --disable-openmp \
+  --disable-dpc
 
 %if %{asan_build}
 sed -i -e 's/\(^CFLAGS.*\)/\1 -fsanitize=address/' \

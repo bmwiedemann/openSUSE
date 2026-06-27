@@ -4496,4 +4496,46 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
   * GHSA-44cp-c3ww-9rv5</comment>
     <requestid>1357918</requestid>
   </revision>
+  <revision rev="339" vrev="2">
+    <srcmd5>7028c1d2f257f0f880ff479d53027fc8</srcmd5>
+    <version>7.1.2.25</version>
+    <time>1781879463</time>
+    <user>anag_factory</user>
+    <comment>- disable dpc support [bsc#1268117] [bsc#1268113]
+
+- fixes CVE-2026-53465 [bsc#1268100]
+        CVE-2026-53463 [bsc#1268105]
+        CVE-2026-53462 [bsc#1268106]
+- fixes CVE-2026-53461 [bsc#1268107]
+        CVE-2026-53460 [bsc#1268108]
+- fixes CVE-2026-49218 [bsc#1268110]
+        CVE-2026-48994 [bsc#1268111]
+        CVE-2026-48724 [bsc#1268116]
+        CVE-2026-48734 [bsc#1268122]
+        CVE-2026-49219 [bsc#1268109]
+- fixes CVE-2026-46522 [bsc#1268126]
+        CVE-2026-46520 [bsc#1268112]
+        CVE-2026-46557 [bsc#1268123]
+        CVE-2026-46523 [bsc#1268125]
+        CVE-2026-46559 [bsc#1268121]
+        CVE-2026-47165 [bsc#1268114]
+        CVE-2026-46692 [bsc#1268120]
+        CVE-2026-47166 [bsc#1268113]
+        CVE-2026-46693 [bsc#1268117]
+- fixes CVE-2026-42326 [bsc#1268092]
+        CVE-2026-45031 [bsc#1268094]
+        CVE-2026-45359 [bsc#1268095]
+        CVE-2026-45624 [bsc#1268096]
+        CVE-2026-45358 [bsc#1268102]
+        CVE-2026-45664 [bsc#1268101]</comment>
+    <requestid>1360471</requestid>
+  </revision>
+  <revision rev="340" vrev="3">
+    <srcmd5>810703de0b1ee26bdee409cfd760a359</srcmd5>
+    <version>7.1.2.25</version>
+    <time>1782576215</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-56370, [bsc#1269063], CVE-2026-56379, [bsc#1268878], [bsc#1268569], [bsc#1268640], CVE-2026-56367, [bsc#1268645], CVE-2026-56371, [bsc#1268879], CVE-2026-56376, [bsc#1268880], CVE-2026-56368, [bsc#1269064]</comment>
+    <requestid>1361706</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 17 09:43:28 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- disable dpc support [bsc#1268117] [bsc#1268113]
+
+-------------------------------------------------------------------
 Mon Jun  8 09:33:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 7.1.2.25
@@ -18,6 +23,9 @@ Mon Jun  8 09:33:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * GHSA-p9rq-q46c-g4x6
   * GHSA-j989-f892-2335
   * GHSA-44cp-c3ww-9rv5
+- fixes CVE-2026-53465 [bsc#1268100]
+        CVE-2026-53463 [bsc#1268105]
+        CVE-2026-53462 [bsc#1268106]
 
 -------------------------------------------------------------------
 Fri May 29 09:25:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -26,6 +34,8 @@ Fri May 29 09:25:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   [bsc#1265373]
 - modified patches
   * ImageMagick-configuration-SUSE.patch
+- fixes CVE-2026-53461 [bsc#1268107]
+        CVE-2026-53460 [bsc#1268108]
 
 -------------------------------------------------------------------
 Thu May 28 14:05:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -50,6 +60,11 @@ Thu May 28 14:05:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * GHSA-2hhq-c99x-492r
   * GHSA-6mwj-rp89-6j5j
   * GHSA-vgh5-r42g-4j44
+- fixes CVE-2026-49218 [bsc#1268110]
+        CVE-2026-48994 [bsc#1268111]
+        CVE-2026-48724 [bsc#1268116]
+        CVE-2026-48734 [bsc#1268122]
+        CVE-2026-49219 [bsc#1268109]
 
 -------------------------------------------------------------------
 Mon May 18 14:32:11 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -73,6 +88,15 @@ Mon May 18 14:32:11 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 - modified patches
   * ImageMagick-configuration-SUSE.patch (refreshed)
   * ImageMagick_policy_etc.patch (refreshed)
+- fixes CVE-2026-46522 [bsc#1268126]
+        CVE-2026-46520 [bsc#1268112]
+        CVE-2026-46557 [bsc#1268123]
+        CVE-2026-46523 [bsc#1268125]
+        CVE-2026-46559 [bsc#1268121]
+        CVE-2026-47165 [bsc#1268114]
+        CVE-2026-46692 [bsc#1268120]
+        CVE-2026-47166 [bsc#1268113]
+        CVE-2026-46693 [bsc#1268117]
 
 -------------------------------------------------------------------
 Wed May 13 12:08:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -100,6 +124,12 @@ Wed May 13 12:08:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * GHSA-vhrh-72hq-w8m7
 - deleted patches
   * ImageMagick-fix-overflow-check.patch (upstreamed)
+- fixes CVE-2026-42326 [bsc#1268092]
+        CVE-2026-45031 [bsc#1268094]
+        CVE-2026-45359 [bsc#1268095]
+        CVE-2026-45624 [bsc#1268096]
+        CVE-2026-45358 [bsc#1268102]
+        CVE-2026-45664 [bsc#1268101]
 
 -------------------------------------------------------------------
 Mon May 11 07:44:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -151,6 +181,7 @@ Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-40169 [bsc#1262150]
         CVE-2026-33902 [bsc#1262153]
         CVE-2026-33899 [bsc#1262154]
+        CVE-2026-56370 [bsc#1269063]
 
 -------------------------------------------------------------------
 Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -277,6 +308,13 @@ Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-24484 [bsc#1258790]
         CVE-2026-27798 [bsc#1259018]
         CVE-2026-25966 [bsc#1258780]
+        CVE-2026-56379 [bsc#1268878]
+        GHSA-2gq3-ww97-wfjm [bsc#1268569]
+        GHSA-3j4x-rwrx-xxj9 [bsc#1268640]
+        CVE-2026-56367 [bsc#1268645]
+        CVE-2026-56371 [bsc#1268879]
+        CVE-2026-56376 [bsc#1268880]
+        CVE-2026-56368 [bsc#1269064]
 - actually patch SUSE default security policy 
   * modified ImageMagick-configuration-SUSE.patch
 
