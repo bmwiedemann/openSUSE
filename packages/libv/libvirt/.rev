@@ -5093,4 +5093,17 @@ https://build.opensuse.org/requests/1354518
     <comment>- spec: Add 'BuildRequires: python3-base' to fix build in SLFO:Main</comment>
     <requestid>1359865</requestid>
   </revision>
+  <revision rev="443" vrev="4">
+    <srcmd5>7be2ce30637e84c57606836dc1e7220b</srcmd5>
+    <version>12.4.0</version>
+    <time>1782576166</time>
+    <user>dimstar_suse</user>
+    <comment>- spec: Strengthen dependency on numa-preplace
+  bsc#1268783
+
+- spec: Don't configure non-existent virt-secret-init-encryption
+  socket units
+  bsc#1268535</comment>
+    <requestid>1361826</requestid>
+  </revision>
 </revisionlist>

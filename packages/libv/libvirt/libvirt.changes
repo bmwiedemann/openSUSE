@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 25 22:31:47 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- spec: Strengthen dependency on numa-preplace
+  bsc#1268783
+
+-------------------------------------------------------------------
+Tue Jun 23 20:47:02 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- spec: Don't configure non-existent virt-secret-init-encryption
+  socket units
+  bsc#1268535
+
+-------------------------------------------------------------------
 Tue Jun 16 23:08:24 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - spec: Add 'BuildRequires: python3-base' to fix build in SLFO:Main
