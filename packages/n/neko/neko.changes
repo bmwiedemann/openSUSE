@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 22 21:29:00 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Require mbedtls-devel < 4 since newer versions are not supported
+
+-------------------------------------------------------------------
 Wed Jun 18 20:25:52 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Actually update the tarball to version 2.4.1

@@ -154,4 +154,12 @@
     <comment>Actually update the tarball to version 2.4.1</comment>
     <requestid>1286785</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>570f2b7d798f193d61d6af388f37f78a</srcmd5>
+    <version>2.4.1</version>
+    <time>1782576487</time>
+    <user>dimstar_suse</user>
+    <comment>- Require mbedtls-devel &lt; 4 since newer versions are not supported</comment>
+    <requestid>1361987</requestid>
+  </revision>
 </revisionlist>

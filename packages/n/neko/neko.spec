@@ -36,7 +36,7 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  pcre2-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel-static
-BuildRequires:  mbedtls-devel >= 3
+BuildRequires:  (mbedtls-devel >= 3 with mbedtls-devel < 4)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libneko2 = %{version}
 Provides:       nekovm = %version
@@ -78,7 +78,7 @@ Obsoletes:      nekovm-mysql < %version
 MySQL library for the Neko virtual machine.
 
 %prep
-%setup -q -n neko-%{version_tag}
+%autosetup -p1 -n neko-%{version_tag}
 
 %build
 %define __builder ninja
