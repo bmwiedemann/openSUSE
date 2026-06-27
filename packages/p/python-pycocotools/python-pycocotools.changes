@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:08:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the module.
+- List directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Fri Apr 23 04:51:24 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Do not build for Python 3.6, due to no NumPy. 
