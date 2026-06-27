@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:50:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the now-unused OpenCL build dependencies opencl-headers and
+  pkgconfig(OpenCL) (boo#1213370):
+  * OpenCL support is experimental and disabled (the --enable-opencl
+    configure flag was already removed); these requires were left
+    behind and only bloated the build.
+  * With OpenCL off, libtesseract no longer links libOpenCL.so.1,
+    so it no longer fails to start with "libOpenCL.so.1: cannot
+    open shared object file" (boo#1232640).
+
+-------------------------------------------------------------------
 Thu May 28 13:58:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernize spec file:

@@ -33,10 +33,8 @@ BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
-BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  plantuml
-BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(icu-i18n) >= 52.1

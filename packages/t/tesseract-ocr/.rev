@@ -335,4 +335,12 @@
   rpmlint pkgconfig-invalid-libs-dir error)</comment>
     <requestid>1355697</requestid>
   </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>6538d768868df37ca208fdc971cfea68</srcmd5>
+    <version>5.5.2</version>
+    <time>1782576219</time>
+    <user>dimstar_suse</user>
+    <comment>Drop the now-unused OpenCL build dependencies (opencl-headers, pkgconfig(OpenCL)). OpenCL support is experimental and already disabled; these were leftover. With OpenCL off libtesseract no longer links libOpenCL.so.1 (boo#1213370, boo#1232640).</comment>
+    <requestid>1361707</requestid>
+  </revision>
 </revisionlist>
