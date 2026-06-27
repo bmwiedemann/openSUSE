@@ -75,6 +75,10 @@ Patch1:         pandas-pr61132-dropna.patch
 Patch2:         pandas-pr62553-numexpr.patch
 # PATCH-FIX-UPSTREAM pandas-pr63406-meson-types.patch gh#pandas-dev/pandas#63406 BLD: newer versions of meson are pickier about types
 Patch3:         pandas-pr63406-meson-types.patch
+# PATCH-FIX-UPSTREAM pandas-pr62863.patch gh#pandas-dev/pandas#62863 BUG: fix polluted window in skewness computation
+Patch4:         pandas-pr62863.patch
+# PATCH-FIX-UPSTREAM pandas-pr63143.patch gh#pandas-dev/pandas#63143 BUG: fix polluted window in rolling kurt
+Patch5:         pandas-pr63143.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.0.5}
 BuildRequires:  %{python_module devel >= 3.9}

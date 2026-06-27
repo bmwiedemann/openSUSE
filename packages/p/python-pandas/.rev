@@ -901,4 +901,12 @@ All packages broken by this update should be fixed now.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1361159</requestid>
   </revision>
+  <revision rev="82" vrev="4">
+    <srcmd5>d27e7559834cc227ab0f5f7d06724553</srcmd5>
+    <version>2.3.3</version>
+    <time>1782576184</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1361563</requestid>
+  </revision>
 </revisionlist>
