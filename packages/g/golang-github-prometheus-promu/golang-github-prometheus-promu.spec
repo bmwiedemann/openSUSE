@@ -25,7 +25,7 @@
 %define shortname promu
 
 Name:           golang-github-prometheus-promu
-Version:        0.19.0
+Version:        0.20.0
 Release:        0
 Summary:        Prometheus Utility Tool
 License:        Apache-2.0
