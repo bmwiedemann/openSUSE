@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 25 17:51:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Generate and adapt ant build system in order to reduce the
+  dependencies and allow build on SLFO
+
+-------------------------------------------------------------------
 Sat Nov 16 00:10:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add compatibility alias to javax.transaction:transaction-api

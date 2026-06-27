@@ -47,4 +47,12 @@
     <comment>Add a compatibility alias</comment>
     <requestid>1224528</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>242c380f1e7e6dfb9616c995e87467c6</srcmd5>
+    <version>1.3</version>
+    <time>1782576335</time>
+    <user>dimstar_suse</user>
+    <comment>Ant build system</comment>
+    <requestid>1361809</requestid>
+  </revision>
 </revisionlist>

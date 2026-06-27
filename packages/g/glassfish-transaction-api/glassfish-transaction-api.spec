@@ -1,7 +1,7 @@
 #
 # spec file for package glassfish-transaction-api
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,22 @@
 #
 
 
+%global groupId javax.transaction
+%global artifactId javax.transaction-api
 Name:           glassfish-transaction-api
 Version:        1.3
 Release:        0
 Summary:        Java JTA 1.3 API Design Specification
 License:        CDDL-1.0 OR GPL-2.0-only WITH Classpath-exception-2.0
-URL:            https://github.com/javaee/javax.transaction
-Source0:        https://github.com/javaee/javax.transaction/archive/javax.transaction-api-%{version}.tar.gz
+URL:            https://github.com/javaee/%{groupId}
+Source0:        https://github.com/javaee/%{groupId}/archive/%{artifactId}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
+BuildRequires:  cdi-api
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(javax.enterprise:cdi-api)
-BuildRequires:  mvn(net.java:jvnet-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.glassfish.build:spec-version-maven-plugin)
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  jboss-interceptors-1.2-api
 BuildArch:      noarch
 
 %description
@@ -42,36 +44,35 @@ Summary:        Javadoc for %{name}
 This package contains javadoc for %{name}.
 
 %prep
-%setup -q -n javax.transaction-javax.transaction-api-%{version}
-
-%pom_remove_plugin :findbugs-maven-plugin
-%pom_remove_plugin :maven-site-plugin
-%pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin :maven-javadoc-plugin
-%pom_remove_plugin :maven-release-plugin
-%pom_remove_plugin :maven-remote-resources-plugin
-
-%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:source" "1.8"
-%pom_xpath_set "pom:plugin[pom:artifactId[text()='maven-compiler-plugin']]/pom:configuration/pom:target" "1.8"
-
-%{mvn_file} : %{name}
-
-%{mvn_alias} :javax.transaction-api :transaction-api
+%setup -q -n %{groupId}-%{artifactId}-%{version}
+cp %{SOURCE1} build.xml
 
 %build
+mkdir -p lib
+build-jar-repository -s lib \
+    cdi-api/cdi-api \
+    jboss-interceptors-api_1.2_spec
 
-%{mvn_build} -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Dsource=8 -DspecMode=javaee
+ant jar javadoc
 
 %install
-%mvn_install
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{artifactId}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar -a %{groupId}:transaction-api
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog
