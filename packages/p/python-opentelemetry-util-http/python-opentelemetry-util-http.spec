@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-util-http
-Version:        0.62b1
+Version:        0.63b1
 Release:        0
 Summary:        Instrumentation Tools & Auto Instrumentation for OpenTelemetry Python
 License:        Apache-2.0
