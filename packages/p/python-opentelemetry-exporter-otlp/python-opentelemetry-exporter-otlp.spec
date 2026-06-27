@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp
-Version:        1.41.1
+Version:        1.42.1
 Release:        0
 Summary:        OpenTelemetry Collector Exporters
 License:        Apache-2.0
