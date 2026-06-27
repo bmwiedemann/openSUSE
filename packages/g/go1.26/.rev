@@ -238,4 +238,18 @@
 - Drop the update-alternatives migration path for libalternatives builds. (forwarded request 1358772 from mschreiner)</comment>
     <requestid>1358776</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>b571e23cce08ff0c5a9fc736c118bc3f</srcmd5>
+    <version>1.26.4</version>
+    <time>1782576174</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Drop subpackage go1.x-libstd std library .so refs jsc#PED-1962
+  * Use of Go standard library as .so and -buildmode=shared is not
+    recommended or supported by upstream Go
+  * Subpackage go1.x-libstd was only ever built for Factory and
+    removal does not affect SLE
+  * No Go application packages in Factory use go1.x-libstd (forwarded request 1361838 from jfkw)</comment>
+    <requestid>1361839</requestid>
+  </revision>
 </revisionlist>
