@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 04:39:32 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 0.14.12:
+  * [Added] Add fancy regex fallback for advanced filters.
+  * [Added] Add regex filtering support (Fixes #554).
+  * [Added] Add shell completion kind values and man page generation. 
+
+-------------------------------------------------------------------
 Fri Feb 27 05:13:13 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.14.11:
