@@ -24,28 +24,26 @@
 %define psuffix %{nil}
 %bcond_with test
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-api%{?psuffix}
-Version:        1.41.1
+Version:        1.42.1
 Release:        0
 Summary:        OpenTelemetry Python API
 License:        Apache-2.0
-URL:            https://github.com/open-telemetry/opentelemetry-python/tree/master/opentelemetry-api
-Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-api/opentelemetry_api-%{version}.tar.gz
+URL:            https://github.com/open-telemetry/opentelemetry-python/tree/main/opentelemetry-api
+Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry_api/opentelemetry_api-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module importlib-metadata >= 6.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module typing-extensions >= 4.5.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildArch:      noarch
-Requires:       python-importlib-metadata >= 6.0
 Requires:       python-typing-extensions >= 4.5.0
+BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module typing-extensions >= 4.5.0}
+# /SECTION
 %if %{with test}
 BuildRequires:  %{python_module opentelemetry-api = %{version}}
-BuildRequires:  %{python_module opentelemetry-test-utils = 0.62b1}
+BuildRequires:  %{python_module opentelemetry-test-utils = 0.63b1}
 BuildRequires:  %{python_module pytest}
 %endif
 %python_subpackages
@@ -75,7 +73,7 @@ OpenTelemetry Python API
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/opentelemetry
-%{python_sitelib}/opentelemetry_api-%{version}*-info
+%{python_sitelib}/opentelemetry_api-%{version}.dist-info
 %endif
 
 %changelog
