@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libnbd_ublksrv
 %define sover 0
 
 Name:           libnbd
@@ -41,7 +42,9 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gnutls) >= 3.3.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(python3)
+%if %{with libnbd_ublksrv}
 BuildRequires:  pkgconfig(ublksrv)
+%endif
 Requires:       libnbd%{sover} = %{version}
 # Only for running the test suite.
 BuildRequires:  gcc-c++
@@ -121,6 +124,11 @@ autoreconf -fiv
     PYTHON=%{__python3} \
     --enable-python \
     --disable-static \
+%if %{with libnbd_ublksrv}
+    --enable-ublk \
+%else
+    --disable-ublk \
+%endif
     %{nil}
 
 %make_build
@@ -163,13 +171,17 @@ done
 %{_bindir}/nbddump
 %{_bindir}/nbdinfo
 %{_bindir}/nbddiscard
+%if %{with libnbd_ublksrv}
 %{_bindir}/nbdublk
+%endif
 %{_bindir}/nbdzero
 %{_mandir}/man1/nbdcopy.1*
 %{_mandir}/man1/nbddump.1*
 %{_mandir}/man1/nbddiscard.1*
 %{_mandir}/man1/nbdinfo.1*
+%if %{with libnbd_ublksrv}
 %{_mandir}/man1/nbdublk.1*
+%endif
 %{_mandir}/man1/nbdzero.1*
 
 %files -n libnbd%{sover} -f %name.files

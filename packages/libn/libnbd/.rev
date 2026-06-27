@@ -248,4 +248,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Update libnbd to version 1.25.5</comment>
     <requestid>1358246</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>ff6656e97c48c18570e586738d91436f</srcmd5>
+    <version>1.25.5</version>
+    <time>1782576346</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1361818</requestid>
+  </revision>
 </revisionlist>
