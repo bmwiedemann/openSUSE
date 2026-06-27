@@ -18,10 +18,10 @@
 
 %define cpan_name Graphics-Toolkit-Color
 Name:           perl-Graphics-Toolkit-Color
-Version:        2.110.0
+Version:        2.220.0
 Release:        0
-# 2.11 -> normalize -> 2.110.0
-%define cpan_version 2.11
+# 2.22 -> normalize -> 2.220.0
+%define cpan_version 2.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Calculate color (sets), IO many spaces and formats
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -36,6 +36,7 @@ BuildRequires:  perl(Test::More) >= 1.3
 BuildRequires:  perl(Test::Warn) >= 0.300
 Provides:       perl(Graphics::Toolkit::Color) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Calculator) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Error) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name::Constant) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Name::Scheme) = %{version}
@@ -62,8 +63,12 @@ Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSB) = %{version
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSL) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HSV) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HWB) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::Helper::OK) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::HunterLAB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::NCol) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKHSL) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKHSV) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKHWB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKLAB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::OKLCH) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::ProPhotoRGB) = %{version}
@@ -73,7 +78,7 @@ Provides:       perl(Graphics::Toolkit::Color::Space::Instance::Rec2020) = %{ver
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::Rec709) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::WideGamutRGB) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YIQ) = %{version}
-Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YUV) = %{version}
+Provides:       perl(Graphics::Toolkit::Color::Space::Instance::YPbPr) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Shape) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Space::Util) = %{version}
 Provides:       perl(Graphics::Toolkit::Color::Values) = %{version}
@@ -82,29 +87,27 @@ Provides:       perl(Graphics::Toolkit::Color::Values) = %{version}
 
 %description
 Graphics::Toolkit::Color, for short *GTC*, is the top level API of this
-release and the only package a regular user should be concerned with. Its
+library and the only package a regular user should be concerned with. Its
 main purpose is the creation of related colors or sets of them, such as
 gradients, complements and more. But if you want to convert, quantize,
-round or reformat color definitions, it can be helpful too.
+round or reformat color definitions or translate from and to color names,
+it can be helpful too.
 
-GTC are read only, one color representing objects with no additional
-dependencies. Create them in many different ways (see CONSTRUCTOR). Access
-its values via methods from section GETTER. Measure differences with the
-distance method. SINGLE-COLOR methods create one new object that is related
-to the current one and COLOR-SETS methods will create a group of colors,
-that are not only related to the current color but also have relations
-between each other. Error messages will appear as return values instead of
-the expected result.
+This page will give you a quick overview of all GTC methods. The Manual
+contains deeper explanations and describes every argument and topic of
+interest in detail. Therefore each chapter here starts with a link to the
+appropriate paragraph of a manual page.
 
-While this module can understand and output color values for many color
-spaces, RGB is the (internal) primal one, because GTC is about colors that
-can be shown on the screen, and these are usually encoded in _RGB_
-(nonlinear standard RGB). Humans access colors on hardware level (eye) in
-_RGB_, on cognition level in _HSL_ or _LAB_ (brain) and on cultural level
-(language) with names. With all these options available you can express
-easily and intuitively with which color to start. And plenty of functions
-with lots of options help you to arrive at the desired color (palette)
-quickly.
+While this module can understand and output color values of many (33) color
+spaces, RGB is the internal and primary one for input and output, because
+GTC is about colors that can be shown on the screen, and these are usually
+encoded in _RGB_ (nonlinear standard RGB). However, many color calculations
+are operating by default in _OKLAB_ or _OKHSL_ to give perceptually uniform
+results.
+
+Each GTC object represents one color and is read-only. It has no runtime
+dependencies. Only Test::Simple and Test::Warn are needed for testing. The
+behavior of error messages can be chosen, but defaults to using Carp.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1

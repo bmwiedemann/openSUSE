@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jun 21 09:02:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.220.0 (2.22)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+
+  2.22   2026-06-20   lichtkind
+  -------
+      * = minor fix release
+      * ! fix hash in scalar context bug while arg splitting in new
+      * ? various POD fixes
+
+  2.21   2026-06-20   lichtkind
+  -------
+      * = minor fix release
+      * ? various POD fixes
+
+  2.20   2026-06-19   lichtkind
+  -------
+      * = big feature release: +3 spaces, +8 methods, +7 args, new docs, error handling
+      * * add methods lighten / darken, saturate / desaturate,
+      * * add methods tint (white) / shade (black) / tone (grey)
+      * * new 16 Page doc in GTC::Manual with Reference, Topics, CookBook, CheatSheet
+      * + spaces: 'OKHSL', 'OKHSV', 'OKHWB'
+      * + color space property: 'family', 'role'
+      * + method 'analogous' with args: 'to', 'in', 'steps' and 'tilt'
+      * + method alias 'tone_curve' for 'apply'
+      * + argument 'in' to method 'complement' (selectable cylindrical space)
+      * + argument 'in' to method 'new' disambiguate color spaces
+      * + argument 'skew' to method 'complement' (move circle along color-target axis)
+      * + argument 'by' as alias of 'amount' argument for 'mix'
+      * + reestablish optional Carp error messages + 4 other modes
+      * + format: 'nested_array'
+      * ~ change default color space for most methods to 'OKLAB' or 'OKHSL'
+      * ~ change name and name alias in 'YUV' space now 'YPbPr' space
+      * ~ change default argument of 'invert' from 'in' to 'only'
+      * ~ rename method 'apply' to 'tone_curve', keeping 'apply' as alias til 3.0
+      * ~ amount argument has now 0 .. 1 range, instead of 0 .. 100
+      * ~ reduce arguments of the 'color' routine to work like the 'color' argument of 'new'
+      * - reduce arguments of 'is_in_gamut' to 1 ('in') in method mode and 1 as routine ('color')
+      * ! HSB constraints removal was mistake, constraint was reestablished
+
+-------------------------------------------------------------------
 Sat May  9 07:22:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.110.0 (2.11)

@@ -139,4 +139,41 @@
       * ! HSB, HWB and NCol space got same constraints as HSV</comment>
     <requestid>1353753</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>802db0215995fb0ffad007271c742663</srcmd5>
+    <version>2.220.0</version>
+    <time>1782576465</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.220.0 (2.22)
+   see /usr/share/doc/packages/perl-Graphics-Toolkit-Color/Changes
+  2.22   2026-06-20   lichtkind
+  -------
+      * = minor fix release
+      * ! fix hash in scalar context bug while arg splitting in new
+      * ? various POD fixes
+  2.21   2026-06-20   lichtkind
+  -------
+      * = minor fix release
+      * ? various POD fixes
+  2.20   2026-06-19   lichtkind
+  -------
+      * = big feature release: +3 spaces, +8 methods, +7 args, new docs, error handling
+      * * add methods lighten / darken, saturate / desaturate,
+      * * add methods tint (white) / shade (black) / tone (grey)
+      * * new 16 Page doc in GTC::Manual with Reference, Topics, CookBook, CheatSheet
+      * + spaces: 'OKHSL', 'OKHSV', 'OKHWB'
+      * + color space property: 'family', 'role'
+      * + method 'analogous' with args: 'to', 'in', 'steps' and 'tilt'
+      * + method alias 'tone_curve' for 'apply'
+      * + argument 'in' to method 'complement' (selectable cylindrical space)
+      * + argument 'in' to method 'new' disambiguate color spaces
+      * + argument 'skew' to method 'complement' (move circle along color-target axis)
+      * + argument 'by' as alias of 'amount' argument for 'mix'
+      * + reestablish optional Carp error messages + 4 other modes
+      * + format: 'nested_array'
+      * ~ change default color space for most methods to 'OKLAB' or 'OKHSL'
+      * ~ change name and name alias in 'YUV' space now 'YPbPr' space
+      * ~ change default argument of 'invert' from 'in' to 'only'</comment>
+    <requestid>1361943</requestid>
+  </revision>
 </revisionlist>
