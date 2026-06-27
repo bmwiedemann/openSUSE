@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Jun 27 07:41:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.0:
+  * Markdown document format support.
+  * HTML/EPUB rendering improvements: vertical-align for inline
+    images and percentage values, support for <u>, <s> and <mark>
+    tags, background-color on inline elements, :before/:after
+    pseudo-selectors, non-interactive appearance for form input
+    elements, and respect for the meta viewport minimum page size.
+  * Per-document control of publisher and user CSS.
+  * New mutool audit command to analyse PDF structure and generate
+    a report; mutool grep now uses regular expressions by default.
+  * Improved text extraction: better ActualText replacement
+    handling, presentation-form (ligature) decomposition for all
+    scripts, improved paragraph and fake-bold detection, and better
+    soft/hard hyphen handling.
+  * New fz_check_document to scan a document and repair possible
+    structural errors before editing.
+  * Support linear and radial shadings when converting XPS and
+    other formats to PDF.
+  * Many bug fixes, optimisations and security hardening fixes.
+- Track the new shared-library SONAME: the rendering library
+  subpackage is renamed libmupdf27_2 to libmupdf28_0
+  (libmupdf.so.28.0).
+- Keep the bundled cmark-gfm (0.29.0.gfm.13) thirdparty copy, now
+  required for the new Markdown support; no system cmark-gfm exists
+  in Factory yet.
+- Refresh mupdf-no-strip.patch for the new sources.
+
+-------------------------------------------------------------------
 Thu Jun 25 08:26:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise the spec with spec-cleaner (drop obsolete Group tags,

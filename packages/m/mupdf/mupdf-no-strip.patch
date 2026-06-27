@@ -1,6 +1,6 @@
---- mupdf-1.23.3-source/Makerules.orig	2023-09-20 07:55:15.822969071 +0200
-+++ mupdf-1.23.3-source/Makerules	2023-09-20 07:55:39.019862276 +0200
-@@ -93,7 +93,7 @@
+--- mupdf-1.28.0-source/Makerules.orig
++++ mupdf-1.28.0-source/Makerules
+@@ -156,7 +156,7 @@
    LDFLAGS += -g
  else ifeq ($(build),release)
    CFLAGS += -pipe -O2 -DNDEBUG

@@ -817,4 +817,12 @@
     <comment>Modernise spec with spec-cleaner: drop obsolete Group tags and convert BuildRequires to pkgconfig() form. No functional/build change.</comment>
     <requestid>1361704</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>3fd2d4254291aa1766786f617fbdf4e4</srcmd5>
+    <version>1.28.0</version>
+    <time>1782576478</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.28.0: Markdown support, HTML/EPUB rendering improvements, mutool audit, better text extraction; SONAME libmupdf27_2 -&gt; libmupdf28_0; bundle cmark-gfm (no system copy in Factory)</comment>
+    <requestid>1361984</requestid>
+  </revision>
 </revisionlist>

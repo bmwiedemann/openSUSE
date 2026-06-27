@@ -19,12 +19,12 @@
 
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
-%define sover 27_2
+%define sover 28_0
 %if 0%{?suse_version} < 1600
 %define gcc_ver 11
 %endif
 Name:           mupdf
-Version:        1.27.2
+Version:        1.28.0
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -57,12 +57,13 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 Requires:       xdg-utils
+Provides:       bundled(cmark-gfm) = 0.29.0.gfm.13
 Provides:       bundled(freeglut) = 3.0.0
 Provides:       bundled(freeglut-art) = 3.0.0
 Provides:       bundled(gumbo-parser) = 0.10.1
-Provides:       bundled(lcms2) = 2.14
-Provides:       bundled(lcms2-art) = 2.14
-Provides:       bundled(mujs) = 1.3.2
+Provides:       bundled(lcms2) = 2.19
+Provides:       bundled(lcms2-art) = 2.19
+Provides:       bundled(mujs) = 1.3.8
 
 %description
 MuPDF is a PDF and XPS viewer and parser/rendering library.
@@ -97,7 +98,7 @@ based on mupdf.
 %prep
 %autosetup -p1 -n %{name}-%{version}-source
 
-for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract -e gumbo-parser)
+for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract -e gumbo-parser -e cmark-gfm)
 do
   rm -rf thirdparty/$d
 done
