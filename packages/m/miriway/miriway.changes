@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jun 18 15:26:34 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update version 26.06.1
+  * Mir 2.28 base
+  * Uses miral::ApplicationSwitcher for better app switching
+  * Migrates lots of options to .settings (which now auto-reloads)
+  * Add functionality to bind unmodified keys
+    (gh#Miriway/Miriway#202)
+  * Fix alphabetic key shortcuts after live_config migration
+    (gh#Miriway/Miriway#209)
+
+-------------------------------------------------------------------
 Thu Jan 29 17:33:42 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update version 26.01
