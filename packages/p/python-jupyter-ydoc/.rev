@@ -210,4 +210,26 @@
   * Improve reloading of documents to avoid spurious side-effects</comment>
     <requestid>1341873</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>c7effba4bcc064602fc63b3e880ef784</srcmd5>
+    <version>3.4.0</version>
+    <time>1774470043</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342430</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>dbdb673d4a223b5e51785702fd59ef93</srcmd5>
+    <version>3.5.0</version>
+    <time>1782576416</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.0:
+  # Maintenance and upkeep improvements
+  * Bump pycrdt v0.13.0 #412 (@davidbrochart)
+- refresh node modules (bsc#1268933, CVE-2026-48779)
+- replace patch update-brace-expansion.patch with
+  update-js-deps.patch, to override js dependencies in node_modules
+  resolution</comment>
+    <requestid>1361893</requestid>
+  </revision>
 </revisionlist>

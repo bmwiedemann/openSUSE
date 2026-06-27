@@ -17,7 +17,7 @@
 
 
 Name:           python-jupyter-ydoc
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Document structures for collaborative editing using Ypy
 License:        BSD-3-Clause
@@ -28,7 +28,13 @@ Source0:        https://files.pythonhosted.org/packages/source/j/jupyter-ydoc/ju
 Source1:        https://github.com/jupyter-server/jupyter_ydoc/archive/refs/tags/v%{version}.tar.gz#/jupyter_ydoc-%{version}-gh.tar.gz
 Source2:        node_modules.tar.xz
 # Execute this on every package update. See comments in the script.
+# Make sure to apply/review patches to package.json before calling the
+# create_node_modules.sh
 Source3:        create_node_modules.sh
+# PATCH-FIX-OPENSUSE update-js-deps.patch
+# - Update brace-expansion bsc#1257850
+# - Update ws bsc#1268933
+Patch0:         update-js-deps.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch_nodejs_version}
 BuildRequires:  %{python_module hatchling >= 1.10}
@@ -60,7 +66,7 @@ Built-in documents include:
   - `YNotebook`: a Jupyter notebook document.
 
 %prep
-%setup -q -n jupyter_ydoc-%{version} -b1 -a2
+%autosetup -p1 -n jupyter_ydoc-%{version} -b1 -a2
 
 %build
 %pyproject_wheel

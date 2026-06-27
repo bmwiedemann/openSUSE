@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 26 06:40:19 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 3.5.0:
+  # Maintenance and upkeep improvements
+  * Bump pycrdt v0.13.0 #412 (@davidbrochart)
+- refresh node modules (bsc#1268933, CVE-2026-48779)
+- replace patch update-brace-expansion.patch with
+  update-js-deps.patch, to override js dependencies in node_modules
+  resolution
+
+-------------------------------------------------------------------
+Wed Mar 25 09:23:15 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add update-brace-expansion.patch and refresh node modules to update vulnerable
+  dependency (CVE-2026-25547, bsc#1257850)
+
+-------------------------------------------------------------------
 Sun Mar 22 16:58:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 3.4.0

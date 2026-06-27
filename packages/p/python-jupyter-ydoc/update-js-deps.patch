@@ -1,0 +1,15 @@
+Index: jupyter_ydoc-3.5.0/package.json
+===================================================================
+--- jupyter_ydoc-3.5.0.orig/package.json
++++ jupyter_ydoc-3.5.0/package.json
+@@ -11,5 +11,9 @@
+     "build": "cd javascript && yarn run build",
+     "test": "cd javascript && yarn run build:test && yarn run test"
+   },
+-  "packageManager": "yarn@3.4.1"
++  "packageManager": "yarn@3.4.1",
++  "resolutions": {
++    "ws": ">=8.21.0",
++    "brace-expansion": ">=5.0.6"
++  }
+ }
