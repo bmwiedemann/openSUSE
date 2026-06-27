@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2010 Andrew Psaltis <ampsaltis at gmail dot com>
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
@@ -42,7 +42,7 @@
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        4.14.2
+Version:        4.14.4
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun  6 06:06:06 UTC 2026 - ohering@suse.de
+
+- update to version 4.14.4
+  See included Changes for benefits and breaking changes
+  (bsc#1260910 CVE-2026-34353)
+
+-------------------------------------------------------------------
+Tue Feb 17 12:34:56 UTC 2026 - ohering@suse.de
+
+- update to version 4.14.3
+  See included Changes for benefits and breaking changes
+  (bsc#1258992 CVE-2026-28364)
+
+-------------------------------------------------------------------
 Mon Mar  3 03:03:03 UTC 2025 - ohering@suse.de
 
 - Use gcc7 in SLE12 because dune 3.17 requires a gcc which recognizes
