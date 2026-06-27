@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 08:19:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add pcmbluray-bigendian.patch to address a build failure on s390x
+- Update to release 4.4.8
+  * Various bug fixes to codecs
+- Delete ffmpeg-4-CVE-2025-22921.patch (merged)
+
+-------------------------------------------------------------------
 Sat May 23 17:15:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2025-10256.patch:

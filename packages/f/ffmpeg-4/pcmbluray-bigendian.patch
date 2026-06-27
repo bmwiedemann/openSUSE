@@ -1,0 +1,46 @@
+From 347a70f101be28f8d78e8fd62ffc3a78324f49e9 Mon Sep 17 00:00:00 2001
+From: Andreas Rheinhardt <andreas.rheinhardt@outlook.com>
+Date: Thu, 28 Mar 2024 05:35:36 +0100
+Subject: [PATCH] avcodec/pcm-bluray/dvd: Use correct pointer types on BE
+
+Signed-off-by: Andreas Rheinhardt <andreas.rheinhardt@outlook.com>
+---
+ libavcodec/pcm-bluray.c |    4 ++--
+ libavcodec/pcm-dvd.c    |    2 +-
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+
+Index: ffmpeg-4.4.8/libavcodec/pcm-bluray.c
+===================================================================
+--- ffmpeg-4.4.8.orig/libavcodec/pcm-bluray.c
++++ ffmpeg-4.4.8/libavcodec/pcm-bluray.c
+@@ -169,7 +169,7 @@ static int pcm_bluray_decode_frame(AVCod
+             samples *= num_source_channels;
+             if (AV_SAMPLE_FMT_S16 == avctx->sample_fmt) {
+ #if HAVE_BIGENDIAN
+-                bytestream2_get_buffer(&gb, dst16, buf_size);
++                bytestream2_get_buffer(&gb, (uint8_t*)dst16, buf_size);
+ #else
+                 do {
+                     *dst16++ = bytestream2_get_be16u(&gb);
+@@ -189,7 +189,7 @@ static int pcm_bluray_decode_frame(AVCod
+             if (AV_SAMPLE_FMT_S16 == avctx->sample_fmt) {
+                 do {
+ #if HAVE_BIGENDIAN
+-                    bytestream2_get_buffer(&gb, dst16, avctx->channels * 2);
++                    bytestream2_get_buffer(&gb, (uint8_t*)dst16, avctx->channels * 2);
+                     dst16 += avctx->channels;
+ #else
+                     channel = avctx->channels;
+Index: ffmpeg-4.4.8/libavcodec/pcm-dvd.c
+===================================================================
+--- ffmpeg-4.4.8.orig/libavcodec/pcm-dvd.c
++++ ffmpeg-4.4.8/libavcodec/pcm-dvd.c
+@@ -152,7 +152,7 @@ static void *pcm_dvd_decode_samples(AVCo
+     switch (avctx->bits_per_coded_sample) {
+     case 16: {
+ #if HAVE_BIGENDIAN
+-        bytestream2_get_buffer(&gb, dst16, blocks * s->block_size);
++        bytestream2_get_buffer(&gb, (uint8_t*)dst16, blocks * s->block_size);
+         dst16 += blocks * s->block_size / 2;
+ #else
+         int samples = blocks * avctx->channels;

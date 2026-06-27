@@ -108,7 +108,7 @@
 %define _major_version 4
 %define _major_expected 5
 Name:           ffmpeg-4
-Version:        4.4.7
+Version:        4.4.8
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -138,7 +138,6 @@ Patch16:        0001-avcodec-libsvtav1-unbreak-build-with-latest-svtav1.patch
 Patch22:        ffmpeg-c99.patch
 Patch25:        ffmpeg-4-CVE-2024-12361.patch
 Patch28:        ffmpeg-4-CVE-2025-25473.patch
-Patch29:        ffmpeg-4-CVE-2025-22921.patch
 Patch30:        ffmpeg-avcodec-libdav1d-don-t-repeatedly-parse-the-same-seq.patch
 Patch32:        ffmpeg-4-CVE-2025-7700.patch
 Patch33:        glslang16.patch
@@ -150,6 +149,7 @@ Patch39:        ffmpeg-4-CVE-2023-6601.patch
 Patch40:        ffmpeg-4-CVE-2025-63757.patch
 Patch41:        ffmpeg-4-CVE-2026-40962.patch
 Patch42:        ffmpeg-4-CVE-2025-10256.patch
+Patch43:        pcmbluray-bigendian.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

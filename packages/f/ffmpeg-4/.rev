@@ -874,4 +874,13 @@
     <comment>bugref update</comment>
     <requestid>1356640</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>fef94ef973738095f0aafac9706e2309</srcmd5>
+    <version>4.4.8</version>
+    <time>1782576389</time>
+    <user>dimstar_suse</user>
+    <comment>- Add pcmbluray-bigendian.patch to address a build failure on s390x
+- Update to release 4.4.8</comment>
+    <requestid>1361862</requestid>
+  </revision>
 </revisionlist>
