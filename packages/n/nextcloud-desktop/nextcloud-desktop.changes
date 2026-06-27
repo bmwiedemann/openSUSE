@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jun 24 05:03:54 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 33.0.6:
+  * New remote items inherit the content policy
+    (gh#nextcloud/desktop#10066)
+  * Update NextcloudKit API calls for breaking changes in 7.3.3
+    (gh#nextcloud/desktop#10111)
+  * Move processEvents after reply reads in LsColJob
+    (gh#nextcloud/desktop#10103)
+  * Do not trigger false remote wipe messages
+    (gh#nextcloud/desktop#10112)
+  * Use correct path when fetching file tags
+    (gh#nextcloud/desktop#10129)
+  * Add direct log entry when folder watcher detects changes
+    (gh#nextcloud/desktop#10146)
+  * Avoid double‑translating strings
+    (gh#nextcloud/desktop#10154)
+  * Disable Qt decompression check to allow listing very large
+    folders again
+    (gh#nextcloud/desktop#10211)
+  * Evaluate notify‑push IDs and only start sync when IDs are known
+    (gh#nextcloud/desktop#10210)
+  * Prevent data loss when folders are moved or renamed
+    (gh#nextcloud/desktop#10219)
+ 
+-------------------------------------------------------------------
 Tue May 19 15:19:36 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 33.0.5:
