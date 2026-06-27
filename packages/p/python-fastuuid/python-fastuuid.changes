@@ -1,0 +1,12 @@
+-------------------------------------------------------------------
+Thu Jun 25 11:57:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+- We need to setup .cargo/config.toml manually, vendoring scripts
+  do it automatically.
+
+-------------------------------------------------------------------
+Tue Nov 25 13:25:17 UTC 2025 - Adrian Schröter <adrian@suse.de>
+
+- initial package of version 0.14.0
+
