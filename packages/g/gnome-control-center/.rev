@@ -2546,4 +2546,13 @@ New stable rel</comment>
 - Update vendored libgxpd sub-project.</comment>
     <requestid>1355874</requestid>
   </revision>
+  <revision rev="286" vrev="1">
+    <srcmd5>160d73ad9561e84b7a372b4b738ec50b</srcmd5>
+    <version>50.3</version>
+    <time>1782576209</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.3:
+  + Updated translations.</comment>
+    <requestid>1361607</requestid>
+  </revision>
 </revisionlist>
