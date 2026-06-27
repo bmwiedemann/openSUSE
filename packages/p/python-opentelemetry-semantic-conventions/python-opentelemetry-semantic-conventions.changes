@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sat Jun 20 16:05:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+
+- update to 0.63b0:
+  * ### Added
+  * `opentelemetry-exporter-richconsole`: Add support for
+    suppressing resource information
+  * `opentelemetry-instrumentation`: Add experimental metrics
+    attributes Labeler utility
+  * `opentelemetry-instrumentation-logging`: Add
+    `OTEL_PYTHON_LOG_HANDLER_LEVEL` and `OTEL_PYTHON_LOG_FORMAT`
+    environment variables to configure the log level and
+    formatter of the auto-instrumented `LoggingHandler`.
+  * `opentelemetry-instrumentation-sqlite3`: Add uninstrument,
+    error status, suppress, and no-op tests
+  * Add `BaggageLogProcessor` to `opentelemetry-processor-
+    baggage`
+  * `opentelemetry-instrumentation-system-metrics`: Add support
+    for `process.disk.io` metric in system-metrics
+    instrumentation
+  * `opentelemetry-instrumentation`: Register
+    `OTEL_SEMCONV_STABILITY_OPT_IN` in `environment_variables.py`
+    so `opentelemetry-instrument` exposes a
+    `--semconv_stability_opt_in` CLI argument
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * `opentelemetry-instrumentation`: update auto-instrumentation
+    to re-inject instrumentation path after init
+  * `opentelemetry-instrumentation-dbapi`: Add Database client
+    operation duration and returned rows metrics
+  * ### Changed
+  * Remove redundant `pylint: disable=attribute-defined-outside-
+    init` comments and add rule to global `.pylintrc` disable
+    list
+  * Bump `pylint` to `4.0.5`
+  * `opentelemetry-instrumentation-logging`: Use
+    `LogRecord.getMessage()` to format and extract each log
+    record's body text to more closely match the expected usage
+    of the logging system. As a result, all OTel log record
+    bodies are now always strings. Previously, if `LogRecord.msg`
+    (which contains the format string) was set to a non-string
+    object (e.g. `logger.warning(some_dict)`), the object was
+    exported as-is to the OTLP body field. Now,
+    `LogRecord.getMessage()` will convert it to to a string. If
+    you are passing in non-strings as the format string argument
+    and your backend is expecting them as-is, you will need to
+    update accordingly.
+  * Switch to SPDX license headers and add CI enforcement
+  * `opentelemetry-instrumentation-{urllib,urllib3,requests}`:
+    switch http mock library from abandoned httpretty to mocket
+  * ### Removed
+  * Drop Python 3.9 support
+
+-------------------------------------------------------------------
 Sat Apr 25 08:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.62b1:

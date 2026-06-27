@@ -157,4 +157,41 @@
     release</comment>
     <requestid>1349195</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>65db1de8508a3fd330259d3f4fd7c875</srcmd5>
+    <version>0.63b1</version>
+    <time>1782576260</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.63b1:
+  * This is a patch release on the previous 1.42.0/0.63b0
+    release, fixing the issue(s) below.
+- update to 0.63b0:
+  * ### Added
+  * `opentelemetry-exporter-richconsole`: Add support for
+    suppressing resource information
+  * `opentelemetry-instrumentation`: Add experimental metrics
+    attributes Labeler utility
+  * `opentelemetry-instrumentation-logging`: Add
+    `OTEL_PYTHON_LOG_HANDLER_LEVEL` and `OTEL_PYTHON_LOG_FORMAT`
+    environment variables to configure the log level and
+    formatter of the auto-instrumented `LoggingHandler`.
+  * `opentelemetry-instrumentation-sqlite3`: Add uninstrument,
+    error status, suppress, and no-op tests
+  * Add `BaggageLogProcessor` to `opentelemetry-processor-
+    baggage`
+  * `opentelemetry-instrumentation-system-metrics`: Add support
+    for `process.disk.io` metric in system-metrics
+    instrumentation
+  * `opentelemetry-instrumentation`: Register
+    `OTEL_SEMCONV_STABILITY_OPT_IN` in `environment_variables.py`
+    so `opentelemetry-instrument` exposes a
+    `--semconv_stability_opt_in` CLI argument
+  * Expand `AGENTS.md` with instrumentation/GenAI guidance and
+    add PR review instructions.
+  * `opentelemetry-instrumentation`: update auto-instrumentation
+    to re-inject instrumentation path after init
+  * `opentelemetry-instrumentation-dbapi`: Add Database client
+    operation duration and returned rows metrics</comment>
+    <requestid>1361877</requestid>
+  </revision>
 </revisionlist>
