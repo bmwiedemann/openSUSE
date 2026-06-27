@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DBD-CSV
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,34 +18,35 @@
 
 %define cpan_name DBD-CSV
 Name:           perl-DBD-CSV
-Version:        0.620.0
+Version:        0.630.0
 Release:        0
-# 0.62 -> normalize -> 0.620.0
-%define cpan_version 0.62
+# 0.63 -> normalize -> 0.630.0
+%define cpan_version 0.63
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        DBI driver for CSV files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HM/HMBRAND/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(DBD::File) >= 0.42
+BuildRequires:  perl(DBD::File) >= 0.420
 BuildRequires:  perl(DBI) >= 1.628
 BuildRequires:  perl(SQL::Statement) >= 1.405
 BuildRequires:  perl(Test::More) >= 0.90
-BuildRequires:  perl(Text::CSV_XS) >= 1.01
-Requires:       perl(DBD::File) >= 0.42
+BuildRequires:  perl(Text::CSV_XS) >= 1.10
+Requires:       perl(DBD::File) >= 0.420
 Requires:       perl(DBI) >= 1.628
 Requires:       perl(SQL::Statement) >= 1.405
 Requires:       perl(Test::More) >= 0.9
-Requires:       perl(Text::CSV_XS) >= 1.01
+Requires:       perl(Text::CSV_XS) >= 1.10
 Provides:       perl(DBD::CSV) = %{version}
 %undefine       __perllib_provides
-Recommends:     perl(DBD::File) >= 0.44
-Recommends:     perl(DBI) >= 1.643
+Recommends:     perl(DBD::File) >= 0.450
+Recommends:     perl(DBI) >= 1.649
 Recommends:     perl(SQL::Statement) >= 1.414
-Recommends:     perl(Text::CSV_XS) >= 1.590
+Recommends:     perl(Text::CSV_XS) >= 1.620
 %{perl_requires}
 
 %description
@@ -59,7 +60,7 @@ See DBI for details on DBI, SQL::Statement for details on SQL::Statement
 and DBD::File for details on the base class DBD::File.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

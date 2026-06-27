@@ -360,4 +360,18 @@
     <comment></comment>
     <requestid>1240314</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>087993552221ad02316f2b00c5d72d1c</srcmd5>
+    <version>0.630.0</version>
+    <time>1782576463</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.630.0 (0.63)
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+  0.63	- 2026-06-22, H.Merijn Brand
+      * It's 2026
+      * New test for DBI-1.648 CVE fix
+      * Minor typo in doc
+      * Raise recommended versions for fixed CVE's</comment>
+    <requestid>1361941</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:49:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.630.0 (0.63)
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.63	- 2026-06-22, H.Merijn Brand
+      * It's 2026
+      * New test for DBI-1.648 CVE fix
+      * Minor typo in doc
+      * Raise recommended versions for fixed CVE's
+
+-------------------------------------------------------------------
 Wed Jan 22 21:09:00 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.620.0 (0.62)

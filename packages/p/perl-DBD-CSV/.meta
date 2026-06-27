@@ -9,5 +9,4 @@ MS Access and MS Excel data.
 See the DBI manpage for details on DBI, the SQL::Statement manpage for
 details on SQL::Statement and the DBD::File manpage for details on the base
 class DBD::File.</description>
-  <devel project="devel:languages:perl" package="perl-DBD-CSV"/>
 </package>
