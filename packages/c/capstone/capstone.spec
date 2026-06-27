@@ -1,7 +1,7 @@
 #
 # spec file for package capstone
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,6 @@
 
 
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
-
 %define sover   5
 Name:           capstone
 Version:        5.0.6
@@ -33,7 +32,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  pkgconfig(python3)
 
 %description
@@ -96,7 +97,7 @@ This package contains the Capstone bindings for Python.
 cd .. # back to the main source directory
 
 pushd bindings/python/ || exit 1
-%python3_build
+%python3_pyproject_wheel
 popd || exit 1
 
 %install
@@ -108,7 +109,7 @@ install -m 644 -t %{buildroot}%{_docdir}/%{name}-doc/docs docs/README docs/*.pdf
 # Available bindings: Java, OCaml, Python2 and Python3 (pure/C)
 # Python3 bindings only for now
 pushd bindings/python/
-%python3_install
+%python3_pyproject_install
 rm -rf %{buildroot}%{python3_sitelib}/%{name}/include
 rm -rf %{buildroot}%{python3_sitelib}/%{name}/lib
 popd
@@ -139,7 +140,7 @@ sed -e '/^archive/d' -e 's|^libdir=.*|libdir=%{_libdir}|' \
 
 %files -n python3-capstone
 %{python3_sitelib}/%{name}/
-%{python3_sitelib}/%{name}*.egg-info
+%{python3_sitelib}/%{name}-%{version}*-info
 
 %files doc
 %license LICENSE*.TXT

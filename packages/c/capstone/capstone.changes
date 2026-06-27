@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 25 12:58:06 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Modernize packaging to use wheel as an intermediate project
+  (`%python_build` is not supported anymore). Make building
+  working with the rewritten python interpretors changes.
+
+-------------------------------------------------------------------
 Sun May 11 17:08:38 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Use %ldconfig_scriptlets
