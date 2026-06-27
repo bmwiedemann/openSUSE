@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jun 26 13:23:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.0:
+  * Major rewrite of the command, API client and diff tooling
+    since the 1.0 series; requires Python >= 3.10
+- Modernize the packaging:
+  * Build with the modern Python singlespec macros
+    (%pyproject_wheel/%pyproject_install) and ship for all
+    configured Python flavours
+  * Manage the rbt command via update-alternatives
+  * Obsolete/provide the old non-flavoured RBTools package so
+    the renamed flavours supersede it (resolves the /usr/bin/rbt
+    and rbtools/api file conflict that blocked the update)
+  * Refresh the runtime dependencies for 6.0 (new appdirs,
+    certifi, housekeeping, packaging, puremagic, pydiffx,
+    typelets, typing_extensions, importlib-metadata and
+    importlib-resources requirements; drop the obsolete six and
+    setuptools runtime deps)
+-------------------------------------------------------------------
 Wed May 19 10:11:05 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.0.3

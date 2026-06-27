@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>894346</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>66022c39416bbaf63015a8980f22cbed</srcmd5>
+    <version>6.0</version>
+    <time>1782576442</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit RBTools 6.0 with Obsoletes/Provides for the old non-flavoured RBTools package, fixing the /usr/bin/rbt and rbtools/api file conflict that caused the previous decline (SR 1361641).</comment>
+    <requestid>1361922</requestid>
+  </revision>
 </revisionlist>
