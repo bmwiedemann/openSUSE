@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jun 24 15:00:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build against the mbedtls 3.6 LTS line: switch BuildRequires from
+  mbedtls-devel to mbedtls-3-devel. mbedtls 4.x removed the legacy
+  mbedtls_cipher_* abstraction layer that shadowsocks-libev relies
+  on (a proper fix needs a PSA-crypto port upstream), so track the
+  3.6 LTS package which keeps the stable public API.
+
+-------------------------------------------------------------------
 Mon May 18 13:17:48 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Comprehensive systemd service hardening (bnc#1212862 and boo#1263916)
