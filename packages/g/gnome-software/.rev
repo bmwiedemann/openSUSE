@@ -1394,4 +1394,14 @@ New stable release</comment>
   + Updated translations.</comment>
     <requestid>1354852</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>a1e1e3ea679cbd06d6c584d2f58f76df</srcmd5>
+    <version>50.3</version>
+    <time>1782576178</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.3:
+  + Fix a memory leak
+  + Updated translations.</comment>
+    <requestid>1361898</requestid>
+  </revision>
 </revisionlist>
