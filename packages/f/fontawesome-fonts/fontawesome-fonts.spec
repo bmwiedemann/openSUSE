@@ -17,11 +17,10 @@
 
 
 Name:           fontawesome-fonts
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Iconic font set
 License:        OFL-1.1
-Group:          System/X11/Fonts
 URL:            https://fontawesome.com/
 Source0:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-desktop.zip
 Source1:        https://github.com/FortAwesome/Font-Awesome/releases/download/%{version}/fontawesome-free-%{version}-web.zip
@@ -40,7 +39,6 @@ are in the range U+F000..U+F23A.)
 %package web
 Summary:        Web files for font-awesome
 License:        MIT
-Group:          System/X11/Fonts
 
 %description web
 Web files (css, less, scss, etc) for font-awesome.
