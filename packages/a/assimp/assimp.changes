@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jun 25 06:31:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-10232: heap use-after-free in aiNode::~aiNode due to invalid node tree when processing malformed ASE files [bsc#1267037]
+  * assimp-CVE-2026-10232.patch
+
+-------------------------------------------------------------------
+Wed Jun 24 10:51:38 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-10200: This affects the function glTFCommon:CopyValue in the library glTFCommon.h of the component 4x4 Matrix Parser. Performing a manipulation results in a heap-based buffer overflow [bsc#1266999]
+  * assimp-CVE-2026-10200.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 10:22:04 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

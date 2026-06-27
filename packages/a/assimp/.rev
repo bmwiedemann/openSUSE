@@ -407,4 +407,12 @@
     <comment>CVE-2026-10197, [bsc#1266996], CVE-2026-10199, [bsc#1266998] (forwarded request 1356931 from pgajdos)</comment>
     <requestid>1356936</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>68d3e8635fb787757e7bf314511f7ce3</srcmd5>
+    <version>6.0.5</version>
+    <time>1782576228</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-10232, [bsc#1267037] (forwarded request 1361696 from pgajdos)</comment>
+    <requestid>1361720</requestid>
+  </revision>
 </revisionlist>

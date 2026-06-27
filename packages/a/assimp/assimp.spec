@@ -32,6 +32,10 @@ Patch1:         CVE-2025-70067.patch
 Patch2:         assimp-CVE-2026-10199.patch
 # CVE-2026-10197: Affected is the function glTF2Importer:ImportEmbeddedTextures in the library code/AssetLib/glTF2/glTF2Importer.cpp. manipulation results in null pointer dereference [bsc#1266996]
 Patch3:         assimp-CVE-2026-10197.patch
+# CVE-2026-10200: This affects the function glTFCommon:CopyValue in the library glTFCommon.h of the component 4x4 Matrix Parser. Performing a manipulation results in a heap-based buffer overflow [bsc#1266999]
+Patch4:         assimp-CVE-2026-10200.patch
+# CVE-2026-10232: heap use-after-free in aiNode::~aiNode due to invalid node tree when processing malformed ASE files [bsc#1267037]
+Patch5:         assimp-CVE-2026-10232.patch
 BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
