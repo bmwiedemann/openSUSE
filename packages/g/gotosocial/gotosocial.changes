@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jun 26 09:33:20 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.21.3:
+  * This is a security release for a vulnerability whereby malformed
+    AP messages can cause mischief.
+  * [bugfix] stricter property value counts
+  * [bugfix] Allow hyphen in usernameRelaxed regex
+  * [bugfix] Add support for public:remote stream type
+  * [bugfix] Update go-sqlite3 to v0.35.1 to fix out of memory panic
+    during migration
+  * [bugfix] nowasm: on context cancel hook, check that process is
+    non-nil before calling Kill()
+  * [bugfix/frontend] Validate domain name for new domain perms
+    earlier to avoid confusing err messages
+  * [bugfix] Ignore extraneous data streams when processing videos
+
+-------------------------------------------------------------------
 Fri Mar 20 13:37:27 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.21.2:

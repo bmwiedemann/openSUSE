@@ -121,4 +121,14 @@
     <comment>- Update to version 0.21.2 (forwarded request 1341559 from fl4nn)</comment>
     <requestid>1341599</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>b3b317699e3437eaf0c85bf6c7bc5e47</srcmd5>
+    <version>0.21.3</version>
+    <time>1782576409</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.21.3:
+  * This is a security release for a vulnerability whereby malformed
+    AP messages can cause mischief. (forwarded request 1361891 from fl4nn)</comment>
+    <requestid>1361892</requestid>
+  </revision>
 </revisionlist>
