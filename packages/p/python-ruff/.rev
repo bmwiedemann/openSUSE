@@ -3500,4 +3500,30 @@
   * Reject starred comprehension targets</comment>
     <requestid>1360617</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>07293e604efb32c4d93acd88abde2c95</srcmd5>
+    <version>0.15.19</version>
+    <time>1782576248</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.19 
+ * Preview features
+  * Support human-readable names when hovering suppression comments and in code actions 
+ * Bug fixes
+  * Fall back to default settings when editor-only settings are invalid 
+  * Fix panic when inserting text at a notebook cell boundary 
+ * Rule changes
+  * [pylint] Update fix suggestions for __floor__, __trunc__, __length_hint__, and __matmul__ variants (PLC2801) 
+ * Performance
+  * Avoid allocating when parsing single string literals 
+  * Avoid reallocating singleton call arguments 
+  * Lazily create source files for lint diagnostics 
+  * Optimize formatter text width and indentation 
+  * Reserve capacity for builtin bindings 
+  * Skip repeated-key checks for singleton dictionaries 
+  * Use ArrayVec for qualified name segments 
+ * Documentation
+  * [flake8-pyi] Note that PYI051 is an opinionated stylistic rule 
+  * [pyupgrade] Clarify UP029 as a Python 2 compatibility rule</comment>
+    <requestid>1361732</requestid>
+  </revision>
 </revisionlist>
