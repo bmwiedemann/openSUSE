@@ -658,4 +658,15 @@
     <comment>- Add missing Bugzilla reference for bsc#1266200 (forwarded request 1357148 from glaubitz)</comment>
     <requestid>1357619</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>000c61a43628c1ff8adbc3a89adc2d56</srcmd5>
+    <version>3.3.4793.0</version>
+    <time>1782576342</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.3.4793.0
+  * Add multicloud support enabling SSM Agent registration with
+    Azure cloud providers
+  * Add support for the upcoming public key in the agent code (forwarded request 1361796 from glaubitz)</comment>
+    <requestid>1361812</requestid>
+  </revision>
 </revisionlist>

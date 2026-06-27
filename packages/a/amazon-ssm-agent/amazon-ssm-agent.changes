@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 25 15:14:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.4793.0
+  * Add multicloud support enabling SSM Agent registration with
+    Azure cloud providers
+  * Add support for the upcoming public key in the agent code
+
+-------------------------------------------------------------------
 Wed Jun  3 11:14:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4624.0
