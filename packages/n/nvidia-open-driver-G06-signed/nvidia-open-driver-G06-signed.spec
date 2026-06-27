@@ -105,6 +105,7 @@ Patch0:         kernel-5.14.patch
 Patch1:         fix-objtool-warnings.patch
 %endif
 Patch2:         linux-7.0.patch
+Patch3:         linux-7.1.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

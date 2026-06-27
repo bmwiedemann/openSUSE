@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jun 16 19:39:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- linux-7.1.patch
+  * improved patch in order to avoid Use-After-Free (found by AI
+    review; proposal fix by Michal Suchanek)
+
+-------------------------------------------------------------------
+Tue Jun 16 12:13:14 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- linux-7.1.patch:
+  * fixes build against kernel 7.1 (currently blocking our
+    kernel 7.1 release for TW); stolen from changes for 580.159.04
+    release (boo#1268331)
+
+-------------------------------------------------------------------
 Thu May 28 11:33:36 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - linux-7.0.patch

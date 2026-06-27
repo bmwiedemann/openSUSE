@@ -1076,4 +1076,19 @@
     https://forums.developer.nvidia.com/t/linux-driver-595-71-05-still-tries-to-use-screen-info-struct-which-was-refactored-in-7-0-kernel/370825</comment>
     <requestid>1355750</requestid>
   </revision>
+  <revision rev="95" vrev="4">
+    <srcmd5>50b004c84e10c52815e14cb5b8dc1c92</srcmd5>
+    <version>580.159.03</version>
+    <time>1782576181</time>
+    <user>dimstar_suse</user>
+    <comment>- linux-7.1.patch
+  * improved patch in order to avoid Use-After-Free (found by AI
+    review; proposal fix by Michal Suchanek)
+
+- linux-7.1.patch:
+  * fixes build against kernel 7.1 (currently blocking our
+    kernel 7.1 release for TW); stolen from changes for 580.159.04
+    release (boo#1268331)</comment>
+    <requestid>1359838</requestid>
+  </revision>
 </revisionlist>
