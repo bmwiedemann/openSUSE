@@ -15,14 +15,16 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global git_rev bccaea140e3215aa9c9182da916ca9fb72696b63
+
 Name:           hydra
-Version:        9.7
+Version:        9.7+git20.gbccaea1
 Release:        0
 Summary:        A network logon cracker with support for many different services
 License:        AGPL-3.0-only
 Group:          Productivity/Networking/Diagnostic
 URL:            https://github.com/vanhauser-thc/thc-hydra
-Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/%{git_rev}/%{name}-%{version}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
@@ -60,7 +62,7 @@ attacks and dictionary attacks, in order to guess the right username
 and password combination.
 
 %prep
-%autosetup -n thc-%{name}-%{version} -p1
+%autosetup -n thc-%{name}-%{git_rev} -p1
 
 %build
 %configure --fhs DATADIR=/share/hydra

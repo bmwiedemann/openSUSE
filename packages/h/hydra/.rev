@@ -31,4 +31,96 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352494</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>8fcdb402d090355dbe353d51a3b27756</srcmd5>
+    <version>9.7+git20.gbccaea1</version>
+    <time>1782576450</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 9.7+git8.g9cc84c2:
+  * Various vulnerability fixes and improvements
+  * Fix vulnerability in NTML encoding [CVE-2026-56766]
+  * Full changelog at /usr/share/doc/packages/hydra/CHANGES
+
+
+old: openSUSE:Factory/hydra
+new: security/hydra rev 24
+Index: hydra.changes
+===================================================================
+--- hydra.changes (revision 4)
++++ hydra.changes (revision 24)
+@@ -1,4 +1,12 @@
+ -------------------------------------------------------------------
++Fri Jun 26 13:15:49 UTC 2026 - Eyad Issa &lt;eyadlorenzo@gmail.com&gt;
++
++- Update to version 9.7+git8.g9cc84c2:
++  * Various vulnerability fixes and improvements
++  * Fix vulnerability in NTML encoding [CVE-2026-56766]
++  * Full changelog at /usr/share/doc/packages/hydra/CHANGES
++
++-------------------------------------------------------------------
+ Mon May  4 08:08:00 UTC 2026 - Martin Hauke &lt;mardnh@gmx.de&gt;
+ 
+ - Update to version 9.7
+@@ -262,15 +270,14 @@
+ -------------------------------------------------------------------
+ Wed Apr 13 17:02:17 UTC 2016 - ushamim@linux.com
+ 
+-- Updated source to version current as of 2016-04-13 
++- Updated source to version current as of 2016-04-13
+ 
+ -------------------------------------------------------------------
+ Tue Feb 23 14:27:46 UTC 2016 - ushamim@linux.com
+ 
+-- postgresql-devel is required instead of postgresql94-devel (allows build on SLES and 13.2) 
++- postgresql-devel is required instead of postgresql94-devel (allows build on SLES and 13.2)
+ 
+ -------------------------------------------------------------------
+ Mon Feb 22 07:23:11 UTC 2016 - meissner@suse.com
+ 
+ - hydra, a remote password scanner/cracker
+-
+Index: hydra.spec
+===================================================================
+--- hydra.spec (revision 4)
++++ hydra.spec (revision 24)
+@@ -15,14 +15,16 @@
+ # Please submit bugfixes or comments via https://bugs.opensuse.org/
+ #
+ 
++%global git_rev bccaea140e3215aa9c9182da916ca9fb72696b63
++
+ Name:           hydra
+-Version:        9.7
++Version:        9.7+git20.gbccaea1
+ Release:        0
+ Summary:        A network logon cracker with support for many different services
+ License:        AGPL-3.0-only
+ Group:          Productivity/Networking/Diagnostic
+ URL:            https://github.com/vanhauser-thc/thc-hydra
+-Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/v%{version}/%{name}-%{version}.tar.gz
++Source0:        https://github.com/vanhauser-thc/thc-hydra/archive/%{git_rev}/%{name}-%{version}.tar.gz
+ BuildRequires:  autoconf
+ BuildRequires:  automake
+ BuildRequires:  fdupes
+@@ -60,7 +62,7 @@
+ and password combination.
+ 
+ %prep
+-%autosetup -n thc-%{name}-%{version} -p1
++%autosetup -n thc-%{name}-%{git_rev} -p1
+ 
+ %build
+ %configure --fhs DATADIR=/share/hydra
+Index: hydra-9.7+git20.gbccaea1.tar.gz
+===================================================================
+--- hydra-9.7+git20.gbccaea1.tar.gz (added)
++++ hydra-9.7+git20.gbccaea1.tar.gz (revision 24)
+Binary file hydra-9.7+git20.gbccaea1.tar.gz (revision 24) added
+Index: hydra-9.7.tar.gz
+===================================================================
+--- hydra-9.7.tar.gz (revision 4)
++++ hydra-9.7.tar.gz (deleted)
+Binary file hydra-9.7.tar.gz (revision 4) deleted</comment>
+    <requestid>1361923</requestid>
+  </revision>
 </revisionlist>
