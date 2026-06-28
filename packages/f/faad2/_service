@@ -1,13 +1,14 @@
 <services>
 	<service name="obs_scm" mode="manual">
 		<param name="filename">faad2</param>
-		<param name="revision">673a22a3c7c33e96e2ff7aae7c4d2bc190dfbf92</param>
+		<param name="revision">e87c7410155becdd05123d4bb532d7c7d56fca04</param>
 		<param name="scm">git</param>
 		<param name="submodules">disable</param>
 		<param name="url">https://github.com/knik0/faad2.git</param>
-		<param name="versionformat">@PARENT_TAG@</param>
-		<param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+		<param name="versionformat">@PARENT_TAG@.git@TAG_OFFSET@</param>
+		<param name="versionrewrite-pattern">[v]?([^\+]+)(.*)\.git0</param>
 		<param name="versionrewrite-replacement">\1</param>
+<!--		<param name="changesgenerate">enable</param> -->
 	</service>
 	<service name="tar" mode="buildtime"/>
 		<service name="recompress" mode="buildtime">

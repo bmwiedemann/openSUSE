@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jun 26 11:45:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.2.git13:
+  * fix out-of-bounds X underflow in SBR low-power QMF assembly
+  * fix out-of-bounds Xsbr write in hf_assembly sinusoid addition
+  * update to Visual Studio 18
+  * prevent length_of_rvlc_sf underflow in rvlc_scale_factor_data
+  * fix out-of-bounds iq_table read in iquant for -32768
+  * bound sscanf field width in option parsing
+  * fix integer overflow in stszin/stscin allocation size checks
+  * fix off-by-one frame index check in mp4read_seek
+  * SBR: prevent heap overflow in channel-pair reconstruction
+  * fix typo
+- Drop patches fixed upstream:
+  * bc5de3ac7264f7a232951d06150ec1fcd4a20f6c.patch
+  * 2653c918d788c5dc83826c97aaa4de4dd8931a8b.patch
+
+-------------------------------------------------------------------
 Tue Mar 17 20:55:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream bugfix patches:
