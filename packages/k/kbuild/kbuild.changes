@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 10:29:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add ExclusiveArch condition based on existing kHlpAssert.h
+  contents and SUSE patches.
+
+-------------------------------------------------------------------
 Fri Aug 15 13:54:37 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to snapshot 0.1.9998+svn3686

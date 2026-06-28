@@ -338,4 +338,13 @@ new version required for Vbox 7.1 (forwarded request 1202284 from jengelh)</comm
     <comment>- Update to snapshot 0.1.9998+svn3686</comment>
     <requestid>1299846</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>d1bdeff4ff5bf8ac470bb795e6212d49</srcmd5>
+    <version>0.1.9998+svn3686</version>
+    <time>1782673490</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ExclusiveArch condition based on existing kHlpAssert.h
+  contents and SUSE patches.</comment>
+    <requestid>1361896</requestid>
+  </revision>
 </revisionlist>

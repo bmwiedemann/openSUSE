@@ -41,19 +41,19 @@ BuildRequires:  flex
 BuildRequires:  libacl-devel
 BuildRequires:  makeinfo
 BuildRequires:  readline-devel
+# riscv64 build somehow succeeds without falling into
+# kHlpAssert.h's #error "Port me" trap
+ExclusiveArch:  %ix86 x86_64 %arm %arm64 ppc %power64 %riscv64 %sparc
 
 %description
 The goals of the kBuild framework:
 
- - Similar behavior across all supported platforms
- - Flexibility, don't create unnecessary restrictions preventing ad-hoc
-   solutions
- - Makefiles can be simple to write and maintain
- - One configuration file for a subtree automatically included
- - Target configuration templates as the primary mechanism for makefile
-   simplification
- - Tools and SDKs for helping out the templates with flexibility
- - Non-recursive makefile method by using sub-makefiles
+* Similar behavior across all supported platforms
+* One configuration file for a subtree automatically included
+* Target configuration templates as the primary mechanism for makefile
+  simplification
+* Tools and SDKs for helping out the templates with flexibility
+* Non-recursive makefile method by using sub-makefiles
 
 %prep
 %autosetup -p1
