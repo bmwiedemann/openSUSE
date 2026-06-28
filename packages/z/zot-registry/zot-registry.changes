@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:08:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.18:
+  * fix: map HTTP methods to corresponding scope actions in bearer
+    authen… (#4161)
+  * ci: pull test images from ghcr mirror (#4156)
+  * chore: fix dependabot alerts (#4157)
+  * feat: add Azure Blob Storage driver (#4142)
+  * feat(events): include actor and request metadata in webhook
+    payloads (#3959)
+  * ci: fix conformance test to before the refactor (#4145)
+  * feat(cli): support default config name (#4143)
+  * feat: add authz support for GitHub teams (#4139)
+  * feat(storage): redirect blob pulls to backend URLs (#4092)
+  * refactor(test/blackbox): extract shared push/pull helpers
+    (#4132)
+  * fix(storage): release global write lock during blob restore I/O
+    (#4089)
+  * fix(authz): metrics: deny authenticated users not in ACL even
+    with anonymous read (#4131)
+  * feat: config: validate metrics config (#4130)
+  * chore: fix dependabot alerts (#4126)
+  * fix(storage): treat dedupe-candidate cache miss as no
+    candidates, not an error (#4122)
+  * feat(metrics): anonymous access when enabled in accessControl
+    config (#4110)
+  * metadb: add optional fast restart path that skips storage walk
+    when (version + commit + storage config) matches metaDB stamp
+    (#4026)
+  * ci: Update GH runner labels (#4121)
+  * fix: skip DynamoDB table creation when tables exist (#4120)
+  * feat: enhance config sanitization to mask sensitive keys in
+    storage a… (#4119)
+  * fix(cve): prefer cve.org links for AVD references (#4107)
+  * chore: fix dependabot alerts (#4113)
+  * docs: fix alongside spelling in search docs (#4095)
+  * fix: miscellaneous fixes for ai-reported suggestions (#4101)
+  * feat: add trivy-based sbom artifact generation support (#4088)
+  * chore: fix dependabot alerts (#4091)
+  * chore: fix dependabot alerts (#4082)
+
+-------------------------------------------------------------------
 Mon May 18 06:10:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.17:
