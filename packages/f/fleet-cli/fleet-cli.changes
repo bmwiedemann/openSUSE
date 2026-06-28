@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:56:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.4:
+  * Bump x/net to v0.55 and x/crypto to v0.52 (#5355)
+  * [v0.15] Do not update secret type when cloning downstream
+    secrets (#5300)
+  * Warn when Helm credentials are set but helmRepoURLRegex is
+    empty (#5316) (#5332)
+  * Update Kubernetes dependencies (#5323)
+  * [v0.15] Consolidate Go modules into root go.mod (#5328)
+  * Fix cloner when using tags in revision. (#5292) (#5317)
+  * Dispatch release charts updates
+
+-------------------------------------------------------------------
 Tue Jun 23 04:56:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.3:
