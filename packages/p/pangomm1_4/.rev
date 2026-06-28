@@ -116,4 +116,29 @@
     <comment>Fix date format in old changelog entries (forwarded request 1277794 from dimstar)</comment>
     <requestid>1278249</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>36e8db8e7a6d24978f5b05e7f6e30203</srcmd5>
+    <version>2.46.5</version>
+    <time>1782673550</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.46.5:
+  + Documentation:
+    - Language::get_scripts(): Improve documentation.
+    - Don't link to removed parts of gnome.org
+    - Replace gtkmm.org by gtkmm.gnome.org
+    - Remove obsolete FSF (Free Software Foundation) address
+    - README.win32.md: Mention Visual Studio 2026
+    - Visual Studio builds: Update build information
+  + Meson build:
+    - Require meson &gt;= 0.60.0
+    - Use the Python installation that Meson uses.
+    - Meson and NMake builds: Distinguish Visual Studio 2026 builds
+      from Visual Studio 2022 builds
+    - NMake Makefiles: Consolidate items and improve flexibility
+    - NMake Makefiles: Make build process more robust
+    - NMake Makefiles: Update .m4 installation location
+    - Don't require the 'dot' command to build the documentation
+- Drop pangomm1_4-docs-without-timestamp.patch: Fixed upstream.</comment>
+    <requestid>1361956</requestid>
+  </revision>
 </revisionlist>

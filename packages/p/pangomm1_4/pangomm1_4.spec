@@ -20,15 +20,14 @@
 %define _name   pangomm
 
 Name:           pangomm1_4
-Version:        2.46.4
+Version:        2.46.5
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://www.gtkmm.org
 Source0:        https://download.gnome.org/sources/pangomm/2.46/%{_name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE pangomm1_4-docs-without-timestamp.patch dimstar@opensuse.org -- Do not add timestamps to generated doc files
-Patch0:         pangomm1_4-docs-without-timestamp.patch
+
 BuildRequires:  c++_compiler
 BuildRequires:  doxygen
 BuildRequires:  fdupes

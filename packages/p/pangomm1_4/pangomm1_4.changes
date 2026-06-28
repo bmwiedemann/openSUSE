@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jun 25 17:26:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.46.5:
+  + Documentation:
+    - Language::get_scripts(): Improve documentation.
+    - Don't link to removed parts of gnome.org
+    - Replace gtkmm.org by gtkmm.gnome.org
+    - Remove obsolete FSF (Free Software Foundation) address
+    - README.win32.md: Mention Visual Studio 2026
+    - Visual Studio builds: Update build information
+  + Meson build:
+    - Require meson >= 0.60.0
+    - Use the Python installation that Meson uses.
+    - Meson and NMake builds: Distinguish Visual Studio 2026 builds
+      from Visual Studio 2022 builds
+    - NMake Makefiles: Consolidate items and improve flexibility
+    - NMake Makefiles: Make build process more robust
+    - NMake Makefiles: Update .m4 installation location
+    - Don't require the 'dot' command to build the documentation
+- Drop pangomm1_4-docs-without-timestamp.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Wed May 22 09:58:50 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.46.4:
