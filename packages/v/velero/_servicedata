@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/vmware-tanzu/velero</param>
-              <param name="changesrevision">26ef8fa7df68dfa9ab8aa4669b8ac47340b0c510</param></service></servicedata>
+              <param name="changesrevision">26ef8fa7df68dfa9ab8aa4669b8ac47340b0c510</param></service><service name="tar_scm">
+                <param name="url">https://github.com/vmware-tanzu/velero.git</param>
+              <param name="changesrevision">c253c7fe37d78c9b7e55c68544f7c5b2608712d8</param></service></servicedata>

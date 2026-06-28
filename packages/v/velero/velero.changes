@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:10:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.2:
+  * Bump golang.org/x/crypto to v0.52.0 for Restic.
+  * 1.18.2 change-log
+  * Bump depedencies to fix CVEs for v1.18.2 (#9919)
+  * Add external-snapshotter version requirement to VGS docs
+    (#9909)
+  * Fix excluded namespace objects leaking into backup with
+    cross-namespace listing
+  * Fix backup performance regression with includedNamespaces ["*"]
+
+-------------------------------------------------------------------
 Tue May 19 09:12:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.1:
