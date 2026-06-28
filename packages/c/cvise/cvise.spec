@@ -63,6 +63,8 @@ Requires:       unifdef
 
 # Workaround bsc#1268265
 Patch1:         test_dir_linker_duplicate_2threads.patch
+# Fix -Werror=sign-compare in bundled tree-sitter-cpp scanner on aarch64 (wchar_t is unsigned there); https://github.com/tree-sitter/tree-sitter-cpp/issues/338
+Patch2:         cvise-tree-sitter-cpp-aarch64-sign-compare.patch
 
 %description
 

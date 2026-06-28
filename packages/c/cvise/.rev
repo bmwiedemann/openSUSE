@@ -1251,4 +1251,12 @@
     <comment>Resubmit superseding declined SR#1361947. The decline was a changelog-policy issue only: the added patch test_dir_linker_duplicate_2threads.patch is now explicitly named in cvise.changes (forces test_dir_linker_duplicate_var_error to run with two threads, working around a single-core-VM hang, bsc#1268265). Sources unchanged from the declined request.</comment>
     <requestid>1361982</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>101c050b6c5ba518e6de44541fc3cc84</srcmd5>
+    <version>2.12.0+git.20260624.82a22c61</version>
+    <time>1782673627</time>
+    <user>dimstar_suse</user>
+    <comment>Update cvise (2.12.0+git.20260624.82a22c61) and fix aarch64 FTBFS: -Werror=sign-compare in bundled tree-sitter-cpp scanner.c (wchar_t is unsigned on aarch64; cast the raw-string delimiter to int32_t for the lookahead comparison). Upstream: tree-sitter/tree-sitter-cpp#338.</comment>
+    <requestid>1362033</requestid>
+  </revision>
 </revisionlist>

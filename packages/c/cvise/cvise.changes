@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 18:50:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add cvise-tree-sitter-cpp-aarch64-sign-compare.patch: fix a
+  -Werror=sign-compare build failure in the bundled tree-sitter-cpp
+  scanner on aarch64, where wchar_t is unsigned and the raw-string
+  delimiter is compared against the signed int32_t lookahead.
+
+-------------------------------------------------------------------
 Sat Jun 27 07:32:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Explicitly name the test_dir_linker_duplicate_2threads.patch added
