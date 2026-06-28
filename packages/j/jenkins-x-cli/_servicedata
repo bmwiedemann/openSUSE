@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/jenkins-x/jx</param>
-              <param name="changesrevision">39227226e6a9278c134721327db484b47100cc77</param></service></servicedata>
+              <param name="changesrevision">39227226e6a9278c134721327db484b47100cc77</param></service><service name="tar_scm">
+                <param name="url">https://github.com/jenkins-x/jx.git</param>
+              <param name="changesrevision">766b2fad8feea30ffabe1759408b9290de68bdb6</param></service></servicedata>
