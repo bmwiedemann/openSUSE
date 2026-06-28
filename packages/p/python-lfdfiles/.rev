@@ -149,4 +149,14 @@
   * Drop support for numpy 2.0 (SPEC0).</comment>
     <requestid>1353632</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cf58487e7a63624b09096d90323212c6</srcmd5>
+    <version>2026.6.24</version>
+    <time>1782673641</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.6.24:
+  * Add VistaTdflim class for reading ISS Vista TDFLIM files.
+  * Support Python 3.15.</comment>
+    <requestid>1362043</requestid>
+  </revision>
 </revisionlist>
