@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:30:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.8.0:
+  * Features
+    - exclude .gpg files (#571) (e5b53f4)
+  * Bug Fixes
+    - anchor node_modules and target default excludes at path start
+      (#568) (c0c39af)
+    - honor -no-color for .ecrc deprecation warning (#575)
+      (dbb0dbb)
+  * Dependencies
+    - chore(deps): bump actions/checkout from 6 to 7 (#573)
+    - chore(deps): bump golang.org/x/text from 0.37.0 to 0.38.0
+      (#566)
+    - chore(deps): bump codecov/codecov-action from 6 to 7 (#565)
+
+-------------------------------------------------------------------
 Thu May 28 08:10:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.0:
