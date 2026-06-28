@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sse-starlette
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        SSE plugin for Starlette
 License:        BSD-3-Clause
@@ -30,10 +30,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 4.7.0}
-BuildRequires:  %{python_module asgi-lifespan}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module asgi-lifespan >= 2.1.0}
+BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module pytest >= 8.3.4}
+BuildRequires:  %{python_module pytest-asyncio >= 0.25.0}
 BuildRequires:  %{python_module starlette >= 0.49.1}
 # /SECTION
 BuildRequires:  fdupes
@@ -68,7 +68,7 @@ export PYTHONPATH=.
 %pytest tests/test*.py
 
 %files %{python_files}
-%license LICENSE AUTHORS
+%license LICENSE
 %{python_sitelib}/sse_starlette
 %{python_sitelib}/sse_starlette-%{version}.dist-info
 

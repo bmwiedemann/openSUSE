@@ -89,4 +89,13 @@
   * Chore/starlette sync</comment>
     <requestid>1354120</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e80c5d41caea571aa257e2be1f1fee9a</srcmd5>
+    <version>3.4.5</version>
+    <time>1782673869</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.4.5:
+  * fix: test selection</comment>
+    <requestid>1362186</requestid>
+  </revision>
 </revisionlist>
