@@ -1,0 +1,17 @@
+---
+ lib/LALInferenceInitCBC.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: lalinference-4.1.9/lib/LALInferenceInitCBC.c
+===================================================================
+--- lalinference-4.1.9.orig/lib/LALInferenceInitCBC.c
++++ lalinference-4.1.9/lib/LALInferenceInitCBC.c
+@@ -43,7 +43,7 @@ static int checkParamInList(const char *
+ static int checkParamInList(const char *list, const char *param)
+ {
+   /* Check for param in comma-seperated list */
+-  char *post=NULL,*pos=NULL;
++  const char *post=NULL,*pos=NULL;
+   if (list==NULL) return 0;
+   if (param==NULL) return 0;
+ 

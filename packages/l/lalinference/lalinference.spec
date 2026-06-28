@@ -41,6 +41,8 @@ URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{pname}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM lalinference-printf-data-type-consistency.patch badshah400@gmail.com -- Cast data passed to printf from size_t to long to make it consistent with the format "%li"; this fixes build failures on i586
 Patch0:         lalinference-printf-data-type-consistency.patch
+# PATCH-FIX-UPSTREAM lalinference-ptr-const.patch badshah400@gmail.com -- Add const qualifier to pointers where applicable to prevent discarded-qualifier errors
+Patch1:         lalinference-ptr-const.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel >= 1.7}
 BuildRequires:  fdupes
@@ -61,6 +63,7 @@ BuildRequires:  %{python_module astropy}
 BuildRequires:  %{python_module glue >= 1.54.1}
 BuildRequires:  %{python_module h5py}
 BuildRequires:  %{python_module healpy >= 1.9.1}
+BuildRequires:  %{python_module igwn-ligolw}
 BuildRequires:  %{python_module lal >= 7.2.0}
 BuildRequires:  %{python_module lalburst >= 1.6.0}
 BuildRequires:  %{python_module lalframe >= 2.0.0}
@@ -85,6 +88,7 @@ BuildRequires:  octave-lalsimulation
 BuildRequires:  pkgconfig(octave)
 %endif
 Requires:       %{name}-data = %{version}
+Requires:       python-igwn-ligolw
 Requires:       python-lal >= 7.2.0
 Requires:       python-lalburst >= 1.6.0
 Requires:       python-lalframe >= 2.0.0
@@ -156,6 +160,7 @@ This package provides the necessary files for using LAL Inference with octave.
 # Patch0 is not upstream and uses -p1, so we have a mix of -p1 and -p2 patches
 %autosetup -N -n %{pname}-%{version}
 %patch -P0 -p1
+%patch -P1 -p1
 
 %build
 export SWIG_FEATURES="-w999"

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 22:43:13 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalinference-ptr-const.patch to add const qualifiers to
+  pointers where applicable to prevent discarded-qualifiers
+  warnings/errors.
+- Add Requires: python-igwn-ligolw needed for updated version
+  4.1.9.
+
+-------------------------------------------------------------------
 Tue Mar 17 06:25:37 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 4.1.9 (no release notes).
