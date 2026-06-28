@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pbs-installer
-Version:        2026.5.10
+Version:        2026.6.10
 Release:        0
 Summary:        Installer for Python Build Standalone
 License:        MIT

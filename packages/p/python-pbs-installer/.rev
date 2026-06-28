@@ -94,4 +94,13 @@
   * require python 3.9</comment>
     <requestid>1355101</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>46dc720f3c4225dc84dcd465556e8360</srcmd5>
+    <version>2026.6.10</version>
+    <time>1782673827</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.6.10:
+  * update cpython build releases and hashes</comment>
+    <requestid>1362139</requestid>
+  </revision>
 </revisionlist>
