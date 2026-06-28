@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 09:40:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * Fix build issues from breaking changes in setuptools 81.
+  * Support Windows builds with Meson and Intel MPI.
+  * PyPy wheels are no longer published.
+
+-------------------------------------------------------------------
 Sun Dec 21 16:54:03 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to 4.1.1

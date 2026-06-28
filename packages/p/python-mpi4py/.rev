@@ -276,4 +276,15 @@
 </comment>
     <requestid>1323998</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>48dd34cb6baaa7d7dc6927bb641076ed</srcmd5>
+    <version>4.1.2</version>
+    <time>1782673825</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.1.2:
+  * Fix build issues from breaking changes in setuptools 81.
+  * Support Windows builds with Meson and Intel MPI.
+  * PyPy wheels are no longer published.</comment>
+    <requestid>1362130</requestid>
+  </revision>
 </revisionlist>

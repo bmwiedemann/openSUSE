@@ -1,7 +1,7 @@
 #
 # spec file for package python-mpi4py
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define plainpython python
 Name:           python-mpi4py
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        MPI for Python
 License:        BSD-3-Clause
