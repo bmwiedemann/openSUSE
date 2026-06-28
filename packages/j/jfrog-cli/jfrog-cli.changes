@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:36:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.111.0 (2.110.0 was not released):
+  * New Features
+    - [jfrog-cli] Added Post Failure Run support for poetry #3548
+      (@Phavya-jfrog)
+    - [jfrog-cli] Add timestamp suffix to UvBuildName for test
+      isolation #3559 (@agrasth)
+    - [jfrog-cli] Add timestamp suffix to Nix repos and build name
+      for test isolation #3562 (@agrasth)
+    - [jfrog-cli-artifactory] Add AI help coverage check to static
+      analysis #490 (@ehl-jf)
+    - [jfrog-cli-security] XRAY-138689 - Add Poetry support for jf
+      ca #768 (@Phavya-jfrog)
+  * Bug Fixes
+    - [jfrog-cli] fix poetry publish command not respecting the
+      repo flag #3547 (@reshmifrog)
+    - [jfrog-cli] Fix/latest release for hf breaks cli #3560
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] fix poetry publish command not
+      respecting the repo flag #489 (@reshmifrog)
+    - [jfrog-cli-core] Fix uncaught error in DownloadDependency
+      #1576 (@eranturgeman)
+    - [jfrog-cli-security] Fix - Close log for Xray plugin #780
+      (@attiasas)
+    - [jfrog-cli-security] Fix cocoapods OOM #781 (@eranturgeman)
+    - [jfrog-cli-security] XRAY-145623 - pip jf ca failure due to
+      CVS #777 (@Phavya-jfrog)
+  * Internal Changes
+    - [jfrog-cli-security] Update dependencies #782 (@attiasas)
+  * Other Changes
+    - [jfrog-cli] common as default deployment size for artifactory
+      #3557 (@reshmifrog)
+    - [jfrog-cli] RTECO-1411 Add agentplugins tests #3551
+      (@udaykb2)
+    - [jfrog-cli] RTECO-1074 - Remove redundant functions in agent
+      namespace-1 #3566 (@udaykb2)
+    - [jfrog-cli] RTECO-1074 - Remove redundant functions in agent
+      namespace-2 #3567 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1074 - Remove redundant
+      functions in agent namespace(1/2) #495 (@udaykb2)
+    - [jfrog-cli-artifactory] RTECO-1074 - Remove redundant
+      functions in agent namespace-2 #498 (@udaykb2)
+
+-------------------------------------------------------------------
 Thu Jun 18 07:38:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.109.0:
