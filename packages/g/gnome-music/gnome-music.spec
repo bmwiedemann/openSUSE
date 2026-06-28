@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%global __requires_exclude typelib\\(TSparql\\)
 
 Name:           gnome-music
-Version:        49.1
+Version:        50.0
 Release:        0
 Summary:        Music Player for GNOME
 License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jun 24 06:46:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.0:
+  + Drop Grilo and use LocalSearch directly
+  + Add volume controls accelerators
+  + Refactor Repeat Mode Button into a separate class
+  + Misc gstplayer refactoring
+  + Icon is missing in «Add to Playlist» dialog
+  + Updated translations
+- Add global __requires_exclude typelib\\(TSparql\\), filter out
+  bogus typelib dependency.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:39:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
