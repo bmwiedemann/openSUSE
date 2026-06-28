@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 13:56:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.2
+  - Addresses
+    https://projects.blender.org/blender/blender/issues/158737 by
+    removing deferred deallocation.
+
+-------------------------------------------------------------------
 Fri Jun  5 00:11:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.5.1

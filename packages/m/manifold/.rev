@@ -119,4 +119,15 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
 - Update to 3.5.0</comment>
     <requestid>1357197</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f2965936d90e833561c6a3633c866c50</srcmd5>
+    <version>3.5.2</version>
+    <time>1782673601</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.5.2
+  - Addresses
+    https://projects.blender.org/blender/blender/issues/158737 by
+    removing deferred deallocation.</comment>
+    <requestid>1362014</requestid>
+  </revision>
 </revisionlist>
