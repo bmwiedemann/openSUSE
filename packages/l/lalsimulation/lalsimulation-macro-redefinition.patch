@@ -1,0 +1,22 @@
+---
+ lib/LALSimInspiralGeneratorPython.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+Index: lalsimulation-6.2.0/lib/LALSimInspiralGeneratorPython.c
+===================================================================
+--- lalsimulation-6.2.0.orig/lib/LALSimInspiralGeneratorPython.c
++++ lalsimulation-6.2.0/lib/LALSimInspiralGeneratorPython.c
+@@ -50,6 +50,13 @@ const LALSimInspiralGenerator lalPythonG
+ #include <lal/LALSimSphHarmSeries.h>
+ #include "LALSimInspiralWaveformParams_common.c"
+ 
++/*
++ * Macro _POSIX_C_SOURCE is already defined in `features.h` included via
++ * `LALStdlib.h`; so undef it before it is re-defined differently in `Python.h`
++ */
++#ifdef _POSIX_C_SOURCE
++#undef _POSIX_C_SOURCE
++#endif
+ #include <Python.h>
+ 
+ #define NPY_NO_DEPRECATED_API NPY_1_7_API_VERSION

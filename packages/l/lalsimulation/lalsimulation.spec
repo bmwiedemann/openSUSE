@@ -16,11 +16,6 @@
 #
 
 
-# NEP 29: python36-numpy and co. in TW are no more
-%define skip_python36 1
-# Py2 support dropped upstream
-%define skip_python2 1
-
 %define shlib liblalsimulation37
 # octave >= 6 not supported
 %bcond_with octave
@@ -31,6 +26,8 @@ Summary:        LSC Algorithm Simulation Library
 License:        GPL-2.0-only
 URL:            https://wiki.ligo.org/Computing/DASWG/LALSuite
 Source:         https://software.igwn.org/sources/source/lalsuite/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM lalsimulation-macro-redefinition.patch badshah400@gmail.com -- undef previously defined macro to prevent build failures when it is redefined in Python.h
+Patch0:         lalsimulation-macro-redefinition.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module lal >= 7.7.0}
 BuildRequires:  %{python_module numpy >= 1.7}
@@ -39,9 +36,6 @@ BuildRequires:  fdupes
 BuildRequires:  help2man >= 1.37
 BuildRequires:  pkgconfig >= 0.18.0
 BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} < 1550
-BuildRequires:  python-xml
-%endif
 BuildRequires:  swig >= 3.0.11
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(lal) >= 7.7.0
@@ -104,7 +98,8 @@ This package provides the necessary files for using LALSimulation with octave.
 
 %prep
 # Upstream commits are -p1 against the full lalsuite, but -p2 against individual lal* pkgs
-%autosetup -p2
+%autosetup -N
+%patch -P0 -p1
 
 %build
 %{python_expand # Necessary to run configure with multiple py3 flavors
@@ -181,7 +176,7 @@ popd
 %license COPYING
 %doc AUTHORS README.md
 %config %{_sysconfdir}/profile.d/%{name}.*
-%{_bindir}/*
+%{_bindir}/lalsim*
 %{_libdir}/*.so
 %{_includedir}/lal/
 %{_libdir}/pkgconfig/*

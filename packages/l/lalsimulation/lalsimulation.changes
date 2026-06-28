@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 27 11:45:33 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lalsimulation-macro-redefinition.patch to undef macro before
+  its redefinition in an included header file and avoid
+  `macro-redefinition` error.
+
+-------------------------------------------------------------------
 Thu Feb 19 16:23:18 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Pass export SWIG_FEATURES="-w999" to fix build failures due to
