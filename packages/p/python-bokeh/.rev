@@ -556,4 +556,12 @@
     <comment>- Skip a broken test on Python 3.14.</comment>
     <requestid>1356848</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>2601b245935a09a6d4ebea7206e323ad</srcmd5>
+    <version>3.9.1</version>
+    <time>1782673608</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1362027</requestid>
+  </revision>
 </revisionlist>

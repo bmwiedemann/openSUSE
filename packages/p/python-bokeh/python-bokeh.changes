@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:44:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.1:
+  * Document().to_json() is not JSON serializable
+  * [component: docs] Dev docs no longer report precise
+    version information
+  * range_padding of y_range is not updated when changed
+    via CustomJS
+  * [component: bokehjs] Invert Colorbar Axis
+  * [component: bokehjs] Cannot update min_border of
+    figure with CustomJS callback
+  * [component: bokehjs] BoxAnnotation shows resize
+    cursor by default
+  * [component: bokehjs] vline hover misses some multi-
+    lines
+  * [BUG] Using array/list in line_dash for hspan
+    doesn't work
+  * [component: bokehjs] [BUG] Incorrectly formatted
+    ticks with %N format when time is older than the Epoch
+  * [component: bokehjs] [bokeh-3.8.0.min.js:405]
+    Uncaught (in promise) RangeError: Maximum call stack size
+    exceeded
+  * [component: bokehjs] Legends are not synced with
+    glyph visibility state
+  * [component: bokehjs] Possible regression in muting
+    of legend entries since v3.7.0
+  * [component: bokehjs] Patches hover tooltip triggers
+    inside holes (hit-testing doesn't account for NaN-separated
+    holes)
+  * [component: bokehjs] Canvas Patch fill doesn't
+    respect holes (nonzero fill rule instead of evenodd)
+  * [component: bokehjs] Bokeh plot frame height does
+    not update when changed via slider
+  * [component: bokehjs] Update of num_minor_ticks does
+    not trigger a visual update of the plot
+  * `NaT` is encoded as `float(nan)` by the serializer
+  * 15116 [component: docs] Documentation of enums is broken
+    in 3.10 branch
+  * [component: build] Release build failed for non pre-
+
+-------------------------------------------------------------------
 Wed Jun  3 04:56:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a broken test on Python 3.14.
