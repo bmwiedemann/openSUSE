@@ -163,4 +163,13 @@
   * Automated updates to the HSTS preload list on 2026-5-1</comment>
     <requestid>1353616</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>589d367d49ac6e2cfe3f13c5e6ea7f4b</srcmd5>
+    <version>2026.6.1</version>
+    <time>1782673576</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.6.1:
+  * Automated updates to the HSTS preload list on 2026-6-1</comment>
+    <requestid>1361998</requestid>
+  </revision>
 </revisionlist>
