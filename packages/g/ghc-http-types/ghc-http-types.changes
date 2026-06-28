@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun May 31 21:06:46 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update http-types to version 0.12.5.
+  Upstream has renamed and modified the change log file(s) in this
+  release. Unfortunately, the automatic updater cannot reliable
+  determine relevant entries for this release.
+
+-------------------------------------------------------------------
 Tue May 19 19:53:53 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Update http-types to version 0.12.4 revision 1.

@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.12.4
+Version:        0.12.5
 Release:        0
 Summary:        Generic HTTP types for Haskell (for both client and server code)
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Source1:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/revision/1.cabal#/%{pkg_name}.cabal
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-array-devel
 BuildRequires:  ghc-array-prof
@@ -45,7 +44,11 @@ BuildRequires:  ghc-QuickCheck-devel
 BuildRequires:  ghc-QuickCheck-prof
 BuildRequires:  ghc-doctest-devel
 BuildRequires:  ghc-doctest-prof
+BuildRequires:  ghc-filepath-devel
+BuildRequires:  ghc-filepath-prof
 BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-golden-devel
+BuildRequires:  ghc-hspec-golden-prof
 BuildRequires:  ghc-hspec-prof
 BuildRequires:  ghc-quickcheck-instances-devel
 BuildRequires:  ghc-quickcheck-instances-prof
@@ -83,7 +86,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup -n %{pkg_name}-%{version}
-cp -p %{SOURCE1} %{pkg_name}.cabal
 
 %build
 %ghc_lib_build
@@ -104,7 +106,7 @@ cp -p %{SOURCE1} %{pkg_name}.cabal
 %license LICENSE
 
 %files devel -f %{name}-devel.files
-%doc CHANGELOG README
+%doc CHANGELOG.md README.md
 
 %files -n ghc-%{pkg_name}-doc -f ghc-%{pkg_name}-doc.files
 %license LICENSE
