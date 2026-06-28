@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 28 08:13:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Reformat the patch against current Firefox ESR 140.12.0 and add
+  it as Patch28 to the .spec file.
+
+-------------------------------------------------------------------
+Thu Jun 25 14:19:05 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add mozilla-bmo2048250.patch, fix input method candidate window tracking by
+  explicitly committing Wayland surface after setting cursor location.
+  (boo#1268447 and bmo#2048250)
+
+-------------------------------------------------------------------
 Wed Jun 17 16:23:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Enable clang_build to allow building with the latest versions of

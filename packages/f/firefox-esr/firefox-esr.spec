@@ -251,6 +251,7 @@ Patch21:        svg-rendering.patch
 Patch24:        mozilla-bmo1746799.patch
 Patch26:        mozilla-bmo1999625.patch
 Patch27:        mozilla-bmo2016618.patch
+Patch28:        mozilla-bmo2048250.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
