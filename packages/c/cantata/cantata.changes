@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jun 25 22:00:58 UTC 2026 - Fabian Niepelt <fniepelt@faeyben.de>
+
+- Update to version 3.5.0:
+  * Update to FontAwesome 7.
+  * Add Turkish translation.
+  * Use bundled FontAwesome by default.
+  * Fix dynamic playlists with the Flatpak build.
+  * Fix unreadable first run wizard on Windows 11 dark mode.
+  * Fix Nix build.
+  * Fix CMake COMPILE_WARNING_AS_ERROR not being marked as a cache variable.
+  * Fix ignored nodiscard function return value.
+  * Update GitHub workflows
+  * Enable bundled FontAwesome by default, regardless of platform by @maxmitti in #120
+  * fix: Add workaround for unreadable first run wizard on Windows 11 with dark mode by @maxmitti in #121
+  * Fix: dynamic playlists with flatpak build by @maxmitti in #123
+  * support/QtAwesome: Update to Font Awesome 7 by @tgurr in #129
+  * Add kdePackages.karchive to flake.nix dependencies by @arximboldi in #133
+  * build: Turn COMPILE_WARNING_AS_ERROR into a cache variable by @PPN-SD in #142
+  * fix: #141 [[nodiscard]] ignored by @nullobsi in #143
+  * git: update workflows by @nullobsi in #148
+  * feat(i18n): add Turkish translation by @G-grbz in #147
+  * rc: v3.5.0 by @nullobsi in #151 
+
+-------------------------------------------------------------------
 Thu Dec 11 13:30:27 UTC 2025 - Fabian Niepelt <fniepelt@faeyben.de>
 
 - Added fontawesome-fonts to the requirements 

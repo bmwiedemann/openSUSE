@@ -1,7 +1,7 @@
 #
 # spec file for package cantata
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cantata
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Client for the Music Player Daemon (MPD)
 License:        GPL-3.0-only
@@ -56,10 +56,10 @@ BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(udisks2)
 BuildRequires:  pkgconfig(zlib)
+Requires:       fontawesome-fonts
 Requires:       media-player-info
 Requires:       mpd
 Requires:       qt6-sql-sqlite
-Requires:       fontawesome-fonts
 Requires(post): hicolor-icon-theme
 Requires(postun): hicolor-icon-theme
 %lang_package
@@ -101,6 +101,7 @@ information, please refer to the main README.
     -DENABLE_REMOTE_DEVICES=OFF \
     -DENABLE_CATEGORIZED_VIEW=OFF \
     -DBUILD_PLUGIN_DEBUG=OFF \
+    -DBUNDLED_FONTAWESOME=OFF \
     -DCMAKE_CXX_FLAGS="${CMAKE_CXX_FLAGS} -Wno-error=unused-result -Wno-error=deprecated-declarations" \
      %{nil}
 %cmake_build
