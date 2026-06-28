@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jun 24 21:23:36 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update aws to version 0.25.3.
+  - Switch from memory to ram to allow building with http-client-tls 0.4.x
+
+- Obsoletes "0001-switch-from-memory-or-ram-to-allow-building-with-htt.patch".
+
+-------------------------------------------------------------------
 Mon Dec  8 20:44:48 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update aws to version 0.25.2.

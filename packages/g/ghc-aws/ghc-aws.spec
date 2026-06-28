@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-aws
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,13 +20,12 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.25.2
+Version:        0.25.3
 Release:        0
 Summary:        Amazon Web Services (AWS) for Haskell
 License:        BSD-3-Clause
 URL:            https://hackage.haskell.org/package/%{pkg_name}
 Source0:        https://hackage.haskell.org/package/%{pkg_name}-%{version}/%{pkg_name}-%{version}.tar.gz
-Patch01:        0001-switch-from-memory-or-ram-to-allow-building-with-htt.patch
 BuildRequires:  ghc-Cabal-devel
 BuildRequires:  ghc-aeson-devel
 BuildRequires:  ghc-aeson-prof
@@ -74,8 +73,6 @@ BuildRequires:  ghc-http-types-devel
 BuildRequires:  ghc-http-types-prof
 BuildRequires:  ghc-lifted-base-devel
 BuildRequires:  ghc-lifted-base-prof
-BuildRequires:  ghc-memory-devel
-BuildRequires:  ghc-memory-prof
 BuildRequires:  ghc-monad-control-devel
 BuildRequires:  ghc-monad-control-prof
 BuildRequires:  ghc-mtl-devel
@@ -86,6 +83,8 @@ BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-old-locale-devel
 BuildRequires:  ghc-old-locale-prof
+BuildRequires:  ghc-ram-devel
+BuildRequires:  ghc-ram-prof
 BuildRequires:  ghc-resourcet-devel
 BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
@@ -132,7 +131,7 @@ BuildRequires:  ghc-transformers-base-prof
 %description
 Bindings for Amazon Web Services (AWS), with the aim of supporting all AWS
 services. To see a high level overview of the library, see the README at
-<https://github.com/aristidb/aws/blob/master/README.md>.
+<https://github.com/haskell-pkg-janitors/aws/blob/master/README.md>.
 
 %package devel
 Summary:        Haskell %{pkg_name} library development files
