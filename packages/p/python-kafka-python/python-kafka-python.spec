@@ -16,8 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 Name:           python-kafka-python
-Version:        2.3.2
+Version:        3.0.6
 Release:        0
 Summary:        Pure Python client for Apache Kafka
 License:        Apache-2.0
@@ -28,6 +34,13 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+%endif
 # Recommends:   python-crc32c  # Not packaged
 Recommends:     python-zstandard
 Suggests:       python-lz4
@@ -62,6 +75,7 @@ find . -name "*.py" -exec sed -i '/#!\/usr\/bin\/env python/d'  {} \;
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/kafka-python
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -69,9 +83,20 @@ find . -name "*.py" -exec sed -i '/#!\/usr\/bin\/env python/d'  {} \;
 donttest="test_crc32c[None]"
 %pytest test -k "not ($donttest)"
 
+%pre
+# removing old update-alternatives entries
+%python_libalternatives_reset_alternative kafka-python
+
+%post
+%python_install_alternative kafka-python
+
+%postun
+%python_uninstall_alternative kafka-python
+
 %files %{python_files}
 %license LICENSE
 %doc README.rst
+%python_alternative %{_bindir}/kafka-python
 %{python_sitelib}/kafka
 %{python_sitelib}/kafka_python-%{version}.dist-info
 

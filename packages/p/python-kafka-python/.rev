@@ -147,4 +147,41 @@
     OffsetNotAvailableError (#2657)</comment>
     <requestid>1358696</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fa93ff8017fd2bfbd7537db112a6cb98</srcmd5>
+    <version>3.0.6</version>
+    <time>1782673831</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.0.6:
+  * consumer: track current leader epoch in addition to record
+    epoch
+  * Also `wait_for_topics` on &lt;0.10 test fixtures
+  * Reserve buffer capacity before every encode_into write
+  * Fix backoff on bootstrap init failure after connection_made
+  * Add new extended logging args to docs/cli
+  * Fix `_build_transport` / `conn.close` race
+  * net.transport: Fix closed/write_eof handling in
+    `_write_to_sock`
+  * Fix kafka.net.connection await: raise connection failures
+  * bootstrap connection log changes
+  * Improve connection logging; dont log version check if matches
+    expected
+  * tests: print integration fixture output to console if no log
+    handlers
+  * docs: Add title headings for KafkaConsumer/KafkaProducer; add
+    sphinx-argparse to requirements-dev.txt
+  * Consumer: fix multi-broker fetch busy wait loop
+  * net: inject KernelEvent handler exceptions into coro; warn
+    dont crash if task state is still RUNNING
+  * Fix: do not mark coordinator dead on all HeartbeatResponse
+    errors
+  * Improve task cleanup with net.cancel(task), TaskState, and
+    consolidated wait_io cleanup
+  * Fix/net selector task already done
+  * Fixup socks5_proxy deprecation warning
+  * log metadata refresh failure stacktraces as DEBUG not ERROR
+  * log heartbeat rebalance response as INFO, not WARNING
+  * add --log-format, --log-date-format, --log-file, --log-config</comment>
+    <requestid>1362148</requestid>
+  </revision>
 </revisionlist>

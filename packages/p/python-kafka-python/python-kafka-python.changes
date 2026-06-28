@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:25:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.6:
+  * consumer: track current leader epoch in addition to record
+    epoch
+  * Also `wait_for_topics` on <0.10 test fixtures
+  * Reserve buffer capacity before every encode_into write
+  * Fix backoff on bootstrap init failure after connection_made
+  * Add new extended logging args to docs/cli
+  * Fix `_build_transport` / `conn.close` race
+  * net.transport: Fix closed/write_eof handling in
+    `_write_to_sock`
+  * Fix kafka.net.connection await: raise connection failures
+  * bootstrap connection log changes
+  * Improve connection logging; dont log version check if matches
+    expected
+  * tests: print integration fixture output to console if no log
+    handlers
+  * docs: Add title headings for KafkaConsumer/KafkaProducer; add
+    sphinx-argparse to requirements-dev.txt
+  * Consumer: fix multi-broker fetch busy wait loop
+  * net: inject KernelEvent handler exceptions into coro; warn
+    dont crash if task state is still RUNNING
+  * Fix: do not mark coordinator dead on all HeartbeatResponse
+    errors
+  * Improve task cleanup with net.cancel(task), TaskState, and
+    consolidated wait_io cleanup
+  * Fix/net selector task already done
+  * Fixup socks5_proxy deprecation warning
+  * log metadata refresh failure stacktraces as DEBUG not ERROR
+  * log heartbeat rebalance response as INFO, not WARNING
+  * add --log-format, --log-date-format, --log-file, --log-config
+  * fix comma-separated --bootstrap-servers parsing
+  * fix memory leak of cancelled timeout tasks (@azdobylak /
+    #3077)
+  * receive_message_max_bytes default 100MiB
+    (consumer/producer/admin); check against fetch_max_bytes and
+    max_partition_fetch_bytes in Consumer
+
+-------------------------------------------------------------------
 Thu Jun 11 10:09:52 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 2.3.2 (bsc#1268081, CVE-2026-10142, bsc#1268082, CVE-2026-10143):
@@ -65,7 +105,7 @@ Mon Apr 10 11:36:09 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 Wed Oct 12 02:26:13 UTC 2022 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-mock.patch:
-  * Remove use of mock. 
+  * Remove use of mock.
 
 -------------------------------------------------------------------
 Tue Sep  6 14:12:44 UTC 2022 - John Vandenberg <jayvdb@gmail.com>
@@ -135,8 +175,8 @@ Thu Apr 16 08:22:52 UTC 2020 - pgajdos@suse.com
 Fri May 17 20:34:08 UTC 2019 - Meera Belur <mbelur@suse.com>
 
 - Update to version 1.4.6
-  * please read the release notes 
-     *https://github.com/dpkp/kafka-python/releases 
+  * please read the release notes
+     *https://github.com/dpkp/kafka-python/releases
 
 -------------------------------------------------------------------
 Tue Dec  4 12:49:43 UTC 2018 - Matej Cepl <mcepl@suse.com>
@@ -393,7 +433,7 @@ Mon Mar 14 10:03:55 UTC 2016 - mmnelemane@suse.com
        kafka.protocol.legacy and may be removed in a future release.
      * Protocol layer re-written using Type classes, Schemas and Structs
        (modeled on the java client).
-     * Add support for LZ4 compression (including broken framing header 
+     * Add support for LZ4 compression (including broken framing header
        checksum).
      * Add py35 to tox testing
      * Update travis config to use container infrastructure
