@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 20:59:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.0:
+  * remove egg folder from source by @karpetrosyan
+  * add readme in pyproject.toml by @karpetrosyan
+  * use weak ETag comparison when freshening stored responses
+
+-------------------------------------------------------------------
 Sun May  3 20:42:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.1:
