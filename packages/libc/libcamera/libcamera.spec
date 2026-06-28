@@ -182,7 +182,7 @@ Python bindings for libcamera.
 	-Drpi-awb-nn=disabled \
 	-Dv4l2=false -Dtracing=disabled \
 	-Dpipelines=auto,vimc \
-	-Dlc-compliance=disabled
+	-Dlc-compliance=disabled -Dlibunwind=disabled
 %meson_build
 
 %install

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 26 10:54:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Be explicit about not using libunwind to address a
+  s390x build failure.
+
+-------------------------------------------------------------------
 Mon Jun 15 17:33:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.7.1
