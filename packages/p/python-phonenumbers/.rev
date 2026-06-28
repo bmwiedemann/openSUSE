@@ -523,4 +523,13 @@
   * Merge metadata changes from upstream 9.0.31</comment>
     <requestid>1355077</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>079f8e2e71ef9defbb446f0032c22920</srcmd5>
+    <version>9.0.33</version>
+    <time>1782673821</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 9.0.33
+  * Merge metadata changes from upstream 9.0.33</comment>
+    <requestid>1362133</requestid>
+  </revision>
 </revisionlist>
