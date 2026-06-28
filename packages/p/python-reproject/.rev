@@ -128,4 +128,16 @@
     test_reproject_parallel_broadcasting</comment>
     <requestid>1359568</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2d1da7c2c8c77254cbfe02db2493ce62</srcmd5>
+    <version>0.21.0</version>
+    <time>1782673857</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.0:
+  * Fixes to HiPS functionality
+  * Give each thread its own copy of the WCS in the dask HiPS
+
+- skip builds for python311 for the test flavor.</comment>
+    <requestid>1362185</requestid>
+  </revision>
 </revisionlist>
