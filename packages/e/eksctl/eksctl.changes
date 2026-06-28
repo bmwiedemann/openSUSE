@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:51:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.228.0:
+  * Features
+    - feat: add support for controlPlaneEgressMode (#8770)
+  * Dependencies
+    - Bump github.com/aws/aws-sdk-go-v2/service/cloudformation from
+      1.71.7 to 1.71.11 (#8734)
+    - Bump
+      github.com/aws/aws-sdk-go-v2/service/cognitoidentityprovider
+      from 1.57.7 to 1.60.2 (#8735)
+    - Bump github.com/aws/aws-sdk-go-v2/service/iam from 1.53.4 to
+      1.53.9 (#8737)
+    - Bump github.com/fatih/color from 1.18.0 to 1.19.0 (#8739)
+    - Bump github.com/aws/aws-sdk-go-v2/service/outposts from
+      1.57.13 to 1.59.2 (#8740)
+    - Bump github.com/maxbrunsfeld/counterfeiter/v6 from 6.12.0 to
+      6.12.2 (#8741)
+
+-------------------------------------------------------------------
 Thu May 28 07:56:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.227.0:
