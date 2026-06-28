@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/cilium/cilium-cli</param>
-              <param name="changesrevision">2c40f81b9180be6a5e52b8caf7f1de75202ec0fc</param></service></servicedata>
+              <param name="changesrevision">2c40f81b9180be6a5e52b8caf7f1de75202ec0fc</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cilium/cilium-cli.git</param>
+              <param name="changesrevision">e391e739db83a8b888ecf18786af6853c51a0c58</param></service></servicedata>
