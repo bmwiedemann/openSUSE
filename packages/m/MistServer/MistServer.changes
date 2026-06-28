@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:44:58 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
+
+- Fix packaging:
+  * require only compatible mbedtls-3-devel 
+
+-------------------------------------------------------------------
 Fri Jan 30 10:14:04 UTC 2026 - Yoshio Sato <vasua.ukraine@gmail.com>
 
 - Update to the new upstream release 3.10

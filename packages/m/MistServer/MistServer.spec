@@ -34,7 +34,7 @@ BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(librist)
 BuildRequires:  pkgconfig(libsrtp2)
-BuildRequires:  pkgconfig(mbedtls)
+BuildRequires:  mbedtls-3-devel
 BuildRequires:  pkgconfig(srt)
 BuildRequires:  pkgconfig(usrsctp)
 Requires:       group(video)
