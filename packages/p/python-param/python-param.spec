@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-param
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        Declarative Python programming using Parameters
 License:        BSD-3-Clause

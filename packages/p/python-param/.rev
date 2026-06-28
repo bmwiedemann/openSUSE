@@ -368,4 +368,15 @@
   * Use re.search for param.String regex check</comment>
     <requestid>1355080</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>ab74b2682436a490267edf67959da206</srcmd5>
+    <version>2.4.1</version>
+    <time>1782673639</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.1:
+  * Add mypy plugin to handle descriptor __set__ issue
+  * Reorder param.List overloads to allow default type inference
+  * Fix spelling mistakes and add typos to pre-commit</comment>
+    <requestid>1362049</requestid>
+  </revision>
 </revisionlist>

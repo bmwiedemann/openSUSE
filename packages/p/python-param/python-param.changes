@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 21:02:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Add mypy plugin to handle descriptor __set__ issue
+  * Reorder param.List overloads to allow default type inference
+  * Fix spelling mistakes and add typos to pre-commit
+
+-------------------------------------------------------------------
 Mon May 25 15:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.0:
