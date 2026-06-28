@@ -18,9 +18,9 @@
 
 %define qt6_version 6.4.0
 
-%define sover 9
+%define sover 10
 Name:           libqxmpp
-Version:        1.15.1
+Version:        1.16.1
 Release:        0
 Summary:        Qt XMPP Library
 License:        LGPL-2.1-or-later
@@ -28,14 +28,9 @@ URL:            https://invent.kde.org/libraries/qxmpp
 Source0:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz
 Source1:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz.sig
 Source2:        qxmpp.keyring
-BuildRequires:  doxygen
 BuildRequires:  fdupes
-# The default GCC version is too old in Leap 15 and 16
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc14-PIE
-BuildRequires:  gcc14-c++
-%endif
-%if 0%{?suse_version} >= 1600 && 0%{?suse_version} <= 1699
+# The default GCC version is too old in Leap 16
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
 BuildRequires:  gcc15-PIE
 BuildRequires:  gcc15-c++
 %endif
@@ -53,6 +48,7 @@ QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
 
 %package -n libQXmppQt6-%{sover}
 Summary:        Qt XMPP Library
+Obsoletes:      libqxmpp-doc < 1.16.1
 
 %description -n libQXmppQt6-%{sover}
 QXmpp is a cross-platform C++ XMPP client library based on Qt and C++.
@@ -67,30 +63,15 @@ Obsoletes:      libqxmpp-devel < %{version}
 %description -n libQXmppQt6-devel
 Development package for qxmpp.
 
-# No need to build it twice
-
-%package -n libqxmpp-doc
-Summary:        Qxmpp library documentation
-BuildArch:      noarch
-
-%description -n libqxmpp-doc
-This packages provides documentation of Qxmpp library API.
-
 %prep
 %autosetup -p1 -n qxmpp-%{version}
 
 %build
-# Due to the cmake maintainers bad idea, CMAKE_INSTALL_DOCDIR has to be redefined
 %cmake_qt6 \
-  -DCMAKE_INSTALL_DOCDIR:STRING=%{_datadir}/doc/qxmpp \
-  -DBUILD_DOCUMENTATION:BOOL=TRUE \
+  -DBUILD_DOCUMENTATION:BOOL=FALSE \
   -DBUILD_TESTING:BOOL=TRUE \
   -DBUILD_EXAMPLES:BOOL=FALSE \
-%if 0%{?suse_version} == 1500
-  -DCMAKE_C_COMPILER:STRING=gcc-14 \
-  -DCMAKE_CXX_COMPILER:STRING=g++-14
-%endif
-%if 0%{?suse_version} >= 1600 && 0%{?suse_version} <= 1699
+%if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
   -DCMAKE_C_COMPILER:STRING=gcc-15 \
   -DCMAKE_CXX_COMPILER:STRING=g++-15
 %endif
@@ -101,13 +82,11 @@ This packages provides documentation of Qxmpp library API.
 %install
 %qt6_install
 
-%fdupes %{buildroot}%{_datadir}/doc/qxmpp/
-
 %check
 export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 
 # Exclude tests needing a network connection
-%{ctest --exclude-regex "tst_(qxmppcallmanager|qxmppiceconnection|qxmppserver|qxmpptransfermanager|qxmppuploadrequestmanager)"}
+%{ctest --exclude-regex "tst_(QXmppIceConnection|QXmppTransferManager)"}
 
 %ldconfig_scriptlets -n libQXmppQt6-%{sover}
 
@@ -124,8 +103,5 @@ export LD_LIBRARY_PATH=%{buildroot}%{_libdir}
 %{_libdir}/libQXmppQt6.so
 %{_libdir}/libQXmppOmemoQt6.so
 %{_libdir}/pkgconfig/QXmppQt6.pc
-
-%files -n libqxmpp-doc
-%{_datadir}/doc/qxmpp/
 
 %changelog

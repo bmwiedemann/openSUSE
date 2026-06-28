@@ -448,4 +448,12 @@ Qt5 alternative.</comment>
     <comment>Update to 1.15.1</comment>
     <requestid>1348945</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>72418270f4940db4c7750c9ac7b32920</srcmd5>
+    <version>1.16.1</version>
+    <time>1782673818</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.16.1</comment>
+    <requestid>1362123</requestid>
+  </revision>
 </revisionlist>

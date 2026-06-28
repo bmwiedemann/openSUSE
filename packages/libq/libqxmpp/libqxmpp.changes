@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:35:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.16.1
+  * New MUC implementation `QXmppMucManagerV2` with a modern, reactive,
+   coroutine-based API (API not finalized yet)
+    + Room joining with history options, join timeout and password support
+     (XEP-0045 §7.2)
+    + Message handling: `messageReceived` signal, `sendMessage()` with
+     reflection matching and `sendPrivateMessage()`
+    + Presence/state control: `setPresence()` (§7.7), `setNickname()`,
+     `setSubject()` and `leave()` (§7.14)
+    + `QXmppMucParticipant` handle with `participantJoined`/`Left` signals,
+     nickname-change tracking and `selfParticipant()`
+    + Roles and affiliations: `setRole()`, `setAffiliation()`,
+     `requestAffiliationList()` and batch `setRoles()`/`setAffiliations()`
+     (§8.5) via the new `QXmpp::Muc::Item` type
+    + Reactive room properties (`QBindable`): permissions, description,
+     language, contact JIDs, full `muc#roominfo` form and room type
+    + Room creation, configuration and destruction (`QXmpp::Muc::Destroy`,
+     §10.9) with config caching and `subscribeToRoomConfig()`
+    + Kick/ban handling for status codes 301/307/321/332 with a typed
+     `QXmpp::Muc::LeaveReason`
+    + Mediated (§7.8.2) and direct (XEP-0249) invitations
+    + Voice requests via `QXmppMucVoiceRequest` (§7.13/§8.6)
+    + Reserved nickname discovery (§7.12) and room registration (§7.10)
+    + Self-ping (XEP-0410), occupant ID (XEP-0421), unique room names
+     (XEP-0307) and message activity indicator (XEP-0502)
+    + Reactive avatar API and memory-safe shared-ownership handles
+    + Add `muc_bot` example
+  * Message: Add `hasSubject()`, `setSubject(std::optional<QString>)` and
+   the `mucVoiceRequest()` accessor
+  * DiscoveryManager: Add generic service discovery watch API
+   (`QXmppDiscoServicesWatch`), used by the HTTP upload, MIX and MUC
+   managers
+  * MixManager: Remove ejabberd conference/text identity workaround
+  * RosterManager: Implement roster versioning cache (XEP-0237 / RFC 6121
+   §2.6)
+  * RosterManager: Add method to update roster groups
+  * Add dynamic XML extension support: `QXmpp::Xml::Element` generic element
+   type, `Xml::Registry`/`Xml::Extensions` and stanza hooks
+  * FileSharing: Make the `disposition` attribute optional and
+   serialize QUrls percent-encoded
+  * Logger: Pretty-print and ANSI-syntax-highlight XML debug output and style
+   log headers with a colored type chip, direction arrows and timestamp
+  * XmppSocket: Log received XML per complete stanza and skip whitespace
+   pings
+  * Migrate the API documentation from Doxygen to QDoc and enable
+   documentation generation by default
+  * Examples: Add OMEMO echo client example
+  * OMEMO: Report encryption as failed when no recipient device
+    (other than the own ones) could be encrypted for, instead of
+    silently "succeeding"
+  * OMEMO: Fix undecryptable messages by setting the 'kex'
+    attribute based on the actual ciphertext message type instead
+    of an application-level assumption
+  + Stream: Fix dropped default namespace on incoming stanzas
+    with Qt 6.12, which broke authentication, file transfers and
+    stream parsing
+
+-------------------------------------------------------------------
 Thu Apr 23 12:01:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.15.1
