@@ -457,4 +457,24 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343003</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>ae0cce8f110800a866ad17b18f27d3fd</srcmd5>
+    <version>2.56.2</version>
+    <time>1782673546</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.56.2:
+  + Documentation:
+    - Remove obsolete FSF (Free Software Foundation) address
+    - README.win32.md: Mention Visual Studio 2026
+    - Visual Studio builds: Update build information
+  + Meson build:
+    - Use the Python installation that Meson uses.
+    - Meson and NMake builds: Distinguish Visual Studio 2026 builds
+      from Visual Studio 2022 builds
+    - NMake Makefiles: Consolidate items and improve flexibility
+    - NMake Makefiles: Make build process more robust
+    - NMake Makefiles: Update .m4 installation location
+    - Don't require the 'dot' command to build the documentation</comment>
+    <requestid>1361955</requestid>
+  </revision>
 </revisionlist>

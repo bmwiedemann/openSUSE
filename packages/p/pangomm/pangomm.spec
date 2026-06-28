@@ -20,7 +20,7 @@
 %define libname  lib%{name}-2_48-1
 
 Name:           pangomm
-Version:        2.56.1
+Version:        2.56.2
 Release:        0
 Summary:        C++ interface for pango
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-only
