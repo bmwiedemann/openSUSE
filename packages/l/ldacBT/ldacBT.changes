@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jun 24 07:43:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.2.5:
+  + Allow build with CMake 4.0.0
+  + Drop patch version in soname, built libraries will only have
+    .so.2.0.2 suffix at most. This is to distinguish between
+    library version and build script version.
+  + Pin version to 2.0.2.3 in pkgconfig file for compatibility.
+- Modernize spec: use cmake_build and ldconfig_scriptlets macros.
+- Switch to source service, upstream no longer includes upstream
+  libldac bundled tarball, so we now need to clone the git repo
+  ourselves.
+
+-------------------------------------------------------------------
 Thu Feb 18 08:12:03 UTC 2021 - Antonio Larrosa <alarrosa@suse.com>
 
 - Exclude building in big-endian architectures (s390 s390x ppc64)

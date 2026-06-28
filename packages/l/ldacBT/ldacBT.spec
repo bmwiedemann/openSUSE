@@ -1,7 +1,7 @@
 #
 # spec file for package ldacBT
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,14 @@
 
 %global libname libldac2
 Name:           ldacBT
-Version:        2.0.2.3
+Version:        2.0.2.5
 Release:        0
 Summary:        A lossy audio codec for Bluetooth connections
 License:        Apache-2.0
 Group:          Productivity/Multimedia/Sound/Utilities
 URL:            https://github.com/EHfive/ldacBT
-Source0:        %{url}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
+
 Source1:        baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc
@@ -55,7 +56,7 @@ It enables the transmission of High-Resolution Audio content,
 even over a Bluetooth connection.
 
 %prep
-%autosetup -n %{name}
+%autosetup -p1
 
 %build
 %cmake \
@@ -63,13 +64,12 @@ even over a Bluetooth connection.
 	-DLDAC_SOFT_FLOAT=OFF \
 	-DINSTALL_LIBDIR=%{_libdir} \
 	%{nil}
-%make_jobs
+%cmake_build
 
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE
