@@ -1,7 +1,7 @@
 #
 # spec file for package digikam
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,11 +19,11 @@
 %define kf6_version 6.0.0
 %define qt6_version 6.4.0
 
-%define soversion 9_0_0
+%define soversion 9_1_0
 %bcond_without released
 %bcond_with    apidocs
 Name:           digikam
-Version:        9.0.0
+Version:        9.1.0
 Release:        0
 Summary:        A KDE Photo Manager
 License:        GPL-2.0-or-later
@@ -33,8 +33,6 @@ Source0:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{ver
 Source1:        https://download.kde.org/stable/digikam/%{version}/digiKam-%{version}.tar.xz.sig
 Source2:        digikam.keyring
 %endif
-# PATCH-FIX-OPENSUSE
-Patch0:         digikam-pointer-casting.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex
@@ -175,9 +173,6 @@ The main digikam libraries that are being shared between showfoto and digikam
 
 %prep
 %setup -q -n digikam-%{version}
-%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
-%patch -P 0 -p1
-%endif
 
 %build
 %cmake_kf6 \

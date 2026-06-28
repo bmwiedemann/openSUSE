@@ -2011,4 +2011,14 @@ General : Update internal Libraw to snapshot 202110
 </comment>
     <requestid>1338254</requestid>
   </revision>
+  <revision rev="233" vrev="1">
+    <srcmd5>6fea3d2528dea64faeaa634894d466f6</srcmd5>
+    <version>9.1.0</version>
+    <time>1782673838</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.1.0
+  * https://www.digikam.org/news/2026-06-07-9.1.0_release_announcement/
+- Drop digikam-pointer-casting.patch, Leap 15 is EOL (forwarded request 1362064 from Kieltux)</comment>
+    <requestid>1362164</requestid>
+  </revision>
 </revisionlist>
