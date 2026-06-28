@@ -60,4 +60,17 @@
   * Fix reopening of stdin on Windows (#347)</comment>
     <requestid>1338102</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>01abf29f35c894ad9550f22d1d884525</srcmd5>
+    <version>0.21.0</version>
+    <time>1782673635</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.0:
+  * Remove support for python 3.9
+  * Fix bug skipping config's skip_unparsable setting (#355)
+  * Fix special handling for ambiguous date formats (#349)
+  * Add failing test for partial date with leap day
+  * Remove the autodoc typehints extension in sphinx</comment>
+    <requestid>1362045</requestid>
+  </revision>
 </revisionlist>

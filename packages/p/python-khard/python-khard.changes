@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jun 27 20:55:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.0:
+  * Remove support for python 3.9
+  * Fix bug skipping config's skip_unparsable setting (#355)
+  * Fix special handling for ambiguous date formats (#349)
+  * Add failing test for partial date with leap day
+  * Remove the autodoc typehints extension in sphinx
+
+-------------------------------------------------------------------
 Tue Mar 10 21:57:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.1:

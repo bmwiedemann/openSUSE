@@ -18,29 +18,28 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-khard
-Version:        0.20.1
+Version:        0.21.0
 Release:        0
 Summary:        Console carddav client
 License:        GPL-3.0-only
 URL:            https://github.com/lucc/khard
 Source0:        https://files.pythonhosted.org/packages/source/k/khard/khard-%{version}.tar.gz
 BuildArch:      noarch
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 61.0}
+BuildRequires:  %{python_module setuptools_scm >= 6.2}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # SECTION test
-BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module ruamel.yaml}
-BuildRequires:  %{python_module vobject}
+BuildRequires:  %{python_module configobj >= 5.0.6}
+BuildRequires:  %{python_module ruamel.yaml >= 0.17.0}
+BuildRequires:  %{python_module vobject >= 0.9.7}
 # /SECTION
-Requires:       python-Unidecode
-Requires:       python-atomicwrites
-Requires:       python-configobj
-Requires:       python-ruamel.yaml
-Requires:       python-vobject
+Requires:       python-configobj >= 5.0.6
+Requires:       python-ruamel.yaml >= 0.17.0
+Requires:       python-vobject >= 0.9.7
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Suggests:       python3-vdirsyncer
