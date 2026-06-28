@@ -63,4 +63,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1353575</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f3c8312d7ec5ed982800dae99ecfede8</srcmd5>
+    <version>1.2.0</version>
+    <time>1782673589</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.2.0:
+  * Added openVDB format exports (Issue #141, PR #148)
+  * new API-level interoperability features (#160)
+  * new `Grid.convert_to()` method to create the native object
+    (#161, PR #164) `mrc.MRC`, `OpenDX.field`,
+   `OpenVDB.OpenVDBField`: new `from_grid()`
+  * class method to create the corresponding GridDataFormats
+    wrapper from a `Grid`  (#161, PR #164, PR #148)
+  * new attribute `native` for GridDataFormat wrappers contains
+    the native object (#161, PR #164, PR #148)
+  * Ensure that when Grid() or Grid.load() load a datafile with
+    the wrong format a ValueError is raised consistently. (PR #165)</comment>
+    <requestid>1362011</requestid>
+  </revision>
 </revisionlist>

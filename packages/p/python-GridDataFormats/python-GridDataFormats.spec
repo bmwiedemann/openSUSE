@@ -17,7 +17,7 @@
 
 
 Name:           python-GridDataFormats
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Python Tools for Reading and writing of data on regular grids
 License:        LGPL-3.0-or-later

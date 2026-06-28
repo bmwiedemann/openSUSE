@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:58:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Added openVDB format exports (Issue #141, PR #148)
+  * new API-level interoperability features (#160)
+  * new `Grid.convert_to()` method to create the native object
+    (#161, PR #164) `mrc.MRC`, `OpenDX.field`,
+   `OpenVDB.OpenVDBField`: new `from_grid()`
+  * class method to create the corresponding GridDataFormats
+    wrapper from a `Grid`  (#161, PR #164, PR #148)
+  * new attribute `native` for GridDataFormat wrappers contains
+    the native object (#161, PR #164, PR #148)
+  * Ensure that when Grid() or Grid.load() load a datafile with
+    the wrong format a ValueError is raised consistently. (PR #165)
+
+-------------------------------------------------------------------
 Sun May 10 09:17:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
