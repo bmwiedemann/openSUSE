@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:16:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.23.0:
+  * Revert "chore: bump actions/checkout from 6 to 7 in the
+    github-actions group" (#10123)
+  * Revert "chore: bump go.mongodb.org/mongo-driver from 1.8.4 to
+    1.17.7 in /integration/examples/multiple-renderers/backend/src"
+    (#10122)
+  * Revert "chore: bump puma from 5.6.9 to 7.2.1 in
+    /integration/examples/ruby/backend" (#10121)
+  * Revert "chore: bump the golang group across 1 directory with 19
+    updates" (#10120)
+  * chore: bump actions/checkout from 6 to 7 in the github-actions
+    group (#10115)
+  * chore: bump go.mongodb.org/mongo-driver from 1.8.4 to 1.17.7 in
+    /examples/multiple-renderers/backend/src (#10113)
+  * chore: bump go.mongodb.org/mongo-driver from 1.8.4 to 1.17.7 in
+    /integration/examples/multiple-renderers/backend/src (#10112)
+  * chore: bump puma from 5.6.9 to 7.2.1 in /examples/ruby/backend
+    (#10105)
+  * chore: bump puma from 5.6.9 to 7.2.1 in
+    /integration/examples/ruby/backend (#10104)
+  * chore: bump the golang group across 1 directory with 19 updates
+    (#10119)
+  * chore: bump github.com/containerd/containerd from 1.7.32 to
+    1.7.33 (#10118)
+
+-------------------------------------------------------------------
 Wed Jun 10 11:00:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.22.0:
