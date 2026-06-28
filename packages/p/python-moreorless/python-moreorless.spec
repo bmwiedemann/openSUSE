@@ -1,7 +1,7 @@
 #
 # spec file for package python-moreorless
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-moreorless
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Python diff wrapper
 License:        MIT
@@ -25,24 +25,16 @@ Group:          Development/Languages/Python
 URL:            https://github.com/thatch/moreorless/
 Source:         https://files.pythonhosted.org/packages/source/m/moreorless/moreorless-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 38.3.0}
-BuildRequires:  %{python_module setuptools_scm}
+BuildRequires:  %{python_module setuptools >= 65}
+BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  (python3-dataclasses if python3-base < 3.7)
-BuildRequires:  (python36-dataclasses if python36-base)
 Requires:       python-click
-Requires:       python-volatile
-%if 0%{?python_version_nodots} < 37
-Requires:       python-dataclasses
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module parameterized}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module volatile}
+BuildRequires:  %{python_module pytest >= 8}
 # /SECTION
 %python_subpackages
 
@@ -51,7 +43,6 @@ Python diff wrapper.
 
 %prep
 %setup -q -n moreorless-%{version}
-sed -i '/parameterized/d' setup.cfg
 
 %build
 %pyproject_wheel
@@ -61,7 +52,7 @@ sed -i '/parameterized/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest moreorless/tests/[a-z]*.py
+%pytest
 
 %files %{python_files}
 %doc README.md

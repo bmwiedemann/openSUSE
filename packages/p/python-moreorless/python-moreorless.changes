@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:43:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.0:
+  * Fix missing f-prefix on error strings in combined.py
+  * Reject structurally invalid hunks in patch application
+
+-------------------------------------------------------------------
 Mon May  5 21:01:13 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.0:
