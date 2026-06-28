@@ -1,7 +1,7 @@
 #
 # spec file for package systemd-repart-dracut
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,7 +28,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           systemd-repart-dracut
-Version:        1+git20260504.f7cd8f6%{git_version}
+Version:        1+git20260626.ecafb3f%{git_version}
 Release:        0
 Summary:        Systemd-repart service dracut module
 License:        MIT
