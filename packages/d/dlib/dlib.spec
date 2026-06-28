@@ -1,7 +1,7 @@
 #
 # spec file for package dlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,9 +25,15 @@ Summary:        Toolkit for making machine learning and data analysis applicatio
 License:        BSL-1.0
 URL:            https://github.com/davisking/dlib
 Source:         %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support Python 3.14 refcounting changes
+Patch0:         support-python-3.14.patch
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  cblas-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -96,7 +102,7 @@ applications using Python
 This package provides a module to allow importing and using dlib from Python.
 
 %prep
-%setup -q -n dlib-%{version}
+%autosetup -p1 -n dlib-%{version}
 
 %build
 export CXX=g++
@@ -105,16 +111,16 @@ pushd dlib
 %cmake -DUSE_AVX_INSTRUCTIONS:BOOL=OFF -DUSE_SSE4_INSTRUCTIONS:BOOL=OFF
 %cmake_build
 popd
-# cannot use pyproject_* macros because we need to pass cmake options to setup.py using --set
+# cannot use pyproject_wheel macro because we need to pass cmake options to setup.py using --set, so build it by hand per Python version
 # Note that setting these to `--yes` does not enable them unconditionally, but
 # rather makes them host machine dependent (boo#1223168)
-%python_build --no USE_AVX_INSTRUCTIONS --no USE_SSE4_INSTRUCTIONS
+%python_exec -m build -wn -o build -C--global-option="--no USE_AVX_INSTRUCTIONS --no USE_SSE4_INSTRUCTIONS"
 
 %install
 pushd dlib
 %cmake_install
 popd
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 %fdupes %{buildroot}%{_includedir}/
 
