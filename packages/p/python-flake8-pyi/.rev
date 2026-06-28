@@ -435,4 +435,22 @@ Other changes:
   which broke tests.</comment>
     <requestid>1303701</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67087f72e67230431cdf7275a9918f11</srcmd5>
+    <version>26.5.0</version>
+    <time>1782673578</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 26.5.0:
+  * Previously, flake8-pyi monkey patched flake8's F821
+    (undefined name) check to avoid false positives in stub files.
+    This monkey patch has been removed.
+    Instead, we now recommend to disable F821 when running flake8
+    on stub files.
+  * Remove the now unnecessary `--no-pyi-aware-file-checker`
+    option.
+  * Y034 no longer triggers in protocol class definitions.
+  * Drop support for Python 3.9
+- drop fix-tests.patch (upstream)</comment>
+    <requestid>1362002</requestid>
+  </revision>
 </revisionlist>

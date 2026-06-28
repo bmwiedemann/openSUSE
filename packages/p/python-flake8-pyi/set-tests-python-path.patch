@@ -1,7 +1,7 @@
-Index: flake8_pyi-25.5.0/tests/test_pyi_files.py
+Index: flake8_pyi-26.5.0/tests/test_pyi_files.py
 ===================================================================
---- flake8_pyi-25.5.0.orig/tests/test_pyi_files.py
-+++ flake8_pyi-25.5.0/tests/test_pyi_files.py
+--- flake8_pyi-26.5.0.orig/tests/test_pyi_files.py
++++ flake8_pyi-26.5.0/tests/test_pyi_files.py
 @@ -43,6 +43,9 @@ def test_pyi_file(path: str) -> None:
          option = flag.split("=")[0]
          assert option not in {"--ignore", "--select"}, bad_flag_msg(option[2:])

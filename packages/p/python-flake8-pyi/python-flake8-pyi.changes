@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun May 17 13:51:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.5.0:
+  * Previously, flake8-pyi monkey patched flake8's F821
+    (undefined name) check to avoid false positives in stub files.
+    This monkey patch has been removed.
+    Instead, we now recommend to disable F821 when running flake8
+    on stub files.
+  * Remove the now unnecessary `--no-pyi-aware-file-checker`
+    option.
+  * Y034 no longer triggers in protocol class definitions.
+  * Drop support for Python 3.9
+- drop fix-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Sep  5 15:02:05 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 25.5.0
