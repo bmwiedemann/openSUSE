@@ -1,16 +1,17 @@
-Index: plumbum-1.10.0/tests/test_pipelines.py
+Index: plumbum-2.0.1/tests/test_pipelines.py
 ===================================================================
---- plumbum-1.10.0.orig/tests/test_pipelines.py
-+++ plumbum-1.10.0/tests/test_pipelines.py
-@@ -1,5 +1,7 @@
- from __future__ import annotations
+--- plumbum-2.0.1.orig/tests/test_pipelines.py
++++ plumbum-2.0.1/tests/test_pipelines.py
+@@ -2,6 +2,8 @@ from __future__ import annotations
+ 
+ from typing import TYPE_CHECKING
  
 +import sys
 +
  import pytest
  
  import plumbum
-@@ -57,7 +59,7 @@ for i in range(5000):
+@@ -61,7 +63,7 @@ for i in range(5000):
      print(i)
  """
      )
@@ -19,7 +20,7 @@ Index: plumbum-1.10.0/tests/test_pipelines.py
  
  
  @pytest.fixture
-@@ -72,7 +74,7 @@ for line in sys.stdin:
+@@ -76,7 +78,7 @@ for line in sys.stdin:
      print(i)
  """
      )

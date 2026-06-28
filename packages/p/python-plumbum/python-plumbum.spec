@@ -1,7 +1,7 @@
 #
 # spec file for package python-plumbum
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-plumbum
-Version:        1.10.0
+Version:        2.0.1
 Release:        0
 Summary:        Shell combinators library
 License:        MIT
@@ -27,13 +27,16 @@ Source:         https://github.com/tomerfiliba/plumbum/archive/v%{version}.tar.g
 Patch0:         use-python3-not-python.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module hatchling >= 1.27.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
+Requires:       python-typing_extensions
 # SECTION test requirements
 BuildRequires:  %{python_module paramiko}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-timeout}

@@ -119,4 +119,41 @@
   * Use the correct interpreter under test when running two scripts.</comment>
     <requestid>1319612</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a5602290914c863b3e338f848e079514</srcmd5>
+    <version>2.0.1</version>
+    <time>1782673840</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1:
+  * Make SwitchInfo hashable again so requires=/excludes= work
+  * Drop unused conda.recipe
+  * Support async mode (#768)  Support popen on async pipelines
+    (#795, #804)
+  * Support popen on async pipelines
+  * More pathlib API supported
+  * Support color string processing
+  * Remove pywin32 dependency and replace WinAPI calls with a
+    custom ctypes wrapper
+  * Full static typing  Add paramiko machine typing (#746) Add
+    remote typing (#744) Add sshmachine typing (#745) Add typing
+    for color (#730) Add typing for fs (#737) Add typing for
+    local machine (#743) Typing paths (#733) Adding rest of
+    typing (#739) Enable tc ruff check (#752) More safe types
+    (#741) Should be safe types (#740) Type only session (#742)
+    Types for Application (#735) Typing for commands (#738) Type
+    examples too (#748) Typing fixes from Ruff (#749) Minor
+    typing updates (#780)
+  * Add paramiko machine typing
+  * Add remote typing
+  * Add sshmachine typing
+  * Add typing for color
+  * Add typing for fs
+  * Add typing for local machine
+  * Typing paths
+  * Adding rest of typing
+  * Enable tc ruff check
+  * More safe types
+  * Should be safe types</comment>
+    <requestid>1362152</requestid>
+  </revision>
 </revisionlist>
