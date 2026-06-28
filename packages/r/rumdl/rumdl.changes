@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:07:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.24:
+  * Added
+    - MD043: report expected and actual headings at first mismatch
+      (#696) (57f0902) - thanks @mkowen1
+    - MD013: add semantic-link-understanding to flag long-URL links
+      in stern mode (#691) (f17e3f7) - thanks @chandlerc
+  * Fixed
+    - MD013: extend standalone-link reflow boundary to blockquotes
+      (74e79f6)
+    - MD013: treat standalone links as paragraph boundaries in
+      reflow (#697) (39ea2b2) - thanks @chandlerc
+    - MD013: associate paragraph reflow fix with all violating
+      lines (#698) (f17be35) - thanks @chandlerc
+    - fix-coordinator: honor inline rumdl-configure-file overrides
+      when applying fixes (c347ab6)
+    - MD013: exempt standalone links with trailing punctuation and
+      wrappers (#694) (d7a3c2e) - thanks @chandlerc
+    - MD013: keep the space after an inline code span before
+      punctuation (#693) (13745db) - thanks @chandlerc
+    - lsp: iterate formatting fixes to a fixpoint so one format
+      pass converges (#695) (78c42ad) - thanks @chandlerc
+    - MD028: make blockquote-merge autofix opt-in by default
+      (cffadef)
+    - MD036: make emphasis-to-heading autofix opt-in by default
+      (9b145a9)
+    - MD007: scope fence-opening exception to backtick/tilde fences
+      (2a3a554)
+    - MD007: keep nested lists nested under a fence-opening list
+      item (59f987e) - thanks @chandlerc
+- Update to version 0.2.23:
+  * Added
+    - rules: add MD082 to require content between headings
+      (e5592ae)
+  * Fixed
+    - lint-context: attach list items whose marker line opens a
+      code fence (95898f4)
+    - parser: parse reference-definition titles on a continuation
+      line (fb02b52)
+    - cli: make per-file exclude notice verbose-only (2923e27)
+
+-------------------------------------------------------------------
 Wed Jun 24 05:20:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.22:
