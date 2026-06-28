@@ -166,9 +166,12 @@ mkdir -p %{buildroot}%{pemcontainerkeydir}/
 install -c -m 644 %{SOURCE14} %{buildroot}%{pemcontainerkeydir}/suse-container-key.pem
 install -c -m 644 %{SOURCE11} %{buildroot}%{pemcontainerkeydir}/suse-container-key-old.pem
 install -c -m 644 %{SOURCE12} %{buildroot}%{pemcontainerkeydir}/opensuse-container-key-2023.pem
-if [ -e "%_sourcedir/_pubkey" ]; then
+
+# Include pubkey only if we do not have it yet.
+if [ -e "%_sourcedir/_pubkey"  ]; then
     name="$(sh %{SOURCE0} %_sourcedir/_pubkey).asc"
-    if [ ! -e "%_sourcedir/$name" ]; then
+    idname=`echo $name|sed -e 's/-[^-]*$//;'`
+    if [ ! -e %_sourcedir/$idname*.asc ]; then
 	install -D -m 644 %_sourcedir/_pubkey %{buildroot}%keydir/"$name"
     fi
 fi

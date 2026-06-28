@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 23 14:34:49 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- do not include the projects _pubkey if we have it already.
+
+-------------------------------------------------------------------
+Mon Jun 22 09:52:22 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- use the modification time for key2rpname
+
+-------------------------------------------------------------------
 Thu May 28 08:31:44 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - extended to openSUSE 4096bit RSA key for 4 more years.

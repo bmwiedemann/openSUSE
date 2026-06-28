@@ -512,4 +512,14 @@ However, it would be good to have these out before we do switch. (forwarded requ
   gpg-pubkey-29b700a4-6a17fa38.asc (forwarded request 1355580 from msmeissn)</comment>
     <requestid>1355581</requestid>
   </revision>
+  <revision rev="58" vrev="67">
+    <srcmd5>69025f2b88c5df60940737a4c3a68e77</srcmd5>
+    <version>1.0</version>
+    <time>1782673559</time>
+    <user>dimstar_suse</user>
+    <comment>- do not include the projects _pubkey if we have it already.
+
+- use the modification time for key2rpname</comment>
+    <requestid>1362194</requestid>
+  </revision>
 </revisionlist>
