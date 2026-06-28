@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 18:20:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260601:
+  * Fixed validation of client-controlled channel parameters.
+  * Fixed packet buffer bounds in plain-text and
+    chacha20-poly1305 packet handling.
+  * Fixed truncated log messages in subprocess_auth.
+  * Forced a minimal `maxpacket` value of 32 when opening
+    channels.
+  * Fixed README.md systemd variable substitution example.
+
+-------------------------------------------------------------------
 Mon Apr  6 13:08:12 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 20260401:
