@@ -17,7 +17,7 @@
 
 
 Name:           git-annex
-Version:        10.20260601
+Version:        10.20260624
 Release:        0
 Summary:        Manage files with git, without checking their contents into git
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later AND BSD-2-Clause AND MIT AND GPL-2.0-only
@@ -54,8 +54,6 @@ BuildRequires:  ghc-blaze-builder-devel
 BuildRequires:  ghc-blaze-builder-prof
 BuildRequires:  ghc-bloomfilter-devel
 BuildRequires:  ghc-bloomfilter-prof
-BuildRequires:  ghc-byteable-devel
-BuildRequires:  ghc-byteable-prof
 BuildRequires:  ghc-bytestring-devel
 BuildRequires:  ghc-bytestring-prof
 BuildRequires:  ghc-case-insensitive-devel
@@ -138,8 +136,6 @@ BuildRequires:  ghc-network-devel
 BuildRequires:  ghc-network-prof
 BuildRequires:  ghc-network-uri-devel
 BuildRequires:  ghc-network-uri-prof
-BuildRequires:  ghc-old-locale-devel
-BuildRequires:  ghc-old-locale-prof
 BuildRequires:  ghc-optparse-applicative-devel
 BuildRequires:  ghc-optparse-applicative-prof
 BuildRequires:  ghc-path-pieces-devel
@@ -159,8 +155,6 @@ BuildRequires:  ghc-resourcet-prof
 BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-sandi-devel
 BuildRequires:  ghc-sandi-prof
-BuildRequires:  ghc-securemem-devel
-BuildRequires:  ghc-securemem-prof
 BuildRequires:  ghc-servant-client-core-devel
 BuildRequires:  ghc-servant-client-core-prof
 BuildRequires:  ghc-servant-client-devel

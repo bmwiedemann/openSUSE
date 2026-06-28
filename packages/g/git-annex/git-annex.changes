@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jun 25 16:29:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update git-annex to version 10.20260624.
+  git-annex (10.20260624) upstream; urgency=medium
+
+    * Added Botan build flag, which speeds up checksumming significantly
+      for most existing hash backends.
+    * Added Blake3 build flag, which is the fastest available
+      cryptographically secure hash.
+      Thanks to edef for implementing this.
+    * When b3sum is in PATH, use it for faster blake3 hashing.
+    * Added XXH3 build flag, which is the fastest available
+      non-cryptographically secure hash, and is a smaller hash
+      than MD5 or SHA1.
+    * Improve handling of synced/master and similar branches, by
+      only creating such branches when necessary to push to a non-bare
+      remote, and by removing the local synced branch once its changes
+      are merged.
+    * put: New command.
+    * move: Fix bug where an interrupted command other than move could
+      be treated as an interrupted move, resulting in dropping content
+      when not allowed by numcopies.
+    * Fix build with http-types-0.12.5
+    * merge, post-receive: Fix bug that prevented merging any synced/
+      branches into the current branch.
+      (Reversion introduced in 10.20260601)
+    * git-annex.cabal: Remove unused dependency on old-locale.
+    * Remove dependencies on securemem and byteable.
+
+   -- Joey Hess <id@joeyh.name>  Thu, 25 Jun 2026 12:28:43 -0400
+
+-------------------------------------------------------------------
 Mon Jun 22 10:24:53 UTC 2026 - Peter Simons <psimons@suse.com>
 
 - Apply "0001-Build-with-ram-instead-of-memory-package-to-support-.patch"

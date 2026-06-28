@@ -1,9 +1,9 @@
 diff --git a/git-annex.cabal b/git-annex.cabal
-index 216dc8e34b..e170cc38ef 100644
+index 2fef9ae934..89abc14717 100644
 --- a/git-annex.cabal
 +++ b/git-annex.cabal
-@@ -241,7 +241,6 @@ Executable git-annex
-    old-locale,
+@@ -253,7 +253,6 @@ Executable git-annex
+    time (>= 1.9.1),
     persistent-sqlite (>= 2.13.3),
     persistent (>= 2.13.3),
 -   persistent-template (>= 2.8.0),
