@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:46:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.1:
+  * Refactor lookup value retrieval in Field and
+    CachedForeignKeyWidget (2146)
+  * Fix CachedForeignKeyWidget type mismatch on non-string lookup
+    fields (2159)
+
+-------------------------------------------------------------------
 Fri Mar  6 16:30:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:

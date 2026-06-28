@@ -205,4 +205,16 @@
   * Added CachedForeignKeyWidget (2142)</comment>
     <requestid>1337351</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b42c892524b982d283f9d000297cfb84</srcmd5>
+    <version>4.4.1</version>
+    <time>1782673584</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.4.1:
+  * Refactor lookup value retrieval in Field and
+    CachedForeignKeyWidget (2146)
+  * Fix CachedForeignKeyWidget type mismatch on non-string lookup
+    fields (2159)</comment>
+    <requestid>1362003</requestid>
+  </revision>
 </revisionlist>
