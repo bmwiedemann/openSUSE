@@ -1,7 +1,50 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:11:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.48.1:
+  * Revert: ``ID3: Fix saving ID3v2 comment fields from
+    COMM:desc:lang tags`` to fix duplicated COMM frames in some
+    cases. :pr:`713`
+  * Drop Support for Python 3.7, 3.8 and 3.9 :pr:`611` :pr:`657`
+    :pr:`689`
+  * ID3: Add ``salt`` attribute to APIC frames to allow multiple
+    APIC frames with
+  * identical descriptions :pr:`675`
+  * ID3: Preserve order of APIC frames relative to each other
+    when saving :bug:`436` :pr:`676`
+  * ID3: Fix reading/writing v1.0 and v1.1 comment/track fields
+    :bug:`668` :pr:`686`
+  * ID3: Fix saving ID3v2 comment fields from ``COMM:desc:lang``
+    tags :bug:`660` :pr:`709`
+  * ID3: Consider size of extended header when reading ID3 data
+    :bug:`630` :pr:`631`
+  * EasyID3: Fix handling of ``albumartistsort`` as ``TSO2`` with
+    ``TXXX:ALBUMARTISTSORT``
+  * fallback for reading :pr:`649`
+  * MP3: do not fail on non-ASCII lame header version flags
+    :pr:`664`
+  * OggOpus: Provide a bitrate property :bug:`475` :pr:`704`
+  * MP4: Fall back to parsing length from ``mvhd`` if there is no
+    ``trak`` info :pr:`682`
+  * MP4: Fix chapter timestamp parsing :bug:`639` :pr:`640`
+  * OGG: Fix saving files with trailing null bytes :bug:`591`
+    :pr:`674`
+  * mid3v2: Fix ``--list-frames-v2.2`` option :bug:`669`
+    :pr:`683`
+  * Set ``__cause__`` on ``MutagenError`` to preserve exception
+    chain :bug:`703` :pr:`710`
+  * Explicitly define exports with ``__all__`` in
+    ``mutagen/__init__.py`` :bug:`647` :pr:`696`
+  * docs: Fix code example for :class:`flac.Picture` :pr:`673`
+  * docs: Initial :doc:`dev/index` with implementation notes for
+    ID3 :pr:`633`
+  * Switch from poetry to uv for development :pr:`687`
+  * Changed the default branch from master to main
+
+-------------------------------------------------------------------
 Fri Mar  1 03:32:49 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Switch to autosetup and pyproject macros. 
+- Switch to autosetup and pyproject macros.
 
 -------------------------------------------------------------------
 Mon Nov 27 09:05:22 UTC 2023 - Dirk Müller <dmueller@suse.com>
