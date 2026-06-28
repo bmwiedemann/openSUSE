@@ -1,4 +1,189 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:34:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.155.0:
+  No telemetrygen-related changes
+  Dependencies
+  * Update github-actions deps (major) (#49290)
+  * Update module github.com/jellydator/ttlcache/v3 to v3.4.1
+    (#49252)
+  * Update testcontainers-go monorepo (#49278)
+  * Update dependency js-yaml to v5 (#49281)
+  * Update module modernc.org/sqlite to v1.53.0 (#49277)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.40.1
+    (#49275)
+  * Update module github.com/redis/go-redis/v9 to v9.21.0 (#49273)
+  * Update module go.etcd.io/bbolt to v1.5.0 (#49276)
+  * Update module github.com/moby/moby/api to v1.55.0 (#49264)
+  * Update All golang.org/x packages (#49255)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.49.0 (#49271)
+  * Update module github.com/prometheus/common to v0.69.0 (#49272)
+  * Update All github.com/aws packages (#49254)
+  * Update github-actions deps (#49260)
+  * Update module github.com/coreos/go-oidc/v3 to v3.19.0 (#49261)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.44.0
+    (#49263)
+  * Update module github.com/moby/moby/client to v0.5.0 (#49265)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.201 (#49251)
+  * Update mongo driver v2 to v2.7.0 (#49248)
+  * Update All github.com/datadog packages (#49250)
+  * Update dockerfile deps (#49249)
+  * [chore] Update core dependencies (#49176)
+  * Update All github.com/aws packages (#49129)
+  * Update module github.com/rabbitmq/amqp091-go to v1.12.0
+    (#49122)
+  * Update module github.com/apache/cassandra-gocql-driver/v2 to
+    v2.1.2 (#49121)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.39.0
+    (#49117)
+  * Update module github.com/prometheus-community/pro-bing to
+    v0.9.0 (#49116)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.43.0
+    (#49115)
+  * Update module github.com/klauspost/compress to v1.18.6 (#49093)
+  * Update module github.com/getsentry/sentry-go to v0.47.0
+    (#49113)
+  * Update module github.com/apache/pulsar-client-go to v0.20.0
+    (#49112)
+  * Update module github.com/redis/go-redis/v9 to v9.20.1 (#49094)
+  * Update module github.com/tg123/go-htpasswd to v1.2.5 (#49100)
+  * Update All golang.org/x packages (#49106)
+  * Update module github.com/SAP/go-hdb to v1.16.12 (#49095)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.200 (#49092)
+  * Update dockerfile deps (#49099)
+  * Update module software.sslmate.com/src/go-pkcs12 to v0.7.2
+    (#49104)
+  * Update All github.com/azure packages (#49105)
+  * Update docker-compose deps to v0.154.0 (#49107)
+  * Update All github.com/aws packages (#49089)
+  * Update dockerfile deps (#49088)
+  * [chore] Update core dependencies (#49076)
+  * [chore] Update core dependencies (#49033)
+  * Updated Oracle README to document wait_sample metrics (#48846)
+  * Updated first load time for top query (#48999)
+  * Update All github.com/aws packages (#48982)
+  * Update dockerfile deps (#48981)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.36.3
+    (#48974)
+  * Update github-actions deps (#48957)
+  * Update All golang.org/x packages (#48952)
+  * Update All github.com/twmb/franz-go packages to v1.21.3
+    (#48941)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.199 (#48942)
+  * Update module github.com/prometheus/common to v0.68.1 (#48943)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.36.2
+    (#48944)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202623
+    (#48946)
+  * Update All github.com/googlecloudplatform packages to v1.33.0
+    (#48951)
+  * Update dockerfile deps (#48956)
+  * Update module github.com/jackc/pgx/v5 to v5.10.0 (#48958)
+  * Update module github.com/lib/pq to v1.12.3 (#48959)
+  * Update module github.com/snowflakedb/gosnowflake/v2 to v2.1.0
+    (#48961)
+  * Update module modernc.org/sqlite to v1.52.0 (#48962)
+  * Update github-actions deps to v7 (#48963)
+  * Update module github.com/open-telemetry/otel-arrow/go to
+    v0.48.0 (#48960)
+  * Update All github.com/azure packages (#48949)
+  * Update All github.com/aws packages (#48948)
+
+-------------------------------------------------------------------
+Sun Jun 28 15:09:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.154.0:
+  telemetrygen-related changes
+  * [cmd/telemetrygen] Fix --allow-export-failures ignored in batch
+    mode (#48764)
+  Dependencies
+  * [chore] Update core dependencies (#48939)
+  * Update All github.com/datadog packages to v5.0.201 (#48935)
+  * Update dockerfile deps (#48934)
+  * [chore] Update core dependencies (#48906)
+  * Update module github.com/google/go-github/v86 to v88 (#48656)
+  * [chore] update opentelemetry-operations-go dependencies
+    (#48894)
+  * Update module
+    github.com/Azure/azure-sdk-for-go/sdk/resourcemanager/monitor/armmonitor
+    to v0.12.0 (#48819)
+  * [chore] Update core dependencies (#48884)
+  * [chore]: update affiliation (#48852)
+  * [chore] Update podman receiver documentation with rootless
+    podman information (#48825)
+  * Update All github.com/aws packages (#48845)
+  * Update opentelemetry-go monorepo (#48842)
+  * Update github-actions deps to v24 (#48844)
+  * Update module modernc.org/sqlite to v1.51.0 (#48841)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.36.0
+    (#48836)
+  * Update All github.com/aws packages to v1.27.0 (#48829)
+  * Update docker-compose deps to v3.12.0 (#48835)
+  * Update github-actions deps to v6.0.3 (#48828)
+  * Update module github.com/prometheus/common to v0.68.0 (#48822)
+  * Update module github.com/redis/go-redis/v9 to v9.20.0 (#48823)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.42.0
+    (#48820)
+  * Update module github.com/parquet-go/parquet-go to v0.30.1
+    (#48821)
+  * Update github-actions deps (#48818)
+  * Update All opentelemetry-go-contrib packages (#48816)
+  * Update module github.com/cockroachdb/pebble/v2 to v2.1.6
+    (#48801)
+  * Update module github.com/knadh/koanf/v2 to v2.3.5 (#48804)
+  * Update module github.com/shirou/gopsutil/v4 to v4.26.5 (#48807)
+  * Update module github.com/vmware/govmomi to v0.54.1 (#48810)
+  * Update module go.opentelemetry.io/ebpf-profiler to v0.0.202622
+    (#48811)
+  * Update module github.com/SAP/go-hdb to v1.16.11 (#48806)
+  * Update dependency js-yaml to v4.2.0 (#48817)
+  * Update module github.com/DeRuina/timberjack to v1.4.5 (#48802)
+  * Update docker/setup-qemu-action digest to 0611638 (#48795)
+  * Update All github.com/aws packages (#48798)
+  * Update module github.com/huaweicloud/huaweicloud-sdk-go-v3 to
+    v0.1.198 (#48803)
+  * Update mcr.microsoft.com/mssql/server:2025-latest Docker digest
+    to d975fb1 (#48796)
+  * [chore] Update core dependencies (#48756)
+  * [chore] more updates from WriteString to fmt.Fprint (#48746)
+  * Bump Prometheus to 3.12 (#48747)
+  * Update module
+    github.com/aws/aws-sdk-go-v2/service/servicediscovery to
+    v1.40.0 (#48680)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.103 (#48667)
+  * Update module github.com/modelcontextprotocol/go-sdk to v1.6.1
+    (#48647)
+  * Update module github.com/lestrrat-go/strftime to v1.2.0
+    (#48652)
+  * Update docker-compose deps to v0.153.0 (#48653)
+  * Update module
+    github.com/Arize-ai/openinference/go/openinference-semantic-conventions
+    to v0.1.1 (#48644)
+  * Update module
+    github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common
+    to v1.3.102 (#48649)
+  * Update module github.com/hetznercloud/hcloud-go/v2 to v2.41.2
+    (#48650)
+  * Update module github.com/jaegertracing/jaeger-idl to v0.9.0
+    (#48651)
+  * Update module gitlab.com/gitlab-org/api/client-go/v2 to v2.32.0
+    (#48654)
+  * Update module golang.org/x/sys to v0.45.0 (#48655)
+  * Update github-actions deps (#48637)
+  * Update module github.com/elastic/lunes to v0.2.2 (#48646)
+  * Update dockerfile deps (#48636)
+  * Update module github.com/DataDog/agent-payload/v5 to v5.0.199
+    (#48645)
+  * Update All github.com/aws packages (#48641)
+  * Update docker-compose deps to v0.152.1 (#48642)
+
+-------------------------------------------------------------------
 Fri May 29 07:14:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.153.0:
