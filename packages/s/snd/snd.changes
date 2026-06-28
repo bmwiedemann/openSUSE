@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 18:53:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.4:
+  * s7: nested-define (stuff.scm) -- sometimes called curried-
+    define
+
+-------------------------------------------------------------------
 Wed Mar 25 14:33:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.2:

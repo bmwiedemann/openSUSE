@@ -419,4 +419,14 @@
     <comment></comment>
     <requestid>1343301</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>9b0849790d88462a774b761ec6496b78</srcmd5>
+    <version>26.4</version>
+    <time>1782676326</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 26.4:
+  * s7: nested-define (stuff.scm) -- sometimes called curried-
+    define</comment>
+    <requestid>1362240</requestid>
+  </revision>
 </revisionlist>
