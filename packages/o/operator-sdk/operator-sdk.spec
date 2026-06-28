@@ -17,7 +17,7 @@
 
 
 Name:           operator-sdk
-Version:        1.42.2
+Version:        1.42.3
 Release:        0
 Summary:        CLI for installing the Operator Lifecycle Manager
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         operator-sdk-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.7
+BuildRequires:  go1.26 >= 1.26.3
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(gpgme)
 
