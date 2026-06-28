@@ -381,4 +381,19 @@ This should fix ERROR: download_files is configured to fail when the upstream fi
   * Add return_as parameter to imread; deprecate aszarr.</comment>
     <requestid>1354100</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>e3664a960a2e1b867f1867f35042efd8</srcmd5>
+    <version>2026.6.1</version>
+    <time>1782673855</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.6.1:
+  * Replace NullContext with contextlib.nullcontext (breaking).
+  * Fix writing monochrome linear_raw (#328).
+  * Fix keyboard axis selection in imshow interactive viewer
+    (#327).
+  * Fix reading short ASCII string tag values from NDPI.
+  * Add option to suppress writing extrasamples tag.
+  * Verify origin of codecs.</comment>
+    <requestid>1362180</requestid>
+  </revision>
 </revisionlist>
