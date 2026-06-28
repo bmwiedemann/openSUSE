@@ -7,4 +7,16 @@
     <comment>Required by python-mistral-vibe</comment>
     <requestid>1335940</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9d5c26b6e9b428653030460821a870b</srcmd5>
+    <version>0.15.0</version>
+    <time>1782673598</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.0:
+  * Fix path and branch extraction removing every /blob/ and
+    /tree/ occurrence instead of only the leading marker, which
+    corrupted file paths and branch names containing those
+    segments.</comment>
+    <requestid>1362012</requestid>
+  </revision>
 </revisionlist>
