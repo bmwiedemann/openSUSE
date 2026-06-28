@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/woodpecker-ci/woodpecker</param>
-              <param name="changesrevision">0812d5e790472290eae75a3f329c85af41d203b0</param></service></servicedata>
+              <param name="changesrevision">0812d5e790472290eae75a3f329c85af41d203b0</param></service><service name="tar_scm">
+                <param name="url">https://github.com/woodpecker-ci/woodpecker.git</param>
+              <param name="changesrevision">b75ee6612863bc8d7436f10ebf52350350bf4176</param></service></servicedata>
