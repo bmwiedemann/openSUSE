@@ -18,10 +18,10 @@
 
 %define cpan_name WWW-Mechanize
 Name:           perl-WWW-Mechanize
-Version:        2.210.0
+Version:        2.220.0
 Release:        0
-# 2.21 -> normalize -> 2.210.0
-%define cpan_version 2.21
+# 2.22 -> normalize -> 2.220.0
+%define cpan_version 2.22
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Handy web browsing in a Perl object
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:53:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.220.0 (2.22)
+   see /usr/share/doc/packages/perl-WWW-Mechanize/Changes
+
+  2.22      2026-06-18 20:59:34Z
+      [ENHANCEMENTS]
+      - credentials() now warns when called with the two-argument form, which
+        stores credentials globally; prefer the host-scoped four-argument form.
+        (GH#420) (Olaf Alders)
+
+-------------------------------------------------------------------
 Sun Jun 14 08:54:42 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.210.0 (2.21)
