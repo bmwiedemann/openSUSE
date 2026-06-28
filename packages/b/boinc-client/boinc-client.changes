@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:46:51 UTC 2026 - KNine <knine@canine.lat>
+
+- Update to release 8.2.13
+  * Fix Manager crash on Wayland (8.2.13)
+  * Support Wayland-only operating systems (8.2.12)
+  * Add <prioritize_gpu> config option
+  * Improve battery level validation logic
+  * Various client and Docker-related fixes
+- Drop no longer existing 'xcompile' directory from the platform
+  cleanup in %%build (removed upstream).
+- Update boinc-client-rpmlintrc: drop the now-unused
+  no-manual-page-for-binary filter and silence two false positives
+  (logrotate /var/log, hicolor-icon-theme branding).
+- Drop unused 'update-desktop-files' BuildRequires; the deprecated
+  %%suse_update_desktop_file macro is not used and desktop database
+  updates are handled by file triggers.
+
+-------------------------------------------------------------------
 Thu Feb  5 10:47:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.8

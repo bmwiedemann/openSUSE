@@ -38,7 +38,7 @@
 Name:           boinc-client
 %define rel_name        %{name}_release
 %define minor_version   8.2
-Version:        %minor_version.8
+Version:        %minor_version.13
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -83,7 +83,6 @@ Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
 Recommends:     logrotate
 %if %{with manager}
-BuildRequires:  update-desktop-files
 BuildRequires:  wxWidgets-3_2-devel >= 3.1.5
 %lang_package -n boinc-manager
 %endif
@@ -166,7 +165,7 @@ done
 rm -r coprocs/NVIDIA
 
 # Remove unnecessary components and files for other platforms.
-rm -r android drupal mac_build mac_installer win_build xcompile
+rm -r android drupal mac_build mac_installer win_build
 
 autoreconf -fi
 export CFLAGS="%optflags -W -pipe -fno-strict-aliasing -D_REENTRANT"

@@ -8,10 +8,10 @@ of docbook2x-man.
  configure.ac |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: boinc-client_release-8.2-8.2.8/configure.ac
+Index: boinc-client_release-8.2-8.2.13/configure.ac
 ===================================================================
---- boinc-client_release-8.2-8.2.8.orig/configure.ac
-+++ boinc-client_release-8.2-8.2.8/configure.ac
+--- boinc-client_release-8.2-8.2.13.orig/configure.ac
++++ boinc-client_release-8.2-8.2.13/configure.ac
 @@ -434,7 +434,7 @@ AC_SUBST([TOP_BUILD_DIR], [`pwd`])
  dnl Check for docbook2x-man, which we use to create the manpages in
  dnl doc/manpages, and set the conditional HAVE_DOCBOOK2X_MAN to build
