@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jun 26 21:10:54 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add lal-ptr-const-qualifier.patch: correctly declare pointers to
+  const data to prevent "discarded-qualifier" warnings, which in
+  turn cause build errors due to the use of "-Werror".
+
+-------------------------------------------------------------------
 Mon Feb 23 12:58:24 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches [bsc#1256968]

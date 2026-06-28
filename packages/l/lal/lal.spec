@@ -1,8 +1,7 @@
 #
 # spec file for package lal
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,6 +46,8 @@ Patch0:         lal-swig-4_4-compat.patch
 Patch2:         lal-disable-erroneous-test.patch
 # fix build with gcc16
 Patch3:         lal-gcc16.patch
+# PATCH-FIX-UPSTREAM lal-ptr-const-qualifier.patch badshah400@gmail.com -- Add const qualifier to pointer returned by strchr to prevent 'discarded-qualifiers' error
+Patch4:         lal-ptr-const-qualifier.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module numpy}
@@ -152,6 +153,7 @@ This package provides the octave module for lal.
 %patch -P0 -p2
 %patch -P2 -p1
 %patch -P3 -p1
+%patch -P4 -p1
 
 %build
 autoreconf -fvi

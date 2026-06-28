@@ -1,0 +1,81 @@
+---
+ lib/std/LALString.c  |    8 ++++----
+ lib/support/FileIO.c |    4 ++--
+ lib/tools/Segments.c |    2 +-
+ 3 files changed, 7 insertions(+), 7 deletions(-)
+
+Index: lal-7.7.0/lib/std/LALString.c
+===================================================================
+--- lal-7.7.0.orig/lib/std/LALString.c
++++ lal-7.7.0/lib/std/LALString.c
+@@ -161,7 +161,7 @@ int XLALStringToLowerCase(char * string)
+     for (UINT4 i = 0; i < strlen(string); i++) {
+         int c = string[i];
+         if (c) {
+-            char *p = strchr(upper_chars, c);
++            const char *p = strchr(upper_chars, c);
+             if (p) {
+                 int offset = p - upper_chars;
+                 c = lower_chars[offset];
+@@ -190,7 +190,7 @@ int XLALStringToUpperCase(char * string)
+     for (UINT4 i = 0; i < strlen(string); i++) {
+         int c = string[i];
+         if (c) {
+-            char *p = strchr(lower_chars, c);
++            const char *p = strchr(lower_chars, c);
+             if (p) {
+                 int offset = p - lower_chars;
+                 c = upper_chars[offset];
+@@ -233,7 +233,7 @@ int XLALStringNCaseCompare(const char *s
+ 
+         /* convert c1 to lower case */
+         if (c1) {
+-            char *p = strchr(upper_chars, c1);
++            const char *p = strchr(upper_chars, c1);
+             if (p) {
+                 int offset = p - upper_chars;
+                 c1 = lower_chars[offset];
+@@ -242,7 +242,7 @@ int XLALStringNCaseCompare(const char *s
+ 
+         /* convert c2 to lower case */
+         if (c2) {
+-            char *p = strchr(upper_chars, c2);
++            const char *p = strchr(upper_chars, c2);
+             if (p) {
+                 int offset = p - upper_chars;
+                 c2 = lower_chars[offset];
+Index: lal-7.7.0/lib/tools/Segments.c
+===================================================================
+--- lal-7.7.0.orig/lib/tools/Segments.c
++++ lal-7.7.0/lib/tools/Segments.c
+@@ -860,7 +860,7 @@ XLALSegListSearch( LALSegList *seglist,
+        takes a pointer to a LIGOTimeGPS and a pointer to a LALSeg, whereas
+        bsearch expects the comparison function passed to it to take void
+        pointers as arguments.  Oh well. */
+-    segp = bsearch( (const void *) gps, (const void *) bstart,
++    segp = bsearch( (const void *) gps, (void *) bstart,
+                     bcount, sizeof(LALSeg), XLALGPSInSeg );
+     /* If we found a match, update lastFound and return the pointer.
+        Otherwise, return NULL. */
+Index: lal-7.7.0/lib/support/FileIO.c
+===================================================================
+--- lal-7.7.0.orig/lib/support/FileIO.c
++++ lal-7.7.0/lib/support/FileIO.c
+@@ -404,7 +404,7 @@ LALFILE *XLALFileOpenWrite( const char *
+ LALFILE *XLALFileOpen( const char *path, const char *mode )
+ {
+   int compression;
+-  char *ext;
++  const char *ext;
+   switch ( *mode ) {
+   case 'r':
+     return XLALFileOpenRead( path );
+@@ -824,7 +824,7 @@ int XLALGzipTextFile( const char *filena
+ int XLALGunzipTextFile( const char *filename ){
+   CHAR *memblock = NULL; /* memory block to read data into */
+   CHAR *outname = NULL;
+-  CHAR *gzpos = NULL;
++  const CHAR *gzpos = NULL;
+ 
+   LALFILE *fp = NULL; /* output file pointer */
+   LALFILE *fg = NULL; /* input gzipped file pointer */
