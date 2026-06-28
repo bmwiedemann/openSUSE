@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:36:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.66.0:
+  * Datacenters commands are now deprecated
+    - The hcloud datacenters list and hcloud datacenters describe
+      commands are now deprecated.
+      The endpoints GET /v1/datacenters and GET
+      /v1/datacenters/{id} are now deprecated and will be removed
+      after 1 Oct. 2026. After this date, requests to these
+      endpoints will return HTTP 410 Gone.
+      See the changelog for more details.
+      https://docs.hetzner.cloud/changelog#2026-06-02-datacenters-deprecated
+  * Features
+    - deprecate hcloud datacenters ... commands (#1436)
+  * Bug Fixes
+    - cmd: Change tense for deletion of active context (#1412)
+  * Dependencies
+    - deps: update codecov/codecov-action action to v7 (#1440)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.44.0 (#1437)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.8.1
+      (#1424)
+    - deps: update golang.org/x/ (#1430)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.43.0 (#1432)
+    - deps: update dependency go to v1.26.4 (#1429)
+
+-------------------------------------------------------------------
 Thu May 21 13:47:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.65.0:

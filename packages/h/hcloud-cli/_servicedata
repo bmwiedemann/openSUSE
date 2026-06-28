@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/hetznercloud/cli</param>
-              <param name="changesrevision">a9f3077b036d9145ef75e17b51483fa4481c0a9f</param></service></servicedata>
+              <param name="changesrevision">a9f3077b036d9145ef75e17b51483fa4481c0a9f</param></service><service name="tar_scm">
+                <param name="url">https://github.com/hetznercloud/cli.git</param>
+              <param name="changesrevision">05d3057f919e40fe761a471a84b445b9615c3afb</param></service></servicedata>
