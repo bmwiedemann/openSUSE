@@ -1,3 +1,10 @@
+gpxsee (16.10) stable; urgency=low
+
+  * Various map rendering performance improvements.
+  * Various minor map loading fixes/improvements.
+
+ -- Martin Tuma <tumic@gpxsee.org>  Sat, 27 Jun 2026 12:31:26 +0200
+
 gpxsee (16.9) stable; urgency=low
 
   * Added track waypoints display option.
