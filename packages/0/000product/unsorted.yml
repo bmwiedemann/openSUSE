@@ -290,7 +290,6 @@ unsorted:
   - R-tcltk 
   - R-tools 
   - R-utils 
-  - RBTools 
   - Radicale 
   - RealtimeSync 
   - RemoteBox 
@@ -7578,27 +7577,21 @@ unsorted:
   - go-sendxmpp 
   - go1.21 
   - go1.21-doc 
-  - go1.21-libstd 
   - go1.21-race 
   - go1.22 
   - go1.22-doc 
-  - go1.22-libstd 
   - go1.22-race 
   - go1.23 
   - go1.23-doc 
-  - go1.23-libstd 
   - go1.23-race 
   - go1.24 
   - go1.24-doc 
-  - go1.24-libstd 
   - go1.24-race 
   - go1.25 
   - go1.25-doc 
-  - go1.25-libstd 
   - go1.25-race 
   - go1.26 
   - go1.26-doc 
-  - go1.26-libstd 
   - go1.26-race 
   - goaccess 
   - goben 
@@ -10207,6 +10200,8 @@ unsorted:
   - kf6-kitemmodels-devel 
   - kf6-kitemviews-devel 
   - kf6-kjobwidgets-devel 
+  - kf6-kmime 
+  - kf6-kmime-devel 
   - kf6-knewstuff-devel 
   - kf6-knotifications-devel 
   - kf6-knotifyconfig-devel 
@@ -11328,6 +11323,8 @@ unsorted:
   - libKF5ThreadWeaver5 
   - libKF5UnitConversion5 
   - libKF5UnitConversion5-lang 
+  - libKF6Mime6 
+  - libKF6Mime6-lang 
   - libKGantt2 
   - libKHealthCertificate1 
   - libKOSM1 
@@ -14987,7 +14984,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf27_2 
+  - libmupdf28_0 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -20280,7 +20277,6 @@ unsorted:
   - nulloy-gstreamer 
   - nulloy-taglib 
   - nulloy-vlc 
-  - numa-preplace 
   - numad 
   - numatop 
   - numbat 
@@ -24579,6 +24575,7 @@ unsorted:
   - python311-QtPy 
   - python311-QtPy-test 
   - python311-Quart 
+  - python311-RBTools 
   - python311-RTFDE 
   - python311-RangeHTTPServer 
   - python311-RegexOrder 
@@ -25099,6 +25096,7 @@ unsorted:
   - python311-azure-mgmt-mongodbatlas 
   - python311-azure-mgmt-monitor 
   - python311-azure-mgmt-monitorslis 
+  - python311-azure-mgmt-monitorworkspaces 
   - python311-azure-mgmt-msi 
   - python311-azure-mgmt-mysqlflexibleservers 
   - python311-azure-mgmt-napsteromniagentapi 
@@ -25824,6 +25822,7 @@ unsorted:
   - python311-fastparquet 
   - python311-fastremap 
   - python311-fasttext 
+  - python311-fastuuid 
   - python311-fawltydeps 
   - python311-fb-re2 
   - python311-fedora-messaging 
@@ -28501,6 +28500,7 @@ unsorted:
   - python313-QtPy 
   - python313-QtPy-test 
   - python313-Quart 
+  - python313-RBTools 
   - python313-RTFDE 
   - python313-RangeHTTPServer 
   - python313-RegexOrder 
@@ -29027,6 +29027,7 @@ unsorted:
   - python313-azure-mgmt-mongodbatlas 
   - python313-azure-mgmt-monitor 
   - python313-azure-mgmt-monitorslis 
+  - python313-azure-mgmt-monitorworkspaces 
   - python313-azure-mgmt-msi 
   - python313-azure-mgmt-mysqlflexibleservers 
   - python313-azure-mgmt-napsteromniagentapi 
@@ -29765,6 +29766,7 @@ unsorted:
   - python313-fastparquet 
   - python313-fastremap 
   - python313-fasttext 
+  - python313-fastuuid 
   - python313-fawltydeps 
   - python313-fb-re2 
   - python313-fedora-messaging 
@@ -32471,6 +32473,7 @@ unsorted:
   - python314-QtPy 
   - python314-QtPy-test 
   - python314-Quart 
+  - python314-RBTools 
   - python314-RTFDE 
   - python314-RangeHTTPServer 
   - python314-RegexOrder 
@@ -33003,6 +33006,7 @@ unsorted:
   - python314-azure-mgmt-mongodbatlas 
   - python314-azure-mgmt-monitor 
   - python314-azure-mgmt-monitorslis 
+  - python314-azure-mgmt-monitorworkspaces 
   - python314-azure-mgmt-msi 
   - python314-azure-mgmt-mysqlflexibleservers 
   - python314-azure-mgmt-napsteromniagentapi 
@@ -33752,6 +33756,7 @@ unsorted:
   - python314-fastparquet 
   - python314-fastremap 
   - python314-fasttext 
+  - python314-fastuuid 
   - python314-fawltydeps 
   - python314-fb-re2 
   - python314-fedora-messaging 

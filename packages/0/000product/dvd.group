@@ -3098,6 +3098,7 @@
     <package name="nsswitch-config" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ntfs-3g" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ntfsprogs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="numa-preplace" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="numactl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="numlockx" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="nvidia-libXNVCtrl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
