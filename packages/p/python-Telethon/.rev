@@ -420,4 +420,16 @@ Requires python-setuptools 78 to build successfully.
 - drop stop-using-event_loop-fixture.patch (upstream)</comment>
     <requestid>1350578</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a61cb96a3a901e925b3f4031e7d772c7</srcmd5>
+    <version>1.44.0</version>
+    <time>1782673843</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.44.0:
+  * Slight typings improvements.
+  * Should no longer time out when dealing with server salts.
+  * Should no longer lead to high CPU usage when connection is
+    closed by remote.</comment>
+    <requestid>1362155</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %define modname Telethon
 %{?sle15_python_module_pythons}
 Name:           python-Telethon
-Version:        1.43.2
+Version:        1.44.0
 Release:        0
 Summary:        Full-featured Telegram client library for Python 3
 License:        MIT

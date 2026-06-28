@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:16:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.44.0:
+  * Slight typings improvements.
+  * Should no longer time out when dealing with server salts.
+  * Should no longer lead to high CPU usage when connection is
+    closed by remote.
+
+-------------------------------------------------------------------
 Sun May  3 19:55:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.43.2:
