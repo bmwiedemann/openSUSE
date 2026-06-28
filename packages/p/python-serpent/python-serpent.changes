@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:17:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to serpent-1.43:
+  * Fixed multiple bugs in serialization and parsing (complex
+    number edge cases, custom types etc)
+  * Changed java maven publishing method
+
+-------------------------------------------------------------------
 Mon Nov 10 08:10:19 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to serpent-1.42:

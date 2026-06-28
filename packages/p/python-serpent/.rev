@@ -90,4 +90,15 @@
 - Update to version 1.41</comment>
     <requestid>1316809</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>5bc285f134dbc1fb3db4cf6ccfcf4623</srcmd5>
+    <version>1.43</version>
+    <time>1782673843</time>
+    <user>dimstar_suse</user>
+    <comment>- update to serpent-1.43:
+  * Fixed multiple bugs in serialization and parsing (complex
+    number edge cases, custom types etc)
+  * Changed java maven publishing method</comment>
+    <requestid>1362156</requestid>
+  </revision>
 </revisionlist>
