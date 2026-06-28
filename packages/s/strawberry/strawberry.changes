@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 27 21:10:26 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.21
+  + Re-point playlist items that references duplicated songs before removal (#2168)
+  + Preserve user data before deleting duplicate songs (#2168)
+  + Check for svg support (#2171)
+  + Support custom icons from scalable dir (#2171)
+  + Custom icons take precedence over system theme icons (#2171)
+  + Add .tak to valid file extensions
+  + Optional exponential volume
+  + Fixed build without moodbar and waveform
+
+-------------------------------------------------------------------
 Sat Jun 20 23:19:14 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.20
