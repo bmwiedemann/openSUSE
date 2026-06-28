@@ -522,4 +522,27 @@
     hosted at https://pycal.org/code-of-conduct/.</comment>
     <requestid>1353624</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>c7f3da3875bf1fae321a6b2a1c850f10</srcmd5>
+    <version>7.2.0</version>
+    <time>1782673829</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 7.2.0:
+  * Created an ical_value property for the vFrequency component,
+    mirroring the existing pattern on vWeekday. @mvanhorn (Issue
+  * Created an ical_value property for the vGeo component.
+  * Added type hints to component methods.
+  * Added test coverage for icalendar.compatibility.deprecate_for_version_8().
+  * The Alarm.uid accessor now falls back to vendor-specific UID
+    properties (the existing X-ALARMUID and the newly added
+    X-EVOLUTION-ALARM-UID) when no canonical UID is present, so
+    alarms exported by Evolution/GNOME Calendar expose a usable
+    identifier. single_string_property now accepts an ordered list
+    of fallback keys so further vendor aliases can be added later.
+  * The rdates and exdates properties are now writable: assigning a
+    list replaces the RDATE/EXDATE values, del (or assigning an
+    empty list or None) clears them, and assigning the value the
+    getter returns round-trips.</comment>
+    <requestid>1362147</requestid>
+  </revision>
 </revisionlist>
