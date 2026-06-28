@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 09:50:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.0:
+  * expose `known_number_bytes` and parser methods for bytes ->
+    number
+
+-------------------------------------------------------------------
 Sat Apr 11 18:00:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.13.0:
