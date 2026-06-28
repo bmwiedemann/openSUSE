@@ -1,7 +1,7 @@
 #
 # spec file for package stripe-mock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stripe-mock
-Version:        0.186.0
+Version:        0.201.0
 Release:        0
 Summary:        Mock HTTP server based on the real Stripe API
 License:        MIT
