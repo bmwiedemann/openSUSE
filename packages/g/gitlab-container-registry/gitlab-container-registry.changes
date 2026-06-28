@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:50:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.40.2:
+  * Bug Fixes
+    - driver/s3-v2: make retry delayer stateless (e927a39)
+    - driver/s3-v2: strip request checksum and inject content-md5
+      when checksum_disabled (71ff9d7)
+    - handlers: defer router init until metadata DB resolves
+      prefer-fallback (685b376)
+    - s3: fix panic in Stat() call (5bcb779)
+  * Build
+    - deps: update module github.com/alicebob/miniredis/v2 to
+      v2.38.0 (5bbd451)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.17 (54cfdf1)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.20 (ae32dec)
+    - deps: update module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.25 (0dc8ad4)
+    - deps: update module github.com/aws/aws-sdk-go-v2/credentials
+      to v1.19.16 (5fdc189)
+    - deps: update module github.com/aws/aws-sdk-go-v2/credentials
+      to v1.19.24 (15b7b82)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.10.0 (5c608ed)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.11.0 (a2cd23b)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.11.4 (b2af8ef)
+    - deps: update module
+      github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to
+      v1.11.6 (a0042d4)
+    - upgrade golang.org/x/crypto to v0.53.0 (3e422ec)
+    - upgrade to Go 1.25 (cc3c39a)
+
+-------------------------------------------------------------------
 Thu May 28 07:34:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.40.1:

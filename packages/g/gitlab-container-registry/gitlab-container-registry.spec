@@ -1,7 +1,7 @@
 #
 # spec file for package gitlab-container-registry
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gitlab-container-registry
-Version:        4.40.1
+Version:        4.40.2
 Release:        0
 Summary:        The GitLab Container Registry
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 Source2:        %{name}-configuration.yml
 Source3:        %{name}.service
 Source4:       system-user-%{name}.conf
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 
