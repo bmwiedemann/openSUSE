@@ -19,11 +19,11 @@
 %define __builder Ninja
 %bcond_without qt6
 
-%define _mtime 1757616801
-%define _commit 94dcc1dd
+%define _mtime 1782583224
+%define _commit 4d4f0312
 
 Name:           QMPlay2
-Version:        25.09.11
+Version:        26.06.27
 Release:        0
 Summary:        A Qt based media player, streamer and downloader
 License:        LGPL-3.0-or-later
@@ -32,8 +32,6 @@ URL:            https://github.com/zaps166/QMPlay2
 Source:         %{name}-%{version}.%{_mtime}.%{_commit}.tar.gz
 # PATCH-FEATURE-OPENSUSE 0001-add-opensuse-customizations.patch -- Fix python executable detection and add branding
 Patch1:         0001-add-opensuse-customizations.patch
-# PATCH-FIX-UPSTREAM 0002-sidplayfp-v3-github-1008-or-f502b11.diff -- Sidplayfp v3 support.
-Patch2:         0002-sidplayfp-v3-github-1008-or-f502b11.diff
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.16
 BuildRequires:  lld
@@ -74,6 +72,7 @@ BuildRequires:  pkgconfig(libavutil) >= 56.14.100
 BuildRequires:  pkgconfig(libcddb)
 BuildRequires:  pkgconfig(libcdio)
 BuildRequires:  pkgconfig(libgme)
+BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsidplayfp) >= 3
@@ -148,6 +147,7 @@ It's a development package for %{name}.
   -DBUILD_WITH_QT6=OFF \
 %endif
   -DUSE_CHIPTUNE_SID=ON \
+  -DUSE_OPENMPT=ON \
   -DUSE_PORTAUDIO=ON \
   -DUSE_PIPEWIRE=ON \
 %if 0%{?suse_version} >= 1699 || 0%{?sle_version} >= 150500

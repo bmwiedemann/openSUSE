@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Jun 27 22:14:11 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 26.06.27:
+  * AVAudioFilter improvements and compatibility fix for FFmpeg
+    8.0,
+  * remove Rayman2 audio decoder (FFmpeg is able to play it),
+  * add OpenMPT with tracker-like optional visualizations,
+  * add option to YouTubeDL to add additional parameters,
+  * add gamma correction control for OpenGL and Vulkan,
+  * add option to move full screen panel to the right,
+  * multi-line text edit for comment in tag editor,
+  * fix possible crashes when loading playlist,
+  * fix popups on left panel on full screen,
+  * MediaBrowser fixes and improvements,
+  * add libsidplayfp 3.0 compatibility,
+  * Vulkan Video decoder fixes,
+  * added HDR metadata,
+  * remove Modplug,
+  * other minor fixes.
+- Drop 0002-sidplayfp-v3-github-1008-or-f502b11.diff as it is
+  merged upstream
+
+-------------------------------------------------------------------
 Fri Jun 26 12:59:53 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Added 0002-sidplayfp-v3-github-1008-or-f502b11.diff and
