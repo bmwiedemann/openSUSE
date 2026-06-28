@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:18:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.18.13:
+  * Bugfixes
+    - Fix token validation
+
+-------------------------------------------------------------------
 Tue Jun 09 05:18:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.12 (no releases between .9 and this one):
