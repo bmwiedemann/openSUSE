@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:01:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.49:
+  * No CLI-related changes
+- update to 1.0.48:
+  * General
+    - Remove unused context handler methods @yi-nuo426 (#20267)
+    - Refactor GetContext function documentation @yi-nuo426
+      (#20266)
+    - Remove unused methods from DefaultLocalProvider @yi-nuo426
+      (#20268)
+    - Remove commented-out Ping test code @yi-nuo426 (#20269)
+    - Improve connection persistence logging and error handling
+      @yi-nuo426 (#20270)
+  * Meshery CLI
+    - fix(mesheryctl): fix broken error handling in TestSetContext
+      @Harishrs2006 (#19853)
+  * Maintenance
+    - ci: remove duplicate CodeQL Advanced workflow @MrDadhich456
+      (#20248)
+  * Documentation
+    - Update overview.md @marblom007 (#20279)
+    - [Docs] Sidebar TOC: render leaf pages with normal font weight
+      @jamieplu (#20276)
+    - Update overview.md @simihablo (#20277)
+    - [Docs] TOC Sidebar uplift @jamieplu (#20275)
+    - Fix v0.8 light/dark mode icon display @Katotodan (#20258)
+- update to 1.0.47:
+  * General
+  * Maintenance
+    - Add Telemetry support with Grafana dashboards and Prometheus
+      metrics @aabidsofi19 (#20161)
+  * Documentation
+    - [Docs] Update discussion forum link @iyush05 (#20235)
+    - Add Telemetry support with Grafana dashboards and Prometheus
+      metrics @aabidsofi19 (#20161)
+    - [Docs] Align extension header icons across documentation
+      pages @vedant21-ctr (#20255)
+    - Create index.md @YASHMAHAKAL (#20254)
+- update to 1.0.46:
+  * General
+    - Update to Meshery Schemas v1.3.16 @jamieplu (#20247)
+    - [Server] Fix duplicate ErrInvalidUUID causing "Error codes
+      utility" CI failure @copilot-swe-agent[bot] (#20245)
+    - feat(ui): release-scoped cache headers for the served UI
+      @leecalcote (#20239)
+    - [Server] fix(errors): dedupe ErrInvalidUUIDCode to unblock
+      Error Codes Utility @leecalcote (#20240)
+    - docs: add Bluesky social shield to README.md @KumarNirupam1
+      (#20220)
+    - fix(uuid): harden ignored UUID errors after the gofrs revert
+      @ritzorama (#20181)
+  * Maintenance
+    - UI: Dependencies upgrades @leecalcote (#20238)
+    - fix(install): repair broken provider-drift CI gate
+      (check-install -> providers-check) + resync stale k8s
+      manifest @ritzorama (#20182)
+  * Documentation
+    - Delete docs/meetings/2026/week-of-06-18-2026/pragalva.md
+      @yi-nuo426 (#20246)
+    - docs(production): cover CDN and edge caching of the served UI
+      @leecalcote (#20243)
+    - [Docs] fix: add missing extension icon before Kanvas title
+      @smishraa30 (#20210)
+    - [Docs] Remove extra empty column from Meshery Connections
+      table @YASHMAHAKAL (#17994)
+    - [Docs] Add Connection Wizard user and contributor guides
+      @leecalcote (#20192)
+
+-------------------------------------------------------------------
 Mon Jun 22 05:24:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.45:
