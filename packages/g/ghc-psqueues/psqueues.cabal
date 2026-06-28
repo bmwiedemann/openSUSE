@@ -1,6 +1,6 @@
 Name:          psqueues
 Version:       0.2.8.3
-X-revision:    1
+X-revision:    2
 License:       BSD3
 License-file:  LICENSE
 Maintainer:    Jasper Van der Jeugt <jaspervdj@gmail.com>
@@ -138,7 +138,7 @@ Test-suite psqueues-tests
 
     Build-depends:
           HUnit            >= 1.2 && < 1.7
-        , QuickCheck       >= 2.7 && < 2.17
+        , QuickCheck       >= 2.7 && < 2.19
         , tasty            >= 1.2 && < 1.6
         , tasty-hunit      >= 0.9 && < 0.11
         , tasty-quickcheck >= 0.8 && < 0.12
