@@ -541,4 +541,18 @@
     helper</comment>
     <requestid>1359378</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8bdb4d8fa89356245c9b43ee524df108</srcmd5>
+    <version>0.150.0</version>
+    <time>1782673850</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.150.0:
+  * Add async_update_interfaces to rescan network interfaces at
+    runtime
+  * Precompute address hash instead of per-instance lru_cache
+  * Add benchmarks for cache mark-to-expire path
+  * Add benchmarks for ipaddress object creation and hashing
+  * Synchronise test_integration on browser first-query</comment>
+    <requestid>1362162</requestid>
+  </revision>
 </revisionlist>
