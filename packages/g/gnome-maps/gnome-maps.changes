@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jun 26 21:41:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Avoid focus route start entry when selecting a place (avoids
+    show OSK on touch)
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu Apr 16 06:17:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:

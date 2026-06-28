@@ -966,4 +966,15 @@
     <comment>Update version</comment>
     <requestid>1348431</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>27531192ddf737a14ffc53a86fa6e0da</srcmd5>
+    <version>50.2</version>
+    <time>1782673556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.2:
+  + Avoid focus route start entry when selecting a place (avoids
+    show OSK on touch)
+  + Updated translations.</comment>
+    <requestid>1361966</requestid>
+  </revision>
 </revisionlist>
