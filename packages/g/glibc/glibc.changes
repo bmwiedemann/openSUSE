@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jun 22 10:30:37 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- resolv-sprintrrf-unkown-types.patch: resolv: More types as unknown in
+  ns_sprintrrf (CVE-2026-5435, bsc#1263656, BZ #34033)
+- resolv-sprintrrf-inet-ntop-check.patch: resolv: Check for inet_ntop
+  failure in ns_sprintrrf
+- resolv-sprintrrf-buffer-overreads.patch: resolv: Fix buffer overreads in
+  ns_sprintrrf (CVE-2026-6238, bsc#1263658, BZ #34069)
+
+-------------------------------------------------------------------
+Thu Jun 18 08:52:18 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- fma-shift-ub.patch: math: Fix fma alignment when exponent difference is
+  exactly 64 (BZ #34183)
+- struct-reserved-members.patch: Rename __unused fields to
+  __glibc_reserved
+- iconv-translit-intermediate-errors.patch: iconv: Suppress intermediate
+  errors with //TRANSLIT (BZ #34236)
+- arm-vfp-plt-trampoline.patch: arm: Save/restore VFP registers in PLT
+  trampolines (BZ #34144, BZ #15792)
+
+-------------------------------------------------------------------
+Fri May 22 14:27:38 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- filter use of -fhardened (gcc switch that selects multiple
+  hardening options)
+
+-------------------------------------------------------------------
 Mon May 11 09:00:52 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - ungetwc-byte-stream.patch: libio: Fix ungetwc operating on byte stream

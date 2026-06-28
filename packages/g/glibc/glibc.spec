@@ -371,6 +371,20 @@ Patch1014:      ibm139x-pending-char-state.patch
 Patch1015:      ungetwc-byte-stream.patch
 # PATCH-FIX-UPSTREAM stdio-common: Fix buffer overflow in scanf %mc (CVE-2026-5450, BZ #34008)
 Patch1016:      scanf-mc-buffer-overflow.patch
+# PATCH-FIX-UPSTREAM math: Fix fma alignment when exponent difference is exactly 64 (BZ #34183)
+Patch1017:      fma-shift-ub.patch
+# PATCH-FIX-UPSTREAM Rename __unused fields to __glibc_reserved
+Patch1018:      struct-reserved-members.patch
+# PATCH-FIX-UPSTREAM iconv: Suppress intermediate errors with //TRANSLIT (BZ #34236)
+Patch1019:      iconv-translit-intermediate-errors.patch
+# PATCH-FIX-UPSTREAM arm: Save/restore VFP registers in PLT trampolines (BZ #34144, BZ #15792)
+Patch1020:      arm-vfp-plt-trampoline.patch
+# PATCH-FIX-UPSTREAM resolv: More types as unknown in ns_sprintrrf (CVE-2026-5435, BZ #34033)
+Patch1021:      resolv-sprintrrf-unkown-types.patch
+# PATCH-FIX-UPSTREAM resolv: Check for inet_ntop failure in ns_sprintrrf
+Patch1022:      resolv-sprintrrf-inet-ntop-check.patch
+# PATCH-FIX-UPSTREAM resolv: Fix buffer overreads in ns_sprintrrf (CVE-2026-6238, BZ #34069)
+Patch1023:      resolv-sprintrrf-buffer-overreads.patch
 %endif
 
 ###
@@ -639,6 +653,7 @@ for opt in $tmp; do
   case $opt in
     -fstack-protector-*) enable_stack_protector=${opt#-fstack-protector-} ;;
     -fstack-protector) enable_stack_protector=yes ;;
+    -fhardened) enable_stack_protector=strong ; enable_fortify_source=3 ;;
     -D_FORTIFY_SOURCE=*) enable_fortify_source=${opt#-D_FORTIFY_SOURCE=} ;;
     -ffortify=* | *_FORTIFY_SOURCE*) ;;
 %if "%flavor" == "i686"

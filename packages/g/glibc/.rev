@@ -3247,4 +3247,26 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   scanf %mc (CVE-2026-5450, bsc#1262465, BZ #34008) (forwarded request 1352664 from Andreas_Schwab)</comment>
     <requestid>1352665</requestid>
   </revision>
+  <revision rev="306" vrev="4">
+    <srcmd5>cc15f3bfab2ceed94086fae5d59b2235</srcmd5>
+    <version>2.43</version>
+    <time>1782673486</time>
+    <user>dimstar_suse</user>
+    <comment>- resolv-sprintrrf-unkown-types.patch: resolv: More types as unknown in
+  ns_sprintrrf (CVE-2026-5435, bsc#1263656, BZ #34033)
+- resolv-sprintrrf-inet-ntop-check.patch: resolv: Check for inet_ntop
+  failure in ns_sprintrrf
+- resolv-sprintrrf-buffer-overreads.patch: resolv: Fix buffer overreads in
+  ns_sprintrrf (CVE-2026-6238, bsc#1263658, BZ #34069)
+
+- fma-shift-ub.patch: math: Fix fma alignment when exponent difference is
+  exactly 64 (BZ #34183)
+- struct-reserved-members.patch: Rename __unused fields to
+  __glibc_reserved
+- iconv-translit-intermediate-errors.patch: iconv: Suppress intermediate
+  errors with //TRANSLIT (BZ #34236)
+- arm-vfp-plt-trampoline.patch: arm: Save/restore VFP registers in PLT
+  trampolines (BZ #34144, BZ #15792) (forwarded request 1361544 from Andreas_Schwab)</comment>
+    <requestid>1361545</requestid>
+  </revision>
 </revisionlist>
