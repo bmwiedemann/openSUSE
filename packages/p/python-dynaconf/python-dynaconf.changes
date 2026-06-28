@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jun 27 20:42:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.1:
+  * Remove call to deprecated functions on public APIs (#1404).
+  * Improve converage of DataList and DataDict (#1403).
+  * support Python 3.14 Union type repr and dict iteration
+    changes.
+  * preserve nested dict key order when object_merge merges old
+    into new.
+  * prevent RecursionError on dotted set with bracket in first
+    segment.
+
+-------------------------------------------------------------------
 Mon Mar 23 09:32:12 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.2.13 (fixes CVE-2026-33154, bsc#1260063)

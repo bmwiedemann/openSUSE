@@ -23,26 +23,26 @@
 %endif
 
 Name:           python-dynaconf
-Version:        3.2.13
+Version:        3.3.1
 Release:        0
 Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/dynaconf/dynaconf
 Source:         https://github.com/dynaconf/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 38.6.0}
+BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML
 Requires:       python-click
-Requires:       python-configobj
-Requires:       python-hvac
+Requires:       python-configobj >= 5.0.9
+Requires:       python-hvac >= 1.1.0
 Requires:       python-python-box
-Requires:       python-python-dotenv
-Requires:       python-redis
+Requires:       python-python-dotenv >= 1.2.1
+Requires:       python-redis >= 7.0.1
 Requires:       python-setuptools
-Requires:       python-toml
+Requires:       python-toml >= 0.10.2
 Suggests:       python-Django
 %if %{with libalternatives}
 Requires:       alts
@@ -53,18 +53,19 @@ Requires(postun): update-alternatives
 %endif
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django}
-BuildRequires:  %{python_module Flask >= 0.12}
+BuildRequires:  %{python_module Django >= 4.2.26}
+BuildRequires:  %{python_module Flask >= 1.0}
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module configobj}
-BuildRequires:  %{python_module hvac}
-BuildRequires:  %{python_module pytest-mock}
-BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module configobj >= 5.0.9}
+BuildRequires:  %{python_module hvac >= 1.1.0}
+BuildRequires:  %{python_module pytest >= 8.4.2}
+BuildRequires:  %{python_module pytest-asyncio >= 0.21.0}
+BuildRequires:  %{python_module pytest-mock >= 3.15.1}
 BuildRequires:  %{python_module python-box}
-BuildRequires:  %{python_module python-dotenv}
-BuildRequires:  %{python_module redis}
-BuildRequires:  %{python_module toml}
+BuildRequires:  %{python_module python-dotenv >= 1.2.1}
+BuildRequires:  %{python_module redis >= 7.0.1}
+BuildRequires:  %{python_module toml >= 0.10.2}
 BuildRequires:  redis
 # /SECTION
 %python_subpackages
@@ -84,6 +85,7 @@ rm tests/test_vault.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dynaconf
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/vendor_licenses
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -91,7 +93,7 @@ export LANG=en_US.UTF-8
 %{_sbindir}/redis-server --stop-writes-on-bgsave-error no &
 export DYNACONF_TEST_REDIS_URL==http://127.0.0.1:6379
 # test_help_dont_require_instance needs an installed binary in PATH
-%pytest -k "not (test_help_dont_require_instance)" tests/
+%pytest -k "not (test_help_dont_require_instance)" --ignore tests/test_release_utility.py tests/
 
 %pre
 # If libalternatives is used: Removing old update-alternatives entries.

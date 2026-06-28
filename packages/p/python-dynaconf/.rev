@@ -253,4 +253,20 @@
     <comment></comment>
     <requestid>1342006</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2cf89de84dd0704744db90984404eba1</srcmd5>
+    <version>3.3.1</version>
+    <time>1782673632</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.3.1:
+  * Remove call to deprecated functions on public APIs (#1404).
+  * Improve converage of DataList and DataDict (#1403).
+  * support Python 3.14 Union type repr and dict iteration
+    changes.
+  * preserve nested dict key order when object_merge merges old
+    into new.
+  * prevent RecursionError on dotted set with bracket in first
+    segment.</comment>
+    <requestid>1362041</requestid>
+  </revision>
 </revisionlist>
