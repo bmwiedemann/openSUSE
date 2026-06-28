@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:25:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.0:
+  The v2.4.0 release is the first Crossplane CLI release that does
+  not correspond to a Crossplane core release. It is compatible
+  with the currently supported minor versions of Crossplane core:
+  v2.3, v2.2, v2.1, and v1.20. It includes a number of incremental
+  features and improvements along with many bug fixes.
+  * Highlights
+    - New Commands
+      - crossplane xr generate converts a claim to a composite
+        resource, as Crossplane would do internally when a claim is
+        applied to a cluster. #13
+      - crossplane xr patch applies defaults from an XRD to an
+        input XR, as the apiserver would do when an XR is applied
+        to a cluster. #61
+      - crossplane xpkg get-crds downloads package dependencies
+        based on a crossplane.yaml file or package resource and
+        writes their CRDs to files. #26
+    - Command Updates
+      - crossplane project init now allows a repository to be
+        specified. #105
+      - crossplane resource validate now has YAML and JSON output
+        formats. #66
+      - crossplane xpkg push now allows OCI manifest annotations to
+        be specified with the --oci-annotation flag. #11
+      - crossplane composition render now supports repeating the
+        --required-resources and --extra-resources flags. #107
+      - Commands that interact with a cluster (e.g., crossplane
+        resource trace and crossplane xpkg install) now support
+        impersonation with the --as, --as-group, and --as-uid
+        flags. #114
+  * Developer Experience Updates
+    - Projects can now include pre-built functions specified in the
+      crossplane-project.yaml file, allowing functions to be built
+      using any language, tool, or framework. #24
+    - Projects can now specify a subset of languages for which
+      schemas should be generated in the crossplane-project.yaml
+      file. #24
+  * What's Changed
+    - Update dependencies and renovate for v2.3.0 release (main) by
+      @adamwg in #19
+    - ci: Remove image promotion steps by @adamwg in #22
+    - build: Use the shared crossplane cachix cache in nix.sh by
+      @adamwg in #17
+    - Add the LICENSE file by @adamwg in #27
+    - chore(deps): update module github.com/containerd/containerd
+      to v1.7.32 [security] (main) by @crossplane-renovate[bot] in
+      #34
+    - chore(deps): update module github.com/sigstore/cosign/v2 to
+      v2.6.2 [security] (main) by @crossplane-renovate[bot] in #35
+    - chore(deps): update module golang.org/x/crypto to v0.52.0
+      [security] (main) by @crossplane-renovate[bot] in #36
+    - Improve generation of reference docs by @adamwg in #30
+    - chore(deps): update module golang.org/x/net to v0.55.0
+      [security] (main) by @crossplane-renovate[bot] in #37
+    - chore(deps): update actions/create-github-app-token digest to
+      fee1f7d (main) by @crossplane-renovate[bot] in #52
+    - Update CONTRIBUTING.md and add install instructions to
+      README.md by @adamwg in #49
+    - Add the install.sh script and upload it to S3 by @adamwg in
+      #54
+    - docs: Enclose the CLI version number in backticks by @adamwg
+      in #55
+    - fix(docs): compile the bqRE once at package level by
+      @tampakrap in #57
+    - chore(deps): update actions/stale digest to eb5cf3a (main) by
+      @crossplane-renovate[bot] in #58
+    - feat(xr): Convert a Claim to XR via crossplane xr generate by
+      @tampakrap in #13
+    - chore(deps): pin dependencies (main) by
+      @crossplane-renovate[bot] in #51
+    - chore(deps): update cachix/install-nix-action digest to
+      8aa0397 (main) by @crossplane-renovate[bot] in #60
+    - fix(deps): update module github.com/go-git/go-git/v5 to
+      v5.19.1 [security] (main) by @crossplane-renovate[bot] in #40
+    - render: Sync render.proto with c/c and wire XRD through by
+      @jcogilvie in #74
+    - Fix Python schema generation for fields named int or bool by
+      @negz in #64
+    - chore(deps): update actions/checkout digest to df4cb1c (main)
+      by @crossplane-renovate[bot] in #76
+    - chore(deps): update codecov/codecov-action digest to 75cd116
+      (main) by @crossplane-renovate[bot] in #77
+    - chore(deps): update github/codeql-action digest to 8aad20d
+      (main) by @crossplane-renovate[bot] in #80
+    - chore(deps): update mheap/require-checklist-action digest to
+      9c8100a (main) by @crossplane-renovate[bot] in #81
+    - Support pre-built function runtimes and per-language schema
+      generation by @negz in #24
+    - render: Clean up unused code and duplicate consts by @adamwg
+      in #83
+    - render: Replace condition timestamps and sort resources to
+      stabilize output by @adamwg in #82
+    - feat(render): capture stderr and handle pipeline-fatal exit
+      code in both engines by @jcogilvie in #91
+    - chore(deps): update actions/checkout action to v6.0.3 (main)
+      by @crossplane-renovate[bot] in #84
+    - chore(deps): update vale-cli/vale-action action to v2.1.2
+      (main) by @crossplane-renovate[bot] in #85
+    - feat(xr): Introduce xr patch --xrd by @tampakrap in #61
+    - Update the CLI docs path by @adamwg in #99
+    - fix(xr): add missing import, caused by merge of outdated base
+      tree by @tampakrap in #103
+    - ci: Update the CLI reference documentation on every merge by
+      @adamwg in #106
+    - feat(validate): structured results and --output json|yaml
+      flag by @jcogilvie in #66
+    - function: Add missing dependencies to the Go function
+      template by @adamwg in #109
+    - xrd: Opportunistically infer integer types when generating
+      from an XR by @adamwg in #108
+    - feat: add xpkg get-crds subcommand by @fernandezcuesta in #26
+    - Drop the scale subresource before building OpenAPI for schema
+      generation by @negz in #119
+    - ci: Re-use exising docs PRs and sign off on commits by
+      @adamwg in #120
+    - ci: Make cli-docs-bot the author of docs update commits by
+      @adamwg in #121
+    - xrd: Handle v2 XRDs in crossplane xrd convert by @adamwg in
+      #122
+    - fix(render): do not overwrite function docker network if set,
+      start crossplane-container in same network by @nkzk in #65
+    - chore(deps): update codecov/codecov-action digest to 0fb7174
+      (main) by @crossplane-renovate[bot] in #101
+    - chore(deps): update korthout/backport-action action to v4.5.2
+      (main) by @crossplane-renovate[bot] in #102
+    - Expose host-native CLI binary as the default flake package by
+      @negz in #126
+    - chore(deps): pin dependencies (main) by
+      @crossplane-renovate[bot] in #128
+    - chore(deps): update renovatebot/github-action action to
+      v46.1.15 (main) by @crossplane-renovate[bot] in #129
+    - Decompress function runtime tarballs once when loading by
+      @negz in #127
+    - fix: loaded XRD must honor the composite schema by
+      @fernandezcuesta in #123
+    - schemas: Prime oapi-codegen's global state to make
+      capitalization consistent by @adamwg in #130
+    - Add repository option to crossplane project init by @bobh66
+      in #105
+    - feat(xpkg): add --annotation flag to xpkg build and xpkg push
+      by @chaitanyapantheor in #11
+    - fix(render): support repeating --required-resources and
+      --extra-resources by @chaitanyapantheor in #107
+    - fix(deps): update module github.com/alecthomas/kong to
+      v1.15.0 (main) by @crossplane-renovate[bot] in #133
+    - chore(deps): update module github.com/containerd/containerd
+      to v1.7.33 [security] (main) by @crossplane-renovate[bot] in
+      #132
+    - fix(deps): update module
+      github.com/oapi-codegen/oapi-codegen/v2 to v2.7.1 (main) by
+      @crossplane-renovate[bot] in #88
+    - fix(deps): update module github.com/kubernetes-sigs/kro to
+      v0.9.2 (main) by @crossplane-renovate[bot] in #87
+    - fix(deps): update module
+      github.com/google/go-containerregistry to v0.21.7 (main) by
+      @crossplane-renovate[bot] in #86
+    - feat: add --as/--as-group/--as-uid impersonation flags by
+      @mikeshootzz in #114
+    - chore(deps): update renovatebot/github-action action to
+      v46.1.16 (main) by @crossplane-renovate[bot] in #139
+    - fix(deps): update module
+      github.com/crossplane/function-sdk-go to v0.7.1 (main) by
+      @crossplane-renovate[bot] in #140
+    - deps: Update crossplane dependencies to v2.3.3 by @adamwg in
+      #138
+
+-------------------------------------------------------------------
 Tue Jun 23 04:56:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.3.3:
