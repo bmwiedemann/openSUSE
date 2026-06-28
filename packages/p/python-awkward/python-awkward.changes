@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:48:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.9.1:
+  * feat: improve and test big-endian support
+  * feat: implement array compatibility/interface protocols for
+    virtual array and placeholder array (for better errors)
+  * feat: reimplement reducers kernels using cccl
+  * feat: implement byteswap as an nplike function
+  * feat: lazy parents allocation
+  * feat: extend Python reducers with `offset` support (precursor
+    to `parent` removal)
+  * feat: pass 'offsets' to reducer kernels (precursor to parent
+    removal)
+  * feat: reducer max for `axis==None`
+  * feat: improve and fix delayed length calculations and add
+    delayed length calculation for layouts that need it
+  * feat: pickle in native byteorder and pass byteorder through
+    pickling and unpickling
+  * feat: customly overload the reducers that call cuda-compute
+    kernels
+  * feat: add `axis=None` specialization for `Min` reducer +
+    small refactoring for existing specializatons
+  * feat: cuda.compute combinations kernel study
+  * feat: add `missing_repeat` kernel implementation using
+    cuda.compute
+  * feat: add `index_rpad_and_clip` kernels implementations using
+    cuda.compute
+  * feat: allow generator expressions in highlevel operations
+    that accept iterable of arrays as input
+  * feat: add awkward.* aliases to objects.inv for intersphinx
+  * feat: properly handle numpy functions that return default
+    containers of numpy arrays in `__array_function__`
+  * feat: lazy concatenation of virtual arrays
+  * feat: migrate awkward_index_rpad_and_clip_axis0 to
+    cuda.compute
+  * feat: migrate awkward_reduce_sum_complex to cuda.compute
+  * feat: migrate awkward_reduce_max_complex to cuda.compute
+  * ## Bug-fixes and performance
+  * fix: temporarily use unary_transform instead of
+    segmented_reduce
+  * fix: C++ errors in `ak.from_rdataframe`
+  * fix: Fix multiple CUDA out-of-bounds accesses and kernel
+    memory management issues
+  * fix: harden CUDA/CPU kernels against out-of-bounds writes in
+    `ListOffsetArray`
+  * fix: add offsets for UnmaskedArray reducer
+  * fix: GrowableBuffer cleanup compiler warnings
+  * fix: fix typetracer's `maximum` implementation
+  * fix: fix ASAN detected buffer overflows in awkward-cpp
+  * fix: Numba-CUDA refactoring -- `CUDATargetContext` is spinned
+    off to `FunctionDescriptor`
+  * fix: return shallow copy of fields list when `.fields` is
+    being accessed from highlevel array/record
+  * fix: handle union array simplification returning back indexed
+    arrays in `ak.almost_equal`
+  * fix: `ak.array_equal` with datetimes and timedeltas with NaTs
+  * fix: consistent byteorder settings
+  * fix: couple of fixes in tests that arose from running them in
+    parallel threads
+  * fix: proper comparison in `ak.almost_equal` between record
+    array fields
+  * fix: restore docstring cross-references lost in autoapi
+    migration
+  * fix: race condition in record array CUDA kernel
+  * fix: ensure jax backend uses arrays on cpu only
+  * fix: array attrs not being validated at creation and being of
+    inconsistent type
+  * perf: optimize CPU kernels and fix segfault when
+    concatenating arrays with None values
+  * perf: restructure CUDA unit tests
+
+-------------------------------------------------------------------
 Tue May 19 21:01:38 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Use `--ignore-glob` to disable tests from test-cuda* dirs.

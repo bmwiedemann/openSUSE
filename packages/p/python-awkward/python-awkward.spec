@@ -30,7 +30,7 @@ ExcludeArch:    %{ix86} %{arm32}
 %define awkward_cpp_version 52
 %{?sle15_python_module_pythons}
 Name:           python-awkward%{psuffix}
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        Manipulate arrays of complex data structures as easily as Numpy
 License:        BSD-3-Clause
