@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:18:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Replace pytz with ZoneInfo + misc datetime fixes
+- update to 1.3.5:
+  * Bump the actions-dependencies group across 1 directory with 6
+    updates
+  * Fixed an invalid input handle for DateTimeConverter
+  * Add support for Python 3.14
+  * Fix logic issues in type checking and conversion functions
+
+-------------------------------------------------------------------
 Wed Jun  4 06:08:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
