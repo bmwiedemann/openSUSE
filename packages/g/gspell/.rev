@@ -285,4 +285,13 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346647</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>45445681398280a540055063e48d97f8</srcmd5>
+    <version>1.14.4</version>
+    <time>1782673552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.4:
+  + Updated translations.</comment>
+    <requestid>1361958</requestid>
+  </revision>
 </revisionlist>
