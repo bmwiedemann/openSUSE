@@ -85,4 +85,14 @@
   * improve tests exception output, minor code style fix</comment>
     <requestid>1354874</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f884f7229d6c48dc396ecab4351ccf73</srcmd5>
+    <version>8.99</version>
+    <time>1782673881</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.99:
+  * fixes #220 - use ptrdiff_t for iterator arithmetic to avoid
+    integer overflow</comment>
+    <requestid>1362197</requestid>
+  </revision>
 </revisionlist>

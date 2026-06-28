@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:05:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.99:
+  * fixes #220 - use ptrdiff_t for iterator arithmetic to avoid
+    integer overflow
+
+-------------------------------------------------------------------
 Sat May 23 18:40:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.97:
