@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:13:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.24.1:
+  * Bug Fixes
+    - don't hard-fail on unsupported env vars (7bc4769)
+    - retry on webhooks unavailable error (#600) (ccde5a1)
+
+-------------------------------------------------------------------
 Tue Jun 23 10:47:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.24.0:
