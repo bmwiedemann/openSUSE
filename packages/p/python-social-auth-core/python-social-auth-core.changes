@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:44:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.2:
+  * LINE backend now validates callback state before exchanging
+    authorization codes, preventing login CSRF.
+  * Shopify backend now sends and validates OAuth state,
+    preventing login CSRF.
+  * Updated the Google OAuth documentation link.
+  * Externally resumable partial request links now require
+    confirmation even in the browser session that created the
+    partial, preventing validation links from being consumed by a
+    plain GET.
+  * LoginRadius backend now validates callback state to prevent
+    login CSRF.
+  * Odnoklassniki app backend now ignores untrusted callback API
+    hosts and validates returned user details.
+  * Partial pipeline resume now requires session ownership or
+    explicit external resume confirmation to prevent login CSRF.
+  * SAML responses are now validated against the original
+    AuthnRequest when possible.
+  * Twilio backend now preserves HTTPS callback URLs and
+    validates callback state to prevent login CSRF.
+  * Auth0 OpenID Connect configuration now uses the correct base
+    URLs.
+  * Authentication now handles invalid email addresses without
+    crashing.
+  * Vend OAuth user IDs are now scoped by shop.
+  * VK app authentication now requires an auth key.
+
+-------------------------------------------------------------------
 Thu May 28 11:48:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 4.9.1
