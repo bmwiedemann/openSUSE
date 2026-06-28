@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jun 27 22:15:20 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.65.1:
+  * Codec (Linux): fixes potential memleaks
+  * WM (Linux): adds weston detection support
+  * Codec (Linux): adds va-x11 method
+  * Global: fixes bugs found by CI
+  * Display: defaults `disableLinewrap` to `false`
+  * Logo (Builtin): adds Zerene OS mainline (#2404)
+
+-------------------------------------------------------------------
 Sat Jun 06 22:48:10 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.64.2:
