@@ -1,0 +1,82 @@
+---
+ bin/HeterodyneSearch/ppe_init.c |   16 ++++++++--------
+ bin/HeterodyneSearch/ppe_init.h |    2 +-
+ 2 files changed, 9 insertions(+), 9 deletions(-)
+
+Index: lalpulsar-7.1.1/bin/HeterodyneSearch/ppe_init.c
+===================================================================
+--- lalpulsar-7.1.1.orig/bin/HeterodyneSearch/ppe_init.c
++++ lalpulsar-7.1.1/bin/HeterodyneSearch/ppe_init.c
+@@ -756,7 +756,7 @@ void initialise_prior( LALInferenceRunSt
+       gmmweights = XLALCreateREAL8Vector( nmodes );
+ 
+       CHAR strpart[8192];
+-      CHAR UNUSED *nextpart;
++      const CHAR UNUSED *nextpart;
+       nextpart = get_bracketed_string( strpart, tline->tokens[5], '[', ']' );
+       if ( !strpart[0] ) {
+         XLAL_ERROR_VOID( XLAL_EINVAL, "Error... problem parsing GMM prior weights values for '%s'.", tempPar );
+@@ -1539,7 +1539,7 @@ REAL8Vector **parse_gmm_means( CHAR *mea
+   UINT4 modecount = 0;
+ 
+   /* parse mean string */
+-  CHAR *startloc = strchr( meanstr, '[' ); /* find location of first '[' */
++  const CHAR *startloc = strchr( meanstr, '[' ); /* find location of first '[' */
+   if ( !startloc ) {
+     return NULL;
+   }
+@@ -1551,7 +1551,7 @@ REAL8Vector **parse_gmm_means( CHAR *mea
+   meanmat =  XLALCalloc( nmodes, sizeof( REAL8Vector * ) );
+ 
+   while ( 1 ) {
+-    CHAR *closeloc = get_bracketed_string( strpart, startloc + 1, '[', ']' );
++    const CHAR *closeloc = get_bracketed_string( strpart, startloc + 1, '[', ']' );
+     if ( !strpart[0] ) {
+       break;  /* break when no more bracketed items are found */
+     }
+@@ -1636,7 +1636,7 @@ gsl_matrix **parse_gmm_covs( CHAR *covst
+     strncpy( strpart, openloc + 1, ( closeloc - openloc ) ); /* copy string */
+     strpart[( closeloc - openloc )] = '\0'; /* add null terminating character */
+ 
+-    CHAR *newstartloc = strpart;
++    const CHAR *newstartloc = strpart;
+ 
+     UINT4 parcount = 0;
+ 
+@@ -1644,7 +1644,7 @@ gsl_matrix **parse_gmm_covs( CHAR *covst
+ 
+     while ( 1 ) {
+       CHAR newstrpart[8192];
+-      CHAR *newcloseloc = get_bracketed_string( newstrpart, newstartloc, '[', ']' );
++      const CHAR *newcloseloc = get_bracketed_string( newstrpart, newstartloc, '[', ']' );
+ 
+       if ( !newstrpart[0] ) {
+         break;  /* read all of covariance matrix for this mode */
+@@ -1697,11 +1697,11 @@ gsl_matrix **parse_gmm_covs( CHAR *covst
+ }
+ 
+ 
+-CHAR *get_bracketed_string( CHAR *dest, const CHAR *bstr, int openbracket, int closebracket )
++const CHAR *get_bracketed_string( CHAR *dest, const CHAR *bstr, int openbracket, int closebracket )
+ {
+   /* get positions of opening and closing brackets */
+-  CHAR *openpar = strchr( bstr, openbracket );
+-  CHAR *closepar = strchr( bstr + 1, closebracket );
++  const CHAR *openpar = strchr( bstr, openbracket );
++  const CHAR *closepar = strchr( bstr + 1, closebracket );
+ 
+   if ( !openpar || !closepar ) {
+     dest[0] = 0;
+Index: lalpulsar-7.1.1/bin/HeterodyneSearch/ppe_init.h
+===================================================================
+--- lalpulsar-7.1.1.orig/bin/HeterodyneSearch/ppe_init.h
++++ lalpulsar-7.1.1/bin/HeterodyneSearch/ppe_init.h
+@@ -53,7 +53,7 @@ void LogSampleToFile( LALInferenceVariab
+ void LogSampleToArray( LALInferenceVariables *algorithmParams, LALInferenceVariables *vars );
+ REAL8Vector **parse_gmm_means( CHAR *meanstr, UINT4 npars, UINT4 nmodes );
+ gsl_matrix **parse_gmm_covs( CHAR *covstr, UINT4 npars, UINT4 nmodes );
+-CHAR *get_bracketed_string( CHAR *dest, const CHAR *bstr, int openbracket, int closebracket );
++const CHAR *get_bracketed_string( CHAR *dest, const CHAR *bstr, int openbracket, int closebracket );
+ void initialise_threads( LALInferenceRunState *state, INT4 nthreads );
+ 
+ #ifdef __cplusplus
