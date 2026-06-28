@@ -1,0 +1,32 @@
+From 4366bc812f75a07484f085de5971c6e028fb47f8 Mon Sep 17 00:00:00 2001
+From: Christophe Marin <christophe@krop.fr>
+Date: Sun, 28 Jun 2026 13:36:21 +0200
+Subject: [PATCH] Define soversion for drawyconfig
+
+---
+ src/config/CMakeLists.txt | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/src/config/CMakeLists.txt b/src/config/CMakeLists.txt
+index 3499a69c..620928bd 100644
+--- a/src/config/CMakeLists.txt
++++ b/src/config/CMakeLists.txt
+@@ -14,6 +14,15 @@ target_link_libraries(
+         KF6::ConfigWidgets
+ )
+ 
++set_target_properties(
++    drawyconfig
++    PROPERTIES
++        VERSION
++            ${DRAWY_LIB_VERSION}
++        SOVERSION
++            ${DRAWY_LIB_SOVERSION}
++)
++
+ kconfig_add_kcfg_files(drawyconfig drawyglobalconfig.kcfgc)
+ 
+ generate_export_header(drawyconfig BASE_NAME DRAWYCONFIG)
+-- 
+2.54.0
+

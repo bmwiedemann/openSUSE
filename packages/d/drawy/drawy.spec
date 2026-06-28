@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           drawy
-Version:        1.0.1
+Version:        1.0.2
 Release:        0
 Summary:        Whiteboard application
 License:        GPL-3.0-or-later
@@ -32,6 +32,8 @@ Source1:        https://download.kde.org/stable/drawy/%{version}/drawy-%{version
 # https://invent.kde.org/sysadmin/release-keyring/-/raw/master/keys/prayag@key1.asc?ref_type=heads
 Source2:        drawy.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Define-soversion-for-drawyconfig.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  pkgconfig
 BuildRequires:  shared-mime-info
@@ -50,7 +52,12 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  pkgconfig(libzstd)
 
 %description
-Drawy lets you create ideas, diagrams, and visual notes on an infinite whiteboard with a smooth and responsive canvas. You can draw with pressure-sensitive tablet support, add text, insert images, and use basic shapes such as rectangles, ellipses, arrows, and lines to organise your content clearly. You can choose your own color palette and export your work as image files whenever needed.
+Drawy lets you create ideas, diagrams, and visual notes on an infinite
+whiteboard with a smooth and responsive canvas. You can draw with
+pressure-sensitive tablet support, add text, insert images, and use basic
+shapes such as rectangles, ellipses, arrows, and lines to organise your content
+clearly. You can choose your own color palette and export your work as image
+files whenever needed.
 
 %lang_package
 
@@ -75,6 +82,7 @@ rm %{buildroot}%{_kf6_libdir}/*.so
 
 %files
 %license LICENSES/*
+%doc CHANGELOG.md
 %doc %lang(en) %{_kf6_htmldir}/en/drawy
 %{_kf6_applicationsdir}/org.kde.drawy.desktop
 %{_kf6_appstreamdir}/org.kde.drawy.metainfo.xml
@@ -83,6 +91,7 @@ rm %{buildroot}%{_kf6_libdir}/*.so
 %{_kf6_debugdir}/drawy.categories
 %{_kf6_iconsdir}/hicolor/*/apps/drawy.*
 %{_kf6_iconsdir}/hicolor/*/mimetypes/application-x-drawy.png
+%{_kf6_libdir}/libdrawyconfig.so.*
 %{_kf6_libdir}/libdrawygui.so.*
 %{_kf6_libdir}/libdrawywidgets.so.*
 %{_kf6_libdir}/libstandardformplugin.so.*

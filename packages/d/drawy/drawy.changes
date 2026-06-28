@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:36:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add patch:
+  * 0001-Define-soversion-for-drawyconfig.patch
+
+-------------------------------------------------------------------
+Wed Jun 24 19:17:01 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.0.2, Check the CHANGELOG.md file for the full list of
+  changes.
+  Fixes:
+  * Multiple issues with group items and multi-selections acting
+    incorrectly during rotation or resizing.
+  * Canvas corruption bugs and visual artifacts that appeared
+    when zooming or resizing the window.
+  * Undo and redo history breaking after grouping items or
+    clearing the canvas.
+  * Loss of stylus pressure data when saving and loading files.
+  * Bounding box and intersection logic errors for the Diamond tool.
+  * Accidental duplication of items when attempting to translate
+    them across the canvas.
+  * Saved strokes failing to load correctly upon opening a document.
+  * Property bar flickering rapidly when selecting new items.
+  * Background color fills unintentionally applying to grouped
+    polygon strokes.
+  * Memory leaks and uninitialized variables flagged by internal
+    analysis tools.
+
+-------------------------------------------------------------------
 Thu May  7 05:50:25 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.0.1
