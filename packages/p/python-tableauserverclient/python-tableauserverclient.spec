@@ -17,7 +17,7 @@
 
 
 Name:           python-tableauserverclient
-Version:        0.40
+Version:        0.41
 Release:        0
 Summary:        Python library for working with the Tableau Server REST API
 License:        MIT

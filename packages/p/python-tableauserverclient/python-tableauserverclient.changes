@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:23:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.41:
+  * **PDF export: vizWidth/vizHeight now sent in requests** (PR
+    #1795) -- fields existed on `PDFRequestOptions` but were
+    never serialized; now wired up for both views and workbooks
+  * **Workbook description included in update requests** (PR
+    #1791) -- was silently dropped before; now sent at API 3.21+
+  * **Users endpoint: filter by email** (PR #1789, closes #1562)
+  * **ConnectionItem: add `database_name` field** (PR #1787,
+    closes #1571)
+  * **SVG format support for view/custom view images** (PR #1755)
+  * **Batch create schedule** (PR #1714)
+  * **Delete view** (PR #1712)
+  * **Users CSV import** (PR #1409) -- bulk add/remove via
+    `Iterable[UserItem]`
+  * **Extensions API support** (PR #1672)
+  * **Collections in favorites** (PR #1647)
+  * **WebAuthoringForFlows permission capability** (PR #1642)
+  * **OIDC endpoints** (PR #1630) -- create, update, delete, get
+    by ID
+  * **Toggle attribute capture for a site** (PR #1619)
+  * **Update multiple connections in one call** (PR #1638) -- for
+    workbooks and datasources
+  * **Make refresh consistent** (PR #1665) -- all three endpoints
+    now accept either an item or an ID string
+  * **UAT (unified access token) JWT login** (PR #1671)
+  * **ResourceReference is hashable** (PR #1668)
+  * **SiteAuthConfiguration `__str__`/`__repr__`** (PR #1641)
+  * **Customized Monthly schedule interval** (PR #1670, closes
+    #1365)
+  * **`project.get_by_id()`** (PR #1736, closes #816)
+  * **Release automation** (PR #1613) -- publish to PyPI
+    triggered by GitHub Release event
+  * **Always use server version by default** (PR #1796, closes
+    #876, #959) -- auto-detects REST API version after signin
+  * **Handle missing `t:error` element in server responses** (PR
+    #1794) -- was crashing as `NonXMLResponseError` instead of
+    showing the real XML
+  * **Deprecate removed `no_extract` parameter** (PR #1793) --
+    raises `DeprecationWarning` and maps to
+    `include_extract=False` instead of hard `TypeError`
+  * **Webhook event name prefix handling** (PR #1790, closes
+    #1597) -- accept both prefixed and unprefixed event/source
+    names
+  * **`QuerySet.__iter__`: use `return` not `raise
+    StopIteration`** (PR #1788) -- PEP 479: `StopIteration`
+    inside a generator becomes `RuntimeError`
+  * **Duplicate extract job (409093) is a warning, not an error**
+    (PR #1785) -- extended from workbooks to datasources and
+    flows
+  * **Timeout error messages point to `TSC_CHUNK_SIZE_MB`** (PR
+    #1781) -- 504s during chunked upload now give actionable
+    guidance
+  * **Bulk user add: don't default `authSetting` to
+    `ServerDefault`** (PR #1779) -- was wrong for Tableau Cloud
+  * **Quote tag labels containing spaces or commas** (PR #1782,
+    closes #1738)
+  * **`authentication_type` optional in `update_connections`**
+    (PR #1778)
+  * **View filter parameters prefix** (PR #1633, closes #1632) --
+    parameters need `vf_Parameters.` prefix
+  * **409 duplicate extract check in workbooks** (PR #1733,
+    closes #1090)
+  * **Datasource description in publish and update XML** (PR
+    #1682)
+  * **Datasource owner/project parsing when User Visibility is
+    Limited** (PR #1700)
+  * **Custom view workbook/view setter** (PR #1730)
+  * ## Infrastructure / Packaging
+  * **Wheel packaging fix + release safety checks** (PR #1798) --
+    correct `packages.find` exclude list; adds CI jobs to verify
+    wheel structure pre-publish and smoke-test after publish
+  * **Remove deprecated `cgi` module** (PR #1771, closes #1745)
+  * **Update license info in `pyproject.toml`** (PR #1776)
+  * **pytest-xdist for parallel test runs** (PR #1681)
+  * **`tmp_path` fixture in download tests** (PR #1800) -- avoids
+    writing files to cwd during parallel test runs
+
+-------------------------------------------------------------------
 Sun Apr 12 19:43:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.40:

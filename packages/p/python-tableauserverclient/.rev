@@ -142,4 +142,41 @@
   * feat: New JobItem code</comment>
     <requestid>1346245</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>95f1d7d80bf0c6c979fcaad0d31110d0</srcmd5>
+    <version>0.41</version>
+    <time>1782673847</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.41:
+  * **PDF export: vizWidth/vizHeight now sent in requests** (PR
+    #1795) -- fields existed on `PDFRequestOptions` but were
+    never serialized; now wired up for both views and workbooks
+  * **Workbook description included in update requests** (PR
+    #1791) -- was silently dropped before; now sent at API 3.21+
+  * **Users endpoint: filter by email** (PR #1789, closes #1562)
+  * **ConnectionItem: add `database_name` field** (PR #1787,
+    closes #1571)
+  * **SVG format support for view/custom view images** (PR #1755)
+  * **Batch create schedule** (PR #1714)
+  * **Delete view** (PR #1712)
+  * **Users CSV import** (PR #1409) -- bulk add/remove via
+    `Iterable[UserItem]`
+  * **Extensions API support** (PR #1672)
+  * **Collections in favorites** (PR #1647)
+  * **WebAuthoringForFlows permission capability** (PR #1642)
+  * **OIDC endpoints** (PR #1630) -- create, update, delete, get
+    by ID
+  * **Toggle attribute capture for a site** (PR #1619)
+  * **Update multiple connections in one call** (PR #1638) -- for
+    workbooks and datasources
+  * **Make refresh consistent** (PR #1665) -- all three endpoints
+    now accept either an item or an ID string
+  * **UAT (unified access token) JWT login** (PR #1671)
+  * **ResourceReference is hashable** (PR #1668)
+  * **SiteAuthConfiguration `__str__`/`__repr__`** (PR #1641)
+  * **Customized Monthly schedule interval** (PR #1670, closes
+    #1365)
+  * **`project.get_by_id()`** (PR #1736, closes #816)</comment>
+    <requestid>1362160</requestid>
+  </revision>
 </revisionlist>
