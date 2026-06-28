@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:53:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.49.0:
+  * ci(dependabot): enable cooldown period for npm packages
+  * refactor(core): standardize tool output formatting
+  * ci: update workflow logging and policy configurations
+  * fix(core): Ensure zero-quota limits fail fast to prevent
+    retry loop hang
+  * fix(core): handle multi-line escaped quotes in
+    stripShellWrapper
+  * fix(cli): prevent path traversal vulnerabilities during skill
+    install…
+  * Fix/pending tools and trust overrides
+  * ci: use internal environment for scheduled nightly releases
+  * feat(core): Support GDC air-gapped Service Identity after
+    auth library update
+  * fix(cli): handle tmux false positive background detection
+  * Add static eval source analyzer
+  * fix(config): migrate coreTools setting to tools.core
+  * fix(core-tools): resolve defensive path resolution for at-
+    reference files
+  * Revert "fix(core-tools): resolve defensive path resolution
+    for at-reference files"
+  * chore(release): bump version to
+    0.49.0-nightly.20260617.g4d3dcdce1
+  * fix(ci): provide fallbacks for package variables in nightly
+    release
+  * chore(deps): pin dependencies and enforce 14-day update
+    cooldown
+  * fix(ci): append trailing slash to registry url in npmrc
+  * feat: add eval:inventory CLI command and reporting logic
+  * fix: resolve workspace publish failures and scheduler event
+    loop starvation
+  * fix(ci): use wombat dressing room fallback in nightly release
+    to prevent ENEEDAUTH
+  * Add JSON output for eval inventory
+
+-------------------------------------------------------------------
 Tue Jun 23 10:45:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.47.0:
