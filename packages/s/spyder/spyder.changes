@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:57:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.5:
+  * Add support to use Ruff as code formatter in
+  * `Preferences > Completion and linting > Code formatting`.
+  * Make the IPython console work for Pixi global environments.
+  * Increase max number of plots in the Plots pane to 10,000.
+    Also, show message when that number is reached.
+  * Correctly show signatures with type annotations in the Help
+    pane.
+  * Fix hard crash when restarting the kernel of related IPython
+    consoles.
+  * Several fixes to the update process of the standalone
+    installers.
+
+-------------------------------------------------------------------
 Mon Jun  1 10:06:26 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update to 6.1.4

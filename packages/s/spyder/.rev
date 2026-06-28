@@ -961,4 +961,23 @@ rename the package from spyder3 to spyder.
     <comment></comment>
     <requestid>1356755</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>df8ab4971f013a28c72a70c89482429e</srcmd5>
+    <version>6.1.5</version>
+    <time>1782673898</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.5:
+  * Add support to use Ruff as code formatter in
+  * `Preferences &gt; Completion and linting &gt; Code formatting`.
+  * Make the IPython console work for Pixi global environments.
+  * Increase max number of plots in the Plots pane to 10,000.
+    Also, show message when that number is reached.
+  * Correctly show signatures with type annotations in the Help
+    pane.
+  * Fix hard crash when restarting the kernel of related IPython
+    consoles.
+  * Several fixes to the update process of the standalone
+    installers.</comment>
+    <requestid>1362231</requestid>
+  </revision>
 </revisionlist>
