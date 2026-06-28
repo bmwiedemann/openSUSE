@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zopfli
-Version:        0.4.1
+Version:        0.4.3
 Release:        0
 Summary:        Zopfli module for python
 License:        Apache-2.0

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:24:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.3:
+  * Add Windows ARM64 wheel to CI build matrix
+- update to 0.4.2:
+  * Support building on free-threaded Python
+  * Fix sdist build and add setuptools_scm to build system
+    requirements
+
+-------------------------------------------------------------------
 Tue Feb 24 17:13:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.1
