@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:35:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.0:
+  * Fix
+    - [13f9067] copy extra config when cloning a VM
+  * Documentation
+    - [4da5966] update CHANGELOG.md (#4024) (#4024)
+  * Chore
+    - [cb2d98b] Update version.go for v0.55.0
+    - [ea4feab] sync ClientVersion with current release
+    - [6c9b236] bump ClientVersion
+    - [c6ee784] build govc release with Go 1.26
+    - [4ddffe5] fix use of GOPATH in govc tests
+    - [123588d] remove Debug on Failure from github workflow
+    - [3a283ef] bump go.mod min go version to 1.25
+    - [0f9c1c3] remove hardcoded go version from module cache key
+    - [a03fbdf] bump github action Go versions
+  * Commits
+    - [cb2d98b] chore: Update version.go for v0.55.0
+    - [ea4feab] chore: sync ClientVersion with current release
+    - [6c9b236] chore: bump ClientVersion
+    - [1584f58] chore(deps): bump actions/cache from 5.0.5 to 6.0.0
+      (#4053) (#4053)
+    - [8bf4e2f] chore(deps): bump actions/setup-go from 6.4.0 to
+      6.5.0 (#4054) (#4054)
+    - [357e439] Make VirtualDevice.NumaNode a pointer to allow node
+      0
+    - [078f795] chore(deps): bump nokogiri from 1.19.3 to 1.19.4 in
+      /gen (#4050) (#4050)
+    - [188b1f0] api: add InsufficientResourcesQuota fault type
+    - [66288bb] fix(cns): restrict host-local storage tests to
+      vCenter 9.1.2 and above
+    - [93bcd23] Merge branch 'vmware:main' into main
+    - [d80eb53] feat(cns): add host-local storage support to
+      CnsVolumeCreateSpec and placement result
+    - [13f9067] fix: copy extra config when cloning a VM
+    - [dec970d] feat(namespace): added new structs and api
+      endpoints to manage NamespaceManagement Networks
+      Signed-off-by: tobiaswaelti <tobiaswaelti92@gmail.com>
+    - [4cb54df] vcsim: respect tag name for setCustomValueResponse
+    - [f1304a7] vcsim: support availableField retrieval in
+      VirtualMachine
+    - [9f9c5d3] vcsim: support parsing both xs: and xsd: type
+      prefixes
+    - [0a2f905] vcsim: handle invalid folder during VM cloning
+    - [231bc17] chore(deps): bump golang.org/x/text from 0.34.0 to
+      0.38.0 (#4037) (#4037)
+    - [9252dc6] simulator: add SubnetId and SubnetInfo support
+    - [9dabce8] chore(deps): bump test-unit from 3.7.7 to 3.7.8 in
+      /gen (#4034) (#4034)
+    - [64b9cf7] vapi/library: tolerate spaces around '=' in
+      ReadManifest (#3893)
+    - [98b424c] update comments
+    - [dd81e2e] add new func and unit tests
+    - [2870444] Address review comments
+    - [e6bd854] Add govc Relocate Volume command Signed-off-by:
+      Chethan Venkatesh <chethanv@vmware.com>
+    - [6bbd47f] simulator: improve podman compatibility for
+      container-backed VMs (#4014) (#4014)
+    - [a1be2fc] simulator: add PropertyDiff, Context helpers, and
+      AutoUpdate pattern (#4013) (#4013)
+    - [64e90e7] vcsim: align interval counter on inventory load
+    - [821585c] govmomi: Add HostDistributedVirtualSwitchManager mo
+    - [fca539c] fix case-sensitive api call
+    - [c6ee784] chore: build govc release with Go 1.26
+    - [4da5966] docs: update CHANGELOG.md (#4024) (#4024)
+    - [d2c4a46] chore(deps): bump dessant/lock-threads from 6.0.1
+      to 6.0.2 (#4023) (#4023)
+    - [cdc568f] chore(deps): bump dessant/lock-threads from 6.0.0
+      to 6.0.1 (#4019) (#4019)
+    - [60f3931] chore(deps): bump actions/stale from 10.2.0 to
+      10.3.0 (#4020) (#4020)
+    - [050c58c] chore(deps): bump goreleaser/goreleaser-action from
+      7.2.1 to 7.2.2 (#4018) (#4018)
+    - [4ddffe5] chore: fix use of GOPATH in govc tests
+    - [48ab34a] api: add ConcurrentAccess to IsTransientError
+      (#4017)
+    - [123588d] chore: remove Debug on Failure from github workflow
+    - [3a283ef] chore: bump go.mod min go version to 1.25
+    - [32417d1] vcsim: fix namespace compatibility routes
+    - [95c5995] test: fix secure cookie test with Go 1.26
+    - [957a45d] Merge branch 'vmware:main' into main
+    - [681c59b] feat(VmServiceSpec): Remove omitempty from
+      VmServiceSpec spec to have it always rendered Signed-off-by:
+      tribock <louis.baumann93@gmail.com>
+    - [0f9c1c3] chore: remove hardcoded go version from module
+      cache key
+    - [a03fbdf] chore: bump github action Go versions
+
+-------------------------------------------------------------------
 Sat May 30 06:53:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.1:
