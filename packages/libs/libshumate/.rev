@@ -206,4 +206,14 @@
     <comment>Update version</comment>
     <requestid>1348432</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>98a21ff01a28301ff96ab397823a338e</srcmd5>
+    <version>1.6.2</version>
+    <time>1782673554</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.6.2:
+  + Avoid spurious drag events following pinch zoom and rotate
+    gestures on touch.</comment>
+    <requestid>1361963</requestid>
+  </revision>
 </revisionlist>
