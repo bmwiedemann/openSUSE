@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:48:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.17.0:
+  * volume: Add support for manageable volumes, snapshots
+  * Fix type for VolumeAttachment.connection_info
+  * typing: Add missing find_* overrides
+  * server-external-events: change resource_key to None
+  * Fix backup_server proxy and action
+  * typing: Correct type of create_server_image proxy method
+  * volume: Allow unknown attrs for QoS specs
+  * image: Add support for downloading from a specific store
+  * Adding support for new add/get location apis
+  * tests: Replace use of testtools.ExpectedException
+  * tests: Use base test class consistently
+  * tests: Remove unnecessary setUp parameter
+  * tests: Remove dead cloud.clustering tests
+  * fakes: Set spec_set on proxy mocks
+  * fakes: Resolve TODO
+  * docs: Add missing block storage docs
+  * volume: Add support for clusters
+  * volume: Add support for consistency groups
+  * volume: Add support for service worker cleanup
+  * volume: Add support for Messages resource
+  * volume v2: Add missing upload_volume_to_image proxy method
+  * proxy: Start passing params to Proxy._delete
+  * proxy: Allow passing qs params via Proxy._delete
+  * volume: Add import backup record support
+  * volume: Add support for QoS Spec actions
+  * volume: Add find, list QoS spec proxy methods
+  * volume v2: Add QoS Spec definition
+  * volume: Add missing query filters for group types
+  * volume: Fix unset image metadata
+  * volume v2: Add type encryption support
+  * volume v2: Add volume type extra specs
+  * volume v2: Add volume type update
+  * volume v2: Add volume update
+  * Add project_id attribute for magnum cluster
+  * compute: Handle missing service
+  * Changed neutron API calls to use project_id
+  * typing: Correct types for Server console actions
+  * typing: Sync v2, v3 restore_backup signatures
+  * Fix package discovery
+  * placement: add fetch_resource_provider_usages method
+
+-------------------------------------------------------------------
 Sun Jun 14 15:46:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.15.0:

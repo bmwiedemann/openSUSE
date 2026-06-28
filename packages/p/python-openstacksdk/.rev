@@ -784,4 +784,41 @@
   * typing: Add annotations to remaining methods (placement)</comment>
     <requestid>1359268</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2508c74b93c011340d5418b2e1c6115d</srcmd5>
+    <version>4.17.0</version>
+    <time>1782673836</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.17.0:
+  * volume: Add support for manageable volumes, snapshots
+  * Fix type for VolumeAttachment.connection_info
+  * typing: Add missing find_* overrides
+  * server-external-events: change resource_key to None
+  * Fix backup_server proxy and action
+  * typing: Correct type of create_server_image proxy method
+  * volume: Allow unknown attrs for QoS specs
+  * image: Add support for downloading from a specific store
+  * Adding support for new add/get location apis
+  * tests: Replace use of testtools.ExpectedException
+  * tests: Use base test class consistently
+  * tests: Remove unnecessary setUp parameter
+  * tests: Remove dead cloud.clustering tests
+  * fakes: Set spec_set on proxy mocks
+  * fakes: Resolve TODO
+  * docs: Add missing block storage docs
+  * volume: Add support for clusters
+  * volume: Add support for consistency groups
+  * volume: Add support for service worker cleanup
+  * volume: Add support for Messages resource
+  * volume v2: Add missing upload_volume_to_image proxy method
+  * proxy: Start passing params to Proxy._delete
+  * proxy: Allow passing qs params via Proxy._delete
+  * volume: Add import backup record support
+  * volume: Add support for QoS Spec actions
+  * volume: Add find, list QoS spec proxy methods
+  * volume v2: Add QoS Spec definition
+  * volume: Add missing query filters for group types
+  * volume: Fix unset image metadata</comment>
+    <requestid>1362158</requestid>
+  </revision>
 </revisionlist>

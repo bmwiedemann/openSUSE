@@ -17,7 +17,7 @@
 
 
 Name:           python-openstacksdk
-Version:        4.15.0
+Version:        4.17.0
 Release:        0
 Summary:        An SDK for building applications to work with OpenStack
 License:        Apache-2.0
