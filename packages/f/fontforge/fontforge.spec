@@ -49,6 +49,16 @@ Patch10:        fontforge-fix-crash-for-content-over-32767-characters-in-GDraw.p
 Patch11:        fontforge-fix-multiple-crashes-in-Multiple-Masters.patch
 # PATCH-FIX-UPSTREAM fontforge-CVE-2025-15270.patch CVE-2025-15270 ZDI-CAN-28563 ZDI-25-1194 bsc#1256031 -- Add validation to check for negative kern class name length values.
 Patch12:        fontforge-CVE-2025-15270.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crashes-on-importing-dfontNFNT-fonts.patch qzhao@suse.com -- Fix crashes on importing Mac-style dfont/NFNT bitmap fonts with some legal (but unusual?) values.
+Patch13:        fontforge-fix-crashes-on-importing-dfontNFNT-fonts.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-memory-allocation-in-utf8toutf7-copy.patch qzhao@suse.com -- Fix memory allocation in utf8toutf7_copy().
+Patch14:        fontforge-fix-memory-allocation-in-utf8toutf7-copy.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-in-LoadPluginMetadata-shim01-fbc4114e.patch qzhao@suse.com -- Use importlib in plugin manager, support following fix LoadPluginMetadata crash.
+Patch15:        fontforge-fix-crash-in-LoadPluginMetadata-shim01-fbc4114e.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-crash-in-LoadPluginMetadata.patch qzhao@suse.com -- Fix crash in LoadPluginMetadata when distribution not found, Fix memory leak: DECREF globals and locals dictionaries.
+Patch16:        fontforge-fix-crash-in-LoadPluginMetadata.patch
+# PATCH-FIX-UPSTREAM fontforge-fix-buffer-overflow-in-SCDefWidthVal.patch qzhao@suse.com -- Fix buffer overflow in SCDefWidthVal().
+Patch17:        fontforge-fix-buffer-overflow-in-SCDefWidthVal.patch
 BuildRequires:  cairo-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes

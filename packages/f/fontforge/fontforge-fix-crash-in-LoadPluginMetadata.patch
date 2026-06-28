@@ -1,0 +1,60 @@
+From 763b8fc6d05815282b83f9668d23cd2fe58e310a Mon Sep 17 00:00:00 2001
+From: skef <6175836+skef@users.noreply.github.com>
+Date: Sun, 15 Feb 2026 22:13:10 -0800
+Subject: [PATCH] Fix crash in LoadPluginMetadata when distribution not found
+ (#5755)
+
+- Don't DECREF borrowed reference from PyDict_GetItemString
+- Fix memory leak: DECREF globals and locals dictionaries
+- Handle Py_None return (not just NULL) when no distribution matches
+- Print original Python exception if present, then set formatted error
+
+Fixes #5754
+
+Co-authored-by: Claude Opus 4.5 <noreply@anthropic.com>
+---
+ fontforge/plugin.c | 19 +++++++++++++------
+ 1 file changed, 13 insertions(+), 6 deletions(-)
+
+diff --git a/fontforge/plugin.c b/fontforge/plugin.c
+index 54de15501..34ec78679 100644
+--- a/fontforge/plugin.c
++++ b/fontforge/plugin.c
+@@ -390,13 +390,20 @@ static void LoadPluginMetadata(PluginEntry* pe) {
+     function_args = PyTuple_Pack(1, pe->entrypoint);
+     if (function_args != NULL) {
+         dist = PyObject_Call(func, function_args, NULL);
++        Py_DECREF(function_args);
+     }
+-    Py_XDECREF(func);
+-    Py_XDECREF(function_args);
++    /* Note: func is a borrowed reference from PyDict_GetItemString, don't DECREF */
+ 
+-    if (dist == NULL) {
+-        PyErr_Print();
+-        PyErr_SetString(PyExc_RuntimeError, "Could not retrieve distribution");
++    Py_DECREF(globals);
++    Py_DECREF(locals);
++
++    if (dist == NULL || dist == Py_None) {
++        if (dist == NULL) {
++            PyErr_Print();
++        }
++        PyErr_Format(PyExc_RuntimeError,
++            "Could not retrieve distribution for plugin '%s'", pe->name);
++        Py_XDECREF(dist);
+         return;
+     }
+ 
+@@ -409,7 +416,7 @@ static void LoadPluginMetadata(PluginEntry* pe) {
+         Py_XDECREF(metadata);
+     }
+ 
+-    Py_XDECREF(dist);
++    Py_DECREF(dist);
+ }
+ 
+ static bool DiscoverPlugins(int do_import) {
+-- 
+2.49.0
+

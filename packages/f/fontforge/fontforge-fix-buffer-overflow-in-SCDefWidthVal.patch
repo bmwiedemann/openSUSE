@@ -1,0 +1,52 @@
+From e5f110c9a99f7a640ca50b8cb137f85fd8872eab Mon Sep 17 00:00:00 2001
+From: Maxim Iorsh <iorsh@users.sourceforge.net>
+Date: Wed, 6 May 2026 22:43:52 +0300
+Subject: [PATCH] Fix buffer overflow in SCDefWidthVal() (#5798)
+
+---
+ fontforgeexe/fvmetricsdlg.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/fontforgeexe/fvmetricsdlg.c b/fontforgeexe/fvmetricsdlg.c
+index 322bfd692..2be119681 100644
+--- a/fontforgeexe/fvmetricsdlg.c
++++ b/fontforgeexe/fvmetricsdlg.c
+@@ -293,7 +293,7 @@ static void FVCreateWidth( void *_fv,SplineChar* _sc,void (*doit)(CreateWidthDat
+     GDrawSetVisible(cwd.gw,false);
+ }
+ 
+-static void BCDefWidthVal(char *buf,BDFChar *bc, FontView *fv, enum widthtype wtype) {
++static void BCDefWidthVal(char buf[12],BDFChar *bc, FontView *fv, enum widthtype wtype) {
+     IBounds bb;
+ 
+     if ( wtype==wt_width )
+@@ -311,7 +311,7 @@ static void BCDefWidthVal(char *buf,BDFChar *bc, FontView *fv, enum widthtype wt
+     }
+ }
+ 
+-static void SCDefWidthVal(char *buf,SplineChar *sc, enum widthtype wtype) {
++static void SCDefWidthVal(char buf[12],SplineChar *sc, enum widthtype wtype) {
+     DBounds bb;
+ 
+     if ( wtype==wt_width )
+@@ -359,7 +359,7 @@ static void CVDoit(CreateWidthData *wd) {
+ }
+ 
+ void CVSetWidth(CharView *cv,enum widthtype wtype) {
+-    char buf[10];
++    char buf[12];
+ 
+     SCDefWidthVal(buf,cv->b.sc,wtype);
+     FVCreateWidth(cv,cv->b.sc,CVDoit,wtype,buf);
+@@ -367,7 +367,7 @@ void CVSetWidth(CharView *cv,enum widthtype wtype) {
+ 
+ 
+ void GenericVSetWidth(FontView *fv,SplineChar* sc,enum widthtype wtype) {
+-    char buf[10];
++    char buf[12];
+ 
+     SCDefWidthVal(buf,sc,wtype);
+     FVCreateWidth(fv,sc,GenericVDoit,wtype,buf);
+-- 
+2.49.0
+

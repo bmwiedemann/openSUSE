@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jun 16 08:51:27 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-fix-buffer-overflow-in-SCDefWidthVal.patch:
+  Backport e5f110c9 from upstream, fix buffer overflow in
+  SCDefWidthVal() function.
+
+-------------------------------------------------------------------
+Tue Jun 16 07:04:09 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-fix-crash-in-LoadPluginMetadata.patch:
+  Backport 763b8fc6 from upstream, fix crash in LoadPluginMetadata
+  when distribution not found.
+  * Don't DECREF borrowed reference from PyDict_GetItemString
+  * Fix memory leak: DECREF globals and locals dictionaries
+  * Handle Py_None return (not just NULL) when no distribution matches
+  * Print original Python exception if present, then set formatted error
+
+-------------------------------------------------------------------
+Tue Jun 16 06:55:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-fix-crash-in-LoadPluginMetadata-shim01-fbc4114e.patch:
+  Backport fbc4114e from upstream, Use importlib in plugin manager.
+  This is for support the following patch to fix LoadPluginMetadata
+  crash.
+
+-------------------------------------------------------------------
+Tue Jun 16 06:15:22 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-fix-memory-allocation-in-utf8toutf7-copy.patch:
+  Backport a4533e93 from upstream, fix memory allocation in
+  utf8toutf7_copy() function.
+
+-------------------------------------------------------------------
+Tue Jun 16 05:44:04 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add fontforge-fix-crashes-on-importing-dfontNFNT-fonts.patch:
+  Backport cb443433e from upstream, fix crashes on importing
+  Mac-style dfont/NFNT bitmap fonts with some legal (but unusual?)
+  values.
+
+-------------------------------------------------------------------
 Fri Apr  3 12:12:43 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add fontforge-CVE-2025-15270.patch:

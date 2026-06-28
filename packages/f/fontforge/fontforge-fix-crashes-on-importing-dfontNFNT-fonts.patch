@@ -1,0 +1,42 @@
+From cb443433e907588d2aa610172031b0c3899edb3c Mon Sep 17 00:00:00 2001
+From: Rob Hagemans <rob.hagemans@hotmail.com>
+Date: Sun, 1 Feb 2026 21:20:30 +0000
+Subject: [PATCH] Fix crashes on importing Mac-style dfont/NFNT bitmap fonts
+ with some legal (but unusual?) values  (#5246)
+
+---
+ fontforge/macbinary.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/fontforge/macbinary.c b/fontforge/macbinary.c
+index 964ed25fa..5532a4a7b 100644
+--- a/fontforge/macbinary.c
++++ b/fontforge/macbinary.c
+@@ -2348,7 +2348,7 @@ static FOND *BuildFondList(FILE *f,long rlistpos,int subcnt,long rdata_pos,
+ 		cur->stylewidths[j].style = getushort(f);
+ 		cur->stylewidths[j].widthtab = malloc((cur->last-cur->first+3)*sizeof(short));
+ 		for ( k=cur->first; k<=cur->last+2; ++k )
+-		    cur->stylewidths[j].widthtab[k] = getushort(f);
++		    cur->stylewidths[j].widthtab[k-cur->first] = getushort(f);
+ 	    }
+ 	}
+ 	if ( kernoff!=0 && (flags&ttf_onlykerns) ) {
+@@ -2395,13 +2395,13 @@ static FOND *BuildFondList(FILE *f,long rlistpos,int subcnt,long rdata_pos,
+ 	    continue;		/* this style doesn't exist */
+ 		format = stringoffsets[j]-1;
+ 		stringlen = strings[0][0];
+-		if ( format!=0 )
++		if ( format>0 )
+ 		    for ( k=0; k<strings[format][0]; ++k )
+ 			stringlen += strings[ strings[format][k+1]-1 ][0];
+ 		pt = cur->psnames[j] = malloc(stringlen+1);
+ 		strcpy(pt,strings[ 0 ]+1);
+ 		pt += strings[ 0 ][0];
+-		if ( format!=0 )
++		if ( format>0 )
+ 		    for ( k=0; k<strings[format][0]; ++k ) {
+ 			strcpy(pt,strings[ strings[format][k+1]-1 ]+1);
+ 			pt += strings[ strings[format][k+1]-1 ][0];
+-- 
+2.49.0
+
