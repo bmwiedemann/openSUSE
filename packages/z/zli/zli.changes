@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 28 07:08:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.18:
+  * feat(cli): support default config name (#4143)
+
+-------------------------------------------------------------------
 Mon May 18 06:12:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.17:
