@@ -1,4 +1,276 @@
 -------------------------------------------------------------------
+Thu Jun 25 14:34:24 UTC 2026 - ecsos <ecsos@opensuse.org> - 4.3.1
+
+- Fix connection error.
+  Repaired the unusable and defective coolercontrold.
+
+-------------------------------------------------------------------
+Mon Jun 22 05:46:04 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.3.1:
+  * Release 4.3.1
+  * fix: improve applied duty reverse mapping for calibrated fans
+  * fix: issue where chart was not resized when applying filters
+  * fix: stress test watchdog
+  * feate: add dashboard and create mode options in their quick menus
+  * fix: allow device plugins to use custom lighting modes
+  * refactor: clarify log message
+  * feat: add per row-hover highlighting
+  * refactor: join rows for channels with multiple sensor data
+  * fix: growable but limited stats columns
+  * feat: text locales for reset
+  * refactor: table view improvements
+  * fix: handle collector sensors that have a 0 value at init
+  * feat: UI changes for new table data
+  * feat: add api endpoints
+  * feat: prep for stats changes
+  * fix: npm dep vuln
+  * feat: update style with function ordering
+  * refactor: remove unnecessary docs
+  * refactor: docs and function ordering
+  * refactor: move functions below core engine logic
+  * refactor: rename to duty_writers_by_type for clarity
+  * fix: remove unnecessary clone
+  * refactor: improve calibration endpoints
+  * fix: update comment about why this call is made at app startup
+  * fix: npm dep issue
+  * feat: text for boost walk down setting
+  * feat: toggle for boost walk down
+  * fix: slow boost walk down
+  * feat: walk kick boost down to sustain duty
+  * fix: increase kick boost
+  * fix: reduce kick boot duty
+  * fix: loosen tolerance for stable after-kick rpm
+  * feat: update locales
+  * refactor: kick duration to the time boost should be held
+  * feat: calibration user overrides
+  * refactor: allow overrides for kick behavior and cleanup
+  * feat: additional tooltips for clarification
+  * refactor: increase kick-in duty by percent of rpm range
+  * fix: curve diagnosis for pumps
+  * refactor: calibration tooltip in controls overview
+  * fix: keep progress tooltip open on update
+  * fix: text color
+  * refactor: cleanup
+  * refactor: remove tree menu icon for calibrated channels
+  * feat: create calibration popover for channels in control view
+  * refactor: diagnoser
+  * refactor: curve cleanup
+  * fix: clippy warnings
+  * feat: add logs for calibration steps
+  * fix: inconsistency at duty extremes
+  * refactor: improve duty mapping
+  * fix: spread the full true duty range out
+  * fix: use min-rpm mean of up and down sweep for true duty floor
+  * fix: use true rpm floor instead of min duty
+  * fix: use up and down sweep data in max rpm calc
+  * fix: re-apply settings on calibration curve clear
+  * fix: compensation for stuck fans from killing the max rpm
+  * fix: use kick decay to help measure sustained rpm after firmware kick
+  * fix: kick duration
+  * fix: improve handling of devices with auto-kick-in and response lag
+  * chore: docs cleanup
+  * chore: cleanup
+  * refactor: fix multiple issues
+  * refactor: improve handling of disconnected fans
+  * fix: hanlde long running ioctl task and drive spin-up delay
+  * feat: calibration translations
+  * fix: formatting
+  * feat: improve handling of calibration-enhanced rpm-only channels
+  * feat: handle duty min/max after calibration
+  * feat: handle low-rpm fan oscillation in fan diagnosis
+  * fix: cali chart style
+  * fix: clarify saturation/plateau duty
+  * fix: duty floor with low sustain rpm
+  * feat: Show information/warnings for fan-control issues
+  * feat: add calibrated pill icon to calibrated channels
+  * feat: add get-all calibration endpoint
+  * fix: only show tooltip over info icon
+  * fix: focus ring always showing on close button in modal dialogs
+  * feat: use proper progress bar styling
+  * feat: UI impl for calibration
+  * fix: improve display-duty rounding
+  * refactor: use different calibration step sizes at duty extremes for improved accuracy
+  * refactor: tighter stability tolerance
+  * refactor: use device-duty as the primary true duty mapping, and device-rpm when the diff is large
+  * fix: clear all state
+  * fix: progress percent
+  * refactor: send calibration completion as notification
+  * feat: allow fan rpm to stablilize for each step
+  * fix: re-calibration false mapping and kick-in
+  * fix: the scope pass with nested scopes creates a runtime panic due to moro limitations
+  * fix: don't return 404 when no calibartion data present
+  * feat: rest api for calibration endpoints
+  * feat: diagnosis registry and base progress notifications
+  * feat: diagnosisHost for Engine and entry points
+  * feat: main calibration engine
+  * docs: update nix steps
+  * chore: add comments and tests
+  * fix: formatting
+  * fix: force a fan write when enabling manual control even if already at target duty
+  * feat: use true-duty mapping for duty reads
+  * docs: scope preference
+  * feat: dispatch wired into engine and scope refactor
+  * feat: base dispatch and state
+  * feat: base calibration impl
+  * chore: update openapi spec
+  * fix: js error with legacy broswers: upstream dependency behavior has changed
+
+-------------------------------------------------------------------
+Mon Jun 22 05:43:49 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.3.0:
+  * Release 4.3.0
+  * feat: theme code support
+  * fix: formatting
+  * docs: update instructions for new bump script
+  * feat: improve bump coverage
+  * feat: have release spec use versioned vendor tarball
+  * fix: handle thinkpad dgpu temp sensor error when powered off
+  * refactor: add cs note to function
+  * fix: cve in npm dep
+  * feat: EMA custom sensor
+  * feat: use failsafe values in Custom Sensors
+  * feat: add time average cs to UI
+  * feat: TimeAverage custom sensor logic
+  * fix: formatting
+  * refactor: remove tooltip border for softer effect
+  * refactor: align tooltips all to top
+  * feat: improve tooltip styling
+  * fix: missing alert settings in the wizards and style alignment
+  * feat: bypass text translations
+  * fix: tooltip orientation
+  * refactor: use single-pix table cell separators
+  * fix: word wrapping issue
+  * feat: add allow bypass toggle to UI
+  * feat: new bypass_min_at_extremes Function setting
+  * refactor: improve handling of login-lockout edge cases
+  * fix: formatting
+  * feat: language text for limited curve points
+  * feat: show max curve points hints appropriately
+  * feat: add curve point info to wizard temp sources
+  * feat: add info about fan curve point limits in Profile View
+  * feat: show channel labels in disable-channel error message
+  * feat: Check if device/channel is in use before disabling
+  * fix: pedantic warnings
+  * fix: show forgot password link when changing password
+  * refactor: improve reset-password handling
+  * refactor: increase session TTL
+  * feat: refresh UI when sessin cookie has expired
+  * fix: stacking emitters
+  * refactor: remove no longer needed plugin path override
+  * refactor: reorder paths
+  * refactor: base plugins_dir on data_dir
+  * fix: popover unmanaged style
+  * fix: unused import
+  * feat: add plugin overview tour step
+  * refactor: cleanup helpful links
+  * refactor: reorder tour steps
+  * fix: home dashboard icon highlighting
+  * refactor: startu-page route name
+  * fix: new default route with settings
+  * feat: translations for new tour steps
+  * refactor: rewrite tour steps
+  * feat: show Unmanaged as an extra setting, not as a Profile
+  * refactor: rename Default Profile to Unmanaged
+  * feat: unmanaged and read-only show have less visual prio
+  * fix: read-only fan tooltip
+  * feat: show Unmanaged/read-only for applicable fan settings in the main device menu
+  * refactor: remove auto-created My Profile and My Function
+  * feat: add more emphasis on Getting Started Link with basic starting steps
+  * refactor: rename General to User Interface settings
+  * feat: add link to Tutorial
+  * feat: Choose startup page
+  * fix: exclude disabled devices for new device detection (best effort)
+  * feat: dedup for slow liquidctl devices with overlapping commands
+  * fix: in-flight writes will also take at waiting writes and take the newest value
+  * refactor: only keep one waiting write task per channel, with new duty targets superceding old waiting ones.
+  * fix: do not log shutdown cancellations
+  * refactor: trimmed comments
+  * refactor: cleanup module docs
+  * feat: on every tick, if a read is already in progress, tick staleness
+  * feat: extend read permit and coalesce preload device requests
+  * feat: cancelle pending operations on shutdown
+  * feat: add hwmon raw read debug logs
+  * feat: add runtime error logging for power and temp sensors
+  * fix: log channel read errors if debug is enabled
+  * feat: check preload duty for all devices to avoid unnecesary writes, and add a duty cache for slow devices.
+  * feat: round-robin sensor reading
+  * feat: use a permit for each read operatin, enabling write operations to interweave with reads instead of being blocked
+  * feat: coalece queued fan writes
+  * feat: apply startup and wakeup device settings concurrently
+  * feat: apply startup settings concurrently during initialization
+  * fix: make sure overlay and mix profiles output a duty when applied to a new channel.
+  * chore: update minor cargo deps
+  * chore: update npm deps
+  * fix: show aqua log once
+  * refactor: simplify after refactorings
+  * fix: increase log level for regularly output info log
+  * fix: revert snapshot timeout and add additional docs on how these timeouts work together
+  * refactor: improve handling of detected channels at startup, so that they appear even if the first read fails
+  * refactor: do not let sleep handling bind the daemon loop
+  * refactor: place quicker and more important chanel extractions first
+  * refactor: improve hmwon shutdown resilience
+  * refactor: add timeout to hwmon initialization
+  * refactor: do not block the completion of the status preload operation with the command delay
+  * refactor: improve handling of blocking ioctl commands for drivetemp
+  * chore: add asserts
+  * fix: formatting
+  * refactor: improved handling of staleness per channel
+  * feat: staleness ticks per channel, instread of for the whole device (only applicable for hwmon devices)
+  * feat: handle streaming responses for hwmon devices
+  * feat: streaming extractors
+  * chore: update log message
+  * fix: missing fan duty/rpm should return cached and failed values, not none.
+  * feat: add an info log on recovery
+  * refactor: use one-time calculated timeout values
+  * refactor: adjust all timeouts based on poll rate
+  * refactor: add some a little buffer to fit with the other timeout systems
+  * fix: handling of failsafe values for failed reads for hwmon devices
+  * chore: post release
+
+-------------------------------------------------------------------
+Mon Jun 22 05:41:33 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.2.1:
+  * Release 4.2.1
+  * chore: post release
+  * fix: formatting
+  * refactor: cover edge cases where stress-ng could hang
+  * refactor: handle possible edge case where dbus doesn't respond
+  * feat: add note about stress-ng gpu capabilities
+  * refactor: add watchdogs to make sure processes are cleanly killed if anything should happen
+  * fix: do not clear cache on version mismatch
+  * refactor: do not check stress-ng capabilities and have the user decide what to use when
+
+-------------------------------------------------------------------
+Mon Jun 22 05:39:33 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 4.2.0:
+  * Release 4.2.0
+  * fix: use wildcard to pull versioned vendor file as well
+  * feat: clear-cache CLI option for Qt app
+  * fix: policy should not be cached forever
+  * fix: close no longer does anything
+  * fix: only display service controls for integration plugins
+  * fix: allow inline scripts
+  * fix: use hard coded speed channels
+  * feat: add support for ga2lcd liquidctl device driver
+
+-------------------------------------------------------------------
+Sat Mar 21 22:44:00 UTC 2026 - pallas wept <pallaswept@proton.me>
+
+- Update to version 4.1.0
+  * Tags for fans
+  * Prometheus metrics endpoint
+  * Access Token write access toggle
+  * Support for liquidctl ControlHub driver
+  * Many UI and UX improvements
+  * Consolidated config file paths with environment variable override support
+  * Algorithm enhancements
+  * Bug fixes
+
+-------------------------------------------------------------------
 Sat Mar 14 08:07:37 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Initial package (v4.0.1)

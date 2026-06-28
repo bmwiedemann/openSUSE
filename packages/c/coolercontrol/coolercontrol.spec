@@ -15,29 +15,39 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %global ap_id org.coolercontrol.CoolerControl
 %global _daemon coolercontrold
 %{!?_metainfodir: %define _metainfodir %{_datadir}/metainfo}
 Name:           coolercontrol
-Version:        4.0.1
+Version:        4.3.1
 Release:        0
 Summary:        Cooling control and monitoring
 License:        GPL-3.0-or-later
 URL:            https://gitlab.com/coolercontrol/coolercontrol
-Source0:        %{name}-%{version}.tar.zst
-Source1:        vendor.tar.zst
-BuildRequires:  appstream-glib
-BuildRequires:  cargo >= 1.84
+Source0:        %{name}-%{version}.tar.xz
+Source1:        vendor.tar.xz
+Source10:       package-lock.json
+Source11:       node_modules.spec.inc
+Source15:       node_modules.sums
+%include %_sourcedir/node_modules.spec.inc
+BuildRequires:  pkgconfig(appstream-glib)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(ocl-icd)
+BuildRequires:  cargo >= 1.85
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6)
+BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(Qt6WebEngineCore)
 BuildRequires:  cmake(Qt6WebEngineWidgets)
-BuildRequires:  cmake(Qt6WebChannel)
 BuildRequires:  cmake(protobuf)
+BuildRequires:  npm >= 22 
+BuildRequires:  nodejs >= 22
+BuildRequires:  local-npm-registry
 Recommends:     %{_daemon} = %{version}
 
 %description
@@ -47,6 +57,8 @@ devices. It features flexible control options, and live thermal data.
 
 %package -n %{_daemon}
 Summary:        Cooling control and monitoring
+Recommends:     python3-liquidctl
+Recommends:     sensors
 
 %description -n %{_daemon}
 This is the system daemon for CoolerControl,
@@ -55,17 +67,35 @@ devices. It features flexible control options, and live thermal data.
 
 %prep
 %autosetup -a1 -p1
+# ui
+pushd coolercontrol-ui
+rm -rf node_modules
+rm -f package-lock.json
+local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
+popd
 
 %build
-orig="$PWD"
-cd coolercontrol
-%cmake
-%cmake_build
-cd "$orig"
+# Build coolercontrol-ui. Must build before coolercontrold which is consumed by collercontrold.
+pushd coolercontrol-ui
+# ensure bundeled web assets are not picked up instead of the build result
+rm -rf ..coolercontrold/resources/app
+# build assets
+# perhaps npm dev-run?
+NODE_ENV=production
+npm exec vite build -- --outDir ../coolercontrold/resources/app --emptyOutDir
+popd
 
-cd coolercontrold
+# Build coolercontrold
+pushd coolercontrold
 export RUSTFLAGS="%{build_rustflags}"
 %{cargo_build}
+popd
+
+# Build coolercontrol
+pushd coolercontrol
+%cmake
+%cmake_build
+popd
 
 %install
 orig="$PWD"

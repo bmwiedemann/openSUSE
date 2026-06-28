@@ -7,4 +7,21 @@
     <comment>New package</comment>
     <requestid>1339099</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c6663074719bc7463e6c589dbdebe5e</srcmd5>
+    <version>4.1.0</version>
+    <time>1775743871</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.1.0</comment>
+    <requestid>1345463</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b4594c156912b643dadd4fd6b317353</srcmd5>
+    <version>4.3.1</version>
+    <time>1782673626</time>
+    <user>dimstar_suse</user>
+    <comment>Versio 4.1.0 on Tumbleweed does not work. It's defect.
+Updaze to 4.3.1 and fix the package.</comment>
+    <requestid>1362028</requestid>
+  </revision>
 </revisionlist>
