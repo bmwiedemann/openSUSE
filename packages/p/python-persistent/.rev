@@ -270,4 +270,13 @@
   * Add CI testing for free-threaded Python 3.14t (Linux).</comment>
     <requestid>1353868</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>91588b081e8a6adda3b9ef4909273307</srcmd5>
+    <version>6.7</version>
+    <time>1782673828</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.7:
+  * Add preliminary support for Python 3.15b1.</comment>
+    <requestid>1362140</requestid>
+  </revision>
 </revisionlist>
