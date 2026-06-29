@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:31:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.68.3:
+  * `utils`: delay `os.get_terminal_size`
+  * `autonotebook`: support QtConsole, Spyder, JupyterLite
+  * minor docs updates
+  * misc minor framework updates
+  * add Python 3.14, drop 3.7 support
+- update to 4.68.2:
+  * revert accidental change to `ascii` default (fixes #1760)
+  * `UnicodeEncodeError: 'charmap' codec can't encode
+    characters in position 6-7: character maps to ` can be fixed
+    by installing `tqdm!=4.68.0,!=4.68.1`
+  * misc docs updates
+  * tests: fix coverage (fixes #1760)
+- update to 4.68.1:
+  * set name of monitor thread
+  * fix monitor thread `atexit` deadlock
+  * docs: minor copyediting
+- update to 4.68.0:
+  * `utils`: simplify terminal size detection
+  * add `chain`, `permutations`, `combinations`,
+    `combinations_with_replacement`, `batched`
+  * add `product(repeat=1)` keyword argument
+  * soft-deprecate `tqdm.utils.envwrap` -> `envwrap`
+  * benchmarks: fix `asv`
+
+-------------------------------------------------------------------
 Tue Mar 10 08:19:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.67.3:

@@ -582,4 +582,35 @@ update to latest version</comment>
   with multiple python flavors gh#openSUSE/python-rpm-macros#66</comment>
     <requestid>1337901</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b0b9ca0cd3486385786e16738b145103</srcmd5>
+    <version>4.68.3</version>
+    <time>1782746993</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.68.3:
+  * `utils`: delay `os.get_terminal_size`
+  * `autonotebook`: support QtConsole, Spyder, JupyterLite
+  * minor docs updates
+  * misc minor framework updates
+  * add Python 3.14, drop 3.7 support
+- update to 4.68.2:
+  * revert accidental change to `ascii` default (fixes #1760)
+  * `UnicodeEncodeError: 'charmap' codec can't encode
+    characters in position 6-7: character maps to ` can be fixed
+    by installing `tqdm!=4.68.0,!=4.68.1`
+  * misc docs updates
+  * tests: fix coverage (fixes #1760)
+- update to 4.68.1:
+  * set name of monitor thread
+  * fix monitor thread `atexit` deadlock
+  * docs: minor copyediting
+- update to 4.68.0:
+  * `utils`: simplify terminal size detection
+  * add `chain`, `permutations`, `combinations`,
+    `combinations_with_replacement`, `batched`
+  * add `product(repeat=1)` keyword argument
+  * soft-deprecate `tqdm.utils.envwrap` -&gt; `envwrap`
+  * benchmarks: fix `asv`</comment>
+    <requestid>1362176</requestid>
+  </revision>
 </revisionlist>
