@@ -1,0 +1,120 @@
+From 39e2a4323bf8a9d28bc71508edc4d34f3937e23c Mon Sep 17 00:00:00 2001
+From: Roman Vinogradov <roman.vinogradov@sap.com>
+Date: Thu, 11 Jun 2026 14:21:55 +0000
+Subject: [PATCH] nss-systemd: avoid ELF TLS for recursion guard
+
+libnss_systemd currently uses a thread_local recursion guard to
+avoid re-entering nss-systemd during NSS lookups.
+Since libnss_systemd.so.2 is loaded lazily by glibc, accessing ELF TLS
+may trigger dynamic TLS allocation in __tls_get_addr(). Under allocation
+failure conditions, glibc terminates the process from the dynamic loader
+instead of allowing the NSS module to return a normal failure.
+Replace the recursion guard with POSIX thread-specific data to preserve the
+same per-thread semantics while avoiding ELF TLS in the NSS module.
+Note that pthread_setspecific() may still allocate internally on first use
+per thread. The key improvement is that any such failure is returned
+as a normal error code rather than terminating the process from inside
+the dynamic loader.
+
+Related: #42559
+(cherry picked from commit 19bd80e29a02b4f8c9543370eb4a16c014d497f3)
+
+[fbui: fixes bsc#1254924]
+---
+ src/nss-systemd/nss-systemd.c | 57 ++++++++++++++++++++++++++++++-----
+ 1 file changed, 50 insertions(+), 7 deletions(-)
+
+diff --git a/src/nss-systemd/nss-systemd.c b/src/nss-systemd/nss-systemd.c
+index 6ed97f31a6..d69c018d04 100644
+--- a/src/nss-systemd/nss-systemd.c
++++ b/src/nss-systemd/nss-systemd.c
+@@ -4,7 +4,6 @@
+ #include <nss.h>
+ #include <pthread.h>
+ #include <string.h>
+-#include <threads.h>
+ 
+ #include "alloc-util.h"
+ #include "env-util.h"
+@@ -1066,28 +1065,72 @@ enum nss_status _nss_systemd_initgroups_dyn(
+         return any ? NSS_STATUS_SUCCESS : NSS_STATUS_NOTFOUND;
+ }
+ 
+-static thread_local unsigned _blocked = 0;
++/* Note that we intentionally use POSIX thread-specific data instead of a plain thread_local variable.
++ * A thread_local in this lazily-loaded DSO uses a dynamic TLS model by default and may require
++ * a dynamic TLS allocation. If that allocation fails, glibc calls _exit() from the dynamic linker,
++ * making the failure unrecoverable. Using pthread_key_t avoids ELF TLS entirely and lets any such
++ * failure propagate as a normal error instead of terminating the process. */
++static pthread_once_t nss_blocked_key_once = PTHREAD_ONCE_INIT;
++static pthread_key_t nss_blocked_key;
++static int nss_blocked_key_error;
++
++static void nss_blocked_key_init(void) {
++        /* NULL destructor: the per-thread value is a plain integer counter encoded as void*,
++         * not a heap allocation, so nothing needs to be freed at thread exit.
++         * No pthread_key_delete: this library is linked with -z nodelete and always opened with
++         * RTLD_NODELETE, so it is never unloaded and the key exists for the process lifetime. */
++        nss_blocked_key_error = pthread_key_create(&nss_blocked_key, NULL);
++}
++
++static int nss_blocked_key_ensure(void) {
++        int r;
++
++        r = pthread_once(&nss_blocked_key_once, nss_blocked_key_init);
++        if (r != 0)
++                return -r;
++
++        if (nss_blocked_key_error != 0)
++                return -nss_blocked_key_error;
++
++        return 0;
++}
+ 
+ _public_ int _nss_systemd_block(bool b) {
++        int r;
++        uintptr_t blocked;
++
++        r = nss_blocked_key_ensure();
++        if (r < 0)
++                return r;
++
++        blocked = (uintptr_t) pthread_getspecific(nss_blocked_key);
+ 
+         /* This blocks recursively: it's blocked for as many times this function is called with `true` until
+          * it is called an equal time with `false`. */
+ 
+         if (b) {
+-                if (_blocked >= UINT_MAX)
++                if (blocked >= UINTPTR_MAX)
+                         return -EOVERFLOW;
+ 
+-                _blocked++;
++                blocked++;
+         } else {
+-                if (_blocked <= 0)
++                if (blocked == 0)
+                         return -EOVERFLOW;
+ 
+-                _blocked--;
++                blocked--;
+         }
+ 
++        r = pthread_setspecific(nss_blocked_key, (void*) blocked);
++        /* Ignore failure on the unblock path: callers may assert on it. */
++        if (r != 0 && b)
++                return -r;
++
+         return b; /* Return what is passed in, i.e. the new state from the PoV of the caller */
+ }
+ 
+ _public_ bool _nss_systemd_is_blocked(void) {
+-        return _blocked > 0;
++        if (nss_blocked_key_ensure() < 0)
++                return false;
++
++        return (uintptr_t) pthread_getspecific(nss_blocked_key) > 0;
+ }
+-- 
+2.51.0
+

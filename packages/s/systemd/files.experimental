@@ -139,7 +139,13 @@
 %{_mandir}/man8/systemd-pcrosseparator.service.8.gz
 %endif
 %if %{with sd_boot}
+%if %{with upstream}
+%{_mandir}/man8/systemd-pcrphase-factory-reset.service.8.gz
+%endif
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-pcrphase-storage-target-mode.service.8.gz
+%endif
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %{_mandir}/man8/systemd-pcrproduct.service.8.gz

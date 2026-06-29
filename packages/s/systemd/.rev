@@ -8068,4 +8068,15 @@ handle manual pages that consist only of a .so directive such as
 - Import commit 58a9b1726da0e2c89665897ca7e107315b2389e0 (merge of v259.5)</comment>
     <requestid>1356344</requestid>
   </revision>
+  <revision rev="470" vrev="2">
+    <srcmd5>5a432d9046e6beed04d848d5a01431bb</srcmd5>
+    <version>260.2</version>
+    <time>1782747014</time>
+    <user>dimstar_suse</user>
+    <comment>- Temporarily add 1002-nss-systemd-avoid-ELF-TLS-for-recursion-guard.patch until
+  upstream releases it (bsc#1254924)
+
+- Enable BPF CO-RE programs via linux-bpf-devel build dependency</comment>
+    <requestid>1361320</requestid>
+  </revision>
 </revisionlist>

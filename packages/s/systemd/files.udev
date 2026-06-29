@@ -317,6 +317,9 @@
 %{_udevhwdbdir}/70-analyzers.hwdb
 %{_udevhwdbdir}/70-av-production.hwdb
 %{_udevhwdbdir}/70-cameras.hwdb
+%if %{with upstream}
+%{_udevhwdbdir}/70-debug-appliance.hwdb
+%endif
 %{_udevhwdbdir}/70-hardware-wallets.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
 %{_udevhwdbdir}/70-lights.hwdb
@@ -327,6 +330,9 @@
 %{_udevhwdbdir}/70-software-radio.hwdb
 %{_udevhwdbdir}/70-sound-card.hwdb
 %{_udevhwdbdir}/70-touchpad.hwdb
+%if %{with upstream}
+%{_udevhwdbdir}/70-vsock.hwdb
+%endif
 %{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
 %{_udevhwdbdir}/82-net-auto-link-local.hwdb
 %endif

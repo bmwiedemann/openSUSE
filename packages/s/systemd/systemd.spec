@@ -89,6 +89,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %if %{without bootstrap}
 BuildRequires:  bpftool
 BuildRequires:  clang
+%ifnarch %{ix86} %{arm}
+BuildRequires:  linux-bpf-devel
+%endif
 # python is only required for generating systemd.directives.xml
 BuildRequires:  python3-base >= 3.9.0
 BuildRequires:  python3-lxml
@@ -240,6 +243,7 @@ Source212:      files.ukify
 %if %{without upstream}
 Patch:          0001-Drop-or-soften-some-upstream-warnings.patch
 Patch:          1001-units-drop-Before-sockets.target-from-networkd-resol.patch
+Patch:          1002-nss-systemd-avoid-ELF-TLS-for-recursion-guard.patch
 
 # The patches listed below are in quarantine. Normally, all changes must be
 # pushed to upstream first and then cherry-picked into the SUSE git
@@ -739,6 +743,12 @@ for the C APIs.
         -Dldconfig=false \
         -Dsmack=false \
         -Dvmlinux-h=disabled \
+%if %{without bootstrap}
+%ifnarch %{ix86} %{arm}
+        -Dvmlinux-h=provided \
+        -Dvmlinux-h-path=/usr/include/bpf/vmlinux.h \
+%endif
+%endif
         -Dxenctrl=disabled \
         -Dxkbcommon=disabled \
         \
