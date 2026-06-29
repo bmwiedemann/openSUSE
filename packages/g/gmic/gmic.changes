@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:58:21 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Disable krita plugin on ppc64le and gimp plugin on s390x
+  due to missing dependencies
+
+-------------------------------------------------------------------
 Thu Feb  5 12:32:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.6.6

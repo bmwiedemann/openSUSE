@@ -15,24 +15,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifnarch ppc64le
+%bcond_without krita_plugin
+%endif
 
+%ifnarch s390x
+%bcond_without gimp_plugin
+%endif
+
+%if %{with krita_plugin}
 %if %{pkg_vcmp krita >= 5}
 %bcond_without krita5
 %else
 %bcond_with    krita5
 %endif
+%endif
 
+%if %{with gimp_plugin}
 %if %{pkg_vcmp gimp >= 3}
 %define gimp_suffix 3
 %global _gimpplugindir %(gimptool-3 --gimpplugindir)/plug-ins/gmic_gimp_qt/
 %else
 %global _gimpplugindir %(gimptool-2.0 --gimpplugindir)/plug-ins/
 %endif
+%global hostapps gimp%{?gimp_suffix}
+%endif
 
-%if %{with krita5}
-%define hostapps gimp%{?gimp_suffix}
-%else
-%define hostapps gimp%{?gimp_suffix} krita
+%if %{with krita_plugin} && %{without krita5}
+%global hostapps %{?hostapps} krita
 %endif
 
 %define gmic_qt_options -DENABLE_SYSTEM_GMIC=ON -DENABLE_DYNAMIC_LINKING=ON
@@ -58,8 +68,8 @@ Patch1:         0001-Find-the-local-gmic-library.patch
 #
 # Those 2 are used for the pkg_vcmp conditionals above and also the rich expressions in the BuildRequires below
 #
-BuildRequires:  gimp
-BuildRequires:  krita
+%{?with_gimp_plugin:BuildRequires: gimp}
+%{?with_krita_plugin:BuildRequires: krita}
 #
 # /SECTION
 #
@@ -140,6 +150,7 @@ programs.
 Header and library from gmic to needed to develop C++ code that
 uses the gmic functionality provided by the gmic library.
 
+%if %{with gimp_plugin}
 %package -n gimp-plugin-gmic
 Summary:        GMIC plugin for gimp
 License:        GPL-3.0-or-later
@@ -152,7 +163,9 @@ Obsoletes:      gmic-gimp < %{version}
 %description -n gimp-plugin-gmic
 This is a plugin for gimp that exposes many of the nice gmic features
 for interactive use in gimp.
+%endif
 
+%if %{with krita_plugin}
 %package -n krita-plugin-gmic
 Summary:        GMIC plugin for krita
 License:        GPL-3.0-or-later
@@ -161,6 +174,7 @@ Requires:       gmic-data = %{version}
 
 %description -n  krita-plugin-gmic
 This is a plugin for krita to provide gmic features.
+%endif
 
 %package bash-completion
 Summary:        Bash completion for gmic
@@ -214,7 +228,7 @@ pushd gmic-qt
 
 cd ..
 
-for hostapp in %{hostapps} ; do
+for hostapp in %{?hostapps} ; do
 %cmake %{gmic_qt_options} -DGMIC_QT_HOST=${hostapp}  -DBUILD_WITH_QT6=ON
 %cmake_build
 
@@ -242,11 +256,13 @@ for size in 16 32 48 64; do
 done
 install -Dm 0644 gmic-qt/icons/application/gmic_qt.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/gmic_qt.svg
 
+%if %{with krita_plugin}
 %if %{with krita5}
 DESTDIR=%{buildroot} cmake --install gmic-qt/plugin-build
 %else
 # krita plugin
 install -m 0755 gmic-qt/build/gmic_krita_qt %{buildroot}%{_bindir}/gmic_krita_qt
+%endif
 %endif
 
 %suse_update_desktop_file -c gmic_qt "G'Mic Qt" "G'MIC Qt GUI" "gmic_qt %%F" gmic_qt "Qt;Graphics;Photography;"
@@ -258,8 +274,10 @@ rm %{buildroot}%{_mandir}/fr/man1/gmic.1*
 pushd gmic-qt
 install -m 0755 build/gmic_qt %{buildroot}%{_bindir}/gmic_qt
 
+%if %{with gimp_plugin}
 # gimp plugin
 install -D -m 0755 build/gmic_gimp_qt %{buildroot}%{_gimpplugindir}/gmic_gimp_qt
+%endif
 popd
 
 %ldconfig_scriptlets -n libgmic3
@@ -277,14 +295,18 @@ popd
 %files data
 %{gmic_datadir}/
 
+%if %{with gimp_plugin}
 %files -n gimp-plugin-gmic
 %{_gimpplugindir}/
+%endif
 
+%if %{with krita_plugin}
 %files -n krita-plugin-gmic
 %if %{with krita5}
 %{_kf5_libdir}/kritaplugins/krita_gmic_qt.so
 %else
 %{_bindir}/gmic_krita_qt
+%endif
 %endif
 
 %files -n libgmic3
