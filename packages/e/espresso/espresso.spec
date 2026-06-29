@@ -25,7 +25,7 @@
 %define py_dot_version %(echo %{modern_python} | sed -e 's/^python//' -e 's/\\([0-9]\\)/\\1./')
 
 Name:           espresso
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Parallel simulation software for soft matter research
 License:        GPL-3.0-or-later

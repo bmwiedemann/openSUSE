@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jun 28 21:40:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.1:
+  * The Lees-Edwards shear velocity is now properly handled in
+    the simulation engine (#5282).
+  * Electrokinetics unit conversion was fixed (#5304). This
+    required introducing a new parameter `tau` to `EKNone` and
+    `EKFFT`. In previous ESPResSo releases,
+    the `tau` parameter was factored into the `prefactor`
+    argument.
+  * EK node and slice getters now return the imposed value for
+    nodes with boundary conditions (#5327).
+  * EK GPU and EK CPU objects can no longer be mixed in the same
+    EK container (#5327).
+  * Dihedral bonds checkpointing was fixed (#5279). A regression
+    introduced in 5.0.0 prevented the checkpointing mechanism from
+    reloading dihedral bo.
+  * Interpolation-based constraints built from a grid now
+    properly check the input grid is larger than the simulation box
+  * A few missing feature checks were added to particle property
+    setters and thermostat setters (#5320).
+  * Features in the `myconfig.hpp` file are now evaluated
+    transitively (#5297).
+  * All ESPResSo versions since 4.0.0 would only activate implied
+    features up to one degree of separation, leading to inconsistent
+    feature activation.
+  * For example, if feature A is requested in `myconfig.hpp`, and
+    A depends on B, and B depends on C, only A and B would be
+    activated. This issue can be encountered when a small number
+    of high-level features are enabled in `myconfig.hpp`, for
+    example requesting magnetodynamics would
+    activate dipoles but not rotation, preventing ESPResSo from
+    being compiled.
+  * The Lees-Edwards boundary conditions restriction was lifted
+    from the cluster analysis function (#4965).
+  * The ELC error formula now follows the original paper and
+    allows for ELC and ELCIC to tune to slightly larger summation
+    limits
+  * The Electrokinetics `EKNone` solver is now available on the
+    GPU (#5304).
+
+-------------------------------------------------------------------
 Tue Jun  9 18:18:10 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Buildrequire Boost >= 1.83.0 rather than a fixed version
@@ -330,7 +372,7 @@ Mon Mar  2 13:06:42 UTC 2026 - Jean-Noel Grad <jgrad@icp.uni-stuttgart.de>
    * The build system now properly handles linking of ESPResSo against
      static and shared libraries, sets the correct runpaths, and avoids
      cyclic dependencies during the linking stage (#5221, #5173). These
-     changes are most relevant to cluster admins and package maintainers. 
+     changes are most relevant to cluster admins and package maintainers.
 
 - Removed upstreamed patches:
    - cmake.patch

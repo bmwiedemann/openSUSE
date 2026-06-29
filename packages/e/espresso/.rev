@@ -31,4 +31,41 @@
     <comment></comment>
     <requestid>1359502</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4bcae8f3f62b7c0aa5e48aaacef5abf2</srcmd5>
+    <version>5.0.1</version>
+    <time>1782747052</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.1:
+  * The Lees-Edwards shear velocity is now properly handled in
+    the simulation engine (#5282).
+  * Electrokinetics unit conversion was fixed (#5304). This
+    required introducing a new parameter `tau` to `EKNone` and
+    `EKFFT`. In previous ESPResSo releases,
+    the `tau` parameter was factored into the `prefactor`
+    argument.
+  * EK node and slice getters now return the imposed value for
+    nodes with boundary conditions (#5327).
+  * EK GPU and EK CPU objects can no longer be mixed in the same
+    EK container (#5327).
+  * Dihedral bonds checkpointing was fixed (#5279). A regression
+    introduced in 5.0.0 prevented the checkpointing mechanism from
+    reloading dihedral bo.
+  * Interpolation-based constraints built from a grid now
+    properly check the input grid is larger than the simulation box
+  * A few missing feature checks were added to particle property
+    setters and thermostat setters (#5320).
+  * Features in the `myconfig.hpp` file are now evaluated
+    transitively (#5297).
+  * All ESPResSo versions since 4.0.0 would only activate implied
+    features up to one degree of separation, leading to inconsistent
+    feature activation.
+  * For example, if feature A is requested in `myconfig.hpp`, and
+    A depends on B, and B depends on C, only A and B would be
+    activated. This issue can be encountered when a small number
+    of high-level features are enabled in `myconfig.hpp`, for
+    example requesting magnetodynamics would
+    activate dipoles but not rotation, preventing ESPResSo from</comment>
+    <requestid>1362273</requestid>
+  </revision>
 </revisionlist>
