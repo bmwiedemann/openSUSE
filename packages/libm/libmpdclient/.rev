@@ -136,4 +136,12 @@
     <comment></comment>
     <requestid>1360825</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>e22f784db50ed10e370ebdf658af7fe6</srcmd5>
+    <version>2.25</version>
+    <time>1782747143</time>
+    <user>dimstar_suse</user>
+    <comment>- Added libmpdclient-ncmpc.patch (boo#1269509).</comment>
+    <requestid>1362409</requestid>
+  </revision>
 </revisionlist>

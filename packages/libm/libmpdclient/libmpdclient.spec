@@ -29,6 +29,7 @@ Source1:        https://musicpd.org/download/%{name}/%{sover}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        doxygen-nodatetime-footer.html
 Patch0:         %{name}-doxygen_nodatetime.patch
+Patch1:         %{name}-ncmpc.patch
 BuildRequires:  check-devel
 BuildRequires:  doxygen
 BuildRequires:  meson
