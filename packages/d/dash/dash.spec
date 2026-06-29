@@ -18,14 +18,13 @@
 
 
 Name:           dash
-Version:        0.5.13.1
+Version:        0.5.13.4
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Shells
 URL:            http://gondor.apana.org.au/~herbert/dash/
 Source0:        http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
-Patch0:         shell-Fix-unsigned-char-promotion-and-truncation.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libedit)
 

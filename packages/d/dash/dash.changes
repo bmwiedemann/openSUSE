@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:42:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.3.4 (bsc#1269494, CVE-2026-31323):
+  * parser: Fix multi-byte output in here-doc with quoted delimiter
+  * input: Replace stdin_state.canon with bufferable
+  * input: Fix tee(2) error handling
+  * Drop multi-byte character in argstr when discard is on
+  * input: Fix EINTR handling when reading from a pipe
+  * arith: Fix CVE-2026-31323 INTMAX_MIN / -1 overflow
+  * parser: Only reject non-word tokens in case pattern
+  * jobs: Make stoppedjobs trivial if JOBS == 0
+- drop shell-Fix-unsigned-char-promotion-and-truncation.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Fri Feb 20 08:58:00 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 0.15.3.1
@@ -39,13 +54,13 @@ Sat Oct 22 02:02:00 UTC 2022 - Luciano Santos <luc14n0@opensuse.org>
 -------------------------------------------------------------------
 Thu Jan 27 17:38:59 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add dash-sh subpackage to be able to switch away from bash 
+- add dash-sh subpackage to be able to switch away from bash
 
 -------------------------------------------------------------------
 Mon Dec 20 10:46:44 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.11.5:
-  * parser: Fix VSLENGTH parsing with trailing garbage 
+  * parser: Fix VSLENGTH parsing with trailing garbage
 
 -------------------------------------------------------------------
 Mon Jun  7 19:27:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
@@ -57,18 +72,18 @@ Mon Jun  7 19:27:42 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 Tue Dec 29 19:23:59 UTC 2020 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.5.11.3:
-  * jobs: Only block in waitcmd on first run 
+  * jobs: Only block in waitcmd on first run
 
 -------------------------------------------------------------------
 Thu Nov 19 22:34:02 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
-- add check-nflag-in-evaltree.patch (bsc#1178978) 
+- add check-nflag-in-evaltree.patch (bsc#1178978)
 
 -------------------------------------------------------------------
 Sun Oct 18 18:08:34 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.5.11.2 (bsc#1177691):
-  * shell: Group readdir64/dirent64 with open64 
+  * shell: Group readdir64/dirent64 with open64
 - add LICENSE file
 
 -------------------------------------------------------------------

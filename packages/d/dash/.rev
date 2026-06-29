@@ -303,4 +303,28 @@
     <comment></comment>
     <requestid>1334302</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>3c3d3a7f7fed1279280dd604ba1685d1</srcmd5>
+    <version>0.5.13.4</version>
+    <time>1782747012</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.15.3.4 (bsc#1269494, CVE-2026-31323):
+  * parser: Fix multi-byte output in here-doc with quoted delimiter
+  * input: Replace stdin_state.canon with bufferable
+  * input: Fix tee(2) error handling
+  * Drop multi-byte character in argstr when discard is on
+  * input: Fix EINTR handling when reading from a pipe
+  * arith: Fix CVE-2026-31323 INTMAX_MIN / -1 overflow
+  * parser: Only reject non-word tokens in case pattern
+  * jobs: Make stoppedjobs trivial if JOBS == 0
+- drop shell-Fix-unsigned-char-promotion-and-truncation.patch
+  (upstream)
+
+- add dash-sh subpackage to be able to switch away from bash
+  * parser: Fix VSLENGTH parsing with trailing garbage
+  * jobs: Only block in waitcmd on first run
+- add check-nflag-in-evaltree.patch (bsc#1178978)
+  * shell: Group readdir64/dirent64 with open64</comment>
+    <requestid>1362351</requestid>
+  </revision>
 </revisionlist>
