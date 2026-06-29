@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 23 06:19:04 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Ensure correct certificate is used for TSA auth
+  (bsc#1262346, CVE-2026-39984)
+  * 0007-CVE-2026-39984-Ensure-correct-certificate-is-used-fo.patch
+
+- http2: prevent hanging Transport due to bad SETTINGS
+  (bsc#1265782, CVE-2026-33814)
+  * 0008-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+
+- idna: update from x/text, fix ToUnicode and all-ASCII xn-- labels
+  (bsc#1266625, CVE-2026-39821)
+  *  0009-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch 
+
+- daemon: Decompress archives before entering container filesystem
+  (bsc#1267827, CVE-2026-41567)
+  * 0010-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
+
+-------------------------------------------------------------------
 Wed May  6 04:59:34 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to Docker 29.4.0. See upstream changelog online at

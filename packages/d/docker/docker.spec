@@ -112,6 +112,10 @@ Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
 Patch201:       0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
 Patch202:       0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+Patch203:       0007-CVE-2026-39984-Ensure-correct-certificate-is-used-fo.patch
+Patch204:       0008-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+Patch205:       0009-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+Patch206:       0010-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -390,6 +394,14 @@ cp %{SOURCE130} .
 %patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
 %patch -P202 -p1
+# bsc#1262346
+%patch -P203 -p1
+# bsc#1265782
+%patch -P204 -p1
+# bsc#1266625
+%patch -P205 -p1
+# bsc#1267827
+%patch -P206 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} docker.conf
