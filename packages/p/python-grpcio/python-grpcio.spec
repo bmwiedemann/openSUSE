@@ -19,7 +19,7 @@
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.80.0
+Version:        1.81.1
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0

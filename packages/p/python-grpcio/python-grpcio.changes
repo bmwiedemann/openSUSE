@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:14:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.81.1:
+  * Add typing_extensions dep to aio Bazel target. (#42001)
+  * Drop 3.9. (#42145)
+  * grpc-status: Relax protobuf dependency upper bound to allow 7.x. (#41948)
+  * [Typeguard] Part 5 - Add Typeguard SYNC Stack in tests. (#40278)
+  * Remove GIL from ReceiveMessageOperation.un_c method. (#41812)
+  * Support observability in AsyncIO stack. (#41573)
+  * Trim Python2 backward compatiblity syntax - removed (object) inheritance
+
+-------------------------------------------------------------------
 Sat Apr 25 11:02:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.80.0:
