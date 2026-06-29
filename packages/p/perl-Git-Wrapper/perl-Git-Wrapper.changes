@@ -1,0 +1,103 @@
+-------------------------------------------------------------------
+Fri Mar 29 09:18:15 UTC 2019 - John Vandenberg <jayvdb@gmail.com>
+
+- Add Requires: git-core to unbreak all packages using this wrapper.
+
+-------------------------------------------------------------------
+Fri Mar 30 05:24:36 UTC 2018 - coolo@suse.com
+
+- updated to 0.048
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+  0.048     2018-03-29 11:14:42-07:00 America/Los_Angeles
+  
+          No changes since last development release.
+  
+  0.047_090 2018-03-19 21:19:22-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          update t/path_class.t to remove tilde; fixes [#41] (Jean-Damien.Durand)
+          Unset (possible) global gpgsign [#91] (Sergey Romanov)
+          remove timing bug in basic.t (Christian Walde)
+          POD typo fix (Сергей Романов)
+          Include dist.ini in distribution (Karen Etheridge)
+
+-------------------------------------------------------------------
+Tue Sep 20 05:37:36 UTC 2016 - coolo@suse.com
+
+- updated to 0.047
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+  0.047     2016-09-18 15:30:58-07:00 America/Los_Angeles
+  
+         Properly track commits in test (Graham Knop)
+
+-------------------------------------------------------------------
+Thu Sep 15 05:32:04 UTC 2016 - coolo@suse.com
+
+- updated to 0.046
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+-------------------------------------------------------------------
+Wed Sep 14 05:25:22 UTC 2016 - coolo@suse.com
+
+- updated to 0.046
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+  0.046     2016-09-12 20:13:04-07:00 America/Los_Angeles
+  
+          No changes since last development release.
+  
+  0.045_091 2016-09-10 14:26:13-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          Properly handle scores in raw log files (Atoomic)
+          Update error message for inability to run 'git config --list'
+  
+  0.045_090 2016-09-08 21:59:58-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          Fix tabs being expanded in log output in git 2.9+ (Graham Knop)
+          Misc POD fixes (gregor herrmann/Debian, Philippe Bruhat)
+
+-------------------------------------------------------------------
+Mon Aug 31 09:00:02 UTC 2015 - coolo@suse.com
+
+- updated to 0.045
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+  0.045     2015-07-19 09:46:07-07:00 America/Los_Angeles
+  
+          And this time let's actually use a non-trial release, dummy... 
+  
+  0.044_92  2015-07-19 09:45:11-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          No changes since last development release
+  
+  0.044_91  2015-07-13 18:12:05-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          Uncoditionally set no_abbrev option to improve raw log parsing [#67] (John Anderson)
+  
+  0.044_90  2015-05-06 15:08:17-07:00 America/Los_Angeles (TRIAL RELEASE)
+  
+          Document 'modifications' method on G::W::Log (John Anderson)
+  
+          Parse raw logs correctly (John Anderson)
+  
+          Set modifications properly in constructor (John Anderson)
+
+-------------------------------------------------------------------
+Fri Apr 17 11:47:28 UTC 2015 - coolo@suse.com
+
+- updated to 0.044
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+-------------------------------------------------------------------
+Fri Apr 17 11:47:25 UTC 2015 - coolo@suse.com
+
+- updated to 0.017
+   see /usr/share/doc/packages/perl-Git-Wrapper/Changes
+
+-------------------------------------------------------------------
+Fri Jan 21 20:19:17 UTC 2011 - coolo@novell.com
+
+- initial package 0.014
+  * created by cpanspec 1.78.03
+
