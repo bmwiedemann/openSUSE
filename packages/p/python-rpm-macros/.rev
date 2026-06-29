@@ -712,4 +712,20 @@ prerequisite for new python submission</comment>
   * Copy libalternatives binaries from buildroot to flavorbin</comment>
     <requestid>1339571</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>0408ffa229fa39e8338f15a535405552</srcmd5>
+    <version>20260601.4a231f4</version>
+    <time>1782746901</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260601.4a231f4:
+  * fix: allow function of `%pythonXX_provides` w/o /usr/bin/python3
+  * Update python version handling in default-prjconf
+  * Rewrite README.md to have headlines for each macro.
+- Remove upstreamed better-python-provides.patch.
+
+- Add better-python-provides.patch to allow function of
+  `%pythonXX_provides` even without the access to
+  /usr/bin/python3.</comment>
+    <requestid>1358060</requestid>
+  </revision>
 </revisionlist>

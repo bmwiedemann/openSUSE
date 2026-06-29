@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 01 17:19:04 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 20260601.4a231f4:
+  * fix: allow function of `%pythonXX_provides` w/o /usr/bin/python3
+  * Update python version handling in default-prjconf
+  * Rewrite README.md to have headlines for each macro.
+- Remove upstreamed better-python-provides.patch.
+
+-------------------------------------------------------------------
+Thu May 28 17:16:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add better-python-provides.patch to allow function of
+  `%pythonXX_provides` even without the access to
+  /usr/bin/python3.
+
+-------------------------------------------------------------------
 Tue Mar 17 11:01:51 UTC 2026 - mcepl@cepl.eu
 
 - Update to version 20260317.5e02b19:
@@ -813,4 +829,3 @@ Tue Jan  3 15:06:29 UTC 2017 - jmatejek@suse.com
 Thu Nov 24 14:57:13 UTC 2016 - jmatejek@suse.com
 
 - initial commit
-
