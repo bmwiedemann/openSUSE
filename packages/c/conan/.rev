@@ -212,4 +212,15 @@
     <comment></comment>
     <requestid>1358726</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>aadb5b0a6056ce400e5aec646a7b17f2</srcmd5>
+    <version>2.29.1</version>
+    <time>1782747040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.29.1:
+  * Bugfix: Handle special case where only one possible option is
+    defined for shared. (https://github.com/conan-
+    io/conan/pull/20082)</comment>
+    <requestid>1362252</requestid>
+  </revision>
 </revisionlist>
