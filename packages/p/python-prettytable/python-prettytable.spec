@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prettytable
-Version:        3.17.0
+Version:        3.18.0
 Release:        0
 Summary:        Library for displaying tabular data in formatted fashion
 License:        BSD-2-Clause

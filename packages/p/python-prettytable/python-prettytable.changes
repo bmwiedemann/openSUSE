@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:15:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.18.0:
+  * Add support for Python 3.16 (#470) @hugovk
+  * Support multiline headers (#451) @wyllys66
+  * Support reStructuredText tables (#449) @hugovk
+  * Support `int_format`, `float_format` and `custom_format` for
+    CSV (#448) @hugovk
+  * Add caption support for Markdown (#342) (#430) @stuertz
+  * Validate column-specific options when dict attrs are modified
+    (#429) @stuertz
+  * Overwrite int/float formatter with `custom_formatter` (#425)
+    @stuertz
+  * Document `paginate()` (#420) @stuertz
+  * Docs: add example of using `custom_format` (#405) @stuertz
+  * Improve type coverage of `colortable` (#459) @jorenham
+  * Improve wcwidth>=0.3.5 integration and performance (#440)
+    @jquast
+  * Replace `re.split` with `str.split` and remove `re` import
+    (#443) @hugovk
+  * Speed up import time (#471) @hugovk
+  * Stop testing experimental Python 3.13t (#469) @hugovk
+  * Performance: deprecate and defer import of `TableHandler`
+    (#460) @hugovk
+  * Expand tabs in cell values so columns stay aligned (#468)
+    @gaoflow
+  * Drop stale `align`/`valign` keys when `field_names` are
+    renamed (#465) @SAY-5
+  * Fix bleeding of wrapped colours into table edges (#452)
+    @jquast
+  * Fix `horizontal_align_char` getter (#445) @hugovk
+  * Allow different types for Cursor than only sqlite3.Cursor
+    (#419) @stuertz
+  * Remove duplicate line (#446) @hugovk
+  * Document `header_horizontal_char` and remove a duplicate
+    docstring line (#467) @Labib-Bin-Salam
+
+-------------------------------------------------------------------
 Wed Jan  7 00:33:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.17.0:
