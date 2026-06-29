@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 29 11:03:02 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260629.0b862e06:
+  * Chore: Changelog: Update ChangeLog for release 5.1.0 rc2
+
+-------------------------------------------------------------------
+Thu Jun 25 08:24:05 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260625.11a77666:
+  * Dev: unittests: Add dedicated unit tests for storage_utils
+
+-------------------------------------------------------------------
 Wed Jun 24 04:47:36 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260624.349562dd:

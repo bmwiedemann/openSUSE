@@ -3881,4 +3881,12 @@ and fixes bnc#880052</comment>
     <comment></comment>
     <requestid>1361531</requestid>
   </revision>
+  <revision rev="414" vrev="1">
+    <srcmd5>93686747449422377584d38c9f4be7e5</srcmd5>
+    <version>5.1.0+20260629.0b862e06</version>
+    <time>1782747068</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362400</requestid>
+  </revision>
 </revisionlist>
