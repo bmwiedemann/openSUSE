@@ -1,13 +1,13 @@
-Index: vim-9.2.0530/runtime/autoload/dist/ft.vim
+Index: vim-9.2.0725/runtime/autoload/dist/ft.vim
 ===================================================================
---- vim-9.2.0530.orig/runtime/autoload/dist/ft.vim
-+++ vim-9.2.0530/runtime/autoload/dist/ft.vim
-@@ -920,7 +920,8 @@ export def FTinc()
+--- vim-9.2.0725.orig/runtime/autoload/dist/ft.vim
++++ vim-9.2.0725/runtime/autoload/dist/ft.vim
+@@ -935,7 +935,8 @@ export def FTinc()
        elseif line =~ '^\s*\%({\|(\*\)' || line =~? ft_pascal_keywords
          setf pascal
          return
--      elseif line =~# '\<\%(require\|inherit\)\>' || line =~# '[A-Z][A-Za-z0-9_:${}/]*\(\[[A-Za-z0-9_:/]\+\]\)*\s\+\%(??\|[?:+.]\)\?=.\? '
-+      elseif line =~# '^\s*\%(require\|inherit\)\>'
+-      elseif line =~# '^\s*\<\%(require\|inherit\)\>' || line =~# '^\s*[A-Z][A-Za-z0-9_:${}/]*\%(\[[A-Za-z0-9_:/]\+\]\)*\s\+\%(??=\|[?:+.]=\|=[+.]\?\)\s\+'
++      elseif line =~# '^\s*\<\%(require\|inherit\)\>'
 +        || line =~# "^\s*[A-Z][A-Za-z0-9_:${}/-]*\(\[[A-Za-z0-9_:/]\+\]\)*\s*\\%(??=\\|:=\\|+=\\|?=\\|\\.=\\|=\\.\\|=\\)\\s*\\%(['\"]\\|\\${\\)"
          setf bitbake
          return

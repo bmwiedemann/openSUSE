@@ -1,8 +1,8 @@
-Index: vim-9.1.1856/runtime/syntax/sh.vim
+Index: vim-9.2.0677/runtime/syntax/sh.vim
 ===================================================================
---- vim-9.1.1856.orig/runtime/syntax/sh.vim
-+++ vim-9.1.1856/runtime/syntax/sh.vim
-@@ -147,6 +147,13 @@ if exists("b:is_kornshell") || exists("b
+--- vim-9.2.0677.orig/runtime/syntax/sh.vim
++++ vim-9.2.0677/runtime/syntax/sh.vim
+@@ -131,6 +131,13 @@ if exists("b:is_kornshell") || exists("b
      endif
  endif
  

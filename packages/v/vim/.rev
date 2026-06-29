@@ -8460,4 +8460,12 @@ always built-in because vim has direct perl dependencies anyway.
     <comment>vim 9.2.x: wire up vim-9.1.1732-fix-inc-detection.patch (Patch16) — it was committed and documented but unreferenced in the spec (the cause of the previous decline), so the bsc#1262395 fix was not being applied</comment>
     <requestid>1360695</requestid>
   </revision>
+  <revision rev="401" vrev="1">
+    <srcmd5>2b6fb034e3b9f0b0c6d520bbc599f5ae</srcmd5>
+    <version>9.2.0725</version>
+    <time>1782746912</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1361969</requestid>
+  </revision>
 </revisionlist>

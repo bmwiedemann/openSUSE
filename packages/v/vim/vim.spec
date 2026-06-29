@@ -17,7 +17,7 @@
 
 
 %define pkg_version 9.2
-%define patchlevel 0530
+%define patchlevel 0725
 %define patchlevel_compact %{patchlevel}
 %define VIM_SUBDIR vim92
 %define site_runtimepath %{_datadir}/vim/site
@@ -87,7 +87,7 @@ BuildRequires:  ruby-devel
 BuildRequires:  wayland-utils
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
-BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(lua)
@@ -269,7 +269,7 @@ export GUI_OPTIONS="\
     --disable-icon-cache-update \
     --enable-xim \
     --enable-fontset \
-    --enable-gui=gtk3 \
+    --enable-gui=gtk4 \
     --enable-wayland"
 
 export NOGUI_OPTIONS="\

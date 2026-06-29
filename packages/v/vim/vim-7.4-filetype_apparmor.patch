@@ -1,8 +1,8 @@
-Index: vim-9.2.0275/runtime/filetype.vim
+Index: vim-9.2.0677/runtime/filetype.vim
 ===================================================================
---- vim-9.2.0275.orig/runtime/filetype.vim
-+++ vim-9.2.0275/runtime/filetype.vim
-@@ -127,6 +127,10 @@ au BufNewFile,BufRead *.mac			call dist#
+--- vim-9.2.0677.orig/runtime/filetype.vim
++++ vim-9.2.0677/runtime/filetype.vim
+@@ -130,6 +130,10 @@ au BufNewFile,BufRead *.mac			call dist#
  " *.[sS], *.[aA] usually Assembly - GNU
  au BufNewFile,BufRead *.asm,*.[sS],*.[aA],*.lst	call dist#ft#FTasm()
  

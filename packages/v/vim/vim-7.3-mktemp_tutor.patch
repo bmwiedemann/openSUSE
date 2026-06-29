@@ -1,7 +1,7 @@
-Index: vim-9.1.1706/src/vimtutor
+Index: vim-9.2.0677/src/vimtutor
 ===================================================================
---- vim-9.1.1706.orig/src/vimtutor
-+++ vim-9.1.1706/src/vimtutor
+--- vim-9.2.0677.orig/src/vimtutor
++++ vim-9.2.0677/src/vimtutor
 @@ -159,9 +159,8 @@ done
  
  
