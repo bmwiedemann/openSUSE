@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:32:54 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade s390-tool to version 2.43.0
+  For Linux kernel version: 7.1
+  s390-tools: Set Rust MSRV to 1.85.0
+- Changes of existing tools:
+  * dbginfo.sh: Add IBM appliance specific files
+  * lshwc: Show explicitly selected unnamed counters with --hide
+  * pvattest: Add firmware check version 2
+  * zipl: Introduce verbosity levels of zipl session (--debug)
+  * zkey: Remove the use of AF_ALG for calculating key verification patterns
+- Bug Fixes:
+  * ebc: implement --version option for pvics
+  * pvebc: Log services to journal+console
+  * pvics: Fix virt-resize permission error 
+- Removed obsolete patch
+  * s390-tools-pvebc-Log-services-to-journal-plus-console.patch 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Jun 22 15:29:47 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Applied a patch (bsc#1268516)

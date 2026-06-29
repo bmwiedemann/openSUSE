@@ -24,7 +24,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.42.1
+Version:        2.43.0
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -92,7 +92,6 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
-Patch001:       s390-tools-pvebc-Log-services-to-journal-plus-console.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch
