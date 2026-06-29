@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jun 28 09:42:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.2:
+  * Added support for newer type hints and remove Optional and
+    Union from all annotations -- by :user:`Vizonex` Related
+    issues and pull requests on GitHub: :issue:`193`.
+  * Dropped support for Python 3.9 as it has reached end of life.
+    Related issues and pull requests on GitHub: :issue:`216`.
+  * Changed the Cython build dependency from ~= 3.1.0 to >=
+    3.2.0, removing the upper version bound to avoid conflicts
+    for downstream packagers -- by :user:`jameshilliard` and
+    :user:`gundalow`. The upstream Cython version is pinned to
+    3.2.4 in the CI/CD environment. Related issues and pull
+    requests on GitHub: :issue:`184`, :issue:`188`, :issue:`214`.
+  * Start building and shipping riscv64 wheels -- by
+    :user:`justeph`. Related issues and pull requests on GitHub:
+    :issue:`194`.
+  * The PEP 517 build backend now supports a new build-inplace
+    config setting (and PROPCACHE_BUILD_INPLACE environment
+    variable) for controlling whether to build the project in-
+    tree or in a temporary directory. It only affects wheels and
+    is set up to build in a temporary directory by default. It
+    does not affect editable wheel builds; they will keep being
+    built in-tree regardless. Here's an example of using this
+    setting:  $ python -m build --config-setting=build-
+    inplace=true  Additionally, when building wheels in an
+    automatically created temporary directory, the build backend
+    now normalizes the respective file system path to a
+    deterministic source checkout directory by injecting the
+    -ffile-prefix-map compiler option into the CFLAGS environment
+    variable, as suggested by known reproducible build practices.
+    The effect is that downstreams will get reproducible build
+    results. Related issues and pull requests on GitHub:
+    :issue:`218`.
+
+-------------------------------------------------------------------
 Wed Apr  8 21:24:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.4.1:

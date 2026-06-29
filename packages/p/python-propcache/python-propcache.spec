@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-propcache
-Version:        0.4.1
+Version:        0.5.2
 Release:        0
 Summary:        Accelerated property cache
 License:        Apache-2.0
 URL:            https://github.com/aio-libs/propcache
 Source:         https://files.pythonhosted.org/packages/source/p/propcache/propcache-%{version}.tar.gz
 Patch0:         reproducible.patch
-BuildRequires:  %{python_module Cython >= 3.1.4}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module covdefaults}
 BuildRequires:  %{python_module expandvars}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 8.4.2}
-BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-cov >= 7.1.0}
 BuildRequires:  %{python_module pytest-xdist}
-BuildRequires:  %{python_module setuptools >= 47}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

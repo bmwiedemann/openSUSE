@@ -2,11 +2,11 @@ diff --git a/packaging/pep517_backend/_backend.py b/packaging/pep517_backend/_ba
 index 7245be9..ad4dd85 100644
 --- a/packaging/pep517_backend/_backend.py
 +++ b/packaging/pep517_backend/_backend.py
-@@ -321,7 +321,7 @@ def build_wheel(
+@@ -346,7 +346,7 @@ def build_wheel(
      """
      with maybe_prebuild_c_extensions(
              line_trace_cython_when_unset=False,
--            build_inplace=False,
+-            build_inplace=_build_inplace(config_settings, default=False),
 +            build_inplace=True,
              config_settings=config_settings,
      ):
