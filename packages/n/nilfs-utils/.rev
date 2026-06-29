@@ -208,4 +208,12 @@
       - Unify type definitions (use standard uint32_t/uint64_t).</comment>
     <requestid>1360878</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>e641b68907eb1d6716f801355036d04a</srcmd5>
+    <version>2.3.1</version>
+    <time>1782747197</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.3.1 (bsc#1268553, CVE-2026-55392):</comment>
+    <requestid>1362470</requestid>
+  </revision>
 </revisionlist>
