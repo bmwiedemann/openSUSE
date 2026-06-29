@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:39:22 UTC 2026 - msuchanek@suse.de
+
+- Update to version 2.2.4+git12.bc007b2:
+  * [kdump] Fix TypeError in kdump component check
+
+-------------------------------------------------------------------
 Mon Aug 11 13:12:18 UTC 2025 - Michal Suchanek <msuchanek@suse.de>
 
 - Update to version 2.2.4+git11.8bf0f05:
