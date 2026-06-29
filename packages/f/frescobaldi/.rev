@@ -330,4 +330,20 @@
   * Add a GitHub Action workflow to build a flatpak package</comment>
     <requestid>1353585</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>4f1357b4e32fa5c9f0fdb05c6e8550ca</srcmd5>
+    <version>4.0.7</version>
+    <time>1782747055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.0.7:
+  * macOS packages are available again. Many thanks to @walkymatt
+    for providing the new Apple certificate!
+  * macOS: PyQt version downgraded to 6.9 to avoid the crash
+    discussed in #2160
+  * Reduce link cache memory usage
+  * Some performance optimizations have been added in version
+    1.0.5 of qpageview, which is bundled in the Windows and macOS
+    packages.</comment>
+    <requestid>1362269</requestid>
+  </revision>
 </revisionlist>
