@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:56:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.1.1 (bsc#, CVE-2026-49825):
+  * The known link attributes in ``lxml.html.defs.link_attrs``
+    were missing ``xlink:href``, which can be used for URL bypass
+    attacks in embedded SVG/MathML/etc. content.
+  * https://github.com/fedora-
+    python/lxml_html_clean/security/advisories/GHSA-4jhm-
+    jv67-739f
+  * The Linux wheels use a patched libxslt 1.1.43, fixing
+    CVE-2025-7424 and CVE-2025-11731.
+  * The Windows wheels use libxslt 1.1.45, fixing CVE-2025-7424
+    and CVE-2025-11731.
+
+-------------------------------------------------------------------
 Sun Apr 19 21:26:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.0 (CVE-2026-41066):
