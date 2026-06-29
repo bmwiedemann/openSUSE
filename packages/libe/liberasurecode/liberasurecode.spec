@@ -19,7 +19,7 @@
 
 %define libsoname liberasurecode1
 Name:           liberasurecode
-Version:        1.7.1
+Version:        1.8.0
 Release:        0
 Summary:        Erasure Code API library with pluggable Erasure Code backends
 License:        BSD-3-Clause

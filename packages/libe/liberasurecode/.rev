@@ -96,4 +96,20 @@
    (#data + #chunks) &lt; 32</comment>
     <requestid>1345957</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bab52a55f2d10be810d40fba8cc3d43b</srcmd5>
+    <version>1.8.0</version>
+    <time>1782747073</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.8.0:
+  * Added a new ISA-L backend implementing locally-recoverable
+    codes. These allow reconstruction with less than k fragments.
+  * Added locks to ensure thread-safety.
+  * The maximum total number of fragments (k + m) is increased
+    from 32 to 256.
+  * Properly fail reconstruction when there are too many
+    failures for flat_xor_hd to handle.
+  * Other minor fixes and updates.</comment>
+    <requestid>1362326</requestid>
+  </revision>
 </revisionlist>
