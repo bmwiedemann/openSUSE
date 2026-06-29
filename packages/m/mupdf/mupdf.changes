@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 05:11:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build against the system cmark-gfm library instead of the copy
+  vendored in thirdparty/cmark-gfm, dropping the bundled(cmark-gfm)
+  provides:
+  * Add mupdf-system-cmark-gfm.patch to complete the upstream
+    USE_SYSTEM_CMARK_GFM build path, which is incomplete in 1.28.0.
+
+-------------------------------------------------------------------
 Sat Jun 27 07:41:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.0:

@@ -825,4 +825,12 @@
     <comment>Update to 1.28.0: Markdown support, HTML/EPUB rendering improvements, mutool audit, better text extraction; SONAME libmupdf27_2 -&gt; libmupdf28_0; bundle cmark-gfm (no system copy in Factory)</comment>
     <requestid>1361984</requestid>
   </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>90336f57bc1027e9561831f118c82074</srcmd5>
+    <version>1.28.0</version>
+    <time>1782747025</time>
+    <user>dimstar_suse</user>
+    <comment>Build against system cmark-gfm (unbundle vendored copy); adds mupdf-system-cmark-gfm.patch. Depends on cmark-gfm (SR#1362035, currently in review) - please co-stage.</comment>
+    <requestid>1362065</requestid>
+  </revision>
 </revisionlist>

@@ -33,6 +33,9 @@ Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.ta
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
+# Build against the system cmark-gfm instead of the vendored thirdparty copy
+# (wires up the upstream USE_SYSTEM_CMARK_GFM path, which is incomplete in 1.28)
+Patch1:         mupdf-system-cmark-gfm.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?gcc_ver}-c++
@@ -47,6 +50,7 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(libbrotlidec)
 BuildRequires:  pkgconfig(libbrotlienc)
+BuildRequires:  pkgconfig(libcmark-gfm)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(openssl)
@@ -57,7 +61,6 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
 Requires:       xdg-utils
-Provides:       bundled(cmark-gfm) = 0.29.0.gfm.13
 Provides:       bundled(freeglut) = 3.0.0
 Provides:       bundled(freeglut-art) = 3.0.0
 Provides:       bundled(gumbo-parser) = 0.10.1
@@ -98,7 +101,7 @@ based on mupdf.
 %prep
 %autosetup -p1 -n %{name}-%{version}-source
 
-for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract -e gumbo-parser -e cmark-gfm)
+for d in $(ls thirdparty | grep -v -e freeglut -e lcms2 -e mujs -e extract -e gumbo-parser)
 do
   rm -rf thirdparty/$d
 done
@@ -114,6 +117,7 @@ echo > user.make "\
   USE_SYSTEM_MUJS := no # build needs source anyways
   USE_SYSTEM_OPENJPEG := yes
   USE_SYSTEM_TESSERACT := yes
+  USE_SYSTEM_CMARK_GFM := yes
   USE_SYSTEM_ZLIB := yes
   USE_SYSTEM_GLUT := no # need freeglut2-art frok
   USE_SYSTEM_CURL := yes
