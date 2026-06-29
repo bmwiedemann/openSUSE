@@ -276,4 +276,15 @@
   * feat(api): add use_site_for_root parameter</comment>
     <requestid>1346151</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>eb22281aff78a8c129f272957d33530f</srcmd5>
+    <version>4.10.0</version>
+    <time>1782746977</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.10.0:
+  * feat: add user_projects_dir for $XDG_PROJECTS_DIR
+  * feat: add user_publicshare_dir, user_templates_dir,
+    user_fonts_dir, user_preference_dir</comment>
+    <requestid>1362146</requestid>
+  </revision>
 </revisionlist>
