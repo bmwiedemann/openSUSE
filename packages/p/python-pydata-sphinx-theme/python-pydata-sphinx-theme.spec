@@ -19,7 +19,7 @@
 %define skip_python36 1
 %{?sle15_python_module_pythons}
 Name:           python-pydata-sphinx-theme
-Version:        0.17.1
+Version:        0.19.0
 Release:        0
 Summary:        Bootstrap-based Sphinx theme from the PyData community
 License:        BSD-3-Clause

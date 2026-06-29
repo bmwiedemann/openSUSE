@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:56:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.19.0 (bsc#1268818, CVE-2026-53550, bsc#1268957, CVE-2026-48779):
+  - Docs update Font Awesome links by @hntk03 in #2399
+  - Fix code coverage workflow by @Yann-P in #2393
+  - Fix vertical scrollbar in math container by @hntk03 in #2404
+  - [css] De-jumble header items at intermediate widths :) by
+    @sneakers-the-rat in #1784
+  - Fix gettext builder by @Yann-P in #2403
+  - fix: configure defaults for Google Analytics before loading script
+    by @tswast in #2369
+- v0.18.0
+  # Breaking
+  - Drop support for sphinx 7, minimal requirement now 8 by @Yann-P in #2366
+  # Improvements
+  - feat(theme): add sticky_version_warning_banner option by @tmchow
+    in #2372 (revised in #2385, now sticky_banners)
+  - feat: replace theme switcher with dropdown by @hntk03 in #2340
+  - Consistent linting and formatting across CI and local environment
+    by @Yann-P in #2368
+  - Add distinctive style for menuselection, based on guilabel by
+    @stevepiercy in #2367
+  - Update to FontAwesome v7 by @agriyakhetarpal in #2370
+  - Add documentation on how users can override the FontAwesome
+    version by @agriyakhetarpal in #2373
+  # Bugs
+  - Fix sidebar top being cut off on mobile browsers by @hntk03 in
+    #2363
+  - Docs update PyTorch logo URL by @hntk03 in #2374
+  - Fix theme dropdown menu going offscreen by @hntk03 in #2387
+  - Fix the stickiness of the version warning banner, and rename the
+    config option to sticky_banners by @agriyakhetarpal in #2385
+
+-------------------------------------------------------------------
 Mon May 11 11:18:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.17.1 (CVE-2026-6321, bsc#1264374)
