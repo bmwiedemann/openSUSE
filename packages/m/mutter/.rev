@@ -2458,4 +2458,13 @@ New stable rel</comment>
     <comment>rebase patches</comment>
     <requestid>1356892</requestid>
   </revision>
+  <revision rev="267" vrev="2">
+    <srcmd5>4dac7e4d4b86a9b3eb4c1269172c8d1d</srcmd5>
+    <version>50.2</version>
+    <time>1782746957</time>
+    <user>dimstar_suse</user>
+    <comment>- Add ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch: Fix build
+  with new pango</comment>
+    <requestid>1362024</requestid>
+  </revision>
 </revisionlist>

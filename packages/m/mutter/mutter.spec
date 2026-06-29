@@ -40,6 +40,8 @@ Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
 # PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5096.patch -- Stop mutter spamming logs
 Patch5:         5096.patch
+# PATCH-FIX-UPSTREAM ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch -- Fix build with new pango
+Patch6:         https://gitlab.gnome.org/GNOME/mutter/-/commit/ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes
 BuildRequires:  meson >= 1.3.0
