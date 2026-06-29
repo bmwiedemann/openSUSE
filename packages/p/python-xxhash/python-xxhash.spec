@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xxhash
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Python binding for xxHash
 License:        BSD-2-Clause
@@ -26,8 +26,8 @@ URL:            https://github.com/ifduyue/python-xxhash
 Source:         https://files.pythonhosted.org/packages/source/x/xxhash/xxhash-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools >= 45}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

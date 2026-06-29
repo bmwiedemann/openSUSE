@@ -158,4 +158,32 @@
   * Drop support for Python 3.7</comment>
     <requestid>1349289</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5ff75e9582b79d4131813c3ba129b3d4</srcmd5>
+    <version>3.8.0</version>
+    <time>1782746996</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.8.0:
+  * Speed up module-level one-shot digest(), intdigest(), and
+    hexdigest() functions by switching them to METH_FASTCALL.
+  * Keep one-shot argument handling consistent with hash
+    constructors, including positional and keyword input/seed
+    arguments, duplicate argument errors, and oversized seed
+    wrapping.
+  * Fix error handling in the xxh3_128 integer digest path so
+    allocation failures are reported cleanly.
+  * Fix Python 3.8 builds by adding a PyModule_AddType
+    compatibility fallback with correct reference counting.
+  * Correct type stubs for xxh64_digest(), xxh64_hexdigest(), and
+    xxh64_intdigest(), they were incorrectly aliased to xxh3_64
+    functions.
+  * Fix memory leak in copy() and new() when memory allocation
+    fails (rare edge case)
+  * Fix seed/reset state initialization in xxh32 and xxh64
+    (unlikely to affect normal usage)
+  * Replace Py_BuildValue with PyLong_FromUnsignedLong/LongLong
+    for performance
+  * Update README examples to use bytes literals</comment>
+    <requestid>1362195</requestid>
+  </revision>
 </revisionlist>
