@@ -12,7 +12,8 @@ Thu Jun 18 02:50:21 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@
   * 0024-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
 
 - idna: update from x/text, fix ToUnicode and all-ASCII xn-- labels
-  Backport of <golang/net@8c4c965#diff-6b95b04ab0c83612198e99ffb2f4411f899daf14b618d907bcff2196a9af8e6b>
+  Backport of <golang/net@8c4c965>
+  (bsc#1266625, CVE-2026-39821)
   * 0025-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
 
 - daemon: Decompress archives before entering container filesystem
