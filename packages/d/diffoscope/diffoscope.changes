@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:21:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 322:
+  * Add a local version of the (deprecated) os.path.commonprefix
+    method.
+  * Fix compatibility with Ocaml 5.4.1.
+  * Support androguard 4 and previous versions. Thanks, linsui!
+  * Use --long-form arguments when calling apktool in order to
+    support apktool version 3.
+  * Improve header detection for Sphinx documentation projects.
+
+-------------------------------------------------------------------
 Wed May 13 20:22:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 318:

@@ -835,4 +835,19 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Update external tool reference for 7z on guix.</comment>
     <requestid>1353083</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4b02fb87a7c0b1cb1f6653751a7fe82a</srcmd5>
+    <version>322</version>
+    <time>1782747036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 322:
+  * Add a local version of the (deprecated) os.path.commonprefix
+    method.
+  * Fix compatibility with Ocaml 5.4.1.
+  * Support androguard 4 and previous versions. Thanks, linsui!
+  * Use --long-form arguments when calling apktool in order to
+    support apktool version 3.
+  * Improve header detection for Sphinx documentation projects.</comment>
+    <requestid>1362255</requestid>
+  </revision>
 </revisionlist>
