@@ -1753,6 +1753,7 @@ unsorted:
   - bugzilla 
   - bugzilla-apache 
   - bugzilla-lang-de 
+  - bugzilla-mcp 
   - build 
   - build-compare 
   - build-helper-maven-plugin 
@@ -2400,6 +2401,8 @@ unsorted:
   - cmake-mini 
   - cmark 
   - cmark-devel 
+  - cmark-gfm 
+  - cmark-gfm-devel 
   - cmatrix 
   - cmctl 
   - cmctl-bash-completion 
@@ -11599,8 +11602,6 @@ unsorted:
   - libQt5WebSockets5 
   - libQt5WebSockets5-32bit 
   - libQt5WebSockets5-imports 
-  - libQt5WebView5 
-  - libQt5WebView5-imports 
   - libQt5Widgets-devel 
   - libQt5Widgets-devel-32bit 
   - libQt5Widgets-private-headers-devel 
@@ -12796,6 +12797,8 @@ unsorted:
   - libclthreads2 
   - libclxclient3 
   - libcm1 
+  - libcmark-gfm-extensions0_29_0_gfm_13 
+  - libcmark-gfm0_29_0_gfm_13 
   - libcmh0 
   - libcmis-c-0_6-6 
   - libcmis-c-devel 
@@ -15172,7 +15175,7 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
-  - liboapv2 
+  - liboapv3 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -15231,6 +15234,7 @@ unsorted:
   - libomp20-devel 
   - libomp21-devel 
   - libomp22-devel 
+  - libonnxruntime1 
   - liboop-devel 
   - liboop4 
   - liboorexx4 
@@ -15902,9 +15906,6 @@ unsorted:
   - libqt5-qtwebsockets-devel-32bit 
   - libqt5-qtwebsockets-examples 
   - libqt5-qtwebsockets-private-headers-devel 
-  - libqt5-qtwebview-devel 
-  - libqt5-qtwebview-examples 
-  - libqt5-qtwebview-private-headers-devel 
   - libqt5-qtx11extras-devel 
   - libqt5-qtx11extras-devel-32bit 
   - libqt5-qtxmlpatterns-devel 
@@ -20703,6 +20704,7 @@ unsorted:
   - ongres-stringprep-javadoc 
   - oniguruma-devel 
   - onioncat 
+  - onnxruntime-devel 
   - oo7 
   - oo7-cli 
   - oo7-daemon 
@@ -22139,6 +22141,7 @@ unsorted:
   - perl-Git-Repository 
   - perl-Git-Repository-Plugin-Log 
   - perl-Git-Version-Compare 
+  - perl-Git-Wrapper 
   - perl-Glib 
   - perl-Glib-Object-Introspection 
   - perl-GooCanvas2 
@@ -22401,6 +22404,7 @@ unsorted:
   - perl-MooX-Options 
   - perl-MooX-StrictConstructor 
   - perl-MooX-Traits 
+  - perl-MooX-TypeTiny 
   - perl-MooX-Types-MooseLike 
   - perl-MooX-Types-MooseLike-Numeric 
   - perl-MooX-late 
@@ -22811,6 +22815,7 @@ unsorted:
   - perl-Test-InDistDir 
   - perl-Test-Inter 
   - perl-Test-JSON 
+  - perl-Test-JSON-Schema-Acceptance 
   - perl-Test-Kit 
   - perl-Test-Kwalitee 
   - perl-Test-LWP-UserAgent 
@@ -24017,7 +24022,6 @@ unsorted:
   - python-bottle-doc 
   - python-bpython-common 
   - python-bpython-doc 
-  - python-btrfsutil 
   - python-caja 
   - python-caja-devel 
   - python-caja-lang 
@@ -25317,6 +25321,7 @@ unsorted:
   - python311-bsddb3 
   - python311-bsddb3-devel 
   - python311-bson 
+  - python311-btrfsutil 
   - python311-bugzilla 
   - python311-bugzillatools 
   - python311-build 
@@ -26703,6 +26708,7 @@ unsorted:
   - python311-omemo-dr 
   - python311-omni-camera 
   - python311-onigurumacffi 
+  - python311-onnxruntime 
   - python311-opcodes 
   - python311-openEMS 
   - python311-openTSNE 
@@ -29247,8 +29253,8 @@ unsorted:
   - python313-bsddb3 
   - python313-bsddb3-devel 
   - python313-bson 
+  - python313-btrfsutil 
   - python313-bugzilla 
-  - python313-bugzilla-mcp 
   - python313-bugzillatools 
   - python313-build 
   - python313-buttplug 
@@ -30677,6 +30683,7 @@ unsorted:
   - python313-omemo-dr 
   - python313-omni-camera 
   - python313-onigurumacffi 
+  - python313-onnxruntime 
   - python313-opcodes 
   - python313-openEMS 
   - python313-openTSNE 
@@ -33228,6 +33235,7 @@ unsorted:
   - python314-bsddb3 
   - python314-bsddb3-devel 
   - python314-bson 
+  - python314-btrfsutil 
   - python314-bugzilla 
   - python314-bugzillatools 
   - python314-build 
@@ -34677,6 +34685,7 @@ unsorted:
   - python314-omemo-dr 
   - python314-omni-camera 
   - python314-onigurumacffi 
+  - python314-onnxruntime 
   - python314-opcodes 
   - python314-openEMS 
   - python314-openTSNE 
@@ -36960,11 +36969,6 @@ unsorted:
   - qtractor-doc-pdf 
   - qtxdg-tools 
   - quakespasm 
-  - quassel-base 
-  - quassel-client 
-  - quassel-client-qt5 
-  - quassel-core 
-  - quassel-mono 
   - quazip-doc 
   - quazip-qt5-devel 
   - quazip-qt6-devel 
@@ -49149,6 +49153,7 @@ unsorted:
   - tik-config-generic 
   - tik-module-encrypt 
   - tik-module-mig 
+  - tik-module-setup-gnome-env 
   - tik-module-sicu 
   - tik-module-welcome 
   - tilda 
