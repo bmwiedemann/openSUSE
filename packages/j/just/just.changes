@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 23 21:46:06 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.54.0:
+  + Forbid duplicate attribute keys
+  + Clear signal handler when infallible line catches signal
+  + Allow passing --dotenv-command multiple times
+  + Allow [arg] value to be expression
+  + Add [continue] attribute
+  + Add --dotenv-command and set dotenv-command
+  + Add cache key to verbose output
+  + Add --no-cache flag
+  + Remove empty cache entries with just --clean
+  + Add just --clean instructions to readme
+  + Allow filtering --clean by recipe and module path
+  + Add --clean subcommand for clearing recipe cache
+  + Include recipe name in cache entries
+  + Add extra user-supplied cache key
+  + Fix working directory cache key
+  + Add output files to cached recipes
+  + Add file inputs to cached recipes
+  + Use body lines in cache key
+  + Use recipe body in cache key instead of lines
+  + Add additional cache keys
+  + Add cached recipes
+
+-------------------------------------------------------------------
 Sat Jun 20 20:31:30 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.53.0:

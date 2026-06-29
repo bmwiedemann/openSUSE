@@ -687,4 +687,33 @@
   + Add show() function (forwarded request 1360779 from rrahl0)</comment>
     <requestid>1360780</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>fbafbc815a2dc1dd4fd279baf39fd57d</srcmd5>
+    <version>1.54.0</version>
+    <time>1782747163</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.54.0:
+  + Forbid duplicate attribute keys
+  + Clear signal handler when infallible line catches signal
+  + Allow passing --dotenv-command multiple times
+  + Allow [arg] value to be expression
+  + Add [continue] attribute
+  + Add --dotenv-command and set dotenv-command
+  + Add cache key to verbose output
+  + Add --no-cache flag
+  + Remove empty cache entries with just --clean
+  + Add just --clean instructions to readme
+  + Allow filtering --clean by recipe and module path
+  + Add --clean subcommand for clearing recipe cache
+  + Include recipe name in cache entries
+  + Add extra user-supplied cache key
+  + Fix working directory cache key
+  + Add output files to cached recipes
+  + Add file inputs to cached recipes
+  + Use body lines in cache key
+  + Use recipe body in cache key instead of lines
+  + Add additional cache keys
+  + Add cached recipes (forwarded request 1362438 from rrahl0)</comment>
+    <requestid>1362439</requestid>
+  </revision>
 </revisionlist>
