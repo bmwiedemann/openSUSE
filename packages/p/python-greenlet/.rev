@@ -613,4 +613,36 @@
     508.</comment>
     <requestid>1350569</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>c0ba3ecea4227c1a5da78fe05202e103</srcmd5>
+    <version>3.5.3</version>
+    <time>1782746998</time>
+    <user>dimstar_suse</user>
+    <comment>- Add build-Cpp-linking.patch fixing linking C++ problems with
+  Python 3.14.6 (see
+  https://discuss.python.org/t/c-linking-in-3-14-6-is-there-a-regression/107932)
+- update to 3.5.3:
+  * Fix a crash on free-threaded builds when multiple greenlets
+    were holding a critical section on an object and the GIL for
+    the thread was dropped. See issue 513. Thanks to ddorian.
+- Update to 3.5.2
+  * The minimum supported version of Python 3.15 is now 3.15b2.
+  * Fix some garbage-collection related crashes on free-threaded
+    Python 3.15. Thanks to Kumar Aditya in PR #511.
+  * Improve garbage collection of greenlets. This mostly applies
+    to Python 3.15. Thanks to Kumar Aditya in PR #512.
+- Update to 3.5.1
+  * Add preliminary support for Python 3.15b1. This has not been
+    reviewed by CPython core developers, but all tests pass. Binary
+    wheels of this version won't work on earlier Python 3.15 builds and
+    may not work on later 3.15 builds.
+  * Fix the discrepancy in the way the two ``getcurrent`` APIs behave
+    during greenlet teardown. One API (the C API used by, e.g.,  gevent
+    raised a ``RuntimeError``; the other (the Python ``greenlet.getcurrent``
+    API) returned ``None``. This second way is incompatible with greenlet's
+    type annotations, so ``greenlet.getcurrent`` now raises a ``RuntimeError``
+    as well.
+</comment>
+    <requestid>1362225</requestid>
+  </revision>
 </revisionlist>

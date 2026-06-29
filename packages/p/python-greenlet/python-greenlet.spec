@@ -22,7 +22,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-greenlet
-Version:        3.5.0
+Version:        3.5.3
 Release:        0
 Summary:        Lightweight in-process concurrent programming
 License:        MIT
@@ -30,6 +30,10 @@ Group:          Development/Libraries/Python
 URL:            https://github.com/python-greenlet/greenlet
 Source0:        https://files.pythonhosted.org/packages/source/g/greenlet/greenlet-%{version}.tar.gz
 Source9:        python-greenlet-rpmlintrc
+# PATCH-FIX-OPENSUSE build-Cpp-linking.patch mcepl@suse.com
+# Fix linking of C++ module
+# https://discuss.python.org/t/c-linking-in-3-14-6-is-there-a-regression/107932
+Patch0:         build-Cpp-linking.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module objgraph}
 BuildRequires:  %{python_module pip}

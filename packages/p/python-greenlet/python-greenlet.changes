@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:08:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add build-Cpp-linking.patch fixing linking C++ problems with
+  Python 3.14.6 (see
+  https://discuss.python.org/t/c-linking-in-3-14-6-is-there-a-regression/107932)
+
+-------------------------------------------------------------------
+Sat Jun 27 16:08:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.5.3:
+  * Fix a crash on free-threaded builds when multiple greenlets
+    were holding a critical section on an object and the GIL for
+    the thread was dropped. See issue 513. Thanks to ddorian.
+
+-------------------------------------------------------------------
+Fri Jun 26 13:00:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.5.2
+  * The minimum supported version of Python 3.15 is now 3.15b2.
+  * Fix some garbage-collection related crashes on free-threaded
+    Python 3.15. Thanks to Kumar Aditya in PR #511.
+  * Improve garbage collection of greenlets. This mostly applies
+    to Python 3.15. Thanks to Kumar Aditya in PR #512.
+
+-------------------------------------------------------------------
+Mon Jun  1 09:45:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.5.1
+  * Add preliminary support for Python 3.15b1. This has not been
+    reviewed by CPython core developers, but all tests pass. Binary
+    wheels of this version won't work on earlier Python 3.15 builds and
+    may not work on later 3.15 builds.
+  * Fix the discrepancy in the way the two ``getcurrent`` APIs behave
+    during greenlet teardown. One API (the C API used by, e.g.,  gevent
+    raised a ``RuntimeError``; the other (the Python ``greenlet.getcurrent``
+    API) returned ``None``. This second way is incompatible with greenlet's
+    type annotations, so ``greenlet.getcurrent`` now raises a ``RuntimeError``
+    as well.
+
+-------------------------------------------------------------------
 Sun May  3 19:11:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.0:
