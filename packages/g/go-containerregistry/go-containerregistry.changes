@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:54:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.21.7:
+  * tarball: return error instead of panicking on missing
+    rootfs.diff_ids
+  * gcrane: honor --platform flag in copy
+  * mutate: verify layer digests in Extract and Time
+  * tarball: close layer readers during Write
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * build(deps): bump github.com/docker/cli from
+    29.4.3+incompatible to 29.5.2+incompatible in the go-deps
+    group across 1 directory
+  * BUGFIX: Fail with error when read exceeds maximum
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * fix(name): anchor loopback registry detection
+  * Reject symlinks in OCI layout blobs
+  * fix(crane): avoid creating export tar on pull failure
+  * feat(kubernetes): allow ignoring pull secrets
+  * fix(name): preserve localhost registry references
+  * pkg/registry: export ErrNotFound
+  * pkg/registry: export RedirectError
+  * build(deps): bump the go-deps group across 1 directory with 2
+    updates
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * fix: prevent SSRF in google.List() pagination
+  * internal/gzip: fix goroutine leak in ReadCloserLevel
+  * fix(transport): apply refreshed bearer token after cross-host
+    redirect
+  * build(deps): bump the go-deps group across 3 directories with
+    4 updates
+  * fix(tarball): normalize paths when matching files
+  * transport: do not re-attach bearer token after cross-host
+    redirect
+  * Bump CI go version to 1.26.4
+- update to 0.21.6:
+  * fix: update dependencies to use new azure sdk components
+  * transport: restore resp.Body in retryError so CheckError can
+    parse it
+  * pkg/registry: return 202 Accepted for PATCH chunk uploads
+  * Follow OCI distribution spec for artifactType and annotations
+  * actions: attach Codecov token to coverage tests on main
+  * remote: use DeleteScope (with "delete" action) for manifest
+    deletion
+  * remote: limit concurrent layer pulls
+  * pkg/registry: reject corrupt disk blobs
+  * mutate: close layer readers during export
+  * crane/flatten: preserve image media type when flattening
+  * build(deps): bump goreleaser/goreleaser-action from 7.0.0 to
+    7.2.1 in the actions group across 1 directory
+  * build(deps): bump go.opentelemetry.io/otel from 1.36.0 to
+    1.41.0
+  * build(deps): bump the go-deps group across 3 directories with
+    6 updates
+  * Replace go-homedir with os.UserHomeDir
+  * pkg/name: only treat .localhost as non-HTTPS, not .local
+  * transport: block unspecified IPs (0.0.0.0, ::) in
+    validateRealmURL
+  * test(mutate): add Extract round-trip test for filesystem
+    object preservation
+  * experiments: remove deprecated support for estargz
+  * build(deps): bump aws-actions/configure-aws-credentials from
+    6.1.0 to 6.1.1 in the actions group
+  * fix: limit HTTP response body reads to prevent OOM
+  * build(deps): bump the go-deps group across 3 directories with
+    6 updates
+  * transport: block redirects from token server to private/link-
+    local addresses (SSRF fix)
+  * pkg/v1/mutate: preserve relative symlinks that stay within
+    rootfs in Extract
+  * validate: skip non-layer layers
+  * remote: validate foreign layer URLs to prevent SSRF (fixes
+    #2259)
+  * remote: block SSRF via private-IP Location headers in blob
+    uploads
+  * fix(mutate): preserve config blob and layers for non-Docker
+    OCI artifacts
+  * fix: preserve per-occurrence layer identity in
+    mutate.Image.Layers()
+  * transport: retry HTTP 429 (Too Many Requests)
+  * transport: allow bearer realm at same host:port as registry
+  * Update go version to 1.26.3
+- update to 0.21.5:
+  * Bump docker/cli v29.4.0, moby/api v1.54.1, moby/client v0.4.0
+  * update to Go 1.26.2
+  * Bump aws-actions/configure-aws-credentials from 6.0.0 to
+    6.1.0 in the actions group across 1 directory
+  * build(deps): bump golang.org/x/tools from 0.43.0 to 0.44.0 in
+    the go-deps group across 1 directory
+  * **Full Changelog**: https://github.com/google/go-
+    containerregistry/compare/v0.21.4...v0.21.5
+- update to 0.21.4:
+  * go.mod: do not make a viral minimum go version
+  * Avoid pruning absolute links from extracted and flattened
+    images
+  * Bump the go-deps group across 3 directories with 5 updates
+  * fix: update to go1.25.8, and use separate .go-version file
+  * Bump CI go version to 1.26.1
+  * Bump codecov/codecov-action from 5.5.2 to 5.5.3 in the
+    actions group
+  * fork distribution client v3 auth-challenge as an internal
+    package (squashed)
+  * transport: validate Bearer realm URL to prevent SSRF
+  * revert path traversal and symlink escape from #2227
+  * Fix pkg/v1/google/auth tests for arm64
+  * goreleaser: Update goreleaser config and GH action
+
+-------------------------------------------------------------------
 Mon Mar 23 15:08:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.3:

@@ -18,7 +18,7 @@
 
 
 Name:           go-containerregistry
-Version:        0.21.3
+Version:        0.21.7
 Release:        0
 Summary:        Container Library and tools for working with container registries
 License:        Apache-2.0

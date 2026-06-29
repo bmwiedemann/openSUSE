@@ -233,4 +233,41 @@
     containerregistry/compare/v0.21.1...v0.21.2</comment>
     <requestid>1342060</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c8d0cbb5ce6a225f0b72d33c49ac383e</srcmd5>
+    <version>0.21.7</version>
+    <time>1782747187</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.21.7:
+  * tarball: return error instead of panicking on missing
+    rootfs.diff_ids
+  * gcrane: honor --platform flag in copy
+  * mutate: verify layer digests in Extract and Time
+  * tarball: close layer readers during Write
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * build(deps): bump github.com/docker/cli from
+    29.4.3+incompatible to 29.5.2+incompatible in the go-deps
+    group across 1 directory
+  * BUGFIX: Fail with error when read exceeds maximum
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * fix(name): anchor loopback registry detection
+  * Reject symlinks in OCI layout blobs
+  * fix(crane): avoid creating export tar on pull failure
+  * feat(kubernetes): allow ignoring pull secrets
+  * fix(name): preserve localhost registry references
+  * pkg/registry: export ErrNotFound
+  * pkg/registry: export RedirectError
+  * build(deps): bump the go-deps group across 1 directory with 2
+    updates
+  * build(deps): bump the actions group across 1 directory with 2
+    updates
+  * fix: prevent SSRF in google.List() pagination
+  * internal/gzip: fix goroutine leak in ReadCloserLevel
+  * fix(transport): apply refreshed bearer token after cross-host
+    redirect
+  * build(deps): bump the go-deps group across 3 directories with</comment>
+    <requestid>1362462</requestid>
+  </revision>
 </revisionlist>
