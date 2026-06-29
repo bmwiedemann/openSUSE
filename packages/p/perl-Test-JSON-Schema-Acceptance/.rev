@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fb51573da3ec782402db10820c0be410</srcmd5>
+    <version>1.37.0</version>
+    <time>1782747019</time>
+    <user>dimstar_suse</user>
+    <comment>Dependency for perl-JSON-Schema-Tiny, which is new dependency for perl-MCP</comment>
+    <requestid>1362038</requestid>
+  </revision>
+</revisionlist>

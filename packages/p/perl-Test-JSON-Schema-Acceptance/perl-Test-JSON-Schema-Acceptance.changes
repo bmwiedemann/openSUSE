@@ -1,0 +1,64 @@
+-------------------------------------------------------------------
+Thu Jan 22 05:49:32 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.37.0 (1.037)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.037     2026-01-21 22:49:02Z
+          - when dumping data for a failed test, include its type when blessed
+            (e.g. a Math::BigInt object)
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/3fc541796930c64960f334917629a221e4d74ceb...75995a1c8112322024d5c04a5eac27813aeb46f0
+
+-------------------------------------------------------------------
+Wed Jan  7 05:47:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.36.0 (1.036)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.036     2026-01-06 18:04:22Z
+          - do not add v1/ remotes when the implementation does not support that
+            version
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/d69537acea93fd7481ad80ff3015d88ab0b13d5a...3fc541796930c64960f334917629a221e4d74ceb
+
+-------------------------------------------------------------------
+Mon Dec  1 05:44:18 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.35.0 (1.035)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.035     2025-11-30 18:21:46Z
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/8da0a7bcb23f3516590e70bc5c3e396400c27741...d69537acea93fd7481ad80ff3015d88ab0b13d5a
+
+-------------------------------------------------------------------
+Thu Nov 13 05:34:12 UTC 2025 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.34.0 (1.034)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.034     2025-11-12 18:32:38Z
+          - increased some prereq requirements to resolve failures on older
+            perls; now using more Test2-specific modules
+  1.033     2025-11-09 16:24:46Z
+          - fix test warnings on older perls
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/8fd4fcec8ffc2294958818e05326a37fcf2b6c5c...8da0a7bcb23f3516590e70bc5c3e396400c27741
+  1.032     2025-11-09 01:52:07Z
+          - make tests "todo" when they fail when Cpanel::JSON::XS is not
+            installed (GH#24)
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/be58fa98d5f79bb8d20f45a15e540332669ad947...8fd4fcec8ffc2294958818e05326a37fcf2b6c5c
+  1.031     2025-11-07 17:27:21Z
+          - remove Test::More as a dependency
+  1.030     2025-11-06 01:05:56Z
+          - "draft-next" is now known as "v1"
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/9ad349be933f1e74810cb4fd3ad19780694dc77e...be58fa98d5f79bb8d20f45a15e540332669ad947
+
+-------------------------------------------------------------------
+Sun Aug  3 21:55:02 UTC 2025 - Tina Müller <tina.mueller@suse.com>
+
+- initial package 1.29.0 (1.029)
+ * created by cpanspec 1.84.01
