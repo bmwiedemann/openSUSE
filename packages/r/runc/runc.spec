@@ -27,7 +27,7 @@
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.4.1
+Version:        1.4.2
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed May 27 07:23:06 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to runc v1.4.2. Upstream changelog is available from
+  <https://github.com/opencontainers/runc/releases/tag/v1.4.2>.
+- runc.keyring has been updated to match the new version from upstream. 
+
+-------------------------------------------------------------------
 Fri Mar 13 12:34:11 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - Update to runc v1.4.1. Upstream changelog is available from
