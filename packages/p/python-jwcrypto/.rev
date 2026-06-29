@@ -192,4 +192,16 @@
     <comment>Add bug reference</comment>
     <requestid>1347691</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7c5a6a2140c77e4bd2dd35fcde60c98f</srcmd5>
+    <version>1.5.8</version>
+    <time>1782746971</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.5.8:
+  * Fix list iteration in claim format validation
+  * fix: bump minimum cryptography dependency to &gt;= 39.0.0
+  * Wrap JWKSet parsing errors in InvalidJWKValue
+  * jwt: add opt-in strict_serialization to enforce compact form</comment>
+    <requestid>1362137</requestid>
+  </revision>
 </revisionlist>

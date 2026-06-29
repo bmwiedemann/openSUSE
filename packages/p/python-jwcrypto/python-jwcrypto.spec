@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jwcrypto
-Version:        1.5.7
+Version:        1.5.8
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
