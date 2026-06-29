@@ -353,4 +353,16 @@
   * [10-welcome] increase btrfs filesystem size to max</comment>
     <requestid>1361550</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f75f63eab367bcf11b3bf13016435ac1</srcmd5>
+    <version>1.5.1</version>
+    <time>1782747126</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.1:
+  * Remove setup_env function from 10-welcome
+  * Add btrfs resize command in GNOME setup script
+
+- Fix packaging issues for tik 1.5</comment>
+    <requestid>1362392</requestid>
+  </revision>
 </revisionlist>

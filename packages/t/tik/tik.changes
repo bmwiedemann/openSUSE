@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:19:46 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.5.1:
+  * Remove setup_env function from 10-welcome
+  * Add btrfs resize command in GNOME setup script
+
+-------------------------------------------------------------------
+Mon Jun 29 09:39:11 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Fix packaging issues for tik 1.5
+  
+-------------------------------------------------------------------
 Wed Jun 24 06:54:19 UTC 2026 - Richard Brown <rbrown@suse.com>
 
 - Update to version 1.5:

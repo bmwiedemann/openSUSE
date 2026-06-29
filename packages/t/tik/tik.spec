@@ -17,7 +17,7 @@
 
 
 Name:           tik
-Version:        1.5
+Version:        1.5.1
 Release:        0
 Summary:        Transactional Installation Kit
 License:        MIT
@@ -47,6 +47,13 @@ Provides:       tik-config
 
 %description config-generic
 Generic configuration for tik. To be used for "distribution neutral" installation media or debug/experimentation.
+
+%package module-setup-gnome-env
+Summary:        Setup GNOME environment module for tik
+Requires:       tik
+
+%description module-setup-gnome-env
+Setup GNOME environment module for tik. Configures the GNOME tik installer environment.
 
 %package module-welcome
 Summary:        Welcome module for tik
@@ -86,6 +93,9 @@ SelfInstall CleanUp module for tik. Removes & reconfigures things in a SelfInsta
 install -D -m 755 usr/bin/tik %{buildroot}%{_bindir}/tik
 install -D -m 644 usr/lib/tik/config %{buildroot}%{_prefix}/lib/tik/config
 install -D -m 644 usr/lib/tik/lib/tik-functions %{buildroot}%{_prefix}/lib/tik/lib/tik-functions
+install -D -m 644 usr/lib/tik/lib/tik-functions %{buildroot}%{_prefix}/lib/tik/lib/tik-functions-helper
+install -D -m 644 usr/lib/tik/lib/tik-core %{buildroot}%{_prefix}/lib/tik/lib/tik-core
+install -D -m 644 usr/lib/tik/lib/tik-core-helper %{buildroot}%{_prefix}/lib/tik/lib/tik-core-helper
 install -D -m 644 usr/lib/tik/lib/cenity %{buildroot}%{_prefix}/lib/tik/lib/cenity
 install -D -m 644 etc/tik/config %{buildroot}%{_sysconfdir}/tik/config
 install -d %{buildroot}%{_prefix}/lib/tik/modules/pre
@@ -93,6 +103,8 @@ install -d %{buildroot}%{_prefix}/lib/tik/modules/post
 install -d %{buildroot}%{_prefix}/lib/tik/img
 install -d %{buildroot}%{_sysconfdir}/tik/modules/pre
 install -d %{buildroot}%{_sysconfdir}/tik/modules/post
+
+install -D -m 644 usr/lib/tik/modules/pre/05-setup-gnome-env %{buildroot}%{_prefix}/lib/tik/modules/pre
 
 install -D -m 644 usr/lib/tik/modules/pre/10-welcome %{buildroot}%{_prefix}/lib/tik/modules/pre
 
@@ -114,6 +126,9 @@ install -D -m 644 usr/lib/tik/modules/post/10-sicu %{buildroot}%{_prefix}/lib/ti
 %dir %{_prefix}/lib/tik/img
 %dir %{_prefix}/lib/tik/lib
 %{_prefix}/lib/tik/lib/tik-functions
+%{_prefix}/lib/tik/lib/tik-functions-helper
+%{_prefix}/lib/tik/lib/tik-core
+%{_prefix}/lib/tik/lib/tik-core-helper
 %{_prefix}/lib/tik/lib/cenity
 %{_bindir}/tik
 
@@ -124,6 +139,9 @@ install -D -m 644 usr/lib/tik/modules/post/10-sicu %{buildroot}%{_prefix}/lib/ti
 %dir %{_sysconfdir}/tik/modules/pre
 %dir %{_sysconfdir}/tik/modules/post
 %config(noreplace) %{_sysconfdir}/tik/config
+
+%files module-setup-gnome-env
+%{_prefix}/lib/tik/modules/pre/05-setup-gnome-env
 
 %files module-welcome
 %{_prefix}/lib/tik/modules/pre/10-welcome
