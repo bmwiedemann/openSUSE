@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>5a9afd1861a1ca4fcbd20b43e65b3655</srcmd5>
+    <version>0.15.1</version>
+    <time>1782747063</time>
+    <user>dimstar_suse</user>
+    <comment>Supersedes sr#1362303: bugzilla-mcp 0.15.1 rename now builds against %{primary_python} instead of a hardwired python313 flavour (identical RPM today; Obsoletes/Provides python313-bugzilla-mcp kept literal). Paired with delete request sr#1362304 for python-bugzilla-mcp.</comment>
+    <requestid>1362323</requestid>
+  </revision>
+</revisionlist>

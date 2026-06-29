@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Mon Jun 29 05:52:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Rename python-bugzilla-mcp to bugzilla-mcp; build as a single-flavour
+  application and add Provides/Obsoletes: python313-bugzilla-mcp for clean
+  migration
+  * build against %{primary_python} instead of a hardwired python313 flavor
+
+-------------------------------------------------------------------
+Tue Jun 23 10:37:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.15.1
+
+-------------------------------------------------------------------
+Fri Jun 19 06:12:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.14.0)

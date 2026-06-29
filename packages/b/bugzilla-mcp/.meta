@@ -1,0 +1,6 @@
+<package name="bugzilla-mcp" project="openSUSE:Factory">
+  <title>Model Context Protocol server for Bugzilla</title>
+  <description>An MCP (Model Context Protocol) server exposing Bugzilla as a set of tools,
+so MCP-capable clients can search, read and act on Bugzilla bugs.</description>
+  <url>https://github.com/mcp-bugzilla/mcp-bugzilla</url>
+</package>
