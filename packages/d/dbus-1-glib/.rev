@@ -471,4 +471,27 @@
     <comment></comment>
     <requestid>1255759</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>e30071549ed10788520d63e20e8da374</srcmd5>
+    <version>0.114</version>
+    <time>1782747010</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.114:
+  * Fix bug reporting URL (Simon McVittie)
+  * Move license documents to a REUSE-style LICENSES/ directory
+  * Fix numerous deprecation warnings (Simon McVittie)
+  * Avoid naming a variable 'bool', which is a reserved word in
+    C23 and caused compilation to fail with gcc-15
+  * dbus-glib version control is now hosted on freedesktop.org's
+    Gitlab installation, and bug reports and feature requests have
+    switched from Bugzilla bugs (indicated by &quot;fd.o #nnn&quot;) to
+
+  Jaeger &lt;aj@suse.de&gt;.
+ - Require DBus 1.1
+- Fix the bug where GObject signals get emitted twice per dbus signal
+  * Update AUTHORS
+- drop patch dbus-glib-introspect-fix-thoenig-01.patch
+- loosen dependency to D-Bus</comment>
+    <requestid>1362247</requestid>
+  </revision>
 </revisionlist>

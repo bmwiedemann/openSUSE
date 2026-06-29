@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:37:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.114:
+  * Fix bug reporting URL (Simon McVittie)
+  * Move license documents to a REUSE-style LICENSES/ directory
+  * Fix numerous deprecation warnings (Simon McVittie)
+  * Avoid naming a variable 'bool', which is a reserved word in
+    C23 and caused compilation to fail with gcc-15
+  * dbus-glib version control is now hosted on freedesktop.org's
+    Gitlab installation, and bug reports and feature requests have
+    switched from Bugzilla bugs (indicated by "fd.o #nnn") to
+-------------------------------------------------------------------
 Thu Mar 20 20:10:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Fix build with GCC 15 via exporting -std=gnu17 to cflags. GCC 15
@@ -220,7 +232,7 @@ Thu Apr 19 20:47:02 CEST 2012 - thoenig@suse.de
 Thu Apr 19 09:49:14 CEST 2012 - thoenig@suse.de
 
 - Fix and loosen dependency towards dbus-1. Reported by Andreas
-  Jaeger <aj@suse.de>. 
+  Jaeger <aj@suse.de>.
 
 -------------------------------------------------------------------
 Wed Jan 25 09:17:54 UTC 2012 - cfarrell@suse.com
@@ -518,7 +530,7 @@ Tue Jun 17 13:55:19 CEST 2008 - thoenig@suse.de
  - : Memory leak fixes
  - New function to specify default timeout for calls on proxy
  - Implement org.freedesktop.DBus.Properties.GetAll
- - Require DBus 1.1 
+ - Require DBus 1.1
 - Drop patches which went upstream
 
 -------------------------------------------------------------------
@@ -536,7 +548,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 Fri Feb 29 20:10:01 CET 2008 - tambet@suse.de
 
 - Fix the generated introspection XML (patch from upstream).
-- Fix the bug where GObject signals get emitted twice per dbus signal 
+- Fix the bug where GObject signals get emitted twice per dbus signal
  (bfo #12505).
 - Make the dbus-binding-tool ignore XML namespaces it doesn't understand,
   making it possible to add documentation to the same place where interface
@@ -559,7 +571,7 @@ Wed Jun 27 14:28:22 CEST 2007 - thoenig@suse.de
   * Handle dbus errors which are not name has no owner
   * Update abstract socket test from DBus, which now cross-compiles
   * Rename the error quark to be unique
-  * Update AUTHORS 
+  * Update AUTHORS
 
 -------------------------------------------------------------------
 Sat Apr 28 09:49:05 CEST 2007 - aj@suse.de
@@ -571,12 +583,12 @@ Thu Mar  1 12:16:54 CET 2007 - thoenig@suse.de
 
 - new upstream version 0.73
 - new package dbus-1-glib-doc
-- drop patch dbus-glib-introspect-fix-thoenig-01.patch 
+- drop patch dbus-glib-introspect-fix-thoenig-01.patch
 
 -------------------------------------------------------------------
 Mon Nov  6 15:54:16 CET 2006 - thoenig@suse.de
 
-- loosen dependency to D-Bus  
+- loosen dependency to D-Bus
 
 -------------------------------------------------------------------
 Tue Aug  1 23:03:57 CEST 2006 - thoenig@suse.de

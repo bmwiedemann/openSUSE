@@ -1,7 +1,7 @@
 #
 # spec file for package dbus-1-glib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define soname libdbus-glib-1-2
 
 Name:           dbus-1-glib
-Version:        0.112
+Version:        0.114
 Release:        0
 Summary:        GLib-based library for using D-Bus
 License:        AFL-2.1 OR GPL-2.0-or-later
@@ -103,9 +103,6 @@ This package contains bash-completion support for %{name}.
 %autosetup -p1 -n dbus-glib-%{version}
 
 %build
-# Workaround gcc 15
-export CFLAGS="%{optflags}"
-export CFLAGS="$CFLAGS -std=gnu17"
 %configure \
 	--libexecdir=%{_libexecdir}/%{name}	\
 %if 0%{?_crossbuild}
