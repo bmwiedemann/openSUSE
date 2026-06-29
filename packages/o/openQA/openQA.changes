@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:39:43 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782729563.8f5a14b2:
+  * chore(deps): bump js-yaml from 4.1.1 to 4.3.0
+  * fix(details view): Align video link the same as the bugref actions
+  * test: bail out when worker fails to become active
+  * refactor(test): use shared wait_for in wait_for_worker
+  * test: fix flaky race in t/05-scheduler-full.t
+
+-------------------------------------------------------------------
 Thu Jun 25 20:13:53 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1782418423.92589c9c:
