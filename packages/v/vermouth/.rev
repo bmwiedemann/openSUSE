@@ -287,4 +287,18 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update sums</comment>
     <requestid>1359341</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>493f84abd5ee238471c8ab9ecf8da701</srcmd5>
+    <version>1.9.4</version>
+    <time>1782747066</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.9.4
+- Upstream changes:
+  * fix: Cover and hero views improvements in text rendering
+- For version 1.9.3:
+  * Update sums and commits
+  * fix: Fixed winetricks for flatpak
+  * Update SHA sums</comment>
+    <requestid>1362300</requestid>
+  </revision>
 </revisionlist>

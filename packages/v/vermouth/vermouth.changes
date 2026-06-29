@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 05:35:45 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.9.4
+- Upstream changes:
+  * fix: Cover and hero views improvements in text rendering
+- For version 1.9.3:
+  * Update sums and commits
+  * fix: Fixed winetricks for flatpak
+  * Update SHA sums
+
+-------------------------------------------------------------------
 Mon Jun 15 02:02:01 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.9.2
