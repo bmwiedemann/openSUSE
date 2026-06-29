@@ -87,4 +87,17 @@
   * Use TestCase.assertEqual, rather than assertEquals.</comment>
     <requestid>1339191</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>02cc51e18bc3b28a88387fa0446eee8b</srcmd5>
+    <version>0.6.2</version>
+    <time>1782746989</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.6.2:
+  * Claim Python 3.10 - 3.14 support.
+  * Fix compatibility with recent versions of fixtures, testtools.
+  * Switch to hatchling/hatch-vcs build backend.
+  * Test suite relocated to top-level tests/ directory.
+- Remove obsolete use-assertequal.patch</comment>
+    <requestid>1362168</requestid>
+  </revision>
 </revisionlist>

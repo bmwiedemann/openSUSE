@@ -26,25 +26,22 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-testscenarios%{psuffix}
-Version:        0.5.0
+Version:        0.6.2
 Release:        0
 Summary:        A pyunit extension for dependency injection
 License:        Apache-2.0 OR BSD-3-Clause
-URL:            https://launchpad.net/testscenarios
-Source:         https://files.pythonhosted.org/packages/source/t/testscenarios/testscenarios-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on one commit from gh#testing-cabal/testscenarios#11
-# Waiting for a new release before updating URL
-Patch0:         use-assertequal.patch
-BuildRequires:  %{python_module pbr >= 0.11}
+URL:            https://github.com/testing-cabal/testscenarios
+Source:         https://github.com/testing-cabal/testscenarios/archive/refs/tags/%{version}.tar.gz#/testscenarios-%{version}-gh.tar.gz
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 %if %{with test}
-BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module testscenarios = %{version}}
+BuildRequires:  %{python_module testtools >= 2.8.7}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pbr >= 0.11
 Requires:       python-testtools
 BuildArch:      noarch
 %python_subpackages
@@ -60,6 +57,7 @@ different situations).
 %autosetup -p1 -n testscenarios-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %if !%{with test}
 %pyproject_wheel
 %endif
@@ -80,7 +78,7 @@ different situations).
 %if !%{with test}
 %files %{python_files}
 %license COPYING
-%doc Apache-2.0 BSD GOALS HACKING NEWS README
+%doc Apache-2.0 BSD GOALS HACKING NEWS README.rst
 %{python_sitelib}/testscenarios
 %{python_sitelib}/testscenarios-%{version}.dist-info
 %endif
