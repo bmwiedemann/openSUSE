@@ -1,0 +1,12 @@
+<package name="cmark-gfm" project="openSUSE:Factory">
+  <title>CommonMark parsing and rendering library and program in C</title>
+  <description>`cmark-gfm` is an extended version of the C reference implementation of
+CommonMark, a rationalized version of Markdown syntax with a spec. 
+
+It provides a shared library (`libcmark-gfm`) with functions for parsing
+CommonMark documents to an abstract syntax tree (AST), manipulating
+the AST, and rendering the document to HTML, groff man, LaTeX,
+CommonMark, or an XML representation of the AST.  It also provides a
+command-line program (`cmark-gfm`) for parsing and rendering CommonMark
+documents.</description>
+</package>

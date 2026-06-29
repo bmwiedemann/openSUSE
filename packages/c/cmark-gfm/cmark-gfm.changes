@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Sat Jun 27 00:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.29.0.gfm.13)
+- Add cmark-gfm-0.29.0.gfm.13-cmake4.patch to build with CMake 4 and
+  switch the test suite from the removed FindPythonInterp module to
+  FindPython (gh#github/cmark-gfm#390)
+- Ship a cmark-gfm.rpmlintrc accepting upstream's versioned soname
+  (libcmark-gfm.so.0.29.0.gfm.13); its alphabetic "gfm" component trips
+  a spurious shlib-policy-missing-lib
+- Name the shared-library subpackages after the full soname per the
+  shared-library packaging policy: libcmark-gfm0_29_0_gfm_13 and
+  libcmark-gfm-extensions0_29_0_gfm_13
