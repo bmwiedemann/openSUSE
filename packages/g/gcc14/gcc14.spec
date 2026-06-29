@@ -1,7 +1,7 @@
 #
 # spec file for package gcc14
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -205,7 +205,7 @@
 %define biarch_targets x86_64 s390x powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        14.3.1+git12513
+Version:        14.4.0+git12698
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -2253,7 +2253,7 @@ Runtime library for the GNU Modula-2 language.
 
 %package -n gcc14-testresults
 Summary:        Testsuite results
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Development/Languages/C and C++
 
 %description -n gcc14-testresults

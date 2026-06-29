@@ -287,4 +287,15 @@ next week.  Gcc7 can pick it up from there.
     compiler</comment>
     <requestid>1345560</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b40d2119060be33c7d3be516eb7cd45b</srcmd5>
+    <version>14.4.0+git12698</version>
+    <time>1782747078</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to GCC 14.4, 2c31f611cef5a871194630d0393f55e50ab, git12698
+
+- Update to gcc-14 branch head, 0c553ee07b1aac30b53ce0d72, git12685
+  * GCC 14.4 RC1</comment>
+    <requestid>1362336</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:18:45 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to GCC 14.4, 2c31f611cef5a871194630d0393f55e50ab, git12698
+
+-------------------------------------------------------------------
+Fri Jun 19 06:52:38 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-14 branch head, 0c553ee07b1aac30b53ce0d72, git12685
+  * GCC 14.4 RC1
+
+-------------------------------------------------------------------
 Thu Apr  9 07:13:16 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-14 branch head, 046776dac7cc74bdbab36f450, git12513
