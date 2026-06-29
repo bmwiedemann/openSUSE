@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:40:19 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Downgrade to 0.12 again to avoid the new (failing) dependency for now
+
+-------------------------------------------------------------------
+Mon Jun 22 10:52:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.130.0 (0.13)
+   see /usr/share/doc/packages/perl-MCP/Changes
+
+  0.13  2026-06-22
+    - Switched from JSON::Valdiator to JSON::Schema::Tiny for better portability.
+
+  0.12  2026-06-19
+    - Fixed bug in MCP::Server::Transport::Stdio where the server could disconnect when reading from Windows pipes,
+      such as when spawned by Claude Desktop.
+
+  0.11  2026-06-19
+    - Added OAuth scope support, so MCP servers can act as OAuth 2.0 resource servers.
+    - Added scopes attribute to MCP::Primitive, and therefore to MCP::Tool, MCP::Prompt, and MCP::Resource.
+    - Added scopes and insufficient_scope attributes, and a has_scope method, to MCP::Server::Context.
+    - Added auth and metadata_url attributes to MCP::Server::Transport::HTTP.
+    - Added headers attribute to MCP::Client.
+    - Added oauth_metadata method to MCP::Server.
+    - Added INSUFFICIENT_SCOPE constant to MCP::Constants.
+
+-------------------------------------------------------------------
 Thu May  7 08:03:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.100.0 (0.10)

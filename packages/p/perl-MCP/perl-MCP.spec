@@ -18,10 +18,10 @@
 
 %define cpan_name MCP
 Name:           perl-MCP
-Version:        0.100.0
+Version:        0.120.0
 Release:        0
-# 0.10 -> normalize -> 0.100.0
-%define cpan_version 0.10
+# 0.12 -> normalize -> 0.120.0
+%define cpan_version 0.12
 License:        MIT
 Summary:        Connect Perl with AI using MCP (Model Context Protocol)
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -85,7 +85,8 @@ Streamable HTTP Transport
       app->start;
 
     Authentication can be added by the web application, just like for any
-    other route. To allow for MCP applications to scale with prefork web
+    other route. OAuth scopes can be enforced per tool, prompt and
+    resource. To allow for MCP applications to scale with prefork web
     servers, server to client streaming is currentlly avoided when
     possible.
 

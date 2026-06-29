@@ -86,4 +86,28 @@
     - Added delete_session method to MCP::Client.</comment>
     <requestid>1353756</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>952a0da0a1ddaabd2d0228fd6c195a87</srcmd5>
+    <version>0.120.0</version>
+    <time>1782747023</time>
+    <user>dimstar_suse</user>
+    <comment>- Downgrade to 0.12 again to avoid the new (failing) dependency for now
+
+- updated to 0.130.0 (0.13)
+   see /usr/share/doc/packages/perl-MCP/Changes
+  0.13  2026-06-22
+    - Switched from JSON::Valdiator to JSON::Schema::Tiny for better portability.
+  0.12  2026-06-19
+    - Fixed bug in MCP::Server::Transport::Stdio where the server could disconnect when reading from Windows pipes,
+      such as when spawned by Claude Desktop.
+  0.11  2026-06-19
+    - Added OAuth scope support, so MCP servers can act as OAuth 2.0 resource servers.
+    - Added scopes attribute to MCP::Primitive, and therefore to MCP::Tool, MCP::Prompt, and MCP::Resource.
+    - Added scopes and insufficient_scope attributes, and a has_scope method, to MCP::Server::Context.
+    - Added auth and metadata_url attributes to MCP::Server::Transport::HTTP.
+    - Added headers attribute to MCP::Client.
+    - Added oauth_metadata method to MCP::Server.
+    - Added INSUFFICIENT_SCOPE constant to MCP::Constants.</comment>
+    <requestid>1362461</requestid>
+  </revision>
 </revisionlist>
