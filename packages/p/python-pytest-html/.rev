@@ -350,4 +350,17 @@
   Update the vendored shell-quote to 1.8.4 node_modules</comment>
     <requestid>1355177</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>321b4a91b522f21bf93ecda1971065bc</srcmd5>
+    <version>4.2.0</version>
+    <time>1782747123</time>
+    <user>dimstar_suse</user>
+    <comment>- Revendor updating shell-quote and js-yaml deps:
+  - Add patch update-js-deps.patch
+  - CVE-2026-13311: shell-quote: inefficient input parsing can lead to a
+    denial of service (bsc#1269361)
+  - CVE-2026-53550: js-yaml: quadratic complexity when processing a
+    crafted YAML document can lead to CPU exhaustion (bsc#1268818)</comment>
+    <requestid>1362365</requestid>
+  </revision>
 </revisionlist>

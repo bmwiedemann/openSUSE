@@ -27,6 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/p/pytest-html/pyt
 # npm install --package-lock-only --legacy-peer-deps --ignore-scripts
 Source10:       package-lock.json
 Source11:       node_modules.spec.inc
+# PATCH-FIX-OPENSUSE update-js-deps.patch
+Patch0:         update-js-deps.patch
 %include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
