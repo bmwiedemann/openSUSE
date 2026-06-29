@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httptools
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Python framework independent HTTP protocol utils
 License:        MIT

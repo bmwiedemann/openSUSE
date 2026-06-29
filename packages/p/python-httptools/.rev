@@ -72,4 +72,18 @@
     <comment></comment>
     <requestid>1343385</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9296c8069c236261420f9dddacb95695</srcmd5>
+    <version>0.8.0</version>
+    <time>1782746959</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Add http-parser and llhttp licenses into the wheels
+  * Mark cython module as free-threading compatible
+  * Fix all typing issues
+  * Bump llhttp to 9.4.1
+  * Security: fix URL truncation issue
+  * Allow building with latest setuptools</comment>
+    <requestid>1362042</requestid>
+  </revision>
 </revisionlist>
