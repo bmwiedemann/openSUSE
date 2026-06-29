@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:39:11 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Add module-setup-gnome-env for tik 1.5
+
+-------------------------------------------------------------------
 Mon Feb 16 08:43:52 UTC 2026 - Richard Brown <rbrown@suse.com>
 
 - Remove zypper config hacks to be replaced by zypp- config

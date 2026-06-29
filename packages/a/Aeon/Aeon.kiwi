@@ -51,6 +51,7 @@
         <package name="patterns-aeon-base"/>
         <package name="tik-config-Aeon"/>
         <package name="tik"/>
+        <package name="tik-module-setup-gnome-env"/>
         <package name="tik-module-welcome"/>
         <package name="tik-module-mig"/>
         <package name="tik-module-encrypt"/>

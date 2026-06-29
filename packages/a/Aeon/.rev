@@ -36,4 +36,12 @@
 - Move singletrans config to /usr/etc/zypp/zypp.conf.d</comment>
     <requestid>1333283</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>8060c0bd833c54485e04a4f8a4dec64d</srcmd5>
+    <version>0.1.0</version>
+    <time>1782747125</time>
+    <user>dimstar_suse</user>
+    <comment>- Add module-setup-gnome-env for tik 1.5</comment>
+    <requestid>1362391</requestid>
+  </revision>
 </revisionlist>
