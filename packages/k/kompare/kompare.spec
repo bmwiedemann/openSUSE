@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kompare
-Version:        26.04.1
+Version:        26.04.2
 Release:        0
 Summary:        File Comparator
 License:        GPL-2.0-or-later
@@ -31,13 +31,14 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
+Patch0:         AlignTop-the-text.patch
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  cmake(KF6Codecs) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
 BuildRequires:  cmake(KF6DocTools) >= %{kf6_version}
-BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6I18n) >= %{kf6_version}
+BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6JobWidgets) >= %{kf6_version}
 BuildRequires:  cmake(KF6Parts) >= %{kf6_version}
 BuildRequires:  cmake(KF6TextEditor) >= %{kf6_version}

@@ -1,0 +1,33 @@
+From: Christoph Feck <cfeck@kde.org>
+Date: Fri, 1 Aug 2025 06:50:23 +0200
+Subject: AlignTop the text
+References: kde#481778
+Patch-mainline: no
+
+This comes from: https://bugs.kde.org/show_bug.cgi?id=481778#c20
+There is a MR pending at: https://invent.kde.org/sdk/kompare/-/merge_requests/42
+
+What worked for me is forcing Top alignment. I didn't really understand
+the logic behind paintHeight(), so the patch might be all wrong.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/komparepart/komparelistview.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/komparepart/komparelistview.cpp b/src/komparepart/komparelistview.cpp
+index 61cd7bbd040e..3deb472df045 100644
+--- a/src/komparepart/komparelistview.cpp
++++ b/src/komparepart/komparelistview.cpp
+@@ -745,7 +745,7 @@ void KompareListViewLineItem::init(int line, DifferenceString* text)
+ void KompareListViewLineItem::paintCell(QPainter* p, const QStyleOptionViewItem& option, int column)
+ {
+     int width = option.rect.width();
+-    Qt::Alignment align = option.displayAlignment;
++    Qt::Alignment align = option.displayAlignment & ~Qt::AlignVCenter | Qt::AlignTop;
+ 
+     p->setRenderHint(QPainter::Antialiasing);
+     p->translate(option.rect.topLeft());
+-- 
+2.50.1
+
