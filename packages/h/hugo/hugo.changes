@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Sun Jun 28 21:30:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.163.3:
+  * markup/highlight: Escape lang in default code block rendering
+    ce1a7e0b @bep thanks to @k0ngj1 for reporting this issue.
+  * parser/pageparser: Preserve non-ASCII whitespace after e.g.
+    summary divider 70a9068a @bep
+  * resources: Support babel/postcss config variants 9d66d513
+    @jmooring #15039 #15040 #15043
+  * hugolib: Fix page/section name collision regression f0133466
+    @jmooring #15046
+- update to 0.163.2:
+  * Continue resolving on ERR_ACCESS_DENIED in Node's resolver
+    134674f0 @bep #15041
+  * markup: Standardize behavior when external converters are
+    missing 147f605f @jmooring #14222
+
+-------------------------------------------------------------------
 Wed Jun 24 17:06:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.163.1 (bsc#1269015, bsc#1269015):
+- Update to version 0.163.1 (bsc#1269014, bsc#1269015):
   * releaser: Bump versions for release of 0.163.1
   * build(deps): bump golang.org/x/image from 0.41.0 to 0.42.0
   * Fix multi --renderSegments merge behavior
