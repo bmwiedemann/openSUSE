@@ -1,7 +1,7 @@
 #
 # spec file for package klib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           klib
-Version:        1.0~git.20210716
+Version:        1.0~git.20251221
 Release:        0
 BuildArch:      noarch
 Summary:        C library with utility functions
@@ -56,7 +56,7 @@ mkdir -p %{buildroot}%{_datadir}/%{name}/
 install -m 0644 *.c %{buildroot}%{_datadir}/%{name}/
 
 %files
-%license LICENSE.txt 
+%license LICENSE.txt
 %doc README.md
 
 %files devel

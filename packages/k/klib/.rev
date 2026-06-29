@@ -7,4 +7,13 @@
     <comment>dep needed to build Criterion</comment>
     <requestid>1059423</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a8fe55b4dd244ddbb1ca2fffea3f47aa</srcmd5>
+    <version>1.0~git.20251221</version>
+    <time>1782747140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.0~git.20251221 (no changelog).
+</comment>
+    <requestid>1362416</requestid>
+  </revision>
 </revisionlist>
