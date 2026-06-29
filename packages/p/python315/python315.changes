@@ -1,4 +1,238 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:41:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.15.0~b3:
+  - Security
+    - gh-151544: Modules/Setup.local is no longer used as
+      a landmark to discover whether Python is running in
+      a source tree, as it could potentially affect actual
+      installs. The pybuilddir.txt file is now the sole indicator
+      of running in a source tree.
+    - gh-151159: Update macOS installer to use OpenSSL 3.5.7.
+    - gh-151159: Update Android and iOS installers to use OpenSSL
+      3.5.7.
+    - gh-150599: Fix a possible stack buffer overflow in bz2 when
+      a bz2.BZ2Decompressor is reused after a decompression
+      error. The decompressor now becomes unusable after libbz2
+      reports an error.
+    - gh-149835: shutil.move() now resolves symlinks via
+      os.path.realpath() when checking whether the destination is
+      inside the source directory, preventing a symlink-based
+      bypass of that guard.
+  - Core and Builtins
+    - gh-151905: Fix OOM error handling in PyFrame_GetBack() to
+      propagate exceptions instead of masking them as None.
+    - gh-151722: Defer GC tracking of frozendict to end of
+      construction. Patch by Donghee Na.
+    - gh-151546: Fix the stack limit check if Python is linked to
+      musl (ex: Alpine Linux). Use the stack size set by the
+      linker to compute the stack limits. Patch by Victor
+      Stinner.
+    - gh-151510: Fix a crash in __lazy_import__() when called
+      without an explicit globals argument and without a current
+      Python frame.
+    - gh-151461: Fix direct execution of files with invalid
+      source encodings to report the underlying codec lookup or
+      decoding error instead of the generic SyntaxError: encoding
+      problem message. Patch by Bartosz Sławecki.
+    - gh-151218: PyConfig_Set() and sys.set_int_max_str_digits()
+      now replace sys.flags (create a new object), instead of
+      modifying sys.flags in-place. Patch by Victor Stinner.
+    - gh-151297: Fix an invalid pointer dereference that could
+      occur when calling PyObject_Realloc() with a NULL pointer
+      in free-threaded builds or with PYTHONMALLOC set to
+      mimalloc.
+    - gh-151253: If import encodings (first import) fails at
+      Python startup, dump the Python path configuration to help
+      users debugging their configuration. Patch by Victor
+      Stinner.
+    - gh-151238: Fix a crash when compiling a concatenated
+      f-string or t-string if an error occurs when processing one
+      of it’s parts.
+    - gh-151112: Fix a crash in the compiler that could occur
+      when running out of memory.
+    - gh-151126: Fix a crash, when there’s no memory left on
+      a device, which happened in: code compilation,
+      _interpchannels module, _winapi.CreateProcess() function.
+    - Now these places raise proper MemoryError errors.
+    - gh-150902: Apply an existing optimization of
+      PyCriticalSection (single mutex) to PyCriticalSection2:
+      avoid acquiring the same locks that the current CS has
+      already acquired.
+    - gh-151065: Fix memory leak when using the mimalloc memory
+      allocator.
+    - gh-150988: Fix a reference leak in OSError when attributes
+      are set before super().__init__().
+    - gh-150723: Fix perf jitdump timestamps on macOS. Events
+      were stamped using CLOCK_MONOTONIC, but macOS profilers
+      timestamp their samples with mach_absolute_time(). The
+      mismatch prevented the JIT code mappings from lining up
+      with the samples, so no Python frame could be resolved.
+    - gh-150723: Fix malformed perf jitdump thread ids on macOS.
+      The thread_id field of the JR_CODE_LOAD record was written
+      as a 64-bit value instead of the 32-bit value required by
+      the jitdump format, which shifted every following field and
+      prevented profilers from resolving Python frames.
+    - gh-150700: Fix a SystemError when compiling a class-scope
+      comprehension containing a lambda that references
+      __class__, __classdict__, or __conditional_annotations__.
+      Patch by Bartosz Sławecki.
+    - gh-150633: Fix the frozen importer accepting module names
+      with embedded null bytes, which caused it to bypass the
+      sys.modules cache and create duplicate module objects.
+    - gh-148613: Fix a data race in the free-threaded build
+      between gc.set_threshold() and garbage collection
+      scheduling during object allocation.
+    - gh-150207: Fix a crash when a memory allocation fails
+      during tokenizer initialization. A proper MemoryError is
+      now raised instead.
+    - gh-149805: Fix a SystemError when compiling a compiling
+      __classdict__ class annotation. Found by OSS-Fuzz in
+      #512907042.
+    - gh-149321: Do not support none as a lazy imports mode.
+  - Library
+    - gh-75666: Fix a reference leak in tkinter: the Tcl commands
+      created for event callbacks are now deleted when a binding
+      is replaced or unbound.
+    - gh-151770: Fix datetime.datetime.fromisoformat() raising
+      AssertionError instead of ValueError for an out-of-range
+      month combined with a 24:00 time.
+    - gh-151665: inspect.signature() now works on the lazy
+      evaluators of type aliases and type parameters instead of
+      raising ValueError.
+    - gh-151695: Fix a use-after-free in the curses module. The
+      encoding of the initial screen, used by curses.unctrl() and
+      curses.ungetch() to encode non-ASCII characters, is now
+      kept as a private copy instead of a borrowed pointer to
+      a window object that may be deallocated.
+    - gh-151436: Fix skewed stack trackes in the Tachyon profiler
+      when caching is enabled and when generators and coroutines
+      are profiled, by updating tstate->last_profiled_frame at
+      every frame-removal site. The issue resulted in total
+      erasure of some callers. Patch by Maurycy
+      Pawłowski-Wieroński.
+    - gh-151426: Fix impossible stack traces (callers and callees
+      cross called, orphans and incorrect lines) in the Tachyon
+      profiler when caching frames, by snapshotting the stack
+      chunks before walking the frame chain on a cache miss.
+      Patch by Maurycy Pawłowski-Wieroński.
+    - gh-151403: Fixed a crash in subprocess.Popen (and
+      _posixsubprocess.fork_exec) when an argv item’s
+      __fspath__() concurrently mutates the args sequence being
+      converted.
+    - gh-151390: Colorize match in the REPL when followed by
+      a unary + or - operator. Patch by Bartosz Sławecki.
+    - gh-151126: Fix crash on unset MemoryError on allocation
+      failure in ctypes.get_errno().
+    - gh-151337: Avoid possible memory leak in tkinter.c on
+      Windows.
+    - gh-151126: Fix a crash when MemoryError in
+      os._path_splitroot() was not set properly.
+    - gh-149671: Restore compatibility with setuptools -nspkg.pth
+      files in the site module. Inject sitedir variable in the
+      frame which executes pth code. Patch by Victor Stinner.
+    - gh-151295: Fixed a crash (use-after-free) in bytes.join()
+      and bytearray.join() that could occur if an item’s
+      __buffer__() concurrently mutates the sequence being
+      joined. The mutation is now reported as a RuntimeError
+      instead.
+    - gh-109940: Fix Windows venv activation in cmd.exe to
+      respect VIRTUAL_ENV_DISABLE_PROMPT.
+    - gh-150771: Fix email messages created with shift_jis or
+      euc-jp charsets. set_content() now stores the payload using
+      the output charset (iso-2022-jp) so printing the message no
+      longer raises UnicodeEncodeError.
+    - gh-151039: Fix a crash when static datetime types outlive
+      the _datetime module.
+    - gh-151021: Fix mmap.mmap.find() and rfind() to return -1
+      when searching for an empty subsequence with a start
+      position past the end of the mapping.
+    - gh-62825: Encodings “KS_C_5601-1987”, “KS X 1001”, etc are
+      now aliases of “CP949” instead of “EUC-KR”.
+    - gh-150913: Fix sqlite3.Blob slice assignment to raise
+      TypeError and IndexError for type and size mismatches
+      respectively, even when the target slice is empty.
+    - gh-143008: Fix race conditions when re-initializing
+      a io.TextIOWrapper object.
+    - gh-150662: Fix the --gecko collector in profiling.sampling
+      that kept every sample in memory. It now writes sample and
+      marker data to temporary files and reads them back,
+      ultimately building the output file at the end. Patch by
+      Pablo Galindo and Maurycy Pawłowski-Wieroński.
+    - gh-150750: Fix a race condition in
+      collections.deque.index() with free-threading.
+    - gh-148932: Fix profiling.sampling on Windows virtual
+      environments to resolve the actual Python PID from
+      a virtual environment shim.
+    - gh-149816: Fix race condition in
+      ssl.SSLContext.sni_callback
+    - gh-53144: The email package now supports all aliases of
+      Python codecs and uses MIME/IANA names for all IANA
+      registered charsets.
+    - gh-149891: Add support for more encoding aliases officially
+      registered in IANA.
+    - gh-149473: Calling os.environ.clear() now emits
+      os._clearenv auditing event. Patch by Victor Stinner.
+    - gh-148954: Fix XML injection vulnerability in
+      xmlrpc.client.dumps() where the methodname was not being
+      escaped before interpolation into the XML body.
+    - gh-143988: Fixed crashes in socket.socket.sendmsg() and
+      socket.socket.recvmsg_into() that could occur if buffer
+      sequences are concurrently mutated.
+    - gh-120665: Fixed an issue where unittest loaders would load
+      and instantiate unittest.TestCase-derived subclasses that
+      are also abstract base classes, which can’t be
+      instantiated.
+    - gh-91099: imaplib.IMAP4.login() now raises exceptions with
+      str instead of bytes. Patch by Florian Best.
+    - gh-101267: When a worker process terminates unexpectedly,
+      concurrent.futures.ProcessPoolExecutor now sets a separate
+      BrokenProcessPool exception on each pending future instead
+      of sharing a single instance among them all. Sharing one
+      exception produced malformed tracebacks: each
+      Future.result() call re-raised the same object, appending
+      another copy of the traceback to it.
+  - Documentation
+    - gh-86726: Greatly expand the tkinter documentation to cover
+      the full public API of the package and its submodules. The
+      descriptions are oriented towards Python rather than
+      Tcl/Tk, with corrected return types and
+      versionadded/versionchanged information.
+    - gh-150319: Generic builtin and standard library types now
+      document the meaning of their type parameters.
+    - gh-109503: Fix documentation for shutil.move() on usage of
+      os.rename() since nonatomic move might be used even if the
+      files are on the same filesystem. Patch by Fang Li
+  - Tests
+    - gh-151130: Add more tests for PyWeakref_* C API.
+    - gh-150966: Avoid prematurely terminating failing live
+      sampling profiler test targets, which made stderr
+      assertions flaky on ASAN buildbots.
+    - gh-148853: Fix tests failing on FreeBSD in test.support’s
+      in_systemd_nspawn_sync_suppressed() due to unreadable /run
+      directory.
+  - Build
+    - gh-151163: Updated Android build to include SQLite version
+      3.53.2.
+  - IDLE
+    - bpo-6699: Warn the user if a file will be overwritten when
+      saving.
+  - C API
+    - gh-141510: Add frozendict to the fast paths of
+      PyMapping_GetOptionalItem(), PyMapping_Keys(),
+      PyMapping_Values(), and PyMapping_Items().
+    - gh-123619: PyUnstable_Object_EnableDeferredRefcount() now
+      returns 0 if the object is not tracked by the garbage
+      collector: if gc.is_tracked() is false. Patch by Victor
+      Stinner.
+    - gh-149044: Improved error message when specifying non-type
+      base classes in Py_tp_bases, Py_tp_base, and bases argument
+      to PyType_FromMetaclass() and other PyType_From* functions.
+    - gh-150907: Fix dynamic_annotations.h header file when built
+      with C++ and Valgrind: add extern "C++" scope for the C++
+      template. Patch by Victor Stinner.
+
+-------------------------------------------------------------------
 Tue Jun 16 14:50:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.15.0~b2
@@ -228,23 +462,6 @@ Tue Jun 16 14:50:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
       C library, use a thread stack size of at least 1 MiB
       instead of musl default which is 128 kiB. Patch by Victor
       Stinner.
-  - Windows
-    - gh-149786: Fixes virtual environment launchers on Windows
-      free-threaded builds.
-    - gh-124111: Updated Windows builds to use Tcl/Tk 9.0.3.
-    - gh-138489: Windows distributions now include
-      a build-details.json file (see PEP 739). The legacy
-      installer does not install it, but all other distributions
-      from python.org and all preset configurations in the
-      PC\layout script will include one.
-    - gh-149029: Update Windows installer to ship with SQLite
-      3.53.1. macOS
-    - gh-150644: When system logging is enabled (with
-      config.use_system_logger, messages are now tagged as
-      public. This allows the macOS 26 system logger to view
-      messages without special configuration.
-    - gh-149029: Update macOS installer to ship with SQLite
-      version 3.53.1.
   - Tools/Demos
     - gh-150258: Update the tooltip on the Tachyon flame graph to
       show both absolute and relative percentages.

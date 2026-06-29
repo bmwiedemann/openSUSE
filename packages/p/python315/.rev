@@ -341,4 +341,41 @@ covered).</comment>
       a linear-time counting sort for long runs. (bsc#1267581,</comment>
     <requestid>1360763</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2dd93d62f9cccb9b45627304eda7a79</srcmd5>
+    <version>3.15.0~b3</version>
+    <time>1782747038</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.0~b3:
+  - Security
+    - gh-151544: Modules/Setup.local is no longer used as
+      a landmark to discover whether Python is running in
+      a source tree, as it could potentially affect actual
+      installs. The pybuilddir.txt file is now the sole indicator
+      of running in a source tree.
+    - gh-151159: Update macOS installer to use OpenSSL 3.5.7.
+    - gh-151159: Update Android and iOS installers to use OpenSSL
+      3.5.7.
+    - gh-150599: Fix a possible stack buffer overflow in bz2 when
+      a bz2.BZ2Decompressor is reused after a decompression
+      error. The decompressor now becomes unusable after libbz2
+      reports an error.
+    - gh-149835: shutil.move() now resolves symlinks via
+      os.path.realpath() when checking whether the destination is
+      inside the source directory, preventing a symlink-based
+      bypass of that guard.
+  - Core and Builtins
+    - gh-151905: Fix OOM error handling in PyFrame_GetBack() to
+      propagate exceptions instead of masking them as None.
+    - gh-151722: Defer GC tracking of frozendict to end of
+      construction. Patch by Donghee Na.
+    - gh-151546: Fix the stack limit check if Python is linked to
+      musl (ex: Alpine Linux). Use the stack size set by the
+      linker to compute the stack limits. Patch by Victor
+      Stinner.
+    - gh-151510: Fix a crash in __lazy_import__() when called
+      without an explicit globals argument and without a current
+      Python frame.</comment>
+    <requestid>1362257</requestid>
+  </revision>
 </revisionlist>
