@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jun 27 16:56:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.3
+  https://www.firefox.com/en-US/firefox/152.0.3/releasenotes/
+  * Fix an issue that could cause extreme memory usage and freezing
+    on startup for users with language packs installed
+    (bmo#2049845, boo#1269477)
+
+-------------------------------------------------------------------
+Thu Jun 25 14:19:05 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Add mozilla-bmo2048250.patch, fix input method candidate window tracking by
+  explicitly committing Wayland surface after setting cursor location. 
+  (boo#1268447 and bmo#2048250)
+
+-------------------------------------------------------------------
 Tue Jun 23 14:51:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 152.0.2

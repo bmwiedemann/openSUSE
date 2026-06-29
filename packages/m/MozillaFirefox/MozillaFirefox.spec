@@ -29,8 +29,8 @@
 # major 69
 # mainver %%major.99
 %define major          152
-%define mainver        %major.0.2
-%define orig_version   152.0.2
+%define mainver        %major.0.3
+%define orig_version   152.0.3
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -238,6 +238,7 @@ Patch24:        mozilla-bmo1746799.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
 Patch27:        mozilla-bmo2041150.patch
+Patch28:        mozilla-bmo2048250.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
 %endif
