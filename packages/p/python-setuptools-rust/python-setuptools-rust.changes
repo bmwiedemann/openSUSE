@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:17:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.13.0:
+  * Add `generated-files` option to `RustExtension` to copy files
+    from the build script output directory to the wheel. #574
+  * Add `-Zunstable-options` when querying rustc for information
+    about custom JSON targets. #587
+
+-------------------------------------------------------------------
 Tue Mar 31 20:00:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.1:

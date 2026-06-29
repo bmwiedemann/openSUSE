@@ -172,4 +172,16 @@
   * Strip target suffix for cargo-zigbuild compatibility. #534</comment>
     <requestid>1343975</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e122654d0808ef1d880796615729e239</srcmd5>
+    <version>1.13.0</version>
+    <time>1782746983</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.13.0:
+  * Add `generated-files` option to `RustExtension` to copy files
+    from the build script output directory to the wheel. #574
+  * Add `-Zunstable-options` when querying rustc for information
+    about custom JSON targets. #587</comment>
+    <requestid>1362157</requestid>
+  </revision>
 </revisionlist>
