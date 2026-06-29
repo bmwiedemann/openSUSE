@@ -21,7 +21,7 @@
 %endif
 
 Name:           tenmon
-Version:        20260412
+Version:        20260626
 Release:        0
 Summary:        FITS and XISF image viewer, converter and indexer
 License:        GPL-3.0-or-later
@@ -86,14 +86,26 @@ export  CXXFLAGS=$(echo "$CXXFLAGS -Wno-switch -Wno-catch-value")
 %license LICENSE
 %doc README
 %dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/128x128
-%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/16x16
+%dir %{_datadir}/icons/hicolor/16x16/apps
+%dir %{_datadir}/icons/hicolor/32x32
+%dir %{_datadir}/icons/hicolor/32x32/apps
 %dir %{_datadir}/icons/hicolor/64x64
 %dir %{_datadir}/icons/hicolor/64x64/apps
+%dir %{_datadir}/icons/hicolor/128x128
+%dir %{_datadir}/icons/hicolor/128x128/apps
+%dir %{_datadir}/icons/hicolor/256x256
+%dir %{_datadir}/icons/hicolor/256x256/apps
+%dir %{_datadir}/icons/hicolor/512x512
+%dir %{_datadir}/icons/hicolor/512x512/apps
 %{_bindir}/tenmon
 %{_datadir}/applications/space.nouspiro.tenmon.desktop
 %{_datadir}/icons/hicolor/128x128/apps/space.nouspiro.tenmon.png
 %{_datadir}/icons/hicolor/64x64/apps/space.nouspiro.tenmon.png
+%{_datadir}/icons/hicolor/16x16/apps/space.nouspiro.tenmon.png
+%{_datadir}/icons/hicolor/256x256/apps/space.nouspiro.tenmon.png
+%{_datadir}/icons/hicolor/32x32/apps/space.nouspiro.tenmon.png
+%{_datadir}/icons/hicolor/512x512/apps/space.nouspiro.tenmon.png
 %{_datadir}/metainfo/space.nouspiro.tenmon.metainfo.xml
 %{_datadir}/mime/packages/space.nouspiro.tenmon.xisf.xml
 

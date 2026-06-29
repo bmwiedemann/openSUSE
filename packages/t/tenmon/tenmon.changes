@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 29 08:16:05 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 20260626:
+  * Load correct HDU for compressed FITS 
+  * Update icons
+  * Defered sql load for DatabaseTreeView
+  * Use std::filesystem::path for XISF files
+
+-------------------------------------------------------------------
 Mon Apr 13 12:53:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 20260412:
