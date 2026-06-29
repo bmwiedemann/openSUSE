@@ -336,4 +336,41 @@
     <comment></comment>
     <requestid>1349914</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>bf9b4c33dd5238f6928fbf76cac7d19b</srcmd5>
+    <version>1.23.0</version>
+    <time>1782747008</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.23.0:
+  * Bump Skopeo to v1.23.0
+  * Bump c/common 0.68.0, c/image 5.40.0, c/storage 1.63.0
+  * Update common, image, and storage deps to 4a820ae
+  * copy: add platform-based filtering via --multi-arch flag
+  * Update module golang.org/x/term to v0.43.0
+  * Update common, image, and storage deps to abe824d
+  * Update dependency golangci/golangci-lint to v2.12.2
+  * Update dependency golangci/golangci-lint to v2.12.1
+  * Update common, image, and storage deps to c03a490
+  * Update module github.com/Masterminds/semver/v3 to v3.5.0
+  * Packit: Only create dist-git PRs for rawhide
+  * Cirrus: switch Sequoia matrix from Rawhide back to stable Fedora
+  * Update common, image, and storage deps to b9d5b9a
+  * Remove OWNERS file
+  * Additional cleanup for go module changes
+  * Move skopeo to go.podman.io
+  * Update common, image, and storage deps to 618304d
+  * Update module github.com/containers/ocicrypt to v1.3.0
+  * Update common, image, and storage deps to 129af75
+  * Update go.podman.io dependencies
+  * Update module golang.org/x/term to v0.42.0
+  * Bump  google.golang.org/grpc to v1.79.3 - CVE-2026-33186
+  * chore(deps): update module github.com/go-jose/go-jose/v4 to v4.1.4 [security]
+  * fix(deps): update go.podman.io/storage digest to f0ddf1a
+  * fix(deps): update common, image, and storage deps to 8af7873
+  * integration: Force amd64 on TestProxyMetadata
+  * fix(deps): update common, image, and storage deps to 94ad023
+  * Try triggering an ostree image rebuild
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.4</comment>
+    <requestid>1362245</requestid>
+  </revision>
 </revisionlist>
