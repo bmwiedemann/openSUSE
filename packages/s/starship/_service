@@ -5,8 +5,8 @@
     <param name="url">https://github.com/starship/starship.git</param>
     <param name="scm">git</param>
     <param name="version">git-master</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">v1.25.1</param>
+    <param name="versionformat">1.26.0</param>
+    <param name="revision">4197977efed04a9476b6615ef9934bf857f4a92c</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesauthor">dead_mozay@opensuse.org</param>
   </service>

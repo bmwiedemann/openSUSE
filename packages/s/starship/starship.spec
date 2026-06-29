@@ -17,7 +17,7 @@
 
 
 Name:           starship
-Version:        1.25.1
+Version:        1.26.0
 Release:        0
 Summary:        A customizable prompt for many shells
 License:        ISC

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 29 06:37:23 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
+
+- Update to version 1.26.0:
+  * Features:
+    - git_state: show git am progress.
+    - git: enable sha256 support.
+    - nix-shell: Add level variable to show nix shell depth.
+    - pixi: expose PIXI_PROJECT_NAME as format placeholder.
+    - time: improve timezone handling by switching to jiff.
+  * Bug Fixes:
+    - gcloud: honor CLOUDSDK_COMPUTE_REGION env variable.
+    - improve reliability of config-file writing.
+    - maven: avoid detecting user .mvn config as project.
+    - nodejs: avoid deno project files.
+    - preset: make OS symbol dynamic in Tokyo Night theme.
+    - statusline: handle null context_window fields at session start.
+
+-------------------------------------------------------------------
 Mon May  4 05:50:13 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 1.25.1:
