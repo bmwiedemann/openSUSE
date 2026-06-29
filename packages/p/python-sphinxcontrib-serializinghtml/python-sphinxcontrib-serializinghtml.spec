@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package python-sphinxcontrib-serializinghtml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,14 +27,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-sphinxcontrib-serializinghtml%{psuffix}
-Version:        1.1.10
+Version:        2.0.0
 Release:        0
 Summary:        Sphinx extension which outputs serialized HTML files
 License:        BSD-2-Clause
 Group:          Development/Languages/Python
 URL:            https://github.com/sphinx-doc/sphinxcontrib-serializinghtml
 Source:         https://files.pythonhosted.org/packages/source/s/sphinxcontrib-serializinghtml/sphinxcontrib_serializinghtml-%{version}.tar.gz
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module flit-core >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -70,8 +70,8 @@ sphinxcontrib-serializinghtml is a sphinx extension which outputs
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst CHANGES
-%license LICENSE
+%doc README.rst CHANGES.rst
+%license LICENCE.rst
 %dir %{python_sitelib}/sphinxcontrib
 %{python_sitelib}/sphinxcontrib/serializinghtml
 %{python_sitelib}/sphinxcontrib_serializinghtml-%{version}*-info

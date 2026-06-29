@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:32:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * Adopt Ruff
+  * Tighten MyPy settings
+  * Update GitHub actions versions
+
+-------------------------------------------------------------------
 Sun Jan 14 10:49:08 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.10:
