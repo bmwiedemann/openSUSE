@@ -352,4 +352,32 @@
   * feat(soft): add PID inspection and lock breaking</comment>
     <requestid>1350655</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>91f23963e8d9dea23ae5cfc943f6d458</srcmd5>
+    <version>3.29.4</version>
+    <time>1782746918</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.29.4:
+  * verify inode in break_lock_file before unlinking a stale lock
+  * keep the read/write heartbeat alive on a transient touch
+    error
+- update to 3.29.3:
+  * ci(release): publish to PyPI on tag push
+  * validate pid range in _parse_lock_holder
+  * fix(ci): restore release environment on tag job
+  * fix(ci): publish from release.yaml on tag push
+  * **Full Changelog**: https://github.com/tox-
+    dev/filelock/compare/3.29.2...3.29.3
+- update to 3.29.2:
+  * open marker reads non-blocking to refuse attacker-placed fifo
+  * fix(soft): harden stale-lock breaking and self-heal
+    malformed locks
+  * check hostname in is_lock_held_by_us
+- update to 3.29.1:
+  * docs: fix API docs of `release()`
+  * docs: clarify per-thread scope of FileLock configuration
+  * fix(soft): refuse to follow symlinks when reading the lock
+    file</comment>
+    <requestid>1361999</requestid>
+  </revision>
 </revisionlist>
