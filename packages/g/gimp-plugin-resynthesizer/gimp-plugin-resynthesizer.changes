@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:10:17 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 3.0.1+git21.a05427e:
+  * Add build status badges to README
+  * CI: Ubuntu: use 25.05 in 24.04
+  * i18n: rework to avoid duplicated lines
+  * i18n: check in script if msgfmt is available
+  * Patch appstream metadata
+  * Fix meson.build project version and min meson version
+  * Comments in meson.build about location of GIMP plugins
+  * Revise i18n installation to be portable across platforms.
+  * Enable translation installation in Windows build
+  * Revise i18n installation to be portable across platforms.
+  * Modify Windows build workflow and add WIP comments
+  * Add localization support details for version 3.0.1
+  * Workflow windows build create installer artifact
+  * Workflow Windows build
+  * The current macOS GIMP.app bundles glib < 2.80. Make sure to use only the symbols that are available in that version.
+  * Make the 'gimp_dep' on macOS a proper dependency. Rename the option 'mac-gimp-souce' to 'gimp-source-dir'.
+  * Support building on macOS.
+- Drop upstreamed fix-po-meson.patch
+
+-------------------------------------------------------------------
 Wed Apr 01 06:47:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.0.1+git0.bddb1df: 
