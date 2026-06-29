@@ -75,4 +75,17 @@
 - Update vendor tarball to fix CVE-2024-12224 (bsc#1243866)</comment>
     <requestid>1352318</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>04ea6a8451cba103e1fbb08af32ff229</srcmd5>
+    <version>0.3.6</version>
+    <time>1782746969</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.3.6:
+  * Validate clean_content_tags conflict with tags
+  * Document tag_attribute_values as alternate to attributes
+  * Add nh3.escape alias for clean_text
+  * Bump pyo3 from 0.28.3 to 0.29.0
+  * Expose ammonia's url_relative policy via url_relative kwarg</comment>
+    <requestid>1362136</requestid>
+  </revision>
 </revisionlist>
