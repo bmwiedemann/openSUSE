@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:29:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to versino 2.6.0
+  Changes
+  * Add JSON output support smcroutectl -j show, issue #198.
+  * Drop pre-v2.0 smcroute shell wrapper. Anyone still on
+    smcroute -a / smcroute -j / etc. should migrate to
+    smcroute.conf or call smcroutectl(8) directly, issue #199.
+    Clearer diagnostic messages for unusable phyints (unknown name
+    vs.  not multicast capable vs. VIF table exhausted). Promoted
+    the "not multicast capable" log line from LOG_INFO to
+    LOG_WARNING so it shows at the default log level.
+  * mroute and mgroup directives whose inbound or outbound
+    interface does not yet exist are queued on a pending list
+    instead of being dropped with parse error. See list with
+    smcroutectl show pending.
+  Fixes
+  * Fix #55: on Linux, smcrouted now subscribes to kernel netlink
+    link events (RTNLGRP_LINK + IPv4/IPv6 address groups) and
+    activates any pending routes/groups automatically when their
+    inbound or outbound interface arrives.
+  * Fix #71: VIFs and MIFs are now allocated lazily, only for
+    interfaces referenced by smcroute.conf or by smcroutectl. The
+    old up-front enumeration regularly exhausted the kernel's
+    32-slot table on hosts with many unrelated interfaces. The -N
+    option is now a no-op.
+  * Fix #143: repair kernel MFC on IGMPMSG_WRONGVIF /
+    MRT6MSG_WRONGMIF by remapping the (S,G) entry's inbound iif
+    when a (*,G) rule covers the upcall's actual iif.
+
+-------------------------------------------------------------------
 Thu May  9 18:03:43 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.7

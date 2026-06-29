@@ -1,8 +1,8 @@
 #
 # spec file for package smcroute
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2018-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2018-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 
 Name:           smcroute
-Version:        2.5.7
+Version:        2.6.0
 Release:        0
 Summary:        Static multicast routing for UNIX
 License:        GPL-3.0-only
@@ -88,7 +88,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 %license COPYING
 %{_sbindir}/smcroutectl
 %{_sbindir}/smcrouted
-%{_sbindir}/smcroute
+#%%{_sbindir}/smcroute
 %{_sbindir}/rcsmcroute
 %config %{_sysconfdir}/smcroute.conf
 %config %{_sysconfdir}/smcroute.d
