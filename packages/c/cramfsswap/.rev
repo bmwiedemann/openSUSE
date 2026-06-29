@@ -15,4 +15,17 @@
     <comment></comment>
     <requestid>903754</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1fb488f7bb8abee0d5ff2520ac699248</srcmd5>
+    <version>1.4.5</version>
+    <time>1782747042</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.4.5:
+  * QA upload.
+  * Fixed typo in Vcs links.
+  * Adjusted Makefile to work better with parallel build (Closes:
+    #996964).
+  * Updated vcs in d/control to Salsa.</comment>
+    <requestid>1362256</requestid>
+  </revision>
 </revisionlist>

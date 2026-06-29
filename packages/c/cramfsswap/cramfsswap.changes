@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:25:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.5:
+  * QA upload.
+  * Fixed typo in Vcs links.
+  * Adjusted Makefile to work better with parallel build (Closes:
+    #996964).
+  * Updated vcs in d/control to Salsa.
+
+-------------------------------------------------------------------
 Wed Jun 30 16:22:38 UTC 2021 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 1.4.2
