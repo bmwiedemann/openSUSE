@@ -24,4 +24,15 @@
 </comment>
     <requestid>1156559</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>56338abd5112d79b03e52924d001f72c</srcmd5>
+    <version>1.30.0</version>
+    <time>1782747194</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-Module-CPANTS-Analyse/Changes
+  1.03 2026-06-24
+    - Applied a test patch by pghmcfc++ (GH#51) for newer Archive::Tar</comment>
+    <requestid>1362463</requestid>
+  </revision>
 </revisionlist>

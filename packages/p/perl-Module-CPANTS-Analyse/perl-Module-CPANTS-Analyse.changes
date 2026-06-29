@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 25 08:35:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.30.0 (1.03)
+   see /usr/share/doc/packages/perl-Module-CPANTS-Analyse/Changes
+
+  1.03 2026-06-24
+    - Applied a test patch by pghmcfc++ (GH#51) for newer Archive::Tar
+
+-------------------------------------------------------------------
 Fri Mar  8 22:43:15 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
