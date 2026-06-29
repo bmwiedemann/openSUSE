@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:39:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 12.2.3:
+  * Reduce generated leaf certificate validity from 199 to 197
+    days so the 2-day
+  * `notBefore` backdate remains below Chromium's 200-day limit.
+  * Fixed a bug where mitmweb would not pick up its XSRF cookie.
+  * Fix `authority and subject key identifier mismatch` errors
+    when mitmproxy
+  * is configured with a custom CA whose SubjectKeyIdentifier was
+    not derived as SHA-1 of the public key.
+  * Fix `IndexError` in `is_mostly_bin` when exporting flows to
+    HAR with payloads that have a UTF-8 continuation byte at the
+    100-byte cutoff.
+
+-------------------------------------------------------------------
 Fri Apr 24 11:51:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 12.2.2 (fixes CVE-2026-40606, bsc#1262504)
@@ -18,7 +34,7 @@ Fri Apr 24 11:51:38 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * mitmweb: Fix editors not allowing content to be cleared to an empty string
   * Update optmanager value parsing exceptions to include the option name
   * mitmweb: show intercept filter tag at the bottom for default options
-  * Fix a bug where mitmweb would show a blank page on Windows. 
+  * Fix a bug where mitmweb would show a blank page on Windows.
   * mitmweb: Add number of selected flows in the footer
   * Fix modify_body crash when replacement strings contain backslash sequences.
   * Added support for adding and editing comments on individual flows in the
@@ -295,10 +311,10 @@ Fri Oct 18 00:32:15 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 Tue Feb 27 14:37:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 10.2.2:
-  * The onboarding_port option has been removed. The onboarding app now 
+  * The onboarding_port option has been removed. The onboarding app now
     responds to all requests for the hostname specified in onboarding_host.
-  * connection.Client and connection.Server now accept keyword arguments 
-    only. This is a breaking change for custom addons that use these classes 
+  * connection.Client and connection.Server now accept keyword arguments
+    only. This is a breaking change for custom addons that use these classes
     directly.
   * Add experimental support for HTTP/3 and QUIC.
   * ASGI/WSGI apps can now listen on all ports for a specific hostname.
@@ -307,7 +323,7 @@ Tue Feb 27 14:37:10 UTC 2024 - Markéta Machová <mmachova@suse.com>
   * mitmproxy now requires Python 3.10 or above.
   * Add support for reading and writing HAR files.
   * UDP streams are now backed by a new implementation in mitmproxy_rs.
-  * ignore_hosts now waits for the entire HTTP headers if it suspects the 
+  * ignore_hosts now waits for the entire HTTP headers if it suspects the
     connection to be HTTP.
 
 -------------------------------------------------------------------
