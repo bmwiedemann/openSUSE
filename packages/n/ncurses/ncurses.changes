@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jun 19 17:57:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Mark build recipe as requiring bash
+- Modernize specfile/drop old constructs
+
+-------------------------------------------------------------------
+Mon Jun 15 07:31:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260613
+  + add ich/ich1 to putty -TD
+  + reorder %i's in some capabilities for better matching of blocks -TD
+  + add sc/rc to ti928 -TD
+  + add rin to ncr260vt300an and ncr260vt100an, matching the AT&T
+    ind/indn -TD
+  + add rwidm, kdch1 to att730 -TD
+  + change %2d and %3d to %02d and %03d to match original termcaps -TD
+  + reduce unnecessary %2d and %3d to just %d -TD
+  + correct conversion of termcap %2 and %3 to terminfo in _nc_captoinfo.
+
+-------------------------------------------------------------------
 Thu Jun 11 13:30:32 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Pre work for ABI 7

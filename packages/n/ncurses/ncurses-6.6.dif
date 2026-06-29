@@ -143,7 +143,7 @@
  esac
  done
 --- configure
-+++ configure	2026-06-11 11:52:34.770279002 +0000
++++ configure	2026-06-15 08:05:29.796407169 +0000
 @@ -8695,7 +8695,7 @@ echo $ECHO_N "checking for an rpath opti
  		fi
  		;;
@@ -173,6 +173,20 @@
  	test "x$with_pcre2" != xyes && cf_list_pcre2="$with_pcre2 $cf_lib_pcre2"
  	cf_with_pcre2_ok=no
  	for cf_with_pcre2 in $cf_list_pcre2
+@@ -16232,6 +16232,13 @@ for cf_add_1lib in $cf_add_0lib; do
+ done
+ PRIVATE_LIBS="$cf_add_libs"
+ 
++case x$cf_cv_abi_version in
++(x[789])
++	if test "x$disable_lib_suffixes" = "xno" ; then
++		LIB_SUFFIX="t${LIB_SUFFIX}"
++	fi
++	;;
++esac
+ 	else
+ 		# when not using weak symbols but with_reentrant,
+ 		# add 't' to the library suffix on all platforms
 @@ -29663,12 +29670,12 @@ cat >>$cf_edit_man <<CF_EOF
  		echo "? missing rename for \$cf_source"
  		cf_target="\$cf_source"
@@ -297,6 +311,27 @@
  	;;
  esac
  done
+--- include/curses.h.in
++++ include/curses.h.in	2026-06-12 12:19:01.417561707 +0000
+@@ -247,6 +247,8 @@ typedef @cf_cv_typeof_mmask_t@ mmask_t;
+ /*
+  * We need FILE, etc.  Include this before checking any feature symbols.
+  */
++#include <features.h>
++#include <sys/types.h>
+ #include <stdio.h>
+ 
+ /*
+@@ -1537,6 +1539,9 @@ extern NCURSES_EXPORT_VAR(int) ESCDELAY;
+ extern NCURSES_EXPORT_VAR(int) LINES;
+ extern NCURSES_EXPORT_VAR(int) TABSIZE;
+ 
++#if defined(_REENTRANT) || defined(_THREAD_SAFE)
++#error "POSIX threads enabled (-pthread) but using non-reentrant ncurses. Use ncursestw instead."
++#endif
+ #endif
+ 
+ /*
 --- include/termcap.h.in
 +++ include/termcap.h.in	2025-05-05 07:22:16.198714905 +0000
 @@ -47,6 +47,8 @@ extern "C"
@@ -405,7 +440,7 @@
  
  	if [ $name = $MAIN_LIBRARY ]
 --- misc/terminfo.src
-+++ misc/terminfo.src	2026-06-11 09:39:47.857894792 +0000
++++ misc/terminfo.src	2026-06-15 07:33:29.175176232 +0000
 @@ -305,7 +305,9 @@ dumb|80-column dumb tty,
  	am,
  	cols#80,
@@ -442,7 +477,7 @@
  	sgr=\E[0;10%?%p1%t;7%;%?%p2%t;4%;%?%p3%t;7%;%?%p4%t;5%;%?%p5
  	    %t;2%;%?%p6%t;1%;m%?%p9%t\016%e\017%;,
  	sgr0=\E[m\017, smacs=^N, use=linux2.2,
-@@ -5584,7 +5593,7 @@ xterm+88color2|xterm 88-color feature,
+@@ -5581,7 +5590,7 @@ xterm+88color2|xterm 88-color feature,
  
  # These variants of XFree86 3.9.16 xterm are built as a configure option.
  xterm-256color|xterm with 256 colors,
@@ -451,7 +486,7 @@
  xterm-88color|xterm with 88 colors,
  	use=xterm+osc104, use=xterm+88color,
  	use=xterm-256color,
-@@ -5863,9 +5872,25 @@ xterm-noapp|xterm with cursor keys in no
+@@ -5860,9 +5869,25 @@ xterm-noapp|xterm with cursor keys in no
  xterm-24|vs100|xterms|xterm terminal emulator 24-line (X Window System),
  	lines#24, use=xterm-old,
  
@@ -478,7 +513,7 @@
  
  # This entry assumes that xterm's handling of VT100 SI/SO is disabled by
  # setting the vt100Graphics resource to false.
-@@ -6323,7 +6348,7 @@ xterms-sun|small (80x24) xterm with sunF
+@@ -6320,7 +6345,7 @@ xterms-sun|small (80x24) xterm with sunF
  
  #### GNOME (VTE)
  # this describes the alpha-version of GNOME terminal shipped with Redhat 6.0
@@ -487,7 +522,7 @@
  	bce,
  	kdch1=^?, use=linux+kbs, use=vt100+pf1-pf4,
  	use=xterm-color,
-@@ -6612,11 +6637,15 @@ mgt|Multi GNOME Terminal,
+@@ -6609,11 +6634,15 @@ mgt|Multi GNOME Terminal,
  #### KDE
  # This is kvt 0-18.7, shipped with Redhat 6.0 (though whether it supports bce
  # or not is debatable).
@@ -504,7 +539,7 @@
  # Konsole 1.0.1 (2001/11/25)
  # (formerly known as kvt)
  #
-@@ -6899,7 +6928,7 @@ mlterm3|multi lingual terminal emulator
+@@ -6896,7 +6925,7 @@ mlterm3|multi lingual terminal emulator
  mlterm2|multi lingual terminal emulator 2.x,
  	am, eslok, km, mc5i, mir, msgr, npc, xenl, XT,
  	colors#8, cols#80, lines#24, pairs#64,
@@ -513,7 +548,7 @@
  	bel=^G, bold=\E[1m, clear=\E[H\E[2J, cr=\r, cub1=^H, cud1=\n,
  	dch=\E[%p1%dP, dch1=\E[P, ech=\E[%p1%dX, ed=\E[J, el=\E[K,
  	el1=\E[1K, enacs=, ich=\E[%p1%d@, ind=\n,
-@@ -6977,7 +7006,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -6974,7 +7003,7 @@ rxvt-basic|rxvt terminal base (X Window
  	sgr0=\E[0m\017, smir=\E[4h, smkx=\E=, smul=\E[4m,
  	use=ecma+underline, use=ecma+standout, use=ansi+csr,
  	use=ansi+idl, use=ansi+local, use=xterm+alt47,
@@ -522,7 +557,7 @@
  	use=vt220+cvis, use=vt100+keypad,
  
  # Key Codes from rxvt reference:
-@@ -7063,6 +7092,7 @@ rxvt-basic|rxvt terminal base (X Window
+@@ -7060,6 +7089,7 @@ rxvt-basic|rxvt terminal base (X Window
  rxvt+pcfkeys|rxvt fragment for PC-style fkeys,
  	kDC=\E[3$, kEND=\E[8$, kHOM=\E[7$, kIC=\E[2$, kLFT=\E[d,
  	kNXT=\E[6$, kPRV=\E[5$, kRIT=\E[c, kel=\E[8\^, kend=\E[8~,
@@ -530,7 +565,7 @@
  	kf21=\E[23$, kf22=\E[24$, kf23=\E[11\^, kf24=\E[12\^,
  	kf25=\E[13\^, kf26=\E[14\^, kf27=\E[15\^, kf28=\E[17\^,
  	kf29=\E[18\^, kf30=\E[19\^, kf31=\E[20\^, kf32=\E[21\^,
-@@ -7145,6 +7175,38 @@ rxvt-cygwin-native|rxvt terminal emulato
+@@ -7142,6 +7172,38 @@ rxvt-cygwin-native|rxvt terminal emulato
  	     \302x\263y\363z\362{\343|\330~\376,
  	use=rxvt-cygwin,
  
@@ -569,7 +604,7 @@
  # This variant is supposed to work with rxvt 2.7.7 when compiled with
  # NO_BRIGHTCOLOR defined.  rxvt needs more work...
  rxvt-16color|rxvt with 16 colors like aixterm,
-@@ -8814,7 +8876,7 @@ pty|4bsd pseudo teletype,
+@@ -8811,7 +8873,7 @@ pty|4bsd pseudo teletype,
  # https://github.com/emacs-mirror/emacs/blob/master/lisp/term.el
  #
  # The codes supported by the term.el terminal emulation in GNU Emacs 19.30
@@ -578,7 +613,7 @@
  	am, mir, xenl,
  	cols#80, lines#24,
  	bel=^G, bold=\E[1m, cr=\r, csr=\E[%i%p1%d;%p2%dr, cub1=^H,
-@@ -8823,6 +8885,13 @@ eterm|GNU Emacs term.el terminal emulati
+@@ -8820,6 +8882,13 @@ eterm|GNU Emacs term.el terminal emulati
  	smir=\E[4h, use=ansi+cpr, use=ansi+cup, use=ansi+erase,
  	use=ansi+idl, use=ansi+local, use=ansi+sgrso,
  	use=ansi+sgrul, use=xterm+alt47,
@@ -592,7 +627,7 @@
  
  # The codes supported by the term.el terminal emulation in GNU Emacs 22.2
  eterm-color|Emacs term.el terminal emulator term-protocol-version 0.96,
-@@ -9090,6 +9159,8 @@ screen.xterm-new|screen customized for m
+@@ -9087,6 +9156,8 @@ screen.xterm-new|screen customized for m
  # Don't use this, because not everyone has "screen.xterm-new":
  #:screen.xterm|screen for modern xterm,
  #:	use=screen.xterm-new,
@@ -601,7 +636,7 @@
  
  # xterm-r6 does not really support khome/kend unless it is propped up by
  # the translations resource.
-@@ -9184,7 +9255,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
+@@ -9181,7 +9252,7 @@ screen-w|VT 100/ANSI X3.64 virtual termi
  screen2|VT 100/ANSI X3.64 virtual terminal (old 2.x),
  	cols#80, lines#24,
  	clear=\E[2J\E[H, cr=\r, cub1=^H, cup=\E[%i%p1%d;%p2%dH,
@@ -610,7 +645,7 @@
  	kf2=\ET, kf3=\EU, kf4=\EV, kf5=\EW, kf6=\EP, kf7=\EQ, kf8=\ER,
  	kf9=\E0I, khome=\EH, nel=\r\n, rc=\E8, ri=\EM, rmso=\E[23m,
  	rs1=\Ec, sc=\E7, sgr0=\E[m, smso=\E[3m, use=ecma+underline,
-@@ -11126,7 +11197,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
+@@ -11123,7 +11194,7 @@ hp700-wy|HP 700/41 emulating Wyse30,
  	ri=\Ej, rmir=\Er, rmso=\EG0$<10/>, rmul=\EG0$<10/>,
  	sgr0=\EG0$<10/>, smir=\Eq, smso=\EG4$<10/>,
  	smul=\EG8$<10/>, tbc=\E0, vpa=\E[%p1%{32}%+%c,
@@ -619,7 +654,7 @@
  	am, da, db, xhp,
  	cols#80, lh#2, lines#24, lm#0, lw#8, nlab#8,
  	acsc=0cjgktlrmfn/q\,t5u6v8w7x., bel=^G, blink=\E&dA,
-@@ -18587,7 +18658,7 @@ ibm3101|i3101|IBM 3101-10,
+@@ -18589,7 +18660,7 @@ ibm3101|i3101|IBM 3101-10,
  	cup=\EY%p1%{32}%+%c%p2%{32}%+%c, cuu1=\EA, ed=\EJ,
  	el=\EI, home=\EH, hts=\E0, ind=\n, nel=\r\n, tbc=\EH,
  	use=vt52+arrows,
@@ -628,7 +663,7 @@
  	is2=\E S, rmacs=\E>B, rs2=\E S,
  	sgr=\E4%{64}%?%p1%t%{65}%|%;%?%p2%t%{66}%|%;%?%p3%t%{65}%|%;
  	    %?%p4%t%{68}%|%;%?%p5%t%{64}%|%;%?%p6%t%{72}%|%;%?%p7%t
-@@ -18822,7 +18893,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
+@@ -18824,7 +18895,7 @@ lft|lft-pc850|LFT-PC850|IBM LFT PC850 De
  
  # "Megapel" refers to the display adapter, which was used with the IBM RT
  # aka IBM 6150.

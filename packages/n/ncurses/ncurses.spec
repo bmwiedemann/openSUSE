@@ -46,6 +46,8 @@
 %global basevers 6.6
 %global tackvers 1.11
 %global tacklvl  20251210
+# ${!...} and pushd is bash-specific
+%define _buildshell /bin/bash
 
 Name:           ncurses
 #!BuildIgnore: terminfo
@@ -473,8 +475,8 @@ export CFLAGS_SHARED
        OPATH=$PATH
 	  CC=gcc
 	 CXX=g++
-    CFLAGS="${RPM_OPT_FLAGS} -pipe"
-    CPPFLAGS="-D_REENTRANT"
+    CFLAGS="%{optflags} -pipe"
+    CPPFLAGS=""
     if [[ "$BUILD_BASENAME" = debug-* ]] ; then
 	CFLAGS="${CFLAGS} -g"
 	CPPFLAGS="${CPPFLAGS} -DTRACE"
@@ -633,8 +635,8 @@ export CFLAGS_SHARED
 		# for ABI 7 only normal, wide, and wide threaded versions
 		test "$abi" = 7 -a -n "$pthreads" -a -z "$wide" && continue || :
 
-		mkdir build.${wide}${pthreads}${abi}
-		pushd build.${wide}${pthreads}${abi}
+		mkdir build.${pthreads}${wide}${abi}
+		pushd build.${pthreads}${wide}${abi}
 		ln -sf ../configure .
 		ln -sf ../package .
 		ln -sf ../pc .
@@ -651,15 +653,17 @@ export CFLAGS_SHARED
 			echo  --enable-opaque-curses  --enable-opaque-form  --enable-opaque-menu  --enable-opaque-panel  --enable-ext-mouse  --enable-ext-colors || \
 			echo --disable-opaque-curses --disable-opaque-form --disable-opaque-menu --disable-opaque-panel --disable-ext-mouse --disable-ext-colors
 		    test "$abi" = 7 && \
-			echo --enable-ext-mouse2
+			echo --enable-ext-mouse2 --with-rel-version=${abi}.0
 		    #
 		    # If threaded then use pthreads and weak symbols as this avoids four different libraries
 		    # Side effect is that the the threaded libraries a binary incompatible with none threaded
 		    #
 		    # NB: For ABI 7 use the full four library matrix
 		    weak_symbols=--enable-weak-symbols
+#		    test "$abi" = 7 -a -n "$pthreads" && \
+#			weak_symbols="--disable-weak-symbols"
 		    test "$abi" = 7 -a -n "$pthreads" && \
-			weak_symbols="--disable-weak-symbols"
+			weak_symbols="--enable-weak-symbols --with-termlib=%{soname_tinfo}t"
 		    test -n "$pthreads" && \
 			echo    --with-pthread  --enable-pthreads-eintr  --enable-reentrant  $weak_symbols || \
 			echo --without-pthread --disable-pthreads-eintr --disable-reentrant --disable-weak-symbols
@@ -747,7 +751,7 @@ export CFLAGS_SHARED
     done
     . ${PWD}/.build_tic
 
-    pushd build.wt6
+    pushd build.tw6
 	make install DESTDIR=%{root} includesubdir=/ncursesw
 %if %{with onlytinfo}
 	# This ensures that we get an auxiliary libtinfow *with* _nc_read_entry2 symbol as well
@@ -817,8 +821,8 @@ export CFLAGS_SHARED
 	make install.libs DESTDIR=%{root} includesubdir=/ncurses
 %if %{with onlytinfo}
 	# This ensures that we get the libtinfo *with* _nc_read_entry2 symbol as well
-	cp -p ../build.wt6/libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
-	cp -p ../build.wt6/libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
+	cp -p ../build.tw6/libtinfo.so.%{basevers}.back  %{root}%{_libdir}/libtinfo.so.%{basevers}
+	cp -p ../build.tw6/libtinfow.so.%{basevers}.back %{root}%{_libdir}/libtinfow.so.%{basevers}
 %endif
 	pushd man
 	    bash ../edit_man.sh normal installing %{root}%{_mandir} . ncurses6-config.1
@@ -856,7 +860,7 @@ export LANG
 	-Wl,--version-script,build.w6/package/ncursesw.map -o %{buildroot}%{_libdir}/ncurses6nt/libtinfow.so.%{basevers}
 %endif
     PATH=$PWD/gzip:$PATH
-    # this is build.wt6
+    # this is build.tw6
     (cd %{root}/; tar -cpSf - *)|tar -xpsSf - -C %{buildroot}/
     rm -rf %{root}
     for model in libncurses libncursest libncursesw libncursestw libtinfo libtinfow libtic libticw
@@ -1085,7 +1089,7 @@ export LANG
 #
 # Install termerase helper program with manual page
 #
-gcc -Wall ${RPM_OPT_FLAGS} -o %{buildroot}%{_bindir}/termerase %{S:42} \
+gcc -Wall %{optflags} -o %{buildroot}%{_bindir}/termerase %{S:42} \
     -I %{buildroot}%{_incdir} -L %{buildroot}%{_libdir} -ltinfo
 install -m 0644 %{S:43} %{buildroot}%{_mandir}/man1/termerase.1
 
@@ -1120,16 +1124,10 @@ pushd test
 popd
 %endif
 
-%post   -n libncurses5 -p /sbin/ldconfig
-
-%postun -n libncurses5 -p /sbin/ldconfig
-
-%post   -n libncurses6 -p /sbin/ldconfig
-
-%postun -n libncurses6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libncurses5
+%ldconfig_scriptlets -n libncurses6
 
 %files -n terminfo-base -f default.list
-%defattr(-,root,root)
 %{_sysconfdir}/termcap
 %config %{_miscdir}/termcap
 %{_bindir}/termerase
@@ -1140,15 +1138,12 @@ popd
 %doc %{_mandir}/man1/termerase.1%{ext_man}
 
 %files -n terminfo-screen -f screen.list
-%defattr(-,root,root)
 %dir %{_datadir}/terminfo/
 
 %files -n terminfo-iterm -f iterm.list
-%defattr(-,root,root)
 %dir %{_datadir}/terminfo/
 
 %files -n ncurses-utils
-%defattr(-,root,root)
 %{_bindir}/clear
 %{_bindir}/infocmp
 %{_bindir}/reset
@@ -1167,7 +1162,6 @@ popd
 %doc AUTHORS
 
 %files -n ncurses-examples
-%defattr(-,root,root)
 %{_bindir}/ncurses-examples
 %dir %{_libexecdir}/ncurses-examples/
 %{_libexecdir}/ncurses-examples/*
@@ -1176,29 +1170,24 @@ popd
 %doc %{_mandir}/man6/*%{ext_man}
 
 %files -n libncurses5
-%defattr(-,root,root)
 %{_libdir}/lib*.so.5*
 %exclude %{_libdir}/libncurses++.so.5*
 %exclude %{_libdir}/libncurses++w.so.5*
 
 %files -n libncurses_c++5
-%defattr(-,root,root)
 %{_libdir}/libncurses++.so.5*
 %{_libdir}/libncurses++w.so.5*
 
 %files -n libncurses6
-%defattr(-,root,root)
 %{_libdir}/lib*.so.6*
 %exclude %{_libdir}/libncurses++.so.6*
 %exclude %{_libdir}/libncurses++w.so.6*
 
 %files -n libncurses_c++6
-%defattr(-,root,root)
 %{_libdir}/libncurses++.so.6*
 %{_libdir}/libncurses++w.so.6*
 
 %files -n libncurses6-compat
-%defattr(-,root,root)
 %{_bindir}/ncursesnt
 %dir %{_libdir}/ncurses6nt/
 %{_libdir}/ncurses6nt/lib*.so.6*
@@ -1206,13 +1195,11 @@ popd
 %exclude %{_libdir}/ncurses6nt/libncurses++w.so.6*
 
 %files -n libncurses_c++6-compat
-%defattr(-,root,root)
 %dir %{_libdir}/ncurses6nt/
 %{_libdir}/ncurses6nt/libncurses++.so.6*
 %{_libdir}/ncurses6nt/libncurses++w.so.6*
 
 %files -n ncurses-devel
-%defattr(-,root,root)
 %dir %{_defaultdocdir}/ncurses/
 %doc %{_defaultdocdir}/ncurses/*
 %{_bindir}/ncurses*6-config
@@ -1237,11 +1224,9 @@ popd
 %{_libdir}/lib*.a
 
 %files -n tack
-%defattr(-,root,root)
 %{_bindir}/tack
 %doc %{_mandir}/man1/tack.1%{ext_man}
 
 %files -f extension.list -n terminfo
-%defattr(-,root,root)
 
 %changelog
