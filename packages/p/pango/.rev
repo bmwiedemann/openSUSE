@@ -1291,4 +1291,16 @@ pango-view: When running GraphicsMagick 'gm display' command: Failed to execute 
     <comment>Update version</comment>
     <requestid>1348443</requestid>
   </revision>
+  <revision rev="158" vrev="1">
+    <srcmd5>9c34f4b64f82beec5b292bb3a95df7a7</srcmd5>
+    <version>1.58.0</version>
+    <time>1782746910</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.58.0:
+  + PangoFontDescription has a new width attribute, which is like
+    stretch, but allows intermediate values
+  + PangoRenderer has gained the ability to render only certain
+    components of a layout (such overlines, underlines, text,...)</comment>
+    <requestid>1361954</requestid>
+  </revision>
 </revisionlist>

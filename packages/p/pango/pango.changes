@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jun 26 18:31:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.58.0:
+  + PangoFontDescription has a new width attribute, which is like
+    stretch, but allows intermediate values
+  + PangoRenderer has gained the ability to render only certain
+    components of a layout (such overlines, underlines, text,...)
+
+-------------------------------------------------------------------
 Mon Mar 23 17:13:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.57.1:
