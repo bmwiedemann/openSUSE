@@ -196,4 +196,20 @@ via pnpm overrides to fix embedded dependency.</comment>
   * Removing release_tags that are no longer needed. </comment>
     <requestid>1356229</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>925c86b029a4048aa86c0af43eb47c58</srcmd5>
+    <version>2.22.0</version>
+    <time>1782747174</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix CVEs due to vulnerable embedded dependencies:
+  * CVE-2026-13311 (bsc#1269348): shell-quote inefficient input parsing (DoS).
+  * CVE-2026-48779 (bsc#1268918): ws memory exhaustion DoS.
+  * Update embedded dependencies via pnpm overrides:
+  * Force shell-quote to 1.9.0.
+  * Force ws to 7.5.11 and 8.21.0.
+  * Refactor get-sources.sh and spec file to use root-level overrides
+    for compatibility with pnpm v11, ensuring a consistent and
+    reproducible offline build process. </comment>
+    <requestid>1362434</requestid>
+  </revision>
 </revisionlist>

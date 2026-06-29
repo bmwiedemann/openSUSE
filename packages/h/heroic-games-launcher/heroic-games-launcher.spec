@@ -105,9 +105,12 @@ export PNPM_DISABLE_SELF_UPDATE_CHECK=1
 export PNPM_IGNORE_NODE_VERSION=1
 export PNPM_STORE_DIR=$PWD/.pnpm-store
 
+export pnpm_config_minimum_release_age=0
+export pnpm_config_trust_lockfile=true
+
 export PATH=$PWD/node_modules/.bin:/usr/bin
 
-#pnpm config set store-dir .pnpm-store
+pnpm config set store-dir .pnpm-store
 export PNPM_STORE_DIR=.pnpm-store
 pnpm install --offline --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false
 pnpm dist:linux %{arch_flag} --dir

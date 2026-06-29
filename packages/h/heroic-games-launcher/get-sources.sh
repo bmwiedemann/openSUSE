@@ -93,8 +93,8 @@ jq --indent 2 \
 # ==========================================================
 # Security / compatibility overrides
 # ==========================================================
-| .pnpm.overrides = (
-    (.pnpm.overrides // {})
+| .overrides = (
+    (.overrides // {})
     + {
         "undici": "7.24.7",
         "undici-types": "7.24.7",
@@ -103,6 +103,9 @@ jq --indent 2 \
         "fast-xml-parser": "5.5.7",
         "@xmldom/xmldom": "0.8.12",
         "find-up": "5.0.0",
+        "shell-quote": "1.9.0",
+        "ws@^7.0.0": "7.5.11",
+        "ws@^8.0.0": "8.21.0"
       }
   )
 ' package.json > temp.json && mv temp.json package.json
@@ -119,7 +122,7 @@ echo "Downloading pnpm modules and packing all"
 echo "++++++++++++++++++++++++++++++++++++++++++++++"
 
 pnpm config set store-dir .pnpm-store
-pnpm install --ignore-scripts
+pnpm install --ignore-scripts --no-frozen-lockfile
 
 tar cJf ../pnpm-offline-store.tar.gz .pnpm-store node_modules package.json pnpm-lock.yaml
 
