@@ -109,4 +109,17 @@
   + Validates that the image buffer has enough space for the decoded image (forwarded request 1355955 from rrahl0)</comment>
     <requestid>1355956</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>01cd83c32f69d52e891f7500592bee4d</srcmd5>
+    <version>0.3.0.0</version>
+    <time>1782747179</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3.0.0:
+  + Support APV RAW encoding and decoding
+  + Companding (compressing + expanding) algorithm for coding 16bit
+    4 channel linear pixel value
+  + New profiles are introduced to distinguish between the
+    conventional APV and APV RAW (forwarded request 1362435 from rrahl0)</comment>
+    <requestid>1362436</requestid>
+  </revision>
 </revisionlist>

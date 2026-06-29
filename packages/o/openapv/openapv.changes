@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:58:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.3.0.0:
+  + Support APV RAW encoding and decoding
+  + Companding (compressing + expanding) algorithm for coding 16bit
+    4 channel linear pixel value
+  + New profiles are introduced to distinguish between the
+    conventional APV and APV RAW
+
+-------------------------------------------------------------------
 Fri May 29 19:29:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.2.1.3:
