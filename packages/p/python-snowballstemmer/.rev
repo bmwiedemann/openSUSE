@@ -152,4 +152,30 @@
     the Python testsuite by about 4%.</comment>
     <requestid>1349303</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>29b8e2fcf8ee90e4a7b3fbcaf440aaaf</srcmd5>
+    <version>3.1.1</version>
+    <time>1782747002</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.1.1:
+  * Fix a segmentation fault after reporting an error for a
+    string command not followed by a string variable name or
+    string literal.
+  * Variable localisation was failing to check the expression
+    on the RHS of an integer test for uses of a variable, so could
+    incorrectly localise an integer variable whose value should
+    have persisted between calls to a function.
+  * Inline some routines which are only used once.  This is
+    done for routines consisting of a single non-compound command
+  * Simplify `not` applied to an integer test by removing the
+    `not` and flipping the sense of the test (e.g. `not $(x &gt; y)`
+    becomes `$(x &lt;= y)`) which results in simpler generated code.
+  * Fix segmentation fault if -syntax is used on a program with
+    no code.
+  * Fix segmentation fault on some assignment syntax errors.
+  * Fix bug introduced in v3.0.0 with conversion of `among`
+    starter.  If there were any commands after the among in the
+    same command list then the among itself would get lost.</comment>
+    <requestid>1362236</requestid>
+  </revision>
 </revisionlist>

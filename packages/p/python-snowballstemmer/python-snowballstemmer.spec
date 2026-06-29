@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-snowballstemmer
-Version:        3.0.1
+Version:        3.1.1
 Release:        0
 Summary:        16 stemmer algorithms
 License:        BSD-3-Clause
