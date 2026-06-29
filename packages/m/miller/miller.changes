@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Sun Jun 21 19:23:58 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.19.0+git20260621.299636038:
+  * Shell tab-completion for bash and zsh (#2096)
+  * Add new tail -n +N, head -n -N options (#2071)
+  * typofix
+  * typofix
+  * Add PNG graphics to perf docs for issue-2084 perf mods (#2095)
+  * Post-6.19.0 release: back to 6.19.0-dev
+  * docs/src/release-docs.md
+  * Prepare 6.19.0 release
+  * Fix exponential memory use when chaining seqgen (#2072) (#2094)
+  * doc tweak
+  * update ubuntu/python versions in .readthedocs.yaml (#2092)
+  * docs: add "Allocation/GC optimizations: June 2026" performance section (#2091)
+  * Bind scalar locals/params by reference, not by copy (~4-9% on DSL) (#2090)
+  * Drop redundant deep-copy of UDF return values (~3-16% perf on UDFs in `mlr put`) (#2089)
+  * Pool DSL stack-frame sets across UDF/subroutine calls (~31% perf on function-heavy `mlr put`) (#2088)
+  * Pool DSL stack frames across records (~8-9% perf on `mlr put`) (#2086)
+  * Batch-allocate per-record objects; reuse CSV writer field buffer (#2083)
+  * Batch-arena field allocation for line-based readers (#2082)
+  * Lazy per-record hashing: ~15-30% faster on common workloads (#2081)
+  * Bump actions/checkout from 6 to 7 (#2080)
+  * Bump github.com/cloudflare/circl from 1.6.2 to 1.6.3 (#2079)
+  * Bump pault.ag/go/debian from 0.20.0 to 0.21.0 (#2078)
+  * Bump pault.ag/go/debian from 0.19.0 to 0.20.0 (#2077)
+  * Bump golang.org/x/sys from 0.45.0 to 0.46.0 (#2075)
+  * Bump golang.org/x/term from 0.43.0 to 0.44.0 (#2074)
+  * Bump golang.org/x/text from 0.37.0 to 0.38.0 (#2073)
+  * Bump github/codeql-action from 4.36.1 to 4.36.2 (#2070)
+  * Bump github/codeql-action from 4.36.0 to 4.36.1 (#2069)
+  * Allow empty-string keys in JSON and YAML input (#2068)
+  * Bump golang.org/x/sys from 0.44.0 to 0.45.0 (#2067)
+  * Bump github/codeql-action from 4.35.5 to 4.36.0 (#2066)
+  * Bump github.com/lestrrat-go/strftime from 1.1.1 to 1.2.0 (#2065)
+  * Bump goreleaser/goreleaser-action from 7.2.1 to 7.2.2 (#2064)
+  * Fix PPRINT alignment with multi-character OFS (#1819) (#2063)
+  * Apply join prefixes/rename to unpaired records (#1821) (#2062)
+  * Default to "cat" verb when none is supplied (#2060)
+  * Fix column alignment for wide and combining Unicode chars (#1520, #379) (#2061)
+  * Fix data dropped from ragged implicit-header TSV/CSV-lite input (#1749) (#2059)
+  * Fix mlr -s shebang doc and reject arrays/maps in contains/index (#1658) (#2058)
+  * Add `--omd-aligned` flag for column-padded markdown output (#2057)
+  * Bump github/codeql-action from 4.35.4 to 4.35.5 (#2056)
+  * Bump golang.org/x/text from 0.36.0 to 0.37.0 (#2054)
+  * Bump golang.org/x/term from 0.42.0 to 0.43.0 (#2055)
+  * Bump github/codeql-action from 4.35.3 to 4.35.4 (#2052)
+  * Bump github/codeql-action from 4.35.2 to 4.35.3 (#2051)
+  * Bump github.com/klauspost/compress from 1.18.5 to 1.18.6 (#2050)
+  * Bump github.com/mattn/go-isatty from 0.0.21 to 0.0.22 (#2048)
+  * Bump goreleaser/goreleaser-action from 7.1.0 to 7.2.1 (#2047)
+  * Bump goreleaser/goreleaser-action from 7.0.0 to 7.1.0 (#2045)
+
+-------------------------------------------------------------------
 Sun Apr 19 22:04:35 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.18.1+git20260419.9a25ba5df:

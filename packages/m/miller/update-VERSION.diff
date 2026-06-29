@@ -4,5 +4,5 @@
  // Nominally things like "6.0.0" for a release, then "6.0.0-dev" in between.
  // This makes it clear that a given build is on the main dev branch, not a
  // particular snapshot tag.
--var STRING string = "6.18.1-dev"
-+var STRING string = "6.18.1+git20260419.9a25ba5df"
+-var STRING string = "6.19.0-dev"
++var STRING string = "6.19.0+git20260621.299636038"
