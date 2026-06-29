@@ -11456,7 +11456,7 @@ unsorted:
   - libQCoro6Qml0 
   - libQCoro6Quick0 
   - libQCoro6WebSockets0 
-  - libQXmppQt6-9 
+  - libQXmppQt6-10 
   - libQXmppQt6-devel 
   - libQZint-devel 
   - libQZint2_16 
@@ -13027,7 +13027,7 @@ unsorted:
   - libdico2 
   - libdict-devel 
   - libdict1_0 
-  - libdigikamcore9_0_0 
+  - libdigikamcore9_1_0 
   - libdirac_decoder0 
   - libdirac_decoder0-32bit 
   - libdirac_encoder0 
@@ -15957,7 +15957,6 @@ unsorted:
   - libqwt6-qt6-6_3 
   - libqwtplot3d-qt5-0 
   - libqxmledit-0_9_17-0 
-  - libqxmpp-doc 
   - libqxp-devel 
   - libqxp-doc 
   - libqxp-tools 
@@ -23036,6 +23035,7 @@ unsorted:
   - perl-base-32bit 
   - perl-biber 
   - perl-boolean 
+  - perl-builtin-compat 
   - perl-constant-boolean 
   - perl-constant-defer 
   - perl-curry 
