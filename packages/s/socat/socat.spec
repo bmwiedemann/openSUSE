@@ -1,7 +1,7 @@
 #
 # spec file for package socat
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Pascal Bleser <pascal.bleser@opensuse.org>
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,10 +19,10 @@
 
 
 Name:           socat
-Version:        1.8.1.1
+Version:        1.8.1.3
 Release:        0
 Summary:        Multipurpose relay for bidirectional data transfer
-License:        MIT AND SUSE-GPL-2.0-with-openssl-exception
+License:        LicenseRef-SUSE-GPL-2.0-with-openssl-exception AND MIT
 Group:          Productivity/Networking/Other
 URL:            http://www.dest-unreach.org/socat/
 Source:         http://www.dest-unreach.org/socat/download/%{name}-%{version}.tar.gz
