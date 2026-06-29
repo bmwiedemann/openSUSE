@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pdm-backend
-Version:        2.4.8
+Version:        2.4.9
 Release:        0
 Summary:        Backend used by PDM
 License:        MIT

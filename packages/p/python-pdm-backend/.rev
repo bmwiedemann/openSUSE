@@ -105,4 +105,13 @@
     declared</comment>
     <requestid>1345075</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ea3d51398c3a709324a45f338035bec2</srcmd5>
+    <version>2.4.9</version>
+    <time>1782746976</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.4.9:
+  * Adjust the expected test output to include editables 0.6</comment>
+    <requestid>1362145</requestid>
+  </revision>
 </revisionlist>
