@@ -190,4 +190,36 @@
   * decode: fix decompression overflow [CVE-2026-9605, boo#1266365]</comment>
     <requestid>1355504</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>1b3c17e0a5a8903d0bfd4790c7b63dea</srcmd5>
+    <version>0.14</version>
+    <time>1782747072</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.14:
+  * Write support for r2004 (AC1018) DWG files.  The encoder now
+    produces compressed, encrypted section headers and the
+    LZ77-compressed object data layout required since r2004.
+  * Split large object files (encode, decode) into 2 objects,
+    significantly reducing peak memory usage during compilation
+    and enabling parallel builds to scale better.
+  * dwgadd: handle fields (e.g. layer, ltype, style) can now be
+    set by table-record name in addition to raw handle references.
+    A string value like `line.layer = &quot;FOO&quot;` is resolved via
+    dwg_find_tablehandle() at parse time.
+  * Added DXB (binary DXF) support: dwgwrite/dwgread/dwg2dxf
+    accept DXB input/output, and dxfwrite accepts DXB.
+  * R2007+ split string stream encoding for Header, Classes, and
+    objects.
+  * Added cycle checks in entity link chains.  GH #1226.
+  * Added regression tests for decompress_r2007 OOB reads and
+    R2004 section decompression.  Added dwgfilter.test.
+  * Added release helpers and improved CI (ODAFileConverter QT6,
+    xvfb-run).
+  * dwgfuzz: show mode with --version.
+  * API/ABI changes (source-incompatible):
+  * Renamed HEADER/2NDHEADER.is_maint to maint_rel_version.
+  * Renamed PROXY_OBJECT.dwg_versions.
+  * Bumped SO_VERSION to 0:14:0.</comment>
+    <requestid>1362318</requestid>
+  </revision>
 </revisionlist>
