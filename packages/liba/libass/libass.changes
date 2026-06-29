@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 28 03:46:03 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to 0.17.5:
+  * Fix limited OOB read and write in wrap_lines_measure
+  * Fix OOB bit clears for negative Matroska ReadOrder fields
+  * Fix \fay with glyph clusters
+  * Fix small alpha changes not always splitting runs when combined with fade
+  * Fades are now applied to BorderStyle=4 boxes too
+  * Fonts using legacy arabic Windows charmaps are now supported
+  * ass_render_frame no longer returns fully transparent images
+  * Avoid SSE instructions if compiler baseline already includes AVX
+- Remove d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch: included in
+  upstream release
+
+-------------------------------------------------------------------
 Sun May  3 13:37:51 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Add patch d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch to fix

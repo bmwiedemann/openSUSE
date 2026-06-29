@@ -18,7 +18,7 @@
 
 %define sover   9
 Name:           libass
-Version:        0.17.4
+Version:        0.17.5
 Release:        0
 Summary:        Library for SSA/ASS-formatted subtitle rendering
 License:        ISC
@@ -26,7 +26,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/libass/libass
 Source:         %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
-Patch1:         https://github.com/libass/libass/commit/d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch
 BuildRequires:  nasm
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig) >= 2.10.92

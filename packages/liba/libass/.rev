@@ -521,4 +521,23 @@ I suggest a &quot;osc copypac -r &lt;last revision that builds&gt; multimedia:li
     <comment></comment>
     <requestid>1350736</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>eba4efbf25b1cf08fc3ca69027437e55</srcmd5>
+    <version>0.17.5</version>
+    <time>1782746963</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.17.5:
+  * Fix limited OOB read and write in wrap_lines_measure
+  * Fix OOB bit clears for negative Matroska ReadOrder fields
+  * Fix \fay with glyph clusters
+  * Fix small alpha changes not always splitting runs when combined with fade
+  * Fades are now applied to BorderStyle=4 boxes too
+  * Fonts using legacy arabic Windows charmaps are now supported
+  * ass_render_frame no longer returns fully transparent images
+  * Avoid SSE instructions if compiler baseline already includes AVX
+- Remove d013d97631bf86577e7eb44941b2b7b9cf4192d0.patch: included in
+  upstream release
+</comment>
+    <requestid>1362061</requestid>
+  </revision>
 </revisionlist>
