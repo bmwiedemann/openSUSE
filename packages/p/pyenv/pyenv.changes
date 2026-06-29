@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jun 29 14:47:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.3:
+  * CI: add_version enhancements
+  * Add CPython 3.15.0b3
+  * fix(rehash): prevent terminal hang caused by stale or
+    sandbox-blocked lock file
+  * 3.6.x: Fix verify_* calls
+  * Add CPython 3.14.6
+  * Add CPython 3.13.14
+  * Support 3.9 EOL Pip URL, consolidate tests
+  * Update URLs for PyPy nightly; Remove pypy3.5 and pypy3.7
+    nightly
+  * Add CPython 3.15.0b2
+  * init: add --install for shell setup
+  * realpath.c: fix obsolete syntax warning
+  * Add miniconda3 26.3.2-2, miniforge3 26.3.2-0, 26.3.2-1
+  * miniforge3 26.1, 26.3, add_miniforge: exclude .pkg installers
+  * miniforge 26, CI: switch check to 3.13
+  * 2.7, 3.4: force C99 standard; 2.7.14-18: force OpenSSL 1
+    formula
+  * rehash: detect and remove a stale lockfile
+  * Add GraalPy 25.0.3
+  * 3.11.0+: Use the `--with-openssl-rpath' Configure option when
+    possible
+  * python_build: Make `verify_python` verify `pythonX.Y' suffix
+  * Add micropython 1.22.0 to 1.28.0; add downstream patches to
+    fix compilation errors
+  * Fix linking against a keg_only Homebrew OpenSSL when a a non-
+    keg_only one is also installed
+  * Add missing CPython 3.14.2t
+  * 3.14.0-5: Support building against OpenSSL 4
+  * CI: add_cpython: Support prereleases for non-initial CPython
+    releases
+  * Add CPython 3.16-dev, switch 3.15-dev to maintenance branch
+  * Add PyPy v7.3.22
+  * CI: Add timeouts to CPython release metadata fetches
+  * Add CPython 3.15.0b1
+  * Add CPython 3.14.5rc1
+  * pyenv-latest: fast path for when there is an exact match
+
+-------------------------------------------------------------------
 Fri Apr 10 06:22:12 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.27
 
 - Update 2.6.27
@@ -107,7 +149,7 @@ Tue Jan 13 06:40:40 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.
 Tue Dec 16 08:40:28 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.6.16
 
 - Update 2.6.16
-  * rehash: Fix hanging for 60 seconds when shims directory is not writable 
+  * rehash: Fix hanging for 60 seconds when shims directory is not writable
     due to Linux Landlock by @native-api in #3367
   * Add Miniconda3-25.9.1-3 by @binbjz in #3368
   * sh-rehash: Fix erroneously executing rather than printing a command
@@ -343,7 +385,7 @@ Tue Jan 21 07:20:06 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.comi> - 2
 Tue Jan 21 07:18:54 UTC 2025 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.5.0
 
 - Update 2.5.0
-  * pyenv init - performance improvements; recommend using 
+  * pyenv init - performance improvements; recommend using
     "pyenv init - <shell>" by @ChristianFredrikJohnsen in #3136
   * Add miniconda3-24.11.1-0 by @binbjz in #3138
   * Add miniconda3-24.3.0-0 by @native-api in #3139
@@ -522,7 +564,7 @@ Fri Jul  5 04:56:59 UTC 2024 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.
 Full Changelog: https://github.com/pyenv/pyenv/compare/v2.4.5...v2.4.6
 
 -------------------------------------------------------------------
-Sun Jun 30 21:48:24 UTC 2024 - Dirk Müller <dmueller@suse.com> - 2.4.5 
+Sun Jun 30 21:48:24 UTC 2024 - Dirk Müller <dmueller@suse.com> - 2.4.5
 
 - update to 2.4.5:
   * python-build: Add ancient versions; 2.4, 2.4.1, 2.4.3, 2.4.4
