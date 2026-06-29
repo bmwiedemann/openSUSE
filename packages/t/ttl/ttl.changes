@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:32:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.20.1:
+  * Unify IPv4 send path on IP_HDRINCL (TTL in the IP header) (#12)
+
+-------------------------------------------------------------------
 Thu Jun 11 06:25:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.20.0:
