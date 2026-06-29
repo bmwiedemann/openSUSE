@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jun 27 21:00:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.71:
+  * langtable.py: Fix deprecation warning: `langtable.py:2652:
+    UserWarning: pkg_resources is deprecated as an API`
+  * Add xdq, sus, mrh, hrx, brh, ary, en_SE.UTF-8
+  * Get new translations and translation changes from CLDR
+  * setup.py: use open() instead of deprecated codecs.open(),
+    declare minimum Python version >= 3.8
+  * Add Yangon timezone id part
+  * languages.xml: Rename Asia/Rangoon to Asia/Yangon
+  * territories.xml: Rename Asia/Rangoon to Asia/Yangon
+
+-------------------------------------------------------------------
 Wed May 20 17:14:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base BR

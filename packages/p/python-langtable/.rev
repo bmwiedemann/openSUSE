@@ -158,4 +158,21 @@
     <comment></comment>
     <requestid>1354418</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ba4c6d7c308ff4797d44496a5a3e37a3</srcmd5>
+    <version>0.0.71</version>
+    <time>1782746960</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.71:
+  * langtable.py: Fix deprecation warning: `langtable.py:2652:
+    UserWarning: pkg_resources is deprecated as an API`
+  * Add xdq, sus, mrh, hrx, brh, ary, en_SE.UTF-8
+  * Get new translations and translation changes from CLDR
+  * setup.py: use open() instead of deprecated codecs.open(),
+    declare minimum Python version &gt;= 3.8
+  * Add Yangon timezone id part
+  * languages.xml: Rename Asia/Rangoon to Asia/Yangon
+  * territories.xml: Rename Asia/Rangoon to Asia/Yangon</comment>
+    <requestid>1362048</requestid>
+  </revision>
 </revisionlist>

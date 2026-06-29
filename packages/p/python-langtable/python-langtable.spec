@@ -28,7 +28,7 @@
 %define skip_python2 1
 %global literalpython python
 Name:           python-langtable%{psuffix}
-Version:        0.0.70
+Version:        0.0.71
 Release:        0
 Summary:        Database to guess defaults for locale settings
 # the translations in languages.xml and territories.xml are (mostly)
