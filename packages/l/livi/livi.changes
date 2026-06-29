@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:09:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.0:
+  * Allow to exclude display notches in landscape using xx-
+    cutouts-v1
+  * Wayland protocol
+  * Show processing state when process URLs
+  * https://gitlab.gnome.org/guidog/livi/-/issues/28
+
+-------------------------------------------------------------------
 Tue Feb 10 02:39:05 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
  Update to version 0.4.0:
@@ -27,7 +37,7 @@ Thu Jun 13 06:55:17 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
   * Allow to use gtk4paintablesink instead of in-tree sink
   * Allow to list recent videos on the command line
   * Allow to preprocess when pasting URLs
-- Add test script to validate files 
+- Add test script to validate files
 
 -------------------------------------------------------------------
 Sat Mar 23 08:44:26 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>

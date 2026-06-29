@@ -1,7 +1,7 @@
 #
 # spec file for package livi
 #
-# Copyright (c) 2026 mantarimay
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,12 +14,22 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2026 mantarimay
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 
 %bcond_without test
 %define appid org.sigxcpu.Livi
 Name:           livi
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        A light video player with hardware acceleration support
 License:        GPL-3.0-or-later

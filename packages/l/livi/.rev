@@ -39,4 +39,19 @@
     <comment></comment>
     <requestid>1332124</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9ed83d76dbda6b002d342fcf153f25a1</srcmd5>
+    <version>0.5.0</version>
+    <time>1782747081</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Allow to exclude display notches in landscape using xx-
+    cutouts-v1
+  * Wayland protocol
+  * Show processing state when process URLs
+  * https://gitlab.gnome.org/guidog/livi/-/issues/28
+
+- Add test script to validate files</comment>
+    <requestid>1362327</requestid>
+  </revision>
 </revisionlist>
