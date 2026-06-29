@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jun 20 17:01:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Modernize building of Python bindings, to generate binary
+  subpackages for each Python interpreter in the distro.
+
+-------------------------------------------------------------------
 Mon Jun 15 00:00:00 UTC 2026 - David Sterba <dsterba@suse.com>
 
 - update to 7.0

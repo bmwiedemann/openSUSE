@@ -16,13 +16,17 @@
 #
 
 
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
-
 # enable building of btrfsprogs-static
 %if 0%{?suse_version} <= 1310 || 0%{?suse_version} == 1315
 %define build_static	0
 %else
 %define build_static	1
+%endif
+
+%if 0%{?suse_version} >= 1540
+%bcond_without python
+%else
+%bcond_with python
 %endif
 
 %define _dracutmodulesdir %(pkg-config --variable dracutmodulesdir dracut)
@@ -69,6 +73,9 @@ BuildRequires:  pkg-config
 %if 0%{?suse_version} >= 1310
 BuildRequires:  suse-module-tools
 %endif
+BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  libudev-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  zlib-devel
@@ -81,6 +88,10 @@ Supplements:    filesystem(btrfs)
 Recommends:     btrfsmaintenance
 Requires:       btrfsprogs-udev-rules
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+%if %{with python}
+%define         python_subpackage_only 1
+%python_subpackages
+%endif
 
 %description
 Utilities needed to create and maintain Btrfs file systems under Linux (btrfs,
@@ -161,6 +172,7 @@ Requires:       libbtrfsutil1 = %{version}
 This package contains the libraries and headers files for developers to
 build applications to interface with Btrfs using libbtrfsutil.
 
+%if %{with python}
 %package -n python-btrfsutil
 Summary:        Python bindings for developing with libbtrfsutil
 Group:          Development/Languages/Python
@@ -173,6 +185,7 @@ BuildRequires:  pkgconfig(python3)
 %description -n python-btrfsutil
 This package contains the python bindings to build applications to interface
 with Btrfs using libbtrfsutil.
+%endif
 
 %package bash-completion
 Summary:        Bash completion for btrfsprogs
@@ -195,6 +208,8 @@ Command line completion support for bas for utilities from btrfsprogs.
 %build
 ./autogen.sh
 
+%{python_expand export PYTHON="$python"
+export PYTHON_CONFIG="$python-config"
 %configure			\
 			--enable-python	\
 			--disable-documentation	\
@@ -210,13 +225,28 @@ make V=1 %{?_smp_mflags} all \
 			static
 %endif
 
+%if %{with python}
+pushd libbtrfsutil/python
+%pyproject_wheel
+popd
+%endif
+}
+
 %install
+%{python_expand export PYTHON="$python"
+export PYTHON_CONFIG="$python-config"
 make install		\
 %if %{build_static}
 	install-static 	\
 %endif
-	DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir} \
-	install_python
+	DESTDIR=%{buildroot} prefix=%{_prefix} bindir=%{_sbindir} mandir=%{_mandir} libdir=%{_libdir}
+}
+
+%if %{with python}
+pushd libbtrfsutil/python
+%pyproject_install
+popd
+%endif
 
 cd Documentation
 install -m 0755 -d %{buildroot}/%{_mandir}/man5
@@ -398,8 +428,11 @@ done
 %{_udevrulesdir}/64-btrfs-dm.rules
 %{_udevrulesdir}/64-btrfs-zoned.rules
 
-%files -n python-btrfsutil
-%{python3_sitearch}/*
+%if %{with python}
+%files %{python_files btrfsutil}
+%{python_sitearch}/btrfsutil.*.so
+%{python_sitearch}/btrfsutil-%{version}*-info
+%endif
 
 %files bash-completion
 %defattr(-,root,root)
