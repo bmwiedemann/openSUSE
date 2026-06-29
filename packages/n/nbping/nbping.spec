@@ -17,7 +17,7 @@
 
 
 Name:           nbping
-Version:        0.7.0
+Version:        0.7.1
 Release:        0
 Summary:        A ping tool with real-time data and visualizations
 License:        MIT

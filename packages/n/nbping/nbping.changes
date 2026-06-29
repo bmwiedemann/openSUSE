@@ -1,3 +1,10 @@
+-------------------------------------------------------------------
+Mon Jun 29 09:29:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.7.1:
+  * chore(release): bump version to 0.7.1
+  * feat(config): add YAML config support (#115)
+
 Thu May 21 12:10:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.7.0:
