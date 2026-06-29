@@ -1,7 +1,7 @@
 #
 # spec file for package stellarsolver
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 %define sover 2
-%define min_sover 7
+%define min_sover 8
 
 Name:           stellarsolver
-Version:        2.7
+Version:        2.8
 Release:        0
 Summary:        Astrometric Solver
 License:        GPL-3.0-or-later
