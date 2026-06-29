@@ -1,7 +1,7 @@
 #
 # spec file for package libcdada
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021, Martin Hauke <mardnh@gmx.de>
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -20,7 +20,7 @@
 
 %define sover 0
 Name:           libcdada
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        Basic data structures in C (libstdc++ wrapper)
 License:        BSD-2-Clause

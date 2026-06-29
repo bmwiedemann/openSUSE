@@ -70,4 +70,41 @@
     <comment></comment>
     <requestid>1329841</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2952389cba6c7c24545c4cc2a3d8f5bf</srcmd5>
+    <version>0.6.4</version>
+    <time>1782747060</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.4:
+  * [B] utils: fix `cdada_strerr()` bounds handling for invalid
+    and negative error codes
+  * [B] utils: add missing human-readable message for
+    `CDADA_E_FULL`
+  * [B] list/map/queue/set/stack: return `NULL` when constructor
+    `malloc()` fails (avoid null dereference)
+  * [B] str: fix `cdada_str_replace*()` to reject empty match and
+    self-replacement issues
+  * [B] str: return `NULL` in `cdada_str_create()` when input C
+    string is `NULL`
+  * [B] str: align `cdada_str()` invalid-handle behavior with API
+    docs (return `NULL`, not empty string)
+  * [B] bbitmap: make `cdada_bbitmap_dump()` set `size_used` in
+    buffered paths too
+  * [B] bbitmap: fix corrupted BSD license header in `bbitmap.h`
+  * [B] str: fix underflow in `cdada_str_rtraverse()` on empty
+    strings
+  * [B] list: fix `cdada_list_first()`/`cdada_list_last()`
+    returning `CDADA_SUCCESS` on invalid input
+  * [B] set: fix `cdada_set_find()` returning `true` on internal
+    error
+  * [B] str: fix uint32_t overflow in `cdada_str_erase()` bounds
+    check
+  * [B] str: fix `cdada_str_find_count()`/`cdada_str_find_all()`
+    not returning `CDADA_E_NOT_FOUND`
+  * [B] str: reject empty `substr` in
+    `cdada_str_find_count()`/`cdada_str_find_all()`
+  * [B] list/map/queue/set/stack: report `size_used` as bytes
+    written on incomplete `dump()`</comment>
+    <requestid>1362297</requestid>
+  </revision>
 </revisionlist>
