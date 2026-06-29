@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:42:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.12
+  * Stable fix task abort in #2225
+  * fix(stable) http server: add modern MIME types to static
+    content map.
+
+-------------------------------------------------------------------
 Sat Mar 14 19:23:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 1.11

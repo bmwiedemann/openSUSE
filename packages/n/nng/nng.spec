@@ -19,7 +19,7 @@
 
 %define sover 1
 Name:           nng
-Version:        1.11
+Version:        1.12.0
 Release:        0
 Summary:        Nanomsg NG - brokerless messaging
 License:        MIT
