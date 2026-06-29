@@ -1,0 +1,19 @@
+Relax ONNX Runtime's abseil version gate so the openSUSE system abseil-cpp can be
+used instead of the bundled 20250814 source.  Abseil's CMake config is ExactVersion
+(no cross-LTS ABI), so the upstream "FIND_PACKAGE_ARGS 20250814" rejects any other
+system abseil.  Dropping the version lets find_package(absl) accept whatever abseil
+Factory currently ships -- ONNX Runtime is source-compatible with it (NixOS and
+Fedora both build onnxruntime against abseil 20260107).
+
+diff --git a/cmake/external/abseil-cpp.cmake b/cmake/external/abseil-cpp.cmake
+--- a/cmake/external/abseil-cpp.cmake
++++ b/cmake/external/abseil-cpp.cmake
+@@ -41,7 +41,7 @@ onnxruntime_fetchcontent_declare(
+     URL_HASH SHA1=${DEP_SHA1_abseil_cpp}
+     EXCLUDE_FROM_ALL
+     PATCH_COMMAND ${ABSL_PATCH_COMMAND}
+-    FIND_PACKAGE_ARGS 20250814 NAMES absl
++    FIND_PACKAGE_ARGS NAMES absl
+ )
+
+ onnxruntime_fetchcontent_makeavailable(abseil_cpp)

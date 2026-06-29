@@ -1,0 +1,14 @@
+Enable find_package(Eigen3) so ONNX Runtime builds against the system eigen3
+instead of the bundled post-3.4 snapshot.  openSUSE ships eigen 5.0; ONNX
+Runtime 1.26 builds and links against it (Eigen3::Eigen), so let the upstream
+FetchContent declare resolve to the system package via FIND_PACKAGE_ARGS.
+
+--- a/cmake/external/eigen.cmake
++++ b/cmake/external/eigen.cmake
+@@ -14,5 +14,6 @@
+     PATCH_COMMAND ${Patch_EXECUTABLE} --binary --ignore-whitespace -p1 < ${PATCH_EIGEN_S390X} &&
+                   ${Patch_EXECUTABLE} --binary --ignore-whitespace -p1 < ${PATCH_EIGEN_S390X_WERROR}
+     EXCLUDE_FROM_ALL
++    FIND_PACKAGE_ARGS NAMES Eigen3
+ )
+ onnxruntime_fetchcontent_makeavailable(Eigen3)

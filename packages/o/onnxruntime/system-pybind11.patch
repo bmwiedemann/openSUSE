@@ -1,0 +1,17 @@
+diff --git a/cmake/external/onnxruntime_external_deps.cmake b/cmake/external/onnxruntime_external_deps.cmake
+index 9feb7772d1..58aba63029 100644
+--- a/cmake/external/onnxruntime_external_deps.cmake
++++ b/cmake/external/onnxruntime_external_deps.cmake
+@@ -507,11 +507,7 @@ else()
+ endif()
+ 
+ if(onnxruntime_ENABLE_PYTHON)
+-  if(onnxruntime_USE_VCPKG)
+-    find_package(pybind11 CONFIG REQUIRED)
+-  else()
+-    include(pybind11)
+-  endif()
++  find_package(pybind11 CONFIG REQUIRED)
+ if(TARGET pybind11::module)
+   message("Setting pybind11_lib")
+   set(pybind11_lib pybind11::module)

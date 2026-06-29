@@ -1,0 +1,36 @@
+Build against the system flatbuffers instead of the bundled 23.5.26 snapshot.
+Two changes:
+  * widen ONNX Runtime's find_package name list (newer flatbuffers ships its
+    CMake config under the name "FlatBuffers"); the 23.5.9 floor is kept and
+    accepts openSUSE's 25.x.
+  * when flatbuffers is taken from the system, its CMake config only exports the
+    shared target flatbuffers::flatbuffers_shared, while ORT links the
+    unsuffixed flatbuffers::flatbuffers -- add that alias.
+The in-tree generated *.fbs.h schemas are regenerated with the system flatc at
+build time (see the spec %build section).
+
+--- a/cmake/external/onnxruntime_external_deps.cmake
++++ b/cmake/external/onnxruntime_external_deps.cmake
+@@ -476,7 +476,7 @@
+     URL_HASH SHA1=${DEP_SHA1_flatbuffers}
+     PATCH_COMMAND ${ONNXRUNTIME_FLATBUFFERS_PATCH_COMMAND}
+     EXCLUDE_FROM_ALL
+-    FIND_PACKAGE_ARGS 23.5.9 NAMES Flatbuffers flatbuffers
++    FIND_PACKAGE_ARGS 23.5.9 NAMES Flatbuffers flatbuffers FlatBuffers
+ )
+
+ onnxruntime_fetchcontent_makeavailable(flatbuffers)
+@@ -504,6 +504,13 @@
+       target_compile_options(flatc PRIVATE /FI${CMAKE_BINARY_DIR}/gdk_cstdlib_wrapper.h)
+     endif()
+   endif()
++else()
++  # Downstream (openSUSE): system flatbuffers' CMake config exports only the
++  # shared target flatbuffers::flatbuffers_shared; ORT links the unsuffixed
++  # flatbuffers::flatbuffers, so alias it.
++  if(NOT TARGET flatbuffers::flatbuffers AND TARGET flatbuffers::flatbuffers_shared)
++    add_library(flatbuffers::flatbuffers ALIAS flatbuffers::flatbuffers_shared)
++  endif()
+ endif()
+ endif()
+

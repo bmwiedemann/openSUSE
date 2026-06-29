@@ -1,0 +1,39 @@
+Take Boost (and its header-only mp11) from the system instead of fetching the
+bundled mp11 snapshot.  ONNX Runtime guards the mp11 import with
+"if(NOT TARGET Boost::mp11)" and otherwise FetchContent_Populate()s a vendored
+copy.  Replace that branch with find_package(Boost) and alias Boost::mp11 to
+Boost::headers when Boost's own CMake config does not export an mp11 target (as
+is the case for openSUSE's boost-devel).
+
+--- a/cmake/external/onnxruntime_external_deps.cmake
++++ b/cmake/external/onnxruntime_external_deps.cmake
+@@ -281,22 +281,13 @@
+ onnxruntime_fetchcontent_makeavailable(date)
+
+ if(NOT TARGET Boost::mp11)
+-  if(onnxruntime_USE_VCPKG)
+-     find_package(Boost REQUIRED)
+-     message(STATUS "Aliasing Boost::headers to Boost::mp11")
+-     add_library(Boost::mp11 ALIAS Boost::headers)
+-  else()
+-    onnxruntime_fetchcontent_declare(
+-     mp11
+-     URL ${DEP_URL_mp11}
+-     EXCLUDE_FROM_ALL
+-     FIND_PACKAGE_ARGS NAMES Boost
+-    )
+-    FetchContent_Populate(mp11)
+-    if(NOT TARGET Boost::mp11)
+-      add_library(Boost::mp11 IMPORTED INTERFACE)
+-      target_include_directories(Boost::mp11 INTERFACE $<BUILD_INTERFACE:${mp11_SOURCE_DIR}/include>)
+-    endif()
++  # Downstream (openSUSE): always take Boost (incl. header-only mp11) from the
++  # system instead of fetching the bundled mp11 snapshot.  Boost's CMake config
++  # ships Boost::headers but not always a Boost::mp11 target, so alias it.
++  find_package(Boost REQUIRED)
++  if(NOT TARGET Boost::mp11)
++    message(STATUS "Aliasing Boost::headers to Boost::mp11")
++    add_library(Boost::mp11 ALIAS Boost::headers)
+   endif()
+ endif()
+
