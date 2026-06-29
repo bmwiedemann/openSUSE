@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:09:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.1:
+  * Include docs and tests in sdist again
+  * Fix long path issue on Windows
+  * Fix date in changelog
+  * Use `os.path.abspath()` instead of `Path.resolve()` for
+    performance
+
+-------------------------------------------------------------------
 Thu Apr  9 23:56:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to GitHub tarball, the sdist no longer ships tests.

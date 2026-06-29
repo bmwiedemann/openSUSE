@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-installer%{pkg_suffix}
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        A library for installing Python wheels
 License:        MIT

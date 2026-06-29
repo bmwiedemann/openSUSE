@@ -112,4 +112,17 @@
   * Separate validation of RECORD (#147, #167)</comment>
     <requestid>1346062</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f726d35191a75cece007f349d90947e6</srcmd5>
+    <version>1.0.1</version>
+    <time>1782746981</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.1:
+  * Include docs and tests in sdist again
+  * Fix long path issue on Windows
+  * Fix date in changelog
+  * Use `os.path.abspath()` instead of `Path.resolve()` for
+    performance</comment>
+    <requestid>1362153</requestid>
+  </revision>
 </revisionlist>
