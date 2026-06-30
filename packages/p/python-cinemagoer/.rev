@@ -40,4 +40,33 @@
   * Don't use removed pkgutil function.</comment>
     <requestid>1317680</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f90e8201841cbb9478dc3576cf2707c</srcmd5>
+    <version>2026.6.27</version>
+    <time>1782825105</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2026.06.27:
+  * ## What's new in release 2026.06.27 (The Lost Boys)
+  * the **support for parsing IMDb web pages was removed**,
+    leaving the non-commercial databases as the only available
+    data source
+  * drop support for python 2
+  * drop support for python versions prior to 3.10
+  * switch to pyproject.toml configuration
+  * switch to using uv for management
+- drop support-python314.patch (upstream)
+
+  [general]
+  * #289: Serbian translations
+  * #290: update Portuguese translations
+  * #291: allow direct access to filmography keys
+  * #299: add pagination to get_movie_list (courtesy of Stein van Broekhoven)
+  * #300: any iterable can be used as season_nums parameter of update_series_seasons
+  * #305: fix ability to set logging level - #310: fix build of locales .mo files
+  language mo files from.
+  - In the release 6.8 (codename &quot;Apollo 11&quot;) of IMDbPY, multiple
+    parsers were added and fixed; the new search_movie_advanced
+  - See full changelog at</comment>
+    <requestid>1362389</requestid>
+  </revision>
 </revisionlist>

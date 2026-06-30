@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:10:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.06.27:
+  * ## What's new in release 2026.06.27 (The Lost Boys)
+  * the **support for parsing IMDb web pages was removed**,
+    leaving the non-commercial databases as the only available
+    data source
+  * drop support for python 2
+  * drop support for python versions prior to 3.10
+  * switch to pyproject.toml configuration
+  * switch to using uv for management
+- drop support-python314.patch (upstream)
+
+-------------------------------------------------------------------
 Fri Nov 14 02:54:42 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:
@@ -85,13 +99,13 @@ Mon Jun  5 14:24:33 UTC 2023 - Ana Guerrero <ana.guerrero@suse.com>
 Wed Apr 28 09:29:47 UTC 2021 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2021.04.18
-  [general] 
-  * #289: Serbian translations 
-  * #290: update Portuguese translations 
-  * #291: allow direct access to filmography keys 
-  * #299: add pagination to get_movie_list (courtesy of Stein van Broekhoven) 
-  * #300: any iterable can be used as season_nums parameter of update_series_seasons 
-  * #305: fix ability to set logging level - #310: fix build of locales .mo files 
+  [general]
+  * #289: Serbian translations
+  * #290: update Portuguese translations
+  * #291: allow direct access to filmography keys
+  * #299: add pagination to get_movie_list (courtesy of Stein van Broekhoven)
+  * #300: any iterable can be used as season_nums parameter of update_series_seasons
+  * #305: fix ability to set logging level - #310: fix build of locales .mo files
   * #312: extract localized title
   [sql]
   * #287: fix missing logger
@@ -134,16 +148,16 @@ Wed Mar 10 01:41:02 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 Thu Jan 21 04:45:03 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use python_alternative for imdbpy script, correct where we install the
-  language mo files from. 
+  language mo files from.
 
 -------------------------------------------------------------------
 Thu Aug  1 09:47:34 UTC 2019 - Ana Guerrero Lopez <aguerrero@suse.com>
 
 - Update to version 6.8
-  - In the release 6.8 (codename "Apollo 11") of IMDbPY, multiple 
-    parsers were added and fixed; the new search_movie_advanced 
+  - In the release 6.8 (codename "Apollo 11") of IMDbPY, multiple
+    parsers were added and fixed; the new search_movie_advanced
     method allows advanced movie searches
-  - See full changelog at 
+  - See full changelog at
     https://imdbpy.readthedocs.io/en/latest/Changelog.html
 
 -------------------------------------------------------------------

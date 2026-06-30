@@ -1,7 +1,7 @@
 #
 # spec file for package python-cinemagoer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cinemagoer
-Version:        2023.5.1
+Version:        2026.6.27
 Release:        0
 Summary:        Python package to access the IMDb's database
 License:        GPL-2.0-or-later
-URL:            https://cinemagoer.sourceforge.io/
+URL:            https://github.com/cinemagoer/cinemagoer
 Source:         https://files.pythonhosted.org/packages/source/c/cinemagoer/cinemagoer-%{version}.tar.gz
 Patch0:         do_not_install_scripts.patch
-# PATCH-FIX-UPSTREAM Based on gh#cinemagoer/cinemagoer#543
-Patch1:         support-python314.patch
+BuildRequires:  %{python_module SQLAlchemy >= 2.0.50}
+BuildRequires:  %{python_module lxml >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-SQLAlchemy
-Requires:       python-lxml
+Requires:       python-SQLAlchemy >= 2.0.50
+Requires:       python-lxml >= 6.1.1
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Provides:       python-IMDbPY = %version-%release
@@ -63,22 +63,22 @@ copy of the whole database.
 %python_expand rm %{buildroot}/%{$python_sitelib}/imdb/locale/*.py
 %python_expand rm -rf %{buildroot}/%{$python_sitelib}/imdb/locale/__pycache__/
 %python_expand rm %{buildroot}/%{$python_sitelib}/imdb/locale/*.po
-%python_clone -a %{buildroot}%{_bindir}/imdbpy
+%python_clone -a %{buildroot}%{_bindir}/cinemagoer
+
+%post
+%python_install_alternative cinemagoer
+
+%postun
+%python_uninstall_alternative cinemagoer
 
 %check
 # Just about the entire testsuite wants network access
-%pytest -k "test_series_full_cast_has_ids"
-
-%post
-%python_install_alternative imdbpy
-
-%postun
-%python_uninstall_alternative imdbpy
+%pytest -k test_list_results_aligns_variable_width_ids
 
 %files %{python_files}
-%doc README.rst CHANGELOG.txt
+%doc README.rst
 %license LICENSE.txt
-%python_alternative %{_bindir}/imdbpy
+%python_alternative %{_bindir}/cinemagoer
 %{python_sitelib}/cinemagoer-%{version}.dist-info
 %{python_sitelib}/imdb
 %lang(ar) %{python_sitelib}/imdb/locale/ar/LC_MESSAGES/imdbpy.mo
