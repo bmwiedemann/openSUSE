@@ -31,4 +31,22 @@
     <comment></comment>
     <requestid>926936</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5fa5a9b57a664a4c3c25803002ef4f4e</srcmd5>
+    <version>0.160.0</version>
+    <time>1782825284</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.160.0 (0.16)
+   see /usr/share/doc/packages/perl-JavaScript-Minifier-XS/Changes
+  0.16      2026-06-28 14:10:28-07:00 America/Vancouver
+      - Fixes CVE-2026-56017, which caused Perl to SEGFAULT when calling
+        minify().  Thanks to CPANSec for raising the issue, and providing a
+        prototype fix. bsc#1269671
+      - Fixes CVE-2026-56018, caused by a memory leak in minify() where each
+        tokenized Node's &quot;contents&quot; buffer were not properly freed, resulting in a
+        memory leak on every call. bsc#1269715
+      - Updated author tests for &quot;does the JS still compile?&quot;, to use &quot;node&quot;
+        instead of &quot;jsl&quot;.</comment>
+    <requestid>1362651</requestid>
+  </revision>
 </revisionlist>
