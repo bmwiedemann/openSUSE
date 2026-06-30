@@ -1,6 +1,41 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:39:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.0:
+  * Code: Fixed deprecation warnings
+  * Wayland: Audio change from Pulse to PipeWire
+  * Wayland: Camera added based on PipeWire
+  * Qt: Minimum version is now 6.9.0
+  * ShowClick: Images color-matched to the GUI
+  * Halo: Images color-matched to the GUI
+  * Wayland: Added Discover to log for all converted formats
+  * Wayland: Tmp dir was not removed
+  * Feature and Bugfix-Release 4.9.0 from Apr 01, 2026
+  * Windows: The Start button was active when Cisco OpenH264 was inactive
+  * Windows: When selecting gif, H.264 was also incorrectly offered
+  * Wayland: Tool button area reset is not always enabled when necessary
+  * Wayland: Added minimized when record starts
+  * Wayland: Added buttons for snapshot
+  * Wayland: Systray does not display correctly after countdown
+  * Wayland: During a pause, the recording time continued to run
+  * Wayland: Added log controller
+  * Wayland: Separate ini for the settings
+  * Wayland: The snapshot dialog was not displayed by default in systray
+  * Wayland: The Systray was not displayed by default
+  * Wayland: Most connects changed from runtime to compile time
+  * Windows: GStreamer changed from 1.26.10 to version 1.28.1
+  * Wayland: Settings and log
+  * Snapshot: Messagebox info text
+  * Snapshot: Save path settings
+  * Snapshot: Changed write permisson
+  * Snapshot: Changed QMessagebox->exec to show
+  * Log: Added picture path
+  * Translation: Updated
+
+-------------------------------------------------------------------
 Mon Mar 23 06:59:46 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
-- Update to version 4.8.3 (also for 4.8.1 and 4.8.2, there are no separate changelogs) 
+
+- Update to version 4.8.3 (also for 4.8.1 and 4.8.2, there are no separate changelogs)
   * Fixed the severe audio failures that caused the 4.8.0 withdrawal.
   * Fixed a bug where the "Start" button remained active even when Cisco OpenH264 was inactive.
   * Fixed an issue where H.264 was incorrectly offered as an option when selecting the GIF format.
