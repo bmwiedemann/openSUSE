@@ -1,7 +1,7 @@
 #
 # spec file for package python-watchfiles
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,15 +14,25 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-
+### MULTIBUILD FLAVOR HANDLING ###
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+##################################
 
 %if 0%{?suse_version} > 1500
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
 %endif
+
 %{?sle15_python_module_pythons}
-Name:           python-watchfiles
+Name:           python-watchfiles%{psuffix}
 Version:        1.1.1
 Release:        0
 Summary:        File watching and code reload in python
@@ -46,13 +56,19 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-# SECTION test
+
+# SECTION test requirements
+%if %{with test}
 BuildRequires:  %{python_module dirty-equals}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-pretty}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+# The test flavor requires the main package built by the primary run
+BuildRequires:  %{python_module watchfiles = %{version}}
+%endif
 # /SECTION
+
 %python_subpackages
 
 %description
@@ -66,17 +82,28 @@ This package was previously named "watchgod".
 sed -i 's/version = "0.0.0"/version = "%{version}"/' Cargo.toml
 
 %build
+# Only build the wheel if we are not in the test flavor
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+# Only install binaries and handle alternatives if we are not in the test flavor
+%if !%{with test}
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/watchfiles
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%endif
 
+# Check block is only executed for the test flavor
+%if %{with test}
 %check
+# Move source out of the way to ensure we test the installed package
 mv watchfiles watchfiles.movedaway
 %pytest_arch
+%endif
 
+%if !%{with test}
 %post
 %python_install_alternative watchfiles
 
@@ -92,5 +119,6 @@ mv watchfiles watchfiles.movedaway
 %python_alternative %{_bindir}/watchfiles
 %{python_sitearch}/watchfiles
 %{python_sitearch}/watchfiles-%{version}*-info
+%endif
 
 %changelog

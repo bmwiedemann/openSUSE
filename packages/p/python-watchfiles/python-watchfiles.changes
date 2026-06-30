@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jun 18 10:55:34 UTC 2026 - Jordi Massaguer <jmassaguerpla@suse.com>
+
+- Split test package and use multibuild, so that the test package
+  can be excluded from the build. 
+
+-------------------------------------------------------------------
 Tue Nov  4 13:52:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.1.1
