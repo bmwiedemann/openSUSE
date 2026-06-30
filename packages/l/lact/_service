@@ -3,7 +3,7 @@
   <service name="tar_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/ilya-zlobintsev/LACT</param>
-    <param name="revision">v0.9.0</param>
+    <param name="revision">v0.9.1</param>
     <param name="match-tag">v[0-9]*</param>
     <param name="filename">lact</param>
     <param name="changesgenerate">enable</param>

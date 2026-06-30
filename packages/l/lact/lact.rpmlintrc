@@ -1,6 +1,7 @@
-# Exclusions for custom lact user/group
+# Exclusions for custom lact user/group, unstripped-binary-or-object warning
 addFilter("non-standard-uid /var/lib/lact lact")
 addFilter("non-standard-gid /var/lib/lact lact")
 addFilter("non-standard-gid /etc/lact lact")
 addFilter("non-standard-gid /etc/lact/config.yaml lact")
 addFilter("dir-or-file-outside-snapshot /var/lib/lact")
+addFilter("unstripped-binary-or-object.*/usr/bin/lact")

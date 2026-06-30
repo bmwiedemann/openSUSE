@@ -49,4 +49,81 @@ A detailed changelog can be found here:
 https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.9.0</comment>
     <requestid>1349262</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>6fa404d357a82b1a15f61c81bca6a105</srcmd5>
+    <version>0.9.1</version>
+    <time>1782825196</time>
+    <user>dimstar_suse</user>
+    <comment>- For lact.config.yaml file:
+  * Update version number to 6
+- For install-guide.txt file:
+  * Add more useful lact wiki links to recover from a bad overclocking 
+- For .spec file:
+  * Added required build dependencies for 0.9.1
+  * Fix build for Leap 16.0
+- For .rpmlintrc file:
+  * Exclude unstripped-binary-or-object warning
+- Bump to version 0.9.1
+- Upstream changes:
+  * Translations update from Fedora Weblate (#991)
+  * Translations update from Fedora Weblate (#1009)
+  * chore: prepare for new release
+  * fix: nvidia displayport2 bandwidth calculation (#1090)
+  * feat: de-couple nvidia target temp from amd pmfw target temp (#1086)
+  * fix: raise main window on errors
+  * fix: derive V/F curve bounds from offset limits (#1083)
+  * feat: add option to flatten VF curve selection (#1084)
+  * chore: supress clippy warning
+  * feat: QOL for displays info (#1085)
+  * feat: handle VF curve without vf_tuple_base (Turing) (#1066)
+  * fix: automatically clamp power cap to the allowed range on AMD (#1080)
+  * fix: raise main window for apply confirmation (#1078)
+  * fix: libdisplay-info dependency on debian-based systems (#1077)
+  * fix: make UI tolerate power cap being reported as 0 (#1072)
+  * fix: use host PATH variable when enabling AMD OD from inside flatpak (#1070)
+  * feat: add displays info (#1052)
+  * fix: correct nvidia fan curve pwm to percent conversion (#1055)
+  * refactor: improve gui folder structure (#1047)
+  * chore: use tokio local runtime instead of LocalSet (#1050)
+  * chore: add another GIGABYTE 9070 XT to device_ids.json (#1049)
+  * feat: add range selection feature for VF curve editor (#1032)
+  * fix: gracefully handle missing get_device_api_info in daemon
+  * fix: gracefully handle missing get_device_api_info in daemon
+  * perf: fetch Vulkan/OpenCL info asynchronously after startup (#1046)
+  * chore: bump libdrm-amdgpu
+  * feat: use banner instead of dialog to signal daemon reconnection (#1044)
+  * refactor: use helper methods for component launch (#1041)
+  * perf: avoid unnecessary ui config rewrite on startup (#1040)
+  * fix: wrap flatpak service startup with bash (#1039)
+  * chore: make clippy warnings fail CI, fix them (#1038)
+  * chore: move gpu test data to a shared directory (#1037)
+  * feat: support amd deep sleep state (#1035)
+  * feat: add custom loader (#1031)
+  * Revert &quot;WIP UI snapshot tests&quot;
+  * WIP UI snapshot tests
+  * fix: missing fan curve options on nvidia (#1034)
+  * feat: use revealer for graphs window edit mode toolbar (#1029)
+  * feat: rework app menu using actions; add keyboard shortcuts for preferences and quit (#1028)
+  * fix: fix regression with dirty init state (#1027)
+  * chore: add Gigabyte RTX 4070 Ti Super WindForce Max OC to device ids (#1026)
+  * perf: optimize gui bootstrap (#1023)
+  * feat: remember window size (#1022)
+  * feat: add hold/release cookie mechanism for profile state management (#995)
+  * chore: update vulkan schema to 1.4.351
+  * fix: bump flatpak sources
+  * fix: bump amdgpu-sysfs with deep sleep pstate handling (#1021)
+  * chore: improve p-state reads logs (#1019)
+  * fix: avoid leaking amdgpu device descriptors on reload (#1020)
+  * fix: bump libdrm_amdgpu_sys to 0.8.14 (#1018)
+  * doc: mention nvidia VF curve in README
+  * chore: add Turkish translations (#1011)
+  * fix: detect typed input in clock adjustment spinbuttons (#1008)
+  * feat: consolidate MessageDialogs under generic InfoDialog (#997)
+  * doc: fix API documentation links (#1014)
+  * chore: add debug log for p-states initial load (#1016)
+  * feat: improve profile process rule selector (#1003)
+  * doc: add Solus in installation section of README (#990)
+  * A more detailed changelog can be found at: https://github.com/ilya-zlobintsev/LACT/releases/tag/v0.9.1</comment>
+    <requestid>1362556</requestid>
+  </revision>
 </revisionlist>

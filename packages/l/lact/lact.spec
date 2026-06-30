@@ -29,7 +29,7 @@
 %endif
 
 Name:           %{pname}
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Linux GPU Configuration And Monitoring Tool
 License:        MIT
@@ -65,10 +65,13 @@ BuildRequires:  (rust1.93 or rust >= 1.93)
 BuildRequires:  (cargo1.93 or cargo >= 1.93)
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  libdrm-devel
 BuildRequires:  pkgconfig(hwdata)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(libdisplay-info)
+BuildRequires:  clinfo
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
@@ -138,6 +141,15 @@ EOF
 %build
 # Copy the post-installation/uninstallation guides
 cp %_sourcedir/*install-guide.txt .
+
+# lact-daemon vendors its own DRM uapi headers (include/drm/) for the
+# NVIDIA bindgen target, but its build.rs never adds them to clang's
+# search path. This works by accident on distros whose kernel-headers
+# package ships /usr/include/drm/ (e.g. openSUSE Factory/Tumbleweed),
+# but fails where it doesn't (e.g. Leap 16's SLFO-derived headers),
+# with: fatal error: 'drm/drm.h' file not found. Force the vendored
+# copy explicitly so the build doesn't depend on that.
+export BINDGEN_EXTRA_CLANG_ARGS="-Iinclude"
 
 %if %{with headless}
 # Build headless flavor (daemon + CLI only)
