@@ -81,4 +81,16 @@
     is a call to an undefined function in lisp.lsp.</comment>
     <requestid>1161220</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d9cd80f67f9b00909e33c44734da852a</srcmd5>
+    <version>1.2.5</version>
+    <time>1782825288</time>
+    <user>dimstar_suse</user>
+    <comment>- re-integrated previous changes
+
+- Update to version 1.2.5
+  * This release adds support for building with meson as well as autoconf.
+- switch to meson</comment>
+    <requestid>1362662</requestid>
+  </revision>
 </revisionlist>
