@@ -45,4 +45,21 @@
   EOT</comment>
     <requestid>1358529</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9f461af184a97fc22cee042060aed999</srcmd5>
+    <version>1.440.0</version>
+    <time>1782825281</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.440.0 (1.44)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+  [V 1.44]
+  Date=2026-06-29T00:00:00
+  Comments= &lt;&lt;EOT
+  - Replace the file LICENSE-GPL-3 with the file LICENSE
+  containing what is recommended at
+  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+  - Patch the source code reference to refer to this LICENSE file.
+  EOT</comment>
+    <requestid>1362648</requestid>
+  </revision>
 </revisionlist>

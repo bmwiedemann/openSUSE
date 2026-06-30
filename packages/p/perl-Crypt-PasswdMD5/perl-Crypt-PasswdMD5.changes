@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:59:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.440.0 (1.44)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+
+  [V 1.44]
+  Date=2026-06-29T00:00:00
+  Comments= <<EOT
+  - Replace the file LICENSE-GPL-3 with the file LICENSE
+  containing what is recommended at
+  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+  - Patch the source code reference to refer to this LICENSE file.
+  EOT
+
+-------------------------------------------------------------------
 Sat May 23 07:43:34 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.430.0 (1.43)
