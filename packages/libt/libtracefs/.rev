@@ -161,4 +161,14 @@
     <comment>- Update to release 1.8.2</comment>
     <requestid>1270262</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f4bc10aeca6715fc38eebabfce1a1903</srcmd5>
+    <version>1.8.3</version>
+    <time>1782825061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.3
+  * libtracefs: Fix enum type in read_event_state
+  * libtracefs: Fix tracefs_event_is_enabled() for all events</comment>
+    <requestid>1362316</requestid>
+  </revision>
 </revisionlist>

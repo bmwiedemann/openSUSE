@@ -1,7 +1,7 @@
 #
 # spec file for package libtracefs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 Name:           libtracefs
 %define lname   libtracefs1
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Linux kernel trace file system library
 License:        LGPL-2.1-only

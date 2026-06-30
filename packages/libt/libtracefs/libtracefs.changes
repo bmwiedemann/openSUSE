@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Feb  5 13:39:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.3
+  * libtracefs: Fix enum type in read_event_state
+  * libtracefs: Fix tracefs_event_is_enabled() for all events
+
+-------------------------------------------------------------------
 Thu Apr 17 09:37:38 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.2
