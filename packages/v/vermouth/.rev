@@ -301,4 +301,16 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update SHA sums</comment>
     <requestid>1362300</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>28df6f35a62ff8c0dac99c496c2b3bb8</srcmd5>
+    <version>1.9.5</version>
+    <time>1782825191</time>
+    <user>dimstar_suse</user>
+    <comment> - Fix unstripped-binary-or-object warning for vermouth
+ - Bump to version 1.9.5
+ - Upstream changes:
+   * Update translations, fix creating cache dirs
+   * Updated sums and commits</comment>
+    <requestid>1362554</requestid>
+  </revision>
 </revisionlist>

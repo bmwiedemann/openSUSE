@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 30 02:23:55 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Fix "unstripped-binary-or-object" warning for vermouth
+- Bump to version 1.9.5
+- Upstream changes:
+  * Update translations, fix creating cache dirs
+  * Updated sums and commits
+
+-------------------------------------------------------------------
 Mon Jun 29 05:35:45 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.9.4

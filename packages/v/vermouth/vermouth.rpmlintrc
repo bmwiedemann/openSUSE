@@ -1,0 +1,2 @@
+# Exclusions for vermouth build
+addFilter("unstripped-binary-or-object.*/usr/bin/vermouth")
