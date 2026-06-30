@@ -3,6 +3,7 @@ unsorted:
   - 0ad-data 
   - 2048-cli 
   - 2ping 
+  - 2ping-bash-completion 
   - 389-ds-devel 
   - 389-ds-snmp 
   - 3omns 
@@ -2253,6 +2254,7 @@ unsorted:
   - civetweb-devel 
   - cjs 
   - cjs-devel 
+  - cjs-tests 
   - ck-devel 
   - ckb-next 
   - ckermit 
@@ -14919,7 +14921,6 @@ unsorted:
   - libmovit8 
   - libmowgli-2-0 
   - libmowgli2-devel 
-  - libmozjs-115-0 
   - libmp3lame-devel 
   - libmp3lame0-32bit 
   - libmp4tag-devel 
@@ -16010,7 +16011,7 @@ unsorted:
   - librealsense 
   - librealsense-devel 
   - librealsense-examples 
-  - librealsense2_56 
+  - librealsense2_58 
   - librec1 
   - librecad 
   - librecad-parts 
@@ -19453,8 +19454,6 @@ unsorted:
   - mozilla-nss-sysinit 
   - mozilla-nss-sysinit-32bit 
   - mozilla-zilla-slab-fonts 
-  - mozjs115 
-  - mozjs115-devel 
   - mozjs140 
   - mozjs140-devel 
   - mozo 
@@ -25478,6 +25477,7 @@ unsorted:
   - python311-cramjam 
   - python311-crashtest 
   - python311-crayons 
+  - python311-crc32c 
   - python311-crccheck 
   - python311-crcmod 
   - python311-crispy-bootstrap3 
@@ -29414,6 +29414,7 @@ unsorted:
   - python313-cramjam 
   - python313-crashtest 
   - python313-crayons 
+  - python313-crc32c 
   - python313-crccheck 
   - python313-crcmod 
   - python313-crispy-bootstrap3 
@@ -33399,6 +33400,7 @@ unsorted:
   - python314-cramjam 
   - python314-crashtest 
   - python314-crayons 
+  - python314-crc32c 
   - python314-crccheck 
   - python314-crcmod 
   - python314-crispy-bootstrap3 
@@ -36520,6 +36522,8 @@ unsorted:
   - qscintilla-qt5-devel 
   - qscintilla-qt6 
   - qscintilla-qt6-devel 
+  - qsnapper 
+  - qsnapper-selinux 
   - qsstv 
   - qsyncthingtray 
   - qsynergy 
@@ -37129,6 +37133,7 @@ unsorted:
   - redis++-devel 
   - redland 
   - redland-storage-postgresql 
+  - redmine-mcp 
   - redminecli 
   - redminecli-bash-completion 
   - rednotebook 
@@ -49706,7 +49711,6 @@ unsorted:
   - typelib-1_0-Caribou-1_0 
   - typelib-1_0-Champlain-0_12 
   - typelib-1_0-CinnamonDesktop-3_0 
-  - typelib-1_0-CjsPrivate-1_0 
   - typelib-1_0-Clapper-0_0 
   - typelib-1_0-ClapperGtk-0_0 
   - typelib-1_0-CloudProviders-0_3_0 
