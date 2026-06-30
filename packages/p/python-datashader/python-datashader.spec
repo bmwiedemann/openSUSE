@@ -30,7 +30,7 @@ BuildArch:      noarch
 
 %{?sle15_python_module_pythons}
 Name:           python-datashader%{psuffix}
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        Data visualization toolchain based on aggregating into a grid
 License:        BSD-3-Clause
@@ -62,8 +62,8 @@ Recommends:     python-Pillow
 Recommends:     python-dask-dataframe
 %if %{with test}
 BuildRequires:  %{python_module bokeh >= 3.1}
-BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module dask-dataframe}
+BuildRequires:  %{python_module datashader = %{version}}
 BuildRequires:  %{python_module fastparquet}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module matplotlib >= 3.3}

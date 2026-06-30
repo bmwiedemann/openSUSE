@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:49:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update top 0.19.1:
+  * Improve overlapping edges for polygons to not cancel out
+
+-------------------------------------------------------------------
 Thu May 28 14:41:30 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Drop support for Python 3.11: added %global skip_python311 1 in spec file 
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file
   (bsc#1263906)
 
 -------------------------------------------------------------------

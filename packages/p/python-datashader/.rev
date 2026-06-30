@@ -818,4 +818,15 @@
 </comment>
     <requestid>1360240</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>7a2eb0ec649501095fe7862a2cbb4368</srcmd5>
+    <version>0.19.1</version>
+    <time>1782825156</time>
+    <user>dimstar_suse</user>
+    <comment>- update top 0.19.1:
+  * Improve overlapping edges for polygons to not cancel out
+
+- Drop support for Python 3.11: added %global skip_python311 1 in spec file</comment>
+    <requestid>1362537</requestid>
+  </revision>
 </revisionlist>
