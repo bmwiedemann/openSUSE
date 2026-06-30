@@ -1,0 +1,2 @@
+# All our sources are in kernel-devel
+addFilter(r'devel-dependency kernel-source')

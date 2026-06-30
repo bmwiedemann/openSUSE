@@ -1,7 +1,7 @@
 #
 # spec file for package cpupower
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Summary:        Tools to determine and set CPU Power related Settings
 License:        GPL-2.0-only
 Group:          System/Base
 URL:            https://git.kernel.org/cgit/linux/kernel/git/rafael/linux-pm.git
+Source10:       cpupower-rpmlintrc
 Patch1:         cpupower_fix_library_so_name.patch
 BuildRequires:  gettext-tools
 BuildRequires:  kernel-source
@@ -126,7 +127,7 @@ export CFLAGS="%{optflags} -fcommon"
 %endif
 
 %install
-CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true DESTDIR=%{buildroot} sbindir=%{_sbindir} docdir=%{_docdir}/%{name} confdir=%{_sysconfdir}"
+CONF="PACKAGE_BUGREPORT=https://bugs.opensuse.org mandir=%{_mandir} libdir=%{_libdir} CPUFRQ_BENCH=true DESTDIR=%{buildroot} sbindir=%{_sbindir} docdir=%{_docdir}/%{name} confdir=%{_sysconfdir}/"
 %make_install -C %{maindir} $CONF
 
 %ifarch %{ix86} x86_64

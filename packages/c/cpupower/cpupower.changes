@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:57:33 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Fix broken EnvironmentFile path in cpupower service config file
+  bsc#1269478
+- Introduce cpupower-rpmlintrc to suppress devel dependency error
+A cpupower-rpmlintrc
+
+-------------------------------------------------------------------
 Thu Aug 14 10:29:52 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Package cpupower systemd service that appeared with kernel 6.16
