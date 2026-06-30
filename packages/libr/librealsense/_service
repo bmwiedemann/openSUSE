@@ -1,0 +1,16 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/eProsima/Fast-CDR.git</param>
+    <param name="scm">git</param>
+    <param name="revision">refs/tags/v1.0.25</param>
+    <param name="filename">fastcdr</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+
+  <service name="recompress" mode="manual">
+    <param name="file">fastcdr-*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+</services>

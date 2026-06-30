@@ -1,15 +1,19 @@
+From 00281110730cfc8b564ec6af8c298b32ba5461d7 Mon Sep 17 00:00:00 2001
 From: Jiri Slaby <jslaby@suse.cz>
-Subject: Install presets to /usr/share
+Date: Wed, 27 May 2026 09:02:18 +0200
+Subject: [PATCH] Install presets to /usr/share
 Patch-upstream: no
 
 And not to home of a random (abuild) user.
 ---
- tools/realsense-viewer/CMakeLists.txt |    2 +-
+ tools/realsense-viewer/CMakeLists.txt | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/tools/realsense-viewer/CMakeLists.txt b/tools/realsense-viewer/CMakeLists.txt
+index 2af94aa3f8f3..fee313782bc2 100644
 --- a/tools/realsense-viewer/CMakeLists.txt
 +++ b/tools/realsense-viewer/CMakeLists.txt
-@@ -254,7 +254,7 @@ install(
+@@ -226,7 +226,7 @@ install(
  )
  #https://cmake.org/cmake/help/latest/command/install.html
  install(DIRECTORY presets/
@@ -17,4 +21,7 @@ And not to home of a random (abuild) user.
 +    DESTINATION ${CMAKE_INSTALL_DATADIR}/librealsense2/presets
      FILES_MATCHING PATTERN "*.preset"
  )
- endif()
+ 
+-- 
+2.54.0
+

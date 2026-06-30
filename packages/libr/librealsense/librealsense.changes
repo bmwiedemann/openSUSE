@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed May 27 07:53:10 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.58.1
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.58.1
+- Renamed 0001-third-party-use-nlohmann_json-from-system.patch
+  to 0001-third-party-use-libraries-from-system.patch
+
+-------------------------------------------------------------------
+Mon Mar 30 08:26:02 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to 2.57.7
+  * see release notes here:
+    https://github.com/IntelRealSense/librealsense/releases/tag/v2.57.7
+
+-------------------------------------------------------------------
 Thu Aug 14 05:40:19 UTC 2025 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to 2.56.5
