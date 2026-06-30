@@ -1,7 +1,7 @@
 #
 # spec file for package libwmf
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 %define lname	libwmf-0_2-7
 Name:           libwmf
-Version:        0.2.13
+Version:        0.2.15
 Release:        0
 Summary:        Utilities for Displaying and Converting Metafile Images
 License:        LGPL-2.1-or-later
@@ -30,6 +30,7 @@ Source2:        baselibs.conf
 Patch1:         libwmf-0.2.8.4-fix.patch
 Patch4:         libwmf-0.2.8.4-gd_libpng.patch
 Patch5:         libwmf-0.2.8.4-bnc495842.patch
+BuildRequires:  automake
 BuildRequires:  gd-devel
 BuildRequires:  gtk2-devel
 BuildRequires:  libjpeg-devel
@@ -99,6 +100,7 @@ PNG, JPEG, PS, EPS, and more.
 %autopatch -p0
 
 %build
+autoreconf -fi
 %configure \
     --disable-static \
     --enable-magick \

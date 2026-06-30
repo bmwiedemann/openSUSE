@@ -305,4 +305,29 @@
     <comment></comment>
     <requestid>1319545</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>dfc76b6eed6bcb4ea6735e7dccb1d85a</srcmd5>
+    <version>0.2.15</version>
+    <time>1782825059</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2.15:
+  * BMP image parsing fixes in embedded DIBs
+  * record size validation for polyline, polygon, polypolygon and
+    text records
+  * fix RLE decoder row-stride mismatch
+  * limit DC stack depth to prevent resource exhaustion
+  * add basic test suite
+  * MSVC build fixes
+  * new release with accumulated fixes
+
+- drop libwmf-0.2.8.4-badrle.patch: part of
+- drop libwmf-0.2.8.4-CVE-2015-4695.patch: upstream via
+- libwmf-0.2.8.4-config.patch: update so -config --libs
+- Fix -devel package Requires not to still include xorg-x11-devel
+  (long deprecated function has been removed)
+- move gtk-stuff to /opt/gnome
+- added /usr/share/doc/packages/libwmf to filelist
+  - the .fig export uses scaling now, and has options to save images</comment>
+    <requestid>1362298</requestid>
+  </revision>
 </revisionlist>
