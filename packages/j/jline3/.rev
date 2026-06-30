@@ -103,4 +103,12 @@
     <comment>bsc#1269021, GHSA-47qp-hqvx-6r3f</comment>
     <requestid>1361681</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>c8cc92275e918240ba6f1b09d02acb9f</srcmd5>
+    <version>3.30.14</version>
+    <time>1782825258</time>
+    <user>dimstar_suse</user>
+    <comment>3.30.14</comment>
+    <requestid>1362622</requestid>
+  </revision>
 </revisionlist>

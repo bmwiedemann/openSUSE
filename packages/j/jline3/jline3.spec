@@ -31,7 +31,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %endif
 %bcond_with ssh
 Name:           jline3
-Version:        3.30.13
+Version:        3.30.14
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause
@@ -41,7 +41,6 @@ Source0:        %{url}/archive/refs/tags/jline-%{version}.tar.gz
 Source1:        %{name}-build.tar.xz
 Source100:      Load-native-library-system-wide-place.patch.in
 Patch0:         0001-Remove-optional-dependency-on-universalchardet.patch
-Patch1:         jline3-GHSA-47qp-hqvx-6r3f.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jansi

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:35:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.14
+  * Security fixes
+    + fix: clamp NAWS terminal dimensions to prevent CPU exhaustion
+      (GHSA-2r2c-cx56-8933)
+    + fix: cap NEW-ENVIRON variable count to prevent heap exhaustion
+      (GHSA-47qp-hqvx-6r3f, bsc#1269021)
+- Removed patch:
+  * jline3-GHSA-47qp-hqvx-6r3f.patch
+    + integrated in this version 
+
+-------------------------------------------------------------------
 Thu Jun 25 05:19:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
