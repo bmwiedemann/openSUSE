@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Apr 18 10:21:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.5 :
+  * It fixes a additional HTTP request smuggling issues
+    (CWE-444).
+- drop libmicrohttpd-1.0.4-Fixed-missing-MHD_VERSION-bump.patch
+  (obsolete)
+
+-------------------------------------------------------------------
+Tue Apr 14 19:53:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- libmicrohttpd 1.0.4:
+  * fix a HTTP request smuggling issue (CWE-444, boo#1262119)
+- add libmicrohttpd-1.0.4-Fixed-missing-MHD_VERSION-bump.patch to
+  fix tests
+
+-------------------------------------------------------------------
 Thu Apr  2 20:47:04 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - libmicrohttpd 1.0.3:
@@ -58,7 +75,7 @@ Wed May 31 04:59:03 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
   * fix processing of folded headers in requests
   * fix functionality with blocking sockets
 - update upstream signing key
- 
+
 -------------------------------------------------------------------
 Tue Feb 28 21:20:34 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
 
@@ -126,7 +143,7 @@ Sat Jul  4 17:40:48 UTC 2020 - Andreas Stieger <andreas.stieger@gmx.de>
 - libmicrohttpd 0.9.71:
   * Fix buffer overflow issue in URL parser [boo#1173718]
   * Fixed PostProcessor bug
-  * Documentation and example fixes  
+  * Documentation and example fixes
 
 -------------------------------------------------------------------
 Sun Feb  9 10:15:21 UTC 2020 - Martin Hauke <mardnh@gmx.de>
@@ -371,16 +388,16 @@ Sun Dec 20 09:24:05 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.9.48
   * Improved compatibility with VS2010 and other older compilers.
-  * Default backlog size for listen socket was changed from 32 to 
-		SOMAXCONN, added new option MHD_OPTION_LISTEN_BACKLOG_SIZE to 
+  * Default backlog size for listen socket was changed from 32 to
+		SOMAXCONN, added new option MHD_OPTION_LISTEN_BACKLOG_SIZE to
 		override default backlog size.
-  * If not all connections can be handled by MHD_select() than at 
-		least some of connections will be processed instead of failing 
+  * If not all connections can be handled by MHD_select() than at
+		least some of connections will be processed instead of failing
 		without any processing.
-  * Fixed redefenition of FD_SETSIZE on W32 so select() will work 
+  * Fixed redefenition of FD_SETSIZE on W32 so select() will work
 		with 2000 connections instead of 64.
   * Better handled redefenition of FD_SETSIZE on all platforms.
-  * Close sockets more aggressively in multi-threaded mode 
+  * Close sockets more aggressively in multi-threaded mode
 		(possibly relevant for idle servers).
 - Update dependencies
 
@@ -414,16 +431,16 @@ Fri Nov 13 14:01:04 UTC 2015 - mpluskal@suse.com
 Tue Nov 10 14:23:58 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.9.46
-  * Undoing change from Sun Oct 25 15:29:23 CET 2015 as the 
-		original code was counter-intuitive but correct, and the new 
-		code does break pipelining. Ignore empty lines at the beginning 
+  * Undoing change from Sun Oct 25 15:29:23 CET 2015 as the
+		original code was counter-intuitive but correct, and the new
+		code does break pipelining. Ignore empty lines at the beginning
 		of an HTTP request (more tolerant implementation).
 
 -------------------------------------------------------------------
 Sun Nov  1 11:44:58 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.9.45
-  * Rework deprecation maros: fix errors with old GCC versions, 
+  * Rework deprecation maros: fix errors with old GCC versions,
 		improved support for old clang and new GCC. -EG
   * Return correct header kind in MHD_get_connection_values()
     even if a bitmask is used for the "kind" argument. -FC/CG
@@ -443,9 +460,9 @@ Fri Oct  2 12:33:17 UTC 2015 - mpluskal@suse.com
 
 - Update to 0.9.44
   * Various fixes for W32 VS project files.
-  * Fix digest authentication with URL arguments where value-less 
+  * Fix digest authentication with URL arguments where value-less
     keys are given before the last argument.
-  * Do not use shutdown() on listen socket if 
+  * Do not use shutdown() on listen socket if
     MHD_USE_PIPE_FOR_SHUTDOWN is set.
 
 -------------------------------------------------------------------
@@ -488,7 +505,7 @@ Sat Sep 19 10:43:28 UTC 2015 - mpluskal@suse.com
     and macros. -EG
   * Fixing digest authentication when used in combination
     with escaped characters in URLs. -CG/AW
-- Disable spdy support for now as spdylay is missing  
+- Disable spdy support for now as spdylay is missing
 - Drop libmicrohttpd_test_session.patch as it is fixed now
 
 -------------------------------------------------------------------
@@ -506,7 +523,7 @@ Mon Jul 13 13:01:26 UTC 2015 - matwey.kornilov@gmail.com
    we can disable only broken test but not the whole testcase.
  * add libmicrohttpd_test_session.patch: Disable test relying on
    available libcurl version
-   (see https://gnunet.org/bugs/view.php?id=3893 for details) 
+   (see https://gnunet.org/bugs/view.php?id=3893 for details)
  * wrap libmicrosdpy into macro to disable building on
    systems with openssl < 1.0.1
 - update to 0.9.42:
@@ -518,7 +535,7 @@ Sun May  3 10:26:32 UTC 2015 - astieger@suse.com
 
 - update to 0.9.41:
  * fix bugs relating to various threading modes
- * fix some HTTP 1.0 tests 
+ * fix some HTTP 1.0 tests
 
 -------------------------------------------------------------------
 Mon Apr 13 11:39:23 UTC 2015 - meissner@suse.com
