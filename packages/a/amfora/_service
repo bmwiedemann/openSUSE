@@ -18,5 +18,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">gz</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
   </service>
 </services>
