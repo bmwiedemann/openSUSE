@@ -1913,4 +1913,41 @@
     <comment></comment>
     <requestid>1354172</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>d903ab86ab7727e13fc856b998dc4667</srcmd5>
+    <version>2.180.0</version>
+    <time>1782829401</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.180.0
+  * Support for static redirect paths in OAuth2 and OpenID Connect
+    authentication policies in the API Gateway service
+  * Support for returning SDK resources and etags during SDK updates
+    in the API Gateway service
+  * Support for virtual node pool cycling in the Kubernetes Engine service
+  * Support for access types on Autonomous AI Database Serverless instances
+    in the Database service
+  * Support for external logical zones on Autonomous AI Database Serverless
+    instances and local Autonomous Data Guard standby databases in the
+    Database service
+  * Support for scheduled backups of Autonomous Database Dedicated resources
+    in the Resource Scheduler service
+  * Support for action-type filtering of resource types in the Resource
+    Scheduler service
+  * Support for Log Analytics log groups on Oracle Process Automation (OPA)
+    instances attached to Integration instances in the Integration service
+  * Support for Zero Trust Packet Routing (ZPR) security attributes on DNS
+    resolver endpoints in the DNS service
+  * Support for free-form and defined tags on DNS resolver endpoints in the
+    DNS service
+  * Support for resolver, private endpoint, and VNIC identifiers in DNS
+    resolver endpoint responses in the DNS service
+  * Support for the UPDATING  lifecycle state on DNS steering policies in
+    the DNS service
+  * Return type of method `update_sdk` changed from `None` to
+    `oci.apigateway.models.Sdk` in the API Gateway service
+- from version 2.179.0
+  * Support for ExaDB-D Public Cloud in the Operator Access Control service
+  * Support for cross region replication with hot standby in the PostgreSQL service (forwarded request 1361372 from glaubitz)</comment>
+    <requestid>1361581</requestid>
+  </revision>
 </revisionlist>

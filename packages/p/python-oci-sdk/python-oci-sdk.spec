@@ -19,7 +19,7 @@
 %bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-oci-sdk
-Version:        2.175.0
+Version:        2.180.0
 Release:        0
 Summary:        Oracle Cloud Infrastructure Python SDK
 License:        Apache-2.0 OR UPL-1.0
@@ -30,6 +30,7 @@ Source99:       python-oci-sdk.rpmlintrc
 Patch0:         ops_relax-python-depends.patch
 # PATCH-FIX-OPENSUSE pytest-740.patch gh#oracle/oci-python-sdk#566
 Patch1:         pytest-740.patch
+BuildRequires:  %{python_module crc32c >= 2.7.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -37,6 +38,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi
 Requires:       python-circuitbreaker >= 1.3.1
+Requires:       python-crc32c >= 2.7.1
 Requires:       python-cryptography >= 3.2.1
 Requires:       python-pyOpenSSL >= 17.5.0
 Requires:       python-python-dateutil >= 2.5.3
