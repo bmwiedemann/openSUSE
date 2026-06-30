@@ -17,12 +17,12 @@
 
 
 Name:           python-rich-rst
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        A beautiful reStructuredText renderer for rich
 License:        MIT
 URL:            https://github.com/wasi-master/rich-rst
-Source:         https://files.pythonhosted.org/packages/source/r/rich-rst/rich_rst-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/r/rich_rst/rich_rst-%{version}.tar.gz
 BuildRequires:  %{python_module Pygments >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module rich >= 12.0.0}
