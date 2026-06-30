@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Jun 28 21:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1 (bsc#1269433, CVE-2026-48702):
+  * bump go to 1.26.4 to squash CVE noise
+  * Full v2 Release notes: https://github.com/hauler-
+    dev/hauler/releases/tag/v2.0.0
+- update to 2.0.0:
+  * `v2.0.0` is a **major** release. It replaces Hauler's entire
+    OCI plumbing... the ORAS v1 dependency and the in-house
+    cosign fork with a native containerd based implementation,
+    drops the deprecated `v1alpha1` API, and layers on a
+    meaningful set of new capabilities and reliability fixes on
+    top of that new foundation.
+  * **Removed the ORAS v1 dependency** - push/pull is now driven
+    directly by containerd's docker resolver and `google/go-
+    containerregistry`, new `pkg/content/registry.go`
+    (`RegistryTarget`) and `pkg/content/types.go` (`Target`
+    interface, `IoContentWriter`) replaces what ORAS used to own.
+  * **Removed the hauler-maintained cosign fork** - `pkg/cosign`
+    is now a thin verify only wrapper around upstream
+    `sigstore/cosign/v3`. Images are added through a native
+    `s.AddImage()` path in `pkg/store`
+  * **Added OCI 1.1 Referrers support** - signatures,
+    attestations, and SBOMs are discovered both via the classic
+    cosign tag convention (`sha256-.sig` / `.att` / `.sbom`) and
+    the modern Referrers API, then correctly through the OCI
+    layout
+
+-------------------------------------------------------------------
 Wed May 27 21:22:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/net to v0.55.0 (bsc#1266602, CVE-2026-39821,

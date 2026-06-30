@@ -329,4 +329,36 @@
      CVE-2026-25681, CVE-2026-42506)</comment>
     <requestid>1356746</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3e5cbb47750d2d5b3c5e3d858ae30c98</srcmd5>
+    <version>2.0.1</version>
+    <time>1782825097</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.1 (bsc#1269433, CVE-2026-48702):
+  * bump go to 1.26.4 to squash CVE noise
+  * Full v2 Release notes: https://github.com/hauler-
+    dev/hauler/releases/tag/v2.0.0
+- update to 2.0.0:
+  * `v2.0.0` is a **major** release. It replaces Hauler's entire
+    OCI plumbing... the ORAS v1 dependency and the in-house
+    cosign fork with a native containerd based implementation,
+    drops the deprecated `v1alpha1` API, and layers on a
+    meaningful set of new capabilities and reliability fixes on
+    top of that new foundation.
+  * **Removed the ORAS v1 dependency** - push/pull is now driven
+    directly by containerd's docker resolver and `google/go-
+    containerregistry`, new `pkg/content/registry.go`
+    (`RegistryTarget`) and `pkg/content/types.go` (`Target`
+    interface, `IoContentWriter`) replaces what ORAS used to own.
+  * **Removed the hauler-maintained cosign fork** - `pkg/cosign`
+    is now a thin verify only wrapper around upstream
+    `sigstore/cosign/v3`. Images are added through a native
+    `s.AddImage()` path in `pkg/store`
+  * **Added OCI 1.1 Referrers support** - signatures,
+    attestations, and SBOMs are discovered both via the classic
+    cosign tag convention (`sha256-.sig` / `.att` / `.sbom`) and
+    the modern Referrers API, then correctly through the OCI
+    layout</comment>
+    <requestid>1362263</requestid>
+  </revision>
 </revisionlist>
