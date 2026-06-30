@@ -1,7 +1,7 @@
 #
 # spec file for package maeparser
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,13 @@
 
 %define abiver 1
 Name:           maeparser
-Version:        1.3.1
+Version:        1.3.3
 Release:        0
 Summary:        Maestro file parser
 License:        MIT
 URL:            https://github.com/schrodinger/maeparser
 Source:         https://github.com/schrodinger/maeparser/archive/v%{version}/%{name}-%{version}.tar.gz
+Patch:          maeparser-1.3.3-cmake.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  libboost_filesystem-devel
@@ -77,8 +78,7 @@ export LD_LIBRARY_PATH="$PWD/build"
 %license LICENSE.txt
 %doc README.md
 %{_includedir}/maeparser
-%{_libdir}/cmake/maeparser-config.cmake
-%{_libdir}/cmake/maeparser-config-relwithdebinfo.cmake
+%{_libdir}/cmake/maeparser
 %{_libdir}/libmaeparser.so
 
 %changelog
