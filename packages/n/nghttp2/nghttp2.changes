@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:22:53 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- stricter validation for HTTP CONNECT and Upgrade requests across HTTP/1,
+  HTTP/2, and HTTP/3 upstreams, specifically rejecting requests that
+  incorrectly include Content-Length or Transfer-Encoding headers 
+  * Add 0001-nghttpx-Tighten-up-CONNECT-and-HTTP-Upgrade-handling.patch
+    CVE-2026-58055, bsc#1269489
+-------------------------------------------------------------------
 Mon Apr 27 20:25:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.69.0:

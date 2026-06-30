@@ -34,6 +34,8 @@ Source0:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}
 Source1:        https://github.com/nghttp2/nghttp2/releases/download/v%{version}/nghttp2-%{version}.tar.xz.asc
 Source2:        nghttp2.keyring
 Source3:        baselibs.conf
+# PATCH-FIX-UPSTREAM: CVE-2026-58055
+Patch:          0001-nghttpx-Tighten-up-CONNECT-and-HTTP-Upgrade-handling.patch
 BuildRequires:  libboost_thread-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cunit)
