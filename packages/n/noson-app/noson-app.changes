@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:30:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.6.25:
+  * Fix ws read chunked content with trailers
+  * Fix 1 byte (0) issue in http chunked transfer
+  * Improve the client/server service to be more compliant with
+    the http protocol standard 1.1
+  * README.md: Fix transifex link / paragraph about whitelisting
+    an IP
+  * It includes minor fixes:
+  * fix window border & shadow issue for Ubuntu 24.04
+  * disable icon ripple on platform android
+  * upgrade openssl to 1.1.1w
+  * add FreeBSD instructions
+  * Improve ws client
+  * Improve builtin ws client
+  * Handle custom search for services (tested with Amazon Music)
+  * Fix search in service
+  * Fix build with gcc 13
+- Switch to Qt6
+
+-------------------------------------------------------------------
 Sat Feb 18 16:06:11 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 5.4.0
@@ -40,7 +62,7 @@ Thu Dec 30 13:28:06 UTC 2021 - Bo Simonsen <bosim@opensuse.org>
   * set Qt5 min version 5.9.5
   * add headers to ide view
   * compat qt6: use QRegularExpression instead QRegExp
-  * compat Qt6: QMutex, QVariant 
+  * compat Qt6: QMutex, QVariant
   * qt translations must be added to assets
   * from qt5.15 do not import qmldir if plugins are static
   * add doc to build for lollipop
