@@ -181,4 +181,38 @@
     source dist artifacts</comment>
     <requestid>1346057</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1aaffaa4415c3a8591d516de84e88639</srcmd5>
+    <version>0.2026.6.22.1.23.34</version>
+    <time>1782825154</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.2026.6.22.1.23.34:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.6.15.15.33.16...v0.2026.6.22.1.23.34
+- update to 0.2026.6.15.15.33.16:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.6.8.17.49.5...v0.2026.6.15.15.33.16
+- update to 0.2026.6.8.17.49.5:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.6.1.17.39.59...v0.2026.6.8.17.49.5
+- update to 0.2026.6.1.17.39.59:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.6.1.1.20.30...v0.2026.6.1.17.39.59
+- update to 0.2026.6.1.1.20.30:
+  * TST: add `test_eopc04_1962-now.py`
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.5.25.1.14.13...v0.2026.6.1.1.20.30
+- update to 0.2026.5.25.1.14.13:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.5.18.1.11.28...v0.2026.5.25.1.14.13
+- update to 0.2026.5.18.1.11.28:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.5.11.1.8.52...v0.2026.5.18.1.11.28
+- update to 0.2026.5.11.1.8.52:
+  * **Full Changelog**: https://github.com/astropy/astropy-iers-
+    data/compare/v0.2026.5.4.1.4.54...v0.2026.5.11.1.8.52
+- update to 0.2026.5.4.1.4.54:
+  * Bump the actions group in /.github/workflows with 2 updates</comment>
+    <requestid>1362532</requestid>
+  </revision>
 </revisionlist>

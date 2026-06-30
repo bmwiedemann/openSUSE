@@ -26,7 +26,7 @@
 %endif
 
 Name:           python-astropy-iers-data%{psuffix}
-Version:        0.2026.4.6.0.54.57
+Version:        0.2026.6.22.1.23.34
 Release:        0
 Summary:        IERS Earth Rotation and Leap Second tables for the astropy core package
 License:        BSD-3-Clause
