@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:02:32 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.26.6:
+  * fix(app): support compat /execarg_default: directives in xdg-terminals.list
+
+-------------------------------------------------------------------
 Sat Jun 13 22:29:45 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
 
 - Update to version 0.26.5:
