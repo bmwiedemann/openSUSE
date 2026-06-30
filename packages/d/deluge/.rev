@@ -176,4 +176,12 @@
     <comment>Removing service so it's accepted in Factory (forwarded request 1317688 from PFPoitras)</comment>
     <requestid>1319564</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>84e27df7e057da919cf9cd1a84c9c513</srcmd5>
+    <version>2.2.0</version>
+    <time>1782825225</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362604</requestid>
+  </revision>
 </revisionlist>

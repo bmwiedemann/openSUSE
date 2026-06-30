@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 23 01:08:31 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Remove unused BuildRequires: python3-slimit (commit a03e649)
+
+-------------------------------------------------------------------
 Sat Nov 22 21:16:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Remove unused BuildRequires: update-desktop-files.

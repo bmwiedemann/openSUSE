@@ -46,7 +46,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-libtorrent-rasterbar >= 1.2
 BuildRequires:  python3-rjsmin
 BuildRequires:  python3-setuptools
-BuildRequires:  python3-slimit
 BuildRequires:  python3-wheel
 BuildRequires:  strip-nondeterminism
 Requires:       python3-Mako
