@@ -52,4 +52,12 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
     <comment>- Disable pg13</comment>
     <requestid>1351151</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>da4da685986ae1988fd019a8d6c7efa6</srcmd5>
+    <version>0.8.3</version>
+    <time>1782825274</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362635</requestid>
+  </revision>
 </revisionlist>

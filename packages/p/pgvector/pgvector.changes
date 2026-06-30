@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:04:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.3:
+  * Fixed possible index corruption with HNSW vacuuming
+  * Fixed performance regression with Hamming distance and
+    Jaccard distance with Postgres 18
+
+-------------------------------------------------------------------
 Wed May  6 09:31:38 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable pg13
@@ -10,7 +18,7 @@ Mon Mar 23 14:12:42 UTC 2026 - Reinhard Max <max@suse.com>
   * bsc#1258945, CVE-2026-3172: Fixed buffer overflow with parallel
     HNSW index build.
   * Fixed Index Searches in EXPLAIN output for Postgres 18
- 
+
 -------------------------------------------------------------------
 Thu Sep 25 16:09:17 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 

@@ -33,7 +33,7 @@ Name:           %{pg_name}-%{ext_name}
 BuildRequires:  %{pg_name}-server-devel
 %pg_server_requires
 %endif
-Version:        0.8.2
+Version:        0.8.3
 Release:        0
 Summary:        Open-source vector similarity search for Postgres
 License:        PostgreSQL
