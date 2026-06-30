@@ -279,4 +279,35 @@
   EOT</comment>
     <requestid>1279821</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b3da033738437d1d89e7203261c9ce09</srcmd5>
+    <version>1.370.0</version>
+    <time>1782825282</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.370.0 (1.37)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+  [V 1.37]
+  Date=2025-06-29T08:00:00
+  Comments= &lt;&lt;EOT
+  - Replace the body of the LICENSE file with what is recommended at
+  https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html
+  - Patch the source code reference to refer to this LICENSE file.
+  - Remove the excess &amp; confusing files LICENSE-Artistic-2.0 &amp; LICENSE-GPL-3.
+  - Reset the required version of Data::Dumper back to 0.
+  - Thanx to Paul Howarth &amp; David B. Evans for the reports.
+  EOT
+  [V 1.36]
+  Date=2025-06-28T11:53:00
+  Comments= &lt;&lt;EOT
+  - Fix typo in the 2nd FAQ: &quot;How to process every node in tree?&quot;. The POD contained
+  &quot;my(@node, $options) = @_;&quot; whereas it should read &quot;my($node, $options) = @_;&quot;.
+  Thanx to Torsten Seemann for the report.
+  - Add new version of LICENSE to the distro.
+  - Add new files LICENSE-Artistic-2.0 &amp; LICENSE-GPL-3 to the distro.
+  - Add Data::Dumper, Getopt::Long, perl to Makefile.PL.
+  - Remove open from Makefile.PL.
+  - Modernize MANIFEST.SKIP.
+  EOT</comment>
+    <requestid>1362649</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Tree-DAG_Node
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,28 @@
 
 %define cpan_name Tree-DAG_Node
 Name:           perl-Tree-DAG_Node
-Version:        1.350.0
+Version:        1.370.0
 Release:        0
-# 1.35 -> normalize -> 1.350.0
-%define cpan_version 1.35
+# 1.37 -> normalize -> 1.370.0
+%define cpan_version 1.37
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        An N-ary tree
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RS/RSAVAGE/%{cpan_name}-%{cpan_version}.tgz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 7.7
-BuildRequires:  perl(File::Slurper) >= 0.14.0
+BuildRequires:  perl(File::Slurper) >= 0.14
 BuildRequires:  perl(File::Spec) >= 3.4
 BuildRequires:  perl(File::Temp) >= 0.19
+BuildRequires:  perl(Getopt::Long) >= 2.57
 BuildRequires:  perl(Test::More) >= 1.001002
 Requires:       perl(ExtUtils::MakeMaker) >= 7.7
-Requires:       perl(File::Slurper) >= 0.14.0
+Requires:       perl(File::Slurper) >= 0.14
+Requires:       perl(Getopt::Long) >= 2.57
 Provides:       perl(Tree::DAG_Node) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}
@@ -51,7 +54,7 @@ you from ever making any kinds of linkages which are not allowed in a tree
 two mothers).
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
