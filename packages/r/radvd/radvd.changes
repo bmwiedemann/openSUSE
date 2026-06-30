@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue May 26 13:32:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.21
+  * feat: harden radvdump (CVE-2026-48715).
+  * feat: RFC8319 support: Increase max AdvDefaultLifetime and
+    MaxRtrAdvInterval.
+  * feat: Add DHCPv6-PD preferred flag.
+  * build: update configure.ac using autoupdate-2.69 from
+    ubuntu20.04.
+  * test: increase snprintf safety.
+  * fix: improve file checks for procfs knobs.
+  * feat: allow libc strlcpy.
+  * build: bsd has libcheck available as well.
+  * fix: make libcheck fatal if missing with --with-check.
+  * chore: debug max_ra_option_size calculation.
+  * chore: skip ND_OPT_CAPTIVE_PORTAL parsing in received main
+    radvd.
+  * refactor: make drop_root_privileges reusable.
+  * fix: support incoming jumbo packets.
+  * doc: update reporting location.
+  * ci: ensure autoconf+automake for opensuse.
+  * ci: ensure make for opensuse.
+  * ci: ensure bison+flex for opensuse.
+  * ci: ensure xz for opensuse.
+  * doc: improve AUTHOR tracking and contact info.
+  * doc: SECURITY.
+  * Avoid libbsd header with libc strlcpy.
+
+-------------------------------------------------------------------
 Tue Jun 10 16:08:58 UTC 2025 - Jiri Bohac <jbohac@suse.com>
 
 - Update to version 2.20 

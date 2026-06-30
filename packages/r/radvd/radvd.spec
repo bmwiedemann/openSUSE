@@ -1,7 +1,7 @@
 #
 # spec file for package radvd
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@
 %endif
 
 Name:           radvd
-Version:        2.20
+Version:        2.21
 Release:        0
 Summary:        Router ADVertisement Daemon for IPv6
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Routing
-URL:            http://v6web.litech.org/radvd
-Source0:        https://radvd.litech.org/dist/%{name}-%{version}.tar.xz
+URL:            https://v6web.litech.org/radvd
+Source0:        https://github.com/radvd-project/radvd/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source2:        sysconfig.radvd
 Source3:        system-user-radvd.conf
-Source42:       https://radvd.litech.org/dist/%{name}-%{version}.tar.xz.asc
+Source42:       https://github.com/radvd-project/radvd/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source43:       %{name}.keyring
 Patch1:         0001-run-as-user-radvd-by-default.diff
 Patch3:         radvd-systemd.patch
@@ -52,7 +52,6 @@ BuildRequires:  pkgconfig(check)
 Requires(pre):  %fillup_prereq
 %sysusers_requires
 Requires(pre):  group(daemon)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 RADVD is the Router ADVertisement Daemon. It sends IPv6 RA packets
