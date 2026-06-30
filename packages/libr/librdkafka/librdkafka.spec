@@ -23,7 +23,7 @@
 %global _lto_cflags %{nil}
 %endif
 Name:           librdkafka
-Version:        2.14.0
+Version:        2.14.2
 Release:        0
 Summary:        The Apache Kafka C/C++ library
 License:        BSD-2-Clause
