@@ -18,7 +18,7 @@
 
 
 Name:           mbuffer
-Version:        20260301
+Version:        20260511
 Release:        0
 Summary:        Replacement for "buffer" with many more Features
 License:        GPL-3.0-or-later

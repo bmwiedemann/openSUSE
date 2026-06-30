@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:16:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 20260511:
+  * fix data corruption occuring at the end of a tape, when the
+  * transfer block size is not a multiple of the native block
+  * size of the tape device (fix by Daniel Collins)
+  * restore terminal attributes on exit
+
+-------------------------------------------------------------------
 Mon Apr 20 21:26:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 20260301:
