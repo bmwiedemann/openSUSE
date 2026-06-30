@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:53:37 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300069.0
+  * [ApplicationSignals] Add Application Signals logs pipeline translator
+    and allow metric routing to otlp endpoint by @jj22ee in (#2111)
+  * [EFA] Add support for configuring EFA receiver on EC2 via JSON
+    by @mitali-salvi in (#2093)
+  * [OTel Container Insights] Add OTEL CI logs agent components
+    by @louisall in (#2113)
+- from version 1.300067.0
+  * [OTel Container Insights] OTLP ksm node enrichment by @louisall in (#2072)
+  * [ApplicationSignals] Add application-signals routing rules to
+    awsproxy translator by @liustve in (#1979)
+  * [Core] Wait for server shutdown on port 4311 by @pete911 in (#1957)
+- Drop update-apache-thrift.patch, fixed upstream
+
+-------------------------------------------------------------------
 Tue May  5 11:45:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.300066.1

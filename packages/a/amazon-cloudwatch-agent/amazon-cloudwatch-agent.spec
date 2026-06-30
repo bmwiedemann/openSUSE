@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           amazon-cloudwatch-agent
-Version:        1.300066.1
+Version:        1.300069.0
 Release:        0
 Summary:        Amazon CloudWatch Agent
 License:        MIT
@@ -31,8 +31,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/aws/amazon-cloudwatch-agent
 Source0:        %{repo}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# PATCH-FIX-UPSTREAM - Update github.com/apache/thrift to v0.23.0 to fix CVE-2026-41602
-Patch0:         update-apache-thrift.patch
 BuildRequires:  go >= 1.23.6
 BuildRequires:  golang-packaging
 ExcludeArch:    %{arm} %{ix86}
@@ -47,7 +45,6 @@ metrics and logs on instances running Linux or Windows server.
 %prep
 %setup -q -n %{repo}-%{version}
 %setup -q -D -T -a 1 -n %{repo}-%{version}
-%patch -P0 -p1
 
 %build
 %goprep %{import_path}
