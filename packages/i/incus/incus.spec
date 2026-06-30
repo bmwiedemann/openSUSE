@@ -327,7 +327,7 @@ popd
 # *sh-completion
 install -D -m 0644 scripts/completion/incus.bash %{buildroot}%{_datarootdir}/bash-completion/completions/incus
 install -D -m 0644 scripts/completion/incus.fish %{buildroot}/%{_datadir}/fish/vendor_completions.d/incus.fish
-install -D -m 0644 scripts/completion/incus.bash %{buildroot}%{_sysconfdir}/zsh_completion.d/_incus
+install -D -m 0644 scripts/completion/incus.zsh %{buildroot}%{_sysconfdir}/zsh_completion.d/_incus
 
 # systemd
 install -D -m 0755 %{S:100} %{buildroot}%{_sbindir}/incusd
