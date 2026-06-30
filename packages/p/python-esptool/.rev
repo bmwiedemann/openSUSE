@@ -332,4 +332,19 @@
     check</comment>
     <requestid>1359260</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b31a27b8269faff20cf1f0e91ac221f4</srcmd5>
+    <version>5.3.1</version>
+    <time>1782825148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.3.1:
+  * **espefuse**: Remove non-existent HMAC key purposes for
+    ESP32-C61
+  * **pyinstaller**: Bundle pyserial URL handlers
+  * Preserve VID/PID lookup for symlinked ports
+  * Fix operations over USB-Serial/JTAG transport in Secure
+    Download Mode
+  * Raise FatalError instead of leaking StopIteration</comment>
+    <requestid>1362539</requestid>
+  </revision>
 </revisionlist>
