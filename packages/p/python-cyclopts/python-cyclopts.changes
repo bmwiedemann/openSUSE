@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 05:50:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.20.0:
+  * Add "cyclopts tree" command and App.command_tree() to print
+    the command hierarchy
+  * Add Parameter.short_alias to automatically generate short
+    aliases for parameters
+  * Add ArgumentCollection.filter_by(missing=...) for required or
+    conditionally-required fields
+  * Fix a leading-hyphen parsing regression
+  * Propagate consume_multiple to nested structured-type fields
+
+-------------------------------------------------------------------
 Fri Jun 19 06:15:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 4.18.0)

@@ -17,7 +17,7 @@
 
 
 Name:           python-cyclopts
-Version:        4.18.0
+Version:        4.20.0
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0
@@ -33,17 +33,17 @@ BuildRequires:  %{python_module rich-rst >= 1.3.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 Requires:       python-attrs >= 23.1.0
 Requires:       python-docstring-parser >= 0.15
 Requires:       python-rich >= 13.6.0
 Requires:       python-rich-rst >= 1.3.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
+BuildArch:      noarch
 %if %{python_version_nodots} < 311
 Requires:       python-tomli >= 2.0.0
 Requires:       python-typing_extensions >= 4.8.0
 %endif
-BuildArch:      noarch
 %python_subpackages
 
 %description
