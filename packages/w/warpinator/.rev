@@ -95,4 +95,29 @@
   * l10n: Update POT</comment>
     <requestid>1325073</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2fa8a58da00ac19136af6eea1d3744ab</srcmd5>
+    <version>2.0.3</version>
+    <time>1774469928</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.3:
+  * l10n: Update translations</comment>
+    <requestid>1342323</requestid>
+  </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>811b0374b51de82a15484c9b787ef304</srcmd5>
+    <version>2.0.4</version>
+    <time>1782825267</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.0.4:
+  * Update generated protobuf files to match our bundled
+    versions.
+  * warpinator-launch.py: Get rid of pre-populated google
+    namespace from sys.modules.
+  * appdata: Populate with initial and recent releases.
+  * appdata: Mark release notes non-translatable.
+  * Do not actually link to fake website (#247)
+  * Set prgname to application ID (#249)</comment>
+    <requestid>1362619</requestid>
+  </revision>
 </revisionlist>

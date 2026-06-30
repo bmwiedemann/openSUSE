@@ -17,7 +17,7 @@
 
 
 Name:           warpinator
-Version:        2.0.2
+Version:        2.0.4
 Release:        0
 Summary:        Share files across the LAN
 License:        GPL-3.0-or-later

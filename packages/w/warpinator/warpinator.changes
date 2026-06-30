@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:37:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.4:
+  * Update generated protobuf files to match our bundled
+    versions.
+  * warpinator-launch.py: Get rid of pre-populated google
+    namespace from sys.modules.
+  * appdata: Populate with initial and recent releases.
+  * appdata: Mark release notes non-translatable.
+  * Do not actually link to fake website (#247)
+  * Set prgname to application ID (#249)
+
+-------------------------------------------------------------------
+Tue Mar 24 22:07:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.3:
+  * l10n: Update translations
+
+-------------------------------------------------------------------
 Fri Jan  2 09:13:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.2:
