@@ -801,4 +801,20 @@
   	* data update for 2026-06-11</comment>
     <requestid>1359245</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>babc2cedc94146fe4170b8fcf1b3b7bd</srcmd5>
+    <version>20260624.1.0</version>
+    <time>1782825083</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260624.1.0 (20260624.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260624.001 2026-06-24T18:50:16Z
+  	* data update for 2026-06-24
+
+- updated to 20260617.1.0 (20260617.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260617.001 2026-06-21T17:26:07Z
+  	* data update for 2026-06-17</comment>
+    <requestid>1362459</requestid>
+  </revision>
 </revisionlist>
