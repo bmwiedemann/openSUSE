@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:33:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.2:
+  * fix: support bytes as hmac keys
+  * feat: payload.from_base64 and from_dict
+
+-------------------------------------------------------------------
 Thu Apr 16 12:42:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 2.0.0
