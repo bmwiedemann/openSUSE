@@ -8,8 +8,8 @@
 
   <property name="project.artifactId" value="zstd-jni"/>
   <property name="project.groupId" value="com.github.luben"/>
-  <property name="project.version" value="1.5.7-8"/>
-  <property name="bundle.version" value="1.5.7.8"/>
+  <property name="project.version" value="1.5.7-11"/>
+  <property name="bundle.version" value="1.5.7.11"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>

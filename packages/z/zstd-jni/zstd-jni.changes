@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:25:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * max-page-size.patch
+    + Build with max-page-size of 64K on ppc64le (bsc#1269480)
+
+-------------------------------------------------------------------
+Fri Jun 19 06:07:07 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v1.5.7.11
+  * no structured changelog provided by upstream
+
+-------------------------------------------------------------------
 Mon May 11 10:40:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to v1.5.7.8

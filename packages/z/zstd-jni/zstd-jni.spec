@@ -17,7 +17,7 @@
 
 
 %global ver 1.5.7
-%global rev 8
+%global rev 11
 %global uver %{ver}-%{rev}
 Name:           zstd-jni
 Version:        %{ver}.%{rev}
@@ -30,6 +30,7 @@ Source0:        %{url}/archive/refs/tags/v%{uver}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/github/luben/%{name}/%{uver}/%{name}-%{uver}.pom
 Source100:      %{name}-build.xml
 Patch0:         00-load-system-library.patch
+Patch1:         max-page-size.patch
 BuildRequires:  ant
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -55,6 +56,9 @@ API documentation for %{name}
 %prep
 %setup -q -n %{name}-%{uver}
 %patch -P 0 -p1
+%ifarch ppc64le
+%patch -P 1 -p1
+%endif
 cp %{SOURCE100} build.xml
 
 cat <<__JAVA__ >src/main/java/com/github/luben/zstd/util/ZstdVersion.java

@@ -5,7 +5,7 @@
     <artifactId>zstd-jni</artifactId>
     <packaging>jar</packaging>
     <description>JNI bindings for Zstd native library that provides fast and high compression lossless algorithm for Java and all JVM languages.</description>
-    <version>1.5.7-8</version>
+    <version>1.5.7-11</version>
     <licenses>
         <license>
             <name>BSD 2-Clause License</name>

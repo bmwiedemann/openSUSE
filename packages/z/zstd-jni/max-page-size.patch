@@ -1,0 +1,8 @@
+--- zstd-jni-1.5.7-11/CMakeLists.txt	2026-06-29 09:22:05.629578999 +0200
++++ zstd-jni-1.5.7-11/CMakeLists.txt	2026-06-29 09:22:20.832112300 +0200
+@@ -15,4 +15,4 @@
+ if(COMPILER_SUPPORTS_OZ)
+     add_definitions("-Oz")
+ endif()
+-set (CMAKE_SHARED_LINKER_FLAGS "-Wl,-z,max-page-size=16384")
++set (CMAKE_SHARED_LINKER_FLAGS "-Wl,-z,max-page-size=65536")

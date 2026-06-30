@@ -7,4 +7,20 @@
     <comment>New package</comment>
     <requestid>1352499</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>542cfdc476c371811a33c604ec3ae6c0</srcmd5>
+    <version>1.5.7.11</version>
+    <time>1781879470</time>
+    <user>anag_factory</user>
+    <comment>1.5.7.11</comment>
+    <requestid>1360472</requestid>
+  </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>c63b59df9cc04f2a939fa02c2a69f0ac</srcmd5>
+    <version>1.5.7.11</version>
+    <time>1782825073</time>
+    <user>dimstar_suse</user>
+    <comment>Build with 64K page size on ppc64le</comment>
+    <requestid>1362332</requestid>
+  </revision>
 </revisionlist>
