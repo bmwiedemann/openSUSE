@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:09:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-13676: fast-uri: failure to canonicalize Unicode/IDN hostnames
+  for HTTP-family URLs allows for bypass (bsc#1269597)
+  * revendor the vendored tarball with updated versions
+
+-------------------------------------------------------------------
 Mon Jun 29 10:56:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.19.0 (bsc#1268818, CVE-2026-53550, bsc#1268957, CVE-2026-48779):

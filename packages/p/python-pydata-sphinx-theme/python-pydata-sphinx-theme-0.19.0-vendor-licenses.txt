@@ -1,5 +1,5 @@
 yarn run v1.22.22
-$ /home/danigm/Projects/suse/obs/devel:languages:python/python-pydata-sphinx-theme//tmp/node_modules/.bin/license-checker --summary
+$ /home/meggy/buildservice/devel:languages:python/python-pydata-sphinx-theme//tmp/node_modules/.bin/license-checker --summary
 ├─ MIT: 347
 ├─ ISC: 38
 ├─ BSD-2-Clause: 18
@@ -17,4 +17,4 @@ $ /home/danigm/Projects/suse/obs/devel:languages:python/python-pydata-sphinx-the
 ├─ (MIT AND CC-BY-3.0): 1
 └─ 0BSD: 1
 
-Done in 0.66s.
+Done in 0.61s.

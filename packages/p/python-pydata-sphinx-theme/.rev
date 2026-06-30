@@ -899,4 +899,14 @@
     config option to sticky_banners by @agriyakhetarpal in #2385</comment>
     <requestid>1362396</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>6dccc57fe96e9e6a281d7333a188ca38</srcmd5>
+    <version>0.19.0</version>
+    <time>1782825270</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-13676: fast-uri: failure to canonicalize Unicode/IDN hostnames
+  for HTTP-family URLs allows for bypass (bsc#1269597)
+  * revendor the vendored tarball with updated versions</comment>
+    <requestid>1362630</requestid>
+  </revision>
 </revisionlist>
