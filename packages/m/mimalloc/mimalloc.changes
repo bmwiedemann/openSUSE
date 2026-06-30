@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:24:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.2:
+  * Emscripten: add missing include for getentropy()
+  * use acquire for loading the heap arena pages pointer
+  * clarify thread local expansion
+  * always set the threadlocal theap back to NULL on failing to
+    initialize
+  * increased version bits in thread local allocation to 48 bits
+  * fix comparison in mi_os_alloc_aligned_at_offset to allow
+    decommitting
+  * use _mi_is_aligned instead of modulo
+  * change out_default to be atomic
+  * add assertions that the bottom 2 bits of the threadid are zero'd
+  * return early when tld allocation fails
+
+-------------------------------------------------------------------
 Mon Apr 27 19:55:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.1:

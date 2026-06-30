@@ -89,4 +89,12 @@
   * fix is_pinned/is_zero parameter swap</comment>
     <requestid>1349654</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8a3facd55c89bd125d881b61b85c7bee</srcmd5>
+    <version>3.3.2</version>
+    <time>1782825218</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362594</requestid>
+  </revision>
 </revisionlist>

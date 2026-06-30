@@ -20,7 +20,7 @@
 %global sover   3
 %global libname libmimalloc%{sover}
 Name:           mimalloc
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        A compact general purpose allocator
 License:        MIT
