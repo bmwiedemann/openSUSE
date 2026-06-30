@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-parler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define skip_python2 1
 %define skip_python36 1
 Name:           python-django-parler
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Simple Django model translations
 License:        Apache-2.0
