@@ -222,4 +222,14 @@
 - Add issue1650.patch fix search API (forwarded request 1313055 from anag_factory)</comment>
     <requestid>1313056</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>d49ef1d114d015699a9f43501b9b17ee</srcmd5>
+    <version>9.0.20</version>
+    <time>1782825213</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 9.0.20 (no changelog)
+- Drop upstreamed issue1650.patch
+</comment>
+    <requestid>1362583</requestid>
+  </revision>
 </revisionlist>
