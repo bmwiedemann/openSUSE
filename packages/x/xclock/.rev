@@ -95,4 +95,20 @@
     sincos() in the math library.</comment>
     <requestid>967737</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cd9ce28c783f14c3bcadb8493caeea4f</srcmd5>
+    <version>1.2.0</version>
+    <time>1782825279</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.0
+  * This release adds new command line options -proportional, -analog24,
+    -help, --help, -version, and --version; and new X resources
+    analog24, amColor, pmColor, fixed1Color, fixed2Color, fixed3Color,
+    hourShape, minuteShape, secondShape, majorShape, minorShape,
+    amShape, pmShape, fixed1Shape, fixed2Shape, fixed3Shape, rotateAmpm,
+    zOrder, and proportional.  See the updated man page for details of each.
+  * It also adds support for building with meson as well as autoconf.
+- switch to meson</comment>
+    <requestid>1362647</requestid>
+  </revision>
 </revisionlist>
