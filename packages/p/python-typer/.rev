@@ -584,4 +584,15 @@
   PYTHONPATH issues with the test for file arguments.</comment>
     <requestid>1357115</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>98240af522192dd01500c6918b7421fa</srcmd5>
+    <version>0.26.8</version>
+    <time>1782825065</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.27.8
+  * Make second column of Rich help output reflect the type
+    consistently, even when using metavar.
+  * Fix formatting in NoSuchOption.format_message().</comment>
+    <requestid>1362320</requestid>
+  </revision>
 </revisionlist>

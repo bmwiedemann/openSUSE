@@ -1,15 +1,15 @@
 From: Matthias Bach <marix@marix.org>
 Date: Wed, 3 Jun 2026 21:27:26 +0200
 Subject: [PATCH] Ensure PYTHONPATH is passed in file argument tests
-References: https://github.com/tiangolo/typer/pull/407
-Upstream: tbd
+References: https://github.com/tiangolo/typer/pull/1827
+Upstream: sent
 
 ---
- tests/test_types_file.py | 9 +++++++++
- 1 file changed, 9 insertions(+)
+ tests/test_types_file.py | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
 diff --git a/tests/test_types_file.py b/tests/test_types_file.py
-index 3fb7d82..298d4f1 100644
+index 3fb7d82..734867d 100644
 --- a/tests/test_types_file.py
 +++ b/tests/test_types_file.py
 @@ -1,3 +1,4 @@
@@ -25,20 +25,25 @@ index 3fb7d82..298d4f1 100644
  from tests.utils import needs_linux, needs_windows
  
  app = typer.Typer()
-@@ -136,6 +138,12 @@ def test_binary_dash() -> None:
+@@ -136,6 +138,17 @@ def test_binary_dash() -> None:
  
  
  def test_binary_stderr() -> None:
 +    env = os.environ.copy()
-+    if "PYTHONPATH" in env:
-+        env["PYTHONPATH"] = ":".join(
-+            [str(Path(tests.__path__[0]).parent)] + [env["PYTHONPATH"]]
-+        )
++    env.update(
++        {
++            "PYTHONPATH": ":".join(
++                [str(Path(tests.__path__[0]).parent)] + [env["PYTHONPATH"]]
++            )
++        }
++        if "PYTHONPATH" in env
++        else {}
++    )
 +
      result = subprocess.run(
          [
              sys.executable,
-@@ -146,6 +154,7 @@ def test_binary_stderr() -> None:
+@@ -146,6 +159,7 @@ def test_binary_stderr() -> None:
              "write-binary-stderr",
          ],
          capture_output=True,

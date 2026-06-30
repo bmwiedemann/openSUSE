@@ -1,7 +1,7 @@
 From: Matthias Bach <marix@marix.org>
 Date: Fri, 24 Jun 2022 19:54:06 +0200
 Subject: [PATCH] Ensure the PYTHONPATH is set properly when testing the tutorial scripts
-References: https://github.com/tiangolo/typer/pull/407
+References: https://github.com/tiangolo/typer/pull/1827
 Upstream: sent
 
 When packaging Typer for openSUSE I ran into errors because the tutorial
