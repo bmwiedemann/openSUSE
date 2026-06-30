@@ -17,7 +17,7 @@
 
 
 Name:           rubygem-hoe
-Version:        4.5.1
+Version:        4.7.0
 Release:        0
 %define mod_name hoe
 %define mod_full_name %{mod_name}-%{version}
@@ -25,8 +25,7 @@ BuildRequires:  %{ruby >= 3.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
-URL:            http://www.zenspider.com/projects/hoe.html
+URL:            https://zenspider.com/projects/hoe.html
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Summary:        Hoe is a rake/rubygems helper for project Rakefiles
 License:        MIT
@@ -39,7 +38,14 @@ plug-ins for all your usual project tasks including rdoc generation,
 testing, packaging, deployment, and announcement.
 See class rdoc for help. Hint: `ri Hoe` or any of the plugins listed
 below.
-For extra goodness, see: http://docs.seattlerb.org/hoe/Hoe.pdf.
+For extra goodness, see: https://docs.seattlerb.org/hoe/Hoe.pdf
+== Features/Problems:
+* Includes a dynamic plug-in system allowing for easy extensibility.
+* Auto-intuits changes, description, summary, and version.
+* Uses a manifest for safe and secure deployment.
+* Provides 'sow' for quick project directory creation.
+* Sow uses a simple ERB templating system allowing you to capture your
+project patterns.
 
 %prep
 
