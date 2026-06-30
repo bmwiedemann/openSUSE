@@ -614,4 +614,12 @@
     not support (that is: ppc*, s390*, and riscv*).</comment>
     <requestid>1358196</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>45a22cf5dccd3c242741513233548a44</srcmd5>
+    <version>1.5.1</version>
+    <time>1782825139</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable building of SUID starter for SLES 15 (jsc#PED-16347).</comment>
+    <requestid>1362514</requestid>
+  </revision>
 </revisionlist>

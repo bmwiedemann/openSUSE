@@ -15,8 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
+%if 0%{suse_version} == 1500
+%{bcond_without suid}
+%else
 %{bcond_with suid}
+%endif
 %{bcond_with vulncheck}
 
 %define apptainerpath src/github.com/apptainer/

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 29 18:34:42 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Enable building of SUID starter for SLES 15 (jsc#PED-16347).
+
+-------------------------------------------------------------------
 Mon Jun  8 07:52:21 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Update apptainer to version v1.5.1
