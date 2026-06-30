@@ -824,4 +824,30 @@
   - chore: update pre-commit hooks [#1633]</comment>
     <requestid>1357929</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>64a256e014f8e06f64918f6d69ae4ee4</srcmd5>
+    <version>2.20.0</version>
+    <time>1782825215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.20.0 (CVE-2026-44727, bsc#1269630):
+  # Security fixes
+  - CVE-2026-44727 GHSA-fcw5-x6j4-ccmp
+  # Enhancements made
+  - Fix confusing terminal output when using ServerApp.ip=0.0.0.0
+    #1643
+  - Add a toggle to enable curve encryption for all kernels that
+    support it #1638
+  # Bugs fixed
+  - Grab the port from bind_sockets in case its different #1651
+  # Maintenance and upkeep improvements
+  - Fix test_authorizer having a spurious comma in params #1664
+  - Add a reminder to merge GHSA before release #1659
+  - Exclude problematic pywinpty 3.0.4 version #1658
+  - ci: explicitly pass base-setup inputs to fix strict validation
+    failures #1626
+  # Documentation improvements
+  - Align docs for curve encryption with latest JEP version #1660
+  - Remove PGP key from docs #1653</comment>
+    <requestid>1362580</requestid>
+  </revision>
 </revisionlist>
