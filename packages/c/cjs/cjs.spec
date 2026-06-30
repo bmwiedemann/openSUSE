@@ -1,7 +1,7 @@
 #
 # spec file for package cjs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,10 @@
 
 
 %define         sover   0
-%define         typelib typelib-1_0-CjsPrivate-1_0
+%global __requires_exclude typelib\\(GIMarshallingTests!|GIMarshallingTests)|Gio!|Gio)|Regress!|Regress)|WarnLib!|WarnLib)\\)
+
 Name:           cjs
-Version:        6.4.0
+Version:        140.0
 Release:        0
 Summary:        JavaScript module used by Cinnamon
 License:        (GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later) AND MIT
@@ -37,7 +38,7 @@ BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
 BuildRequires:  pkgconfig(libffi)
-BuildRequires:  pkgconfig(mozjs-115)
+BuildRequires:  pkgconfig(mozjs-140)
 %if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(readline)
 %else
@@ -45,6 +46,7 @@ BuildRequires:  readline-devel
 %endif
 BuildRequires:  pkgconfig(sysprof-6)
 BuildRequires:  pkgconfig(sysprof-capture-4)
+Conflicts:      gjs
 
 %description
 JavaScript bindings based on GObject Introspection for the
@@ -59,21 +61,10 @@ Cinnamon Desktop.
 
 This package provides libraries for cjs.
 
-%package -n typelib-1_0-CjsPrivate-1_0
-Summary:        Cinnamon JS module -- Introspection Bindings
-
-%description -n typelib-1_0-CjsPrivate-1_0
-JavaScript bindings based on GObject Introspection for the
-Cinnamon Desktop.
-
-This package provides the GObject Introspection bindings for
-Cinnamon JS.
-
 %package devel
 Summary:        Development Files for Cinnamon JS module
 Requires:       %{name} = %{version}
 Requires:       lib%{name}%{sover} = %{version}
-Requires:       typelib-1_0-CjsPrivate-1_0 = %{version}
 
 %description devel
 JavaScript bindings based on GObject Introspection for the
@@ -81,20 +72,24 @@ Cinnamon Desktop.
 
 This package contains development files for cjs.
 
+%package tests
+Summary:        Tests for the cjs package
+Requires:       %{name} = %{version}
+
+%description tests
+The cjs-tests package contains tests that can be used to verify
+the functionality of the installed cjs package.
+
 %prep
 %autosetup
 
 %build
-%meson \
-  -Dcairo=enabled \
-  -Dreadline=enabled \
-  -Dprofiler=enabled \
-  --libexecdir=%{_libdir}/%{name}/
+%meson
 %meson_build
 
 %install
 %meson_install
-%fdupes -s %{buildroot}
+%fdupes -s %{buildroot}%{_prefix}
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
 
@@ -102,19 +97,22 @@ This package contains development files for cjs.
 %license COPYING
 %doc README.md NEWS
 %{_bindir}/%{name}*
+%dir %{_libdir}/%{name}
+%dir %{_libdir}/%{name}/girepository-1.0
+%{_libdir}/%{name}/girepository-1.0/GjsPrivate-1.0.typelib
 
 %files -n lib%{name}%{sover}
 %{_libdir}/libcjs.so.%{sover}*
-
-%files -n typelib-1_0-CjsPrivate-1_0
-%dir %{_libdir}/%{name}/
-%dir %{_libdir}/%{name}/girepository-1.0/
-%{_libdir}/%{name}/girepository-1.0/CjsPrivate-1.0.typelib
 
 %files devel
 %{_includedir}/%{name}-1.0/
 %{_libdir}/lib%{name}.so
 %{_libdir}/pkgconfig/%{name}*.pc
 %{_datadir}/%{name}-1.0/
+
+%files tests
+%{_libexecdir}/installed-tests/
+%{_datadir}/installed-tests/
+%{_datadir}/glib-2.0/schemas/org.cinnamon.CjsTest.gschema.xml
 
 %changelog

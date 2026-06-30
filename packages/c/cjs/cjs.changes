@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue May 12 11:58:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 140.0:
+  + Enabling various clang-tidy checks
+  + Various maintenance
+  + Error when importing Gio after manipulating Object.prototype
+  + Investigate union fields being garbage collected
+  + Follow-up from "Gtk: Builder constructor overrides in GTK4"
+  + Tweaks to examples
+- For other changes please see upstream git
+  https://github.com/linuxmint/cjs/tags
+- Replace pkgconfig(mozjs-115) with pkgconfig(mozjs-140)
+  BuildRequires:following upstreams port.
+- Fold GjsPrivate-1.0.typelib into main cjs package, its a private
+  one, and since it was renamed from CjsPrivate-1.0.typelib, having
+  it as a own subpackage is impossible as gjs already produces one
+  with that name. Following this, add a Conflicts on gjs, as these
+  packages are now not possible to install at the same time.
+- Stop passing --libexecdir=%{_libdir}/%{name}/ to meson setup, we
+  have a proper libexecdir in distro now.
+- Stop passing obsolete and no longer recognized cairo=enabled to
+  meson setup, and also drop explicit readline=enabled and
+  profiler=enabled, we are using the upstream default here.
+- Split out new cjs-tests subpackage, and add global
+  __requires_exclude typelib for non-existent typelibs.
+
+-------------------------------------------------------------------
 Wed Nov 27 09:06:48 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 6.4.0:
