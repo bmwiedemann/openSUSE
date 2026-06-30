@@ -100,4 +100,24 @@
     <comment></comment>
     <requestid>1098072</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a070dbabc6cdc5e0b6540a929bc4b102</srcmd5>
+    <version>6.70.0</version>
+    <time>1782825081</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.70.0 (6.07)
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+  6.07      2026-06-25 15:12:09Z
+      - Add test with Time::Zone (GH#25) (Michal Josef Špaček)
+      - Add test with bad Time::Zone string (GH#26) (Michal Josef Špaček)
+      - Add tests with negative time (GH#26) (Michal Josef Špaček)
+      - Replace all instances of \d with [0-9] in regular expressions to
+        reject non-ASCII Unicode digits, with a regression test (GH#27)
+        (Robert Rothenberg)
+      - Reject malformed ISO 8601 timezones with a doubled colon (GH#31)
+        (Olaf Alders)
+      - Document day/month/year ordering for numeric dates (GH#32) (Olaf
+        Alders)</comment>
+    <requestid>1362458</requestid>
+  </revision>
 </revisionlist>

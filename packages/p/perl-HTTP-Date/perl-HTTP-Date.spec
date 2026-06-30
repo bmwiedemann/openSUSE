@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTTP-Date
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define cpan_name HTTP-Date
 Name:           perl-HTTP-Date
-Version:        6.06
+Version:        6.70.0
 Release:        0
+# 6.07 -> normalize -> 6.70.0
+%define cpan_version 6.07
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP::Date - date conversion routines
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/O/OA/OALDERS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -32,6 +35,8 @@ BuildRequires:  perl(Time::Local) >= 1.28
 BuildRequires:  perl(Time::Zone)
 Requires:       perl(Time::Local) >= 1.28
 Requires:       perl(Time::Zone)
+Provides:       perl(HTTP::Date) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -116,6 +121,12 @@ The function is able to parse the following formats:
 The parser ignores leading and trailing whitespace. It also allow the
 seconds to be missing and the month to be numerical in most formats.
 
+Numeric-only dates use day/month/year ordering (the ISO and common European
+convention), not the US month/day/year ordering. So "3/4/2014" is parsed as
+4 March 2014, and a US-style date such as "3/13/2014" returns undef because
+13 is not a valid month. To parse US-style dates, swap the first two fields
+before calling parse_date().
+
 If the year is missing, then we assume that the date is the first matching
 date _before_ current month. If the year is given with only 2 digits, then
 parse_date() will select the century that makes the year closest to the
@@ -132,7 +143,7 @@ Same as time2str(), but returns a "YYYY-MM-DD hh:mm:ssZ"-formatted string
 representing Universal Time.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
