@@ -92,4 +92,13 @@
   * sync with grpcio</comment>
     <requestid>1169418</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>334deb7d2a19949437f3afe0b73ea0fc</srcmd5>
+    <version>1.81.1</version>
+    <time>1782829407</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.81.1:
+  * sync with grpcio</comment>
+    <requestid>1362239</requestid>
+  </revision>
 </revisionlist>
