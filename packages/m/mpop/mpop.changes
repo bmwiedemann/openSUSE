@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:48:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.22:
+  * No significant changes.
+
+-------------------------------------------------------------------
+Thu Mar 26 11:30:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.21:
+  * Build with libgsasl by default again (if found).
+  * Add IDN support to --configure (build with libidn2 to enable
+    this).
+  * No significant changes.
+  * Add support for SCRAM-SHA-256-PLUS and SCRAM-SHA-1-PLUS
+    authentication, and
+  * prefer SCRAM methods over the PLAIN method because of their
+    superior properties.
+
+-------------------------------------------------------------------
 Tue Mar  7 20:44:24 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.18:

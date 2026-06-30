@@ -1,7 +1,7 @@
 #
 # spec file for package mpop
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 Fabrice Bauzac.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,7 +25,7 @@ TLS/SSL support, IPv6 support, and more.
 }
 %bcond_with gnome-keyring
 Name:           mpop
-Version:        1.4.18
+Version:        1.4.22
 Release:        0
 Summary:        Lightweight and featureful POP3 Client
 License:        GPL-3.0-or-later
@@ -33,9 +33,9 @@ Group:          Productivity/Networking/Email/Utilities
 URL:            https://marlam.de/mpop/
 Source:         https://marlam.de/mpop/releases/mpop-%{version}.tar.xz
 BuildRequires:  libgsasl-devel
-BuildRequires:  libidn-devel
 BuildRequires:  libsecret-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libidn2)
 # For an unknown reason, rpmlint says:
 #
 #   invalid-suse-version-check 1315
@@ -88,7 +88,7 @@ tls_lib=gnutls
 tls_lib=openssl
 %endif
 
-%configure --with-tls=$tls_lib --with-libgsasl --docdir="%{_docdir}/%{name}"
+%configure --with-tls=$tls_lib --with-libgsasl --docdir="%{_docdir}/%{name}" --with-libidn
 %make_build -O
 
 %install

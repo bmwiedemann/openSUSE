@@ -39,4 +39,31 @@
     <comment></comment>
     <requestid>1070267</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8ab266165e9fa48080804e4f1bdeff41</srcmd5>
+    <version>1.4.21</version>
+    <time>1774555804</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.21:
+  * Build with libgsasl by default again (if found).
+  * Add IDN support to --configure (build with libidn2 to enable
+    this).
+  * No significant changes.
+  * Add support for SCRAM-SHA-256-PLUS and SCRAM-SHA-1-PLUS
+    authentication, and
+  * prefer SCRAM methods over the PLAIN method because of their
+    superior properties.</comment>
+    <requestid>1342769</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>68bd79ece40aa1e08b8e4ad6e85b3d08</srcmd5>
+    <version>1.4.22</version>
+    <time>1782825108</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1362433 from dirkmueller
+
+- update to 1.4.22:
+  * No significant changes.</comment>
+    <requestid>1362447</requestid>
+  </revision>
 </revisionlist>
