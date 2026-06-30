@@ -17,7 +17,6 @@
 #
 
 
-%bcond_with  swig_ocaml
 %if 0%{?fedora} + 0%{?rhel_version} + 0%{?centos_version} > 0
 %define docpath %{_docdir}/%{name}-%{version}
 BuildRequires:  perl-Test-Simple
@@ -67,12 +66,6 @@ BuildRequires:  python3-tools
 BuildRequires:  boost-devel
 BuildRequires:  python-devel > 2.6
 %endif
-%endif
-%if %{with swig_ocaml}
-BuildRequires:  ncurses-devel
-BuildRequires:  ocaml >= 3.12.0
-BuildRequires:  ocaml-camlp4-devel
-BuildRequires:  ocaml-findlib
 %endif
 
 %description
@@ -137,9 +130,7 @@ export CCSHARED="-fPIC"
 %endif
 ./autogen.sh
 %configure \
-%if %{without swig_ocaml}
 	--without-ocaml \
-%endif
 	--disable-ccache
 %make_build
 
