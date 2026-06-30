@@ -1,4 +1,5 @@
 <package name="libpisp" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="graphics" package="libpisp"/>
 </package>

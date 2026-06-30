@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 30 06:33:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.0
+  * backend: Allow offsets to be specified as pixels or bytes.
+  * backend: Add output image offset parameters.
+
+-------------------------------------------------------------------
+Wed Apr 29 18:41:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+
+- Update to version 1.5.0
+  * utils: test_convert: Fix GStreamer pipeline colorimetry and
+    byte ordering.
+  * libpisp: Switch to C++20 standard.
+- Update to version 1.4.0
+  * helpers: Fix incorrect header in media_device.cpp.
+  * Adding gst pispconvert component.
+  * helpers: dma_heap: Fix clang compile error.
+
+-------------------------------------------------------------------
 Tue Dec 23 20:33:01 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Initial package version (1.3.0)

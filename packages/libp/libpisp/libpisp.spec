@@ -18,7 +18,7 @@
 %define soversion 1
 
 Name:           libpisp
-Version:        1.3.0
+Version:        1.6.0
 Release:        0
 Summary:        RPi ISP helper library
 Group:          System/Libraries
