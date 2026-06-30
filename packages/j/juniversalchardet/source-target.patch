@@ -1,0 +1,13 @@
+--- juniversalchardet/build.xml	2026-06-29 15:55:57.391631392 +0200
++++ juniversalchardet/build.xml	2026-06-29 15:56:18.706986564 +0200
+@@ -64,8 +64,8 @@
+ 		<javac	sourcepath=""
+ 				srcdir="${src}"
+ 				destdir="${dist}/classes"
+-				source="1.5"
+-				target="1.5">
++				source="1.8"
++				target="1.8">
+ 			<include name="**/*.java"/>
+ 			<exclude name="**/.svn/"/>
+ 			<exclude name="**/*Test.java"/>

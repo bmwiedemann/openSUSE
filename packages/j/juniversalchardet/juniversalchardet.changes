@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jun 29 14:01:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Be closer to the upstream way of building by ant
+- Added patches:
+  * source-target.patch
+    + build with source/target 8 instead of 5
+  * automatic-module-name.patch
+    + set automatic module name for java 9+ to what some heuristics
+      used to deduce
+
+-------------------------------------------------------------------
 Fri May 29 09:29:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with JDK that uses libalternatives instead of

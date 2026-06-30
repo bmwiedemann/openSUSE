@@ -1,0 +1,16 @@
+--- juniversalchardet/build.xml	2026-06-29 16:24:07.805926017 +0200
++++ juniversalchardet/build.xml	2026-06-29 16:25:30.322391395 +0200
+@@ -88,8 +88,11 @@
+ 	<target name="dist" depends="compile">
+ 		<jar	destfile="${dist}/juniversalchardet-${version}.jar"
+ 				basedir="${dist}/classes"
+-				excludes="**/.svn/"
+-		/>
++				excludes="**/.svn/">
++          <manifest>
++            <attribute name="Automatic-Module-name" value="juniversalchardet"/>
++          </manifest>
++		</jar>
+ 	</target>
+ 
+ 	<target name="clean">

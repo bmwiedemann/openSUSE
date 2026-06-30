@@ -23,13 +23,13 @@ Summary:        Encoding detector library
 License:        MPL-1.1
 Group:          Development/Libraries/Java
 URL:            https://code.google.com/archive/p/juniversalchardet/
-Source0:        https://repo1.maven.org/maven2/com/googlecode/%{name}/%{name}/%{version}/%{name}-%{version}-sources.jar
+Source0:        https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/%{name}/%{name}-%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/googlecode/%{name}/%{name}/%{version}/%{name}-%{version}.pom
-Source2:        https://www.mozilla.org/media/MPL/1.1/index.0c5913925d40.txt
-Source3:        README.txt
+Patch0:         source-target.patch
+Patch1:         automatic-module-name.patch
+BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  java-javadoc >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildArch:      noarch
 
@@ -44,40 +44,22 @@ Summary:        API documentation for %{name}
 API documentation for %{name}.
 
 %prep
-%setup -q -T -c
-mkdir -p src/main/java
-pushd src/main/java
-jar -xvf %{SOURCE0}
-popd
-cp %{SOURCE2} LICENSE.txt
-cp %{SOURCE3} .
+%setup -q -n %{name}
+%patch -P 0 -p1
+%patch -P 1 -p1
 
 %build
-mkdir -p target/classes
-javac \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    --release 8 \
-%else
-    -source 8 -target 8 \
-%endif
-    -encoding UTF-8 -sourcepath src/main/java -d target/classes $(find src/main/java -name \*.java)
-
-jar --create --verbose \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
-    --date="$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ)" \
-%endif
-    --file=%{name}-%{version}.jar -C target/classes .
-
+ant dist
 javadoc -source 8 -encoding UTF-8 \
     -notimestamp \
     -d target/apidocs \
-    -sourcepath src/main/java \
+    -sourcepath src \
     org.mozilla.universalchardet
 
 %install
 # jar
 install -dm 0755 %{buildroot}%{_javadir}/%{name}
-install -pm 0644 %{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
+install -pm 0644 dist/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}.jar
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 %{mvn_install_pom} %{SOURCE1} %{buildroot}%{_mavenpomdir}/%{name}/%{name}.pom
@@ -88,11 +70,11 @@ cp -r target/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes %{buildroot}%{_javadocdir}/%{name}
 
 %files -f .mfiles
-%doc README.txt
-%license LICENSE.txt
+%doc readme.txt
+%license MPL-1.1.txt
 
 %files javadoc
 %{_javadocdir}/%{name}
-%license LICENSE.txt
+%license MPL-1.1.txt
 
 %changelog
