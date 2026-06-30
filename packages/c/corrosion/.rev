@@ -42,4 +42,17 @@
     <comment></comment>
     <requestid>1354061</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>280075758909c9de63780972a4169f51</srcmd5>
+    <version>0.6.1</version>
+    <time>1782825056</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.6.1:
+  * Fix building shared libraries for iOS.
+  * Fix host linker detection for iOS and add the
+    CORROSION_HOST_TARGET_LINKER cache variable, to allow users
+    to override the linker used for the host build (required for
+    build-scripts and proc-macros).</comment>
+    <requestid>1362258</requestid>
+  </revision>
 </revisionlist>

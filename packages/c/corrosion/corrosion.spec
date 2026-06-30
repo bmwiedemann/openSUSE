@@ -17,7 +17,7 @@
 
 
 Name:           corrosion
-Version:        0.6.0
+Version:        0.6.1
 Release:        0
 Summary:        Rust integration into existing CMake project
 License:        MIT

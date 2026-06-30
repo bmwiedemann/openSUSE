@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:27:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.1:
+  * Fix building shared libraries for iOS.
+  * Fix host linker detection for iOS and add the
+    CORROSION_HOST_TARGET_LINKER cache variable, to allow users
+    to override the linker used for the host build (required for
+    build-scripts and proc-macros).
+
+-------------------------------------------------------------------
 Tue May 19 15:26:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to fix use with a single project-wide vendor tarball,
