@@ -3,8 +3,8 @@
     <param name="url">https://review.coreboot.org/coreboot.git</param>
     <param name="scm">git</param>
     <!--param name="changesgenerate">enable</param -->
-    <param name="revision">main</param>
-    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+    <param name="revision">26.06</param>
+    <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <service name="set_version" mode="manual"/>
   <service name="tar" mode="buildtime"/>
