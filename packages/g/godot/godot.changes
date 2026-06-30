@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 24 19:26:08 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Unbundle mbedtls by dependening on mbedtls-devel < 4 since newer versions are not supported
+
+-------------------------------------------------------------------
 Sun Jun 21 12:00:00 UTC 2026 - cunix@mail.de
 
 - Update to 4.7

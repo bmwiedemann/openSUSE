@@ -1,7 +1,7 @@
 #
 # spec file for package godot
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -49,12 +49,12 @@ BuildRequires:  gcc%{compiler_version_leap}-c++
 %endif
 # pkgconfig broken for freetype2 ?
 BuildRequires:  freetype2-devel >= 2.14
-# BuildRequires:  mbedtls-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3 > 3.9
 BuildRequires:  scons > 4.9.0
 BuildRequires:  wayland-devel
 BuildRequires:  yasm-devel
+BuildRequires:  (mbedtls-devel >= 3 with mbedtls-devel < 4)
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
@@ -163,7 +163,6 @@ Provides:       bundled(jolt_physics) = 5.5.0
 Provides:       bundled(libbacktrace)
 Provides:       bundled(libktx) = 4.4.2
 Provides:       bundled(manifold) = 3.3.2
-Provides:       bundled(mbedtls) = 3.6.5
 Provides:       bundled(meshoptimizer) = 1.1
 Provides:       bundled(mingw-std-threads)
 Provides:       bundled(msdfgen) = 1.13
@@ -256,7 +255,7 @@ sed -i 's/EngineUpdateLabel::UpdateMode::AUTO/EngineUpdateLabel::UpdateMode::DIS
 %build
 # Configuring build to use some distribution libraries
 unbundle_libs=('brotli' 'certs' 'freetype' 'libjpeg_turbo' 'libogg' 'libpng' \
-               'libtheora' 'libvorbis' 'libwebp' 'miniupnpc' \
+               'libtheora' 'libvorbis' 'libwebp' 'mbedtls' 'miniupnpc' \
                'pcre2' 'sdl' 'wslay' 'zlib' 'zstd')
 
 # Adding distribution name to build name

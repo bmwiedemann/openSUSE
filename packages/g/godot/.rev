@@ -494,4 +494,12 @@
     <comment></comment>
     <requestid>1361601</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>bed5cb2fc6f7f21d1cf6d1a83a4f60b8</srcmd5>
+    <version>4.7</version>
+    <time>1782825133</time>
+    <user>dimstar_suse</user>
+    <comment>- Unbundle mbedtls by dependening on mbedtls-devel &lt; 4 since newer versions are not supported</comment>
+    <requestid>1362508</requestid>
+  </revision>
 </revisionlist>
