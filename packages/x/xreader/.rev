@@ -535,4 +535,22 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1326310</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bab569a61e3852cc7025a79c9692e827</srcmd5>
+    <version>4.6.3</version>
+    <time>1774555782</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.3:
+  * l10n: Update translations
+  * Fix window icon name (#696)</comment>
+    <requestid>1342715</requestid>
+  </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>6aa235d77c36f36bc00c65853139e0d7</srcmd5>
+    <version>4.6.5</version>
+    <time>1782825243</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362615</requestid>
+  </revision>
 </revisionlist>

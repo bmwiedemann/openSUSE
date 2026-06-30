@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed May 27 16:24:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to 4.6.5:
+  * Depend on xapp-symbolic-icons
+- Changes from version 4.6.4 (boo#1265880, CVE-2026-46529):
+  * .github/workflows: Add generate-test-packages trigger.
+  * ev-application: Quote user-supplied strings in ev_spawn command
+    line
+
+-------------------------------------------------------------------
+Thu Mar 26 08:01:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.3:
+  * l10n: Update translations
+  * Fix window icon name (#696)
+
+-------------------------------------------------------------------
 Fri Jan  2 09:24:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:
