@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jun 28 23:52:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.15.20
+ * Preview features
+  * Allow human-readable names in rule selectors 
+  * Emit a warning instead of an error for unknown rule selectors 
+  * Match noqa shebang handling in ruff:ignore comments 
+  * [ruff] Remove pytest-fixture-autouse (RUF076)
+ * Documentation
+  * Add versioning sections to custom crate READMEs 
+  * Update ruff_python_parser README for crates.io 
+  * [perflint] Clarify that PERF402 applies to any iterable 
+
+-------------------------------------------------------------------
 Thu Jun 25 10:42:43 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.19 
