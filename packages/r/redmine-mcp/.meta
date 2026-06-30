@@ -1,0 +1,7 @@
+<package name="redmine-mcp" project="openSUSE:Factory">
+  <title>Model Context Protocol server for Redmine</title>
+  <description>An MCP (Model Context Protocol) server exposing a Redmine instance as a set
+of tools, so MCP-capable clients can search, read and act on Redmine issues,
+projects, wikis and time entries through Redmine's REST API.</description>
+  <url>https://github.com/runekaagaard/mcp-redmine</url>
+</package>
