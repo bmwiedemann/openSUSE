@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-nokogiri
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 #
 
 Name:           rubygem-nokogiri
-Version:        1.18.9
+Version:        1.19.4
 Release:        0
 %define mod_name nokogiri
 %define mod_full_name %{mod_name}-%{version}
@@ -35,11 +35,10 @@ BuildRequires:  %{rubygem pkg-config}
 BuildRequires:  libxml2-devel >= 2.6.21
 BuildRequires:  libxslt-devel
 # /MANUAL
-BuildRequires:  ruby-macros >= 5
-BuildRequires:  %{rubydevel >= 3.1.0}
+BuildRequires:  %{rubydevel >= 3.2}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  %{rubygem rdoc > 3.10}
-BuildRequires:  update-alternatives
+BuildRequires:  ruby-macros >= 5
 URL:            https://nokogiri.org
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        rubygem-nokogiri-rpmlintrc
@@ -89,6 +88,7 @@ cd ..
 export NOKOGIRI_USE_SYSTEM_LIBRARIES=1
 # /MANUAL
 %gem_install \
+  --no-rdoc --no-ri \
   --symlink-binaries \
   --doc-files="LICENSE.md README.md" \
   -f

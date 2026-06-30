@@ -721,4 +721,20 @@
 drop macros</comment>
     <requestid>1300294</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>08e2818334ea8702139183387dfdaf81</srcmd5>
+    <version>1.19.4</version>
+    <time>1782825079</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1361228 from darix
+
+Forwarded request #1361227 from darix
+
+- 1.19.4:
+  see included CHANGELOG.md
+
+- 1.19.1:
+  see included CHANGELOG.md</comment>
+    <requestid>1362448</requestid>
+  </revision>
 </revisionlist>
