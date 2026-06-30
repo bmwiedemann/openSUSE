@@ -534,4 +534,16 @@
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346632</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>8d2df768dd479770cc6e76012d0b34b3</srcmd5>
+    <version>50.2.1</version>
+    <time>1782825118</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.2.1:
+  + Fix tag being on the wrong commit
+- Changes from version 50.2:
+  + Fix buttons not resetting on new game
+  + Update translations.</comment>
+    <requestid>1362496</requestid>
+  </revision>
 </revisionlist>
