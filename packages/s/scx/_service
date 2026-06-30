@@ -12,5 +12,6 @@
     <param name="src">scx</param>
     <param name="cargotoml">Cargo.toml</param>
     <param name="update">true</param>
+    <param name="filter">true</param>
   </service>
 </services>

@@ -32,21 +32,16 @@ Source3:        scx.env
 BuildRequires:  bpftool >= 7.5.0
 BuildRequires:  cargo-packaging
 BuildRequires:  clang >= %{llvm_min_ver}
-BuildRequires:  git
 BuildRequires:  jq
-BuildRequires:  libbpf-devel >= %{libbpf_min_ver}
-BuildRequires:  lld
 BuildRequires:  llvm >= %{llvm_min_ver}
 BuildRequires:  pkgconfig
 BuildRequires:  rust+cargo >= 1.82
-BuildRequires:  zstd
 BuildRequires:  pkgconfig(libbpf) >= %{libbpf_min_ver}
 BuildRequires:  pkgconfig(libseccomp)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(systemd)
 
-ExclusiveArch:  %{rust_arches}
-ExcludeArch:    %{ix86}
+ExclusiveArch:  %rust_tier1_arches
 
 %description
 sched_ext is a Linux kernel feature which enables implementing kernel thread schedulers in BPF and dynamically loading them. This package contains various scheduler implementations and support utilities.

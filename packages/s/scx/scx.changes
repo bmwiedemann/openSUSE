@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jun 30 05:22:35 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update cargo vendor
+- Remove explicit BuildRequires: lld
+- Enable cargo_vendor filter
+- Restrict build to Rust tier1 arches: others are untested, beside
+  failing in build
+
+-------------------------------------------------------------------
 Thu May 21 09:06:26 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - Update to version 1.1.1:
