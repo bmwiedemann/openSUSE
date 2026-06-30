@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:58:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-CSS-Minifier-XS/Changes
+
+  0.14      2026-06-28 16:30:59-07:00 America/Vancouver
+      - Fixes a memory leak in minify(), when the entire document is minified
+        away. CVE-2026-13593 bsc#1269662
+
+-------------------------------------------------------------------
 Thu Jun 12 18:02:15 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

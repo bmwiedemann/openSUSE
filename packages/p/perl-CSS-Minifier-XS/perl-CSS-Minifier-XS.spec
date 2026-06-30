@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CSS-Minifier-XS
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name CSS-Minifier-XS
 Name:           perl-CSS-Minifier-XS
-Version:        0.130.0
+Version:        0.140.0
 Release:        0
-# 0.13 -> normalize -> 0.130.0
-%define cpan_version 0.13
+# 0.14 -> normalize -> 0.140.0
+%define cpan_version 0.14
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS based CSS minifier
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/G/GT/GTERMARS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::DiagINC) >= 0.2
@@ -44,6 +45,8 @@ substantially faster as its written in XS and not just pure Perl.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

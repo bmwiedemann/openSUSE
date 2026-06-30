@@ -25,4 +25,16 @@
 </comment>
     <requestid>1285237</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>2cb865fa12101708c33baed91c72df39</srcmd5>
+    <version>0.140.0</version>
+    <time>1782825283</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.140.0 (0.14)
+   see /usr/share/doc/packages/perl-CSS-Minifier-XS/Changes
+  0.14      2026-06-28 16:30:59-07:00 America/Vancouver
+      - Fixes a memory leak in minify(), when the entire document is minified
+        away. CVE-2026-13593 bsc#1269662</comment>
+    <requestid>1362650</requestid>
+  </revision>
 </revisionlist>
