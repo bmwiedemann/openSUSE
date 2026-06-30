@@ -1,7 +1,7 @@
 #
 # spec file for package 2ping
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,26 +16,27 @@
 #
 
 
+%define pythons python3
+
 Name:           2ping
-Version:        4.5.1+20241102
+Version:        4.6.1
 Release:        0
 Summary:        Bi-directional ping utility
 License:        MPL-2.0
 URL:            https://www.finnie.org/software/2ping/
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/rfinnie/2ping/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source1:        https://github.com/rfinnie/2ping/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
-Patch0:         harden_2ping.service.patch
+Source3:        2ping.service
+BuildRequires:  %{python_module distro}
+BuildRequires:  %{python_module dnspython}
+BuildRequires:  %{python_module netifaces}
+BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pycryptodomex}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel >= 3.6
-BuildRequires:  python3-distro
-BuildRequires:  python3-dnspython
-BuildRequires:  python3-netifaces
-BuildRequires:  python3-pycryptodomex
-BuildRequires:  python3-pytest
-BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
-Requires:       python3 >= 3.6
 Recommends:     python3-distro
 Recommends:     python3-dnspython
 Recommends:     python3-netifaces
@@ -48,20 +49,29 @@ BuildArch:      noarch
 SYN/ACK, ACK) and after-the-fact state comparison between a 2ping listener and
 a 2ping client to determine which direction packet loss occurs.
 
+%package bash-completion
+Summary:        Bash completion for 2ping
+Group:          System/Shells
+Requires:       %{name}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+
+%description bash-completion
+bash command line completion support for 2ping.
+
 %prep
 %autosetup
 
 %build
-%python3_build
+%pyproject_wheel
 
 %install
-%python3_install
-install -Dp -m 0644 2ping.service %{buildroot}%{_unitdir}/2ping.service
+%pyproject_install
+
+install -Dp -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/2ping.service
 install -Dp -m 0644 doc/2ping.1 %{buildroot}%{_mandir}/man1/2ping.1
 install -Dp -m 0644 doc/2ping.1 %{buildroot}%{_mandir}/man1/2ping6.1
-
-mkdir -p %{buildroot}%{_sbindir}
-ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc2ping
+install -Dp -m 0644 2ping.bash_completion %{buildroot}%{_datadir}/bash-completion/completions/2ping
 
 # Fix python shebangs
 %python3_fix_shebang
@@ -72,7 +82,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc2ping
 %fdupes %{buildroot}%{_prefix}
 
 %check
-py.test -v
+%pytest
 
 %pre
 %service_add_pre 2ping.service
@@ -93,8 +103,12 @@ py.test -v
 %{_bindir}/%{name}6
 %{_mandir}/man1/%{name}.1%{?ext_man}
 %{_mandir}/man1/%{name}6.1%{?ext_man}
-%{_sbindir}/rc%{name}
 %{_unitdir}/2ping.service
 %{python3_sitelib}/*
+
+%files bash-completion
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/%{name}
 
 %changelog

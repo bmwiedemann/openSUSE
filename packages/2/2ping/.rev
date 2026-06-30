@@ -146,4 +146,20 @@
 </comment>
     <requestid>1227753</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>78773b98070878830af1b2b5280f25af</srcmd5>
+    <version>4.6.1</version>
+    <time>1782825273</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.6.1
+  * Remove license classifier (PEP 639)
+  * pyproject.toml: Fix malformed license statement
+  * SPDX headers cleanup
+  * flake8 fixes
+  * Packaging updates
+- Removed harden_2ping.service.patch -- applied to the (now local)
+  2ping.service
+- add bash completion</comment>
+    <requestid>1362633</requestid>
+  </revision>
 </revisionlist>

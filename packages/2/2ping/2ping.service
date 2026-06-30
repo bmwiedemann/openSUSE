@@ -1,0 +1,40 @@
+[Unit]
+Description=2ping listener
+Documentation=man:2ping(1)
+Documentation=https://www.finnie.org/software/2ping/
+
+# Recommended listener method is with python3-netifaces, so we want to
+# wait until the network is up before starting, so we can get a full
+# list of IPs.
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+ExecStart=/usr/bin/2ping --listen --quiet
+
+# 2ping requires very little; lock down the running space as much as
+# possible.
+DevicePolicy=closed
+LockPersonality=yes
+NoNewPrivileges=yes
+PrivateDevices=yes
+PrivateTmp=yes
+PrivateUsers=yes
+ProtectControlGroups=yes
+ProtectHome=yes
+ProtectKernelLogs=yes
+ProtectKernelModules=yes
+ProtectKernelTunables=yes
+ProtectSystem=strict
+RestrictAddressFamilies=AF_NETLINK AF_INET AF_INET6 AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+RestrictSUIDSGID=yes
+# added automatically, for details please see
+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
+ProtectHostname=true
+# end of automatic additions
+DynamicUser=yes
+
+[Install]
+WantedBy=multi-user.target
