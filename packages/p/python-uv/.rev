@@ -2807,4 +2807,12 @@
   * Fix relocatable activate.fish and broaden Fish version support</comment>
     <requestid>1361733</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>db47ae205cdcf4e42018a098ed4fb668</srcmd5>
+    <version>0.11.25</version>
+    <time>1782825103</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes build on 32-bit architectures and compiler warnings about invalid -Wl parameters.</comment>
+    <requestid>1362488</requestid>
+  </revision>
 </revisionlist>

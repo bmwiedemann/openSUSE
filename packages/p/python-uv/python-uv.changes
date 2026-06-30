@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 29 14:10:18 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Disable debuginfo generation on 32-bit arches
+- Fix quoting of RUSTFLAGS and passing of link-arg
+
+-------------------------------------------------------------------
+Sun Jun 28 22:49:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- upadate to 0.11.25
+ * Enhancements
+  * Add a full "lockfile" to tool receipts 
+  * Allow scoped overrides to add dependencies 
+  * Avoid writing redundant lockfile markers with tool.uv.environments 
+  * Factor supported environments out of lockfile markers 
+  * Recommend our own build backend in the build frontend 
+  * Reject wheels with multiple .dist-info directories 
+  * Simplify dependency markers under parent reachability 
+  * Support scoped dependency exclusions 
+  * Support scoped dependency overrides 
+  * Explain why files are skipped in registry index parsing 
+ * Preview features
+  * Add uv workspace list --scripts 
+  * Support centralised environments in uv venv 
+  * Use locked ty versions in uv check 
+  * Add centralized storage of project environments 
+  * Verify lockfile hashes before reusing a cached ty in uv check 
+  * Use locked dependency selection for uv check --script 
+ * Bug fixes
+  * 
+  * Preserve standalone markers in workspace metadata 
+  * Reject uv build if the cache dir is enclosed 
+
+-------------------------------------------------------------------
 Thu Jun 25 10:46:25 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.24 

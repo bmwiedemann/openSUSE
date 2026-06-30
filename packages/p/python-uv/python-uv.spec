@@ -27,13 +27,13 @@
 %endif
 
 %if %{with mold}
-%global build_rustflags "-C" "linker=clang" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none"
+%global build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-uv
-Version:        0.11.24
+Version:        0.11.25
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -120,10 +120,12 @@ export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1
 export RUSTFLAGS="%build_rustflags"
 export CARGO_NET_OFFLINE=true
-%ifarch %rust_tier1_arches
-export CARGO_PROFILE_RELEASE_DEBUG=full
+%ifarch %arm %ix86
+# Debuginfo needs too much memory for 32-bit architectures.
+export CARGO_PROFILE_RELEASE_DEBUG=none
+export RUSTFLAGS="%build_rustflags -C debuginfo=0"
 %else
-export CARGO_PROFILE_RELEASE_DEBUG=limited
+export CARGO_PROFILE_RELEASE_DEBUG=full
 %endif
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 export CARGO_PROFILE_RELEASE_STRIP=false
