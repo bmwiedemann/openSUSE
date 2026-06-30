@@ -1,7 +1,7 @@
 #
 # spec file for package msr-safe
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,13 +31,14 @@ Source4:        msr-safe.sh
 Source5:        system-user-msr.conf
 Patch1:         Fix-the-layout-changes-after-linux-6.patch
 Patch2:         Fixup-for-commit-1aaba11da9aa-driver-core-class-remo.patch
+Patch3:         kernel-7.2.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  kernel-default-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 Requires(post): fillup
 Requires(post): udev
-Requires(postun):udev
+Requires(postun): udev
 # Only supported on intel architectures
 ExclusiveArch:  %{ix86} x86_64
 %kernel_module_package

@@ -1,0 +1,87 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Subject: Fix for kernel 7.2
+
+rdmsr_safe_on_cpu() and wrmsr_safe_on_cpu() were dropped in favor of
+rdmsrq_safe_on_cpu() and wrmsrq_safe_on_cpu() by commits:
+d2eb65a9aa06 ("x86/msr: Remove rdmsr_safe_on_cpu()")
+cdd2c4133ad2 ("x86/msr: Remove wrmsr_safe_on_cpu()")
+
+Adapt to that by using the saner variants.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ msr_entry.c |   26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+--- a/msr_entry.c
++++ b/msr_entry.c
+@@ -97,7 +97,11 @@ static loff_t msr_seek(struct file *file
+ static ssize_t msr_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
+ {
+     u32 __user *tmp = (u32 __user *) buf;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++    u64 data;
++#else
+     u32 data[2];
++#endif
+     u32 reg = *ppos;
+     int cpu = iminor(file->f_path.dentry->d_inode);
+     int err = 0;
+@@ -112,7 +116,11 @@ static ssize_t msr_read(struct file *fil
+         return -EACCES;
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++    err = rdmsrq_safe_on_cpu(cpu, reg, &data);
++#else
+     err = rdmsr_safe_on_cpu(cpu, reg, &data[0], &data[1]);
++#endif
+     if (err)
+     {
+         return err;
+@@ -129,8 +137,13 @@ static ssize_t msr_read(struct file *fil
+ static ssize_t msr_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
+ {
+     const u32 __user *tmp = (const u32 __user *)buf;
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++    u64 curdata;
++    u64 data;
++#else
+     u32 curdata[2];
+     u32 data[2];
++#endif
+     u32 reg = *ppos;
+     u64 mask;
+     int cpu = iminor(file->f_path.dentry->d_inode);
+@@ -155,18 +168,31 @@ static ssize_t msr_write(struct file *fi
+ 
+     if (mask != 0xffffffffffffffff)
+     {
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++        err = rdmsrq_safe_on_cpu(cpu, reg, &curdata);
++#else
+         err = rdmsr_safe_on_cpu(cpu, reg, &curdata[0], &curdata[1]);
++#endif
+         if (err)
+         {
+             return err;
+         }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++	data &= mask;
++	data |= (curdata & ~mask);
++#else
+         *(u64 *)&curdata[0] &= ~mask;
+         *(u64 *)&data[0] &= mask;
+         *(u64 *)&data[0] |= *(u64 *)&curdata[0];
++#endif
+     }
+ 
++#if LINUX_VERSION_CODE >= KERNEL_VERSION(7,2,0)
++    err = wrmsrq_safe_on_cpu(cpu, reg, data);
++#else
+     err = wrmsr_safe_on_cpu(cpu, reg, data[0], data[1]);
++#endif
+     if (err)
+     {
+         return err;
