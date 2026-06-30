@@ -23,4 +23,40 @@
     <comment></comment>
     <requestid>1155620</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0565ef10aef35df74592990509121020</srcmd5>
+    <version>0.460.0</version>
+    <time>1782834077</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove fix2038.patch, fixed upstream
+  https://github.com/chansen/p5-time-moment/pull/48
+
+- updated to 0.460.0 (0.46)
+   see /usr/share/doc/packages/perl-Time-Moment/Changes
+  0.46 2025-12-04
+    - Added an example to eg/
+      - eg/isocal.pl
+    - Added an implementation of NearestDayOfWeek() in Time::Moment::Adjusters.
+    - Fix Time::Moment-&gt;from_epoch when called with a floating-point value whose
+      fractional part rounds to exactly 1.000000000 seconds at 9 decimal digits.
+      Such values previously caused a “Parameter 'nanosecond' is out of the range
+      [0, 999_999_999]” error; they are now normalized by incrementing the second
+      and wrapping nanoseconds to zero, consistent with the rd/jd/mjd constructors.
+      Reported by @butzsch, addressing issue #40.
+  0.45 2025-11-18 (unreleased on CPAN)
+    - Ensure -&gt;with_month preserves the original day-of-month, clamping to the target
+      month’s final day when necessary. Reported by @bokutin, addressing issue #43.
+    - Ensure -&gt;from_object correctly respects class inheritance. Reported by @Grinnz,
+      addressing issue #44.
+    - Added a new documentation section explaining the fundamental differences
+      between calendar units and time units, addressing issue #49.
+    - Added a new documentation section on supported calendars, specifically detailing
+      the ISO 8601 week date representation, addressing issue #21.
+    - Updated documentation to fix incorrect conversion specifier in ISO 8601 examples,
+      reported by Richlv in issue #45.
+    - Resolved a Year 2038 bug in the -&gt;now method, which would have occurred in 2038,
+      by switching from 32-bit to 64-bit integers for second calculations. Addressed
+      in PR #48 and issue #47 by Bernhard M. Wiedemann (@bmwiedemann).</comment>
+    <requestid>1362689</requestid>
+  </revision>
 </revisionlist>
