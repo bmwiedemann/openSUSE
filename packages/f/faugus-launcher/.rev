@@ -678,4 +678,41 @@
   * update(translation): updated 1.22 zh-CN.</comment>
     <requestid>1361669</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>3cfa0d88246c9771eb9c6f32e36cf836</srcmd5>
+    <version>1.22.7</version>
+    <time>1782825189</time>
+    <user>dimstar_suse</user>
+    <comment>- Bump to version 1.22.7
+- Upstream changes:
+  * cleanup shortcut.py
+  * remove redundand DnD setup loop
+  * Saves interface settings
+  * replace duplicate css provider
+  * Sort games even if the menu is not shown
+  * Workaround for Debian icons/banners
+  * refactor: (proton) stream download directly into tar extraction
+  * Temporarily removed Epic Games support
+  * remove unused config variables
+  * remove unused icon_extracted attribute
+  * remove unused _dup_handler_id assignment
+  * simplify format_title call by using game.title directly
+  * remove updated_steam_id attribute, use direct detect_steam_id() call
+  * remove dead Tab key handler
+  * remove redundand self.flowbox_child initialization
+  * remove duplicate set_hexpand() call
+  * remove os.chdir, replace relative games.json with absolute games_json
+  * remove unused file_path
+  * remove redundand isinstance check
+  * remove dead code and redundant variable assignments
+  * remove dead conditional that is always true in  on_settings_dialog_response
+  * remove unused import
+  * Remove unused parameters and dead code in backup.py and launcher.py
+  * Allow UMU_USE_STEAM to be unset
+  * Update utils.py
+  * Update launcher.py
+  * Fixed Filepicker inconsistency
+  * remove unused Gdk import from backup.py</comment>
+    <requestid>1362552</requestid>
+  </revision>
 </revisionlist>
