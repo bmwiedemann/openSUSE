@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:03:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.15.0:
+  * Add a `--dry-run` flag to `pipx ensurepath` that reports
+    which directories would be added to `PATH` without modifying
+    `PATH` or any shell configuration file.
+  * Restore the original package if `pipx reinstall-all` is
+    interrupted during reinstall.
+  * Allow importing `pipx.util` before `pipx.paths`.
+  * Ensure `pipx inject --force` reinstalls injected packages
+    without persisting the force-reinstall option in package
+  * metadata.
+  * Preserve installer errors when package-name detection fails
+    during local package installs.
+  * Expose manual pages for editable local package installs.
+  * Fixed `pipx pin <app> --injected-only` so it can pin injected
+    packages when the main app is already pinned.
+  * Add `--no-path-check` to `pipx run` to skip the warning when
+    the app is already on `PATH`. Useful for shim scripts that
+    wrap `pipx run <app>` under the same name as the app.
+  * Add `PIPX_DISABLE_SHARED_LIBS_AUTO_UPGRADE` to skip automatic
+    shared library upgrades.
+  * Install app scripts with shebangs that ignore `PYTHONPATH`.
+  * Refresh cached standalone Python indexes written by older
+    pipx versions before using `--fetch-missing-python`.
+
+-------------------------------------------------------------------
 Sat May  9 19:22:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.12.0:

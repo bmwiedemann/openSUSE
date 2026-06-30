@@ -24,7 +24,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-pipx
-Version:        1.12.0
+Version:        1.15.0
 Release:        0
 Summary:        Install and Run Python Applications in Isolated Environments
 License:        MIT
