@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 07:14:19 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 4.1.3:
+  * v4.1.3 release
+  * linux: fix handling of i/o stats
+  * v4.1.2 release
+  * Update man page template to use version supplied by CMake
+  * Add CMake rules to check for rst2man
+  * Fix column display alignment on remote connections
+  * More libbsd usage cleanup
+  * Print connections errors to stderr
+  * Fixup Linux i/o display
+  * Update cmake_minimum_required
+  * linux: use included tree.h
+  * add tree.h
+  * linux: increase size of some i/o columns
+  * build-appimage: podman run with --userns=keep-id
+
+-------------------------------------------------------------------
 Wed May  7 06:46:00 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Kickoff with version 4.1.1

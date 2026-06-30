@@ -17,7 +17,7 @@
 
 
 Name:           pg_top
-Version:        4.1.1
+Version:        4.1.3
 Release:        0
 Summary:        top for postgresql
 License:        BSD-3-Clause
