@@ -40,11 +40,9 @@
 
 %if 0%{?is_opensuse} || 0%{?fedora}
 %bcond_without osmgpsmap
-%bcond_without flickcurl
 %bcond_without translated_manpages
 %else
 %bcond_with    osmgpsmap
-%bcond_with    flickcurl
 %bcond_with    translated_manpages
 %endif
 
@@ -202,9 +200,6 @@ BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(wayland-client)
-%if %{with flickcurl}
-BuildRequires:  pkgconfig(flickcurl)
-%endif
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)

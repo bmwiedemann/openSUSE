@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 30 00:54:48 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Remove unused flickcurl dependency (gh#darktable-org/darktable#4574)
+
+-------------------------------------------------------------------
 Wed Jun 24 11:31:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add darktable-link-wayland-client.patch: link libwayland-client
@@ -16,8 +21,8 @@ Wed Jun 24 11:31:19 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 -------------------------------------------------------------------
 Wed Jun 24 09:40:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
-- Disable AI/ONNX support by default  sincen onnxruntime package
-  is present in the repo.
+- Disable AI/ONNX support by default since onnxruntime package
+  is not present in the repo.
 - Add a "--with ai" build conditional (x86_64) wired to a future
   system onnxruntime package, so AI can be enabled once ONNX Runtime
   is available in Factory
