@@ -593,4 +593,22 @@
         bsc#1263690</comment>
     <requestid>1352899</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>8f3cffb050b2d80ca09ce363dbdbb039</srcmd5>
+    <version>1.640.0</version>
+    <time>1782825085</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.640.0 (1.64)
+   see /usr/share/doc/packages/perl-Text-CSV_XS/ChangeLog
+  1.64	- 2026-06-22, H.Merijn Brand
+      * Fix syntax error in csv2xlsx
+  1.63	- 2026-06-22, H.Merijn Brand
+      * Check attribute lengths (memory protection)
+      * Minor code consistencies (not user-visible)
+      * Dropped support for 5.6.x and 5.8.0. Minimum perl is now 5.8.1
+      * Fix special str setting consistency for types, undef_str and
+        comment_str
+      * Characters []:*/\ are not allowed in XLSX sheet names</comment>
+    <requestid>1362464</requestid>
+  </revision>
 </revisionlist>
