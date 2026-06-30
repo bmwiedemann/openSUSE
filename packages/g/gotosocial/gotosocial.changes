@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Jun 29 17:33:40 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.22.0:
+  * Relay support: GoToSocial now supports subscribing to relays
+    (as an admin action), and pushing posts to relays (configured
+    per-user, with filters available).
+  * Automated cleanup of old remote posts: you can now configure your
+    instance to clean up threads of remote statuses that haven't been
+    interacted with by anyone on your instance. This should save a lot
+    of space in folks' databases!
+  * Delivery error tracking for remote instances: there's now a page
+    in the settings panel where admin can view errors encountered
+    while attempting delivery of posts to instances that may be
+    experiencing technical difficulties or may have gone offline.
+    You can use this to get a quick view on possible "dead" instances
+    that you can then remove from your database with a domain block.
+  * Accounts directory: there's a new setting to allow admins to
+    expose (or not) a directory of accounts on the instance! Your
+    account will only be shown in the directory if you opt in via
+    your privacy settings.
+  * Better tracking of deleted statuses/status tombstones: GtS now
+    stores tombstones for deleted statuses, allowing threads to
+    remain intact even when a status in the middle of the thread has
+    been deleted.
+  * Better status codes + info pages on deleted or hidden statuses:
+    the old 404 page when you try to open a hidden status in the
+    browser has been replaced with a more informative error page.
+  * Way more configurable http server + client options: we've exposed
+    a whole shitload of settings that you can tweak on the
+    HTTP client + HTTP server that GoToSocial uses. We don't
+    recommend changing these, but if you really want to, now you can.
+  * Show your Träwelling status on your profile by setting your
+    Träwelling page as a field value, similar to how our ListenBrainz
+    integration already works.
+  * Allow setting a name for your tokens, and sorting tokens by
+    last used time in the token view of the settings page.
+    Should make it a lot easier to track which tokens you've created,
+    and when they were used by which apps!
+  * Better layout for web view of profiles that hide all posts from
+    the web: it just uses a single-column view now.
+  * Full changelog:
+    https://codeberg.org/superseriousbusiness/gotosocial/releases/tag/v0.22.0#user-content-changelog
+
+-------------------------------------------------------------------
 Fri Jun 26 09:33:20 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 0.21.3:

@@ -17,7 +17,7 @@
 
 
 Name:           gotosocial
-Version:        0.21.3
+Version:        0.22.0
 Release:        0
 Summary:        An ActivityPub social network server, written in Golang
 License:        AGPL-3.0-only
@@ -36,7 +36,7 @@ BuildRequires:  rsync
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  yarn
-BuildRequires:  golang(API) >= 1.24.6
+BuildRequires:  golang(API) >= 1.25.0
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
 %sysusers_requires
