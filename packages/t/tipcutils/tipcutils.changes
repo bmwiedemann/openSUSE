@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jun 19 06:25:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Modernize specfile constructs
+- Make build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Tue Aug 30 07:19:05 UTC 2022 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to version 3.0.6

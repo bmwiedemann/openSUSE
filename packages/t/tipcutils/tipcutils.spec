@@ -1,7 +1,7 @@
 #
 # spec file for package tipcutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,11 @@ URL:            https://sourceforge.net/projects/tipc/files/tipc-utils
 Source0:        https://downloads.sourceforge.net/project/tipc/tipcutils_%{version}.tgz
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libdaemon-devel
-BuildRequires:  libmnl-devel
-BuildRequires:  libnl3-devel
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(libdaemon)
+BuildRequires:  pkgconfig(libmnl)
+BuildRequires:  pkgconfig(libnl-3.0)
 
 %description
 TIPC utilities (tipcutils) is a set of userspace programs used to
@@ -42,14 +42,14 @@ and reliably with other applications, regardless of their location
 within the cluster.
 
 %prep
-%setup -q -n %{name}
+%autosetup -p1 -n %{name}
 
 %build
 # Force autoreconf if libtool is oldest
-if [[ -f libtool ]]; then
+if [ -f libtool ]; then
     libtool_ver=$(libtool --version | head -n 1 | awk '{print $NF}')
     used_ver=$(cat libtool | grep "^macro_version=*.*.*" | cut -d "=" -f 2)
-    if [[ $libtool_ver == $(echo -e "$libtool_ver\n$used_ver" | sort -V | head -n1) ]]; then
+    if [ "$libtool_ver" = "$((echo "$libtool_ver"; echo "$used_ver") | sort -V | head -n1)" ]; then
         echo "libtool is on oldest version: need to force the reconf!"
         autoreconf --force --install
     else
@@ -59,14 +59,13 @@ else
     ./bootstrap
 fi
 %configure
-make clean
-make %{?_smp_mflags}
+%make_build clean
+%make_build
 
 %install
 %make_install
 
 %files
-%defattr(-,root,root,-)
 %{_sbindir}/tipc-link-watcher
 %{_sbindir}/tipclog
 %{_bindir}/tipc-pipe
