@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        7.2.1
+Version:        8.0.0
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -60,48 +60,48 @@ Source:         https://files.pythonhosted.org/packages/source/a/astropy/astropy
 # These are used by the python files so they must be available.
 Source100:      python-astropy-rpmlintrc
 # https://docs.astropy.org/en/stable/install.html#requirements
-BuildRequires:  %{python_module Cython >= 3 with %python-Cython < 4}
+BuildRequires:  %{python_module Cython >= 3.0.0 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.11}
 BuildRequires:  %{python_module extension-helpers >= 1.4 with %python-extension-helpers < 2}
-BuildRequires:  %{python_module numpy-devel}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyerfa >= 2.0.1.1}
-BuildRequires:  %{python_module setuptools_scm >= 6.2}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pyerfa >= 2.0.1.3}
+BuildRequires:  %{python_module setuptools >= 77.0.0}
+BuildRequires:  %{python_module setuptools_scm >= 8.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-Requires:       python-PyYAML >= 6
-Requires:       python-astropy-iers-data >= 0.2025.10.27.0.39.10
-Requires:       python-numpy >= 1.24
-Requires:       python-packaging >= 22
-Requires:       python-pyerfa >= 2.0.1.1
+Requires:       python-PyYAML >= 6.0.0
+Requires:       python-astropy-iers-data >= 0.2026.6.1.17.39.59
+Requires:       python-numpy >= 2.0
+Requires:       python-packaging >= 25.0
+Requires:       python-pyerfa >= 2.0.1.3
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # %%{_bindir}/showtable namespace clash
 Conflicts:      perl-Data-ShowTable
 # [recommended]
-Recommends:     python-scipy >= 1.9.2
-Recommends:     python-matplotlib >= 3.8
-Recommends:     python-narwhals >= 1.42
+Recommends:     python-scipy >= 1.13
+Recommends:     python-matplotlib >= 3.8.4
+Recommends:     python-narwhals >= 1.42.0
 # [all]
 Suggests:       libxml2-tools
 Suggests:       python-beautifulsoup4
 Suggests:       python-html5lib
 Suggests:       python-bleach
 Suggests:       python-dask-dataframe >= 2024.8.0
-Suggests:       python-h5py >= 3.9
-Suggests:       python-pandas >= 2
+Suggests:       python-h5py >= 3.11.0
+Suggests:       python-pandas >= 2.2.2
 Suggests:       python-sortedcontainers
 Suggests:       python-pytz
 Suggests:       python-jplephem
 Suggests:       python-setuptools
 Suggests:       python-mpmath
-Suggests:       python-asdf-astropy >= 0.3
+Suggests:       python-asdf-astropy >= 0.7.0
 Suggests:       python-Bottleneck
-Suggests:       python-pyarrow >= 14.0.2
+Suggests:       python-pyarrow >= 16.0
 Suggests:       python-fsspec >= 2023.4.0
 # Suggests:     python-s3fs
 %if %{with system_expat}
@@ -114,22 +114,22 @@ BuildRequires:  (pkgconfig(wcslib) >= 8.3 with pkgconfig(wcslib) < 8.8)
 %if %{with test}
 # SECTION [all]+[recommends]
 BuildRequires:  %{python_module Bottleneck}
-BuildRequires:  %{python_module asdf-astropy >= 0.3}
+BuildRequires:  %{python_module asdf-astropy >= 0.7.0}
 BuildRequires:  %{python_module beautifulsoup4}
 BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module dask-dataframe >= 2024.8.0 if %python-base > 3.12}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
-BuildRequires:  %{python_module h5py >= 3.9.0}
+BuildRequires:  %{python_module h5py >= 3.11.0}
 BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module jplephem >= 2.17.0}
-BuildRequires:  %{python_module matplotlib >= 3.8.0}
+BuildRequires:  %{python_module matplotlib >= 3.8.4}
 BuildRequires:  %{python_module mpmath}
-BuildRequires:  %{python_module pandas >= 2}
+BuildRequires:  %{python_module pandas >= 2.2.2}
 %ifnarch %arm
-BuildRequires:  %{python_module pyarrow >= 14.0.2}
+BuildRequires:  %{python_module pyarrow >= 16.0}
 %endif
 BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module scipy >= 1.9.2}
+BuildRequires:  %{python_module scipy >= 1.13}
 BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  libxml2-tools

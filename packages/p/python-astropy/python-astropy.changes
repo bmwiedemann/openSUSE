@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:42:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.0.0:
+  * Added astropy.config.temporary_cache_dir_path and
+    astropy.config.temporary_config_dir_path context managers,
+    which are safer alternatives to astropy.config.set_temp_cache
+    and astropy.config.set_temp_config respectively, and should
+    be preferred in new code, but are not drop-in replacements.
+    Added support for ASTROPY_CACHE_DIR and ASTROPY_CONFIG_DIR
+    environment variables, offering a more tightly scoped
+    alternative to XDG_CACHE_HOME and XDG_CONFIG_HOME
+    respectively. When both are defined, ASTROPY_ -prefixed
+    variables take precedence over XDG_ -prefixed ones. [#19575]
+  * Added a ensure_exists boolean option to cache and config path
+    getters, allowing callers to disable directory creation on
+    discovery with ensure_exists=False. When False, callers
+    should handle missing directory on their own. [#19616]
+  * The angular_diameter_distance method now accepts two redshift
+    arguments to compute the angular diameter distance between
+    objects at different redshifts. The previous separate method
+    angular_diameter_distance_z1z2 is deprecated and will be
+    removed in a future version.
+  * The trait astropy.cosmology.traits.NeutrinoComponent has been
+    added to work with objects that have attributes and methods
+    related to neutrinos.
+  * Removed deprecated module-level shim files
+    (astropy.cosmology.connect, astropy.cosmology.core,
+    astropy.cosmology.flrw, astropy.cosmology.funcs, and
+    astropy.cosmology.parameter), which were deprecated in v7.1.
+    All cosmology classes and functions should be imported
+    directly from astropy.cosmology.
+  * Registered the read_mrt() and write_mrt() methods with the
+    Cosmology class, enabling the import and export of
+    cosmological data to and from MRT files.
+  * Read CDS table where the data is split into multiple files
+  * Add a new io.ascii format mesa to read history and profile
+    output files from MESA, a well-known code for stellar
+    evolution calculations.
+  * Added a logical_as_bytes parameter to fits.open() that, when
+    set to True, causes FITS logical columns to be read as bytes
+    (S1) instead of bool, preserving NULL (undefined) values that
+    would otherwise be silently converted to False. Columns read
+    this way round-trip correctly when written back to a FITS
+    file, preserving b'T', b'F', and b'x00' (NULL) values. A
+    warning is now emitted when NULL values are present and
+    logical_as_bytes is not set.
+  * Extended the logical_as_bytes option of fits.open() to apply
+    to variable-length array (PL/QL) logical columns. When True,
+    VLA logical columns are returned as S1 byte arrays (one byte
+    per entry) so that b'x00' (NULL) is distinguishable from b'F'
+    (False); S1 row arrays also round-trip through writing. A
+    warning is emitted when NULL bytes are present in a VLA
+    logical column read with logical_as_bytes=False, except for
+    the ambiguous case of a column whose heap is entirely x00
+    (which may instead be an all-False column written by astropy
+    <= 7.2.0).
+
+-------------------------------------------------------------------
 Wed Jun 17 14:26:24 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 7.2.1

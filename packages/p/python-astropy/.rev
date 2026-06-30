@@ -2792,4 +2792,41 @@
 </comment>
     <requestid>1360073</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5be82759f6ffce6dbe7a1d69f4b1391d</srcmd5>
+    <version>8.0.0</version>
+    <time>1782825157</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 8.0.0:
+  * Added astropy.config.temporary_cache_dir_path and
+    astropy.config.temporary_config_dir_path context managers,
+    which are safer alternatives to astropy.config.set_temp_cache
+    and astropy.config.set_temp_config respectively, and should
+    be preferred in new code, but are not drop-in replacements.
+    Added support for ASTROPY_CACHE_DIR and ASTROPY_CONFIG_DIR
+    environment variables, offering a more tightly scoped
+    alternative to XDG_CACHE_HOME and XDG_CONFIG_HOME
+    respectively. When both are defined, ASTROPY_ -prefixed
+    variables take precedence over XDG_ -prefixed ones. [#19575]
+  * Added a ensure_exists boolean option to cache and config path
+    getters, allowing callers to disable directory creation on
+    discovery with ensure_exists=False. When False, callers
+    should handle missing directory on their own. [#19616]
+  * The angular_diameter_distance method now accepts two redshift
+    arguments to compute the angular diameter distance between
+    objects at different redshifts. The previous separate method
+    angular_diameter_distance_z1z2 is deprecated and will be
+    removed in a future version.
+  * The trait astropy.cosmology.traits.NeutrinoComponent has been
+    added to work with objects that have attributes and methods
+    related to neutrinos.
+  * Removed deprecated module-level shim files
+    (astropy.cosmology.connect, astropy.cosmology.core,
+    astropy.cosmology.flrw, astropy.cosmology.funcs, and
+    astropy.cosmology.parameter), which were deprecated in v7.1.
+    All cosmology classes and functions should be imported
+    directly from astropy.cosmology.
+  * Registered the read_mrt() and write_mrt() methods with the</comment>
+    <requestid>1362542</requestid>
+  </revision>
 </revisionlist>
