@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:52:10 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 33.0.7:
+  * Fix build error with OpenSSL 4.0
+    (gh#nextcloud/desktop#10229)
+  * Prevent app nap and silent termination
+    (gh#nextcloud/desktop#10232)
+  * Read OCC_UPDATE_URL only for development builds
+    (gh#nextcloud/desktop#10241)
+  * Remove gap after status messages
+    (gh#nextcloud/desktop#10246)
+  * Improve end‑to‑end encryption
+    (gh#nextcloud/desktop#10248)
+  * Manually port changes from PR #10252
+    (gh#nextcloud/desktop#10256)
+  * Confine enumeration logic
+    (gh#nextcloud/desktop#10261)
+ 
+-------------------------------------------------------------------
 Wed Jun 24 05:03:54 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 33.0.6:
