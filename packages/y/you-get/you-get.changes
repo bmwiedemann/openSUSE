@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jun 17 05:29:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Use pyproject macros to build and install the module.
+- List directories under sitelib explicitly.
+
+-------------------------------------------------------------------
 Sat Jan  4 08:42:32 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 0.4.1743

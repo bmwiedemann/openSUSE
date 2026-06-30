@@ -1,7 +1,7 @@
 #
 # spec file for package you-get
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,10 @@ Source0:        https://github.com/soimort/you-get/archive/v%{version}.tar.gz#/%
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  fish
-BuildRequires:  python3-devel
+BuildRequires:  python3
+BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  zsh
 Requires:       ffmpeg
 Requires:       python3-dukpy
@@ -75,10 +77,10 @@ done
 sed -i 's|^#!/usr/bin/env python3|#!%{_bindir}/python3|' you-get
 
 %build
-python3 setup.py build
+%python3_pyproject_wheel
 
 %install
-python3 setup.py install --root=%{buildroot} --prefix=%{_prefix}
+%python3_pyproject_install
 install -m0755 you-get %{buildroot}%{_bindir}
 %fdupes -s %{buildroot}%{python3_sitelib}
 install -Dm644 contrib/completion/you-get-completion.bash %{buildroot}%{_datadir}/bash-completion/completions/you-get
@@ -91,7 +93,8 @@ install -Dm644 contrib/completion/_you-get %{buildroot}%{_datadir}/zsh/site-func
 %doc CHANGELOG.rst README.rst
 %license LICENSE.txt
 %{_bindir}/you-get
-%{python3_sitelib}/*
+%{python3_sitelib}/you_get
+%{python3_sitelib}/you_get-%{version}.dist-info
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/you-get
