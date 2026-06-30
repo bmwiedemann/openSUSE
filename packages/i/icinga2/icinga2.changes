@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:07:55 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.2:
+  * Also execute JsonDecode stack size test in pthread if available
+  * Use protected stack for new-style Boost.Asio coroutines
+  * Add tests for JsonDecode depth limit in combination with coroutine stacks
+  * tests: move SpawnSynchronizedCoroutine() to utils.cpp
+  * Prevent HTTP requests from creating deeply nested data structures
+  * Don't shut down JSON-RPC connection if a message fails to parse
+  * JsonDecode: include path in JSON depth error
+  * JsonDecode: add depth limit
+  * Add filter-expression permission
+  * Release v2.16.2
+  * Bump OpenSSL shipped for Windows to v3.5.7
+  * Check if client is a valid endpoint before updating CA-certificate
+  * ConfigWriter::EmitScope: Escape import
+  * GHA: Windows: run on Windows Server 2022
+  * Guard against assert() failures in SendJsonError()
+  * Fix handling `std::ifstream` exceptions in `ConfigFilesHandler`
+  * Fix handling the `std::ifstream::failbit` in `OutgoingHttpMessage`
+  * Add test-case for `SendFile()` with non-existant paths
+  * This release fixes some critical security vulnerabilities_
+    - Verify that certificate update requests come from an authorized endpoint
+      (GHSA-vj39-ww8j-vvx5)
+    - Fix stack overflow due to deeply nested data structures
+      (GHSA-wh38-wg57-5w7g)
+    - Prevent arbitrary config injection on object creation via the API
+      (GHSA-jgqj-x5j9-vgcm)
+
+-------------------------------------------------------------------
 Sun May 31 13:05:53 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.1:
