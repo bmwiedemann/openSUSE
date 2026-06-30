@@ -375,4 +375,15 @@
 - Drop update-go-net.patch which has been adopted upstream.</comment>
     <requestid>1357016</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>3d8dfdf04ac19c801cea7de9bd746eb3</srcmd5>
+    <version>6.6.3</version>
+    <time>1782825185</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-46604: TIFF decoder can panic when decoding an invalid
+  image with an out-of-bounds strip offset (bsc#1269600)
+  * Add update-golang-image-1.patch and update-golang-image-2.patch
+    to backport upstreams fix.</comment>
+    <requestid>1362545</requestid>
+  </revision>
 </revisionlist>

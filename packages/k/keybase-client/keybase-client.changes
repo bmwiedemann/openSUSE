@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:36:43 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- CVE-2026-46604: TIFF decoder can panic when decoding an invalid
+  image with an out-of-bounds strip offset (bsc#1269600)
+  * Add update-golang-image-1.patch and update-golang-image-2.patch
+    to backport upstreams fix.
+
+-------------------------------------------------------------------
 Wed Jun  3 16:27:35 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - Update to version 6.6.3
