@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Tue Jun 30 07:39:49 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.1:
+  * FIX: databases containing a token with an issuer but no account
+    name (for example some ProtonMail or Steam entries) refused to
+    open on 5.1.0 with "Could not open database: Token has a missing
+    label", locking you out of the entire database. A token is now
+    valid as long as it has either an account name or an issuer; the
+    same rule applies to imports and manual token entry (#458)
+
+-------------------------------------------------------------------
+Thu Jun 25 07:14:45 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.0:
+  * BREAKING: After upgrading to 5.1.0, older OTPClient releases
+    will NOT be able to open v3 databases, so keep a backup before
+    upgrading if you may need to downgrade
+  * NEW: webcam QR scanning runs on a worker thread, no more main-
+    thread freeze while the camera initializes or while frames are
+    decoded
+  * NEW: you can quit OTPClient while the database is locked (#456)
+  * NEW: the app locks automatically when the system suspends (via
+    logind PrepareForSleep), so the database is never left
+    decrypted across sleep
+  * IMPROVEMENT: database file format bumped to v3 with a portable,
+    byte-addressable big-endian header. v1 and v2 databases are
+    read transparently and upgraded to v3 on first successful
+    open/unlock. Older OTPClient releases cannot open v3 databases,
+    so keep a backup before upgrading if you may need to downgrade
+  * IMPROVEMENT: cross-process write serialization via a bounded-
+    wait .lock sidecar, prevents two OTPClient instances from
+    clobbering each other on save
+  * IMPROVEMENT: search-filter cache, large token lists filter
+    without re-walking the model on every keystroke
+  * IMPROVEMENT: changing the password now requires verifying the
+    current one before the change is applied
+  * IMPROVEMENT: CLI plain imports dispatch by file type
+    automatically, no longer prompt for a password on unencrypted
+    formats
+  * IMPROVEMENT: Google Authenticator migration import was
+    rewritten with bounded payload/token/batch limits and now
+    reports multi-batch progress, across the file, screen, and
+    webcam paths
+  * SECURITY: locking wipes the decrypted database and master key
+    from memory; unlocking re-derives the key instead of comparing
+    a copy held in RAM
+  * SECURITY: generated codes, notification text, clipboard
+    contents, and per-token values are wiped after use, and live
+    codes are kept in libgcrypt secure memory
+  * SECURITY: search-provider activation IDs are now random 128-bit
+    capability tokens with a 30-second TTL and single-use
+    enforcement, replacing the predictable db_index:json_index
+    scheme
+  * SECURITY: HOTP entries are excluded from the search provider at
+    load time, advancing a counter from a desktop search result is
+    too easy to do by accident
+  * SECURITY: transient password buffers are wiped after use across
+    the GUI and CLI, including on password-dialog cancel and
+    dispose
+  * SECURITY: search-provider derived-key cache + rate limit on OTP
+    delivery, using a single global rate bucket (no per-connection
+    bypass) and an idle-wipe timer for keys and caches
+  * SECURITY: 2FAS encrypted import now surfaces decryption errors
+    instead of silently swallowing them
+  * SECURITY: broad correctness and hardening pass across src/
+    (core, GUI, importers, CLI), including a parse-uri double-error
+    fix, an authpro stream check, a bytes_to_hexstr overflow guard,
+    and NULL-checked secure-memory allocations
+  * SECURITY: tightened Argon2id parameter bounds (MAX_ITER 100 ->
+    64, MAX_MC 4 GiB -> 1 GiB, MAX_PARAL 64 -> 16) to reject
+    pathological configurations
+  * FIX: v2 databases were misread as a far-future format version
+    and refused to open; both v2 and v3 headers are now read
+    correctly
+  * FIX: the window no longer gets stuck on the "Unlocking..." page
+    when a database fails to load for a reason other than a missing
+    file or wrong password; it drops back to the no-database view
+    so you can retry
+  * FIX: the desktop search provider copies the OTP to the
+    clipboard asynchronously on KDE; the synchronous Klipper D-Bus
+    call could block every activation for up to a second when
+    Klipper did not reply in time, delaying the copy and the
+    notification
+  * FIX: CLI HOTP counter is now persisted before the code is
+    printed, the counter upper bound is exclusive everywhere, the
+    terminal is restored on interrupt, and CR/LF is stripped from
+    piped input
+  * FIX: memory leaks in DB and OTP handling paths
+  * FIX: freeotp importer secmem budget and GError-overwrite bug
+    that also affected other importers
+  * FIX: in-memory database state is now restored if an encrypt-on-
+    save fails, instead of being left half-mutated
+  * FIX: debianStable CI build and the JPEG sanitizers test
+
+-------------------------------------------------------------------
 Thu May 28 10:01:07 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.0.6:
