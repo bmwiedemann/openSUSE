@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:40:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.3.0:
+  * #1637 Support for Django 6.0
+  * #1642 Provide App Name and Scope in Device Confirmation View
+  * #1636 Remove support for Python 3.8 and 3.9
+  * #1628 Fix inaccurate help_text on client_secret field of
+    Application model
+  * #1674 Add `list_select_related` to `RefreshTokenAdmin` to
+    avoid unbounded `JOIN` queries on the changelist
+  * #1621 Fix device code tokens getting the wrong scope.
+  * #1683 Fix swapped `DeviceGrant` model usage across the device
+    authorization flow
+  * #1689 Fix invalid `Cache-Control` header value on the OIDC
+    JWKS endpoint
+  * #1692 Fix consent violation and scope escalation.
+
+-------------------------------------------------------------------
 Sat Mar 14 21:31:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

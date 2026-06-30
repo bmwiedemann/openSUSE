@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-oauth-toolkit
-Version:        3.2.0
+Version:        3.3.0
 Release:        0
 Summary:        OAuth2 Provider for Django
 License:        BSD-2-Clause
