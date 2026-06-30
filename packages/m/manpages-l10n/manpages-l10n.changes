@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 09:41:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.31.0:
+  * License collection almost completed (99.98%)
+  * Updated and added many translations
+  * Improve formatting of last changelog entries
+
+-------------------------------------------------------------------
 Fri May 15 16:18:45 UTC 2026 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Exclude files conflicting with net-tools and wireless-tools.
