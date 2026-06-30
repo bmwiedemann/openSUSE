@@ -966,4 +966,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment>gpgme 2.1.0 (forwarded request 1356107 from AndreasStieger)</comment>
     <requestid>1356110</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>d0ed2306774fb1f1bf32b60ec8742797</srcmd5>
+    <version>2.1.1</version>
+    <time>1782825076</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362358</requestid>
+  </revision>
 </revisionlist>

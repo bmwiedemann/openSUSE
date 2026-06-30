@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jun 29 04:08:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.1.1:
+  * gpgme_op_export now also returns operational errors
+
+-------------------------------------------------------------------
 Sun May 31 06:44:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.1.0:
