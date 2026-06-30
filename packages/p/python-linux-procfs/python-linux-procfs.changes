@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:15:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.7.4:
+  * Fix spelling mistakes in comments
+  * Modernize packaging and update authorship
+  * Remove import of range from six.moves
+
+-------------------------------------------------------------------
 Wed Mar 26 12:30:06 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Use libalternatives instead of update-alternatives, bsc#1240096

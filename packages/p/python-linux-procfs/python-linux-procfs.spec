@@ -1,7 +1,7 @@
 #
 # spec file for package python-linux-procfs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 %endif
 
 Name:           python-linux-procfs
-Version:        0.7.3
+Version:        0.7.4
 Release:        0
 Summary:        Linux /proc abstraction classes
 License:        GPL-2.0-only
-URL:            https://rt.wiki.kernel.org/index.php/Tuna
+URL:            https://git.kernel.org/pub/scm/libs/python/python-linux-procfs/python-linux-procfs.git
 Source:         https://cdn.kernel.org/pub/software/libs/python/%{name}/%{name}-%{version}.tar.xz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
