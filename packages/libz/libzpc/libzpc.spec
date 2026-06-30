@@ -17,17 +17,18 @@
 
 
 Name:           libzpc
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source0:        https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
-Source1:        libzpc-man-%{version}.tar.gz
+Source1:        libzpc-rpmlintrc
 
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.10
+BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
 
@@ -36,44 +37,72 @@ BuildRequires:  pkgconfig(libssl) >= 3.0.7
 
 ExclusiveArch:  s390x
 
-# Upgrade path handling for v2.0.0 architectural split.
-# The current architecture of libzpc 2.0.0
-# does not support a development package.
-### Obsoletes:      libzpc1 < %%{version}-%%{release}
-### Obsoletes:      libzpc-devel < %%{version}-%%{release}
-### Provides:       libzpc = %%{version}-%%{release}
-
 %description
-The IBM Z Protected-key Crypto library libzpc is a library targeting
-the 64-bit Linux on IBM Z (s390x) platform. It provides interfaces for
-cryptographic primitives. The underlying implementations make use of
-z/Architecture's performance-boosting hardware support and its
-protected-key feature which ensures that key material is never present
-in main memory at any time.
+The IBM Z Protected-key Crypto library %{name} is an open-source project
+targeting the 64-bit Linux on IBM Z (s390x) platform. It provides access
+to z/Architecture's extensive performance-boosting hardware support and its
+protected-key feature which ensures that key material is never present in
+main memory at any time.
+
+
+%ifarch s390x
+%package	provider
+Summary:        OpenSSL provider module for %{name}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description	provider
+The %{name}-provider package contains a provider module for OpenSSL v3.0 (and
+later), interfacing to the protected key feature of z/Architecture.
+%endif
+
+%package	tools
+Summary:        Key management tool for %{name} keys
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+
+%description	tools
+The %{name}-tools package contains a key management tool for key origins.
+As the protected keys itself are volatile, the tooling can be used to manage
+persistent protected key origins, from which protected keys can be (re-)derived.
 
 %prep
 %autosetup -p1
+%global modulesdir %(pkg-config --variable=modulesdir libcrypto)
 
 %build
-%cmake -DBUILD_DOC=OFF
+%cmake
 %make_build
 
 %install
 cd build
-# Create dummy files so the installer doesn't crash when BUILD_DOC=OFF
-touch zpckey.1 hbkzpcprovider.conf.5 hbkzpcprovider.7
+touch hbkzpcprovider.conf.5 hbkzpcprovider.7 zpckey.1
 %make_install
+install -m644 hbkzpcprovider.conf \
+        -D -t %{buildroot}%{_sysconfdir}/pki/tls/openssl.d/
 
-# Overwrite the dummy files with the real pre-generated man pages
-tar -xzf %{SOURCE1} -C %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_mandir}
+
+%check
+%ctest
 
 %files
+%doc README.md CHANGES.md
 %license LICENSE
-%doc README.md
-%{_bindir}/zpckey
-%{_libdir}/ossl-modules/zpcprovider.so
-%{_mandir}/man1/zpckey.1*
+
+%ifarch s390x
+%files provider
+%license LICENSE
+%{modulesdir}/zpcprovider.so
 %{_mandir}/man5/hbkzpcprovider.conf.5*
 %{_mandir}/man7/hbkzpcprovider.7*
+%dir %{_sysconfdir}/pki
+%dir %{_sysconfdir}/pki/tls
+%dir %{_sysconfdir}/pki/tls/openssl.d
+%config(noreplace) %{_sysconfdir}/pki/tls/openssl.d/hbkzpcprovider.conf
+%endif
+
+%files tools
+%license LICENSE
+%{_bindir}/zpckey
+%{_mandir}/man1/zpckey.1*
 
 %changelog

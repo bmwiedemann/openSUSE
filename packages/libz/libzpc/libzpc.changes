@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jun 29 16:52:29 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 2.0.1 (jsc#PED-16483)
+  * [FIX] Fix compile warnings and errors on i386/i686
+  * spec: Remove the pandoc dependency
+  * cmake: Change man-page related build target
+  * cmake: Install pre-built man-pages
+  * man: Update pre-built man-pages
+  * Fix detection of PCC instruction availability 
+- Add new sub-packages
+  * libzpc-provider*
+  * libzpc-tools*
+- Add libzpc-rpmlintrc file as Source1
+- Obsoletes the libzpc-man-*.tar.gz file
+
+-------------------------------------------------------------------
 Wed Jun 17 06:48:11 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Update to version 2.0.0:
