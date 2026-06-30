@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:49:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60.3:
+  * Move OOM watching out of the lib module into the binary
+  * lib/model: make ContainerStats sub-stats pointers to convey
+    collection presence
+- update to 0.60.1:
+  * cpuload/netlink: report the real error and skip the reader on
+    cgroup v2
+  * deploy: add lib/go.mod to the image build's dependency cache
+- update to 0.60.0:
+  * Exposing additional cgroup v2 memory.stat metrics
+  * lib: introduce github.com/google/cadvisor/lib — a lean,
+    kubelet-focused library module
+- bump x/net to 0.55 (bsc#1266645, CVE-2026-39821)
+
+-------------------------------------------------------------------
+Sun Jun 28 20:43:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.57.0 (bsc#1260305, CVE-2026-33186):
+  * integration: add more Docker container handler tests
+  * integration: add containerd container handler tests
+  * integration: add Prometheus metrics endpoint tests
+  * fix: support podman `volatile-containers.json` and/or
+    `containers.json`
+  * proposed roadmap for cAdvisor
+  * remove log message when you can't read productName
+  * Refactor Github Action per b/485167538
+  * fix crio deadlock in getting crio sandbox containers
+  * Add container_creation_time_seconds (previously:
+    container_start_time_seconds); use runtime start time for
+    container_start_time_seconds (podman & docker)
+  * deps: github.com/moby/moby/client v0.4.0, moby/api v1.54.1,
+    containerd/ttrpc v1.2.8
+  * fix(build): update k8s-staging-test-infra image in integ
+    tests
+  * feat(manager/container): add configurable initial splay and
+    max jitter factors
+  * feat(manager): add constraint data in OOM events
+  * fix: add v-prefixed GHCR image tags for release consistency
+  * build(deps): bump the go_modules group across 2 directories
+    with 1 update
+  * Expose cgroup v2 memory.events as Prometheus metrics
+  * deploy: bump base images to Alpine 3.23
+
+-------------------------------------------------------------------
+Sun Jun 28 20:36:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.56.2:
+  * docker: fix nil pointer dereference when GraphDriver is nil
+  * Update healthcheck.sh
+  * Update entrypoint.sh
+  * docker: migrate to github.com/moby/moby modules
+  * Update containerd, docker, moby, and opencontainers dependencies
+  * update README
+  * Update copyright year in healthcheck.sh
+  * Update copyright year in entrypoint.sh
+  * Added cadvisor boilerplate header to deploy/entrypoint.sh
+  * Added cadvisor boilerplate header to deploy/healthcheck.sh
+  * Add EXPOSE 8080 to document default port
+  * Fix healthcheck to respect custom port flag
+  * Add entrypoint wrapper to preserve -logtostderr flag
+  * add std in summary
+  * fix formatting
+  * Update container/docker/factory.go
+  * Update factory.go
+  * Update factory.go
+  * Update factory.go
+  * Fix for issue #3772
+  * docs: replace references to docker registry `gcr.io` with `ghcr.io`
+  * Expose s390x CPU Topology to Prometheus
+
+-------------------------------------------------------------------
+Sun Jun 28 20:35:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.55.1:
+  * manager: fix race condition in Stop() using sync.Once
+  * manager: fix race condition in Stop() using sync.Once
+- update to 0.55.0:
+  * Reduce lock contention in manager package
+  * container/podman: fix `zfsFilesystem` and `zfsParent` being
+    swapped.
+  * devicemapper: use atomic.Value for lock-free cache reads
+  * Reduce lock contention in cache/memory package
+  * zfs: use atomic.Value for lock-free cache reads
+  * fix: docker health check status not updating
+  * align docker and podman implementations
+  * disable CGO for fully static binaries
+  * close stale PRs and Issues
+  * refactor(container): Migrate to std lib context package
+  * add workflow_dispatch to stale github action
+  * plugin factory: remove useless RegisterPlugin log output
+  * feat(summary): add count in percentiles
+  * machine: fixes for unix.Uname use
+  * feat: add LoadTaskProcess api in containerd client
+  * feat: add exit code in container deletion events
+  * feat: add CRI-O integration tests
+  * test: reorganize integration tests and add CRI-O test
+    coverage
+  * refactor: remove duplicate tests from api package and add
+    missing CRI-O tests
+  * fix: update golang.org/x/crypto to v0.45.0 to fix security
+    vulnerabilities
+  * container/(docker|podman): rewrite obtaining IP-address
+  * Upgrade GitHub Actions to latest versions
+  * Upgrade GitHub Actions for Node 24 compatibility
+  * feat: add fs io cost metrics
+  * go.mod: github.com/docker/go-connections v0.6.0
+  * fs: introduce pluggable filesystem architecture
+  * Apply build tags liberally for supported environments (linux)
+  * Replace godirwalk with os.ReadDir from standard library
+  * feat: add cpu burst metrics
+- update to 0.54.1:
+  * chore: update cAdvisor image registry and version in
+    DaemonSet
+  * ci: update Ubuntu version to 24.04 in GitHub Actions
+    workflows
+  * chore: re-enable golangci-lint checks and fix violations
+  * container/docker: GetStats: prevent nil-pointer
+- update to 0.54.0:
+  * Let us try to use ghcr.io for container images
+  * Add a GH action to create release binaries
+  * use qemu/docker to build arch specific binaries
+  * add -buildvcs=false to GH action
+  * fix(3643) add containerd-snapshotter support
+  * Update README.md with latest Docker image version and
+    registry
+  * Rebase to alpine 3.22, install thin-provisioning-tools from
+    main repo
+  * feat: add metric for container health check status  (DOCKER-
+    Specific!)
+  * Update golang and deps
+- update to version 0.54.1:
+  * container/docker: GetStats: prevent nil-pointer
+  * chore: re-enable golangci-lint checks and fix violations
+  * fix: use Docker-embedded containerd socket in integration tests
+  * refactor: remove Mesos container support
+  * ci: add diagnostic logging for docker/containerd debugging
+  * fix: persist containerd client error to prevent nil pointer dereference
+  * ci: update Ubuntu version to 24.04 in GitHub Actions workflows
+  * chore: update cAdvisor image registry and version in DaemonSet
+  * fix: handle nil Health state in docker container handler
+  * ci: update Go version to 1.25 in GitHub Actions workflows
+  * fix: update dependencies to address security vulnerabilities
+  * add health status tests
+  * feat: Update docker container handler to include health status in stats
+  * Rebase to alpine 3.22, install thin-provisioning-tools from main repo
+  * Update README.md Docker image reference
+  * fix(3643) add containerd-snapshotter support
+  * add -buildvcs=false to GH action
+  * use qemu/docker to build arch specific binaries
+  * Add a GH action to create release binaries
+  * Let us try to use ghcr.io for container images (#3699)
+
+-------------------------------------------------------------------
+Sun Jun 28 20:32:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.53.0 (bsc#1257429, CVE-2024-45310,
+    bsc#1267788, CVE-2026-10722):
+  * fix potential hang on containerd client.LoadContainer
+  * Bump dependencies to latest (June 2, 2025)
+  * fix: fix call Errorf with wrong err
+  * Fixed possible data race
+  * Use built-in error wrapping instead of pkg/errors
+- drop CVE-2025-22868.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Mar 17 21:46:43 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.52.1:

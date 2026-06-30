@@ -1,7 +1,7 @@
 #
 # spec file for package cadvisor
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,21 +19,20 @@
 
 %global goipath github.com/google/cadvisor
 Name:           cadvisor
-Version:        0.52.1
+Version:        0.60.3
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
 Group:          System/Management
 URL:            https://github.com/google/cadvisor
-Source:         %{name}-%{version}.tar.zst
+Source:         https://github.com/google/cadvisor/archive/refs/tags/v%{version}.tar.gz#/cadvisor-%{version}.tar.gz
 Source1:        vendor.tar.zst
 Source2:        cadvisor.service
 Source3:        sysconfig.cadvisor
-Patch1:         CVE-2025-22868.patch
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.26
 Requires:       ca-certificates
 Requires:       git-core
 Requires:       rpm
@@ -56,7 +55,7 @@ hierarchically.
 
 %prep
 %autosetup -p1 -a1
-mv vendor cmd
+mv {vendor,go.sum,go.mod} cmd
 
 %build
 %{goprep} %{goipath}

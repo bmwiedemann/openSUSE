@@ -77,4 +77,41 @@
 - add CVE-2025-22868.patch (CVE-2025-22868, bsc#1239291)</comment>
     <requestid>1253945</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>00abb36c82a19d53d952969d51ab4b9c</srcmd5>
+    <version>0.60.3</version>
+    <time>1782825099</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.60.3:
+  * Move OOM watching out of the lib module into the binary
+  * lib/model: make ContainerStats sub-stats pointers to convey
+    collection presence
+- update to 0.60.1:
+  * cpuload/netlink: report the real error and skip the reader on
+    cgroup v2
+  * deploy: add lib/go.mod to the image build's dependency cache
+- update to 0.60.0:
+  * Exposing additional cgroup v2 memory.stat metrics
+  * lib: introduce github.com/google/cadvisor/lib — a lean,
+    kubelet-focused library module
+- bump x/net to 0.55 (bsc#1266645, CVE-2026-39821)
+
+- update to 0.57.0 (bsc#1260305, CVE-2026-33186):
+  * integration: add more Docker container handler tests
+  * integration: add containerd container handler tests
+  * integration: add Prometheus metrics endpoint tests
+  * fix: support podman `volatile-containers.json` and/or
+    `containers.json`
+  * proposed roadmap for cAdvisor
+  * remove log message when you can't read productName
+  * Refactor Github Action per b/485167538
+  * fix crio deadlock in getting crio sandbox containers
+  * Add container_creation_time_seconds (previously:
+    container_start_time_seconds); use runtime start time for
+    container_start_time_seconds (podman &amp; docker)
+  * deps: github.com/moby/moby/client v0.4.0, moby/api v1.54.1,
+    containerd/ttrpc v1.2.8
+  * fix(build): update k8s-staging-test-infra image in integ</comment>
+    <requestid>1362624</requestid>
+  </revision>
 </revisionlist>
