@@ -1,0 +1,10 @@
+--- wlr-sunclock-1.2.1/meson.build.orig	2026-06-30 15:51:50.631993243 +0200
++++ wlr-sunclock-1.2.1/meson.build	2026-06-30 15:52:02.312226458 +0200
+@@ -15,6 +15,7 @@
+ add_project_arguments(cc.get_supported_arguments([
+     '-Wno-deprecated-declarations',
+     '-Wno-overlength-strings',
++    '-Wno-error=pedantic',
+ ]), language: 'c')
+ 
+ executable(

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jun 30 13:55:23 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- pedantic-fix.patch: fixes build against current gcc ...
+
+-------------------------------------------------------------------
 Tue Jan 20 08:08:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.2.1:

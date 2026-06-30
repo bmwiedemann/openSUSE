@@ -24,6 +24,7 @@ License:        MIT
 Group:          Productivity/Graphics/Other
 URL:            https://github.com/sentriz/wlr-sunclock
 Source:         https://github.com/sentriz/wlr-sunclock/archive/v%{version}.tar.gz
+Patch0:         pedantic-fix.patch
 BuildRequires:  gtk4-devel
 BuildRequires:  gtk4-layer-shell-devel
 BuildRequires:  meson >= 0.46.0
@@ -34,7 +35,7 @@ BuildRequires:  pkgconfig(librsvg-2.0)
 Wayland desktop widget to show to the sun's shadows on earth.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %meson

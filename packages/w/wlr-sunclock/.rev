@@ -44,4 +44,12 @@
   * Add optional argp dependency to allow builds on musl-based systems</comment>
     <requestid>1328187</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>07a906471e805728188a5f2db2b666c8</srcmd5>
+    <version>1.2.1</version>
+    <time>1782829409</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1362676</requestid>
+  </revision>
 </revisionlist>
