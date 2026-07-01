@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:07:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.6:
+  * Enhancements
+    - Verify managed toolchain downloads before installation
+      (#2229)
+    - Add PREK_DOCKER_NO_INIT to opt-out Docker --init (#2242)
+    - Improve subprocess error messages (#2257)
+    - Split run concurrency knobs: PREK_CONCURRENT_HOOKS and
+      PREK_CONCURRENT_BATCHES (#2276)
+  * Performance
+    - Avoid allocating markdown extensions per file (#2245)
+    - Avoid unchanged config tracking writes (#2247)
+    - Delay trailing whitespace output buffer (#2244)
+    - Prefilter VCS permalink lines (#2253)
+    - Skip unnecessary submodule updates during hook repo clone
+      (#2255)
+  * Documentation
+    - Document language_version inferring for Python and Go (#2241)
+  * Other changes
+    - Refactor env var handling (#2277)
+    - Use serde-saphyr for YAML string quoting (#2228)
+
+-------------------------------------------------------------------
 Mon Jun 15 16:07:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.5:
