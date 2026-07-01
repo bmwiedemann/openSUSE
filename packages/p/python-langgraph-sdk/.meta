@@ -1,0 +1,7 @@
+<package name="python-langgraph-sdk" project="openSUSE:Factory">
+  <title>SDK for interacting with the LangGraph API</title>
+  <description>The LangGraph SDK provides synchronous and asynchronous Python clients for
+interacting with the LangGraph API, exposing helpers for assistants, threads,
+runs, crons and the persistent store.</description>
+  <url>https://github.com/langchain-ai/langgraph/tree/main/libs/sdk-py</url>
+</package>

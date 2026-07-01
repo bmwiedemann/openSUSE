@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>87966c0505ff9b1b4bd4d9ee900f9f51</srcmd5>
+    <version>0.4.2</version>
+    <time>1782916541</time>
+    <user>anag_factory</user>
+    <comment>New package python-langgraph-sdk. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
+    <requestid>1362382</requestid>
+  </revision>
+</revisionlist>
