@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jul 01 09:10:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.6.0:
+  * Fixes
+    - fix(security): update dependencies [SECURITY] (#587)
+      @renovate[bot]
+    - fix: suppress ruff PLW0717 to unblock renovate (#586)
+      @rockygeekz
+    - fix(security): update dependencies [SECURITY] (#583)
+      @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#582)
+      @renovate[bot]
+    - fix: reorder pyproject.toml sections to match tombi canonical
+      ordering (#579) @Hrithik-Gavankar
+    - fix: update '_extends' syntax for release-drafter v7
+      compatibility (#576) @rockygeekz
+  * Maintenance
+    - chore: remove previously-synced agent skills (#590)
+      @ansibuddy
+    - fix(security): update dependencies [SECURITY] (#587)
+      @renovate[bot]
+    - [pre-commit.ci] pre-commit autoupdate (#566)
+      @pre-commit-ci[bot]
+    - chore(deps): update all dependencies (#573) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#583)
+      @renovate[bot]
+    - chore(deps): bump pymdown-extensions from 10.21.2 to 10.21.3
+      (#577) @dependabot[bot]
+    - chore(deps): bump idna from 3.13 to 3.15 (#578)
+      @dependabot[bot]
+    - fix(security): update dependencies [SECURITY] (#582)
+      @renovate[bot]
+    - chore(deps): update pep621 (#574) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] - abandoned
+      (#568) @renovate[bot]
+    - chore(deps): update pep621 (#565) @renovate[bot]
+    - chore(deps): bump pillow from 12.1.1 to 12.2.0 (#570)
+      @dependabot[bot]
+    - chore(deps): update all dependencies (#564) @renovate[bot]
+    - chore(deps-dev): bump pip from 26.0.1 to 26.1 (#572)
+      @dependabot[bot]
+    - chore(deps-dev): bump cryptography from 46.0.6 to 46.0.7
+      (#567) @dependabot[bot]
+    - chore(deps-dev): bump pytest from 9.0.2 to 9.0.3 (#571)
+      @dependabot[bot]
+    - chore(deps-dev): bump uv from 0.11.2 to 0.11.6 (#569)
+      @dependabot[bot]
+
+-------------------------------------------------------------------
 Fri Apr 03 05:32:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.4.0 (26.3.0 was not released):
