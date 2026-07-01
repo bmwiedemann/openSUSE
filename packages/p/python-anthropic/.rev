@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1a2d86db7afa69b5878b77e8f4fa17a6</srcmd5>
+    <version>0.112.0</version>
+    <time>1782916526</time>
+    <user>anag_factory</user>
+    <comment>New package python-anthropic. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
+    <requestid>1362376</requestid>
+  </revision>
+</revisionlist>

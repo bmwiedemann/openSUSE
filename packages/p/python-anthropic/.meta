@@ -1,0 +1,8 @@
+<package name="python-anthropic" project="openSUSE:Factory">
+  <title>The official Python library for the Anthropic API</title>
+  <description>The Anthropic Python library provides convenient access to the
+Anthropic REST API from any Python 3.9+ application. It includes type
+definitions for all request params and response fields, and offers both
+synchronous and asynchronous clients powered by httpx.</description>
+  <url>https://github.com/anthropics/anthropic-sdk-python</url>
+</package>
