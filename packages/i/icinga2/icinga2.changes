@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 01 12:11:44 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.3:
+  * Release v2.16.3
+  * Add Dominik Bay to AUTHORS
+  * Restore single-argument Json.decode() in the DSL
+  * Add upgrading docs explaining the config file change for logrotate
+
+-------------------------------------------------------------------
 Mon Jun 29 13:07:55 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.2:
