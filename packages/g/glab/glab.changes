@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:48:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.106.0:
+  * Features
+    - ca99cc32: feat(packages): add delete command (Oscar Tovar
+      otovar@gitlab.com)
+    - 2ffa2f05: feat(packages): add download command (Oscar Tovar
+      otovar@gitlab.com)
+    - b323eaca: feat(stack): add --reword flag to fix commits
+      without staging files (Gary Holtz is no longer with GitLab
+      gary@holtz.tech)
+  * Documentation
+    - d0f83885: docs(whatsnew): document show_whats_new config and
+      env var (Kai Armstrong karmstrong@gitlab.com)
+    - 15b64e4e: docs: refine packages and container-registry
+      command help text (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 45b73a0f: chore(deps): update module github.com/docker/cli to
+      v29.6.0+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 28d5db5c: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.42.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - b14d7c7c: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.43.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 0987f270: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.44.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 2661db6c: chore: explain that token env will work in snap
+      (Tomas Vik tvik@gitlab.com)
+
+-------------------------------------------------------------------
 Wed Jun 24 05:14:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.105.0:
