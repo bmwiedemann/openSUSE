@@ -1,7 +1,7 @@
 #
 # spec file for package python-tiktoken
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,12 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-tiktoken
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        Fast BPE tokeniser for use with OpenAI's models
 License:        MIT
 URL:            https://github.com/openai/tiktoken
-Source:         tiktoken-%{version}.tar.zst
+Source:         https://github.com/openai/tiktoken/archive/refs/tags/%{version}.tar.gz#/tiktoken-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust}
