@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:58:33 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Update to opensbi 1.9
+  General:
+  * Initialize stack guard using Zkr extension
+  * Improved irqchip framework to handle wired interrupts and MSIs
+  * Added unit test for string operations
+  * Added NMI support using Smrnmi extension
+  * Added timer events support
+  * Added Vector context save/restore in domain switch
+  * Added Floating-point context save/restore in domain switch
+  * Added Common PMP encoding/decoding helper functions
+  * Added UBSan support
+  * Improved misaligned vector load/store emulation
+
+  Platforms:
+  * Added SiFive development platform support
+  * Removed kendryte/k210 platform
+  * Added Tenstorrent Atlantis platform support
+
+  Drivers:
+  * Added Andes last level cache controller driver
+  * Added Andes ATCSMU suspend driver
+  * Added Altera JTAG UART driver
+  * Added MPXY client driver for RPMI MM service group
+  * Added minimal SpacemiT I2C driver
+  * Added SpacemiT P1 PMIC reset driver
+  * Added Litex SoC reset driver
+
+-------------------------------------------------------------------
 Thu Jan  8 13:45:42 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Update to opensbi 1.8.1

@@ -23,7 +23,7 @@ Name:           opensbi
 %else
 Name:           opensbi-%{target}
 %endif
-Version:        1.8.1
+Version:        1.9
 Release:        0
 Summary:        RISC-V Open Source Supervisor Binary Interface
 License:        BSD-2-Clause
