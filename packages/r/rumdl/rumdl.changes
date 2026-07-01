@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:00:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.27:
+  * Fixed
+    - MD077: detect latent list markers past an unstable heading
+      (05d273e)
+    - MD013: keep reference-style links atomic when reflowing
+      (a991a71)
+- Update to version 0.2.26:
+  * Added
+    - wasi: add wasi build feature, make target, and CI coverage
+      (8b9b027)
+    - lsp: add enableSymbols setting to gate symbol providers
+      (b80f001)
+  * Fixed
+    - workspace-index: make cache temp file names unique per write
+      (d3aa269)
+    - allow building for WASI (8d0b44a)
+    - MD060: preserve trailing blank lines and skip table-free
+      content (0223b30)
+- Update to version 0.2.25:
+  * Added
+    - lsp: document LSP settings and scope link-completion triggers
+      (18fae1b)
+    - MD013: reflow lists with configured marker spacing (#692)
+      (b00b117)
+  * Fixed
+    - MD052: preserve author casing in undefined-reference messages
+      (6d1cb96)
+    - MD013: preserve single-tilde strikethrough content during
+      reflow (#701) (a2387ce)
+    - rules: resolve complex link handling in reflow and MD052
+      (#702) (d57a61a)
+    - rules: prevent front-matter and skippable region leakage
+      (#699) (e09fa06)
+    - MD007: align nested lists to a widened parent's content
+      column (#700) (595cc4d)
+
+-------------------------------------------------------------------
 Sun Jun 28 07:07:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.24:
