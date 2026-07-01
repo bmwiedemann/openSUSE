@@ -79,4 +79,12 @@
     <comment>0.4.0 fixing bsc#1258913, CVE-2026-27727</comment>
     <requestid>1336070</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c6e93e8c664bad23d2e2d2a5040a39e5</srcmd5>
+    <version>0.6.1</version>
+    <time>1782932925</time>
+    <user>anag_factory</user>
+    <comment>0.6.1 needed by c3p0 0.14.1</comment>
+    <requestid>1363014</requestid>
+  </revision>
 </revisionlist>

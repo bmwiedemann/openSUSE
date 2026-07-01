@@ -18,7 +18,7 @@
 
 %global git_tag mchange-commons-java-%{version}
 Name:           mchange-commons
-Version:        0.4.0
+Version:        0.6.1
 Release:        0
 Summary:        A collection of general purpose utilities for c3p0
 License:        EPL-1.0 OR LGPL-2.0-only

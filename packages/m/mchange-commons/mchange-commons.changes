@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 14:04:05 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 0.6.1
+  * No structured changelog provided by upstream
+  * needed by c3p0 0.14.0 that contains security fixes
+
+-------------------------------------------------------------------
 Tue Mar  3 14:05:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 0.4.0
