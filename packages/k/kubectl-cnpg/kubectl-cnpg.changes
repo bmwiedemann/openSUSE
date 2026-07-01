@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:48:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.29.2:
+  * Important changes
+    - Updated the deprecation notice for native (in-tree) Barman
+      Cloud support to reflect that it will now be removed in
+      CloudNativePG 1.31.0, rather than 1.30.0. Users are still
+      encouraged to migrate to the Barman Cloud Plugin. (#11083)
+    - The cluster reference is now immutable on the Database,
+      Pooler, Publication, Subscription, and ScheduledBackup
+      resources. Pointing one of these objects at a different
+      cluster has no well-defined semantics and previously left the
+      controllers in an inconsistent state; the update is now
+      rejected at the API server via a CEL validation rule.
+      (#10743)
+  * Enhancements
+    - Enabled pg_upgrade in-place major upgrades to PostgreSQL 19
+      or later for clusters that use Image Volume extensions,
+      building on the extension-path support added to pg_upgrade in
+      PostgreSQL 19. During the upgrade Job, the source- and
+      target-version extension images are mounted side by side, so
+      the old server keeps its libraries and a failed upgrade
+      reverts cleanly. (#10366)
+    - Added a label selector to the Cluster scale subresource
+      (status.selector), making a Cluster a valid targetRef for the
+      Vertical Pod Autoscaler (VPA) and Horizontal Pod Autoscaler
+      (HPA), which can now map a Cluster to its instance pods.
+      Contributed by @sebv004. (#8996)
+    - The operator now emits a Warning PrimaryStatusCheckFailed
+      event on the Cluster when the primary pod is Ready from the
+      kubelet perspective but the operator's /pg/status check fails
+      and failover is deferred, giving users visibility into the
+      deferral via kubectl describe cluster. (#10509)
+    - The operator now reloads a CNPG-i plugin automatically when
+      its pods are rolled: it watches the EndpointSlices backing
+      plugin Services and re-enqueues every cluster using the
+      plugin once the new pods become Ready, so an upgraded plugin
+      is picked up without waiting for the next resync. (#10836)
+  * Security and Supply Chain
+    - CVE-2026-55769 / GHSA-x8c2-3p4r-v9r6: search_path pinning on
+      operator-issued connections: a database owner could plant
+      overloaded built-in operators in the public schema and alter
+      the search_path so that operator introspection probes,
+      running as the cluster superuser, resolved those overloads
+      before pg_catalog, a CWE-426 privilege-escalation chain (same
+      class as CVE-2018-1058) that could lead to in-pod RCE via
+      COPY ... FROM PROGRAM. The operator now pins search_path =
+      pg_catalog, public, pg_temp on every pooled connection so it
+      ships in the startup message and takes precedence over
+      tenant-controlled defaults. (#10774, GHSA-x8c2-3p4r-v9r6)
+    - CVE-2026-55765 / GHSA-w3gf-xc94-wvmj: operator-side
+      SCRAM-SHA-256 password encoding: the operator now
+      SCRAM-SHA-256 encodes cleartext role passwords before issuing
+      CREATE/ALTER ROLE ... PASSWORD, so the literal PostgreSQL
+      parses (and that extensions such as pg_stat_statements or
+      pgaudit may capture) is the SCRAM verifier rather than the
+      cleartext secret. Pre-hashed (MD5 or SCRAM) values are
+      forwarded unchanged, and the per-Secret annotation
+      cnpg.io/passwordPassthrough: "enabled" opts out. (#10724,
+      GHSA-w3gf-xc94-wvmj)
+  * Changes
+    - Added support for Kubernetes 1.36. (#10900)
+    - Updated the default PostgreSQL version to 18.4. (#10719)
+    - Updated the Kubernetes versions used to test the operator on
+      public cloud providers. (#10720, #10563, #11033)
+  * Fixes - cnpg plugin:
+    - Fixed kubectl cnpg psql on Windows, where execution relied on
+      a Unix-only system call and failed with "not supported by
+      windows"; Windows now launches kubectl exec as a child
+      process. Contributed by @Utkarsh-sharma47. (#10972)
+    - Fixed an unbounded memory leak in kubectl cnpg logs -f on
+      busy clusters, where a per-log-group timer was never
+      released; timers are now reused across iterations.
+      Contributed by @Anand-240. (#10976)
+
+-------------------------------------------------------------------
 Tue May 12 11:20:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.1:

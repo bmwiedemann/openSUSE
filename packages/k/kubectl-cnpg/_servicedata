@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/cloudnative-pg/cloudnative-pg</param>
-              <param name="changesrevision">a4060c152630c9e8958e17d3d23f26b4eb30b69f</param></service></servicedata>
+              <param name="changesrevision">a4060c152630c9e8958e17d3d23f26b4eb30b69f</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cloudnative-pg/cloudnative-pg.git</param>
+              <param name="changesrevision">94ee3117858765c77d0dbfde381a037944a48a64</param></service></servicedata>
