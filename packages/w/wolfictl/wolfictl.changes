@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:48:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.20:
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.6 to 0.5.7
+    (#2003)
+  * build(deps): bump chainguard-dev/actions from 1.6.24 to 1.6.25
+    (#2004)
+
+-------------------------------------------------------------------
 Mon Jun 22 05:04:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.19:
