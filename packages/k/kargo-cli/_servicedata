@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/akuity/kargo</param>
-              <param name="changesrevision">17077e406ed309fcc830d08776d9b9a47fe6e134</param></service></servicedata>
+              <param name="changesrevision">17077e406ed309fcc830d08776d9b9a47fe6e134</param></service><service name="tar_scm">
+                <param name="url">https://github.com/akuity/kargo.git</param>
+              <param name="changesrevision">50d29c10153965114f903645c83eadbe7bf58d3f</param></service></servicedata>
