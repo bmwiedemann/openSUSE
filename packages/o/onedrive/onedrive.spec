@@ -28,7 +28,7 @@
 %endif
 
 Name:           onedrive
-Version:        2.5.10
+Version:        2.5.11
 Release:        0
 Summary:        Client for One Drive Service for Linux
 License:        GPL-3.0-only
@@ -153,6 +153,8 @@ install -D -m 0644 changelog.md %{buildroot}%{_docdir}/%{name}/changelog.md
 %dir %{_datadir}/icons/hicolor/scalable/
 %dir %{_datadir}/icons/hicolor/scalable/places/
 %{_datadir}/icons/hicolor/scalable/places/onedrive.svg
+%dir %{_datadir}/icons/hicolor/scalable/apps/
+%{_datadir}/icons/hicolor/scalable/apps/onedrive-notifications.svg
 
 %files completion-bash
 %{_datadir}/bash-completion/completions/
