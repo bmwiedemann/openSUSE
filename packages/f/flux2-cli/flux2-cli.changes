@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Jul 01 07:58:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.9.0:
+  Flux v2.9.0 is a feature release. Users are encouraged to upgrade
+  for the best experience.
+  For a compressive overview of new features and API changes
+  included in this release, please refer to the Announcing Flux 2.9
+  GA blog post.
+  https://fluxcd.io/blog/2026/06/flux-v2.9.0/
+  * Overview of the new features:
+    - Flux CLI Plugin System with the Mirror and Schema plugins
+      (flux plugin)
+    - Server-Side Apply field ignore rules for fine-grained drift
+      control (Kustomization)
+    - SOPS decryption with the Age post-quantum cipher
+      (Kustomization)
+    - Kubernetes Workload Identity authentication for OpenBao and
+      Vault (Kustomization)
+    - Helm post-render strategies, including chart hooks support
+      (HelmRelease)
+    - Literal mode for Helm values references mirroring helm
+      --set-literal (HelmRelease)
+    - Allow empty kind in CEL health check expressions
+      (Kustomization, HelmRelease)
+    - Git commit signing and verification with SSH keys
+      (GitRepository, ImageUpdateAutomation)
+    - AWS CodeCommit authentication using Workload Identity
+      (GitRepository)
+    - Custom Sigstore trusted root for keyless verification in
+      air-gapped environments (OCIRepository)
+    - Path pattern directory discovery for monorepos
+      (ArtifactGenerator)
+    - Secret-less, OIDC-secured webhook Receivers (Receiver)
+  * Components changelog
+    - source-controller v1.9.1
+    - kustomize-controller v1.9.1
+    - notification-controller v1.9.1
+    - helm-controller v1.6.1
+    - image-reflector-controller v1.2.1
+    - image-automation-controller v1.2.1
+    - source-watcher v2.2.1
+  * CLI changelog
+    - Add backport label for Flux 2.8 by @matheuscscp in #5732
+    - Remove no longer needed workaround for Flux 2.8 by
+      @matheuscscp in #5733
+    - Update toolkit components by @fluxcdbot in #5740
+    - Add missing things to release notes template by @matheuscscp
+      in #5743
+    - ci: add top-level permissions to upgrade-fluxcd-pkg workflow
+      by @gaganhr94 in #5763
+    - build(deps): bump the ci group across 1 directory with 11
+      updates by @dependabot[bot] in #5764
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5766
+    - Update toolkit components by @fluxcdbot in #5769
+    - Add target branch name to update branch by @matheuscscp in
+      #5773
+    - Fix/resume exit code by @Aman-Cool in #5701
+    - Mark RFC 0010, 0011 and 0012 as implemented by @stefanprodan
+      in #5776
+    - Update toolkit components by @fluxcdbot in #5780
+    - Add --resolve-symlinks flag to build and push artifact
+      commands by @rohansood10 in #5724
+    - fix: validate --source flag in create kustomization command
+      by @gma1k in #5798
+    - Update toolkit components by @fluxcdbot in #5821
+    - Add --show-source to flux get ks and flux get hr by
+      @rafaelperoco in #5828
+    - Add flux create secret receiver command by @stefanprodan in
+      #5835
+    - fix: handle multiple symlinks to same target in build
+      artifact by @Iam-Karan-Suresh in #5833
+    - Add --in-memory-build to flux build ks and flux diff ks by
+      @rycli in #5794
+    - Migrate end-to-end test to latest cloud SDKs by @stefanprodan
+      in #5840
+    - docs: Add AI Coding Assistants Guidance by @stefanprodan in
+      #5841
+    - Add AI Agents guidance by @stefanprodan in #5847
+    - [RFC-0013] Flux CLI Plugin System by @stefanprodan in #5795
+    - Add --ignore-not-found to flux diff ks by @rycli in #5845
+    - [RFC-0013] Implement plugin system by @stefanprodan in #5849
+    - build(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to
+      5.18.0 by @dependabot[bot] in #5853
+    - Update toolkit components by @fluxcdbot in #5856
+    - Add digest pinning support to flux plugin install by
+      @Iam-Karan-Suresh in #5872
+    - Add --ns-follows-kube-context global flag for using the
+      kubeconfig context namespace by @jtyr in #5831
+    - include source-watcher in install.yaml manifests by @tmmorin
+      in #5881
+    - Update toolkit components by @fluxcdbot in #5890
+    - Update toolkit components by @fluxcdbot in #5903
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5907
+    - Validate Helm source URL schemes by @immanuwell in #5909
+    - Introduce flux trigger receiver by @matheuscscp in #5908
+    - refactor(api): migrate MakeDependsOn to shared apis/meta func
+      by @vecil in #5912
+    - Update to Kubernetes 1.36 and Go 1.26 by @stefanprodan in
+      #5924
+    - build(deps): bump the ci group across 1 directory with 19
+      updates by @dependabot[bot] in #5925
+    - Run conformance tests for Kubernetes 1.36 by @stefanprodan in
+      #5926
+    - Add support for AWS CodeCommit to flux bootstrap git by
+      @taraspos in #5868
+    - Validate plugin binary path by @stefanprodan in #5927
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5928
+    - fix: preserve invalid metadata.labels in flux build ks by
+      @raffis in #5906
+    - build: target host arch for local builds/envtest by
+      @stealthybox in #5932
+    - build(deps): bump the ci group with 6 updates by
+      @dependabot[bot] in #5938
+    - Support specifing sparseCheckout in flux bootstrap by
+      @piny940 in #5918
+    - Update toolkit components by @fluxcdbot in #5944
+    - Honor ks.spec.postBuild.substituteStrategy by @matheuscscp in
+      #5945
+    - Add DriftIgnoreRules support to flux diff kustomization by
+      @dipti-pai in #5923
+    - Allow signing commits using SSH key by @hiddeco in #5920
+    - Update toolkit components by @fluxcdbot in #5950
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5937
+    - cmd: support type!=status in get --status-selector by
+      @3uzbcqje in #5952
+    - Fix flux get all --status-selector for empty results and
+      notification resources by @matheuscscp in #5954
+    - Upgrade go-git-providers to v0.27.0 by @matheuscscp in #5956
+    - Fix using Receiver adapter for ArtifactGenerator by
+      @matheuscscp in #5957
+    - feat: Install Plugins alongside Flux setup in gh actions by
+      @gat786 in #5955
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5960
+    - Add CLI support for OCIRepository.spec.layerSelector in flux
+      create source oci by @dme86 in #5892
+    - Update toolkit components by @fluxcdbot in #5963
+
+-------------------------------------------------------------------
 Wed May 20 12:22:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.8.8:
