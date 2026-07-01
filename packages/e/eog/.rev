@@ -1396,4 +1396,15 @@ New stable release</comment>
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346583</requestid>
   </revision>
+  <revision rev="176" vrev="1">
+    <srcmd5>f61b1b14d6a0546065c6a24026ce69ab</srcmd5>
+    <version>50.2</version>
+    <time>1782917696</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Drop prototypes for functions removed long ago from internal
+    headers
+  + Updated translations.</comment>
+    <requestid>1362906</requestid>
+  </revision>
 </revisionlist>

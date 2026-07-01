@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jun 27 19:02:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Drop prototypes for functions removed long ago from internal
+    headers
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sun Apr 12 12:56:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:
