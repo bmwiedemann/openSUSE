@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:12:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.6.0:
+  * Features
+    - fix: ensure configuration errors are visible to user (#5038)
+      @Dotify71
+  * Fixes
+    - fix: bump cryptography minimum to >=46.0.6 and refresh lock
+      file (#5089) @sudhirverma
+    - fix: added setup-uv action version pinning to renovate config
+      (#5021) @garethahealy
+    - fix: detect role roots in namespace subdirectories (#5079)
+      (#5080) @santosh7676
+    - fix(docs): remove mkdocstrings plugin to unblock docs CI
+      (#5084) @rockygeekz
+    - fix: suppress ruff PLW0717 to unblock renovate (#5077)
+      @rockygeekz
+    - Fix risky-shell-pipe false positive on multi-line Jinja
+      (#5058) @arpitjain099
+    - Fix: fix mock_modules generated stubs failing YAML/doc
+      parsing #5031 (#5032) @santosh7676
+    - fix: support example format indicator, prevent ansible-lint
+      from producing load-failure on valid non-YAML examples
+      (#5045) @felixfontein
+    - fix: avoid name[casing] auto-fix crash on multi-segment
+      prefixes (#5026) @bishalOps
+    - fix: preserve multi-hash comments on ansible-lint --fix
+      (#5033) @bishalOps
+    - fix: preserve trailing blank lines when fqcn auto-fix renames
+      a key (#5027) @bishalOps
+    - fix(security): update dependencies [SECURITY] (#5061)
+      @renovate[bot]
+    - fix(ci): switch devel tests from py312 to py313 (#5062)
+      @rockygeekz
+    - fix: ignore skip lookup across rules (#5060) @mehrdadbn9
+    - chore: Add support for Fedora 44 in the meta schema (#5029)
+      @jsf9k
+    - fix: ensure configuration errors are visible to user (#5038)
+      @Dotify71
+    - fix: role argument spec: fix typo in attribute schema (#5044)
+      @felixfontein
+    - fix: handle ignore.txt comments with '#' in them correctly
+      (#5028) @felixfontein
+    - fix: Evaluate the exit code after applying the skipped rules
+      from .ansible-lint-ignore (#5001) @gmuloc
+    - fix: Update stale rulebook schema to match upstream
+      ansible-rulebook (#5056) @Hrithik-Gavankar
+    - fix: update '_extends' syntax for release-drafter v7
+      compatibility (#5043) @rockygeekz
+    - fix(security): update dependencies [SECURITY] - abandoned
+      (#5014) @renovate[bot]
+    - fix: update malformed block regex and bump pathspec upper
+      bound (#5039) @rockygeekz
+  * Maintenance
+    - chore: remove previously-synced agent skills (#5078)
+      @ansibuddy
+    - chore(deps): update all dependencies (#5074) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#5061)
+      @renovate[bot]
+    - test: add security-check workflow (integration test) (#5064)
+      @cidrblock
+    - chore: Add support for Fedora 44 in the meta schema (#5029)
+      @jsf9k
+    - chore: clarify yaml reformatting under fix (#5057)
+      @Himanshuagrawal4
+    - chore(deps): update all dependencies pep621 (#5047)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#5046) @renovate[bot]
+    - chore(deps): update all dependencies pep621 (#5041)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#5040) @renovate[bot]
+    - chore(deps): update all dependencies (#5011) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] - abandoned
+      (#5014) @renovate[bot]
+    - chore(deps): update all dependencies pep621 (#5012)
+      @renovate[bot]
+
+-------------------------------------------------------------------
 Thu May 28 07:54:25 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Update python-pathspec BuildRequires/Requires version to < 1.2.0
