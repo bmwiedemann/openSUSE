@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:55:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.2:
+  * build(deps): Bump the go group with 3 updates by
+    @dependabot[bot] in #2185
+  * build(deps): Bump github/codeql-action from 4.35.4 to 4.35.5 in
+    the ci group by @dependabot[bot] in #2184
+  * build(deps): Bump the go group with 11 updates by
+    @dependabot[bot] in #2193
+  * build(deps): Bump the ci group with 4 updates by
+    @dependabot[bot] in #2192
+  * build(deps): Bump serde_json from 1.0.149 to 1.0.150 in
+    /functional-tests in the rust group by @dependabot[bot] in
+    #2191
+  * build(deps): Bump the go group with 11 updates by
+    @dependabot[bot] in #2197
+  * build(deps): Bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+    in the ci group by @dependabot[bot] in #2196
+  * test: unset all age env vars in make test target by
+    @arpitjain099 in #2208
+  * build(deps): Bump the go group with 10 updates by
+    @dependabot[bot] in #2212
+  * build(deps): Bump the ci group with 2 updates by
+    @dependabot[bot] in #2211
+  * build(deps): Bump the go group with 15 updates by
+    @dependabot[bot] in #2218
+  * build(deps): Bump alpine from 3.23 to 3.24 in /.release in the
+    docker group by @dependabot[bot] in #2217
+  * fix: handle pointers when serializing context by @tlercher in
+    #2219
+  * docs: fix typo in exec-file --filename help text by @s3onghyun
+    in #2221
+  * JSON store: preserve large integers that fit into int64 by
+    @s3onghyun in #2222
+  * Fix panic when expecting an encrypted string, but a non-string
+    is encountered by @felixfontein in #2227
+  * Fix INI store no longer double-encoding newlines by
+    @felixfontein in #2189
+  * exec-file/exec-env: reset supplementary groups when changing
+    user by @felixfontein in #2194
+  * build(deps): Bump the go group with 6 updates by
+    @dependabot[bot] in #2229
+  * build(deps): Bump actions/checkout from 6.0.3 to 7.0.0 in the
+    ci group by @dependabot[bot] in #2228
+  * Fix issue when changing user in exec subcommands by @sabre1041
+    in #2230
+  * Shorten .md lines by @felixfontein in #2206
+  * Update all Go dependencies with go get -t -u ./... by
+    @felixfontein in #2231
+  * build(deps): Bump github.com/opencontainers/runc from 1.2.8 to
+    1.3.6 by @dependabot[bot] in #2233
+  * build(deps): Bump the ci group with 2 updates by
+    @dependabot[bot] in #2236
+  * Release 3.13.2 by @felixfontein in #2232
+
+-------------------------------------------------------------------
 Sat May 16 17:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.1:

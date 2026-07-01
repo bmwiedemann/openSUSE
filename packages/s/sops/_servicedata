@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/mozilla/sops</param>
-              <param name="changesrevision">72e337c45c195e02394ee865f9ec2b794b6b74b4</param></service></servicedata>
+              <param name="changesrevision">72e337c45c195e02394ee865f9ec2b794b6b74b4</param></service><service name="tar_scm">
+                <param name="url">https://github.com/mozilla/sops.git</param>
+              <param name="changesrevision">15e36f97a8641769712da76b64aec4ea566be81e</param></service></servicedata>
