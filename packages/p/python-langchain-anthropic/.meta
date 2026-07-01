@@ -1,0 +1,4 @@
+<package name="python-langchain-anthropic" project="openSUSE:Factory">
+  <title>LangChain Anthropic integration</title>
+  <description>Integration package connecting Claude (Anthropic) APIs and LangChain.</description>
+</package>
