@@ -1,0 +1,15 @@
+Index: langchain_core-0.3.69/tests/unit_tests/conftest.py
+===================================================================
+--- langchain_core-0.3.69.orig/tests/unit_tests/conftest.py
++++ langchain_core-0.3.69/tests/unit_tests/conftest.py
+@@ -71,8 +71,8 @@ def pytest_collection_modifyitems(
+     # Used to avoid repeated calls to `util.find_spec`
+     required_pkgs_info: dict[str, bool] = {}
+ 
+-    only_extended = config.getoption("--only-extended") or False
+-    only_core = config.getoption("--only-core") or False
++    only_extended = config.getoption("--only-extended", False)
++    only_core = config.getoption("--only-core", False)
+ 
+     if only_extended and only_core:
+         msg = "Cannot specify both `--only-extended` and `--only-core`."

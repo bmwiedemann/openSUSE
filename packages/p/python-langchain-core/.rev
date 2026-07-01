@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>833a9679e7014bc5c7c62668243bc3b9</srcmd5>
+    <version>1.4.8</version>
+    <time>1782916530</time>
+    <user>anag_factory</user>
+    <comment>New package python-langchain-core. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
+    <requestid>1362378</requestid>
+  </revision>
+</revisionlist>
