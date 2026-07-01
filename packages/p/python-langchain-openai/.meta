@@ -1,0 +1,10 @@
+<package name="python-langchain-openai" project="openSUSE:Factory">
+  <title>An integration package connecting OpenAI and LangChain</title>
+  <description>This package contains the LangChain integrations for OpenAI through their
+openai SDK.
+
+It provides chat models, LLMs, embeddings and tokenization helpers that let
+the OpenAI and Azure OpenAI services be used as components in the LangChain
+ecosystem.</description>
+  <url>https://github.com/langchain-ai/langchain</url>
+</package>
