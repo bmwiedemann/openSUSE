@@ -63,4 +63,13 @@
     <comment></comment>
     <requestid>1287694</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8c598e9e8b027d615dc44aeed13a3c26</srcmd5>
+    <version>5.1.7</version>
+    <time>1782917244</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.7:
+  * translation update (forwarded request 1362274 from dirkmueller)</comment>
+    <requestid>1362866</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package fcitx5-table-other
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 Name:           fcitx5-table-other
-Version:        5.1.5
+Version:        5.1.7
 Release:        0
 Summary:        Other Non-Chinese table input methods for Fcitx5
-License:        GPL-3.0-only AND SUSE-Public-Domain
+License:        GPL-3.0-only AND LicenseRef-SUSE-Public-Domain
 URL:            https://github.com/fcitx/fcitx5-table-other
 Source:         https://download.fcitx-im.org/fcitx5/%{name}/%{name}-%{version}.tar.zst
 BuildRequires:  boost-devel
