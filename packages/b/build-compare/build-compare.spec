@@ -1,7 +1,7 @@
 #
 # spec file for package build-compare
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,13 @@
 
 
 Name:           build-compare
-Version:        20240801T083050.024a3a7
+Version:        20260622T095938.6416d96
 Release:        0
 Summary:        Build Result Compare Script
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Building
 URL:            https://github.com/openSUSE/build-compare
-Source1:        COPYING
-Source2:        same-build-result.sh
-Source3:        pkg-diff.sh
-Source4:        functions.sh
-Source5:        srpm-check.sh
+Source0:        %{name}-%{version}.tar.gz
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  build-compare
 BuildArch:      noarch
@@ -48,14 +44,13 @@ This package contains scripts to find out if the build result differs
 to a former build.
 
 %prep
-%setup -q -c -T
-install -p -m 0644 %{SOURCE1} .
+%setup -q
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/build/
-install -m 0755 %{SOURCE2} %{SOURCE3} %{SOURCE4} %{SOURCE5} %{buildroot}%{_prefix}/lib/build/
+install -m 0755 *.sh %{buildroot}%{_prefix}/lib/build/
 
 %files
 %if 0%{?suse_version} < 1500

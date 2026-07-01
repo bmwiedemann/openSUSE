@@ -1,0 +1,31 @@
+Source: build-compare
+Section: devel
+Priority: optional
+Maintainer: openSUSE build-compare maintainers <build-compare@build.opensuse.org>
+Build-Depends:
+ debhelper-compat (= 12),
+Standards-Version: 4.7.4
+Homepage: https://github.com/openSUSE/build-compare
+Vcs-Browser: https://github.com/openSUSE/build-compare
+Vcs-Git: https://github.com/openSUSE/build-compare.git
+Rules-Requires-Root: no
+
+Package: build-compare
+Architecture: all
+Depends:
+ ${misc:Depends},
+ awk,
+ binutils,
+ bzip2,
+ cpio,
+ file,
+ tar,
+ xz-utils,
+ zstd,
+Description: Build Result Compare Script
+ This package contains scripts to find out if the build result differs
+ to a former build, both for RPM and for Debian (.deb / .ipk) packages.
+ .
+ It is intended to be invoked from inside an OBS build VM after a
+ successful build to detect rebuilds that produce byte-equivalent
+ packages so that the new artifacts can be discarded.

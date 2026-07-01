@@ -1,12 +1,23 @@
 <services>
 	<service name="tar_scm" mode="manual">
-		<param name="versionformat">%ci.%h</param>
-		<param name="url">https://github.com/openSUSE/build-compare.git</param>
+		<param name="exclude">.travis.yml</param>
+		<param name="exclude">build-compare.changes</param>
+		<param name="exclude">build-compare.dsc</param>
+		<param name="exclude">build-compare.spec</param>
+		<param name="exclude">tests</param>
+		<param name="extract">build-compare.changes</param>
+		<param name="extract">build-compare.dsc</param>
+		<param name="extract">build-compare.spec</param>
+		<param name="extract-rename">debian/changelog:debian.changelog</param>
+		<param name="extract-rename">debian/control:debian.control</param>
+		<param name="filename">build-compare</param>
 		<param name="scm">git</param>
+		<param name="url">https://github.com/openSUSE/build-compare.git</param>
+		<param name="versionformat">%ci.%h</param>
 	</service>
-	<service name="extract_file" mode="manual">
-		<param name="archive">*.tar</param>
-		<param name="files">*/build-compare.* */*.sh */COPYING</param>
+	<service name="recompress" mode="manual">
+		<param name="compression">gz</param>
+		<param name="file">*.tar</param>
 	</service>
 	<service name="set_version" mode="manual"/>
 </services>
