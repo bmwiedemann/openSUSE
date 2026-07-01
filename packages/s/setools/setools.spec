@@ -51,7 +51,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           setools%{name_suffix}
-Version:        4.6.0
+Version:        4.7.0
 Release:        0
 URL:            https://github.com/SELinuxProject/setools
 Summary:        Policy analysis tools for SELinux
@@ -72,6 +72,7 @@ BuildRequires:  libsepol-devel >= 3.2
 BuildRequires:  python-rpm-macros
 %if "%{flavor}" == "test"
 BuildRequires:  %{python_module PyQt6}
+BuildRequires:  %{python_module mcp}
 BuildRequires:  %{python_module networkx >= 2.6}
 BuildRequires:  %{python_module pytest-qt}
 BuildRequires:  %{python_module pytest}
@@ -147,10 +148,25 @@ libraries designed to facilitate SELinux policy analysis.
 This package includes the following graphical tools:
 
   apol          policy analysis tool
+
+%package mcp
+Summary:        MCP server for SELinux
+License:        GPL-2.0-only
+Requires:       %{python_for_executables}-mcp
+Requires:       %{python_for_executables}-setools = %{version}
+
+%description mcp
+SETools is a collection of graphical tools, command-line tools, and
+libraries designed to facilitate SELinux policy analysis.
+
+This package includes the following console tools:
+
+  mcp           A model context protocol server providing analysis tools to LLMs.
+
 %endif
 
 %prep
-%setup -q -n %{software_name}
+%setup -q -n %{software_name}-%{version}
 %autopatch -p1
 
 %build
@@ -208,6 +224,10 @@ rm -rf %{buildroot}
 %defattr(-,root,root,-)
 %{_bindir}/apol
 %{_mandir}/man1/apol.1.gz
+
+%files mcp
+%{_bindir}/setools-mcp
+
 %endif
 
 %changelog

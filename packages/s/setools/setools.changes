@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:53:16 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix setools test package
+
+-------------------------------------------------------------------
+Wed Jun 24 09:16:57 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 4.7.0:
+  - Add MCP server to provide LLMs the ability to analyze policy.
+  - Internal changes:
+    - The source distribution is now a Python sdist.
+    - The policyrep C extension is cythonized, so cython is 
+      an optional build dependency now. Still keeping it in, might be good
+      to still rebuild it ourselves.
+
+-------------------------------------------------------------------
 Wed Apr  1 06:29:21 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
-- Adjust %suse_version to ne scheme (jsc#PED-15790)
+- Adjust %suse_version to new scheme (jsc#PED-15790)
 
 -------------------------------------------------------------------
 Thu Sep 25 14:47:35 UTC 2025 - Filippo Bonazzi <filippo.bonazzi@suse.com>
