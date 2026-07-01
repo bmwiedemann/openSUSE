@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/gruntwork-io/terragrunt</param>
-              <param name="changesrevision">929249c36dadda072b4d56ff88197fcc8e4cbd85</param></service></servicedata>
+              <param name="changesrevision">929249c36dadda072b4d56ff88197fcc8e4cbd85</param></service><service name="tar_scm">
+                <param name="url">https://github.com/gruntwork-io/terragrunt.git</param>
+              <param name="changesrevision">aad3397a3552a9d5fab90c587e6027d31f2b6ee1</param></service></servicedata>

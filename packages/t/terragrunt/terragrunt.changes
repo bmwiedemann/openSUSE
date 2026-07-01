@@ -1,4 +1,507 @@
 -------------------------------------------------------------------
+Wed Jul 01 11:13:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * New Features
+    - Stack dependencies
+      A stack generates a tree of units from a single
+      terragrunt.stack.hcl file. Wiring one of those units to
+      another used to mean defining dependency blocks in your
+      catalog and threading dependency paths through values. Stack
+      dependencies let you declare those relationships up front
+      instead.
+      Add an autoinclude block inside a unit or stack block, and
+      Terragrunt generates a partial configuration (a
+      terragrunt.autoinclude.hcl file) next to the generated
+      terragrunt.hcl or terragrunt.stack.hcl that's automatically
+      merged into the unit or stack definition. The new
+      unit.<name>.path and stack.<name>.path references resolve to
+      generated paths, so you don't have to hardcode them:
+
+        # terragrunt.stack.hcl
+        unit "vpc" {
+          source = "github.com/acme/catalog//units/vpc"
+          path   = "vpc"
+        }
+
+        unit "app" {
+          source = "github.com/acme/catalog//units/app"
+          path   = "app"
+
+          autoinclude {
+            dependency "vpc" {
+              config_path = unit.vpc.path
+            }
+
+            inputs = {
+              vpc_id = dependency.vpc.outputs.vpc_id
+            }
+          }
+        }
+
+      Anything that's valid in a unit configuration is valid in its
+      autoinclude block, so you can also patch catalog units with
+      configuration they don't ship with, like retry rules:
+
+        # terragrunt.stack.hcl
+        unit "app" {
+          source = "github.com/acme/catalog//units/app"
+          path   = "app"
+
+          autoinclude {
+            errors {
+              retry "transient_errors" {
+                retryable_errors   = [".*Error: transient network issue.*"]
+                max_attempts       = 3
+                sleep_interval_sec = 5
+              }
+            }
+          }
+        }
+
+      The same works for nested stacks: an autoinclude block inside
+      a stack block patches the generated terragrunt.stack.hcl, so
+      you can, for example, add an extra unit to one environment
+      without forking the stack in your catalog.
+      Stack configurations also gained two capabilities along the way:
+      - include blocks now work in terragrunt.stack.hcl files, so
+        shared stack configuration can live in a parent folder.
+      - dependency blocks can target stack directories, and the run
+        queue expands them to the units inside. Note that this
+        relationship only goes one way: units can depend on stacks,
+        but stacks cannot depend on stacks or units.
+      See the stacks documentation for the full reference.
+      https://docs.terragrunt.com/features/stacks/explicit
+      Previously gated behind the stack-dependencies experiment,
+      all of this is now enabled by default.
+    - Content Addressable Store (CAS)
+      The Content Addressable Store (CAS) deduplicates source
+      downloads across configurations. It addresses repositories
+      and modules by their content, stores them locally, and serves
+      later requests from that local store instead of repeating the
+      fetch. This speeds up catalog cloning, OpenTofu/Terraform
+      source fetching, and stack generation, and identical files
+      occupy disk space once regardless of how many configurations
+      use them.
+      The CAS is no longer limited to Git. It also deduplicates
+      HTTP, Amazon S3, Google Cloud Storage, Mercurial, and SMB
+      sources, along with OpenTofu/Terraform registry sources
+      fetched via tfr://. See supported sources for how each one
+      resolves and deduplicates content.
+      CAS is enabled by default. Use the --no-cas flag (or
+      TG_NO_CAS=true) to opt out of it for a run:
+
+        terragrunt run --all --no-cas -- plan
+
+      Two new attributes give you finer control, and both default
+      to off:
+      - update_source_with_cas makes a generated stack
+        self-contained. Set it on a unit, stack, or terraform block
+        with a relative source, and terragrunt stack generate
+        rewrites that source into a content-addressed cas::
+        reference, so the generated tree no longer depends on the
+        surrounding repository layout. Catalog authors can keep
+        relative paths in their sources and still ship a portable,
+        reproducible stack:
+
+          # stacks/networking/terragrunt.stack.hcl
+          unit "vpc" {
+            source = "../..//units/vpc"
+            path   = "vpc"
+
+            update_source_with_cas = true
+          }
+
+        After terragrunt stack generate, the relative path is
+        replaced by a reference to the exact tree the CAS stored:
+
+          # Generated output
+          unit "vpc" {
+            source = "cas::sha1:f39ea0ebf891c9954c89d07b73b487ff938ef08b"
+            path   = "vpc"
+
+            update_source_with_cas = true
+          }
+
+      - mutable controls how the CAS places fetched content on
+        disk. By default, the CAS hard links files from its shared
+        store into .terragrunt-cache and marks them read-only,
+        which is fast and uses no extra space, but means the files
+        can't be edited in place. Set mutable = true on a terraform
+        block to copy the content instead, making the working tree
+        safe to edit at the cost of extra I/O and disk space:
+
+          # units/vpc/terragrunt.hcl
+          terraform {
+            source = "github.com/acme/catalog//modules/vpc"
+
+            mutable = true
+          }
+
+      Previously gated behind the cas experiment, the CAS no longer
+      requires --experiment cas.
+    - Redesigned terragrunt catalog
+      The catalog command has been redesigned. It now starts
+      without any configuration, discovers components across your
+      catalog repositories in the background, and streams them into
+      the TUI as they're found.
+      Discovery is no longer limited to a modules/ directory;
+      components can live anywhere in a catalog repository. To
+      control what gets discovered, add a
+      .terragrunt-catalog-ignore file with .gitignore-style globs
+      for the paths you want filtered out.
+      Components in the TUI now carry metadata to help you navigate
+      a large catalog: each one shows a kind label (template,
+      stack, unit, or module) and optional tags defined in the
+      front-matter of its README.md. From the component list, press
+      s to open a new screen that interactively collects the values
+      used to scaffold the component into your repository.
+      Previously gated behind the catalog-redesign experiment, the
+      redesigned catalog is now the default terragrunt catalog
+      experience.
+    - Reading detection for local module sources
+      Terragrunt can select units by the files they read, which is
+      the basis of change-based runs in CI. Previously, pointing a
+      unit's terraform block at a local directory didn't mark the
+      files inside that directory as read, so a change to the
+      module wouldn't select the unit.
+      When a unit's source is a local module, Terragrunt now
+      records the module's *.tf, *.tf.json, *.hcl, *.tofu, and
+      *.tofu.json files as read by that unit, so --filter
+      'reading=<path>' and --queue-include-units-reading select the
+      unit when a module file changes:
+
+        terragrunt run --all --filter 'reading=./modules/vpc/main.tf' -- plan
+
+      For files that reading detection doesn't track on its own,
+      the new mark_glob_as_read() HCL function expands a glob and
+      marks every matching file as read in one call:
+
+        locals {
+          configs = mark_glob_as_read("${get_terragrunt_dir()}/config/{*.yaml,**/*.yaml}")
+        }
+
+      Existing pipelines built on --queue-include-units-reading or
+      reading= filters may select more units than before, because
+      changes to local module files now count as reads. Previously
+      gated behind the mark-many-as-read experiment, these
+      behaviors no longer require --experiment mark-many-as-read.
+    - Skip auth during discovery with
+      --no-discovery-auth-provider-cmd
+      By default, Terragrunt runs your --auth-provider-cmd once for
+      every unit it discovers, so HCL functions that need
+      credentials resolve correctly during parsing. In a large
+      repository, that can mean hundreds of invocations before any
+      unit runs, which can dominate wall-clock time on change-based
+      runs.
+      The --no-discovery-auth-provider-cmd flag (env:
+      TG_NO_DISCOVERY_AUTH_PROVIDER_CMD) skips those invocations
+      during the discovery phase, leaving auth to run only for the
+      units that actually execute:
+
+        terragrunt run --all \
+          --no-discovery-auth-provider-cmd \
+          --queue-include-units-reading=./changed-file.txt \
+          -- plan
+
+      Warning
+      Use this only when you know parsing resolves without
+      credentials. Units whose configuration depends on values from
+      --auth-provider-cmd during discovery (for example, via
+      get_aws_account_id()) will fail to parse when the flag is
+      set.
+      Previously gated behind the opt-out-auth experiment, the flag
+      now works without --experiment opt-out-auth.
+    - Run queue displayed as a dependency tree
+      Before a run --all, Terragrunt lists the units it's about to
+      run. That list now renders as a dependency tree by default
+      instead of a flat list, with units nested under their
+      dependencies, so the run order and the relationships between
+      units are visible before anything executes:
+      The following units will be run, starting with dependencies
+      and then their dependents:
+      .
+      ├── monitoring
+      ╰── vpc
+          ╰── database
+              ╰── backend-app
+
+      The header adapts to direction: dependencies come before
+      dependents on apply, and the order reverses on destroy.
+      Previously gated behind the dag-queue-display experiment, the
+      tree display no longer requires --experiment
+      dag-queue-display.
+  * Tips Added
+    - Tip when filtering a stack leaves nested stacks ungenerated
+      terragrunt stack generate --filter './my-stack | type=stack'
+      generates only the selected stack, not the nested stacks it
+      contains, which can be surprising for a stack of stacks.
+      When a non-glob | type=stack filter leaves a stack's nested
+      stacks ungenerated, Terragrunt now prints a tip showing how
+      to generate them too, for example --filter './my-stack |
+      type=stack' --filter './my-stack/** | type=stack'.
+  * Bug Fixes
+    - Fix permission denied when generated files overwrite
+      CAS-materialized files
+      With the CAS enabled, Terragrunt fetches sources as read-only
+      files. Writing a generated file over one of them no longer
+      fails with permission denied:
+      - Files from generate blocks with if_exists = "overwrite",
+        when the module ships the target file (for example, its own
+        versions.tf).
+      - terragrunt.values.hcl, when the unit or stack source
+        already contains one.
+      - terragrunt.autoinclude.hcl, when the unit or stack source
+        already contains one.
+      - .terraform.lock.hcl, when the provider cache server updates
+        a committed lock file during init -upgrade.
+      In each case, the read-only file is replaced with a writable
+      one, and the shared CAS store is never modified.
+    - Fix permission denied when CAS fetches a git source across
+      filesystems
+      With the CAS enabled, fetching a git:: source could fail with
+      permission denied on .git/HEAD or .git/config, sending
+      Terragrunt back to the standard getter. It happened when the
+      CAS store and the module's working directory sit on different
+      filesystems, so the files are copied rather than hard-linked,
+      and a read-only leftover from an interrupted run was in the
+      way. Terragrunt now recovers from the leftover and completes
+      the fetch.
+    - Reject update_source_with_cas on a terraform block when CAS
+      is disabled
+      terragrunt stack generate --no-cas now fails when a generated
+      unit's terraform block sets update_source_with_cas = true,
+      instead of silently emitting the unit with its relative
+      source unchanged. The relative source has no meaning once CAS
+      is disabled, so the generated unit could not resolve its
+      module. This matches the existing behavior for the same
+      attribute on unit and stack blocks, and for a run invoked
+      with --no-cas.
+    - Apply extra_arguments env vars when resolving dependency
+      outputs
+      Resolving a dependency block's outputs now applies the
+      env_vars from the unit's terraform extra_arguments blocks
+      whose commands include output.
+    - Resolve dependency outputs for units whose before_hook
+      references a dependency
+      Resolving a unit's dependency outputs no longer evaluates
+      that unit's terraform hooks, so a before_hook (or after_hook)
+      that interpolates ${dependency.<name>.outputs.<key>} no
+      longer fails downstream units with There is no variable named
+      "dependency". Dependency output resolution still applies the
+      unit's extra_arguments env_vars and source.
+    - Select units reading added or deleted glob files in Git-based
+      filters
+      Git-based filters (for example terragrunt run --all --filter
+      '[HEAD^1...HEAD]' -- plan) now select units that read an
+      added or deleted file through mark_glob_as_read, even when
+      that file lives outside the unit's own directory. Previously
+      only modified files outside a unit reached those units;
+      adding or deleting a file the glob matched left the reading
+      unit out of the run, so its real config change was skipped.
+      Added files are matched against the newer reference, and
+      deleted files against the older one where the file still
+      exists.
+    - mark_glob_as_read constrains its walk to a boundary
+      mark_glob_as_read now confines glob expansion to a boundary
+      directory. By default the boundary is the enclosing Git
+      repository root; outside a Git repository it is unset. A
+      pattern whose walk would begin outside the boundary returns
+      an error instead of expanding.
+      This bounds patterns that resolve higher than intended. For
+      example, "${local.dir}/{*.yaml}" becomes /{*.yaml} when
+      local.dir is empty, which previously walked the entire
+      filesystem. A ? : conditional does not prevent this, because
+      HCL evaluates both branches of a conditional before selecting
+      one. Wrapping the call in try lets the error fall back to a
+      default:
+
+        locals {
+          files = sort(try(mark_glob_as_read("${local.dir}/{*.yaml,*.yml,*.json}"), []))
+        }
+
+      Pass a leading --terragrunt-boundary argument to set the
+      boundary explicitly, for example to scope the walk to a
+      subdirectory or to widen it to the filesystem root:
+
+        locals {
+          scoped = mark_glob_as_read("--terragrunt-boundary=/etc/terragrunt", "/etc/terragrunt/{*.yaml}")
+          all    = mark_glob_as_read("--terragrunt-boundary=/", "/{*.yaml}")
+        }
+
+    - Scaffold only detects variables in the module directory
+      terragrunt scaffold now reads input variables from the module
+      directory itself, matching what OpenTofu and Terraform load
+      for a root module. Previously it scanned subdirectories too,
+      so variable blocks defined in nested modules or examples
+      leaked into the scaffolded inputs even though the module
+      never exposes them.
+    - Resolve interpolated object keys in autoinclude blocks
+      terragrunt stack generate now resolves interpolated object
+      keys in autoinclude blocks (for example {
+      "${local.prefix}_key" = ... }), even when the value
+      references dependency.*. Previously the generated unit kept
+      the key verbatim, leaking a stack-only reference that is not
+      valid in the unit scope.
+    - Fix panic on non-string literal interpolation in autoinclude
+      templates
+      terragrunt stack generate no longer panics when an
+      autoinclude template interpolates a non-string literal (for
+      example "${0}" or "${true}") alongside a dependency.*
+      reference. The interpolated literal is now rendered to its
+      string form (${0} becomes 0) and the dependency reference is
+      preserved for the unit.
+    - Resolve transitive autoinclude dependencies on a stack
+      directory
+      run --all no longer fails with "does not contain a
+      terragrunt.hcl file" when an autoinclude dependency points at
+      a stack directory (one holding terragrunt.stack.hcl) and the
+      unit is reached transitively through another unit. The
+      dependency cycle check now skips a target with no unit
+      config, matching the direct dependency case.
+  * Experiments Updated
+    - Six experiments completed
+      The following experiments graduated to general availability
+      in this release, and the features they gated are now enabled
+      by default:
+      - stack-dependencies
+      - cas
+      - catalog-redesign
+      - mark-many-as-read
+      - opt-out-auth
+      - dag-queue-display
+      Each feature is described in the New Features section above.
+      The corresponding --experiment flags (and TG_EXPERIMENT
+      values) are no longer needed. Passing one still works, but
+      emits a warning about the completed experiment, so you can
+      drop it at your convenience.
+      Thank you to everyone who ran these experiments early and
+      filed the feedback that got them here.
+  * Process Updates
+    - Immutable releases
+      Starting with this release, Terragrunt releases are published
+      as immutable releases on GitHub. Once a release is published,
+      its tag and assets can no longer be modified or deleted, so
+      the binary you download is guaranteed to be the same binary
+      that was uploaded when the release was published.
+    - Install script verifies release attestations The install
+      script now checks downloaded release assets against the
+      release attestation that ships with immutable releases. For
+      releases starting with v1.1.0, when an authenticated GitHub
+      CLI (v2.81.0 or later) is available, the script verifies the
+      checksums file and the binary against the attestation before
+      installing, and aborts if either does not match the published
+      release. The check is skipped with a warning when gh is
+      unavailable, too old, or unauthenticated. Use
+      --no-verify-attestation to opt out.
+  Commits
+  * Features
+    - feat: Tip how to run a stack's units when a stack filter
+      matches no units by @denis256 in #6387
+  * Bug Fixes
+    - fix: autoincludes variables interpolation by @denis256 in
+      #6318
+    - fix: generate overwrite of read-only CAS-materialized files
+      by @denis256 in #6329
+    - fix: CAS integration with committed module lockfiles by
+      @yhakbar in #6330
+    - fix: improved resolving of complex objects in keys by
+      @denis256 in #6317
+    - fix: Fixing update_source_with_cas integration with --no-cas
+      by @yhakbar in #6363
+    - fix: Adding support for adding/deleting files in Git diffs by
+      @yhakbar in #6352
+    - fix: Adding --terragrunt-boundary to mark_glob_as_read by
+      @yhakbar in #6351
+    - fix: Only detect variables in root directory of module by
+      @yhakbar in #6381
+    - fix: resolve transitive autoinclude dependency on a stack
+      directory by @denis256 in #6389
+    - fix: apply extra_arguments env_vars when resolving dependency
+      outputs by @denis256 in #6396
+    - fix: Fixing indenter style by @yhakbar in #6402
+    - fix: Fixing legacy Windows per-drive key for environment
+      variables by @yhakbar in #6412
+    - fix: Fixing Git materialization race HEAD update by @yhakbar
+      in #6411
+    - fix: fixed reference of dependency outputs in terraform hooks
+      by @denis256 in #6423
+    - fix: Fixing deleted changed files by @yhakbar in #6424
+  * Documentation
+    - docs: Documenting --parallelism tweaking considerations
+      better by @yhakbar in #6313
+    - docs: Adding TGS 'Terragrunt at scale' page by @yhakbar in
+      #6307
+    - docs: v1.1.0 changelog polish by @yhakbar in #6333
+    - docs: Improving performance docs by @yhakbar in #6332
+    - docs: Adding immutable releases docs by @yhakbar in #6337
+    - docs: Cleaning up 1.1.0 docs by @yhakbar in #6339
+    - docs: Updating provider size claims for provider cache server
+      docs by @yhakbar in #6341
+    - docs: Documenting Discovery as a term by @yhakbar in #6359
+    - docs: Cleaning up catalog tabs docs by @yhakbar in #6369
+  * Chores
+    - chore: marking as completed stack dependencies experiment by
+      @denis256 in #6249
+    - chore: Completing mark-many-as-read experiment by @yhakbar in
+      #6310
+    - chore: Completing cas experiment by @yhakbar in #6254
+    - chore: Addressing feedback from #6254 by @yhakbar in #6324
+    - chore: Completing dag-queue-display experiment by @yhakbar in
+      #6320
+    - chore: Completing opt-out-auth experiment by @yhakbar in
+      #6321
+    - chore: Dropping go-git by @yhakbar in #6325
+    - chore: Addressing PR #6325 feedback by @yhakbar in #6335
+    - chore: bump cicd to use opentofu 1.12.2 by @denis256 in #6343
+    - chore: Signing GHA update by @denis256 in #6340
+    - chore: multiple dependencies update by @denis256 in #6356
+    - chore: Updating CI w/ Terragrunt guide to have more accurate
+      screenshots by @yhakbar in #6357
+    - chore: drop usage of github.com/NYTimes/gziphandler by
+      @denis256 in #6364
+    - chore(deps): bump astro from 6.3.2 to 6.4.6 in /docs by
+      @dependabot[bot] in #6366
+    - chore: Completing catalog-redesign experiment by @yhakbar in
+      #6271
+    - chore: Bumping JS dependencies by @yhakbar in #6368
+    - chore: Adding release attestation verification to install
+      script by @yhakbar in #6344
+    - chore: Addressing weekly test stats by @yhakbar in #6354
+    - chore: Addressing #6351 feedback by @yhakbar in #6373
+    - chore: Adding mise.toml lockfile by @yhakbar in #6372
+    - chore: Making progress on lll by @yhakbar in #6377
+    - chore: autoinclude fuzzing tests improvements by @denis256 in
+      #6342
+    - chore: Expand pure testing through venv by @yhakbar in #6090
+    - chore: Dropping TestWindowsTflintIsInvoked by @yhakbar in
+      #6382
+    - chore: Continuing with progress on lll #2 by @yhakbar in
+      #6385
+    - chore: added CICD guard for detecting not run tests by
+      @denis256 in #6383
+    - chore: Addressing weekly tests stats (2026-06-22) by @yhakbar
+      in #6390
+    - chore: Addressing #6390 feedback by @yhakbar in #6391
+    - chore: go deps update by @denis256 in #6392
+    - chore: Running go fix ./... by @yhakbar in #6398
+    - chore(deps): bump actions/checkout from 6.0.2 to 7.0.0 by
+      @dependabot[bot] in #6394
+    - chore: Update cfg locking for units by @yhakbar in #6401
+    - chore: Move log flags off writers by @yhakbar in #6403
+    - chore: Adding env and writers to venv by @yhakbar in #6404
+    - chore: aws-sdk-go-v2/service/s3 upgrade by @denis256 in #6413
+    - chore: Downgrading render log to a debug by @yhakbar in #6429
+    - chore: Engine per unit shutdown by @yhakbar in #6426
+  * Other Changes
+    - Adding Terragrunt Patterns section by @karlcarstensen in
+      #6379
+    - Add FAQ section for docs.terragrunt.com by @karlcarstensen in
+      #6378
+    - Fixing codespell lint error and adding codespell lint
+      commands by @karlcarstensen in #6386
+
+-------------------------------------------------------------------
 Thu Jun 11 04:57:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.8:
