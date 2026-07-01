@@ -280,6 +280,7 @@ BuildRequires:  sed
 #BuildRequires:  gawk
 #BuildRequires:  gzip
 Requires:       bash
+Requires:       %{name} = %{version}
 # Required for use with HAVE_DRACUT=1
 Requires:       dracut
 Requires:       multipath-tools
@@ -618,8 +619,8 @@ fi
 %exclude %{_datadir}/s390-tools/pvimg/stage3a.bin
 %exclude %{_datadir}/s390-tools/pvimg/stage3b_reloc.bin
 %exclude %{_prefix}/lib/udev/rules.d/70-chreipl-fcp-mpath.rules
-%exclude /lib/s390-tools/chreipl_helper.device-mapper
-%exclude /lib/s390-tools/chreipl_helper.md
+### %%exclude /lib/s390-tools/chreipl_helper.device-mapper
+### %%exclude /lib/s390-tools/chreipl_helper.md
 
 %files -n osasnmpd
 %{_sbindir}/osasnmpd
@@ -662,8 +663,8 @@ fi
 %dir %{_prefix}/lib/chreipl-fcp-mpath/
 %{_prefix}/lib/chreipl-fcp-mpath/*
 %{_prefix}/lib/dracut/dracut.conf.d/70-chreipl-fcp-mpath.conf
-/lib/s390-tools/chreipl_helper.device-mapper
-/lib/s390-tools/chreipl_helper.md
+### /lib/s390-tools/chreipl_helper.device-mapper
+### /lib/s390-tools/chreipl_helper.md
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-tgt
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-ipl-vol
 %{_prefix}/lib/udev/chreipl-fcp-mpath-is-reipl-zfcp

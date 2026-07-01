@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  1 11:05:41 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Ammended the .spec file for `chreipl_helper` (bsc#1266436)
+  * Moved `chreipl_helper*` to the main package
+  * Added `Requires: %{name} = %{version}` in `chreipl-fcp-mpath subpackage` 
+- Re-vendor-ed vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Jun 29 07:32:54 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade s390-tool to version 2.43.0
