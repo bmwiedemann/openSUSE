@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 01 08:06:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.105:
+  * Improve search ranking and add fallback for unmatched queries
+- Update to version 0.11.104:
+  * Initial search command for arkade
+- Update to version 0.11.103:
+  * Fix trailing newline
+  * Flat option for arkade oci install
+  * Remove faasd tool definition
+  * Update number of tools after adding pluto
+  * Add pluto CLI to find deprecated K8s APIs
+  * Make symlink extraction in UntarNested conditional
+  * Fix symlink path-traversal escape in UntarNested
+  * Remove stray file
+
+-------------------------------------------------------------------
 Tue Jun 23 04:59:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.102:
