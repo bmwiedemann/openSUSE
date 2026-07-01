@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:32:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.10:
+  * feat(httphandler): add SSRF-hardened scan-completion webhook
+    callback (#2447)
+  * feat(operator): add `operator remediate` CLI subcommand
+    (annotate + dry-run) (#2448)
+  * Add CEL evaluator (#2443)
+  * feat(reportcrypto): decrypt resource source metadata in reports
+    (#2440)
+  * fix(coverage) : penalise silent failed GVR pulls in coverage
+    score (#2420)
+  * Add offline request stub for the CEL engine (#2439)
+  * fix(diff): validate format input and clean up status handling
+    (#2438)
+  * test: add missing unit tests for cautils session initialization
+    and scan scope (#2436)
+  * feat(report): add encrypted report decryption (#2425)
+  * fix(diff): move --fail-on-new exit to cmd layer so output
+    writer is closed (#2434)
+
+-------------------------------------------------------------------
 Sat May 30 06:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.9:
