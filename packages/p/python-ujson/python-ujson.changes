@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:34:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.13.0:
+  * Create manylinux2014 wheels
+  * Add support for Python 3.15
+  * Disable global interpreter lock for freethreading
+  * Move metadata from `setup.cfg` to `pyproject.toml` (#736)
+  * Tighten UTF-8 validation for `ujson.dumps(b"...",
+    reject_bytes=False)`
+  * Replace generated `version.h` with macro (#735) @hugovk
+
+-------------------------------------------------------------------
 Tue May 19 22:31:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.12.1:

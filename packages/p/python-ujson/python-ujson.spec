@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-ujson
-Version:        5.12.1
+Version:        5.13.0
 Release:        0
 Summary:        JSON encoder and decoder for Python
 License:        BSD-3-Clause
@@ -27,8 +27,8 @@ Source:         https://files.pythonhosted.org/packages/source/u/ujson/ujson-%{v
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77}
+BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
@@ -52,9 +52,7 @@ export UJSON_BUILD_DC_LIBS='-ldouble-conversion'
 
 %install
 %pyproject_install
-%{python_expand %fdupes %{buildroot}%{$python_sitearch}
-rm -r %{buildroot}%{$python_sitearch}/src
-}
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
 %pytest_arch
