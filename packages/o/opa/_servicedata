@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/open-policy-agent/opa</param>
-              <param name="changesrevision">cc2c5c60a4c486f15a5e8de457e96ed0fefaf5fe</param></service></servicedata>
+              <param name="changesrevision">cc2c5c60a4c486f15a5e8de457e96ed0fefaf5fe</param></service><service name="tar_scm">
+                <param name="url">https://github.com/open-policy-agent/opa.git</param>
+              <param name="changesrevision">acc8bf9f88bbef57c500dbdd7231509e48ade525</param></service></servicedata>
