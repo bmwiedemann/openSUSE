@@ -17,4 +17,22 @@
   * Loosen restriction on the upper Python version</comment>
     <requestid>1327308</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>724c8148c8ce4af0fd96bdc19cfa3513</srcmd5>
+    <version>6.9.0</version>
+    <time>1782916502</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.9.0:
+  * SeleniumLibrary 6.9.0 is a new release with several
+    enhancements and bug fixes. A couple new keywords, for drag
+    and drop as well as getting css properties, have been added.
+    Secret type support has be added. An issue with using lists
+    with chaining locators has been fixed. Several of the minimum
+    required versions have been updated.
+  * SeleniumLibrary supports Python 3.10 through 3.14, Selenium
+    4.29.0 through 4.44.0 and Robot Framework 6.1.1 and 7.4.2.
+
+Initial package-</comment>
+    <requestid>1362177</requestid>
+  </revision>
 </revisionlist>

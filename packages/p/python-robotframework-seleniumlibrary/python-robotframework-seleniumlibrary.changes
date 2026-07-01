@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jun 28 14:35:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.9.0:
+  * SeleniumLibrary 6.9.0 is a new release with several
+    enhancements and bug fixes. A couple new keywords, for drag
+    and drop as well as getting css properties, have been added.
+    Secret type support has be added. An issue with using lists
+    with chaining locators has been fixed. Several of the minimum
+    required versions have been updated.
+  * SeleniumLibrary supports Python 3.10 through 3.14, Selenium
+    4.29.0 through 4.44.0 and Robot Framework 6.1.1 and 7.4.2.
+
+-------------------------------------------------------------------
 Thu Jan 15 01:07:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.8.0:
@@ -8,4 +21,4 @@ Thu Jan 15 01:07:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 -------------------------------------------------------------------
 Wed Apr 16 17:12:45 UTC 2025 - Christopher Hofmann <cwh@suse.com>
 
-Initial package- 
+Initial package-

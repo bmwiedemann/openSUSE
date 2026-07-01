@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-robotframework-seleniumlibrary
-Version:        6.8.0
+Version:        6.9.0
 Release:        0
 Summary:        Web testing library for Robot Framework
 License:        Apache-2.0
