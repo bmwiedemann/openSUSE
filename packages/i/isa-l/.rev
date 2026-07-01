@@ -80,4 +80,18 @@
 - Added patch fixing CRC x86 dispatcher.</comment>
     <requestid>1343722</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>59aaa7cfb9bf49111d3d712595d48052</srcmd5>
+    <version>2.32.1</version>
+    <time>1782921330</time>
+    <user>anag_factory</user>
+    <comment>- v2.32.1: Update
+  - Removed 0001-crc-fix-x86-CRC-dispatcher.patch to fix dispatcher issue.
+  - Fixed x86 CRC dispatcher (removed internal patch).
+  - Fixed various compilation issues/warnings on MinGW and CMake.
+  - Fixed various security issues.
+  - Fixed in-place aliasing bug in RISC-V xor_gen and pq_gen functions.
+  - Fixed memory leak in the zlib shim library.</comment>
+    <requestid>1363015</requestid>
+  </revision>
 </revisionlist>

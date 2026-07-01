@@ -1,7 +1,7 @@
 #
 # spec file for package isa-l
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           isa-l
-Version:        2.32.0
+Version:        2.32.1
 Release:        0
 Summary:        Intel Intelligent Storage Acceleration Library
 Group:          Development/Libraries/C and C++
@@ -29,8 +29,6 @@ BuildRequires:  automake
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  nasm >= 2.14.01
-
-Patch0:         0001-crc-fix-x86-CRC-dispatcher.patch
 
 %description
 Optimized low-level functions targeting storage applications.
@@ -79,13 +77,12 @@ This package contains the development headers for the library found
 in libisal2.
 
 %prep
-%setup -q -n isa-l-2.32.0
-%patch 0 -p1
+%autosetup
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 ./autogen.sh
-%configure
+%configure --enable-programs
 %make_build
 
 %install
