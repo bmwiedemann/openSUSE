@@ -1,0 +1,7 @@
+<package name="python-langchain-aws" project="openSUSE:Factory">
+  <title>LangChain integrations for AWS</title>
+  <description>This package contains the LangChain integrations with AWS, connecting
+LangChain to AWS services such as Amazon Bedrock, SageMaker, Neptune and
+Kendra.</description>
+  <url>https://github.com/langchain-ai/langchain-aws</url>
+</package>
