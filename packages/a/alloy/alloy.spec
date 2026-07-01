@@ -17,7 +17,7 @@
 
 
 Name:           alloy
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
 Summary:        OpenTelemetry Collector distribution with programmable pipelines
 License:        Apache-2.0
@@ -29,6 +29,7 @@ Source3:        PACKAGING_README.md
 Source4:        Makefile
 Source5:        prepare_webassets_and_vendor_go_modules.sh
 Source6:        alloy.tmpfiles
+Patch1:         0001-Fix-CVE-2026-10722.patch
 BuildRequires:  go1.26 >= 1.26.4
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  user(alloy)
@@ -70,9 +71,10 @@ What can Alloy do?
   pipelines.
 
 %prep
-%autosetup -p1 -a 2
+%setup -a 2
 cd collector/
 tar zxf %{SOURCE1}
+%patch -P 1 -p1 -d vendor/github.com/cilium/ebpf
 
 %build
 # hash will be shortended by COMMIT_HASH:0:8 later

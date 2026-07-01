@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 29 10:34:54 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-10722: Fix manipulated argument offset leading to
+  integer overflow (bsc#1267811)
+  * Add 0001-Fix-CVE-2026-10722.patch
+
+- Update to version 1.17.1:
+  * Bug fix
+    Back off usage reporting on persistent failure instead of
+      retrying every minute
+
+-------------------------------------------------------------------
 Wed Jun 17 10:30:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 1.17.0:
