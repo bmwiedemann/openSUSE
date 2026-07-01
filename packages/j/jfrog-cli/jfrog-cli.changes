@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Jul 01 11:12:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.112.0:
+  * New Features
+    - [jfrog-cli-security] XRAY-145721 - Added fallback logic for
+      Poetry #783 (@Phavya-jfrog)
+  * Bug Fixes
+    - [jfrog-cli] Fix ghost frog install to honour default ModePass
+      tools #3579 (@ehl-jf)
+    - [jfrog-cli-security] Fix - Gradle dep tree references missing
+      output files #791 (@attiasas)
+  * Internal Changes
+    - [jfrog-cli-security] Update Xray lib plugin default version
+      to 1.4.0 #788 (@attiasas)
+    - [jfrog-cli-security] Update dependencies #792 (@attiasas)
+  * Other Changes
+    - [jfrog-cli-artifactory] XRAY-139364 - Automatically set VSC
+      properties from local git on uploaded artifacts #484
+      (@attiasas)
+    - [jfrog-cli-security] XRAY-144147 Support Yarn v4 for curation
+      audit #778 (@gauriy-tech)
+  * Dependencies
+    - Bump actions/checkout in the github-actions group across 1
+      directory (#3564)
+    - Bump github.com/moby/moby/api in the go group across 1
+      directory (#3570)
+
+-------------------------------------------------------------------
 Sun Jun 28 14:36:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.111.0 (2.110.0 was not released):
