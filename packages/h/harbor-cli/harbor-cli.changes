@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:36:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.23:
+  * fix: Missing windows binary (#970)
+  * feature: add error_test.go in pkg/utils (#984)
+  * fix(doc): resolve file descriptor leaks in documentation
+    generators (#992)
+  * fix(user): add email format validation to user create command
+    (#816)
+  * fix(ci): retry cosign transparency log failures (#965)
+  * feat : project preheat execution (#925)
+  * fix(registry): handle missing registry lookup in delete by name
+    (#841)
+  * fix(webhook): normalize endpoint URL before validation (#800)
+  * build: address Go security findings (#960)
+  * fix(docs): Update maintainer from Nucleo Fusion to Lakshit
+    Singh (#963)
+
+-------------------------------------------------------------------
 Thu May 28 08:08:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.22:
