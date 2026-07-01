@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:50:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.1:
+  * chore(deps): update anchore dependencies (#1034)
+  * chore(deps): update tool versions (#1053)
+  * chore(deps): Bump actions/checkout from 6.0.3 to 7.0.0 (#1051)
+  * chore(deps): Bump the actions-minor-patch group with 3 updates
+    (#1052)
+  * bump grype to pull in db build fixes (#1050)
+  * chore(deps): Bump github.com/containerd/containerd/v2 (#1047)
+  * chore(deps): Bump the actions-minor-patch group with 2 updates
+    (#1046)
+  * Revert "refactor release pipeline: TAG_TOKEN tag push,
+    skip-checks gate, depe…" (#1045)
+  * refactor release pipeline: TAG_TOKEN tag push, skip-checks
+    gate, dependabot/zizmor/gci cleanup (#1042)
+  * chore(deps): update tool versions (#1041)
+
+-------------------------------------------------------------------
 Tue Jun 09 04:59:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.0:
