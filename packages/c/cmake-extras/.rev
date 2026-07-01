@@ -48,4 +48,16 @@
   and qmlplugindump-qt6 (boo#1254531) (forwarded request 1321340 from hillwood)</comment>
     <requestid>1321341</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>297d06f38e30ee1ddbe8c4153fd28341</srcmd5>
+    <version>1.10</version>
+    <time>1782917759</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.10:
+  * src/DoxygenBuilder/Doxyfile.in: Create Doxygen documentations
+    with FULL_PATH_NAMES set to NO (f9c4fad)
+
+- Initial package for version 1.7</comment>
+    <requestid>1362887</requestid>
+  </revision>
 </revisionlist>

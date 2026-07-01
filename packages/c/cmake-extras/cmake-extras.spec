@@ -1,7 +1,7 @@
 #
 # spec file for package cmake-extras
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cmake-extras
-Version:        1.9
+Version:        1.10
 Release:        0
 Summary:        A collection of add-ons for the CMake build tool
 License:        GPL-3.0-or-later
@@ -64,7 +64,7 @@ A collection of add-ons for the CMake build tool.
 
 %prep
 %autosetup -p1
-sed -i 's|/usr/bin/env python|/usr/bin/python3|g' src/IncludeChecker/include_checker.py
+sed -i 's|/usr/bin/env python3|/usr/bin/python3|g' src/IncludeChecker/include_checker.py
 # rm -rf src/CopyrightTest examples/copyrighttest-demo
 
 %build

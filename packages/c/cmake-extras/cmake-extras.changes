@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 28 19:39:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.10:
+  * src/DoxygenBuilder/Doxyfile.in: Create Doxygen documentations
+    with FULL_PATH_NAMES set to NO (f9c4fad)
+
+-------------------------------------------------------------------
 Sat Dec  6 08:05:56 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add fix-filename-and-path-of-qmlplugindump.patch, support both qmlplugindump-qt5
@@ -31,4 +38,4 @@ Mon Mar 24 06:56:18 UTC 2025 - Christoph G <foss@grueninger.de>
 -------------------------------------------------------------------
 Sun Mar 24 12:37:46 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
-- Initial package for version 1.7 
+- Initial package for version 1.7
