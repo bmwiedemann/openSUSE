@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 01 06:45:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.147:
+  * Feat/terragrunt parallelism (#2667)
+  * fix: allow digger apply when digger/apply is the sole required
+    blocking check (#2661)
+  * add block excludes (#2659)
+  * docs: add Holocron migration spike (#2656)
+  * fix: drift exclude patterns excluding all projects when include
+    is unset (#2653)
+  * Feat/exclude drift (#2650)
+  * conditionally enable summary (#2619)
+  * Fix default image repos (backend ee -> ce), add podAnnotations
+    (#2598)
+  * fix: add target url to link to workflow run (#2606)
+  * docs: secuirty page (#2605)
+
+-------------------------------------------------------------------
 Fri Jun 05 05:45:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.146:
