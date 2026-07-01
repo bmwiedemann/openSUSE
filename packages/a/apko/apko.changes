@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:48:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.20:
+  * apk: don't disqualify a package for an unversioned provide
+  * Add support for gzip-compressed CPIO output (#2253)
+  * build(deps): bump actions/setup-go from 6.4.0 to 6.5.0 (#2300)
+  * build(deps): bump github.com/chainguard-dev/clog from 1.8.0 to
+    1.8.1 (#2302)
+  * build(deps): bump imjasonh/setup-crane from 0.6 to 0.7 (#2303)
+
+-------------------------------------------------------------------
 Wed Jun 24 05:13:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.19:
