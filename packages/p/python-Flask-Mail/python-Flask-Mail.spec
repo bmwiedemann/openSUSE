@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Mail
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Flask-Mail
-Version:        0.9.1
+Version:        0.10.0
 Release:        0
 Summary:        Flask extension for sending email
 License:        BSD-3-Clause
-URL:            https://github.com/rduplain/flask-mail
-Source:         https://files.pythonhosted.org/packages/source/F/Flask-Mail/Flask-Mail-%{version}.tar.gz
-# do not use mock, upstream url unavailable
-Patch0:         python-Flask-Mail-no-mock.patch
+URL:            https://github.com/pallets-eco/flask-mail
+Source:         https://github.com/pallets-eco/flask-mail/archive/%{version}.tar.gz#/flask_mail-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,6 +32,8 @@ BuildRequires:  python-rpm-macros
 # Test requirements
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module blinker}
+BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module speaklater}
 # End of test requirements
 Requires:       python-Flask
@@ -45,10 +45,7 @@ BuildArch:      noarch
 A Flask extension for sending email messages.
 
 %prep
-%autosetup -p1 -n Flask-Mail-%{version}
-sed -i 's/assertEquals/assertEqual/' tests.py
-# Skip two failing tests
-sed -i 's/test_unicode_sender/_test_unicode_sender/' tests.py
+%autosetup -p1 -n flask-mail-%{version}
 
 %build
 %pyproject_wheel
@@ -58,13 +55,14 @@ sed -i 's/test_unicode_sender/_test_unicode_sender/' tests.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v
+# Skip unicode failing tests
+donttest="test_unicode_sender"
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
-%doc README.rst
-%license LICENSE
-%{python_sitelib}/flask_mail.py
-%pycache_only %{python_sitelib}/__pycache__/flask_mail.*.py*
+%doc README.md
+%license LICENSE.txt
+%{python_sitelib}/flask_mail
 %{python_sitelib}/[Ff]lask_[Mm]ail-%{version}.dist-info
 
 %changelog

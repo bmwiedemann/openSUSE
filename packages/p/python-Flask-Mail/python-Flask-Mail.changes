@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jun 26 10:04:35 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to python-Flask-Mail 0.10.0
+  * Drop support for Python < 3.8
+  * Use pyproject.toml for packaging metadata.
+  * Use flit_core as build backend.
+  * Apply code formatting and linting tools.
+  * Add static type annotations.
+  * Deprecate the __version__ attribute. Use feature detection or
+    importlib.metadata.version("flask-mail") instead.
+  * Indicate that the deprecated is_bad_headers will be removed in
+    the next version.
+  * Fix the email_dispatched signal to pass the current app as the
+    sender and message as an argument, rather than the other way
+    around.
+  * Attachment.data may not be None.
+  * Attachment.content_type will be detected based on filename and
+    data and will not be None.
+
+- Drop patch that is not needed anymore:
+  * python-Flask-Mail-no-mock.patch
+-------------------------------------------------------------------
 Tue Apr 22 02:19:35 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
