@@ -1,0 +1,4 @@
+# langgraph/pregel/_config.py is an empty placeholder module shipped by
+# upstream (the real implementation lives in langgraph._internal._config);
+# it is part of the published wheel, so keep it and silence the warning.
+addFilter("zero-length .*/langgraph/pregel/_config\.py")
