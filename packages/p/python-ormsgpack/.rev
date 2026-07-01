@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b38a5418e63999a6313a3d60e3ee16f7</srcmd5>
+    <version>1.12.2</version>
+    <time>1782916528</time>
+    <user>anag_factory</user>
+    <comment>New package python-ormsgpack. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
+    <requestid>1362377</requestid>
+  </revision>
+</revisionlist>

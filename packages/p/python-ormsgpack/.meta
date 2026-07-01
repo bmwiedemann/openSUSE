@@ -1,0 +1,8 @@
+<package name="python-ormsgpack" project="openSUSE:Factory">
+  <title>Fast Python msgpack library supporting dataclasses, datetimes, and numpy</title>
+  <description>ormsgpack is a fast msgpack library for Python. It is a fork of orjson's
+msgpack support and serializes faster than other Python msgpack libraries.
+It supports serializing dataclasses, datetimes, numpy arrays and pydantic
+models natively.</description>
+  <url>https://github.com/ormsgpack/ormsgpack</url>
+</package>

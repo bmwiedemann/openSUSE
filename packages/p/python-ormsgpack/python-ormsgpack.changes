@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jun 28 20:53:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-ormsgpack 1.12.2
+- Rust crates are vendored via the cargo_vendor source service
+  (vendor.tar.zst)
