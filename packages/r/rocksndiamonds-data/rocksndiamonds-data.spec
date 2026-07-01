@@ -18,7 +18,7 @@
 
 %define oname   rocksndiamonds
 Name:           %{oname}-data
-Version:        20260609
+Version:        20260628
 Release:        0
 Summary:        Data files for Rocks'n'Diamonds
 License:        GPL-2.0-or-later
@@ -38,6 +38,7 @@ Source8:        https://www.artsoft.org/RELEASES/%{oname}/levels/Supaplex-2.0.0.
 Source9:        https://www.artsoft.org/RELEASES/unix/%{oname}/levels/rockslevels-dx-1.0.tar.gz
 Source68:       https://www.artsoft.org/RELEASES/%{oname}/levels/Better_Together-1.0.0.7z
 Source69:       https://www.artsoft.org/RELEASES/%{oname}/levels/Boulder_Dash-1.1.0.zip
+Source70:       https://www.artsoft.org/RELEASES/%{oname}/levels/Diamond_Caves-1.0.0.zip
 # Downloaded from http://www.jb-line.de/rnd/rnd_jue-3.3.0.0.tar.gz
 # Deleted directory rnd_jue/jue_sobigo and other which are not level
 # and packed than rockslevels, repacked as tar.gz
@@ -105,13 +106,9 @@ Source66:       Warparound_Murphy.zip
 Source67:       Tutorial_Alpha.zip
 BuildRequires:  fdupes
 BuildRequires:  unzip
+BuildRequires:  p7zip-full
 Requires:       %{oname}
 BuildArch:      noarch
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150100
-BuildRequires:  p7zip-full
-%else
-BuildRequires:  p7zip
-%endif
 
 %description
 This is a nice little game with color graphics and sound for your Unix system
@@ -142,7 +139,7 @@ for l in %{SOURCE0} %{SOURCE1} %{SOURCE3} %{SOURCE5} %{SOURCE6} %{SOURCE7} \
          %{SOURCE30} %{SOURCE31} %{SOURCE32} %{SOURCE33} %{SOURCE34} %{SOURCE35} %{SOURCE36} %{SOURCE37} %{SOURCE38} %{SOURCE39} \
          %{SOURCE40} %{SOURCE41} %{SOURCE42} %{SOURCE43} %{SOURCE44} %{SOURCE45} %{SOURCE46} %{SOURCE47} %{SOURCE48} %{SOURCE49} \
          %{SOURCE50} %{SOURCE51} %{SOURCE52} %{SOURCE53} %{SOURCE54} %{SOURCE55} %{SOURCE56} %{SOURCE57} %{SOURCE58} %{SOURCE59} \
-         %{SOURCE60} %{SOURCE61} %{SOURCE62} %{SOURCE63} %{SOURCE64} %{SOURCE65} %{SOURCE66} %{SOURCE69}; do
+         %{SOURCE60} %{SOURCE61} %{SOURCE62} %{SOURCE63} %{SOURCE64} %{SOURCE65} %{SOURCE66} %{SOURCE69} %{SOURCE70}; do
      unzip $l -d %{buildroot}%{_datadir}/%{oname}/levels -x Readme.txt
 done
 unzip %{SOURCE67} -d %{buildroot}%{_datadir}/%{oname}/levels/Tutorials
