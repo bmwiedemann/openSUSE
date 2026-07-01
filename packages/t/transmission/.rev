@@ -1175,4 +1175,21 @@
     <comment>- Add arm to ExcludeArch, 32bit arm does not build either.</comment>
     <requestid>1361060</requestid>
   </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>1e0eabc20c2e952307808baa534693e1</srcmd5>
+    <version>4.1.3</version>
+    <time>1782917933</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.1.3:
+  + This is Transmission 4.1.3, a bugfix release. It fixes a
+    potential CRSF security issue for users who enable remote
+    access to Transmission. Users are encouraged to upgrade to this
+    version.
+  + All Platforms:
+    - Fixed a CORS bug that leaked the anti-CSRF nonce.
+    - Fixed a use-after-free bug in peer code.
+    - Fixed build error when compiling with fmt 12.2.0.
+  + Everything Else: Fixed a 4.1.2 build error in tests.</comment>
+    <requestid>1362948</requestid>
+  </revision>
 </revisionlist>
