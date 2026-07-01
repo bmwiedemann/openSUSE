@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/NVIDIA/skillspector.git</param>
+    <param name="scm">git</param>
+    <param name="revision">326a2b489411a20ed742ff13701be39ba00063c8</param>
+    <param name="version">2.3.9~git20260701.326a2b48</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="buildtime"/>
+</services>

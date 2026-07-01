@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Wed Jul  1 14:36:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Switch source acquisition to an obs_scm git snapshot of upstream
+  main: NVIDIA/skillspector publishes no git tags, no GitHub releases
+  and nothing on PyPI, so no downloadable release tarball exists
+- Version changed from 2.3.10 (a locally-built sdist that exists
+  nowhere upstream) to the snapshot 2.3.9~git20260701.326a2b48
+  (upstream main HEAD, commit 326a2b48)
+- Add _service; drop the hand-built skillspector-2.3.10.tar.gz
+
+-------------------------------------------------------------------
+Mon Jun 29 00:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use %{primary_python} instead of a hardwired python flavor
+
+-------------------------------------------------------------------
+Sun Jun 28 00:00:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package skillspector 2.3.10 (CLI scanner; -mcp subpackage
+  for the MCP server)
+- Enable the pytest test suite now that the full langchain/langgraph
+  runtime stack is packaged; the offline unit tests run at build time
+  (integration/provider markers and four SSRF allowed-host tests that
+  require live DNS are deselected)

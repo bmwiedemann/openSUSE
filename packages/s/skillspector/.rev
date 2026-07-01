@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2a3d8bff41c16b0b1ca90d9763e0baaf</srcmd5>
+    <version>2.3.9~git20260701.326a2b48</version>
+    <time>1782932928</time>
+    <user>anag_factory</user>
+    <comment>New package skillspector (security scanner for AI agent skills) + -mcp subpackage. Resubmit of the declined SR 1362984: source now comes from a reproducible obs_scm git snapshot of upstream main (2.3.9~git20260701.326a2b48, commit 326a2b48) because NVIDIA/skillspector publishes no git tags, no GitHub releases and nothing on PyPI. source_validator passes. Final piece of the langchain/langgraph cone: requires langchain-core, langgraph, langsmith&gt;=0.7.30 etc. Please co-stage with the sibling devel:languages:python cone SRs by pluskalm (Staging:adi:38) and python-langsmith (SR 1362932, science:machinelearning-&gt;Factory) or the build is unresolvable. Builds clean (noarch, 0 rpmlint badness, %check 1249 passed) where the stack is available.</comment>
+    <requestid>1363013</requestid>
+  </revision>
+</revisionlist>
