@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul  1 09:09:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.6.0:
+  * Features
+    - feat: enable command borders and report by default (#4632)
+      @cidrblock
+  * Fixes
+    - fix: upgrade cryptography and cairosvg to patch known
+      vulnerabilities (#4652) @sudhirverma
+    - fix: add missing build_ignore entries to galaxy.yml (#4650)
+      @sudhirverma
+    - fix: merge runtime environment in run_command to preserve
+      ANSIBLE_ROLES_PATH (#4634) @Dotify71
+    - fix(docs): update docs about tmp dir (#4639) @MaKaNu
+    - fix: update '_extends' syntax for release-drafter v7
+      compatibility (#4638) @rockygeekz
+    - fix(security): update dependencies [SECURITY] (#4630)
+      @renovate[bot]
+  * Maintenance
+    - chore: remove previously-synced agent skills (#4648)
+      @ansibuddy
+    - chore(deps): update all dependencies pep621 (#4645)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#4644) @renovate[bot]
+    - chore(deps): update all dependencies pep621 (#4643)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#4636) @renovate[bot]
+    - chore(deps): update pep621 (#4637) @renovate[bot]
+    - chore(deps): update pep621 (#4629) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#4630)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#4621) @renovate[bot]
+
+-------------------------------------------------------------------
 Sun Apr 19 07:14:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.4.0:
