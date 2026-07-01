@@ -18,7 +18,7 @@
 
 
 Name:           c3p0
-Version:        0.12.0
+Version:        0.14.1
 Release:        0
 Summary:        JDBC DataSources/Resource Pools
 License:        LGPL-2.0-or-later
@@ -31,7 +31,7 @@ BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  mchange-commons >= 0.4.0
+BuildRequires:  mchange-commons >= 0.6.0
 BuildRequires:  unzip
 BuildArch:      noarch
 

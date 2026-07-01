@@ -9,7 +9,7 @@
   <property file="build.properties"/>
 
   <property name="project.artifactId" value="c3p0"/>
-  <property name="project.version" value="0.12.0"/>
+  <property name="project.version" value="0.14.1"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>

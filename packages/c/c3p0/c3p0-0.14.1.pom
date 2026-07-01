@@ -7,16 +7,16 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <artifactId>c3p0</artifactId>
     <packaging>jar</packaging>
     <description>A mature JDBC3+ Connection pooling library</description>
-    <version>0.12.0</version>
+    <version>0.14.1</version>
     <url>https://www.mchange.com/projects/c3p0</url>
     <licenses>
         <license>
-            <name>LGPL-2.1-or-later</name>
+            <name>GNU Lesser General Public License v2.1 or later</name>
             <url>https://spdx.org/licenses/LGPL-2.1-or-later.html</url>
             <distribution>repo</distribution>
         </license>
         <license>
-            <name>EPL-1.0</name>
+            <name>Eclipse Public License 1.0</name>
             <url>https://spdx.org/licenses/EPL-1.0.html</url>
             <distribution>repo</distribution>
         </license>
@@ -31,13 +31,14 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
             <id>swaldman</id>
             <name>Steve Waldman</name>
             <url>https://github.com/swaldman</url>
+            <email></email>
         </developer>
     </developers>
     <dependencies>
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>mchange-commons-java</artifactId>
-            <version>0.4.0</version>
+            <version>0.6.1</version>
         </dependency>
     </dependencies>
 </project>

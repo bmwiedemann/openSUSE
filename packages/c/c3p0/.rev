@@ -71,4 +71,12 @@
     <comment>Upgrade to 0.12.0 to be sure that the fix for bsc#1258913, CVE-2026-27727 is included</comment>
     <requestid>1336263</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3b7fe38ca38db4ea5d2b82f3e9c03196</srcmd5>
+    <version>0.14.1</version>
+    <time>1782932926</time>
+    <user>anag_factory</user>
+    <comment>0.14.1 with security fix</comment>
+    <requestid>1363016</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Jul  1 14:16:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 0.14.1
+  * Changes in version 0.14.1
+    + Modify c3p0 to use new BeanInfoGen functionality, restoring
+      compatibility with Java [7,11).
+    + Modify BeanInfoGen to (optionally, but by default) cache
+      descriptors rather than regenerating them for each call to an
+      introspection method.
+    + Modify BeanInfoGen to log items skipped from descriptors due
+      to API incompatibility.
+    + Modify BeanInfoGen to generate BeanInfo classes in which
+      properties/events/methods that existed in the JVM under which
+      they were generated and built, but do not exist under the
+      runtime JVM, are tolerated and simply omitted at runtime from
+      BeanInfo descriptors. This fixes compatibility with Java
+      environments before Java 11, under whose API c3p0 and
+      mchange-commons-java are currently built.
+  * Changes in 0.14.0
+    + Update to mill 1.1.6 and fix broken support for reproducible
+      builds via the SOURCE_DATE_EPOCH environment variable.
+    + Generate explicit BeanInfo classes for c3p0-defined concrete
+      DataSource and ConnectionPoolDataSource implementations, which
+      exclude "connection" and/or "pooledConnection" from
+      introspected bean properties, in order to preclude attacks.
+      (bsc#1269941, CVE-2026-55223)
+    + Enforce a deterministic ordering on methods produced by the
+      code generator DelegatorGenerator, in order to keep builds
+      including such generated classes reproducible.
+    + Define BeanInfoGen, a code-generation utility that defines
+      explicit BeanInfo classes for what otherwise would have been
+      introspected via JavaBean naming conventions, but permits
+      properties to be excluded from such introspection.
+    + JavaBeanObjectFactory now enforces an allowlist of classes it
+      is willing to construct from References that call upon it.
+      That allowlist is defined by the new config parameter
+      com.mchange.v2.naming.referenceableJavaBeanClassWhitelist
+    + Define the false-biased config security key
+      com.mchange.v2.naming.allowIndirectSerializationViaReference,
+      disabling by default indirect serialization/deserialization of
+      Referenceable but otherwise non-serializable objects by
+      serializing their references. This is a clever mechanism, but
+      it is rarely used and provides a place where attackers might
+      smuggle a malicious reference.
+  * Changes in 0.13.0
+    + Ensure sessions are marked as endRequest() is called prior to
+      check-in, to eliminate a race condition between DBMS cleanup
+      and checkout by a new client.
+    + Remove the generic JavaBeanObjectFactory from the allowlist of
+      object factories, com.mchange.v2.naming.objectFactoryWhitelist,
+      that mchange-commons-java ReferenceableUtils is willing to
+      dereference. Only C3P0JavaBeanObjectFactory should be used.
+    + Modify C3P0JavaBeanObjectFactory to use
+      C3P0JavaBeanReferencePropertyOverrider.
+    + Modify the JavaBeanReferenceMaker employed by c3p0 beans to use
+      C3P0JavaBeanReferencePropertyOverrider.
+    + Define C3P0JavaBeanReferencePropertyOverrider, supporting the
+      serialization and deserialization of user-defined config
+      key-value pairs (the 'extensions' property).
+    + Add support for extensions, in the form of
+      JavaBeanReferencePropertyOverrider, that allow
+      javax.naming.Referenceable JavaBeans that include non-String,
+      non-coercible-to-string, non-SecurelyStringifiable properties
+      to use custom serialization to a Reference. Add support for
+      such extensions to both the JavaBeanReferenceMaker and
+      JavaBeanObjectFactory.
+    + Replace the internal use of Java serialization by
+      JavaBeanObjectFactory and JavaBeanReferenceMaker with a CSV
+      format when tracking reference properties.
+    + Eliminate support for decoding BinaryRefAddrs via Java
+      (de)serialization in JavaBeanObjectFactory. The capability
+      still exists, but one must explicitly extend
+      JavaBeanObjectFactory in order to support it. No existing
+      classes in c3p0 or mchange-commons-java now use Java
+      serialization to unpickle objects from References.
+    + Add support for SecurelySerializable to c3p0's code-generated
+      bean superclasses, as well as to the concrete derived beans.
+    + Define CsvSecurelyStringifiableBeangenGeneratorExtension to
+      enable code-generated Java beans that support the new
+      SecurelyStringifiable alternative serialization.
+    + When generating references with JavaBeanReferenceMaker, gate
+      the use of Java serialization to define properties behind a
+      new false-biased configuration parameter,
+      com.mchange.v2.naming.generateSerializedObjectBinaryRefAddr.
+      (This should almost never be reset to true.)
+    + Define a SecurelyStringifiable mechanism in com.mchange.v2
+      .naming, intended to replace the use of dangerous Java
+      serialization in the construction of references.
+
+-------------------------------------------------------------------
 Wed Mar  4 04:24:41 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 0.12.0
