@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul 01 08:21:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.6.0:
+  * Features
+    - feat: TUI arrow-key cursor navigation and Enter selection in
+      menus (#2105) @Andersson007
+  * Fixes
+    - fix: add type annotation for USER_ENVIRONMENT to satisfy mypy
+      v2.1.0 (#2131) @sathyapramod
+    - fix(runner): resolve SSH_AUTH_SOCK symlink on macOS Tahoe
+      before container mount (#2114) @stevefulme1
+    - fix(command-runner): prevent indefinite deadlock in
+      run_multi_process (#2125) @sathyapramod
+    - fix: optimize image introspection with section filtering
+      (#2124) @sathyapramod
+    - fix: handle missing tzdata gracefully for UTC timezone
+      (#2123) @cidrblock
+  * Maintenance
+    - Add unit tests to improve coverage across utility modules
+      (#2117) @shatakshiiii
+    - chore: remove previously-synced agent skills (#2129)
+      @ansibuddy
+    - ci: replace coactions/upload-artifact with
+      actions/upload-artifact@v7 (#2127) @sudhirverma
+    - chore(deps): update pre-commit hook
+      renovatebot/pre-commit-hooks (#2118) @renovate[bot]
+    - chore: exclude .agents/skills/ from markdownlint and prettier
+      (#2119) @shatakshiiii
+    - chore(deps): update all dependencies (#2115) @renovate[bot]
+
+-------------------------------------------------------------------
+Thu Apr 09 10:31:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.4.0:
+  * Maintenance
+    - chore(deps): update all dependencies (#2106) @renovate[bot]
+    - chore(deps): update all dependencies (#2100) @renovate[bot]
+    - ci: Fix CI, assisted by AI (#2104) @Andersson007
+
+-------------------------------------------------------------------
 Fri Feb 27 07:26:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.1.3:
