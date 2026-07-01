@@ -111,4 +111,12 @@
     <comment>3.30.14</comment>
     <requestid>1362622</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>3bf202f0479880164f971e604bb8aa8c</srcmd5>
+    <version>3.30.15</version>
+    <time>1782918760</time>
+    <user>anag_factory</user>
+    <comment>3.30.15 with security fixes</comment>
+    <requestid>1362999</requestid>
+  </revision>
 </revisionlist>

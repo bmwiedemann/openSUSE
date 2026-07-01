@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  1 13:32:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.15
+  * Security Fixes
+    + fix: guard regex matching against catastrophic backtracking
+      (ReDoS) (#2018, backport of #2012)
+      ° Adds SafeRegex utility with TimeoutCharSequence to enforce
+        wall-clock deadlines during regex matching
+      ° Fixes 8 locations across terminal, reader, and builtins
+        where user-controlled input could trigger catastrophic
+        backtracking
+      ° Addresses GHSA-r2xf-8xr9-62gw, GHSA-2v9w-34q6-wpqx,
+        GHSA-ph9c-7hw9-vhhw, GHSA-5q95-hrpc-m3w3
+    + fix: backport security hardening (#1986, #1995)
+      ° Create persisted history file with owner-only permissions
+      ° Use exclusive create for extracted native library temp files
+  * Bug Fixes
+    + fix: warn on insecure permissions when history file created
+      concurrently
+  * Dependency Updates
+    + chore: bump eu.maveniverse.maven.njord:extension3 from 0.9.8
+      to 0.9.9 (#1999)
+    + chore: bump com.palantir.javaformat:palantir-java-format
+      (#1991)
+    + chore: bump actions/cache from 5 to 6 (#1989)
+- Modified patch:
+  * 0001-Remove-optional-dependency-on-universalchardet.patch
+    + rebase
+
+-------------------------------------------------------------------
 Tue Jun 30 08:35:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.14
@@ -9,7 +39,7 @@ Tue Jun 30 08:35:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       (GHSA-47qp-hqvx-6r3f, bsc#1269021)
 - Removed patch:
   * jline3-GHSA-47qp-hqvx-6r3f.patch
-    + integrated in this version 
+    + integrated in this version
 
 -------------------------------------------------------------------
 Thu Jun 25 05:19:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
@@ -55,7 +85,7 @@ Wed Apr 29 12:05:09 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + Close HttpURLConnection in ConsoleEngineImpl.urlExists()
     + Guard AnsiConsole.providers() call to avoid NoSuchMethodError
     + Guard waitDirty against spurious wakeups
-    + Restore waitDirty timeout in forced dump to prevent busy-loop 
+    + Restore waitDirty timeout in forced dump to prevent busy-loop
       spinning
     + Remove spurious (short) casts in Size setters
     + Fix AttributedStyle color chaining
