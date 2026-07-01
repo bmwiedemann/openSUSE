@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Wand
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Ctypes-based simple MagickWand API binding for Python
 License:        MIT
