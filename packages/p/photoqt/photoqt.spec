@@ -17,7 +17,7 @@
 
 
 Name:           photoqt
-Version:        5.3
+Version:        5.4
 Release:        0
 Summary:        A Qt-based image viewer
 License:        GPL-2.0-or-later
