@@ -17,7 +17,7 @@
 
 
 Name:           valijson
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        Header-only C++ library for JSON Schema validation
 License:        BSD-2-Clause

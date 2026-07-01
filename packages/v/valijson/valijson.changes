@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 01 09:08:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.1:
+  This is the smaller release - primarily bug fixes and small
+  improvements.
+  * Issues fixed in this release:
+    - Guard against int64_t overflow in multipleOf integer check by
+      @aizu-m in #237
+    - Use locale-independent from_chars for string-to-double
+      parsing by @aizu-m in #238
+    - Count embedded null bytes in u8_strlen for length validation
+      by @aizu-m in #236
+  * Other changes include:
+    - Improve Qt5 and Qt6 cross-compatibility
+    - Bump to latest yaml-cpp in vendored libraries
+    - Improve handling of refs for draft 7 schemas
+    - Add option to preserve empty tokens in JSON pointers
+    - Improve RFC 3986 coverage in URI helpers
+
+-------------------------------------------------------------------
 Thu Feb 26 07:30:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:
