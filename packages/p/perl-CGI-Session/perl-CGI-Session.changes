@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:56:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.490.0 (4.49)
+   see /usr/share/doc/packages/perl-CGI-Session/Changelog.ini
+
+   * SECURITY: Strengthen cryptographic randomness of MD5 driver, CVE-2026-56016
+     (Robert Rothenberg, Mark Stosberg) bsc#1269983
+
+-------------------------------------------------------------------
 Thu Jun 12 17:57:46 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CGI-Session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,25 @@
 
 %define cpan_name CGI-Session
 Name:           perl-CGI-Session
-Version:        4.480.0
+Version:        4.490.0
 Release:        0
-# 4.48 -> normalize -> 4.480.0
-%define cpan_version 4.48
+# 4.49 -> normalize -> 4.490.0
+%define cpan_version 4.49
 #Upstream: Artistic-1.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Persistent session data in CGI applications
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MA/MARKSTOS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CGI) >= 3.260
-BuildRequires:  perl(Module::Build) >= 0.38
+BuildRequires:  perl(Crypt::SysRandom) >= 0.7
+BuildRequires:  perl(Module::Build) >= 0.380
 Requires:       perl(CGI) >= 3.260
+Requires:       perl(Crypt::SysRandom) >= 0.7
 Provides:       perl(CGI::Session) = %{version}
 Provides:       perl(CGI::Session::Driver) = 4.430.0
 Provides:       perl(CGI::Session::Driver::DBI) = 4.430.0
@@ -44,7 +47,7 @@ Provides:       perl(CGI::Session::Driver::postgresql) = 4.430.0
 Provides:       perl(CGI::Session::Driver::sqlite) = 4.430.0
 Provides:       perl(CGI::Session::ErrorHandler) = 4.430.0
 Provides:       perl(CGI::Session::ID::incr) = 4.430.0
-Provides:       perl(CGI::Session::ID::md5) = 4.430.0
+Provides:       perl(CGI::Session::ID::md5) = %{version}
 Provides:       perl(CGI::Session::ID::static) = 4.440.0
 Provides:       perl(CGI::Session::Serialize::default) = 4.430.0
 Provides:       perl(CGI::Session::Serialize::freezethaw) = 4.430.0
@@ -73,8 +76,6 @@ system across HTTP requests.
 
 %prep
 %autosetup -n %{cpan_name}-%{cpan_version} -p1
-
-find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
 perl Build.PL --installdirs=vendor

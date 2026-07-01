@@ -201,4 +201,15 @@
 </comment>
     <requestid>1285234</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b18f68b57e01fc421d0c88b60a19f6aa</srcmd5>
+    <version>4.490.0</version>
+    <time>1782917921</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.490.0 (4.49)
+   see /usr/share/doc/packages/perl-CGI-Session/Changelog.ini
+   * SECURITY: Strengthen cryptographic randomness of MD5 driver, CVE-2026-56016
+     (Robert Rothenberg, Mark Stosberg) bsc#1269983</comment>
+    <requestid>1362937</requestid>
+  </revision>
 </revisionlist>
