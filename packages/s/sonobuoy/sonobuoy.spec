@@ -1,7 +1,7 @@
 #
 # spec file for package sonobuoy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,25 @@
 #
 
 
-%define __arch_install_post export NO_BRP_STRIP_DEBUG=true
-
 Name:           sonobuoy
-Version:        0.57.3
+Version:        0.57.5
 Release:        0
 Summary:        Conformance test suite for diagnosing a Kubernetes cluster
 License:        Apache-2.0
 URL:            https://github.com/vmware-tanzu/sonobuoy
 Source:         sonobuoy-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go >= 1.19
+BuildRequires:  go1.26 >= 1.26.4
 
 %description
-Sonobuoy is a diagnostic tool that makes it easier to understand the state of a Kubernetes cluster by running a set of plugins (including Kubernetes conformance tests) in an accessible and non-destructive manner. It is a customizable, extendable, and cluster-agnostic way to generate clear, informative reports about your cluster.
+Sonobuoy is a diagnostic tool that makes it easier to understand the state of a
+Kubernetes cluster by running a set of plugins (including Kubernetes
+conformance tests) in an accessible and non-destructive manner. It is a
+customizable, extendable, and cluster-agnostic way to generate clear,
+informative reports about your cluster.
 
-Its selective data dumps of Kubernetes resource objects and cluster nodes allow for the following use cases:
+Its selective data dumps of Kubernetes resource objects and cluster nodes allow
+for the following use cases:
 
 * Integrated end-to-end (e2e) conformance-testing
 * Workload debugging

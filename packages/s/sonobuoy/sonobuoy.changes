@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 01 11:48:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.57.5 (there is no .4):
+  * Updating Go version from 1.25.11 to 1.26.4
+  * Fix cve scan failures by updating go and x/net module
+  * Upgrade golangci-lint to avoid CI error
+  * Fix some CVEs
+  * release v0.57.4 (#2034)
+  * Fix some CVEs (#2019)
+  * Add weekly linux vuln scan (#2015)
+  * Fix CVEs (#2012)
+  * Add unit tests for functions (#2014)
+  * Release v0.57.3 (#2008)
+
+-------------------------------------------------------------------
 Wed Feb 19 06:05:57 UTC 2025 - opensuse_buildservice@ojkastl.de
 
 - Update to version 0.57.3:

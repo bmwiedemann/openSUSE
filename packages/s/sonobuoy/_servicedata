@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/vmware-tanzu/sonobuoy</param>
-              <param name="changesrevision">a988242e8bbded3ef4602eda48addcfac24a1a91</param></service></servicedata>
+              <param name="changesrevision">a988242e8bbded3ef4602eda48addcfac24a1a91</param></service><service name="tar_scm">
+                <param name="url">https://github.com/vmware-tanzu/sonobuoy.git</param>
+              <param name="changesrevision">310c51d9874a4d10d021ec8a19f8b42292ec0bfc</param></service></servicedata>
