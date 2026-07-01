@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 01 11:44:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.31.1:
+  * Bump github.com/k0sproject/rig from 0.21.10 to 0.21.11 (#1107)
+  * fix: normalize k0s node names before maintenance (#1095)
+  * Bump actions/checkout from 6 to 7 (#1105)
+
+-------------------------------------------------------------------
 Thu Jun 18 12:20:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.0:
