@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:16:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.6.0:
+  * Fixes
+    - fix: use absolute paths for roles and library in
+      ANSIBLE_ROLES_PATH (#583) @Dotify71
+    - fix(security): update dependencies [SECURITY] (#592)
+      @renovate[bot]
+    - fix: update '_extends' syntax for release-drafter v7
+      compatibility (#587) @rockygeekz
+  * Maintenance
+    - chore(deps): bump cryptography and cairosvg constraints
+      (#601) @sudhirverma
+    - chore: remove previously-synced agent skills (#599)
+      @ansibuddy
+    - chore(deps): update all dependencies pep621 (#595)
+      @renovate[bot]
+    - chore(deps): update all dependencies (#594) @renovate[bot]
+    - chore(deps): update all dependencies (#585) @renovate[bot]
+    - chore(deps): update all dependencies pep621 (#593)
+      @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#592)
+      @renovate[bot]
+    - chore(deps): update pep621 (#586) @renovate[bot]
+    - chore(deps): update pep621 (#580) @renovate[bot]
+    - chore(deps): update all dependencies (#579) @renovate[bot]
+    - fix(security): update dependencies [SECURITY] (#578)
+      @renovate[bot]
+    - chore(deps): bump the uv group across 1 directory with 3
+      updates (#581) @dependabot[bot]
+    - chore(deps): update pep621 (#574) @renovate[bot]
+    - chore(deps): update all dependencies (#573) @renovate[bot]
+
+-------------------------------------------------------------------
 Wed Apr  1 04:24:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.3.0:
