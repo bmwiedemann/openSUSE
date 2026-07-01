@@ -64,4 +64,41 @@ Refresh patches:
     <comment></comment>
     <requestid>1267930</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0629914932b985687478e283b6f9ec10</srcmd5>
+    <version>5.8.1</version>
+    <time>1782917660</time>
+    <user>anag_factory</user>
+    <comment>- Drop ignore-resourcewarning.patch, not nedded anymore
+
+- Update to 5.8.1:
+  ## Fixes
+  * 1222: Fix for GHSA-w2j7-f3c6-g8cw - Possible open-redirect
+    with ALLOW_SUBDOMAIN option.
+  * 1215: Fix for GHSA-97r5-pg8x-p63p - possible oauth bypass in
+    /verify
+- Update to 5.8.0:
+  ## Features &amp; Improvements
+  * 1170: Add API :py:meth:`.UserMixin.check_tf_required` to allow
+    applications to control which users require two-factor
+    authentication.
+  * 1178: Add Cache-Control headers.
+  * 1165: Add support for using Social Login (OAuth) for
+    verification.
+  * 1188: Add tracking of failed authentication attempts via
+    :py:meth:`.UserMixin.track_failed_authn` and signal
+    :py:data:`user_failed_authn`
+  * 1192: Add API for application to decide if a particular user
+    account is locked.
+  ## Fixes
+  * 1179: Fix verify_password for bcrypt 5.0 (mephi42)
+  * 1200: Fix username_recovery w.r.t. inactive and non-confirmed
+    users
+  * 1189: Return additional fields for JSON responses with QR codes
+  ## Docs and Chores
+  * 1150: Update de_DE translations (swaeberle)
+  * 1151: Update ca_ES translations (arielvb)
+  * 1152: Update es_ES translations (arielvb)</comment>
+    <requestid>1362908</requestid>
+  </revision>
 </revisionlist>

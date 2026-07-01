@@ -1,4 +1,140 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:20:54 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Drop ignore-resourcewarning.patch, not nedded anymore
+
+-------------------------------------------------------------------
+Fri Jun 26 13:02:55 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to 5.8.1:
+  ## Fixes
+  * 1222: Fix for GHSA-w2j7-f3c6-g8cw - Possible open-redirect
+    with ALLOW_SUBDOMAIN option.
+  * 1215: Fix for GHSA-97r5-pg8x-p63p - possible oauth bypass in
+    /verify
+
+- Update to 5.8.0:
+  ## Features & Improvements
+  * 1170: Add API :py:meth:`.UserMixin.check_tf_required` to allow
+    applications to control which users require two-factor
+    authentication.
+  * 1178: Add Cache-Control headers.
+  * 1165: Add support for using Social Login (OAuth) for
+    verification.
+  * 1188: Add tracking of failed authentication attempts via
+    :py:meth:`.UserMixin.track_failed_authn` and signal
+    :py:data:`user_failed_authn`
+  * 1192: Add API for application to decide if a particular user
+    account is locked.
+  ## Fixes
+  * 1179: Fix verify_password for bcrypt 5.0 (mephi42)
+  * 1200: Fix username_recovery w.r.t. inactive and non-confirmed
+    users
+  * 1189: Return additional fields for JSON responses with QR codes
+  ## Docs and Chores
+  * 1150: Update de_DE translations (swaeberle)
+  * 1151: Update ca_ES translations (arielvb)
+  * 1152: Update es_ES translations (arielvb)
+  * 1196: Update arabic translations (samialfattani)
+  * 1199: Update it_IT translations (gissimo)
+  * 1185: Change external facing terminology from 'Social OAuth' to
+    'Social Login'.
+
+- Update to 5.7.1:
+  ## Fixes
+  * #1147: Regression when updating hash algorithm from bcrypt
+    (willcroft)
+
+- Update to 5.7.0:
+  * This release contains a set of small backward incompatible
+    changes. Please read these notes carefully.
+  ## Features & Improvements
+  * #1132: Add Arabic translations (samialfattani)
+  * #1123: Enable forgot-password workflow for authenticated users.
+  ## Fixes
+  * #1115: Fix broken link in docs and improve docstrings/typing
+    for util classes.
+  * #1127: Add nonce to script tags if configured to support
+    nonce-based Content-Security-Policy (ahanak).
+  * #1133: Remove unnecessary (optional) dependency on
+    sqlalchemy_utils.
+  * #1140: Fix localization of tf_select choices.
+  * #1143: Support bcrypt 5.0 - See below for important
+    compatibility concerns.  This also replaces passlib with
+    libpass for all versions.
+  ## Docs and Chores
+  * #1144: Update ES and IT translations (gissimo)
+
+  * #1106: Drop support for Python 3.9. This removes the dependency
+    on importlib_resources, updates pypy to 3.10, and uses 3.12 as
+    base python for tests/tox.
+
+  * #1112: Flip :py:data:`SECURITY_USE_REGISTER_V2` default to
+    True.
+  * #1117: Flip default mail package back to Flask-Mail (from
+    Flask-Mailman).
+  * #1139: Change external facing terminology from 'WebAuthn
+    Credential' to 'passkey'.
+  * #1142: Setting of xx_util_cls from kwargs which was deprecated
+    in 5.6.1 has been removed. The BACKWARDS_COMPAT_UNAUTHN option
+     (code) which has been deprecated since 5.4 has been removed.
+  ## Backwards Compatibility Concerns
+  * Flask-Security now depends on libpass
+    (https://pypi.org/project/libpass/) for all versions. Be sure
+    to UNINSTALL passlib, ensure the passlib directory is empty and
+    then install libpass - we have seen reports when both are
+    installed - it doesn't work!
+
+  * In bcrypt 5.0 they started throwing a ValueError for
+    passwords/secrets longer than 72 bytes. It is important to know
+    that by default Flask-Security performs a double hash - taking
+    the secret, using HMAC(SHA512) then b64encodng the result. This
+    means that ANY password will be longer than 72 bytes (86 to be
+    exact). In the past bcrypt would silently truncate the input -
+    now we have to do that explicitly. OWASP says truncation
+    concerns are negligible:
+    https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html#input-limits-of-bcrypt
+
+  * The default RegisterForm is now the new RegisterFormV2 - Please
+    read :ref:`register_form_migration`. Flask-Security will emit a
+    DeprecationWarning if the :py:data:`SECURITY_USE_REGISTER_V2`
+    is set to False.
+
+  * In 5.0 we changed the default mailer package to Flask-Mailman
+    since Flask-Mail was no longer supported. Flask-Mail is again
+    supported and is part of Pallets-Eco. Both packages are still
+    supported based on which one an application initializes. The
+    only backwards compatibility concern is that if you use the
+    setup extras 'common', it will install Flask-Mail rather than
+    Flask-Mailman.
+
+  * In the optional dependencies 'fsqla' we removed
+    sqlalchemy_utils - while many applications might want these
+    useful add-ons - they aren't required for standard SQLAlchemy
+    use.
+
+- Update to 5.6.2:
+  ## Fixes
+  * #1032 and #1096: Use libpass for python >= 3.12
+  * #1086: Fix FR translation test for Change Password (nickcuenca)
+  * #1090: Properly document context variables available in email
+    templates.
+  * #1093: Add confirmation link/token and reset link/token to
+     welcome_existing email template.
+  ## Notes
+  * Since Python 3.12 no longer contains setuptools - the old
+    passlib failed to import. Rather than require setuptools,
+    for Python >=3.12 we now depend on the fork libpass
+    (https://pypi.org/project/libpass/) This is a very new package
+    and rather than possibly cause backwards compat issues for
+    projects not using Python >=3.12 - Flask-Security maintains the
+    dependency on passlib for Python <3.12.
+  * Note: you can still use passlib for 3.12 and 3.13 - you have to
+    manually add setuptools.
+
+- Rebase ignore-resourcewarning.patch
+
+-------------------------------------------------------------------
 Tue Apr  8 07:59:29 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 5.6.1
