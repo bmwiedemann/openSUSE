@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Tue Jun 30 16:39:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.28.1:
+  - [v1.x] Buffer per-request StreamableHTTP streams; store
+    priming event before dispatch by @maxisbey in #2948
+  - [v1.x] Set Development Status classifier to Production/Stable
+    by @maxisbey in #2976
+  - [v1.x] Support TransportSecuritySettings in the WebSocket
+    server transport by @maxisbey in #2992
+- Update to 1.28.0:
+  - Deprecations
+      - Two API surfaces now emit DeprecationWarning ahead of their
+        removal in v2. Nothing is removed in 1.x, and the warnings
+        fire only when the deprecated API is called - importing the
+        modules stays silent.
+        - WebSocket transport - mcp.client.websocket.websocket_client
+          and mcp.server.websocket.websocket_server. WebSocket was
+          never part of the MCP specification; use the streamable
+          HTTP transport instead. The TypeScript SDK has likewise
+          removed its WebSocket client for v2
+          (modelcontextprotocol/typescript-sdk#1783).
+        - Experimental tasks API - ClientSession.experimental,
+          Server.experimental, ServerSession.experimental, and the
+          experimental_task_handlers= kwarg on ClientSession. Tasks
+          (SEP-1686) were removed from the MCP specification and are
+          expected to return as a separate MCP extension.
+      - If your test suite runs with filterwarnings = ["error"] and
+        exercises these paths, add a scoped ignore such as ignore:The
+        experimental tasks API is deprecated:DeprecationWarning or
+        ignore:The WebSocket .* transport is
+        deprecated:DeprecationWarning.
+      - See #2828 for full details.
+  - What's Changed
+        - [v1.x] Support Python 3.14 by @maxisbey in #2769
+        - fix: omit null optional fields from task result payloads by
+          @liuzemei in #2809
+        - [v1.x] Deprecate the WebSocket transport and the
+          experimental tasks entry points by @maxisbey in #2828
+        - [v1.x] Add a v2 status banner to the README by @maxisbey in
+          #2835
+        - [v1.x] Deflake the child process cleanup tests by @maxisbey
+          in #2839
+
+-------------------------------------------------------------------
+Tue Jun 30 07:30:35 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop python-uv as dependency from python-mcp, as the tests run
+  through without it and we don't pull it into Ring 1 as dependency 
+
+-------------------------------------------------------------------
 Fri May 29 16:58:45 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.27.1:

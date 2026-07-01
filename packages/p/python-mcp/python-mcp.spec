@@ -26,7 +26,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-mcp%{psuffix}
-Version:        1.27.1
+Version:        1.28.1
 Release:        0
 Summary:        Python implementation of the Model Context Protocol
 License:        MIT
@@ -68,7 +68,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.32.3}
 BuildRequires:  %{python_module trio}
 BuildRequires:  %{python_module typer}
-BuildRequires:  %{python_module uv >= 0.7.2}
 BuildRequires:  %{python_module websockets}
 %endif
 %python_subpackages

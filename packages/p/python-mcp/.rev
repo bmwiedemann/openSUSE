@@ -70,4 +70,41 @@ Mon Feb  2 11:47:16 UTC 2026 - Egbert Eich &lt;eich@suse.com&gt;
   - refactor: import SSEError from httpx_sse public API</comment>
     <requestid>1355963</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>87af4bb9b50699ff1030f3157fbf828e</srcmd5>
+    <version>1.28.1</version>
+    <time>1782916497</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.28.1:
+  - [v1.x] Buffer per-request StreamableHTTP streams; store
+    priming event before dispatch by @maxisbey in #2948
+  - [v1.x] Set Development Status classifier to Production/Stable
+    by @maxisbey in #2976
+  - [v1.x] Support TransportSecuritySettings in the WebSocket
+    server transport by @maxisbey in #2992
+- Update to 1.28.0:
+  - Deprecations
+      - Two API surfaces now emit DeprecationWarning ahead of their
+        removal in v2. Nothing is removed in 1.x, and the warnings
+        fire only when the deprecated API is called - importing the
+        modules stays silent.
+        - WebSocket transport - mcp.client.websocket.websocket_client
+          and mcp.server.websocket.websocket_server. WebSocket was
+          never part of the MCP specification; use the streamable
+          HTTP transport instead. The TypeScript SDK has likewise
+          removed its WebSocket client for v2
+          (modelcontextprotocol/typescript-sdk#1783).
+        - Experimental tasks API - ClientSession.experimental,
+          Server.experimental, ServerSession.experimental, and the
+          experimental_task_handlers= kwarg on ClientSession. Tasks
+          (SEP-1686) were removed from the MCP specification and are
+          expected to return as a separate MCP extension.
+      - If your test suite runs with filterwarnings = [&quot;error&quot;] and
+        exercises these paths, add a scoped ignore such as ignore:The
+        experimental tasks API is deprecated:DeprecationWarning or
+        ignore:The WebSocket .* transport is
+        deprecated:DeprecationWarning.
+      - See #2828 for full details.</comment>
+    <requestid>1362732</requestid>
+  </revision>
 </revisionlist>
