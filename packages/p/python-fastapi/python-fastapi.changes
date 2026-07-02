@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jun 22 20:51:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.138.0:
+  * Add support for `app.frontend("/", directory="dist")` and
+    `router.frontend("/", directory="dist")`.
+  * Fix typo in release notes.
+  * Add `app.frontend()` instructions to Agent Library Skill.
+  * Update release notes link.
+  * Update white space characters in bigger apps.
+  * Fix grammar, typos, and broken links in docs.
+  * Enable Hindi docs translations.
+  * Fix failing test, update format for raised errors.
+  * Fix test-alls-green.
+  * Enable checking `release-notes.md` for typos.
+  * Tweak wording about deploying to FastAPI Cloud.
+  * Use `gpt-5.5` model in `translate.py`, specify `-chat` to
+    avoid warnings.
+- update to 0.137.2:
+  * Add `iter_route_contexts()` for advanced use cases that
+    used to use `router.routes` (e.g. Jupyverse).
+  * Fix broken Markdown in Korean custom response docs.
+
+-------------------------------------------------------------------
 Tue Jun 16 06:02:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.137.1:

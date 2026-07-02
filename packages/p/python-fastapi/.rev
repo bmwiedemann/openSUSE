@@ -755,4 +755,12 @@
   * Fix bug, allow empty path in path operation in prefixless router.</comment>
     <requestid>1359712</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>ef5d1f62f11dd24c195948701da7b4ba</srcmd5>
+    <version>0.138.0</version>
+    <time>1783015560</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1362541</requestid>
+  </revision>
 </revisionlist>
