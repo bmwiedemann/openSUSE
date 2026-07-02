@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:18:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- No code change since 26.04.2
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * konsolekalendar.cpp - fix viewing a date range (kde#520686)
+  * konsolekalendar/main.cpp - fix the --create command line parsing (kde#450299)
+
+-------------------------------------------------------------------
 Thu May  7 08:02:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
