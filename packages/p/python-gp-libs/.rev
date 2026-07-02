@@ -53,4 +53,14 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1344872</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ff98bf49295fc8d39123d3dbd88fcad8</srcmd5>
+    <version>0.0.18</version>
+    <time>1783015793</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.18:
+  * refreshes the project documentation and maintainer workflow
+    around the shared git-pull docs stack.</comment>
+    <requestid>1363027</requestid>
+  </revision>
 </revisionlist>
