@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           union6
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Qt style supporting both QtQuick and QtWidgets
 License:        LGPL-2.1-or-later
@@ -55,9 +55,9 @@ BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(cxx-rust-cssparser)
 BuildRequires:  cmake(ryml)
+Requires:       qt6qmlimport(Qt.labs.qmlmodels)
 Requires:       qt6qmlimport(org.kde.breeze)
 Requires:       qt6qmlimport(org.kde.plasma.components)
-Requires:       qt6qmlimport(Qt.labs.qmlmodels)
 # Marked as runtime dep
 Requires:       libKirigamiPlatform6 >= %{kf6_version}
 
