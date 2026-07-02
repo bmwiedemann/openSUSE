@@ -30,7 +30,7 @@
 %bcond_without openconnect
 %endif
 Name:           plasma6-nm
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Plasma applet written in QML for managing network connections
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -67,7 +67,8 @@ BuildRequires:  cmake(QCoro6DBus)
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6DBus) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
-BuildRequires:  cmake(Qt6Keychain)
+# >= 0.16.0 to make sure to avoid kde#521595
+BuildRequires:  cmake(Qt6Keychain) >= 0.16.0
 BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickWidgets) >= %{qt6_version}
@@ -99,6 +100,8 @@ Provides:       plasma-nm5 = %{version}
 Obsoletes:      plasma-nm5 < %{version}
 Obsoletes:      plasma-nm5-lang < %{version}
 Provides:       NetworkManager-client
+# Combined with the BR above to make sure to avoid kde#521595
+%requires_ge    libqt6keychain1
 
 %description
 Plasma applet for controlling network connections on systems

@@ -359,4 +359,12 @@
     <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
     <requestid>1361425</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>d9093e95ed1a4f42cb5415ab5e436959</srcmd5>
+    <version>6.7.2</version>
+    <time>1783015688</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.2 with qmk integration enabled. Untested. (forwarded request 1362741 from Vogtinator)</comment>
+    <requestid>1362844</requestid>
+  </revision>
 </revisionlist>
