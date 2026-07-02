@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Thu Jul  2 03:37:27 UTC 2026 - Jianhua Lu <lujianhua000@gmail.com>
+
+- Update to version 0.9.1
+  * Scrolling issues in visual mode for meta items.
+  * Fixing the fun fortunes.
+  * Setting the default newline character for string search to NUL (to match commonly expected behavior).
+
+-------------------------------------------------------------------
+Sun Jun 21 14:11:01 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use %fdupes in %install
+- Update to version 0.9.0:
+  * Add architecture support for TMS320C54x, cBPF, SH-3, RS08,
+    HCS12X, MCS96 variants, Infineon C166, MIL-STD-1750, and
+    DEC VAX
+  * Migrate RISC-V and HPPA to Capstone 6 and add M68k ColdFire
+    support
+  * Continue RzArch migration: remove RzAsm from the public API,
+    isolate ESIL into its own namespace, and continue ESIL→RzIL
+    migration work
+  * Expand RzIL support with x86 SSE/SSE2 floating-point lifting,
+    a SPARC lifter, TMS320C5x uplifting, exception halting, and
+    improved UI integration
+  * Rework pf format syntax and implementation
+  * Add statistical and entropy histograms and the new Marks
+    subsystem
+  * Improve visual bit editor mode and add the "underwater"
+    color theme
+  * Extend binary format support with STABS, Lua/LuaJIT, CaRT,
+    Amiga Hunk, MDT, PEF, bootimg v1-v4, expanded iH coverage,
+    additional ELF coredump support, and Python 3.14 bytecode
+    support
+  * Reorganize debugger heap inspection commands into
+    allocator-specific namespaces (dmhg*, dmhw*, dmhj*)
+  * Add variable constraints, C++ virtual-call devirtualization,
+    and typeclass support
+  * Add new commands for marks, histograms, gadget searches,
+    RzIL output, ASN.1/PKCS#8 parsing, and type management
+  * Add new configuration options and rename rop.* settings to
+    gadget.*
+  * Remove ESIL-based search, pg* visual ROP support, /cc
+    checksum collision search, rz-asm -r, rz-bin -X, obsolete
+    I/O backends, GPL-derived plugins, and deprecated APIs
+  * Improve performance and thread safety through RzGraph,
+    container, and gadget-cache optimizations
+  * Update to Capstone 6.0.0-alpha9, switch Swift demangling to
+    rz-libswift, update rz-libdemangle, and bump project format
+    version from 19 to 25
+
+-------------------------------------------------------------------
 Tue Feb  3 08:14:56 UTC 2026 - Alexander Bergmann <abergmann@suse.com>
 
 - Update to version 0.8.2

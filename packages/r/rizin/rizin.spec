@@ -17,13 +17,14 @@
 
 
 Name:           rizin
-Version:        0.8.2
+Version:        0.9.1
 Release:        0
 Summary:        UNIX-like reverse engineering framework and command-line tool-set
+License:        GPL-3.0-or-later OR LGPL-3.0-or-later
 URL:            https://github.com/rizinorg/rizin/
 Source0:        https://github.com/rizinorg/rizin/releases/download/v%{version}/%{name}-src-v%{version}.tar.xz
-License:        GPL-3.0-or-later OR LGPL-3.0-or-later
 BuildRequires:  cmake
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  meson >= 0.55.0
 BuildRequires:  ninja
@@ -64,8 +65,8 @@ information.
 
 %package common
 Summary:        Arch-independent SDB files for the rizin package
-BuildArch:      noarch
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description common
 Arch-independent SDB files used by rizin package. See rizin package for more
@@ -105,6 +106,9 @@ information
 # Create directories for plugins and bindings
 install -d %{buildroot}%{_libdir}/%{name}/plugins
 install -d %{buildroot}%{_libdir}/rizin-bindings
+
+%fdupes %{buildroot}%{_datadir}/
+%fdupes %{buildroot}%{_includedir}/
 
 %ldconfig_scriptlets
 
