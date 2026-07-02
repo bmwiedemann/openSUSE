@@ -1988,4 +1988,12 @@ Regularly scheduled major release. (forwarded request 1186324 from develop7)</co
     <comment></comment>
     <requestid>1352458</requestid>
   </revision>
+  <revision rev="225" vrev="1">
+    <srcmd5>c0971948b8a7692fe61625cb271a9eed</srcmd5>
+    <version>7.2.3</version>
+    <time>1783015547</time>
+    <user>anag_factory</user>
+    <comment>- Mercurial 7.2.3</comment>
+    <requestid>1362519</requestid>
+  </revision>
 </revisionlist>

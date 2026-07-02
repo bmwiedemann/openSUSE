@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jun 29 18:14:28 UTC 2026 - Sean Baggaley <me@drinkybird.net>
+
+- Mercurial 7.2.3
+
+  * Fix issue where files would appear modified even if clean (71e06e01d26b + 4d6df1ba8506)
+  * Add documentation for narrow, shapes and shards (f6b4469fe4eb)
+  * Fix a bug in the narrow patterns generation (baa13eff9ddc)
+  * Fix empty paths case in narrowspec generation (ac9cfd305ccd)
+  * Fix hgweb initialization issue (9ddd9c311109)
+  * Upgrades to the test harness's resistance to slow CI runners
+
+-------------------------------------------------------------------
 Mon May 11 10:28:04 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Drop BuildRequires on breezy.

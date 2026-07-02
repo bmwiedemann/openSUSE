@@ -37,7 +37,7 @@
 %endif
 
 Name:           mercurial
-Version:        7.2.2
+Version:        7.2.3
 Release:        0
 Summary:        Scalable Distributed SCM
 License:        GPL-2.0-or-later
