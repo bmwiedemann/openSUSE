@@ -197,6 +197,9 @@ Patch53:        CVE-2025-12781-b64decode-alt-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
 # Reject control characters in wsgiref.headers.Headers
 Patch56:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-OPENSUSE test_UDPLITE_support.patch bsc#1268375 mcepl@suse.com
+# improve testing of the presence of IPPROTO_UDPLITE support
+Patch57:        test_UDPLITE_support.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in poplib
 Patch58:        CVE-2025-15367-poplib-ctrl-chars.patch

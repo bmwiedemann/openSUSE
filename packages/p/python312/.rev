@@ -2085,4 +2085,14 @@
   CVE-2026-3446, gh#python/cpython#145264).</comment>
     <requestid>1360565</requestid>
   </revision>
+  <revision rev="50" vrev="7">
+    <srcmd5>55a4d691c34ffd7a374e7fc06c765169</srcmd5>
+    <version>3.12.13</version>
+    <time>1783015603</time>
+    <user>anag_factory</user>
+    <comment>- Add test_UDPLITE_support.patch which improves testing for the
+  support of IPPROTO_UDPLITE, which could be not present although
+  header files are (bsc#1268375).</comment>
+    <requestid>1362410</requestid>
+  </revision>
 </revisionlist>
