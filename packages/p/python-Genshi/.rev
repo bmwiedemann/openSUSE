@@ -248,4 +248,18 @@
     <comment></comment>
     <requestid>1342007</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8683bbfe4df1b4bf1954c77cb6f065ce</srcmd5>
+    <version>0.7.11</version>
+    <time>1783015722</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.7.11:
+  * Replace use of `pkg_resources` with `importlib.resources` (or
+    `importlib_resources` for Python &lt; 3.9)
+  * Update CI release workflow to use Ubuntu 22.04. (#96 by Simon
+    Cross)
+
+    removal of 2to3 in 0.7.4).</comment>
+    <requestid>1363031</requestid>
+  </revision>
 </revisionlist>

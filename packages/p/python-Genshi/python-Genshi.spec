@@ -19,7 +19,7 @@
 %define oldpython python
 %{?sle15_python_module_pythons}
 Name:           python-Genshi
-Version:        0.7.10
+Version:        0.7.11
 Release:        0
 Summary:        A toolkit for generation of output for the web
 License:        BSD-3-Clause
