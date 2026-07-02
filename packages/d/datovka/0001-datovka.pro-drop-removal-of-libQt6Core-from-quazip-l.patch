@@ -1,0 +1,31 @@
+From 1ac6b8fa4b0e0f5eb0506b85870abcd42a8e76c0 Mon Sep 17 00:00:00 2001
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Thu, 2 Jul 2026 10:00:07 +0200
+Subject: [PATCH] datovka.pro: drop removal of libQt6Core* from quazip libs
+References: https://gitlab.nic.cz/datovka/datovka/-/work_items/805
+
+It breaks the build now when quazip also adds libQt6Core5Compat. We were
+left with:
+-lz 5Compat /usr/lib/libQt6PrintSupport.so
+
+I don't see a reason to drop the Core lib as it is linked in anyway.
+Drop that excercise.
+---
+ datovka.pro | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/datovka.pro b/datovka.pro
+index 903421a811b8..6dbbbf737615 100644
+--- a/datovka.pro
++++ b/datovka.pro
+@@ -444,7 +444,6 @@ isEqual(SYSTEM_LIBQUAZIP, 1) {
+ 	QUAZIP_PKG_NAME = quazip1-qt$${QT_MAJOR_VERSION}
+ 	QUAZIP_INCLUDEPATH += $$system(pkg-config --cflags-only-I "$${QUAZIP_PKG_NAME}" | sed -e 's/-I//g')
+ 	QUAZIP_LIBS += $$system(pkg-config --libs "$${QUAZIP_PKG_NAME}")
+-	QUAZIP_LIBS ~= s/-l[^ ]*Core//g # remove -lQt${VER}Core
+ 
+ 	message(Compiling against found libquazip ($${QUAZIP_LIBS}).)
+ 
+-- 
+2.54.0
+

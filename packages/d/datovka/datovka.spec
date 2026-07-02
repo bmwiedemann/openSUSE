@@ -36,6 +36,7 @@ Source0:        https://datovka.nic.cz/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://datovka.nic.cz/%{version}/%{name}-%{version}.tar.xz.sha256
 # PATCH-FIX-UPSTREAM: remove some issues with current .pro file
 Patch0:         0001-datovka.pro-fixes.patch
+Patch1:         0001-datovka.pro-drop-removal-of-libQt6Core-from-quazip-l.patch
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(Qt%{qt_version}Core) >= %{qt_version_full}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 08:03:37 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-datovka.pro-drop-removal-of-libQt6Core-from-quazip-l.patch
+  to fix the build against quazip 1.7.2
+
+-------------------------------------------------------------------
 Wed May 27 06:45:32 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.29.2

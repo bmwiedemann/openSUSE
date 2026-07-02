@@ -724,4 +724,13 @@
 - clean up the specfile from ancient stuff</comment>
     <requestid>1355278</requestid>
   </revision>
+  <revision rev="53" vrev="2">
+    <srcmd5>32b0416675bf134ec8846274fe225039</srcmd5>
+    <version>4.29.2</version>
+    <time>1783015897</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-datovka.pro-drop-removal-of-libQt6Core-from-quazip-l.patch
+  to fix the build against quazip 1.7.2</comment>
+    <requestid>1363398</requestid>
+  </revision>
 </revisionlist>
