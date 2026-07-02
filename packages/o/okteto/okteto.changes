@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jul 02 12:39:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.21.0:
+  * New Feature
+    - feat(stack): native runtime cloud access for Compose services
+      via x-okteto-identity-token by @ifbyol in #5064
+  * Bug Fix
+    - [Backport release-3.21] Fix "okteto destroy --all" hanging on
+      sleeping namespaces by @github-actions[bot] in #5073
+  * Dependencies
+    -  build(deps): bump actions/cache from 5 to 6 (#5065)
+    -  chore(deps): Update docker (#5062)
+    -  build(deps): bump github.com/containerd/containerd/v2
+       (#5063)
+    -  build(deps): bump renovatebot/github-action from 46.1.15 to
+       46.1.16 (#5061)
+    -  chore(deps): Update module github.com/kubeark/jsonschema to
+       v0.3.0 (#5060)
+    -  chore(deps): Update cli-and-logging to v8 (#5058)
+    -  build(deps): bump actions/checkout from 6 to 7 (#5059)
+    -  chore(deps): Update golang-stdlib-extensions to v1.81.1
+       (#5056)
+    -  chore(deps): Update docker to v29.5.1+incompatible (#5055)
+    -  chore: upgrade Go to 1.26.4 (DEV-1390) (#5050)
+    -  chore(deps): Update module github.com/heimdalr/dag to v1.5.1
+       (#5053)
+    -  build(deps): bump renovatebot/github-action from 46.1.14 to
+       46.1.15 (#5044)
+    -  chore(deps): Update cli-and-logging to v8 (#5048)
+    -  chore(deps): Update golang-stdlib-extensions (#5047)
+    -  chore(deps): Update docker to v0.9.7 (#5046)
+    -  chore(deps): Update cli-and-logging to v8 (#5039)
+    -  chore(deps): Update module github.com/fsnotify/fsnotify to
+       v1.10.1 (#5041)
+    -  chore(deps): Update docker (#5036)
+    -  chore(deps): Update golang-stdlib-extensions to v1.81.0
+       (#5037)
+    -  chore(deps): update github.com/okteto/buildkit to v0.29.0
+       (#5034)
+    -  chore(deps): Update module github.com/google/uuid to v1.6.0
+       (#5033)
+    -  chore(deps): Update module github.com/alessio/shellescape to
+       v1.6.0 (#5023)
+
+-------------------------------------------------------------------
 Fri Jun 05 05:45:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.20.0:
