@@ -24,7 +24,7 @@
 
 %define libsoname %{name}4
 Name:           libcotp
-Version:        4.1.0
+Version:        4.2.1
 Release:        0
 Summary:        C library for generating TOTP and HOTP
 License:        Apache-2.0

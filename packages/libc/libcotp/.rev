@@ -278,4 +278,25 @@
 </comment>
     <requestid>1350010</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>5451dc50990e94351655ea58979d5a4f</srcmd5>
+    <version>4.2.1</version>
+    <time>1783015854</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.1:
+  * Added YAOTP support
+  * One-shot whash_sha256 wrapper dispatched by the selected
+    backend (gcrypt/openssl/mbedtls)
+  * Shared percent-encode/decode codec (utils/pct) used by both the
+    otpauth and yaotp URI parsers
+  * MbedTLS 4.x: the classic mbedtls_md_hmac_* API was demoted to
+    private identifiers in 4.x, which broke the mbedtls HMAC
+    backend. It is now a version-guarded dual implementation: PSA
+    Crypto (psa_mac_sign_setup/update/finish) for
+    MBEDTLS_VERSION_MAJOR &gt;= 4, with the unchanged legacy path for
+    2.x/3.x. FindMbedTLS.cmake also links libtfpsacrypto when
+    present (TF-PSA-Crypto split).
+</comment>
+    <requestid>1363119</requestid>
+  </revision>
 </revisionlist>
