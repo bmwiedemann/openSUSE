@@ -17,7 +17,7 @@
 
 
 Name:           obs-git-init
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        A help service to setup git repositories for OBS
 License:        GPL-2.0-or-later
@@ -25,6 +25,7 @@ URL:            https://src.opensuse.org/adrianSuSE/obs-git-init
 Source0:        %{name}-%{version}.tar.xz
 Requires:       perl(Config::INI)
 Requires:       perl(Config::IniFiles)
+Recommends:     obs-service-format_spec_file
 BuildArch:      noarch
 
 %description

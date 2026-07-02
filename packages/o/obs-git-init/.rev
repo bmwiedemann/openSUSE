@@ -64,4 +64,13 @@
   * Syntax fix for bs_mergechanges registration</comment>
     <requestid>1353376</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>34a5163e3d15736d0d72d7f0efef58ce</srcmd5>
+    <version>0.2.7</version>
+    <time>1783015947</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.7
+  * register format_spec_file as pre-commit hook if available</comment>
+    <requestid>1363511</requestid>
+  </revision>
 </revisionlist>

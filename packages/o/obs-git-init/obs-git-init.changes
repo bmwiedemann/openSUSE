@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 13:49:54 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Update to 0.2.7
+  * register format_spec_file as pre-commit hook if available
+
+-------------------------------------------------------------------
 Fri May 15 11:37:11 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to 0.2.6
