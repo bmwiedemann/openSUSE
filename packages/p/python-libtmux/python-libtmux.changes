@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Wed Jul  1 09:05:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.60.0:
+  libtmux 0.60.0 completes tmux 3.7 feature parity. Building on the
+  3.7 compatibility shipped in 0.59.0, it adds first-class floating
+  panes via Pane.new_pane() and Window.new_pane(), types tmux 3.7's
+  new server, session, window, and pane options, exposes the new
+  pane format variables on Pane, and wraps tmux 3.7's new command
+  flags. Every 3.7-only surface is version-gated, so tmux 3.2a–3.6
+  keep working unchanged.
+  * What's new
+    - Floating panes (new-pane) (#694)
+      tmux 3.7's flagship feature is now reachable through
+      Window.new_pane() and Pane.new_pane(). A floating pane sits
+      above the tiled layout like a popup but behaves like a real
+      pane. Pass width/height to size it and x/y to position it,
+      alongside the usual shell, start_directory, environment,
+      zoom, and empty, plus style, active_border_style,
+      inactive_border_style, message, and keep (remain-on-exit).
+      The returned Pane reports pane_floating_flag == "1". Requires
+      tmux 3.7+; see the floating panes guide.
+    - Typed tmux 3.7 options (#694)
+      The option dataclasses now type tmux 3.7's new options. On
+      the server, get-clipboard; on the session,
+      focus-follows-mouse, message-format, and
+      prompt-command-cursor-style; and on the window, the copy-mode
+      line-number options, the tree-mode preview options, and the
+      window-pane status formats (of these,
+      tree-mode-preview-format is also pane-scoped). The pane
+      remain-on-exit option gained tmux 3.7's key value, and
+      pane-active-border-style / pane-border-style (widened to pane
+      scope in 3.7) now type on the pane too.
+    - tmux 3.7 pane format variables (#694)
+      Pane now exposes tmux 3.7's new pane format variables: the
+      floating-pane geometry and flags (pane_floating_flag, pane_x,
+      pane_y, pane_z, pane_flags, pane_zoomed_flag), the OSC 9;4
+      progress report (pane_pb_progress, pane_pb_state),
+      pane_pipe_pid, and the bracket_paste_flag and
+      synchronized_output_flag screen-mode flags. Each is
+      version-gated, so the format template stays clean on tmux
+      3.2a–3.6.
+    - tmux 3.7 command flags (#694)
+      New tmux 3.7 flags are exposed on existing wrappers:
+      Pane.capture_pane() gains hyperlinks (-H), line_numbers (-L),
+      and line_flags (-F); Window.split() / Pane.split() gain empty
+      (-E) plus style/active_border_style/inactive_border_style
+      (-s/-S/-R), message (-m), and keep (-k); Session.kill() gains
+      group (-g); and Pane.paste_buffer() gains no_vis (-S). On the
+      server, Server.command_prompt() gains no_freeze (-C),
+      Server.list_keys() gains format_ (-F), Server.run_shell()
+      accepts trailing args expanded as #{1}/#{2}, and
+      Server.refresh_client() gains request_clipboard (-l). Each
+      warns and is ignored on tmux < 3.7.
+  * Compatibility
+    Purely additive — no breaking changes. New 3.7 parameters are
+    gated on tmux's reported version; unsupported flags warn and
+    are ignored on older tmux, and floating-pane creation raises
+    there because new-pane does not exist before 3.7. tmux 3.2a–3.6
+    remain supported and tested.
+  * What's Changed
+    - Add tmux 3.7 feature parity: floating panes, options, formats
+      by @tony in #694
+- update to 0.59.0:
+  * Restore compatibility with tmux 3.7 by @tony in #693
+
+-------------------------------------------------------------------
 Thu Jun 18 09:01:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.58.1:
