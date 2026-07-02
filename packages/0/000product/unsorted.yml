@@ -5032,6 +5032,13 @@ unsorted:
   - gdal 
   - gdal-bash-completion 
   - gdal-devel 
+  - gdal-fits 
+  - gdal-hdf5 
+  - gdal-kea 
+  - gdal-mysql 
+  - gdal-netcdf 
+  - gdal-pdf 
+  - gdal-postgresql 
   - gdal-python-tools 
   - gdata-sharp 
   - gdata-sharp-devel 
@@ -10399,8 +10406,6 @@ unsorted:
   - klatexformula-apidoc 
   - klavaro 
   - kldap-devel 
-  - klee 
-  - klee-uclibc-devel-static 
   - kleingebaeck 
   - klettres 
   - klettres-lang 
@@ -16817,7 +16822,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent44 
+  - libtorrent45 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -20407,6 +20412,7 @@ unsorted:
   - obs-service-source_validator 
   - obs-service-tar 
   - obs-service-tar_scm 
+  - obs-service-update_changelog 
   - obs-service-verify_file 
   - obs-studio 
   - obs-studio-devel 
@@ -20423,8 +20429,6 @@ unsorted:
   - ocaml-augeas-devel 
   - ocaml-base64 
   - ocaml-base64-devel 
-  - ocaml-bigarray-compat 
-  - ocaml-bigarray-compat-devel 
   - ocaml-bisect_ppx 
   - ocaml-bisect_ppx-devel 
   - ocaml-bos 
@@ -20456,8 +20460,6 @@ unsorted:
   - ocaml-dose-devel 
   - ocaml-dune 
   - ocaml-dune-devel 
-  - ocaml-easy-format 
-  - ocaml-easy-format-devel 
   - ocaml-extlib 
   - ocaml-extlib-devel 
   - ocaml-facile 
@@ -24713,6 +24715,7 @@ unsorted:
   - python311-ansicolor 
   - python311-ansicolors 
   - python311-ansiwrap 
+  - python311-anthropic 
   - python311-antlr4-python3-runtime 
   - python311-anyascii 
   - python311-anymarkup-core 
@@ -26339,9 +26342,19 @@ unsorted:
   - python311-lalpulsar 
   - python311-lalsimulation 
   - python311-lancet-ioam 
+  - python311-langchain-anthropic 
+  - python311-langchain-aws 
   - python311-langchain-chroma 
+  - python311-langchain-core 
+  - python311-langchain-openai 
+  - python311-langchain-protocol 
   - python311-langdetect 
   - python311-langfuse 
+  - python311-langgraph 
+  - python311-langgraph-checkpoint 
+  - python311-langgraph-cli 
+  - python311-langgraph-prebuilt 
+  - python311-langgraph-sdk 
   - python311-langsmith 
   - python311-langtable 
   - python311-lap 
@@ -26408,6 +26421,7 @@ unsorted:
   - python311-libmsym 
   - python311-libnacl 
   - python311-libolecf 
+  - python311-libpass 
   - python311-libpff 
   - python311-libpfm 
   - python311-libphdi 
@@ -26450,6 +26464,7 @@ unsorted:
   - python311-linstor-client 
   - python311-linux-procfs 
   - python311-lit 
+  - python311-litellm 
   - python311-littleutils 
   - python311-livereload 
   - python311-llfuse 
@@ -26691,7 +26706,6 @@ unsorted:
   - python311-nwdiag 
   - python311-oauthlib 
   - python311-objgraph 
-  - python311-obs-service-update_changelog 
   - python311-oci-sdk 
   - python311-ocrmypdf 
   - python311-octave-kernel 
@@ -26755,6 +26769,7 @@ unsorted:
   - python311-orderedmultidict 
   - python311-orderly-set 
   - python311-orjson 
+  - python311-ormsgpack 
   - python311-os-service-types 
   - python311-os-traits 
   - python311-osc-lib 
@@ -28642,6 +28657,7 @@ unsorted:
   - python313-ansicolor 
   - python313-ansicolors 
   - python313-ansiwrap 
+  - python313-anthropic 
   - python313-antlr4-python3-runtime 
   - python313-anyascii 
   - python313-anyio 
@@ -30294,9 +30310,19 @@ unsorted:
   - python313-lalpulsar 
   - python313-lalsimulation 
   - python313-lancet-ioam 
+  - python313-langchain-anthropic 
+  - python313-langchain-aws 
   - python313-langchain-chroma 
+  - python313-langchain-core 
+  - python313-langchain-openai 
+  - python313-langchain-protocol 
   - python313-langdetect 
   - python313-langfuse 
+  - python313-langgraph 
+  - python313-langgraph-checkpoint 
+  - python313-langgraph-cli 
+  - python313-langgraph-prebuilt 
+  - python313-langgraph-sdk 
   - python313-langsmith 
   - python313-langtable 
   - python313-lap 
@@ -30363,6 +30389,7 @@ unsorted:
   - python313-libmsym 
   - python313-libnacl 
   - python313-libolecf 
+  - python313-libpass 
   - python313-libpff 
   - python313-libpfm 
   - python313-libphdi 
@@ -30405,6 +30432,7 @@ unsorted:
   - python313-linstor 
   - python313-linstor-client 
   - python313-lit 
+  - python313-litellm 
   - python313-littleutils 
   - python313-livereload 
   - python313-llfuse 
@@ -30666,7 +30694,6 @@ unsorted:
   - python313-nvim-remote 
   - python313-nwdiag 
   - python313-objgraph 
-  - python313-obs-service-update_changelog 
   - python313-oci-sdk 
   - python313-ocrmypdf 
   - python313-octave-kernel 
@@ -30734,6 +30761,7 @@ unsorted:
   - python313-orderedmultidict 
   - python313-orderly-set 
   - python313-orjson 
+  - python313-ormsgpack 
   - python313-os-service-types 
   - python313-os-traits 
   - python313-osc-lib 
@@ -32619,6 +32647,7 @@ unsorted:
   - python314-ansicolor 
   - python314-ansicolors 
   - python314-ansiwrap 
+  - python314-anthropic 
   - python314-antlr4-python3-runtime 
   - python314-anyascii 
   - python314-anyio 
@@ -34296,9 +34325,19 @@ unsorted:
   - python314-lalpulsar 
   - python314-lalsimulation 
   - python314-lancet-ioam 
+  - python314-langchain-anthropic 
+  - python314-langchain-aws 
   - python314-langchain-chroma 
+  - python314-langchain-core 
+  - python314-langchain-openai 
+  - python314-langchain-protocol 
   - python314-langdetect 
   - python314-langfuse 
+  - python314-langgraph 
+  - python314-langgraph-checkpoint 
+  - python314-langgraph-cli 
+  - python314-langgraph-prebuilt 
+  - python314-langgraph-sdk 
   - python314-langsmith 
   - python314-langtable 
   - python314-lap 
@@ -34367,6 +34406,7 @@ unsorted:
   - python314-libmsym 
   - python314-libnacl 
   - python314-libolecf 
+  - python314-libpass 
   - python314-libpff 
   - python314-libpfm 
   - python314-libphdi 
@@ -34669,7 +34709,6 @@ unsorted:
   - python314-nwdiag 
   - python314-oauthlib 
   - python314-objgraph 
-  - python314-obs-service-update_changelog 
   - python314-oci-sdk 
   - python314-ocrmypdf 
   - python314-octave-kernel 
@@ -34735,6 +34774,7 @@ unsorted:
   - python314-orderedmultidict 
   - python314-orderly-set 
   - python314-orjson 
+  - python314-ormsgpack 
   - python314-os-service-types 
   - python314-os-traits 
   - python314-osc-lib 
@@ -38187,6 +38227,7 @@ unsorted:
   - setconf 
   - sethdlc 
   - setools-gui 
+  - setools-mcp 
   - setroubleshoot 
   - setroubleshoot-doc 
   - setroubleshoot-plugins 
@@ -38338,6 +38379,8 @@ unsorted:
   - skelcd-openSUSE 
   - skelcd-openSUSE-non-OSS 
   - ski 
+  - skillspector 
+  - skillspector-mcp 
   - skim 
   - skim-bash-completion 
   - skim-zsh-completion 
