@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- No code change since 26.04.2
+
+-------------------------------------------------------------------
+Thu Jun  4 08:44:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Fix crash on skanlite startup (kde#517465)
+
+-------------------------------------------------------------------
 Thu May  7 08:03:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
