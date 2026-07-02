@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:24:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.34.2:
+  * Fixed snapshot updates when pytest reuses stale assertion-
+    rewrite cache files after a test folder is moved, which could
+    leave cached code objects pointing at the old source path
+  * Fixed `snapshot_arg()` to use the `fix` category (instead of
+    `create`) when creating an argument with an existing non-
+    ellipsis default argument value.
+  * `get_snapshot_value()` now accepts a `which` parameter
+    (`"new"` or `"old"`) to select whether to return the new
+    (just-compared) or the old (previously stored) snapshot value
+    (#336).
+  * `Example.run_pytest`: deterministic test order by using `-p
+    no:ranodmly`
+
+-------------------------------------------------------------------
 Sun May 17 19:14:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.33.0:

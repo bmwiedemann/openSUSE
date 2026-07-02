@@ -200,4 +200,24 @@ and python-pydantic-settings</comment>
   * Fixed UsageError during session teardown when using -k (#355)</comment>
     <requestid>1353619</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>06c4c29dea7f4885caeafe3bfba8173a</srcmd5>
+    <version>0.34.2</version>
+    <time>1783015723</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.34.2:
+  * Fixed snapshot updates when pytest reuses stale assertion-
+    rewrite cache files after a test folder is moved, which could
+    leave cached code objects pointing at the old source path
+  * Fixed `snapshot_arg()` to use the `fix` category (instead of
+    `create`) when creating an argument with an existing non-
+    ellipsis default argument value.
+  * `get_snapshot_value()` now accepts a `which` parameter
+    (`&quot;new&quot;` or `&quot;old&quot;`) to select whether to return the new
+    (just-compared) or the old (previously stored) snapshot value
+    (#336).
+  * `Example.run_pytest`: deterministic test order by using `-p
+    no:ranodmly`</comment>
+    <requestid>1363034</requestid>
+  </revision>
 </revisionlist>
