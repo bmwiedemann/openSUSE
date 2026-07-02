@@ -108,4 +108,16 @@
   + Add build-tests option. (forwarded request 1284921 from iznogood)</comment>
     <requestid>1285780</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4655d0b9d654cf9dadab44c6c24a687e</srcmd5>
+    <version>1.0.8</version>
+    <time>1783023241</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.0.8:
+  + doc-reference.am: Distribute .svg files from the HTML directory
+  + Skeletonmm: Add skeletonmm/tools/generate_from_gir.sh
+  + Meson build: Allow -Duse-network=if-no-local-tag-file (new
+    default value).</comment>
+    <requestid>1363132</requestid>
+  </revision>
 </revisionlist>

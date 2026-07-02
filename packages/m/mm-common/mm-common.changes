@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:43:50 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.0.8:
+  + doc-reference.am: Distribute .svg files from the HTML directory
+  + Skeletonmm: Add skeletonmm/tools/generate_from_gir.sh
+  + Meson build: Allow -Duse-network=if-no-local-tag-file (new
+    default value).
+
+-------------------------------------------------------------------
 Wed Jun 11 17:22:22 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.0.7:

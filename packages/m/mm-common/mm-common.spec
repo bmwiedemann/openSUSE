@@ -18,7 +18,7 @@
 
 
 Name:           mm-common
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Common build files of the GNOME C++ bindings
 License:        GPL-2.0-or-later

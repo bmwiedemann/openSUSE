@@ -1,5 +1,4 @@
 <package name="mm-common" project="openSUSE:Factory">
   <title>mm-common</title>
   <description></description>
-  <devel project="GNOME:Factory" package="mm-common"/>
 </package>
