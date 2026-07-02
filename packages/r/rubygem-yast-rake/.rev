@@ -380,4 +380,13 @@
     <comment>submit new version 0.2.51</comment>
     <requestid>1178482</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>98ef6a53e977baa33d449dcf2fb9f845</srcmd5>
+    <version>0.2.52</version>
+    <time>1783015587</time>
+    <user>anag_factory</user>
+    <comment>- Added support for &quot;alts&quot; as an alternative to the
+ &quot;update-alternatives&quot; script</comment>
+    <requestid>1362734</requestid>
+  </revision>
 </revisionlist>
