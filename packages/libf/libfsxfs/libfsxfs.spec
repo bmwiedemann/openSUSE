@@ -1,7 +1,7 @@
 #
 # spec file for package libfsxfs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 Name:           libfsxfs
 %define lname	libfsxfs1
-Version:        20240501
+Version:        20260703
 Release:        0
 Summary:        Library and tools for accessing the SGI X File System (XFS)
 License:        LGPL-3.0-or-later
@@ -34,22 +34,23 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfcrypto) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libhmac) >= 20240417
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260612
+BuildRequires:  pkgconfig(libcerror) >= 20260612
+BuildRequires:  pkgconfig(libcfile) >= 20260615
+BuildRequires:  pkgconfig(libclocale) >= 20260612
+BuildRequires:  pkgconfig(libcnotify) >= 20260612
+BuildRequires:  pkgconfig(libcpath) >= 20260621
+BuildRequires:  pkgconfig(libcsplit) >= 20260612
+BuildRequires:  pkgconfig(libcthreads) >= 20260615
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfcrypto) >= 20260521
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libhmac) >= 20260522
+BuildRequires:  pkgconfig(libuna) >= 20260602
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
