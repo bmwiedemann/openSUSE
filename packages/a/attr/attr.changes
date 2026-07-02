@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Mon Jun 29 21:52:00 UTC 2026 - Goldwyn Rodrigues <rgoldwyn@suse.com>
+
+- Update to 2.6.0:
+
+Major Issues Fixed:
+
+  - The libacl library functions acl_get_file(), acl_set_file(),
+    acl_extended_file(), and acl_delete_def_file() take a pathname argument
+    and follow symbolic links.  When a privileged user calls one of those
+    functions, an attacker that controls a pathname component can replace a
+    file or directory with a symbolic link and redirect the operation to a
+    different file.  This can lead to local privilege escalation.
+
+    The library functions cannot be fixed without breaking compatibility; the
+    described behaviour is by design.
+
+    Instead, version 2.4.0 of the acl package introduces the additional
+    functions acl_get_file_at(), acl_set_file_at(), acl_extended_file_at(), and
+    acl_delete_def_file_at().  These functions each take a dirfd file
+    descriptor argument and an at_flags argument and accept the
+    AT_SYMLINK_NOFOLLOW and AT_EMPTY_PATH flags.  Use these functions to
+    control when to follow symbolic links.
+
+    In addition, the libacl functions acl_get_fd(), acl_set_fd(), and
+    acl_extended_fd() functions always operate on the access ACL; the library
+    previously did not offer a way to operate on the default ACL of a directory
+    file descriptor.  The new functions remove that restriction.
+
+    It will be up to each individual program to start using these new library
+    functions where appropriate.
+
+  - When walking directory trees, the getfacl, setfacl, chacl, and getfattr
+    utilities constructed the full pathname of each file in the tree
+and use that
+    pathname to access the file.  When a privileged user used those utilities,
+    an attacker that controlled a pathname component could replace a
+directory with
+    a symbolic link and redirect the operation to a different file, leading to
+    a local privilege escalation.
+
+    This is fixed by using directory file descriptors and operating relative to
+    those directory file descriptors.
+
+  - When resolving the final pathname component, the getfacl, setfacl, chacl,
+    getfattr, and setfattr utilities in some cases used functions that resolve
+    symbolic links.  This includes the above mentioned libacl functions, but
+    also stat(), chmod(), and chown().
+
+    This is fixed by using symlink-safe functions throughout the code.
+
+  - When restoring a backup, the setfacl and setfattr utilities read the full
+    pathnames of files from the backup.  When those pathnames were resolved,
+    pathname components that are symbolic links were traversed.  An attacker
+    that controlled a pathname component could replace it with a symbolic link,
+    causing a privileged user to operate on a file other than the one intended.
+    This could lead to the same kind of local privilege escalation as discussed
+    before.
+
+    This is fixed by using openat2(RESOLVE_NO_SYMLINKS) to resolve the
+    directory components of a pathname, but see Compatibility Notes below for
+    the details.
+
+
+Minor Issues Fixed:
+
+  - When a symbolic link was specified on the command line but symbolic link
+    traversal was disabled using option -P (--physical), the getfacl and
+    setfacl utilities previously silently ignored the symlink.  Now, an ELOOP
+    ("Too many levels of symbolic links") error will result instead.
+
+  - acl_delete_entry() now verifies that the specified entry belongs to the
+    specified acl.
+
+  - Numeric uids and gids that cannot be represented in types uid_t and gid_t
+    are checked more carefully and invalid numbers are rejected.
+
+  - Functions acl_get_file(), acl_get_file_at(), and acl_get_fd() will retry
+    several times when the size of an ACL grows unexpectedly; previously, they
+    only grew the allocated buffer once before giving up.
+
+  - When passed a directory file descriptor, function perm_copy_fd() didn't
+    copy the default ACL from one directory to the other.  It now does.
+
+  - setfacl --restore accidentally ignored leading whitespace in filenames.  It
+    no longer does.
+
+  - setfacl --restore accidentally called chmod() when in --test mode.  It no
+    longer does.
+
+  - When the setfattr --restore option was used multiple times, a buffer was
+    accessed after being freed. This no longer happens.
+
+  - When the setfattr -h (--no-dereference) option was given after --restore,
+    it was ignored.  Now, the options can be passed in any order.
+
+  - The -h (--no-dereference) option of getfattr prevented getfattr from
+    recursing into "symbolic link directories".  This is wrong.  When dirlink
+    is a symbolic link that refers to a directory, "getfattr -Rh
+dirlink" will now
+    visit that directory.  The -P (--physical) option can be used to prevent
+    that.
+
+  - Similarly, when a symbolic link referring to a directory was specified on
+    the getfacl or setfacl command line, the -R option did not cause that
+    directory to be visited.  This has been fixed so that those directories
+    will now be visited.  The -P (--physical) option can be used to prevent
+    that.
+
+-------------------------------------------------------------------
 Tue Feb 13 21:48:02 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5.2:

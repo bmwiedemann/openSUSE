@@ -1,7 +1,7 @@
 #
 # spec file for package attr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %define lname	libattr1
 Name:           attr
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Commands for Manipulating Extended Attributes
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
 URL:            https://savannah.nongnu.org/projects/attr/
-Source:         https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz
-Source2:        https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.gz.sig
+Source:         https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.xz
+Source2:        https://download-mirror.savannah.gnu.org/releases/attr/attr-%{version}.tar.xz.sig
 Source3:        https://savannah.nongnu.org/people/viewgpg.php?user_id=42032#/%{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
