@@ -7,4 +7,12 @@
     <comment>Supersedes sr#1362303: bugzilla-mcp 0.15.1 rename now builds against %{primary_python} instead of a hardwired python313 flavour (identical RPM today; Obsoletes/Provides python313-bugzilla-mcp kept literal). Paired with delete request sr#1362304 for python-bugzilla-mcp.</comment>
     <requestid>1362323</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>09d4aa986ee3e32267b6d587466777de</srcmd5>
+    <version>0.16.0</version>
+    <time>1783015919</time>
+    <user>anag_factory</user>
+    <comment>Update bugzilla-mcp to 0.16.0: add attachment support (list_attachments + download_attachment with auto/inline/save modes and private opt-in), new --download-dir option / BUGZILLA_DOWNLOAD_DIR env var writing to an owner-only 0700 dir, and improved Bugzilla REST API error reporting. No dependency changes (pyproject identical bar the version). Builds clean (noarch, 0 rpmlint badness); source_validator green.</comment>
+    <requestid>1363467</requestid>
+  </revision>
 </revisionlist>

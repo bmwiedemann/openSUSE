@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:40:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.16.0:
+  * Add attachment support via two new tools: list_attachments returns
+    a bug's attachment metadata (id, file name, summary, content type,
+    size and flags) without the file contents, and download_attachment
+    fetches a single attachment by id
+  * download_attachment supports delivery modes auto/inline/save: small
+    textual attachments are returned inline, binary or oversized files
+    are written to disk, and private attachments require an explicit
+    include_private opt-in
+  * Add --download-dir option (and BUGZILLA_DOWNLOAD_DIR environment
+    variable) selecting where downloaded attachments are written;
+    defaults to an owner-only (0700) directory under the temporary dir
+  * Improve reporting of Bugzilla REST API errors
+
+-------------------------------------------------------------------
 Mon Jun 29 05:52:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Rename python-bugzilla-mcp to bugzilla-mcp; build as a single-flavour

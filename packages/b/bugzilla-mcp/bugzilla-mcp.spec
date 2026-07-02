@@ -21,7 +21,7 @@
 # not a multi-flavour module.
 %define pythons %{primary_python}
 Name:           bugzilla-mcp
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        Model Context Protocol server for Bugzilla
 License:        Apache-2.0
