@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:18:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- Changes since 26.04.2:
+  * Partially revert 3bb094eb
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Skip tests that got broken with the recent FreeBSD CI image update
+  * Adapt to KMime having moved to Frameworks
+
+-------------------------------------------------------------------
 Thu May  7 08:02:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1

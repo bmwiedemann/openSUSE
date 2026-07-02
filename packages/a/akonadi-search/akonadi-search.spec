@@ -18,12 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.1
+%define kpim6_version 6.7.3
 %define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           akonadi-search
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Framework for searching and managing PIM metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
