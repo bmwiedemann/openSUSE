@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.2
+%define kpim6_version 6.7.3
 
 %bcond_without released
 Name:           mbox-importer
-Version:        26.04.2
+Version:        26.04.3
 Release:        0
 Summary:        Tool for importing mbox archives into akonadi
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
