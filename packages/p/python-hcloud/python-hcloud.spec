@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-hcloud
-Version:        2.20.0
+Version:        2.22.0
 Release:        0
 Summary:        Hetzner Cloud Python library
 License:        MIT

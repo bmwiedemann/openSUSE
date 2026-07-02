@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:18:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.22.0:
+  * The endpoints `GET /v1/datacenters` and `GET
+    /v1/datacenters/{id}` are now deprecated and will be removed
+    after 1 Oct. 2026. After this date, requests to these
+    endpoints will return `HTTP 410 Gone`.
+  * The `DatacentersClient`, `Datacenter` and related classes are
+    now deprecated.
+  * deprecate datacenters
+  * retry requests on api bad_gateway error
+
+-------------------------------------------------------------------
 Sun May 17 18:48:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.20.0:

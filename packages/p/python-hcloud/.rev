@@ -233,4 +233,20 @@
     it is being dropped.</comment>
     <requestid>1353606</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>89366cbffb96e1bfc8f876e0abbf53b9</srcmd5>
+    <version>2.22.0</version>
+    <time>1783015795</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.22.0:
+  * The endpoints `GET /v1/datacenters` and `GET
+    /v1/datacenters/{id}` are now deprecated and will be removed
+    after 1 Oct. 2026. After this date, requests to these
+    endpoints will return `HTTP 410 Gone`.
+  * The `DatacentersClient`, `Datacenter` and related classes are
+    now deprecated.
+  * deprecate datacenters
+  * retry requests on api bad_gateway error</comment>
+    <requestid>1363028</requestid>
+  </revision>
 </revisionlist>
