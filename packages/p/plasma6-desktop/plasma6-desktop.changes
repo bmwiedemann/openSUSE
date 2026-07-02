@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 30 20:13:42 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.2
+- Changes since 6.7.1:
+  * Update version for new release 6.7.2
+  * KCMMouse: fix some layout issues (kde#521992)
+  * Don't make warnings fatal in kcm_kded test
+  * Don't import desktoptest in kcm_kded appium test
+  * Drop bug482267 test
+  * FolderView: More robust drop url generation (kde#521713)
+  * WorkspaceOPtions: fix warnings
+  * applets/kickoff: add selection highlight for SectionView (kde#522154)
+  * applets/kickoff: correctly show highlight in the Places page
+  * Update version for new release 6.7.2
+
+-------------------------------------------------------------------
 Tue Jun 23 11:00:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.1:
