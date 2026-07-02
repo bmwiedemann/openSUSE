@@ -1857,4 +1857,13 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342974</requestid>
   </revision>
+  <revision rev="209" vrev="2">
+    <srcmd5>e74d2b73e91a1c040a7f4303ad9392b8</srcmd5>
+    <version>3.24.52</version>
+    <time>1783023236</time>
+    <user>anag_factory</user>
+    <comment>- Add gtk3-fix-xi2-xatom.patch: Fix wrong display when handling xi2
+  xatom. (bsc#1269225, glgo#GNOME/gtk!10105)</comment>
+    <requestid>1363123</requestid>
+  </revision>
 </revisionlist>

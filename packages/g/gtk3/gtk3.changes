@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 02:10:33 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gtk3-fix-xi2-xatom.patch: Fix wrong display when handling xi2
+  xatom. (bsc#1269225, glgo#GNOME/gtk!10105)
+
+-------------------------------------------------------------------
 Mon Mar 23 12:47:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.24.52:
