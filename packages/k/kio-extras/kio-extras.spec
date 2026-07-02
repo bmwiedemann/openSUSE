@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio-extras
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
