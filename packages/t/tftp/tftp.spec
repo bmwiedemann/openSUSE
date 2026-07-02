@@ -21,13 +21,13 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           tftp
-Version:        5.2
+Version:        5.3
 Release:        0
 Summary:        Trivial File Transfer Protocol (TFTP)
 License:        BSD-3-Clause
 Group:          Productivity/Networking/Ftp/Clients
 URL:            https://www.kernel.org/pub/software/network/tftp/
-Source:         https://www.kernel.org/pub/software/network/tftp/tftp-hpa/tftp-hpa-%{version}.tar.bz2
+Source:         https://git.kernel.org/pub/scm/network/tftp/tftp-hpa.git/snapshot/tftp-hpa-%{version}.tar.gz
 Source3:        tftp.service
 Source4:        tftp.socket
 Source5:        tftp.sysconfig
@@ -35,13 +35,9 @@ Patch0:         tftp-hpa-0.43_include_sys_params.patch
 Patch1:         tftp-hpa-0.46_colon_check.patch
 Patch4:         tftp-hpa-0.49-fortify-strcpy-crash.patch
 Patch5:         tftp-hpa-0.48-tzfix.patch
-Patch6:         tftp-multi-addresses.patch
 Patch7:         tftp-hpa-0.48-macros-crash.patch
 Patch8:         tftp-hpa-0.48-macros-v6mapped.patch
 Patch43:        tftp-config_h.patch
-# Fix for boo#1225935, originally from
-# https://bugzilla.redhat.com/show_bug.cgi?id=2148911
-Patch44:        tftp-c99.patch
 BuildRequires:  autoconf
 BuildRequires:  binutils-devel
 BuildRequires:  pkgconfig

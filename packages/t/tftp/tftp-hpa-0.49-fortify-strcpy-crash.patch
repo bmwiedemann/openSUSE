@@ -1,8 +1,8 @@
-Index: tftp-hpa-git-0.48/tftp/tftp.c
+Index: tftp-hpa-5.3/tftp/tftp.c
 ===================================================================
---- tftp-hpa-git-0.48.orig/tftp/tftp.c	2008-07-31 12:46:57.000000000 +0200
-+++ tftp-hpa-git-0.48/tftp/tftp.c	2010-06-29 12:14:48.000000000 +0200
-@@ -279,15 +279,16 @@ makerequest(int request, const char *nam
+--- tftp-hpa-5.3.orig/tftp/tftp.c
++++ tftp-hpa-5.3/tftp/tftp.c
+@@ -278,15 +278,16 @@ makerequest(int request, const char *nam
              struct tftphdr *tp, const char *mode)
  {
      char *cp;

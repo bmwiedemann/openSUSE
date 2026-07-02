@@ -2,11 +2,11 @@
  tftpd/tftpd.c |   26 +++++++++++++-------------
  1 file changed, 13 insertions(+), 13 deletions(-)
 
-Index: tftp-hpa-5.2/tftpd/tftpd.c
+Index: tftp-hpa-5.3/tftpd/tftpd.c
 ===================================================================
---- tftp-hpa-5.2.orig/tftpd/tftpd.c
-+++ tftp-hpa-5.2/tftpd/tftpd.c
-@@ -1377,24 +1377,24 @@ static int rewrite_macros(char macro, ch
+--- tftp-hpa-5.3.orig/tftpd/tftpd.c
++++ tftp-hpa-5.3/tftpd/tftpd.c
+@@ -1373,24 +1373,24 @@ static int rewrite_macros(char macro, ch
              return strlen(p);
  
      case 'x':

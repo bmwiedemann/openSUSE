@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:57:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.3:
+  * tftp: convert IPv6-mapped IPv4 addresses to IPv4
+  * tftpd: Canonicalize all the addresses
+  * tftpd: Canonicalize myaddr before address_is_local()
+  * recvfrom: update config.h define for in_pktinfo.ipi_addr
+  * Modernize: use sigaction() whenever possible. Remove uses of common.
+  * tftpd.8: document IPv6 handling in remapping rules
+  * tftp: drop "inline" from definition of usage()
+  * tftpd: explicitly declare timer() static
+- drop tftp-c99.patch: obsolete
+- drop tftp-multi-addresses.patch: upstream (differently)
+
+-------------------------------------------------------------------
 Mon Apr 20 09:10:52 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - jsc#PED-14746: Fix packages for Immutable Mode
-  * Remove /srv/tftpboot from package, system-user-tftp already provides that. 
+  * Remove /srv/tftpboot from package, system-user-tftp already provides that.
 
 -------------------------------------------------------------------
 Sat Jan 24 04:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
@@ -13,7 +28,7 @@ Sat Jan 24 04:42:24 UTC 2026 - pallas wept <pallaswept@proton.me>
 Tue Jul 29 07:19:02 UTC 2025 - Angel Yankov <angel.yankov@suse.com>
 
 - Allow enabling the service via `systemctl enable tftp` to create
-  the tftp.socket symlink [bsc#1215520, bsc#1246141] 
+  the tftp.socket symlink [bsc#1215520, bsc#1246141]
 
 -------------------------------------------------------------------
 Tue Apr  8 10:20:18 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
@@ -96,7 +111,7 @@ Tue Jul 10 11:51:31 CEST 2018 - kukuk@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:39:09 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -107,7 +122,7 @@ Fri Sep  8 13:26:47 UTC 2017 - pmonrealgonzalez@suse.com
 -------------------------------------------------------------------
 Fri Jun 16 08:54:54 UTC 2017 - jhura@suse.com
 
-- Removed xinetd service 
+- Removed xinetd service
 
 -------------------------------------------------------------------
 Mon Nov  2 12:36:26 UTC 2015 - vcizek@suse.com
@@ -140,7 +155,7 @@ Tue Mar 25 23:35:16 UTC 2014 - crrodriguez@opensuse.org
   product still in active maintenance.
 - Use correct systemd macros in %pre, %post..
 - config.h must be included *everywhere* (tftp-config_h.patch)
-- tftp.service: 
+- tftp.service:
    * This service needs to be started after network.target
    * Use PrivateDevices=yes
 
@@ -246,7 +261,7 @@ Wed Oct 13 21:05:23 UTC 2010 - chris@computersalat.de
 -------------------------------------------------------------------
 Fri Oct  1 12:07:50 UTC 2010 - puzel@novell.com
 
-- add tftp-hpa-0.48-tzfix.patch (bnc#630297) 
+- add tftp-hpa-0.48-tzfix.patch (bnc#630297)
 
 -------------------------------------------------------------------
 Tue Jun 29 08:57:01 UTC 2010 - puzel@novell.com
@@ -398,10 +413,10 @@ Mon Feb  9 11:53:41 CET 2004 - mmj@suse.de
 Fri Jan  9 23:20:25 CET 2004 - mmj@suse.de
 
 - Update to tftp-hpa-0.35:
-  o Add an option to control the maximum value of blksize 
+  o Add an option to control the maximum value of blksize
     negotiated.
   o Removed workaround for obsolete Cygwin problem.
-  o Don't use getopt() -- the -c option doesn't work correctly 
+  o Don't use getopt() -- the -c option doesn't work correctly
     since it depends on the ordering of arguments and options.
     It is now possible to do:
     tftp -m binary hostname -c get filename
@@ -542,5 +557,5 @@ Tue Dec 12 04:16:18 MET 2000 - draht@suse.de
 -------------------------------------------------------------------
 Sun Oct  8 18:39:58 CEST 2000 - kukuk@suse.de
 
-- Split from nkitb 
+- Split from nkitb
 

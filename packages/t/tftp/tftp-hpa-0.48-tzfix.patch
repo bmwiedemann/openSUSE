@@ -1,8 +1,8 @@
-Index: tftp-hpa-5.1/tftpd/tftpd.c
+Index: tftp-hpa-5.3/tftpd/tftpd.c
 ===================================================================
---- tftp-hpa-5.1.orig/tftpd/tftpd.c
-+++ tftp-hpa-5.1/tftpd/tftpd.c
-@@ -384,6 +384,14 @@ int main(int argc, char **argv)
+--- tftp-hpa-5.3.orig/tftpd/tftpd.c
++++ tftp-hpa-5.3/tftpd/tftpd.c
+@@ -383,6 +383,14 @@ int main(int argc, char **argv)
      const char *pidfile = NULL;
      u_short tp_opcode;
  

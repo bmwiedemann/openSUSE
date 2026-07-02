@@ -2,11 +2,11 @@
  tftpd/tftpd.c |   33 +++++++++++++++++++++++++++++----
  1 file changed, 29 insertions(+), 4 deletions(-)
 
-Index: tftp-hpa-5.2/tftpd/tftpd.c
+Index: tftp-hpa-5.3/tftpd/tftpd.c
 ===================================================================
---- tftp-hpa-5.2.orig/tftpd/tftpd.c
-+++ tftp-hpa-5.2/tftpd/tftpd.c
-@@ -1353,6 +1353,21 @@ static void do_opt(const char *opt, cons
+--- tftp-hpa-5.3.orig/tftpd/tftpd.c
++++ tftp-hpa-5.3/tftpd/tftpd.c
+@@ -1349,6 +1349,21 @@ static void do_opt(const char *opt, cons
  
  #ifdef WITH_REGEX
  
@@ -28,7 +28,7 @@ Index: tftp-hpa-5.2/tftpd/tftpd.c
  /*
   * This is called by the remap engine when it encounters macros such
   * as \i.  It should write the output in "output" if non-NULL, and
-@@ -1364,10 +1379,20 @@ static int rewrite_macros(char macro, ch
+@@ -1360,10 +1375,20 @@ static int rewrite_macros(char macro, ch
  {
      char *p, tb[INET6_ADDRSTRLEN];
      int l=0;
@@ -50,7 +50,7 @@ Index: tftp-hpa-5.2/tftpd/tftpd.c
                                tb, INET6_ADDRSTRLEN);
          if (output && p)
              strcpy(output, p);
-@@ -1377,14 +1402,14 @@ static int rewrite_macros(char macro, ch
+@@ -1373,14 +1398,14 @@ static int rewrite_macros(char macro, ch
              return strlen(p);
  
      case 'x':
