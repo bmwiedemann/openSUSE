@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- Changes since 26.04.2:
+  * pause music plugin: skip our own mpris interface (kde#427028)
+  * core/filetransferjob: Fix automatic file renaming
+  * Build for macOS also on release branches
+  * Do not show connection info for disconnected devices
+  * test: add regression test for CompositeUploadJob timeout path
+  * Fix: add connection timeout to CompositeUploadJob to prevent port leaks (kde#516765)
+  * Call FromIdentityPacketAndCert from the class, not the object (kde#519057)
+  * dbusproperty: scope signal connection (fixes crash closing settings) (kde#520352)
+  * Filter the addresses we advertise via mdns (kde#520453)
+  * Avoid echoing phone notifications back to the phone (kde#520838)
+
+-------------------------------------------------------------------
 Thu Jun  4 08:43:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.2
