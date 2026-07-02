@@ -16,8 +16,6 @@
 #
 
 
-%define pythons python3
-
 Name:           virt-firmware
 Version:        25.12
 Release:        0
@@ -25,20 +23,20 @@ Summary:        Tools for virtual machine firmware volumes
 License:        GPL-2.0-only
 URL:            https://gitlab.com/kraxel/virt-firmware
 Source:         https://gitlab.com/kraxel/virt-firmware/-/archive/v%{version}/virt-firmware-v%{version}.tar.gz
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
-# SECTION test requirements
-BuildRequires:  %{python_module cryptography}
-BuildRequires:  %{python_module pefile}
-# /SECTION
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 Requires:       python3-cryptography
 Requires:       python3-pefile
 Requires:       python3-setuptools
 BuildArch:      noarch
-%python_subpackages
+# SECTION test requirements
+BuildRequires:  python3-cryptography
+BuildRequires:  python3-pefile
+# /SECTION
 
 %description
 Tools for virtual machine firmware volumes.
@@ -47,12 +45,11 @@ Tools for virtual machine firmware volumes.
 %autosetup -p1 -n %{name}-v%{version}
 
 %build
-%pyproject_wheel
+%python3_pyproject_wheel
 
 %install
-%pyproject_install
-mkdir -p %{buildroot}%{_mandir}/man1/
-install -m0644 man/*.1 %{buildroot}%{_mandir}/man1/
+%python3_pyproject_install
+install -m0644 -D -t %{buildroot}%{_mandir}/man1/ man/*.1
 
 %check
 # Fake systemd-detect-virt to avoid a BuildRequires on systemd.
@@ -60,7 +57,7 @@ echo "#!/bin/true" | install -D -m 0755 /dev/stdin tmpbin/systemd-detect-virt
 export PATH="%{buildroot}%{_bindir}:$PATH:$PWD/tmpbin" PYTHONPATH="%{buildroot}%{python_sitelib}" PYTHONDONTWRITEBYTECODE=1
 virt-fw-vars --help
 # The other tests are Fedora-specific and not that useful.
-make test-unittest
+%make_build test-unittest
 
 %files
 %doc README.md

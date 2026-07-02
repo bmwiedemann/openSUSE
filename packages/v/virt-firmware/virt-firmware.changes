@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 23:20:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Clean up SPEC file.
+- Add python3-base BR.
+
+-------------------------------------------------------------------
 Thu Jun 11 12:58:08 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to v25.12, last version with support for Python 3.6:
