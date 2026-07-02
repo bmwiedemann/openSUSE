@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20260622.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmo/mkMACgkQ0atFFoiI
+iIgP0yag1R5ftlSxbgQZrHtF2quXkoZ4i8joAT7DmAITPp+JqoNcR+jiZkxXM9AI
+MiMLwK/+HvRJ/2OyVhj1v8a+pIpaQsRKGfc6e/Nqr7lynwYHaPPdFcHreUE18mDd
+z0P2NJ1PGXU0gCMBr6z5y2dDVk/1Du1zXXqloVGPZTo+9L+WO+mOGChiI4PrJTYx
+iOMsly3VGiVVlcdjVRCK8T3znlynXvgq6YrKhalg4Ea5znX3dRBwXjcFSPjrGZm2
+Zx/izi2vUAVRYxj6dEKrtwZczV4VUtBeh9mccuUmeu2z7+al67qyW3kyvxk9vBD1
+s4a+F5RtquS+GWcP7+gWye/6eV1wp6QJKmV5+rPjA19t6grK1P9SXWHTSSpbCLba
+CsDWyulmvlcDhYpBUaZJuVCP5j9eP7IS/QBaAmyrV8LzZ3h/WDIP90Y0qU3Vl9M1
+ya3hhY5XMWe+ZhVhyFKglIHDvVA0VDmtE/UUJA4L1JZlZXqosTpasTb6/hI96pgB
+wcx1oxjR1HoqkZtBHNGx10RJtVf8FJaJRn4pwEgtsmDYKa9lFUzwZ2RcyBWMKZ2F
+T5xDhUNC7AMZWwoiNtQlTEYgu5Py+NTRk4Mf+T2cJC/HkMladBnQ/FyCiAAFK25y
+1i+s+EjCHZ4QfuheZwY95R96YcMx8Os7e40LnADngJsDve17Jzm6uQr2BFhsWfmp
+CHEMImbC+dcjFvl1or5ZdyAwT7/hzFta4pn+tnddDI5hrJl6AgZxrfIpslKo+GUG
+Y2b8Pz8TRH7br4iFg3aNQnsG/S6kwkkG66MYFJPsSqvTjK7hg91Y+LhLZDbITQ+k
++eF7ITN0LU3v+lqh5cb+tvlE2h5IwaAUmh3IoY+xjhbgyWzjFkAJbbdnl9mMW5FU
+aYvr5kFp0OzBSAx+pS5ghePK9QyRJaW4TdywY8p1LukKeZ1jc5f3Qiw3XUquAryk
+t4vub3jvCVeEYUpHaGVE9oXm9mvDy1h6I5pxwdA1R244FC4DRnnAcaEvAm9EMHGL
+YMsT1Pv17LnIXtF3dZYjQ6PQF24FCHOlA+175UXxn/GodLn06pVOjjSlkkywfEi2
+HaDpu9jfxHdR0fKeXvjl9BBWShbKaIRBY1Anr1u7H7YyGSJZy/BH/uBxwPybUUgF
+YHELnXdXLxTDXrM2S/x7x9XCHDZXUcWG3M4lNCEFbYMU8Ibcnt5kqUS0z5U20LSR
+YT3BzGuM7htmi+2ip5H0zrsSt25XY4baPQA+X4razlkl0mEVC7R8Z0KnYKfuHuVw
+BJxIeLV4DC5DKQ0vhUHOlIwWZAdTbGi6LQfdrjl/yL/1HvaTCaurhy0P7CkzvBqY
+fyySsW38ytqZW/4c99ATPhymRUWGDZRbwuWQ6DV81c9CJFd6pKA0ozmQO01uwmuv
+o/uUhs8jPy78FeTynKdTcrFxEUdSfKNKwIRyzzuNrb5vfRJae23B6SmL9LlXhl+3
+PFf97LM3S2YhAnLgzyJ7Di7K371WrUsaEa463lXnjS0AZkhC5UrDNITgBKrL25/2
+Qt3PxvYwLbVZgkmyc0LkTwMeMhb14n3Znlk4mf/Q2vM6WKqi80JtE2iz5R19meiQ
+54IERyqTeTPDyIKO0caHkJeacNalwnorHEEr/rWVkLC/w//vC1T83/Yg
+=ES7w
+-----END PGP SIGNATURE-----
