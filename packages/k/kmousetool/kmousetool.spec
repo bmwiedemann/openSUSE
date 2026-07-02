@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmousetool
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Automatic Mouse Click
 License:        GPL-2.0-or-later
