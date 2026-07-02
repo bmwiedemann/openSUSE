@@ -410,4 +410,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1325170</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>8b97674cd0af0f88f399c555739b8c7b</srcmd5>
+    <version>1.4.7+git20260501.6e39144</version>
+    <time>1783015949</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.7+git20260501.6e39144:
+  * v1.4.7 New features &amp; Bug fixes
+  * fix: improve Apple Silicon temperature detection on macOS
+  * Created function toggle_tree_collapse() in shared.cpp to reduce code duplication
+  * fix(proc): force full collect on sort change in tree mode
+  * fix(proc): exclude root processes from E collapse/expand all
+  * feat(proc): add E hotkey to collapse/expand all tree nodes
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.0
+  * Remove code duplication
+  * Fixed missing CPU package temperature color (numeric value)
+  * chore(deps): update zizmorcore/zizmor-action action to v0.5.3
+  * chore(deps): update vmactions/netbsd-vm action to v1.3.8
+  * chore(deps): update vmactions/freebsd-vm action to v1.4.5
+  * chore(deps): update actions/upload-artifact action to v7.0.1
+  * ci: run workflows if tests have changed
+  * test: add cpu name trim tests
+  * Update src/btop_draw.cpp
+  * Update src/btop_draw.cpp
+  * [AI generated] fix: Clamp GPU graph widths to prevent crash on small terminals
+  * ci: add workflow to check security flaws
+  * ci: format workflow files
+  * ci: set runner concurrency limits
+  * ci: use environment variables to mitigate template injections
+  * ci: don't persist workflow credentials on runner
+  * ci: pin actions
+  * ci: require as little permissions as possible
+  * Fix cpu watt overflow in cpu box + division by zero fix for cpu.temp_max
+  * fix: use static_cast
+  * fix: correct shared gpu vram and power percentage calculations
+  * fix: accumulate pwr_usage into pwr_total instead of mem_total in Gpu::collect()</comment>
+    <requestid>1363532</requestid>
+  </revision>
 </revisionlist>

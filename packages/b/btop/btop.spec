@@ -1,7 +1,7 @@
 #
 # spec file for package btop
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 Name:           btop
-Version:        1.4.6+git20251226.5b920e3
+Version:        1.4.7+git20260501.6e39144
 Release:        0
 Summary:        Usage and stats for processor, memory, disks, network and processes
 License:        Apache-2.0

@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Fri May 01 17:41:13 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 1.4.7+git20260501.6e39144:
+  * v1.4.7 New features & Bug fixes
+  * fix: improve Apple Silicon temperature detection on macOS
+  * Created function toggle_tree_collapse() in shared.cpp to reduce code duplication
+  * fix(proc): force full collect on sort change in tree mode
+  * fix(proc): exclude root processes from E collapse/expand all
+  * feat(proc): add E hotkey to collapse/expand all tree nodes
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.0
+  * Remove code duplication
+  * Fixed missing CPU package temperature color (numeric value)
+  * chore(deps): update zizmorcore/zizmor-action action to v0.5.3
+  * chore(deps): update vmactions/netbsd-vm action to v1.3.8
+  * chore(deps): update vmactions/freebsd-vm action to v1.4.5
+  * chore(deps): update actions/upload-artifact action to v7.0.1
+  * ci: run workflows if tests have changed
+  * test: add cpu name trim tests
+  * Update src/btop_draw.cpp
+  * Update src/btop_draw.cpp
+  * [AI generated] fix: Clamp GPU graph widths to prevent crash on small terminals
+  * ci: add workflow to check security flaws
+  * ci: format workflow files
+  * ci: set runner concurrency limits
+  * ci: use environment variables to mitigate template injections
+  * ci: don't persist workflow credentials on runner
+  * ci: pin actions
+  * ci: require as little permissions as possible
+  * Fix cpu watt overflow in cpu box + division by zero fix for cpu.temp_max
+  * fix: use static_cast
+  * fix: correct shared gpu vram and power percentage calculations
+  * fix: accumulate pwr_usage into pwr_total instead of mem_total in Gpu::collect()
+  * ci: add llvm 22
+  * ci: update freebsd version to 15
+  * ci: fix gcc include path
+  * ci: fix netbsd version in artifact
+  * ci: bump musl-cross version
+  * fix: restore Intel Mac SMC temperature fallback
+  * fix: wrap std::thread in struct to force join in destructor like std::jthread (#1557)
+  * fix: read GPU/VRAM clocks when ROCm SMI reports version 1.x
+  * clarify init code too
+  * requery active CPUs per iteration, since it can change
+  * fix: linux process cpu usage under-reported when vm guests active (#1609)
+  * feat: add Kanagawa Dragon theme
+  * fix: render a non-ascii chars in proc list
+  * only display online CPUs in output
+  * fix CPU mib queries for OpenBSD
+  * fix: send signal to correct process when proc list is moving (#1581)
+  * fix: correctly map amd zen cpu core temps
+  * New AI contribution guidelines
+  * Update AI generated code contribution guidelines
+  * fix: always update properties of current menu option (#1579)
+  * fix: add missing format field (#1578)
+  * feat: add support for AMD ROCm 7 (#1566)
+  * fix: Use SVG features compatible with Qt SVG Tiny 1.1
+  * chore(deps): update actions/upload-artifact action to v7
+  * Add RAII wrappers for CF/IO types and update menu text
+  * Ignore warning for -Wunused-result in ~DropPrivilegeGuard() for GCC
+  * fix: Guard AppleSilicon GPU code behind __APPLE__ for cross-platform builds
+  * feat: Add Apple Silicon GPU support via IOReport API
+  * refactor: use fmt::format in detailed view for cpu usage
+  * refactor: remove references to GPU code in non-gpu build
+  * fix: avoid calling back on emtpy temps queue
+  * refactor: replace custom RAII lock with stdlib
+  * chore: add brace wrapping rule to .editorconfig (#1524)
+  * Add Flexoki dark and light themes
+  * Fix -Wparentheses warning
+  * Tweaked RX/TX collection and drawing
+  * fix: mem box sizing after min net box size fix
+  * fix: force_tty menu option sets TTY mode on start
+  * fix: net min size for gpu compiled build (#1516)
+  * fix: mem bottom border when net is not shown (#1510)
+  * fix: suppress warning of redefined C++ keyword
+  * Menu option to disable presets
+  * revert: fix: don't always update metrics on redraw (#1502)
+  * fix: don't always update metrics on redraw
+  * Add process list and following attributes to orange theme
+  * Create orange.theme
+  * chore: move renovate config out of repo root
+  * Update clock with preset change or show/hide box
+  * chore: set all file permissions to 644
+  * fix: avoid useless string cast, replace with fmt::format
+  * chore: add rule to use fmt::format to guidelines
+  * refactor: format exit messages with fmt::format
+  * refactor: get rid of extern runner thread id
+  * Fixes and Improvements for Pause and Follow modes
+  * refactor: remove redundant erasing of mouse mapping (#1473)
+  * chore: add portuguese translations to btop.desktop (#1471)
+  * fix: properly highlight down arrow if it's actionable (#1462)
+  * Update widechar detection and fix replace_ascii_control() removing wide characters
+  * following mode fixes
+  * Fix mouse mapping for process kill buttons with vim keys enabled
+  * Following mode improvements
+  * ci: revert fix for netbsd workflow
+  * fix: remove busy waiting when checking runner thread state
+  * Add twilight theme
+  * ci: enable manual triggering of cmake workflows
+  * feat: add config option to disable mouse events
+  * Change color of 'tab' in options menu for parity (#1434)
+  * chore: set permissions of Makefile to 644
+  * fix: adjust for additional menu tab with gpu support
+  * refactor: use fmt::format like interface for logger
+  * Fix network graphs overlap
+  * Fixed speed max indicator
+  * Add Swap upload/download speed graph option
+  * Reassign tree-children-toggle keybind
+  * Feat: Process following
+  * Fix hide and info buttons
+  * btop_collect.cpp: fix regression from a switch to kIOMainPortDefault
+  * Fix link
+  * Update README.md
+  * fix: remove unused asprintf implementation function
+
+-------------------------------------------------------------------
 Fri Dec 26 18:06:04 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 1.4.6+git20251226.5b920e3:
