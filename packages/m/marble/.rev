@@ -1631,4 +1631,12 @@ touch version is still build but no desktop file installed. (forwarded request 2
     <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
     <requestid>1357474</requestid>
   </revision>
+  <revision rev="204" vrev="1">
+    <srcmd5>7a36f52462188f73097a5bf2214e3346</srcmd5>
+    <version>26.04.3</version>
+    <time>1783023156</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3</comment>
+    <requestid>1363408</requestid>
+  </revision>
 </revisionlist>
