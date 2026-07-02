@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:33:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.4.2:
+  * Escape percent characters in logging output (#284)
+  * Optional backoff delays between retries
+  * Add support for an httpx synchronous node
+
+-------------------------------------------------------------------
 Tue Mar 31 08:26:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.2.1:

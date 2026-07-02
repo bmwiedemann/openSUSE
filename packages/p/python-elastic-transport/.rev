@@ -191,4 +191,15 @@
 - Skip some failing tests with pytest 8.x.</comment>
     <requestid>1343856</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1fe878f9af7d1129b0adacb4aa34b82e</srcmd5>
+    <version>9.4.2</version>
+    <time>1783015552</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.4.2:
+  * Escape percent characters in logging output (#284)
+  * Optional backoff delays between retries
+  * Add support for an httpx synchronous node</comment>
+    <requestid>1362531</requestid>
+  </revision>
 </revisionlist>
