@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jun 18 00:50:52 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to the tag v0.2
+  + Rename module-xrdp-pipewire into module-xrdp
+  + load_pw_modules: Make it no-op if no pw-cli or pipewire is not
+    running
+  + Adjust LDFLAGS: drop -module, add PW_LIBS and SPA_LIBS
+
+-------------------------------------------------------------------
 Mon Aug 21 23:55:32 UTC 2023 - Jason Craig <os@jacraig.com>
 
 - don't include static lib

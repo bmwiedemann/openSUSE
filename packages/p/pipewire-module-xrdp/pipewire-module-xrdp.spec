@@ -1,7 +1,7 @@
 #
 # spec file for package pipewire-module-xrdp
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,10 +17,10 @@
 
 
 # Short and full commit hashes.
-%define scmt    e9c6c05
-%define fcmt    e9c6c05dd4327fca43d8861535c1f75c9b258aef
+%define scmt    2d47559
+%define fcmt    2d47559d708a93a65cc401aefa4f1f85b4fd0054
 Name:           pipewire-module-xrdp
-Version:        0~git19
+Version:        0.2
 Release:        0
 Summary:        Enable xrdp to generate sound with pipewire
 License:        MIT
@@ -29,8 +29,8 @@ Source:         https://github.com/neutrinolabs/%{name}/archive/%{scmt}.tar.gz#/
 BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.58
 BuildRequires:  update-desktop-files
+BuildRequires:  pkgconfig(libpipewire-0.3) >= 0.3.58
 
 %description
 This module allows xrdp to generate sound on a pipewire-based system.
@@ -54,6 +54,6 @@ rm -f %{buildroot}%{_libdir}/pipewire-0.3/*.la
 %config %{_sysconfdir}/xdg/autostart/pipewire-xrdp.desktop
 %{_libexecdir}/%{name}
 %{_libexecdir}/%{name}/load_pw_modules.sh
-%{_libdir}/pipewire-0.3/lib%{name}-pipewire.so
+%{_libdir}/pipewire-0.3/lib%{name}.so
 
 %changelog
