@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- No code change since 26.04.2
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * fix comment
+  * fix urlinfo for relative files with line
+  * diffwidget.cpp - include QDir to fix compile
+  * ensure we hide the buttons in the view space if no tabs & nav bar there (alternative implementation) (kde#515133)
+  * Use proper working directory when invoking git (kde#519685)
+
+-------------------------------------------------------------------
 Thu May  7 08:02:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
