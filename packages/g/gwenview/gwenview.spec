@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           gwenview
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Image Viewer by KDE
 License:        GPL-2.0-or-later
