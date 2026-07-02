@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:16:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2023.0.0:
+  * [Preview] Introduced ability to wait for a single task in a
+    ``task_group`` instead of waiting for all tasks to finish.
+    This increases reactivity and decreases latency in key user
+    workloads.
+  * [Preview] Introduced ``flow::resource_limited_node`` and
+    ``flow::resource_limiter`` classes. These nodes only execute
+    when they can successfully acquire the necessary resources
+    from the resource limiters associated with the node. This
+    feature is used to guard access to shared resources, while
+    maximizing available parallelism in the graph.
+  * [Preview] Introduced ``task_arena`` core type selector to
+    better support hybrid architectures with several core types.
+    Users use this new flexible API to more tightly constrain
+    execution to set preferences for the specific core types that
+    match their workload.
+  * [Preview] Added global control parameter to set default block
+    time behavior on server HW. This allows developers to revert
+    to older blocking behavior if their applications are not able
+    to fully utilize all cores, thereby reducing idle spinning.
+  * Added new API to create a set of NUMA bound task arenas,
+    simplifying common patterns used to optimize for NUMA
+    architectures.
+  * Extended Flow Graph functional node deduction guides to
+    support non-static member function and member object pointers
+    as a node bodies.
+  * The Flow Graph join_node and indexer_node now support 10 or
+    more input ports.
+  * Explicit deduction guides for ``blocked_nd_range`` are now a
+    fully supported feature.
+  * Added native WASM exception handling support.
+- tbb-python-setuptools.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Jan  3 14:49:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe POSIX sh compatible
@@ -37,9 +73,9 @@ Mon Jun 30 19:18:22 UTC 2025 - Alessandro de Oliveira Faria <cabelo@opensuse.org
   * Improved Hybrid CPU and NUMA Platforms API Support: Enhanced
     API availability for better compatibility with Hybrid CPU and
     NUMA platforms.
-  * Refined Environment Setup: Replaced CPATH with C_INCLUDE_PATH 
-    and CPLUS_INCLUDE_PATH in environment setup to avoid 
-    unintended compiler warnings caused by globally applied 
+  * Refined Environment Setup: Replaced CPATH with C_INCLUDE_PATH
+    and CPLUS_INCLUDE_PATH in environment setup to avoid
+    unintended compiler warnings caused by globally applied
     include paths.
 
 -------------------------------------------------------------------
@@ -54,7 +90,7 @@ Tue May  6 13:19:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 - Migrated URLs to the new UXL Foundation organization
 - Use common URL format for Source URL
 - Format .spec file
-- Build with ninja 
+- Build with ninja
 
 -------------------------------------------------------------------
 Thu Apr  3 05:23:16 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>

@@ -40,7 +40,7 @@
 %bcond_with python3
 %endif
 Name:           tbb
-Version:        2022.3.0
+Version:        2023.0.0
 Release:        0
 Summary:        oneAPI Threading Building Blocks (oneTBB)
 License:        Apache-2.0
@@ -48,8 +48,6 @@ Group:          Development/Libraries/C and C++
 URL:            https://uxlfoundation.github.io/oneTBB/
 Source0:        https://github.com/uxlfoundation/oneTBB/archive/v%{version}/%{name}-%{version}.tar.gz
 Source99:       tbb-rpmlintrc
-# PATCH-FIX-UPSTREAM tbb-python-setuptools.patch gh#uxlfoundation/oneTBB#1941, remove deprecated setup.py usage
-Patch1:         tbb-python-setuptools.patch
 # PATCH-FIX-OPENSUSE cmake-remove-include-path.patch -- openCV include error
 Patch2:         cmake-remove-include-path.patch
 Patch4:         add-cmake-check-for-libatomic-requirement-when-build.patch
