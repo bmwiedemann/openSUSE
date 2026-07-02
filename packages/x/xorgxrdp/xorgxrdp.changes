@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Jun 18 00:20:47 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Update to 0.10.5:
+  + Fix bug in Chrome pointer detection (#394 #396)
+- Changes from 0.9.20
+  + Update to version 0.10.4:
+    - Internal Changes
+      + The dixGetDisplayName() function is used to access the
+        display name where available (#367).
+      + FreeBSD CI testing is now performed (#379).
+      + autoconf version is changed from 2.65 to 2.69 (#378).
+    - Changes for Packagers or Developers
+      + This version is intended to be used together with xrdp
+        v0.10.3 or later.
+  + Update to version 0.10.3:
+    - New Features
+      + H.264 capture is now supported (#355).
+      + Frame capture interval can now be configured separately
+        via xrdp for H.264 and RFX (#347, #353).
+    - Bug Fixes
+      + Fix dependency when building without glamor (#330).
+      + RandR is now aware of physical monitor sizes if passed
+        to the client (#337).
+      + Glamor whitelist now supports amdgpu (#329) and msm
+        (#346) drivers.
+    - Changes for Packagers or Developers
+      + This version is intended to be used together with xrdp
+        v0.10.2 or later.
+  + Update to version 0.10.2:
+    - New Features
+      + Check list of support devices in glamor (backport of
+        #322).
+      + Support NULL cursors and large mono cursors (#320,
+        backport of #323).
+    - Bug Fixes
+      + Separate out key frame request from MAX_INT frame ACK to
+        prevent multi-monitor screen corruption (backport of
+        #288).
+      + Fixes complex dirty region causing overflow of xrdp
+        comms buffer (#318, backport of #319).
+    - Known Issues
+      + The backport of #322 can cause some working systems using
+        amdgpu to no longer use Glamor acceleration (#341).
+  + Update to version 0.10.1:
+    - New Features
+      + Switch to wyhash from CRC for capture tile diff and
+        introduce lazy color conversion (#167, #301).
+  + Update to version 0.10.0:
+    - Highlights
+      + Added Graphic Pipeline Extension (GFX) support,
+        achieving higher frame rates and less bandwidth
+        utilization.
+
+-------------------------------------------------------------------
 Thu Feb 26 21:48:14 UTC 2026 - Markus Beth <markus.beth@web.de>
 
 - update to 0.9.20:

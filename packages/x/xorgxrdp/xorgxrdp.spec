@@ -1,7 +1,7 @@
 #
 # spec file for package xorgxrdp
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xorgxrdp
-Version:        0.9.20
+Version:        0.10.5
 Release:        0
 Summary:        Xorg drivers for xrdp
 License:        X11
