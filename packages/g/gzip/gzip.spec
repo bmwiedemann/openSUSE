@@ -1,7 +1,7 @@
 #
 # spec file for package gzip
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,6 +35,8 @@ Patch6:         zdiff.diff
 Patch7:         xz_lzma_zstd.patch
 Patch8:         manpage-no-date.patch
 Patch9:         gzip-1.14-s390x-errno.patch
+# PATCH FIX UPSTREAM bsc#1269622 marius.grossu@suse.com CVE-2026-41991
+Patch10:        CVE-2026-41991.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
@@ -57,6 +59,7 @@ times.
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 export CFLAGS="%{optflags} -fomit-frame-pointer \

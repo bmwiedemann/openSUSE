@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 10:04:23 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Add CVE-2026-41991.patch: fix insecure temporary file
+  handling in the gzexe utility (and zdiff) when the mktemp
+  utility is not available in the user's PATH. Backport of upstream commit
+  4e6f8b24ab823146ab8776f0b7fe486ab34d4269.
+  (CVE-2026-41991, bsc#1269622)
+
+-------------------------------------------------------------------
 Fri Apr 11 05:10:28 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.14:

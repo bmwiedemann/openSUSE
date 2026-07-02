@@ -552,4 +552,12 @@ though it did make builds reproducible, it would lose some optimizations (forwar
     <comment>gzip 1.14 (forwarded request 1268508 from AndreasStieger)</comment>
     <requestid>1269335</requestid>
   </revision>
+  <revision rev="68" vrev="2">
+    <srcmd5>e143527ee7f542d0d4c9fde2739f3bb2</srcmd5>
+    <version>1.14</version>
+    <time>1783015533</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362945</requestid>
+  </revision>
 </revisionlist>
