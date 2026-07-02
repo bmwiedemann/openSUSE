@@ -43,7 +43,7 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:45:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.6:
+  + This release adds the following features:
+    - Add --filter-protocol to fwupdmgr and fwupdtool
+    - Add a new HSI attribute for coreboot verified boot
+    - Add hashes for the latest DBX for offline machines
+    - Allow parsing Hayden Bridge Thunderbolt firmware
+    - Handle HPE Redfish reset-required updates
+    - Ignore efivar free space on VMWare, GCE and EC2 VMs
+    - Prevent FwupdClient from downloading the same file multiple times
+    - Split UEFI Memory Protection HSI from NX Compat
+  + This release fixes the following bugs:
+    - Avoid an integer overflow in the ifwi-cpd manifest length check
+    - Avoid truncating the AMD Kria FRU board area offset
+    - Block dbx updates on ASUSTeK GL553VD
+    - Check SMEE hardware bit directly for AMD SME detection
+    - Create the ESP OS directory if not found
+    - Detect the BCR device on Celeron LPC SPI controllers
+    - Fall back to a binary firmware when no specific MTD image type is set
+    - Fix AI table clear behavior of the elantp boot code.
+    - Fix errors with fwupd-refresh service not working properly
+    - Fix Genesys GL32xx device locker crash due to argument mismatch
+    - Fix installing KEK updates when using snapd by sending the correct blob
+    - Fix integer underflow when Elan firmware is smaller than one page
+    - Fix possible NULL pointer dereference when updating SteelSeries firmware
+    - Fix the display of the HP UEFI db certificate
+    - Improved usi-dock progress reporting behavior
+    - Increase the parser item limit from 100 to 1000 for large KEKs
+    - Log out of the Redfish session when required on HPE hardware
+    - Only show 'authenticating' after a short delay
+    - Re-process the device metadata when required after all devices are added
+    - Require sealed memfd input to prevent possible TOCTOU attacks
+    - Sanitise the Jabra GNP device version in a more secure way
+    - Validate raydium-tp buffer size before direct index access
+    - Validate that Lenovo dock device-reported program sizes are valid
+  + This release adds support for the following hardware:
+    - Lenovo dual-bank accessory dongle and paired peripherals
+
+-------------------------------------------------------------------
 Mon Jun 29 14:27:00 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Migrate to manual service run
