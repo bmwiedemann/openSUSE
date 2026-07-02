@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:06:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6.0:
+  * FTP: preserve filenames containing whitespace in _mlsd2
+  * Prevent attribute error for 'forced' before flushing cache
+  * Reflect async _walk correctly
+  * Fix infinite recursion in expand_path with glob magic
+    characters
+  * Do not strip trailing slashes from data URIs
+  * Fix referenceFS for new zarr and pandas
+  * Omit get_ident() from cache token for async impl in sync mode
+  * Fix AsyncFileSystem._cat_ranges on_error handling
+  * Forward kwargs from cat_ranges to cat_file
+  * Don't parse refFS templates by default
+  * fix s3fs ci
+  * fix: pass on_error when mv calls copy
+  * proper install in ci to grab versions
+  * encode URLs in HTTP pipe_file
+  * implement delete and write_test for dirFS
+  * allow multiple local protocols
+  * context closing for tar and zip
+  * fix cat_file and cat_ranges for WholeFileCache
+  * usage warning to HTTP FS
+  * update adl: message following retirement
+
+-------------------------------------------------------------------
 Tue Mar 31 09:28:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3.0:

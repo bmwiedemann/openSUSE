@@ -21,6 +21,7 @@
 %define psuffix -test
 %bcond_without test
 %define skip_python39 1
+%define skip_python311 1
 %else
 %define psuffix %{nil}
 %bcond_with test
@@ -29,7 +30,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fsspec%{psuffix}
-Version:        2026.3.0
+Version:        2026.6.0
 Release:        0
 Summary:        Filesystem specification package
 License:        BSD-3-Clause
