@@ -5106,4 +5106,15 @@ https://build.opensuse.org/requests/1354518
   bsc#1268535</comment>
     <requestid>1361826</requestid>
   </revision>
+  <revision rev="444" vrev="1">
+    <srcmd5>3e57be3a0d794add1eb40bc6dcc13d3a</srcmd5>
+    <version>12.5.0</version>
+    <time>1783015726</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 12.5.0
+  - bsc#1268382
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-5-0-2026-07-01</comment>
+    <requestid>1363067</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  1 20:24:14 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.5.0
+  - bsc#1268382
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-5-0-2026-07-01
+
+-------------------------------------------------------------------
 Thu Jun 25 22:31:47 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - spec: Strengthen dependency on numa-preplace
