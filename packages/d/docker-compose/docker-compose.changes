@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 02 11:02:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.3.0:
+  This release introduces native support for init containers.
+  * Improvements
+    - Pre start init containers by @glours in #13862
+  * Fixes
+    - Fix(oci): route authorizer token fetches through provided
+      transport by @glours in #13873
+    - Fix(run): scope Running events to project.Services by @glours
+      in #13883
+  * Internal
+    - Chore: migrate cagent-action to docker-agent-action (v2.0.0)
+      by @docker-agent in #13869
+    - Chore: migrate to docker-agent-action v2.0.1 by @docker-agent
+      in #13872
+    - Fix(reconcile): hash resolved service refs to match executor
+      by @glours in #13880
+    - Fix(compose/port): show private port in portNotFoundError
+      message by @vmphase in #13875
+    - Fix(run): normalize --no-TTY flag to --no-tty by @nickjj in
+      #13885
+  * Dependencies
+    - Bump compose-go to version v2.13.0 by @glours in #13886
+
+-------------------------------------------------------------------
 Wed Jun 24 05:14:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.2.0:
