@@ -903,4 +903,20 @@
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351641</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>c9e829e41a4ddb9611224f4a22a165f3</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920421</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357353</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>0e3b6bd0484cb28be8c651360d162bd8</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022685</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363240</requestid>
+  </revision>
 </revisionlist>
