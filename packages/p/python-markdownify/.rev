@@ -7,4 +7,15 @@
     <comment>Required for updating python-mistral-vibe</comment>
     <requestid>1335935</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>afd407f051b36d46fbfa7f653a598a1f</srcmd5>
+    <version>1.2.3</version>
+    <time>1783015795</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.3:
+  * fix: allow `None` to be used for `strip_pre` and `warp_width`
+    params in types
+  * fix: preserve text nested inside `` by html.parser</comment>
+    <requestid>1363030</requestid>
+  </revision>
 </revisionlist>

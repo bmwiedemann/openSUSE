@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:20:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.3:
+  * fix: allow `None` to be used for `strip_pre` and `warp_width`
+    params in types
+  * fix: preserve text nested inside `` by html.parser
+
+-------------------------------------------------------------------
 Mon Mar  2 21:36:35 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.2.2:

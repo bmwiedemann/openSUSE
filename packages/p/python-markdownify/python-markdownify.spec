@@ -1,7 +1,7 @@
 #
 # spec file for package python-markdownify
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %bcond_without libalternatives
 Name:           python-markdownify
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Convert HTML to markdown
 License:        MIT
 URL:            http://github.com/matthewwithanm/python-markdownify
 Source:         https://files.pythonhosted.org/packages/source/m/markdownify/markdownify-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}
 BuildRequires:  %{python_module setuptools_scm >= 3.4.3}
 BuildRequires:  alts
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-beautifulsoup4 >= 4.9
 Requires:       python-six >= 1.15
