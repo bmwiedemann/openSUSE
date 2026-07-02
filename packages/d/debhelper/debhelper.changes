@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  2 11:18:44 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 14.2
+  * upgrade-checklist: Remove remnants of the reverted pam change
+  * upgrade-checklist: Remove comment regarding pre-stable compat 14
+  * dh_installsystemd: also add tmpfiles deps in compat 12
+    (Closes: #1140654)
+- update to 14.1
+  * dh_installpam: Revert compat 14 change at request of the `pam`
+    maintainers.  (Closes: #1140119)
+- update to 14.0
+  * Remove noise from lintian about `alien-tag
+  * Fix a bug where `debian/compat` was rejected in compat 13 and
+    older when compat 14 was stable.
+  * Declare compat 14 as stable
+
+-------------------------------------------------------------------
 Mon Jun  8 07:54:42 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 13.32
