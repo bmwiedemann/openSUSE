@@ -1,4 +1,148 @@
 -------------------------------------------------------------------
+Thu Jul  2 13:57:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.1
+  - [client] Make lazy connections opt-out via NB_LAZY_CONN by
+    @lixmal in #6617
+  - [client] Run privileged client tests natively with sudo on
+    Linux by @pappz in #6635
+  - [self-hosted] Remove image override logic in getting started by
+    @mlsmaycon in #6636
+  - [management] Add vLLM support for Agent Network by @braginini
+    in #6643
+  - [management] return nil when config is not set by @mlsmaycon in
+    #6642
+
+-------------------------------------------------------------------
+Wed Jul  1 21:12:02 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.0
+  New Feature: Agent Network
+  This release introduces Agent Network, a per-account LLM gateway
+  that gives people and agents keyless, identity-based access to
+  LLM APIs and internal resources over the tunnel. It is built on
+  top of the existing reverse proxy and private services, so the
+  transport is still NetBird's WireGuard overlay and the identity
+  model is still your IdP. Have a tunnel, get access; no tunnel, no
+  access.
+
+  Agents point at a tunnel-only endpoint instead of the provider's
+  URL. NetBird holds the upstream provider key server-side, injects
+  it per request, and ties every call to a real identity from your
+  IdP. Client-supplied auth headers are stripped before the request
+  is forwarded, so a hardcoded key never reaches the provider. The
+  whole thing is default deny: nothing reaches a provider until a
+  policy explicitly allows it.
+
+  Core capabilities:
+  - Keyless access to LLM APIs. No keys stored or shared on the
+    client. The tunnel is the credential.
+  - Provider catalog. First-party APIs (OpenAI, Anthropic, Azure
+    OpenAI, AWS Bedrock, Google Vertex AI, Mistral), AI gateways
+    (LiteLLM Proxy, Portkey, Bifrost, Cloudflare AI Gateway, Vercel
+    AI Gateway, OpenRouter), and any custom/self-hosted
+    OpenAI-compatible endpoint (Ollama, vLLM, local GPU hosts).
+  - Policies. A policy connects a Source Group (users or agent
+    devices from your IdP) to one or more providers.
+  - Limits. Token caps and budget (USD) caps per user and per
+    group, plus account-wide Global Limits that can only tighten a
+    policy, never loosen it.
+  - Guardrails. Model allowlist, optional prompt capture, and PII
+    redaction on captured logs.
+  - Usage and access logs. Per-request accounting (identity,
+    provider, model, tokens, cost) plus a full access log (method,
+    path, status, duration, and prompt/completion when capture is
+    on), with denied-request reasons, 7-90 day or indefinite
+    retention, and filtering by user or group.
+  - Agentic access to internal resources. Databases, internal APIs,
+    and self-hosted models reachable over peer-to-peer WireGuard,
+    no proxy in the path, governed by the same identities and
+    policies.
+  - Bring your own gateway. When forwarding to LiteLLM, NetBird
+    passes the calling identity along by writing IdP groups into
+    metadata.tags and the identity into the x-litellm-end-user-id
+    header.
+  - The dashboard ships copy-paste Agent Config for Claude Code,
+    Codex, the OpenAI SDK, and cURL, with the endpoint pre-filled
+    and no API key involved.
+
+  Overview: https://docs.netbird.io/agent-network
+  Quickstart: https://docs.netbird.io/agent-network/quickstart
+  How it works: https://docs.netbird.io/agent-network/how-it-works
+  Providers: https://docs.netbird.io/agent-network/providers
+
+  - Agent Network
+    - Added the per-account LLM gateway (Agent Network): store,
+      manager, policy engine, provider catalog, and management HTTP
+      + proxy gRPC surfaces, with the reverse-proxy middleware
+      chain handling limit checks, cost metering, guardrails,
+      identity injection, and response parsing. #6555
+    - Added agent-network telemetry metrics. #6561
+    - Added management-controlled client metrics push. #5886
+    - Added per-provider skip_tls_verification for Agent Network.
+      #6630
+    - Added Agent Network preset for self-hosted deployments. #6569
+    - Added Agent Network documentation and banner updates. #6562
+      #6564
+    - Added Agent Network nightly/manual E2E workflows. #6629
+  - Client Improvements
+    - Added management-controlled client metrics push. #5886
+    - Eliminated packet loss during lazy connections. #6355
+    - Reinject captured first packet on lazy connection activation.
+      #6572
+    - Improved network address filtering. #6515
+    - Fixed empty profile handle regression in debug config. #6514
+    - Skip re-resolving cached management cache domains. #6518
+    - Suppress Quick Actions popup when DisableAutoConnect=true.
+      #6542
+    - Fix blocked status lock via relay manager path. #6547
+    - Lower ICE handshake offer/answer log level to debug. #6565
+    - Keep signal stream alive while receive loop is blocked on
+      worker handoff. #6530
+    - Wait for signal receive watchdog to stop before reconnect.
+      #6574
+    - Report management unhealthy while Sync stream is failing.
+      #6575
+    - Refresh receive liveness when worker handoff drains. #6594
+    - Raise duration validation limit to 24 hours. #6598
+    - Skip firewall ruleset rebuild when config is unchanged. #6508
+    - Bound system info and posture-check gathering with a timeout
+      to prevent sync-loop freeze. #6512
+    - Categorize privileged tests behind a build tag and run them
+      in Docker. #6425
+    - Forward non-address DNS record types through route
+      forwarders. #6455
+    - Add per-phase timing metrics for sync processing. #6533
+    - Use dedicated IsHealthy RPC for management health checks.
+      #6421
+    - Fix pointer comparisons in profile config apply. #6622
+    - Fix race between WG watcher initial handshake read and
+      endpoint creation. #6626
+  - Management Improvements
+    - Rescheduled inactivity expiration when a peer disconnects.
+      #6523
+    - Validate posture checks on metadata changes before updating
+      the account. #6527
+    - Relaxed metaHash validation when blocking peers. #6531
+    - Simplified affected peers processing by ignoring disabled
+      peers. #6540
+    - Optimized affected posture checks and added additional
+      logging. #6522
+    - Restored client version checks in the login filter hash.
+      #6552
+    - Added peer expiration reason to activity metadata. #6619
+    - Detached JWT group synchronization from request cancellation.
+      #6621
+    - Enabled Lazy Connections by default for new accounts. #6571
+  - Infrastructure & Miscellaneous
+    - Applied small GitHub workflow fixes. #6546
+    - Updated the careers page link. #6538
+    - Bumped GitHub Actions dependencies. #6550
+    - Updated the project to v0.74.0. #6563
+    - Required on-premise EULA acceptance in Enterprise
+      installation scripts. #6596
+
+-------------------------------------------------------------------
 Mon Jun 22 19:35:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.73.2
