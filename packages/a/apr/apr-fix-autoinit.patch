@@ -1,0 +1,17 @@
+Index: apr-1.7.6/test/teststr.c
+===================================================================
+--- apr-1.7.6.orig/test/teststr.c
++++ apr-1.7.6/test/teststr.c
+@@ -68,11 +68,11 @@ static void test_strtok(abts_case *tc, v
+         }
+     };
+     int curtc;
++    char *state;
+ 
+     for (curtc = 0; curtc < sizeof cases / sizeof cases[0]; curtc++) {
+         char *retval1, *retval2;
+         char *str1, *str2;
+-        char *state;
+ 
+         str1 = apr_pstrdup(p, cases[curtc].input);
+         str2 = apr_pstrdup(p, cases[curtc].input);

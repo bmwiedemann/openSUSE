@@ -1,7 +1,7 @@
 #
 # spec file for package apr
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -31,6 +31,7 @@ URL:            https://apr.apache.org/
 Source0:        https://www.apache.org/dist/apr/apr-%{version}.tar.bz2
 Source1:        https://www.apache.org/dist/apr/apr-%{version}.tar.bz2.asc
 Source2:        https://downloads.apache.org/apr/KEYS#/%{name}.keyring
+Patch1:         apr-fix-autoinit.patch
 Patch5:         apr-visibility.patch
 Patch9:         apr-proc-mutex-map-anon.patch
 # prevent random failures of the testsuite (sendfile test)
