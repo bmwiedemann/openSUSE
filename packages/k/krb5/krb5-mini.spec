@@ -49,6 +49,7 @@ Patch9:         0009-UsrEtc-support.patch
 Patch10:        0010-Fix-strchr-conformance-to-C23.patch
 Patch11:        0011-autoconf-2.73-compatibility.patch
 Patch12:        0012-Fix-two-NegoEx-parsing-vulnerabilities.patch
+Patch13:        0013-Prevent-read-overrun-in-libkdb_ldap.patch
 BuildRequires:  autoconf
 BuildRequires:  bison
 BuildRequires:  pkgconfig
