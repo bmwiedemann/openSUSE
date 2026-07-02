@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-bundler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,6 @@ Release:        0
 BuildRequires:  %{ruby >= 3.1.0}
 BuildRequires:  %{rubygem gem2rpm}
 BuildRequires:  ruby-macros >= 5
-BuildRequires:  update-alternatives
 URL:            https://bundler.io
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        series

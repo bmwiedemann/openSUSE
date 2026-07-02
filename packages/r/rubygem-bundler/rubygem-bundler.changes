@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  1 00:49:05 UTC 2026 - Steven Baker <steven.baker@suse.com>
+
+- Regenerate spec file to drop update-alternatives dependency
+
+-------------------------------------------------------------------
 Wed Jan 29 09:47:30 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - New upstream release 2.6.3, see bundled CHANGELOG.md

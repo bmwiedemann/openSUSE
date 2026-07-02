@@ -730,4 +730,14 @@
 - New upstream release 2.5.5, see bundled CHANGELOG.md</comment>
     <requestid>1241145</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>28bdf5dbf2c9e97b34c28890558917a4</srcmd5>
+    <version>2.6.3</version>
+    <time>1783015815</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1362751 from srbaker
+
+Regenerate spec file to drop update-alternatives dependency</comment>
+    <requestid>1363064</requestid>
+  </revision>
 </revisionlist>
