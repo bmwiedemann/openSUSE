@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Thu Jul  2 07:29:04 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- tmux 3.7b
+  * Fix so that the end of a synchronized update again triggers a redraw.
+- tmux 3.7a:
+  * Fix crash in break-pane when no name is provided.
+  * Scrollbar options are now cached rather than being looked up for every
+    redraw
+  * Only forbid #( in names, allow #[, empty names, : and .
+
+-------------------------------------------------------------------
+Tue Jun 30 08:03:58 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
+
+- tmux 3.7:
+  * Add floating panes.
+  * Add -g to kill-session to kill all sessions in a session group
+  * When mode-keys is set to vi, do not allow the cursor to go into the
+    invisible extra cell to the right of the visible text; this is closer to
+    what vi(1) does.
+  * Add emacs-style recentre-top-bottom command to copy mode.
+  * Add support for line numbers in copy mode.
+  * Make C-[ have the same bindings as Escape for terminals with extended
+    keys where they are different.
+  * Add ability to forward progress bar to outside terminal.
+  * Add detach to default session menu.
+  * Add -C flag to command-prompt to match display-message -C (do not freeze
+    panes).
+  * Add remain-on-exit key to keep pane around until a key is pressed.
+  * Add some new mouse ranges called "control0" to "control9" and use to add
+    some mouse controls to the pane state line.
+  * Add bracket_paste_flag format flag.
+  * Copy hyperlinks when redrawing popup so they do not vanish.
+  * Work around systemd killing panes early during system shutdown by creating
+    dependencies from the panes to the service which started tmux.
+  * Draw message as one format, allowing prompts and messages to occupy only a
+    portion of the status bar, overlaying the normal status content rather than
+    replacing the entire line. A new message-format option now controls the
+    entire message (like status-format). The message-style option now need to
+    include "fill" in order to cover the whole width (the default has
+    "fill=yellow").
+  * Add pane_pipe_pid with pipe file descriptor.
+  * Make -c work with new-session -A.
+  * Pass paste buffer through vis(3) when pasting to prevent buffers containing
+    for example the bracket end sequence causing issues, a new -S flag
+    disables.
+  * Add sorting (-O flag) and a custom format (-F) to list-keys.
+  * Add scroll-exit-on, scroll-exit-off, scroll-exit-toggle commands to copy
+    mode.
+  * Refresh copy mode when style changes.
+  * Make sorting code common and add -O for sorting to the list commands.
+  * Add -e flag to command-prompt to close if empty.
+  * Add paste to the default pane menu.
+  * If cannot find a terminator for palette responses, treat as a partial key
+    not complete.
+  * Do not send theme unless it has changed, and do not send immediately when
+    updates are enabled.
+  * Do not use ;;s in list-keys output as it is confusing and cannot be parsed
+    on input.
+  * Redraw pane borders when entering or leaving alternate screen.
+  * Add focus-follows-mouse option.
+  * Add selection_mode format variable for copy mode.
+  * Add prompt-command-cursor-style.
+  * With status-keys vi, move the cursor left by one when pressing Escape to
+    enter command mode, like vi.
+  * Add {current}/{active} for -t for current window or active pane.
+  * Add support for applications to use synchronized output mode (DECSET 2026)
+    to prevent screen tearing during rapid updates.
+  * Do not set a default prompt cursor colour because some terminals (urxvt,
+    st) do not support the reset sequence.
+  * Add a scroll-to-mouse command for copy mode to scroll to the mouse position
+    and bind to the scrollbar, brings the scrollbar keys into line with the
+    other mouse keys.
+  * Add a missing skin tone character.
+  * Do not show scrollbar when entering copy mode from a pane in the alternate
+    screen.
+  * Add a get-clipboard option which when enabled (the default is off) and a
+    clipboard is requested from a pane, requests it from the terminal and
+    forwards to the requesting pane; also remove the now-redundant
+    forward-to-pane ability from "refresh-client -l" (issue 4275).
+  * Do not remove TERM for commands run from config file
+  * Add seconds options for clock mode
+
+-------------------------------------------------------------------
 Thu May 21 09:25:15 UTC 2026 - Fredrik Lönnegren <fredrik.lonnegren@suse.com>
 
 - tmux 3.6b:
