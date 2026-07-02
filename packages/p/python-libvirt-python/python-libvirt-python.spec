@@ -23,7 +23,7 @@
 %{?sle15_python_module_pythons}
 Name:           python-libvirt-python
 URL:            https://libvirt.org/
-Version:        12.4.0
+Version:        12.5.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
