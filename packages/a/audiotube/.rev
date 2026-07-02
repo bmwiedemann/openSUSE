@@ -190,4 +190,20 @@
 - No code change since 26.04.0</comment>
     <requestid>1353346</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>0ae261728314db7809640b404d608540</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920572</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357278</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>486a2c23b4523121642b39dbf7187187</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022821</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363165</requestid>
+  </revision>
 </revisionlist>
