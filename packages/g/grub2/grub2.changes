@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun 30 06:35:58 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- grub2.spec: Use unnumbered patch tag
+  https://rpm.org/docs/4.20.x/manual/spec.html#patch
+
+-------------------------------------------------------------------
 Fri Jun 12 07:02:28 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Fix the potential crash when enabling hardware acceleration for
