@@ -1499,4 +1499,12 @@
     <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
     <requestid>1357369</requestid>
   </revision>
+  <revision rev="189" vrev="1">
+    <srcmd5>f23608f1be8323be7d85b2dda537f19b</srcmd5>
+    <version>26.04.3</version>
+    <time>1783023005</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363256</requestid>
+  </revision>
 </revisionlist>
