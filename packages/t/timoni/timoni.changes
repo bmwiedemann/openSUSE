@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 02 08:10:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * Update cuelang.org/go to v0.17.0 by @stefanprodan in #548
+  * Fix capabilities element type by @zhshishkin in #547
+  * Expose Bundle, Runtime and Instance CUE schemas by
+    @stefanprodan in #549
+  * Restrict instance and runtime names to lowercase by
+    @stefanprodan in #550
+  * Add bundle build --output-dir for manifests export by
+    @stefanprodan in #551
+  * Add guidance for AI coding agents by @stefanprodan in #552
+  * build(deps): bump the ci group with 9 updates by
+    @dependabot[bot] in #553
+
+-------------------------------------------------------------------
 Mon Mar 02 06:18:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.0:

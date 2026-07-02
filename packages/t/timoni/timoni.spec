@@ -17,7 +17,7 @@
 
 
 Name:           timoni
-Version:        0.26.0
+Version:        0.27.0
 Release:        0
 Summary:        Package manager for Kubernetes, powered by CUE and inspired by Helm
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         timoni-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.6
+BuildRequires:  go1.26 >= 1.26.0
 BuildRequires:  zsh
 
 %description

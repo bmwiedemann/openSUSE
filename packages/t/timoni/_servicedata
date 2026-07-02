@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/stefanprodan/timoni</param>
-              <param name="changesrevision">c68e33a34f17c7ca93c7fc6717d61a14819276dc</param></service></servicedata>
+              <param name="changesrevision">c68e33a34f17c7ca93c7fc6717d61a14819276dc</param></service><service name="tar_scm">
+                <param name="url">https://github.com/stefanprodan/timoni.git</param>
+              <param name="changesrevision">69e421aebbed979ded721df0da2a54428c5b4b9c</param></service></servicedata>
