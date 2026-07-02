@@ -130,4 +130,19 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342966</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>829c4dabbf6fb5104782d7d0b1bdbb5d</srcmd5>
+    <version>48.0+13</version>
+    <time>1783015860</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 48.0+13:
+  + system-monitor: use Timeout.add_seconds
+  + Use power saving mode for disabling system monitor
+  + system-monitor: do active use counting and track screensaver
+    state
+  + Centralise update ticks
+  + settings: support property notification
+  + Updated translations.</comment>
+    <requestid>1363135</requestid>
+  </revision>
 </revisionlist>

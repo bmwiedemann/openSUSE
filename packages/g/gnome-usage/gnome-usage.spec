@@ -18,7 +18,7 @@
 
 
 Name:           gnome-usage
-Version:        48.0
+Version:        48.0+13
 Release:        0
 Summary:        System resources viewer for GNOME
 License:        GPL-3.0-only
