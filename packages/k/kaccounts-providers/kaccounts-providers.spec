@@ -28,7 +28,7 @@
 
 %bcond_without released
 Name:           kaccounts-providers
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        KDE Accounts Providers
 License:        GPL-2.0-or-later
