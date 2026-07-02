@@ -1,7 +1,7 @@
 #
 # spec file for package rz-ghidra
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rz-ghidra
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Deep ghidra decompiler integration for rizin and rz-cutter
 URL:            https://github.com/rizinorg/rz-ghidra
