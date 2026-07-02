@@ -176,4 +176,29 @@
 - Drop glibmm2_4-docs-without-timestamp.patch: no longer needed. (forwarded request 1253763 from dimstar)</comment>
     <requestid>1253767</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3898ab321064e8380eb91b4d7cf0c6ae</srcmd5>
+    <version>2.66.9</version>
+    <time>1783015546</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.66.9:
+  + Documentation:
+    - Remove obsolete FSF (Free Software Foundation) address
+    - README.win32.md: Mention Visual Studio 2026, update build
+      info
+    - NMake Makefiles: Update build info again
+  + Build:
+    - Meson build: Make Visual Studio 2026 builds distinct
+    - NMake Makefiles:
+      . Make Visual Studio 2026 builds distinct
+      . Reorganize, fix, and clean up a bit
+      . Make m4 detection more flexible and robust
+      . Make build process more robust
+      . More consolidations
+      . Update gmmproc install location
+      . NMake Makefiles: Build generate_defs_[glib|gio]
+    - Meson build: Don't require the 'dot' command when creating
+      documentation with Doxygen.</comment>
+    <requestid>1362495</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 28 12:16:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.66.9:
+  + Documentation:
+    - Remove obsolete FSF (Free Software Foundation) address
+    - README.win32.md: Mention Visual Studio 2026, update build
+      info
+    - NMake Makefiles: Update build info again
+  + Build:
+    - Meson build: Make Visual Studio 2026 builds distinct
+    - NMake Makefiles:
+      . Make Visual Studio 2026 builds distinct
+      . Reorganize, fix, and clean up a bit
+      . Make m4 detection more flexible and robust
+      . Make build process more robust
+      . More consolidations
+      . Update gmmproc install location
+      . NMake Makefiles: Build generate_defs_[glib|gio]
+    - Meson build: Don't require the 'dot' command when creating
+      documentation with Doxygen.
+
+-------------------------------------------------------------------
 Mon Mar 17 10:57:25 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.66.8:

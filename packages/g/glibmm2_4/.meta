@@ -5,6 +5,5 @@ library Glib. It provides non-UI API that is not available in standard
 C++ and makes it possible for gtkmm to wrap GObject-based APIs.
 
 </description>
-  <devel project="GNOME:Factory" package="glibmm2_4"/>
   <url>http://www.gtkmm.org/</url>
 </package>
