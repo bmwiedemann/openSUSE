@@ -23,13 +23,13 @@
 %define _name glibmm
 
 Name:           glibmm2
-Version:        2.86.0
+Version:        2.88.1
 Release:        0
 Summary:        C++ Interface for Glib
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://www.gtkmm.org/
-Source0:        https://download.gnome.org/sources/glibmm/2.86/%{_name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/glibmm/2.88/%{_name}-%{version}.tar.xz
 
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
