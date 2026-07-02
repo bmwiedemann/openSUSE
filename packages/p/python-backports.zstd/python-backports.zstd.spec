@@ -18,6 +18,7 @@
 
 # Only supported with Python <= 3.13
 %define skip_python314 1
+%define skip_python315 1
 %{?sle15_python_module_pythons}
 Name:           python-backports.zstd
 Version:        1.6.0
