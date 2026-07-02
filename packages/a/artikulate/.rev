@@ -1187,4 +1187,20 @@ Fri May  9 17:13:53 UTC 2014 - tittiatcoke@gmail.com
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351564</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>20482d1a41df2b94677cb47b3237d5b6</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920568</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357276</requestid>
+  </revision>
+  <revision rev="148" vrev="1">
+    <srcmd5>d3b24d2087b7b782ff920d77b2494a9d</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022818</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363163</requestid>
+  </revision>
 </revisionlist>
