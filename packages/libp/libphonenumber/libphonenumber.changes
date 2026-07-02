@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jun 22 19:43:31 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 9.0.33:
+  * Update phone metadata for region code(s):
+    BF, KE, MC, MW, NO, SG, SI, UG, VN
+  * Update geocoding data for country calling code(s): 47 (en)
+  * Update carrier data for country calling code(s):
+    36 (en), 40 (en), 65 (en), 84 (en), 232 (en), 235 (en), 250
+    (en), 256 (en), 265 (en), 386 (en), 503 (en), 1868 (en)
+- includes changes from v9.0.32:
+  * Update phone metadata for region code(s): DZ, JP, NO, SJ, SO, UG
+  * Update carrier data for country calling code(s):
+     33 (en), 47 (en), 233 (en), 252 (en), 256 (en)
+
+-------------------------------------------------------------------
 Sat May 23 11:37:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 9.0.31:
