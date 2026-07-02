@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Jul 01 17:56:54 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782917048.dcc97e9:
+  * fix: Check also hidden files in checklist plugin
+  * feat(ci): disable Mergify interactive queue controls in PR comments
+  * fix(ci): format inline comments in workflows to pass yamllint
+  * feat(ci): pin GitHub Actions by commit hash
+  * test: assert pipe size adjustment dynamically
+  * test: assert terminal session boundary safety
+  * refactor: support pretty markers in script_sudo and become_root
+  * fix: mmapi test failures and infinite loop hangs
+  * test: simplify Level 3 pretty marker detection
+  * fix: exclude virt-firmware on all older Leap archs
+
+-------------------------------------------------------------------
+Tue Jun 30 14:10:43 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782828634.82ceeb1:
+  * docs: document testing custom os-autoinst forks within openQA
+  * fix: mmapi test failures and infinite loop hangs
+  * feat: Also output module information for wait_serial result steps
+  * feat: Add module name and step number to autoinst-log
+  * feat: Log the CASEDIR git url/hash for easy frontend access
+  * fix: exclude virt-firmware on older Leap ppc64
+
+-------------------------------------------------------------------
 Tue Jun 30 08:52:49 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1782809557.0ae98f8:

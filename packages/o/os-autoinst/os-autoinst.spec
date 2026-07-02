@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1782809557.0ae98f8
+Version:        5.1782917048.dcc97e9
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -139,11 +139,7 @@ BuildRequires:  expect
 Requires:       %main_requires
 # For dynamically generating UEFI/secureboot assets, not available in all
 # OS+arch combinations
-%if 0%{?suse_version} > 0 && 0%{?suse_version} < 1600
-%ifnarch ppc64 ppc64le
-Requires:       virt-firmware
-%endif
-%else
+%if 0%{?suse_version} >= 1600 || 0%{?suse_version} == 0
 Requires:       virt-firmware
 %endif
 %if %{with ocr}
