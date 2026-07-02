@@ -23,7 +23,7 @@
 %endif
 
 Name:           stellarium
-Version:        26.1
+Version:        26.2
 Release:        0
 Summary:        Astronomical Sky Simulator
 License:        GPL-2.0-or-later
@@ -88,15 +88,15 @@ BuildRequires:  pkgconfig(Qt6Test)
 BuildRequires:  pkgconfig(Qt6TextToSpeech)
 BuildRequires:  pkgconfig(Qt6UiTools)
 BuildRequires:  pkgconfig(Qt6Widgets)
-%ifarch aarch64 x86_64 riscv64
 BuildRequires:  pkgconfig(Qt6WebEngineWidgets)
-%endif
 Requires:       qt6-multimedia
 %endif
 %if 0%{?is_opensuse}
 BuildRequires:  pkgconfig(Qgpsmm)
 BuildRequires:  pkgconfig(libgps)
 %endif
+# Stellarium requires a 64-bits operating system
+ExclusiveArch:  aarch64 x86_64 riscv64
 
 %description
 Stellarium is a software to render 3D photo-realistic skies in real
