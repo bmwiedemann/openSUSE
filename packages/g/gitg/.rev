@@ -507,4 +507,41 @@
     <comment>Redownload patch</comment>
     <requestid>1345435</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>127a0351f39a3d94e41f639aa29a1c73</srcmd5>
+    <version>50</version>
+    <time>1783015859</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50:
+  + Features:
+    - Customizable column visibility and order in history
+    - New preferences general tab
+    - Custom actions
+    - Delete remote branches
+    - Full feature push action
+    - Checkout detached action
+    - Show HEAD in history view
+    - Edit upstream branch on local branches
+    - Rename tags
+    - Resolve local tags
+    - Allow choosing the default diff view: Unif or Split
+    - Add action to fetch all remotes
+    - Action to show info for tags
+    - Use Alt+Page_Up / Alt+Page_Down for previous/next in the
+      commit dialog
+  + Bug fixes:
+    - Revert visibility of committer name and SHA1
+    - Manage global actions outside a repo
+    - Resolve shortcut conflict between discard and edit actions
+    - Use proper quotes on messages
+    - Allow push action to be smart
+    - Keep state for wrap lines on commit activity
+    - Avoid different diff renderers to keep same dimensions
+    - Fix open externally opening gitdir instead of workdir
+    - Improve default window size and pane positions
+    - Keep commit dialog size
+    - Enable translation on open externally action
+    - Load custom gitg styles only once</comment>
+    <requestid>1363133</requestid>
+  </revision>
 </revisionlist>

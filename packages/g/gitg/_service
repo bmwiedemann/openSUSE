@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gitlab.gnome.org/GNOME/gitg.git</param>
-    <param name="revision">master</param>
+    <param name="revision">50</param>
     <param name="versionformat">@PARENT_TAG@.git.@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(\d+(?:\.\d+)*)(?:\.git\.0)?(\.git\.[1-9]\d*)?</param>
     <param name="versionrewrite-replacement">\1\2</param>

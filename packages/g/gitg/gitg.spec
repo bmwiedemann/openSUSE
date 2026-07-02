@@ -17,7 +17,7 @@
 
 
 Name:           gitg
-Version:        44.git.238
+Version:        50
 Release:        0
 Summary:        Git repository viewer
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.xz
 
 # PATCH-FIX-OPENSUSE gitg-typelib-dependencies.patch dimstar@opensuse.org -- Change the way we add library dependencies to .typelibs. openSUSE requires a full library name, incl. version
 Patch0:         gitg-typelib-dependencies.patch
-# PATCH-FIX-UPSTREAM
+# PATCH-FIX-UPSTREAM 305.patch -- Port to gir2.0
 Patch1:         https://gitlab.gnome.org/GNOME/gitg/-/merge_requests/305.patch
 
 BuildRequires:  fdupes
@@ -159,10 +159,8 @@ graphical presentation.
 %check
 %meson_test || :
 
-%post -n libgitg-1_0-0 -p /sbin/ldconfig
-%postun -n libgitg-1_0-0 -p /sbin/ldconfig
-%post -n libgitg-ext-1_0-0 -p /sbin/ldconfig
-%postun -n libgitg-ext-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgitg-1_0-0
+%ldconfig_scriptlets -n libgitg-ext-1_0-0
 
 %files
 %license COPYING
