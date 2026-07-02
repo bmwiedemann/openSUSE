@@ -1,8 +1,26 @@
-Index: node-v24.12.0/tools/install.py
+---
+ lib/internal/modules/cjs/loader.js |    2 +-
+ tools/install.py                   |    9 +++++++--
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+Index: node-v26.4.0/lib/internal/modules/cjs/loader.js
 ===================================================================
---- node-v24.12.0.orig/tools/install.py
-+++ node-v24.12.0/tools/install.py
-@@ -7,6 +7,7 @@ import os
+--- node-v26.4.0.orig/lib/internal/modules/cjs/loader.js	2026-06-24 09:02:38.000000000 +0200
++++ node-v26.4.0/lib/internal/modules/cjs/loader.js	2026-06-29 17:19:20.275622852 +0200
+@@ -2200,7 +2200,7 @@
+     path.resolve(process.execPath, '..') :
+     path.resolve(process.execPath, '..', '..');
+ 
+-  const paths = [path.resolve(prefixDir, 'lib', 'node')];
++  const paths = ['/usr/lib/node'];
+ 
+   if (homeDir) {
+     ArrayPrototypeUnshift(paths, path.resolve(homeDir, '.node_libraries'));
+Index: node-v26.4.0/tools/install.py
+===================================================================
+--- node-v26.4.0.orig/tools/install.py	2026-06-24 09:02:39.000000000 +0200
++++ node-v26.4.0/tools/install.py	2026-06-29 17:19:20.275004906 +0200
+@@ -7,6 +7,7 @@
  import platform
  import shutil
  import sys
@@ -10,7 +28,7 @@ Index: node-v24.12.0/tools/install.py
  import re
  
  current_system = platform.system()
-@@ -72,6 +73,10 @@ def try_copy(options, path, dest):
+@@ -72,6 +73,10 @@
    try_unlink(target_path) # prevent ETXTBSY errors
    return shutil.copy2(source_path, target_path)
  
@@ -21,7 +39,7 @@ Index: node-v24.12.0/tools/install.py
  def try_remove(options, path, dest):
    _source_path, target_path = mkpaths(options, path, dest)
    if not options.silent:
-@@ -88,7 +93,7 @@ def uninstall(options, paths, dest):
+@@ -88,7 +93,7 @@
      try_remove(options, path, dest)
  
  def package_files(options, action, name, bins):
@@ -30,7 +48,7 @@ Index: node-v24.12.0/tools/install.py
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
-@@ -109,7 +114,7 @@ def package_files(options, action, name,
+@@ -109,7 +114,7 @@
      if action == uninstall:
        action(options, [link_path], os.path.join('bin', bin_name))
      elif action == install:
@@ -39,16 +57,3 @@ Index: node-v24.12.0/tools/install.py
      else:
        assert 0  # unhandled action type
  
-Index: node-v24.12.0/lib/internal/modules/cjs/loader.js
-===================================================================
---- node-v24.12.0.orig/lib/internal/modules/cjs/loader.js
-+++ node-v24.12.0/lib/internal/modules/cjs/loader.js
-@@ -2001,7 +2001,7 @@ Module._initPaths = function() {
-     path.resolve(process.execPath, '..') :
-     path.resolve(process.execPath, '..', '..');
- 
--  const paths = [path.resolve(prefixDir, 'lib', 'node')];
-+  const paths = ['/usr/lib/node'];
- 
-   if (homeDir) {
-     ArrayPrototypeUnshift(paths, path.resolve(homeDir, '.node_libraries'));

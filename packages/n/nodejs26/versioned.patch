@@ -8,11 +8,21 @@ management via update_alternatives.
 
 This is also important for generation of binary
 modules for multiple versions of NodeJS
-Index: node-v26.2.0/Makefile
+---
+ Makefile                               |    2 +-
+ doc/node.1                             |    8 ++++----
+ node.gyp                               |    4 ++--
+ src/node_main.cc                       |    1 +
+ test/parallel/test-snapshot-warning.js |    8 ++++----
+ tools/install.py                       |   30 +++++++++++++++---------------
+ tools/test.py                          |    2 +-
+ 7 files changed, 28 insertions(+), 27 deletions(-)
+
+Index: node-v26.4.0/Makefile
 ===================================================================
---- node-v26.2.0.orig/Makefile
-+++ node-v26.2.0/Makefile
-@@ -77,7 +77,7 @@ BUILDTYPE_LOWER := $(shell echo $(BUILDT
+--- node-v26.4.0.orig/Makefile	2026-06-29 17:19:15.696302706 +0200
++++ node-v26.4.0/Makefile	2026-06-29 17:19:33.819512691 +0200
+@@ -77,7 +77,7 @@
  EXEEXT := $(shell $(PYTHON) -c \
  		"import sys; print('.exe' if sys.platform == 'win32' else '')")
  
@@ -21,11 +31,112 @@ Index: node-v26.2.0/Makefile
  NODE_G_EXE = node_g$(EXEEXT)
  NPM ?= ./deps/npm/bin/npm-cli.js
  
-Index: node-v26.2.0/tools/install.py
+Index: node-v26.4.0/doc/node.1
 ===================================================================
---- node-v26.2.0.orig/tools/install.py
-+++ node-v26.2.0/tools/install.py
-@@ -93,7 +93,7 @@ def uninstall(options, paths, dest):
+--- node-v26.4.0.orig/doc/node.1	2026-06-24 09:02:39.000000000 +0200
++++ node-v26.4.0/doc/node.1	2026-06-29 17:20:55.538396086 +0200
+@@ -10,22 +10,22 @@
+ .Dt NODE 1
+ .
+ .Sh NAME
+-.Nm node
++.Nm node26
+ .Nd server-side JavaScript runtime
+ .
+ .Sh SYNOPSIS
+-.Nm node
++.Nm node26
+ .Op Ar options
+ .Op Ar v8 options
+ .Op Ar <program-entry-point> | Fl e Ar string | Fl -
+ .Op Ar arguments ...
+ .
+-.Nm node
++.Nm node26
+ .Cm inspect,
+ .Op Ar <program-entry-point> | Fl e Ar string | Ar <host>:<port>
+ .Ar ...
+ .
+-.Nm node
++.Nm node26
+ .Op Fl -v8-options
+ .
+ .Sh DESCRIPTION
+Index: node-v26.4.0/node.gyp
+===================================================================
+--- node-v26.4.0.orig/node.gyp	2026-06-24 09:02:38.000000000 +0200
++++ node-v26.4.0/node.gyp	2026-06-29 17:21:28.974035930 +0200
+@@ -7,12 +7,12 @@
+     'force_dynamic_crt%': 0,
+     'node_builtin_modules_path%': '',
+     # `node` executable target name.
+-    'node_core_target_name%': 'node',
++    'node_core_target_name%': 'node26',
+     # `libnode` target type, `static_library` if `node_shared` is false and `shared_library` if `node_shared` is true.
+     'node_lib_type%': 'static_library',
+     # `libnode` target name, can be a `static_library` or `shared_library` based on `node_shared`.
+     # NOTE: Gyp will prefix this with `lib` if this name does not start with `lib`.
+-    'node_lib_target_name%': 'libnode',
++    'node_lib_target_name%': 'libnode26',
+     'node_module_version%': '',
+     'node_no_browser_globals%': 'false',
+     'node_shared_brotli%': 'false',
+Index: node-v26.4.0/src/node_main.cc
+===================================================================
+--- node-v26.4.0.orig/src/node_main.cc	2026-06-24 09:02:38.000000000 +0200
++++ node-v26.4.0/src/node_main.cc	2026-06-29 17:19:33.821512133 +0200
+@@ -94,6 +94,7 @@
+ // UNIX
+ 
+ int main(int argc, char* argv[]) {
++  setenv("NODE_VERSION", "26", 0);
+   return node::Start(argc, argv);
+ }
+ #endif
+Index: node-v26.4.0/test/parallel/test-snapshot-warning.js
+===================================================================
+--- node-v26.4.0.orig/test/parallel/test-snapshot-warning.js	2026-06-24 09:02:39.000000000 +0200
++++ node-v26.4.0/test/parallel/test-snapshot-warning.js	2026-06-29 17:19:33.822641133 +0200
+@@ -60,7 +60,7 @@
+     stderr(output) {
+       let match = output.match(/Warning: test warning/g);
+       assert.strictEqual(match.length, 1);
+-      match = output.match(/Use `node --trace-warnings/g);
++      match = output.match(/Use `node26 --trace-warnings/g);
+       assert.strictEqual(match.length, 1);
+       return true;
+     }
+@@ -79,7 +79,7 @@
+       // Warnings should not be handled more than once.
+       let match = output.match(/Warning: test warning/g);
+       assert.strictEqual(match.length, 1);
+-      match = output.match(/Use `node --trace-warnings/g);
++      match = output.match(/Use `node26 --trace-warnings/g);
+       assert.strictEqual(match.length, 1);
+       return true;
+     }
+@@ -114,7 +114,7 @@
+   console.log(warningFile1, ':', warnings1);
+   let match = warnings1.match(/Warning: test warning/g);
+   assert.strictEqual(match.length, 1);
+-  match = warnings1.match(/Use `node --trace-warnings/g);
++  match = warnings1.match(/Use `node26 --trace-warnings/g);
+   assert.strictEqual(match.length, 1);
+   fs.rmSync(warningFile1, {
+     maxRetries: 3, recursive: false, force: true
+@@ -140,6 +140,6 @@
+   console.log(warningFile2, ':', warnings1);
+   match = warnings2.match(/Warning: test warning/g);
+   assert.strictEqual(match.length, 1);
+-  match = warnings2.match(/Use `node --trace-warnings/g);
++  match = warnings2.match(/Use `node26 --trace-warnings/g);
+   assert.strictEqual(match.length, 1);
+ }
+Index: node-v26.4.0/tools/install.py
+===================================================================
+--- node-v26.4.0.orig/tools/install.py	2026-06-29 17:19:20.275004906 +0200
++++ node-v26.4.0/tools/install.py	2026-06-29 17:19:33.820017142 +0200
+@@ -93,7 +93,7 @@
      try_remove(options, path, dest)
  
  def package_files(options, action, name, bins):
@@ -34,7 +145,7 @@ Index: node-v26.2.0/tools/install.py
  
    # don't install npm if the target path is a symlink, it probably means
    # that a dev version of npm is installed there
-@@ -114,19 +114,19 @@ def package_files(options, action, name,
+@@ -114,19 +114,19 @@
      if action == uninstall:
        action(options, [link_path], os.path.join('bin', bin_name))
      elif action == install:
@@ -58,7 +169,7 @@ Index: node-v26.2.0/tools/install.py
  #   Not the default just yet:
  #   'yarn': 'dist/yarn.js',
  #   'yarnpkg': 'dist/yarn.js',
-@@ -155,7 +155,7 @@ def subdir_files(options, path, dest, ac
+@@ -155,7 +155,7 @@
      action(options, files_in_path, subdir + os.path.sep)
  
  def files(options, action):
@@ -67,7 +178,7 @@ Index: node-v26.2.0/tools/install.py
    if options.is_win:
      node_bin += '.exe'
    action(options, [os.path.join(options.build_dir, node_bin)], os.path.join('bin', node_bin))
-@@ -206,7 +206,7 @@ def files(options, action):
+@@ -206,7 +206,7 @@
    if 'openbsd' in sys.platform:
      action(options, ['doc/node.1'], 'man/man1/')
    else:
@@ -76,7 +187,7 @@ Index: node-v26.2.0/tools/install.py
  
    if 'true' == options.variables.get('node_install_npm'):
      npm_files(options, action)
-@@ -350,28 +350,28 @@ def headers(options, action):
+@@ -350,28 +350,28 @@
      'src/node_buffer.h',
      'src/node_object_wrap.h',
      'src/node_version.h',
@@ -113,54 +224,11 @@ Index: node-v26.2.0/tools/install.py
  
    if sys.platform == 'zos':
      zoslibinc = os.environ.get('ZOSLIB_INCLUDES')
-Index: node-v26.2.0/doc/node.1
+Index: node-v26.4.0/tools/test.py
 ===================================================================
---- node-v26.2.0.orig/doc/node.1
-+++ node-v26.2.0/doc/node.1
-@@ -27,22 +27,22 @@
- .Dt NODE 1
- .
- .Sh NAME
--.Nm node
-+.Nm node26
- .Nd server-side JavaScript runtime
- .
- .Sh SYNOPSIS
--.Nm node
-+.Nm node26
- .Op Ar options
- .Op Ar v8 options
- .Op Ar <program-entry-point> | Fl e Ar string | Fl -
- .Op Ar arguments ...
- .
--.Nm node
-+.Nm node26
- .Cm inspect
- .Op Ar <program-entry-point> | Fl e Ar string | Ar <host>:<port>
- .Ar ...
- .
--.Nm node
-+.Nm node26
- .Op Fl -v8-options
- .
- .Sh DESCRIPTION
-Index: node-v26.2.0/src/node_main.cc
-===================================================================
---- node-v26.2.0.orig/src/node_main.cc
-+++ node-v26.2.0/src/node_main.cc
-@@ -94,6 +94,7 @@ int wmain(int argc, wchar_t* wargv[]) {
- // UNIX
- 
- int main(int argc, char* argv[]) {
-+  setenv("NODE_VERSION", "26", 0);
-   return node::Start(argc, argv);
- }
- #endif
-Index: node-v26.2.0/tools/test.py
-===================================================================
---- node-v26.2.0.orig/tools/test.py
-+++ node-v26.2.0/tools/test.py
-@@ -986,7 +986,7 @@ class Context(object):
+--- node-v26.4.0.orig/tools/test.py	2026-06-29 17:19:29.840074939 +0200
++++ node-v26.4.0/tools/test.py	2026-06-29 17:19:33.821748629 +0200
+@@ -986,7 +986,7 @@
      if self.vm is not None:
        return self.vm
      if arch == 'none':
@@ -169,59 +237,3 @@ Index: node-v26.2.0/tools/test.py
      else:
        name = 'out/%s.%s/node' % (arch, mode)
  
-Index: node-v26.2.0/node.gyp
-===================================================================
---- node-v26.2.0.orig/node.gyp
-+++ node-v26.2.0/node.gyp
-@@ -6,10 +6,10 @@
-     'v8_enable_31bit_smis_on_64bit_arch%': 0,
-     'force_dynamic_crt%': 0,
-     'node_builtin_modules_path%': '',
--    'node_core_target_name%': 'node',
-+    'node_core_target_name%': 'node26',
-     'node_enable_v8_vtunejit%': 'false',
-     'node_intermediate_lib_type%': 'static_library',
--    'node_lib_target_name%': 'libnode',
-+    'node_lib_target_name%': 'libnode26',
-     'node_module_version%': '',
-     'node_no_browser_globals%': 'false',
-     'node_shared_brotli%': 'false',
-Index: node-v26.2.0/test/parallel/test-snapshot-warning.js
-===================================================================
---- node-v26.2.0.orig/test/parallel/test-snapshot-warning.js
-+++ node-v26.2.0/test/parallel/test-snapshot-warning.js
-@@ -60,7 +60,7 @@ tmpdir.refresh();
-     stderr(output) {
-       let match = output.match(/Warning: test warning/g);
-       assert.strictEqual(match.length, 1);
--      match = output.match(/Use `node --trace-warnings/g);
-+      match = output.match(/Use `node26 --trace-warnings/g);
-       assert.strictEqual(match.length, 1);
-       return true;
-     }
-@@ -79,7 +79,7 @@ tmpdir.refresh();
-       // Warnings should not be handled more than once.
-       let match = output.match(/Warning: test warning/g);
-       assert.strictEqual(match.length, 1);
--      match = output.match(/Use `node --trace-warnings/g);
-+      match = output.match(/Use `node26 --trace-warnings/g);
-       assert.strictEqual(match.length, 1);
-       return true;
-     }
-@@ -114,7 +114,7 @@ tmpdir.refresh();
-   console.log(warningFile1, ':', warnings1);
-   let match = warnings1.match(/Warning: test warning/g);
-   assert.strictEqual(match.length, 1);
--  match = warnings1.match(/Use `node --trace-warnings/g);
-+  match = warnings1.match(/Use `node26 --trace-warnings/g);
-   assert.strictEqual(match.length, 1);
-   fs.rmSync(warningFile1, {
-     maxRetries: 3, recursive: false, force: true
-@@ -140,6 +140,6 @@ tmpdir.refresh();
-   console.log(warningFile2, ':', warnings1);
-   match = warnings2.match(/Warning: test warning/g);
-   assert.strictEqual(match.length, 1);
--  match = warnings2.match(/Use `node --trace-warnings/g);
-+  match = warnings2.match(/Use `node26 --trace-warnings/g);
-   assert.strictEqual(match.length, 1);
- }

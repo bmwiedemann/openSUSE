@@ -25,7 +25,7 @@
 %endif
 
 Name:           nodejs26
-Version:        26.3.1
+Version:        26.4.0
 Release:        0
 
 # Double DWZ memory limits
@@ -210,7 +210,7 @@ BuildRequires:  openssl >= %{openssl_req_ver}
 %else
 # bundled openssl
 %if %node_version_number <= 12 && 0%{?suse_version} == 1315 && 0%{?sle_version} < 120400
-Provides:       bundled(openssl) = 3.5.5
+Provides:       bundled(openssl) = 3.5.7
 %else
 BuildRequires:  bundled_openssl_should_not_be_required
 %endif
@@ -234,13 +234,13 @@ BuildRequires:  sqlite3-devel
 %if ! 0%{with intree_icu}
 BuildRequires:  pkgconfig(icu-i18n) >= 71
 %else
-Provides:       bundled(icu) = 78.2
+Provides:       bundled(icu) = 78.3
 %endif
 
 %if ! 0%{with intree_nghttp2}
 BuildRequires:  libnghttp2-devel >= 1.41.0
 %else
-Provides:       bundled(nghttp2) = 1.68.0
+Provides:       bundled(nghttp2) = 1.69.0
 %endif
 
 %if 0%{with valgrind_tests}
@@ -768,18 +768,14 @@ rm test/parallel/test-crypto-fips.js
 
 # qemu test failures
 %if %{node_version_number} >= 18 && 0%{?qemu_user_space_build}
-# sequential/test-debugger-*: timeout hit?
-rm -v test/*/test-debugger-*.js
-# parallel tests are not parallel under qemu
-rm -v test/parallel/test-*.js test/parallel/test-*.mjs
-# RuntimeError: memory access out of bounds
-rm -v test/wasi/test-*.js
-# ESM import hits assertion, timeout error?
-rm -v test/es-module/test-esm-*.js
-# AssertionError [ERR_ASSERTION]: Missing expected exception
-rm -v test/js-native-api/test_constructor/test*.js
-# Too slow for performance tests
-rm -v test/sequential/test-perf-*.js test/sequential/test-diagnostic-*.js
+# unsupported by qemu emulation
+rm -v test/parallel/test-dgram-multicast-set-interface.js
+rm -v test/parallel/test-memory-usage.js
+rm -v test/parallel/test-memory-usage-emfile.js
+rm -v test/parallel/test-setproctitle.js
+rm -v test/parallel/test-v8-serialize-leak.js
+rm -v test/parallel/test-web-locks.js
+rm -v test/parallel/test-worker-memory.js
 %endif
 
 # Run CI tests
@@ -787,7 +783,11 @@ rm -v test/sequential/test-perf-*.js test/sequential/test-diagnostic-*.js
 # valgrind may have false positives, so do not fail on these by default
 make test-valgrind ||:
 %endif
-make test-ci
+
+# Run actual tests. Skip doc generation
+make %{?_smp_mflags} build-ffi-tests
+make test-ci-js
+make test-ci-native
 
 %files
 %defattr(-, root, root)

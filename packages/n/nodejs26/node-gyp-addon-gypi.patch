@@ -1,7 +1,14 @@
-Index: node-v21.7.1/addon-rpm.gypi
+---
+ addon-rpm.gypi                                  |   35 ++++++++++++++++++++++++
+ deps/npm/node_modules/node-gyp/addon.gypi       |    1 
+ deps/npm/node_modules/node-gyp/lib/configure.js |   21 ++++++++++----
+ tools/build_addons.py                           |    2 -
+ 4 files changed, 52 insertions(+), 7 deletions(-)
+
+Index: node-v26.4.0/addon-rpm.gypi
 ===================================================================
---- /dev/null
-+++ node-v21.7.1/addon-rpm.gypi
+--- /dev/null	1970-01-01 00:00:00.000000000 +0000
++++ node-v26.4.0/addon-rpm.gypi	2026-06-29 17:19:24.073367169 +0200
 @@ -0,0 +1,35 @@
 +{
 +  'target_defaults': {
@@ -38,11 +45,23 @@ Index: node-v21.7.1/addon-rpm.gypi
 +    ]
 +  }
 +}
-Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
+Index: node-v26.4.0/deps/npm/node_modules/node-gyp/addon.gypi
 ===================================================================
---- node-v21.7.1.orig/deps/npm/node_modules/node-gyp/lib/configure.js
-+++ node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
-@@ -36,10 +36,6 @@ async function configure (gyp, argv) {
+--- node-v26.4.0.orig/deps/npm/node_modules/node-gyp/addon.gypi	2026-06-24 09:02:33.000000000 +0200
++++ node-v26.4.0/deps/npm/node_modules/node-gyp/addon.gypi	2026-06-29 17:19:24.074177668 +0200
+@@ -18,6 +18,7 @@
+     ],
+ 
+     'include_dirs': [
++      '<(node_root_dir)/include/node26',
+       '<(node_root_dir)/include/node',
+       '<(node_root_dir)/src',
+       '<(node_root_dir)/deps/openssl/config',
+Index: node-v26.4.0/deps/npm/node_modules/node-gyp/lib/configure.js
+===================================================================
+--- node-v26.4.0.orig/deps/npm/node_modules/node-gyp/lib/configure.js	2026-06-24 09:02:33.000000000 +0200
++++ node-v26.4.0/deps/npm/node_modules/node-gyp/lib/configure.js	2026-06-29 17:19:24.073735504 +0200
+@@ -62,10 +62,6 @@
        if ('v' + release.version !== process.version) {
          // if --target was given, then determine a target version to compile for
          log.verbose('get node dir', 'compiling against --target node version: %s', release.version)
@@ -53,7 +72,7 @@ Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
  
        if (!release.semver) {
          // could not parse the version string with semver
-@@ -54,6 +50,11 @@ async function configure (gyp, argv) {
+@@ -80,6 +76,11 @@
  
        log.verbose('get node dir', 'target node version installed:', release.versionDir)
        nodeDir = path.resolve(gyp.devDir, release.versionDir)
@@ -65,7 +84,7 @@ Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
      }
  
      return createBuildDir()
-@@ -201,8 +203,16 @@ async function configure (gyp, argv) {
+@@ -247,8 +248,16 @@
  
      // this logic ported from the old `gyp_addon` python file
      const gypScript = path.resolve(__dirname, '..', 'gyp', 'gyp_main.py')
@@ -84,23 +103,11 @@ Index: node-v21.7.1/deps/npm/node_modules/node-gyp/lib/configure.js
      try {
        await fs.stat(commonGypi)
      } catch (err) {
-Index: node-v21.7.1/deps/npm/node_modules/node-gyp/addon.gypi
+Index: node-v26.4.0/tools/build_addons.py
 ===================================================================
---- node-v21.7.1.orig/deps/npm/node_modules/node-gyp/addon.gypi
-+++ node-v21.7.1/deps/npm/node_modules/node-gyp/addon.gypi
-@@ -18,6 +18,7 @@
-     ],
- 
-     'include_dirs': [
-+      '<(node_root_dir)/include/node26',
-       '<(node_root_dir)/include/node',
-       '<(node_root_dir)/src',
-       '<(node_root_dir)/deps/openssl/config',
-Index: node-v21.7.1/tools/build_addons.py
-===================================================================
---- node-v21.7.1.orig/tools/build_addons.py
-+++ node-v21.7.1/tools/build_addons.py
-@@ -27,7 +27,7 @@ def generate_headers(headers_dir, instal
+--- node-v26.4.0.orig/tools/build_addons.py	2026-06-24 09:02:39.000000000 +0200
++++ node-v26.4.0/tools/build_addons.py	2026-06-29 17:19:24.074560279 +0200
+@@ -27,7 +27,7 @@
  def rebuild_addons(args):
    headers_dir = os.path.abspath(args.headers_dir)
    out_dir = os.path.abspath(args.out_dir)

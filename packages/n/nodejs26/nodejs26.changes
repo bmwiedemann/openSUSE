@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jun 29 15:17:31 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 26.4.0:
+  - doc: update blockList stability status to release candidate
+  - fs: support caller-supplied readFile() buffers
+  - http: close pre-request sockets in closeIdleConnections
+  - loader: implement package maps
+  - net: support TCP_KEEPINTVL and TCP_KEEPCNT in setKeepAlive
+  - tls: add certificateCompression option
+  - vfs: dispatch node:fs/promises to mounted VFS instances
+  - vfs: add minimal node:vfs subsystem
+- Run obs-git-init (and add *-build directory to .gitignore)
+
+-------------------------------------------------------------------
 Fri Jun 19 19:58:01 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 26.3.1

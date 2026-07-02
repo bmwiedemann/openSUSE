@@ -1,8 +1,13 @@
-Index: node-v22.1.0/deps/npm/lib/commands/help-search.js
+---
+ deps/npm/lib/commands/help-search.js |    2 +-
+ deps/npm/lib/npm.js                  |    8 +++++++-
+ 2 files changed, 8 insertions(+), 2 deletions(-)
+
+Index: node-v26.4.0/deps/npm/lib/commands/help-search.js
 ===================================================================
---- node-v22.1.0.orig/deps/npm/lib/commands/help-search.js
-+++ node-v22.1.0/deps/npm/lib/commands/help-search.js
-@@ -17,7 +17,7 @@ class HelpSearch extends BaseCommand {
+--- node-v26.4.0.orig/deps/npm/lib/commands/help-search.js	2026-06-24 09:02:33.000000000 +0200
++++ node-v26.4.0/deps/npm/lib/commands/help-search.js	2026-06-29 17:19:27.145704549 +0200
+@@ -17,7 +17,7 @@
        throw this.usageError()
      }
  
@@ -11,11 +16,11 @@ Index: node-v22.1.0/deps/npm/lib/commands/help-search.js
      let files = await glob(`${globify(docPath)}/*/*.md`)
      // preserve glob@8 behavior
      files = files.sort((a, b) => a.localeCompare(b, 'en'))
-Index: node-v22.1.0/deps/npm/lib/npm.js
+Index: node-v26.4.0/deps/npm/lib/npm.js
 ===================================================================
---- node-v22.1.0.orig/deps/npm/lib/npm.js
-+++ node-v22.1.0/deps/npm/lib/npm.js
-@@ -338,7 +338,13 @@ class Npm {
+--- node-v26.4.0.orig/deps/npm/lib/npm.js	2026-06-24 09:02:33.000000000 +0200
++++ node-v26.4.0/deps/npm/lib/npm.js	2026-06-29 17:19:27.146941702 +0200
+@@ -476,7 +476,13 @@
    }
  
    get globalPrefix () {

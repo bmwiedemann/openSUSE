@@ -7,4 +7,21 @@
     <comment>nodejs26 for factory</comment>
     <requestid>1361176</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2967334d6c9a22fb4751aa8c61873ba9</srcmd5>
+    <version>26.4.0</version>
+    <time>1783015945</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.4.0:
+  - doc: update blockList stability status to release candidate
+  - fs: support caller-supplied readFile() buffers
+  - http: close pre-request sockets in closeIdleConnections
+  - loader: implement package maps
+  - net: support TCP_KEEPINTVL and TCP_KEEPCNT in setKeepAlive
+  - tls: add certificateCompression option
+  - vfs: dispatch node:fs/promises to mounted VFS instances
+  - vfs: add minimal node:vfs subsystem
+- Run obs-git-init (and add *-build directory to .gitignore)</comment>
+    <requestid>1363512</requestid>
+  </revision>
 </revisionlist>
