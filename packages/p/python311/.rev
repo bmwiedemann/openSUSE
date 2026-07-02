@@ -1887,4 +1887,50 @@ C API
   gh#python/cpython#146121).</comment>
     <requestid>1345247</requestid>
   </revision>
+  <revision rev="69" vrev="6">
+    <srcmd5>ded6389bb131d6511e410faaf236436f</srcmd5>
+    <version>3.11.15</version>
+    <time>1781879467</time>
+    <user>anag_factory</user>
+    <comment>- Keep unversioned Python 3 development entry points in
+  python3-devel: python313-devel no longer provides python3-devel
+  and no longer owns libpython3.so, python3-config, python3.pc,
+  or python3-embed.pc. Do not package versioned GIL pkg-config
+  files in nogil-devel. Also, fix regular expressions in
+  rpmlintrc.
+
+- Remove macros.python3.
+
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+
+- CVE-2026-1502: reject CR/LF in HTTP tunnel request headers
+  (bsc#1261969, gh#python/cpython#146211)
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch
+
+- Add CVE-2026-3446-base64-padding.patch preventing ignoring
+  excess Base64 data after the first padded quad (bsc#1261970,
+  CVE-2026-3446, gh#python/cpython#145264).</comment>
+    <requestid>1357976</requestid>
+  </revision>
+  <revision rev="70" vrev="7">
+    <srcmd5>311f02ce3838a75c36f3b8af34ab119e</srcmd5>
+    <version>3.11.15</version>
+    <time>1783015605</time>
+    <user>anag_factory</user>
+    <comment>- Add test_UDPLITE_support.patch which improves testing for the
+  support of IPPROTO_UDPLITE, which could be not present although
+  header files are (bsc#1268375).</comment>
+    <requestid>1362558</requestid>
+  </revision>
 </revisionlist>

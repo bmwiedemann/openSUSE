@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jun 29 06:37:10 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Add test_UDPLITE_support.patch which improves testing for the
+  support of IPPROTO_UDPLITE, which could be not present although
+  header files are (bsc#1268375).
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Keep unversioned Python 3 development entry points in
+  python3-devel: python313-devel no longer provides python3-devel
+  and no longer owns libpython3.so, python3-config, python3.pc,
+  or python3-embed.pc. Do not package versioned GIL pkg-config
+  files in nogil-devel. Also, fix regular expressions in
+  rpmlintrc.
+
+-------------------------------------------------------------------
+Fri May  1 16:05:16 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Remove macros.python3.
+
+-------------------------------------------------------------------
+Mon Apr 27 13:48:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+
+-------------------------------------------------------------------
+Sat Apr 25 16:42:59 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-1502: reject CR/LF in HTTP tunnel request headers
+  (bsc#1261969, gh#python/cpython#146211)
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+
+-------------------------------------------------------------------
+Sat Apr 25 00:14:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+
+-------------------------------------------------------------------
+Fri Apr 24 17:15:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch
+
+-------------------------------------------------------------------
+Wed Apr 15 18:00:50 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add CVE-2026-3446-base64-padding.patch preventing ignoring
+  excess Base64 data after the first padded quad (bsc#1261970,
+  CVE-2026-3446, gh#python/cpython#145264).
+
+-------------------------------------------------------------------
+Wed Apr  8 16:12:36 CEST 2026 - Matej Cepl <mcepl@suse.com>
+
+- Rewrite structure of Python interpreter packages.
+  `python3*` symbols should be now provided by real python3
+  packages and its subpackages instead of the virtual provides
+  (bsc#1258364).
+
+-------------------------------------------------------------------
 Thu Apr  2 13:55:57 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add CVE-2026-3479-pkgutil_get_data.patch pkgutil.get_data() has
@@ -3232,11 +3298,6 @@ Tue Feb 15 23:05:55 UTC 2022 - Matej Cepl <mcepl@suse.com>
 Tue Jan 25 16:09:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
 
 - Remove second superfluous BR rpm-build-python
-
--------------------------------------------------------------------
-Tue Jan 25 16:09:25 UTC 2022 - Matej Cepl <mcepl@suse.com>
-
-- Remove second superfluous BR rpm-build-python
 - Add fix_configure_rst.patch, which removes duplicate link
   targets and make documentation with old Sphinx in SLE
 - Skip test_capi (bsc#1195140 and bpo#37169)
@@ -4704,7 +4765,7 @@ Tue Apr  9 01:21:45 CEST 2019 - Matej Cepl <mcepl@suse.com>
     - python-3.6.0-multilib.patch
     - raise_SIGING_not_handled.patch
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Mar 20 14:59:58 UTC 2019 - Matěj Cepl <mcepl@suse.com>
 
 - Remove building of Qt Develop help files.
@@ -5063,7 +5124,7 @@ Sat Mar 31 19:41:12 UTC 2018 - mimi.vx@gmail.com
 - drop fix-localeconv-encoding-for-LC_NUMERIC.patch
 - refresh python-3.6.0-multilib-new.patch
 
-------------------------------------------------------------------
+-------------------------------------------------------------------
 Wed Mar  7 09:16:39 UTC 2018 - adam@mizerski.pl
 
 - Created %so_major and %so_minor macros
@@ -5914,4 +5975,3 @@ Tue Jan 18 14:13:04 UTC 2011 - jmatejek@novell.com
   compliant libpython3 package
 - mostly rewritten the spec file with more detailed comments
 - cleaned up lists of patches
-
