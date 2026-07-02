@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  2 07:52:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.8
+  * Further output improvements for the module loader.
+  * Added QUIC module loading support to netperfmeter-module-loader
+  * Improved detection of GNU getopt, to provide a useful error
+    message when it is missing.
+  * Improved documentation.
+
+-------------------------------------------------------------------
 Tue Jun 23 13:13:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.7

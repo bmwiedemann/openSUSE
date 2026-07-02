@@ -18,7 +18,7 @@
 
 %define services netperfmeter.service netperfmeter-module-loader.service
 Name:           netperfmeter
-Version:        2.0.7
+Version:        2.0.8
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
