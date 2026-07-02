@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           angelfish
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Mobile web browser
 License:        GPL-2.0-or-later
