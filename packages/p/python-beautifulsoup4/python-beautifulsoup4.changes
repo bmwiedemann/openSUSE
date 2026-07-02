@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:51:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.0:
+  * This is the last Beautiful Soup release to officially support
+    Python 3.7.
+  * This is also the last release to support the obsolete
+    methods, attributes and classes that were deprecated in 4.13.0.
+    In a subsequent point release, the DeprecationWarning issued when
+    you use these obsolete features will be replaced by
+    NotImplementedError, giving you a final chance to change your
+    code before the implementations are removed entirely. Once the
+    features are removed, code that tries to use them will start
+    behaving strangely, since Beautiful Soup will generally interpret
+    the method and attribute names as tag names.
+  * It is now possible to call new_tag() or new_string() directly
+    on an existing Tag or NavigableString object, rather than the
+    associated BeautifulSoup object. Note that this only works if
+    the object is currently inside a parse tree. This means you
+    can't call new_tag() or new_string() on an object that
+  * The type hints for the overloaded find* methods have been
+    redone to eliminate type checker overrides. [bug=2122019]
+  * Explicitly specify the type hint for the PageElement.text
+    property
+  * Change the html.parser tree builder's code for handling
+    numeric character references, to avoid a crash when using Python
+    versions that include the fix to Python issue
+  * Skip the lxml tree builder's
+    test_surrogate_in_character_reference test
+  * if the libxml2 version is less than 2.13.0. Prior versions of
+    libxml2
+  * don't issue the REPLACEMENT CHARACTER we're expecting.
+- drop htmlparser.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Dec 29 09:58:48 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 4.14.3
