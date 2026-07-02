@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 01 05:53:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.7:
+  * [INS-407] Fixed AWS detector producing non deterministic output (#4836)
+  * [INS-197] Add redhatpyxis api key detector (#4995)
+  * [INS-497] Add Pganalyze Read Key Detector (#4993)
+  * Expose `SecretParts` in the JSON output (#5073)
+  * Add scan_all_installations option for multi-org GitHub App scanning (#4775)
+  * Bump shared renovate-config to v1.0.3 (#5044)
+  * Skip reverification results during deduplication (#5069)
+  * huggingface: add bucket scanning (#5017)
+  * [INS-406] Braintrust detector (#4826)
+  * fix: add git worktree support in PrepareRepo (#4690)
+  * Fix GitHub App cross-org member enumeration using per-installation tokens (#4774)
+  * fixed regex typo that was causing conf uuid's to be surfaced as non-live atlassian secrets. (#5029)
+  * test(handlers): point APK test fixture at trufflehog-test-assets (#5053)
+  * fix(sources/filesystem): order resume comparison by path component (#5041)
+
+-------------------------------------------------------------------
 Mon Jun 22 05:05:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.6 (.5 is on the same commit hash as .4):
