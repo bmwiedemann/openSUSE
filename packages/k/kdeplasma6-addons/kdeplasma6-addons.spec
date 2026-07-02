@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           kdeplasma6-addons
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Additional Plasma6 Widgets
 License:        GPL-2.0-or-later AND LGPL-2.1-only AND GPL-3.0-only
@@ -113,17 +113,13 @@ the Plasma desktop.
 %install
 %kf6_install
 
-rm %{buildroot}%{_kf6_dbuspolicydir}/org.kde.kameleon.qmk.helper.conf
-rm %{buildroot}%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleon.qmk.helper.service
-rm %{buildroot}%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.policy
-
 %find_lang %{name} --all-name
 
 %ldconfig_scriptlets
 
 %files
 %license LICENSES/*
-#%{_kf6_dbuspolicydir}/org.kde.kameleon.qmk.helper.conf
+%{_kf6_dbuspolicydir}/org.kde.kameleon.qmk.helper.conf
 %{_kf6_dbuspolicydir}/org.kde.kameleonhelper.conf
 %{_kf6_debugdir}/kdeplasma-addons.categories
 %{_kf6_debugdir}/kdeplasma-addons.renamecategories
@@ -154,10 +150,10 @@ rm %{buildroot}%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.pol
 %{_kf6_plugindir}/potd/
 %{_kf6_qmldir}/org/kde/plasma/*
 %{_kf6_qmldir}/org/kde/plasmacalendar/
-#%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleon.qmk.helper.service
+%{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleon.qmk.helper.service
 %{_kf6_sharedir}/dbus-1/system-services/org.kde.kameleonhelper.service
 %{_kf6_sharedir}/kwin/
-#%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.policy
+%{_kf6_sharedir}/polkit-1/actions/org.kde.kameleon.qmk.helper.policy
 %{_kf6_sharedir}/polkit-1/actions/org.kde.kameleonhelper.policy
 
 %files devel

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 30 20:11:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.2
+- Changes since 6.7.1:
+  * [Vietnamese Lunar Calendar] Fix midnight JDE rounding in getLocalDayIndex (kde#522099)
+  * applets/colorpicker: Fix sizing
+  * Update version for new release 6.7.2
+- Enable Kameleon QMK integration, got whitelisted
+
+-------------------------------------------------------------------
 Tue Jun 23 10:54:54 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.1:
