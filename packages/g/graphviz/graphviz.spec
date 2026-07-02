@@ -57,11 +57,8 @@
 %define lab_gamut_soversion 1
 %define pathplan_soversion 4
 %define xdot_soversion 4
-# Java and ocaml are not in ring1, thus this gets overriden in staging
-# Also, both install into generic locations instead of a language
-# specific prefix, disable both
-%bcond_with    java
-%bcond_with    ocaml
+# Java is not in ring1.
+%bcond_with     graphviz_java
 Name:           graphviz%{psuffix}
 Version:        15.0.0
 Release:        0
@@ -127,11 +124,8 @@ BuildRequires:  swig >= 4.1.0
 BuildRequires:  php7-devel
 BuildRequires:  swig >= 3.0.11
 %endif
-%if %{with java}
+%if %{with graphviz_java}
 BuildRequires:  java-devel >= 1.6.0
-%endif
-%if %{with ocaml}
-BuildRequires:  ocaml
 %endif
 %endif
 %if "%{flavor}" == "qt6"
@@ -209,16 +203,6 @@ Requires:       lua
 %description -n graphviz-lua
 The graphviz-lua package contains the lua extension for the graphviz
 tools.
-
-%package -n graphviz-ocaml
-Summary:        OCAML extension for graphviz
-Group:          Productivity/Graphics/Visualization/Graph
-Requires:       graphviz = %{version}
-Requires:       ocaml
-
-%description -n graphviz-ocaml
-The graphviz-ocaml package contains the Objective Caml extension for
-the graphviz tools.
 
 %package -n graphviz-perl
 Summary:        Perl extension for Graphviz
@@ -393,6 +377,13 @@ sed -i \
 sed -i -e 's@LANGUAGE php7@LANGUAGE php8@' tclpkg/gv/CMakeLists.txt
 
 %build
+%if %{with graphviz_java}
+if test -n "${JAVA_HOME}"
+then
+sed -i~ "s|[[:blank:]]/.*/default-java/|${JAVA_HOME}/|" configure.ac
+diff -u "$_"~ "$_" && exit 123
+fi
+%endif
 sed -i -e 's/python3 /python%pyversion /g' autogen.sh
 ./autogen.sh RUBY_VER=%{?ruby_version}
 CFLAGS="%{optflags} -ffast-math -fno-strict-aliasing -fno-strict-overflow -fPIC"
@@ -600,7 +591,7 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 %{_libdir}/graphviz/guile
 %{_mandir}/man3/gv.3guile%{ext_man}
 
-%if %{with java}
+%if %{with graphviz_java}
 %files -n graphviz-java
 %{_libdir}/graphviz/java
 %{_mandir}/man3/gv.3java%{ext_man}
@@ -609,12 +600,6 @@ if test -x %{_bindir}/dot; then rm -f %{_libdir}/graphviz/%{config_file} ; %{_bi
 %files -n graphviz-lua
 %{lua_archdir}/gv.so
 %{_mandir}/man3/gv.3lua%{ext_man}
-
-%if %{with ocaml}
-%files -n graphviz-ocaml
-%{_libdir}/graphviz/ocaml
-%{_mandir}/man3/gv.3ocaml%{ext_man}
-%endif
 
 %files -n graphviz-perl
 %{perl_vendorarch}/gv.pm
