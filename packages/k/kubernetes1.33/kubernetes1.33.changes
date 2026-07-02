@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  2 09:46:27 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.33.13:
+  * Bump images and versions to go 1.25.11 and distroless iptables
+  * fix(endpoint): avoid panic on services with empty IPFamilies
+
+-------------------------------------------------------------------
 Wed May 13 13:18:38 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.12:

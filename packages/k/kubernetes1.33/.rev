@@ -105,4 +105,12 @@
     <comment>Monthly Patch Release – May, 2026: Update to version 1.33.12</comment>
     <requestid>1353037</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0e923514a1f82a51be3b1646707e76be</srcmd5>
+    <version>1.33.13</version>
+    <time>1783015915</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – June, 2026: Update to version 1.33.13</comment>
+    <requestid>1363461</requestid>
+  </revision>
 </revisionlist>
