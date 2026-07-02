@@ -804,4 +804,20 @@
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351787</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>bfcf56b2a9024e4b62ef9a5298bafe28</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920548</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357500</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>1189ab8f72dd6c23839237762ab94bb2</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022804</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3</comment>
+    <requestid>1363434</requestid>
+  </revision>
 </revisionlist>
