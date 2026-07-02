@@ -153,4 +153,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1347281</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>9181318a5b6737aab473f82007b6e55e</srcmd5>
+    <version>2.0.0</version>
+    <time>1783015713</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362880</requestid>
+  </revision>
 </revisionlist>

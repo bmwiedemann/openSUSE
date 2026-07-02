@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jun 28 12:16:48 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 2.0.0:
+  * This is major release to keep the version aligned with netavark,
+    however it brings no breaking changes
+  * The MSRV has been bumped to v1.88
+  * Dependency updates
+
+-------------------------------------------------------------------
 Wed Apr 08 01:42:15 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 1.17.1:
