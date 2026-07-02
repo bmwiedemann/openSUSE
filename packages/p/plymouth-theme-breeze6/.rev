@@ -364,4 +364,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
     <requestid>1361436</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>103c779f6485b5883ce20e7a6247d11a</srcmd5>
+    <version>6.7.2</version>
+    <time>1783015775</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.2 with qmk integration enabled. Untested. (forwarded request 1362741 from Vogtinator)</comment>
+    <requestid>1362855</requestid>
+  </revision>
 </revisionlist>
