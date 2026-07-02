@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           elisa
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Music player and collection organizer
 License:        LGPL-3.0-or-later
