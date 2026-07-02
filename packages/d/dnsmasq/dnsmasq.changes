@@ -4,6 +4,8 @@ Tue Jun 23 08:36:43 UTC 2026 - Reinhard Max <max@suse.com>
 - Update to 2.93:
   * CVE-2026-12725, bsc#1268764: Heap buffer overflow in
     `log_query()` when logging unsupported DS/DNSKEY replies.
+  * CVE-2026-12969, bsc#1268882: out-of-bounds read in `find_soa()`
+    due to missing extrabytes validation.
   * Fix a corner-case in DNSSEC validation with wildcards.
   * Fix DNSSEC failure with spurious RRSIGs.
   * Fix DNSSEC fail with CNAME replies to DS queries.
@@ -21,6 +23,7 @@ Tue May 12 09:06:00 UTC 2026 - Reinhard Max <max@suse.com>
 - Update to security release 2.92rel2:
   * CVE-2026-2291, bsc#1258251: dnsmasq can be abused to record
     false cached data enabling DoS or attacker redirect.
+  * Obsoletes dnsmasq-CVE-2026-2291.patch .
   * CVE-2026-4890, bsc#1265001: DoS vulnerability in the DNSSEC
     validation.
   * CVE-2026-4891, bsc#1265002: heap-based out-of-bounds read

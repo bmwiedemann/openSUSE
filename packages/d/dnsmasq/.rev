@@ -1034,4 +1034,14 @@ Most of the source code files give a choice of either GPL-2.0 or GPL-3.0 (not GP
   * Obsoletes dnsmasq-Fix-FTBFS-nettle-4.0.patch</comment>
     <requestid>1361305</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>56756765f961366622e080e63029967c</srcmd5>
+    <version>2.93</version>
+    <time>1783015593</time>
+    <user>anag_factory</user>
+    <comment>Add CVE/bug reference:
+  * CVE-2026-12969, bsc#1268882: out-of-bounds read in `find_soa()`
+    due to missing extrabytes validation.</comment>
+    <requestid>1363468</requestid>
+  </revision>
 </revisionlist>
