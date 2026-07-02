@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/stackitcloud/stackit-cli/</param>
-              <param name="changesrevision">f388e861e2815ed9163cbcbe22088cd7e27f9cc5</param></service></servicedata>
+              <param name="changesrevision">f388e861e2815ed9163cbcbe22088cd7e27f9cc5</param></service><service name="tar_scm">
+                <param name="url">https://github.com/stackitcloud/stackit-cli.git</param>
+              <param name="changesrevision">09c6c7343e2b29860cf55bceef105d7f426bf87b</param></service></servicedata>

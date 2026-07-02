@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 02 05:27:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.66.0:
+  * fix(intake): set region to false in ConfigureClient (#1451)
+  * chore(dns): migrate to new SDK structure (#1438)
+  * chore(deps): bump actions/checkout from 6.0.3 to 7.0.0 (#1445)
+  * chore(deps): bump actions/setup-go from 6 to 6.4.0 (#1446)
+  * chore(loadbalancer): remove local interface (#1443)
+  * fix(iaas): wrong encoding and decoding of user data attribute
+    in server commands (#1439)
+  * chore(deps): bump actions/stale from 10.2.0 to 10.3.0 (#1423)
+  * fix(iaas): update examples and fix the payload for boot volumes
+    (#1436)
+  * chore(kms): migrate kms to new multi version sdk (#1437)
+  * chore(load-balancer): sdk migration (#1432)
+
+-------------------------------------------------------------------
 Tue Jun 23 09:11:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.65.0:
