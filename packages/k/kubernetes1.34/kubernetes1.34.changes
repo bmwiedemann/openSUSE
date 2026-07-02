@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:10:29 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.9:
+  * Bump images and versions to go 1.25.11 and distroless iptables
+  * kubeadm: fix dry-run CA copy paths in init certs
+  * fix(endpoint): avoid panic on services with empty IPFamilies
+  * fix(csi): preserve mount dir on NodePublish error during remount
+  * feat(volume): add IsRemount to MounterArgs
+  * Restore ability to plumb binary data through envvar values
+
+-------------------------------------------------------------------
 Wed May 13 13:17:26 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.34.8:
