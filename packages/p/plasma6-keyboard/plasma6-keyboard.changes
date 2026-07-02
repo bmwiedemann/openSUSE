@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 30 20:14:04 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.2
+- Changes since 6.7.1:
+  * Update version for new release 6.7.2
+  * fix(overlay): allow clients to receive actual key events (kde#519339,kde#521128,kde#521718,kde#521772,kde#521789,kde#521872,kde#522024,kde#522152,kde#522167)
+  * Update version for new release 6.7.2
+
+-------------------------------------------------------------------
 Tue Jun 23 11:00:26 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.1:
