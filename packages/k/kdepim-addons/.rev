@@ -1011,4 +1011,20 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351632</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>168c4503869a54721cd45d11a5971479</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920416</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357344</requestid>
+  </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>95b3b4855b4f21c23d67cef67909cfa0</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022679</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363231</requestid>
+  </revision>
 </revisionlist>
