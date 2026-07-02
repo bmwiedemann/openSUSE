@@ -2865,4 +2865,41 @@ jsc#PED-15851</comment>
       _remote_debugging module, including safer validation of</comment>
     <requestid>1345663</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e8c98f9ca794f0e38080cc7ab8b55ecf</srcmd5>
+    <version>3.14.6</version>
+    <time>1783015607</time>
+    <user>anag_factory</user>
+    <comment>- add gcc and g++ dependencies to the -devel package (and BR for
+  the whole package)
+
+- drop test_UDPLITE_support.patch, upstream already added
+  (similar) _have_udp_lite()
+
+- Fix shebang to use versioned Python interpreter.
+
+- Update to 3.14.6:
+  - Security
+    - gh-151159: Update Android and iOS installers to use OpenSSL
+      3.5.7.
+    - gh-150599: Fix a possible stack buffer overflow in bz2 when
+      a bz2.BZ2Decompressor is reused after a decompression
+      error. The decompressor now becomes unusable after libbz2
+      reports an error. (bsc#1267974, CVE-2026-9669)
+    - gh-149835: shutil.move() now resolves symlinks via
+      os.path.realpath() when checking whether the destination is
+      inside the source directory, preventing a symlink-based
+      bypass of that guard.
+    - gh-149698: Update bundled libexpat to version 2.8.1 for the
+      fix for CVE 2026-45186.
+    - gh-87451: The ftplib module’s undocumented ftpcp function
+      no longer trusts the IPv4 address value returned from the
+      source server in response to the PASV command by default,
+      completing the fix for CVE-2021-4189. As with ftplib.FTP,
+      the former behavior can be re-enabled by setting the
+      trust_server_pasv_ipv4_address attribute on the source
+      ftplib.FTP instance to True. Thanks to Qi Deng at Aurascape
+      AI for the report (bsc#1265268, CVE-2026-8328).</comment>
+    <requestid>1362891</requestid>
+  </revision>
 </revisionlist>

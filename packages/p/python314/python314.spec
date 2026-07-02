@@ -124,7 +124,7 @@
 # %%define tarversion %%{version}
 # %%endif
 # We don't process beta signs well
-%define         folderversion 3.14.4
+%define         folderversion %{version}
 %define         sitedir         %{_libdir}/python%{python_version}
 # three possible ABI kinds: m - pymalloc, d - debug build; see PEP 3149
 %define         abi_kind   %{nil}
@@ -162,7 +162,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.14.4
+Version:        3.14.6
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -174,7 +174,6 @@ Source1:        https://www.python.org/ftp/python/%{folderversion}/%{tarname}.ta
 Source2:        baselibs.conf
 Source3:        README.SUSE
 Source4:        externally_managed.in
-Source7:        macros.python3
 Source8:        import_failed.py
 Source9:        import_failed.map
 Source10:       pre_checkin.sh
@@ -244,7 +243,10 @@ Patch57:        bsc1260884-llvm21-support.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
 BuildRequires:  netcfg
@@ -258,8 +260,9 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
-%if 0%{?suse_version} >= 1550
-# The provider for python(abi) is in rpm-build-python
+%if 0%{?suse_version} >= 1550 && %{without base}
+# Skip for the base flavor: rpm-build-python requires python3-base, which
+# creates an unresolvable dependency loop when building python3xx-base itself.
 BuildRequires:  rpm-build-python
 %endif
 %if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1599
@@ -313,11 +316,6 @@ Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
 %obsolete_python_versioned
-%if %{primary_interpreter}
-Provides:       python3 = %{python_version}
-Provides:       python3-readline
-Provides:       python3-sqlite3
-%endif
 %endif
 %{?suse_build_hwcaps_libs}
 
@@ -345,9 +343,6 @@ not ready to be used in production environments.
 Summary:        TkInter, a Python Tk Interface
 Requires:       %{python_pkg_name} = %{version}
 %obsolete_python_versioned tk
-%if %{primary_interpreter}
-Provides:       python3-tk = %{version}
-%endif
 
 %description -n %{python_pkg_name}-tk
 Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
@@ -356,9 +351,6 @@ Python interface to Tk. Tk is the GUI toolkit that comes with Tcl.
 Summary:        Python Interface to the (N)Curses Library
 Requires:       %{python_pkg_name} = %{version}
 %obsolete_python_versioned curses
-%if %{primary_interpreter}
-Provides:       python3-curses
-%endif
 
 %description -n %{python_pkg_name}-curses
 An easy to use interface to the (n)curses CUI library. CUI stands for
@@ -368,9 +360,6 @@ Console User Interface.
 Summary:        Python Interface to the GDBM Library
 Requires:       %{python_pkg_name} = %{version}
 %obsolete_python_versioned dbm
-%if %{primary_interpreter}
-Provides:       python3-dbm
-%endif
 
 %description -n %{python_pkg_name}-dbm
 An easy to use interface for Unix DBM databases, and more specifically,
@@ -381,9 +370,6 @@ Summary:        An Integrated Development Environment for Python
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk
 %obsolete_python_versioned idle
-%if %{primary_interpreter}
-Provides:       python3-idle = %{version}
-%endif
 
 %description -n %{python_pkg_name}-idle
 IDLE is a Tkinter based integrated development environment for Python.
@@ -395,9 +381,6 @@ a debugger.
 Summary:        Package Documentation for Python 3
 Enhances:       %{python_pkg_name} = %{python_version}
 %obsolete_python_versioned doc
-%if %{primary_interpreter}
-Provides:       python3-doc = %{version}
-%endif
 
 %description -n %{python_pkg_name}-doc
 Tutorial, Global Module Index, Language Reference, Library Reference,
@@ -407,9 +390,6 @@ Python, and Macintosh Module Reference in HTML format.
 %package -n %{python_pkg_name}-doc-devhelp
 Summary:        Additional Package Documentation for Python 3 in devhelp format
 %obsolete_python_versioned doc-devhelp
-%if %{primary_interpreter}
-Provides:       python3-doc-devhelp = %{version}
-%endif
 
 %description -n %{python_pkg_name}-doc-devhelp
 Tutorial, Global Module Index, Language Reference, Library Reference,
@@ -434,15 +414,11 @@ Provides:       %{python_pkg_name}-typing = %{version}
 %obsolete_python_versioned typing
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
-%if %{primary_interpreter}
-Provides:       python3-asyncio = %{version}
-Obsoletes:      python3-asyncio < %{version}
-Provides:       python3-base = %{version}
-Obsoletes:      python3-base < %{version}
-Provides:       python3-typing = %{version}
-Obsoletes:      python3-typing < %{version}
-Provides:       python3-xml = %{version}
-Obsoletes:      python3-xml < %{version}
+# Explicitly provided because rpm-build-python (which auto-generates this)
+# cannot be installed in the base flavor build root due to a bootstrap cycle:
+# rpm-build-python -> python3-base -> (this package)
+%if %{with GIL}
+Provides:       python(abi) = %{python_version}
 %endif
 
 %description -n %{python_pkg_name}-base
@@ -467,11 +443,6 @@ Summary:        Python Utility and Demonstration Scripts
 Requires:       %{python_pkg_name}-base = %{version}
 Provides:       %{python_pkg_name}-demo = %{version}
 %obsolete_python_versioned tools
-%if %{primary_interpreter}
-Provides:       python3-demo = %{version}
-Provides:       python3-tools = %{version}
-Obsoletes:      python3-demo < %{version}
-%endif
 
 %description -n %{python_pkg_name}-tools
 A number of scripts that are useful for building, testing or extending Python,
@@ -480,10 +451,9 @@ and a set of demonstration programs.
 %package -n %{python_pkg_name}-devel
 Summary:        Include Files and Libraries Mandatory for Building Python Modules
 Requires:       %{python_pkg_name}-base = %{version}
+Requires:       gcc
+Requires:       gcc-c++
 %obsolete_python_versioned devel
-%if %{primary_interpreter}
-Provides:       python3-devel = %{version}
-%endif
 
 %description -n %{python_pkg_name}-devel
 The Python programming language's interpreter can be extended with
@@ -501,9 +471,6 @@ Summary:        Unit tests for Python and its standard library
 Requires:       %{python_pkg_name} = %{version}
 Requires:       %{python_pkg_name}-tk = %{version}
 %obsolete_python_versioned testsuite
-%if %{primary_interpreter}
-Provides:       python3-testsuite = %{version}
-%endif
 
 %description -n %{python_pkg_name}-testsuite
 Unit tests that are useful for verifying integrity and functionality
@@ -533,7 +500,7 @@ for dir in Lib Tools; do
     # break up "/""usr" like this to prevent replacing with %%{_prefix}
     find $dir -name '*.py' -type f -print0 \
         | xargs -0 grep -lE '^#! *(/''usr/.*bin/(env +)?)?python' \
-        | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python3@'
+        | xargs sed -r -i -e '1s@^#![[:space:]]*(/''usr/(local/)?bin/(env +)?)?python([0-9]+(\.[0-9]+)?)?@#!%{_bindir}/python%{python_version}@'
 done
 %else
 # For non-primary Python, just don't bother (bsc#1193179) and remove all
@@ -768,7 +735,7 @@ install -d -m 755 %{buildroot}%{_sysconfdir}/idle%{python_abi}
 # keep just idle3.X
 rm %{buildroot}%{_bindir}/idle3
 
-# mve idle binary to idle3.14t to avoid conflict
+# move idle binary to idle3.14t to avoid conflict
 %if %{without GIL}
 mv %{buildroot}%{_bindir}/idle%{python_version} %{buildroot}%{_bindir}/idle%{python_abi}
 %endif
@@ -808,20 +775,12 @@ for dir in curses dbm sqlite3 tkinter idlelib; do
     find "%{buildroot}/%{sitedir}/$dir"/* -maxdepth 0 -name "test" -o -exec rm -rf {} +
 done
 
-# overwrite the copied binary with a link
-ln -sf python%{python_version} %{buildroot}%{_bindir}/python3
-
-# decide to ship python3 or just python3.X
-%if !%{primary_interpreter}
-# base
 rm %{buildroot}%{_bindir}/python3
 rm %{buildroot}%{_bindir}/pydoc3
 rm %{buildroot}%{_mandir}/man1/python3.1
-# devel
 rm %{buildroot}%{_bindir}/python3-config
 rm %{buildroot}%{_libdir}/libpython3.so
 rm %{buildroot}%{_libdir}/pkgconfig/{python3,python3-embed}.pc
-%endif
 
 %if %{with externally_managed}
 # PEP-0668 mark this as a distro maintained python
@@ -854,19 +813,19 @@ rm -r $PDOCS/Tools/gdb
 find "$PDOCS" -name "*.bat" -delete
 
 # put gdb helper script into place
-install -m 755 -D Tools/gdb/libpython.py %{buildroot}%{_datadir}/gdb/auto-load/%{_libdir}/libpython%{python_abi}.so.%{so_major}.%{so_minor}-gdb.py
+%define gdb_help_script libpython%{python_abi}.so.%{so_major}.%{so_minor}-gdb.py
+install -m 755 -D Tools/gdb/libpython.py \
+    %{buildroot}%{_datadir}/gdb/auto-load/%{_libdir}/%{gdb_help_script}
+# don't use %python314_fix_shebang_path to avoid circular dependency via
+# python-rpm-macros
+sed -i "1s@#\!.*python[^ ]*@#\!%{_bindir}/python%{python_version}@" \
+    %{buildroot}%{_datadir}/gdb/auto-load/%{_libdir}/%{gdb_help_script}
 
 # install devel files to /config
 #cp Makefile Makefile.pre.in Makefile.pre $RPM_BUILD_ROOT%%{sitedir}/config-%%{python_abi}/
 
 # Remove -IVendor/ from python-config boo#1231795
 sed -i 's/-IVendor\///' %{buildroot}%{_bindir}/python%{python_abi}-config
-
-# RPM macros
-%if %{primary_interpreter}
-mkdir -p %{buildroot}%{_rpmconfigdir}/macros.d/
-install -m 644 %{SOURCE7} %{buildroot}%{_rpmconfigdir}/macros.d/ # macros.python3
-%endif
 
 # import_failed hooks
 FAILDIR=%{buildroot}/%{sitedir}/_import_failed
@@ -891,8 +850,8 @@ echo %{sitedir}/_import_failed > %{buildroot}/%{sitedir}/site-packages/zzzz-impo
 
 # not packaged without GIL
 %if %{without GIL}
-rm -rf %{buildroot}%{_libdir}/pkgconfig/python-%{python_version}.pc
-rm -rf %{buildroot}%{_libdir}/pkgconfig/python-%{python_version}-embed.pc
+rm -f %{buildroot}%{_libdir}/pkgconfig/python-%{python_abi}*.pc
+rm -f %{buildroot}%{_libdir}/pkgconfig/python-%{python_version}*.pc
 rm %{buildroot}%{_bindir}/python%{python_version}
 rm %{buildroot}%{_bindir}/pydoc%{python_version}
 rm %{buildroot}%{_bindir}/python%{python_version}-config
@@ -974,16 +933,13 @@ fi
 
 %files -n %{python_pkg_name}-devel
 %{_libdir}/libpython%{python_abi}.so
-%if %{primary_interpreter}
-%{_libdir}/libpython3.so
+%if %{with GIL}
+%{_libdir}/pkgconfig/python-%{python_abi}.pc
+%{_libdir}/pkgconfig/python-%{python_abi}-embed.pc
 %endif
-%{_libdir}/pkgconfig/*
 %{_includedir}/python%{python_abi}
 %{sitedir}/config-%{python_abi}-*
 %{_bindir}/python%{python_abi}-config
-%if %{primary_interpreter}
-%{_bindir}/python3-config
-%endif
 # Own these directories to not depend on gdb
 %dir %{_datadir}/gdb
 %dir %{_datadir}/gdb/auto-load
@@ -1017,9 +973,6 @@ fi
 %doc %{_docdir}/%{name}/README.rst
 %license LICENSE
 %doc %{_docdir}/%{name}/README.SUSE
-%if %{primary_interpreter}
-%{_mandir}/man1/python3.1%{?ext_man}
-%endif
 
 %if %{with GIL}
 %{_mandir}/man1/python%{python_version}.1%{?ext_man}
@@ -1031,10 +984,6 @@ fi
 %endif
 # license text, not a doc because the code can use it at run-time
 %{sitedir}/LICENSE.txt
-# RPM macros
-%if %{primary_interpreter}
-%{_rpmconfigdir}/macros.d/macros.python3
-%endif
 # build-details
 %{_libdir}/python3*/build-details.json
 
@@ -1148,11 +1097,6 @@ fi
 # import-failed hooks
 %{sitedir}/_import_failed
 %{sitedir}/site-packages/zzzz-import-failed-hooks.pth
-# symlinks
-%if %{primary_interpreter}
-%{_bindir}/python3
-%{_bindir}/pydoc3
-%endif
 # executables
 %if %{with GIL}
 %attr(755, root, root) %{_bindir}/pydoc%{python_version}

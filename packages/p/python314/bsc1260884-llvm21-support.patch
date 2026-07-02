@@ -47,16 +47,16 @@ tarball download infrastructure.
  6 files changed, 129 insertions(+), 47 deletions(-)
  create mode 100644 Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
 
-Index: Python-3.14.4/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
+Index: Python-3.14.5/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst
 ===================================================================
 --- /dev/null	1970-01-01 00:00:00.000000000 +0000
-+++ Python-3.14.4/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst	2026-04-08 11:17:17.883764230 +0200
++++ Python-3.14.5/Misc/NEWS.d/next/Core_and_Builtins/2025-10-19-10-32-28.gh-issue-136895.HfsEh0.rst	2026-06-09 17:46:26.697055741 +0200
 @@ -0,0 +1 @@
 +Update JIT compilation to use LLVM 21 at build time.
-Index: Python-3.14.4/Python/jit.c
+Index: Python-3.14.5/Python/jit.c
 ===================================================================
---- Python-3.14.4.orig/Python/jit.c	2026-04-07 15:13:20.000000000 +0200
-+++ Python-3.14.4/Python/jit.c	2026-04-08 11:17:17.884330327 +0200
+--- Python-3.14.5.orig/Python/jit.c	2026-05-10 12:21:34.000000000 +0200
++++ Python-3.14.5/Python/jit.c	2026-06-09 17:46:26.697445194 +0200
 @@ -355,15 +355,43 @@
  }
  
@@ -198,10 +198,10 @@ Index: Python-3.14.4/Python/jit.c
      if (mark_executable(memory, total_size)) {
          jit_free(memory, total_size);
          return -1;
-Index: Python-3.14.4/Tools/jit/README.md
+Index: Python-3.14.5/Tools/jit/README.md
 ===================================================================
---- Python-3.14.4.orig/Tools/jit/README.md	2026-04-07 15:13:20.000000000 +0200
-+++ Python-3.14.4/Tools/jit/README.md	2026-04-08 11:17:17.884838104 +0200
+--- Python-3.14.5.orig/Tools/jit/README.md	2026-05-10 12:21:34.000000000 +0200
++++ Python-3.14.5/Tools/jit/README.md	2026-06-09 17:46:26.697785736 +0200
 @@ -9,32 +9,32 @@
  
  The JIT compiler does not require end users to install any third-party dependencies, but part of it must be *built* using LLVM[^why-llvm]. You are *not* required to build the rest of CPython using LLVM, or even the same version of LLVM (in fact, this is uncommon).
@@ -263,23 +263,25 @@ Index: Python-3.14.4/Tools/jit/README.md
  
  ## Building
  
-Index: Python-3.14.4/Tools/jit/_llvm.py
+Index: Python-3.14.5/Tools/jit/_llvm.py
 ===================================================================
---- Python-3.14.4.orig/Tools/jit/_llvm.py	2026-04-08 10:56:15.619727417 +0200
-+++ Python-3.14.4/Tools/jit/_llvm.py	2026-04-08 11:17:17.885158548 +0200
-@@ -10,9 +10,9 @@
+--- Python-3.14.5.orig/Tools/jit/_llvm.py	2026-06-09 17:44:38.670623837 +0200
++++ Python-3.14.5/Tools/jit/_llvm.py	2026-06-09 17:47:08.195123227 +0200
+@@ -10,11 +10,11 @@
  
  import _targets
  
 -_LLVM_VERSION = 19
 +_LLVM_VERSION = 21
- _LLVM_VERSION_PATTERN = re.compile(rf"version\s+{_LLVM_VERSION}\.\d+\.\d+\S*\s+")
+ _LLVM_VERSION_PATTERN = re.compile(
+     rf"(?<!Apple )(LLVM|clang) version\s+{_LLVM_VERSION}\.\d+\.\d+\S*\s+"
+ )
 -_EXTERNALS_LLVM_TAG = "llvm-19.1.7.0"
 +_EXTERNALS_LLVM_TAG = "llvm-21.1.4.0"
  
  _P = typing.ParamSpec("_P")
  _R = typing.TypeVar("_R")
-@@ -38,6 +38,13 @@
+@@ -40,6 +40,13 @@
  _CORES = asyncio.BoundedSemaphore(os.cpu_count() or 1)
  
  
@@ -293,7 +295,7 @@ Index: Python-3.14.4/Tools/jit/_llvm.py
  async def _run(tool: str, args: typing.Iterable[str], echo: bool = False) -> str | None:
      command = [tool, *args]
      async with _CORES:
-@@ -70,24 +77,26 @@
+@@ -72,24 +79,26 @@
  @_async_cache
  async def _find_tool(tool: str, *, echo: bool = False) -> str | None:
      # Unversioned executables:
@@ -332,10 +334,10 @@ Index: Python-3.14.4/Tools/jit/_llvm.py
      # Nothing found:
      return None
  
-Index: Python-3.14.4/Tools/jit/_stencils.py
+Index: Python-3.14.5/Tools/jit/_stencils.py
 ===================================================================
---- Python-3.14.4.orig/Tools/jit/_stencils.py	2026-04-08 10:56:15.623184158 +0200
-+++ Python-3.14.4/Tools/jit/_stencils.py	2026-04-08 11:17:17.885412907 +0200
+--- Python-3.14.5.orig/Tools/jit/_stencils.py	2026-06-09 17:44:38.674278273 +0200
++++ Python-3.14.5/Tools/jit/_stencils.py	2026-06-09 17:46:26.698349709 +0200
 @@ -274,6 +274,23 @@
                  self._trampolines.add(ordinal)
                  hole.addend = ordinal
@@ -360,10 +362,10 @@ Index: Python-3.14.4/Tools/jit/_stencils.py
          self.code.remove_jump()
          self.code.add_nops(nop=nop, alignment=alignment)
          self.data.pad(8)
-Index: Python-3.14.4/Tools/jit/_targets.py
+Index: Python-3.14.5/Tools/jit/_targets.py
 ===================================================================
---- Python-3.14.4.orig/Tools/jit/_targets.py	2026-04-08 10:56:15.625514156 +0200
-+++ Python-3.14.4/Tools/jit/_targets.py	2026-04-08 11:17:17.885705308 +0200
+--- Python-3.14.5.orig/Tools/jit/_targets.py	2026-06-09 17:44:38.676793727 +0200
++++ Python-3.14.5/Tools/jit/_targets.py	2026-06-09 17:46:26.698569463 +0200
 @@ -150,10 +150,6 @@
              "-fno-asynchronous-unwind-tables",
              # Don't call built-in functions that we can't find or patch:

@@ -6,13 +6,13 @@ Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
 ---
  Doc/Makefile                       |    2 -
  Doc/conf.py                        |    3 +
- Doc/tools/extensions/pyspecific.py |   68 +++++++++++++++++++++++++------------
- 3 files changed, 50 insertions(+), 23 deletions(-)
+ Doc/tools/extensions/pyspecific.py |   56 +++++++++++++++++++++++++------------
+ 3 files changed, 43 insertions(+), 18 deletions(-)
 
-Index: Python-3.14.3/Doc/Makefile
+Index: Python-3.14.6/Doc/Makefile
 ===================================================================
---- Python-3.14.3.orig/Doc/Makefile	2026-02-03 16:32:20.000000000 +0100
-+++ Python-3.14.3/Doc/Makefile	2026-02-13 20:28:48.460059340 +0100
+--- Python-3.14.6.orig/Doc/Makefile	2026-06-10 12:03:53.000000000 +0200
++++ Python-3.14.6/Doc/Makefile	2026-06-16 10:12:27.727028281 +0200
 @@ -14,7 +14,7 @@
  SOURCES      =
  DISTVERSION  = $(shell $(PYTHON) tools/extensions/patchlevel.py)
@@ -22,22 +22,22 @@ Index: Python-3.14.3/Doc/Makefile
  
  # Internal variables.
  PAPEROPT_a4     = --define latex_elements.papersize=a4paper
-Index: Python-3.14.3/Doc/conf.py
+Index: Python-3.14.6/Doc/conf.py
 ===================================================================
---- Python-3.14.3.orig/Doc/conf.py	2026-02-03 16:32:20.000000000 +0100
-+++ Python-3.14.3/Doc/conf.py	2026-02-13 20:21:11.034520886 +0100
-@@ -582,3 +582,6 @@
+--- Python-3.14.6.orig/Doc/conf.py	2026-06-10 12:03:53.000000000 +0200
++++ Python-3.14.6/Doc/conf.py	2026-06-16 10:12:27.727305694 +0200
+@@ -606,3 +606,6 @@
          '<meta property="og:image:width" content="200">',
          '<meta property="og:image:height" content="200">',
      )
 +
 +# Fix devhelp doc build gh#python/cpython#120150
 +master_doc = 'contents'
-Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
+Index: Python-3.14.6/Doc/tools/extensions/pyspecific.py
 ===================================================================
---- Python-3.14.3.orig/Doc/tools/extensions/pyspecific.py	2026-02-03 16:32:20.000000000 +0100
-+++ Python-3.14.3/Doc/tools/extensions/pyspecific.py	2026-02-13 17:09:31.987767795 +0100
-@@ -1,12 +1,12 @@
+--- Python-3.14.6.orig/Doc/tools/extensions/pyspecific.py	2026-06-10 12:03:53.000000000 +0200
++++ Python-3.14.6/Doc/tools/extensions/pyspecific.py	2026-06-16 10:19:55.558368946 +0200
+@@ -1,20 +1,37 @@
  # -*- coding: utf-8 -*-
  """
 -    pyspecific.py
@@ -55,22 +55,12 @@ Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
  """
  
  import re
-@@ -15,6 +15,7 @@
  
- from docutils import nodes
- from docutils.parsers.rst import directives
 +from docutils.parsers.rst.states import Body
- from docutils.utils import unescape
  from sphinx import addnodes
- from sphinx.domains.python import PyFunction, PyMethod, PyModule
-@@ -22,30 +23,48 @@
- from sphinx.util.docutils import SphinxDirective
+ from sphinx.domains.python import PyFunction, PyMethod
  
- # Used in conf.py and updated here by python/release-tools/run_release.py
--SOURCE_URI = 'https://github.com/python/cpython/tree/3.14/%s'
-+SOURCE_URI = "https://github.com/python/cpython/tree/3.14/%s"
-+
-+
+ 
 +# monkey-patch reST parser to disable alphabetic and roman enumerated lists
 +def _disable_alphabetic_and_roman(text):
 +    try:
@@ -82,42 +72,15 @@ Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
 +        # docutils < 0.22
 +        return None
 +
-+
 +Body.enum.converters["loweralpha"] = Body.enum.converters["upperalpha"] = (
 +    Body.enum.converters["lowerroman"]
 +) = Body.enum.converters["upperroman"] = _disable_alphabetic_and_roman
 +
- 
++
  class PyAwaitableMixin(object):
      def handle_signature(self, sig, signode):
          ret = super(PyAwaitableMixin, self).handle_signature(sig, signode)
--        signode.insert(0, addnodes.desc_annotation('awaitable ', 'awaitable '))
-+        signode.insert(0, addnodes.desc_annotation("awaitable ", "awaitable "))
-         return ret
- 
- 
- class PyAwaitableFunction(PyAwaitableMixin, PyFunction):
-     def run(self):
--        self.name = 'py:function'
-+        self.name = "py:function"
-         return PyFunction.run(self)
- 
- 
- class PyAwaitableMethod(PyAwaitableMixin, PyMethod):
-     def run(self):
--        self.name = 'py:method'
-+        self.name = "py:method"
-         return PyMethod.run(self)
- 
- 
- # Support for documenting Opcodes
- 
--opcode_sig_re = re.compile(r'(\w+(?:\+\d)?)(?:\s*\((.*)\))?')
-+opcode_sig_re = re.compile(r"(\w+(?:\+\d)?)(?:\s*\((.*)\))?")
- 
- 
- def parse_opcode_signature(env, sig, signode):
-@@ -64,7 +83,7 @@
+@@ -55,7 +72,7 @@
  
  # Support for documenting pdb commands
  
@@ -126,7 +89,7 @@ Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
  
  # later...
  # pdbargs_tokens_re = re.compile(r'''[a-zA-Z]+  |  # identifiers
-@@ -80,16 +99,16 @@
+@@ -71,16 +88,16 @@
      if m is None:
          raise ValueError
      name, args = m.groups()
@@ -146,7 +109,7 @@ Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
      signode += addnodes.desc_name(sig, sig)
      return sig
  
-@@ -102,7 +121,7 @@
+@@ -93,7 +110,7 @@
      As such, we link this to ``env-check-consistency``, even though it has
      nothing to do with the environment consistency check.
      """
@@ -155,7 +118,7 @@ Index: Python-3.14.3/Doc/tools/extensions/pyspecific.py
          return
  
      # allow translating deprecated index entries
-@@ -119,10 +138,15 @@
+@@ -110,10 +127,15 @@
  
  
  def setup(app):
