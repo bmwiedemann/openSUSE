@@ -141,4 +141,17 @@
   - Use Python 3.11 on SLE-15 by default</comment>
     <requestid>1289275</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b9e5edc2a8159cf1f91deacccbce212</srcmd5>
+    <version>3.4.0</version>
+    <time>1783015797</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.0:
+  * Fix Python 3.14 DeprecationWarning caused by implicit ctypes
+    layout when using _pack_ = 1.
+  * Bundle libusb1 1.0.29 dlls in Windows wheels
+  * Fix a licence inconsistency: the old pypi classifier was
+    refering to the LGPL2+ instead of the LGPL2.1+ .</comment>
+    <requestid>1363033</requestid>
+  </revision>
 </revisionlist>

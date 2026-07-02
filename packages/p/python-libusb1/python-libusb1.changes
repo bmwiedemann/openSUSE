@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:22:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.4.0:
+  * Fix Python 3.14 DeprecationWarning caused by implicit ctypes
+    layout when using _pack_ = 1.
+  * Bundle libusb1 1.0.29 dlls in Windows wheels
+  * Fix a licence inconsistency: the old pypi classifier was
+    refering to the LGPL2+ instead of the LGPL2.1+ .
+
+-------------------------------------------------------------------
 Mon Jun 30 12:04:24 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Switch build system from setuptools to pyproject.toml

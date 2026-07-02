@@ -1,7 +1,7 @@
 #
 # spec file for package python-libusb1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-libusb1
-Version:        3.3.1
+Version:        3.4.0
 Release:        0
 Summary:        Python wrapper for libusb-1.0
 # Relicensed from GPL to LGPLv2.1+ in May 2015
