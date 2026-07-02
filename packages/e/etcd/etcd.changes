@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 01 21:01:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.6.13: (GHSA-3wh4-j44w-pg92 boo#1270046)
+  * version: bump up to 3.6.13
+  * Reject the client request if the client certificate has been
+    revoked
+  * Update incorrect log message
+  * server/auth: accept bearer-prefixed auth tokens
+  * Bump OpenTelemetry dependencies to v1.43.0 (CVE-2026-29181
+    CVE-2026-39883)
+  * build(deps): bump distroless/static-debian12 from `20bc6c0`
+    to `9c346e4`
+  * Bump golang.org/x/crypto to v0.52.0
+  * Update Go to 1.25.11
+  * Add V2Depr1WriteOnlySkipCheck to bypass the v2 data store check
+
+-------------------------------------------------------------------
 Tue Jun 02 09:15:20 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.6.12:
