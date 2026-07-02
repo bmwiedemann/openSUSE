@@ -18,7 +18,7 @@
 
 %define lname   libjansson4
 Name:           libjansson
-Version:        2.15.0
+Version:        2.15.1
 Release:        0
 Summary:        C library for encoding, decoding and manipulating JSON data
 License:        MIT

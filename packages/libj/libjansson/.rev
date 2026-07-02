@@ -163,4 +163,19 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
 </comment>
     <requestid>1331615</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4b01a4ca6b5cc9d31f83785c27d3ff8d</srcmd5>
+    <version>2.15.1</version>
+    <time>1783023230</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.15.1:
+  * Include the object key or array index in unpack type mismatch error
+    messages (@cwalther in #731)
+  * Reject negative string length in the json_pack s# and +# formats
+    (@akheron in #740)
+  * Limit recursion depth in dump, equal and deep copy to prevent stack
+    overflow (@akheron in #741)
+</comment>
+    <requestid>1363118</requestid>
+  </revision>
 </revisionlist>

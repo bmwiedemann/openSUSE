@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:43:20 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.15.1:
+  * Include the object key or array index in unpack type mismatch error
+    messages (@cwalther in #731)
+  * Reject negative string length in the json_pack s# and +# formats
+    (@akheron in #740)
+  * Limit recursion depth in dump, equal and deep copy to prevent stack
+    overflow (@akheron in #741)
+
+-------------------------------------------------------------------
 Fri Feb  6 12:06:41 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.15.0:
