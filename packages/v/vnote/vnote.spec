@@ -1,7 +1,7 @@
 #
 # spec file for package vnote
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,91 +17,75 @@
 
 
 Name:           vnote
-Version:        3.10.1
+Version:        3.20.1
 Release:        0
 Summary:        A Vim-inspired note-taking application, especially for Markdown
 License:        LGPL-3.0-only
 Group:          Productivity/Text/Editors
 URL:            https://github.com/tamlok/vnote
 Source0:        https://github.com/tamlok/vnote/archive/v%{version}.tar.gz#/vnote-%{version}.tar.gz
-Source1:        vtextedit-08b440d.zip
-Source2:        hunspell-efb0389.zip
-Source3:        sonnet-403863f.zip
-Source4:        syntax-highlighting-807895f.zip
-BuildRequires:  libqt5-qtbase-devel >= 5.12
-BuildRequires:  libqt5-qtsvg-devel
-BuildRequires:  libqt5-qtwebengine-devel
-BuildRequires:  unzip
-BuildRequires:  update-desktop-files
-Recommends:     libssl44
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+Source1:        vtextedit.tar.xz
+Source2:        QHotkey.tar.xz
+# PATCH-FIX-UPSTREAM 0001-fix-build-with-cmake-4.patch -- Fix build with CMake 4
+Patch0:         0001-fix-build-with-cmake-4.patch
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Sql)
+BuildRequires:  cmake(Qt6Svg)
+BuildRequires:  cmake(Qt6Test)
+BuildRequires:  cmake(Qt6WebChannel)
+BuildRequires:  cmake(Qt6WebEngineWidgets)
+BuildRequires:  cmake(Qt6Widgets)
+Provides:       bundled(vtextedit)
+Requires:       qt6-sql-sqlite
+# vnote doesn't install development files, moving the bundled library to a separate package isn't useful
+Obsoletes:      libVTextEdit1 < 3.20.1
+ExclusiveArch:  %{x86_64} aarch64 riscv64
 
 %description
 VNote is a note-taking application, designed especially for Markdown.
 VNote provides both note management and Markdown edit experience.
 
-%package -n libVSyntaxHighlighting1
-Summary:        Library files for vnote
-Group:          System/Libraries
-
-%description -n libVSyntaxHighlighting1
-This package provides library files for vnote.
-
-%package -n libVTextEdit1
-Summary:        Library files for vnote
-Group:          System/Libraries
-
-%description -n libVTextEdit1
-This package provides library files for vnote.
-
 %prep
-%setup -q
-
+%autosetup -p1
 cd libs
-rm -r vtextedit
-unzip %{_sourcedir}/vtextedit-08b440d.zip
-mv vtextedit-* vtextedit
+rmdir QHotkey vtextedit
+/usr/lib/rpm/rpmuncompress -x %{SOURCE1}
+/usr/lib/rpm/rpmuncompress -x %{SOURCE2}
+cd ..
 
-cd vtextedit/src/libs
-rm -r hunspell sonnet syntax-highlighting
-unzip %{_sourcedir}/hunspell-efb0389.zip
-mv hunspell-* hunspell
-unzip %{_sourcedir}/sonnet-403863f.zip
-mv sonnet-* sonnet
-unzip %{_sourcedir}/syntax-highlighting-807895f.zip
-mv syntax-highlighting-* syntax-highlighting
+# Useless and broken
+sed -i '/Packaging.cmake/d' src/CMakeLists.txt
+
+# Use a less generic location for translations
+sed -i 's#app:translations#app:vnote/translations#' src/main.cpp
 
 %build
-mkdir build && cd build
-qmake-qt5 QMAKE_CFLAGS+="%{optflags}" QMAKE_CXXFLAGS+="%{optflags}" QMAKE_STRIP="/bin/true" ../vnote.pro
-make %{?_smp_mflags}
+%cmake_qt6 -DCMAKE_SKIP_RPATH:BOOL=TRUE
+
+%qt6_build
 
 %install
-cd build
-make install INSTALL_ROOT="%{buildroot}"
-rm %{buildroot}%{_prefix}/lib/libVSyntaxHighlighting.so
-rm %{buildroot}%{_prefix}/lib/libVTextEdit.so
-%suse_update_desktop_file -r vnote Utility TextEditor
+%qt6_install
 
-%post -n libVSyntaxHighlighting1 -p /sbin/ldconfig
-%postun -n libVSyntaxHighlighting1 -p /sbin/ldconfig
+# Move translations to a less generic location
+mkdir -p %{buildroot}%{_datadir}/vnote
+mv %{buildroot}%{_datadir}/translations %{buildroot}%{_datadir}/vnote/translations
 
-%post -n libVTextEdit1 -p /sbin/ldconfig
-%postun -n libVTextEdit1 -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
-%defattr(-,root,root)
+%license COPYING.LESSER
+%doc README.md changes.md
 %{_bindir}/vnote
-%{_bindir}/vnote_extra.rcc
 %{_datadir}/applications/vnote.desktop
 %{_datadir}/icons/hicolor
-%doc README.md changes.md
-%license COPYING.LESSER
-
-%files -n libVSyntaxHighlighting1
-%{_prefix}/lib/libVSyntaxHighlighting.so*
-
-%files -n libVTextEdit1
-%{_prefix}/lib/libVTextEdit.so*
+%{_datadir}/vnote_extra.rcc
+%{_datadir}/vnote/
+%{_libdir}/libVTextEdit.so
 
 %changelog

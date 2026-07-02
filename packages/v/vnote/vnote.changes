@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jun 28 21:40:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 3.20.1. Check the installed changes.md file for the
+  full list of changes.
+- Add upstream change:
+  * 0001-fix-build-with-cmake-4.patch
+
+-------------------------------------------------------------------
 Sat Dec  4 20:14:58 UTC 2021 - Grover Chou <groverchout@opensuse.org>
 
 - update to version v3.10.1

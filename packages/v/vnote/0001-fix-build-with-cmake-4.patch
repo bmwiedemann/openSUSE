@@ -1,0 +1,48 @@
+From ad4660e9ee50d8f646e8c1e00fa5e892328ac13c Mon Sep 17 00:00:00 2001
+From: Quentin Frey <51170829+Limosine@users.noreply.github.com>
+Date: Tue, 2 Dec 2025 08:32:34 +0100
+Subject: [PATCH] fix build with cmake 4 (#2671)
+
+---
+ src/CMakeLists.txt | 18 ++++++++++--------
+ 1 file changed, 10 insertions(+), 8 deletions(-)
+
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index f37430f..c7387f2 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -31,14 +31,6 @@ set_source_files_properties(${VX_APP_ICON_MACOS} PROPERTIES
+ # Translations
+ set(VX_TS_FILES data/core/translations/vnote_zh_CN.ts
+     data/core/translations/vnote_ja.ts)
+-if((QT_DEFAULT_MAJOR_VERSION EQUAL 6))
+-    if((Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.7.0))
+-        qt_add_lupdate(TS_FILES ${VX_TS_FILES}
+-            SOURCE_TARGETS vnote)
+-    else()
+-        qt_add_lupdate(vnote TS_FILES ${VX_TS_FILES})
+-    endif()
+-endif()
+ # Generate .qm files from .ts files (lrelease)
+ set_source_files_properties(${VX_TS_FILES} PROPERTIES
+     OUTPUT_LOCATION "${CMAKE_CURRENT_BINARY_DIR}/translations")
+@@ -68,6 +60,16 @@ add_executable(vnote WIN32 MACOSX_BUNDLE
+     ${VX_APP_ICON_RC_WIN} ${VX_APP_ICON_MACOS} ${VX_RESOURCE_FILES}
+ )
+ 
++# Translations
++if((QT_DEFAULT_MAJOR_VERSION EQUAL 6))
++    if((Qt6Widgets_VERSION VERSION_GREATER_EQUAL 6.7.0))
++        qt_add_lupdate(TS_FILES ${VX_TS_FILES}
++            SOURCE_TARGETS vnote)
++    else()
++        qt_add_lupdate(vnote TS_FILES ${VX_TS_FILES})
++    endif()
++endif()
++
+ add_dependencies(vnote VX_EXTRA_RESOURCE)
+ 
+ set(VX_LIBS_FOLDER ../libs)
+-- 
+2.54.0
+
