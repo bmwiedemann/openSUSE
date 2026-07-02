@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 02 07:16:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.3:
+  * attempt a fix to reduce CPU cycles spent on kitty for
+    'cursor_trail' (#2119).
+  * misc dependency updates.
+
+-------------------------------------------------------------------
 Mon Jun 29 09:33:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.2:
