@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jun 29 20:43:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.18.5:
+  * **[usecase] [commands]** Added `--splice` support to the
+    `merge()` command. Previously, the merge command would suggest
+    using `--splice` when attempting to merge non-head revisions,
+    but the flag was not actually accepted by
+    the command.
+  * The `splice` parameter is now available in both the command-
+    line interface and the `command.merge()` function, matching the
+    existing support in `command.revision()`.
+  * **[usecase] [environment]** Added
+    `ScriptDirectory.get_heads.consider_depends_on`
+    parameter to `ScriptDirectory.get_heads()`. When set to
+    `True`, head revisions that are also a dependency of another
+    revision via `depends_on` are excluded from the result,
+    matching the effective heads that would be present in the
+    `alembic_version` table after running all upgrades.
+  * producing invalid Python in the generated migration scripts.
+    Column objects within list or tuple values are now correctly
+    rendered as their string column names.
+  * **[bug] [mysql]** Implemented type comparison for `ENUM`
+    datatypes on MySQL, which checks that the individual enum
+    values are equivalent.  If additional entries are on either
+    side, this generates a diff.  Changes of order do not
+    generate a diff.  Pull request courtesy Furkan Köykıran.
+  * **[bug] [operations]** Fixed bug where the
+    `inline_references` parameter of `Operations.add_column()` did
+    not include foreign key referential actions such as `ON DELETE`,
+    `ON UPDATE`, `DEFERRABLE`, `INITIALLY`, and `MATCH` when
+    rendering the inline `REFERENCES` clause.
+
+-------------------------------------------------------------------
 Mon May 18 17:26:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - fix dependency on tzdata

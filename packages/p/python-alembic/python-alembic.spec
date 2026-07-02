@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-alembic
-Version:        1.18.4
+Version:        1.18.5
 Release:        0
 Summary:        A database migration tool for SQLAlchemy
 License:        MIT
