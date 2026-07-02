@@ -2592,4 +2592,13 @@ New stable release</comment>
     options from connections, instead of merging all together.</comment>
     <requestid>1360991</requestid>
   </revision>
+  <revision rev="293" vrev="2">
+    <srcmd5>924a1fa6d198f33b5b62f5f2a55bf3cb</srcmd5>
+    <version>1.56.1</version>
+    <time>1783023246</time>
+    <user>anag_factory</user>
+    <comment>- Modify nfs: Exit gracefully if /etc/fstab is missing
+  (bsc#1185815).</comment>
+    <requestid>1363445</requestid>
+  </revision>
 </revisionlist>

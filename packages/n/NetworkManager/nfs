@@ -52,6 +52,11 @@ function other_reaches {
     fi
 }
 
+# Exit gracefully if /etc/fstab is missing (e.g., LiveCD environments)
+if [ ! -f /etc/fstab ]; then
+    exit 0
+fi
+
 NET_MOUNTS=$(sed -e '/^.*#/d' -e '/^.*:/!d' -e 's/\t/ /g' -e '/x-systemd.automount/d' /etc/fstab | tr -s " ")$'\n'
 
 case "$COMMAND" in
