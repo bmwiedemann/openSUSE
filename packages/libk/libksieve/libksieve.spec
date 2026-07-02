@@ -18,12 +18,12 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.1
+%define kpim6_version 6.7.3
 %define ktextaddons_version 2.0.0
 
 %bcond_without released
 Name:           libksieve
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        Sieve and Managesieve support library for KDE PIM applications
 License:        GPL-2.0-only AND LGPL-2.1-or-later
