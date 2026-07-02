@@ -127,4 +127,12 @@
     <comment>- Update to release 2.1.1</comment>
     <requestid>1359239</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>b814b4c4dc6720c90ecbf320b93a4627</srcmd5>
+    <version>2.1.1</version>
+    <time>1783015806</time>
+    <user>anag_factory</user>
+    <comment>- Add flint-3.6.patch to fix FTBFS with flint 3.6.0</comment>
+    <requestid>1363060</requestid>
+  </revision>
 </revisionlist>

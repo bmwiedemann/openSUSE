@@ -26,6 +26,7 @@ License:        LGPL-2.1-or-later AND LGPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://github.com/flatsurf/e-antic
 Source:         https://github.com/flatsurf/e-antic/releases/download/%version/e-antic-%version.tar.gz
+Patch1:         flint-3.6.patch
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  automake
 BuildRequires:  cereal-devel
@@ -37,7 +38,7 @@ BuildRequires:  libtool
 BuildRequires:  python-rpm-macros
 BuildRequires:  unique-factory-devel
 BuildRequires:  pkgconfig(catch2)
-BuildRequires:  pkgconfig(flint) >= 3
+BuildRequires:  pkgconfig(flint) >= 3.6
 Obsoletes:      python-pyeantic < %version-%release
 Provides:       python-pyeantic = %version-%release
 %python_subpackages
@@ -94,8 +95,7 @@ rm -f "%buildroot/%_libdir"/*.la
 find "%buildroot" -name install_files.txt -delete
 %fdupes %buildroot/%_prefix
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPY*

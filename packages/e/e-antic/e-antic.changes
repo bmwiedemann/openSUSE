@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  1 14:36:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add flint-3.6.patch to fix FTBFS with flint 3.6.0
+
+-------------------------------------------------------------------
 Sun Jun 14 12:15:48 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.1

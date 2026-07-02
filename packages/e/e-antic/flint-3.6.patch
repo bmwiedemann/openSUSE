@@ -1,0 +1,289 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2026-07-01 16:51:03.643033147 +0200
+
+[Patch is too minimalistic and would force flint >= 3.6.0,
+while upstream still supports flint 2.x.]
+---
+ libeantic/e-antic/fmpz_poly_extra.h                      |   12 ++++++++++++
+ libeantic/src/fmpz_poly_extra/descartes_bound.c          |    2 ++
+ libeantic/src/fmpz_poly_extra/descartes_bound_0_1.c      |    2 ++
+ libeantic/src/fmpz_poly_extra/has_real_root.c            |    2 ++
+ libeantic/src/fmpz_poly_extra/isolate_real_roots.c       |    2 ++
+ libeantic/src/fmpz_poly_extra/num_real_roots_0_1.c       |    2 ++
+ libeantic/src/fmpz_poly_extra/num_real_roots_0_1_sturm.c |    2 ++
+ libeantic/src/fmpz_poly_extra/num_real_roots_0_1_vca.c   |    2 ++
+ libeantic/src/fmpz_poly_extra/num_real_roots_vca.c       |    2 ++
+ libeantic/src/fmpz_poly_extra/squarefree_part.c          |    2 ++
+ libeantic/src/libeantic.map                              |   11 -----------
+ 11 files changed, 30 insertions(+), 11 deletions(-)
+
+Index: e-antic-2.1.1/libeantic/e-antic/fmpz_poly_extra.h
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/e-antic/fmpz_poly_extra.h
++++ e-antic-2.1.1/libeantic/e-antic/fmpz_poly_extra.h
+@@ -45,9 +45,11 @@ LIBEANTIC_API int fmpz_poly_set_str_pret
+ /// [`a`, `b`] becomes the interval [0,1]
+ LIBEANTIC_API void _fmpz_poly_scale_0_1_fmpq(fmpz * pol, slong len, fmpq_t a, fmpq_t b);
+ 
++#if 0
+ /// Return 1 if the polynomial `pol` has a real root and 0 otherwise
+ LIBEANTIC_API int _fmpz_poly_has_real_root(fmpz * pol, slong len);
+ LIBEANTIC_API int fmpz_poly_has_real_root(fmpz_poly_t pol);
++#endif
+ 
+ /// Return an upper bound on the bitsize of largest real root of `pol`.
+ LIBEANTIC_API slong fmpz_poly_positive_root_upper_bound_2exp(const fmpz_poly_t pol);
+@@ -59,13 +61,17 @@ LIBEANTIC_API slong _fmpz_poly_positive_
+ 
+ /// Return an upper bound on the number of real roots of the polynomial
+ /// `pol` (currently using Descartes' rule of sign).
++#if 0
+ LIBEANTIC_API slong fmpz_poly_num_real_roots_upper_bound(fmpz_poly_t pol);
++#endif
+ 
+ /// Return an upper bound on the number of real roots between 0 and 1
+ /// of the polynomial `(p, len)` using Descartes' rule of sign. If
+ /// the result is larger than `bound` then `WORD_MAX` is
+ /// returned.
++#if 0
+ LIBEANTIC_API slong _fmpz_poly_descartes_bound_0_1(fmpz * p, slong len, slong bound);
++#endif
+ 
+ LIBEANTIC_API slong _fmpz_poly_descartes_bound(fmpz * p, slong len, slong bound);
+ 
+@@ -78,6 +84,7 @@ LIBEANTIC_API slong _fmpz_poly_descartes
+ /// updated accordingly. A data `c = c_array + i` and
+ /// `k = k_array[i]` represents the open interval
+ /// \f$(c 2^k, (c + 1) 2^k)\f$.
++#if 0
+ LIBEANTIC_API void _fmpz_poly_isolate_real_roots_0_1_vca(fmpq * exact_roots, slong * n_exact_roots, fmpz * c_array, slong * k_array, slong * n_intervals, fmpz * pol, slong len);
+ 
+ /// Isolate the real roots of `pol`. The array
+@@ -90,6 +97,7 @@ LIBEANTIC_API void _fmpz_poly_isolate_re
+ /// open interval \f$(c 2^k, (c + 1) 2^k)\f$.
+ LIBEANTIC_API void fmpz_poly_isolate_real_roots(fmpq * exact_roots, slong * n_exact, fmpz * c_array, slong * k_array, slong * n_interval, fmpz_poly_t pol);
+ ///@}
++#endif
+ 
+ //// \name Root refinement
+ ///@{
+@@ -103,7 +111,9 @@ LIBEANTIC_API void _fmpz_poly_bisection_
+ 
+ LIBEANTIC_API int fmpz_poly_bisection_step_arb(arb_t res, const fmpz_poly_t pol, arb_t a, slong prec);
+ 
++#if 0
+ LIBEANTIC_API void fmpz_poly_squarefree_part(fmpz_poly_t res, fmpz_poly_t poly);
++#endif
+ 
+ 
+ LIBEANTIC_API void fmpz_poly_evaluate_at_one(fmpz_t res, fmpz * p, slong len);
+@@ -111,6 +121,7 @@ LIBEANTIC_API void fmpz_poly_evaluate_at
+ 
+ /// \name Miscellaneous
+ ///@{
++#if 0
+ LIBEANTIC_API slong fmpz_poly_num_real_roots_0_1_sturm(fmpz_poly_t pol);
+ 
+ LIBEANTIC_API slong fmpz_poly_num_real_roots_0_1_vca(fmpz_poly_t pol);
+@@ -118,6 +129,7 @@ LIBEANTIC_API slong fmpz_poly_num_real_r
+ LIBEANTIC_API slong fmpz_poly_num_real_roots_0_1(fmpz_poly_t pol);
+ 
+ LIBEANTIC_API slong fmpz_poly_num_real_roots_vca(fmpz_poly_t pol);
++#endif
+ ///@}
+ 
+ /// \name FLINT, Arb extra
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/descartes_bound.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/descartes_bound.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/descartes_bound.c
+@@ -18,6 +18,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong fmpz_poly_num_real_roots_upper_bound(fmpz_poly_t pol)
+ {
+     slong i, i0, k, ret, len;
+@@ -63,4 +64,5 @@ slong fmpz_poly_num_real_roots_upper_bou
+     _fmpz_vec_clear(pol2, len);
+     return ret;
+ }
++#endif
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/descartes_bound_0_1.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/descartes_bound_0_1.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/descartes_bound_0_1.c
+@@ -20,6 +20,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong _fmpz_poly_descartes_bound_0_1(fmpz * p, slong len, slong bound)
+ {
+     slong V = 0;
+@@ -100,5 +101,6 @@ slong _fmpz_poly_descartes_bound_0_1(fmp
+     _fmpz_vec_clear(q, len);
+     return V;
+ }
++#endif
+ 
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/has_real_root.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/has_real_root.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/has_real_root.c
+@@ -13,6 +13,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ int _fmpz_poly_has_real_root(fmpz * p, slong len)
+ {
+     slong n, i;
+@@ -69,3 +70,4 @@ int fmpz_poly_has_real_root(fmpz_poly_t
+     return _fmpz_poly_has_real_root(pol->coeffs, pol->length);
+ }
+ 
++#endif
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/isolate_real_roots.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/isolate_real_roots.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/isolate_real_roots.c
+@@ -26,6 +26,7 @@
+ /* if exact_roots is NULL only n_exact is updated */
+ /* similarly if c_array/k_array is NULL only n_intervals is updated (useful to */
+ /* count the roots) */
++#if 0
+ void _fmpz_poly_isolate_real_roots_0_1_vca(fmpq * exact_roots, slong * n_exact,
+         fmpz * c_array, slong * k_array, slong * n_intervals,
+         fmpz * pol, slong len)
+@@ -222,5 +223,6 @@ void fmpz_poly_isolate_real_roots(fmpq *
+ 
+     _fmpz_vec_clear(p, len);
+ }
++#endif
+ 
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/num_real_roots_0_1.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1.c
+@@ -13,7 +13,9 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong fmpz_poly_num_real_roots_0_1(fmpz_poly_t pol)
+ {
+     return fmpz_poly_num_real_roots_0_1_vca(pol);
+ }
++#endif
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_sturm.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_sturm.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_sturm.c
+@@ -15,6 +15,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong fmpz_poly_num_real_roots_0_1_sturm(fmpz_poly_t pol)
+ {
+     fmpz_poly_t p0, p1;
+@@ -85,5 +86,6 @@ slong fmpz_poly_num_real_roots_0_1_sturm
+ 
+     return t;
+ }
++#endif
+ 
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_vca.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_vca.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_0_1_vca.c
+@@ -13,6 +13,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong fmpz_poly_num_real_roots_0_1_vca(fmpz_poly_t pol)
+ {
+     slong n_exact = 0;
+@@ -22,4 +23,5 @@ slong fmpz_poly_num_real_roots_0_1_vca(f
+ 
+     return n_exact + n_interval;
+ }
++#endif
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_vca.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/num_real_roots_vca.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/num_real_roots_vca.c
+@@ -13,10 +13,12 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ slong fmpz_poly_num_real_roots_vca(fmpz_poly_t pol)
+ {
+     slong n_exact=0, n_interval=0;
+     fmpz_poly_isolate_real_roots(NULL, &n_exact, NULL, NULL, &n_interval, pol);
+     return n_exact + n_interval;
+ }
++#endif
+ 
+Index: e-antic-2.1.1/libeantic/src/fmpz_poly_extra/squarefree_part.c
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/fmpz_poly_extra/squarefree_part.c
++++ e-antic-2.1.1/libeantic/src/fmpz_poly_extra/squarefree_part.c
+@@ -13,6 +13,7 @@
+ 
+ #include "../../e-antic/fmpz_poly_extra.h"
+ 
++#if 0
+ void fmpz_poly_squarefree_part(fmpz_poly_t res, fmpz_poly_t poly)
+ {
+ 
+@@ -42,3 +43,4 @@ void fmpz_poly_squarefree_part(fmpz_poly
+         }
+     }
+ }
++#endif
+Index: e-antic-2.1.1/libeantic/src/libeantic.map
+===================================================================
+--- e-antic-2.1.1.orig/libeantic/src/libeantic.map
++++ e-antic-2.1.1/libeantic/src/libeantic.map
+@@ -87,11 +87,8 @@ LIBEANTIC_1.0.0 {
+     _fmpz_poly_bisection_step_arb;
+     _fmpz_poly_bisection_step_arf;
+     _fmpz_poly_descartes_bound;
+-    _fmpz_poly_descartes_bound_0_1;
+     _fmpz_poly_evaluate_arb;
+     _fmpz_poly_evaluate_arf;
+-    _fmpz_poly_has_real_root;
+-    _fmpz_poly_isolate_real_roots_0_1_vca;
+     _fmpz_poly_newton_step_arb;
+     _fmpz_poly_positive_root_upper_bound_2exp;
+     _fmpz_poly_positive_root_upper_bound_2exp_local_max;
+@@ -102,19 +99,11 @@ LIBEANTIC_1.0.0 {
+     fmpz_poly_evaluate_arb;
+     fmpz_poly_evaluate_arf;
+     fmpz_poly_evaluate_at_one;
+-    fmpz_poly_has_real_root;
+-    fmpz_poly_isolate_real_roots;
+     fmpz_poly_newton_step_arb;
+-    fmpz_poly_num_real_roots_0_1;
+-    fmpz_poly_num_real_roots_0_1_sturm;
+-    fmpz_poly_num_real_roots_0_1_vca;
+-    fmpz_poly_num_real_roots_upper_bound;
+-    fmpz_poly_num_real_roots_vca;
+     fmpz_poly_positive_root_upper_bound_2exp;
+     fmpz_poly_randtest_irreducible;
+     fmpz_poly_relative_condition_number_2exp;
+     fmpz_poly_set_str_pretty;
+-    fmpz_poly_squarefree_part;
+   local: *;
+ };
+ 
