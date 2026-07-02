@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  1 10:27:34 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.36.2:
+  * Bump images and versions to go 1.26.4 and distroless iptables
+  * DRA E2E: simplify kind.yaml
+  * kubeadm: fix dry-run CA copy paths in init certs
+  * Fix DRA scoring bug with mixed allocated and unallocated claims
+  * batch/job: Fix scheduling directives mutation for not-yet-started suspended Jobs
+  * fix(endpoint): avoid panic on services with empty IPFamilies
+  * fix(csi): preserve mount dir on NodePublish error during remount
+  * feat(volume): add IsRemount to MounterArgs
+  * DRA: account for shared devices when rebuilding counters
+  * Restore ability to plumb binary data through envvar values
+  * Only emit non-dupicated values as metrics
+  * Optimize how deletions are handled
+  * Improve performance characteristic of selinux metric emission
+  * DRA: fix AllocationModeAll with consumed counters
+
+-------------------------------------------------------------------
 Wed May 13 13:16:05 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.36.1:
