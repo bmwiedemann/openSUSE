@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:18:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- Changes since 26.04.2:
+  * search/chip: Draw chip with QStyle instead of hardcoding Breeze
+  * viewproperties: ensure not to remove defaults view properties
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * KItemListWidget: Add pressedChanged (kde#508329)
+  * tests: kfileitemmodeltest avoid scheme-less url
+  * dolphintabpage: drop swapActiveView in RightView close path (kde#520002)
+  * userfeedback: prevent dangling pointer access in SettingsDataSource (kde#519876)
+
+-------------------------------------------------------------------
 Thu May  7 08:02:15 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
