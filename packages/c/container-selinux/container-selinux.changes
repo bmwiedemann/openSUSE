@@ -1,9 +1,37 @@
 -------------------------------------------------------------------
+Thu Jul  2 11:07:51 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 2.250.0:
+  * Allow rpmdb to manage files on mounted container filesystems
+  * Add the container_runtime_signull() interface
+  * give container_domain perms on container_file_t fifo_files
+  * Suppress mmap_zero denials for container_runtime_t
+  * rpm: Require policycoreutils >= 3.10 for policydb version 24 support
+  * Add the container_spc_signull() interface
+  * Allow spc_t execstack and execmem (bsc#1268490)
+- Drop allow-spc_t-execstack-via-boolean-and-execmem-bsc-1268490.patch: included upstream
+
+-------------------------------------------------------------------
+Mon Jun 29 15:05:01 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Introduce container_can_execstack boolean for older Java applications
+  and allow execmem (bsc#1268490) 
+  - Add patch: allow-spc_t-execstack-via-boolean-and-execmem-bsc-1268490.patch
+
+-------------------------------------------------------------------
+Fri Jun 05 13:16:12 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 2.249.0:
+  * bump to v2.249.0
+  * Allow rpmdb to manage files on mounted container filesystems
+
+-------------------------------------------------------------------
 Fri May 15 09:19:15 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.248.0:
   * Condition ptrace permission on deny_ptrace boolean
 
+-------------------------------------------------------------------
 Mon Mar 16 09:20:21 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 2.247.0:
