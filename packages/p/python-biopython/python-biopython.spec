@@ -25,6 +25,7 @@ Release:        0
 Summary:        Python Tools for Computational Molecular Biology
 License:        BSD-3-Clause AND MIT
 URL:            https://biopython.org/
+# Legal-Review-Notice: Tests containing files under CC BY-NC 4.0 are not distributed
 Source0:        https://files.pythonhosted.org/packages/source/b/biopython/biopython-%{version}.tar.gz
 Source100:      python-biopython-rpmlintrc
 BuildRequires:  %{python_module devel}
@@ -57,6 +58,11 @@ available Python tools for computational molecular biology.
 find -type f -name "*.py" -exec sed -i '/^#![ ]*\/usr\/bin\/.*$/ d' {} 2>/dev/null ';'
 # Example scripts cannot be in a subdirectory
 mv -v Doc/examples examples
+# Make sure to do not distribute Test files bsc#1269823
+# it seems that the Tests/* contain some files that are non-commercial only
+%if %{without test}
+rm -rf Tests
+%endif
 
 %build
 export LANG=en_US.UTF-8
