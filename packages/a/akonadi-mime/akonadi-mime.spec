@@ -18,11 +18,11 @@
 
 %define kf6_version 6.19.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.7.1
+%define kpim6_version 6.7.3
 
 %bcond_without released
 Name:           akonadi-mime
-Version:        26.04.1
+Version:        26.04.3
 Release:        0
 Summary:        MIME email parser for KDE PIM
 License:        LGPL-2.1-or-later
