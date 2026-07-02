@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  1 18:22:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.12
+  * Improved support for external surfaces under Wayland
+  * Fixed visual artifacts when switching render targets with the
+    Vulkan renderer
+  * Fixed crash rendering YUV textures on NVIDIA drivers with the
+    Vulkan renderer
+  * Added SDL_HINT_ENABLE_STEAM_SCREEN_KEYBOARD to customize
+    behavior on Steam Deck and Steam Machine
+  * Added hotplug detection support when using libusb for HIDAPI
+    controllers
+  * Fixed truncated long text input sequences when using
+    sdl2-compat
+
+-------------------------------------------------------------------
 Mon Jun  1 03:39:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.10
