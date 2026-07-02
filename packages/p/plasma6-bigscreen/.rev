@@ -15,4 +15,12 @@
     <comment>Plasma 6.7.1</comment>
     <requestid>1361469</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>53eeff1f0f757a7c6e6ab12d1bd183d6</srcmd5>
+    <version>6.7.2</version>
+    <time>1783015751</time>
+    <user>anag_factory</user>
+    <comment>Plasma 6.7.2 with qmk integration enabled. Untested. (forwarded request 1362741 from Vogtinator)</comment>
+    <requestid>1362835</requestid>
+  </revision>
 </revisionlist>

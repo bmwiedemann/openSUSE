@@ -1,5 +1,5 @@
 #
-# spec file for package plasma-bigscreen6
+# spec file for package plasma6-bigscreen
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -29,7 +29,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           plasma6-bigscreen
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 Summary:        Plasma shell for TVs
 License:        GPL-2.0-or-later

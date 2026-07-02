@@ -2,5 +2,6 @@
   <title>Plasma shell for TVs</title>
   <description>Plasma Bigscreen is a Wayland desktop environment designed for devices like
 HTPCs and SBCs connected to TVs and projectors.</description>
+  <devel project="KDE:Frameworks" package="plasma6-bigscreen"/>
   <url>https://www.kde.org/</url>
 </package>
