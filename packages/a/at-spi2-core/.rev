@@ -2844,4 +2844,15 @@
   + Fix deregistering application-specific event listeners</comment>
     <requestid>1355921</requestid>
   </revision>
+  <revision rev="127" vrev="1">
+    <srcmd5>3417545d02b71e0d503a027ea4ee65b0</srcmd5>
+    <version>2.60.5</version>
+    <time>1783015542</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.60.5:
+  + Fix a possible crash in atk_bridge_adaptor_cleanup.
+  + Attempt to fix event listeners still being wrongly deregistered
+    in some cases.</comment>
+    <requestid>1362492</requestid>
+  </revision>
 </revisionlist>
