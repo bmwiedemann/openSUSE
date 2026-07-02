@@ -945,4 +945,20 @@ Needs KF 5.59 and SR 710707</comment>
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351597</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>577dee936f82080ad449e1d25cca996e</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920629</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357309</requestid>
+  </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>985371e33f3a68f04331f3d05d85a6fd</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022866</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363196</requestid>
+  </revision>
 </revisionlist>
