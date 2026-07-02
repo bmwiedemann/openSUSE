@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jun 30 20:10:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.2
+- Changes since 6.7.1:
+  * backends/drm: disable hardware rotation on older AMD GPUs (kde#521764)
+  * backends/drm: fix SDR MHC2 profiles with a calibration matrix (kde#522301)
+  * multigpuswapchain: force linear target buffers for AMD multi-gpu copies
+  * Move "mouse to focus" and "mouse to center" shortcuts to kwin core (kde#522070)
+  * backends/drm: correctly transform damage to buffer-local (kde#521878)
+  * Optimize querying X window shape (kde#522005)
+  * scene/workspacescene: don't ignore forced software cursor for direct scanout (kde#521953)
+  * wayland/outputdevice: delay done event until the output has a UUID (kde#521826)
+  * backends/drm: use the native colorimetry again (kde#521759)
+  * kcm_*: fix BugReportUrl
+  * plugins/eis: Do not send events from release warp to capture (kde#521486)
+  * backends/drm: disable unused objects even when the last output is removed
+  * scene: Properly crop opaque region of subsurfaces
+  * backends/drm: pre-emptively filter out udev events for non-KMS nodes
+  * scene/surfaceitem_wayland: immediately update the release point of the texture (kde#521687,kde#521960)
+  * Update version for new release 6.7.2
+
+-------------------------------------------------------------------
 Tue Jun 23 10:55:43 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.1:
