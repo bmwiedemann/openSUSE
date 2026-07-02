@@ -465,4 +465,27 @@
     <comment></comment>
     <requestid>1356756</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>b14daca1751ac3029215169fffbd7f01</srcmd5>
+    <version>2.36.2</version>
+    <time>1783015720</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.36.2:
+  * fix: replace async `can_read` busy-poll with event-based
+    wakeup
+  * fix: enforce `GT`/`LT` conditions in `ZADD` with `INCR`
+  * fix: reject negative `LIMIT` in `SINTERCARD` and `ZINTERCARD`
+  * fix: EXPIRE GT/LT mishandle keys with no existing TTL
+  * fix: restore missing `addr`/`laddr`/`fd` fields in `CLIENT
+    LIST`/`CLIENT INFO`
+  * fix: SORT/SORT_RO BY &lt;constant&gt; must keep natural order
+  * fix: `TypeError` on import in Python 3.8 due to `list[Any]`
+    annotation in `sort` command
+  * fix: Using path in connection
+  * fix(async): `_decode` recurses into `dict` so RESP3 `HGETALL`
+    responses are decoded
+  * fix: `Database` now uses stable identity-based
+    `__hash__`/`__eq__` (previously returned an unstable hash)</comment>
+    <requestid>1363029</requestid>
+  </revision>
 </revisionlist>
