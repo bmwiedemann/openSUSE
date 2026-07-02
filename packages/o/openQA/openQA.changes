@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:07:45 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Clarify resolution of three CVEs
+  * The following CVEs have been fixed (see previous changelog
+    entries that mentioned only the according Bugzilla tickets):
+    - bsc#1259005 - CVE-2026-27904
+    - bsc#1264376 - CVE-2026-6321
+    - bsc#1258632 - CVE-2026-26996 
+
+-------------------------------------------------------------------
+Thu Jul 02 12:38:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782995932.ffeb09be:
+  * feat: throw 404 for nonexistent groups in overview
+  * feat: Avoid logwarn notifications for non-critical auth error
+  * chore(deps): Dependency cron 2026-07-02
+  * git subrepo pull (merge) external/os-autoinst-common
+  * fix: Check also hidden files in checklist plugin
+  * test: Enable faster re-connects in full scheduler test consistently
+  * test: Avoid silent daemons in verbose mode
+  * test: Allow running `t/43-…-scalability.t` in parallel
+  * test: Allow running `t/05-scheduler-full.t` in parallel
+  * test: Avoid race condition when generating ports in `25-cache.t`
+  * test: Avoid wasting seconds in `40-script_load_dump_templates.t`
+  * refactor: Remove disabled code in `openqa-load-templates`
+  * test: Avoid race condition when generating ports in many tests
+  * chore(deps): Dependency cron 2026-07-01
+  * fix(ci): format inline comments in workflows to pass yamllint
+  * test: Avoid running into "Address already in use" in fullstack test
+  * feat(ci): pin GitHub Actions by commit hash
+
+-------------------------------------------------------------------
+Tue Jun 30 12:29:29 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1782822561.fa3defef:
+  * docs: Add paragraph describing suse_notify AMQP service
+  * feat: Link to autoinst-log from details view
+
+-------------------------------------------------------------------
 Mon Jun 29 10:39:43 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1782729563.8f5a14b2:
