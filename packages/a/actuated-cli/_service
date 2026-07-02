@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/self-actuated/actuated-cli</param>
+    <param name="url">https://github.com/self-actuated/actuated-cli.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.2.14</param>
+    <param name="revision">refs/tags/v0.2.15</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

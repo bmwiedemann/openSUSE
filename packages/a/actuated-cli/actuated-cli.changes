@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 02 12:39:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.15:
+  * Include URL in jobs --json output
+  * Make job progress more beautiful
+  * Warning for old URL and Copyright update
+  * Clarify README on OWNER
+  * Upgrade Go version to 1.25
+  * Additional explanation/documentation
+  * Show URLs in standard view all the time
+  * Show HTTP body when there is an error
+  * Show a summary of jobs
+  * Update message
+
+-------------------------------------------------------------------
 Wed Feb 04 13:38:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.14:
