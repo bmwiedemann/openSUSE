@@ -17,7 +17,7 @@
 
 
 Name:           gsasl
-Version:        2.2.3
+Version:        2.2.4
 Release:        0
 Summary:        Implementation of the SASL framework and a few common SASL mechanisms
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later

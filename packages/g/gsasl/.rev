@@ -56,4 +56,14 @@
 - Add gsasl-const-correctness.patch to fix build with glibc 2.43 (forwarded request 1355608 from scabrero)</comment>
     <requestid>1355631</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7577abd12a6c9ffd3c013c915faee8fa</srcmd5>
+    <version>2.2.4</version>
+    <time>1783015568</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.4
+  * NTLM client (not enabled in openSUSE):
+    Avoid use-of-unitialized-value inside libntlm</comment>
+    <requestid>1362631</requestid>
+  </revision>
 </revisionlist>

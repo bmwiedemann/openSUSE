@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 07:13:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.4
+  * NTLM client (not enabled in openSUSE):
+    Avoid use-of-unitialized-value inside libntlm
+
+-------------------------------------------------------------------
 Thu May 28 06:38:21 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Update to release 2.2.3
