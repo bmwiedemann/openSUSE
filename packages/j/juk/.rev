@@ -1373,4 +1373,20 @@
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351591</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>6f08b86c9c91ed5197f8495469a219d7</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920619</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357303</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>5d4cea218bebbcb07223515b090ebe1c</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022856</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363190</requestid>
+  </revision>
 </revisionlist>
