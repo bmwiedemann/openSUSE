@@ -74,4 +74,30 @@
   * Normalize P-521 test fixture for cryptography 47+</comment>
     <requestid>1352577</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6ca12809607a0e491c29a26592705dc2</srcmd5>
+    <version>1.7.1</version>
+    <time>1781879862</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.1
+  * jwe: When decrypt, use the original aad base64 value
+- Update to 1.7.0
+  * jwk: As_dict, as_pem, as_der export public key by default
+  * typing: Update type hints for dropping python 3.9
+  * typing: Use Iterator for _filter_keys_by_parameters return value
+- Update to 1.6.8 (fixes CVE-2026-48990, bsc#1268515)
+  * Reject empty OctKey.
+- drop support-cryptography-47.patch, merged upstream
+</comment>
+    <requestid>1360542</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8dc0325e97d909853b256688fa9f0baf</srcmd5>
+    <version>1.7.2</version>
+    <time>1783015793</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.7.2:
+  * Avoid trailing padding for JWTs.</comment>
+    <requestid>1363024</requestid>
+  </revision>
 </revisionlist>
