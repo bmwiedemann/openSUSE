@@ -19,6 +19,7 @@ zypper -n install \
     make \
     git-core \
     npm \
+    patch \
     "${pnpm_package}" || exit 13
 
 version="$( awk '/^Version:/ {print $2;exit;}' "${package_name}.spec" )"
@@ -42,14 +43,26 @@ ls -lah
 
 echo "##########"
 echo "Changing into the services/idp/ subdirectory"
-cd "${basename}/services/idp/" || exit 23
+cd "${tmpdir}/${basename}/services/idp/" || exit 23
 ls -lah
+
+mkdir -p assets/identifier/static/
+cp src/images/favicon.svg assets/identifier/static/favicon.svg
+rm -f assets/identifier/static/favicon.ico
+cp src/images/icon-lilac.svg assets/identifier/static/icon-lilac.svg
+
+# change pnpm version to match ours
+PNPM_VERSION="$(rpm -q pnpm | awk -F '-' '{print $2}')"
+sed -i "/packageManager/ s/\"pnpm@.*\"/\"pnpm@${PNPM_VERSION}\"/g" package.json
+grep packageManager package.json
+
 echo "Starting pnpm install"
 pnpm install --frozen-lockfile
+pnpm build
 
 echo "##########"
 echo "Starting tarball creation"
-tar -czf "${working_directory}/${idp_tarball}" ./node_modules/
+tar -czf "${working_directory}/${idp_tarball}" .
 echo "Tarball creation finished, cleaning up"
 
 echo "##########"

@@ -17,10 +17,10 @@
 
 
 %define executable_name opencloud-server
-%define web_assets_version v7.1.0
+%define web_assets_version v7.1.2
 
 Name:           opencloud-server
-Version:        7.1.0
+Version:        7.2.0
 Release:        0
 Summary:        Secure and private way to store, access, and share your files
 License:        Apache-2.0
@@ -66,26 +66,6 @@ tar xf %{SOURCE3} -C third-party-licenses/node/web
 tar xf %{SOURCE4} -C services/idp/
 
 %build
-###########################################################################
-# services/idp/ directory
-#
-cd services/idp/ || exit 1
-
-mkdir -p assets/identifier/static/
-cp src/images/favicon.svg assets/identifier/static/favicon.svg
-rm -f assets/identifier/static/favicon.ico
-cp src/images/icon-lilac.svg assets/identifier/static/icon-lilac.svg
-
-# change pnpm version to match ours
-PNPM_VERSION="$(rpm -q pnpm | awk -F '-' '{print $2}')"
-sed -i "/packageManager/ s/\"pnpm@.*\"/\"pnpm@${PNPM_VERSION}\"/g" package.json
-grep packageManager package.json
-
-# Creating an optimized production build...
-pnpm build
-
-cd ../../ || exit 1
-
 ###########################################################################
 # opencloud/ directory
 #

@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Sun Jun 28 06:34:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 7.2.0:
+  Large update, please find the complete release notes here:
+  https://github.com/opencloud-eu/opencloud/releases/tag/v7.2.0
+  * Breaking Changes - Action required
+    - New settings required for the "sharing" service
+      With OpenCloud 7.0 the "sharing" service needs a service
+      account and secret to be configured. So if upgrading from a
+      release prior to 7.0 please follow the steps outlined in the
+      Upgrade Guide to achieve that.
+    - Share-Manager migraton: First startup may take a few minutes
+      When upgrading from a release before 7.x, the first container
+      startup may take a few minutes before all Spaces are
+      available.
+      Background: Share-Manager migration
+      OpenCloud 7.0.0 changes the way how space memberships are
+      managed in the backend. When upgrading from a previous
+      release the "sharing" service will automatically run a
+      migration task to convert existing space memberships to the
+      new mechanism. Depending on the number of spaces and space
+      members this task can take up to a few minutes. During that
+      time the member listing of spaces might be incorrect. Also it
+      is not possible to change space memberships or create/delete
+      spaces while the task is running. When the loglevel of the
+      sharing service is set to info (OC_LOG_LEVEL=info or
+      SHARING_LOG_LEVEL=info) the task will report progress of the
+      migration via the logfile.
+    - New OpenSearch index schema (v2) for the search service
+      Note: This is only applicable to setups using the
+      "opensearch" search engine with OpenCloud and does not affect
+      setups using the default "bleve" search engine, as e.g. the
+      standard docker compose setups do.
+      With OpenCloud 7.x.x the search service now uses a new
+      OpenSearch index schema (v2), adding two fields: Content
+      (with term vectors, for faster highlighting via the fast
+      vector highlighter) and Favorites (for searching/filtering by
+      favorites).
+      Since OpenSearch mappings are immutable, the existing index
+      can't be migrated in place. On startup the service detects
+      the mismatch and refuses to start ("manual action required").
+      Required action when upgrading an OpenSearch deployment:
+      - Delete the existing index ("opencloud-resource" by default,
+        unless overridden via
+        SEARCH_ENGINE_OPEN_SEARCH_RESOURCE_INDEX_NAME).
+      - Restart the search service - it recreates the index with
+        the v2 schema.
+      - Trigger a full reindex of all content so the new fields get
+        populated (e.g by calling opencloud search index
+        --all-spaces --force-rescan
+  * Highlights
+    - New, Easy to Learn Markdown Editor
+      - Format content without learning Markdown syntax
+        The new Markdown Editor combines the simplicity of slash
+        commands with the flexibility of Markdown. Slash commands
+        make formatting accessible to everyone as it helps also
+        non-technical users to discover Markdown capabilities
+        without needing to learn syntax first.
+      - Lightweight portable and reusable format
+        Markdown provides a lightweight, portable format with no
+        vendor lock-in. Its simple nature makes content easier to
+        version, maintain and convert into PDFs, knowledge bases
+        and other formats. For many workflows Markdown offers a
+        simpler and more durable alternative to heavyweight office
+        formats.
+      - Interchange format between humans and AI
+        As AI becomes a core part of daily work, Markdown is
+        emerging as a natural interchange format between humans and
+        AI. Its simple structure allows both users and AI systems
+        to create content easily.
+    - Favorites Feature
+      The new Favorites feature makes it easy to find important and
+      frequently used files. Marked files are visible across all
+      personal and shared spaces and can be accessed at any time
+      with a single click.
+      All favorites are collected centrally on a dedicated page,
+      providing a quick overview of relevant content. Whether in
+      list view or grid view, users can efficiently access their
+      most important files without having to search for them.
+      Server-side Favorites are available in the Web and will be
+      available in one of the next releases of the mobile clients
+      as well.
+    - Photo Roll in the Preview App
+      The new Photo Roll feature makes navigating image collections
+      significantly easier. While viewing an image, the previous
+      and next images are displayed as previews, allowing users to
+      orient themselves more quickly and browse through their
+      photos with ease.
+    - Faster Preview App
+      The Preview App has been optimized for significantly better
+      performance when browsing large photo folders. Instead of
+      requesting all images in full resolution only the currently
+      viewed image is loaded in high quality. Images in the Photo
+      Roll are loaded as small thumbnails and only for items
+      currently visible within the viewport.
+      Additional images are loaded dynamically while scrolling, and
+      pending image requests are canceled as soon as they are no
+      longer needed, particularly on slow or unstable connections.
+    - Support for MOV Video Files (Preview)
+      OpenCloud now supports previewing MOV video files. You can
+      store MOV files in your file system and view them directly in
+      the interface without converting them first.
+    - Improved Breadcrumb Navigation
+      Navigating deep folder structures is now faster and more
+      direct. The breadcrumb navigation allows users to jump to
+      higher-level folders with just a few clicks, eliminating the
+      need to step back through each folder individually.
+    - Keyboard Shortcuts for Global Search
+      The global search bar can now be focused using keyboard
+      shortcuts (s or /). When focused, the search input field is
+      visually highlighted, making the active state easier to
+      recognize.
+    - Floating Action Button for “Create or Upload”
+      The “Create or Upload” button in the Files App is now
+      implemented as a Floating Action Button (FAB). Available
+      actions open in a dropdown menu or bottom drawer. The button
+      is disabled or hidden when the user does not have write
+      permissions.
+    - Consistent Context Actions on Mobile
+      Contextual actions on mobile devices now open consistently in
+      a bottom drawer. This follows familiar iOS and Android
+      interaction patterns making the UI feel familiar.
+
+-------------------------------------------------------------------
 Tue Jun 02 11:08:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 7.1.0:
