@@ -1700,4 +1700,19 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345343</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>cbc58644ee625c89ae557cf53afa6e14</srcmd5>
+    <version>2.44.7</version>
+    <time>1783015544</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.44.7:
+  + xpm: Fix loading the xpm module if built-in
+  + glycin:
+    - Fix the build on 32bit
+    - Use fwrite to avoid problems with saving
+    - Add signature for webp
+    - Make filename tricks work in pid namespaces
+  + Updated translations.</comment>
+    <requestid>1362493</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jun 28 08:40:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.44.7:
+  + xpm: Fix loading the xpm module if built-in
+  + glycin:
+    - Fix the build on 32bit
+    - Use fwrite to avoid problems with saving
+    - Add signature for webp
+    - Make filename tricks work in pid namespaces
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Apr  8 14:28:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.44.6:
