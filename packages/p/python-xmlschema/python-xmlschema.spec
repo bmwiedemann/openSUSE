@@ -1,7 +1,7 @@
 #
 # spec file for package python-xmlschema
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,13 +23,14 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-xmlschema
-Version:        3.4.3
+Version:        4.3.2
 Release:        0
 Summary:        An XML Schema validator and decoder
 License:        MIT
 URL:            https://github.com/sissaschool/xmlschema
 Source:         https://files.pythonhosted.org/packages/source/x/xmlschema/xmlschema-%{version}.tar.gz
-BuildRequires:  %{python_module elementpath >= 3.0.0}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module elementpath >= 5.1.0}
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -37,7 +38,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-elementpath >= 3.0.0
+Requires:       python-elementpath >= 5.1.0
 Requires:       python-lxml
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -56,11 +57,8 @@ for Python.
 %prep
 %autosetup -p1 -n xmlschema-%{version}
 
-# do not hardcode versions
-sed -i -e 's:~=:>=:' setup.py
 # do not bother with memory validation
 rm tests/check_memory.py
-rm tests/test_memory.py
 
 %build
 export LANG="en_US.UTF8"

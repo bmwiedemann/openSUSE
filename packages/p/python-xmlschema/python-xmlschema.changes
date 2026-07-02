@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jun 30 12:28:27 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.3.2
+  * Fix for issues #473, #474 and #475
+  * Add Georgian language (PR #476)
+
+-------------------------------------------------------------------
+Thu Apr  2 04:12:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.3.1:
+  * normalize_url(): workaround for issue #467 (UNC paths with Python
+    < 3.12.5)
+  * META_SCHEMA and BASE_SCHEMA paths converted to 'file' URL scheme
+  * Add arguments validation for schemas and validation methods (by
+    validation contexts)
+  * Add custom XPath parser for find/findall/iterfind APIs on schemas for
+    match singleton sequence also if position is a number greater than 1 in
+    predicate expression
+  * Improve build of XSD elements and groups, using a three-state built flag
+    for components
+  * Extend and fix memory tests (Python 3.14+ seems to consume more memory)
+  * Drop support for Python 3.9 and add development support for Python 3.15
+  * Add arguments validation for schemas and validation methods (by
+    validation contexts)
+  * Add `SchemaSettings` dataclass for storing read-only settings for schema
+    instances and for managing package default settings
+  * Add *block* argument to `XMLResource` class
+  * Add *MAX_SCHEMA_SOURCES* package limit (`1000`, applied to `XsdGlobals`
+    global maps instances)
+  * Add *MAX_XML_ELEMENTS* package limit (`1,000,000`, applied to non-lazy
+    `XMLResource` instances)
+  * Reduce *MAX_XML_DEPTH* limit to 1000 and apply it to all `XMLResource`
+    instances
+  * Fix for substitute match in case of unexpected child
+  * Add XPath selectors: ElementSelector and ElementPathSelectors
+  * Add *selector* argument to XMLResource and iterparse filters
+  * Restore v3.4.5 builder methods as helpers
+  * Add overall_min_occurs and overall_max_occurs helpers to XsdElement
+  * Extend error message for XML syntax errors
+  * Fix query/fragment like for filenames
+  * Fix XSD identity update with xsi:type substitution
+  * Extend support of `lxml.etree` through *iterparse* optional argument
+  * Replace kwargs with a validation context (DecodeContext and
+    EncodeContext)
+  * Add SchemaLoader class and variants
+  * Slicing of XsdGlobals with parent maps
+  * Fix `XsdUnion` validation performance issue
+  * Drop support for Python 3.8
+  * Fix xs:all groups occurs check
+  * Migrate project metadata to pyproject.toml
+
+-------------------------------------------------------------------
 Tue Aug 26 09:44:55 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
