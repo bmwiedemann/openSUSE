@@ -325,4 +325,27 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342975</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>0bedd54e821ff2fcc808bf74e436ac2a</srcmd5>
+    <version>4.14.0</version>
+    <time>1783015907</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.14.0:
+  + RefPtr appendix: Make it clear that widgets don't use RefPtr
+  + Replace gtkmm.org by gtkmm.gnome.org
+  + Update the Internationalization and Localization chapter
+  + Update links for building gtkmm on Windows
+  + Add the C++ Resources section
+  + Update the link to Frequently Asked Questions
+  + Update &quot;The .hg and .ccg files&quot; section
+  + Chapter 3. Basics: Use consistent file name
+  + Add the &quot;GNU Free Documentation License&quot; appendix
+  + Remove obsolete FSF (Free Software Foundation) address in
+    example programs
+  + Talk about closing a window instead of hiding it
+  + others/dnd: Avoid a segfault in on_image_drag_leave()
+  + &quot;Generating the .defs files&quot; section: Describe mmgir
+  + Updated translations.</comment>
+    <requestid>1363456</requestid>
+  </revision>
 </revisionlist>
