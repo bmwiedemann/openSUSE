@@ -570,4 +570,20 @@
     <comment>KDE release gear 26.04.1 (forwarded request 1351447 from krop)</comment>
     <requestid>1351584</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>95206fc3487ab9f6a1b046207e44f6d2</srcmd5>
+    <version>26.04.2</version>
+    <time>1780920604</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.2 (forwarded request 1357159 from krop)</comment>
+    <requestid>1357296</requestid>
+  </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>a9a4f7518b47b176674ab5a182c70da1</srcmd5>
+    <version>26.04.3</version>
+    <time>1783022844</time>
+    <user>anag_factory</user>
+    <comment>KDE release gear 26.04.3 (forwarded request 1362728 from krop)</comment>
+    <requestid>1363183</requestid>
+  </revision>
 </revisionlist>
