@@ -25,11 +25,14 @@ Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
 URL:            https://github.com/kovidgoyal/kitty
-Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+### TEMPORARILY USE ADJUSTED TARBALL FOR golang.org/x/image v0.43.0 [CVE-2026-46604]
+#Source:         https://github.com/kovidgoyal/kitty/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 #####
 Source1:        vendor.tar.gz
 Source2:        kitty-rpmlintrc
 Patch0:         buildmode-and-skip_docs.diff
+#Patch1:         351ee9f-smb.diff
 BuildRequires:  ImageMagick-devel
 BuildRequires:  Mesa-libGL-devel
 BuildRequires:  fdupes

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 19:21:03 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Addressing bsc#1269601 -> CVE-2026-46604
+  * https://github.com/kovidgoyal/kitty/commit/351ee9fcbd692abd3bfbf2cf4296f69522e3571a
+  * Adjusted kitty-0.47.4.tar.gz to point to:
+    golang.org/x/image v0.43.0 and refreshed vendor.tar.gz
+
+-------------------------------------------------------------------
 Mon Jun 15 15:24:30 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to 0.47.4:

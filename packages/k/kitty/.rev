@@ -920,4 +920,15 @@
     work for fonts like Fira Code that do not ship with an italic face (#10120)</comment>
     <requestid>1359628</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>8c4a36df88ad358108acefa839239ae9</srcmd5>
+    <version>0.47.4</version>
+    <time>1783015954</time>
+    <user>anag_factory</user>
+    <comment>- Addressing bsc#1269601 -&gt; CVE-2026-46604
+  * https://github.com/kovidgoyal/kitty/commit/351ee9fcbd692abd3bfbf2cf4296f69522e3571a
+  * Adjusted kitty-0.47.4.tar.gz to point to:
+    golang.org/x/image v0.43.0 and refreshed vendor.tar.gz</comment>
+    <requestid>1363531</requestid>
+  </revision>
 </revisionlist>
