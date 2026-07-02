@@ -950,4 +950,22 @@
     <comment></comment>
     <requestid>1352487</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>ec3bda6bc4a572a19481051ef7a263a9</srcmd5>
+    <version>3.1.50</version>
+    <time>1783015584</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.50:
+  * bump version to 3.1.50
+  * Validate config key section names before writing
+  * Bump git/ext/gitdb from `335c0f6` to `53c94d6`
+  * Xfail Windows symlink-capable index mutation test
+  * Bump https://github.com/astral-sh/ruff-pre-commit
+  * fix: support Repo() autodiscovery from linked worktree GIT_DIR
+- Update to 3.1.50:
+  - Fix Repo() autodiscovery in linked worktrees when GIT_DIR is set
+  - Validate config key names before writing
+</comment>
+    <requestid>1362715</requestid>
+  </revision>
 </revisionlist>

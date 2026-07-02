@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jun 30 16:14:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 3.1.50:
+  * bump version to 3.1.50
+  * Validate config key section names before writing
+  * Bump git/ext/gitdb from `335c0f6` to `53c94d6`
+  * Xfail Windows symlink-capable index mutation test
+  * Bump https://github.com/astral-sh/ruff-pre-commit
+  * fix: support Repo() autodiscovery from linked worktree GIT_DIR
+
+-------------------------------------------------------------------
+Tue Jun 30 15:46:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.1.50:
+  - Fix Repo() autodiscovery in linked worktrees when GIT_DIR is set
+  - Validate config key names before writing
+
+-------------------------------------------------------------------
 Fri May 08 11:44:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to version 3.1.49 (fixes CVE-2026-44244, bsc#1264608):
