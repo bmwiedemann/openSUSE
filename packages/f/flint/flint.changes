@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jun 30 22:10:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.6.0
+  * Added ``gr_poly_compose_series_kinoshita_li`` for power series
+    composition in `O(M(n) \log n)` over generic rings using the
+    Kinoshita-Li algorithm.
+  * Added the ``padic_radix`` module implementing `p`-adic numbers
+    and fields for word-size `p` in the radix representation.
+  * Added ``fmpz_poly_isolate_real_roots`` and related functions
+    implementing real root counting and isolation for
+    ``fmpz_poly``.
+  * Added many generic trigonometric power series methods
+    (including ``gr_poly_sin_cos_pi_series``,
+    ``gr_poly_sin_pi_series``, etc.)
+  * Added ``gr_bessel_j_jet`` and ``gr_poly_bessel_j_series`` for
+    computing the Bessel J-function of a power series, with
+    wrappers for ``arb``, ``acb`` and ``gr_series``.
+  * Add extrapolation of ``nmod_poly`` at points in geometric
+    progression.
+  * Added ``arb_get_simplest_fmpq``, returning the rational with
+    smallest positive denominator (and then smallest numerator)
+    lying in the interval.
+  * Added division with remainder for Ore polynomials
+    (``gr_ore_poly_divrem``, ``gr_ore_poly_div``,
+    ``gr_ore_poly_rem``)
+  * Added ``gr_poly_resultant_subresultant`` and
+    ``gr_poly_xgcd_subresultant``, used by default over non-field
+    UFDs in ``gr_poly_resultant`` and ``gr_poly_xgcd``
+  * Extended ``gr_poly_factor_squarefree`` and
+    ``gr_poly_squarefree_part`` to work over non-field UFDs of
+    characteristic zero and over finite fields, instead of only
+    fields of characteristic zero
+  * Added public helper functions for fast certification that a
+    matrix is singular over the integers or rationals, used to
+    speed up the multimodular and Dixon solvers for ``fmpz_mat``
+    and ``fmpq_mat`` on singular input.
+
+-------------------------------------------------------------------
 Fri Apr 24 12:55:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.5.0
