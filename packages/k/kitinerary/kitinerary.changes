@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- Changes since 26.04.2:
+  * Fix extracting multi-column VR tickets
+  * 12go: Add support for extracting receipt
+  * Manually extract BDZ ticket prices
+  * Add polferries extractor
+  * Add missing poppler include
+  * Extract checkin times and prices from Accor hotel bookings
+  * Fix arrival stop extraction on French-operated Flixbus tickets
+  * Don't choke on missing currency symbol on IRCTC tickets
+  * Attempt to support both less and more than 1000 in `irctc` PDF
+  * Add price extraction for SRT (thai-railway)
+  * Add price extraction for IRCTC QR ticket
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Add extractor script for BDŽ (Bulgarian State Railways) PDF tickets
+  * Adapt to Poppler 26.06 API changes
+  * Fix required Qt version
+  * Reflect the move of KMime to Frameworks in the dependency data
+  * Add Condor PKPass extractor
+
+-------------------------------------------------------------------
 Thu May  7 08:02:52 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
