@@ -7,4 +7,15 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345353</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>fa001e3b3dc65885331b86a54e55c5ff</srcmd5>
+    <version>0.16.1</version>
+    <time>1783015545</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.1:
+  + Fix issue with GIR missing correct package name
+  + Fix memory leak in regression test
+  + Add missing assert in GPS test</comment>
+    <requestid>1362494</requestid>
+  </revision>
 </revisionlist>

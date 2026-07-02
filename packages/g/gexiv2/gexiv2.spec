@@ -19,7 +19,7 @@
 %define pythons python3
 
 Name:           gexiv2
-Version:        0.16.0
+Version:        0.16.1
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
