@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 25 11:52:23 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 3.3.2 (CVE-2026-49851, bsc#1269091)
+  * Resolve O(n^2) DoS in parse_link_text (CWE-400)
+  * Avoid quadratic scans in general
+  * cli: Add entrypoint and utf-8 output
+  * image: Validate figure width option
+  * Reject currency patterns and cross-line matches in inline math
+  * math: Support display and backtick math
+  * renderer: Render plugin list and table nodes
+  * renderer: Block encoded unsafe URL schemes
+  * abbr: Update process_text method in abrr, adding parse_emphasis
+    parameter
+
+-------------------------------------------------------------------
 Mon May 11 11:06:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 3.2.1 (fixes CVE-2026-33079 - bsc#1264347,

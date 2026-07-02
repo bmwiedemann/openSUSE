@@ -17,9 +17,10 @@
 
 
 %define modname mistune
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        3.2.1
+Version:        3.3.2
 Release:        0
 Summary:        Python Markdown parser with renderers and plugins
 License:        BSD-3-Clause
@@ -27,13 +28,11 @@ URL:            https://github.com/lepture/mistune
 Source:         https://github.com/lepture/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if "%{python_flavor}" < "python311"
-Requires:       python-typing_extensions
-%endif
+Requires:       alts
 BuildArch:      noarch
 Conflicts:      python-mistune2 < %{version}
 Obsoletes:      python-mistune2 < %{version}
@@ -51,6 +50,7 @@ compatible with sane CommonMark rules.
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/mistune
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -59,6 +59,7 @@ compatible with sane CommonMark rules.
 %files %{python_files}
 %license LICENSE
 %doc README.md
+%python_alternative %{_bindir}/mistune
 %{python_sitelib}/%{modname}
 %{python_sitelib}/%{modname}-%{version}*-info
 
