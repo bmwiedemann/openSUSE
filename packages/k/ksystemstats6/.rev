@@ -343,4 +343,21 @@
     <comment>Plasma 6.7.1 + libPlasma6-lang fix (forwarded request 1361356 from Vogtinator)</comment>
     <requestid>1361401</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>909e31e8a60a9604557e70f8b8fc340a</srcmd5>
+    <version>6.7.2</version>
+    <time>1783015711</time>
+    <user>anag_factory</user>
+    <comment>- Prepare for CAP_PERFMON on ksystemstats_intel_helper
+- Add patch for hardening (boo#1262779):
+  * 0001-Guard-ksystemstats_intel_helper-against-path-travers.patch
+- Remove workaroud for Leap 16, works meanwhile
+
+- Update to 6.7.2:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.2
+- Changes since 6.7.1:
+  * Update version for new release 6.7.2</comment>
+    <requestid>1363498</requestid>
+  </revision>
 </revisionlist>

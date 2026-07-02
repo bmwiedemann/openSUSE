@@ -23,7 +23,7 @@
 %define rname ksystemstats
 %bcond_without released
 Name:           ksystemstats6
-Version:        6.7.1
+Version:        6.7.2
 Release:        0
 # Full Plasma 6 version (e.g. 6.0.0)
 %{!?_plasma6_bugfix: %define _plasma6_bugfix %{version}}
@@ -38,6 +38,8 @@ Source:         https://download.kde.org/stable/plasma/%{version}/%{rname}-%{ver
 Source1:        https://download.kde.org/stable/plasma/%{version}/%{rname}-%{version}.tar.xz.sig
 Source2:        plasma.keyring
 %endif
+# PATCH-FIX-UPSTREAM https://invent.kde.org/plasma/ksystemstats/-/merge_requests/141
+Patch1:         0001-Guard-ksystemstats_intel_helper-against-path-travers.patch
 BuildRequires:  cmake >= 3.16
 # For %%check
 BuildRequires:  dbus-1
@@ -55,6 +57,9 @@ BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libudev)
+# For post and verifyscript
+Requires(post): permissions
+Requires(verify): permissions
 Conflicts:      ksysguard5 < 5.21.80
 Provides:       ksystemstats5 = %{version}
 Obsoletes:      ksystemstats5 < %{version}
@@ -91,10 +96,14 @@ dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build %{?excluded
 %{systemd_user_preun plasma-ksystemstats.service}
 
 %post
+%set_permissions %{_libexecdir}/ksystemstats_intel_helper
 %{systemd_user_post plasma-ksystemstats.service}
 
 %postun
 %{systemd_user_postun plasma-ksystemstats.service}
+
+%verifyscript
+%verify_permissions -e %{_libexecdir}/ksystemstats_intel_helper
 
 %files
 %license LICENSES/*
@@ -104,10 +113,7 @@ dbus-run-session /usr/bin/ctest --output-on-failure --test-dir build %{?excluded
 %dir %{_kf6_plugindir}/ksystemstats/
 %{_kf6_plugindir}/ksystemstats/ksystemstats_plugin_{cpu,disk,gpu,lmsensors,memory,network,osinfo,power,pressure}.so
 %{_kf6_sharedir}/dbus-1/services/org.kde.ksystemstats1.service
-# Leap 16 doesn't have /usr/include/drm/xe_drm.h, use a wildcard to fix build failure
-# The reason is that linux-glibc-headers there is missing the drm/ directory, so it's not
-# a pure version thing either.
-%{_libexecdir}/ksystemstats_*_helper
+%verify(not caps) %{_libexecdir}/ksystemstats_intel_helper
 %{_userunitdir}/plasma-ksystemstats.service
 
 %files lang -f %{name}.lang
