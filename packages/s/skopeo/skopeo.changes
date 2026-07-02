@@ -1,5 +1,110 @@
 -------------------------------------------------------------------
+Wed May 27 07:26:56 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to version 1.23.0:
+  * Bump Skopeo to v1.23.0
+  * Bump c/common 0.68.0, c/image 5.40.0, c/storage 1.63.0
+  * Update common, image, and storage deps to 4a820ae
+  * copy: add platform-based filtering via --multi-arch flag
+  * Update module golang.org/x/term to v0.43.0
+  * Update common, image, and storage deps to abe824d
+  * Update dependency golangci/golangci-lint to v2.12.2
+  * Update dependency golangci/golangci-lint to v2.12.1
+  * Update common, image, and storage deps to c03a490
+  * Update module github.com/Masterminds/semver/v3 to v3.5.0
+  * Packit: Only create dist-git PRs for rawhide
+  * Cirrus: switch Sequoia matrix from Rawhide back to stable Fedora
+  * Update common, image, and storage deps to b9d5b9a
+  * Remove OWNERS file
+  * Additional cleanup for go module changes
+  * Move skopeo to go.podman.io
+  * Update common, image, and storage deps to 618304d
+  * Update module github.com/containers/ocicrypt to v1.3.0
+  * Update common, image, and storage deps to 129af75
+  * Update go.podman.io dependencies
+  * Update module golang.org/x/term to v0.42.0
+  * Bump  google.golang.org/grpc to v1.79.3 - CVE-2026-33186
+  * chore(deps): update module github.com/go-jose/go-jose/v4 to v4.1.4 [security]
+  * fix(deps): update go.podman.io/storage digest to f0ddf1a
+  * fix(deps): update common, image, and storage deps to 8af7873
+  * integration: Force amd64 on TestProxyMetadata
+  * fix(deps): update common, image, and storage deps to 94ad023
+  * Try triggering an ostree image rebuild
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.4
+  * ci: add riscv64 to local-cross build target
+  * cmd, proxy: use logic from the container-libs/common package
+  * vendor: update go.podman.io/common
+  * fix(deps): update common, image, and storage deps to ddaabae
+  * Use --retry-times 3 for (skopeo sync) tests
+  * Use t.Tempdir() instead of manual os.CreateTemp() in tests
+  * Fix references to a wrong err
+  * fix(deps): update module golang.org/x/term to v0.41.0
+  * Use fmt.Appendf instead of Sprintf + conversion
+  * Use "any" instead of "interface{}"
+  * Use WaitGroup.Go
+  * Update to Go 1.25
+  * Update CI image and tests
+  * Replace the boolean for schema1 registry with an enum
+  * chore(deps): update dependency golangci/golangci-lint to v2.11.3
+  * fix(deps): update common, image, and storage deps to d48bc74
+  * Link to Podman's LLM policy
+  * fix(deps): update github.com/opencontainers/image-spec digest to a4c6ade
+  * fix(deps): update common, image, and storage deps to 854aaaf
+  * Packit: Re-enable ELN tests
+  * Add a --tls-details option and integration tests
+  * Add an error return value to globalOptions.newSystemContext
+  * Pass a SystemContext to signature.DefaultPolicy
+  * Update container-libs after container-libs#623
+  * Packit: fix downstream post-modifications action
+  * chore(deps): update dependency golangci/golangci-lint to v2.10.1
+  * chore(deps): update dependency golangci/golangci-lint to v2.9.0
+  * fix(deps): update module golang.org/x/term to v0.40.0
+  * fix(deps): update common, image, and storage deps to 0e2aefd
+  * Update tests for a changed error message
+  * fix(deps): update common, image, and storage deps to b5801a6
+  * fix(deps): update common, image, and storage deps to b2572af
+  * fix(deps): update module github.com/sirupsen/logrus to v1.9.4
+  * fix(deps): update common, image, and storage deps to e7626b7
+  * fix(deps): update module golang.org/x/term to v0.39.0
+  * chore(deps): update dependency golangci/golangci-lint to v2.8.0
+  * Document the default of --retry-times
+  * chore: fix function name in comment
+  * skopeo: add `--require-signed`
+  * integration/signing_test: move findFingerprint to utils_test.go
+  * fix(deps): update common, image, and storage deps to b0f86df
+  * Update c/common to match #2765
+  * fix(deps): update common, image, and storage deps to afd10d8
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.2
+  * fix(deps): update module golang.org/x/term to v0.38.0
+  * Packit: use `post-modifications` hook to update downstream TMT plan
+  * docs: manpage update for `skopeo inspect --manifest-digest`
+  * inspect: --manifest-digest flag
+  * vendor: container-libs commit 01833ef7b7f1d306205be7fa6fb36d0d6a6e3a33
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.1
+  * fix(deps): update module github.com/spf13/cobra to v1.10.2
+  * chore(deps): update dependency golangci/golangci-lint to v2.7.0
+  * Bump version to 1.22.0-dev
+  * Update common, image, and storage deps to 63be353
+  * Try triggering an image rebuild
+  * Update common, image, and storage deps to 22d50c5
+  * Update dependency golangci/golangci-lint to v2.6.2
+  * vendor: Fetch the latest from container-libs main
+  * golangci-lint: enable gofumpt formatter
+  * format the code with gofumpt
+  * Packit: tmp disable ELN tests
+  * fix(deps): update module golang.org/x/term to v0.37.0
+
+-------------------------------------------------------------------
 Tue Apr 28 11:41:27 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Update to version 1.22.2:
+  * [release-1.22] Bump Skopeo to 1.22.2
+  * proxy: Verify *either* toplevel or target
+  * proxy: Move policycontext into global state
+  * Packit: fix downstream post-modifications action
+
+-------------------------------------------------------------------
+Mon Apr 27 06:54:07 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.22.2:
   * [release-1.22] Bump Skopeo to 1.22.2

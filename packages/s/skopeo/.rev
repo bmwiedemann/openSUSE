@@ -381,4 +381,12 @@
     <comment>Revert to 1.22 - 1.23 is meant for podman 6</comment>
     <requestid>1362618</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>bf9b4c33dd5238f6928fbf76cac7d19b</srcmd5>
+    <version>1.23.0</version>
+    <time>1783015718</time>
+    <user>anag_factory</user>
+    <comment>Back to 1.23 - podman6 in the queue</comment>
+    <requestid>1363011</requestid>
+  </revision>
 </revisionlist>
