@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jun 23 08:39:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.590.0 (0.59)
+   see /usr/share/doc/packages/perl-List-SomeUtils-XS/Changes
+
+  0.59     2026-06-22
+
+  - Fix a heap buffer overflow in the pairwise function when it would return a very large list. Fixed
+    by Paul Johnson. CVE-2026-12844 bsc#1269210
+
+-------------------------------------------------------------------
 Sun Jul 22 05:31:23 UTC 2018 - coolo@suse.com
 
 - updated to 0.58
