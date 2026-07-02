@@ -24,6 +24,8 @@ License:        GPL-2.0-only
 Group:          System/GUI/Other
 URL:            https://freedesktop.org/wiki/Software/xdg-user-dirs
 Source0:        https://user-dirs.freedesktop.org/releases/%{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM drop-x-gnome-autostart.patch -- Allow systemd to manage the start of xdg-user-dirs user service
+Patch0:         drop-x-gnome-autostart.patch
 
 BuildRequires:  meson >= 1.0
 BuildRequires:  suse-xsl-stylesheets

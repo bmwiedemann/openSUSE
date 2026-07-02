@@ -1,0 +1,11 @@
+Index: xdg-user-dirs-0.20/data/xdg-user-dirs.desktop
+===================================================================
+--- xdg-user-dirs-0.20.orig/data/xdg-user-dirs.desktop
++++ xdg-user-dirs-0.20/data/xdg-user-dirs.desktop
+@@ -6,6 +6,5 @@ Exec=xdg-user-dirs-update
+ StartupNotify=false
+ NoDisplay=true
+ 
+-X-GNOME-Autostart-Phase=EarlyInitialization
+ X-KDE-autostart-phase=1
+ X-systemd-skip=true
