@@ -19,46 +19,43 @@
 %define major_minor %((v=%{version}; echo ${v%.*}))
 
 Name:           netavark
-Version:        1.17.2
+Version:        2.0.0
 Release:        0
 Summary:        Container network stack
 License:        Apache-2.0
 URL:            https://github.com/containers/%{name}
-Source0:        %{name}-%{version}.tar.gz
-Source1:        vendor.tar.gz
-Source2:        netavark-iptables.conf
+Source0:        %{name}-%{version}.tar
+Source1:        vendor.tar.zst
 Source3:        netavark-nftables.conf
-BuildRequires:  cargo
+BuildRequires:  rust+cargo >= 1.88
 BuildRequires:  cargo-packaging
 BuildRequires:  go-md2man
 BuildRequires:  protobuf-devel
 BuildRequires:  systemd-rpm-macros
 # aardvark-dns and %%{name} are usually released in sync
 Requires:       aardvark-dns >= %{major_minor}
-Requires:       %{?default_firewall_backend}
+Requires:       nftables
 
 %description
 Netavark is a rust based network stack for containers. It is being
 designed to work with Podman but is also applicable for other OCI
 container management applications.
-Netavark is a tool for configuring networking for Linux containers.
+
 Its features include:
 * Configuration of container networks via JSON configuration file
-* Creation and management of required network interfaces,
-    including MACVLAN networks
-* All required firewall configuration to perform NAT and port
-    forwarding as required for containers
-* Support for iptables and firewalld at present, with support
-    for nftables planned in a future release
+* Creation and management of required network interfaces, including MACVLAN networks
+* All required firewall configuration to perform NAT and port forwarding as required for containers
+* Support for firewalld and nftables
 * Support for rootless containers
 * Support for IPv4 and IPv6
-* Support for container DNS resolution via aardvark-dns.
+* Support for container DNS resolution via the aardvark-dns project
 
 %prep
 %autosetup -a1
 
 %build
-NETAVARK_DEFAULT_FW=%{?default_firewall_backend} cargo build --release
+export NETAVARK_DEFAULT_FW=nftables
+%{cargo_build}
 mkdir -p bin
 cp target/release/%{name} bin/
 
@@ -68,8 +65,7 @@ go-md2man -in %{name}-firewalld.7.md -out %{name}-firewalld.7
 
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBEXECDIR=%{_libexecdir}
-
-install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-%{default_firewall_backend}.conf %{buildroot}%{_prefix}/lib/modules-load.d/netavark-%{default_firewall_backend}.conf
+install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-nftables.conf %{buildroot}%{_prefix}/lib/modules-load.d/netavark-nftables.conf
 
 %files
 %license LICENSE
@@ -82,7 +78,7 @@ install -D -m 0644 ${RPM_SOURCE_DIR}/netavark-%{default_firewall_backend}.conf %
 %{_unitdir}/%{name}-firewalld-reload.service
 %{_unitdir}/%{name}-nftables-reload.service
 %dir %{_prefix}/lib/modules-load.d
-%{_prefix}/lib/modules-load.d/netavark-%{?default_firewall_backend}.conf
+%{_prefix}/lib/modules-load.d/netavark-nftables.conf
 
 %pre
 %service_add_pre %{name}-dhcp-proxy.service %{name}-dhcp-proxy.socket %{name}-firewalld-reload.service %{name}-nftables-reload.service

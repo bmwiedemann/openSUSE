@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 28 10:47:10 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 2.0.0:
+  * This version is required for podman 6.0 and buildah 1.44
+    and only supported to be used together with them
+  * Removed iptables support
+  * The bridge network driver now defaults to strict isolation mode;
+    this means different networks can no longer talk to each by default.
+    To restore the previous behavior the network must set
+    the `isolate=false` option.
+  * The macvlan network driver now use a default mtu of 99
+  * Added network create support, podman now calls netavark create
+    to create a network config.
+  * The bridge network driver now supports the `outbound_addr4`
+   and `outbound_addr6` options to specify the outgoing NAT source address.
+  * Netavark now supports assigning multiple static ip addresses per subnet.
+  * The MSRV has been bumped to v1.88.
+  * Dependency updates.
+
+-------------------------------------------------------------------
 Fri Feb 20 09:51:40 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.17.2:
