@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Mon Jun 29 07:39:22 UTC 2026 - msuchanek@suse.de
 
-- Update to version 2.2.4+git12.bc007b2:
+- Update to version 2.2.4+git12.bc007b2 (bsc#1270052 ltc#218889):
   * [kdump] Fix TypeError in kdump component check
 
 -------------------------------------------------------------------
