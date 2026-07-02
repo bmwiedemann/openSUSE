@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  1 17:38:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.20
+  * Sinc interpolation now uses up 74kB RAM instead of 2.4MB and
+    thus is less hard on the CPU cache. In some cases this means
+    even faster rendering. The way this change works is that the
+    polyphase look-up tables now use 256 phases/branches instead of
+    8192, coupled with linear interpolation between the phases when
+    in use. This method is equal to having many more pre-computed
+    phases than 8192, which in theory also means better precision.
+  * Cubic spline interpolation now doesn't use a look-up table.
+    Again, this is less hard on the CPU cache.
+  * (Hopefully) fixed "Alt Gr" key not working on some systems.
+  * "About" screen rendering has been optimized (big whoop).
+
+-------------------------------------------------------------------
 Sun May  3 11:42:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.19
