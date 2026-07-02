@@ -93,7 +93,7 @@ SelfInstall CleanUp module for tik. Removes & reconfigures things in a SelfInsta
 install -D -m 755 usr/bin/tik %{buildroot}%{_bindir}/tik
 install -D -m 644 usr/lib/tik/config %{buildroot}%{_prefix}/lib/tik/config
 install -D -m 644 usr/lib/tik/lib/tik-functions %{buildroot}%{_prefix}/lib/tik/lib/tik-functions
-install -D -m 644 usr/lib/tik/lib/tik-functions %{buildroot}%{_prefix}/lib/tik/lib/tik-functions-helper
+install -D -m 644 usr/lib/tik/lib/tik-functions-helper %{buildroot}%{_prefix}/lib/tik/lib/tik-functions-helper
 install -D -m 644 usr/lib/tik/lib/tik-core %{buildroot}%{_prefix}/lib/tik/lib/tik-core
 install -D -m 644 usr/lib/tik/lib/tik-core-helper %{buildroot}%{_prefix}/lib/tik/lib/tik-core-helper
 install -D -m 644 usr/lib/tik/lib/cenity %{buildroot}%{_prefix}/lib/tik/lib/cenity
