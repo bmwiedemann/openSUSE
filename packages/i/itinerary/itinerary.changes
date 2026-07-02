@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- Changes since 26.04.2:
+  * Add 26.04.3 release notes
+  * Also disable KCalendarCoreExtras tests with KF 6.28
+  * Forward compatibility with KCalendarCore 6.28
+  * Increase drawer width
+  * Use QChronoTimer for timeline updates
+
+-------------------------------------------------------------------
+Thu Jun  4 08:43:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Add 26.04.2 release notes
+  * Adapt notification icons to behavior changes in KF 6.27
+  * Add 26.04.1 release notes
+
+-------------------------------------------------------------------
 Thu May  7 08:02:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
