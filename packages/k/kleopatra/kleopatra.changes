@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jun 30 18:19:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.3
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.3/
+- No code change since 26.04.2
+
+-------------------------------------------------------------------
+Thu Jun  4 08:44:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.04.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.04.2/
+- Changes since 26.04.1:
+  * Make it build with GpgME 1.24.2
+  * Require GpgME 1.24.2 instead of GpgME 2.0
+  * Adapt to KMime having moved to Frameworks
+  * Fix required Qt version
+
+-------------------------------------------------------------------
 Thu May  7 08:02:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.04.1
