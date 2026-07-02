@@ -64,17 +64,14 @@
 %define date_ver        3.0.1
 %define onnx_ver        1.21.0
 %define safeint_ver     3.0.28
-
-# Statically linked bundled libraries, declared on every binary package that
-# ships them (the shared library and the python extension module).
-%define bundled_provides() \
-Provides:       bundled(date) = %{date_ver} \
-Provides:       bundled(onnx) = %{onnx_ver} \
-Provides:       bundled(SafeInt) = %{safeint_ver} \
-%{nil}
+# eigen 3.4-branch snapshot ORT pins in cmake/deps.txt; bundled only on
+# Leap/SLE (suse_version < 1699), whose system eigen is the older 3.4.0 release.
+# (3.4.90 = the post-3.4.0 development version this snapshot reports.)
+%define eigen_commit    1d8b82b0740839c0de7f1242a3585e3390ff5f33
+%define eigen_ver       3.4.90
 
 Name:           onnxruntime
-Version:        1.26.0
+Version:        1.27.0
 Release:        0
 Summary:        Cross-platform machine-learning inference and training accelerator
 Group:          Development/Libraries/Other
@@ -98,6 +95,11 @@ Source11:       https://github.com/HowardHinnant/date/archive/refs/tags/v%{date_
 Source17:       https://github.com/onnx/onnx/archive/refs/tags/v%{onnx_ver}.zip#/onnx-%{onnx_ver}.zip
 # SafeInt (MIT)
 Source21:       https://github.com/dcleblanc/SafeInt/archive/refs/tags/%{safeint_ver}.zip#/SafeInt-%{safeint_ver}.zip
+# eigen (MPL-2.0) -- used only on Leap/SLE 16.x, whose system eigen is the 3.4.0
+# release; that predates the ArrayBase min/max<NaNPropagation> overloads ORT's
+# element_wise_ops.cc needs (added on eigen's 3.4 branch after the 3.4.0 tag).
+# Factory ships eigen 5.0 and keeps using the system package (see %%prep / %%build).
+Source25:       https://github.com/eigen-mirror/eigen/archive/%{eigen_commit}/eigen-%{eigen_commit}.zip
 
 Patch0:         gcc-false-positives.patch
 Patch1:         system-pybind11.patch
@@ -136,8 +138,13 @@ BuildRequires:  ms-gsl-devel
 # abseil + re2 must be a matched pair (re2 is built against this abseil)
 BuildRequires:  abseil-cpp-devel
 BuildRequires:  re2-devel
-# System eigen3 (openSUSE ships 5.0; ONNX Runtime 1.26 builds against it)
+# System eigen3: Factory ships 5.0, which has the min/max<NaNPropagation>
+# ArrayBase overloads ORT needs. Leap/SLE 16.x ship only the eigen 3.4.0
+# release, which predates them, so there we bundle ORT's 3.4-branch snapshot
+# instead (see Source25, %%prep and %%build) and do not require the system one.
+%if 0%{?suse_version} >= 1699
 BuildRequires:  eigen3-devel
+%endif
 # flatbuffers-devel provides the headers, CMake config and /usr/bin/flatc
 BuildRequires:  flatbuffers-devel
 BuildRequires:  cpuinfo-devel
@@ -154,6 +161,16 @@ BuildRequires:  python%{pysuff}-setuptools
 BuildRequires:  python%{pysuff}-wheel
 %endif
 
+# date/onnx/SafeInt are statically linked into the built libraries (the shared
+# lib and the python extension); eigen too on Leap/SLE. Declared once here for
+# bundled-library tracking.
+Provides:       bundled(date) = %{date_ver}
+Provides:       bundled(onnx) = %{onnx_ver}
+Provides:       bundled(SafeInt) = %{safeint_ver}
+%if 0%{?suse_version} < 1699
+Provides:       bundled(eigen3) = %{eigen_ver}
+%endif
+
 %description
 ONNX Runtime is a cross-platform inference and training machine-learning
 accelerator. It is compatible with many popular ML/DNN frameworks,
@@ -162,7 +179,8 @@ including PyTorch, TensorFlow/Keras, scikit-learn, and more.
 %if %{without python}
 %package -n libonnxruntime%{sover}
 Summary:        ONNX Runtime shared library
-%{bundled_provides}
+# date/onnx/SafeInt are statically linked into this library (see deps note above);
+# eigen too on Leap/SLE.
 
 %description -n libonnxruntime%{sover}
 This package contains the ONNX Runtime shared library needed at runtime
@@ -180,12 +198,13 @@ for developing applications against ONNX Runtime.
 %if %{with python}
 %package -n python%{pysuff}-onnxruntime
 Summary:        Python %{pyver} bindings for ONNX Runtime
+# date/onnx/SafeInt are statically linked into the pybind extension (eigen too on
+# Leap/SLE).
 Requires:       python%{pysuff}-numpy
 Requires:       python%{pysuff}-protobuf
 Requires:       python%{pysuff}-flatbuffers
 Requires:       python%{pysuff}-packaging
 Requires:       python%{pysuff}-sympy
-%{bundled_provides}
 
 %description -n python%{pysuff}-onnxruntime
 Python %{pyver} bindings for ONNX Runtime. Provides the 'onnxruntime'
@@ -195,11 +214,51 @@ Python package for running ONNX models with high performance.
 %prep
 %autosetup -p1
 
+# Leap/SLE (suse_version < 1699) carry older system libraries than Factory; two
+# ONNX Runtime assumptions break there. Both branches are skipped on Factory/
+# Tumbleweed, which keep the upstream behaviour unchanged.
+%if 0%{?suse_version} < 1699
+# (1) Protobuf: the SLFO protobuf21 packages ship no CMake config, unlike Factory's
+# protobuf21-devel which provides cmake(protobuf). ONNX Runtime declares Protobuf
+# with "FIND_PACKAGE_ARGS NAMES Protobuf protobuf", and the NAMES keyword forces
+# find_package into config-only mode -- so on Leap detection fails and the
+# (disconnected) FetchContent fallback aborts configure. Switch that one declare to
+# CMake's module-mode FindProtobuf, which locates the standard-path protobuf Leap
+# does ship (/usr/include/google/protobuf, %{_libdir}/libprotobuf.so, /usr/bin/protoc)
+# and creates the expected protobuf::* targets.
+sed -i 's|FIND_PACKAGE_ARGS NAMES Protobuf protobuf|FIND_PACKAGE_ARGS MODULE|' \
+    cmake/external/onnxruntime_external_deps.cmake
+# (2) Abseil: the hardcoded ABSEIL_LIBS list is generated for abseil 20250814 and
+# names targets (e.g. absl::tracing_internal) that the older system abseil on Leap
+# (20240722) does not provide, which fails the link/generate step. Prune any list
+# entry whose target does not exist; the symbols those targets would carry are not
+# referenced by the targets the older abseil does provide.
+cat >> cmake/external/abseil-cpp.cmake <<'EOF'
+
+# openSUSE (injected by the spec): drop ABSEIL_LIBS entries absent from the system abseil.
+foreach(_absl_lib IN LISTS ABSEIL_LIBS)
+  if(NOT TARGET ${_absl_lib})
+    list(REMOVE_ITEM ABSEIL_LIBS ${_absl_lib})
+  endif()
+endforeach()
+EOF
+# (3) Eigen: Leap/SLE ship the eigen 3.4.0 release, which predates the ArrayBase
+# min/max<NaNPropagation> overloads ORT's element_wise_ops.cc uses (added on
+# eigen's 3.4 maintenance branch after the 3.4.0 tag, and present in the post-3.4
+# snapshot ORT pins in cmake/deps.txt). Drop system-eigen3.patch's find so
+# FetchContent builds the bundled 3.4-branch snapshot instead (see %%build).
+sed -i '/FIND_PACKAGE_ARGS NAMES Eigen3/d' cmake/external/eigen.cmake
+%endif
+
 mkdir _deps
 # bundled deps openSUSE does not package: date, onnx, SafeInt
 unzip -qo %{SOURCE11} -d _deps
 unzip -qo %{SOURCE17} -d _deps
 unzip -qo %{SOURCE21} -d _deps
+%if 0%{?suse_version} < 1699
+# eigen, bundled on Leap/SLE only (see the %%prep workaround block above)
+unzip -qo %{SOURCE25} -d _deps
+%endif
 
 %build
 # System libraries are selected by ONNX Runtime's own
@@ -208,6 +267,8 @@ unzip -qo %{SOURCE21} -d _deps
 # cpuinfo, boost/mp11, nlohmann_json, ms-gsl) is taken from the system, helped by
 # the system-*.patch files.  Only date, onnx and SafeInt are not packaged by
 # openSUSE; those fall back to the bundled source in FETCHCONTENT_SOURCE_DIR_<n>.
+# (On Leap/SLE 16.x, eigen joins that bundled set -- its system 3.4.0 is too old;
+# see Source25 and the %%prep eigen note.)
 # FETCHCONTENT_FULLY_DISCONNECTED=ON blocks network access, so a missing system
 # dependency fails the build instead of being downloaded.
 
@@ -236,6 +297,9 @@ pushd cmake
     -DFETCHCONTENT_SOURCE_DIR_DATE=%{_builddir}/%{name}-%{version}/_deps/date-%{date_ver} \
     -DFETCHCONTENT_SOURCE_DIR_ONNX=%{_builddir}/%{name}-%{version}/_deps/onnx-%{onnx_ver} \
     -DFETCHCONTENT_SOURCE_DIR_SAFEINT=%{_builddir}/%{name}-%{version}/_deps/SafeInt-%{safeint_ver} \
+%if 0%{?suse_version} < 1699
+    -DFETCHCONTENT_SOURCE_DIR_EIGEN3=%{_builddir}/%{name}-%{version}/_deps/eigen-%{eigen_commit} \
+%endif
 %if %{with python}
     -Donnxruntime_ENABLE_DLPACK=OFF \
     -Donnxruntime_ENABLE_PYTHON=ON \
