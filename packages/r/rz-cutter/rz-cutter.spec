@@ -19,13 +19,12 @@
 %define appid re.rizin.cutter
 
 Name:           rz-cutter
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        GUI for Rizin reverse engineering framework
 License:        GPL-3.0-only
 URL:            https://github.com/rizinorg/cutter
 Source0:        https://github.com/rizinorg/cutter/releases/download/v%{version}/Cutter-v%{version}-src.tar.gz
-Patch0:         fix-pyside-for-qt-6.11.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
