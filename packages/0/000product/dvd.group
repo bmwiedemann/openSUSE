@@ -760,7 +760,6 @@
     <package name="ipmitool" supportstatus="unsupported"/> <!-- reason: dvd:ipmitool -->
     <package name="iproute2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="iproute2-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="iptables" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="iputils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ipw-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="ipxe-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2152,8 +2151,6 @@
     <package name="libinput-udev" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libinput10" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libionic1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libip4tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="libip6tc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libiscsi11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libiscsi11-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libisl23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3768,7 +3765,7 @@
     <package name="samba-ad-dc-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-ad-dc-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-client" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="samba-client-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="samba-client-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-libs" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="samba-client-libs-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -4368,7 +4365,6 @@
     <package name="xsetroot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xsettingsd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xstroke" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="xtables-plugins" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xterm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xterm-bin" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xterm-resize" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4415,7 +4411,6 @@
     <package name="yast2-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-perl-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-pkg-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
-    <package name="yast2-printer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-proxy" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-python3-bindings" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-qt-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
