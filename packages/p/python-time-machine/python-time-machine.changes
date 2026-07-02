@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  2 06:58:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add python-315-datetime-patching.patch to fix python 3.15+
+  support
+
+-------------------------------------------------------------------
 Wed Jan 28 12:27:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.0:

@@ -25,6 +25,8 @@ Group:          Development/Languages/Python
 URL:            https://github.com/adamchainz/time-machine
 # pypi packages don't contain the tests anymore since 2.2.0, see changelog
 Source:         https://github.com/adamchainz/time-machine/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: Add date.today() and datetime.today() patching for Python 3.15+
+Patch:          https://github.com/adamchainz/time-machine/pull/618.patch#/python-315-datetime-patching.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -50,7 +52,7 @@ This library mocks all functions from Python's standard library that return the 
 It can be used independently, as a function decorator, or as a context manager.
 
 %prep
-%setup -q -n time-machine-%{version}
+%autosetup -p1 -n time-machine-%{version}
 
 %build
 %pyproject_wheel

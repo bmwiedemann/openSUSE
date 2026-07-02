@@ -225,4 +225,13 @@
     to time-machine. PR #590.</comment>
     <requestid>1329666</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>e2e601d4dfa5074d3d90f3533c5f74f6</srcmd5>
+    <version>3.2.0</version>
+    <time>1783023232</time>
+    <user>anag_factory</user>
+    <comment>- add python-315-datetime-patching.patch to fix python 3.15+
+  support</comment>
+    <requestid>1363122</requestid>
+  </revision>
 </revisionlist>
