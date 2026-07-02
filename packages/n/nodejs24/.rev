@@ -184,4 +184,22 @@ for details, see https://nodejs.org/en/blog/release/v24.14.0
   https://github.com/nodejs/node/releases</comment>
     <requestid>1361450</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca1e6ee2400744c1e08e2099f97c46da</srcmd5>
+    <version>24.18.0</version>
+    <time>1783023226</time>
+    <user>anag_factory</user>
+    <comment>- Update to 24.18.0 (bsc#1269825)
+  * doc: update blockList stability status to release candidate
+  * fs: support caller-supplied readFile() buffers
+  * http: close pre-request sockets in closeIdleConnections
+  * loader: implement package maps
+  * net: support TCP_KEEPINTVL and TCP_KEEPCNT in setKeepAlive
+  * tls: add certificateCompression option
+  * vfs: dispatch node:fs/promises to mounted VFS instances
+  * vfs: add minimal node:vfs subsystem
+- fix_ci_tests.patch: refreshed
+- ip-address-bsc1268097.patch: dropped upstreamed</comment>
+    <requestid>1362946</requestid>
+  </revision>
 </revisionlist>

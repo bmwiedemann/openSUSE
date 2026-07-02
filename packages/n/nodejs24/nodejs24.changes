@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Jun 30 11:13:23 UTC 2026 - Adam Majer <amajer@suse.com>
+
+- Update to 24.18.0 (bsc#1269825)
+  * doc: update blockList stability status to release candidate
+  * fs: support caller-supplied readFile() buffers
+  * http: close pre-request sockets in closeIdleConnections
+  * loader: implement package maps
+  * net: support TCP_KEEPINTVL and TCP_KEEPCNT in setKeepAlive
+  * tls: add certificateCompression option
+  * vfs: dispatch node:fs/promises to mounted VFS instances
+  * vfs: add minimal node:vfs subsystem
+
+- fix_ci_tests.patch: refreshed
+- ip-address-bsc1268097.patch: dropped upstreamed
+
+-------------------------------------------------------------------
 Tue Jun 23 10:10:19 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to 24.17.0
