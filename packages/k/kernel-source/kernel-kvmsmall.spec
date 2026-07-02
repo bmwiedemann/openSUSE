@@ -17,9 +17,9 @@
 # needssslcertforbuild
 
 
-%define srcversion 7.0
-%define patchversion 7.0.12
-%define git_commit 8beab0b488b42c3b23259067bfa850985d902846
+%define srcversion 7.1
+%define patchversion 7.1.2
+%define git_commit 992f18cb95b845e627c10687648dd04f93f18720
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-kvmsmall
-Version:        7.0.12
+Version:        7.1.2
 %if 0%{?is_kotd}
-Release:        <RELEASE>.g8beab0b
+Release:        <RELEASE>.g992f18c
 %else
 Release:        0
 %endif
