@@ -115,6 +115,7 @@
 %{_mandir}/man8/systemd-imdsd.8.gz
 %{_mandir}/man8/systemd-imdsd.socket.8.gz
 %{_mandir}/man8/systemd-imdsd@.service.8.gz
+%{_mandir}/man8/systemd-machine-tag@.service.8.gz
 %endif
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
@@ -139,16 +140,23 @@
 %{_mandir}/man8/systemd-pcrosseparator.service.8.gz
 %endif
 %if %{with sd_boot}
-%if %{with upstream}
 %{_mandir}/man8/systemd-pcrphase-factory-reset.service.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-pcrphase-storage-target-mode.service.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
 %{_mandir}/man8/systemd-pcrphase.service.8.gz
 %{_mandir}/man8/systemd-pcrproduct.service.8.gz
+%endif
+%if %{with upstream}
+%{_mandir}/man8/systemd-report-files.8.gz
+%{_mandir}/man8/systemd-report-files.socket.8.gz
+%{_mandir}/man8/systemd-report-files@.service.8.gz
+%{_mandir}/man8/systemd-report-sign-plain.8.gz
+%{_mandir}/man8/systemd-report-sign-plain.socket.8.gz
+%{_mandir}/man8/systemd-report-sign-plain@.service.8.gz
+%{_mandir}/man8/systemd-report-sign-tsm.8.gz
+%{_mandir}/man8/systemd-report-sign-tsm.socket.8.gz
+%{_mandir}/man8/systemd-report-sign-tsm@.service.8.gz
 %endif
 %{_mandir}/man8/systemd-ssh-generator.8.gz
 %if %{with upstream}
@@ -167,6 +175,10 @@
 %endif
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-sysupdate-update.service.8.gz
+%{_mandir}/man8/systemd-sysupdate-update.timer.8.gz
+%endif
 %{_mandir}/man8/systemd-sysupdate.8.gz
 %{_mandir}/man8/systemd-sysupdate.service.8.gz
 %{_mandir}/man8/systemd-sysupdate.timer.8.gz
@@ -232,6 +244,9 @@
 %if %{with upstream}
 %{_systemd_util_dir}/systemd-report-basic
 %{_systemd_util_dir}/systemd-report-cgroup
+%{_systemd_util_dir}/systemd-report-files
+%{_systemd_util_dir}/systemd-report-sign-plain
+%{_systemd_util_dir}/systemd-report-sign-tsm
 %endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-sbsign
@@ -301,6 +316,7 @@
 %if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-storage-block.socket
 %{_unitdir}/sockets.target.wants/systemd-storage-fs.socket
+%{_unitdir}/sockets.target.wants/systemd-sysupdate.socket
 %endif
 %if %{without bootstrap}
 %{_unitdir}/storage-target-mode.target
@@ -335,12 +351,19 @@
 %if %{without bootstrap}
 %{_unitdir}/systemd-imds-early-network.service
 %{_unitdir}/systemd-imds-import.service
+%{_unitdir}/systemd-imds-metrics.socket
+%{_unitdir}/systemd-imds-metrics@.service
 %{_unitdir}/systemd-imdsd.socket
 %{_unitdir}/systemd-imdsd@.service
 %endif
+%{_unitdir}/systemd-journalctl-metrics.socket
+%{_unitdir}/systemd-journalctl-metrics@.service
 %endif
 %{_unitdir}/systemd-journalctl.socket
 %{_unitdir}/systemd-journalctl@.service
+%if %{with upstream}
+%{_unitdir}/systemd-machine-tag@.service
+%endif
 %{_unitdir}/systemd-mute-console.socket
 %{_unitdir}/systemd-mute-console@.service
 %if %{with networkd}
@@ -383,6 +406,14 @@
 %{_unitdir}/systemd-report-basic@.service
 %{_unitdir}/systemd-report-cgroup.socket
 %{_unitdir}/systemd-report-cgroup@.service
+%{_unitdir}/systemd-report-files.socket
+%{_unitdir}/systemd-report-files@.service
+%{_unitdir}/systemd-report-sign-plain.socket
+%{_unitdir}/systemd-report-sign-plain@.service
+%{_unitdir}/systemd-report-sign-tsm.socket
+%{_unitdir}/systemd-report-sign-tsm@.service
+%{_unitdir}/systemd-report.socket
+%{_unitdir}/systemd-report@.service
 %{_unitdir}/systemd-storage-block.socket
 %{_unitdir}/systemd-storage-block@.service
 %{_unitdir}/systemd-storage-fs.socket
@@ -393,12 +424,28 @@
 %endif
 %if %{with upstream}
 %{_unitdir}/systemd-sysinstall.service
+%{_unitdir}/systemd-sysupdate-notify-bootctl.socket
+%{_unitdir}/systemd-sysupdate-notify-bootctl@.service
+%{_unitdir}/systemd-sysupdate-notify-pcrlock.socket
+%{_unitdir}/systemd-sysupdate-notify-pcrlock@.service
+%{_unitdir}/systemd-sysupdate-notify-sysext.socket
+%{_unitdir}/systemd-sysupdate-notify-sysext@.service
 %endif
 %if %{without bootstrap}
 %{_unitdir}/systemd-sysupdate-reboot.service
 %{_unitdir}/systemd-sysupdate-reboot.timer
+%if %{with upstream}
+%{_unitdir}/systemd-sysupdate-update.service
+%{_unitdir}/systemd-sysupdate-update.timer
+%endif
 %{_unitdir}/systemd-sysupdate.service
+%if %{with upstream}
+%{_unitdir}/systemd-sysupdate.socket
+%endif
 %{_unitdir}/systemd-sysupdate.timer
+%if %{with upstream}
+%{_unitdir}/systemd-sysupdate@.service
+%endif
 %{_unitdir}/systemd-sysupdated.service
 %endif
 %if %{with sd_boot}

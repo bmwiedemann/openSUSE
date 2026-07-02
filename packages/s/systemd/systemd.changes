@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 29 16:31:14 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit a6ea105861b47842aed56242325ac1f33603c9c6 (merge of v260.3)
+
+  This update includes the following fix:
+
+    91873ca3d7 nss-systemd: avoid ELF TLS for recursion guard (bsc#1254924)
+
+- Drop 1001-units-drop-Before-sockets.target-from-networkd-resol.patch and
+  1002-nss-systemd-avoid-ELF-TLS-for-recursion-guard.patch, both are part of
+  v260.3.
+
+-------------------------------------------------------------------
 Tue Jun 23 08:55:51 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Temporarily add 1002-nss-systemd-avoid-ELF-TLS-for-recursion-guard.patch until

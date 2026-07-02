@@ -75,10 +75,16 @@
 %{_datadir}/dbus-1/system-services/org.freedesktop.timesync1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.timesync1.conf
 %{_datadir}/pkgconfig/udev.pc
+%if %{with upstream}
+%{_datadir}/polkit-1/actions/io.systemd.cryptenroll.policy
+%endif
 %{_datadir}/polkit-1/actions/org.freedesktop.timesync1.policy
 %if %{without bootstrap}
 %{_datadir}/zsh/site-functions/_bootctl
 %{_datadir}/zsh/site-functions/_kernel-install
+%if %{with upstream}
+%{_datadir}/zsh/site-functions/_systemd-cryptenroll
+%endif
 %{_datadir}/zsh/site-functions/_systemd-hwdb
 %{_datadir}/zsh/site-functions/_udevadm
 %{_libdir}/cryptsetup/libcryptsetup-token-systemd-fido2.so
@@ -330,9 +336,7 @@
 %{_udevhwdbdir}/70-software-radio.hwdb
 %{_udevhwdbdir}/70-sound-card.hwdb
 %{_udevhwdbdir}/70-touchpad.hwdb
-%if %{with upstream}
 %{_udevhwdbdir}/70-vsock.hwdb
-%endif
 %{_udevhwdbdir}/80-ieee1394-unit-function.hwdb
 %{_udevhwdbdir}/82-net-auto-link-local.hwdb
 %endif
@@ -393,6 +397,9 @@
 %endif
 %{_unitdir}/initrd-udevadm-cleanup-db.service
 %{_unitdir}/initrd.target.wants/systemd-battery-check.service
+%if %{with upstream}
+%{_unitdir}/initrd.target.wants/systemd-cryptenroll-firstboot.service
+%endif
 %if %{without bootstrap}
 %{_unitdir}/integritysetup-pre.target
 %{_unitdir}/integritysetup.target
@@ -408,6 +415,11 @@
 %{_unitdir}/sleep.target
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-bootctl.socket
+%endif
+%if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-cryptenroll.socket
+%endif
+%if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %if %{without bootstrap}
@@ -446,6 +458,11 @@
 %{_unitdir}/systemd-bless-boot.service
 %{_unitdir}/systemd-bootctl.socket
 %{_unitdir}/systemd-bootctl@.service
+%endif
+%if %{with upstream}
+%{_unitdir}/systemd-cryptenroll-firstboot.service
+%{_unitdir}/systemd-cryptenroll.socket
+%{_unitdir}/systemd-cryptenroll@.service
 %endif
 %{_unitdir}/systemd-firstboot.service
 %{_unitdir}/systemd-fsck-root.service

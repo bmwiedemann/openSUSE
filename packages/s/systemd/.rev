@@ -8079,4 +8079,17 @@ handle manual pages that consist only of a .so directive such as
 - Enable BPF CO-RE programs via linux-bpf-devel build dependency</comment>
     <requestid>1361320</requestid>
   </revision>
+  <revision rev="471" vrev="1">
+    <srcmd5>71ecbb11cfcc6b368aee9e4d8d27a0bc</srcmd5>
+    <version>260.3</version>
+    <time>1783015600</time>
+    <user>anag_factory</user>
+    <comment>- Import commit a6ea105861b47842aed56242325ac1f33603c9c6 (merge of v260.3)
+  This update includes the following fix:
+    91873ca3d7 nss-systemd: avoid ELF TLS for recursion guard (bsc#1254924)
+- Drop 1001-units-drop-Before-sockets.target-from-networkd-resol.patch and
+  1002-nss-systemd-avoid-ELF-TLS-for-recursion-guard.patch, both are part of
+  v260.3.</comment>
+    <requestid>1362701</requestid>
+  </revision>
 </revisionlist>
