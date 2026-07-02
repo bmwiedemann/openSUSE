@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  1 20:11:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.2:
+  + Fix and enable hardware acceleration for amdgpu
+  + Fix failure to reconnect
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Apr 18 09:26:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.1:

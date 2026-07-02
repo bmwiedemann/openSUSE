@@ -392,4 +392,15 @@ need to be staged with libVNCServer sr#862644 (forwarded request 862647 from fcr
     <comment>Update version</comment>
     <requestid>1348433</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>12ea2f2f5a93ba6b0597a3123470ee55</srcmd5>
+    <version>50.2</version>
+    <time>1783015862</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.2:
+  + Fix and enable hardware acceleration for amdgpu
+  + Fix failure to reconnect
+  + Updated translations.</comment>
+    <requestid>1363136</requestid>
+  </revision>
 </revisionlist>
