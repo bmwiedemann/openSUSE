@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jun 29 14:54:17 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260629.bd947d09:
+  * sysctl-whitelist: adjusted 50-coredump.conf digest for systemd - temporary revert (bsc#1267504)
+  * dbus-services: add txnupd-maintenance-tools service (bsc#1268577)
+  * test: add test coverage for new varlink related whitelisting features
+  * configs/openSUSE: add Varlink whitelisting restriction
+  * FileDigestCheck: add SocketUnitDigester
+  * FileDigestCheck: move digester types into utility module
+  * FileDigestCheck: support 'ContentCheck' configuration setting
+  * dbus-services: added kdeplasma6-addons kameleon.qmk whitelisting (bsc#1267818)
+
+-------------------------------------------------------------------
+Mon Jun 22 08:17:33 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260622.4dc32f49:
+  * sysctl-whitelist: adjusted 50-coredump.conf digest for systemd (bsc#1267504)
+  * configs/openSUSE/users-groups.toml: Replace group 'singularity' by 'apptainer'
+
+-------------------------------------------------------------------
 Mon Jun 15 09:16:57 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.9.0+git20260528.2490edb3:

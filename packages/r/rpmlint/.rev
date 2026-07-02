@@ -5699,4 +5699,24 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1359486</requestid>
   </revision>
+  <revision rev="542" vrev="1">
+    <srcmd5>c03fc04d6c0db026c82b9b489c60306d</srcmd5>
+    <version>2.9.0+git20260629.bd947d09</version>
+    <time>1783015597</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9.0+git20260629.bd947d09:
+  * sysctl-whitelist: adjusted 50-coredump.conf digest for systemd - temporary revert (bsc#1267504)
+  * dbus-services: add txnupd-maintenance-tools service (bsc#1268577)
+  * test: add test coverage for new varlink related whitelisting features
+  * configs/openSUSE: add Varlink whitelisting restriction
+  * FileDigestCheck: add SocketUnitDigester
+  * FileDigestCheck: move digester types into utility module
+  * FileDigestCheck: support 'ContentCheck' configuration setting
+  * dbus-services: added kdeplasma6-addons kameleon.qmk whitelisting (bsc#1267818)
+- Update to version 2.9.0+git20260622.4dc32f49:
+  * sysctl-whitelist: adjusted 50-coredump.conf digest for systemd (bsc#1267504)
+  * configs/openSUSE/users-groups.toml: Replace group 'singularity' by 'apptainer'
+</comment>
+    <requestid>1362481</requestid>
+  </revision>
 </revisionlist>
