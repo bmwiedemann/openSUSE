@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 05:27:04 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260630.0c615a08:
+  * fix: update cluster blocking ssh test properly via crm.conf
+  * Fix: crm.conf.in: keep the section headers uncommented (#2143)
+
+-------------------------------------------------------------------
 Mon Jun 29 11:03:02 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260629.0b862e06:
