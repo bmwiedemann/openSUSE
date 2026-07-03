@@ -36,7 +36,7 @@ Requires:       python-httpx >= 0.25.0
 Requires:       python-jiter >= 0.4.0
 Requires:       python-pydantic >= 1.9.0
 Requires:       python-sniffio
-Requires:       python-typing_extensions >= 4.14
+Requires:       python-typing_extensions >= 4.13.2
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 3.5.0}
@@ -47,7 +47,7 @@ BuildRequires:  %{python_module jiter >= 0.4.0}
 BuildRequires:  %{python_module pydantic >= 1.9.0}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sniffio}
-BuildRequires:  %{python_module typing_extensions >= 4.14}
+BuildRequires:  %{python_module typing_extensions >= 4.13.2}
 # /SECTION
 %python_subpackages
 

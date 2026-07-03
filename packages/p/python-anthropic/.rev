@@ -7,4 +7,12 @@
     <comment>New package python-anthropic. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
     <requestid>1362376</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>5e717ddf9cfcbb5d2e9c28de1477eeed</srcmd5>
+    <version>0.112.0</version>
+    <time>1783087863</time>
+    <user>anag_factory</user>
+    <comment>- Lower the typing_extensions dependency floor to &gt;= 4.13.2 (the version in openSUSE Leap 16.0) instead of &gt;= 4.14; the newest typing_extensions name used by the code is TypeIs, available since 4.10.0, and typing_extensions.Sentinel (added later) is not used. Verified by running the packaged offline test selection (211 passed) against typing_extensions 4.13.2.</comment>
+    <requestid>1363655</requestid>
+  </revision>
 </revisionlist>

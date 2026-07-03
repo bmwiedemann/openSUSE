@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  3 09:46:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Lower the typing_extensions dependency floor to >= 4.13.2
+  (the version in openSUSE Leap 16.0) instead of >= 4.14; the
+  newest typing_extensions name used by the code is TypeIs,
+  available since 4.10.0, and typing_extensions.Sentinel (added
+  later) is not used. Verified by running the packaged offline
+  test selection (211 passed) against typing_extensions 4.13.2.
+
+-------------------------------------------------------------------
 Sun Jun 28 20:36:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-anthropic 0.112.0
