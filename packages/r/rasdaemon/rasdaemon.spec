@@ -17,7 +17,7 @@
 
 
 Name:           rasdaemon
-Version:        0.8.4+git33.4f1f08a
+Version:        0.8.5+git0.769593b
 Release:        0
 Summary:        Utility to receive RAS error tracings
 License:        GPL-2.0-only

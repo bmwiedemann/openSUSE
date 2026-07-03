@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 03 07:57:12 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 0.8.5+git0.769593b:
+  * rasdaemon: bump to version 0.8.5
+  * Add a workflow to drop waiting new version label
+  * ras-page-isolation.c: cleanup a warning
+  * ras-non-standard-handler: remove an ugly goto
+  * ras-mc-ctl: report NVIDIA Vera SQLite events
+  * rasdaemon: add NVIDIA Vera non-standard CPER decoder
+  * rasdaemon: guard NULL vendor decoders without sqlite
+  * rasdaemon: Add Intel Diamond Rapids MCE decoder support
+  * Fix unsafe strcpy in non-standard-nvidia.c
+  * labels: Add ASRock WRX80 Creator R2.0 DIMM mapping
+  * ras-mc-ctl: Fix invalid column in signal events query
+  * mc_event_trigger: Fix reference to mc_event_trigger.local
+  * Update README.md ans SECURITY.md
+
+-------------------------------------------------------------------
 Thu Mar 05 13:54:41 UTC 2026 - malcolmlewis@opensuse.org
 
 - Update to version 0.8.4+git33.4f1f08a:
