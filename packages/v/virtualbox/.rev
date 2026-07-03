@@ -2895,4 +2895,16 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.10</comment>
     <requestid>1360720</requestid>
   </revision>
+  <revision rev="310" vrev="1">
+    <srcmd5>efa224c980c9fc12f20a5785d15b4490</srcmd5>
+    <version>7.2.12</version>
+    <time>1783087443</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.12
+- Switch off Python bindings completely, as we are not providing
+  Python 3.11 packages for Factory anymore (bsc#1268789).
+- Undo 0666 mode change to virtualbox-60-vboxguest.rules
+  [boo#1270013]</comment>
+    <requestid>1363450</requestid>
+  </revision>
 </revisionlist>

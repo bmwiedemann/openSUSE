@@ -59,8 +59,8 @@
 	# Leap 16.x has python3.13 or above, currently not supported
 	%global mypython %nil
 %else
-	# Using python3.11 for Factory, current version doesn't support python3.13
-	%global mypython python311
+	# We are not providing 3.11 in Factory any more
+	%global mypython %nil
 %endif
 
 %if "%mypython" != ""
@@ -69,8 +69,8 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.10
-%define rversion 7.2.10
+Version:        7.2.12
+%define rversion 7.2.12
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only

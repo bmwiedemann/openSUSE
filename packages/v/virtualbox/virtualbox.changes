@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:00:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.12
+  * Fixed a Linux host kernel panic when kvm.enable_virt_at_load=0.
+  * Windows Guest: Added DX11 performance improvements and fixes.
+
+-------------------------------------------------------------------
+Wed Jul  1 15:32:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Switch off Python bindings completely, as we are not providing
+  Python 3.11 packages for Factory anymore (bsc#1268789).
+
+-------------------------------------------------------------------
+Wed Jul  1 13:02:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Undo 0666 mode change to virtualbox-60-vboxguest.rules
+  [boo#1270013]
+
+-------------------------------------------------------------------
 Wed Jun 17 19:57:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - User note: Transitioning between virtualbox 7.2.8-or-earlier and
