@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jun 30 08:35:01 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix QEMU live migration (bsc#1269260) issues by match the legacy
+  qemu-ipxe ROM sizes and structure. More specifically:
+  - Drop i386 and aarch64 from FAT EFI ROMs
+  - Compress (-ec) x86_64 EFI and inject (-b) legacy ROM
+  - Add PCI class code 0x02 to EfiRom arguments
+  - Pad all EFI ROMs to exactly 256KB via truncate 
+
+-------------------------------------------------------------------
 Wed Jun  3 11:14:55 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Restrict the build to x86_64 and aarch64, due to dependencies and

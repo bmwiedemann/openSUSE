@@ -236,4 +236,17 @@ use xorrisofs for creating iso
   are useful. (forwarded request 1356982 from dfaggioli)</comment>
     <requestid>1356995</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>1e080a5467fc1f6f570939c735adf7cb</srcmd5>
+    <version>1.21.1+git20250827.61b4585e2</version>
+    <time>1783087891</time>
+    <user>anag_factory</user>
+    <comment>- Fix QEMU live migration (bsc#1269260) issues by match the legacy
+  qemu-ipxe ROM sizes and structure. More specifically:
+  - Drop i386 and aarch64 from FAT EFI ROMs
+  - Compress (-ec) x86_64 EFI and inject (-b) legacy ROM
+  - Add PCI class code 0x02 to EfiRom arguments
+  - Pad all EFI ROMs to exactly 256KB via truncate (forwarded request 1363653 from dfaggioli)</comment>
+    <requestid>1363673</requestid>
+  </revision>
 </revisionlist>

@@ -165,36 +165,27 @@ for nic in $QEMU_NICS; do
     name=$(echo "$nic" | cut -d: -f1)
     vid=$(echo "$nic" | cut -d: -f2)
     did=$(echo "$nic" | cut -d: -f3)
+    # for EfiRom: -f Vendor ID, -i Device ID, -l 0x02 (Network Controller PCI Class)
+    EFI_ARGS="-f 0x${vid} -i 0x${did} -l 0x02"
 
     # Build legacy ROMs
     if [ "$name" != "e1000e" ] && [ "$name" != "vmxnet3" ]; then
         make_ipxe $CROSS_PREFIX bin/${vid}${did}.rom
         cp bin/${vid}${did}.rom pxe-${name}.rom
+        EFI_ARGS="$EFI_ARGS -b bin/${vid}${did}.rom"
     fi
 
     # Build EFI drivers
-    EFI_ARGS="-f 0x${vid} -i 0x${did}"
-    make_ipxe $CROSS_PREFIX bin-i386-efi/${vid}${did}.efidrv
-    EFI_ARGS="$EFI_ARGS -e bin-i386-efi/${vid}${did}.efidrv"
-
     %ifnarch %{ix86}
     make_ipxe $CROSS_PREFIX bin-x86_64-efi/${vid}${did}.efidrv
-    EFI_ARGS="$EFI_ARGS -e bin-x86_64-efi/${vid}${did}.efidrv"
-    %endif
-
-    %ifarch aarch64
-    make_ipxe bin-arm64-efi/${vid}${did}.efidrv
-    EFI_ARGS="$EFI_ARGS -e bin-arm64-efi/${vid}${did}.efidrv"
-    %else
-    %{!?no_aarch64_cc:make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/${vid}${did}.efidrv}
-    %{!?no_aarch64_cc:EFI_ARGS="$EFI_ARGS -e bin-arm64-efi/${vid}${did}.efidrv"}
+    EFI_ARGS="$EFI_ARGS -ec bin-x86_64-efi/${vid}${did}.efidrv"
     %endif
 
     # Combine them into FAT EFI ROMs using EfiRom
     EfiRom $EFI_ARGS -o efi-${name}.rom
 done
 
-# QEMU's padding logic for legacy ROMs
+# QEMU's padding logic (for legacy and EFI ROMs)
 for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio; do
     size=$(stat -c '%s' pxe-${name}.rom)
     if [ "$name" = "virtio" ]; then
@@ -206,6 +197,13 @@ for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio; do
             echo -ne "SEGMENT OVERAGE\0" >> pxe-${name}.rom
         fi
     fi
+done
+for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio e1000e vmxnet3; do
+    size=$(stat -c '%s' efi-${name}.rom)
+    # This is the size of the ROMs provided by the old qemu-ipxe package.
+    # If this one is larger, we'll have live migration issues (bsc#1269260).
+    if [ $size -gt 262144 ]; then echo "EFI rom $name too large"; exit 1; fi
+    truncate -s 262144 efi-${name}.rom
 done
 
 rm config/local/general.h
