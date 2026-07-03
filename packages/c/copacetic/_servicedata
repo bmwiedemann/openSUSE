@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/project-copacetic/copacetic</param>
-              <param name="changesrevision">f262411b1b8788772dee4d47256aa0ed670adf84</param></service></servicedata>
+              <param name="changesrevision">f262411b1b8788772dee4d47256aa0ed670adf84</param></service><service name="tar_scm">
+                <param name="url">https://github.com/project-copacetic/copacetic.git</param>
+              <param name="changesrevision">875ab453477a1e863a41c44cf02c98b8557f758b</param></service></servicedata>

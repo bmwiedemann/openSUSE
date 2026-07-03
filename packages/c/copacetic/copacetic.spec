@@ -18,7 +18,7 @@
 
 %define executable_name copa
 Name:           copacetic
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        CLI tool for directly patching container images using reports from vulnerability scanners
 License:        Apache-2.0

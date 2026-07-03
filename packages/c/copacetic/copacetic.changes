@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 03 05:11:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.14.2:
+  * fix: avoid forced recompression on local export (#1637) (#1640)
+
+-------------------------------------------------------------------
 Mon May 18 05:15:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.1:
