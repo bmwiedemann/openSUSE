@@ -44,7 +44,7 @@
 %define jsonc json-c-json-c-%vjsonc-20240915
 
 Name:           clamav
-Version:        1.5.2
+Version:        1.5.3
 Release:        0
 Summary:        Antivirus Toolkit
 License:        GPL-2.0-only

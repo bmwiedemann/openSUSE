@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Jul  1 16:18:42 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- update to 1.5.3
+  ClamAV 1.5.3 is a patch release with the following fixes:
+  * bsc#1270091, CVE-2026-20217:
+    Fixed a bug in the PESpin unpacker cleanup path that could free pointers
+    into the scanned file buffer and crash the scanner.
+  * bsc#1270107, CVE-2026-20213:
+    Fixed an integer overflow in PE rebuild size calculations that could be
+    reached through a malformed Aspack-packed PE file and lead to a heap buffer
+    overflow write.
+  * bsc#1270089, CVE-2026-20216:
+    Fixed an InstallShield archive extraction limit bypass that could write far
+    more temporary data than intended and exhaust temporary storage.
+  * bsc#1270085, CVE-2026-20214:
+    Fixed an FSG unpacker loop underflow that could write past the section array
+    while scanning a malformed PE file.
+  * bsc#1270092, CVE-2026-20243:
+    Fixed ALZ parser size handling bugs that could cause malformed ALZ archives
+    to panic, abort the scanner, or skip expected scan-limit handling.
+  * bsc#1270088, CVE-2026-20215:
+    Fixed a 7z parser substream count overflow that could under-allocate parser
+    metadata arrays and write past them while reading a malformed archive.
+  * bsc#1270106, CVE-2026-20244:
+    Fixed 32-bit DMG parser size checks that could let a short mish stripe table
+    pass validation and crash 32-bit scanner builds.
+  * Hardened clamscan, clamdscan, and clamonacc quarantine actions against
+    time-of-check/time-of-use races that could redirect copied, moved, or removed
+    files under unsafe quarantine directory configurations.
+  * Upgraded the Rust tar dependency to resolve the RUSTSEC-2026-0067 and
+    RUSTSEC-2026-0068 advisories, and upgraded the Rust openssl dependency to
+    resolve CVE-2026-41676, bsc#1270138.
+  * Raised the minimum required CMake version to 3.17 to fix Linux builds with
+    libcurl v8.21.0 when linking static library dependencies.
+  * Metadata preclass scans now run before the final scan verdict.
+  * ClamOnAcc: Fixed errors when recursively excluded paths are children of an
+    included path.
+  * ClamOnAcc: Fixed hash bucket list corruption when two watched paths collide
+    in the same bucket.
+
+-------------------------------------------------------------------
 Thu Mar 12 18:56:55 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable build for 32 bit ix86 because of testsuite failures with
