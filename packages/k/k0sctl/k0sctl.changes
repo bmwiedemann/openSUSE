@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 03 08:03:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.0:
+  * Major internal change: rig v2
+    This release replaces k0sctl's entire host connection and
+    remote execution layer with rig v2.0.0 (was v0.21.11), this is
+    the purpose built library that handles SSH/WinRM connections,
+    sudo, OS detection, remote command execution and file
+    transfers.
+    No changes to your k0sctl.yaml or workflows are required,
+    configuration and command-line usage remain fully compatible
+    and behavior should be unchanged. However, since this touches
+    nearly every remote operation k0sctl performs, please keep an
+    eye out for regressions. If you run into unexpected connection,
+    sudo/privilege escalation, OS detection or file transfer
+    issues, please file an issue and roll back to k0sctl v0.31.1
+    until it's resolved.
+  * What's Changed
+    - refactor(rig-v2):migrate k0sctl from rig v0.x to rig v2 by
+      @kke in #1092
+
+-------------------------------------------------------------------
 Wed Jul 01 11:44:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.31.1:
