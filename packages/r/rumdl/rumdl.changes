@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 03 10:52:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.28:
+  * Added
+    - md043: report each heading mismatch via sequence alignment
+      (d46dbef)
+  * Fixed
+    - lsp: isolate rule panics from the document lint path
+      (020d4a2)
+    - prevent stack overflow on deeply nested blockquote markers
+      (1dd3ce5)
+    - write fixes atomically and exit non-zero on unreadable files
+      (085d7fe)
+    - per-file-ignores: enforce centrally in the fix coordinator
+      (c4b9899)
+    - fmt: honor per-file-ignores on the stdin pipeline (5b5e779)
+    - fmt: honor per-file-ignores in the fix pipeline (cb2d7f7)
+    - md043: say 'pattern position' in unsatisfied-wildcard
+      warnings (9ffc105)
+  * Performance
+    - md013: drop the per-check heading lookup allocation (f76a209)
+    - make semantic-line-break reflow iterative (5692564)
+    - md077: compute list-continuation ranges in linear time
+      (d36b017)
+
+-------------------------------------------------------------------
 Wed Jul 01 06:00:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.27:
