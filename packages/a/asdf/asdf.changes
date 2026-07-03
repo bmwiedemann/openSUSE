@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Jul 03 11:21:17 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 0.19.0:
+  * chore: release 0.19.0 (#2261)
+  * fix: make plugin test command resolve latest version properly
+  * feat: don't override semver ordering during completion (#2263)
+  * fix: set ASDF_INSTALL_* environment variables for reshim command
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.17.1 to 5.18.0 (#2270)
+  * fix: convert hyphens to underscores when converting plugin names to generate valid environment variables
+  * chore: update asdf install action to fix lint workflow (#2264)
+  * chore(golang-rewrite): remove old Bash implementation code (#1822)
+  * fix: use os.PathListSeparator (#2195)
+  * fix: return error from repo.RemoteUrl function
+  * fix: nushell completions --ignore-errors deprecation (#2157)
+  * chore(docs): bump @types/node from 25.3.3 to 25.5.0 in /docs in the docs group (#2260)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.16.5 to 5.17.1 (#2259)
+  * chore(deps): bump dorny/paths-filter from 3 to 4 (#2257)
+  * chore(deps): bump crazy-max/ghaction-github-pages from 4 to 5 (#2251)
+  * TrimSpace on the URL returned by RemoteURL()
+  * docs: update nodejs script for formatting the documentation to be the correct `npm run fmt` from the package, as the `npm run format` does not exist
+  * docs: remove `The Oh-My-ZSH asdf plugin is yet to be updated, see [ohmyzsh/ohmyzsh#8837](https://github.com/ohmyzsh/ohmyzsh/pull/8837).` from the docs for zsh as it has been [updated](https://github.com/ohmyzsh/ohmyzsh/pull/8837#issuecomment-2174169900)
+
+-------------------------------------------------------------------
+Fri Jul  3 11:16:15 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Add completion packages 
+
+-------------------------------------------------------------------
 Wed Mar 04 13:50:12 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.18.1:
