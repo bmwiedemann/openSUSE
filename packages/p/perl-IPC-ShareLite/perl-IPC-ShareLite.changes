@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:02:30 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Fix Provides: Do not include modules from the inc/ directory
+
+-------------------------------------------------------------------
 Thu Jun 12 18:23:56 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

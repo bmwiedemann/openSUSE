@@ -1,7 +1,7 @@
 #
 # spec file for package perl-IPC-ShareLite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,11 +26,9 @@ License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Lightweight interface to shared memory
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/A/AN/ANDYA/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-Provides:       perl(Devel::CheckLib) = 0.300.0
-Provides:       perl(IO::CaptureOutput) = 1.0801
-Provides:       perl(IO::CaptureOutput::_proxy)
 Provides:       perl(IPC::ShareLite) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}

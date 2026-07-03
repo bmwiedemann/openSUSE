@@ -17,4 +17,12 @@
 </comment>
     <requestid>1285245</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>52f4eb11c67e7e64ecd1320473c70a66</srcmd5>
+    <version>0.170.0</version>
+    <time>1783087881</time>
+    <user>anag_factory</user>
+    <comment>- Fix Provides: Do not include modules from the inc/ directory</comment>
+    <requestid>1363674</requestid>
+  </revision>
 </revisionlist>
