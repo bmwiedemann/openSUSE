@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 01 12:09:43 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 8.2.7:
+  * Updated NEWS
+  * Making sure KAboutData uses the correct desktop file name
+  * Bump actions/cache from 6.0.0 to 6.1.0
+  * Using QtCore calls to set the application name
+  * Updated NEWS
+  * Removing the StartupWMClass key from our desktop file
+  * Translated using Weblate (Spanish)
+
+-------------------------------------------------------------------
 Mon Jun 29 07:25:48 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.2.6
