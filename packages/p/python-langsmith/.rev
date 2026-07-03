@@ -23,4 +23,20 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment></comment>
     <requestid>1304756</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8b2d39a99e46820e0f5f55bcd82a206a</srcmd5>
+    <version>0.9.3</version>
+    <time>1782916562</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362932</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f2766bd58a761033ec3d6d0058fa9f14</srcmd5>
+    <version>0.9.7</version>
+    <time>1783087455</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.9.7 (resubmit of declined SR 1363554, which was at 0.9.6). Re the decline reason ('format of the changes entries, missing newlines'): the .changes was verified format-clean entry-by-entry (67-dash separators, date headers, blank-line placement, EOF newline) - if the concern persists please point at the specific entry and I'll fix it promptly. The per-version entries correspond to committed devel revisions. Also in this respin: OpenTelemetry span unit tests are now enabled (new BuildRequires python-opentelemetry-sdk, %check 332 passed on py311/py313/py314), and the obsolete %{?sle15_python_module_pythons} construct is dropped (SLE 15 / Leap 15.x out of support). No mandatory dependency changes (0.9.7 only adds an optional google-adk-live extra). noarch, 0 rpmlint badness, source_validator green.</comment>
+    <requestid>1363624</requestid>
+  </revision>
 </revisionlist>

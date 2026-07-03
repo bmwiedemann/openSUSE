@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Jul  3 06:39:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.7:
+  * Add an optional Google ADK Live voice tracing integration
+    (new google-adk-live extra; not enabled in this package)
+  * Attribute voice traces via ls_integration metadata and set
+    provider/model metadata on voice LLM runs for cost tracking
+- Enable the OpenTelemetry span utility unit tests (new
+  BuildRequires on python-opentelemetry-sdk)
+- Drop obsolete %{?sle15_python_module_pythons} (SLE 15 /
+  Leap 15.x is out of support)
+
+-------------------------------------------------------------------
+Thu Jul  2 16:43:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.6:
+  * Add optional voice tracing integrations for Pipecat, LiveKit
+    and OpenAI Realtime (new extras; not enabled in this package)
+  * Record thread_id in trace metadata for Claude Agent SDK runs
+  * Fix serialization of trace dictionaries with tuple keys
+  * Guard OpenTelemetry span cleanup against exceptions during
+    teardown (gh#langchain-ai/langsmith-sdk#3080)
+- Skip new opentelemetry-dependent unit test file
+  (test_span_utils.py) in %check, consistent with the existing
+  skip policy for optional providers
+
+-------------------------------------------------------------------
+Thu Jul  2 05:59:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.5:
+  * Expose a datasets v2 resource accessor and a projects resource
+    accessor on the client.
+  * Apply the output anonymizer to a run's error field as well.
+  * Use the current-project issues endpoint.
+  * Google ADK integration: capture LLM inputs after the
+    before_model_callback runs and set the tool span as the active
+    tracing context in wrap_tool_run_async.
+  * Sandbox: raise all WebSocket handshake failures as
+    SandboxConnectionError.
+  * Raise the minimum supported LangSmith backend to 0.16.9rc1.
+
+-------------------------------------------------------------------
+Sun Jun 28 20:31:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.3:
+  * Client library for the LangSmith observability and evaluation
+    platform; many releases of fixes and new tracing/evaluation
+    features since 0.1.52.
+  * websockets is now a core runtime dependency.
+- Switch Source to the PyPI sdist (langsmith-%{version}.tar.gz)
+  instead of the GitHub archive; the sdist ships only the Python
+  client and its unit tests.
+- Build with the hatchling backend (upstream moved away from poetry).
+- Drop the langsmith console-script and its update-alternatives
+  handling; upstream no longer ships a CLI entry point.
+- Add new runtime dependencies required by this release: python-anyio,
+  python-distro, python-sniffio, python-typing_extensions,
+  python-uuid-utils, python-websockets and python-xxhash; tighten the
+  existing dependency floors.
+
+-------------------------------------------------------------------
 Mon Sep  1 03:04:05 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on attrs and pytest-asyncio.

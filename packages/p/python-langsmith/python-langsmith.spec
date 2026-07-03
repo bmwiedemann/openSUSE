@@ -1,7 +1,7 @@
 #
 # spec file for package python-langsmith
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,33 +16,55 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-langsmith
-Version:        0.1.52
+Version:        0.9.7
 Release:        0
-Summary:        Interact with langsmitt platform
+Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
 URL:            https://github.com/langchain-ai/langsmith-sdk
-Source:         https://github.com/langchain-ai/langsmith-sdk/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/l/langsmith/langsmith-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires:       python-anyio >= 3.5.0
+Requires:       python-distro >= 1.7.0
+Requires:       python-httpx >= 0.23.0
+Requires:       python-orjson >= 3.9.14
+Requires:       python-packaging >= 23.2
+Requires:       python-pydantic >= 2
+Requires:       python-requests >= 2.0.0
+Requires:       python-requests-toolbelt >= 1.0.0
+Requires:       python-sniffio >= 1.1
+Requires:       python-typing_extensions >= 4.0.0
+Requires:       python-uuid-utils >= 0.12.0
+Requires:       python-websockets >= 15.0
+Requires:       python-xxhash >= 3.0.0
+Requires:       python-zstandard >= 0.23.0
+BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module anyio >= 3.5.0}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module dataclasses-json}
+BuildRequires:  %{python_module distro >= 1.7.0}
 BuildRequires:  %{python_module freezegun}
-BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module marshmallow}
-BuildRequires:  %{python_module orjson}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module httpx >= 0.23.0}
+BuildRequires:  %{python_module multipart}
+BuildRequires:  %{python_module opentelemetry-sdk >= 1.30.0}
+BuildRequires:  %{python_module orjson >= 3.9.14}
+BuildRequires:  %{python_module packaging >= 23.2}
+BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module typing-inspect}
-BuildRequires:  fdupes
-Requires:       python-orjson
-Requires:       python-pydantic
-Requires:       python-requests
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
-BuildArch:      noarch
+BuildRequires:  %{python_module requests >= 2.0.0}
+BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
+BuildRequires:  %{python_module sniffio >= 1.1}
+BuildRequires:  %{python_module typing_extensions >= 4.0.0}
+BuildRequires:  %{python_module uuid-utils >= 0.12.0}
+BuildRequires:  %{python_module websockets >= 15.0}
+BuildRequires:  %{python_module xxhash >= 3.0.0}
+BuildRequires:  %{python_module zstandard >= 0.23.0}
+# /SECTION
 %python_subpackages
 
 %description
@@ -51,33 +73,35 @@ intelligent agents. It works with any LLM Application, including a native
 integration with the LangChain Python and LangChain JS open source libraries.
 
 %prep
-%autosetup -n langsmith-sdk-%{version}
+%autosetup -p1 -n langsmith-%{version}
+# Drop the doctest conftest that pulls in vcrpy and patches network libraries
+rm -f conftest.py
 
 %build
-cd python
 %pyproject_wheel
 
 %install
-cd python
 %pyproject_install
-%python_clone -a %{buildroot}/%{_bindir}/langsmith
-%python_expand %fdupes %{buildroot}/%{$python_sitelib}/
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-cd python/tests/unit_tests
-%pytest -k 'not test_client_gc and not test_git_info and not test_as_runnable'
-
-%post
-%{python_install_alternative langsmith}
-
-%postun
-%{python_uninstall_alternative langsmith}
+export LANGSMITH_TRACING=false
+# Run unit tests only; skip integration/network tests and modules that need
+# optional providers (LLM wrappers, sandbox websockets client, CLI) or
+# langchain-core (which depends on langsmith -> build cycle);
+# test_hybrid_tracing.py carries an upstream module-level pytest.skip.
+%pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py -k 'not test_client_gc and not test_git_info and not test_as_runnable'
+# Recompile the installed modules as hash-based bytecode: this package ships
+# many modules, so timestamp-based .pyc desync from the reproducibility-clamped
+# .py mtimes and trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langsmith
+# Re-link the freshly compiled identical .pyc/.opt-1.pyc (brp-python-hardlink
+# already ran before %%check).
+%python_expand %fdupes %{buildroot}%{$python_sitelib}/langsmith
 
 %files %{python_files}
-%license LICENSE
 %doc README.md
 %{python_sitelib}/langsmith
 %{python_sitelib}/langsmith-%{version}.dist-info
-%python_alternative %{_bindir}/langsmith
 
 %changelog
