@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:26:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add girara-tests-unset-xdg-vars.patch: run the utils-with-home
+  test with all XDG_* environment variables unset, so it no longer
+  fails in build environments that export XDG_CONFIG_HOME
+  (backport of upstream commit 0f653f2c4e3e)
+- Re-enable the utils-with-home test: drop the meson-version
+  dependent test-list skip hack from %check — with the patch
+  applied the test passes everywhere
+
+-------------------------------------------------------------------
 Fri May 29 08:43:54 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Cleanup spec file with spec-cleaner

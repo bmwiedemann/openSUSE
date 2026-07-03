@@ -1,0 +1,42 @@
+From: Sebastian Ramacher <sebastian@ramacher.at>
+Date: Thu, 5 Feb 2026 08:24:34 +0100
+Subject: Unset XDG variables to fix tests with custom HOME
+
+Backport of upstream commit 0f653f2c4e3e3d5944389f4f2a772e8f71582c9a,
+rebased onto the 2026.02.04 release tarball (upstream applied it on top
+of post-release refactoring of tests/meson.build).
+
+The utils-with-home test runs with HOME=/home/test and expects the
+XDG default paths to be derived from it. If the ambient build
+environment exports XDG_CONFIG_HOME (as the SLE/Leap 16 buildroots do:
+XDG_CONFIG_HOME=/home/abuild/.config), GLib prefers the non-empty
+XDG_CONFIG_HOME over $HOME, so the test's expected value no longer
+matches and the test aborts:
+  ERROR:../tests/test_utils.c:104:xdg_path_impl: assertion failed
+  (output == expected): ("/home/test/.config" == "/home/abuild/.config")
+Run the test through env(1) with all XDG_* variables unset.
+--- a/tests/meson.build
++++ b/tests/meson.build
+@@ -39,12 +39,21 @@
+     ]
+   )
+ 
++  envp = find_program('env', required: true)
+   utils = executable('test_utils', files('test_utils.c'),
+     dependencies: build_dependencies + test_dependencies,
+     include_directories: include_directories,
+     c_args: defines + flags
+   )
+-  test('utils-with-home', utils,
++  test('utils-with-home', envp,
++    args: [
++      '-uXDG_CONFIG_HOME',
++      '-uXDG_DATA_HOME',
++      '-uXDG_CONFIG_DIRS',
++      '-uXDG_DATA_DIRS',
++      '-uXDG_CACHE_HOME',
++      utils
++    ],
+     timeout: 60*60,
+     protocol: 'tap',
+     env: [

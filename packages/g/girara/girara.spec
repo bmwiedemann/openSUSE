@@ -30,6 +30,8 @@ URL:            https://pwmt.org/projects/girara
 Source0:        %{url}/download/girara-%{version}.tar.xz
 Source1:        %{url}/download/girara-%{version}.tar.xz.asc
 Source2:        girara.keyring
+# PATCH-FIX-UPSTREAM girara-tests-unset-xdg-vars.patch -- Unset XDG_* variables so tests work with custom HOME (upstream commit 0f653f2c4e3e)
+Patch0:         girara-tests-unset-xdg-vars.patch
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
@@ -84,7 +86,7 @@ BuildArch:      noarch
 Doxygen generated documentations for girara-devel.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %{?with_gcc15:export CC=gcc-15}
@@ -98,10 +100,7 @@ cp -a %{_vpath_builddir}/doc/html %{buildroot}%{_docdir}/girara-devel-doxygen/
 %fdupes -s %{buildroot}%{_docdir}/girara-devel-doxygen/
 
 %check
-test_list=$(meson test --list -C %{_vpath_builddir})
-%{?with_gcc15:test_list=${test_list//utils-with-home}}
-%{!?with_gcc15:test_list=${test_list//girara:utils-with-home}}
-%meson_test $test_list
+%meson_test
 
 %ldconfig_scriptlets -n %{libname}%{so_ver}
 

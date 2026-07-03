@@ -185,4 +185,12 @@
   (a -doc package should not require -devel)</comment>
     <requestid>1355830</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>c7291e973ec32056b6559a16bc99d96f</srcmd5>
+    <version>2026.02.04</version>
+    <time>1783087470</time>
+    <user>anag_factory</user>
+    <comment>Fix and re-enable the utils-with-home test: add girara-tests-unset-xdg-vars.patch (backport of upstream commit 0f653f2c4e3e) so the test survives build environments that export XDG_CONFIG_HOME via aaa_base's pam_env xdg.conf, and drop the meson-version-dependent test-list skip hack from %check — the test now actually runs and passes (it was silently skipped on Factory's meson 1.11, and failed on Leap 16.1's meson 1.8.1 where the hack no-ops; same patch already on the in-flight Leap 16.1 PR). Verified: all 3 meson suites pass in the Factory buildroot, 0 rpmlint badness.</comment>
+    <requestid>1363542</requestid>
+  </revision>
 </revisionlist>
