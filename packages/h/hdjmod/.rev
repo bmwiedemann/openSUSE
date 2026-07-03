@@ -260,4 +260,13 @@ I have posted an introducing mail to the factory mailinglist. You can find it at
   * Compatibility with Linux 6.16</comment>
     <requestid>1287557</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>8b3b160fd7795e3a25865e5ef0e4d989</srcmd5>
+    <version>1.39</version>
+    <time>1783087512</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.39
+  * Compatibility with Linux 7.2</comment>
+    <requestid>1363575</requestid>
+  </revision>
 </revisionlist>
