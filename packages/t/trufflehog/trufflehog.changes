@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 03 04:58:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.8:
+  * Include encoded resume info instead of clobbering it (#5110)
+  * fixed syntax error (#5109)
+  * [INS-334] Octopus Deploy detector (#4787)
+  * [INS-465] Skip unverified JWT Detector results when feature flag is enabled (#5072)
+  * Add prometheus metrics for engine channels and workers (#5095)
+  * fix(azuresastoken): match SAS tokens regardless of parameter order (#5043)
+  * removed "unauthorized" as exception for rotated graphana secrets (#5068)
+
+-------------------------------------------------------------------
 Wed Jul 01 05:53:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.7:
