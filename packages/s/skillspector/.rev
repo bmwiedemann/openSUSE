@@ -7,4 +7,12 @@
     <comment>New package skillspector (security scanner for AI agent skills) + -mcp subpackage. Resubmit of the declined SR 1362984: source now comes from a reproducible obs_scm git snapshot of upstream main (2.3.9~git20260701.326a2b48, commit 326a2b48) because NVIDIA/skillspector publishes no git tags, no GitHub releases and nothing on PyPI. source_validator passes. Final piece of the langchain/langgraph cone: requires langchain-core, langgraph, langsmith&gt;=0.7.30 etc. Please co-stage with the sibling devel:languages:python cone SRs by pluskalm (Staging:adi:38) and python-langsmith (SR 1362932, science:machinelearning-&gt;Factory) or the build is unresolvable. Builds clean (noarch, 0 rpmlint badness, %check 1249 passed) where the stack is available.</comment>
     <requestid>1363013</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>52dc3c93cc9c11f9a6b32330338e8fcb</srcmd5>
+    <version>2.3.9~git20260701.326a2b48</version>
+    <time>1783087859</time>
+    <user>anag_factory</user>
+    <comment>Relax three over-strict runtime dependency floors that upstream set at initial release as uv-lock pin-inflation (never touched in 18 later commits), not real API requirements: pydantic &gt;=2.12.0-&gt;2.11.7, rich &gt;=14.3.0-&gt;14.0.0, typer &gt;=0.23.0-&gt;0.16.0. The code uses only long-stable APIs of each; verified against Leap 16.0's shipped versions (pydantic 2.11.7 / rich 14.0.0 / typer 0.16.0 / click 8.2.1, Python 3.13) with the full offline unit suite green (1249 passed) plus a CLI smoke test. The typer &lt;0.24 cap (click/semgrep clash) is unchanged. No functional change on Factory/TW (which ship newer). Lets the package install on Leap 16.0.</comment>
+    <requestid>1363651</requestid>
+  </revision>
 </revisionlist>

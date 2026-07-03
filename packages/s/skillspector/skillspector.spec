@@ -43,11 +43,11 @@ BuildRequires:  %{python_module langsmith >= 0.7.30}
 BuildRequires:  %{python_module mcp >= 1.2.0}
 BuildRequires:  %{python_module openai >= 2.25.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic >= 2.12.0}
+BuildRequires:  %{python_module pydantic >= 2.11.7}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module rich >= 14.3.0}
-BuildRequires:  %{python_module typer >= 0.23.0}
+BuildRequires:  %{python_module rich >= 14.0.0}
+BuildRequires:  %{python_module typer >= 0.16.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module yara >= 4.5.0}
 BuildRequires:  fdupes
@@ -64,11 +64,11 @@ Requires:       %{primary_python}-langgraph >= 1.0.10
 Requires:       %{primary_python}-langgraph-cli >= 0.4.14
 Requires:       %{primary_python}-langsmith >= 0.7.30
 Requires:       %{primary_python}-openai >= 2.25.0
-Requires:       %{primary_python}-pydantic >= 2.12.0
-Requires:       %{primary_python}-rich >= 14.3.0
+Requires:       %{primary_python}-pydantic >= 2.11.7
+Requires:       %{primary_python}-rich >= 14.0.0
 # Upstream caps typer < 0.24 to avoid a click clash with semgrep; that cap is
 # environment-specific, so only the floor is enforced here.
-Requires:       %{primary_python}-typer >= 0.23.0
+Requires:       %{primary_python}-typer >= 0.16.0
 Requires:       %{primary_python}-yara >= 4.5.0
 BuildArch:      noarch
 

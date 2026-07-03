@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul  3 09:15:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Relax over-strict dependency floors set by upstream at initial
+  release (pin-inflation, not API requirements; the code only uses
+  long-stable APIs of all three):
+  * pydantic >= 2.12.0 -> 2.11.7
+  * rich >= 14.3.0 -> 14.0.0
+  * typer >= 0.23.0 -> 0.16.0
+- Verified against Leap 16.0's shipped versions (pydantic 2.11.7,
+  rich 14.0.0, typer 0.16.0, click 8.2.1, Python 3.13): full
+  offline unit suite passes (1249 passed, 12 skipped, 6 xfailed)
+  and the CLI entry point works.
+
+-------------------------------------------------------------------
 Wed Jul  1 14:36:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch source acquisition to an obs_scm git snapshot of upstream
