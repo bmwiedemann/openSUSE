@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/minamijoyo/tfupdate</param>
-              <param name="changesrevision">d78272a9f66b38bfc4d8b06140eba0076d722b1d</param></service></servicedata>
+              <param name="changesrevision">d78272a9f66b38bfc4d8b06140eba0076d722b1d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/minamijoyo/tfupdate.git</param>
+              <param name="changesrevision">083920064e1145bf2a36a99c52a99174653a4f9a</param></service></servicedata>

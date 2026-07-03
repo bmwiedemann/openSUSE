@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 03 04:57:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.0:
+  * 0839200 Bump version to v0.10.0
+  * cbac317 Omit the platform args if the registry supports h1
+    hashes in testacc
+  * 658c6c0 Add support for OpenTofu v1.12
+  * cc0fd26 Fix lint issues
+  * a3fed23 Add ProviderPackageMetadata method to ProviderLockAPI
+  * 816afbe Rename ProviderDownloaderAPI to ProviderLockAPI
+  * b432c5d Sort the platforms to stabilize the results
+  * 48282ea Add test for fetchProviderPackageMetadata
+  * 4313d13 Fix the key of the ProviderVersion map to the filename
+  * 49183e3 Skip downloading binaries if the registry supports h1
+    hashes
+  * 8b21af4 Add hashes to provider package metadata response for
+    OpenTofu
+
+-------------------------------------------------------------------
 Wed May 06 06:14:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.4:

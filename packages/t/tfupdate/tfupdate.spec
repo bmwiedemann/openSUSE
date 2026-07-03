@@ -17,7 +17,7 @@
 
 
 Name:           tfupdate
-Version:        0.9.4
+Version:        0.10.0
 Release:        0
 Summary:        Update version constraints in your Terraform configurations
 License:        MPL-2.0
