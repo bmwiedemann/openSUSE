@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:33:10 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.10.2
+  * bugfix: lp#2156412 safety approve option mixup
+  * bugfix: lp#2156372 currency modification date is not persisted
+    due to extra space in code
+  * bugfix: lp#2155966 main window different colours for 0.00
+    account balances
+  * bugfix: lp#2155959 cannot inherit a locked reconciled
+    transaction
+  * bugfix: lp#2155844 quick search no longer works in account
+    window (ledger)
+
+-------------------------------------------------------------------
 Mon Jun  8 14:10:50 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.10.1

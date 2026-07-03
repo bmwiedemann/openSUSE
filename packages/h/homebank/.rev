@@ -717,4 +717,12 @@
 - Drop Leap 15 workarounds because Leap 15 is EOL (forwarded request 1358047 from Kieltux)</comment>
     <requestid>1358130</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>10a140c43dbddf9f2346c08bd58bde2d</srcmd5>
+    <version>5.10.2</version>
+    <time>1783087822</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363626</requestid>
+  </revision>
 </revisionlist>
