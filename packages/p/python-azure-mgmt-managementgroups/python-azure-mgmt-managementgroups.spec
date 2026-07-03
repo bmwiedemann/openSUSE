@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-managementgroups
-Version:        1.1.0
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure Management Groups Client Library
 License:        MIT
