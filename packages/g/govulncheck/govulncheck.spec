@@ -17,7 +17,7 @@
 
 
 Name:           govulncheck
-Version:        1.3.0
+Version:        1.5.0
 Release:        0
 Summary:        CLI tool to report known CVE vulnerabilities in Go source code and binaries
 License:        BSD-3-Clause

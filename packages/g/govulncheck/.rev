@@ -323,4 +323,25 @@
   * internal/scan: exit after printing version info (forwarded request 1349137 from jfkw)</comment>
     <requestid>1349138</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f60d312801638f2023fa8582d60f3d5d</srcmd5>
+    <version>1.4.0</version>
+    <time>1781879762</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * cmd/govulncheck: fix exit code propagation for wrapped scan errors
+  * go.mod: update golang.org/x dependencies
+  * go.mod: update golang.org/x dependencies (forwarded request 1360394 from jfkw)</comment>
+    <requestid>1360395</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>34840cacf83440b9ed8f489f0ecf3d21</srcmd5>
+    <version>1.5.0</version>
+    <time>1783087519</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.0:
+  * go.mod: update golang.org/x dependencies
+  * all: update to x/tools@0602b30930e3 (forwarded request 1363582 from jfkw)</comment>
+    <requestid>1363583</requestid>
+  </revision>
 </revisionlist>
