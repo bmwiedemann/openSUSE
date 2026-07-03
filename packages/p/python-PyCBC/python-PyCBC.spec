@@ -20,24 +20,21 @@
 %if "%{flavor}" == "test"
 %define psuffix -test
 %bcond_without test
+# Test dependency python-dask no longer builds for python 3.11
+%define skip_python311 1
 %else
 %define psuffix %{nil}
 %bcond_with test
 %endif
 
-# Python2 no longer supported by PyCBC
-%define skip_python2 1
-
 %define modname PyCBC
 Name:           python-PyCBC%{psuffix}
-Version:        2.5.1
+Version:        2.11.0
 Release:        0
 Summary:        Core library to analyze gravitational-wave data
 License:        GPL-3.0-or-later
 URL:            http://www.pycbc.org/
 Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM python-PyCBC-tests-numpy-2.0-compat.patch badshah400@gmail.com -- Fix appending to numpy.broadcast_arrays output for numpy >= 2.0
-Patch1:         python-PyCBC-tests-numpy-2.0-compat.patch
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
@@ -142,6 +139,7 @@ sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/
 # test_waveform.py requires pykerr, openSUSE don't have packages for it
 # can't use pytest --ignore because of a special arg parser in test/utils.py
 rm -r \
+   test/test_bhspec.py \
    test/test_chisq.py \
    test/test_coordinates_space.py \
    test/test_dq.py \

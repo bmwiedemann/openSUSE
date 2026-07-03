@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Wed Jul  1 22:31:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.11.0:
+  * No release notes.
+- Changes from version 2.10.0:
+  * Adding functionalities to create calibration config files
+    [gh#gwastro/pycbc#4537].
+  * Avoid unnecessary SNR (re)normalization in multi_inspiral
+    [gh#gwastro/pycbc#5157].
+  * fix a bug in the mutli loglikelihood method of the gated
+    gaussian noise class [gh#gwastro/pycbc#5159].
+  * Precision issue in pycbc_plot_singles_timefreq
+    [gh#gwastro/pycbc#5164].
+  * Expanding help string of --filter-string
+    [gh#gwastro/pycbc#5166].
+  * Optimize the sgchisq calculation [gh#gwastro/pycbc#5163].
+  * multi_inspiral: avoid repeated power chi^2 calculations in the
+    critical loop [gh#gwastro/pycbc#5158].
+  * Add functionality to sample coalescence time in detector frame
+    [gh#gwastro/pycbc#5165].
+  * Add script for calculating Savage-Dickey ratio
+    [gh#gwastro/pycbc#5167].
+  * PyGRB: mark minifollowup subworkflows as parents of
+    results_page jobs [gh#gwastro/pycbc#5169].
+  * Improve HDF bank splitter [gh#gwastro/pycbc#5172].
+  * Implement cached memory in eventmgr [gh#gwastro/pycbc#5154].
+  * add gwtc4 [gh#gwastro/pycbc#5174].
+  * Upgrade of pycbc_pygrb_plot_skygrid script
+    [gh#gwastro/pycbc#5173].
+  * first pass to drop 3.9 and 3.10 support
+    [gh#gwastro/pycbc#5182].
+  * Expand PyGRB tables [gh#gwastro/pycbc#5183].
+  * Update pkg_resources (to be deprecated) to use importlib for
+    plugins [gh#gwastro/pycbc#5181].
+  * Fix rotted link to LALSuite documentation
+    [gh#gwastro/pycbc#5187].
+  * Fixes to PyGRB found-missed plot [gh#gwastro/pycbc#5178].
+  * Update to ligo.skymap 2.1.1 [gh#gwastro/pycbc#5057].
+  * Add python 3.13 [gh#gwastro/pycbc#5184].
+  * Add functionality to combine posteriors via evidence sampling
+    in extract_samples [gh#gwastro/pycbc#5168].
+  * Pin dynesty to. <3.0 until the API interface can be updated
+    [gh#gwastro/pycbc#5195].
+  * Deprecation fixes [gh#gwastro/pycbc#5186].
+  * Remove pin on igwn-ligolw [gh#gwastro/pycbc#5196].
+  * Use pregenerated injection frame file to perform pregenerated
+    injections (resurrected) [gh#gwastro/pycbc#5161].
+  * Fix PyGRB clustering [gh#gwastro/pycbc#5199].
+  * Remove SNR triggers not close to injection with
+    injfilterrejector [gh#gwastro/pycbc#5153].
+  * Avoid symlinking OS-wide Python in release virtualenvs
+    [gh#gwastro/pycbc#5200].
+  * enhance legend setting in pycbc_inference_plot_posterior
+    [gh#gwastro/pycbc#4964].
+  * New column in PyGRB injections tables [gh#gwastro/pycbc#5207].
+  * Update GraceDB test so that it doesn't try to use x509
+    credentials [gh#gwastro/pycbc#5202].
+  * Correction of pygrb_plot_skygrid script to plot legacy case
+    [gh#gwastro/pycbc#5204].
+  * Add Effective precession spin chi_p to
+    pycbc_pygrb_plot_injs_results [gh#gwastro/pycbc#5203].
+  * Fix taper issue [gh#gwastro/pycbc#5191].
+  * Update setup.py [gh#gwastro/pycbc#5211].
+- Drop python-PyCBC-tests-numpy-2.0-compat.patch: upstreamed.
+- Disable test TestBHSpecModel since it requires network.
+
+-------------------------------------------------------------------
+Wed Jul  1 22:19:10 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Disable test flavour for python3.11 as dependency python-dask is
+  no longer built for python3.11 either.
+
+-------------------------------------------------------------------
 Fri May 22 11:48:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Drop a couple of poorly designed tests that error out with
