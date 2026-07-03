@@ -6547,4 +6547,12 @@ Chromium 148.0.7778.96 (earyly stable release 2026-04-29)</comment>
 boo#1269061 moved to the new release because 149.0.7827.196 did not contain security content</comment>
     <requestid>1361903</requestid>
   </revision>
+  <revision rev="529" vrev="1">
+    <srcmd5>395f41bd8d6ab58f042620363833f9ff</srcmd5>
+    <version>150.0.7871.46</version>
+    <time>1783087448</time>
+    <user>anag_factory</user>
+    <comment>Chromium 150 (150.0.7871.46) stable (boo#1270051)</comment>
+    <requestid>1363504</requestid>
+  </revision>
 </revisionlist>

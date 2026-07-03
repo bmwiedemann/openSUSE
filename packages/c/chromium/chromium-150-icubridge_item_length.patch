@@ -1,0 +1,10 @@
+--- chromium-150.0.7871.13/base/i18n/icubridge/date_time_formatter.h	2026/06/15 14:01:16	1.1
++++ chromium-150.0.7871.13/base/i18n/icubridge/date_time_formatter.h	2026/06/15 14:01:38
+@@ -201,6 +201,7 @@
+   TimePrecision time_precision_ = TimePrecision::kNone;
+   std::optional<base::HourClockType> hour_clock_type_;
+   std::optional<base::AmPmClockType> am_pm_clock_type_;
++  ItemLength length = ItemLength::kNone;
+ };
+ 
+ // Namespace containing the primary entry points for date/time formatting.

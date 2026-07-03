@@ -1,0 +1,40 @@
+--- chromium-150.0.7871.13/media/filters/ffmpeg_demuxer.cc	2026/06/13 13:31:35	1.1
++++ chromium-150.0.7871.13/media/filters/ffmpeg_demuxer.cc	2026/06/13 13:35:30
+@@ -341,6 +341,7 @@
+   return UNSAFE_BUFFERS(base::span<const uint8_t>(side_data, side_data_size));
+ }
+ 
++#if 0
+ std::vector<uint8_t> GetAgtmSideData(const AVPacket* packet) {
+   std::vector<uint8_t> data;
+   size_t side_data_size = 0;
+@@ -362,6 +363,7 @@
+   }
+   return data;
+ }
++#endif
+ 
+ void FFmpegDemuxerStream::EnqueuePacket(ScopedAVPacket packet) {
+   DCHECK(task_runner_->RunsTasksInCurrentSequence());
+@@ -432,7 +434,9 @@
+ 
+   base::span<const uint8_t> matroska_block_additional_side_data =
+       GetMatroskaBlockAdditionalSideData(packet.get());
++#if 0
+   std::vector<uint8_t> agtm_side_data = GetAgtmSideData(packet.get());
++#endif
+ 
+   std::unique_ptr<DecryptConfig> decrypt_config;
+   size_t data_offset = 0;
+@@ -496,9 +500,11 @@
+               matroska_block_additional_side_data.subspan(8u));
+     }
+   }
++#if 0
+   if (agtm_side_data.size() > 0) {
+     buffer->WritableSideData().hdr_metadata.SetSerializedAgtm(agtm_side_data);
+   }
++#endif
+ 
+   if (decrypt_config) {
+     buffer->set_decrypt_config(std::move(decrypt_config));

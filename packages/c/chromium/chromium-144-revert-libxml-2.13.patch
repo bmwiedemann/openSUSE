@@ -1,6 +1,6 @@
---- chromium-144.0.7534.0/third_party/blink/renderer/core/xml/parser/xml_document_parser.cc	2025/11/25 11:00:53	1.1
-+++ chromium-144.0.7534.0/third_party/blink/renderer/core/xml/parser/xml_document_parser.cc	2025/11/25 11:01:09
-@@ -617,6 +617,10 @@
+--- chromium-150.0.7871.13/third_party/blink/renderer/core/xml/parser/xml_document_parser.cc	2026/06/12 12:05:01	1.1
++++ chromium-150.0.7871.13/third_party/blink/renderer/core/xml/parser/xml_document_parser.cc	2026/06/12 12:09:44
+@@ -627,6 +627,10 @@
  }
  
  static bool ShouldAllowExternalLoad(const KURL& url) {
@@ -11,11 +11,10 @@
    String url_string = url.GetString();
  
    // libxml should not be configured with catalogs enabled, so it
-@@ -756,18 +760,7 @@
-   EnsureLibXMLInitialized();
+@@ -771,17 +775,7 @@
    xmlParserCtxtPtr parser =
        xmlCreatePushParserCtxt(handlers, nullptr, nullptr, 0, nullptr);
--
+ 
 -  int32_t options = XML_PARSE_HUGE | XML_PARSE_NOENT;
 -
 -  // See https://crbug.com/455813733: We choose to prevent network loads of
@@ -31,7 +30,7 @@
    parser->_private = user_data;
    return base::AdoptRef(new XMLParserContext(parser));
  }
-@@ -793,17 +786,8 @@
+@@ -807,17 +801,9 @@
    // XML_PARSE_NODICT: default dictionary option.
    // XML_PARSE_NOENT: force entities substitutions.
    // XML_PARSE_HUGE: don't impose arbitrary limits on document size.
@@ -44,7 +43,7 @@
 -  if (RuntimeEnabledFeatures::XMLNoExternalEntitiesEnabled()) {
 -    options |= XML_PARSE_NO_XXE;
 -  }
--
+ 
 -  xmlCtxtUseOptions(parser, options);
 +  xmlCtxtUseOptions(parser,
 +                    XML_PARSE_NODICT | XML_PARSE_NOENT | XML_PARSE_HUGE);

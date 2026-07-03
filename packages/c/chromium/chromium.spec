@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        149.0.7827.200
+Version:        150.0.7871.46
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -204,6 +204,8 @@ Patch398:       chromium-147-comment_safe_assert.patch
 Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 Patch400:       chromium-149-profile_no_const.patch
 Patch401:       chromium-149-strip-path.patch
+Patch402:       chromium-150-toolchain.patch
+Patch403:       chromium-150-sysroot.patch
 Patch410:       disable-ai.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
@@ -246,7 +248,6 @@ Patch497:       ppc-fedora-0001-Implement-support-for-ppc64-on-Linux.patch
 Patch498:       ppc-fedora-0001-Implement-support-for-PPC64-on-Linux.patch
 Patch499:       ppc-fedora-0001-Force-baseline-POWER8-AltiVec-VSX-CPU-features-when-.patch
 Patch501:       ppc-fedora-fix-rustc.patch
-Patch502:       ppc-fedora-fix-rust-linking.patch
 Patch503:       ppc-fedora-fix-breakpad-compile.patch
 Patch504:       ppc-fedora-fix-partition-alloc-compile.patch
 Patch505:       ppc-fedora-fix-study-crash.patch
@@ -282,6 +283,8 @@ Patch1040:      gtk-414.patch
 Patch1041:      gtk-414-2.patch
 # flac is too old
 Patch1050:      chromium-140-old-flac.patch
+# only in ffmpeg avutil >= 60.31
+Patch1051:      chromium-150-ffmpeg_no_agtm.patch
 # revert upstream patch ending in compile error
 # error: static assertion expression is not an integral constant expression
 Patch1060:       chromium-24264eefbfd3464161764f31a2752c5327719452.patch
@@ -295,6 +298,7 @@ Patch1062:       chromium-146-clang-19-crash.patch
 Patch1063:       chromium-bafd7d217b9e26edf3be8d20b1ff56bcea4b16ee.patch
 # error:  [44980s] ../components/enterprise/client_certificates/core/private_key_factory.cc:126:14: error: expression is not assignable
 Patch1064:       chromium-146-keyfactory.patch
+Patch1065:       chromium-150-icubridge_item_length.patch
 # error with llvm < 23
 # clang++: error: unknown argument: '-fsanitize-ignore-for-ubsan-feature=array-bounds'
 Patch1066:       chromium-146-ignore-for-ubsan.patch
@@ -431,7 +435,7 @@ BuildRequires:  pkgconfig(xtst)
 BuildRequires:  cargo%{rust_version}
 BuildRequires:  rust%{rust_version}
 # END add rust BR
-BuildRequires:  rust-bindgen >= 0.71
+BuildRequires:  rust-bindgen >= 0.72
 Requires:       xdg-utils
 Requires(pre):  permissions
 Recommends:     noto-coloremoji-fonts
@@ -552,7 +556,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 %prep
 %setup -q -n %{rname}-%{version}
-# apply all patches up to 399
+# apply all patches up to 449
 %autopatch -p1 -M 449
 
 %ifarch ppc64le
@@ -576,12 +580,18 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1050
 %endif
 
+# GetAgtmSideData is only in libavutil >= 60.31, ffmpeg > 8.1
+%if %{with system_ffmpeg}
+%patch -p1 -P 1051
+%endif
+
 clang_version="$(clang --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1060
 %patch -p1 -P 1061
 %patch -p1 -P 1062
 %patch -p1 -R -P 1063
+%patch -p1 -P 1065
 %patch -p1 -P 1069
 fi
 %patch -p1 -P 1064
@@ -603,7 +613,7 @@ tar xf %{SOURCE4} && mv package third_party/node/node_modules/rollup
 %patch -p1 -P 1080
 
 # re-enabled if patch is outdated to regenerate in build environment
-%ifarch ppc64le_disabled
+%ifarch ppc64le
 pushd third_party/libaom
 git init
 git config --global user.email "build@host"
@@ -749,10 +759,10 @@ keeplibs=(
     third_party/compiler-rt
     third_party/content_analysis_sdk
     third_party/cpuinfo
+    third_party/crabbyavif
     third_party/crashpad
     third_party/crashpad/crashpad/third_party/lss
     third_party/crashpad/crashpad/third_party/zlib
-    third_party/crabbyavif
     third_party/crc32c
     third_party/cros_system_api
     third_party/d3
@@ -773,10 +783,10 @@ keeplibs=(
     third_party/devtools-frontend/src/front_end/third_party/lighthouse
     third_party/devtools-frontend/src/front_end/third_party/marked
     third_party/devtools-frontend/src/front_end/third_party/puppeteer
-    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/mitt
-    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/parsel-js
-    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/rxjs
-    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/esm/third_party/urlpattern-polyfill
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/third_party/mitt
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/third_party/parsel-js
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/third_party/rxjs
+    third_party/devtools-frontend/src/front_end/third_party/puppeteer/package/lib/third_party/urlpattern-polyfill
     third_party/devtools-frontend/src/front_end/third_party/wasmparser
     third_party/devtools-frontend/src/node_modules/fast-glob
     third_party/devtools-frontend/src/third_party
@@ -830,6 +840,7 @@ keeplibs=(
     third_party/libxml/chromium
     third_party/libzip
     third_party/lit
+    third_party/llvm-libc
     third_party/lottie
     third_party/lss
     third_party/lzma_sdk
@@ -857,6 +868,7 @@ keeplibs=(
     third_party/pdfium/third_party/libopenjpeg
     third_party/pdfium/third_party/libtiff
     third_party/perfetto
+    third_party/perfetto/protos/third_party/android
     third_party/perfetto/protos/third_party/chromium
     third_party/perfetto/protos/third_party/pprof
     third_party/perfetto/protos/third_party/simpleperf
@@ -932,9 +944,9 @@ keeplibs=(
     v8/third_party/rapidhash-v8
     v8/third_party/siphash
     v8/third_party/utf8-decoder
-    v8/third_party/valgrind
     v8/third_party/v8/builtins
     v8/third_party/v8/codegen
+    v8/third_party/valgrind
 )
 %if !%{with system_harfbuzz}
 keeplibs+=(

@@ -62,3 +62,34 @@
    }
    inflight_requests_.Remove(request_id);
    // TODO(crbug.com/40864997): remove the following DCHECK when the cause
+--- chromium-150.0.7871.13/gpu/command_buffer/service/raster_decoder.cc	2026/06/14 11:13:54	1.1
++++ chromium-150.0.7871.13/gpu/command_buffer/service/raster_decoder.cc	2026/06/14 11:31:46
+@@ -2974,7 +2974,7 @@
+ 
+   auto paint_buffer_opt =
+       GetSharedMemoryAsSpan(raster_shm_id, raster_shm_offset, raster_shm_size);
+-  if (paint_buffer_opt.value_or({}).empty()) {
++  if (paint_buffer_opt.value_or(std::span<uint8_t>{}).empty()) {
+     LOCAL_SET_GL_ERROR(GL_INVALID_VALUE, "glRasterCHROMIUM",
+                        "Can not read paint buffer.");
+     return error::kNoError;
+@@ -3025,7 +3025,7 @@
+       // Deserialize fonts before raster.
+       auto font_buffer_opt = GetSharedMemoryAsSpan<volatile uint8_t>(
+           font_shm_id, font_shm_offset, font_shm_size);
+-      if (font_buffer_opt.value_or({}).empty()) {
++      if (font_buffer_opt.value_or(std::span<uint8_t>{}).empty()) {
+         LOCAL_SET_GL_ERROR(GL_INVALID_VALUE, "glRasterCHROMIUM",
+                            "Can not read font buffer.");
+         return error::kNoError;
+--- chromium-150.0.7871.13/components/signin/public/base/hybrid_encryption_key.cc	2026/06/15 22:51:27	1.1
++++ chromium-150.0.7871.13/components/signin/public/base/hybrid_encryption_key.cc	2026/06/15 22:52:05
+@@ -73,7 +73,7 @@
+       crypto::keypair::PublicKey::FromPrivateKey(private_key_);
+   auto result =
+       crypto::hpke::Seal(kHpkeParams, pub, plaintext, /*info=*/{}, /*ad=*/{});
+-  return result.value_or({});
++  return result.value_or(std::vector<uint8_t>{});
+ }
+ 
+ HybridEncryptionKey::HybridEncryptionKey(base::span<const uint8_t> private_key)

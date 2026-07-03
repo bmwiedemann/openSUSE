@@ -1,0 +1,11 @@
+--- chromium-150.0.7838.0/build/toolchain/gcc_toolchain.gni	2026/05/16 16:15:10	1.1
++++ chromium-150.0.7838.0/build/toolchain/gcc_toolchain.gni	2026/05/16 16:15:43
+@@ -401,8 +401,6 @@
+         command = "cmd /s /c \"\"$python_path\" $tool_wrapper_path delete-file {{output}} && $command\""
+       } else {
+         command = "rm -f {{output}} && $command"
+-        inputs =
+-            [ get_path_info(rebase_path(ar, ".", root_out_dir), "abspath") ]
+       }
+ 
+       # Almost all targets build with //build/config/compiler:thin_archive which
