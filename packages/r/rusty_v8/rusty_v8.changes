@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:02:43 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 149.4.0:
+  * v149.4.0
+  * fix: shared-library-safe V8 TLS on Linux via v8_monolithic_for_shared_library
+- Update to version 149.3.0:
+  * v149.3.0
+  * fix: pass `flags` to `v8__ObjectTemplate__SetIndexedPropertyHandler` FFI (#1994)
+  * Add Isolate::SetIdle and CpuProfiler bindings (#2001)
+- Update to version 149.2.0:
+  * v149.2.0 (#1991)
+  * Revert "Add bindings for FunctionTemplate c_function_overloads (#1986)" (#1988)
+  * fix: keep isolate annex alive during teardown (#1978)
+  * v149.1.0 (#1987)
+  * Add bindings for FunctionTemplate c_function_overloads (#1986)
+- Update to version 149.0.0:
+  * v149.0.0 (#1985)
+  * Add bindings for V8 inspector async-task hooks and debug break-on-next-call (#1984)
+  * perf: add fused callback info parts (#1983)
+  * perf: Reduce Global handle liveness overhead (#1982)
+  * bump to 14.9 (#1975)
+  * Add bindings for String::Concat (#1973)
+  * Add bindings for Object::SetLazyDataProperty (#1972)
+- Update to version 147.4.0:
+  * v147.4.0 (#1969)
+  * perf: use simdutf for string conversion hot paths (#1967)
+  * Store IsolateHandle data in its own allocation (#1891)
+  * perf: cache IsolateAnnex pointer in scope structs (#1968)
+  * Use CARGO_CFG_TARGET_FEATURE to detect CRT linkage on MSVC (#1915)
+  * fix: enable linux shared-library-safe v8 tls mode by default (#1911)
+  * Include `build/rust/known-target-triples.txt` in Cargo.toml (#1950)
+  * v147.3.0 (#1966)
+  * feat: add Module::EvaluateForImportDefer and GetModuleNamespace with phase (#1965)
+- Update to version 147.2.1:
+  * v147.2.1 (#1964)
+  * fix: correct v8__String__NewExternalOneByte length parameter type (#1962)
+  * Rolling to V8 14.7.173.20 (#1963)
+  * v147.2.0 (#1961)
+  * Rolling to V8 14.7.173.19 (#1951)
+  * feat: implement NewEscapableHandleScope for Isolate (#1960)
+  * feat: add new_external_twobyte and new_external_twobyte_raw (#1959)
+  * v147.1.0 (#1956)
+  * Bump temporal_capi from 0.1.2 to 0.2.3 (#1955)
+  * Rolling to V8 14.7.173.13 (#1946)
+  * Fix memory leak in Function::get_script_origin (#1902)
+  * Rolling to V8 14.7.173.9 (#1943)
+  * Expose `FunctionTemplate::SetAccessorProperty` (#1942)
+- Update to version 147.0.0:
+  * v147.0.0 (#1941)
+  * update to v8 v14.7 (#1940)
+  * Rolling to V8 14.6.202.26 (#1938)
+  * v146.9.0 (#1937)
+  * Rolling to V8 14.6.202.24 (#1923)
+  * fix: add simdutf builds for Windows targets in CI (#1936)
+- Update to version 146.8.0:
+  * v146.8.0 (#1935)
+  * feat: transfer foreground task ownership to Rust in PlatformImpl (#1934)
+  * feat: expose `total_allocated_bytes` in `HeapStatistics` (#1933)
+  * v146.7.0 (#1932)
+  * feat: expose simdutf bindings behind cargo feature (#1928)
+  * fix: correct ExternalOneByteString destructor memory accounting (#1931)
+  * v146.6.0 (#1930)
+  * feat: custom Node domains support in Inspector (#1904)
+  * v146.5.0 (#1929)
+  * feat: zero-copy string access via ValueView and allocation-reuse APIs (#1927)
+- Update to version 146.3.0
+- Update to version 146.1.0
+  * Rolling to V8 14.6.202.6 (#1913)
+  * Rolling to V8 14.6.202.4 (#1910)
+  * add Promise::MarkAsHandled (#1912)
+- Refresh compiler-rt-adjust-paths.patch
+- Add disable-flags-unsupported-by-clang.patch and fix_bindgen_generation.patch
+
+-------------------------------------------------------------------
 Thu Feb 19 01:20:50 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Remove generated directory called "false"

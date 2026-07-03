@@ -1,0 +1,44 @@
+Index: rusty_v8-149.0.0/build/config/compiler/BUILD.gn
+===================================================================
+--- rusty_v8-149.0.0.orig/build/config/compiler/BUILD.gn
++++ rusty_v8-149.0.0/build/config/compiler/BUILD.gn
+@@ -601,7 +601,6 @@ config("compiler") {
+     # Flags for diagnostics.
+     cflags += [ "-fcolor-diagnostics" ]
+     if (!is_win) {
+-      cflags += [ "-fdiagnostics-show-inlining-chain" ]
+     } else {
+       # Combine after https://github.com/llvm/llvm-project/pull/192241
+       cflags += [ "/clang:-fdiagnostics-show-inlining-chain" ]
+@@ -636,13 +635,6 @@ config("compiler") {
+       ]
+     }
+ 
+-    # The performance improvement does not seem worth the risk. See
+-    # https://crbug.com/484082200 for background and https://crrev.com/c/7593035
+-    # for discussion.
+-    if (!is_wasm) {
+-      cflags += [ "-fno-lifetime-dse" ]
+-    }
+-
+     # TODO(hans): Remove this once Clang generates better optimized debug info
+     # by default. https://crbug.com/765793
+     cflags += [
+Index: rusty_v8-149.0.0/build/config/sanitizers/sanitizers.gni
+===================================================================
+--- rusty_v8-149.0.0.orig/build/config/sanitizers/sanitizers.gni
++++ rusty_v8-149.0.0/build/config/sanitizers/sanitizers.gni
+@@ -534,13 +534,6 @@ template("ubsan_hardening") {
+       cflags = [
+         "-fsanitize=${invoker.sanitizer}",
+         "-fsanitize-trap=${invoker.sanitizer}",
+-
+-        # Prevents `__has_feature(undefined_behavior_sanitizer)`
+-        # from evaluating true. Configs defined here are intended to
+-        # be usable even in release builds, i.e. as widely as possible.
+-        # It's important not to have full-on UBSan workarounds activate
+-        # just because we built support for a specific sanitizer.
+-        "-fsanitize-ignore-for-ubsan-feature=${invoker.sanitizer}",
+       ]
+       if (defined(invoker.cflags)) {
+         cflags += invoker.cflags

@@ -1,7 +1,8 @@
-diff -ruN rusty_v8-145.0.0.orig/build/config/clang/BUILD.gn rusty_v8-145.0.0/build/config/clang/BUILD.gn
---- rusty_v8-145.0.0.orig/build/config/clang/BUILD.gn	2026-02-14 14:15:37.957884922 +0800
-+++ rusty_v8-145.0.0/build/config/clang/BUILD.gn	2026-02-14 14:18:05.583917665 +0800
-@@ -180,12 +180,15 @@
+Index: rusty_v8-149.0.0/build/config/clang/BUILD.gn
+===================================================================
+--- rusty_v8-149.0.0.orig/build/config/clang/BUILD.gn
++++ rusty_v8-149.0.0/build/config/clang/BUILD.gn
+@@ -190,12 +190,15 @@ template("clang_lib") {
        } else if (is_linux || is_chromeos) {
          if (current_cpu == "x64") {
            _dir = "x86_64-unknown-linux-gnu"
@@ -17,15 +18,11 @@ diff -ruN rusty_v8-145.0.0.orig/build/config/clang/BUILD.gn rusty_v8-145.0.0/bui
          } else if (current_cpu == "loong64") {
            _dir = "loongarch64-unknown-linux-gnu"
          } else if (current_cpu == "riscv64") {
-@@ -223,7 +226,10 @@
-       } else {
-         assert(false)  # Unhandled target platform
-       }
--
-+      
-+      if (is_linux || is_chromeos) {
+@@ -207,6 +210,7 @@ template("clang_lib") {
+         } else {
+           assert(false)  # Unhandled cpu type
+         }
 +        _dir = "linux"
-+      }
-       _clang_lib_dir = "$clang_base_path/lib/clang/$clang_version/lib"
-       _lib_file = "${_prefix}clang_rt.${_libname}${_suffix}.${_ext}"
-       libs = [ "$_clang_lib_dir/$_dir/$_lib_file" ]
+       } else if (is_fuchsia) {
+         if (current_cpu == "x64") {
+           _dir = "x86_64-unknown-fuchsia"

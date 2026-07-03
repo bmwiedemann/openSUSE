@@ -1,7 +1,8 @@
-diff -ruN rusty_v8-145.0.0.orig/build.rs rusty_v8-145.0.0/build.rs
---- rusty_v8-145.0.0.orig/build.rs	2026-02-14 14:02:50.206480850 +0800
-+++ rusty_v8-145.0.0/build.rs	2026-02-14 14:06:48.032243885 +0800
-@@ -353,17 +353,13 @@
+Index: rusty_v8-149.0.0/build.rs
+===================================================================
+--- rusty_v8-149.0.0.orig/build.rs
++++ rusty_v8-149.0.0/build.rs
+@@ -385,17 +385,13 @@ fn build_v8(is_asan: bool) {
    if target_arch == "aarch64" {
      gn_args.push(r#"target_cpu="arm64""#.to_string());
      if target_os == "linux" {

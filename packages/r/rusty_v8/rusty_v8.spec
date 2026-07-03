@@ -33,7 +33,7 @@
 
 
 Name:           rusty_v8
-Version:        145.0.0
+Version:        149.4.0
 Release:        0
 Summary:        Build tooling for Deno (do not install or use!)
 License:        MIT
@@ -41,12 +41,14 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/rusty_v8
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-a4cfac7093a1c1c7fbdb6bc75d6b6dc4d385fc69-2-llvmorg-22-init-17020-gbd1bd178.tar.xz#/chromium-rust-toolchain.tar.xz
+Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-4c4205163abcbd08948b3efab796c543ba1ea687-2-llvmorg-23-init-10931-g20b6ec66.tar.xz#/chromium-rust-toolchain.tar.xz
 Source100:      rusty_v8-rpmlintrc
 Patch0:         deno-v8-arm.patch
 # Based on https://gitlab.archlinux.org/archlinux/packaging/packages/chromium/-/raw/main/compiler-rt-adjust-paths.patch
 Patch1:         compiler-rt-adjust-paths.patch
 Patch2:         disable-rust-toolchain-download.patch
+Patch3:         disable-flags-unsupported-by-clang.patch
+Patch4:         fix_bindgen_generation.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  clang >= %{_min_clang_version}
@@ -114,16 +116,16 @@ export GN="/usr/bin/gn"
 export NINJA="/usr/bin/ninja"
 export RUSTC="/usr/bin/rustc"
 export GN_ARGS="
-	clang_version=${CLANG_VERSION} 
-	v8_symbol_level=0 
-	custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
-	host_toolchain=\"//build/toolchain/linux/unbundle:default\"
-	fatal_linker_warnings=false
-	is_debug=false
-	use_system_libffi=true
-	use_custom_libcxx=false
-	use_sysroot=false
-	"
+        clang_version=${CLANG_VERSION} 
+        v8_symbol_level=0 
+        custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
+        host_toolchain=\"//build/toolchain/linux/unbundle:default\"
+        fatal_linker_warnings=false
+        is_debug=false
+        use_system_libffi=true
+        use_custom_libcxx=false
+        use_sysroot=false
+        "
 export EXTRA_GN_ARGS="use_custom_libcxx=false"
 
 # Included limited debug info.
@@ -146,6 +148,7 @@ cp target/release/*.rlib %{buildroot}%{_libdir}
 # we don't need those
 pushd %{buildroot}%{_libdir}/crates/rusty_v8
 rm -rf .github
+rm -f .gitignore .gitmodules
 rm .prettierrc.json
 rm .rustfmt.toml
 rm -rf false
