@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 02 16:38:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.0:
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0 (#2576)
+  * FDO package metadata improvements (#2370)
+  * feat(config): add annotations field to subpackages (#2582)
+
+-------------------------------------------------------------------
 Wed Jul 01 06:25:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.0:
