@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Fri Jul 03 04:57:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.48.0:
+  * Features
+    - Reset Existing Worktrees: Added a new --update-on-existing
+      (-U) flag to the create command to automatically fetch and
+      hard-reset an existing clean worktree to its remote head
+      instead of failing.
+    - Kitty-Compatible Avatar Badges: Show small, circular PR/MR
+      author avatars in the Info pane on supported terminals (e.g.,
+      Kitty, WezTerm, Ghostty) via the new avatar_badges
+      configuration.
+    - Unified Command Environment: Standardized environment
+      variable execution across custom commands, containers,
+      lifecycle hooks, and CLI commands. Exposes a consistent set
+      of WORKTREE_*, REPO_*, and contextual LAZYWORKTREE_*
+      variables.
+    - Hyperlinked Repository Headers: Enabled OSC 8 hyperlinking on
+      the repository header in the TUI to quickly open remote
+      repositories in the browser, and shortened home path
+      directories shown in the Info pane.
+    - CLI Debug Logging: Added a --debug-log command-line flag to
+      configure debug logging dynamically to a file for easier
+      troubleshooting of interactive selectors.
+    - Cache Clearing & PR Fetch Shortcut: Added a dedicated
+      cache-clear action to empty in-memory/on-disk caches and
+      assigned the p key to fetch PR data separately without
+      triggering full UI refreshes.
+  * Bug Fixes
+    - CPU Resource Pegging: Fixed an issue where the loading
+      spinner and file watcher consumed excessive CPU resources
+      while idle. The spinner tick loop now self-stops when
+      inactive and restarts only when loading operations begin.
+  * Performance Improvements
+    - Agent Session Caching & Debouncing: Optimized AI agent
+      transcript watching by caching parsed registries in-process
+      and introducing an adjustable debounce throttle
+      (agent_sessions.refresh_debounce_ms) to lower CPU usage when
+      agents are actively writing.
+    - FZF Preview Temp Files: Switched the interactive selector's
+      preview mechanism to write fzf preview content to temporary
+      files, preventing command-line length limit issues and
+      enhancing execution performance.
+  * Maintenance
+    - Contributor Policy: Added an External Contributor Disclosure
+      policy in AGENTS.md requiring AI agents to clearly disclose
+      their involvement, toolsets, and model configurations in pull
+      requests or issues.
+    - Makefile Enhancements: Silenced build output in the Makefile
+      and added confirmation messages on successful build
+      completion.
+    - Documentation Updates: Clarified that the run command (!)
+      executes shell commands, and revised feature descriptions for
+      clarity.
+    - Performed weekly maintenance updates (#74).
+  * Dependencies
+    - Bumped actions/checkout from v6 to v7.
+    - Bumped github.com/urfave/cli/v3 from 3.10.0 to 3.10.1.
+  * Breaking Changes
+    - None.
+
+-------------------------------------------------------------------
 Tue Jun 23 10:44:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.47.0:
