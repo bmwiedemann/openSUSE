@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jun 29 07:54:09 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 0.31.1:
+  * Dockerfile: allow cross-compilation without binfmt helper
+  * user: limit size of parsed passwd/group files
+  * security: validate exec security modes
+  * feat: not fail on non-default ports
+  * ci: pin js-yaml install
+  * ci: tolerate empty test matrix includes
+  * vendor: migrate to github.com/gohugoio/hashstructure
+  * util/tracing: remove fallbacks for OTEL_TRACE_PARENT, OTEL_TRACE_STATE
+
+-------------------------------------------------------------------
 Fri Jun 19 09:04:58 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 0.31.0:
