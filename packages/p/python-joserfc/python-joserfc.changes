@@ -13,7 +13,8 @@ Thu Jun 18 09:51:01 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
   * jwk: As_dict, as_pem, as_der export public key by default
   * typing: Update type hints for dropping python 3.9
   * typing: Use Iterator for _filter_keys_by_parameters return value
-- Update to 1.6.8 (fixes CVE-2026-48990, bsc#1268515)
+- Update to 1.6.8 (fixes CVE-2026-48990 (bsc#1268515),
+  CVE-2026-49852 (bsc#1270234))
   * Reject empty OctKey.
 - drop support-cryptography-47.patch, merged upstream
 

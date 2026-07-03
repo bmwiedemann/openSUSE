@@ -100,4 +100,13 @@
   * Avoid trailing padding for JWTs.</comment>
     <requestid>1363024</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3cdda222bbf4619038d1632e79cd3657</srcmd5>
+    <version>1.7.2</version>
+    <time>1783087877</time>
+    <user>anag_factory</user>
+    <comment>Add missing bug reference
+</comment>
+    <requestid>1363672</requestid>
+  </revision>
 </revisionlist>
