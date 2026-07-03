@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 03 08:53:11 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 2.1.4:
+  * cmd/limactl: include name in network list --json output
+  * templates/freebsd-15: support 9p mounts
+  * templates: update
+  * nerdctl: update from v2.3.3 to v2.3.4
+  * fix(qemu): fallback from hvf to tcg on macOS
+  * Only add xorrisofs flag to the xorrisofs command
+
+-------------------------------------------------------------------
 Fri Jun 19 12:56:29 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 2.1.3:
