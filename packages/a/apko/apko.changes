@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 02 16:37:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.21:
+  * fix(ldso-cache): Order cache entries to match ld.so's search
+    (#2311)
+
+-------------------------------------------------------------------
 Wed Jul 01 05:48:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.20:
