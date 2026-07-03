@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  3 06:28:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.07.02:
+  * Port to GTK 4; window embedding is no longer supported and
+    the window-icon-document setting has been removed
+  * Add setting to open documents in single-page mode and bind
+    toggle_single_page_mode to "w"
+  * Make link opening confirmation optional
+  * Replace SHA256 with XXH3-128 for faster file hashing
+  * Fix regression when parsing first-page-column setting
+  * Allow SIGSTOP in the seccomp sandbox and improve landlock
+    confinement
+  * Plugin API/ABI raised to 7/8 - plugins must be rebuilt
+- Switch GTK build dependency from gtk+-3.0 to gtk4 >= 4.12
+- Add libxxhash build dependency, raise sqlite3 requirement to
+  3.35.0
+- Drop unused cmake build dependency
+
+-------------------------------------------------------------------
 Fri May 29 09:19:26 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Cleanup spec file with spec-cleaner

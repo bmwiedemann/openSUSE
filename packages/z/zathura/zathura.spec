@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura
-Version:        2026.05.20
+Version:        2026.07.02
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
@@ -31,7 +31,6 @@ Source1:        %{url}/download/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
 BuildRequires:  AppStream
 BuildRequires:  c_compiler
-BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fish
 BuildRequires:  hicolor-icon-theme
@@ -48,11 +47,12 @@ BuildRequires:  pkgconfig(girara) >= 2026.02.03
 BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.72
 BuildRequires:  pkgconfig(gthread-2.0) >= 2.72
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24
+BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  pkgconfig(libseccomp)
-BuildRequires:  pkgconfig(sqlite3) >= 3.6.23
+BuildRequires:  pkgconfig(libxxhash)
+BuildRequires:  pkgconfig(sqlite3) >= 3.35.0
 BuildRequires:  pkgconfig(synctex) >= 2
 Recommends:     %{name}-lang
 Recommends:     %{name}-pdf-poppler-plugin
