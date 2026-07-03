@@ -17,16 +17,18 @@
 # nodebuginfo
 
 
-%global project        github.com/podman-container-tools/skopeo
+%define project        github.com/containers/skopeo
+
 Name:           skopeo
-Version:        1.23.0
+Version:        1.22.2
 Release:        0
 Summary:        Container image repository tool
 License:        Apache-2.0
 Group:          System/Management
-URL:            https://%{project}
+URL:            https://%project
 Source:         %{name}-%{version}.tar.xz
 Source1:        skopeo.rpmlintrc
+Requires:       libcontainers-common
 BuildRequires:  bash
 BuildRequires:  device-mapper-devel >= 1.2.68
 BuildRequires:  glib2-devel
@@ -34,8 +36,7 @@ BuildRequires:  go-go-md2man
 BuildRequires:  libbtrfs-devel >= 3.8
 BuildRequires:  libcontainers-common
 BuildRequires:  libgpgme-devel
-BuildRequires:  golang(API) >= 1.25
-Requires:       libcontainers-common
+BuildRequires:  golang(API) >= 1.21
 ExcludeArch:    s390
 
 %description
@@ -46,30 +47,30 @@ storage mechanisms.
 
 %package bash-completion
 Summary:        Bash completion for skopeo
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
-BuildArch:      noarch
 
 %description bash-completion
 This package contains the bash completion for skopeo.
 
 %package fish-completion
 Summary:        Fish completion for skopeo
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
-BuildArch:      noarch
 
 %description fish-completion
 This package contains the fish completion for skopeo.
 
 %package zsh-completion
 Summary:        Zsh completion for skopeo
+BuildArch:      noarch
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
-BuildArch:      noarch
 
 %description zsh-completion
 This package contains the zsh completion for skopeo.
@@ -78,26 +79,26 @@ This package contains the zsh completion for skopeo.
 %autosetup -p1
 
 %build
-mkdir -p .gopath/src/%{project}
+mkdir -p .gopath/src/github.com/containers
 ln -s $PWD .gopath/src/%{project}
 export GOPATH=$PWD/.gopath
 
 export BUILDTAGS="exclude_graphdriver_aufs"
 
 # Build.
-GO111MODULE=on go build -mod=vendor "-buildmode=pie" -ldflags "-X main.gitCommit=" -gcflags "" -tags "$BUILDTAGS" -o skopeo ./cmd/skopeo
+GO111MODULE=on go build -mod=vendor "-buildmode=pie" -ldflags "-X main.gitCommit=" -gcflags "" -tags "$BUILDTAGS" -o skopeo %{project}/cmd/skopeo
 %make_build docs PREFIX=%{_prefix}
 
 %install
 %make_install PREFIX=%{_prefix} install-docs install-completions
 # Drop unneeded files
-rm -rv %{buildroot}%{_sysconfdir}/containers
+rm -rv %{buildroot}/etc/containers
 
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
-%{_mandir}/man1/skopeo*.1%{?ext_man}
+%{_mandir}/man1/skopeo*.1*
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
