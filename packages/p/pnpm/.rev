@@ -1326,4 +1326,41 @@ Binary file pnpm-11.5.2.tgz (revision 57) deleted</comment>
       and default to required.</comment>
     <requestid>1360769</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>0823aaa7e6dad88cede5247cb899bc28</srcmd5>
+    <version>11.9.0</version>
+    <time>1783087488</time>
+    <user>anag_factory</user>
+    <comment>- update to 11.9.0:
+  * Minor Changes
+    - bae694f: Some registries generate tarballs on-demand and
+      cannot provide an integrity checksum in their package
+      metadata. In that case pnpm now computes the integrity from
+      the downloaded tarball and stores it in the lockfile, so the
+      entry is verifiable on subsequent installs instead of being
+      written without an integrity (which would fail the next
+      install). This also applies to --lockfile-only: the tarball
+      is downloaded so its integrity can be computed. A lockfile
+      entry that is still missing its integrity is rejected as a
+      ERR_PNPM_MISSING_TARBALL_INTEGRITY lockfile verification
+      violation (the install fails closed) rather than being
+      silently re-fetched.
+    - 6c35a43: Added --exclude-peers to pnpm sbom. With
+      auto-install-peers (the default), peer dependencies resolve
+      into the lockfile and are otherwise indistinguishable from
+      the package's own dependencies. The flag drops peer
+      dependencies (and any transitive subtree reachable only
+      through them) from the SBOM. CycloneDX 1.7 has no scope or
+      relationship that expresses &quot;consumer-provided peer&quot;, so
+      omission is the only spec-clean handling. The flag name
+      matches pnpm list --exclude-peers; note the SBOM flag prunes
+      a peer's exclusive subtree, which is stricter than pnpm list
+      (which only hides leaf peers).
+  * Patch Changes
+    - 25a829e: pnpm audit --fix now writes a single combined
+      minimumReleaseAgeExclude entry per package (e.g. axios@0.18.1
+      || 0.21.1) instead of one entry per version, matching the
+      format documented for the setting. Existing per-version</comment>
+    <requestid>1363544</requestid>
+  </revision>
 </revisionlist>
