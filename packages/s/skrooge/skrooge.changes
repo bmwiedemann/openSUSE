@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:28:16 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.4.0
+  * kde#515099: Missing secondary currency value in Accounts
+    totals
+  * kde#514649: Fix initial layout when splash screen is not
+    displayed
+  * kde#514649: Double click issue on table when there is no
+    selection
+  * kde#438967: Labels in Skrooge Report axis and Legend tend to
+    illegible
+  * kde#517475: Alarms triggering even when conditions not met
+  * kde#515186: Import should remember the directory used last
+    when restarted
+  * kde#430245: summaries display truncated after searching in
+    Operations grouped by Category
+  * kde#518461: charts missing in responsive monthly report
+  * Correction: Better filtering in categories page
+  * Correction: Fix various error in flatpak mode (import,
+    download sources, ...
+    
+-------------------------------------------------------------------
 Sat Jan 24 19:31:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.1.20

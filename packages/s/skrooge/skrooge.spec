@@ -26,7 +26,7 @@
 %define with_qtwebengine 1
 %endif
 Name:           skrooge
-Version:        26.1.20
+Version:        26.4.0
 Release:        0
 Summary:        A Personal Finance Management Tool
 License:        GPL-3.0-only

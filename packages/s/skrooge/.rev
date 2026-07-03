@@ -198,4 +198,12 @@ It's very actively maintained upstream, so I see no reason why it shouldn't be p
     <comment>Update to 26.1.20</comment>
     <requestid>1329022</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>1df5b9138492d0214f040f8a12a8f80d</srcmd5>
+    <version>26.4.0</version>
+    <time>1783087813</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363627</requestid>
+  </revision>
 </revisionlist>
