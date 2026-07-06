@@ -132,4 +132,36 @@
     <comment></comment>
     <requestid>1330395</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4195443f66795f39a389bfa719a8b9dd</srcmd5>
+    <version>0.10.0</version>
+    <time>1783333854</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.10.0
+ * Added
+  * import now supports fetching entries from atuin.
+  * import now auto-detects database files.
+  * import now skips directories matching $_ZO_EXCLUDE_DIRS.
+  * POSIX: support for non-Cygwin Windows environments (e.g. Busybox).
+  * Fish: Space-Tab completions now display and run the selected command.
+  * Bash/POSIX/Zsh: z now honors $CDPATH.
+  * Bash: don't add to the database when history is disabled (set +o history).
+  * Nushell: export commands so the init script can be imported with use.
+  * Support for RISC-V (riscv64) Linux.
+ * Changed
+  * import now takes a subcommand instead of the --from flag.
+ * Fixed
+  * Bash/POSIX/Zsh: z now handles relative paths through symlinked directories.
+  * Bash/Fish/POSIX/Zsh: _ZO_RESOLVE_SYMLINKS now works on Windows.
+  * Bash: handle $PROMPT_COMMAND values ending in a semicolon.
+  * PowerShell: navigate to home directory with z on drives that don't define HOME.
+  * PowerShell: use fully qualified names when invoking cmdlets.
+  * Zsh: skip doctor diagnostics in non-interactive shells.
+  * Zsh: avoid inserting a trailing space when cancelling interactive Space-Tab completions.
+  * Bash: avoid blanking the prompt when cancelling interactive Space-Tab completions.
+  * Bash/Fish/Zsh: avoid drawing a new line when Space-Tab completion finds no matches.
+  * Tcsh: preserve any existing precmd alias instead of overwriting it.
+  * Nushell: complete only directories for z, instead of all files. (forwarded request 1363796 from mimi_vx)</comment>
+    <requestid>1363797</requestid>
+  </revision>
 </revisionlist>
