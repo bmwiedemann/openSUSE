@@ -16,4 +16,13 @@
 - Initial version 2.2.0</comment>
     <requestid>1359708</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c98360418f5ab03dcbee3c6cb719f780</srcmd5>
+    <version>2.5.0</version>
+    <time>1783333637</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.0:
+  * Propagate the timeout through the SOCKS5 handshake.</comment>
+    <requestid>1362976</requestid>
+  </revision>
 </revisionlist>

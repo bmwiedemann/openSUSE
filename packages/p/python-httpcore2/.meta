@@ -1,4 +1,5 @@
 <package name="python-httpcore2" project="openSUSE:Factory">
   <title></title>
   <description></description>
+  <devel project="devel:languages:python" package="python-httpcore2"/>
 </package>
