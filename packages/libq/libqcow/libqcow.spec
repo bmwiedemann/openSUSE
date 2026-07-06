@@ -1,7 +1,7 @@
 #
 # spec file for package libqcow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 
 %define lname	libqcow1
 Name:           libqcow
-Version:        20240308
+Version:        20260703
 Release:        0
 Summary:        Library and tooling to access the QEMU Copy-On-Write (QCOW) image format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -35,20 +35,20 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(fuse) >= 2.6
-BuildRequires:  pkgconfig(libbfio) >= 20221025
-BuildRequires:  pkgconfig(libcaes) >= 20240114
-BuildRequires:  pkgconfig(libcdata) >= 20240103
-BuildRequires:  pkgconfig(libcerror) >= 20240101
-BuildRequires:  pkgconfig(libcfile) >= 20240106
-BuildRequires:  pkgconfig(libclocale) >= 20240107
-BuildRequires:  pkgconfig(libcnotify) >= 20240108
-BuildRequires:  pkgconfig(libcpath) >= 20240109
-BuildRequires:  pkgconfig(libcsplit) >= 20240110
-BuildRequires:  pkgconfig(libcthreads) >= 20240102
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libuna) >= 20240130
+BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcaes) >= 20260520
+BuildRequires:  pkgconfig(libcdata) >= 20260612
+BuildRequires:  pkgconfig(libcerror) >= 20260612
+BuildRequires:  pkgconfig(libcfile) >= 20260615
+BuildRequires:  pkgconfig(libclocale) >= 20260612
+BuildRequires:  pkgconfig(libcnotify) >= 20260612
+BuildRequires:  pkgconfig(libcpath) >= 20260621
+BuildRequires:  pkgconfig(libcsplit) >= 20260612
+BuildRequires:  pkgconfig(libcthreads) >= 20260615
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libuna) >= 20260602
 BuildRequires:  pkgconfig(openssl) >= 1.0
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
 %python_subpackages
@@ -112,8 +112,7 @@ grep ' '' ''local' config.log && exit 1
 mv %_builddir/rt/* %buildroot/
 find %buildroot -type f -name "*.la" -delete -print
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %license COPYING*
@@ -135,6 +134,6 @@ find %buildroot -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyqcow.so
+%python_sitearch/pyqcow*
 
 %changelog
