@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Sun Jul  5 13:08:21 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2026.07.04
+  * The minimum recommended Python version has been raised to
+    3.11
+  * Security: [CVE-2026-55404] Downstream command injection via
+    improper sanitization of --write-link output
+  * Shortcut file data is now properly validated and sanitized
+    when the --write-link options are used
+  * Always include warnings in debug output
+  * Fix allow-unsafe-ext compat option
+  * Raise minimum recommended Python version to 3.11
+  * Validate and escape values in --write-link output
+  * cookies: Use ' instead of " for SQL string quoting
+  * utils: Deprecate make_dir in favor of make_parent_dirs
+  * utils: HTTPHeaderDict: Fix __ior__
+  * utils: parse_duration: Return int when appropriate
+  * utils: parse_resolution: Support fps suffixes
+  * utils: pkcs1pad: Fix invalid PKCS#1 v1.5 padding bytes
+  * utils: qualities: Avoid repeated index lookups
+  * utils: random_user_agent: Bump version range 143-149 =>
+    144-150
+  * Always include id in request error output
+  * Fix request logging
+  * arte: Fix playlist support
+  * bandcamp: weekly: Fix extractor
+  * bilibili: Fix API extraction
+  * instagram: Detect when cookies are invalidated
+  * instagram: Rework extractor
+  * linkedin: Remove broken login support
+  * mgtv: Fix VIP stream extraction
+  * mxplayer: Fix extractors
+  * mxplayer: Rework extractors
+  * niconico: Fix error detection
+  * niconico: Support shorts
+  * omnyfm: Add extractors
+  * openrec: Rework extractors
+  * patreon: Support new URL format
+  * peertube: Support password-protected videos
+  * periscope: Improve metadata extraction
+  * reddit: Remove broken login support
+  * soundcloud: Extract uploader_url for playlists
+  * soundcloud: Extract comments
+  * soundcloud: Improve metadata extraction
+  * streaks: Fix extractor
+  * svt: Fix extractor
+  * telewebion: Fix extractor
+  * trovo: Remove dead extractors
+  * truth: Support share URLs
+  * tviplayer: Fix extractor
+  * unsupported: Update unsupported sites
+  * wrestleuniverse: vod: Fix extractor
+  * youtube: Fix extract_relative_time for abbreviated units
+  * youtube: Fix detection of forced preroll wait time
+  * youtube: Fix minor issues
+  * youtube: Support live adaptive formats
+  * tab: Fix flat extraction of collaborators
+  * tab: Fix flat playlist metadata extraction
+  * tab: Fix metadata extraction
+  * tab: Fix pagination
+  * zan: Add extractor
+  * zdf: Detect livestreams
+  * zoom: clips: Add extractor
+  * external: Fix resuming downloads with aria2c
+  * external: curl: Support development versions
+  * mhtml: Fix storyboard content-length calculation
+  * build: Update 17 dependencies
+  * build: Update 6 dependencies
+  * cleanup: Fix invalid info dict fields
+  * cleanup: Fix minor mistakes
+  * cleanup: Remove RTSP and MMS support
+  * cleanup: Replace dead example/test URL
+  * cleanup: Miscellaneous: 997fa14
+  * docs: Make "No AI / No LLM Policy" abundantly clear
+
+-------------------------------------------------------------------
 Fri Jun 12 09:06:35 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2026.06.09
