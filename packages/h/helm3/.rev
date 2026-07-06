@@ -154,4 +154,14 @@
     updates 3342dbf (dependabot[bot])</comment>
     <requestid>1360883</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>2b52dacfcfe3bfcdc98d1992a924b5e3</srcmd5>
+    <version>3.21.2</version>
+    <time>1783333739</time>
+    <user>anag_factory</user>
+    <comment>- remove replacement - is now in 3.21.2
+
+- Update to version 3.21.1 (bsc#1270127, CVE-2026-48978):</comment>
+    <requestid>1363704</requestid>
+  </revision>
 </revisionlist>

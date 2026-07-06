@@ -12,7 +12,6 @@
   <service name="set_version" mode="manual">
   </service>
   <service name="go_modules" mode="manual">
-    <param name="replace">github.com/distribution/distribution/v3=github.com/distribution/distribution/v3@v3.1.1</param>
   </service>
   <!-- services below are running at buildtime -->
   <service name="tar" mode="buildtime">
