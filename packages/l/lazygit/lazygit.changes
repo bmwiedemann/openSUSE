@@ -1,4 +1,313 @@
 -------------------------------------------------------------------
+Sun Jul 05 12:12:20 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.63.0:
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Remove unused function ExpectClipboard
+  * Show renamed files in the custom patch builder
+  * Add gui.shrinkSidePanelsToContent option
+  * Scale the side-panel layout height thresholds by panel count
+  * Allow overriding the platform used for default keybindings
+  * Offer to delete the branch when removing a worktree
+  * Allow deleting local+remote of a worktree-checked-out branch at once
+  * Delete the branch when deleting it via its worktree
+  * Let worktree removal/detach chain follow-up work
+  * Extract reusable branch-deletion helpers
+  * AGENTS.md additions
+  * Expand a leading ~ in worktree paths to the home directory
+  * Move the new-worktree keybinding from worktrees to universal
+  * Add MoveYamlKey helper to move config keys between sections
+  * Rework the worktrees-panel 'n' into a branch picker
+  * Redesign the 'w' worktree-creation flow
+  * Add helper to compute candidate worktree parent directories
+  * Add worktree.defaultPath config
+  * Remove the Windows limitation from Custom_Pagers.md
+  * Materialize cursor-forward escapes as space runs
+  * Demonstrate that cursor forward escapes collapse runs of spaces
+  * Convert forward cursor-positioning escapes into row advances
+  * Demonstrate that cursor positioning escapes collapse blank rows
+  * Use ConPTY on Windows for pty-backed command execution
+  * Add pty support on Windows via ConPTY
+  * Abstract pty startup behind a platform-specific primitive
+  * Abstract task command over *exec.Cmd
+  * Always set LAZYGIT_COLUMNS
+  * Have "just lint" show all issues instead of just the first so many
+  * Auto-dismiss the continue-rebase prompt when it becomes stale
+  * Only prompt to continue a rebase/merge if we started it
+  * Make Gui.Update a synchronous FIFO enqueue
+  * Run moveMainContextPairToTop before queueing main-view tasks
+  * Make ViewBufferManager.NewTask respect call order
+  * Revert "Add GlobalArg/GlobalArgIf to GitCommandBuilder"
+  * Suppress optional locks by default again, except foreground refresh
+  * Reintroduce the gitCmdObjBuilder wrapper
+  * Run `go mod tidy` before `go mod vendor`
+  * Check gofumpt formatting with the pinned version in CI and lint
+  * Add gofumpt-tool.sh script and use it in VS Code
+  * Use `go tool gofumpt` for `make format`
+  * go get -tool mvdan.cc/gofumpt@v0.9.2
+  * Remove obsolete "errors" step from lint job on CI
+  * Remove obsolete bump_gocui.sh script
+  * Bump golang.org/x/net from 0.47.0 to 0.55.0
+  * Bump golangci/golangci-lint-action from 9.2.0 to 9.3.0
+  * Bump goreleaser/goreleaser-action from 7.2.2 to 7.2.3
+  * Bump actions/checkout from 6 to 7
+  * Bump actions/cache from 5 to 6
+  * Bump github.com/sahilm/fuzzy from 0.1.2 to 0.1.3
+  * Bump golang.org/x/sys from 0.45.0 to 0.46.0
+  * Bump golang.org/x/sync from 0.20.0 to 0.21.0
+  * Pick both hunks, not the common ancestor, in diff3 conflicts
+  * Add a test for picking both hunks in a diff3 conflict
+  * Give opts.Stop priority in NewCmdTask's read loop
+  * Addition to AGENTS.md
+  * Stop leaking other malformed and unimplemented escape sequences
+  * Silently consume unrecognized escape sequences
+  * Demonstrate that unknown escape sequences leak as literal text
+  * Extract per-case render helpers from FilesController.GetOnRenderToMain
+  * Show per-side commit logs for submodule conflicts in the main view
+  * Resolve submodule conflicts through a picker
+  * Route space to the conflict picker for non-textual conflicts
+  * Extract a predicate for conflicts that need a resolution dialog
+  * Addition to AGENTS.md
+  * Add a global keybinding for editing the config file
+  * Extract editConfig into a shared EditConfigAction
+  * Remove unnecessary askForConfigFile indirection
+  * Remove the "Open config file" command
+  * Test per-repo side panel config and re-application on repo switch
+  * Re-apply the side panel config on a live config reload
+  * Add an IsActiveTab assertion for integration tests
+  * Let integration tests post a focus event
+  * Clear tab strips on views that are no longer tabs
+  * Add integration tests for configuring the side panels
+  * Show each panel's first configured tab by default
+  * Scale the minimum window height with the panel count
+  * Give the submodules and reflog views standalone titles
+  * Drive the side panel layout from gui.sidePanels
+  * Stop requiring jumpToBlock to have exactly five entries
+  * Add the gui.sidePanels config option
+  * Assign panel jump labels by iterating panel groups
+  * Make the remote-branches view follow its parent's window
+  * Drive side-panel layout from a single window list
+  * Ask agents to surface mid-implementation decisions
+  * Add end-to-end test for shell command quoting on Windows
+  * Fix quoting of shell commands on Windows
+  * Demonstrate that shell metacharacters are mangled on Windows
+  * Demonstrate that Quote produces invalid Windows quoting
+  * Use headless mode for the "Run current file integration test" vscode task
+  * Remove "Open deprecated test TUI" vscode task
+  * Use `just` instead of `make` in AGENTS.md
+  * Document running the integration tests via the just recipes
+  * Add zsh completion for the e2e integration-test recipes
+  * Restructure integration-test just targets
+  * Remove bespoke commit selection restoration when starting a rebase
+  * Restore commit selection even when the commit's TODO status changed
+  * Keep selected commits stable across refreshes
+  * Allow GpgHelper to refresh differently on success and failure
+  * Cleanup: wrap long parameter lists
+  * Cleanup: remove unnecessary `if` statement
+  * Add HeadCommitIdx helper function
+  * Add tests for IsHeadCommit
+  * Tighten a test expectation
+  * Remove the now-redundant gitCmdObjBuilder wrapper
+  * Only pass --no-optional-locks for background status refreshes
+  * Add GlobalArg/GlobalArgIf to GitCommandBuilder
+  * Detect external ref changes via background polling
+  * Snapshot refs state before refs-touching refreshes
+  * Add config options for external change detection
+  * Add Status.RefsSnapshot
+  * Centralize scope expansion in Refresh
+  * Log CPU time of external commands in addition to wall-clock time
+  * Fix schema minimum for refresh and fetch intervals
+  * Pause background refreshes while driving a git operation
+  * Make background-refresh pausing reentrant
+  * Extend the fill background to wrapped tail segments
+  * Remove the '\n' sentinel cell
+  * Wrap v.lines cells in a line struct
+  * Rename lineType to cells
+  * Remove dead \x00 filtering from string conversion helpers
+  * Demonstrate broken background fill on wrapped \x1b[K-padded lines
+  * Add regression tests for trailing-fill rendering
+  * Don't include integration tests in "just test" on Windows
+  * Allow running check_script.sh when there are uncommitted changes
+  * Make .go files have LF line endings on Windows
+  * Fix Windows linter errors
+  * Allow cycling pagers in reverse
+  * Extract onPagerChanged helper from cyclePagers
+  * Show pager name in the cycle-pager toast, and let users name pagers
+  * Reject pager entries that combine multiple diff mechanisms
+  * Terminate tooltip text with a full stop
+  * Add a "just check" command
+  * Explain when a submodule has nothing stageable
+  * Optimistically render unstaging a dirty submodule
+  * Also verify stage-all can unstage a dirty submodule
+  * Fix unstaging a submodule with dirty content
+  * Unify the stage/unstage decision for press and stage-all
+  * Add a test demonstrating that you can't unstage a dirty submodule
+  * Offer direnv .envrc approval from inside lazygit
+  * Load direnv environment when switching repos
+  * Dedupe the recent-repos fallback in setupRepo
+  * Cleanup: drop unneeded variable
+  * When RecordCurrentDirectory fails, only log the error
+
+-------------------------------------------------------------------
+Sun Jul 05 12:12:00 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.62.2:
+  * Additions to AGENTS.md
+  * Fix the waiting status display for synchronous operations
+  * Refactor: extract private setAppStatusContent helper method
+
+-------------------------------------------------------------------
+Sun Jul 05 12:11:47 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.62.1:
+  * Add docs for how to add the default, non-pager diff to the list of pagers
+  * Fix minor typos in README.md
+  * Cleanup: filter out empty keybindings earlier
+  * Fix crash when keybindings are disabled that we want to show in the status bar
+
+-------------------------------------------------------------------
+Sun Jul 05 12:11:27 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 0.62.0:
+  * Fix breaking changes note
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Add support for git flow using git-flow-next
+  * Pull git-flow prefix parsing into a config-level helper
+  * Bump goreleaser/goreleaser-action from 7.1.0 to 7.2.2
+  * Bump github.com/gdamore/tcell/v3 from 3.3.0 to 3.4.0
+  * Bump golang.org/x/sys from 0.43.0 to 0.45.0
+  * Bump github.com/sahilm/fuzzy from 0.1.1 to 0.1.2
+  * Fix undo shortcut in Undoing.md
+  * Bump github.com/gookit/color from 1.6.0 to 1.6.1
+  * Refresh main view when cycling pagers with main view focused
+  * Do less work to update the main view when cycling pagers
+  * Add `<alt+up>`/`<alt+down>` as alternate keybindings for moving commits up/down
+  * If a menu entry has multiple keybindings, list them in a tooltip
+  * Fold remaining alt bindings into their main fields
+  * Use a dedicated keybinding for hunk navigation in the main view
+  * Fold legacy quit-alt1 into the multi-key quit binding
+  * Convert custom command Key fields to Keybinding
+  * Convert JumpToBlock to a list of multi-key bindings
+  * Convert keybinding fields to Keybinding
+  * Add Keybinding type that accepts a string or a sequence of strings
+  * Render every key for a binding in the cheatsheet
+  * Rename Key to Keys in Binding, KeybindingsOpts, and MenuItem
+  * Use a slice of keys for each binding
+  * Add menuKey helper to reduce noise on menu item literals
+  * Remove OptionMenuAlt1
+  * Change SetKeybinding to not return an error
+  * Remove unused text KeybindingsLegend
+  * Add script for checking all commits in a branch
+  * Use the isolated test env for shell commands
+  * Refresh worktrees before auto-forwarding branches
+  * Add test for auto-forwarding a branch checked out in another worktree
+  * Extract BranchesHelper.PostFetchRefresh to unify the two fetch paths
+  * Refresh pull requests after a manual fetch
+  * Preserve empty Worktrees slice when worktree list fails to load
+  * Some additions to AGENTS.md
+  * Add script to preview release notes
+  * Remove the invitation to submit PRs from the issue template
+  * Log errors from fetching GitHub PRs to the debug log, not to the Command Log
+  * Keep GitHub PR refresh error logging in one place
+  * Optimize regex compilations
+  * Document that the services entry also enables GHE pull-request icons
+  * Remove now unused code
+  * Support GitHub Enterprise for the pull-requests feature
+  * Expose service info (provider, host, owner, repo) from the hosting service
+  * Clear cherry-pick buffer when copying after a paste
+  * Add test for missing commits when range-copying after a paste
+  * Some additions to AGENTS.md
+  * Improve performance of inline status spinner
+  * Remove Render() from ListContextTrait.HandleRender
+  * Bounce setGithubPullRequests' Branches render to UI thread
+  * Bounce commit files selection render to UI thread
+  * Bounce SuggestionsContext.SetSuggestions to UI thread
+  * Bounce explicit LocalCommits render in refreshBranches to UI thread
+  * Bounce refreshView to the UI thread
+  * Set the view color on the UI thread too
+  * Have renderAppStatus trigger a full layout when the appStatus width changes
+  * When drawing tainted views in ForceFlushViewsContentOnly, also draw views that overlap them
+  * Fix visual glitch with status bar spinner at very slow spinner rates
+  * Improve performance of spinner in Synchronized events
+  * Validate that gui.spinner.frames must all have the same width
+  * Improve performance when drawing the spinner on background events
+  * Support to request a content-only UI refresh
+  * Honor the spinner rate configurate with sync spinner
+  * Fix missing layout call after switching repos
+  * Fix the check_for_fixups.sh script again
+  * Remove dead Modifier field from keybindings
+  * Remove unused function DeleteKeybinding
+  * Disable gh telemetry when running integration tests
+  * Revert the change of <ctrl+j>/<ctrl+k> to <alt+down>/<alt+up>
+  * Add an AGENTS.md file
+  * Expose PushUrls to custom commands
+  * Show PushUrls for selected remote if there are any
+  * Add PushUrls field to models.Remote
+  * Use more widely-supported Unicode symbols for the commit graph
+  * Fix linter warnings about ignoring errors from bufio.Scanner
+  * Fix linter warning about inefficient string concatenation
+  * Close temp file handles before cleanup on Windows
+  * Remove now unnecessary Setenv call
+  * Make UnixToDateSmart timezone-deterministic
+  * Clear LC_* env vars when running LANG tests
+  * Fix regressions with alternate edit bindings for backspace and move-cursor-right
+  * Change keybinding syntax to spell out full modifier names, and use + instead of -
+  * Remove the keybindings legend in the cheatsheets
+  * Add a forwardDeleteWord keybinding
+  * Make edit keybindings for move-by-word and backspace-word configurable
+  * Add breaking changes note for the changed bindings
+  * Change bindings for moving commits to a-up/down
+  * Change a-enter keybinding to m-enter on mac, and c-enter elsewhere
+  * Document custom keybinding syntax
+  * Move modifiers into Key
+  * Get rid of pkg/gui/keybindings package
+  * Unexport the labelByKey and keyByLabel maps
+  * Move keybindings.LabelFromKey to config package
+  * Add config.KeyFromLabel
+  * Fix typo in keybinding
+  * Bump tcell dependency to v3
+  * Add Key type
+  * Rename Key to KeyName
+  * Cleanup: use named constant
+  * Cleanup: fix typo in comment
+  * Cleanup: remove unnecessary function Label()
+  * Cleanup: simplify code
+  * Cleanup: remove obsolete code
+  * Remove unused Parse/ParseAll and friends
+  * Remove unused StartTicking and tickingMutex
+  * Remove unused View.HasLoader functionality
+  * Exclude gocui from codespell check
+  * Fix linter warnings
+  * Copy gocui files into lazygit repo under pkg/gocui
+  * perf(branches): use for-each-ref ahead-behind for git >= 2.41
+  * Bump golang.org/x/sys from 0.42.0 to 0.43.0
+  * Bump actions/github-script from 8 to 9
+  * Bump goreleaser/goreleaser-action from 7.0.0 to 7.1.0
+  * Bump peter-evans/create-pull-request from 8.1.0 to 8.1.1
+  * Bump dario.cat/mergo from 1.0.1 to 1.0.2
+  * Fix dependabot label for github-actions-related updates
+  * Bump github.com/sirupsen/logrus from 1.9.3 to 1.9.4
+  * Bump github.com/gookit/color from 1.4.2 to 1.6.0
+  * Bump github.com/kyokomi/emoji/v2 from 2.2.8 to 2.2.13
+  * Bump samber.lo to latest version
+  * Define PR colors as hex colors to make them the same as GitHub's
+  * If multiple remotes exist but only one is a Github remote, pick it without prompting
+  * Stop showing cached PRs when we no longer have a base remote
+  * Preserve whitespace when remembering a commit message
+  * Add integration test demonstrating whitespace loss in preserved commit messages
+  * Tolerate trailing newlines in AddCoAuthorToDescription
+  * Fix the check_for_fixups script
+  * Preserve commit message when quitting while the commit message panel is open
+  * Add OnQuit hook for controllers
+  * Extract PreserveCommitMessage from CloseCommitMessagePanel
+  * Remove unnecessary clearing of the commit message panel on close
+  * retry on ref lock errors during fetch/pull
+  * Fix copying a file's absolute path when running in a linked worktree
+  * Change clipboard tests to demonstrate bug with copying absolute file path
+
+-------------------------------------------------------------------
 Tue Apr 14 10:12:54 UTC 2026 - ecsos@opensuse.org
 
 - Update to version 0.61.1:
