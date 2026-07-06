@@ -1,7 +1,7 @@
 #
 # spec file for package json-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,21 @@
 
 %define libname libjson-c
 %define libsoname %{libname}5
-%define oldlibname libjson
-%define version_date 20240915
 Name:           json-c
-Version:        0.18
+Version:        0.19
 Release:        0
 Summary:        JSON implementation in C
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/json-c/json-c
-Source0:        https://github.com/json-c/json-c/archive/json-c-%{version}-%{version_date}.tar.gz
+Source0:        https://github.com/json-c/json-c/archive/json-c-%{version}.tar.gz
 Source1:        baselibs.conf
+Patch1:         no-xxd.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
+#!BuildIgnore:  xxd
 
 %description
 JSON-C implements a reference counting object model that allows you to
@@ -52,14 +52,16 @@ representation of JSON objects.
 
 This package includes the JSON library.
 
-%package -n %{libname}-devel
+%package devel
 Summary:        Development headers and libraries for json-c
 Group:          Development/Libraries/C and C++
 Requires:       %{libsoname} = %{version}
-Provides:       %{oldlibname}-devel = %{version}
-Obsoletes:      %{oldlibname}-devel < %{version}
+Provides:       libjson-devel = %{version}
+Obsoletes:      libjson-devel < %{version}
+Provides:       libjson-c-devel = %{version}
+Obsoletes:      libjson-c-devel < %{version}
 
-%description -n %{libname}-devel
+%description devel
 JSON-C implements a reference counting object model that allows you to
 easily construct JSON objects in C, output them as JSON formatted
 strings and parse JSON formatted strings back into the C
@@ -68,14 +70,16 @@ representation of JSON objects.
 This package includes header files and scripts needed for developers
 using the json-c library
 
-%package -n %{libname}-doc
+%package doc
 Summary:        Documentation files
 Group:          Documentation/Other
-Provides:       %{oldlibname}-doc = %{version}
-Obsoletes:      %{oldlibname}-doc < %{version}
+Provides:       libjson-doc = %{version}
+Obsoletes:      libjson-doc < %{version}
+Provides:       libjson-c-doc = %{version}
+Obsoletes:      libjson-c-doc < %{version}
 BuildArch:      noarch
 
-%description -n %{libname}-doc
+%description doc
 JSON-C implements a reference counting object model that allows you to
 easily construct JSON objects in C, output them as JSON formatted
 strings and parse JSON formatted strings back into the C
@@ -84,7 +88,7 @@ representation of JSON objects.
 This package includes the json-c documentation.
 
 %prep
-%autosetup -p1 -n %{name}-json-c-%{version}-%{version_date}
+%autosetup -p1 -n %{name}-json-c-%{version}
 
 %build
 %cmake \
@@ -108,14 +112,13 @@ mkdir -p "%{buildroot}%{_docdir}/%{name}-doc"
 cp -R doc/html "%{buildroot}%{_docdir}/%{name}-doc"
 %fdupes %{buildroot}%{_docdir}
 
-%post -n %{libsoname} -p /sbin/ldconfig
-%postun -n %{libsoname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libsoname}
 
 %files -n %{libsoname}
 %{_libdir}/%{libname}.so.*
 %license COPYING
 
-%files -n %{libname}-devel
+%files devel
 %{_libdir}/%{libname}.so
 %{_includedir}/json-c
 %{_libdir}/pkgconfig/*.pc
@@ -124,7 +127,7 @@ cp -R doc/html "%{buildroot}%{_docdir}/%{name}-doc"
 %{_libdir}/cmake/json-c/json-c-targets-none.cmake
 %{_libdir}/cmake/json-c/json-c-targets.cmake
 
-%files -n %{libname}-doc
+%files doc
 %license COPYING
 %doc AUTHORS ChangeLog README README.html
 %doc %{_docdir}/%{name}-doc

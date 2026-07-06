@@ -337,4 +337,12 @@ Added one by one changes for patches in the changes
     autoconf call to json-c-0.12-unused_variable_size.patch from</comment>
     <requestid>1248387</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>8944cf18346ae266065720f623804c39</srcmd5>
+    <version>0.19</version>
+    <time>1783333678</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363635</requestid>
+  </revision>
 </revisionlist>

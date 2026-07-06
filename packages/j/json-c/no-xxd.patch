@@ -1,0 +1,27 @@
+From 19a014b923d559763ea3bbd4319da10f74c75efe Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Thu, 2 Jul 2026 19:15:01 +0200
+Subject: [PATCH] tests: do away with xxd invocation
+References: https://github.com/json-c/json-c/pull/939
+
+printf is perfectly capable of doing everything needed.
+---
+ tests/test_json_parse_cli.test | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_json_parse_cli.test b/tests/test_json_parse_cli.test
+index 0982afe..b9833c9 100755
+--- a/tests/test_json_parse_cli.test
++++ b/tests/test_json_parse_cli.test
+@@ -11,7 +11,7 @@ fi
+ set -x -v
+ 
+ echo -n '"tenant=blue;note=CANARY_STACK_WINDOW_2026;status=ok"' > file1.dat
+-(printf '"' ; printf 'A%.0s' $(seq 1 16) ; echo 'e2'  | xxd -r -p) > file2.dat
++printf '"AAAAAAAAAAAAAAAA\xe2' > file2.dat
+ 
+ TESTNAME="${0##*/}"
+ TESTNAME="${TESTNAME%.test}"
+-- 
+2.54.0
+
