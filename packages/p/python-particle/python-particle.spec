@@ -19,7 +19,7 @@
 %global modname particle
 %{?sle15_python_module_pythons}
 Name:           python-particle
-Version:        0.26.2
+Version:        1.0.0
 Release:        0
 Summary:        PDG particle data and identification codes
 License:        BSD-3-Clause
@@ -29,16 +29,11 @@ BuildRequires:  %{python_module attrs >= 22.2.0}
 BuildRequires:  %{python_module hatch_vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module toml}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-attrs >= 22.2
+Requires:       python-attrs >= 22.2.0
 Requires:       python-hepunits >= 2.4.0
-%if 0%{?python_version_nodots} < 313
-Requires:       python-typing_extensions >= 4.5
-%endif
 Recommends:     python-pandas >= 1.24.0
 Recommends:     python-tabulate
 BuildArch:      noarch

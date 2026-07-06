@@ -230,4 +230,41 @@
     files.</comment>
     <requestid>1352269</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>5f94486d125e214d185e2d89b797a418</srcmd5>
+    <version>1.0.0</version>
+    <time>1783333914</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.0:
+  * Added the 2026 PDG data table file, now default,
+  * and made a new 2026 nucleus data file to match.
+  * Added version 16 of package CSV data files since PDG 2026
+    information now the default.
+  * Removed old and superseded 2022 and 2023 PDG and derived data
+    files.
+  * Removed old 2020 and 2022 nucleus data files.
+  * `Particle` class and submodules:
+  * Return `Fraction` instead of float for charge, spin J, and
+    isospin I.
+  * Implemented baryon, lepton and R-parity quantum numbers.
+  * Implemented flavour quantum numbers - strangeness, charmness,
+    bottomness, topness. Also hypercharge.
+  * Tests added for all new functionality.
+  * Added also a test of the Gell-Mann–Nishijima formula relating
+    charge to isospin and hypercharge.
+  * Performance improvements, notably for particle and PDGID
+    literals.
+  * Minor improvements and fixes to the odd member function.
+  * Improvements to the CLI commands `python -m particle ...` for
+    better user experience
+  * and clearer error messages.
+  * `PDGID` class method and related standalone functions:
+  * Return `Fraction` instead of float for charge, spin J, and
+    isospin I.
+  * Minor fixes to the odd function.
+  * Classes for MC particle identification codes and converters:
+  * New common `MCParticleID` base class for MC particle ID
+    classes.</comment>
+    <requestid>1363831</requestid>
+  </revision>
 </revisionlist>
