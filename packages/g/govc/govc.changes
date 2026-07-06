@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 06 05:04:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.55.1:
+  * Fix
+    - [ea8603d] remove ovf test files with non-ascii names
+  * Chore
+    - [1e372f1] Update version.go for v0.55.1
+  * Commits
+    - [1e372f1] chore: Update version.go for v0.55.1
+    - [18b33ca] feat(cns): add ActiveClusters to
+      CnsVolumePolicyReconfigSpec
+    - [e5a1169] Add simulator methods for eam2 cluster solutions
+      api
+    - [ea8603d] fix: remove ovf test files with non-ascii names
+
+-------------------------------------------------------------------
 Sun Jun 28 06:35:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.0:
