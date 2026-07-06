@@ -21,11 +21,14 @@ Version:        4.5.4
 Release:        0
 Summary:        Python Bindings for YARA (from Virus Total)
 License:        Apache-2.0
-Group:          Development/Libraries/Python
 URL:            https://github.com/VirusTotal/yara-python
 Source:         https://github.com/VirusTotal/yara-python/archive/v%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Specify dynamic linking in setup.cfg
+Patch0:         use-dynamic-linking.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -37,13 +40,13 @@ python bindings for libyara.
 YARA is a tool to identify and classify malware samples.
 
 %prep
-%setup -q -n yara-python-%{version}
+%autosetup -p1 -n yara-python-%{version}
 
 %build
-%python_build --dynamic-linking
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -53,6 +56,6 @@ YARA is a tool to identify and classify malware samples.
 %license LICENSE
 %doc README.rst
 %{python_sitearch}/yara.cpython*.so
-%{python_sitearch}/yara_python-%{version}*-info
+%{python_sitearch}/yara_python-%{version}.dist-info
 
 %changelog

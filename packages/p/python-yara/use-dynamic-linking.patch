@@ -1,0 +1,9 @@
+Index: yara-python-4.5.4/setup.cfg
+===================================================================
+--- yara-python-4.5.4.orig/setup.cfg
++++ yara-python-4.5.4/setup.cfg
+@@ -15,3 +15,4 @@ test_suite=tests
+ 
+ # need libmagic-dev
+ # enable_magic = true
++dynamic_linking = true

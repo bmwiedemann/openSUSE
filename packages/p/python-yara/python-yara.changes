@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jun 24 12:41:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch use-dynamic-linking.patch:
+  * Specify dynamic linking in setup.cfg.
+- Use pyproject macros to build and install the module.
+
+-------------------------------------------------------------------
 Tue Mar 24 12:11:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.4:
