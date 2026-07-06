@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Jul 06 07:07:54 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.44.1:
+  * 0.44.1 bump version
+  * chore(deps): update rust crate napi to v3.10.3 (#2786)
+  * chore(deps): update rust crate napi-derive to v3.5.9 (#2785)
+  * chore(deps): update dependency oxlint to v1.72.0 (#2780)
+  * chore(deps): update rust crate terminal-light to v1.9.0 (#2781)
+  * chore(deps): update rust crate clap_complete to v4.6.7 (#2783)
+  * chore(deps): update rust crate ignore to v0.4.27 (#2784)
+  * fix(cli): bound outline file queue (#2787)
+  * chore(deps): update rust crate clap_complete to v4.6.6 (#2782)
+  * chore(deps): update dependency @ast-grep/napi to v0.44.0 (#2764)
+  * chore(deps): update rust crate tree-sitter to v0.26.10 (#2779)
+  * chore(deps): update dependency web-tree-sitter to v0.26.10 (#2778)
+  * chore(deps): update dependency dprint to v0.55.1 (#2776)
+  * chore(deps): update dependency @napi-rs/cli to v3.7.2 (#2667)
+  * chore(deps): update rust crate napi to v3.9.4 (#2696)
+  * chore(deps): update rust crate napi-derive to v3.5.7 (#2768)
+  * fix: update pyo3 deps
+  * chore(deps): update rust crate anyhow to v1.0.103 (#2774)
+  * feat: load custom language outline rules from config (#2777)
+  * fix(deps): update rust-wasm-bindgen monorepo (#2775)
+  * chore(deps): update actions/cache action to v6 (#2767)
+  * feat: add outline rules for more builtin languages
+  * feat: Support *.bazel files in python (#2771)
+  * chore(deps): update oxlint monorepo (#2765)
+
+-------------------------------------------------------------------
 Mon Jun 22 05:43:13 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.44.0:
