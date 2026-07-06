@@ -234,4 +234,41 @@
   * fix(openai): handle Azure stream chunks without delta</comment>
     <requestid>1353629</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1d824045dcc311b0cf0349efc045390a</srcmd5>
+    <version>4.13.0</version>
+    <time>1783333919</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.6 to
+    0.5.7 in the github-actions group
+  * fix(langchain): extract model name for ChatHuggingFace
+  * chore(deps): bump the github-actions group with 2 updates
+  * fix(resource_manager): reinitialize consumer threads after
+    os.fork()
+- update to 4.12.0:
+  * feat(tracing): propagate environment attributes
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.11.0...v4.12.0
+- update to 4.11.0:
+  * fix(langchain): avoid duplicating structured tool inputs in
+    metadata
+  * chore(deps): bump actions/checkout from 6.0.3 to 7.0.0 in the
+    github-actions group
+  * feat(tracing): allow custom OpenTelemetry ID generators
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.10.0...v4.11.0
+- update to 4.10.0:
+  * fix(langchain): mark handled tool errors as errors
+  * fix(langchain): prefer structured tool inputs
+  * feat(api): update API spec from langfuse/langfuse 8cdf8a4
+  * feat(datasets): support multimodal dataset items
+- update to 4.9.1:
+  * fix(openai): preserve Responses tools and streamed tool calls
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.9.0...v4.9.1
+- update to 4.9.0:
+  * feat(api): update API spec from langfuse/langfuse 53433e8</comment>
+    <requestid>1363841</requestid>
+  </revision>
 </revisionlist>

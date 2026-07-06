@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:15:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.6 to
+    0.5.7 in the github-actions group
+  * fix(langchain): extract model name for ChatHuggingFace
+  * chore(deps): bump the github-actions group with 2 updates
+  * fix(resource_manager): reinitialize consumer threads after
+    os.fork()
+- update to 4.12.0:
+  * feat(tracing): propagate environment attributes
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.11.0...v4.12.0
+- update to 4.11.0:
+  * fix(langchain): avoid duplicating structured tool inputs in
+    metadata
+  * chore(deps): bump actions/checkout from 6.0.3 to 7.0.0 in the
+    github-actions group
+  * feat(tracing): allow custom OpenTelemetry ID generators
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.10.0...v4.11.0
+- update to 4.10.0:
+  * fix(langchain): mark handled tool errors as errors
+  * fix(langchain): prefer structured tool inputs
+  * feat(api): update API spec from langfuse/langfuse 8cdf8a4
+  * feat(datasets): support multimodal dataset items
+- update to 4.9.1:
+  * fix(openai): preserve Responses tools and streamed tool calls
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.9.0...v4.9.1
+- update to 4.9.0:
+  * feat(api): update API spec from langfuse/langfuse 53433e8
+  * fix(scores): support CORRECTION score data type
+  * feat(tracing): add export-stage OTEL span masking and media
+    detection
+- update to 4.8.1:
+  * feat(api): update API spec from langfuse/langfuse 9ce4aa4
+  * chore(deps): bump the github-actions group with 2 updates
+  * fix(serializer): correctly serialize float('-inf') as
+    "-Infinity"
+  * feat(api): update API spec from langfuse/langfuse c82119e
+  * chore(deps): bump astral-sh/setup-uv from 8.1.0 to 8.2.0 in
+    the github-actions group
+  * chore(deps): bump github/codeql-action from 4.36.1 to 4.36.2
+    in the github-actions group
+  * fix: update env template to use LANGFUSE_BASE_URL
+  * feat(api): update API spec from langfuse/langfuse b8db8b6
+  * fix(propagation): coerce propagated metadata values
+  * fix(observe): preserve current observation type on span
+    update
+  * fix(deps): support wrapt 2.x (closes #1561)
+  * fix(langchain): handle prompt_tokens_details as dict in
+    _parse_usage_model
+- update to 4.7.1:
+  * feat(api): update API spec from langfuse/langfuse 41f5847
+  * chore(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+    in the github-actions group
+  * **Full Changelog**: https://github.com/langfuse/langfuse-
+    python/compare/v4.7.0...v4.7.1
+- update to 4.7.0:
+  * chore: add CODEOWNERS for GitHub config
+  * chore(deps): bump the github-actions group across 1 directory
+    with 5 updates
+  * chore(deps): bump langsmith from 0.7.22 to 0.8.0
+  * feat(span-processor): mark app root spans
+  * feat(span-processor): simplify app root state and expand LLM
+    scopes
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.3 to
+    0.5.5 in the github-actions group
+  * ci: adjust zizmor advanced security handling
+  * chore(deps): bump github/codeql-action from 4.35.4 to 4.35.5
+    in the github-actions group
+  * chore(deps): bump idna from 3.11 to 3.15
+  * chore(deps): bump urllib3 from 2.6.3 to 2.7.0
+  * fix: add depth limit to EventSerializer to prevent hangs on
+    complex objects
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.5 to
+    0.5.6 in the github-actions group
+
+-------------------------------------------------------------------
 Sun May 17 21:13:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.1:

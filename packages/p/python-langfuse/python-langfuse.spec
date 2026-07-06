@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langfuse
-Version:        4.6.1
+Version:        4.13.0
 Release:        0
 Summary:        A client library for accessing langfuse
 License:        MIT
