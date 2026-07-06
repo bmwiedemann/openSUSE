@@ -59,6 +59,7 @@ Patch9:       cloud-init-lint-fix.patch
 Patch11:      cloud-init-no-single-process.patch
 # FIXME https://github.com/canonical/cloud-init/pull/6214
 Patch12:      cloud-init-needs-action.patch
+Patch13:      cloud-init-write-routes.patch
 
 BuildRequires:  fdupes
 BuildRequires:  filesystem
@@ -110,7 +111,7 @@ Requires:       %{pythons}-oauthlib
 Requires:       %{pythons}-passlib
 Requires:       %{pythons}-PyYAML
 Requires:       %{pythons}-requests
-Requires:       %{pythons}-serial
+Requires:       %{pythons}-pyserial
 Requires:       %{pythons}-setuptools
 Requires:       %{pythons}-xml
 Requires:       sudo
@@ -172,6 +173,7 @@ Documentation and examples for cloud-init tools
 %patch -P 9
 %patch -P 11
 %patch -P 12
+%patch -P 13
 
 # patch in the full version to version.py
 version_pys=$(find . -name version.py -type f)

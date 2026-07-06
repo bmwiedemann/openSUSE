@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jun 24 12:45:55 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Re-add cloud-init-write-routes.patch (bsc#1267422) incorrectly dropped
+
+-------------------------------------------------------------------
 Tue Nov 11 14:44:03 UTC 2025 - Robert Schweikert <rjschwei@suse.com>
 
 - Fix dependency replace -serial with -pyserial
