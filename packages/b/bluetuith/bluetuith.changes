@@ -1,5 +1,14 @@
 -------------------------------------------------------------------
-Wed Aug 14 06:14:07 UTC 2024 - Michael Vette <mvetter@suse.com>
+Sat Jul  4 06:28:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.2.7:
+  * Adapted to new tview changes
+  * Backend fixes
+  * Fixed OBEX and Media Player events and progress rendering
+  * Minor bugfixes
+
+-------------------------------------------------------------------
+Wed Aug 14 06:14:07 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.2.3:
   * README: Update project status and features

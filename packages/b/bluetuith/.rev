@@ -118,4 +118,16 @@
   * ui: help: Clarify connect keybinding toggle functionality</comment>
     <requestid>1193820</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>23875b8ad2a17e72469c01aea88c10cb</srcmd5>
+    <version>0.2.7</version>
+    <time>1783333785</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.2.7:
+  * Adapted to new tview changes
+  * Backend fixes
+  * Fixed OBEX and Media Player events and progress rendering
+  * Minor bugfixes</comment>
+    <requestid>1363754</requestid>
+  </revision>
 </revisionlist>
