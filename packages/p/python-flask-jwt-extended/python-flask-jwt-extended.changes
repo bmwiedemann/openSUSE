@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  5 09:14:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.7.4:
+  * setup.py: bump PyJWT floor to >=2.11.0 to match the actual
+    runtime requirement
+- update to 4.7.3:
+  * I'm skipping 4.7.2 because I forgot to bump the python
+    version in code. This is the same as 4.7.2, with things setup
+    correctly.
+- update to 4.7.2:
+  * fix: a unexpected token
+  * Update active python versions
+  * Bump PyJWT to 2.12.1
+- update to 4.7.1:
+  * Add controls for `verify_sub` option in PyJWT
+- update to 4.7.0:
+  * Drop support for python 3.7 and 3.8, add 3.13
+  * Fix documentation around identity needing to be a string
+
+-------------------------------------------------------------------
 Tue Apr 22 02:19:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.
