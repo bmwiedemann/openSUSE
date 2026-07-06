@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 09:28:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Udpate to 0.6.2.1
+  * Fix a crash caused by lack of ARGB32 support when built with
+    OpenCV
+
+-------------------------------------------------------------------
 Sat Jun 20 08:56:05 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.6.2

@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 
 %bcond_without released
 Name:           kquickimageeditor%{?pkg_suffix}
-Version:        0.6.2
+Version:        0.6.2.1
 Release:        0
 Summary:        A set of QtQuick components for image editing
 License:        LGPL-2.1-or-later
