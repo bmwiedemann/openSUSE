@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 06 05:02:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.108:
+  * Allow trusted symlink targets in OCI extraction
+
+-------------------------------------------------------------------
+Fri Jul 03 12:38:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.107:
+  * Fix act, ko, oras and k6 get templates
+
+-------------------------------------------------------------------
+Fri Jul 03 05:14:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.106:
+  * Fix README contributor note and xz dependency marking
+  * Update AGENTS.md to document bz2 and tar.xz support
+  * Fix duplicate tar.xz checks and add OS guard for CRC
+  * Add CRC tool for OpenShift local development
+  * Add tar.xz decompression support via ulikunitz/xz
+  * Fix duplicate bz2 check and restore contributor note
+  * Add restic backup tool with bzip2 decompression support
+
+-------------------------------------------------------------------
 Wed Jul 01 08:06:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.105:
