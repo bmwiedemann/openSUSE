@@ -95,4 +95,12 @@
     <comment>11.0.22</comment>
     <requestid>1356258</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>17a5c13ba45089a09281b08547b35a5a</srcmd5>
+    <version>11.0.23</version>
+    <time>1783334020</time>
+    <user>anag_factory</user>
+    <comment>11.0.23 + libtcnative-2_0</comment>
+    <requestid>1363909</requestid>
+  </revision>
 </revisionlist>

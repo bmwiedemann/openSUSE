@@ -29,7 +29,7 @@
 %define elspec %{elspec_major}.%{elspec_minor}
 %define major_version 11
 %define minor_version 0
-%define micro_version 22
+%define micro_version 23
 %define java_major 1
 %define java_minor 17
 %define java_version %{java_major}.%{java_minor}
@@ -121,7 +121,7 @@ Requires:       apache-commons-dbcp
 Requires:       apache-commons-logging
 Requires:       apache-commons-pool2
 Requires:       java >= %{java_version}
-Requires:       libtcnative-1-0 >= 1.2.38
+Requires:       libtcnative-2-0
 Requires:       logrotate
 Requires(post): %fillup_prereq
 Requires(post): libxslt-tools
