@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:21:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.61.0:
+  libtmux 0.61.0 hardens support for the tmux 3.7 patch line. It
+  fixes Pane.break_pane() naming broken-out windows libtmux instead
+  of tmux's own default on tmux 3.7a/3.7b, and adds
+  get_version_str() for reading the raw tmux version with its
+  point-release suffix intact.
+  * Highlights
+    - Fix — break_pane() keeps tmux's default window name on
+      3.7a/3.7b (#699). Breaking a pane into a new window without
+      an explicit window_name left it named libtmux on tmux
+      3.7a/3.7b; it now keeps tmux's own default (typically the
+      running command). Passing window_name is unaffected.
+    - New — get_version_str() (#699).
+      libtmux.common.get_version_str() returns the running tmux
+      version verbatim, keeping the point-release suffix ("3.7a")
+      that get_version() strips for numeric comparison — useful for
+      telling patch releases apart, e.g. 3.7 from 3.7a.
+    - tmux 3.7a/3.7b test compatibility (#698). The test suite now
+      passes against tmux 3.7a and 3.7b, which CI also exercises.
+  * What's Changed
+    - docs: lead topic pages with the concept, add docs voice guide
+      by @tony in #696
+    - Fix window-name test for tmux 3.7a/3.7b and add them to CI by
+      @tony in #698
+    - Fix break_pane forcing 'libtmux' window name on tmux
+      3.7a/3.7b by @tony in #699
+
+-------------------------------------------------------------------
 Wed Jul  1 09:05:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.60.0:
