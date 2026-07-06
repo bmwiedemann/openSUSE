@@ -1,7 +1,7 @@
 #
 # spec file for package libisofs
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 %define so_ver 6
-%define tarversion 1.5.6
+%define tarversion 1.5.8
 %define patchlevel pl01
 Name:           libisofs
 Version:        %{tarversion}.%{patchlevel}

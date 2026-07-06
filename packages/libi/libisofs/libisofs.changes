@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jun 29 05:52:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.8.pl01:
+  * Bug fix: iso_image_set_ignore_aclea() inverted the setting
+    for reading the XFS-style project id from disk files
+  * Silenced error messages about ioctl(FS_IOC_FSGETXATTR)
+  * Bug fix: File path of imported BIOS boot image was forgotten
+    when it gets overwritten by a file of the same name.
+  * Bug fix: Reproducibility of ISO images depended on
+    "undefined" qsort(3) behavior with comparer function result 0
+  * Bug fix: Empty AAIP value spoiled decoding of all AAIP
+    attributes
+  * Bug fix: Symbolic links with xattr could cause unusable ISO
+    filesystems.
+  * Bug fix: When reading multiple slashes in symbolic link
+    targets they were
+  * condensed to a single one if not marked by the SL ROOT-flag
+  * Bug fix: Empty symolic link target components which represent
+    add-on slashes were written with ROOT flag set
+  * Bug fix: The last trailing slash in a symbolic link target
+    was not written
+  * Bug fix: The .. directory record exposed Rock Ridge
+    properties of its
+  * grand grand parent. Caused by commit 4d0063f7 in 2009 which
+    fixed the block address pointer of the .. record.
+  * Bug fix: The characters '.' and ';' were wrongly disallowed
+    with PVD file names
+  * Improved size estimation and property assessment of El Torito
+    hidden boot images
+  * Enabled up to 8 appended GPT partitions and improved their
+    number mapping
+  * New API calls iso_local_get_lfa_flags(),
+    iso_local_set_lfa_flags(),
+  * iso_node_get_lfa_flags(), iso_node_set_lfa_flags(),
+  * iso_util_decode_lfa_flags(), iso_util_encode_lfa_flags(),
+  * iso_util_get_lfa_masks(), iso_util_get_effective_lfa_mask()
+  * New API calls iso_node_get_projid(), iso_node_set_projid(),
+  * iso_local_get_projid(), iso_local_set_projid()
+  * New API call iso_write_opts_set_gpt_with_gaps
+  * New API call iso_local_create_dev()
+  * New API call iso_write_opts_set_rrip_tf_long() and date check
+    for year 2150
+  * limit to produce 17-byte timestamps
+  * New API call iso_write_opts_set_rrip_tf_y1900()
+  * New API calls iso_image_set_volume_id_v2(),
+    iso_image_get_volume_id_v2(),
+  * iso_image_fs_get_volume_id_v2()
+  * New API call iso_write_opts_set_relaxed_nonvol_atts()
+
+-------------------------------------------------------------------
 Sun Mar  9 16:18:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.5.6.pl01:
@@ -75,7 +125,7 @@ Tue Feb  9 23:20:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
   * New API call iso_read_opts_set_joliet_map(), new default
     joliet_map=stripped
   * New API calls iso_read_image_features_tree_loaded() and
-    iso_read_image_features_rr_loaded() 
+    iso_read_image_features_rr_loaded()
 
 -------------------------------------------------------------------
 Mon Apr 27 18:00:48 UTC 2020 - Luigi Baldoni <aloisio@gmx.com>
@@ -249,19 +299,19 @@ Mon May 25 17:38:40 UTC 2015 - asterios.dramis@gmail.com
   * New API object iso_interval_reader. Enabling flag bits for
     older API calls iso_write_opts_set_prep_img(),
     iso_write_opts_set_efi_bootp(), and
-    iso_write_opts_set_partition_img(). 
+    iso_write_opts_set_partition_img().
 
 -------------------------------------------------------------------
 Sun Mar  8 13:48:21 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.3.8
-  * Bug fix: Prevent allocation of empty hash tables. Thanks 
+  * Bug fix: Prevent allocation of empty hash tables. Thanks
     Richard Nolde.
-  * Bug fix: Prevent allocation of empty directory children lists. 
+  * Bug fix: Prevent allocation of empty directory children lists.
     Thanks Richard Nolde.
-  * Bug fix: The GUIDs of main GPT and backup GPT differed if more 
+  * Bug fix: The GUIDs of main GPT and backup GPT differed if more
     than one System Area was written into the ISO image.
-  * New API calls iso_image_report_el_torito() and 
+  * New API calls iso_image_report_el_torito() and
     iso_image_report_system_area()
   * New API call iso_crc32_gpt()
 
@@ -359,7 +409,7 @@ Sun May 26 21:19:38 UTC 2013 - gber@opensuse.org
   * New -boot_image bootspec grub2_sparc_core=
   * New -as mkisofs options --grub2-mbr , --grub2-boot-info ,
     --grub2-sparc-core
-  * New -hardlinks mode "lsl_count" / "no_lsl_count" 
+  * New -hardlinks mode "lsl_count" / "no_lsl_count"
 
 -------------------------------------------------------------------
 Tue Mar 26 15:18:24 UTC 2013 - gber@opensuse.org
