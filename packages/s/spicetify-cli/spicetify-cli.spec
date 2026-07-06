@@ -16,16 +16,18 @@
 #
 
 
-%define sname cli
-%define binname spicetify
+%define         sname cli
+%define         binname spicetify
+
 Name:           spicetify-cli
-Version:        2.43.2
+Version:        2.44.0
 Release:        0
 Summary:        Command-line tool to customize Spotify client
 License:        LGPL-2.1-or-later
 URL:            https://spicetify.app/
-Source0:        %{sname}-%{version}.tar.zst
+Source0:        %{sname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+
 BuildRequires:  golang(API) >= 1.24
 
 %description
@@ -53,3 +55,4 @@ find %{buildroot}%{_libdir}/%{name}/ -type f -executable | grep -v %{name}/%{bin
 %doc README.md
 
 %changelog
+

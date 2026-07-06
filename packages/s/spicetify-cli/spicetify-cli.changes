@@ -1,5 +1,27 @@
 -------------------------------------------------------------------
-Tue Apr 21 07:38:54 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+Sun Jul 05 11:35:35 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.44.0:
+  * ci(dependabot): create PRs every month
+  * chore(deps): bump github.com/mattn/go-colorable from 0.1.14 to 0.1.15 (#3879)
+  * fix(update): close response body and file on error paths (#3829)
+  * chore(deps): bump golang.org/x/net from 0.49.0 to 0.56.0 (#3878)
+  * fix(expFeatures): properly apply experiments
+  * ci: allow unsigned builds on forks
+  * fix(shuffle+): use `PlatformAPI` for getting liked songs
+  * chore: lint wrapper module
+  * fix: properly assign `ReactQuery` and add spicetify to session path
+  * feat: add support for Spotify `1.2.93`
+  * fix(css-map): correct malformed CSS class name (#3881)
+  * feat(css-map): add some canvas classes for 1.2.86 (#3867)
+  * fix(config): infinite loop on spotify_launch_flags and non-deterministic extension ordering (#3847)
+  * chore(deps): bump actions/upload-artifact from 6 to 7 (#3714)
+  * chore(deps): bump actions/checkout from 6 to 7 (#3865)
+  * fix(loopyLoop): loop between markers when repeat-one is active (#3833)
+  * feat(css-map): add discography page classes for 1.2.86+ (#3838)
+
+-------------------------------------------------------------------
+Tue Apr 21 07:38:54 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.43.2:
   * chore(lyrics-plus): correct misspelled variable name (#3817)
@@ -20,7 +42,7 @@ Tue Apr 21 07:38:54 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
   * feat(preprocess): optimize the css map process
 
 -------------------------------------------------------------------
-Mon Apr 13 13:38:39 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+Mon Apr 13 13:38:39 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.43.1:
   * fix(preprocess): use old approach with changing css
