@@ -2424,4 +2424,12 @@ Needs to go together with libsemanage change</comment>
     <comment>please contact Zdenek Kubala in case of issues</comment>
     <requestid>1361460</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>a8bfab79881576d5a32f76b941be2afa</srcmd5>
+    <version>20260702</version>
+    <time>1783336296</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363480</requestid>
+  </revision>
 </revisionlist>
