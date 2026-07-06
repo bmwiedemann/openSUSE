@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Sun Jul  5 14:45:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.56:
+  * Avoid MRO cycle when collecting NamedTuple fields
+  * Model `int` and `str` enum value normalization
+  * Prefer reflected operators by runtime class
+  * Exit with status 130 when interrupted
+  * Avoid exponential OR-pattern reachability
+  * Reduce bound typevar identity overhead
+  * Infer generic class pattern capture types
+  * Narrow exact tuples through sequence patterns
+  * Recognize inherited enum member constructors
+  * Respect return-context inference when filtering overloads
+  * Sync vendored typeshed stubs (#26501). Typeshed diff
+- update to 0.0.54:
+  * Avoid duplicate configuration error output
+  * Avoid stack overflows in reachability analysis
+  * Fix divergent recursive tuple cycle handling in ty
+  * Fix panic from relation queries during cycle recovery
+  * Fix panics by reverting recursive `TypeOf` cycle recovery
+  * Support basic usages of `__class__` closure cells in methods
+  * Fix typealias token classification inconsistency
+  * Implement rust-analyzer's "Click for full compiler
+    diagnostic" feature
+  * Co-locate retained definition usage state
+  * Use never-change durability for immutable file inputs
+  * Reject undeclared protocol instance attributes
+  * Allow replacing ordinary methods with compatible functions
+  * Distinguish `typing.TypedDict` from
+    `typing_extensions.TypedDict`
+  * Don't treat non-empty ranges as single-valued
+  * Handle TypeVar bounds over `type[...]` in attribute lookup
+  * Infer definite equality comparison results
+  * Infer mismatched literal comparisons
+  * `match` statements: make class-pattern fallthrough member-
+    aware
+  * `match` statements: prove TypedDict structural patterns
+    exhaustive
+  * `match` statements: resolve positional class-pattern
+    exhaustiveness
+  * Model non-exhaustive enum member sets (`enum.Flag`s)
+  * Reduce retained definition map storage
+  * Reuse equality semantics for membership compatibility
+  * Sync vendored typeshed stubs to support `builtins.sentinel`
+  * Treat non-empty `range` calls as non-empty for reachability
+  * Use assignability for divergent constraints
+  * Widen inferred class-valued instance attributes
+- update to 0.0.53:
+  * Avoid bypassing lazy constraints for `Divergent`
+  * Avoid recursion when projecting narrowing constraints
+  * Fix ParamSpec callable signature extraction for callable
+    instances
+  * Make multi-arm `TypeOf` cycle recovery monotonic
+  * Document all special forms in `ty_extensions`
+  * Avoid cloning fallback condition flow snapshots
+  * Avoid constructing discarded speculative diagnostics
+  * Avoid path lookups when sorting same-file diagnostics
+  * Cache `is_never_satisfied` results
+  * Defer applying type context to simple standalone expressions
+  * Infer types for names bound in match patterns
+  * Preserve regular kind for callable instances
+  * Simplify intersections of invariant generic types with `Any`
+    specializations
+- update to 0.0.52:
+  * Avoid shadowing hints for attribute assignments
+  * Fix dict.pop overloads to accept arbitrary keys with defaults
+  * Normalize recursive `TypeOf` across multiple union arms
+  * Normalize recursive `TypeOf` growth during cycle recovery
+  * Normalize recursive protocol growth during cycle recovery
+  * Preserve generic alias identity during cycle recovery
+  * Recover from dynamic class code generator cycles
+  * Add a go-to destination for `Divergent`
+  * Publish diagnostics for all open files after a single file is
+    saved
+  * Render Markdown for reStructuredText fields in docstrings on
+    hover
+  * Make `error-on-warning` the default
+  * Make rendering of fix diffs more concise
+  * Avoid allocating disabled error context trees
+  * Avoid lookup maps for small place tables
+  * Avoid moving boxed use-def map builders
+  * Avoid transient AST ID merge map
+  * Batch signature typevar freshness scans
+  * Box large semantic index builders
+  * Build frozen definition maps directly
+  * Compact use-def binding interner keys
+  * Consume condition flow snapshots
+  * Lazily allocate reachability caches
+  * Remove redundant use-def state shrinking
+  * Reuse the first union bindings buffer
+  * Short-circuit terminal narrowing constraints
+  * Solve simple constraint conjunctions directly
+  * Store cycle-detector cache entries inline
+  * Stream indexed AST construction
+  * Suppress discarded TypedDict diagnostics
+  * Use SmallVec for `CycleDetector::seen`
+  * Use a SmallVec for seen type aliases
+  * ### Core type checking
+  * Raise limit for number of non-recursive union literals
+  * Preserve gradual behavior for explicit Any subclasses
+  * Preserve metaclasses when inheriting from intersection-typed
+    bases
+  * Recognize exhaustive matches over finite tuples
+- update to 0.0.51:
+  * Fix bound TypeVar default cycle recovery
+  * Support `Annotated[Any, ...]` as a class base
+  * Suggest keyword-only arguments between variadic parameters
+  * Avoid assuming classes with `Any` or `Unknown` bases are
+    descriptors
+  * Infer simpler types in complex lambda cycles
+  * Preserve exact class objects during identity narrowing
+  * Preserve unpacking diagnostics for nested assignment targets
+  * Compact indexed AST node storage
+  * Discard dead DNF branches in intersection building
+  * Remove broken gradual guarantee link
+- update to 0.0.50:
+  * Avoid cross-TypeVar leakage in generic inference
+  * Fix panic from oscillating collection-use constraints
+  * Preserve type variables in fixed tuple aliases
+  * Respect ParamSpec binding contexts
+  * Show bare `Final` as a special form on hover
+  * Support options in functional dataclass calls
+  * Add context-sensitive keyword completions
+  * Fix wildcard import symbol range
+  * Highlight decorated methods consistently
+  * Preserve narrowing after qualified `TYPE_CHECKING`
+  * Respect client's content format preference
+  * Retain all diagnostic annotations in the server
+  * Track unused-binding captures across nested scopes
+  * Fix override diagnostics for decorated methods
+  * Improve `duplicate-base` diagnostics
+  * Reject invalid dataclass flag combinations
+  * Reject legacy TypeVars in PEP 695 class bases
+  * Reject legacy TypeVars in PEP 695 functions
+  * Respect `@no_type_check` in function validation
+  * Avoid rebuilding unchanged specializations
+  * Avoid redundant equality intersections
+  * Avoid retaining empty use-def tables
+  * Compact retained definition inference extras
+  * Deduplicate retained scope inference types
+  * Disable LRU tracking for one-shot checks
+  * Fast path collection literals with exact type contexts
+  * Flatten retained declaration states
+  * Improve flow snapshot performance
+  * Skip stub package checks in stub-free search paths
+  * Speed up large-union narrowing
+  * Speed up module resolution for projects with many search
+    paths
+  * Store cumulative binding end offsets
+  * Use compact frozen representation for narrowing constraints
+  * Annotate intersection and negation types using `&` and `~`
+  * Diagnose zero-step slices on lists
+  * Full-scope bidirectional inference for non-empty collection
+    literals
+  * Improve equality-based narrowing for `==`, `!=`, and `match`
+  * Infer precise values for standard-library enums
+  * Make equality evaluation cycle-aware
+  * Narrow equality across IntEnum classes
+  * Narrow tuple expression match subjects
+  * Preserve literal types for loop variables over literal
+    collections
+  * Preserve negative narrowing for starred sequence patterns
+  * Preserve non-final types in Hashable unions
+  * Support enum literals as tagged-union discriminants
+  * Sync vendored typeshed stubs (#25952). Typeshed diff
+  * Sync vendored typeshed stubs (#25997). Typeshed diff
+  * Synthesize NamedTuple `__match_args__`
+  * Treat assigned enum hooks conservatively
+  * Validate deprecated warning categories
+
+-------------------------------------------------------------------
 Sun Jun 14 19:51:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.49:

@@ -68,4 +68,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1360887</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ce47de76201f2f1d0558b1d1ab8c09c</srcmd5>
+    <version>0.0.56</version>
+    <time>1783333973</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.0.56:
+  * Avoid MRO cycle when collecting NamedTuple fields
+  * Model `int` and `str` enum value normalization
+  * Prefer reflected operators by runtime class
+  * Exit with status 130 when interrupted
+  * Avoid exponential OR-pattern reachability
+  * Reduce bound typevar identity overhead
+  * Infer generic class pattern capture types
+  * Narrow exact tuples through sequence patterns
+  * Recognize inherited enum member constructors
+  * Respect return-context inference when filtering overloads
+  * Sync vendored typeshed stubs (#26501). Typeshed diff
+- update to 0.0.54:
+  * Avoid duplicate configuration error output
+  * Avoid stack overflows in reachability analysis
+  * Fix divergent recursive tuple cycle handling in ty
+  * Fix panic from relation queries during cycle recovery
+  * Fix panics by reverting recursive `TypeOf` cycle recovery
+  * Support basic usages of `__class__` closure cells in methods
+  * Fix typealias token classification inconsistency
+  * Implement rust-analyzer's &quot;Click for full compiler
+    diagnostic&quot; feature
+  * Co-locate retained definition usage state
+  * Use never-change durability for immutable file inputs
+  * Reject undeclared protocol instance attributes
+  * Allow replacing ordinary methods with compatible functions
+  * Distinguish `typing.TypedDict` from
+    `typing_extensions.TypedDict`
+  * Don't treat non-empty ranges as single-valued
+  * Handle TypeVar bounds over `type[...]` in attribute lookup</comment>
+    <requestid>1363874</requestid>
+  </revision>
 </revisionlist>
