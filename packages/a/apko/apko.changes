@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 06 04:58:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.22:
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.6 to 0.5.7
+    (#2295)
+  * build(deps): bump google.golang.org/api from 0.285.0 to 0.286.0
+    (#2298)
+  * build(deps): bump go.step.sm/crypto from 0.83.0 to 0.84.1
+    (#2301)
+  * build(deps): bump goreleaser/goreleaser-action from 7.2.2 to
+    7.2.3 (#2308)
+  * build(deps): bump chainguard.dev/sdk from 0.1.74 to 0.1.94
+    (#2309)
+  * build(deps): bump golangci/golangci-lint-action from 9.2.1 to
+    9.3.0 (#2312)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.24 to 1.6.26 (#2313)
+  * build(deps): bump github.com/klauspost/compress from 1.18.6 to
+    1.19.0 (#2314)
+
+-------------------------------------------------------------------
 Thu Jul 02 16:37:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.21:
