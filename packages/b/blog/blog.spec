@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.42
+Version:        2.45
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -63,6 +63,7 @@ Summary:        Replaces plymouth by blogd
 Group:          System/Base
 Requires:       blog = %{version}
 Requires:       systemd
+Requires:       udev
 Conflicts:      plymouth
 Conflicts:      plymouth-dracut
 
@@ -202,14 +203,21 @@ fi
 %{_unitdir}/blog-switch-root.service
 %{_unitdir}/blog-umount.service
 %{_unitdir}/blog.service
+%{_unitdir}/plymouth-quit-wait.service
+%{_unitdir}/plymouth-quit.service
+%{_unitdir}/plymouth-read-write.service
+%{_unitdir}/plymouth-start.service
 %{_unitdir}/systemd-ask-password-blog.path
 %{_unitdir}/systemd-ask-password-blog.service
 %{_unitdir}/default.target.wants/blog-quit.service
+%{_unitdir}/default.target.wants/plymouth-quit.service
+%{_unitdir}/default.target.wants/plymouth-quit-wait.service
 %{_unitdir}/emergency.target.wants/blog-quit.service
 %{_unitdir}/halt.target.wants/blog-halt.service
 %{_unitdir}/halt.target.wants/blog-switch-initramfs.service
 %{_unitdir}/initrd-switch-root.target.wants/blog-switch-root.service
 %{_unitdir}/initrd-switch-root.target.wants/blog.service
+%{_unitdir}/initrd-switch-root.target.wants/plymouth-start.service
 %{_unitdir}/kexec.target.wants/blog-kexec.service
 %{_unitdir}/kexec.target.wants/blog-switch-initramfs.service
 %{_unitdir}/local-fs-pre.target.wants/blog-umount.service
@@ -219,7 +227,10 @@ fi
 %{_unitdir}/reboot.target.wants/blog-switch-initramfs.service
 %{_unitdir}/rescue.target.wants/blog-quit.service
 %{_unitdir}/sysinit.target.wants/blog-store-messages.service
+%{_unitdir}/sysinit.target.wants/plymouth-read-write.service
 %{_unitdir}/sysinit.target.wants/blog.service
+%{_unitdir}/sysinit.target.wants/plymouth-start.service
+%{_unitdir}/sysinit.target.wants/systemd-ask-password-blog.path
 %ghost %attr(0644,root,root) %{_unitdir}/systemd-ask-password-blog.service.wants/systemd-vconsole-setup.service
 
 %changelog

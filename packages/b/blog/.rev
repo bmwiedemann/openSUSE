@@ -377,4 +377,41 @@ use private glib API but implement a share memory mkstemp</comment>
 - Update to version 2.41</comment>
     <requestid>1361156</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ed959bd12a3217f02fdd4957c9ca02d7</srcmd5>
+    <version>2.45</version>
+    <time>1783333655</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.45
+  Fix early boot LUKS prompt on s390x and resolve memory corruptions
+  This update addresses several critical issues in the early boot phase,
+  especially on s390x architectures, and hardens the daemon's architecture:
+  - Initrd/Dracut: Properly include `systemd-ask-password-blog.path` in
+    sysinit.target.wants during the initrd phase to ensure LUKS password
+    prompts are captured early in the zipl phase.
+  - Systemd Units: Drop restrictive `ConditionKernelCommandLine=!plymouth.enable=0`
+    to prevent the agent from being disabled by standard mainframe boot parameters.
+  - Memory Corruption: Fix a critical heap corruption by renaming the conflicting
+    `alignof()` macro to `ALIGNED_SIZEOF()` and zeroing allocated memory for
+    `struct request` (memset) to prevent reading uninitialized pointers #5.
+  - Kernel Command Line: Improve `parse_cmdline()` to support boolean parameters
+    without an explicit value (e.g., `blog.silent` defaults to `blog.silent=1`).
+  - New Features: Introduce `blog.silent` to suppress console I/O and `blog.coldboot`
+    to explicitly trigger the early coldstart password query.
+  - Lifecycle: Switch `KillMode=none` to `KillMode=mixed` to comply with modern
+    systemd process lifecycle management.
+  Fixes: gh#bitstreamout/showconsole#5
+  Fixes: gh#bitstreamout/showconsole#6
+  Fixes: bsc#1264176
+
+- Update to version 2.44
+  Harden blog and use shims units to handle plymouth
+  Disable coldstart requests via epoll
+  Avoid handling fd twice in epoll loop
+
+- Correct latest changes of 2.43
+
+- Update to version 2.43</comment>
+    <requestid>1363463</requestid>
+  </revision>
 </revisionlist>

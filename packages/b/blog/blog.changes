@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:33:48 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.45
+  Fix early boot LUKS prompt on s390x and resolve memory corruptions
+  This update addresses several critical issues in the early boot phase,
+  especially on s390x architectures, and hardens the daemon's architecture:
+  - Initrd/Dracut: Properly include `systemd-ask-password-blog.path` in
+    sysinit.target.wants during the initrd phase to ensure LUKS password
+    prompts are captured early in the zipl phase.
+  - Systemd Units: Drop restrictive `ConditionKernelCommandLine=!plymouth.enable=0`
+    to prevent the agent from being disabled by standard mainframe boot parameters.
+  - Memory Corruption: Fix a critical heap corruption by renaming the conflicting
+    `alignof()` macro to `ALIGNED_SIZEOF()` and zeroing allocated memory for
+    `struct request` (memset) to prevent reading uninitialized pointers #5.
+  - Kernel Command Line: Improve `parse_cmdline()` to support boolean parameters
+    without an explicit value (e.g., `blog.silent` defaults to `blog.silent=1`).
+  - New Features: Introduce `blog.silent` to suppress console I/O and `blog.coldboot`
+    to explicitly trigger the early coldstart password query.
+  - Lifecycle: Switch `KillMode=none` to `KillMode=mixed` to comply with modern
+    systemd process lifecycle management.
+  Fixes: gh#bitstreamout/showconsole#5
+  Fixes: gh#bitstreamout/showconsole#6
+  Fixes: bsc#1264176
+
+-------------------------------------------------------------------
+Tue Jun 30 14:11:48 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.44
+  Harden blog and use shims units to handle plymouth
+  Disable coldstart requests via epoll
+  Avoid handling fd twice in epoll loop
+
+-------------------------------------------------------------------
+Mon Jun 29 13:14:14 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Correct latest changes of 2.43
+
+-------------------------------------------------------------------
+Thu Jun 25 13:38:15 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.43
+  Make sure that if blog is running it is identified as plymouth Latest
+  also add conflicts to systemd-ask-password-console units in the
+  systemd-ask-password-blog units. This should avoid conflicting password
+  agents asking the same question in s390x.
+
+-------------------------------------------------------------------
 Mon Jun 22 13:48:12 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.42
