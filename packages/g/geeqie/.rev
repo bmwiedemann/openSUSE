@@ -375,4 +375,13 @@
   + More progress in GTK4 migration</comment>
     <requestid>1361671</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>bd7121a3c664b60b929374fc78d08ee0</srcmd5>
+    <version>2.9</version>
+    <time>1783333733</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.9:
+  + bugfix release</comment>
+    <requestid>1363708</requestid>
+  </revision>
 </revisionlist>
