@@ -1,7 +1,7 @@
 #
 # spec file for package python-wadllib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-wadllib
-Version:        2.0.0
+Version:        2.1.0
 Release:        0
 Summary:        Navigate HTTP resources using WADL files as guides
 License:        LGPL-3.0-or-later

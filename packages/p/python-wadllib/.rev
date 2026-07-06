@@ -82,4 +82,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1224337</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bd75a4b776db470e319d41d54b7dbfe2</srcmd5>
+    <version>2.1.0</version>
+    <time>1783334057</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.0:
+  * Add support for Python 3.14.</comment>
+    <requestid>1363947</requestid>
+  </revision>
 </revisionlist>
