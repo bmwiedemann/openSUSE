@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  5 19:08:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.0
+  * Improved `ReidemeisterNumber` for pairs of homomorphisms where
+    both source and range have their conjugacy classes precomputed.
+  * Improved `CoincidenceReidemeisterSpectrum` for non-abelian
+    groups.
+
+-------------------------------------------------------------------
 Tue May 12 09:51:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.3.2
