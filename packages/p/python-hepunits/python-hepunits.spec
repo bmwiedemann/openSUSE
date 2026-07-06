@@ -19,7 +19,7 @@
 %global modname hepunits
 
 Name:           python-hepunits
-Version:        2.4.5
+Version:        2.4.6
 Release:        0
 Summary:        Units and constants in the HEP system of units
 License:        BSD-3-Clause

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:53:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.6:
+  * chore(deps): update pre-commit hooks
+  * chore(deps): bump astral-sh/setup-uv from 8.0.0 to 8.1.0 in
+    the actions group
+  * chore: removal of duplicates and trivial Python 3
+    modernisation in the docs
+  * chore: add an AGENTS file
+
+-------------------------------------------------------------------
 Sun Apr 19 17:24:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.5:

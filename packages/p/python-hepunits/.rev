@@ -75,4 +75,18 @@
     actions group</comment>
     <requestid>1348060</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>11e318b9188d1bc2e7c85173971ee67b</srcmd5>
+    <version>2.4.6</version>
+    <time>1783333890</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.6:
+  * chore(deps): update pre-commit hooks
+  * chore(deps): bump astral-sh/setup-uv from 8.0.0 to 8.1.0 in
+    the actions group
+  * chore: removal of duplicates and trivial Python 3
+    modernisation in the docs
+  * chore: add an AGENTS file</comment>
+    <requestid>1363818</requestid>
+  </revision>
 </revisionlist>
