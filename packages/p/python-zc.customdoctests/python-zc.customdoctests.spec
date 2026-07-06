@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.customdoctests
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  unzip
+Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +60,7 @@ cp %{SOURCE1} .
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -r %{buildroot}%{$python_sitelib}/zc.customdoctests-%{version}-py3.11-nspkg.pth
+%python_expand rm %{buildroot}%{$python_sitelib}/zc.customdoctests-%{version}-py3.*-nspkg.pth
 
 %check
 %{python_expand export PYTHONPATH='.:%{buildroot}%{$python_sitelib}'

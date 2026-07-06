@@ -42,4 +42,13 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264897</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>9e5ef9912b73db7295a67a7f6bcfa16e</srcmd5>
+    <version>1.0.1</version>
+    <time>1783334032</time>
+    <user>anag_factory</user>
+    <comment>- Loosen nspkg.pth path, it is now per-Python version.
+- Add missing Requires on setuptools.</comment>
+    <requestid>1363916</requestid>
+  </revision>
 </revisionlist>

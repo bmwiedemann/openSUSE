@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 01:25:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Loosen nspkg.pth path, it is now per-Python version.
+- Add missing Requires on setuptools.
+
+-------------------------------------------------------------------
 Fri Mar 28 01:49:20 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.
