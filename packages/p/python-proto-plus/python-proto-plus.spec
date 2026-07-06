@@ -27,7 +27,7 @@
 %define modname proto_plus
 %{?sle15_python_module_pythons}
 Name:           python-proto-plus%{psuffix}
-Version:        1.27.2
+Version:        1.28.0
 Release:        0
 Summary:        Pythonic Protocol Buffers
 License:        Apache-2.0
