@@ -1,7 +1,7 @@
 #
 # spec file for package zswap-cli
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without systemd
 Name:           zswap-cli
-Version:        1.1.2
+Version:        1.2.0
 Release:        0
 Summary:        Command-line tool to control the zswap kernel module options
 License:        MIT
@@ -86,5 +86,6 @@ compressed cache is much faster than reading from a swap device.
 %{_prefix}/lib/systemd/system/zswap-cli.service
 %endif
 %{_datadir}/bash-completion/completions/zswap-cli
+%{_datadir}/metainfo/org.easycoding.zswap-cli.metainfo.xml
 
 %changelog

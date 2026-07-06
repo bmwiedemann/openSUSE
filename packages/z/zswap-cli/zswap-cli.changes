@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 19:28:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.2.0:
+  * Add a new --verbose command-line option to display additional
+    information for debugging or informational purposes.
+  * Add the ability to use the --help and --version command-line
+    options without super-user privileges.
+  * Add printing of old ZSwap values when setting new values.
+  * Add a check to ensure a new value was set correctly.
+  * Add optional appdata manifest file for modern package managers
+  * Deprecate obtaining ZSwap options from the environment
+    variables
+
+-------------------------------------------------------------------
 Sat Dec 27 09:49:53 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.1.2:
