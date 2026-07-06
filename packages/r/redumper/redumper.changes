@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:01:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 729
+  * Show built-in option defaults in --help regardless of
+    overrides.
+  * Stop generating DVD ecc and replace with null bytes.
+  * Redump dot info #397.
+  * Print PS3 firmware version.
+  * Log hfs volume identifier.
+  * Add new Drives #387.
+- Update patches
+  * redumper-no-static-linking.patch
+  * redumper-use-system-googletest.patch
+
+-------------------------------------------------------------------
 Sun Jun  7 18:13:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Udpate to version 722

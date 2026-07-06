@@ -1,14 +1,15 @@
 diff --git a/tests/CMakeLists.txt b/tests/CMakeLists.txt
-index 7505456..9f20d07 100644
+index 9952883..9f20d07 100644
 --- a/tests/CMakeLists.txt
 +++ b/tests/CMakeLists.txt
-@@ -1,13 +1,2 @@
+@@ -1,14 +1,2 @@
 -include(FetchContent)
 -set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
 -FetchContent_Declare(
 -    googletest
 -    GIT_REPOSITORY https://github.com/google/googletest.git
 -    GIT_TAG        v1.15.2
+-    FIND_PACKAGE_ARGS NAMES GTest
 -)
 -if(MSVC)
 -    set(gtest_force_shared_crt OFF CACHE BOOL "" FORCE)
