@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jun 29 06:00:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.28.0:
+  * Add early assertions for non-null parameters in public API
+  * Add lilv_state_get_bundle_path()
+  * Always create state files with O_CLOEXEC on glibc >= 2.7
+  * Clarify relative symbolic link creation when saving state
+  * Fix build with dynmanifest support
+  * Fix crash when loading plugin classes on Windows
+  * Fix potential file loss when saving state with no link
+    directory
+  * Fix potential iterator leaks and resulting log message flood
+  * Fix replacing links when saving over state
+  * Fix test build when no C++ compiler is available
+  * Improve error handling when writing and deleting state
+
+-------------------------------------------------------------------
 Fri Apr 10 07:31:51 UTC 2026 - Simon Lees <sflees@suse.de>
 
 - Update to 0.26.4
@@ -98,7 +115,7 @@ Sun Jan 19 04:24:55 UTC 2025 - Konstantin Voinov <kv@kott.no-ip.biz>
 Wed Mar  6 16:40:20 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add %pycache_only macro for the __pycache__ file to fix build
-  in 15.6 
+  in 15.6
 
 -------------------------------------------------------------------
 Mon Dec 26 11:45:08 UTC 2022 - Konstantin Voinov <kv@kott.no-ip.biz>

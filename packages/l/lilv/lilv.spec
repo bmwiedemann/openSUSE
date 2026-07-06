@@ -31,7 +31,7 @@
 %endif
 
 Name:           lilv
-Version:        0.26.4
+Version:        0.28.0
 Release:        0
 Summary:        C library to make use of LV2 plugins
 License:        ISC
