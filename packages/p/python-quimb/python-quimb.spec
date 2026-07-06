@@ -29,7 +29,7 @@ ExcludeArch:    %{ix86} %{arm} ppc s390x
 %endif
 
 Name:           python-quimb%{psuffix}
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Python library for quantum information and many-body calculations
 License:        Apache-2.0

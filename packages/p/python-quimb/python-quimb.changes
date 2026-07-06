@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:04:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.14.0:
+  * `tensor_compress_bond`: rename input tensor args `ta` and
+    `tb`
+  * `D2BP`: support fermionic tensor networks (only computing
+    norm^2 so far, gating/compression need work).
+  * `tensor_compress_bond`: add `reduce_opts` for controlling the
+    decomposition options used when reducing each tensor before
+    the main truncating decomposition. For example
+    ``reduce_opts={"method": "qr:cholesky"}``.
+  * add `TensorNetworkGen.select_sites` as a convenience method
+    for selecting a sub network given a list of sites.
+  * add `PEPO_product_operator` for bond-dimension-1 PEPOs given
+    by a product of on-site operators, including cyclic boundary
+    conditions via ``cyclic=True`` or ``cyclic=(cyclic_x,
+    cyclic_y)``.
+  * `PEPO`: accept explicit ``cyclic`` kwarg in the constructor,
+    to override shape-based boundary-condition inference
+    (required for bond dimension 1 cyclic PEPOs).
+  * `TensorNetworkGenOperator`: add generic `apply` (dispatching
+    on operator/vector tensor networks), `trace` and
+    `partial_transpose` methods. These now work for arbitrary
+    geometry operator tensor networks (including MPO and PEPO);
+    ``partial_transpose`` supports arbitrary hashable site
+    labels. ``apply`` also gains an ``inplace`` option that
+    propagates to the *acting* operator rather than the one being
+    acted on.
+  * add `TensorNetworkGen.has_site` to test whether an object is
+    a valid site label of a tensor network. The generic
+    implementation checks membership in the site set; 1D, 2D and
+    3D tensor networks override it with a fast bounds check.
+  * add `LocalHam2D.build_pepo_propagator_trotterized` for a
+    first-order Trotter decomposition of ``expm(x H)`` as a PEPO.
+    Accepts an `ordering` argument to control the order in which
+    terms are applied.
+  * `TensorNetwork.split_simplify`: consider all candidate
+    bipartitions for each tensor and accept the one that
+    minimizes the resulting maximum tensor size, rather than the
+    first reduction found.
+  * `contract_hotrg`, `coarse_grain_hotrg`, their 3D
+    counterparts, and `tensor_network_ag_compress_projector`: add
+    `gauge_power` parameter to control the power applied to the
+    bond gauge weights when `canonize=True` before computing the
+    compressed projectors.
+  * `RegionGraph`: add `get_maximal_regions`,
+    `get_minimal_regions`, and `get_maximal_ancestors` helpers
+    for querying the region hierarchy.
+  * `Drawing`: add orthographic projection mode alongside the
+    existing axonometric projection via the new `projection`
+    parameter (replaces `a`/`b`). Named presets include
+    `"orthographic"`, `"axonometric"`, and `"isometric"`.
+  * `Drawing.translate`: new context manager to temporarily
+    offset all draw operations in coordinate space (before
+    projection).
+  * `Drawing.translate_screen`: new context manager to
+    temporarily offset all draw operations in screen space (after
+    projection).
+  * `Drawing.grid3d`: automatically select back-facing planes
+    based on projection so grids always appear behind the scene,
+    use readable tick label orientations for all projections, and
+    place axis labels correctly.
+  * `CircuitPermMPS.sample`: fix output bitstring ordering when
+    the internal MPS qubit order is permuted ({issue}`327`).
+  * `TensorNetwork.split_tensor`: fix handling of `absorb=None`,
+    adding all tensors returned by the split ({issue}`260`).
+  * `D2BP.gate_`: correctly mark touched tensors and rebuild
+    local contraction expressions after applying gates.
+
+-------------------------------------------------------------------
 Fri Mar 27 02:01:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.13.0:

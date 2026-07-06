@@ -214,4 +214,41 @@
     `cross` and `zigzag` methods.</comment>
     <requestid>1343078</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b6f11ac069f63f2009d53a6afb18596c</srcmd5>
+    <version>1.14.0</version>
+    <time>1783334111</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.14.0:
+  * `tensor_compress_bond`: rename input tensor args `ta` and
+    `tb`
+  * `D2BP`: support fermionic tensor networks (only computing
+    norm^2 so far, gating/compression need work).
+  * `tensor_compress_bond`: add `reduce_opts` for controlling the
+    decomposition options used when reducing each tensor before
+    the main truncating decomposition. For example
+    ``reduce_opts={&quot;method&quot;: &quot;qr:cholesky&quot;}``.
+  * add `TensorNetworkGen.select_sites` as a convenience method
+    for selecting a sub network given a list of sites.
+  * add `PEPO_product_operator` for bond-dimension-1 PEPOs given
+    by a product of on-site operators, including cyclic boundary
+    conditions via ``cyclic=True`` or ``cyclic=(cyclic_x,
+    cyclic_y)``.
+  * `PEPO`: accept explicit ``cyclic`` kwarg in the constructor,
+    to override shape-based boundary-condition inference
+    (required for bond dimension 1 cyclic PEPOs).
+  * `TensorNetworkGenOperator`: add generic `apply` (dispatching
+    on operator/vector tensor networks), `trace` and
+    `partial_transpose` methods. These now work for arbitrary
+    geometry operator tensor networks (including MPO and PEPO);
+    ``partial_transpose`` supports arbitrary hashable site
+    labels. ``apply`` also gains an ``inplace`` option that
+    propagates to the *acting* operator rather than the one being
+    acted on.
+  * add `TensorNetworkGen.has_site` to test whether an object is
+    a valid site label of a tensor network. The generic
+    implementation checks membership in the site set; 1D, 2D and
+    3D tensor networks override it with a fast bounds check.</comment>
+    <requestid>1363961</requestid>
+  </revision>
 </revisionlist>
