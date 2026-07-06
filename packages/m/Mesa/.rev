@@ -6834,4 +6834,22 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/26.1.2</comment>
     <requestid>1356977</requestid>
   </revision>
+  <revision rev="580" vrev="1">
+    <srcmd5>8a06d01ce6032f1f3fc8328235872357</srcmd5>
+    <version>26.1.3</version>
+    <time>1781879442</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.3 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.1.3</comment>
+    <requestid>1360218</requestid>
+  </revision>
+  <revision rev="581" vrev="1">
+    <srcmd5>ac617811132cd3bad3bf5ac7bff612b3</srcmd5>
+    <version>26.1.4</version>
+    <time>1783333646</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.1.4 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.1.4</comment>
+    <requestid>1363019</requestid>
+  </revision>
 </revisionlist>
