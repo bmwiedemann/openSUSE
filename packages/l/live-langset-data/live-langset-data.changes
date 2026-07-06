@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon May 18 22:49:53 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing BR of python3-base.
+
+-------------------------------------------------------------------
 Tue May  7 09:30:42 UTC 2024 - Fabian Vogt <fvogt@suse.com>
 
 - Switch from yast2-country (getcountrydata.rb) to python-langtable

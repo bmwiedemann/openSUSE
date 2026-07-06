@@ -1,7 +1,7 @@
 #
 # spec file for package live-langset-data
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,16 +28,17 @@ Source2:        langset.service
 Source3:        getcountrydata.py
 Source4:        gpl-3.0.txt
 BuildRequires:  coreutils
+BuildRequires:  python3-base
 BuildRequires:  python3-langtable
 BuildRequires:  systemd-rpm-macros
-# Support for /etc/sysconfig/language was dropped
-%if 0%{?suse_version} < 1500
-BuildRequires:  newer-distro
-%endif
 Requires:       sed
 Requires:       systemd
 BuildArch:      noarch
 %{?systemd_requires}
+# Support for /etc/sysconfig/language was dropped
+%if 0%{?suse_version} < 1500
+BuildRequires:  newer-distro
+%endif
 
 %description
 This package contains scripts and data to allow setting the locale (+ console font, keyboard
