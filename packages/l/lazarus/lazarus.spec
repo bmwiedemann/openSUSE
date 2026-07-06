@@ -19,7 +19,7 @@
 %define qt5_sover   1
 %define qt6_sover   6
 Name:           lazarus
-Version:        4.6
+Version:        4.8
 Release:        0
 # Please note that the LGPL is modified and this is not multi-licensed, but each component has a separate license chosen.
 Summary:        FreePascal RAD IDE and Component Library
