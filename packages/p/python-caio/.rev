@@ -7,4 +7,20 @@
     <comment>New package, part of the FastMCP stack required by python-bugzilla-mcp (an MCP server for Bugzilla). Maintained in devel:languages:python.</comment>
     <requestid>1360602</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>00617228dfb4d5e0dd1f46b50cb32f0f</srcmd5>
+    <version>0.10.1</version>
+    <time>1782916678</time>
+    <user>anag_factory</user>
+    <comment>Update python-caio to 0.10.1 (new io_uring backend, undefined-symbol build fixes, Apache-2.0 metadata); Source switched to the GitHub tag (0.10.x not on PyPI) with fix-version-info.patch for the stale version.py. Now also runs the upstream pytest suite in %check (excluding the aiomisc-dependent and chroot-writable-dir tests). Build + tests green across py311/313/314, rpmlint clean.</comment>
+    <requestid>1362733</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>afacb77a384376f4299859c67649a0a8</srcmd5>
+    <version>0.10.2</version>
+    <time>1783334104</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.10.2 (version from project metadata, mypy fixes); drop obsolete fix-version-info.patch</comment>
+    <requestid>1363978</requestid>
+  </revision>
 </revisionlist>

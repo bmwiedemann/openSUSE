@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:40:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.2:
+  * Package version is now defined in the project metadata and
+    derived from the release tag, so caio.__version__ reports the
+    real version instead of a stale hardcoded 0.9.25
+  * Fix mypy errors on class-level backend attributes
+- Drop fix-version-info.patch: obsolete, upstream removed the
+  stale caio/version.py it corrected
+- Use %pytest_arch macro in %check; additionally skip the
+  test_env_selector tests, which assert the native io_uring/linux-aio/
+  thread backends are selectable (the build chroot only offers the
+  pure-Python fallback)
+
+-------------------------------------------------------------------
+Tue Jun 30 19:53:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.1:
+  * Add a new io_uring backend (linux_uring /
+    linux_uring_asyncio), selectable as the "uring" variant,
+    giving a high-performance asynchronous file I/O
+    implementation on modern Linux kernels in addition to the
+    existing libaio, thread-pool and pure-python backends
+  * Fix undefined-symbol build/link failures across different
+    compilers and platforms by removing the inline qualifier
+    from the io_cancel and io_submit_error helpers
+  * Declare the package license as Apache-2.0 in the project
+    metadata
+- Switch Source to the upstream GitHub release tarball as
+  0.10.x is not (yet) published on PyPI
+- Add fix-version-info.patch to correct the stale version
+  declaration (0.9.25) in caio/version.py shipped by the tag
+
+-------------------------------------------------------------------
 Fri Jun 19 05:42:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.9.25)
