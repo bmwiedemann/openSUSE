@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:17:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.54:
+  * General
+    - upgrade to meshkit v1.0.21 @arjunmehta-git (#20506)
+    - Chore: upgrade meshsync and operator @arjunmehta-git (#20505)
+    - [server] Fix Meshsyn->Meshsync typo in controller helper
+      symbols @leecalcote (#20501)
+  * Maintenance
+    - [Server] Fix FlushMeshSyncData stale table-name subqueries
+      leaking MeshSync data @leecalcote (#20502)
+  * Documentation
+    - [Docs] Update Docker Hugo version to 0.157.0
+      @AbhishekMauryaGEEK (#20071)
+    - [Server] Fix FlushMeshSyncData stale table-name subqueries
+      leaking MeshSync data @leecalcote (#20502)
+- update to 1.0.53:
+  * General
+    - [CI] Bump docs-docker recipe to utilize hugo image v0.163.3
+      @banana-three-join (#20469)
+  * Meshery CLI
+    - [mesheryctl] Guard empty design response in apply to avoid
+      index out of range @mightbeanshuu (#20448)
+  * Maintenance
+    - chore(rtk): remove /evaluate path exception from
+      mesheryApiPath @yi-nuo426 (#19822)
+  * Documentation
+    - [Docs] Add guide: Bringing Existing Infrastructure Under
+      Meshery Management @leecalcote (#20491)
+    - [Docs] Configuring Meshery Operator, MeshSync, and Broker
+      guide @leecalcote (#20490)
+    - [Docs] Add Contributing to MeshSync guide @leecalcote
+      (#20486)
+    - [Docs] MeshSync: align architecture, logical, and
+      troubleshooting docs with the implementation @leecalcote
+      (#20464)
+    - [Docs] Fix Overview & Installation button link @Bharath314
+      (#20440)
+    - [Docs] Hide redundant hero logo on mobile home/overview page
+      @mightbeanshuu (#20460)
+
+-------------------------------------------------------------------
 Fri Jul  3 04:58:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.52:
