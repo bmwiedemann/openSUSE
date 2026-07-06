@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul  5 09:49:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4.5 (bsc#1270285, CVE-2026-49825):
+  * Fixed a security vulnerability where javascript: URLs in
+    xlink:href attributes were not sanitized
+    when``safe_attrs_only=False``, allowing cross-site scripting
+    (XSS) attacks. The fix requires lxml>=6.1.1, which adds
+    xlink:href to the set of link attributes iterated by
+    rewrite_links(). Reported by Guillem Lefait (@glefait).
+
+-------------------------------------------------------------------
+Tue Mar 10 09:58:53 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.4
+  * Fixed a bug where Unicode escapes in CSS were not properly decoded before
+    security checks. This prevents attackers from bypassing filters using
+    escape sequences. (CVE-2026-28348) (bsc#1259378)
+  * Fixed a security issue where <base> tags could be used for URL hijacking
+    attacks. The <base> tag is now automatically removed whenever the <head>
+    tag is removed (via page_structure=True or manual configuration), as <base>
+    must be inside <head> according to HTML specifications. (CVE-2026-28350)
+    (bsc#1259379)
+
+-------------------------------------------------------------------
 Fri Oct 10 05:38:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.3:

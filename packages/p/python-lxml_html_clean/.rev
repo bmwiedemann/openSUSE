@@ -36,4 +36,26 @@ Need since python-lxml &gt;= 5.2.0 among others for calibre.</comment>
   * Python 3.6 and 3.7 are no longer tested.</comment>
     <requestid>1310437</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cdc0f7dcc865a186b6bb29f8823ebe15</srcmd5>
+    <version>0.4.4</version>
+    <time>1773161885</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1337971</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e1d20f5ea11f99a12e19a54a417fd59</srcmd5>
+    <version>0.4.5</version>
+    <time>1783333896</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.4.5 (bsc#1270285, CVE-2026-49825):
+  * Fixed a security vulnerability where javascript: URLs in
+    xlink:href attributes were not sanitized
+    when``safe_attrs_only=False``, allowing cross-site scripting
+    (XSS) attacks. The fix requires lxml&gt;=6.1.1, which adds
+    xlink:href to the set of link attributes iterated by
+    rewrite_links(). Reported by Guillem Lefait (@glefait).</comment>
+    <requestid>1363833</requestid>
+  </revision>
 </revisionlist>

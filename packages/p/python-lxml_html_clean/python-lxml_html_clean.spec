@@ -1,7 +1,7 @@
 #
 # spec file for package python-lxml_html_clean
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lxml_html_clean
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        HTML cleaner from lxml project
 License:        BSD-3-Clause
