@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jun 15 17:07:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.16.0
+  * Added `EnumeratorOfPartitionsSet` enumerator.
+  * Added `IsGenericMatrixRep` matrix object type.
+  * Added `PositionNonZeroInRow` for matrices and matrix objects.
+  * Added `DirectSumGModule`.
+  * Added `IsSquareMat` and `IsAntisymmetricMat`.
+  * Added `IsSymmetricMatrix`.
+  * Added `RandomMatrix`, `RandomInvertibleMatrix`; and fix a
+    problem with a new feature for matrix groups.
+  * Added `ConformalSymplecticGroup`.
+  * Added `AddMatrix`, `MultMatrix` (plus explicit left/right side
+    variants) for in-place modification of matrices.
+  * Added `FoldLeft`, `FoldLeftX`; and `ForAllX`, `ForAnyX`,
+    `FilteredX`, `NumberX`, `PerformX` to complement `ListX`,
+    `SetX`, `SumX`, `ProductX`.
+
+-------------------------------------------------------------------
 Sun Oct 19 12:37:56 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.15.1
