@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu May 21 16:55:35 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 4.2.2:
+  * This is a patch release that corresponds with the current tip of the
+    `rel/4.2` branch.
+  * Bug Fixes
+    - Fix MSVC's C4875 when compiling GSL 4.2.1 with latest MSVC toolset. #1243
+
+-------------------------------------------------------------------
 Mon Dec 15 19:10:40 UTC 2025 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding 'Source100: README.md' as the README is suggested at src.opensuse.org
