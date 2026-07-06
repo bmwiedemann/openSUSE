@@ -301,4 +301,13 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1343169 from glaubitz)</comment>
     <requestid>1343174</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1b381537aef24dfcc3969407ea279ab4</srcmd5>
+    <version>2.40.0</version>
+    <time>1783333885</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.40.0
+  * regenerate google-cloud-s packages</comment>
+    <requestid>1363820</requestid>
+  </revision>
 </revisionlist>
