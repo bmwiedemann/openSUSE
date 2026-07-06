@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:33:40 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to 4.16.0
+  * Added
+    - Add Latvian language localization (#301) @EPoikans
+    - Add i18n support for naturalsize() and French translation (#294) @Yibomao
+  
+  * Changed
+    - Performance improvements: 1.07x - 8.4x (#315) @hugovk
+    - Lazy imports for Python 3.15+ (#335) @hugovk
+    - Drop experimental Python 3.13 free-threaded (#336) @hugovk
+    - Refactor: simplify scientific() and extract _SUPERSCRIPT_MAP constant (#313) @maayanmatsliah-tech
+  
+  * Fixed
+    - Fix naturalsize() rounding rollover at unit boundaries (#329) @patchwright
+    - Carry metric() to the next SI prefix when rounding reaches 1000 (#328) @gaoflow
+    - Stop printing two minus signs in fractional for a negative mixed number (#320) @c-tonneslan
+    - Return an empty string from natural_list() for an empty list (#318) @c-tonneslan
+    - Handle tz-aware datetimes in naturalday() and naturaldate() (#297) @bysiber
+    - Fix Arabic translation (#307) @AYMENJD
+    - Fix Spanish large number translations to use long scale (#302) @sedat4ras
+
+-------------------------------------------------------------------
 Mon Jan  5 13:40:10 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 4.15.0

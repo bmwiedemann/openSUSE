@@ -16,10 +16,13 @@
 #
 
 
+# exclude while 3.12 isn't default python in TW yet
+%define skip_python312 1
+
 %{?sle15_python_module_pythons}
 %global modname humanize
 Name:           python-humanize
-Version:        4.15.0
+Version:        4.16.0
 Release:        0
 Summary:        Python humanize utilities
 License:        MIT
@@ -37,6 +40,7 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-benchmark}
 # /SECTION
 %python_subpackages
 
