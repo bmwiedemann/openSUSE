@@ -2278,9 +2278,6 @@ unsorted:
   - clang-doc 
   - clang-extract 
   - clang-tools 
-  - clang15 
-  - clang15-devel 
-  - clang15-doc 
   - clang18 
   - clang18-devel 
   - clang18-doc 
@@ -2539,6 +2536,7 @@ unsorted:
   - compartm 
   - compat-usrmerge 
   - compat-usrmerge-build 
+  - compatlibopenblas_serial0 
   - compface 
   - compface-devel 
   - compiz 
@@ -4713,6 +4711,7 @@ unsorted:
   - gap-caratinterface 
   - gap-cddinterface 
   - gap-circle 
+  - gap-classicalmaximals 
   - gap-classicpres 
   - gap-cohomolo 
   - gap-congruence 
@@ -4785,6 +4784,7 @@ unsorted:
   - gap-linearalgebraforcap 
   - gap-lins 
   - gap-localizeringforhomalg 
+  - gap-localnr 
   - gap-loops 
   - gap-lpres 
   - gap-majoranaalgebras 
@@ -4792,11 +4792,13 @@ unsorted:
   - gap-matgrp 
   - gap-matricesforhomalg 
   - gap-modisom 
+  - gap-modulargroup 
   - gap-modules 
   - gap-monoidalcategories 
   - gap-nconvex 
   - gap-nilmat 
   - gap-nock 
+  - gap-nofoma 
   - gap-normalizinterface 
   - gap-nq 
   - gap-numericalsgps 
@@ -4809,6 +4811,7 @@ unsorted:
   - gap-polymaking 
   - gap-primgrp 
   - gap-profiling 
+  - gap-qdistrnd 
   - gap-qpa 
   - gap-quagroup 
   - gap-radiroot 
@@ -7110,6 +7113,7 @@ unsorted:
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
+  - gi-docgen 
   - giac 
   - giac-devel 
   - giac-doc 
@@ -9766,6 +9770,8 @@ unsorted:
   - jsdec 
   - jsdec-cutter 
   - jshon 
+  - json-c-devel 
+  - json-c-doc 
   - json-glib-devel 
   - json-java 
   - json-java-javadoc 
@@ -11358,7 +11364,6 @@ unsorted:
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_5 
-  - libLLVM15 
   - libLLVM18 
   - libLLVM19 
   - libLLVM20 
@@ -11367,7 +11372,6 @@ unsorted:
   - libLLVM22-32bit 
   - libLLVMSPIRVLib-devel 
   - libLLVMSPIRVLib22 
-  - libLTO15 
   - libLTO18 
   - libLTO19 
   - libLTO20 
@@ -12619,7 +12623,7 @@ unsorted:
   - libcairo2-32bit 
   - libcaja-extension1 
   - libcal3d12 
-  - libcalc2_16_1_2 
+  - libcalc2_17_0_0 
   - libcallaudio0_1-0 
   - libcallback1 
   - libcamd-doc 
@@ -12773,7 +12777,6 @@ unsorted:
   - libckteec0 
   - libclBLAS2 
   - libclFFT2 
-  - libclang-cpp15 
   - libclang-cpp18 
   - libclang-cpp19 
   - libclang-cpp20 
@@ -12871,7 +12874,7 @@ unsorted:
   - libcpluff0 
   - libcpluffxx-devel 
   - libcpluffxx0 
-  - libcpp-httplib0_46 
+  - libcpp-httplib0_49 
   - libcpptrace1 
   - libcppunit-1_15-1 
   - libcppunit-1_15-1-32bit 
@@ -13562,7 +13565,7 @@ unsorted:
   - libgamemodeauto0 
   - libgamemodeauto0-32bit 
   - libgammaray-qt6-3_4_0 
-  - libgap10 
+  - libgap11 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
   - libgarcon-doc 
@@ -14351,8 +14354,6 @@ unsorted:
   - libjpgalleg44-devel 
   - libjpgalleg4_4 
   - libjq-devel 
-  - libjson-c-devel 
-  - libjson-c-doc 
   - libjson-c5-32bit 
   - libjson-glib-1_0-0-32bit 
   - libjsoncpp27 
@@ -14590,7 +14591,6 @@ unsorted:
   - liblkl0 
   - libllama-common0 
   - libllama0 
-  - liblldb15 
   - liblldb18 
   - liblldb19 
   - liblldb20 
@@ -14903,6 +14903,8 @@ unsorted:
   - libmodbus5 
   - libmodbuspp-devel 
   - libmodbuspp1_0-0 
+  - libmodemu2k0 
+  - libmodemu2k0-devel 
   - libmodi-devel 
   - libmodi-tools 
   - libmodi1 
@@ -15235,7 +15237,6 @@ unsorted:
   - libomniORB4-3 
   - libomnithread4 
   - libomp-devel 
-  - libomp15-devel 
   - libomp18-devel 
   - libomp19-devel 
   - libomp20-devel 
@@ -16825,7 +16826,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent45 
+  - libtorrent46 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17765,7 +17766,6 @@ unsorted:
   - llamacpp 
   - llamacpp-devel 
   - lld 
-  - lld15 
   - lld18 
   - lld19 
   - lld20 
@@ -17777,8 +17777,6 @@ unsorted:
   - lldap-set-password 
   - lldb 
   - lldb-devel 
-  - lldb15 
-  - lldb15-devel 
   - lldb18 
   - lldb18-devel 
   - lldb19 
@@ -17802,19 +17800,6 @@ unsorted:
   - llvm-polly 
   - llvm-polly-devel 
   - llvm-vim-plugins 
-  - llvm15 
-  - llvm15-devel 
-  - llvm15-doc 
-  - llvm15-gold 
-  - llvm15-libc++-devel 
-  - llvm15-libc++1 
-  - llvm15-libc++abi-devel 
-  - llvm15-libc++abi1 
-  - llvm15-libclang13 
-  - llvm15-opt-viewer 
-  - llvm15-polly 
-  - llvm15-polly-devel 
-  - llvm15-vim-plugins 
   - llvm18 
   - llvm18-devel 
   - llvm18-doc 
@@ -19279,6 +19264,7 @@ unsorted:
   - modello-test 
   - modem-manager-gui 
   - modem-manager-gui-lang 
+  - modemu2k 
   - moditect 
   - moditect-javadoc 
   - modsecurity 
@@ -24183,7 +24169,6 @@ unsorted:
   - python3-ceph-common 
   - python3-cephfs 
   - python3-clang 
-  - python3-clang15 
   - python3-clang18 
   - python3-clang19 
   - python3-clang20 
@@ -24286,7 +24271,6 @@ unsorted:
   - python3-lieer 
   - python3-linkchecker 
   - python3-lldb 
-  - python3-lldb15 
   - python3-lldb18 
   - python3-lldb19 
   - python3-lldb20 
@@ -24401,8 +24385,6 @@ unsorted:
   - python311-CSXCAD 
   - python311-Fiona 
   - python311-Flask-Versioned 
-  - python311-agent-client-protocol 
-  - python311-aiosmtpd 
   - python311-base 
   - python311-base-32bit 
   - python311-base-x86-64-v3 
@@ -24411,11 +24393,9 @@ unsorted:
   - python311-cfn-lint 
   - python311-cppclean 
   - python311-curses 
-  - python311-datamodel-code-generator 
   - python311-dbm 
   - python311-devel 
   - python311-django-formtools 
-  - python311-django-request 
   - python311-doc 
   - python311-doc-devhelp 
   - python311-geojson 
@@ -24423,36 +24403,26 @@ unsorted:
   - python311-idle 
   - python311-igwn-auth-utils 
   - python311-ipdb 
-  - python311-jupyterlab 
   - python311-keystonemiddleware 
-  - python311-libtmux 
   - python311-mediafile 
   - python311-mistralai 
   - python311-modern-colorthief 
-  - python311-moto 
-  - python311-moto-all 
-  - python311-moto-server 
   - python311-onnxruntime 
   - python311-openapi-core 
-  - python311-openapi-spec-validator 
   - python311-oslo.cache 
   - python311-parfive 
   - python311-pony 
   - python311-pook 
-  - python311-prance 
   - python311-pymathics-graph 
   - python311-pysaml2 
   - python311-pytest-mypy-plugins 
   - python311-pytest-mypy-testing 
   - python311-python-subunit 
-  - python311-smart-open 
-  - python311-stripe 
   - python311-testsuite 
   - python311-tk 
   - python311-tools 
   - python311-x86-64-v3 
   - python311-yacron 
-  - python311-zc.customdoctests 
   - python312 
   - python312-32bit 
   - python312-argcomplete 
@@ -33580,6 +33550,12 @@ unsorted:
   - rpm-build 
   - rpm-config-SUSE-reproducible-builds 
   - rpm-devel 
+  - rpm-plugin-fapolicyd 
+  - rpm-plugin-ima 
+  - rpm-plugin-imaevmsign 
+  - rpm-plugin-prioreset 
+  - rpm-plugin-selinux 
+  - rpm-plugin-syslog 
   - rpm-plugin-unshare 
   - rpm-repo-keys-openSUSE 
   - rpm-repos-openSUSE-Tumbleweed 
