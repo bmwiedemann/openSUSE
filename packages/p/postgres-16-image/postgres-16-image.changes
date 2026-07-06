@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:37:11 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove pgvector from default container (it is in contrib)
+
+-------------------------------------------------------------------
+Tue Jun 30 12:55:25 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- install coreutils-single
+
+-------------------------------------------------------------------
+Thu Jun 18 17:22:44 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- only clean specific files in /run
+
+-------------------------------------------------------------------
 Tue Jun 16 20:28:07 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - fixes for 1.7 (better launcher config; adding synchronizer)
