@@ -1,4 +1,27 @@
 --------------------------------------------------------------------
+Fri Jul 3 06:57:38 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1087
+- improved logging
+- 4.5.339
+
+--------------------------------------------------------------------
+Thu Jul 2 06:41:14 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1086
+- updated tests
+- 4.5.338
+
+--------------------------------------------------------------------
+Wed Jul 1 15:14:23 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1085
+- provide functions for mkfs and tune options using vector of
+  strings
+- use string_view to reduce number of functions
+- 4.5.337
+
+--------------------------------------------------------------------
 Mon Jun 29 13:15:06 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1084
