@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 06 04:58:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.21:
+  * build(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+    (#2010)
+
+-------------------------------------------------------------------
 Wed Jul 01 05:48:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.20:
