@@ -266,4 +266,20 @@
     <comment>- Update to release 0.16.14</comment>
     <requestid>1359250</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>e4ebede431af09701ef422f777b456f8</srcmd5>
+    <version>0.16.15</version>
+    <time>1782916710</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.16.15</comment>
+    <requestid>1362739</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>90ae4f1cce741dba2b7bf5e0de422867</srcmd5>
+    <version>0.16.16</version>
+    <time>1783333991</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 0.16.16</comment>
+    <requestid>1363889</requestid>
+  </revision>
 </revisionlist>

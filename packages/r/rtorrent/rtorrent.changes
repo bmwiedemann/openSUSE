@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jul  5 18:23:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.16
+  * Added max http request size and limited redirect protocols to
+    http/https.
+
+-------------------------------------------------------------------
+Tue Jun 30 21:07:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.15
+  * Deprecated commands: network.open_sockets,
+    network.max_open_sockets, network.max_open_sockets.set,
+    network.http.max_total_connections.set,
+    network.max_open_files.set
+  * Global network socket commands (e.g.,
+    network.max_open_sockets) are now deprecated. Socket
+    allocation is managed granularly via Socket Categories:
+    generic, http, internal, rpc, and files.
+    (e.g. new commands: system.sockets.<category>.size, .max_size,
+    .min_alloc/.max_alloc)
+
+-------------------------------------------------------------------
 Sun Jun 14 13:14:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.14
