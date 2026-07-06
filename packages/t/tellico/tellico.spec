@@ -17,10 +17,10 @@
 
 
 %define kf6_version 6.0.0
-%define qt6_version 6.4.0
+%define qt6_version 6.5.0
 
 Name:           tellico
-Version:        4.2
+Version:        4.2.1
 Release:        0
 Summary:        A Collection Manager
 License:        GPL-2.0-or-later
