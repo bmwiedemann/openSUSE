@@ -78,4 +78,15 @@
   * Fix incorrect validation for scripts with callable</comment>
     <requestid>1225313</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>23d6d2cbe082131fdbe3bab6516e07d0</srcmd5>
+    <version>2.2.2</version>
+    <time>1783333917</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.2:
+  * Support cool-down-period in [pipenv] section with proper format validation and timedelta conversion
+  * Support TOMLKit elements inside _LockFileEncoder and enforce UTF-8 decoding
+- add fix-version.patch</comment>
+    <requestid>1363840</requestid>
+  </revision>
 </revisionlist>

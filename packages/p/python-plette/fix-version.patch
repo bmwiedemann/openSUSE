@@ -1,0 +1,13 @@
+Index: plette-2.2.2/src/plette/__init__.py
+===================================================================
+--- plette-2.2.2.orig/src/plette/__init__.py
++++ plette-2.2.2/src/plette/__init__.py
+@@ -3,7 +3,7 @@ __all__ = [
+     "Lockfile", "Pipfile",
+ ]
+ 
+-__version__ = '2.2.1'
++__version__ = '2.2.2'
+ 
+ from .lockfiles import Lockfile
+ from .pipfiles import Pipfile

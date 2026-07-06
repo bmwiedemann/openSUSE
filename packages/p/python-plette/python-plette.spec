@@ -1,7 +1,7 @@
 #
 # spec file for package python-plette
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,13 @@
 
 
 Name:           python-plette
-Version:        2.1.0
+Version:        2.2.2
 Release:        0
 Summary:        Structured Pipfile and Pipfile.lock models
 License:        ISC
 URL:            https://github.com/sarugaku/plette
 Source:         https://github.com/sarugaku/plette/archive/refs/tags/v%{version}.tar.gz#/plette-%{version}.tar.gz
+Patch1:         fix-version.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0.0}
 BuildRequires:  %{python_module wheel}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:07:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.2:
+  * Support cool-down-period in [pipenv] section with proper format validation and timedelta conversion
+  * Support TOMLKit elements inside _LockFileEncoder and enforce UTF-8 decoding
+- add fix-version.patch
+
+-------------------------------------------------------------------
 Wed Nov 20 14:59:37 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.0:
