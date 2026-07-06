@@ -8468,4 +8468,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1361969</requestid>
   </revision>
+  <revision rev="402" vrev="1">
+    <srcmd5>31b32ce8ba5540f8c76cc65ae898c050</srcmd5>
+    <version>9.2.0780</version>
+    <time>1783333648</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.2.0780 
+ patch 9.2.0780: Memory leak in evalvars.c on alloc failure
+ patch 9.2.0779: Memory leak in type_name_func() on alloc failure
+ patch 9.2.0778: Memory Leak in compile_dict() on alloc failure
+ patch 9.2.0777: Memory leak in add_defer() on alloc failure
+ patch 9.2.0776: Memory leak in sign_getlist() on alloc failure
+ patch 9.2.0775: Memory Leak in highlight_get_info() on alloc failure
+ patch 9.2.0774: Memory leak in f_getscriptinfo() on alloc failure
+ patch 9.2.0773: Memory leak in evalfunc.c on alloc failure
+ patch 9.2.0772: Vim9: Null dereference inside alloc_type()
+ patch 9.2.0771: dict_add_list() has inconsistent ownership on failure
+ patch 9.2.0770: dict_add_dict() has inconsistent ownership on failure
+ translation(zh_CN): Add Chinese man pages
+ patch 9.2.0769: conversion to utf-16be using iconv is inconsistent
+ patch 9.2.0768: legacy/vim9cmd modifiers are not exclusive
+ patch 9.2.0767: legacy/vim9cmd modifiers do not set script version for options values
+ patch 9.2.0766: quick_tab entries for empty letters point to the wrong index
+ patch 9.2.0765: popup: opacity popup over a terminal is not cleared when moved
+ patch 9.2.0764: Compiler warning about unused function
+ translation(sr): Update Serbian translation
+ patch 9.2.0763: tests: style issue in test_plugin_netrw
+ runtime(xml): Update xml syntax file
+ runtime(doc): regenerate help tags
+ patch 9.2.0762: duplicated sub-option name check in :set completion
+ runtime(screen): Bring the syntax up to version 5
+ runtime(typst): Improve ftplugin, and syntax file
+ patch 9.2.0761: runtime(netrw): Unix: unable to open '\' file
+ patch 9.2.0760: Compiler warning for using potentially uninitialized var
+ patch 9.2.0759: Some code for 'autocompletedelay' is no longer needed
+ runtime(autoload/dist): gx may use xdg-open on macOS</comment>
+    <requestid>1363665</requestid>
+  </revision>
 </revisionlist>

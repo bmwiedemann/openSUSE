@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Jul  3 11:47:33 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 9.2.0780 
+ patch 9.2.0780: Memory leak in evalvars.c on alloc failure
+ patch 9.2.0779: Memory leak in type_name_func() on alloc failure
+ patch 9.2.0778: Memory Leak in compile_dict() on alloc failure
+ patch 9.2.0777: Memory leak in add_defer() on alloc failure
+ patch 9.2.0776: Memory leak in sign_getlist() on alloc failure
+ patch 9.2.0775: Memory Leak in highlight_get_info() on alloc failure
+ patch 9.2.0774: Memory leak in f_getscriptinfo() on alloc failure
+ patch 9.2.0773: Memory leak in evalfunc.c on alloc failure
+ patch 9.2.0772: Vim9: Null dereference inside alloc_type()
+ patch 9.2.0771: dict_add_list() has inconsistent ownership on failure
+ patch 9.2.0770: dict_add_dict() has inconsistent ownership on failure
+ translation(zh_CN): Add Chinese man pages
+ patch 9.2.0769: conversion to utf-16be using iconv is inconsistent
+ patch 9.2.0768: legacy/vim9cmd modifiers are not exclusive
+ patch 9.2.0767: legacy/vim9cmd modifiers do not set script version for options values
+ patch 9.2.0766: quick_tab entries for empty letters point to the wrong index
+ patch 9.2.0765: popup: opacity popup over a terminal is not cleared when moved
+ patch 9.2.0764: Compiler warning about unused function
+ translation(sr): Update Serbian translation
+ patch 9.2.0763: tests: style issue in test_plugin_netrw
+ runtime(xml): Update xml syntax file
+ runtime(doc): regenerate help tags
+ patch 9.2.0762: duplicated sub-option name check in :set completion
+ runtime(screen): Bring the syntax up to version 5
+ runtime(typst): Improve ftplugin, and syntax file
+ patch 9.2.0761: runtime(netrw): Unix: unable to open '\' file
+ patch 9.2.0760: Compiler warning for using potentially uninitialized var
+ patch 9.2.0759: Some code for 'autocompletedelay' is no longer needed
+ runtime(autoload/dist): gx may use xdg-open on macOS
+ patch 9.2.0758: pum: No opacity when background not set for Popup menu group
+ patch 9.2.0757: tests: test_popupwin fails with zsh because of the prompt
+ patch 9.2.0756: Session with multiple tabpages sets 'winminheight' to 0
+ patch 9.2.0755: 'autocomplete' behaves inconsistently when recording
+ patch 9.2.0754: repeated completion length lookup in search_for_exact_line
+ patch 9.2.0753: GTK GUI deferred redraw skipped on 'lazyredraw'
+ runtime: add missing fnameescape()/shellescape() in a few runtime files
+ patch 9.2.0752: GTK4: drag-and-drop does not support HTML
+ patch 9.2.0751: GTK3 GUI is slow under Wayland
+ translation(ru): Updated message files
+ patch 9.2.0750: completion: 'autocompletedelay' deferral leaks state
+ patch 9.2.0749: 'autocompletedelay' interferes with i_CTRL-K
+ patch 9.2.0748: 'autocompletedelay' interferes with CTRL-G U
+ runtime(netrw): Use consistent forward slashes
+ patch 9.2.0747: cscope: connection leak when growing the array fails
+ patch 9.2.0746: NULL pointer dereference in gui_photon
+ patch 9.2.0745: Crash with truncated spellfile
+ patch 9.2.0744: popup_atcursor() closes immediately on white space
+ runtime(odin): Update indent script, add indent tests
+ patch 9.2.0743: string macros silently accept a size of the wrong type
+ runtime(vim): Fix heredoc triggering misidentifcation of Vim9 script
+ patch 9.2.0742: filetype: SSH keys and related filetypes not recognized
+ runtime(css): add more missing CSS properties
+ patch 9.2.0741: complete_check() does not return TRUE for mapped input
+ patch 9.2.0740: GTK4: scrollbar wrongly displayed
+ patch 9.2.0739: completion: 'autocompletedelay' blocks the main loop and drops autocommands
+ runtime: guard recommended style settings consistently
+ patch 9.2.0738: ml_recover() may write beyond block buffer
+ CI: Bump actions/checkout in the github-actions group across 1 directory
+ patch 9.2.0737: tests: comment test can be improved
+ patch 9.2.0736: potential command execution in PHP omni-completion
+ patch 9.2.0735: [security]: arbitrary Ex command execution during C omni-completion
+ runtime(doc): Tweak documentation style and typo
+ patch 9.2.0734: function pointer passed to STRNCMP() instead of a length
+ runtime(cabal): Update compiler, ftplugin, syntax, add indent script
+ patch 9.2.0733: GTK3: GUI slow on X11 since dropping the alpha channel
+ patch 9.2.0732: session: terminal restored using absolute columns/rows
+ patch 9.2.0731: GTK4 GUI scrollbar size not updated when restoring a session
+ patch 9.2.0730: GTK4 GUI tabline is not updated
+ patch 9.2.0729: % skips parens on continued quoted lines
+ runtime(doc): Add installer updates to version9.txt
+ patch 9.2.0728: filetype: supertux info pattern is relative to current dir
+ patch 9.2.0727: popup images not rendered correctly when unfocused
+ patch 9.2.0726: filetype detect missing from completion
+
+-------------------------------------------------------------------
 Fri Jun 26 16:38:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gtk+-3.0) with pkgconfig(gtk4) and pass
