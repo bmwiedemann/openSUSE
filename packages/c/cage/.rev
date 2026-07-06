@@ -50,4 +50,16 @@
   * Add support for wlr-foreign-toplevel-management</comment>
     <requestid>1346379</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>991f31698b244247ffb1fca88b90b210</srcmd5>
+    <version>0.3.1</version>
+    <time>1783333783</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.3.1:
+  * build: bump version to v0.3.1
+  * xdg_shell: fix windows requesting fullscreen on startup
+  * build: guard git version detection against missing .git directory
+  * cage: stop using DEFAULT_XCURSOR as a cursor theme name</comment>
+    <requestid>1363752</requestid>
+  </revision>
 </revisionlist>

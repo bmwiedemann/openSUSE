@@ -17,7 +17,7 @@
 
 
 Name:           cage
-Version:        0.3.0
+Version:        0.3.1
 Release:        0
 Summary:        Wayland Kiosk
 License:        MIT

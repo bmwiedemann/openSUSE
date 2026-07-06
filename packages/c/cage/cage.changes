@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 04 06:21:08 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to version 0.3.1:
+  * build: bump version to v0.3.1
+  * xdg_shell: fix windows requesting fullscreen on startup
+  * build: guard git version detection against missing .git directory
+  * cage: stop using DEFAULT_XCURSOR as a cursor theme name
+
+-------------------------------------------------------------------
 Mon Apr 13 08:02:34 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.3.0:
