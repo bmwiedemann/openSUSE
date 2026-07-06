@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:51:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.3.5:
+  * Man page: update history from XFree86 4.3 to 3.2
+  * setxkbmap references appear as far back as 3.2 in the XFree86
+    Changelog.
+  * manual page: Rewrite in semantic markup
+  * Rewrite the reference manual in BSD-style mdoc(7) semantic
+    markup, providing greatly enhanced search on all supported manual
+    compilers.
+  * Improve man page formatting
+  * More closely follow common style as described on
+  * meson: Add option to build with meson
+
+-------------------------------------------------------------------
 Tue May 16 01:25:57 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.3.4
@@ -12,7 +27,7 @@ Tue May 16 01:25:57 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 Sun Apr  3 20:54:47 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.3.3
-  * bugfix release  
+  * bugfix release
 
 -------------------------------------------------------------------
 Fri Mar 12 22:40:49 UTC 2021 - Dirk Müller <dmueller@suse.com>

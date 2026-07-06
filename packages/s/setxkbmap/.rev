@@ -96,4 +96,12 @@
   * Route the Xwayland warning through stderr</comment>
     <requestid>1087318</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70cc0eec4b9930835f003e34630481e1</srcmd5>
+    <version>1.3.5</version>
+    <time>1783333629</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362666</requestid>
+  </revision>
 </revisionlist>

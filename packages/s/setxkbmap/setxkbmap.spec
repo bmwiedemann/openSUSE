@@ -1,7 +1,7 @@
 #
 # spec file for package setxkbmap
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           setxkbmap
-Version:        1.3.4
+Version:        1.3.5
 Release:        0
 Summary:        Utility to change the keyboard layout in X
 License:        MIT
