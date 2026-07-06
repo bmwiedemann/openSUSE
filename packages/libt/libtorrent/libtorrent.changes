@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Jul  5 17:01:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.16
+  * Disconnect and mark as corrupt if a single peer sends a whole
+    chunk that fails hash check.
+  * Detect libcurl passing us internal fd's and re-enable strict fd
+    leak checking.
+  * Fixed shutdown handling of stalled http requests.
+  * Added new ProxyManager and support for socks5 for peer
+    connections.
+  * Added max http request size and limited redirect protocols to
+    http/https.
+
+-------------------------------------------------------------------
+Tue Jun 30 21:03:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.15
+  * Added socket category option strings
+  * Fix use-after-free in UdpRouter::disconnect_failure_unsafe
+  * Validate HTTP proxy url when it is set
+  * Reset HttpGet objects to ensure there is no unexpected reuse
+
+
+-------------------------------------------------------------------
 Sun Jun 14 12:49:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.14
