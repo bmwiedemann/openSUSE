@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 05 10:43:47 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260626:
+  * uvk5_egzumer: Fix battery_text and mic_bar never being saved
+  * Fix open filter translated string
+
+-------------------------------------------------------------------
 Sun Jun 21 16:10:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260619:
