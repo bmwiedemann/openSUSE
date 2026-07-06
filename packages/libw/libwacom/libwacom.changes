@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jun 29 08:23:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.19.0:
+  * libwacom_list_styli_from_database() provides a WacomStylus
+    list of all known styli
+  * libwacom_database_ref() and libwacom_database_unref() to
+    simplify callers having
+  * libwacom_get_width_mm() and libwacom_get_height_mm() for
+    the tablet dimensions in mm. The .tablet files switched to
+    mm too.
+  * New generic 3 button + eraser tool, assigned to some Huion
+    devices by default
+  * New devices:
+    - Gaomon M5 V2
+    - HP Envy x360 15-fh0xxx
+    - Huion Inspiroy Frego S (L310), Kamvas Pro 27 (GT2701), H610
+    Pro V2
+    - Lenovo ThinkBook 14s Yoga ITL
+    - Wacom HID 53FD
+    - Xencelabs Pen Display 16
+
+-------------------------------------------------------------------
 Sun Feb  8 07:52:35 UTC 2026 - Aesara Binder <aesara@mailbox.org>
 
 - Update to version 2.18.0
@@ -45,7 +67,7 @@ Sat Mar 22 12:26:37 UTC 2025 - Aesara Binder <aesara@mailbox.org>
   * New devices:
     - Still more tablet definitions (#841)
     - add XP Pen Innovator 16 definition & layout
-    - Support for XP-Pen Deco Pro S 
+    - Support for XP-Pen Deco Pro S
     - Add Lenovo Slim Pen
     - Add the XP Pen Deco01 v3
     - Add 3rd gen Intuos Pro devices

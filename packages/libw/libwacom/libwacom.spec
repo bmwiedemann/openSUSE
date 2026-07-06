@@ -19,7 +19,7 @@
 %define sover 9
 
 Name:           libwacom
-Version:        2.18.0
+Version:        2.19.0
 Release:        0
 Summary:        Tablet description library
 License:        HPND
