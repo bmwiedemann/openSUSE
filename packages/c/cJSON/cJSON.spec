@@ -1,7 +1,7 @@
 #
 # spec file for package cJSON
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2025, Martin Hauke <mardnh@gmx.de>
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -28,6 +28,7 @@ License:        MIT
 Group:          System/Libraries
 URL:            https://github.com/DaveGamble/cJSON
 Source:         https://github.com/DaveGamble/cJSON/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source98:       baselibs.conf
 Patch0:         cJSON-fix-cmake-include-path.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
