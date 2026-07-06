@@ -1,0 +1,5 @@
+<package name="modemu2k" project="openSUSE:Factory">
+  <title>modemu2k</title>
+  <description>modemu2k is a Hayes-style AT-command modem emulator that bridges a serial-style interface to a TCP or Telnet endpoint. It ships as a C library (libmodemu2k) exposing the modem state machine, plus a small CLI built on top that allocates a PTY and either reads stdin/stdout directly, forks a comm program (minicom, picocom) on the slave, or accepts an incoming TCP connection as the TTY. IPv4 and IPv6. It is based on modemu, originally developed by Toru Egashira (1995–1996).</description>
+  <url>https://github.com/theimpossibleastronaut/modemu2k/</url>
+</package>
