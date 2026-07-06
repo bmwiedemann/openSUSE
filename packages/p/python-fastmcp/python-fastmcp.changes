@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:37:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.3:
+  * Version sync with python-fastmcp-slim, which carries all
+    functional changes of this security and bugfix release (SSRF,
+    DNS rebinding and OAuth redirect hardening, proxy session and
+    JSON schema conversion fixes)
+
+-------------------------------------------------------------------
 Tue Jun 23 10:37:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4.2

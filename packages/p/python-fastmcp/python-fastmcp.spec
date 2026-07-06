@@ -17,7 +17,7 @@
 
 
 Name:           python-fastmcp
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        The fast, Pythonic way to build MCP servers and clients
 License:        Apache-2.0
