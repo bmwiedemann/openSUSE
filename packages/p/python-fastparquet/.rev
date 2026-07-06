@@ -328,4 +328,14 @@
     supported python versions</comment>
     <requestid>1352253</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>da283cd747befce19df18f2547eb390c</srcmd5>
+    <version>2026.5.0</version>
+    <time>1783333831</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.5.0:
+  * fixes for pandas 2 &amp; 3
+  * remove native</comment>
+    <requestid>1363765</requestid>
+  </revision>
 </revisionlist>

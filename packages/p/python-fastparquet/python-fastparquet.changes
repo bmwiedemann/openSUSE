@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:23:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.5.0:
+  * fixes for pandas 2 & 3
+  * remove native
+
+-------------------------------------------------------------------
 Sun Apr 26 22:33:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.3.0:
