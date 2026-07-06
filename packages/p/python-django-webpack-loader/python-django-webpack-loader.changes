@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul  5 09:08:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.4:
+  * Refactor `get_as_url_to_tag_dict` when dealing with extra
+    arguments in elements
+  * Fix `skip_common_chunks` usage at `get_files` to add parity
+    with `render_bundle`
+  * Add integrity and CSP nonce to preload script tags
+  * Fix hanging or broken stats file
+  * Handle issue when webpack stats change mid-request
+  * Fix `AttributeError` in config check for non-dict
+    `WEBPACK_LOADER`
+
+-------------------------------------------------------------------
 Mon Mar 30 21:42:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.2.3:

@@ -176,4 +176,21 @@
 </comment>
     <requestid>1343928</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>4b46caad1d40d4710742b1172343bf3c</srcmd5>
+    <version>3.2.4</version>
+    <time>1783333878</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.2.4:
+  * Refactor `get_as_url_to_tag_dict` when dealing with extra
+    arguments in elements
+  * Fix `skip_common_chunks` usage at `get_files` to add parity
+    with `render_bundle`
+  * Add integrity and CSP nonce to preload script tags
+  * Fix hanging or broken stats file
+  * Handle issue when webpack stats change mid-request
+  * Fix `AttributeError` in config check for non-dict
+    `WEBPACK_LOADER`</comment>
+    <requestid>1363827</requestid>
+  </revision>
 </revisionlist>
