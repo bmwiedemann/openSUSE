@@ -19,7 +19,7 @@
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 
 Name:           gpxsee
-Version:        16.10
+Version:        16.11
 Release:        1
 Summary:        GPS log file visualization and analysis tool
 License:        GPL-3.0-only
@@ -29,11 +29,9 @@ Source0:        https://github.com/tumic0/GPXSee/archive/%{version}/GPXSee-%{ver
 
 BuildRequires:  gcc-c++
 BuildRequires:  make
+BuildRequires:  desktop-file-utils
 %if 0%{?fedora_version}
-BuildRequires:  qt6-qtbase
-BuildRequires:  qt6-qtbase-gui
 BuildRequires:  qt6-qtbase-devel
-BuildRequires:  qt6-qtbase-private-devel
 BuildRequires:  qt6-qtpositioning-devel
 BuildRequires:  qt6-qtsvg-devel
 BuildRequires:  qt6-qtserialport-devel
@@ -44,7 +42,6 @@ Recommends: qt6-qtimageformats
 %else
 %if 0%{?suse_version}
 BuildRequires:  qt6-core-devel
-BuildRequires:  qt6-core-private-devel
 BuildRequires:  qt6-concurrent-devel
 BuildRequires:  qt6-gui-devel
 BuildRequires:  qt6-widgets-devel
@@ -76,11 +73,7 @@ BuildRequires:  libqt6positioning-devel
 BuildRequires:  libqt6serialport-devel
 BuildRequires:  libqt6multimedia-devel
 BuildRequires:  libqt6multimediawidgets-devel
-%ifarch x86_64
 BuildRequires:  lib64zlib-devel
-%else
-BuildRequires:  libzlib-devel
-%endif
 BuildRequires:  qttools6
 Recommends: qtimageformats6
 Recommends: libqt6-database-plugin-sqlite
@@ -102,55 +95,27 @@ lrelease-pro6 gpxsee.pro
 %else
 lrelease6 gpxsee.pro
 %endif
-%{qmake6} gpxsee.pro
+%{qmake6} PREFIX=%{_prefix} gpxsee.pro
 %else
 %if 0%{?fedora_version} > 44
 lrelease-pro-qt6 gpxsee.pro
 %else
 lrelease-qt6 gpxsee.pro
 %endif
-%{qmake_qt6} gpxsee.pro
+%{qmake_qt6} PREFIX=%{_prefix} gpxsee.pro
 %endif
-make %{?_smp_mflags}
+%make_build
 
 %install
-install -d 755 %{buildroot}/%{_bindir}
-install -d 755 %{buildroot}/%{_datadir}/applications
-install -d 755 %{buildroot}/%{_datadir}/icons/hicolor
-install -d 755 %{buildroot}/%{_datadir}/mime/packages
-install -d 755 %{buildroot}/%{_datadir}/metainfo
-install -d 755 %{buildroot}/%{_datadir}/%{name}
-install -d 755 %{buildroot}/%{_datadir}/%{name}/maps
-install -d 755 %{buildroot}/%{_datadir}/%{name}/style
-install -d 755 %{buildroot}/%{_datadir}/%{name}/CRS
-install -d 755 %{buildroot}/%{_datadir}/%{name}/translations
-install -d 755 %{buildroot}/%{_datadir}/%{name}/symbols
-install -m 755 gpxsee %{buildroot}/%{_bindir}/%{name}
-install -m 644 data/maps/* %{buildroot}/%{_datadir}/%{name}/maps
-cp -r data/style/* %{buildroot}/%{_datadir}/%{name}/style
-install -m 644 data/CRS/* %{buildroot}/%{_datadir}/%{name}/CRS
-install -m 644 lang/*.qm %{buildroot}/%{_datadir}/%{name}/translations
-install -m 644 icons/symbols/*.png %{buildroot}/%{_datadir}/%{name}/symbols
-cp -r icons/app/hicolor/* %{buildroot}/%{_datadir}/icons/hicolor
-install -m 644 pkg/linux/gpxsee.desktop %{buildroot}/%{_datadir}/applications/%{name}.desktop
-install -m 644 pkg/linux/gpxsee.xml %{buildroot}/%{_datadir}/mime/packages/%{name}.xml
-install -m 644 pkg/linux/gpxsee.appdata.xml %{buildroot}/%{_datadir}/metainfo/%{name}.xml
+%make_install INSTALL_ROOT=%{buildroot}
 
 %post
-if [ -x /usr/bin/update-mime-database ]; then
-	/usr/bin/update-mime-database %{_datadir}/mime &> /dev/null || :
-fi
-if [ -x /usr/bin/update-desktop-database ]; then
-	/usr/bin/update-desktop-database > /dev/null || :
-fi
+%mime_database_post
+%desktop_database_post
 
 %postun
-if [ -x /usr/bin/update-mime-database ]; then
-	/usr/bin/update-mime-database %{_datadir}/mime &> /dev/null || :
-fi
-if [ -x /usr/bin/update-desktop-database ]; then
-	/usr/bin/update-desktop-database > /dev/null || :
-fi
+%mime_database_postun
+%desktop_database_postun
 
 %files
 %defattr(-,root,root)
