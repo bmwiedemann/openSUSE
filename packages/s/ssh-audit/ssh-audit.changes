@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 07:36:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.9.0
+  * Warnings will be issued on key exchanges that are not
+    post-quantum safe.
+  * Hardening guides are now included for all supported platforms
+    (see --list-hardening-guides).
+  * UNIX sockets can be used as scan targets (specified with
+    unix:///path/to/socket); useful in containerized environments
+    such as CI/CD pipelines.
+  * Scanning through SOCKS5 proxies can now be done (with --socks5)
+  * A variety of new post-quantum algorithms can now be identified.
+- Update ssh-audit.keyring
+
+-------------------------------------------------------------------
 Tue Oct 15 20:29:22 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.0

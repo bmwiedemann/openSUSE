@@ -1,7 +1,7 @@
 #
 # spec file for package ssh-audit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           ssh-audit
-Version:        3.3.0
+Version:        3.9.0
 Release:        0
 Summary:        SSH server auditing
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/jtesta/ssh-audit
-Source:         https://github.com/jtesta/ssh-audit/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/jtesta/ssh-audit/releases/download/v%{version}/%{name}-%{version}.tar.gz.sig
+Source:         https://github.com/jtesta/ssh-audit/releases/download/v%{version}/v%{version}.tar.gz
+Source1:        https://github.com/jtesta/ssh-audit/releases/download/v%{version}/v%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  python3-pytest
