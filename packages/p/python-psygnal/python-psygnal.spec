@@ -1,7 +1,7 @@
 #
 # spec file for package python-psygnal
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psygnal
-Version:        0.13.0
+Version:        0.15.1
 Release:        0
 Summary:        Fast python callback/event system modeled after Qt Signals
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ BuildRequires:  %{python_module msgspec}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module pytest >= 6.0}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  %{python_module wrapt}

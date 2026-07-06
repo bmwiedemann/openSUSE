@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:19:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15.1:
+  * fix: Fix leaking objects by `connect_child_events=True` in
+    `SignalGroupDescriptor`  #407 (Czaki)
+  * build: Update ci #405 (tlambert03)
+  * chore:Fix docs build by bump build system #403 (Czaki)
+  * Making ordered set reversible #395 (yfukai)
+  * Drop pydantic1 #392 (tlambert03)
+  * build: drop 3.9, support 3.14 #391 (tlambert03)
+  * ci(dependabot): bump astral-sh/setup-uv from 6 to 7 #390
+    ([dependabot[bot]](https://github.com/apps/dependabot))
+  * ci(pre-commit.ci): autoupdate #389 ([pre-commit-
+    ci[bot]](https://github.com/apps/pre-commit-ci))
+  * ci(dependabot): bump pypa/cibuildwheel from 3.1 to 3.2 #388
+    ([dependabot[bot]](https://github.com/apps/dependabot))
+  * **Implemented enhancements:**
+  * feat: Allow to replace selection content in with one event
+    emitted #387 (Czaki)
+  * feat: allow SignalInstances for evented dataclass fields to
+    emit on field mutation (in addition to field change) #379
+  * feat: allow psygnal.testing functions to to accept connection
+    kwargs #378 (tlambert03)
+  * feat: support coroutine functions #346 (tlambert03)
+  * feat: support pydantic @computed_fields,  and arbitrary
+    `field_dependents` for event emission #340 (tlambert03)
+  * feat: Support bubbling up of events from evented children on
+    dataclasses  #298 (tlambert03)
+  * fix: fix evented container pydantic serialization #377
+    (tlambert03)
+  * fix: fix typing in psygnal testing #374 (tlambert03)
+
+-------------------------------------------------------------------
 Thu May 15 08:05:13 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.13.0
