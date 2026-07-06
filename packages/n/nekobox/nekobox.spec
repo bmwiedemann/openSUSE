@@ -17,7 +17,7 @@
 %define debug_package %{nil}
 %define core nekobox_core
 Name:           nekobox
-Version:        5.11.25
+Version:        5.11.26
 Release:        0%{?autorelease}
 Summary:        Qt based cross-platform GUI proxy configuration manager (backend: sing-box)
 License:        GPL-3.0-only
