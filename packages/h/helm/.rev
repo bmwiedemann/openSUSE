@@ -1218,4 +1218,15 @@ See changelog in:
     <comment></comment>
     <requestid>1360629</requestid>
   </revision>
+  <revision rev="107" vrev="2">
+    <srcmd5>62ec14959b835d7679a8f1efd6fd0941</srcmd5>
+    <version>4.2.2</version>
+    <time>1783333737</time>
+    <user>anag_factory</user>
+    <comment>  * Revert: Fixed a race condition in WaitForDelete where the status
+    observer canceled the watch too early, causing intermittent
+    failures when running a full test suite #32214
+- update to 4.2.1 (bsc#1270127, CVE-2026-48978):</comment>
+    <requestid>1363702</requestid>
+  </revision>
 </revisionlist>
