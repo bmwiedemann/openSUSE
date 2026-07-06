@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 06 09:38:09 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Update to version 1.5.2:
+  * [15-encrypt] Give up on using sdbootutil in a chroot, pollute install environment and use sbootutil from there
+
+-------------------------------------------------------------------
 Thu Jul  2 13:00:46 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Actually install tik-functions-helper file

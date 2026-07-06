@@ -373,4 +373,13 @@
     <comment></comment>
     <requestid>1363509</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>03454b7bb9061b785d646147acc9d159</srcmd5>
+    <version>1.5.2</version>
+    <time>1783334143</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.2:
+  * [15-encrypt] Give up on using sdbootutil in a chroot, pollute install environment and use sbootutil from there</comment>
+    <requestid>1364013</requestid>
+  </revision>
 </revisionlist>
