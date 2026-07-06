@@ -375,4 +375,27 @@ Numpy
   * fix: respect entry bounds for RNTuple.iterate and add of</comment>
     <requestid>1360285</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>b873e625455c60ee79055ce7febf0f2f</srcmd5>
+    <version>5.7.5</version>
+    <time>1783334086</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.7.5:
+  * feat: support path objects with storage_options in
+    uproot.open
+  * feat: finish implementing `library` kwarg for RNTuples
+  * fix: implement report=True for RNTuple.iterate
+  * fix: `uproot.dask` cannot handle grouped `TObject` properly
+  * fix: add typenames to form so Coffea can use them
+  * fix: interpretation dtype handling returned byte-swapped data
+  * fix: avoid std::any in pyroot_to_buffer to support older ROOT
+    versions
+  * fix: accidental dropping of AsGrouped
+  * fix: concurrency settings from build workflow
+  * ## Other
+  * ci: pin micromamba version and bump Pyodide version
+  * chore: update pre-commit hooks
+  * ci: Move fsspec-xrootd into separate dependency group</comment>
+    <requestid>1363960</requestid>
+  </revision>
 </revisionlist>
