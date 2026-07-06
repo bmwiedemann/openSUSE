@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:23:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0.0:
+  * Sync calc version 3.0.0.4 changes with calc version 2.16.1.3
+    to form a new 2.17.0.0, except that the calc version will be
+    2.17.0.0 of course.  :-)
+  * Added `make asan` rule to make it easier to compile with ASAN
+  * NOTE: Use `make clobber` first before using the new rule to
+    remove any previous compilation.
+  * Added `make gcc` rule to force a compile with `gcc(1)`, (or
+    `gcc-15` for macOS), full warnings, no optimizer, no ASAN.
+  * Added `make clang` rule to force a compile with `c1ang(1)`,
+    full warnings, no optimizer, no ASAN.
+  * Added `calc-static-asan` rule to to compile cASAN (Address
+    Sanitizer).
+  * NOTE: Use `make clobber` first before using the new rule to
+    remove any previous compilation.
+  * Added `make asan-run` to compile and run calc in the local
+    directory, and run with ASAN.
+  * Added `make check_lcc` to test if the local C compiler
+    (`${LCC}`) can compile a trivial C program.
+  * Fixed three memcpy calls in `matsort()` in `matfunc.c`.
+  * Fixed and improved `chk_tree`.
+  * Added `chk_tree -m` for use with commands such as `make
+    full_debug`, and `make debug`.
+  * Fixed places where the code still used `BIG_ENDIAN` when it
+    needs `CALC_BIG_ENDIAN`.
+  * Fixed places where the code still used `LITTLE_ENDIAN` when
+    it needs `CALC_LITTLE_ENDIAN`.
+  * Added `${EXPAND}` to the list of utilities in
+    `Makefile.config`.
+  * Echo `${EXPAND}` in the `make env` rule of `Makefile`.
+
+-------------------------------------------------------------------
 Tue Jan 20 10:03:09 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.16.1.2:
@@ -321,10 +355,10 @@ Tue Aug 15 06:32:06 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.14.3.4:
   * Fix typo in the make debug Makefile rule.
-  * Fix install of statically linked calc under macOS 
+  * Fix install of statically linked calc under macOS
   * Update comments in Makefile.local about using -fsanitize
-  * Add Makefile.local comments for macOS reduce dependency chains 
-  * Fix calc when CUSTOM is undefined, remove PASSDOWN values 
+  * Add Makefile.local comments for macOS reduce dependency chains
+  * Fix calc when CUSTOM is undefined, remove PASSDOWN values
   * Fix use of -dead_strip_dylibs for macOS linker
 
 -------------------------------------------------------------------
@@ -361,7 +395,7 @@ Thu Jul 27 06:27:22 UTC 2023 - Michael Vetter <mvetter@suse.com>
 Sat Jul 22 11:59:05 UTC 2023 - Sarah Kriesch <sarah.kriesch@opensuse.org>
 
 - Update to 2.14.2.0:
-  * Ported calc to the s390x IBM Mainframe 
+  * Ported calc to the s390x IBM Mainframe
 
 -------------------------------------------------------------------
 Thu Jun  1 06:46:45 UTC 2023 - Michael Vetter <mvetter@suse.com>
@@ -781,7 +815,7 @@ Tue Feb 16 11:20:00 UTC 2021 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Sun Feb 14 19:08:34 UTC 2021 - Bernhard Wiedemann <bwiedemann@suse.com>
 
-- Build with march=corei7 instead of native 
+- Build with march=corei7 instead of native
   to avoid compile-time CPU-detection (boo#1100677)
 
 -------------------------------------------------------------------
@@ -862,7 +896,7 @@ Thu Jan 18 13:19:26 UTC 2018 - dnh@opensuse.org
 
 - update to 2.12.6.4
    + Fixed a man page warning about ./myfile
-   + Improved gen_v1(h,n) in lucas.cal for cases where h is not a multiple of 3. 
+   + Improved gen_v1(h,n) in lucas.cal for cases where h is not a multiple of 3.
    + Optimized the search for v(1) when h is a multiple of 3.
 
 -------------------------------------------------------------------
@@ -932,7 +966,7 @@ Tue Oct  1 16:29:42 UTC 2013 - Greg.Freemyer@gmail.com
 - added %doc section to %files
 - added README.openSUSE
 - changed the libname from libcalc2_12_4_3 to libcalc%soname
-- changed -n libcalc-devel to devel 
+- changed -n libcalc-devel to devel
 - added Requires: %{libname} = %{version} to devel section
 
 -------------------------------------------------------------------
@@ -947,9 +981,9 @@ Fri May 24 02:21:05 UTC 2013 - Greg.Freemyer@gmail.com
 -------------------------------------------------------------------
 Thu Dec 27 10:49:37 UTC 2012 - dvaleev@suse.com
 
-- build with -DHAVE_NO_FPOS. Don't use fgetpos() and fsetpos() but 
-  use fseek() and ftell() instead. The code that generates 
-  fposval.h is completely broken. It tries to detect the size of 
+- build with -DHAVE_NO_FPOS. Don't use fgetpos() and fsetpos() but
+  use fseek() and ftell() instead. The code that generates
+  fposval.h is completely broken. It tries to detect the size of
   fpos_t but fails on ppc.
 
 -------------------------------------------------------------------

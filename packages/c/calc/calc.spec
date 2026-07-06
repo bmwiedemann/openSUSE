@@ -16,10 +16,10 @@
 #
 
 
-%define soname 2_16_1_2
+%define soname 2_17_0_0
 %define libname libcalc%{soname}
 Name:           calc
-Version:        2.16.1.2
+Version:        2.17.0.0
 Release:        0
 Summary:        C-style arbitrary precision calculator
 License:        LGPL-2.1-only
