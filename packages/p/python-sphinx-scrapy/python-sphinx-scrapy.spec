@@ -19,7 +19,7 @@
 # Enable libalternatives by default
 %bcond_without libalternatives
 Name:           python-sphinx-scrapy
-Version:        0.8.2
+Version:        0.8.6
 Release:        0
 Summary:        Sphinx extension for documentation in the Scrapy ecosystem
 License:        BSD-3-Clause

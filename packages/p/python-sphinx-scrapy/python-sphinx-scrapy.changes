@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  5 15:39:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.8.6:
+  * Add index templates for extension-defined cross-reference
+    types so related objects appear in generated Sphinx indexes.
+  * Normalize project IDs loaded from :file:`pyproject.toml` and
+    inferred from Sphinx metadata.
+  * Fix links in :file:`llms.txt`.
+  * Rewrite generated Markdown links for supported Intersphinx
+    targets from .html to .md.
+  * Extended easy Intersphinx configuration to aiohttp curl-cffi
+    niquests
+  * Document installation from Git for sphinx-scrapy and sphinx-
+    scrapy[tox].
+  * Upgrade sphinx-markdown-builder.
+
+
+-------------------------------------------------------------------
 Thu Apr 23 02:23:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 0.8.2.
