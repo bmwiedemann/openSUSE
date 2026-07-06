@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 30 06:46:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + Prevent workspaces from being removed mid-animation
+  + Announce search result description to screen readers
+  + Improve animation when expanding app grid label
+  + Fix spacing in lock screen media notifications
+  + Plugged leak
+  + Misc. bug fixes and cleanups
+  + Updated translations.
+
+-------------------------------------------------------------------
 Thu May 28 20:34:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:
