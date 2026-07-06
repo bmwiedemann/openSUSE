@@ -1,4 +1,182 @@
 -------------------------------------------------------------------
+Sun Jul  5 13:51:15 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.114.0:
+  + Sharper type checking: inferred output types from pipeline
+    input, typed `$in`, better `let` binding inference, `oneof`-aware
+    operator checks; `enforce-runtime-annotations` now opt-out
+  + POSIX-style `--` end-of-options delimiter for built-in, custom,
+    and `def --wrapped` commands
+  + New `run` command runs scripts as isolated pipeline stages
+    (bare transforms or `def main` entry point)
+  + Built-in Semantic Versioning support: `into semver`,
+    `into semver-range`, `semver bump`, with sorting and range matching
+  + KDL v2.0.0 format support via `to kdl`/`from kdl`
+  + Breaking changes
+    * Submodules are no longer implicitly imported; use explicit
+      `export use sub` to keep old behavior
+    * Type system improvements: command output types inferred from
+      input, optional params typed as `oneof<T, nothing>`, more
+      precise widening; previously-passing annotations may now error
+    * `enforce-runtime-annotations` experimental option promoted to
+      opt-out (enabled by default)
+    * Reedline vi mode: proper visual mode, caret on last grapheme,
+      `h`/`l` cross line boundaries, separate visual prompt indicator
+    * `from xlsx`/`from ods`: corrected signatures (return records of
+      tables, not tables; `from ods` input is `binary`), added
+      datetime support to `ods`, broadened datetime formats,
+      uncoercible values imported as `string`/`float` instead of
+      `null`; removed `--header-row` flag, added `--noheaders` and
+      `--first-row`
+    * Error records in `catch` no longer have `json` field; replaced
+      by `details`; labels gain `location` with file-relative offsets
+    * Removed deprecated `grid` record input and implicit `name`
+      column assumption
+    * `std/iter scan` signature now matches `reduce` (`--fold`,
+      `--noinit` removed); `std/iter find-index` returns `null`
+      instead of `-1`
+    * `idx find`/`idx search` hits now displayed relative to cwd
+  + Additions
+    * `polars map-batches` for mapping closures over dataframe columns
+    * `commandline complete` to invoke nushell completions (supports
+      `--type`, `--detailed`)
+    * `to nuon --pretty`/`-p` (shorthand for `--indent 2`) with
+      column alignment
+    * `run` command for scripts in pipelines; `--full-reparse`/`-f`
+      flag
+    * POSIX `--` end-of-options parsing for built-in, custom, and
+      `def --wrapped` commands
+    * `ignore` flags: `--stderr`/`-e`, `--stdout`/`-o`,
+      `--show-errors`/`-x`
+    * `idx search --context`/`-c` accepting int or range
+    * Polars bitwise commands: `bitwise-and`, `-or`, `-xor`,
+      `count-ones`, `-zeros`, `leading-ones`, `-zeros`,
+      `trailing-ones`, `-zeros`
+    * `url encode` supports binary input; `url decode --binary`
+      returns binary for non-UTF-8
+    * Reedline menu `input_mode`/`output_mode` and
+      `description_position` configuration
+    * `random pass` for password generation with `--chars`,
+      `--no-uppercase`, `--no-lowercase`, `--no-numbers`,
+      `--no-symbols`, `--include-ambiguous`, `--include-similar`,
+      `--require-each-type`
+    * `is-terminal` detects redirection; defaults to `--stdout`
+    * `--right` flag for `split row` and `split column`
+    * Set/combinatorics commands: `union`, `intersect`, `difference`,
+      `combinations`, `permutations`
+    * SemVer support: `into semver`, `into semver-range`,
+      `semver bump` (major/minor/patch/alpha/beta/rc/release) with
+      tab completions, table coloring, `describe` support
+    * `from xlsx`/`from ods` `--prefer-integers`/`-i` flag
+    * `math cbrt` (cube root)
+    * `append` accepts multiple rest values
+    * `LS_COLORS` support in `commandline complete --detailed`
+    * `idx init` uses content indexing by default
+    * Completions for `ansi gradient --fgnamed`/`--bgnamed`
+    * Verb-based reedline edit keybindings (`move`, `extend`, `cut`,
+      `copy`, `change`, `erase`) with motions
+    * HTTP commands use response body as error message
+    * `NU_EXPERIMENTAL_OPTIONS` honored with `--login`/`--execute`
+    * `explore config` navigation shortcuts (`hl`, `jk`, `ctrl+p/n`)
+    * `--log-level perf` for startup performance debugging
+  + Deprecations
+    * `str upcase` deprecated in favor of `str uppercase`;
+      `str downcase` in favor of `str lowercase`
+  + Removals
+    * Removed deprecated `use std/clip` `copy`/`paste` (use
+      `copy52`/`paste52` or experimental `native-clip` `clip copy`/
+      `clip paste`)
+    * Removed deprecated `grid` record input and implicit `name`
+      column
+    * Removed `--header-row` flag from `from xlsx`
+  + Other changes
+    * More idiomatic YAML output with smarter string quoting and
+      multiline string block style (YAML rework planned for next
+      release)
+    * Width-priority columns: `metadata set
+      --table-width-priority-columns`/`-w` hints for `table` rendering
+    * Polars 0.54 upgrade: `polars implode --maintain-order`,
+      `polars is-in --maintain-order`,
+      `polars pivot --always-combine-names`, `polars replace --default`
+      required with `--strict`/`--return-dtype`
+    * New experimental `dc-glob` globbing engine (faster,
+      cross-platform)
+    * "Command not found" suggests full command from category (e.g.
+      `sqrt` -> `math sqrt`)
+    * `plugin list --help` shows correct `commands` column type
+    * `toolkit.nu` commands annotated with categories/search-terms/
+      examples
+    * LSP feature-gated behind `--features lsp`
+    * MCP `evaluate` tool returns NUON directly and provides
+      `structuredContent` JSON
+    * `http post`/`put`/`patch`/`delete` respects `--content-type`
+      for JSON-variant MIME types
+    * `nu-highlight` clears `content_type` metadata
+    * Refactored sqlite pushdown into query_plan for extensibility
+    * Rust toolchain bumped to 1.94.1
+  + Bug fixes
+    * `idx` family: `idx init . --wait` blocks properly,
+      `--follow-links` added, accurate counts, snapshot restore for
+      `import`, `files`/`dirs`/`find`/`search` work on imports,
+      `query` parameter added
+    * `which`/`attr complete` subcommand completions quoted for spaces
+    * `update` with nested column path and closure no longer writes
+      same result to every row
+    * `nu-mcp` evaluation output uses raw strings to reduce escaping
+    * Clearer errors for negative indices in cell paths
+    * `oneof<..., table>` accepts table literals;
+      `oneof<..., closure>` accepts closures without `||`
+    * `table` alignment with `header_on_separator` fixed
+    * `run` repeated execution caching bug fixed; `--full-reparse`
+      added
+    * Float ranges use natural fractional steps (`0.1..0.3` yields
+      0.1, 0.2, 0.3) with rounding to step precision
+    * `stor open` return type corrected to `SQLiteDatabase`
+    * Module descriptions in `use` completions/LSP hovers properly
+      formatted
+    * Aliases keep working when referenced variables are shadowed
+    * `--` parsing bug with `--wrapped` commands fixed
+    * `from json`/`from kdl`/`from xml` respond to Ctrl-C and show
+      focused error snippets
+    * `flatten` renames conflicting parent columns correctly
+    * `{}` in row conditions parsed as empty closure, not record
+    * `idx search` treats brackets/`?` as literal text
+    * Table mode from CLI (`-m`) respected in scripts
+    * `input list` streams items live, fixes header expansion and
+      control-character alignment
+    * `nu --plugins` accepts multiple params, comma/space/quoted lists
+    * `commandline edit` REPL update regression fixed
+    * `math abs` reports overflow instead of panicking on
+      i64::MIN/duration
+    * `bytes index-of` no longer panics on empty patterns
+    * `explore config --output` fails fast in edit mode
+    * Nix flake build fixed
+    * Interpolated strings auto-converted to `glob` flags/arguments
+    * `lines` handles invalid UTF-8 (lossy default, `--strict` to
+      fail)
+    * `input list --fuzzy` ANSI truncation fixed
+    * `uniq-by` errors on non-record lists and missing columns
+    * `bits shl`/`shr` default to 8-byte word size
+    * `--wrapped` glob regression fixed (strings/globs passed
+      correctly to externals)
+    * dc-glob: `~` expansion, absolute paths, case-insensitivity,
+      `rm`, Windows path fixes
+    * All polars-expression commands accept polars selectors
+    * AST flattening leading-pipe rendering bug fixed
+    * `str index-of --grapheme-clusters` no longer panics on
+      sub-grapheme matches
+    * `exit` restores terminal cursor; REPL uses command normally
+    * SIGABRT on terminal close / MCP server exit fixed
+    * `insert`/`upsert` into empty nested cell path gives clear error
+    * Compiler error fixed for `$in`-collecting RHS of `and`/`or`/
+      comparisons
+    * `--log-include`/`--log-exclude` accept module/target names
+    * `math avg`/`sum` on tables produce consistent error messages
+    * `help aliases` shows alias name for internal-command aliases
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-07-04-nushell_v0_114_0.html
+
+-------------------------------------------------------------------
 Sun May 31 12:45:29 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.113.1:
