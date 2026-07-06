@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 06 04:59:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.1:
+  * build(deps): bump the gomod group across 1 directory with 6
+    updates (#2585)
+  * build(deps): bump the actions group across 1 directory with 4
+    updates (#2583)
+
+-------------------------------------------------------------------
 Thu Jul 02 16:38:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.0:
