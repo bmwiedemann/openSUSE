@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-okta
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        Python SDK for the Okta Management API
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module blinker}
 BuildRequires:  %{python_module flatdict}
 BuildRequires:  %{python_module jwcrypto}
 BuildRequires:  %{python_module pycryptodomex}
-BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pydantic >= 2}
 BuildRequires:  %{python_module pydash}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-mock}
@@ -49,8 +49,10 @@ BuildRequires:  %{python_module pytest-tornasync}
 BuildRequires:  %{python_module pytest-trio}
 BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module python-dateutil}
+BuildRequires:  %{python_module python-dateutil >= 2.8.2}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module typing-extensions >= 4.7.1}
+BuildRequires:  %{python_module urllib3 >= 1.25.3}
 BuildRequires:  %{python_module xmltodict}
 BuildRequires:  %{python_module yarl}
 # /SECTION
@@ -63,10 +65,12 @@ Requires:       python-blinker
 Requires:       python-flatdict
 Requires:       python-jwcrypto
 Requires:       python-pycryptodomex
-Requires:       python-pydantic
+Requires:       python-pydantic >= 2
 Requires:       python-pydash
-Requires:       python-python-dateutil
+Requires:       python-python-dateutil >= 2.8.2
 Requires:       python-requests
+Requires:       python-typing-extensions >= 4.7.1
+Requires:       python-urllib3 >= 1.25.3
 Requires:       python-xmltodict
 Requires:       python-yarl
 BuildArch:      noarch
