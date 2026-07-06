@@ -17,12 +17,12 @@
 
 
 Name:           python-fastmcp-slim
-Version:        3.4.2
+Version:        3.4.3
 Release:        0
 Summary:        The fast, Pythonic way to build MCP servers and clients (slim)
 License:        Apache-2.0
 URL:            https://github.com/jlowin/fastmcp
-Source:         https://files.pythonhosted.org/packages/source/f/fastmcp-slim/fastmcp_slim-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/f/fastmcp_slim/fastmcp_slim-%{version}.tar.gz
 BuildRequires:  %{python_module Authlib >= 1.6.11}
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module cyclopts >= 4.0.0}
@@ -57,8 +57,6 @@ BuildRequires:  %{python_module websockets >= 15.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # uv-backend wheels don't expose deps to pythondistdeps, so require them by hand
 Requires:       python-Authlib >= 1.6.11
 Requires:       python-PyYAML >= 6.0
@@ -88,6 +86,8 @@ Requires:       python-uncalled-for >= 0.2.0
 Requires:       python-uvicorn >= 0.35
 Requires:       python-watchfiles >= 1.0.0
 Requires:       python-websockets >= 15.0.1
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 

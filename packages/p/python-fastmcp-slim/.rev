@@ -15,4 +15,12 @@
     <comment>Preserve the existing changelog entries per review (the previous entry was accidentally dropped). Supersedes the declined SR.</comment>
     <requestid>1361362</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c90680e242d0100fb6df9d4b5a6a5c92</srcmd5>
+    <version>3.4.3</version>
+    <time>1783334101</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.3 (security: SSRF allow-list bypass via NAT64/IPv6 transition addresses)</comment>
+    <requestid>1363976</requestid>
+  </revision>
 </revisionlist>

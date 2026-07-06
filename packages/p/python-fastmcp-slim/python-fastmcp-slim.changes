@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:37:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.3:
+  * Block SSRF allow-list bypasses via NAT64 and IPv6 transition
+    addresses (6to4, Teredo, ISATAP)
+  * Validate Host and Origin headers in the Streamable HTTP
+    transport to prevent DNS rebinding against localhost servers
+  * Reject unsafe OAuth redirect schemes and unregistered DCR
+    redirect URIs; forward IdP auth errors to the MCP client
+  * Isolate event store replay between sessions
+  * Fix proxy session teardown races and KeyError on
+    StatefulProxyClient.clear()
+  * Preserve required discriminator tags and guard recursive
+    references in JSON schema conversion
+  * Fix caching middleware TypeError on cache miss and async
+    rate-limiting client id callbacks
+  * Add --verify flag for TLS certificate verification to the
+    remote command
+  * Bound the default OIDC discovery timeout and expose it on
+    provider wrappers
+
+-------------------------------------------------------------------
 Tue Jun 23 10:37:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4.2
