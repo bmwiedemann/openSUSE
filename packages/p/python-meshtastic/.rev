@@ -170,4 +170,33 @@
   * protobufs: v2.7.18</comment>
     <requestid>1339171</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>637096bad3a430f6fa295ce95facc603</srcmd5>
+    <version>2.7.10</version>
+    <time>1783333932</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.7.10:
+  * protobufs updated
+  * Inject options in nanopb .options files into the protobuf
+    files used for code generation
+  * Refactor the Meshtastic TCP pub/sub example to ensure proper
+    resource cleanup and clearer exception handling.
+  * Add textchat.py and replymessage.py examples
+  * Fix position overwrite by lower-precision data
+  * Update factory reset to use integer for config reset
+  * Filter --reply based on specified channel index
+  * Make Serial and TCP interfaces more closely respect
+    connectNow when false
+  * StreamInterface: prevent socket/reader-thread leak on
+    handshake failure
+  * Fix some leaks/hangs on close: unstarted StreamInterface
+    streams &amp; TCP reader unblock
+  * Give TCPInterface reconnect logic on write errors
+  * Container: Add initial container for meshtastic-cli
+  * Make examples more regularized and focused, and add
+    contribution guidelines for the examples folder
+  * Added example script : meshtastic_serial_message_reader.py
+  * Fix up the container build</comment>
+    <requestid>1363878</requestid>
+  </revision>
 </revisionlist>

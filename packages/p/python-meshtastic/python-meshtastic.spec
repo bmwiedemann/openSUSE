@@ -19,15 +19,16 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-meshtastic
-Version:        2.7.8
+Version:        2.7.10
 Release:        0
 Summary:        A Python client for use with Meshtastic devices
 License:        GPL-3.0-only
 URL:            https://github.com/meshtastic/python
 Source:         https://files.pythonhosted.org/packages/source/m/meshtastic/meshtastic-%{version}.tar.gz
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module bleak}
+BuildRequires:  %{python_module PyYAML >= 6.0.1}
+BuildRequires:  %{python_module bleak >= 0.22.3}
 BuildRequires:  %{python_module hypothesis}
+BuildRequires:  %{python_module packaging >= 24.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module protobuf >= 4.21.12}
@@ -42,7 +43,7 @@ BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-PyYAML >= 6.0.1
 Requires:       python-bleak >= 0.22.3
-Requires:       python-packaging
+Requires:       python-packaging >= 24.0
 Requires:       python-protobuf >= 4.21.12
 Requires:       python-pypubsub >= 4.0.3
 Requires:       python-pyserial >= 3.5
@@ -53,12 +54,17 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-A Python client for use with Meshtastic devices. This small library (and example application) provides an easy API for sending and receiving messages over mesh radios. It also provides access to any of the operations/data available in the device user interface or the Android application. Events are delivered using a publish-subscribe model, and you can subscribe to only the message types you are interested in.
+A Python client for use with Meshtastic devices. This small library (and
+example application) provides an easy API for sending and receiving messages
+over mesh radios. It also provides access to any of the operations/data
+available in the device user interface or the Android application. Events are
+delivered using a publish-subscribe model, and you can subscribe to only the
+message types you are interested in.
 
 %prep
 %setup -q -n meshtastic-%{version}
-# Completely fail
-rm meshtastic/tests/test_smoke*.py meshtastic/tests/test_int.py meshtastic/tests/test_main.py
+# Completely fail / depend on missing development script not included in PyPI release
+rm meshtastic/tests/test_smoke*.py meshtastic/tests/test_int.py meshtastic/tests/test_main.py meshtastic/tests/test_inject_nanopb_options.py
 
 %build
 %pyproject_wheel
@@ -66,6 +72,7 @@ rm meshtastic/tests/test_smoke*.py meshtastic/tests/test_int.py meshtastic/tests
 %install
 %pyproject_install
 %python_expand rm %{buildroot}%{$python_sitelib}/meshtastic/.gitignore
+%python_expand chmod -x %{buildroot}%{$python_sitelib}/meshtastic/supported_device.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %python_clone -a %{buildroot}%{_bindir}/mesh-analysis
 %python_clone -a %{buildroot}%{_bindir}/mesh-tunnel
