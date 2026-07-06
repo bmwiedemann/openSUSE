@@ -20,14 +20,15 @@
 %global srcname ClusterShell
 %define pythons python3
 Name:           clustershell
-Version:        1.9.3
+Version:        1.10
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
 Group:          Productivity/Clustering/Computing
 
-URL:            http://cea-hpc.github.io/clustershell/
-Source0:        https://files.pythonhosted.org/packages/source/C/%{srcname}/%{srcname}-%{version}.tar.gz
+URL:            https://clustershell.github.io/clustershell/
+# sdist filename is lowercase since 1.10 (PEP 625); importable module is still ClusterShell
+Source0:        https://files.pythonhosted.org/packages/source/c/%{name}/%{name}-%{version}.tar.gz
 BuildArch:      noarch
 Requires:       python3-%{name} = %{version}-%{release}
 Requires:       vim
@@ -60,7 +61,7 @@ Requires:       python3-PyYAML
 ClusterShell Python 3 module and related command line tools.
 
 %prep
-%autosetup -p1 -n %{srcname}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
 %pyproject_wheel
@@ -69,7 +70,9 @@ ClusterShell Python 3 module and related command line tools.
 %pyproject_install
 
 # move config dir away from default setuptools /usr prefix (if rpm-building as user)
-[ -d %{buildroot}/usr/etc ] && mv %{buildroot}/usr/etc %{buildroot}/%{_sysconfdir}
+if [ -d %{buildroot}/usr/etc ]; then
+    mv %{buildroot}/usr/etc %{buildroot}/%{_sysconfdir}
+fi
 
 # man pages
 install -d %{buildroot}/%{_mandir}/{man1,man5}
@@ -87,7 +90,17 @@ install -d %{buildroot}/%{vimdatadir}/{ftdetect,syntax}
 install -p -m 0644 doc/extras/vim/ftdetect/clustershell.vim %{buildroot}/%{vimdatadir}/ftdetect/
 install -p -m 0644 doc/extras/vim/syntax/clushconf.vim %{buildroot}/%{vimdatadir}/syntax/
 install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadir}/syntax/
+# bash completions
+install -d %{buildroot}%{_datadir}/bash-completion/completions
+install -p -m 0644 bash_completion.d/cluset %{buildroot}%{_datadir}/bash-completion/completions/
+install -p -m 0644 bash_completion.d/clush %{buildroot}%{_datadir}/bash-completion/completions/
+ln -s cluset %{buildroot}%{_datadir}/bash-completion/completions/nodeset
+
 %fdupes %{buildroot}
+
+%check
+# smoke test: module must be importable from the buildroot
+PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -c 'import ClusterShell.NodeSet'
 
 %files -n python3-%{name}
 %{_bindir}/clubak
@@ -114,7 +127,7 @@ install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadi
 %dir %{_sysconfdir}/clustershell/groups.conf.d
 %config(noreplace) %{_sysconfdir}/clustershell/clush.conf
 %config(noreplace) %{_sysconfdir}/clustershell/groups.conf
-%ghost %{_sysconfdir}/clustershell/groups
+%ghost %attr(0644,root,root) %{_sysconfdir}/clustershell/groups
 %config(noreplace) %{_sysconfdir}/clustershell/groups.d/local.cfg
 %doc %{_sysconfdir}/clustershell/clush.conf.d/README
 %doc %{_sysconfdir}/clustershell/clush.conf.d/*.conf.example
@@ -126,5 +139,10 @@ install -p -m 0644 doc/extras/vim/syntax/groupsconf.vim %{buildroot}/%{vimdatadi
 %{vimdatadir}/ftdetect/clustershell.vim
 %{vimdatadir}/syntax/clushconf.vim
 %{vimdatadir}/syntax/groupsconf.vim
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%{_datadir}/bash-completion/completions/cluset
+%{_datadir}/bash-completion/completions/clush
+%{_datadir}/bash-completion/completions/nodeset
 
 %changelog
