@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazy
-Version:        1.6
+Version:        2.0
 Release:        0
 Summary:        Lazy attributes for Python objects
 License:        BSD-2-Clause

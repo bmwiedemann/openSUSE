@@ -83,4 +83,17 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1281362</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>fdc57d19dcf14a09a288dbebe8b7080a</srcmd5>
+    <version>2.0</version>
+    <time>1783333907</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0:
+  * Remove deprecated license classifier. [stefan]
+  * Upgrade GitHub workflow. [stefan]
+  * Upgrade .readthedocs.yaml. [stefan]
+  * Upgrade sphinx and sphinx-rtd-theme in docs extra. [stefan]
+  * Require Python &gt;= 3.5. [stefan]</comment>
+    <requestid>1363837</requestid>
+  </revision>
 </revisionlist>

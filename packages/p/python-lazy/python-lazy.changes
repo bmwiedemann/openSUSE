@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:03:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0:
+  * Remove deprecated license classifier. [stefan]
+  * Upgrade GitHub workflow. [stefan]
+  * Upgrade .readthedocs.yaml. [stefan]
+  * Upgrade sphinx and sphinx-rtd-theme in docs extra. [stefan]
+  * Require Python >= 3.5. [stefan]
+
+-------------------------------------------------------------------
 Fri May 30 10:23:00 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
