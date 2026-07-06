@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nmcli
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        A python wrapper library for the network-manager cli client
 License:        MIT

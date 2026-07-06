@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.8.0:
+  * feature: allow DeviceControl.wifi_connect to accept None as
+    password
+
+-------------------------------------------------------------------
 Fri Jan  9 12:25:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.7.0

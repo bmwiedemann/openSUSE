@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>1326738</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1b94a945c8511358d279bb20f13966b5</srcmd5>
+    <version>1.8.0</version>
+    <time>1783333923</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.0:
+  * feature: allow DeviceControl.wifi_connect to accept None as
+    password</comment>
+    <requestid>1363844</requestid>
+  </revision>
 </revisionlist>
