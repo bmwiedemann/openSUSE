@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 06 05:05:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.8 (.7 was not released):
+  * Enhancements
+    - Add default_env configuration (#2288)
+    - Rename auto-update to update (#2286)
+  * Bug fixes
+    - Fix progress collapse ordering (#2291)
+    - Fix progress insertion after collapsed rows (#2292)
+
+-------------------------------------------------------------------
 Wed Jul 01 06:07:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.6:
