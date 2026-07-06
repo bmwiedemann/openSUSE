@@ -9,11 +9,11 @@ to the dhclient script. this patch fixes this.
 Signed-off-by: Tomas Hozza <thozza@redhat.com>
 References: bsc#928390
 
-diff --git a/client/dhclient.c b/client/dhclient.c
-index 4d7394d..0c77ae2 100644
---- a/client/dhclient.c
-+++ b/client/dhclient.c
-@@ -1104,7 +1104,7 @@ void state_selecting (cpp)
+Index: dhcp-4.4.3-P1/client/dhclient.c
+===================================================================
+--- dhcp-4.4.3-P1.orig/client/dhclient.c
++++ dhcp-4.4.3-P1/client/dhclient.c
+@@ -1487,7 +1487,7 @@ void state_selecting (cpp)
  		client -> state = S_REQUESTING;
  
  		/* Bind to the address we received. */
@@ -22,7 +22,7 @@ index 4d7394d..0c77ae2 100644
  		return;
  	}
  
-@@ -1294,11 +1294,12 @@ void dhcpack (packet)
+@@ -1690,11 +1690,12 @@ void dhcpack (packet)
  	if (client -> new -> rebind < cur_time)
  		client -> new -> rebind = TIME_MAX;
  
@@ -37,7 +37,7 @@ index 4d7394d..0c77ae2 100644
  {
  	struct timeval tv;
  
-@@ -1318,6 +1319,13 @@ void bind_lease (client)
+@@ -1714,6 +1715,13 @@ void bind_lease (client)
  	if (client->alias)
  		script_write_params(client, "alias_", client->alias);
  
@@ -49,21 +49,18 @@ index 4d7394d..0c77ae2 100644
 +	}
 +
  	/* If the BOUND/RENEW code detects another machine using the
- 	   offered address, it exits nonzero.  We need to send a
- 	   DHCPDECLINE and toss the lease. */
-diff --git a/includes/dhcpd.h b/includes/dhcpd.h
-index 86d0afe..f0f4b20 100644
---- a/includes/dhcpd.h
-+++ b/includes/dhcpd.h
-@@ -2891,7 +2891,7 @@ void state_bound (void *);
- void state_stop (void *);
- void state_panic (void *);
+ 	   offered address, then per our man page it should exit with
+        a non-zero status, to which we send a DHCPDECLINE and toss
+Index: dhcp-4.4.3-P1/includes/dhcpd.h
+===================================================================
+--- dhcp-4.4.3-P1.orig/includes/dhcpd.h
++++ dhcp-4.4.3-P1/includes/dhcpd.h
+@@ -3012,7 +3012,7 @@ uint32_t check_v6only (struct packet *,
+ void start_v6only (struct client_state *, uint32_t);
+ void finish_v6only (void *);
  
 -void bind_lease (struct client_state *);
 +void bind_lease (struct client_state *, struct in_addr *);
  
  void make_client_options (struct client_state *,
  			  struct client_lease *, u_int8_t *,
--- 
-2.1.4
-

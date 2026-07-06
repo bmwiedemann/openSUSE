@@ -92,9 +92,9 @@ Index: client/dhclient.c
 +}
 +
  #ifndef UNIT_TEST
- static const char copyright[] = "Copyright 2004-2021 Internet Systems Consortium.";
+ static const char copyright[] = "Copyright 2004-2022 Internet Systems Consortium.";
  static const char arr [] = "All rights reserved.";
-@@ -885,6 +919,26 @@ main(int argc, char **argv) {
+@@ -886,6 +920,26 @@ main(int argc, char **argv) {
  		}
  	}
  
@@ -121,42 +121,44 @@ Index: client/dhclient.c
  	/* At this point, all the interfaces that the script thinks
  	   are relevant should be running, so now we once again call
  	   discover_interfaces(), and this time ask it to actually set
-@@ -899,19 +953,42 @@ main(int argc, char **argv) {
- 	   Not much entropy, but we're booting, so we're not likely to
- 	   find anything better. */
- 	seed = 0;
-+	int seed_flag = 0;
- 	for (ip = interfaces; ip; ip = ip->next) {
- 		int junk;
-+		if (ip->hw_address.hlen <= sizeof seed)
-+			continue;
- 		memcpy(&junk,
- 		       &ip->hw_address.hbuf[ip->hw_address.hlen -
- 					    sizeof seed], sizeof seed);
- 		seed += junk;
-+		seed_flag = 1;
- 	}
--	srandom(seed + cur_time + (unsigned)getpid());
-+	if ( seed_flag == 0 ) {
-+		if ( backup_seed != 0 ) {
-+			seed = backup_seed;
-+			log_info ("xid: rand init seed (0x%x) built using all"
-+				  " available interfaces",seed);
+@@ -913,21 +967,43 @@ main(int argc, char **argv) {
+ 		   interface's hardware address interpreted as an integer.
+ 		   Not much entropy, but we're booting, so we're not likely to
+ 		   find anything better. */
+-
++		int seed_flag = 0;
+ 		for (ip = interfaces; ip; ip = ip->next) {
+ 			int junk;
++			if (ip->hw_address.hlen <= sizeof seed)
++				continue;
+ 			memcpy(&junk,
+ 			       &ip->hw_address.hbuf[ip->hw_address.hlen -
+ 						    sizeof seed], sizeof seed);
+ 			seed += junk;
++			seed_flag = 1;
++		}
++		if ( seed_flag == 0 ) {
++			if ( backup_seed != 0 ) {
++				seed = backup_seed;
++				log_info ("xid: rand init seed (0x%x) built using all"
++					  " available interfaces",seed);
++			}
++			else {
++				seed = cur_time^((unsigned) gethostid()) ;
++				log_info ("xid: warning: no netdev with useable HWADDR found"
++					  " for seed's uniqueness enforcement");
++				log_info ("xid: rand init seed (0x%x) built using gethostid",
++					  seed);
++			}
++			/* we only use seed and no current time as a broadcast reply */
++			/* will certainly be used by the hwaddrless interface */
 +		}
 +		else {
-+			seed = cur_time^((unsigned) gethostid()) ;
-+			log_info ("xid: warning: no netdev with useable HWADDR found"
-+				  " for seed's uniqueness enforcement");
-+			log_info ("xid: rand init seed (0x%x) built using gethostid",
-+				  seed);
-+                }
-+                /* we only use seed and no current time as a broadcast reply */
-+                /* will certainly be used by the hwaddrless interface */
-+                srandom(seed);
-+        }
-+        else
-+		srandom(seed + cur_time + (unsigned)getpid());
- 
++			seed += cur_time + (unsigned)getpid();
+ 		}
+-		seed += cur_time + (unsigned)getpid();
+ 	}
+ 	srandom(seed);
  
  	/*
  	 * Establish a default DUID.  We always do so for v6 and
@@ -166,7 +168,7 @@ Index: client/dhclient.c
  	 */
  	if ((local_family == AF_INET6) ||
  	    ((local_family == AF_INET) && (duid_v4 == 1))) {
-@@ -922,6 +999,20 @@ main(int argc, char **argv) {
+@@ -938,6 +1014,20 @@ main(int argc, char **argv) {
  			form_duid(&default_duid, MDL);
  			write_duid(&default_duid);
  		}
@@ -187,7 +189,7 @@ Index: client/dhclient.c
  	}
  
  #if defined(DHCPv6) && defined(DHCP4o6)
-@@ -1411,15 +1502,22 @@ void dhcpack (packet)
+@@ -1527,15 +1617,22 @@ void dhcpack (packet)
  		if (client -> xid == packet -> raw -> xid)
  			break;
  	}
@@ -215,7 +217,7 @@ Index: client/dhclient.c
  	}
  
  	if (client -> state != S_REBOOTING &&
-@@ -1432,9 +1530,10 @@ void dhcpack (packet)
+@@ -1548,9 +1645,10 @@ void dhcpack (packet)
  		return;
  	}
  
@@ -226,9 +228,9 @@ Index: client/dhclient.c
 +		  piaddr (packet->client_addr), 
 +		  client -> xid);
  
- 	lease = packet_to_lease (packet, client);
- 	if (!lease) {
-@@ -2101,15 +2200,21 @@ void dhcpoffer (packet)
+ 	/* Check v6only first. */
+ 	v6only_wait = check_v6only(packet, client);
+@@ -2232,15 +2330,21 @@ void dhcpoffer (packet)
  	/* If we're not receptive to an offer right now, or if the offer
  	   has an unrecognizable transaction id, then just drop it. */
  	if (!client ||
@@ -255,7 +257,7 @@ Index: client/dhclient.c
  	}
  
  	sprintf (obuf, "%s of %s from %s", name,
-@@ -2350,11 +2455,11 @@ void dhcpnak (packet)
+@@ -2491,11 +2595,11 @@ void dhcpnak (packet)
  
  	/* If we're not receptive to an offer right now, or if the offer
  	   has an unrecognizable transaction id, then just drop it. */
@@ -272,7 +274,7 @@ Index: client/dhclient.c
  #if defined (DEBUG)
  		log_debug ("DHCPNAK in wrong transaction.");
  #endif
-@@ -2369,9 +2474,15 @@ void dhcpnak (packet)
+@@ -2510,9 +2614,15 @@ void dhcpnak (packet)
  		log_debug ("DHCPNAK in wrong state.");
  #endif
  		return;
@@ -289,7 +291,7 @@ Index: client/dhclient.c
  
  	if (!client -> active) {
  #if defined (DEBUG)
-@@ -2504,11 +2615,11 @@ void send_discover (cpp)
+@@ -2645,11 +2755,11 @@ void send_discover (cpp)
  			  (long)(client -> interval));
  	} else
  #endif
@@ -306,7 +308,7 @@ Index: client/dhclient.c
  	/* Send out a packet. */
  #if defined(DHCPv6) && defined(DHCP4o6)
  	if (dhcpv4_over_dhcpv6) {
-@@ -2901,10 +3012,12 @@ void send_request (cpp)
+@@ -3042,10 +3152,12 @@ void send_request (cpp)
  	}
  
  	strncpy(rip_buf, rip_str, sizeof(rip_buf)-1);
@@ -321,7 +323,7 @@ Index: client/dhclient.c
  
  #if defined(DHCPv6) && defined(DHCP4o6)
  	if (dhcpv4_over_dhcpv6) {
-@@ -2961,11 +3074,11 @@ void send_decline (cpp)
+@@ -3102,11 +3214,11 @@ void send_decline (cpp)
  		log_info ("DHCPDECLINE");
  	} else
  #endif
@@ -335,7 +337,7 @@ Index: client/dhclient.c
  
  	/* Send out a packet. */
  #if defined(DHCPv6) && defined(DHCP4o6)
-@@ -3024,11 +3137,11 @@ void send_release (cpp)
+@@ -3165,11 +3277,11 @@ void send_release (cpp)
  		log_info ("DHCPRELEASE");
  	} else
  #endif
@@ -349,7 +351,7 @@ Index: client/dhclient.c
  
  #if defined(DHCPv6) && defined(DHCP4o6)
  	if (dhcpv4_over_dhcpv6) {
-@@ -3305,10 +3418,17 @@ make_client_options(struct client_state
+@@ -3446,10 +3558,17 @@ make_client_options(struct client_state
  	 * This can be overridden by including a client id in the configuration
  	 * file.
  	 */
@@ -368,7 +370,7 @@ Index: client/dhclient.c
  		memset(&client_identifier, 0, sizeof(client_identifier));
  		client_identifier.len = 1 + 4 + default_duid.len;
  		if (!buffer_allocate(&client_identifier.buffer,
-@@ -3399,12 +3519,13 @@ void make_discover (client, lease)
+@@ -3540,12 +3659,13 @@ void make_discover (client, lease)
  	client -> packet.op = BOOTREQUEST;
  	client -> packet.htype = client -> interface -> hw_address.hbuf [0];
  	/* Assumes hw_address is known, otherwise a random value may result */
@@ -384,7 +386,7 @@ Index: client/dhclient.c
  		client -> packet.flags = 0;
  	else
  		client -> packet.flags = htons (BOOTP_BROADCAST);
-@@ -3416,7 +3537,7 @@ void make_discover (client, lease)
+@@ -3557,7 +3677,7 @@ void make_discover (client, lease)
  	memset (&(client -> packet.siaddr),
  		0, sizeof client -> packet.siaddr);
  	client -> packet.giaddr = giaddr;
@@ -393,7 +395,7 @@ Index: client/dhclient.c
  	    memcpy (client -> packet.chaddr,
  		    &client -> interface -> hw_address.hbuf [1],
  		    (unsigned)(client -> interface -> hw_address.hlen - 1));
-@@ -3473,7 +3594,8 @@ void make_request (client, lease)
+@@ -3614,7 +3734,8 @@ void make_request (client, lease)
  	client -> packet.op = BOOTREQUEST;
  	client -> packet.htype = client -> interface -> hw_address.hbuf [0];
  	/* Assumes hw_address is known, otherwise a random value may result */
@@ -403,7 +405,7 @@ Index: client/dhclient.c
  	client -> packet.hops = 0;
  	client -> packet.xid = client -> xid;
  	client -> packet.secs = 0; /* Filled in by send_request. */
-@@ -3505,7 +3627,7 @@ void make_request (client, lease)
+@@ -3646,7 +3767,7 @@ void make_request (client, lease)
  	else
  		memset (&client -> packet.giaddr, 0,
  			sizeof client -> packet.giaddr);
@@ -412,7 +414,7 @@ Index: client/dhclient.c
  	    memcpy (client -> packet.chaddr,
  		    &client -> interface -> hw_address.hbuf [1],
  		    (unsigned)(client -> interface -> hw_address.hlen - 1));
-@@ -3548,7 +3670,8 @@ void make_decline (client, lease)
+@@ -3689,7 +3810,8 @@ void make_decline (client, lease)
  	client -> packet.op = BOOTREQUEST;
  	client -> packet.htype = client -> interface -> hw_address.hbuf [0];
  	/* Assumes hw_address is known, otherwise a random value may result */
@@ -422,7 +424,7 @@ Index: client/dhclient.c
  	client -> packet.hops = 0;
  	client -> packet.xid = client -> xid;
  	client -> packet.secs = 0; /* Filled in by send_request. */
-@@ -3565,9 +3688,10 @@ void make_decline (client, lease)
+@@ -3706,9 +3828,10 @@ void make_decline (client, lease)
  	memset (&client -> packet.siaddr, 0,
  		sizeof client -> packet.siaddr);
  	client -> packet.giaddr = giaddr;
@@ -436,7 +438,7 @@ Index: client/dhclient.c
  
  #ifdef DEBUG_PACKET
  	dump_raw ((unsigned char *)&client -> packet, client -> packet_length);
-@@ -3610,7 +3734,8 @@ void make_release (client, lease)
+@@ -3751,7 +3874,8 @@ void make_release (client, lease)
  	client -> packet.op = BOOTREQUEST;
  	client -> packet.htype = client -> interface -> hw_address.hbuf [0];
  	/* Assumes hw_address is known, otherwise a random value may result */
@@ -446,7 +448,7 @@ Index: client/dhclient.c
  	client -> packet.hops = 0;
  	client -> packet.xid = random ();
  	client -> packet.secs = 0;
-@@ -3622,9 +3747,10 @@ void make_release (client, lease)
+@@ -3763,9 +3887,10 @@ void make_release (client, lease)
  	memset (&client -> packet.siaddr, 0,
  		sizeof client -> packet.siaddr);
  	client -> packet.giaddr = giaddr;
@@ -460,7 +462,7 @@ Index: client/dhclient.c
  
  #ifdef DEBUG_PACKET
  	dump_raw ((unsigned char *)&client -> packet, client -> packet_length);
-@@ -3777,17 +3903,13 @@ write_options(struct client_state *clien
+@@ -3918,17 +4043,13 @@ write_options(struct client_state *clien
   * is not how it is intended.  Upcoming rearchitecting the client should
   * address this "one daemon model."
   */
@@ -481,7 +483,7 @@ Index: client/dhclient.c
  		log_fatal("Impossible condition at %s:%d.", MDL);
  
  	if ((ip->hw_address.hlen == 0) ||
-@@ -3837,6 +3959,13 @@ form_duid(struct data_string *duid, cons
+@@ -3978,6 +4099,13 @@ form_duid(struct data_string *duid, cons
  	}
  }
  
@@ -495,7 +497,7 @@ Index: client/dhclient.c
  /* Write the default DUID to the lease store. */
  static isc_result_t
  write_duid(struct data_string *duid)
-@@ -5276,7 +5405,8 @@ client_dns_update(struct client_state *c
+@@ -5425,7 +5553,8 @@ client_dns_update(struct client_state *c
  					  NULL, client,
  					  client->sent_options, NULL,
  					  &global_scope, oc, MDL)) {
@@ -600,11 +602,13 @@ Index: common/dlpi.c
 ===================================================================
 --- common/dlpi.c.orig
 +++ common/dlpi.c
-@@ -1343,7 +1343,9 @@ void maybe_setup_fallback ()
+@@ -1342,8 +1342,10 @@ void maybe_setup_fallback ()
+ }
  #endif /* USE_DLPI_SEND */
  
- void 
+-void
 -get_hw_addr(const char *name, struct hardware *hw) {
++void 
 +get_hw_addr(struct interface_info *info) {
 +	const char *name = info->name;
 +	struct hardware *hw = &info->hw_address;
@@ -884,7 +888,7 @@ Index: common/lpf.c
 -	memset(&tmp, 0, sizeof(tmp));
 -	strcpy(tmp.ifr_name, name);
 -	if (ioctl(sock, SIOCGIFHWADDR, &tmp) < 0) {
--		log_fatal("Error getting hardware address for \"%s\": %m", 
+-		log_fatal("Error getting hardware address for \"%s\": %m",
 -			  name);
 +	if (sll == NULL || sll->sll_halen >= sizeof(hw->hbuf)) {
 +		freeifaddrs(ifaddrs);
@@ -1017,7 +1021,7 @@ Index: includes/dhcpd.h
 ===================================================================
 --- includes/dhcpd.h.orig
 +++ includes/dhcpd.h
-@@ -1372,6 +1372,7 @@ struct interface_info {
+@@ -1377,6 +1377,7 @@ struct interface_info {
  	struct shared_network *shared_network;
  				/* Networks connected to this interface. */
  	struct hardware hw_address;	/* Its physical address. */
@@ -1025,7 +1029,7 @@ Index: includes/dhcpd.h
  	struct in_addr *addresses;	/* Addresses associated with this
  					 * interface.
  					 */
-@@ -2641,7 +2642,7 @@ void print_dns_status (int, struct dhcp_
+@@ -2646,7 +2647,7 @@ void print_dns_status (int, struct dhcp_
  #endif
  const char *print_time(TIME);
  

@@ -34,7 +34,7 @@ Index: client/dhclient.c
 ===================================================================
 --- client/dhclient.c.orig
 +++ client/dhclient.c
-@@ -683,7 +683,7 @@ main(int argc, char **argv) {
+@@ -684,7 +684,7 @@ main(int argc, char **argv) {
  		long temp;
  		int e;
  
@@ -43,7 +43,7 @@ Index: client/dhclient.c
  			e = fscanf(pidfd, "%ld\n", &temp);
  			oldpid = (pid_t)temp;
  
-@@ -3642,7 +3642,7 @@ void rewrite_client_leases ()
+@@ -3783,7 +3783,7 @@ void rewrite_client_leases ()
  
  	if (leaseFile != NULL)
  		fclose (leaseFile);
@@ -52,7 +52,7 @@ Index: client/dhclient.c
  	if (leaseFile == NULL) {
  		log_error ("can't create %s: %m", path_dhclient_db);
  		return;
-@@ -3837,7 +3837,7 @@ write_duid(struct data_string *duid)
+@@ -3978,7 +3978,7 @@ write_duid(struct data_string *duid)
  		return DHCP_R_INVALIDARG;
  
  	if (leaseFile == NULL) {	/* XXX? */
@@ -61,7 +61,7 @@ Index: client/dhclient.c
  		if (leaseFile == NULL) {
  			log_error("can't create %s: %m", path_dhclient_db);
  			return ISC_R_IOERROR;
-@@ -3882,7 +3882,7 @@ write_client6_lease(struct client_state
+@@ -4023,7 +4023,7 @@ write_client6_lease(struct client_state
  		return DHCP_R_INVALIDARG;
  
  	if (leaseFile == NULL) {	/* XXX? */
@@ -70,7 +70,7 @@ Index: client/dhclient.c
  		if (leaseFile == NULL) {
  			log_error("can't create %s: %m", path_dhclient_db);
  			return ISC_R_IOERROR;
-@@ -4041,7 +4041,7 @@ int write_client_lease (client, lease, r
+@@ -4182,7 +4182,7 @@ int write_client_lease (client, lease, r
  		return 1;
  
  	if (leaseFile == NULL) {	/* XXX */
@@ -99,7 +99,7 @@ Index: common/dlpi.c
 @@ -817,7 +817,7 @@ dlpiopen(const char *ifname) {
  	}
  	*dp = '\0';
- 	
+ 
 -	return open (devname, O_RDWR, 0);
 +	return open (devname, O_RDWR | O_CLOEXEC, 0);
  }
@@ -174,7 +174,7 @@ Index: relay/dhcrelay.c
 ===================================================================
 --- relay/dhcrelay.c.orig
 +++ relay/dhcrelay.c
-@@ -783,13 +783,14 @@ main(int argc, char **argv) {
+@@ -800,13 +800,14 @@ main(int argc, char **argv) {
  		/* Create the pid file. */
  		if (no_pid_file == ISC_FALSE) {
  			pfdesc = open(path_dhcrelay_pid,

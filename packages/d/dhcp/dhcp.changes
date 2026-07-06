@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul  2 12:31:44 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update dhcrelay script and service.
+  Due to some leftover calls to sysvinit tools the script no longer
+  worked. Now the script is a lot leaner and only implements the
+  sysconfig arg parsing and makes it more of a native systemd
+  service.
+  [bsc#1269228]
+
+-------------------------------------------------------------------
+Sun Jun 28 19:33:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 4.4.3-P1:
+  * Corrected reference count leak in leasequery packets (CVE-2022-2928).
+  * Corrected memory leak in FQDN option unpacking (CVE-2022-2929).
+  * Added OMAPI timed function calls.
+  * Updated BIND libraries to version 9.11.36.
+  * Added support for DHCPv4 option v6-only-preferred (RFC 8925).
+- Drop obsolete patches already included in version 4.4.3-P1:
+  * dhcp-CVE-2022-2928.patch
+  * dhcp-CVE-2022-2929.patch
+- Refresh patches:
+  * 0009-dhcp-4.2.6-close-on-exec.patch
+  * 0015-Expose-next-server-DHCPv4-option-to-dhclient-script.patch
+  * 0016-infiniband-support.patch
+
+-------------------------------------------------------------------
 Thu Apr 24 13:52:48 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Add compile option '-std=gnu17' to fix build with gcc15.
@@ -46,7 +73,7 @@ Tue Dec 27 10:32:19 UTC 2022 - Ludwig Nussel <lnussel@suse.com>
 -------------------------------------------------------------------
 Fri Dec  9 07:42:59 UTC 2022 - Thorsten Kukuk <kukuk@suse.com>
 
-- Add /etc/sysconfig/network hierachy to server file list 
+- Add /etc/sysconfig/network hierachy to server file list
 
 -------------------------------------------------------------------
 Thu Oct 27 15:30:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
@@ -57,7 +84,7 @@ Thu Oct 27 15:30:26 UTC 2022 - Callum Farmer <gmbr3@opensuse.org>
 Wed Oct  5 14:01:47 UTC 2022 - Reinhard Max <max@suse.com>
 
 - bsc#1203988, CVE-2022-2928, dhcp-CVE-2022-2928.patch:
-  An option refcount overflow exists in dhcpd  
+  An option refcount overflow exists in dhcpd
 - bsc#1203989, CVE-2022-2929, dhcp-CVE-2022-2929.patch:
   DHCP memory leak
 
@@ -84,7 +111,7 @@ Wed Jan 19 09:53:39 UTC 2022 - Manfred Schwarb <manfred99@gmx.ch>
 
 - modify source if-up.d.dhcpd-restart-hook:
   * fix option parsing
-  * do not call /usr/libexec/dhcp/dhcpd directly, use systemd for it 
+  * do not call /usr/libexec/dhcp/dhcpd directly, use systemd for it
 
 -------------------------------------------------------------------
 Mon Jan 17 08:52:07 UTC 2022 - Johannes Segitz <jsegitz@suse.com>
@@ -135,7 +162,7 @@ Thu May 27 08:53:49 UTC 2021 - Reinhard Max <max@suse.com>
   * CVE-2021-25217, bsc#1186382: A buffer overrun in lease file
     parsing code can be used to exploit a common vulnerability
     shared by dhcpd and dhclient.
-- Error out, if %version and %isc_version are not in sync. 
+- Error out, if %version and %isc_version are not in sync.
 
 -------------------------------------------------------------------
 Sun Jan 24 13:20:58 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -562,7 +589,7 @@ Thu Mar  8 13:15:16 UTC 2018 - max@suse.com
   * Corrected a bug which could cause the server to sporadically
     crash while loading lease files with the lease-id-format is
     set to "hex" [ISC-Bugs #43185].
-  
+
 - Obsoleted patches:
   * 0011-Fixed-linux-interface-discovery-using-getifaddrs.patch
   * 0019-dhcp-4.2.4-P1-interval.patch
@@ -579,14 +606,14 @@ Fri Jan 19 12:16:47 CET 2018 - ndas@suse.de
 -------------------------------------------------------------------
 Tue Jan 16 16:15:45 CET 2018 - ndas@suse.de
 
-- Plugs a socket descriptor leak in OMAPI(bsc#1076119, CVE-2017-3144) 
+- Plugs a socket descriptor leak in OMAPI(bsc#1076119, CVE-2017-3144)
   [ +0021-master-Plugs-a-socket-descriptor-leak-in-OMAPI.patch]
 
 -------------------------------------------------------------------
 Fri Jan  5 07:30:46 UTC 2018 - obs@botter.cc
 
 - add PIDFile= setting to dhcrelay.service, without this systemd
-  stops the service immediately after starting 
+  stops the service immediately after starting
 
 -------------------------------------------------------------------
 Wed Dec 13 15:52:25 UTC 2017 - mchandras@suse.de
@@ -598,7 +625,7 @@ Wed Dec 13 15:52:25 UTC 2017 - mchandras@suse.de
 -------------------------------------------------------------------
 Thu Nov 23 13:49:18 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -737,7 +764,7 @@ Thu May 19 10:37:25 UTC 2016 - mchandras@suse.de
 -------------------------------------------------------------------
 Tue Jan 26 17:16:45 CET 2016 - ndas@suse.de
 
-- Update to dhcp-4.3.3-P1 correcting bounds checking when 
+- Update to dhcp-4.3.3-P1 correcting bounds checking when
   receiving a packet (bsc#961305,CVE-2015-8605,ISC-Bugs#41267).
 - adjusted interval check.
   [*0019-dhcp-4.2.4-P1-interval.patch]
@@ -755,7 +782,7 @@ Tue Oct 13 12:59:00 UTC 2015 - mt@suse.de
   "Unable to set up timer: out of range" on very long or infinite
   timer intervals / lease lifetimes (bsc#947780)
   [+ 0019-dhcp-4.2.4-P1-interval.patch]
-- Corrected patch references in and a missed (bsc#919959) patch 
+- Corrected patch references in and a missed (bsc#919959) patch
   description in previous changelog entry.
 
 -------------------------------------------------------------------
@@ -1320,14 +1347,14 @@ Mon Aug 29 15:15:44 UTC 2011 - mt@suse.de
 -------------------------------------------------------------------
 Wed Jul 20 18:53:07 UTC 2011 - crrodriguez@opensuse.org
 
-- Correct previous change. 
+- Correct previous change.
 
 -------------------------------------------------------------------
 Wed Jul 20 04:45:40 UTC 2011 - crrodriguez@opensuse.org
 
 - THis is a long running network daemon, link with
    full RELRO security enhancements.
-- remove -fno-strict-aliasing from CFLAGS, no longer needed. 
+- remove -fno-strict-aliasing from CFLAGS, no longer needed.
 
 -------------------------------------------------------------------
 Tue May 17 03:58:24 UTC 2011 - crrodriguez@opensuse.org
@@ -1395,7 +1422,7 @@ Thu Mar 31 09:00:19 UTC 2011 - mt@suse.de
   * Corrected side effect of printing all data strings as hex.
   * Host record references leaks causing applying config to all
     innocent clients.
-  * Memory leak when parsing a domain name 
+  * Memory leak when parsing a domain name
   * Fixes to configuration parsing including infinite loop.
   * Fixed for unexpected abort caused by a DHCPv6 decline.
   For the complete list see the RELNOTES file, that is available
@@ -1678,7 +1705,7 @@ Wed Jul 29 12:47:46 CEST 2009 - mt@suse.de
   * Failover BNDUPD messages are now discarded if they conflict with
     an update that has been trasnmitted, but not acknowledged.
   * A bug cleaning up unknown-xxx temporary option definitions was
-    fixed. 
+    fixed.
 - Removed obsolete dhclient-no-dereference-twice patch
 - Improved dhclient-script to apply global dhcp settings, when
   there is no interface config (bnc#480922).
@@ -1726,13 +1753,13 @@ Mon Nov 24 13:00:39 CET 2008 - mt@suse.de
 Tue Nov 11 11:12:23 CET 2008 - mt@suse.de
 
 - Fixed dhclient-script to apply DHCLIENT_SET_HOSTNAME and
-  SET_DEFAULT_ROUTE policy correctly and inclusive of per 
+  SET_DEFAULT_ROUTE policy correctly and inclusive of per
   interface setings (bnc#426650).
-- Fixed dhclient-script to make sure, the host name is set 
+- Fixed dhclient-script to make sure, the host name is set
   as short-name even dhcp provides fqdn (bnc#418168)
 - Fixed dhclient-script to translate all known dhcp options
   to netconfig variables and unknown with dhclient prefix.
-- Fixed dhclient.conf to request all netbios dhcp-options, 
+- Fixed dhclient.conf to request all netbios dhcp-options,
   added also nds and mtu options.
 
 -------------------------------------------------------------------
@@ -1750,23 +1777,23 @@ Mon Sep  8 18:29:00 CEST 2008 - mt@suse.de
   * A significantly enhanced Failover protocol implementation,
     which:
     + Implements MAC Address Affinity to reduce the frequency
-    of clients being assigned new IP addresses; 
+    of clients being assigned new IP addresses;
     + Supports the assignment of failover-protected addresses
-    to legacy BOOTP clients; 
+    to legacy BOOTP clients;
     + Implements a dynamic lease reservation system that provides
     improved accounting of the use of fixed address assignments,
     by allocating fixed addresses out of the pool of dynamic leases
     + Improves tools and reduces operator oversight necessary for
-    maintaining a functioning system. 
+    maintaining a functioning system.
   * Support for DHCP leasequery, and the VIVCO/VIVSO options, which
     makes easy and comfortable integration with DOCSIS devices and
-    the environment in which they are used. 
+    the environment in which they are used.
   * Management of class and subclass statements via OMAPI
   * Several server configuration options related to dynamic DNS
     behavior
   * Other new configuration functions, including "execute()",
     which runs a shell command from within a dhcpd or dhclient
-    configuration file 
+    configuration file
   For a full list of new features added in this release, please
   observe the changes list.
 - Adopted/merged patches, dropped obsolete dhcdbd (NM) patches.
@@ -1875,7 +1902,7 @@ Fri Apr  4 16:43:21 CEST 2008 - mt@suse.de
 Tue Apr  1 16:07:04 CEST 2008 - mkoenig@suse.de
 
 - remove dir /usr/share/omc/svcinfo.d as it is provided now
-  by filesystem 
+  by filesystem
 
 -------------------------------------------------------------------
 Tue Dec  4 11:02:45 CET 2007 - mt@suse.de
@@ -2096,7 +2123,7 @@ Tue May 16 16:24:33 CEST 2006 - poeml@suse.de
 -------------------------------------------------------------------
 Thu May  4 23:01:10 CEST 2006 - rml@suse.de
 
-- Add "-H" flag for setting hostname (Novell major bug #139532) 
+- Add "-H" flag for setting hostname (Novell major bug #139532)
 
 -------------------------------------------------------------------
 Wed Mar 29 15:47:38 CEST 2006 - poeml@suse.de
@@ -2152,7 +2179,7 @@ Mon Nov 28 14:43:43 CET 2005 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Sep 26 01:30:25 CEST 2005 - ro@suse.de
 
-- define LDAP_DEPRECATED in CFLAGS 
+- define LDAP_DEPRECATED in CFLAGS
 
 -------------------------------------------------------------------
 Wed Aug  3 15:07:50 CEST 2005 - poeml@suse.de
@@ -2182,17 +2209,17 @@ Tue Jul 12 08:47:02 CEST 2005 - hare@suse.de
 -------------------------------------------------------------------
 Thu Jun 30 21:38:41 CEST 2005 - gekker@suse.de
 
-- Add -DEXTENDED_NEW_OPTION_INFO to CFLAGS for rml 
+- Add -DEXTENDED_NEW_OPTION_INFO to CFLAGS for rml
 
 -------------------------------------------------------------------
 Tue Jun 28 22:03:50 CEST 2005 - gekker@suse.de
 
-- Add support for dhcdbd, patches from RH via rml 
+- Add support for dhcdbd, patches from RH via rml
 
 -------------------------------------------------------------------
 Mon Jun 20 16:45:22 CEST 2005 - ro@suse.de
 
-- build with pie/fpie 
+- build with pie/fpie
 
 -------------------------------------------------------------------
 Mon Jun 13 15:26:44 CEST 2005 - kukuk@suse.de
@@ -2426,7 +2453,7 @@ Fri Jul 16 14:27:18 CEST 2004 - poeml@suse.de
 - update to 3.0.1rc14
 - remove obsolete patches and adapt dhcp-3.0.1rc13-tmpfile.dif
 - dhcpsync: use try-restart (so the server isn't started if it has
-  been stopped) 
+  been stopped)
 - remove notify messages that are sent to root
 - check if dhcpd was active at boot time before update and
   restore runlevel links if needed [#41215], and PreRequires for
@@ -2435,7 +2462,7 @@ Fri Jul 16 14:27:18 CEST 2004 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Jun 14 20:51:29 CEST 2004 - poeml@suse.de
 
-- security fixes [#41975]: 
+- security fixes [#41975]:
   - fix buffer overflow in the DHCP server that can be exploited by
     the client by specifying multiple 'hostnames' to execute
     arbitrary code or at least crash the server. VU#317350
@@ -2472,7 +2499,7 @@ Tue May  4 18:24:14 CEST 2004 - poeml@suse.de
 - convert configuration names in DHCPD_INTERFACE /
   DHCRELAY_INTERFACES into interface names [#39718]
 - fix service restart for the case where the binary has been
-  switched for backward compatibility during updating. 
+  switched for backward compatibility during updating.
 - do not change DHCPD_BINARY for backward compatibility if updating
   from 9.0. This and the last change complete the fix for [#38422]
   and take care of updates from 8.1-9.1 with and without YOU
@@ -2526,7 +2553,7 @@ Wed Feb 25 16:00:55 CET 2004 - poeml@suse.de
   - Fixed a crash bug in dhclient where dhcpd servers that do not
     provide renewal times results in an FPE.  As a side effect,
     dhclient can now properly handle 0xFFFFFFFF (-1) expiry times
-    supplied by servers.  
+    supplied by servers.
   - dhcpctl.3 manpage was tweaked.
 - the files CHANGES and COPYRIGHT have vanished, package LICENSE
   instead
@@ -2628,7 +2655,7 @@ Tue Aug 12 21:05:33 CEST 2003 - poeml@suse.de
 - in client's %post, send a mail only when rc.config is encountered
 - clean buildroot, but not in chroot buildsystem
 - the SuSE string is now replaced by UnitedLinux where appropriate
-- rename the "dhcp-base" package to "dhcp", so there is a binary 
+- rename the "dhcp-base" package to "dhcp", so there is a binary
   package matching the name of the source package [#17668]
 - use the lately added macros only on newer distributions
 
@@ -2695,7 +2722,7 @@ Mon Mar  3 16:38:07 CET 2003 - poeml@suse.de
   exist (any longer) [#24533]
 - remove the %ghost filelist entries for pid files and chroot jail
   contents [#20030]. Clean up the libraries from the jail when the
-  server is stopped. 
+  server is stopped.
 - dhcrelay: add patch from Florian Lohoff (slightly modified),
   that makes the maximal hop count of forwarded packages
   configurable (-c maxcount), sets the default to 4, and rejects
@@ -2811,11 +2838,11 @@ Thu Jul 11 15:33:11 CEST 2002 - poeml@suse.de
 -------------------------------------------------------------------
 Tue May 21 18:48:50 CEST 2002 - poeml@suse.de
 
-- dhclient-script: 
+- dhclient-script:
   - source the right sysconfig files (/etc/sysconfig/network/)
     [#15871]
   - use KEEP_SEARCHLIST option (thanks Sumit Bose)
-  - improve the indentation 
+  - improve the indentation
 
 -------------------------------------------------------------------
 Thu May 16 13:15:36 CEST 2002 - poeml@suse.de
@@ -2832,7 +2859,7 @@ Mon May 13 18:21:50 CEST 2002 - poeml@suse.de
 
 - update to 3.0.1rc9
   - fixes a format string vulnerability in the server that could
-    lead to a remote root compromise 
+    lead to a remote root compromise
     (see http://www.cert.org/advisories/CA-2002-12.html)
   - fixes a memory leak in the client and some other minor bugs
 - fix some printf arguments in server/omapi.c
@@ -2872,7 +2899,7 @@ Tue Mar 26 14:12:42 CET 2002 - ro@suse.de
 Sun Feb 10 23:09:42 CET 2002 - poeml@suse.de
 
 - drop the sysconfig/network/dhcp template. It's in the syconfig
-  package now. 
+  package now.
 - strip /sbin/dhclient
 
 -------------------------------------------------------------------
@@ -2895,7 +2922,7 @@ Wed Jan 30 19:59:51 CET 2002 - poeml@suse.de
 Sun Jan 27 23:19:14 CET 2002 - ro@suse.de
 
 - remove START_DHCPD on update
-- use fillup_only where no initscript is handled 
+- use fillup_only where no initscript is handled
 
 -------------------------------------------------------------------
 Sun Jan 27 21:08:27 CET 2002 - poeml@suse.de
@@ -2945,7 +2972,7 @@ Tue Jan 15 16:31:35 CET 2002 - poeml@suse.de
 -------------------------------------------------------------------
 Thu Dec 13 00:39:56 CET 2001 - ro@suse.de
 
-- removed START_ variables, moved rc.config.d -> sysconfig 
+- removed START_ variables, moved rc.config.d -> sysconfig
 
 -------------------------------------------------------------------
 Tue Nov  6 13:50:12 CET 2001 - poeml@suse.de
@@ -2994,8 +3021,8 @@ Mon Aug 27 11:43:08 CEST 2001 - poeml@suse.de
 - rc.dhcpd: remove empty pid files to avoid warnings by
   checkproc/killproc (dhcpd sometimes leaves them if it does not
   want to start due to wrong syntax)
-- rc.dhcpd: to save time, source rc.config only when necessary 
-- add dhcpd.conf examples 
+- rc.dhcpd: to save time, source rc.config only when necessary
+- add dhcpd.conf examples
 
 -------------------------------------------------------------------
 Fri Aug 24 02:11:12 CEST 2001 - poeml@suse.de
@@ -3047,7 +3074,7 @@ Fri May 11 12:16:16 CEST 2001 - poeml@suse.de
 Tue May  8 21:37:13 CEST 2001 - poeml@suse.de
 
 - don't provide empty /etc/rc.config.d/dhcpd.rc.config because that
-  inhibits the correct removal of variables from rc.config 
+  inhibits the correct removal of variables from rc.config
 - mention correct version numbers in mail to root (now using
   version macro)
 - fix a typo and a nonsense comment in rc.config.d.dhcpd
@@ -3072,14 +3099,14 @@ Tue Apr 24 16:14:16 CEST 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Sun Apr 15 17:49:53 CEST 2001 - poeml@suse.de
 
-- Init scripts: get try-restart ("restart when running") right 
+- Init scripts: get try-restart ("restart when running") right
 - client:
    - dhclient-script is now correctly installed to /sbin (thus,
      don't mv dhclient-script from /etc/ to /sbin/, thereby
      overwriting it with the one from v2)
    - move rcdhclient conveniency link to /sbin/ (same as in dhcpcd)
    - update info header for resolv.conf acc. to guidelines
-- server: 
+- server:
    - don't run in chroot environment and as nobody by default
    - add missing %postun for subpackages to rearrange runlevel
      links after deinstalling
@@ -3100,9 +3127,9 @@ Wed Mar 28 18:53:35 CEST 2001 - poeml@suse.de
   * build stable version of server (2.0pl5) and include the binary
     as well as the man pages with '-2' suffix (same for dhcrelay)
 - split off subpackages: dhcrelay, dhcp-devel
-- reworked all init scripts 
+- reworked all init scripts
   * adhere to LSB and use new rc.status functions
-  * rc.dhcpd: at start, copy conf file and libs to chroot dir 
+  * rc.dhcpd: at start, copy conf file and libs to chroot dir
   * rc.dhcpd: add syntax check
   * rc.dhcrelay: make interface configurable
   * rc.dhclient: improve resolv.conf handling
@@ -3118,7 +3145,7 @@ Wed Mar 28 18:53:35 CEST 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Fri Mar 16 13:33:30 CET 2001 - poeml@suse.de
 
-- add dhcpd-thomas.diff from <thomas@suse.de> 
+- add dhcpd-thomas.diff from <thomas@suse.de>
   * query for the real UID and not for the effective UID
   * drop supplementary GID's
   * avoid potential buffer overflow
@@ -3130,7 +3157,7 @@ Fri Mar 16 13:33:30 CET 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Wed Jan 31 18:38:23 CET 2001 - poeml@suse.de
 
-- dhcpd.conf will no longer be installed in /etc/ but placed in the 
+- dhcpd.conf will no longer be installed in /etc/ but placed in the
   docdir, since it is a nonfunctional example file
 - test for etc/SuSE-release in %post
 - fix removal of variables from rc.config which failed sometimes
@@ -3139,7 +3166,7 @@ Wed Jan 31 18:38:23 CET 2001 - poeml@suse.de
 -------------------------------------------------------------------
 Mon Jan 29 13:53:38 CET 2001 - poeml@suse.de
 
-- added paranoia patch by Ari Edelkind to allow dhcpd run chrooted 
+- added paranoia patch by Ari Edelkind to allow dhcpd run chrooted
   in /var/lib/dhcp and as nobody/nogroup. Both is optional.
 - moved dhcpd.conf to /var/lib/dhcp/etc/. The file will also be
   moved by %post
@@ -3151,7 +3178,7 @@ Mon Jan 29 13:53:38 CET 2001 - poeml@suse.de
 - removed /var/run/dhcpd.pid from the package
 - tag some %configs with (noreplace)
 - use BuildRoot
-- added "Provides: dhcp2"+"Conflicts: dhcp3" in anticipation of v3 
+- added "Provides: dhcp2"+"Conflicts: dhcp3" in anticipation of v3
 - added {README,LIESMICH}.SuSE and the paranoia patch to the docs
 
 -------------------------------------------------------------------
@@ -3175,16 +3202,16 @@ Thu Jan  4 09:29:22 CET 2001 - fober@suse.de
 -------------------------------------------------------------------
 Wed Nov 29 21:05:35 CET 2000 - poeml@suse.de
 
-- Update to dhcp-2.0pl5.tar.gz 
+- Update to dhcp-2.0pl5.tar.gz
 - This includes a security fix that applies to the DHCP client *only*
 
 -------------------------------------------------------------------
 Tue Nov 28 20:03:14 CET 2000 - poeml@suse.de
 
-- adapted spec file to use /etc/init.d for the scripts instead of 
-  /sbin/init.d and let insserv create the links 
+- adapted spec file to use /etc/init.d for the scripts instead of
+  /sbin/init.d and let insserv create the links
 - extracted source files from diff and placed them separately
-- included paranoia (non-root/chroot) patch by ari edelkind. This 
+- included paranoia (non-root/chroot) patch by ari edelkind. This
   needs testing, and possibly an adapted start script
 
 -------------------------------------------------------------------
@@ -3216,10 +3243,10 @@ Fri Jul 14 16:49:27 CEST 2000 - werner@suse.de
 -------------------------------------------------------------------
 Thu Jul 13 21:41:39 CEST 2000 - zoz@suse.de
 
-- changed test for availability of device in rcdhlient: 
-  now using ifconfig, so automatically loading of modules 
+- changed test for availability of device in rcdhlient:
+  now using ifconfig, so automatically loading of modules
   will be triggered (Bug 3415)
-- patched dhclient.c do to a possible root exploit bug 
+- patched dhclient.c do to a possible root exploit bug
   (patch from Pavel Kankovsky <peak@argo.troja.mff.cuni.cz>)
   Still to be improved, waiting for Ted Lemon to rework it.
 
@@ -3255,7 +3282,7 @@ Thu Jan 27 13:35:46 MET 2000 - grimmer@suse.de
 
 - added "Provides: dhcp_client" and "Conflicts: dhcpcd" to
   dhclient section in spec file
-- added "Provides: dhcp_server" to dhcp section  
+- added "Provides: dhcp_server" to dhcp section
 - corrected typo in rc.config variables
 - added Group Tag and version macro to spec file
 - changed Summary: to "ISC DHCP client"

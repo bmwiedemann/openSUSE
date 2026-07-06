@@ -13,14 +13,11 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
-Type=forking
-Restart=on-abort
-ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -4 start
-ExecStop=@LIBEXECDIR@/dhcp/dhcrelay -4 stop
-PIDFile=/run/dhcrelay.pid
+# end of automatic additions
+Type=exec
+Restart=on-failure
+ExecStart=@LIBEXECDIR@/dhcp/dhcrelay -4
 
 [Install]
 WantedBy=multi-user.target
 Alias=dhcp-relay.service
-

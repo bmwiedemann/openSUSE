@@ -16,7 +16,7 @@
 #
 
 
-%define isc_version   4.4.2-P1
+%define isc_version   4.4.3-P1
 #Compat macro for new _fillupdir macro introduced in Nov 2017
 %if ! %{defined _fillupdir}
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
@@ -32,7 +32,7 @@
 %bcond_with sysusers
 %endif
 Name:           dhcp
-Version:        4.4.2.P1
+Version:        4.4.3.P1
 Release:        0
 Summary:        Common Files Used by ISC DHCP Software
 License:        MPL-2.0
@@ -96,8 +96,6 @@ Patch18:        0018-client-fail-on-script-pre-init-error-bsc-912098.patch
 # PATCH-FIX-SLE dhcp-4.2.4-P1-interval bsc#947780
 Patch20:        0020-dhcp-4.x.x-fixed-improper-lease-duration-checking.patch
 Patch21:        0021-dhcp-ip-family-symlinks.patch
-Patch22:        dhcp-CVE-2022-2928.patch
-Patch23:        dhcp-CVE-2022-2929.patch
 BuildRequires:  automake
 BuildRequires:  dos2unix
 BuildRequires:  libtool
@@ -219,8 +217,6 @@ fi
 %patch -P 18 -p1
 %patch -P 20
 %patch -P 21
-%patch -P 22
-%patch -P 23
 ##
 find . -type f -name \*.cat\* -exec rm -f {} \;
 dos2unix contrib/ms2isc/*

@@ -1298,4 +1298,31 @@ a dhcpv6 server assert crash (bnc#767661), and other bugs
   [bsc#1241472]</comment>
     <requestid>1272454</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>4e6e6fc1e873637ae6610c46bdefa5b4</srcmd5>
+    <version>4.4.3.P1</version>
+    <time>1783333659</time>
+    <user>anag_factory</user>
+    <comment>- Update dhcrelay script and service.
+  Due to some leftover calls to sysvinit tools the script no longer
+  worked. Now the script is a lot leaner and only implements the
+  sysconfig arg parsing and makes it more of a native systemd
+  service.
+  [bsc#1269228]
+
+- Update to version 4.4.3-P1:
+  * Corrected reference count leak in leasequery packets (CVE-2022-2928).
+  * Corrected memory leak in FQDN option unpacking (CVE-2022-2929).
+  * Added OMAPI timed function calls.
+  * Updated BIND libraries to version 9.11.36.
+  * Added support for DHCPv4 option v6-only-preferred (RFC 8925).
+- Drop obsolete patches already included in version 4.4.3-P1:
+  * dhcp-CVE-2022-2928.patch
+  * dhcp-CVE-2022-2929.patch
+- Refresh patches:
+  * 0009-dhcp-4.2.6-close-on-exec.patch
+  * 0015-Expose-next-server-DHCPv4-option-to-dhclient-script.patch
+  * 0016-infiniband-support.patch</comment>
+    <requestid>1363500</requestid>
+  </revision>
 </revisionlist>
