@@ -105,4 +105,12 @@
     GHSA-5gjj-6r7v-ph3x)</comment>
     <requestid>1336314</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f2d8063517a785c943fcbe9ecd8584dd</srcmd5>
+    <version>1.4.0</version>
+    <time>1783333901</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1363835</requestid>
+  </revision>
 </revisionlist>
