@@ -532,4 +532,13 @@
   * Merge metadata changes from upstream 9.0.33</comment>
     <requestid>1362133</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>5ab69db3570d186d48f02d9e54fbba14</srcmd5>
+    <version>9.0.34</version>
+    <time>1783333898</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.0.34:
+  * Merge metadata changes from upstream 9.0.34</comment>
+    <requestid>1363834</requestid>
+  </revision>
 </revisionlist>
