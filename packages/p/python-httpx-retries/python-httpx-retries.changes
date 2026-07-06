@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.0:
+  * Add retry_request and aretry_request helpers that run the
+    retry loop at the client level, so errors raised while
+    reading the response body (ReadTimeout, RemoteProtocolError)
+    are retried too - something RetryTransport cannot do
+  * Add validate_response option on Retry to retry when a
+    callback rejects an otherwise-successful response
+  * Allow overriding the Retry configuration per request via
+    request.extensions["retry"]; the resolved Retry is exposed
+    on response.extensions["retry"] for introspection
+  * Add Retry.copy_with to derive a modified Retry configuration
+  * No breaking changes - the existing API stays compatible
+- Run the upstream test suite in %%check instead of a bare
+  import smoke test
+
+-------------------------------------------------------------------
 Fri Jun 19 06:15:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.5.0)

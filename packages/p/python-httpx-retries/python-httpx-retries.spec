@@ -17,16 +17,18 @@
 
 
 Name:           python-httpx-retries
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        A retry layer for HTTPX
 License:        MIT
 URL:            https://github.com/will-ockmore/httpx-retries
-Source:         https://files.pythonhosted.org/packages/source/h/httpx-retries/httpx_retries-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/h/httpx_retries/httpx_retries-%{version}.tar.gz
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module httpx >= 0.20.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -51,7 +53,7 @@ exponential backoff for transient HTTP errors.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import httpx_retries"
+%pytest tests
 
 %files %{python_files}
 %doc README.md

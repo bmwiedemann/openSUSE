@@ -7,4 +7,12 @@
     <comment>New package, part of the FastMCP stack required by python-bugzilla-mcp (an MCP server for Bugzilla). Maintained in devel:languages:python.</comment>
     <requestid>1360603</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>18b4b07a43accec71a2eade0dd9bac2e</srcmd5>
+    <version>0.6.0</version>
+    <time>1783334088</time>
+    <user>anag_factory</user>
+    <comment>Update to version 0.6.0</comment>
+    <requestid>1363973</requestid>
+  </revision>
 </revisionlist>
