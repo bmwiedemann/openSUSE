@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 03 12:49:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783082953.c3cb41d:
+  * test: Disable unstable `t/28-signalblocker.t` on ppc64le OBS builds
+  * fix: Check also hidden files in checklist plugin
+  * feat(ci): disable Mergify interactive queue controls in PR comments
+  * test: assert pipe size adjustment dynamically
+  * test: assert terminal session boundary safety
+  * refactor: support pretty markers in script_sudo and become_root
+  * fix: mmapi test failures and infinite loop hangs
+  * test: simplify Level 3 pretty marker detection
+  * fix: exclude virt-firmware on all older Leap archs
+
+-------------------------------------------------------------------
 Wed Jul 01 17:56:54 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1782917048.dcc97e9:
