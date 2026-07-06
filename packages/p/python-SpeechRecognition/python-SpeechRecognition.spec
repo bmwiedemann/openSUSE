@@ -24,7 +24,7 @@
 
 %define justpython python
 Name:           python-SpeechRecognition
-Version:        3.16.1
+Version:        3.17.0
 Release:        0
 Summary:        Library for performing speech recognition, with support for several engines
 # Note: The sources include third party code with different licenses.
