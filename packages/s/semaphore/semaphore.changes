@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 06 05:19:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.20:
+  * Bugfixes
+    - Validate playbook path
+- Update to version 2.18.19 (.17 and .18 were not released):
+  This patch release includes several important security and
+  validation fixes.
+  * Security fixes
+    - Added validation for Git repository URLs to prevent Git
+      option injection.
+    - Added --end-of-options to Git commands to make repository URL
+      and branch handling safer.
+    - Fixed branch override handling: task-level Git branch
+      override is now applied only when the template explicitly
+      allows it.
+    - Prevented custom roles from shadowing built-in role slugs
+      such as owner or manager.
+    - Fixed permission resolution so built-in roles always use
+      their built-in permissions instead of database-defined custom
+      roles.
+    - Added validation to prevent access keys from being updated
+      with a different ID or moved to another project.
+  * Reliability and tests
+    - Added tests for Git URL validation and Git command injection
+      protection.
+    - Added tests for access key update validation.
+    - Added tests for custom role validation and reserved role
+      slugs.
+    - Refactored Git branch resolution into a dedicated helper to
+      make task behavior more consistent.
+- Update to version 2.18.16 (.15 was not released):
+  * Bugfixes
+    - Fix variable groups sync functionality
+
+-------------------------------------------------------------------
 Sun Jun 28 07:18:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.13:
