@@ -14,7 +14,8 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
-### MULTIBUILD FLAVOR HANDLING ###
+
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
 %define psuffix -test
@@ -33,7 +34,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-watchfiles%{psuffix}
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        File watching and code reload in python
 License:        MIT

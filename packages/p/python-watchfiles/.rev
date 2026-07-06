@@ -80,4 +80,20 @@
     <comment></comment>
     <requestid>1362612</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1acdb3143f32b7c480c131a753615a91</srcmd5>
+    <version>1.2.0</version>
+    <time>1783333974</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.2.0:
+  * ci: add riscv64 manylinux wheels
+  * fix linting
+  * Add Python 3.15-dev build, drop 3.9, increase MVRV to 1.83
+  * fix: improve type safety and error handling
+  * Ruff target version to 3.10
+  * upgrade uv lock
+
+  can be excluded from the build.</comment>
+    <requestid>1363875</requestid>
+  </revision>
 </revisionlist>

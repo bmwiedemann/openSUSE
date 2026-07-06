@@ -1,8 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 14:51:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * ci: add riscv64 manylinux wheels
+  * fix linting
+  * Add Python 3.15-dev build, drop 3.9, increase MVRV to 1.83
+  * fix: improve type safety and error handling
+  * Ruff target version to 3.10
+  * upgrade uv lock
+
+-------------------------------------------------------------------
 Thu Jun 18 10:55:34 UTC 2026 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - Split test package and use multibuild, so that the test package
-  can be excluded from the build. 
+  can be excluded from the build.
 
 -------------------------------------------------------------------
 Tue Nov  4 13:52:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
