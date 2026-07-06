@@ -18,7 +18,7 @@
 
 %define         short_name openQA
 Name:           %{short_name}-test
-Version:        5.1783076943.6691832d
+Version:        5.1783080295.ebd1693c
 Release:        0
 Summary:        Test package for openQA
 License:        GPL-2.0-or-later

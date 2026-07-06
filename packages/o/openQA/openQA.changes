@@ -1,7 +1,8 @@
 -------------------------------------------------------------------
-Fri Jul 03 11:09:14 UTC 2026 - okurz@suse.com
+Fri Jul 03 12:05:11 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1783076943.6691832d:
+- Update to version 5.1783080295.ebd1693c:
+  * feat: Retry git_clone minion job with exponential backoff
   * test: Stabilize `t/05-scheduler-full.t`
 
 -------------------------------------------------------------------
