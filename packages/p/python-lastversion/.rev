@@ -7,4 +7,29 @@
     <comment>it was here for 5 years</comment>
     <requestid>1343879</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>8050144919f74664806573f1129b72b1</srcmd5>
+    <version>3.6.12</version>
+    <time>1783334084</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.12:
+  * Fixed Docker image publish on release
+  * Moved the `NOSONAR` suppression for the missing `USER`
+    directive off the `FROM` line; BuildKit's frontend rejects
+    trailing inline comments on `FROM`, breaking the `Publish
+    Docker image` workflow in 3.6.11
+  * Fixed `Version` object JSON serialization error when caching
+    release data with dict output format
+  * The `version` field is now serialized to string at the cache
+    layer for both file and Redis backends
+  * This fixes the &quot;Object of type 'Version' is not JSON
+    serializable&quot; warning when running `lastversion --changelog
+    *.spec`
+  * Companion to the 3.6.8 datetime serialization fix; the dict-
+    format path kept `version` as a `Version` instance and
+    tripped the same cache encoder
+
+- Drop python-six dependency (Python 2 no longer supported upstream)</comment>
+    <requestid>1363964</requestid>
+  </revision>
 </revisionlist>

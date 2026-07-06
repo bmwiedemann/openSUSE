@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:26:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.6.12:
+  * Fixed Docker image publish on release
+  * Moved the `NOSONAR` suppression for the missing `USER`
+    directive off the `FROM` line; BuildKit's frontend rejects
+    trailing inline comments on `FROM`, breaking the `Publish
+    Docker image` workflow in 3.6.11
+  * Fixed `Version` object JSON serialization error when caching
+    release data with dict output format
+  * The `version` field is now serialized to string at the cache
+    layer for both file and Redis backends
+  * This fixes the "Object of type 'Version' is not JSON
+    serializable" warning when running `lastversion --changelog
+    *.spec`
+  * Companion to the 3.6.8 datetime serialization fix; the dict-
+    format path kept `version` as a `Version` instance and
+    tripped the same cache encoder
+
+-------------------------------------------------------------------
 Mon Mar 30 23:00:40 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Update to 3.6.10:
@@ -29,7 +49,7 @@ Mon Mar 30 23:00:40 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmai
   * Dropped Python 2 support (3.0.0)
 - Add python-distro dependency (new upstream requirement)
 - Drop python-lockfile dependency (no longer required upstream)
-- Drop python-six dependency (Python 2 no longer supported upstream) 
+- Drop python-six dependency (Python 2 no longer supported upstream)
 
 -------------------------------------------------------------------
 Tue Nov 24 07:54:01 UTC 2020 - John Vandenberg <jayvdb@gmail.com>
