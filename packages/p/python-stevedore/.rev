@@ -608,4 +608,16 @@
   * Remove unused Makefile for doc</comment>
     <requestid>1354106</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>db776f510a6191a1d25b71fe1693d04d</srcmd5>
+    <version>5.9.0</version>
+    <time>1783333927</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.9.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Drop support for Python 3.10</comment>
+    <requestid>1363846</requestid>
+  </revision>
 </revisionlist>
