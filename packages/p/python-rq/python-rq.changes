@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:49:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10:
+  * Added webhook notifications to notify external end points
+    when a job finishes or fails. Thanks @selwin!
+
+-------------------------------------------------------------------
 Sun Jun 14 19:23:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.9.1:

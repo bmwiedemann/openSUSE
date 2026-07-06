@@ -264,4 +264,14 @@
   * job.get_status() will now always return JobStatus enum.</comment>
     <requestid>1359299</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b67f267add3eaf5b0b6472da85b60ec7</srcmd5>
+    <version>2.10</version>
+    <time>1783333930</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10:
+  * Added webhook notifications to notify external end points
+    when a job finishes or fails. Thanks @selwin!</comment>
+    <requestid>1363854</requestid>
+  </revision>
 </revisionlist>
