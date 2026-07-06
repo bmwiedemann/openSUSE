@@ -597,4 +597,23 @@
   + Updated translations.</comment>
     <requestid>1355927</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>9387fd8178716450a01f9247245e79b7</srcmd5>
+    <version>1.9.2</version>
+    <time>1783333633</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9.2:
+  + Build:
+    - Include prebuilt styles again
+    - Resolve locale directory at runtime on Windows
+  + AdwApplication: Speed up initial style loading
+  + AdwStyleManager:
+    - Speed up initial loading
+    - Check GTK version in runtime instead of build time
+  + AdwSwipeTracker: Ignore mostly orthogonal touchpad scrolls
+  + AdwViewSwitcherSidebar: Fix a leak
+  + Stylesheet: Fix a copypaste error
+  + Updated translations.</comment>
+    <requestid>1362912</requestid>
+  </revision>
 </revisionlist>
