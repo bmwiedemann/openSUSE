@@ -8,7 +8,7 @@ Index: b/CMakeLists.txt
 ===================================================================
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -9,12 +9,7 @@ set(COMPILE_OPTIONS)
+@@ -9,13 +9,7 @@ set(COMPILE_OPTIONS)
  if(MSVC)
    set(COMPILE_DEFINITIONS /O2 /fp:fast)
  else()
@@ -16,7 +16,8 @@ Index: b/CMakeLists.txt
 -  if(EMSCRIPTEN)
 -    list(APPEND COMPILE_OPTIONS -O3)
 -  else()
--    list(APPEND COMPILE_OPTIONS -Ofast)
+-    # Apply -ffast-math to allow compiler autovectorization generate effective SIMD code for arm compilation
+-    list(APPEND COMPILE_OPTIONS -O3 -ffast-math)
 -  endif()
 +  list(APPEND COMPILE_OPTIONS -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas -O2)
  endif()
@@ -26,11 +27,11 @@ Index: b/configure.ac
 ===================================================================
 --- a/configure.ac
 +++ b/configure.ac
-@@ -33,7 +33,7 @@ AC_LANG(C++)
+@@ -32,7 +32,7 @@ AC_DISABLE_STATIC	dnl This makes libtool
+ AC_LANG(C++)
  
- # Compiler flags. Apply -Ofast (implies -O3 -ffast-math) to allow gcc autovectorization
- # generate effective SIMD code.
--CXXFLAGS="${CXXFLAGS} -Ofast -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas"
+ # Compiler flags. Apply -ffast-math to allow compiler autovectorization generate effective SIMD code for arm compilation
+-CXXFLAGS="${CXXFLAGS} -O3 -ffast-math -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas"
 +CXXFLAGS="${CXXFLAGS} -O2 -Wall -Wextra -Wzero-as-null-pointer-constant -Wno-unknown-pragmas"
  
  # Set AR_FLAGS to avoid build warning "ar: `u' modifier ignored since `D' is the default (see `U')"

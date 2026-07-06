@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jun 28 17:53:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.1:
+  * Fix buffer overflow when processing >16 channels
+  * fix: fix unused variables in DLMain
+  * fix: fix warning for unused peaklevel in release mode
+
+-------------------------------------------------------------------
+Thu Sep 18 13:22:27 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 2.4.0:
+  * Set CMake minimum version to 3.5 to avoid deprecation warning
+  * Increase max nr. of channels from 16 to 32
+  * Don't use `pow()` when using integer precision samples
+  * Replace `-Ofast` that's being deprecated in some compilers, by
+    `-O3 -ffast-math`
+- Refresh disable-ffast-math.patch
+
+-------------------------------------------------------------------
 Tue May 14 16:11:11 UTC 2024 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 2.3.3:
@@ -16,12 +35,12 @@ Mon Feb 26 13:42:21 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 Mon Jan  2 19:48:21 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.2:
-  * autotools improvements 
+  * autotools improvements
 
 -------------------------------------------------------------------
 Sun Sep 11 08:55:11 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
-- add disable-ffast-math.patch 
+- add disable-ffast-math.patch
 
 -------------------------------------------------------------------
 Sun Dec  5 19:18:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
@@ -49,12 +68,12 @@ Sun Dec  5 19:18:19 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Sun Jan 24 19:32:56 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
-  * Improvements to help compiler autovectorization  
+  * Improvements to help compiler autovectorization
   * Bugfix in integer version of calcCrossCorrAccumulate()
   * Compensate initial buffering of anti-alias filter and intepolator.
   * Tuning for ARM NEON
-  * BPMDetect: Make conversion from size_t to int explicit 
-  * BPM PeakFinder: Fix possible reading past end of array. 
+  * BPMDetect: Make conversion from size_t to int explicit
+  * BPM PeakFinder: Fix possible reading past end of array.
   * Change correlation loop 'sum' variable type from double to float
 
 -------------------------------------------------------------------
@@ -66,20 +85,20 @@ Wed Aug 14 08:01:43 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
 Fri Dec  7 12:57:44 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.1.2
-  * Bugfixes: Fixed potential buffer overwrite bugs in WavFile routines. 
+  * Bugfixes: Fixed potential buffer overwrite bugs in WavFile routines.
     Replaced asserts with runtime exceptions. (CVE-2018-17097, bsc#1108632)
-  * Automake: unset ACLOCAL in bootstrap script to avoid error in case 
+  * Automake: unset ACLOCAL in bootstrap script to avoid error in case
     earlier build script has set it
 
 -------------------------------------------------------------------
 Mon Oct 29 09:31:51 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
 - Update to version 2.1.0
-  * Disable anti-alias filter when switch 
+  * Disable anti-alias filter when switch
     SOUNDTOUCH_PREVENT_CLICK_AT_RATE_CROSSOVER defined
-  * Added script for building SoundTouchDll dynamic-link-library for 
+  * Added script for building SoundTouchDll dynamic-link-library for
     GNU platforms
-  * Rewrote Beats-per-Minute analysis algorithm for more reliable 
+  * Rewrote Beats-per-Minute analysis algorithm for more reliable
     BPM detection
   * Added BPM functions to SoundTouchDll API
   * Migrated Visual Studio project files to MSVC 201x format
@@ -87,7 +106,7 @@ Mon Oct 29 09:31:51 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 - Fixed bugs:
   * CVE-2018-17098 (bsc#1108632) -- remote denial of service
   * CVE-2018-17097 (bsc#1108631) -- remote denial of service (double free)
-  * CVE-2018-17096 (bsc#1108630) -- remote denial of service 
+  * CVE-2018-17096 (bsc#1108630) -- remote denial of service
     in BPMDetect.cpp
   * boo#1113134 -- out of date package
 - Removed obsolete patch fix-buffer-overflow.patch
@@ -95,7 +114,7 @@ Mon Oct 29 09:31:51 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 -------------------------------------------------------------------
 Thu Sep  6 12:29:20 UTC 2018 - Marketa Calabkova <mcalabkova@suse.com>
 
-- bsc #1103676: CVE-2018-1000223: soundtouch: Heap-based buffer overflow 
+- bsc #1103676: CVE-2018-1000223: soundtouch: Heap-based buffer overflow
   added patch fix-buffer-overflow.patch
 
 -------------------------------------------------------------------
@@ -167,11 +186,11 @@ Wed Mar 25 16:32:26 UTC 2015 - p.drouand@gmail.com
 - Update to version 1.8.0
   * Added support for multi-channel audio processing
   * Added support for cubic and shannon interpolation for rate and
-    pitch shift effects besides the original linear interpolation, 
-    to reduce aliasing at high frequencies due to interpolation. 
+    pitch shift effects besides the original linear interpolation,
+    to reduce aliasing at high frequencies due to interpolation.
     Cubic interpolation is used as default for floating point processing,
     and linear interpolation for integer processing.
-  * Fixed bug in anti-alias filtering that limited stop-band attenuation 
+  * Fixed bug in anti-alias filtering that limited stop-band attenuation
     to -10 dB instead of <-50dB, and increased filter length from 32 to 64
     taps to further reduce aliasing due to frequency folding.
   * Performance improvements in cross-correlation algorithm
@@ -182,7 +201,7 @@ Wed Mar 25 16:32:26 UTC 2015 - p.drouand@gmail.com
 Fri Jan 25 21:39:25 CET 2013 - sbrabec@suse.cz
 
 - Update to version 1.7.1:
-  * Added files for Android compilation 
+  * Added files for Android compilation
   * Sound quality improvements
   * Improved flush() to adjust output sound stream duration to
     match better with ideal duration
@@ -205,7 +224,7 @@ Sun Nov 20 06:28:55 UTC 2011 - coolo@suse.com
 Wed Aug 10 22:23:19 UTC 2011 - ampsaltis@gmail.com
 
 - New upstream version 1.6.0.
-- Changes: 
+- Changes:
   * Added automatic cutoff threshold adaptation to beat detection
      routine to better adapt BPM calculation to different types of
      music
@@ -226,7 +245,7 @@ Wed Aug 10 22:23:19 UTC 2011 - ampsaltis@gmail.com
 
 -------------------------------------------------------------------
 Fri Apr 14 13:38:21 UTC 2011 - toddrme2178@gmail.com
-   
+
 - added 32bit compatibility libraries
 
 -------------------------------------------------------------------
@@ -284,7 +303,7 @@ Thu May  7 18:36:09 CEST 2009 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Sat Apr  4 16:43:50 CEST 2009 - crrodriguez@suse.de
 
-- use --enable-shared and disable static libraries 
+- use --enable-shared and disable static libraries
 
 -------------------------------------------------------------------
 Thu Nov 22 13:10:58 CET 2007 - tiwai@suse.de
