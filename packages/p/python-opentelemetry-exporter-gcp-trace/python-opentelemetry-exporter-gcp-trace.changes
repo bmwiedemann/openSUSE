@@ -1,10 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 09:15:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.12.0:
+  * no changes
+
+-------------------------------------------------------------------
 Mon May  4 13:48:23 UTC 2026 - Christian Goll <cgoll@suse.com>
 
-- alligned BuildRequires and Requires with setup.cfg 
+- alligned BuildRequires and Requires with setup.cfg
 
 -------------------------------------------------------------------
 Tue Apr 28 14:06:59 UTC 2026 - Christian Goll <cgoll@suse.com>
 
--  initial commit of python-opentelemetry-exporter-gcp-trace 1.11.0   
+-  initial commit of python-opentelemetry-exporter-gcp-trace 1.11.0
    the Google Cloud Trace exporter for OpenTelemetry

@@ -7,4 +7,16 @@
     <comment>needed for python-google-adk</comment>
     <requestid>1353425</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6014bde7db336b4c22b53efaea7f999f</srcmd5>
+    <version>1.12.0</version>
+    <time>1783333911</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.12.0:
+  * no changes
+
+- alligned BuildRequires and Requires with setup.cfg
+-  initial commit of python-opentelemetry-exporter-gcp-trace 1.11.0</comment>
+    <requestid>1363830</requestid>
+  </revision>
 </revisionlist>

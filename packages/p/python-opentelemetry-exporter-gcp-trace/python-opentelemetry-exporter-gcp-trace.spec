@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-gcp-trace
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Google Cloud Trace exporter for OpenTelemetry
 License:        Apache-2.0
