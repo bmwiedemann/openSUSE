@@ -15,4 +15,17 @@
     <comment>Update python-rich-rst to 2.0.2: fix incorrect bullet-list rendering</comment>
     <requestid>1362570</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>10230ab70367616c1c1b467bc48a316e</srcmd5>
+    <version>2.1.0</version>
+    <time>1783333893</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2.1.0
+
+- Add -S/--save-html and -d/--debug CLI flags
+- Improved error messages and help text
+- Expanded test coverage and CI automation
+- No runtime dependency changes</comment>
+    <requestid>1363829</requestid>
+  </revision>
 </revisionlist>
