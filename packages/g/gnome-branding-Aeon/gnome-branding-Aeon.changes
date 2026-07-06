@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:43:52 UTC 2026 - Richard Brown <rbrown@suse.com>
+
+- Demote ptyxis from default installation 
+
+-------------------------------------------------------------------
 Wed Sep 24 08:14:35 UTC 2025 - Richard Brown <rbrown@suse.com>
 
 - Disable wall messages in logind (gh#AeonDesktop/project#8) 

@@ -125,4 +125,12 @@
     <comment>- Disable wall messages in logind (gh#AeonDesktop/project#8)</comment>
     <requestid>1306855</requestid>
   </revision>
+  <revision rev="14" vrev="14">
+    <srcmd5>88a35c04148fe31a207bded95faef332</srcmd5>
+    <version>20231005</version>
+    <time>1783334147</time>
+    <user>anag_factory</user>
+    <comment>- Demote ptyxis from default installation</comment>
+    <requestid>1364015</requestid>
+  </revision>
 </revisionlist>

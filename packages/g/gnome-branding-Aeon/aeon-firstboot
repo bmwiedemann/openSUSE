@@ -40,8 +40,8 @@ customizeOptions() {
 TRUE org.mozilla.firefox "Mozilla Firefox" "Default Web Browser" \
 TRUE org.gnome.Calculator "Calculator" "Basic Calculator" \
 TRUE org.gnome.TextEditor "Text Editor" "Basic Text Editor" \
-TRUE app.devsuite.Ptyxis "Ptyxis" "Advanced Terminal Emulator" \
 TRUE page.tesk.Refine "Refine" "Tweak advanced settings in GNOME" \
+FALSE app.devsuite.Ptyxis "Ptyxis" "Advanced Terminal Emulator" \
 FALSE com.mattjakeman.ExtensionManager "Extension Manager" "Shell Extensions Manager" \
 FALSE com.github.tchx84.Flatseal "Flatseal" "Application Permissions Manager" \
 FALSE com.valvesoftware.Steam "Steam" "Steam Games Launcher" \
