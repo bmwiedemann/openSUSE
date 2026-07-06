@@ -933,4 +933,12 @@ Currently, openSUSE:Factory:Staging:E.
     <comment></comment>
     <requestid>1353421</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>1c39fcc5ee588af254a6bc2403e8331b</srcmd5>
+    <version>0.3.33</version>
+    <time>1783333625</time>
+    <user>anag_factory</user>
+    <comment>Correct file listing and update-alternative paths</comment>
+    <requestid>1363694</requestid>
+  </revision>
 </revisionlist>

@@ -7,18 +7,60 @@ openSUSE provides three variants:
  * With OpenMP support (libopenblas_openmp0)
  * With threading support (libopenblas_pthreads0)
 
-By defult openSUSE uses pthreads version on x86 systems and OpenMP
+By default openSUSE uses pthreads version on x86 systems and OpenMP
 for other architectures. On x86 systems OpenBLAS uses dynamic
 architectures support, so it contains all CPU-related optimizations.
 
+Library Installation Locations
+===============================
+
+Starting with version 0.3.31, OpenBLAS libraries are installed in
+flavor-specific directories to allow parallel installation:
+
+ * /usr/lib64/openblas-serial/    (serial flavor)
+ * /usr/lib64/openblas-openmp/    (OpenMP flavor)
+ * /usr/lib64/openblas-pthreads/  (pthreads flavor)
+
+Each directory contains:
+ * libopenblas.so.0 - The actual library
+ * pkgconfig/openblas.pc - pkg-config file pointing to this flavor
+ * cmake/openblas/ - CMake configuration files for this flavor
+
+The system-wide /usr/lib64/pkgconfig/openblas.pc and
+/usr/lib64/cmake/openblas links point directly to the flavor-specific
+files, ensuring consistent library usage.
+
+Update-Alternatives Support (Compatibility)
+============================================
+
+For backward compatibility, compatlib packages are available:
+ * compatlibopenblas_serial0
+ * compatlibopenblas_openmp0
+ * compatlibopenblas_pthreads0
+
+These packages use update-alternatives to provide the traditional
+/usr/lib64/libblas.so.3 and /usr/lib64/liblapack.so.3 symlinks.
+
+When upgrading from OpenBLAS 0.3.30 or newer, the compatlib packages
+are automatically installed to maintain compatibility with existing
+setups. For new installations, they are optional.
+
 How to switch between the various BLAS/LAPACK implementations
 =============================================================
+
+If you have a compatlib package installed, you can switch implementations:
 
 BLAS:
  sudo /usr/sbin/update-alternatives --config libblas.so.3
 
 LAPACK:
  sudo /usr/sbin/update-alternatives --config liblapack.so.3
+
+OpenBLAS default flavor:
+ sudo /usr/sbin/update-alternatives --config openblas-default
+
+Note: The compatlib packages are incompatible with transactional
+enabled OS installations.
 
 More information is available at:
 

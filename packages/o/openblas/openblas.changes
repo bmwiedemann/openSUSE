@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Tue Jun 30 06:48:59 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- disable tests for i586 as sblat tests fail
+
+-------------------------------------------------------------------
+Fri Jun 12 14:55:50 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Added compatlib packages (compatlibopenblas_serial0, compatlibopenblas_openmp0,
+  compatlibopenblas_pthreads0) that provide update-alternatives support for
+  backward compatibility (bsc#1268086) (bsc#1268086)
+- Compatlib packages are automatically installed via Supplements when upgrading
+  from OpenBLAS >= 0.3.30 to maintain existing update-alternatives configurations
+- The main library packages no longer require update-alternatives, making them
+  suitable for transactional systems. Users who need update-alternatives support
+  can explicitly install the compatlib packages
+- Fixed pkgconfig and cmake symlinks to point directly to flavor-specific
+  directories (e.g., /usr/lib64/openblas-openmp/) instead of through
+  update-alternatives, ensuring consistent library resolution
+- Updated README.SUSE to document the new packaging structure and compatlib usage
+
+- Update to version 0.3.33
+  general:
+  * fixed incorrect cast in SBGEMM test case causing spurious failures
+  * fixed invalid memory access in converted C CBLAS tests
+  * made BIGNUMA setting automatic when cores exceed 256
+  * imported recent Reference-LAPACK 3.13.0 updates including:
+    - implemented LARF1F and ORM2R functions
+    - changed loop order in GETC2 for better performance
+    - added NaN checks for input matrix A in GEEV
+    - fixed support for jobu/v in LAPACKE_GESVDQ_WORK
+    - fixed workspace size calculation in TGSEN
+    - optimized looping in LACPY/LASCL/LANTR with fat matrix and UPLO=L
+  arm64:
+  * worked around serious GCC15 miscompilation of DDOT kernel affecting most non-SVE targets
+  * fixed accuracy issue in GEMV kernel for Neoverse V1 and SVE targets
+  * fixed broken STRMM and SSYMM in DYNAMIC_ARCH builds on non-SME hardware
+  * added optimized SHGEMM kernel for Neoverse N2
+  * added autodetection of Cortex A75/A76 and Neoverse V3
+  loongarch64:
+  * fixed build failure from missing half-precision float type support
+  * fixed long-standing bug in asserting 64bit capability in c_check helper
+  x86_64:
+  * added workaround for LLVM miscompilation of AVX512 GEMM kernels
+  * fixed CMake compilation with NVIDIA HPC compiler
+
+- Update to version 0.3.32
+  general:
+  * fixed LAPACK GESV reimplementation to compute LU factorization even when NRHS is zero
+  * improved error message when compile-time buffer allocation exceeded
+  * fixed non-serialized access problem in parallelized SYRK by concurrent callers
+  * fixed ABI mismatch in internal CDOT/ZDOT version used by C fallback LAPACK
+  * improved f_check script for detecting Fortran compiler with embedded dashes in paths
+  * fixed memory access issues in utests detected by Address Sanitizer
+  * fixed Makefile errors when only subset of precision types selected
+  * fixed OpenMP compiler option for Intel Ifx compiler
+  arm64:
+  * fixed potential miscompilation of SDOT/DDOT/DSDOT kernels
+  * improved BGEMM and SBGEMM kernel performance for Neoverse V2
+  * added optimized SSUM and DSUM kernels for Neoverse N1
+  * added preliminary Neoverse V3 support as NEOVERSEV2
+  * added cpu autodetection for Cortex A725 and X925
+  * fixed compilation of GEMM kernels for VORTEXM4/ARMV9SME without multithreading
+  loongarch64:
+  * fixed POTRF returning wrong results on LA464 from incorrect parameter setting
+  power:
+  * fixed compilation problems from missing half-precision float support
+  * fixed potential POWER10 DGEMV kernel miscompilation by limiting optimization level
+  * fixed SCAL issue on PPCG4/PPC970 running Linux
+  riscv64:
+  * optimized CROT/ZROT kernel for vector length 128 in non-unit stride path
+  * improved SBGEMM/SHGEMM and related type conversion helper functions
+  * fixed probing for BFLOAT16 support in DYNAMIC_ARCH cpu detection
+  x86_64:
+  * fixed potential gcc 15.x miscompilation of AVX512 SGEMM kernel for small sizes
+  * fixed SROT and DROT kernels for Haswell to have consistent FMA rounding
+  * added automatic detection of Intel Arrow Lake H/U, Panther Lake, and Jasper Lake
+  * added detection of Intel Emerald Rapids and upcoming models
+  * updated cache size translation table in cpu model autodetection
+  * improved cpu detection fallback to include Nehalem as non-AVX option
+  * fixed Makefile build issue with clang and SkylakeX SGEMM kernel
+
+- Update to version 0.3.31
+  general:
+  * reverted matrix partitioning optimization from 0.3.30 that could cause race conditions in GEMM
+  * added bfloat16 extensions BGEMM and BGEMV
+  * added BLAS interface for GEMM_BATCH extensions
+  * added GEMM_BATCH_STRIDED extensions and CBLAS interface
+  * added basic infrastructure for half-precision float (FP16) format using SH prefix
+  * reimplemented LAPACK SLAED3/DLAED3 using multithreading, improving SSYEVD/DSYEVD performance
+  * limited memory allocation retries to avoid infinite hanging on low-memory systems
+  * fixed thread lockup with python 3.9 or older and numpy
+  * introduced problem size thresholds for multithreading in STRMV/DTRMV, CHER/ZHER functions, and SGER/DGER
+  * improved autodetection of Fortran compiler
+  * fixed INTERFACE64=1 option passing to flang-new compiler
+  * fixed potential deadlock after fork() in multithreaded code
+  * fixed CMake builds on FreeBSD and from Cygwin
+  * fixed cross-compilation to RISCV targets via CMake
+  * fixed installation of cblas.h when NO_CBLAS=0
+  * fixed missing user-defined pre/postfixes on functions in lapack.h and lapacke.h
+  arm64:
+  * building BFLOAT16 kernels now enabled by default
+  * improved overall GEMM, SYMM and HEMM performance on A64FX
+  * improved SDOT/DDOT performance on A64FX
+  * improved multithreading performance of SDOT/DDOT on A64FX via throttling table
+  * improved SGER/DGER performance on A64FX and NEOVERSEV1
+  * improved multithreading GEMM performance on A64FX and NEOVERSEV1
+  * improved GEMV kernel for SVE-capable targets
+  * improved multithreading SGEMM on NEOVERSEV1 and V2
+  * added optimized SAXPY/DAXPY SVE kernels for A64FX and NEOVERSEV1
+  * added optimized BGEMM and BGEMV kernels for NEOVERSEV1
+  * added optimized BGEMM kernel for NEOVERSEN2
+  * added support for NEOVERSEV2 cpu
+  * added dedicated Apple M4 support as VORTEXM4
+  * added optimized SGEMM/SSYMM/STRMM/SSYRK/SSYR2K for SME-capable targets
+  * improved SNRM2 kernel precision
+  * added cpu autodetection and compiler settings for Ampere One processors
+  loongarch64:
+  * fixed warnings and inaccuracies from incorrect register saving
+  * fixed logical core enumeration on big NUMA servers
+  * fixed building with LLVM and INTERFACE64=1 option
+  power:
+  * added initial POWER11 architecture support
+  * improved DGEMM and DGEMV performance on POWER10
+  * fixed default compiler flags to use "-O3" instead of unsafe "-Ofast"
+  * fixed potential gcc15.1 miscompilation of DGEMV and assembly kernels
+  * fixed compilation with recent flang versions
+  riscv64:
+  * added optimized SBGEMM kernels for ZVL128B and ZVL256B targets
+  * added optimized SHGEMM kernels for ZVL128B and ZVL256B
+  * added optimized SBGEMV and SHGEMV kernels
+  * improved GEMV kernel performance for ZVL256B
+  * improved CROT and ZROT kernel performance for ZVL128B and x280
+  * improved RVV1.0 capability detection
+  * improved matrix packing helper functions for ZVL128B and ZVL256B
+  * improved OMATCOPY performance
+  x86_64:
+  * added cpu autodetection for Intel Lunar Lake (Core Ultra 200V)
+  * changed all MIN and MAX assembly kernels to use unaligned operations
+  zarch:
+  * added support for building with CMake
+
+-------------------------------------------------------------------
 Mon May 11 15:23:19 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Run test_sbgemm only if it was built
