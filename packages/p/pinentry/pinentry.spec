@@ -29,7 +29,7 @@
 %bcond_without fltk
 %bcond_without efl
 Name:           pinentry%{?nsuffix}
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        Collection of Simple PIN or Passphrase Entry Dialogs
 License:        GPL-2.0-or-later
