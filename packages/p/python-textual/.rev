@@ -171,4 +171,22 @@
   * `App.ansi_color` may now be `None` to use the `ansi` value</comment>
     <requestid>1354118</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a911e295af7de896b8a75f047d8cfd71</srcmd5>
+    <version>8.2.8</version>
+    <time>1783333970</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.2.8:
+  * Fixes for extended key processing, and a crash bug for
+    clicking the screen padding area.
+  * Fixed parsing Kitty extended keys with multiple codepoints
+    https://github.com/Textualize/textual/pull/6592
+  * Fixed crash when clicking in the Screen's padding
+    https://github.com/Textualize/textual/pull/6598
+  * super+backspace is now an alias for ctrl+u in Input and
+    TextArea https://github.com/Textualize/textual/pull/6594
+  * alt+backspace (option+backspace on Mac) has the same effect
+    as ctrl+backspace in Input and TextArea</comment>
+    <requestid>1363872</requestid>
+  </revision>
 </revisionlist>

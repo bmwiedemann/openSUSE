@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-textual%{psuffix}
-Version:        8.2.7
+Version:        8.2.8
 Release:        0
 Summary:        TUI framework for Python
 License:        MIT

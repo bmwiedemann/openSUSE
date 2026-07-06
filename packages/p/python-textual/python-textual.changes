@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:44:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 8.2.8:
+  * Fixes for extended key processing, and a crash bug for
+    clicking the screen padding area.
+  * Fixed parsing Kitty extended keys with multiple codepoints
+    https://github.com/Textualize/textual/pull/6592
+  * Fixed crash when clicking in the Screen's padding
+    https://github.com/Textualize/textual/pull/6598
+  * super+backspace is now an alias for ctrl+u in Input and
+    TextArea https://github.com/Textualize/textual/pull/6594
+  * alt+backspace (option+backspace on Mac) has the same effect
+    as ctrl+backspace in Input and TextArea
+
+-------------------------------------------------------------------
 Tue May 19 21:42:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.7:
