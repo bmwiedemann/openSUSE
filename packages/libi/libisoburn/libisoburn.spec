@@ -1,7 +1,7 @@
 #
 # spec file for package libisoburn
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define so_ver 1
 Name:           libisoburn
-Version:        1.5.6
+Version:        1.5.8
 Release:        0
 Summary:        Frontend for libburn and libisofs
 License:        GPL-2.0-or-later
@@ -27,12 +27,12 @@ URL:            https://libburnia-project.org/
 Source0:        https://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz
 Source1:        https://files.libburnia-project.org/releases/%{name}-%{version}.tar.gz.sig
 # keyring from https://dev.lovelyhq.com/libburnia/web/wiki/Releases
-Source10:       keyring.asc
+Source10:       libisoburn.keyring
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  libacl-devel
-BuildRequires:  libburn-devel
-BuildRequires:  libisofs-devel
+BuildRequires:  libburn-devel >= %{version}
+BuildRequires:  libisofs-devel >= %{version}
 BuildRequires:  libjte-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
@@ -50,9 +50,9 @@ ISO-9660 sessions.
 %package devel
 Summary:        Development Files for libburn
 Group:          Development/Libraries/C and C++
-Requires:       libburn-devel
+Requires:       libburn-devel >= %{version}
 Requires:       libisoburn%{so_ver} = %{version}
-Requires:       libisofs-devel
+Requires:       libisofs-devel >= %{version}
 # libburnia-devel was last used in version 1.4.0
 Provides:       libburnia-devel = %{version}
 Obsoletes:      libburnia-devel < %{version}
@@ -77,7 +77,7 @@ ISO-9660 sessions.
 Summary:        ISO 9660 Rock Ridge Filesystem Manipulator
 Group:          Productivity/Multimedia/CD/Record
 Requires(post): info
-Requires(preun):info
+Requires(preun): info
 # libburnia-tools was last used in version 1.4.0
 Provides:       libburnia-tools = %{version}
 Obsoletes:      libburnia-tools < %{version}
@@ -166,6 +166,7 @@ cp -a doc/html/ %{buildroot}%{_docdir}/%{name}-devel/
 %files -n xorriso
 %license COPYING
 %doc COPYRIGHT
+%doc xorriso/changelog.txt
 %doc doc/{qemu_xorriso.wiki,startup_file.txt}
 %doc xorriso/README_gnu_xorriso
 %{_bindir}/osirrox

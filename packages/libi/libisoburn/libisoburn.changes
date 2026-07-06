@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Apr 10 22:02:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.8:
+  * Bug fix: -boot_image and -append_partition were not perceived as image
+             manipulation which makes production of an ISO image worthwhile.
+             Thanks Cameron Seader.
+  * Bug fix: -outdev holding an ISO filesystem could get attached wrong start LBA
+  * Bug fix: Command -load "volid" did not work with constant search text
+  * Bug fix: Command -truncate_overwritable on ISO image without MD5 caused
+             double free of memory
+  * Bug fix: -boot_image "any" "replay" failed after the legacy BIOS boot image
+             file was replaced by -map. Thanks Brian C. Lane.
+  * Bug fix: -boot_image system_area=/dev/zero preserved system area of
+             loaded ISO
+  * Bug fix: Size assessment of ISO images smaller than 32 KiB yielded
+             random values
+  * Bug fix: -extract_boot_images reports "No such file or directory" when
+             complaining over an existing target file
+  * Bug fix: Reproducibility of ISO images depended on "undefined" qsort(3)
+             behavior with comparer function result 0.
+             Report and fix proposal by Henrik Lindström.
+  * Bug fix: ATA and SATA drives on modern Linux refused to perform -rollback
+             with -scsi_dev_family "sg" because libburn registered them as ATA
+             without SCSI adress tuple
+  * Bug fix: Symbolic links with xattr could cause unusable ISO filesystems.
+             Thanks Paul von Behren.
+  * Bug fix: When reading multiple slashes in symbolic link targets from an ISO
+             they were condensed to a single one if not marked by the
+             SL ROOT-flag. Thanks Jonas 'Sortie' Termansen.
+  * Bug fix: Empty symbolic link target components which represent add-on
+             slashes were written with ROOT flag set.
+             Thanks Jonas 'Sortie' Termansen.
+  * Bug fix: The last trailing slash in a symbolic link target was not written.
+             Thanks Jonas 'Sortie' Termansen.
+  * Bug fix: The .. directory record exposed Rock Ridge properties of its
+             grand grand parent. Caused by commit 4d0063f7 in 2009 which fixed
+             the block address pointer of the .. record.
+  * New command -volid_for and -as mkisofs option -volid_for.
+  * New command -perform_opc
+  * New -as cdrecord options --perform_opc and --perform_opc_growisofs
+
+-------------------------------------------------------------------
 Wed Aug 30 09:26:32 UTC 2023 - Adam Majer <adam.majer@suse.de>
 
 - update to 1.5.6: (jsc#PED-5018)
@@ -67,7 +109,7 @@ Tue Feb 23 19:20:47 UTC 2021 - Dirk Müller <dmueller@suse.com>
     isoburn_ropt_map_joliet_unmapped
   * New command -joliet_map
   * New command -extract_boot_images
-  * New API call isoburn_ropt_get_tree_loaded() 
+  * New API call isoburn_ropt_get_tree_loaded()
 
 -------------------------------------------------------------------
 Thu Aug 20 13:42:11 UTC 2020 - Dirk Mueller <dmueller@suse.com>
@@ -241,20 +283,20 @@ Mon May 25 17:48:53 UTC 2015 - asterios.dramis@gmail.com
 Sun Mar  8 13:55:23 UTC 2015 - mpluskal@suse.com
 
 - Update to 1.3.8
-  * Bug fix: -boot_image grub grub2_mbr= did not work (but -as 
+  * Bug fix: -boot_image grub grub2_mbr= did not work (but -as
     mkisofs --grub2-mbr did work)
-  * Bug fix: -boot_image grub2_mbr= prevented -boot_image 
+  * Bug fix: -boot_image grub2_mbr= prevented -boot_image
     partition_table=on
-  * Bug fix: libburn: A final fsync(2) was performed with stdio 
+  * Bug fix: libburn: A final fsync(2) was performed with stdio
     drives, even if -stdio_sync was set to "off".
-  * Bug fix: libburn: Wrong stack usage caused SIGBUS on sparc 
+  * Bug fix: libburn: Wrong stack usage caused SIGBUS on sparc
     when compiled by gcc -O2
   * Bug fix: -blank force:all on DVD+RW had no effect
   * Enabled use of libedit as alternative to libreadline
   * Enabled recording and restoring of extattr on NetBSD
-  * New API calls isoburn_igopt_set_stdio_endsync() and 
+  * New API calls isoburn_igopt_set_stdio_endsync() and
     isoburn_igopt_get_stdio_endsync
-  * New bootspecs hppa_*, new -as mkisofs options -hppa-* for 
+  * New bootspecs hppa_*, new -as mkisofs options -hppa-* for
     HP-PA via PALO
   * New -find pseudo tests -use_pattern , -or_use_pattern
   * New -find action report_sections
@@ -265,7 +307,7 @@ Sun Mar  8 13:55:23 UTC 2015 - mpluskal@suse.com
 Sat May 31 22:48:33 UTC 2014 - asterios.dramis@gmail.com
 
 - Update to version 1.3.6.pl01:
-  * Bug fix: Command -status produced FAILURE event if no drive was acquired. 
+  * Bug fix: Command -status produced FAILURE event if no drive was acquired.
     This is a regression introduced by release 1.3.6.
   From version 1.3.6:
   libisoburn and xorriso:
@@ -365,7 +407,7 @@ Sun May 26 21:19:38 UTC 2013 - gber@opensuse.org
   * New -boot_image bootspec grub2_sparc_core=
   * New -as mkisofs options --grub2-mbr , --grub2-boot-info ,
     --grub2-sparc-core
-  * New -hardlinks mode "lsl_count" / "no_lsl_count" 
+  * New -hardlinks mode "lsl_count" / "no_lsl_count"
 
 -------------------------------------------------------------------
 Tue Mar 26 15:18:24 UTC 2013 - gber@opensuse.org

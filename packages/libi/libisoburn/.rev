@@ -108,4 +108,12 @@
   * New flag bit12 with isoburn_read_iso_head():</comment>
     <requestid>1108112</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8bc181a84a88269bbe8b5ecbe4d19816</srcmd5>
+    <version>1.5.8</version>
+    <time>1783333682</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363639</requestid>
+  </revision>
 </revisionlist>
