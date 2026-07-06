@@ -119,4 +119,12 @@
     <comment>3.30.15 with security fixes</comment>
     <requestid>1362999</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>67afa0f30e6b8c2d4322a328f3f6db57</srcmd5>
+    <version>3.30.15</version>
+    <time>1783334009</time>
+    <user>anag_factory</user>
+    <comment>Add bug number</comment>
+    <requestid>1363904</requestid>
+  </revision>
 </revisionlist>
