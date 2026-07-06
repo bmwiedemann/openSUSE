@@ -18,7 +18,7 @@
 %global soversion 0
 
 Name:           sso-mib
-Version:        0.9.0
+Version:        0.10.0
 Release:        1%{?dist}
 Summary:        Tools and library for Single-Sign-On with CA for Entra via Himmelblau
 
@@ -34,6 +34,10 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libjwt)
 BuildRequires:  pkgconfig(uuid)
+%if 0%{?fedora} || 0%{?rhel_version} || 0%{?centos_version}
+# Needed for the unit tests
+BuildRequires:  dbus-daemon
+%endif
 
 %description
 Applications can link with this library to get Entra Conditional Access tokens
@@ -117,9 +121,11 @@ on O365.
 %files -n sso-mib-tool
 %license LICENSES/GPL-2.0-only.txt
 %{_bindir}/sso-mib-tool
+%{_mandir}/man1/sso-mib-tool.1*
 
 %files -n sso-mib-gch-smtp-o365
 %license LICENSES/MIT.txt
 %{_bindir}/sso-mib-gch-smtp-o365
+%{_mandir}/man1/sso-mib-gch-smtp-o365.1*
 
 %changelog

@@ -42,4 +42,12 @@ Requires libjwt as a build dependency which will also be sent.</comment>
     <comment></comment>
     <requestid>1351469</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3ee6ba76d90b2f0bf6bf01d3ec627fb3</srcmd5>
+    <version>0.10.0</version>
+    <time>1783333723</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363692</requestid>
+  </revision>
 </revisionlist>

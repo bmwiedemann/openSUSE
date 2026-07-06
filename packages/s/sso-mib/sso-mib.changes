@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 3 13:23:40 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Import version 0.10.0
+  This release adds an async API for all functions that communicate
+  via DBus. The API is modeled similar to gdbus. Manpages for tools
+  are also now provided.
+
+-------------------------------------------------------------------
 Thu May 7 15:48:15 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 0.9.0
