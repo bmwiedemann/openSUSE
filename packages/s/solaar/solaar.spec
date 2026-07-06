@@ -18,7 +18,7 @@
 %global pythons python3
 
 Name:           solaar
-Version:        1.1.19
+Version:        1.1.20
 Release:        0
 Summary:        Linux devices manager for the Logitech Unifying Receiver
 License:        GPL-2.0-or-later
