@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 18:33:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.82
+  * Removed support for old GAP versions from the testsuite
+    subtest "cosets".
+
+-------------------------------------------------------------------
 Wed Nov 26 20:05:52 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.81

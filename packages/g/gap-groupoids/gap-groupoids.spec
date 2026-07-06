@@ -1,7 +1,7 @@
 #
 # spec file for package gap-groupoids
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-groupoids
-Version:        1.81
+Version:        1.82
 Release:        0
 Summary:        GAP: Groupoids, graphs of groups, and graphs of groupoids
 License:        GPL-2.0-or-later
@@ -27,7 +27,7 @@ URL:            https://gap-packages.github.io/groupoids/
 Source:         https://github.com/gap-packages/groupoids/releases/download/v%version/groupoids-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.10.1
+Requires:       gap-core >= 4.15.1
 Requires:       gap-fga >= 1.4.0
 Requires:       gap-utils >= 0.76
 Suggests:       gap-semigroups >= 3.1.1
