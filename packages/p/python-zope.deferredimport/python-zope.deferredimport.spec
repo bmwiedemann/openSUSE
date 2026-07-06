@@ -25,13 +25,13 @@ License:        ZPL-2.1
 URL:            https://github.com/zopefoundation/zope.deferredimport
 Source:         https://files.pythonhosted.org/packages/source/z/zope.deferredimport/zope_deferredimport-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module profiling if %python-base >= 3.15}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.proxy}
 BuildRequires:  %{python_module zope.testrunner}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Requires:       python-zope.proxy
 BuildArch:      noarch
 %python_subpackages

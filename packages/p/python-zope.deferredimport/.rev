@@ -91,4 +91,13 @@
     generates match those in git again.</comment>
     <requestid>1338810</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>bf10b558e7192c2a8044ad006b83fad9</srcmd5>
+    <version>6.1.1</version>
+    <time>1783334056</time>
+    <user>anag_factory</user>
+    <comment>- BuildRequires profiling for Python 3.15+.
+- Drop unneeded Requires on setuptools.</comment>
+    <requestid>1363929</requestid>
+  </revision>
 </revisionlist>
