@@ -193,4 +193,12 @@ update descriptions and categories</comment>
     <comment></comment>
     <requestid>1158882</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>3fb45c9376b5ab16a87240f750443ac2</srcmd5>
+    <version>0.22.0</version>
+    <time>1783333628</time>
+    <user>anag_factory</user>
+    <comment>Update to libpsl 0.22.0: build without Python, drop a dep via internal IPv4/IPv6 checks, portability and build improvements. No soname change (libpsl.so.5). Both multibuild flavors built clean (0 rpmlint badness, testsuite passes).</comment>
+    <requestid>1361699</requestid>
+  </revision>
 </revisionlist>

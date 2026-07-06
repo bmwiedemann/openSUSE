@@ -1,7 +1,7 @@
 #
 # spec file for package libpsl
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2015 rpm@cicku.me
 #
@@ -20,7 +20,7 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.21.5
+Version:        0.22.0
 Release:        0
 Summary:        C library for the Publix Suffix List
 License:        BSD-3-Clause AND MIT AND MPL-2.0

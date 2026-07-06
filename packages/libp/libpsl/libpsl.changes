@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:18:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.22.0:
+  * Can now be built from the release tarball without Python
+  * Drop an external dependency by implementing the IPv4/IPv6
+    address checks internally
+  * Avoid using alloca() and improve general portability
+  * Add support for native ICU on Windows and libcucore on Apple
+    systems
+  * Improve the meson and autotools builds and the installed
+    libpsl.pc pkg-config file
+  * Documentation improvements
+  * No soname change (still libpsl.so.5)
+
+-------------------------------------------------------------------
 Sun Mar 17 23:19:50 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.21.5:

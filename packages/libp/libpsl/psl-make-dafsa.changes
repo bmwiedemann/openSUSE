@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jun 25 07:20:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.22.0:
+  * Can now be built from the release tarball without Python
+  * Build and portability improvements
+  * No soname change in the shared library (libpsl.so.5)
+
+-------------------------------------------------------------------
 Sun Mar 17 23:23:03 UTC 2024 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 0.21.5:

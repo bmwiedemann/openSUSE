@@ -1,7 +1,7 @@
 #
 # spec file for package psl-make-dafsa
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Andreas Stieger <Andreas.Stieger@gmx.de>
 # Copyright (c) 2015 rpm@cicku.me
 #
@@ -19,7 +19,7 @@
 
 
 Name:           psl-make-dafsa
-Version:        0.21.5
+Version:        0.22.0
 Release:        0
 Summary:        Tool to create a binary DAFSA from a Public Suffix List
 License:        BSD-3-Clause
