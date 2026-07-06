@@ -1,5 +1,23 @@
 -------------------------------------------------------------------
-Fri Jun 26 08:03:23 UTC 2026 - ecsos <ecsos@opensuse.org>
+Fri Jul  3 14:57:25 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.11.0
+
+- Update to 9.11.0
+  * New Features
+    - Allow exporting annotations in the HTML format as a standalone web page
+      that can be viewed in any browser with support for light/dark themes,
+      searching and filtering by highlight style
+    - E-book viewer: Ask AI: Allow using the {selected} placeholder when typing free form queries
+      to the AI as well
+  * Bug Fixes
+    - E-book viewer: Fix text area not always resizing correctly
+      when window is resized when the scrollbar is enabled
+    - Fix a regression in the previous release that broke python templates
+      in the book details panel
+    - Fix a regression in the previous release that caused default values
+      for custom columns to not be used when adding new books
+
+-------------------------------------------------------------------
+Fri Jun 26 08:03:23 UTC 2026 - ecsos <ecsos@opensuse.org> - 9.10.0
 
 - Update to 9.10.0
   * New Features
