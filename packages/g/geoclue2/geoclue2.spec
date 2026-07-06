@@ -18,7 +18,7 @@
 
 %define _name geoclue
 Name:           geoclue2
-Version:        2.8.1
+Version:        2.8.2
 Release:        0
 Summary:        GeoLocation Framework
 License:        GPL-2.0-or-later
@@ -118,6 +118,8 @@ install -d %{buildroot}%{_sysconfdir}/geoclue/conf.d
 mkdir -p %{buildroot}%{_tmpfilesdir}
 install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/srvGeoClue.conf
 
+%find_lang geoclue-2.0
+
 # note: do not use systemd macros for geoclue2.service, they are not meant for dbus unit files.
 %pre -n system-user-srvGeoClue -f srvGeoClue.pre
 %ldconfig_scriptlets
@@ -125,7 +127,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_tmpfilesdir}/srvGeoClue.conf
 %post -n system-user-srvGeoClue
 %tmpfiles_create %{_tmpfilesdir}/srvGeoClue.conf
 
-%files
+%files -f geoclue-2.0.lang
 %license COPYING
 %doc README.md NEWS
 %{_mandir}/man5/geoclue.5%{?ext_man}
