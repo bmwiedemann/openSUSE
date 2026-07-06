@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  3 18:09:35 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
+
+- update to release 2.13.0
+  * for details about changes see
+    github.com/wjakob/nanobind/blob/master/docs/changelog.rst
+- adapt nanobind-installationpath.patch to fit 2.13.0
+- add nanobind-typing-cache.patch from upstream to fix abort
+  after running tests
+
+-------------------------------------------------------------------
 Sat Mar  7 12:00:49 UTC 2026 - Friedrich Haubensak <hsk17@mail.de>
 
 - update to release 2.12.0

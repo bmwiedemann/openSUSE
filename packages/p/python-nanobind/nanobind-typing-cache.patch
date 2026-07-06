@@ -1,0 +1,26 @@
+
+see github.com/wjakob/nanobind/issues/1387
+
+
+From 2965ecd22f7ea845a2de56b786ae331ccc85ef3d Mon Sep 17 00:00:00 2001
+From: Wenzel Jakob <wenzel.jakob@epfl.ch>
+Date: Thu, 18 Jun 2026 20:57:48 +0200
+Subject: [PATCH] tests: avoid typing cache holding Foo
+
+---
+ tests/test_typing.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/test_typing.cpp b/tests/test_typing.cpp
+index f4cb20230..8039b3067 100644
+--- a/tests/test_typing.cpp
++++ b/tests/test_typing.cpp
+@@ -127,7 +127,7 @@ NB_MODULE(test_typing_ext, m) {
+ #if PY_VERSION_HEX >= 0x030B0000
+     m.attr("T5") = nb::type_var_tuple("T5"
+ #if PY_VERSION_HEX >= 0x030D0000
+-      , "default"_a = nb::typing().attr("Unpack")[nb::builtins()["tuple"][nb::make_tuple(nb::type<Foo>(), nb::ellipsis())]]
++      , "default"_a = nb::typing().attr("Unpack")[nb::builtins()["tuple"][nb::make_tuple("Foo"_s, nb::ellipsis())]]
+ #endif
+     );
+ #endif

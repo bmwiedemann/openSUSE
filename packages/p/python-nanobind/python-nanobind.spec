@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nanobind
-Version:        2.12.0
+Version:        2.13.0
 Release:        0
 Summary:        Tiny And Efficient C++/Python Bindings
 License:        BSD-3-Clause
@@ -26,6 +26,8 @@ URL:            https://github.com/wjakob/nanobind
 Source:         https://github.com/wjakob/nanobind/archive/refs/tags/v%{version}.tar.gz#/nanobind-%{version}.tar.gz
 # PATCH-FEATURE-OPENSUSE nanobind-installationpath.patch
 Patch1:         nanobind-installationpath.patch
+# PATCH-FIX-UPSTREAM nanobind-typing-cache.patch
+Patch2:         nanobind-typing-cache.patch
 BuildRequires:  cmake
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module testsuite}
