@@ -403,4 +403,12 @@
   * No Go application packages in Factory use go1.x-libstd (forwarded request 1361836 from jfkw)</comment>
     <requestid>1361837</requestid>
   </revision>
+  <revision rev="22" vrev="5">
+    <srcmd5>1587720833cad1106f24404dca7c7deb</srcmd5>
+    <version>1.25.11</version>
+    <time>1783333776</time>
+    <user>anag_factory</user>
+    <comment>Add missing changelog CVE references boo#1259264 boo#1259265 boo#1259268 (forwarded request 1363742 from jfkw)</comment>
+    <requestid>1363743</requestid>
+  </revision>
 </revisionlist>
