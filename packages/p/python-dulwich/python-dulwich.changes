@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Jun 27 15:30:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.7 (bsc#1268128, CVE-2026-42305):
+  * Verify that an object retrieved by id actually hashes to the
+    requested id, raising ``ChecksumMismatch`` otherwise.
+  * Check out files whose names contain a colon or backslash. The
+    NTFS path validator rejected any element containing
+    ``:`` or ````, so such files were silently dropped on clone.
+    It now rejects only the ``.git``/``git~1``
+  * alternate-data-stream spellings, like git.
+  * Abort the checkout when a tree entry has an invalid path
+    (e.g. a ``.git`` alias) instead of silently skipping it.
+  * Reject pack names containing path separators in the dumb HTTP
+    transport, so a malicious server can no longer escape the
+    temporary directory.
+  * SECURITY: Don't expand config ``include`` directives when
+    parsing ``.gitmodules``, so a crafted ``.gitmodules`` in a cloned
+    repository can no longer make ``clone --recurse-submodules``
+    read arbitrary files.
+  * SECURITY: Validate ref names before resolving them to a path,
+    so a client-supplied name like ``../../secret`` can no longer read
+    a file outside the ref store. This closes a traversal via git-
+    upload-archive's ``argument`` and other lookup paths.
+  * Add ``porcelain.request_pull`` and a ``dulwich request-pull``
+    command that generate a summary of pending changes between
+    repositories, suitable for emailing to a maintainer, like
+    ``git request- pull``.
+  * Add ``porcelain.range_diff`` and a ``dulwich range-diff``
+    command that compare two ranges of commits and show how a
+    patch series evolved, like ``git range-diff``. Requires the
+    ``munkres`` package, installable via the
+    ``dulwich[range_diff]`` extra. (Jelmer Vernooĳ, #1828)
+  * Fix ``apply_patch`` writing index entries with mode ``0``,
+    which made native git abort with ``unsupported ce_mode: 0``.
+    The file mode is now derived from the work-tree file.
+  * Fix deepening of a local shallow fetch. Re-fetching with a
+    larger ``depth`` moved the shallow boundary but did not
+    transfer the newly-uncovered commits, because the parents
+    provider still used the old boundary. (Jelmer Vernooĳ)
+  * Fix ``gc``/``repack`` on Windows raising ``PermissionError``
+    when removing read-only pack files (as written by git). The read-
+    only attribute is now cleared before unlinking. (Jelmer Vernooĳ)
+  * Fix ``repack`` leaking a temporary pack file when the
+    consolidated pack was identical to one already on disk.
+    The orphaned file accumulated in the pack directory
+  * SECURITY: Honor ``core.protectNTFS``/``core.protectHFS`` on
+    all work-tree updates. The 1.2.5 path hardening (CVE-2026-42305)
+    only reached ``checkout`` and ``reset``; ``update_working_tree``
+    (used by ``merge``, ``pull`` and others) fell back to the default
+    validator, so a crafted branch could still check out an NTFS-unsafe name
+    such as ``git~2`` even with ``core.protectNTFS=true``.
+  * SECURITY: Reject patch target paths that escape the work tree
+    in ``apply_patches``. Patch headers are untrusted (e.g. ``git
+    am`` of a mailbox), so a ``+++``/rename path such as
+    ``../../etc/cron.d/x`` or an absolute path was joined onto
+    the repo path and written outside the working tree.
+  * ``porcelain``: Validate caller-supplied paths in
+    ``checkout``, ``restore`` and ``reset_file`` before writing,
+    as defense in depth, so a ``.git`` or ``..`` component
+    (including NTFS/HFS ``.git`` aliases) cannot escape the work
+    tree or write into the control directory.
+  * Remove the ``force_remove_untracked`` argument from
+  * ``index.update_working_tree``. It had been a no-op since the
+    function was rewritten to apply changes from a diff iterator, and
+    removing untracked files is not part of ``reset --hard`` semantics.
+
+-------------------------------------------------------------------
 Thu May 28 23:04:19 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 1.2.5.
