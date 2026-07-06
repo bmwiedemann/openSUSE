@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul  3 14:21:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.4
+  Security
+  * WebDAV --no-delete bypass via MOVE/COPY (GHSA-hq33-8jgp-8qq3)
+    Under -w --no-delete (and --upload-only), the WebDAV MOVE verb
+    still removed the source file — a rename deletes it from its
+    original path — and, with Overwrite: T, destroyed an existing
+    destination; COPY onto an existing file did the same via an
+    implicit delete. The mode flags are now enforced on these
+    verbs: MOVE is rejected whenever deletion is disabled, and a
+    COPY that would overwrite an existing file is blocked, while a
+    plain COPY to a new path stays allowed.
+    --read-only continues to block all of them.
+  * SFTP authentication bypass with a single credential
+    (GHSA-rjrw-mjq6-hpmm)
+    SFTP only installed its password handler when both a username
+    and a password were configured, so setting only one left the
+    server accepting unauthenticated logins. Authentication is now
+    enforced whenever either credential is set.
+  New Features
+  * Clipboard copy in the TUI generator - The --tui reverse-shell
+    generator can now copy the selected payload straight to your
+    - clipboard with y/c. It works both locally (xclip/xsel,
+    wl-copy, pbcopy, clip) and over SSH via OSC 52, filling both
+    the system clipboard and the X11 primary selection (Ctrl+V and
+    middle-click / Shift+Insert). The generator tab was also
+    restructured into a stacked layout so multi-line output can be
+    cleanly mouse-selected without also grabbing the menu entries.
+  Bug Fixes
+  * Fatal port-bind errors under --tui — Every listening protocol
+    is now bound before the TUI dashboard takes over the terminal,
+    so a port conflict (or any bind error) is reported cleanly and
+    is fatal up front — instead of being swallowed by a serving
+    goroutine, which under --tui left the terminal in raw mode
+    needing a reset (and was silently dropped entirely for FTP).
+
+-------------------------------------------------------------------
 Fri Jun 26 05:51:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.3
