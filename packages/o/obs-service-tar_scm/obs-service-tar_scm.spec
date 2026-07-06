@@ -122,8 +122,8 @@ Suggests:       subversion                                      \
 
 %define pkg_name obs-service-tar_scm
 Name:           %{pkg_name}%{nsuffix}
-%define version_unconverted 0.12.3
-Version:        0.12.3
+%define version_unconverted 0.12.4
+Version:        0.12.4
 Release:        0
 Summary:        An OBS source service: create tar ball from svn/git/hg
 License:        GPL-2.0-or-later

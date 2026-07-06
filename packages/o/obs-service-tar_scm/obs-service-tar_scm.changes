@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 01 14:59:47 UTC 2026 - Frank Schreiner <FSchreiner@suse.com>
+
+- Update to version 0.12.4:
+  * improve option sanitising revision/url
+    * Fixes: boo#1269546
+    * Fixes: CVE-2026-56004
+
+-------------------------------------------------------------------
 Tue May 19 11:49:36 UTC 2026 - Frank Schreiner <FSchreiner@suse.com>
 
 - Update to version 0.12.3:

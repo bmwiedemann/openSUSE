@@ -1606,4 +1606,16 @@ They are not in common use these days. (forwarded request 1191834 from iznogood)
   * fix for python2 auth()</comment>
     <requestid>1354010</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>ef90aa9258467222d12a696d95ac1fa7</srcmd5>
+    <version>0.12.4</version>
+    <time>1783333642</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.12.4:
+  * improve option sanitising revision/url
+    * Fixes: boo#1269546
+    * Fixes: CVE-2026-56004
+</comment>
+    <requestid>1363017</requestid>
+  </revision>
 </revisionlist>
