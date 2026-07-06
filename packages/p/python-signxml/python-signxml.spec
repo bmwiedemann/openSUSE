@@ -17,7 +17,7 @@
 
 
 Name:           python-signxml
-Version:        4.4.0
+Version:        5.1.0
 Release:        0
 Summary:        Python XML Signature and XAdES library
 License:        Apache-2.0

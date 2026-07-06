@@ -28,4 +28,21 @@
   * Fix comparison logic for ECDSA public keys</comment>
     <requestid>1336215</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>d3fbde47e0e85bf90412b89652c0fba5</srcmd5>
+    <version>5.1.0</version>
+    <time>1783334108</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.1.0:
+  * Implement point-in-time verification
+  * xades: fix CertDigest handling
+  * Confirm certs passed to validate are X.509 formatted
+  * Clarify location parameter syntax
+  * Increase minimum cryptography version to 45
+  * X.509 certificate valitation now requires the provided
+    certificate to list digital signature as a key usage.
+  * fix rst formatting
+  * Support setting certificate validation policy</comment>
+    <requestid>1363955</requestid>
+  </revision>
 </revisionlist>

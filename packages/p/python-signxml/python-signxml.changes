@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:03:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.1.0:
+  * Implement point-in-time verification
+  * xades: fix CertDigest handling
+  * Confirm certs passed to validate are X.509 formatted
+  * Clarify location parameter syntax
+  * Increase minimum cryptography version to 45
+  * X.509 certificate valitation now requires the provided
+    certificate to list digital signature as a key usage.
+  * fix rst formatting
+  * Support setting certificate validation policy
+
+-------------------------------------------------------------------
 Tue Mar  3 20:50:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:
