@@ -69,4 +69,14 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282148</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9aa295b9d253325a931f533e6f98ee84</srcmd5>
+    <version>2.10.1</version>
+    <time>1783342837</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.10.1:
+  * Add support for Django-5.2.
+- drop py313.patch (upstream)</comment>
+    <requestid>1364037</requestid>
+  </revision>
 </revisionlist>

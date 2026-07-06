@@ -1,7 +1,7 @@
 #
 # spec file for package python-easy-thumbnails
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           python-easy-thumbnails
-Version:        2.10
+Version:        2.10.1
 Release:        0
 Summary:        Easy thumbnails for Django
 License:        BSD-2-Clause
 URL:            https://github.com/SmileyChris/easy-thumbnails
 Source:         https://files.pythonhosted.org/packages/source/e/easy_thumbnails/easy_thumbnails-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/SmileyChris/easy-thumbnails/pull/650 Add support for Python 3.13
-Patch:          py313.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

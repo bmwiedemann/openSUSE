@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 11:05:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.1:
+  * Add support for Django-5.2.
+- drop py313.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Jun  3 06:48:34 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
