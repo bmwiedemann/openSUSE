@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Jul  5 20:03:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.5.1
+  * Bug Fixes
+    + Improve error message for MalformedInputException during
+      resource filtering
+    + Restore "first entry wins" for overlapping resource
+      declarations
+  * Maintenance
+    + enable build with Maven 4
+  * Dependency updates
+    + Bump org.apache.maven.shared:maven-shared-components from 47
+      to 49
+    + Bump Maven version to 3.9.16
+    + Bump plexus-utils version to 3.6.1
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+
+-------------------------------------------------------------------
 Mon Mar  2 12:38:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.5.0

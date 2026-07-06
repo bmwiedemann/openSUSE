@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.apache.maven.shared"/>
   <property name="project.artifactId" value="maven-filtering"/>
-  <property name="project.version" value="3.5.0"/>
+  <property name="project.version" value="3.5.1"/>
   <property name="project.name" value="Apache Maven Filtering"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
