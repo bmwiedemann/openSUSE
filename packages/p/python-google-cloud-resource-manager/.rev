@@ -7,4 +7,15 @@
     <comment>needed by python-google-cloud-aiplatform</comment>
     <requestid>1352401</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>319db75d4fd5eee5f4ac638be7505613</srcmd5>
+    <version>1.18.0</version>
+    <time>1783333881</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.18.0:
+  * regenerate google-cloud-[o-r] packages
+
+  * Improved type checking throughout the codebase</comment>
+    <requestid>1363819</requestid>
+  </revision>
 </revisionlist>
