@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 06 09:22:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.2.7:
+  * Remove explicit database-level read-only check from the pure
+    Query path
+  * Miscellaneous Store-level fixes related to resource management
+    and shutdown sequence
+  * Don't run CRC checks twice on Snapshot when fast-restart is
+    explicitly disabled
+  * Fixes to the http package including SQL rewriting control.
+  * Address potential dropped CDC event on restart
+  * Various minor fixes
+ - includes changes from 10.2.6:
+  * Handle a fully-executed Reap plan, but Plan file itself not
+    removed
+  * Close Snapshot streamer on error.
+- includes changes from 10.2.5:
+  * Perform a Quick Integrity check after reaping snapshots, not
+    Full
+
+-------------------------------------------------------------------
 Tue Jun 23 18:39:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.2.4:
