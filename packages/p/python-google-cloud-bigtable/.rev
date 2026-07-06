@@ -7,4 +7,23 @@
     <comment>needed by google-adk</comment>
     <requestid>1349772</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>329d97b01fbd36f49c69a9d2182523ee</srcmd5>
+    <version>2.40.0</version>
+    <time>1783333793</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.40.0:
+  * regenerate google-cloud-bigtable
+  * **bigtable:** populate Value type in
+    _format_execute_query_view_params
+
+- Update to 2.37.0
+  * chore: add librarian integration for google-cloud-bigtable (#16551)
+  * chore(bigtable): use ruff for generated sync files (#16713)
+  * feat: add value_bitmask_filter to the read API (#16898)
+  * chore: librarian release pull request: 20260430T202055Z (#16904)
+- Update BuildRequires and Requires from pyproject.toml
+- Use proper upstream homepage in URL field</comment>
+    <requestid>1363763</requestid>
+  </revision>
 </revisionlist>

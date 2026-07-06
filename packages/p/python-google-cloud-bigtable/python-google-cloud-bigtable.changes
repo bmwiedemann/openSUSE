@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul  4 09:27:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.40.0:
+  * regenerate google-cloud-bigtable
+  * **bigtable:** populate Value type in
+    _format_execute_query_view_params
+
+-------------------------------------------------------------------
+Thu May  7 10:33:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.37.0
+  * chore: add librarian integration for google-cloud-bigtable (#16551)
+  * chore(bigtable): use ruff for generated sync files (#16713)
+  * feat: add value_bitmask_filter to the read API (#16898)
+  * chore: librarian release pull request: 20260430T202055Z (#16904)
+- Update BuildRequires and Requires from pyproject.toml
+- Use proper upstream homepage in URL field
+
+-------------------------------------------------------------------
 Tue Apr 28 10:00:12 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Initial package creation for python-google-cloud-bigtable 2.36.0
