@@ -38,4 +38,13 @@
 - Loosen pytest requirement.</comment>
     <requestid>1359871</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9a6be706173737690ed4923717344dcc</srcmd5>
+    <version>2.5.0</version>
+    <time>1783333635</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.0:
+  * Propagate the timeout through the SOCKS5 handshake.</comment>
+    <requestid>1362975</requestid>
+  </revision>
 </revisionlist>

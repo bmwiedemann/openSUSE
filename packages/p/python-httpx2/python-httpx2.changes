@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:02:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.0:
+  * Propagate the timeout through the SOCKS5 handshake.
+
+-------------------------------------------------------------------
 Wed Jun 17 02:31:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pytest-benchmark rather than pytest-codspeed.
