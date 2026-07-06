@@ -383,4 +383,24 @@
     <comment></comment>
     <requestid>1352618</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>32e08a8e2cd0b99af6aa906a83218d4b</srcmd5>
+    <version>1.4.2</version>
+    <time>1783334090</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.2:
+  * Critical bugfix: Use another API to determine game platform support
+  * UI improvement: Show games in the library incrementally when starting
+  * Reduce unnecessary writes to the config file.
+  * Fix a possible exception during game installation not being handled correctly.
+  * Logs are now also written to ~/.cache/minigalaxy/minigalaxy.log.
+  * Ask the user which binary to launch if Minigalaxy is unsure.
+  * The wine executable can now also be changed before a game is installed
+  * Resolve deprecation/syntax warnings and quiet test output noise.
+  * Switch to using PEP 302 compliant resources, excluding translations.
+  * Allow installing Minigalaxy via pipx.
+  * Switch debian builds to using pybuild-plugin-pyproject.
+  * Set minimum Python version to 3.11.</comment>
+    <requestid>1363968</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           minigalaxy
-Version:        1.4.1
+Version:        1.4.2
 Release:        0
 Summary:        A GOG client for Linux that lets you download and play your GOG Linux games
 License:        GPL-3.0-only
@@ -27,7 +27,7 @@ Source0:        https://github.com/sharkwouter/minigalaxy/archive/%{version}.tar
 Patch0:         minigalaxy-0.9.0-desktop.patch
 Patch1:         fix-webkit-typelib.patch
 BuildRequires:  gobject-introspection
-BuildRequires:  python3
+BuildRequires:  python3 >= 3.11
 BuildRequires:  python3-setuptools
 Requires:       python3-gobject >= 3.30
 Requires:       python3-gobject-Gdk
