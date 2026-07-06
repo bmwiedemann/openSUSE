@@ -1,4 +1,228 @@
 -------------------------------------------------------------------
+Sun Jul 05 10:49:46 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- Update to version 1.5.0:
+  * Prepare version 1.5.0
+  * Allows MIDI-generating plugins to forward their output to subsequent plugins
+  * [Refactor] Move PluginAudioPlayHead to separate source file
+  * [Refactor] Rename PluginHost::Info class to PluginAudioPlayHead
+  * PluginsApi: remove unused method
+  * Pass PPQ (as in JUCE's position-per-quarter-note) value to Plugin via juce::Playhead
+  * c::Plugin: forward-declare Plugin and PluginParameter
+  * [Refactor] Move PluginParameter outside of Plugin class
+  * [Refactor] gdPluginList: cleanup plugin list navigation bounds checks
+  * c::Plugin: don't cache 'hasEditor' property
+  * Add missing 'sampleRate' value to patch (#802)
+  * gePluginElement: avoid extra copy of c::plugin::Plugin object
+  * [Refactor] c::plugin::Plugin: remove access to underlying ptr
+  * c::plugin: remove unused function
+  * [Refactor] Don't use vector of m::Plugins in c::plugin::Plugins, use c:: type
+  * c::plugin: remove unused function
+  * [Refactor] Simplify parameter fetching in gePluginParameter
+  * [Refactor] Use vector of c::plugin::Param in c::plugin::Plugin in place of raw indexes
+  * [Refactor] Pass m::Plugin::Parameter ref to c::plugin::Parameter object
+  * [Refactor] Swap plug-ins by ID, not by m::Plugin* ptrs
+  * [Refactor] Remove swapPlugin() method from PluginHost
+  * [Refactor] Remove all plug-ins in a channel by ID, not by vector of m::Plugin ptrs
+  * [Refactor] Remove plug-ins by ID, not by m::Plugin ptr
+  * Plugin: stop caching the 'hasEditor' property
+  * UI: optimize plug-in parameter repaint in gdPluginWindow
+  * gdPluginWindow: add updateParameter() method
+  * gdPluginWindow: add assertion + tidy up code
+  * [Refactor] Change c::plugin::Param member name
+  * Remove old params methods from m::Plugin, use new approach
+  * Plugin: remove midiInParams public member
+  * Plugin: add getParameters() accessor
+  * Plugin: prepare vector of Parameter objects
+  * Add new Plugin::Parameter class (unused)
+  * geBox: redraw when setting new label
+  * Sequencer: fix comment
+  * [Refactor] Use TimeSignature in place of raw beats/bars variables
+  * gdMainWindow: fix spacing around main menu
+  * geMainWindow: simplify flex structure
+  * Update project name on save + remove unused function
+  * gdMainWindow: make variable private
+  * gdMainWindow: show version number in footer
+  * Limit maximum CPU load value to 100.0
+  * Increase master I/O VU meters precision
+  * UI: display project name in main window footer
+  * UI: show 'Giada' + version number in main window title
+  * [Refactor] geBox: add getter/setter methods for label, delete old ones
+  * geBox: use v::drawings function for draw() method
+  * geBox: add ability to customize text color
+  * gdMainWindow: avoid variable shadowing
+  * UI, mainWindow: display CPU load widget in footer
+  * UI, mainWindow: add new footer (empty)
+  * Add API for CPU load display
+  * UI: add new geCpuLoad widget
+  * Enable CPU load computation (core only)
+  * model::Shared: Add new Shared from KernelAudio
+  * model::KernelAudio: add internal Shared object with CPU load atomic variable
+  * Don't lock the document while saving the project (#799)
+  * SampleChannel: remove unused methods
+  * Prevent creating invalid FrameRange when de-serializing JSON
+  * gePianoRoll: simplify onRefreshAction()
+  * gdBaseActionEditor: simplify pixelToTick() method
+  * Action Editor: simplify even more MIDI action handling
+  * Revert 042fad599f8dcebf4c89b2124a892ce7bc848eef
+  * Simplify action handling for Sample Channels in PRESS mode
+  * Action Manager: remove wrong assertion
+  * Action Editor: fix toTickRange conversion for sample actions
+  * geBaseActionEditor: simplify even more toTickRange() method
+  * geBaseActionEditor: rework toTickRange method
+  * geBaseActionEditor: pass ActionEdit enum to onRefreshAction() (unused)
+  * geBaseActionEditor: tidy up header file
+  * [Refactor] move toTickRange() from gdBaseActionEditor to geBaseActionEditor
+  * geGridTool: refactor member name
+  * Action Editor: fix grid rendering
+  * geGridTool: refactor method name
+  * geBaseActionEditor: use correct type for grid drawing
+  * gePianoRoll, geSampleActionEditor: simplify onResizeAction() method
+  * gdBaseActionEditor: allow 1 tick actions
+  * geSampleActionEditor: add nullptr check
+  * Action Editor: simplify onRefreshAction() method in both PianoRoll and SampleActionEditor
+  * geBox: remove getBounds() method
+  * geEnvelopePoint: fix constructor
+  * Actions: simplify rec() method with no calls to findAction()
+  * Actions, ActionManager: remove unused methods
+  * [Refactor] Avoid passing around multiple copies of Actions from model to Action Editor
+  * ActionManager: DRY + add more asserts
+  * [Refactor] Use ID instead of Action refs for action operations
+  * geBox: add getBounds() method
+  * geBox: make draw() method as protected
+  * geBaseAction: use geBox as parent class
+  * Update mcl-utils dep to fix build error on macOS, again
+  * Update mcl-utils dep to fix build error on macOS
+  * Update geompp dependency
+  * Add TODO notes
+  * Remove unused code, fix method name
+  * Action Editor: restore snap to grid
+  * utils::time: add quantize() for Tick
+  * Sequencer: adjust quantize() method to work tick-based
+  * Update mcl-utils submodule
+  * Don't write old 'sampleRate' value from Patch on save
+  * Add support for old patches with frame-based actions
+  * Sequencer: make sure actions are actually in the current block
+  * u::time: add frameToTickRound() function
+  * Sequencer: remove unused method
+  * Don't pre-compute frames in model::Sequencer, just do it on the fly when needed
+  * Tick: add support for % operator
+  * Move currentTick computation to model::Sequencer
+  * Remove 'frame' property from Action struct
+  * ActionManager: fix const correctness in consolidate() method
+  * model::Actions: update comments
+  * [Refactor] Dry model::Actions private method
+  * model::Actions: remove unused methods
+  * Enable tick-based live recording
+  * ActionManager: remove old unused method
+  * model::Actions: use tick-based exists() method in rec()
+  * Update action persistence code to use tick instead of frame
+  * [Refactor] Sequencer: better name for Block struct
+  * Remove all frame recomputation on bpm/samplerate change
+  * Sequencer: enable tick-based rendering
+  * model::Actions: sort actions by tick
+  * Add new frameRangeToTickRange utils function
+  * [Refactor] Rename SampleRange -> FrameRange for consistency with TickRange
+  * ActionManager: remove deprecated methods, update tests
+  * Action Editor: show tick-based playhead
+  * Sequencer, MainApi: add getCurrentTick() method
+  * c::ActionEditor::Data: remove old members
+  * BaseActionEditor: use correct type in std::min function
+  * BaseActionEditor: adjust tick-based zoom
+  * SampleActionEditor: display actions tick-wise
+  * Enable adding/moving new tick-based sample actions
+  * Cleanup some deprecated/unused functions
+  * Enable move tick-based MIDI actions around
+  * ActionManager: mark updateMidiAction() method as deprecated
+  * UI: initial tick-based painting in Action Editor
+  * Sequencer: add more utility functions (unused)
+  * model::Actions: debug actions by tick
+  * Record tick-based MIDI actions
+  * ActionEditorApi: add new tick-based recordMidiAction() method (unused)
+  * Utils: add tick <-> pixel conversion functions
+  * model::Sequencer, Sequencer: add getTicksInLoop() method (unused)
+  * model::Sequencer: use TimeSignature object + encapsulation
+  * Add new TimeSignature type
+  * [Refactor] model::Sequencer: make bpm member private
+  * Change G_PPQ type to Tick
+  * Tick: add more operators
+  * ActionEditorApi: mark recordMidiAction() method as deprecated
+  * ActionManager: add new tick-based recordMidiAction() method + utilities
+  * model::Actions: add new tick-based rec() method + TickRange alias
+  * model::Actions: mark another rec() method as deprecated
+  * Mark G_DEFAULT_ACTION_SIZE as deprecated, add new tick-based one
+  * ActionRecorder: mark rec...() methods as deprecated
+  * model::Actions: add new tick-based rec() method (unused)
+  * model::Actions: mark rec() method as deprecated
+  * ActionFactory: add new makeAction() method (unused)
+  * ActionFactory: mark makeAction() method as deprecated
+  * Action: add new 'tick' member (unused)
+  * Bump version to 1.5.0
+  * Sequencer: optimize actions parsing by moving it outside the main block loop
+  * Undo 'Sequencer: simplify 'sceneChanged' code in advance() method', was wrong
+  * model::Actions: cleanup
+  * model::Actions: sort actions on set() method
+  * Update rendering engine to work with new Sequencer::Event type
+  * Sequencer: fill EventBuffer with actions coming from the std::span
+  * Sequencer: add internal ActionsBlock struct (still unused)
+  * Sequencer: use new Block object for event parsing in advance()
+  * Sequencer: add internal Block struct (still unused)
+  * Sequencer: simplify 'sceneChanged' code in advance() method
+  * Sequencer: add comments
+  * Sequencer: use SampleRange in advance() method instead of raw start/end values
+  * Sequencer: mark 'actions' member in Event struct as deprecated
+  * model::Actions: add getActionsInSampleRange() method (still unused)
+  * Deserialize actions with new container
+  * model::Actions: remove more deprecated methods
+  * ActionFactory: update serializeActions() to use new Actions container
+  * model::Actions: rework hasActions() method to use new container
+  * model::Actions: rework clearAll() to use new container
+  * model::Actions: rework updateSiblings() to use new container
+  * model::Actions: rework updateEvent() to use new container
+  * model::Actions: rework updateKeyFrames() method to use new container
+  * model::Actions: remove removeIf() method, use mcl::utils
+  * model::Actions: add new getAll() method, remove forEachAction
+  * model::Actions: mark getAll() method as deprecated
+  * model::Actions: remove unused method
+  * model::Actions: remove findAction_DEPR_, adjust new ones
+  * model::Actions: rework getActionsOnChannel() to use new container
+  * model::Actions: rework rec() method (for live recording) to use new container
+  * model::Actions: rework rec() method to use new container
+  * model::Actions: add private findAction() method based on new container
+  * model::Actions: mark findAction() method as deprecated
+  * model::Actions: rework debug() method to support new container
+  * model::Actions: reimplement rec() method based on new container
+  * model::Actions: add new private sort() method (still unused)
+  * model::Actions: add new exists() private methods (still unused)
+  * model::Actions: mark private methods as deprecated
+  * model::Actions: add std::vector<Action> container (still unused)
+  * model::Actions: mark m_actions map as deprecated
+  * Add utility functions for Frame <-> Tick conversions
+  * Add new Tick type
+  * Prepare release 1.4.2
+  * [Linux] Fix broken build
+  * Fix sample channels being killed abruptly on scene change (#792)
+  * [Refactor] Change method name
+  * Remove VST logo in About window (#798)
+  * model::Sequencer: add recomputeFrames() method
+  * Add model::Sequencer::reset() method
+  * Sequencer: remove unused method
+  * Sequencer: store current sample rate internally
+  * JackTransport: add isAvailable() method (still unused)
+  * Add ability to copy the whole scene to another (#766)
+  * [Refactor] Rename ActionRecorder -> ActionManager
+  * Add ability to force-change a scene (#764)
+  * Add scene support to 'edit -> clear all actions' function (#787)
+  * ChannelsApi: join two functions
+  * Fix label text
+  * ChannelManager: minor optimization to free sample channel algorithm
+  * Add scene support to 'edit -> free all sample channels' function (#787)
+  * UI: add missing popup labels to scene buttons (#785)
+  * geScenes: DRY
+  * Bump version to 1.4.2
+  * Update copyright date
+
+-------------------------------------------------------------------
 Sun May 24 06:32:33 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
 
 - Update to version 1.4.1:
