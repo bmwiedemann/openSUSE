@@ -21,7 +21,7 @@
 %define _home   %{_localstatedir}/lib/%{name}
 %define plugdir %{_libdir}/%{name}/plugins
 Name:           3proxy
-Version:        0.9.6
+Version:        0.9.7
 Release:        0
 Summary:        Tiny proxy servers set
 License:        Apache-2.0 OR BSD-3-Clause OR GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -46,23 +46,24 @@ based on username, client IP, target IP, day time, day of week, etc.
 %prep
 %autosetup -p1
 sed -i -e 's/USER/%{_user}/' -e 's/GROUP/%{_group}/' %{SOURCE1}
-sed -i -e 's/CFLAGS := -g/CFLAGS := %{optflags}/' -e 's/LDFLAGS := /LDFLAGS := %{optflags} /' Makefile.Linux
 
 %build
-%make_build -f Makefile.Linux PLUGINS="SSLPlugin StringsPlugin TrafficPlugin PCREPlugin TransparentPlugin PamAuth"
+%make_build -f Makefile.Linux DCFLAGS="%{optflags}" OPENSSL_CHECK=true PCRE_CHECK=true PAM_CHECK=true
 
 %install
 mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{plugdir}
-mkdir -p %{buildroot}%{_mandir}/man{3,8}
+mkdir -p %{buildroot}%{_mandir}/man{5,8}
 mkdir -p %{buildroot}%{_localstatedir}/log/%{name}
-install -pm0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
-install -pm0755 bin/{{PCRE,SSL,Strings,Traffic,Transparent}Plugin,pamauth}.ld.so %{buildroot}%{plugdir}
-install -pm0644 man/%{name}.cfg.3 %{buildroot}%{_mandir}/man3/%{name}.cfg.3
-install -pm0644 man/%{name}.8 %{buildroot}%{_mandir}/man8/%{name}.8
+mkdir -p %{buildroot}%{_sysconfdir}/%{name}
+mkdir -p %{buildroot}%{_home}
+install -pm0755 bin/%{name}{,_crypt} %{buildroot}%{_bindir}
+install -pm0755 bin/{*Plugin,pamauth}.ld.so %{buildroot}%{plugdir}
+install -pm0644 man/%{name}.cfg.5 %{buildroot}%{_mandir}/man5
+install -pm0644 man/%{name}{,_crypt}.8 %{buildroot}%{_mandir}/man8
 install -Dpm0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 install -Dpm0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}-socks.xml
-install -Dpm0660 %{SOURCE3} %{buildroot}%{_home}/%{name}.cfg
+install -Dpm0660 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.cfg
 
 %pre
 getent group %{_group} &> /dev/null || groupadd -r %{_group}
@@ -80,14 +81,16 @@ getent passwd %{_user} &> /dev/null || %{_sbindir}/useradd -rc 'User for tiny pr
 
 %files
 %license copying
-%doc authors cfg README
-%config(noreplace) %attr(0660,%{_user},%{_group}) %{_home}/%{name}.cfg
-%{_bindir}/%{name}
+%doc authors cfg README.md
+%dir %{_libdir}/%{name}
+%dir %attr(-,%{_user},%{_group}) %{_sysconfdir}/%{name}
+%config(noreplace) %attr(0660,%{_user},%{_group}) %{_sysconfdir}/%{name}/%{name}.cfg
+%{_bindir}/%{name}{,_crypt}
 %dir %{_libdir}/%{name}
 %dir %{plugdir}
 %{plugdir}/*.ld.so
-%{_mandir}/man3/%{name}.cfg.3%{?ext_man}
-%{_mandir}/man8/%{name}.8%{?ext_man}
+%{_mandir}/man5/%{name}.cfg.5%{?ext_man}
+%{_mandir}/man8/%{name}{,_crypt}.8%{?ext_man}
 %{_unitdir}/%{name}.service
 %{_prefix}/lib/firewalld
 %dir %attr(-,%{_user},%{_group}) %{_home}

@@ -1,13 +1,13 @@
 [Unit]
 Description=Tiny proxy servers set
-Documentation=man:3proxy(1)
+Documentation=man:3proxy(8)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 User=USER
 Group=GROUP
-ExecStart=/usr/bin/3proxy /var/lib/3proxy/3proxy.cfg
+ExecStart=/usr/bin/3proxy /etc/3proxy/3proxy.cfg
 ExecReload=/usr/bin/kill -SIGUSR1 $MAINPID
 KillMode=process
 Restart=on-failure

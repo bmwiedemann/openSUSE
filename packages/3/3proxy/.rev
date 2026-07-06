@@ -66,4 +66,21 @@
   * New maxseg configuration option (TCP_MAXSEG).</comment>
     <requestid>1360665</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cab3b425f59798d89a0fb5bf4de75c7b</srcmd5>
+    <version>0.9.7</version>
+    <time>1783333850</time>
+    <user>anag_factory</user>
+    <comment>- Moved configuration from /var/lib/3proxy to /etc/3proxy.
+- Updated to 0.9.7
+  * https://github.com/3proxy/3proxy/releases/tag/0.9.7
+  * Moved PCRE2 and SSL/TLS code from plugins into main 3proxy binary.
+  * Added 3proxy_crypt new internal password hashing replacing mycrypt.
+  * Supported Unix sockets for parent proxies, tcppm, internal listeners and -i option.
+  * Added ssl_client_mode = 3 to use 'secure' parent types: https, tcps, socks5s, connect+s, etc.
+  * Added SOCKSv5 UDP parent support; -Ne/-Ni NAT options.
+  * Allowed setting internal/external network namespaces on Linux.
+  * Fixed multiple minor bugfixes and code cleanup.</comment>
+    <requestid>1363795</requestid>
+  </revision>
 </revisionlist>
