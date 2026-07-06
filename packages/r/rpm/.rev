@@ -2627,4 +2627,12 @@ See bugzilla 1167537 for the gory details.</comment>
     <comment></comment>
     <requestid>1336739</requestid>
   </revision>
+  <revision rev="327" vrev="8">
+    <srcmd5>22d36651f8c22dec23d3356674fea7f0</srcmd5>
+    <version>4.20.1</version>
+    <time>1783333652</time>
+    <user>anag_factory</user>
+    <comment>harden ndb code [bsc#1269584] [CVE-2026-44605]</comment>
+    <requestid>1363448</requestid>
+  </revision>
 </revisionlist>

@@ -1,5 +1,5 @@
---- macros.in.orig	2025-02-12 13:23:21.868124201 +0000
-+++ macros.in	2025-02-12 13:23:58.436059109 +0000
+--- macros.in.orig	2026-06-29 10:15:52.957436592 +0000
++++ macros.in	2026-06-29 10:16:22.529408262 +0000
 @@ -163,6 +163,7 @@
      %{?_unique_debug_names:--unique-debug-suffix "-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
      %{?_unique_debug_srcs:--unique-debug-src-base "%{name}-%{VERSION}-%{RELEASE}.%{_arch}"} \\\
@@ -8,7 +8,7 @@
      %{?_find_debuginfo_opts} \\\
      %{?_debugsource_packages:-S debugsourcefiles.list} \\\
      "%{builddir}/%{?buildsubdir}"\
-@@ -216,7 +217,8 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -217,7 +218,8 @@ Supplements:   (%{name} = %{version}-%{r
  %files langpack-%{1}\
  %{nil}
  
@@ -18,7 +18,7 @@
  %_defaultlicensedir	%{_datadir}/licenses
  
  # Following macros for filtering auto deps must not be used in spec files.
-@@ -275,7 +277,8 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -276,7 +278,8 @@ Supplements:   (%{name} = %{version}-%{r
  %_tmppath		%{_var}/tmp
  
  #	Path to top of build area.
@@ -28,7 +28,7 @@
  
  #==============================================================================
  # ---- Optional rpmrc macros.
-@@ -366,7 +369,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -367,7 +370,7 @@ Supplements:   (%{name} = %{version}-%{r
  #		"w.ufdio"	uncompressed
  #
  #%_source_payload	w9.gzdio
@@ -37,7 +37,7 @@
  
  #	Algorithm to use for generating file checksum digests on build.
  #	If not specified or 0, MD5 is used.
-@@ -476,6 +479,19 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -477,6 +480,19 @@ Supplements:   (%{name} = %{version}-%{r
  #
  #%_include_minidebuginfo	1
  
@@ -57,7 +57,7 @@
  #
  # Include a .gdb_index section in the .debug files.
  # Requires _enable_debug_packages and gdb-add-index installed.
-@@ -508,39 +524,39 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -509,39 +525,39 @@ Supplements:   (%{name} = %{version}-%{r
  #   Same as for "separate" but if the __debug_package global is set then
  #   the -debuginfo package will have a compatibility link for the main
  #   ELF /usr/lib/debug/.build-id/xx/yyy -> /usr/lib/.build-id/xx/yyy
@@ -104,7 +104,7 @@
  
  #
  # Use internal dependency generator rather than external helpers?
-@@ -559,6 +575,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -560,6 +576,7 @@ Supplements:   (%{name} = %{version}-%{r
  %__find_requires	%{_rpmconfigdir}/find-requires
  #%__find_conflicts	???
  #%__find_obsoletes	???
@@ -112,7 +112,7 @@
  
  # 
  # Path to file attribute classifications for automatic dependency 
-@@ -980,7 +997,7 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -981,7 +998,7 @@ Supplements:   (%{name} = %{version}-%{r
  %_build_vendor		%{_host_vendor}
  %_build_os		%{_host_os}
  %_host			@host@
@@ -121,7 +121,7 @@
  %_host_cpu		@host_cpu@
  %_host_vendor		@host_vendor@
  %_host_os		@host_os@
-@@ -1105,11 +1122,13 @@ Supplements:   (%{name} = %{version}-%{r
+@@ -1106,11 +1123,13 @@ Supplements:   (%{name} = %{version}-%{r
  
  #------------------------------------------------------------------------------
  # arch macro for all supported 32-bit ARM processors
@@ -136,3 +136,12 @@
  
  #------------------------------------------------------------------------------
  # arch macro for all supported 64-bit ARM processors
+@@ -1356,7 +1375,7 @@ end
+     if type == 'groupmember' then
+         print(string.format('%s%s(%s/%s) = %s\\n', prefix, type, name, arg[3], enc))
+ 	if (prefix ~= '') then
+-	   prefix2 = rpm.expand('%[%{?_use_weak_usergroup_deps} > 0 : "Recommends" : "Requires"]')
++	   prefix2 = rpm.expand('%[%{?_use_weak_usergroup_deps} > 0 ? "Recommends" : "Requires"]')
+ 	   print(string.format('%s: user(%s)\\n', prefix2, name))
+ 	   print(string.format('%s: group(%s)\\n', prefix2, arg[3]))
+ 	end

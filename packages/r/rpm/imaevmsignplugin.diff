@@ -1,0 +1,214 @@
+--- CMakeLists.txt.orig	2026-07-01 12:52:31.090297156 +0000
++++ CMakeLists.txt	2026-07-01 12:52:32.994295629 +0000
+@@ -446,6 +446,9 @@ include_directories(${CMAKE_SOURCE_DIR}/
+ # public headers
+ include_directories(${CMAKE_SOURCE_DIR}/include)
+ 
++set(RPM_PLUGINDIR ${CMAKE_INSTALL_FULL_LIBDIR}/rpm-plugins
++       CACHE PATH "rpm plugin directory")
++
+ add_subdirectory(docs)
+ add_subdirectory(include/rpm)
+ add_subdirectory(misc)
+@@ -463,9 +466,6 @@ if (ENABLE_PYTHON)
+ 	add_subdirectory(python)
+ endif()
+ 
+-set(RPM_PLUGINDIR ${CMAKE_INSTALL_FULL_LIBDIR}/rpm-plugins
+-       CACHE PATH "rpm plugin directory")
+-
+ if (ENABLE_PLUGINS)
+ 	add_subdirectory(plugins)
+ endif()
+--- docs/man/CMakeLists.txt.orig	2026-07-01 13:34:38.072271624 +0000
++++ docs/man/CMakeLists.txt	2026-07-01 13:34:57.528255927 +0000
+@@ -27,6 +27,7 @@ set(manuals ${core})
+ if (ENABLE_PLUGINS)
+ 	list(APPEND manuals rpm-plugins.8
+ 		rpm-plugin-prioreset.8 rpm-plugin-syslog.8)
++	list(APPEND manuals rpm-plugin-ima.8)
+ 	if (WITH_AUDIT)
+ 		list(APPEND manuals rpm-plugin-audit.8)
+ 	endif()
+@@ -37,9 +38,6 @@ if (ENABLE_PLUGINS)
+ 	if (WITH_FAPOLICYD)
+ 		list(APPEND manuals rpm-plugin-fapolicyd.8)
+ 	endif()
+-	if (WITH_IMAEVM)
+-		list(APPEND manuals rpm-plugin-ima.8)
+-	endif()
+ 	if (WITH_SELINUX)
+ 		list(APPEND manuals rpm-plugin-selinux.8)
+ 	endif()
+--- plugins/CMakeLists.txt.orig	2026-07-01 13:32:30.272374761 +0000
++++ plugins/CMakeLists.txt	2026-07-01 13:33:25.096330501 +0000
+@@ -1,5 +1,6 @@
+ add_library(prioreset MODULE prioreset.c)
+ add_library(syslog MODULE syslog.c)
++add_library(ima MODULE ima.c)
+ 
+ if(WITH_SELINUX)
+ 	add_library(selinux MODULE selinux.c)
+@@ -19,10 +20,6 @@ if(WITH_DBUS)
+ 	)
+ endif()
+ 
+-if(WITH_IMAEVM)
+-	add_library(ima MODULE ima.c)
+-endif()
+-
+ if(WITH_FAPOLICYD)
+ 	add_library(fapolicyd MODULE fapolicyd.c)
+ endif()
+--- sign/CMakeLists.txt.orig	2025-02-19 15:29:33.000000000 +0000
++++ sign/CMakeLists.txt	2026-07-01 12:59:38.985954394 +0000
+@@ -19,8 +19,8 @@ target_include_directories(librpmsign
+ target_link_libraries(librpmsign PUBLIC librpmio librpm)
+ target_link_libraries(librpmsign PRIVATE PkgConfig::POPT ${Intl_LIBRARIES})
+ if (WITH_IMAEVM)
+-	target_sources(librpmsign PRIVATE rpmsignfiles.c)
+-	target_link_libraries(librpmsign PRIVATE IMA::IMA)
++	add_library(imaevmsign MODULE rpmsignfiles.c)
++        target_link_libraries(imaevmsign PRIVATE librpmio librpm IMA::IMA)
+ endif()
+ if (WITH_FSVERITY)
+ 	target_sources(librpmsign PRIVATE rpmsignverity.c)
+@@ -35,3 +35,7 @@ set_source_files_properties(${cxx_source
+ endif()
+ 
+ install(TARGETS librpmsign EXPORT rpm-targets)
++if (WITH_IMAEVM)
++install(TARGETS imaevmsign DESTINATION ${RPM_PLUGINDIR})
++endif()
++
+--- sign/rpmgensig.c.orig	2025-02-19 15:29:33.000000000 +0000
++++ sign/rpmgensig.c	2026-07-01 12:55:14.338166364 +0000
+@@ -13,9 +13,8 @@
+ #include <libfsverity.h>
+ #include "rpmsignverity.h"
+ #endif
+-#ifdef WITH_IMAEVM
++#include <dlfcn.h>
+ #include "rpmsignfiles.h"
+-#endif
+ 
+ #include <rpm/rpmlib.h>			/* RPMSIGTAG & related */
+ #include <rpm/rpmmacro.h>
+@@ -474,9 +473,38 @@ static void unloadImmutableRegion(Header
+     }
+ }
+ 
++static rpmRC CallRpmSignFiles(Header sig, Header hdr, char *key, char *keypass)
++{
++    rpmRC rc = RPMRC_FAIL;
++    void *handle = NULL;
++    void *func;
++    char *error;
++    char *path = rpmExpand("%{?__sign_imaevm}", NULL);
++    if (!path || !*path) {
++	rpmlog(RPMLOG_ERR, _("imaevm sign plugin is not configured\n"));
++	goto exit;
++    }
++    handle = dlopen(path, RTLD_LAZY);
++    if (!handle) {
++	rpmlog(RPMLOG_ERR, _("Failed to dlopen %s %s\n"), path, dlerror());
++	goto exit;
++    }
++    func = dlsym(handle, "rpmSignFiles");
++    if ((error = dlerror()) != NULL) {
++	rpmlog(RPMLOG_ERR, _("Failed to resolve symbol %s: %s\n"),
++		"rpmSignFiles", error);
++	goto exit;
++    }
++    rc = ((rpmRC (*)(Header, Header, char *, char *))func)(sig, hdr, key, keypass);
++exit:
++    if (handle)
++	dlclose(handle);
++    _free(path);
++    return rc;
++}
++
+ static rpmRC includeFileSignatures(Header *sigp, Header *hdrp)
+ {
+-#ifdef WITH_IMAEVM
+     rpmRC rc;
+     char *key = rpmExpand("%{?_file_signing_key}", NULL);
+     char *keypass = rpmExpand("%{?_file_signing_key_password}", NULL);
+@@ -486,15 +514,11 @@ static rpmRC includeFileSignatures(Heade
+ 	keypass = NULL;
+     }
+ 
+-    rc = rpmSignFiles(*sigp, *hdrp, key, keypass);
++    rc = CallRpmSignFiles(*sigp, *hdrp, key, keypass);
+ 
+     free(keypass);
+     free(key);
+     return rc;
+-#else
+-    rpmlog(RPMLOG_ERR, _("file signing support not built in\n"));
+-    return RPMRC_FAIL;
+-#endif
+ }
+ 
+ static rpmRC includeVeritySignatures(FD_t fd, Header *sigp, Header *hdrp)
+--- sign/rpmsignfiles.c.orig	2025-02-19 15:29:33.000000000 +0000
++++ sign/rpmsignfiles.c	2026-07-01 12:53:14.826262117 +0000
+@@ -16,6 +16,17 @@
+ 
+ #include "rpmsignfiles.h"
+ 
++#ifdef __cplusplus
++extern "C" {
++#endif
++
++/* This doesn't have c++ guards on its own */
++#include <imaevm.h>
++
++#ifdef __cplusplus
++}
++#endif
++
+ #define MAX_SIGNATURE_LENGTH 1024
+ 
+ static const char *hash_algo_name[] = {
+--- sign/rpmsignfiles.h.orig	2025-02-19 15:29:33.000000000 +0000
++++ sign/rpmsignfiles.h	2026-07-01 12:53:49.874234031 +0000
+@@ -4,17 +4,6 @@
+ #include <rpm/rpmtypes.h>
+ #include <rpm/rpmutil.h>
+ 
+-#ifdef __cplusplus
+-extern "C" {
+-#endif
+-
+-/* This doesn't have c++ guards on its own */
+-#include <imaevm.h>
+-
+-#ifdef __cplusplus
+-}
+-#endif
+-
+ /**
+  * Sign file digests in header into signature header
+  * @param sigh		package signature header
+@@ -23,7 +12,6 @@ extern "C" {
+  * @param keypass	signing key password
+  * @return		RPMRC_OK on success
+  */
+-RPM_GNUC_INTERNAL
+ rpmRC rpmSignFiles(Header sigh, Header h, const char *key, char *keypass);
+ 
+ #endif /* H_RPMSIGNFILES */
+--- tools/rpmsign.c.orig	2026-07-01 13:29:05.232540198 +0000
++++ tools/rpmsign.c	2026-07-01 13:30:10.364487638 +0000
+@@ -19,6 +19,10 @@ enum modes {
+ 
+ static int mode = MODE_NONE;
+ 
++#ifndef WITH_IMAEVM
++#define WITH_IMAEVM
++#endif
++
+ #if defined(WITH_IMAEVM) || defined(WITH_FSVERITY)
+ static int fskpass = 0;
+ static char * fileSigningKey = NULL;

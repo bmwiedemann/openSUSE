@@ -336,7 +336,7 @@
 +	    return r;
 +	}
 +    }
-+    if (tartype == '0' ||  tartype == '1')
++    if (tartype == '0')
 +	size =  rpmfiFSize(fi);
 +    else if (tartype == 'x')
 +	size = (rpm_loff_t)strlen(buf);

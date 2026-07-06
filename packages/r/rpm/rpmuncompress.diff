@@ -1,0 +1,61 @@
+--- tools/rpmuncompress.c.orig	2026-06-29 10:27:29.920768592 +0000
++++ tools/rpmuncompress.c	2026-06-29 10:44:12.095805763 +0000
+@@ -100,6 +100,8 @@ static char * singleRoot(const char *pat
+ 	struct archive *a;
+ 	struct archive_entry *entry;
+ 	int r, ret = -1, rootLen;
++	const char *p = NULL;
++	const char *sep = NULL;
+ 	char *rootName = NULL;
+ 
+ 	a = archive_read_new();
+@@ -112,24 +114,32 @@ static char * singleRoot(const char *pat
+ 	if (archive_read_next_header(a, &entry) != ARCHIVE_OK) {
+ 	    goto afree;
+ 	}
+-	rootName = xstrdup(archive_entry_pathname(entry));
+-	char *sep = strchr(rootName, '/');
+-	if (sep == NULL) {
++
++	/* Extract the lead directory from the first entry */
++	p = archive_entry_pathname(entry);
++	sep = strchr(p, '/');
++	if (sep) {
++	    rootName = xstrdup(p);
++	    rootLen = sep - p + 1;
++	} else if (archive_entry_filetype(entry) == AE_IFDIR) {
++	    rootName = rstrscat(NULL, p, "/", NULL);
++	    rootLen = strlen(rootName);
++	} else {
+ 	    /* No directories in the pathname */
+ 	    ret = 0;
+ 	    goto afree;
+ 	}
+ 
+ 	/* Do all entries in the archive start with the same lead directory? */
+-	rootLen = sep - rootName + 1;
+ 	while (archive_read_next_header(a, &entry) == ARCHIVE_OK) {
+-	    const char *p = archive_entry_pathname(entry);
++	    p = archive_entry_pathname(entry);
+ 	    if (strncmp(rootName, p, rootLen)) {
+ 		ret = 0;
+ 		goto afree;
+ 	    }
+ 	}
+-	*sep = '\0';
++
++	rootName[rootLen - 1] = '\0';
+ 	ret = 1;
+ 
+ afree:
+@@ -177,8 +187,8 @@ static char *doUntar(const char *fn)
+ 		rasprintf(
+ 		    &moveup,
+ 		    " && "
+-		    "(shopt -s dotglob; mv \"$tmp\"/'%s'/* '%s') && "
+-		    "rmdir \"$tmp\"/'%s' \"$tmp\" ", sr, dstpath, sr);
++		    "(shopt -s dotglob; mv \"$tmp\"/*/* '%s') && "
++		    "rmdir \"$tmp\"/* \"$tmp\" ", dstpath);
+ 		rasprintf(&stripcd, "%s\"$tmp\" %s", at->dest, moveup);
+ 		free(moveup);
+ 	    } else {

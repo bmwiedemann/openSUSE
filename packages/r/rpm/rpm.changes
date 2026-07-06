@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jun 30 14:48:45 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- harden ndb code [bsc#1269584] [CVE-2026-44605]
+  * new patch: ndbharden.diff
+- split all plugins into subpackages
+  * this allows for an easy way to get rid of a plugin, it's also
+    what other distributions do
+- make the imaevmsign plugin build in a multibuild flavor
+  * updated patch: imaevmsignplugin.diff
+
+-------------------------------------------------------------------
+Mon Jun 29 11:43:19 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- rpm2archive: use size 0 for hardlinked files as bnew versions of
+  gnu tar reject non-zero sizes [bsc#1269150]
+  * updated patch: rpm2archive.diff
+- backport fix for add_sysuser macro [bsc#1269571]
+  * updated patch: macrosin.diff
+- backport rpmuncompress security fix [bsc#1268747] [CVE-2026-44604]
+  * new patch: rpmuncompress.diff
+
+-------------------------------------------------------------------
+Wed Jun 17 09:36:52 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- switch from rpmpgp_legacy to libpgpr
+  * multiple bug fixes, support for v5 and v6 signatures
+  * updated patch: pgpreleasemtime.diff
+- turn on imaevm file signature support and move the imaevm code
+  that needs the libimaevm library into a plugin. Put this
+  plugin into a new "rpm-imaevmsign" subpackage. [jsc#PED-7246]
+  * new patch: imaevmsignplugin.diff
+
+-------------------------------------------------------------------
 Thu Mar  5 11:06:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix "unexpected EOF" when using rpmbuild to install ELF binaries

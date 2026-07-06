@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -64,8 +64,8 @@ Release:        0
 URL:            https://rpm.org/
 #Git-Clone:     https://github.com/rpm-software-management/rpm
 Source:         https://ftp.osuosl.org/pub/rpm/releases/rpm-4.20.x/rpm-%{version}.tar.bz2
-#Git-Clone:     https://github.com/rpm-software-management/rpmpgp_legacy
-Source1:        rpmpgp_legacy-1.1.tar.gz
+#Url:           https://github.com/rpm-software-management/libpgpr/archive/refs/tags/1.3.tar.gz
+Source1:        libpgpr-1.3.tar.gz
 Source5:        rpmsort
 Source8:        rpmconfigcheck
 Source9:        sysconfig.services-rpm
@@ -130,6 +130,9 @@ Patch158:       archcheck.diff
 Patch159:       emptypw.diff
 Patch160:       buildsysprep.diff
 Patch161:       pgpreleasemtime.diff
+Patch162:       imaevmsignplugin.diff
+Patch163:       rpmuncompress.diff
+Patch164:       ndbharden.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
@@ -222,6 +225,44 @@ Requires:       rpm = %{version}
 %description plugin-unshare
 Rpm plugin for Linux namespace isolation functionality.
 
+%package plugin-ima
+Summary:        Rpm plugin for ima file signatures
+Requires:       rpm = %{version}
+Provides:       rpm:%{_libdir}/rpm-plugins/ima.so
+
+%description plugin-ima
+Rpm plugin for ima file signatures.
+
+%package plugin-selinux
+Summary:        Rpm plugin for SELinux functionality
+Requires:       rpm = %{version}
+Provides:       rpm:%{_libdir}/rpm-plugins/selinux.so
+
+%description plugin-selinux
+Rpm plugin for SELinux functionality.
+
+%package plugin-prioreset
+Summary:        Rpm plugin for resetting scriptlet priorities for SysV init
+Requires:       rpm = %{version}
+
+%description plugin-prioreset
+Rpm plugin for resetting scriptlet priorities for SysV init.
+
+%package plugin-syslog
+Summary:        Rpm plugin for syslog functionality
+Requires:       rpm = %{version}
+Provides:       rpm:%{_libdir}/rpm-plugins/syslog.so
+
+%description plugin-syslog
+Rpm plugin for syslog functionality.
+
+%package plugin-fapolicyd
+Summary:        Rpm plugin for fapolicyd support
+Requires:       rpm = %{version}
+
+%description plugin-fapolicyd
+Rpm plugin for fapolicyd support.
+
 %prep
 %setup -q -n rpm-%{version}
 %ifarch aarch64 ppc64le riscv64 loongarch64
@@ -229,7 +270,7 @@ tar xf %{SOURCE14}
 %endif
 pushd rpmio
 tar xf %{SOURCE1}
-ln -s rpmpgp_legacy-* rpmpgp_legacy
+ln -s libpgpr-* rpmpgp_legacy
 popd
 
 rm -rf sqlite
@@ -249,7 +290,7 @@ rm -rf sqlite
 %patch -P 139
 %patch -P 141 -P 142
 %patch -P 150 -P 151 -P 154 -P 155 -P 156 -P 157 -P 158 -P 159
-%patch -P 160 -P 161
+%patch -P 160 -P 161 -P 162 -P 163 -P 164
 
 %ifarch aarch64 ppc64le riscv64 loongarch64
 %patch -P 6464
@@ -299,6 +340,7 @@ cmake .. \
   -DENABLE_SQLITE=OFF \
   -DWITH_AUDIT=OFF \
   -DWITH_DBUS=OFF \
+  -DWITH_IMAEVM=%{?with_imaevm:ON}%{?!with_imaevm:OFF} \
   -DENABLE_PYTHON=%{?with_python:ON}%{?!with_python:OFF} \
   -DENABLE_TESTSUITE=OFF \
   -D__FIND_DEBUGINFO=/usr/lib/rpm/find-debuginfo \
@@ -401,8 +443,8 @@ fi
 %license 	COPYING
 %doc	%{_datadir}/doc/packages/rpm
 %exclude %{_datadir}/doc/packages/rpm/API
-%exclude /usr/lib/rpm/macros.d/macros.transaction_unshare
-%exclude %{_mandir}/man8/rpm-plugin-unshare*
+%exclude /usr/lib/rpm/macros.d/macros.transaction_*
+%exclude %{_mandir}/man8/rpm-plugin-*
 	/etc/rpm
 %if 0%{?suse_version} < 1550
 	/bin/rpm
@@ -434,7 +476,7 @@ fi
 	/usr/lib/rpm/rpmdump
 	/usr/lib/rpm/suse
 	/usr/lib/rpm/tgpg
-	%{_libdir}/rpm-plugins
+    	%{_libdir}/rpm-plugins
 	%{_libdir}/librpm.so.*
 	%{_libdir}/librpmio.so.*
 	%{_libdir}/librpmsign.so.*
@@ -492,5 +534,30 @@ fi
 %defattr(-,root,root)
 /usr/lib/rpm/macros.d/macros.transaction_unshare
 %doc %{_mandir}/man8/rpm-plugin-unshare*
+
+%files plugin-ima
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_ima
+%doc %{_mandir}/man8/rpm-plugin-ima*
+
+%files plugin-selinux
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_selinux
+%doc %{_mandir}/man8/rpm-plugin-selinux*
+
+%files plugin-prioreset
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_prioreset
+%doc %{_mandir}/man8/rpm-plugin-prioreset*
+
+%files plugin-syslog
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_syslog
+%doc %{_mandir}/man8/rpm-plugin-syslog*
+
+%files plugin-fapolicyd
+%defattr(-,root,root)
+/usr/lib/rpm/macros.d/macros.transaction_fapolicyd
+%doc %{_mandir}/man8/rpm-plugin-fapolicyd*
 
 %changelog

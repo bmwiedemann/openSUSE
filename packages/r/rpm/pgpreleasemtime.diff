@@ -26,13 +26,3 @@
  
      rasprintf(&pd->timestr, "%x", pd->time);
      rasprintf(&pd->verid, "%d:%s-%s", pgpDigParamsVersion(pubp), pd->signid, pd->timestr);
---- rpmio/rpmpgp_legacy-1.1/rpmpgp_internal.h.orig	2025-06-02 13:27:51.345567394 +0000
-+++ rpmio/rpmpgp_legacy-1.1/rpmpgp_internal.h	2025-06-02 13:28:59.425482575 +0000
-@@ -163,7 +163,4 @@ rpmpgpRC pgpMergeKeys(const uint8_t *pkt
- RPM_GNUC_INTERNAL
- uint32_t pgpCurrentTime(void);
- 
--RPM_GNUC_INTERNAL
--uint32_t pgpDigParamsModificationTime(pgpDigParams digp);
--
- #endif /* _RPMPGP_INTERNAL_H */
