@@ -1,4 +1,247 @@
 -------------------------------------------------------------------
+Thu Jul  2 05:49:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.2.0:
+  * Add a --export-config FORMAT option to every @command and
+    @group: it renders the resolved configuration on <stdout> in
+    any writable format (toml, yaml, json, json5, jsonc, hjson,
+    xml), then exits. Adds ExportConfigOption,
+    @export_config_option and SERIALIZABLE_FORMATS to the public
+    API.
+  * Add --theme=auto: it selects the dark or light palette from the
+    terminal background, detected from CLITHEME, COLORFGBG or a
+    live OSC 11 query; the default stays dark. Adds
+    resolve_background and query_osc_background to
+    click_extra.color, resolve_auto_theme and AUTO_THEME to
+    click_extra.theme.
+  * Add run_lanes(func, lanes) and resolve_jobs(ctx, count) to
+    click_extra.execution: run each lane serially while distinct
+    lanes run concurrently, sized by --jobs; expose the
+    worker-count policy shared with run_jobs. A serial_at_debug
+    keyword collapses both fan-outs to sequential at DEBUG
+    verbosity.
+  * Add the always-on matrix Sphinx directive, rendering a
+    package's release compatibility matrix from its git tags, for
+    the Python interpreter ({matrix} python) or a dependency
+    ({matrix} <distribution>) axis; a comment-marker form renders
+    the embedded table on GitHub too.
+  * Add the click-extra refresh-directives command (wrapping
+    click_extra.sphinx.matrix.update_matrix_blocks) to regenerate
+    the tables embedded in {matrix} directive blocks and <!--
+    matrix … --> marker regions; its --check mode flags stale
+    tables in CI.
+  * Publish format_cli_prompt in click_extra.testing (was the
+    private _format_cli_prompt): render a themed, copy-pasteable
+    prompt simulating a CLI invocation.
+  * Fix Carapace dynamic completion: an option's value or a
+    subcommand argument with a custom shell_complete now resolves
+    through the generated spec, instead of returning empty or
+    root-level candidates.
+  * Fix EnumChoice shell completion on Click 8.4.0: completion
+    candidates are now normalized, so they match the option's
+    accepted values instead of appearing as raw uppercase enum
+    names.
+  * Fix run_jobs blocking on Ctrl+C during parallel execution: an
+    interrupt now drops queued items and returns immediately,
+    instead of waiting for every in-flight task to finish.
+  * Add a documentation page on Typer compatibility, explaining why
+    click-extra cannot be combined with Typer and how to get the
+    same options natively.
+
+-------------------------------------------------------------------
+Wed Jul  1 13:28:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.1.4:
+  * Skip the EnumChoice shell-completion case-folding test on Click
+    8.3.
+- update to 8.1.3:
+  * Mark test as network-dependent
+- update to 8.1.2:
+  * The runner pytest fixture now pins HOME and its platform
+    equivalents inside its isolated filesystem, making
+    configuration-file discovery independent of the ambient
+    environment.
+  * The Sphinx, MkDocs and Carapace tests now self-skip when their
+    optional dependencies are missing, so downstream packagers no
+    longer need to --ignore them.
+- update to 8.1.1:
+  * Fix multiple and variadic (nargs=-1) options typed with
+    EnumChoice: their tuple default was stringified as a whole
+    (str((MyEnum.FOO,))) instead of per member, so the default
+    tripped Click's Value must be an iterable check when the option
+    was left unset.
+  * Fix decorator_factory leaking options across uses of a
+    pre-instantiated decorator: when command() is stored (e.g. in a
+    pytest parametrize list) and reused, Click mutated the shared
+    params list by extending it with each decorated function's
+    options, adding duplicates on every reuse. The fix re-evaluates
+    params_func() fresh on each application.
+- update to 8.1.0:
+  * Breaking:
+    - Rename the test-plan subcommand to test-suite, its
+      --plan-file/--plan-envvar options to
+      --suite-file/--suite-envvar, its [tool.<cli>.test-plan]
+      config section to [tool.<cli>.test-suite], the
+      click_extra.test_plan module to click_extra.test_suite, and
+      the
+      TestPlanConfig/parse_test_plan/run_test_plan/DEFAULT_TEST_PLAN
+      API to
+      TestSuiteConfig/parse_test_suite/run_test_suite/DEFAULT_TEST_SUITE.
+      The CLITestCase class and the [[cases]] file structure keep
+      their names.
+    - Replace the test-suite config's inline field with a native
+      cases array under [tool.<cli>.test-suite.cases] (or set file
+      to a suite path). Adds the cases field to TestSuiteConfig and
+      the cases_from_data helper.
+    - ClickExtraConfig, TestSuiteConfig, and PrebakeConfig are no
+      longer re-exported from the top-level click_extra namespace;
+      import them from click_extra.config.
+  * Add a Carapace completion exporter: the click_extra.carapace
+    module serializes a Click command tree to carapace-spec YAML
+    for native shell completion, behind a new carapace extra. The
+    to_carapace_spec, dump_carapace_spec, write_carapace_spec and
+    install_carapace_spec API answers click#3188.
+  * Add a --carapace mode to the wrap command: click-extra wrap
+    --carapace SCRIPT prints the target CLI's spec, and --install
+    writes it into Carapace's user spec directory. Mutually
+    exclusive with --man and --show-params.
+  * The wrap command now accepts a local project directory, reading
+    its console-script entry point from pyproject.toml or setup.cfg
+    so a checked-out project can be wrapped without installing it
+    first.
+  * Add the @sort_by_option decorator for the --sort-by table
+    option, composing with option groups and constraints; it
+    accepts ColumnSpec definitions and a columns= registry so one
+    column tuple drives both --columns and --sort-by. Closes
+    click-extra#1777.
+  * Decorators built by decorator_factory carry proper signatures:
+    their option class's constructor surfaces in help(), the REPL
+    and autodoc, and overloaded type hints let basedpyright,
+    pyright and mypy infer the produced command or decorated
+    callback. Closes click-extra#1781.
+  * @version_option accepts an explicit version string as its first
+    positional argument (@version_option("1.2.3")), for drop-in
+    compatibility with Click.
+  * A test-suite file may now be in any list-capable config format
+    detected from its extension: TOML and JSON (built-in), plus
+    YAML, JSON5, JSONC and Hjson (with their extras). Adds the
+    load_test_suite helper and SUITE_FORMATS constant.
+  * Accept a bare integer timeout in a test-suite case, coercing it
+    to a float instead of rejecting it.
+  * Default the test-suite config file to
+    ./tests/cli-test-suite.toml, which parses with the built-in
+    tomllib and so needs no optional extra.
+  * Add an all extra that pulls in every optional feature at once.
+  * Centralize config format reading, serialization, and detection
+    in click_extra.config with the new serialize_content,
+    read_file, and format_from_path helpers, joining the existing
+    parse_content.
+  * Add iter_subcommands and make_resilient_context to
+    click_extra.parameters for enumerating a group's visible
+    subcommands and building a parse-free introspection context.
+  * Add the CONFIG_PATH_METADATA_KEY and
+    NORMALIZE_KEYS_METADATA_KEY named constants for the schema
+    field-metadata keys, alongside the existing
+    EXTENSION_METADATA_KEY.
+  * Man pages now render optional-value options like --color as
+    --color[=auto|always|never] and drop the spurious value metavar
+    on repeatable count options like -v/--verbose.
+  * When introspection (--man, --show-params, --carapace) cannot
+    find a Click command in the resolved module, the error now
+    explains that an entry point importing its command lazily must
+    be addressed with module:function notation.
+  * Unify the "missing optional dependency" error messages behind a
+    shared missing_extra_message helper, pointing at the canonical
+    pip install click-extra[<extra>] install target.
+  * Restrict pytest collection to the tests folder and switch to
+    importlib import mode, fixing import file mismatch errors when
+    building from a packaged source tree alongside an installed
+    copy. Closes click-extra#1779.
+  * Show the same configuration across all eight supported formats
+    (TOML, YAML, JSON, JSON5, JSONC, Hjson, INI, XML) in a tabbed
+    block in the configuration docs.
+  * Silence ambiguous cross-reference warnings in the Sphinx
+    documentation build for the ColumnSpec, ConfigFormat,
+    ConfigValidator and LogLevel classes re-exported at the package
+    root.
+
+-------------------------------------------------------------------
+Tue Jun 23 07:37:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.0.1:
+  Redo a proper release.
+- update to 8.0.0:
+  No changelog available
+
+-------------------------------------------------------------------
+Thu Jun 18 16:02:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.20.1:
+  * Fix the MkDocs plugin and Sphinx directives leaving Rich-based
+    CLIs (such as rich-click) colorless in rendered documentation.
+
+-------------------------------------------------------------------
+Thu Jun 18 09:20:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 7.20.0:
+  * Add MultiChoice to click_extra.types: a Click ParamType for
+    comma-separated multi-pick from a fixed set of values, the
+    pick-many counterpart to click.Choice.
+  * Extend the --show-params table with seven new columns (Is flag,
+    Flag value, Is bool flag, Multiple, Nargs, Prompt, Confirmation
+    prompt).
+  * Add the --columns option (ColumnsOption, @columns_option) for
+    SQL SELECT-style column selection on both --show-params and the
+    standalone click-extra show-params subcommand.
+  * Add a click:tree Sphinx directive that walks a Click command
+    tree and expands into a summary table plus one {click:run}
+    --help block per command. MyST-only.
+  * Fix click-extra show-params ignoring the top-level
+    --table-format option and rendering its default as the enum
+    name instead of the kebab-case ID.
+  * Fix click-extra show-params and click-extra man resolving
+    auto-generated environment variables as empty; the envvars
+    column now matches what Click reads at runtime.
+  * Fix the MkDocs plugin stripping ANSI escape codes but rendering
+    no colors: it now generates the ANSI Pygments stylesheet and
+    registers it through extra_css, so the -Ansi-* classes it emits
+    are styled.
+  * Drop duplicate and dead CSS classes from ANSI HTML rendering:
+    compound tokens like Token.Ansi.Bold.Cyan now emit -Ansi
+    -Ansi-Bold -Ansi-Cyan instead of repeating -Ansi-Bold and
+    adding an unstyled -Ansi-Bold-Cyan.
+- update to 7.19.0:
+  * Add an --output-dir DIR option to the click-extra man
+    subcommand. With it set, the command writes one .1 file per
+    (sub)command in the resolved tree into DIR (created if missing)
+    instead of printing a single page to stdout. Suitable for
+    invocation from a release pipeline or a distributor's build
+    phase (Debian's override_dh_installman, Guix'
+    install-man-page), without a project-local wrapper script.
+  * Add a click_extra_manpages Sphinx configuration value (and the
+    matching click_extra.sphinx.manpages module) and a
+    click-extra-manpages directive. Projects enabling
+    click_extra.sphinx can declare one or more {"script",
+    "prog_name", "output_dir", "render_html"} entries to emit the
+    corresponding Click command tree(s) as roff .1 files into
+    <outdir>/<output_dir>/ on every HTML build. Each script is
+    resolved the same way click-extra man does (console-script
+    entry point, module:function, .py path, or module name); only
+    HTML-family builders trigger the hook. When mandoc or groff is
+    on PATH, every .1 also gets a browser-viewable .html sibling.
+    The click-extra-manpages directive renders a relative-URL
+    bullet list of all declared pages; it works at any depth in the
+    doc tree.
+  * Fix ExtraVersionOption.package_version resolving to None when
+    the package's top-level module name differs from its installed
+    distribution name (PIL vs Pillow, jwt vs PyJWT). The lookup now
+    falls back to importlib.metadata.packages_distributions() on
+    PackageNotFoundError. Ambiguous mappings (one import name to
+    several distributions) still return None and log a debug
+    message; pass package_name explicitly to disambiguate. Mirrors
+    the upstream fix in PR pallets/click#3582.
+
+-------------------------------------------------------------------
 Mon Jun  1 06:50:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 7.18.0:

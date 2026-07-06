@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        7.18.0
+Version:        8.2.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -38,15 +38,15 @@ BuildRequires:  %{python_module uv-build}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
 BuildRequires:  %{python_module boltons >= 20.0.0}
-BuildRequires:  %{python_module click >= 8.4.1}
+BuildRequires:  %{python_module click >= 8.3.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 1.0.1}
 BuildRequires:  %{python_module extra-platforms >= 8.0.0}
-BuildRequires:  %{python_module requests >= 2.34}
 BuildRequires:  %{python_module tabulate >= 0.10}
 BuildRequires:  %{python_module tomli >= 2 if %python-base < 3.11}
 BuildRequires:  %{python_module tomlkit >= 0.13}
 BuildRequires:  %{python_module wcmatch >= 10.0}
+BuildRequires:  %{python_module wcwidth >= 0.2}
 # optional dependencies
 BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module hjson >= 3.1}
@@ -65,18 +65,19 @@ BuildRequires:  %{python_module pygments-ansi-color >= 0.3.0}
 BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-httpserver >= 1.1.0}
 BuildRequires:  %{python_module pytest-randomly >= 4.0.0}
+BuildRequires:  %{python_module requests >= 2.34}
 BuildRequires:  %{python_module wcwidth}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boltons >= 20.0.0
-Requires:       python-click >= 8.4.1
+Requires:       python-click >= 8.3.1
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 1.0.1
 Requires:       python-extra-platforms >= 8.0.0
-Requires:       python-requests >= 2.34
 Requires:       python-tabulate >= 0.10
 Requires:       python-wcmatch >= 10.0
+Requires:       python-wcwidth >= 0.2
 Requires:       (python-tomli >= 2 if python-base < 3.11)
 Suggests:       python-PyYAML >= 6.0.3
 Suggests:       python-pygments >= 2.14
@@ -131,11 +132,14 @@ IGNORED_CHECKS+=" or test_patched_formatter_preserves_pymdownx_mro"
 IGNORED_CHECKS+=" or test_on_config_patches_formatters"
 IGNORED_CHECKS+=" or test_on_config_patches_mkdocs_click"
 IGNORED_CHECKS+=" or test_on_config_idempotent"
+IGNORED_CHECKS+=" or test_patch_mkdocs_click_forces_color_during_capture"
 IGNORED_CHECKS+=" or test_patch_mkdocs_click_usage"
 IGNORED_CHECKS+=" or test_patch_mkdocs_click_idempotent"
 IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
+IGNORED_CHECKS+=" or test_full_build_renders_ansi_colors"
+IGNORED_CHECKS+=" or test_on_config_registers_stylesheet"
 
-%pytest -k "not (${IGNORED_CHECKS})"
+%pytest --import-mode=importlib -k "not (${IGNORED_CHECKS})"
 
 %if %{with libalternatives}
 %pre
