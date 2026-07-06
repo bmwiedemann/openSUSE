@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul  3 11:12:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.91.3:
+  + Feature: up-device-battery: Prefer "Standard" over "Fast"
+    charging
+  + Fix: Resolve potential leaks
+  + Fix: Potential out-of-bound access
+  + Fix: Improve access control
+  + Fix: Remove unused codes
+  + Fix: Fix for Asus Battery Charge Threshold Detection
+- Drop 25303ba52771ee514b70fb1a5318a8313889ac31.patch: Added
+  upstream.
+
+-------------------------------------------------------------------
 Tue Jun 23 09:37:20 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Revert unneeded policy kit rules (mainline git commit d75f2dbee4df2)
-A    policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch 
+A    policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch
 
 -------------------------------------------------------------------
 Tue May 12 20:35:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>

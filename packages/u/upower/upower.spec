@@ -28,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.91.2
+Version:        1.91.3
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later
@@ -39,11 +39,10 @@ Source:         %{name}-%{version}.tar.zst
 Source1:        upower.rpmlintrc
 # PATCH-FIX-OPENSUSE: Skip installation of test-only dependencies
 Patch1:         skip-tests-install.patch
-# PATCH-FIX-UPSTREAM 25303ba52771ee514b70fb1a5318a8313889ac31.patch -- up-device-battery: Prefer "Standard" over "Fast" charging
-Patch2:         https://gitlab.freedesktop.org/upower/upower/-/commit/25303ba52771ee514b70fb1a5318a8313889ac31.patch
 # PATCH-FIX-OPENSUSE: No need on SUSE to grant root user addtional polkit rights, bsc#1265867
 # This is a revert of mainline commit d75f2dbee4df2bc20df840
 Patch3:         policy-org.freedesktop.upower.rules-grant-permission-for-skipping-the-inhibitor.patch
+
 BuildRequires:  gobject-introspection-devel >= 0.9.9
 BuildRequires:  gtk-doc >= 1.11
 BuildRequires:  intltool
