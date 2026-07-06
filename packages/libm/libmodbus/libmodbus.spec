@@ -17,7 +17,7 @@
 
 
 Name:           libmodbus
-Version:        3.1.12
+Version:        3.2.0
 Release:        0
 Summary:        Modbus Library
 License:        LGPL-2.1-or-later

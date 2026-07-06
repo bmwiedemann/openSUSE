@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:40:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  * Add modbus_proxy() to bridge two Modbus backends.
+  * Add termios2 support to allow custom baud rates (RTU).
+  * Return an exception response for READ EXCEPTION STATUS (0x07).
+  * Use EMBXILVAL instead of EMBMDATA for illegal data value
+    errors.
+  * modbus_reply: reject NULL req and mb_mapping arguments..
+  * modbus_reply: validate request length before reading
+    per-function fields.
+  * Fix signed integer overflow in modbus_get_float_*()
+  * Fix signed integer overflow in the MODBUS_GET_INT*_FROM_INT*
+    macros;
+  * MODBUS_GET_INT16_FROM_INT8() now returns a signed int16_t in
+    every context.
+  * Fix strict aliasing violation in modbus_set_float_*() by using
+    memcpy.
+  * modbus-rtu: don't use O_EXCL when opening the device (#760).
+  * Check if ai_list is null before freeing it (#831).
+  * Respect user-provided CFLAGS (closes #836).
+  * Fix test to use ctx instead of invalid_ctx (closes #791, #792).
+  * Update documentation of float functions (closes #838).
+  * Fix documentation examples of modbus_get_float_* functions.
+  * modbus_reply_exception: reject a NULL request pointer.
+  * modbus_mask_write_register: validate that ctx is not NULL.
+  * modbus_write_and_read_registers: validate src/dest pointers and
+    counts.
+  * modbus_report_slave_id: reject a NULL dest buffer.
+  * modbus_get_*_timeout: validate that the output pointers are not
+    NULL.
+  * modbus_mapping_new_start_address: cap table dimensions.
+  * modbus_mapping_new: reject negative counts.
+  * modbus_rtu_set_custom_rts: reject a NULL callback.
+  * modbus-rtu: avoid integer overflow in the RTS post-send delay.
+  * modbus-rtu: check the return values of the RTS ioctl calls.
+  * modbus-rtu: check the return value when saving termios settings
+    on connect.
+  * modbus-rtu: report a failure to restore termios settings on
+    close.
+  * modbus_new_rtu: reject negative baud rates.
+  * modbus-tcp: guard freeaddrinfo() against NULL on resolver
+    failure.
+  * modbus_new_tcp: NUL-terminate the IP string when ip is NULL.
+  * modbus_reply: validate FC22 request length before writing the
+    register.
+  * modbus-tcp: keep ctx->s consistent across failed or repeated
+    connects (no * false success on a stale descriptor, no socket
+    leak on reconnect).
+  * modbus-tcp: don't override the user error recovery mode in the
+    flush overflow path.
+  * guard close against a never-opened handle and reset it after
+    close).
+  * modbus-rtu: sleep the RTS turnaround delay in chunks to stay
+    portable with usleep().
+  * modbus_new_rtu: validate data_bit and stop_bit arguments.
+  * modbus_send_raw_request_tid: reject NULL raw_req with EINVAL.
+  * modbus_get_byte_from_bits: remove an always-false assert and
+    clamp nb_bits consistently in debug and release builds.
+  * tests: don't kill the unit test server on RTU bad-CRC frames.
+  * tests: fix integer overflow in the bandwidth-client rate
+    computation.
+
+-------------------------------------------------------------------
 Fri Feb 13 18:51:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.12
