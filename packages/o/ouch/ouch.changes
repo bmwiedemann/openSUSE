@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul  4 06:24:52 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.1:
+  Highlighted changes:
+  * security improvements #951
+  * fix exit code in non-interactive mode #1011
+  * fix: ignore invalid unix permissions and setuid bits from zip #1007
+  Other Changes
+  * tweak extract logic in preparation for sandboxing #996
+  * ci: bump actions/checkout from 6 to 6.0.2 in the github-actions group #1002
+  * ci: bump actions/checkout from 6.0.2 to 6.0.3 in the github-actions group #1009
+  * deps: bump tar from 0.4.45 to 0.4.46 in the cargo-patch-and-minor group #997
+  * deps: bump the cargo-patch-and-minor group with 11 updates #1003, #1010 and #1013
+
+-------------------------------------------------------------------
 Tue Jun  2 20:55:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.0:
