@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul  2 17:21:58 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 0.49.0:
+  * Escape special characters (", CR, LF) in multipart field names and filenames when serializing multipart/form-data bodies to prevent header injection attacks
+  * Escape CR/LF in MultipartFormData::content_type values before writing them to part headers
+  * Add public MultipartFormDataWriter for multipart body serialization outside the standard client methods
+  * Make the ThreadPool idle timeout for dynamic threads configurable via a new constructor parameter
+  * Replace locale-dependent character classification with ASCII-specific helpers across multipart validation, token checks, URI encoding, range parsing, and IPv4 detection (#2482, #2483)
+  * Remove the default port from the WebSocket handshake Host header per RFC 6455 §4.1 and fix IPv6 literal bracketing (#2480)
+  * Fix query string handling when path encoding is disabled — the query is now sent verbatim instead of being decoded and re-encoded (#2479)
+  * Fix unsigned accumulator in base64_encode to avoid undefined behavior with high-bit bytes (#2477)
+  * Fix meson build failure on glibc >= 2.34 where getaddrinfo_a is built into libc (#2484)
+- 0.48.0:
+  * Complete the IP-host certificate identity fix for the Mbed TLS and wolfSSL backends: IP-literal hosts are now authenticated only via a matching iPAddress SAN, never via Common Name; add IPv6 (16-byte) iPAddress SAN matching (#2476)
+  * Replace the strtod-based quality-value parser with a locale-independent hand-written parser to handle comma-decimal locales correctly (#2475)
+  * Fix OpenSSL 4.0 deprecation warnings by using X509_STORE_get1_objects() and X509_NAME_get_index_by_NID()
+  * decode_query_component() now uses strict hex parsing, rejecting non-hex characters following % (e.g. %-1, %+5) (#2472)
+  * Add new OSS-Fuzz fuzzer targets for multipart parsing (#2473)
+- 0.47.0:
+  * Fix TLS certificate chain verification bypass for IP-literal hosts on the Mbed TLS and wolfSSL backends where chain validation was skipped entirely or not performed post-handshake
+  * Disable SNI for IP hosts on Mbed TLS and wolfSSL per RFC 6066
+  * Add Server::set_start_handler() callback invoked when the server is ready to accept connections
+  * Add Client/SSLClient/WebSocketClient::enable_system_ca(bool) to load system CA certificates alongside a custom CA (#2471)
+  * Add WebSocketClient::set_hostname_addr_map() for IP-specific connection while maintaining the hostname for handshake/verification (#2463)
+  * Request body is now read after route matching and the pre-request handler (route matching -> pre-request handler -> body read -> handler), so requests rejected by the pre-request handler no longer buffer the body
+  * WebSocketClient with a custom CA no longer merges system certificates (call enable_system_ca(true) for that behavior)
+  * Range request headers are now ignored for streaming responses of unknown length (#2465)
+  * Fix SSLClient::set_ca_cert_store() breaking custom-CA exclusivity and system certificates being silently merged
+  * Fix WebSocketClient dropping the query string during the upgrade handshake (#2468)
+  * Fix use-after-free when reconnecting WebSocketClient after set_ca_cert_store() and a related memory leak
+  * Fix MSVC C4309 truncation warning in the SHA padding code (#2464)
+  * Cast to unsigned char before ctype calls in is_hex and is_token_char to avoid undefined behavior (#2469)
+
+-------------------------------------------------------------------
 Mon Jun  8 17:28:54 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 0.46.1:
