@@ -21,7 +21,7 @@
 %define fragment_name supplier-mvn3
 %define _buildshell /bin/bash
 Name:           %{base_name}%{version_suffix}-%{fragment_name}
-Version:        2.0.18
+Version:        2.0.20
 Release:        0
 Summary:        Maven Artifact Resolver Instance Supplier Maven3
 License:        Apache-2.0

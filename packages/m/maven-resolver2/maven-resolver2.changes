@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jul  5 20:09:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.0.20
+  * New features and improvements
+    + Reduce PathConflictResolver memory and auto-select resolver
+    + Fix dependency selector cache regression in DF collector
+    + Fix thread contention in GenericVersionScheme and
+      WeakInternPool
+    + Improve thread safety across modules
+    + WarnChecksumPolicy: proceed on no checksums
+    + Extend AuthenticationBuilder to support SSLContext for mTLS
+      authentication
+    + DependencyCollectionChecker: new session member
+    + Add any media type to RFC9457 content type header
+    + fix: Configuration to be able to control sending RFC 9457
+      related Accept HTTP header
+    + Improvement: BF dependency selector hot methods
+  * Bug Fixes
+    + Fix ApacheTransport auth cache CCEx
+    + Checksums: lack of information
+    + Fix inverted SIGTSTP condition in IPC server
+    + Bug: fix IPC named lock client-side robustness for Windows
+    + Bugfix: Fix NPE in PathConflictResolver
+    + Bug: fix IPC named lock server-side waiter leak on client
+      timeout
+    + Bug: fix new PCR as it in certain cases left duplicates
+  * Documentation updates
+    + Javadoc update
+    + Doc: Trusted Checksums Summary File Procedure
+  * Maintenance
+    + Put PCR aside for now
+    + Get rid of BND warnings
+    + Align generators
+    + Fix for ChainedWorkspaceReader
+    + Create simple JMH benchmark to compare CCR and PCR
+    + Tidy up suppliers
+    + Disable IPC lock tests on Windows
+  * Dependency updates
+    + Bump org.apache.maven:maven-parent from 48 to 49
+    + Bump roasterVersion from 2.31.0.Final to 2.31.1.Final
+    + Bump sisuVersion from 1.0.0 to 1.0.1
+    + Bump org.redisson:redisson from 4.4.0 to 4.6.1
+    + Deps: Jetty 12.1.10
+    + Bump io.minio:minio from 9.0.0 to 9.0.3
+    + Bump dev.sigstore:sigstore-java from 2.1.0 to 2.2.0
+    + Bump okhttpVersion from 5.3.2 to 5.4.0
+    + Bump biz.aQute.bnd:bnd-maven-plugin from 7.2.3 to 7.3.0
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.25.7 to 0.26.1
+    + Bump org.ow2.asm:asm from 9.9.1 to 9.10.1
+    + Bump dev.sigstore:sigstore-java from 2.0.0 to 2.1.0
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.11.0 to
+      2.12.0
+    + Bump maven3Version from 3.9.15 to 3.9.16
+
+-------------------------------------------------------------------
 Mon May 18 09:43:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.0.18
