@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul  4 09:11:56 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 11.0.1:
+  * FIX: BetterEm: Fix regex pattern inefficiencies.
+  * FIX: Tilde: Fix regex pattern inefficiencies.
+  * FIX: Caret: Fix regex pattern inefficiencies.
+  * FIX: MagicLink: Fix regex pattern inefficiencies. 
+
+-------------------------------------------------------------------
 Wed Jun 24 19:59:20 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 11.0:
