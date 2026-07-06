@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 28 11:53:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.42.0:
+  * feat: add authorship arguments to assistant threads and chat
+    stream
+  * feat(blocks): add Card, Carousel, and Alert block types
+  * feat(models): add BlockChunk type to
+    chat.{start,append,stop}Stream methods
+  * feat: add highlight_type to files.completeUploadExternal and
+    files_upload_v2
+  * fix: pass default ssl=True to aiohttp to avoid deprecation
+    warning
+  * fix: Improve type annotations in `SignatureVerifier`
+  * Fix typo in SectionBlock field validation
+  * fix: improve Socket Mode client stability and correctness
+  * fix: pin cryptography<46 for PyPy 3.10 CI builds
+  * fix: resolve OAuth installation store bugs and typos
+  * docs - adds chat_stream helper to python sdk docs (removing
+    from bolt-py)
+  * docs(maintainers): adding block kit types instructions
+
+-------------------------------------------------------------------
 Sun Mar 29 19:19:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.41.0:

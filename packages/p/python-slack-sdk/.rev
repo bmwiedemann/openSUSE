@@ -243,4 +243,29 @@
   * chore(release): version 3.40.1</comment>
     <requestid>1343523</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e991eb84393c0099272829379e050ed3</srcmd5>
+    <version>3.42.0</version>
+    <time>1783333939</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.42.0:
+  * feat: add authorship arguments to assistant threads and chat
+    stream
+  * feat(blocks): add Card, Carousel, and Alert block types
+  * feat(models): add BlockChunk type to
+    chat.{start,append,stop}Stream methods
+  * feat: add highlight_type to files.completeUploadExternal and
+    files_upload_v2
+  * fix: pass default ssl=True to aiohttp to avoid deprecation
+    warning
+  * fix: Improve type annotations in `SignatureVerifier`
+  * Fix typo in SectionBlock field validation
+  * fix: improve Socket Mode client stability and correctness
+  * fix: pin cryptography&lt;46 for PyPy 3.10 CI builds
+  * fix: resolve OAuth installation store bugs and typos
+  * docs - adds chat_stream helper to python sdk docs (removing
+    from bolt-py)
+  * docs(maintainers): adding block kit types instructions</comment>
+    <requestid>1363962</requestid>
+  </revision>
 </revisionlist>

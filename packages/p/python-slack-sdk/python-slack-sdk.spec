@@ -17,7 +17,7 @@
 
 
 Name:           python-slack-sdk
-Version:        3.41.0
+Version:        3.42.0
 Release:        0
 Summary:        Python SDKs for the Slack API
 License:        MIT
@@ -67,6 +67,8 @@ seamlessly when used together, too.
 %check
 # Tests needs to be importable
 export PYTHONPATH=$(pwd)
+# too many warnings
+rm -v tests/slack_sdk/web/test_web_client_msg_text_content_warnings.py
 # No flask_sockets in Tumbleweed; TestRTMClient requires network
 # test_issue_1441_mixing_user_and_bot_installations broken upstream
 %pytest --ignore-glob '*/socket_mode/*' -k 'not (TestRTMClient or test_issue_1441_mixing_user_and_bot_installations)' tests
