@@ -1,7 +1,7 @@
 #
 # spec file for package libcanlock
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2024, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global sover   3
 %global libname %{name}%{sover}
 Name:           libcanlock
-Version:        3.3.1
+Version:        3.3.2
 Release:        0
 Summary:        Library for creating and verifying Usenet cancel locks
 License:        MIT
