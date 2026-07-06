@@ -1879,4 +1879,15 @@ New stable rel</comment>
   files and add the optional xmllint dependency.</comment>
     <requestid>1355923</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>aeb60260bff0cfb89d9721de6f6eb240</srcmd5>
+    <version>1.88.1</version>
+    <time>1783333631</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.88.1:
+  + Closed bugs and merge requests:
+    - Breaking change introduced in 1.87.1
+    - maint: Check for NULL before dereferencing error_out pointer</comment>
+    <requestid>1362907</requestid>
+  </revision>
 </revisionlist>

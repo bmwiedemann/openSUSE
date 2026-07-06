@@ -20,7 +20,7 @@
 %global __requires_exclude typelib\\(GioWin32|GIMarshallingTests!|GIMarshallingTests)|Gio!|Gio)|Regress!|Regress)|WarnLib!|WarnLib)\\)
 
 Name:           gjs
-Version:        1.88.0.g4
+Version:        1.88.1
 Release:        0
 Summary:        JavaScript bindings based on gobject-introspection and Mozilla
 License:        LGPL-2.0-or-later AND MIT
