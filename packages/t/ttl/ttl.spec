@@ -17,7 +17,7 @@
 
 
 Name:           ttl
-Version:        0.20.1
+Version:        0.20.2
 Release:        0
 Summary:        Modern traceroute/mtr-style TUI
 License:        Apache-2.0 OR MIT

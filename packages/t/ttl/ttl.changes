@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:52:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.20.2:
+  Fixed
+  * Panic-proofing across the CLI, probe, and TUI paths.
+  * Unsafe socket code hardened against undefined behavior.
+  * PMTUD correlation, lock ordering, and enrichment dedup.
+  * IPv6 correctness.
+  * Bounded enrichment caches.
+  * Replay robustness.
+  * File security and output hygiene.
+  * Export filename length.
+
+-------------------------------------------------------------------
 Sat Jun 27 15:32:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.20.1:
