@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:36:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + Fix erroneous stack order changes on workspace switches
+  + De-prioritize focusing desktop windows
+  + Ensure preferred_scale event is sent to clients
+  + Fix incorrect accumulated damage in screencasts
+  + Fix triggering OSK for text_input_v3 version 1 clients
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+- Drop patches applied upstream:
+  + ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch
+  + 5096.patch
+
+-------------------------------------------------------------------
 Sat Jun 27 13:06:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch: Fix build

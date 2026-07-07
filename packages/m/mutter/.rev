@@ -2467,4 +2467,22 @@ New stable rel</comment>
   with new pango</comment>
     <requestid>1362024</requestid>
   </revision>
+  <revision rev="268" vrev="1">
+    <srcmd5>aa1fe06655649648279f82aa61e78e4b</srcmd5>
+    <version>50.3</version>
+    <time>1783450778</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + Fix erroneous stack order changes on workspace switches
+  + De-prioritize focusing desktop windows
+  + Ensure preferred_scale event is sent to clients
+  + Fix incorrect accumulated damage in screencasts
+  + Fix triggering OSK for text_input_v3 version 1 clients
+  + Fixed crashes
+  + Misc. bug fixes and cleanups
+- Drop patches applied upstream:
+  + ba64e055b5159a3acd5b4e4bc3d381066b26c62c.patch
+  + 5096.patch</comment>
+    <requestid>1363715</requestid>
+  </revision>
 </revisionlist>
