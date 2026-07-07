@@ -1,7 +1,7 @@
 #
 # spec file for package syslog-ng
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,7 +65,7 @@ BuildRequires:  protobuf-devel
 %ifarch armv7l armv7hl
 %bcond_with	java
 %else
-%bcond_without	java
+%bcond_with	java
 %endif
 %bcond_without	geoip
 %endif
@@ -95,7 +95,7 @@ BuildRequires:  protobuf-devel
 %endif
 %bcond_without	snmp
 Name:           syslog-ng
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Enhanced system logging daemon
 License:        GPL-2.0-only
@@ -199,11 +199,11 @@ Key features:
  * hand on messages for further processing using message queues (like
    AMQP), files or databases (like PostgreSQL or MongoDB).
 
-%package -n libevtlog-4_11-0
+%package -n libevtlog-4_12-0
 Summary:        Syslog-ng event logger library runtime
 Group:          System/Libraries
 
-%description -n libevtlog-4_11-0
+%description -n libevtlog-4_12-0
 The EventLog library provides an alternative to the simple syslog()
 API provided on UNIX systems. Compared to syslog, EventLog adds
 structured messages.
@@ -646,8 +646,8 @@ chmod 640 "${additional_sockets#/}"
 #
 %{service_del_postun syslog-ng.service}
 
-%post -n libevtlog-4_11-0 -p /sbin/ldconfig
-%postun -n libevtlog-4_11-0 -p /sbin/ldconfig
+%post -n libevtlog-4_12-0 -p /sbin/ldconfig
+%postun -n libevtlog-4_12-0 -p /sbin/ldconfig
 
 %post -n syslog-ng-grpc -p /sbin/ldconfig
 %postun -n syslog-ng-grpc -p /sbin/ldconfig
@@ -670,9 +670,9 @@ chmod 640 "${additional_sockets#/}"
 %attr(755,root,root) %{_bindir}/pdbtool
 %attr(755,root,root) %{_bindir}/dqtool
 %attr(755,root,root) %{_bindir}/persist-tool
-%attr(755,root,root) %{_bindir}/slogencrypt
-%attr(755,root,root) %{_bindir}/slogkey
-%attr(755,root,root) %{_bindir}/slogverify
+#%attr(755,root,root) %{_bindir}/slogencrypt
+#%attr(755,root,root) %{_bindir}/slogkey
+#%attr(755,root,root) %{_bindir}/slogverify
 %attr(755,root,root) %{_bindir}/syslog-ng-update-virtualenv
 %{_mandir}/man5/syslog-ng.conf.5%{?ext_man}
 %{_mandir}/man8/syslog-ng.8%{?ext_man}
@@ -682,10 +682,10 @@ chmod 640 "${additional_sockets#/}"
 %{_mandir}/man1/dqtool.1%{?ext_man}
 %{_mandir}/man1/syslog-ng-debun.1%{?ext_man}
 %{_mandir}/man1/persist-tool.1.gz
-%{_mandir}/man1/slogencrypt.1*
-%{_mandir}/man1/slogkey.1*
-%{_mandir}/man1/slogverify.1*
-%{_mandir}/man7/secure-logging.7*
+#%{_mandir}/man1/slogencrypt.1*
+#%{_mandir}/man1/slogkey.1*
+#%{_mandir}/man1/slogverify.1*
+#%{_mandir}/man7/secure-logging.7*
 %dir %{_libdir}/syslog-ng
 %dir %{_libdir}/syslog-ng/loggen
 %dir %{_datadir}/syslog-ng
@@ -758,7 +758,7 @@ chmod 640 "${additional_sockets#/}"
 %{_libdir}/libloggen_helper-*.so.*
 %{_libdir}/libloggen_plugin-*.so.*
 %attr(755,root,root) %{_libdir}/syslog-ng/libadd-contextual-data.so
-%attr(755,root,root) %{_libdir}/syslog-ng/libsecure-logging.so
+#%attr(755,root,root) %{_libdir}/syslog-ng/libsecure-logging.so
 %if %{with amqp}
 %attr(755,root,root) %{_libdir}/syslog-ng/libafamqp.so
 %endif
@@ -860,7 +860,7 @@ chmod 640 "${additional_sockets#/}"
 %attr(644,root,root) %{_datadir}/syslog-ng/xsd/*
 %attr(644,root,root) %{_datadir}/syslog-ng/include/scl.conf
 
-%files -n libevtlog-4_11-0
+%files -n libevtlog-4_12-0
 %{_libdir}/libevtlog-*.so.*
 
 %if %{with snmp}
