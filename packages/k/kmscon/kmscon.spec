@@ -18,27 +18,24 @@
 
 
 Name:           kmscon
-Version:        10.0.0
+Version:        10.0.1
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
 Group:          System/Console
 URL:            https://github.com/kmscon/kmscon
 Source:         %{name}-%{version}.tar.xz
-# PATCH-FIX-DOWNSTREAM (in discussion: https://github.com/kmscon/kmscon/issues/407)
-Patch1:         0001-Revert-systemd-start-login-instead-of-agetty.patch
-# PATCH-FIX-DOWNSTREAM (in discussion: https://github.com/kmscon/kmscon/issues/411)
-Patch2:         0002-Revert-Use-kmscon-has-default-TERM.patch
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkg-config
 BuildRequires:  xsltproc
+BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libtsm) >= 4.4.0
+BuildRequires:  pkgconfig(libtsm) >= 4.6.0
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
@@ -70,7 +67,8 @@ need to install this package and its dependencies.
 
 %build
 # Disable 3D renderer, pulls in a dependency on Mesa into the main binary
-%meson -Dtests=false -Drenderer_gltex=disabled -Dvideo_drm3d=disabled
+# Use TERM=linux for the time being (https://github.com/kmscon/kmscon/issues/411)
+%meson -Dtests=false -Dlibseat=enabled -Dterm=linux -Drenderer_gltex=disabled -Dvideo_drm3d=disabled
 %meson_build
 
 %install
@@ -102,8 +100,6 @@ rm %{buildroot}%{_sysconfdir}/kmscon/kmscon.conf.example
 %dir %{_libdir}/kmscon/
 %{_libdir}/kmscon/mod-freetype.so
 %{_libdir}/kmscon/mod-unifont.so
-%dir %{_libexecdir}/kmscon
-%{_libexecdir}/kmscon/kmscon
 %{_mandir}/man1/kmscon.1%{?ext_man}
 %{_mandir}/man5/kmscon.conf.5%{?ext_man}
 %{_unitdir}/kmscon.service

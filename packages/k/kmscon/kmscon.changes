@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul  2 13:49:21 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 10.0.1:
+  * libseat support is disabled by default both build- and run-time
+  * kmscon's built-in issue support is lacking features, so the
+    default got changed to use agetty again.
+  * kmscon listens to locale1 over dbus to update the keyboard layout
+    dynamically
+- Full changelog is available on https://github.com/kmscon/kmscon/releases/tag/v10.0.1
+- Drop patches, now upstream:
+  * 0001-Revert-systemd-start-login-instead-of-agetty.patch
+  * 0002-Revert-Use-kmscon-has-default-TERM.patch
+
+-------------------------------------------------------------------
 Tue Jun  2 11:24:25 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Split mod_pango.so into an optional subpackage
