@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 20:40:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.7:
+  * transport: cancel pending io coroutines on close()
+  * producer: fix stalled shutdown when brokers unreachable
+
+-------------------------------------------------------------------
 Sun Jun 28 10:25:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.6:

@@ -184,4 +184,14 @@
   * add --log-format, --log-date-format, --log-file, --log-config</comment>
     <requestid>1362148</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>6b681291a3f763512d51d39da8852ce3</srcmd5>
+    <version>3.0.7</version>
+    <time>1783451001</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.7:
+  * transport: cancel pending io coroutines on close()
+  * producer: fix stalled shutdown when brokers unreachable</comment>
+    <requestid>1364124</requestid>
+  </revision>
 </revisionlist>
