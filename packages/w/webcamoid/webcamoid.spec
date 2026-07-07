@@ -17,17 +17,13 @@
 
 
 Name:           webcamoid
-Version:        9.3.0
+Version:        9.4.0
 Release:        0
 Summary:        Webcam applet for Plasma
 License:        GPL-3.0-or-later
 Group:          System/GUI/KDE
 URL:            https://webcamoid.github.io/
 Source:         https://github.com/hipersayanX/Webcamoid/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE webcamoid-link_pipewire_libs.patch aloisio@gmx.com -- links plugins to correct library
-Patch1:         webcamoid-link_pipewire_libs.patch
-# PATCH-FIX-OPENSUSE webcamoid-fix_ppc64_detection.patch aloisio@gmx.com -- add ppc64 check
-Patch2:         webcamoid-fix_ppc64_detection.patch
 BuildRequires:  bison
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

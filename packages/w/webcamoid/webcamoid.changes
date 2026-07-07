@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Mon Jul  6 17:18:34 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 9.4.0
+  New features:
+  * Added local HTTP streaming support, allowing video and audio
+    to be served over the local network to browsers and players
+    like VLC, as a more stable and portable alternative to the
+    virtual camera.
+  * Added basic support for streaming to RTMP platforms, with
+    stream keys/URLs configurable from the video outputs,
+    support for multiple simultaneous streams, and a streaming
+    button that informs the user when a platform needs to be
+    added or configured.
+  * Reworked the audio layer: removed JACK, SDL, and Qt Audio
+    dependencies; users can now select and combine multiple
+    audio inputs with individual volume control, plus volume
+    control on the audio output; PulseAudio can now be loaded
+    dynamically.
+  * Added a media gallery with playback controls.
+  * Added simple quality sliders with presets for video
+    recording and streaming.
+  * Added an OpenGL ES 2.0 effects pipeline and ported many
+    effects to it (AnalogTV, Aging, Cartoon, Charify, Cinema,
+    Dice, Edge, Emboss, FaceTrack, Fire, GrayScale, Hypnotic,
+    Matrix, Otsu, Pixelate, Radiactive, Swirl, Vignette, Warhol),
+    optimizing the pipeline.
+  * Added screen capture support for wlroots-based Wayland
+    compositors via the wlr-screencopy protocol.
+  * Added support for capturing individual windows in desktop
+    capture.
+  * Added support for right-to-left languages.
+  * Added single instance mode.
+  Removed:
+  * Removed AudioGen, and the GStreamer/VLC playback plugins.
+  * Removed MultiSink in favor of using muxers/encoders directly.
+  Bug fixes:
+  * Fixed audio/video synchronization for both FFmpeg and NDK
+    playback.
+  * Fixed a bug preventing simultaneous video audio playback and
+    microphone capture on some configurations (e.g. headsets).
+  * Fixed PipeWire camera capture.
+  * Fixed multiplanar format support with Qt camera capture.
+  * Fixed V4L2 format detection, falling back to VIDIOC_S_FMT
+    and predefined formats when
+    VIDIOC_TRY_FMT/VIDIOC_ENUM_FRAMESIZES fail.
+  Improvements in the UI and user experience:
+  * Adapted camera controls, preferences, and About menus, plus
+    item delegates, for small screens.
+  * Moved flash-related options into the Settings dialog.
+  * Allowed hiding on-screen controls when the pointer moves
+    away.
+  * Added printing of detected camera information for easier
+    debugging.
+  Translations support:
+  * Completed translations for dozens of languages (Arabic,
+    Chinese Simplified/Traditional, French, German, Hebrew,
+    Hindi, Indonesian, Japanese, Korean, Portuguese, Russian,
+    Turkish, Vietnamese, and many more), and updated several
+    existing ones via Weblate.
+  Other changes:
+  * Limited image save formats to png, jpg, webp, and avif.
+  * Removed unnecessary assets.
+  * Added a privacy policy.
+- Drop webcamoid-link_pipewire_libs.patch and
+  webcamoid-fix_ppc64_detection.patch (merged upstream)
+
+-------------------------------------------------------------------
 Thu Apr  2 13:05:52 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - do not depend on this old perl-Text-Markdown (to be dropped from
