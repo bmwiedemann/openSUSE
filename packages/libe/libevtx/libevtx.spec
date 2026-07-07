@@ -1,7 +1,7 @@
 #
 # spec file for package libevtx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libevtx1
 Name:           libevtx
-Version:        20240504
+Version:        20260705
 Release:        0
 Summary:        Library and tools to access the Windows XML Event Log (EVTX) format
 License:        GFDL-1.3-only AND LGPL-3.0-or-later
@@ -33,27 +33,27 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcdirectory) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libexe) >= 20210424
-BuildRequires:  pkgconfig(libfcache) >= 20240112
-BuildRequires:  pkgconfig(libfdata) >= 20240114
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libfwevt) >= 20240427
-BuildRequires:  pkgconfig(libfwnt) >= 20240415
-BuildRequires:  pkgconfig(libregf) >= 20240421
-BuildRequires:  pkgconfig(libuna) >= 20240414
-BuildRequires:  pkgconfig(libwrc) >= 20240421
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcdirectory) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libexe) >= 20260705
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfvalue) >= 20260531
+BuildRequires:  pkgconfig(libfwevt) >= 20260702
+BuildRequires:  pkgconfig(libfwnt) >= 20260602
+BuildRequires:  pkgconfig(libregf) >= 20260526
+BuildRequires:  pkgconfig(libuna) >= 20260602
+BuildRequires:  pkgconfig(libwrc) >= 20260705
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -132,6 +132,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyevtx.so
+%python_sitearch/pyevtx*
 
 %changelog
