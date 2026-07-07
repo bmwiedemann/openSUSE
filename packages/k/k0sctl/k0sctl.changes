@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 06 12:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.1:
+  * chore: finetune rig v2 migration note
+  * build(deps): bump github.com/k0sproject/rig/v2 from 2.0.1 to
+    2.1.0 (#1110)
+  * build(deps): bump github.com/k0sproject/rig/v2 from 2.0.0 to
+    2.0.1
+
+-------------------------------------------------------------------
 Fri Jul 03 08:03:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.0:
