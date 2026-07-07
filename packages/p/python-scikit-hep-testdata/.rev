@@ -259,4 +259,16 @@
   * feat: read TMatrixTSym from TTree by @mrzimu in #220</comment>
     <requestid>1360284</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>a585d348df2d4b75e2e52fdb8ffdfdc9</srcmd5>
+    <version>0.6.7</version>
+    <time>1783450936</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.6:
+  * Add pylhe lheh5 test files
+  * Add automatic support for HDF5
+  * chore: add an AGENTS file
+  * refactor: remove dead code and stale comments</comment>
+    <requestid>1364090</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:21:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.6:
+  * Add pylhe lheh5 test files
+  * Add automatic support for HDF5
+  * chore: add an AGENTS file
+  * refactor: remove dead code and stale comments
+
+-------------------------------------------------------------------
 Thu Jun 18 15:52:23 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update from 0.5.4 to 0.6.5
