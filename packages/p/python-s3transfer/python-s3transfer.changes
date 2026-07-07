@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 26 12:02:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.19.0
+  * feature:``s3``: Update multi-part copy logic to match single-part
+    behavior for TaggingDirective and AnnotationDirective
+  * enhancement:``s3``: Warn when Metadata or Tagging is supplied to
+    a copy without the corresponding directive set to REPLACE, in
+    which case the supplied value is silently ignored. This matches
+    the CopyObject behavior.
+- from version 0.18.0
+  * feature:Copy: By default, preserve source object metadata during
+    multipart copies to match single CopyObject behavior.
+
+-------------------------------------------------------------------
 Mon May 11 10:53:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.17.0
