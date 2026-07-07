@@ -333,4 +333,33 @@
     <comment>- Build doc just for Tumbleweed</comment>
     <requestid>1334912</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>54bd79748d871d7805e954b41f4ff706</srcmd5>
+    <version>4.3.1</version>
+    <time>1783450907</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.1:
+  * Documentation and tests aside, this release is functionally
+    identical to Falcon 4.3.0.
+- update to 4.3.0:
+  * On the parsing side, this release introduces a family of new
+    Request methods for extracting structured data from the query
+    string – get_param_as_dict(), get_param_as_media(), and
+    get_query_string_as_media() – together with a new `delimiter`
+    argument for get_param_as_list(). Several of these align with
+    OpenAPI v3 (and 3.2) parameter styles, making it easier to
+    implement spec-compliant APIs on top of Falcon.
+  * On the typing side, our internal annotations are now strict
+    enough for the project to pass `mypy --strict falcon/`, and
+    generic App types are now automatically parametrized by the
+    default request/response types on CPython 3.13+.
+  * This release also brings a number of smaller improvements,
+    including MessagePack support in the test client, an opt-in
+    `on_request()` default responder, and hardening of
+    falcon.secure_filename() against Windows reserved device
+    names.
+
+- use %license macro</comment>
+    <requestid>1364068</requestid>
+  </revision>
 </revisionlist>

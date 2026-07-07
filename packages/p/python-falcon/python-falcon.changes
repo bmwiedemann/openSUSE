@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  6 15:44:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.1:
+  * Documentation and tests aside, this release is functionally
+    identical to Falcon 4.3.0.
+- update to 4.3.0:
+  * On the parsing side, this release introduces a family of new
+    Request methods for extracting structured data from the query
+    string – get_param_as_dict(), get_param_as_media(), and
+    get_query_string_as_media() – together with a new `delimiter`
+    argument for get_param_as_list(). Several of these align with
+    OpenAPI v3 (and 3.2) parameter styles, making it easier to
+    implement spec-compliant APIs on top of Falcon.
+  * On the typing side, our internal annotations are now strict
+    enough for the project to pass `mypy --strict falcon/`, and
+    generic App types are now automatically parametrized by the
+    default request/response types on CPython 3.13+.
+  * This release also brings a number of smaller improvements,
+    including MessagePack support in the test client, an opt-in
+    `on_request()` default responder, and hardening of
+    falcon.secure_filename() against Windows reserved device
+    names.
+
+-------------------------------------------------------------------
 Wed Feb 25 07:23:21 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Build doc just for Tumbleweed
@@ -331,7 +355,7 @@ Wed May 22 12:23:42 UTC 2019 - pgajdos@suse.com
 -------------------------------------------------------------------
 Thu Apr 19 22:01:11 UTC 2018 - mimi.vx@gmail.com
 
-- use %license macro 
+- use %license macro
 
 -------------------------------------------------------------------
 Tue Mar  6 13:56:37 UTC 2018 - aplanas@suse.com

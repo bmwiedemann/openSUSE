@@ -28,11 +28,11 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-falcon
-Version:        4.2.0
+Version:        4.3.1
 Release:        0
 Summary:        A web framework for building APIs and app backends
 License:        Apache-2.0
-URL:            https://falconframework.org
+URL:            https://github.com/falconry/falcon
 Source:         https://files.pythonhosted.org/packages/source/f/falcon/falcon-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module Sphinx}
