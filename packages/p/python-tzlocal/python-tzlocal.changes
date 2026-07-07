@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 14:59:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.4.4:
+  * Improved handling if you have a syntax error in /etc/clock.
+  * Moved the tests back, removed the ones that check for
+    symlinks.
+  * Open files with Zone names as ascii.
+  * Moved tests under `tzlocal/tests` and include them in
+    distributions.
+  * Dropped support for Python 3.9 and added support for 3.14.
+
+-------------------------------------------------------------------
 Thu Feb  5 02:08:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Correct {Build,}Requires, the summary and the description to match reality.

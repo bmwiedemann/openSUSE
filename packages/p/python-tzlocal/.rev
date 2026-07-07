@@ -222,4 +222,19 @@
     <comment>- Correct {Build,}Requires, the summary and the description to match reality.</comment>
     <requestid>1331090</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>bba168ac424e4114c2e0b8fbf45fd916</srcmd5>
+    <version>5.4.4</version>
+    <time>1783450803</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.4.4:
+  * Improved handling if you have a syntax error in /etc/clock.
+  * Moved the tests back, removed the ones that check for
+    symlinks.
+  * Open files with Zone names as ascii.
+  * Moved tests under `tzlocal/tests` and include them in
+    distributions.
+  * Dropped support for Python 3.9 and added support for 3.14.</comment>
+    <requestid>1363876</requestid>
+  </revision>
 </revisionlist>
