@@ -23,4 +23,15 @@
     <comment></comment>
     <requestid>1268597</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13389c17c06e409d56cd9b5af35719dc</srcmd5>
+    <version>0.42.0</version>
+    <time>1783451157</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.42.0 (v0.42.0)
+   see /usr/share/doc/packages/perl-Devel-Cover-Report-Codecovbash/Changes
+  v0.42.0 2026-07-07 11:20:41+02:00
+  - fix: Report lines with any covered statement as covered</comment>
+    <requestid>1364273</requestid>
+  </revision>
 </revisionlist>

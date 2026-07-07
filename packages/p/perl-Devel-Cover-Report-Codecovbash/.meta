@@ -4,5 +4,4 @@
     that can be uploaded with the bash script provided by codecov.
     See https://docs.codecov.io/docs/about-the-codecov-bash-uploader for details.
   </description>
-  <devel project="devel:languages:perl" package="perl-Devel-Cover-Report-Codecovbash"/>
 </package>
