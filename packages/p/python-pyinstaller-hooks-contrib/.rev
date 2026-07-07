@@ -178,4 +178,17 @@
   * Add a hook for imagingcontrol4, which loads dynamic libraries.</comment>
     <requestid>1349263</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8727a9738780b43a3e5d9bead329a060</srcmd5>
+    <version>2026.6</version>
+    <time>1783451011</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6:
+  * Fix bug in pyi_rth_osgeo.py where the &quot;GDAL_DATA&quot; environment
+    variable would not get set on Windows when building from a
+    conda environment. (#1021)
+  * Update dash hook for compatibility with dash 4.2.0. (#1026)
+  * Update toga hooks for compatibility with toga 0.5.4. (#1016)</comment>
+    <requestid>1364128</requestid>
+  </revision>
 </revisionlist>

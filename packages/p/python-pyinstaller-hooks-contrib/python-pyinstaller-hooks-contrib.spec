@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pyinstaller-hooks-contrib%{psuffix}
-Version:        2026.4
+Version:        2026.6
 Release:        0
 Summary:        Community maintained hooks for PyInstaller
 License:        Apache-2.0 OR GPL-2.0-only

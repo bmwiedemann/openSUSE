@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  6 20:46:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6:
+  * Fix bug in pyi_rth_osgeo.py where the "GDAL_DATA" environment
+    variable would not get set on Windows when building from a
+    conda environment. (#1021)
+  * Update dash hook for compatibility with dash 4.2.0. (#1026)
+  * Update toga hooks for compatibility with toga 0.5.4. (#1016)
+
+-------------------------------------------------------------------
 Sat Apr 25 17:42:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.4:
