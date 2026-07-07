@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Jul  5 20:31:51 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 100
+    New features and enhancements:
+  * all: added new scalable (SVG) application icons for all
+    applications, replacing the existing pixmap (PNG, ICO)
+    icons.
+  * mkvmerge: MP4 reader: track names are now read from the
+    track's user-data atoms (`trak` → `udta` → `name`) if
+    present.
+  * MKVToolNix GUI: executing actions configuration, type "play
+    audio file": added a slider to make configuration more
+    intuitive.
+  * MKVToolNix GUI: job queue: added a context menu for opening
+    copies of the selected queue jobs in the multiplexer as new
+    settings there without removing the queue jobs.
+  * MKVToolNix GUI: job queue: added a search functionality for
+    jobs that searches in job descriptions, outputs, warnings &
+    errors.
+  Bug fixes:
+  * mkvmerge: AAC: fixed mis-detection of ADTS streams not
+    starting on a frame boundary. Fixes regression starting with
+    v87 when fixing AAC LATM config not being parsed if it
+    wasn't present in the first AAC frame.
+  * mkvmerge: MPEG TS reader: under certain rare conditions
+    mkvmerge was skipping a certain amount of content at the
+    start of the main M2TS file when reading MPLS playlists. The
+    amount of content skipped proportional to the probe range
+    percentage. This only happened when the source Blu-ray
+    contains HDMV TextST subtitles.
+  * MKVToolNix GUI: executing actions configuration, type "play
+    audio file": fixed audio volume not working since switching
+    to Qt 6 due to its interface taking a `float` in range
+    `0.0`–`1.0` instead of the old interface taking an`int` in
+    range `0`–`100`.
+  * MKVToolNix GUI: executing actions: fix backslash handling
+    when parsing a Unix-shell escaped string into separate
+    arguments. The user-visible fix is that the command-line in
+    the "executing actions" dialog will not have the quoting
+    changed in wrong ways by the GUI when the GUI adds another
+    variable upon user request, a regression introduced in v99.
+
+-------------------------------------------------------------------
 Sun May 24 17:30:49 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 99.0

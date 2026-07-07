@@ -1628,4 +1628,12 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment></comment>
     <requestid>1354973</requestid>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>ba5261ada2a5540f3385833dbf58c64f</srcmd5>
+    <version>100.0</version>
+    <time>1783450865</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364045</requestid>
+  </revision>
 </revisionlist>
