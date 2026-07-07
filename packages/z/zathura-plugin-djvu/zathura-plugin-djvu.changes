@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:19:06 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Fri May 29 09:02:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Cleanup spec file with spec-cleaner
