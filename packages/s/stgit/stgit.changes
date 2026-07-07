@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 30 14:33:23 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to gix 0.85 and enable sha256 feature (bsc#1262997):
+  0001-Update-to-gix-0.85-and-enable-sha256-feature.patch
+
+-------------------------------------------------------------------
+Tue Jun 30 13:57:13 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Legal review: license correction to GPL-2.0-only
+  See the project site for reference. 
+
+-------------------------------------------------------------------
 Fri Jun 26 14:12:02 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 2.6.1:

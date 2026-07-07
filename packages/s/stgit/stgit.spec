@@ -20,10 +20,11 @@ Name:           stgit
 Version:        2.6.1
 Release:        0
 Summary:        Stacked GIT - Source Code Management Tool
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only
 URL:            https://stacked-git.github.io
 Source0:        stgit-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch1:         0001-Update-to-gix-0.85-and-enable-sha256-feature.patch
 BuildRequires:  asciidoc
 BuildRequires:  cargo >= 1.82
 BuildRequires:  cargo-packaging
@@ -95,7 +96,7 @@ BuildArch:      noarch
 VIM command line completion support for %{name}.
 
 %prep
-%autosetup -p1 -a1
+%autosetup -Sgit -p1 -a1
 
 %build
 %{cargo_build}
