@@ -1,0 +1,36 @@
+From 676ad1abaacae548cf07734756a0db7846598e5b Mon Sep 17 00:00:00 2001
+From: Thomas Abraham <tabraham@suse.com>
+Date: Thu, 24 Apr 2025 10:06:15 -0400
+Subject: [PATCH] rasdaemon: ras-mc-ctl: change no dimm label message to info
+ from error
+
+The lack of DIMM labels is not necessarily an error, such as on
+systems with of HBM memory. So, these messages should not be errors.
+---
+ util/ras-mc-ctl.in |    8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+--- a/util/ras-mc-ctl.in
++++ b/util/ras-mc-ctl.in
+@@ -776,8 +776,8 @@
+     my $format = "%-35s %-20s %-20s\n";
+ 
+     if (!exists $$lref{$vendor}{$model} && !exists $$lref_prod{$pvendor}{$pname}) {
+-	log_error ("No dimm labels for $conf{mainboard}{vendor} " .
+-		   "model $conf{mainboard}{model}\n");
++	print "No dimm labels for $conf{mainboard}{vendor} " .
++		   "model $conf{mainboard}{model}\n" unless $conf{opt}{quiet};
+ 	return;
+     }
+ 
+@@ -833,8 +833,8 @@
+     my $sysfs  = "/sys/devices/system/edac/mc";
+ 
+     if (!exists $$lref{$vendor}{$model} && !exists $$lref_prod{$pvendor}{$pname}) {
+-	log_error ("No dimm labels for $conf{mainboard}{vendor} " .
+-				      "model $conf{mainboard}{model}\n");
++	print "No dimm labels for $conf{mainboard}{vendor} " .
++				      "model $conf{mainboard}{model}\n" unless $conf{opt}{quiet};
+ 	return 0;
+     }
+     my $sysfs_dir = "/sys/devices/system/edac/mc";

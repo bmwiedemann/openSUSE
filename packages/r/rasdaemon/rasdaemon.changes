@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul  7 14:11:39 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- - Create debugfs dependency in unit section of rasdaemon.service
+  bsc#1270438
+A debugfs_service_dependency.patch
+- On systems where no DIMMs are installed and the systems only have HBM memory,
+  the ras-mc-ctl --register-labels and --print-labels return an error instead
+  of an info message (bsc#1240542)
+A rasdaemon_ras-mc-ctl_change_no_dimm_label_message_to_info_from_error.patch
+
+-------------------------------------------------------------------
 Fri Jul 03 07:57:12 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to version 0.8.5+git0.769593b:

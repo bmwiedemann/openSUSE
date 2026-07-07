@@ -1,0 +1,15 @@
+---
+ misc/rasdaemon.service.in |    2 ++
+ 1 file changed, 2 insertions(+)
+
+--- a/misc/rasdaemon.service.in
++++ b/misc/rasdaemon.service.in
+@@ -4,6 +4,8 @@
+ Description=RAS daemon to log the RAS events
+ # only needed when not running in foreground (--foreground | -f)
+ #After=syslog.target
++After=sys-kernel-debug.mount
++Wants=sys-kernel-debug.mount
+ 
+ [Service]
+ EnvironmentFile=@SYSCONFDEFDIR@/rasdaemon

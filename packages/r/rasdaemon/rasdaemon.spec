@@ -24,6 +24,10 @@ License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            http://git.infradead.org/users/mchehab/rasdaemon.git
 Source:         %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM -- based on https://github.com/mchehab/rasdaemon/pull/213
+Patch0:         rasdaemon_ras-mc-ctl_change_no_dimm_label_message_to_info_from_error.patch
+# PATCH-FIX-UPSTREAM -- based on https://github.com/mchehab/rasdaemon/pull/253
+Patch1:         debugfs_service_dependency.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gettext-devel
@@ -51,7 +55,7 @@ EDAC drivers and DIMM labels are loaded at system startup, as well as
 an utility for reporting current error counts from the EDAC sysfs files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 # Fixes:
