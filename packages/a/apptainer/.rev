@@ -622,4 +622,15 @@
     <comment>- Enable building of SUID starter for SLES 15 (jsc#PED-16347).</comment>
     <requestid>1362514</requestid>
   </revision>
+  <revision rev="46" vrev="3">
+    <srcmd5>bddfe65db331547e153c84f519e5cbd8</srcmd5>
+    <version>1.5.1</version>
+    <time>1783451147</time>
+    <user>anag_factory</user>
+    <comment>  * Security fix for CVE-2026-2303 (bsc#1270529):
+    Heap Out-of-Bounds Read in GSSAPI Error Handling in
+    go.mongodb.org/mongo-driver. The dependency on mongo-driver
+    has been removed with this version of apptainer.</comment>
+    <requestid>1364264</requestid>
+  </revision>
 </revisionlist>

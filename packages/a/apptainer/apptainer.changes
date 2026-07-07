@@ -16,6 +16,10 @@ Mon Jun  8 07:52:21 UTC 2026 - Egbert Eich <eich@suse.com>
     if /scratch is in the list but `/scratch2` also exists and contains
     container images, previously the latter would match but now
     only images under the exactly matching `/scratch` are included.
+  * Security fix for CVE-2026-2303 (bsc#1270529):
+    Heap Out-of-Bounds Read in GSSAPI Error Handling in
+    go.mongodb.org/mongo-driver. The dependency on mongo-driver
+    has been removed with this version of apptainer.
   Other changes:
   * Work around segmentation fault sometimes seen while `mksquashfs`
     under proot is creating a SIF file.
