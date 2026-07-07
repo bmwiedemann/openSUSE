@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:35:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260705
+  * Reworked the command-line option parsing
+  * Updated the manpage and testsuite
+
+-------------------------------------------------------------------
 Tue May 26 16:42:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260523
