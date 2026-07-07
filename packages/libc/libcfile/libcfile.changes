@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:33:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260704
+  * File alignment code from 20260520 has been removed again
+  * libcfile received some support for BSD APIs
+  * The testsuite was updated
+
+-------------------------------------------------------------------
 Mon Jun 15 13:10:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260615

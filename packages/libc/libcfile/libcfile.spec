@@ -18,7 +18,7 @@
 
 Name:           libcfile
 %define lname	libcfile1
-Version:        20260615
+Version:        20260704
 Release:        0
 Summary:        Library for C file functions
 License:        LGPL-3.0-or-later
@@ -29,9 +29,9 @@ Source2:        https://github.com/libyal/libcfile/releases/download/%version/%n
 Source3:        %name.keyring
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcerror) >= 20260612
-BuildRequires:  pkgconfig(libclocale) >= 20260612
-BuildRequires:  pkgconfig(libcnotify) >= 20260612
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
 BuildRequires:  pkgconfig(libuna) >= 20260602
 # Various notes: https://en.opensuse.org/libyal
 
