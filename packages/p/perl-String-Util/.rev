@@ -31,4 +31,13 @@
     <comment></comment>
     <requestid>1233985</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>aff4c6b2478b459f0eed7b369063b5d7</srcmd5>
+    <version>1.360.0</version>
+    <time>1783451159</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.360.0 (1.36)
+   see /usr/share/doc/packages/perl-String-Util/Changes</comment>
+    <requestid>1364274</requestid>
+  </revision>
 </revisionlist>

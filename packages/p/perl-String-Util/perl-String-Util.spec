@@ -1,7 +1,7 @@
 #
 # spec file for package perl-String-Util
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name String-Util
 Name:           perl-String-Util
-Version:        1.350.0
+Version:        1.360.0
 Release:        0
-# 1.35 -> normalize -> 1.350.0
-%define cpan_version 1.35
+# 1.36 -> normalize -> 1.360.0
+%define cpan_version 1.36
 License:        MIT
 Summary:        String processing utility functions
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/B/BA/BAKERSCOT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -39,7 +40,7 @@ Provides:       perl(String::Util) = %{version}
 processing strings in various ways.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
