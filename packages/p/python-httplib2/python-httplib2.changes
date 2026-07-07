@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 15:28:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.32.0:
+  * Python support 3.8+ only
+  * decompression limited by size and ratio
+  * decoder foundation to support more compression algorithms
+
+-------------------------------------------------------------------
 Fri Apr 10 01:09:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Ship the LICENSE and README in the built packages.

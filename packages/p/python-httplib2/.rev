@@ -515,4 +515,15 @@ __init__.py contains code derived from a Google owned Apache project. cacerts.tx
 - Actually run the testsuite.</comment>
     <requestid>1345721</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>d9ef528c38b3f54a68b53df7269453fd</srcmd5>
+    <version>0.32.0</version>
+    <time>1783450905</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.32.0:
+  * Python support 3.8+ only
+  * decompression limited by size and ratio
+  * decoder foundation to support more compression algorithms</comment>
+    <requestid>1364066</requestid>
+  </revision>
 </revisionlist>
