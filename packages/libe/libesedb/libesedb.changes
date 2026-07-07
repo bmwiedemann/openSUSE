@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:42:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260704
+  * Support for segmented and compressed Long Values
+  * Added some getopt code for esedbtools
+
+-------------------------------------------------------------------
 Sat Apr 20 18:24:50 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20240420

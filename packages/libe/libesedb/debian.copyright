@@ -1,0 +1,10 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/libyal/libesedb
+Upstream-Name: libesedb
+Upstream-Contact: Joachim Metz <joachim.metz@gmail.com>
+
+Files: *
+License: LGPL-3 or later
+Copyright: Copyright (C) 2009-2024, Joachim Metz <joachim.metz@gmail.com>
+
+License: Licenses can be found in /usr/share/common-licenses

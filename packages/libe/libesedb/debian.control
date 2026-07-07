@@ -1,0 +1,37 @@
+Source: libesedb
+Priority: optional
+Section: libs
+Maintainer: openSUSE <opensuse@opensuse.xz>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: libesedb1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library to access the ESE Database File (EDB) format
+ Library to access the Extensible Storage Engine (ESE) Database File (EDB)
+ format. ESEDB is used in may different applications like Windows Search,
+ Windows Mail, Exchange, Active Directory, etc.
+ 
+Package: libesedb-dev
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libesedb1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Development files for libesedb
+ libesedb is a library to access EDB files.  ESEDB is used in many different
+ applications like Windows Search, Windows Mail, Exchange, Active Directory, etc.
+ .
+ This subpackage contains libraries and header files for developing
+ applications that want to make use of libesedb.
+
+Package: libesedb-tools
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libesedb1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Tools to access the EDB format
+ Tools to access the Extensible Storage Engine (ESE) Database File (EDB) format.
+ ESEDB is used in may different applications like Windows Search, Windows Mail,
+ Exchange, Active Directory, etc.

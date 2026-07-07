@@ -18,7 +18,7 @@
 
 %define lname	libesedb1
 Name:           libesedb
-Version:        20240420
+Version:        20260704
 Release:        0
 Summary:        Library and tools to access the ESE Database File (EDB) format
 License:        GFDL-1.1-or-later AND LGPL-3.0-or-later AND GFDL-1.3-or-later
@@ -36,24 +36,24 @@ BuildRequires:  %python_module devel
 BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfmapi) >= 20240415
-BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libfwnt) >= 20240415
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260703
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfmapi) >= 20260521
+BuildRequires:  pkgconfig(libfvalue) >= 20260531
+BuildRequires:  pkgconfig(libfwnt) >= 20260602
 BuildRequires:  pkgconfig(libmapidb) >= 20240420
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libuna) >= 20260602
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -142,6 +142,6 @@ find %buildroot -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyesedb.so
+%python_sitearch/pyesedb*
 
 %changelog
