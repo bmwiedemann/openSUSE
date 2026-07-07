@@ -1,7 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:29:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.6.2 (CVE-2026-55520, bsc#1270394):
+  * Fixed a ReDoS (regular expression denial of service)
+    vulnerability: URL patterns from robots.txt Allow and
+    Disallow directives were compiled into regular expressions,
+    where multiple * wildcards could cause exponential
+    backtracking. A server could exploit this to cause denial of
+    service by serving a crafted robots.txt file. Wildcard
+    matching is now performed without regular expressions.
+    Please, see the CVE-2026-55520 and GHSA-wjmf-p669-5m5p
+    security advisories for more information.
+  * Fixed parsing of Request-rate values where the seconds field
+    has no time-unit suffix (e.g. 1/60 instead of 1/60s).
+    Previously the last digit of the number was silently dropped.
+
+-------------------------------------------------------------------
 Tue Feb 17 08:58:19 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
-- Update to 0.6.0: 
+- Update to 0.6.0:
   * Added official support for Python 3.14.
   * Dropped support for Python 3.9 and PyPy 3.10.
   * CI fixes and improvements.

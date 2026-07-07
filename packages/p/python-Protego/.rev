@@ -94,4 +94,26 @@
     <comment></comment>
     <requestid>1333704</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f7c1f1e5449092b67d4e0644136ee5ec</srcmd5>
+    <version>0.6.2</version>
+    <time>1783450929</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.6.2 (CVE-2026-55520, bsc#1270394):
+  * Fixed a ReDoS (regular expression denial of service)
+    vulnerability: URL patterns from robots.txt Allow and
+    Disallow directives were compiled into regular expressions,
+    where multiple * wildcards could cause exponential
+    backtracking. A server could exploit this to cause denial of
+    service by serving a crafted robots.txt file. Wildcard
+    matching is now performed without regular expressions.
+    Please, see the CVE-2026-55520 and GHSA-wjmf-p669-5m5p
+    security advisories for more information.
+  * Fixed parsing of Request-rate values where the seconds field
+    has no time-unit suffix (e.g. 1/60 instead of 1/60s).
+    Previously the last digit of the number was silently dropped.
+
+- Update to 0.6.0:</comment>
+    <requestid>1364107</requestid>
+  </revision>
 </revisionlist>
