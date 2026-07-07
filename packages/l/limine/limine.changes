@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:05:27 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.4.0:
+  * Support booting FreeBSD on BIOS/GPT systems by chainloading the
+    freebsd-boot partition (gptboot), emulating FreeBSD's pmbr.
+  * Add the `firmware_logo` option to restore the OEM firmware boot logo
+    on handoff to the OS via the ACPI BGRT table (UEFI only).
+
+-------------------------------------------------------------------
 Tue Jun  9 19:57:00 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.3.3:
