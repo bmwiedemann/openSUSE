@@ -60,4 +60,23 @@
     <comment></comment>
     <requestid>1200056</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d23b28ef1b954ca1263ac9795d4e43af</srcmd5>
+    <version>3.0.22.2</version>
+    <time>1783450951</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.22.2:
+  * Mostly lots of bug fixes and smaller feature work and
+    refinements. Most of the work done in the last six months is
+    &quot;behind the scenes&quot; work, preparing for the future, but not yet
+    visible to users in the form of new features or
+    obvious improvements, beyond what is listed here.
+  * https://github.com/Psychtoolbox-3/Psychtoolbox-3/releases/tag/3.0.22.2
+
+  * Screen('DrawDots'): Only apply a margin to non-square dot types. Only round dots get
+    trimmed in the fragment shader, and so dot_type=4 was left with too much padding from
+  * Python extensions built from this release onwards should also work with NumPy 2.x in
+- Do not build for Python 3.6, due to no NumPy.</comment>
+    <requestid>1364091</requestid>
+  </revision>
 </revisionlist>

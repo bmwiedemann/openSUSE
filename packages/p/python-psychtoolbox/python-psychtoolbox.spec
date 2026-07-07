@@ -1,7 +1,7 @@
 #
 # spec file for package python-psychtoolbox
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-psychtoolbox
-Version:        3.0.19.14
+Version:        3.0.22.2
 Release:        0
 # Note: the license text mentions non-FOSS code, but that is not included in this source archive
 License:        AML AND BSD-2-Clause AND MIT AND X11 AND GPL-2.0-or-later AND LGPL-2.1-or-later
