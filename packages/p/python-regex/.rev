@@ -343,4 +343,14 @@
     out-of-range string indexes.</comment>
     <requestid>1354116</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>847cd1d673900d8d749355728230b65b</srcmd5>
+    <version>2026.6.28</version>
+    <time>1783450796</time>
+    <user>anag_factory</user>
+    <comment>- update to 2026.6.28:
+  * Git issue 604: regex fails on free-threading python because
+    setlocale is not thread-safe</comment>
+    <requestid>1363853</requestid>
+  </revision>
 </revisionlist>

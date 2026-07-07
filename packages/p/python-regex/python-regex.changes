@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:48:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.6.28:
+  * Git issue 604: regex fails on free-threading python because
+    setlocale is not thread-safe
+
+-------------------------------------------------------------------
 Tue May 19 21:31:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.5.9:
