@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Jul  5 13:15:57 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Remove no-setuptools-scm.patch, use PyPI package which ships a
+  version file instead of GitHub tarball which failed the source
+  validator.
+- Clean up specfile from EOL distro workarounds
+
+-------------------------------------------------------------------
+Sun Jun 28 15:07:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 5.2.0:
+  - Support for Python 3.14
+  - Fixed invalid license classifier ( @jzerfowski, issues #83
+    and #84)
+  - Explicitly set language="c++" and add -lstdc++ to solve
+    linker problem on OpenSUSE
+  - Fix bug where compilation warnings for MSVC were not turned
+    into errors for CI testing
+  - Eliminate various static analysis warnings
+  - Removed support for Python 3.8
+- Add no-setuptools-scm.patch to remove the need of using
+  setuptools_scm, which doesn't work with GitHub tarballs
+- Remove upstreamed patch:
+  - opensuse-build.patch
+
+-------------------------------------------------------------------
+Fri Jun 26 14:04:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add opensuse-build.patch fix build failure with Python 3.14 by
+  linking libstdc++. Explicitly set 'language="c++"' and add
+  '-lstdc++' to the linker arguments in setup.py via
+  opensuse-build.patch. This ensures that the compiled extension
+  module is properly linked against the standard C++ library on
+  Python 3.14, where the compiler toolchain incorrectly defaults
+  to gcc for linking, avoiding "undefined symbol" ImportError
+  failures during %check.
+
+-------------------------------------------------------------------
 Sat Apr 11 11:28:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.1:

@@ -16,9 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-fastnumbers
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Drop-in replacement for Python's int and float
 License:        MIT
@@ -27,22 +26,17 @@ Source:         https://files.pythonhosted.org/packages/source/f/fastnumbers/fas
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 64}
-BuildRequires:  %{python_module setuptools-scm >= 8.0}
-BuildRequires:  %{python_module typing-extensions}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-%if 0%{?suse_version} <= 1500
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-%else
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
-%endif
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pytest >= 5}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module typing_extensions}
 BuildRequires:  python3-testsuite
 # /SECTION
 %python_subpackages
@@ -63,11 +57,7 @@ fastnumbers is a Python module with three objectives:
 %autosetup -p1 -n fastnumbers-%{version}
 
 %build
-%if 0%{?suse_version} <= 1500
-export CC=gcc-13
-export CXX=g++-13
-%endif
-export CFLAGS="%{optflags} -Wno-error=return-type"
+export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
