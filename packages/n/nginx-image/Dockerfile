@@ -26,6 +26,11 @@ COPY --from=target / /target
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl gawk nginx findutils envsubst sed grep
+# changing user id and group id created by package installation to stable values
+RUN set -euo pipefail; \
+    chroot /target chown -R --from=nginx:nginx 499:499 /; \
+    groupmod -R /target -g 499 nginx; \
+    usermod -R /target -u 499 nginx
 # sanity check that the version from the tag is equal to the version of nginx that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' nginx | \
@@ -36,7 +41,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
     rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
