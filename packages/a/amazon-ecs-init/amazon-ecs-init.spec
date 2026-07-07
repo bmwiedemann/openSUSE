@@ -18,7 +18,7 @@
 
 %define short_name amazon-ecs
 Name:           amazon-ecs-init
-Version:        1.104.0
+Version:        1.105.0
 Release:        0
 Summary:        Amazon EC2 Container Service Initialization
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source0:        https://github.com/aws/amazon-ecs-agent/archive/refs/tags/v%{ver
 Source1:        %{short_name}.service
 Source2:        amazon-ecs-init.tmpfiles
 Patch0:         reproducible.patch
-BuildRequires:  go  >= 1.25.9
+BuildRequires:  go  >= 1.25.11
 BuildRequires:  pkgconfig(systemd)
 # We cannot handle cross module dependencies properly, i.e. one module can
 # only depend on one other module, instead of having a one to many
