@@ -17,7 +17,7 @@
 
 
 Name:           python-pamqp
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Pure-python AMQP 0-9-1 frame encoder and decoder
 License:        BSD-3-Clause

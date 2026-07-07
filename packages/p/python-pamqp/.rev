@@ -142,4 +142,33 @@
     checkers now pass cleanly and are enforced in pre-commit</comment>
     <requestid>1345940</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0f21849c991384c9dd0e2a0324392e97</srcmd5>
+    <version>4.0.1</version>
+    <time>1783451003</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.1:
+  * Migrated documentation from ReadTheDocs to GitHub Pages
+    (MkDocs)
+  * Updated docs/dev dependencies: lxml 6.0.2→6.1.0, urllib3
+    2.6.3→2.7.0, idna 3.11→3.15, pymdown-extensions
+    10.21.2→10.21.3
+  * Correctly decode negative Decimals and Decimals in scientific
+    notation, preventing corrupted and silently-lost values
+  * Decoders now raise the documented `ValueError` instead of
+    leaking `struct.error` on truncated or malformed input
+  * Validate short/long string and field-table key byte lengths,
+    raising a clear `TypeError` instead of a cryptic
+    `struct.error`
+  * `BasicProperties.__eq__` returns `NotImplemented` for non-
+    Properties operands so comparisons yield `False` instead of
+    raising
+  * Correctly round-trip frames with 8+ consecutive bit fields
+  * Corrected the `short_int` range error message
+  * Prevent an infinite loop in `ContentHeader._get_flags` on
+    malformed flags
+  * Prevent an infinite loop when decoding malformed field
+    arrays/tables</comment>
+    <requestid>1364125</requestid>
+  </revision>
 </revisionlist>
