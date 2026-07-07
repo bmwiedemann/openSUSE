@@ -1,11 +1,4 @@
 -------------------------------------------------------------------
-Sun Jun 28 17:08:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
-
-- Add build-Cpp-linking.patch fixing linking C++ problems with
-  Python 3.14.6 (see
-  https://discuss.python.org/t/c-linking-in-3-14-6-is-there-a-regression/107932)
-
--------------------------------------------------------------------
 Sat Jun 27 16:08:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.5.3:
