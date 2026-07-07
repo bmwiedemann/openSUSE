@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 14:46:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add Requires: (rpm-plugin-selinux if selinux-policy)
+
+-------------------------------------------------------------------
 Tue Jun 30 14:48:45 CEST 2026 - Michael Schroeder <mls@suse.de>
 
 - harden ndb code [bsc#1269584] [CVE-2026-44605]

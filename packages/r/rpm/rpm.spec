@@ -134,6 +134,7 @@ Patch162:       imaevmsignplugin.diff
 Patch163:       rpmuncompress.diff
 Patch164:       ndbharden.diff
 Patch6464:      auto-config-update-aarch64-ppc64le.diff
+Requires:       (rpm-plugin-selinux if selinux-policy)
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #
 # avoid bootstrapping problem
