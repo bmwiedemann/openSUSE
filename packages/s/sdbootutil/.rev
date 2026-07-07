@@ -872,4 +872,12 @@
     <comment>Fix cosmetic journal message</comment>
     <requestid>1363998</requestid>
   </revision>
+  <revision rev="104" vrev="2">
+    <srcmd5>747eaecefd8851f31a882c392d776391</srcmd5>
+    <version>1+git20260506.25d47bf</version>
+    <time>1783407633</time>
+    <user>dimstar_suse</user>
+    <comment>Revert selinux-policy; sdbootutil was coupled; see bugs https://bugzilla.opensuse.org/buglist.cgi?quicksearch=%5B20260706%5D&amp;list_id=14256447</comment>
+    <requestid>1364177</requestid>
+  </revision>
 </revisionlist>
