@@ -63,10 +63,10 @@ PDF, EPUB and OpenXPS with the help of MuPDF rendering engine.
 
 %install
 %meson_install
+find %{buildroot} -name '*.desktop' -delete -print
 
 %check
 %meson_test
-find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
 %license LICENSE

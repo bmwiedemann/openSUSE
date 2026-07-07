@@ -133,4 +133,12 @@
     <comment>Build against shared MuPDF. COUPLED with the mupdf SR 1361200 (soname change) - please stage together; needs the new mupdf-devel (mupdf.pc). Fixes boo#1165273.</comment>
     <requestid>1361202</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>f8daf5c345a316c879b9b87a49295fcb</srcmd5>
+    <version>2026.05.10</version>
+    <time>1783451128</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364258</requestid>
+  </revision>
 </revisionlist>

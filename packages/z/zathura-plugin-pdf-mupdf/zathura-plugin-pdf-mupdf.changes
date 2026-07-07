@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:20:59 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build without %check (boo#1227364)
+
+-------------------------------------------------------------------
 Mon Jun 22 14:14:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build against the shared MuPDF library instead of the static
