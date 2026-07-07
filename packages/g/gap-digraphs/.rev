@@ -127,4 +127,12 @@
     <comment>- Add eaps5.patch</comment>
     <requestid>1360087</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f62c838ed6ee1e39d76856a3f1a475d0</srcmd5>
+    <version>1.15.0</version>
+    <time>1783450962</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.15.0</comment>
+    <requestid>1364130</requestid>
+  </revision>
 </revisionlist>

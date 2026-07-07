@@ -17,7 +17,7 @@
 
 
 Name:           gap-digraphs
-Version:        1.14.0
+Version:        1.15.0
 Release:        0
 Summary:        GAP: Digraphs and multigraphs
 License:        GPL-3.0-or-later
@@ -25,7 +25,6 @@ Group:          Productivity/Scientific/Math
 URL:            https://digraphs.github.io/Digraphs/
 #Git-Clone:     https://github.com/digraphs/Digraphs
 Source:         https://github.com/digraphs/Digraphs/releases/download/v%version/digraphs-%version.tar.gz
-Patch1:         eaps5.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  edge-addition-planarity-suite-devel >= 5
@@ -35,7 +34,7 @@ BuildRequires:  gap-rpm-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  libtool
-Requires:       gap-core >= 4.10
+Requires:       gap-core >= 4.11
 Requires:       gap-datastructures >= 0.2.5
 Requires:       gap-io >= 4.5.1
 Requires:       gap-orb >= 4.8.2

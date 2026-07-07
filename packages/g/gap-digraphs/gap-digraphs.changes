@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:44:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.15.0
+  * kernel: fix issues with assumptions in `IS_ACYCLIC_DIGRAPH`
+  * Improve the documentation of the Digraph encoding formats
+  * Implement `IsCograph` with bug fixes
+  * Add unitedgeweight digraph
+  * Implementing Colour Refinement
+  * Correct Mutability of LineDigraph
+- Delete eaps5.patch (merged)
+
+-------------------------------------------------------------------
 Wed Jun 17 18:42:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add eaps5.patch
