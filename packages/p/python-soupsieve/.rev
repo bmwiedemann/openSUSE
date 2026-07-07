@@ -281,4 +281,16 @@
     debug function</comment>
     <requestid>1329539</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7913d39c2f62099e2f010a31d0ff448f</srcmd5>
+    <version>2.8.4</version>
+    <time>1783450793</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.8.4:
+  * **FIX**: Fix another inefficient attribute pattern
+    (@mauriceng98).
+  * **FIX**: Limit total number of selectors processed in a
+    pattern to prevent massive selector requests (@mauriceng98).</comment>
+    <requestid>1363852</requestid>
+  </revision>
 </revisionlist>

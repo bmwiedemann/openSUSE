@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:39:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.8.4:
+  * **FIX**: Fix another inefficient attribute pattern
+    (@mauriceng98).
+  * **FIX**: Limit total number of selectors processed in a
+    pattern to prevent massive selector requests (@mauriceng98).
+
+-------------------------------------------------------------------
 Tue Jan 27 17:14:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.3:
