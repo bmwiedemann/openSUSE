@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:12:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.470.0 (9.47)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.47  2026-07-05
+    - Added support for the QUERY HTTP request method from RFC 10008.
+    - Added query and query_p methods to Mojo::UserAgent.
+    - Added query method to Mojolicious::Routes::Route.
+    - Added query method to Mojolicious::Lite.
+    - Added query_ok method to Test::Mojo.
+    - Fixed a security issue where the pure-Perl implementation of Mojo::JSON could exhaust all available memory when
+      decoding deeply nested data. Decoding is now limited to 512 levels of nesting, to match the default of
+      Cpanel::JSON::XS.
+    - Fixed a memory leak in Morbo. (heikojansen)
+    - Fixed Mojo::File::list_tree to no longer follow symbolic links to directories.
+
+-------------------------------------------------------------------
 Sun Jun  7 00:40:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.460.0 (9.46)
