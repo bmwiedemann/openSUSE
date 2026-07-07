@@ -849,4 +849,13 @@
   * Add Tolaria plugin</comment>
     <requestid>1358677</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>723a96065cb702570c3374d5bebad3cf</srcmd5>
+    <version>5.14.0</version>
+    <time>1783451081</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.14.0
+  * Use GitHub latest release endpoint for stable releases</comment>
+    <requestid>1364196</requestid>
+  </revision>
 </revisionlist>
