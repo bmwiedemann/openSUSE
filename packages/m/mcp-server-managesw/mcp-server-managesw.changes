@@ -1,0 +1,54 @@
+-------------------------------------------------------------------
+Mon Jul  6 13:09:13 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version v0.2.1 with better tool output and better
+  input schemas for the tools
+- Use direct githu download link to make package better suiteable
+  for git packaging
+
+-------------------------------------------------------------------
+Mon Jul 06 13:00:33 UTC 2026 - cgoll@suse.com
+
+- Update to version 0.2.1:
+  * enhanced and synced cmd line options
+  * allow selection of repos
+  * fixed tests
+  * parse output
+  * better install
+  * limit the number of lines for changelog display
+  * better crafted query functionality for installed packages
+  * allow repo retrival for dnf and dpkg
+  * proper schema to select repos
+  * updated to actual go-sdk for mcp
+  * enhanced output for dpkg and dnf based systems
+  * reformatted output of search_package for zypper
+
+-------------------------------------------------------------------
+Mon Jul 06 13:00:06 UTC 2026 - cgoll@suse.com
+
+- Update to version 0.2.0:
+  * added MIT license
+  * added manual trigger to release workflow
+  * added release workflow
+  * fix test
+  * added README.md
+  * added github actions
+  * added zypper test for listinmg repos
+  * added test for rpm actions
+  * added test for syspackage.go
+  * made rpms relocateable
+
+-------------------------------------------------------------------
+Tue Aug 26 13:13:34 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Rename to mcp-server-managesw; provide binary under both names
+
+-------------------------------------------------------------------
+Tue Aug 26 12:28:25 UTC 2025 - Matthias Eckermann <mge@suse.com>
+
+- Replace macros not available on older CentOS versions
+
+-------------------------------------------------------------------
+Fri Aug  1 12:52:40 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- initial of software management with mcp 

@@ -1,0 +1,6 @@
+<services>
+  <service name="go_modules" mode="manual" >
+    <param name="compression">gz</param>
+  </service>
+  <service name="format_spec_file" mode="manual" />
+</services>
