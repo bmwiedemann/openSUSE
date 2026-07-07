@@ -16,4 +16,13 @@
   * Returned Russian and Crimean IPs deleted in later versions.</comment>
     <requestid>1234969</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2bc1126c227d52bacf772a27be66b5f5</srcmd5>
+    <version>2026.07.07</version>
+    <time>1783451016</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2026.07.07
+  * Returned Russian and Crimean IPs in later versions.</comment>
+    <requestid>1364233</requestid>
+  </revision>
 </revisionlist>
