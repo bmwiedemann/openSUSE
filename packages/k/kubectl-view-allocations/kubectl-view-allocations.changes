@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 07 05:47:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.0.2:
+  * chore(deps): bump kube from 3.1.0 to 4.0.0
+  * chore(deps): bump itertools from 0.14.0 to 0.15.0 (#344)
+  * chore(deps): bump anyhow from 1.0.102 to 1.0.103 (#342)
+  * chore(deps): bump actions/checkout from 6 to 7 (#340)
+
+-------------------------------------------------------------------
 Mon Jun 08 05:27:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.1:
