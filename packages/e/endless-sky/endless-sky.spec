@@ -1,7 +1,7 @@
 #
 # spec file for package endless-sky
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,12 +17,9 @@
 #
 
 
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000
-%define force_gcc_version 13
-%endif
 %define lname   io.github.endless_sky.endless_sky
 Name:           endless-sky
-Version:        0.10.16
+Version:        0.11.2
 Release:        0
 Summary:        Space exploration, trading, and combat game
 License:        CC-BY-3.0 AND CC-BY-SA-3.0 AND CC-BY-SA-4.0 AND GPL-3.0-only
@@ -33,12 +30,7 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz#/%
 Patch0:         endless-sky-fix-data-path.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc%{?force_gcc_version}
-BuildRequires:  gcc%{?force_gcc_version}-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  Catch2-devel
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
@@ -46,9 +38,7 @@ BuildRequires:  libjpeg8-devel
 BuildRequires:  libmad-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  minizip-devel
-%if 0%{?suse_version} >= 1600
 BuildRequires:  mold
-%endif
 BuildRequires:  pkgconfig
 BuildRequires:  xdg-utils
 BuildRequires:  pkgconfig(flac++)
@@ -69,22 +59,11 @@ Take sides in a civil war. Or leave human space behind and hope to
 find some friendly aliens whose culture is more civilized than your own...
 
 %prep
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
 %autosetup -p1
 
 %build
-CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden"
-CFLAGS="%{optflags} -fvisibility=hidden"
-%if 0%{?sle_version} >= 150400 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%else
 CXXFLAGS="%{optflags} -fvisibility=hidden -fvisibility-inlines-hidden -Wno-error=dangling-reference -fuse-ld=mold"
 CFLAGS="%{optflags} -fvisibility=hidden -fuse-ld=mold"
-%endif
 %cmake -LA \
     -DCMAKE_INSTALL_PREFIX="/usr/" \
     -DCMAKE_C_FLAGS="$CFLAGS" \

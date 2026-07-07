@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul  5 18:58:01 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.11.2
+  * Pacifist worlds in human space that do not offer tribute now
+    have their own set of responses when it is demanded, as
+    opposed to responding as if your combat rating is not high
+    enough yet.
+  * The player's cloak state will now persist in the save file.
+    This means that if you land while cloaked, close, and reopen
+    the game, you will still be cloaked when taking off, which was
+    already the behavior if you landed while cloaked and then
+    departed without having closed the game.
+  * The shop UI now has a dropdown for selecting the number of
+    items to buy, sell, or move.
+  * Added a setting for globally modifying text alignment
+    in paragraphs.
+  * Using the "Reload" button in the main menu after dying no
+    longer crashes.
+  * The Successor wormhole can now be used when hostile to the
+    Successors.
+  * Various fixes and improvements to mouse controls when the
+    "Control ship with mouse" preference is on.
+  * Moved the planet description in the map panel down a little so
+    it no longer overlaps with the system name when the
+    game window is small.
+- Drop Leap 15 workarounds, Leap 15 is EOL
+
+-------------------------------------------------------------------
 Wed Dec 31 14:36:33 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Fix build on Tumbleweed and SLE/Leap 15.6
