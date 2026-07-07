@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:04:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260705
+  * Improvements to command line option handling
+  * The testsuite was updated
+
+-------------------------------------------------------------------
+Tue Jun 16 07:17:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Drop no longer needed autoreconf call (system-libs.patch is gone)
+
+-------------------------------------------------------------------
 Mon Jun 15 11:01:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260524

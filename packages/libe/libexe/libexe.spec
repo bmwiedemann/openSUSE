@@ -18,7 +18,7 @@
 
 %define lname	libexe1
 Name:           libexe
-Version:        20260524
+Version:        20260705
 Release:        0
 Summary:        Library to access the executable (EXE) format
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -31,23 +31,23 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  c_compiler
 BuildRequires:  gettext-tools >= 0.18.1
-BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20260520
-BuildRequires:  pkgconfig(libcerror) >= 20260513
-BuildRequires:  pkgconfig(libcfile) >= 20260520
-BuildRequires:  pkgconfig(libclocale) >= 20260520
-BuildRequires:  pkgconfig(libcnotify) >= 20260520
-BuildRequires:  pkgconfig(libcpath) >= 20260520
-BuildRequires:  pkgconfig(libcsplit) >= 20260520
-BuildRequires:  pkgconfig(libcthreads) >= 20260518
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260703
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
 BuildRequires:  pkgconfig(libfcache) >= 20260520
-BuildRequires:  pkgconfig(libfdata) >= 20240415
+BuildRequires:  pkgconfig(libfdata) >= 20260521
 BuildRequires:  pkgconfig(libfdatetime) >= 20260521
-BuildRequires:  pkgconfig(libuna) >= 20260522
+BuildRequires:  pkgconfig(libuna) >= 20260602
 %python_subpackages
+# Various notes: https://en.opensuse.org/libyal
 
 %description
 libexe is a library and related tools to parse .exe files
@@ -93,7 +93,6 @@ applications that want to make use of libexe.
 %autosetup -p1
 
 %build
-autoreconf -fi
 %{python_expand #
 # see libcdata for version-sc
 echo "V_%version { global: *; };" >v.sym
@@ -129,6 +128,6 @@ find %buildroot -type f -name "*.la" -delete -print
 %_mandir/man3/libexe.3*
 
 %files %python_files
-%python_sitearch/pyexe.so
+%python_sitearch/pyexe*
 
 %changelog
