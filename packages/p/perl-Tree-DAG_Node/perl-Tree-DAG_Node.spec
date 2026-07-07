@@ -18,10 +18,10 @@
 
 %define cpan_name Tree-DAG_Node
 Name:           perl-Tree-DAG_Node
-Version:        1.370.0
+Version:        1.380.0
 Release:        0
-# 1.37 -> normalize -> 1.370.0
-%define cpan_version 1.37
+# 1.38 -> normalize -> 1.380.0
+%define cpan_version 1.38
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        An N-ary tree
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -71,7 +71,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README SECURITY.md
+%doc AI_POLICY.md Changes README SECURITY.md
 %license LICENSE
 
 %changelog

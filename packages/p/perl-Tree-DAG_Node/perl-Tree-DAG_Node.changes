@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:20:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.380.0 (1.38)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+
+  [V 1.38]
+  Date=2026-07-07T10:28:00
+  Comments= <<EOT
+  - Replace LICENCE file with output of the software-license program which ships
+  with the module App::Software::License. The specific command I ran is (all on 1 line):
+  software-license --type license --holder "Sean M. Burke and David Hand" --license Perl_5
+  --year 1998 > LICENSE
+  - Add AI_POLICY.md file.
+  - Modernize MANIFEST.SKIP again.
+  EOT
+
+-------------------------------------------------------------------
 Mon Jun 29 10:01:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.370.0 (1.37)

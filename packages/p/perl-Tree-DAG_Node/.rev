@@ -310,4 +310,23 @@
   EOT</comment>
     <requestid>1362649</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a42df52885eb9e98d742cb4e3e424559</srcmd5>
+    <version>1.380.0</version>
+    <time>1783451160</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.380.0 (1.38)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+  [V 1.38]
+  Date=2026-07-07T10:28:00
+  Comments= &lt;&lt;EOT
+  - Replace LICENCE file with output of the software-license program which ships
+  with the module App::Software::License. The specific command I ran is (all on 1 line):
+  software-license --type license --holder &quot;Sean M. Burke and David Hand&quot; --license Perl_5
+  --year 1998 &gt; LICENSE
+  - Add AI_POLICY.md file.
+  - Modernize MANIFEST.SKIP again.
+  EOT</comment>
+    <requestid>1364275</requestid>
+  </revision>
 </revisionlist>
