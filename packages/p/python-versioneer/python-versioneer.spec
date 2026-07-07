@@ -1,7 +1,7 @@
 #
 # spec file for package python-versioneer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,6 @@ Version:        0.29
 Release:        0
 Summary:        VCS-based management of project version strings
 License:        Unlicense
-Group:          Development/Languages/Python
 URL:            https://github.com/warner/python-versioneer
 Source:         https://files.pythonhosted.org/packages/source/v/versioneer/versioneer-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
@@ -78,7 +77,7 @@ This package provides the [toml] extra
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pyunittest -v test/test_file.py
+%pyunittest discover test -v
 
 %post
 %python_install_alternative versioneer
@@ -92,7 +91,7 @@ This package provides the [toml] extra
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/versioneer.py*
+%{python_sitelib}/versioneer.py
 %pycache_only %{python_sitelib}/__pycache__/versioneer*.pyc
 %{python_sitelib}/versioneer-%{version}.dist-info
 %python_alternative %{_bindir}/versioneer
