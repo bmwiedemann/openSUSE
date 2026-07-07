@@ -1,4 +1,201 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:44:51 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
+
+- Update to Tomcat 9.0.119
+  * Fixed CVEs:
+    + CVE-2026-55956: Security constraints for default servlet ignored method
+      (bsc#1269907)
+    + CVE-2026-55955: EncryptInterceptor not protected against replay attacks
+      (bsc#1269908)
+    + CVE-2026-55276: Logged effective web.xml is incomplete (bsc#1269909)
+    + CVE-2026-53434: Invalid CRL configuration doesn't trigger failure for FFM
+      Connector (bsc#1269824)
+    + CVE-2026-53404: Bad ornext processing in RewriteValve (bsc#1269910)
+    + CVE-2026-50229: XSS in number guess example (bsc#1269791)
+  * Catalina
+    + Add: Add support for literal '%' characters in access log output. Based on
+      pull request #1002 by Fabian Hahn. (markt)
+    + Fix: Prevent duplicate log messages when clustering JARs are not present
+      on startup. (csutherl)
+    + Code: Remove unnecessary code from the SSI processing engine that was
+      duplicating some of the normalisation checks. (markt)
+    + Fix: Cleaner handling of invalid SPNEGO tokens. (remm)
+    + Fix: Avoid some NPEs in the Connector class on an uninitialize protocol.
+      (remm)
+    + Fix: Incorrect session average life calculation. (remm)
+    + Fix: Improve robustness on using Pipeline.setBasic on a running pipeline.
+      (remm)
+    + Fix: Avoid any init parameter updates when conflicts are found for
+      filters, similar to what is done for servlets, as required by the servlet
+      specification. (remm)
+    + Fix: Fix container event cleanups in some edge cases. (remm)
+    + Fix: Check for last-modified header in ExpiresFilter when a servlet uses
+      addDateHeader to avoid wrongly considering it has been set. (remm)
+    + Fix: Fix hour unit used by ExpiresFilter. (remm)
+    + Fix: Remove exception swallowing in DataSourceStore to align it with
+      FileStore and avoid session loss on errors. (remm)
+    + Fix: Add support for single-quote escaped literal as well as quoted
+      literals in DateFormatCache. (schultz)
+    + Fix: On JAAS logout, clear out role principals on the subject that were
+      added on commit, as recommended by the JAAS specification. (remm)
+    + Fix: MemoryRealm should not add a dummy role when none is specified in the
+      configuration. (remm)
+    + Fix: DataSourceUserDatabase should return a null principal on a non
+      existing user. (remm)
+    + Fix: Fix shared lock expiration in WebDAV. (remm)
+    + Fix: Inaccurate session exipration statistics when using the persistent
+      manager. (remm)
+    + Fix: Skip BOM when serving files with UTF-32 encoding. (remm)
+    + Fix: Mixup of WrapperListener and WrapperLifecycle elements in
+      storeconfig. (remm)
+    + Fix: Incorrect processing of modified users in DataSourceUserDatabase.
+      (remm)
+    + Update: Clarify behavior in the UserDatabase for user, role and group
+      creation that it does not immediately override existing elements. Removal
+      (or update) needs to be used instead. (remm)
+    + Fix: 70049: Align the web application class loader with parent class
+      loaders and swallow any errors caused by invalid paths when looking up
+      resources and behave as if the resources were not found in that case.
+      (markt)
+    + Fix: Improve validation of Range and Content-Range parsers so invalid
+      ranges trigger a 4xx response rather than a 500 response. Pull request
+      #1012 provided by Sahana Surendra Bogar. (markt)
+    + Fix: Fix connection leak in ProxyErrorReportValve. (remm)
+    + Fix: When using the RewriteValve, %{SSL:HTTPS} now returns on or off
+      rather than true or false to align with httpd. (markt)
+    + Fix: Reset the encoding used for query string parameters between requests
+      in case an application changed the encoding in a previous request. (markt)
+    + Fix: When encoding URLs with the CsrfPreventionFilter, don't add the nonce
+      to URLs that are known not to require it. (markt)
+    + Fix: Fix CombinedRealm isAvailable, it allows authentication if at least
+      one sub realm is available. (remm)
+    + Fix: 70048: Correctly handle asynchronous requests in PersistentValve.
+      (markt)
+    + Fix: Improve the detection of cross-context dispatches when using a
+      RequestDispatcher. (markt)
+    + Fix: Fix various instances of double decoding of URL patterns configured
+      either programmatically or in web.xml. (remm/markt)
+    + Fix: Align the rewrite conditions ornext flag processing with mod_rewrite,
+      which follows a purely sequential evaluation strategy. (remm)
+    + Fix: Change the default for the useRedirect attribute of the
+      ProxyErrorReportValve from true to false. (markt)
+    + Add: Add support for the showReport attribute in JsonErrorReportValve and
+      ProxyErrorReportValve. When set to false, detailed error information
+      (message, description, stack trace) is suppressed from error responses.
+      (dsoumis)
+    + Fix: Avoid a NoClassDefFoundError at startup when catalina-tribes.jar is
+      removed but catalina-ha.jar is present and the Cluster element is enabled
+      in server.xml. Cluster digester rules are now fully conditional on both
+      JARs being available. (dsoumis)
+    + Fix: Fix a potential deadlock when copying resources using WebDAV. (markt)
+    + Fix: Add jakarta., org.apache.catalina. and org.apache.tomcat.to the list
+      of reserved prefixes for SSI variables and request attributes. (markt)
+    + Fix: Missing URL decoding when processing addMapping on a Servlet
+      registration. (remm)
+    + Fix: The Timeout WebDAV header allows comma separated values (according to
+      the examples in the RFC). Use the first acceptable value. (remm)
+    + Fix: Fix various issues when logging the effective web.xml for a web
+      application. Empty sections are no longer logged. Special roles and empty
+      authorisation constraints are included. (markt)
+    + Fix: Expand the write lock for the save process in the MemoryUserDatabase
+      to avoid concurrency issues with the file save operations. (markt)
+    + Fix: Ensure atomic session persistence in FileStore. Based on pull request
+      #1016 by sahvx655-wq. (markt)
+    + Fix: Do not ignore methods configured on security constraints that map to
+      the default servlet. (markt)
+  * Cluster
+    + Fix: Expand wording and increase visibility of log message when cloud
+      membership is configured without a trust store as all certificates will be
+      trusted in this configuration. (markt)
+    + Fix: Ensure listeners are correctly added and removed when configuring the
+      channel coordinator. (markt)
+    + Fix: Fix some concurrency issues in FragmentationInterceptor. (markt)
+    + Fix: Fix some concurrency issues in OrderInterceptor. (markt)
+    + Fix: Fix some concurrency issues in TwoPhaseCommitInterceptor. (markt)
+    + Fix: Fix concurrency issues generating MD5 digests in the
+      CloudMembershipProvider implementations. (markt)
+    + Add: Add replay protection to the EncryptInterceptor. This is a breaking
+      change for the EncryptInterceptor. (markt)
+  * Coyote
+    + Add: Log a suitable warning if an encrypted PEM file is detected using an
+      insecure form for encryption. (markt)
+    + Fix: If TLS groups have been configured, use the configured groups rather
+      than using OpenSSL's default TLS groups when using Tomcat Native with
+      OpenSSL based connectors. (markt)
+    + Fix: For HTTP/2, ensure that any in progress request body reads are
+      cancelled if the container resets the associated stream. This prevents
+      delays waiting for reads to time out when it is known that no more data
+      will be received. (markt)
+    + Fix: Ensure that malformed HTTP/2 messages that should trigger a stream
+      reset do so, rather than triggered a connection close. (markt)
+    + Fix: Improve enforcement of header trailer allow list for HTTP/2. (remm)
+    + Fix: 70050: Avoid NPE when no header frame is processed in HTTP/2,
+      following refactor clean-up of header buffer. (remm)
+    + Fix: Properly use pollerThreadPriority for the NIO poller thread. (remm)
+    + Fix: Fix MessageByte.equals if called on a null MB. (remm)
+    + Fix: Call the delegate key manager in JSSE to retrieve the server key.
+      (remm)
+    + Fix: Avoid overflow scenarios in Asn1Parser. (remm)
+    + Fix: 70091: Add a new attribute, allowSchemeMismatch to Http2Protocol that
+      allows the consistency check for the scheme provided by the user agent to
+      be bypassed. (markt)
+    + Fix: isTrailerFieldsReady was always returning true. (remm)
+    + Fix: Align OpenSSL/Panama TLS implementation with other implementations
+      and throw an exception if there is an error loading the provided CRL(s).
+      (markt)
+    + Fix: Parsing of OpenSSL format cipher expressions incorrectly stopped if
+      @STRENGTH was encountered, ignoring any subsequent expressions. (markt)
+    + Fix: Handle the case where the HTTP/2 payload length is insufficient for
+      the mandatory data required by the flags set in the header. (markt)
+    + Fix: 70102: Correct expected size of ticket keys when calling
+      setSessionTicketKeys with an FFM connector. (markt)
+    + Fix: 69988: Fix post handshake authentication for TLS 1.3. It was broken
+      by a breaking change in OpenSSL between 1.1.1 and 3.0.0. (markt)
+    + Fix: When processing an OpenSSL cipher specification, fully align the
+      order of the resulting ciphers with the order produced by OpenSSL. (markt)
+    + Add: Add support for Brainpool TLS groups. Patch provided by YStankov.
+      (schultz)
+    + Update: Update both the minimum and recommended version for Tomcat Native
+      1.x to 1.3.8. (markt)
+  * Jasper
+    + Fix: Fix possible EL argument mismatch when it was set to null. (remm)
+    + Fix: Fix thread safety of TagPluginManager. (remm)
+    + Fix: Correctly use flush on JSP include. (remm)
+  * Web applications
+    + Add: Manager: Add checks to ensure that any uploaded files are uploaded to
+      the expected location. (markt)
+    + Add: Manager: Add checks to ensure that the requested context path for a
+      deployed WAR, directory or descriptor file is valid. (markt)
+    + Add: Documentation: Expand the description of some of the attributes of
+      the CrawlerSessionManagerValve. (markt)
+    + Fix: Documentation: Clearer description and correct documented default for
+      ocspSoftFail. (markt)
+    + Fix: Fix double escaping in the context names for the JSON mode of the
+      manager servlet. (remm)
+    + Fix: Manager: Ensure automatic deployment does not trigger an undeployment
+      during a Manager triggered web application reload. (markt)
+    + Fix: Documentation: Provide better documentation for the scheme and secure
+      attributes of a Connector. (markt)
+  * Websocket
+    + Fix: Incorrect Future.isDone() return by AsyncChannelWrapperSecure. (remm)
+    + Fix: Trigger standard WebSocket error handling if a call to
+      Endpoint.onOpen() fails for a programmatic endpoint. (markt)
+    + Fix: 70110: Fix memory leak if a call to Endpoint.onOpen() fails for a
+      programmatic endpoint. Test case provided by uabdur. (markt)
+    + Fix: If a client presents invalid parameters when negotiating a WebSocket
+      extension, decline the negotiation offer that includes the invalid
+      parameters rather than failing the connection. Pull request #1019 provided
+      by sahvx655-wq. (markt)
+  * Other
+    + Fix: Wrong references to jakarta instead of javax. (remm)
+    + Fix: Restore default authenticator to nullafter executing an Ant task.
+      (remm)
+    + Update: Update Commons Daemon to 1.6.1. (markt)
+    + Update: Improvements to French translations. (remm)
+    + Update: Improvements to Japanese translations provided by tak7iji. (markt)
+    + Update: Update Tomcat Native to 1.3.8. (markt)
+
+-------------------------------------------------------------------
 Thu May 28 14:51:21 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 9.0.118
