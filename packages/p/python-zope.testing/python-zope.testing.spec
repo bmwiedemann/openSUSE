@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zope.testing
-Version:        6.1
+Version:        6.2
 Release:        0
 Summary:        Zope testing helpers
 License:        ZPL-2.1
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 

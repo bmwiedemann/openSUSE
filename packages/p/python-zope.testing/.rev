@@ -163,4 +163,15 @@
   * **Actually** remove long-deprecated ``zope.testing.doctest``</comment>
     <requestid>1338993</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>060e77c61f91b7a44930c21a0388aefc</srcmd5>
+    <version>6.2</version>
+    <time>1783450811</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.2:
+  * Add support for Python 3.15.
+  * Deprecate zope.testing.doctestcase in favour of plain doctest.
+  * Move package metadata from setup.py to pyproject.toml.</comment>
+    <requestid>1363918</requestid>
+  </revision>
 </revisionlist>
