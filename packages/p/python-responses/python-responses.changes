@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:42:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.26.2:
+  * Default headers (such as ``Content-Type``, ``Date`` and
+    ``Server``) are now stripped from recorded files regardless
+    of header name case.  Previously, responses recorded from
+    servers that send lowercase header names (for example over
+    HTTP/2) kept these redundant headers in the generated file.
+  * Fixed `query_param_matcher` mutating the caller's params dict
+    when numeric values are provided. See #801
+
+-------------------------------------------------------------------
 Mon May 25 20:10:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.26.1:
