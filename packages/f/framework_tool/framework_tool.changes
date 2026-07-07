@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  6 07:35:21 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.5
+  * README: link to downstream package website by @JohnAZoidberg in #345
+  * --thermal: Decode Intel Core Ultra Series 3 temps by @JohnAZoidberg in #348
+  * --capsule: Add more GUIDs by @JohnAZoidberg in #349
+  * --power: Add battery cutoff status by @JohnAZoidberg in #347
+  * Add getting battery info thorugh SMBUS by @JohnAZoidberg in #350
+  * Bump 0.6.5 by @JohnAZoidberg in #351
+
+-------------------------------------------------------------------
 Tue Jun  9 08:58:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.6.4
