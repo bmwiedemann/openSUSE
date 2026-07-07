@@ -128,4 +128,22 @@
 </comment>
     <requestid>1288044</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>49b6f864023e1bb815b866090c6ac2b9</srcmd5>
+    <version>1.420.0</version>
+    <time>1783451151</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.420.0 (1.42)
+   see /usr/share/doc/packages/perl-JSON-Any/Changes
+  1.42      2026-06-30 21:25:05Z
+      - fix test error with allow_non-ref and JSON::XS &gt;= 4.0 when
+        Cpanel::JSON::XS is not installed (RT#127753)
+
+- updated to 1.410.0 (1.41)
+   see /usr/share/doc/packages/perl-JSON-Any/Changes
+  1.41      2026-06-18 03:44:01Z
+      - fix test error with allow_non-ref and Cpanel::JSON::XS &gt;= 4.42
+        (RT#179192)</comment>
+    <requestid>1364268</requestid>
+  </revision>
 </revisionlist>

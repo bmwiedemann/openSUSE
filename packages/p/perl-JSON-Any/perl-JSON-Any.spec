@@ -1,7 +1,7 @@
 #
 # spec file for package perl-JSON-Any
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name JSON-Any
 Name:           perl-JSON-Any
-Version:        1.400.0
+Version:        1.420.0
 Release:        0
-# 1.40 -> normalize -> 1.400.0
-%define cpan_version 1.40
+# 1.42 -> normalize -> 1.420.0
+%define cpan_version 1.42
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        (DEPRECATED) Wrapper Class for the various JSON classes
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETHER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

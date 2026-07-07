@@ -5,5 +5,4 @@
 This module will provide a coherent API to bring together the various JSON
 modules currently on CPAN. This module will allow you to code to any JSON API
 and have it work regardless of which JSON module is actually installed.</description>
-  <devel project="devel:languages:perl" package="perl-JSON-Any"/>
 </package>
