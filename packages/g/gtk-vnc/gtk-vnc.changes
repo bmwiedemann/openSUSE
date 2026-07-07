@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 22 11:32:23 MDT 2026 - carnold@suse.com
+
+- bsc#1268264 - virt-manager crash when connecting to instance
+  using VNC
+  009-fix-error-handling-in-main-thread-context.patch
+- bsc#1258497 - virt-manager segfault error 4 in libgvnc-1.0.so.0.0.1
+  Renamed 009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch to
+  010-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 10:20:51 MDT 2026 - carnold@suse.com
 
 - bsc#1266272 - "virt-manager" is crashing.

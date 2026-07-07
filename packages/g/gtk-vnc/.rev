@@ -490,4 +490,17 @@ Consolidate licenses (forwarded request 160578 from babelworx)</comment>
   009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch</comment>
     <requestid>1359808</requestid>
   </revision>
+  <revision rev="61" vrev="4">
+    <srcmd5>1a341c2763e54f5fcbfb571f3d42f253</srcmd5>
+    <version>1.5.0</version>
+    <time>1783450806</time>
+    <user>anag_factory</user>
+    <comment>- bsc#1268264 - virt-manager crash when connecting to instance
+  using VNC
+  009-fix-error-handling-in-main-thread-context.patch
+- bsc#1258497 - virt-manager segfault error 4 in libgvnc-1.0.so.0.0.1
+  Renamed 009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch to
+  010-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch</comment>
+    <requestid>1363907</requestid>
+  </revision>
 </revisionlist>

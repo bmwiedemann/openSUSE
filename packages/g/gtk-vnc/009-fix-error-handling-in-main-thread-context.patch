@@ -1,0 +1,947 @@
+Subject: src: fix error handling in main thread context
+From: Daniel P. Berrangé berrange@redhat.com Thu Feb 26 21:42:14 2026 +0000
+Date: Fri Feb 27 17:00:02 2026 +0000:
+Git: 2c654f21024cce1858bb35db75b5f5494e69806c
+
+The vnc_connection_set_error method assumes it is running in coroutine
+context and so crashes in main thread context, trying to yield from a
+coroutine that is not active.
+
+Introduce a separate vnc_connection_co_set_error for use in coroutine
+context and make vnc_connection_set_error work in main thread context.
+
+This completes standardization on 'vnc_connection_co_' prefix for all
+functions that must be run in coroutine context, as opposed to main
+loop context.
+
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+
+--- a/src/vncconnection.c	
++++ a/src/vncconnection.c	
+@@ -134,6 +134,9 @@ 
+ 
+ typedef void vnc_connection_tight_sum_pixel_func(VncConnection *conn, guint8 *, guint8 *);
+ static void vnc_connection_close(VncConnection *conn);
++static void vnc_connection_co_set_error(VncConnection *conn,
++                                        const char *format,
++                                        ...) G_GNUC_PRINTF(2, 3);
+ static void vnc_connection_set_error(VncConnection *conn,
+                                      const char *format,
+                                      ...) G_GNUC_PRINTF(2, 3);
+@@ -710,24 +713,45 @@ 
+ }
+ 
+ 
++static G_GNUC_PRINTF(2, 3) void vnc_connection_co_set_error(VncConnection *conn,
++                                                            const char *format,
++                                                            ...)
++{
++    struct signal_data s;
++    va_list args;
++
++    g_free(conn->priv->error);
++    va_start(args, format);
++    conn->priv->error = g_strdup_vprintf(format, args);
++    va_end(args);
++
++    conn->priv->coroutine_stop = TRUE;
++
++    VNC_DEBUG("Error: %s", conn->priv->error);
++
++    s.params.message = conn->priv->error;
++    vnc_connection_emit_main_context(conn, VNC_ERROR, &s);
++}
++
+ static G_GNUC_PRINTF(2, 3) void vnc_connection_set_error(VncConnection *conn,
+                                                          const char *format,
+                                                          ...)
+ {
+     va_list args;
+-    struct signal_data s;
+-
+-    va_start(args, format);
+ 
+     g_free(conn->priv->error);
++    va_start(args, format);
+     conn->priv->error = g_strdup_vprintf(format, args);
+     va_end(args);
++
+     conn->priv->coroutine_stop = TRUE;
+ 
+     VNC_DEBUG("Error: %s", conn->priv->error);
+ 
+-    s.params.message = conn->priv->error;
+-    vnc_connection_emit_main_context(conn, VNC_ERROR, &s);
++    g_signal_emit(G_OBJECT(conn),
++                  signals[VNC_ERROR],
++                  0,
++                  conn->priv->error);
+ }
+ 
+ static void vnc_connection_auth_failure(VncConnection *conn,
+@@ -847,13 +871,13 @@ 
+             blocking = FALSE;
+             goto reread;
+         } else {
+-            vnc_connection_set_error(conn, "%s", "Unable to read from server");
++            vnc_connection_co_set_error(conn, "%s", "Unable to read from server");
+             return -errno;
+         }
+     }
+     if (ret == 0) {
+         VNC_DEBUG("Closing the connection: vnc_connection_read() - ret=0");
+-        vnc_connection_set_error(conn, "%s", "Server closed the connection");
++        vnc_connection_co_set_error(conn, "%s", "Server closed the connection");
+         return -EPIPE;
+     }
+     //VNC_DEBUG("Read wire %p %d -> %d", data, len, ret);
+@@ -892,7 +916,7 @@ 
+                           &priv->saslDecoded, &priv->saslDecodedLength);
+         g_free(encoded);
+         if (err != SASL_OK) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Failed to decode SASL data %s",
+                                      sasl_errstring(err, NULL, NULL));
+             return -EINVAL;
+@@ -966,7 +990,7 @@ 
+         if (vnc_connection_use_compression(conn)) {
+             int ret = vnc_connection_zread(conn, ptr + offset, len);
+             if (ret == -1) {
+-                vnc_connection_set_error(conn, "%s", "Failure decompressing data");
++                vnc_connection_co_set_error(conn, "%s", "Failure decompressing data");
+                 return -errno;
+             }
+             offset += ret;
+@@ -1042,12 +1066,12 @@ 
+             if (blocking) {
+                 g_io_wait(priv->sock, G_IO_OUT);
+             } else {
+-                vnc_connection_set_error(conn, "%s", "Failed to flush data");
++                vnc_connection_co_set_error(conn, "%s", "Failed to flush data");
+                 return;
+             }
+         }
+         if (ret == 0) {
+-            vnc_connection_set_error(conn, "%s", "Failed to any flush data");
++            vnc_connection_co_set_error(conn, "%s", "Failed to any flush data");
+             return;
+         }
+         offset += ret;
+@@ -1072,7 +1096,7 @@ 
+                       priv->write_offset,
+                       &output, &outputlen);
+     if (err != SASL_OK) {
+-        vnc_connection_set_error(conn, "Failed to encode SASL data %s",
++        vnc_connection_co_set_error(conn, "Failed to encode SASL data %s",
+                                  sasl_errstring(err, NULL, NULL));
+         return;
+     }
+@@ -1425,26 +1449,26 @@ 
+ 
+     VNC_DEBUG("Validating");
+     if ((ret = gnutls_certificate_verify_peers2 (priv->tls_session, &status)) < 0) {
+-        vnc_connection_set_error(conn, "Failed to verify peer %s", gnutls_strerror(ret));
++        vnc_connection_co_set_error(conn, "Failed to verify peer %s", gnutls_strerror(ret));
+         return FALSE;
+     }
+ 
+     if ((now = time(NULL)) == ((time_t)-1)) {
+-        vnc_connection_set_error(conn, "%s", "Failed to get current time");
++        vnc_connection_co_set_error(conn, "%s", "Failed to get current time");
+         return FALSE;
+     }
+ 
+     if (status != 0) {
+         if (status & GNUTLS_CERT_INVALID) {
+-            vnc_connection_set_error(conn, "%s", "The certificate is not trusted");
++            vnc_connection_co_set_error(conn, "%s", "The certificate is not trusted");
+         } else if (status & GNUTLS_CERT_SIGNER_NOT_FOUND) {
+-            vnc_connection_set_error(conn, "%s", "The certificate hasn't got a known issuer");
++            vnc_connection_co_set_error(conn, "%s", "The certificate hasn't got a known issuer");
+         } else if (status & GNUTLS_CERT_REVOKED) {
+-            vnc_connection_set_error(conn, "%s", "The certificate has been revoked");
++            vnc_connection_co_set_error(conn, "%s", "The certificate has been revoked");
+         } else if (status & GNUTLS_CERT_INSECURE_ALGORITHM) {
+-            vnc_connection_set_error(conn, "%s", "The certificate uses an insecure algorithm");
++            vnc_connection_co_set_error(conn, "%s", "The certificate uses an insecure algorithm");
+         } else {
+-            vnc_connection_set_error(conn, "%s", "The certificate is not valid");
++            vnc_connection_co_set_error(conn, "%s", "The certificate is not valid");
+         }
+         return FALSE;
+     } else {
+@@ -1452,12 +1476,12 @@ 
+     }
+ 
+     if (gnutls_certificate_type_get(priv->tls_session) != GNUTLS_CRT_X509) {
+-        vnc_connection_set_error(conn, "%s", "Only x509 certificates are supported");
++        vnc_connection_co_set_error(conn, "%s", "Only x509 certificates are supported");
+         return FALSE;
+     }
+ 
+     if (!(certs = gnutls_certificate_get_peers(priv->tls_session, &nCerts))) {
+-        vnc_connection_set_error(conn, "%s", "Unable to query certificate peers");
++        vnc_connection_co_set_error(conn, "%s", "Unable to query certificate peers");
+         return FALSE;
+     }
+ 
+@@ -1465,36 +1489,36 @@ 
+         gnutls_x509_crt_t cert;
+         VNC_DEBUG ("Checking chain %u", i);
+         if (gnutls_x509_crt_init (&cert) < 0) {
+-            vnc_connection_set_error(conn, "%s", "Unable to initialize cert");
++            vnc_connection_co_set_error(conn, "%s", "Unable to initialize cert");
+             return FALSE;
+         }
+ 
+         if (gnutls_x509_crt_import(cert, &certs[i], GNUTLS_X509_FMT_DER) < 0) {
+             gnutls_x509_crt_deinit (cert);
+-            vnc_connection_set_error(conn, "%s", "Unable to import certificate");
++            vnc_connection_co_set_error(conn, "%s", "Unable to import certificate");
+             return FALSE;
+         }
+ 
+         if (gnutls_x509_crt_get_expiration_time (cert) < now) {
+-            vnc_connection_set_error(conn, "%s", "The certificate has expired");
++            vnc_connection_co_set_error(conn, "%s", "The certificate has expired");
+             gnutls_x509_crt_deinit (cert);
+             return FALSE;
+         }
+ 
+         if (gnutls_x509_crt_get_activation_time (cert) > now) {
+-            vnc_connection_set_error(conn, "%s", "The certificate is not yet activated");
++            vnc_connection_co_set_error(conn, "%s", "The certificate is not yet activated");
+             gnutls_x509_crt_deinit (cert);
+             return FALSE;
+         }
+ 
+         if (i == 0) {
+             if (!priv->host) {
+-                vnc_connection_set_error(conn, "%s", "No hostname provided for certificate verification");
++                vnc_connection_co_set_error(conn, "%s", "No hostname provided for certificate verification");
+                 gnutls_x509_crt_deinit (cert);
+                 return FALSE;
+             }
+             if (!gnutls_x509_crt_check_hostname (cert, priv->host)) {
+-                vnc_connection_set_error(conn,
++                vnc_connection_co_set_error(conn,
+                                          "The certificate's owner does not match hostname '%s'",
+                                          priv->host);
+                 gnutls_x509_crt_deinit (cert);
+@@ -2224,7 +2248,7 @@ 
+     guint16 fbheight = vnc_framebuffer_get_height(fb);
+ 
+     if ((x + width) > fbwidth || (y + height) > fbheight) {
+-        vnc_connection_set_error(conn, "Framebuffer update %dx%d at %d,%d "
++        vnc_connection_co_set_error(conn, "Framebuffer update %dx%d at %d,%d "
+                                  "outside boundary %dx%d",
+                                  width, height, x, y, fbwidth, fbheight);
+     }
+@@ -2831,7 +2855,7 @@ 
+     GdkPixbuf *p;
+ 
+     if (!gdk_pixbuf_loader_write(loader, data, length, NULL)) {
+-        vnc_connection_set_error(conn, "%s", "Unable to decode jpeg data");
++        vnc_connection_co_set_error(conn, "%s", "Unable to decode jpeg data");
+         return;
+     }
+ 
+@@ -2924,7 +2948,7 @@ 
+             vnc_connection_tight_update_gradient(conn, fb, fmt, x, y, width, height);
+             break;
+         default: /* error */
+-            vnc_connection_set_error(conn, "Unexpected tight filter id %d",
++            vnc_connection_co_set_error(conn, "Unexpected tight filter id %d",
+                                      filter_id);
+             break;
+         }
+@@ -2956,7 +2980,7 @@ 
+                                          jpeg_data, length);
+         g_free(jpeg_data);
+     } else {
+-        vnc_connection_set_error(conn, "Unexpected tight ccontrol %d",
++        vnc_connection_co_set_error(conn, "Unexpected tight ccontrol %d",
+                                  ccontrol);
+     }
+ }
+@@ -3312,7 +3336,7 @@ 
+             vnc_connection_tight_update(conn, fb, &fmt, 0, 0, width, height);
+             break;
+         default:
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Unsupported encoding %u for alpha cursor",
+                                      encoding);
+             break;
+@@ -3351,7 +3375,7 @@ 
+                 return;
+             }
+             if (length != 0) {
+-                vnc_connection_set_error(conn,
++                vnc_connection_co_set_error(conn,
+                                          "Read non-zero length %u for zero sized ZRLE alpha cursor",
+                                          length);
+                 return;
+@@ -3359,7 +3383,7 @@ 
+             break;
+         }
+         default:
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Unsupported encoding %u for zero size alpha cursor",
+                                      encoding);
+             return;
+@@ -3389,7 +3413,7 @@ 
+     if (vnc_connection_has_error(conn))
+         return;
+     if (n_name > 4096) {
+-        vnc_connection_set_error(conn, "Name length %u too long",
++        vnc_connection_co_set_error(conn, "Name length %u too long",
+                                  n_name);
+         return;
+     }
+@@ -3519,7 +3543,7 @@ 
+         vnc_connection_resend_framebuffer_update_request(conn);
+         break;
+     default:
+-        vnc_connection_set_error(conn, "Received an unknown encoding type: %d", etype);
++        vnc_connection_co_set_error(conn, "Received an unknown encoding type: %d", etype);
+         break;
+     }
+ 
+@@ -3666,7 +3690,7 @@ 
+         int i;
+ 
+         if (priv->fmt.true_color_flag) {
+-            vnc_connection_set_error(conn, "Got color map entries in true-color pix format");
++            vnc_connection_co_set_error(conn, "Got color map entries in true-color pix format");
+             break;
+         }
+ 
+@@ -3678,7 +3702,7 @@ 
+                   first_color, n_colors);
+ 
+         if (first_color > (65536 - n_colors)) {
+-            vnc_connection_set_error(conn, "Colormap start %d out of range %d", first_color, 65536 - n_colors);
++            vnc_connection_co_set_error(conn, "Colormap start %d out of range %d", first_color, 65536 - n_colors);
+             break;
+         }
+ 
+@@ -3695,7 +3719,7 @@ 
+                                    i + first_color,
+                                    red, green, blue)) {
+                 /* Should not be reachable given earlier range check */
+-                vnc_connection_set_error(conn, "Colormap index %d out of range %d,%d",
++                vnc_connection_co_set_error(conn, "Colormap index %d out of range %d,%d",
+                                          i + first_color, first_color, 65536 - n_colors);
+                 break;
+             }
+@@ -3716,7 +3740,7 @@ 
+             vnc_connection_handle_extended_clipboard(conn, -(gint32)len);
+         } else {
+             if (len > (32 << 20)) {
+-                vnc_connection_set_error(conn, "Cut text length %u longer than permitted %d",
++                vnc_connection_co_set_error(conn, "Cut text length %u longer than permitted %d",
+                                          len, (32 << 20));
+                 break;
+             }
+@@ -3737,7 +3761,7 @@ 
+         code = vnc_connection_read_u8(conn);
+ 
+         if (version < 1) {
+-            vnc_connection_set_error(conn, "Invalid XVP version %d", version);
++            vnc_connection_co_set_error(conn, "Invalid XVP version %d", version);
+             break;
+         }
+ 
+@@ -3752,7 +3776,7 @@ 
+             vnc_connection_emit_main_context(conn, VNC_POWER_CONTROL_INITIALIZED, &s);
+             break;
+         default:
+-            vnc_connection_set_error(conn, "Invalid XVP code %d", code);
++            vnc_connection_co_set_error(conn, "Invalid XVP code %d", code);
+             break;
+         }
+     }   break;
+@@ -3774,7 +3798,7 @@ 
+             case VNC_CONNECTION_SERVER_MESSAGE_QEMU_AUDIO_DATA:
+                 n_length = vnc_connection_read_u32(conn);
+                 if (n_length > (1024*1024)) {
+-                    vnc_connection_set_error(conn,
++                    vnc_connection_co_set_error(conn,
+                                              "Audio sample length %u longer than permitted %d",
+                                              n_length, 1024 * 1024);
+                     break;
+@@ -3783,7 +3807,7 @@ 
+                     break;
+ 
+                 if (!priv->audio) {
+-                    vnc_connection_set_error(conn, "%s",
++                    vnc_connection_co_set_error(conn, "%s",
+                                              "No audio playback sink configured");
+                     break;
+                 }
+@@ -3810,7 +3834,7 @@ 
+                 if (priv->audio)
+                     vnc_connection_audio_action(conn, VNC_AUDIO_PLAYBACK_START);
+                 else
+-                    vnc_connection_set_error(conn, "%s", "No audio sink configured");
++                    vnc_connection_co_set_error(conn, "%s", "No audio sink configured");
+                 break;
+             case VNC_CONNECTION_SERVER_MESSAGE_QEMU_AUDIO_STOP:
+                 if (priv->audio) {
+@@ -3822,20 +3846,20 @@ 
+                     }
+                     vnc_connection_audio_action(conn, VNC_AUDIO_PLAYBACK_STOP);
+                 } else {
+-                    vnc_connection_set_error(conn, "%s", "No audio sink configured");
++                    vnc_connection_co_set_error(conn, "%s", "No audio sink configured");
+                 }
+                 break;
+             default:
+-                vnc_connection_set_error(conn, "Received unknown QEMU audio message: %u", (int)n_subtype);
++                vnc_connection_co_set_error(conn, "Received unknown QEMU audio message: %u", (int)n_subtype);
+                 break;
+             }
+         }       break;
+         default:
+-            vnc_connection_set_error(conn, "Received an unknown QEMU message: %u", n_type);
++            vnc_connection_co_set_error(conn, "Received an unknown QEMU message: %u", n_type);
+         }
+     } break;
+     default:
+-        vnc_connection_set_error(conn, "Received an unknown message: %u", msg);
++        vnc_connection_co_set_error(conn, "Received an unknown message: %u", msg);
+         break;
+     }
+ 
+@@ -3942,13 +3966,13 @@ 
+         reason[len] = '\0';
+         VNC_DEBUG("Fail %s", reason);
+         if (!vnc_connection_has_error(conn)) {
+-            vnc_connection_set_error(conn, "%s", reason);
++            vnc_connection_co_set_error(conn, "%s", reason);
+             vnc_connection_auth_failure(conn, reason);
+         }
+     } else {
+         VNC_DEBUG("Fail auth no result");
+         if (!vnc_connection_has_error(conn)) {
+-            vnc_connection_set_error(conn, "%s", "Unknown authentication failure");
++            vnc_connection_co_set_error(conn, "%s", "Unknown authentication failure");
+             vnc_connection_auth_failure(conn, "Unknown authentication failure");
+         }
+     }
+@@ -4003,7 +4027,7 @@ 
+     return TRUE;
+ 
+  error:
+-    vnc_connection_set_error(conn, "Unknown authentication failure: %s",
++    vnc_connection_co_set_error(conn, "Unknown authentication failure: %s",
+                              gnutls_strerror(error));
+     return FALSE;
+ }
+@@ -4151,7 +4175,7 @@ 
+             allzeroes = FALSE;
+     }
+     if (allzeroes) {
+-        vnc_connection_set_error(conn, "%s",
++        vnc_connection_co_set_error(conn, "%s",
+                                  "Bad DH modulus value");
+         return FALSE;
+     }
+@@ -4471,7 +4495,7 @@ 
+     err = sasl_client_init(NULL);
+     VNC_DEBUG("Client initialize SASL authentication %d", err);
+     if (err != SASL_OK) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "failed to initialize SASL library: %d (%s)",
+                                  err, sasl_errstring(err, NULL, NULL));
+         goto error;
+@@ -4480,13 +4504,13 @@ 
+     /* Get local address in form  IPADDR:PORT */
+     addr = g_socket_get_local_address(priv->sock, NULL);
+     if (!addr) {
+-        vnc_connection_set_error(conn, "%s", "failed to get local address");
++        vnc_connection_co_set_error(conn, "%s", "failed to get local address");
+         goto error;
+     }
+     if ((g_socket_address_get_family(addr) == G_SOCKET_FAMILY_IPV4 ||
+          g_socket_address_get_family(addr) == G_SOCKET_FAMILY_IPV6) &&
+         (localAddr = vnc_connection_addr_to_string(addr)) == NULL) {
+-        vnc_connection_set_error(conn, "%s", "Unable to format address as string");
++        vnc_connection_co_set_error(conn, "%s", "Unable to format address as string");
+         goto error;
+     }
+     is_unix = (g_socket_address_get_family(addr) == G_SOCKET_FAMILY_UNIX);
+@@ -4495,13 +4519,13 @@ 
+     /* Get remote address in form  IPADDR:PORT */
+     addr = g_socket_get_remote_address(priv->sock, NULL);
+     if (!addr) {
+-        vnc_connection_set_error(conn, "%s", "failed to get peer address");
++        vnc_connection_co_set_error(conn, "%s", "failed to get peer address");
+         goto error;
+     }
+     if ((g_socket_address_get_family(addr) == G_SOCKET_FAMILY_IPV4 ||
+          g_socket_address_get_family(addr) == G_SOCKET_FAMILY_IPV6) &&
+         (remoteAddr = vnc_connection_addr_to_string(addr)) == NULL) {
+-        vnc_connection_set_error(conn, "%s", "Unable to format address as string");
++        vnc_connection_co_set_error(conn, "%s", "Unable to format address as string");
+         goto error;
+     }
+     g_clear_object(&addr);
+@@ -4520,7 +4544,7 @@ 
+     g_free(remoteAddr);
+ 
+     if (err != SASL_OK) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Failed to create SASL client context: %d (%s)",
+                                  err, sasl_errstring(err, NULL, NULL));
+         goto error;
+@@ -4532,7 +4556,7 @@ 
+ 
+         cipher = gnutls_cipher_get(priv->tls_session);
+         if (!(ssf = (sasl_ssf_t)gnutls_cipher_get_key_size(cipher))) {
+-            vnc_connection_set_error(conn, "%s",
++            vnc_connection_co_set_error(conn, "%s",
+                                      "invalid cipher size for TLS session");
+             goto error;
+         }
+@@ -4541,7 +4565,7 @@ 
+         VNC_DEBUG("Setting external SSF %d", (int)ssf);
+         err = sasl_setprop(saslconn, SASL_SSF_EXTERNAL, &ssf);
+         if (err != SASL_OK) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "cannot set external SSF %d (%s)",
+                                      err, sasl_errstring(err, NULL, NULL));
+             goto error;
+@@ -4566,7 +4590,7 @@ 
+ 
+     err = sasl_setprop(saslconn, SASL_SEC_PROPS, &secprops);
+     if (err != SASL_OK) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "cannot set security props %d (%s)",
+                                  err, sasl_errstring(err, NULL, NULL));
+         goto error;
+@@ -4577,7 +4601,7 @@ 
+     if (vnc_connection_has_error(conn))
+         goto error;
+     if (mechlistlen > SASL_MAX_MECHLIST_LEN) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "mechlistlen %u too long",
+                                  mechlistlen);
+         goto error;
+@@ -4599,7 +4623,7 @@ 
+                             &clientoutlen,
+                             &mechname);
+     if (err != SASL_OK && err != SASL_CONTINUE && err != SASL_INTERACT) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Failed to start SASL negotiation: %d (%s)",
+                                  err, sasl_errdetail(saslconn));
+         goto error;
+@@ -4609,7 +4633,7 @@ 
+     if (err == SASL_INTERACT) {
+         if (!vnc_connection_gather_sasl_credentials(conn,
+                                                     interact)) {
+-            vnc_connection_set_error(conn, "%s",
++            vnc_connection_co_set_error(conn, "%s",
+                                      "Failed to collect auth credentials");
+             goto error;
+         }
+@@ -4620,7 +4644,7 @@ 
+               mechname, clientoutlen, clientout);
+ 
+     if (clientoutlen > SASL_MAX_DATA_LEN) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "SASL negotiation data too long: %u bytes",
+                                  clientoutlen);
+         goto error;
+@@ -4649,7 +4673,7 @@ 
+     if (vnc_connection_has_error(conn))
+         goto error;
+     if (serverinlen > SASL_MAX_DATA_LEN) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "SASL negotiation data too long: %u bytes",
+                                  clientoutlen);
+         goto error;
+@@ -4660,7 +4684,7 @@ 
+         serverin = g_malloc(serverinlen);
+         vnc_connection_read(conn, serverin, serverinlen);
+         if (serverin[serverinlen-1] != '\0') {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Missing SASL trailing NUL padding byte");
+             goto error;
+         }
+@@ -4692,7 +4716,7 @@ 
+                                &clientout,
+                                &clientoutlen);
+         if (err != SASL_OK && err != SASL_CONTINUE && err != SASL_INTERACT) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Failed SASL step: %d (%s)",
+                                      err, sasl_errdetail(saslconn));
+             goto error;
+@@ -4702,7 +4726,7 @@ 
+         if (err == SASL_INTERACT) {
+             if (!vnc_connection_gather_sasl_credentials(conn,
+                                                         interact)) {
+-                vnc_connection_set_error(conn, "%s",
++                vnc_connection_co_set_error(conn, "%s",
+                                          "Failed to collect auth credentials");
+                 goto error;
+             }
+@@ -4741,7 +4765,7 @@ 
+         if (vnc_connection_has_error(conn))
+             goto error;
+         if (serverinlen > SASL_MAX_DATA_LEN) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "SASL negotiation data too long: %u bytes",
+                                      clientoutlen);
+             goto error;
+@@ -4752,7 +4776,7 @@ 
+             serverin = g_malloc(serverinlen);
+             vnc_connection_read(conn, serverin, serverinlen);
+             if (serverin[serverinlen-1] != '\0') {
+-                vnc_connection_set_error(conn,
++                vnc_connection_co_set_error(conn,
+                                          "Missing SASL trailing NUL padding byte");
+                 goto error;
+             }
+@@ -4780,7 +4804,7 @@ 
+     if (!is_unix && !priv->tls_session) {
+         err = sasl_getprop(saslconn, SASL_SSF, &val);
+         if (err != SASL_OK) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "cannot query SASL ssf on connection %d (%s)",
+                                      err, sasl_errstring(err, NULL, NULL));
+             goto error;
+@@ -4788,7 +4812,7 @@ 
+         ssf = *(const int *)val;
+         VNC_DEBUG("SASL SSF value %d", (int)ssf);
+         if (ssf < 56) { /* 56 == DES level, good for Kerberos */
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "negotiated SSF %d was not strong enough",
+                                      (int)ssf);
+             goto error;
+@@ -4824,23 +4848,23 @@ 
+     VNC_DEBUG("Do TLS handshake");
+     if (priv->tls_session == NULL) {
+         if (gnutls_init(&priv->tls_session, GNUTLS_CLIENT) < 0) {
+-            vnc_connection_set_error(conn, "%s", "Failed to allocate client session");
++            vnc_connection_co_set_error(conn, "%s", "Failed to allocate client session");
+             return FALSE;
+         }
+ 
+         if (gnutls_priority_set_direct(priv->tls_session, priority, NULL) < 0) {
+-            vnc_connection_set_error(conn, "%s", "Failed to set priority");
++            vnc_connection_co_set_error(conn, "%s", "Failed to set priority");
+             goto deinit;
+         }
+ 
+         if (anonTLS) {
+             gnutls_anon_client_credentials anon_cred = vnc_connection_tls_initialize_anon_cred();
+             if (!anon_cred) {
+-                vnc_connection_set_error(conn, "%s", "Failed to allocate credentials");
++                vnc_connection_co_set_error(conn, "%s", "Failed to allocate credentials");
+                 goto deinit;
+             }
+             if (gnutls_credentials_set(priv->tls_session, GNUTLS_CRD_ANON, anon_cred) < 0) {
+-                vnc_connection_set_error(conn, "%s", "Failed to initialize credentials");
++                vnc_connection_co_set_error(conn, "%s", "Failed to initialize credentials");
+                 goto deinit;
+             }
+         } else {
+@@ -4852,11 +4876,11 @@ 
+ 
+             gnutls_certificate_credentials_t x509_cred = vnc_connection_tls_initialize_cert_cred(conn);
+             if (!x509_cred) {
+-                vnc_connection_set_error(conn, "%s", "Failed to allocate credentials");
++                vnc_connection_co_set_error(conn, "%s", "Failed to allocate credentials");
+                 goto deinit;
+             }
+             if (gnutls_credentials_set(priv->tls_session, GNUTLS_CRD_CERTIFICATE, x509_cred) < 0) {
+-                vnc_connection_set_error(conn, "%s", "Failed to initialize credentials");
++                vnc_connection_co_set_error(conn, "%s", "Failed to initialize credentials");
+                 goto deinit;
+             }
+         }
+@@ -4878,7 +4902,7 @@ 
+         }
+         gnutls_deinit(priv->tls_session);
+         priv->tls_session = NULL;
+-        vnc_connection_set_error(conn, "Failed to complete handshake %s",
++        vnc_connection_co_set_error(conn, "Failed to complete handshake %s",
+                                   gnutls_strerror(ret));
+         return FALSE;
+     }
+@@ -4984,7 +5008,7 @@ 
+     }
+     VNC_DEBUG("Filtered to %d supported auth type(s)", ntypes);
+     if (ntypes == 0) {
+-        vnc_connection_set_error(conn, "No supported auth types");
++        vnc_connection_co_set_error(conn, "No supported auth types");
+         vnc_connection_auth_failure(conn, "No supported auth types");
+     }
+     return ntypes;
+@@ -5031,7 +5055,7 @@ 
+     }
+     VNC_DEBUG("Filtered to %d supported auth type(s)", ntypes);
+     if (ntypes == 0) {
+-        vnc_connection_set_error(conn, "No supported auth types");
++        vnc_connection_co_set_error(conn, "No supported auth types");
+         vnc_connection_auth_failure(conn, "No supported auth types");
+     }
+     return ntypes;
+@@ -5060,7 +5084,7 @@ 
+     }
+ 
+     if (nauth > sizeof(auth)) {
+-        vnc_connection_set_error(conn, "Too many (%u) auth types", nauth);
++        vnc_connection_co_set_error(conn, "Too many (%u) auth types", nauth);
+         return FALSE;
+     }
+     for (i = 0 ; i < nauth ; i++) {
+@@ -5100,7 +5124,7 @@ 
+         return vnc_connection_perform_auth_sasl(conn);
+ #endif
+     default:
+-        vnc_connection_set_error(conn, "Auth subtype %u is not supported",
++        vnc_connection_co_set_error(conn, "Auth subtype %u is not supported",
+                                  priv->auth_subtype);
+         return FALSE;
+     }
+@@ -5120,7 +5144,7 @@ 
+ 
+     if (major != 0 &&
+         minor != 2) {
+-        vnc_connection_set_error(conn, "Unsupported VeNCrypt version %d %d", major, minor);
++        vnc_connection_co_set_error(conn, "Unsupported VeNCrypt version %d %d", major, minor);
+         return FALSE;
+     }
+ 
+@@ -5129,13 +5153,13 @@ 
+     vnc_connection_flush(conn);
+     status = vnc_connection_read_u8(conn);
+     if (status != 0) {
+-        vnc_connection_set_error(conn, "Server refused VeNCrypt version %d %d", major, minor);
++        vnc_connection_co_set_error(conn, "Server refused VeNCrypt version %d %d", major, minor);
+         return FALSE;
+     }
+ 
+     nauth = vnc_connection_read_u8(conn);
+     if (nauth > (sizeof(auth)/sizeof(auth[0]))) {
+-        vnc_connection_set_error(conn, "Too many (%u) auth types", nauth);
++        vnc_connection_co_set_error(conn, "Too many (%u) auth types", nauth);
+         return FALSE;
+     }
+ 
+@@ -5181,7 +5205,7 @@ 
+         anonTLS = 0;
+         break;
+     default:
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Unknown VeNCrypt auth subtype %d", priv->auth_subtype);
+         return FALSE;
+     }
+@@ -5193,7 +5217,7 @@ 
+     vnc_connection_flush(conn);
+     status = vnc_connection_read_u8(conn);
+     if (status != 1) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Server refused VeNCrypt auth %u %d", priv->auth_subtype, status);
+         return FALSE;
+     }
+@@ -5234,7 +5258,7 @@ 
+         return vnc_connection_perform_auth_plain(conn);
+ 
+     default:
+-        vnc_connection_set_error(conn, "Unsupported VeNCrypt auth subtype %u", priv->auth_subtype);
++        vnc_connection_co_set_error(conn, "Unsupported VeNCrypt auth subtype %u", priv->auth_subtype);
+         return FALSE;
+     }
+ }
+@@ -5258,7 +5282,7 @@ 
+     unsigned int auth[10];
+ 
+     if (vnc_connection_tls_initialize() < 0) {
+-        vnc_connection_set_error(conn, "%s", "Failed to init TLS");
++        vnc_connection_co_set_error(conn, "%s", "Failed to init TLS");
+         return FALSE;
+     }
+ 
+@@ -5274,7 +5298,7 @@ 
+             return vnc_connection_check_auth_result(conn);
+ 
+         if (nauth > sizeof(auth)) {
+-            vnc_connection_set_error(conn, "Too many auth types %u",
++            vnc_connection_co_set_error(conn, "Too many auth types %u",
+                                      nauth);
+             return FALSE;
+         }
+@@ -5317,7 +5341,7 @@ 
+ 
+     case VNC_CONNECTION_AUTH_TLS:
+         if (priv->minor < 7) {
+-            vnc_connection_set_error(conn, "%s", "TLS auth requires protocol 3.8");
++            vnc_connection_co_set_error(conn, "%s", "TLS auth requires protocol 3.8");
+             return FALSE;
+         }
+         return vnc_connection_perform_auth_tls(conn);
+@@ -5343,7 +5367,7 @@ 
+             sigdata.params.authUnsupported = priv->auth_type;
+             vnc_connection_emit_main_context(conn, VNC_AUTH_UNSUPPORTED, &sigdata);
+         }
+-        vnc_connection_set_error(conn, "Unsupported auth type %u", priv->auth_type);
++        vnc_connection_co_set_error(conn, "Unsupported auth type %u", priv->auth_type);
+         return FALSE;
+     }
+ 
+@@ -5951,7 +5975,7 @@ 
+ 
+     ret = sscanf(version, "RFB %03d.%03d\n", &priv->major, &priv->minor);
+     if (ret != 2) {
+-        vnc_connection_set_error(conn, "%s",
++        vnc_connection_co_set_error(conn, "%s",
+                                  "Error while parsing server version");
+         goto fail;
+     }
+@@ -5959,7 +5983,7 @@ 
+     VNC_DEBUG("Server version: %d.%d", priv->major, priv->minor);
+ 
+     if (vnc_connection_before_version(conn, 3, 3)) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Server version is not supported (%d.%d)", priv->major, priv->minor);
+         goto fail;
+     } else if (vnc_connection_before_version(conn, 3, 7)) {
+@@ -6001,7 +6025,7 @@ 
+ 
+     n_name = vnc_connection_read_u32(conn);
+     if (n_name > 4096) {
+-        vnc_connection_set_error(conn, "Name length %u too long",
++        vnc_connection_co_set_error(conn, "Name length %u too long",
+                                  n_name);
+         goto fail;
+     }
+@@ -6115,7 +6139,7 @@ 
+         priv->sock = sock;
+         return TRUE;
+     }
+-    vnc_connection_set_error(conn, "Unable to connect: %s",
++    vnc_connection_co_set_error(conn, "Unable to connect: %s",
+                              conn_error ? conn_error->message : "Unknown problem");
+     g_clear_error(&conn_error);
+     return FALSE;
+@@ -6154,7 +6178,7 @@ 
+     }
+     g_object_unref(enumerator);
+     if (!sock) {
+-        vnc_connection_set_error(conn, "Unable to connect to %s:%s: %s",
++        vnc_connection_co_set_error(conn, "Unable to connect to %s:%s: %s",
+                                  priv->host, priv->port,
+                                  conn_error ? conn_error->message : "Unknown problem");
+     }
+@@ -6907,7 +6931,7 @@ 
+     guint32 flags, action;
+ 
+     if (len < 4) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Invalid extended clipboard message: length "
+                                  "%d is less than 4",
+                                  len);
+@@ -6930,7 +6954,7 @@ 
+         }
+ 
+         if (len < (4 + 4 * format_count)) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Invalid clipboard caps message, length "
+                                      "%d is too small for %d formats",
+                                      len, format_count);
+@@ -7111,7 +7135,7 @@ 
+     guint8 pad[3] = {0};
+ 
+     if (!(priv->server_clipboard_flags & VNC_CLIPBOARD_ACTION_REQUEST)) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Server does not support clipboard 'request'"
+                                  "action.");
+         return;
+@@ -7142,7 +7166,7 @@ 
+             vnc_connection_write_clipboard_request(conn, VNC_CLIPBOARD_FORMAT_UTF8);
+         } else {
+             VNC_DEBUG("Server does not support clipboard request, not requesting data.");
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Server does not support clipboard "
+                                      "'notify' action.");
+         }
+@@ -7213,7 +7237,7 @@ 
+     guint32 text_len = 0;
+ 
+     if (!(flags & VNC_CLIPBOARD_FORMAT_UTF8)) {
+-        vnc_connection_set_error(conn, "%s", "Unsupported format UTF8.");
++        vnc_connection_co_set_error(conn, "%s", "Unsupported format UTF8.");
+         goto cleanup;
+     }
+ 
+@@ -7221,7 +7245,7 @@ 
+     // read the entire compressed data block from the network connection.
+     zlib_data = g_malloc(len);
+     if (!vnc_connection_read(conn, zlib_data, len)) {
+-        vnc_connection_set_error(conn, "Failed to read clipboard provide data");
++        vnc_connection_co_set_error(conn, "Failed to read clipboard provide data");
+         goto cleanup;
+     }
+ 
+@@ -7233,7 +7257,7 @@ 
+     zst.next_in = zlib_data;
+ 
+     if (inflateInit(&zst) != Z_OK) {
+-        vnc_connection_set_error(conn, "%s", "Failed to initialize zlib for decompression");
++        vnc_connection_co_set_error(conn, "%s", "Failed to initialize zlib for decompression");
+         goto cleanup;
+     }
+     zst_initialized = TRUE;
+@@ -7247,7 +7271,7 @@ 
+         zst.next_out = temp_buf;
+         ret = inflate(&zst, Z_NO_FLUSH);
+         if (ret != Z_OK && ret != Z_STREAM_END) {
+-            vnc_connection_set_error(conn,
++            vnc_connection_co_set_error(conn,
+                                      "Zlib decompression failed with code %d",
+                                      ret);
+             goto cleanup;
+@@ -7263,7 +7287,7 @@ 
+ 
+     // parse [length][data] from the decompressed data.
+     if (uncompressed_size < 4) {
+-        vnc_connection_set_error(conn,
++        vnc_connection_co_set_error(conn,
+                                  "Invalid decompressed data: too short for "
+                                  "length field");
+         goto cleanup;
+@@ -7272,7 +7296,7 @@ 
+     text_len = g_ntohl(*(guint32 *)uncompressed_data);
+ 
+     if (text_len > uncompressed_size - 4) {
+-        vnc_connection_set_error(conn, "Invalid decompressed data: length mismatch");
++        vnc_connection_co_set_error(conn, "Invalid decompressed data: length mismatch");
+         goto cleanup;
+     }
+ 

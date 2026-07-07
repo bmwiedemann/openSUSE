@@ -37,7 +37,8 @@ Patch5:         005-Flush-pending-clipboard-on-focus-in-event.patch
 Patch6:         006-Implement-response-to-server-clipboard-REQUEST-action.patch
 Patch7:         007-Implement-handling-of-server-clipboard-NOTIFY-action.patch
 Patch8:         008-Complete-server-to-client-data-sync-PROVIDE.patch
-Patch9:         009-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
+Patch9:         009-fix-error-handling-in-main-thread-context.patch
+Patch10:        010-let-GLib-manage-the-lifecycle-of-VncDisplay-GObject.patch
 
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gobject-introspection-devel >= 0.9.4
@@ -45,6 +46,7 @@ BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
+BuildRequires:  python3-devel
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.42.0
