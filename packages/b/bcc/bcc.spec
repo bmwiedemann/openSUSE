@@ -33,16 +33,13 @@
 %endif
 
 Name:           bcc
-Version:        0.36.1
+Version:        0.37.0
 Release:        0
 Summary:        BPF Compiler Collection (BCC)
 License:        Apache-2.0
 Group:          Development/Tools/Other
 URL:            https://github.com/iovisor/bcc
 Source:         https://github.com/iovisor/bcc/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-Fix-build-with-LLVM-22.patch
-Patch1:         0001-clang-Add-microsoft-extensions-build-flags.patch
-Patch2:         deterministic_luajit.patch
 Source100:      bcc-rpmlintrc
 ExcludeArch:    ppc s390
 BuildRequires:  bison

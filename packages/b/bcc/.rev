@@ -641,4 +641,24 @@
     <comment></comment>
     <requestid>1360738</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>50cc27b65155b10c2a6296ddf9d815e2</srcmd5>
+    <version>0.37.0</version>
+    <time>1783450894</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.37.0
+  * Support for kernel up to 7.1
+  * libbpf-tools: Fix memory and comm handling issues in trace_helpers,
+    bashreadline, filetop, offcputime, biostacks, and biosnoop
+  * tools: mptcpify, bindsnoop, execsnoop, ppchcalls bug fixes
+  * Update syscall tables, add ARM64/riscv syscall prefix detection
+  * Fix LLVM 22 build failure, C23 warnings
+  * bcc-lua: Restore LuaJIT determinism
+  * drop obsolete patches
+    * drop 0001-clang-Add-microsoft-extensions-build-flags.patch
+    * drop 0001-Fix-build-with-LLVM-22.patch
+    * drop deterministic_luajit.patch
+</comment>
+    <requestid>1364055</requestid>
+  </revision>
 </revisionlist>
