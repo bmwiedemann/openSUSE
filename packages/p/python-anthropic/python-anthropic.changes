@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:27:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.116.0:
+  * Add support for claude-sonnet-5
+  * Add support for Managed Agents event delta streaming, agent
+    overrides, reverse pagination, vault credential injection
+    scoping, and agent/deployment webhook events
+  * Add support for the 20260318 web fetch and support tools
+  * Fix async count_tokens missing output_format/output_config
+    merge block
+  * Fix agent_toolset to allow absolute paths that resolve inside
+    the workdir
+  * Keep the typing_extensions floor at >= 4.13.2 (upstream raised
+    it to >= 4.14, but the code still only needs TypeIs, available
+    since 4.10.0)
+
+-------------------------------------------------------------------
 Fri Jul  3 09:46:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Lower the typing_extensions dependency floor to >= 4.13.2
