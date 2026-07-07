@@ -1,7 +1,7 @@
 #
 # spec file for package python-zc.lockfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,14 +19,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-zc.lockfile
-Version:        3.0.post1
+Version:        4.0
 Release:        0
 Summary:        Basic inter-process locks
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zc.lockfile
-Source:         https://files.pythonhosted.org/packages/source/z/zc.lockfile/zc.lockfile-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/z/zc.lockfile/zc_lockfile-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 78.1.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module zope.testing}
 BuildRequires:  fdupes
@@ -50,7 +50,7 @@ mediate access to file-storage database files. The database files and lock file
 files are separate files.
 
 %prep
-%setup -q -n zc.lockfile-%{version}
+%setup -q -n zc_lockfile-%{version}
 rm -rf src/zc.lockfile.egg-info
 find -name *~ -delete
 
@@ -77,7 +77,6 @@ rm %{buildroot}%{$python_sitelib}/zc/__init__.py
 %doc CHANGES.rst COPYRIGHT.txt README.txt
 %dir %{python_sitelib}/zc
 %{python_sitelib}/zc/lockfile
-%{python_sitelib}/zc.lockfile-%{version}-py*-nspkg.pth
 %{python_sitelib}/zc[._]lockfile-%{version}.dist-info
 
 %changelog

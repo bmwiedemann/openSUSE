@@ -92,4 +92,16 @@
 - No more greedy globs in %files.</comment>
     <requestid>1283478</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>21ae1d6daaf7ae6fada53c5136f2b57e</srcmd5>
+    <version>4.0</version>
+    <time>1783450826</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.</comment>
+    <requestid>1363958</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:09:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0:
+  * Replace pkg_resources namespace with PEP 420 native
+    namespace.
+  * Add support for Python 3.12, 3.13.
+  * Drop support for Python 3.7, 3.8.
+
+-------------------------------------------------------------------
 Fri Jun  6 03:08:08 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
