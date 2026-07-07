@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.9.7
+Version:        0.9.8
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -38,9 +38,9 @@ Requires:       python-requests-toolbelt >= 1.0.0
 Requires:       python-sniffio >= 1.1
 Requires:       python-typing_extensions >= 4.0.0
 Requires:       python-uuid-utils >= 0.12.0
-Requires:       python-websockets >= 15.0
+Requires:       python-websockets >= 14.2
 Requires:       python-xxhash >= 3.0.0
-Requires:       python-zstandard >= 0.23.0
+Requires:       python-zstandard >= 0.22.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 3.5.0}
@@ -61,9 +61,9 @@ BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  %{python_module uuid-utils >= 0.12.0}
-BuildRequires:  %{python_module websockets >= 15.0}
+BuildRequires:  %{python_module websockets >= 14.2}
 BuildRequires:  %{python_module xxhash >= 3.0.0}
-BuildRequires:  %{python_module zstandard >= 0.23.0}
+BuildRequires:  %{python_module zstandard >= 0.22.0}
 # /SECTION
 %python_subpackages
 
@@ -82,6 +82,10 @@ rm -f conftest.py
 
 %install
 %pyproject_install
+# Recompile the installed modules as hash-based bytecode: this package ships
+# many modules, so timestamp-based .pyc desync from the reproducibility-clamped
+# .py mtimes and trip python-bytecode-inconsistent-mtime.
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langsmith
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -91,13 +95,6 @@ export LANGSMITH_TRACING=false
 # langchain-core (which depends on langsmith -> build cycle);
 # test_hybrid_tracing.py carries an upstream module-level pytest.skip.
 %pytest tests/unit_tests -p no:langsmith_plugin --ignore tests/unit_tests/wrappers --ignore tests/unit_tests/sandbox --ignore tests/unit_tests/cli --ignore tests/unit_tests/evaluation --ignore tests/unit_tests/test_async_client.py --ignore tests/unit_tests/test_client.py --ignore tests/unit_tests/test_run_helpers.py --ignore tests/unit_tests/test_hybrid_tracing.py -k 'not test_client_gc and not test_git_info and not test_as_runnable'
-# Recompile the installed modules as hash-based bytecode: this package ships
-# many modules, so timestamp-based .pyc desync from the reproducibility-clamped
-# .py mtimes and trip python-bytecode-inconsistent-mtime.
-%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langsmith
-# Re-link the freshly compiled identical .pyc/.opt-1.pyc (brp-python-hardlink
-# already ran before %%check).
-%python_expand %fdupes %{buildroot}%{$python_sitelib}/langsmith
 
 %files %{python_files}
 %doc README.md

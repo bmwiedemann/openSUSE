@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Jul  7 12:45:27 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix variations from %check (boo#1227364)
+
+-------------------------------------------------------------------
+Tue Jul  7 07:43:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.8:
+  * Add an asynchronous aread_project() client method to read a
+    tracing project (by id or name, optionally with aggregate
+    statistics) without blocking
+  * Rename the client-facing online_evaluators accessor to
+    evaluators for clearer nomenclature
+  * Drop the asynchronous projects resource accessor
+
+-------------------------------------------------------------------
+Fri Jul  3 09:46:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Lower dependency floors to the versions shipped by openSUSE
+  Leap 16.0 (verified not to change functionality):
+  * websockets: require >= 14.2 instead of >= 15.0; only the
+    sync and asyncio connect() calls with additional_headers
+    and open_timeout are used, both available since websockets
+    14.0
+  * zstandard: require >= 0.22.0 instead of >= 0.23.0; only
+    ZstdCompressor().stream_writer() with closefd is used,
+    available since zstandard 0.15.0
+  Verified by a full package build whose unit test suite
+  (332 passed) succeeds against Leap's websockets 14.2 and
+  zstandard 0.22.0.
+
+-------------------------------------------------------------------
 Fri Jul  3 06:39:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.7:
