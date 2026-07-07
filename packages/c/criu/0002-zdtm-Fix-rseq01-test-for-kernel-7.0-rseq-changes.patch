@@ -1,0 +1,166 @@
+From 5546c06a125dac3c9df2401ae52cebda526c2a27 Mon Sep 17 00:00:00 2001
+From: Adrian Reber <areber@redhat.com>
+Date: Tue, 21 Apr 2026 09:30:17 +0000
+Subject: [PATCH] zdtm: Fix rseq01 test for kernel 7.0 rseq changes
+
+Starting with Linux 7.0, the rseq feature size has grown to 33 bytes
+and AT_RSEQ_ALIGN has increased to 64.  This causes sizeof(struct rseq)
+from the uapi header to be 64 (33 bytes padded to aligned(32)), while
+the actual registration size used by glibc (__rseq_size) is 33.
+
+The rseq01 test was using sizeof(struct rseq) as the registration
+size and a test-local __rseq_abi variable (with only 32-byte
+alignment from the uapi header) as the rseq area.  Both are
+wrong on kernel 7.0:
+
+ - The kernel now checks alignment against __alignof__(struct rseq)
+   which is 64 internally; the 32-byte-aligned test variable may
+   not satisfy this.
+
+ - sizeof(struct rseq) = 64 does not match the feature size of 33
+   that glibc registered with, so re-registration with a different
+   size fails.
+
+Fix by:
+
+ - Using __rseq_size (the feature size reported by glibc) as the
+   registration size instead of sizeof(struct rseq).
+
+ - Using the glibc-provided rseq area (at thread_pointer() +
+   __rseq_offset) which is allocated with proper AT_RSEQ_ALIGN
+   alignment, instead of a test-local variable.
+
+Both fall back to the previous behavior when glibc rseq support
+is not available.
+
+This mirrors the glibc fix:
+
+    https://sourceware.org/cgit/glibc/commit/?id=67f303b47dc584f204e3f2441b9832082415eebc
+
+Assisted-by: Claude Code (claude-opus-4-6):claude-opus-4-6@default
+Signed-off-by: Adrian Reber <areber@redhat.com>
+---
+ test/zdtm/transition/rseq01.c | 59 +++++++++++++++++++++++++++++------
+ 1 file changed, 50 insertions(+), 9 deletions(-)
+
+diff --git a/test/zdtm/transition/rseq01.c b/test/zdtm/transition/rseq01.c
+index 08a7a8e1a614..9c5925bc450d 100644
+--- a/test/zdtm/transition/rseq01.c
++++ b/test/zdtm/transition/rseq01.c
+@@ -20,9 +20,19 @@
+ #endif
+ #endif
+ 
++/*
++ * HAVE_GLIBC_RSEQ is set when the C library provides rseq support
++ * (__rseq_size, __rseq_offset).  glibc >= 2.35 defines RSEQ_SIG in
++ * <sys/rseq.h>; musl does not, so the test falls back to its own
++ * definitions below.
++ */
++#if defined(RSEQ_SIG)
++#define HAVE_GLIBC_RSEQ 1
++#endif
++
+ #if defined(__x86_64__)
+ 
+-#if defined(__x86_64__) && defined(RSEQ_SIG)
++#ifdef HAVE_GLIBC_RSEQ
+ static inline void *thread_pointer(void)
+ {
+ 	void *result;
+@@ -38,11 +48,11 @@ static inline void unregister_old_rseq(void)
+ 		size = 32;
+ 	syscall(__NR_rseq, (void *)((char *)thread_pointer() + __rseq_offset), size, 1, RSEQ_SIG);
+ }
+-#else
++#else /* !HAVE_GLIBC_RSEQ */
+ static inline void unregister_old_rseq(void)
+ {
+ }
+-#endif
++#endif /* HAVE_GLIBC_RSEQ */
+ 
+ const char *test_doc = "rseq() transition test";
+ const char *test_author = "Alexander Mikhalitsyn <alexander.mikhalitsyn@virtuozzo.com>";
+@@ -97,11 +107,27 @@ static int sys_rseq(volatile struct rseq *rseq_abi, uint32_t rseq_len, int flags
+ 	return syscall(__NR_rseq, rseq_abi, rseq_len, flags, sig);
+ }
+ 
++/*
++ * Return the rseq registration size.  Starting with Linux 7.0,
++ * AT_RSEQ_ALIGN is 64 but the feature size is 33, so sizeof(struct rseq)
++ * (padded to alignment) no longer matches the registration size the kernel
++ * expects.  Use __rseq_size when available, clamped to a minimum of 32
++ * for older kernels (mirroring glibc's rseq-internal.h).
++ */
++static uint32_t rseq_reg_size(void)
++{
++#ifdef HAVE_GLIBC_RSEQ
++	if (__rseq_size)
++		return (__rseq_size < 32) ? 32 : __rseq_size;
++#endif
++	return sizeof(struct rseq);
++}
++
+ static void register_thread(void)
+ {
+ 	int rc;
+ 	unregister_old_rseq();
+-	rc = sys_rseq(rseq_ptr, sizeof(struct rseq), 0, RSEQ_SIG);
++	rc = sys_rseq(rseq_ptr, rseq_reg_size(), 0, RSEQ_SIG);
+ 	if (rc) {
+ 		fail("Failed to register rseq");
+ 		exit(1);
+@@ -111,7 +137,7 @@ static void register_thread(void)
+ static void check_thread(void)
+ {
+ 	int rc;
+-	rc = sys_rseq(rseq_ptr, sizeof(struct rseq), 0, RSEQ_SIG);
++	rc = sys_rseq(rseq_ptr, rseq_reg_size(), 0, RSEQ_SIG);
+ 	if (!(rc && errno == EBUSY)) {
+ 		fail("Failed to check rseq %d", rc);
+ 		exit(1);
+@@ -206,12 +232,27 @@ static intptr_t *cpu_data;
+ bool ignore_abort = true;
+ int thread_ret;
+ 
++static volatile struct rseq *rseq_area(void)
++{
++#ifdef HAVE_GLIBC_RSEQ
++	/*
++	 * Use the glibc-provided rseq area which is allocated with the
++	 * correct alignment (AT_RSEQ_ALIGN, 64 on kernel >= 7.0).
++	 * The test-local __rseq_abi only has the uapi header alignment
++	 * (32 bytes) which may not satisfy the kernel's requirement.
++	 */
++	if (__rseq_size)
++		return (volatile struct rseq *)((char *)thread_pointer() + __rseq_offset);
++#endif
++	return &__rseq_abi;
++}
++
+ void *thread_routine(void *args)
+ {
+ 	int cpu;
+ 
+-	rseq_ptr = &__rseq_abi;
+-	memset((void *)rseq_ptr, 0, sizeof(struct rseq));
++	rseq_ptr = rseq_area();
++	memset((void *)rseq_ptr, 0, rseq_reg_size());
+ 	register_thread();
+ 	task_waiter_complete(&waiter, 1);
+ 	task_waiter_wait4(&waiter, 2);
+@@ -235,8 +276,8 @@ int main(int argc, char *argv[])
+ 	long nr_cpus;
+ 	pthread_t thread;
+ 
+-	rseq_ptr = &__rseq_abi;
+-	memset((void *)rseq_ptr, 0, sizeof(struct rseq));
++	rseq_ptr = rseq_area();
++	memset((void *)rseq_ptr, 0, rseq_reg_size());
+ 
+ 	test_init(argc, argv);
+ 	nr_cpus = sysconf(_SC_NPROCESSORS_ONLN);
+-- 
+2.54.0
+

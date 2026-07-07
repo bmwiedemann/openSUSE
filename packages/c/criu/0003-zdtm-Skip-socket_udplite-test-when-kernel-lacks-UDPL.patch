@@ -1,0 +1,40 @@
+From 9777d2cf091540115998ac711baa90e8f4348751 Mon Sep 17 00:00:00 2001
+From: Adrian Reber <areber@redhat.com>
+Date: Tue, 21 Apr 2026 07:58:00 +0000
+Subject: [PATCH] zdtm: Skip socket_udplite test when kernel lacks UDPLITE
+
+Kernel 7.1 removed IPPROTO_UDPLITE support. Add a checkskip
+script that probes for a UDPLITE socket and skips the test
+with EPROTONOSUPPORT instead of failing.
+
+Assisted-by: Claude Code (claude-opus-4-6):claude-opus-4-6@default
+Signed-off-by: Adrian Reber <areber@redhat.com>
+---
+ test/zdtm/static/socket_udplite.checkskip | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
+ create mode 100755 test/zdtm/static/socket_udplite.checkskip
+
+diff --git a/test/zdtm/static/socket_udplite.checkskip b/test/zdtm/static/socket_udplite.checkskip
+new file mode 100755
+index 000000000000..a562550843f4
+--- /dev/null
++++ b/test/zdtm/static/socket_udplite.checkskip
+@@ -0,0 +1,15 @@
++#!/usr/bin/env python3
++# IPPROTO_UDPLITE was removed in kernel 7.1, skip the test if the
++# protocol is not available.
++import socket
++import errno
++
++try:
++	socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDPLITE).close()
++except OSError as e:
++	if e.errno == errno.EPROTONOSUPPORT:
++		print("UDPLITE is not supported by this kernel.")
++		exit(1)
++	raise
++
++exit(0)
+-- 
+2.54.0
+

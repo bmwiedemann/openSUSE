@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:20:07 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Backport the fixes from criu-devel branch for the recent 7.x kernels
+  (bsc#1270423):
+  0001-net-Route-veth-restore-through-usernsd-for-userns-mo.patch
+  0002-zdtm-Fix-rseq01-test-for-kernel-7.0-rseq-changes.patch
+  0003-zdtm-Skip-socket_udplite-test-when-kernel-lacks-UDPL.patch
+  0004-sockets-Treat-UDPLITE-as-optional-in-collect_err.patch
+
+-------------------------------------------------------------------
 Wed Jun 10 13:12:00 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Fix the build on TW; by some reason, rseq detection didn't work, so

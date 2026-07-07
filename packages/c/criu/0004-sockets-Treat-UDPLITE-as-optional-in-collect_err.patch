@@ -1,0 +1,55 @@
+From 189ad2c6fea42ae480b10ffe06a28adada10ebc6 Mon Sep 17 00:00:00 2001
+From: Adrian Reber <areber@redhat.com>
+Date: Mon, 20 Apr 2026 19:19:42 +0000
+Subject: [PATCH] sockets: Treat UDPLITE as optional in collect_err()
+
+Kernel 7.1 removed IPPROTO_UDPLITE support. When the UDPLITE diag
+module is absent, the netlink request returns -ENOENT, which CRIU
+was treating as a fatal error causing the entire dump to fail.
+
+Apply the same treatment as IPPROTO_RAW: return success from the
+error callback so the dump can proceed. If a UDPLITE socket is
+actually encountered, it will fail at lookup time with a clear
+error rather than failing the entire dump preemptively.
+
+Fixes: https://github.com/checkpoint-restore/criu/issues/3002
+
+Assisted-by: Claude Code (claude-opus-4-6):claude-opus-4-6@default
+Signed-off-by: Adrian Reber <areber@redhat.com>
+---
+ criu/sockets.c | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
+
+diff --git a/criu/sockets.c b/criu/sockets.c
+index e4adae03cdd6..7778b4688196 100644
+--- a/criu/sockets.c
++++ b/criu/sockets.c
+@@ -827,16 +827,20 @@ static int collect_err(int err, struct ns_id *ns, void *arg)
+ 	if (err == -ENOENT) {
+ 		pr_debug("%s: %d\n", msg, err);
+ 		/*
+-		 * Unlike other modules RAW sockets are
+-		 * always optional and not commonly used.
++		 * Unlike other modules RAW and UDPLITE sockets
++		 * are always optional and not commonly used.
+ 		 * Currently we warn user about lack of
+ 		 * a particular module support in "check"
+ 		 * procedure. Thus don't fail on lack of
+-		 * RAW diags in a regular dump. If we meet
+-		 * a raw socket we will simply fail on dump
++		 * these diags in a regular dump. If we meet
++		 * such a socket we will simply fail on dump
+ 		 * procedure because it won't be resolved.
++		 *
++		 * Note: IPPROTO_UDPLITE support was removed
++		 * from the kernel starting with v7.1.
+ 		 */
+-		if (gr->protocol == IPPROTO_RAW)
++		if (gr->protocol == IPPROTO_RAW ||
++		    gr->protocol == IPPROTO_UDPLITE)
+ 			return 0;
+ 		return -ENOENT;
+ 	}
+-- 
+2.54.0
+
