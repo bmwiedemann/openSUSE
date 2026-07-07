@@ -65,4 +65,12 @@
 - Add event_loop.patch to reenable tests with pytest-asyncio 1.0</comment>
     <requestid>1288471</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ccbca7670ce25e9d1ac17009d627c866</srcmd5>
+    <version>2.7.1</version>
+    <time>1783450829</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1363991</requestid>
+  </revision>
 </revisionlist>

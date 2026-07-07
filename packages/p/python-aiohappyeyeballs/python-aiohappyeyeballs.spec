@@ -1,7 +1,7 @@
 #
 # spec file for package python-aiohappyeyeballs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiohappyeyeballs
-Version:        2.6.1
+Version:        2.7.1
 Release:        0
 Summary:        Happy Eyeballs for asyncio
 License:        Python-2.0
 URL:            https://github.com/aio-libs/aiohappyeyeballs
 Source:         https://files.pythonhosted.org/packages/source/a/aiohappyeyeballs/aiohappyeyeballs-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE drop the offending helper function to enable tests
-# https://github.com/aio-libs/aiohappyeyeballs/pull/177 chore(deps-dev): bump pytest-asyncio from 0.26.0 to 1.0.0
-Patch0:         event_loop.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pytest-asyncio}
