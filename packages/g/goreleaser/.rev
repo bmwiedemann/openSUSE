@@ -1065,4 +1065,41 @@
     <comment></comment>
     <requestid>1359780</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>b7b1315bfb52462f7d81bae36415586c</srcmd5>
+    <version>2.17.0</version>
+    <time>1783450925</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.17.0:
+  * ci: verify
+  * docs: update
+  * ci: replace tilde in nfpm filenames
+  * docs(nfpm): note tilde ConventionalFileName
+  * feat(dockers/v2): retry build
+  * feat(scm): allow a custom token on the release repository (#6689)
+  * chore: auto-update generated files (#6688)
+  * ci(deps): bump the actions group with 11 updates (#6687)
+  * chore(deps): bump the gomod group with 4 updates (#6686)
+  * ci: notify telegram instead of discord
+  * feat: Allow GOARM softfloat and hardfloat (#6198)
+  * chore: godoc
+  * feat(brew,cask,krew,nix,scoop,winget): default pull request branch name (#6685)
+  * fix(winget): default head branch to a versioned template (#6684)
+  * chore: schema update
+  * ci: token perms
+  * sec(deps): bump go-pkcs12 to v0.7.2 (GO-2026-5052) (#6683)
+  * fix(deps): drop dep on docker/docker (#6682)
+  * feat(winget): allow configuring the manifest locale (#6680)
+  * fix(builders): reject empty target string (#6679)
+  * chore(deps): bump the gomod group across 1 directory with 2 updates
+  * ci: improve ci times (#6677)
+  * chore(deps): bump the gomod group with 2 updates (#6673)
+  * ci: remove node cleanup
+  * docs: update
+  * chore(deps): bump github.com/sigstore/rekor from 1.5.1 to 1.5.2 (#6676)
+  * chore: auto-update generated files (#6675)
+  * ci(deps): bump the actions group with 3 updates (#6674)
+  * chore: auto-update generated files (#6671) (forwarded request 1363972 from ph03nix)</comment>
+    <requestid>1364120</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Mon Jul 06 07:26:34 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.17.0:
+  * ci: verify
+  * docs: update
+  * ci: replace tilde in nfpm filenames
+  * docs(nfpm): note tilde ConventionalFileName
+  * feat(dockers/v2): retry build
+  * feat(scm): allow a custom token on the release repository (#6689)
+  * chore: auto-update generated files (#6688)
+  * ci(deps): bump the actions group with 11 updates (#6687)
+  * chore(deps): bump the gomod group with 4 updates (#6686)
+  * ci: notify telegram instead of discord
+  * feat: Allow GOARM softfloat and hardfloat (#6198)
+  * chore: godoc
+  * feat(brew,cask,krew,nix,scoop,winget): default pull request branch name (#6685)
+  * fix(winget): default head branch to a versioned template (#6684)
+  * chore: schema update
+  * ci: token perms
+  * sec(deps): bump go-pkcs12 to v0.7.2 (GO-2026-5052) (#6683)
+  * fix(deps): drop dep on docker/docker (#6682)
+  * feat(winget): allow configuring the manifest locale (#6680)
+  * fix(builders): reject empty target string (#6679)
+  * chore(deps): bump the gomod group across 1 directory with 2 updates
+  * ci: improve ci times (#6677)
+  * chore(deps): bump the gomod group with 2 updates (#6673)
+  * ci: remove node cleanup
+  * docs: update
+  * chore(deps): bump github.com/sigstore/rekor from 1.5.1 to 1.5.2 (#6676)
+  * chore: auto-update generated files (#6675)
+  * ci(deps): bump the actions group with 3 updates (#6674)
+  * chore: auto-update generated files (#6671)
+  * chore(deps): bump github.com/opencontainers/runc from 1.2.8 to 1.3.6 (#6669)
+  * fix(nfpm): produce valid arch for Termux packages (#6668)
+  * feat(nfpm): support msix packages (#6647)
+  * docs: update
+  * ci: remove dispatch generate
+  * ci: improve sponsors update script
+  * ci: improve get-releases script
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6664)
+  * ci(deps): bump actions/checkout from 6.0.3 to 7.0.0 in the actions group (#6665)
+  * chore(deps): bump the gomod group with 5 updates (#6663)
+  * chore: auto-update generated files (#6662)
+  * docs: fix "lets" -> "let's" in quick-start guide (#6661)
+  * ci: fix install from gh release
+  * ci: fix generate job
+  * docs: doc authoring skill
+  * docs: update
+  * ci(deps): bump the actions group with 2 updates (#6659)
+  * chore(deps): bump the docker group across 1 directory with 3 updates (#6658)
+  * chore(deps): bump the gomod group with 6 updates (#6657)
+  * docs: fix
+  * fix(client): skip merge-upstream when target repo is not a fork (#6646)
+  * chore: update schema
+  * docs: good bye discord
+  * fix: return error when go.mod is unreadable in CheckGoModPipe (#6644)
+  * docs: fix typo in notarize.md (#6655)
+  * chore: auto-update generated files
+  * sec(deps): update golang.org/x/net
+  * fix(mcp): clean subfolder path (#6649)
+  * chore(deps): bump the gomod group with 2 updates (#6650)
+  * chore(deps): bump the docker group across 1 directory with 3 updates (#6651)
+  * ci(deps): bump the actions group with 5 updates (#6652)
+  * docs: improve home
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * chore(deps): bump the gomod group with 2 updates (#6640)
+  * ci(deps): bump the actions group with 4 updates (#6641)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs(casks): fix private-repo example broken by Homebrew 5.1.14 (#6639)
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+  * docs: updates
+  * chore: auto-update generated files
+  * chore: auto-update generated files
+
+-------------------------------------------------------------------
 Tue Jun 16 12:09:07 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio 
