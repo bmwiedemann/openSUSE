@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubearmor/kubearmor-client</param>
-              <param name="changesrevision">e0da8a1475c2510bf608a75a45bb6582fe0e8b37</param></service></servicedata>
+              <param name="changesrevision">e0da8a1475c2510bf608a75a45bb6582fe0e8b37</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubearmor/kubearmor-client.git</param>
+              <param name="changesrevision">c474495aa29aa7d59f893201d2109ddd7c56840e</param></service></servicedata>

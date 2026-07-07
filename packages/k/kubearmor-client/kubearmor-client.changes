@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 07 12:28:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.9:
+  * bump otlptrace to v1.43.0 to resolve Snyk memory allocation
+    vuln (#555)
+
+-------------------------------------------------------------------
+Tue Jul 07 10:31:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.8:
+  * migrate docker SDK usage from docker/docker to moby/moby/client
+    (#552)
+  * fix(install): remove kubearmornetworkpolicies CRD on force
+    uninstall
+  * chore: typo fix for cli karmor logs --secure
+  * add no sec to json encoding
+  * chore(policy): add kubearmor network policy
+  * probe: fix namespace field to the policies list
+  * fix-go-release
+  * update KubeArmor/protobuf dependency
+
+-------------------------------------------------------------------
 Wed May 20 12:25:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.7:
