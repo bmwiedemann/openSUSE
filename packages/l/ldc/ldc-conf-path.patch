@@ -1,0 +1,15 @@
+Index: ldc-1.42.0-src/driver/configfile.cpp
+===================================================================
+--- ldc-1.42.0-src.orig/driver/configfile.cpp
++++ ldc-1.42.0-src/driver/configfile.cpp
+@@ -159,6 +159,10 @@ bool ConfigFile::locate(std::string &pat
+   // try /etc/ldc (absolute path)
+   p = "/etc/ldc";
+   APPEND_FILENAME_AND_RETURN_IF_EXISTS
++
++  // try /usr/share (absolute path)
++  p = "/usr/share";
++  APPEND_FILENAME_AND_RETURN_IF_EXISTS
+ #endif
+ 
+ #undef APPEND_FILENAME_AND_RETURN_IF_EXISTS

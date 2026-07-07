@@ -1,7 +1,7 @@
 #
 # spec file for package ldc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define so_ver        110
+%define so_ver        112
 %define lname_jit     libldc-jit
 %define lname_runtime libdruntime-%{name}
 %define lname_phobos  libphobos2-%{name}
@@ -49,7 +49,7 @@
 
 %bcond_with ldc_tests
 
-# JIT is available from LLVM >= 18
+# JIT is available with LLVM >= 18 < 20
 # https://github.com/ldc-developers/ldc/pull/4774
 %global jit_support 1
 
@@ -59,7 +59,7 @@
 %endif
 
 Name:           ldc
-Version:        1.40.1
+Version:        1.42.0
 Release:        0
 Summary:        The LLVM D Compiler
 License:        Artistic-1.0 AND BSD-3-Clause
@@ -68,21 +68,23 @@ URL:            https://wiki.dlang.org/LDC
 Source0:        https://github.com/ldc-developers/ldc/releases/download/v%{version}/ldc-%{version}-src.tar.gz
 Source1:        %{name}-rpmlintrc
 Patch0:         ldc-1.9.0-fix_arm_build.patch
+Patch1:         ldc-conf-path.patch
 BuildRequires:  cmake
 BuildRequires:  help2man
 BuildRequires:  libconfig++-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libstdc++-devel
-%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 20)
-BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 20)
-%else
-BuildRequires:  llvm-clang >= 15.0
-BuildRequires:  llvm-devel >= 15.0
-%endif
 BuildRequires:  ncurses-devel
 BuildRequires:  sqlite3-devel
 BuildRequires:  zlib-devel
+# It supports LLVM < 22, but only without JIT (LDC_DYNAMIC_COMPILE=OFF)
+%if %{jit_support}
+BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 20)
+BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 20)
+%else
+BuildRequires:  (cmake(Clang) >= 15.0 with cmake(Clang) < 22)
+BuildRequires:  (cmake(LLVM) >= 15.0 with cmake(LLVM) < 22)
+%endif
 BuildRequires:  pkgconfig(bash-completion)
 # Should be installed, at least runtime
 Recommends:     ldc-phobos-devel = %{version}
@@ -96,6 +98,7 @@ Recommends:     ldc-runtime-devel = %{version}
 %endif
 # Clang uses the newest gcc to find headers and libs
 BuildRequires:  gcc%{?gdc_version}-c++
+BuildRequires:  gcc%{?gdc_version}-PIE
 BuildRequires:  gdmd%{?gdc_suffix}
 %else
 BuildRequires:  ldc
@@ -182,6 +185,10 @@ Optional dependency offering bash completion for ldc2
 %autosetup -p1 -n ldc-%{version}-src
 
 %build
+# llvmXX-devel requires llvmXX-gold, which means that clang YY != XX can't be used
+# anymore for compiling. Explicitly use clang-XX for building with llvm-XX.
+CLANG_VER=$(rpm -q --whatprovides 'cmake(Clang)' --qf %%{version} | cut -d. -f1)
+
 %if %{with ldc_bootstrap}
 # Work around gdc bug with stdin (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=105544)
 echo "pragma(msg, int(__VERSION__));" > feVer.d
@@ -193,21 +200,17 @@ sed -i "s# - -o-# \"$PWD/feVer.d\" -o-#" cmake/Modules/FindDCompiler.cmake
 touch no-suse-rules
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-%else
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-%endif
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-$CLANG_VER" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-$CLANG_VER" \
     -DINCLUDE_INSTALL_DIR:PATH=%{ldcincludedir} \
     -DD_COMPILER:PATH=%{_bindir}/gdmd%{?gdc_suffix} \
+    -DLDC_BUNDLE_LLVM_TOOLS=OFF \
     -DCMAKE_CXX_FLAGS="-std=c++11"
 %make_build
 # The bootstrap compiler is used in-place instead of installed and will
 # thus set an rpath on generated executables. The next/final stage will be
 # installed and should use its own libs, so explicitly disable the rpath.
-sed -i '/rpath/d' bin/ldc2.conf
+sed -i '/rpath/d' etc/ldc2.conf/50-target-default.conf
 export LD_LIBRARY_PATH="$PWD/%_lib"
 cd ..
 
@@ -216,19 +219,18 @@ cd ..
 
 #Needs to be compiled with clang, but opensuse_rules.cmake forces gcc so disable rule
 touch no-suse-rules
+# LDC_BUNDLE_LLVM_TOOLS=OFF: Needs LLVM libs not provided by the package.
+# SYSCONF_INSTALL_DIR: ldc2.conf is not actual admin/user config, so should be in /usr.
 %cmake \
     -DCMAKE_USER_MAKE_RULES_OVERRIDE=./no-suse-rules \
-%if 0%{?suse_version} > 1550 || ( 0%{?is_opensuse} && 0%{?sle_version} > 150400 )
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-%else
-    -DCMAKE_C_COMPILER="%{_bindir}/clang" \
-    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++" \
-%endif
+    -DCMAKE_C_COMPILER="%{_bindir}/clang-$CLANG_VER" \
+    -DCMAKE_CXX_COMPILER="%{_bindir}/clang++-$CLANG_VER" \
     -DINCLUDE_INSTALL_DIR:PATH=%{ldcincludedir} \
 %if %{with ldc_bootstrap}
     -DD_COMPILER:PATH=$PWD/../build-bootstrap/bin/ldmd2 \
 %endif
+    -DLDC_BUNDLE_LLVM_TOOLS=OFF \
+    -DSYSCONF_INSTALL_DIR=%{_datadir} \
     -DCMAKE_CXX_FLAGS="-std=c++11"
 %make_build
 
@@ -269,7 +271,7 @@ rm -rf %{buildroot}%{_prefix}/lib/debug
 %license LICENSE
 %doc README.md
 %{_mandir}/man1/*.1%{?ext_man}
-%config %{_sysconfdir}/ldc2.conf
+%{_datadir}/ldc2.conf/
 %{_bindir}/ldc*
 %{_bindir}/ldmd2
 %{_bindir}/timetrace2txt

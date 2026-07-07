@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Mon Jul  6 14:15:57 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Adjust build to support clang using libalternatives by referencing
+  the versioned names explicitly
+- Move ldc.conf (now a directory) into /usr/share/, needs patch:
+  * ldc-conf-path.patch
+- Update to 1.42.0:
+  * Big news
+    - Frontend, druntime and Phobos are at version [2.112.1+](https://dlang.org/changelog/2.112.0.html), incl. new command-line options `-extI`, `-dllimport=externalOnly` and `-edition`. (#4949, #4962, #4988, #5029, #5042, #5046, #5051, #5061, #5067, #5069, #5076)
+    - Support for [LLVM 21](https://releases.llvm.org/21.1.0/docs/ReleaseNotes.html). The prebuilt packages use v21.1.8. (#4950, #5033)
+    - New prebuilt package for Alpine Linux aarch64 with musl libc, analogous to the existing x86_64 package. (#4943)
+    - **Breaking change for dcompute**: The special `@kernel` UDA is now a function and _**requires**_ parentheses as in `@kernel() void foo(){}`. Optionally you can provide launch dimensions, `@kernel([2,4,8])`, to specify to the compute runtime how the kernel is intended to be launched.
+    - ldc2.conf can now be a directory. All the files inside it, ordered naturally, will be concatenated and treated like a big config. (#4954)
+      - Running `ldc-build-runtime --installWithSuffix` now includes installing a target-specific .conf file to that directory. (#4978)
+    - **Breaking change for ldc2.conf cmake generation**: The `cmake` build process now generates the `ldc2.conf` and `ldc2_install.conf` as directories. `ldc2*.conf.in` and `ADDITIONAL_DEFAULT_LDC_SWITCHES` have been removed, if you need to add switches check out `makeConfSection` in `LdcConfig.cmake`. (#4954)
+    - When cross-compiling, the fallback value for the (cross) C compiler will be picked based on some heuristics.
+      The old behavior was to default to `cc`.
+      As an example, when cross-compiling for `aarch64-linux-gnu` the compilers that are checked are:
+      - `aarch64-linux-gnu-gcc`
+      - `aarch64-linux-gnu-clang`
+      - `clang --target=aarch64-linux-gnu`
+    - The prebuilt arm64/universal macOS packages additionally bundle the arm64 iOS-*simulator* libraries, for out-of-the-box cross-compilation support via e.g. `-mtriple=arm64-apple-ios12.0-simulator`. (#4974)
+    - New `--fdebug-prefix-map` command-line option and changed debuginfo file/directory name splitting logic (both now similar to clang), to aid reproducible builds. (#5039)
+  * Platform support
+    - Supports LLVM 15 - 21.
+    - PowerPC64: `real` now matches the C++ host compiler's `long double` when compiling for the native target, not just on Linux hosts. (#5054)
+
+- Update to 1.41.0:
+  * Big news
+    - Frontend, druntime and Phobos are at version [2.111.0+](https://dlang.org/changelog/2.111.0.html). (#4877, #4910, #4918, #4941)
+    - Support for [LLVM 20](https://releases.llvm.org/20.1.0/docs/ReleaseNotes.html). The prebuilt packages use v20.1.5. (#4843, #4911, #4935)
+      - The dynamic-compile (JIT) feature has regressed with LLVM 20. Use LLVM 18 or 19 for that feature.
+    - Keep frame pointers by default with `-O` for some targets, notably AArch64 (except Windows), x86_64 (except Windows and glibc Linux), Windows x86, and Android. This fixes druntime backtraces with optimized code (incl. prebuilt druntime/Phobos). (#4889)
+    - The prebuilt (non-musl) Linux packages are now generated on Ubuntu 22.04; the minimum glibc version has accordingly been raised from v2.31 to v2.35. (#4893)
+    - druntime: Optimize `core.int128` via inline IR/assembly. (#4892)
+    - Follow clang wrt. unwind tables emission, enabling them for most popular targets. (#4888)
+    - ldc2.conf: Arrays can now be appended to via the `~=` operator. (#4848, #4856)
+    - New `--installWithSuffix` command-line option for the `ldc-build-runtime` tool, to simplify copying the libraries to an existing LDC installation. (#4870)
+    - CMake changes (for building LDC itself):
+      - Minimum CMake version bumped to v3.16. (#4898)
+      - macOS: Fix weird linker error when running CMake the first time. (#3901, #4926)
+      - Reworked integration of the LLVM compiler-rt libraries. Package maintainers may want to see [docs/compiler_rt.md](https://github.com/ldc-developers/ldc/blob/master/docs/compiler_rt.md). (#4665)
+      - Somewhat simplify separate compiler and runtime builds, incl. cross-compiling LDC itself. (#4872)
+  * Platform support
+    - Supports LLVM 15 - 20.
+    - RISC-V: Fiber context switching is now implemented natively. (#4867)
+  * Bug fixes
+    - Prebuilt macOS packages: Fix `ldmd2` and other bundled executables crashing on macOS v15.4. (#4899, #4912)
+    - ImportC: Run C preprocessor in C11 mode. (#4933)
+    - ImportC Windows: Disable clang headers when C-preprocessing with `clang-cl`. (#4934)
+    - Fix ICE on invalid constant address-of expressions. (#4938, #4939)
+    - Allow Unicode in fully qualified label names. (#4927, #4929)
+
+-------------------------------------------------------------------
 Sat Apr  5 21:08:48 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to 1.40.1:
