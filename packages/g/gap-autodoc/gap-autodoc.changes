@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:41:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.06.30
+  * Fix a regression in `.autodoc` parsing where Markdown-style
+    headings and AutoDoc commands were interpreted inside XML CDATA
+    blocks instead of being kept as literal text.
+
+-------------------------------------------------------------------
 Tue May 12 09:54:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.05.11

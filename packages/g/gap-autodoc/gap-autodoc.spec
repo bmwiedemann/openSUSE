@@ -17,7 +17,7 @@
 
 
 Name:           gap-autodoc
-Version:        2026.05.11
+Version:        2026.06.30
 Release:        0
 Summary:        GAP: Tools for generating automatic GAPDoc documentations
 License:        GPL-2.0-only
