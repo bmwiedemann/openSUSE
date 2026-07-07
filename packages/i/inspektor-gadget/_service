@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/inspektor-gadget/inspektor-gadget</param>
+    <param name="url">https://github.com/inspektor-gadget/inspektor-gadget.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.53.2</param>
+    <param name="revision">refs/tags/v0.54.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

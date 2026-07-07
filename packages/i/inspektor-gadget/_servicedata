@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/inspektor-gadget/inspektor-gadget</param>
-              <param name="changesrevision">7a314380ff61534ea70df9fb086505f958b2dff9</param></service></servicedata>
+              <param name="changesrevision">7a314380ff61534ea70df9fb086505f958b2dff9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/inspektor-gadget/inspektor-gadget.git</param>
+              <param name="changesrevision">0c733324b97dbbbe8d85b64ae93622a86fe7bf45</param></service></servicedata>

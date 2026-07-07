@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Tue Jul 07 05:49:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.0:
+  * Welcome to the v0.54.0 of Inspektor Gadget. These are the most
+    important changes:
+    - Generate Cilium NetworkPolicy — advise_networkpolicy can now
+      produce Cilium NetworkPolicy resources, not just Kubernetes
+      NetworkPolicy. Pick the output you want with --policy-format
+      cilium (or --policy-format k8s), then apply the generated
+      policy directly to your Cilium managed cluster.
+    - Set resources on the Kubernetes deployment — you can now
+      define CPU and memory requests and limits for Inspektor
+      Gadget via the Helm chart. Set them under resources in your
+      values.yaml (or with --set) so the DaemonSet fits within your
+      cluster's resource quotas and admission policies.
+    - Race and scale fixes — several fixes make Inspektor Gadget
+      more stable on busy, high-churn nodes: a data race on
+      concurrent container attachment was fixed, a fanotify
+      self-deadlock in the container hook was avoided, and repeated
+      BTF work is now cached, reducing overhead at scale.
+  * Breaking Changes
+    - ci: remove SBOMs from image index, sign them separately by
+      @natejsimonsen in #5495
+  * General Improvements
+    - otel-profiles: Add support for profile name by @mqasimsarfraz
+      in #5459
+    - operators/generate_networkpolicy: add Cilium NetworkPolicy
+      output format by @qjoly in #5551
+    - charts: Allow setting resources by @mqasimsarfraz in #5563
+    - trace_exec: read args from the new process address space by
+      @dorser in #5600
+    - ebpf: upgrade to v0.22.0 and use user-provided BTF cache by
+      @matthyx in #5599
+    - tools: Pin bpftool version and add check for latest by
+      @eiffel-fl in #5472
+  * Bug Fixes
+    - kubemanager: fix race for writes to attachedContainers by
+      @mqasimsarfraz in #5584
+    - container-hook: avoid fanotify self-deadlock by caching
+      config.json by @alban in #5572
+    - include: mask I_CTIME_QUERIED flag when reading inode ctime
+      by @dorser in #5602
+  * Documentation Improvements
+    - gadgets/advise_networkpolicy: document --policy-format in
+      gadget guide by @Copilot in #5571
+    - Clarify applicability of built-in gadgets migration guide by
+      @ahrkrak in #5562
+    - docs: Update AKS CI documentation to use immutable subject by
+      @eiffel-fl in #5601
+  * Security Improvements
+    - Bump Go toolchain and builder image pins to 1.26.4
+      (CVE-2026-42504) by @Copilot in #5558
+    - deps: update x/crypto for gadgettracermanager CVE scan by
+      @Copilot in #5590
+  * CI updates
+    - ci: Fixes zizmor alerts for template injection by @eiffel-fl
+      in #5549
+    - ci: Pin vimto version and check latest version by @eiffel-fl
+      in #5473
+  * Dependencies updates
+    - go: bump github.com/cyphar/filepath-securejoin from 0.5.1 to
+      0.7.0 by @dependabot in #5581
+    - go: bump github.com/containerd/containerd from 1.7.32 to
+      1.7.33 by @dependabot in #5585
+
+-------------------------------------------------------------------
 Thu Jun 18 07:09:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.53.2:
