@@ -224,11 +224,11 @@ find %{buildroot}%{_prefix}/lib/suricata/python -type f -name "*.py" \
 %fillup_only
 # Migrate existing logs and libs to the new user if they exist
 if [ $1 -ge 1 ]; then
-    chown -R suricata:suricata %{_localstatedir}/log/suricata || :
-    chown -R suricata:suricata %{_localstatedir}/lib/suricata || :
+    # Notify the user about the security hardening only once and migrate files
+    if [ ! -f %{_localstatedir}/lib/suricata.migrated-to-nonroot ]; then
+        chown -R suricata:suricata %{_localstatedir}/log/suricata || :
+        chown -R suricata:suricata %{_localstatedir}/lib/suricata || :
 
-    # Notify the user about the security hardening only once
-    if [ ! -f %{_localstatedir}/lib/suricata/.migrated-to-nonroot ]; then
         mkdir -p %{_localstatedir}/adm/update-messages
         cat > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release} << EOF
 Suricata has been hardened and now runs as a non-privileged 'suricata' user.
@@ -238,8 +238,7 @@ have been migrated to the new user ownership.
 If you have custom rule files or configurations outside these directories,
 please ensure they are readable by the 'suricata' user.
 EOF
-        touch %{_localstatedir}/lib/suricata/.migrated-to-nonroot
-        chown suricata:suricata %{_localstatedir}/lib/suricata/.migrated-to-nonroot || :
+        touch %{_localstatedir}/lib/suricata.migrated-to-nonroot
     fi
 fi
 suricata-update || :
@@ -276,7 +275,7 @@ suricata-update || :
 %{_sysusersdir}/%{name}-user.conf
 %config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_fillupdir}/sysconfig.%{name}
-%ghost %{_localstatedir}/lib/suricata/.migrated-to-nonroot
+%ghost %{_localstatedir}/lib/suricata.migrated-to-nonroot
 %ghost %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}
 
 %files -n libsuricata%{soname}

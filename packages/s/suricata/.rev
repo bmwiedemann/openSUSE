@@ -53,4 +53,12 @@
     <comment></comment>
     <requestid>1355547</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>ba6d241706e952772dac1143eeae3f94</srcmd5>
+    <version>8.0.5</version>
+    <time>1783451165</time>
+    <user>anag_factory</user>
+    <comment>- Fix TOCTOU issue in %post (bsc#1270362, CVE-2026-59674)</comment>
+    <requestid>1364295</requestid>
+  </revision>
 </revisionlist>
