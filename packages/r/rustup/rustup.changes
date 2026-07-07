@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 04:22:28 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1270186 - CVE-2026-41676 - update openssl to 0.10.78
+
+-------------------------------------------------------------------
 Wed Feb 11 02:27:22 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1257902 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.
