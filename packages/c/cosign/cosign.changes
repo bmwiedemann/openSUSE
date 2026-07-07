@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:20:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.1.1 (bsc#1267044,
+  CVE-2026-25680,CVE-2026-42502,
+  CVE-2026-27136,CVE-2026-25681,CVE-2026-42506,
+  bsc#1266049, CVE-2026-39827, CVE-2026-39828, CVE-2026-39829,
+  CVE-2026-39830, CVE-2026-39831, CVE-2026-39832, CVE-2026-39833,
+  CVE-2026-39834, CVE-2026-39835, CVE-2026-42508, CVE-2026-46595,
+  CVE-2026-46597, CVE-2026-46598,
+  bsc#1261811, CVE-2026-33815):
+  * This release deprecates a number of flags related to
+    verification material input for trust root material, as well
+    as the bundle format, standardized across Sigstore SDKs,
+    which is now the default output and input for signing and
+    verifying respectively. You may continue to use the
+    deprecated flags with Cosign v3.x releases. The deprecated
+    flags will be removed in a future Cosign v4 release.
+  * This release also updates the signing path for logging to
+    Rekor v2. DSSE attestations will be logged as hashed entries,
+    using the DSSE's pre-auth encoding (PAE). This should unblock
+    developers who want to upload large signed DSSEs such as
+    SBOMs.
+  * Initialize PKCS11 slots Before Getting Token Info in
+  * Sign exclusively via sigstore-go in
+  * bundle create: Prevent IgnoreTlog when bundle contains SET in
+  * Require bundle output or registry upload in
+  * fix(load): pass NameOptions to name.ParseReference in
+  * fix: honor --digestAlg when hashing a blob in verify-blob-
+    attestation in https://github.com/sigstore/cosign/pull/4813
+  * Deprecate Flags for v4: Certificates in
+  * Deprecate flags signing config in
+  * Deprecate flags bundle in
+  * Fix typo in map of verify command fields unsupported for new
+    bundle format in https://github.com/sigstore/cosign/pull/4853
+  * Add bundle upgrade command in
+  * Deprecate Flags for v4 in
+  * fix: close file descriptor leaked in
+    WriteSignedImageIndexImages loop in
+  * fix: use Header.Set to prevent duplicate Authorization on
+    retry in https://github.com/sigstore/cosign/pull/4870
+  * feat(cli): add Rekor v2 flag to cosign signing-config create
+  * Fix crash verifying timestamps when no timestamp was verified
+  * Deprecate Flags for v4: OCI Referrers in
+  * Use the configured Target Repository more consistently in
+  * fix: check HTTP status code in LoadFileOrURL in
+  * Fix unsafe type assertion in Rego policy evaluation by in
+  * Fix Ed25519ph check to respect custom signing configs in
+    sign-blob in https://github.com/sigstore/cosign/pull/4880
+  * Enable initialize command output in conformance in
+  * verify: return TUF errors for new bundle trusted roots in
+  * Deprecate subcommands in
+  * Remove docstring references to deprecated flags in
+  * fix(verify): Attach detached certificates to static
+    signatures via wrapped verifier in
+  * fix(verify): copy CheckOpts inside VerifyNewBundle to fix
+    data race in https://github.com/sigstore/cosign/pull/4917
+  * Update sigstore-go to v1.2.0 in
+  * **Full Changelog**:
+    https://github.com/sigstore/cosign/compare/v3.0.6...v3.1.1
+
+-------------------------------------------------------------------
 Tue May 12 09:15:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.0.6 (bsc#1261859, CVE-2026-39395):

@@ -854,4 +854,41 @@
 - build against a maintained golang version (upstream uses go1.20) (forwarded request 1352661 from dirkmueller)</comment>
     <requestid>1352668</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>8681bb90da007e8c90ace0ecb7da086e</srcmd5>
+    <version>3.1.1</version>
+    <time>1783451226</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1 (bsc#1267044,
+  CVE-2026-25680,CVE-2026-42502,
+  CVE-2026-27136,CVE-2026-25681,CVE-2026-42506,
+  bsc#1266049, CVE-2026-39827, CVE-2026-39828, CVE-2026-39829,
+  CVE-2026-39830, CVE-2026-39831, CVE-2026-39832, CVE-2026-39833,
+  CVE-2026-39834, CVE-2026-39835, CVE-2026-42508, CVE-2026-46595,
+  CVE-2026-46597, CVE-2026-46598,
+  bsc#1261811, CVE-2026-33815):
+  * This release deprecates a number of flags related to
+    verification material input for trust root material, as well
+    as the bundle format, standardized across Sigstore SDKs,
+    which is now the default output and input for signing and
+    verifying respectively. You may continue to use the
+    deprecated flags with Cosign v3.x releases. The deprecated
+    flags will be removed in a future Cosign v4 release.
+  * This release also updates the signing path for logging to
+    Rekor v2. DSSE attestations will be logged as hashed entries,
+    using the DSSE's pre-auth encoding (PAE). This should unblock
+    developers who want to upload large signed DSSEs such as
+    SBOMs.
+  * Initialize PKCS11 slots Before Getting Token Info in
+  * Sign exclusively via sigstore-go in
+  * bundle create: Prevent IgnoreTlog when bundle contains SET in
+  * Require bundle output or registry upload in
+  * fix(load): pass NameOptions to name.ParseReference in
+  * fix: honor --digestAlg when hashing a blob in verify-blob-
+    attestation in https://github.com/sigstore/cosign/pull/4813
+  * Deprecate Flags for v4: Certificates in
+  * Deprecate flags signing config in
+  * Deprecate flags bundle in (forwarded request 1364241 from dirkmueller)</comment>
+    <requestid>1364359</requestid>
+  </revision>
 </revisionlist>
