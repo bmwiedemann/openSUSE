@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 07 04:09:23 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260707:
+  * Assigned RUSTSEC-2026-0204 to crossbeam-epoch
+  * Add advisory for invalid pointer dereference in fmt::Pointer impl for crossbeam_epoch::{Atomic,Shared}
+  * Bump actions/cache from 5.0.5 to 6.1.0
+  * Assigned RUSTSEC-2026-0203 to tree-sitter-perl-next
+  * Add tree-sitter-perl-next unmaintained advisory (#3039)
+  * Assigned RUSTSEC-2026-0202 to cxx
+  * Add advisory for cxx let_cxx_string unsoundness (#3037)
+  * Assigned RUSTSEC-2026-0201 to fulgur
+  * Add advisory for fulgur: blank-page DoS via non-painting replaced elements
+  * Assigned RUSTSEC-2026-0200 to fulgur
+
+-------------------------------------------------------------------
 Thu Jun 18 05:04:14 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260618:
