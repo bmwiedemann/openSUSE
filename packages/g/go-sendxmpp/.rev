@@ -433,4 +433,30 @@
   * Log a warning when --no-tls-verify or -n is set.</comment>
     <requestid>1352929</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>2636adc2d59aa26a8653992676074478</srcmd5>
+    <version>0.16.0</version>
+    <time>1783451057</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.16.0:
+  Added:
+  * Add Ox support to http-upload.
+  * Add Ox support for private group chats.
+  * Show error cause if joining MUCs failedi (requires go-xmpp &gt;= v0.3.5).
+  Changed:
+  * Fix --ox-delete-nodes.
+  * Fix receiving of 1-1 messages while joined in a MUC.
+  * Use go-sendxmpp + a random ID as fallback MUC alias.
+  * Strip leading &quot;xmpp:&quot; from recipients.
+  * Strip trailing &quot;?join&quot; from MUC JIDs.
+  * Add context for timeouts in stanza handling.
+  * Check ID for disco items reply (requires go-xmpp &gt;= v0.3.6).
+  * Reduce channel buffer size to 1 where only one item will be returned.
+  * Deprecate legacy PGP.
+  * CVE-2026-1229: The CombinedMult function produces an incorrect value (bsc#1265538)
+    Bump circl to 1.6.3
+  * CVE-2026-39821: Failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation (bsc#1266617)
+    Bump net to 0.56.0</comment>
+    <requestid>1364165</requestid>
+  </revision>
 </revisionlist>

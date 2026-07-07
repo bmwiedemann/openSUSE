@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jun 23 05:22:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.16.0:
+  Added:
+  * Add Ox support to http-upload.
+  * Add Ox support for private group chats.
+  * Show error cause if joining MUCs failedi (requires go-xmpp >= v0.3.5).
+  Changed:
+  * Fix --ox-delete-nodes.
+  * Fix receiving of 1-1 messages while joined in a MUC.
+  * Use go-sendxmpp + a random ID as fallback MUC alias.
+  * Strip leading "xmpp:" from recipients.
+  * Strip trailing "?join" from MUC JIDs.
+  * Add context for timeouts in stanza handling.
+  * Check ID for disco items reply (requires go-xmpp >= v0.3.6).
+  * Reduce channel buffer size to 1 where only one item will be returned.
+  * Deprecate legacy PGP.
+  * CVE-2026-1229: The CombinedMult function produces an incorrect value (bsc#1265538)
+    Bump circl to 1.6.3
+  * CVE-2026-39821: Failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation (bsc#1266617)
+    Bump net to 0.56.0
+
+-------------------------------------------------------------------
 Wed May 13 05:56:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.15.8:
