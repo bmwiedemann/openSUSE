@@ -1,0 +1,301 @@
+Index: pony-0.7.19/pony/orm/core.py
+===================================================================
+--- pony-0.7.19.orig/pony/orm/core.py
++++ pony-0.7.19/pony/orm/core.py
+@@ -3871,7 +3871,8 @@ class EntityMeta(type):
+         comprehension = ast.comprehension(
+             target=ast.Name(iter_name, ast.Store()),
+             iter=ast.Name('.0', ast.Load()),
+-            ifs=[]
++            ifs=[],
++            is_async=False
+         )
+         entity._default_genexpr_ = ast.GeneratorExp(ast.Name(iter_name, ast.Load()), [comprehension])
+ 
+@@ -4393,7 +4394,11 @@ class EntityMeta(type):
+         name = names[0]
+ 
+         for_expr = ast.comprehension(
+-            target=ast.Name(name, ast.Store()), iter=ast.Name('.0', ast.Load()), ifs=[cond_expr])
++            target=ast.Name(name, ast.Store()),
++            iter=ast.Name('.0', ast.Load()),
++            ifs=[cond_expr],
++            is_async = False
++        )
+         inner_expr = ast.GeneratorExp(elt=ast.Name(name, ast.Load()), generators=[for_expr])
+ 
+         locals = locals.copy() if locals is not None else {}
+Index: pony-0.7.19/pony/orm/decompiling.py
+===================================================================
+--- pony-0.7.19.orig/pony/orm/decompiling.py
++++ pony-0.7.19/pony/orm/decompiling.py
+@@ -1,5 +1,5 @@
+ from __future__ import absolute_import, print_function, division
+-from pony.py23compat import PY36, PY37, PY38, PY39, PY310, PY311, PY312, PY313, PYPY
++from pony.py23compat import PY36, PY37, PY38, PY39, PY310, PY311, PY312, PY313, PY314, PYPY
+ 
+ import sys, types, inspect
+ from opcode import opname as opnames, HAVE_ARGUMENT, EXTENDED_ARG, cmp_op
+@@ -89,6 +89,12 @@ operator_mapping = {
+     'not in': ast.NotIn
+ }
+ 
++double_load_store_ops = {
++    'LOAD_FAST_LOAD_FAST',
++    'STORE_FAST_LOAD_FAST',
++    'STORE_FAST_STORE_FAST',
++    'LOAD_FAST_BORROW_LOAD_FAST_BORROW',
++}
+ 
+ def clean_assign(node):
+     if isinstance(node, ast.Assign):
+@@ -99,6 +105,9 @@ def clean_assign(node):
+ def make_const(value):
+     if is_const(value):
+         return value
++    if PY314:
++        if isinstance(value, slice):
++            return slice_to_ast(value)
+     if PY39:
+         return ast.Constant(value)
+     elif PY38:
+@@ -140,6 +149,13 @@ def unwrap_str(key):
+     return key.s
+ 
+ 
++def slice_to_ast(value):
++    start = ast.Constant(value.start) if value.start is not None else None
++    stop = ast.Constant(value.stop) if value.stop is not None else None
++    step = ast.Constant(value.step) if value.step is not None else None
++    return ast.Slice(start, stop, step)
++
++
+ class Decompiler(object):
+     def __init__(decompiler, code, start=0, end=None):
+         decompiler.code = code
+@@ -221,7 +237,7 @@ class Decompiler(object):
+                     arg = [i + oparg * (2 if PY310 else 1)
+                            * (-1 if 'BACKWARD' in opname else 1)]
+                 elif op in haslocal:
+-                    if opname in {'LOAD_FAST_LOAD_FAST', 'STORE_FAST_LOAD_FAST', 'STORE_FAST_STORE_FAST'}:
++                    if opname in double_load_store_ops:
+                         # py3.13: 2 4bit args
+                         arg = [code._varname_from_oparg(oparg >> 4), code._varname_from_oparg(oparg & 0x0f)]
+                     elif PY313:
+@@ -254,6 +270,10 @@ class Decompiler(object):
+                     and arg[0] == decompiler.for_iter_pos):
+                 decompiler.abs_jump_to_top = decompiler.pos
+ 
++            # NOT_TAKEN has a similar problem as CACHE, but does not change rel jump addresses, so needs to be here
++            while i < len(code.co_code) and opnames[code.co_code[i]] == 'NOT_TAKEN':
++                i += 2
++
+             if before_yield:
+                 merge = False
+                 if opname == 'JUMP_BACKWARD':
+@@ -379,6 +399,9 @@ class Decompiler(object):
+         inplace = opname.startswith('NB_INPLACE_')
+         opname = opname.split('_', 2 if inplace else 1)[-1]
+ 
++        if opname == "SUBSCR":
++            return decompiler.BINARY_SUBSCR()
++
+         op = {
+             "ADD": ast.Add,
+             "AND": ast.BitAnd,
+@@ -412,7 +435,7 @@ class Decompiler(object):
+                 end = None
+             if isinstance(start, ast.Constant) and start.value is None:
+                 start = None
+-        node2 = ast.Slice(start, end, ctx=ast.Load())
++        node2 = ast.Slice(start, end)
+         return ast.Subscript(value=node1, slice=node2, ctx=ast.Load())
+ 
+     def BINARY_SUBSCR(decompiler):
+@@ -423,6 +446,13 @@ class Decompiler(object):
+                 node2.lower = None
+             if isinstance(node2.upper, ast.Constant) and node2.upper.value is None:
+                 node2.upper = None
++        elif (
++            isinstance(node2, ast.Constant)
++            and isinstance(node2.value, tuple)
++            and any(isinstance(value, slice) for value in node2.value)
++        ):
++            # py3.14 has a different format for constant tuple of slices
++            node2 = ast.Tuple(elts=[slice_to_ast(value) for value in node2.value])
+         elif not PY38:
+             if isinstance(node2, ast.Tuple) and any(isinstance(item, ast.Slice) for item in node2.elts):
+                 node2 = ast.ExtSlice(node2.elts)
+@@ -565,7 +595,7 @@ class Decompiler(object):
+         star = decompiler.stack.pop()
+         return decompiler.CALL_FUNCTION(argc, star, star2)
+ 
+-    def CALL_FUNCTION_EX(decompiler, argc):
++    def CALL_FUNCTION_EX(decompiler, argc=1):
+         star2 = None
+         if argc:
+             if argc != 1:
+@@ -881,12 +911,15 @@ class Decompiler(object):
+         decompiler.names.add(varname)
+         return ast.Name(varname, ast.Load())
+ 
++    LOAD_FAST_AND_CLEAR = LOAD_FAST
++    LOAD_FAST_BORROW = LOAD_FAST
++
+     def LOAD_FAST_LOAD_FAST(decompiler, varname1, varname2):
+         decompiler.names.add(varname1)
+         decompiler.stack.append(ast.Name(varname1, ast.Load()))
+         return decompiler.LOAD_FAST(varname2)
+ 
+-    LOAD_FAST_AND_CLEAR = LOAD_FAST
++    LOAD_FAST_BORROW_LOAD_FAST_BORROW = LOAD_FAST_LOAD_FAST
+ 
+     def LOAD_GLOBAL(decompiler, varname, push_null):
+         res = ast.Name(varname, ast.Load())
+@@ -909,6 +942,9 @@ class Decompiler(object):
+         decompiler.names.add(varname)
+         return ast.Name(varname, ast.Load())
+ 
++    def LOAD_SMALL_INT(decompiler, value):
++        return make_const(value)
++
+     def MAKE_CELL(decompiler, freevar):
+         pass
+ 
+Index: pony-0.7.19/pony/orm/sqltranslation.py
+===================================================================
+--- pony-0.7.19.orig/pony/orm/sqltranslation.py
++++ pony-0.7.19/pony/orm/sqltranslation.py
+@@ -10,7 +10,7 @@ from functools import update_wrapper
+ from uuid import UUID
+ 
+ from pony import options, utils
+-from pony.utils import localbase, is_ident, throw, reraise, copy_ast, between, concat, coalesce
++from pony.utils import localbase, is_ident, throw, reraise, copy_ast, between, concat, coalesce, IntegerGenerator
+ from pony.orm.asttranslation import ASTTranslator, ast2src, TranslationError, create_extractors, get_child_nodes
+ from pony.orm.decompiling import decompile, DecompileError, operator_mapping
+ from pony.orm.ormtypes import \
+@@ -1241,7 +1241,7 @@ class SqlQuery(object):
+         sqlquery.tablerefs = {}
+         if parent_sqlquery is None:
+             sqlquery.alias_counters = {}
+-            sqlquery.expr_counter = itertools.count(1)
++            sqlquery.expr_counter = IntegerGenerator(1)
+         else:
+             sqlquery.alias_counters = parent_sqlquery.alias_counters.copy()
+             sqlquery.expr_counter = parent_sqlquery.expr_counter
+Index: pony-0.7.19/pony/orm/tests/test_declarative_exceptions.py
+===================================================================
+--- pony-0.7.19.orig/pony/orm/tests/test_declarative_exceptions.py
++++ pony-0.7.19/pony/orm/tests/test_declarative_exceptions.py
+@@ -1,5 +1,5 @@
+ from __future__ import absolute_import, print_function, division
+-from pony.py23compat import PYPY
++from pony.py23compat import PY314, PYPY
+ 
+ import sys, unittest
+ from datetime import date
+@@ -77,7 +77,8 @@ class TestSQLTranslatorExceptions(unitte
+         def test5(self):
+             select(s for s in Student if s.name.upper(**{'a':'b', 'c':'d'}))
+ 
+-    @raises_exception(ExprEvalError, "`1 in 2` raises TypeError: argument of type 'int' is not iterable" if not PYPY else
++    @raises_exception(ExprEvalError, "`1 in 2` raises TypeError: argument of type 'int' is not a container or iterable" if PY314 else
++                                     "`1 in 2` raises TypeError: argument of type 'int' is not iterable" if not PYPY else
+                                      "`1 in 2` raises TypeError: 'int' object is not iterable")
+     def test6(self):
+         select(s for s in Student if 1 in 2)
+Index: pony-0.7.19/pony/py23compat.py
+===================================================================
+--- pony-0.7.19.orig/pony/py23compat.py
++++ pony-0.7.19/pony/py23compat.py
+@@ -9,6 +9,7 @@ PY310 = sys.version_info[:2] >= (3, 10)
+ PY311 = sys.version_info[:2] >= (3, 11)
+ PY312 = sys.version_info[:2] >= (3, 12)
+ PY313 = sys.version_info[:2] >= (3, 13)
++PY314 = sys.version_info[:2] >= (3, 14)
+ 
+ unicode = str
+ buffer = bytes
+Index: pony-0.7.19/pony/utils/tests/test_utils.py
+===================================================================
+--- pony-0.7.19.orig/pony/utils/tests/test_utils.py
++++ pony-0.7.19/pony/utils/tests/test_utils.py
+@@ -1,7 +1,9 @@
+ import ast
+ import unittest
++from copy import deepcopy
++
+ from pony.py23compat import PY36
+-from pony.utils import pickle_ast, unpickle_ast
++from pony.utils import pickle_ast, unpickle_asti, IntegerGenerator
+ 
+ 
+ class PickleTest(unittest.TestCase):
+@@ -15,3 +17,21 @@ class PickleTest(unittest.TestCase):
+         src = ast.parse("(x for x in [])")
+         res = unpickle_ast(pickle_ast(src))
+         self.assertEqual(ast.dump(res), ast.dump(src))
++
++
++class IntegerGeneratorTest(unittest.TestCase):
++    def test_from_zero(self):
++        c = IntegerGenerator()
++        self.assertEqual(next(c), 0)
++        self.assertEqual(next(c), 1)
++
++    def test_from_start(self):
++        c = IntegerGenerator(42)
++        self.assertEqual(next(c), 42)
++        self.assertEqual(next(c), 43)
++
++    def test_copy(self):
++        c = IntegerGenerator(42)
++        self.assertEqual(next(c), 42)
++        d = deepcopy(c)
++        self.assertEqual(next(c), next(d))
+Index: pony-0.7.19/pony/utils/utils.py
+===================================================================
+--- pony-0.7.19.orig/pony/utils/utils.py
++++ pony-0.7.19/pony/utils/utils.py
+@@ -445,3 +445,17 @@ def deduplicate(value, deduplication_cac
+         return deduplication_cache[t].setdefault(value, value)
+     except:
+         return value
++
++
++class IntegerGenerator:
++    """pickleable version of itertools.count() with fixed step=1"""
++    def __init__(self, firstval=0):
++        self.val = firstval
++
++    def __iter__(self):
++        return self
++
++    def __next__(self):
++        res = self.val
++        self.val += 1
++        return res
+Index: pony-0.7.19/setup.py
+===================================================================
+--- pony-0.7.19.orig/setup.py
++++ pony-0.7.19/setup.py
+@@ -71,6 +71,7 @@ classifiers = [
+     'Programming Language :: Python :: 3.11',
+     'Programming Language :: Python :: 3.12',
+     'Programming Language :: Python :: 3.13',
++    'Programming Language :: Python :: 3.14',
+     'Programming Language :: Python :: Implementation :: PyPy',
+     'Topic :: Software Development :: Libraries',
+     'Topic :: Database'
+@@ -111,8 +112,8 @@ download_url = "http://pypi.python.org/p
+ 
+ if __name__ == "__main__":
+     pv = sys.version_info[:2]
+-    if pv < (3, 8) or pv > (3, 13):
+-        s = "Sorry, but %s %s requires Python of one of the following versions: 3.8-3.13." \
++    if pv < (3, 8) or pv > (3, 14):
++        s = "Sorry, but %s %s requires Python of one of the following versions: 3.8-3.14." \
+             " You have version %s"
+         print(s % (name, version, sys.version.split(' ', 1)[0]))
+         sys.exit(1)

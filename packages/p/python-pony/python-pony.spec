@@ -1,7 +1,7 @@
 #
 # spec file for package python-pony
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,7 @@
 
 
 # not compatible: https://github.com/ponyorm/pony/blob/v0.7.17/setup.py#L112
-%define skip_python313 1
-%define skip_python314 1
+%define skip_python315 1
 Name:           python-pony
 Version:        0.7.19
 Release:        0
@@ -26,6 +25,10 @@ Summary:        Pony Object-Relational Mapper
 License:        Apache-2.0
 URL:            https://ponyorm.com
 Source:         https://files.pythonhosted.org/packages/source/p/pony/pony-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM py313.patch to support Python 3.13 gh#ponyorm/pony@179cb05
+Patch0:         py313.patch
+# PATCH-FIX-UPSTREAM py314.patch to support Python 3.14 gh#ponyorm/pony#754
+Patch1:         py314.patch
 BuildRequires:  %{python_module base}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

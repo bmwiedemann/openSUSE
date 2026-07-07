@@ -151,4 +151,12 @@
 - Add skip for Python 3.14, it isn't.</comment>
     <requestid>1314225</requestid>
   </revision>
+  <revision rev="17" vrev="5">
+    <srcmd5>4bbe7c821f554a0eeabdcd20426a527e</srcmd5>
+    <version>0.7.19</version>
+    <time>1783451177</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364309</requestid>
+  </revision>
 </revisionlist>

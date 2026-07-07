@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 10:41:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add py313.patch and py314.patch to support Python 3.13 and Python 3.14
+- remove skip for Python 3.13 and Python 3.14
+- add skip for Python 3.15
+
+-------------------------------------------------------------------
 Wed Oct 29 01:29:47 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove skip for Python 3.12, it's supported.
