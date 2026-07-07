@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:43:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.8:
+  * Bug-fix release; no API or dependency changes
+
+-------------------------------------------------------------------
 Sun Jun 28 22:38:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langgraph 1.2.6

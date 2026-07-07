@@ -1,7 +1,7 @@
 #
 # spec file for package python-langgraph
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph
-Version:        1.2.6
+Version:        1.2.8
 Release:        0
 Summary:        Library for building stateful, multi-actor applications with LLMs
 License:        MIT

@@ -7,4 +7,12 @@
     <comment>New package python-langgraph. Completes the langchain/langgraph cone (skillspector) in Factory — co-stage with the sibling devel:languages:python SRs by pluskalm + the langsmith update (sr#1362384 via science:machinelearning).</comment>
     <requestid>1362412</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>38fa57020ece92f4600fd619e5f9005c</srcmd5>
+    <version>1.2.8</version>
+    <time>1783451066</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.8 (bug-fix release; no API or dependency changes)</comment>
+    <requestid>1364184</requestid>
+  </revision>
 </revisionlist>
