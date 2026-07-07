@@ -1169,4 +1169,16 @@ New upstream release. (forwarded request 341747 from Zaitor)</comment>
 - Use autosetup/patch macros.</comment>
     <requestid>1356974</requestid>
   </revision>
+  <revision rev="155" vrev="3">
+    <srcmd5>35158256e2d0d5dad8d94579b94c2c29</srcmd5>
+    <version>50.0</version>
+    <time>1783450809</time>
+    <user>anag_factory</user>
+    <comment>- Add gnome-keyring-Drop-X-GNOME-Autostart-Phase.patch
+  gnome-session-service is not responsible anymore for starting
+  session services and complains about the presence of X-GNOME-Autostart-Phase.
+  Removing this will allow whatever else is responsible (systemd,
+  systemd-xdg-autostart-generator or whatever) to act.</comment>
+    <requestid>1363908</requestid>
+  </revision>
 </revisionlist>

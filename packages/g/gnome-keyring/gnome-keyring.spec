@@ -34,6 +34,8 @@ Patch1:         gnome-keyring-bsc1039461-pam-man-page.patch
 Patch2:         gnome-keyring-register-login-keyring.patch
 # PATCH-FIX-UPSTREAM 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch -- fix: avoid potential FD leak in gkm_rpc_layer_startup
 Patch3:         https://gitlab.gnome.org/GNOME/gnome-keyring/-/commit/04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch
+# Work around https://gitlab.gnome.org/GNOME/gnome-keyring/-/work_items/178
+Patch4:         gnome-keyring-Drop-X-GNOME-Autostart-Phase.patch
 
 ## NOTE: Keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FIX-SLE gnome-keyring-bsc932232-use-libgcrypt-allocators.patch bsc#932232 hpj@suse.com

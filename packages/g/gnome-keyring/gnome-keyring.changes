@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  2 16:08:35 UTC 2026 - Hendrik Vogelsang <hvogel@suse.com>
+
+- Add gnome-keyring-Drop-X-GNOME-Autostart-Phase.patch
+  gnome-session-service is not responsible anymore for starting
+  session services and complains about the presence of X-GNOME-Autostart-Phase.
+  Removing this will allow whatever else is responsible (systemd,
+  systemd-xdg-autostart-generator or whatever) to act.
+
+-------------------------------------------------------------------
 Wed Jun  3 11:59:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add 04a6bc68ff4350676c5fc55d1b244a17224fbea2.patch: Fix: avoid

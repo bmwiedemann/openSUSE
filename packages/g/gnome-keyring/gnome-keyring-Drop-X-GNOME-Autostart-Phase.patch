@@ -1,0 +1,56 @@
+From b7a523d10745fcde9c3b00e30561f6ece7f13212 Mon Sep 17 00:00:00 2001
+From: Henne Vogelsang <hvogel@opensuse.org>
+Date: Mon, 20 Oct 2025 13:28:15 +0200
+Subject: [PATCH] Drop X-GNOME-Autostart-Phase
+
+gnome-session-service is not responsible anymore for starting
+session services and complains about the presence of X-GNOME-Autostart-Phase.
+
+```
+gnome-session-service[3624]: App gnome-keyring-ssh.desktop sets X-GNOME-Autostart-Phase, but gnome-session no longer manages session services
+```
+
+Removing this will allow whatever else is responsible (systemd,
+systemd-xdg-autostart-generator or whatever) to act.
+---
+ daemon/gnome-keyring-pkcs11.desktop.in.in  | 1 -
+ daemon/gnome-keyring-secrets.desktop.in.in | 1 -
+ daemon/gnome-keyring-ssh.desktop.in.in     | 1 -
+ 3 files changed, 3 deletions(-)
+
+diff --git a/daemon/gnome-keyring-pkcs11.desktop.in.in b/daemon/gnome-keyring-pkcs11.desktop.in.in
+index 3e36603f..12b43551 100644
+--- a/daemon/gnome-keyring-pkcs11.desktop.in.in
++++ b/daemon/gnome-keyring-pkcs11.desktop.in.in
+@@ -5,6 +5,5 @@ Comment=GNOME Keyring: PKCS#11 Component
+ Exec=@bindir@/gnome-keyring-daemon --start --components=pkcs11
+ OnlyShowIn=GNOME;Unity;MATE;
+ NoDisplay=true
+-X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+ X-GNOME-Autostart-Notify=true
+diff --git a/daemon/gnome-keyring-secrets.desktop.in.in b/daemon/gnome-keyring-secrets.desktop.in.in
+index 799caeea..04dcc4d5 100644
+--- a/daemon/gnome-keyring-secrets.desktop.in.in
++++ b/daemon/gnome-keyring-secrets.desktop.in.in
+@@ -5,6 +5,5 @@ Comment=GNOME Keyring: Secret Service
+ Exec=@bindir@/gnome-keyring-daemon --start --components=secrets
+ OnlyShowIn=GNOME;Unity;MATE;
+ NoDisplay=true
+-X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+ X-GNOME-Autostart-Notify=true
+diff --git a/daemon/gnome-keyring-ssh.desktop.in.in b/daemon/gnome-keyring-ssh.desktop.in.in
+index fd7657a4..3b099b2c 100644
+--- a/daemon/gnome-keyring-ssh.desktop.in.in
++++ b/daemon/gnome-keyring-ssh.desktop.in.in
+@@ -4,6 +4,5 @@ Name=SSH Key Agent
+ Comment=GNOME Keyring: SSH Agent
+ Exec=@bindir@/gnome-keyring-daemon --start --components=ssh
+ OnlyShowIn=GNOME;Unity;MATE;
+-X-GNOME-Autostart-Phase=PreDisplayServer
+ X-GNOME-AutoRestart=false
+ X-GNOME-Autostart-Notify=true
+-- 
+2.51.1
+
