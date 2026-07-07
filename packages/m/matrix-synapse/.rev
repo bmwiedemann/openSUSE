@@ -1785,4 +1785,14 @@ mostly-working synapse than nothing at all) and the package has been update to
       (#19801, #19821)</comment>
     <requestid>1359815</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>c9cb9943effe25910906ee7693282a9a</srcmd5>
+    <version>1.156.0</version>
+    <time>1783451212</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1364322 from darix
+
+- Update to 1.156.0</comment>
+    <requestid>1364323</requestid>
+  </revision>
 </revisionlist>
