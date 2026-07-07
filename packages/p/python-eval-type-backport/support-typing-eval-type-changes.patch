@@ -1,0 +1,40 @@
+Index: eval_type_backport-0.4.0/eval_type_backport/eval_type_backport.py
+===================================================================
+--- eval_type_backport-0.4.0.orig/eval_type_backport/eval_type_backport.py
++++ eval_type_backport-0.4.0/eval_type_backport/eval_type_backport.py
+@@ -223,7 +223,10 @@ if sys.version_info[:2] >= (3, 10):
+         **kwargs: Any,
+     ) -> Any:
+         """Alias to typing._eval_type (Python 3.10+)."""
+-        return typing._eval_type(value, globalns, localns, *args, **kwargs)  # type: ignore
++        if sys.version_info[:2] >= (3, 13):
++            return typing._eval_type(value, globalns, localns, (), *args, **kwargs)  # type: ignore
++        else:
++            return typing._eval_type(value, globalns, localns, *args, **kwargs)  # type: ignore
+ 
+ else:
+ 
+Index: eval_type_backport-0.4.0/tests/test_eval_type_backport.py
+===================================================================
+--- eval_type_backport-0.4.0.orig/tests/test_eval_type_backport.py
++++ eval_type_backport-0.4.0/tests/test_eval_type_backport.py
+@@ -48,7 +48,18 @@ def check_eval(code: str, expected: t.An
+     for kwargs in eval_kwargs(code):
+         for ref in typing_ref, backport_ref:
+             assert eval_type_backport(ref, **kwargs) == expected
+-            if sys.version_info >= (3, 10):
++            if sys.version_info >= (3, 13):
++                assert eval(code) == expected
++                assert (
++                    eval_type(
++                        ref,
++                        globalns=kwargs['globalns'],
++                        localns=kwargs['localns'],
++                        type_params=(),
++                    )
++                    == expected
++                )
++            elif sys.version_info >= (3, 10):
+                 assert eval(code) == expected
+                 assert (
+                     eval_type(

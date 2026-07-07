@@ -23,6 +23,8 @@ Summary:        `typing._eval_type` for older Python versions
 License:        MIT
 URL:            https://github.com/alexmojaki/eval_type_backport
 Source:         https://files.pythonhosted.org/packages/source/e/eval_type_backport/eval_type_backport-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support typing._eval_type() changes for 3.13+ gh#alexmojaki/eval_type_backport#38
+Patch0:         support-typing-eval-type-changes.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}

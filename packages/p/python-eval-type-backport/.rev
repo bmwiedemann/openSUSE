@@ -16,4 +16,13 @@
   * Add install_patch() function for easy usage, updated docs</comment>
     <requestid>1359267</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>50d1d378bae90276117b2872e66384e2</srcmd5>
+    <version>0.4.0</version>
+    <time>1783451026</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-typing-eval-type-changes.patch:
+  * Support typing._eval_type() changes introduced by Python 3.13 and 3.15.</comment>
+    <requestid>1364145</requestid>
+  </revision>
 </revisionlist>
