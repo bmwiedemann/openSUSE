@@ -1421,4 +1421,12 @@
   * meson: do not undefine _FILE_OFFSET_BITS for 64-bit platforms</comment>
     <requestid>1355197</requestid>
   </revision>
+  <revision rev="154" vrev="2">
+    <srcmd5>c1eae5852db34b099efa5b113aa5099f</srcmd5>
+    <version>1.7.2+git12</version>
+    <time>1783450768</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364026</requestid>
+  </revision>
 </revisionlist>

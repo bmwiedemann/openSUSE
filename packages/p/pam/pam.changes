@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 16 15:15:09 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix password comparison timing leak from pam_userdb
+  [CVE-2026-54411], [bsc#1268290]
+  * pam_userdb-fix-password-comparison-timing-leak.patch
+
+-------------------------------------------------------------------
 Tue May 26 12:51:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.7.2+git12:
