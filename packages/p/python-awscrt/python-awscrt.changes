@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul  3 06:08:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.35.0
+  * Metric update by @rakshil14-2 in (#735)
+  * noCertificateRevocation option binding by @sbSteveK in (#748)
+  * adding certificate_source to crt layer by @rakshil14-2 in (#747)
+  * adding tls_cipher Pref by @rakshil14-2 in (#749)
+  * S3FileIoOptions.direct_io now supports download as well by @TingDaoK in (#750)
+
+-------------------------------------------------------------------
 Mon Jun  8 13:04:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.34.1
