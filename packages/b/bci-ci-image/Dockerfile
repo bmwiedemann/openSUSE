@@ -23,12 +23,12 @@
 FROM opensuse/bci/python:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends build buildah fish gcc git-core iproute2 jq osc patch python3-devel python3-pipx python3-poetry
+    zypper -n install --no-recommends build buildah fish gcc git-core iproute2 jq osc patch python314-devel python314-base python314-pipx python314-poetry
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
