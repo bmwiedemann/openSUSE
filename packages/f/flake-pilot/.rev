@@ -330,4 +330,33 @@ https://github.com/OSInside/flake-pilot?tab=readme-ov-file#flake-pilot</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1354279</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>96c66991761ae573fbff43ed9a940311</srcmd5>
+    <version>3.1.34</version>
+    <time>1783450896</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 3.1.33 → 3.1.34
+
+- Reverse showing progress logic
+  So far the user had to pass %silent to the call to make
+  the pilot stop showing progress information. The default
+  behavior to show progress information caused a lot of
+  confusion and breakage to script code calling an application
+  as a flake. It is rather unexpected that such progress
+  information is provided by default. This commit reverse the
+  logic such that a user has to provide %progress to see
+  the progress spinner while the pilot is working.
+  This Fixes #80
+
+- Update documentation
+
+- Update documentation
+
+- Fix typo in documentation
+
+- Update documentation
+
+- Add ECR container sources to appstore</comment>
+    <requestid>1364056</requestid>
+  </revision>
 </revisionlist>
