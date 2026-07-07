@@ -3703,6 +3703,7 @@
     <package name="rpcbind" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-file_server -->
     <package name="rpm" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="rpm-config-SUSE" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="rpm-plugin-selinux" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-selinux -->
     <package name="rsync" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="rsyslog" supportstatus="unsupported"/> <!-- reason: dvd:rsyslog -->
     <package name="rt2860" supportstatus="unsupported"/> <!-- reason: dvd:rt2860 -->

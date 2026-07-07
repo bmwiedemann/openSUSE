@@ -1617,6 +1617,7 @@
       <repopackage name="rootlesskit"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
+      <repopackage name="rpm-plugin-selinux"/>
       <repopackage name="rsync"/>
       <repopackage name="rtkit"/>
       <repopackage name="run0-wrappers"/>

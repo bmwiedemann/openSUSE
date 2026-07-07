@@ -3750,6 +3750,7 @@
       <repopackage name="rpcbind"/>
       <repopackage name="rpm"/>
       <repopackage name="rpm-config-SUSE"/>
+      <repopackage name="rpm-plugin-selinux"/>
       <repopackage name="rsync"/>
       <repopackage name="rsyslog"/>
       <repopackage name="rt2860"/>

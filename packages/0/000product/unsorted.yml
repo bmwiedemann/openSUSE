@@ -24385,12 +24385,15 @@ unsorted:
   - python311-CSXCAD 
   - python311-Fiona 
   - python311-Flask-Versioned 
+  - python311-argcomplete 
   - python311-base 
   - python311-base-32bit 
   - python311-base-x86-64-v3 
   - python311-bqplot 
   - python311-calmjs 
+  - python311-calver 
   - python311-cfn-lint 
+  - python311-click 
   - python311-cppclean 
   - python311-curses 
   - python311-dbm 
@@ -24398,8 +24401,11 @@ unsorted:
   - python311-django-formtools 
   - python311-doc 
   - python311-doc-devhelp 
+  - python311-flit-core 
   - python311-geojson 
   - python311-gql 
+  - python311-hatch_vcs 
+  - python311-hatchling 
   - python311-idle 
   - python311-igwn-auth-utils 
   - python311-ipdb 
@@ -24410,7 +24416,14 @@ unsorted:
   - python311-onnxruntime 
   - python311-openapi-core 
   - python311-oslo.cache 
+  - python311-packaging 
   - python311-parfive 
+  - python311-pathspec 
+  - python311-pip 
+  - python311-pip-wheel 
+  - python311-pipx 
+  - python311-platformdirs 
+  - python311-pluggy 
   - python311-pony 
   - python311-pook 
   - python311-pymathics-graph 
@@ -24418,9 +24431,16 @@ unsorted:
   - python311-pytest-mypy-plugins 
   - python311-pytest-mypy-testing 
   - python311-python-subunit 
+  - python311-setuptools 
+  - python311-setuptools-wheel 
+  - python311-setuptools_scm 
   - python311-testsuite 
   - python311-tk 
   - python311-tools 
+  - python311-trove-classifiers 
+  - python311-userpath 
+  - python311-vcs-versioning 
+  - python311-wheel 
   - python311-x86-64-v3 
   - python311-yacron 
   - python312 
@@ -33554,7 +33574,6 @@ unsorted:
   - rpm-plugin-ima 
   - rpm-plugin-imaevmsign 
   - rpm-plugin-prioreset 
-  - rpm-plugin-selinux 
   - rpm-plugin-syslog 
   - rpm-plugin-unshare 
   - rpm-repo-keys-openSUSE 
