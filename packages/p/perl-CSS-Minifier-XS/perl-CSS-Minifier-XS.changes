@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  1 08:57:22 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-CSS-Minifier-XS/Changes
+
+  0.15      2026-06-30 11:19:01-07:00 America/Vancouver
+      - Fix bug which resulted in zeroes being collapsed when they shouldn't,
+        affecting filenames with zeroes in them (e.g.  "url(status-0.png)").
+        Thanks to Stefan Berger for reporting GH#5.
+
+-------------------------------------------------------------------
 Mon Jun 29 09:58:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.140.0 (0.14)

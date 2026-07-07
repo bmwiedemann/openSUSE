@@ -18,10 +18,10 @@
 
 %define cpan_name CSS-Minifier-XS
 Name:           perl-CSS-Minifier-XS
-Version:        0.140.0
+Version:        0.150.0
 Release:        0
-# 0.14 -> normalize -> 0.140.0
-%define cpan_version 0.14
+# 0.15 -> normalize -> 0.150.0
+%define cpan_version 0.15
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS based CSS minifier
 URL:            https://metacpan.org/release/%{cpan_name}

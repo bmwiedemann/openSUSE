@@ -37,4 +37,17 @@
         away. CVE-2026-13593 bsc#1269662</comment>
     <requestid>1362650</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30a36459a6e9642e4e13f6b83bf62331</srcmd5>
+    <version>0.150.0</version>
+    <time>1783451150</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.150.0 (0.15)
+   see /usr/share/doc/packages/perl-CSS-Minifier-XS/Changes
+  0.15      2026-06-30 11:19:01-07:00 America/Vancouver
+      - Fix bug which resulted in zeroes being collapsed when they shouldn't,
+        affecting filenames with zeroes in them (e.g.  &quot;url(status-0.png)&quot;).
+        Thanks to Stefan Berger for reporting GH#5.</comment>
+    <requestid>1364267</requestid>
+  </revision>
 </revisionlist>
