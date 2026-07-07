@@ -1,7 +1,7 @@
 #
 # spec file for package rubygem-uri
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,18 @@
 #
 
 Name:           rubygem-uri
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
 %define mod_name uri
 %define mod_full_name %{mod_name}-%{version}
-BuildRequires:  ruby-macros >= 5
 BuildRequires:  %{ruby >= 2.5}
 BuildRequires:  %{rubygem gem2rpm}
+BuildRequires:  ruby-macros >= 5
 URL:            https://github.com/ruby/uri
 Source:         https://rubygems.org/gems/%{mod_full_name}.gem
 Source1:        gem2rpm.yml
 Summary:        URI is a module providing classes to handle Uniform Resource
-License:        Ruby and BSD-2-Clause
+License:        BSD-2-Clause AND Ruby
 
 %description
 URI is a module providing classes to handle Uniform Resource Identifiers.
