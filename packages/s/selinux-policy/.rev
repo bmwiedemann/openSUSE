@@ -2432,4 +2432,12 @@ Needs to go together with libsemanage change</comment>
     <comment></comment>
     <requestid>1363480</requestid>
   </revision>
+  <revision rev="166" vrev="3">
+    <srcmd5>d508225e31ff811281f642f5eda047c9</srcmd5>
+    <version>20260618</version>
+    <time>1783407627</time>
+    <user>dimstar_suse</user>
+    <comment>Revert; see bugs https://bugzilla.opensuse.org/buglist.cgi?quicksearch=%5B20260706%5D&amp;list_id=14256447</comment>
+    <requestid>1364176</requestid>
+  </revision>
 </revisionlist>

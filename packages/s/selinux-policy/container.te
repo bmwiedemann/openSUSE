@@ -1,4 +1,4 @@
-policy_module(container, 2.250.0)
+policy_module(container, 2.249.0)
 
 gen_require(`
 	class passwd rootok;
@@ -9,13 +9,6 @@ gen_require(`
 #
 # Declarations
 #
-
-## <desc>
-##  <p>
-##  Allow container to make its stack executable
-##  </p>
-## </desc>
-gen_tunable(container_can_execstack, false)
 
 ## <desc>
 ##  <p>
@@ -219,9 +212,6 @@ allow container_runtime_domain self:passwd rootok;
 allow container_runtime_domain self:fd use;
 allow container_runtime_domain self:dir mounton;
 allow container_runtime_domain self:file mounton;
-
-# Suppress mmap_zero denials for docker-ce's check utility
-dontaudit container_runtime_t self:memprotect mmap_zero;
 
 allow container_runtime_domain self:fifo_file rw_fifo_file_perms;
 allow container_runtime_domain self:fifo_file manage_file_perms;
@@ -812,10 +802,6 @@ tunable_policy(`container_connect_any',`
 # spc local policy
 #
 allow spc_t { container_file_t container_var_lib_t container_ro_file_t container_runtime_tmpfs_t}:file entrypoint;
-allow spc_t self:process execmem;
-tunable_policy(`container_can_execstack',`
-	allow spc_t self:process execstack;
-')
 role system_r types spc_t;
 dontaudit spc_t self:memprotect mmap_zero;
 
@@ -981,7 +967,6 @@ allow container_domain self:file rw_file_perms;
 allow container_domain self:lnk_file read_file_perms;
 allow container_domain self:fifo_file create_fifo_file_perms;
 allow container_domain self:fifo_file watch;
-allow container_domain container_file_t:fifo_file watch;
 allow container_domain self:filesystem associate;
 allow container_domain self:key manage_key_perms;
 allow container_domain self:netlink_route_socket r_netlink_socket_perms;
