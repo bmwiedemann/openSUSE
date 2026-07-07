@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Jul 07 13:08:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.107.0:
+  * Features
+    - ad8642d8: feat(duo): support Duo CLI v9 auto-updates (Tomas
+      Vik tvik@gitlab.com)
+    - b8ba875f: feat(security config): add commands to manage
+      security configuration profiles (Oscar Tovar
+      otovar@gitlab.com)
+  * Documentation
+    - 76d0ac66: docs: add new CLAUDE.md file and reference
+      AGENTS.md (Brendan Lynch blynch@gitlab.com)
+    - 4a143d44: docs: clarify glab token rotate command info
+      (Brendan Lynch blynch@gitlab.com)
+    - 96ab83c0: docs: update stage from Create to AI Coding (Uma
+      Chandran uchandran@gitlab.com)
+  * Dependencies
+    - 3329b298: chore(deps): update dependency @commitlint/format
+      to ^21.1.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - d176bd65: chore(deps): update module charm.land/lipgloss/v2
+      to v2.0.5 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - b9c46379: chore(deps): update module github.com/docker/cli to
+      v29.6.1+incompatible (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - f6fefa6d: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.45.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 7fd07149: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.46.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 0e195d0d: chore: update documentation MR template (Brendan
+      Lynch blynch@gitlab.com)
+
+-------------------------------------------------------------------
 Wed Jul 01 05:48:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.106.0:
