@@ -303,4 +303,30 @@
     formats</comment>
     <requestid>1353795</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>200cf8acbb45363aafa354492392165e</srcmd5>
+    <version>3.1.1</version>
+    <time>1783450933</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.1.1:
+  * Validate archive hash parts
+  * fix(extras): scope optional deps to requesting edge
+
+- update to 3.1.0:
+  * feat(cli): add --summary health report (text/rich/json)
+- update to 3.0.0:
+  * chore: improve pipdeptree maintenance path
+  * refactor: Remove setuptools check when getting installed
+    version
+  * feat(cli): auto-detect active virtualenv by default
+  * feat(extras): default --extras to explicit, add active/none
+    modes
+  * feat(cli): accept extras in --packages filter
+  * feat(api): add programmatic render() for notebooks
+  * feat(cli): add from-index subcommand to resolve a tree from
+    a package index
+  * feat(cli): add from-lock subcommand to render a PEP 751
+    lock offline</comment>
+    <requestid>1364117</requestid>
+  </revision>
 </revisionlist>

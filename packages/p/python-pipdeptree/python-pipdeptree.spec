@@ -21,9 +21,8 @@
 %else
 %bcond_with libalternatives
 %endif
-
 Name:           python-pipdeptree
-Version:        2.35.3
+Version:        3.1.1
 Release:        0
 Summary:        Command line utility to show dependency tree of packages
 License:        MIT
@@ -32,10 +31,14 @@ Source:         https://github.com/tox-dev/pipdeptree/archive/%{version}.tar.gz#
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.27}
+BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-packaging >= 26
-Requires:       python-pip >= 25.2
+Requires:       python-rich >= 14.3.3
+Suggests:       python-graphviz >= 0.21
+Suggests:       python-rich >= 14.3.3
+BuildArch:      noarch
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -43,16 +46,14 @@ Requires:       alts
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-Suggests:       python-graphviz >= 0.21
-Suggests:       python-rich >= 14.3.3
-BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module graphviz >= 0.21}
 BuildRequires:  %{python_module packaging >= 26}
-BuildRequires:  %{python_module pip >= 25.2}
+BuildRequires:  %{python_module pip-requirements-parser >= 32}
 BuildRequires:  %{python_module pytest >= 8.4.2}
 BuildRequires:  %{python_module pytest-mock >= 3.15.1}
-BuildRequires:  %{python_module pytest-subprocess}
+BuildRequires:  %{python_module pytest-subprocess >= 1.5}
+BuildRequires:  %{python_module rich >= 14.3.3}
 BuildRequires:  %{python_module virtualenv >= 20.34}
 BuildRequires:  graphviz-gnome
 # /SECTION
