@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:33:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.18:
+  * Fixes for XCC3 storage config
+  * Update SMM3 to handle common issue with FFDC
+
+-------------------------------------------------------------------
 Sun Jun 14 15:49:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.17:

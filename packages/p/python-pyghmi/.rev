@@ -577,4 +577,14 @@
   * Fix bootsourceoverridemode</comment>
     <requestid>1359269</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>ee86d20316d082c9c28864ab91e88341</srcmd5>
+    <version>1.6.18</version>
+    <time>1783450923</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.18:
+  * Fixes for XCC3 storage config
+  * Update SMM3 to handle common issue with FFDC</comment>
+    <requestid>1364108</requestid>
+  </revision>
 </revisionlist>
