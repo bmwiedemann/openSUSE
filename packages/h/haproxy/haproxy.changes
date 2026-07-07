@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul 03 10:14:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version bfa018f:
+  * CLEANUP: otel: refactored flt_otel_parse_strdup() and shown src in debug
+  * MINOR: otel: test: added full, tcp and updown to the speed-test sweep
+  * MINOR: otel: test: added the err test configuration for runtime error logging
+  * MINOR: otel: test: added an up-down-counter test configuration
+
+-------------------------------------------------------------------
+Fri Jul 03 10:14:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.2+git0.9feeb3287:
+  * [RELEASE] Released version 3.4.2
+
+-------------------------------------------------------------------
+Thu Jul 02 16:27:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version e70a708:
+  * DOC: otel: test: corrected the test guides and added a tools manual
+  * DOC: otel: reconciled the manuals and internals docs with the code
+  * DOC: otel: documented the wrapper and HAProxy version requirements
+  * MINOR: otel: rebuilt 'flt-otel status' on the table builder
+  * MINOR: otel: added a reusable column-oriented table builder
+  * MINOR: otel: showed the records carried per export in 'flt-otel status'
+  * MEDIUM: otel: logged runtime errors and warnings without flooding syslog
+
+-------------------------------------------------------------------
+Thu Jul 02 16:27:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.1+git12.89814d3b6:
+  * BUG/MINOR: http-htx: Don't by-pass HTX API when merging cookie values
+  * BUG/MINOR: mux-quic: Fix handling EOM after in qcs_http_rcv_buf()
+  * BUG/MAJOR: htx: Don't swap buffers for empty HTX message with an error
+  * BUG/MINOR: tools: fix invalid character detection in strl2ic()
+  * BUG/MINOR: init: fix default global settings being overwritten by -G
+  * MINOR: hbuf: new lightweight hbuf API
+  * BUG/MEDIUM: servers: Use a refcount for port_range and free it properly
+  * BUG/MINOR: sample: set SMP_F_CONST on srv_name fetch
+  * BUG/MEDIUM: server: initialise agent.health in srv_settings_init()
+  * BUG/MINOR: hq-interop: support transcoding of absolute URI
+  * BUG/MINOR: hq-interop: fix transcoding of wrapping response buffer
+  * BUG/MEDIUM: mux_quic: fix memory leak of rx app_buf on stream free
+
+-------------------------------------------------------------------
 Thu Jun 25 15:14:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.4.1+git0.3e888a769:

@@ -1,10 +1,10 @@
 <servicedata>
   <service name="tar_scm">
     <param name="url">http://git.haproxy.org/git/haproxy-3.4.git/</param>
-    <param name="changesrevision">3e888a769ec9720a3cf32b28b4401af49882c861</param>
+    <param name="changesrevision">9feeb3287d3f4eda464f82e83ed66e384633bf66</param>
   </service>
   <service name="tar_scm">
     <param name="url">https://github.com/haproxytech/haproxy-opentelemetry.git/</param>
-    <param name="changesrevision">6344dfaba04acfbf2e53f381f08decefc9ccbe35</param>
+    <param name="changesrevision">bfa018f3d08cbf1f2b5001c689723d566dc1a6a9</param>
   </service>
 </servicedata>
