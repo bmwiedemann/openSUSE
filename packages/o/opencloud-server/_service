@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/opencloud-eu/opencloud</param>
+    <param name="url">https://github.com/opencloud-eu/opencloud.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v7.2.0</param>
+    <param name="revision">refs/tags/v7.2.1</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

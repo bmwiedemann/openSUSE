@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/opencloud-eu/opencloud</param>
-              <param name="changesrevision">c067b65f3f73e81404cbc6911e129f5bb3aed851</param></service></servicedata>
+              <param name="changesrevision">c067b65f3f73e81404cbc6911e129f5bb3aed851</param></service><service name="tar_scm">
+                <param name="url">https://github.com/opencloud-eu/opencloud.git</param>
+              <param name="changesrevision">c73ed019082b30a1676baf9f28dee221b874ebb2</param></service></servicedata>
