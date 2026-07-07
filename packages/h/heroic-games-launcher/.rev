@@ -212,4 +212,21 @@ via pnpm overrides to fix embedded dependency.</comment>
     reproducible offline build process. </comment>
     <requestid>1362434</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>91bcc7272c8b87001e4a8b3682a776a2</srcmd5>
+    <version>2.22.0</version>
+    <time>1783450839</time>
+    <user>anag_factory</user>
+    <comment>- Apply security patches for embedded dependencies:
+  * Add extract-zip-cve-2026-56876.patch to fix path traversal via
+    malicious symlinks (bsc#1269757, CVE-2026-56876).
+  * Add inline sed patches in %build to mitigate electron-updater
+    credential leak (bsc#1269970, CVE-2026-54673).
+  * Add inline sed patches in %build to mitigate app-builder-lib
+    LD_LIBRARY_PATH hijack (bsc#1269968, CVE-2026-54672).
+  * Note: The electron-updater and AppImage vulnerabilities do not
+    affect the native RPM build at runtime, but the embedded code
+    is sanitized to comply with automated security scanners. </comment>
+    <requestid>1363798</requestid>
+  </revision>
 </revisionlist>

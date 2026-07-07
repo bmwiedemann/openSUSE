@@ -36,6 +36,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        pnpm-offline-store.tar.gz
 Source2:        heroic-games-launcher.rpmlintrc
 Source3:        get-sources.sh
+Source4:        extract-zip-cve-2026-56876.patch
 BuildRequires:  comet
 BuildRequires:  c++_compiler
 BuildRequires:  esbuild
@@ -49,6 +50,7 @@ BuildRequires:  nodejs-electron
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(SPIRV-Tools) >= 2026.2
 BuildRequires:  pnpm
 BuildRequires:  protobuf-devel
 BuildRequires:  vulkan-devel
@@ -77,8 +79,7 @@ Supplements:    (heroic-games-launcher and selinux-policy-targeted-gaming)
 Game launcher and manager for GOG, Epic Games, and Amazon
 
 %prep
-%autosetup -n %{name}-%{version}
-%setup -T -D -a1   # pnpm-offline-store
+%autosetup -n %{name}-%{version} -a1
 
 sed -i -e "s/Exec=heroic-run /Exec=heroic /" flatpak/com.heroicgameslauncher.hgl.desktop
 
@@ -113,6 +114,18 @@ export PATH=$PWD/node_modules/.bin:/usr/bin
 pnpm config set store-dir .pnpm-store
 export PNPM_STORE_DIR=.pnpm-store
 pnpm install --offline --store-dir .pnpm-store --frozen-lockfile --ignore-scripts --strict-peer-dependencies=false
+# Patch to fix CVE-2026-56876
+patch -p1 -d node_modules/.pnpm/extract-zip@2.0.1/node_modules/extract-zip/ < %{SOURCE4}
+# CVE-2026-54673: electron-updater (builder-util-runtime) Credential Leak
+for file in $(find node_modules/.pnpm -type f -path "*/out/httpExecutor.js" 2>/dev/null); do
+    sed -i 's/delete options.headers.authorization/for(let k of Object.keys(options.headers)){let kl=k.toLowerCase();if(kl==="authorization"||kl==="private-token")delete options.headers[k]}/g' "$file"
+    sed -i 's/delete options.headers\["authorization"\]/for(let k of Object.keys(options.headers)){let kl=k.toLowerCase();if(kl==="authorization"||kl==="private-token")delete options.headers[k]}/g' "$file"
+done
+
+# CVE-2026-54672: app-builder-lib AppRun.sh LD_LIBRARY_PATH Hijack
+for file in $(find node_modules/.pnpm -type f -path "*/app-builder-lib/templates/linux/AppRun.sh" 2>/dev/null); do
+    sed -i 's/export LD_LIBRARY_PATH="${APPDIR}\/usr\/lib:${LD_LIBRARY_PATH}"/export LD_LIBRARY_PATH="${APPDIR}\/usr\/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"/g' "$file"
+done
 pnpm dist:linux %{arch_flag} --dir
 
 %ifarch aarch64

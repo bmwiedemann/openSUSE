@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul  4 00:49:47 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Apply security patches for embedded dependencies:
+  * Add extract-zip-cve-2026-56876.patch to fix path traversal via
+    malicious symlinks (bsc#1269757, CVE-2026-56876).
+  * Add inline sed patches in %build to mitigate electron-updater
+    credential leak (bsc#1269970, CVE-2026-54673).
+  * Add inline sed patches in %build to mitigate app-builder-lib
+    LD_LIBRARY_PATH hijack (bsc#1269968, CVE-2026-54672).
+  * Note: The electron-updater and AppImage vulnerabilities do not
+    affect the native RPM build at runtime, but the embedded code
+    is sanitized to comply with automated security scanners. 
+
+-------------------------------------------------------------------
 Mon Jun 29 01:53:04 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Fix CVEs due to vulnerable embedded dependencies:
