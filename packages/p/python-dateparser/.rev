@@ -332,4 +332,41 @@
   * Russian: Support compound ordinals</comment>
     <requestid>1346086</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0783c247aa4467ecb08a892cb588b776</srcmd5>
+    <version>1.4.1</version>
+    <time>1783450786</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.1:
+  * Remove fastText language detection support: the fasttext
+    extra is dropped and detect_languages() now raises
+    ImportError. Migrate to the langdetect extra, which also
+    unblocks numpy 2.x compatibility
+  * Make digit quantifiers possessive in the relative-date
+    regexes to prevent quadratic backtracking (ReDoS) on long
+    digit runs
+  * Add the USE_GIVEN_LANGUAGE_ORDER setting to try languages and
+    locales in the order given rather than by frequency
+  * Preserve explicit signs on individual components when parsing
+    relative dates that combine decades with years, such as &quot;-1
+    decade +2 years&quot;
+  * Fall back to other provided languages in search_dates when
+    the detected language yields no dates
+  * Parse relative date expressions with spaces between the sign
+    and number, such as &quot;now - 2 hours&quot; and &quot;now + 1 day&quot;
+  * Use the parser-relative now for the current month when
+    filling in incomplete dates so the month and day stay
+    consistent
+  * Fix Norwegian Bokmål (nb) parsing of relative date
+    expressions such as &quot;3 måneder siden&quot; and &quot;om 2 måneder&quot;
+  * Parse abbreviated English month expressions such as &quot;1mon
+    ago&quot; and &quot;3mons ago&quot;
+  * Preserve surrounding whitespace when removing skip tokens
+    during translation to avoid spurious double spaces
+  * Move project metadata and build configuration to
+    pyproject.toml
+  * Add alternative Korean date expressions for today, yesterday,
+    tomorrow, and &quot;N months ago/later&quot;</comment>
+    <requestid>1363817</requestid>
+  </revision>
 </revisionlist>

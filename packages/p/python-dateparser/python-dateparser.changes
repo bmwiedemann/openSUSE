@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:45:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.1:
+  * Remove fastText language detection support: the fasttext
+    extra is dropped and detect_languages() now raises
+    ImportError. Migrate to the langdetect extra, which also
+    unblocks numpy 2.x compatibility
+  * Make digit quantifiers possessive in the relative-date
+    regexes to prevent quadratic backtracking (ReDoS) on long
+    digit runs
+  * Add the USE_GIVEN_LANGUAGE_ORDER setting to try languages and
+    locales in the order given rather than by frequency
+  * Preserve explicit signs on individual components when parsing
+    relative dates that combine decades with years, such as "-1
+    decade +2 years"
+  * Fall back to other provided languages in search_dates when
+    the detected language yields no dates
+  * Parse relative date expressions with spaces between the sign
+    and number, such as "now - 2 hours" and "now + 1 day"
+  * Use the parser-relative now for the current month when
+    filling in incomplete dates so the month and day stay
+    consistent
+  * Fix Norwegian Bokmål (nb) parsing of relative date
+    expressions such as "3 måneder siden" and "om 2 måneder"
+  * Parse abbreviated English month expressions such as "1mon
+    ago" and "3mons ago"
+  * Preserve surrounding whitespace when removing skip tokens
+    during translation to avoid spurious double spaces
+  * Move project metadata and build configuration to
+    pyproject.toml
+  * Add alternative Korean date expressions for today, yesterday,
+    tomorrow, and "N months ago/later"
+  * Expand Czech date translations with additional inflections,
+    word numbers, decade and century expressions, and clock
+    phrases like "čtvrt na tři"
+  * Replace internal OrderedDict usage with the built-in dict
+- drop mark-network-tests.patch (upstream)
+
+-------------------------------------------------------------------
 Sat Apr 11 16:42:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:
