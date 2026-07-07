@@ -23,11 +23,11 @@
 %define force_gcc_version 13
 %endif
 
-%global hayagriva_version 0.9.1
+%global hayagriva_version 0.10.1
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
 
 Name:           typst
-Version:        0.14.2
+Version:        0.15.0
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -35,7 +35,6 @@ URL:            https://github.com/typst/typst
 Source0:        https://github.com/typst/typst/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
 Patch0:         hayagriva-bump-strum-version.patch
-Patch1:         fix-gcc16-build-in-libdeflate-boo1260948.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  gcc%{?force_gcc_version}-c++

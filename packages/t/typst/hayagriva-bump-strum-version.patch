@@ -4,35 +4,32 @@
 # This patch bumps the cli-version of strum to 0.27 as well,
 # so that we don't need another strum-version vendored.
 
-Index: typst-0.14.0/Cargo.toml
-===================================================================
---- typst-0.14.0.orig/Cargo.toml
-+++ typst-0.14.0/Cargo.toml
-@@ -167,3 +167,6 @@ manual_range_contains = "allow"
- mutable_key_type = "allow"
- uninlined_format_args = "warn"
- wildcard_in_or_patterns = "allow"
+diff '--color=auto' --text --unified --recursive typst-0.15.0.orig/Cargo.lock typst-0.15.0/Cargo.lock
+--- typst-0.15.0.orig/Cargo.lock	2026-06-15 05:26:46.000000000 -0400
++++ typst-0.15.0/Cargo.lock	2026-06-20 22:43:58.906006871 -0400
+@@ -960,8 +960,6 @@
+ [[package]]
+ name = "hayagriva"
+ version = "0.10.1"
+-source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "7b6c185c5c72546d50b25b70187f01ab9a1a2fa21c4db8691e2426fa5fce805c"
+ dependencies = [
+  "biblatex",
+  "ciborium",
+diff '--color=auto' --text --unified --recursive typst-0.15.0.orig/Cargo.toml typst-0.15.0/Cargo.toml
+--- typst-0.15.0.orig/Cargo.toml	2026-06-15 05:26:46.000000000 -0400
++++ typst-0.15.0/Cargo.toml	2026-06-20 22:43:26.773562385 -0400
+@@ -178,3 +178,6 @@
+ # See https://github.com/typst/typst/pull/6560#issuecomment-3045393640
+ derived_hash_with_manual_eq = "allow"
+ disallowed_methods = "warn"
 +
 +[patch.crates-io]
-+hayagriva = { path="vendor/hayagriva-0.9.1" }
-Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.toml
-===================================================================
---- typst-0.14.0.orig/vendor/hayagriva-0.9.1/Cargo.toml
-+++ typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.toml
-@@ -102,7 +102,7 @@ features = ["derive"]
- version = "0.9.25"
- 
- [dependencies.strum]
--version = "0.26"
-+version = "0.27"
- features = ["derive"]
- optional = true
- 
-Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
-===================================================================
---- typst-0.14.0.orig/vendor/hayagriva-0.9.1/Cargo.lock
-+++ typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
-@@ -69,7 +69,7 @@ checksum = "53d0c374feba1b9a59042a7c1cf0
++hayagriva = { path = "vendor/hayagriva-0.10.1" }
+diff '--color=auto' --text --unified --recursive typst-0.15.0.orig/vendor/hayagriva-0.10.1/Cargo.lock typst-0.15.0/vendor/hayagriva-0.10.1/Cargo.lock
+--- typst-0.15.0.orig/vendor/hayagriva-0.10.1/Cargo.lock	1969-12-31 19:00:00.000000000 -0500
++++ typst-0.15.0/vendor/hayagriva-0.10.1/Cargo.lock	2026-06-20 22:42:24.169454438 -0400
+@@ -69,7 +69,7 @@
  dependencies = [
   "paste",
   "roman-numerals-rs",
@@ -41,7 +38,7 @@ Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
   "unic-langid",
   "unicode-normalization",
   "unscanny",
-@@ -216,7 +216,7 @@ dependencies = [
+@@ -220,7 +220,7 @@
   "serde",
   "serde_json",
   "serde_yaml",
@@ -50,7 +47,7 @@ Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
   "thiserror",
   "unic-langid",
   "unicode-segmentation",
-@@ -470,12 +470,6 @@ source = "registry+https://github.com/ru
+@@ -524,12 +524,6 @@
  checksum = "c85cd47a33a4510b1424fe796498e174c6a9cf94e606460ef022a19f3e4ff85e"
  
  [[package]]
@@ -61,9 +58,9 @@ Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
 -
 -[[package]]
  name = "ryu"
- version = "1.0.20"
+ version = "1.0.23"
  source = "registry+https://github.com/rust-lang/crates.io-index"
-@@ -557,33 +551,11 @@ checksum = "7da8b5736845d9f2fcb837ea5d9e
+@@ -622,33 +616,11 @@
  
  [[package]]
  name = "strum"
@@ -98,16 +95,15 @@ Index: typst-0.14.0/vendor/hayagriva-0.9.1/Cargo.lock
  ]
  
  [[package]]
-Index: typst-0.14.0/Cargo.lock
-===================================================================
---- typst-0.14.0.orig/Cargo.lock
-+++ typst-0.14.0/Cargo.lock
-@@ -935,8 +935,6 @@ checksum = "bf151400ff0baff5465007dd2f3e
- [[package]]
- name = "hayagriva"
- version = "0.9.1"
--source = "registry+https://github.com/rust-lang/crates.io-index"
--checksum = "1cb69425736f184173b3ca6e27fcba440a61492a790c786b1c6af7e06a03e575"
- dependencies = [
-  "biblatex",
-  "ciborium",
+diff '--color=auto' --text --unified --recursive typst-0.15.0.orig/vendor/hayagriva-0.10.1/Cargo.toml typst-0.15.0/vendor/hayagriva-0.10.1/Cargo.toml
+--- typst-0.15.0.orig/vendor/hayagriva-0.10.1/Cargo.toml	1969-12-31 19:00:00.000000000 -0500
++++ typst-0.15.0/vendor/hayagriva-0.10.1/Cargo.toml	2026-06-20 22:40:30.898574002 -0400
+@@ -108,7 +108,7 @@
+ version = "0.9.25"
+ 
+ [dependencies.strum]
+-version = "0.26"
++version = "0.27"
+ features = ["derive"]
+ optional = true
+ 
