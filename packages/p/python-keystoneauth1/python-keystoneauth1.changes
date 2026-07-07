@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  6 11:28:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.15.0:
+  * Drop Python 3.10 support
+  * trivial: Declare attributes on _BaseAdapter
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Remove get_oslo_config helper
+  * Drop unnecessary type: ignore
+  * tox: switch to recommended constraints parameter
+  * remove pbr as runtime dependency
+
+-------------------------------------------------------------------
 Sun May 17 19:51:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.14.0:

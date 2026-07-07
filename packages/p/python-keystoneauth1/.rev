@@ -456,4 +456,20 @@ update to version 2.12.0
   * Bump flake8-import-order</comment>
     <requestid>1353623</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>74822f492b9f741c5899d77f5d42d57e</srcmd5>
+    <version>5.15.0</version>
+    <time>1783450858</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.15.0:
+  * Drop Python 3.10 support
+  * trivial: Declare attributes on _BaseAdapter
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Remove get_oslo_config helper
+  * Drop unnecessary type: ignore
+  * tox: switch to recommended constraints parameter
+  * remove pbr as runtime dependency</comment>
+    <requestid>1364043</requestid>
+  </revision>
 </revisionlist>
