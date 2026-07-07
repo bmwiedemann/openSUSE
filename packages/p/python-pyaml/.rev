@@ -161,4 +161,13 @@
   * cli: allow reading/replacing multiple input files</comment>
     <requestid>1337530</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>813afcf6a554b3b0e63e2cfb5f3e433b</srcmd5>
+    <version>26.7.0</version>
+    <time>1783451006</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.7.0:
+  * dump.write: don't trap AttributeError in dst.write(b'') str-or-bytes</comment>
+    <requestid>1364126</requestid>
+  </revision>
 </revisionlist>
