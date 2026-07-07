@@ -17,11 +17,11 @@
 
 
 %define modname llvmlite
-%define         llvm_major 20
+%define         llvm_major 22
 %{?sle15_python_module_pythons}
 Name:           python-llvmlite
 # Note: this has to be in sync with Numba releases
-Version:        0.47.0
+Version:        0.48.0
 Release:        0
 Summary:        Lightweight wrapper around basic LLVM functionality
 License:        BSD-2-Clause

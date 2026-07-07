@@ -445,4 +445,13 @@ This version works with llvm 4.</comment>
   * Support for Python 3.14t (free-threaded) wheel builds.</comment>
     <requestid>1344981</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a7a4b75e5bda31664a3dd80f32801828</srcmd5>
+    <version>0.48.0</version>
+    <time>1783450959</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.48.0:
+  * https://llvmlite.readthedocs.io/en/latest/release-notes.html#v0-48-0rc1-june-4-2026</comment>
+    <requestid>1364116</requestid>
+  </revision>
 </revisionlist>
