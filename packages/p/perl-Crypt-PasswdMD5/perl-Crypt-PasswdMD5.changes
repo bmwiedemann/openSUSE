@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:15:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+
+  [V 1.45]
+  Date=2026-07-07T10:28:00
+  Comments= <<EOT
+  - Replace LICENCE file with output of the software-license program which ships
+  with the module App::Software::License. The specific command I ran is (all on 1 line):
+  software-license --type license --holder "Luis E. Muñoz" --license Perl_5
+  --year 1998 > LICENSE
+  EOT
+
+-------------------------------------------------------------------
 Mon Jun 29 09:59:38 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.440.0 (1.44)

@@ -62,4 +62,21 @@
   EOT</comment>
     <requestid>1362648</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>906c21faab205ef15af76eddf9f7d3e1</srcmd5>
+    <version>1.450.0</version>
+    <time>1783451156</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.450.0 (1.45)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+  [V 1.45]
+  Date=2026-07-07T10:28:00
+  Comments= &lt;&lt;EOT
+  - Replace LICENCE file with output of the software-license program which ships
+  with the module App::Software::License. The specific command I ran is (all on 1 line):
+  software-license --type license --holder &quot;Luis E. Muñoz&quot; --license Perl_5
+  --year 1998 &gt; LICENSE
+  EOT</comment>
+    <requestid>1364272</requestid>
+  </revision>
 </revisionlist>
