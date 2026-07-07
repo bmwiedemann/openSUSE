@@ -1,8 +1,17 @@
 -------------------------------------------------------------------
-Fri Jul 03 12:05:11 UTC 2026 - okurz@suse.com
+Mon Jul 06 08:44:37 UTC 2026 - okurz@suse.com
 
-- Update to version 5.1783080295.ebd1693c:
+- Update to version 5.1783327469.933c54e2:
+  * fix(obs_rsync): use scope guards to avoid stalls
+  * chore(deps): Dependency cron 2026-07-04
   * feat: Retry git_clone minion job with exponential backoff
+  * feat: request unredacted settings in openqa-clone-job and warn
+  * feat: allow authenticated operators to fetch unredacted job settings
+
+-------------------------------------------------------------------
+Fri Jul 03 11:09:14 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783076943.6691832d:
   * test: Stabilize `t/05-scheduler-full.t`
 
 -------------------------------------------------------------------
