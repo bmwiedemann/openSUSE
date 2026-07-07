@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 06 22:47:21 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.8+git0.f72b330e:
+  * cargo vet
+  * Version 3.1.8
+  * Update cargo vet audits for backport
+  * fix(deps): patch opentelemetry baggage propagation CVE
+  * build: cleanup patch overrides
+  * fix(auth): retry transient fail user existence lookups
+  * fix(rpm): allow tpm2-tss dependency
+  * fix(nss): depend on systemd users
+  * packaging: disable duplicate NM workaround scripts
+  * dispatcher: refine Himmelblau restart workaround
+  * fix(sso): update Entra SSO extension
+  * fix(rpm): clean SSO policy on erase
+  * Add NSS shadow lookups for Himmelblau users
+  * fix(nix module): allowed AF_INET and AF_INET6 to systemd sandbox
+  * daemon: apply Intune policy asynchronously
+  * Handle password changes in password-only auth
+  * cargo clippy
+  * Update libhimmelblau to latest version
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 21 updates
+  * Add conf_example.patch (bsc#1268646).
+
+-------------------------------------------------------------------
 Thu Jun 11 15:47:43 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.7+git0.f4e43ca0:

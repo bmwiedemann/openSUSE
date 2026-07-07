@@ -30,7 +30,7 @@
 %endif
 
 Name:           himmelblau
-Version:        3.1.7+git0.f4e43ca0
+Version:        3.1.8+git0.f72b330e
 Release:        0
 Summary:        Interoperability suite for Microsoft Azure Entra Id
 License:        GPL-3.0-or-later
@@ -40,6 +40,7 @@ Source:         %{name}-%{version}.tar.bz2
 Source1:        vendor.tar.zst
 Source2:        cargo_config
 Patch0:         python311-build.patch
+Patch1:         conf_example.patch
 BuildRequires:  binutils
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
