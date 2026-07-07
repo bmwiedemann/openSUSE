@@ -133,4 +133,15 @@
   Improvements &amp; Bug Fixes</comment>
     <requestid>1342035</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d1551b0f9613714436a54855c72257c6</srcmd5>
+    <version>2.0.0</version>
+    <time>1783450822</time>
+    <user>anag_factory</user>
+    <comment>- Add patch remove-upper-bound.patch:
+  * Remove upper bound on Python versions.
+- Sprinkle in fdupes.
+- Ship the license in the built packages.</comment>
+    <requestid>1363956</requestid>
+  </revision>
 </revisionlist>

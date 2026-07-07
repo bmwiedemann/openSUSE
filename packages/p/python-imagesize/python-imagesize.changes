@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 05:59:59 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch remove-upper-bound.patch:
+  * Remove upper bound on Python versions.
+- Sprinkle in fdupes.
+- Ship the license in the built packages.
+
+-------------------------------------------------------------------
 Mon Mar 23 12:44:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update 2.0.0:

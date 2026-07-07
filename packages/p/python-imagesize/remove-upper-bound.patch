@@ -1,0 +1,37 @@
+From c9c7f9268c956b9acc29c9a9e8b821eb4cb2bf7f Mon Sep 17 00:00:00 2001
+From: Stephen Finucane <stephen@that.guru>
+Date: Tue, 23 Jun 2026 12:11:04 +0100
+Subject: [PATCH] Remove upper cap on python_requires
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This is pure Python and works just fine on Python 3.15.
+
+  ❯ python3.15 -m unittest
+  ............................................................................
+  ----------------------------------------------------------------------
+  Ran 76 tests in 0.015s
+
+  OK
+
+There is no need for the cap.
+
+Signed-off-by: Stephen Finucane <stephen@that.guru>
+---
+ setup.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/setup.py b/setup.py
+index 3954066..fb5dc41 100644
+--- a/setup.py
++++ b/setup.py
+@@ -28,7 +28,7 @@
+       url='https://github.com/shibukawa/imagesize_py',
+       license="MIT",
+       packages=['imagesize'],
+-      python_requires=">=3.10,<3.15",
++      python_requires=">=3.10",
+ 
+       classifiers=[
+           'Development Status :: 5 - Production/Stable',

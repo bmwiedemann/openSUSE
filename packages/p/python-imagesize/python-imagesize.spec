@@ -22,12 +22,14 @@ Version:        2.0.0
 Release:        0
 Summary:        Getting image size from PNG/JPEG/JPEG2000/GIF files
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/shibukawa/imagesize_py
 Source:         https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#shibukawa/imagesize_py#86
+Patch0:         remove-upper-bound.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 # SECTION test requirements
@@ -45,21 +47,23 @@ Supported formats:
  * GIF
 
 %prep
-%setup -q -n imagesize-%{version}
+%autosetup -p1 -n imagesize-%{version}
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 rm -v test/test_get_filelike.py
 %pytest
 
 %files %{python_files}
-%{python_sitelib}/imagesize
-%{python_sitelib}/imagesize-%{version}*-info
+%license LICENSE.rst
 %doc README.rst
+%{python_sitelib}/imagesize
+%{python_sitelib}/imagesize-%{version}.dist-info
 
 %changelog
