@@ -382,4 +382,12 @@
   * [15-encrypt] Give up on using sdbootutil in a chroot, pollute install environment and use sbootutil from there</comment>
     <requestid>1364013</requestid>
   </revision>
+  <revision rev="39" vrev="3">
+    <srcmd5>acca96cb70e924e718461624cf45f82c</srcmd5>
+    <version>1.5.1</version>
+    <time>1783451137</time>
+    <user>anag_factory</user>
+    <comment>- Revert to version 1.5.1:</comment>
+    <requestid>1364246</requestid>
+  </revision>
 </revisionlist>
