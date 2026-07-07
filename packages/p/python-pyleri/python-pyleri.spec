@@ -19,7 +19,7 @@
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-pyleri
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Python Left-Right Parser
 License:        MIT

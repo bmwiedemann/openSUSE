@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:34:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.1:
+  * Stop greedy choice after full input match
+
+-------------------------------------------------------------------
 Mon Apr 20 14:33:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.5.0

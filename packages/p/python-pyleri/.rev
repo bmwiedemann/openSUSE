@@ -44,4 +44,13 @@
     <comment></comment>
     <requestid>1348801</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>fe2072ca29e85aecc42fdb45b6249ea9</srcmd5>
+    <version>1.5.1</version>
+    <time>1783450932</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.5.1:
+  * Stop greedy choice after full input match</comment>
+    <requestid>1364109</requestid>
+  </revision>
 </revisionlist>
