@@ -31,4 +31,12 @@
     <comment>Allow building with javas managed by libalternatives too</comment>
     <requestid>1356017</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>a7fb733a6b17150c9fe30a6a3bb89c47</srcmd5>
+    <version>2.5.2</version>
+    <time>1783451037</time>
+    <user>anag_factory</user>
+    <comment>Allow building with newer boringssl</comment>
+    <requestid>1364173</requestid>
+  </revision>
 </revisionlist>

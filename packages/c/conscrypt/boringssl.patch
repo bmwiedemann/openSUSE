@@ -1,0 +1,23 @@
+--- conscrypt-2.5.2/common/src/jni/main/cpp/conscrypt/native_crypto.cc	2026-07-07 07:51:16.877064463 +0200
++++ conscrypt-2.5.2/common/src/jni/main/cpp/conscrypt/native_crypto.cc	2026-07-07 07:57:12.434671592 +0200
+@@ -5665,7 +5665,9 @@
+         X509_EXTENSION_free(ext);
+ 
+         // Invalidate the cached encoding
++#if !defined(OPENSSL_IS_BORINGSSL)
+         X509_CINF_set_modified(X509_get_cert_info(x509));
++#endif
+     }
+ }
+ 
+@@ -5764,7 +5766,9 @@
+     }
+ 
+     X509_PUBKEY* pubkey = X509_get_X509_PUBKEY(x509);
+-    return ASN1_OBJECT_to_OID_string(env, pubkey->algor->algorithm);
++    ASN1_OBJECT *alg = nullptr;
++    X509_PUBKEY_get0_param(&alg, nullptr, nullptr, nullptr, pubkey);
++    return ASN1_OBJECT_to_OID_string(env, alg);
+ }
+ 
+ static jstring NativeCrypto_get_X509_sig_alg_oid(JNIEnv* env, jclass, jlong x509Ref,

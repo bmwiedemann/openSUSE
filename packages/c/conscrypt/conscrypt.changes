@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 06:17:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * boringssl.patch
+    + Allow building with newer boringssl
+
+-------------------------------------------------------------------
 Fri May 29 14:29:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with JDK that uses libalternatives instead of

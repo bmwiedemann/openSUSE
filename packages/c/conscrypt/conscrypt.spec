@@ -28,6 +28,7 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/google/%{name}
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://repo1.maven.org/maven2/org/%{name}/%{name}-openjdk/%{version}/%{name}-openjdk-%{version}.pom
+Patch0:         boringssl.patch
 BuildRequires:  boringssl-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -52,6 +53,7 @@ API documentation for %{name}.
 %prep
 %setup -q
 cp %{SOURCE1} openjdk/pom.xml
+%patch -P 0 -p1
 
 %pom_xpath_remove pom:packaging openjdk
 %pom_add_plugin org.apache.maven.plugins:maven-jar-plugin openjdk \
