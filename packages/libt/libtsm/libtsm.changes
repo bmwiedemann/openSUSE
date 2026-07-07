@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul  7 14:55:02 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to 4.6.0:
+  * vte: map mouse wheel up/down buttons correctly
+  * fix CSI default parameter
+  * vte: Fix ctrl+shift+arrows
+  * Add a new draw2 interface
+  * vte: Add dim support
+
+-------------------------------------------------------------------
 Wed Apr 29 19:48:23 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - Update to 4.5.0:

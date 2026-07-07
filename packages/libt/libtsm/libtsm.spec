@@ -19,7 +19,7 @@
 %global sover   4
 %global lname   libtsm%{sover}
 Name:           libtsm
-Version:        4.5.0
+Version:        4.6.0
 Release:        0
 Summary:        DEC-VT terminal emulator state machine
 License:        LGPL-2.1-or-later AND MIT
