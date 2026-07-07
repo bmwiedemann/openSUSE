@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jun 25 20:46:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.1.5:
+  + Fixed: image-rs/jpeg: Support RGB for editing. There are
+    actually images that don't use ycbcr.
+
+-------------------------------------------------------------------
 Wed Apr  8 07:03:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequire pkgconfig(glycin-2) for all build modules except

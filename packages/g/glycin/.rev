@@ -84,4 +84,14 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345427</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>52feb7f14267c6d82cba15b7fcd5ffc3</srcmd5>
+    <version>2.1.5</version>
+    <time>1783450775</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.5:
+  + Fixed: image-rs/jpeg: Support RGB for editing. There are
+    actually images that don't use ycbcr.</comment>
+    <requestid>1363709</requestid>
+  </revision>
 </revisionlist>
