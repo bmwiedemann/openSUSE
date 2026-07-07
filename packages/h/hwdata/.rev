@@ -832,4 +832,12 @@
     <comment>Update to 0.408: Update pci and vendor ids</comment>
     <requestid>1356998</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>218deb876cb59c30474130c3fc2345d8</srcmd5>
+    <version>0.409</version>
+    <time>1783450782</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.409: updated pci, usb and vendor ids</comment>
+    <requestid>1363739</requestid>
+  </revision>
 </revisionlist>
