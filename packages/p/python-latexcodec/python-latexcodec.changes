@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul  6 20:17:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.0.1:
+  * Drop Python 3.7 and 3.8 support.
+  * Add Python 3.13 support.
+  * Use new pkg_resources files interface (see issue #98).
+
+-------------------------------------------------------------------
 Thu Jun 12 05:26:37 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.0.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-latexcodec
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define modname latexcodec
 Name:           python-latexcodec
-Version:        3.0.0
+Version:        3.0.1
 Release:        0
 Summary:        A lexer and codec to work with LaTeX code in Python
 License:        MIT
@@ -53,7 +53,7 @@ A lexer and codec to work with LaTeX code in Python.
 
 %files %{python_files}
 %license LICENSE.rst
-%doc AUTHORS.rst CHANGELOG.rst README.rst
+%doc CHANGELOG.rst README.rst
 %{python_sitelib}/latexcodec
 %{python_sitelib}/latexcodec-%{version}.dist-info
 
