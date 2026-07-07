@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 03 10:35:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.1:
+  * Fixed
+    - #5959: Reverted the use of O_NOFOLLOW for the jailer's cgroup
+      and network namespace file operations, so symlinks are again
+      allowed in these paths.
+    - #5958: Fixed a bug that caused vsock guest-to-host
+      connections to time out after snapshot restore, triggered by
+      taking a snapshot with a TX descriptor in-flight. On restore
+      the device now replays the TX queue notification so in-flight
+      TX descriptors are re-processed and notification suppression
+      is re-armed.
+
+-------------------------------------------------------------------
 Mon Jun 08 05:45:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.0:
