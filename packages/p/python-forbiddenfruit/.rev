@@ -64,4 +64,13 @@
     <comment>- Slighty loosen extension glob.</comment>
     <requestid>1354996</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>74c00b299728d2257a242cb38d891f2f</srcmd5>
+    <version>0.1.4</version>
+    <time>1783450814</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-cursing-next.patch:
+  * Add support for cursing __next__, to support Python 3.15.</comment>
+    <requestid>1363919</requestid>
+  </revision>
 </revisionlist>

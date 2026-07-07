@@ -24,8 +24,10 @@ Summary:        Python module to patch python built-in objects
 License:        GPL-3.0-only OR MIT
 URL:            https://github.com/clarete/forbiddenfruit
 Source0:        https://github.com/clarete/forbiddenfruit/archive/%{version}.tar.gz
-# https://github.com/clarete/forbiddenfruit/pull/47
+# PATCH-FIX-UPSTREAM gh#clarete/forbiddenfruit#47
 Patch0:         remove-nose.patch
+# PATCH-FIX-UPSTREAM Lightly based on gh#clarete/forbiddenfruit#85
+Patch1:         support-cursing-next.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

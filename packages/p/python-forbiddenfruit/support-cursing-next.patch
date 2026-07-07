@@ -1,0 +1,37 @@
+From 6d7237ba38db976f079906216872b764d7088a49 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Micha=C5=82=20G=C3=B3rny?= <mgorny@gentoo.org>
+Date: Fri, 3 Jul 2026 20:26:16 +0200
+Subject: [PATCH] Support cursing `__next__`
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Support cursing `__next__` and fill in `tp_iternext` description.  This
+is needed to make [blockbuster](https://github.com/cbornet/blockbuster)
+work on Python 3.15.
+
+Signed-off-by: Michał Górny <mgorny@gentoo.org>
+---
+ forbiddenfruit/__init__.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+Index: forbiddenfruit-0.1.4/forbiddenfruit/__init__.py
+===================================================================
+--- forbiddenfruit-0.1.4.orig/forbiddenfruit/__init__.py
++++ forbiddenfruit-0.1.4/forbiddenfruit/__init__.py
+@@ -205,6 +205,7 @@ PyTypeObject._fields_ = [
+     ('tp_hash', ctypes.CFUNCTYPE(ctypes.c_int64, PyObject_p)),
+     ('tp_call', ctypes.CFUNCTYPE(PyObject_p, PyObject_p, PyObject_p, PyObject_p)),
+     ('tp_str', ctypes.CFUNCTYPE(PyObject_p, PyObject_p)),
++    ('tp_iternext', ctypes.CFUNCTYPE(PyObject_p, PyObject_p)),
+     # ...
+ ]
+ 
+@@ -305,6 +306,7 @@ for override in [as_number, as_sequence,
+ # divmod isn't a dunder, still make it overridable
+ override_dict['divmod()'] = ('tp_as_number', "nb_divmod")
+ override_dict['__str__'] = ('tp_str', "tp_str")
++override_dict['__next__'] = ('tp_iternext', "tp_iternext")
+ 
+ 
+ def _is_dunder(func_name):
