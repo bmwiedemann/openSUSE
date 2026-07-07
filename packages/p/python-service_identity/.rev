@@ -188,4 +188,22 @@
     17.1.0.</comment>
     <requestid>1219726</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>30bc117d73b0785df1d146aeb671b8d7</srcmd5>
+    <version>26.1.0</version>
+    <time>1783450789</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.1.0:
+  * Python 3.14 and 3.15 are now officially supported.
+  * *service-identity* now uses *cryptography*'s Rust-based ASN.1
+    decoder and doesn't depend on *pyasn1* and *pyasn1-modules*
+    anymore.
+  * As a result, the oldest supported pyOpenSSL backend
+    combination is now *pyOpenSSL* 26.1.0 with *cryptography*
+    47.0.0.
+  * Verifying a single-label hostname (e.g. `localhost`) against
+    a wildcard certificate pattern now raises `VerificationError`
+    cleanly instead of crashing with an opaque `ValueError`.</comment>
+    <requestid>1363849</requestid>
+  </revision>
 </revisionlist>
