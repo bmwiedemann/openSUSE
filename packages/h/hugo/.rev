@@ -1979,4 +1979,39 @@
 - Update to version 0.163.1 (bsc#1269014, bsc#1269015):</comment>
     <requestid>1362268</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>1c466699846e62f0ffd24c433c9c8381</srcmd5>
+    <version>0.164.0</version>
+    <time>1783451023</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.164.0:
+  * releaser: Bump versions for release of 0.164.0
+  * build(deps): bump github.com/JohannesKaufmann/html-to-markdown/v2
+  * build(deps): bump golang.org/x/tools from 0.45.0 to 0.47.0
+  * build(deps): bump golang.org/x/image from 0.42.0 to 0.43.0
+  * build(deps): bump golang.org/x/net from 0.55.0 to 0.56.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.4.2 to 2.4.3
+  * tpl/tplimpl: Support sub paths in layouts passed to .Render
+  * all: Rewrite deprecated constructs in tests
+  * Add markup.rst.syntaxHighlight option
+  * tpl/resources: Deprecate resources.PostProcess in favour of templates.Defer
+  * contributing: Add a note about co-authoring attributions when borrowing test cases
+  * tpl/collections: Include key in IsSet unsupported-type warning
+  * build(deps): bump github.com/getkin/kin-openapi from 0.139.0 to 0.140.0
+  * create: Keep new content placeholders buildable
+  * hugolib: Use the output format's suffix for alias paths
+  * hugio: Speedup hasBytesWriter
+  * build(deps): bump golang.org/x/mod from 0.36.0 to 0.37.0
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.3.1 to 2.4.2
+  * tpl/crypto: Add crypto.Hash
+  * Squashed 'docs/' changes from e17426e2b6..c85af679bf
+  * Add encoding.HexDecode/Encode
+  * deps: Upgrade github.com/evanw/esbuild v0.28.0 =&gt; v0.28.1
+  * markup/pandoc: Add citation support
+  * tpl/tplimpl: Make template name lookup case-insensitive
+  * deps: Add Chroma dark/light mode support
+  * hugolib: Return error from .Render when template not found
+  * releaser: Prepare repository for 0.164.0-DEV (forwarded request 1364133 from jfkw)</comment>
+    <requestid>1364134</requestid>
+  </revision>
 </revisionlist>
