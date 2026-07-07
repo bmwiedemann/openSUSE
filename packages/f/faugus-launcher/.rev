@@ -715,4 +715,19 @@
   * remove unused Gdk import from backup.py</comment>
     <requestid>1362552</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>200d6ae03c080818e0e2b496a99f9c85</srcmd5>
+    <version>1.22.8</version>
+    <time>1783451014</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.22.8
+  * Updated Russian translation
+  * Removed prefix lock
+  * Use png instead of ico
+  * Add files via upload for 1.22.7
+  * Update ja faugus-launcher.po 1.22.7
+  * Updated German translation
+  * centralize path constants in path_manager.py</comment>
+    <requestid>1364131</requestid>
+  </revision>
 </revisionlist>

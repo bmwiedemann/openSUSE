@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 06 21:58:28 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 1.22.8
+  * Updated Russian translation
+  * Removed prefix lock
+  * Use png instead of ico
+  * Add files via upload for 1.22.7
+  * Update ja faugus-launcher.po 1.22.7
+  * Updated German translation
+  * centralize path constants in path_manager.py
+
+-------------------------------------------------------------------
 Tue Jun 30 02:18:13 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.22.7
