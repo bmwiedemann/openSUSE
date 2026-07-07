@@ -17,7 +17,7 @@
 
 
 Name:           python-futurist
-Version:        3.3.0
+Version:        3.4.0
 Release:        0
 Summary:        Useful additions to futures, from the future.
 License:        Apache-2.0
@@ -25,6 +25,7 @@ Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/futurist
 Source0:        https://files.pythonhosted.org/packages/source/f/futurist/futurist-%{version}.tar.gz
 BuildRequires:  %{python_module PrettyTable >= 0.7.1}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module debtcollector >= 3.0.0}
 BuildRequires:  %{python_module eventlet >= 0.18.2}
 BuildRequires:  %{python_module oslotest >= 3.2.0}
