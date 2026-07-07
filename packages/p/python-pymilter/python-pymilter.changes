@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:27:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.6:
+  * Drop paragraph about python 2.0 compatibility
+  * Adapt to MTAs that use ':' as key terminator and/or add null char to
+  * Remove calls to the deprecated method "assertEquals"
+  * Work with berkeleydb and try importing it first.
+- drop set-c-standard-17.patch: obsolete
+- drop
+  0001-Remove-calls-to-the-deprecated-method-assertEquals.patch:
+  upstream
+- add fix-version.patch
+
+-------------------------------------------------------------------
 Wed Jul 30 04:59:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch set-c-standard-17.patch:

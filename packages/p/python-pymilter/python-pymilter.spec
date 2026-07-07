@@ -1,7 +1,7 @@
 #
 # spec file for package python-pymilter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2018 Neal Gompa <ngompa13@gmail.com>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,17 +21,14 @@
 %global __provides_exclude_from ^(%{python2_sitearch}/.*\\.so|%{python3_sitearch}/.*\\.so)$
 # Python 2 module isn't building properly and we don't really need it right now anyway...
 Name:           python-pymilter
-Version:        1.0.5
+Version:        1.0.6
 Release:        0
 Summary:        Python interface to the sendmail milter API
 License:        GPL-2.0-or-later
 URL:            https://www.bmsi.com/python/milter.html
 Source0:        https://github.com/sdgathman/pymilter/archive/pymilter-%{version}.tar.gz
 Source1:        tmpfiles-python-pymilter.conf
-# PATCH-FIX-UPSTREAM: https://github.com/sdgathman/pymilter/pull/57
-Patch1:         0001-Remove-calls-to-the-deprecated-method-assertEquals.patch
-# PATCH-FIX-UPSTREAM https://github.com/sdgathman/pymilter/pull/70
-Patch2:         set-c-standard-17.patch
+Patch:          fix-version.patch
 BuildRequires:  %{python_module bsddb3}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

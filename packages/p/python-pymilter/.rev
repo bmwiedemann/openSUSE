@@ -69,4 +69,21 @@
   * Set the C standard to c17 until libmilter is fixed.</comment>
     <requestid>1296408</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0c49a0f579abe6aa071c5923e5189e98</srcmd5>
+    <version>1.0.6</version>
+    <time>1783450927</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.0.6:
+  * Drop paragraph about python 2.0 compatibility
+  * Adapt to MTAs that use ':' as key terminator and/or add null char to
+  * Remove calls to the deprecated method &quot;assertEquals&quot;
+  * Work with berkeleydb and try importing it first.
+- drop set-c-standard-17.patch: obsolete
+- drop
+  0001-Remove-calls-to-the-deprecated-method-assertEquals.patch:
+  upstream
+- add fix-version.patch</comment>
+    <requestid>1364106</requestid>
+  </revision>
 </revisionlist>

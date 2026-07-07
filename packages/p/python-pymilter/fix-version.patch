@@ -1,0 +1,408 @@
+Index: pymilter-pymilter-1.0.6/Doxyfile
+===================================================================
+--- pymilter-pymilter-1.0.6.orig/Doxyfile
++++ pymilter-pymilter-1.0.6/Doxyfile
+@@ -31,7 +31,7 @@ PROJECT_NAME           = pymilter
+ # This could be handy for archiving the generated documentation or
+ # if some version control system is used.
+ 
+-PROJECT_NUMBER         = 1.0.5
++PROJECT_NUMBER         = 1.0.6
+ 
+ # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute)
+ # base path where the generated documentation will be put.
+Index: pymilter-pymilter-1.0.6/Milter/__init__.py
+===================================================================
+--- pymilter-pymilter-1.0.6.orig/Milter/__init__.py
++++ pymilter-pymilter-1.0.6/Milter/__init__.py
+@@ -9,7 +9,7 @@
+ # This code is under the GNU General Public License.  See COPYING for details.
+ 
+ from __future__ import print_function
+-__version__ = '1.0.5'
++__version__ = '1.0.6'
+ 
+ import os
+ import re
+@@ -70,7 +70,7 @@ def decode_mask(bits,names):
+ # P_SKIP is enabled by default when supported, but
+ # applications may wish to enable P_HDR_LEADSPC
+ # to send and receive the leading space of header continuation
+-# lines unchanged, and/or P_RCPT_REJ to have recipients 
++# lines unchanged, and/or P_RCPT_REJ to have recipients
+ # detected as invalid by the MTA passed to the envcrpt callback.
+ #
+ # Applications may want to check whether the protocol is actually
+@@ -79,7 +79,7 @@ def decode_mask(bits,names):
+ # for instance, if <code>self._protocol & Milter.P_RCPT_REJ</code>
+ # is true, then that feature was successfully negotiated with the MTA
+ # and the application will see recipients the MTA has flagged as invalid.
+-# 
++#
+ # Sample use:
+ # <pre>
+ # class myMilter(Milter.Base):
+@@ -160,7 +160,7 @@ def nocallback(func):
+ # If the MTA supports it, tells the MTA not to wait for a reply from
+ # this callback, and assume CONTINUE.  The method should still return
+ # CONTINUE in case the MTA does not support protocol negotiation.
+-# The decorator arranges to change the return code to NOREPLY 
++# The decorator arranges to change the return code to NOREPLY
+ # when supported by the MTA.
+ # @since 0.9.2
+ def noreply(func):
+@@ -183,9 +183,9 @@ def noreply(func):
+ 
+ ## Function decorator to set decoding error strategy.
+ # Current RFCs define UTF-8 as the standard encoding for SMTP
+-# envelope and header fields.  By default, Milter.Base decodes 
++# envelope and header fields.  By default, Milter.Base decodes
+ # envelope and header values with errors='surrogateescape'.
+-# Applications can recover the original bytes with 
++# Applications can recover the original bytes with
+ # <pre>
+ # b = s.encode(errors='surrogateescape')
+ # </pre>
+@@ -199,8 +199,8 @@ def noreply(func):
+ # <li> strict   - pass bytes if illegal bytes are present, string otherwise
+ # <li> ignore   - illegal bytes are removed
+ # <li> replace  - illegal bytes are replaced with a unicode error symbol
+-# </ul> 
+-# 
++# </ul>
++#
+ def decode(strategy):
+   def setstrategy(func):
+     func.error_strategy = strategy
+@@ -235,7 +235,7 @@ class DisabledAction(RuntimeError):
+ ## A do "nothing" Milter base class representing an SMTP connection.
+ #
+ # Python milters should derive from this class
+-# unless they are using the low level milter module directly.  
++# unless they are using the low level milter module directly.
+ #
+ # Most of the methods are either "actions" or "callbacks".  Callbacks
+ # are invoked by the MTA at certain points in the SMTP protocol.  For
+@@ -247,11 +247,11 @@ class DisabledAction(RuntimeError):
+ # @@noreply and @@nocallback methods should return CONTINUE for two reasons:
+ # the MTA may not support negotiation, and the class may be running in a test
+ # harness.
+-# 
++#
+ # Optional callbacks are disabled with the @@nocallback decorator, and
+ # automatically reenabled when overridden.  Disabled callbacks should
+ # still return CONTINUE for testing and MTAs that do not support
+-# negotiation.  
++# negotiation.
+ 
+ # Each SMTP connection to the MTA calls the factory method you provide to
+ # create an instance derived from this class.  This is typically the
+@@ -292,7 +292,7 @@ class Base(object):
+     # %milter application only if the P_RCPT_REJ bit is set, and
+     # header values are sent and received with leading spaces (in the
+     # continuation lines) intact if the P_HDR_LEADSPC bit is set (so
+-    # that the application can customize indenting).  
++    # that the application can customize indenting).
+     #
+     # The P_N* bits should be negotiated via the @@noreply and @@nocallback
+     # method decorators, and P_RCPT_REJ, P_HDR_LEADSPC should
+@@ -312,7 +312,7 @@ class Base(object):
+   def log(self,*msg): pass
+   ## Called for each connection to the MTA.  Called by the
+   # <a href="milter_api/xxfi_connect.html">
+-  # xxfi_connect</a> callback.  
++  # xxfi_connect</a> callback.
+   # The <code>hostname</code> provided by the local MTA is either
+   # the PTR name or the IP in the form "[1.2.3.4]" if no PTR is available.
+   # The format of hostaddr depends on the socket family:
+@@ -326,7 +326,7 @@ class Base(object):
+   # <dd>A string with the socketname
+   # </dl>
+   # To vary behavior based on what port the client connected to,
+-  # for example skipping blacklist checks for port 587 (which must 
++  # for example skipping blacklist checks for port 587 (which must
+   # be authenticated), use @link #getsymval getsymval('{daemon_port}') @endlink.
+   # The <code>{daemon_port}</code> macro must be enabled in sendmail.cf
+   # <pre>
+@@ -349,7 +349,7 @@ class Base(object):
+   def hello(self,hostname): return CONTINUE
+   ## Called with bytes by default global envfrom callback.
+   # @since 1.0.5
+-  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden 
++  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden
+   # to pass bytes to @link #header the header callback @endlink instead,
+   # or trap utf-8 conversion exception, etc.
+   def envfrom_bytes(self,*b):
+@@ -363,18 +363,18 @@ class Base(object):
+     return self.envfrom(s[0],*s[1:])
+   ## Called when the SMTP client says MAIL FROM. Called by the
+   # <a href="milter_api/xxfi_envfrom.html">
+-  # xxfi_envfrom</a> callback.  
++  # xxfi_envfrom</a> callback.
+   # Returning REJECT rejects the message, but not the connection.
+   # The sender is the "envelope" from as defined by
+   # <a href="http://tools.ietf.org/html/rfc5321">RFC 5321</a>.
+-  # For the From: header (author) defined in 
++  # For the From: header (author) defined in
+   # <a href="http://tools.ietf.org/html/rfc5322">RFC 5322</a>,
+   # see @link #header the header callback @endlink.
+   @nocallback
+   def envfrom(self,f,*s): return CONTINUE
+   ## Called with bytes by default global envrcpt callback.
+   # @since 1.0.5
+-  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden 
++  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden
+   # to pass bytes to @link #header the header callback @endlink instead,
+   # or trap utf-8 conversion exception, etc.
+   def envrcpt_bytes(self,*b):
+@@ -390,10 +390,10 @@ class Base(object):
+   # <a href="milter_api/xxfi_envrcpt.html">
+   # xxfi_envrcpt</a> callback.
+   # Returning REJECT rejects the current recipient, not the entire message.
+-  # The recipient is the "envelope" recipient as defined by 
++  # The recipient is the "envelope" recipient as defined by
+   # <a href="http://tools.ietf.org/html/rfc5321">RFC 5321</a>.
+-  # For recipients defined in 
+-  # <a href="http://tools.ietf.org/html/rfc5322">RFC 5322</a>, 
++  # For recipients defined in
++  # <a href="http://tools.ietf.org/html/rfc5322">RFC 5322</a>,
+   # for example To: or Cc:, see @link #header the header callback @endlink.
+   @nocallback
+   def envrcpt(self,to,*str): return CONTINUE
+@@ -407,14 +407,14 @@ class Base(object):
+   # @param fld name decoded as ascii
+   # @param val field value as bytes
+   # @since 1.0.5
+-  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden 
++  # Converts from utf-8 to unicode with surrogate escape.  Can be overriden
+   # to pass bytes to @link #header the header callback @endlink instead,
+   # e.g. by assignment:
+   # <pre>
+   #  mymilter.header_bytes = mymilter.header
+   # </pre>
+   # The <code>@decode('bytes')</code> decorator will also do this.
+-  # 
++  #
+   def header_bytes(self,fld,val):
+     try:
+       e = getattr(self.header,'error_strategy','surrogateescape')
+@@ -455,7 +455,7 @@ class Base(object):
+   # The @@nocallback and @@noreply decorators set the
+   # <code>milter_protocol</code> function attribute to the protocol mask bit to
+   # pass to libmilter, causing that callback or its reply to be skipped.
+-  # Overriding a method creates a new function object, so that 
++  # Overriding a method creates a new function object, so that
+   # <code>milter_protocol</code> defaults to 0.
+   # Libmilter passes the protocol bits that the current MTA knows
+   # how to skip.  We clear the ones we don't want to skip.
+@@ -474,14 +474,14 @@ class Base(object):
+         p |= (nr|nc) & ~ca
+       klass._protocol_mask = p
+       return p
+-    
++
+   ## Negotiate milter protocol options.  Called by the
+   # <a href="milter_api/xxfi_negotiate.html">
+   # xffi_negotiate</a> callback.  This is an advanced callback,
+   # do not override unless you know what you are doing.  Most
+-  # negotiation can be done simply by using the supplied 
++  # negotiation can be done simply by using the supplied
+   # class and function decorators.
+-  # Options are passed as 
++  # Options are passed as
+   # a list of 4 32-bit ints which can be modified and are passed
+   # back to libmilter on return.
+   # Default negotiation sets P_NO* and P_NR* for callbacks
+@@ -504,7 +504,7 @@ class Base(object):
+       #self.log("Negotiated:",opts)
+     except Exception as x:
+       # don't change anything if something went wrong
+-      return ALL_OPTS 
++      return ALL_OPTS
+     return CONTINUE
+ 
+   # Milter methods which can be invoked from most callbacks
+@@ -528,7 +528,7 @@ class Base(object):
+   # sent - but with the '%%' still doubled!
+   # See <a href="milter_api/smfi_setreply.html">
+   # smfi_setreply</a> for more information.
+-  # @param rcode The three-digit (RFC 821/2821) SMTP reply code as a string. 
++  # @param rcode The three-digit (RFC 821/2821) SMTP reply code as a string.
+   # rcode cannot be None, and <b>must be a valid 4XX or 5XX reply code</b>.
+   # @param xcode The extended (RFC 1893/2034) reply code. If xcode is None,
+   # no extended code is used. Otherwise, xcode must conform to RFC 1893/2034.
+@@ -552,7 +552,7 @@ class Base(object):
+   # feature.  Use the @@symlist function decorator to conviently set
+   # the macros used by a callback.
+   # @since 0.9.8, previous version was misspelled!
+-  # @param stage the protocol stage to set to macro list for, 
++  # @param stage the protocol stage to set to macro list for,
+   # one of the M_* constants defined in Milter
+   # @param macros space separated and/or lists of strings
+   def setsymlist(self,stage,*macros):
+@@ -574,7 +574,7 @@ class Base(object):
+ 
+   ## Add a mail header field.
+   # Calls <a href="milter_api/smfi_addheader.html">
+-  # smfi_addheader</a>.  
++  # smfi_addheader</a>.
+   # The <code>Milter.ADDHDRS</code> action flag must be set.
+   #
+   # May be called from eom callback only.
+@@ -588,7 +588,7 @@ class Base(object):
+ 
+   ## Change the value of a mail header field.
+   # Calls <a href="milter_api/smfi_chgheader.html">
+-  # smfi_chgheader</a>.  
++  # smfi_chgheader</a>.
+   # The <code>Milter.CHGHDRS</code> action flag must be set.
+   #
+   # May be called from eom callback only.
+@@ -600,21 +600,21 @@ class Base(object):
+     if not self._actions & CHGHDRS: raise DisabledAction("CHGHDRS")
+     return self._ctx.chgheader(field,idx,value)
+ 
+-  ## Add a recipient to the message.  
++  ## Add a recipient to the message.
+   # Calls <a href="milter_api/smfi_addrcpt.html">
+-  # smfi_addrcpt</a>.  
++  # smfi_addrcpt</a>.
+   # If no corresponding mail header is added, this is like a Bcc.
+   # The syntax of the recipient is the same as used in the SMTP
+   # RCPT TO command (and as delivered to the envrcpt callback), for example
+-  # "self.addrcpt('<foo@example.com>')".  
++  # "self.addrcpt('<foo@example.com>')".
+   # The <code>Milter.ADDRCPT</code> action flag must be set.
+   # If the optional <code>params</code> argument is used, then
+   # the <code>Milter.ADDRCPT_PAR</code> action flag must be set.
+   #
+   # May be called from eom callback only.
+-  # @param rcpt the message recipient 
++  # @param rcpt the message recipient
+   # @param params an optional list of ESMTP parameters
+-  # @throws DisabledAction if ADDRCPT or ADDRCPT_PAR is not enabled 
++  # @throws DisabledAction if ADDRCPT or ADDRCPT_PAR is not enabled
+   def addrcpt(self,rcpt,params=None):
+     if not self._actions & ADDRCPT: raise DisabledAction("ADDRCPT")
+     if params and not self._actions & ADDRCPT_PAR:
+@@ -622,7 +622,7 @@ class Base(object):
+     return self._ctx.addrcpt(rcpt,params)
+   ## Delete a recipient from the message.
+   # Calls <a href="milter_api/smfi_delrcpt.html">
+-  # smfi_delrcpt</a>.  
++  # smfi_delrcpt</a>.
+   # The recipient should match one passed to the envrcpt callback.
+   # The <code>Milter.DELRCPT</code> action flag must be set.
+   #
+@@ -635,8 +635,8 @@ class Base(object):
+ 
+   ## Replace the message body.
+   # Calls <a href="milter_api/smfi_replacebody.html">
+-  # smfi_replacebody</a>.  
+-  # The entire message body must be replaced.  
++  # smfi_replacebody</a>.
++  # The entire message body must be replaced.
+   # Call repeatedly with blocks of data until the entire body is transferred.
+   # The <code>Milter.MODBODY</code> action flag must be set.
+   #
+@@ -649,7 +649,7 @@ class Base(object):
+ 
+   ## Change the SMTP envelope sender address.
+   # Calls <a href="milter_api/smfi_chgfrom.html">
+-  # smfi_chgfrom</a>.  
++  # smfi_chgfrom</a>.
+   # The syntax of the sender is that same as used in the SMTP
+   # MAIL FROM command (and as delivered to the envfrom callback),
+   # for example <code>self.chgfrom('<bar@example.com>')</code>.
+@@ -666,7 +666,7 @@ class Base(object):
+ 
+   ## Quarantine the message.
+   # Calls <a href="milter_api/smfi_quarantine.html">
+-  # smfi_quarantine</a>.  
++  # smfi_quarantine</a>.
+   # When quarantined, a message goes into the mailq as if to be delivered,
+   # but delivery is deferred until the message is unquarantined.
+   # The <code>Milter.QUARANTINE</code> action flag must be set.
+@@ -680,11 +680,11 @@ class Base(object):
+ 
+   ## Tell the MTA to wait a bit longer.
+   # Calls <a href="milter_api/smfi_progress.html">
+-  # smfi_progress</a>.  
++  # smfi_progress</a>.
+   # Resets timeouts in the MTA that detect a "hung" milter.
+   def progress(self):
+     return self._ctx.progress()
+-  
++
+ ## A logging but otherwise do nothing Milter base class.
+ # This is included for compatibility with previous versions of pymilter.
+ # The logging callbacks are marked @@noreply.
+@@ -757,7 +757,7 @@ class Milter(Base):
+ # an object derived from Milter.Base.
+ #
+ # Note that since python is dynamic, this variable can be changed while
+-# the milter is running: for instance, to a new subclass based on a 
++# the milter is running: for instance, to a new subclass based on a
+ # change in configuration.
+ factory = Milter
+ 
+@@ -772,7 +772,7 @@ def negotiate_callback(ctx,opts):
+ # @brief Connect context if needed and invoke connect method.
+ def connect_callback(ctx,hostname,family,hostaddr,nr_mask=P_NR_CONN):
+   m = ctx.getpriv()
+-  if not m:     
++  if not m:
+     # If not already created (because the current MTA doesn't support
+     # xmfi_negotiate), create the connection object.
+     m = factory()
+@@ -806,13 +806,13 @@ def dictfromlist(args):
+ # @since 0.9.3
+ # @param str list of param strings of the form "NAME" or "NAME=VALUE"
+ # @return a dictionary of ESMTP param names and values
+-def param2dict(str): 
++def param2dict(str):
+   "Convert ESMTP parm list to keyword dictionary."
+   pairs = [x.split('=',1) for x in str]
+   for e in pairs:
+     if len(e) < 2: e.append(None)
+   return dict([(k.upper(),v) for k,v in pairs])
+-  
++
+ def envcallback(c,args):
+   """Call function c with ESMTP parms converted to keyword parameters.
+   Can be used in the envfrom and/or envrcpt callbacks to process
+@@ -830,7 +830,7 @@ def envcallback(c,args):
+ ## Run the %milter.
+ # @param name the name of the %milter known to the MTA
+ # @param socketname the socket to be passed to milter.setconn()
+-# @param timeout the time in secs the MTA should wait for a response before 
++# @param timeout the time in secs the MTA should wait for a response before
+ #	considering this %milter dead
+ def runmilter(name,socketname,timeout = 0,rmsock=True):
+ 
+Index: pymilter-pymilter-1.0.6/makefile
+===================================================================
+--- pymilter-pymilter-1.0.6.orig/makefile
++++ pymilter-pymilter-1.0.6/makefile
+@@ -4,7 +4,7 @@ web:
+ 	rsync -ravKk doc/html/ pymilter.org:/var/www/html/milter/pymilter
+ 	cd doc/html; zip -r ../../doc .
+ 
+-VERSION=1.0.5
++VERSION=1.0.6
+ PKG=pymilter-$(VERSION)
+ SRCTAR=$(PKG).tar.gz
+ 
+Index: pymilter-pymilter-1.0.6/setup.py
+===================================================================
+--- pymilter-pymilter-1.0.6.orig/setup.py
++++ pymilter-pymilter-1.0.6/setup.py
+@@ -17,7 +17,7 @@ libdirs = ["/usr/lib/libmilter"]    # ne
+ modules = ["mime"]
+ 
+ # NOTE: importing Milter to obtain version fails when milter.so not built
+-setup(name = "pymilter", version = '1.0.5',
++setup(name = "pymilter", version = '1.0.6',
+ 	description="Python interface to sendmail milter API",
+ 	long_description=long_description,
+     long_description_content_type='text/markdown',
