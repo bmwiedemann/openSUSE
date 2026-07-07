@@ -23,6 +23,7 @@ Summary:        Utility to detect blocking calls in the async event loop
 License:        Apache-2.0
 URL:            https://github.com/cbornet/blockbuster
 Source:         https://files.pythonhosted.org/packages/source/b/blockbuster/blockbuster-%{version}.tar.gz
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

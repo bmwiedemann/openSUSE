@@ -1,0 +1,12 @@
+Index: blockbuster-1.5.26/tests/test_blockbuster.py
+===================================================================
+--- blockbuster-1.5.26.orig/tests/test_blockbuster.py
++++ blockbuster-1.5.26/tests/test_blockbuster.py
+@@ -357,6 +357,7 @@ async def test_os_listdir() -> None:
+ 
+ 
+ @pytest.mark.skipif(sys.version_info < (3, 9), reason="requires Python 3.9+")
++@pytest.mark.skipif(sys.version_info >= (3, 15), reason="broken with Python 3.15+")
+ async def test_os_scandir() -> None:
+     with os.scandir(tempfile.tempdir) as files, pytest.raises(
+         BlockingError, match="Blocking call to ScandirIterator.__next__"

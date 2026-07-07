@@ -28,4 +28,13 @@
   * Fix false positive when importing modules in Python 3.14t</comment>
     <requestid>1340844</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>2e2116f147272db5c879b6d8679ff065</srcmd5>
+    <version>1.5.26</version>
+    <time>1783450817</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Skip a test with Python 3.15+.</comment>
+    <requestid>1363921</requestid>
+  </revision>
 </revisionlist>
