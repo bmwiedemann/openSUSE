@@ -18,7 +18,7 @@
 #
 
 %global _lto_cflags %nil
-%global _v8_version 145.0.0
+%global _v8_version 149.4.0
 %global _min_clang_version 19
 
 %if 0%{?suse_version} > 1600
@@ -35,7 +35,7 @@
 
 
 Name:           deno
-Version:        2.6.10
+Version:        2.9.0
 Release:        0
 Summary:        A secure JavaScript and TypeScript runtime
 License:        MIT
@@ -43,7 +43,7 @@ Group:          Productivity/Other
 URL:            https://github.com/denoland/deno
 Source0:        %{name}-%{version}.tar.zst
 Source1:        registry.tar.zst
-Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-a4cfac7093a1c1c7fbdb6bc75d6b6dc4d385fc69-2-llvmorg-22-init-17020-gbd1bd178.tar.xz#/chromium-rust-toolchain.tar.xz
+Source2:        https://storage.googleapis.com/chromium-browser-clang/Linux_x64/rust-toolchain-4c4205163abcbd08948b3efab796c543ba1ea687-2-llvmorg-23-init-10931-g20b6ec66.tar.xz#/chromium-rust-toolchain.tar.xz
 BuildRequires:  cargo-packaging
 
 # needed by `libz-ng-sys` after 1.36.1
@@ -136,6 +136,11 @@ mkdir -p $PWD/rusty_v8/third_party/rust-toolchain
 tar xf %{SOURCE2} \
  -C $PWD/rusty_v8/third_party/rust-toolchain
 echo -e "\n[patch.crates-io]\nv8 = { path = './rusty_v8' }" >> Cargo.toml
+# For some reason we have to rever the change we made in rusty_v8 to fix its
+# build. It may be caused by different versions of the bindgen crate between
+# the two packages, but I have not been able to configure the cargo_vendor
+# service to use the same version.
+sed -i -e s/WriteFlags_kNullTerminate/v8_String_WriteFlags_kNullTerminate/ -e s/WriteFlags_kReplaceInvalidUtf8/v8_String_WriteFlags_kReplaceInvalidUtf8/ $PWD/rusty_v8/src/string.rs
 
 %build
 export CARGO_HOME="$PWD/.cargo"
@@ -160,16 +165,16 @@ export GN="/usr/bin/gn"
 export NINJA="/usr/bin/ninja"
 export RUSTC="/usr/bin/rustc"
 export GN_ARGS="
-	clang_version=${CLANG_VERSION} 
-	v8_symbol_level=0 
-	custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
-	host_toolchain=\"//build/toolchain/linux/unbundle:default\"
-	fatal_linker_warnings=false
-	is_debug=false
-	use_system_libffi=true
-	use_custom_libcxx=false
-	use_sysroot=false
-	"
+    clang_version=${CLANG_VERSION} 
+    v8_symbol_level=0 
+    custom_toolchain=\"//build/toolchain/linux/unbundle:default\" 
+    host_toolchain=\"//build/toolchain/linux/unbundle:default\"
+    fatal_linker_warnings=false
+    is_debug=false
+    use_system_libffi=true
+    use_custom_libcxx=false
+    use_sysroot=false
+    "
 export EXTRA_GN_ARGS="use_custom_libcxx=false"
 
 # Included limited debug info.
