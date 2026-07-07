@@ -17,9 +17,8 @@
 
 
 %define service replace_using_package_version
-
 Name:           obs-service-%{service}
-Version:        0.0.12
+Version:        0.0.13
 Release:        0
 Summary:        An OBS service: Replaces a regex  with the version value of a package
 License:        GPL-3.0-or-later
@@ -29,9 +28,9 @@ Source0:        %{service}.py
 Source1:        %{service}.service
 Source2:        LICENSE
 BuildRequires:  sed
+Requires:       python3-base
 Requires:       python3-docopt
 Requires:       python3-rpm
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -40,9 +39,9 @@ a given package. Can be used to align the version of you package or image
 to the version of another package.
 
 %prep
-cp %{S:0} .
-cp %{S:1} .
-cp %{S:2} .
+cp %{SOURCE0} .
+cp %{SOURCE1} .
+cp %{SOURCE2} .
 
 %build
 # intentionally blank - nothing to do
@@ -53,7 +52,6 @@ install -D -m 755 %{service}.py %{buildroot}%{_prefix}/lib/obs/service/%{service
 install -D -m 644 %{service}.service %{buildroot}%{_prefix}/lib/obs/service/%{service}.service
 
 %files
-%defattr(-,root,root)
 %dir %{_prefix}/lib/obs
 %dir %{_prefix}/lib/obs/service
 %{_prefix}/lib/obs/service

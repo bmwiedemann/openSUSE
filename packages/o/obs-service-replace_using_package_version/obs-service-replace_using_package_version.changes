@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 03 16:28:32 UTC 2026 - containers@suse.com
+
+- Update to version 1783095920.1c1ddba (bsc#1270270):
+  * Bump version: 0.0.12 → 0.0.13
+  * Depend on /usr/bin/python3
+  * Bump actions/setup-python from 6.2.0 to 6.3.0
+  * Bump actions/cache from 5 to 6
+  * Bump actions/checkout from 6 to 7
+
+-------------------------------------------------------------------
 Mon Jan 26 13:18:46 UTC 2026 - containers@suse.com
 
 - Update to version 1769433269.171420f:
