@@ -58,10 +58,10 @@ The zathura-cb plugin adds comic book support to zathura.
 
 %install
 %meson_install
+find %{buildroot} -name '*.desktop' -delete -print
 
 %check
 %meson_test
-find %{buildroot} -name '*.desktop' -delete -print
 
 %files -n %{name}
 %license LICENSE
