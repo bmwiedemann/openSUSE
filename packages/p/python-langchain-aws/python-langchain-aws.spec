@@ -1,7 +1,7 @@
 #
 # spec file for package python-langchain-aws
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT

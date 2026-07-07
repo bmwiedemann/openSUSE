@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:42:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.2:
+  * Add support for the Claude Fable and Sonnet 5 Bedrock models
+  * Allow thinking together with forced tool use on Claude
+    Opus 4.8 and Claude 5
+
+-------------------------------------------------------------------
 Sun Jun 28 21:49:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langchain-aws 1.6.1
