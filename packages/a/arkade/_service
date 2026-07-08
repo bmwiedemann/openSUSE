@@ -3,7 +3,7 @@
     <param name="url">https://github.com/alexellis/arkade.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">refs/tags/0.11.108</param>
+    <param name="revision">refs/tags/0.11.109</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
