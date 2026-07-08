@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:48:50 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.2.3
+  Bug fixes:
+  * Fix MIME header encoding in email to require ASCII
+  * Fix potential invalid migration procedure
+  * Resolve relative UI theme paths
+  * Clear transfer filters when sections collapse
+  * Fix potential deadlock when database transaction failed
+  * Fix wrong torrent tracker conversion
+  * Fix wrong encoding for Web Seeds
+  * Use stricter parsing for Peer Address inputs
+  * Revise regex expression for parsing HTML links
+  Web UI:
+  * Correctly escape CSS query selector so the UI won't break
+  RSS:
+  * Fix feeds not following the specified interval
+  Search:
+  * Fix plugin counting when updating
+
+-------------------------------------------------------------------
 Tue Jun 16 06:27:59 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update tp version 5.2.2
