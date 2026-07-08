@@ -2,13 +2,14 @@ Index: pytest_html-4.2.0/package.json
 ===================================================================
 --- pytest_html-4.2.0.orig/package.json
 +++ pytest_html-4.2.0/package.json
-@@ -7,6 +7,10 @@
+@@ -7,6 +7,11 @@
      "unit": "nyc mocha testing/**/unittest.js --require mock-local-storage",
      "all": "npm run lint && npm run unit && npm run build:css && npm run build:jsapp"
    },
 +  "overrides": {
 +    "shell-quote": "^1.8.5",
-+    "js-yaml": "^4.2.0"
++    "js-yaml": "^4.2.0",
++    "brace-expansion": "^5.0.7"
 +  },
    "devDependencies": {
      "browserify": "^17.0.1",

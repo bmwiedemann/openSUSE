@@ -363,4 +363,14 @@
     crafted YAML document can lead to CPU exhaustion (bsc#1268818)</comment>
     <requestid>1362365</requestid>
   </revision>
+  <revision rev="25" vrev="4">
+    <srcmd5>45b0a75089e508eae3dd6107fbb5342f</srcmd5>
+    <version>4.2.0</version>
+    <time>1783525052</time>
+    <user>anag_factory</user>
+    <comment>- Revendor updating brace-expansion:
+  - Update patch update-js-deps.patch to force brace-expansion minimum
+    version (CVE-2026-13149, bsc#1269923)</comment>
+    <requestid>1364443</requestid>
+  </revision>
 </revisionlist>

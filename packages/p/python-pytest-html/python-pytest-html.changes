@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:12:16 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Revendor updating brace-expansion:
+  - Update patch update-js-deps.patch to force brace-expansion minimum
+    version (CVE-2026-13149, bsc#1269923)
+
+-------------------------------------------------------------------
 Mon Jun 29 08:57:20 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Revendor updating shell-quote and js-yaml deps:
