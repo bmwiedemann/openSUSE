@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 08 04:48:42 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783486111.5733fbdf:
+  * fix(source links): Category and module can contain an underscore
+  * fixup! feat: Log early aborts during disk space cleanup
+  * feat: Log early aborts during disk space cleanup
+  * feat: Abort results cleanup early to prevent load surges
+  * refactor: Make `t/05-scheduler-full.t` easier to understand
+  * refactor: Improve marking workers as dead in `t/05-scheduler-full.t`
+  * refactor: Use signatures in `t/05-scheduler-full.t`
+  * test: Remove simulation of "heavy load" from `t/05-scheduler-full.t`
+  * chore(deps): Dependency cron 2026-07-07
+  * fix(packaging): remove duplicate openqa spec dir
+  * fix(packaging): create podman cache dir via RPM
+  * fix(worker): ensure podman cache directory exists
+  * fix: XUnit: render skipped testcases as missing instead of ok
+  * test: Stabilize `t/ui/26-jobs_restart.t`
+  * chore(deps): bump the all-actions group across 1 directory with 5 updates
+  * ci: Reduce memory usage of `t/05-scheduler.t`
+  * feat: Turn code locations in autoinst-log into links
+
+-------------------------------------------------------------------
 Mon Jul 06 08:44:37 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783327469.933c54e2:

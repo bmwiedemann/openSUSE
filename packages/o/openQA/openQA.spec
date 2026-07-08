@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1783327469.933c54e2
+Version:        5.1783486111.5733fbdf
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -642,7 +642,6 @@ fi
 %dir %{_sysconfdir}/openqa/database.ini.d
 %{_datadir}/doc/openqa/examples/openqa.ini
 %{_datadir}/doc/openqa/examples/database.ini
-%dir %{_datadir}/openqa
 %config %{_sysconfdir}/logrotate.d
 # apache vhost
 %dir %{_sysconfdir}/apache2
@@ -833,6 +832,7 @@ fi
 %dir %{_localstatedir}/lib/openqa/pool
 %defattr(-,_openqa-worker,root)
 %dir %{_localstatedir}/lib/openqa/cache
+%dir %{_localstatedir}/lib/openqa/cache/podman
 # own one pool - to create the others is task of the admin
 %dir %{_localstatedir}/lib/openqa/pool/1
 %if 0%{?suse_version} > 1500
