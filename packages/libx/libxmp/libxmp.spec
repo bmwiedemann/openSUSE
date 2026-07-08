@@ -18,13 +18,12 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            http://xmp.sf.net/
-
 #Git-Clone:	https://github.com/libxmp/libxmp
 Source:         https://github.com/libxmp/libxmp/releases/download/%name-%version/%name-%version.tar.gz
 BuildRequires:  c_compiler

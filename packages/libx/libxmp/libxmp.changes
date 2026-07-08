@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul  7 18:23:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.1
+  * Fix crashes and other bugs in the smix API.
+  * Rewrite the smix API WAV loader to support stereo samples.
+  * Fix XM channel default instrument memory (should be no
+    instrument).
+  * Fix IT high offset being applied when no Oxx effect is present.
+  * Fix IT offsets >length setting the offset to sample end instead
+    of 0 in new effects mode.
+  * Fix conversion of MED synth/hybrid finetune.
+  * Fix Magnetic Fields Packer track loading and optimize tracks.
+  * Fix loading truncated Startrekker AM instruments.
+  * Startrekker AM instruments now take precedence over sampled
+    instruments in the same slot (fixes GTS/fa.worse face.mod and
+    WOTW/intro 12.mod).
+  * Fix StarTrekker AM instrument envelope, P.FALL, and FQ
+    toneporta bugs by reimplementing these features using extras
+    (fixes Epsilon (ES)/frankie.mod, WOTW/intro 12.mod, maybe
+    others).
+  * Allow Archimedes MUSX modules to load if the SDAT instrument
+    subchunk is broken (fixes 5-OverPar).
+  * Prevent overflow read in lha depacker pm2 decoder.
+
+-------------------------------------------------------------------
 Wed Feb 25 09:46:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7.0
