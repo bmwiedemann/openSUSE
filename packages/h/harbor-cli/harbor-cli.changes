@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 08 05:11:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.0.24:
+  * docs: update Go and Windows build instructions in
+    CONTRIBUTING.md(#1028)
+  * fix(utils): Refactor CamelCaseToHR function (#861)
+  * fix(api): propagate errors from GetLabel instead of returning
+    nil (#1004)
+  * fix(info): prevent nil pointer panic when volumes payload is
+    absent (#1032)
+  * Update harbor-cli manifest
+
+-------------------------------------------------------------------
 Wed Jul 01 06:36:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.0.23:
