@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:22:16 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
+  * glamor Font Atlas Heap Buffer Overflow (CVE-2026-55999, bsc#1268893)
+- bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent() (CVE-2026-55999, bsc#1268893)
+- bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent()  (CVE-2026-56000, bsc#1268894)
+
+-------------------------------------------------------------------
+Mon Jul  6 09:51:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.1.12:
+  * This release contains the fixes for the issues reported in this
+    security advisory:
+    https://lists.x.org/archives/xorg-announce/2026-June/003702.html
+    - Font Alias Stack-based Buffer Overflow
+    - XSYNC Use-After-Free in miSyncDestroyFence()
+    - XKB Key Types Stack-based Buffer Overflow
+    - XKB SetMap Request Stack-based Buffer Overflow
+    - XSYNC Use-After-Free in FreeCounter()
+    - XSYNC Use-After-Free in SyncChangeCounter()
+    - GLX ChangeDrawableAttributes Out-Of-Bounds Read/Write
+    - CreateSaverWindow Use-After-Free Information Disclosure
+  * Additionally, it contains a number of other various fixes from
+    the stable xwayland-24.1 branch.
+- Rebase U_xwayland_Dont_run_key_behaviors_and_actions.patch with
+  quilt.
+- Drop patches fixed upstream:
+  * bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
+  * bsc1266295_CVE-2026-XXXX2_0001-sync-fix-deletion-of-counters-and-fences.patch
+  * bsc1266296_CVE-2026-XXXX3_0003-xkb-reject-key-types-with-num_levels-exceeding-XkbMa.patch
+  * bsc1266297_CVE-2026-XXXX4_0004-xkb-clamp-nMaps-to-mapWidths-buffer-size-in-CheckKey.patch
+  * bsc1266299_CVE-2026-XXXX6_0002-sync-restart-trigger-list-iteration-in-SyncChangeCou.patch
+  * bsc1266300_CVE-2026-XXXX7_0005-glx-fix-reversed-length-check-in-ChangeDrawableAttri.patch
+  * bsc1266301_CVE-2026-XXXX8_0006-saver-re-fetch-screen-private-after-CheckScreenPriva.patch
+
+-------------------------------------------------------------------
 Wed May 27 11:38:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
