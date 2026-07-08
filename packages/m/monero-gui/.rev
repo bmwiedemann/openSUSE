@@ -7,4 +7,12 @@
     <comment>Update to 0.18.5.0; disable LTO (monero/randomx is LTO-hostile); modernize spec (pkgconfig BuildRequires, drop dead libminiupnpc/automake, replace deprecated %suse_update_desktop_file with a shipped .desktop)</comment>
     <requestid>1356060</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2ee73df5b2ac424456966390d8644327</srcmd5>
+    <version>0.18.5.1</version>
+    <time>1783525147</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.18.5.1: embedded P2Pool v4.17.1; security fixes (prevent CSV formula injection in history export, escape untrusted RichText, require SSL for HTTPS); confirm unauthenticated OpenAlias addresses; assorted wizard/UI fixes.</comment>
+    <requestid>1364472</requestid>
+  </revision>
 </revisionlist>

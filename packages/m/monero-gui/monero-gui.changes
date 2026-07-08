@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 08 07:23:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.1:
+  * Embedded P2Pool updated to v4.17.1
+  * Security: prevent CSV formula injection when exporting the
+    transaction history
+  * Security: escape untrusted text in the remaining RichText
+    views and require SSL for HTTPS requests
+  * Confirm unauthenticated OpenAlias addresses before use in
+    Transfer and Address Book
+  * Hide the update popup while a hardware-device passphrase
+    prompt is shown
+  * Wizard: check the wallet-file directory is writeable
+  * Fix "Quick Layouts recursive rearrange" log spam on startup
+  * Set the desktop file name for the application
+
+-------------------------------------------------------------------
 Sat May 30 16:13:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.0 (includes 0.18.4.4 - 0.18.4.7):
