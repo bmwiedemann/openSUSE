@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul 08 09:02:31 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.96.0:
+  * Critical security fix: patched vulnerability in gh codespace jupyter
+    that could allow command execution when connecting to malicious
+    Codespaces
+  * Merge commit from fork
+  * Fix concurrent map writes in codespace port forwarding (#13313)
+  * docs: fix broken install command and link/grammar errors (#13690)
+  * Clarify `--clone` boolean flag behaviour in `gh repo fork` help (#13786)
+  * docs: fix duplicated word in primer README (#13677)
+  * fix(skills): honor --dir without agent prompt (#13766)
+  * Support antigravity-cli and antigravity2.0 in gh skill (#13784)
+  * chore(deps): bump golangci/golangci-lint-action from 9.2.1 to 9.3.0
+  * docs(search): reword raw qualifier examples
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.2 to 7.2.3
+  * docs(search): simplify raw qualifier examples
+  * docs(search): add examples for multiple qualifiers
+  * chore(deps): bump actions/attest from 4.1.0 to 4.1.1
+  * chore(deps): bump actions/setup-go from 6.4.0 to 6.5.0
+  * fix(cmdutil): honor DisableAuthCheck under repo-override parents
+  * feat(release): allow download without authentication
+  * fix(release): don't let a failed draft lookup mask a found release
+  * Fix flaky TestHuhPrompterMultiSelectWithSearchPersistence on slow architectures (#13675)
+  * Detect additional third-party coding agents (#13722)
+  * Add security disclosure guidance to AGENTS.md (#13720)
+  * chore(deps): bump actions/checkout from 6.0.3 to 7.0.0
+  * chore(deps): bump github.com/microsoft/dev-tunnels from 0.1.19 to 0.1.27
+  * ci: pin GitHub Actions to commit SHAs
+  * chore(deps): bump github.com/google/go-containerregistry
+  * Use int64 for GitHub database IDs (#13403)
+  * docs: fix broken anchor link in release-process-deep-dive (#13688)
+  * Cover all printSummary branches in a table test
+  * fix(skills): install universal agent to ~/.agents/skills
+  * fix: show checks summary when all checks were cancelled
+- The following bugs are no longer present in this release (may have
+  been fixed in previous releases): bsc#1234566, bsc#1235345,
+  bsc#1237669, bsc#1239496, bsc#1241837, bsc#1243930, bsc#1251464,
+  bsc#1251666, bsc#1253929, bsc#1258617, bsc#1260271, bsc#1262339,
+  bsc#1262943, bsc#1265405, bsc#1265777, bsc#1266173, bsc#1266618,
+  bsc#1266975, bsc#1267158, bsc#1269427
+
+-------------------------------------------------------------------
 Sat Jun 20 18:18:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.95.0:
