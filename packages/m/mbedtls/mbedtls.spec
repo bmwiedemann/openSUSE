@@ -20,7 +20,7 @@
 %define lib_x509    libmbedx509-9
 %define lib_tfpsa   libtfpsacrypto2
 Name:           mbedtls
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later

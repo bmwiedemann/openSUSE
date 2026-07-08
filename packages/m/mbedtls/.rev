@@ -617,4 +617,12 @@ and may require coordinated staging.</comment>
     <comment>Reference tracking bug boo#1201581 for CVE-2022-35409</comment>
     <requestid>1360823</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>7ce7817c6fc510126c68341937530207</srcmd5>
+    <version>4.2.0</version>
+    <time>1783525045</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.2.0: security release fixing CVE-2026-50580, CVE-2026-50581, CVE-2026-50579, CVE-2026-49300, CVE-2026-50586, CVE-2026-50588, CVE-2026-50640, CVE-2026-50585, CVE-2026-25832, CVE-2026-54441; SHA3 in default X.509 profile; PKCS7 weak-hash rejection; bundled TF-PSA-Crypto 1.1.0-&gt;1.2.0</comment>
+    <requestid>1364436</requestid>
+  </revision>
 </revisionlist>

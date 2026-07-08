@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:46:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.0:
+  * Security fixes:
+    - CVE-2026-50580: remote buffer overflow in (D)TLS with
+      ECDHE-PSK cipher suites when CBC is disabled
+    - CVE-2026-50581: transcript-hash computation errors during
+      TLS 1.2 extended master secret calculation could be
+      ignored instead of failing the handshake
+    - CVE-2026-50579: use-after-free/double-free in
+      mbedtls_pkcs7_free() when reusing a context across
+      parse/free cycles
+    - CVE-2026-49300: X.509 parser accepted some certificates
+      with malformed basicConstraints, risking end-entity
+      certificates being treated as CA certificates
+    - CVE-2026-50586: information disclosure in TLS 1.2 servers
+      using session tickets (uninitialised stack memory sent in
+      NewSessionTicket)
+    - CVE-2026-50588: out-of-bounds read parsing TLS 1.2 ECJPAKE
+      ServerKeyExchange messages
+    - CVE-2026-50640: TLS 1.3 server could issue invalid session
+      tickets under resource exhaustion instead of failing
+    - CVE-2026-50585: badmac_seen and dtls_srtp_info fields not
+      zeroized on mbedtls_ssl_session_reset(), causing premature
+      DTLS failure or wrong DTLS-SRTP parameter inheritance
+    - CVE-2026-25832: TLS 1.3 clients now reject a
+      HelloRetryRequest selecting an unadvertised group
+    - CVE-2026-54441: clarified mbedtls_ssl_conf_sig_algs() only
+      governs TLS key exchange, not certificate verification
+  * SHA3-256/384/512 are now accepted in the default X.509
+    certificate profile
+  * Restore DESTDIR support for CMake installs of the
+    compatibility libmbedcrypto symlinks
+  * PKCS7 now rejects weak hash algorithms (RIPEMD160, MD5,
+    SHA-1, SHA-224, SHA3-224) on signature verification
+  * X.509 certificates with a basicConstraints extension
+    starting with an INTEGER field are no longer accepted
+  * Bundled TF-PSA-Crypto upgraded from 1.1.0 to 1.2.0
+
+-------------------------------------------------------------------
 Sun Jun 21 10:32:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Reference the tracking bug for the previously-listed CVE fix:
