@@ -1,4 +1,20 @@
 --------------------------------------------------------------------
+Tue Jul 7 06:30:25 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1089
+- minor improvements calling external programs
+- 4.5.341
+
+--------------------------------------------------------------------
+Mon Jul 6 11:28:12 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1088
+- provide functions for encryption format and open options using
+  vector of strings
+- extended tests
+- 4.5.340
+
+--------------------------------------------------------------------
 Fri Jul 3 06:57:38 UTC 2026 - aschnell@suse.com
 
 - merge gh#openSUSE/libstorage-ng#1087
