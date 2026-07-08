@@ -1102,4 +1102,41 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>CVE-2026-44663, [bsc#1268550], CVE-2026-45696, [bsc#1268551]</comment>
     <requestid>1360985</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>a76a907e84832870b40566b0d52bb8ad</srcmd5>
+    <version>3.4.13</version>
+    <time>1783524891</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.13 (
+    bsc#1269562, CVE-2026-55371,
+    bsc#1269701, CVE-2026-55373,
+    bsc#1269702, CVE-2026-55059,
+    bsc#1269703, CVE-2026-54920,
+    bsc#1269705, CVE-2026-53532):
+  * Fix a regression introduced in v3.4.11 in decoding of DWAA
+    compression
+  * Fix to handling deep images and very large images with the
+    OpenEXRUtil library
+  * Fix initiliazation issue in B44A decoding
+  * Validate HTJ2K chunk header length before decode
+  * Fix when building statically and using the vendored OpenJPH
+    library
+  * Fix CVE-2026-55373 OpenEXRUtil SampleCountChannel endEdit()
+    can loop forever on UINT_MAX sample counts
+  * Fix CVE-2026-55371 OpenEXRCore exr_attr_set_bytes() accepts
+    NULL type_hint with positive hint_length
+  * Fix CVE-2026-55059 OpenEXRUtil SampleCountChannel row setter
+    heap out-of-bounds write
+  * Fix CVE-2026-54920 Integer Overflow and Use of Uninitialized
+    Pointer leading to Invalid Delete in OpenEXRUtil Image Resize
+  * Fix CVE-2026-53532 Unhandled assert abort in HTJ2K decoder via
+    crafted QCD marker (DoS)
+
+- version update
+  * Fix various compiler warnings
+- Add patch to fix regression on non-SSE architectures
+  * Fix build failure on latest 64-bit Ubuntu
+  * Several bug fixes to properly reject invalid input upon read (forwarded request 1362632 from dirkmueller)</comment>
+    <requestid>1363981</requestid>
+  </revision>
 </revisionlist>
