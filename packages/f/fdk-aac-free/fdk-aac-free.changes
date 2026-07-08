@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  2 17:47:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.3:
+  + Minor upstream updates
+  + Fixed one case of a failed assert in SBR encoding
+  + Added build support for s390x
+- Changes from version 2.0.2:
+  + Minor upstream updates
+  + Lots of upstream and local fuzzing fixes
+  + Added CMake project files
+  + Removed the MSVC specific makefile
+- Changes from version 2.0.1:
+  + Minor release with a number of crash/fuzz fixes, primarily for
+    the decoder
+
+-------------------------------------------------------------------
 Mon Jan 17 12:03:05 UTC 2022 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add baselibs.conf file since pipewire uses it and fdk-aac-free

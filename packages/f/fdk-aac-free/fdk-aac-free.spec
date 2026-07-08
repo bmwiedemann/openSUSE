@@ -1,8 +1,7 @@
 #
 # spec file for package fdk-aac-free
 #
-# Copyright (c) 2020 Red Hat, Inc.
-# Copyright (c) 2021 Neal Gompa <ngompa@opensuse.org>.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +14,18 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright (c) 2020 Red Hat, Inc.
+# Copyright (c) 2021 Neal Gompa <ngompa@opensuse.org>.
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
 
 %global somajor 2
 %global origname fdk-aac
@@ -22,13 +33,15 @@
 %global devname lib%{origname}-devel
 
 Name:           fdk-aac-free
-Version:        2.0.0
+Version:        2.0.3
 Release:        0
 Summary:        Modified Version of the Fraunhofer FDK AAC Codec Library for Android
 Group:          Productivity/Multimedia/Other
 License:        FDK-AAC
 URL:            https://cgit.freedesktop.org/~wtay/fdk-aac/log/?h=fedora
-Source0:        https://people.freedesktop.org/~wtay/fdk-aac-free-%{version}.tar.gz
+# Source url is down, tarball taken from fedora src rpm.
+%dnl Source0:        https://people.freedesktop.org/~wtay/fdk-aac-free-%{version}.tar.gz
+Source0:        fdk-aac-free-%{version}.tar.gz
 Source99:       baselibs.conf
 
 BuildRequires:  automake
@@ -41,7 +54,6 @@ BuildRequires:  make
 The Third-Party Modified Version of the Fraunhofer FDK AAC Codec Library
 for Android is software that implements part of the MPEG Advanced Audio Coding
 ("AAC") encoding and decoding scheme for digital audio.
-
 
 %package -n %{libname}
 Summary:        Modified Version of the FDK AAC Codec Library for Android
@@ -64,8 +76,7 @@ The %{devname} package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup
-
+%autosetup -p1 -n %{origname}-%{version}
 
 %build
 autoreconf -fiv
@@ -74,7 +85,6 @@ autoreconf -fiv
   --disable-static
 
 %make_build
-
 
 %install
 %make_install INSTALL="install -p"
