@@ -33,7 +33,7 @@ Name:           tiff
 %else
 Name:           tiff-%{build_flavor}
 %endif
-Version:        4.7.1
+Version:        4.7.2
 Release:        0
 Summary:        Tools for Converting from and to the Tagged Image File Format
 License:        HPND
@@ -44,7 +44,6 @@ Source2:        README.SUSE
 Source3:        baselibs.conf
 Source99:       tiff.keyring
 Patch0:         tiff-4.0.3-seek.patch
-Patch1:         tiff-CVE-2026-4775.patch
 %if %{with tiff_manpages}
 BuildRequires:  python3-Sphinx
 %endif

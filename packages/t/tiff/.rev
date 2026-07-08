@@ -1152,4 +1152,41 @@ D    tiff-4.0.3-test-jpeg-turbo.patch</comment>
     Add tiff-CVE-2026-4775.patch</comment>
     <requestid>1349534</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>570c834ed3be6cf3cfc356cd893a409c</srcmd5>
+    <version>4.7.2</version>
+    <time>1783524902</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.7.2:
+  Software configuration changes:
+  * cmake: Fix bundle identifiers to use reverse-DNS format
+  * cmake: Fix and improve Apple framework build support
+  * cmake: Use TurboJPEG CONFIG by default (issue #767)
+  * cmake: changes related to 8-/12-bit modes
+  * cmake: Replace CMath::CMath with direct link to avoid export.
+  * Support for iOS-derived builds
+  * Simplify cmake byte order version check
+  * Add additional warnings, primarily floating precision conversions and integer arithmetic conversions
+  * configure.ac: Require bootstrap with at least Autoconf 2.71.
+  Library changes:
+  * New/improved functionalities::
+    + Add TIFFGetMaxCompressionRatio() and use it in _TIFFReadEncoded[Tile|Strip)AndAllocBuffer() (issue #781) (CVE-2026-36849) (bsc#1268434)
+  * API/ABI breaks:
+    + None
+  Bug fixes:
+  * Handle negative TIFFReadFile results before state updates (issue #854)
+  * tif_dirread.c: fix copy-paste bug in ChopUpSingleUncompressedStrip
+  * tif_read.c: Fixed division by zero in TIFFStartStrip() (issue #777)
+  * tif_dirwrite.c: add integer overflow checks to allocation size calculations
+  * tif_print.c: add integer overflow checks to allocation size calculations
+  * tif_write.c: fix OOB read and underflow in TIFFAppendToStrip copy loop
+  * DumpModeSeek: add bounds check to prevent OOB pointer advance
+  * TIFFGrowStrips: fix use-after-free on partial realloc failure.
+  * Fix NULL dereference in _TIFFReserveLargeEnoughWriteBuffer() by validating the strip bytecount array before accessing it.
+  * TIFFRGBAImage: avoid int overflows in put functions (issue #830)
+  * tif_getimage: fix inconsistent fromskew handling in put16bitbwtile (issue #792)
+  * tif_getimage: Widen pointer-offset arithmetic in tif_getimage
+  * putcontig8bitYCbCr44tile: fix wrong fromskew computation (issue #798)</comment>
+    <requestid>1364009</requestid>
+  </revision>
 </revisionlist>
