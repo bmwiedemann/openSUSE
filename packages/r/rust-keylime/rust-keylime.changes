@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jul 06 10:02:46 UTC 2026 - aplanas@suse.com
+
+- Remove Cargo_toml.patch (merged upstream)
+- Update openssl to 0.10.81
+  bsc#1270174, CVE-2026-41676
+  bsc#1270999, CVE-2026-45784
+  bsc#1270903, CVE-2026-44662
+  bsc#1270842, CVE-2026-41898
+  bsc#1270792, CVE-2026-41681
+  bsc#1270699, CVE-2026-41678
+  bsc#1270614, CVE-2026-41677
+  bsc#1270523, CVE-2026-42327
+- Update to version 0.2.9+49:
+  * build(deps): bump uuid from 1.23.3 to 1.23.4
+  * build(deps): bump syn from 2.0.117 to 2.0.118
+  * build(deps): bump openssl from 0.10.80 to 0.10.81
+  * build(deps): bump rand from 0.9.4 to 0.10.1
+  * Added new regression test into packit-ci.yaml
+  * build(deps): bump actions/checkout from 6 to 7
+  * build(deps): bump uuid from 1.23.1 to 1.23.3
+  * build(deps): bump log from 0.4.29 to 0.4.32
+  * build(deps): bump http from 1.4.0 to 1.4.2
+  * build(deps): bump codecov/codecov-action from 6 to 7
+  * build(deps): bump retry-policies from 0.5.1 to 0.5.2
+  * fix: Remove unused base64::Engine import in context_info tests
+  * build(deps): bump reqwest-middleware from 0.5.1 to 0.5.2
+  * build(deps): bump serde_json from 1.0.149 to 1.0.150
+  * build(deps): bump openssl from 0.10.79 to 0.10.80
+  * agent: Hash agent ID before TPM2_Certify qualifying data
+  * cargo: Bump tss-esapi, picky-asn1-x509, and picky-asn1-der
+  * build(deps): bump openssl from 0.10.78 to 0.10.79
+  * build(deps): bump once_cell from 1.21.3 to 1.21.4
+  * build(deps): bump tempfile from 3.23.0 to 3.27.0
+  * push-model: cache UEFI event log bytes at startup
+  * build(deps): bump quote from 1.0.40 to 1.0.45
+  * build(deps): bump chrono from 0.4.42 to 0.4.44
+  * build(deps): bump openssl from 0.10.73 to 0.10.78
+  * build(deps): bump serde_json from 1.0.143 to 1.0.149
+  * build(deps): bump syn from 2.0.106 to 2.0.117
+  * build(deps): bump libc from 0.2.175 to 0.2.184
+  * build(deps): bump rand from 0.9.2 to 0.9.4
+
+-------------------------------------------------------------------
+Mon Apr 13 11:53:10 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Make tss-esai-sys depends on bindgen 72.1 to support llvm > 21
+
+-------------------------------------------------------------------
+Mon Apr 13 11:21:05 UTC 2026 - aplanas@suse.com
+
+- Update to version 0.2.9+21:
+  * tests: use Express-style named params in Mockoon endpoints
+  * build(deps): bump pest_derive from 2.8.1 to 2.8.6
+  * build(deps): bump trybuild from 1.0.110 to 1.0.115
+  * build(deps): bump log from 0.4.28 to 0.4.29
+  * build(deps): bump uuid from 1.19.0 to 1.20.0
+  * build(deps): bump codecov/codecov-action from 5 to 6
+  * build(deps): bump tracing-subscriber from 0.3.20 to 0.3.23
+  * build(deps): bump cfg-if from 1.0.3 to 1.0.4
+  * build(deps): bump tokio from 1.49.0 to 1.50.0
+  * build(deps): bump actix-web from 4.12.1 to 4.13.0
+  * build(deps): bump anyhow from 1.0.99 to 1.0.102
+  * build(deps): bump clap from 4.5.57 to 4.5.60
+  * build(deps): bump tracing from 0.1.36 to 0.1.44
+
+-------------------------------------------------------------------
 Sat Apr 11 21:12:38 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Build with Clang <= 21 for now to work around boo#1260596.
