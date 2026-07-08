@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.28:
+  * Restore the original Clash /proxies REST API behaviour
+    (behaviour change for API consumers)
+  * Add new outbound and protocol support: rematch outbound with
+    REMATCH-NAME rules, MKCP and TLS-mirror for VMess, shadow-TLS
+    for Snell, ReSTLS for the Shadowsocks listener and h3-l4proxy
+    for the masque outbound
+  * Add DNS fallback-lazy-query and listen-routing-mark options
+  * Add routing-mark support for listeners and DNS plus a
+    top-level external-controller-routing-mark option
+  * Fix several crashes and panics (AmneziaWG slice bounds,
+    masque dial failures, sing-mux UDP writes, TUIC v5 UDP relay
+    and a nil-slice rand.IntN)
+  * Bundle the vendored crypto/tls fix for CVE-2026-42505
+- Restrict tar_scm tag matching to release tags (match-tag v*)
+  so the version resolves correctly now that upstream also places
+  a rolling Prerelease-Alpha tag on the release commit
+
+-------------------------------------------------------------------
 Fri Jun 19 17:52:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package, version 1.19.27

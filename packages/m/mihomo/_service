@@ -3,9 +3,10 @@
   <service name="tar_scm" mode="manual">
     <param name="url">https://github.com/MetaCubeX/mihomo.git</param>
     <param name="scm">git</param>
-    <param name="revision">v1.19.27</param>
+    <param name="revision">v1.19.28</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="match-tag">v*</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.git</param>
   </service>

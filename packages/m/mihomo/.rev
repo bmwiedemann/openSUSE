@@ -7,4 +7,12 @@
     <comment>New package: mihomo 1.19.27, the actively maintained successor to clash (Dreamacro/clash was archived upstream; final release 1.18.0) and the former Clash.Meta. Provides/Obsoletes clash and clash-meta. A delete request for the abandoned clash package follows.</comment>
     <requestid>1360650</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>f5cfad1d981f8d2eba0acb9419aaa00b</srcmd5>
+    <version>1.19.28</version>
+    <time>1783525049</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.19.28: new upstream stable release; bundles the fix for CVE-2026-42505.</comment>
+    <requestid>1364434</requestid>
+  </revision>
 </revisionlist>
