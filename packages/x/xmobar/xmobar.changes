@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jun 27 21:14:53 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update xmobar to version 0.51.1.
+  ## Version 0.51.1 (June, 2026)
+
+  - Missing upper bounds for dependencies
+
+  ## Version 0.51 (June, 2026)
+
+  - Improvements for `PacmanUpdates` (thanks, Enrico Maria and Alexander)
+  - Fixes and improvements to `Accordion` (thanks, Enrico Maria)
+  - Fixes to `Batt` (thanks, Leana)
+  - Fix BadDrawable crash when wallpaper setters free the root pixmap while
+    alpha is 255 (thanks, Ashesh)
+  - base dependency relaxed to 4.21
+
+-------------------------------------------------------------------
 Mon Jul 28 19:17:37 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Jailbreak over-specified constraints to fix build with ghc-9.12.x.

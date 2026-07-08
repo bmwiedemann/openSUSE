@@ -1,7 +1,7 @@
 #
 # spec file for package xmobar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %global pkgver %{pkg_name}-%{version}
 %bcond_with tests
 Name:           %{pkg_name}
-Version:        0.50
+Version:        0.51.1
 Release:        0
 Summary:        A Minimalistic Text Based Status Bar
 License:        BSD-3-Clause
@@ -54,8 +54,6 @@ BuildRequires:  ghc-dbus-devel
 BuildRequires:  ghc-dbus-prof
 BuildRequires:  ghc-directory-devel
 BuildRequires:  ghc-directory-prof
-BuildRequires:  ghc-extensible-exceptions-devel
-BuildRequires:  ghc-extensible-exceptions-prof
 BuildRequires:  ghc-extra-devel
 BuildRequires:  ghc-extra-prof
 BuildRequires:  ghc-filepath-devel
@@ -103,6 +101,8 @@ BuildRequires:  ghc-unix-devel
 BuildRequires:  ghc-unix-prof
 BuildRequires:  ghc-utf8-string-devel
 BuildRequires:  ghc-utf8-string-prof
+BuildRequires:  ghc-vector-devel
+BuildRequires:  ghc-vector-prof
 BuildRequires:  libXpm-devel
 BuildRequires:  libXrandr-devel
 BuildRequires:  libXrender-devel
@@ -110,6 +110,8 @@ ExcludeArch:    %{ix86}
 %if %{with tests}
 BuildRequires:  ghc-hspec-devel
 BuildRequires:  ghc-hspec-prof
+BuildRequires:  ghc-regex-tdfa-devel
+BuildRequires:  ghc-regex-tdfa-prof
 BuildRequires:  ghc-temporary-devel
 BuildRequires:  ghc-temporary-prof
 %endif
@@ -156,7 +158,6 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %prep
 %autosetup
-cabal-tweak-dep-ver base '< 4.21' '< 5'
 
 %build
 %define cabal_configure_options -f+all_extensions
