@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:47:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.1
+  * odirect write support by @TingDaoK in (#1245)
+  * aws_cbor_decoder_get_unconsumed_length by @TingDaoK in (#1251)
+
+-------------------------------------------------------------------
 Mon Jun  8 07:18:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.0
