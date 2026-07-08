@@ -318,4 +318,13 @@
    see /usr/share/doc/packages/perl-YAML-LibYAML/Changes</comment>
     <requestid>1361944</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>b1febbabd70d3c94ad994d6daf209d1f</srcmd5>
+    <version>0.910.0</version>
+    <time>1783524774</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.910.0 (v0.910.0)
+   see /usr/share/doc/packages/perl-YAML-LibYAML/Changes</comment>
+    <requestid>1364285</requestid>
+  </revision>
 </revisionlist>

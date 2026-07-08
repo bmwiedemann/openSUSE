@@ -18,10 +18,10 @@
 
 %define cpan_name YAML-LibYAML
 Name:           perl-YAML-LibYAML
-Version:        0.908.0
+Version:        0.910.0
 Release:        0
-# v0.908.0 -> normalize -> 0.908.0
-%define cpan_version v0.908.0
+# v0.910.0 -> normalize -> 0.910.0
+%define cpan_version v0.910.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl YAML Serialization using XS and libyaml
 URL:            https://metacpan.org/release/%{cpan_name}
