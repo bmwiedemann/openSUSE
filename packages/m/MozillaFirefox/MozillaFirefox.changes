@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul  5 11:21:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.4
+  MFSA 2026-62 (boo#1270286)
+  * CVE-2026-14241 (bmo#2043241, bmo#2045514, bmo#2045576,
+    bmo#2045623, bmo#2045765, bmo#2046814, bmo#2049409,
+    bmo#2049840)
+    Memory safety bugs fixed in Firefox 152.0.4
+  * Smart Window includes several enhancements:
+    You can now ask it to close your tabs, with a confirmation step
+    when needed and the option to undo afterward (bmo#2040769)
+    Browsing history results now appear with images (bmo#2038069)
+    When you give feedback on a response, you can now choose from
+    common reasons and preview exactly what will be shared before
+    submitting (bmo#2033002)
+  * Fixed copy, paste, undo, redo, and similar keyboard shortcuts
+    not working inside macOS system dialogs such as the Save and
+    Open panels. (Bug 2040851, Bug 2040844)
+  * Fixed the Manage Cookies and Site Data dialog opening with an
+    empty list when opened from the Settings search results.
+    (bmo#2041077)
+  * Fixed keyboard focus landing in the wrong place after following
+    an in-page link, so pressing Tab continues from the link's
+    position as expected. (bmo#2049307)
+
+-------------------------------------------------------------------
 Sat Jun 27 16:56:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 152.0.3
