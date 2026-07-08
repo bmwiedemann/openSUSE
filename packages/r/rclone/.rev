@@ -1188,4 +1188,41 @@ various additional features.</comment>
     <comment></comment>
     <requestid>1358122</requestid>
   </revision>
+  <revision rev="84" vrev="3">
+    <srcmd5>ffecf0c86496e8ffd04cabedf83c3376</srcmd5>
+    <version>1.74.3</version>
+    <time>1783525177</time>
+    <user>anag_factory</user>
+    <comment>- update x/image to 0.43 (bsc#1271056)
+
+  * Numerous backend-specific updates detailed at https://rclone.org/changelog/#v1-66-0-2024-03-10
+    - accounting: Make checkers show what they are doing
+    - authorize: Add support for custom templates
+    - filter: Emit INFO message when can't work out directory filters
+      + Added multiple ca certificate support.
+      + Add --max-delete-size a delete size threshold
+    - lib/terminal: Enable windows console virtual terminal sequences processing
+    - docker: Fix volume plugin does not remount volume on docker restart
+    - fs: Fix race conditions in --max-delete and --max-delete-size
+    - mount2: Fix --allow-non-empty
+  * dedupe: Count Checks in the stats while scanning for duplicates
+  * webdav: Don't override Referer if user sets it
+  * onedrive: Note that sharepoint also changes web files (.html, .aspx)
+  * jottacloud: Fix scope in token request
+  * GCS: Use the s3 pacer to speed up transactions
+  * GCS: pacer: Default the Google pacer to a burst of 100 to fix gcs pacing
+  * mount: Fix --devname and fusermount: unknown option 'fsname' when mounting via rc
+    - Add --progress-terminal-title to print ETA to terminal title
+    - Make NewObject use less expensive API calls
+    - Fixed crash on an empty file name
+    - Log that emptying the trash can take some time
+    - Enable short lived access tokens
+    - Implement IDer on Objects so rclone lsf etc can read the IDs
+    - accounting: Fix data race in Transferred()
+    - fs: Parseduration: fixed tests to use UTC time
+        + Add Copy method to rc.Params
+        + Fix 500 error when marshalling errors from core/command
+    - serve http: Fix serving files of unknown length</comment>
+    <requestid>1364502</requestid>
+  </revision>
 </revisionlist>

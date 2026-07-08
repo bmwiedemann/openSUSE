@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:26:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/image to 0.43 (bsc#1271056)
+
+-------------------------------------------------------------------
 Fri Jun 05 17:44:36 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 1.74.3: (boo#1267869)
@@ -2539,7 +2544,7 @@ Sat Mar 16 03:52:58 UTC 2024 - John Kizer john.kizer@proton.me
   * sync: Use operations.DirMove instead of sync.MoveDir for --fix-case
   * systemd: Fix detection and switch to the coreos package everywhere rather than having 2 separate libraries
   * mount: Notice daemon dying much quicker
-  * Numerous backend-specific updates detailed at https://rclone.org/changelog/#v1-66-0-2024-03-10 
+  * Numerous backend-specific updates detailed at https://rclone.org/changelog/#v1-66-0-2024-03-10
 
 -------------------------------------------------------------------
 Thu Jan 25 01:42:58 UTC 2024 - mrueckert@suse.de
@@ -3335,15 +3340,15 @@ Tue Mar 21 08:14:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.62.2:
   * New features:
-    - accounting: Make checkers show what they are doing 
-    - authorize: Add support for custom templates 
+    - accounting: Make checkers show what they are doing
+    - authorize: Add support for custom templates
     - Update to go1.20
-    - filter: Emit INFO message when can't work out directory filters 
+    - filter: Emit INFO message when can't work out directory filters
     - fs
-      + Added multiple ca certificate support. 
-      + Add --max-delete-size a delete size threshold 
+      + Added multiple ca certificate support.
+      + Add --max-delete-size a delete size threshold
     - fspath: Allow the symbols @ and + in remote names
-    - lib/terminal: Enable windows console virtual terminal sequences processing 
+    - lib/terminal: Enable windows console virtual terminal sequences processing
     - move: If --check-first and --order-by are set then delete with perfect ordering
     - serve http: Support --auth-proxy
   * Bug fixes:
@@ -3352,10 +3357,10 @@ Tue Mar 21 08:14:10 UTC 2023 - Paolo Stivanin <info@paolostivanin.com>
       + Limit length of ETA string
       + Show human readable elapsed time when longer than a day
     - deletefile: Return error code 4 if file does not exist
-    - docker: Fix volume plugin does not remount volume on docker restart 
-    - fs: Fix race conditions in --max-delete and --max-delete-size 
+    - docker: Fix volume plugin does not remount volume on docker restart
+    - fs: Fix race conditions in --max-delete and --max-delete-size
     - lib/oauthutil: Handle fatal errors better
-    - mount2: Fix --allow-non-empty 
+    - mount2: Fix --allow-non-empty
     - operations: Fix concurrency: use --checkers unless transferring files
     - serve ftp: Fix timestamps older than 1 year in listings
     - sync: Fix concurrency: use --checkers unless transferring files
@@ -3440,7 +3445,7 @@ Wed Dec 21 07:54:59 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.61.0:
   * Add vulnerability testing using govulncheck
-  * dedupe: Count Checks in the stats while scanning for duplicates 
+  * dedupe: Count Checks in the stats while scanning for duplicates
   * dedupe: Make dedupe obey the filters
   * filter: Add metadata filters --metadata-include/exclude/filter and friends
   * fs: Make all duration flags take y, M, w, d etc suffixes
@@ -3500,17 +3505,17 @@ Tue Nov 22 11:43:45 UTC 2022 - pousaduarte@gmail.com
 Mon May  2 09:12:04 UTC 2022 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.58.1:
-  * webdav: Don't override Referer if user sets it 
+  * webdav: Don't override Referer if user sets it
   * sftp: Fix OpenSSH 8.8+ RSA keys incompatibility
   * s3: Add ChinaMobile EOS to provider list
   * s3: Sync providers in config description with providers
-  * onedrive: Note that sharepoint also changes web files (.html, .aspx) 
-  * jottacloud: Fix scope in token request 
-  * GCS: Use the s3 pacer to speed up transactions 
-  * GCS: pacer: Default the Google pacer to a burst of 100 to fix gcs pacing 
+  * onedrive: Note that sharepoint also changes web files (.html, .aspx)
+  * jottacloud: Fix scope in token request
+  * GCS: Use the s3 pacer to speed up transactions
+  * GCS: pacer: Default the Google pacer to a burst of 100 to fix gcs pacing
   * dropbox: Fix retries of multipart uploads with incorrect_offset error
   * VFS: Remove wording which suggests VFS is only for mounting
-  * mount: Fix --devname and fusermount: unknown option 'fsname' when mounting via rc 
+  * mount: Fix --devname and fusermount: unknown option 'fsname' when mounting via rc
   * Fix timezone of --min-age/-max-age from UTC to local as documented
   * rc/js: Correct RC method names
 
@@ -3640,7 +3645,7 @@ Thu Feb  4 08:41:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
     - Enhance systemd integration
     - Add a --download flag to md5sum/sha1sum/hashsum to force rclone
       to download and hash files locally
-    - Add --progress-terminal-title to print ETA to terminal title 
+    - Add --progress-terminal-title to print ETA to terminal title
     - Make backend env vars show in help as the defaults for backend flags
     - dedupe: add '--by-hash' and '--dedupe-mode list'
     - obscure: Make rclone osbcure - ignore newline at end of line
@@ -3665,8 +3670,8 @@ Thu Feb  4 08:41:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
     - Fix crash when listing outside a SAS URL's root
     - Require go1.14+ to compile due to SDK changes
   * B2
-    - Make NewObject use less expensive API calls 
-    - Fixed crash on an empty file name 
+    - Make NewObject use less expensive API calls
+    - Fixed crash on an empty file name
   * Box
     - Fix NewObject for files that differ in case
     - Fix finding directories in a case insentive way
@@ -3676,11 +3681,11 @@ Thu Feb  4 08:41:20 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
       when the download limit is exceeded
     - Implement CleanUp workaround for team drives
     - Allow shortcut resolution and creation to be retried
-    - Log that emptying the trash can take some time 
+    - Log that emptying the trash can take some time
   * Dropbox
     - Add support for viewing shared files and folders
-    - Enable short lived access tokens 
-    - Implement IDer on Objects so rclone lsf etc can read the IDs 
+    - Enable short lived access tokens
+    - Implement IDer on Objects so rclone lsf etc can read the IDs
     - Set Features ReadMimeType to false as Object.MimeType not supported
     - Make malformed_path errors from too long files not retriable
   * S3
@@ -3704,36 +3709,36 @@ Thu Jan 21 10:11:15 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 1.53.4:
   * Bug Fixes
-    - accounting: Fix data race in Transferred() 
+    - accounting: Fix data race in Transferred()
     - build
         + Stop tagged releases making a current beta
-    - fs: Parseduration: fixed tests to use UTC time 
+    - fs: Parseduration: fixed tests to use UTC time
     - fshttp: Prevent overlap of HTTP headers in logs
     - rc
         + Fix core/command giving 500 internal error
-        + Add Copy method to rc.Params 
-        + Fix 500 error when marshalling errors from core/command 
+        + Add Copy method to rc.Params
+        + Fix 500 error when marshalling errors from core/command
         + plugins: Create plugins files only if webui is enabled.
-    - serve http: Fix serving files of unknown length 
+    - serve http: Fix serving files of unknown length
     - serve sftp: Fix authentication on one connection blocking others
   * Mount
     - Add "." and ".." to directories to match cmount and expectations
   * VFS
-    - Make cache dir absolute before using it to fix path too long errors 
+    - Make cache dir absolute before using it to fix path too long errors
   * Chunker
-    - Improve detection of incompatible metadata 
+    - Improve detection of incompatible metadata
   * Google Cloud Storage
-    - Fix server side copy of large objects 
+    - Fix server side copy of large objects
   * Jottacloud
     - Fix token renewer to fix long uploads
     - Fix token refresh failed: is not a regular file error
   * Pcloud
     - Only use SHA1 hashes in EU region
   * Sharefile
-    - Undo Fix backend due to API swapping integers for strings 
+    - Undo Fix backend due to API swapping integers for strings
   * WebDAV
-    - Fix Open Range requests to fix 4shared mount 
-    - Add "Depth: 0" to GET requests to fix bitrix 
+    - Fix Open Range requests to fix 4shared mount
+    - Add "Depth: 0" to GET requests to fix bitrix
 
 -------------------------------------------------------------------
 Fri Nov 20 08:40:29 UTC 2020 - İsmail Dönmez <idoenmez+factory@suse.de>

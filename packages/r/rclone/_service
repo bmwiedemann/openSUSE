@@ -17,5 +17,6 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">xz</param>
+    <param name="replace">golang.org/x/image=golang.org/x/image@v0.43.0</param>
   </service>
 </services>
