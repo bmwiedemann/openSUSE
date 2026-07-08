@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 06 09:07:35 UTC 2026 - aplanas@suse.com
+
+- Update to version 7.14.3:
+  * Bump to version 7.14.3
+  * tests: verify GET handler race condition fix with unit tests
+  * fix: handle concurrent agent deletion in verifier GET handler
+  * DB: increase evidence_items.agent_id column length
+  * [Automatic] Update Keylime base image 2026-07-02
+  * fix: suppress type checker errors for compatibility import in types.py
+  * fix: correct [A-z] regex in DM-IMA grammar STRING token
+  * docs: empty refstate skips PCR replay and policy evaluation
+  * tpm: use only policy's relevant PCRs for event log verification
+  * tests: accept both error messages for invalid ECC points
+  * tests: fix asyncio.Event() usage in shutdown tests
+  * CI: Use PR label to disable e2e tests through Packit
+  * [CI] Split e2e CI testing to fast and full
+  * elparsing: harden stderr decoding for tpm2_eventlog
+  * elparsing: check tpm2_eventlog exit code instead of stderr
+  * [Automatic] Update Keylime base image 2026-06-01
+  * tpm: Parse TPM2B_NAME with _unpackv instead of fixed-size slice
+  * fix: Update pre-commit isort to 8.0.1 to match tox
+  * docs: Document qualifying data change for IAK certification in v2.6
+  * api: Bump pull-mode API version to 2.6
+  * tpm: Refactor verify_aik_with_iak to use proper TPMS_ATTEST parsing
+  * registrar: Fix missing return after error in _bind_ak_to_iak
+  * Fix mypy error and include runtime deps in test-requirements
+  * Preserve FAIL status when timeout fires
+  * Block PUSH mode FAIL to PASS auto-recovery
+  * Fix PUSH mode agent status tracking across restarts and recovery
+  * server: Add max_workers config to cap worker process count
+
+-------------------------------------------------------------------
 Wed May 13 12:38:53 UTC 2026 - aplanas@suse.com
 
 - Update to version 7.14.2 (CVE-2026-6420, bsc#1264265):

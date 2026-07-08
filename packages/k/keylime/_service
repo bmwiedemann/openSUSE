@@ -4,7 +4,7 @@
     <!-- <param name="versionformat">@PARENT_TAG@</param> -->
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
-    <param name="revision">v7.14.2</param>
+    <param name="revision">v7.14.3</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">(v)?([^+]+)(\+0)?(\+[1-9][0-9]*)?</param>
     <param name="versionrewrite-replacement">\2\4</param>
