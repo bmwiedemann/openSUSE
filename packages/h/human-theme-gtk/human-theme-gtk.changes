@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (3.2.0)
+  * move */img to ../images
+  * (gtk2) change expander/treeview arrow and fix progressbar
+  * (gtk3) add Firefox theme
+  * (gtk3) remove tabs border in MATE/XFCE terminal
+  * (gtk3) fix drag and drop for MATE window list applet
+  * (gtk4) fix navigation in menus with keyboard
+  * (gtk4) better compatibility for 4.14 & 4.10 & 4.8
+  * (qt5 & 6) add RTL theme
+  * (qt5 & 6) fix arrow colors on hover
+  * (qt5 & 6) add stripes to progress bars
+  * (gtk3 & 4) fix dialog buttons position with/without gtk-classic
+  * (gtk3 & 4) fix scales design
+  * extreme performance improvement of color scripts
+  * lot of small improvements for all themes
+
+-------------------------------------------------------------------
 Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (3.1.0)
