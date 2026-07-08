@@ -40,7 +40,6 @@ Source1:        vendor.tar.zst
 Source3:        %{name}-rpmlintrc
 BuildRequires:  cargo-packaging
 BuildRequires:  rust+cargo >= 1.79
-BuildRequires:  pkgconfig(openssl) >= 3
 # For system linker
 Requires:       gcc
 ExclusiveArch:  %{rust_tier1_arches}
@@ -76,7 +75,7 @@ managing multiple parallel toolchains in their environment.
 find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
-%{cargo_build} --features=no-self-update
+%{cargo_build} --no-default-features --features=no-self-update,reqwest-rustls-tls
 
 %install
 # manual process
