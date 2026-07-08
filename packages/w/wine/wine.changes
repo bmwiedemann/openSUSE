@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 07:48:44 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.12 release
+  - Bundled libswresample and libswscale from FFmpeg.
+  - Mono engine updated to version 11.2.0.
+  - XSLPattern parser reimplemented in MSXML.
+  - Various bug fixes.
+- update staging to 11.12 release
+
+-------------------------------------------------------------------
 Sat Jun 13 08:29:39 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.11 release

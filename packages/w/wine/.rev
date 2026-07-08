@@ -5923,4 +5923,12 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.11 release</comment>
     <requestid>1359385</requestid>
   </revision>
+  <revision rev="495" vrev="1">
+    <srcmd5>9f76019f018971be85cf4451131d61e1</srcmd5>
+    <version>11.12</version>
+    <time>1783525114</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1364479</requestid>
+  </revision>
 </revisionlist>
