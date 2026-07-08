@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul  3 14:48:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.8.pl02:
+  * Bug fix: iso_local_get_projid() without flag bit5 returned
+  * ISO_PROJID_NO_OPEN_LOCAL on dangling symlinks
+  * Bug fix: Compile time error with --disable-lfa-flags
+    --enable-projid
+
+-------------------------------------------------------------------
 Mon Jun 29 05:52:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.8.pl01:

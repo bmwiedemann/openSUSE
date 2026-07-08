@@ -19,7 +19,7 @@
 
 %define so_ver 6
 %define tarversion 1.5.8
-%define patchlevel pl01
+%define patchlevel pl02
 Name:           libisofs
 Version:        %{tarversion}.%{patchlevel}
 Release:        0
