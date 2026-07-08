@@ -90,4 +90,14 @@
   provide symbolic links to the current distro default version.</comment>
     <requestid>1358700</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e0dd689acdf0c835057f6c9b68bac35</srcmd5>
+    <version>22.1.8</version>
+    <time>1783524885</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 22.1.8.
+  * This release contains bug-fixes for the LLVM 22.1.0 release.
+    This release is API and ABI compatible with 22.1.0.</comment>
+    <requestid>1363912</requestid>
+  </revision>
 </revisionlist>
