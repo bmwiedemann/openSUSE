@@ -30,7 +30,7 @@
 %define pkgname leancrypto
 %define libname lib%{pkgname}
 Name:           %{pkgname}%{psuffix}
-Version:        1.7.2
+Version:        1.8.0
 Release:        0
 %if %{with kmp}
 Summary:        leancrypto Kernel Module Package
@@ -43,9 +43,6 @@ Source0:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{vers
 Source1:        https://www.leancrypto.org/%{pkgname}/releases/%{pkgname}-%{version}/%{pkgname}-%{version}.tar.xz.asc
 Source2:        https://leancrypto.org/about/smuellerDD-2024.asc#/leancrypto.keyring
 Source3:        baselibs.conf
-Patch0:         leancrypto-ABI-fix.patch
-Patch1:         0001-Linux-kernel-leancrypto_kernel_rng_tester-include-li.patch
-
 BuildRequires:  clang
 BuildRequires:  fipscheck
 BuildRequires:  meson

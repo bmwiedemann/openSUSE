@@ -101,4 +101,41 @@
   libraries. (bsc#1262399) (forwarded request 1351461 from pmonrealgonzalez)</comment>
     <requestid>1352025</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>2a1155a70153412bce05e8ed7f27918e</srcmd5>
+    <version>1.8.0</version>
+    <time>1783524899</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.0:
+  * X.509: provide a common automated serial number generator which
+    is the 20 leftmost bytes of the SHA3-256 hash of the certificate
+    DER blob with the serial number being 20 bytes of 0xff and the
+    signature part equally a range of 0xff bytes
+  * Add full support for internal IV generation with GCM - this
+    allows AES-GCM to be used in FIPS mode
+  * Curve448: Fix AVX2 ABI issue
+  * Rust: add X25519 / X448 API to support rustls
+  * Rust: add HKDF API
+  * Rust: add ED25519 API to support rustls
+  * X.509: Add support for ED25519 and ED448 certificates to support
+    rustTLS for a smooth transition to PQC
+  * HMAC: deentangle key and hash management
+  * Remove VLA in the entire library
+  * Fixes to ChaCha20-Poly1305 and HKDF based on Wycheproof
+  * Add first drop of rustls-leancrypto provider - this code is not
+    production-ready, but it works with OpenSSL via localhost as well
+    as AWS-provider procedurally
+  * Add lc_kyber_[x25519|448]_[enc|dec] API
+  * BIKE: fix bug on 32-bit Intel systems
+  * Rust: add status API
+  * Harden various functions, add defense in depth checks suggested by LLMs
+  * Bug fix: ML-KEM KDF helper ingested only ML-KEM part and skipped X25519
+  * Add return code checker defending against fault injections
+  * ML-DSA / SLH-DSA: slicing the implementation to allow keygen, siggen
+    and sigver to be compiled independently - together with dead code
+    stripping, only the desired functionality is present (e.g. in secure
+    boot mode, only sigver is of interest) - build-script/shim_support.sh
+    compiles only signature verification (forwarded request 1364000 from pmonrealgonzalez)</comment>
+    <requestid>1364004</requestid>
+  </revision>
 </revisionlist>
