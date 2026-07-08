@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul  4 10:13:25 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 26.2.5.1.
+- Remove b08afae7e41fd5ca3a4101de07366783b17b3887.patch.
+  * Patch has been merged upstream, no longer required.
+
+-------------------------------------------------------------------
 Wed Jun 17 15:01:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add upstream b08afae7e41fd5ca3a4101de07366783b17b3887.patch: Fix

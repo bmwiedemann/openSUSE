@@ -3843,4 +3843,14 @@ Petr</comment>
     <comment></comment>
     <requestid>1360092</requestid>
   </revision>
+  <revision rev="322" vrev="1">
+    <srcmd5>5d2981d194b63f57e8d430e8068b0fba</srcmd5>
+    <version>26.2.5.1</version>
+    <time>1783524793</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.2.5.1.
+- Remove b08afae7e41fd5ca3a4101de07366783b17b3887.patch.
+  * Patch has been merged upstream, no longer required.</comment>
+    <requestid>1363793</requestid>
+  </revision>
 </revisionlist>
