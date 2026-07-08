@@ -1,7 +1,7 @@
 #
 # spec file for package python-pexpect
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/pexpect/pexpect
 Source:         https://files.pythonhosted.org/packages/source/p/pexpect/pexpect-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pexpect/pexpect/pull/808 Tests: Avoid the multiprocessing forkserver method
 Patch0:         py314.patch
+# PATCH-FIX-UPSTREAM https://github.com/pexpect/pexpect/pull/813 Wait for child to exit in test_spawn_uses_env
+Patch1:         wait.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ptyprocess}
 BuildRequires:  %{python_module pytest}

@@ -451,4 +451,12 @@
     <comment></comment>
     <requestid>1304352</requestid>
   </revision>
+  <revision rev="50" vrev="5">
+    <srcmd5>e897084793c8eca7920fd771106e8136</srcmd5>
+    <version>4.9.0</version>
+    <time>1783524788</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream wait.patch to fix test failure in staging</comment>
+    <requestid>1364278</requestid>
+  </revision>
 </revisionlist>

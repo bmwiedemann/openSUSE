@@ -1,0 +1,25 @@
+From 3cc22a6648e550daf37be4cdfe8955931f64a522 Mon Sep 17 00:00:00 2001
+From: kxxt <rsworktech@outlook.com>
+Date: Fri, 31 Jan 2025 12:04:22 -0500
+Subject: [PATCH] Wait for child to exit in test_spawn_uses_env
+
+Wait for the child to exit before check its exitstatus in test_spawn_uses_env.
+
+This fixes test failure like
+https://archriscv.felixc.at/.status/log.htm?url=logs/python-pexpect/python-pexpect-4.9.0-4.log
+---
+ tests/test_env.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/test_env.py b/tests/test_env.py
+index ecaaa4be..c7163656 100755
+--- a/tests/test_env.py
++++ b/tests/test_env.py
+@@ -65,6 +65,7 @@ def test_spawn_uses_env(self):
+             child = pexpect.spawn(script, env=environ)
+             out = child.readline()
+             child.expect(pexpect.EOF)
++            child.wait()
+         self.assertEqual(child.exitstatus, 0)
+         self.assertEqual(out.rstrip(), b'pexpect test value')
+ 

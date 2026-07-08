@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:57:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream wait.patch to fix test failure in staging
+
+-------------------------------------------------------------------
 Mon Sep  8 03:28:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py314.patch to fix tests with Python 3.14
