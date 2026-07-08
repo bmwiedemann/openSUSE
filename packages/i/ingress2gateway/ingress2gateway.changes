@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 08 06:03:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.0:
+  * Feature
+    - Added airlock-micrograteway emitter support (#413, @tyxeron)
+  * Bugfix
+    - Fixed warning with regex rewrites (#412, @Stevenjin8)
+    - Docs: Report.Notifications() accessor grouped by source
+      (#410, @marshallford
+
+-------------------------------------------------------------------
 Wed May 13 04:57:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.0:

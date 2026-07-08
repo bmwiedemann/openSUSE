@@ -17,7 +17,7 @@
 
 
 Name:           ingress2gateway
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Convert Ingress resources to Gateway API resources
 License:        Apache-2.0
