@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 13:44:12 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch
+ (bsc#1265598, bsc#1265599, bsc#1265600, bsc#1265601, bsc#1265602, bsc#1265603)
+  * libica-fips_powerup_tests-extend-RSA-KAT-coverage-to-3072-and-4096.patch 
+
+-------------------------------------------------------------------
 Mon Jun 22 10:17:33 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libica to version 4.4.2
