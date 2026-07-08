@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-recoveryservices
-Version:        4.0.1
+Version:        4.1.0
 Release:        0
 Summary:        Microsoft Azure Recovery Services Client Library
 License:        MIT
