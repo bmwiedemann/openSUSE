@@ -7543,4 +7543,12 @@ As this is a serious local privilege escalation, I would like to see a timely in
     <comment>7.1.2 &amp; dropped tdx error; bugs: bsc#1012628 bsc#1247996 bsc#1254352 bsc#1259668 bsc#1261041 bsc#1266716 bsc#1268472 bsc#1269113 bsc#1269726 bsc#1270053</comment>
     <requestid>1363080</requestid>
   </revision>
+  <revision rev="849" vrev="1">
+    <srcmd5>1d22f4278843cd73dee9ac91f0216db3</srcmd5>
+    <version>7.1.3</version>
+    <time>1783524784</time>
+    <user>anag_factory</user>
+    <comment>7.1.3; bugs: bsc#1012628 bsc#1270230</comment>
+    <requestid>1363779</requestid>
+  </revision>
 </revisionlist>
