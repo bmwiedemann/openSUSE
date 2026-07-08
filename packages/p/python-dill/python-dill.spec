@@ -29,6 +29,8 @@ Summary:        Module to serialize all of Python
 License:        BSD-3-Clause
 URL:            https://github.com/uqfoundation/dill
 Source:         https://github.com/uqfoundation/dill/archive/refs/tags/%{version}.tar.gz#/dill-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/uqfoundation/dill/pull/755 handle missing co_lnotab in 3.15.0b1
+Patch0:         py315.patch
 BuildRequires:  %{python_module dbm}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module objgraph >= 1.7.2}

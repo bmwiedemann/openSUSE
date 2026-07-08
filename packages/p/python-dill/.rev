@@ -293,4 +293,12 @@
 - Drop patch fix-contextvars.patch, merged upstream.</comment>
     <requestid>1328159</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>033df7b797931b37871d3e9768f2cd97</srcmd5>
+    <version>0.4.1</version>
+    <time>1783525206</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364538</requestid>
+  </revision>
 </revisionlist>

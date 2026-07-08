@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:31:09 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream py315.patch to fix build with Python 3.15
+
+-------------------------------------------------------------------
 Tue Jan 20 01:52:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.4.1:
