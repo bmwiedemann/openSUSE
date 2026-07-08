@@ -8,7 +8,7 @@
 
   <property name="project.groupId" value="org.codehaus.woodstox"/>
   <property name="project.artifactId" value="stax2-api"/>
-  <property name="project.version" value="4.2.1"/>
+  <property name="project.version" value="4.3.0"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -18,6 +18,7 @@
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
   <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.moditectDir" value="src/moditect"/>
   <property name="build.resourceDir" value="src/main/resources"/>
 
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
@@ -50,6 +51,22 @@
       <src>
         <pathelement location="${build.srcDir}"/>
       </src>
+    </javac>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="true"
+           encoding="utf-8"
+           deprecation="true"
+           release="9"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.moditectDir}"/>
+      </src>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+      </modulepath>
     </javac>
     <copy todir="${build.outputDir}">
       <fileset dir="${build.resourceDir}"/>
@@ -110,7 +127,7 @@
         <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
         <attribute name="Implementation-Vendor" value="fasterxml.com"/>
         <attribute name="Implementation-Version" value="${project.version}"/>
-        <attribute name="Import-Package" value="javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,org.codehaus.stax2,org.codehaus.stax2.evt,org.codehaus.stax2.ri,org.codehaus.stax2.ri.evt,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.util,org.codehaus.stax2.validation,org.w3c.dom"/>
+        <attribute name="Import-Package" value="javax.xml.namespace,javax.xml.stream,javax.xml.stream.events,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,org.w3c.dom"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>

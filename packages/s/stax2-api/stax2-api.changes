@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul  8 09:51:39 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 4.3.0
+  * Changes of version 4.2.2
+    + #23: Update 'pom.xml' with more accurate LICENSE definition
+    + Update parent (oss-parent) 38->55
+  * Changes of version 4.3.0
+    + #25: Use 'StringBuilder' instead of 'StringBuffer'
+    + #27: Remove redundant casts
+    + #28: Use newer 'BigDecimal' api to avoid extra 'String'
+      allocation
+    + #29: Cleanup: reorder modifiers to comply with JLS; remove
+      redundant casts
+    + #33: 'ArrayDecoders' can run into
+      'ArrayIndexOutOfBoundsException' when start != 0
+    + #34: Change JDK baseline to 8 (from JDK 6)
+    + Use Maven wrapper for builds
+    + Update parent (oss-parent) 55->68
+
+-------------------------------------------------------------------
 Fri Mar 28 06:03:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite to use Ant to build. This prevents potential cycles with

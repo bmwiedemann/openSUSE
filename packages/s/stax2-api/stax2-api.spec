@@ -1,7 +1,7 @@
 #
 # spec file for package stax2-api
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           stax2-api
-Version:        4.2.1
+Version:        4.3.0
 Release:        0
 Summary:        Experimental API extending basic StAX implementation
 License:        BSD-2-Clause
