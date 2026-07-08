@@ -17,14 +17,13 @@
 
 
 Name:           hfsfuse
-Version:        0.416
+Version:        0.425
 Release:        0
 Summary:        FUSE driver for HFS+ filesystems
 License:        BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          System/Filesystems
 URL:            https://github.com/0x09/hfsfuse
 Source:         https://github.com/0x09/hfsfuse/releases/download/%{version}/%{name}-%{version}.tar.gz
-Patch:          no-incompatible-pointer-types.patch
 BuildRequires:  fuse3-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  lzfse-devel

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:53:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.425
+  * Fixes building with older macFUSE versions (< 5.1).
+  * Adds support for building on OpenBSD 7.9.
+- Drop no-incompatible-pointer-types.patch, fixed upstream
+
+-------------------------------------------------------------------
 Mon Apr 13 12:08:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.416
