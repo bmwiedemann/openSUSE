@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jun 23 11:28:29 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.4.3
+  * Removed too-restrictive check for escaping resources.
+- Update to 0.4.2
+  * Fix URL percent-encoding using space-padding instead of zero-padding.
+  * Harden decompression against malicious input.
+  * Use os.lstat in findall to correctly detect symlinked directories.
+  * Improve logic to incorporate newer metadata versions.
+  * Ensure that constructed resource paths don't escape the package.
+  * Fix #255: Update cache_from_source() for Python 3.15.
+  * Check during unarchiving that the destination directory isn't escaped via
+    symlinks.
+  * Improved performance of normalize_name using dual replace.
+  * Add checks that installed files don't escape the installation directory.
+  * Add checks when mounting extensions to ensure path containment.
+- Update to 0.4.1
+  * Fix path traversal bug in handling entry points which allowed escaping
+    the scripts directory.
+  * Fix #251: Change test function following a reorganization which happened
+    in the Python stdlib.
+- drop py314.patch, no longer needed
+- skip one test which depends on dictionary ordering
+
+-------------------------------------------------------------------
 Mon Sep  8 13:34:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add py314.patch to fix tests with Python 3.14
