@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 08 09:23:05 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.4.0:
+  * Release v1.4.0.
+  * Update crossbeam-epoch.
+  * Enable optimizations when building rust-crypto crates.
+  * tool: canonicalize Ord and PartialOrd impls for Association
+  * tool: silence clippy error for potentially mutable Map key types
+  * tool: fix formatting to avoid leaking comments into doc strings
+  * clippy: allow two types with interior mutability for BTreeSet keys
+  * lib: avoid potentially panicking integer cast
+  * clippy: add default lint configuration
+  * Update NEWS.
+  * lib: Improve control char escaping
+  * tool: Fix output file's permissions.
+  * Gracefully deal with 404 HTTP result codes
+  * tool: Don't panic if write fails
+  * tool: Restrict file permissions on sensitive output
+  * Improve temporary file handling.
+  * Forward allow-* crypto features.
+  * Relax rusqlite dependency.
+  * tool: Add more cipher suites.
+  * tool: Add sq key generate --{encryption,signing}-algorithm.
+  * Update Cargo.lock.
+  * Relax subplot dependency.
+  * Relax roff dependency.
+  * Relax toml_edit dependency.
+  * Upgrade sequoia-wot.
+  * Relax indicatif dependency.
+  * Relax gethostname dependency.
+  * Relax dirs dependency.
+  * Relax clap_lex dependency.
+  * Update Cargo.lock.
+  * meta: Bump MSRV to 1.85.
+  * Update signing policy.
+
+-------------------------------------------------------------------
 Wed May  6 07:16:00 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update vendored dependencies due to build issues

@@ -17,7 +17,7 @@
 
 
 Name:           sequoia-sq
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        Command-line frontend for Sequoia
 Group:          Productivity/Security
