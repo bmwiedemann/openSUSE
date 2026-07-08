@@ -216,4 +216,30 @@
     <comment></comment>
     <requestid>1156637</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>94b6a38441b1ba376c6931f4cd39ba02</srcmd5>
+    <version>0.19.0</version>
+    <time>1783524746</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.19.0:
+  * Add --build-resolution-cache to write a per-DSO library
+    resolution note (#647).
+  * Add --no-clobber-old-sections switch to keep the original
+    section contents in place.
+  * Fix support for files larger than 4GB.
+  * Fix alignment problem when rewriting sections.
+  * https://github.com/NixOS/patchelf/blob/master/ChangeLog.md#01
+    90-june-26-2026
+- drop fix-rename-dynamic-symbols.sh-test-issue-503.patch: upstream
+
+- [bsc#1211860] - build failure for patchelf on s390x
+  * Handle DT_MIPS_XHASH and .MIPS.xhash
+  * Use sh_offset instead of sh_addr when checking already replaced libs
+  * skip overwriting r(un)path data when old_rpath = new_rpath.
+  * add --clear-symbol-version
+  * More modern C++ has avoided a memory leak
+- Install license file
+  Fixed by debian patch no-rpath-prebuilt.patch</comment>
+    <requestid>1364119</requestid>
+  </revision>
 </revisionlist>

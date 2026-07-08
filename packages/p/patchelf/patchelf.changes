@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:52:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * Add --build-resolution-cache to write a per-DSO library
+    resolution note (#647).
+  * Add --no-clobber-old-sections switch to keep the original
+    section contents in place.
+  * Fix support for files larger than 4GB.
+  * Fix alignment problem when rewriting sections.
+  * https://github.com/NixOS/patchelf/blob/master/ChangeLog.md#01
+    90-june-26-2026
+- drop fix-rename-dynamic-symbols.sh-test-issue-503.patch: upstream
+
+-------------------------------------------------------------------
 Fri Mar  8 23:25:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Make the package buildable also on Leap 15.6 and SLE 15 SP 6.
@@ -10,7 +24,7 @@ Fri Mar  8 23:25:32 UTC 2024 - Martin Jambor <mjambor@suse.com>
 -------------------------------------------------------------------
 Mon Dec  4 07:29:40 UTC 2023 - Duraisankar P <Duraisankar.pitchumani@suse.com>
 
-- [bsc#1211860] - build failure for patchelf on s390x 
+- [bsc#1211860] - build failure for patchelf on s390x
   - skip unstable check build for arch s390x
 
 -------------------------------------------------------------------
@@ -73,8 +87,8 @@ Fri Jul 22 22:13:20 UTC 2022 - Dirk Müller <dmueller@suse.com>
   * modifyRPath: return early if new and old rpath are empty
   * Add comment explaining calculation for DT_MIPS_RLD_MAP_REL
   * Add --no-sort option
-  * Handle DT_MIPS_XHASH and .MIPS.xhash  
-  
+  * Handle DT_MIPS_XHASH and .MIPS.xhash
+
 -------------------------------------------------------------------
 Sun Mar 20 21:02:53 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
@@ -112,7 +126,7 @@ Sat Oct 16 12:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 - update to 0.13:
   * mark phdrs synced with sections, avoid rechecking it when syncing not
   * fix roundUp() to not truncate 64 bit values
-  * Use sh_offset instead of sh_addr when checking already replaced libs 
+  * Use sh_offset instead of sh_addr when checking already replaced libs
   * Add ELF test case with invalid string table index
   * Gracefully handle ELF files with invalid string table indices in header
   * clang-tidy fixes
@@ -125,10 +139,10 @@ Sat Oct 16 12:24:20 UTC 2021 - Dirk Müller <dmueller@suse.com>
 Fri Sep 11 21:00:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.12:
-  * skip overwriting r(un)path data when old_rpath = new_rpath.  
+  * skip overwriting r(un)path data when old_rpath = new_rpath.
   * patchelf: Check ELF endianness before writing new runpath
   * use stable_sort to maintain relative order for equal elemnts
-  * add --clear-symbol-version 
+  * add --clear-symbol-version
   * Improve the default section alignment choice
   * Some const-correctness and C++11 auto
 
@@ -136,7 +150,7 @@ Fri Sep 11 21:00:31 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 Sun Aug 16 00:47:05 UTC 2020 - Dirk Mueller <dmueller@suse.com>
 
 - update to 0.11:
-  * More modern C++ has avoided a memory leak  
+  * More modern C++ has avoided a memory leak
   * force-rpath is now consistently used
   * new --output flag
 
@@ -157,13 +171,13 @@ Mon Aug 26 14:41:43 UTC 2019 - Mikhail Terekhov <termim@gmail.com>
 Thu Nov 15 12:41:52 UTC 2018 - Martin Pluskal <mpluskal@suse.com>
 
 - Modernise spec file
-- Install license file 
+- Install license file
 
 -------------------------------------------------------------------
 Fri Apr  1 22:53:20 UTC 2016 - dvaleev@suse.com
 
 - Enable exluded architectures.
-  Fixed by debian patch no-rpath-prebuilt.patch 
+  Fixed by debian patch no-rpath-prebuilt.patch
 
 -------------------------------------------------------------------
 Sun Mar 20 10:08:24 UTC 2016 - mpluskal@suse.com

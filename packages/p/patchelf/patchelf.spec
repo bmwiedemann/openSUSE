@@ -1,7 +1,7 @@
 #
 # spec file for package patchelf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           patchelf
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        A utility for patching ELF binaries
 License:        GPL-3.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://nixos.org/patchelf.html
 Source:         https://github.com/NixOS/patchelf/releases/download/%{version}/patchelf-%{version}.tar.bz2
-Patch1:         fix-rename-dynamic-symbols.sh-test-issue-503.patch
-
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
