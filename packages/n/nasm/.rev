@@ -442,4 +442,41 @@ So this request needs to go together with those updates.
 - Update to 3.00:</comment>
     <requestid>1329879</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>037f08c9380f3683e48ae3f02d804e99</srcmd5>
+    <version>3.02</version>
+    <time>1783524907</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.02:
+  * Fix build problems on C23 compilers using a pre-C23 version of &lt;stdbool.h&gt;
+    which defines bool as a macro in violation of the C23 specification.
+  * The immediate form of the JMPE instruction (opcode 0F B8) has been changed
+    to an absolute address, as in the Itanium Architecture Software Developer's
+    Manual, version 2.3, Volume 4, page 4:249. Hopefully this won't break
+    whatever virtual environments use JMPE, but it is the closest thing there
+    is to an official specification for this opcode.
+  * Being an absolute address, treat it equivalent to a FAR jump and do not
+    default to 64 bits in 64-bit mode.
+  * That JMPE has apparently been wrong all these years is probably as good of
+    a hint as any how much it has been actually used, but it does have the
+    possibility of breaking virtual environments. In that case, please file a
+    bug report to https://bugs.nasm.us with details about the virtual
+    environment, and we will figure out a suitable solution.
+  * Various build fixes. Fix the documentation not building on MacOS because of
+    the cp utility lacking -u there. Also fix not building generally due to
+    wrong link formatting. Another fix was a typo in compiler.h related to a
+    C++ check.
+  * Corrections to assembling encodings:
+    + Fix CMP allowing LOCK which is illegal.
+    + Correct multiple AVX512 instructions such as VCVTSD2SI, VCVTSD2USI,
+      VCVTSS2SI, VCVTSS2USI, VCVTTSD2SI, VCVTTSD2USI, VCVTTSS2SI, VCVTTSS2USI,
+      VGETEXPSH, VGETMANTSH, MOVDDUP, VMOVDDUP.
+    + Fixed other encodings or instruction formats for instructions UWRMSR,
+      CMPSD, VCMPSS, V4FMADDSS, V4FNMADDSS, VCVTDQ2PH, VCVTPD2PH, VCVTPH2UDQ,
+      VCVTQQ2PH, VCVTUDQ2PH, VCVTUQQ2PH, VGETEXPSH, VGETMANTSH, VRCPPH,
+      VRSQRTPH, VCVTPH2BF8, VCVTPH2BF8S, VCVTPH2HF8, VCVTPH2HF8S.
+    + Fixed typos in VP4DPWSSD mnemonic.
+    + Fixed BYTE and WORD operands getting the same encoding on arithmetic</comment>
+    <requestid>1364021</requestid>
+  </revision>
 </revisionlist>
