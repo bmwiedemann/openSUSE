@@ -18,10 +18,10 @@
 
 %define cpan_name Perl-Tidy
 Name:           perl-Perl-Tidy
-Version:        20260204.0.0
+Version:        20260705.0.0
 Release:        0
-# 20260204 -> normalize -> 20260204.0.0
-%define cpan_version 20260204
+# 20260705 -> normalize -> 20260705.0.0
+%define cpan_version 20260705
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Indent and reformat perl scripts
@@ -83,7 +83,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc BUGS.md CHANGES.md docs examples pm2pl README.md SECURITY.md
+%doc BUGS.md CHANGES.md Dockerfile docs examples pm2pl README.md SECURITY.md
 %license COPYING
 
 %changelog

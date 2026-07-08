@@ -1,4 +1,122 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:16:59 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 20260705.0.0 (20260705)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+
+  ## 2026 07 05
+      - Added new controls to adjust indented here-docs (see git #210).
+        The main new controls are:
+        --heredoc-indentation-update (-hiu): adjusts indentation of type '<<~'
+         here-documents to match the code indentation
+        --heredoc-extra-spaces=n (-hxs=n): adds n extra indentation spaces
+         when indenting here-docs (DEFAULT is n=0)
+        --heredoc-excess-length-option=n (-hxlo=n) : tells how to handle the
+         indentation of long lines of here-doc text
+          n=0 : leave code unchanged [DEFAULT]
+          n=1 : ignore line length limit
+          n=2 : use zero leading space (i.e., left-adjust heredoc)
+          n=3 : use max possible without exceeding line length limit
+        --heredoc-convert-to=s (-hct=s): converts between '<<' and '<<~'
+          s='standard' : convert type '<<~' to '<<'
+          s='indented' : convert type '<<' to '<<~'
+       See the man pages for additional details and options.
+      - The indentation of indented here-docs is now checked. A warning
+        is issued if the leading whitespace of the ending delimiter string
+        does not also exist on all the lines of the associated here-doc text.
+      - Improved formatting of certain ternary expressions (see git #209).
+        A ternary expression for which both the TRUE and FALSE parts are
+        single ternary expressions is now written in a balanced way.
+        For example, this expression gives max($a,$b,$c):
+          # OLD: (tail end is economized into equivalent elsif's):
+          $a > $b
+            ? $a > $c
+                ? $a
+                : $c
+            : $b > $c ? $b
+            :           $c;
+          # NEW (tail remains as simple if's):
+          $a > $b
+              ? $a > $c
+                  ? $a
+                  : $c
+              : $b > $c
+                  ? $b
+                  : $c;
+      - The operator 'cmp' has been added to the defaults for the parameter
+        --space-after-keyword.  For example, the old default is:
+          sort { !( ref $b->{select} ) cmp( ref $a->{select} ) }
+        The new default is:
+          sort { !( ref $b->{select} ) cmp ( ref $a->{select} ) }
+        Use -nsak='cmp' if you prefer no space between 'cmp' and a following '('.
+        See git #205 for a discussion.
+      - Add input parameter --warn-keyword-list=s to warn if any of keywords
+        or functions in the string s occur in a file. For example
+           perltidy -wkl='goto'
+        will warn of the occurrences of the perl builtin keyword goto.
+      - Add input parameter --dump-label-usage, or -dlu, to dump a list of
+        all statement labels used in a script to standard output.
+      - Add input parameter --warn-label-types=s, or -wlt=s, to issue a
+        warning for certain types of statement labels. The string s can select
+        from several types of warnings. A value '1' selects all warnings.
+        The manual has details. A companion parameter
+        --warn-label-exclusion-list=s, or -wlxl=s, can avoid warnings for
+        selected labels.
+      - Add input parameter --warn-c-style-for-loops. When set, any
+        C-style for loops are listed in the error output stream.
+      - The parameter --pass-version-line, or -pvl is now working correctly.
+        It was not possible to negate this parameter in the previous version,
+        and this has been fixed.
+      - Add input parameter --blank-lines-prevent-cuddles, or -blpc, to
+        allow user to break a cuddled chain with a blank line. Previously,
+        the only way to prevent an unwanted cuddle was to insert a comment.
+      - Fixed issue git #205. In some rare cases of cuddled formatting, the
+        cuddled style could unexpectedly continue from an if-chain into
+        a sort/map/grep block.
+      - Vertical alignment now occurs by default for the string comparison
+        operator 'cmp', and these align with any numeric comparison
+        operators '<=>' by default. Previously the 'cmp' operator was not
+        vertically aligned.  A new control switch --valign-comparison-operators
+        can be negated to cause any 'cmp' operators not to align with any
+        '<=>' operators.  To illustrate the options:
+          # Old default, or new version with --valign-exclusion-list='cmp'
+          sub sortName       { $a->{"file"} cmp $b->{"file"}; }
+          sub sortNameNoCase { uc( $a->{"file"} ) cmp uc( $b->{"file"} ); }
+          sub sortSize       { $b->{"size"}  <=> $a->{"size"}; }
+          sub sortDate       { $b->{"mtime"} <=> $a->{"mtime"}; }
+          # New default:
+          sub sortName       { $a->{"file"}       cmp $b->{"file"}; }
+          sub sortNameNoCase { uc( $a->{"file"} ) cmp uc( $b->{"file"} ); }
+          sub sortSize       { $b->{"size"}       <=> $a->{"size"}; }
+          sub sortDate       { $b->{"mtime"}      <=> $a->{"mtime"}; }
+          # New version with --novalign-comparison-operators
+          sub sortName       { $a->{"file"}       cmp $b->{"file"}; }
+          sub sortNameNoCase { uc( $a->{"file"} ) cmp uc( $b->{"file"} ); }
+          sub sortSize       { $b->{"size"}  <=> $a->{"size"}; }
+          sub sortDate       { $b->{"mtime"} <=> $a->{"mtime"}; }
+      - Fixed issue git #197, where long lines could be broken before reaching
+        the maximum line length in some edge cases when
+        --extended-continuation-indentation is set.
+      - Implemented issue git #27, docker image for perltidy.
+      - Parameters --break-before-all-operators and --break-after-all-operators
+        now include control of the following bitwise operators:
+             |.= &.= ^.= &. ^. |.
+        Breaks around these operators can be individually controlled with
+        --want-break-before and --want-break-after.
+      - If a long line needs to break at the caret operator, '^', the break will
+        now be after the operator rather than before it.  This should have been
+        the default. Use --want-break-before='^' to keep breaks before this operator.
+        For example:
+              # new default breaks long lines after a '^'
+              $state->[$kk] =
+                $state->[ $kk - 18 ] ^ ( ( $state->[$kk] >> 1 ) & 0x7fffffff ) ^
+                $mag01[ $state->[$kk] & 1 ];
+              # previous default, and current version with perltidy -wbb='^'
+              $state->[$kk] =
+                $state->[ $kk - 18 ] ^ ( ( $state->[$kk] >> 1 ) & 0x7fffffff )
+                ^ $mag01[ $state->[$kk] & 1 ];
+
+-------------------------------------------------------------------
 Thu Feb  5 06:15:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 20260204.0.0 (20260204)
