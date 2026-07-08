@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  5 21:19:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.20.4:
+  + Fixed: Fixed a crash in Python 3.9.
+- Changes from version 0.20.3:
+  + Fixed:
+    - Fixed GtkTryExpression tests that were failing on GTK 4.22.
+    - The decompiler no longer emits some unnecessary casts.
+- Changes from version 0.20.2:
+  + Fixed: Fixed a test failure due to an updated version of black.
+- Changes from version 0.20.1:
+  + Fixed: Fix casting from uint to bool, which should work but was
+    generating an error.
+  + Docs: Fixed the syntax documentation for TryExpression.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:22:24 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

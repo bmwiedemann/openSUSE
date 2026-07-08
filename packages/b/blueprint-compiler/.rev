@@ -289,4 +289,23 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345334</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>93757d6099a475610c59da3331c74502</srcmd5>
+    <version>0.20.4</version>
+    <time>1783524729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.20.4:
+  + Fixed: Fixed a crash in Python 3.9.
+- Changes from version 0.20.3:
+  + Fixed:
+    - Fixed GtkTryExpression tests that were failing on GTK 4.22.
+    - The decompiler no longer emits some unnecessary casts.
+- Changes from version 0.20.2:
+  + Fixed: Fixed a test failure due to an updated version of black.
+- Changes from version 0.20.1:
+  + Fixed: Fix casting from uint to bool, which should work but was
+    generating an error.
+  + Docs: Fixed the syntax documentation for TryExpression.</comment>
+    <requestid>1364083</requestid>
+  </revision>
 </revisionlist>
