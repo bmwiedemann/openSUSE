@@ -29,7 +29,7 @@
 %global cutter_builddir %{base_builddir}-cutter
 
 Name:           jsdec
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Simple decompiler for Rizin
 License:        BSD-3-Clause AND MIT
