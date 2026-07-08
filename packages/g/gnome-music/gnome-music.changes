@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  2 19:35:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add upstream bug fix patches:
+  + efda5de2d24f01141c5e291ae4267663a8e34831.patch:
+    localsearchwrapper: Fix Tsparql import for type checking
+  + acde5b9fa0955d901c61d980e48e790843b67ed0.patch: application:
+    Add missing gi.require_version on `GstAudio`
+- Drop global __requires_exclude typelib\\(TSparql\\), no longer
+  needed.
+
+-------------------------------------------------------------------
 Wed Jun 24 06:46:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.0:

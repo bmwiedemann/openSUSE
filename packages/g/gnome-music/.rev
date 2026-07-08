@@ -769,4 +769,18 @@
   bogus typelib dependency.</comment>
     <requestid>1361948</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>80f30554d38c4532ad235ef2187e0d94</srcmd5>
+    <version>50.0</version>
+    <time>1783524734</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream bug fix patches:
+  + efda5de2d24f01141c5e291ae4267663a8e34831.patch:
+    localsearchwrapper: Fix Tsparql import for type checking
+  + acde5b9fa0955d901c61d980e48e790843b67ed0.patch: application:
+    Add missing gi.require_version on `GstAudio`
+- Drop global __requires_exclude typelib\\(TSparql\\), no longer
+  needed.</comment>
+    <requestid>1364084</requestid>
+  </revision>
 </revisionlist>

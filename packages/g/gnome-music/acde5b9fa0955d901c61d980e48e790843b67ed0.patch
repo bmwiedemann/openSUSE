@@ -1,0 +1,25 @@
+From acde5b9fa0955d901c61d980e48e790843b67ed0 Mon Sep 17 00:00:00 2001
+From: Jean Felder <jfelder@gnome.org>
+Date: Thu, 25 Jun 2026 22:25:24 +0200
+Subject: [PATCH] application: Add missing gi.require_version on `GstAudio`
+
+---
+ gnomemusic/application.py | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/gnomemusic/application.py b/gnomemusic/application.py
+index 5b40433fd..8a3907608 100644
+--- a/gnomemusic/application.py
++++ b/gnomemusic/application.py
+@@ -11,6 +11,8 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later WITH GStreamer-exception-2008
+ 
+ import asyncio
++import gi
++gi.require_version("GstAudio", "1.0")
+ from gettext import gettext as _
+ 
+ from gi.events import GLibEventLoopPolicy
+-- 
+GitLab
+

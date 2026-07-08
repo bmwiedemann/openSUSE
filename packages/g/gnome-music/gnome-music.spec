@@ -15,7 +15,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%global __requires_exclude typelib\\(TSparql\\)
 
 Name:           gnome-music
 Version:        50.0
@@ -25,6 +24,10 @@ License:        LGPL-2.1-or-later AND SUSE-GPL-2.0-with-plugin-exception
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://www.gnome.org
 Source0:        %{name}-%{version}.tar.xz
+# PATCH-FIX-UPSTREAM efda5de2d24f01141c5e291ae4267663a8e34831.patch - localsearchwrapper: Fix Tsparql import for type checking
+Patch0:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/efda5de2d24f01141c5e291ae4267663a8e34831.patch
+# PATCH-FIX-UPSTREAM acde5b9fa0955d901c61d980e48e790843b67ed0.patch - application: Add missing gi.require_version on `GstAudio`
+Patch1:         https://gitlab.gnome.org/GNOME/gnome-music/-/commit/acde5b9fa0955d901c61d980e48e790843b67ed0.patch
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
