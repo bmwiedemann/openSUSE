@@ -1,0 +1,20 @@
+commit 6eded8754d57c04e4554d32093aadf230ee73c48
+Author: Christian Boltz <apparmor@cboltz.de>
+Date:   Sun Jul 5 11:54:59 2026 +0200
+
+    curl: fix/allow console output
+    
+    curl without console output is quite useless...
+
+diff --git a/profiles/apparmor.d/curl b/profiles/apparmor.d/curl
+index 9cce43cc9..89c6beeb0 100644
+--- a/profiles/apparmor.d/curl
++++ b/profiles/apparmor.d/curl
+@@ -13,6 +13,7 @@ include <tunables/global>
+ 
+ profile curl /usr/bin/curl {
+   include <abstractions/base>
++  include <abstractions/consoles>
+   include <abstractions/nameservice>
+   include <abstractions/private-files-strict>
+   include <abstractions/ssl_certs>

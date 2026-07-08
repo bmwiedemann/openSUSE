@@ -3199,4 +3199,12 @@ Detailed changelog:
 - add lsblk-mr2147.diff: fix FSTYPE and UUID in lsblk (boo#1267853) (forwarded request 1359558 from cboltz)</comment>
     <requestid>1359559</requestid>
   </revision>
+  <revision rev="239" vrev="2">
+    <srcmd5>48eca5dcefdcb6c4cc9e8eddcd25c9da</srcmd5>
+    <version>5.0.1</version>
+    <time>1783524829</time>
+    <user>anag_factory</user>
+    <comment>- add curl.diff to fix curl console output (forwarded request 1363856 from cboltz)</comment>
+    <requestid>1363857</requestid>
+  </revision>
 </revisionlist>

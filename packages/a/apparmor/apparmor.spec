@@ -92,6 +92,9 @@ Patch12:        lsblk-mr2147.diff
 # fix wg-quick profile - boo#1265394 - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
 Patch13:        wg-quick.diff
 
+# fix curl console output - submitted upstream https://gitlab.com/apparmor/apparmor/-/merge_requests/2161
+Patch14:        curl.diff
+
 PreReq:         sed
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -364,6 +367,7 @@ mv -v profiles/apparmor.d/usr.lib.apache2.mpm-prefork.apache2 profiles/apparmor/
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 export SUSE_ASNEEDED=0
