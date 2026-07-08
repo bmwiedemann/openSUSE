@@ -3277,6 +3277,10 @@ unsorted:
   - deluge-lang 
   - delve 
   - demumble 
+  - deno 
+  - deno-bash-completion 
+  - deno-fish-completion 
+  - deno-zsh-completion 
   - descent3 
   - deskflow 
   - deskflow-doc 
@@ -13109,7 +13113,7 @@ unsorted:
   - libdrumstick-rt2-plugins 
   - libdrumstick-widgets-lang 
   - libdrumstick-widgets2 
-  - libdruntime-ldc110 
+  - libdruntime-ldc112 
   - libdrvproxy2 
   - libduktape207-32bit 
   - libdumb2 
@@ -13227,7 +13231,7 @@ unsorted:
   - libevt-devel 
   - libevt-tools 
   - libevt1 
-  - libevtlog-4_11-0 
+  - libevtlog-4_12-0 
   - libevtx-devel 
   - libevtx-tools 
   - libevtx1 
@@ -14538,7 +14542,7 @@ unsorted:
   - libldapcpp-devel 
   - libldastoolsal7 
   - libldb-devel 
-  - libldc-jit110 
+  - libldc-jit112 
   - libldl-doc 
   - libldl3 
   - libldm-1_0-0 
@@ -15526,7 +15530,7 @@ unsorted:
   - libphdi-tools 
   - libphdi1 
   - libphobos2-0_112 
-  - libphobos2-ldc110 
+  - libphobos2-ldc112 
   - libphonenumber-devel 
   - libphysfs-devel 
   - libphysfs1 
@@ -18908,6 +18912,7 @@ unsorted:
   - mcjoin 
   - mcomix 
   - mcp-dap-server 
+  - mcp-server-managesw 
   - mcp-server-snapper 
   - mcp-server-snapper-testsuite 
   - mcp-server-suseconnect 
@@ -22235,6 +22240,7 @@ unsorted:
   - perl-JSON-MaybeXS 
   - perl-JSON-Parse 
   - perl-JSON-RPC 
+  - perl-JSON-Schema-Tiny 
   - perl-JSON-Validator 
   - perl-JavaScript-Minifier-XS 
   - perl-LWP-ConsoleLogger 
@@ -23744,7 +23750,6 @@ unsorted:
   - privoxy 
   - privoxy-doc 
   - procdump 
-  - procenv 
   - procmeter 
   - procmeter-devel 
   - procmon 
@@ -24204,7 +24209,6 @@ unsorted:
   - python3-genders 
   - python3-gensio 
   - python3-gexiv2 
-  - python3-gi-docgen 
   - python3-glad2 
   - python3-glanceclient-doc 
   - python3-gluster 
@@ -24424,7 +24428,6 @@ unsorted:
   - python311-pipx 
   - python311-platformdirs 
   - python311-pluggy 
-  - python311-pony 
   - python311-pook 
   - python311-pymathics-graph 
   - python311-pysaml2 
@@ -27058,6 +27061,7 @@ unsorted:
   - python313-poetry-dynamic-versioning 
   - python313-poetry-plugin-export 
   - python313-polib 
+  - python313-pony 
   - python313-pooch 
   - python313-pook 
   - python313-port-for 
@@ -31062,6 +31066,7 @@ unsorted:
   - python314-poetry-plugin-export 
   - python314-polib 
   - python314-policycoreutils 
+  - python314-pony 
   - python314-pooch 
   - python314-pook 
   - python314-port-for 
@@ -35148,7 +35153,6 @@ unsorted:
   - syslog-ng-geoip 
   - syslog-ng-grpc 
   - syslog-ng-http 
-  - syslog-ng-java 
   - syslog-ng-loki 
   - syslog-ng-mqtt 
   - syslog-ng-opentelemetry 
