@@ -1,8 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
+
+- New upstream release (4.2.0)
+  * add/use make install
+  * use variables in camelCase (except for some globals variables)
+  * add Less... disabled submenu after More... submenu
+  * add GTK version for dialogs titles
+  * add colors for debug/trace/error messages
+  * update man page and rename the option --list-themes to --list
+  * enable the clear icon of the entry
+  * fix padding of scales dialog
+  * allow to set width of radio and check columns in treeview
+    from theme to match gtk3 (like with qt5/qt6)
+
+-------------------------------------------------------------------
 Tue May  5 20:00:00 UTC 2026 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream release (4.1.0)
-  * refactor signal desktop theme change
+  * refactor signal handler for desktop theme change
   * fix some memory leaks
   * fix configure.ac
   * update translations
@@ -108,7 +123,7 @@ Wed Jul  7 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 Wed May  5 20:00:00 UTC 2021 - Fabrice Creuzot <code@luigifab.fr>
 
 - New upstream version (2.4.0)
-  * add gtk widgets (check, radio, progress, icon) to gtk treeview
+  * add GTK widgets (check, radio, progress, icon) to GtkTreeview
   * add two GtkVolumeButton widgets
   * add two GtkLinkButton widgets
 
