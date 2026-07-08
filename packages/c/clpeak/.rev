@@ -106,4 +106,12 @@
     <comment>Update to clpeak 2.0.16: the downstream bindir-install fix is now upstream (PR #178), LICENSE installed via CMake, C++14 build fix, and new CUDA GPU support (Blackwell Ultra/GB10/Jetson Thor). Drops clpeak-install-bindir.patch.</comment>
     <requestid>1361855</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>fb10830eb007d406c4f5a6b9c8bc3264</srcmd5>
+    <version>2.0.17</version>
+    <time>1783525037</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.17: clamp work-group size to per-kernel device max; fix DCE-inflated throughput in CUDA WMMA/MMA and Metal simdgroup_matrix benchmarks; native mma.sync tensor-core path with full-rate FP16; joint_matrix on Intel Arc A770.</comment>
+    <requestid>1364433</requestid>
+  </revision>
 </revisionlist>

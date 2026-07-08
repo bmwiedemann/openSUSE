@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:34:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.17:
+  * OpenCL: clamp the work-group size to each kernel's device
+    maximum, fixing failures on devices with a small max
+    work-group size.
+  * Fix benchmark-correctness bugs where dead-code elimination
+    folded away the matrix accumulator chains and inflated the
+    reported throughput by up to 4x (CUDA WMMA/MMA for
+    FP16/BF16/TF32/INT8/FP64 and Metal simdgroup_matrix).
+  * CUDA: rework the tensor-core path to native mma.sync tiles and
+    add a full-rate FP16 kernel.
+  * Enable joint_matrix benchmarking on Intel Arc A770 (oneAPI).
+
+-------------------------------------------------------------------
 Fri Jun 26 07:41:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.16:
