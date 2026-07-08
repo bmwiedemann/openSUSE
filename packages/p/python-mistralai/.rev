@@ -49,4 +49,12 @@
   https://github.com/mistralai/client-python/releases</comment>
     <requestid>1350983</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0da3d1e567e9baa8f17637288eb3b80b</srcmd5>
+    <version>2.5.0</version>
+    <time>1783524946</time>
+    <user>anag_factory</user>
+    <comment>Update required by mistral-vibe 2.19.0</comment>
+    <requestid>1364155</requestid>
+  </revision>
 </revisionlist>

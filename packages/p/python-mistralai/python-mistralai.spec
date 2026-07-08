@@ -17,13 +17,14 @@
 
 
 Name:           python-mistralai
-Version:        2.4.4
+Version:        2.5.0
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
 URL:            https://github.com/mistralai/client-python
 Source0:        https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-%{version}.tar.gz
 Source99:       python-mistralai.rpmlintrc
+Patch0:         correct-traceparent-hook.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -60,6 +61,9 @@ BuildRequires:  %{python_module opentelemetry-sdk >= 1.33.1}
 BuildRequires:  %{python_module opentelemetry-semantic-conventions >= 0.60b1}
 BuildRequires:  %{python_module pydantic >= 2.11.2}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module zstandard}
+BuildRequires:  %{python_module msgpack >= 1.1.0}
 BuildRequires:  %{python_module python-dateutil >= 2.8.2}
 BuildRequires:  %{python_module typing-inspection >= 0.4.0}
 # /SECTION
@@ -90,6 +94,7 @@ use it.
 # test_create_function_result_*_span and test_concurrent_async_requests_get_correct_spans
 # tests use asyncio.get_event_loop() which raises RuntimeError on Python 3.14
 # where an implicit event loop is no longer created automatically (upstream bug).
+export PYTEST_ADDOPTS="--ignore=src/mistralai/extra/tests/test_otel_tracing.py"
 %pytest -k "not (test_create_function_result_error_span or test_create_function_result_span_attributes or test_concurrent_async_requests_get_correct_spans)"
 
 %files %{python_files}

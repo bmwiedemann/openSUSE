@@ -1,0 +1,38 @@
+Index: mistralai-2.5.0/src/mistralai/client/_hooks/traceparent.py
+===================================================================
+--- mistralai-2.5.0.orig/src/mistralai/client/_hooks/traceparent.py
++++ mistralai-2.5.0/src/mistralai/client/_hooks/traceparent.py
+@@ -23,7 +23,18 @@ class TraceparentInjectionHook(BeforeReq
+         carrier: Dict[str, str] = {}
+         inject(carrier)
+         traceparent = carrier.get("traceparent", "")
+-        if not traceparent.endswith("-01"):
++        is_sampled = False
++        if traceparent:
++            parts = traceparent.split("-")
++            if len(parts) == 4 and parts[0] == "00":
++                try:
++                    flags = int(parts[3], 16)
++                    if flags & 0x01:
++                        is_sampled = True
++                except ValueError:
++                    pass
++
++        if not is_sampled:
+             trace_id = random.getrandbits(128)
+             span_id = random.getrandbits(64)
+             traceparent = f"00-{trace_id:032x}-{span_id:016x}-01"
+Index: mistralai-2.5.0/src/mistralai/extra/tests/test_traceparent_hook.py
+===================================================================
+--- mistralai-2.5.0.orig/src/mistralai/extra/tests/test_traceparent_hook.py
++++ mistralai-2.5.0/src/mistralai/extra/tests/test_traceparent_hook.py
+@@ -85,7 +85,8 @@ class TestTraceparentInjectionHook(unitt
+ 
+         assert isinstance(result, httpx.Request)
+         injected = result.headers["traceparent"]
+-        self.assertTrue(injected.endswith("-01"))
++        expected_suffix = f"-{span.get_span_context().trace_flags:02x}"
++        self.assertTrue(injected.endswith(expected_suffix))
+         trace_id_hex = f"{span.get_span_context().trace_id:032x}"
+         self.assertIn(trace_id_hex, injected)
+ 

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:57:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.5.0:
+  https://github.com/mistralai/client-python/releases
+- Add python-msgpack BuildRequires for test suite.
+- Ignore test_otel_tracing.py as
+  python-opentelemetry-instrumentation-httpx is not available.
+- Add correct-traceparent-hook.patch to fix failure in
+  TestTraceparentInjectionHook.test_propagates_sampled_active_span
+  with newer opentelemetry-sdk where trace_flags has more than the lowest
+  bit set (0x03).
+
+-------------------------------------------------------------------
 Tue May  5 12:53:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.4.4:
