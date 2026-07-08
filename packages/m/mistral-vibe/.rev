@@ -296,4 +296,41 @@
   not available.</comment>
     <requestid>1360724</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>3d6a58d592ee3e79594f605dfec620ab</srcmd5>
+    <version>2.19.0</version>
+    <time>1783524943</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.19.0:
+  - Added
+    - --worktree NAME option to create or reuse a git worktree
+      and run inside it
+    - Rewind support over ACP for both the agent and the host
+  - Changed
+    - Teleport URL in the CLI is now clickable
+    - Raised the Leanstral context limit
+    - Sentry auto integrations are now disabled
+  - Fixed
+    - Path prompt work is now offloaded from the UI thread
+    - StopIteration crash in QuestionApp when submitting an empty
+      multi-select
+    - User message index now accounts for the deferred system
+      prompt
+    - No longer reports benign Sentry noise (KeyboardInterrupt
+      and destroyed pending tasks)
+- Update to 2.18.4:
+  - Changed
+    - Whole-line content now shown in the edit diff
+    - Declined or skipped tool calls now render as a muted square
+    - Auto-approve now works in lean mode
+  - Fixed
+    - Session resume with --continue now matches the resolved
+      working directory
+    - Long tool call titles now wrap instead of being cropped
+    - Duplicate mcp_servers names in config are now rejected
+    - MarkupError crash when a tool error contained square
+      brackets
+    - Teleport now uses the matched GitHub remote</comment>
+    <requestid>1364154</requestid>
+  </revision>
 </revisionlist>
