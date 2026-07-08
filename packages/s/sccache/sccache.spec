@@ -34,7 +34,6 @@ Source13:       scheduler.conf
 Source14:       client.example
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig(openssl) >= 3
 Requires:       bubblewrap
 
 %description
@@ -52,11 +51,10 @@ find vendor -type f -name \*.rs -exec chmod -x '{}' \;
 
 %build
 %ifarch x86_64
-# 'dist-server' available only on x86_64 so far - https://github.com/mozilla/sccache/issues/656
-features="azure,s3,redis,dist-server,dist-client,concurrent-cache"
+features="redis,concurrent-cache"
 %else
 %ifarch aarch64
-features="azure,s3,redis,concurrent-cache"
+features="redis,concurrent-cache"
 %else
 # Most other arches have issues (especially with ring). Use FS cache only
 features="concurrent-cache"
@@ -71,46 +69,14 @@ install -D -d -m 0755 %{buildroot}%{_unitdir}
 install -D -d -m 0755 %{buildroot}%{configdir}
 
 install -m 0755 %{_builddir}/%{name}-%{version}/target/release/sccache %{buildroot}%{_bindir}/sccache
-%ifarch x86_64
-install -m 0755 %{_builddir}/%{name}-%{version}/target/release/sccache-dist %{buildroot}%{_bindir}/sccache-dist
-%endif
-
-%ifarch x86_64
-install -m 0644 %{SOURCE10} %{buildroot}%{_unitdir}/sccache-dist-builder.service
-install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/sccache-dist-scheduler.service
-%endif
 install -m 0644 %{SOURCE12} %{buildroot}%{configdir}/builder.conf
 install -m 0644 %{SOURCE13} %{buildroot}%{configdir}/scheduler.conf
 install -m 0644 %{SOURCE14} %{buildroot}%{configdir}/client.example
-
-%ifarch x86_64
-%pre
-%service_add_pre sccache-dist-builder.service
-%service_add_pre sccache-dist-scheduler.service
-
-%post
-%service_add_post sccache-dist-builder.service
-%service_add_post sccache-dist-scheduler.service
-
-%preun
-%service_del_preun sccache-dist-builder.service
-%service_del_preun sccache-dist-scheduler.service
-
-%postun
-%service_del_postun sccache-dist-builder.service
-%service_del_postun sccache-dist-scheduler.service
-%endif
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/sccache
-%ifarch x86_64
-%{_bindir}/sccache-dist
-
-%{_unitdir}/sccache-dist-builder.service
-%{_unitdir}/sccache-dist-scheduler.service
-%endif
 
 %dir %{configdir}
 %config(noreplace) %{configdir}/scheduler.conf
