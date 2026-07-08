@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:44:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.1:
+  * Update the RandomX proof-of-work implementation to v1.2.2
+  * Harden restricted-mode RPC/ZMQ: apply privacy filtering to
+    get_transaction_pool, restrict get_alt_blocks_hashes, add a
+    missing trusted-daemon check to the wallet RPC server, and
+    reject invalid JSON-RPC ids in ZMQ requests
+  * Fix several memory leaks and use-after-free/double-unlock
+    issues (transaction-pool pruning, readline in epee,
+    thread-close handling, incomplete multisig memory wipe)
+  * Fix an off-by-one over-read in Unicode escape parsing and an
+    unaligned/aliased buffer read; handle EOF at a varint boundary
+  * Wallet fixes: guard optimized coinbase refresh against empty
+    outputs, reject non-monotonic RCT output distributions,
+    preserve payment IDs when editing the address book, and fix
+    background-sync key handling
+  * p2p/networking: restore safe sync mode when the target height
+    drops, canonicalize Tor/I2P hostnames, cap aggregate ZMQ
+    receive size, and make the stop signal idempotent
+  * Miner: fix thread 0 always mining without the secure JIT
+    (which degraded performance)
+  * Reduce memory use and speed up duplicate-transaction checks
+    when relaying new transactions
+  * Show IPv6 addresses in the connection list
+
+-------------------------------------------------------------------
 Sat May 30 13:34:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.0 (includes 0.18.4.4 and 0.18.4.5):

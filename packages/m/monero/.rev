@@ -7,4 +7,12 @@
     <comment>Update to monero 0.18.5.0 (wallet reserve/spend-proof fixes, zmq restricted-RPC checks, p2p sync race fix, multisig kex fix, ledger Nano Gen5; UPnP support removed upstream). Packaging cleanup: drop the now-dead libminiupnpc BuildRequires, convert BuildRequires to pkgconfig() style, drop obsolete Group tags.</comment>
     <requestid>1356048</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bd58f3983294d4a2eb9ac8a08c90d249</srcmd5>
+    <version>0.18.5.1</version>
+    <time>1783525111</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.18.5.1: RandomX PoW v1.2.2, restricted-mode RPC/ZMQ privacy/hardening fixes, several memory-safety fixes (use-after-free, double-unlock, off-by-one over-read), and wallet/p2p fixes.</comment>
+    <requestid>1364462</requestid>
+  </revision>
 </revisionlist>
