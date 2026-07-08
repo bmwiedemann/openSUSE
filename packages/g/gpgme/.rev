@@ -974,4 +974,12 @@ See the HACKING file in the doc directory (forwarded request 176432 from babelwo
     <comment></comment>
     <requestid>1362358</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>e57bc19976712e1bba760a0d9b5ff28d</srcmd5>
+    <version>2.1.2</version>
+    <time>1783524832</time>
+    <user>anag_factory</user>
+    <comment>gpgme 2.1.2 (forwarded request 1363880 from AndreasStieger)</comment>
+    <requestid>1363881</requestid>
+  </revision>
 </revisionlist>
