@@ -411,4 +411,22 @@
     <comment>Add missing changelog CVE references boo#1259264 boo#1259265 boo#1259268 (forwarded request 1363742 from jfkw)</comment>
     <requestid>1363743</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8e1f5bdc7f74d8d06bc6b84561b6f9f1</srcmd5>
+    <version>1.25.12</version>
+    <time>1783525016</time>
+    <user>anag_factory</user>
+    <comment>- go1.25.12 (released 2026-07-07) includes security fixes to the
+  crypto/tls and os packages, as well as bug fixes to the compiler,
+  the go command, and the net and os packages.
+  Refs boo#1244485 go1.25 release tracking
+  CVE-2026-39822 CVE-2026-42505
+  * go#79026 go#79005 boo#1271014 security: fix CVE-2026-39822 os: Root escape via symlink plus trailing slash
+  * go#80174 go#79282 boo#1271015 security: fix CVE-2026-42505 crypto/tls: Encrypted Client Hello privacy leak
+  * go#79038 cmd/go: test caching is broken with sub-packages when using testing.T.Chdir
+  * go#79720 cmd/go: &quot;go get&quot; fails when GOFIPS140=v1.0.0 is set
+  * go#79878 runtime: concurrent map read and map write with sync.RWMutex on ppc64le
+  * go#80216 net: TestLookupCNAME failures (forwarded request 1364415 from jfkw)</comment>
+    <requestid>1364416</requestid>
+  </revision>
 </revisionlist>

@@ -105,7 +105,7 @@
 %endif
 
 Name:           go1.25
-Version:        1.25.11
+Version:        1.25.12
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -138,7 +138,7 @@ BuildRequires:  rpm >= 4.11.1
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 Requires:       gcc7
 %else
-Requires:  	gcc
+Requires:       gcc
 %endif
 Provides:       go = %{version}
 Provides:       go-devel = go%{version}
