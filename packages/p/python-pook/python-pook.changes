@@ -1,4 +1,142 @@
 -------------------------------------------------------------------
+Wed Jul  8 13:44:01 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update test requirements in spec file from pyproject.toml.
+- Update fix_tests.patch:
+  - Fix test failures on Python 3.14/aiohttp >= 3.14.0 by supplying
+    stream_writer keyword argument conditionally.
+  - Fix test failures due to pytest assertion rewriting in
+    HeadersMatcher by replacing assert statements with explicit raises.
+
+-------------------------------------------------------------------
+Sun Jul  5 19:01:33 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add fix_tests.patch to substitute get_original() method
+  missing in unittest.mock.patch.
+
+-------------------------------------------------------------------
+Wed Jul  1 16:34:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.1.6:
+    - interceptors/http: fix version format
+    - interceptors/http: set length on response
+- Update to 2.1.5:
+    - Fixing Flakiness in api_test.py
+    - Drop cpython 3.9 and pypy 3.10
+    - Use aiohttp middleware for mocking
+- Update to 2.1.4:
+    - Replace pytest-httpbin with minimal Falcon version
+    - Fix type of aiohttp raw headers
+    - Fix aiohttp tuple parameters handling
+- Update to 2.1.3:
+    - Ensure aiohttp headers matchable from both session and request
+- Update to 2.1.2:
+    - Return the correct type of headers object for standard library urllib
+    - Support Sequence[tuple[str, str]] header input with aiohttp
+    - Fix network filters when multiple filters are active
+    - Fix aiohttp matching not working with session base URL or headers
+    - Add support for Python 3.13
+- Update to 2.1.1:
+    - Flush mocks when pook.activate used as a wrapper; this
+      prevents mocks from leaking between test cases and should
+      fix some potentially confusing edge case bugs.
+- Update to 2.1.0:
+    - Drop support for Python 3.8
+- Update to 2.0.1:
+    - Improve aiohttp JSONMatcher support
+- Update to 2.0.0:
+    - Breaking change (see gh#h2non/pook#128 for details): Remove
+      Response::body's binary parameter and enforce a keyword
+      argument for chunked.
+          The binary parameter is no longer needed since
+          responses are now always byte-encoded in all cases (see
+          below). A keyword argument is now enforced for chunked
+          to ensure unnamed arguments meant for the removed
+          binary parameter cannot be confused as chunked
+          arguments.
+    - Only return byte-encoded response bodies, matching the
+      bahviour of all supported client libraries.
+          This is possible because for all supported client
+          libraries, pook mocks the actual response sent to the
+          client library over the wire, which will, in all cases,
+          be bytes. Client libraries that support reading
+          response content as a string or other formats will
+          continue to work as expected, because they'll always be
+          handling bytes from pook.
+          This causes no change to application code for users of
+          pook, except for users of the standard library urllib,
+          for which this also fixed a bug where non-bytes bodies
+          were returned by pook in certain cases. This is
+          impossible in real application code. If you rely on
+          pook to mock urllib responses and have code that
+          handles non-bytes response bodies, that code can be
+          safely deleted (provided the only reason it was there
+          was pook in the first place).
+    - Breaking change: Remove Mock::body's binary parameter.
+          This parameter was already unused due to a bug in the
+          code (it was not passed through to the BodyMatcher), so
+          this will not cause any changes to tests that relied on
+          it: it didn't do anything to begin with. The breaking
+          change is simply the removal of the unused parameter,
+          which should be deleted from tests using pook. Pook's
+          code has also been updated to remove all cases where
+          non-bytes objects were being handled. Instead, the body
+          of any interecepted request will always be stored as
+          bytes, and only decoded when necessary for individual
+          downstream matchers (JSON, XML).
+    - Correct documentation strings for XMLMatcher and
+      JSONMatcher to no longer suggest they can handle regex
+      matchers. These classes never implemented regex matching.
+    - Add a pytest fixture to the package (kudos @wimglenn)
+- Update to 1.4.3:
+    - Fix httpx incorrectly named method on interceptor subclass
+- Update to 1.4.2:
+    - fix #122: httpx streaming via iter_raw raises
+      httpx.StreamConsumed
+- Update to 1.4.1:
+    - Fix Mock constructor params/url order mishandling
+    - Optionally match empty values in query parameter presence
+      matcher
+    - Fix #115, httpx network mode
+- Update to 1.4.0:
+    - Enable mocket tests for >3.10
+    - Add HTTPX support
+    - Set requires-python to fix build metadata
+    - Fix httpx reference in README and add build and dist check
+      to CI workflow
+- Update to 1.3.0:
+    - Drop support for EOL'd Python versions (in other words, 3.6
+      and 3.7)
+    - Use pyproject.toml
+    - Use ruff to lint files
+    - Use pre-commit to add pre-commit hooks
+    - Use hatch to manage test, development, and build
+      environments
+    - Fix the test configuration to actually run the example
+      tests
+    - Fix the documentation build
+    - Fix support for asynchronous functions in the activate
+      decorator (this was a direct result of re-enabling the
+      example tests and finding lots of little issues)
+    - Remove all mention of the unsupported pycurl library
+    - Clean up tests that can use pytest parametrize to do so
+      (and get better debugging information during tests runs as
+      a result)
+    - Use pytest-pook to clean up a bunch of unnecessary test
+      fixtures
+    - Fix deprecation warning for invalid string escape sequences
+      caused by untagged regex strings
+- Update to 1.2.1:
+    - fix(regex): Fix usage of regex values in header matchers
+    - Fix urllib SSL handling
+- Update to 1.2.0:
+    - Add support for true binary bodies
+    - Add examples and tests for matching query params
+    - urllib3 v2+ support
+    - Handle binary header field values
+    - More reliable test_post_with_headers
+
+-------------------------------------------------------------------
 Tue Jun  3 11:53:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

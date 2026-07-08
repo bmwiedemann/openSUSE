@@ -1,0 +1,222 @@
+---
+ src/pook/interceptors/_httpx.py  |   16 ++++++++++++----
+ src/pook/interceptors/aiohttp.py |    8 ++++++--
+ src/pook/interceptors/base.py    |   24 ++++++++++++++++++++++++
+ src/pook/interceptors/http.py    |   11 +++++------
+ src/pook/interceptors/urllib3.py |    9 ++++-----
+ 5 files changed, 51 insertions(+), 17 deletions(-)
+
+Index: pook-2.1.6/src/pook/interceptors/_httpx.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/interceptors/_httpx.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/interceptors/_httpx.py	2026-07-08 16:02:54.165220333 +0200
+@@ -35,12 +35,14 @@
+         else:
+             transport_cls = SyncTransport
+ 
+-        def handler(client, *_):
+-            return transport_cls(self, client, _original_transport_for_url)
+-
+         try:
++            # Resolve the original function before patching
++            original_func = self.resolve_path(path)
++
++            def handler(client, *_):
++                return transport_cls(self, client, original_func)
++
+             patcher = mock.patch(path, handler)
+-            _original_transport_for_url = patcher.get_original()[0]  # type: ignore[var-annotated]
+             patcher.start()
+         except Exception:
+             pass
+Index: pook-2.1.6/src/pook/interceptors/aiohttp.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/interceptors/aiohttp.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/interceptors/aiohttp.py	2026-07-08 16:02:20.178247069 +0200
+@@ -84,10 +84,14 @@
+             return super_request(session, *args, **kwargs)
+ 
+         try:
++            # Resolve the original function before patching
++            path = "aiohttp.client.ClientSession._request"
++            original_request = self.resolve_path(path)
++
+             # Patch ClientSession init to append this interceptor as an aiohttp
+             # middleware to all session's middlewares
+-            patcher = mock.patch("aiohttp.client.ClientSession._request", _request)
+-            super_request = patcher.get_original()[0]
++            patcher = mock.patch(path, _request)
++            super_request = original_request
+             # Start patching function calls
+             patcher.start()
+         except Exception:
+@@ -116,6 +120,11 @@
+ 
+ 
+ def HTTPResponse(session: aiohttp.ClientSession, *args, **kw):
++    import inspect
++    sig = inspect.signature(session._response_class.__init__)
++    if "stream_writer" in sig.parameters:
++        kw.setdefault("stream_writer", mock.Mock())
++
+     return session._response_class(
+         *args,
+         request_info=mock.Mock(),
+Index: pook-2.1.6/src/pook/interceptors/base.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/interceptors/base.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/interceptors/base.py	2026-07-08 16:02:20.178435804 +0200
+@@ -1,4 +1,5 @@
+ from abc import ABCMeta, abstractmethod
++import importlib
+ 
+ 
+ class BaseInterceptor:
+@@ -9,6 +10,29 @@
+ 
+     __metaclass__ = ABCMeta
+ 
++    def resolve_path(self, path: str):
++        """
++        Resolves a dot-separated path to the actual object.
++        Example: 'httpx.Client._transport_for_url' -> the function object.
++        """
++        parts = path.split('.')
++        for i in range(len(parts) - 1, 0, -1):
++            module_path = '.'.join(parts[:i])
++            try:
++                module = importlib.import_module(module_path)
++                obj = module
++                for part in parts[i:]:
++                    obj = getattr(obj, part)
++                return obj
++            except (ImportError, AttributeError):
++                continue
++
++        # Fallback for single-part paths
++        try:
++            return importlib.import_module(path)
++        except ImportError:
++            raise ImportError(f"Could not resolve path: {path}")
++
+     def __init__(self, engine):
+         self.patchers = []
+         self.engine = engine
+Index: pook-2.1.6/src/pook/interceptors/http.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/interceptors/http.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/interceptors/http.py	2026-07-08 16:03:04.000399310 +0200
+@@ -98,28 +98,27 @@
+         return mockres
+ 
+     def _patch(self, path):
+-        def handler(conn, method, url, body=None, headers=None, **kw):
+-            # Detect if httplib was called by urllib3 interceptor
+-            # This is a bit ugly, I know. Ideas are welcome!
+-            if headers and URLLIB3_BYPASS in headers:
+-                # Remove bypass header used as flag
+-                headers.pop(URLLIB3_BYPASS)
+-                # Call original patched function
+-                return request(conn, method, url, body=body, headers=headers, **kw)
++        try:
++            # Resolve the original function before patching
++            original_func = self.resolve_path(path)
+ 
+-            # Otherwise call the request interceptor
+-            return self._on_request(
+-                request, conn, method, url, body=body, headers=headers, **kw
+-            )
++            def handler(conn, method, url, body=None, headers=None, **kw):
++                # Detect if httplib was called by urllib3 interceptor
++                # This is a bit ugly, I know. Ideas are welcome!
++                if headers and URLLIB3_BYPASS in headers:
++                    # Remove bypass header used as flag
++                    headers.pop(URLLIB3_BYPASS)
++                    # Call original patched function
++                    return original_func(conn, method, url, body=body, headers=headers, **kw)
++
++                # Otherwise call the request interceptor
++                return self._on_request(
++                    original_func, conn, method, url, body=body, headers=headers, **kw
++                )
+ 
+-        try:
+             # Create a new patcher for Urllib3 urlopen function
+             # used as entry point for all the HTTP communications
+             patcher = mock.patch(path, handler)
+-            # Retrieve original patched function that we might need for real
+-            # networking
+-            request = patcher.get_original()[0]
+-            # Start patching function calls
+             patcher.start()
+         except Exception:
+             # Exceptions may accur due to missing package
+Index: pook-2.1.6/src/pook/interceptors/urllib3.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/interceptors/urllib3.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/interceptors/urllib3.py	2026-07-08 16:03:21.321714517 +0200
+@@ -166,24 +166,23 @@
+         )
+ 
+     def _patch(self, path):
+-        def handler(conn, method, url, body=None, headers=None, **kw):
+-            # Flag that the current request as urllib3 intercepted
+-            headers = headers or {}
+-            headers[URLLIB3_BYPASS] = "1"
++        try:
++            # Resolve the original function before patching
++            original_func = self.resolve_path(path)
+ 
+-            # Call request interceptor
+-            return self._on_request(
+-                urlopen, path, conn, method, url, body=body, headers=headers, **kw
+-            )
++            def handler(conn, method, url, body=None, headers=None, **kw):
++                # Flag that the current request as urllib3 intercepted
++                headers = headers or {}
++                headers[URLLIB3_BYPASS] = "1"
++
++                # Call request interceptor
++                return self._on_request(
++                    original_func, path, conn, method, url, body=body, headers=headers, **kw
++                )
+ 
+-        try:
+             # Create a new patcher for Urllib3 urlopen function
+             # used as entry point for all the HTTP communications
+             patcher = mock.patch(path, handler)
+-            # Retrieve original patched function that we might need for real
+-            # networking
+-            urlopen = patcher.get_original()[0]
+-            # Start patching function calls
+             patcher.start()
+         except Exception:
+             # Exceptions may accur due to missing package
+Index: pook-2.1.6/src/pook/matchers/headers.py
+===================================================================
+--- pook-2.1.6.orig/src/pook/matchers/headers.py	2026-07-08 15:54:29.078008908 +0200
++++ pook-2.1.6/src/pook/matchers/headers.py	2026-07-08 16:02:20.179042938 +0200
+@@ -16,19 +16,16 @@
+     @BaseMatcher.matcher
+     def match(self, req):
+         for key in self.expectation:
+-            assert key in req.headers, f"Header '{key}' not present"
++            if key not in req.headers:
++                raise AssertionError(f"Header '{key}' not present")
+ 
+             expected_value = self.to_comparable_value(self.expectation[key])
+ 
+             # Retrieve header value by key
+             actual_value = req.headers.get(key)
+ 
+-            assert not all(
+-                [
+-                    expected_value is not None,
+-                    actual_value is None,
+-                ]
+-            ), f"Expected a value `{expected_value}` " f"for '{key}' but found `None`"
++            if expected_value is not None and actual_value is None:
++                raise AssertionError(f"Expected a value `{expected_value}` for '{key}' but found `None`")
+ 
+             # Compare header value
+             if not self.compare(expected_value, actual_value, regex_expr=True):
