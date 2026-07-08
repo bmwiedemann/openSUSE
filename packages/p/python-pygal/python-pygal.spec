@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-pygal
-Version:        3.1.0
+Version:        3.1.3
 Release:        0
 Summary:        A python svg graph plotting library
 License:        LGPL-3.0-or-later
