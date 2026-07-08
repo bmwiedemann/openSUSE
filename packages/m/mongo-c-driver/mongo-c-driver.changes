@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  8 09:09:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.2
+  libbson
+  * No changes since 2.3.2. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  * Fix possible abort on failed killCursors (introduced in 2.3.0).
+  * Fix error handling in SCRAM authentication.
+
+-------------------------------------------------------------------
 Thu Jun  4 15:22:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.1
