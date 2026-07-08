@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:28:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 4.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 4.0.0.0 to ensure
+  proper upgrade from previous version 4.0.0b24
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Oct  9 11:22:50 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
