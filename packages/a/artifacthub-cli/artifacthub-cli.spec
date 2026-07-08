@@ -1,7 +1,7 @@
 #
 # spec file for package artifacthub-cli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define executable_name ah
 
 Name:           artifacthub-cli
-Version:        1.22.0
+Version:        1.23.0
 Release:        0
 Summary:        CLI for Artifact Hub
 License:        Apache-2.0
@@ -27,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.3
+BuildRequires:  go1.26 >= 1.26.4
 BuildRequires:  zsh
 Provides:       ah = %{version}
 

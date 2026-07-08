@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/artifacthub/hub</param>
-              <param name="changesrevision">106fd45a2d87de7487c86312be592d22cab8b226</param></service></servicedata>
+              <param name="changesrevision">106fd45a2d87de7487c86312be592d22cab8b226</param></service><service name="tar_scm">
+                <param name="url">https://github.com/artifacthub/hub.git</param>
+              <param name="changesrevision">f90cbb4ee79a31eaa348dbb2868ffa9d2cbe15d8</param></service></servicedata>

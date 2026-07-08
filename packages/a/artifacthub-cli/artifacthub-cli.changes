@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Jul 08 05:12:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.23.0:
+  * added
+    - Code viewer for large code blocks
+    - Support for mermaid charts in README files
+    - Support for markdown in MOTD banner
+    - Deprecated annotation in Tekton packages
+    - Allow overriding db password in migrate script
+    - Option to set tolerations (chart)
+    - Option to set common labels (chart)
+    - Option to set extra volumes and env vars in db-migrator
+      (chart)
+  * changed
+    - Some improvements to OCI package (including signature
+      detection)
+    - Improve security alerts notifications
+    - Improve union type default handling in values schema viewer
+    - Update FAQ
+    - Bump Alpine to 3.24.1
+    - Bump Go to 1.26.4
+    - Bump Trivy to 0.69.3
+    - Upgrade backend and frontend dependencies
+  * fixed
+    - Do not strip underscores from changes descriptions
+    - Some issues in router
+    - Some issues caused by lazy loaded routes
+    - Issue rendering banner on Safari 26.4
+    - Chart template rendering in the web UI
+    - Repository opt-out search highlighting error
+
+-------------------------------------------------------------------
 Thu Oct 23 13:52:28 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.22.0:
