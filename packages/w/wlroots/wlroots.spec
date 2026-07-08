@@ -18,7 +18,7 @@
 
 %global ver_suffix 0.20
 %global sover      0_20
-%global patch_ver  1
+%global patch_ver  2
 %global libname libwlroots-%{sover}
 %bcond_without  drm_backend
 %bcond_without  libinput_backend

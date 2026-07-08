@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Jul  7 22:49:27 UTC 2026 - zeus <dunning1kruger@mailfence.com>
+
+- Update to 0.20.2:
+  * xwayland/selection: stop using VLAs for MIME type atom lists
+  * xwayland: use const pointers for xcb_get_property_value()
+  * xwayland/xwm: fix out-of-bounds strndup() in
+    read_surface_class()
+  * xwayland/xwm: pluralize array variable in
+    read_surface_net_wm_state()
+  * xwayland: stop using xcb_get_property_reply_t.value_len
+  * xwayland/xwm: align WL_SURFACE_ID error message with
+    WL_SURFACE_SERIAL
+  * xwayland/xwm: expand comment about WL_SURFACE_ID event ordering
+  * xwayland/xwm: check whether surface is already associated for
+    WL_SURFACE_ID
+  * xwayland/xwm: check object type in
+    xwm_handle_surface_id_message()
+  * xwayland/xwm: check WM_TRANSIENT_FOR length
+  * scene: intersect visible area with output layout in
+    update_node_update_outputs()
+  * security_context_v1: set CLOEXEC for client FDs
+  * xwayland:use size of the pointed type instead of pointer
+  * xwayland: emit set_parent signal when parent is destroyed
+  * drag: check dnd action and accepted on touch up
+
+-------------------------------------------------------------------
 Wed May 20 09:18:17 UTC 2026 - zeus <dunning1kruger@mailfence.com>
 
 - Update to 0.20.1:
