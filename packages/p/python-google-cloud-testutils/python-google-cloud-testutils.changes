@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:43:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.1
+  * make test_utils unique_resource_id parallel-safe (#17440)
+- from version 1.9.0
+  * support != exclusion constraints in lower-bound-checker (#17269)
+- from version 1.8.0
+  * Drop support for Python 3.9 (#16948)
+
+-------------------------------------------------------------------
 Thu May  7 08:15:23 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 -  initial commit of python-google-cloud-testutils 1.7.1 which 

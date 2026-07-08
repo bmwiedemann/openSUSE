@@ -7,4 +7,17 @@
     <comment>Needed by python-google-cloud-bigquery</comment>
     <requestid>1352391</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>90d6a3345bc6288906d6d4eab045d8a0</srcmd5>
+    <version>1.9.1</version>
+    <time>1783525137</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.1
+  * make test_utils unique_resource_id parallel-safe (#17440)
+- from version 1.9.0
+  * support != exclusion constraints in lower-bound-checker (#17269)
+- from version 1.8.0
+  * Drop support for Python 3.9 (#16948)</comment>
+    <requestid>1364495</requestid>
+  </revision>
 </revisionlist>
