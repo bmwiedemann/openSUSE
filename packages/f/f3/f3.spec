@@ -1,7 +1,8 @@
 #
 # spec file for package f3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           f3
-Version:        9.0
+Version:        10.0
 Release:        0
 Summary:        Fight Flash Fraud / Fight Fake Flash
 License:        GPL-3.0-only
@@ -53,15 +54,11 @@ export CFLAGS="%{optflags}"
 %endif
 %make_build all extra
 
-mkdir examples
-mv log-f3wr f3write.h2w examples
-chmod a-x examples/*
-
 %install
 %make_install PREFIX=%{_prefix} install-extra
 
 %files
-%doc changelog README.rst examples
+%doc changelog README.rst scripts
 %license LICENSE
 %{_bindir}/f3read
 %{_bindir}/f3write

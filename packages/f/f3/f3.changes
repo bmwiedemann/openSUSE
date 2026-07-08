@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul  8 09:19:20 UTC 2026 - Olav Reinert <seroton10@gmail.com>
+
+- upgrade to version 10.0:
+    * f3probe: New probing algorithm and --verbose flag
+    * f3brew: Progress report and rate limiting (i.e., --max-write-rate and --max-read-rate)
+    * f3brew: Add --fix-cmd flag
+    * f3write/f3read: Report per-file min/max and average speeds
+    * GitHub Actions: FreeBSD and OpenBSD support
+    * Move codebase from C99 to C17 and refactor project
+
+-------------------------------------------------------------------
 Thu Mar 27 13:28:40 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to version 9.0:
