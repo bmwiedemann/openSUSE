@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        110+suse.35.g9834432
+Version:        110+suse.41.g38f7c003
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -154,6 +154,9 @@ but are not normally supported or required.
 %make_install DRACUT_FULL_VERSION="%{version}-%{rbrelease}"
 
 # Remove architecture specific modules.
+%ifnarch aarch64
+rm -rf %{buildroot}%{dracutlibdir}/modules.d/70qcom-adsp
+%endif
 %ifnarch ppc ppc64 ppc64le ppc64p7
 rm -rf %{buildroot}%{dracutlibdir}/modules.d/70ppcmac
 %endif
@@ -409,6 +412,7 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70bluetooth
 %{dracutlibdir}/modules.d/70btrfs
 %{dracutlibdir}/modules.d/70crypt
+%{dracutlibdir}/modules.d/70devicetree-firmware
 %{dracutlibdir}/modules.d/70dm
 %{dracutlibdir}/modules.d/70dmraid
 %{dracutlibdir}/modules.d/70dmsquash-live
@@ -429,6 +433,9 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/70nvdimm
 %{dracutlibdir}/modules.d/70overlayfs
 %{dracutlibdir}/modules.d/70pcmcia
+%ifarch aarch64
+%{dracutlibdir}/modules.d/70qcom-adsp
+%endif
 %{dracutlibdir}/modules.d/70qemu
 %{dracutlibdir}/modules.d/70qemu-net
 %{dracutlibdir}/modules.d/70uefi-lib

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 06 06:03:20 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 110+suse.41.g38f7c003:
+  * fix(devicetree-firmware): do not call inst_multiple if there are no fw files
+  * fix(systemd-pcrextend): add missing systemd-pcr{nvdone,osseparator}.service
+  * fix(systemd-pcrextend): add NVPCR definition files
+  * fix(tpm2-tss): add missing systemd-tpm2-setup-early.service
+  * feat(dracut): add module to load Qualcomm ADSP module pre-udev
+  * feat(dracut): add module to add fw files from DT firmware-name properties (bsc#1261649)
+
+-------------------------------------------------------------------
 Fri Jun 19 07:51:03 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 110+suse.35.g9834432:
