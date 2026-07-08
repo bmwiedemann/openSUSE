@@ -683,4 +683,17 @@
   * Adding type hints and docstrings</comment>
     <requestid>1334426</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>900f364c239756b979c8ccae97dea7c5</srcmd5>
+    <version>3.14.2</version>
+    <time>1783524743</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.14.2:
+  * tests: add tests for hexdump and hexload, including
+    ValueError on invalid hex
+  * Better `can_handle_fun` documentation
+  * Raise an error when both `can_handle_fun` and
+    `match_querystring` are used</comment>
+    <requestid>1364114</requestid>
+  </revision>
 </revisionlist>

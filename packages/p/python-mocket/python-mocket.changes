@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:15:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.2:
+  * tests: add tests for hexdump and hexload, including
+    ValueError on invalid hex
+  * Better `can_handle_fun` documentation
+  * Raise an error when both `can_handle_fun` and
+    `match_querystring` are used
+
+-------------------------------------------------------------------
 Mon Feb 23 09:17:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.1:
