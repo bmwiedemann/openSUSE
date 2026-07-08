@@ -400,4 +400,49 @@
     while others do not.</comment>
     <requestid>1346393</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>15df8873a3097c0a62d072fce508af45</srcmd5>
+    <version>12.1.0</version>
+    <time>1781879418</time>
+    <user>anag_factory</user>
+    <comment>- Update to 12.1.0:
+  * :func:`compare` now supports :doc:`numpy &lt;numpy&gt;` arrays.
+  * Added a helper for :doc:`testing command-line scripts &lt;command&gt;`.
+
+- update to 12.0.1:
+  * Fix bug where :class:`frozensets &lt;frozenset&gt;` would not
+    :func:`compare` equal when a library requiring ignore_eq for
+    its types, such as :doc:`polars &lt;polars&gt;`, was present.
+  * Comparers have moved from :mod:`!testfixtures.comparison` to
+    :mod:`testfixtures.comparers`.
+  * :func:`!django_compare` has been removed, :func:`compare` now
+    works with Django models.
+  * Refactoring of :class:`LogCapture` to introduce support for
+    :doc:`loguru &lt;loguru&gt;`, :doc:`structlog &lt;structlog&gt;` and
+    similar support for :doc:`twisted &lt;twisted&gt;` by way of the
+    new :class:`~testfixtures.logcapture.CaptureSource`
+    architecture.
+  * :func:`compare` now supports per-type ignore_eq.
+  * :func:`compare` now supports both :doc:`polars &lt;polars&gt;` and
+    :doc:`pandas &lt;pandas&gt;` dataframes.
+  * :func:`compare` now provides better feedback when objects
+    being compared raised exceptions in their :any:`str` or
+    :any:`repr`.
+  * Added raises parameter to :meth:`OutputCapture.compare`,
+    :meth:`LogCapture.check` and :meth:`LogCapture.check_present`
+    to they can be more easily used in compositions.</comment>
+    <requestid>1360135</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>06e6e2336efc6fb77c4416394f0ade1e</srcmd5>
+    <version>12.2.0</version>
+    <time>1783524737</time>
+    <user>anag_factory</user>
+    <comment>- update to 12.2.0:
+  * Added :meth:`LogCapture.check_empty`.
+  * Added :meth:`LogCapture.disabled` context manager.
+  * Added level and predicate parameters to
+    :meth:`LogCapture.check`.</comment>
+    <requestid>1364092</requestid>
+  </revision>
 </revisionlist>

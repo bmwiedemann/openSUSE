@@ -34,7 +34,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-testfixtures%{psuffix}
-Version:        11.0.0
+Version:        12.2.0
 Release:        0
 Summary:        A collection of helpers and mock objects for unit tests and doc tests
 License:        MIT
@@ -43,7 +43,6 @@ Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/te
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 %if %{with test}
 
 %if %{with django}
@@ -53,14 +52,17 @@ BuildRequires:  %{python_module pytest-django}
 
 BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 8}
-BuildRequires:  %{python_module sybil >= 6.0.3}
+BuildRequires:  %{python_module sybil >= 10.1}
 BuildRequires:  %{python_module testfixtures = %{version}}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+%if 0%{?python_version_nodots} < 313
+Requires:       python-typing-extensions >= 4.12
+%endif
 Suggests:       python-Django
 Suggests:       python-Twisted
-Suggests:       python-sybil >= 6.0.3
+Suggests:       python-sybil >= 10.1
 BuildArch:      noarch
 %python_subpackages
 
