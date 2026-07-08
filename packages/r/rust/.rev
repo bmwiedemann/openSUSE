@@ -985,4 +985,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.96.0 - for details see the rust1.96 package</comment>
     <requestid>1356523</requestid>
   </revision>
+  <revision rev="116" vrev="1">
+    <srcmd5>9d31cc96512a5fd5019851624c36bff3</srcmd5>
+    <version>1.96.1</version>
+    <time>1783524757</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.96.1 - for details see the rust1.96 package</comment>
+    <requestid>1364163</requestid>
+  </revision>
 </revisionlist>
