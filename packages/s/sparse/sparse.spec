@@ -19,7 +19,7 @@
 %bcond_with llvm
 
 Name:           sparse
-Version:        0.6.4+20240203
+Version:        0.6.5~rc1+20251218
 Release:        0
 Summary:        A semantic parser of source files
 License:        MIT

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 08 06:48:25 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 0.6.5-rc1+20251218:
+  * lift handling of ->immutable into dup_token()
+  * substitute(): merge TOKEN_IDENT case with default
+  * constify struct token pointers in dup_token() and substitute()
+  * tokenize.c: bump IDENT_HASH_BITS
+  * create_hashed_ident(): use memcmp() instead of strncmp()
+  * speed lookup_macro() up
+  * speed dup_token() up
+  * fix __builtin_strlen() constantness
+  * builtin: implement __builtin_strlen() for constants
+  * sparse: implement typeof_unqual()
+  * doc: update the instructions for mailing list subscription
+  * doc: update maintainer
+  * fix: Skip if symbol have no op when handle_qualifiers
+  * Warn about "unsigned value that used to be signed against zero"
+  * vadidation: add used-to-be-signed unit tests
+
+-------------------------------------------------------------------
 Thu Feb 22 07:55:48 UTC 2024 - jslaby@suse.cz
 
 - Update to version 0.6.4+20240203:

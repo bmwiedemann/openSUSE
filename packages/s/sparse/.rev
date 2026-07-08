@@ -505,4 +505,27 @@ Spec file licenses are written in SPDX compatible format. Where there is no shor
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1153112</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1e5da32bd046910be8b29139612ff7d7</srcmd5>
+    <version>0.6.5~rc1+20251218</version>
+    <time>1783525041</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.5-rc1+20251218:
+  * lift handling of -&gt;immutable into dup_token()
+  * substitute(): merge TOKEN_IDENT case with default
+  * constify struct token pointers in dup_token() and substitute()
+  * tokenize.c: bump IDENT_HASH_BITS
+  * create_hashed_ident(): use memcmp() instead of strncmp()
+  * speed lookup_macro() up
+  * speed dup_token() up
+  * fix __builtin_strlen() constantness
+  * builtin: implement __builtin_strlen() for constants
+  * sparse: implement typeof_unqual()
+  * doc: update the instructions for mailing list subscription
+  * doc: update maintainer
+  * fix: Skip if symbol have no op when handle_qualifiers
+  * Warn about &quot;unsigned value that used to be signed against zero&quot;
+  * vadidation: add used-to-be-signed unit tests</comment>
+    <requestid>1364432</requestid>
+  </revision>
 </revisionlist>
