@@ -18,9 +18,9 @@
 
 %define series 1.4
 %define pythons python3
-%define srcver 1.4.4-3
+%define srcver 1.4.4-4
 Name:           onboard
-Version:        1.4.4.3
+Version:        1.4.4.4
 Release:        0
 Summary:        Simple on-screen Keyboard
 License:        GPL-3.0-only

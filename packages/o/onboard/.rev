@@ -205,4 +205,20 @@
       prevent SIGSEGV on exit</comment>
     <requestid>1358742</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>59ba6d7f17f8e234166d8a135ea0a2fb</srcmd5>
+    <version>1.4.4.4</version>
+    <time>1783525102</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.4-4:
+  * Fixes:
+    - fix: bo.po escape literal newlines in msgid strings
+    - fix: bo.po remove duplicate msgstr lines with literal
+      newlines
+    - fix: remove non-existent files from POTFILES.in
+    - fix: xsync-badwindow-on-unrealize
+  * Internal: refactor: improve-robustness
+  * Updated translations.</comment>
+    <requestid>1364461</requestid>
+  </revision>
 </revisionlist>

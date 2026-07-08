@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:02:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.4-4:
+  * Fixes:
+    - fix: bo.po escape literal newlines in msgid strings
+    - fix: bo.po remove duplicate msgstr lines with literal
+      newlines
+    - fix: remove non-existent files from POTFILES.in
+    - fix: xsync-badwindow-on-unrealize
+  * Internal: refactor: improve-robustness
+  * Updated translations.
+
+-------------------------------------------------------------------
 Mon Jun  8 07:57:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4-3:
