@@ -1,7 +1,7 @@
 #
 # spec file for package python-mutmut
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,44 +16,46 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        3.2.3
+Version:        3.6.0
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
 URL:            https://github.com/boxed/mutmut
 Source:         https://github.com/boxed/mutmut/archive/%{version}.tar.gz
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click
-Requires:       python-junit-xml >= 1.8
-Requires:       python-parso
-Requires:       python-setproctitle
-%if 0%{?python_version_nodots} < 311
-Requires:       python-toml
-%endif
+Requires:       python-click >= 8.0.0
+Requires:       python-coverage >= 7.3.0
+Requires:       python-libcst >= 1.8.5
+Requires:       python-pytest >= 6.2.5
+Requires:       python-setproctitle >= 1.1.0
+Requires:       python-textual >= 1.0.0
+BuildArch:      noarch
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-coverage
-Recommends:     python-pytest
-Suggests:       python-pytest-cov
-BuildArch:      noarch
+%endif
 # SECTION test requirements
-BuildRequires:  %{python_module click}
-BuildRequires:  %{python_module coverage}
-BuildRequires:  %{python_module junit-xml >= 1.8}
-BuildRequires:  %{python_module parso}
-BuildRequires:  %{python_module pytest >= 2.8.7}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module rich}
-BuildRequires:  %{python_module setproctitle}
-BuildRequires:  %{python_module whatthepatch >= 0.0.5}
-BuildRequires:  ed
-BuildRequires:  patch
+BuildRequires:  %{python_module click >= 8.0.0}
+BuildRequires:  %{python_module coverage >= 7.3.0}
+BuildRequires:  %{python_module inline-snapshot}
+BuildRequires:  %{python_module libcst >= 1.8.5}
+BuildRequires:  %{python_module pytest >= 6.2.5}
+BuildRequires:  %{python_module pytest-asyncio}
+BuildRequires:  %{python_module setproctitle >= 1.1.0}
+BuildRequires:  %{python_module textual >= 1.0.0}
 # /SECTION
 %python_subpackages
 
@@ -61,12 +63,10 @@ BuildRequires:  patch
 Python mutation testing.
 
 %prep
-%setup -q -n mutmut-%{version}
-%autopatch -p1
-sed -i 's/==/>=/' *requirements.txt
-# Remove maximum pins any anything that follows
-sed -Ei 's/,?<=?.*$//' test_requirements.txt
-sed -i '1{/^#!/d}' mutmut/__main__.py
+%autosetup -p1 -n mutmut-%{version}
+sed -i '1{/^#!/d}' src/mutmut/__main__.py
+# Factory ships a newer uv-build than upstream's <0.10.0 build-backend pin
+sed -i -E 's/"uv_build>=[0-9.]+,<[0-9.]+"/"uv_build"/' pyproject.toml
 
 %build
 %pyproject_wheel
@@ -77,7 +77,9 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest
+# the e2e type-checking tests shell out to the mypy and pyrefly type checkers
+# (pyrefly is not packaged) and assert on version-specific snapshot output
+%pytest --ignore tests/e2e/test_e2e_type_checking.py
 
 %post
 %python_install_alternative mutmut
@@ -85,11 +87,13 @@ sed -i '1{/^#!/d}' mutmut/__main__.py
 %postun
 %python_uninstall_alternative mutmut
 
+%pre
+%python_libalternatives_reset_alternative mutmut
+
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %python_alternative %{_bindir}/mutmut
-%exclude %{python_sitelib}/tests
 %{python_sitelib}/mutmut
 %{python_sitelib}/mutmut-%{version}.dist-info
 

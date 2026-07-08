@@ -104,4 +104,39 @@
     <comment></comment>
     <requestid>1245104</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>0c66a0c2a49ca975839aa5f1e5bf82ef</srcmd5>
+    <version>3.6.0</version>
+    <time>1783525132</time>
+    <user>anag_factory</user>
+    <comment>- Convert to libalternatives on SLE-16-based and newer systems
+- Return the sle15_python_module_pythons macro to enable build
+  on python 3.11 in SLE 15
+
+- Update to 3.6.0:
+  * New &quot;# pragma: no mutate block&quot; and &quot;# pragma: no mutate
+    start/end&quot; comments to skip mutating regions of code
+  * New config options: do_not_mutate_patterns (regex-based
+    disabling), only_mutate (select which files get mutated),
+    use_setproctitle, and (unstable) timeout_multiplier /
+    timeout_constant
+  * Rename paths_to_mutate to source_paths; deprecate tests_dir
+    in favour of pytest_add_cli_args_test_selection
+  * Also mutate @staticmethod / @classmethod methods; optionally
+    filter mutants by type annotations via a type_check_command
+  * Many mutation-correctness and crash fixes (enums, default
+    args, private-class methods, async functions, positional-only
+    args, &quot;mutmut browse&quot;, and timeout handling)
+- Switch the build backend from setuptools to uv_build to match
+  upstream; relax upstream's strict uv_build version pin so it
+  builds against the packaged uv-build
+- Update dependencies for 3.6.0: replace parso with libcst and
+  rich with textual, promote coverage and pytest to hard runtime
+  requirements, and drop the no-longer-used junit-xml and
+  whatthepatch
+- Spec cleanup: drop the sle15_python_module_pythons macro (mutmut
+  requires Python 3.10+, so the SLE15/Leap 15 Python flavors no
+  longer apply) and the obsolete ed and patch build dependencies</comment>
+    <requestid>1364500</requestid>
+  </revision>
 </revisionlist>
