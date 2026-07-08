@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:25:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.07.07:
+  * Fix several small memory leaks and a broken history
+    deduplication loop
+  * Correct the log-level string conversion
+  * Build with the C23 standard
+  * Fix version information and documentation
+- Drop girara-tests-unset-xdg-vars.patch: the XDG-variable unset
+  fix for the utils-with-home test is now included upstream
+
+-------------------------------------------------------------------
 Thu Jul  2 16:26:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add girara-tests-unset-xdg-vars.patch: run the utils-with-home

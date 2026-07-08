@@ -22,7 +22,7 @@
 %bcond_without gcc15
 %endif
 Name:           girara
-Version:        2026.02.04
+Version:        2026.07.07
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -30,8 +30,6 @@ URL:            https://pwmt.org/projects/girara
 Source0:        %{url}/download/girara-%{version}.tar.xz
 Source1:        %{url}/download/girara-%{version}.tar.xz.asc
 Source2:        girara.keyring
-# PATCH-FIX-UPSTREAM girara-tests-unset-xdg-vars.patch -- Unset XDG_* variables so tests work with custom HOME (upstream commit 0f653f2c4e3e)
-Patch0:         girara-tests-unset-xdg-vars.patch
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
