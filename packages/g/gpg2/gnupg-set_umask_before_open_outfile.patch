@@ -1,7 +1,7 @@
-Index: gnupg-2.3.0/g10/plaintext.c
+Index: gnupg-2.5.21/g10/plaintext.c
 ===================================================================
---- gnupg-2.3.0.orig/g10/plaintext.c
-+++ gnupg-2.3.0/g10/plaintext.c
+--- gnupg-2.5.21.orig/g10/plaintext.c
++++ gnupg-2.5.21/g10/plaintext.c
 @@ -24,6 +24,7 @@
  #include <string.h>
  #include <errno.h>
@@ -20,24 +20,21 @@ Index: gnupg-2.3.0/g10/plaintext.c
  
  /* Get the output filename.  On success, the actual filename that is
     used is set in *FNAMEP and a filepointer is returned in *FP.
-@@ -161,11 +165,15 @@ get_output_file (const byte *embedded_na
-       log_error (_("error creating '%s': %s\n"), fname, gpg_strerror (err));
-       goto leave;
-     }
--  else if (!(fp = es_fopen (fname, "wb")))
--    {
--      err = gpg_error_from_syserror ();
--      log_error (_("error creating '%s': %s\n"), fname, gpg_strerror (err));
--      goto leave;
-+    else {
-+	mode_t saved_umask = umask(GPG_SAFE_UMASK);
-+	if( !(fp = es_fopen(fname,"wb")) ) {
-+		err = gpg_error_from_syserror ();
-+		log_error(_("error creating `%s': %s\n"), fname, strerror(errno) );
-+		umask(saved_umask);
-+		goto leave;
-+	}
-+	umask(saved_umask);
+@@ -174,14 +178,16 @@ get_output_file (const byte *embedded_na
+             }
+           fname_part = filename;
+         }
+-
++      mode_t saved_umask = umask(GPG_SAFE_UMASK);
+       if (!(fp = es_fopen (filename, "wb")))
+         {
+           err = gpg_error_from_syserror ();
+           log_error (_("error creating '%s': %s\n"), filename,
+                      gpg_strerror (err));
++          umask(saved_umask);
+           goto leave;
+         }
++      umask(saved_umask);
+       using_file = 1;
      }
  
-  leave:

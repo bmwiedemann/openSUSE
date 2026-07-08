@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jul  5 16:28:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.21:
+  * gpg, gpgsm: Use partial file on decryption, remove on failure.
+    Disable with "--compatibility-flags=no-partial-file-guard".
+  * gpg: Use the INT_RCP_FPR subpacket in revocation signatures.
+  * gpg: Fix potential use-after-free in batch key generation when
+    handling the keyserver URL option
+  * gpgsm: Fix regression in gpgsm_verify with expired certificates.
+  * gpgsm: Require a minimum tag length for GCM decryption.
+    (CVE-2026-57062, boo#1269279)
+  * scd: Limit the size of returned APDU objects from faulty cards.
+  * scd: Fix condition to retrieve ATR
+  * scd:openpgp: Fix regression in CHV1 retry counter byte index.
+  * agent: Make batch import of Kyber keys work
+  * dirmngr: Add a validation check in get_dns_cert_standard.
+  * gpgconf: Raise an error on certain parse errors.
+- rebase gnupg-set_umask_before_open_outfile.patch
+
+-------------------------------------------------------------------
 Wed May 13 21:03:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.20:
