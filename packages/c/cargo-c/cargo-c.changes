@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Jul  8 02:00:38 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1270996 - CVE-2026-45784 - AES-KW incorrect buffer sizing in openssl
+- bsc#1270857 - CVE-2026-41898 - unchecked callback-returned length in PSK
+- bsc#1270789 - CVE-2026-41681 - MdCtxRef::digest_final() writes past caller buffer
+- bsc#1270913 - CVE-2026-44662 - heap buffer overflow when encrypting with AES-KW
+- bsc#1270643 - CVE-2026-41678 - incorrect bounds assertion in AES-KW
+- bsc#1270572 - CVE-2026-41677 - out-of-bounds read in PEM password callback
+- bsc#1270502 - CVE-2026-42327 - arbitrary code execution via specially crafted certificate
+
+-------------------------------------------------------------------
+Wed Jul 08 01:38:25 UTC 2026 - William Brown <william.brown@suse.com>
+
+- Update to version 0.10.23:
+  * Bump versions
+  * Bump to cargo-0.96
+  * Update object requirement from 0.38.0 to 0.39.1
+  * Update implib requirement from 0.4.0 to 0.6.0
+  * Fix wrong dylib install name on macOS
+  * Bump softprops/action-gh-release from 2 to 3
+  * Bump actions-rs-plus/clippy-check from 2.4.2 to 2.5.0
+  * Bump codecov/codecov-action from 5 to 6
+  * Bump actions/download-artifact from 7 to 8
+  * Bump actions/upload-artifact from 6 to 7
+  * Version bump
+  * Support cinstall --path and make --manifest-path take either a directory or the path to the toml
+  * Bump cargo version
+  * target: emit correct lib dir when cross compiling on Debian
+  * Bump egor-tensin/setup-mingw from 2 to 3
+  * Bump actions/checkout from 5 to 6
+  * Bump actions/upload-artifact from 5 to 6
+  * Bump cargo and object versions
+  * Build aarch64 android bins
+  * Bump actions/checkout from 5 to 6
+  * Bump actions/upload-artifact from 5 to 6
+  * Remove old macos runner
+  * Bump actions/download-artifact from 6 to 7
+  * Bump actions-rs-plus/clippy-check from 2.3.0 to 2.4.2
+  * CI: add basics tests for Cygwin
+  * Add Cygwin support
+  * Prepare for release
+  * Mark the target-specific rustflag as problematic
+  * Fix the target-specific-lookup for rustflags
+  * Support target-specific rustflags
+  * Update to cargo 0.92
+  * Bump actions/download-artifact from 5 to 6
+  * Bump actions/upload-artifact from 4 to 5
+  * Bump toml to 0.9
+  * Bump to cargo 0.91
+  * Implement installing dSYMs if available
+  * Fix installing debuginfo files for plugins in the wrong folder
+  * Bump actions/checkout from 4 to 5
+
+-------------------------------------------------------------------
+Tue Jul  7 04:25:32 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1270204 - CVE-2026-41676 - update openssl to 0.10.78
+
+-------------------------------------------------------------------
 Wed Feb 11 02:26:51 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1257928 - CVE-2026-25727 - rfc 2822 format parsing may lead to stack exhaustion.

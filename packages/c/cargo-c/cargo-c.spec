@@ -1,8 +1,7 @@
 #
 # spec file for package cargo-c
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Andreas Schneider <asn@cryptomilk.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +18,7 @@
 
 
 Name:           cargo-c
-Version:        0.10.15
+Version:        0.10.23
 Release:        0
 Summary:        Helper to build and install c-like libraries from Rust
 License:        MIT
@@ -31,7 +30,7 @@ Source1:        vendor.tar.xz
 Source1000:     README.suse-maint
 BuildRequires:  cargo >= 0.80.0
 BuildRequires:  cargo-packaging
-BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(openssl) >= 3.0.0
 
 %description
 The is a cargo applet to build and install C-ABI compatibile dynamic and static
