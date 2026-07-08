@@ -76,4 +76,12 @@
 - Update Requires from pyproject.toml (forwarded request 1335974 from glaubitz)</comment>
     <requestid>1336033</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>affd8a22f7691ec027db83f6a2d8bed8</srcmd5>
+    <version>3.0.0~b2</version>
+    <time>1783525096</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364476</requestid>
+  </revision>
 </revisionlist>
