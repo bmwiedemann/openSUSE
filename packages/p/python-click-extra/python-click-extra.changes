@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:47:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.3.0:
+Add a click:config Sphinx directive documenting a CLI's config_schema: a summary table plus one section per option, with docstring, type, default, and a TOML example. Adds schema_field_infos(), field_docstrings() and SchemaFieldInfo to the public API.
+Disable mouse zoom on the class inheritance diagrams of the documentation's API sections, so they no longer hijack page scrolling; the fullscreen viewer keeps zoom.
+Add tests covering 256-color palette index 0 and empty-string colors in Style, gated on runtime probes of Click 8.5.0's color validation.
+
+-------------------------------------------------------------------
 Thu Jul  2 05:49:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.2.0:
