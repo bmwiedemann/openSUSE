@@ -886,4 +886,13 @@ last submission had wrong tar ball for unknown reason</comment>
     <comment></comment>
     <requestid>1351294</requestid>
   </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>9ac683278a511a7198e84e00a786a736</srcmd5>
+    <version>0.43</version>
+    <time>1783524999</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.43:
+  * check_patches_applied: Look for BuildSystem</comment>
+    <requestid>1364403</requestid>
+  </revision>
 </revisionlist>

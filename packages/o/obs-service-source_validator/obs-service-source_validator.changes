@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 07 20:57:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.43:
+  * check_patches_applied: Look for BuildSystem
+
+-------------------------------------------------------------------
 Tue Apr 28 16:16:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add obs-service-source_validator-test-git-init.patch which
