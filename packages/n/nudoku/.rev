@@ -157,4 +157,14 @@
   * Update Russian translation (pr #88)</comment>
     <requestid>1347585</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55c1df1fb81fe2c5ba381a77abd0f689</srcmd5>
+    <version>8.0.1</version>
+    <time>1783525203</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.0.1:
+  * Terminate save game loading when the input is too long (pr #89)
+  * Update Ukranian and Turkish translation (pr #90 #91)</comment>
+    <requestid>1364536</requestid>
+  </revision>
 </revisionlist>

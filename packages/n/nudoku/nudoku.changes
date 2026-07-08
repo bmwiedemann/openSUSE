@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:58:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 8.0.1:
+  * Terminate save game loading when the input is too long (pr #89)
+  * Update Ukranian and Turkish translation (pr #90 #91)
+
+-------------------------------------------------------------------
 Thu Apr 16 19:12:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 8.0.0:
