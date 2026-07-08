@@ -1,7 +1,7 @@
 #
 # spec file for package woodstox-core
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global base_name woodstox
 %global core_name %{base_name}-core
 Name:           %{core_name}
-Version:        6.2.8
+Version:        7.2.1
 Release:        0
 Summary:        XML processor
 License:        Apache-2.0
@@ -27,16 +27,17 @@ Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/woodstox
 Source0:        https://github.com/FasterXML/%{base_name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
-# Port to latest OSGi APIs
-Patch0:         0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
 # Drop requirements on defunct optional dependencies: msv and relaxng
-Patch1:         0002-Patch-out-optional-support-for-msv-and-relax-schema-.patch
+Patch0:         0001-Patch-out-optional-support-for-msv-and-relax-schema-.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  java-devel >= 1.8
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jurand
 BuildRequires:  osgi-core
 BuildRequires:  stax2-api
+Provides:       %{base_name} = %{version}
+Obsoletes:      %{base_name} < %{version}
 BuildArch:      noarch
 
 %description
@@ -57,11 +58,13 @@ This package contains the API documentation for %{name}.
 cp %{SOURCE1} build.xml
 
 %pom_remove_dep relaxngDatatype:relaxngDatatype
+%pom_remove_dep com.sun.xml.bind.jaxb:isorelax
 %pom_remove_dep net.java.dev.msv:
 rm -rf src/main/java/com/ctc/wstx/msv
 
-# replace felix-osgi-core with osgi-core
-%pom_change_dep -r :org.osgi.core org.osgi:osgi.core:8.0.0
+# Not needed since pre-generated service files
+# are part of the sources
+%{java_remove_annotations} . -n ServiceProvider
 
 %build
 mkdir -p lib

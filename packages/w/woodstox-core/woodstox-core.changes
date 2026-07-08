@@ -1,4 +1,132 @@
 -------------------------------------------------------------------
+Wed Jul  8 11:57:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 7.2.1
+  * Changes of version 7.2.1
+    + #290: Regression in 7.2.0: 'writeRaw()' no longer closing an
+      open start element (from #95) breaks emitting whitespace after
+      start/end tags; reverted #95 so 'writeRaw()' again closes an
+      open start element
+    + #291: Reject overlong UTF-8 sequences in 'UTF8Reader'
+    + #292: Text corruption (in element content and attribute
+      values) with 'doTreatCharRefsAsEnts' enabled when a character
+      reference is split across the internal input buffer boundary
+    + #293: Reject out-of-range code points in 'UTF32Reader'
+    + #297: NMTOKEN default value validation skips first character
+    + #299: NMTOKENS default value validation for single-character
+      tokens
+  * Changes of version 7.2.0
+    + #12: Improve hashing implementation used for symbol tables for
+      element and attribute names
+    + #33: 'xml:lang' attribute not handled correctly by
+      'XMLStreamReader2' using DTD validation
+    + #91: 'getStartLocation()' returns inconsistent system
+      id/offset when reader crosses into or out of an expanded
+      external entity
+    + #95: 'BaseStreamWriter.writeRaw()' no longer closes an open
+      start element (NOTE: behavior change; existing callers that
+      relied on the auto-close must now emit an empty
+      'writeCharacters("")' or other element-body call before
+      writing post-attribute content with 'writeRaw()')
+    + #113: 'IllegalStateException' on closing tags; cannot recover
+      from unbalanced close tag when it is not preceded by
+      whitespace
+    + #156: Javadoc for 'XMLStreamReader.getLocation()'
+      ('BasicStreamReader') is inconsistent with the implementation;
+      document that Woodstox returns the start-of-event location
+    + #162: Add support for 'XMLConstants.ACCESS_EXTERNAL_DTD'
+    + #179: 'WstxValidationException': Unknown reason (at end
+      element </nl:nillableIntElement>) when validating a document
+      with nillable elements
+    + #184: Notations declared in external DTD subsets reported as
+      undefined when referenced from the internal subset
+    + #189: 'Undefined ID' not thrown when validating with
+      'SimpleNsStreamWriter'
+    + #190: 'Element <root> has no attribute "verbose"' not thrown
+      from 'RepairingNsStreamWriter' when validating against a DTD
+      schema
+    + #201: 'BufferingXmlWriter' does not check for invalid
+      characters in CDATA / COMMENT / PI content
+    + #226: 'WstxSAXParser' does not inherit 'XMLResolver'
+      configuration from underlying 'WstxInputFactory'
+    + #231: Fix locale-dependent assertion in 'TestEntityResolver'
+    + #249: Minor performance optimizations
+    + #250: Bug in 'ValidatingStreamReader.getProcessedDTDSchema()'
+    + #251: Update 'stax2-api' dependency to 4.3.0
+    + #254: Optimize locking on global 'InternCache'
+    + #266: Convert "new XMLStreamException()" calls with
+      "throwOutputError()" for writers
+    + #279: Deprecate unused/unsupported property
+      'WstxInputProperties.P_VALIDATE_TEXT_CHARS'
+    + #286: Convert tests from JUnit4 to JUnit5
+    + Minor DTD validation exception message formatting fixes
+      (remove extra space)
+    + Branch "master" renamed as "main"
+    + Update to 'oss-parent' v79 for latest Maven plug-in versions
+  * Changes of version 7.1.1
+    + #213: SAX: 'Locator#getSystemId' and 'Locator#getPublicId' are
+      not available during 'startDocument' event
+    + #220: Switch to lookup tables in hotspots 'isNameChar()'/
+      'isNameStartChar()'
+    + #253: Fix minor 'EmptyValidator.getEmptyInstance()'
+      implementation
+    + Update to 'oss-parent' v68 to switch to Central Portal publishing
+  * Changes of version 7.1.0
+    + #209: SAXParser: Add support for 'LexicalHandler.startEntity()'
+      and '.endEntity()'
+    + #211: Disable 'resolveEntityReferences' by default for newly
+      created SAX parsers
+  * Changes of version 7.0.0
+    + #134: Increase JDK baseline to Java 8
+    + #194: Remove 'QNameCreator' compatibility class
+    + #196: WstxSAXParser error handling when used with JAXB
+      validation
+  * Changes of version 6.7.0
+    + #204: Non-conformant 'XMLEventFactory.setLocation(null)'
+  * Changes of version 6.6.2
+    + #200: Fix shading of 'isorelax' dependency (and other msv-core
+      components)
+  * Changes of version 6.6.1
+    + #193: Module 'com.ctc.wstx' does not read a module that
+      exports 'com.ctc.wstx.shaded.msv.org_isorelax.verifier'
+  * Changes of version 6.6.0
+    + #67: Wrong line for XML event location in elements following
+      DTD
+    + #165: Add support to optionally allow surrogate pair entities
+    + #176: Fix parser when not replacing entities and treating char
+      references as entities
+    + #182: Update 'msv-core' dependency to '2022.7'
+    + Update 'stax2-api' dependency to 4.2.2
+    + Update 'oss-parent' dependency to 56 (from 50)
+  * Changes of version 6.5.1
+    + #170: After update to 6.5.0, in osgi/felix runtime the bundle
+      is not started due to missing dependency
+  * Changes of version 6.5.0
+    + #163: 'woodstox-core' 6.3/6.4 javac warning due to unexpected
+      new dependency on 'aQute.bnd.annotation.Resolution'
+  * Changes of version 6.4.0
+    + #160: Add limit and configuration setting for maximum nesting
+      for DTD subsets (bsc#1203521, CVE-2022-40152)
+  * Changes of version 6.3.1
+    + #155: Declare 'osgi.serviceloader.registrar' requirement as
+      optional
+  * Changes of version 6.3.0
+    + #133: Update "org.osgi.core" dependency from one published in
+      2009 to something newer
+    + #142: 'XMLEventReader' always returns the full content in text
+      events, even if coalescing disabled
+    + #147: Typo: "expected" misspelled as "excepted"
+    + #151: Add standard osgi.serviceloader OSGi metadata for
+      provided services
+- Removed patch:
+  * 0001-Allow-building-against-OSGi-APIs-newer-than-R4.patch
+    + not needed with this version
+- Modified patch:
+  * 0002-Patch-out-optional-support-for-msv-and-relax-schema-.patch
+    -> 0001-Patch-out-optional-support-for-msv-and-relax-schema-.patch
+    + rediff and fix module-info.java errors
+
+-------------------------------------------------------------------
 Fri Mar 28 06:05:06 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Rewrite to use Ant to build. This prevents potential cycles with
