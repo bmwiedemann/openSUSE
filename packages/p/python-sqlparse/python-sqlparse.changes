@@ -21,8 +21,9 @@ Tue Jan 27 16:06:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
     existing recursion protections with configurable limits for
     token processing to prevent DoS through algorithmic complexity
     attacks. The new limits
-  * MAX_GROUPING_TOKENS=10000) can be adjusted or disabled (by
+    MAX_GROUPING_TOKENS=10000) can be adjusted or disabled (by
     setting to None) if needed for legitimate large SQL statements.
+    (GHSA-27jp-wm6q-gp25, bsc#1268597)
   * Remove shebang from cli.py and remove executable flag
   * Fix strip_comments not removing all comments when input
     contains only comments (issue801, pr803 by stropysh).
