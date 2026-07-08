@@ -241,4 +241,12 @@
         Use allow_downgrade to revert to the original behaviour.</comment>
     <requestid>1357974</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>32dc29074ace9932d8b03792c657c0b7</srcmd5>
+    <version>0.096</version>
+    <time>1783525161</time>
+    <user>anag_factory</user>
+    <comment>      - CVE-2026-7017 bsc#1271020</comment>
+    <requestid>1364499</requestid>
+  </revision>
 </revisionlist>

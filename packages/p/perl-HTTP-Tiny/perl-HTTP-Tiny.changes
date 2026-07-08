@@ -8,6 +8,7 @@ Mon Jun  8 09:57:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
       - No changes from 0.095-TRIAL
   0.095     2026-06-03 13:10:05+02:00 Europe/Brussels (TRIAL RELEASE)
       [!!! SECURITY !!!]
+      - CVE-2026-7017 bsc#1271020
       - Caller-supplied C<Authorization>, C<Cookie>, and C<Proxy-Authorization>
         headers are now stripped on cross-origin redirects by default. Use
         allow_credentialed_redirects to opt out.
