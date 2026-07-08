@@ -776,4 +776,13 @@
 - Fix bad link in v61.0 changelog entry</comment>
     <requestid>1355308</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>d6fca40969d20ee4b302277fbde59c69</srcmd5>
+    <version>63.0</version>
+    <time>1783524765</time>
+    <user>anag_factory</user>
+    <comment>- Update to rdma-core v63.0
+  - https://github.com/linux-rdma/rdma-core/releases/tag/v63.0</comment>
+    <requestid>1364230</requestid>
+  </revision>
 </revisionlist>

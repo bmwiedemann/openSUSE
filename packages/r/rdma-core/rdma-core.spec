@@ -30,9 +30,9 @@
 %define _modprobedir /lib/modprobe.d
 %endif
 
-%define         git_ver .0.31af04ec8
+%define         git_ver .0.9589cf6f9
 Name:           rdma-core
-Version:        62.0
+Version:        63.0
 Release:        0
 Summary:        RDMA core userspace libraries and daemons
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -721,6 +721,7 @@ done
 %doc %{_docdir}/%{name}-%{version}/rxe.md
 %doc %{_docdir}/%{name}-%{version}/tag_matching.md
 %{_mandir}/man7/rxe*
+%{_prefix}/lib/sysusers.d/rdma.conf
 
 %files -n libibnetdisc%{ibnetdisc_major}
 %{_libdir}/libibnetdisc.so.*
