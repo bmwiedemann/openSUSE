@@ -434,4 +434,40 @@
       - Fixed Netlink fetch mechanism</comment>
     <requestid>1325461</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>1b30da2c47b5871ed9980d5341e16c44</srcmd5>
+    <version>1.21.0</version>
+    <time>1783524918</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.21.0
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added UCX_IB_GDA_RETAIN_INACTIVE_CTX option to control inactive CUDA context retention in GDAKI
+    - Added configure option to enable or disable GGA transport
+    - Fixed GDA DMA-BUF offset handling
+    - Fixed GDA WQE ordering by using CAS-based readiness marking
+    - Fixed GDAKI CUDA context handling during endpoint creation
+    - Fixed GDAKI NIC/GPU mapping when CUDA_VISIBLE_DEVICES hides physical GPUs
+  - ROCM
+    - Fixed hangs in HIP MPI and OMB tests
+    - Fixed endpoint flush for in-flight ROCm operations
+  - TCP
+    - Fixed interface selection by skipping IPv4 link-local addresses
+  - UCP
+    - Added UCX_PROTO_EMULATION_ENABLE option to force zero-copy RMA protocol selection
+    - Added UCX_MAX_HCA_PER_GPU policy to limit GPU memory registrations to nearest HCAs
+    - Added device lanes that can access host memory for GPU transfer fallback
+    - Enabled gdr_copy for memtype endpoint transport
+    - Fixed progress counter to return the actual operation status
+    - Fixed multi protocol minimum size handling for 1-byte operations
+    - Fixed endpoint finalization when no P2P or connection-manager lane is available
+  - UCS
+    - Reverted dynamically loaded external module/plugin support
+  - UCT
+    - Added device channel pool support
+    - Added CPU memory usage as AMO local buffer for device operations
+    - Fixed notify callback handling by adding a NULL check
+- Refresh openucx-s390x-support.patch against latest release
+- Add UCS-add-missing-include-for-UCS_INFINITY.patch to fix build issue on ARM/S390</comment>
+    <requestid>1364050</requestid>
+  </revision>
 </revisionlist>

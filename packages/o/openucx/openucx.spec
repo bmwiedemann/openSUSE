@@ -20,7 +20,7 @@
 %define version_suf %{nil}
 
 Name:           openucx
-Version:        1.19.1
+Version:        1.21.0
 Release:        0
 Summary:        Communication layer for Message Passing (MPI)
 License:        BSD-3-Clause
@@ -35,6 +35,7 @@ Patch1:         openucx-s390x-support.patch
 Patch2:         ucm-fix-UCX_MEM_MALLOC_RELOC.patch
 Patch3:         UCP-CORE-Fix-config-type-for-dynamic_tl_progress_factor.patch
 Patch4:         UCT-SELF-Fix-config-type-for-num_devices.patch
+Patch5:         UCS-add-missing-include-for-UCS_INFINITY.patch
 BuildRequires:  autoconf >= 2.63
 BuildRequires:  automake >= 1.10
 BuildRequires:  binutils-devel
