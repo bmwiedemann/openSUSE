@@ -243,4 +243,15 @@
 - Stop using greedy globs in %files.</comment>
     <requestid>1132798</requestid>
   </revision>
+  <revision rev="33" vrev="7">
+    <srcmd5>4b32227a072ccd1ac905a4bdb5d91559</srcmd5>
+    <version>3.11</version>
+    <time>1783628288</time>
+    <user>anag_factory</user>
+    <comment>- add py315-testfails.patch: fix build with python 3.15+
+
+  * Fixed some minor bugs related to re flags and token order.
+- python3 package added</comment>
+    <requestid>1364407</requestid>
+  </revision>
 </revisionlist>

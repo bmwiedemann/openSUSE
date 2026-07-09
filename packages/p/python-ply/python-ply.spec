@@ -1,7 +1,7 @@
 #
 # spec file for package python-ply
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            http://www.dabeaz.com/ply/
 Source:         https://files.pythonhosted.org/packages/source/p/ply/ply-%{version}.tar.gz
 Patch0:         python-ply-shebangs.patch
 Patch1:         fix-assert-methods.patch
+# PATCH-FIX-UPSTREAM: https://github.com/dabeaz/ply/pull/318.patch
+Patch2:         py315-testfails.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

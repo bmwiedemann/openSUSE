@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 07:33:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add py315-testfails.patch: fix build with python 3.15+
+
+-------------------------------------------------------------------
 Wed Dec 13 06:30:27 UTC 2023 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch fix-assert-methods.patch:
@@ -36,7 +41,7 @@ Wed Aug 29 09:13:41 UTC 2018 - tchvatal@suse.com
 Thu May 31 15:39:30 UTC 2018 - toddrme2178@gmail.com
 
 - Update to 3.11
-  * Fixed some minor bugs related to re flags and token order.  
+  * Fixed some minor bugs related to re flags and token order.
   * Added a set_lexpos() method to grammar symbols.  Github issue #148.
   * Mostly minor bug fixes and small code cleanups.
 
@@ -152,7 +157,7 @@ Fri May 25 10:04:56 UTC 2012 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Fri May 25 03:24:34 UTC 2012 - highwaystar.ru@gmail.com
 
-- python3 package added 
+- python3 package added
 
 -------------------------------------------------------------------
 Mon Feb 13 10:54:05 UTC 2012 - coolo@suse.com
