@@ -1,7 +1,7 @@
 #
 # spec file for package python-langchain-openai
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT
@@ -27,13 +27,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-langchain-core >= 1.4.7
+Requires:       python-langchain-core >= 1.4.8
 Requires:       python-openai >= 2.26.0
 Requires:       python-tiktoken >= 0.7.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module langchain-core >= 1.4.7}
+BuildRequires:  %{python_module langchain-core >= 1.4.8}
 BuildRequires:  %{python_module openai >= 2.26.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module tiktoken >= 0.7.0}
