@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  9 15:09:15 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 1.2.10.
+  Changelog: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.10
+  * Fix regression in 1.2.9 where loose objects whose content inflates to
+    more than 8192 bytes failed to parse with `zlib.error: object header
+    exceeds maximum size`.
+- Changes from version 1.2.9: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.9
+- Changes from version 1.2.8: https://github.com/jelmer/dulwich/releases/tag/dulwich-1.2.8
+
+-------------------------------------------------------------------
 Sat Jun 27 15:30:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.7 (bsc#1268128, CVE-2026-42305):
