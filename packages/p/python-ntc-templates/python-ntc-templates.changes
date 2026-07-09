@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:13:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.2.0
+  * Add hp_procurve show vsf detail.
+  * Add paloalto_panos show lacp aggregate-ethernet.
+  * Add paloalto_panos show interface all.
+  * Add aruba_aoscx show vrf.
+  * Add hp_procurve sh sys VSF stack support.
+  * aruba_aoscx_show_interface: capture Filtered counters and
+    tolerate L3/VRF/subinterface output.
+  * Add aruba_aoscx show module.
+  * feat(hp_procurve): add show lldp info local-device template.
+  * Update cisco_ios_show_sdwan_control_connections.
+  * Add hp comware display route policy.
+  * Add Prun state to alcatel sros show service sap-using.
+  * Add aethra_atosnt show ip routemap work.
+  * Fix Arista EOS sh int tran hw detected media type.
+  * Add ipv6 support for paloalto panos show routing route.
+  * Fix alphanum transceiver Rev in arista eos sh inv.
+  * Fix nxos sh int status to support tunnels.
+  * hp_procurve_show_interfaces_brief: support stacked port
+    names.
+  * hp_procurve_show_lldp_info_remote-device_detail: tolerate
+    empty values.
+  * Add hp_procurve_show_interfaces_status.
+  * Add aruba_aoscx show interface mgmt.
+  * hp_procurve_show_system: support VSF-stack standalone-line
+    Serial Number.
+  * Add hp_procurve_show_lldp_info_local-device.
+  * Add test for cisco_nxos show interface status tunnel
+    multi-word reason.
+  * Add paloalto_panos show lldp neighbors all.
+  * Add SROS multiline show port support.
+  * Add SROS show port description multiline support.
+  * Update textfsm web tools in faq docs.
+  * Fix cisco_ios show lldp neighbors blank-capability parsing.
+
+-------------------------------------------------------------------
 Wed Apr  1 14:50:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.1.0
