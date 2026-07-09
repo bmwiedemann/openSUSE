@@ -525,4 +525,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1348387</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0f1728a5fafcd8b7580efa061f1b3759</srcmd5>
+    <version>16.0</version>
+    <time>1783628293</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Python 3.15+ requires C-contiguous buffers for int.from_bytes().</comment>
+    <requestid>1364422</requestid>
+  </revision>
 </revisionlist>

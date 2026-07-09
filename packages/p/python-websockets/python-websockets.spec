@@ -28,9 +28,10 @@ Version:        16.0
 Release:        0
 Summary:        An implementation of the WebSocket Protocol (RFC 6455)
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/aaugustin/websockets
 Source:         https://github.com/aaugustin/websockets/archive/%{version}.tar.gz#/websockets-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#python-websockets/websockets#1706
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

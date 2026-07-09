@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul  8 03:01:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Python 3.15+ requires C-contiguous buffers for int.from_bytes().
+
+-------------------------------------------------------------------
 Tue Apr 14 06:44:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 16.0:
