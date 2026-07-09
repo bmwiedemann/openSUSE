@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:54:13 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- update to 1.1.2
+  * fix infinite loop in dpll_mon_destroy() without DPLL
+
+-------------------------------------------------------------------
 Wed Nov 12 10:39:10 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.1:

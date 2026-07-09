@@ -23,4 +23,14 @@
     <comment></comment>
     <requestid>1317648</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b1b05e7373d337a9cef539b574d48720</srcmd5>
+    <version>1.1.2</version>
+    <time>1783628508</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.1.2
+  * fix infinite loop in dpll_mon_destroy() without DPLL
+</comment>
+    <requestid>1364743</requestid>
+  </revision>
 </revisionlist>
