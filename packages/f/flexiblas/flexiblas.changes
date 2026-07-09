@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Fri Jun 12 15:53:26 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Initial commit of flexiblas 3.5.0 which provides different BLAS
+  and LAPACK implementation through a single library.
