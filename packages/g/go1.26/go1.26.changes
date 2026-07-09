@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul  7 19:29:04 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.5 (released 2026-07-07) includes security fixes to the
+  crypto/tls and os packages, as well as bug fixes to the compiler,
+  the runtime, the go command, and the net, os, and syscall
+  packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-39822 CVE-2026-42505
+  * go#79027 go#79005 boo#1271014 security: fix CVE-2026-39822 os: Root escape via symlink plus trailing slash
+  * go#80175 go#79282 boo#1271015 security: fix CVE-2026-42505 crypto/tls: Encrypted Client Hello privacy leak
+  * go#79039 cmd/go: test caching is broken with sub-packages when using testing.T.Chdir
+  * go#79499 os/signal: signal.NotifyContext uses error cause that doesn't match context.Canceled
+  * go#79721 cmd/go: "go get" fails when GOFIPS140=v1.0.0 is set
+  * go#79806 runtime: SIGSEGV on child side of fork pre-exec with -race on darwin/arm64
+  * go#79879 runtime: concurrent map read and map write with sync.RWMutex on ppc64le
+  * go#79893 runtime: version parsing fails
+  * go#79920 runtime: SIGILL in Green Tea GC AVX-512 span-scan (KMOVB / AVX512DQ)
+  * go#80007 runtime: possible bug in moveSliceNoCap
+  * go#80217 net: TestLookupCNAME failures
+
+-------------------------------------------------------------------
 Thu Jun 25 12:51:11 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
