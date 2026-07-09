@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul  9 09:39:52 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 1.8.3:
+  * Update: build: Experimental cmake build files. (github #89)
+  * Update: build: Unix build - option to create non-versioned,
+    statically linked c-api .so for distribution as part of a
+    larger product. Will not install (github #91)
+  * Bugfix: opencsd: etm4: Fix issue with M profile exception
+    return packets - handle as P0 element for all M archs. (github #90)
+  * Bugfix: opencsd: ete: etm4: TS marker packets valid in
+    both protocols. Ensure invalid if not in use as defined
+    by ID register.
+  * Bugfix: opencsd: etm4: Fix handling of exception return
+    address in middle of part executed instruction. (github #92)  
+
+- Drop obsolete patch:
+  * 0001-hack-test.patch
+
+-------------------------------------------------------------------
 Tue May 19 07:09:24 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Enable tests

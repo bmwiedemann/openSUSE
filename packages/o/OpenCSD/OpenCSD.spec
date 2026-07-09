@@ -21,15 +21,16 @@
 
 %define libnum  1
 Name:           OpenCSD
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        CoreSight Trace Decode library
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/Linaro/OpenCSD
 Source0:        https://github.com/Linaro/OpenCSD/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-hack-test.patch
 BuildRequires:  gcc-c++
+# Python required to run tests since v1.8.3
+BuildRequires:  python3-base
 %if %{with build_html_doc}
 BuildRequires:  doxygen
 BuildRequires:  graphviz
@@ -86,7 +87,8 @@ mkdir -p %{buildroot}/usr/share/man/man1/
 %make_install -C decoder/build/linux DISABLE_STATIC=1 DEF_SO_PERM=755 LIB_PATH=%{_lib} install_man
 
 %check
-LD_LIBRARY_PATH=%{buildroot}%{_libdir} decoder/tests/run_pkt_decode_tests.bash -bindir %{buildroot}%{_bindir}/ use-installed
+chmod +x decoder/tests/run_pkt_decode_tests.py
+LD_LIBRARY_PATH=%{buildroot}%{_libdir} decoder/tests/run_pkt_decode_tests.py --bin-dir %{buildroot}%{_bindir}/
 
 %post	-n libopencsd%{libnum} -p /sbin/ldconfig
 
