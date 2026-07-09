@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul  3 12:44:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.14.1
+  * Bump uraimo/run-on-arch-action to v3 to fix pytest job
+  * Fix platform tag logic to generate the same as cpython on AIX
+  * Bump pyo3-introspection
+  * Upgrade cargo-zigbuild & cargo-xwin
+  * Fix issues around crates enabling abi3 and abi3t features
+  * Add PEP 740 publish attestations to PyPI releases
+  * Set PYO3_PYTHON to run scripts for stable ABI builds
+  * Fix shell quoting in CI scripts
+  * Release v1.14.1
+- Update to 1.14.0
+  * Support parent-relative pyproject metadata in sdists
+  * Update PyPI platform tag validation
+  * maint: update setup emsdk action in generate-ci
+  * fix: only shim bin wheels during auditwheel repair
+  * fix: avoid editable ELF truncation from stale hardlinks
+  * Fix Pyodide Emscripten platform tags
+  * build(deps): bump openssl from 0.10.79 to 0.10.80
+  * Use pax instead of GNU headers for tar
+  * feat: add default exclude pycache and *.pyc files
+  * Documentation: fix the update_readme script
+  * Fix python versions used in integration_pyo3_mixed_conda
+  * Add support for finding free-threaded interpreters for --find-interpreters
+  * build(deps): bump tar from 0.4.45 to 0.4.46
+  * Stubs: also generate them for mixed PyO3 projects
+  * Don't depend on CFFI on PyPy
+  * resolve_platform_tags: remove a redundant case
+  * GeneratorOutput::additional_files remove Option
+  * Support pyo3 abi3t features on Python3.15 and PyO3 0.29
+- update vendor tarball to bump openssl crate to 0.10.80 (fixes
+  CVE-2026-41676 (bsc#1270208), CVE-2026-41677 (bsc#1270620),
+  CVE-2026-41678 (bsc#1270706), CVE-2026-41681 (bsc#1270772),
+  CVE-2026-41898 (bsc#1270801), CVE-2026-44662 (bsc#1270936),
+  CVE-2026-42327 (bsc#1270515), CVE-2026-45784 (bsc#1270994))
+
+-------------------------------------------------------------------
 Mon May 11 20:34:12 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix the value of conditional Requires
