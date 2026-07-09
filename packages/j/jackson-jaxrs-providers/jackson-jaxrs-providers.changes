@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:14:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.8
+  * No changes since 2.18.0
+  * Changes of 2.18.0
+    + #192: Bring back code to support JAXRS v1 (revert #134 for
+      2.18)
+    + #193: `JacksonJaxbJsonProvider` has
+      @Produces(MediaType.WILDCARD) and yet
+      hasMatchingMediaType(MediaType.WILDCARD) return false
+    + Woodstox dependency now 7.0.0
+
+-------------------------------------------------------------------
 Wed Nov  6 08:02:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.17.3
