@@ -269,4 +269,25 @@
     <comment></comment>
     <requestid>1361350</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2126074ff88766d4f5d13e44bd89b59c</srcmd5>
+    <version>6.14.2</version>
+    <time>1783628495</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.14.2 (CVE-2026-59935, bsc#1271145)
+  * Avoid infinite loops for incomplete ASCII85 and ASCIIHex inline
+    images
+  6.14.1 (CVE-2026-59936, bsc#1271146)
+  * Detect end of stream during inline image end marker detection
+- Update to 6.14.0 (CVE-2026-59937, bsc#1271147, CVE-2026-59938, bsc#1271148)
+  * Apply general limit for requested image size
+  * Speed up recovery when reading broken cross-reference table
+  6.13.3
+  * Apply MAX_DECLARED_STREAM_LENGTH to streams without length as well
+  6.13.2
+  * Detect multi-hop cyclic /Pages trees in _flatten to prevent SIGSEGV
+  6.13.1 (bsc#1268787, CVE-2026-54651)
+  * Prevent infinite loops when processing threads/articles</comment>
+    <requestid>1364735</requestid>
+  </revision>
 </revisionlist>

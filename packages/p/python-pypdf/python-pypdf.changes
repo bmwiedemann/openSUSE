@@ -1,7 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  9 12:11:07 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.14.2 (CVE-2026-59935, bsc#1271145)
+  * Avoid infinite loops for incomplete ASCII85 and ASCIIHex inline
+    images
+  6.14.1 (CVE-2026-59936, bsc#1271146)
+  * Detect end of stream during inline image end marker detection
+
+-------------------------------------------------------------------
 Tue Jun 23 09:27:34 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 6.14.0
+- Update to 6.14.0 (CVE-2026-59937, bsc#1271147, CVE-2026-59938, bsc#1271148)
   * Apply general limit for requested image size
   * Speed up recovery when reading broken cross-reference table
   6.13.3
