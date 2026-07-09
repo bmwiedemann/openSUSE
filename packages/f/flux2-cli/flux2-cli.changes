@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 08 06:03:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.9.1:
+  Flux v2.9.1 is a patch release. The main fix, applied across all
+  controllers, disables Flux variable substitution on the Flux CRDs
+  by annotating them with kustomize.toolkit.fluxcd.io/substitute:
+  disabled, so that Kustomizations with post-build substitution
+  enabled no longer corrupt the CRD schemas when they contain
+  ${...} sequences. Users are encouraged to upgrade for the best
+  experience.
+  * Components changelog
+    - source-controller v1.9.2
+    - kustomize-controller v1.9.2
+    - helm-controller v1.6.2
+    - notification-controller v1.9.2
+    - image-reflector-controller v1.2.2
+    - image-automation-controller v1.2.2
+    - source-watcher v2.2.2
+  * CLI changelog
+    - [release/v2.9.x] Fix breaking change in-memory kustomization
+      build by @fluxcdbot in #5971
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5977
+    - Update toolkit components by @fluxcdbot in #5979
+
+-------------------------------------------------------------------
 Wed Jul 01 07:58:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.0:
