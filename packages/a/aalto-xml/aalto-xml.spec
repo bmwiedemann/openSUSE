@@ -1,7 +1,7 @@
 #
 # spec file for package aalto-xml
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,19 @@
 
 
 Name:           aalto-xml
-Version:        1.3.3
+Version:        1.4.0
 Release:        0
 Summary:        Ultra-high performance non-blocking XML processor (Stax API + extensions)
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/FasterXML/%{name}
 Source0:        %{url}/archive/refs/tags/%{name}-%{version}.tar.gz
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  fdupes
-BuildRequires:  maven-local
-BuildRequires:  mvn(com.fasterxml:oss-parent:pom:)
-BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.codehaus.woodstox:stax2-api)
-BuildRequires:  mvn(org.moditect:moditect-maven-plugin)
+BuildRequires:  java-devel >= 9
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  stax2-api
 BuildArch:      noarch
 
 %description
@@ -56,23 +56,34 @@ API documentation for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-
-%{mvn_file} : %{name}
+cp %{SOURCE1} build.xml
 
 %build
-%{mvn_build} -f -- \
-    -Dproject.build.outputTimestamp=$(date -u -d @${SOURCE_DATE_EPOCH:-$(date +%%s)} +%%Y-%%m-%%dT%%H:%%M:%%SZ) \
-    -Djava.version=8
+mkdir -p lib
+build-jar-repository -s lib stax2-api
+ant jar javadoc
 
 %install
-%mvn_install
-%fdupes %{buildroot}%{_javadocdir}/%{name}
+# jar
+install -dm 0755 %{buildroot}%{_javadir}
+install -pm 0644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
+
+# javadoc
+install -dm 0755 %{buildroot}%{_javadocdir}
+cp -r target/site/apidocs %{buildroot}%{_javadocdir}/%{name}
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %license LICENSE
 %doc {README,SECURITY}.md release-notes/{VERSION,CREDITS,TODO}
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE
 
 %changelog

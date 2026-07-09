@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="aalto-xml" default="package" basedir=".">
+
+  <!-- ====================================================================== -->
+  <!-- Build environment properties                                           -->
+  <!-- ====================================================================== -->
+
+  <property name="project.groupId" value="com.fasterxml"/>
+  <property name="project.artifactId" value="aalto-xml"/>
+  <property name="project.version" value="1.4.0"/>
+
+  <property name="compiler.release" value="8"/>
+  <property name="compiler.source" value="1.${compiler.release}"/>
+  <property name="compiler.target" value="${compiler.source}"/>
+
+  <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
+  <property name="build.dir" value="target"/>
+  <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.moditectDir" value="src/moditect"/>
+  <property name="build.resourceDir" value="src/main/resources"/>
+
+  <property name="reporting.outputDirectory" value="${build.dir}/site"/>
+
+  <!-- ====================================================================== -->
+  <!-- Defining classpaths                                                    -->
+  <!-- ====================================================================== -->
+
+  <path id="build.classpath">
+    <fileset dir="lib">
+      <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <!-- ====================================================================== -->
+  <!-- Cleaning up target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="clean" description="Clean the output directory">
+    <delete dir="${build.dir}"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Compilation target                                                     -->
+  <!-- ====================================================================== -->
+
+  <target name="compile" description="Compile the code">
+    <mkdir dir="${build.outputDir}"/>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="true"
+           encoding="utf-8"
+           deprecation="true"
+           release="${compiler.release}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir}"/>
+      </src>
+      <exclude name="test/**"/>
+      <classpath refid="build.classpath"/>
+    </javac>
+    <javac destdir="${build.outputDir}"
+           nowarn="true"
+           debug="true"
+           optimize="true"
+           encoding="utf-8"
+           deprecation="true"
+           release="9"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.moditectDir}"/>
+      </src>
+      <modulepath>
+        <pathelement location="${build.outputDir}"/>
+        <path refid="build.classpath"/>
+      </modulepath>
+    </javac>
+    <copy todir="${build.outputDir}">
+      <fileset dir="${build.resourceDir}"/>
+    </copy>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Javadoc target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="javadoc" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}"
+             classpathref="build.classpath"
+             excludepackagenames="test.*"
+             destdir="${reporting.outputDirectory}/apidocs"
+             access="protected"
+             verbose="false"
+             encoding="UTF-8"
+             version="true"
+             use="true"
+             author="true"
+             splitindex="false"
+             nodeprecated="false"
+             nodeprecatedlist="false"
+             notree="false"
+             noindex="false"
+             nohelp="false"
+             nonavbar="false"
+             serialwarn="false"
+             charset="ISO-8859-1"
+             source="${compiler.source}"
+             linksource="false"
+             breakiterator="false">
+    </javadoc>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Package target                                                         -->
+  <!-- ====================================================================== -->
+
+  <target name="package" depends="compile" description="Package the application">
+    <jar jarfile="${build.dir}/${build.finalName}.jar"
+         compress="true"
+         index="false"
+         basedir="${build.outputDir}"
+         excludes="**/package.html">
+      <manifest>
+        <attribute name="Bundle-Description" value="Ultra-high performance non-blocking XML processor (Stax/Stax2, SAX/SAX2)"/>
+        <attribute name="Bundle-DocURL" value="https://github.com/FasterXML/aalto-xml"/>
+        <attribute name="Bundle-License" value="http://www.apache.org/licenses/LICENSE-2.0.txt"/>
+        <attribute name="Bundle-ManifestVersion" value="2"/>
+        <attribute name="Bundle-Name" value="${project.artifactId}"/>
+        <attribute name="Bundle-SymbolicName" value="${project.groupId}.${project.artifactId}"/>
+        <attribute name="Bundle-Vendor" value="FasterXML"/>
+        <attribute name="Bundle-Version" value="${project.version}"/>
+        <attribute name="Export-Package" value="com.fasterxml.aalto.async;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto,com.fasterxml.aalto.in,com.fasterxml.aalto.stax,com.fasterxml.aalto.util,javax.xml.stream&quot;,com.fasterxml.aalto.dom;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto.in,com.fasterxml.aalto.out,javax.xml.namespace,javax.xml.stream,javax.xml.transform.dom,org.codehaus.stax2.ri.dom,org.w3c.dom&quot;,com.fasterxml.aalto.evt;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.stream,javax.xml.stream.util,org.codehaus.stax2,org.codehaus.stax2.ri,org.codehaus.stax2.ri.evt&quot;,com.fasterxml.aalto.impl;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.stream,org.codehaus.stax2&quot;,com.fasterxml.aalto.in;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto.impl,com.fasterxml.aalto.util,javax.xml.namespace,javax.xml.stream,org.codehaus.stax2,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.xml.sax,org.xml.sax.ext&quot;,com.fasterxml.aalto.io;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto.out&quot;,com.fasterxml.aalto.out;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto.impl,com.fasterxml.aalto.util,javax.xml.namespace,javax.xml.stream,org.codehaus.stax2,org.codehaus.stax2.ri,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation&quot;,com.fasterxml.aalto.sax;version=&quot;${project.version}&quot;;uses:=&quot;javax.xml.parsers,org.xml.sax&quot;,com.fasterxml.aalto.stax;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto,com.fasterxml.aalto.in,com.fasterxml.aalto.out,javax.xml.namespace,javax.xml.stream,javax.xml.stream.util,javax.xml.transform,org.codehaus.stax2,org.codehaus.stax2.io,org.codehaus.stax2.ri,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.codehaus.stax2.validation&quot;,com.fasterxml.aalto.util;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto,com.fasterxml.aalto.in,org.codehaus.stax2.ri.typed,org.codehaus.stax2.typed,org.xml.sax,org.xml.sax.ext&quot;,com.fasterxml.aalto;version=&quot;${project.version}&quot;;uses:=&quot;com.fasterxml.aalto.impl,com.fasterxml.aalto.in,javax.xml.stream,org.codehaus.stax2,org.codehaus.stax2.validation&quot;"/>
+        <attribute name="Implementation-Title" value="${project.artifactId}"/>
+        <attribute name="Implementation-Vendor-Id" value="${project.groupId}"/>
+        <attribute name="Implementation-Vendor" value="FasterXML"/>
+        <attribute name="Implementation-Version" value="${project.version}"/>
+        <attribute name="Import-Package" value="javax.xml,javax.xml.namespace,javax.xml.parsers,javax.xml.stream,javax.xml.stream.util,javax.xml.transform,javax.xml.transform.dom,javax.xml.transform.sax,javax.xml.transform.stream,org.codehaus.stax2.io;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.ri.dom;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.ri.evt;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.ri.typed;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.ri;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.typed;version=&quot;[4.3,5)&quot;,org.codehaus.stax2.validation;version=&quot;[4.3,5)&quot;,org.codehaus.stax2;version=&quot;[4.3,5)&quot;,org.w3c.dom,org.xml.sax,org.xml.sax.ext,org.xml.sax.helpers"/>
+        <attribute name="Java-Version" value="${compiler.release}"/>
+        <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
+        <attribute name="Specification-Title" value="${project.artifactId}"/>
+        <attribute name="Specification-Vendor" value="FasterXML"/>
+        <attribute name="Specification-Version" value="${project.version}"/>
+      </manifest>
+    </jar>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- A dummy target for the package named after the type it creates         -->
+  <!-- ====================================================================== -->
+
+  <target name="jar" depends="package" description="Builds the jar for the application"/>
+
+</project>
