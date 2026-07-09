@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:14:03 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 6.0.0
+  * Add support for Python 3.13, 3.14.
+  * Drop support for Python 3.7, 3.8, 3.9.
+  * Remove setuptools fossils.
+  * Remove Python2 compatiblity code.
+
+-------------------------------------------------------------------
 Mon May  5 15:15:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

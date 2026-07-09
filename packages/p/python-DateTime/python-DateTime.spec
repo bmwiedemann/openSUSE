@@ -1,7 +1,7 @@
 #
 # spec file for package python-DateTime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-DateTime
-Version:        5.5
+Version:        6.0
 Release:        0
 Summary:        Zope DateTime data type
 License:        ZPL-2.1
 Group:          Development/Languages/Python
 URL:            https://github.com/zopefoundation/DateTime
-Source:         https://files.pythonhosted.org/packages/source/D/DateTime/DateTime-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/D/DateTime/datetime-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +46,7 @@ Unless you need to communicate with Zope APIs, you're probably
 better off using Python's built-in datetime module.
 
 %prep
-%setup -q -n DateTime-%{version}
+%autosetup -p1 -n datetime-%{version}
 
 %build
 %pyproject_wheel

@@ -114,4 +114,17 @@
     <comment></comment>
     <requestid>1274798</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5ab6d0eee2767351ad9702b76971cd88</srcmd5>
+    <version>6.0</version>
+    <time>1783628444</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.0
+  * Add support for Python 3.13, 3.14.
+  * Drop support for Python 3.7, 3.8, 3.9.
+  * Remove setuptools fossils.
+  * Remove Python2 compatiblity code.
+</comment>
+    <requestid>1364673</requestid>
+  </revision>
 </revisionlist>
