@@ -19,7 +19,7 @@
 
 %global _lto_cflags %{nil}
 Name:           fzf
-Version:        0.73.1
+Version:        0.74.0
 Release:        0
 Summary:        A command-line fuzzy finder
 License:        MIT
@@ -108,6 +108,7 @@ Plugin for vim allowing use of fzf.
 
 # fix  E: env-script-interpreter
 sed -i 's,#!%{_bindir}/env ,#!/bin/,' ./bin/fzf-tmux
+sed -i '1s|^#!/usr/bin/env bash|#!/usr/bin/bash|' shell/update.sh
 
 %build
 export FZF_VERSION=%{version} FZF_REVISION=tarball
