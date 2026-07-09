@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Jul  5 18:07:44 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 2.3.1:
+  * Added - ZSWAP & ZRAM information, CPU Release year, 
+    eMMC smart health status, Secure Boot, LandLock
+  * Added - ipmi sensors for workstations/servers see README.md
+  * Added - Right click to copy text to clip board, Dynamic column
+    sorting, (multi)-search list for text.
+  * Improve firmware with list + details view.
+  * Lots of memory leak, potential crash, etc. hunting with
+    AI assist.
+  * Device Tree improved - cleanup, IRQ added, compatible wrap
+  * All Language translations fully updated with AI assist
+  * Chromebooks battery/adapter support, improve bat for ASUS rog,
+    sensors missing icon fix
+  * minor fixes - benchmark disk detection improved, Improve old
+    non DT Distro, Support OpenKylin
+  * minor fixes - storage icons, dark algorithm improved, usb
+    chargers, added chromebook battery+chargers
+  * minor fixes - memleaks+mod-cleanup, improve speed on
+    devtools+kernelmodules+os detection(debian)
+  * minor fixes - sensor 1wire naming, homepath fix, storage
+    boot0+1 emmc hide, fix uid_min, mint theme fix
+  * minor fixes - cpack added alpine/postmarketos, fix cachyos,
+    debug on musl fixed, overview storage size
+
+-------------------------------------------------------------------
 Mon Mar  2 16:07:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 2.2.16:
