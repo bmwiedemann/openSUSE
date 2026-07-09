@@ -2624,22 +2624,6 @@ unsorted:
   - container-suseconnect 
   - containerd-ctr 
   - containerd-devel 
-  - containerized-data-importer-1.65-api 
-  - containerized-data-importer-1.65-cloner 
-  - containerized-data-importer-1.65-controller 
-  - containerized-data-importer-1.65-importer 
-  - containerized-data-importer-1.65-manifests 
-  - containerized-data-importer-1.65-operator 
-  - containerized-data-importer-1.65-uploadproxy 
-  - containerized-data-importer-1.65-uploadserver 
-  - containerized-data-importer-api 
-  - containerized-data-importer-cloner 
-  - containerized-data-importer-controller 
-  - containerized-data-importer-importer 
-  - containerized-data-importer-manifests 
-  - containerized-data-importer-operator 
-  - containerized-data-importer-uploadproxy 
-  - containerized-data-importer-uploadserver 
   - containerized-data-importer1.65-api 
   - containerized-data-importer1.65-cloner 
   - containerized-data-importer1.65-controller 
@@ -3430,8 +3414,6 @@ unsorted:
   - docbook-toys 
   - docbook-utils 
   - docbook-utils-minimal 
-  - docbook-xml-slides 
-  - docbook-xml-website 
   - docbook-xsl-pdf2index 
   - docbook2x 
   - docbook2x-doc 
@@ -8689,7 +8671,6 @@ unsorted:
   - hsqldb-manual 
   - ht 
   - hte 
-  - html-dtd 
   - html-xml-utils 
   - html2ps 
   - htmlcxx 
@@ -18686,7 +18667,6 @@ unsorted:
   - mathjax-typewriter-fonts 
   - mathjax-vector-fonts 
   - mathjax-zero-fonts 
-  - mathml-dtd 
   - mathmod 
   - matio-tools 
   - matomo 
@@ -20371,9 +20351,7 @@ unsorted:
   - obs-scm-bridge 
   - obs-service-appimage 
   - obs-service-cargo 
-  - obs-service-cdi-1.65_containers_meta 
   - obs-service-cdi1.65_containers_meta 
-  - obs-service-cdi_containers_meta 
   - obs-service-compose_kiwi_description 
   - obs-service-docker_label_helper 
   - obs-service-download_assets 
@@ -24415,7 +24393,6 @@ unsorted:
   - python311-ipdb 
   - python311-keystonemiddleware 
   - python311-mediafile 
-  - python311-mistralai 
   - python311-modern-colorthief 
   - python311-onnxruntime 
   - python311-openapi-core 
@@ -24428,7 +24405,6 @@ unsorted:
   - python311-pipx 
   - python311-platformdirs 
   - python311-pluggy 
-  - python311-pook 
   - python311-pymathics-graph 
   - python311-pysaml2 
   - python311-pytest-mypy-plugins 
@@ -35336,7 +35312,6 @@ unsorted:
   - teeworlds 
   - tei-roma 
   - tei-xsl-stylesheets 
-  - tei_4 
   - tekton-cli 
   - tekton-cli-bash-completion 
   - tekton-cli-fish-completion 
@@ -47187,7 +47162,6 @@ unsorted:
   - xgc 
   - xh 
   - xhfsutil 
-  - xhtml-dtd 
   - xindy 
   - xindy-rules 
   - xine-ui 
