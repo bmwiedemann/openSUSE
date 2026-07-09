@@ -1,7 +1,7 @@
 #
 # spec file for package hivex
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Michal Hrusecky <mhrusecky@novell.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,7 @@ BuildRequires:  gcc
 BuildRequires:  libtool
 BuildRequires:  libxml2-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 Requires:       perl(Getopt::Long)
 Requires:       perl(Pod::Usage)
 Requires:       perl(Win::Hivex)
