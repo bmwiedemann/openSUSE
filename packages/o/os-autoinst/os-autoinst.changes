@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 08 12:46:00 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783514748.b19cdea:
+  * feat: allow UEFI_PFLASH_CODE as asset
+  * test: clean up t/29-backend-driver.t
+  * test: fix race condition in t/29-backend-driver.t
+  * fix(t/34-git): prevent t/34-git.t from leaking t/vars.json
+  * test: fix flaky timeout in t/18-qemu-options.t
+
+-------------------------------------------------------------------
 Mon Jul 06 09:16:15 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783329367.214f5bc:
