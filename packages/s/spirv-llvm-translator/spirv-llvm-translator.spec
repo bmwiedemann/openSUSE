@@ -23,7 +23,7 @@
 
 %define sover   22
 Name:           spirv-llvm-translator
-Version:        22.1.2
+Version:        22.1.4
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause
@@ -31,6 +31,8 @@ Group:          System/Libraries
 URL:            https://github.com/KhronosGroup/SPIRV-LLVM-Translator
 Source:         https://github.com/KhronosGroup/SPIRV-LLVM-Translator/archive/refs/tags/v%{version}.tar.gz#/SPIRV-LLVM-Translator-%{version}.tar.gz
 Source101:      %{name}.rpmlintrc
+Patch1:         Remove-internal-values-for-SPV_INTEL_predicated_io.patch
+Patch2:         Support-SPV_INTEL_rounded_div_sqrt-extension.patch
 BuildRequires:  cmake >= 3.3
 BuildRequires:  gcc%{?gcc_version} >= 9
 BuildRequires:  gcc%{?gcc_version}-c++ >= 9
@@ -66,6 +68,8 @@ the LLVM/SPIR-V Bi-Directional Translator library.
 
 %prep
 %setup -q -n SPIRV-LLVM-Translator-%{version}
+%patch -P2 -p1 -R
+%patch -P1 -p1 -R
 
 %build
 %cmake \

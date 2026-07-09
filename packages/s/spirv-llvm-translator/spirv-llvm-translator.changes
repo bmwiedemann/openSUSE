@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul  5 20:57:55 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 22.1.4.
+  * Remove internal values for SPV_INTEL_predicated_io.
+  * Add workaround to translate casts from target ext types to int.
+  * Fix missing spir_func CC on builtin FP4/i4 conversion calls.
+  * Support SaturatedToLargestFloat8NormalConversionEXT decoration.
+  * Update SPV_INTEL_fp_conversions to the latest spec revision.
+  * Preventing generating FPRoundingMode for arithmetic constrained
+    intrinsics.
+  * Support SPV_INTEL_rounded_div_sqrt extension.
+- Add patches to remove changes that do not build yet:
+  - Remove-internal-values-for-SPV_INTEL_predicated_io.patch
+  - Support-SPV_INTEL_rounded_div_sqrt-extension.patch
+
+-------------------------------------------------------------------
 Sun May  3 20:45:24 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 22.1.2.

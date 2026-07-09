@@ -1,0 +1,413 @@
+From c88a2e4a1ec77f7adc8916940afd9754c3a30fab Mon Sep 17 00:00:00 2001
+From: "Ye, Qi" <qi.ye@intel.com>
+Date: Fri, 26 Jun 2026 07:17:28 -0700
+Subject: [PATCH] [Backport to 22] Support SPV_INTEL_rounded_div_sqrt extension
+ (#3770)
+
+Allow `fdiv` or `sqrt` instructions to be decorated with `FPRoundingMode`.
+
+Spec:
+https://github.khronos.org/SPIRV-Registry/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt.html
+---
+ include/LLVMSPIRVExtensions.inc               |   1 +
+ lib/SPIRV/SPIRVWriter.cpp                     |  33 +++-
+ lib/SPIRV/libSPIRV/SPIRVEntry.h               |   2 +
+ lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h         |   1 +
+ lib/SPIRV/libSPIRV/SPIRVType.cpp              |   5 +
+ lib/SPIRV/libSPIRV/SPIRVType.h                |   1 +
+ spirv-headers-tag.conf                        |   2 +-
+ .../fconvert_unaffected.ll                    |  25 +++
+ .../rounding_supported.ll                     | 176 ++++++++++++++++++
+ .../llvm-intrinsics/constrained-arithmetic.ll |  19 ++
+ 10 files changed, 260 insertions(+), 5 deletions(-)
+ create mode 100644 test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/fconvert_unaffected.ll
+ create mode 100644 test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/rounding_supported.ll
+
+diff --git a/include/LLVMSPIRVExtensions.inc b/include/LLVMSPIRVExtensions.inc
+index b55687c318..eabc9b510e 100644
+--- a/include/LLVMSPIRVExtensions.inc
++++ b/include/LLVMSPIRVExtensions.inc
+@@ -92,3 +92,4 @@ EXT(SPV_INTEL_predicated_io)
+ EXT(SPV_INTEL_sigmoid)
+ EXT(SPV_INTEL_float4)
+ EXT(SPV_INTEL_fp_conversions)
++EXT(SPV_INTEL_rounded_divide_sqrt)
+diff --git a/lib/SPIRV/SPIRVWriter.cpp b/lib/SPIRV/SPIRVWriter.cpp
+index 27e4dcccdb..a3bcaf970c 100644
+--- a/lib/SPIRV/SPIRVWriter.cpp
++++ b/lib/SPIRV/SPIRVWriter.cpp
+@@ -4024,6 +4024,7 @@ bool LLVMToSPIRVBase::isKnownIntrinsic(Intrinsic::ID Id) {
+   case Intrinsic::experimental_constrained_fsub:
+   case Intrinsic::experimental_constrained_fmul:
+   case Intrinsic::experimental_constrained_fdiv:
++  case Intrinsic::experimental_constrained_sqrt:
+   case Intrinsic::experimental_constrained_frem:
+   case Intrinsic::experimental_constrained_fma:
+   case Intrinsic::experimental_constrained_fptoui:
+@@ -4573,11 +4574,35 @@ SPIRVValue *LLVMToSPIRVBase::transIntrinsicInst(IntrinsicInst *II,
+                              transValue(II->getArgOperand(1), BB), BB);
+   }
+   case Intrinsic::experimental_constrained_fdiv: {
++    auto *BI = BM->addBinaryInst(OpFDiv, transType(II->getType()),
++                                 transValue(II->getArgOperand(0), BB),
++                                 transValue(II->getArgOperand(1), BB), BB);
++    if (BM->isAllowedToUseExtension(
++            ExtensionID::SPV_INTEL_rounded_divide_sqrt) &&
++        BI->getType()->isTypeIEEE754Float()) {
++      BM->addCapability(CapabilityRoundedDivideSqrtINTEL);
++      return applyRoundingModeConstraint(II->getOperand(2), BI);
++    }
+     SPIRVDBG(dbgs() << "WARNING: Rounding Mode of constrained intrinsic "
+-                       "\"fdiv\" not supported by SPIR-V, dropping it.\n");
+-    return BM->addBinaryInst(OpFDiv, transType(II->getType()),
+-                             transValue(II->getArgOperand(0), BB),
+-                             transValue(II->getArgOperand(1), BB), BB);
++                       "\"fdiv\" not supported by SPIR-V without "
++                       "SPV_INTEL_rounded_divide_sqrt, dropping it.\n");
++    return BI;
++  }
++  case Intrinsic::experimental_constrained_sqrt: {
++    SPIRVType *STy = transType(II->getType());
++    std::vector<SPIRVValue *> Ops{transValue(II->getArgOperand(0), BB)};
++    auto *BI = BM->addExtInst(STy, BM->getExtInstSetId(SPIRVEIS_OpenCL),
++                              OpenCLLIB::Sqrt, Ops, BB);
++    if (BM->isAllowedToUseExtension(
++            ExtensionID::SPV_INTEL_rounded_divide_sqrt) &&
++        BI->getType()->isTypeIEEE754Float()) {
++      BM->addCapability(CapabilityRoundedDivideSqrtINTEL);
++      return applyRoundingModeConstraint(II->getOperand(1), BI);
++    }
++    SPIRVDBG(dbgs() << "WARNING: Rounding Mode of constrained intrinsic "
++                       "\"sqrt\" not supported by SPIR-V without "
++                       "SPV_INTEL_rounded_divide_sqrt, dropping it.\n");
++    return BI;
+   }
+   case Intrinsic::experimental_constrained_frem: {
+     SPIRVDBG(dbgs() << "WARNING: Rounding Mode of constrained intrinsic "
+diff --git a/lib/SPIRV/libSPIRV/SPIRVEntry.h b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+index 3079f60989..71f80ad6a1 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVEntry.h
++++ b/lib/SPIRV/libSPIRV/SPIRVEntry.h
+@@ -921,6 +921,8 @@ class SPIRVCapability : public SPIRVEntryNoId<OpCapability> {
+       return ExtensionID::SPV_INTEL_function_variants;
+     case internal::CapabilityBFloat16ArithmeticINTEL:
+       return ExtensionID::SPV_INTEL_bfloat16_arithmetic;
++    case CapabilityRoundedDivideSqrtINTEL:
++      return ExtensionID::SPV_INTEL_rounded_divide_sqrt;
+     case internal::CapabilityDeviceBarrierINTEL:
+       return ExtensionID::SPV_INTEL_device_barrier;
+     default:
+diff --git a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+index eb7f4da918..95710b7597 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+@@ -709,6 +709,7 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+   add(internal::CapabilityInt16AtomicsINTEL, "Int16AtomicsINTEL");
+   add(internal::CapabilityAtomicBFloat16LoadStoreINTEL,
+       "AtomicBFloat16LoadStoreINTEL");
++  add(CapabilityRoundedDivideSqrtINTEL, "RoundedDivideSqrtINTEL");
+ }
+ SPIRV_DEF_NAMEMAP(Capability, SPIRVCapabilityNameMap)
+ 
+diff --git a/lib/SPIRV/libSPIRV/SPIRVType.cpp b/lib/SPIRV/libSPIRV/SPIRVType.cpp
+index df512c4cfd..ce9dda828a 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVType.cpp
++++ b/lib/SPIRV/libSPIRV/SPIRVType.cpp
+@@ -238,6 +238,11 @@ bool SPIRVType::isTypeVectorFloat() const {
+   return isTypeVector() && getVectorComponentType()->isTypeFloat();
+ }
+ 
++bool SPIRVType::isTypeIEEE754Float() const {
++  const SPIRVType *Ty = isTypeVector() ? getVectorComponentType() : this;
++  return Ty->isTypeFloat(16) || Ty->isTypeFloat(32) || Ty->isTypeFloat(64);
++}
++
+ bool SPIRVType::isTypeVectorOrScalarBool() const {
+   return isTypeBool() || isTypeVectorBool();
+ }
+diff --git a/lib/SPIRV/libSPIRV/SPIRVType.h b/lib/SPIRV/libSPIRV/SPIRVType.h
+index 7f107e5c2d..cd00f9e320 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVType.h
++++ b/lib/SPIRV/libSPIRV/SPIRVType.h
+@@ -86,6 +86,7 @@ class SPIRVType : public SPIRVEntry {
+   bool isTypeReserveId() const;
+   bool isTypeFloat(unsigned Bits = 0,
+                    unsigned FloatingPointEncoding = FPEncodingMax) const;
++  bool isTypeIEEE754Float() const;
+   bool isTypeImage() const;
+   bool isTypeOCLImage() const;
+   bool isTypePipe() const;
+diff --git a/spirv-headers-tag.conf b/spirv-headers-tag.conf
+index 02c761136c..8397c6aae9 100644
+--- a/spirv-headers-tag.conf
++++ b/spirv-headers-tag.conf
+@@ -1 +1 @@
+-b8a32968473ce852a809b9de5f04f02a5a9dfa78
++948a3b0997e2dffea5484b3df7bd5590c5b844cc
+diff --git a/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/fconvert_unaffected.ll b/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/fconvert_unaffected.ll
+new file mode 100644
+index 0000000000..d3062075ca
+--- /dev/null
++++ b/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/fconvert_unaffected.ll
+@@ -0,0 +1,25 @@
++; Enabling SPV_INTEL_rounded_divide_sqrt shouldn't add RoundedDivideSqrtINTEL,
++; as FPRoundingMode on conversion instructions is supported in core SPIR-V
++
++; RUN: llvm-spirv %s -o %t.spv --spirv-ext=+SPV_INTEL_rounded_divide_sqrt
++; TODO: re-enable spirv-val once it can recognize RoundedDivideSqrtINTEL capability
++; RUNx: spirv-val %t.spv
++; RUN: llvm-spirv %t.spv -o %t.spt --to-text
++; RUN: FileCheck %s --input-file %t.spt
++
++target datalayout = "e-p:32:32-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
++target triple = "spir-unknown-unknown"
++
++; CHECK-NOT: Capability RoundedDivideSqrtINTEL
++; CHECK-NOT: Extension "SPV_INTEL_rounded_divide_sqrt"
++; The conversion still carries its rounding-mode decoration (core SPIR-V).
++; CHECK: Decorate [[#CVT:]] FPRoundingMode 1
++; CHECK: FConvert [[#]] [[#CVT]]
++
++define spir_kernel void @test(double %a) {
++entry:
++  %r = call float @llvm.experimental.constrained.fptrunc.f32.f64(double %a, metadata !"round.towardzero", metadata !"fpexcept.strict")
++  ret void
++}
++
++declare float @llvm.experimental.constrained.fptrunc.f32.f64(double, metadata, metadata)
+diff --git a/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/rounding_supported.ll b/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/rounding_supported.ll
+new file mode 100644
+index 0000000000..f0f3be6b7f
+--- /dev/null
++++ b/test/extensions/INTEL/SPV_INTEL_rounded_divide_sqrt/rounding_supported.ll
+@@ -0,0 +1,176 @@
++; Verifies that FPRoundingMode decorations on OpFDiv and sqrt (OpenCL.std
++; extended instruction) trigger the RoundedDivideSqrtINTEL capability and the
++; SPV_INTEL_rounded_divide_sqrt extension, and round-trip back through both
++; reverse-translation paths.
++
++; RUN: llvm-spirv %s -o %t.spv --spirv-ext=+SPV_INTEL_rounded_divide_sqrt
++; TODO: re-enable spirv-val once it can recognize RoundedDivideSqrtINTEL capability
++; RUNx: spirv-val %t.spv
++; RUN: llvm-spirv %t.spv -o %t.spt --to-text
++; RUN: FileCheck %s --input-file %t.spt --check-prefix=CHECK-SPIRV
++
++; OCL path: there is no OCL representation for the rounding mode on fdiv/sqrt, so it is dropped.
++; RUN: llvm-spirv -r %t.spv -o %t.rev.bc
++; RUN: llvm-dis %t.rev.bc -o - | FileCheck %s --check-prefixes=CHECK-LLVM,CHECK-LLVM-OCL \
++; RUN:   --implicit-check-not=FPRoundingMode --implicit-check-not=spirv.Decorations
++
++; SPV-IR path: the rounding mode is preserved as an
++; !spirv.Decorations FPRoundingMode metadata attached to the fdiv/sqrt.
++; RUN: llvm-spirv -r %t.spv --spirv-target-env=SPV-IR -o %t.rev.spvir.bc
++; RUN: llvm-dis %t.rev.spvir.bc -o - | FileCheck %s --check-prefixes=CHECK-LLVM,CHECK-LLVM-SPV
++
++target datalayout = "e-p:32:32-i64:64-v16:16-v24:32-v32:32-v48:64-v96:128-v192:256-v256:256-v512:512-v1024:1024"
++target triple = "spir-unknown-unknown"
++
++; CHECK-SPIRV: Capability RoundedDivideSqrtINTEL
++; CHECK-SPIRV: Extension "SPV_INTEL_rounded_divide_sqrt"
++
++; CHECK-SPIRV-DAG: TypeFloat [[#HALF:]] 16
++; CHECK-SPIRV-DAG: TypeFloat [[#FLOAT:]] 32
++; CHECK-SPIRV-DAG: TypeFloat [[#DOUBLE:]] 64
++
++; CHECK-SPIRV-DAG: TypeVector [[#HALFV:]] [[#HALF]] 2
++; CHECK-SPIRV-DAG: TypeVector [[#FLOATV:]] [[#FLOAT]] 4
++; CHECK-SPIRV-DAG: TypeVector [[#DOUBLEV:]] [[#DOUBLE]] 3
++
++; All four rounding modes on the scalar-typed divides.
++; CHECK-SPIRV-DAG: Decorate [[#H_RTE:]] FPRoundingMode 0
++; CHECK-SPIRV-DAG: Decorate [[#F_RTZ:]] FPRoundingMode 1
++; CHECK-SPIRV-DAG: Decorate [[#D_RTP:]] FPRoundingMode 2
++; CHECK-SPIRV-DAG: Decorate [[#D_RTN:]] FPRoundingMode 3
++; CHECK-SPIRV-DAG: FDiv [[#HALF]] [[#H_RTE]]
++; CHECK-SPIRV-DAG: FDiv [[#FLOAT]] [[#F_RTZ]]
++; CHECK-SPIRV-DAG: FDiv [[#DOUBLE]] [[#D_RTP]]
++; CHECK-SPIRV-DAG: FDiv [[#DOUBLE]] [[#D_RTN]]
++; CHECK-LLVM-LABEL: @test_fdiv_scalar
++; CHECK-LLVM: fdiv half
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTE:]]
++; CHECK-LLVM: fdiv float
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTZ:]]
++; CHECK-LLVM: fdiv double
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTP:]]
++; CHECK-LLVM: fdiv double
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTN:]]
++define spir_kernel void @test_fdiv_scalar(half %h0, half %h1, float %f0, float %f1, double %d0, double %d1) {
++entry:
++  %h_rte = call half @llvm.experimental.constrained.fdiv.f16(half %h0, half %h1, metadata !"round.tonearest", metadata !"fpexcept.strict")
++  %f_rtz = call float @llvm.experimental.constrained.fdiv.f32(float %f0, float %f1, metadata !"round.towardzero", metadata !"fpexcept.strict")
++  %d_rtp = call double @llvm.experimental.constrained.fdiv.f64(double %d0, double %d1, metadata !"round.upward", metadata !"fpexcept.strict")
++  %d_rtn = call double @llvm.experimental.constrained.fdiv.f64(double %d0, double %d1, metadata !"round.downward", metadata !"fpexcept.strict")
++  ret void
++}
++
++; All four rounding modes on the vector-typed divides.
++; CHECK-SPIRV-DAG: Decorate [[#HV_RTE:]] FPRoundingMode 0
++; CHECK-SPIRV-DAG: Decorate [[#FV_RTZ:]] FPRoundingMode 1
++; CHECK-SPIRV-DAG: Decorate [[#DV_RTP:]] FPRoundingMode 2
++; CHECK-SPIRV-DAG: Decorate [[#DV_RTN:]] FPRoundingMode 3
++; CHECK-SPIRV-DAG: FDiv [[#HALFV]] [[#HV_RTE]]
++; CHECK-SPIRV-DAG: FDiv [[#FLOATV]] [[#FV_RTZ]]
++; CHECK-SPIRV-DAG: FDiv [[#DOUBLEV]] [[#DV_RTP]]
++; CHECK-SPIRV-DAG: FDiv [[#DOUBLEV]] [[#DV_RTN]]
++
++; CHECK-LLVM-LABEL: @test_fdiv_vector
++; CHECK-LLVM: fdiv <2 x half>
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTE]]
++; CHECK-LLVM: fdiv <4 x float>
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTZ]]
++; CHECK-LLVM: fdiv <3 x double>
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTP]]
++; CHECK-LLVM: fdiv <3 x double>
++; CHECK-LLVM-SPV-SAME: !spirv.Decorations ![[#RTN]]
++define spir_kernel void @test_fdiv_vector(<2 x half> %h0, <2 x half> %h1, <4 x float> %f0, <4 x float> %f1, <3 x double> %d0, <3 x double> %d1) {
++entry:
++  %h_rte = call <2 x half> @llvm.experimental.constrained.fdiv.v2f16(<2 x half> %h0, <2 x half> %h1, metadata !"round.tonearest", metadata !"fpexcept.strict")
++  %f_rtz = call <4 x float> @llvm.experimental.constrained.fdiv.v4f32(<4 x float> %f0, <4 x float> %f1, metadata !"round.towardzero", metadata !"fpexcept.strict")
++  %d_rtp = call <3 x double> @llvm.experimental.constrained.fdiv.v3f64(<3 x double> %d0, <3 x double> %d1, metadata !"round.upward", metadata !"fpexcept.strict")
++  %d_rtn = call <3 x double> @llvm.experimental.constrained.fdiv.v3f64(<3 x double> %d0, <3 x double> %d1, metadata !"round.downward", metadata !"fpexcept.strict")
++  ret void
++}
++
++; All four rounding modes on the scalar-typed constrained sqrts.
++; CHECK-SPIRV-DAG: Decorate [[#S_RTE:]] FPRoundingMode 0
++; CHECK-SPIRV-DAG: Decorate [[#S_RTZ:]] FPRoundingMode 1
++; CHECK-SPIRV-DAG: Decorate [[#S_RTP:]] FPRoundingMode 2
++; CHECK-SPIRV-DAG: Decorate [[#S_RTN:]] FPRoundingMode 3
++; CHECK-SPIRV-DAG: ExtInst [[#HALF]]   [[#S_RTE]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#FLOAT]]  [[#S_RTZ]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#DOUBLE]] [[#S_RTP]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#DOUBLE]] [[#S_RTN]] [[#]] sqrt
++
++; CHECK-LLVM-OCL-LABEL: @test_sqrt_scalar
++; CHECK-LLVM-OCL: call spir_func half @_Z4sqrtDh
++; CHECK-LLVM-OCL: call spir_func float @_Z4sqrtf
++; CHECK-LLVM-OCL: call spir_func double @_Z4sqrtd
++; CHECK-LLVM-OCL: call spir_func double @_Z4sqrtd
++
++; CHECK-LLVM-SPV-LABEL: @test_sqrt_scalar
++; CHECK-LLVM-SPV: call spir_func half @_Z16__spirv_ocl_sqrtDh(half %{{.*}}, !spirv.Decorations ![[#RTE]]
++; CHECK-LLVM-SPV: call spir_func float @_Z16__spirv_ocl_sqrtf(float %{{.*}}, !spirv.Decorations ![[#RTZ]]
++; CHECK-LLVM-SPV: call spir_func double @_Z16__spirv_ocl_sqrtd(double %{{.*}}, !spirv.Decorations ![[#RTP]]
++; CHECK-LLVM-SPV: call spir_func double @_Z16__spirv_ocl_sqrtd(double %{{.*}}, !spirv.Decorations ![[#RTN]]
++define spir_kernel void @test_sqrt_scalar(half %h, float %f, double %d) {
++entry:
++  %h_rte = call half   @llvm.experimental.constrained.sqrt.f16(half %h,   metadata !"round.tonearest", metadata !"fpexcept.strict")
++  %f_rtz = call float  @llvm.experimental.constrained.sqrt.f32(float %f,  metadata !"round.towardzero", metadata !"fpexcept.strict")
++  %d_rtp = call double @llvm.experimental.constrained.sqrt.f64(double %d, metadata !"round.upward",     metadata !"fpexcept.strict")
++  %d_rtn = call double @llvm.experimental.constrained.sqrt.f64(double %d, metadata !"round.downward",   metadata !"fpexcept.strict")
++  ret void
++}
++
++; All four rounding modes on vector-typed constrained sqrts.
++; CHECK-SPIRV-DAG: Decorate [[#SV_RTE:]] FPRoundingMode 0
++; CHECK-SPIRV-DAG: Decorate [[#SV_RTZ:]] FPRoundingMode 1
++; CHECK-SPIRV-DAG: Decorate [[#SV_RTP:]] FPRoundingMode 2
++; CHECK-SPIRV-DAG: Decorate [[#SV_RTN:]] FPRoundingMode 3
++; CHECK-SPIRV-DAG: ExtInst [[#HALFV]]   [[#SV_RTE]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#FLOATV]]  [[#SV_RTZ]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#DOUBLEV]] [[#SV_RTP]] [[#]] sqrt
++; CHECK-SPIRV-DAG: ExtInst [[#DOUBLEV]] [[#SV_RTN]] [[#]] sqrt
++
++; CHECK-LLVM-OCL-LABEL: @test_sqrt_vector
++; CHECK-LLVM-OCL: call spir_func <2 x half> @_Z4sqrtDv2_Dh
++; CHECK-LLVM-OCL: call spir_func <4 x float> @_Z4sqrtDv4_f
++; CHECK-LLVM-OCL: call spir_func <3 x double> @_Z4sqrtDv3_d
++; CHECK-LLVM-OCL: call spir_func <3 x double> @_Z4sqrtDv3_d
++
++; CHECK-LLVM-SPV-LABEL: @test_sqrt_vector
++; CHECK-LLVM-SPV: call spir_func <2 x half> @_Z16__spirv_ocl_sqrtDv2_Dh(<2 x half> %{{.*}}, !spirv.Decorations ![[#RTE]]
++; CHECK-LLVM-SPV: call spir_func <4 x float> @_Z16__spirv_ocl_sqrtDv4_f(<4 x float> %{{.*}}, !spirv.Decorations ![[#RTZ]]
++; CHECK-LLVM-SPV: call spir_func <3 x double> @_Z16__spirv_ocl_sqrtDv3_d(<3 x double> %{{.*}}, !spirv.Decorations ![[#RTP]]
++; CHECK-LLVM-SPV: call spir_func <3 x double> @_Z16__spirv_ocl_sqrtDv3_d(<3 x double> %{{.*}}, !spirv.Decorations ![[#RTN]]
++define spir_kernel void @test_sqrt_vector(<2 x half> %h, <4 x float> %f, <3 x double> %d) {
++entry:
++  %h_rte = call <2 x half>   @llvm.experimental.constrained.sqrt.v2f16(<2 x half> %h,   metadata !"round.tonearest", metadata !"fpexcept.strict")
++  %f_rtz = call <4 x float>  @llvm.experimental.constrained.sqrt.v4f32(<4 x float> %f,  metadata !"round.towardzero", metadata !"fpexcept.strict")
++  %d_rtp = call <3 x double> @llvm.experimental.constrained.sqrt.v3f64(<3 x double> %d, metadata !"round.upward",     metadata !"fpexcept.strict")
++  %d_rtn = call <3 x double> @llvm.experimental.constrained.sqrt.v3f64(<3 x double> %d, metadata !"round.downward",   metadata !"fpexcept.strict")
++  ret void
++}
++
++declare half @llvm.experimental.constrained.fdiv.f16(half, half, metadata, metadata)
++declare float @llvm.experimental.constrained.fdiv.f32(float, float, metadata, metadata)
++declare double @llvm.experimental.constrained.fdiv.f64(double, double, metadata, metadata)
++
++declare <2 x half> @llvm.experimental.constrained.fdiv.v2f16(<2 x half>, <2 x half>, metadata, metadata)
++declare <4 x float> @llvm.experimental.constrained.fdiv.v4f32(<4 x float>, <4 x float>, metadata, metadata)
++declare <3 x double> @llvm.experimental.constrained.fdiv.v3f64(<3 x double>, <3 x double>, metadata, metadata)
++
++declare half   @llvm.experimental.constrained.sqrt.f16(half, metadata, metadata)
++declare float  @llvm.experimental.constrained.sqrt.f32(float, metadata, metadata)
++declare double @llvm.experimental.constrained.sqrt.f64(double, metadata, metadata)
++
++declare <2 x half>   @llvm.experimental.constrained.sqrt.v2f16(<2 x half>, metadata, metadata)
++declare <4 x float>  @llvm.experimental.constrained.sqrt.v4f32(<4 x float>, metadata, metadata)
++declare <3 x double> @llvm.experimental.constrained.sqrt.v3f64(<3 x double>, metadata, metadata)
++
++; Verify the FPRoundingMode (Decoration 39) metadata nodes captured above:
++; mode 0 = RTE, 1 = RTZ, 2 = RTP, 3 = RTN.
++; CHECK-LLVM-SPV-DAG: ![[#RTE]] = !{![[#RTEX:]]}
++; CHECK-LLVM-SPV-DAG: ![[#RTEX]] = !{i32 39, i32 0}
++; CHECK-LLVM-SPV-DAG: ![[#RTZ]] = !{![[#RTZX:]]}
++; CHECK-LLVM-SPV-DAG: ![[#RTZX]] = !{i32 39, i32 1}
++; CHECK-LLVM-SPV-DAG: ![[#RTP]] = !{![[#RTPX:]]}
++; CHECK-LLVM-SPV-DAG: ![[#RTPX]] = !{i32 39, i32 2}
++; CHECK-LLVM-SPV-DAG: ![[#RTN]] = !{![[#RTNX:]]}
++; CHECK-LLVM-SPV-DAG: ![[#RTNX]] = !{i32 39, i32 3}
+diff --git a/test/llvm-intrinsics/constrained-arithmetic.ll b/test/llvm-intrinsics/constrained-arithmetic.ll
+index 8c635db482..ef9ecea3e9 100644
+--- a/test/llvm-intrinsics/constrained-arithmetic.ll
++++ b/test/llvm-intrinsics/constrained-arithmetic.ll
+@@ -3,16 +3,31 @@
+ ; RUN: llvm-spirv %t.bc -o %t.spv
+ ; RUN: spirv-val %t.spv
+ 
++; RUN: llvm-spirv %t.bc -spirv-text --spirv-ext=+SPV_INTEL_rounded_divide_sqrt -o - | FileCheck \
++; RUN:   %s --check-prefixes=CHECK,CHECK-EXT --implicit-check-not FPRoundingMode
++; RUN: llvm-spirv %t.bc -o %t.spv --spirv-ext=+SPV_INTEL_rounded_divide_sqrt
++; TODO: re-enable spirv-val once it can recognize RoundedDivideSqrtINTEL capability
++; RUNx: spirv-val %t.spv
++
++; CHECK-NOT: Capability RoundedDivideSqrtINTEL
++; CHECK-NOT: Extension "SPV_INTEL_rounded_divide_sqrt"
++; CHECK-EXT: Capability RoundedDivideSqrtINTEL
++; CHECK-EXT: Extension "SPV_INTEL_rounded_divide_sqrt"
+ 
+ ; CHECK: Name [[ad:[0-9]+]] "add"
+ ; CHECK: Name [[di:[0-9]+]] "div"
+ ; CHECK: Name [[su:[0-9]+]] "sub"
+ ; CHECK: Name [[mu:[0-9]+]] "mul"
++; CHECK: Name [[sq:[0-9]+]] "sqrt"
++
++; CHECK-EXT-DAG: Decorate [[di]] FPRoundingMode 1
++; CHECK-EXT-DAG: Decorate [[sq]] FPRoundingMode 3
+ 
+ ; CHECK: FAdd {{[0-9]+}} [[ad]]
+ ; CHECK: FDiv {{[0-9]+}} [[di]]
+ ; CHECK: FSub {{[0-9]+}} [[su]]
+ ; CHECK: FMul {{[0-9]+}} [[mu]]
++; CHECK: ExtInst [[#]] [[sq]] [[#]] sqrt
+ ; CHECK: FMul
+ ; CHECK: FAdd
+ ; CHECK: ExtInst {{[0-9]+}} {{[0-9]+}} {{[0-9]+}} fma
+@@ -28,6 +43,7 @@ entry:
+   %div = tail call float @llvm.experimental.constrained.fdiv.f32(float %add, float %add, metadata !"round.towardzero", metadata !"fpexcept.strict") #2, !fpmath !10
+   %sub = tail call float @llvm.experimental.constrained.fsub.f32(float %div, float %div, metadata !"round.upward", metadata !"fpexcept.strict") #2
+   %mul = tail call float @llvm.experimental.constrained.fmul.f32(float %sub, float %sub, metadata !"round.downward", metadata !"fpexcept.strict") #2
++  %sqrt = tail call float @llvm.experimental.constrained.sqrt.f32(float %mul, metadata !"round.downward", metadata !"fpexcept.strict") #2
+   %0 = tail call float @llvm.experimental.constrained.fmuladd.f32(float %mul, float %mul, float %mul, metadata !"round.tonearestaway", metadata !"fpexcept.strict") #2
+   %1 = tail call float @llvm.experimental.constrained.fma.f32(float %0, float %0, float %0, metadata !"round.dynamic", metadata !"fpexcept.strict") #2
+   %2 = tail call float @llvm.experimental.constrained.frem.f32(float %1, float %1, metadata !"round.dynamic", metadata !"fpexcept.strict") #2
+@@ -55,6 +71,9 @@ declare float @llvm.experimental.constrained.fma.f32(float, float, float, metada
+ ; Function Attrs: inaccessiblememonly nounwind willreturn
+ declare float @llvm.experimental.constrained.frem.f32(float, float, metadata, metadata) #1
+ 
++; Function Attrs: inaccessiblememonly nounwind willreturn
++declare float @llvm.experimental.constrained.sqrt.f32(float, metadata, metadata) #1
++
+ attributes #0 = { norecurse nounwind strictfp "correctly-rounded-divide-sqrt-fp-math"="false" "disable-tail-calls"="false" "frame-pointer"="all" "less-precise-fpmad"="false" "min-legal-vector-width"="0" "no-infs-fp-math"="false" "no-jump-tables"="false" "no-nans-fp-math"="false" "no-signed-zeros-fp-math"="false" "no-trapping-math"="true" "stack-protector-buffer-size"="8" "sycl-module-id"="test2.cl" "uniform-work-group-size"="true" "unsafe-fp-math"="false" "use-soft-float"="false" }
+ attributes #1 = { inaccessiblememonly nounwind willreturn }
+ attributes #2 = { strictfp }

@@ -1,0 +1,122 @@
+From beefc64ba3940f0c2bc4d0b681c74322086c6774 Mon Sep 17 00:00:00 2001
+From: "github-actions[bot]"
+ <41898282+github-actions[bot]@users.noreply.github.com>
+Date: Mon, 4 May 2026 08:27:22 -0700
+Subject: [PATCH] [Backport to llvm_release_220] Remove internal values for
+ SPV_INTEL_predicated_io (#3723)
+
+Backport of PR #3721 into `llvm_release_220`.
+
+All commits applied cleanly.
+
+Co-authored-by: Yury Plyakhin <yury.plyakhin@intel.com>
+---
+ lib/SPIRV/libSPIRV/SPIRVInstruction.h        | 6 +++---
+ lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h        | 2 +-
+ lib/SPIRV/libSPIRV/SPIRVOpCodeEnum.h         | 2 ++
+ lib/SPIRV/libSPIRV/SPIRVOpCodeEnumInternal.h | 4 ----
+ lib/SPIRV/libSPIRV/spirv_internal.hpp        | 7 -------
+ spirv-headers-tag.conf                       | 2 +-
+ 6 files changed, 7 insertions(+), 16 deletions(-)
+
+diff --git a/lib/SPIRV/libSPIRV/SPIRVInstruction.h b/lib/SPIRV/libSPIRV/SPIRVInstruction.h
+index 5475da6be5..04a1f6935d 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVInstruction.h
++++ b/lib/SPIRV/libSPIRV/SPIRVInstruction.h
+@@ -4616,13 +4616,13 @@ class SPIRVPredicatedIOINTELInst : public SPIRVInstTemplateBase {
+     return ExtensionID::SPV_INTEL_predicated_io;
+   }
+   SPIRVCapVec getRequiredCapability() const override {
+-    return getVec(internal::CapabilityPredicatedIOINTEL);
++    return getVec(CapabilityPredicatedIOINTEL);
+   }
+ };
+ 
+ #define _SPIRV_OP(x, ...)                                                      \
+-  typedef SPIRVInstTemplate<SPIRVPredicatedIOINTELInst,                        \
+-                            internal::Op##x##INTEL, __VA_ARGS__>               \
++  typedef SPIRVInstTemplate<SPIRVPredicatedIOINTELInst, Op##x##INTEL,          \
++                            __VA_ARGS__>                                       \
+       SPIRV##x##INTEL;
+ _SPIRV_OP(PredicatedLoad, true, 6, true)
+ _SPIRV_OP(PredicatedStore, false, 4, true)
+diff --git a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+index 81dc82437f..bcd94f9e90 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVNameMapEnum.h
+@@ -659,6 +659,7 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+       "SubgroupMatrixMultiplyAccumulateINTEL");
+   add(CapabilityTernaryBitwiseFunctionINTEL, "TernaryBitwiseFunctionINTEL");
+   add(CapabilityFMAKHR, "FMAKHR");
++  add(CapabilityPredicatedIOINTEL, "PredicatedIOINTEL");
+   // From spirv_internal.hpp
+   add(internal::CapabilityTokenTypeINTEL, "TokenTypeINTEL");
+   add(internal::CapabilityHWThreadQueryINTEL, "HWThreadQueryINTEL");
+@@ -692,7 +693,6 @@ template <> inline void SPIRVMap<Capability, std::string>::init() {
+   add(internal::CapabilityBFloat16ArithmeticINTEL, "BFloat16ArithmeticINTEL");
+   add(CapabilityFloat8EXT, "Float8EXT");
+   add(CapabilityFloat8CooperativeMatrixEXT, "Float8CooperativeMatrixEXT");
+-  add(internal::CapabilityPredicatedIOINTEL, "PredicatedIOINTEL");
+   add(internal::CapabilitySigmoidINTEL, "SigmoidINTEL");
+   add(internal::CapabilityDeviceBarrierINTEL, "DeviceBarrierINTEL");
+   add(internal::CapabilityFloat4E2M1INTEL, "Float4E2M1INTEL");
+diff --git a/lib/SPIRV/libSPIRV/SPIRVOpCodeEnum.h b/lib/SPIRV/libSPIRV/SPIRVOpCodeEnum.h
+index 147050cdba..b2929f0cd1 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVOpCodeEnum.h
++++ b/lib/SPIRV/libSPIRV/SPIRVOpCodeEnum.h
+@@ -589,6 +589,8 @@ _SPIRV_OP(SpecConstantTargetINTEL, 6251)
+ _SPIRV_OP(SpecConstantArchitectureINTEL, 6252)
+ _SPIRV_OP(SpecConstantCapabilitiesINTEL, 6253)
+ _SPIRV_OP(ConditionalCopyObjectINTEL, 6254)
++_SPIRV_OP(PredicatedLoadINTEL, 6258)
++_SPIRV_OP(PredicatedStoreINTEL, 6259)
+ _SPIRV_OP(GroupIMulKHR, 6401)
+ _SPIRV_OP(GroupFMulKHR, 6402)
+ _SPIRV_OP(GroupBitwiseAndKHR, 6403)
+diff --git a/lib/SPIRV/libSPIRV/SPIRVOpCodeEnumInternal.h b/lib/SPIRV/libSPIRV/SPIRVOpCodeEnumInternal.h
+index 4c2ff53e1e..9f55882e15 100644
+--- a/lib/SPIRV/libSPIRV/SPIRVOpCodeEnumInternal.h
++++ b/lib/SPIRV/libSPIRV/SPIRVOpCodeEnumInternal.h
+@@ -32,10 +32,6 @@ _SPIRV_OP_INTERNAL(ConvertHandleToSamplerINTEL,
+                    internal::ConvertHandleToSamplerINTEL)
+ _SPIRV_OP_INTERNAL(ConvertHandleToSampledImageINTEL,
+                    internal::ConvertHandleToSampledImageINTEL)
+-_SPIRV_OP_INTERNAL(PredicatedLoadINTEL,
+-                   internal::OpPredicatedLoadINTEL)
+-_SPIRV_OP_INTERNAL(PredicatedStoreINTEL,
+-                   internal::OpPredicatedStoreINTEL)
+ _SPIRV_OP_INTERNAL(FSigmoidINTEL, internal::FSigmoidINTEL)
+ _SPIRV_OP_INTERNAL(StochasticRoundFToFINTEL,
+                    internal::OpStochasticRoundFToFINTEL)
+diff --git a/lib/SPIRV/libSPIRV/spirv_internal.hpp b/lib/SPIRV/libSPIRV/spirv_internal.hpp
+index d9a42acfdc..0a8526d040 100644
+--- a/lib/SPIRV/libSPIRV/spirv_internal.hpp
++++ b/lib/SPIRV/libSPIRV/spirv_internal.hpp
+@@ -73,8 +73,6 @@ enum InternalOp {
+   IOpClampStochasticRoundFToSINTEL = 6219,
+   IOpCooperativeMatrixLoadOffsetINTEL = 6239,
+   IOpCooperativeMatrixStoreOffsetINTEL = 6240,
+-  IOpPredicatedLoadINTEL = 6258,
+-  IOpPredicatedStoreINTEL = 6259,
+   IOpClampConvertFToSINTEL = 6424,
+   IOpMaskedGatherINTEL = 6428,
+   IOpMaskedScatterINTEL = 6429,
+@@ -113,7 +111,6 @@ enum InternalCapability {
+   ICapabilityCooperativeMatrixOffsetInstructionsINTEL = 6238,
+   ICapabilityAtomicBFloat16AddINTEL = 6255,
+   ICapabilityAtomicBFloat16MinMaxINTEL = 6256,
+-  ICapabilityPredicatedIOINTEL = 6257,
+   ICapabilityAtomicInt16CompareExchangeINTEL = 6260,
+   ICapabilityInt16AtomicsINTEL = 6261,
+   ICapabilityAtomicBFloat16LoadStoreINTEL = 6262,
+@@ -212,10 +209,6 @@ _SPIRV_OP(Op, ConvertHandleToSampledImageINTEL)
+ _SPIRV_OP(Capability, AtomicBFloat16AddINTEL)
+ _SPIRV_OP(Capability, AtomicBFloat16MinMaxINTEL)
+ 
+-_SPIRV_OP(Capability, PredicatedIOINTEL)
+-_SPIRV_OP(Op, PredicatedLoadINTEL)
+-_SPIRV_OP(Op, PredicatedStoreINTEL)
+-
+ _SPIRV_OP(Capability, SigmoidINTEL)
+ _SPIRV_OP(Op, FSigmoidINTEL)
+ _SPIRV_OP(Capability, Float4E2M1INTEL)
