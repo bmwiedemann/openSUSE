@@ -316,4 +316,12 @@
 - Drop patch fix-tests-with-curl-8-19.patch, merged upstream.</comment>
     <requestid>1358805</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>25292b4b452ed664837bd3daee47bef7</srcmd5>
+    <version>6.5.7</version>
+    <time>1783628279</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364234</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:13:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix test_strip_headers_on_redirect's URL-embedded-credentials cases.
+  * Update the test_strip_headers_on_redirect test to Correctly handle
+    credential injection in redirect URLs and account for a known libcurl
+    regression with same-origin redirects. (gh#tornadoweb/tornado#3674)
+  * Add python-tornado6-Fix-test_strip_headers_on_redirects.patch
+
+-------------------------------------------------------------------
 Fri Jun 12 03:01:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 6.5.7:
