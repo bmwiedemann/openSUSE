@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:56:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 31.1:
+  * Fix an IP address leak when using the -privatebroadcast
+    feature: connections could be made over the clearnet instead
+    of the intended privacy network
+  * Never open direct (non-proxied) private broadcast connections,
+    and use the configured proxy on v2->v1 reconnections
+  * Compact the chainstate in the background and randomly on
+    startup to keep the UTXO database from growing unbounded
+  * Wallet: stricter BerkeleyDB page validation during migration
+    and corrected input-size estimation
+  * Check for write failures before renaming settings.json to
+    avoid corrupting node settings
+- Drop fix-boost-1.91-multi_index.patch: merged upstream in 31.1
+
+-------------------------------------------------------------------
 Sun Jun 21 11:17:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Reference the tracking bugs for CVEs already fixed in current bitcoin

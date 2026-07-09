@@ -651,4 +651,12 @@
     <comment>Reference tracking bugs (boo#1125092, boo#1149711, boo#1181786, boo#1181784, boo#1217678, boo#1231507) for already-fixed CVEs</comment>
     <requestid>1360831</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>7010afbb1fa97ef4d33c735a25cbb3aa</srcmd5>
+    <version>31.1</version>
+    <time>1783628374</time>
+    <user>anag_factory</user>
+    <comment>Update to 31.1 (privatebroadcast IP-leak fix, background chainstate compaction, wallet migration hardening; drop merged boost-1.91 patch)</comment>
+    <requestid>1364619</requestid>
+  </revision>
 </revisionlist>

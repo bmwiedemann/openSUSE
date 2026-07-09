@@ -24,7 +24,7 @@
 %define consensus 0
 %define is_base 1
 Name:           bitcoin
-Version:        31.0
+Version:        31.1
 Release:        0
 Summary:        P2P Digital Currency
 License:        MIT
@@ -35,8 +35,6 @@ Source2:        %{base}-qt.desktop
 Source3:        %{base}d.conf
 Source4:        %{base}.conf
 Patch0:         harden_bitcoind.service.patch
-# PATCH-FIX-UPSTREAM fix-boost-1.91-multi_index.patch -- fix build with Boost >= 1.91 (bitcoin/bitcoin#35175)
-Patch1:         fix-boost-1.91-multi_index.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  libboost_headers-devel >= 1.74.0
