@@ -17,7 +17,7 @@
 
 
 Name:           iprange
-Version:        2.0.0
+Version:        2.1.1
 Release:        0
 Summary:        IP address range management tool for FireHOL
 License:        GPL-2.0-or-later
@@ -30,11 +30,7 @@ BuildRequires:  automake
 This tool manages IP address ranges for FireHOL.
 
 %prep
-%autosetup
-# Test expects permanent failure but no network connection means we
-# only get temporary name resolution errors. Reported upstream:
-# https://github.com/firehol/iprange/issues/42
-rm -r tests.d/64-dns-failure-exit-status
+%autosetup -p1
 
 %build
 %configure

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  8 17:38:43 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 2.1.1:
+  * bugfix: IPv6 symmetric difference (--diff) no longer includes
+    addresses present in both sets
+    gh#firehol/iprange#55
+  * tests: added IPv6 multi-input set-operation tests covering
+    merge, common, exclude, diff, count-unique and compare
+- Changes in 2.1.0:
+  * portability: IPv6 now works on 32-bit platforms without native
+    __uint128_t, using portable 128-bit arithmetic
+    gh#firehol/iprange#45
+  * bugfix: DNS resolution prints a failure message when EAI_AGAIN
+    retries are exhausted
+    gh#firehol/iprange#43
+  * tests: endian-neutral binary fixtures and portable uint128
+    build coverage
+- Drop firehol-dns-handle-EAI_AGAIN.patch
+
+-------------------------------------------------------------------
+Wed Apr  8 01:59:06 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Add firehol-dns-handle-EAI_AGAIN.patch
+  Adds an error message for when the maximum number of retries
+  due to temporary name resolution failure is reached.
+  Fixes a test case that was failing on OBS due to lack of
+  Internet connectivity.
+  gh#firehol/iprange#42
+
+-------------------------------------------------------------------
 Mon Apr  6 16:24:19 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Enable test suite

@@ -61,4 +61,40 @@ Documentation:
     ipset optimization</comment>
     <requestid>1344772</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f5f4ccfe7680519d99246c78b63755a4</srcmd5>
+    <version>2.0.0</version>
+    <time>1775743744</time>
+    <user>dimstar_suse</user>
+    <comment>- Add firehol-dns-handle-EAI_AGAIN.patch
+  Adds an error message for when the maximum number of retries
+  due to temporary name resolution failure is reached.
+  Fixes a test case that was failing on OBS due to lack of
+  Internet connectivity.
+  gh#firehol/iprange#42</comment>
+    <requestid>1345204</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3e5a926957f60f7d805322e7b7818341</srcmd5>
+    <version>2.1.1</version>
+    <time>1783628368</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.1:
+  * bugfix: IPv6 symmetric difference (--diff) no longer includes
+    addresses present in both sets
+    gh#firehol/iprange#55
+  * tests: added IPv6 multi-input set-operation tests covering
+    merge, common, exclude, diff, count-unique and compare
+- Changes in 2.1.0:
+  * portability: IPv6 now works on 32-bit platforms without native
+    __uint128_t, using portable 128-bit arithmetic
+    gh#firehol/iprange#45
+  * bugfix: DNS resolution prints a failure message when EAI_AGAIN
+    retries are exhausted
+    gh#firehol/iprange#43
+  * tests: endian-neutral binary fixtures and portable uint128
+    build coverage
+- Drop firehol-dns-handle-EAI_AGAIN.patch</comment>
+    <requestid>1364609</requestid>
+  </revision>
 </revisionlist>
