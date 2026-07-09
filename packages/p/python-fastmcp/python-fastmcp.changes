@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  9 05:28:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4.4:
+  * Version sync with python-fastmcp-slim, which carries the
+    functional changes of this release: the strict Host/Origin
+    guard defaults added in 3.4.3 are relaxed to restore
+    compatibility with ASGI, serverless and reverse-proxy
+    deployments (the guard stays available for opt-in trusted
+    hosts and origins), plus a new Hugging Face OAuth provider
+
+-------------------------------------------------------------------
 Mon Jul  6 07:37:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4.3:

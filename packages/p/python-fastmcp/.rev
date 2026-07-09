@@ -23,4 +23,12 @@
     <comment>Update to 3.4.3 (version sync with python-fastmcp-slim = %{version}; SSRF security fix lives in slim)</comment>
     <requestid>1363977</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f1459a916dbaa0dbfd8118d1819ff7af</srcmd5>
+    <version>3.4.4</version>
+    <time>1783628427</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.4 (version-locked with python-fastmcp-slim 3.4.4, SR 1364635 — must stage together)</comment>
+    <requestid>1364643</requestid>
+  </revision>
 </revisionlist>
