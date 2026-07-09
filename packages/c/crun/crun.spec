@@ -25,6 +25,11 @@
 %else
 %define with_wasmedge 0
 %endif
+%ifarch x86_64 aarch64
+%define with_krun 1
+%else
+%define with_krun 0
+%endif
 
 Name:           crun
 Version:        1.28
@@ -53,23 +58,33 @@ BuildRequires:  systemd-devel
 %ifnarch %{ix86}
 BuildRequires:  criu-devel >= 3.15
 %endif
-%ifarch x86_64 aarch64
+%if %with_krun
 BuildRequires:  libkrun-devel
-Requires:       libkrun1
 %endif
 %if %with_wasmedge
 BuildRequires:  wasmedge-devel
 %endif
 
 %description
-crun is a runtime for running OCI containers. It is built with libkrun support
+crun is a runtime for running OCI containers.
+
+%if %with_krun
+%package krun
+Summary:        crun with libkrun support
+Requires:       %{name} = %{version}-%{release}
+Requires:       libkrun1
+Provides:       krun = %{version}-%{release}
+
+%description krun
+krun is a symlink to the crun binary, with libkrun as an additional dependency.
+%endif
 
 %prep
 %autosetup -p1
 echo '#define GIT_VERSION "%{version}"' > git-version.h
 
 %build
-%ifarch x86_64 aarch64
+%if %with_krun
 export LIBKRUN="--with-libkrun"
 %endif
 %if %with_wasmedge
@@ -96,12 +111,16 @@ rm -rf %{buildroot}/%{_libdir}/lib*
 %doc README.md
 %doc SECURITY.md
 %{_bindir}/%{name}
-%ifarch x86_64 aarch64
-%{_bindir}/krun
-%endif
 %if %with_wasmedge
 %{_bindir}/crun-wasm
 %endif
-%{_mandir}/man1/*
+%{_mandir}/man1/crun.1*
+
+%if %with_krun
+%files krun
+%license COPYING
+%{_bindir}/krun
+%{_mandir}/man1/krun.1*
+%endif
 
 %changelog

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 10:59:38 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Add crun-krun subpackage with libkrun support (bsc#1255648)
+- Move libkrun1 dependency from main package to crun-krun subpackage
+- crun-krun provides a /usr/bin/krun symlink to usr/bin/crun 
+
+-------------------------------------------------------------------
 Fri Jun 12 09:44:45 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to version 1.28:
