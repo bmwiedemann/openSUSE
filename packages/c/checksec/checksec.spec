@@ -18,17 +18,18 @@
 
 
 Name:           checksec
-Version:        3.1.0
+Version:        3.2.0
 # use the one from the release tag
-%define gitcommit 3c42e52
+%define gitcommit c8afc72
 Release:        0
 Summary:        Utility to check binaries for system hardening
 License:        BSD-3-Clause
 URL:            https://github.com/slimm609/checksec.sh
 Source0:        https://github.com/slimm609/checksec.sh/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source1:        vendor.tar.bz2
+Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  golang(API)
+BuildRequires:  zstd
 
 %description
 Checksec is a GO program to check the properties of executables (like PIE,
@@ -45,8 +46,7 @@ designed to test what *standard* Linux OS and PaX (http://pax.grsecurity.net/)
 security features are being used.
 
 %prep
-%autosetup -p 1
-tar xf %SOURCE1
+%autosetup -p1 -a1
 
 %build
 mkdir build

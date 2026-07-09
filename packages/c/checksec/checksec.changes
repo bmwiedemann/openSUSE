@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul  8 15:46:33 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.2.0 (boo#1271039):
+  * SafeStack detection for ELF binaries.
+  * CFI hardening detection extended to i386 CET and RISC-V
+    cfilp/Zicfiss (Zicfilp landing pads, Zicfiss shadow stack),
+    covering RV32 and RV64.
+  * Sanitizer detection (ASAN, UBSAN, MSAN, TSAN, LSAN) by compiler-rt
+    symbol prefix scan.
+  * Selfrando detection via the .txtrp section (restores a
+    checksec.bash check lost in the v3 port).
+  * W^X segment check (SeparateCode): asserts no PT_LOAD segment
+    is both writable and executable, as guaranteed by ld -z separate-code / lld --rosegment.
+  * Stack-clash protection detection via annobin
+  * RPATH/RUNPATH inspection that classifies each entry:
+    relative/empty/world-writable as bad, $ORIGIN or nonexistent as
+    warning, safe absolute as info.
+  * annobin-based FORTIFY/GLIBCXX assertion detection.
+  * CSV output format restored (dropped in the v3 Go port).
+  * Restored listfile, procLibs, per-process Seccomp, and the
+    Fortify breakdown.
+  * --fail-if CI gate: exit non-zero when a required check is not
+    in a good state.
+  * Parallel directory scanning (RunListChecksParallel) over a
+    bounded worker pool (default GOMAXPROCS).
+  * --no-warnings and --color flags; warnings now include filename
+    context.
+  * bug fixes and developer visible changes
+
+-------------------------------------------------------------------
 Thu Feb 12 15:54:09 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - set the version reported by the go tool to the package version (bsc#1257384)

@@ -103,4 +103,12 @@
     <comment>- set the version reported by the go tool to the package version (bsc#1257384) (forwarded request 1332737 from msmeissn)</comment>
     <requestid>1332738</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>0b8d12d556831e673cba8206c9dbce2e</srcmd5>
+    <version>3.2.0</version>
+    <time>1783628370</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364610</requestid>
+  </revision>
 </revisionlist>
