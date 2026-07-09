@@ -804,4 +804,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>1361489</requestid>
   </revision>
+  <revision rev="81" vrev="2">
+    <srcmd5>092dc97c14fd7d6e410cdfe91879605b</srcmd5>
+    <version>7.6</version>
+    <time>1783628282</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364362</requestid>
+  </revision>
 </revisionlist>

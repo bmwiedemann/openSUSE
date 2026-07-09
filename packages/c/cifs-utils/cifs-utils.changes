@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jun 25 13:25:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add missing dependencies for "modern" distros (>= SLE-16).
+
+-------------------------------------------------------------------
 Tue Jun 23 16:46:17 UTC 2026 - Enzo Matsumiya <ematsumiya@suse.com>
 
 - Update cifs-utils to 7.6

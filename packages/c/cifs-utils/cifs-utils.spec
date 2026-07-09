@@ -87,6 +87,12 @@ BuildRequires:  pkgconfig(wbclient)
 Requires:       cifs-idmap-plugin
 Requires:       keyutils
 Suggests:       wb-cifs-idmap-plugin
+# For modern Python packaging, let's start with SLE-16
+# If there is a request for older versions support, let me know
+# (mcepl@suse.com)
+%if 0%{?suse_version} >= 1600
+BuildRequires:  python-rpm-macros
+%endif
 %if ! %{defined _rundir}
 %define _rundir %{_localstatedir}/run
 %endif
