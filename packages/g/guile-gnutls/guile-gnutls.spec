@@ -1,7 +1,7 @@
 #
 # spec file for package guile-gnutls
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           guile-gnutls
-Version:        5.0.1
+Version:        5.0.2
 Release:        0
 Summary:        Guile bindings to GnuTLS
 License:        LGPL-2.1-or-later
@@ -52,8 +52,8 @@ GnuTLS wrappers for GNU Guile, a dialect of Scheme.
 %make_build check
 
 %files
-%doc README
 %license COPYING
+%doc README ChangeLog AUTHORS NEWS.md
 %{_datadir}/guile/site/*
 %{_infodir}/gnutls-guile.info%{?ext_info}
 %{_libdir}/guile/*

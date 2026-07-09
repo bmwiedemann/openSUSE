@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  6 08:27:00 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.0.2:
+  * Bind more X.509 certificate functions.
+    - gnutls_x509_crt_get_dn_by_oid
+    - gnutls_x509_crt_get_issuer_dn_by_oid
+    - gnutls_x509_crt_print
+  * Add rawpk certificate type.
+  * Fix alloca handling on FreeBSD.
+  * NEWS file renamed to NEWS.md and uses markdown syntax. For
+    backwards compatibility, NEWS and README in git are symlinks to
+    NEWS.md and README.md respectively, which ends up as a duplicated
+    files in tarballs.  Eventually the README and NEWS files may be
+   removed in favor of only README.md and NEWS.md.
+  * Update gnulib files and various build/maintenance fixes.
+
+-------------------------------------------------------------------
 Tue Oct 14 09:03:28 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.0.1:
