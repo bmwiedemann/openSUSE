@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 15:27:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 1.6.44:
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1644
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1643
+
+-------------------------------------------------------------------
 Tue May 26 22:31:46 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - re-enable extstore for bigendian architectures,

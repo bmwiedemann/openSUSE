@@ -722,4 +722,14 @@ CVE-2026-47783, [bsc#1265873], CVE-2026-47784, [bsc#1265881]</comment>
   symbol proxy_storage_mg is needed unconditionally</comment>
     <requestid>1355679</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5ab9cc98ddf41a05cd19f0a24a1b23fc</srcmd5>
+    <version>1.6.44</version>
+    <time>1783628281</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.44:
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1644
+  https://github.com/memcached/memcached/wiki/ReleaseNotes1643</comment>
+    <requestid>1364335</requestid>
+  </revision>
 </revisionlist>
