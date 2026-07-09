@@ -47,4 +47,12 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment></comment>
     <requestid>1364317</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>583a67d047a93c0d23993cae09292391</srcmd5>
+    <version>0.10.0</version>
+    <time>1783628424</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.10.0 (threads/traces resource accessors, OTel helpers)</comment>
+    <requestid>1364625</requestid>
+  </revision>
 </revisionlist>
