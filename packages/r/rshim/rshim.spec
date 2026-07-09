@@ -1,7 +1,7 @@
 #
 # spec file for package rshim
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2019 Mellanox Technologies. All Rights Reserved.
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -19,7 +19,7 @@
 
 
 Name:           rshim
-Version:        2.7.1
+Version:        2.7.3
 Release:        0
 Summary:        User-space driver for Mellanox BlueField SoC
 License:        BSD-3-Clause OR GPL-2.0-only
@@ -31,10 +31,10 @@ Patch2:         shebang.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  pkgconfig
+BuildRequires:  systemd-networkd
 BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(libusb-1.0)
-BuildRequires:  systemd-networkd
 ExcludeArch:    %{ix86} armv6l armv6hl armv7l armv7hl
 
 %description

@@ -1,13 +1,26 @@
 -------------------------------------------------------------------
+Sun Jun 28 15:04:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.7.3:
+  * bfb-tool: preserve original filename in repack for
+    --all/--opn modes
+  * rpm: simplify selinux overlay handling
+  * Update rshim.c to fix high contention of rshim_fd_mutex +
+    SIGINT not being handle
+  * bfb-install: remove "finished" as exit condition
+
+-------------------------------------------------------------------
 Fri May 15 16:46:58 UTC 2026 - Matthias Brugger <mbrugger@suse.com>
 
-- add systemdutildir configuration variable, to be able to set the 
+- add systemdutildir configuration variable, to be able to set the
   correct config file path for systemd
+- add configure-add-with-systemdutildir-option-for-network.patch
 
 -------------------------------------------------------------------
 Thu Apr  9 14:44:34 UTC 2026 - Matthias Brugger <mbrugger@suse.com>
 
 - restructure files in spec file
+- add shebang.patch
 - update to 2.7.1
   * Some robust fixes for USB
 - includes changes from 2.6.4:
@@ -135,13 +148,13 @@ Thu Nov  2 15:58:07 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.12.1
   * Display uptime in seconds for BF3
-  * Add fuse3 support 
+  * Add fuse3 support
 
 -------------------------------------------------------------------
 Wed Aug 30 15:00:03 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 
 - Update to 2.0.9
-  * Fix fallback logic of direct mapping 
+  * Fix fallback logic of direct mapping
   * Make timeout configurable through /dev/rshimX/misc
 
 -------------------------------------------------------------------
@@ -150,7 +163,7 @@ Fri Apr 21 17:49:44 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
 - Update service to new tag format
 - update to 2.0.7
   * adjust reset delay
-  * avoid leak the file descriptor for /dev/uio 
+  * avoid leak the file descriptor for /dev/uio
 
 -------------------------------------------------------------------
 Thu Mar 16 11:18:48 UTC 2023 - Matthias Brugger <mbrugger@suse.com>
