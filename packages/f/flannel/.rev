@@ -272,4 +272,13 @@ The update also include version bump for `golang.org/x/oauth2` to v0.27.0, bsc#1
 includes - Bump the etcd group with 4 updates (#2455), includes fix for CVE-2026-44283 (bsc#1265337)</comment>
     <requestid>1357997</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>36d1f1662183667afcab4dd1af4e5547</srcmd5>
+    <version>0.28.7</version>
+    <time>1783628475</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.28.7:
+* bump golang.org/x/net to 0.55.0, which includes fix for CVE-2026-33814 (bsc#1265780) and CVE-2026-39821 (bsc#1266620)</comment>
+    <requestid>1364706</requestid>
+  </revision>
 </revisionlist>

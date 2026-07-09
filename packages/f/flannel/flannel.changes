@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul  9 05:30:40 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 0.28.7:
+  * prepare for release v0.28.7 (#2485)
+  * fix: use install-conf in chart (#2484)
+  * fix: use semver tag type in Docker meta to support release events (#2483)
+  * build(deps): bump github/codeql-action/upload-sarif (#2480)
+  * build(deps): bump golang.org/x/net from 0.54.0 to 0.55.0 (#2473), fix for CVE-2026-33814 (bsc#1265780) and CVE-2026-39821 (bsc#1266620)
+  * build(deps): bump docker/build-push-action from 7.2.0 to 7.3.0 (#2479)
+  * build(deps): bump golangci/golangci-lint-action from 9.2.1 to 9.3.0 (#2478)
+  * build(deps): bump docker/metadata-action from 6.1.0 to 6.2.0 (#2476)
+  * build(deps): bump the tencent group with 2 updates (#2475)
+  * build(deps): bump the etcd group with 4 updates (#2474)
+  * fix: skip invalid CIDRs in subnet file readers (#2454)
+  * subnet/etcd: recover subnet watch from compaction (#2471)
+  * Bump the tencent group across 1 directory with 2 updates (#2461)
+  * Bump actions/attest-build-provenance from 4.1.0 to 4.1.1 (#2467)
+  * Bump actions/setup-go from 6.4.0 to 6.5.0 (#2468)
+  * feat: new install_conf cmd to install flannel's config file (#2466)
+  * Bump the other-go-modules group with 2 updates (#2464)
+  * Bump actions/checkout from 6.0.2 to 7.0.0 (#2465)
+  * Bump github/codeql-action from 4.36.0 to 4.36.2 (#2463)
+
+-------------------------------------------------------------------
 Mon Jun  8 07:37:06 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 0.28.5:
