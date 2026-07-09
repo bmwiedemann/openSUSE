@@ -1,6 +1,5 @@
 [Unit]
 Description=Machine Check Exception Logging Daemon
-ConditionVirtualization=false
 ConditionPathExists=/dev/mcelog
 
 [Service]

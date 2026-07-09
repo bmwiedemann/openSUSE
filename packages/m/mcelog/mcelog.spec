@@ -1,8 +1,7 @@
 #
 # spec file for package mcelog
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,7 +24,7 @@
 %bcond_without usr_etc
 %endif
 Name:           mcelog
-Version:        210
+Version:        211
 Release:        0
 Summary:        Log Machine Check Events
 License:        GPL-2.0-only
@@ -35,6 +34,7 @@ Source:         mcelog-%{version}.tar.gz
 Source2:        mcelog.sysconfig
 Source3:        mcelog.systemd
 Source5:        mcelog.tmpfiles
+Patch0:         log_file_fix.patch
 %if %{with email_notify}
 Source6:        README.email_setup
 Patch1:         email.patch
@@ -55,6 +55,7 @@ BuildRequires:  libesmtp-devel
 Requires(pre):  %fillup_prereq
 %endif
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(systemd)
 Requires:       logrotate
 ExclusiveArch:  %{ix86} x86_64

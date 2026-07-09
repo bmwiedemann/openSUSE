@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 08 11:27:47 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Add missing python3-base BR (bsc#1270322).
+- Update to version 211:
+  * mcelog: Don't try to offline "unknown" CPU
+  * Parse PPIN (processor identifier) instead of bailing out
+  * Parse SOCKET as SOCKETID
+
+-------------------------------------------------------------------
+Fri Feb 13 16:08:00 UTC 2026 - Thomas Renninger <trenn@suse.de>
+
+- Loosen not needed restrictions and allow mcelog in VM env for testing
+- Use default logfile /var/log/mcelog in --daemon --foreground mode
+A log_file_fix.patch
+- Previous change already contained jsc#PED-14849 by:
+  * Removing Requires(pre):  %fillup_prereq
+
+-------------------------------------------------------------------
 Wed Feb 04 14:25:46 UTC 2026 - trenn@suse.de
 
 - Remove not mainlined
