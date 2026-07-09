@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:18:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.50.0:
+  * fix/verify release npm ci ignore scripts
+  * fix(ci): prevent workspace binary shadowing in release
+    verification
+  * Feat/tool registry discovery
+  * fix(ci): prevent bad NPM releases and promote job crashes
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.49.0...v0.50.0
+
+-------------------------------------------------------------------
 Sun Jun 28 10:53:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.49.0:

@@ -811,4 +811,19 @@
   * fix: resolve workspace publish failures and scheduler event</comment>
     <requestid>1362150</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>793ce6e48fb9bdad935fd9857da98138</srcmd5>
+    <version>0.50.0</version>
+    <time>1783628446</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.50.0:
+  * fix/verify release npm ci ignore scripts
+  * fix(ci): prevent workspace binary shadowing in release
+    verification
+  * Feat/tool registry discovery
+  * fix(ci): prevent bad NPM releases and promote job crashes
+  * **Full Changelog**: https://github.com/google-gemini/gemini-
+    cli/compare/v0.49.0...v0.50.0</comment>
+    <requestid>1364674</requestid>
+  </revision>
 </revisionlist>
