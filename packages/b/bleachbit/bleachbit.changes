@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Sun Jul  5 09:56:14 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
+
+- update to version 6.0.2
+  * New Features
+    - Add cleaning support for Visual Studio Code, Codium, Antigravity, Cursor, Windsurf, and Devin
+    - Add support for multiple browser profiles on Chrome and Edge
+    - Add cleaner for Claude Code
+    - Add DNS cache cleaner
+    - Clean AI models from Google Chrome
+    - When shredding a filename, reduce data remnants and speed up shredding files
+    - Convert Apache OpenOffice (formerly called OpenOffice.org) cleaner from Python to CleanerML
+    - Add options to deep scan for developers: venv, __pycache__, node_modules, and .angular
+    - Clear clipboard after shredding files from paste operation
+  * User interface and performance
+    - Limit the line width of long warning text
+    - Improve the logic that triggers the notice during startup about Expert Mode
+    - During deep scan, skip directories listed in the keep list to improve the speed of scanning
+    - Stop trying to rename files when an error is not retryable
+    - Respond to keyboard interrupt (Ctrl+C) when shredding filenames
+    - Warn when the configuration file is not writable
+    - Disable the chaff controls while generating chaff
+  * Bug Fixes
+    - If there are errors reading the cookie keep list, then it will abort the cookie cleaning process to avoid removing important cookies
+    - Fix: crash in recognition of local cleaners
+    - Fix: GUI stops loading if recognition fails
+    - Fix: cleaner loading with invalid data types
+    - Fix crash with certain Unicode on the CLI
+    - Fix: escape invalid Unicode in system information output
+    - Fix: allow Unicode in keep/custom lists
+    - Fix: avoid losing custom theme icons in Vivaldi by not deleting files in the VivaldiThumbnails folder
+    - Fix DuplicateOptionError when restoring warning preferences
+    - Improve handling of symlinks in keep list (whitelist)
+    - Improve reliability when running external processes without waiting
+
+  * New Features (Linux)
+    - Add AppImage binary to run on most x86-64 Linux systems
+    - Improve detection of trash on Linux
+    - Clean Librewolf installed by official .deb
+    - Clean Transmission installed as flatpak
+    - Add cleaner for Profanity (chat client)
+    - Clean Flatpak localizations
+  * Bug Fixes (Linux)
+    - Handle disk quota exceeded (EDQUOT) when wiping a path
+    - Fix: could not run CLI as root under Wayland
+    - Improve exception handling with snap
+    - Fix: keep .desktop files whose Exec path is quoted
+    - Require XDG .desktop files to have 'Name' field
+    - Fix AppStream metadata
+    - Fix crash on startup when requests was not installed
+    - Add python3-requests as dependency in RPM and Debian packaging
+    - Read swapfile information as text
+    - Fix: drag and drop did not work on Wayland
+    - Fix detection of snap running
+    - Suppress ImportWarning (seen on older distribution)
+    - Handle BrokenPipeError in the CLI (for example, when piping to head)
+
+-------------------------------------------------------------------
 Sun May  3 08:20:34 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
 
 - copy method for running tests from upstream rpm spec

@@ -22,7 +22,7 @@
 # 'typelib(AppIndicator)' doesn't exist anymore. It is a fallback if AppIndicator3 can't be found (bleachbit/GUI.py:50)
 %global         __requires_exclude typelib\\(AppIndicator\\)
 Name:           bleachbit
-Version:        6.0.0
+Version:        6.0.2
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
