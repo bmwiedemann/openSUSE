@@ -82,7 +82,7 @@ done
 # pom
 install -dm 0755 %{buildroot}%{_mavenpomdir}
 %{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
-%add_maven_depmap %{name}.pom %{name}.jar
+%add_maven_depmap %{name}.pom %{name}.jar -a com.fasterxml.woodstox:%{name}-asl,com.fasterxml.woodstox:%{name}-lgpl
 
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}

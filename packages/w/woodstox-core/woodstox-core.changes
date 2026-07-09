@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:17:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Alias the artifact to com.fasterxml.woodstox:woodstox-core-asl
+  and to com.fasterxml.woodstox:woodstox-core-lgpl for packages
+  that require these variants
+
+-------------------------------------------------------------------
 Wed Jul  8 11:57:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 7.2.1

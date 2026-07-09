@@ -87,4 +87,12 @@
     <comment>7.2.1</comment>
     <requestid>1364542</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d26b4786f6446cc93e734549e7bfbe82</srcmd5>
+    <version>7.2.1</version>
+    <time>1783628462</time>
+    <user>anag_factory</user>
+    <comment>Add aliases that MLM's xmlsec needs</comment>
+    <requestid>1364693</requestid>
+  </revision>
 </revisionlist>
