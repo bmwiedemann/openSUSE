@@ -218,4 +218,31 @@ development tree.
 </comment>
     <requestid>1312217</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>a88b89c0b82635731faeba60169ef31a</srcmd5>
+    <version>1.4.5</version>
+    <time>1783628354</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.5
+See website: https://taisei-project.org/news/0022_v1.4.5
+  * Localization support
+  * Fixed stack-use-after-free crash in Stage 4 on some systems
+    gh#taisei-project/taisei##378
+  * Improved SDL_GPU renderer compatibility, added automatic
+    fallback to OpenGL
+  * Rebuilt all basis-compressed textures without Y-flip;
+    minor update to Stage 5 background
+  * Updated Stage and Spell practice menus
+  * Fixed busy wait consuming 100% CPU in the FPS limiter
+  * Various small optimizations
+  * Added a fangame disclaimer to the main menu
+- BuildRequires:
+  * Bump meson to &gt;= 1.8.0
+  * Add libunibreak
+  * Add gettext-tools
+  * Replace python3-zstandard with standard library,
+    using python3-backports.zstd if Python &lt; 3.14
+  * Drop libzip</comment>
+    <requestid>1364605</requestid>
+  </revision>
 </revisionlist>

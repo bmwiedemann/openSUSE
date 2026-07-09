@@ -1,7 +1,7 @@
 #
 # spec file for package taisei
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           taisei
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Clone of the Touhou Project series of shoot ’em up games
 License:        MIT
@@ -28,22 +28,23 @@ Source2:        gpg.keyring
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gettext-tools
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  meson >= 0.63.0
+BuildRequires:  meson >= 1.8.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3-Pygments
 BuildRequires:  python3-docutils
-BuildRequires:  python3-zstandard
 BuildRequires:  shaderc
 BuildRequires:  spirv-cross-devel
+BuildRequires:  (python3-backports.zstd if python(abi) < 3.14)
 BuildRequires:  cmake(glslang) >= 15.0.0
 BuildRequires:  pkgconfig(cglm) >= 0.7.8
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libunibreak)
 BuildRequires:  pkgconfig(libwebpdecoder) >= 0.5
-BuildRequires:  pkgconfig(libzip) >= 1.7.0
 BuildRequires:  pkgconfig(libzstd) >= 1.4.0
 BuildRequires:  pkgconfig(mimalloc)
 BuildRequires:  pkgconfig(opusfile)
