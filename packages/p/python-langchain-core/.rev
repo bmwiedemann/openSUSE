@@ -7,4 +7,12 @@
     <comment>New package python-langchain-core. Part of the langchain/langgraph stack (dependency cone for skillspector): interdependent NEW packages + the langsmith bump that must be co-staged together — please stage with the sibling devel:languages:python SRs by pluskalm or builds go unresolvable.</comment>
     <requestid>1362378</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9319c0d864baaa3b71f687fb9b18cbf2</srcmd5>
+    <version>1.4.9</version>
+    <time>1783628427</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.9 (docstring parsing, partial parser flag, clearer errors, asyncio.get_running_loop)</comment>
+    <requestid>1364713</requestid>
+  </revision>
 </revisionlist>

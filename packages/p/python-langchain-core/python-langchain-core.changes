@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul  9 05:27:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.9:
+  * Fix Google-style docstring parsing in convert_to_openai_function
+    so multi-line argument descriptions are folded into the correct
+    argument instead of being lost or misattributed
+  * Pass the partial flag through PydanticOutputParser.parse_result
+    so partial parsing works correctly
+  * LangSmithLoader now raises clear errors when the configured
+    content key path is missing or points at a non-mapping value
+  * Raise descriptive error messages (instead of bare ValueError)
+    when loading prompts with an unsupported template file format
+    and when neither examples nor an example_selector is provided
+  * Use asyncio.get_running_loop() instead of the deprecated
+    get_event_loop() in the async callback manager and Mermaid
+    graph rendering
+
+-------------------------------------------------------------------
 Sun Jun 28 20:19:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langchain-core 1.4.8
