@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Jul 09 08:58:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.66:
+  * Use API v0.0.2 and SDK v1.1.0 (#4620)
+  * Linking container images to releases and remove gcloud image
+    build (#4628)
+  * Fix broken download links
+  * add VERSIONING.md, add kpt api as a component to readme (#4622)
+  * Eliminate `apimachinery` dependency in the `api` module (#4614)
+  * modernize Go practices - error wrapping, dead code removal, and
+    deprecated APIs (#4613)
+  * Simplify CI workflows: remove legacy GOPATH checkout pattern (#4597)
+  * Specifying allowed alert types (#4612)
+  * Bump github.com/regclient/regclient from 0.11.4 to 0.11.5
+
+-------------------------------------------------------------------
+Thu Jul 02 12:39:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.65.1:
+  * security - fix Git argument injection via untrusted Kptfile ref
+    enables file overwrite (#4604)
+  * porch docs navbar redirect (#4611)
+  * Apply suggestion from @Catalin-Stratulat-Ericsson
+  * docs: update Nephio documentation link in FAQ
+  * Fix basicpipeline-semver e2e expected output for set-labels
+    v0.2.5 (#4605)
+  * Adding rules to CONTRIBUTING.md (#4594)
+  * Fixing WordPress wording
+  * Breaking a long line
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Apply suggestions from code review
+  * Corrections done in chapter 3.
+  * Fixing indentations in chapter 3.
+  * Chapter 3 proofreading.
+  * First section of chapter 3 proofreading.
+
+-------------------------------------------------------------------
+Thu Jun 18 12:20:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.65:
+  * Proofreading chapter 4 by @mpgreaves in #4544
+  * Fix Go cache in CI workflows by adding cache-dependency-path by
+    @aravindtga in #4575
+  * Upgrade KinD to v0.32.0 and Kubernetes e2e test matrix to
+    1.35/1.36 by @aravindtga in #4576
+  * fn doc: remove invalid --stdin flag from docker run args by
+    @efiacor in #4577
+  * Make API it's own go module by @mozesl-nokia in #4537
+  * Refactor docs folder by @CsatariGergely in #4571
+  * Align kpt version output format with porchctl by @aravindtga in
+    #4545
+  * Make mdtogo an independent Go module by @aravindtga in #4587
+  * Fix CI: replace broken setup-kind action and bump checkout to
+    v6 by @aravindtga in #4589
+  * Move to use the new Porch docs URL by @efiacor in #4590
+  * allow image references combining a tag and a digest by @pddg in
+    #4579
+  * Update e2e test image tags from pinned versions to :latest by
+    @aravindtga in #4591
+  * Use versioned API module and comment out replace by
+    @mozesl-nokia in #4596
+
+-------------------------------------------------------------------
 Fri May 29 05:53:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0~beta.64:
