@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 06:44:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.11.5:
+  * Substitute "-" with "\-"
+  * Fix bold text followed by underlined text
+
+-------------------------------------------------------------------
 Wed Nov 12 05:29:57 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.11.4:
