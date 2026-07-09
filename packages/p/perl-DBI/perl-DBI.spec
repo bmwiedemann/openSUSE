@@ -18,10 +18,10 @@
 
 %define cpan_name DBI
 Name:           perl-DBI
-Version:        1.648.0
+Version:        1.650.0
 Release:        0
-# 1.648 -> normalize -> 1.648.0
-%define cpan_version 1.648
+# 1.650 -> normalize -> 1.650.0
+%define cpan_version 1.650
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Database independent interface for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -32,7 +32,9 @@ Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.48
-BuildRequires:  perl(Test::Simple) >= 0.90
+BuildRequires:  perl(Module::Load) >= 0.22
+BuildRequires:  perl(Test::Simple) >= 0.96
+Requires:       perl(Module::Load) >= 0.22
 Provides:       perl(Bundle::DBI) = 12.8.696
 Provides:       perl(DBD::DBM) = 0.80.0
 Provides:       perl(DBD::DBM::Statement)
@@ -165,7 +167,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc ChangeLog Driver.xst README.md
+%doc ChangeLog CONTRIBUTING.md Driver.xst README.md
 %license LICENSE
 
 %changelog
