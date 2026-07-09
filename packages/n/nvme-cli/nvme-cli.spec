@@ -19,28 +19,34 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        2.16
+Version:        3.0~b.3
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
 Group:          Hardware/Other
 URL:            https://github.com/linux-nvme/nvme-cli/
 Source0:        nvme-cli-%{version}.tar.gz
-Source1:        nvme-cli-rpmlintrc
-Patch0:         0001-nvmf-autoconnect-add-NetworkManager-dispatcher-scrip.patch
-Patch1:         0002-fabrics-add-helper-to-update-tls-and-concat.patch
 BuildRequires:  asciidoc
+BuildRequires:  dbus-1-devel
+BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  keyutils-devel
 BuildRequires:  libjson-c-devel
-BuildRequires:  libnvme-devel
+BuildRequires:  libjson-c-devel
+BuildRequires:  libkmod-devel
 BuildRequires:  meson
+BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-devel
+BuildRequires:  swig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(bash-completion)
 BuildRequires:  pkgconfig(libudev)
+
 # nvme-cli API for NBFT support.
 Provides:       nvmeof-boot-support = 0.1
 
@@ -83,6 +89,34 @@ BuildArch:      noarch
 %description zsh-completion
 Optional dependency offering zsh completion for NVM Express user space tools
 
+%package -n     libnvme3-1
+Summary:        Linux-native nvme device management library
+License:        LGPL-2.1-or-later
+
+%description -n libnvme3-1
+Provides library functions for accessing and managing NVMe devices on a Linux
+system.
+
+%package -n     libnvme3-devel
+Summary:        Development files for libnvme
+License:        LGPL-2.1-or-later
+Requires:       libnvme3-1 = %{version}
+
+%description -n libnvme3-devel
+The %{name}-devel package contains libraries and header files for
+developing applications that use %{name}.
+
+%package -n     python3-libnvme3
+Summary:        Python binding for %{name}
+License:        LGPL-2.1-or-later
+Requires:       libnvme3-1 = %{version}
+
+%description -n python3-libnvme3
+Provides library functions for accessing and managing NVMe devices on a Linux
+system.
+
+Python binding part.
+
 %prep
 %autosetup -p1
 
@@ -123,6 +157,12 @@ ln -s service rcnvmf-connect-nbft
 popd
 %endif
 
+# 1. Manually compress man pages using '-n' to remove distinct timestamps/headers
+find %{buildroot}%{_mandir} -type f -name '*.[1-9]' -exec gzip -n -9 {} +
+
+# 2. Run fdupes on the entire buildroot to catch the identical .gz files
+%fdupes -s %{buildroot}
+
 %define services nvmefc-boot-connections.service nvmf-autoconnect.service nvmf-connect.target nvmf-connect-nbft.service
 
 %pre
@@ -141,7 +181,6 @@ if  [ ! -e /.buildenv ] && [ ! -e /image/config.xml ]; then
 else
     %{_bindir}/echo "Build environment detected, not generating host NQN."
 fi
-
 %service_add_post %{services} nvmf-connect@.service
 
 %preun
@@ -160,6 +199,10 @@ if [ -d %{_datadir}/bash-completion/completions/nvme ]; then
     rm -r %{_datadir}/bash-completion/completions/nvme;
 fi
 
+%post -n libnvme3-1 -p /sbin/ldconfig
+
+%postun -n libnvme3-1 -p /sbin/ldconfig
+
 %files
 %license LICENSE
 %doc README.md
@@ -174,6 +217,7 @@ fi
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-keys.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
+%{_udevrulesdir}/70-nvmf-registry.rules
 %{_udevrulesdir}/71-nvmf-hpe.rules
 %{_udevrulesdir}/71-nvmf-netapp.rules
 %{_udevrulesdir}/71-nvmf-vastdata.rules
@@ -202,5 +246,21 @@ fi
 %dir %{_datadir}/zsh
 %dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_nvme
+
+%files -n libnvme3-1
+%license LICENSE
+%doc README.md
+%{_libdir}/libnvme3.so.1
+%{_libdir}/libnvme3.so.1.*
+
+%files -n libnvme3-devel
+%doc README.md
+%{_includedir}/libnvme3/
+%{_libdir}/libnvme3.so
+%{_libdir}/pkgconfig/libnvme3.pc
+%{_mandir}/man2/*.2*%{?ext_man}
+
+%files -n python3-libnvme3
+%{python3_sitearch}/libnvme3/
 
 %changelog

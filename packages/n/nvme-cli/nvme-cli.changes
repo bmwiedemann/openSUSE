@@ -1,4 +1,961 @@
 -------------------------------------------------------------------
+Wed Jul 08 13:54:09 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0~b.3:
+  * Release v3.0-b.3
+  * doc: Regenerate all docs for v3.0-b.3
+  * libnvme: rename Python binding to libnvme3
+  * libnvme: classify scoped IPv6 addresses with the TID's numeric test
+  * libnvme/test: drop the netdb gating from the libnvme tests
+  * nvme-cli/fabrics: resolve hostnames before handing addresses to libnvme
+  * libnvme: reject hostname addresses instead of resolving them
+  * libnvme/util: reimplement numeric address helpers without getaddrinfo
+  * nvme-top: avoid recreating the global NVMe context on topology updates
+  * libnvme: return status from libnvme_refresh_topology()
+  * sfx-nvme: fix sizeof mismatch in calloc in nvme_dump_evtlog()
+  * libnvme/tid: group functions by role in tid.c/tid.h
+  * libnvme/fabrics: use str(), not get_canonical(), in the exclusion log
+  * libnvme/tid: replace per-field setters with a set_identity triplet
+  * libnvme/tid: drop get_hash() and equal()
+  * libnvme/tid: reject hostnames, canonicalize numeric addresses
+  * libnvme/doc: add the smart-TID design
+  * libnvme/doc: state the library/application boundary
+  * nvme-print: Update generic name listing to be platform independent
+  * readme: Add readme section on Windows build and environment setup script
+  * plugins: Add build support on Windows
+  * libnvme: fix null pointer dereference in _discovery_config_json()
+  * nvme_test: Update run_ns_io to be platform agnostic.
+  * nbft: fix missing error checks for ftell() and rewind()
+  * nvme-print: use status variable instead of errno
+  * nvme: do not print status message on default
+  * nvme-print-json: centralize init/finish
+  * nvme-print-json: only output json if none empty
+  * nvme-print: add nvme_show_verbose_* helpder
+  * plugins: add newline after json output
+  * tests: Add linting support for all python files recursively under tests.
+  * tests/plugins: Expand testing framework to support plugin tests
+  * nvme: enable cli for windows build
+  * nvme-top: synthesize NVMe kobject uevent on ENOBUFS
+  * nvme-top: support paging in the top dashboard
+  * nvme-top: restore selected subsystem to the first entry
+  * libnvme-wrap: drop unused code
+  * nvme: add windows support for rpmb hash functions
+  * test: Update build configuration to support testing on Windows
+  * test-uint128: Update tostr_test locale handling to be Windows compatible
+  * tests: Update get features test base on Windows capabilities
+  * tests: Configure PATH for tests in a platform-agnostic way.
+  * tests: Add is_windows check and skip unsupported tests on Windows
+  * libnvme: make discovery connects honor the exclusion list
+  * plugins/exclusion: operate on the default list when --name is omitted
+  * libnvme: substitute RUNDIR into the registry udev rule
+- spec file updates
+  * removed nvme-cli-rpmlintrc
+  * remove duplicates (fdupes)
+  * rename library package name to libnvme3-1
+  * fixed soname versioning
+  * added ldconfig section for libnvme
+  * fixed include path
+  * fixed python sitesearch path
+
+-------------------------------------------------------------------
+Thu Jul 02 17:45:59 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0.b.2:
+  * Release v3.0-b.2
+  * doc: Regenerate all docs for v3.0-b.2
+  * ioctl-win: Implement reset_ctrl_device using a PnP-level reset.
+  * nvme-cli/fabrics: note an excluded target on connect under --verbose
+  * doc: move REGISTRY.md under libnvme/design/
+  * doc: add NVMe-oF exclusion list documentation
+  * nvme-cli/fabrics: add --exclude to nvme disconnect
+  * plugins/exclusion: add the nvme exclusion management plugin
+  * libnvme: add the NVMe-oF exclusion list
+  * libnvme: add the libnvmf_tid transport identity
+  * libnvme: add shared fabrics helpers in preparation for exclusion list
+  * libnvme: drop the log messages from the no-netdb stubs
+  * tree: add windows tree support
+  * tree: add global context to libnvme_get_ctrl_transport
+  * nvme: Open files using nvme_open_rawdata to fix Windows issues
+  * plugins/wdc: fix typed malloc size expressions for log buffers
+  * wdc-nvme: validate PCI ID lookup in wdc_log_page_directory()
+  * tree: replace strdup with xstrdup in nvme_alloc_subsystem()
+  * micron: Fix temp directory access security
+  * micron: Fix possible NULL pointer dereference issues
+  * micron: Fix buffer overflow vulnerabilities
+  * fabrics: split uuid_from_dmi_entries file read function
+  * fabrics: make uuid_from_dmi_entries more robust
+  * wdc-nvme: fix null dereference of sph in get_dev_mgmt_log_page_lid_data()
+  * doc: document nvme-cli-ai companion repository
+  * solidigm: Apply fixes to allow compilation on Windows
+  * micron: Fix command injection vulnerabilities
+  * plugins/sandisk: fix memory leak in sndk_get_enc_drive_capabilities()
+  * libnvme: validate context in libnvme_rescan_ctrl()
+  * nvme: fix null pointer dereference in get_log_offset()
+  * plugins/sed: fix null pointer dereference in sedopal_print_locking_features()
+  * telemetry-log: Fix telemetry-log invalid argument error
+
+-------------------------------------------------------------------
+Mon Jun 29 10:49:11 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0.b.1:
+  * Release v3.0-b.1
+  * doc: Regenerate all docs for v3.0-b.1
+  * libnvme/json: persist the registry owner in the config file
+  * libnvme/test: fix exit-code capture in config-diff.sh
+  * tree-linux: move all sysfs-related code to this file
+  * fabrics: move hostnqn/hostid code to fabrics files
+  * tree: unexport libnvme_host_get_ids
+  * scan: refactor filter API
+  * lib: remove log arguments from global context constructor
+  * linux: move crypto APIs in new header
+  * lib: fix overlong lines
+  * ioctl: rename passthru functions
+  * ioctl: rename command passthru API
+  * no-uring: check if handle is valid
+  * ioctl-linux: do no use uring for MI
+  * libnvme/json: write the config as an object, keep reading the legacy array
+  * libnvme/json: fix misplaced "required" keys in the config schema
+  * libnvme/json: free the subsystem object when skipping discovery subsystems
+  * nvme: fix potential use of uninitialized flags in passthru()
+  * fabrics: fix inverted child controller check in _nvmf_discovery()
+  * python-ci: run the unit tests a second time without valgrind
+  * tests: update registry CLI test for reworked nvme registry interface
+  * nvmf-autoconnect: tag connections with --owner=autoconnect
+  * nvme: fix inverted null check in is_ns_mgmt_support()
+  * doc: add libnvme registry overview (REGISTRY.md)
+  * libnvme: guard registry cleanup against instance reuse with uevent_seqnum
+  * nvme-types-base: add padding to nvme_lm_nvme_controller_state_data union
+  * tree: minor refactor of subsystem init
+  * docs: update repors section in REAMDE
+  * libnvme: rename diag attributes and update paths
+  * libnvme: update diag attribute paths
+  * nvme: fix ignored interruption in format command
+  * micron: Update plugin version to 2.1.0
+  * micron: Add .zip file support and fix rm errors on Windows
+  * micron: Add platform-specific GetOSConfig implementations
+  * micron: Add cross-platform handling of PCIe correctable errors.
+  * micron: Add cross-platform support for getting drive model
+  * micron: Clean up formatting and remove unneeded macros
+  * libnvme: remove duplicate NVME_SC_FEAT_IOCS_COMBINATION_REJECTED
+  * libnvme: fix NVME_SC_EXCEEDS_MAX_NS_SANITIZE status code value
+  * libnvme: fix uninitialized argument in libnvme_get_lba_status_log()
+  * nvme: fix uninitialized variable in passthru()
+  * nvme: fix uninitialized variable in get_feature_id_changed()
+  * nbft: fix sizeof operand mismatch in pointer array allocations
+  * libnvme: test that registry attribute values round-trip verbatim
+  * fabrics: add --owner to connect, connect-all and discover
+  * fabrics: use -t for the disconnect-all --transport short option
+  * feat: use command line args verbose setting to show feature
+  * nvme: rework the registry command-line interface
+  * fabrics: Use do-while instead of goto in next_line
+  * fabrics: Use setup_common_context in create_common_context
+  * plugins/solidigm: Bug fix retrieval of large PEL.
+  * libnvme: bugfix enabled retrieval of large persistent event log.
+  * libnvme-python: make registry python test robust to spawn/forkserver
+  * libnvme: pass global context to registry public APIs
+  * libnvme: move fabrics include list into its own file
+  * util: replace to check human-readable option to verbose option
+  * tests: replace human-readable option to verbose option
+  * completions: remove human-readable option
+  * doc: remove human-readable option
+  * nvme: add man pages for registry commands and update disconnect-all
+  * libnvmf: wire registry into connect and disconnect paths
+  * nvme: add registry plugin and orchestrator column
+  * libnvme: add NVMe controller ownership registry
+  * libnvme: add libnvme_ctrl_is_transport_fabric()
+  * lib: add windows direct open transport handle support
+  * nvme: drop deprecated human-readable option
+  * util: add argconfig hidden parameter
+  * fix: remove -j/--json completion for top-level subcommands
+  * completions: add power-measurement-log command
+  * ioctl-win: Assert ctrl handle for Windows format nvm
+  * ioctl-win: Update sanitize implementation to use new ioctl
+  * logging: add log level debug verbose
+  * logging: add data and metadata dump to show command
+  * tree: split platform code into separate files
+  * nvme: Add O_BINARY setting to stderr and stdout on Windows
+  * common: Add cross-platform wrapper for opening raw data files
+  * libnvme: add CIU and CIRN to Identify Controller data structure
+  * libnvme/json: Allow subsys nqn to be optional
+  * libnvme/json: Allow hostnqn to be optional
+  * tests: add Qualified Protection Information Format (QPIF) testcase
+  * nvme: introduce Qualified Protection Information Format (QPIF)
+  * nvme: return a status from get_pif_sts()
+  * fabrics: Fix next_line parser.
+  * ScaleFlux Plugin Cleanup AER Values
+  * completions: add sanitize command wait and repeat options
+  * doc: add sanitize command wait and repeat options
+  * nvme: add support for sanitize sanicap verification
+  * nvme-types-base: add sanicap vers and nvers definitions
+  * nvme: add support for sanitize repeat option
+  * nvme: add support for sanitize wait option
+  * sed: clarifying SUM sed policy reporting
+  * top: Make top a conditional feature and disable by default on Windows
+  * plugins/solidigm: BugFix dumping large telemetry logs.
+  * nvme: use DSM max ranges macro definition
+  * feat: sort feat commands list by FID ordering
+  * nvme-print: Fix nvme_bar_cap cps field alignment
+  * nvme: ensure log_level is properly updated
+  * test: add async test case
+  * ioctl: improve async passthru API
+  * nvme-print-json: split fabrics Address into fields
+  * sndk: Add support for new Sandisk devices
+  * nbft: use the correct interfaces for NBFT connections
+  * nvme: call nvme_show_finish by closing transport handle
+  * tests: harden JSON parsing
+  * plugins/solidigm: smart attribute C7 named dynamically, add desc for E7, E8
+  * libnvme-mi: use callbacks for mi submit logging
+  * nvme-print: fix LBA range type 0h as general purpose
+  * ocp: normalize command descriptions for consistency
+  * completions: fix ocp plugin command list and description
+  * nvme-pring: add buffer-length checks
+  * nvme: use #pragma once to reduce header file #ifndef code
+  * nvme-types-base: rename nvme_cmd_get_log_telemetry_host_lsp
+  * nvme: check MUD support before firmware commit
+  * plugins/solidigm: Additional signature detection into Telemetry parser.
+  * plugins/solidigm: Additional telemetry configuration wildcard.
+  * sed: fixing SID and MSID reporting
+  * libnvme: consolidate kdoc return text
+  * nvme-types-nbft: update to v1.3
+  * nvme-types-nbft: rename nbft type header
+  * nvme-types-base: rename notification mask features
+  * nvme-types-base: drop depricated mask
+  * nvme-types-mi: update reserved field name
+  * nvme-types-mi: remove backwards compat defines
+  * nvme-types: add or update missing types and accessors
+  * nvme-types: add missing documentation
+  * nvme-types: add spec reference to DOC section
+  * doc: reformat synopsis to avoid overlong line
+  * doc: update global options placement
+  * plugins/virtium: use snprintf instead strncpy
+  * doc: update -o short option documentation
+  * plugins: rename -v/-o short options
+  * unit: extend command line test
+  * plugins/netapp: use nvme_args directly to check flag
+  * nvme: use nvme_args directly to check flag
+  * nvme: add support for global options before command
+  * libnvmf: add convenience setters for parameter groups
+  * libnvme: remove libnvmf_ctrl_get_fabrics_config()
+  * fabrics: replace hand-written APIs with generated ones
+  * libnvme: apply annotation to nested structs
+  * generator: add nested struct accessor support
+  * nvme: do not report error when nvme_core module is not loaded
+  * linux: Add crypto.c and no-crypto.c with shims for methods implemented in linux.c Adds compatibility shims for linux.c methods when building on Windows.
+  * libnvme: fix hostid leak in libnvme_create_host()
+  * nvme-top: use fixed width columns
+  * nvme: use AUTO_WIDTH for show topology tabular output
+  * util/table: extend table APIs to support fixed width column
+  * util/table: fix memory leak in table_add_columns_filter()
+  * nvme-top: preserve selected subsystem across topology refresh
+  * fdp: Remove unused linux/fs.h include
+  * util: Add compatibility for libnvme_random_uuid
+  * log: Add Windows compatibility for __libnvme_msg formatting
+  * ocp-nvme: Replace fstat checking of S_ISBLK with built-in check
+  * plugins: Fix casting errors when using unsigned long
+  * ibm-nvme: Use memset instead of bzero for standard compatibility
+  * check-public-symbols: Update text reading to work on Windows also
+  * libnvme: fix memleak in libnvme_subsystem_set_ns_path
+  * nvme-top: avoid NULL dereference on non-multipath host
+  * ioctl: Add Windows ioctl support
+  * ocp: Fix ocp internal-log output-format handling
+  * micron-nvme: Fix unchecked string copies of path strings
+  * micron-nvme: Add support for telemetry data area 4
+  * tree: move ctrl-find cluster to tree-fabrics.c
+  * tree: decouple ctrl-find/alloc from libnvmf_context
+  * fabrics: fix libnvmf_connect() not propagating resolved TLS key IDs
+  * tree/fabrics: introduce libnvme_ctrl_params and embed in libnvmf_context
+  * fabrics: group hooks and user_data into struct libnvmf_hooks
+  * fabrics: rename callbacks to hooks
+  * endian: Remove redundant _WIN64 check
+  * nvme-print-json: Replace uint with __u32
+  * mem-win: Disable Windows min/max macros in favor of project solutions
+  * util: Fix buffer overflow in process_field_size_default
+  * util: Move get_entity_name and get_entity_version into util-fabrics.
+  * nvme-types: move base definitions into separate header
+  * nvme-types: move mi definitions into separate header
+  * nvme-types: move nvm definitions into separate header
+  * nvme-types: move zns definitions into separate header
+  * nvme-types: move fabrics definitions into separate header
+  * nvme-cmds: split header according to spec grouping
+  * nvme-cmds: fix typos in documentation
+  * nvme-cmds: sort commands according the spec order
+  * common: Add compatibility wrappers for common functions.
+  * amzn-nvme: Use signal if sigaction is not supported
+  * sighdl: Add windows compatibility for sighdl
+  * tree: rename fabrics-only functions to libnvmf_ prefix
+  * tree: move TLS/DHChap sysfs readers to tree-fabrics.c
+  * tree: extract TCP ctrl matching into tree-fabrics.c
+  * micron-nvme: Fix error reporting for commands that were failing silently
+  * micron-nvme: Clean up vs-nand-stats
+  * micron-nvme: Fix vs-drive-info output format check
+  * micron-nvme: Fix telemetry log reading
+  * micron-nvme: Use libnvme_alloc for log data buffers
+  * CI: disable Codecov push trigger
+  * ocp: Fix fw activation log error reporting for negative err values
+  * ocp: Fix no-uuid parsing in ocp_clear_feature
+  * nvme: Use libnvme_free for all memory allocated with libnvme_alloc
+  * mem-win: Remove unneeded includes and definitions.
+  * lib-types: introduce file descriptor abstraction
+  * nvme: return NVMe status codes for protocol errors
+  * util: add cross-platform compatibility for errno values.
+  * nvme-models: suppress missing sysfs entry messages
+  * CI: fix missing coverage data in codecov uploads
+  * ioctl: defer ioctl version probing until first use
+  * CI: use kubevirt artifacts for nightly codecov upload
+  * nvme: add nvme top command
+  * nvme: add generic top-like dashboard framework
+  * nvme: add sigaction for SIGWINCH
+  * nvme: allow table output to be directed to a FILE stream
+  * nvme: add support for float and double types in table_print_XXX()
+  * nvme: use table_get_value_width() in table_print_centered()
+  * nvme: add support for unsigned and long types in table_get_value_width()
+  * nvme: remove MI feature support when disabled
+  * libnvme-mi: move linker symbols into separate script
+  * nvme-print: print product name if available
+  * nvme-models: change id to device name
+  * nvme-models: replace getline with fgets for portability
+  * nvme-print-stdout: rework effects log output
+  * linux: replace getline with fgets
+  * log: open-code dprintf
+  * CI: update download-artifact version for nightly-tests
+  * nbft: Moves public nbft methods from libnvme to libnvmf
+  * private: include ifaddrs when needed
+  * plugin: use snprintf for fixed-size formatting buffers
+  * CI: upload nightly coverage via GH action
+  * nvme: replace posix_memalign with libnvme_alloc
+  * table: add fallback reallocarray implemenation
+  * mem: introduce libnvme_free
+  * mem: implement huge page allocation APIs for Windows
+  * mem: move alloc_huge and free_huge to library
+  * nvme: replace nvme_(re)alloc with libnvme_(re)alloc
+  * mem: implement allocation helpers for Windows
+  * mem: move memory allocator helpers
+  * completions: introdue error-log filter logic option arguments
+  * doc: introdue error-log filter logic option arguments
+  * nvme-print: use error-log STS fields API macros
+  * nvme-print-json: fix error-log checkpatch warnings
+  * nvme-print-json: add to print error-log fields missed
+  * nvme-print-stdout: fix error-log indentation errors
+  * nvme-print-stdout: fix error-log endian errors
+  * nvme: introdue error-log filter logic option arguments
+  * doc: add error-log command description for fields and ordering
+  * libnvme: add __libnvme_ prefix to all compiler attributes
+  * libnvme: fix uring_state never updated in __libnvme_transport_handle_open_uring()
+  * uring: annotate unused arguments
+  * libnvme: fix libnvme_wait_admin_passthru() ignoring CQE result
+  * libnvme: guard libnvme_submit_admin/io_passthru() against NULL hdl
+  * libnvme: introduce async/sync passthru API
+  * nvme.i: fix brace style for C function definitions
+  * python bindings: table-driven fabrics config dict parsing
+  * fabrics: fix NULL dereference in nvmf_update_tls_concat
+  * CI: Add host_devices list to kubevirt-action
+  * ci: extend check-accessors to cover all generated files
+  * Makefile: add checkpatch targets
+  * python bindings: remove deprecated files
+  * python bindings: add exception hierarchy
+  * python bindings: add PUBLISHING.md
+  * ci: replace webispy/checkpatch-action with upstream checkpatch.pl
+  * python bindings: redesign Phase 2 — API surface polish
+  * python bindings: redesign Phase 1 — generator-emitted SWIG fragments
+  * plugins/solidigm: Bug Fix reversed Telemetry array dimensions order.
+  * plugins/solidigm: Removed Telemetry parser array to string conversion.
+  * plugins/solidigm: Removed some header includes.
+  * libnvme: rename libnvme_ns_get_uuid to libnvme_ns_copy_uuid
+  * libnvme: prep accessor annotations and generator for Python bindings redesign
+  * tests: skip write-uncor test when not supported
+  * tests: handle PI and MS settings
+  * tests: skip 16-bit guard copy tests when namespace is in 64-bit guard PI mode
+  * tests: check and format namespace for copy test
+  * tests: only setup cdfe for requested descriptor version
+  * tests: add mcl/mssrl/msrc limit checks to nvme_copy_test
+  * tests: split copy test into subtests
+  * tests: fix ms byte decoding
+  * tests: use feat command to handle host behavior
+  * feat: add support for Host Behavior Support
+  * nvme: add O_TRUNC when opening output files for read commands
+  * nvme: Allow commit action = 0b011 (replace and activate immediate)
+  * nvme: use new error handling helper for get-feature error handling
+  * nvme: handle get-feature output format in nvme-print layer
+  * tests: fix python TypeError errors
+  * json: Enables json printing and ocp plugin without fabrics
+  * libnvme: replace single-mode access annotation with a two-axis model
+  * libnvme: rename !accessors: member annotation to !access:
+  * fabrics: sanitize traddr & trsvcid handling during connect-all
+  * nvme-print: fix traddr transformation for ave discovery log
+  * nvme: enable support for --no-ioclt-probing for open_exclusive
+  * nvme: initialize default timeout for format command
+  * python: add missing define for handwritten getter
+  * libnvme: add support for ctrl diagnostic counters
+  * libnvme: add support for nshead diagnostic counters
+  * libnvme: add support for namespace diagnostic counters
+  * libnvme: add support for per-path diagnostic counters
+  * libnvme: add support for retrieving namespace gendisk I/O statistics
+  * libnvme: add support for retrieving per-path gendisk I/O statistics
+  * libnvme: annotate libnvme_subsystem::iopolicy with !accessors:none
+  * libnvme: annotate libnvme_path::numa_nodes with !accessors:none
+  * libnvme: annotate libnvme_path::ana_state with !accessors:none
+  * private: add indentation to !accessor commands
+  * swig: replace hand-written accessor wrappers with auto-generated #defines
+  * nvme: apply user-specified timeout via transport handle
+  * libnvme: add check-public-headers test
+  * libnvme: add missing prototypes for exported symbols
+  * libnvme: move fabrics-only helpers to util-fabrics.c
+  * swig: guard against silent attribute typos on SWIG objects
+  * CI: fix podman device permissions
+  * fabrics: do not re-initialize nvmf_args
+  * ioclt: Add libnvme wrapper for updating block size after format
+  * nvme: Make mmap functionality conditional on mmap support
+  * swig: fix Py_NewRef compatibility with Python < 3.10
+  * swig: replace libnvmf_context with dict-based ctrl constructor
+  * swig: fix bugs introduced in libnvmf_context refactor
+  * fabrics: Made more includes conditional on fabrics support
+  * generate-accessors: add lifecycle and default-value generation
+  * generate-accessors: switch annotations to // comment style
+  * Release v3.0-a.5
+  * doc: Regenerate all docs for v3.0-a.5
+  * generate-accessors: fix invalid kdoc banners
+  * Release v3.0-a.4
+  * doc: Regenerate all docs for v3.0-a.4
+  * docs: add new libnvme headers
+  * lib: Give blkdev and chardev checks platform-agnostic names
+  * python: remove redundant null check
+  * libnvme: make free functions null-pointer safe
+  * fabrics: avoid connect segfault for invalid param
+  * nbft: use libnbft_ prefix for library types
+  * nbft: move spec types into separate header
+  * generate-accessors: fix stale examples and redundant code
+  * fabrics: move URI data struct to private API
+  * generate-accessors: add char double-pointer accessor support
+  * test: add unit tests for static helpers in fabrics.c
+  * private-fabrics: fix spelling in comment
+  * fabrics: add tls_configured_key to merge/update logic
+  * fabrics: retire libnvme_fabrics_config from public API
+  * generate-accessors: output added list with correct formatting
+  * private: replace typedefs with direct definitions
+  * fabrics: use context at controller creation time
+  * fabrics: add missing common arguments to nvmf_args
+  * fabrics: add _id postfix to TLS keys in libnvme_fabrics_options
+  * fabrics: move connect/disconnect to fabrics API
+  * fabrics: replace fabrics options with fabrics context
+  * libnvme: embed libnvme_fabrics_config in libnvmf_context
+  * libnvme: update Python binding to use libnvmf_context
+  * fabrics: don't return config from merge_config
+  * fabrics: move libnvmf_context to private-fabrics header
+  * tree: use traddr_is_hostname from fabrics
+  * generate-accessors: extend struct annotation with default mode qualifier
+  * mi: fix build with MI support disabled
+  * Add nvme_fabrics module loading function
+  * min: Cleaned up usage of MIN in favor of safer CCAN min.
+  * CI: select ucrt64 compiler
+  * types: provide base types when missing
+  * endian: provide endian helpers when missing
+  * libnvme: add nvme- prefix to types.h and cmds.h
+  * lib: add LIBNVME_ prefix to DEFAULT_LOGLEVEL
+  * lib: define LIBNVME_LOG_* levels to replace syslog.h LOG_* constants
+  * private: remove unused ioctl.h include
+  * mi: make management interface support optional
+  * private: make fabrics parts optional in global context
+  * uring: move no-uring implementation into C file
+  * cleanup: move POSIX API cleanup helpers into a separate file
+  * cleanup: move optional cleanups to C files
+  * compiler-attributes: rename header to match pattern
+  * zns: fix check for valid global context
+  * cleanup: rename _cleanup_tokener_ to __cleanup_tokener
+  * cleanup: rename _cleanup_evp_pkey_ctx_ to __cleanup_evp_pkey_ctx
+  * cleanup: rename _cleanup_evp_mac_ to __cleanup_evp_mac
+  * cleanup: rename _cleanup_evp_mac_ctx_ to __cleanup_evp_mac_ctx
+  * cleanup: rename _cleanup_dirents_ to __cleanup_dirents
+  * cleanup: rename _cleanup_nvme_transport_handle_ to __cleanup_nvme_transport_handle
+  * cleanup: rename _cleanup_nvmf_context_ to __cleanup_nvmf_context
+  * cleanup: rename _cleanup_nvme_global_ctx_ to __cleanup_nvme_global_ctx
+  * cleanup: rename _cleanup_nvme_ctrl_ to __cleanup_nvme_ctrl
+  * cleanup: rename _cleanup_huge_ to __cleanup_huge
+  * cleanup: rename _cleanup_uri_ to __cleanup_uri
+  * cleanup: rename _cleanup_addrinfo_ to __cleanup_addrinfo
+  * cleanup: rename _cleanup_fd_ to __cleanup_fd
+  * cleanup: rename _cleanup_dir_ to __cleanup_dir
+  * cleanup: rename _cleanup_file_ to __cleanup_file
+  * cleanup: rename _cleanup_free_ to __cleanup_free
+  * cleanup: rename __cleanup__ to __cleanup
+  * plugins/solidigm: Fixed parse Telemetry of multidimensional arrays
+  * doc: consolidate contributor guidance into CONTRIBUTING.md
+  * libnvme: rename nvmf_ API prefix to libnvmf_
+  * sndk: Add support for new Sandisk drives
+  * nvmf: replace nvmf_get_discovery_log() with opaque-args API
+  * nvmf: clean up discovery args struct initialization
+  * nvmf: fix generator emitting setters for read-only members in .ld files
+  * nvmf: fix timeout not applied to discovery log commands
+  * tests: modernize subprocess calls
+  * fabrics: issue a warning on invalid traddr format (bsc#1248750)
+  * nvme: expose tls mode in use (bsc#1259672)
+  * tests: don't run Python tests in parallel
+  * tests: log all cmds input/output
+  * tests: use common exec_cmd helper
+  * lib: avoid kernel logging cmd does not match nsid
+  * doc: document default installation paths and how to override them
+  * tests: move diagnostic output behind debug flag
+  * tests: fix tap_runner to route diagnostic output to stderr
+  * tests: fix config lookup path
+  * tests/tap_runner: intercept stderr
+  * doc: update and polish README.md
+  * doc: fix typos and grammar issues in README.md
+  * lm: Migration Recv displayed suspend status is incorrect
+  * mi: use libnvme prefix for mi API
+  * mi: move types into mi-types.h
+  * libnvme: introduce libnvme prefix for library API
+  * tests: update documentation
+  * tests: ensure TAP output and test output separate
+  * tests: add native TAP protocol support
+  * tests: skip tests which rely on namespace management
+  * tests: don't enforce NS management support for local testing
+  * fabrics: update device connect message
+  * feat: use nvme_show_err() helper function
+  * nvme-print: change nvme_show_err parameter msg to fmt
+  * nvme: change nvme_show_err parameters order
+  * nvme-cli: extend show-topology tabular output for multipath subsys
+  * nvme-cli: extend show-topology tabular output for non-multipath subsys
+  * docs: move global/fabrics options into separate files
+  * fabrics: use uuid from hostnqn for hostid
+  * fabrics: add helper to update tls and concat (bsc#1259672)
+  * tree: avoid updating --tls in nvme_read_sysfs_tls() (bsc#1259672)
+  * nvme-print-json: do not enable verbose mode on default
+  * doc: add output-format-version option description
+  * fabrics: allow tls key to be a pin
+  * fabris: add nvmf_context_free
+  * linux: add nvme_create_raw_secret
+  * nvme: add get and set features specific status code string
+  * nvme-print: change nvme_show_cmd_err cmd parameter to opcode
+  * nvme-print: fix nvme_show_cmd_err to pass admin parameter
+  * linux: fix return value in nvme_lookup_key
+  * CI: use podman as container runtime
+  * fabrics: do not print device name when dumping config
+  * fabrics: dump config on stdout
+  * feat: add num-queues command
+  * feat: add err-recovery command
+  * nvme-print: Decode 2 new bits in ctratt.
+  * nvme-print: Decode Sample Rate Scale
+  * python-libnvme: drop 1.x backward-compatibility shims
+  * nvme: change default output format version to 2
+  * nvme: Add power-measurement-log command (LID 0x25)
+  * examples: include select.h header
+  * docs: update reamde badges
+  * libnvme/cmds: change copy desc format tags to big-endian
+  * libnvme: rename copy_range and add new fields
+  * libnvme: Drop __nvme_lookup_ctrl()
+  * libnvme: convert test/tree.c to 'struct nvmf_context'
+  * libnvme: Re-implement __nvme_lookup_ctrl()
+  * libnvme: make __nvme_lookup_ctrl() static
+  * libnvme: Introduct _nvme_ctrl_match_config()
+  * libnvme: use 'struct nvmf_context' as argument to nvmf_connect_disc_entry()
+  * libnvme: Separate out _nvme_create_ctrl()
+  * libnvme; use 'struct nvmf_context' as argument to nvme_ctrl_find()
+  * libnvme: use 'struct nvmf_context' as argument to _candidate_init()
+  * libnvme: use 'struct nvmf_context' as argument for __nvme_lookup_ctrl()
+  * plugins/solidigm: Warning for missing Telemetry object config
+  * plugins/solidigm: Added Telemetry config metadata to parser output.
+  * ocp: Add all statistics to the map table
+  * fabrics: permit bi-auth with secure concat TLS (bsc#1262707)
+  * libnvme: drop 'struct nvmf_discovery_ctx'
+  * libnvme: drop fabric_args
+  * libnvme/fabrics: drop fabric_args from __create_discovery_ctrl()
+  * libnvme/fabrics; Use nvmf_context as argument to lookup_ctrl()
+  * libnvme: annotate public API symbols with __public
+  * libnvme: auto-generate 'subsysnqn' accessors
+  * libnvme: read-only host accessors
+  * libnvme: read-only subsystem accessors
+  * libnvme: read-only controller accessors
+  * libnvme: generate read-only accessor for 'phy_slot'
+  * libnvme: replace accessor generator with Python and add in-source annotations
+  * libnvme: remove stale symbols from libnvme.ld and libnvmf.ld
+  * libnvme: drop nvme_subsystem accessors from tree.c
+  * libnvme: drop duplicate function nvme_ctrl_get_address()
+  * fabrics: allow dhchap authentication for unique discovery controller
+  * fabrics: update dhchap options for discovery
+  * libnvme: clarify dhchap key usage
+  * libnvme/fabrics: remove duplicate discovery functions
+  * libnvme: move accessor generator to tools/generator/
+  * lib: update function names to follow pattern
+  * cmds: move nvme_get_log_atomic down
+  * cmds: move nvme_get_log and related code to cmds.c
+  * uring: move io_uring code to new file
+  * nvme-cmds: move nvme_ns_detach/attach_ctrl to nvme-cli
+  * cmds: move nvme_init_* implementations to header
+  * cmds: group all nvme_init_* functions
+  * cmds: remove nvme_fw_download_seq
+  * nvme: move non-nvme_init_* helper functions to nvme-cli
+  * libnvme/test: add to test copy desc format 0h
+  * linux: fix typos in documentation
+  * libnvme: make fabrics optional
+  * lib: remove the unreleased linker section
+  * linux: move the hostid/hostnqn function
+  * fabrics: move nvmf_default_config to tree
+  * nbft: move nbft_file_entry to nbft header
+  * no-json: update function arguments
+  * util/types: include missing header for time_t
+  * tree: always initialize ns variable
+  * nvme: help compiler to figure out figuring init of variables
+  * libnvme.ld: remove duplicate symbols found in accessors.ld
+  * libnvme: commit pre-generated accessor files and simplify build
+  * id-ctrl: Add NVMe 2.3 id controller fields
+  * util/mem: fix NULL dereference in nvme_realloc() on allocation failure
+  * src: order includes per common recommendation
+  * fabrics: sanitize FC traddr (bsc#1248750)
+  * amzn: Add interval polling for NVMe latency stats
+  * ocp: Add Statistics Identifier String Table Size to JSON
+  * Release v3.0-a.3
+  * doc: Regenerate all docs for v3.0-a.3
+  * doc: prefix local mandir and htmldir paths
+  * nvme-print: align print output for get-reg cap
+  * nvme-print: align print output for get-reg cc
+  * nvme-print: align print output for get-feature host behavior
+  * filters: return error code
+  * tree: remove nvme_scan
+  * test: ignore ENOENT and EACCES from nvme_scan_topology
+  * tree: propagate error code for nvme_scan_ctrl
+  * tree: handle error when trying to get transport handle
+  * sndk: avoid buffer overflow when reading file name
+  * ocp: handle C9 log page read fails
+  * ci: do not push to TestPyPi when a git tag is pushed to repo
+  * Release v3.0-a.2
+  * doc: Regenerate all docs for v3.0-a.2
+  * doc: add security info
+  * licenses: consolidate license texts
+  * licenses: add missing spdx tags
+  * example: update license for discovery-loop.py
+  * docs: update license for rtd yaml files
+  * util: update spdx license fro sighdl
+  * tree: fix spdx tag for tree.py test
+  * tree: gracefully handle empty dirs
+  * ci: use total commit count for unique TestPyPI dev version
+  * nvme-print, ocp-print-json: fix to output alloc_error
+  * misc: initialize memory before using in tests
+  * mi: verify length of data before reading header
+  * docs: Make documentation build depend on -Dlibnvme and -Dnvme
+  * doc: Regenerate all docs for v3.0-a.1
+  * nvme-print-stdout: fix to use le64_to_cpu for host id feature print
+  * nvme-print-json: fix get feature 128-bit host id print
+  * libnvme/ioctl: introduce ioctl_io64 nvme transport direct handle
+  * test: fix 'diff --unified' failing on Alpine Linux
+  * test: fix musl libc test fail due to locale differences
+  * lib: save one strdup by using GNU basename() implementation
+  * nvme-print-stdout: delete stdout_feat_perfc fid parameter unused
+  * nvme-print-stdout: fix get feature 128-bit host id print
+  * plugins/solidigm: Enabled Telemetry side trace items parsing.
+  * feat: Add power measurement feature support.
+  * nvme: remove -t as alias for --timeout
+  * mi: fix nvme_mi_create_global_ctx removal
+  * cmds: free id_ctrl after use in nvme_get_telemetry_max
+  * cmds: avoid possible infinite loop
+  * fabrics: rename nvme_free_uri to nvmf_free_uri
+  * lib-types: move struct nvme_passthrue_cmd up
+  * mi: make nvme_mi_admin_admin_passthru private
+  * mi: replace nvme_mi_*global_context with nvme_*_global_context
+  * tree: move nvme_ns_*_transport_handle to private header
+  * log: move logging definition to lib.h
+  * util: move functions into private header
+  * lib: move library definition into new headers
+  * mi: drop the types.h include
+  * log: drop the tree.h header include
+  * base64: update spdx tag
+  * crc32: add spdx license tag
+  * nbft: include nvme/types.h instead nvme/util.h
+  * tree: reduce the number of includes
+  * cmds: move nvme cmds from util to cmds.h or types.h
+  * linux: reduce the number of includes
+  * cmds: move nvme commands to cmds header
+  * cmds: move command function to their own header
+  * ioctl: always define the passthru data structs
+  * ioctl: make IOCTL defines private
+  * nvme: use nvme_ns_rescan instead open coding
+  * libnvme: drop a few unused headers
+  * libnvme: include main headers where possible
+  * test: add header include test
+  * ioctl: use correct defines for set_features field encode
+  * src: use standard lookup for libnvme include
+  * feat: Fixed uidx parameter bug.
+  * nvme: fix segfault at nvme_match_devname()
+  * nvmf-autoconnect: add NetworkManager dispatcher script
+  * sndk: vs-internal-log command fixes and enhancements
+  * sndk: Add Clear Assert Capability to 2 Sandisk Drives
+  * sndk: Add support for additional UUID
+  * nvme: allow char dev filter for show-topology and list-subsys commands
+  * feat: fix bugs in arbitration and power-thresh commands
+  * micron: add smart-log and id-ctrl commands
+  * fabrics: do no try do disconnect invalid ctrl
+  * libnvme/linux: allow /dev/ngX device as character device
+  * tree: fix nvme_subsystem_scan_namespaces() return handling
+  * plugins/solidigm: Reverting VU SMART attribute names change.
+  * libnvme/json: check write return value for build warnings
+  * nvme: update format specifier in nvme_show_error()
+  * fabrics: update get_entity_name() return handling
+  * tree: update nvme_scan_ctrl() return handling
+  * nvme: standardize nvme_strerror() usage
+  * plugin/solidigm fixing identify logs generation
+  * json: update nvme_dump_config to a file descriptor
+  * libnvme/fabrics: replace fprintf to nvme_msg
+  * udev: don't spread variables through all nodes
+  * libnvme/fabrics: fix inet_pton_with_scope function header description
+  * libnvme: replace fprintf to nvme_msg
+  * docs: update readthedocs setup
+  * pulgin/ocp: Added the OCP2.7 supported Get feature FID=CAh command api
+  * tree: cleanup paths when freeing namespace
+  * nvme: replace OPT_ARGS with NVME_ARGS
+  * fabrics: add global default command line arguments
+  * nvme: rename nvme_config to nvme_args
+  * fabrics: rename fabrics_args to nvmf_args
+  * linux: add possibility to disable IOCTL probing
+  * plugins/solidigm: parse telemetry error message improvements.
+  * libnvme: Add nvme_getifaddrs()
+  * mi: Add ISH bit (admin command cflags)
+  * nvme, doc: update fw-commit action help message and documentation
+  * nvme: check fw-commit command ca value with definition
+  * nvme: add fw-commit command ca option values
+  * util: fix argconfig_match_val() to check option value length
+  * ocp: add Persistent Event log support
+  * nvme-print: expose PEL print functions
+  * feat: add power-thresh command
+  * feat: add power-limit command
+  * nvme: sanitize call to strerror()
+  * tree: fix mem leak in list-subsys verbose option
+  * plugin: cleanup vs-internal-log documentation
+  * ocp: Fix core dump during telemetry log decode
+  * nvme: fix to add device open error message
+  * nvme-print: support PEL VS Events and Info
+  * plugins/solidigm: Added some Vendor specific SMART Attribute IDs.
+  * nvme: Combine duplicated char dev error message string variables
+  * nvme: check chardev for resets and rescan
+  * nvme: correct sanitize in progress definition name
+  * nvme-print: introduce nvme_show_cmd_err() helper function
+  * docs: update readme to include more badges
+  * log: remove deprecated default global context functions
+  * nbft: add global context as first argument to nbft API
+  * linux: add global context as first argument to crypto API
+  * test: add global context discovery test case
+  * tree: get global context directly
+  * tree: add nvme_global_ctx to struct nvme_ns and struct nvme_ctrl
+  * test: don't fail in ioctl mock for unknown ioctl
+  * fabrics: add additional debug messages for --tls and --concat (bsc#1256043)
+  * fabrics: fix mem leak at nvmf_connect()
+  * tree: make nvme_lookup_ctrl and nvme_ctrl_find private
+  * tree: add nvme_subsystem_get
+  * tree: separate create host code from nvme_lookup_host
+  * tree: add nvme_host_get
+  * tree: remove unused default_host variable
+  * fabrics: move config modify code to library
+  * plugin/ocp: Added OCP 2.7 smart extended log changes Updated the smart extended log page structure, json and stdout print ocp2.7 enhancement.
+  * fabrics: fix fabrics_connect() error message
+  * fabrics: add error if dhchap-ctrl-secret is specified with --concat (bsc#1256043)
+  * fabrics: add error if no dhchap-secret is specified with --concat (bsc#1256043)
+  * fabrics: add error if --tls and --concat are invoked together (bsc#1256043)
+  * nvme: fix get_pi_info() handling for submit_io() error
+  * PyPI: Only use major version for libnvme.so
+  * fabrics: fix concat during nvme connect-all (bsc#1256043)
+  * fabrics: open transport handle for discovery controller
+  * nvme: add iopolicy field in JSON output
+  * nvme: avoid printing iopolicy in list-subsys output
+  * PyPI: fix missing symbolic link libnvme.so.x ->  libnvme.so.X.Y.Z
+  * nvme-print: introduce nvme_show_err() helper function
+  * nvme-print-stdout: print equal line by stdout_d() for debug log level
+  * nvme-print-stdout: change stdout_d() to not print equal line
+  * plugins/solidigm: Added wildcard and filters to telemetry parsing.
+  * PyPI: Do not install/build nvme components
+  * fabrics: reorder and align fabric_args assigments
+  * tree: remove nvme_update_config
+  * test: print command string
+  * PyPI: add meson options to build without nvme executable
+  * docs: Fix read-the-docs
+  * doc: correct id-ns vendor-specific short option
+  * docs: Fix URLs referencing deprecated libnvme repo
+  * nvme: init result_def in get_feature_id_changed
+  * nvme: add sanitize ns specific status code string
+  * nvme: add support for sanitize-ns command
+  * types: add NVMe 2.3 opcode, fid and lid definitions
+  * fabrics: fix mem leak at nvmf_discovery_config_file()
+  * fabrics: fix uninitialized value in _nvmf_discovery()
+  * fabrics: add missing default context assignment
+  * libnvme: add accessor code generation
+  * logging: suppress logging except during normal output
+  * nvme: correct to check dry-run option
+  * linux: filter out key errors when looking up identity
+  * fabrics: set crypto info to fabrics context
+  * fabrics: set hostnqn and hostid for fabrics context
+  * fabrics: correctly set host traddr and iface
+  * plugins: update default telemetry retrieval DA
+  * doc: update readme on libnvme dependency
+  * fabrics: add documentation to the new discovery/connnect API
+  * fabrics: remove duplicate arguments from discover/connect
+  * fabrics: move connect logic to library
+  * fabrics: generalize nvmf_discovery_ctx to nvmf_context
+  * fabrics: move final discovery code to library
+  * fabrics: move discovery config file code to library
+  * fabrics: add context to common fabrics arg parser
+  * fabrics: move host_traddr and host_iface to ctrl
+  * fabrics: move nbft code to the library
+  * fabrics: move connect config json code to the library
+  * fabrics: move json config based discovery to library
+  * fabrics: move __discover to the library
+  * util: move nvme_strerror to libraray
+  * test/mi: avoid compile warning in test_admin_invalid_formats()
+  * nvme: add fallback support for block vs char device to verify command
+  * nvme: handle absence of PI support in IO commands
+  * ioctl: use dummy passthru command
+  * nvme: do not use initialize PI tags unconditionally
+  * nvme: factor out get_pi_info from submit_io
+  * nvme: add fallback support for block vs char device to flush command
+  * nvme: add fallback support for block vs char device to dsm command
+  * libnvme: Rename NVME_LOG_*_DISCOVER to NVME_LOG_*_DISCOVERY
+  * plugins/ocp: Prevent Seg Fault during Telemetry log Parsing
+  * nvme: refactor PI tagging for uniform behavior
+  * ioctl: fix return code handling in uring code
+  * src: drop result argument from submit API
+  * ioctl: add hooks into submission path
+  * libnvme: use 64-bit version struct nvme_passtru_cmd everywhere
+  * nvme: dsm: make context atttribute optional again
+  * fabrics: interpret return code from nvme_create_ctrl correctly
+  * ioctl: fix dms command
+  * nvme: use io passthru for write_uncor
+  * plugin/wdc: Fix UUID search for SN640 and SN655
+  * nvme: fix copy_cmd to get pif and sts values
+  * nvme: fix to call nvme_submit_io_passthru for I/O commands
+  * nvme-print-stdout: Display id-ctrl ONCS fields according to NVMe spec v.2.3
+  * ocp: minor feature name fixes
+  * ocp: fix Ext SMART log page version 5 checking
+  * tree: Fix potential NULL pointer dereference in nvme_host_get_ids()
+  * nvme: fix virtual_mgmt cntlid parsing order
+  * plugins/sandisk:  Use Correct PCI Vendor ID for SNESSD1 Drives
+  * python bindings: add some definitions for backward compatibility
+  * plugins/sandisk: update calling arguments
+  * plugins/solidigm: Additional nlog warning instrumentation.
+  * plugins/solidigm: Better string handling on Telemetry parsing.
+  * sndk: Add plugin command support for SN-861
+  * libnvme/mi: always initialize timeout_save
+  * meson: Use configure_file() `install` instead of install_data()
+  * libnvme: remove unused project config files
+  * zns: add error check zns report zones
+  * plugins: replace nvme_scan with nvme_scan_topology
+  * linux: change nvme_transport_handle_get_name to return base name
+  * python: update error handling for bindings
+  * python: adjust README to use global_ctx
+  * test: fix mi.c kernel-doc-check warning
+  * examples: do not use "/**" opening comment mark
+  * examples: fix mi-mctp.c kernel-doc-check warning
+  * test/zns: fix kernel-doc-check warnings
+  * ioctl: refactor nvme_get_log_partial uring
+  * src: merge api-types.h content into types.h
+  * ioctl: remove unused enum features
+  * nvme: rework nvme_copy command
+  * ioctl: rework nvme_copy command
+  * nvme: rework nvme_io command
+  * ioctl: rework nvme_io commands
+  * ioctl: rework nvme_lm_get_features_data_queue command
+  * ioctl: rework nvme_lm_set_features_data_queue command
+  * src: rework nvme_lm_migration_recv command
+  * ioctl: rework nvme_lm_migration_recv command
+  * src: rework nvme_lm_migration_send command
+  * ioctl: rework nvme_lm_migration_send command
+  * src: rework nvme_lm_track_send command
+  * ioctl: rework nvme_lm_track_send command
+  * src: rework nvme_lm_cdq command
+  * ioctl: rework nvme_lm_cqd command
+  * ioctl: rework nvme_dim_send command
+  * src: rework nvme_zns_append command
+  * ioctl: rework nvme_zns_append commands
+  * src: rework nvme_zns_mgmt_recv command
+  * ioctl: rework nvme_zns_mgmt_recv commands
+  * src: rework nvme_zns_mgmt_send command
+  * ioctl: rework nvme_zns_mgmt_send commands
+  * src: rework nvme_io_mgmt_send commands
+  * ioctl: rework nvme_io_mgmt_send commands
+  * src: rework nvme_io_mgmt_recv commands
+  * ioctl: rework nvme_io_mgmt_recv commands
+  * src: rework nvme_resv_report commands
+  * ioctl: rework nvme_resv_report command
+  * src: rework nvme_resv_release commands
+  * ioctl: rework nvme_resv_release command
+  * src: rework nvme_resv_register command
+  * ioctl: rework nvme_resv_register command
+  * src: rework nvme_resv_acquire command
+  * ioctl: rework nvme_resv_acquire command
+  * src: rework nvme_virtual_mgmt command
+  * ioctl: rework nvme_virtual_mgmt command
+  * src: rework nvme_dev_self_test command
+  * ioctl: rework nvme_dev_self_test command
+  * src: rework nvme_sanitize_nvm command
+  * ioctl: rework nvme_sanitize_nvm command
+  * src: rework nvme_get_property command
+  * ioctl: rework nvme_get_property command
+  * src: rework nvme_set_property command
+  * ioctl: rework nvme_set_property command
+  * src: rework nvme_lockdown command
+  * ioctl: rework nvme_lockdown command
+  * src: rework nvme_capacity_mgmt command
+  * ioctl: rework nvme_capacity_mgmt commands
+  * src: rework nvme_directive_recv command
+  * ioctl: rework nvme_directive_recv commands
+  * src: rework nvme_directive_send command
+  * ioctl: rework nvme_directive_send commands
+  * src: rework nvme_get_lba_status command
+  * ioctl: rework nvme_get_lba_status command
+  * src: rework nvme_security_receive command
+  * ioctl: rework nvme_security_receive command
+  * src: rework nvme_security_send command
+  * ioctl: rework nvme_security_send command
+  * src: rework nvme_fw_commit command
+  * ioctl: rework nvme_fw_commit command
+  * src: rework nvme_fw_download commands
+  * ioctl: rework nvme_fw_download command
+  * src: rework nvme_ns_attach commands
+  * ioctl: rework nvme_ns_attach commands
+  * src: rework nvme_ns_mgmt commands
+  * ioctl: rework nvme_ns_mgmt commands
+  * src: rework nvme_format_nvm command
+  * ioctl: rework nvme_format_nvm command
+  * src: rework nvme_dsm command
+  * ioctl: rework nvme_dsm command
+  * src: rework nvme_get_features commands
+  * src: rework nvme_set_features commands
+  * ioctl: introduce get/set feature helper functions
+  * ioctl: rework nvme_get_features commands
+  * ioctl: rework nvme_set_features commands
+  * nvme: nvme_get_log use nvme_passthru_cmd directly
+  * ioctl: add nvme_init_log_lpo helper
+  * ioctl: introduce get log helper functions
+  * ioctl: rework nvme_get_log commands
+  * ioctl: introduce nvme_identify helper functions
+  * src: rework nvme_identify commands
+  * ioctl: rework nvme_identify commands
+  * src: rename struct command *cmd to acmd
+  * test: fix ioctl/logs.c -Wint-in-bool-context warnings
+  * ioctl: remove struct args backwards compatibility
+  * fabrics: fix nvme_get_adrfam function description parameter ctrl as c
+  * mi: remove nvme_mi_admin_identify{_partial}
+  * ioctl: add nvme_identify_partial
+  * nvme-cli: update error handling
+  * rrc: return error codes directly
+  * nvme-cli: update to libnvme API changes
+  * mi: replace dedicated MI API with generic one
+  * ioctl: add alignment and length check to nvme_fw_download
+  * ioctl: add support for MI passthru
+  * linux: add nvme_transport_handle_is_{direct|mi}
+  * linux: add MI support to nvme_{open|close}
+  * mi: replace nvme_mi_ctrl_t with struct nvme_transport_handle
+  * linux: add nvme_transport_handle_is_{blk|char}dev
+  * linux: add nvme_transport_handle_get_name
+  * linux: add nvme_transport_handle_get_fd
+  * api-types: remove unused fd members
+  * ioctl: fix get_log_partial to use uring for link type direct
+  * src: introduce transport handle abstraction
+  * api-types: replace nvme_root_t with struct nvme_global_ctx
+  * src: merge libnvme-mi into libnvme
+  * ioctl: remove deprecated functions
+  * map: merge all symbols into 2.0 section
+  * libnvme: hookup the library into the build
+
+- updated spec:
+  * remove 0001-nvmf-autoconnect-add-NetworkManager-dispatcher-scrip.patch
+  * remmove 0002-fabrics-add-helper-to-update-tls-and-concat.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 11:54:00 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - fabrics: add helper to update tls and concat (bsc#1259672)
