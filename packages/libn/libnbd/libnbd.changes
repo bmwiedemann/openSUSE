@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Thu Jun 18 12:34:56 UTC 2026 - olaf@aepfle.de
 
 - add build condition for ublksrv

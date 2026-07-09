@@ -52,6 +52,7 @@ BuildRequires:  jq
 %if 0%{?suse_version} >= 1550
 BuildRequires:  nbd
 %endif
+BuildRequires:  python3-base
 BuildRequires:  qemu-tools
 
 %description
