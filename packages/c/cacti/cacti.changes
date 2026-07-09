@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:14:00 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git5.48d9fdd3:
+  * Allow Users to Switch Devices for Data Query Graphs (#7247)
+  * ci: add ondrej PHP PPA so libapache2-mod-php installs on ubuntu-24.04 (#7219)
+  * fix: Update the syntax.yml workflow to not check the matrix version when installing libapache-mod-php (#7217)
+  * fix: Address a few minor realtime memory leaks after audit (#7213)
+  * fix: keep realtime graphing alive when a poll fails or returns non-JSON (#7212) (#7215)
+
+-------------------------------------------------------------------
 Tue Jun 16 13:46:13 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Update to version 1.2.31+git0.1e8eaca2:
