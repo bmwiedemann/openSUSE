@@ -1851,4 +1851,24 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
     <comment></comment>
     <requestid>1363915</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>4b717a59d614839901cd26bdd044607f</srcmd5>
+    <version>1.2.23</version>
+    <time>1783628456</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.23
+  + Fixed disabled widgets not appearing greyed out when a custom color set is in use
+  + Fixed custom palette colors being selectable with the Breeze style, which doesn't support them
+  + Fixed tab order in appearance settings
+  + Fixed exclusive mode being selectable in backend settings when not supported by the current output
+  + Fixed the fader not resuming after being paused (#2204)
+  + Fixed metadata (title, artist, album) from a radio stream track carrying over to the next track when its own tags are empty
+  + Fixed a possible division by zero in the FHT spectrum analyzer
+  + Fixed Windows System Media Transport Controls image and timeline handling (#2208)
+  + Numerous stability, crash-safety and thread-safety fixes throughout the application
+  + Style changes under appearance settings are now applied immediately, without requiring a restart
+  + Added support for sorting radio browser search results by clicking column headers (#2200)
+</comment>
+    <requestid>1364688</requestid>
+  </revision>
 </revisionlist>
