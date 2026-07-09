@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul  4 09:59:55 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- update to 2.24.0:
+  * va: Add VA_PICTURE_H264_NON_EXISTING flag
+  * va: use secure_getenv instead of getenv in va_x11.c
+  * doc: fix libva av1 link for doxygen
+  * trace: dump input/output data in va_TraceProtectedSessionExecute
+  * trace: Add ProtectedSession Related Log in Trace
+
+-------------------------------------------------------------------
 Sun Dec 28 23:41:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.23.0:
