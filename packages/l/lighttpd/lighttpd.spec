@@ -2,7 +2,7 @@
 # spec file for package lighttpd
 #
 # Copyright (c) 2023 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define pkg_version %{version}
 %define tarball_version %{version}
 Name:           lighttpd
-Version:        1.4.82
+Version:        1.4.85
 Release:        0
 Summary:        A Secure, Fast, Compliant, and Very Flexible Web Server
 License:        BSD-3-Clause
@@ -41,25 +41,26 @@ BuildRequires:  pkgconfig
 BuildRequires:  postgresql-devel
 # pg_config moved to postgresql-server-devel in postgresql11* packages boo#1153722
 BuildRequires:  postgresql-server-devel
+BuildRequires:  libxcrypt-devel
 BuildRequires:  shadow
 BuildRequires:  perl(CGI)
 BuildRequires:  pkgconfig(dbi)
+BuildRequires:  pkgconfig(gnutls)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libbrotlicommon)
+BuildRequires:  pkgconfig(libcrypto)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libpcre2-posix)
 BuildRequires:  pkgconfig(libsasl2)
+BuildRequires:  pkgconfig(libssl)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lua5.4)
+BuildRequires:  pkgconfig(nettle)
+BuildRequires:  pkgconfig(nss)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
-BuildRequires:  pkgconfig(gnutls)
-BuildRequires:  pkgconfig(nss)
-BuildRequires:  pkgconfig(libssl) pkgconfig(libcrypto)
-BuildRequires:  pkgconfig(nettle)
-BuildRequires:  libxcrypt-devel
 Requires:       spawn-fcgi
 Requires(post): %fillup_prereq
 Requires(pre):  shadow
@@ -74,16 +75,16 @@ Provides:       user(%{name})
 %{?systemd_requires}
 %if 0%{?suse_version} <= 1600 && 0%{?suse_version}
 BuildRequires:  libattr-devel
+BuildRequires:  mbedtls-devel
 BuildRequires:  mysql-devel
 BuildRequires:  openldap2-devel
 BuildRequires:  pam-devel
-BuildRequires:  mbedtls-devel
 %else
 BuildRequires:  pkgconfig(ldap)
 BuildRequires:  pkgconfig(libattr)
+BuildRequires:  pkgconfig(mbedtls)
 BuildRequires:  pkgconfig(mysqlclient)
 BuildRequires:  pkgconfig(pam)
-BuildRequires:  pkgconfig(mbedtls)
 %endif
 
 %description
@@ -98,8 +99,8 @@ Web server software for every server that is suffering load problems.
 Summary:        Compression module for lighttpd
 Group:          Productivity/Networking/Web/Servers
 Requires:       %{name} = %{version}
-Provides:       lighttpd:%{_sysconfdir}/%{name}/conf.d/deflate.conf
 Provides:       lighttpd:%{_libdir}/%{name}/mod_deflate.so
+Provides:       lighttpd:%{_sysconfdir}/%{name}/conf.d/deflate.conf
 
 %description mod_deflate
 Compression module for lighttpd.

@@ -685,4 +685,24 @@ lighttpd 1.4.80</comment>
 lighttpd 1.4.82</comment>
     <requestid>1304455</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>13294d80faec32dff61b0892d49df3cf</srcmd5>
+    <version>1.4.84</version>
+    <time>1781879894</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1360139 from AndreasStieger
+
+lighttpd 1.4.84</comment>
+    <requestid>1360598</requestid>
+  </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>0f47160e3c0a81e30b1cf18555c2cfb4</srcmd5>
+    <version>1.4.85</version>
+    <time>1783628463</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1364664 from AndreasStieger
+
+lighttpd 1.4.85</comment>
+    <requestid>1364694</requestid>
+  </revision>
 </revisionlist>

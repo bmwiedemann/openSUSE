@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:33:49 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- updte to 1.4.85:
+  * mod_magnet: fix custom response with 4xx and 5xx
+  * core: fix large file uploads to fastcgi
+  * developer visible bug fixes and code maintenance
+
+-------------------------------------------------------------------
+Thu Jun 18 04:43:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.84:
+  * fix regression in mod_deflate
+
+-------------------------------------------------------------------
+Wed Jun 17 19:00:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.4.83:
+  * add PQC hybrid KEM X25519MLKEM768 to default TLS groups
+  * mod_sockproxy can now route connections based on TLS SNI
+  * mod_proxy proxy.header enhanced config for url-path mapping of response headers
+  * HTTP Incremental header support
+  * portability/compatibility with library updates (lighttpd dependencies)
+  * HTTP/1.1 Upgrade: h2c has been deprecated; set default to
+    disabled in lighttpd, but can still be enabled in config, and
+    http2 prior knowledge is still enabled
+
+-------------------------------------------------------------------
 Fri Sep 12 20:14:47 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.4.82:
