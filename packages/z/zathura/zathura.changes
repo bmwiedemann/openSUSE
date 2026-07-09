@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 05:29:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.07.08:
+  * Add page-mode setting to zathurarc to control the initial
+    page layout
+  * Fix a regression where opening a document could jump to the
+    wrong page because callbacks changed the current page during
+    document opening
+  * Include the database version in error messages
+  * Fix display of the full version string
+- Raise girara build dependency to >= 2026.07.07
+
+-------------------------------------------------------------------
 Fri Jul  3 06:28:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.07.02:

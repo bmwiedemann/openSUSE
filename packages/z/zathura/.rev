@@ -224,4 +224,12 @@
     <comment>Update zathura to 2026.07.02: port to GTK 4 (&gt;= 4.12; window embedding/XEmbed no longer supported), new single-page mode bound to 'w', optional link-opening confirmation, XXH3-128 file hashing (new libxxhash dep), improved seccomp/landlock sandbox confinement, first-page-column parsing regression fix. NOTE: plugin API/ABI raised to 7/8 - plugins need a rebuild only (headers otherwise unchanged); all five plugin packages (cb, djvu, pdf-mupdf, pdf-poppler, ps) already rebuilt GREEN against the new zathura-devel in X11:Utilities, please stage together. Upstream tarball GPG-verified; %check 12/12 incl. AppStream+desktop validation; 0 rpmlint badness; source_validator green.</comment>
     <requestid>1363632</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>1071d6850266f2edc1ebe80d0f77a4d8</srcmd5>
+    <version>2026.07.08</version>
+    <time>1783628422</time>
+    <user>anag_factory</user>
+    <comment>Update to 2026.07.08 (page-mode setting, fix wrong-page-on-open regression, version string fixes)</comment>
+    <requestid>1364638</requestid>
+  </revision>
 </revisionlist>
