@@ -18,7 +18,7 @@
 
 
 Name:           vkquake
-Version:        1.34.1
+Version:        1.35.0
 Release:        0
 Summary:        Quake 1 port using Vulkan instead of OpenGL for rendering
 License:        GPL-2.0-or-later
@@ -32,7 +32,7 @@ BuildRequires:  cmake
 BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  spirv-tools
+BuildRequires:  spirv-tools >= 2025.3
 # from quakedef.h "Vulkan is too old" preprocessor check
 BuildRequires:  vulkan-devel >= 1.2.162
 BuildRequires:  pkgconfig(flac)
@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(libmikmod)
 BuildRequires:  pkgconfig(libmpg123)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(opusfile)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(vorbis)
 %if 0%{?sle_version} >= 150500 && 0%{?sle_version} < 160000 && 0%{?is_opensuse}
 BuildRequires:  gcc11

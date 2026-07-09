@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Wed Jul  8 14:31:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.35.0
+  Improvements:
+  * Order independent transparency: overlapping transparent
+    surfaces (water, glass, sprites, particles). Weighted blended
+     OIT (from Ironwail) is the new default; higher quality moment
+     based OIT is available when option is set to "High".
+  * SDL3 is now the default on all platforms
+  * The Nightdive add-on directory is mounted as an extra content
+    root and the mods menu shows friendly mod names (from Ironwail)
+  * Support for the 2021 rerelease dynamiclight entities including
+    spotlight cones, using the exact KEX formula.
+  * Lower display latency: frames queued for display are capped
+    using VK_KHR_present_wait.
+  * Performance: FTE particle simulation and vertex generation run
+    on the task workers, improved parallel world marking.
+  * QuakeSpasm-Spiked protocol extensions: getentity, forceinfokey,
+    pinterstat/globalstat and missing FRIK_FILE builtins (from QSS)
+  * HUD elements can be loaded from all supported image formats
+    (png, tga, jpg, pcx).
+  * The console uses insert mode by default.
+  Fixes:
+  * #678 : Rotating brush models are now lit correctly.
+  * #910 : Use level external textures irrespective of current mod
+    path priority.
+  * #920 : More guards around entities getting freed at runtime.
+  * Fix a data race on dynamic lights from deferred particle spawns
+  * Fix screenshots capturing stale frames.
+  * vid_vsync is applied immediately when toggled.
+  * Water entities with a fixed alpha of 1.0 no longer inherit
+    r_wateralpha transparency.
+  * Particle line traces handle rotated brush entities correctly.
+  * Keep control characters out of savegame comments.
+  * Fix setup menu player recoloring.
+  * Filesystem and pak file handle fixes.
+  * Fix theoretical task queue races and -pinnedworkers.
+  * Enforce NUL terminator for the BSP entity lump (from
+    Ironwail/QS).
+  * Release builds no longer ship with assertions compiled in.
+- BuildRequires spirv-tools >= 2025.3 since --canonicalize-ids is
+  needed.
+
+-------------------------------------------------------------------
 Fri Apr  3 08:44:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.34.0
