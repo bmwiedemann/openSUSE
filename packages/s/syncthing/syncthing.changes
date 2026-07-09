@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul  8 17:34:04 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.1.2
+  * Fixes
+    fix(connections): do not report connection metrics for self (ref #10509) by @calmh in #10724
+    fix: let umask do the thing by @calmh in #10723
+    fix(fs, model): improve symlink resilience in file shortcut by @calmh in #10739
+    fix(protocol): always expect & validate block hash in requests by @calmh in #10738
+    fix(protocol): be more stringent about blocks in non-file entries by @calmh in #10737
+    fix(protocol): loosen restriction on size of directory entries by @calmh in #10743
+    fix(folder): check if context canceled when scanning (fixes #10363) by @henriksb1 in #10757
+    fix(config): remove extraneous defaults setting while unmarshalling folder options (fixes #10746, fixes #10389) by @calmh in #10763
+    fix(sqlite): update last migration to set schema version, counts by @calmh in #10768
+  * Other
+    chore(db, model): separate methods to drop a device vs its files by @imsodin in #10480
+    build(deps): update dependencies by @calmh in #10740
+    chore(osutil): fixup test for symlinked folder root by @calmh in #10758
+    chore(model): increase default value for num hashers by @calmh in #10761
+    chore: stop treating dirs as having size 128 by @imsodin in #10750
+    chore(versioner): attempt to prevent blatantly unsafe external versioner commands (fixes #10721) by @calmh in #10722 
+
+-------------------------------------------------------------------
 Tue Jun  2 12:49:52 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.1.1
