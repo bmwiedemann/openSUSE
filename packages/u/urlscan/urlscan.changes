@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jun 30 09:02:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.9:
+  * Fix webbrowser opening issue for python 3.14
+  * Fix text browser usage
+
+-------------------------------------------------------------------
 Tue Mar 24 23:12:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.8:

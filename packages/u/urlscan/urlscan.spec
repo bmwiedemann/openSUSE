@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           urlscan
-Version:        1.0.8
+Version:        1.0.9
 Release:        0
 Summary:        An other URL extractor/viewer
 License:        GPL-2.0-or-later
