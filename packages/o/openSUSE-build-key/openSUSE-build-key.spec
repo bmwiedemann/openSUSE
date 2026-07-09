@@ -53,7 +53,7 @@ Source2:        gpg-pubkey-39db7c82-66c5d91a.asc
 Source3:        gpg-pubkey-697ba1e5-5c755904.asc
 
 # zSystems
-Source5:        gpg-pubkey-f6ab3975-62e9e6fb.asc
+Source5:        gpg-pubkey-f6ab3975-66f622c2.asc
 
 # PowerPC
 Source6:        gpg-pubkey-8ede3e07-5c755f3a.asc

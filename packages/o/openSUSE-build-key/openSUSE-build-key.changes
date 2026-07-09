@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:45:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update key for zSystems (managed by OBS, expires 2026-12-06)
+  - replace gpg-pubkey-f6ab3975-62e9e6fb.asc
+  - by gpg-pubkey-f6ab3975-66f622c2.asc
+
+-------------------------------------------------------------------
 Tue Jun 23 14:34:49 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - do not include the projects _pubkey if we have it already.

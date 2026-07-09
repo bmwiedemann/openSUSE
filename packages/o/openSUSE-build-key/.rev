@@ -522,4 +522,20 @@ However, it would be good to have these out before we do switch. (forwarded requ
 - use the modification time for key2rpname</comment>
     <requestid>1362194</requestid>
   </revision>
+  <revision rev="59" vrev="68">
+    <srcmd5>62fe745077ca09fdfbc014fac23acdfe</srcmd5>
+    <version>1.0</version>
+    <time>1783628303</time>
+    <user>anag_factory</user>
+    <comment>- Update key for zSystems (managed by OBS, expires 2026-12-06)
+  - replace gpg-pubkey-f6ab3975-62e9e6fb.asc
+  - by gpg-pubkey-f6ab3975-66f622c2.asc
+
+This seems to be another fallout from earlier having multiple keys
+(the _project AND the managed one) in the package; the _project one
+was injected until recently. With that correction, we end up with only
+the key that expired back in 2024. The key is valid for another 6 months,
+so we will have to replace it soon again. (forwarded request 1364460 from dimstar)</comment>
+    <requestid>1364467</requestid>
+  </revision>
 </revisionlist>
