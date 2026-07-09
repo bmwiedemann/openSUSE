@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Jul  7 20:50:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.55.0:
+  * Hook scripts defined via the configuration system can now be
+    configured to run in parallel.
+  * The userdiff driver for the Scheme language has been extended
+    to cover other Lisp dialects.
+  * Terminal control sequences coming over the sideband while
+    talking to a remote repository are mostly disabled by default,
+    except for ANSI color escape sequences.
+  * "ort" merge backend improvements.
+  * "git checkout -m another-branch" was invented to deal with
+    local changes to paths that are different between the current
+    and the new branch, but it gave only one chance to resolve
+    conflicts. The command was taught to create a stash to save the
+    local changes.
+  * A new builtin "git format-rev" is introduced for pretty
+    formatting one revision expression per line or commit object names
+    found in running text.
+  * "git history" learned "fixup" command.
+  * The internal URL parsing logic has been made accessible via a
+    new subcommand "git url-parse".
+  * Misspelt proxy URL (e.g., httt://…​) did not trigger any
+    warning or failure, which has been corrected. We had a regression
+    in this update that broke https:// proxies, but that has been
+    caught and corrected.
+  * Document the fact that .git/info/exclude is shared across
+    worktrees linked to the same repository.
+  * The command line parser for "git diff" learned a few options take
+    only non-negative integers.
+  * The graph output from commands like "git log --graph" can now be
+    limited to a specified number of lanes, preventing overly wide
+    output in repositories with many branches.
+  * The fsmonitor daemon has been implemented for Linux.
+  * "git cat-file --batch" learns an in-line command "mailmap" that
+    lets the user toggle use of mailmap.
+  * The "git pack-objects --path-walk" traversal has been
+    integrated with several object filters, including blobless and
+    sparse filters.
+  * "git push" learned to take a "remote group" name to push to,
+    which causes pushes to multiple places, just like "git fetch"
+    would do.
+  * The git-jump command (in contrib/) has been taught to
+    automatically pick a mode (merge, diff, or ws) when invoked
+    without arguments.
+  * The documentation for push.default = simple has been clarified
+    to better explain its behavior, making it clear that it pushes
+    the current branch to a same-named branch on the remote, and
+    detailing the upstream requirements for centralized workflows.
+  * The documentation for "--word-diff" has been extended with a
+    bit of implementation detail of where these different words come
+    from.
+  * "git config foo.bar=baz" is not likely to be a request to read
+    the value of such a variable with = in its name; rather it is
+    plausible that the user meant "git config set foo.bar baz". Give
+    advice when giving an error message.
+  * "git rev-list" (and "git log" family of commands) learned a new
+    "--max-count-oldest" that picks oldest N commits in the range
+    instead of the usual newest.
+  * Various AsciiDoc markup fixes in git config documentation and
+    related files to ensure lists and formatting are rendered
+    correctly.
+
+-------------------------------------------------------------------
 Fri May 15 22:39:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add requires for awk as it is used by

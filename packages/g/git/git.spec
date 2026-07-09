@@ -43,7 +43,7 @@
 %bcond_with    asciidoctor
 %endif
 Name:           git
-Version:        2.54.0
+Version:        2.55.0
 Release:        0
 Summary:        Fast, scalable, distributed revision control system
 License:        GPL-2.0-only
@@ -341,6 +341,7 @@ cat > .make <<'EOF'
        DESTDIR=%{buildroot} \
        NO_CROSS_DIRECTORY_HARDLINKS=1 \
        NO_INSTALL_HARDLINKS=1 \
+       NO_RUST=1 \
 %if 0%{?suse_version} > 1320
        DC_SHA1_EXTERNAL=YesPlease \
 %endif
