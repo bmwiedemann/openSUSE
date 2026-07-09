@@ -622,4 +622,12 @@
     <comment>Fix virt-viewer build failure in Factory because of glibc 2.43 update.</comment>
     <requestid>1352545</requestid>
   </revision>
+  <revision rev="79" vrev="9">
+    <srcmd5>901f56c73bd1c24d4b1a72e2f8735a54</srcmd5>
+    <version>11.0</version>
+    <time>1783628519</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1364766</requestid>
+  </revision>
 </revisionlist>

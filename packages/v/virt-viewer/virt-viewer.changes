@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Mon May 11 11:15:13 MDT 2026 - carnold@suse.com
 
 - Fix build failure in Factory because of glibc 2.43 new const

@@ -58,6 +58,7 @@ BuildRequires:  meson
 %if 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
 BuildRequires:  spice-gtk-devel
 %endif
+BuildRequires:  python3-base
 BuildRequires:  vte-devel
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gtk-vnc-2.0)
