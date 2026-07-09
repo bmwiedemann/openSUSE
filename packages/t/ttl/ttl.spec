@@ -17,7 +17,7 @@
 
 
 Name:           ttl
-Version:        0.20.2
+Version:        0.21.0
 Release:        0
 Summary:        Modern traceroute/mtr-style TUI
 License:        Apache-2.0 OR MIT
@@ -38,7 +38,7 @@ enrich hop data with DNS, ASN, geolocation, and PeeringDB information.
 %autosetup -p 1 -a 1
 
 %build
-%{cargo_build}
+%{cargo_build} --no-default-features
 
 %install
 %{cargo_install}

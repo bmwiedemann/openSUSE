@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 06:41:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.21.0:
+  * feat(update): allow disabling the update check (#110) (#122)
+- Build with "--no-default-features" to disable the automatic
+  update check (update-informer).
+
+-------------------------------------------------------------------
 Tue Jul  7 07:52:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.20.2:
