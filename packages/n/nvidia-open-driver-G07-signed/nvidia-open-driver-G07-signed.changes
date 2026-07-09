@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:50:02 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- preamble:
+  * Workaround: Require update-alternatives on SLE16.1/Leap 16.1 and
+    later as long as CUDA packages have not been adjusted yet
+    (bsc#1267820)
+
+-------------------------------------------------------------------
 Tue Jun 23 11:47:45 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 595.84 (boo#1268792)

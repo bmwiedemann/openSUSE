@@ -17,6 +17,11 @@ Requires: nvidia-persistenced-cuda-lt-sp6
 %endif
 %endif
 Requires: (nvidia-common-G07 = %{-v*} if nvidia-compute-utils-G07 = %{-v*})
+# Workaround: Require update-alternatives on SLE16.1/Leap 16.1 and
+# later as long as CUDA packages have not been adjusted yet (bsc#1267820)
+%if 0%{?suse_version} >= 1610
+Requires: update-alternatives
+%endif
 Provides: nvidia-open-signed-kmp = %{-v*}
 Provides:  nvidia-open-signed-kmp(%mykind)
 Conflicts: nvidia-open-signed-kmp(%otherkind)

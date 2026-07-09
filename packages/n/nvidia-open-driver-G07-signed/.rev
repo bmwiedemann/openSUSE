@@ -156,4 +156,15 @@
   to be available for SLE16.1-aarch64</comment>
     <requestid>1361560</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>ecd40a97c6cb3e2147c8a0f8580405b8</srcmd5>
+    <version>595.84</version>
+    <time>1783628309</time>
+    <user>anag_factory</user>
+    <comment>- preamble:
+  * Workaround: Require update-alternatives on SLE16.1/Leap 16.1 and
+    later as long as CUDA packages have not been adjusted yet
+    (bsc#1267820)</comment>
+    <requestid>1364506</requestid>
+  </revision>
 </revisionlist>
