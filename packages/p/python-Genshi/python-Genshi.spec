@@ -26,6 +26,8 @@ License:        BSD-3-Clause
 Group:          Development/Languages/Python
 URL:            https://genshi.edgewall.org/
 Source:         https://files.pythonhosted.org/packages/source/g/genshi/genshi-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM: https://github.com/edgewall/genshi/pull/93/
+Patch1:         py315-fixes.patch
 BuildRequires:  %{python_module Babel}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}

@@ -262,4 +262,12 @@
     removal of 2to3 in 0.7.4).</comment>
     <requestid>1363031</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>ccb714e5993708c353e2d776df5c5c8d</srcmd5>
+    <version>0.7.11</version>
+    <time>1783628290</time>
+    <user>anag_factory</user>
+    <comment>- add py315-fixes.patch to fix build with python 3.15</comment>
+    <requestid>1364408</requestid>
+  </revision>
 </revisionlist>
