@@ -36,7 +36,7 @@
 %endif
 
 Name:           curl%{?psuffix}
-Version:        8.20.0
+Version:        8.21.0
 Release:        0
 Summary:        A Tool for Transferring Data from URLs
 License:        curl
@@ -49,9 +49,6 @@ Source5:        curl-mini.rpmlintrc
 Patch0:         libcurl-ocloexec.patch
 Patch1:         dont-mess-with-rpmoptflags.patch
 Patch2:         curl-secure-getenv.patch
-# PATCH-FIX-OPENSUSE bsc#1076446 protocol redirection not supported or disabled
-Patch3:         curl-disabled-redirect-protocol-message.patch
-Patch4:         libcurl-fix-wakeup-consumption.patch
 BuildRequires:  groff
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

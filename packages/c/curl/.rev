@@ -2121,4 +2121,34 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   * Add libcurl-fix-wakeup-consumption.patch (forwarded request 1356966 from dheidler)</comment>
     <requestid>1356980</requestid>
   </revision>
+  <revision rev="226" vrev="1">
+    <srcmd5>23c00f4c22ebe32ec8fc2db0146f0f3a</srcmd5>
+    <version>8.21.0</version>
+    <time>1783628276</time>
+    <user>anag_factory</user>
+    <comment>- Update to 8.21.0:
+  * Security fixes:
+    - CVE-2026-8286: wrong STARTTLS connection reuse (bsc#1268402)
+    - CVE-2026-8458: wrong reuse for different services (bsc#1268407)
+    - CVE-2026-8924: traling dot domain super cookie (bsc#1268409)
+    - CVE-2026-8925: SASL double-free (bsc#1268411)
+    - CVE-2026-8926: password leak with netrc and user in URL (bsc#1268412)
+    - CVE-2026-8927: env-set cross-proxy Digest auth state leak (bsc#1268413)
+    - CVE-2026-8932: incomplete mTLS config matching in conn reuse (bsc#1268414)
+    - CVE-2026-9079: stale proxy password leak (bsc#1268415)
+    - CVE-2026-9080: UAF after pause in socket callback (bsc#1268416)
+    - CVE-2026-9545: exposing HTTP/3 early data (bsc#1268417)
+    - CVE-2026-9546: sending old referer (bsc#1268419)
+    - CVE-2026-9547: SSH improper host validation (bsc#1268420)
+    - CVE-2026-10536: HTTP/2 stream-dependency tree UAF (bsc#1268422)
+    - CVE-2026-11352: QUIC zero-length UDP datagrams busy-loop (bsc#1268423)
+    - CVE-2026-11564: Native CA trust persist (bsc#1268424)
+    - CVE-2026-11586: WS Auto-PONG memory exhaustion (bsc#1268425)
+    - CVE-2026-11856: cross-origin Digest auth state leak (bsc#1268426)
+    - CVE-2026-12064: proto-default skips SSH verification (bsc#1268427)
+  * For a complete changelog see: https://curl.se/ch/8.21.0.html
+- Remove patches now in upstream:
+    curl-disabled-redirect-protocol-message.patch libcurl-fix-wakeup-consumption.patch (forwarded request 1361807 from lmulling)</comment>
+    <requestid>1361808</requestid>
+  </revision>
 </revisionlist>
