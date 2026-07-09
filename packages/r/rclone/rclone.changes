@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jul 08 18:56:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.74.4:
+  * Version v1.74.4
+  * gui: update embedded release to 1.1.10
+  * local: stop --links symlinks escaping the destination directory CVE-2026-54572
+  * local: don't restore setuid/setgid/sticky bits from metadata by default GHSA-945v-v9p3-v5xw
+  * s3: strip STS security token on same-host HTTPS->HTTP redirect GHSA-cf44-9pgv-m4xc
+  * serve restic: fix --private-repos isolation bypass CVE-2026-59733
+  * archive extract: fix path traversal letting archives escape the destination CVE-2026-59732
+  * serve s3: fix path traversal letting clients see files in the root GHSA-8v25-v8p6-qf7v
+  * build: fix multiple CVEs by upgrading to go1.26.5
+  * s3: fix mounting a prefix failing with 403 when HEAD is not permitted
+  * drive, googlephotos: warn when using rclone's shared client_id #9580
+  * drive: fix stray %!(EXTRA) in unexportable google document log message
+  * serve/http: fix --disable-zip so it works over rc
+  * serve webdav: fix MOVE overwrite failing without Overwrite header
+  * fs: fix negative offset when a suffix Range request exceeds object size
+  * accounting: fix goroutine leak in NewStatsGroup for zero-transfer rc jobs
+  * cmd/mount2: fix NFS directory listings by supporting non-zero Seekdir offsets
+  * cmd/mount2: fix ESTALE over NFS by reporting stable inode numbers
+  * cmd/mount2: fix NFS file creation by implementing Mknod
+  * smb: fix for IBM iSeries and signature verification
+  * mega: fix hard deleted files reappearing in listings - fixes #9554
+  * mega: wait for server events after upload, delete and move
+  * vfs: fix hang reopening a file during the handle-caching grace period
+  * s3: correct documented copy_cutoff minimum to 1 byte - Fixes #7391
+  * fs: fix command line flag being ignored when set to its default value
+  * docs: fix copy to clipboard functionality for code blocks
+  * fs/operations: correct DeleteFile --backup-dir documentation
+  * build: update golang.org/x/image to v0.43.0 to fix image decoding vulnerabilities
+  * docs: clarify copyto command description - Fixes #9527
+  * docs: fix typo in remote setup docs
+  * serve s3: fix spurious 404 on HEAD/GET during VFS writeback - fixes #8188
+  * * s3: fix error mapping in GetObject to match HeadObject
+  * filter: fix --files-from copy stopping at the first unreadable file
+  * docs: Fix RELEASE.md
+  * ncdu: fix duplicated keystrokes on Windows by pinning tcell to v2.9.0
+  * completion: fix powershell completion corrupting non-ASCII names - fixes #9412
+  * docs/crypt: fix encrypted size example - Fixes #9202
+  * docs: drive: note Google verification exemption for personal use apps
+  * rc: document that rc API access is equivalent to shell access
+  * docs: drive: update documentation about "Computers" folder
+  * accounting: fix goroutine leak in ResetCounters
+  * docs: fix --windows-event-log-level help
+  * backend/filelu: fix recursive listing path handling and file filtering
+  * docs: bisync - clarify flag interaction and minor changes
+  * docs: Update RELEASE.md to use cherry-pick -x
+  * webdav: fix mixed property statuses in multi-status responses
+  * s3: remove session token on cross-host redirects
+  * drive: warn when non-exportable Google documents are skipped - #9475
+  * Start v1.74.4-DEV development
+
+-------------------------------------------------------------------
 Wed Jul  8 10:26:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/image to 0.43 (bsc#1271056)

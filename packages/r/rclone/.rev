@@ -1225,4 +1225,12 @@ various additional features.</comment>
     - serve http: Fix serving files of unknown length</comment>
     <requestid>1364502</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>36c188c4cb220dbb1881433af39b552f</srcmd5>
+    <version>1.74.4</version>
+    <time>1783628449</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1364657</requestid>
+  </revision>
 </revisionlist>
