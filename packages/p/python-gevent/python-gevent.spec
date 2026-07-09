@@ -26,7 +26,7 @@
 %bcond_with colortest
 %{?sle15_python_module_pythons}
 Name:           python-gevent
-Version:        26.4.0
+Version:        26.5.0
 Release:        0
 Summary:        Python network library that uses greenlet and libevent
 License:        MIT

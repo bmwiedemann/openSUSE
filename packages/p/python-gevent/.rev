@@ -899,4 +899,15 @@
     built with version 2_28, up from 2014.</comment>
     <requestid>1349215</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>8c9e93532e4d02d37be3d7b12f564ba0</srcmd5>
+    <version>26.5.0</version>
+    <time>1783628298</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.5.0:
+  * Build and publish Windows 11 ARM wheels. See :issue:`2172`.
+  * Add preliminary support for Python 3.15b1 and distribute
+    binary wheels for it.</comment>
+    <requestid>1364444</requestid>
+  </revision>
 </revisionlist>

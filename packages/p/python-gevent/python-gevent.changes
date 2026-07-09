@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:54:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 26.5.0:
+  * Build and publish Windows 11 ARM wheels. See :issue:`2172`.
+  * Add preliminary support for Python 3.15b1 and distribute
+    binary wheels for it.
+
+-------------------------------------------------------------------
 Sat Apr 25 10:19:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.4.0:
