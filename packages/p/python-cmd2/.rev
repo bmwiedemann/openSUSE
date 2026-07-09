@@ -759,4 +759,36 @@
 - drop failing_tests.patch (upstream)</comment>
     <requestid>1359331</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>d62a968103de8a6061662051485ad505</srcmd5>
+    <version>4.1.0</version>
+    <time>1783628305</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.0:
+  * Renamed the `bottom_toolbar` argument in `Cmd.__init__()` to
+    `enable_bottom_toolbar`. It is also now strictly an `__init__`
+    parameter and not an instance
+    attribute.
+  * `complete_in_thread` is now strictly an `__init__` parameter
+    and not an instance attribute of
+  * `get_rprompt()` is now only called if the `enable_rprompt`
+    argument in `Cmd.__init__()` is set to `True`.
+  * Fixed type hinting so that methods decorated with
+    `with_annotated` no longer trigger spurious
+    mypy errors and preserve their original signature.
+  * Fixed cmd2 bypassing NO_COLOR and allow_style when setting
+    prompt-toolkit's color depth.
+  * New `cmd2.Cmd` parameters
+  * **complete_in_thread**: (boolean) if `True`, then completion
+    will run in a separate
+    thread. If `False` then completion runs in the main thread
+    and causes it to block if slow.
+  * **refresh_interval**: (float) How often, in seconds, to
+    automatically refresh the UI.
+    Defaults to 0.0. This is used for bottom toolbars and right
+    prompts which have dynamic
+    content needing to be refreshed at regular intervals and not
+    just when a key is pressed.</comment>
+    <requestid>1364503</requestid>
+  </revision>
 </revisionlist>
