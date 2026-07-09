@@ -23,4 +23,12 @@
     <comment>Update to 3.4.3 (security: SSRF allow-list bypass via NAT64/IPv6 transition addresses)</comment>
     <requestid>1363976</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f588f8d65980a5619d05fd58c25b6207</srcmd5>
+    <version>3.4.4</version>
+    <time>1783628426</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.4.4 (relax 3.4.3 host/origin guard defaults for ASGI/proxy compat, add Hugging Face OAuth provider); pairs with python-fastmcp 3.4.4</comment>
+    <requestid>1364635</requestid>
+  </revision>
 </revisionlist>
