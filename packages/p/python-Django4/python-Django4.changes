@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:43:29 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add security patches:
+  * CVE-2026-48588: Potential exposure of private data via cached
+    Set-Cookie response (bsc#1271029)
+    * CVE-2026-48588.patch
+  * CVE-2026-53877: Heap buffer over-read in GDALRaster (bsc#1271030)
+    * CVE-2026-53877.patch
+
+-------------------------------------------------------------------
 Tue Jun  9 09:28:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add security patches:

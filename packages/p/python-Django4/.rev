@@ -82,4 +82,17 @@
     * CVE-2026-48587.patch</comment>
     <requestid>1358152</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>412d05286fac75e0f76d97ca6654f3e3</srcmd5>
+    <version>4.2.30</version>
+    <time>1783628436</time>
+    <user>anag_factory</user>
+    <comment>- Add security patches:
+  * CVE-2026-48588: Potential exposure of private data via cached
+    Set-Cookie response (bsc#1271029)
+    * CVE-2026-48588.patch
+  * CVE-2026-53877: Heap buffer over-read in GDALRaster (bsc#1271030)
+    * CVE-2026-53877.patch</comment>
+    <requestid>1364676</requestid>
+  </revision>
 </revisionlist>
