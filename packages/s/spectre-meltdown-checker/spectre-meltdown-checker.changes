@@ -1,4 +1,229 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:49:48 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to v26.36.0602723
+  Release highlights:
+
+  This release brings some features to ARM64 hosts. They get
+  dedicated silicon-errata checks, a proper CPU details block, and
+  architecture-aware filtering so x86 hosts no longer show ARM64 noise
+  and vice-versa.
+
+  On the x86 side, MMIO Stale Data detection is now much more honest
+  about end-of-life Intel CPUs that Intel never officially assessed,
+  these are now reported as UNK (or VULN under --paranoid) instead of
+  a misleading "not affected".
+
+  The tool now better detects guest environments and warns you that the
+  microcode version reported by your hypervisor may be fake or stale, so
+  the "up-to-date microcode" check can't be trusted from inside the guest.
+
+  More detailed changelog:
+
+  - Add ARM64 silicon errata (issue #357)
+
+  Three speculation/security-relevant ARM64 errata families are now
+  detected. As these are tracked by vendor erratum IDs rather than CVEs, a
+  new CVE-0001-NNNN placeholder range has been reserved for vendor errata,
+  along with a new --errata <number> selector (alongside --variant/--cve):
+
+  -   Speculative AT TLB corruption (1165522 / 1319367 / 1319537 / 1530923)
+  -   Speculative unprivileged load (2966298 / 3117295)
+  -   MSR SSBS not self-synchronizing (3194386 and siblings)
+
+  CPU affectedness is determined per-core from the (implementer,
+  part, variant, revision) tuple in /proc/cpuinfo, matching the
+  kernel code. Kernel mitigation detection relies on the per-erratum
+  CONFIG_ARM64_ERRATUM_NNNN symbols, kernel image descriptor strings,
+  and dmesg (no sysfs exists for these).
+
+  Architecture-aware CVE filtering
+
+  - CVE_REGISTRY gains an optional fifth field tagging checks as x86-only or arm-only; untagged entries apply everywhere.
+  - Default "all CVEs" runs now skip checks irrelevant to the inspected
+    architecture across text, JSON, NRPE and Prometheus outputs (no more
+    ARM64 errata on x86 hosts, or x86 CVEs on ARM hosts).
+  - Explicit --cve / --variant / --errata selection bypasses the check, so manual queries still run anywhere.
+  - In --no-hw mode, the host CPU is ignored, supporting cross-arch offline analysis driven by --kernel/--config/--map.
+
+  Fixes to existing CVEs
+
+  - MMIO Stale Data (CVE-2022-21123 / 21125 / 21166) (#437):
+    EOL Intel CPUs that Intel never officially assessed (Sandy/Ivy
+    Bridge, Haswell/Broadwell client, pre-Goldmont Atom, etc.) are now
+    reported as UNK (or VULN under --paranoid) instead of a misleading
+    "not affected". This corrects the picture on kernels where   sysfs
+    wrongly says "Not affected" (pre-v6.0 and v6.16+) and aligns with the
+    kernel's X86_BUG_MMIO_UNKNOWN set. The BSD path was corrected too:
+    no BSD implements an MMIO mitigation, so affected CPUs now report VULN
+    (with an explain rationale) rather than "not yet implemented".
+
+  VM guest detection (issue #336)
+
+  - New is_running_as_guest() detects VM guests (KVM, VMware, ESXi, Hyper-V, VirtualBox…) via the hypervisor CPUID flag in /proc/cpuinfo.
+  - New "Running as VM guest: YES/NO" line in the CPU details block (x86 and ARM).
+  - A warning is now emitted after the microcode-is-latest check, advising you to verify microcode on the hypervisor host, since a guest can be shown a fake CPUID/microcode version.
+  - JSON output exposes this: system.guest_vm (bool), system.guest_vm_reason (string), and cpu_microcode.unreliable_in_vm (bool).
+
+  Output display
+
+  - ARM CPUs now get a proper CPU details block in check_cpu(): vendor, model name, implementer(s), part(s), architecture(s) and VM-guest status. Previously the x86-only early return left ARM hosts with no check_cpu() output at all.
+
+  Tooling
+
+  - New scripts/update_mcedb.sh (on test and source branches), so that the GitHub workflow can regenerate src/db/200_mcedb.sh daily.
+
+  Documentation
+
+  - Unsupported CVE list: added the Jump Conditional Code (JCC) Erratum
+    (issue #329), a microarchitectural correctness bug (Skylake to Cascade
+    Lake), not a speculative side channel, with no CVE, no sysfs/CPUID/MSR
+    indicator, hence out of scope.
+
+- Updated to v26.33.0420460
+
+  With this release and the 7 new supported CVEs, we're up to date
+  with all published CVEs since 2018 that are in the scope of this tool
+  (33 so far).
+
+  The batch output formats also got a substantial overhaul: JSON, NRPE
+  and prometheus output formats now better respect each format community
+  guidelines, as well as carrying way more information if you want or
+  need to have a clear overview of your server fleet.
+
+  Operating modes have been clarified. You'll be able to chose between
+  4 modes, depending on whether you want to inspect the running kernel,
+  a kernel image, the CPU hardware, or a combination. See the "operating
+  modes" section of the README for more information.
+
+  A new --extra option has been added, which runs some additional
+  checks that are not CVE vulnerabilities per se, but may still be of
+  interest. SLS has been implemented and falls into this category.
+
+  Affected Intel CPU list up to date as of 2026-04.
+
+  Last but not least, a dozen fixes/enhancements/refinements of preexisting CVE checks have been done, along with some more general robustness / corner case fixes.
+  More detailed changelog
+
+  New CVE checks
+
+  -   CVE-2025-54505 aka FPDSS (Floating-Point Divider Stale Data Leak)
+  -   CVE-2023-28746 ana RFDS (Register File Data Sampling)
+  -   CVE-2023-20588 aka AMD DIV0 (Division by Zero Speculative Data Leak)
+  -   CVE-2022-21123 / 21125 / 21166 aka MMIO Stale Data
+
+  New extra checks
+
+  -   SLS aka Straight-Line Speculation, supplementary
+
+  Fixes / enhancements to existing CVEs
+
+  -   Spectre V2 (CVE-2017-5715): Red Hat RSB Filling detection (#235)
+  -   Spectre 3a (CVE-2018-3640): improved ARM mitigation detection
+  -   L1TF/Foreshadow (CVE-2018-3615): better lockdown detection, drop cap_flush_cmd requirement (#296)
+  -   TAA (CVE-2019-11135): new 0x10F MSR for TSX-disabled CPUs (#414)
+  -   SRBDS (CVE-2020-0543): fix microcode mitigation misdetection (#492)
+  -   Inception/SRSO (CVE-2023-20569): detect IPBP "PB-Inception" (#500)
+  -   TSA (CVE-2024-36350/36357): no TSA CPUID lines on non-AMD
+  -   MDS: fix CPUs affected by MSBDS but not MDS (#351)
+  -   MDS (FreeBSD): software mitigation = OK unless --paranoid (#503)
+
+  Batch output
+
+  -   --batch json reworked completely, structured format (meta, system, cpu, vulnerabilities[]) + JSON Schema. Old format still available as --batch json-terse
+  -   --batch prometheus reworked completely, new smc_* metric names
+  -   --batch nrpe added more textual information
+
+  CLI / run modes
+
+  -   New --no-runtime and --no-hw replace implicit offline mode
+  -   --live deprecated (now the default)
+  -   New --extra flag (gates SLS and future supplementary checks)
+  -   --no-intel-db removed (Intel DB always used when available)
+
+  Intel Database
+
+  -   Affected CPU list refreshed to 2026-04
+  -   Hybrid CPU detection (H=1/H=0)
+  -   New mitigation codes: MS, HS, HM
+  -   Intel codename mapping for JSON/Prometheus output
+
+  Output display & robustness
+
+  -   Clearer CPU details and kernel info sections
+  -   x86 / ARM checks now guarded to the correct architecture
+  -   CPUID fallback to /proc/cpuinfo when CPUID unavailable (VMs)
+  -   MSR read/write: clearer errors, proper lockdown reporting
+  -   wrmsr now specifies the core number (#294)
+  -   Microcode version never defaults to 0x0 when unknown
+  -   exit_cleanup preserves the passed exit code
+  -   --allow-msr-write early-abort crash fixed
+  -   Better Busybox / unlzma compatibility (#432)
+  -   BSD ucode fallback uses proper AMD MSR
+
+  Unsupported-CVE docs (new entries)
+
+  - Plundervolt (CVE-2019-11157), CacheOut (CVE-2020-0549),
+    Platypus (CVE-2020-8694/8695), CVE-2020-24511/24512, AMD Prefetch
+    (CVE-2021-26318), Native BHI (CVE-2024-2201) + TLBleed, Blindside.
+
+- Updated to v26.26.0404682
+  Another big round of updates as I'm catching up with the recent CVEs.
+  New CVE/vulnerabilities detection
+  -   CVE-2022-29900 (Retbleed AMD - Arbitrary Speculative Code Execution with Return Instructions)
+  -   CVE-2022-29901 (Retbleed Intel / RSBA - RSB Alternate Behavior)
+  -   CVE-2024-28956 (ITS - Indirect Target Selection)
+  -   CVE-2025-40300 (VMScape)
+  -   CVE-2024-45332 (BTI - Branch Target Injection)
+
+  Enhancements to existing CVE detections
+  -   CVE-2023-23583 (Reptar): update known fixed microcode versions
+  -   CVE-2024-45332 (BPI): add known fixed microcode versions
+
+  Bug fixes
+  -   Fix sys_interface_check() not properly setting the caller's $msg variable in the latest release (#533)
+
+  New documented unsupported CVEs
+
+  Already covered by an existing CVE check:
+  -   CVE-2025-20623 - Shared Microarchitectural Predictor State (10th Gen Intel), covered by CVE-2024-45332 (BPI)
+  -   CVE-2025-24495 - Lion Cove BPU Initialization, covered by CVE-2024-28956 (ITS)
+
+  No kernel or microcode mitigations to check:
+  -   CVE-2020-12965 - Transient Execution of Non-Canonical Accesses / SLAM (AMD)
+  -   CVE-2024-7881 - ARM Prefetcher Privilege Escalation
+
+  Not a transient/speculative execution vulnerability:
+  -   CVE-2023-31315 - SinkClose (AMD SMM Lock Bypass)
+  -   CVE-2024-56161 - EntrySign (AMD Microcode Signature Bypass)
+  -   CVE-2025-29943 - StackWarp (AMD SEV-SNP)
+
+- Updated to  v26.21.0401891
+
+  Okay, this one is a massive update. Or, is this an easter egg?
+
+  First and foremost, the least visible but probably the most important for the continued maintainability of this project: the script has been split into a structured source tree of smaller scripts snippets, that are then assembled to produce the final self-contained spectre-meltdown-checker.sh.
+
+  With all this, also comes a new version numbering scheme: vXX.YY.ZZZZZZZ, automatically updated by the CI. XX=year, YY=number_of_managed_CVEs, ZZZZZZZ=based_on_datetime_of_release.
+
+  Now, here is a clearly non-exhaustive list of changes (refer to the commit log for more):
+
+  -   feat: added CVE-2024-36350/CVE-2024-36357 (Transient Scheduler Attack / TSA) (fixes #509)
+  -   feat: added CVE-2023-23583 (Reptar)
+  -   enh: CVE-2023-20593 (Zenbleed): Mitigation detection added for BSD
+  -   enh: improvement under BSD for a few CVEs, identifying unaffected CPUs even if mitigation is not implemented in BSD
+  -   enh: CVE-2017-5753 (Spectre Variant 1): massive update to the detection logic, as this was the first CVE ever implemented in this script, and a lot changed since then, both in the understanding of Spectre V1 and in the kernels.
+  -   enh: CVE-2017-5715 (Spectre Variant 2): massive update here too, including adding detection for BHI
+  -   enh: enhanced VMM autodetection with more supported hypervisor binaries
+  -   fix: cap_rdcl_no, cap_gds_no, cap_tsa_*_no were not marking the current CPU as immune for their respective vulnerabilities
+  -   fix: CVE-2018-3620: false VULN status on kernels reporting CPU as unaffected when RDCL_NO couldn't be parsed
+  -   fix: CVE-2023-20569: logic errors from kernel_sro type change, old kernels incorrectly reporting mitigated via sysfs are now detected
+  -   fix: --sysfs-only path fixed for a handful of CVEs, started to document complete sysfs strings history from the kernel source code for reference
+  -   fix: read_msr: fixed handling of values > INT32_MAX (fixes #507)
+  -   fix: several tool uses replaced (sort -V, sed -r, cut -w, stat -c, date -d @) to ensure compatibility with BSD (fixes #525)
+  -   doc: a (hopefully) nicer README, I'll have to update the screenshots though
+
+-------------------------------------------------------------------
 Wed Aug 30 15:39:04 UTC 2023 - Marcus Meissner <meissner@suse.com>
 
 - updated to 0.46

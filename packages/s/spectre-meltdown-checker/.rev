@@ -178,4 +178,41 @@
     <comment>- updated to 0.44 (bsc#1189477)</comment>
     <requestid>1147121</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>1288ccf9f28d66aaf6b20c17a66c76c3</srcmd5>
+    <version>26.36.0602723</version>
+    <time>1783628513</time>
+    <user>anag_factory</user>
+    <comment>- updated to v26.36.0602723
+  Release highlights:
+  This release brings some features to ARM64 hosts. They get
+  dedicated silicon-errata checks, a proper CPU details block, and
+  architecture-aware filtering so x86 hosts no longer show ARM64 noise
+  and vice-versa.
+  On the x86 side, MMIO Stale Data detection is now much more honest
+  about end-of-life Intel CPUs that Intel never officially assessed,
+  these are now reported as UNK (or VULN under --paranoid) instead of
+  a misleading &quot;not affected&quot;.
+  The tool now better detects guest environments and warns you that the
+  microcode version reported by your hypervisor may be fake or stale, so
+  the &quot;up-to-date microcode&quot; check can't be trusted from inside the guest.
+  More detailed changelog:
+  - Add ARM64 silicon errata (issue #357)
+  Three speculation/security-relevant ARM64 errata families are now
+  detected. As these are tracked by vendor erratum IDs rather than CVEs, a
+  new CVE-0001-NNNN placeholder range has been reserved for vendor errata,
+  along with a new --errata &lt;number&gt; selector (alongside --variant/--cve):
+  -   Speculative AT TLB corruption (1165522 / 1319367 / 1319537 / 1530923)
+  -   Speculative unprivileged load (2966298 / 3117295)
+  -   MSR SSBS not self-synchronizing (3194386 and siblings)
+  CPU affectedness is determined per-core from the (implementer,
+  part, variant, revision) tuple in /proc/cpuinfo, matching the
+  kernel code. Kernel mitigation detection relies on the per-erratum
+  CONFIG_ARM64_ERRATUM_NNNN symbols, kernel image descriptor strings,
+  and dmesg (no sysfs exists for these).
+  Architecture-aware CVE filtering
+  - CVE_REGISTRY gains an optional fifth field tagging checks as x86-only or arm-only; untagged entries apply everywhere.
+  - Default &quot;all CVEs&quot; runs now skip checks irrelevant to the inspected (forwarded request 1364751 from msmeissn)</comment>
+    <requestid>1364752</requestid>
+  </revision>
 </revisionlist>
