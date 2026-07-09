@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  1 13:33:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1269018_CVE-2026-56001_0001-bitscale-fix-integer-overflow-in-BitmapScaleBitmaps-.patch
+  * BitmapScaleBitmaps Integer Overflow Heap Buffer Overflow (CVE-2026-56001, bsc#1269018)
+- bsc1269019_CVE-2026-56002_0002-pcfread-validate-bitmap-sizes-and-offsets-against-pe.patch
+  * PCF Font Parsing Heap Buffer Overflow (CVE-2026-56002, bsc#1269019)
+- bsc1269020_CVE-2026-56003_0003-bitscale-add-bounds-check-to-computeProps-for-proper.patch
+  * computeProps Property Buffer Heap Buffer Overflow (CVE-2026-56003, bsc#1269020)
+
+-------------------------------------------------------------------
 Fri Aug  2 08:40:47 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 2.0.7

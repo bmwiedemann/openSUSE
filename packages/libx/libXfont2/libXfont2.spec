@@ -1,7 +1,7 @@
 #
 # spec file for package libXfont2
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,9 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXfont/
 Source:         %{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1269018:   bsc1269018_CVE-2026-56001_0001-bitscale-fix-integer-overflow-in-BitmapScaleBitmaps-.patch
+Patch1269019:   bsc1269019_CVE-2026-56002_0002-pcfread-validate-bitmap-sizes-and-offsets-against-pe.patch
+Patch1269020:   bsc1269020_CVE-2026-56003_0003-bitscale-add-bounds-check-to-computeProps-for-proper.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
@@ -81,7 +84,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup -p 1
 
 %build
 %configure --disable-static

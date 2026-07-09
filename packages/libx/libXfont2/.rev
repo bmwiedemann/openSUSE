@@ -81,4 +81,17 @@
     found by static analysis, and updates some build checks.</comment>
     <requestid>1191123</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>e5c5a5a4e5b746ee241c2a23151c8fe6</srcmd5>
+    <version>2.0.7</version>
+    <time>1783628301</time>
+    <user>anag_factory</user>
+    <comment>- bsc1269018_CVE-2026-56001_0001-bitscale-fix-integer-overflow-in-BitmapScaleBitmaps-.patch
+  * BitmapScaleBitmaps Integer Overflow Heap Buffer Overflow (CVE-2026-56001, bsc#1269018)
+- bsc1269019_CVE-2026-56002_0002-pcfread-validate-bitmap-sizes-and-offsets-against-pe.patch
+  * PCF Font Parsing Heap Buffer Overflow (CVE-2026-56002, bsc#1269019)
+- bsc1269020_CVE-2026-56003_0003-bitscale-add-bounds-check-to-computeProps-for-proper.patch
+  * computeProps Property Buffer Heap Buffer Overflow (CVE-2026-56003, bsc#1269020)</comment>
+    <requestid>1364445</requestid>
+  </revision>
 </revisionlist>
