@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 09 08:58:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.10.1:
+  * Bump version to v0.10.1
+  * Update CHANGELOG
+  * Remove x/exp dependency and go fix
+  * Upgrade x/exp package
+  * Bump golang.org/x/net from 0.47.0 to 0.55.0
+
+-------------------------------------------------------------------
 Fri Jul 03 04:57:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.10.0:
