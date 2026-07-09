@@ -2815,4 +2815,41 @@
     <comment>Fixes build on 32-bit architectures and compiler warnings about invalid -Wl parameters.</comment>
     <requestid>1362488</requestid>
   </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>6aa270a8e8a93a971ba61ada0db6236c</srcmd5>
+    <version>0.11.28</version>
+    <time>1783628332</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.11.28 
+ * Enhancements
+  * Improve trace logs for unexpected error chains 
+  * Move lockfile update guidance to a hint 
+  * Preserve indentation for multiline error causes 
+  * Render user errors with their cause chains 
+  * Route final command errors through the printer to respect -q and -qq 
+  * Use standard rendering for uv build errors 
+  * Use standard rendering for tool requirement errors 
+  * Continue on ignored errors when fetching wheel metadata 
+  * Use caching for --python-downloads-json-url 
+ * Preview features
+  * Discover extensionless shebang scripts in uv workspace list --scripts 
+ * Performance
+  * Only compile bytecode for installed distributions in uv pip install 
+  * Avoid allocating URL-safe Git revisions 
+  * Avoid allocating canonical Python request strings 
+  * Avoid allocating custom Astral mirror URLs 
+  * Avoid allocating expanded compatibility tags 
+  * Avoid allocating shell strings that need no escaping 
+  * Avoid allocating static ABI descriptions 
+  * Avoid allocating static Windows executable names 
+  * Avoid allocating static dependency table names 
+  * Avoid allocating static platform triple components 
+  * Avoid allocating static resolver report labels 
+  * Avoid allocating static unavailable-version messages 
+  * Avoid allocating unchanged Python download architectures 
+  * Avoid allocating unchanged paths during case normalization 
+  * Avoid allocations when expanding group conflicts 
+  * Avoid allocations when formatting requirements</comment>
+    <requestid>1364570</requestid>
+  </revision>
 </revisionlist>

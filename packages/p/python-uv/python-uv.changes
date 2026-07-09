@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Jul  8 14:09:32 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- update to 0.11.28 
+ * Enhancements
+  * Improve trace logs for unexpected error chains 
+  * Move lockfile update guidance to a hint 
+  * Preserve indentation for multiline error causes 
+  * Render user errors with their cause chains 
+  * Route final command errors through the printer to respect -q and -qq 
+  * Use standard rendering for uv build errors 
+  * Use standard rendering for tool requirement errors 
+  * Continue on ignored errors when fetching wheel metadata 
+  * Use caching for --python-downloads-json-url 
+ * Preview features
+  * Discover extensionless shebang scripts in uv workspace list --scripts 
+ * Performance
+  * Only compile bytecode for installed distributions in uv pip install 
+  * Avoid allocating URL-safe Git revisions 
+  * Avoid allocating canonical Python request strings 
+  * Avoid allocating custom Astral mirror URLs 
+  * Avoid allocating expanded compatibility tags 
+  * Avoid allocating shell strings that need no escaping 
+  * Avoid allocating static ABI descriptions 
+  * Avoid allocating static Windows executable names 
+  * Avoid allocating static dependency table names 
+  * Avoid allocating static platform triple components 
+  * Avoid allocating static resolver report labels 
+  * Avoid allocating static unavailable-version messages 
+  * Avoid allocating unchanged Python download architectures 
+  * Avoid allocating unchanged paths during case normalization 
+  * Avoid allocations when expanding group conflicts 
+  * Avoid allocations when formatting requirements 
+  * Avoid cloning credential lookup services 
+  * Avoid cloning dry-run distributions 
+  * Avoid cloning owned dependency metadata 
+  * Avoid redundant direct URL clones 
+  * Create metadata version errors lazily 
+  * Optimize expanded tag compatibility checks 
+  * Optimize parsing of single-digit three-part versions 
+  * Avoid full site-packages scans for direct reinstalls 
+  * Avoid redundant pyproject parsing 
+  * Cache default dependency markers when reading locks 
+  * Enable SIMD-accelerated TOML parsing 
+  * Intern requires-python specifiers in Simple API parsing 
+  * Read cache entries into exact-sized buffers 
+  * Reduce VersionSpecifiers parsing allocations 
+  * Reduce site-packages scan allocation overhead 
+  * Reuse package names when parsing wheel filenames 
+  * Sort Simple API files after grouping 
+  * Adapt uv to IDs-only PubGrub dependencies 
+  * Avoid allocations in ForkMap::contains 
+  * Reuse resolver work across PubGrub iterations 
+  * Speed up candidate selection for disjoint ranges 
+ * Bug fixes
+  * Avoid overflow when computing HTTP cache age 
+  * Respect --upgrade when upgrade-package is configured 
+  * Support uv tree in dependency-group-only projects 
+  * Treat cache entries as stale at exact expiration 
+  * Always emit packages table for pylock.toml 
+  * Avoid blank line for empty uv pip tree 
+  * Encode hashes in file paths 
+  * Error on a registry uv.lock package without a version instead of panicking 
+  * Preserve conditional extra markers in exports 
+  * Skip the ambiguous authority check for file transport VCS URLs 
+  * Sync index format when uv add --index updates an existing index URL 
+  * Warn when the build cache is inside the source directory 
+ * Other changes
+  * Re-add pub APIs used in Pixi 
+  * Update Rust toolchain to 1.96.1 
+
+-------------------------------------------------------------------
 Mon Jun 29 14:10:18 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Disable debuginfo generation on 32-bit arches
@@ -7,7 +78,7 @@ Mon Jun 29 14:10:18 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Sun Jun 28 22:49:17 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- upadate to 0.11.25
+- update to 0.11.25
  * Enhancements
   * Add a full "lockfile" to tool receipts 
   * Allow scoped overrides to add dependencies 
