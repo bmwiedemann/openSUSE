@@ -1,7 +1,7 @@
 #
 # spec file for package python-guessit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %if 0%{?suse_version} > 1500
 %bcond_without test
+%bcond_without libalternatives
 %else
 %bcond_with test
+%bcond_with libalternatives
 %endif
 Name:           python-guessit
-Version:        3.8.0
+Version:        4.1.0
 Release:        0
 Summary:        A library for guessing information from video files
-License:        LGPL-3.0-only
+License:        LGPL-3.0-or-later
 Group:          Development/Languages/Python
 URL:            https://github.com/wackou/guessit
 Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit-%{version}.tar.gz
@@ -33,10 +35,11 @@ Source0:        https://files.pythonhosted.org/packages/source/g/guessit/guessit
 Patch0:         remove-six.patch
 BuildRequires:  %{python_module PyYAML}
 BuildRequires:  %{python_module babelfish >= 0.6.0}
-BuildRequires:  %{python_module importlib_resources if %python-base < 3.9}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
-BuildRequires:  %{python_module rebulk >= 3.2.0}
+BuildRequires:  %{python_module rebulk >= 6}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -47,8 +50,13 @@ Requires:       python-rebulk >= 3.2.0
 %if %{?python_version_nodots} < 39
 Requires:       python-importlib_resources
 %endif
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module pytest >= 5}
@@ -66,18 +74,7 @@ and TV shows episodes.
 
 %prep
 %autosetup -p1 -n guessit-%{version}
-# Remove shebang from non-executable files
-for i in {'audio_codec','bit_rate','bonus','cd','container','country','crc','date','edition','episodes','episode_title','film','__init__','language','mimetype','other','part','release_group','screen_size','size','source','streaming_service','title','type','video_codec','website'}; do
-  sed -i -e "1d" "guessit/rules/properties/$i.py"
-done
-for i in {'common/comparators','common/date','common/expected','common/formatters','common/__init__','common/numeral','common/pattern','common/quantity','common/validators','common/words','__init__','markers/groups','markers/__init__','markers/path','processors','properties/audio_codec','properties/bit_rate','properties/bonus','properties/cd','properties/container','properties/country','properties/crc','properties/date','properties/edition','properties/episodes','properties/episode_title','properties/film','properties/__init__','properties/language','properties/mimetype','properties/other','properties/part','properties/release_group','properties/screen_size','properties/size','properties/source','properties/streaming_service','properties/title','properties/type','properties/video_codec','properties/website'}; do
-  sed -i -e "1d" "guessit/rules/$i.py"
-done
-for i in {'api','data/__init__','__init__','jsonutils','__main__','monkeypatch','options','reutils','test/__init__','test/rules/__init__','test/rules/processors_test','test/test_api','test/test_api_unicode_literals','test/test_benchmark','test/test_main','test/test_options','test/test_yml','__version__','yamlutils'}; do
-  sed -i -e "1d" "guessit/$i.py"
-done
-# https://pypi.org/project/pytest-runner/
-sed -i 's:.pytest-runner.::' setup.py
+find guessit -type f -name "*.py" -exec sed -i '1{/^#!/d}' {} +
 
 %build
 %pyproject_wheel
@@ -91,6 +88,10 @@ sed -i 's:.pytest-runner.::' setup.py
 %check
 %pytest
 %endif
+
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative guessit
 
 %post
 %python_install_alternative guessit

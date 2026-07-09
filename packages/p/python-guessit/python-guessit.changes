@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Thu Jul  9 18:13:53 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.0
+  Bug Fixes:
+  * episodes: Don't treat a title year as a number-first season
+    marker
+  * film: Keep a leading film number in the title
+  * options: Read bundled options.json as UTF-8
+  * title: Reclaim a title-word property value from the title
+    zone
+  * website: Refresh IANA TLD list so modern-gTLD hosts are
+    detected
+  Features:
+  * episodes: Keep a title-trailing number out of number-first
+    seasons
+  * episodes: Recognize non-English season/episode keywords
+  * title: Split a leading original-language script prefix into
+    alternative_title
+  Performance Improvements:
+  * Cache effective options across calls with stable options
+- Update license
+- Switch to alts where possible
+
+-------------------------------------------------------------------
+Mon Jun 29 18:42:59 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.2
+  Bug Fixes:
+  * title: Keep languages instead of a language-only title
+  version 4.0.1
+  Bug Fixes:
+  * changelog: Trim noise commit types from the changelog and
+    PyPI page
+  * packaging: Balance changelog code fences in the PyPI long
+    description
+  version 4.0.0
+  Bug Fixes:
+  * Do not absorb a bracketed or non-target-preposition country
+    into the title
+  * Do not turn an "other"-only bracket into an anime
+    release_group
+  * Don't mutate shared config list values between guesses
+  * Don't pin an enum for the OS-dependent mimetype property
+  * Extend lone-article merge to episode_title so it absorbs a
+    following other word
+  * Gate the leading-anime-bracket release_group guard on an
+    episode/season
+  * Keep a subtitle language glued to its extension even if it
+    is a common word
+  * Keep edition/scene-tag words as properties, not titles
+  * Keep leading hyphenated title whole instead of splitting
+    into release_group
+  * Keep properties() keys alphabetically sorted
+  * Let the filename's season/episode win over a parent
+    directory's
+  * Only keep a lowercase subtitle language glued to its
+    extension
+  * Only treat a leading dash token as a hyphenated title when
+    it is one word
+  * Prefer the leading anime [bracket] over a trailing
+    parenthetical as release_group
+  * Read Unicode × as a resolution separator and bound CJK
+    season markers
+  * Reclaim a bare "Cam" after the episode marker as
+    episode_title, not source
+  * Recognise CJK & Unicode × episode markers, numeric
+    episode_title as episode
+  * Stop a real title word being consumed as
+    country/language/edition/other
+  * Stop short tokens matching glued inside a larger word
+  * Weight season+episode completeness so the filename wins
+    without mixing fileparts
+  * Widen valid_year bounds and reject a year used as a season
+    number
+  * api,release_group: Clear error on None input and stable
+    release-group casing
+  * date: Absorb a weekday glued to a date so episode_title
+    survives
+  * episode_title: Keep title when a release tag follows the
+    episode marker
+  * episodes: Keep release-group digit prefix out of episodes
+    with -t episode
+  * numeral: Initialise word-numeral regex to ""
+  * screen_size: Tolerate trailing "up" upscaled marker
+  * title: Keep dash-joined parent-directory title whole
+  * title: Keep trailing "Us" in a title ending on "of"
+  Build System:
+  * Add pre-commit
+  * Add ruff-format hook and run pre-commit tools via uv run
+  * Add tox
+  * Migrate to uv and modernize tooling
+  * Require Python >=3.10 and rebulk 6 for guessit 4
+  * Require rebulk >=4,<5 and add mypy tooling
+  * Require rebulk >=4.1 and exploit its precise query overloads
+  * Run pre-commit hooks locally via uvx and bump CI to Python
+    3.14
+  * deps: Require rebulk >=6,<7
+  Chores:
+  * deps: Require rebulk >=4.2.2
+  * title: Fix contradictory TITLE_STOP_WORDS comment
+  Code Style:
+  * Clean up code for the expanded ruff ruleset
+  * Format the codebase with ruff format
+  Documentation:
+  * Add CLAUDE.md with architecture and dev guidance
+  * Drop guessit-js parity mentions from comments
+  * Mention mypy in CLAUDE.md commands and pre-commit hooks
+  * Note GitHub closing keywords to auto-close issues on merge
+  * Record won't-fix structural-ambiguity cases as known
+    limitations
+  * Remove Build Status from README
+  * known-limitations: Add historical won't-fix cases from issue
+    tracker
+  * known-limitations: Add structural cases found sweeping
+    closed Invalid Guess issues
+  * known-limitations: Record #637/#693/#690/#660 as structural
+    won't-fix
+  * properties: Document credits_number and Creditless
+  * rules: Correct stale rebulk 5 references to rebulk 6
+  Features:
+  * Add GUESSIT_SCHEMA machine-readable property schema
+  * Add other values
+  * Add volume, imdb_id, tmdb_id and tvdb_id properties
+  * Classify artwork files as other, register svg mimetype
+  * Make properties() code-complete against GUESSIT_SCHEMA
+  * Recognise archive and image extensions as container
+  * Ship output-schema.json and schema regression tests
+  * deps: Require rebulk 5 and adopt typed Key handles
+  * deps: Require rebulk>=4.2.1 and use multi-name Matches.named
+  * episode_title: Title from parent directory for
+    absolute-numbered episodes
+  * episodes: Support Chinese season/episode markers 第N季 /
+    第N集
+  * other: Add VR angle and stereoscopic 3D format support
+  * other: Detect DoVi as Dolby Vision
+  * other: Match opening/ending credits with index and version
+  * other: Match opening/ending credits with index and version
+  * other: OPED yields both Opening and Ending Credits
+  * rules: Adopt rebulk declared Keys and enforce value types in
+    CI
+  * rules: Centralize typed Keys in a registry and wire config
+    formatters
+  * source: Add Laserdisc
+  * streaming_service: Add ADN, Channel 5, Max and NowTV
+  * title: Align TITLE_STOP_WORDS with guessit-js
+  *   Refactoring:
+  * title: Use Match.tagged(*RELEASE_TAG_MARKERS)
+  * types: Annotate api, options, cli, markers and rules core
+  * types: Annotate common helpers and utils for mypy strict
+  * types: Annotate config and the simpler property modules
+  * types: Annotate date, country and screen_size properties
+  * types: Annotate language and subtitle_language rules
+  * types: Annotate other, audio_codec, streaming_service,
+    release_group
+  * types: Annotate source and episodes rules
+  * types: Annotate tests and enable the mypy strict pre-commit
+    hook
+  * types: Annotate title and episode_title rules
+  Testing:
+  * Add fixtures, regenerate schema and document new properties
+  * Add regression anchors for ambiguity-prone parsing boundaries
+  * Add regression anchors for historically-fixed Invalid Guess
+    Result issues
+  * Anchor correct behaviour of the shared rules touched by
+    recent fixes
+  * Archive/artwork tests, fixtures, schema and docs
+  * Complete the container enum with all archive/image extensions
+  * Fixture for filename season winning over a parent-directory
+    season
+  * Fixtures for a common-word language kept before a subtitle
+    extension
+  * Fixtures for anime leading-bracket release group
+  * Fixtures for CJK / × markers and numeric episode_title
+  * Fixtures for glued short tokens and release_group bracket
+    edges
+  * Fixtures for hyphenated/compound titles kept whole
+  * Fixtures for title words wrongly consumed as
+    country/language/other
+  * Fixtures for year/season validation
+  * Memoize corpus sweeps in schema tests
+  Breaking Changes:
+  * Drops support for Python 3.7, 3.8 and 3.9 — guessit now
+    requires Python >=3.10. PyPy is no longer tested or
+    supported. The rebulk engine dependency moves to >=6,<7
+- Refreshed remove-six.patch
+- Remove shebangs in a safer way
+
+-------------------------------------------------------------------
 Tue Apr  8 17:37:51 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Fix dependencies
