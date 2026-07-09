@@ -17,7 +17,7 @@
 
 
 Name:           postsrsd
-Version:        2.1.0
+Version:        2.2.5
 Release:        0
 Summary:        Sender Rewriting Support for postfix
 License:        GPL-2.0-only

@@ -135,4 +135,28 @@
     <comment>- Update to release 2.1.0</comment>
     <requestid>1359132</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>4e3a53426c79e85d81655d2b77ca5a12</srcmd5>
+    <version>2.2.0</version>
+    <time>1781879517</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.0</comment>
+    <requestid>1360304</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a8b2ffd6bfeca21a0ef15ef9e5861093</srcmd5>
+    <version>2.2.3</version>
+    <time>1782916728</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.3</comment>
+    <requestid>1362742</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>419845faaeed1fd2c7a3ac3f991e5b47</srcmd5>
+    <version>2.2.5</version>
+    <time>1783628454</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.2.5</comment>
+    <requestid>1364678</requestid>
+  </revision>
 </revisionlist>

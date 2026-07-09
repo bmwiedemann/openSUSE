@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:53:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.5
+  * Added missing error handling for some edge cases (e.g., failing
+    fork()).
+  * The socket file is now deleted on shutdown.
+  * The milter is less strict with its input requirements for
+    better compatibility with MTAs.
+
+-------------------------------------------------------------------
+Tue Jun 30 21:17:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.3
+  * Add per-process tracking of child processes.
+  * The `srs-domain` configuration option is implicitly added to
+    the list of local domains now.
+  * Work around unsafe domains file updates which cause a race
+    condition in the inotify-based file watch.
+  * `reverse` no longer rejects (socketmap PERM / milter reject)
+    SRS addresses whose domain is not local.
+  * Stop rejecting invalid SRS addresses for socketmap queries.
+
+-------------------------------------------------------------------
+Thu Jun 18 05:32:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.0
+  * Reimplemented milter without external LibMilter dependency.
+  * PostSRSd milter supports not rewriting locally delivered
+    mails now.
+
+-------------------------------------------------------------------
 Sun Jun 14 06:42:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1.0
