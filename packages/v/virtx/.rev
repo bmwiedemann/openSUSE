@@ -95,4 +95,139 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/PK4PW
     <comment>- Sanlock support</comment>
     <requestid>1355938</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>30e9e3140cb492809c0db75c0e5c6f32</srcmd5>
+    <version>0.1+gf3a7fda</version>
+    <time>1783628336</time>
+    <user>anag_factory</user>
+    <comment>-------------------------------------------------------------------
+Wed Jul  8 15:22:19 UTC 2026 - Dario Faggioli &lt;dfaggioli@suse.com&gt;
+
+- virtx.service: adjust Group and SupplementaryGroups (as a
+  consequence of commit &quot;start_virtxd.sh: run as qemu:qemu with
+  supplementary groups&quot;)
+
+-------------------------------------------------------------------
+Wed Jul 08 15:20:01 UTC 2026 - Dario Faggioli &lt;dfaggioli@suse.com&gt;
+
+- Update to version 0.1+gf3a7fda:
+  * hypervisor/domain: migration: cap the number of connections to 8
+
+-------------------------------------------------------------------
+Wed Jul 08 13:14:43 UTC 2026 - Dario Faggioli &lt;dfaggioli@suse.com&gt;
+
+- Update to version 0.1+gc7f87df:
+  * cmd/virtx: vm_list: show empty column name for CUSTOM again
+  * vmdef: use cache=&quot;none&quot; for LUNs too
+  * json: remove vlanid from examples
+  * cmd/virtx: vm_get: show vlanid in net information
+  * model: move the vlanid field from vmdef to net
+  * inventory: remove vlanid from Vminfo
+  * cmd: remove display of Vlanid
+  * README: document a bit /vms, some additional changes
+  * storage: add path to storage error message
+  * httpx: increase CLIENT_TIMEOUT to 15
+  * start_virtxd.sh: run as qemu:qemu with supplementary groups
+  * vmreg: rename to reg
+  * constants: rename /vms/xml/ to /vms/reg/
+  * cmd: virtx: host_stats_get: add network statistics
+  * hypervisor/systeminfo: compute totals for host NetRx and NetTx
+  * model: new hostnetresource extending hostresource
+  * hypervisor/systeminfo: fix HPG bug when VMs are powered off
+  * model: hostresource: rename usedos to usedother
+  * virtx: host_stats_get: new operation and endpoint
+  * virtx: vm_stats_get: new operation and endpoint
+  * model: move oplog from vmstats to vm
+  * model: remove unreferenced model_page.go
+  * hypervisor/systeminfo: add disk read/write IOPS stats
+  * hypervisor/systeminfo: add disk read/write KiB/sec stats
+  * hypervisor/systeminfo: remove newlines
+  * vet: fix string formatting errors
+  * storage: remove shadowing for err variable
+  * Makefile: add vet target to check for shadowing and other issues
+  * storage/lun: new lun_detect_size() to validate precisely clone size
+  * json: add goldtest.json as an example
+  * storage/vdisk: pass explicit -f qcow2 to qemu-img map
+  * storage/lun: optimize qemu-img convert parameters
+  * storage/vdisk: optimize qemu-img convert parameters
+  * vmdef: test: update with new source field and LUN changes
+  * storage/lun: handle golden images in disk.Source field
+  * storage/vdisk: handle golden images in disk.Source field
+  * vmdef: add validation for new Disk.Source option for golden images
+  * storage/vdisk: add new vdisk_detect_vsize()
+  * vmdef: vmdef_validate_disk(): validate LUN size option
+  * httpx: change CLIENT_TIMEOUT to reset on 1xx response, and provide progress
+  * go.mod: move to golang 1.24
+  * cmd: virtx: replace &quot;Insufficient Storage&quot; with &quot;Storage Error&quot;
+  * httpx: for error codes, don't throw away bodies in Decode_response_body()
+  * storage: change Rollback to delete provisioned virtual disks
+  * virtx: vm_boot: only attempt to boot VMs that are powered off.
+  * paths: change init() to Init()
+  * README: fix bug in coding style chapter
+  * README: formatting changes
+  * README: minor updates
+  * model: update with new console endpoints Ops
+  * pkg: use the new paths.Get() to get runtime binary paths
+  * paths: new module for runtime path dependencies
+  * vmdef: add VNC SharePolicy: &quot;ignore&quot;
+  * hypervisor/console: do not use DOMAIN_CONSOLE_FORCE
+  * cmd: virtx: vm_console: vm_should_reconnect: add log on error
+  * cmd: virtx: vm_console: add comments, fix comments
+  * cmd: virtx: vm_console: implement reconnection
+  * httpx: Console_splice: return who closed the connection
+  * cmd: launch VNC viewer automatically
+  * cmd: virtx/vm_console: add VNC and serial console cli support
+  * virtx/vm_console: new module for VNC and serial console
+  * httpx/console: new, implement proxying mechanism for vnc and serial
+  * hypervisor/console: new module
+  * lockman: do not use O_DIRECT to access the LVB
+  * Makefile: revert undesired changes
+  * inventory: tests: fix style
+  * vmdef: tests: fix style
+  * Makefile: report number of failed tests
+  * updated copyright headers
+  * add update_copyright.py to update source file preambles.
+  * vmdef: add vmdef_xml_test.go
+  * vmdef: add Test_validate_net_invalid_model
+  * inventory: add inventory_test.go
+  * hypervisor: add counter_test.go
+  * httpx: log error if the copy of the body fails
+  * hypervisor/systeminfo: fix potential panic if /proc/meminfo contains empty lines
+  * vmdef: add virtio keyboard and tablet
+  * virtx/vm_boot: add a new storage.Check() step before boot
+  * storage: add Check() to scan a vm definition and check all storage
+  * lockman: add new Check_resource()
+  * hypervisor/systeminfo: remove unused code, clean up some comments
+  * hypervisor/systeminfo: adjust calculations some more
+  * hypervisor/systeminfo: minor changes in the host cpu stats calculations
+  * hypervisor/systeminfo: prefer TSC frequency to MAX_FREQ
+  * systeminfo: system_info_get_immutable: document need to have lock
+  * vmdef: Validate(): return nil explicitly
+  * lockman: Lockid(): run under Read Lock, not RW Lock
+  * vmdef: remove duplicate code line
+  * serfcomm: use a proper serf &quot;uuid&quot; tag and value
+  * inventory: Get_hostdata: fix whitespace
+  * vmreg: Save: add missing error check
+  * vmreg: Save: do not do error cleanup on sync error if rename ok
+  * virtx/http: remove unused function http_do_request
+  * hypervisor/systeminfo: remove lock around call to check_vmreg
+  * machine: new package, merging arch and hypervisor hv.uuid
+  * hypervisor: do not generate VmEvents from lifecycle too early
+  * hypervisor: add get_system_info_loop_done() and set_system_info_loop_done()
+  * inventory: refactor update_vm() and update_vm_state()
+  * metadata: remove redundant err check
+  * lockman: fix whitespace
+  * virtx: vm_create: add warning when encoding of response JSON fails
+  * hypervisor: check_vmreg: handle error when listing hosts
+  * vmreg: improve Save error handling: do it only when err != nil
+  * virtx: handle JSON encoding error similarly for all ops
+  * virtx: vm_migrate_get: fix missing response on JSON encoding failure
+  * hypervisor/systeminfo: fix missing Uuid in the first VmInfo events
+  * inventory: change HostInfo to contain only the necessary fields
+  * inventory: split Hostdata into HostInfo and Hostdata
+  * inventory: rename Vmdata to VmInfo
+  * doc: add prjdocs slides
+</comment>
+    <requestid>1364591</requestid>
+  </revision>
 </revisionlist>

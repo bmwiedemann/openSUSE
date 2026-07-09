@@ -20,7 +20,8 @@ Requires=sanlock.service
 [Service]
 Type=simple
 User=qemu
-Group=disk
+Group=qemu
+SupplementaryGroups="disk sanlock"
 ExecStart=/usr/sbin/virtxd
 Restart=on-failure
 RestartSec=5s
