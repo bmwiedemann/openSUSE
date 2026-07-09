@@ -313,4 +313,14 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
    * Updated sums and commits</comment>
     <requestid>1362554</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4f56659b8e76bebb5ea316184e271f21</srcmd5>
+    <version>1.9.6</version>
+    <time>1783628367</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 1.9.6:
+  * UI Fixes (#60)
+  * Bump sums and commits</comment>
+    <requestid>1364608</requestid>
+  </revision>
 </revisionlist>
