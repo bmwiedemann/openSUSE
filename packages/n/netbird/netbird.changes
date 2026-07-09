@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul  8 19:08:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.3
+  - [client] fix MDM managementURL conflict on default-port URL
+    echo by @riccardomanfrin in #6672
+  - [client] Update gopsutil to v4 by @mlsmaycon in #6688
+  - [client] Fix hanging status command during relay dial by
+    @theodorsm in #6694
+
+-------------------------------------------------------------------
 Fri Jul  3 18:47:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.74.2
