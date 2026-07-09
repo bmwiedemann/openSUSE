@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Wed Jul  8 13:56:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 7.1.2.27
+   * Fix HEIC identity CICP with chroma subsampling #8828
+   * build(deps): bump actions/attest from 4.1.0 to 4.1.1 #8835
+   * build(deps): bump ubuntu from 53958ec to b7f4819 in /.devcontainer #8834
+   * build(deps): bump actions/setup-python from 6.2.0 to 6.3.0 #8830
+   * check profile length before reading header in GetIPTCStream #8829
+   * Read Cairo ARGB32 in host byte order so SVG colors are correct on big-endian #8825
+   * Preserve HEIC CICP and CLLI metadata #8824
+   * reject otb files that declare more pixels than the file holds #8826
+   * build(deps): bump msys2/setup-msys2 from 2.31.1 to 2.32.0 #8807
+   * build(deps): bump actions/checkout from 6.0.3 to 7.0.0 #8818
+   * Fix #8819 revert soname change #8820
+   * build(deps): bump ubuntu from f3d2860 to 53958ec in /.devcontainer #8814
+   * Fix #8819 revert soname change (#8820) #8819
+   * beta release 2c6ba18
+   * ImageMagick/ImageMagick#8813 71bf0b0
+   * eliminate compiler warning dc92169
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-422r-8c97-xcg4 be99ffa
+   * eliminate compiler warning 82364cf
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-93x9-jq8c-cwcc 4a3585b
+   * ImageMagick/ImageMagick#8815 5e1a141
+   * ImageMagick/ImageMagick#8816 532b0f5
+   * Revert unnecessary patch for GHSA-93x9-jq8c-cwcc e70837c
+   * Removed unnecessary check. 9a5c8ff
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-422r-8c97-xcg4 0bbf7e4
+   * remove quantization 4041062
+   * ImageMagick/ImageMagick#8815 9616e88
+   * correct allow coder logic 634f3a9
+   * Use AcquireQuantumMemory instead because it already does the necessary checks. 4e96b11
+   * support coder strict streaming attribute 727ddc9
+   * change coder flag name 9f7e3cb
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-xv2g-79vc-75qf 80b268c
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-g568-j2hh-jr58 f8a02fa
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-g568-j2hh-jr58 38b6468
+   * ImageMagick/ImageMagick#8821 bc16247
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-cvxf-g9w2-7mcx 1b63224
+   * latest autoconf/automake updates 1f7213d
+   * Also create an xz version of the source archive. dc0965d
+   * ImageMagick/ImageMagick#8823 64d2e4a
+   * Added job to update the website after a release. 58d6364
+   * Added a method that can be used to determine the endian of the host. 952c221
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-cvxf-g9w2-7mcx fdbe649
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h22j-f9xw-xjjm 538ad18
+   * Moved initialization. 42128f2
+   * Removed redundant checks. e587240
+   * Cosmetic. 42e20ab
+   * Added earlier exit when image type is invalid. 03a0a68
+   * Removed all the #if 0 blocks that have been there for ages. f379865
+   * Added method that can be used to check if incrementing a value would result in an overflow. b2740b9
+   * overflow check 325fce5
+   * revert ff4df37
+   * move add check to private header b3b8d20
+   * check for possible add overflow c2e84d8
+   * Improve cache I/O robustness and fix race conditions 92b961a
+   * check for overflow 0ca86fc
+   * Make sure we check the length after each read (GHSA-7rgw-xg25-prjm) 093f476
+   * Specify the current ref as an argument for the clone in the Windows source job. d0eb51a
+   * Disable job in pull request. c3fef03
+   * Updated the dependencies. 4a68839
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-cvhv-g4rq-3hmw e3e6911
+   * Updated the dependencies. c74cd62
+   * policies are case sensitive 0b3fa25
+   * check for EOF 9a38ee0
+   * accumulates absolute error per channel (not counts) 5848f4a
+   * Cosmetic 7cee9fe
+   * Require at least version 1.11.0 of the libheif library. c893eb2
+   * latest autoconf update 9993f71
+   * don't normalize the AE metric 324ee77
+   * average composite channel ed56d9e
+   * sanity check 374578b
+   * delay image extent check 81eab95
+   * check for insufficient image data 225ea95
+   * check for insufficient image data 62c229b
+   * check for insufficient image data 2d28006
+   * eliminate compiler warning e4c2b40
+   * release b661ac9
+- version update to 7.1.2-26
+   * check rows*columns overflow in sct ReadSCTImage #8812
+   * bound 8bim resolution resource read in GetProfilesFromResourceBlock #8798
+   * OSS-Fuzz: Fix build errors #8808
+   * heic: add primary still image to animated AVIF for Firefox compatibility #8804
+   * chore: remove legacy vsprintf fallback in drawing-wand.c #8796
+   * Detect Ultra HDR JPEGs from gain-map metadata #8794
+   * build(deps): bump github/codeql-action from 4.36.1 to 4.36.2 #8795
+   * Preserve Ultra HDR JPEG gain maps when transcoding #8788
+   * build(deps): bump actions/checkout from 6.0.2 to 6.0.3 #8790
+   * build(deps): bump github/codeql-action from 4.36.0 to 4.36.1 #8789
+   * reject cineon files with an invalid bits per pixel #8781
+   * beta release 8ee9390
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-c8r2-mc3p-4f8j fe20c95
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6vxp-gfwf-hcr9 f3ff3af
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-7c7m-fpjw-gwcq 174275b
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-j8rh-v2r8-v94x b535126
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hwf3-r46v-5ggx 4079949
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hv63-qgj6-7gh7 d0d8ae7
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-3564-h588-56gr f80b878
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-99w9-hv66-rfv7 0bb3578
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-jfq9-q63x-rc63 f34065e
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h7f2-f9cc-h2gv 808506d
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-r628-69v2-2f9c b2dc602
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-m596-67p7-69wh fdbf39b
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h58x-r7f7-rh84 b237a4f
+   * Added workflow that can be used to publish a release. 126f102
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pjxj-pchx-4c3m 47ca721
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-h5r4-w88w-7ccr ed143b9
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-vgh5-r42g-4j44 335aadb
+   * fix false positive 33dc9f5
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-j3pv-77gf-fw2g e4ce56a
+   * exif thumnail namespace convention d03cf68
+   * ImageMagick/ImageMagick#8743 e5ce98c
+   * conform to namespace convention 74fc6bd
+   * conform to namespace conventions 922913a
+   * Seek to the start of the blob if possible when opening a custom stream. d8dc773
+   * encode three channels into one string ddea9d2
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-8g53-9m3c-69xg#advisory-comment-224693 9d1764c
+   * Patch to make sure that a file is used when using the DNG coder inside the TIFF coder. 4c36330
+   * auto-detect DNG image wrapped in a TIFF 920718d
+   * set seekable stream flag e1c0129
+   * ImageMagick/ImageMagick#8716 (reply in thread) 9c6f636
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-6jwg-7q3p-5fqm 3fc646a
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qvxh-prvr-85w2 f89d59c
+   * cosmetic 2537cbc
+   * support ThrowPolicyException() convenience define de731f3
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-ff5c-8x9r-8qcw 3bd584e
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-79f6-phvj-fcxf 493d641
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-pvf6-h68q-qh7g f413a88
+   * detect DNG masquerading as a TIFF 158171b
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-2qmq-5wc5-mv8f 23362f0
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qcmw-qmh5-v9xp 8e4180d
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-cvm9-xf3r-5jc7 e7c72ae
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-4gjm-g5ff-2g6r 37ce68e
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-9xw9-2xcf-6jjg 6655858
+   * eliminate compiler exception dd955a6
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-2xwj-pc9c-h6j9
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-3pqj-prwm-c34w 482b243
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-rvhp-75f6-9jqh dd0dedb
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-wx47-rm3x-jx6p 01ce608
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-969w-22qc-6gmv 29851ab
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-mx48-2qq3-23hf c8868af
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-rhm7-pchg-cc82 9770024
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-56m6-8q75-f2rw 649d749
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qhmf-7fc4-8q3h 549fdf2
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hc76-7mpc-qjqh 606345b
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-hc76-7mpc-qjqh afa1727
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-c4v7-w88g-m6c4 2775419
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-qh5g-q395-cx4j 150c985
+   * Always return dng_image because the libtiff reader was closed. 1c93068
+   * Improve the check for GHSA-9xw9-2xcf-6jjg af16fa8
+   * revert b207db0
+   * Corrected patch. bfb9824
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-vghg-5jrg-2398 e047ee2
+   * export IsRightsAuthorizedByName() 6c64b58
+   * bump library current e4ed6d0
+   * eliminate compiler exception 9039e30
+   * ImageMagick/ImageMagick#8793 9297a8e
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-v3j6-27vc-7pw2 19c11cb
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-jxqv-9g3j-9jh6 166fdea
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-82mp-vp5c-9pf7 dcba7ee
+   * Small refactor of fix because we already had a null check that throws later. e3dee3f
+   * remove legacy snprintf() dead code cfd763a
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-rvhp-75f6-9jqh 0bcf107
+   * Guard odd dash pattern duplication loop 68d1c93
+   * ImageMagick/ImageMagick#8802 7b3c0db
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-mhvg-v5wh-vrvm 0e34586
+   * ImageMagick/ImageMagick#8803 c0a724b
+   * use a different epsilon for log() c8a0110
+   * less branches 0012f56
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-365g-65p5-w84r 9c362af
+   * eliminate compiler exception 03d820f
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-76q6-2p6h-xjqr 378bfc1
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-99w2-r42q-g85v a865055
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-75mw-9cc9-fqx9 9534807
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-9ch6-2c6r-55q4 4cc1114
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-9ch6-2c6r-55q4 ee811bc
+   * introducing StrictReadImage() private method 4cdbcd4
+   * compute the pHash for the composite channel e9e1fb9
+   * compute the composite pHash channel a202d28
+   * ImageMagick/ImageMagick#8802 911ca85
+   * cosmetic 75ea032
+   * revert fb3876d
+   * Added extra checks when acquiring the values of a kernel (GHSA-f5m7-cqgw-8hm7) 9acf93f
+   * Updated the dependencies. 3dec161
+   * Use RelinquishAlignedMemory because the memory was allocated with AcquireAlignedMemory. 36afbcc
+   * quantize hash image depth 702175a
+   * release 38ba210
+- modified patches
+  * ImageMagick-configuration-SUSE.patch (refreshed)
+  * ImageMagick_policy_etc.patch (refreshed)
+- fixes CVE-2026-55577 [bsc#1270076]
+        CVE-2026-55597 [bsc#1270080]
+        CVE-2026-55628 [bsc#1270081]
+        CVE-2026-53466 [bsc#1270073]
+        CVE-2026-53467 [bsc#1270074]
+        CVE-2026-55510 [bsc#1270075]
+        CVE-2026-55594 [bsc#1270077]
+        CVE-2026-55595 [bsc#1270079]
+        
+
+-------------------------------------------------------------------
 Wed Jun 17 09:43:28 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - disable dpc support [bsc#1268117] [bsc#1268113]
@@ -65,6 +266,7 @@ Thu May 28 14:05:32 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-48724 [bsc#1268116]
         CVE-2026-48734 [bsc#1268122]
         CVE-2026-49219 [bsc#1268109]
+        CVE-2026-56377 [bsc#1270006]
 
 -------------------------------------------------------------------
 Mon May 18 14:32:11 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -130,6 +332,7 @@ Wed May 13 12:08:36 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-45624 [bsc#1268096]
         CVE-2026-45358 [bsc#1268102]
         CVE-2026-45664 [bsc#1268101]
+        CVE-2026-56363 [bsc#1270002]
 
 -------------------------------------------------------------------
 Mon May 11 07:44:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -182,6 +385,9 @@ Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-33902 [bsc#1262153]
         CVE-2026-33899 [bsc#1262154]
         CVE-2026-56370 [bsc#1269063]
+        CVE-2026-56365 [bsc#1270004]
+        CVE-2026-56361 [bsc#1270001]
+        CVE-2026-56374 [bsc#1271099]
 
 -------------------------------------------------------------------
 Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -315,6 +521,7 @@ Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-56371 [bsc#1268879]
         CVE-2026-56376 [bsc#1268880]
         CVE-2026-56368 [bsc#1269064]
+        CVE-2026-56362 [bsc#1271100]
 - actually patch SUSE default security policy 
   * modified ImageMagick-configuration-SUSE.patch
 
@@ -330,6 +537,7 @@ Mon Jan 19 18:33:04 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-22770 [bsc#1256969]
         CVE-2026-23952 [bsc#1257076]
         CVE-2026-23874 [bsc#1256976]
+        CVE-2026-56364 [bsc#1270003]
 
 -------------------------------------------------------------------
 Tue Jan  6 09:32:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>

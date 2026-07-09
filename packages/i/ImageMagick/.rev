@@ -4538,4 +4538,41 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>CVE-2026-56370, [bsc#1269063], CVE-2026-56379, [bsc#1268878], [bsc#1268569], [bsc#1268640], CVE-2026-56367, [bsc#1268645], CVE-2026-56371, [bsc#1268879], CVE-2026-56376, [bsc#1268880], CVE-2026-56368, [bsc#1269064]</comment>
     <requestid>1361706</requestid>
   </revision>
+  <revision rev="341" vrev="1">
+    <srcmd5>24dc952a7a7511df55020aae9a3d4fe6</srcmd5>
+    <version>7.1.2.27</version>
+    <time>1783628319</time>
+    <user>anag_factory</user>
+    <comment>- version update to 7.1.2.27
+   * Fix HEIC identity CICP with chroma subsampling #8828
+   * build(deps): bump actions/attest from 4.1.0 to 4.1.1 #8835
+   * build(deps): bump ubuntu from 53958ec to b7f4819 in /.devcontainer #8834
+   * build(deps): bump actions/setup-python from 6.2.0 to 6.3.0 #8830
+   * check profile length before reading header in GetIPTCStream #8829
+   * Read Cairo ARGB32 in host byte order so SVG colors are correct on big-endian #8825
+   * Preserve HEIC CICP and CLLI metadata #8824
+   * reject otb files that declare more pixels than the file holds #8826
+   * build(deps): bump msys2/setup-msys2 from 2.31.1 to 2.32.0 #8807
+   * build(deps): bump actions/checkout from 6.0.3 to 7.0.0 #8818
+   * Fix #8819 revert soname change #8820
+   * build(deps): bump ubuntu from f3d2860 to 53958ec in /.devcontainer #8814
+   * Fix #8819 revert soname change (#8820) #8819
+   * beta release 2c6ba18
+   * ImageMagick/ImageMagick#8813 71bf0b0
+   * eliminate compiler warning dc92169
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-422r-8c97-xcg4 be99ffa
+   * eliminate compiler warning 82364cf
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-93x9-jq8c-cwcc 4a3585b
+   * ImageMagick/ImageMagick#8815 5e1a141
+   * ImageMagick/ImageMagick#8816 532b0f5
+   * Revert unnecessary patch for GHSA-93x9-jq8c-cwcc e70837c
+   * Removed unnecessary check. 9a5c8ff
+   * https://github.com/ImageMagick/ImageMagick/security/advisories/GHSA-422r-8c97-xcg4 0bbf7e4
+   * remove quantization 4041062
+   * ImageMagick/ImageMagick#8815 9616e88
+   * correct allow coder logic 634f3a9
+   * Use AcquireQuantumMemory instead because it already does the necessary checks. 4e96b11
+   * support coder strict streaming attribute 727ddc9</comment>
+    <requestid>1364703</requestid>
+  </revision>
 </revisionlist>

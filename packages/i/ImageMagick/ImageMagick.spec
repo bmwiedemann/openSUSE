@@ -21,7 +21,7 @@
 %define debug_build    0
 %define asan_build     0
 %define mfr_version    7.1.2
-%define mfr_revision   25
+%define mfr_revision   27
 %define quantum_depth  16
 %define source_version %{mfr_version}-%{mfr_revision}
 %define clibver        10
@@ -42,9 +42,9 @@ Summary:        Viewer and Converter for Images
 License:        ImageMagick
 Group:          Productivity/Graphics/Other
 URL:            https://imagemagick.org/
-Source0:        https://imagemagick.org/archive/releases/ImageMagick-%{source_version}.tar.xz
+Source0:        https://download.imagemagick.org/archive/ImageMagick-%{source_version}.tar.xz
 Source1:        baselibs.conf
-Source2:        https://imagemagick.org/archive/releases/ImageMagick-%{source_version}.tar.xz.asc
+Source2:        https://download.imagemagick.org/archive/ImageMagick-%{source_version}.tar.xz.asc
 Source3:        ImageMagick.keyring
 # do not block read access to own config files
 Patch0:         ImageMagick_policy_etc.patch

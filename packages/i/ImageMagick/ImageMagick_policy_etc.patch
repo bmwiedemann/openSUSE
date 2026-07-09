@@ -1,7 +1,7 @@
-Index: ImageMagick-7.1.2-23/config/policy-limited.xml
+Index: ImageMagick-7.1.2-27/config/policy-limited.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-limited.xml
-+++ ImageMagick-7.1.2-23/config/policy-limited.xml
+--- ImageMagick-7.1.2-27.orig/config/policy-limited.xml
++++ ImageMagick-7.1.2-27/config/policy-limited.xml
 @@ -85,6 +85,8 @@
    <!-- <policy domain="path" rights="none" pattern="-"/> -->
    <!-- don't read sensitive paths. -->
@@ -11,10 +11,10 @@ Index: ImageMagick-7.1.2-23/config/policy-limited.xml
    <!-- Indirect reads are not permitted. -->
    <policy domain="path" rights="none" pattern="@*"/>
    <!-- These image types are security risks on read, but write is fine -->
-Index: ImageMagick-7.1.2-23/config/policy-open.xml
+Index: ImageMagick-7.1.2-27/config/policy-open.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-open.xml
-+++ ImageMagick-7.1.2-23/config/policy-open.xml
+--- ImageMagick-7.1.2-27.orig/config/policy-open.xml
++++ ImageMagick-7.1.2-27/config/policy-open.xml
 @@ -140,6 +140,8 @@
    <!-- <policy domain="path" rights="none" pattern="-"/> -->
    <!-- don't read sensitive paths. -->
@@ -24,12 +24,12 @@ Index: ImageMagick-7.1.2-23/config/policy-open.xml
    <!-- Indirect reads are not permitted. -->
    <!-- <policy domain="path" rights="none" pattern="@*"/> -->
    <!-- These image types are security risks on read, but write is fine -->
-Index: ImageMagick-7.1.2-23/config/policy-secure.xml
+Index: ImageMagick-7.1.2-27/config/policy-secure.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-secure.xml
-+++ ImageMagick-7.1.2-23/config/policy-secure.xml
+--- ImageMagick-7.1.2-27.orig/config/policy-secure.xml
++++ ImageMagick-7.1.2-27/config/policy-secure.xml
 @@ -96,6 +96,8 @@
-   <policy domain="path" rights="none" pattern="fd:*"/>
+   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
    <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
@@ -37,12 +37,12 @@ Index: ImageMagick-7.1.2-23/config/policy-secure.xml
    <!-- Relative paths are not permitted. -->
    <policy domain="path" rights="none" pattern="*../*"/>
    <!-- Indirect reading is not permitted. -->
-Index: ImageMagick-7.1.2-23/config/policy-websafe.xml
+Index: ImageMagick-7.1.2-27/config/policy-websafe.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-websafe.xml
-+++ ImageMagick-7.1.2-23/config/policy-websafe.xml
+--- ImageMagick-7.1.2-27.orig/config/policy-websafe.xml
++++ ImageMagick-7.1.2-27/config/policy-websafe.xml
 @@ -92,6 +92,8 @@
-   <policy domain="path" rights="none" pattern="fd:*"/>
+   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
    <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
@@ -50,12 +50,12 @@ Index: ImageMagick-7.1.2-23/config/policy-websafe.xml
    <!-- Relative paths are not permitted. -->
    <policy domain="path" rights="none" pattern="*../*"/>
    <!-- Indirect reading is not permitted. -->
-Index: ImageMagick-7.1.2-23/config/policy-SUSE.xml
+Index: ImageMagick-7.1.2-27/config/policy-SUSE.xml
 ===================================================================
---- ImageMagick-7.1.2-23.orig/config/policy-SUSE.xml
-+++ ImageMagick-7.1.2-23/config/policy-SUSE.xml
+--- ImageMagick-7.1.2-27.orig/config/policy-SUSE.xml
++++ ImageMagick-7.1.2-27/config/policy-SUSE.xml
 @@ -96,6 +96,8 @@
-   <policy domain="path" rights="none" pattern="fd:*"/>
+   <policy domain="path" rights="none" pattern="[Ff][Dd]:*"/>
    <!-- Sensitive paths are not permitted. -->
    <policy domain="path" rights="none" pattern="/etc/*"/>
 +  <!-- but allow to read own data. -->
