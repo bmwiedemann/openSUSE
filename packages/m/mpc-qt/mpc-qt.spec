@@ -17,7 +17,7 @@
 
 
 Name:           mpc-qt
-Version:        26.01
+Version:        26.07
 Release:        0
 Summary:        Media Player Classic Qute Theater
 License:        GPL-2.0-only
@@ -71,6 +71,7 @@ rm -r %{buildroot}%{_datadir}/doc/mpc-qt
 %license LICENSE
 %{_bindir}/%{name}
 %{_datadir}/applications/io.github.mpc_qt.mpc-qt.desktop
+%{_datadir}/applications/io.github.mpc_qt.mpc-qt_enqueue.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{name}.svg
 %{_datadir}/metainfo/io.github.mpc_qt.mpc-qt.metainfo.xml
 

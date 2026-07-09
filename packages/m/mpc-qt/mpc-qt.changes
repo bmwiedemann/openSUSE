@@ -1,4 +1,199 @@
 -------------------------------------------------------------------
+Thu Jul  9 15:18:19 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 26.07
+  Key highlights:
+  * Improved performances for: opening a video, changing video,
+    showing the seek bar and the video preview.
+  * The control buttons are smaller to leave more space for the
+    content.
+  * The options are simplified and we've added a search box to
+    filter them.
+  * The Wayland mode is now enabled by default for new
+    installations, it works with the AppImage and is improved.
+  * Dark mode now works on GNOME-based desktops.
+  * Many other features and improvements could be listed here,
+    many thanks to the new contributors!
+  Features:
+  * Add move subtitles vertically feature
+  * Support changing status time format by click, add remaining
+    and percentage modes
+  * Add support for AVIF screenshots, prettify JPEG encoding
+    settings and add avif to accepted file extensions
+  * settingswindow: Add "Mono" audio channel layout preset
+  * Add "Use dark colors" option
+  * Add auto deinterlacing
+  * Add support to enqueue files from file manager
+  * drawnslider: Jump to start of current chapter on
+    middle-click in progress bar
+  * settings: add Replay Gain controls to Audio renderer page
+  * widgets: add status time hover tooltip and double-click goto
+  * Show hardware decoding state in a main window playback
+    status tooltip
+  * Support adjusting audio delay and simplify setting audio,
+    video and subtitles tracks menus
+  * Add a feature to loop over to first/last file when using
+    'use next/prev file in folder when only one file in playlist'
+  Improvements:
+  * Trigger Play from stopped state when clicking on mpvWidget
+  * mainwindow: Make Play / Pause action trigger Play button
+  * manager: Remove file title from tracks titles
+  * Simplify title bar setting
+  * playlistwindow: select tab on right click, move Clear
+    command to tab menu and add Rename command
+  * settingswindow: Let pipewire set its own buffer and reduce
+    pulse buffer
+  * Improve Playlist window and add "Remove Selected Item"
+    command to Playlist menu
+  * mainwindow: Remember "Disable aspect ratio" menu toggle
+  * actioneditor: Ask confirmation if new keybind will overwrite
+    existing one
+  * Use Wayland mode by default, enable the option only on
+    Wayland, differentiate between X11 and XWayland
+  * mainwindow: Only show Step and subtitles buttons for videos
+  * Use latest Qt LTS for the CI and the AppImage
+  * ci: Add Wayland mode support to AppImage
+  * Add support for transparency to all color settings
+  * actioneditor: Add descriptive names for Previous & Next
+    (Skip Backward & Forward)
+  * Improve "Interface" settings page
+  * drawnslider: Make seek bar, volume handles border and
+    chapters brighter for dark themes
+  * Show message when ambiguous shortcut is used
+  * Improve language override
+  * Add Bink Video format to supported file types
+  * Reduce the size of buttons
+  * Set default Volume Increase/Decrease shortcuts to Up/Down
+  * Simplify subtitles settings and remove redundant options
+  * Show screen make and model in Fullscreen settings screen
+    selector
+  * mainwindow: Only show app name in window title when no file
+    is loaded
+  * mainwindow: Move SubtitlesDelay actions to submenu
+  * manager: Show track language script when non standard
+  * settingswindow: Use default mpv OSD font size
+  * Make "Previous" seek to beginning of current chapter if not
+    beyond 5 seconds
+  * settingswindow: Use mpv defaults for enabled hardware
+    codecs; add AV1 and VP8
+  * Use custom slider widget for audio balance and color
+    controls settings
+  * Bring window to front when opening a video for immediate
+    playback
+  * Display buffering state and progress in status bar on buffer
+    underrun
+  * Add m4b (MPEG-4 Audiobook) to supported file extensions
+  * videopreview: Request yt-dlp formats meeting minimum preview
+    height
+  * Enable subtitles / unmute when user selects a subtitles /
+    audio track
+  * Rename "Library" to "Playlists Backup"
+  * Don't play first frame when resuming position
+  * drawnslider: cache background image, only redraw on state
+    change
+  * drawnstatus: skip repaint when displayed time hasn't changed
+  * settingswindow: add searchable settings input
+  * Speed up video transitions and prevent previous-frame
+    flashing
+  * Migrate video horizontal flip to filterlist and make it a
+    toggle
+  * mainwindow: Add 16:9 Aspect ratio command
+  * playlistwindow: Remove Close Tab button at the bottom
+  * playlistwindow: Remove "Save As..." command from context menu
+  * Speed up video preview generation
+  * settingswindow: Default auto window size to video size
+  * videopreview: Add fallback formats and QuickJS support for
+    yt-dlp
+  * main: Switch to matching playlist when opening file from
+    recents
+  * Don't draw logo when launched with a file
+  Bug fixes:
+  * main: Save only the path part of screenshot location
+  * Don't percent-encode filename or path for thumbnails
+  * mainwindow: Don't add subtitles "Move" menu to root of Play
+    menu
+  * mainwindow: Uncheck "Repeat" menu action when disabling loop
+  * Fix restoring audio and video tracks from Recents
+  * main: Set a shorter stale time for the lock file
+  * Change key shortcut for "Move File to Recycle Bin" and
+    rename it to "Remove File" for the Flatpak build
+  * mainwindow: Add missing Move Subtitles menu
+  * manager: Reset filename on stop
+  * videopreview: Don't open file if empty
+  * Don't try to load non-existing subtitles files
+  * manager: Don't store current tracks selection if auto
+    selected
+  * mainwindow: Empty Quick Playlist when opening file with
+    Quick Open File
+  * Fix cursor hiding issues in fullscreen
+  * Fix hide cursor in fullscreen at bottomArea edge and remove
+    duplicate workaround code
+  * helpers: Fix custom icons path and add missing extension
+  * Adding StartupWMClass to the .desktop file
+  * Update icons and colors on system theme or palette change
+  * Fix tracks auto language selection
+  * screensaver: Add missing interactive argument
+  * Add missing .ico files
+  * mainwindow: Only trigger window move after mouse move
+  * Improve window size saving
+  * mainwindow: Don't start window move while in fullscreen
+  * helpers: Guard against malformed input in date/time parsers
+  * main: Fix restoring original style after disabling Fusion one
+  * settingswindow: Only show custom icons controls when needed
+    + various fixes
+  * Stop playing and unload file when currently playing playlist
+    is closed
+  * Fix visual glitches and animation when exiting from
+    fullscreen in Wayland mode
+  * Don't start window move until the mouse has moved enough
+  * settingswindow: Use dark colors if a dark colors system
+    theme is detected
+  * drawnslider: Fix background image height calculation
+  * Fix memory leaks in mainwindow
+  * Fix for hiDPI pixel artifact on hardware decoding
+  * Always use .log extension for log file and translate the
+    file type
+  * main: Move temporary screenshot file to destination
+    asynchronously
+  * mainwindow: arm AB loop when B is set at current playback
+    position
+  * helpers: Don't sort items by URL when filtering them
+  * ci: Show version in flatpak dev builds
+  * logger: Always enable logging with --log-to-console
+  * Fix gapless playback-related issues, prevent mpv error when
+    clearing filters
+  * mpvwidget: Add Windows long path support
+  * settingswindow: Enable "Position ASS subs relative to video
+    frame" by default
+  * settingswindow: Use mpv default subtitles shadow color
+  * mpvwidget: Fix clearing filters
+  Other changes:
+  * mainwindow: Don't manually delete playlistWindow_
+  * Fix C++23 deprecation warnings
+  * data: Use SPDX format for project_license in Appstream
+    metainfo file
+  * main: Move log messages where they belong
+  * settingswindow: Set default subtitles color to white and
+    border size to 2
+  * Observe "idle-active" instead of deprecated MPV_EVENT_IDLE
+  * cmakelists: Use GLOB to add all translations (including ko
+    and forgotten pl one)
+  * Fix stacktrace outputing to log file
+  * mpvwidget: Pass large parameters by reference
+  * Use lambda expressions for QMetaObject::invokeMethod calls
+  * data: Remove "Audio" and "Video" categories from .desktop
+    file
+  * data: Add help link to wiki in appstream file
+  * main: Don't check GPU in Wayland mode
+  * tooltip: Reduce sides margin and use lighter border for dark
+    palettes, paletteeditor: Restore visibility of Light, Midlight
+    and Mid
+  * Simplify the way the title bar is set and rename "Don't
+    prefix anything" title bar setting
+  * Move about dialog and version-related variables to dedicated
+    class
+
+-------------------------------------------------------------------
 Wed Jan 14 06:32:48 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 26.01
