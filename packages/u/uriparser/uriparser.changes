@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:26:28 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- doc builds via multibuild
+  (https://build.opensuse.org/request/show/1364334)
+- added sources
+  * _multibuild
+
+-------------------------------------------------------------------
 Tue Jun 16 15:22:18 UTC 2026 - Adam Majer <adam.majer@suse.de>
 
 - Update to version 1.0.2:

@@ -207,4 +207,15 @@
 - cmake_fixes.patch: fix compilation with newer GTest</comment>
     <requestid>1359804</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>80802840d03aaba5e99a2200dbb1e1b0</srcmd5>
+    <version>1.0.2</version>
+    <time>1783628501</time>
+    <user>anag_factory</user>
+    <comment>- doc builds via multibuild
+  (https://build.opensuse.org/request/show/1364334)
+- added sources
+  * _multibuild</comment>
+    <requestid>1364746</requestid>
+  </revision>
 </revisionlist>

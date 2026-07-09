@@ -16,6 +16,13 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "doc"
+%define psuffix -doc
+%else
+%define psuffix %{nil}
+%endif
+
 %if 0%{?suse_version} >= 1500
 %bcond_without googletest
 %else
@@ -23,37 +30,49 @@
 %endif
 
 %define so_ver  1
-Name:           uriparser
+Name:           uriparser%{psuffix}
 Version:        1.0.2
 Release:        0
+%if "%{flavor}" == "doc"
+Summary:        Documentation files for the uriparser URI parsing library
+License:        BSD-3-Clause
+Group:          Documentation/Other
+%else
 Summary:        A strictly RFC 3986 compliant URI parsing library
 License:        Apache-2.0 AND BSD-3-Clause AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
+%endif
 URL:            https://uriparser.github.io
 Source:         https://github.com/uriparser/uriparser/releases/download/uriparser-%{version}/uriparser-%{version}.tar.xz
 Patch1:         cmake_fixes.patch
 Source1:        baselibs.conf
 BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  xz
+%if "%{flavor}" == "doc"
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  ghostscript-fonts-std
 BuildRequires:  graphviz
 BuildRequires:  graphviz-gd
-BuildRequires:  pkg-config
 BuildRequires:  qt6-tools
-BuildRequires:  xz
 BuildRequires:  pkgconfig(libxdot)
+%else
+BuildRequires:  pkg-config
 %if %{with googletest}
 BuildRequires:  gtest >= 1.8.1
 %endif
 Provides:       uriparse = %{version}-%{release}
 Obsoletes:      uriparse < %{version}-%{release}
+%endif
 
 %description
 uriparser is a strictly RFC 3986 compliant URI parsing library
 and supports Unicode.
 
+%if "%{flavor}" == "doc"
+This package contains the documentation for uriparser.
+%else
 There is a command line tool, uriparse, which allows parsing URIs and
 show how the liburiparser splits it into components.
 
@@ -83,32 +102,26 @@ and supports Unicode.
 
 This subpackage contains the headers and other developments
 files needed to build packagesfor that depend on %{name}.
-
-%package        doc
-Summary:        Documentation files for the uriparser URI parsing library
-License:        BSD-3-Clause
-Group:          Documentation/Other
-
-%description    doc
-uriparser is a strictly RFC 3986 compliant URI parsing library
-and supports Unicode.
-
-This subpackage contains the documentation for %{name}.
+%endif
 
 %prep
-%autosetup -p1 -n %{name}-%{version}
+%autosetup -p1 -n uriparser-%{version}
 
 %build
 %cmake \
-    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name} \
+    -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/uriparser \
     -DCMAKE_CXX_STANDARD=17 \
     -DBUILD_SHARED_LIBS:BOOL=ON \
     -DURIPARSER_BUILD_CHAR:BOOL=ON \
+%if "%{flavor}" == "doc"
     -DURIPARSER_BUILD_DOCS:BOOL=ON \
+%else
+    -DURIPARSER_BUILD_DOCS:BOOL=OFF \
 %if %{with googletest}
     -DURIPARSER_BUILD_TESTS:BOOL=ON \
 %else
     -DURIPARSER_BUILD_TESTS:BOOL=OFF \
+%endif
 %endif
     -DURIPARSER_BUILD_TOOLS:BOOL=ON \
     -DURIPARSER_BUILD_WCHAR:BOOL=ON \
@@ -117,8 +130,16 @@ This subpackage contains the documentation for %{name}.
 
 %install
 %cmake_install
-%fdupes %{buildroot}%{_docdir}/%{name}/html/
+%if "%{flavor}" == "doc"
+rm -rf %{buildroot}%{_bindir}
+rm -rf %{buildroot}%{_libdir}
+rm -rf %{buildroot}%{_includedir}
+%fdupes %{buildroot}%{_docdir}/uriparser/html/
+%else
+rm -rf %{buildroot}%{_docdir}/uriparser
+%endif
 
+%if "%{flavor}" != "doc"
 %if %{with googletest}
 %check
 export MALLOC_CHECK_=2 MALLOC_PERTURB_=$((${RANDOM:-256} % 256))
@@ -128,6 +149,16 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 
 %post -n liburiparser%{so_ver} -p /sbin/ldconfig
 %postun -n liburiparser%{so_ver} -p /sbin/ldconfig
+%endif
+
+%if "%{flavor}" == "doc"
+%files
+%license COPYING.BSD-3-Clause
+%doc doc/Mainpage.txt
+%dir %{_docdir}/uriparser/
+%{_docdir}/uriparser/html/
+%{_docdir}/uriparser/uriparser-%{version}-doc.qch
+%else
 
 %files
 %license COPYING.BSD-3-Clause
@@ -141,16 +172,10 @@ unset MALLOC_CHECK_ MALLOC_PERTURB_
 %files devel
 %license COPYING.BSD-3-Clause
 %doc ChangeLog THANKS AUTHORS
-%{_includedir}/%{name}/
+%{_includedir}/uriparser/
 %{_libdir}/liburiparser.so
 %{_libdir}/cmake/uriparser-%{version}/
 %{_libdir}/pkgconfig/liburiparser.pc
-
-%files doc
-%license COPYING.BSD-3-Clause
-%doc doc/Mainpage.txt
-%dir %{_docdir}/%{name}/
-%{_docdir}/%{name}/html/
-%{_docdir}/%{name}/%{name}-%{version}-doc.qch
+%endif
 
 %changelog
