@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:06:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.13.1:
+  * rewire HP::ArubaOS, HP::ArubaWired, Alcatel::OmniAccess.
+  * reorg Aruba modules (direct Alcatel OmniAccess to ArubaOS).
+  * --name3 can now use any attribute for filting interfaces,
+    with ifAlias still being the default.
+  * add a filter to ipRouteTable (for mode count-routes --name ...)
+
+-------------------------------------------------------------------
 Sun Apr 19 09:49:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 12.12.2.5
