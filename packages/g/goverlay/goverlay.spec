@@ -17,27 +17,31 @@
 
 
 Name:           goverlay
-Version:        1.8.2
+Version:        1.8.4
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
 URL:            https://github.com/benjamimgois/goverlay
 Source0:        https://github.com/benjamimgois/goverlay/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE goverlay-enable-debuginfo-generation.patch andythe_great@pm.me -- Enable generate debuginfo
-Patch0:         goverlay-enable-debuginfo-generation.patch
+# PATCH-FIX-OPENSUSE goverlay-build-flags.patch - Adjust build flags for RPM packaging (debuginfo and PIE)
+Patch0:         goverlay-build-flags.patch
+# PATCH disable-passcube-build.patch - The factory has a package for pascube; there is no need to use the built-in version.
+Patch1:         disable-passcube-build.patch
 BuildRequires:  appstream-glib
-BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  lazarus
 BuildRequires:  libQt6Pas-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(gtk+-3.0)
 ExclusiveArch:  x86_64 aarch64
 Requires:       7zip
 Requires:       mangohud
+# Nerd symbols is necessary to show icons in goverlay interface
+Requires:       symbols-only-nerd-fonts
+Requires:       pascube
 Requires:       wget
 Recommends:     Mesa-demo
+Recommends:     vkSumi
 Recommends:     vkbasalt
 Recommends:     vulkan-tools
 %if 0%{?suse_version} > 1500
@@ -57,13 +61,17 @@ chmod -x LICENSE README.md
 
 %install
 %make_install prefix=%{_prefix} libexecdir=/%{_lib}
-%suse_update_desktop_file -r io.github.benjamimgois.%{name} Development Profiling
+install -d %{buildroot}%{_libexecdir}/goverlay
+sed -i \
+    -e 's/^StartupWMClass=.*/StartupWMClass=goverlay/' \
+    %{buildroot}%{_datadir}/applications/io.github.benjamimgois.goverlay.desktop
+mv %{buildroot}%{_datadir}/goverlay/bgmod/{bgmod,bgmod-uninstaller} \
+   %{buildroot}%{_libexecdir}/goverlay/
 %{__strip} %{buildroot}/usr/lib64/goverlay
-%fdupes -s %{buildroot}%{_datadir}
+rm -rf %{buildroot}%{_datadir}/goverlay/data/icons/{128x128,256x256,512x512}
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
-desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgois.%{name}.desktop
 
 %files
 %license LICENSE
@@ -71,6 +79,9 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/io.github.benjamimgoi
 %{_bindir}/%{name}
 %{_datadir}/%{name}
 %{_libdir}/%{name}
+%dir %{_libexecdir}/goverlay
+%{_libexecdir}/goverlay/bgmod
+%{_libexecdir}/goverlay/bgmod-uninstaller
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}.png
 %{_mandir}/man1/%{name}.1%{?ext_man}

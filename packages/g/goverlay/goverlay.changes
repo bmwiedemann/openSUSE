@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Jul  4 20:08:41 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Change nerd-symbolsonly-fonts to factory available symbols-only-nerd-fonts.
+
+-------------------------------------------------------------------
+Mon Jun 29 12:26:02 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Added vkSumi as a recommends. 
+
+-------------------------------------------------------------------
+Mon Jun 29 12:19:56 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+Update to version 1.8.4:
+  * Replace FGMOD with native Pascal-based bgmod.
+  * Integrate Pascube benchmark and Vulkan demo into Goverlay.
+  * Add Pascube_DB support with hardware score comparison.
+  * Add in-app video tutorials for Steam and Heroic setup.
+  * Improve Flatpak compatibility and global configuration handling.
+  * Add hardware fingerprinting and benchmark result authentication.
+  * Recalibrate benchmark reference scores and datasets.
+  * Improve OptiScaler auto-update, bgmod permissions and Reflex settings.
+  * Improve Flatpak hardware detection and restore vkSumi support.
+  * Add automated CI/CD builds for AppImage, Flatpak, RPM and DEB,
+  * including x86_64 and aarch64 packages.
+  * Fix Home tab shell version detection under Flatpak.
+  * Update README and include miscellaneous bug fixes.
+  * Add disable-passcube-build.patch to disable the bundled Pascube
+    and use the system package instead.
+  * Add Requires: pascube to use the system-provided benchmark.
+  * Replace goverlay-enable-debuginfo-generation.patch with
+    goverlay-build-flags.patch to enable RPM-managed debug
+    information generation and PIE linking.
+  * Fix StartupWMClass in the desktop file to match the actual
+    WM_CLASS, restoring the application icon in KDE Plasma.
+
+-------------------------------------------------------------------
 Sat May 30 14:24:04 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Update to version 1.8.2:

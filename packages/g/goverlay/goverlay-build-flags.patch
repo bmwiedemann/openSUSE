@@ -1,0 +1,24 @@
+diff '--color=auto' -rub goverlay-1.8.4.orig/goverlay.lpi goverlay-1.8.4/goverlay.lpi
+--- goverlay-1.8.4.orig/goverlay.lpi	2026-06-20 14:54:09.000000000 -0300
++++ goverlay-1.8.4/goverlay.lpi	2026-06-27 15:50:59.105131790 -0300
+@@ -51,8 +51,8 @@
+           </CodeGeneration>
+           <Linking>
+             <Debugging>
+-              <GenerateDebugInfo Value="False"/>
+-              <StripSymbols Value="True"/>
++              <GenerateDebugInfo Value="True"/>
++              <StripSymbols Value="False"/>
+             </Debugging>
+             <LinkSmart Value="True"/>
+             <Options>
+@@ -64,8 +64,7 @@
+             </Options>
+           </Linking>
+           <Other>
+-            <CustomOptions Value="-fPIC
+--Cg"/>
++            <CustomOptions Value="-k-pie"/>
+           </Other>
+         </CompilerOptions>
+       </Item2>
