@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Tue Jun 09 16:16:31 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.47.9:
