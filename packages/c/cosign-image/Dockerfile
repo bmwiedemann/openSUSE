@@ -17,7 +17,7 @@
 
 #!BuildTag: opensuse/cosign:%%cosign_version%%-%RELEASE%
 #!BuildTag: opensuse/cosign:%%cosign_version%%
-#!BuildTag: opensuse/cosign:3.0
+#!BuildTag: opensuse/cosign:3.1
 #!BuildTag: opensuse/cosign:3
 #!BuildTag: opensuse/cosign:latest
 
@@ -31,14 +31,14 @@ RUN set -euo pipefail; \
 # sanity check that the version from the tag is equal to the version of cosign that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' cosign | \
-    cut -d '.' -f -2)" = "3.0" ]
+    cut -d '.' -f -2)" = "3.1" ]
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
     rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
