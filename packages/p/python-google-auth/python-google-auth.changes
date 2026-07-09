@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul  8 09:57:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 2.55.2
+  * **auth:** Agentic Identites mTLS gaps fix _is_mtls and SslCredentials. (#17387)
+  * **auth:** align mTLS discovery and enforce fail-fast transport configuration. (#17470)
+  * **auth:** handle PermissionError on workload certificates to avoid
+    startup hang and crash (#17568)
+- from version 2.55.1
+  * **auth:** lower regional access boundary logs from warning to debug. (#17571)
+- from version 2.55.0
+  * make RAB feature production ready (#17390)
+  * run async background boundary refresh on detached session (#17441)
+- from version 2.54.0
+  * implement regional access boundary support for standalone JWT and
+    async service accounts (#17025)
+  * configure mTLS for impersonated credentials (#17404)
+  * fail-fast on missing ECP config file to avoid 30s hang (#17377)
+  * update incorrect urls in setup.py to point at monorepo vs splitrepo (#17237)
+  * Rename the 'seed' argument for setting an initial regional access boundary
+    for clarity (#17186)
+
+-------------------------------------------------------------------
 Mon Jun  1 09:53:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 2.53.0

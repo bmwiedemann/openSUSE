@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth
-Version:        2.53.0
+Version:        2.55.2
 Release:        0
 Summary:        Google Authentication Library
 License:        Apache-2.0
@@ -26,7 +26,7 @@ URL:            https://github.com/googleapis/google-cloud-python/tree/main/pack
 Source:         https://files.pythonhosted.org/packages/source/g/google_auth/google_auth-%{version}.tar.gz
 BuildRequires:  %{python_module Flask}
 BuildRequires:  %{python_module PyJWT >= 2.0}
-BuildRequires:  %{python_module aiohttp >= 3.6.2}
+BuildRequires:  %{python_module aiohttp >= 3.8.0}
 BuildRequires:  %{python_module aioresponses}
 BuildRequires:  %{python_module cryptography >= 38.0.3}
 BuildRequires:  %{python_module freezegun}
