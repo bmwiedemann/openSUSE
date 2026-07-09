@@ -259,6 +259,11 @@ Patch1266301:   bsc1266301_CVE-2026-XXXX8_0006-saver-re-fetch-screen-private-aft
 Patch1266302:   bsc1266302_CVE-2026-XXXX9_0001-dri2-Use-booleans-for-fake-front-buffer-tracking-in-.patch
 Patch1266303:   bsc1266302_CVE-2026-XXXX9_0002-dri2-Deduplicate-attachments-in-do_get_buffer.patch
 
+Patch1268893:   bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
+Patch1268894:   bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
+Patch1268895:   U_GLX-Free-the-tag-of-the-old-context-later.patch
+Patch1268896:   bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -428,6 +433,11 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1266301 -p1
 %patch -P 1266302 -p1
 %patch -P 1266303 -p1
+
+%patch -P 1268893 -p1
+%patch -P 1268894 -p1
+%patch -P 1268895 -p1
+%patch -P 1268896 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):

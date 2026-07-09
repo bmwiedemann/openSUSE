@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  2 09:25:39 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
+  * glamor Font Atlas Heap Buffer Overflow (CVE-2026-55999, bsc#1268893)
+- bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent() (CVE-2026-55999, bsc#1268893)
+- U_GLX-Free-the-tag-of-the-old-context-later.patch
+  bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent()  (CVE-2026-56000, bsc#1268894)
+
+-------------------------------------------------------------------
 Wed Jun  3 10:23:18 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add missing %verify(not mode) (boo#1263098).

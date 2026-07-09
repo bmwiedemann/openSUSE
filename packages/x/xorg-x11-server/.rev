@@ -4456,4 +4456,18 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
     <comment></comment>
     <requestid>1358311</requestid>
   </revision>
+  <revision rev="452" vrev="8">
+    <srcmd5>db0df350aa6fc90f3704b9ad728b357c</srcmd5>
+    <version>21.1.21</version>
+    <time>1783628294</time>
+    <user>anag_factory</user>
+    <comment>- bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
+  * glamor Font Atlas Heap Buffer Overflow (CVE-2026-55999, bsc#1268893)
+- bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent() (CVE-2026-55999, bsc#1268893)
+- U_GLX-Free-the-tag-of-the-old-context-later.patch
+  bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
+  * GLX contextTags Use-After-Free in CommonMakeCurrent()  (CVE-2026-56000, bsc#1268894)</comment>
+    <requestid>1364442</requestid>
+  </revision>
 </revisionlist>
