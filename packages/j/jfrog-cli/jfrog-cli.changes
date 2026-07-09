@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 09 05:21:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.113.0:
+  * New Features
+    - [jfrog-cli] Rteco alpine tests #3590 (@naveenku-jfrog)
+  * Bug Fixes
+    - [jfrog-cli] RTECO-945 - Fix Go version mismatch in Alpine APK
+      CI #3592 (@naveenku-jfrog)
+    - [jfrog-cli-artifactory] RTECO-1560 - Fix agentplugins install
+      issue #500 (@udaykb2)
+    - [jfrog-cli-security] XRAY-146567 - Fixed maven proxy issue
+      #796 (@gauriy-tech)
+  * Other Changes
+    - [jfrog-cli] RTECO-1560 - Skip agentplugins tests #3587
+      (@udaykb2)
+    - [jfrog-cli] Hide survey link when invoked by an AI agent
+      #3588 (@ehl-jf)
+    - [jfrog-cli-artifactory] Expend vsc detection #485 (@attiasas)
+    - [jfrog-cli-artifactory] Expend vsc detection for container
+      #486 (@attiasas)
+    - [jfrog-cli-security] Pass os env variables to SAST server
+      #790 (@ilya-k-1)
+    - [jfrog-cli-security] XRAY-145620 - Report actual module count
+      in git audit config profile error #793 (@Jordanh1996)
+
+-------------------------------------------------------------------
 Wed Jul 01 11:12:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.112.0:
