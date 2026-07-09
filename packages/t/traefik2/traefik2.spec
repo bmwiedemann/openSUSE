@@ -23,7 +23,7 @@
 %define buildmode pie
 %endif
 Name:           traefik2
-Version:        2.11.50
+Version:        2.11.52
 Release:        0
 Summary:        The Cloud Native Application Proxy
 License:        MIT
@@ -40,7 +40,7 @@ BuildRequires:  go-bindata
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
-BuildRequires:  (golang(API) >= 1.23)
+BuildRequires:  (golang(API) >= 1.26)
 Recommends:     podman
 Provides:       traefik = %{version}
 Provides:       group(traefik)

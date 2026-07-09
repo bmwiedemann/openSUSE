@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Jul  8 15:00:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.52
+
+- Bugs fixed:
+  * acme
+    - Bump software.sslmate.com/src/go-pkcs12 to v0.7.3
+  * middleware
+    - Sanitize replaced path in ReplacePathRegex middleware
+  * otel
+    - Bump go.opentelemetry.io/otel to v1.44.0
+
+- Version 2.11.51
+
+- CVE fixed:
+  * CVE-2026-54763 (Advisory GHSA-x677-9fxg-v5c5) - boo#1270431
+  * CVE-2026-54764 (Advisory GHSA-3q9r-p662-5j8m) - boo#1270432
+
+- Bugs fixed:
+  * acme
+    - Bump github.com/go-acme/lego/v5
+  * Configurable max request header size
+  * middleware, authentication
+    - Add an option to remove request headers with underscores
+    - Fix x-forwarded-port in forward-auth
+  * webui
+    - Bump axios to v1.18.0
+
+-------------------------------------------------------------------
 Mon Jun 15 15:22:51 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.50
@@ -18,7 +47,7 @@ Mon Jun 15 15:22:51 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.48
 - CVE fixed:
-  * CVE-2026-48020 (Advisory GHSA-xf64-8mw2-4gr2) 
+  * CVE-2026-48020 (Advisory GHSA-xf64-8mw2-4gr2) - boo#1268387
 - Bug fixes:
   * k8s/ingress
     - Avoid ingress path matcher injection and backport 11d2514
