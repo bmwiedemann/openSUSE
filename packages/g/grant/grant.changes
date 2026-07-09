@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 09 05:19:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.8:
+  * bug: non zero exit code when no denied packages reported based
+    on policies [Issue #454] [PR #517 @arpitjain099]
+  * chore(deps): bump
+    anchore/workflows/.github/workflows/check-version-available.yaml
+    (#532)
+  * chore(deps): bump
+    anchore/workflows/.github/workflows/release-install-script.yaml
+    (#536)
+  * chore(deps): bump github.com/anchore/go-collections from 0.1.0
+    to 0.1.1 (#542)
+  * chore(deps): bump github.com/anchore/syft from 1.45.1 to 1.46.0
+    (#537)
+  * chore(deps): bump github.com/anchore/clio from 0.1.0 to 0.1.1
+    (#539)
+  * chore(deps): bump github.com/anchore/go-logger from 0.1.0 to
+    0.1.1 (#540)
+  * chore(deps): bump modernc.org/sqlite from 1.52.0 to 1.53.0
+    (#541)
+  * chore(deps): bump zizmorcore/zizmor-action from 0.5.6 to 0.5.7
+    (#534)
+  * chore(deps): bump
+    anchore/workflows/.github/workflows/codeql.yaml (#533)
+  * chore(deps): bump
+    anchore/workflows/.github/workflows/check-gate.yaml (#531)
+
+-------------------------------------------------------------------
 Mon Jun 08 05:29:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.7:

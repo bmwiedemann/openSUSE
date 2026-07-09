@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/anchore/grant</param>
-              <param name="changesrevision">2d9a6408e4dc1fba0a41101dd9bfb5c8e2200d74</param></service></servicedata>
+              <param name="changesrevision">2d9a6408e4dc1fba0a41101dd9bfb5c8e2200d74</param></service><service name="tar_scm">
+                <param name="url">https://github.com/anchore/grant.git</param>
+              <param name="changesrevision">0fb3c502202139efcf4a20aa72014cf6eafab930</param></service></servicedata>
