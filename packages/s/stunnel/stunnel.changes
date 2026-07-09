@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:35:01 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.79:
+  * Security bugfixes
+    - OpenSSL DLLs updated to version 3.5.7.
+  * Bugfixes
+    - Fixed a TCP stream truncation (thanks to Solomon Jacobs).
+    - Fixed a transfer() loop (thanks to Solomon Jacobs).
+    - Fixed log reopening logs without a configured log file.
+    - Fixed some logged values (thanks to Jose Alf.).
+    - Fixed some error handling and cleanup issues (thanks to Jose Alf.).
+    - Fixed OpenSSL applink detection and MSYS2 MinGW builds.
+  * Features
+    - Added the new 'transport' service-level option
+      to choose between TLS over TCP and DTLS over UDP.
+
+-------------------------------------------------------------------
 Mon Apr 13 13:39:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.78:
