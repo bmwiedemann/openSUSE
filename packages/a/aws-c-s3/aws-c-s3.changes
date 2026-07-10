@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:08:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.7
+  * Support deferred buffer reservations in async-write path by @yerzhan7 in (#645)
+  * stop forcing connection to be closed by @TingDaoK in (#646)
+  * o_direct download support by @TingDaoK in (#634)
+
+-------------------------------------------------------------------
+Mon Jun 15 09:49:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.12.6
+  * Support s2n-tls on macOS by @sfod in (#640)
+  * fix copy object mpu by @sbiscigl in (#643)
+  * CopyObject limitations by @TingDaoK in (#641)
+
+-------------------------------------------------------------------
 Mon Jun  8 07:14:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.5
