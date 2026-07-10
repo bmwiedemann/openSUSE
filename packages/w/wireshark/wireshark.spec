@@ -34,7 +34,7 @@
 %bcond_with qt6
 %endif
 Name:           wireshark
-Version:        4.6.6
+Version:        4.6.7
 Release:        0
 Summary:        A Network Traffic Analyser
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -73,7 +73,6 @@ BuildRequires:  portaudio-devel
 BuildRequires:  snappy-devel
 BuildRequires:  spandsp-devel
 BuildRequires:  tcpd-devel
-BuildRequires:  update-desktop-files
 BuildRequires:  zlib-devel
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libnghttp2)
@@ -264,7 +263,7 @@ exit 0
 %{_bindir}/sharkd
 %{_bindir}/text2pcap
 %{_bindir}/tshark
-%verify(not mode caps) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
+%verify(not caps group mode) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
 %{_libdir}/wireshark/
 %{_datadir}/wireshark/
 %{_libexecdir}/wireshark

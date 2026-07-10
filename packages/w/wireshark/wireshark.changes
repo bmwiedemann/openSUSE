@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:44:55 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.7
+  * Catapult DCT2000 protocol dissector crash.
+  * pcapng file parser crash.
+  * FMP/NOTIFY protocol dissector large loop.
+  * SSH protocol dissector crash.
+  * TLS ECH decryption crash.
+  * IEEE 802.11 protocol dissector crash.
+  * Z39.50 protocol dissector crash.
+  * UMTS FP protocol dissector crash.
+  * BLF file parser information disclosure.
+  * Multiple protocol dissector infinite loops.
+  * DBS Etherwatch file parser crash.
+  * Ciscodump extcap crash.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.7.html
+
+-------------------------------------------------------------------
+Tue Jun 16 16:18:46 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Fix post-build-checks: 50-check-permission failure (bsc#1263098)
+
+-------------------------------------------------------------------
 Wed May 20 07:17:31 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.6
@@ -94,6 +118,11 @@ Mon Nov 24 09:39:09 UTC 2025 - Robert Frohl <rfrohl@suse.com>
   * CVE-2025-13499: Kafka dissector crash (bsc#1254108).
 - Many more features, bug fixes and updated protocol support as listed in:
   https://www.wireshark.org/docs/relnotes/wireshark-4.6.1.html
+
+-------------------------------------------------------------------
+Sat Nov 22 21:41:25 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
+
+- Remove unused BuildRequires: update-desktop-files.
 
 -------------------------------------------------------------------
 Wed Oct 15 13:12:46 UTC 2025 - Robert Frohl <rfrohl@suse.com>

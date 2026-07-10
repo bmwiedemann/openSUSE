@@ -2125,4 +2125,20 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.6.6</comment>
     <requestid>1354178</requestid>
   </revision>
+  <revision rev="250" vrev="2">
+    <srcmd5>fa8168f2562340edac74e90f890e5b03</srcmd5>
+    <version>4.6.6</version>
+    <time>1781879390</time>
+    <user>anag_factory</user>
+    <comment>bsc#1263098</comment>
+    <requestid>1360002</requestid>
+  </revision>
+  <revision rev="251" vrev="1">
+    <srcmd5>36efc4d37bb9cde632eecad54b71b3dd</srcmd5>
+    <version>4.6.7</version>
+    <time>1783697642</time>
+    <user>anag_factory</user>
+    <comment>wireshark 4.6.7</comment>
+    <requestid>1364681</requestid>
+  </revision>
 </revisionlist>
