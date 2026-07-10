@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 06:45:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 5.2.16
+  * CVE-2026-48588: Potential exposure of private data via cached
+    Set-Cookie response (bsc#1271029)
+  * CVE-2026-53877: Heap buffer over-read in GDALRaster (bsc#1271030)
+  * CVE-2026-53878: Header injection possibility since
+    DomainNameValidator accepted newlines in input (bsc#1271031)
+
+-------------------------------------------------------------------
 Tue Jun  9 12:19:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.15

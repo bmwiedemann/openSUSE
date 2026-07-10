@@ -1555,4 +1555,17 @@
     padding in Vary header (bsc#1267577)</comment>
     <requestid>1358178</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>9fa509754576bd5ce21b90458e96cd28</srcmd5>
+    <version>5.2.16</version>
+    <time>1783697604</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.16
+  * CVE-2026-48588: Potential exposure of private data via cached
+    Set-Cookie response (bsc#1271029)
+  * CVE-2026-53877: Heap buffer over-read in GDALRaster (bsc#1271030)
+  * CVE-2026-53878: Header injection possibility since
+    DomainNameValidator accepted newlines in input (bsc#1271031)</comment>
+    <requestid>1364659</requestid>
+  </revision>
 </revisionlist>
