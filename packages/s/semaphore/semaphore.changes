@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:44:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.25:
+  * 7c3789c fix(runners): close connections
+- Update to version 2.18.24:
+  Not released
+- Update to version 2.18.23:
+  * 74d8dd5 feat(ui): placeholder for enterprise storages
+- Update to version 2.18.22:
+  * debf7a0 feat(ui): return extra vars for secrets
+- Update to version 2.18.21:
+  * feat: secure flag for session when https enabled
+
+-------------------------------------------------------------------
 Mon Jul 06 05:19:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.20:
