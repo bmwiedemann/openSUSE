@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jun 19 09:56:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.40.1
+  * copy object fix by @TingDaoK in (#864)
+- from version 0.40.0
+  * Update aws-crt-builder to v0.9.93 by @sfod in (#860)
+  * Support s2n-tls on macOS by @sfod in (#855)
+  * Fix: Zero-initialize m_metricsStorage in Mqtt5ClientOptions
+    by @rakshil14-2 in (#861)
+  * Update submodules by @sfod in (#862)
+
+-------------------------------------------------------------------
 Thu Jun  4 11:21:11 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.39.1
