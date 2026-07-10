@@ -520,4 +520,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Add gpu firmwares for Shikra chipset</comment>
     <requestid>1361043</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>1d4e7e6b63b79155d7c0fa25a092a287</srcmd5>
+    <version>20260629</version>
+    <time>1783697784</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260629 (git commit 3ee099cd4a20):
+  * qcom: add LPAICP firmware for shikra platform
+- Update aliases</comment>
+    <requestid>1364847</requestid>
+  </revision>
 </revisionlist>

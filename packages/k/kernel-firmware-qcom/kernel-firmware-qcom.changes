@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:25:05 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260629 (git commit 3ee099cd4a20):
+  * qcom: add LPAICP firmware for shikra platform
+- Update aliases
+
+-------------------------------------------------------------------
 Mon Jun 22 08:59:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260619 (git commit 37976b9ded44):
