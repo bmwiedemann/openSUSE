@@ -499,6 +499,8 @@ test ${rl1[2]}.${rl2[2]} = %{rl_version} || exit 1
   %make_build $makeopts "$profilecflags" all
   %make_build $makeopts -C examples/loadables/
   %make_build $makeopts -C po/ update-po
+  REPRO_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "+%%Y-%%m-%%d %%H:%%M+0000")
+  sed -i -e "s|PO-Revision-Date: .*|PO-Revision-Date: ${REPRO_DATE}\\\\n\"|" po/en@*.po
   %make_build $makeopts documentation
   grep -F '$'\' doc/bash.html %{nil:test for boo#1203091}
 

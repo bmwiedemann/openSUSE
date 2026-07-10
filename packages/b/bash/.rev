@@ -2202,4 +2202,12 @@ h. The `umask' builtin now has additional features for full POSIX conformance.</
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1360230</requestid>
   </revision>
+  <revision rev="207" vrev="8">
+    <srcmd5>2d8fec5c3821a02d25702c545e62048a</srcmd5>
+    <version>5.3.MACRO</version>
+    <time>1783697474</time>
+    <user>anag_factory</user>
+    <comment>- Add workaround for msginit which ignores SOURCE_DATE_EPOCH (boo#1268542)</comment>
+    <requestid>1364197</requestid>
+  </revision>
 </revisionlist>

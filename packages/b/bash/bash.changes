@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 08:39:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add workaround for msginit which ignores SOURCE_DATE_EPOCH (boo#1268542)
+
+-------------------------------------------------------------------
 Thu Jun 11 09:07:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add upstream patches
