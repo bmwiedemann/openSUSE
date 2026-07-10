@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:10:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.7
+  * Do not fail if seccomp sandboxing cannot be enabled on
+    unsupported systems.
+
+-------------------------------------------------------------------
+Fri Jul 10 08:38:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2.6
+  * Properly drop privileges in worker processes again (broken
+    since 2.2.0).
+
+-------------------------------------------------------------------
 Thu Jul  9 08:53:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.5
