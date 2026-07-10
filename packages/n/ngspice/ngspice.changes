@@ -1,8 +1,50 @@
 -------------------------------------------------------------------
+Mon Jun 29 12:17:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 46:
+  * Updates to BSIM4.
+  * Enable CIDER with KLU for DC, OP, and TRAN analyses.
+  * Support Exxx n1 n2 nc1 nc2 TABLE = (x0, y0, x1, y1, x2,
+    y2).
+  * Add analog code model astate, which reports previous states
+    of a node.
+  * Improve code model pwlts by adding breakpoints.
+  * new functions vec() and var() for .param expressions.
+  * Add variable deltacheck to measure the CKTdelta[0].
+  * Remove ancient IPC code.
+  * Update to VDMOS model.
+  * Equalise the last two time steps before a breakpoint.
+  * Update to diode model, especially for the sidewall diode.
+  * Enable optional voltage based truncation error correction.
+  * Add a function m3avg(vector) for filtering of trap ringing.
+  * Remove ngnutmeg from build list of old apps.
+  * Add filtering by moving window with function 'newvec =
+    mtimeavg(vec)'.
+  * If compat mode PS, GND is not declared as global, and is
+    not replaced inside of a subcircuit.
+  * New variable measureprec to set the number of digits for
+    'meas' outputs.
+  * Improve paramerization for V PULSE source.
+  * Add parameter m (multiplier), while translating from G or F
+    source to code model spice2poly.
+  * Allow Cd as a valid C reference designator for a capacitor.
+  * Prepare for binning of N devices.
+  * Add parameter numPeriod to 'fourier' command.
+  * FM and FC exchange place in the parameter sequence of SFFM
+    v and i source.
+  * Diode soft recovery model  with iterated charge node.
+  * 'linearize' command with new parameter np=xx, xx may be a
+    number or auto2n.
+  * update to the 'fft' command on scaling and frequency
+    binning.
+  * Remove 'skywater' option, replace by equivalent variable
+    'no_auto_braces'.
+
+-------------------------------------------------------------------
 Fri Aug  9 23:20:41 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 43:
-  
+
   * Configure options KLU, OSDI, readline, OpenMP, and XSPICE have
     been defined as standard.
   * The VBIC bipolar model has bee significantly updated.
@@ -152,13 +194,13 @@ Mon Aug 16 02:27:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
   * New features:
     + Libtool version info for shared ngspice
     + Version info in sharedspice.h.
-    + Replace double braces {{...}} by {(...)} in netlist (PSLT 
+    + Replace double braces {{...}} by {(...)} in netlist (PSLT
       mode).
     + Add plotting of graphics in SVG format.
     + Setting variable 'nounits' allows suppressing the unit in a
       graph.
     + Update of macOS configure script.
-    + In sharedspice API, convert all boolean variables to type 
+    + In sharedspice API, convert all boolean variables to type
       integer for C++ compatibility.
     + Add geometry scaling to diode device model (level 3).
     + In PS mode exp function is limited to exp(14).
@@ -172,7 +214,7 @@ Mon Aug 16 02:27:21 UTC 2021 - Andrés B.S. <andresbs@opensuse.org>
     + For C and R devices enable value tokens like 4k7 or 1u2
       in addition to 4.7k and 1.2u.
     + New XSPICE pswitch for internally replacing the vswitch.
-    + Within a single run, allow multiple PS or SVG plots with 
+    + Within a single run, allow multiple PS or SVG plots with
       different names.
     + Don't replace a device model name by a parameter,
       if both have the same names.
@@ -302,7 +344,7 @@ Tue Dec  5 15:22:21 UTC 2017 - eich@suse.com
 - Build shared library version of ngspice using the multibuild
   feature.
   Building the shared library version of ngspice requires a separate
-  build which doesn't build the binaries and doesn't allow to build 
+  build which doesn't build the binaries and doesn't allow to build
   with the X Window System UI.
   Also it requires the package to be split in several sub-packages:
   * a package containing most of the ngspice binaries.
@@ -323,11 +365,11 @@ Tue Dec  5 14:20:39 UTC 2017 - eich@suse.com
   * --enable-relpath configure flag to set preprocessor flag HAS_RELPATH
   *    sets search path for spinit relativ to current directory
   * The search path for .spiceinit is: current dir, HOME dir, USERPROFILE dir
-  * new function stddev to calculate the standard deviation of all elements 
+  * new function stddev to calculate the standard deviation of all elements
     of a vector
   * xspice digital n-input x m-output look-up table gate
   * xspice digital model d_lut (digital n-input look-up table gate)
-  * add variable $sharedmode (if shared ngspice is running), to be used in 
+  * add variable $sharedmode (if shared ngspice is running), to be used in
     scripts
   * enable msys2 for mingw compilation
   * OMP support for bsim3v3.24 model
@@ -335,25 +377,25 @@ Tue Dec  5 14:20:39 UTC 2017 - eich@suse.com
   * OMP support for BSIM4.5 model
   * update and extension of command 'wrdata'
   * option xmu to set damping in trapezoid integration
-  * command 'linearize' will take time data from transient analysis vector if 
+  * command 'linearize' will take time data from transient analysis vector if
     no circuit is loaded
   * two new commands: edisplay and eprvcd
   *     'edisplay' will show a list of all event nodes
   *     'eprvcd' will print all event nodes in vcd format
   * XSPICE 2D and 3D table models
-  * add variable 'batchmode' which is set when command line option `-b' is 
+  * add variable 'batchmode' which is set when command line option `-b' is
     active
   * enable backquote substitution for Visual Studio console apps
   * update how-to-ngspice-vstudio.txt
-  * update visualc directory and project files, add XSPICE code model 
+  * update visualc directory and project files, add XSPICE code model
     generation by VS2015
-  * allow access to 4 GB memory of 32 bit ngspice on 64 bit Windows, 8 TB for 
+  * allow access to 4 GB memory of 32 bit ngspice on 64 bit Windows, 8 TB for
     64 bit ngspice
   * new variable `interactive'
   * xspice, introduce cm_message_printf()
   * add variable `width' to command "print line ..."
   * support msys2
-  * favor exponential temperatur equation if all parameters tc1, tc2 and tce 
+  * favor exponential temperatur equation if all parameters tc1, tc2 and tce
     are given for R
   * move libfftw3 sideways out of the ngspice tree
   * remove visual studio 2008 .vcproj files
@@ -367,7 +409,7 @@ Tue Dec  5 14:20:39 UTC 2017 - eich@suse.com
   * extend qa test to hisimhv version 2
   * update hisimhv model to version 2.2.0
   * update hisim model to version 2.8.0
-  * .control variable "sqrnoise" to deliver noise data in squared 
+  * .control variable "sqrnoise" to deliver noise data in squared
     representation
   * noise analysis, deliver results in V/sqrt(Hz) and A/sqrt(Hz)
   * add delvt0 for bsim4 models
@@ -439,7 +481,7 @@ Sat Apr  6 12:25:57 UTC 2013 - werner.ho@gmx.de
 Wed Aug 29 22:14:11 UTC 2012 - scorot@free.fr
 
 - fix build for i586
-- spec file reformating 
+- spec file reformating
 
 -------------------------------------------------------------------
 Sun Feb  5 08:59:25 UTC 2012 - werner.ho@gmx.de
@@ -447,54 +489,54 @@ Sun Feb  5 08:59:25 UTC 2012 - werner.ho@gmx.de
 - new version ngspice 24
 
 -------------------------------------------------------------------
-Mon Jun  6  12:00:00 UTC 2011 Werner Hoch <werner.ho@gmx.de>
+Mon Jun  6 12:00:00 UTC 2011 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 23
 
 -------------------------------------------------------------------
-Thu Oct 14 12:00:00 UTC 2010 Werner Hoch <werner.ho@gmx.de>
+Thu Oct 14 12:00:00 UTC 2010 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 22
 
 -------------------------------------------------------------------
-Mon Jun 21 12:00:00 UTC 2010 Werner Hoch <werner.ho@gmx.de>
+Mon Jun 21 12:00:00 UTC 2010 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 21
 - removed info pages, added pdf manual
 
 -------------------------------------------------------------------
-Sun Dec 20 12:00:00 UTC 2009 Werner Hoch <werner.ho@gmx.de>
+Sun Dec 20 12:00:00 UTC 2009 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 20
 
 -------------------------------------------------------------------
-Sun Nov 15 12:00:00 UTC 2009 Werner Hoch <werner.ho@gmx.de>
+Sun Nov 15 12:00:00 UTC 2009 - Werner Hoch <werner.ho@gmx.de>
 - packaging fix
 
 -------------------------------------------------------------------
-Thu Dec 16 12:00:00 UTC 2008 Werner Hoch <werner.ho@gmx.de>
+Thu Dec 16 12:00:00 UTC 2008 - Werner Hoch <werner.ho@gmx.de>
 
 - new version 18
 - removed build options for older distributions
 
 -------------------------------------------------------------------
-Mon Jun 18 12:00:00 UTC 2007 Werner Hoch <werner.ho@gmx.de>
+Mon Jun 18 12:00:00 UTC 2007 - Werner Hoch <werner.ho@gmx.de>
 
 - added setlibpath_spinit.in.patch for x86_64
   that fixes the load of xspice codemodels
 
 -------------------------------------------------------------------
-Tue Sep 12 12:00:00 UTC 2006 Werner Hoch <werner.ho@gmx.de>
+Tue Sep 12 12:00:00 UTC 2006 - Werner Hoch <werner.ho@gmx.de>
 
 - enabled xspice extentions
 
 -------------------------------------------------------------------
-Wed Aug 30 12:00:00 UTC 2006 Werner Hoch <werner.ho@gmx.de>
+Wed Aug 30 12:00:00 UTC 2006 - Werner Hoch <werner.ho@gmx.de>
 
 - added %%{FORTRAN_GCC} decision
 
 -------------------------------------------------------------------
-Sun Aug 27 12:00:00 UTC 2006 Werner Hoch <werner.ho@gmx.de>
+Sun Aug 27 12:00:00 UTC 2006 - Werner Hoch <werner.ho@gmx.de>
 
 - first spec file
 
