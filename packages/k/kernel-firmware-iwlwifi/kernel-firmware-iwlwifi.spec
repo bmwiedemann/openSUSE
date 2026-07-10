@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -524,6 +524,8 @@ Supplements:    modalias(pci:v00008086d0000A840sv*sd00000510bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00000A10bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00001671bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00001672bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001735bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000A840sv*sd00001736bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00001771bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00001772bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000A840sv*sd00001775bc*sc*i*)
@@ -547,8 +549,9 @@ This package contains kernel firmware files for Intel wireless drivers.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh iwlwifi < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh iwlwifi < WHENCE-dist > WHENCE
+
 %if 0%{?suse_version} < 1599
 # revive old iwlwifi firmware for compatibility (bsc#1209681)
 cat %{_sourcedir}/extrawhence-sle15 >> WHENCE
@@ -563,6 +566,7 @@ cp %{_sourcedir}/iwlwifi-*.ucode .
 scripts/install-licenses.sh iwlwifi %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} iwlwifi < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}
