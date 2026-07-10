@@ -18,7 +18,7 @@
 
 %define sover 2
 Name:           libmpdclient
-Version:        2.25
+Version:        2.26
 Release:        0
 Summary:        Library for interfacing the Music Player Daemon
 License:        BSD-2-Clause AND BSD-3-Clause
@@ -29,7 +29,6 @@ Source1:        https://musicpd.org/download/%{name}/%{sover}/%{name}-%{version}
 Source2:        %{name}.keyring
 Source3:        doxygen-nodatetime-footer.html
 Patch0:         %{name}-doxygen_nodatetime.patch
-Patch1:         %{name}-ncmpc.patch
 BuildRequires:  check-devel
 BuildRequires:  doxygen
 BuildRequires:  meson

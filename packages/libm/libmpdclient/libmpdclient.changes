@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 19:34:31 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 2.26
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.26/NEWS
+  * Fixed NULL pointer dereference in mpd_song_dup() (libmpdclient-ncmpc.patch).
+
+-------------------------------------------------------------------
 Mon Jun 29 11:42:28 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Added libmpdclient-ncmpc.patch (boo#1269509).
@@ -7,7 +14,7 @@ Mon Jun 29 11:42:28 UTC 2026 - Илья Индиго <ilya@ilya.top>
 Sun Jun 21 10:24:06 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated to 2.25
-  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.22/NEWS
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.25/NEWS
   * Supported MPD protocol 0.25.0
     * stringnormalization
     * song properties "RealUri", "start_ms", "end_ms"

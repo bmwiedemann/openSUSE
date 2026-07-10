@@ -144,4 +144,14 @@
     <comment>- Added libmpdclient-ncmpc.patch (boo#1269509).</comment>
     <requestid>1362409</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>54c39ed4de60c44ba7b8f719b037268f</srcmd5>
+    <version>2.26</version>
+    <time>1783697858</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.26
+  * https://raw.githubusercontent.com/MusicPlayerDaemon/libmpdclient/v2.26/NEWS
+  * Fixed NULL pointer dereference in mpd_song_dup() (libmpdclient-ncmpc.patch).</comment>
+    <requestid>1364782</requestid>
+  </revision>
 </revisionlist>
