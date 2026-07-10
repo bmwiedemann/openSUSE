@@ -95,4 +95,12 @@
     <comment>Add aliases that MLM's xmlsec needs</comment>
     <requestid>1364693</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>09091f01ef5ef94814e0218c01663e33</srcmd5>
+    <version>7.2.1</version>
+    <time>1783697989</time>
+    <user>anag_factory</user>
+    <comment>Add the right aliases</comment>
+    <requestid>1364808</requestid>
+  </revision>
 </revisionlist>

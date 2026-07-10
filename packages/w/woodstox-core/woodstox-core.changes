@@ -1,8 +1,8 @@
 -------------------------------------------------------------------
 Thu Jul  9 10:17:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Alias the artifact to com.fasterxml.woodstox:woodstox-core-asl
-  and to com.fasterxml.woodstox:woodstox-core-lgpl for packages
+- Alias the artifact to org.codehaus.woodstox:woodstox-core-asl
+  and to org.codehaus.woodstox:woodstox-core-lgpl for packages
   that require these variants
 
 -------------------------------------------------------------------
