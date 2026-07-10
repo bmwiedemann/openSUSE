@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:38:21 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
+
+- Version 2.6.5 
+  * The required minimum python3 version has risen from 3.8 to 3.9.
+  * vdu_controls now defaults to a _single-instance_ mode. Subsequent launches 
+    focus the existing window. Uncheck the _single-instance_ option to override. 
+    Contributed by Mohammed Elsayed Ahmed.
+  * The ambient-light-level slider works even if location is not set.
+  * The ambient-light-level slider behaves better when dragged after sunset 
+    and when dragged beyond the estimated solar lux level.
+  * The laptop-panel option now defaults to enabled.
+  * The Settings-Dialog global-options have been grouped under subheadings.
+  * The Settings-Dialog offers more popup-guidance on dependencies 
+    between options.
+  * The Light-Metering-Dialog includes two profile starter-templates.
+    One for older monitors and one for newer monitors.
+  * The layout of the Preset and Light-Metering dialogs better reflect
+    the new style of the main panel.
+  * The system-tray icon is now primarily monochrome.
+  * The program-icon and splash-screen icons have been redesigned and 
+    reimplemented as scalable vector graphics. The new program-icon is theme aware.
+  * Tick marks on control-sliders are now optional, see Settings-Dialog -> tick-marks.
+  * The right-mouse action that could irretrievably hide the toolbar has been
+    disabled.
+  * An Online-Help button has been added to the Help-Dialog and About-Dialog.
+  * When parsing monitor metadata, if the same VCP-feature-code is 
+    defined multiple times, the first definition is kept and any following 
+    definitions are logged (rather than silently overwriting the first). 
+    This allows some monitors with incorrect metadata to work out-of-the-box.
+    Contributed by Mohammed Elsayed Ahmed.
+  * When parsing monitor metadata, well known "Continuous" VCP-feature 
+    definitions, such as brightness, will always be regarded as "Continuous".
+    Any attached 'Value:' metadata that implies otherwise will be ignored
+    (with a warning logged).  Contributed by Mohammed Elsayed Ahmed.
+    This allows some monitors with incorrect metadata to work out-of-the-box.
+  * The protect NVRAM option has been made mandatory.
+  * A cascade-guard has been added to protect NVRAM from cascading writes  
+    due to application, driver, or hardware bugs (or _cats on keyboards_).
+    If the application or user sets a VDU feature more than 20 times in 65
+    seconds, an error-popup blocks further attempts until dismissed.
+  * The script's source code has been refactored into multiple source files.
+  * The executable is now a Python _zipapp_ containing the source hierarchy.
+  * The included set of language-translations has been expanded. All of 
+    the translations have been generated for testing purposes and may not 
+    be accurate.  Layouts now correctly handle right-to-left langauages.
+
+-------------------------------------------------------------------
 Sun Apr 19 20:44:43 UTC 2026 - Michael Hamilton <michael@actrix.gen.nz>
 
 - Version 2.6.0
