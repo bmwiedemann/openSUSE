@@ -2147,4 +2147,17 @@
   * GO-2026-5803 CVE-2026-48752 GHSA-vxp5-584q-c479 (forwarded request 1364585 from jfkw)</comment>
     <requestid>1364600</requestid>
   </revision>
+  <revision rev="99" vrev="1">
+    <srcmd5>5f9731d00664936fc2d4c74700ae8f63</srcmd5>
+    <version>0.0.20260708T170500</version>
+    <time>1783697881</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260708T170500 2026-07-08T17:05:00Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-4970 CVE-2026-39822
+  * GO-2026-5856 CVE-2026-42505
+  * GO-2026-5932 (forwarded request 1364786 from jfkw)</comment>
+    <requestid>1364787</requestid>
+  </revision>
 </revisionlist>
