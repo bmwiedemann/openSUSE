@@ -296,4 +296,64 @@
     <comment></comment>
     <requestid>1357160</requestid>
   </revision>
+  <revision rev="37" vrev="25">
+    <srcmd5>08d437af3f87fca03627b1c85e07ed65</srcmd5>
+    <version>unknown</version>
+    <time>1782916741</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362759</requestid>
+  </revision>
+  <revision rev="38" vrev="26">
+    <srcmd5>4c5cdd845fb614d5fe905081dd0385fa</srcmd5>
+    <version>unknown</version>
+    <time>1783698283</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.3
+  * https://github.com/OpenRCT2/OpenRCT2/releases/tag/v0.5.3
+  * Feature: [#26308] Add all new track pieces to the inverted
+    roller coaster.
+  * Feature: [#26442] Add cheat to disable grass growing.
+  * Improved: [#7921] On Linux, RCT2 and RCT1 installs in Wine
+    are now automatically detected.
+  * Improved: [#26325] Changing the train type, length, or
+    direction no longer resets the number of laps if there is just
+    one train.
+  * Improved: [objects#437] Re-order St. Basil’s Cathedral pieces
+    to be more consistent.
+  * Change: [#26689] A clear scenario editor can now be opened
+    directly from the command line.
+  * Change: [objects#439] Drop numbers from Wacky Worlds scenery
+    descriptions.
+  * Fix: [#24613] Incorrect sprites drawn for path elements
+    without a valid object.
+  * Fix: [#26323] Ride stats do not reset when changing the number
+    of trains changes the number of laps.
+  * Fix: [#26494] The limits for where walls on the path side of
+    the first tile block the view of rides/scenery are wrong
+    (original bug).
+  * Fix: [#26504] The boosts/penalties to excitement and nausea
+    that air time provides are calculated wrong.
+  * Fix: [#26545] Game crashes when plugin API function
+    generateGuest fails to generate a guest.
+  * Fix: [#26578] Crash when drawing path elements without
+    a valid object.
+  * Fix: [#26605] Desync when placing a track design
+    in multiplayer.
+  * Fix: [#26654] Fix Alton Towers stall and Rock’n’Roll Revival
+    toilet being closed on scenario start.
+  * Fix: [#26722] Missing construction rights owned on
+    UCES Sand Dune scenario.
+  * Fix: [objects#411] Some colours in green, acid green, pink and
+    red water are inconsistent with natural water.
+  * Fix: [objects#436] St. Basil’s Cathedral building pieces are
+    incorrectly labelled as “Kremlin” pieces.
+  * Fix: [objects#438] Some walls are not marked as see-through
+    while they don’t fully block the view.
+  * Fix: [objects#440] Inconsistencies in scenario/park
+    name capitalisation.
+- Update dependencies
+  * objects_version 1.7.10 (1.7.9) (forwarded request 1364621 from Kieltux)</comment>
+    <requestid>1364885</requestid>
+  </revision>
 </revisionlist>
