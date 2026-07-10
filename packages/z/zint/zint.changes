@@ -1,0 +1,435 @@
+-------------------------------------------------------------------
+Wed Jul  1 18:20:38 UTC 2026 - munix9@googlemail.com
+
+- Add baselibs.conf for zxing-cpp < gstreamer < wine
+- Add %check/%ctest section
+
+-------------------------------------------------------------------
+Sat Dec 20 20:40:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.16
+  Incompatible changes:
+  * In `UNICODE_MODE`, ECI 899 Binary input now interpreted as UTF-8 (previously
+  treated as-is, i.e. as binary bytes - this now requires `DATA_MODE`)
+  * Buffer length of member `errtxt` in `zint_symbol` extended 100 -> 160
+  (client buffers may need checking/extending)
+  * New `content_segs` & `content_seg_count` fields in `zint_symbol` for use with
+  new output option `BARCODE_CONTENT_SEGS`
+  * Symbol structure members `option_1`, `option_2` and `option_3` now updated
+  after `ZBarcode_Encode()` and variants are called, and there are three new
+  methods in the Qt Backend to access to them
+  * New Qt Backend method `isBindable()` for new flag `ZINT_CAP_BINDABLE`
+  * New Qt Backend methods `gs1SyntaxEngine()`, `setGS1SyntaxEngine()` and
+  `haveGS1SyntaxEngine()` to access newly added GS1 Syntax Engine support
+  * GS1 Composites now return warning if CC type upped from requested due to size
+  of composite data
+  * EAN-8 with add-on now returns warning that it's non-standard
+  * UPC-E now returns warning if first digit of 7 digits ignored (not '0' or '1')
+  * For GS1 Composite, no primary (linear component) now returns
+  `ZINT_ERROR_INVALID_DATA` (previously returned `ZINT_ERROR_INVALID_OPTION`)
+  Changes:
+  * Add new `BARCODE_CONTENT_SEGS` option for `output_options` which sets new
+  fields `content_segs` and `content_seg_count` with encoded data
+  (pre-converted, i.e. UTF-8 unless input mode is `DATA_MODE`)
+  * Add API funcs `ZBarcode_UTF8_To_ECI()` and `ZBarcode_Dest_Len_ECI()`
+  * Set `option_1`, `option_2`, `option_3` to values used in encodation, and add
+  new access methods `encodedOption1()` etc. to Qt Backend, and use in GUI to
+  provide better feedback
+  * AZTEC: give more precise warnings in low ECC situations, and indicate via
+  `option_1` by setting to -1 (min 3 words), 0 (<5% + 3 words)
+  * Better warning messages on non-compliant heights
+  * composite: warn if CC type upped from requested
+  * gs1: csumalpha: improve warning, report both chars (ticket #332, props Harald
+  Oehlmann)
+  * New `ZBarcode_Cap()` flag `ZINT_CAP_BINDABLE`, differentiated from
+  `ZINT_CAP_STACKABLE`, and new Qt Backend method `isBindable()`
+  * DOTCODE: now pads rows if given number of columns instead of failing if rows
+  below min (5)
+  * EAN-8 + add-on: warn as non-compliant
+  * UPC-E: warn if first digit of 7 (or 8 if check digit given) not '0' or '1'
+  * Extend `errtxt` buffer 100 -> 160
+  * Add new symbologies `BARCODE_EAN8`, `BARCODE_EAN_2ADDON`,
+  `BARCODE_EAN_5ADDON`, `BARCODE_EAN13`, `BARCODE_EAN8_CC` and
+  `BARCODE_EAN13_CC` as replacements for `BARCODE_EANX`, `BARCODE_EANX_CHK` and
+  `BARCODE_EANX_CC` and use in CLI/GUI (`BARCODE_EANX` etc. marked as legacy)
+  * For EAN/UPC accept space as alternative add-on separator to '+', and accept
+  GTIN-13 format with & without 2-digit or 5-digit add-on (no separator)
+  * GS1PARENS_MODE: allow parentheses in AI data if backslashed (necessary for
+  opening parentheses, optional for closing ones)
+  * Prefix all `INTERNAL` funcs/tables with `zint_`, except for those in
+  "backend/common.h", which are prefixed by `z_` - makes symbol clashes more
+  unlikely when zint is statically linked (ticket #337, props Ulrich Becker)
+  * Add support for GS1 Syntax Engine with new `input_mode` flag
+  `GS1SYNTAXENGINE_MODE` (CLI --gs1strict, GUI "GS1 Strict" checkbox)
+  * GS1_MODE: allow GS1 Digital Link URIs (no validation unless
+  `GS1SYNTAXENGINE_MODE` set)
+  * CLI: --gs1parens, --gs1nocheck and --gs1strict now imply --gs1
+  * GS1: new AIs 717 (GSCN 25-199) and 8040-3 (GSCN 25-047)
+  Fixes:
+  * CODABLOCKF: fix misencodation of extended ASCII 0xB0-0xB9 when followed by
+  digit (ignore 2nd byte of FNC4 when categorizing Code C characters)
+  * AZTEC: fix GS1 mode with Structured Append (wasn't outputting initial FNC1)
+  * ECI: ECI 899 in UNICODE_MODE wasn't being converted from UTF-8, which was
+  inconsistent
+  * set_height: fix non-compliance false positives by using epsilon in checks
+  * UPU_S10: fix Service Indicator warning re "H" (ticket #331, props Milton Neal)
+  * CLI: fix `separator` check to use new `ZINT_CAP_BINDABLE` instead of
+  `ZINT_CAP_STACKABLE`
+  * ZBarcode_Cap: add missing symbologies to `ZINT_CAP_BINDABLE` (was
+  `ZINT_CAP_STACKABLE`)
+  * MAILMARK_2D: fix postcode validation: no limited alphanumerics, spaced-out
+  DPS "outward"-only allowed, all-blank DPS allowed (ticket #334, props Milton
+  Neal)
+  * DOTCODE: fix padding allowance to cover cases with large no. of columns
+  requested and little data, to prevent buffer overflow
+  * manual/man page: fix DATAMATRIX Sizes tables "28 12x26" -> "27 12x26"
+
+-------------------------------------------------------------------
+Thu Mar 13 09:44:21 UTC 2025 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.15. Check the Changelog file for older changes.
+  Changes since 2.14:
+  * 2.14 regression fix: CODE128: start code no longer omitted
+    for data starting with numerics followed by extended ASCII
+    (Latin-1)
+  Incompatible changes:
+  * New `text_length` field in `symbol`
+  Changes:
+  * iso4217: remove 191 (HRK), 694 (SLL), 931 (CUC); add 926 (VED)
+  * Add `text_length` (length of `text`) to `zint_symbol`
+  * PLESSEY: add show default check characters option
+  Fixes:
+  * CODE128: fix 2.14.0 regression (see above), never start in mode C1
+  * CODE32: ignore `option_2` (check digit options)
+  * PZN: ignore `option_2` (check digit options) except for indicates PZN7 only
+  * DPD: exclude DEL from ident tag also
+  * out_maybe_mkdir: fix `utf8_to_wide()` return (Windows only)
+  * man page: fix Code 93 `--vers=1` hide -> show default check digits
+
+-------------------------------------------------------------------
+Wed Jan 10 13:00:23 UTC 2024 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 2.13.0
+  - Incompatible changes
+    * Buffer lengths of members `fgcolour` and `bgcolour` in `zint_symbol` extended
+      10 -> 16 to allow for "C,M,Y,K" comma-separated decimal percentage strings
+    * CMYK values for EPS (slightly) and TIF (significantly) have changed - now use
+      the same RGB -> CMYK formula
+    * Text (HRT) placement for vector (EMF/EPS/SVG) output changed - for EAN/UPC
+      slightly further away from barcode, for all others slightly nearer. Some
+      horizontal alignments of EAN/UPC vector text also tweaked
+    * Text (HRT) for standalone EAN-2 and EAN-5 now at top of symbol
+      (was at bottom)
+    * Text height (font size) for SMALL_TEXT vector output reduced
+    * For Windows, filenames are now assumed to be UTF-8 encoded. Affects `outfile`
+      in `zint_symbol` and all API filename arguments
+    * Never-used `fontsize` member removed from `zint_symbol`
+    * Buffer length of member `text` (HRT) in `zint_symbol` extended 128 -> 200
+      (client buffers may need checking/extending)
+    * Font of text of SVG vector output now "OCRB, monospace" (EAN/UPC) or
+      "Arimo, Arial, sans-serif" (all others)
+      (was "Helvetica, sans-serif" for both)
+    * Unintended excess horizontal whitespace of Composite symbols removed, and
+      quiet zone settings respected exactly, and centring of HRT (if any) now
+      relative to linear part of symbol only rather than whole symbol
+    * Unlikely-to-be-used `bitmap_byte_length` member removed from `zint_symbol`
+      (was only set on BMP output to length of BMP pixel array)
+    * EXCODE39 now defaults to displaying check digit in Human Readable Text (HRT)
+    * GS1_128 now warns if data > 48 (GS1 General Specifications max)
+  - Changes
+    * BMP/EMF/EPS/GIF/PCX/PNG/SVG/TIF/TXT: check for errors on writing to output
+      file (ticket #275)
+    * manual/man page: document octal escape; Code 128 subset/mode -> Code Set
+    * Add special symbology-specific escape sequences (Code 128 only) for manual
+      Code Set switching via `input_mode` flag `EXTRA_ESCAPE_MODE` (CLI --extraesc)
+      (ticket #204)
+    * GUI: disable "Reset" colour if default; add "Unset" to Printing Scale dialog
+      (allows unsetting of X-dim/resolution settings without having to zap)
+    * API/CLI/GUI: allow foreground/background colours to be specified as
+      comma-separated decimal percentage strings "C,M,Y,K" where "C", "M" etc. are
+      0-100 (ticket #281, 3rd point)
+    * PCX: add alpha support
+    * GUI: rearrange some Appearance tab inputs (Border Type <-> Width, Show Text
+      <-> Font, Text/Font <-> Printing Scale/Size) to flow more naturally;
+      save button "Save As..." -> "Save..." and add icon
+    * Add `text_gap` option to allow adjustment of vertical gap between barcode and
+      text (HRT)
+    * DAFT: up max to 250 chars
+    * CLI: use own (Wine) version of `CommandLineToArgvW()` to avoid loading
+      "shell32.dll"
+    * EAN/UPC: add quiet zone indicators option (API `output_options`
+      `EANUPC_GUARD_WHITESPACE`, CLI `--guardwhitespace`) (ticket #287)
+    * EAN-2/EAN-5: HRT now at top instead of at bottom for standalones, following
+      BWIPP
+    * EPS/SVG: use new `out_putsf()` func to output floats, avoiding trailing zeroes
+      & locale dependency
+    * EPS: simplify "TR" formula
+    * SVG: change font from "Helvetica, sans-serif" to "OCRB, monospace" for EAN/UPC
+      and "Arimo, Arial, sans-serif" for all others;
+      use single "<path>" instead of multiple "<rect>"s to draw boxes (reduces file
+      size)
+    * Add `EMBED_VECTOR_FONT` to `output_options` (CLI `--embedfont`) to enable
+      embedding of font in vector output - currently only for SVG output
+    * GUI: use "OCRB" font for EAN/UPC and "Arimo" for all others (was "Helvetica"
+      for both); add preview background colour option (default light grey) so as
+      whitespace will show up in contrast (access via preview context menu)
+    * CODE128/common: add `ZINT_WARN_HRT_TRUNCATED` warning
+    * QRCODE: better assert(), removing a NOLINT (2 left)
+    * CLI: add some more barcode synonyms for DBAR
+    * CMake: don't include png.c unless ZINT_USE_PNG (avoids clang warning)
+    * vector: reduce SMALL_TEXT font height 6 -> 5 to be more like raster;
+      reduce antialiasing allowance for `textoffset`;
+      adjust text to baseline using values for Arimo rather than percentage
+    * manual: expand size/alpha details in Section "5.4 Buffering Symbols in Memory
+      (raster)" (cf ticket #291); add BSD info
+    * EXCODE39: change to display check digit in HRT by default
+    * CODE39/EXCODE39/LOGMARS: new hidden check digit option
+    * GUI: move some symbology-specific options into Data Tab so separate tab
+      unnecessary
+    * DATAMATRIX: add `DM_ISO_144` (--dmiso144) option for ISO placement of ECC
+      codewords instead of default "de facto"
+    * manual: add annexes on Qt and Tcl backends
+    * CODE128: increase no. symbol chars max 60 -> 99
+    * frontend: truncate overlong `--primary` instead of ignoring
+    * man page: list size detail for matrix symbols (`--vers`)
+    * CODE11/C25XXX/CODE39/EXCODE39/HIBC_39/CODE93/CODABAR/PLESSEY/MSI_PLESSEY/FLAT/
+      DAFT/TELEPEN/TELEPEN_NUM: increase allowed lengths
+    * API: add `ZBarcode_Reset()` to fully restore `zint_symbol` to default state
+  - Bugs
+    * CEPNET: fix no HRT (library: `has_hrt()`)
+    * man page: fix Code 11 check digit info
+    * CMake: allow ctest to be run without having to install zint or manually set
+      LD_LIBRARY_PATH and PATH (ticket #279, props Alexey Dokuchaev)
+    * GUI: fg/bgcolor text edit: fix right-click context menu not working properly
+      by checking for it on FocusOut
+    * GUI: fix fg/bgcolor icon background not being reset on zap
+    * EMF/EPS/SVG/GUI: ignore BOLD_TEXT for EAN/UPC
+    * EMF/EPS/SVG: fix addon bars placement/length when text hidden
+    * For Windows, assume `outfile` & API filename args are in UTF-8,
+      & use xxxW() APIs accordingly, ticket #288, props Marcel
+      **Backwards-incompatible change**
+    * GUI: fix `save_to_file()` `filename.toLatin1()` -> `toUtf8()`
+    * CLI: batch mode: don't close input if stdin
+    * EAN/UPC: fix excess 1X to right of add-ons
+    * Composites: fix excess whitespace; fix quiet zone calcs to allow for linear
+      shifting
+    * GUI: fix not enabling font combo "Small Bold (vector only)" by default
+    * CODEONE: fix S/T quiet zone 1X bottom (props BWIPP issue #245 doc)
+    * EAN-2/EAN-5: fix `BARCODE_BIND_TOP/BIND/BOX` output
+    * library: fix 21-bit Unicode conversion in `escape_char_process()`; fix
+      restricting escaped data length by using de-escaped length to check
+    * AZTEC: fix out-of-bounds crash when user-specified size given, ticket #300,
+      props Andre Maute; fix 4-layer compact block max (76 -> 64); fix encoding of
+      byte-blocks > 11-bit limit
+    * CODABLOCKF: fix crash due to `columns` overflow, ticket #300, props Andre
+      Maute
+    * CODEONE: fix out-of-bounds crash in `c1_c40text_cnt()` and looping on latch
+      crash in `c1_encode()` and too small buffer for Version T, ticket #300, props
+      Andre Maute
+    * EANX_CC/UPCA_CC: fix crash in `dbar_date()` on not checking length and crash
+      in `gs1_verify()` on not checking length, ticket #300, props Andre Maute
+    * GS1_128_CC: fix divide-by-zero crash in `calc_padding_ccc()`, ticket #300,
+      props Andre Maute
+    * HANXIN: fix incorrect numeric costings (out-by-1) in `hx_in_numeric()`, ticket
+      #300 (#16), props Andre Maure
+    * PDF417: fix out-of-bounds crash in `pdf_text_submode_length()` and
+      out-of-bounds crash on overrunning string and codeword buffers, ticket #300,
+      props Andre Maute
+    * QRCODE: fix out-of-bounds crash due to incorrect mode costings for GS1
+      percents in `qr_in_alpha()`; fix incorrect numeric costings (out-by-1) in
+      `qr_in_numeric()`; ticket #300 (#14, #15; #16), props Andre Maute 
+
+-------------------------------------------------------------------
+Sun Dec 18 09:01:57 UTC 2022 - Christophe Marin <christophe@krop.fr>
+
+- Update to 2.12.0. Check the ChangeLog file for the full list of
+  changes
+  * bwipp_dump.ps: convert patch file to cat file as BWIPP now
+    honours `dontdraw` for composite symbologies
+  * DOTCODE, QRCODE, RMQR: return warning if ECI or Structured
+    Append used in GS1 mode, ticket #271
+  * CLI: improve `getopt_long_only()` processing, printing own
+    message if bad arg and returning error if so rather than
+    continuing to process
+  * PDF417/MICROPDF417: add optimized encoding, FAST_MODE for
+    previous; formatting changes
+  * common.c/h: add `cnt_digits()`; comments in include; minor
+    fiddling
+  * API/CLI/Tcl/GUI: new output option BARCODE_BIND_TOP / `--bindtop` / "Bind Top"
+  * DPD: add top boundary (width 3X) by default, using new
+    BARCODE_BIND_TOP; "relabel" option; some compliance checks
+  * manual: fuller DPD doc; some spelling typos, formatting
+  * cmake: fixes for static build and install directories, props
+    koprok
+  * NO_PNG -> ZINT_NO_PNG and new API function `Zint_NoPng()` to
+    determine if no PNG support in libzint; replace use in GUI
+    with backend_qt method `noPng()`
+  * API: add new zint_symbol `dpmm` field for output resolution
+    (BMP/EMF/PCX/PNG/TIF only, i.e. excluding EPS, GIF & SVG)
+  * Add support for specifying scale by X-dimension and resolution
+    with new option `--scalexdimdp` for CLI/Tcl & new API function
+    `ZBarcode_Scale_From_XdimDp()`
+    (plus `ZBarcode_XdimDp_From_Scale()` and `ZBarcode_Default_Xdim()`)
+    and new GUI popup
+  * BMP/EMF/PCX/PNG/TIF: use new `dpmm` resolution field (for EMF
+    following Inkscape)
+  * backend_qt: add `dpmm()`, `vectorWidth()`, `vectorHeight()`,
+    `noPng()`, `getVersion()`, `takesGS1AIData()`, & `XdimDp`
+    stuff incl. new `QZintXdimDp` struct for passing around scale
+    vars & use in `getAsCLI()`
+  * Raise `scale` limit to 200 (from 100) to allow for large dpmm
+  * output: create directories & subdirectories as necessary for
+    output path using new function `out_fopen()` and use in BMP/
+    EMF/EPS/GIF/PCX/PNG/SVG/TIF
+  * DPLEIT/DPIDENT: format HRT according to (incomplete)
+    documentation, and set default height to 72X (from 50X)
+  * CODE128B renamed to CODE128AB as can use subsets A and/or B
+  * MAILMARK: better error message if input < 14 characters
+  * GUI: add "Default" button for DAFT tracker ratio & enable/disable
+    various default buttons; use new `takesGS1AIData()` to
+    enable/disable GS1-specific checkboxes
+  * CLI: use new `validate_float()` to parse float options (7
+    significant digits allowed only, no scientific notation)
+  * CLI: mirror: use -o directory if any
+  * QRCODE/UPNQR: add FAST_MODE (try 4 not 8 masks automatically)
+  * GS1: add new AI 7011 (GSCN 22-163)
+  * Add new symbology BARCODE_MAILMARK_2D (Royal Mail 2D Mailmark),
+    renaming previous BARCODE_MAILMARK (Royal Mail 4-State Mailmark)
+    to BARCODE_MAILMARK_4S
+  * Add new symbology BARCODE_UPU_S10
+  * PZN: allow check digit to be given; add space after hyphen
+    in HRT PZN7 option
+  * backend_tcl: update TEA
+  * DATAMATRIX/GRIDMATRIX/PDF417/QR/ULTRA: micro-optimize
+    structapp ID parse
+  * library/CLI: fiddle with static asserts (make CHAR_BIT
+    sensitive, supposedly)
+  * win32/README: update building libpng (assembly removed)
+  * README.linux: document incompatibility of Qt6 >= 6.3
+  * manual: expand Barcode Studio waffle
+  * test suite: change range separator to hyphen and allow
+    multiple excludes
+
+-------------------------------------------------------------------
+Fri Sep  2 06:47:47 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+* Update to 2.11.1. Check the ChangeLog file for the full list of
+  changes
+  * GUI: sequence export dialog: add Postfix field for filename
+  * eci.c: replace libiconv-adapted code with own implementations
+    so as to fully comply with libzint's BSD license
+  * GUI: CODE39/EXCODE39: show/hide HIBC check digit option
+  * RMQR: update to ISO/IEC 23941:2022 - R13x77 numeric cclens
+    change 8 -> 7
+  * QRCODE: use stricter interpretation of ZINT_FULL_MULTIBYTE,
+    excluding certain trailing bytes
+  * GUI: foreground/background colours -> text boxes and icon buttons,
+    add swap button, independently movable picker (NULL parent),
+    preview colour changes, preview Data Window changes, add clear
+    data (del) buttons, add zap button and Factory Reset menu
+    option, various other fixes
+  * GUI: make acceptable for macOS; add iconset for macOS, install
+  * manual: update macOS Homebrew install info; add README.macos
+  * GUI: export window: add no. of sequences to results label
+  * frontend: batch: for @ use + instead of * on Windows as * not
+    allowed in filenames
+  * Add new symbology BC412 (SEMI T1-95)
+  * backend: use alloca() (z_alloca()) for both Unix and Windows
+  * GS1: new AI 4309 with latlong checker, new currency code 925
+  * GUI: add automatic info feedback to "Automatic" combo item of
+    size/row/height comboboxes
+  * PDF417: encodation now simpler and closer to ISO/IEC 15438:2015
+    Annex N algorithm, props Jeff Skaistis
+  * Add new symbology CEPNet
+
+-------------------------------------------------------------------
+Wed Jun  1 15:20:11 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.11.0. Check the ChangeLog file for the full list of
+  changes
+  * Incompatible changes:
+    + Add width to struct zint_vector_circle
+    + Check that scale/height/whitespace/border are reasonable values
+    + raster.c: Bug fix for heap-buffer-overflow
+    + JAPANPOST: return error if input data would be truncated
+    + PDF417: return warning if specified cols increased
+    + Matrix symbols: horizontal boundary bars appear outside any
+      vertical whitespace
+    + ECI 29 now GB 2312 only; GB 18030 is new ECI 32
+    + HANXIN, QRCODE/RMQR now warn when convert to GB 18030, Shift
+      JIS resp. and no ECI given
+    + GRIDMATRIX no longer attempts Latin-1 conversion when no
+      ECI given
+    + CLI now returns ZINT_ERROR_INVALID_OPTION (8) on its failed
+      option checks and ZINT_WARN_INVALID_OPTION (2) on ignored
+      options
+
+-------------------------------------------------------------------
+Mon Sep 20 07:59:30 UTC 2021 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.10.0. Check the ChangeLog file for the full list of
+  changes
+  * Incompatible changes:
+   + Add halign (horizontal align) to struct zint_vector_string
+     NOTE: backward incompatible text drawing for UPC/EAN
+   + Change height and row_height array to floats
+     NOTE: may cause changes in heights
+- Only install  the license file once.
+- Drop zint-rpath.patch. Unneeded.
+
+-------------------------------------------------------------------
+Fri Aug 28 07:36:19 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.9.1. Check the README file for the full changelog.
+  * Dotcode: adopt to AIM DOC Revision 4
+  * New option "-separator=" for zint to specify the separator
+    height of stacked symbologies.
+  * CODE11: make adding check digits an option
+  * Implement transparency support
+  * Added DPD Symbology
+  * Separarator option for DATAMATRIX
+  and much more...
+- Drop 0001-Fix-build-with-Qt-5.15.patch. Fixed upstream
+
+-------------------------------------------------------------------
+Fri Jun  5 08:18:03 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Add patch: 0001-Fix-build-with-Qt-5.15.patch
+
+-------------------------------------------------------------------
+Thu May 14 08:39:57 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.8.0. Check the README file for the full changelog.
+- New features:
+  * Add new symbology "Ultra Code" with the ability to output
+    colour codes.
+  * Multibyte compaction schemes are disabled by default.
+
+-------------------------------------------------------------------
+Sat Mar 14 13:52:55 UTC 2020 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.7.1. Check the README file for the full changelog.
+  * Many improvements in composite codes
+  * Automatic height option added to qzint
+  * QR encoding optimized to get smaller code matrix results
+  * Correct cmake file to match BSD-3-clause licence
+  * and much more...
+
+-------------------------------------------------------------------
+Tue Oct  1 14:20:45 UTC 2019 - Christophe Giboudeaux <christophe@krop.fr>
+
+- Update to 2.6.6. Check the README file for the list of changes.
+- Run spec-cleaner.
+- Drop zint-desktop.patch. %suse_update_desktop_file can be used
+  to update categories.
+
+-------------------------------------------------------------------
+Tue Dec 24 15:19:47 UTC 2013 - prusnak@opensuse.org
+
+- updated to 2.4.3
+
+-------------------------------------------------------------------
+Wed Jan  5 00:23:05 UTC 2011 - prusnak@opensuse.org
+
+- imported from Fedora (version 2.4.0)
+
