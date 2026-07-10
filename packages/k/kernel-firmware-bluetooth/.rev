@@ -429,4 +429,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update Bluetooth firmware for QCC2072 UART interface</comment>
     <requestid>1361024</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>78e4b35d3cef008bde3f3edd46bb2bcf</srcmd5>
+    <version>20260629</version>
+    <time>1783697717</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260629 (git commit 3ee099cd4a20):
+  * QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00072</comment>
+    <requestid>1364840</requestid>
+  </revision>
 </revisionlist>
