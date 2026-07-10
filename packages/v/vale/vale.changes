@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Jun 12 20:59:50 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.15.1:
+  * chore: support immutable releases
+
+-------------------------------------------------------------------
+Fri Jun 12 12:49:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 3.15.0:
+  * feat: support presence checks in conditional rules
+  * fix: render occurrence count as a number
+  * fix: preserve relative indentation in code-comment markup (#1028)
+  * fix: don't pad dashes adjacent to inline markup (#1029)
+  * feat: accept multi-word phrases in the vocabulary (#1035)
+  * chore: fix Windows' path for CI
+  * fix: don't treat substitution replacements as regexes (#1038)
+  * chore: drop cucumber on WIndows
+  * chore: consolidate CI
+  * chore: consolodate CI to GitHub Actions
+  * chore: golangci
+  * fix: don't pad inline content adjacent to brackets (#1056)
+  * fix: don't apply word Vocab to nonword existence rules (#1058)
+  * fix: handle Danish-style hunspell dictionaries (#1065)
+  * fix: ignore generated TOC and section numbers in AsciiDoc (#1101)
+  * fix: don't require a python executable to lint reStructuredText (#1102)
+  * chore: fix golangci
+  * fix: prevent crash when masking read-only context (#1099)
+  * fix: create configured StylesPath during sync (#1105) (#1106)
+  * chore(deps): bump github.com/tomwright/dasel/v3 from 3.3.2 to 3.10.1 (#1104)
+
+-------------------------------------------------------------------
 Fri May 15 20:59:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.14.2:
