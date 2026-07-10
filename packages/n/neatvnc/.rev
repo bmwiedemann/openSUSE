@@ -302,4 +302,13 @@
     data, and not how the data is to be interpreted.</comment>
     <requestid>1349767</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>3685d297d62e5c23eca96c23b8d80ae2</srcmd5>
+    <version>1.0.1</version>
+    <time>1783698022</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.1:
+  * Improve stability by fixing uninitialised memory and possible null-dereferencing.</comment>
+    <requestid>1364807</requestid>
+  </revision>
 </revisionlist>

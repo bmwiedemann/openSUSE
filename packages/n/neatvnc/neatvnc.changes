@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 04:44:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.1:
+  * Improve stability by fixing uninitialised memory and possible null-dereferencing.
+
+-------------------------------------------------------------------
 Tue Apr 28 11:06:49 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.0:
