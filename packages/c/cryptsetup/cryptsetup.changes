@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul  6 09:00:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix for (bsc#1270254) to avoid undesired pinning of all volume
+  keys (via the thread keyring) through the caller's credentials
+  when the kernel opens a file. This is due to the refactoring in
+  kernel commit a28d893eb327 ("md: port block device access to file")
+  that accidentally causes the caller's thread keyring to be kept
+  alive long beyond the caller's lifetime, the kernel part is tracked
+  in (bsc#1270252).
+  * Add keyring key type. [b6fb6fc0]
+  * Load volume keys in intermediary keyring linked in thread
+    keyring. [413a3dd0]
+  * Use unique intermediary keyring name per device. [04ef07a7]
+  * Add regression tests. [bfcb0c38, bb5e8e9f, e6573494, aa214c09]
+  * Add upstream patches:
+    - cryptsetup-Add-keyring-key-type.patch
+    - cryptsetup-Load-volume-keys-in-intermediary-keyring-linked-in-t.patch
+    - cryptsetup-Use-unique-intermediary-keyring-name-per-device.patch
+    - cryptsetup-tests-revoke-keys-instead-unlinking-from-thread-keyr.patch
+    - cryptsetup-tests-verify-VK-and-internal-keyring-cleanup-after-p.patch
+    - cryptsetup-tests-refactor-keyring-helpers.patch
+    - cryptsetup-tests-verify-intermediary-keyring-cleanup-after-cryp.patch
+
+-------------------------------------------------------------------
 Fri Apr  3 17:50:54 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 2.8.6.

@@ -1,0 +1,64 @@
+From aa214c098a11297f1669fd4d30d2b9c98cbd365e Mon Sep 17 00:00:00 2001
+From: Ondrej Kozina <okozina@redhat.com>
+Date: Wed, 24 Jun 2026 11:21:27 +0200
+Subject: [PATCH] tests: verify VK and internal keyring cleanup after
+ process exit.
+
+Check that both the intermediary keyring and the volume key logon
+key are removed from the kernel keyring after the cryptsetup
+process exits. Verify via search in /proc/keys.
+
+Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>
+
+Index: cryptsetup-2.8.6/tests/compat-test2
+===================================================================
+--- cryptsetup-2.8.6.orig/tests/compat-test2
++++ cryptsetup-2.8.6/tests/compat-test2
+@@ -485,6 +485,26 @@ test_reencrypt_vk_link_and_reactivate()
+ 	echo $PWD1 | $CRYPTSETUP open $LOOPDEV $DEV_NAME --volume-key-keyring "$KEY_DESC" --volume-key-keyring "$KEY_DESC2" > /dev/null 2>&1 && fail
+ }
+ 
++
++# $1 substring to search for in /proc/keys
++wait_key_dissapeared()
++{
++	local ret=
++	local tries=50
++
++	grep -q $1 /proc/keys
++	ret=$?
++
++	while [ $ret -eq 0 -a $tries -gt 0 ]; do
++		sleep .1
++		grep -q $1 /proc/keys
++		ret=$?
++		tries=$((tries-1))
++	done
++
++	test $ret -ne 0
++}
++
+ expect_run()
+ {
+ 	export INFOSTRING="$(basename ${BASH_SOURCE[1]})-line-${BASH_LINENO[0]}"
+@@ -1714,5 +1734,20 @@ if ! fips_mode -a -d $LUKS2_LOCKING_DIR;
+ 	test -f $LUKS2_LOCKING_DIR/$MEMORY_HARD_LOCK_FILE && fail "The --serialize-memory-hard-pbkdf option did not remove the locking file (did not use the file)."
+ fi
+ 
++if dm_crypt_keyring_support && dm_crypt_keyring_new_kernel; then
++	prepare "[54] Intermediary keyring VK cleanup" wipe
++	echo $PWD1 | $CRYPTSETUP luksFormat $FAST_PBKDF_OPT --type luks2 $LOOPDEV || fail
++	UUID=$($CRYPTSETUP luksUUID $LOOPDEV)
++
++	echo $PWD1 | $CRYPTSETUP open $LOOPDEV $DEV_NAME || fail
++	$CRYPTSETUP -q status $DEV_NAME | grep "key location:" | grep -q "keyring" || fail
++
++	# after cryptsetup open exits both the intermediary keyring and VK logon key must be gone
++	wait_key_dissapeared "keyring.*cryptsetup-${UUID:0:8}" || fail "Intermediary keyring persists in /proc/keys after process exit"
++	wait_key_dissapeared "logon.*cryptsetup:${UUID}" || fail "VK logon key persists in /proc/keys after process exit"
++
++	$CRYPTSETUP close $DEV_NAME || fail
++fi
++
+ remove_mapping
+ exit 0

@@ -1,0 +1,34 @@
+From b6fb6fc0fdc661afba734f4c29350fa6be2ede8f Mon Sep 17 00:00:00 2001
+From: Ondrej Kozina <okozina@redhat.com>
+Date: Fri, 19 Jun 2026 16:41:47 +0200
+Subject: [PATCH] Add keyring key type.
+
+
+diff --git a/lib/utils_keyring.c b/lib/utils_keyring.c
+index da1ccd85..86aecfe4 100644
+--- a/lib/utils_keyring.c
++++ b/lib/utils_keyring.c
+@@ -32,6 +32,7 @@ static const struct {
+ 	{ BIG_KEY,       "big_key" },
+ 	{ TRUSTED_KEY,   "trusted" },
+ 	{ ENCRYPTED_KEY, "encrypted" },
++	{ KEYRING_KEY,	 "keyring" },
+ };
+ 
+ #include <linux/keyctl.h>
+diff --git a/lib/utils_keyring.h b/lib/utils_keyring.h
+index 5809f70d..b910767a 100644
+--- a/lib/utils_keyring.h
++++ b/lib/utils_keyring.h
+@@ -17,7 +17,7 @@
+ typedef int32_t key_serial_t;
+ #endif
+ 
+-typedef enum { LOGON_KEY = 0, USER_KEY, BIG_KEY, TRUSTED_KEY, ENCRYPTED_KEY, INVALID_KEY } key_type_t;
++typedef enum { LOGON_KEY = 0, USER_KEY, BIG_KEY, TRUSTED_KEY, ENCRYPTED_KEY, KEYRING_KEY, INVALID_KEY } key_type_t;
+ 
+ const char *key_type_name(key_type_t ktype);
+ key_type_t key_type_by_name(const char *name);
+-- 
+2.54.0
+
