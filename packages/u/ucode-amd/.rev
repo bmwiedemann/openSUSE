@@ -111,4 +111,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361052</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>2d76ce4c665d6f67c467bd6e0ba2edb7</srcmd5>
+    <version>20260610</version>
+    <time>1783697801</time>
+    <user>anag_factory</user>
+    <comment>- Install README, too</comment>
+    <requestid>1364850</requestid>
+  </revision>
 </revisionlist>
