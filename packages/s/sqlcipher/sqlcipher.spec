@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           sqlcipher
-Version:        4.16.0
+Version:        4.17.0
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause
@@ -73,6 +73,11 @@ This package contains development files for SQLCipher.
 %autosetup
 
 %build
+# Disable LTO: sqlcipher 4.17.0 (SQLite 3.53.3) adds a thread-local xoshiro PRNG
+# state; under -flto the x86_64 sqlite3 shell link fails with "relocation
+# truncated to fit: R_X86_64_TPOFF32 against symbol xoshiro_s.lto_priv.0". The
+# overflow is x86_64-specific (local-exec TLS) and only appears with LTO.
+%define _lto_cflags %{nil}
 # sqlcipher 4.16.0 switched to SQLite's autosetup configure and now builds the
 # upstream sqlite3/libsqlite3 names by default.  Following Debian and Arch:
 #  * $CC is exported so the compiler is not derived from %%configure's --host

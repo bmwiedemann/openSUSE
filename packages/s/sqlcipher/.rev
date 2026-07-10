@@ -252,4 +252,12 @@
     <comment>Update to version 4.16.0; adapt packaging to upstream's new autosetup build (libsqlcipher0, drop tcl subpackage)</comment>
     <requestid>1360165</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>2824b170beca5527d94af19aff534a84</srcmd5>
+    <version>4.17.0</version>
+    <time>1783698271</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.17.0 (SQLite 3.53.3, LibTomCrypt fortuna fix, thread-safety hardening); disable LTO to fix the x86_64 TLS-relocation FTBFS that declined the prior request</comment>
+    <requestid>1364856</requestid>
+  </revision>
 </revisionlist>

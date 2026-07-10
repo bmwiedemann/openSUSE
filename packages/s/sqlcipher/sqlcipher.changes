@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:55:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.17.0:
+  * Update SQLite baseline from 3.53.1 to 3.53.3
+  * Standardize error responses when an incorrect key is used
+    during initial schema modification attempts
+  * Improve error identification and handling in the LibTomCrypt
+    provider, including a fortuna reinitialization fix
+  * Strengthen thread safety for debug memory counters and
+    xoshiro state management
+  * Add optional SQLCIPHER_OMIT_MALLOC macro to aid testing with
+    Address Sanitizer
+  * Various additional bug fixes and general improvements
+- Disable LTO: the new thread-local xoshiro PRNG state makes the
+  x86_64 sqlite3 shell fail to link under -flto with "relocation
+  truncated to fit: R_X86_64_TPOFF32" (x86_64-specific local-exec
+  TLS); building without LTO restores the x86_64 build
+
+-------------------------------------------------------------------
 Wed Jun 17 20:23:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.16.0:
