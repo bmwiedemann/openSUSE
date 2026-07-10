@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:12:05 UTC 2026 - KNine <knine@canine.lat>
+
+- Drop build-client-scripts.patch. It rebuilt the generated init
+  script and unit in client/scripts after the "make clean" the
+  spec used to run had deleted them; the clean was dropped and
+  configure generates both files itself.
+- Drop the devel subpackage's self-conflict (leftover from the
+  2018 libboinc-devel naming), a duplicated /var/lib/boinc
+  install and the %%autosetup -D flag (relic of "%%setup -D -a 1"
+  from the days of a second tarball).
+
+-------------------------------------------------------------------
+Sat Jul  4 18:24:34 UTC 2026 - KNine <knine@canine.lat>
+
+- Drop SLE 12 support: since 8.2.15 upstream builds the client
+  code as C++17 (client/Makefile.am forces -std=gnu++1z), which
+  GCC 4.8 does not know. Remove the _fillupdir fallback and the
+  SLE 12 -std=c++11 branch.
+
+-------------------------------------------------------------------
+Sat Jul  4 12:25:06 UTC 2026 - KNine <knine@canine.lat>
+
+- Update to release 8.2.15
+  * Fix a scheduler bug that could leave devices idle
+  * Honor the user's limit on the number of CPUs
+  * Don't fetch too much work for projects with zero resource
+    share
+  * Enforce the swap usage limit preference
+  * Fix a crash during client startup on Linux
+  * Avoid XScreenSaver probing on Wayland
+  * docker_wrapper: pass HTTP and SOCKS proxy info to containers
+- Drop the removed 'drupal' directory from the platform cleanup
+  in %%build.
+- Drop the boincscr default path sed, upstream uses /var/lib/boinc
+  itself now.
+
+-------------------------------------------------------------------
+Sat Jul  4 10:45:27 UTC 2026 - KNine <knine@canine.lat>
+
+- Add the boinc user to the video group, render alone is not
+  enough for some GPU drivers.
+- Drop the unused rel_name macro, the 2011 sysconfig migration
+  and the dead BOINC_BOINC_USR/GRP sysconfig variables.
+
+-------------------------------------------------------------------
+Fri Jul  3 16:50:16 UTC 2026 - KNine <knine@canine.lat>
+
+- Drop configure flags that no longer exist (--enable-optimize,
+  --enable-unicode) and unused BuildRequires: gcc-fortran,
+  sqlite3-devel.
+- Build with LTO again, the asm() problem behind the old
+  "_lto_cflags %%nil" workaround is fixed upstream. Keep
+  -ffat-lto-objects for the static libraries in the devel package.
+- Link with -Wl,-z,now (full RELRO).
+- Tidy up %%build: drop debug echo lines, a no-op "make clean" and
+  a stray DESTDIR.
+- Drop the icon cache scriptlets, the RPM file trigger on
+  /usr/share/icons handles the cache on current releases.
+- boinc-client.service: add IOSchedulingClass=idle like the
+  upstream unit, plus ProtectSystem=full and
+  ProtectControlGroups=true. Neither touches /var, so the data
+  directory keeps working.
+
+-------------------------------------------------------------------
+Thu Jul  2 08:30:37 UTC 2026 - KNine <knine@canine.lat>
+
+- Remove the logrotate config. It rotated /var/log/boinc-client.log,
+  which the client no longer writes since it logs to the systemd
+  journal, so the rule never did anything. Also drops the matching
+  rpmlint filter and the 'Recommends: logrotate'.
+- boinc-client.service: add Wants=network-online.target so the
+  existing After=network-online.target actually takes effect.
+
+-------------------------------------------------------------------
 Sun Jun 28 07:46:51 UTC 2026 - KNine <knine@canine.lat>
 
 - Update to release 8.2.13

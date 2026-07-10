@@ -18,17 +18,12 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
-# There are some raw asm() statements that interfere with LTO
-%define _lto_cflags %nil
+# The devel package ships static libraries, keep them usable without LTO
+%global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 %define sonum 8
 %define boinc_dir %{_localstatedir}/lib/boinc
 
-# do not build boinc-manager on SLES 11/12
+# do not build boinc-manager on SLES
 %if 0%{?is_opensuse}
 %bcond_without  manager
 %else
@@ -36,9 +31,8 @@
 %endif
 
 Name:           boinc-client
-%define rel_name        %{name}_release
 %define minor_version   8.2
-Version:        %minor_version.13
+Version:        %minor_version.15
 Release:        0
 Summary:        Client for Berkeley Open Infrastructure for Network Computing
 License:        GPL-3.0-or-later OR LGPL-3.0-or-later
@@ -49,13 +43,11 @@ URL:            https://boinc.berkeley.edu/
 Source0:        https://github.com/BOINC/boinc/archive/client_release/%{minor_version}/%{version}.tar.gz
 Source3:        README.SUSE
 Source4:        sysconfig.%{name}
-Source5:        boinc-logrotate
 Source6:        boinc-manager
 Source20:       %{name}.service
 Source100:      %{name}-rpmlintrc
 Patch2:         boinc-docbook2x.patch
 Patch4:         xlocale.patch
-Patch5:         build-client-scripts.patch
 Patch6:         libboinc-shared.patch
 BuildRequires:  Mesa-devel
 BuildRequires:  docbook2x
@@ -63,7 +55,6 @@ BuildRequires:  docbook_4
 BuildRequires:  fdupes
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc-c++
-BuildRequires:  gcc-fortran
 BuildRequires:  gettext-runtime
 BuildRequires:  libcurl-devel >= 7.17.1
 BuildRequires:  libjpeg-devel
@@ -71,7 +62,6 @@ BuildRequires:  libnotify-devel
 BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pkg-config
-BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  xorg-x11-libXmu-devel
 BuildRequires:  pkgconfig(systemd)
@@ -81,7 +71,6 @@ BuildRequires:  pkgconfig(xi)
 %sysusers_requires
 Requires:       ca-certificates-mozilla
 Recommends:     boinc-client-lang = %{version}
-Recommends:     logrotate
 %if %{with manager}
 BuildRequires:  wxWidgets-3_2-devel >= 3.1.5
 %lang_package -n boinc-manager
@@ -129,7 +118,6 @@ software platform which supports distributed computing.
 Summary:        Development files for libboinc
 Group:          Development/Libraries/C and C++
 Requires:       libboinc%{sonum} = %{version}-%{release}
-Conflicts:      %{name}-devel
 Requires:       openssl-devel
 Obsoletes:      libboinc-devel < %{version}-%{release}
 Provides:       libboinc-devel = %{version}-%{release}
@@ -138,18 +126,13 @@ Provides:       libboinc-devel = %{version}-%{release}
 This package contains development files for libboinc.
 
 %prep
-%global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%autosetup -p1 -n %{name}_release-%{minor_version}-%{version} -D
+%autosetup -p1 -n %{name}_release-%{minor_version}-%{version}
 
 %build
-# Fix default path for boincscr
-sed -i -e "s,/var/lib/boinc-client,%{boinc_dir},g" \
-  clientscr/screensaver_x11.cpp
-
 # Install user hints
 install -m0644 %{SOURCE3} README.SUSE
 
-# Fix lang directories (refer patch2)
+# Make the pt_PT translation available to all pt locales
 mv locale/pt_PT locale/pt
 
 # fix utf8
@@ -165,22 +148,16 @@ done
 rm -r coprocs/NVIDIA
 
 # Remove unnecessary components and files for other platforms.
-rm -r android drupal mac_build mac_installer win_build
+rm -r android mac_build mac_installer win_build
 
 autoreconf -fi
 export CFLAGS="%optflags -W -pipe -fno-strict-aliasing -D_REENTRANT"
-echo %sle_version
-%if 0%{?sle_version} == 120000
-echo enablingcxx
-export CFLAGS="$CFLAGS -std=c++11"
-%endif
 export CXXFLAGS="$CFLAGS"
+export LDFLAGS="-Wl,-z,now"
 %configure \
-  --enable-optimize \
   --enable-shared \
   --disable-static \
   --enable-dynamic-client-linkage \
-  --enable-unicode \
   --disable-server \
   --disable-fcgi \
 %if ! %{with manager}
@@ -192,10 +169,7 @@ export CXXFLAGS="$CFLAGS"
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 
-# Export Path and make
-%make_build clean
-%make_build libboinc_la_LIBADD="-L%{_libdir} -lssl -ldl" \
-   DESTDIR=%{_prefix} V=1
+%make_build libboinc_la_LIBADD="-L%{_libdir} -lssl -ldl" V=1
 
 %install
 %make_install
@@ -205,6 +179,7 @@ cat >system-user-boinc.conf <<-EOF
 	u boinc -:boinc "BOINC Client" /var/lib/boinc
 	# Several BOINC applications want to use the GPU for computations.
 	m boinc render
+	m boinc video
 EOF
 cp -a system-user-boinc.conf "%buildroot/%_sysusersdir/"
 %sysusers_generate_pre system-user-boinc.conf random system-user-boinc.conf
@@ -264,9 +239,6 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 # Install template for sysconfig
 install -Dm0644 %{SOURCE4} %{buildroot}%{_fillupdir}/sysconfig.%{name}
 
-# Install logrotate
-install -Dm0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
-
 # Install bash completion
 install -Dpm0644 client/scripts/boinc.bash %{buildroot}%{_datadir}/bash-completion/completions/boinc
 
@@ -280,9 +252,6 @@ ln -s -f boincmgr.1.gz %{buildroot}%{_mandir}/man1/boinc-manager.1.gz
 ln -s -f boinccmd.1.gz %{buildroot}%{_mandir}/man1/boinccmd.1.gz
 ln -s -f boinc.1.gz %{buildroot}%{_mandir}/man1/boinc.1.gz
 
-# Install fake /var/lib/boinc
-install -dm0755 %{buildroot}%{_var}/lib/boinc
-
 # Prepare $LANG Packages
 %find_lang BOINC-Client
 %if %{with manager}
@@ -294,12 +263,6 @@ find %{buildroot}/%{_datadir}/locale/ -name "BOINC-Manager.mo" -delete
 %fdupes -s %{buildroot}
 
 %pre -f random.pre
-# fix replacing old sysconfig file (r21)
-if [ -f %{_sysconfdir}/sysconfig/%{name} ]; then
-  if ! grep -q "BOINC_BOINC_USR" %{_sysconfdir}/sysconfig/boinc-client; then
-    mv -f %{_sysconfdir}/sysconfig/%{name} %{_sysconfdir}/sysconfig/%{name}.save
-  fi
-fi
 %service_add_pre %{name}.service
 
 %preun
@@ -312,25 +275,12 @@ fi
 %postun
 %service_del_postun %{name}.service
 
-%post -n boinc-manager
-%{_bindir}/touch --no-create %{_datadir}/icons/hicolor || :
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-
-%postun -n boinc-manager
-%{_bindir}/touch --no-create %{_datadir}/icons/hicolor || :
-if [ -x %{_bindir}/gtk-update-icon-cache ]; then
-  %{_bindir}/gtk-update-icon-cache --quiet %{_datadir}/icons/hicolor || :
-fi
-
 %post -n libboinc%{sonum} -p /sbin/ldconfig
 %postun -n libboinc%{sonum} -p /sbin/ldconfig
 
 %files
 %license COPYING* COPYRIGHT
 %doc README.SUSE
-%config(noreplace) %{_sysconfdir}/logrotate.d/%{name}
 %{_datadir}/bash-completion/completions/*
 %{_bindir}/boinc
 %{_bindir}/%{name}

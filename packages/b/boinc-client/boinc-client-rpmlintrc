@@ -1,9 +1,3 @@
-# /var/log is owned by the filesystem package and must not be packaged
-# here; boinc logs to the systemd journal (or, with --redirectio, to
-# stdoutdae.txt/stderrdae.txt in its data dir). Flagging /var/log is a
-# known rpmlint false positive, see
-# https://github.com/rpm-software-management/rpmlint/issues/551
-addFilter("logrotate-log-dir-not-packaged")
 # hicolor-icon-theme is the base icon theme, not a SUSE branding package;
 # newer rpmlint-checks already exempt *-icon-theme from this policy, and
 # its version (0.x) cannot satisfy the required "1*" version anyway.

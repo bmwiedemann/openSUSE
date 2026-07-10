@@ -1,24 +1,4 @@
 ## Path:        Productivity/Clustering/Computing
-## Description: define BOINC user
-## Type:        string
-## Default:     "boinc"
-## Config:      BOINC
-#
-# An empty setting will point to boinc
-#
-BOINC_BOINC_USR="boinc"
-
-## Path:        Productivity/Clustering/Computing
-## Description: define BOINC group
-## Type:        string
-## Default:     "boinc"
-## Config:      BOINC
-#
-# An empty setting will point to boinc
-#
-BOINC_BOINC_GRP="boinc"
-
-## Path:        Productivity/Clustering/Computing
 ## Description: define BOINC DIR
 ## Type:        string
 ## Default:     "/var/lib/boinc"

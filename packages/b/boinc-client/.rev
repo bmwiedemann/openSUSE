@@ -558,4 +558,12 @@ replace plaintext widget with mini-html widget (forwarded request 522296 from je
     <comment>- Update to release 8.2.13</comment>
     <requestid>1362218</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>975194ec6defb806ea970a25467d547a</srcmd5>
+    <version>8.2.15</version>
+    <time>1783698346</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.2.15</comment>
+    <requestid>1364883</requestid>
+  </revision>
 </revisionlist>
