@@ -19,13 +19,14 @@
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
 %{?sle15_python_module_pythons}
 Name:           python-rpds-py
-Version:        0.30.0
+Version:        2026.6.3
 Release:        0
 Summary:        Python bindings to Rust's persistent data structures (rpds)
 License:        MIT
 URL:            https://github.com/Julian/rpds.py
 Source0:        https://files.pythonhosted.org/packages/source/r/rpds-py/rpds_py-%{version}.tar.gz
 Source1:        vendor.tar.zst
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

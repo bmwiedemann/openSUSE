@@ -90,4 +90,14 @@
 - Run the testsuite.</comment>
     <requestid>1348662</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1af2a6f2fb1372bebe3b90e175c97ec3</srcmd5>
+    <version>2026.6.3</version>
+    <time>1783697561</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2026.6.3:
+  * Update to PyO3 0.28.0
+  * Drop support for 3.10. Add 3.15.</comment>
+    <requestid>1364631</requestid>
+  </revision>
 </revisionlist>
