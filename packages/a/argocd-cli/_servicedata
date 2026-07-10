@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/argoproj/argo-cd</param>
-              <param name="changesrevision">1801122b4391cad4961301f787006dc9a88c2dd3</param></service></servicedata>
+              <param name="changesrevision">443415b5527ac55366e0760c93ef0e1abd0cf273</param></service><service name="tar_scm">
+                <param name="url">https://github.com/argoproj/argo-cd.git</param>
+              <param name="changesrevision">564b94973b284b8de98da7cee6eeade2cb941e46</param></service></servicedata>
