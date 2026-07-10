@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul  9 06:12:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Support changes required by Python 3.15.
+- Ship the README as a doc in the built packages.
+- Sprinkle in setuptools_scm.
+
+-------------------------------------------------------------------
 Tue May 19 22:30:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.2:

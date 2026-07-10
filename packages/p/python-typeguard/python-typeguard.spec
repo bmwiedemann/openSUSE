@@ -24,9 +24,12 @@ Summary:        Library for runtime checking of Python types
 License:        MIT
 URL:            https://github.com/agronholm/typeguard
 Source0:        https://github.com/agronholm/typeguard/archive/refs/tags/%{version}.tar.gz#/typeguard-%{version}-gh.tar.gz
+# PATCH-FIX-UPSTREAM gh#agronholm/typeguard#554
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module typing-extensions >= 4.10.0}
 BuildRequires:  %{python_module wheel}
@@ -40,9 +43,10 @@ Requires:       python-typing-extensions >= 4.10.0
 This library provides run-time type checking for functions defined with PEP 484 argument (and return) type annotations.
 
 %prep
-%setup -q -n typeguard-%{version}
+%autosetup -p1 -n typeguard-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION="%{version}"
 %pyproject_wheel
 
 %install
@@ -54,7 +58,8 @@ This library provides run-time type checking for functions defined with PEP 484 
 
 %files %{python_files}
 %license LICENSE
+%doc README.rst
 %{python_sitelib}/typeguard
-%{python_sitelib}/typeguard-*.dist-info/
+%{python_sitelib}/typeguard-%{version}.dist-info/
 
 %changelog

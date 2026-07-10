@@ -1,0 +1,609 @@
+From a14bab2e3ee52f2f0f131ec0212c95f48fbb80eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 21 May 2026 10:17:10 +0200
+Subject: [PATCH 01/14] Fix compatibility with Python 3.15
+
+- Drop removed debug_override parameter from cache_from_source() call
+- Accept extra positional args in source_to_code() for new fullname parameter
+- Guard no_type_check_decorator import behind version check (removed in 3.15)
+- Add Python 3.15 to the test matrix
+---
+ pyproject.toml               | 2 +-
+ src/typeguard/_importhook.py | 5 +++--
+ tests/dummymodule.py         | 2 +-
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 98c7c39..3502840 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -103,7 +103,7 @@ pretty = true
+ files = ["src"]
+ 
+ [tool.tox]
+-env_list = ["py39", "py310", "py311", "py312", "py313", "py314"]
++env_list = ["py39", "py310", "py311", "py312", "py313", "py314", "py315"]
+ skip_missing_interpreters = true
+ requires = ["tox >= 4.22"]
+ 
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 034fc20..4fcab7b 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -48,8 +48,8 @@ def _call_with_frames_removed(
+     return f(*args, **kwargs)
+ 
+ 
+-def optimized_cache_from_source(path: str, debug_override: bool | None = None) -> str:
+-    return cache_from_source(path, debug_override, optimization=OPTIMIZATION)
++def optimized_cache_from_source(path: str) -> str:
++    return cache_from_source(path, optimization=OPTIMIZATION)
+ 
+ 
+ class TypeguardLoader(SourceFileLoader):
+@@ -57,6 +57,7 @@ class TypeguardLoader(SourceFileLoader):
+     def source_to_code(
+         data: Buffer | str | ast.Module | ast.Expression | ast.Interactive,
+         path: Buffer | str | PathLike[str] = "<string>",
++        fullname: str | None = None,
+         *,
+         _optimize: int = -1,
+     ) -> CodeType:
+diff --git a/tests/dummymodule.py b/tests/dummymodule.py
+index c724582..3ef7cc3 100644
+--- a/tests/dummymodule.py
++++ b/tests/dummymodule.py
+@@ -18,7 +18,6 @@
+     TypeVar,
+     Union,
+     no_type_check,
+-    no_type_check_decorator,
+     overload,
+ )
+ 
+@@ -42,6 +41,7 @@
+ 
+ 
+ if sys.version_info <= (3, 13):
++    from typing import no_type_check_decorator
+ 
+     @no_type_check_decorator
+     def dummy_decorator(func):
+
+From ce6e4832e378fa2ff4ac143ba7db5f7cc2800510 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 21 May 2026 10:37:32 +0200
+Subject: [PATCH 02/14] Add changelog
+
+---
+ docs/versionhistory.rst | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/docs/versionhistory.rst b/docs/versionhistory.rst
+index 77a43d8..7022913 100644
+--- a/docs/versionhistory.rst
++++ b/docs/versionhistory.rst
+@@ -4,6 +4,11 @@ Version history
+ This library adheres to
+ `Semantic Versioning 2.0 <https://semver.org/#semantic-versioning-200>`_.
+ 
++**UNRELEASED**
++
++- Compatibility with Python 3.15, drop removed debug_override parameter from cache_from_source()
++  call (`#554 <https://github.com/agronholm/typeguard/pull/554>`_; PR by @hrnciar)
++
+ **4.5.2** (2026-05-14)
+ 
+ - Fixed ``IndexError`` raised from ``check_signature_compatible`` when the subject
+
+From 4b7577c8bb312f8ebc8a22f042982db2584eb0eb Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 21 May 2026 10:38:49 +0200
+Subject: [PATCH 03/14] Add Python 3.15 to Github Actions workflow
+
+---
+ .github/workflows/test.yml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/.github/workflows/test.yml b/.github/workflows/test.yml
+index f6daa09..6657e12 100644
+--- a/.github/workflows/test.yml
++++ b/.github/workflows/test.yml
+@@ -10,7 +10,7 @@ jobs:
+     strategy:
+       fail-fast: false
+       matrix:
+-        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14", pypy-3.11]
++        python-version: ["3.9", "3.10", "3.11", "3.12", "3.13", "3.14", "3.15", pypy-3.11]
+     runs-on: ubuntu-latest
+     steps:
+     - uses: actions/checkout@v6
+
+From fa0c6c3d719f81e54b127f91a04df90e27d9fb58 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 21 May 2026 11:54:28 +0200
+Subject: [PATCH 04/14] Pass fullname parameter into ast.parse and compile on
+ Python 3.15
+
+---
+ src/typeguard/_importhook.py | 32 +++++++++++++++++++++++---------
+ 1 file changed, 23 insertions(+), 9 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 4fcab7b..a64c610 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -74,12 +74,21 @@ def source_to_code(
+             else:
+                 source = decode_source(data)
+ 
+-            module = _call_with_frames_removed(
+-                ast.parse,
+-                source,
+-                filename,
+-                "exec",
+-            )
++            if sys.version_info >= (3,15):
++                module = _call_with_frames_removed(
++                    ast.parse,
++                    source,
++                    filename,
++                    "exec",
++                    module=fullname,
++                )
++            else:
++                module = _call_with_frames_removed(
++                    ast.parse,
++                    source,
++                    filename,
++                    "exec",
++                )
+ 
+         tree = TypeguardTransformer().visit(module)
+         ast.fix_missing_locations(tree)
+@@ -93,9 +102,14 @@ def source_to_code(
+             print(ast.unparse(tree), file=sys.stderr)
+             print("----------------------------------------------", file=sys.stderr)
+ 
+-        return _call_with_frames_removed(
+-            compile, tree, filename, "exec", 0, dont_inherit=True
+-        )
++        if sys.version_info >= (3, 15):
++            return _call_with_frames_removed(
++                compile, tree, filename, "exec", 0, dont_inherit=True, module=fullname,
++            )
++        else:
++            return _call_with_frames_removed(
++                compile, tree, filename, "exec", 0, dont_inherit=True,
++            )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+         # Use a custom optimization marker – the import lock should make this monkey
+
+From 341ad54d1bba5c65f4f97a46d043a6569849c515 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Hrn=C4=8Diar?= <thrnciar@redhat.com>
+Date: Thu, 21 May 2026 11:55:50 +0200
+Subject: [PATCH 05/14] Add Python 3.15 Pypi classifier
+
+---
+ pyproject.toml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 3502840..25181fd 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -22,6 +22,7 @@ classifiers = [
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
+     "Programming Language :: Python :: 3.14",
++    "Programming Language :: Python :: 3.15",
+ ]
+ requires-python = ">= 3.9"
+ dependencies = [
+
+From 576cd2c19a88a9e7c6ad6d0ec009ddcf73a5b9b9 Mon Sep 17 00:00:00 2001
+From: "pre-commit-ci[bot]"
+ <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+Date: Thu, 21 May 2026 09:56:10 +0000
+Subject: [PATCH 06/14] [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ src/typeguard/_importhook.py | 17 ++++++++++++++---
+ 1 file changed, 14 insertions(+), 3 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index a64c610..4a80035 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -74,7 +74,7 @@ def source_to_code(
+             else:
+                 source = decode_source(data)
+ 
+-            if sys.version_info >= (3,15):
++            if sys.version_info >= (3, 15):
+                 module = _call_with_frames_removed(
+                     ast.parse,
+                     source,
+@@ -104,11 +104,22 @@ def source_to_code(
+ 
+         if sys.version_info >= (3, 15):
+             return _call_with_frames_removed(
+-                compile, tree, filename, "exec", 0, dont_inherit=True, module=fullname,
++                compile,
++                tree,
++                filename,
++                "exec",
++                0,
++                dont_inherit=True,
++                module=fullname,
+             )
+         else:
+             return _call_with_frames_removed(
+-                compile, tree, filename, "exec", 0, dont_inherit=True,
++                compile,
++                tree,
++                filename,
++                "exec",
++                0,
++                dont_inherit=True,
+             )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+
+From a837ea4f1646ea67a9bd0b64d969ffcbc24530b9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Thu, 21 May 2026 14:44:04 +0300
+Subject: [PATCH 07/14] Simplify module compilation
+
+---
+ src/typeguard/_importhook.py | 54 +++++++++++++-----------------------
+ 1 file changed, 20 insertions(+), 34 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 4a80035..e4db6a4 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -66,6 +66,10 @@ def source_to_code(
+         else:
+             filename = os.fsdecode(bytes(path))
+ 
++        extra_kwargs = {}
++        if sys.version_info >= (3, 15):
++            extra_kwargs["module"] = fullname
++
+         if isinstance(data, (ast.Module, ast.Expression, ast.Interactive)):
+             module = data
+         else:
+@@ -74,21 +78,13 @@ def source_to_code(
+             else:
+                 source = decode_source(data)
+ 
+-            if sys.version_info >= (3, 15):
+-                module = _call_with_frames_removed(
+-                    ast.parse,
+-                    source,
+-                    filename,
+-                    "exec",
+-                    module=fullname,
+-                )
+-            else:
+-                module = _call_with_frames_removed(
+-                    ast.parse,
+-                    source,
+-                    filename,
+-                    "exec",
+-                )
++            module = _call_with_frames_removed(
++                ast.parse,
++                source,
++                filename,
++                "exec",
++                **extra_kwargs,
++            )
+ 
+         tree = TypeguardTransformer().visit(module)
+         ast.fix_missing_locations(tree)
+@@ -102,25 +98,15 @@ def source_to_code(
+             print(ast.unparse(tree), file=sys.stderr)
+             print("----------------------------------------------", file=sys.stderr)
+ 
+-        if sys.version_info >= (3, 15):
+-            return _call_with_frames_removed(
+-                compile,
+-                tree,
+-                filename,
+-                "exec",
+-                0,
+-                dont_inherit=True,
+-                module=fullname,
+-            )
+-        else:
+-            return _call_with_frames_removed(
+-                compile,
+-                tree,
+-                filename,
+-                "exec",
+-                0,
+-                dont_inherit=True,
+-            )
++        return _call_with_frames_removed(
++            compile,
++            tree,
++            filename,
++            "exec",
++            0,
++            dont_inherit=True,
++            **extra_kwargs
++        )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+         # Use a custom optimization marker – the import lock should make this monkey
+
+From ede78f11f5b2978e1ac846eea0a732355170b53d Mon Sep 17 00:00:00 2001
+From: "pre-commit-ci[bot]"
+ <66853113+pre-commit-ci[bot]@users.noreply.github.com>
+Date: Thu, 21 May 2026 11:45:40 +0000
+Subject: [PATCH 08/14] [pre-commit.ci] auto fixes from pre-commit.com hooks
+
+for more information, see https://pre-commit.ci
+---
+ src/typeguard/_importhook.py | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index e4db6a4..57dbdfa 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -99,13 +99,7 @@ def source_to_code(
+             print("----------------------------------------------", file=sys.stderr)
+ 
+         return _call_with_frames_removed(
+-            compile,
+-            tree,
+-            filename,
+-            "exec",
+-            0,
+-            dont_inherit=True,
+-            **extra_kwargs
++            compile, tree, filename, "exec", 0, dont_inherit=True, **extra_kwargs
+         )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+
+From 0a4deb4685b8f99b5f1d1a7ef8439e4a46fa3dd9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Thu, 21 May 2026 14:48:58 +0300
+Subject: [PATCH 09/14] Annotate extra_kwargs with type dict[str, Any]
+
+---
+ src/typeguard/_importhook.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 57dbdfa..66da132 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -11,7 +11,7 @@
+ from inspect import isclass
+ from os import PathLike
+ from types import CodeType, ModuleType, TracebackType
+-from typing import TypeVar
++from typing import Any, TypeVar
+ from unittest.mock import patch
+ 
+ from ._config import global_config
+@@ -66,7 +66,7 @@ def source_to_code(
+         else:
+             filename = os.fsdecode(bytes(path))
+ 
+-        extra_kwargs = {}
++        extra_kwargs: dict[str, Any] = {}
+         if sys.version_info >= (3, 15):
+             extra_kwargs["module"] = fullname
+ 
+
+From 948cce3f6f3b3515cf59e4626ac63152bb978816 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 23 May 2026 13:50:59 +0300
+Subject: [PATCH 10/14] Revert "Annotate extra_kwargs with type dict[str, Any]"
+
+This reverts commit 0a4deb4685b8f99b5f1d1a7ef8439e4a46fa3dd9.
+---
+ src/typeguard/_importhook.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 66da132..57dbdfa 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -11,7 +11,7 @@
+ from inspect import isclass
+ from os import PathLike
+ from types import CodeType, ModuleType, TracebackType
+-from typing import Any, TypeVar
++from typing import TypeVar
+ from unittest.mock import patch
+ 
+ from ._config import global_config
+@@ -66,7 +66,7 @@ def source_to_code(
+         else:
+             filename = os.fsdecode(bytes(path))
+ 
+-        extra_kwargs: dict[str, Any] = {}
++        extra_kwargs = {}
+         if sys.version_info >= (3, 15):
+             extra_kwargs["module"] = fullname
+ 
+
+From f479048dae86e436fa0033402bf7057a139f85c2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 23 May 2026 13:50:59 +0300
+Subject: [PATCH 11/14] Revert "[pre-commit.ci] auto fixes from pre-commit.com
+ hooks"
+
+This reverts commit ede78f11f5b2978e1ac846eea0a732355170b53d.
+---
+ src/typeguard/_importhook.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index 57dbdfa..e4db6a4 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -99,7 +99,13 @@ def source_to_code(
+             print("----------------------------------------------", file=sys.stderr)
+ 
+         return _call_with_frames_removed(
+-            compile, tree, filename, "exec", 0, dont_inherit=True, **extra_kwargs
++            compile,
++            tree,
++            filename,
++            "exec",
++            0,
++            dont_inherit=True,
++            **extra_kwargs
+         )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+
+From b925ad52b8c5020aa6609d5e42100790275e85e0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 23 May 2026 13:50:59 +0300
+Subject: [PATCH 12/14] Revert "Simplify module compilation"
+
+This reverts commit a837ea4f1646ea67a9bd0b64d969ffcbc24530b9.
+---
+ src/typeguard/_importhook.py | 54 +++++++++++++++++++++++-------------
+ 1 file changed, 34 insertions(+), 20 deletions(-)
+
+diff --git a/src/typeguard/_importhook.py b/src/typeguard/_importhook.py
+index e4db6a4..4a80035 100644
+--- a/src/typeguard/_importhook.py
++++ b/src/typeguard/_importhook.py
+@@ -66,10 +66,6 @@ def source_to_code(
+         else:
+             filename = os.fsdecode(bytes(path))
+ 
+-        extra_kwargs = {}
+-        if sys.version_info >= (3, 15):
+-            extra_kwargs["module"] = fullname
+-
+         if isinstance(data, (ast.Module, ast.Expression, ast.Interactive)):
+             module = data
+         else:
+@@ -78,13 +74,21 @@ def source_to_code(
+             else:
+                 source = decode_source(data)
+ 
+-            module = _call_with_frames_removed(
+-                ast.parse,
+-                source,
+-                filename,
+-                "exec",
+-                **extra_kwargs,
+-            )
++            if sys.version_info >= (3, 15):
++                module = _call_with_frames_removed(
++                    ast.parse,
++                    source,
++                    filename,
++                    "exec",
++                    module=fullname,
++                )
++            else:
++                module = _call_with_frames_removed(
++                    ast.parse,
++                    source,
++                    filename,
++                    "exec",
++                )
+ 
+         tree = TypeguardTransformer().visit(module)
+         ast.fix_missing_locations(tree)
+@@ -98,15 +102,25 @@ def source_to_code(
+             print(ast.unparse(tree), file=sys.stderr)
+             print("----------------------------------------------", file=sys.stderr)
+ 
+-        return _call_with_frames_removed(
+-            compile,
+-            tree,
+-            filename,
+-            "exec",
+-            0,
+-            dont_inherit=True,
+-            **extra_kwargs
+-        )
++        if sys.version_info >= (3, 15):
++            return _call_with_frames_removed(
++                compile,
++                tree,
++                filename,
++                "exec",
++                0,
++                dont_inherit=True,
++                module=fullname,
++            )
++        else:
++            return _call_with_frames_removed(
++                compile,
++                tree,
++                filename,
++                "exec",
++                0,
++                dont_inherit=True,
++            )
+ 
+     def exec_module(self, module: ModuleType) -> None:
+         # Use a custom optimization marker – the import lock should make this monkey
+
+From 509c89134c5dad181d0baf11a19b874e364396d2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 23 May 2026 13:57:04 +0300
+Subject: [PATCH 13/14] Reworded the changelog entry
+
+---
+ docs/versionhistory.rst | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/docs/versionhistory.rst b/docs/versionhistory.rst
+index 7022913..750535a 100644
+--- a/docs/versionhistory.rst
++++ b/docs/versionhistory.rst
+@@ -6,8 +6,9 @@ This library adheres to
+ 
+ **UNRELEASED**
+ 
+-- Compatibility with Python 3.15, drop removed debug_override parameter from cache_from_source()
+-  call (`#554 <https://github.com/agronholm/typeguard/pull/554>`_; PR by @hrnciar)
++- Fixed compatibility with Python 3.15, drop removed debug_override parameter from
++  cache_from_source() call
++  (`#554 <https://github.com/agronholm/typeguard/pull/554>`_; PR by @hrnciar)
+ 
+ **4.5.2** (2026-05-14)
+ 
+
+From 1f31251e47fd9cf61b1f1b9d27464fd4e97f995f Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Alex=20Gr=C3=B6nholm?= <alex.gronholm@nextday.fi>
+Date: Sat, 23 May 2026 13:59:33 +0300
+Subject: [PATCH 14/14] Removed unnecessary details from the changelog entry
+
+---
+ docs/versionhistory.rst | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/docs/versionhistory.rst b/docs/versionhistory.rst
+index 750535a..afd6095 100644
+--- a/docs/versionhistory.rst
++++ b/docs/versionhistory.rst
+@@ -6,8 +6,7 @@ This library adheres to
+ 
+ **UNRELEASED**
+ 
+-- Fixed compatibility with Python 3.15, drop removed debug_override parameter from
+-  cache_from_source() call
++- Fixed compatibility with Python 3.15
+   (`#554 <https://github.com/agronholm/typeguard/pull/554>`_; PR by @hrnciar)
+ 
+ **4.5.2** (2026-05-14)

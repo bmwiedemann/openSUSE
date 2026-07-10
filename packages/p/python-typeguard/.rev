@@ -229,4 +229,15 @@
     the subject method has no positional parameters</comment>
     <requestid>1354134</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c83d412a0b604096435de0e2885ddb9a</srcmd5>
+    <version>4.5.2</version>
+    <time>1783697593</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support changes required by Python 3.15.
+- Ship the README as a doc in the built packages.
+- Sprinkle in setuptools_scm.</comment>
+    <requestid>1364656</requestid>
+  </revision>
 </revisionlist>
