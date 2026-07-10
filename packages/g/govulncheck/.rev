@@ -344,4 +344,13 @@
   * all: update to x/tools@0602b30930e3 (forwarded request 1363582 from jfkw)</comment>
     <requestid>1363583</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7d742e4ba10d7d8b10bbafd6076a63cf</srcmd5>
+    <version>1.6.0</version>
+    <time>1783697895</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.0:
+  * go.mod: update golang.org/x dependencies (forwarded request 1364789 from jfkw)</comment>
+    <requestid>1364790</requestid>
+  </revision>
 </revisionlist>
