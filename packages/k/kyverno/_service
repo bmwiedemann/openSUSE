@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/kyverno/kyverno</param>
+    <param name="url">https://github.com/kyverno/kyverno.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.18.1</param>
+    <param name="revision">refs/tags/v1.18.2</param>
     <param name="match-tag">v*</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>

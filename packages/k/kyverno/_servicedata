@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kyverno/kyverno</param>
-              <param name="changesrevision">ec14520a11cc25432482bfc0baa6a61d3c309524</param></service></servicedata>
+              <param name="changesrevision">ec14520a11cc25432482bfc0baa6a61d3c309524</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kyverno/kyverno.git</param>
+              <param name="changesrevision">945ac9ce8546ea6cd51370f24b615148c577da5e</param></service></servicedata>
