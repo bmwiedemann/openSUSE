@@ -1,9 +1,95 @@
 -------------------------------------------------------------------
+Wed Jul  8 15:56:08 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.7
+
+  CVEs fixed
+   * Advisory GHSA-cxjq-mrr5-89rv
+   * Advisory GHSA-42cj-m3vj-89wv
+   * Advisory GHSA-qq9q-x9w4-chhj
+
+  Bugs fixed
+  * acme
+    - Bump software.sslmate.com/src/go-pkcs12 to v0.7.3
+  * k8s/crd
+    - Fix cross-provider ref check for TCP ServersTransport in Kubernetes
+      CRD provider
+  * k8s
+    - Fix panic when endpointslice port value or name is nil
+  * k8s, k8s/gatewayapi
+    - Fix ExtensionRef filters on backendRefs to resolve against the
+      HTTPRoute namespace
+  * middleware
+    - Fix handle empty unknown-length bodies in mirroring
+  * middleware, k8s/ingress-nginx
+    - Add app-root middleware with nginx variable interpolation
+  * middleware
+    - Sanitize replaced path in ReplacePathRegex middleware
+  * otel
+    - Bump go.opentelemetry.io/otel to v1.44.0
+  * rules
+    - Fix consistency between HostSNI() and Host()
+
+-------------------------------------------------------------------
+Wed Jul  8 15:23:40 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.6
+  CVEs fixed
+    * CVE-2026-54763 (Advisory GHSA-x677-9fxg-v5c5) - boo#1270431, boo#1270430
+    * CVE-2026-54764 (Advisory GHSA-3q9r-p662-5j8m) - boo#1270432
+    * CVE-2026-54765 (Advisory GHSA-6p8f-p8j2-rqmv)
+
+  Bugs fixed
+  * acme, logs
+    - Bump github.com/go-acme/lego/v5
+  * k8s
+    - Detect EndpointSlice condition changes
+  * k8s/gatewayapi
+    - Add missing Gateway API features in conformance tests
+    - Avoid collisions for Gateway API services names
+    - Ignore other gateways parentRefs and update route parent statuses
+      only for managed gateways
+  * k8s
+    - Index Kubernetes EndpointSlice by service name
+  * k8s/ingress-nginx
+    - Configure retry according to buffering configuration
+    - Fix force-ssl-redirect routing 418 when TLS is terminated upstream
+  * k8s, k8s/ingress-nginx
+    - Fix ingress-nginx ssl passthrough status updates
+  * k8s
+    - Sort endpointslices to keep backend IPs consistent across rebuilds
+  * kv
+    - Bump kvtools/redis to v1.2.1
+  * middleware, authentication
+    - Fix x-forwarded-port in forward-auth
+  * middleware
+    - Fix CORS Max-Age set to 0 by default
+    - Fix CORS wildcard when allow-credentials is true
+  * middleware, k8s/gatewayapi
+    - Fix Gateway API redirect missing statuses
+    - Fix Host header not being modified by RequestHeaderModifier
+    - Fix request scheme derivation when Gateway API RequestRedirect
+     omits scheme
+  * server
+    - Add an option to remove request headers with underscores
+    - Configurable max request header size
+  * tls
+    - Fix nondeterministic TLS certificate selection on shared SAN
+  * websocket
+    - Fix connection upgrades when backend server is using h2c scheme
+  * webui
+    - Bump axios to v1.18.0
+
+-------------------------------------------------------------------
 Mon Jun 15 15:32:57 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 Important: Please read the migration guide.
 
 - Version 3.7.5
+  CVEs fixed
+    * CVE-2026-54761 (Advisory GHSA-3g6v-2r68-prfc) boo#1268523
+    * CVE-2026-54762 (Advisory GHSA-4mr2-fg2p-w63c)
+
   Bugs fixed
     * k8s/gatewayapi
       - Reject cross-provider references with backendRefs.namespace
@@ -31,10 +117,10 @@ Important: Please read the migration guide.
       - Bump react-router and jsdom
 
 - Version 3.7.3
-  CVE fixed
-    * CVE-2026-48020 (Advisory GHSA-xf64-8mw2-4gr2)
-    * CVE-2026-48491 (Advisory GHSA-5r4w-85f3-pw66)
-    * CVE-2026-53622 (Advisory GHSA-9cr8-q42q-g8m7)
+  CVEs fixed
+    * CVE-2026-48020 (Advisory GHSA-xf64-8mw2-4gr2) - boo#1268387
+    * CVE-2026-48491 (Advisory GHSA-5r4w-85f3-pw66) - boo#1269068
+    * CVE-2026-53622 (Advisory GHSA-9cr8-q42q-g8m7) - boo#1269067
 
   Bugs fixed
     * accesslogs
@@ -70,7 +156,7 @@ Important: Please read the migration guide.
 
 - Version 3.7.1
   CVE fixed
-    * CVE-2026-44774 (Advisory GHSA-96qj-4jj5-wcjc)
+    * CVE-2026-44774 (Advisory GHSA-96qj-4jj5-wcjc) - boo#1265372
 
   Bugs fixed
     * k8s/ingress, k8s/crd, k8s/gatewayapi
