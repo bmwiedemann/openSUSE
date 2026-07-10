@@ -1,7 +1,7 @@
 #
 # spec file for package libnfs
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2015 Bjørn Lie, Bryne, Norway.
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -18,9 +18,9 @@
 #
 
 
-%define sover   14
+%define sover   16
 Name:           libnfs
-Version:        5.0.3
+Version:        6.0.2
 Release:        0
 Summary:        Client library for accessing NFS shares over a network
 License:        BSD-2-Clause AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -28,10 +28,14 @@ Group:          Productivity/Networking/NFS
 URL:            https://github.com/sahlberg/libnfs
 Source0:        %{url}/archive/libnfs-%{version}.tar.gz
 Patch0:         libnfs-5.0.3-glibc-2_43.patch
-Patch1:         libnfs-5.0.3-glibc-2_43-2.patch
+# PATCH-FIX-UPSTREAM libnfs-CVE-2026-53689.patch bsc#1268135 mgorse@suse.com -- ZDR: check the string size for sanity.
+Patch1:         libnfs-CVE-2026-53689.patch
+# PATCH-FIX-UPSTReAM libnfs-CVE-2026-57918.patch mgorse@suse.com -- socket: prevent an underflow in xid.
+Patch2:         libnfs-CVE-2026-57918.patch
 BuildRequires:  autoconf
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(krb5-gssapi)
 
 %description
 Package contains a library of functions for accessing NFSv2 and
