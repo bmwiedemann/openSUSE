@@ -113,4 +113,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361040</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>090a521593a287dd081a509bb359f9dd</srcmd5>
+    <version>20260610</version>
+    <time>1783697766</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.1 / 7.2-rc1</comment>
+    <requestid>1364845</requestid>
+  </revision>
 </revisionlist>

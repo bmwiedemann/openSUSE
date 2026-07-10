@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -125,6 +125,8 @@ Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-dsi)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-dsiC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-nvdec)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-nvdecC*)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-nvjpg)
+Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-nvjpgC*)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-sor)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-sor1)
 Supplements:    modalias(of:N*T*Cnvidia%2Ctegra210-sor1C*)
@@ -157,8 +159,9 @@ This package contains kernel firmware files for Nvidia Tegra and graphics driver
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh nvidia < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh nvidia < WHENCE-dist > WHENCE
+
 
 %build
 # nothing to do
@@ -168,6 +171,7 @@ mv WHENCE.new WHENCE
 scripts/install-licenses.sh nvidia %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} nvidia < WHENCE-dist
 
 %pretrans -p <lua>
 paths = {"ad103", "ad104", "ad106", "ad107"}

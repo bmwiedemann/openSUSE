@@ -72,6 +72,8 @@ tegra_drm: of:N*T*Cnvidia%2Ctegra210-dsi
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-dsiC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-nvdec
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-nvdecC*
+tegra_drm: of:N*T*Cnvidia%2Ctegra210-nvjpg
+tegra_drm: of:N*T*Cnvidia%2Ctegra210-nvjpgC*
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-sor
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-sor1
 tegra_drm: of:N*T*Cnvidia%2Ctegra210-sor1C*
