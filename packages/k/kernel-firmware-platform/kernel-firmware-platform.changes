@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:25:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260629 (git commit 3ee099cd4a20):
+  * linux-firmware: Update AMD SEV firmware
+  * nxp: add firmware for IW61x WiFi device
+- Update aliases
+
+-------------------------------------------------------------------
 Wed Jun 10 14:17:29 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260610 (git commit e7eb98afc667):

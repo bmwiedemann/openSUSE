@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version e7eb98afc667913acc533ab910c608bee7d08f25
+%define git_version 3ee099cd4a2091e0395a05b8fe27099ad2398aea
 
 Name:           kernel-firmware-platform
-Version:        20260610
+Version:        20260629
 Release:        0
 Summary:        Kernel firmware files for various platform drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 AND GPL-3.0-only AND MIT
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -55,12 +55,20 @@ Supplements:    modalias(acpi*:AMDI0105%3A*)
 Supplements:    modalias(acpi*:AMDI0107%3A*)
 Supplements:    modalias(acpi*:AMDI0108%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
+Supplements:    modalias(acpi*:BMI0160%3A*)
+Supplements:    modalias(acpi*:BMI0260%3A*)
 Supplements:    modalias(eisa:sABP7401*)
 Supplements:    modalias(eisa:sABP7501*)
+Supplements:    modalias(i2c:bmi260)
+Supplements:    modalias(i2c:bmi270)
 Supplements:    modalias(of:N*T*Camd%2Cccp-seattle-v1a)
 Supplements:    modalias(of:N*T*Camd%2Cccp-seattle-v1aC*)
 Supplements:    modalias(of:N*T*Carm%2Cmali-valhall-csf)
 Supplements:    modalias(of:N*T*Carm%2Cmali-valhall-csfC*)
+Supplements:    modalias(of:N*T*Cbosch%2Cbmi260)
+Supplements:    modalias(of:N*T*Cbosch%2Cbmi260C*)
+Supplements:    modalias(of:N*T*Cbosch%2Cbmi270)
+Supplements:    modalias(of:N*T*Cbosch%2Cbmi270C*)
 Supplements:    modalias(of:N*T*Cfsl%2Cimx25-sdma)
 Supplements:    modalias(of:N*T*Cfsl%2Cimx25-sdmaC*)
 Supplements:    modalias(of:N*T*Cfsl%2Cimx31-sdma)
@@ -97,6 +105,8 @@ Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97ies)
 Supplements:    modalias(of:N*T*Cinside-secure%2Csafexcel-eip97iesC*)
 Supplements:    modalias(of:N*T*Clontium%2Clt9611uxc)
 Supplements:    modalias(of:N*T*Clontium%2Clt9611uxcC*)
+Supplements:    modalias(of:N*T*Cmediatek%2Cmt8196-mali)
+Supplements:    modalias(of:N*T*Cmediatek%2Cmt8196-maliC*)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8987-bt)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8987-btC*)
 Supplements:    modalias(of:N*T*Cnxp%2C88w8997-bt)
@@ -121,7 +131,6 @@ Supplements:    modalias(of:N*T*Csilabs%2Cwf200)
 Supplements:    modalias(of:N*T*Csilabs%2Cwf200C*)
 Supplements:    modalias(of:N*T*Cthead%2Cth1520-gpu)
 Supplements:    modalias(of:N*T*Cthead%2Cth1520-gpuC*)
-Supplements:    modalias(pci:v0000100Bd00000035sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001134sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d0000115Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d00001456sv*sd*bc*sc*i*)
@@ -137,7 +146,10 @@ Supplements:    modalias(pci:v00001022d00001649sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d000017D8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d000017E0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001022d000017F0sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000108Ed0000ABBAsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001022d000017F2sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001022d000017F3sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001022d00001B0Bsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001022d00001B0Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CDd00001100sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CDd00001200sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CDd00001300sv*sd*bc*sc*i*)
@@ -541,8 +553,9 @@ This package contains kernel firmware files for various platform drivers.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh platform < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh platform < WHENCE-dist > WHENCE
+
 scripts/extra-whence-setup.sh %{_sourcedir}
 
 %build
@@ -553,6 +566,7 @@ scripts/extra-whence-setup.sh %{_sourcedir}
 scripts/install-licenses.sh platform %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} platform < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}

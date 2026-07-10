@@ -260,4 +260,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361041</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>53e3b0b37ddf8279cc7dd3b6477a415e</srcmd5>
+    <version>20260629</version>
+    <time>1783697774</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260629 (git commit 3ee099cd4a20):
+  * linux-firmware: Update AMD SEV firmware
+  * nxp: add firmware for IW61x WiFi device
+- Update aliases</comment>
+    <requestid>1364846</requestid>
+  </revision>
 </revisionlist>
