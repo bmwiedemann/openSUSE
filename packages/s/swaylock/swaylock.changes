@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 10 04:37:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.8.6:
+  * Fix stray character in password buffer after suspend/resume cycle
+  * main: fix reversed dup2 arguments in daemonize
+
+-------------------------------------------------------------------
 Wed Mar 11 05:17:44 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8.5:

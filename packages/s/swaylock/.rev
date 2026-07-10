@@ -206,4 +206,14 @@
   * pam: only send the password once per conversation</comment>
     <requestid>1338188</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7ba3717a7cea842f2b3ed2c1d53ce470</srcmd5>
+    <version>1.8.6</version>
+    <time>1783698002</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.6:
+  * Fix stray character in password buffer after suspend/resume cycle
+  * main: fix reversed dup2 arguments in daemonize</comment>
+    <requestid>1364805</requestid>
+  </revision>
 </revisionlist>
