@@ -14,7 +14,7 @@ Wed Jul  8 15:00:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 - Version 2.11.51
 
 - CVE fixed:
-  * CVE-2026-54763 (Advisory GHSA-x677-9fxg-v5c5) - boo#1270431
+  * CVE-2026-54763 (Advisory GHSA-x677-9fxg-v5c5) - boo#1270431, boo#1270430
   * CVE-2026-54764 (Advisory GHSA-3q9r-p662-5j8m) - boo#1270432
 
 - Bugs fixed:
