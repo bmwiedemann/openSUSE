@@ -15,4 +15,12 @@
     <comment>Update python-langgraph to 1.2.8 (bug-fix release; no API or dependency changes)</comment>
     <requestid>1364184</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>501d6dfa84d1feab6cee83a7a35ade04</srcmd5>
+    <version>1.2.9</version>
+    <time>1783698164</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.9 (bug-fix release, no API/dependency changes)</comment>
+    <requestid>1364812</requestid>
+  </revision>
 </revisionlist>
