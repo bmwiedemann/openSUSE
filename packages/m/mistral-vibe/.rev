@@ -333,4 +333,41 @@
     - Teleport now uses the matched GitHub remote</comment>
     <requestid>1364154</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>af46454ff5cd9391665f794b15036da0</srcmd5>
+    <version>2.19.1</version>
+    <time>1783698532</time>
+    <user>anag_factory</user>
+    <comment>- Rename build-tests.patch to no_network.patch
+  (gh#mistralai/mistral-vibe!893).
+
+- Update to 2.19.1:
+  - Added
+    - Experimental managed bash tool for running and tracking
+      shell sessions
+    - `--disabled-tools` CLI flag to turn off specific tools for
+      a run
+    - Per-tool description overrides via
+      `&lt;tools-dir&gt;/prompts/&lt;name&gt;.md`
+    - Setting to clear context when a plan is accepted
+    - Discovered `AGENTS.md` files are now surfaced during
+      `read_file` tool calls
+  - Changed
+    - Reactive compaction with a dedicated summary fallback and
+      stricter summaries
+    - User-invoked skills now load as a synthetic tool call
+    - Tool config now merges via deep merge
+    - MCP panel now refreshes silently in the background
+    - Debounced the agent-switch spinner
+    - Neutral color for keyboard shortcut hints
+    - Falls back to the first available model when the active
+      model is unknown
+    - HTTP requests now honor CIDR notation in `NO_PROXY`
+    - History now loads lazily on resume, and session writes are
+      off the event loop
+    - Faster startup by deferring heavy imports
+    - PII and identifying paths are now scrubbed from Sentry
+      reports</comment>
+    <requestid>1364917</requestid>
+  </revision>
 </revisionlist>

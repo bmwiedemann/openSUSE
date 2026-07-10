@@ -16,15 +16,15 @@
 #
 
 Name:           mistral-vibe
-Version:        2.19.0
+Version:        2.19.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
 URL:            https://github.com/mistralai/mistral-vibe
 Source0:        https://github.com/mistralai/mistral-vibe/archive/refs/tags/v%{version}.tar.gz#/mistral-vibe-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE build-tests.patch mcepl@suse.com
-# make tests pass
-Patch0:         build-tests.patch
+# PATCH-FIX-OPENSUSE no_network.patch gh#mistralai/mistral-vibe!893 mcepl@suse.com
+# make the test suite work in the network isolated environment
+Patch0:         no_network.patch
 # PATCH-FIX-UPSTREAM fix_tests.patch gh#mistralai/mistral-vibe!796 mcepl@suse.com
 # Fix test failures in build environments
 Patch1:         fix_tests.patch
@@ -40,7 +40,9 @@ BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
 Requires:       python3-GitPython >= 3.1.50
 Requires:       python3-Jinja2
+Requires:       python3-PyJWT >= 2.13.0
 Requires:       python3-PyYAML >= 6.0.3
+Requires:       python3-SecretStorage >= 3.5.0
 Requires:       python3-agent-client-protocol >= 0.10.1
 Requires:       python3-annotated-types >= 0.7.0
 Requires:       python3-attrs >= 26.1.0
@@ -99,7 +101,6 @@ Requires:       python3-pycparser >= 3.0
 Requires:       python3-pydantic >= 2.13.4
 Requires:       python3-pydantic-settings >= 2.14.2
 Requires:       python3-pygments >= 2.20.0
-Requires:       python3-PyJWT >= 2.13.0
 Requires:       python3-pyperclip >= 1.11.0
 Requires:       python3-python-dateutil >= 2.9.0.post0
 Requires:       python3-python-dotenv >= 1.2.2
@@ -108,7 +109,6 @@ Requires:       python3-referencing >= 0.37.0
 Requires:       python3-requests >= 2.34.2
 Requires:       python3-rich >= 15.0.0
 Requires:       python3-rpds-py >= 0.30.0
-Requires:       python3-SecretStorage >= 3.5.0
 # Requires:       python3-sentry-sdk >= 2.64.0
 Requires:       python3-sentry-sdk >= 2.63.0
 Requires:       python3-six >= 1.17.0
@@ -123,6 +123,8 @@ Requires:       python3-textual >= 8.2.7
 Requires:       python3-textual-speedups >= 0.2.1
 Requires:       python3-tomli-w >= 1.2.0
 Requires:       python3-tomlkit
+Requires:       python3-tree-sitter >= 0.25.2
+Requires:       python3-tree-sitter-bash >= 0.25.1
 Requires:       python3-truststore >= 0.10.4
 Requires:       python3-typing-extensions >= 4.15.0
 Requires:       python3-typing-inspection >= 0.4.2
@@ -147,7 +149,9 @@ BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  python3-GitPython >= 3.1.50
 BuildRequires:  python3-Jinja2
+BuildRequires:  python3-PyJWT >= 2.13.0
 BuildRequires:  python3-PyYAML >= 6.0.3
+BuildRequires:  python3-SecretStorage >= 3.5.0
 BuildRequires:  python3-agent-client-protocol >= 0.10.1
 BuildRequires:  python3-annotated-types >= 0.7.0
 BuildRequires:  python3-attrs >= 26.1.0
@@ -206,9 +210,9 @@ BuildRequires:  python3-pycparser >= 3.0
 BuildRequires:  python3-pydantic >= 2.13.4
 BuildRequires:  python3-pydantic-settings >= 2.14.2
 BuildRequires:  python3-pygments >= 2.20.0
-BuildRequires:  python3-PyJWT >= 2.13.0
 BuildRequires:  python3-pyperclip >= 1.11.0
 BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-xdist >= 3.8.0
 BuildRequires:  python3-pytest-asyncio >= 1.2.0
 BuildRequires:  python3-pytest-textual-snapshot >= 1.1.0
 BuildRequires:  python3-pytest-timeout >= 2.4.0
@@ -219,7 +223,6 @@ BuildRequires:  python3-referencing >= 0.37.0
 BuildRequires:  python3-respx >= 0.22.0
 BuildRequires:  python3-rich >= 15.0.0
 BuildRequires:  python3-rpds-py >= 0.30.0
-BuildRequires:  python3-SecretStorage >= 3.5.0
 # BuildRequires:  python3-sentry-sdk >= 2.64.0
 BuildRequires:  python3-sentry-sdk >= 2.63.0
 BuildRequires:  python3-sounddevice >= 0.5.5
