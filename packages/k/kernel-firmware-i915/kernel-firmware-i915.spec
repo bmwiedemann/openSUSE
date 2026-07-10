@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version e7eb98afc667913acc533ab910c608bee7d08f25
+%define git_version 2c35b1ed46f661baaf14b08cebb9201ca802f939
 
 Name:           kernel-firmware-i915
-Version:        20260610
+Version:        20260706
 Release:        0
 Summary:        Kernel firmware files for Intel i915 graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -340,6 +340,10 @@ Supplements:    modalias(pci:v00008086d00006420sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000064A0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d000064B0sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d0000674Csv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000674Dsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000674Esv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d0000674Fsv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00008086d00006750sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00007D40sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D41sv*sd*bc03sc*i*)
 Supplements:    modalias(pci:v00008086d00007D45sv*sd*bc03sc*i*)
@@ -470,8 +474,9 @@ This package contains kernel firmware files for Intel i915 graphics driver.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh i915 < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh i915 < WHENCE-dist > WHENCE
+
 
 %build
 # nothing to do
@@ -481,6 +486,7 @@ mv WHENCE.new WHENCE
 scripts/install-licenses.sh i915 %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} i915 < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}

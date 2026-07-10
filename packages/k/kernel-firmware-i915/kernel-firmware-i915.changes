@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul  9 09:58:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * xe: Release GuC firmware for NVL-S
+
+-------------------------------------------------------------------
+Mon Jun 29 13:24:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.1 / 7.2-rc1
+
+-------------------------------------------------------------------
 Wed Jun 10 14:14:34 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260610 (git commit e7eb98afc667):

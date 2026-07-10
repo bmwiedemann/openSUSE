@@ -265,4 +265,15 @@ After this PR, there will be a delete request for kernel-firmware.
   * i915: Xe3p_LPD DMC v2.37</comment>
     <requestid>1361029</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>eb2772f6db7357b2992129e391b28653</srcmd5>
+    <version>20260706</version>
+    <time>1783697729</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * xe: Release GuC firmware for NVL-S
+
+- Update aliases from 7.1 / 7.2-rc1</comment>
+    <requestid>1364841</requestid>
+  </revision>
 </revisionlist>

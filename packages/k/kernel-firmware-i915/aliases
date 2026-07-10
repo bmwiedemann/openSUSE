@@ -437,6 +437,10 @@ xe: pci:v00008086d00006420sv*sd*bc03sc*i*
 xe: pci:v00008086d000064A0sv*sd*bc03sc*i*
 xe: pci:v00008086d000064B0sv*sd*bc03sc*i*
 xe: pci:v00008086d0000674Csv*sd*bc*sc*i*
+xe: pci:v00008086d0000674Dsv*sd*bc*sc*i*
+xe: pci:v00008086d0000674Esv*sd*bc*sc*i*
+xe: pci:v00008086d0000674Fsv*sd*bc*sc*i*
+xe: pci:v00008086d00006750sv*sd*bc*sc*i*
 xe: pci:v00008086d00007D40sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D41sv*sd*bc03sc*i*
 xe: pci:v00008086d00007D45sv*sd*bc03sc*i*
