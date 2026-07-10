@@ -55,4 +55,12 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment>Update to 0.10.0 (threads/traces resource accessors, OTel helpers)</comment>
     <requestid>1364625</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ab3ba969c07816888153cef1d30895aa</srcmd5>
+    <version>0.10.1</version>
+    <time>1783698189</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.10.1 (percent-encode sandbox request paths, HTML-escape insights repr, backend min 0.16.12rc1)</comment>
+    <requestid>1364813</requestid>
+  </revision>
 </revisionlist>

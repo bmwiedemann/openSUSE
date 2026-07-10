@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:15:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.1:
+  * Percent-encode resource names in sandbox client request paths
+    to prevent URL path injection
+  * HTML-escape the insights report repr to avoid unintended
+    markup when rendered in notebooks
+  * Raise the minimum supported LangSmith backend to 0.16.12rc1
+
+-------------------------------------------------------------------
 Wed Jul  8 18:55:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.0:
