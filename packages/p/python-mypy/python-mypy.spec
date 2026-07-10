@@ -16,8 +16,8 @@
 #
 
 
-%define types_psutil_version 7.0.0.20251001
-%define types_setuptools_version 80.9.0.20250822
+%define types_psutil_version 7.2.2.20260508
+%define types_setuptools_version 82.0.0.20260508
 %define hatchling_version 1.18.0
 %bcond_without test
 %if 0%{?suse_version} > 1500
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mypy
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Optional static typing for Python
 License:        MIT
@@ -161,6 +161,8 @@ donttest+=" or PEP561Suite"
 # compilation errors
 ignore="--ignore mypyc/test/test_run.py"
 donttest+=" or test_lib_rt_c_files_compile_individually"
+# https://github.com/python/mypy/issues/12634
+donttest+=" or (TestExternal and test_c_unit_test)"
 %pytest -n auto $ignore -k "not (testallexcept ${donttest})"
 %endif
 
