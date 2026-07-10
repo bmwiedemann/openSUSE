@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:30:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.4:
+  * bug: actually fix capitalized 'q' not exiting  (#2137).
+  * bug: accept process column aliases advertised by the config
+    schema (#2131).
+
+-------------------------------------------------------------------
 Thu Jul 02 07:16:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.3:
