@@ -17,7 +17,7 @@
 
 
 Name:           wayvnc
-Version:        0.10.0
+Version:        0.10.1
 Release:        0
 Summary:        A VNC server for wlroots based Wayland compositors
 License:        ISC

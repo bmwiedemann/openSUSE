@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 04:45:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.1:
+  * Fix typos in the man page.
+  * Fix string truncation issues in the control ipc code.
+  * Fix various issues with detached mode.
+
+-------------------------------------------------------------------
 Tue Apr 28 11:20:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.0:

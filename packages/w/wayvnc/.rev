@@ -176,4 +176,15 @@
     them.</comment>
     <requestid>1349768</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>e6cb2a20f46d0e00a7435df522f3d150</srcmd5>
+    <version>0.10.1</version>
+    <time>1783698012</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.10.1:
+  * Fix typos in the man page.
+  * Fix string truncation issues in the control ipc code.
+  * Fix various issues with detached mode.</comment>
+    <requestid>1364806</requestid>
+  </revision>
 </revisionlist>
