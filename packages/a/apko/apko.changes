@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:03:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.24:
+  * lock: embed keyring content in the lock file (#2322)
+
+-------------------------------------------------------------------
 Wed Jul 08 05:10:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.23:
