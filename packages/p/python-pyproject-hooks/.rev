@@ -46,4 +46,13 @@
     from ``sys.path`` before imporing the backend (#193).</comment>
     <requestid>1218846</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>14b4de6a66d7ee469b9dce9b8222e23e</srcmd5>
+    <version>1.2.0</version>
+    <time>1783697572</time>
+    <user>anag_factory</user>
+    <comment>- Add patch drop-os-path-commonprefix.patch:
+  * Use os.path.commonpath to support Python 3.15.</comment>
+    <requestid>1364633</requestid>
+  </revision>
 </revisionlist>

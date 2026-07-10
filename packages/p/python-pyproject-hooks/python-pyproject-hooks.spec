@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyproject-hooks
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,9 @@ Summary:        Wrappers to call pyproject.toml-based build backend hooks
 License:        MIT
 URL:            https://github.com/pypa/pyproject-hooks
 Source:         https://github.com/pypa/pyproject-hooks/archive/refs/tags/v%{version}.tar.gz#/pyproject_hooks-%{version}-gh.tar.gz
-BuildRequires:  %{python_module devel >= 3.7}
+# PATCH-FIX-UPSTREAM gh#pypa/pyproject-hooks#222
+Patch0:         drop-os-path-commonprefix.patch
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -47,7 +49,7 @@ This is an underlying piece for `pip`, `build` and other "build frontends" use t
 Note: The ``pep517`` project has been replaced by this project (low level) and the ``build`` project (high level).
 
 %prep
-%setup -q -n pyproject-hooks-%{version}
+%autosetup -p1 -n pyproject-hooks-%{version}
 
 %build
 %pyproject_wheel
@@ -57,8 +59,7 @@ Note: The ``pep517`` project has been replaced by this project (low level) and t
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# https://github.com/pypa/pyproject-hooks/issues/203
-%pytest -k "not test_setup"
+%pytest
 
 %files %{python_files}
 %{python_sitelib}/pyproject_hooks
