@@ -18,7 +18,7 @@
 
 %define lname	libredwg0
 Name:           libredwg
-Version:        0.14
+Version:        0.14.8413
 Release:        0
 Summary:        A library to handle DWG files
 License:        GPL-3.0-or-later

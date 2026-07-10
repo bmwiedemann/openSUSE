@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul  9 20:47:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.14.8413
+  * fix dwg_next_entity NULL pointer dereference
+    [CVE-2026-15184, boo#1271170]
+  * Fix dwg_bmp thumbnail overflow checks
+    [CVE-2026-15181, boo#1271169]
+  * Resolve NULL pointer dereference (SEGV) in match_BLOCK_HEADER
+    [CVE-2026-9529, boo#1266380]
+  * Added DXB (binary DXF) support: dwgwrite/dwgread/dwg2dxf accept
+    DXB input/output, and dxfwrite accepts DXB.
+  * Minor features:
+  * R2007+ split string stream encoding for Header, Classes, and
+    objects.
+  * Added cycle checks in entity link chains.
+  * Added release helpers and improved CI (ODAFileConverter QT6,
+    xvfb-run).
+  * dwgfuzz: show mode with --version.
+
+-------------------------------------------------------------------
 Mon Jun 29 06:12:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.14:
