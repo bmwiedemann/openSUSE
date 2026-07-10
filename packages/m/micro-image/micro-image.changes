@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  9 11:46:41 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- disable container support for scratch layers
+
+-------------------------------------------------------------------
 Wed Jun 24 16:14:06 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - switch to coreutils-single for the minimal containers
