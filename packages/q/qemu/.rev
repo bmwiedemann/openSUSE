@@ -4958,4 +4958,15 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1340996</requestid>
   </revision>
+  <revision rev="308" vrev="1">
+    <srcmd5>67f4ba9217bd3018f6dd1fe80c244539</srcmd5>
+    <version>11.0.2</version>
+    <time>1783697816</time>
+    <user>anag_factory</user>
+    <comment>- Update to latest stable release (11.0.2)
+- Fix bsc#1268794 (CVE-2026-48914)
+- Fix the changes file
+</comment>
+    <requestid>1363032</requestid>
+  </revision>
 </revisionlist>

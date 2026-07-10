@@ -18,7 +18,7 @@
 
 %include %{_sourcedir}/common.inc
 
-%ifarch %ix86 x86_64 s390x
+%ifarch x86_64 s390x
 %define legacy_qemu_kvm 1
 %endif
 
@@ -27,13 +27,15 @@ URL:            https://www.qemu.org/
 Summary:        CPU emulator for user space
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.2.2
+Version:        11.0.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
 Source200:      qemu-rpmlintrc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
+# Starting from v11.0.0, 32 bit hosts are officially deprecated
+ExcludeArch:    %{ix86} %{arm}
 BuildRequires:  bison
 BuildRequires:  glib2-devel-static >= 2.56
 BuildRequires:  glibc-devel-static
@@ -51,6 +53,9 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  meson
 BuildRequires:  ninja >= 1.7
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-base >= 3.8
@@ -68,7 +73,6 @@ syscall layer occurs on the native hardware and operating system.
 %files
 %doc README.rst VERSION
 %license COPYING COPYING.LIB LICENSE
-%ifnarch %ix86 armv7hl
 %_bindir/qemu-aarch64
 %_bindir/qemu-aarch64_be
 %_bindir/qemu-alpha
@@ -85,7 +89,6 @@ syscall layer occurs on the native hardware and operating system.
 %_bindir/qemu-sparc32plus
 %_bindir/qemu-sparc64
 %_bindir/qemu-x86_64
-%endif
 %_bindir/qemu-arm
 %_bindir/qemu-armeb
 %_bindir/qemu-hexagon
@@ -143,14 +146,9 @@ cd %blddir
 
 # TODO: Check whether we want to enable the followings:
 # * debug-info
-# * fuse
 # * malloc-trim
-# * multiprocess
 # * qom-cast-debug
 # * trace-backends=dtrace
-#
-# Fedora has avx2 enabled for ix86, while we can't (I tried). Guess it's
-# because, for them, ix86 == i686 (while for us it's i586).
 
 # Let's try to stick to _FORTIFY_SOURCE=2 for now
 EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
@@ -213,7 +211,7 @@ scripts/qemu-binfmt-conf.sh --systemd ALL --persistent yes --preserve-argv0 yes 
 %check
 cd %blddir
 
-%ifarch aarch64 %ix86 ppc ppc64 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 ppc ppc64 ppc64le riscv64 s390x x86_64
 ./qemu-%{qemu_arch} %_bindir/ls > /dev/null
 %endif
 

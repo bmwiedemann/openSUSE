@@ -51,13 +51,13 @@
 %define build_opensbi_firmware 1
 %endif
 
-%ifarch %ix86 x86_64 ppc ppc64 ppc64le s390x armv7hl aarch64 riscv64
+%ifarch x86_64 ppc ppc64 ppc64le s390x aarch64 riscv64
 %define kvm_available 1
 %bcond_without uring
 %define liburing_min_version 1.0
 %endif
 
-%ifarch %ix86 x86_64 s390x
+%ifarch x86_64 s390x
 %define legacy_qemu_kvm 1
 %endif
 
@@ -72,6 +72,17 @@
 %ifarch x86_64
 %bcond_without qatzip
 %endif
+
+%ifarch x86_64 aarch64
+%bcond_without nitro
+%else
+%bcond_with nitro
+%endif
+
+%bcond_without passt
+%bcond_without slirp
+
+%bcond_without fuse
 
 %global have_libcbor 1
 %global have_block_gluster 0
@@ -89,15 +100,18 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        10.2.2
+Version:        11.0.2
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
 Source303:      README.PACKAGING
 Source1000:     qemu-rpmlintrc
+# Starting from v11.0.0, 32 bit hosts are officially deprecated
+ExcludeArch:    %{ix86} %{arm}
+#ExclusiveArch: $64bit
 ## Packages we REQUIRE during build
 %if %{build_x86_firmware}
-%ifnarch %ix86 x86_64
+%ifnarch x86_64
 # We must cross-compile on non-x86*
 BuildRequires:  cross-x86_64-binutils
 BuildRequires:  cross-x86_64-gcc%gcc_version
@@ -122,12 +136,12 @@ BuildRequires:  cross-ppc64-gcc%gcc_version
 %endif
 %ifarch x86_64
 BuildRequires:  gcc-32bit
-%if %{with_xen}
+%if 0%{with xen}
 BuildRequires:  xen-devel >= 4.2
 %endif
 BuildRequires:  pkgconfig(libpmem)
 %endif
-%ifnarch %arm s390x
+%ifnarch s390x
 BuildRequires:  libnuma-devel
 %endif
 %if 0%{with canokey}
@@ -158,14 +172,14 @@ BuildRequires:  qatzip-devel
 %if 0%{with igvm}
 #BuildRequires: igvm devel library here
 %endif
-%if 0%{with passt}
-#BuildRequires: passt devel library here
-%endif
 %if 0%{with valgrind}
 BuildRequires:  valgrind-devel
 %endif
 %if %{have_libcbor}
 BuildRequires:  libcbor-devel
+%endif
+%if 0%{with fuse}
+BuildRequires:  fuse3-devel
 %endif
 %if 0%{?suse_version} >= 1600
 BuildRequires:  python3-Sphinx
@@ -196,6 +210,9 @@ BuildRequires:  multipath-tools-devel
 BuildRequires:  ninja >= 1.7
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
@@ -226,18 +243,20 @@ BuildRequires:  pkgconfig(lzo2)
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(pixman-1) >= 0.21.8
-%if %{with_sdl}
+%if 0%{with sdl}
 BuildRequires:  pkgconfig(sdl2)
-%if %{with_sdl_image}
+%if 0%{with sdl_image}
 BuildRequires:  pkgconfig(SDL2_image)
 %endif
+%endif
+%if 0%{with slirp}
+BuildRequires:  pkgconfig(slirp) >= 4.2.0
 %endif
 BuildRequires:  rdma-core-devel
 BuildRequires:  snappy-devel
 BuildRequires:  update-desktop-files
 BuildRequires:  usbredir-devel >= 0.6
 BuildRequires:  xfsprogs-devel
-BuildRequires:  pkgconfig(slirp) >= 4.2.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(vdeplug)
 BuildRequires:  pkgconfig(virglrenderer) >= 0.4.1
@@ -250,6 +269,9 @@ BuildRequires:  pkgconfig(zlib)
 Requires(post): acl
 Requires(post): udev
 %endif
+%if 0%{with passt}
+Requires:       passt
+%endif
 Requires(post): coreutils
 Requires:       group(kvm)
 Requires:       group(qemu)
@@ -261,7 +283,7 @@ Requires:       (qemu-guest-agent = %{version} if qemu-guest-agent)
 %ifarch s390x
 Requires:       qemu-hw-s390x-virtio-gpu-ccw
 %else
-%ifarch %{arm} %ix86 x86_64
+%ifarch x86_64
 Requires:       qemu-hw-display-virtio-gpu-pci
 %else
 Recommends:     qemu-hw-display-virtio-gpu-pci
@@ -317,7 +339,7 @@ Obsoletes:      qemu-sgabios <= 8
 Obsoletes:      qemu-ui-sdl < %{version}
 ## What we do with the main emulator depends on the architecture we're on
 %if %{kvm_available}
-%ifarch %ix86 x86_64
+%ifarch x86_64
 Requires:       qemu-x86
 %else
 Suggests:       qemu-x86
@@ -333,7 +355,7 @@ Requires(post): procps
 %else
 Suggests:       qemu-s390x
 %endif
-%ifarch %arm aarch64
+%ifarch aarch64
 Requires:       qemu-arm
 %else
 Suggests:       qemu-arm
@@ -442,6 +464,12 @@ Conflicts:      qemu-tools > %{version}-%{release}
 meson subprojects packagefiles --apply berkeley-testfloat-3
 meson subprojects packagefiles --apply berkeley-softfloat-3
 
+# We don't have python3-pygdbmi packaged in most OSes. But it's necessary
+# only for functests, and we don't run that target anyway (as it would
+# require network access). Let's, therefore, avoid the problem by just
+# getting rid of the dependency.
+sed -i '/pygdbmi/d' pythondeps.toml
+
 # There (still) are some firmwares that are installed, but we don't build (yet).
 # Note that:
 # - default firmwares are built "by default", i.e., they're built automatically
@@ -454,8 +482,7 @@ meson subprojects packagefiles --apply berkeley-softfloat-3
 %define riscv64_extra_firmware {opensbi-riscv64-generic-fw_dynamic.bin}
 %define s390x_default_firmware {s390-ccw.img}
 %define s390x_extra_firmware %{nil}
-%define x86_default_firmware {linuxboot.bin linuxboot_dma.bin multiboot.bin \
-multiboot_dma.bin kvmvapic.bin pvh.bin}
+%define x86_default_firmware {linuxboot_dma.bin multiboot_dma.bin kvmvapic.bin pvh.bin}
 %define x86_extra_firmware {bios.bin bios-256k.bin bios-microvm.bin qboot.rom \
 pxe-e1000.rom pxe-eepro100.rom pxe-ne2k_pci.rom pxe-pcnet.rom pxe-rtl8139.rom \
 pxe-virtio.rom vgabios-ati.bin vgabios-bochs-display.bin \
@@ -485,7 +512,7 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 %ifarch s390x
 %define s390x_default_built_firmware %{s390x_default_firmware}
 %endif
-%ifarch %ix86 x86_64
+%ifarch x86_64
 %define x86_default_built_firmware %{x86_default_firmware}
 %endif
 
@@ -509,6 +536,16 @@ efi-rtl8139.rom efi-virtio.rom efi-vmxnet3.rom}
 %build
 
 %define rpmfilesdir %{_builddir}/qemu-%{version}/rpm
+
+# Workaround for GCC packages that only contain the versioned binaries
+%if %{build_ppc_firmware}
+mkdir -p %{_builddir}/cross-tools
+PPC_GCC=$(ls /usr/bin/powerpc64-suse-linux-gcc-* 2>/dev/null | head -n1)
+if [ -n "$PPC_GCC" ]; then
+    ln -sf "$PPC_GCC" %{_builddir}/cross-tools/powerpc64-suse-linux-gcc
+    export PATH=%{_builddir}/cross-tools:$PATH
+fi
+%endif
 
 %if %{legacy_qemu_kvm}
 # FIXME: Why are we copying the s390 specific one?
@@ -542,14 +579,9 @@ export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 
 # TODO: Check whether we want to enable the followings:
 # * debug-info
-# * fuse
 # * malloc-trim
-# * multiprocess
 # * qom-cast-debug
 # * trace-backends=dtrace
-#
-# Fedora has avx2 enabled for ix86, while we can't (I tried). Guess it's
-# because, for them, ix86 == i686 (while for us it's i586).
 
 # Let's try to stick to _FORTIFY_SOURCE=2 for now
 EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
@@ -577,7 +609,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--audio-drv-list=pa,pipewire,alsa,jack,oss \
 %endif
 %ifarch x86_64
-%if %{with_xen}
+%if 0%{with xen}
 	--enable-xen \
 	--enable-xen-pci-passthrough \
 %endif
@@ -606,7 +638,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %if 0%{with system_membarrier}
 	--enable-membarrier \
 %endif
-%ifnarch %arm s390x
+%ifnarch s390x
 	--enable-numa \
 %endif
 %if 0%{with rbd}
@@ -626,6 +658,13 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 %endif
 %if 0%{has_rutabaga_gfx}
 	--enable-rutabaga-gfx \
+%endif
+%if 0%{with nitro}
+	--enable-nitro \
+%endif
+%if 0%{with fuse}
+	--enable-fuse \
+	--enable-fuse-lseek \
 %endif
 	--enable-alsa \
 	--enable-attr \
@@ -687,13 +726,15 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--enable-replication \
 	--enable-seccomp \
 	--enable-selinux \
+%if 0%{with slirp}
 	--enable-slirp \
 	--enable-slirp-smbd \
+%endif
 	--enable-smartcard \
 	--enable-snappy \
-%if %{with_sdl}
+%if 0%{with sdl}
 	--enable-sdl \
-%if %{with_sdl_image}
+%if 0%{with sdl_image}
 	--enable-sdl-image \
 %endif
 %endif
@@ -841,6 +882,7 @@ install -d -m 0755 %{buildroot}%_sysconfdir/%name/firmware
 install -D -m 0644 %{rpmfilesdir}/bridge.conf %{buildroot}%_sysconfdir/%name/bridge.conf
 install -D -m 0755 %{rpmfilesdir}/qemu-ifup %{buildroot}%_datadir/%name/qemu-ifup
 install -D -p -m 0644 %{rpmfilesdir}/80-qemu-ga.rules %{buildroot}/usr/lib/udev/rules.d/80-qemu-ga.rules
+install -D -p -m 0644 %{rpmfilesdir}/qemu-ga.sysconfig %{buildroot}%{_distconfdir}/sysconfig/qemu-ga
 install -D -m 0755 scripts/analyze-migration.py  %{buildroot}%_bindir/analyze-migration.py
 install -D -m 0755 scripts/vmstate-static-checker.py  %{buildroot}%_bindir/vmstate-static-checker.py
 install -D -m 0755 scripts/kvm/vmxcap  %{buildroot}%_bindir/vmxcap
@@ -848,9 +890,7 @@ install -D -m 0755 %{rpmfilesdir}/qemu-supportconfig %{buildroot}/usr/lib/suppor
 install -D -m 0644 %{rpmfilesdir}/supported.arm.txt %{buildroot}%_docdir/qemu-arm/supported.txt
 install -D -m 0644 %{rpmfilesdir}/supported.ppc.txt %{buildroot}%_docdir/qemu-ppc/supported.txt
 install -D -m 0644 %{rpmfilesdir}/supported.x86.txt %{buildroot}%_docdir/qemu-x86/supported.txt
-%ifnarch %ix86 armv7hl
 install -D -m 0644 %{rpmfilesdir}/supported.s390.txt %{buildroot}%_docdir/qemu-s390x/supported.txt
-%endif
 
 %if %{legacy_qemu_kvm}
 install -D -m 0644 %{rpmfilesdir}/qemu-kvm.1.gz %{buildroot}%_mandir/man1/qemu-kvm.1.gz
@@ -867,7 +907,7 @@ rst2html --exit-status=2 %{buildroot}%_docdir/qemu-x86/supported.txt %{buildroot
 # End of "if legacy_qemu_kvm"
 %endif
 
-%ifarch aarch64 %arm %ix86 ppc ppc64 ppc64le riscv64 s390x x86_64
+%ifarch aarch64 ppc ppc64 ppc64le riscv64 s390x x86_64
 %ifarch ppc64le
 %define qemu_arch ppc64
 %endif
@@ -885,27 +925,9 @@ install -D -m 0644 %{rpmfilesdir}/kvm.conf %{buildroot}%{_prefix}/lib/modules-lo
 %endif
 
 # We rely on a separate project / package to provide edk2 firmware
-unlink %{buildroot}%_datadir/%name/edk2-licenses.txt
-unlink %{buildroot}%_datadir/%name/firmware/50-edk2-i386-secure.json
-unlink %{buildroot}%_datadir/%name/firmware/50-edk2-x86_64-secure.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-aarch64.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-arm.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-i386.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-x86_64.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-loongarch64.json
-unlink %{buildroot}%_datadir/%name/firmware/60-edk2-riscv64.json
-unlink %{buildroot}%_datadir/%name/edk2-aarch64-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-arm-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-arm-vars.fd
-unlink %{buildroot}%_datadir/%name/edk2-i386-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-i386-secure-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-i386-vars.fd
-unlink %{buildroot}%_datadir/%name/edk2-x86_64-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-x86_64-secure-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-riscv-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-riscv-vars.fd
-unlink %{buildroot}%_datadir/%name/edk2-loongarch64-code.fd
-unlink %{buildroot}%_datadir/%name/edk2-loongarch64-vars.fd
+rm -f %{buildroot}%_datadir/%name/edk2-*.fd
+rm -f %{buildroot}%_datadir/%name/edk2-licenses.txt
+rm -f %{buildroot}%_datadir/%name/firmware/*edk2*.json
 
 # this was never meant for customer consumption - delete even though installed
 unlink %{buildroot}%_bindir/elf2dmp
@@ -915,18 +937,7 @@ unlink %{buildroot}%_bindir/elf2dmp
 # install base, as the one that we have there is the upstream binary, that got
 # copied there during `make install`.
 
-%if %{build_ppc_firmware}
-# In support of update-alternatives
-#
-# The reason why we do this, is because we have (only for PPC) an skiboot
-# package, shipping an alternative version of skiboot.lid. That is, in fact,
-# what's "on the other end" of us supporting update-alternatives for this
-# particular firmware.
-mv %{buildroot}%_datadir/%name/skiboot.lid %{buildroot}%_datadir/%name/skiboot.lid.qemu
-# create a dummy target for /etc/alternatives/skiboot.lid
-mkdir -p %{buildroot}%{_sysconfdir}/alternatives
-ln -s -f %{_sysconfdir}/alternatives/skiboot.lid %{buildroot}%{_datadir}/%name/skiboot.lid
-%else
+%if ! %{build_ppc_firmware}
 for f in %{ppc_extra_firmware} ; do
   unlink %{buildroot}%_datadir/%name/$f
 done
@@ -999,16 +1010,7 @@ echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-crypto-secret.c
 # ... make comes in fresh and has lots of address space (needed for 32bit, bsc#957379)
 # FIXME: is this still a problem?
 
-# Let's build everything first
-%make_build check-build
-# Let's now run the 'make check' component individually, so we have
-# more control on the options (like -j, etc)
-
-%define timeout_multiplier 1
-# Particularly slow arch-es (on OBS) may benefit from this
-%ifarch riscv64
 %define timeout_multiplier 3
-%endif
 
 echo "######## unit tests ########"
 %make_build check-unit
@@ -1035,7 +1037,7 @@ make -O V=1 VERBOSE=1 -j1 check-block TIMEOUT_MULTIPLIER=%{timeout_multiplier}
 
 echo "######## Functional tests ########"
 # NB: ppc64le and arm32 hosts often fail one or more functional tests...
-%ifnarch ppc64le %arm
+%ifnarch ppc64le
 # 'check-func-quick' instead of 'check-functional' to avoid asset download
 %make_build check-func-quick TIMEOUT_MULTIPLIER=%{timeout_multiplier}
 %endif
@@ -1180,13 +1182,9 @@ This package provides i386 and x86_64 emulation.
 
 %files x86
 %_bindir/qemu-system-i386
-%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-x86_64
-%endif
 %_datadir/%name/kvmvapic.bin
-%_datadir/%name/linuxboot.bin
 %_datadir/%name/linuxboot_dma.bin
-%_datadir/%name/multiboot.bin
 %_datadir/%name/multiboot_dma.bin
 %_datadir/%name/pvh.bin
 %doc %_docdir/qemu-x86
@@ -1206,9 +1204,7 @@ This package provides ppc and ppc64 emulation.
 
 %files ppc
 %_bindir/qemu-system-ppc
-%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-ppc64
-%endif
 %_datadir/%name/dtb/bamboo.dtb
 %_datadir/%name/dtb/canyonlands.dtb
 %_datadir/%name/dtb/pegasos1.dtb
@@ -1223,7 +1219,6 @@ This package provides ppc and ppc64 emulation.
 %_datadir/%name/vof*.bin
 %doc %_docdir/qemu-ppc
 
-%ifnarch %ix86 armv7hl
 %package s390x
 Summary:        Machine emulator and virtualizer for S/390 architectures
 Group:          System/Emulators/PC
@@ -1240,7 +1235,6 @@ This package provides s390x emulation.
 %_bindir/qemu-system-s390x
 %_datadir/%name/s390-ccw.img
 %doc %_docdir/qemu-s390x
-%endif
 
 %package arm
 Summary:        Machine emulator and virtualizer for ARM architectures
@@ -1258,9 +1252,7 @@ This package provides arm emulation.
 
 %files arm
 %_bindir/qemu-system-arm
-%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-aarch64
-%endif
 %_datadir/%name/ast27x0_bootrom.bin
 %_datadir/%name/npcm7xx_bootrom.bin
 %_datadir/%name/npcm8xx_bootrom.bin
@@ -1273,12 +1265,6 @@ Requires:       %name = %{version}
 Recommends:     qemu-ipxe
 Recommends:     qemu-skiboot
 Recommends:     qemu-vgabios
-%ifarch %ix86 armv7hl
-# The package is not built any longer for 32bits arch-es, but we're still
-# providing the s390-ccw.img firmware, as part of this package (for those
-# arch-es only, of course)
-Obsoletes:      qemu-s390x < %{version}
-%endif
 
 %description extra
 %{generic_qemu_description}
@@ -1288,21 +1274,16 @@ mips, sparc, and xtensa. (The term "extra" is juxtapositioned against more
 popular QEMU packages which are dedicated to a single architecture.)
 
 %files extra
-%ifnarch %ix86 armv7hl
 %_bindir/qemu-system-alpha
 %_bindir/qemu-system-hppa
 %_bindir/qemu-system-loongarch64
-%_bindir/qemu-system-microblaze
-%_bindir/qemu-system-microblazeel
 %_bindir/qemu-system-mips64
 %_bindir/qemu-system-mips64el
 %_bindir/qemu-system-riscv64
 %_bindir/qemu-system-sparc64
-%endif
 %_bindir/qemu-system-avr
 %_bindir/qemu-system-m68k
 %_bindir/qemu-system-microblaze
-%_bindir/qemu-system-microblazeel
 %_bindir/qemu-system-mips
 %_bindir/qemu-system-mipsel
 %_bindir/qemu-system-or1k
@@ -1314,9 +1295,6 @@ popular QEMU packages which are dedicated to a single architecture.)
 %_bindir/qemu-system-tricore
 %_bindir/qemu-system-xtensa
 %_bindir/qemu-system-xtensaeb
-%ifarch %ix86 armv7hl
-%_datadir/%name/s390-ccw.img
-%endif
 %_datadir/%name/hppa-firmware.img
 %_datadir/%name/hppa-firmware64.img
 %_datadir/%name/openbios-sparc32
@@ -1401,7 +1379,7 @@ This package contains a module for Pipewire based audio support for QEMU.
 %dir %_libdir/%name
 %_libdir/%name/audio-pipewire.so
 
-%if %{with_sdl}
+%if 0%{with sdl}
 %package audio-sdl
 Summary:        SDL based audio support for QEMU
 Group:          System/Emulators/PC
@@ -1663,7 +1641,7 @@ This package contains a module for doing OpenGL based UI for QEMU.
 %_libdir/%name/ui-egl-headless.so
 %_libdir/%name/ui-opengl.so
 
-%if %{with_sdl}
+%if 0%{with sdl}
 %package ui-sdl
 Summary:        SDL based UI support for QEMU
 Group:          System/Emulators/PC
@@ -1764,7 +1742,7 @@ a virtfs helper, ivshmem, disk utilities and scripts for various purposes.
 %_bindir/qemu-keymap
 %_bindir/vmstate-static-checker.py
 %_bindir/vmxcap
-%verify(not mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
+%verify(not group mode) %attr(4750,root,kvm) %_libexecdir/qemu-bridge-helper
 %dir %_sysconfdir/%name
 %config(noreplace) %_sysconfdir/%name/bridge.conf
 
@@ -1805,6 +1783,8 @@ to provide information and control at the guest OS level.
 %attr(0755,root,kvm) %_bindir/qemu-ga
 %_mandir/man8/qemu-ga.8.gz
 %{_unitdir}/qemu-guest-agent.service
+%dir %{_distconfdir}/sysconfig
+%{_distconfdir}/sysconfig/qemu-ga
 /usr/lib/udev/rules.d/80-qemu-ga.rules
 
 %pre guest-agent
@@ -1870,38 +1850,8 @@ This package provides QTest accelerator for testing QEMU.
 %files accel-qtest
 %dir %_datadir/%name
 %dir %_libdir/%name
-%ifnarch %ix86 armv7hl
-%_libdir/%name/accel-qtest-aarch64.so
-%_libdir/%name/accel-qtest-alpha.so
-%_libdir/%name/accel-qtest-hppa.so
-%_libdir/%name/accel-qtest-loongarch64.so
-%_libdir/%name/accel-qtest-mips64.so
-%_libdir/%name/accel-qtest-mips64el.so
-%_libdir/%name/accel-qtest-ppc64.so
-%_libdir/%name/accel-qtest-riscv64.so
-%_libdir/%name/accel-qtest-s390x.so
-%_libdir/%name/accel-qtest-sparc64.so
-%_libdir/%name/accel-qtest-x86_64.so
-%endif
+%_libdir/%name/accel-qtest.so
 
-%_libdir/%name/accel-qtest-arm.so
-%_libdir/%name/accel-qtest-avr.so
-%_libdir/%name/accel-qtest-i386.so
-%_libdir/%name/accel-qtest-m68k.so
-%_libdir/%name/accel-qtest-microblaze.so
-%_libdir/%name/accel-qtest-microblazeel.so
-%_libdir/%name/accel-qtest-mips.so
-%_libdir/%name/accel-qtest-mipsel.so
-%_libdir/%name/accel-qtest-or1k.so
-%_libdir/%name/accel-qtest-ppc.so
-%_libdir/%name/accel-qtest-riscv32.so
-%_libdir/%name/accel-qtest-rx.so
-%_libdir/%name/accel-qtest-sh4.so
-%_libdir/%name/accel-qtest-sh4eb.so
-%_libdir/%name/accel-qtest-sparc.so
-%_libdir/%name/accel-qtest-tricore.so
-%_libdir/%name/accel-qtest-xtensa.so
-%_libdir/%name/accel-qtest-xtensaeb.so
 %if 0%{with rbd}
 %package block-rbd
 Summary:        Rados Block Device (Ceph) support for QEMU
@@ -1936,8 +1886,7 @@ It can be used as partition firmware for pSeries machines running on QEMU or KVM
 Summary:        OPAL firmware (aka skiboot), used in booting OpenPOWER systems
 Group:          System/Emulators/PC
 BuildArch:      noarch
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Conflicts:      opal-firmware
 
 %description skiboot
 Provides OPAL (OpenPower Abstraction Layer) firmware, aka skiboot, as
@@ -1946,16 +1895,16 @@ traditionally packaged with QEMU.
 %files skiboot
 %dir %_datadir/%name
 %_datadir/%name/skiboot.lid
-%_datadir/%name/skiboot.lid.qemu
-%ghost %_sysconfdir/alternatives/skiboot.lid
 
-%post skiboot
-update-alternatives --install \
-   %{_datadir}/%name/skiboot.lid skiboot.lid %{_datadir}/%name/skiboot.lid.qemu 15
-
-%preun skiboot
-if [ ! -f %{_datadir}/%name/skiboot.lid.qemu ] ; then
-   update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu
+%pre skiboot
+# Remove the symlink from where we were using update-alternatives.
+if [ "$1" -ge 1 ]; then
+  if [ -x %{_sbindir}/update-alternatives ]; then
+    %{_sbindir}/update-alternatives --remove skiboot.lid %{_datadir}/%name/skiboot.lid.qemu || :
+  fi
+  if [ -L %{_datadir}/%name/skiboot.lid ]; then
+    rm -f %{_datadir}/%name/skiboot.lid
+  fi
 fi
 # End of "if build_ppc_firmware"
 %endif
@@ -1980,7 +1929,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        10.2.2%{sbver}
+Version:        11.0.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2001,7 +1950,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        10.2.2%{sbver}
+Version:        11.0.2%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -2027,7 +1976,7 @@ video card. For use with QEMU.
 %package ipxe
 Summary:        PXE ROMs for QEMU NICs
 Group:          System/Emulators/PC
-Version:        10.2.2
+Version:        11.0.2
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0

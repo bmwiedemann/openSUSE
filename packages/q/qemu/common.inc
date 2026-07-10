@@ -12,20 +12,21 @@
 %define legacy_qemu_kvm 0
 %define force_fit_virtio_pxe_rom 1
 
-%define with_xen 0%{!?_without_xen:1}
-%define with_sdl 0%{!?_without_sdl:1}
-%define with_sdl_image 0%{!?_without_sdl_image:1}
-
 %if "%{?distribution}" == ""
 %define distro private-build
 %else
 %define distro %{distribution}
 %endif
 
+%bcond_without sdl
+
 # Items to exclude in ALP-based products
-%if 0%{?suse_version} == 1600
-%define with_xen 0
-%define with_sdl_image 0
+%if 0%{?is_opensuse}
+%bcond_without xen
+%bcond_without sdl_image
+%else
+%bcond_with xen
+%bcond_with sdl_image
 %endif
 
 %bcond_with system_membarrier
@@ -33,7 +34,7 @@
 
 %bcond_with chkqtests
 
-%if 0%{?suse_version} > 1600
+%if 0%{?is_opensuse}
 # canokey is an openSUSE thing, not a SLE one
 %ifarch x86_64
 %bcond_without canokey
@@ -42,7 +43,7 @@
 %endif
 %endif
 
-%if 0%{?suse_version} > 1600
+%if 0%{?is_opensuse}
 # XDP seems not to be there in SLE...
 %bcond_without xdp
 %else
@@ -198,6 +199,7 @@ virtualization.
  --disable-modules 		\\\
  --disable-mpath 		\\\
  --disable-multiprocess 	\\\
+ --disable-nitro		\\\
  --disable-netmap 		\\\
  --disable-nettle 		\\\
  --disable-numa 		\\\

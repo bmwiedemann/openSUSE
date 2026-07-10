@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Tue Jun 30 17:43:26 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest stable release (11.0.2)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260627082913.181C717AB6B@think4mjt.localdomain/
+  Bugs and CVEs fixed:
+   - bsc#1268794 (CVE-2026-48914)
+  A selection of them is reported here below:
+   linux-user: Fix AT_PHDR when program headers are relocated into their own segment
+   hw/pci: Replace assert with bounds check and return
+   ppc/pnv_phb3: Error out on invalid config access
+   linux-user/xtensa: fix unlock of uninitialized frame pointer on sigreturn
+   linux-user/xtensa: save/restore FP registers across signal delivery
+   target/xtensa: add cpu_set_fcr/fsr helpers to sync fp_status
+   target/arm/hvf: Stop pre-allocating cpreg_vmstate arrays
+   ui/sdl2: Set GL ES profile before creating initial GL context
+   ui/sdl2: Explicitly specify EGL platform
+   hw/9pfs: reject . and .. in Twstat rename
+   hw/9pfs: fix abort due to illegal name with Twstat rename
+   gdbstub: Update x86 control register bits
+   target/i386: apply mod to immediate count of an RCL/RCR operation
+   hw/uefi: fix parse_hexstr
+   target/riscv: mask vxrm csrw write to the low 2 bits
+   disas/riscv.c: fix inst_length()
+   target/riscv/tcg: disable svnapot if satp_mode < sv39
+   target/riscv/cpu_helper.c: add PMA access fault
+   target/riscv/cpu_helper.c: fault with reserved PTE.PBMT val
+   target/riscv/insn_trans/trans_rvzicbo.c.inc: save opcode before helpers
+   disas/riscv.c: add 'cbo' insns to disassembler
+   target/riscv/csr.c: fix mstatus.UXL reserved value
+   target/riscv/csr.c: do not allow mstatus MPV/GVA writes
+   target/riscv/tcg: disable svpbmt if satp_mode < sv39
+   target/riscv/cpu_helper.c: allow LOAD_ADDR_MIS promotion to AMO fault
+   virtio: Allow to fill a whole virtqueue in order
+   amd_iommu: Reject non-decreasing NextLevel in fetch_pte()
+   amd_iommu: Follow root pointer before page walk and use 1-based levels
+   libvduse: fix buffer overflow in vduse_queue_read_indirect_desc()
+   libvhost-user: fix buffer overflow in virtqueue_read_indirect_desc()
+   tests/qtest: Add amd-iommu command buffer head wrap test
+   amd_iommu: Update command buffer head ptr in MMIO region after wraparound
+   amd_iommu: restrict command buffer head/tail ranges to ring size
+   linux-user: add preadv2/preadv2
+   system/rtc: Fix a possible year-2038 integer overflow problem
+   linux-user/strace: add fsmount series of syscalls
+   linux-user: implement fsmount(2) series of syscalls
+   fpu: Handle all rounding modes in partsN_uncanon_normal
+   hw/usb/hcd-ohci: Clean up USBPacket before freeing ISO TD packet
+   qed: Don't try to flush during incoming migration
+   iotests: test shared mmap for fuse export
+   block/export/fuse: set FUSE_DIRECT_IO_ALLOW_MMAP flag to fix regression
+   block/export/fuse: use struct fuse_init_in
+   qcow2: Fix data loss on zero write with detect-zeroes=unmap
+   iotests/046: Test that discard/write_zeroes wait for dependencies
+   qcow2: Fix corruption on discard during write with COW
+   qemu-io: Add 'aio_discard' command
+   virtio-blk: add missing VIRTIO_BLK_T_SCSI_CMD size check (CVE-2026-48914)
+   block/io: fallback to bounce buffer if BLKZEROOUT is not supported because of alignment
+   hw/i3c: fix CMD/data FIFO depth reset values to match real silicon
+   s390x/pci: Fix interrupt forwarding disable for interpreted devices
+   target/s390x: Make container ids in SysIB_15x 1-based
+   lcitool: remove Cirrus CI support
+   gitlab: remove x64-freebsd-14-build Cirrus job
+   gitlab: add initial MacOS 15 on gitlab runner
+   ci: drop cirrus MacOS build
+   tests/unit: add test-envlist covering setenv/unsetenv name matching
+   util/envlist: fix prefix-match in envlist_unsetenv() name lookup
+   ...
+
+-------------------------------------------------------------------
+Wed Jun 17 09:51:31 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix bsc#1268279, bsc#1268245, bsc#1263098:
+  * [openSUSE][RPM] spec: fix post-build-checks failure for qemu-tools (bsc#1263098)
+  * [openSUSE][RPM] spec: fix missing unversioned ppc64 cross-compiler binaries (bsc#1268245)
+  * ppc/spapr: Skip system reset for quiesced CPUs (bsc#1268279)
+
+-------------------------------------------------------------------
+Thu May 28 17:18:42 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest stable release (11.0.1)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260528061820.CEE521691A9@think4mjt.localdomain/
+  A selection of them is reported here below:
+   block/graph-lock: fix missed wakeup in bdrv_graph_co_rdunlock()
+   commit: Drain nodes across all of bdrv_commit()
+   block: Add more defaults to DEFAULT_BLOCK_CONF
+   block: Create DEFAULT_BLOCK_CONF macro
+   ide-test: Test reset during TRIM
+   ide-test: Factor out wait_dma_completion()
+   ide: Clean up ide_trim_co_entry() to be idiomatic coroutine code
+   ide: Minimal fix for deadlock between TRIM and drain
+   block: Add flags parameter to blk_*_pdiscard()
+   block: Add blk_co_start/end_request() and BDRV_REQ_NO_QUEUE
+   blkdebug: Add 'delay-ns' option
+   linux-user/sh4: Fix setup_sigtramp to match Linux kernel trampoline pattern
+   linux-user/sh4: Fix target_ucontext tuc_link field type
+   linux-user: Fix AT_EXECFN in AUXV for symlinked programs
+   hw/nvme: fix admin cq msix setup
+   target/arm/hvf: Fix WFI halting to stop idle vCPU spinning
+   tests/functional/qemu_test/asset.py: Don't use setxattr when it doesn't exist
+   hw/remote/machine.c: Mark x-remote machine as OK for AArch64 and AArch32
+   meson.build: Add -fzero-init-padding-bits=all
+   tests/qtest/iommu-smmuv3-test: Skip if no TCG GICv3 device present
+   ati-vga: fix ati_set_dirty address calculation
+   hw/i2c/microbit_i2c: Don't index off end of twi_read_sequence[]
+   aspeed/hace: Prevent total_req_len overflow
+   aspeed/hace: Fix out-of-bounds read in has_padding()
+   hw/misc/aspeed_sbc: Add bounds checking for OTP write operations
+   hw/display/cirrus_vga: Fix packed-24 color-expansion transparent copies
+   hw/display/cirrus_vga: Fix packed-24 color-expansion transparent pattern fills
+   hw/ufs: Zero reserved bytes in REPORT LUNS response header
+   hw/ufs: Keep MCQ SQs alive while requests are outstanding
+   hw/ufs: Reject zero-depth MCQ queues
+   hw/ufs: Guard MCQ CQ accesses against missing queues
+   hw/ufs: Validate MCQ SQ references before use
+   tests/functional: Make socat wait longer in migration exec test
+   hw/uefi: check auth.hdr_length minimum size
+   hw/uefi: avoid possibly unaligned variable_auth_2 struct field access
+   hw/uefi: verify data size before accessing it in wrap_pkcs7
+   hw/uefi: add name_size check to uefi_vars_mm_lock_variable()
+   hw/uefi: fix ucs2 string helper functions
+   hw/uefi: verify pio_xfer_offset before calculating buffer checksum
+   hw/uefi: fix buffer overruns
+   hw/misc/bcm2835_rng: Specify valid memory access sizes
+   ...
+
+- Fix bsc#1199023:
+  * [openSUSE] qemu-ga: fix service file against no-autostart (bsc#1199023)
+
+-------------------------------------------------------------------
+Fri May 22 10:44:47 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Package infra (service file):
+  * Move all the way back to tar_scm
+
+-------------------------------------------------------------------
+Thu May 21 15:01:37 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- spec file and infrastructure (services) changes:
+  * [openSUSE][RPM] spec: move away from update-alternatives (jsc#PED-15661)
+  * Switch back to tar.xz archive, as obscio is not ideal in git
+
+-------------------------------------------------------------------
+Sun Apr 26 22:41:44 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Start hardening qemu-ga against arbitrary command execution:
+  * qemu-ga: start limiting the security sensitive capabilities of the guest-agent
+
+-------------------------------------------------------------------
+Fri Apr 24 13:56:04 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Fix missing dependencies in some SLE build:
+  * [openSUSE][RPM] spec: fix suse_version and is_opensuse macros handling (jsc#PED-15770)
+
+-------------------------------------------------------------------
+Fri Apr 24 10:26:06 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 11.0.0 (jsc#PED-14599)
+  The full list of changes are available at:
+   https://wiki.qemu.org/ChangeLog/11.0
+  Highlights include:
+  * New "nitro" accelerator to run AWS Nitro Enclaves natively, and improved
+    support for MSHV and WHPX accelerators.
+  * KVM: Support for CET virtualization.
+  * KVM: Reset support for SEV-SNP and TDX confidential VMs.
+  * virtio-gpu support for native context drivers and specifying a unique
+    resolution for each output.
+  * TCG: in-tree support for C++ plugins.
+  * NFS block driver support for libnfs v6 and various improvements to
+    curl/FUSE block drivers.
+  * ARM: support for CPU features FEAT_ASID2 and FEAT_E2H0.
+  * ARM: TCG emulation support for SME (Scalable Matrix Extension), and HVF
+    accelation of SME2 on macos (if the host CPU supports it).
+  * HPPA: SeaBIOS-hppa v24 now implements the Astro PCI initializaiton
+    (allowing for PCI VGA on 64-bit systems), improves upcoming HP-UX
+    64-bit support, and has initial support for multicell machines.
+    Prior versions also have fixes and updates for 64-bit/PAT support and
+    other areas as well.
+  * HPPA: Emulation support for 64-bit CPUs with 40 and 44 bit address
+    spaces, and 64-bit GDB support.
+  * LoongArch: KVM PMU migration support.
+  * LoongArch: TCG emulation support for LA v1.1, sc.q, llacq/screl/ and
+    estimated reciprocal instructions.
+  * PowerPC: snapshot support for several ppc devices.
+  * RISC-V: ISA extensions support for Zilsd, Zclsd, ZALASR, and Smpmpmt.
+  * RISV-V: CPU support for MIPS P8700 CPUs, better reporting of CSR
+    registers in 'info registers', and other fixes and improvements.
+  * s390: emulation support for "DIVIDE TO INTEGER" instruction.
+  * s390: support for booting from virtio-blk-pci devices.
+  * x86: CPU support for Diamond Rapids
+  * x86: support for a new "nitro" accelerator and machine type to run
+    Nitro Enclaves natively under QEMU.
+  * and lots more...
+
+- Enable FUSE support
+  * [openSUSE][RPM] spec: enable fuse support
+
+- Disable building on 32bit hosts
+  * [openSUSE][RPM] spec: disable build for 32bit hosts
+
+-------------------------------------------------------------------
+Sat Apr 11 14:09:55 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Build QEMU with support for passt
+  * [openSUSE][RPM] spec: enable passt support
+
+-------------------------------------------------------------------
 Wed Mar 18 10:45:48 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest stable release (10.2.2)
