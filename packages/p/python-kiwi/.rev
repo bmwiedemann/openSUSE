@@ -3175,4 +3175,41 @@
   without a serial console attached</comment>
     <requestid>1351253</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>9eb04074ad1b1d9ffdd48d05d2d70fa1</srcmd5>
+    <version>10.3.9</version>
+    <time>1783697832</time>
+    <user>anag_factory</user>
+    <comment>- Bump version: 10.3.8 → 10.3.9
+
+- fixed return value for get video_mode
+  The method get_build_type_bootloader_video_mode() is expected
+  to return &quot;auto&quot; if no video mode is available. However a bug
+  in that method caused it to return a None value which should
+  not happen. This commit fixes the condition checking.
+  This Fixes #3023 and Fixes bsc#1271164
+
+- Fix derived container integration test
+  This integration test installed kiwi as part of the test.
+  Actually using a simpler application with less dependencies
+  increases the build time of the test and does not violate
+  the purpose of the test. This commit just sets the joe
+  editor as test package to install on top of the derived
+  container.
+
+- Bump version: 10.3.7 → 10.3.8
+
+- Add blocksize sanity check in oem dump
+  Dumping an image file to a target requires that the I/O blocksize
+  of the image file at creation time matches with the I/O blocksize
+  of the target device. If this is not the case the dumped image
+  will not be able to work on this target. Such issues are very
+  hard to debug and therefore this commit adds a blocksize sanity
+  check prior dumping the image to target. This Fixes bsc#1271057
+
+- Refactor credentials handling from the cmdline
+  When passing a repo definition on the cmdline it is
+  possible to provide the credentials information as</comment>
+    <requestid>1364923</requestid>
+  </revision>
 </revisionlist>

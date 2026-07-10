@@ -56,7 +56,7 @@
 %endif
 
 Name:           python-kiwi
-Version:        10.3.3
+Version:        10.3.9
 Provides:       kiwi-schema = 8.1
 Release:        0
 Url:            https://github.com/OSInside/kiwi
@@ -326,6 +326,7 @@ Requires:       squashfs
 %else
 Requires:       squashfs-tools
 %endif
+%ifnarch %{ix86} %{arm}
 %if "%{_vendor}" == "debbuild"
 Requires:       qemu-utils
 %else
@@ -333,6 +334,7 @@ Requires:       qemu-utils
 Requires:       qemu-tools
 %else
 Requires:       qemu-img
+%endif
 %endif
 %endif
 Requires:       kiwi-systemdeps-core = %{version}-%{release}
@@ -365,7 +367,6 @@ Requires:       gptfdisk
 Requires:       gdisk
 %endif
 Requires:       lvm2
-Requires:       parted
 Requires:       kpartx
 Requires:       cryptsetup
 Requires:       mdadm

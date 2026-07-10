@@ -1,4 +1,436 @@
 -------------------------------------------------------------------
+Fri Jul 10 13:43:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.8 → 10.3.9
+
+-------------------------------------------------------------------
+Fri Jul 10 11:11:46 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- fixed return value for get video_mode
+
+  The method get_build_type_bootloader_video_mode() is expected
+  to return "auto" if no video mode is available. However a bug
+  in that method caused it to return a None value which should
+  not happen. This commit fixes the condition checking.
+  This Fixes #3023 and Fixes bsc#1271164
+
+-------------------------------------------------------------------
+Fri Jul 10 10:40:57 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix derived container integration test
+
+  This integration test installed kiwi as part of the test.
+  Actually using a simpler application with less dependencies
+  increases the build time of the test and does not violate
+  the purpose of the test. This commit just sets the joe
+  editor as test package to install on top of the derived
+  container.
+
+-------------------------------------------------------------------
+Thu Jul 09 16:15:07 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.7 → 10.3.8
+
+-------------------------------------------------------------------
+Wed Jul 08 14:30:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add blocksize sanity check in oem dump
+
+  Dumping an image file to a target requires that the I/O blocksize
+  of the image file at creation time matches with the I/O blocksize
+  of the target device. If this is not the case the dumped image
+  will not be able to work on this target. Such issues are very
+  hard to debug and therefore this commit adds a blocksize sanity
+  check prior dumping the image to target. This Fixes bsc#1271057
+
+-------------------------------------------------------------------
+Tue Jul 07 11:32:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor credentials handling from the cmdline
+
+  When passing a repo definition on the cmdline it is
+  possible to provide the credentials information as
+  file name reference. Doing so deleted that file after
+  reading which is unexpected and should not be done.
+  This Fixes #2992
+
+-------------------------------------------------------------------
+Mon Jul 06 13:10:26 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Allow to build kis image without archiving
+
+  By default the files (kernel, initrd, system) plus the metadata
+  information (shasum, append) are all placed into a tar archive
+  and served as one entity. In some cases this archived bundle
+  is unwanted and users want to just handle the files individually.
+  To allow this a new type attribute named: archive="true|false"
+  is introduced which is evaluated for the kis type only at the
+  moment. If set to false no tar archive is produced and the
+  kiwi bundler handles all result files individually. In addition
+  the documentation around the topic has been improved/corrected.
+  This Fixes #3016
+
+-------------------------------------------------------------------
+Fri Jul 03 14:50:27 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Fix style and layout errors
+
+-------------------------------------------------------------------
+Fri Jul 03 12:42:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.6 → 10.3.7
+
+-------------------------------------------------------------------
+Fri Jul 03 12:40:36 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test_reading_custom_config_file unit test
+
+  The test intentionally reads all available config
+  files. As such the assertion must be specific to
+  the file we expect among others.
+
+-------------------------------------------------------------------
+Fri Jul 03 12:33:12 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.5 → 10.3.6
+
+-------------------------------------------------------------------
+Thu Jul 02 15:31:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Followup fix for sha512sum support
+
+  Yet another use of get_checksum_handler in the KIS builder
+  with only a filename and not file path reference
+
+-------------------------------------------------------------------
+Thu Jul 02 12:21:35 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Followup fix for sha512sum support
+
+  The use of get_checksum_handler in the KIS builder was
+  broken because the provided file did not exist at call
+  time of the method
+
+-------------------------------------------------------------------
+Wed Jul 01 18:16:49 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix reading of runtime config files
+
+  Make sure the reading of the runtime config files in the
+  different locations is not an exclusive procedure. According
+  to the systemd/uapi spec both vendor(/usr) and admin(/etc)
+  places needs to be taken into account and not only one.
+  In addition the drop-ins directories should also be taken
+  into account if their main file is not present.
+  This Fixes #3014
+
+-------------------------------------------------------------------
+Wed Jul 01 16:02:05 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add shasum_size set to 512 for fedora test builds
+
+-------------------------------------------------------------------
+Wed Jul 01 12:57:59 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix system resize
+
+  When resizing the partition table via sfdisk --relocate,
+  the resize failed when the device was locked beforehand.
+  In addition the resize of the actual filesystem failed
+  the prior filesystem check if the btrfs filesystem is
+  used. btrfs reports the free space cache to be outdated/corrupt
+  after kiwi has resized the partition table. This is an
+  expected condition prior resize of the filesystem and
+  should not prevent the following resize. As such the
+  filesystem check is not applied for btrfs prior resize.
+
+-------------------------------------------------------------------
+Mon Jun 29 19:17:00 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update settings
+
+  "onlyRequired" pattern should just be mandatory, while the "plusRecommended"
+  pattern would have default,mandatory,conditional. Also updated one integration
+  test to apply a pattern type for a reality check on the option settings.
+  Not sure though if it has an impact on the package selection. A small
+  group name with some optional packages in it for testing would be nice
+
+-------------------------------------------------------------------
+Mon Jun 29 18:02:01 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for sha512sum
+
+  Allow to select between the default shasum size 256 and 512
+  via a new runtime config section named: shasum
+  This Fixes #3004
+
+-------------------------------------------------------------------
+Mon Jun 29 16:02:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix dnf5 handling for patternType attribute
+
+  The patternType attribute is used to control the mandatory vs.
+  optional installation for the concept of patterns,groups aka collections
+  for the respective package manager. In dnf5 this is also controlled
+  by the group_package_types option which is used now in combination
+  with install_weak_deps. This Fixes #3008
+
+-------------------------------------------------------------------
+Mon Jun 29 15:45:54 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix Matrix room alias link
+
+  The index page of the documentation has a broken
+  link to the matrix room. This commit fixes it
+
+-------------------------------------------------------------------
+Mon Jun 29 11:33:02 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix qemu-xxx requirement
+
+  Do not require qemu variant packages for 32bit architectures.
+  This Fixes bsc#1263564
+
+  Co-authored-by: Ana Guerrero <ana.guerrero@suse.com>
+
+-------------------------------------------------------------------
+Wed Jun 17 13:06:22 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Rawhide test-image-live-disk
+
+  Add a build variant without shim for testing the vendor
+  directory lookup from the distro provided grub binary
+
+-------------------------------------------------------------------
+Wed Jun 17 12:54:56 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update Fedora test-image-live-disk
+
+  Add a build variant without shim for testing the vendor
+  directory lookup from the distro provided grub binary
+
+-------------------------------------------------------------------
+Fri Jun 12 11:39:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed grub vendor directory lookup
+
+  If the grub vendor directory cannot be found by the static
+  list of directories used to lookup the shim binary, kiwi also
+  checks the encoded boot paths from the distribution provided
+  grub binary. This information can be a multiline string holding
+  more than one path. With this commit we support multiple
+  vendor directories. This Fixes #3003
+
+-------------------------------------------------------------------
+Thu Jun 11 12:13:47 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update SLFO integration test build
+
+  Drop cloud toolchain packages to be part of this integration
+  test image. The way how the cloud toolchains are build cannot
+  be tested publicly.
+
+-------------------------------------------------------------------
+Wed Jun 10 13:01:24 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.4 → 10.3.5
+
+-------------------------------------------------------------------
+Mon Jun 01 16:31:32 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix test-image-custom-partitions integration test
+
+  Use partx to reread the partition table not partprobe
+
+-------------------------------------------------------------------
+Sun May 31 11:11:30 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Drop parted requirement for msdos partitioner
+
+  parted was used in kiwi at one place to set the active flag
+  on a partition in the DOS table. This action can also be
+  done via sfdisk and drops the parted requirement from the
+  kiwi builder code
+
+-------------------------------------------------------------------
+Wed May 20 11:21:29 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fixed partition name validation
+
+  The method get_partition_name returns a default name value
+  in case a partition name cannot be retrieved, for example
+  if the partition table does not support this value. In this
+  case the default name was 'unsupported'. However there is
+  a naming policy in kiwi for partition names to match 'p:name'
+  This policy is expected to be true and applied at some
+  places for example in create_dasd_partitions. If the default
+  name is in use which is the case on DASD devices because
+  no partition names exists, then the non policy conform default
+  name causes the method create_dasd_partitions to create
+  an invalid partition setup instructions file. This results
+  in the partition resize to fail. This commit fixes the
+  default name to match the policy as 'p:unsupported'
+
+-------------------------------------------------------------------
+Wed May 20 08:54:48 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix debian integration test build
+
+  For some reason kernel-obs-build is no longer found
+  for debian based image builds in OBS. The kernel
+  for the OBS worker is provided in OBS:DefaultKernel.
+  This commit adds this repo explicitly to make the
+  integration test build work again
+
+-------------------------------------------------------------------
+Mon May 18 10:41:42 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix rereading DASD partition table with partprobe
+
+  On s390 and with a DASD disk the rereading of the partition
+  table can only be done properly with partprobe. This commit
+  changes the dracut code to Require parted and partprobe only
+  for DASD disks on s390.
+
+  In addition this commit prevents the active device locking
+  for parted and partprobe when called in the context of a
+  DASD device. The reason for this change is because of a
+  patch in libparted which applies flock() itself in this
+  condition. For details see:
+
+  https://build.opensuse.org/projects/Base:System/packages/parted/files/libparted-make-BLKRRPART-more-robust.patch?expand=1
+
+  This change however does not exist in the upstream version
+  of parted which is causing problems that are hard to solve
+  by kiwi. However, a dead-lock condition should be avoided
+  and I think it's still better to have this change in kiwi
+  and convince people to upstream the above parted fix, rather
+  than living with a dead-lock condition due to double locking
+  in kiwi. This Fixes bsc#1263973
+
+-------------------------------------------------------------------
+Sat May 16 20:51:47 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Refactor bootloader video mode setting
+
+  The bootloader interface supported a generic vide mode
+  setting based on VESA VBE hex mode numbers. This value
+  could be set via the vga= kernel parameter and is obsolete
+  since a long time. kiwi did not set the vga value since
+  it is deprecated but it still used an internal table
+  mapping vide mode settings per bootloader using the
+  VBE hex numbers as matching key. This commit now finally
+  drops all of this mapping table and the obsolete vga
+  attribute from the type section and adds the new
+  video_mode attribute to the <bootloader> section
+  alongside with all other bootloader specific settings.
+  As of today the video_mode setting is evaluated by
+  the grub bootloader only but can be extended to other
+  loaders in the future. Please note there is by intention
+  no automatic translation from <type vga="hex_value">
+  into <bootloader video_mode="loader_specific_value">
+  because I would like to prevent to maintain custom
+  mapping tables for bootloader settings. This concept
+  did not pay off in the past for other bootloader
+  settings. An entry in the documentation has been
+  crated to support users with the proper value according
+  to the used bootloader. This Fixes #2998
+
+-------------------------------------------------------------------
+Thu May 14 05:55:50 CEST 2026 - Asish Kumar <officialasishkumar@gmail.com>
+
+- Return integer byte values from StringToSize.to_bytes()
+
+  StringToSize.to_bytes() is documented as returning an int, and
+  downstream callers such as XMLState.get_build_type_unpartitioned_bytes
+  declare a -> int return type. The implementation, however, used
+  math.pow(1024, n) to apply the unit multiplier, which always returns a
+  float. As a result every call with an m/M/g/G suffix returned a float
+  rather than an int, in violation of the docstring and the annotated
+  return type of the callers.
+
+  The float value propagated through the codebase. In particular,
+  DiskBuilder.append_unpartitioned_space() forwards the value from
+  <size unpartitioned="..." unit="M|G"> to
+  DiskFormatBase.resize_raw_disk(..., append=True), which formats it
+  straight into the qemu-img resize argument as
+
+  '+{0}'.format(size_bytes)
+
+  so the resulting argument carried a trailing '.0' (e.g.
+  '+104857600.0'). The image_resize task and any other consumer
+  formatting the value as a string saw the same trailing '.0'.
+
+  Replace math.pow(1024, n) with the integer expression 1024 ** n so the
+  function consistently returns an int for every supported input, add a
+  proper type annotation (size_value: str) -> int, and extend the unit
+  tests to assert isinstance(int) for both the unitless and unit-suffixed
+  inputs to guard against regressions.
+
+  Fixes #2996
+
+-------------------------------------------------------------------
+Tue May 12 10:48:43 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Add support for credentials handling for apt repos
+
+  If credentials information in form of user and password attributes
+  or only password (token), is passed as part of a <repository> element,
+  create the respective auth.conf.d/xxx.conf file for debian based
+  repositories such that this information can be used by apt.
+
+-------------------------------------------------------------------
+Tue May 12 09:37:21 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update documentation
+
+  Add details how to setup the keys to allow to enable
+  the repository signing key check for different
+  distributions
+
+-------------------------------------------------------------------
+Thu May 07 12:45:51 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Bump version: 10.3.3 → 10.3.4
+
+-------------------------------------------------------------------
+Thu May 07 12:11:44 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix ubuntu integration test build for arm
+
+  Make sure the coreutils package gets installed. Ubuntu
+  replaced several core tools by rust-coreutils but it seems
+  this action is not fully adopted to all packages. When
+  using rust-coreutils the bootstrap install of base-passwd.deb
+  failed with "6: cat: not found". Using the former coreutils
+  fixes this
+
+-------------------------------------------------------------------
+Thu May 07 11:50:03 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Fix ubuntu integration test build
+
+  Make sure the login package gets installed
+
+-------------------------------------------------------------------
+Thu May 07 10:41:04 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update grub module list for self build grub images
+
+  The UGA protocol was a precursor to the Unified EFI Graphics
+  Output Protocol (GOP) and is considered long-obsolete.
+
+-------------------------------------------------------------------
+Thu May 07 09:44:38 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
+
+- Update build tests
+
+  Move debian integration tests to Debian 13(trixie) and also
+  move Ubuntu integration tests to Ubuntu 26(resolut)
+
+-------------------------------------------------------------------
 Wed May 06 18:15:10 CEST 2026 - Marcus Schäfer <marcus.schaefer@gmail.com>
 
 - Bump version: 10.3.2 → 10.3.3
