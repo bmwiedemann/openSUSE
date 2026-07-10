@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 07 11:58:51 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1699_20260707:
+  * profiles: add cap_perfmon for ksystemstats6 (bsc#1262779)
+
+-------------------------------------------------------------------
 Tue May 12 13:21:44 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 1699_20260512:

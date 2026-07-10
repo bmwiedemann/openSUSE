@@ -1708,4 +1708,14 @@ https://lists.opensuse.org/archives/list/packaging@lists.opensuse.org/message/5F
   * README: document RPM installation time race condition</comment>
     <requestid>1352762</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>5c93ef651b731e6eb2edc8244a2fc0d8</srcmd5>
+    <version>1699_20260707</version>
+    <time>1783697486</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1699_20260707:
+  * profiles: add cap_perfmon for ksystemstats6 (bsc#1262779)
+</comment>
+    <requestid>1364277</requestid>
+  </revision>
 </revisionlist>

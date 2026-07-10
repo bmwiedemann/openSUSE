@@ -1,7 +1,6 @@
 #
 # spec file for package permissions
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +18,7 @@
 
 Name:           permissions
 # NOTE: the version prefix is synced with %%suse_version currently
-Version:        1699_20260512
+Version:        1699_20260707
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.
