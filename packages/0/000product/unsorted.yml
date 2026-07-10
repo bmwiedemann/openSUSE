@@ -12653,7 +12653,7 @@ unsorted:
   - libcapi20-3-32bit 
   - libcapi20-devel 
   - libcapi20-devel-32bit 
-  - libcapnp-1_4_0 
+  - libcapnp-1_5_0 
   - libcapnp-devel 
   - libcapstone-devel 
   - libcapstone-devel-static 
@@ -21375,7 +21375,6 @@ unsorted:
   - pascube 
   - pass-import 
   - pass-otp 
-  - passt-apparmor 
   - passwdqc 
   - passwdqc-devel 
   - password-store 
