@@ -480,4 +480,22 @@ After this PR, there will be a delete request for kernel-firmware.
   * cirrus: cs35l56: Update firmware for Cirrus Amps for some Dell laptops</comment>
     <requestid>1361048</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>f6b418624e3affb9efbec3edf5f7d517</srcmd5>
+    <version>20260706</version>
+    <time>1783697797</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * cirrus: cs35l56: Update firmware for the ASUS UX5406SA
+
+- Update to version 20260703 (git commit c95059a3774b):
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a few Dell laptops
+
+- Update to version 20260629 (git commit 3ee099cd4a20):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.4 build
+  * linux-firmware: Add firmware for new projects
+- Update aliases</comment>
+    <requestid>1364849</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul  9 09:58:22 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * cirrus: cs35l56: Update firmware for the ASUS UX5406SA
+
+-------------------------------------------------------------------
+Mon Jul  6 09:06:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260703 (git commit c95059a3774b):
+  * cirrus: cs42l45: Update CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l56: Add firmware for Cirrus Amps for a few Dell laptops
+
+-------------------------------------------------------------------
+Mon Jun 29 13:25:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260629 (git commit 3ee099cd4a20):
+  * linux-firmware: qcom: sync audioreach firmwares from v1.0.4 build
+  * linux-firmware: Add firmware for new projects
+- Update aliases
+
+-------------------------------------------------------------------
 Fri Jun 19 06:21:09 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260618 (git commit a8f9ebbaa645):

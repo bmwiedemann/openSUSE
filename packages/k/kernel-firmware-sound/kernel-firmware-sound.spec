@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version a8f9ebbaa64562fa6d9800c8fb3db87b63ed700f
+%define git_version 2c35b1ed46f661baaf14b08cebb9201ca802f939
 
 Name:           kernel-firmware-sound
-Version:        20260618
+Version:        20260706
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -70,12 +70,20 @@ Supplements:    modalias(acpi*:TXNW2770%3A*)
 Supplements:    modalias(acpi*:TXNW2781%3A*)
 Supplements:    modalias(acpi*:TXNW5825%3A*)
 Supplements:    modalias(hdaudio:v11020011r*a01*)
+Supplements:    modalias(of:N*T*Cfairphone%2Cfp4-sndcard)
+Supplements:    modalias(of:N*T*Cfairphone%2Cfp4-sndcardC*)
+Supplements:    modalias(of:N*T*Cfairphone%2Cfp5-sndcard)
+Supplements:    modalias(of:N*T*Cfairphone%2Cfp5-sndcardC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8186-dspC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8188-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8188-dspC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-dspC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcm6490-idp-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs615-sndcard)
@@ -88,8 +96,16 @@ Supplements:    modalias(of:N*T*Cqcom%2Cqcs9075-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9075-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9100-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cqcs9100-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb2210-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb2210-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb4210-rb2-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb4210-rb2-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb5165-rb5-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cqrb5165-rb5-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csc8280xp-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csc8280xp-sndcardC*)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8250-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Csm8250-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8450-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8450-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8550-sndcard)
@@ -98,21 +114,8 @@ Supplements:    modalias(of:N*T*Cqcom%2Csm8650-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8650-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8750-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Csm8750-sndcardC*)
-Supplements:    modalias(pci:v00001073d00000004sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Asv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Csv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d0000000Dsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d00000010sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v00001073d00000012sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000010B5d0000906Dsv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v0000125Dd00001988sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd00001989sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd00001990sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd00001992sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd00001998sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd00001999sv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd0000199Asv*sd*bc04sc01i*)
-Supplements:    modalias(pci:v0000125Dd0000199Bsv*sd*bc04sc01i*)
+Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Cx1e80100-sndcardC*)
 Supplements:    modalias(pci:v00008086d000002C8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d000006C8sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d00003198sv*sd*bc*sc*i*)
@@ -156,7 +159,6 @@ Supplements:    modalias(spi:cs35l41-hda)
 Supplements:    modalias(sst)
 Supplements:    modalias(usb:v086Ap0100d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v086Ap0102d*dc*dsc*dp*ic*isc*ip*in*)
-Supplements:    modalias(usb:v086Ap0110d*dc*dsc*dp*ic*isc*ip*in*)
 
 %description
 This package contains kernel firmware files for various sound drivers.
@@ -165,8 +167,9 @@ This package contains kernel firmware files for various sound drivers.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh sound < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh sound < WHENCE-dist > WHENCE
+
 
 %build
 # nothing to do
@@ -176,6 +179,7 @@ mv WHENCE.new WHENCE
 scripts/install-licenses.sh sound %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} sound < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}
