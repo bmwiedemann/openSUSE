@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Jul 10 01:03:24 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.8.6:
+  * FIX: old global path for BGMOD shown in command label
+  * FIX: Optiscaler doesn't check for updates on startup
+  * New implementation: Rewrote update and uninstall logic to avoid GitHub slowdowns
+  * Isolated Backups: Moved DLL backups to gameconfig/<game>/backups/ to avoid corruption
+  * Update Fixes: Resolved FSR version selection and OptiPatcher channel persistence
+  * Automate builds: Optiscaler, optipatcher, fakenvapi now have automatic builds
+  * Bleeding-edge channel: Now downloads the latest git code
+  * New Toggle: Added OBS_VKCAPTURE to the environment variables tab
+  * Cover Fallbacks: Added multi-CDN and web search fallbacks for Steam cover art
+  * Pascube data: Added more information to pascube benchmark + nickname support
+  * Updated Benchmarks: Synchronized hardware comparison scores from pascube database
+  * Safety Fallback: Implemented dynamic GPU 360p fallback for very low framerates
+  * Clean Uninstalls: Improved uninstall cleanup to remove wrapper DLLs and config files
+  * MangoHud Fixes: Made the engine_color configuration write unconditional
+  * EnvVar Preservation: Fixed a bug where saving or disabling tweaks would erase active tool variables
+  * Streamlined Badges: Simplified the multi-badge list on game cards into a single transparent GOverlay icon badge
+  * Modern Scrollbars: Added thin semitransparent scrollbars across all tabs
+  * Quick Actions: Added a floating action button (FAB) on game cards for options
+  * What's New: Added a frameless release notes popup dialog
+  * Update disable-passcube-build.patch to fit upstream
+
+-------------------------------------------------------------------
 Sat Jul  4 20:08:41 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Change nerd-symbolsonly-fonts to factory available symbols-only-nerd-fonts.

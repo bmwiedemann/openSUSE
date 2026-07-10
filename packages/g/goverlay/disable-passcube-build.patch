@@ -1,6 +1,6 @@
-diff '--color=auto' -rub goverlay-1.8.4.orig/Makefile goverlay-1.8.4/Makefile
---- goverlay-1.8.4.orig/Makefile	2026-06-20 14:54:09.000000000 -0300
-+++ goverlay-1.8.4/Makefile	2026-06-27 14:57:48.348232774 -0300
+diff --color -rub goverlay-1.8.6.orig/Makefile goverlay-1.8.6/Makefile
+--- goverlay-1.8.6.orig/Makefile	2026-07-06 18:36:41.000000000 -0300
++++ goverlay-1.8.6/Makefile	2026-07-09 21:14:19.787442467 -0300
 @@ -3,15 +3,11 @@
  libexecdir = /libexec
  datadir = /share
@@ -35,14 +35,14 @@ diff '--color=auto' -rub goverlay-1.8.4.orig/Makefile goverlay-1.8.4/Makefile
  install: goverlay data/goverlay.sh bgmod bgmod-uninstaller
  	install -D -m=755 goverlay $(DESTDIR)$(prefix)$(libexecdir)/goverlay
 -	install -D -m=755 pascube $(DESTDIR)$(prefix)$(libexecdir)/pascube
+ 	install -D -m=755 bgmod $(DESTDIR)$(prefix)$(libexecdir)/bgmod
+ 	install -D -m=755 bgmod-uninstaller $(DESTDIR)$(prefix)$(libexecdir)/bgmod-uninstaller
  	install -D -m=755 data/goverlay.sh $(DESTDIR)$(prefix)$(bindir)/goverlay
- 	install -D -m=644 data/io.github.benjamimgois.goverlay.desktop $(DESTDIR)$(prefix)$(datadir)/applications/io.github.benjamimgois.goverlay.desktop
- 	install -D -m=644 data/io.github.benjamimgois.goverlay.metainfo.xml $(DESTDIR)$(prefix)$(datadir)/metainfo/io.github.benjamimgois.goverlay.metainfo.xml
-@@ -68,7 +58,6 @@
+@@ -72,7 +62,6 @@
  
  uninstall:
  	rm -f $(DESTDIR)$(prefix)$(libexecdir)/goverlay
 -	rm -f $(DESTDIR)$(prefix)$(libexecdir)/pascube
+ 	rm -f $(DESTDIR)$(prefix)$(libexecdir)/bgmod
+ 	rm -f $(DESTDIR)$(prefix)$(libexecdir)/bgmod-uninstaller
  	rm -f $(DESTDIR)$(prefix)$(bindir)/goverlay
- 	rm -f $(DESTDIR)$(prefix)$(datadir)/applications/io.github.benjamimgois.goverlay.desktop
- 	rm -f $(DESTDIR)$(prefix)$(datadir)/metainfo/io.github.benjamimgois.goverlay.metainfo.xml

@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.8.4
+Version:        1.8.6
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -65,10 +65,11 @@ install -d %{buildroot}%{_libexecdir}/goverlay
 sed -i \
     -e 's/^StartupWMClass=.*/StartupWMClass=goverlay/' \
     %{buildroot}%{_datadir}/applications/io.github.benjamimgois.goverlay.desktop
-mv %{buildroot}%{_datadir}/goverlay/bgmod/{bgmod,bgmod-uninstaller} \
-   %{buildroot}%{_libexecdir}/goverlay/
 %{__strip} %{buildroot}/usr/lib64/goverlay
 rm -rf %{buildroot}%{_datadir}/goverlay/data/icons/{128x128,256x256,512x512}
+ln -sf %{_datadir}/icons/hicolor/128x128/apps/io.github.benjamimgois.goverlay.png \
+       %{buildroot}%{_datadir}/goverlay/assets/icons/goverlay.png
+%fdupes %{buildroot}%{_datadir}
 
 %check
 appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
@@ -77,14 +78,13 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/%{name}
 %{_libdir}/%{name}
-%dir %{_libexecdir}/goverlay
-%{_libexecdir}/goverlay/bgmod
-%{_libexecdir}/goverlay/bgmod-uninstaller
+%{_libdir}/bgmod
+%{_libdir}/bgmod-uninstaller
+%{_mandir}/man1/%{name}.1%{?ext_man}
+%{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}.png
-%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_datadir}/metainfo/io.github.benjamimgois.%{name}.metainfo.xml
 
 %changelog
