@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 4.12.0b2
+%define realversion 4.12.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-keys
-Version:        4.12.0~b2
+Version:        4.12.0~b3
 Release:        0
 Summary:        Microsoft Azure Key Vault Keys Client Library for Python
 License:        MIT
