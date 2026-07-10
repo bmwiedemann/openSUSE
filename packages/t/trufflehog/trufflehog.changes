@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:02:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.95.9:
+  * Don't log as error when git diff is too long (#5113)
+  * [INS-410] Added batch token detector (#4824)
+  * [INT-715] Retry transient failures when verifying OpenAI keys (#5117)
+  * feat: Support archived repo exclusion from GH org scans (#4875)
+  * feat(action): add image input to allow registry mirror overrides (#4965)
+  * [INS-468] Add improved lob detector to defaults.go (#4971)
+  * fix: reject --include-repos/--exclude-repos with --repo in github scan (#5112)
+  * [INS-467] Add IPinfo detector to default detectors list (#4970)
+  * [INS-341] Added Shippo detector (#4820)
+  * [INS-351] Added Duffel Token Detector (#4795)
+  * [INS-332] Add New Relic Insights Insert key detector (#4778)
+  * Integrations fully codeowns detectors (#5104)
+  * feat: add OpenRouter detector (#4500)
+
+-------------------------------------------------------------------
 Fri Jul 03 04:58:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.95.8:
