@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 07:00:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- freeciv 3.2.5:
+  * Fix No First City vs Currently has cities inconsistency on savegame loading
+  * AI: Enable rampage with more attack types
+  * Fixed floating point exception at air unit handling
+  * Clients: Display NeverProtects unit help in correct place
+  * gtk4: Fixed city trading
+  * qt: Fixed "Save Options pn Exit" toggle
+  * Miscellaneous changes to developer/install/ruleset docs
+  * Corrected encoding of the Hungarian translation
+  * Compatibility fixes for glibc-2.43, g++16, Qt-6.11
+
+-------------------------------------------------------------------
 Sat Mar 21 19:20:22 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - freeciv 3.2.4:

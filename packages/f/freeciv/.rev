@@ -270,4 +270,12 @@
     <comment>freeciv 3.2.4 CVE-2026-33250 boo#1260036 (forwarded request 1341729 from AndreasStieger)</comment>
     <requestid>1341730</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>ca28009cdfc1411d29d0e64b1590c71c</srcmd5>
+    <version>3.2.5</version>
+    <time>1783698543</time>
+    <user>anag_factory</user>
+    <comment>freeciv 3.2.5 (forwarded request 1364871 from AndreasStieger)</comment>
+    <requestid>1364872</requestid>
+  </revision>
 </revisionlist>
