@@ -871,4 +871,21 @@
     <comment></comment>
     <requestid>1334161</requestid>
   </revision>
+  <revision rev="102" vrev="7">
+    <srcmd5>6d0e7144155182a97c568780c7e26230</srcmd5>
+    <version>2.11</version>
+    <time>1783697693</time>
+    <user>anag_factory</user>
+    <comment>- Add Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
+  https://w1.fi/security/2026-2/
+- Add SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
+  https://w1.fi/security/2026-3/
+
+- Add CVE-2026-58374.patch: Missing multi-link parsing validation in
+  wpa_supplicant and hostapd (bsc#1269892)
+
+- Add wpa_supplicant_support_pem_encoded_chain.patch: OpenSSL:
+  Support PEM encoded chain from ca_cert blob (bsc#1258365).</comment>
+    <requestid>1364749</requestid>
+  </revision>
 </revisionlist>

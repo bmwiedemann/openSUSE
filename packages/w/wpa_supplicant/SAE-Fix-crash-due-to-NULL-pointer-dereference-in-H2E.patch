@@ -1,0 +1,44 @@
+From f12d55ff652ab2e367425c1392510d10d8b9f638 Mon Sep 17 00:00:00 2001
+From: Jimi Chen <jimictw@google.com>
+Date: Thu, 21 May 2026 06:56:54 +0000
+Subject: [PATCH] SAE: Fix crash due to NULL pointer dereference in H2E parsing
+
+In H2E (Hash-to-Element) mode, sae_parse_commit() parses the optional
+Anti-Clogging Token Container by calling sae_parse_token_container().
+
+However, callers of sae_parse_commit() that do not require retrieving
+the anti-clogging token (such as PASN initiator/responder and SME auth)
+pass NULL for the token and token_len output arguments.
+
+If the peer sends a Commit frame containing a valid Anti-Clogging
+Token Container element, sae_parse_token_container() unconditionally
+sets *token and *token_len, resulting in a NULL pointer dereference
+(SIGSEGV) and crashing wpa_supplicant.
+
+Fix this by adding NULL checks before writing to token and token_len.
+Update the debug log to print the token directly using 'pos'.
+
+Fixes: 5e32fb0170f4 ("SAE: Use Anti-Clogging Token Container element with H2E")
+Signed-off-by: Amarnath Hullur Subramanyam <amarnathhs@google.com>
+---
+ src/common/sae.c |    8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+--- a/src/common/sae.c
++++ b/src/common/sae.c
+@@ -1881,10 +1881,12 @@
+ 		    pos, end - pos);
+ 	if (!sae_is_token_container_elem(pos, end))
+ 		return;
+-	*token = pos + 3;
+-	*token_len = pos[1] - 1;
++	if (token)
++		*token = pos + 3;
++	if (token_len)
++		*token_len = pos[1] - 1;
+ 	wpa_hexdump(MSG_DEBUG, "SAE: Anti-Clogging Token (in container)",
+-		    *token, *token_len);
++		    pos + 3, pos[1] - 1);
+ }
+ 
+ 

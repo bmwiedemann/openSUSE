@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Jul  9 15:08:24 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
+  https://w1.fi/security/2026-2/
+- Add SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
+  https://w1.fi/security/2026-3/
+
+-------------------------------------------------------------------
+Wed Jul  8 10:04:36 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add CVE-2026-58374.patch: Missing multi-link parsing validation in
+  wpa_supplicant and hostapd (bsc#1269892)
+
+-------------------------------------------------------------------
+Wed Jul  8 02:01:21 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add wpa_supplicant_support_pem_encoded_chain.patch: OpenSSL:
+  Support PEM encoded chain from ca_cert blob (bsc#1258365).
+
+-------------------------------------------------------------------
 Fri Feb 20 10:45:10 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Enable CONFIG_EXT_PASSWORD_FILE to be able to load PSK and password

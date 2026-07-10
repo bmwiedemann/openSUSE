@@ -43,6 +43,14 @@ Patch6:         Revert-Mark-authorization-completed-on-driver-indica.patch
 Patch7:         CVE-2025-24912.patch
 # PATCH-FIX-UPSTREAM https://w1.fi/cgit/hostap/commit/?id=2ed9806275f9ae37545ca30d9bcce1e94fba1d97
 Patch8:         0001-wpa_gui-Port-to-Qt6.patch
+# PATCH-FIX-UPSTREAM bsc#1258365, https://git.w1.fi/cgit/hostap/commit/?id=9bb25b01fe843924113883a93236d43bb77d4cb1
+Patch9:         wpa_supplicant_support_pem_encoded_chain.patch
+# PATCH-FIX-UPSTREAM CVE-2026-58374, bsc#1269892 Missing multi-link parsing validation
+Patch10:        CVE-2026-58374.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-2/
+Patch11:        Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-3/
+Patch12:        SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  systemd-rpm-macros
