@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 10 04:57:04 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+  * kj: tolerate ERROR_INVALID_FUNCTION from
+    GetFileInformationByHandleEx
+  * Fix bare includes in ez-rpc.h
+  * Revert rpc.h include to relative form in ez-rpc.h
+  * Add repo_name = ssl for boringssl Bzlmod compatibility
+  * Replace c++/LICENSE.txt symlink with real file
+  * Support Bazel 9 in V1
+  * Address compiler errors when building against OpenSSL 4.0
+  * Maintain compatibility with older OpenSSL versions
+  * Scope testing to project
+  * KJ HTTP: validate request URL and status text before
+    serializing
+  * KJ HTTP: reject whitespace between header name and colon
+  * KJ HTTP: reject obsolete line folding
+  * Fix infinite recursion in KJ_CONTEXT when evaluating
+    parameters throws
+  * fix offset overflow in schema loader struct validation
+  * fix off-by-one write to membersByDiscriminant in schema
+    validator
+  * Limit nesting depth when lexing textual capnp schemas
+  * Clamp rpc Exception type enum.
+  * fix segment size overflow in message readers
+  * Document security issues fixed in Cap'n Proto v1.5.
+  * Fix KJ_CONTEXT throwing test with -fno-exceptions.
+  * Fix new warning about whitespace when defining a literal
+    suffix operator.
+  * Disable new complier warning on mac since it is blocking the
+    tests.
+
+-------------------------------------------------------------------
 Thu Mar 12 15:40:23 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.4.0

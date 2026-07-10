@@ -22,9 +22,9 @@
 %bcond_with clang
 %endif
 
-%define _libver 1_4_0
+%define _libver 1_5_0
 Name:           capnproto
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        A Data Serialization Format
 License:        MIT
