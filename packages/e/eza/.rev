@@ -1269,4 +1269,41 @@
   * Update nixpkgs/cargo dependencies</comment>
     <requestid>1310425</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>9d445491151e4f999ebaa770562762a0</srcmd5>
+    <version>0.23.5</version>
+    <time>1783697973</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.23.5:
+  Bug Fixes:
+  * Update cargo/nix deps
+  * Fix yaml icon
+  * Color code parsing in theme.yml
+  * Use secret GitHub token to avoid rate limiting
+  * Enable powertest tests in the CI
+  * Update integration tests
+  * Ignore extensions for directories when sorting
+  * Satisfy newer clippy and stabilise powertest.yaml
+  * Adapt Windows git2 path handling and refresh --help powertest
+  Features:
+  * Use Clap instead of manual cli args parsing
+  * Use version string from file for --version flag
+  * Add csv icon
+  * Implement --hyperlink=auto
+  * Add lines-of-code counting and summary
+  * Add --short-nix to abbreviate Nix store hashes
+  Miscellaneous Tasks:
+  * Fix a few Clippy warnings
+  * Clean global lint attributes and remove clippy::pedantic
+  * Replace #[allow(unused)] by #[cfg(unix)] when appropriate
+  * Update to Rust edition 2024
+  Security:
+  * Bump crossbeam-epoch 0.9.18 -&gt; 0.9.20
+  * Bump git2 0.20 -&gt; 0.21
+  Testing:
+  * Update time in long_time_style_relative_nix.stdout
+  * Update powertests
+  * Check sort by extension</comment>
+    <requestid>1364804</requestid>
+  </revision>
 </revisionlist>
