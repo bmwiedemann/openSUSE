@@ -37,6 +37,8 @@ Patch1:         GraphicsMagick-disable-insecure-coders.patch
 Patch7:         GraphicsMagick-CVE-2026-42050.patch
 # CVE-2026-46523: heap-use-after-free via a crafted MSL image [bsc#1268125]
 Patch8:         GraphicsMagick-CVE-2026-46523.patch
+# CVE-2026-13606: memory corruption via crafted Photo CD (PCD) file [bsc#1269891]
+Patch9:         GraphicsMagick-CVE-2026-13606.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

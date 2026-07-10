@@ -1426,4 +1426,12 @@ New Features:
     <comment>CVE-2026-46523, [bsc#1268125]</comment>
     <requestid>1361542</requestid>
   </revision>
+  <revision rev="107" vrev="4">
+    <srcmd5>9123febdf91b3008822e0568ce23fc5f</srcmd5>
+    <version>1.3.47</version>
+    <time>1783697653</time>
+    <user>anag_factory</user>
+    <comment>CVE-2026-13606, [bsc#1269891]</comment>
+    <requestid>1364710</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 12:07:43 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-13606: memory corruption via crafted Photo CD (PCD) file [bsc#1269891]
+  * GraphicsMagick-CVE-2026-13606.patch
+
+-------------------------------------------------------------------
 Wed Jun 24 06:35:57 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
