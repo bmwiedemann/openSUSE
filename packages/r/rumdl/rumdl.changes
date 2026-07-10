@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:02:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.30:
+  * Added
+    - MD007: clamp explicit fixed-style indent under ordered
+      parents (1f3a32d)
+  * Fixed
+    - lint-context: keep lazy continuation lines in their list
+      block (a17f0af)
+- Update to version 0.2.29:
+  * Fixed
+    - lint-context: keep indented continuation lines when a
+      different list type follows (5dd3c3f)
+    - MD013: treat tabs and extra spaces after a list marker as
+      marker padding (f0f97a2)
+
+-------------------------------------------------------------------
 Fri Jul 03 10:52:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.28:
