@@ -414,4 +414,41 @@ use private glib API but implement a share memory mkstemp</comment>
 - Update to version 2.43</comment>
     <requestid>1363463</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>730534b1feccdcd32b3b51bfdb1e240a</srcmd5>
+    <version>2.46</version>
+    <time>1783697670</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.46
+  Implement Plymouth-compatible display-message and hide-message commands
+  This commit adds support for the display-message and hide-message
+  Plymouth commands, allowing external tools to print status updates
+  directly to the boot console via blogctl.
+  Key changes:
+    Add MAGIC_SHOW_MSG and MAGIC_HIDE_MSG protocols to blogctl and
+    parse the --text= argument using getopt_long_only().
+    Broadcast display-message payloads to all active hardware consoles
+    via c-&gt;out() to ensure immediate visual feedback, while simultaneously
+    logging it to /var/log/boot.log via copylog().
+    Add \r\n line endings to printed messages to prevent the staircase
+    effect on serial terminals operating in raw mode.
+    Handle hide-message as a visual no-op (replying with an ACK only)
+    to deliberately avoid ANSI clear-screen sequences that would corrupt
+    the output on line-based, half-duplex consoles like the s390x 3215.
+    Update the blogctl.8 manual page to document the new commands and
+    their specific behavior regarding screen clearing.
+  Implement Plymouth-compatible ask-for-password and ask-question commands
+  This commit extends blogctl to act as a lightweight, fully functional
+  replacement for Plymouth's interactive prompt commands, allowing scripts
+  to securely ask for passwords or questions on the system console.
+  Key changes:
+    Add support for ask-for-password and ask-question in blogctl.
+    Use getopt_long_only() to robustly parse GNU-style long options
+    (--prompt, --command, --number-of-tries, --dont-pause-progress).
+    Offload the retry-loop and command execution (popen) entirely to
+    the blogctl client, keeping the blogd daemon simple and secure.
+    Fix an epoll EEXIST crash in console.c by separating the daemon's
+    process state (asking) from the requested prompt type (ask_mode),</comment>
+    <requestid>1364730</requestid>
+  </revision>
 </revisionlist>

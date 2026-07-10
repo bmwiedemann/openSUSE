@@ -17,7 +17,7 @@
 
 
 Name:           blog
-Version:        2.45
+Version:        2.46
 %define sonum   2
 Release:        0
 Summary:        Boot logging
@@ -66,6 +66,7 @@ Requires:       systemd
 Requires:       udev
 Conflicts:      plymouth
 Conflicts:      plymouth-dracut
+BuildArch:      noarch
 
 %description	plymouth
 The Blogd daemon can be used as a replacement for Plymouth in situations where
@@ -143,7 +144,6 @@ fi
 %endif
 
 %files
-%defattr(-,root,root)
 %license COPYING
 %doc README
 %if 0%{?suse_version} < 1550
@@ -169,15 +169,13 @@ fi
 %doc %{_mandir}/man8/showconsole.8.gz
 
 %files -n libblogger%{sonum}
-%{_libdir}/libblogger.so.*
+%attr(0755,root,root) %{_libdir}/libblogger.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/libblogger.h
 %{_libdir}/libblogger.so
 
 %files plymouth
-%defattr(-,root,root)
 %dir %{_prefix}/lib/dracut/
 %dir %{_prefix}/lib/dracut/modules.d/
 %dir %{_prefix}/lib/dracut/modules.d/99blog/

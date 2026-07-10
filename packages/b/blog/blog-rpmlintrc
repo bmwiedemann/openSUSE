@@ -1,2 +1,3 @@
 addFilter(".*systemd-service-without-service_del_p.*")
 addFilter(".*systemd-service-without-service_add_p.*")
+addFilter(".*W:.*no-%check-section.*")

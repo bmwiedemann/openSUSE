@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:40:53 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.46
+  Implement Plymouth-compatible display-message and hide-message commands
+
+  This commit adds support for the display-message and hide-message
+  Plymouth commands, allowing external tools to print status updates
+  directly to the boot console via blogctl.
+
+  Key changes:
+    Add MAGIC_SHOW_MSG and MAGIC_HIDE_MSG protocols to blogctl and
+    parse the --text= argument using getopt_long_only().
+    Broadcast display-message payloads to all active hardware consoles
+    via c->out() to ensure immediate visual feedback, while simultaneously
+    logging it to /var/log/boot.log via copylog().
+    Add \r\n line endings to printed messages to prevent the staircase
+    effect on serial terminals operating in raw mode.
+    Handle hide-message as a visual no-op (replying with an ACK only)
+    to deliberately avoid ANSI clear-screen sequences that would corrupt
+    the output on line-based, half-duplex consoles like the s390x 3215.
+    Update the blogctl.8 manual page to document the new commands and
+    their specific behavior regarding screen clearing.
+
+  Implement Plymouth-compatible ask-for-password and ask-question commands
+
+  This commit extends blogctl to act as a lightweight, fully functional
+  replacement for Plymouth's interactive prompt commands, allowing scripts
+  to securely ask for passwords or questions on the system console.
+
+  Key changes:
+    Add support for ask-for-password and ask-question in blogctl.
+    Use getopt_long_only() to robustly parse GNU-style long options
+    (--prompt, --command, --number-of-tries, --dont-pause-progress).
+    Offload the retry-loop and command execution (popen) entirely to
+    the blogctl client, keeping the blogd daemon simple and secure.
+    Fix an epoll EEXIST crash in console.c by separating the daemon's
+    process state (asking) from the requested prompt type (ask_mode),
+    resolving a race condition during socket handler registration.
+    Comply strictly with the Plymouth protocol: enforce 1-byte prompt
+    length limits, handle little-endian length headers (le32toh),
+    and ensure null-terminated payloads via asprintf.
+    Update the blogctl.8 manual page to document the new commands.
+
+  Back to use constructor for initial seed
+  for the process lifetime and inherited across fork()
+
+  Make tty wait logic real and fix SIGHUP/inotify cleanup
+  Better in-memory reversible obfuscation for cached passwords
+  This is not cryptographic protection against a memory-reading attacker.
+  It is only meant to avoid trivial/plaintext exposure in memory.
+
+  Fix resource leaks and harden IPC validations
+  This commit addresses several issues found by static code analysis,
+  focusing on memory hygiene, file descriptor management, and robust
+  error handling.
+
+  Key changes:
+    Fix memory and file descriptor leaks in error paths (proc.c, shm.c, tty.c)
+    and ensure all pending coldstart requests are freed on shutdown.
+    Harden the systemd ask-password interface by adding boundary checks
+    for UNIX socket paths, verifying sendto payloads, and gracefully
+    handling missing directories during early boot without fatal errors.
+    Improve IPC protocol safety by strictly validating the MAGIC_CHROOT
+    argument (must be an absolute path) and sending an explicit NACK on failure.
+    Prevent stale terminal states on s390x by clearing the VMCP cache
+    prior to parsing a new QUERY TERMINAL reply.
+
+  User the --wait option of the blogctl quit command
+  Add an --wait option specially for quit of blogctl
+
+  Fix gh##7
+  setting blog.silent=true causes it to be non-silent
+
+  Make shared library a executable
+
+  Refactor daemon to use synchronous signalfd and epoll event loop
+  This commit migrates the core architecture from traditional, asynchronous
+  signal handling to a modern, synchronous event loop using signalfd. By
+  integrating signal handling directly into the epoll multiplexer, we eliminate
+  race conditions, unexpected EINTR interruptions during I/O operations, and
+  complex reentrancy issues.
+  
+  Key changes:
+    Add setup_signalfd() to block essential signals (SIGINT, SIGQUIT, SIGTERM,
+    SIGSYS, SIGIO, SIGCHLD) globally and route them through a dedicated file
+    descriptor monitored by epoll.
+    Shield epoll_pwait() using a fully populated signal mask (omask) to
+    guarantee uninterrupted I/O processing.
+    Prevent socket handlers (MAGIC_SYS_INIT, MAGIC_CLOSE) from accidentally
+    unblocking signals and resetting dispositions when signalfd is active.
+    Sanitize the inherited signal mask in forked child processes
+    (e.g., systemd password prompts on tty) by resetting it to an empty
+    mask via sigprocmask(), ensuring agents run without restrictions.
+    Replace the ALIGNED_SIZEOF macro with a cleaner align_up(type, boundary)
+    macro and fix memset() sizes to correctly zero out trailing padding bytes.
+    Update the Makefile to compile a stripped-down fallback object
+    (signals_stripped.o compiled with -DNO_SIGNALFD) to ensure the passive
+    libblogger.so library remains unaffected by the signalfd architecture.
+
+  Some minor changes in quit and umount unit services
+
+  The HVC consoles are like sclp console
+  and can do colours as well
+
+-------------------------------------------------------------------
+Mon Jul  6 09:10:22 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Silent some rpmlint warnings 
+
+-------------------------------------------------------------------
 Thu Jul  2 10:33:48 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.45
