@@ -3012,6 +3012,7 @@ unsorted:
   - crow-translate-lang 
   - crudini 
   - crun 
+  - crun-krun 
   - crun-vm 
   - cryfs 
   - cryptctl 
@@ -4340,6 +4341,11 @@ unsorted:
   - fleet-cli-fish-completion 
   - fleet-cli-zsh-completion 
   - flex 
+  - flexiblas 
+  - flexiblas-devel 
+  - flexiblas-man 
+  - flexiblas-netlib 
+  - flexiblas-openblas-pthreads 
   - flickcurl 
   - flickcurl-doc 
   - flickrnet 
@@ -13118,7 +13124,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_15_3 
+  - libdwarfs0_15_4 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -15165,6 +15171,8 @@ unsorted:
   - libnvidia-egl-x111 
   - libnvidia-egl-x111-32bit 
   - libnvme-devel 
+  - libnvme-mi1 
+  - libnvme3-devel 
   - libnxml-devel 
   - libnxml0 
   - libo2scl0 
@@ -24240,6 +24248,7 @@ unsorted:
   - python3-libixion 
   - python3-libnbd 
   - python3-libnvme 
+  - python3-libnvme3 
   - python3-liborcus 
   - python3-libpamtest 
   - python3-libpkgmanifest 
