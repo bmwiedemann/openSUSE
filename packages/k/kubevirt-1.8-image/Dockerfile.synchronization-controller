@@ -32,6 +32,8 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt1.8-virt-synchronization-controller | \
     cut -d '.' -f -2)" = "1.8" ]
+RUN set -euo pipefail; if rpm --root /target -q compat-usrmerge-tools; then rpm --root /target -e compat-usrmerge-tools; fi
+
 RUN set -euo pipefail; useradd -u 1001 --create-home -s /bin/bash virt-synchronization-controller
 
 

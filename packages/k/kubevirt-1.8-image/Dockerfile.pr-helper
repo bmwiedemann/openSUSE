@@ -32,6 +32,8 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt1.8-pr-helper-conf | \
     cut -d '.' -f -2)" = "1.8" ]
+RUN set -euo pipefail; if rpm --root /target -q compat-usrmerge-tools; then rpm --root /target -e compat-usrmerge-tools; fi
+
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
