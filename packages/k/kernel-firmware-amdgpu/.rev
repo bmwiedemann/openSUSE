@@ -732,4 +732,14 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: Update gc 11.0.1 microcode</comment>
     <requestid>1361019</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>a19b7522e417c6ae482f13752ebddec7</srcmd5>
+    <version>20260629</version>
+    <time>1783697707</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260629 (git commit 3ee099cd4a20):
+  * amdgpu: DMCUB updates for various ASICs
+  * amdgpu: DMCUB updates for various ASICs</comment>
+    <requestid>1364839</requestid>
+  </revision>
 </revisionlist>
