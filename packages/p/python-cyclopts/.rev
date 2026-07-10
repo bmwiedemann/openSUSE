@@ -15,4 +15,12 @@
     <comment>Update python-cyclopts to 4.20.0: add 'cyclopts tree' command, Parameter.short_alias, ArgumentCollection.filter_by(missing=...); fix leading-hyphen parsing regression</comment>
     <requestid>1362571</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>efc6acf7caf75c472310057328d8003d</srcmd5>
+    <version>4.21.0</version>
+    <time>1783698156</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.21.0 (negative_alias for flags, fix dataclass default_factory validation)</comment>
+    <requestid>1364811</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:14:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.21.0:
+  * Add Parameter.negative_alias to append extra names to a flag's
+    negative form without dropping the generated --no-*/--empty-*
+    names
+  * Fix a spurious "Input should be a valid list" validation error
+    for dataclass commands with a default_factory field when
+    pydantic is imported; factory defaults are now invoked during
+    introspection so the produced value is used as the default and
+    shown in help text
+
+-------------------------------------------------------------------
 Tue Jun 30 05:50:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.20.0:
