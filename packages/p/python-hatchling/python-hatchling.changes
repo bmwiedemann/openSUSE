@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 19:24:20 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.31.0:
+  * Fixed: Only rewrite the shebang of a shared script when
+    a Python shebang is present on the first line, preserving
+    binary files and other content verbatim instead of dropping
+    leading bytes.
+
+-------------------------------------------------------------------
 Tue Jun  2 19:18:51 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.30.1:
