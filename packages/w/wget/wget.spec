@@ -1,7 +1,7 @@
 #
 # spec file for package wget
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -36,6 +36,14 @@ Patch2:         wget-fix-pod-syntax.diff
 Patch3:         wget-errno-clobber.patch
 Patch4:         remove-env-from-shebang.patch
 Patch5:         wget-do-not-propagate-credentials.patch
+#PATCH-FIX-UPSTREAM commit 37a40fcb450153f69537c7cbc2a7a4fb0b6f7826
+Patch6:         CVE-2026-58469.patch
+#PATCH-FIX-UPSTREAM commit 43d3ba9336bc94937e6fae2365c6ffd30c34ffcf
+Patch7:         CVE-2026-58470.patch
+#PATCH-FIX-UPSTREAM commit c2640fe5171c59f87c58dc9fcb195b2d18b010ee
+Patch8:         CVE-2026-58471.patch
+#PATCH-FIX-UPSTREAM commit dd692d9cea5335b181d877ae917fe6e75587a812
+Patch9:         CVE-2026-58472.patch
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(gpgme) >= 0.4.2

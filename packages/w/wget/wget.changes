@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:06:45 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix buffer underflow in clean_metalink_link
+  [bsc#1271033, CVE-2026-58469]
+  * CVE-2026-58469.patch
+- Fix integer overflow in parse_content_range
+  [bsc#1271034, CVE-2026-58470]
+  * CVE-2026-58470.patch
+- Fix buffer size handling in filename conversion
+  [bsc#1271035, CVE-2026-58471]
+  * CVE-2026-58471.patch
+- Fix integer+buffer overflow in html_quote_string
+  [bsc#1271036, CVE-2026-58472]
+  * CVE-2026-58472.patch
+
+-------------------------------------------------------------------
 Fri Jul 25 15:40:26 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - adjust gpgme (and other) build dependencies for future-proofing
