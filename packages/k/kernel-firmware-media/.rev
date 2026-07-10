@@ -226,4 +226,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361034</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3b712be01b22df344a19e790121a8867</srcmd5>
+    <version>20260706</version>
+    <time>1783697749</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * qcom: vpu: add Gen2 firmware binary for Purwa</comment>
+    <requestid>1364843</requestid>
+  </revision>
 </revisionlist>

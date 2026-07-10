@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul  9 09:58:11 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260706 (git commit 2c35b1ed46f6):
+  * qcom: vpu: add Gen2 firmware binary for Purwa
+
+-------------------------------------------------------------------
 Wed Jun 10 14:15:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260610 (git commit e7eb98afc667):
