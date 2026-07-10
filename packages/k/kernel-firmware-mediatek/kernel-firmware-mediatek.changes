@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jun 29 13:24:51 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260629 (git commit 3ee099cd4a20):
+  * mediatek MT7922: update bluetooth firmware to 20260605203811
+  * mediatek MT7925: update bluetooth firmware to 20260605184935
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * linux-firmware: update firmware for MT7922 WiFi device
+- Update aliases
+
+-------------------------------------------------------------------
 Mon Jun 22 08:59:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260619 (git commit 37976b9ded44):

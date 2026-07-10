@@ -63,6 +63,7 @@ mt76x2u: usb:v045Ep02E6d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0471p2126d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0471p7600d*dc*dsc*dp*ic*isc*ip*in*
+mt76x2u: usb:v056Ep400Ad*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v057Cp8503d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0846p9014d*dc*dsc*dp*ic*isc*ip*in*
 mt76x2u: usb:v0846p9053d*dc*dsc*dp*ic*isc*ip*in*
@@ -85,12 +86,18 @@ mt7921s: sdio:c*v037Ad7901*
 mt7921s: sdio:c*v037Ad7902*
 mt7921u: usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v0846p9065d*dc*dsc*dp*icFFiscFFipFFin*
+mt7921u: usb:v0E8Dp7902d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v3574p6211d*dc*dsc*dp*icFFiscFFipFFin*
 mt7921u: usb:v35BCp0107d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925e: pci:v000014C3d00000717sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00000738sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00006639sv*sd*bc*sc*i*
 mt7925e: pci:v000014C3d00007925sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00007927sv*sd*bc*sc*i*
+mt7925u: usb:v0846p9050d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925u: usb:v0846p9072d*dc*dsc*dp*icFFiscFFipFFin*
+mt7925u: usb:v0E8Dp6639d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925u: usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*
 mt7996e: pci:v000014C3d00007990sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007991sv*sd*bc*sc*i*
@@ -98,6 +105,8 @@ mt7996e: pci:v000014C3d00007992sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d00007993sv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d0000799Asv*sd*bc*sc*i*
 mt7996e: pci:v000014C3d0000799Bsv*sd*bc*sc*i*
+mt8196: of:N*T*Cmediatek%2Cmt8196-emi
+mt8196: of:N*T*Cmediatek%2Cmt8196-emiC*
 mtk_2p5ge: mdio:0000000000110011100111??????????
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scp
 mtk_scp: of:N*T*Cmediatek%2Cmt8183-scpC*

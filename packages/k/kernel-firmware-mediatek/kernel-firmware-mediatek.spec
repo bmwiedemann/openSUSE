@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 37976b9ded44acaf77a02f6bd0e2c4a32290485e
+%define git_version 3ee099cd4a2091e0395a05b8fe27099ad2398aea
 
 Name:           kernel-firmware-mediatek
-Version:        20260619
+Version:        20260629
 Release:        0
 Summary:        Kernel firmware files for Mediatek network drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260610.tar.gz#/kernel-firmware-tools-20260610.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -70,10 +70,14 @@ Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-scp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-scp-dual)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-scp-dualC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-scpC*)
+Supplements:    modalias(of:N*T*Cmediatek%2Cmt8196-emi)
+Supplements:    modalias(of:N*T*Cmediatek%2Cmt8196-emiC*)
 Supplements:    modalias(pci:v00000B48d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000608sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000616sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00000717sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00000738sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00006639sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007602sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007610sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007611sv*sd*bc*sc*i*)
@@ -87,6 +91,7 @@ Supplements:    modalias(pci:v000014C3d00007902sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007920sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007922sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007925sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v000014C3d00007927sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007961sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007990sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C3d00007991sv*sd*bc*sc*i*)
@@ -105,11 +110,13 @@ Supplements:    modalias(usb:v045Ep02FEd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0471p2126d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0471p7600d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v04BBp0951d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v056Ep400Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v057Cp8502d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v057Cp8503d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0586p3425d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v07B8p7610d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9014d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0846p9050d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9053d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0846p9060d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0846p9065d*dc*dsc*dp*icFFiscFFipFFin*)
@@ -122,6 +129,7 @@ Supplements:    modalias(usb:v0B05p180Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0B05p1833d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0075d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0DF6p0079d*dc*dsc*dp*ic*isc*ip*in*)
+Supplements:    modalias(usb:v0E8Dp6639d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E8Dp760Ad*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp760Bd*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp7610d*dc*dsc*dp*ic*isc*ip*in*)
@@ -129,6 +137,7 @@ Supplements:    modalias(usb:v0E8Dp7612d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp7630d*dc*dsc*dp*icFFisc02ipFFin*)
 Supplements:    modalias(usb:v0E8Dp7632d*dc*dsc*dp*ic*isc*ip*in*)
 Supplements:    modalias(usb:v0E8Dp7650d*dc*dsc*dp*icFFisc02ipFFin*)
+Supplements:    modalias(usb:v0E8Dp7902d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E8Dp7925d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v0E8Dp7961d*dc*dsc*dp*icFFiscFFipFFin*)
 Supplements:    modalias(usb:v13B1p003Ed*dc*dsc*dp*ic*isc*ip*in*)
@@ -170,8 +179,9 @@ This package contains kernel firmware files for Mediatek network drivers.
 %autosetup -p1
 tar xf %{S:1} --strip-components=1
 # strip down WHENCE for the topic
-scripts/strip-topic-whence.sh mediatek < WHENCE > WHENCE.new
-mv WHENCE.new WHENCE
+cp WHENCE WHENCE-dist
+scripts/strip-topic-whence.sh mediatek < WHENCE-dist > WHENCE
+
 
 %build
 # nothing to do
@@ -181,6 +191,7 @@ mv WHENCE.new WHENCE
 scripts/install-licenses.sh mediatek %{buildroot}%{_licensedir}/%{name}
 install -c -D -m 0644 WHENCE %{buildroot}%{_licensedir}/%{name}/WHENCE
 install -c -D -m 0644 README.md %{buildroot}%{_docdir}/%{name}/README.md
+scripts/strip-topic-whence.sh -t %{buildroot}%{_docdir}/%{name} mediatek < WHENCE-dist
 
 %post
 %{?regenerate_initrd_post}

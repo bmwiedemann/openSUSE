@@ -389,4 +389,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361035</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>8199b9d77afb1f32e5da635d8a40aaf7</srcmd5>
+    <version>20260629</version>
+    <time>1783697758</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260629 (git commit 3ee099cd4a20):
+  * mediatek MT7922: update bluetooth firmware to 20260605203811
+  * mediatek MT7925: update bluetooth firmware to 20260605184935
+  * linux-firmware: update firmware for MT7925 WiFi device
+  * linux-firmware: update firmware for MT7922 WiFi device
+- Update aliases</comment>
+    <requestid>1364844</requestid>
+  </revision>
 </revisionlist>
