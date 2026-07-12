@@ -17,7 +17,7 @@
 
 
 Name:           go-passbolt-cli
-Version:        0.5.0
+Version:        0.5.1
 Release:        0
 Summary:        A CLI tool to interact with Passbolt
 License:        MIT

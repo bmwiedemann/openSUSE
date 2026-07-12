@@ -95,4 +95,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1359108</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>aa7b824429f3e37c1769cdbb3c820c88</srcmd5>
+    <version>0.5.1</version>
+    <time>1783866086</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.1:
+  * PB-52863 - Bump go SDK to v0.8.1
+  * PB-52794 - Update go dependencies
+  * PB-52300 - Go - Add fuzzing tests
+  * PB-52299 - Go - Configure to run benchmark tests
+  * PB-50601 - Go - tests - cel filtering
+  * PB-50602 - Go - tests - json output
+  * PB-50604 - Go - tests - error handling
+  * PB-50603 - Go - tests - configuration loading
+  * PB-52151 - Go - phase 1 - Reorganize files structure
+  * PB-52142 - Minor upgrade for golang.org/x/crypto (Medium)
+  * PB-50552 - Go - phase 1 - Unify CEL filters
+  * PB-50555 - Go - phase 1 - Improve error messages
+  * PB-50554 - Go - phase 1 - Standardize error wrapping
+  * PB-50551 - Go phase 1 - Extract common CRUD logic
+  * PB-50550 - Go phase 1 - Shared command builder
+  * PB-50553 - Go phase 1 - Shared output utilities
+</comment>
+    <requestid>1364953</requestid>
+  </revision>
 </revisionlist>

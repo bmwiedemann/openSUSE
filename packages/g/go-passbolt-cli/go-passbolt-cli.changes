@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 10 16:26:38 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
+
+- Update to version 0.5.1:
+  * PB-52863 - Bump go SDK to v0.8.1
+  * PB-52794 - Update go dependencies
+  * PB-52300 - Go - Add fuzzing tests
+  * PB-52299 - Go - Configure to run benchmark tests
+  * PB-50601 - Go - tests - cel filtering
+  * PB-50602 - Go - tests - json output
+  * PB-50604 - Go - tests - error handling
+  * PB-50603 - Go - tests - configuration loading
+  * PB-52151 - Go - phase 1 - Reorganize files structure
+  * PB-52142 - Minor upgrade for golang.org/x/crypto (Medium)
+  * PB-50552 - Go - phase 1 - Unify CEL filters
+  * PB-50555 - Go - phase 1 - Improve error messages
+  * PB-50554 - Go - phase 1 - Standardize error wrapping
+  * PB-50551 - Go phase 1 - Extract common CRUD logic
+  * PB-50550 - Go phase 1 - Shared command builder
+  * PB-50553 - Go phase 1 - Shared output utilities
+
+-------------------------------------------------------------------
 Sat Jun  6 17:00:13 UTC 2026 - Sai Karthik Karra <kskarthik@disroot.org>
 
 - spec: Bump minimum go version to >=1.25
