@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Jul 12 04:47:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.1:
+  * Bug-fix and security release hardening the file-format
+    parsers against crashes found by fuzzing: many null-pointer
+    dereferences, heap out-of-bounds reads/writes, integer
+    overflows and underflows are now guarded across GAMESS,
+    Gaussian, COF/Dalton/MOPAC/molden/YOB and other
+    readers, and dangling-pointer/leak issues were fixed
+  * Fix out-of-bounds write in the InChI writer for molecules
+    with more than 20 bonds
+  * Guard the GAMESS output reader against malformed geometry
+    blocks whose coordinate count is not a multiple of three
+    (CVE-2025-10994, boo#1250542)
+  * Fix an unsigned underflow in the SMILES implicit-hydrogen
+    computation for hypervalent atoms (CVE-2025-10996,
+    boo#1250544)
+  * Correct the tetrazole deprotonation patterns in the pH model
+  * Build fixes for system InChI headers and the PHP bindings;
+    only look for wxWidgets when the GUI is requested
+
+-------------------------------------------------------------------
+Tue Jun 30 19:03:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop test fixtures with incompatible licenses (boo#1269820):
+  * remove test/fuzz/FuzzedDataProvider.h and
+    test/files/fuzz_regress/methane-pointgroup.g09 -- test-only
+    data carrying Apache-2.0-WITH-LLVM-exception and proprietary
+    Gaussian-09 output; never compiled in or shipped, removed to
+    keep the source tree free of incompatible-licensed material
+  * add openbabel-3.2.0-drop-incompatible-fuzz-harnesses.patch to
+    unwire the fuzz harnesses that include the removed header so
+    the test suite keeps building (CVE coverage retained via the
+    fuzz_obconversion_{sdf,smiles} harnesses)
+
+-------------------------------------------------------------------
 Sun Jun 21 16:16:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Reference the tracking bugs for the security issues already fixed in

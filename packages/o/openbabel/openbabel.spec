@@ -17,7 +17,7 @@
 
 
 # Upstream version is "openbabel-major-minor-patch" instead of "major.minor.patch"
-%define upstream_version openbabel-3-2-0
+%define upstream_version openbabel-3-2-1
 # The major ABI version of the shared library
 %define abiver 8
 # Allow disabling maestro (.mae) file support (enabled by default)
@@ -25,7 +25,7 @@
 # Allow disabling GUI build (enabled by default)
 %bcond_without gui
 Name:           openbabel
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        A chemistry toolbox
 License:        GPL-2.0-only
@@ -33,6 +33,8 @@ URL:            https://openbabel.org
 Source0:        https://github.com/openbabel/openbabel/archive/%{upstream_version}/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM openbabel-3.1.1-wx-stl-compat.patch -- Fix build with wxWidgets using STL (gh#openbabel/openbabel!2527)
 Patch0:         openbabel-3.1.1-wx-stl-compat.patch
+# PATCH-FIX-OPENSUSE openbabel-3.2.0-drop-incompatible-fuzz-harnesses.patch boo#1269820 -- Unwire the fuzz harnesses that include the removed Apache-2.0-WITH-LLVM-exception FuzzedDataProvider.h header so the test suite still builds without it
+Patch1:         openbabel-3.2.0-drop-incompatible-fuzz-harnesses.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  gcc-c++
 BuildRequires:  inchi-devel >= 1.04
@@ -115,6 +117,26 @@ biochemistry, or related areas.
 
 %prep
 %autosetup -p1 -n "%{name}-%{upstream_version}"
+
+# boo#1269820: drop test-only fixtures whose licenses are incompatible with
+# this GPL-2.0-only package.  test/fuzz/FuzzedDataProvider.h is an
+# Apache-2.0-WITH-LLVM-exception fuzzing helper and
+# test/files/fuzz_regress/methane-pointgroup.g09 is captured proprietary
+# Gaussian-09 output; neither is ever compiled into or shipped by any
+# subpackage.  They are removed here so the source tree carries no
+# incompatible-licensed material for future legal reviews.
+rm -f test/fuzz/FuzzedDataProvider.h
+rm -f test/files/fuzz_regress/methane-pointgroup.g09
+# The fuzz harnesses that #include the removed FuzzedDataProvider.h are built
+# unconditionally with the test suite; Patch1 unwires them from
+# test/CMakeLists.txt, so drop their now-unreferenced sources and corpora too.
+# Independent CVE coverage is retained via the fuzz_obconversion_{sdf,smiles}
+# harnesses, which do not use the header.
+rm -f test/fuzz/fuzz_convert.cpp test/fuzz/fuzz_molecule.cpp \
+      test/fuzz/fuzz_smart.cpp test/fuzz/fuzz_empty_write.cpp \
+      test/fuzz/fuzz_depict.cpp
+rm -rf test/fuzz/corpus/fuzz_convert test/fuzz/corpus/fuzz_smart \
+       test/fuzz/corpus/fuzz_empty_write
 
 %build
 %define __builder ninja

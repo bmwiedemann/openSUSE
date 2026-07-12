@@ -374,4 +374,20 @@
     <comment></comment>
     <requestid>1360857</requestid>
   </revision>
+  <revision rev="44" vrev="3">
+    <srcmd5>0374cfd7e418e294a26236ddbb3e55aa</srcmd5>
+    <version>3.2.0</version>
+    <time>1782916683</time>
+    <user>anag_factory</user>
+    <comment>Drop test-only fixtures carrying licenses incompatible with the GPL-2.0-only package (boo#1269820): remove test/fuzz/FuzzedDataProvider.h (Apache-2.0-WITH-LLVM-exception) and test/files/fuzz_regress/methane-pointgroup.g09 (proprietary Gaussian-09 output), plus a patch unwiring the fuzz harnesses that include the header so the suite still builds. Never shipped; build + full %check green.</comment>
+    <requestid>1362729</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>d0f47fababea74d54e080700dd327cf7</srcmd5>
+    <version>3.2.1</version>
+    <time>1783874277</time>
+    <user>dimstar_suse</user>
+    <comment>openbabel 3.2.1 (bug-fix/security release; CVE-2025-10994 boo#1250542, CVE-2025-10996 boo#1250544). Resubmit with corrected changelog.</comment>
+    <requestid>1365043</requestid>
+  </revision>
 </revisionlist>
