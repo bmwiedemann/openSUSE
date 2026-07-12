@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:18:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.5:
+  + appsink: Clear local sample storage when flushing
+  + appsrc: Uniformly handle EOS events being pushed
+  + audio-resampler-neon fails to build for targets with neon but
+    without thumb
+  + encoding-target: Validate that encoding profile name is UTF-8
+    before using it
+  + gldownload: fix wrong DRM format negotiation causing R/B
+    channel swap
+  + opusdec: Don't use any channel positions for >64 channels
+  + rtcpbuffer: Fix parsing of SR+SDES compound packets (regression
+    from security fix)
+  + subparse: Don't allow very small framerates for microdvd
+    subtitles
+  + typefind: assorted fixes for the image-rs plugin typefinding
+  + typefindhelper: Drop unnecessary check for factories without a
+    function
+  + WBMP typefinding rejects a valid 1280x800 file
+  + typefinding: detect animation on PNG (and WebP, GIF, AVIF)
+  + typefindfunctions: remove Sun and Andrew raster format
+    typefinders
+  + uridecodebin3: deactivate input_item in erroneous ready->paused
+    transition
+  + vorbistag: Check for enough base64 data before trying to decode
+  + xmptag: Don't allocate -1 bytes of memory if there's only a
+    single tag
+  + xmptag: Handle fractions with 0 denominator as invalid
+
+-------------------------------------------------------------------
 Fri Jun 12 16:11:39 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.28.4:
