@@ -1,7 +1,7 @@
 #
 # spec file for package python-tiny-proxy
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-tiny-proxy%{psuffix}
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 Summary:        Simple proxy server (SOCKS4(a), SOCKS5(h), HTTP tunnel)
 License:        Apache-2.0
@@ -34,7 +34,6 @@ URL:            https://github.com/romis2012/tiny-proxy
 # gh#romis2012/tiny-proxy#2
 Source:         https://github.com/romis2012/tiny-proxy/archive/refs/tags/v%{version}.tar.gz#/tiny-proxy-%{version}.tar.gz
 # Source:         https://files.pythonhosted.org/packages/source/t/tiny-proxy/tiny_proxy-%%{version}.tar.gz
-BuildRequires:  %{python_module httpx}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -54,7 +53,6 @@ BuildRequires:  %{python_module trustme}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-anyio >= 3.6.1
-Requires:       python-httpx
 BuildArch:      noarch
 %python_subpackages
 

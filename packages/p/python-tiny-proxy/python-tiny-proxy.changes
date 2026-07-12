@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jun 14 19:46:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.0:
+  * Move project metadata to pyproject.toml
+  * Update README.md
+
+-------------------------------------------------------------------
 Thu Feb 27 11:53:19 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}
