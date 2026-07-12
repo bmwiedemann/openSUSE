@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul  8 18:27:02 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026c:
+  * Alberta moved to permanent -06 on 2026-06-18
+  * Morocco moves to permanent +00 on 2026-09-20
+  * More integer overflow bugs have been fixed in zic
+
+-------------------------------------------------------------------
 Thu Apr 23 16:00:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2026b:
