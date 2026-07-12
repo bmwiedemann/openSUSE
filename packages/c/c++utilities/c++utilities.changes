@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 13:25:38 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 5.34.2:
+  * Add support for enabling a detached console via USE_DETACHED_CONSOLE.
+  * Fix startConsole() when using modern mingw-w64 environments and UCRT.
+  * Remove legacy and obsolete mingw-w64 implementation of startConsole().
+  * Fix invalid XML syntax in Windows manifest templates.
+  * Set QT_NO_PACKAGE_VERSION_CHECK=ON by default in cross-compilation presets.
+  * Disable KDE integrations for development builds by default.
+  * Add new unit tests for ticks() functions.
+  * Documentation updates in README.md regarding Plasmoid logs gathering,
+    cmd.exe PATH configurations, and improved pacman/podman examples.
+
+-------------------------------------------------------------------
 Thu May 14 22:40:53 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 5.34.1

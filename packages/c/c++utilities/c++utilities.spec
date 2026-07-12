@@ -20,7 +20,7 @@
 %define soname 5
 
 Name:           %{reponame}
-Version:        5.34.1
+Version:        5.34.2
 Release:        0
 Summary:        Common C++ classes and routines
 License:        GPL-2.0-or-later

@@ -25,4 +25,21 @@ Packaging this library in Factory enables proper dependency tracking, shared sys
 </comment>
     <requestid>1353242</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d68fe3079d5184d6598e0d56680d71d4</srcmd5>
+    <version>5.34.2</version>
+    <time>1783866083</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.34.2:
+  * Add support for enabling a detached console via USE_DETACHED_CONSOLE.
+  * Fix startConsole() when using modern mingw-w64 environments and UCRT.
+  * Remove legacy and obsolete mingw-w64 implementation of startConsole().
+  * Fix invalid XML syntax in Windows manifest templates.
+  * Set QT_NO_PACKAGE_VERSION_CHECK=ON by default in cross-compilation presets.
+  * Disable KDE integrations for development builds by default.
+  * Add new unit tests for ticks() functions.
+  * Documentation updates in README.md regarding Plasmoid logs gathering,
+    cmd.exe PATH configurations, and improved pacman/podman examples.</comment>
+    <requestid>1364952</requestid>
+  </revision>
 </revisionlist>
