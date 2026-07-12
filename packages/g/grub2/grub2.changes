@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul  3 04:01:19 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Fix broken bash completion on arm64 images when the bash-completion package
+  is not installed (bsc#1259132)
+  * 0001-bash-completion-add-_init_completion-marker.patch
+
+-------------------------------------------------------------------
 Tue Jun 30 06:35:58 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - grub2.spec: Use unnumbered patch tag

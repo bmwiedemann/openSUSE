@@ -408,6 +408,7 @@ Patch:          0001-Fix-problematic-utf8-conversion-in-bli-patches.patch
 Patch:          0001-bls-fix-default-entry-and-bumpcounter-for-BLS-boot-c.patch
 Patch:          gcc16.patch
 Patch:          0001-lib-hwfeatures-gcry-Fix-write_cr0-writing-to-CR4.patch
+Patch:          0001-bash-completion-add-_init_completion-marker.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime

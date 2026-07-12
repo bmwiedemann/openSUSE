@@ -1,0 +1,214 @@
+From 9dea78836a99f4b6eb1e8f4f9271626e3a0d7199 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Fri, 3 Jul 2026 11:46:06 +0800
+Subject: [PATCH] bash-completion: add _init_completion marker
+
+Add a preserved comment with _init_completion to the GRUB
+bash-completion wrapper scripts in util/bash-completion.d.
+
+Some completion loaders, such as /etc/profile.d/complete.bash, identify
+completion scripts by scanning for this keyword. Without the marker,
+they may choose the wrong loading path for these wrappers.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ util/bash-completion.d/grub-bios-setup.bash.in      | 3 +++
+ util/bash-completion.d/grub-editenv.bash.in         | 3 +++
+ util/bash-completion.d/grub-install.bash.in         | 3 +++
+ util/bash-completion.d/grub-mkconfig.bash.in        | 3 +++
+ util/bash-completion.d/grub-mkfont.bash.in          | 3 +++
+ util/bash-completion.d/grub-mkimage.bash.in         | 3 +++
+ util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in | 3 +++
+ util/bash-completion.d/grub-mkrescue.bash.in        | 3 +++
+ util/bash-completion.d/grub-probe.bash.in           | 3 +++
+ util/bash-completion.d/grub-reboot.bash.in          | 3 +++
+ util/bash-completion.d/grub-script-check.bash.in    | 3 +++
+ util/bash-completion.d/grub-set-default.bash.in     | 3 +++
+ util/bash-completion.d/grub-sparc64-setup.bash.in   | 3 +++
+ 13 files changed, 39 insertions(+)
+
+diff --git a/util/bash-completion.d/grub-bios-setup.bash.in b/util/bash-completion.d/grub-bios-setup.bash.in
+index 2d362b5e2..cb0dff348 100644
+--- a/util/bash-completion.d/grub-bios-setup.bash.in
++++ b/util/bash-completion.d/grub-bios-setup.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_bios_setup () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_setup
+ }
+diff --git a/util/bash-completion.d/grub-editenv.bash.in b/util/bash-completion.d/grub-editenv.bash.in
+index 29b1333ea..64c08ad16 100644
+--- a/util/bash-completion.d/grub-editenv.bash.in
++++ b/util/bash-completion.d/grub-editenv.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_editenv () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_editenv
+ }
+diff --git a/util/bash-completion.d/grub-install.bash.in b/util/bash-completion.d/grub-install.bash.in
+index a89fc614a..1a4371ffb 100644
+--- a/util/bash-completion.d/grub-install.bash.in
++++ b/util/bash-completion.d/grub-install.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_install () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_install
+ }
+diff --git a/util/bash-completion.d/grub-mkconfig.bash.in b/util/bash-completion.d/grub-mkconfig.bash.in
+index 862e0c58f..76ea4d5df 100644
+--- a/util/bash-completion.d/grub-mkconfig.bash.in
++++ b/util/bash-completion.d/grub-mkconfig.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_mkconfig () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_mkconfig
+ }
+diff --git a/util/bash-completion.d/grub-mkfont.bash.in b/util/bash-completion.d/grub-mkfont.bash.in
+index 17baccdf5..0cd3d0c34 100644
+--- a/util/bash-completion.d/grub-mkfont.bash.in
++++ b/util/bash-completion.d/grub-mkfont.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_mkfont () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_mkfont
+ }
+diff --git a/util/bash-completion.d/grub-mkimage.bash.in b/util/bash-completion.d/grub-mkimage.bash.in
+index a383ed3e9..fe470031a 100644
+--- a/util/bash-completion.d/grub-mkimage.bash.in
++++ b/util/bash-completion.d/grub-mkimage.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_mkimage () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_mkimage
+ }
+diff --git a/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in b/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in
+index 32b8fd6eb..cd6b23ba6 100644
+--- a/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in
++++ b/util/bash-completion.d/grub-mkpasswd-pbkdf2.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_mkpasswd_pbkdf2 () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_mkpasswd_pbkdf2
+ }
+diff --git a/util/bash-completion.d/grub-mkrescue.bash.in b/util/bash-completion.d/grub-mkrescue.bash.in
+index 5968ba00e..2cb1d520e 100644
+--- a/util/bash-completion.d/grub-mkrescue.bash.in
++++ b/util/bash-completion.d/grub-mkrescue.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_mkrescue () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_mkrescue
+ }
+diff --git a/util/bash-completion.d/grub-probe.bash.in b/util/bash-completion.d/grub-probe.bash.in
+index 08400f2f1..6e04b78c3 100644
+--- a/util/bash-completion.d/grub-probe.bash.in
++++ b/util/bash-completion.d/grub-probe.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_probe () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_probe
+ }
+diff --git a/util/bash-completion.d/grub-reboot.bash.in b/util/bash-completion.d/grub-reboot.bash.in
+index 154aecea9..f35ca4cc1 100644
+--- a/util/bash-completion.d/grub-reboot.bash.in
++++ b/util/bash-completion.d/grub-reboot.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_reboot () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_set_entry
+ }
+diff --git a/util/bash-completion.d/grub-script-check.bash.in b/util/bash-completion.d/grub-script-check.bash.in
+index 22d376832..98c906758 100644
+--- a/util/bash-completion.d/grub-script-check.bash.in
++++ b/util/bash-completion.d/grub-script-check.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_script_check () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_script_check
+ }
+diff --git a/util/bash-completion.d/grub-set-default.bash.in b/util/bash-completion.d/grub-set-default.bash.in
+index 14501b4fb..a4bcc5379 100644
+--- a/util/bash-completion.d/grub-set-default.bash.in
++++ b/util/bash-completion.d/grub-set-default.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_set_default () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_set_entry
+ }
+diff --git a/util/bash-completion.d/grub-sparc64-setup.bash.in b/util/bash-completion.d/grub-sparc64-setup.bash.in
+index 6123d7b7c..94019672f 100644
+--- a/util/bash-completion.d/grub-sparc64-setup.bash.in
++++ b/util/bash-completion.d/grub-sparc64-setup.bash.in
+@@ -16,6 +16,9 @@
+ # You should have received a copy of the GNU General Public License
+ # along with GRUB.  If not, see <http://www.gnu.org/licenses/>.
+ 
++# Do not remove this comment, completion loaders like
++# /etc/profile.d/complete.bash require the keyword to identify completion
++# scripts: _init_completion
+ _grub_sparc64_setup () {
+     . @datarootdir@/bash-completion/completions/grub && __grub_setup
+ }
+-- 
+2.54.0
+

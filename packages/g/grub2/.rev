@@ -3341,4 +3341,12 @@ pretty much the same. The main user visible changes are
     <comment></comment>
     <requestid>1362590</requestid>
   </revision>
+  <revision rev="394" vrev="15">
+    <srcmd5>e4cdda61d028f468a98784a0349ca10a</srcmd5>
+    <version>2.14</version>
+    <time>1783866031</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1364830</requestid>
+  </revision>
 </revisionlist>
