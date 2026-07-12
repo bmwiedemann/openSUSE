@@ -71,4 +71,41 @@ focus on simplicity and maintainability</comment>
   [CVE-2025-59438] (boo#1252434)</comment>
     <requestid>1328583</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6da9824200f4f8334acb96558f881f91</srcmd5>
+    <version>0.5.1</version>
+    <time>1783868995</time>
+    <user>dimstar_suse</user>
+    <comment>- Require mbedtls-3-devel explicitly to fix compilation.
+- Drop 0006-Use-private-mbedtls-headers.patch: this patch was
+  originally added to attempt mbedtls 4.x compatibility but is
+  incorrect and unnecessary since mbedtls 3.x uses the standard
+  header paths (e.g. mbedtls/entropy.h).
+
+- Use private mbedtls headers for compatibility with mbedtls 4.x
+  via 0006-Use-private-mbedtls-headers.patch.
+- Refresh all patches.
+
+- Improve packaging:
+  * Unbundle cJSON and zstd via 0003-Unbundle-cJSON-and-zstd.patch.
+  * Fix undefined reference to cJSON_GetErrorPos when using system
+    libcjson via 0004-Fix-cJSON_GetErrorPos-undefined-reference.patch.
+  * Force use of system libgc on Linux via
+    0005-Force-system-libgc-on-Linux.patch.
+  * Enable vdoc by adding vlang/markdown as a dependency.
+  * Improve wrapper script to respect existing VFLAGS.
+  * Build intermediate stages without LTO to speed up bootstrapping.
+
+- Remove stage2/3 diff check
+- Update to version 0.5.1:
+  * New clean and fast v2 backends: cleanc (similar to the old C
+    backend), ssa/arm64, ssa/amd64
+  * Add a new generic solver stage (gated behind
+    -new-generic-solver)
+  * Refactor $var to ${var} across entire repository, make vfmt
+    always output the newer form ${expr}
+  * Fix support for match exprs with nested if exprs
+  * Add OS-specific headers support for #include directives</comment>
+    <requestid>1364987</requestid>
+  </revision>
 </revisionlist>

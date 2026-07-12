@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sat Jul 11 11:53:55 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Require mbedtls-3-devel explicitly to fix compilation.
+- Drop 0006-Use-private-mbedtls-headers.patch: this patch was
+  originally added to attempt mbedtls 4.x compatibility but is
+  incorrect and unnecessary since mbedtls 3.x uses the standard
+  header paths (e.g. mbedtls/entropy.h).
+
+-------------------------------------------------------------------
+Thu Jun 26 12:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Use private mbedtls headers for compatibility with mbedtls 4.x
+  via 0006-Use-private-mbedtls-headers.patch.
+- Refresh all patches.
+
+-------------------------------------------------------------------
+Sat May 30 10:00:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Improve packaging:
+  * Unbundle cJSON and zstd via 0003-Unbundle-cJSON-and-zstd.patch.
+  * Fix undefined reference to cJSON_GetErrorPos when using system
+    libcjson via 0004-Fix-cJSON_GetErrorPos-undefined-reference.patch.
+  * Force use of system libgc on Linux via
+    0005-Force-system-libgc-on-Linux.patch.
+  * Enable vdoc by adding vlang/markdown as a dependency.
+  * Improve wrapper script to respect existing VFLAGS.
+  * Build intermediate stages without LTO to speed up bootstrapping.
+
+-------------------------------------------------------------------
+Tue Apr 14 23:04:28 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Remove stage2/3 diff check
+- Update to version 0.5.1:
+  * New clean and fast v2 backends: cleanc (similar to the old C
+    backend), ssa/arm64, ssa/amd64
+  * Add a new generic solver stage (gated behind
+    -new-generic-solver)
+  * Refactor $var to ${var} across entire repository, make vfmt
+    always output the newer form ${expr}
+  * Fix support for match exprs with nested if exprs
+  * Add OS-specific headers support for #include directives
+  * Multiple checker improvements and fixes
+  * Multiple parser improvements
+  * Improvements to standard library
+  * vfmt: Fix parser failing on duplicate methods in $if/$else
+    blocks
+  * Add support for v missdoc @vlib
+  * Add support for v quest
+  * Add support for v install --local gui
+
+-------------------------------------------------------------------
 Wed Jan 21 23:10:54 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Enable self testing
@@ -51,12 +102,12 @@ Sun Sep 21 23:55:48 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 -------------------------------------------------------------------
 Wed Aug  6 12:35:01 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Do not copy v.c while building 
+- Do not copy v.c while building
 
 -------------------------------------------------------------------
 Wed Jul 30 20:51:53 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Do not strip executables to make debuginfo work 
+- Do not strip executables to make debuginfo work
 
 -------------------------------------------------------------------
 Sat Jun 21 11:00:42 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>

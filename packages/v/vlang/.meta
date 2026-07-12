@@ -2,5 +2,6 @@
   <title>The V Programming Language</title>
   <description>V is a statically typed compiled programming language inspired
 by Go but with a more low-level approach, similar to C or Rust.</description>
+  <devel project="devel:languages:misc" package="vlang"/>
   <url>https://vlang.io/</url>
 </package>

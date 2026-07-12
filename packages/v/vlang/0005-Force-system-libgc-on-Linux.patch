@@ -1,0 +1,38 @@
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Date: Sat, 30 May 2026 11:00:00 +0200
+Subject: [PATCH] Force system libgc on Linux
+
+V normally expects a static libgc.a inside thirdparty/tcc/lib/ when
+compiling on Linux without the dynamic_boehm flag.
+
+In a distro package, we don't want to use bundled static libraries.
+This patch replaces the hardcoded path to the bundled libgc.a with
+a generic -lgc flag, allowing the linker to find the system-provided
+shared library.
+
+---
+ vlib/builtin/builtin_d_gcboehm.c.v | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: v-0.5.1/vlib/builtin/builtin_d_gcboehm.c.v
+===================================================================
+--- v-0.5.1.orig/vlib/builtin/builtin_d_gcboehm.c.v
++++ v-0.5.1/vlib/builtin/builtin_d_gcboehm.c.v
+@@ -61,7 +61,7 @@ $if dynamic_boehm ? {
+ 						#flag -Xlinker -rpath -Xlinker "@VEXEROOT/thirdparty/tcc/lib"
+ 					}
+ 				} $else {
+-					#flag @VEXEROOT/thirdparty/tcc/lib/libgc.a
++					#flag -lgc
+ 				}
+ 			}
+ 		}
+@@ -107,7 +107,7 @@ $if dynamic_boehm ? {
+ 			#flag -DGC_BUILTIN_ATOMIC=1
+ 			#flag -I @VEXEROOT/thirdparty/libgc/include
+ 			$if !use_bundled_libgc ? {
+-				#flag @VEXEROOT/thirdparty/tcc/lib/libgc.a
++				#flag -lgc
+ 			}
+ 		} $else $if msvc {
+ 			// Build libatomic_ops

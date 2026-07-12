@@ -1,0 +1,28 @@
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Date: Sat, 30 May 2026 10:00:00 +0200
+Subject: [PATCH] Fix undefined reference to cJSON_GetErrorPos
+
+The system-provided libcjson on openSUSE (v1.7.19) does not export
+cJSON_GetErrorPos, which causes a linker error when unbundling cJSON.
+
+This patch replaces the call to cJSON_GetErrorPos() with manual
+pointer arithmetic: (error_ptr - (const char*)root). This is
+functionally equivalent as error_ptr points into the root string.
+
+---
+ vlib/v/gen/c/json.v | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: v-0.5.1/vlib/v/gen/c/json.v
+===================================================================
+--- v-0.5.1.orig/vlib/v/gen/c/json.v
++++ v-0.5.1/vlib/v/gen/c/json.v
+@@ -87,7 +87,7 @@ ${dec_fn_dec} {
+ 	if (!root) {
+ 		const char *error_ptr = cJSON_GetErrorPtr();
+ 		if (error_ptr != NULL) {
+-			const ${ast.int_type_name} error_pos = (${ast.int_type_name})cJSON_GetErrorPos();
++			const ${ast.int_type_name} error_pos = (${ast.int_type_name})(error_ptr - (const char*)root);
+ 			${ast.int_type_name} maxcontext_chars = 30;
+ 			byte *buf = builtin__vcalloc_noscan(maxcontext_chars + 10);
+ 			if (error_pos > 0) {

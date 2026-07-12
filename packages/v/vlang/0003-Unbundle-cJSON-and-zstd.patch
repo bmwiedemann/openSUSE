@@ -1,0 +1,43 @@
+Index: v-0.5.1/vlib/json/json_primitives.c.v
+===================================================================
+--- v-0.5.1.orig/vlib/json/json_primitives.c.v
++++ v-0.5.1/vlib/json/json_primitives.c.v
+@@ -3,8 +3,7 @@
+ // that can be found in the LICENSE file.
+ module json
+ 
+-#flag -I @VEXEROOT/thirdparty/cJSON
+-#flag @VEXEROOT/thirdparty/cJSON/cJSON.o
++#pkgconfig libcjson
+ #include "cJSON.h"
+ #define js_get(object, key) cJSON_GetObjectItemCaseSensitive((object), (key))
+ 
+Index: v-0.5.1/vlib/json/cjson/cjson_wrapper.c.v
+===================================================================
+--- v-0.5.1.orig/vlib/json/cjson/cjson_wrapper.c.v
++++ v-0.5.1/vlib/json/cjson/cjson_wrapper.c.v
+@@ -8,8 +8,7 @@ module cjson
+ // that has NULL leaves for example, which is currently not convenient/easy to do with just the
+ // high level `json.encode(value)` API that V has.
+ 
+-#flag -I @VEXEROOT/thirdparty/cJSON
+-#flag @VEXEROOT/thirdparty/cJSON/cJSON.o
++#pkgconfig libcjson
+ #include "cJSON.h"
+ 
+ // As cJSON use `libm`, we need to link it.
+Index: v-0.5.1/vlib/compress/zstd/zstd.c.v
+===================================================================
+--- v-0.5.1.orig/vlib/compress/zstd/zstd.c.v
++++ v-0.5.1/vlib/compress/zstd/zstd.c.v
+@@ -5,8 +5,8 @@ module zstd
+ import os
+ import encoding.binary
+ 
+-#flag -I @VMODROOT/thirdparty/zstd
+-#include "zstd.c"	// msvc can't compile multiple source files, so included
++#pkgconfig libzstd
++#include <zstd.h>
+ 
+ const frame_header_size_max = 18
+ const content_size_unknown = u64(-1)

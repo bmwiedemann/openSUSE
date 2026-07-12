@@ -7,10 +7,10 @@ Subject: [PATCH 1/2] Link to distro provided mbedtls
  vlib/net/mbedtls/mbedtls.c.v | 125 +----------------------------------
  1 file changed, 2 insertions(+), 123 deletions(-)
 
-diff --git a/vlib/net/mbedtls/mbedtls.c.v b/vlib/net/mbedtls/mbedtls.c.v
-index d18689e8c..61fc82b9b 100644
---- a/vlib/net/mbedtls/mbedtls.c.v
-+++ b/vlib/net/mbedtls/mbedtls.c.v
+Index: v-0.5.1/vlib/net/mbedtls/mbedtls.c.v
+===================================================================
+--- v-0.5.1.orig/vlib/net/mbedtls/mbedtls.c.v
++++ v-0.5.1/vlib/net/mbedtls/mbedtls.c.v
 @@ -1,128 +1,7 @@
  module mbedtls
  
@@ -142,6 +142,3 @@ index d18689e8c..61fc82b9b 100644
  
  #include <mbedtls/net_sockets.h>
  #include <mbedtls/ssl.h>
--- 
-2.52.0
-

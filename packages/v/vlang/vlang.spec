@@ -2,7 +2,7 @@
 # spec file for package vlang
 #
 # Copyright (c) 2024, 2025 Boian Berberov
-# Copyright (c) 2025 Eyad Issa
+# Copyright (c) 2025, 2026 Eyad Issa
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 #
 
 # git revision
-%global vc_gitrev  294bff4ef87427743d0b35c0f7eb1b34a6dd061b
+%global vc_gitrev   f461dfebcdfac3c75fdf28fec80c07f0a7a9a53d
 
 # custom paths and variables
 %global vflags      -cc gcc -d dynamic_boehm
@@ -25,16 +25,22 @@
 %global vexe        %{vexe_root}/%{name}
 
 Name:           vlang
-Version:        0.5
+Version:        0.5.1
 Release:        0
 Summary:        The V Programming Language
 License:        MIT AND BSD-2-Clause
 URL:            https://vlang.io/
 Source0:        https://github.com/%{name}/v/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/vc/raw/%{vc_gitrev}/v.c
+# Vdoc requires markdown module
+Source2:        https://github.com/vlang/markdown/archive/refs/heads/master.tar.gz#/markdown.tar.gz
 Source99:       vlang-rpmlintrc
 Patch1:         0001-Link-to-distro-provided-mbedtls.patch
 Patch2:         0002-Disable-vdoc-testing.patch
+Patch3:         0003-Unbundle-cJSON-and-zstd.patch
+Patch4:         0004-Fix-cJSON_GetErrorPos-undefined-reference.patch
+Patch5:         0005-Force-system-libgc-on-Linux.patch
+
 BuildRequires:  (c_compiler or gcc)
 BuildRequires:  diffutils
 BuildRequires:  fdupes
@@ -42,18 +48,15 @@ BuildRequires:  findutils
 BuildRequires:  pkgconfig
 # For VFLAGS="-d dynamic_boehm"
 BuildRequires:  pkgconfig(bdw-gc)
-BuildRequires:  pkgconfig(mbedcrypto)
-BuildRequires:  pkgconfig(mbedtls)
-BuildRequires:  pkgconfig(mbedx509)
+BuildRequires:  pkgconfig(libcjson)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  mbedtls-3-devel
 # For vshare tool
 BuildRequires:  pkgconfig(x11)
-# For VFLAGS="-d dynamic_boehm"
-# Required by compiler at runtime
 Requires:       pkgconfig(bdw-gc)
-# For the net.mbedtls module
-Requires:       pkgconfig(mbedcrypto)
-Requires:       pkgconfig(mbedtls)
-Requires:       pkgconfig(mbedx509)
+Requires:       pkgconfig(libcjson)
+Requires:       pkgconfig(libzstd)
+Requires:       mbedtls-3-devel
 
 %description
 V is a statically typed compiled programming language inspired
@@ -70,7 +73,12 @@ by Go but with a more low-level approach, similar to C or Rust.
 This package contains examples for the V Programming Language.
 
 %prep
-%autosetup -n v-%{version} -p1
+%setup -q -n v-%{version}
+%autopatch -p1
+
+# Install markdown module for vdoc
+mkdir -p vlib/markdown
+tar -xf %{SOURCE2} --strip-components=1 -C vlib/markdown
 
 %build
 export CC=cc
@@ -95,29 +103,21 @@ export STAGE2_FLAGS='-nocache'
 %endif
 
 # stage 0: build the V compiler from the transpiled C code
-${CC} ${CFLAGS} ${LDFLAGS} ${STAGE0_FLAGS} -o %{name}-stage0 %{SOURCE1}
+# Build intermediate stages without LTO to speed up bootstrapping
+${CC} ${CFLAGS/-flto=auto/} ${LDFLAGS/-flto=auto/} ${STAGE0_FLAGS} -o %{name}-stage0 %{SOURCE1}
 # stage 1: build without parallelism
 ./%{name}-stage0 ${VFLAGS} ${STAGE1_FLAGS} -o %{name}-stage1 cmd/v
 # stage 2: build with parallelism and -prod
 ./%{name}-stage1 ${VFLAGS} ${STAGE2_FLAGS} -o %{name}-stage2 cmd/v
 
-# stage 3: rebuild and check diff
+# stage 3: rebuild with full flags (including LTO)
 ./%{name}-stage2 ${VFLAGS} ${STAGE2_FLAGS} -o %{name} cmd/v
-
-diff --strip-trailing-cr -u %{name}-stage2 %{name}
-if [ $? -eq 0 ]; then
-  echo "Stage 3 build differs from the final build, please check the output above."
-fi
 
 # Replace some tools with dummy scripts
 echo "println('\"%{name} up\" is disabled for the packaged versions of V')"   >  cmd/tools/vup.v
 echo "println('Use your package manager to update V')"                        >> cmd/tools/vup.v
 echo "println('\"%{name} self\" is disabled for the packaged versions of V')" >  cmd/tools/vself.v
 echo "println('Use your package manager to update V')"                        >> cmd/tools/vself.v
-
-# TODO: Skipping building vdoc until https://github.com/vlang/markdown is embedded in build
-sed -i -e "/^const tools_in_subfolders/s/ 'vdoc',//" cmd/tools/vbuild-tools.v
-rm -rf cmd/tools/vdoc
 
 # Set to not-empty to skip build-time V module cloning with `git`
 export VTEST_SANDBOXED_PACKAGING='yes'
@@ -131,7 +131,6 @@ export VJOBS="%{?jobs:%jobs}"
 ./%{name} doctor
 
 # Build V tools
-./%{name} test-self
 ./%{name} -v build-tools
 
 # Do not attempt to rebuild after installation
@@ -168,7 +167,7 @@ rm -rf \
 find . -type f -name '.gitignore' -print -delete
 
 # Replace hardcoded path to v in examples
-sed -i -e '1s:%{_prefix}/local/bin/v:%{_bindir}/%{name}:' examples/v_script.vsh
+sed -i -e '1s:%{_prefix}/local/bin/v:%{_bindir}/v:' examples/v_script.vsh
 
 # Copy files
 install -D -m 0755 %{name} %{buildroot}%{vexe}
@@ -181,19 +180,19 @@ cp -R -t %{buildroot}%{vexe_root}/thirdparty \
     %{nil}
 
 # Run-time configuration wrapper
-# TODO: Add a proper VTMP
 install -d %{buildroot}%{_bindir}
-echo '#! %{_bindir}/sh
+cat << 'EOF' > %{buildroot}%{_bindir}/%{name}
+#!/bin/sh
 export VEXE="%{vexe}"
 export VCACHE="${HOME}/.cache/%{name}"
-export VFLAGS="%{vflags}"
+export VFLAGS="${VFLAGS:-%{vflags}}"
 
-exec ${VEXE} $@
-' > %{buildroot}%{_bindir}/%{name}
+exec "${VEXE}" "$@"
+EOF
 chmod 755 %{buildroot}%{_bindir}/%{name}
 
-# symlink /usr/bin/vlang to /usr/bin/v
-ln -rs %{buildroot}%{_bindir}/%{name} %{buildroot}%{_bindir}/v
+# Create symlink v -> vlang
+ln -s %{name} %{buildroot}%{_bindir}/v
 
 # Remove executable bits from examples
 find examples -type f -exec chmod 0644 {} \;
@@ -217,7 +216,6 @@ sed -i 's|%{buildroot}||g' %{buildroot}%{_datadir}/fish/vendor_completions.d/%{n
 # Remove duplicate files
 %fdupes %{buildroot}%{_libexecdir}/%{name}/
 %fdupes %{buildroot}%{_datadir}/doc/%{name}/examples
-
 
 %files
 %license LICENSE
