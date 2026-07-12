@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Thu Jul  9 07:54:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 12.3.0 (fixes CVE-2026-42311 (bsc#1270404),
+  CVE-2026-54059 (bsc#1270409), CVE-2026-54060 (bsc#1270410),
+  CVE-2026-55379 (bsc#1270411), CVE-2026-55380 (bsc#1270412))
+  * Remove non-image ImageCms modes
+  * Speed up ImageChops operations
+  * Speed up Image.filter()
+  * Speed up Image.getchannel(), Image.merge(), Image.putalpha() and
+    Image.split()
+  * Speed up Image.fill(), Image.linear_gradient() and Image.radial_gradient().
+  * Speed up Image.resample()
+  * Speed up alpha_composite, matrix, negative, quantize
+  * Remove PyErr_Clear() of "weird" exceptions
+  * Check realloc return value
+  * Add max_length to PdfStream decode()
+  * Return early when there is no fill region
+  * Allow error to be raised if PyDict_SetItemString fails
+  * Speed up Image.blend()
+  * Raise OverflowError if number of vertices is too large for Path
+  * Remove unused HSV and LAB matrix conversion from C
+  * Prevent reusing ImagingDecoderObject.setimage
+  * Raise ValueError if FPX tile size is not 64px by 64px
+  * Only clear error if it is BufferError
+  * Apply XOR mask to 1 and L mode CUR images
+  * Do not raise error from unknown channel ID when parsing PSD layers
+  * Raise ValueError if P;2L or P;4L data is truncated in frombytes()
+  * Embed SBOM into wheels
+  * Do not set eval() globals in ImageMath.unsafe_eval()
+  * Add Tcl/Tk license to wheels
+  * Ensure map stride is at least one full row of pixels
+  * Raise OverflowError if text width exceeds INT_MAX
+  * Raise error if image modes do not match ImageCms transform modes
+  * Use int64_t for text height
+  * Return if error occurs in Py_mod_exec slot
+  * Add decompression bomb checks to FontFile classes
+  * If C error is raised, return NULL
+  * Prevent saving 1 mode images as TGA with run-length encoding
+  * Raise ValueError if EPS BeginBinary bytecount is negative
+  * Do not DECREF tuple until tuple items are no longer used
+  * Do not update NumPy automatically
+  * Simplified code
+  * If realloc fails, do not reduce block size
+  * DECREF PyDict_GetItemRef result
+  * Use int64_t to calculate paste box dimensions
+  * Calculate JPEG2000 total_component_width for each tile in isolation
+  * Raise ValueError if value is not bytes for TIFF_BYTE or TIFF_ASCII tag
+  * Release Py_Buffer on error
+  * Use os.startfile() in WindowsViewer show_file()
+  * Validate large filter sizes when initializing RankFilter
+  * Add decompression bomb check to GdImageFile
+  * Free image bands when an error occurs while splitting an image
+  * Check PyList_Append return value
+  * Check WebPMuxNew return value
+  * Check PyCapsule_New return value
+  * Do not return negative width for text length
+  * Add args argument to METH_NOARGS methods
+  * Check ImagingNewDirty return value
+  * Use int64_t for text width
+  * Move PyDateTime_IMPORT inside Py_mod_exec slot
+  * Validate size and rank when initializing RankFilter
+  * Raise ValueError if insufficient data is read from DDS RGB file
+  * Correct IFDRational.__float__() return value
+  * Correct length when accessing ImagePath.Path subscript
+  * Release reference on non-flattened sequence error
+  * Do not release Py_buffer until buf is no longer in use
+  * Do not resize macOS retina screenshots by default
+  * Add abstract BaseImageFont class
+  * Cast before multiplying
+  * Limit radius to half width or height of rounded rectangle
+  * linesize is always xsize multiplied by pixelsize
+  * Check annotate_hash_table return value
+  * Catch KeyError when checking mode from PNG IHDR chunk
+  * Only pass one argument to C expand
+  * Raise error if declared JPEG2000 marker length is too small
+  * In _dump(), use Python PPM save, instead of C
+  * Raise error consistently from inside ImagingNewArrow
+  * Simplify RankFilter.c check
+  * Support opening and saving L mode AVIF images with libavif >= 1.3.0
+  * [pre-commit.ci] pre-commit autoupdate
+  * Apply libtiff patch to fix CVE-2026-4775
+  * Remove duplicate code
+  * Switch iOS back to macos-26-intel
+  * Don't use list as default in PdfParser read_prev_trailer
+  * Add support for Python 3.15
+  * Do not draw line or arc if width is zero
+  * Use _accept check in WebP _open
+  * Compare dist sizes vs latest PyPI release
+  * Do not generate SBOM in scheduled run on fork
+  * Use plugin method directly when saving PDFs
+  * [pre-commit.ci] pre-commit autoupdate
+  * Set Renovate prCreation to not-pending
+  * Raise error if PNG transparency has incorrect type or length when saving
+  * If PdfParser buffer is memoryview, release it when closing
+  * Correct integer overflow in 16-bit resampling
+  * SBOM: Use real versions from dependencies.json
+  * Restrict SBOM upload to only Pillow JSON
+  * Generate CycloneDX SBOM at release time via CI
+  * Raise ValueError if ImageOps border has unsupported format
+  * Unsafe pointer dereference from unchecked Python integer in Tk
+    initialization
+  * Reorder renovate.json
+  * Add python-pillow GitHub Sponsors to FUNDING.yml
+  * Correct environment URL
+  * Remove or protect secrets in Actions
+  * Move Homebrew dependencies into Brewfile
+  * Do not precompute horizontal coefficients if not horizontal resizing
+  * Fix comparison warnings
+  * Close PdfParser if error occurs during init
+  * Drop experimental Python 3.13 free-threaded wheels
+  * Update github-actions
+  * full changelog:
+    https://pillow.readthedocs.io/en/stable/releasenotes/12.3.0.html
+
+-------------------------------------------------------------------
 Fri Apr  3 17:53:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 12.2.0 (fixes CVE-2026-40192, bsc#1262184, CVE-2026-42309, bsc#1265153, CVE-2026-42310, bsc#1265154):

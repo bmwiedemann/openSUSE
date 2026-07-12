@@ -969,4 +969,12 @@ This should fix the problems reported with the previous openSUSE:Factory submiss
     <comment>Add bug references to the changelog</comment>
     <requestid>1352954</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>d5b1b80c87737b8463d6c9bc5d3ed61a</srcmd5>
+    <version>12.3.0</version>
+    <time>1783866022</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1364784</requestid>
+  </revision>
 </revisionlist>
