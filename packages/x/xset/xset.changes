@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:29:09 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.6:
+  * Switch to Meson build system.
+  * Add GPG validation for source archives.
+  * The new release includes bugfixes.
+
+-------------------------------------------------------------------
 Wed Apr 26 08:47:26 UTC 2023 - Jan Engelhardt <jengelh@inai.de>
 
 - Disable building with libXfontcache. xorg-server 1.6 removed the

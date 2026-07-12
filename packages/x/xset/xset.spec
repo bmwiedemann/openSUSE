@@ -1,7 +1,7 @@
 #
 # spec file for package xset
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,20 @@
 
 
 Name:           xset
-Version:        1.2.5
+Version:        1.2.6
 Release:        0
 Summary:        User preference utility for X
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+Source1:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz.sig
+Source2:        xset.keyring
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xmuu)
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
@@ -41,11 +43,11 @@ display.
 %autosetup
 
 %build
-%configure
-%make_build
+%meson -Dxf86misc=disabled -Dfontcache=disabled
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING

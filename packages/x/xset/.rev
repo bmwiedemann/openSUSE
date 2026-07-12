@@ -112,4 +112,15 @@
     <comment></comment>
     <requestid>1082971</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1680c4125e33b171ff0bf45ac36cb14</srcmd5>
+    <version>1.2.6</version>
+    <time>1783866001</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.6:
+  * Switch to Meson build system.
+  * Add GPG validation for source archives.
+  * The new release includes bugfixes.</comment>
+    <requestid>1364908</requestid>
+  </revision>
 </revisionlist>
