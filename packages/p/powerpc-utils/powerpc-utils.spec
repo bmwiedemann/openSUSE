@@ -36,6 +36,8 @@ Patch8:         0008-drmgr-Add-NUMA-based-CPU-removal.patch
 Patch9:         0009-drmgr-Allow-signals-mentioned-in-new-sigset_t.patch
 Patch10:        0010-drmgr-Add-timeout-signal-handling-for-NUMA-memory-RE.patch
 Patch11:        0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch
+Patch12:        bootlist-set-ethernet-using-open-firmware-path-as-bo.patch
+Patch13:        ppc64_cpu-bring-power-mode-reporting-inline-with-PAP.patch
 Patch41:        powerpc-utils-lsprop.patch
 Patch42:        ofpathname_powernv.patch
 Patch43:        fix_kexec_service_name_for_suse.patch

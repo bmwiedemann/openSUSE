@@ -1,0 +1,68 @@
+From 1ada5f8c469ad15e2a9761d67d09dd7037a079b5 Mon Sep 17 00:00:00 2001
+From: Tyrel Datwyler <tyreld@linux.ibm.com>
+Date: Wed, 8 Jul 2026 15:31:11 -0700
+Subject: [PATCH] ppc64_cpu: bring power mode reporting inline with PAPR and
+ ASMI
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Git-commit: 1ada5f8c469ad15e2a9761d67d09dd7037a079b5
+
+Since Power8 the energy management power mode names have changed
+slightly and are reflected in the PAPR to be in line with Power9. This
+reporting is done through the H_GET_EM_PARMS hcall. The new energy scale
+interface is used instead for Power10 and onwards. However, we still
+need to support older processor generations in the field.
+
+Update the naming to reflect the PAPR definitions and add the missing
+power mode added for Power9. The naming change is slightly different
+than the modes reflected in the Power8 ASMI interface, but convey the
+same meaning for the available modes.
+
+Status Codes (bit offset within 2 byte field): Bits 0:5 Reserved (zero)
+
+Bits 6:8 Energy Management major code:
+
+    0b000: Non – floor modes:
+    Bits 9:15 Energy Management minor code:
+        0x00: The energy management policy for this aggregation level is not specified.
+        0x01: Maximum Performance (Energy Management enabled – performance may exceed nominal)
+        0x02: Nominal Performance (Energy Management Disabled)
+        0x03: Static Power Saving Mode
+        0x04: Deterministic Performance (Energy Management enabled – consistent performance on a given work-
+        load independent of environmental factors and component variances)
+        0x05 – 0x7F Reserved
+    0b001: Dynamic Power Management:
+        Bits 9:15 Performance floor as a percentage of nominal (0% - 100%).
+    0b010:0b111 Reserved
+
+Signed-off-by: Tyrel Datwyler <tyreld@linux.ibm.com>
+---
+ src/ppc64_cpu.c | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/src/ppc64_cpu.c b/src/ppc64_cpu.c
+index 43becb4..a1650e7 100644
+--- a/src/ppc64_cpu.c
++++ b/src/ppc64_cpu.c
+@@ -786,11 +786,13 @@ static char *power_mode(uint64_t mode)
+ {
+ 	switch (mode) {
+ 	case 0x0001:
+-		return "Dynamic, Favor Performance\n";
++		return "Maximum Performance\n";
+ 	case 0x0002:
+-		return "None\n";
++		return "Nominal\n";
+ 	case 0x0003:
+-		return "Static\n";
++		return "Static Power Saver\n";
++	case 0x0004:
++		return "Dynamic Performance\n";
+ 	case 0x00ff:
+ 		return "Dynamic, Favor Power\n";
+ 	default:
+-- 
+2.51.0
+

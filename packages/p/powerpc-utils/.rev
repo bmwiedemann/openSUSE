@@ -1337,4 +1337,12 @@
   * 0011-drmgr-Do-not-remove-LMBs-when-the-timer-expires.patch</comment>
     <requestid>1354721</requestid>
   </revision>
+  <revision rev="159" vrev="3">
+    <srcmd5>e9ae2631e73c9eb48ce20f4dca712623</srcmd5>
+    <version>1.3.14</version>
+    <time>1783866033</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1364874</requestid>
+  </revision>
 </revisionlist>

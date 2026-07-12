@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 08:22:25 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix adding Ethernet entries in bootlist (bsc#1246281 ltc#214785):
+  * bootlist-set-ethernet-using-open-firmware-path-as-bo.patch
+- Bring power mode reporting inline with PAPR and ASMI
+  * ppc64_cpu-bring-power-mode-reporting-inline-with-PAP.patch
+
+-------------------------------------------------------------------
 Thu May 21 08:17:04 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - NUMA aware CPU hotplug (bsc#1263891 ltc#213837)

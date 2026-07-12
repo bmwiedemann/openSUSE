@@ -1,0 +1,44 @@
+From 9756f6cddad56722e843fb038c953105acdccdf6 Mon Sep 17 00:00:00 2001
+From: Wen Xiong <wenxiong@linux.ibm.com>
+Date: Thu, 9 Jul 2026 22:39:29 -0400
+Subject: [PATCH] bootlist: set ethernet using open firmware path as boot list
+
+Bootlist cannot set ethernet using open firmware path as boot list.
+This patch fixes the issue.
+
+Signed-off-by: Wen Xiong <wenxiong@linux.ibm.com>
+---
+ scripts/bootlist | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+
+diff --git a/scripts/bootlist b/scripts/bootlist
+index 58c090f..d94810a 100755
+--- a/scripts/bootlist
++++ b/scripts/bootlist
+@@ -525,9 +525,7 @@ while [[ -n $1 ]]; do
+ 	exit -1
+     else
+         # add this element to the array
+-        if [[ "$1" == *"dm-"* ]] ; then
+-            add_logical $1
+-        else
++	if [[ "$1" == *"nvme-of"* ]] || [[ "$1" == *"nvme"* ]] || [[ "$1" == *"namespace"* ]]; then
+             if [[ "$1" == *"nvme-of"* ]] || [[ "$1" == *"namespace"* ]]; then
+                 ctrl_name=`get_logical_device_name $1`
+ 		master_of_path=$1
+@@ -559,10 +557,10 @@ while [[ -n $1 ]]; do
+                     fi
+                     DEVTYPE="multi-nvme"
+                     add_multipath_nvme $ctrl_name
+-                else
+-                    add_logical $1
+ 		fi
+             fi
++           else
++                add_logical $1
+         fi
+     fi
+ 
+-- 
+2.51.0
+
