@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:47:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.5:
+  + flacenc: Fix g_object_notify on loose-mid-side-stereo property
+  + gdkpixbufdec: Drop rank to NONE and handle resolution/format
+    changes
+  + gdkpixbufdec: stop advertising Sun and Andrew raster formats
+  + gdkpixbufdec announces unsupported raster mediatypes
+  + matroskademux: Don't pass non-GstElement pointers to
+    GST_ELEMENT_ERROR
+  + matroska: Update lzo decompression implementation from latest
+    ffmpeg
+  + mp4mux: fix AC-3 template caps so muxer can accept input from
+    ac3parse
+  + pngdec: fix wrong macro being used for ICC support test
+  + qtmoovrecover: Validate box sizes
+  + rtpceltdepay: error out if anyone tries to use this element
+  + rtpjpegdepay: Ensure that quantization table is big enough
+  + rtpsbcdepay: Check for available data in the adapter before
+    getting data
+  + shapewipe: Fix missing mutex unlock in shutdown path
+  + wavparse: Avoid NULL pointer dereference when parsing adtl in
+    push mode
+
+-------------------------------------------------------------------
 Fri Jun 12 16:14:02 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.28.4:
