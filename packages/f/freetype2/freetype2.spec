@@ -16,9 +16,9 @@
 #
 
 
-%define doc_version 2.14.2
+%define doc_version 2.14.3
 Name:           freetype2
-Version:        2.14.2
+Version:        2.14.3
 Release:        0
 Summary:        A TrueType Font Library
 License:        FTL AND GPL-2.0-only
@@ -38,6 +38,7 @@ Patch0:         bugzilla-308961-cmex-workaround.patch
 Patch1:         don-t-mark-libpng-as-required-library.patch
 Patch2:         enable-long-family-names-by-default.patch
 Patch3:         enable-subpixel-rendering.patch
+Patch4:         freetype-CVE-2026-50811.patch
 BuildRequires:  gawk
 BuildRequires:  libbz2-devel
 BuildRequires:  libpng-devel

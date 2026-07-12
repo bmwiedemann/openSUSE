@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:28:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- update to 2.14.3
+- Important bug fixes
+  * A bunch of potential security problems have been found. All
+    users should update.
+- Miscellaneous
+  * If configuration option `TT_CONFIG_OPTION_GPOS_KERNING` is
+    active, GPOS-based kerning could miss some value pairs (bug
+    introduced in version 2.14.0).
+
+-------------------------------------------------------------------
 Mon Mar  9 11:27:08 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
