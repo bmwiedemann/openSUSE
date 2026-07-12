@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:35:32 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade qclib to version v2.5.2
+  * Changes:
+    - Recognize IBM z17 single frame and LinuxONE Rockhopper models
+  * Bug fixes:
+    - Fix duplicate LPAR group entries
+
+-------------------------------------------------------------------
 Mon Jun 29 13:13:01 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file (bsc#1263992)
