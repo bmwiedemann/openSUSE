@@ -18,21 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyproject-metadata
-Version:        0.11.0
+Version:        0.12.1
 Release:        0
 Summary:        PEP 621 metadata parsing
 License:        MIT
 URL:            https://github.com/FFY00/python-pyproject-metadata
 Source:         https://github.com/FFY00/python-pyproject-metadata/archive/refs/tags/%{version}.tar.gz#/pyproject-metadata-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module flit-core}
-BuildRequires:  %{python_module packaging >= 19}
+BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-packaging >= 19
+Requires:       python-packaging >= 23.2
 BuildArch:      noarch
 # SECTION test
 BuildRequires:  %{python_module pytest}
@@ -69,6 +67,6 @@ file (e.g. `PKG-INFO`).
 %license LICENSE
 %doc README.md
 %{python_sitelib}/pyproject_metadata
-%{python_sitelib}/pyproject_metadata-%{version}*-info
+%{python_sitelib}/pyproject_metadata-%{version}.dist-info
 
 %changelog

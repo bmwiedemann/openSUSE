@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Jul 10 02:19:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.12.1:
+  ## Features:
+  * Support PEP 808 (partially dynamic project metadata) (METADATA 2.6).
+  * Add support for Python 3.15.
+  * Warn (PEP 685) when an extra name in project.optional-dependencies is not
+    a valid name. The extra is still emitted, only a ConfigurationWarning is
+    produced.
+  ## Fixes:
+  * Collect a config error instead of raising a raw TypeError when
+    project.dynamic contains a non-string (unhashable) entry with
+    all_errors=True.
+  * Error on an unset dynamic version instead of silently writing Version:
+    0.0.0. If "version" is declared in project.dynamic but never assigned by
+    the build backend, writing the metadata now raises a ConfigurationError.
+  * Don't crash on a non-table [project] when all_errors=True.
+  * Tighten license-files glob checks and private-tag parsing.
+  * Handle braces in user data within error messages.
+  * Correct the Import-Namespace field name in the metadata mapping.
+  * Fix UTF-8 author and maintainer names.
+  ## Performance:
+  * Cache get_type_hints and precompile dispatch patterns.
+- Remove unneeded BuildRequires on setuptools/wheel.
+- No longer replace license string, no longer needed.
+
+-------------------------------------------------------------------
+Mon Jul  6 10:54:19 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Replace license string with license dict in pyproject.toml via sed
+
+-------------------------------------------------------------------
 Wed Apr  8 09:01:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.11.0:
