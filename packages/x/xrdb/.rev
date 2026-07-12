@@ -127,4 +127,13 @@
   * configure: raise minimum autoconf requirement to 2.70</comment>
     <requestid>1091975</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3b1d0ad1ec4b2151df04fe93bd7b1621</srcmd5>
+    <version>1.2.3</version>
+    <time>1783866061</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to bugfix release 1.2.3
+- switch to Meson build system</comment>
+    <requestid>1364888</requestid>
+  </revision>
 </revisionlist>
