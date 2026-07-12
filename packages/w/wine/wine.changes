@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 14:22:09 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.13 release
+  - Better support for input pointers.
+  - Improved keyboard scancode mapping on X11.
+  - FFmpeg optimizations on ARM64EC.
+  - Various bug fixes.
+- update staging to 11.13 release
+
+-------------------------------------------------------------------
 Wed Jul  1 07:48:44 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.12 release

@@ -5931,4 +5931,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364479</requestid>
   </revision>
+  <revision rev="496" vrev="1">
+    <srcmd5>638e6ac53ca9f967ab85d3299f7034b1</srcmd5>
+    <version>11.13</version>
+    <time>1783874366</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.13 release
+  - Better support for input pointers.
+  - Improved keyboard scancode mapping on X11.
+  - FFmpeg optimizations on ARM64EC.
+  - Various bug fixes.
+- update staging to 11.13 release</comment>
+    <requestid>1365058</requestid>
+  </revision>
 </revisionlist>
