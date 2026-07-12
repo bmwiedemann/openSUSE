@@ -1,7 +1,7 @@
 #
 # spec file for package qbe
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,37 +17,36 @@
 
 
 Name:           qbe
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Small embeddable C compiler backend
+License:        MIT
 Group:          Development/Tools/Building
 URL:            https://c9x.me/compile
 Source0:        https://c9x.me/compile/release/qbe-%{version}.tar.xz
 BuildRequires:  zstd
-License:        MIT
 
 %description
-QBE is a compiler backend that aims to provide 70% of the
-performance of industrial optimizing compilers in 10% of the code.
-QBE fosters language innovation by offering a compact user-friendly
-and performant backend.
+QBE is a compiler backend that aims to provide 70% of the performance of
+industrial optimizing compilers in 10% of the code.  QBE fosters language
+innovation by offering a compact user-friendly and performant backend.
 
-The size limit constrains QBE to focus on the essential and
-prevents embarking on a never-ending path of diminishing returns.
+The size limit constrains QBE to focus on the essential and prevents embarking
+on a never-ending path of diminishing returns.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 %build
 export CC="cc"
-%make_build CFLAGS="%optflags -std=c99 -fPIE"
+%make_build CFLAGS="%{optflags} -std=c99 -fPIE"
 
 %install
-%make_install PREFIX="%_prefix"
+%make_install PREFIX="%{_prefix}"
 
 %files
-%{_bindir}/%{name}
 %license LICENSE
 %doc README doc
+%{_bindir}/%{name}
 
 %changelog
