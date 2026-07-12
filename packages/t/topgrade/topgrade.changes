@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Jul 11 01:46:50 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.7.0:
+  * chore: release v17.7.0 (#2100)
+  * feat(debian): prefer apt over apt-get (#2153)
+  * fix(mise): avoid project cwd for upgrades (#2155)
+  * refactor: remove redundant references in `format!` arguments
+  * chore(deps): update rust to v1.97.0
+  * fix(jetbrains_goland): fix capitalization (#2150)
+  * fix(wsl): forward --yes to the WSL topgrade invocation
+  * fix(steps): stop splicing user-controlled values into shell commands
+  * feat(step): add Cursor agent (#2142)
+  * feat(shelly): Update CLI syntax, show news and skip flatpak (#2130)
+  * fix(antidote): update from interactive zsh when available (#2136)
+  * fix(wsl): skip Windows-path binaries in tool detection (#2135)
+  * chore(deps): update dtolnay/rust-toolchain digest to fa04a14 (#2125)
+  * chore(deps): update github/codeql-action action to v4.36.3 (#2126)
+  * chore(deps): update dawidd6/action-homebrew-bump-formula action to v8 (#2127)
+  * chore(deps): lock file maintenance (#2137)
+  * chore(pre-commit): autoupdate (#2140)
+  * feat(step): add zerobrew (#2133)
+  * fix(config): stop creating `topgrade.d/` (#2132)
+  * chore(deps): update rust to v1.96.1 (#2124)
+  * chore(deps): update actions/attest-build-provenance action to v4.1.1 (#2121)
+  * feat(step): add pkgit (#2120)
+  * fix(mise): refresh process env after upgrade (#2113)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.4 (#2099)
+  * chore(deps): update dtolnay/rust-toolchain digest to 67ef31d (#2106)
+  * chore(deps): lock file maintenance (#2108)
+  * fix(nix): use sudo when current profile is not owned by us
+  * fix(nix): improve correctness of current profile calculation
+  * fix(skills): find lock file via XDG_STATE_HOME (#2114)
+  * fix(mise): only forward --jobs when set
+  * feat(mise): support Windows
+  * fix(nix): skip profile check for Determinate Nix upgrade (#2074)
+  * feat(git): add config option to fetch default branch instead of failing when on another branch (#2109)
+  * feat(jetbrains-toolbox): remove download cache if cleanup = true
+  * refactor(jetbrains-toolbox): remove unnecessary nesting
+  * fix(pi): add extension updates (#2102)
+  * feat(needrestart): support detecting and skipping it on fedora (#2097)
+  * fix: improve default step order (#2098)
+
+-------------------------------------------------------------------
 Sat Jun 20 12:16:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.6.2:

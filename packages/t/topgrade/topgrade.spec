@@ -17,7 +17,7 @@
 
 
 Name:           topgrade
-Version:        17.6.2
+Version:        17.7.0
 Release:        0
 Summary:        Upgrade all the things
 License:        GPL-3.0-only
@@ -46,7 +46,7 @@ them.
 
 %files
 %license LICENSE
-%doc README.md
+%doc README.md CHANGELOG.md
 %{_bindir}/%{name}
 
 %changelog
