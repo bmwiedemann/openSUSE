@@ -1400,8 +1400,6 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-default 
-  - bcachefs-kmp-default 
-  - bcachefs-tools 
   - bcal 
   - bcc-devel 
   - bcc-docs 
@@ -14396,31 +14394,31 @@ unsorted:
   - libkdstatemachineeditor_view-qt6-2 
   - libkdumpfile-devel 
   - libkdumpfile12 
-  - libkea-asiodns62 
-  - libkea-asiolink88 
-  - libkea-cc83 
+  - libkea-asiodns75 
+  - libkea-asiolink105 
+  - libkea-cc98 
   - libkea-cfgrpt3 
-  - libkea-config84 
-  - libkea-cryptolink64 
-  - libkea-d2srv63 
-  - libkea-database76 
-  - libkea-dhcp109 
-  - libkea-dhcp_ddns68 
-  - libkea-dhcpsrv131 
-  - libkea-dns71 
-  - libkea-eval84 
-  - libkea-exceptions45 
-  - libkea-hooks121 
-  - libkea-http87 
-  - libkea-log-interprocess3 
-  - libkea-log75 
-  - libkea-mysql88 
-  - libkea-pgsql88 
-  - libkea-process91 
-  - libkea-stats53 
-  - libkea-tcp33 
+  - libkea-config98 
+  - libkea-cryptolink76 
+  - libkea-d2srv75 
+  - libkea-database88 
+  - libkea-dhcp129 
+  - libkea-dhcp_ddns82 
+  - libkea-dhcpsrv149 
+  - libkea-dns84 
+  - libkea-eval97 
+  - libkea-exceptions55 
+  - libkea-hooks139 
+  - libkea-http100 
+  - libkea-log-interprocess4 
+  - libkea-log86 
+  - libkea-mysql106 
+  - libkea-pgsql105 
+  - libkea-process105 
+  - libkea-stats64 
+  - libkea-tcp45 
   - libkea-util-io12 
-  - libkea-util102 
+  - libkea-util118 
   - libkea1_6 
   - libkeccak-devel 
   - libkeccak1 
