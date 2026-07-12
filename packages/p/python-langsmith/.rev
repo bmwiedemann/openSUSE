@@ -63,4 +63,12 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment>Update to 0.10.1 (percent-encode sandbox request paths, HTML-escape insights repr, backend min 0.16.12rc1)</comment>
     <requestid>1364813</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a20b7d2f6cb671e9d10443c2861990d2</srcmd5>
+    <version>0.10.2</version>
+    <time>1783868982</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.2 (runs= param for annotation queue, re-export OpenAPI exception classes)</comment>
+    <requestid>1364972</requestid>
+  </revision>
 </revisionlist>

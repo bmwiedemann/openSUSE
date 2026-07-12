@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 11 05:34:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.2:
+  * Accept runs by their SmithDB key path in
+    add_runs_to_annotation_queue() via a new runs= parameter
+  * Re-export the OpenAPI client exception classes from the
+    top-level langsmith package for easier error handling
+
+-------------------------------------------------------------------
 Fri Jul 10 05:15:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.1:
