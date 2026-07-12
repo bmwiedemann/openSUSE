@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Jul 10 09:19:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.9.2
+  * Add 48-bit layout support for larger filesystems
+  * Add metadata compression support
+  * mkfs: Enable image creation from S3 storage and OCI registries
+  * Implement an external mount helper for mounting remote EROFS
+    filesystems
+  * mount: Add support for mounting EROFS-native layers in OCI regs
+  * mkfs: Support directory compression via the `--zD` option
+  * mkfs: Enable isolated metadata zones to concentrate inodes and
+    directories using the `--MZ` option
+  * mkfs: Support customized lc,lp,pb properties for LZMA
+  * mkfs: Add the `--xattr-inode-digest` option to enable page
+    cache sharing by generating per-inode fingerprints
+  * erofsfuse: Synchronize kernel patches to fix encoded extents
+    and shared xattrs in the metabox
+  * mkfs: Do not set LZ4_0PADDING for plain filesystems
+  * fsck: Support extracting subtrees
+  * mount: Fix a flag-clearing bug that can cause mount failures
+  * mkfs: Fix a CPU spin that occurred when using `--tar=f` in
+    conjunction with a closed stdin
+  * mkfs: Fix crashes in the rebuild mode when the source images
+    contains xattrs
+  * mount: Add support for mounting EROFS images stored as S3
+    objects
+  * mkfs: Add FULLDATA rebuild support for combining multiple
+    layered EROFS filesystems
+  * mount: Add support for Fanotify and UBLK backends
+  * mkfs, tarerofs: Support inode digest generation when using
+    `--sort=none`
+
+-------------------------------------------------------------------
 Tue Jul 15 09:38:26 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.10

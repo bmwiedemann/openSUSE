@@ -146,4 +146,12 @@
 remove broken &quot;enable zstd&quot; changelog entry;was never enabled</comment>
     <requestid>1293367</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>4b6f28ef49f260fbbaab3c82b58d00f1</srcmd5>
+    <version>1.9.2</version>
+    <time>1783865998</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.9.2</comment>
+    <requestid>1364905</requestid>
+  </revision>
 </revisionlist>
