@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 08:44:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.1
+  * Added netlink support for RX CQE Coalescing params
+  * netlink: module-eeprom: Add 'hex on pages on' option for
+    page-organized hex dump
+  * netlink: fec: Add missing newlines in FEC statistics output
+  * ethtool: Add man page and bash completion for 'pages on|off'
+  * ethtool: Update pause stats struct
+  * ethtool: Add --disable-netlink to help output
+  * qsfp: add support for newer SFF-8636 compliance codes
+  * sfpid: add support for newer SFF-8472 compliance codes
+  * sfpid: fix 10G Base-ER module detection
+- Delete bf023af442f63e16f1699128c7ce467eddc6d340.patch,
+  d35d87fbcda97fe31df79d62277743214641892a.patch (merged)
+
+-------------------------------------------------------------------
 Tue Apr 28 13:15:47 UTC 2026 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to upstream release 7.0
