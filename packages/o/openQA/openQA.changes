@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 10 11:31:25 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783672871.e689eb3c:
+  * chore(deps): Dependency cron 2026-07-10
+  * fix(test): resolve List::Util::any coverage bug
+  * refactor(test): use List::Util::any in full-stack
+  * feat(scheduler): Clarify job missing class reason
+  * feat(scheduler): distinguish busy vs offline workers
+  * fix(test): wait for processes in full-stack teardown
+  * docs(agents): document make check-line-coverage in AGENTS.md
+  * feat(build): add check-line-coverage target
+  * chore(deps): Dependency cron 2026-07-09
+  * ci: Add cli tool to report uncovered lines
+  * feat: allow UEFI_PFLASH_CODE as asset
+  * refactor: Remove duplicate 'use' statement
+  * fix(client): Encode text_data as UTF-8 in archive command
+  * fix: Handle source Urls ending with .git
+
+-------------------------------------------------------------------
 Wed Jul 08 04:48:42 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783486111.5733fbdf:
