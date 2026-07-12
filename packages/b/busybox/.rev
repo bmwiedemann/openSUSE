@@ -950,4 +950,41 @@
     <comment></comment>
     <requestid>1351513</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>ae2c963b946bf1231250b0a910830311</srcmd5>
+    <version>1.38.0</version>
+    <time>1783866007</time>
+    <user>dimstar_suse</user>
+    <comment>Please stage together with https://build.opensuse.org/requests/1364919
+
+- Update to version 1.38.0:
+  * New applets: sha384sum, vmstat, ssl_server, lsblk, uuidgen
+  * Security: Disallow path traversals in archival (CVE-2023-39810)
+  * archival: Sanitize filenames on output to prevent control sequence attacks
+  * ash/hush: Implement &lt;&lt;&lt; here_string syntax and improve bash compatibility
+  * libbb: Add yescrypt password hashing support
+  * tls: Implement server-side code and support ECDHE_RSA
+  * httpd: Add connection limits (-M), POSTDATA read timeouts, and CGI logging
+  * telnet/telnetd: Rewrite to use generic fd polling and I/O loop
+  * cut: Major fixes for empty delimiters, ranges, and output-delimiter support
+  * cp: Fix 'cp -aT' overwriting symlink to directories
+  * fdisk: Fix GPT disk size overflow and add 4K sector size support
+  * top: Reduce flicker and show RSS instead of VIRT by default
+  * udhcpc6: Fix potential buffer overflow
+  * many other small fixes and optimizations
+- Remove patches included in the new version:
+  * busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
+  * busybox-1.37.0-fix-regression-n2.patch
+  * busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
+  * busybox-1.37.0-hexdump-fix-regression-for-uint16-on-big-endian-syst.patch
+  * busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for-bi.patch
+  * 0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
+  * 0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
+  * 0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
+  * 0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
+  * 0001-udhcpc6-fix-buffer-overflow.patch
+  * 0002-udhcpc6-check-the-size-of-D6_OPT_IAPREFIX-option.patch
+</comment>
+    <requestid>1364920</requestid>
+  </revision>
 </revisionlist>

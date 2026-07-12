@@ -24,7 +24,7 @@
 %bcond_without  static
 
 Name:           busybox
-Version:        1.37.0
+Version:        1.38.0
 Release:        0
 Summary:        Minimalist variant of UNIX utilities linked in a single executable
 License:        GPL-2.0-or-later
@@ -41,35 +41,14 @@ Source7:        busybox.config.static.warewulf3
 Patch0:         cpio-long-opt.patch
 Patch1:         sendmail-ignore-F-option.patch
 Patch2:         testsuite-gnu-echo.patch
-# # PATCH-FIX-UPSTREAM shell: avoid segfault on ${0::0/0~09J} (CVE-2022-48174) https://git.busybox.net/busybox/commit/?id=d417193cf
-# Patch3:         ash-fix-segfault-d417193cf.patch
-Patch4:         udhcp6-install-path.patch
-Patch5:         tc-no-TCA_CBQ.patch
-# PATCH-FIX-UPSTREAM - Borrowed from Fedora - https://src.fedoraproject.org/rpms/busybox/blob/rawhide/f/busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
-Patch6:         busybox-1.37.0-fix-conditional-for-sha1_process_block64_shaNI.patch
+Patch3:         udhcp6-install-path.patch
+Patch4:         tc-no-TCA_CBQ.patch
 # https://gitlab.alpinelinux.org/alpine/aports/-/raw/3.21-stable/main/busybox/0015-ping-make-ping-work-without-root-privileges.patch?ref_type=heads
-Patch7:         busybox-1.37.0-make-ping-work-without-root-privileges.patch
-#PATCH-FIX-UPSTREAM -  hexdump: fix regression with -n4 -e '"%u"' bug introduced in busybox 1.37.0 that broke kernel builds.
-Patch8:         busybox-1.37.0-fix-regression-n2.patch
-#PATCH-FIX-UPSTREAM - Fixes for hexdump and tests on big endian (S390) systems
-Patch9:         busybox-1.37.0-hexdump-fix-regression-for-uint16-on-big-endian-syst.patch
-Patch10:        busybox-1.37.0-od-make-B-test-little-endian-only-add-variant-for-bi.patch
-Patch11:        busybox-1.37.0-hexdump-add-tests-for-x-handle-little-big-endian-pro.patch
+Patch5:         busybox-1.37.0-make-ping-work-without-root-privileges.patch
 # PATCH-FIX-UPSTREAM - Fix adduser inside containers (boo#1247779)
-Patch12:        0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
-# PATCH-FIX-UPSTREAM - Fix bsc#1241661 (CVE-2025-46394), from upstream commit f5e1bf966
-Patch13:        0001-archival-libarchive-sanitize-filenames-on-output-pre.patch
+Patch6:         0001-update_passwd-Avoid-selinux_preserve_fcontext-if-SEL.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1253245 (CVE-2025-60876), submitted to mailing list
-Patch14:        wget-don-t-allow-control-characters-in-url.patch
-# PATCH-FIX-UPSTREAM - Fix bsc#1249237, from upstream commit 362159593
-Patch15:        0001-nsenter-unshare-don-t-use-xvfork_parent_waits_and_ex.patch
-# PATCH-FIX-UPSTREAM - Fix bsc#1258163 (CVE-2026-26157), bsc#1258167 (CVE-2026-26157) from upstream commit 3fb6b31c7
-Patch16:        0001-tar-strip-unsafe-hardlink-components-GNU-tar-does-th.patch
-# PATCH-FIX-UPSTREAM - The fix above introducesa problem rewriting symlink targets too
-Patch17:        0002-tar-only-strip-unsafe-components-from-hardlinks-not-.patch
-# PATCH-FIX-UPSTREAM - Fix bsc#1263989, (CVE-2026-29004) from upsrteam commits 42202bf, d368f3f
-Patch18:        0001-udhcpc6-fix-buffer-overflow.patch
-Patch19:        0002-udhcpc6-check-the-size-of-D6_OPT_IAPREFIX-option.patch
+Patch7:         wget-don-t-allow-control-characters-in-url.patch
 
 # other patches
 Patch100:       busybox.install.patch
