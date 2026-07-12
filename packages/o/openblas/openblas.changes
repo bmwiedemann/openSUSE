@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 15:29:46 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- fixed wrong ownership of /usr/include for SLE16.1 builds and moved
+  tests to non conflicting locations
+
+-------------------------------------------------------------------
 Tue Jun 30 06:48:59 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - disable tests for i586 as sblat tests fail

@@ -122,14 +122,13 @@ ExclusiveArch:  do_not_build
 %define package_name  %{pname}_%{flavor}
 %endif
 %define p_prefix %_prefix
+%define p_testdir %_libexecdir/openblas%{?flavor:-%{flavor}}/tests
 %if %{with alternatives}
 %define p_includedir %_includedir/%pname
 %define p_libdir %_libdir/openblas%{?flavor:-%{flavor}}
-%define p_testdir %_libexecdir/openblas%{?flavor:-%{flavor}}/tests
 %else
 %define p_includedir %_includedir
 %define p_libdir %_libdir
-%define p_testdir %_libexecdir/openblas/tests
 %endif
 %define p_cmakedir %{p_libdir}/cmake/%{pname}
 %define num_threads 64
@@ -662,7 +661,18 @@ bash ./openblas_tests_check.sh
 %files -n %{pname}-common-devel
 %license LICENSE
 %doc Changelog.txt GotoBLAS* README.md README.SUSE
+%if %{with alternatives}
 %{p_includedir}/
+%else
+%{_includedir}/cblas.h
+%{_includedir}/f77blas.h
+%{_includedir}/lapack.h
+%{_includedir}/lapacke.h
+%{_includedir}/lapacke_config.h
+%{_includedir}/lapacke_mangling.h
+%{_includedir}/lapacke_utils.h
+%{_includedir}/openblas_config.h
+%endif
 %{_libdir}/pkgconfig/openblas.pc
 %dir %{_libdir}/cmake
 %{_libdir}/cmake/openblas
