@@ -70,8 +70,8 @@ echo -e "$SBINDIR/loadfont" >> filelist-kbd.txt
 echo -e "$SBINDIR/loadkmap" >> filelist-kbd.txt
 touch used/loadkmap used/loadfont
 
-echo -e "/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
-touch used/addgroup used/adduser used/delgroup used/deluser
+echo -e "/usr/bin/passwd\n/usr/sbin/addgroup\n/usr/sbin/adduser\n/usr/sbin/delgroup\n/usr/sbin/deluser" >> filelist-shadow.txt
+touch used/passwd used/addgroup used/adduser used/delgroup used/deluser
 
 echo -e "/usr/sbin/syslogd" > filelist-syslogd.txt
 touch used/syslogd

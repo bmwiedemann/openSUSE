@@ -67,6 +67,7 @@
 /usr/bin/sha1sum
 /usr/bin/sha3sum
 /usr/bin/sha256sum
+/usr/bin/sha384sum
 /usr/bin/sha512sum
 /usr/bin/mkdir
 /usr/bin/mkfifo
@@ -205,6 +206,7 @@
 /usr/sbin/route
 /usr/sbin/slattach
 /usr/bin/ssl_client
+/usr/bin/ssl_server
 /usr/sbin/tc
 /usr/bin/telnet
 /usr/bin/tftp
@@ -235,6 +237,7 @@
 /usr/sbin/sysctl
 /usr/bin/top
 /usr/bin/uptime
+/usr/bin/vmstat
 /usr/bin/watch
 /usr/bin/envdir
 /usr/bin/chcon
@@ -269,6 +272,7 @@
 /usr/bin/ipcs
 /usr/bin/last
 /usr/sbin/losetup
+/usr/bin/lsblk
 /usr/bin/lspci
 /usr/bin/lsusb
 /usr/sbin/mdev
@@ -296,6 +300,7 @@
 /usr/sbin/uevent
 /usr/bin/umount
 /usr/bin/unshare
+/usr/bin/uuidgen
 /usr/bin/wall
 /usr/sbin/udhcpc6
 /usr/sbin/udhcpc

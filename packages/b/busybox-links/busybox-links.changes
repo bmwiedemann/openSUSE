@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 10 10:10:20 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Adapt to busybox 1.38, new applets: sha384sum, ssl_server, vmstat,
+  lsblk, uuidgen
+- Keep passwd in shadow package (it was split in shadow-pw-mgmt in the
+  full featured version)
+
+-------------------------------------------------------------------
 Sun Oct 12 19:31:16 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Add conflicts of busybox-misc to ascii
