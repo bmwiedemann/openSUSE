@@ -276,4 +276,20 @@ AFAICT these packages aren't needed for generating the docs and the official doc
   improve immutable os compatibility</comment>
     <requestid>1330058</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>3c3ffffe1d9cdbf9cd919c0c84d368b4</srcmd5>
+    <version>3.0.3</version>
+    <time>1774470127</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.0.3</comment>
+    <requestid>1342503</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>669bd9a1f43ecb36efff3c4dd0904a7d</srcmd5>
+    <version>3.2.0</version>
+    <time>1783866091</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.2.0</comment>
+    <requestid>1364961</requestid>
+  </revision>
 </revisionlist>

@@ -16,33 +16,33 @@
 #
 
 
-%define asiodns_sover 62
-%define asiolink_sover 88
-%define cc_sover 82
+%define asiodns_sover 75
+%define asiolink_sover 105
+%define cc_sover 98
 %define cfgrpt_sover 3
-%define config_sover 83
-%define cryptolink_sover 64
-%define d2srv_sover 63
-%define database_sover 76
-%define dhcp_sover 109
-%define dhcp_ddns_sover 68
-%define dhcpsrv_sover 131
-%define dns_sover 71
-%define eval_sover 84
-%define exceptions_sover 45
-%define hooks_sover 120
-%define http_sover 87
-%define log_interprocess_sover 3
-%define log_sover 75
-%define mysql_sover 88
-%define pgsql_sover 88
-%define process_sover 90
-%define stats_sover 53
-%define tcp_sover 33
+%define config_sover 98
+%define cryptolink_sover 76
+%define d2srv_sover 75
+%define database_sover 88
+%define dhcp_sover 129
+%define dhcp_ddns_sover 82
+%define dhcpsrv_sover 149
+%define dns_sover 84
+%define eval_sover 97
+%define exceptions_sover 55
+%define hooks_sover 139
+%define http_sover 100
+%define log_interprocess_sover 4
+%define log_sover 86
+%define mysql_sover 106
+%define pgsql_sover 105
+%define process_sover 105
+%define stats_sover 64
+%define tcp_sover 45
 %define util_io_sover 12
-%define util_sover 101
+%define util_sover 118
 Name:           kea
-Version:        3.0.2
+Version:        3.2.0
 Release:        0
 Summary:        Dynamic Host Configuration Protocol daemon
 License:        MPL-2.0
@@ -57,10 +57,8 @@ Source3:        kea.keyring
 Source4:        kea-dhcp4.service
 Source5:        kea-dhcp6.service
 Source6:        kea-dhcp-ddns.service
-Source7:        kea-ctrl-agent.service
-Source8:        kea-tmpfiles.conf
+Source7:        kea-tmpfiles.conf
 Patch1:         kea-boost1_89.patch
-Patch2:         kea-boost1_90.patch
 BuildRequires:  fdupes
 BuildRequires:  freeradius-server-devel
 BuildRequires:  gcc-c++
@@ -253,10 +251,10 @@ Summary:        Kea DHCP http communication library
 Group:          System/Libraries
 
 %description -n libkea-http%http_sover
-This library is used by Control Agent to establish HTTP connections,
-receive messages and send responses over HTTP. This library uses
-boost ASIO for creating TCP connections and asynchronously receive
-and send the data over the sockets.
+This library is used by the Kea DHCP daemons to establish HTTP
+connections, receive messages and send responses over HTTP. This
+library uses boost ASIO for creating TCP connections and
+asynchronously receive and send the data over the sockets.
 
 %package -n libkea-log-interprocess%log_interprocess_sover
 Summary:        Kea DHCP log interprocess library
@@ -389,7 +387,7 @@ cp %_sourcedir/*.service "$b/%_unitdir/"
 echo 'u keadhcp - "Kea DHCP server" /var/lib/kea' >system-user-keadhcp.conf
 cp -a system-user-keadhcp.conf "$b/%_sysusersdir/"
 %sysusers_generate_pre system-user-keadhcp.conf random system-user-keadhcp.conf
-install -Dpm0644 %SOURCE8 "%buildroot/%_tmpfilesdir/kea.conf"
+install -Dpm0644 %SOURCE7 "%buildroot/%_tmpfilesdir/kea.conf"
 
 perl -i -pe 's{%_localstatedir/log/kea-}{%_localstatedir/log/kea/}' \
 	"$b/%_sysconfdir/kea"/*.conf
@@ -401,10 +399,10 @@ rm -Rf "%buildroot/%_datadir/kea/meson-info"
 %fdupes %buildroot/%_datadir/doc/kea
 
 %pre -f random.pre
-%service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
+%service_add_pre kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
 
 %post
-%service_add_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
+%service_add_post kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
 if [ "$1" -gt 1 ]; then
 	[ -d "%_sharedstatedir/kea" ] && chown -R keadhcp:keadhcp "%_sharedstatedir/kea"
 	[ -d "%_localstatedir/log/kea" ] && chown -R keadhcp:keadhcp "%_localstatedir/log/kea"
@@ -416,7 +414,6 @@ bigkea_active=$(%_bindir/systemctl is-active kea.service 2>/dev/null || :)
 use_dhcp4=$(grep -ie ^dhcp4=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
 use_dhcp6=$(grep -ie ^dhcp6=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
 use_ddns=$(grep -ie ^dhcp_ddns=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
-use_agent=$(grep -ie ^ctrl_agent=yes %_sysconfdir/kea/keactrl.conf 2>/dev/null || :)
 if [ "$bigkea_enabled" = "enabled" ]; then
 	echo "Transferring enablement of kea.service to new split units..."
 	%_bindir/systemctl disable kea.service || :
@@ -428,9 +425,6 @@ if [ "$bigkea_enabled" = "enabled" ]; then
 	fi
 	if [ -n "$use_ddns" ]; then
 		%_bindir/systemctl enable kea-dhcp-ddns.service || :
-	fi
-	if [ -n "$use_agent" ]; then
-		%_bindir/systemctl enable kea-ctrl-agent.service || :
 	fi
 fi
 if [ "$bigkea_active" = "active" ]; then
@@ -445,16 +439,17 @@ if [ "$bigkea_active" = "active" ]; then
 	if [ -n "$use_ddns" ]; then
 		%_bindir/systemctl start kea-dhcp-ddns.service || :
 	fi
-	if [ -n "$use_agent" ]; then
-		%_bindir/systemctl start kea-ctrl-agent.service || :
-	fi
+fi
+if %_bindir/systemctl is-enabled kea-ctrl-agent.service >/dev/null 2>&1 || %_bindir/systemctl is-active kea-ctrl-agent.service >/dev/null 2>&1; then
+	echo "The Control Agent (kea-ctrl-agent) has been removed upstream; disabling and stopping the leftover service..."
+	%_bindir/systemctl disable --now kea-ctrl-agent.service || :
 fi
 
 %preun
-%service_del_preun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
+%service_del_preun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
 
 %postun
-%service_del_postun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service kea-ctrl-agent.service
+%service_del_postun kea-dhcp4.service kea-dhcp6.service kea-dhcp-ddns.service
 
 %ldconfig_scriptlets -n libkea-asiodns%asiodns_sover
 %ldconfig_scriptlets -n libkea-asiolink%asiolink_sover

@@ -5,35 +5,13 @@ boost 1.89 does not have boost_system anymore.
 
 diff -purN a/meson.build b/meson.build
 --- a/meson.build	2025-08-20 10:14:44.000000000 +0200
-+++ b/meson.build	2025-10-26 13:56:44.801656560 +0100
-@@ -189,7 +189,7 @@ message(f'Detected system "@SYSTEM@".')
- 
- #### Dependencies
- 
--boost_dep = dependency('boost', version: '>=1.66', modules: ['system'])
-+boost_dep = dependency('boost', version: '>=1.66', modules: ['system'], required: false)
- dl_dep = dependency('dl')
++++ b/meson.build	2026-07-07 00:00:00.000000000 +0000
+@@ -192,7 +192,7 @@
+
+ boost_dep = dependency('boost', version: '>=1.69', required: false)
+ if not boost_dep.found()
+-    boost_dep = dependency('boost', version: '>=1.66', modules: ['system'])
++    boost_dep = dependency('boost', version: '>=1.66', modules: ['system'], required: false)
+ endif
+ dl_dep = dependency('dl', required: not meson.is_cross_build())
  threads_dep = dependency('threads')
- add_project_dependencies(boost_dep, dl_dep, threads_dep, language: ['cpp'])
-diff -purN a/src/lib/asiodns/io_fetch.h b/src/lib/asiodns/io_fetch.h
---- a/src/lib/asiodns/io_fetch.h	2025-08-20 10:14:44.000000000 +0200
-+++ b/src/lib/asiodns/io_fetch.h	2025-10-26 13:52:05.461445874 +0100
-@@ -16,6 +16,7 @@
- #include <util/buffer.h>
- 
- #include <boost/asio/coroutine.hpp>
-+#include <boost/asio/deadline_timer.hpp>
- #include <boost/shared_array.hpp>
- #include <boost/shared_ptr.hpp>
- #include <boost/date_time/posix_time/posix_time_types.hpp>
-diff -purN a/src/lib/asiolink/interval_timer.h b/src/lib/asiolink/interval_timer.h
---- a/src/lib/asiolink/interval_timer.h	2025-08-20 10:14:44.000000000 +0200
-+++ b/src/lib/asiolink/interval_timer.h	2025-10-26 12:29:18.357562324 +0100
-@@ -7,6 +7,7 @@
- #ifndef ASIOLINK_INTERVAL_TIMER_H
- #define ASIOLINK_INTERVAL_TIMER_H 1
- 
-+#include <boost/asio/deadline_timer.hpp>
- #include <boost/shared_ptr.hpp>
- #include <functional>
- 

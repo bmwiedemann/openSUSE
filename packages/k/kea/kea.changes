@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Tue Jul  7 12:01:08 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 3.2.0
+  * Added a shared Free Lease Queue (sFLQ) allocator, which stores
+    FLQ data centrally in the lease database so free-lease tracking
+    is synchronized across servers sharing a backend.
+  * Removed the Control Agent (CA), deprecated since 3.0. The DHCP
+    daemons now expose their HTTP/TLS control sockets natively;
+    setups using the RBAC hook must load it directly via the DHCP
+    daemons instead of the CA.
+  * Refactored network interface handling, fixing over 30 issues
+    including interface starvation and problems with large numbers
+    (500+) of interfaces. Adds new interface-add, interface-list
+    and interface-redetect commands.
+  * Added RADIUS over TLS support to mitigate the Blast RADIUS
+    vulnerability; RADIUS over UDP now requires a
+    Message-Authenticator attribute by default.
+  * Added adaptive lease-time support (ported from ISC DHCP), which
+    shortens lease lifetimes under high pool utilization to recycle
+    addresses faster and delay pool exhaustion.
+  * Added explicit TLS options (ssl-mode, cert-file, key-file,
+    trust-anchor, cipher-list) for the PostgreSQL Configuration
+    Backend.
+
+  Further detailed information of all changes is available at
+  https://gitlab.isc.org/isc-projects/kea/-/wikis/Release-Notes/release-notes-3.2.0
+  and
+  https://kb.isc.org/docs/things-to-be-aware-of-when-upgrading-to-kea-3-2
+
+- Deleted obsolete kea-boost1_90.patch
+- Updated kea-boost1_89.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 12:34:20 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to release 3.0.3
+  * A large number of bracket pairs in a JSON payload directed to
+    any endpoint would result in a stack overflow, due to recursive
+    calls when parsing the JSON. This has been fixed.
+    (CVE-2026-3608)
+    [bsc#1260380]
+  * A null dereference is now no longer possible when configuring
+    the Control Agent with a socket that lacks the mandatory
+    socket-name entry.
+  * UNIX sockets are now created as group-writable.
+
+-------------------------------------------------------------------
 Thu Jan 29 13:35:45 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Create /var/lib/kea and /var/log/kea via systemd-tmpfiles to
