@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Jul  9 17:50:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.5:
+  + amcviddec: Fix double-free happening when codec gets
+    reconfigured
+  + avtp: Correct ptime generation from avtp timestamp
+  + ccconverter: Use truncated length when converting CEA608 raw to
+    CEA708 CDP
+  + curlsmtpsink: Use the correct content-type if known
+  + d3d12: Fix command list leak
+  + dtlsconnection: Allocate large enough buffer for the peer
+    certificate subject DN
+  + h264parse: Check for enough slice header data being available
+  + h2654parse: Unset GValue in every code path
+  + h265decoder: Fix HEVC with alpha decoding
+  + h266parser: Avoid out-of-bounds read if too many exp slices are
+    signalled
+  + h266parser: Check bounds before writing to CTU entrypoint
+    array
+  + h266parser: Check aspect ratio index against lookup table
+    length
+  + h266parser: Heap-allocate parameter sets before parse to avoid
+    stack overflow
+  + h266parser: Use long bit skipping function for potentially
+    large values
+  + mpeg4videoparse: Ensure enough config data is available before
+    extracting profile/level
+  + mpegpsdemux: Release stream lock when seeking fails
+  + mpegtsmux: Always assign PTS to output buffers in CBR mode
+  + mpegtsmux: Output buffers with PCR-only bitrate-padding packets
+    have wrong PTS
+  + mxfdemux: fix essence track offsets array population
+  + netsim: Fix racy test failures
+  + pcapparse: Add missing bounds checks to ensure packets are
+    large enough
+  + pnmdec: Avoid overflows when calculating frame sizes
+  + qroverlay: Fix use after free bug
+  + rfbsrc: Use correct bpp for copying hextile data
+  + rfbsrc: Validate framebuffer update rectangles against the
+    framebuffer size
+  + rtmp2: Don't retry on G_IO_ERROR_TIMED_OUT
+  + rtmp2: Remove socket timeout after handshake completes
+  + rtpsink: fix mutex not unlocked on invalid URI in set_property
+  + tsdemux: YouTube HLS streams have intermittent corruption
+  + tsdemux: Improve PTS rollover handling in ignore-pcr mode
+  + v4l2decoder: Fix media_fd leak when video_fd open fails
+  + va: surfacecopy: get surface's image in gst_va_surface_copy
+  + va: VOBSUB: compositing error with VA decoder in NV12
+  + va: radeonsi: subtitles cause green flickering
+  + va: radeonsi: Subtitles cause green flickering with VA decoders
+  + videoparsers: Always clear LCEVC enhancement data when
+    resetting frame
+  + videoparsers: Leak of LCEVC user data
+  + vnmdec: Avoid integer overflows when rectangle positions and
+    sizes
+  + vp9parser: Check that enough data is available for parsing
+    superframe info
+  + webrtcbin: validate remote dtls certificates
+  + webrtcsdp: Fix inverted fingerprint existence logic
+
+-------------------------------------------------------------------
 Fri Jun 19 09:07:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.4+24 (boo#1268406, boo#1268408,
