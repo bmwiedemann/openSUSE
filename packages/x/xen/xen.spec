@@ -102,6 +102,7 @@ BuildRequires:  libzstd-devel
 BuildRequires:  lzo-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
+BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  xz-devel

@@ -3174,4 +3174,12 @@
     <comment>Security Update for Xen. Fix for bsc#1264066 CVE-2025-54518 XSA-490 AMD-SN-7052: CPU OP Cache Corruption</comment>
     <requestid>1353106</requestid>
   </revision>
+  <revision rev="375" vrev="2">
+    <srcmd5>5aa4e22594e25714e30194190438d738</srcmd5>
+    <version>4.21.1_06</version>
+    <time>1783866019</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1364767</requestid>
+  </revision>
 </revisionlist>

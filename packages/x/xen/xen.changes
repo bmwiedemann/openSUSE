@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Tue May 12 13:03:24 MDT 2026 - carnold@suse.com
 
 - bsc#1264066 - VUL-0: CVE-2025-54518: xen: AMD-SN-7052: CPU OP
