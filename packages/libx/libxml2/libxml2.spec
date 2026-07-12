@@ -28,6 +28,9 @@ Source0:        https://download.gnome.org/sources/%{name}/2.15/libxml2-%{versio
 Source1:        baselibs.conf
 # W3C Conformance tests
 Source2:        https://www.w3.org/XML/Test/xmlts20080827.tar.gz
+# CVE-2026-11979: stack-based buffer overflows in the `xmlcatalog` utility when running in `--shell` mode (bsc#1269790)
+# - https://gitlab.gnome.org/GNOME/libxml2/-/commit/c2e233fc1b341685fc99621b2768b503
+Patch0:         libxml2-CVE-2026-11979.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 %if 0%{?suse_version} >= 1600
