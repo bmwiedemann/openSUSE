@@ -18,7 +18,7 @@
 
 %define _name PrismLauncher
 Name:           prismlauncher
-Version:        11.0.2
+Version:        11.0.3
 Release:        0
 Summary:        A custom launcher for Minecraft
 License:        GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-3-Clause
@@ -39,7 +39,6 @@ BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  cmake(VulkanHeaders)
 BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcmark)
@@ -73,11 +72,11 @@ sed -i -e 's|\$ORIGIN/||' -e 's/\${TODAY}/unknown/' CMakeLists.txt
        -DLauncher_QT_VERSION_MAJOR="6"
 %cmake_build
 
-%check
-%ctest
-
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license COPYING.md LICENSE
