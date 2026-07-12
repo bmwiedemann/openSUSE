@@ -1,20 +1,22 @@
-https://github.com/rnpgp/rnp/pull/2381
-https://github.com/rnpgp/rnp/pull/2382
+From ba8df120afc88b9530df3a1c6a249032932466c7 Mon Sep 17 00:00:00 2001
+From: Kai Engert <kaie@kuix.de>
+Date: Tue, 24 Mar 2026 14:39:00 +0100
+Subject: [PATCH] Fix build with Botan head and typos warnings
 
-[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp: In function ‘size_t rnp::hex_decode(const char*, uint8_t*, size_t)’:
-[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp:55:21: error: ‘strlen’ was not declared in this scope
-[   36s]    55 |     size_t hexlen = strlen(hex);
-[   36s]       |                     ^~~~~~
-[   36s] /home/abuild/rpmbuild/BUILD/rnp-0.18.1-build/rnp-v0.18.1/src/lib/crypto/mem.cpp:30:1: note: ‘strlen’ is defined in header ‘<cstring>’; this is probably fixable by adding ‘#include <cstring>’
-[   36s]    29 | #include "logging.h"
-[   36s]   +++ |+#include <cstring>
-[   36s]    30 | #include <botan/ffi.h>
-[   36s] make[2]: *** [src/lib/CMakeFiles/librnp-obj.dir/build.make:516: src/lib/CMakeFiles/librnp-obj.dir/crypto/mem.cpp.o] Error 1
+- Add missing <cstring> include in mem.cpp
+- Rename cpy variables to copy in s2k_ossl.cpp and fingerprint.hpp
 
-Index: rnp-v0.18.1/src/lib/crypto/mem.cpp
-===================================================================
---- rnp-v0.18.1.orig/src/lib/crypto/mem.cpp
-+++ rnp-v0.18.1/src/lib/crypto/mem.cpp
+Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
+---
+ src/lib/crypto/mem.cpp      | 1 +
+ src/lib/crypto/s2k_ossl.cpp | 8 ++++----
+ src/lib/fingerprint.hpp     | 4 ++--
+ 3 files changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/src/lib/crypto/mem.cpp b/src/lib/crypto/mem.cpp
+index 94d90f5484..dbd2a143ed 100644
+--- a/src/lib/crypto/mem.cpp
++++ b/src/lib/crypto/mem.cpp
 @@ -25,6 +25,7 @@
   */
  
@@ -23,10 +25,37 @@ Index: rnp-v0.18.1/src/lib/crypto/mem.cpp
  #include "mem.h"
  #include "logging.h"
  #include <botan/ffi.h>
-@@ -65,4 +66,4 @@ hex_decode(const char *hex, uint8_t *buf
+diff --git a/src/lib/crypto/s2k_ossl.cpp b/src/lib/crypto/s2k_ossl.cpp
+index de05b83a62..b810f87336 100644
+--- a/src/lib/crypto/s2k_ossl.cpp
++++ b/src/lib/crypto/s2k_ossl.cpp
+@@ -76,10 +76,10 @@ pgp_s2k_iterated(pgp_hash_alg_t alg,
+                 }
+             }
+             auto   dgst = hash->sec_finish();
+-            size_t out_cpy = std::min(dgst.size(), output_len);
+-            memcpy(out, dgst.data(), out_cpy);
+-            output_len -= out_cpy;
+-            out += out_cpy;
++            size_t out_copy = std::min(dgst.size(), output_len);
++            memcpy(out, dgst.data(), out_copy);
++            output_len -= out_copy;
++            out += out_copy;
+             zeroes++;
+         }
+         return 0;
+diff --git a/src/lib/fingerprint.hpp b/src/lib/fingerprint.hpp
+index b9ff1581f2..5c41257ea7 100644
+--- a/src/lib/fingerprint.hpp
++++ b/src/lib/fingerprint.hpp
+@@ -88,8 +88,8 @@ template <> struct hash<pgp::Fingerprint> {
+     {
+         /* since fingerprint value is hash itself, we may use its low bytes */
+         size_t res = 0;
+-        size_t cpy = std::min(sizeof(res), fp.size());
+-        std::memcpy(&res, fp.data(), cpy);
++        size_t copy = std::min(sizeof(res), fp.size());
++        std::memcpy(&res, fp.data(), copy);
+         return res;
      }
-     return buf_len;
- }
--} // namespace rnp
-\ No newline at end of file
-+} // namespace rnp
+ };

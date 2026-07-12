@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 10 19:06:52 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- No longer skip test_encryption_x25519, use a fix instead
+  Replacing rnp-v0.18.0-skip-test_encryption_x25519.patch
+  with upstream rnp-v0.18.1-test_cv25519_bit_fix.patch
+- Update botan compatibility patch with upstream patch
+  rnp-v0.18.1-botan-1-1.patch
+- skip failing tests disable-tests.patch:
+  * test_sm2_encryption_signing(self):
+  * test_encryption_cek(self):
+
+-------------------------------------------------------------------
 Thu Apr 16 17:22:55 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix build on Tumbleweed, add rnp-v0.18.1-botan-1-1.patch
