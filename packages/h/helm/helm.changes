@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:31:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.2.3:
+  * chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0
+    43e8b7f (Terry Howe)
+
+-------------------------------------------------------------------
 Fri Jun 19 10:13:31 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update helm to 4.2.2:
