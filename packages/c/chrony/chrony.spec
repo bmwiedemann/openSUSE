@@ -1,7 +1,7 @@
 #
 # spec file for package chrony
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -70,6 +70,7 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
+Patch9:         chrony-libnettle4.patch
 BuildRequires:  NetworkManager-devel
 BuildRequires:  bison
 BuildRequires:  findutils
@@ -181,6 +182,7 @@ e.g. because the servers will be set via DHCP.
 %patch -P 3
 %patch -P 7
 %patch -P 8
+%patch -P 9
 
 # Remove pool statements from the default /etc/chrony.conf. They will
 # be provided by branding packages in /etc/chrony.d/pool.conf .
