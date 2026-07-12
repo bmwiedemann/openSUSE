@@ -41,4 +41,12 @@
     <comment>Update to version 9.8.0</comment>
     <requestid>1360102</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>25a8b65d7f59c3c91f0a64671ff2dfbf</srcmd5>
+    <version>9.8.1</version>
+    <time>1783869175</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 9.8.1</comment>
+    <requestid>1365012</requestid>
+  </revision>
 </revisionlist>

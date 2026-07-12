@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 12 04:42:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 9.8.1:
+  * Fix a 9.8.0 regression in the ZIM creator's final file
+    renaming
+
+-------------------------------------------------------------------
 Wed Jun 17 20:17:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 9.8.0:
