@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 10 16:18:26 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- add tar for "kubectl cp"
+
+-------------------------------------------------------------------
+Thu Jun 18 17:22:43 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- only clean specific files in /run
+
+-------------------------------------------------------------------
+Thu Jun 18 17:02:21 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- enable build for riscv64
+
+-------------------------------------------------------------------
 Tue Jun 16 20:28:07 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - fixes for 1.7 (better launcher config; adding synchronizer)

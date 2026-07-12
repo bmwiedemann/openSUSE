@@ -14,7 +14,7 @@
 # You can contact the BCI team via https://github.com/SUSE/bci/discussions
 
 #!UseOBSRepositories
-#!ExclusiveArch: aarch64 ppc64le s390x x86_64
+#!ExclusiveArch: aarch64 ppc64le s390x riscv64 x86_64
 #!BuildTag: opensuse/389-ds:%%389ds_version%%-%RELEASE%
 #!BuildTag: opensuse/389-ds:%%389ds_version%%
 #!BuildTag: opensuse/389-ds:3.1
@@ -27,7 +27,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends 389-ds timezone openssl nss_synth
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends 389-ds nss_synth openssl tar timezone
 # sanity check that the version from the tag is equal to the version of 389-ds that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' 389-ds | \
@@ -38,7 +38,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
     rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
