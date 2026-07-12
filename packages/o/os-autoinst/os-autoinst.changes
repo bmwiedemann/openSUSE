@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 10 12:56:21 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1783672666.346fbe5:
+  * fix(consoles): strip video parameters from shm sink name
+  * feat(consoles): add mediadev/mediaentity parameters for ustreamer
+  * refactor(consoles): use Mojo::URL for GENERAL_HW_VIDEO_STREAM_URL
+  * feat(consoles): add ustreamer version 10 frame format
+  * feat: Log module step in case of failed needle match
+  * feat: allow UEFI_PFLASH_CODE as asset
+
+-------------------------------------------------------------------
 Wed Jul 08 12:46:00 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783514748.b19cdea:
