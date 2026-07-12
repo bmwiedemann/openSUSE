@@ -52,4 +52,12 @@
   * refreshed to latest state from https://github.com/disposable-email-domains/disposable-email-domains</comment>
     <requestid>1359227</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>769956ae07e238af092cb33fff90ef91</srcmd5>
+    <version>0.0.213</version>
+    <time>1783868990</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1364982</requestid>
+  </revision>
 </revisionlist>
