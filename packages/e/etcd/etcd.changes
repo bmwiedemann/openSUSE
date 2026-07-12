@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 11 23:57:14 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version to 3.7.0:
+  https://github.com/etcd-io/etcd/compare/v3.6.13...v3.7.0
+
+- See upgrade guide:
+  https://etcd.io/docs/v3.7/upgrades/upgrade_3_7/
+
+- Fix build issues with go workspace mode:
+  * Exclude go.work and go.work.sum from source tarball in _service
+  * Force GOWORK=off during go build in spec file
+
+- Fix update-etcd-conf.sh to ensure container image is rebuilt
+
+-------------------------------------------------------------------
 Wed Jul 01 21:01:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.6.13: (GHSA-3wh4-j44w-pg92 boo#1270046)

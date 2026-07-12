@@ -44,20 +44,26 @@ done
 
 BODY_TMP=$(mktemp "./.etcd-conf-update.body.XXXXXX")
 HELP_TMP=$(mktemp "./.etcd-conf-update.help.XXXXXX")
-OSC_LOG=$(mktemp "./.etcd-conf-update.osc.XXXXXX")
-TEMP_FILES="$HELP_TMP $BODY_TMP $OSC_LOG"
+TEMP_FILES="$HELP_TMP $BODY_TMP"
 cleanup() {
   rm -f $TEMP_FILES
 }
 trap cleanup EXIT
 
 if [ "$REBUILD_IMAGE" -eq 1 ] || [ ! -f "$RPM_CACHE" ]; then
+  REBUILD_IMAGE=1
+  OSC_LOG=$(mktemp "./.etcd-conf-update.osc.XXXXXX")
+  TEMP_FILES="$TEMP_FILES $OSC_LOG"
+  OSC_BUILD_CMD="osc build --local-package --no-service --clean"
   rm -f "$RPM_CACHE"
-  echo 'osc build --local-package --no-service'
-  osc build --local-package --no-service --clean | tee "$OSC_LOG"
-  RPM_PATH=$(tail -n10 "$OSC_LOG" | grep -Eo '/[^ ]*/etcd-[^ ]*\.rpm' | tail -1)
+  echo
+  echo "Running $OSC_BUILD_CMD"
+  echo
+  $OSC_BUILD_CMD | tee "$OSC_LOG"
+  RPM_PATH=$(grep -Eo '/[^ ]*/etcd-[^ ]*\.rpm' "$OSC_LOG" | tail -1)
   [ -z "$RPM_PATH" ] || [ ! -f "$RPM_PATH" ] && { echo '| No etcd RPM found after osc build |'; exit 1; }
   cp -v "$RPM_PATH" "$RPM_CACHE"
+  echo
   echo "Copied newly built RPM to: $RPM_CACHE"
 else
   echo "Using cached RPM: $RPM_CACHE"
@@ -65,20 +71,23 @@ fi
 
 
 if [ "$REBUILD_IMAGE" -eq 1 ] || ! podman image exists etcd-oscrpm; then
-  podman build . -t etcd-oscrpm -f - <<EOF
+  echo
+  echo "Building container image etcd-oscrpm..."
+  echo
+  podman build --no-cache . -t etcd-oscrpm -f - <<EOF
 FROM registry.opensuse.org/opensuse/tumbleweed:latest
 COPY $RPM_CACHE /tmp/etcd.rpm
 RUN old /etc/zypp/repos.d/*.repo
-RUN zypper -n install --allow-unsigned-rpm /tmp/etcd.rpm
+RUN zypper -n install --allow-unsigned-rpm /tmp/etcd.rpm && zypper clean -a
 EOF
+  echo
 fi
 
 
-ETCD_VERSION=$(podman run --rm etcd-oscrpm etcd --version 2>/dev/null | awk '/^etcd Version:/ {print $3}')
-[ -z "$ETCD_VERSION" ] && { echo "Failed to extract etcd version from container"; exit 1; }
-echo "Version: $ETCD_VERSION"
+rpm -qi "$RPM_CACHE" | grep -E "^(Version|Build Date)"
 
 if ! podman run --rm etcd-oscrpm etcd --help > "$HELP_TMP" 2>/dev/null; then
+  echo
   echo "Error: Failed to run etcd --help in container" >&2
   exit 1
 fi

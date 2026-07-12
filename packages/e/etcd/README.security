@@ -5,7 +5,7 @@ data in etcd that needs to be kept confidential please make sure to enable authe
 You can do that by configuring the settings under the Security section in /etc/default/etcd.
 
 For additional guidance please read:
-https://etcd.io/docs/v3.6/op-guide/configuration/#security
+https://etcd.io/docs/v3.7/op-guide/configuration/#security
 
 And to ensure that you enforce proper access control:
-https://etcd.io/docs/v3.6/op-guide/authentication/
+https://etcd.io/docs/v3.7/op-guide/authentication/

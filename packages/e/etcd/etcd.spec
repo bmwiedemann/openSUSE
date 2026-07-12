@@ -23,7 +23,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           etcd
-Version:        3.6.13
+Version:        3.7.0
 Release:        0
 Summary:        Reliable key-value store for the most critical data of a distributed system
 License:        Apache-2.0
@@ -39,7 +39,7 @@ Source13:       %{name}.sysconfig
 Source14:       %{name}.sysuser
 Source15:       README.security
 Source16:       update-etcd-conf.sh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
@@ -92,7 +92,7 @@ mkdir -p ./bin
 dir=$(pwd)
 for item in server etcdctl etcdutl;do
   cd "$dir/$item"
-  go build -v \
+  GOWORK=off go build -v \
     -buildmode=pie \
     -mod=vendor \
     -trimpath \
