@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 05:34:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.31:
+  * Add a "--image" option to "langgraph deploy" to use an existing
+    local linux/amd64 image and skip the build step; the image is
+    validated for the correct platform before deployment
+  * Harden deployment and revision listing against non-list
+    "resources" values in API responses
+
+-------------------------------------------------------------------
 Sun Jun 28 22:38:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-langgraph-cli 0.4.30
