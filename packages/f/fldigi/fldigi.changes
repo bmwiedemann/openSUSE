@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Jul 12 13:24:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.12:
+  * New QRSS ultra-slow CW mode: transmit via audio CW or RigCAT
+    DTR/RTS keying and receive with an hours-long horizontal
+    waterfall viewer (FFT or Sliding DFT), a new video-stream
+    display widget, FM and DFCW variants, and a separate Rx/Tx
+    dialog
+  * Remove code that caused a segfault under Wayland
+  * Fix an flrig reconnect segfault
+  * Fix flrig LSB/USB modes not setting the reverse flag
+  * Limit low-frequency RsID detection to above 320 Hz
+  * Read PTT and power meter over XML-RPC while transmitting in CW
+  * RX text clear: add an opt-out confirmation dialog
+  * Rigcat: fix the baud-rate search limit and the restore of TX
+    level and squelch when the interface first starts
+  * Waterfall: Ctrl + right-click release sets the tracking point
+    and QSYs to it
+  * Fix transmit text colour not being saved when changed
+  * Add QTC Cabrillo support for the DARC Hell Sprint Contest
+- Modernize spec: drop the deprecated %suse_update_desktop_file
+  calls and the update-desktop-files build/scriptlet requires (the
+  shipped .desktop files are already valid; desktop-database
+  updates are handled by file triggers), drop the dead
+  suse_version < 1325 scriptlet block, and run spec-cleaner (drop
+  Group tags, libudev-devel -> pkgconfig(libudev))
+
+-------------------------------------------------------------------
 Fri Dec 19 23:57:36 UTC 2025 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Update to 4.2.11:

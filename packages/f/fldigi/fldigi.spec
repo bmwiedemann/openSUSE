@@ -1,7 +1,7 @@
 #
 # spec file for package fldigi
 #
-# Copyright (c) 2023-2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           fldigi
-Version:        4.2.11
+Version:        4.2.12
 Release:        0
 Summary:        Digital modem program (hamradio)
 License:        GPL-3.0-only
-Group:          Productivity/Hamradio/Other
 URL:            https://sourceforge.net/projects/fldigi/
 #Git-Clone:     https://git.code.sf.net/p/fldigi/fldigi
 Source:         http://downloads.sourceforge.net/project/%{name}/%{name}/%{name}-%{version}.tar.gz
@@ -29,19 +28,16 @@ BuildRequires:  fdupes
 BuildRequires:  fltk-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
-BuildRequires:  libudev-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(flxmlrpc)
 BuildRequires:  pkgconfig(hamlib)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(portaudio-2.0)
 BuildRequires:  pkgconfig(samplerate)
 BuildRequires:  pkgconfig(sndfile)
-Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
 Recommends:     %{name}-lang
 
 %description
@@ -54,9 +50,6 @@ WEFAX, WWV calibration, Frequency Analysis, Tune
 
 %package -n flarq
 Summary:        Transmitting and receiving frames of ARQ data (hamradio)
-Group:          Productivity/Hamradio/Other
-Requires(post): update-desktop-files
-Requires(postun):update-desktop-files
 
 %description -n flarq
 Fast Light Automatic Repeat reQuest is a file transfer application that is based
@@ -79,25 +72,8 @@ export BUILD_HOST=openSUSE
 %find_lang %{name}
 %fdupes -s %{buildroot}/%{_mandir}
 
-%suse_update_desktop_file -i fldigi
-%suse_update_desktop_file -i flarq
-
 %check
-make %{?_smp_mflags} check
-
-%if 0%{?suse_version} < 1325
-%post
-%desktop_database_post
-
-%post -n flarq
-%desktop_database_post
-
-%postun
-%desktop_database_postun
-
-%postun -n flarq
-%desktop_database_postun
-%endif
+%make_build check
 
 %files
 %license COPYING
@@ -106,7 +82,7 @@ make %{?_smp_mflags} check
 %{_datadir}/applications/fldigi.desktop
 %{_datadir}/pixmaps/fldigi.xpm
 %{_datadir}/fldigi/
-%{_mandir}/man1/fldigi.1%{ext_man}
+%{_mandir}/man1/fldigi.1%{?ext_man}
 
 %files lang -f %{name}.lang
 
@@ -114,6 +90,6 @@ make %{?_smp_mflags} check
 %{_bindir}/flarq
 %{_datadir}/applications/flarq.desktop
 %{_datadir}/pixmaps/flarq.xpm
-%{_mandir}/man1/flarq.1%{ext_man}
+%{_mandir}/man1/flarq.1%{?ext_man}
 
 %changelog

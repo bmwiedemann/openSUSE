@@ -379,4 +379,12 @@
     <comment></comment>
     <requestid>1323883</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>e787fab335088fb28d3566095ecfce52</srcmd5>
+    <version>4.2.12</version>
+    <time>1783874415</time>
+    <user>dimstar_suse</user>
+    <comment>Update to fldigi 4.2.12 (QRSS mode; Wayland + flrig segfault fixes). Adds the changelog that was missing from the earlier forward (sr#1365054), plus spec modernization.</comment>
+    <requestid>1365055</requestid>
+  </revision>
 </revisionlist>
