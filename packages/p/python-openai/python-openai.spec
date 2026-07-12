@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-openai
-Version:        2.33.0
+Version:        2.45.0
 Release:        0
 Summary:        OpenAI bindings for python
 License:        Apache-2.0
@@ -31,23 +31,21 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 4.5.0
+Requires:       python-anyio >= 3.5.0
 Requires:       python-distro >= 1.7.0
 Requires:       python-httpx >= 0.23.0
-Requires:       python-jiter >= 0.4.0
+Requires:       python-jiter >= 0.10.0
 Requires:       python-pydantic >= 1.9.0
 Requires:       python-sniffio
 Requires:       python-tqdm > 4
-Requires:       python-typing_extensions
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Requires:       python-typing_extensions >= 4.14
 # SECTION test-requirements
 BuildRequires:  %{python_module dirty-equals >= 0.6.0}
 BuildRequires:  %{python_module distro >= 1.7.0}
 BuildRequires:  %{python_module httpx >= 0.23.0}
-BuildRequires:  %{python_module importlib-metadata >= 7.7.0}
-BuildRequires:  %{python_module inline-snapshot >= 0.7.0}
-BuildRequires:  %{python_module jiter >= 0.4.0}
+BuildRequires:  %{python_module importlib-metadata >= 6.7.0}
+BuildRequires:  %{python_module inline-snapshot >= 0.28.0}
+BuildRequires:  %{python_module jiter >= 0.10.0}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module nest-asyncio}
 BuildRequires:  %{python_module pydantic >= 1.9.0}
@@ -86,7 +84,6 @@ You can find usage examples for the OpenAI Python library in
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_clone -a %{buildroot}%{_bindir}/openai
 
 %check
 # most of tests/api_resources need registered API key
@@ -96,16 +93,12 @@ You can find usage examples for the OpenAI Python library in
 # NOTE: Also, "tests/lib/chat/test_completions_streaming.py" required static snapshot
 # files (./.inline_snapshop/external) which are *not included* in the tarball so we need to deselect those tests.
 # NOTE: disable tests with the "asyncio" marker because they required pluggy version 2.3.0 or older
-%pytest --ignore "tests/api_resources" --ignore "tests/lib/chat/test_completions_streaming.py" -m "not asyncio" -k "not (test_streaming_response or test_copy_build_request or test_basic_attribute_access_works)"
-
-%post
-%python_install_alternative openai
-
-%postun
-%python_uninstall_alternative openai
+# The tests/lib/test_bedrock*.py suites exercise the optional Amazon Bedrock
+# auth support, which needs the optional botocore/AWS dependency stack (the
+# "bedrock" extra) that is not part of the core package; deselect them.
+%pytest --ignore "tests/api_resources" --ignore "tests/lib/chat/test_completions_streaming.py" --ignore "tests/lib/test_bedrock.py" --ignore "tests/lib/test_bedrock_auth_conformance.py" --ignore "tests/lib/test_bedrock_credential_chain.py" --ignore "tests/lib/test_bedrock_provider.py" -m "not asyncio" -k "not (test_streaming_response or test_copy_build_request or test_basic_attribute_access_works)"
 
 %files %{python_files}
-%python_alternative %{_bindir}/openai
 %{python_sitelib}/openai
 %{python_sitelib}/openai-%{version}.dist-info
 

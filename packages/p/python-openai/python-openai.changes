@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jul 11 08:22:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 2.45.0:
+  * Many API additions and bug fixes across 2.34.0-2.45.0
+  * Amazon Bedrock support: run Responses through Bedrock, set
+    Bedrock/AWS credentials on the client, with an optional AWS
+    (botocore) dependency stack
+  * New admin/organization API surfaces: per-endpoint Admin API
+    keys, project spend alerts, group and user role management,
+    and workload-identity authentication (including audit logs)
+  * Moderation available on the responses and chat completions
+    resources
+  * Realtime rework (realtime 2) and websocket improvements:
+    reconnection support, raw-data send, and enqueuing while
+    disconnected
+  * Support for newer model slugs (gpt-5.x family) and image API
+    updates
+  * Auth handling reworked to preserve selected credentials and
+    prioritize the first auth header; require bearer auth for
+    stream helpers
+  * The legacy "openai" command-line entry point has been removed
+    upstream; the package no longer ships the openai binary
+  * Dependency floors raised to match upstream: jiter >= 0.10.0,
+    typing_extensions >= 4.14; anyio floor relaxed to >= 3.5.0
+
+-------------------------------------------------------------------
 Sun May  3 19:08:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.33.0:
