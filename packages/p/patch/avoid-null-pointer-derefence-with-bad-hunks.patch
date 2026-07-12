@@ -1,0 +1,66 @@
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 21 Apr 2026 10:05:02 -0700
+Subject: Avoid null pointer derefence with bad hunks
+Git-commit: e6d6a4e021660679d7fc9150f981d4920f722313
+Patch-mainline: yes
+References: bsc#1271167 CVE-2026-56288
+
+Problem reported by Michał Majchrowicz.
+* src/pch.c (another_hunk): Keep chars_read positive
+even with malformed hunks.
+---
+ src/pch.c |   15 ++++++++++-----
+ 1 file changed, 10 insertions(+), 5 deletions(-)
+
+--- a/src/pch.c
++++ b/src/pch.c
+@@ -1698,7 +1698,8 @@ another_hunk (enum diff difftype, bool r
+ 		    p_end = filldst-1;
+ 		    malformed ();
+ 		}
+-		chars_read -= fillsrc == p_ptrn_lines && incomplete_line ();
++		chars_read -= (1 < chars_read && fillsrc == p_ptrn_lines
++			       && incomplete_line ());
+ 		p_Char[fillsrc] = ch;
+ 		p_line[fillsrc] = s;
+ 		p_len[fillsrc++] = chars_read;
+@@ -1715,7 +1716,8 @@ another_hunk (enum diff difftype, bool r
+ 		    malformed ();
+ 		}
+ 		context++;
+-		chars_read -= fillsrc == p_ptrn_lines && incomplete_line ();
++		chars_read -= (1 < chars_read && fillsrc == p_ptrn_lines
++			       && incomplete_line ());
+ 		p_Char[fillsrc] = ch;
+ 		p_line[fillsrc] = s;
+ 		p_len[fillsrc++] = chars_read;
+@@ -1729,7 +1731,8 @@ another_hunk (enum diff difftype, bool r
+ 		    p_end = fillsrc-1;
+ 		    malformed ();
+ 		}
+-		chars_read -= filldst == p_end && incomplete_line ();
++		chars_read -= (1 < chars_read && filldst == p_end
++			       && incomplete_line ());
+ 		p_Char[filldst] = ch;
+ 		p_line[filldst] = s;
+ 		p_len[filldst++] = chars_read;
+@@ -1812,7 +1815,8 @@ another_hunk (enum diff difftype, bool r
+ 	      fatal (("'<' followed by space or tab expected"
+ 		      " at line %td of patch"),
+ 		     p_input_line);
+-	    chars_read -= 2 + (i == p_ptrn_lines && incomplete_line ());
++	    chars_read -= 2 + (3 < chars_read && i == p_ptrn_lines
++			       && incomplete_line ());
+ 	    p_len[i] = chars_read;
+ 	    p_line[i] = savebuf (patchbuf + 2, chars_read);
+ 	    p_Char[i] = '-';
+@@ -1837,7 +1841,8 @@ another_hunk (enum diff difftype, bool r
+ 	      fatal (("'>' followed by space or tab expected"
+ 		      " at line %td of patch"),
+ 		     p_input_line);
+-	    chars_read -= 2 + (i == p_end && incomplete_line ());
++	    chars_read -= 2 + (3 < chars_read && i == p_end
++			       && incomplete_line ());
+ 	    p_len[i] = chars_read;
+ 	    p_line[i] = savebuf (patchbuf + 2, chars_read);
+ 	    p_Char[i] = '+';

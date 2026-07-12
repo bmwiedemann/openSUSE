@@ -1,0 +1,27 @@
+From: Paul Eggert <eggert@cs.ucla.edu>
+Date: Tue, 21 Apr 2026 13:16:10 -0700
+Subject: Don't infloop on null ranges
+Git-commit: faba04ef4f2b410257f76c1b9dc85e350929c4b9
+Patch-mainline: yes
+References: bsc#1271166 CVE-2026-56289
+
+Problem reported by Michał Majchrowicz.
+* src/patch.c (locate_hunk): Don’t attempt to optimize
+matches of a null range.  Instead, apply all the checks
+we apply to non-null ranges.
+---
+ src/patch.c |    3 ---
+ 1 file changed, 3 deletions(-)
+
+--- a/src/patch.c
++++ b/src/patch.c
+@@ -1166,9 +1166,6 @@ locate_hunk (idx_t fuzz)
+     ptrdiff_t max_offset = MAX (max_pos_offset, max_neg_offset);
+     ptrdiff_t min_offset;
+ 
+-    if (!pat_lines)			/* null range matches always */
+-	return first_guess;
+-
+     /* Do not try lines <= 0.  */
+     if (first_guess <= max_neg_offset)
+ 	max_neg_offset = first_guess - 1;
