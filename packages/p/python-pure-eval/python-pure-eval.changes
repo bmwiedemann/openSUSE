@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 10 02:42:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Support Python 3.15 changes.
+- Ship license and README in built packages.
+
+-------------------------------------------------------------------
 Wed Jun 11 05:52:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
