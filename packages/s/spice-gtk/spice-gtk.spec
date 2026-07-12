@@ -1,7 +1,7 @@
 #
 # spec file for package spice-gtk
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Dominique Leuenberger, Amsterdam, The Netherlands.
 #
 # All modifications and additions to the file contributed by third parties
@@ -77,6 +77,7 @@ BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.101
 # spice-protocol is bundled, but we still need the system-wide .pc file for the pkgconfig() requires magic
 BuildRequires:  pkgconfig(spice-protocol) >= 0.14.1
 Requires(pre):  permissions
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(libcacard) >= 2.5.1
 BuildRequires:  pkgconfig(liblz4) >= 1.7.3
 BuildRequires:  pkgconfig(wayland-protocols)

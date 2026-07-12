@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
 Mon Feb  5 16:08:04 UTC 2024 - pgajdos@suse.com
 
 - do not require six (https://trello.com/c/MO53MocR/143-remove-python3-six)
