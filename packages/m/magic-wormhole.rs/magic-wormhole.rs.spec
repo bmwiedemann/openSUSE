@@ -1,7 +1,7 @@
 #
 # spec file for package magic-wormhole.rs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@
 %define bin wormhole-rs
 
 Name:           magic-wormhole.rs
-Version:        0.7.5
+Version:        0.8.1
 Release:        0
 Summary:        Rust implementation of Magic Wormhole
 License:        EUPL-1.2
@@ -78,7 +78,6 @@ Zsh command-line completion support for %{name}.
 
 %prep
 %autosetup -a 1
-rm .cargo/config
 
 %build
 %{cargo_build} %{?build_args}

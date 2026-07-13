@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 12 17:22:11 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 0.8.1:
+  * Fixed RUSTSEC-2024-0436
+  * Fixed RUSTSEC-2026-0097
+- Changes in 0.8.0:
+  * cli: Add colors support
+- Changes in 0.7.7:
+  * Fixes compilation error with cargo doc
+- Changes in 0.7.6:
+Security:
+  * Fixed RUSTSEC-2025-0004
+  * Fixed RUSTSEC-2025-0009
+  * Fixed RUSTSEC-2025-0022
+
+-------------------------------------------------------------------
 Sun Jan 19 06:09:24 UTC 2025 - Joshua Smith <smolsheep@opensuse.org>
 
 - Update to 0.7.5:
