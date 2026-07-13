@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:27:48 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Apply upstream patch 2200.patch to fix build with tbb 2023+
+  https://github.com/AcademySoftwareFoundation/openvdb/pull/2200
+
+-------------------------------------------------------------------
 Tue Mar 17 11:47:53 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 13.0.0

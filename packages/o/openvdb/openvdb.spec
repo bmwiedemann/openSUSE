@@ -2,7 +2,7 @@
 # spec file for package openvdb
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2019-2024 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2019-2026 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,6 +41,8 @@ URL:            https://www.openvdb.org
 Source:         https://github.com/AcademySoftwareFoundation/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         openvdb-boost-static-assert-include.patch
 Patch1:         fix-tool-building.patch
+# PATCH-FIX-UPSTREAM 2200.patch https://github.com/AcademySoftwareFoundation/openvdb/pull/2200 hpj@urpla.net - fix build with tbb 2023+
+Patch2:         2200.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc%{?gcc_major}-c++ >= 9.3.1
 BuildRequires:  libboost_iostreams-devel-impl >= 1.80
