@@ -107,4 +107,12 @@
     <comment>- Update to releasee 8.6.3</comment>
     <requestid>1355727</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>546fa4122698638c385301b7e0680764</srcmd5>
+    <version>8.6.5</version>
+    <time>1783945563</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 8.6.5</comment>
+    <requestid>1365155</requestid>
+  </revision>
 </revisionlist>

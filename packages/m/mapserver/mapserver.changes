@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul 12 14:55:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.6.5
+  * Properly escape mapserv_onlineresource in OpenLayers viewer
+    with WMS
+  * PostGIS: make sure identifier value is numeric when the
+    declared type is numeric too
+  * OGC API Features: validate offset before rendering to fix
+    reflected XSS
+  * WCS POST: NULL-Dereference Denial of Service When `BoundingBox`
+    Omits `crs`
+  * Reflected XSS in WMS OpenLayers output via the
+    `X-Forwarded-Host` header
+  * Heap buffer overflow in WMS GetLegendGraphic via repeated LAYER
+    parameters
+  * msMySQLJoinNext(): prevent SQL injection
+  * msPOSTGRESQLJoinNext(): avoid potential SQL injection
+
+-------------------------------------------------------------------
 Thu May 28 06:42:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to releasee 8.6.3

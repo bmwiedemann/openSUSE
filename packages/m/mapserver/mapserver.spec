@@ -33,7 +33,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           mapserver
-Version:        8.6.3
+Version:        8.6.5
 Release:        0
 Summary:        Environment for building spatially-enabled internet applications
 License:        MIT
