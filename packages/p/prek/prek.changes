@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 13 04:52:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.9:
+  * Enhancements
+    - Preserve additional dependency order (#2311)
+    - Remove parallel Ruby gem installation (#2307)
+    - Warn for missing update repositories (#2316)
+  * Bug fixes
+    - Fix mixed workspace selectors (#2306)
+    - Fix try-repo local path resolution (#2310)
+    - Use resolved gem executable (#2308)
+    - Validate complete XML documents in check-xml (#2312)
+
+-------------------------------------------------------------------
 Mon Jul 06 05:05:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.8 (.7 was not released):
