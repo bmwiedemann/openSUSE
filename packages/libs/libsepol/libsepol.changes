@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Jul  6 13:26:03 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Fixed libsepol generation of constraint expressions with a list of names when
+      writing policy.conf from CIL.
+    - Fixed libsepol to generate constrain/validatetrans instead of
+      mlsconstrain/mlsvalidatetrans when converting a module to CIL unless the
+      constraint contains an expression based on level.
+    - Fixed libsepol selection of tunableif or booleanif and to skip empty
+      conditional blocks when converting a module to CIL.
+    - Fixed libsepol/secilc reporting of CIL source file info.
+    - Fixed libsepol to require at least one perm in a CIL classperm and to
+      correctly count the number of elements in the avtab.
+    - Fixed libsepol to link xperm rule permissions correctly.
+    - Fixed libsepol off-by-one error in cats_ebitmap_len().
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Many hardening fixes spanning the entire tree
+  - Notable bug fixes:
+    - libsepol: cast to unsigned char in ctype calls
+    - libsepol: bound type values in type_set_expand negset loop
+    - libsepol/cil: fix double free of borrowed type datum on error path
+
+-------------------------------------------------------------------
 Thu Feb  5 16:28:22 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10
