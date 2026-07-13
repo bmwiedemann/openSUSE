@@ -431,4 +431,41 @@
   * gopls/internal/protocol: add existence &amp; kind to document uri (forwarded request 1353891 from jfkw)</comment>
     <requestid>1353892</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>07b270329a4a1e4fd14eb531f74ac730</srcmd5>
+    <version>0.23.0</version>
+    <time>1783945566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.23.0:
+  * gopls: update go.mod for v0.23.0-pre.2
+  * gopls/internal/server: fix parsing vulncheck action
+  * gopls: update go.mod for v0.23.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.23
+  * gopls: update staticcheck to v0.8.0-rc.1
+  * gopls/internal/cmd: add tests of 'gopls help'
+  * gopls: revert CLI usability revamp to stabilize release
+  * gopls/internal/cmd: fix regression in initialization
+  * gopls/internal/mcp: go_diagnostics: use idiomatic iterators
+  * gopls/internal/tool: rename Application to Command and embed in SubCommand
+  * gopls/internal/cache/xrefs: avoid materializing Inspector
+  * gopls/internal/settings: add MoveType setting
+  * gopls/doc/release: update v0.23.0 release change log
+  * gopls/doc/release: add deprecated analyzer support for line comment
+  * gopls/internal/analysis/deprecated: support line comments
+  * gopls/internal/golang: MoveType - remove type from current file
+  * gopls/internal/cmd: remove obsolete fix and inspect subcommands
+  * gopls/internal/golang: MoveType - extract type to new file
+  * gopls/doc: document change signature refactoring
+  * gopls: promote strict flag ordering in docs and help messages
+  * gopls/internal/golang: fix inlay hints for function type params
+  * gopls: implement simplified CLI flag parsing and dispatching
+  * x/tools{,gopls}: update x/telemetry
+  * gopls/internal/golang: assembly: use html/template
+  * gopls/internal/golang: rewrite findDeclInfo using Cursor
+  * gopls/internal/golang: InlayHint: add maphash.Hash to ignoredError
+  * gopls/internal/golang: Implementations: reject generic methods (local)
+  * gopls/internal/test/diagnostics: explain mystery
+  * gopls/internal/cache/methodsets: fix panic on types with generic methods (forwarded request 1365153 from jfkw)</comment>
+    <requestid>1365154</requestid>
+  </revision>
 </revisionlist>

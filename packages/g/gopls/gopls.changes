@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sun Jul 12 19:31:56 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.23.0:
+  * gopls: update go.mod for v0.23.0-pre.2
+  * gopls/internal/server: fix parsing vulncheck action
+  * gopls: update go.mod for v0.23.0-pre.1
+  * all: update codereview.cfg for gopls-release-branch.0.23
+  * gopls: update staticcheck to v0.8.0-rc.1
+  * gopls/internal/cmd: add tests of 'gopls help'
+  * gopls: revert CLI usability revamp to stabilize release
+  * gopls/internal/cmd: fix regression in initialization
+  * gopls/internal/mcp: go_diagnostics: use idiomatic iterators
+  * gopls/internal/tool: rename Application to Command and embed in SubCommand
+  * gopls/internal/cache/xrefs: avoid materializing Inspector
+  * gopls/internal/settings: add MoveType setting
+  * gopls/doc/release: update v0.23.0 release change log
+  * gopls/doc/release: add deprecated analyzer support for line comment
+  * gopls/internal/analysis/deprecated: support line comments
+  * gopls/internal/golang: MoveType - remove type from current file
+  * gopls/internal/cmd: remove obsolete fix and inspect subcommands
+  * gopls/internal/golang: MoveType - extract type to new file
+  * gopls/doc: document change signature refactoring
+  * gopls: promote strict flag ordering in docs and help messages
+  * gopls/internal/golang: fix inlay hints for function type params
+  * gopls: implement simplified CLI flag parsing and dispatching
+  * x/tools{,gopls}: update x/telemetry
+  * gopls/internal/golang: assembly: use html/template
+  * gopls/internal/golang: rewrite findDeclInfo using Cursor
+  * gopls/internal/golang: InlayHint: add maphash.Hash to ignoredError
+  * gopls/internal/golang: Implementations: reject generic methods (local)
+  * gopls/internal/test/diagnostics: explain mystery
+  * gopls/internal/cache/methodsets: fix panic on types with generic methods
+  * gopls/internal/golang: handle alias to pointer types in hover
+  * gopls: decouple remote connection flags
+  * gopls: move internal/tool into gopls/internal/tool
+  * gopls/internal/test/marker: update hover test
+  * gopls/internal/golang/stubmethods: support generic interfaces
+  * gopls/internal/cmd: remove 'gopls bug' subcommand
+  * gopls/internal/mcp: fix reporting in go_diagnostics tool
+  * gopls/internal/golang/stubmethods: fix internal error (missing type)
+  * gopls/internal/filewatcher: remove unused interval field
+  * gopls/internal/protocol: ID-based answer/question in interactive form
+  * gopls/internal/server: collect counter for interactive command execution
+  * gopls/go.mod: update dependencies following the v0.22.0 release
+  * gopls/internal/filecache: add GetOrFatal and ErrNoCache
+  * gopls/internal/server: fix vulncheck test
+  * gopls/internal/settings: factor analyzer suites
+  * gopls/internal/golang/completion: support go1.27 embedded T{f: ...}
+  * gopls/internal/analysis/fillstruct: respect file go version
+  * gopls/internal/test/marker: document fillstruct behavior before go127
+  * gopls/internal/golang: fix highlight crash on continue not in loop
+  * gopls/internal/golang/completion: diagnostic code
+  * gopls/integration/misc: Test61208 is flaky
+  * gopls/internal/server: fix race DidChange vs generated file warning
+  * gopls/internal/server: minor cleanup to didModifyFiles
+  * gopls/internal/server: support semantic tokens if configuration enabled
+  * gopls/internal/analysis/fillstruct: support embedded fields
+  * gopls/internal/analysis/fillstruct: do not offer if contains untagged
+  * gopls/internal/analysis/fillstruct: support promoted field detection
+  * gopls/internal/golang: InlayHint: show embedded fields in T{F: 0}
+  * gopls/internal/analysis/fillstruct: analyze overlapping struct literal
+  * gopls/internal/test: add skipped repro for golang/go#64235
+  * gopls/internal/server: add more LSP clients to telemetry mapping
+  * gopls/internal/analysis/errorsastypeshadow: rename errorsastype
+  * gopls/internal/cache/methodsets: skip generic methods
+  * gopls/internal/golang: addtest: emit t.Context() for Go 1.24+
+  * gopls/internal/golang: guard LHS < RHS in fromAssignStmt
+  * gopls/doc/editor: add yegappan/lsp to the list of vim integrations
+  * gopls/internal/cmd: mcp: discard invalid Root URIs
+  * gopls/internal/test/marker: improve checkDiffs errors
+  * gopls/internal/protocol: use DocumentURI for File* types
+  * gopls/internal/test/marker: test stubmethods on generic methods
+  * gopls/internal/golang: Hover: add test of generic methods
+  * gopls/internal/golang: InlayHint: fix bug in 'var' specs
+  * gopls/doc/release/v0.22: document semanticTokens change
+  * gopls/go.mod: update dependencies following the v0.22.0 release
+  * gopls/go.mod: update mvdan.cc/gofumpt
+  * gopls/internal/settings: move file watcher setting to user options
+  * gopls/doc/release: include server side file watching in release note
+  * gopls/internal/golang/completion: skip blank identifier from suggestion
+  * gopls: deprecate importsSource and remove its use
+  * gopls: link gopls contributing.md from the main CONTRIBUTING.md doc
+
+-------------------------------------------------------------------
 Mon May 18 19:10:49 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.22.0:
