@@ -37,7 +37,7 @@ Summary:        SELinux policy configuration
 License:        GPL-2.0-or-later
 Group:          System/Management
 Name:           selinux-policy
-Version:        20260618
+Version:        20260702
 Release:        0
 Source0:        %{name}-%{version}.tar.xz
 Source1:        container.fc
@@ -492,7 +492,7 @@ Group:          System/Management
 Requires(pre):  selinux-policy-targeted = %{version}-%{release}
 
 %description sandbox
-SELinux sandbox policy used for the policycoreutils-sandbox package
+SELinux sandbox policy used for the selinux-sandbox package
 
 %files sandbox
 %verify(not md5 size mtime) %{_datadir}/selinux/packages/sandbox.pp

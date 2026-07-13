@@ -2440,4 +2440,12 @@ Needs to go together with libsemanage change</comment>
     <comment>Revert; see bugs https://bugzilla.opensuse.org/buglist.cgi?quicksearch=%5B20260706%5D&amp;list_id=14256447</comment>
     <requestid>1364176</requestid>
   </revision>
+  <revision rev="167" vrev="2">
+    <srcmd5>0f1a78b5581ba0dfa441d20d31bfb6f6</srcmd5>
+    <version>20260702</version>
+    <time>1783945539</time>
+    <user>dimstar_suse</user>
+    <comment>20260702 second try</comment>
+    <requestid>1364941</requestid>
+  </revision>
 </revisionlist>
