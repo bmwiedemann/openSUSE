@@ -84,4 +84,18 @@
   * Make -help &amp; -version work without requiring an open display</comment>
     <requestid>1091974</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>313fae784138d845bbe9bdd8596b205a</srcmd5>
+    <version>1.0.10</version>
+    <time>1783945728</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.10
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Check for malloc failures
+  * meson: Add option to build with meson
+- Switch to meson build</comment>
+    <requestid>1365281</requestid>
+  </revision>
 </revisionlist>

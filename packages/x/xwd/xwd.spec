@@ -1,7 +1,7 @@
 #
 # spec file for package xwd
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,21 @@
 
 
 Name:           xwd
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Utility to dump an image of an X window
 License:        MIT
 Group:          System/X11/Utilities
-URL:            http://xorg.freedesktop.org/
-Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
-BuildRequires:  pkg-config
+URL:            https://xorg.freedesktop.org/
+Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson >= 1.1.0
+BuildRequires:  ninja
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xkbfile)
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
-BuildRequires:  pkgconfig(xproto) >= 7.0.17
+BuildRequires:  pkgconfig(xproto) >= 7.0.25
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Xwd is an X Window System window dumping utility. It allows X users to
@@ -43,15 +43,15 @@ editing, formatting, archiving, image processing, etc.
 %setup -q
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
-%defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%license COPYING
+%doc ChangeLog README.md
 %{_bindir}/xwd
 %{_mandir}/man1/xwd.1%{?ext_man}
 

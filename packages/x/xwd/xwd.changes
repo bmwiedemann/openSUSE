@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:44:22 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.10
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Check for malloc failures
+  * meson: Add option to build with meson
+- Switch to meson build
+
+-------------------------------------------------------------------
 Sat Jun 10 10:48:21 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.9
