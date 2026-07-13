@@ -17,7 +17,7 @@
 
 
 Name:           cil
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        SELinux Common Intermediate Language compiler
 License:        BSD-2-Clause
@@ -26,6 +26,8 @@ URL:            https://github.com/SELinuxProject/selinux
 Source0:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/se%{name}c-%{version}.tar.gz
 Source1:        https://github.com/SELinuxProject/selinux/releases/download/%{version}/se%{name}c-%{version}.tar.gz.asc
 Source2:        cil.keyring
+# PATCH-FIX-UPSTREAM 1270622-Fix-double-free-in-secilcheck.patch bsc#1270622 cahu@suse.de
+Patch0:         1270622-Fix-double-free-in-secilcheck.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  flex
 BuildRequires:  libsepol-devel
@@ -40,7 +42,7 @@ policy languages (such as the current module language) and the low-level kernel 
 This is a compiler for CIL.
 
 %prep
-%setup -q -n secilc-%{version}/
+%autosetup -n secilc-%{version}/
 
 %build
 make
@@ -54,5 +56,6 @@ make
 %doc %{_mandir}/man8/*
 /usr/bin/secil2conf
 /usr/bin/secil2tree
+/usr/bin/secilcheck
 
 %changelog

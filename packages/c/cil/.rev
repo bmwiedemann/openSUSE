@@ -66,4 +66,12 @@
 </comment>
     <requestid>1331574</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c482249ca26d569e3183aef24d499f3b</srcmd5>
+    <version>3.11</version>
+    <time>1783945519</time>
+    <user>dimstar_suse</user>
+    <comment>selinux toolchain 3.11</comment>
+    <requestid>1364574</requestid>
+  </revision>
 </revisionlist>

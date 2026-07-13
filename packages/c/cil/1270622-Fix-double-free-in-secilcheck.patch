@@ -1,0 +1,35 @@
+From 835e8920ed1582c754f603d8f77769be4176bc9f Mon Sep 17 00:00:00 2001
+From: Cathy Hu <cahu@suse.de>
+Date: Tue, 7 Jul 2026 14:15:33 +0200
+Subject: [PATCH] Fix double-free in secilcheck
+
+If the file size of the cil file is zero, fclose was called twice.
+
+Fixes:
+```
+localhost:~ # touch ~/.empty.cil
+localhost:~ # secilcheck  /etc/selinux/targeted/policy/policy.35 ./empty.cil
+free(): double free detected in tcache 2
+Aborted                    (core dumped) secilcheck /etc/selinux/targeted/policy/policy.35 ./empty.cil
+```
+
+Signed-off-by: Cathy Hu <cahu@suse.de>
+---
+ secilc/secilcheck.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/secilc/secilcheck.c b/secilc/secilcheck.c
+index ee141bc0..b7c32bc6 100644
+--- a/secilc/secilcheck.c
++++ b/secilc/secilcheck.c
+@@ -155,7 +155,6 @@ static int add_cil_file(const char *filename, struct cil_db *cdb)
+ 	file_size = filedata.st_size;
+ 
+ 	if (!file_size) {
+-		fclose(file);
+ 		rc = 0;
+ 		goto exit;
+ 	}
+-- 
+2.54.0
+

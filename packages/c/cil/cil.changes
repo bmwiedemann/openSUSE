@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul  7 15:30:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Fix secilcheck double-free (bsc#1270622)
+  - Add patch: 1270622-Fix-double-free-in-secilcheck.patch
+  - was merged upstream, can be dropped once the new release is out
+
+-------------------------------------------------------------------
+Mon Jul  6 12:34:23 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Added `secilcheck` program to check CIL neverallows against binary policies
+    - Multiple documentation improvements.
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+  - Notable Bugfixes:
+    - secilc: Use fstat instead of stat to avoid TOCTOU issues
+- Packaging changes:
+  - Add secilcheck
+
+-------------------------------------------------------------------
 Thu Feb  5 16:09:14 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10
