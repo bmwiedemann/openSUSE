@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:03:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.1:
+  * deps: bump golang.org/x/crypto from v0.49.0 to v0.54.0
+  * build(deps): bump golang.org/x/net
+  * readme: Add more badges
+  * docs: document addons
+  * ramen: annotate VRG resources with cluster time
+  * addon: support multiple resources per addon
+  * addon: add Name() method to Addon interface
+  * gather: add ramen addon for DRPlacementControl resources
+  * gather: pass cluster time to Inspect()
+  * gather: call Inspect() before dumpResource()
+
+-------------------------------------------------------------------
 Sun May 10 14:42:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.0:
