@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 06:48:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.18:
+  * Major expansion of the native CPU backend with new benchmark
+    probes for recent x86 and ARM ISA extensions (AVX-VNNI /
+    AVX10.2 / AMX, SVE/SVE2, AES/SHA crypto, string and UTF-8
+    validation kernels)
+
+-------------------------------------------------------------------
 Wed Jul  8 07:34:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.17:

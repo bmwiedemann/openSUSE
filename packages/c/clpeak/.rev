@@ -114,4 +114,15 @@
     <comment>Update to 2.0.17: clamp work-group size to per-kernel device max; fix DCE-inflated throughput in CUDA WMMA/MMA and Metal simdgroup_matrix benchmarks; native mma.sync tensor-core path with full-rate FP16; joint_matrix on Intel Arc A770.</comment>
     <requestid>1364433</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>b9c00bcf77db23d4a1edbbc286ed31d4</srcmd5>
+    <version>2.0.18</version>
+    <time>1783945668</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.0.18:
+  * Major expansion of the native CPU backend with new benchmark probes for
+    recent x86 and ARM ISA extensions (AVX-VNNI / AVX10.2 / AMX, SVE/SVE2,
+    AES/SHA crypto, string and UTF-8 validation kernels)</comment>
+    <requestid>1365244</requestid>
+  </revision>
 </revisionlist>
