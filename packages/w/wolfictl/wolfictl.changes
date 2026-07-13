@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:57:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.22:
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0 (#1999)
+  * build(deps): bump actions/setup-go from 6.4.0 to 6.5.0 (#2006)
+  * build(deps): bump github.com/containerd/containerd/v2 (#2005)
+  * build(deps): bump actions/setup-go in /.github/actions (#2007)
+  * build(deps): bump the chainguard group across 1 directory with
+    4 updates (#2008)
+
+-------------------------------------------------------------------
 Mon Jul 06 04:58:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.21:
