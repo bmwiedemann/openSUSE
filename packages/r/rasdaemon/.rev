@@ -250,4 +250,12 @@ changelog entry. (forwarded request 546107 from eeich)</comment>
     <comment></comment>
     <requestid>1364315</requestid>
   </revision>
+  <revision rev="31" vrev="3">
+    <srcmd5>dfdd8d9de2ee10bc0eaf2246eb87eb4c</srcmd5>
+    <version>0.8.5+git0.769593b</version>
+    <time>1783945739</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365277</requestid>
+  </revision>
 </revisionlist>

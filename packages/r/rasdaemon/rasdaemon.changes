@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 07:54:13 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Use RequiresMountsFor instead of After/Wants in previous
+  debugfs dependency fix
+
+-------------------------------------------------------------------
 Tue Jul  7 14:11:39 UTC 2026 - Thomas Renninger <trenn@suse.de>
 
-- - Create debugfs dependency in unit section of rasdaemon.service
+- Create debugfs dependency in unit section of rasdaemon.service
   bsc#1270438
 A debugfs_service_dependency.patch
 - On systems where no DIMMs are installed and the systems only have HBM memory,
