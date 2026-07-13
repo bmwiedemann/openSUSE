@@ -88,10 +88,16 @@
 
 %bcond_without  openmp
 
-# AI features need ONNX Runtime. openSUSE has no onnxruntime package yet and
-# bundling upstream's prebuilt binary is not allowed in Factory, so AI is OFF by
-# default. Enable later on x86_64 with: rpmbuild/osc ... --with ai
-%bcond_with ai
+# AI needs ONNX Runtime. It exists in openSUSE Factory/Tumbleweed (onnxruntime,
+# sover 1) but not in Leap or the Fedora/Debian/Ubuntu targets, so enable AI by
+# default only on Tumbleweed/Factory (suse_version 1699) on x86_64.
+# Override anywhere with: osc/rpmbuild ... --with ai  /  --without ai
+%global ort_sover 1
+%if 0%{?suse_version} >= 1699
+%bcond_without ai
+%else
+%bcond_with    ai
+%endif
 
 %ifarch x86_64
 %global _ai_arch_ok 1
@@ -198,8 +204,6 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(colord)
 BuildRequires:  pkgconfig(colord-gtk)
 BuildRequires:  pkgconfig(exiv2)
-BuildRequires:  pkgconfig(libopenjp2)
-BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
@@ -210,6 +214,8 @@ BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun) >= 0.3.2
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgphoto2)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(wayland-client)
 %if %{with libheif}
 BuildRequires:  pkgconfig(libheif)
 %endif
