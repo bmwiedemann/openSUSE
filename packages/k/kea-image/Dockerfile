@@ -15,8 +15,8 @@
 
 #!UseOBSRepositories
 
-#!BuildTag: opensuse/kea:3.0-%RELEASE%
-#!BuildTag: opensuse/kea:3.0
+#!BuildTag: opensuse/kea:3.2-%RELEASE%
+#!BuildTag: opensuse/kea:3.2
 #!BuildTag: opensuse/kea:latest
 
 FROM opensuse/bci/bci-micro:latest AS target
@@ -36,7 +36,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
     rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
@@ -51,13 +51,13 @@ COPY --from=builder /target /
 # labelprefix=org.opensuse.application.kea
 LABEL org.opencontainers.image.title="openSUSE Tumbleweed Kea DHCP Server"
 LABEL org.opencontainers.image.description="Kea DHCP Server container based on the openSUSE Tumbleweed Base Container Image."
-LABEL org.opencontainers.image.version="3.0"
+LABEL org.opencontainers.image.version="3.2"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
 LABEL org.opencontainers.image.vendor="openSUSE Project"
 LABEL org.opencontainers.image.source="%SOURCEURL%"
-LABEL org.opencontainers.image.ref.name="3.0-%RELEASE%"
-LABEL org.opensuse.reference="registry.opensuse.org/opensuse/kea:3.0-%RELEASE%"
+LABEL org.opencontainers.image.ref.name="3.2-%RELEASE%"
+LABEL org.opensuse.reference="registry.opensuse.org/opensuse/kea:3.2-%RELEASE%"
 LABEL org.openbuildservice.disturl="%DISTURL%"
 LABEL org.opensuse.lifecycle-url="https://en.opensuse.org/Lifetime#openSUSE_BCI"
 LABEL org.opensuse.release-stage="released"
