@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Thu Jul  9 18:47:09 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.1
+  Performance Improvements:
+  * Cache getfullargspec on the hot matching path
+
+-------------------------------------------------------------------
+Mon Jun 29 15:04:22 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 6.0.0
+  Bug Fixes:
+  * key: Skip private matches in declared-key value_type check
+  Documentation:
+  * Show declaring functional properties for check_keys
+  Features:
+  * key: Accept key= as Key | Sequence[Key], fold in keys=
+  * key: Add Rebulk.check_keys() to flag declared keys no
+    pattern produces
+  * key: Leverage declared keys for typed output projection in
+    to()
+  * key: Opt-in debug check that match values match declared
+    Key.value_type
+  * key: Support children patterns via keys= and declare_keys
+
+-------------------------------------------------------------------
+Mon Jun 29 07:21:42 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.0.0
+  Refactoring:
+  * chain: Decouple Chain from Builder
+  Breaking Changes:
+  * chain: Chain is no longer a Builder subclass and
+    Builder.chain() returns a ChainBuilder instead of a Chain.
+    Code building chains via the documented fluent API is
+    unaffected; only code relying on isinstance(chain, Builder)
+    or annotating the .chain() result as Chain needs updating.
+
+-------------------------------------------------------------------
+Mon Jun 29 06:27:58 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.0
+  Documentation:
+  * V5 refactoring design analysis + decisions
+  * claude: Note to close issues with Closes #N
+  Features:
+  * typing: Formatter-based Key for non-scalar values
+  * typing: Typable predictable shape for
+    to_dict(enforce_list=True)
+  Refactoring:
+  * chain: Type ChainPart fluent methods instead of Any
+
+-------------------------------------------------------------------
+Sun Jun 28 15:46:56 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.2
+  Bug Fixes:
+  * match: Make Match.hash independent of the mutable value
+  Chores:
+  * toposort: Purge Python 2 remnants from the vendored module
+  Refactoring:
+  * Drop dead getargspec fallback and leftover commented code
+  * pattern: DRY Pattern.init and RePattern._match
+
+-------------------------------------------------------------------
+Sun Jun 28 09:26:42 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.1
+  Bug Fixes:
+  * chain: Sort matches by match_index before groupby
+  Performance Improvements_
+  * utils: Set-based extend_safe with unhashable fallback
+
+-------------------------------------------------------------------
+Sun Jun 28 08:46:34 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.0
+  Bug Fixes:
+  * typing: Reject dataclass/TypedDict as Key value_type
+  Chores:
+  * Sync uv.lock with released version 4.1.0
+  Features:
+  * typing: Matches.named accepts multiple names (any-of)
+  * typing: Typed value retrieval — Key[T] and Matches.to (v5 POC)
+
+-------------------------------------------------------------------
+Fri Jun 26 16:44:46 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.1.0
+  Chores:
+  * Sync uv.lock with released version 4.0.0
+  Features:
+  * typing: Precise return types for query methods via @overload
+
+-------------------------------------------------------------------
+Fri Jun 26 14:52:13 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.0.0
+  Bug Fixes
+  * introspector: Reflect pattern value= in introspected
+    properties
+  Build System:
+  * Migrate to uv, drop EOL Python, add full type checking
+  Chores:
+  * Remove dead pylint directive comments
+  * Remove obsolete runtests.py genscript blob
+  Code Style:
+  * Expand ruff ruleset, run README doctests, add pre-commit
+  Refactoring:
+  * types: Cut type: ignore comments from 60 to 24
+  Breaking Changes:
+  * Minimum supported Python is now 3.10 (dropped 3.7, 3.8,
+    3.9).
+
+-------------------------------------------------------------------
 Sat Apr 25 20:14:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.0:

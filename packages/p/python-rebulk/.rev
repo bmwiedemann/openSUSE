@@ -159,4 +159,20 @@
 - Initial version 0.7.1</comment>
     <requestid>1349276</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>78a6d37c44bac6b8e7d2136ff1a6ded0</srcmd5>
+    <version>6.0.0</version>
+    <time>1782916583</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362592</requestid>
+  </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>4e9f1616a589d1b69e07ae61e4f75c2a</srcmd5>
+    <version>6.0.1</version>
+    <time>1783945673</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365236</requestid>
+  </revision>
 </revisionlist>

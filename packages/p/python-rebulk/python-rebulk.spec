@@ -17,7 +17,7 @@
 
 
 Name:           python-rebulk
-Version:        3.3.0
+Version:        6.0.1
 Release:        0
 Summary:        Library for defining bulk search patterns to perform advanced string matching
 License:        MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/Toilal/rebulk
 Source0:        https://github.com/Toilal/rebulk/archive/refs/tags/v%{version}.tar.gz#/rebulk-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
