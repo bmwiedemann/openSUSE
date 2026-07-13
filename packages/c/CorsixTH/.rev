@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>1330353</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>562ead681071a16ee1693b187c546a6b</srcmd5>
+    <version>0.70.0</version>
+    <time>1783945736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.70.0:
+  * https://github.com/CorsixTH/CorsixTH/releases/tag/v0.70.0
+- Add BuildRequires pkgconfig(rtmidi) (forwarded request 1364998 from Kieltux)</comment>
+    <requestid>1365280</requestid>
+  </revision>
 </revisionlist>
