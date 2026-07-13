@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:03:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.62.0:
+  * Highlights
+    libtmux 0.62.0 teaches libtmux objects to locate themselves and
+    to resolve shared windows the way tmux does. Code running
+    inside tmux can now find the object it's running in, a window
+    can name every session that holds it, and point lookups follow
+    tmux's own choice of session and index instead of an arbitrary
+    one. One breaking change lands too — query errors now belong to
+    the LibTmuxException hierarchy (see below).
+    * Find where you're running — from_env()
+      Most libtmux code starts from a handle you already hold. But
+      a script in a split, a tmux hook, a test harness, or an agent
+      is running inside a pane and holds nothing. tmux already
+      wrote the answer into the pane's environment, and each level
+      of the hierarchy now reads it back:
+
+      from libtmux import Pane
+
+      pane = Pane.from_env()        # the pane this code is running in
+      window = pane.window          # …and you're back on the hierarchy from there
+      session = window.session
+
+      Server.from_env(), Session.from_env(), and Window.from_env()
+      do the same for the rest of the tree. Each also accepts an
+      environment mapping in place of os.environ, so code that
+      locates itself stays testable outside a pane. Outside tmux —
+      or with an environment that doesn't parse — the family raises
+      libtmux.exc.NotInsideTmux rather than guessing.
+
+      The answer stays true as tmux moves things around: it
+      survives a move-window, and for a window linked into several
+      sessions it names the session tmux itself would act on. See
+      the Locating yourself guide for the whole story.
+    * Ask a window which sessions hold it — Window.linked_sessions
+      A window can be linked into more than one session at once.
+      Window.linked_sessions lists every Session from which a
+      window is reachable — a typical window returns one, a linked
+      or grouped window returns several, with each session
+      appearing once even when it holds the window at multiple
+      indexes. Use it when you need every holder; Window.session
+      still follows the single session_id recorded on that
+      instance.
+    * Linked windows resolve the way tmux does
+      Window.from_window_id(), Pane.from_pane_id(),
+      Window.refresh(), and Pane.refresh() used to pick one holding
+      session by accident — whichever sorted last by name — so
+      their answer could change when you renamed a session. They
+      now let tmux resolve the object, reporting the session tmux
+      itself would act on, and give Window.window_index the index
+      tmux would choose for a window linked twice. For the ordinary
+      single-session window, nothing changes; the lookups also got
+      cheaper. See winlinks.
+      https://libtmux.git-pull.com/topics/filtering/#winlinks
+    * Lookups that say what happened
+      QueryList.get() now names both the lookup and its outcome. A
+      missing pane_id="%99" raises ObjectDoesNotExist with No
+      objects found: pane_id='%99'; two matches for pane_id="%0"
+      raise MultipleObjectsReturned with Multiple objects returned
+      (2): pane_id='%0'.
+    * Breaking change: query errors join the LibTmuxException
+      hierarchy
+      libtmux.exc.ObjectDoesNotExist and
+      libtmux.exc.MultipleObjectsReturned now subclass
+      libtmux.exc.LibTmuxException. Because TmuxObjectDoesNotExist
+      inherits from ObjectDoesNotExist, it now falls under
+      LibTmuxException too.
+      If you catch both families, order the handlers from most
+      specific to most general so the broad clause no longer
+      intercepts lookup outcomes:
+
+      from libtmux import exc
+
+      try:
+          pane = server.panes.get(pane_id="%0")
+      except exc.ObjectDoesNotExist:   # specific first
+          pane = None
+      except exc.LibTmuxException:     # general last
+          pane = None
+
+      Blanket retry policies for LibTmuxException should now
+      exclude ObjectDoesNotExist and MultipleObjectsReturned — they
+      report deterministic missing or ambiguous lookups, not
+      transient tmux failures. See the migration notes for a retry
+      predicate example.
+  * What's Changed
+    - Correct AGENTS.md fixture guidance by @tony in #708
+    - fix(Pane,Window): Resolve point lookups through tmux by @tony
+      in #713
+    - feat(Server,Session,Window,Pane): Resolve the pane you run
+      inside (from_env) by @tony in #714
+    - Resolve winlinks: the right window index, and lookups that
+      say what happened by @tony in #718
+
+-------------------------------------------------------------------
 Mon Jul  6 06:21:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.61.0:
