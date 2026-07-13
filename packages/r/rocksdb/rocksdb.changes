@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Jul 12 16:10:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 11.1.2:
+  * SST File Deletion Fix: Fixed critical bug where closing read-only DB 
+    instance delete live SST files created by concurrent read-write DB in same
+    directory.
+  * Blob Fix: Fixed and surfaced embedded-blob resolution errors.
+  * Cache Optimization: Fixed HyperClockCache naive lookup fast-path chain 
+    indexing to skip full lookups correctly.
+
+- update to 11.1.1:
+  * Zero-Copy Reading API: Changed ExternalTableReader::Get and 
+    ExternalTableReader::MultiGet to use PinnableSlice instead of std::string
+    for zero-copy pinning.
+  * SstFileReader Overloads: Added SstFileReader::Get and MultiGet overloads
+    accepting PinnableSlice for zero-copy reads.
+  * PerfContext Expand: Added block_decompress_count to PerfContext.
+  * Leak Fix: Fixed table cache entry leak in VersionBuilder::UnrefFile on 
+    failed LogAndApply.
+  * Trace Logging: Persisted fault injection logs and added fail-fast behavior
+    on expected-state trace write failures.
+
+- update to 11.1.0:
+  * Async File Open: Added open_files_async option to load SST files in 
+    background. Reduce DB startup latency. Surfaced background errors via 
+    kAsyncFileOpen.
+  * Auto Search Selection: Added BlockBasedTableOptions::kAuto to toggle 
+    automatically between binary and interpolation search per index block.
+  * Recovery Memory Limit: Added enforce_write_buffer_manager_during_recovery
+    to enforce WriteBufferManager limits during WAL recovery, avoiding 
+    startup OOM.
+  * Memtable Optimization: Added memtable_batch_lookup_optimization to batch
+    MultiGet lookups on active memtable.
+  * Added BlockBasedTableOptions::PrepopulateBlockCache::kFlushAndCompaction
+    to warm block cache during both flush and compaction.
+  * Direct-IO Crash Fix: Fixed null buffer crash in 
+    RandomAccessFileReader::ReadAsync for direct-IO fast path.
+  * Manifest Corruption Fix: Avoided persisting kTypeMaxValid in MANIFEST 
+    metadata during compaction with range deletion.
+  * Deadlock Fix: Fixed deadlock when upgrading transaction locks under 
+    concurrent shared locks.
+  * Checksum Fix: Enabled file checksum return in SstFileWriter for external
+    table files.
+  * Tombstone Corruption Fix: Fixed tiered compaction moving range tombstones
+    to wrong levels.
+
+-------------------------------------------------------------------
 Sun Apr 12 09:53:07 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 11.0.4:

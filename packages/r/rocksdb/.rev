@@ -282,4 +282,12 @@ The conflict with mariadb is still a problem. Debian solved this by making maria
     <comment></comment>
     <requestid>1347303</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>389497f7d407d2f99f001254a7ca4432</srcmd5>
+    <version>11.1.2</version>
+    <time>1783945556</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365070</requestid>
+  </revision>
 </revisionlist>

@@ -20,7 +20,7 @@
 %define lib_name librocksdb11
 %bcond_with jemalloc
 Name:           rocksdb
-Version:        11.0.4
+Version:        11.1.2
 Release:        0
 Summary:        Library for embeddable, persistent and fast key-value store
 License:        (Apache-2.0 OR GPL-2.0-only) AND BSD-2-Clause
