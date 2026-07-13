@@ -17,7 +17,7 @@
 
 
 Name:           oras
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 Summary:        OCI registry client - manage content like artifacts, images, packages
 License:        Apache-2.0
