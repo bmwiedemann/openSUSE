@@ -1260,4 +1260,13 @@ Send to Staging:E.
     and CVE-2025-11731.</comment>
     <requestid>1362151</requestid>
   </revision>
+  <revision rev="119" vrev="2">
+    <srcmd5>32cda6fef7cebbce658a9e960248a48b</srcmd5>
+    <version>6.1.1</version>
+    <time>1783946916</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 6.1.1 (bsc#1270285, CVE-2026-49825):
+- update to 6.1.0 (bsc#1263254, CVE-2026-41066):</comment>
+    <requestid>1365350</requestid>
+  </revision>
 </revisionlist>

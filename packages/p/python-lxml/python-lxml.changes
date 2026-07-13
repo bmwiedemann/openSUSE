@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sun Jun 28 10:56:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 6.1.1 (bsc#, CVE-2026-49825):
+- update to 6.1.1 (bsc#1270285, CVE-2026-49825):
   * The known link attributes in ``lxml.html.defs.link_attrs``
     were missing ``xlink:href``, which can be used for URL bypass
     attacks in embedded SVG/MathML/etc. content.
@@ -16,7 +16,7 @@ Sun Jun 28 10:56:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Sun Apr 19 21:26:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 6.1.0 (CVE-2026-41066):
+- update to 6.1.0 (bsc#1263254, CVE-2026-41066):
   * This release fixes a possible external entity injection (XXE)
     vulnerability in ``iterparse()`` and the ``ETCompatXMLParser``.
   * GH#486: The HTML ARIA accessibility attributes were added to
