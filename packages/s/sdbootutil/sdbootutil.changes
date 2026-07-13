@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:05:45 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260713.d869cf8:
+  * Ignore errors in the snapper plugin
+
+-------------------------------------------------------------------
+Thu Jul 09 12:31:48 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260709.7dfd021:
+  * Remove the background process in the plugin
+  * Fix missing initrd condition (bsc#1270420)
+  * After reboot the shutdown service is not active
+  * Disable the shutdown service after main service
+  * Update uhmac dependencies (rust-openssl)
+    bsc#1270192, CVE-2026-41676
+    bsc#1270995, CVE-2026-45784
+    bsc#1270922, CVE-2026-44662
+    bsc#1270863, CVE-2026-41898
+    bsc#1270742, CVE-2026-41681
+    bsc#1270670, CVE-2026-41678
+    bsc#1270616, CVE-2026-41677
+    bsc#1270471, CVE-2026-42327
+  * Add systemd transient service to update predictions
+  * Install extra EFI binaries
+
+-------------------------------------------------------------------
+Thu Jun 25 11:59:20 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260625.7fa275e:
+  * Remove duplicate code and parametrize timers
+  * Check boot entry before kernel installation
+  * Re-install an old kernel if initrd cannot be reused
+  * Skip installation for already installed kernel
+  * Add configurable devicetree entry support
+  * Set explicit kernel and initrd paths
+  * Remove the full tmpdir in the service
+  * Fix /run/sdbootutil permissions
+  * Execute predictions in the background
+  * Add --disable-predictions parameter
+  * Fix comparison operator
+  * Add print-loader-path command
+
+-------------------------------------------------------------------
 Wed May 06 18:46:10 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260506.25d47bf:

@@ -880,4 +880,12 @@
     <comment>Revert selinux-policy; sdbootutil was coupled; see bugs https://bugzilla.opensuse.org/buglist.cgi?quicksearch=%5B20260706%5D&amp;list_id=14256447</comment>
     <requestid>1364177</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>0444f93c2ce7a730127ccd3d936a1d6e</srcmd5>
+    <version>1+git20260713.d869cf8</version>
+    <time>1783945540</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365248</requestid>
+  </revision>
 </revisionlist>
