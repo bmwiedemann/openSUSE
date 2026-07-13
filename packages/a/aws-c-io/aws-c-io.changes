@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 10 07:33:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.27.3
+  * badssl.com starts to close sockets now. by @TingDaoK in (#808)
+  * Regression Labeler Fix by @azkrishpy in (#810)
+  * Fix OpenBSD CI by @sfod in (#812)
+  * Unsetting USE_S2N disables s2n on macOS by @sfod in (#811)
+
+-------------------------------------------------------------------
 Fri Jun 19 10:05:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.27.2
