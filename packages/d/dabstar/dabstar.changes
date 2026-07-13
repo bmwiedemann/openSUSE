@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:19:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.4.0
+  * Make TII accumulation time independent of the signal level.
+  * Updated softbit detection.
+  * Show the phase of the decoded PRS.
+  * Also show the unwrapped phase of the decoded PRS in the
+    carrier spectrum scope.
+  * Provide slide show picture download progress bar.
+  * Improved scaling calculations for grid lines and ticks in the
+    scopes.
+  * Cleaned up the GUI and made some colors slightly brighter.
+  * Implemented a better strategy for avoiding audio buffer
+    underruns and overruns.
+  * Added packet-loss concealment for AAC decoders.
+  * Many other code cleanups.
+
+-------------------------------------------------------------------
 Mon Jun 15 06:10:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.3.0
