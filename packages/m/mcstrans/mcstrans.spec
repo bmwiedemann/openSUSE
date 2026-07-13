@@ -17,7 +17,7 @@
 
 
 Name:           mcstrans
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        SELinux Translation Daemon
 License:        GPL-2.0-or-later
