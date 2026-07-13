@@ -1,0 +1,18 @@
+Index: policycoreutils-3.10/selinux-sandbox-3.10/sandbox
+===================================================================
+--- selinux-sandbox-3.10.orig/sandbox
++++ selinux-sandbox-3.10/sandbox
+@@ -531,8 +531,12 @@ sandbox [-h] [-l level ] [-[X|M] [-H hom
+                 shutil.rmtree(self.__homedir)
+             if self.__tmpdir and not self.__options.tmpdir:
+                 if self.__options.shred:
+-                    self.shred(self.__homedir)
++                    self.shred(self.__tmpdir)
+                 shutil.rmtree(self.__tmpdir)
++            if self.__runuserdir and not self.__options.runuserdir:
++                if self.__options.shred:
++                    self.shred(self.__runuserdir)
++                shutil.rmtree(self.__runuserdir)
+ 
+     def shred(self, path):
+         for root, dirs, files in os.walk(path):

@@ -1,0 +1,13 @@
+Index: selinux-sandbox-3.11/sandbox
+===================================================================
+--- selinux-sandbox-3.11.orig/sandbox
++++ selinux-sandbox-3.11/sandbox
+@@ -35,7 +35,7 @@ from tempfile import mkdtemp
+ import pwd
+ import sepolicy
+ 
+-SEUNSHARE = "/usr/sbin/seunshare"
++SEUNSHARE = "/usr/bin/seunshare"
+ SANDBOXSH = "/usr/share/sandbox/sandboxX.sh"
+ PROGNAME = "selinux-sandbox"
+ try:
