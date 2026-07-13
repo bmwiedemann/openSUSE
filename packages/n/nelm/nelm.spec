@@ -88,8 +88,8 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-   -X github.com/werf/nelm/internal/common.Brand=Nelm \
-   -X github.com/werf/nelm/internal/common.Version=%{version}" \
+   -X github.com/werf/nelm/pkg/common.Brand=Nelm \
+   -X github.com/werf/nelm/pkg/common.Version=%{version}" \
    -o bin/%{name} ./cmd/%{name}
 
 %install
@@ -107,6 +107,10 @@ mkdir -p %{buildroot}%{_datarootdir}/fish/vendor_completions.d/
 # create the zsh completion file
 mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions/
 %{buildroot}/%{_bindir}/%{name} completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
+
+%check
+%{buildroot}/%{_bindir}/%{name} version
+%{buildroot}/%{_bindir}/%{name} version | grep %{version}
 
 %files
 %doc README.md

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:40:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- add %check section
+
+-------------------------------------------------------------------
+Mon Jul 13 06:03:02 UTC 2026 - Evgeniy Medvedev <jidckii@proton.me>
+
+- fix `nelm version` reporting 0.0.0 in the openSUSE packaging
+
+-------------------------------------------------------------------
 Mon Jul 06 05:09:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.24.3:
