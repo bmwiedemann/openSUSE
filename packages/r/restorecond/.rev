@@ -190,4 +190,12 @@
 </comment>
     <requestid>1331580</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>85896939e00dc761f61f0bd2ad8221af</srcmd5>
+    <version>3.11</version>
+    <time>1783945514</time>
+    <user>dimstar_suse</user>
+    <comment>selinux toolchain 3.11</comment>
+    <requestid>1364572</requestid>
+  </revision>
 </revisionlist>

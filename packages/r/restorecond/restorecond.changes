@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  6 15:08:26 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Improved `restorecond.service` to use new `restorecond -F` option to run in
+      foreground
+    - Rewrote restorecond and sandbox/seunshare to eliminate TOCTOU issues on their
+      other path-based operations via /proc/self/fd and the use of a safe_open()
+      helper.
+    - Multiple documentation improvements.
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+- Packaging changes:
+  - Refresh harden_restorecond.service.patch to the new systemd service
+
+-------------------------------------------------------------------
 Thu Feb  5 15:54:11 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10

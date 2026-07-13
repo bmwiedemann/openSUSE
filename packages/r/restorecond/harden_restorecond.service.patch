@@ -1,7 +1,7 @@
-Index: restorecond-3.2/restorecond.service
+Index: restorecond-3.11/restorecond.service
 ===================================================================
---- restorecond-3.2.orig/restorecond.service
-+++ restorecond-3.2/restorecond.service
+--- restorecond-3.11.orig/restorecond.service
++++ restorecond-3.11/restorecond.service
 @@ -5,6 +5,15 @@ ConditionPathExists=/etc/selinux/restore
  ConditionSecurity=selinux
  
@@ -15,6 +15,6 @@ Index: restorecond-3.2/restorecond.service
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions 
- Type=forking
- ExecStart=/usr/sbin/restorecond
- PIDFile=/run/restorecond.pid
+ Type=simple
+ ExecStart=/usr/sbin/restorecond -F
+ 
