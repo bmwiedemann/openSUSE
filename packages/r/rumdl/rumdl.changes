@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 04:49:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.31:
+  * Added
+    - action: install rumdl from GitHub Releases instead of pip
+      (7f69695)
+  * Performance
+    - reflow: optimize inline code mask calculation using
+      pre-extracted spans (27e5507)
+
+-------------------------------------------------------------------
 Fri Jul 10 05:02:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.30:
