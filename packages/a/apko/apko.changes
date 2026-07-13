@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 13 04:49:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.25:
+  * build(deps): bump chainguard.dev/sdk from 0.1.94 to 0.1.112
+    (#2325)
+  * build(deps): bump github/codeql-action/analyze from 4.36.2 to
+    4.36.3 (#2317)
+  * build(deps): bump github/codeql-action/init from 4.36.2 to
+    4.36.3 (#2318)
+  * build(deps): bump golang.org/x/sys from 0.46.0 to 0.47.0
+    (#2320)
+  * build(deps): bump google.golang.org/api from 0.286.0 to 0.287.0
+    (#2316)
+  * build(deps): bump docker/setup-qemu-action from 4.1.0 to 4.2.0
+    (#2319)
+  * build(deps): bump golang.org/x/sync from 0.21.0 to 0.22.0
+    (#2321)
+  * build(deps): bump step-security/harden-runner from 2.19.4 to
+    2.20.0 (#2324)
+  * fix(accounts): add missing /etc/shadow entries for apko-created
+    users (#2323)
+
+-------------------------------------------------------------------
 Fri Jul 10 05:03:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.24:
