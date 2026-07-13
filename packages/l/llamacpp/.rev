@@ -492,4 +492,41 @@
     <comment></comment>
     <requestid>1361914</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fd10e77a8b9e6672d8947bd9dc9f79ab</srcmd5>
+    <version>9964</version>
+    <time>1783945549</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable OpenVINO Backend
+
+- Update to version 9964:
+  * Server: timings/progress on /responses API, fixed deadlock in
+    load_models(), enforced prompt cache RAM limit, improved tools
+    handling (removed apply_diff), fixed draft model fit vs load.
+  * CUDA: fused MMVQ post-scale for NVFP4, K-type validation for
+    flash attention, removed -sm row, refactored cuBLAS, concat for
+    quantized types.
+  * Vulkan: disabled FA mask_opt on GCN, fixed 32-bit overflow in
+    CEIL_DIV, reduced submission threshold for small AMD GPUs,
+    added src0 type checks.
+  * OpenCL: cluster-parallel decode FA for Adreno, ragged-tile MoE
+    prefill FP16 GEMM, general FA decode optimizations, Q6_K GEMM/
+    GEMV fix for non-multiple-of-128 weights.
+  * SYCL: added col2im_1d, cross_entropy_loss ops, fixed UT cases
+    for CONT, CPY, noncontiguous ACC, enhanced argsort.
+  * Metal: added CONV_2D_DW, set_rows with f16 src0, col2im_1d op.
+  * WebGPU: tuned subgroup split (d_split) in flash_attn_vec.
+  * Hexagon: added VISION RoPE, new VTCM layouts, improved
+    pipelines for MUL_MAT, MUL_MAT_ID, FLASH_ATTN_EXT,
+    tiling/tracing.
+  * UI: context usage gauge/panel, pre-select models via alias,
+    server modalities in non-router mode, Ctrl+B sidebar toggle,
+    improved streaming, export full message tree.
+  * llama/llama-batch: KQ masks f16 if FA used, fixed decreasing
+    pos, added unit tests, added n_keep_tail in split_equal.
+  * ggml: smaller chunks in CUDA ggml_top_k/argsort, fixed conv 2d
+    dw, added CPU f16-&gt;f16 SET_ROWS support.
+  * CLI: added --output option, HTTP-based implementation, fixed</comment>
+    <requestid>1365268</requestid>
+  </revision>
 </revisionlist>

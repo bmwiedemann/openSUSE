@@ -25,11 +25,11 @@
 %global mtmd_sover         0.0.%{version}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.15.2
+%global ggml_sover         0.16.0
 %global ggml_sover_suffix  0
 
 Name:           llamacpp
-Version:        9760
+Version:        9964
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
@@ -44,6 +44,8 @@ BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  spirv-headers
 BuildRequires:  pkgconfig(OpenCL)
+BuildRequires:  pkgconfig(OpenCL-CLHPP)
+BuildRequires:  pkgconfig(openvino)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(vulkan)
 # 32bit seems not to be supported anymore
@@ -132,6 +134,15 @@ and WhisperCpp projects.
 
 This package includes the OpenCL backend for ggml.
 
+%package -n libggml-openvino
+Summary:        A tensor library for C++ (OpenVINO backend)
+
+%description -n libggml-openvino
+A tensor library for C++. It was created originally to support llama.cpp
+and WhisperCpp projects.
+
+This package includes the OpenVINO backend for ggml.
+
 %package -n ggml-devel
 Summary:        Development files for ggml
 Obsoletes:      libggml < 7266
@@ -192,6 +203,7 @@ mkdir -p %{_libdir}
     -DGGML_CPU=ON \
     -DGGML_VULKAN=ON \
     -DGGML_OPENCL=ON \
+    -DGGML_OPENVINO=ON \
     -DGGML_BACKEND_DL=ON \
     -DGGML_BACKEND_DIR="%{backend_dir}" \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
@@ -265,6 +277,11 @@ mkdir -p %{_libdir}
 %license LICENSE
 %dir %{backend_dir}
 %{backend_dir}/libggml-opencl.so
+
+%files -n libggml-openvino
+%license LICENSE
+%dir %{backend_dir}
+%{backend_dir}/libggml-openvino.so
 
 %files -n ggml-devel
 %license LICENSE

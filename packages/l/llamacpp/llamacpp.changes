@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sun Jul 12 11:16:07 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Enable OpenVINO Backend
+
+-------------------------------------------------------------------
+Sat Jul 11 14:08:29 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 9964:
+  * Server: timings/progress on /responses API, fixed deadlock in
+    load_models(), enforced prompt cache RAM limit, improved tools
+    handling (removed apply_diff), fixed draft model fit vs load.
+  * CUDA: fused MMVQ post-scale for NVFP4, K-type validation for
+    flash attention, removed -sm row, refactored cuBLAS, concat for
+    quantized types.
+  * Vulkan: disabled FA mask_opt on GCN, fixed 32-bit overflow in
+    CEIL_DIV, reduced submission threshold for small AMD GPUs,
+    added src0 type checks.
+  * OpenCL: cluster-parallel decode FA for Adreno, ragged-tile MoE
+    prefill FP16 GEMM, general FA decode optimizations, Q6_K GEMM/
+    GEMV fix for non-multiple-of-128 weights.
+  * SYCL: added col2im_1d, cross_entropy_loss ops, fixed UT cases
+    for CONT, CPY, noncontiguous ACC, enhanced argsort.
+  * Metal: added CONV_2D_DW, set_rows with f16 src0, col2im_1d op.
+  * WebGPU: tuned subgroup split (d_split) in flash_attn_vec.
+  * Hexagon: added VISION RoPE, new VTCM layouts, improved
+    pipelines for MUL_MAT, MUL_MAT_ID, FLASH_ATTN_EXT,
+    tiling/tracing.
+  * UI: context usage gauge/panel, pre-select models via alias,
+    server modalities in non-router mode, Ctrl+B sidebar toggle,
+    improved streaming, export full message tree.
+  * llama/llama-batch: KQ masks f16 if FA used, fixed decreasing
+    pos, added unit tests, added n_keep_tail in split_equal.
+  * ggml: smaller chunks in CUDA ggml_top_k/argsort, fixed conv 2d
+    dw, added CPU f16->f16 SET_ROWS support.
+  * CLI: added --output option, HTTP-based implementation, fixed
+    crash on wrong server base url.
+  * Speculative decoding: fixed ngram-map OOB read on prompt
+    shrink, fixed stale tensor-split params for draft models.
+  * Security: fixed OOB reads in UGM tokenizer.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b9760...b9964
+
+-------------------------------------------------------------------
 Mon Jun 22 15:45:26 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 9760:
@@ -53,7 +96,7 @@ Sun Jun  7 22:27:41 UTC 2026 - Robert Munteanu <rombert@apache.org>
 -------------------------------------------------------------------
 Thu Jun  4 14:47:32 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
-- Split libllama-common into its own package 
+- Split libllama-common into its own package
 
 -------------------------------------------------------------------
 Thu Jun  4 06:55:00 UTC 2026 - Robert Munteanu <rombert@apache.org>
@@ -96,27 +139,27 @@ Thu Jun  4 06:55:00 UTC 2026 - Robert Munteanu <rombert@apache.org>
 Fri Apr 17 05:58:59 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - Update to version 8814:
-  - Quantization: Introduced 1-bit (Q1_0) quantization support 
+  - Quantization: Introduced 1-bit (Q1_0) quantization support
   	across CPU, CUDA, Vulkan, Metal, and SYCL backends.
-  - Model Support: Added support for Gemma 4 (text, vision, and 
-  	audio), Qwen 3 (Omni, ASR, and Next), DeepSeek v3.2, 
+  - Model Support: Added support for Gemma 4 (text, vision, and
+  	audio), Qwen 3 (Omni, ASR, and Next), DeepSeek v3.2,
   	HunyuanOCR, Phi-4, and Granite 4.0.
-  - Hardware Acceleration: Implemented 128-bit RISC-V Vector 
+  - Hardware Acceleration: Implemented 128-bit RISC-V Vector
   	(RVV) and SIMD kernels for enhanced CPU performance.
-  - GPU Backends: Added AMD CDNA4 (gfx950) support in HIP and 
+  - GPU Backends: Added AMD CDNA4 (gfx950) support in HIP and
   	optimized Flash Attention for CUDA, Metal, and WebGPU.
   - WebGPU: Significant updates including compute pass batching,
   	JIT operator porting, and f32 accumulation for register tiling.
-  - Multimodal: Expanded audio/vision support, including Gemma 4 
+  - Multimodal: Expanded audio/vision support, including Gemma 4
   	Conformer encoders and DeepSeekOCR integration.
-  - Server/API: Added OpenAI-compatible audio transcriptions API 
+  - Server/API: Added OpenAI-compatible audio transcriptions API
   	support and improved router mode for multi-model management.
-  - WebUI: Introduced MCP (Model Context Protocol) diagnostics, 
-  	conversation branching, and dedicated reasoning content 
+  - WebUI: Introduced MCP (Model Context Protocol) diagnostics,
+  	conversation branching, and dedicated reasoning content
   	rendering.
-  - RPC Backend: Implemented native RDMA (RoCEv2) transport for 
+  - RPC Backend: Implemented native RDMA (RoCEv2) transport for
   	high-performance remote procedure calls.
-  - DevOps: Updated core dependencies including BoringSSL to 
+  - DevOps: Updated core dependencies including BoringSSL to
   	0.20260413.0 and added KleidiAI-enabled ARM release artifacts.
 
 -------------------------------------------------------------------
