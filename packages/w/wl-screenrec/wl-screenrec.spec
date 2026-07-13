@@ -17,7 +17,7 @@
 
 
 Name:           wl-screenrec
-Version:        0.2.0+git.20260325T160543.90a2d69
+Version:        0.2.0+git.20260517T151356.0925290
 License:        Apache-2.0
 Release:        0
 Summary:        High performance hardware accelerated wlroots screen recorder
@@ -79,10 +79,10 @@ CPU, leaving it free to run your applications.
 %autosetup -a1
 
 %build
-%{cargo_build} --all-features
+%{cargo_build} --all-features --locked
 
 %install
-%{cargo_install} --all-features
+%{cargo_install} --all-features --locked
 
 export PATH="%{buildroot}%{_bindir}:${PATH}"
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions

@@ -87,4 +87,16 @@
 </comment>
     <requestid>1343208</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>acd1835616091484053d146dfb5b59c6</srcmd5>
+    <version>0.2.0+git.20260517T151356.0925290</version>
+    <time>1783945573</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build and update deps
+
+- Update to version 0.2.0+git.20260517T151356.0925290:
+  * docker update
+</comment>
+    <requestid>1365161</requestid>
+  </revision>
 </revisionlist>
