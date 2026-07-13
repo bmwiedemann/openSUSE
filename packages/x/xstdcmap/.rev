@@ -61,4 +61,19 @@
     <comment></comment>
     <requestid>1040101</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6520765fda779a80a6e7ab99f94796fa</srcmd5>
+    <version>1.0.6</version>
+    <time>1783945720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.6
+  * Bypass Xrm for handling -help &amp; -version arguments (Closes: #1)
+  * Improve man page formatting
+  * man page: fix warnings from mandoc -T lint and groff -rCHECKSTYLE=10
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- Switch to Meson build system</comment>
+    <requestid>1365278</requestid>
+  </revision>
 </revisionlist>

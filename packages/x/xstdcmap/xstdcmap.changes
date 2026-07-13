@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:33:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.6
+  * Bypass Xrm for handling -help & -version arguments (Closes: #1)
+  * Improve man page formatting
+  * man page: fix warnings from mandoc -T lint and groff -rCHECKSTYLE=10
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- Switch to Meson build system
+
+-------------------------------------------------------------------
 Sun Dec  4 22:12:16 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5:
