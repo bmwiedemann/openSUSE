@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Jul 10 05:24:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.119.0:
+  * Features
+    - feat(systemd): add resource plugin for systemd unit files
+      @ScMofeoluwa (#8970)
+    - feat: support cooldown for Golang module @olblak (#8966)
+  * Bug Fixes
+    - Fix cleanup action for already merged pull requests @perlan
+      (#9133)
+    - fix: correctly init report name and config @olblak (#9283)
+    - fix(terraform): include registry hostname in autodiscovery
+      manifest @Pankaj-Gupta25 (#9281)
+    - fix(pyproject): track uv.lock relative to target workdir
+      @nguyeda (#9266)
+  * Maintenance
+    - deps: automate updatecli version update in gha workflow
+      @olblak (#9470)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9394)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#9392)
+    - deps: fix default golang update @olblak (#9391)
+    - chore(ci): add repo parameter to issue creation command
+      @olblak (#9380)
+    - chore: remove peter-evans/create-issue-from-file gha @olblak
+      (#9379)
+    - chore: remove Go Report Card badge from README @olblak
+      (#9377)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9374)
+    - chore(deps): bump github.com/containerd/containerd from
+      1.7.32 to 1.7.33 in the go_modules group across 1 directory
+      @dependabot[bot] (#9233)
+    - chore: refactor Updatecli compose workflow @olblak (#9368)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.26
+      @updateclibot[bot] (#9329)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9285)
+    - deps(updatecli/policies): bump all policies
+      @updateclibot[bot] (#9287)
+    - chore(dockerfile): upgrade node version @updateclibot[bot]
+      (#9284)
+    - deps(go): bump module go.opentelemetry.io/otel/sdk to v1.44.0
+      @updateclibot[bot] (#9269)
+    - deps(go): bump module golang.org/x/mod to v0.37.0
+      @updateclibot[bot] (#9273)
+    - deps(go): bump module github.com/aws/smithy-go to v1.27.2
+      @updateclibot[bot] (#9279)
+    - deps(go): bump module
+      github.com/aws/aws-sdk-go-v2/credentials to v1.19.24
+      @updateclibot[bot] (#9277)
+    - deps(go): bump module gopkg.in/ini.v1 to v1.67.3
+      @updateclibot[bot] (#9248)
+    - deps(go): bump module helm.sh/helm/v3 to v3.21.2
+      @updateclibot[bot] (#9231)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.7
+      @updateclibot[bot] (#9212)
+    - chore(ci): upgrade uv version @updateclibot[bot] (#9180)
+    - deps(go): bump module go.opentelemetry.io/otel/trace to
+      v1.44.0 @updateclibot[bot] (#9169)
+    - deps(go): bump module golang.org/x/net to v0.56.0
+      @updateclibot[bot] (#9158)
+    - deps(go): bump module github.com/aws/aws-sdk-go-v2/config to
+      v1.32.24 @updateclibot[bot] (#9146)
+    - deps: Bump Golang version to 1.26.4 @updateclibot[bot]
+      (#9116)
+
+-------------------------------------------------------------------
 Wed Jun 03 04:36:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.118.0:
