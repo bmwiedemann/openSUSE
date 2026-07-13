@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 13 04:50:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.2:
+  * build(deps): bump chainguard.dev/apko in the gomod group
+    (#2593)
+  * build(deps): bump step-security/harden-runner in the actions
+    group (#2591)
+  * build(deps): bump docker/setup-docker-action from 5.2.0 to
+    5.3.0 in the actions group across 1 directory (#2587)
+  * build(deps): bump the gomod group across 1 directory with 4
+    updates (#2590)
+  * Fix/improve shell comparison syntax (#2588)
+
+-------------------------------------------------------------------
 Mon Jul 06 04:59:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.1:
