@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:59:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.35:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.9
+- Update to version 3.17.34:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.8
+- Update to version 3.17.33:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.7
+- Update to version 3.17.32:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.5
+- Update to version 3.17.31:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.4
+- Update to version 3.17.30:
+  * chore(deps): upgrade jenkins-x-plugins/jx-test to version
+    0.4.13
+
+-------------------------------------------------------------------
+Wed Jul 01 07:52:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.29:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.23
+- Update to version 3.17.28:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.3
+- Update to version 3.17.27:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.2
+- Update to version 3.17.26:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.3.1
+
+-------------------------------------------------------------------
 Sun Jun 28 15:09:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.25:
