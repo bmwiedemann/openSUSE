@@ -300,4 +300,14 @@ Bug fixes
     OpenSLL that would occasionally trigger TSAN warnings.</comment>
     <requestid>1364586</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e44333082990aca8a8d220f4e4f6911e</srcmd5>
+    <version>0.15.5</version>
+    <time>1783945561</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.5 (no changes affecting openSUSE)
+- Add desktop-file-utils to BuildRequires
+  (silence rpmlint false positive)</comment>
+    <requestid>1365152</requestid>
+  </revision>
 </revisionlist>

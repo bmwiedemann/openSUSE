@@ -19,7 +19,7 @@
 %define sover %(echo %{version} | sed 's/\\./_/g;')
 %define __builder ninja
 Name:           dwarfs
-Version:        0.15.4
+Version:        0.15.5
 Release:        0
 Summary:        Deduplicating compressed read-only file system
 License:        GPL-3.0-or-later AND MIT
@@ -27,6 +27,7 @@ URL:            https://github.com/mhx/dwarfs
 Source0:        https://github.com/mhx/dwarfs/releases/download/v%{version}/dwarfs-%{version}.tar.xz
 BuildRequires:  bison
 BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  flex
 BuildRequires:  libboost_chrono-devel
 BuildRequires:  libboost_context-devel
