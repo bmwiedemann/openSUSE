@@ -87,4 +87,18 @@
   * Handle -Wdouble-promotion warning from clang</comment>
     <requestid>1040102</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>f5c81d54cd3d387e5062b5d7eeda4608</srcmd5>
+    <version>1.1.6</version>
+    <time>1783945725</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.6
+  * Add -help option
+  * Accept --help &amp; --version as aliases to -help &amp; -version
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * meson: Add option to build with meson
+- Switch to meson build</comment>
+    <requestid>1365279</requestid>
+  </revision>
 </revisionlist>

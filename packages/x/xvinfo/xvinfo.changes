@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:37:38 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * Add -help option
+  * Accept --help & --version as aliases to -help & -version
+  * man page: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * meson: Add option to build with meson
+- Switch to meson build
+
+-------------------------------------------------------------------
 Sun Dec  4 22:51:24 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5
