@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:57:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.13:
+  * docs: update CLI reference documentation (#1681)
+  * chore(deps): update dependency siderolabs/talos to v1.13.6
+  * chore(schema): update talos-extensions.yaml JSON schema (#1680)
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.6
+  * fix(deps): update module golang.org/x/mod to v0.38.0
+  * fix(decrypt): avoid nil pointer panic on comment-only patch
+    files
+  * chore(schema): update talos-extensions.yaml JSON schema (#1675)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.18
+  * chore(container): update goreleaser/goreleaser docker tag to
+    v2.17.0
+  * chore(flake): update flake
+  * feat(genconfig): handling CNI for our users, hopefully
+    gracefully
+  * chore(code): not sure what happened with yaml parser
+  * chore(code): upstream library changes
+  * fix(deps): update module
+    github.com/siderolabs/talos/pkg/machinery to v1.14.0-alpha.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1672)
+  * chore(container): update
+    mcr.microsoft.com/devcontainers/go:2.1-bookworm docker digest
+    to 090a56c (#1671)
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.17
+  * fix(deps): update module github.com/getsops/sops/v3 to v3.13.2
+  * chore(container): update ghcr.io/getsops/sops docker tag to
+    v3.13.2
+  * chore(schema): update talos-extensions.yaml JSON schema (#1668)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1666)
+  * chore(schema): update talos-extensions.yaml JSON schema (#1665)
+  * chore(container)!: Update
+    ghcr.io/devcontainers/features/docker-in-docker Docker tag to
+    v4
+  * chore(github-action): update actions/setup-go action to v6.5.0
+  * chore(github-action)!: Update actions/cache action to v6
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.12
+  * feat: update Scoop for talhelper version v3.1.12
+  * feat: update flake (#1658)
+
+-------------------------------------------------------------------
 Tue Jun 23 11:15:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.12:
