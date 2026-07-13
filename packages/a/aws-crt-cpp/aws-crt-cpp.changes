@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 10 07:30:24 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.41.0
+  * noCertificateRevocation option binding by @sbSteveK in (#866)
+  * Fix TLS options by @sfod in (#854)
+  * Regression Labeler Fix by @azkrishpy in (#870)
+  * Fix sending auto-PUBACK for QOS1 publishes by @sfod in (#873)
+
+-------------------------------------------------------------------
 Fri Jun 19 09:56:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.40.1
