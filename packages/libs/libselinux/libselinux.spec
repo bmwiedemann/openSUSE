@@ -16,9 +16,9 @@
 #
 
 
-%define libsepol_ver 3.10
+%define libsepol_ver 3.11
 Name:           libselinux
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        LicenseRef-SUSE-Public-Domain
@@ -37,8 +37,6 @@ Patch5:         skip_cycles.patch
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
 Patch8:         man_selinux_disabled_mismatch_kernel_config.patch
-# PATCH-FIX-UPSTREAM restorecon-Only-log-error-on-readonly-fs-bsc-1232226.patch bsc#1232226 -- based on commit fd411d50ba1cb3e8ad5f8ce4e3c9bc7fcbe4340c -- cathy.hu@suse.com
-Patch9:         restorecon-Only-log-error-on-readonly-fs-bsc-1232226.patch
 BuildRequires:  fdupes
 BuildRequires:  libsepol-devel >= %{libsepol_ver}
 BuildRequires:  libsepol-devel-static >= %{libsepol_ver}

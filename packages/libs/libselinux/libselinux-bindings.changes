@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:52:44 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - libselinux and python use system Python3 build module
+    - Updated pywrap build targets for modern python builds using the Python3 build
+      module.
+    - Build shared libraries with -fPIC for LTO.
+- Packaging changes:
+  - Add python-build as BuildRequires
+  - Drop python3.6 build in 15.7, as python-build is not available for python3.6
+  - Add workaround in Makefile as python multi build does not work
+    with the combined dist/ folder from upstream
+
+-------------------------------------------------------------------
 Mon May 11 15:56:36 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Change License from SUSE-Public-Domain to LicenseRef-SUSE-Public-Domain

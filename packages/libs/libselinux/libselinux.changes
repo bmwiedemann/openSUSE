@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:40:16 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Several security improvements in libselinux
+    - Rewrote libselinux selinux_restorecon(3) to eliminate TOCTOU issues in file
+      relabeling if /proc is available
+    - Fixed libselinux constructor to not clobber errno (#445).
+    - Fixed libselinux selabel_partial_match(3) to correctly find partial matches.
+    - Fixed libselinux selinux_init_policy_load() to still try to mount selinuxfs on
+      /sys/fs/selinux even if the mount of sysfs on /sys fails - this can occur
+      legitimately within a user namespace.
+    - Improved restorecon related functionality in libselinux
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Fixed libselinux build for non-pthread builds.
+    - Multiple fixes for musl/llvm-based builds, including adding a new
+      EXTRA_LD_FLAGS variable that can be set for libselinux builds to pass
+      --undefined-version through to lld (#511 thru #515).
+    - Fixed uclibc build failure (#435).
+    - Build shared libraries with -fPIC for LTO.
+  - Notable bug fixes:
+    - libselinux: avoid out-of-bounds access on zero-length lines
+- Packaging changes:
+  - Drop patch restorecon-Only-log-error-on-readonly-fs-bsc-1232226.patch
+    as it was accepted upstream
+  - Rewrite skip_cycles.patch since the code path has been rewritten entirely
+    upstream
+
+-------------------------------------------------------------------
 Tue Jun  2 10:39:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Add patch for restorecon to log error on readonly fs (bsc#1232226)

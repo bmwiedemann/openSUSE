@@ -16,12 +16,12 @@
 #
 
 
-%{?sle15allpythons}
+%{?sle15_python_module_pythons}
 %define python_subpackage_only 1
-%define libsepol_ver 3.10
+%define libsepol_ver 3.11
 %define upname libselinux
 Name:           libselinux-bindings
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        SELinux runtime library and utilities
 License:        LicenseRef-SUSE-Public-Domain
@@ -39,6 +39,7 @@ Patch5:         skip_cycles.patch
 # Make linking working even when default pkg-config doesn’t provide -lpython<ver>
 Patch6:         python3.8-compat.patch
 Patch7:         swig4_moduleimport.patch
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -92,6 +93,16 @@ language.
 
 %prep
 %autosetup -p1 -n %{upname}-%{version}
+
+# Workaround for python multi python versions
+# Add --outdir parameter to wheel generation so that dist/$(PYTHON)/ is used instead of dist/ for .whl, otherwise
+# all wheels for all python version will end up in dist/ which causes conflicts.
+# https://github.com/SELinuxProject/selinux/blob/2233a23a4d4f1bf29054037babec13f30d038e65/libselinux/src/Makefile#L154
+sed -i 's|--wheel \.|--wheel --outdir dist/$(PYTHON) \.|g' src/Makefile
+# Use only current python version folder
+# https://github.com/SELinuxProject/selinux/blob/2233a23a4d4f1bf29054037babec13f30d038e65/libselinux/src/Makefile#L154
+sed -i 's|dist/\*.whl|dist/$(PYTHON)/*.whl|g' src/Makefile
+# end Workaround
 
 %build
 %{python_expand :

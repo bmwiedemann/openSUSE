@@ -1,14 +1,20 @@
-Index: libselinux-3.4-rc3/src/selinux_restorecon.c
+Index: libselinux-3.11/src/selinux_restorecon.c
 ===================================================================
---- libselinux-3.4-rc3.orig/src/selinux_restorecon.c
-+++ libselinux-3.4-rc3/src/selinux_restorecon.c
-@@ -871,7 +871,8 @@ loop_body:
- 			errno = ELOOP;
- 			state->error = -1;
- 			state->abort = true;
--			goto finish;
-+			fts_set(fts, ftsent, FTS_SKIP);
-+			continue;
- 		case FTS_DP:
- 			continue;
- 		case FTS_DNR:
+--- libselinux-3.11.orig/src/selinux_restorecon.c
++++ libselinux-3.11/src/selinux_restorecon.c
+@@ -1374,11 +1374,10 @@ static void *selinux_restorecon_thread(v
+ 					    "Directory cycle on %s.\n",
+ 					    ent_path);
+ 				close(ent_fd);
+-				close(rd_fd);
+-				errno = ELOOP;
+-				state->error = -1;
+-				state->abort = true;
+-				goto finish;
++				if (rd_fd >= 0)
++					close(rd_fd);
++				prune_pathbuf(state);
++				continue;
+ 			}
+ 
+ 			if (state->sfsb.f_type == SYSFS_MAGIC &&
