@@ -1,7 +1,7 @@
 <multibuild>
-  <package>Aeon-release</package>
-  <package>Kalpa-release</package>
-  <package>MicroOS-release</package>
-  <package>openSUSE-Addon-NonOss-release</package>
-  <package>openSUSE-release</package>
+  <flavor>Aeon-release</flavor>
+  <flavor>Kalpa-release</flavor>
+  <flavor>MicroOS-release</flavor>
+  <flavor>openSUSE-Addon-NonOss-release</flavor>
+  <flavor>openSUSE-release</flavor>
 </multibuild>
