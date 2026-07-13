@@ -20,12 +20,12 @@
 %define soversion 2
 %define libname libsemanage%{soversion}
 
-%define libsepol_ver     3.10
-%define libselinux_ver   3.10
+%define libsepol_ver     3.11
+%define libselinux_ver   3.11
 
 %{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-semanage
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Python bindings for SELinux's policy management library
 License:        LGPL-2.1-only
@@ -38,8 +38,6 @@ Source3:        baselibs.conf
 # PATCH-FIX-UPSTREAM bsc#1133102 LTO: Update map file to include new symbols and remove wildcards
 # For now we need to disable this. This breaks e.g. shadow and also other packages in security:SELinux
 # Patch0:         libsemanage-update-map-file.patch
-# PATCH-FIX-UPSTREAM bsc#1266385 Depend on LIBSO before make pywrap is executed to avoid race condition cathy.hu@suse.com
-Patch1:         1266385-libsemanage-Require-LIBSO-before-SWIGSO-and-SWIGRUBY.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  audit-devel
 BuildRequires:  bison

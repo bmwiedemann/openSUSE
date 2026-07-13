@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul  6 15:16:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Fixed libsemanage pywrap target deps for parallel builds.
+- Packaging changes:
+  - Drop 1266385-libsemanage-Require-LIBSO-before-SWIGSO-and-SWIGRUBY.patch
+    was accepted upstream
+
+-------------------------------------------------------------------
 Wed Jun  3 08:10:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Depend on libso before make pywrap is executed to avoid

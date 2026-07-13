@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  6 15:16:46 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Test fixes
+  - Notable bug fixes:
+    - libsemanage: guard end of path in semanage_fc_find_meta
+    - libsemanage: bunzip: guard against size overflow
+    - libsemanage: genhomedircon: fix STR_COMPARATOR() passed to lfind()
+    - libsemanage: genhomdircon: handle NULL bsearch() in get_users()
+    - libsemanage: fix OOB cleanup in semanage_direct_list()
+    - libsemanage: make expand-check a proper boolean option
+    - libsemanage: use 'bool' for boolean options
+    - libsemanage: Do not use vfork()
+    - libsemanage: Do not discard ‘const’ qualifier
+
+-------------------------------------------------------------------
 Fri Mar  16 12:51:28 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - Change store root-path for selinux modules from /var/lib/selinux

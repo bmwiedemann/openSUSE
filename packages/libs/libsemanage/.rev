@@ -695,4 +695,12 @@ Needs to go together with selinux-policy change</comment>
 </comment>
     <requestid>1356964</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>86a65cf3b845ecaec8ead30c893a8271</srcmd5>
+    <version>3.11</version>
+    <time>1783945525</time>
+    <user>dimstar_suse</user>
+    <comment>selinux toolchain 3.11</comment>
+    <requestid>1364576</requestid>
+  </revision>
 </revisionlist>
