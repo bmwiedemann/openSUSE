@@ -1,7 +1,7 @@
 <multibuild>
-  <package>MicroOS-dvd5-dvd-x86_64</package>
-  <package>openSUSE-Addon-NonOss-ftp-ftp-x86_64</package>
-  <package>openSUSE-cd-mini-x86_64</package>
-  <package>openSUSE-dvd5-dvd-x86_64</package>
-  <package>openSUSE-ftp-ftp-x86_64</package>
+  <flavor>MicroOS-dvd5-dvd-x86_64</flavor>
+  <flavor>openSUSE-Addon-NonOss-ftp-ftp-x86_64</flavor>
+  <flavor>openSUSE-cd-mini-x86_64</flavor>
+  <flavor>openSUSE-dvd5-dvd-x86_64</flavor>
+  <flavor>openSUSE-ftp-ftp-x86_64</flavor>
 </multibuild>

@@ -13122,7 +13122,7 @@ unsorted:
   - libdwarf-doc 
   - libdwarf-tools 
   - libdwarf2 
-  - libdwarfs0_15_4 
+  - libdwarfs0_15_5 
   - libdwarves1 
   - libdxflib-3_26_4-1 
   - libe-book-devel 
@@ -13675,6 +13675,7 @@ unsorted:
   - libggml-base0 
   - libggml-cpu 
   - libggml-opencl 
+  - libggml-openvino 
   - libggml-vulkan 
   - libggml0 
   - libghostty-vt0 
@@ -23500,7 +23501,6 @@ unsorted:
   - policycoreutils-devel 
   - policycoreutils-gui 
   - policycoreutils-newrole 
-  - policycoreutils-sandbox 
   - polkit-devel 
   - polkit-doc 
   - polybar 
@@ -34291,6 +34291,8 @@ unsorted:
   - selinux-policy-doc 
   - selinux-policy-minimum 
   - selinux-policy-sandbox 
+  - selinux-sandbox 
+  - selinux-sandbox-lang 
   - selinux-targeted-setup 
   - semantik 
   - semaphore 
