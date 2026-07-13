@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 05:21:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.113:
+  * Update Go dependencies
+- Update to version 0.11.112:
+  * Pin Alloy to a binary release
+- Update to version 0.11.111:
+  * Add hunk CLI
+- Update to version 0.11.110:
+  * Update upload-assets workflow action
+
+-------------------------------------------------------------------
 Wed Jul 08 05:10:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.109:
