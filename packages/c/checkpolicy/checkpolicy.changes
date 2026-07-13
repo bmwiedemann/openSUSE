@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  6 12:23:06 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Fixed checkpolicy handling of out-of-range and complement at range boundaries
+      for xperm rules (#530, #531).
+    - Dropped legacy fscon statement support from checkpolicy - never used in
+      SELinux policies for mainline kernels (#518).
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Test fixes
+  - Notable Bugfixes:
+    - checkpolicy: remove unneeded malloc() casts
+    - checkpolicy: add missing strdup() failure checks
+    - checkpolicy: use calloc() so no need to do memset()
+    - checkpolicy: replace malloc()+memset() with calloc()
+
+-------------------------------------------------------------------
 Thu Feb  5 16:10:58 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 3.10
