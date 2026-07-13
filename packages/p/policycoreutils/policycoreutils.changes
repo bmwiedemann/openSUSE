@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Jul  7 11:47:35 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Move the sandbox subpackage to the separate selinux-sandbox package (bsc#1270534)
+  drop policycoreutils-sandbox-fix-cleanup.patch
+
+-------------------------------------------------------------------
+Mon Jul  6 13:37:11 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 3.11
+  https://github.com/SELinuxProject/selinux/releases/tag/3.11
+  - User-visible changes:
+    - Several security improvements in dbus and gui
+    - Dropped Python 2 support from audit2why
+    - Added `setfiles -A` option to disable SELINUX_RESTORECON_ADD_ASSOC
+    - restorecon only logs error on read-only filesystem instead of failing (allows
+      relabeling with read-only BTRFS subvolumes)
+    - Introduced a new SELINUX_RESTORECON_SKIP_MULTILINK flag to
+      selinux_restorecon(3); if set, then selinux_restorecon(3) will refuse to
+      relabel files with multiple hard links to prevent mislabeling them. Updated
+      restorecond(8) to always pass this flag when relabeling files to prevent
+      mislabeling hard links to files owned by others, e.g. when relabeling user
+      home directories or /tmp.
+    - Fixed semanage audit fd creation to avoid hitting RLIMIT_NOFILE on large
+      semanage import operations (#291).
+    - Improved semanage-fcontext(8) manpage
+    - Fixed dispol and dismod to show all options in the -h text.
+  - Development-relevant changes:
+    - Reformatted entire tree based on .clang-format and added new
+      check-format/format make targets to check and/or reformat code to match.
+      This is now a requirement for new patches.
+    - Updated pywrap build targets for modern python builds using the Python3 build
+      module.
+    - Disabled build isolation for sepolicy python module.
+    - Fixed build errors with glibc 2.43.
+    - Updated pywrap build targets for modern python builds using the Python3 build
+      module.
+- Packaging changes:
+  - Drop sepolicy-build-isolation.patch 
+    was accepted upstream
+  - Drop sandbox-sandbox-fix-saving-file-changes.patch
+    was accepted upstream
+  - Add python-build as new BuildRequires
+  - Rewrite policycoreutils-sandbox-fix-cleanup.patch
+    Code was rewritten upstream, dropped the part in seunshare.c
+  - Rewrite usr_etc.patch
+    Did not apply anymore due to code changes
+
+-------------------------------------------------------------------
 Mon Jun  8 09:17:14 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Reintroduce sandbox package (bsc#1266226) and a couple quality of life

@@ -30,12 +30,12 @@
 %endif
 
 %define libaudit_ver     2.2
-%define libsepol_ver     3.10
-%define libsemanage_ver  3.10
-%define libselinux_ver   3.10
+%define libsepol_ver     3.11
+%define libsemanage_ver  3.11
+%define libselinux_ver   3.11
 %define setools_ver      4.1.1
 Name:           policycoreutils
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        SELinux policy core utilities
 License:        GPL-2.0-or-later
@@ -53,18 +53,12 @@ Source14:       https://github.com/SELinuxProject/selinux/releases/download/%{ve
 Source15:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-gui-%{version}.tar.gz.asc
 Source16:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz
 Source17:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-dbus-%{version}.tar.gz.asc
-Source18:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-sandbox-%{version}.tar.gz
-Source19:       https://github.com/SELinuxProject/selinux/releases/download/%{version}/selinux-sandbox-%{version}.tar.gz.asc
 Source20:       policycoreutils-rpmlintrc
 Source21:       sepolgen.conf
-Source22:       SANDBOX-README.md
 Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
 Patch4:         usr_etc.patch
-Patch5:         sepolicy-build-isolation.patch
-Patch6:         policycoreutils-sandbox-fix-cleanup.patch
-Patch7:         sandbox-sandbox-fix-saving-file-changes.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -82,6 +76,7 @@ BuildRequires:  libsepol-devel-static >= %{libsepol_ver}
 BuildRequires:  pam-devel
 # needed only for dir /usr/share/polkit-1 from policycoreutils-gui
 BuildRequires:  polkit
+BuildRequires:  %{python_module build}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -208,29 +203,16 @@ BuildArch:      noarch
 The policycoreutils-dbus package contains the management DBUS API use to manage
 an SELinux environment.
 
-%package sandbox
-Summary:        SELinux sandbox utilities
-Group:          Productivity/Security
-Requires:       %{python_for_executables}-%{name} = %{version}
-Requires:       (xwayland or xorg-x11-server-extra)
-Requires:       selinux-policy-sandbox
-
-%description sandbox
-The sandbox package contains the scripts to create graphical sandboxes.
-
 %prep
-%setup -q -a3 -a5 -a14 -a16 -a18
+%setup -q -a3 -a5 -a14 -a16
 setools_python_pwd="$PWD/selinux-python-%{version}"
 semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch -P0 -p1
-%patch -P2 -p1
+%patch -P2 -p2 -d selinux-python-%{version}
 %patch -P3 -p1
-%patch -P4 -p2
+%patch -P4 -p1
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
-%patch -P5 -p1
-%patch -P6 -p1
-%patch -P7 -p2
 
 %build
 export PYTHON="%{python_binary_for_executables}" LIBDIR="%{_libdir}" CFLAGS="%{optflags} -fPIE" LDFLAGS="-pie -Wl,-z,relro"
@@ -275,11 +257,6 @@ cp -f %{SOURCE13} %{buildroot}%{_sysconfdir}/pam.d/newrole
 # Move dbus configuration file to /usr/share
 mkdir -p %{buildroot}%{_datadir}/dbus-1/system.d
 mv %{buildroot}%{_sysconfdir}/dbus-1/system.d/org.selinux.conf %{buildroot}%{_datadir}/dbus-1/system.d/org.selinux.conf
-
-# Sandbox
-(cd selinux-sandbox-%{version} && make DESTDIR=%{buildroot} SYSCONFDIR=%{_fillupdir} install)
-mv %{buildroot}%{_fillupdir}/sandbox %{buildroot}%{_fillupdir}/sysconfig.sandbox
-cp -a %{SOURCE22} .
 
 # GUI apps
 (cd selinux-gui-%{version} && make DESTDIR=%{buildroot} install)
@@ -352,9 +329,6 @@ done
 
 %verifyscript newrole
 %verify_permissions -e %{_bindir}/newrole
-
-%post sandbox
-%{fillup_only -n sandbox}
 
 %files
 %{_bindir}/semodule_expand
@@ -518,18 +492,5 @@ done
 %{_datadir}/polkit-1/actions/org.selinux.policy
 %{_datadir}/polkit-1/actions/org.selinux.config.policy
 %{_datadir}/system-config-selinux/selinux_server.py
-
-%files sandbox
-%dir %{_datadir}/sandbox
-%doc SANDBOX-README.md
-%{_datadir}/locale/*/LC_MESSAGES/selinux-sandbox.mo
-%{_datadir}/sandbox/start
-%{_datadir}/sandbox/sandboxX.sh
-%{_mandir}/man5/sandbox.5%{?ext_man}
-%{_mandir}/man8/sandbox.8%{?ext_man}
-%{_mandir}/man8/seunshare.8%{?ext_man}
-%{_fillupdir}/sysconfig.sandbox
-%{_sbindir}/seunshare
-%{_bindir}/sandbox
 
 %changelog

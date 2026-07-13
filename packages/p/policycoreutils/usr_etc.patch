@@ -11,10 +11,10 @@ Signed-off-by: Stefan Schubert <schubi@suse.de>
  policycoreutils/sestatus/sestatus.conf.5 |  2 +-
  4 files changed, 90 insertions(+), 5 deletions(-)
 
-diff --git a/policycoreutils/sestatus/Makefile b/policycoreutils/sestatus/Makefile
-index aebf050c2..bb1f6bda0 100644
---- a/policycoreutils/sestatus/Makefile
-+++ b/policycoreutils/sestatus/Makefile
+Index: policycoreutils/sestatus/Makefile
+===================================================================
+--- policycoreutils.orig/sestatus/Makefile
++++ policycoreutils/sestatus/Makefile
 @@ -5,6 +5,7 @@ BINDIR ?= $(PREFIX)/bin
  SBINDIR ?= $(PREFIX)/sbin
  MANDIR = $(PREFIX)/share/man
@@ -23,7 +23,7 @@ index aebf050c2..bb1f6bda0 100644
  
  CFLAGS ?= -Werror -Wall -W
  override CFLAGS += -I../../libselinux/include -D_FILE_OFFSET_BITS=64
-@@ -13,6 +14,13 @@ override LDLIBS += -lselinux
+@@ -14,6 +15,13 @@ override LDLIBS += $(LIBSELINUX_LDLIBS)
  all: sestatus
  
  sestatus: sestatus.o
@@ -37,10 +37,10 @@ index aebf050c2..bb1f6bda0 100644
  
  install: all
  	[ -d $(DESTDIR)$(MANDIR)/man8 ] || mkdir -p $(DESTDIR)$(MANDIR)/man8
-diff --git a/policycoreutils/sestatus/sestatus.c b/policycoreutils/sestatus/sestatus.c
-index 6c95828ed..f80612dcd 100644
---- a/policycoreutils/sestatus/sestatus.c
-+++ b/policycoreutils/sestatus/sestatus.c
+Index: policycoreutils/sestatus/sestatus.c
+===================================================================
+--- policycoreutils.orig/sestatus/sestatus.c
++++ policycoreutils/sestatus/sestatus.c
 @@ -21,11 +21,16 @@
  
  #define PROC_BASE "/proc"
@@ -61,16 +61,15 @@ index 6c95828ed..f80612dcd 100644
  
  /* buffer size for cmp_cmdline */
  #define BUFSIZE 255
-@@ -92,9 +97,75 @@ static int pidof(const char *command)
+@@ -91,8 +96,75 @@ static int pidof(const char *command)
  	return ret;
  }
  
--static void load_checks(char *pc[], int *npc, char *fc[], int *nfc)
 +#ifdef VENDORDIR
 +#include <libeconf.h>
 +
 +static void load_checks_with_vendor_settings(char *pc[], int *npc, char *fc[], int *nfc)
- {
++{
 +	econf_file *key_file = NULL;
 +	econf_err error;
 +	char **keys;
@@ -123,14 +122,14 @@ index 6c95828ed..f80612dcd 100644
 +		}
 +		econf_free (keys);
 +	}
- 
++
 +	econf_free (key_file);
 +	return;
 +}
 +#endif
 +
-+static void load_checks(char *pc[], int *npc, char *fc[], int *nfc)
-+{
+ static void load_checks(char *pc[], int *npc, char *fc[], int *nfc)
+ {
 +#ifdef VENDORDIR
 +	load_checks_with_vendor_settings(pc, npc, fc, nfc);
 +	return;
@@ -138,11 +137,11 @@ index 6c95828ed..f80612dcd 100644
  	FILE *fp = fopen(CONF, "r");
  	char buf[255], *bufp;
  	int buf_len, section = -1;
-diff --git a/policycoreutils/sestatus/sestatus.conf.5 b/policycoreutils/sestatus/sestatus.conf.5
-index acfedf6f5..01f8051d2 100644
---- a/policycoreutils/sestatus/sestatus.conf.5
-+++ b/policycoreutils/sestatus/sestatus.conf.5
-@@ -8,7 +8,7 @@ The \fIsestatus.conf\fR file is used by the \fBsestatus\fR(8) command with the \
+Index: policycoreutils/sestatus/sestatus.conf.5
+===================================================================
+--- policycoreutils.orig/sestatus/sestatus.conf.5
++++ policycoreutils/sestatus/sestatus.conf.5
+@@ -8,7 +8,7 @@ The \fIsestatus.conf\fR file is used by
  .sp
  The fully qualified path name of the configuration file is:
  .RS
