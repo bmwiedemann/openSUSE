@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  2 13:14:37 UTC 2026 - Peter Simons <psimons@suse.com>
+
+- Update vault to version 0.3.2.0.
+  **next version**
+
+  **0.3.2.0**
+
+  Changed
+
+  * Make value type of `Key` representational (in GHC backend)
+
+  Fixed
+
+  * Fix potential race condition in IORef backend.
+
+-------------------------------------------------------------------
 Thu Dec 25 13:30:17 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - Update vault to version 0.3.1.6.

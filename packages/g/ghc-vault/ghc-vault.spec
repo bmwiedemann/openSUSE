@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-vault
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global pkg_name vault
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.3.1.6
+Version:        0.3.2.0
 Release:        0
 Summary:        A persistent store for values of arbitrary types
 License:        BSD-3-Clause
@@ -36,6 +37,10 @@ BuildRequires:  ghc-rpm-macros
 BuildRequires:  ghc-unordered-containers-devel
 BuildRequires:  ghc-unordered-containers-prof
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-hspec-devel
+BuildRequires:  ghc-hspec-prof
+%endif
 
 %description
 A /vault/ is a persistent store for values of arbitrary types. It's like having
@@ -78,6 +83,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
