@@ -180,4 +180,12 @@
     <comment>libphonenumber 9.0.33 (forwarded request 1361217 from AndreasStieger)</comment>
     <requestid>1362669</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>139ca9859b0953b2940784205b5297be</srcmd5>
+    <version>9.0.34</version>
+    <time>1784029529</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365151</requestid>
+  </revision>
 </revisionlist>
