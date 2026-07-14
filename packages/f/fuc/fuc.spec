@@ -18,7 +18,7 @@
 
 
 Name:           fuc
-Version:        3.1.7
+Version:        3.2.0
 Release:        0
 Summary:        Modern unix commands focused on performance
 License:        Apache-2.0

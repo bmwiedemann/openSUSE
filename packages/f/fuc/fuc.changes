@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:17:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 3.2.0:
+  * Fix very poor performance on flat multi-million file
+    directories (now 10-20% faster than rm -rf)
+  * Fix a bug that caused "Directory not empty" errors on large
+    directories
+
+-------------------------------------------------------------------
 Mon Jun 22 15:30:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.1.7:
