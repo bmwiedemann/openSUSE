@@ -1,0 +1,6 @@
+<service name="post_build_checks_containers">
+  <summary>Helper to scan containers</summary>
+  <description><![CDATA[
+Virtual service that basically runs checks after building containers.
+]]></description>
+</service>

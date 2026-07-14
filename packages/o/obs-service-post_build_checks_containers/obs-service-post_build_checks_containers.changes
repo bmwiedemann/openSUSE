@@ -1,0 +1,4 @@
+-------------------------------------------------------------------
+Mon Nov  3 10:53:41 UTC 2025 - Marcus Meissner <meissner@suse.com>
+
+- empty service that ensures we pull in post-build-checks-containers for brp usage
