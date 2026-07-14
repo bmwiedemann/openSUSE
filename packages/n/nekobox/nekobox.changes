@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:31:34 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.28
+- Disabled IPO/LTO flags
+- Improved Clash/Mihomo compatibility
+- Added xtls-rprx-vision-udp443 flow for vless
+- Updated sing-box to 1.13.14
+
+-------------------------------------------------------------------
 Fri Jul 03 23:03:22 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.26
