@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:55:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-lm-format-enforcer 0.11.3
+  * Library that enforces the output format (JSON Schema, regular
+    expressions) of a language model by filtering the tokens it may
+    generate at each step
