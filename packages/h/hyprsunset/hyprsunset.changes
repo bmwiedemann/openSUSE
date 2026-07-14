@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 13 21:12:02 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.4.0:
+  * version: bump to 0.4.0
+  * core: fix high CPU busy-loop in event loop (#91)
+  * logs: check for trace level in logging (#90)
+  * core: include headers, add `-fexperimental-library` flag (#89)
+  * CI: use org-wide actions
+  * flake.lock: update
+  * nix: separate overlay with deps
+  * treewide: alejandra -> nixfmt
+  * ipc: fix crash in reset & profile with 0 profiles (#77)
+  * config: fix max-gamma not working with no profiles (#74)
+  * core: handle exception in gamma IPC req (#70)
+  * core: add get identity status (#57)
+  * core: added printing the current profile (#51) (#63)
+  * core: added resetting to current profile (#52) (#62)
+
+-------------------------------------------------------------------
 Mon Jan  5 16:53:28 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Initial packaging effort for hyprsunset
