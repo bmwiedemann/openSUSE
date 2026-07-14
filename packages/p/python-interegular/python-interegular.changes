@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 12 14:03:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-interegular 0.3.3
+  * Pure-Python library that parses regexes into finite state
+    machines to check whether several patterns can match a common
+    string (regex intersection checking)
