@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:34:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.4.5
+  * [Feature] Support ESA CLI Sub Command by @msyysm1211 in (#1345)
+  * feat(config): support STS endpoint override for OIDC and role
+    auth by @yndu13 in (#1372)
+- from version 3.4.4
+  * (no changes)
+- from version 3.4.3
+  * fix: correct valid typo in invalid command error by @yndu13 in (#1365)
+  * {Misc} Add ALIBABA_CLOUD_DISABLE_EXTERNAL_PROCESS to disable external
+    process by @AllyW in (#1366)
+- from version 3.4.2
+  * feat(openapi): add --estimate-cost and list-supported-pricing-apis
+    by @LCLSpring in (#1364)
+
+-------------------------------------------------------------------
 Thu Jun 25 14:23:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.4.1

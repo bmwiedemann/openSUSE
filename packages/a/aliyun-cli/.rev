@@ -248,4 +248,24 @@
     in (#1355) (forwarded request 1361784 from glaubitz)</comment>
     <requestid>1361798</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>c1cf498f906f5fe6412e7aa32d432d9e</srcmd5>
+    <version>3.4.5</version>
+    <time>1784029720</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.5
+  * [Feature] Support ESA CLI Sub Command by @msyysm1211 in (#1345)
+  * feat(config): support STS endpoint override for OIDC and role
+    auth by @yndu13 in (#1372)
+- from version 3.4.4
+  * (no changes)
+- from version 3.4.3
+  * fix: correct valid typo in invalid command error by @yndu13 in (#1365)
+  * {Misc} Add ALIBABA_CLOUD_DISABLE_EXTERNAL_PROCESS to disable external
+    process by @AllyW in (#1366)
+- from version 3.4.2
+  * feat(openapi): add --estimate-cost and list-supported-pricing-apis
+    by @LCLSpring in (#1364) (forwarded request 1364725 from glaubitz)</comment>
+    <requestid>1365365</requestid>
+  </revision>
 </revisionlist>

@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           aliyun-cli
-Version:        3.4.1
+Version:        3.4.5
 Release:        0
 License:        Apache-2.0
 Summary:        Alibaba Cloud CLI
