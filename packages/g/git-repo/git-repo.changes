@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 07 08:57:04 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.65:
+  * color: Treat "true" and "yes" as "auto", not "always"
+  * agents: run review agents manually
+  * tests: Fix test compatibility with Python 3.14 forkserver
+  * sync: Implement fetchcmd for standard Git layouts
+  * status: Show ahead/behind info for local branches
+  * info: Parallelize project data gathering for JSON output
+  * git_trace2_event_log: Fix index out of range on empty config values
+  * repo: Normalize GNUPGHOME path for MSYS GPG on Windows
+  * info: Report actual checked-out HEAD revision
+  * git_config: Support SHA-256 object IDs
+  * man: disable line wrapping
+  * project: fix sync of shallow projects sharing objdir
+  * agents: Add CRAG-generated review agents and skills
+  * gitignore: Add AI agent files
+  * sync: Support pluggable remote helpers for smart sync manifest server.
+  * project: Add REPO_PROJECT_FETCH_URL environment variable
+  * sync: do not init sibling submodules in parallel
+  * repo: Bump launcher version to 2.65
+  * project: handle corrupted projects in DeleteWorktree
+  * project: Extract project envvar generation to GetEnvVars
+  * sync: Skip copyfile/linkfile for unavailable projects
+  * tests: Deduplicate test setup in test_project.py
+  * init: Add --use-local-gitdirs for standard Git layouts
+
+-------------------------------------------------------------------
 Thu May 21 19:43:51 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.64:
