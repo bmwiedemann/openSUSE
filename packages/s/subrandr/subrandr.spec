@@ -20,7 +20,7 @@
 %define libname libsubrandr
 
 Name:           subrandr
-Version:        1.3.0
+Version:        1.4.0
 Release:        0
 Summary:        Library to render non-ASS subtitles
 Group:          Development/Libraries/Rust
@@ -64,7 +64,7 @@ cargo run --package xtask -- build
 %install
 RUSTFLAGS=' -Clink-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C strip=none' \
 cargo run --package xtask -- install \
-    --libdir=lib64 \
+    --libdir=%{_lib} \
     --prefix=%{_prefix} \
     --destdir=%{buildroot}%{_prefix}
 

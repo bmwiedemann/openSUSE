@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:08:53 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to version 1.4.0:
+  * Fixed infinite recursion when failing to shape an RTL segment
+    if font fallback returns a font for its first codepoint.
+  * Removed experimental wgpu rasterizer. Hardware acceleration may
+    be revisited in the future with a revised approach.
+  * Fixed glyph y-offset being applied incorrectly. This fixes some
+    glyphs in complex scripts like Arabic being misplaced on the
+    y-axis.
+  * Made WebVTT subtitles correctly use white-space-collapse:
+    preserve-breaks instead of white-space-collapse: preserve.
+  * Added early culling to software rasterizer to skip
+    rasterization of offscreen glyphs.
+  * Made FreeType glyph rendering switch to internal sparse outline
+    rasterizer for large outline glyphs.
+  * Moved FreeType bitmap glyph scaling into rasterizer (out of
+    FreeType font backend).
+  * Made software rasterizer defer scaling of unclipped bitmaps to
+    user in instanced mode.
+
+-------------------------------------------------------------------
 Thu Jun 11 02:27:41 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Update to version 1.3.0:
