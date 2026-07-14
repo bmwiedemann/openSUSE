@@ -77,4 +77,20 @@
     according to documentation structure</comment>
     <requestid>1217985</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>94db6c90c0436a5b57682b2c000f746d</srcmd5>
+    <version>1.5.0</version>
+    <time>1784029552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.5.0:
+  ## New features
+  * added option --fail-all-on-failed-ordering to abort the whole test run
+    without executing any tests if some tests could not be ordered
+  * added option --order-after-ff, that allows to run pytest-order after
+    built-in hooks like the --failed-first option
+  ## Fixes
+  * transitive relative chains are resolved as a single globally consistent
+    order</comment>
+    <requestid>1365160</requestid>
+  </revision>
 </revisionlist>
