@@ -235,4 +235,41 @@
     <comment>Update to version 0.114.0 (forwarded request 1363886 from develop7)</comment>
     <requestid>1363891</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f94403cb10b408e34b04a5aca36ba59d</srcmd5>
+    <version>0.114.1</version>
+    <time>1784029669</time>
+    <user>dimstar_suse</user>
+    <comment>- Update MSRV to 1.85 (first of edition2024)
+- Update to version 0.114.1:
+  This patch release follows up on the promotion of
+  `enforce-runtime-annotations` to opt-out in 0.114.0, improving
+  runtime type checks and error reporting.
+  + Bug fixes
+    * Failed assignments with `enforce-runtime-annotations` enabled
+      now raise `nu::shell::type_mismatch` pointing at the failed
+      assignment in addition to the value's origin (previously
+      `nu::shell::cant_convert` only pointed at the value's origin)
+    * Closure's input type is no longer inherited from the
+      surrounding scope; closures' input type is inferred as `any`
+      as before 0.114.0
+    * Added list input type to more `date` commands:
+      `date humanize`, `date from-human`, `date to-timezone`,
+      `format date`, `into datetime`
+    * Fixed `input listen` output type signature to match actual
+      returned value
+    * Type checking now treats `table` and `list&lt;oneof&lt;record, ...&gt;&gt;`
+      as compatible (provided the columns aren't disjoint)
+    * Runtime type checking of non-stream pipeline data is now more
+      accurate
+    * Fixed `uname` output type signature to `record&lt;...&gt;` with
+      detailed columns (previously `table`)
+    * Fixed `run script.nu --some-flag` binding the value to the
+      wrong flag of the script's `main` when multiple flags were
+      declared; flags are now matched by name
+    * Fixed incorrect `idx search --help` example
+    * Relaxed type checking of lists
+    * Fixed `for` loops inferring the looping variable's type (forwarded request 1365353 from develop7)</comment>
+    <requestid>1365354</requestid>
+  </revision>
 </revisionlist>

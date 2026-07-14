@@ -17,7 +17,7 @@
 
 
 Name:           nushell
-Version:        0.114.0
+Version:        0.114.1
 Release:        0
 Summary:        A new type of shell
 License:        MIT
@@ -25,6 +25,8 @@ URL:            https://www.nushell.sh/
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+# Rust 1.85 introduces edition2024
+BuildRequires:  cargo >= 1.85
 BuildRequires:  git
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libzstd)
