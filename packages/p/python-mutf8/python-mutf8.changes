@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:33:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.0:
+  * Supports python 3.9 to 3.14.
+  * Fixed 3 issues with surrogate pair decoding & encoding
+    (closes #6, #4, #5).
+  * *Significantly* improved performance on recent Python
+    versions when decoding MUTF-8 strings that are really UTF-8
+    (the typical case 90% of the time), improving decodes of 1kb
+    strings by ~5x and 64kb strings by ~9x. Encoding of 1kb
+    strings is ~12x faster and 64kb strings are ~48x faster.
+  * Reduced encoding allocations for less memory churn.
+
+-------------------------------------------------------------------
 Thu Jun  5 04:38:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

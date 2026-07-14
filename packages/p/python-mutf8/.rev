@@ -15,4 +15,21 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1282936</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>84ddfc92594c28ee5ada4e00337eb619</srcmd5>
+    <version>1.1.0</version>
+    <time>1784029767</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.1.0:
+  * Supports python 3.9 to 3.14.
+  * Fixed 3 issues with surrogate pair decoding &amp; encoding
+    (closes #6, #4, #5).
+  * *Significantly* improved performance on recent Python
+    versions when decoding MUTF-8 strings that are really UTF-8
+    (the typical case 90% of the time), improving decodes of 1kb
+    strings by ~5x and 64kb strings by ~9x. Encoding of 1kb
+    strings is ~12x faster and 64kb strings are ~48x faster.
+  * Reduced encoding allocations for less memory churn.</comment>
+    <requestid>1365421</requestid>
+  </revision>
 </revisionlist>
