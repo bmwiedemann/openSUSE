@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.serialization
-Version:        5.10.0
+Version:        5.11.0
 Release:        0
 Summary:        OpenStack serialization library
 License:        Apache-2.0

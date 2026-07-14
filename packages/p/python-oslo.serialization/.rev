@@ -391,4 +391,16 @@
   * Update master for stable/2026.1</comment>
     <requestid>1353874</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>fbe33e0c3faa5712cdb496e45818c5c9</srcmd5>
+    <version>5.11.0</version>
+    <time>1784029762</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.11.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support</comment>
+    <requestid>1365420</requestid>
+  </revision>
 </revisionlist>
