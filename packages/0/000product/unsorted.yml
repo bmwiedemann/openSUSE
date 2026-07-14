@@ -15319,14 +15319,14 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2620 
-  - libopenvino_c2620 
-  - libopenvino_ir_frontend2620 
-  - libopenvino_onnx_frontend2620 
-  - libopenvino_paddle_frontend2620 
-  - libopenvino_pytorch_frontend2620 
-  - libopenvino_tensorflow_frontend2620 
-  - libopenvino_tensorflow_lite_frontend2620 
+  - libopenvino2621 
+  - libopenvino_c2621 
+  - libopenvino_ir_frontend2621 
+  - libopenvino_onnx_frontend2621 
+  - libopenvino_paddle_frontend2621 
+  - libopenvino_pytorch_frontend2621 
+  - libopenvino_tensorflow_frontend2621 
+  - libopenvino_tensorflow_lite_frontend2621 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
@@ -16975,6 +16975,7 @@ unsorted:
   - liburfkill-glib0 
   - liburing-devel 
   - liburing-ffi2 
+  - liburiparser1-32bit 
   - libusb-0_1-4-32bit 
   - libusb-1_0-0-32bit 
   - libusb-1_0-devel 
@@ -18313,6 +18314,8 @@ unsorted:
   - lunar-calendar-doc 
   - lunar-date-devel 
   - lunar-date-doc 
+  - lutgen-cli 
+  - lutgen-studio 
   - lutris 
   - lutris-apparmor 
   - lutris-lang 
@@ -20374,6 +20377,7 @@ unsorted:
   - obs-service-node_modules 
   - obs-service-obs_scm 
   - obs-service-obs_scm-common 
+  - obs-service-post_build_checks_containers 
   - obs-service-product_converter 
   - obs-service-raw 
   - obs-service-recompress 
@@ -24330,7 +24334,6 @@ unsorted:
   - python3-rpmconf 
   - python3-satyr 
   - python3-sbommage 
-  - python3-seccomp 
   - python3-smbus 
   - python3-spglib 
   - python3-splinter 
@@ -24386,7 +24389,6 @@ unsorted:
   - python311-curses 
   - python311-dbm 
   - python311-devel 
-  - python311-django-formtools 
   - python311-doc 
   - python311-doc-devhelp 
   - python311-flit-core 
@@ -24494,6 +24496,7 @@ unsorted:
   - python313-Deprecated 
   - python313-Django 
   - python313-Django4 
+  - python313-Django5 
   - python313-Django6 
   - python313-Dumper 
   - python313-Durus 
@@ -25361,6 +25364,7 @@ unsorted:
   - python313-bitstruct 
   - python313-bjoern 
   - python313-black 
+  - python313-blake3 
   - python313-bleach 
   - python313-bleak 
   - python313-blessed 
@@ -25569,6 +25573,7 @@ unsorted:
   - python313-csvkit 
   - python313-ctranslate2 
   - python313-ctypesgen 
+  - python313-cubesandbox 
   - python313-cucumber-expressions 
   - python313-cucumber-tag-expressions 
   - python313-curlylint 
@@ -25627,6 +25632,7 @@ unsorted:
   - python313-dep-logic 
   - python313-deprecation 
   - python313-deprecation-alias 
+  - python313-depyf 
   - python313-derpconf 
   - python313-designateclient 
   - python313-desktop-entry-lib 
@@ -25756,6 +25762,7 @@ unsorted:
   - python313-django-taggit 
   - python313-django-tagulous 
   - python313-django-tastypie 
+  - python313-django-template-partials 
   - python313-django-test-migrations 
   - python313-django-timezone-field 
   - python313-django-treebeard 
@@ -25833,6 +25840,7 @@ unsorted:
   - python313-edk2toollib 
   - python313-eduvpn-client 
   - python313-eduvpn-common 
+  - python313-einops 
   - python313-elastic-transport 
   - python313-elasticsearch 
   - python313-elementpath 
@@ -26248,6 +26256,7 @@ unsorted:
   - python313-installer 
   - python313-intake 
   - python313-intelhex 
+  - python313-interegular 
   - python313-intervals 
   - python313-intervaltree 
   - python313-invocations 
@@ -26544,6 +26553,7 @@ unsorted:
   - python313-livereload 
   - python313-llfuse 
   - python313-llvmlite 
+  - python313-lm-format-enforcer 
   - python313-lmdb 
   - python313-lmfit 
   - python313-lml 
@@ -26634,6 +26644,7 @@ unsorted:
   - python313-miniupnpc 
   - python313-misaka 
   - python313-mistletoe 
+  - python313-mistral-common 
   - python313-mistralai 
   - python313-mistralclient 
   - python313-mistune 
@@ -26657,6 +26668,7 @@ unsorted:
   - python313-mocket 
   - python313-mockito 
   - python313-model-bakery 
+  - python313-model-hosting-container-standards 
   - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
@@ -26853,6 +26865,7 @@ unsorted:
   - python313-opentelemetry-resourcedetector-gcp 
   - python313-opentelemetry-sdk 
   - python313-opentelemetry-semantic-conventions 
+  - python313-opentelemetry-semantic-conventions-ai 
   - python313-opentelemetry-test-utils 
   - python313-opentelemetry-util-http 
   - python313-openwrt-luci-rpc 
@@ -26946,6 +26959,7 @@ unsorted:
   - python313-parsy 
   - python313-partd 
   - python313-parted 
+  - python313-partial-json-parser 
   - python313-particle 
   - python313-parver 
   - python313-pass-git-helper 
@@ -27073,6 +27087,7 @@ unsorted:
   - python313-progressbar 
   - python313-progressbar2 
   - python313-prometheus-client 
+  - python313-prometheus-fastapi-instrumentator 
   - python313-promise 
   - python313-prompt_toolkit 
   - python313-propcache 
@@ -27148,6 +27163,7 @@ unsorted:
   - python313-pyasyncore 
   - python313-pyavm 
   - python313-pybars3 
+  - python313-pybase64 
   - python313-pybcj 
   - python313-pybeam 
   - python313-pybgcode 
@@ -27183,6 +27199,7 @@ unsorted:
   - python313-pycxx-devel 
   - python313-pydantic 
   - python313-pydantic-core 
+  - python313-pydantic-extra-types 
   - python313-pydantic-settings 
   - python313-pydash 
   - python313-pydata-google-auth 
@@ -27789,6 +27806,7 @@ unsorted:
   - python313-sdjson 
   - python313-sdnotify 
   - python313-seaborn 
+  - python313-seccomp 
   - python313-securesystemslib 
   - python313-seedir 
   - python313-segno 
@@ -27796,6 +27814,7 @@ unsorted:
   - python313-selenium 
   - python313-semantic_version 
   - python313-semver 
+  - python313-sentencepiece 
   - python313-sentry-sdk 
   - python313-seqdiag 
   - python313-serpent 
@@ -28437,6 +28456,7 @@ unsorted:
   - python314-Deprecated 
   - python314-Django 
   - python314-Django4 
+  - python314-Django5 
   - python314-Django6 
   - python314-Dumper 
   - python314-Durus 
@@ -29324,6 +29344,7 @@ unsorted:
   - python314-bitstruct 
   - python314-bjoern 
   - python314-black 
+  - python314-blake3 
   - python314-bleach 
   - python314-bleak 
   - python314-blessed 
@@ -29541,6 +29562,7 @@ unsorted:
   - python314-csvkit 
   - python314-ctranslate2 
   - python314-ctypesgen 
+  - python314-cubesandbox 
   - python314-cucumber-expressions 
   - python314-cucumber-tag-expressions 
   - python314-curlylint 
@@ -29604,6 +29626,7 @@ unsorted:
   - python314-dep-logic 
   - python314-deprecation 
   - python314-deprecation-alias 
+  - python314-depyf 
   - python314-derpconf 
   - python314-desktop-entry-lib 
   - python314-devel 
@@ -29733,6 +29756,7 @@ unsorted:
   - python314-django-taggit 
   - python314-django-tagulous 
   - python314-django-tastypie 
+  - python314-django-template-partials 
   - python314-django-test-migrations 
   - python314-django-timezone-field 
   - python314-django-treebeard 
@@ -29811,6 +29835,7 @@ unsorted:
   - python314-edk2toollib 
   - python314-eduvpn-client 
   - python314-eduvpn-common 
+  - python314-einops 
   - python314-elastic-transport 
   - python314-elasticsearch 
   - python314-elementpath 
@@ -30239,6 +30264,7 @@ unsorted:
   - python314-installer 
   - python314-intake 
   - python314-intelhex 
+  - python314-interegular 
   - python314-intervals 
   - python314-intervaltree 
   - python314-invocations 
@@ -30541,6 +30567,7 @@ unsorted:
   - python314-livereload 
   - python314-llfuse 
   - python314-llvmlite 
+  - python314-lm-format-enforcer 
   - python314-lmdb 
   - python314-lmfit 
   - python314-lml 
@@ -30631,6 +30658,7 @@ unsorted:
   - python314-miniupnpc 
   - python314-misaka 
   - python314-mistletoe 
+  - python314-mistral-common 
   - python314-mistralai 
   - python314-mistune 
   - python314-mitmproxy 
@@ -30653,6 +30681,7 @@ unsorted:
   - python314-mocket 
   - python314-mockito 
   - python314-model-bakery 
+  - python314-model-hosting-container-standards 
   - python314-modern-colorthief 
   - python314-mohawk 
   - python314-mongoengine 
@@ -30852,6 +30881,7 @@ unsorted:
   - python314-opentelemetry-resourcedetector-gcp 
   - python314-opentelemetry-sdk 
   - python314-opentelemetry-semantic-conventions 
+  - python314-opentelemetry-semantic-conventions-ai 
   - python314-opentelemetry-test-utils 
   - python314-opentelemetry-util-http 
   - python314-openwrt-luci-rpc 
@@ -30946,6 +30976,7 @@ unsorted:
   - python314-parsy 
   - python314-partd 
   - python314-parted 
+  - python314-partial-json-parser 
   - python314-particle 
   - python314-parver 
   - python314-pass-git-helper 
@@ -31078,6 +31109,7 @@ unsorted:
   - python314-progressbar 
   - python314-progressbar2 
   - python314-prometheus-client 
+  - python314-prometheus-fastapi-instrumentator 
   - python314-promise 
   - python314-prompt_toolkit 
   - python314-propcache 
@@ -31158,6 +31190,7 @@ unsorted:
   - python314-pyasyncore 
   - python314-pyavm 
   - python314-pybars3 
+  - python314-pybase64 
   - python314-pybcj 
   - python314-pybeam 
   - python314-pybgcode 
@@ -31198,6 +31231,7 @@ unsorted:
   - python314-pycxx-devel 
   - python314-pydantic 
   - python314-pydantic-core 
+  - python314-pydantic-extra-types 
   - python314-pydantic-settings 
   - python314-pydash 
   - python314-pydata-google-auth 
@@ -31819,6 +31853,7 @@ unsorted:
   - python314-sdjson 
   - python314-sdnotify 
   - python314-seaborn 
+  - python314-seccomp 
   - python314-securesystemslib 
   - python314-seedir 
   - python314-segno 
@@ -31828,6 +31863,7 @@ unsorted:
   - python314-semanage 
   - python314-semantic_version 
   - python314-semver 
+  - python314-sentencepiece 
   - python314-sentry-sdk 
   - python314-seqdiag 
   - python314-serpent 
