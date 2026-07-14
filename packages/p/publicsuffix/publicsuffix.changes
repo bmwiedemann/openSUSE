@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 11 05:35:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260708:
+  * Add dev.cv, store.cv, and sch.ac to PSL private domains for Code Fost Host (#2989)
+  * Add grok.me (xAI) to PRIVATE section (#2993)
+  * Remove info.at, biz.at (#2995)
+  * remove mayfirst.org (#2994)
+  * Add multiple dnsHome.de domains (#2916)
+  * Add puter.site puter.app puter.work (#2914)
+
+-------------------------------------------------------------------
 Tue Jun 23 07:55:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260622:

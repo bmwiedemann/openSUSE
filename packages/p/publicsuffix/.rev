@@ -1876,4 +1876,12 @@ Now with build cycle removed.</comment>
     <comment>Update to version 20260622 (latest Public Suffix List)</comment>
     <requestid>1361300</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>dbbf39cd974922b9f006a0018d89ec3a</srcmd5>
+    <version>20260708</version>
+    <time>1784029513</time>
+    <user>dimstar_suse</user>
+    <comment>Update to Public Suffix List snapshot 20260708</comment>
+    <requestid>1364970</requestid>
+  </revision>
 </revisionlist>
