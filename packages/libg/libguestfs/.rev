@@ -1342,4 +1342,12 @@
     <comment>Update libguestfs to version 1.59.8</comment>
     <requestid>1354504</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>335fb3138ab6dae856e84d0a31d58f7b</srcmd5>
+    <version>1.60.0</version>
+    <time>1784029772</time>
+    <user>dimstar_suse</user>
+    <comment>Update libguestfs to version 1.60.0. A few bug fixes included.</comment>
+    <requestid>1365441</requestid>
+  </revision>
 </revisionlist>

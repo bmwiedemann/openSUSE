@@ -1,0 +1,77 @@
+Subject: lib/command.c: Ensure fds 0, 1, 2 are open in the subcommand
+From: Richard W.M. Jones rjones@redhat.com Mon Jul 13 10:25:54 2026 +0100
+Date: Mon Jul 13 14:09:55 2026 +0100:
+Git: 8ca13bdc5ca3ff0c00bf1436bfe28cf5e6ca9f75
+
+When running a subcommand ensure that stdin/stdout/stderr are open on
+something.  It's generally a problem if we run a command with one of
+these closed.
+
+If a fd is found to be closed or has FD_CLOEXEC set (so it'll be
+closed when we exec the subcommand) reopen it on /dev/null.
+
+One case where this is known to happen is when using guestfish in a
+shebang script like this:
+
+  #!/usr/bin/guestfish -f
+  set-backend direct
+  run
+
+In this case guestfish opens the script on fd 0 with O_CLOEXEC:
+
+  https://github.com/libguestfs/libguestfs/blob/bdb25e286362f300bc9a595c8a79a99a7aef6750/fish/fish.c#L525
+
+Later we exec passt and fd 0 is closed.
+
+After making this change we detect this situation and reopen fd 0 on
+/dev/null:
+
+  396937 fcntl(0, F_GETFD)                = 0x1 (flags FD_CLOEXEC)
+  396937 close(0)                         = 0
+  396937 openat(AT_FDCWD, "/dev/null", O_RDWR) = 0
+  396937 fcntl(1, F_GETFD)                = 0
+  396937 fcntl(2, F_GETFD)                = 0
+
+Related: https://gitlab.com/nbdkit/nbdkit/-/commit/8e382f9054b700681a976bae2664b336bf0e4709
+Fixes: https://github.com/libguestfs/libguestfs/issues/360
+
+diff --git a/lib/command.c b/lib/command.c
+index e99a3fa19..46da801a8 100644
+--- a/lib/command.c
++++ b/lib/command.c
+@@ -526,6 +526,26 @@ run_command (struct command *cmd)
+   return -1;
+ }
+ 
++/* Ensure fds 0, 1 and 2 are open on something and FD_CLOEXEC is not
++ * set.  If we find a file descriptor in this state then reopen it
++ * on /dev/null.
++ * https://github.com/libguestfs/libguestfs/issues/360
++ */
++static void
++check_stdio_is_open (void)
++{
++  int fd, fl, r;
++
++  for (fd = 0; fd <= 2; ++fd) {
++    fl = fcntl (fd, F_GETFD);
++    if (fl == -1 || (fl & FD_CLOEXEC)) {
++      close (fd);
++      r = open ("/dev/null", O_RDWR);
++      assert (r == fd);
++    }
++  }
++}
++
+ static void
+ run_child (struct command *cmd, char **env)
+ {
+@@ -560,6 +580,8 @@ run_child (struct command *cmd, char **env)
+   for (fd = 3; fd < max_fd; ++fd)
+     close (fd);
+ 
++  check_stdio_is_open ();
++
+   /* Set the umask for all subcommands to something sensible (RHBZ#610880). */
+   umask (022);
+ 

@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jul 13 13:45:38 MDT 2026 - carnold@suse.com
+
+- bsc#1266992 - network does not work when running guestfish as
+  interpreter
+  Ensure-fds-0-1-2-are-open-in-the-subcommand.patch
+
+-------------------------------------------------------------------
+Mon Jul 13 11:03:59 MDT 2026 - carnold@suse.com
+
+- bsc#1271261 - building libguestfs fails if go is present locally
+  libguestfs.spec
+
+-------------------------------------------------------------------
+Thu Jul  9 10:37:16 MDT 2026 - carnold@suse.com
+
+- Update to version 1.60.0
+  See release notes at https://libguestfs.org/guestfs-release-notes-1.6.1.html
+- Changes since 1.59.7
+  mlcustomize: Drop setfiles -F flag
+  mlcustomize/inject_virtio_win.ml: Rewrite qemu-ga firstboot using {| |}
+  mlcustomize/inject_virtio_win.ml: Abstract $msi and $logfile
+  mlcustomize/inject_virtio_win.ml: Retry qemu-ga installation
+  daemon/xfs.ml: xfs_repair: Ignore RHEL 7 AGFL inconsistency
+  generator/actions_core.ml: Fix documentation for copy-out
+  lua: Remove linkage with libxml2 and libvirt
+  tests/command/test-immutable-resolv-conf.sh: Use 'not' to simplify test
+  fish: Add 'not command' to negate command status
+  daemon/sh.c: "-o ro" should be two separate parameters
+  tests/command: Add a test of immutable /etc/resolv.conf
+  daemon: Use bind mount to overwrite /etc/resolv.conf
+  generator: Refer to new virt-customize(1)/FIRSTBOOT section
+  docs/guestfs-recipes.pod: Remove reference to deleted documentation
+  Many updated language files
+
+-------------------------------------------------------------------
+Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
+
+- Add BuildRequires for python3-base
+
+-------------------------------------------------------------------
+Thu Jun 25 13:06:55 MDT 2026 - carnold@suse.com
+
+- bsc#1266992 - network does not work when running guestfish as
+  interpreter 
+  libguestfs.spec
+
+-------------------------------------------------------------------
 Thu May 21 09:03:00 MDT 2026 - carnold@suse.com
 
 - Update to version 1.59.8 (jsc#PED-14625)

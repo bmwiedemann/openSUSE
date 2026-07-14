@@ -18,7 +18,7 @@
 
 Name:           libguestfs
 ExclusiveArch:  x86_64 ppc64 ppc64le s390x aarch64 riscv64
-Version:        1.59.8
+Version:        1.60.0
 Release:        0
 Summary:        Access and modify virtual machine disk images
 License:        GPL-2.0-or-later
@@ -34,6 +34,7 @@ Source101:      README
 # Patches
 Patch1:         reproducible-builds.patch
 Patch2:         drop-initviocons-from-package-list.patch
+Patch3:         Ensure-fds-0-1-2-are-open-in-the-subcommand.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison
@@ -68,6 +69,7 @@ BuildRequires:  pkgconfig(fuse3)
 %else
 BuildRequires:  pkgconfig(fuse)
 %endif
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(hivex)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libacl)
@@ -186,6 +188,7 @@ autoreconf -fi
 %configure --help
 %configure \
         --docdir=%{guestfs_docdir} \
+        --with-default-backend=libvirt \
 	--with-distro=SUSE \
 	--with-readline \
         --with-guestfs-path=%{_libdir}/guestfs \
@@ -199,6 +202,7 @@ autoreconf -fi
         --enable-perl \
         --enable-python \
         --disable-erlang \
+        --disable-golang \
         --disable-haskell \
         --disable-php \
         --disable-rpath \
