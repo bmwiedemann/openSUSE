@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:15:46 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.4
+  * -help should exit(0) not (1)
+  * Accept --help & --version as aliases to -help & -version
+  * Improve man page formatting
+  * man page: fix warnings from `mandoc -T lint`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- Switch to Meson build system
+
+-------------------------------------------------------------------
 Sat Oct 29 16:49:09 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.3 
