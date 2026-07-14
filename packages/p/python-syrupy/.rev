@@ -111,4 +111,30 @@
       dropped. The minimum required version of pytest is v8.</comment>
     <requestid>1349734</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7a6d1573838ae9b62111fa3a3fe031e8</srcmd5>
+    <version>5.5.3</version>
+    <time>1784029552</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.5.3:
+  * fix: Fix detecting pytest-xdist when loaded via PYTEST_PLUGINS
+  * fix: Defer registering pytest-xdist hook pytest_testnodedown to avoid
+    &quot;unknown hook&quot; error
+  * feat: detect unused snapshots under pytest-xdist
+  * feat: add --snapshot-no-cleanup to keep unused snapshots on update
+  * fix: honor boolean operators in -k snapshot selection
+  * perf: drop per-node kwargs dict from the amber serializer
+  * perf: give the internal matcher wrapper an explicit signature
+  * fix: avoid os.environ mutation for color control
+  * perf: speed up string serialization in amber serializer
+  * perf: avoid copying the cycle-detection set on every serialized node
+  * fix: overlapping test filenames across directories
+  * fix(test): mark pydantic and attrs as dependencies for running internal
+    tests
+  * feat: add --snapshot-update-new-only flag
+  * fix: include tests in sdist
+  * fix: Handle unicode line-endings correctly when serializing
+  * chore: migrate off semantic-release to trusted publishing</comment>
+    <requestid>1365162</requestid>
+  </revision>
 </revisionlist>

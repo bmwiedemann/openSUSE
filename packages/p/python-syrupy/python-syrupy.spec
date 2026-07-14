@@ -18,17 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-syrupy
-Version:        5.1.0
+Version:        5.5.3
 Release:        0
 Summary:        Pytest Snapshot Test Utility
 License:        MIT
 URL:            https://github.com/tophat/syrupy
 Source:         https://github.com/tophat/syrupy/archive/refs/tags/v%{version}.tar.gz#/syrupy-%{version}.tar.gz
-BuildRequires:  %{python_module attrs}
+BuildRequires:  %{python_module attrs >= 26.1}
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 2.2.1}
-BuildRequires:  %{python_module pydantic >= 2.12.5}
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module hypothesis >= 6.0.0}
+BuildRequires:  %{python_module pydantic >= 2.13.4}
 BuildRequires:  %{python_module pytest >= 8.0.0}
 BuildRequires:  %{python_module pytest-benchmark >= 5.1.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.6.1}

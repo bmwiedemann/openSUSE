@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 13 02:21:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.5.3:
+  * fix: Fix detecting pytest-xdist when loaded via PYTEST_PLUGINS
+  * fix: Defer registering pytest-xdist hook pytest_testnodedown to avoid
+    "unknown hook" error
+  * feat: detect unused snapshots under pytest-xdist
+  * feat: add --snapshot-no-cleanup to keep unused snapshots on update
+  * fix: honor boolean operators in -k snapshot selection
+  * perf: drop per-node kwargs dict from the amber serializer
+  * perf: give the internal matcher wrapper an explicit signature
+  * fix: avoid os.environ mutation for color control
+  * perf: speed up string serialization in amber serializer
+  * perf: avoid copying the cycle-detection set on every serialized node
+  * fix: overlapping test filenames across directories
+  * fix(test): mark pydantic and attrs as dependencies for running internal
+    tests
+  * feat: add --snapshot-update-new-only flag
+  * fix: include tests in sdist
+  * fix: Handle unicode line-endings correctly when serializing
+  * chore: migrate off semantic-release to trusted publishing
+
+-------------------------------------------------------------------
 Tue Apr 28 08:32:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.1.0:
