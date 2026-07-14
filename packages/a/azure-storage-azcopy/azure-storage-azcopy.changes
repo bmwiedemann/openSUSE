@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:39:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.32.5
+  * Create new patch release
+  * Merge branch 'main' into seanmcc/bump-deps-2026-06
+  * Ensure get/set ACLs are on URLs with paths (#3453)
+  * Print out help command on just `azcopy` (#3485)
+  * Bump Go toolchain and security-relevant dependencies
+  * Centralize HTTP client into a shared global instance (#3436)
+  * Remove 0-padding in mode with SetUID (#3467)
+  * Updated trivy depdency to known safe version (#3421)
+
+-------------------------------------------------------------------
 Wed Jun  3 18:20:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Increase mininum Go version in BuildRequires to 1.26.3

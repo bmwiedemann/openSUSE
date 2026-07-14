@@ -23,7 +23,7 @@
 %global import_path     %{provider_prefix}
 
 Name:           azure-storage-azcopy
-Version:        10.32.4
+Version:        10.32.5
 Release:        0
 License:        MIT
 Summary:        Microsoft Azure Storage data transfer utility

@@ -120,4 +120,20 @@
     <comment>- Increase mininum Go version in BuildRequires to 1.26.3 (forwarded request 1357022 from glaubitz)</comment>
     <requestid>1357620</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1cf3f06755385d8a0d61a3ca0e0cc20d</srcmd5>
+    <version>10.32.5</version>
+    <time>1784029721</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.32.5
+  * Create new patch release
+  * Merge branch 'main' into seanmcc/bump-deps-2026-06
+  * Ensure get/set ACLs are on URLs with paths (#3453)
+  * Print out help command on just `azcopy` (#3485)
+  * Bump Go toolchain and security-relevant dependencies
+  * Centralize HTTP client into a shared global instance (#3436)
+  * Remove 0-padding in mode with SetUID (#3467)
+  * Updated trivy depdency to known safe version (#3421) (forwarded request 1364726 from glaubitz)</comment>
+    <requestid>1365366</requestid>
+  </revision>
 </revisionlist>
