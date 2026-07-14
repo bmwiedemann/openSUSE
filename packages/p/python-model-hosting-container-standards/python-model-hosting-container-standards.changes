@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:55:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-model-hosting-container-standards 0.1.16
+- Standardized framework providing unified /ping and /invocations
+  handler endpoints, configuration, and supervisor process management
+  for ML model hosting containers (vLLM, TensorRT-LLM, SageMaker)
