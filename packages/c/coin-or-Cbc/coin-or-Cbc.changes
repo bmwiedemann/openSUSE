@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Jun 28 20:17:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.10.13:
+  * Fix compiler warnings
+  * Fix SOS2 branching
+  * Fix clang warnings
+  * disable another unused-but-set variable
+  * Drop COIN_HAS_NTY from public header CbcModel.hpp
+  * Fix compiler warning and compilation with CBC_QUIET defined
+  * Add vs2022 for stable 2.10
+  * remove or disable unused-but-set variables
+  * Update windows ci splitting msvs to separate workflow
+    [stable/2.10]
+  * Update config.guess, rerun autotools, update gitignore
+  * Fix windows-ci for stable to build MSVC with dynamically
+    linked runtime
+  * don't solve only relaxation if there are also objects
+  * Update stable ci for win and linux for deprecated and new OS
+
+-------------------------------------------------------------------
 Thu Dec 12 13:16:26 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to 2.10.12, no changelog provided

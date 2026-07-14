@@ -1,7 +1,7 @@
 #
 # spec file for package coin-or-Cbc
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,10 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define soversion 3
 
 Name:           coin-or-Cbc
-Version:        2.10.12
+Version:        2.10.13
 Release:        0
 Summary:        COIN-OR Branch-and-Cut solver
 License:        EPL-2.0
@@ -110,4 +111,3 @@ rm %{buildroot}/%{_docdir}/%{name}/{AUTHORS,LICENSE}
 %{_libdir}/pkgconfig/osi-cbc.pc
 
 %changelog
-
