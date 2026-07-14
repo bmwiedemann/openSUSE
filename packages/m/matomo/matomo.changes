@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:32:48 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.12.0
+
+- Update to 5.12.0
+  * Core improvements
+    - #23249, #22587 Automatically update idvisitor column across log tables on change.
+    - #24191 Use flat-first archiving for Actions reports to reduce memory usage.
+    - #24206 Fix pagination Next button visible when all data fits on one page.
+    - #24534 Ignore AI assistant campaign attribution in tracker.
+    - #24573 Add AI Chatbots Content Requests reports for pages and documents.
+    - #24580 Adds superuser admin warnings ahead of Matomo 6 requirement changes.
+    - #24584 Improve preset period selector behaviour.
+    - #24587 Apply new plot line colours.
+    - #24588 Do not update comparison state when popover parameter changes.
+    - #24604 Redesign chart legends.
+    - #24610 Add Human-Favoured and AI-Favoured Pages reports for AI Chatbots.
+    - #24612 Fix blank Ecommerce evolution graph when comparing periods.
+    - #24615 Fix KPI widget for metrics where a lower value is better.
+    - #24620, #24591 Apply excluded query parameter rules to bot tracking URLs.
+    - #24622 Fix incorrect IP anonymization reading in CNIL check.
+    - #24625 Activity log search now also matches group names.
+    - #24641 Update the plot and chart metric selector.
+    - #24643 Update Tag Manager icon on the no-data page.
+    - #24646 Improve help icons and inline help in dark mode.
+    - #24652 Align TSV report renderer name handling with CSV.
+    - #24655, #24654 Fix saving annotations on date range periods.
+    - #24656 Fix comparison sparkline colours for positive and negative values.
+    - #24659 Add AI Insights top menu and reporting menu groups.
+    - #24661 Adds What’s new entry for new AI Chatbots Content Requests Reports.
+    - #24663 Fix Visitors Map legend and stats colours in dark mode.
+    - #24675 Fix Devices report icons in dark mode.
+    - #24682 Use new monochrome icons manifest for dark mode.
+    - #24686 AI assistant now available on the real-time page.
+    - #24694 Fix goal segment comparisons to use the originally selected date range.
+    - #24698, #22548 Improve region names for better geolocation database detection.
+    - #24699 Escape setDomains and setCookieDomain values in the generated tracking snippet.
+    - #24700 Fix duplicate results and section switching in AI Insights quick search.
+    - #24707 Fix segment editor modal to follow dark mode theme.
+    - #24708 Fix site selector search visibility in dark mode.
+
+-------------------------------------------------------------------
 Fri Jun 12 11:03:45 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.11.1
 
 - Update to 5.11.1

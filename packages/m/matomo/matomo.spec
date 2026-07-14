@@ -21,7 +21,7 @@
 %{!?_tmpfilesdir:%global _tmpfilesdir %{_prefix}/lib/tmpfiles.d}
 
 Name:           matomo
-Version:        5.11.1
+Version:        5.12.0
 Release:        0
 Summary:        Web analytics platform
 License:        GPL-3.0-or-later
@@ -118,7 +118,7 @@ sed -i '/enable_auto_update/s/1$/0/' config/global.ini.php
 #
 # Fix integrity check triggered from fix of rpmlint errors.
 # Drop moved files
-for i in CHANGELOG.md CONTRIBUTING.md PRIVACY.md README.md SECURITY.md LEGALNOTICE LICENSE 'misc\/cron\/.htaccess' 'misc\/How to install Matomo.html' 'vendor\/tecnickcom\/tcpdf\/tools\/.htaccess' 'vendor\/twig\/twig\/ext\/twig\/php_twig.h' 'vendor\/twig\/twig\/ext\/twig\/twig.c' 'js\/piwik.js.orig' '.eslintignore' '.eslintrc.js' '.browserslistrc' 'vendor\/lox\/xhprof\/extension\/php_xhprof.h' 'vendor\/lox\/xhprof\/extension\/xhprof.c'
+for i in AGENTS.md CHANGELOG.md CONTRIBUTING.md PRIVACY.md README.md SECURITY.md LEGALNOTICE LICENSE 'misc\/cron\/.htaccess' 'misc\/How to install Matomo.html' 'vendor\/tecnickcom\/tcpdf\/tools\/.htaccess' 'vendor\/twig\/twig\/ext\/twig\/php_twig.h' 'vendor\/twig\/twig\/ext\/twig\/twig.c' 'js\/piwik.js.orig' '.eslintignore' '.eslintrc.js' '.browserslistrc' 'vendor\/lox\/xhprof\/extension\/php_xhprof.h' 'vendor\/lox\/xhprof\/extension\/xhprof.c'
 do
   sed -i "/\W\"${i}\"\W/d" config/manifest.inc.php
 done
