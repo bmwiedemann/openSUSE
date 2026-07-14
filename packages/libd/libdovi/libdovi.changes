@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:25:21 UTC 2026 - llyyr <llyyr@yukari.in>
+
+- Update to 3.4.0:
+  * dovi_rpu_add_cmv40_safe_default_metadata: Adds CMv4.0 default
+    metadata to an existing CMv2.9 RPU
+  * dovi_generate_from_json: Allows generating a list of RPUs from
+    JSON
+  * dovi_rpu_remove_cmv40_metadata: Allows to completely remove CM
+    v4.0 metadata from the RPU
+  * dovi/level11: improve byte1 parsing and remove byte2 validation
+
+-------------------------------------------------------------------
 Mon Oct 13 14:30:03 UTC 2025 - llyyr <llyyr@yukari.in>
 
 - Update to 3.3.2:

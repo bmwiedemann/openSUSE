@@ -45,4 +45,20 @@
 </comment>
     <requestid>1311156</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>73991919a011983d6a7be904483a19d7</srcmd5>
+    <version>3.4.0</version>
+    <time>1784029581</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.4.0:
+  * dovi_rpu_add_cmv40_safe_default_metadata: Adds CMv4.0 default
+    metadata to an existing CMv2.9 RPU
+  * dovi_generate_from_json: Allows generating a list of RPUs from
+    JSON
+  * dovi_rpu_remove_cmv40_metadata: Allows to completely remove CM
+    v4.0 metadata from the RPU
+  * dovi/level11: improve byte1 parsing and remove byte2 validation
+</comment>
+    <requestid>1365419</requestid>
+  </revision>
 </revisionlist>
