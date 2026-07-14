@@ -403,4 +403,20 @@
     <comment></comment>
     <requestid>1359089</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>8921a653aa69032835ea4d116b2c47fd</srcmd5>
+    <version>1.12.3</version>
+    <time>1781879818</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360434</requestid>
+  </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>5bc54e7f16b2a39d0a75a9548c29930a</srcmd5>
+    <version>1.12.4</version>
+    <time>1784029930</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365470</requestid>
+  </revision>
 </revisionlist>

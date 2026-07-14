@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:08:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.4:
+  * BUG FIXES:
+    - tofu plan -out no longer fails when the plan includes a
+      resource with lifecycle { destroy = false } that needs
+      replacement, which previously errored with invalid change
+      action ForgetThenCreate. (#4324)
+    - Moved block now correctly compares provider source addresses.
+      (#4280)[https://github.com//pull/4280]
+    - Correct Source Provider Address now passed into Provider
+      MoveResource requests. (#4355)[https://github.com//pull/4355]
+
+-------------------------------------------------------------------
+Fri Jun 19 05:10:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.3:
+  * BUG FIXES:
+    - Properly handle TF_ENCRYPTION with only blank spaces. (#4265)
+    - The value resulted from the lifecycle.enabled evaluation now
+      has its deprecation marks processed correctly (#4162)
+    - Update documentation to clarify the usage restriction of
+      ephemeral values in lifecycle.enabled. (#4220)
+    - tofu console -lock=false now works as intended. (#4291)
+  * SECURITY ADVISORIES:
+    - Previous releases in the v1.12 series could read an arbitrary
+      file during certain git operations via a maliciously crafted
+      URL (#4293)
+      - Advisory: GHSA-q7j3-v8qv-22vq
+
+-------------------------------------------------------------------
 Sat Jun 13 10:04:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.2:
