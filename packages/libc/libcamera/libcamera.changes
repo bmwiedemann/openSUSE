@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 10 19:59:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.7.2
+  * Fixes two separate saturation handling bugs in both the SoftISP
+    and the Raspberry Pi IPA.
+  * On the SoftISP, 12-bit formats are now supported, black level
+    correction is 'fixed' and there are interesting performance
+    improvements with eGL buffer caching.
+  * Within the IPA handling, support for Sony IMX678 was added, as
+    well as Omnivision OV08x40 and OV01A10, and moved to a
+    proportional AGC algorithm for the simple pipeline handler.
+- Delete libcamera-ov02e10-initial-support.patch
+
+-------------------------------------------------------------------
 Fri Jun 26 10:54:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Be explicit about not using libunwind to address a

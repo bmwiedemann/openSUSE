@@ -6,19 +6,19 @@ References: https://lists.libcamera.org/pipermail/libcamera-devel/2026-April/058
 
 Signed-off-by: Marcel Berger <marbe@gmx.de>
 ---
- src/ipa/libipa/camera_sensor_helper.cpp       | 18 ++++++++++++++++++
- src/ipa/simple/data/ov02e10.yaml              | 19 +++++++++++++++++++
- .../sensor/camera_sensor_properties.cpp       | 12 ++++++++++++
+ src/ipa/libipa/camera_sensor_helper.cpp           |   18 ++++++++++++++++++
+ src/ipa/simple/data/ov02e10.yaml                  |   19 +++++++++++++++++++
+ src/libcamera/sensor/camera_sensor_properties.cpp |   12 ++++++++++++
  3 files changed, 49 insertions(+)
  create mode 100644 src/ipa/simple/data/ov02e10.yaml
 
-diff --git a/src/ipa/libipa/camera_sensor_helper.cpp b/src/ipa/libipa/camera_sensor_helper.cpp
-index e3e3e535..bee50ec8 100644
---- a/src/ipa/libipa/camera_sensor_helper.cpp
-+++ b/src/ipa/libipa/camera_sensor_helper.cpp
-@@ -653,6 +653,24 @@ public:
+Index: libcamera-0.7.2/src/ipa/libipa/camera_sensor_helper.cpp
+===================================================================
+--- libcamera-0.7.2.orig/src/ipa/libipa/camera_sensor_helper.cpp
++++ libcamera-0.7.2/src/ipa/libipa/camera_sensor_helper.cpp
+@@ -688,6 +688,24 @@ public:
  };
- REGISTER_CAMERA_SENSOR_HELPER("imx708", CameraSensorHelperImx708)
+ REGISTER_CAMERA_SENSOR_HELPER("ov08x40", CameraSensorHelperOv08x40)
  
 +class CameraSensorHelperOv02e10 : public CameraSensorHelper
 +{
@@ -41,11 +41,10 @@ index e3e3e535..bee50ec8 100644
  class CameraSensorHelperOv2685 : public CameraSensorHelper
  {
  public:
-diff --git a/src/ipa/simple/data/ov02e10.yaml b/src/ipa/simple/data/ov02e10.yaml
-new file mode 100644
-index 00000000..fc90ca52
+Index: libcamera-0.7.2/src/ipa/simple/data/ov02e10.yaml
+===================================================================
 --- /dev/null
-+++ b/src/ipa/simple/data/ov02e10.yaml
++++ libcamera-0.7.2/src/ipa/simple/data/ov02e10.yaml
 @@ -0,0 +1,19 @@
 +# SPDX-License-Identifier: CC0-1.0
 +%YAML 1.1
@@ -66,11 +65,11 @@ index 00000000..fc90ca52
 +  - Adjust:
 +  - Agc:
 +...
-diff --git a/src/libcamera/sensor/camera_sensor_properties.cpp b/src/libcamera/sensor/camera_sensor_properties.cpp
-index b217363d..30638836 100644
---- a/src/libcamera/sensor/camera_sensor_properties.cpp
-+++ b/src/libcamera/sensor/camera_sensor_properties.cpp
-@@ -325,6 +325,18 @@ const CameraSensorProperties *CameraSensorProperties::get(const std::string &sen
+Index: libcamera-0.7.2/src/libcamera/sensor/camera_sensor_properties.cpp
+===================================================================
+--- libcamera-0.7.2.orig/src/libcamera/sensor/camera_sensor_properties.cpp
++++ libcamera-0.7.2/src/libcamera/sensor/camera_sensor_properties.cpp
+@@ -335,6 +335,18 @@ const CameraSensorProperties *CameraSens
  				.hblankDelay = 3
  			},
  		} },
@@ -89,6 +88,3 @@ index b217363d..30638836 100644
  		{ "ov2685", {
  			.unitCellSize = { 1750, 1750 },
  			.testPatternModes = {
--- 
-2.53.0
-

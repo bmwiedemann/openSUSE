@@ -18,7 +18,8 @@
 
 %define lname       libcamera0_7
 %define lname_base  libcamera-base0_7
-%if "@BUILD_FLAVOR@" != ""
+%global flavor @BUILD_FLAVOR@%nil
+%if "%flavor" == "full"
 %define extname -@BUILD_FLAVOR@
 %else
 %define extname %nil
@@ -29,12 +30,13 @@
 %bcond_with    signed_ipa
 
 Name:           libcamera%extname
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        A complex camera support library in C++
 License:        CC-BY-SA-4.0 AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://libcamera.org/
+#Changelog:     https://lists.libcamera.org/pipermail/libcamera-devel/
 #Git-Web:       https://git.libcamera.org/libcamera/libcamera.git/
 Source:         libcamera-%version.tar.xz
 Source1:        baselibs.conf
@@ -52,6 +54,7 @@ BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(libevent_pthreads)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libudev)
+BuildRequires:  pkgconfig(libyuv)
 BuildRequires:  pkgconfig(pybind11)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(yaml-0.1)
@@ -63,7 +66,7 @@ BuildRequires:  pkgconfig(gnutls)
 %ifarch aarch64 %arm
 BuildRequires:  pkgconfig(libpisp)
 %endif
-%if "@BUILD_FLAVOR@" != ""
+%if "%flavor" == "full"
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6OpenGL)
