@@ -16,9 +16,11 @@
 #
 
 
-# if bumping this, also update baselibs.conf
 %define sonum 4
 %define unity_version 2.6.1
+%define libname  lib%{name}%{sonum}
+%define libdevel lib%{name}-devel
+
 Name:           iniparser
 Version:        4.2.6
 Release:        0
@@ -26,75 +28,60 @@ Summary:        Library to parse ini files
 License:        MIT
 Group:          System/Libraries
 URL:            https://gitlab.com/iniparser/iniparser
-Source:         https://gitlab.com/iniparser/iniparser/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Source2:        https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/v%{unity_version}.tar.gz#/unity-%{unity_version}.tar.gz
-Source3:        baselibs.conf
+Source0:        https://gitlab.com/iniparser/iniparser/-/archive/v%{version}/%{name}-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source1:        https://github.com/ThrowTheSwitch/Unity/archive/refs/tags/v%{unity_version}.tar.gz#/unity-%{unity_version}.tar.gz
 # PATCH-FIX-UPSTREAM - https://gitlab.com/iniparser/iniparser/-/merge_requests/171
-Patch:          fix-tests.patch
+Patch0:         fix-tests.patch
+
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  fdupes
 # Test requires
 BuildRequires:  ruby
+
+BuildSystem:    cmake
+BuildOption(prep): -b1 -n %{name}-%{version}
+BuildOption(conf): -DBUILD_DOCS:BOOL=ON
+BuildOption(conf): -DBUILD_TESTING:BOOL=ON
+BuildOption(conf): -DBUILD_STATIC_LIBS:BOOL=OFF
+BuildOption(conf): -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{libdevel}
+BuildOption(conf): -DFETCHCONTENT_SOURCE_DIR_UNITY:PATH=%{_builddir}/Unity-%{unity_version}
 
 %description
 Libiniparser offers parsing of ini files from the C level.
 
-%define libiniparser_name libiniparser%{sonum}
-
-%package -n %{libiniparser_name}
+%package -n %{libname}
 Summary:        Library to parse ini files
 Group:          System/Libraries
 
-%description -n %{libiniparser_name}
+%description -n %{libname}
 Libiniparser offers parsing of ini files from the C level.
 
-This package includes the libiniparser%{sonum} library.
-
-%package -n libiniparser-devel
-Summary:        Libraries and Header Files to Develop Programs with libiniparser Support
+%package -n %{libdevel}
+Summary:        Libraries and header files to develop programs with libiniparser support
 Group:          Development/Libraries/C and C++
-Requires:       %{libiniparser_name} = %{version}
+Requires:       %{libname} = %{version}
 
-%description -n libiniparser-devel
-This package contains the static libraries and header files needed to
-develop programs which make use of the libiniparser programming
-interface.
+%description -n %{libdevel}
+This package contains the static libraries and header files needed to develop
+programs which make use of the libiniparser programming interface.
 
-The libiniparser offers parsing of ini files from the C level.	See a
-complete documentation in HTML format, from the
-%{_docdir}/libiniparser-devel directory open the file
-html/index.html with any HTML-capable browser.
+The libiniparser offers parsing of ini files from the C level. See a complete
+documentation in HTML format, from the %{_docdir}/%{libdevel} directory
+open the file html/index.html with any HTML-capable browser.
 
-Libraries and Header Files to Develop Programs with iniparser Support.
+%install -a
+%fdupes %{buildroot}%{_docdir}
 
-%prep
-%autosetup -p1 -b2 -n %{name}-v%{version}
+%ldconfig_scriptlets -n %{libname}
 
-%build
-%cmake \
-	-DBUILD_STATIC_LIBS:BOOL=OFF \
-	-DBUILD_DOCS:BOOL=ON \
-	-DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/libiniparser-devel \
-	-DBUILD_TESTING:BOOL=ON \
-	-DFETCHCONTENT_SOURCE_DIR_UNITY:PATH=%{_builddir}/Unity-%{unity_version}
-%cmake_build
-
-%install
-%cmake_install
-
-%check
-%ctest
-
-%post -n %{libiniparser_name} -p /sbin/ldconfig
-%postun -n %{libiniparser_name} -p /sbin/ldconfig
-
-%files -n %{libiniparser_name}
+%files -n %{libname}
 %{_libdir}/*.so.*
 
-%files -n libiniparser-devel
-%doc html/
+%files -n %{libdevel}
+%doc %{_docdir}/%{libdevel}
 %{_libdir}/*.so
 %{_libdir}/cmake/%{name}
 %{_libdir}/cmake/unity

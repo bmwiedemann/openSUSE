@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:30:14 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- Switch to declarative build.
+- Drop baselibs.conf, as its not used/needed anymore.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Thu Jan 23 17:31:42 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Add fix-tests.patch: Makes the tests work with the "offline"
@@ -37,7 +44,7 @@ Thu Jan 23 17:31:42 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
   * add CMake Support
   * update README
   * add Gitlab CI configuration
-  * This release makes iniparser-meta obsolete. 
+  * This release makes iniparser-meta obsolete.
 
 -------------------------------------------------------------------
 Wed May 15 19:07:26 UTC 2024 - Michal Suchanek <msuchanek@suse.com>
@@ -193,7 +200,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Thu Dec 27 03:33:40 CET 2007 - crrodriguez@suse.de
 
-- fix library-without-ldconfig* errors 
+- fix library-without-ldconfig* errors
 
 -------------------------------------------------------------------
 Sun May 27 13:58:43 CEST 2007 - lmuelle@suse.de
