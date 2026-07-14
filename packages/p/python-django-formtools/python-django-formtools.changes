@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 13 15:15:17 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 2.7
+  * Fixed a regression in 2.6.x with get_form_list() caching not
+    allowing form_list mutations.
+  * Dropped support for Python < 3.10 and Django < 5.2
+  2.6.1
+  * Add missing .mo files for translations updated in 2.6
+  * Add support for Django 6.0
+  2.6
+  * Fix form validation in default templates (#265)
+  * Exclude tests from wheels
+  * Improved performance when using condition_dict (#291)
+  * Dropped support for Python < 3.9 and Django < 4.2
+  * Added support for Django 5.1/5.2
+  * Updated translations
+
+-------------------------------------------------------------------
 Sun Mar 29 10:41:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.5.1:

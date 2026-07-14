@@ -18,19 +18,19 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-formtools
-Version:        2.5.1
+Version:        2.7
 Release:        0
 Summary:        A set of high-level abstractions for Django forms
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-formtools
-Source:         https://files.pythonhosted.org/packages/source/d/django-formtools/django-formtools-%{version}.tar.gz
-BuildRequires:  %{python_module Django >= 2.2}
+Source:         https://files.pythonhosted.org/packages/source/d/django-formtools/django_formtools-%{version}.tar.gz
+BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Django >= 2.2
+Requires:       python-Django >= 5.2
 BuildArch:      noarch
 %python_subpackages
 
@@ -39,7 +39,7 @@ Django's "formtools" is a set of high-level abstractions for Django forms.
 Currently for form previews and multi-step forms.
 
 %prep
-%setup -q -n django-formtools-%{version}
+%setup -q -n django_formtools-%{version}
 
 %build
 %pyproject_wheel
