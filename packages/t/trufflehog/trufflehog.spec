@@ -20,7 +20,7 @@ Name:           trufflehog
 Version:        3.95.9
 Release:        0
 Summary:        CLI tool to find exposed secrets in source and archives
-License:        AGPL-3.0-or-later
+License:        AGPL-3.0-or-later AND MPL-2.0 AND LGPL-3.0-or-later
 URL:            https://github.com/trufflesecurity/trufflehog
 Source:         trufflehog-%{version}.tar.gz
 Source1:        vendor.tar.gz
