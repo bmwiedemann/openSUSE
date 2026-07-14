@@ -17,20 +17,22 @@
 
 
 Name:           spotify-launcher
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Client for spotify's apt repository written in Rust
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/kpcyrd/spotify-launcher
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         spotify-desktop-rename.patch
+
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  rust >= 1.70
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(openssl)
-ExclusiveArch:  %{rust_tier1_arches}
+
 Requires:       sequoia-sqv
 # Spotify dependencies
 Requires:       libayatana-appindicator3-1
@@ -40,6 +42,8 @@ Requires:       libasound2 >= 1.0.14
 Requires:       libatomic1
 Requires:       mozilla-nss
 Requires:       zenity
+
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Client for spotify's apt repository written in Rust

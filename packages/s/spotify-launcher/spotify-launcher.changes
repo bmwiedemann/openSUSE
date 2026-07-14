@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:10:30 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version v0.6.6:
+  * Release v0.6.6
+  * Fix clippy warnings
+  * Update dependencies
+  * Update sha2 dependency
+  * Update toml dependency
+  * Update dependencies (RUSTSEC-2026-0067, RUSTSEC-2026-0068)
+  * Change repository url to https
+  * Use constant for repository url
+- Add spotify-desktop-rename.patch:
+  * Rename the desktop entry from "Spotify (Launcher)" to
+    "Spotify" for consistency with the installed application
+
+-------------------------------------------------------------------
 Sat Mar  7 19:16:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 0.6.5:

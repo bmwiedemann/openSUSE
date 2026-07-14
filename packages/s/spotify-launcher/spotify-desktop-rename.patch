@@ -1,0 +1,12 @@
+diff --git a/contrib/spotify-launcher.desktop b/contrib/spotify-launcher.desktop
+index 2749bc3..a36b003 100644
+--- a/contrib/spotify-launcher.desktop
++++ b/contrib/spotify-launcher.desktop
+@@ -1,6 +1,6 @@
+ [Desktop Entry]
+ Type=Application
+-Name=Spotify (Launcher)
++Name=Spotify
+ GenericName=Music Player
+ Icon=spotify-launcher
+ TryExec=spotify-launcher
