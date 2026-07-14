@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:19:49 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260713.74b4d0ac:
+  * Fix: migration: RRP is reported deprecated incorrectly (bsc#1250586)
+  * Dev: utils: Drop utils.pacemaker_daemon function
+
+-------------------------------------------------------------------
+Tue Jul 07 03:35:40 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260707.7fd9b3e0:
+  * Dev: sbd: Check and fix SBD_PACEMAKER in sysconfig
+
+-------------------------------------------------------------------
+Fri Jul 03 14:12:34 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260703.0353d18b:
+  * Dev: network_utils: Refactor bootstrap network helpers
+  * Dev: network_utils: Refactor network helpers out of utils.py
+
+-------------------------------------------------------------------
 Tue Jun 30 05:27:04 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260630.0c615a08:
