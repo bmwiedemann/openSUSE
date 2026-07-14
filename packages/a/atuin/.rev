@@ -1543,4 +1543,41 @@
     + Rename 'atuin hex' to 'atuin pty-proxy' (#3473) (forwarded request 1353515 from develop7)</comment>
     <requestid>1353516</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>0c71d5e2e82f892360097c76b2c3d61f</srcmd5>
+    <version>18.17.0</version>
+    <time>1784029625</time>
+    <user>dimstar_suse</user>
+    <comment>- bump MSRV to 1.96.1 per upstream
+- Update to version 18.17.0:
+  * Bug Fixes
+    + (ai) Dispatch skills registered in the slash command registry
+      (#3593)
+    + (ci) Fossier install in scan workflow (#3485)
+    + (i18n) Fix typos in Russian localization (#3575)
+    + (nu) Use `char -u 1b` for ESC in OSC 133 sequences (#3530)
+    + (nu) Suppress error when `ATUIN_HISTORY_ID` is missing in
+      `pre_prompt` hook (#3587)
+    + (pi) Observe tool events instead of registering a bash tool
+      (#3557)
+    + (pty-proxy) Set `$SHELL` to the spawned shell (#3548)
+    + (search) Fix terminal clearing with latest Ratatui (#3578)
+    + (sync) Skip records that fail to decrypt or decode instead of
+      failing the whole store (#3569)
+    + Atuin hangs when attempting to spawn daemon from Ctrl+R
+      invocation (#3502)
+    + Capture session ID from stream headers rather than final event
+      (#3531)
+    + Doctor resiliency for unknown platforms + openbsd warning
+      (#3551)
+    + Double input on arrow keys in AI setup prompt on Windows
+      (#3552)
+    + Exclude AI agent commands from zsh-autosuggestions (#3567)
+    + Silence shellcheck SC2016 on literal `$all-user` author filter
+    + Respect `store_failed` when using daemon (#3571)
+  * Documentation
+    + Highlight `Ctrl-r` keybinding on docs page (#3489)
+    + Document store purge workflow (#3544) (forwarded request 1365296 from develop7)</comment>
+    <requestid>1365297</requestid>
+  </revision>
 </revisionlist>
