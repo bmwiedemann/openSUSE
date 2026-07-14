@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:53:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-prometheus-fastapi-instrumentator 8.0.2
+  * Configurable Prometheus instrumentator for FastAPI and Starlette
+    apps, exposing request latency, size and count metrics
