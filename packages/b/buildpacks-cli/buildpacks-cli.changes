@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:07:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.40.8:
+  * build(deps): bump Go to 1.25.12 and safe x/* deps to fix CVEs
+    (#2653)
+  * build(deps): bump safe go-dependencies (kaniko, tcell, gomega,
+    x/mod) (#2647)
+  * Add license scan report and status (#2638)
+  * chore: suppress unreachable docker daemon CVEs in grype config
+    (#2644)
+  * build(deps): bump Go directive to 1.25.11 for stdlib security
+    fixes (#2642)
+  * build(deps): bump x/crypto, x/net, and go-git for security
+    fixes (#2641)
+  * fix(buildpack): fix malformed yank PR template body (#2631)
+  * chore: remove direct dependency on github.com/docker/docker
+    (#2617)
+  * Suggest `heroku/builder:26` instead of `heroku/builder:24`
+    (#2611)
+  * chore: upgrade Go to 1.25.10 to fix stdlib CVEs
+
+-------------------------------------------------------------------
 Wed Jun 24 05:28:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.40.7:

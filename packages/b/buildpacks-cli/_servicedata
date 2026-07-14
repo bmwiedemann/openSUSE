@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/buildpacks/pack</param>
-              <param name="changesrevision">2df3b8c3b0955ea41aec010783ddfe70cbc17c56</param></service></servicedata>
+              <param name="changesrevision">2df3b8c3b0955ea41aec010783ddfe70cbc17c56</param></service><service name="tar_scm">
+                <param name="url">https://github.com/buildpacks/pack.git</param>
+              <param name="changesrevision">3253355fca02d856b5350cbe81b6d9ae772dfafe</param></service></servicedata>
