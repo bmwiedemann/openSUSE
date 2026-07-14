@@ -30,4 +30,12 @@
   * test support for Python 3.14</comment>
     <requestid>1329567</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>8630a2b6b9ed1a8c97792c21dc73b81a</srcmd5>
+    <version>1.8.1</version>
+    <time>1784029526</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365049</requestid>
+  </revision>
 </revisionlist>

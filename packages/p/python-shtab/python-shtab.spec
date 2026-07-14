@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-shtab
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Automagic shell tab completion for Python CLI applications
 License:        Apache-2.0
