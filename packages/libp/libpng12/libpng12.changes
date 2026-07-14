@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 06:07:26 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-25646: Heap buffer overflow vulnerability in png_set_dither/png_set_quantize [bsc#1258020]
+  * libpng12-CVE-2026-25646.patch
+
+-------------------------------------------------------------------
 Tue Apr 28 08:05:20 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
@@ -39,6 +46,7 @@ Wed Jul 17 06:52:17 UTC 2019 - pgajdos@suse.com
   Initialize memory allocated by png_inflate to zero, using memset, to
     stop an oss-fuzz "use of uninitialized value" detection in png_set_text_2()
     due to truncated iTXt or zTXt chunk.
+- fixes CVE-2017-12652 [bsc#1141493]
 
 -------------------------------------------------------------------
 Wed Jan 31 10:00:41 UTC 2018 - pgajdos@suse.com

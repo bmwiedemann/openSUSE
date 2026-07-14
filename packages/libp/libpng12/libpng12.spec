@@ -40,6 +40,8 @@ Patch2:         libpng12-CVE-2025-64505.patch
 Patch3:         libpng12-CVE-2026-33416.patch
 # CVE-2026-34757: Information disclosure and data corruption via use-after-free vulnerability [bsc#1261957]
 Patch4:         libpng12-CVE-2026-34757.patch
+# CVE-2026-25646: Heap buffer overflow vulnerability in png_set_dither/png_set_quantize [bsc#1258020]
+Patch5:         libpng12-CVE-2026-25646.patch
 BuildRequires:  libtool
 BuildRequires:  pkg-config
 BuildRequires:  zlib-devel
