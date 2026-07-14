@@ -592,4 +592,12 @@ BTW: should go to 13.1
  * fix some HTTP 1.0 tests</comment>
     <requestid>1362324</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>bdc3e4fe9273f3db59e260953484b56a</srcmd5>
+    <version>1.0.6</version>
+    <time>1784029527</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365057</requestid>
+  </revision>
 </revisionlist>

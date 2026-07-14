@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul  9 14:48:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 1.0.6:
+  * Fix various minor issues, like theoretical
+  * integer overflows for extreme inputs or NULL
+  * dereferences if the application passes NULL
+    where it should not
+
+-------------------------------------------------------------------
 Sat Apr 18 10:21:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.5 :
