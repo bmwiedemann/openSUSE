@@ -47,7 +47,7 @@
 %define exiv2_version           0.27.4
 %define gdk_pixbuf_version      2.30.8
 %define gegl_version            0.4.66
-%define gexiv2_min_version      0.14.5
+%define gexiv2_min_version      0.14.3
 %define gexiv2_max_version      0.15.0
 %define glib_version            2.70.0
 %define gtk3_version            3.24.50
@@ -101,6 +101,8 @@ Source2:        openSUSE.gpl
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
+Patch4:         gimp-CVE-2026-58379.patch
+Patch5:         gimp-CVE-2026-59089.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
