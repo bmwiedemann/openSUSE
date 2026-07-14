@@ -23,7 +23,7 @@
 %define lib_p256m   libp256m
 %define _rname      mbedtls
 Name:           mbedtls-3
-Version:        3.6.6
+Version:        3.6.7
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later

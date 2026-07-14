@@ -7,4 +7,12 @@
     <comment>Add package for the last version of mbedtls in the 3.* branch since it is required by some packages: godot, haxe, neko, haslink...</comment>
     <requestid>1361597</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>481b9ba00da565715891f43e045ff690</srcmd5>
+    <version>3.6.7</version>
+    <time>1784029755</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.6.7 - upstream security release fixing 16 CVEs (remote buffer overflows CVE-2026-50580/-35336/-50713, use-after-free CVE-2026-50579, X.509 CA-bit forgery CVE-2026-49300, RSA/ECC side channels, and more). ABI-compatible: sonames unchanged. Changelog also references the openSUSE bugs for the 3.6.6 CVE batch (boo#1261448-boo#1261527) this package carries. Built + ctest green on aarch64.</comment>
+    <requestid>1365402</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Mon Jul 13 15:43:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 3.6.7:
+  This is a security release fixing memory-safety issues, several
+  side-channel leaks and TLS/X.509 protocol flaws:
+  * CVE-2026-50580: remote buffer overflow in (D)TLS with ECDHE-PSK
+    cipher suites when CBC is disabled
+  * CVE-2026-35336: buffer overflow in mbedtls_ecdh_calc_secret() when
+    the provided output buffer is too small
+  * CVE-2026-50713: buffer overflow on DTLS renegotiation when
+    badmac_limit is enabled
+  * CVE-2026-50579: use-after-free/double-free in mbedtls_pkcs7_free()
+    when reusing a PKCS7 context across parse/free cycles
+  * CVE-2026-50588: out-of-bounds read when parsing TLS 1.2 ECJPAKE
+    ServerKeyExchange messages
+  * CVE-2026-50583: one-byte buffer overread when parsing a malformed
+    ECC public key in the PK module
+  * CVE-2026-49300: X.509 parser accepted malformed basicConstraints,
+    allowing end-entity certificates to be treated as CA certificates
+  * CVE-2026-25832: TLS 1.3 client now rejects a HelloRetryRequest that
+    selects a group not advertised in the ClientHello
+  * CVE-2026-50587: constant-time handling of RSA PKCS#1 v1.5 decryption
+    errors to prevent a Bleichenbacher timing attack
+  * CVE-2026-54435: side channel in ECC computations allowing a local
+    attacker to recover long-term secret keys
+  * CVE-2026-50586: up to 4 bytes of uninitialized stack memory could be
+    sent in the TLS 1.2 NewSessionTicket message
+  * CVE-2026-50584: reject ChaCha20 operations that wrap the 32-bit block
+    counter and would otherwise reuse keystream
+  * CVE-2026-50581: TLS 1.2 extended master secret transcript-hash
+    computation errors are no longer silently ignored
+  * CVE-2026-50640: TLS 1.3 server no longer issues invalid session
+    tickets when the resumption master secret cannot be computed
+  * CVE-2026-50585: zeroize the dtls_srtp_info field in
+    mbedtls_ssl_session_reset() to avoid DTLS-SRTP parameter inheritance
+  * CVE-2026-54441: clarify that mbedtls_ssl_conf_sig_algs() does not
+    restrict signature algorithms during certificate verification
+  * further hardening without assigned CVEs: TLS 1.3 early-data
+    record-boundary validation, random-generator failure handling during
+    the TLS 1.3 handshake, a timing side channel in RSA key generation,
+    and PKCS7 now rejecting weak hash algorithms (new option
+    MBEDTLS_PKCS7_ALLOW_WEAK_SIGNATURES keeps the old behavior)
+- this package also carries the fixes from the 3.6.6 upstream security
+  batch for the following issues (referenced here for Leap 16.1 tracking):
+  * CVE-2026-34875, boo#1261451: arbitrary code execution via a buffer
+    overflow in FFDH key export
+  * CVE-2026-34876, boo#1261452: CCM multipart-finish tag-length
+    validation bypass
+  * CVE-2026-34877, boo#1261457: memory-safety issues from insufficient
+    protection of serialized session or context data
+  * CVE-2026-34874, boo#1261527: NULL pointer dereference when setting a
+    distinguished name
+  * CVE-2026-34873, boo#1261450: client impersonation during TLS 1.3
+    session resumption
+  * CVE-2026-34872, boo#1261449: shared-secret manipulation via improper
+    FFDH input validation
+  * CVE-2026-34871, boo#1261448: entropy could silently fall back to
+    /dev/urandom on platforms without a dedicated system call
+  * CVE-2026-25834, boo#1261526: algorithm downgrade vulnerability
+  * CVE-2026-25833, boo#1261524: buffer underflow in x509_inet_pton_ipv6()
+  * CVE-2026-25835, boo#1261525: weakness in PSA random generator cloning
+
+-------------------------------------------------------------------
 Mon Jun 22 20:52:21 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Build as mbedtls-3 to provide the library for packages that are not
