@@ -1,0 +1,18 @@
+--- a/sentencepiece/CMakeLists.txt	2026-07-12 21:11:58.480403186 +0200
++++ b/sentencepiece/CMakeLists.txt	2026-07-12 21:12:07.817455736 +0200
+@@ -186,12 +186,9 @@
+ endif()
+ 
+ if (SPM_ABSL_PROVIDER STREQUAL "module")
+-  include(FetchContent)
+-  FetchContent_Populate(abseil-cpp
+-        GIT_REPOSITORY  https://github.com/abseil/abseil-cpp.git
+-        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/third_party/abseil-cpp
+-        GIT_PROGRESS TRUE
+-        GIT_TAG 20260526.0)
++  # openSUSE: the abseil-cpp sources are already bundled in the sdist, so use
++  # them directly instead of letting FetchContent git-clone at build time
++  # (no network access in the build environment).
+   add_subdirectory(third_party/abseil-cpp)
+   if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/third_party/absl)
+     file(CREATE_LINK

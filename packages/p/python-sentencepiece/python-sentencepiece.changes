@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:07:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-sentencepiece 0.2.2
+  * Python bindings for the SentencePiece unsupervised text tokenizer
+    and detokenizer for Neural Network-based text generation
+  * Add sentencepiece-use-bundled-abseil.patch to build the bundled
+    abseil-cpp directly instead of git-cloning it during the build
