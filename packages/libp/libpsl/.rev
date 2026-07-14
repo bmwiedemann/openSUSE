@@ -201,4 +201,17 @@ update descriptions and categories</comment>
     <comment>Update to libpsl 0.22.0: build without Python, drop a dep via internal IPv4/IPv6 checks, portability and build improvements. No soname change (libpsl.so.5). Both multibuild flavors built clean (0 rpmlint badness, testsuite passes).</comment>
     <requestid>1361699</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>fcd9dad9b3f937ba7345a1dd5a7351b0</srcmd5>
+    <version>0.23.0</version>
+    <time>1784029556</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.23.0:
+  * Properly handle leading dot in domains (CVE-2026-8924)
+  * Using libidn as runtime now requires explicit configuration
+  * Modernize configure.ac
+  * Simplify license headers
+- Regenerate built-in PSL and test DAFSA files from the system publicsuffix at build time (fixes test-is-public-all on version skew)</comment>
+    <requestid>1365225</requestid>
+  </revision>
 </revisionlist>

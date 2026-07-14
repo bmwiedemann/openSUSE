@@ -19,11 +19,10 @@
 
 
 Name:           psl-make-dafsa
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        Tool to create a binary DAFSA from a Public Suffix List
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/libpsl-%{version}.tar.gz
 Source2:        https://github.com/rockdaboot/libpsl/releases/download/%{version}/libpsl-%{version}.tar.gz.sig

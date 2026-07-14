@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 06:14:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.23.0:
+  * Properly handle leading dot in domains (CVE-2026-8924)
+  * Using libidn as runtime now requires explicit configuration
+  * Modernize configure.ac
+  * Simplify license headers
+- Regenerate the built-in PSL and test DAFSA files from the system
+  publicsuffix at build time, so they stay in sync with the packaged
+  list and test-is-public-all no longer fails on version skew
+
+-------------------------------------------------------------------
 Thu Jun 25 07:18:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.22.0:

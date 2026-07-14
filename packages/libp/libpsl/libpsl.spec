@@ -20,11 +20,10 @@
 
 %define somajor 5
 Name:           libpsl
-Version:        0.22.0
+Version:        0.23.0
 Release:        0
 Summary:        C library for the Publix Suffix List
 License:        BSD-3-Clause AND MIT AND MPL-2.0
-Group:          Development/Libraries/C and C++
 URL:            https://rockdaboot.github.io/libpsl
 Source:         https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source2:        https://github.com/rockdaboot/libpsl/releases/download/%{version}/%{name}-%{version}.tar.gz.sig
@@ -32,11 +31,11 @@ Source2:        https://github.com/rockdaboot/libpsl/releases/download/%{version
 # https://savannah.nongnu.org/people/viewgpg.php?user_id=87218
 Source3:        %{name}.keyring
 Source1000:     baselibs.conf
-BuildRequires:  libidn2-devel >= 0.14
 BuildRequires:  libunistring-devel
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  publicsuffix
 BuildRequires:  python3-base
+BuildRequires:  pkgconfig(libidn2) >= 0.14
 
 %description
 libpsl is a C library to handle the Public Suffix List. A "public suffix" is a
@@ -50,7 +49,6 @@ and sorting domain lists by site.
 Summary:        C library for the Publix Suffix List
 # The libary code is MIT, with built-in data from publicsuffix
 License:        MIT AND MPL-2.0
-Group:          System/Libraries
 Recommends:     publicsuffix
 
 %description -n %{name}%{somajor}
@@ -64,7 +62,6 @@ and sorting domain lists by site.
 %package        devel
 Summary:        Development files for %{name}
 License:        MIT
-Group:          Development/Libraries/C and C++
 Requires:       %{name}%{somajor} = %{version}
 
 %description    devel
@@ -81,7 +78,6 @@ Developer documentation is in %{_docdir}/libpsl-devel/html .
 %package -n     psl
 Summary:        Commandline utility to explore the Public Suffix List
 License:        MIT
-Group:          Productivity/Networking/Other
 
 %description -n psl
 This package contains a commandline utility to explore the Public Suffix List,
@@ -96,6 +92,13 @@ and sorting domain lists by site.
 %autosetup -p1
 # fix env shebang to call py3 directly
 sed -i -e "1s|#!.*|#!%{_bindir}/python3|" src/psl-make-dafsa
+# The tarball ships pre-generated PSL artifacts (the built-in
+# src/suffixes_dafsa.h and the test tests/*.dafsa). Their snapshot can be
+# newer than the packaged publicsuffix, and since their mtime beats the
+# system list make never regenerates them - they then drift from the list
+# test-is-public-all loads and the test fails. Drop them so all are
+# regenerated from the system publicsuffix at build time.
+rm -f src/suffixes_dafsa.h tests/psl.dafsa tests/psl_ascii.dafsa
 
 %build
 # default is libicu, but this just too heavy dependency. This library is part of the
