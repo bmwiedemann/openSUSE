@@ -1,7 +1,7 @@
 #
 # spec file for package PlayOnLinux
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,11 +16,7 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
-%define pythons python311
-%else
 %define pythons python3
-%endif
 
 %define _sname    POL-POM-4
 %define _sversion 4.4
@@ -46,10 +42,10 @@ Patch10:        %{name}-https.patch
 BuildRequires:  fdupes
 BuildRequires:  update-desktop-files
 # Not need for build. Only to test if packages are exists.
-BuildRequires:  %{python_module base < 3.13}
+BuildRequires:  %{python_module base < 3.14}
 BuildRequires:  %{python_module natsort}
 BuildRequires:  %{python_module wxPython}
-Requires:       %{python_flavor}-base < 3.13
+Requires:       %{python_flavor}-base < 3.14
 Requires:       %{python_flavor}-natsort
 Requires:       %{python_flavor}-wxPython
 Requires:       ImageMagick
@@ -123,7 +119,7 @@ install -Dm 0644 %{buildroot}%{_datadir}/%{_name}%{_sysconfdir}/%{name}.director
 %dir %{_datadir}/desktop-directories
 %{_datadir}/playonlinux/
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/pixmaps/%{_name}.png
+%{_datadir}/pixmaps/playonlinux.png
 %{_datadir}/desktop-directories/%{name}.directory
 
 %changelog
