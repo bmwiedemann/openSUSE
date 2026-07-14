@@ -19,7 +19,7 @@
 %define shortname osconfig
 
 Name:           google-osconfig-agent
-Version:        20260625.00
+Version:        20260708.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0

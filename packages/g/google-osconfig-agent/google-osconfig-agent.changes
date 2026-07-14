@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:29:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260708.00
+  * Add unit tests for policies/recipes/steps.go PART 2 (#975)
+- from version 20260707.00
+  * Bump golang.org/x/net (#1017)
+- from version 20260703.00
+  * upgrade x/net package. (#1018)
+- from version 20260702.00
+  * Add test cases for config/file_resource.go (#988)
+- from version 20260701.00
+  * Add unit tests for policies/recipes/artifacts.go (#985)
+- from version 20260630.00
+  * Add unit tests for policies/recipes/steps.go PART 1 (#974)
+
+-------------------------------------------------------------------
 Mon Jun 29 14:19:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260625.00

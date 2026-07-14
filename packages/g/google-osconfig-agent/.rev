@@ -921,4 +921,23 @@
     <comment></comment>
     <requestid>1364265</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>77fd33efa3d95807f75ce68b531c3abc</srcmd5>
+    <version>20260708.00</version>
+    <time>1784029719</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260708.00
+  * Add unit tests for policies/recipes/steps.go PART 2 (#975)
+- from version 20260707.00
+  * Bump golang.org/x/net (#1017)
+- from version 20260703.00
+  * upgrade x/net package. (#1018)
+- from version 20260702.00
+  * Add test cases for config/file_resource.go (#988)
+- from version 20260701.00
+  * Add unit tests for policies/recipes/artifacts.go (#985)
+- from version 20260630.00
+  * Add unit tests for policies/recipes/steps.go PART 1 (#974) (forwarded request 1364724 from glaubitz)</comment>
+    <requestid>1365363</requestid>
+  </revision>
 </revisionlist>
