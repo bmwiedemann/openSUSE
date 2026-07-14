@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:56:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-mistral-common 1.11.5
+  * Library of common utilities for Mistral AI models: SentencePiece
+    and Tekken tokenizers, request/response protocol models and
+    validation helpers, with the image extra enabled for multimodal
+    inputs
