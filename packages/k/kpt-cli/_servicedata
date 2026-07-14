@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kptdev/kpt</param>
-              <param name="changesrevision">30c074ce1f9ab17958207ada884564ccc2cc5d13</param></service></servicedata>
+              <param name="changesrevision">8863dda97a936fba40af1759d877022a6b73a65c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kptdev/kpt.git</param>
+              <param name="changesrevision">6bfa2af14026843300e6b3289cb6f78e2bc8be47</param></service></servicedata>

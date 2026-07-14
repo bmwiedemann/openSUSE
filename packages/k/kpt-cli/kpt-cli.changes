@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:08:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.67:
+  * Bump SDK (#4635)
+  * Build arm64 images, add CI check for goreleaser validity
+    (#4634)
+  * Refactor gh action worklfows (#4631)
+  * Fix go-releaser, migrate away from deprecations (#4630)
+  * docs: document configurable image prefix via flag and env var
+    (#4617)
+  * Make the image prefix configurable (#4616)
+  * Bump golang.org/x/net from 0.54.0 to 0.55.0 in /healthcheck
+    (#4618)
+  * Use API v0.0.2 and SDK v1.1.0 (#4620)
+  * Linking container images to releases and remove gcloud image
+    build (#4628)
+  * Fix broken download links
+
+-------------------------------------------------------------------
+Mon Jul 13 12:01:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.66.1:
+  * Refactor gh action worklfows (#4631)
+  * Fix go-releaser, migrate away from deprecations (#4630)
+  * docs: document configurable image prefix via flag and env var
+    (#4617)
+  * Make the image prefix configurable (#4616)
+  * Bump golang.org/x/net from 0.54.0 to 0.55.0 in /healthcheck
+    (#4618)
+
+-------------------------------------------------------------------
 Thu Jul 09 08:58:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0~beta.66:

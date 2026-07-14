@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/kptdev/kpt</param>
+    <param name="url">https://github.com/kptdev/kpt.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v1.0.0-beta.66</param>
+    <param name="revision">refs/tags/v1.0.0-beta.67</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)-(beta\.*)</param>
