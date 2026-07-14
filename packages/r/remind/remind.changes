@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul  6 18:58:24 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.02.08 - 2026-07-06
+
+- BUG FIX: remind: A regression in the previous release made Remind ignore
+  the system variable $MaxLateMinutes.  This has been fixed.
+
+- MINOR NEW FEATURE: remind: Sending a SIGHUP to a remind server process
+  (remind invoked with -z0 or -zj) forces a reread of the reminder files.
+
+- MINOR IMPROVEMENT: tkremind: Notice if the server process dies and
+  restart it.  However, after three restarts, display an error and exit.
+
+- MINOR CHANGE: remind: Use small integers for the "qid" item int JSONQUEUE
+  output, rather than actual hex pointer values.  This makes remind more
+  portable.
+
+- DOCUMENTATION FIX: The default value of $MaxSatIter was incorrectly
+  documented; this has been fixed.
+
+-------------------------------------------------------------------
 Mon Jun  8 13:06:31 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.02.07 - 2026-06-05
