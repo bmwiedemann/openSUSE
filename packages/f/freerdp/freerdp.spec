@@ -41,7 +41,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.26.0
+Version:        3.28.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0

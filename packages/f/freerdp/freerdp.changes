@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Sun Jul 12 04:24:58 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 3.28.0:
+  + Feature and bugfix release.
+    * iOS client has been revived by @bho3538
+    * Android client build updates by @svncibrahim
+    * Windows client did get some updates by @zorjen122
+    * Server side smartcard API by @joantolo
+    * Improved client statistics interface, now also supports static channels
+    * Improved fuzzer and unit tests
+    * CMake preset support making it easier to create a working build configuration,
+      see https://github.com/FreeRDP/FreeRDP/wiki/Compilation#presets
+  + CVE fixes:
+    * CVE-XXXX-XXXXX (GHSA-pjqx-v446-x7fc)
+    * CVE-XXXX-XXXXX (GHSA-9g22-w2gr-vcmp)
+    * CVE-XXXX-XXXXX (GHSA-f27x-frr8-j9hc)
+    * CVE-XXXX-XXXXX (GHSA-72j9-356v-88xq)
+    * CVE-XXXX-XXXXX (GHSA-v64m-xxfw-hrv6)
+    * CVE-2026-57158
+    * CVE-2026-57157
+    * CVE-2026-57156
+  + Changes:
+    * feat(client): Modernize iOS client. (iFreeRDP) (#12949)
+    * [client,ios] remove some deprecation warnings (#12981)
+    * Ios cmake (#12997)
+    * [client,ios] add openh264 build (#13003)
+    * [client,android] riscv64 support (#12923)
+    * [client,android] make release configurable (#12929)
+    * [client,android] allow overriding version name and code (#12931)
+    * [client,android] redesign touch pointer (#12946)
+    * [client,android] move external deps to own CMake file (#12992)
+    * Android build (#12917)
+    * [client,sdl] guard file clipboard (#12911)
+    * [client,sdl] Askpass (#12925)
+    * [client,sdl] throw a real exception instead of invalid bare throw (#12936)
+    * [client,sdl] run sdl_OnUserNotificationEventHandler on SDL thread (#12941)
+    * [client,sdl] fix mouse and touchpad natural scroll setting being ignored (#12967)
+    * fix(client/win) Reset scroll offset when hiding scrollbars (#7536) (#12939)
+    * feat(client/win): improve wfreerdp fullscreen floatbar controls (#12851)
+    * Channel stats (#12964)
+    * Statistics interface (#12968)
+    * [core,channels] add freerdp_static_client_channel_stat_free (#12966)
+    * Support RDPDR Device Control Responses (#12756)
+    * Wlog appender context (#12907)
+    * [winpr,image] bound unaligned bitmap read to declared image size (#12910)
+    * [codec,color] add empty checks for copy (#12912)
+    * Win credssp (#12913)
+    * Adjustments for building on Windows with MSVC (#12916)
+    * channel statistics and random gateway connection id (#12922)
+    * [channels,video] bound frame copy to current surface size (#12919)
+    * OSS-Fuzz: Add new fuzzers targets channels rail client (#12924)
+    * [utils,smartcard] validate cbAtr against rgbAtr size on unpack (#12928)
+    * [channels,rdpecam] fix device added notification parsing (#12930)
+    * [emu,scard] bound select-by-AID compare to GIDS AID length (#12933)
+    * Rails feature setting, xfreerdp kbd sync (#12927)
+    * [core,orders] fix inverted overflow guard in update_read_delta_points (#12938)
+    * [codec,mppc] add missing out of bounds check (#12942)
+    * [channels,tsmf] bound visible rect read in update_geometry_info (#12943)
+    * [channels,rdpecam] bound channel name read in device removed pdu (#12945)
+    * [core,tcp] improve connection failure logging (#12950)
+    * Warn fixes (#12951)
+    * [codec,planar] fix range check, abort early (#12952)
+    * [channels,rdpsnd,mac] recover audio after AVAudioEngine config change (#12958)
+    * [codec,planar] range-check before control byte read in plane rle (#12956)
+    * [channel,rail] fix tests and uninitialized variables (#12960)
+    * [channels,rdpdr] fix off-by-one scan length in rdpdr_read_ustring (#12961)
+    * [channels,remdesk] validate ctl pdu DataLength against received stream (#12955)
+    * [channels,rdpsnd] bound client format pdu length to UINT16 (#12962)
+    * Winpr harden parser checks (#12965)
+    * [winpr,file] bound '?' wildcard match to file name length (#12969)
+    * [channels,urbdrc] bound msusb descriptor reads to received length (#12971)
+    * [core,update] fix the calling convention for Windows x86 (#12973)
+    * [channels,drive] reject trailing '..' in contains_dotdot (#12974)
+    * OSS-Fuzz: Add new fuzzer targeets WinPRClipboard processing (#12976)
+    * Pr/12970 (#12975)
+    * Cliprdr and rdpsnd fixes (#12980)
+    * [channels,rail] fix order read/cleanup (#12979)
+    * [core,utils] skip AuthenticateEx for RDP/TSL/SMARTCARD_PIN/FIDO_PIN (#12978)
+    * replace NULL with nullptr (#12982)
+    * [channels,cliprdr] fix pdu-tracker leak (#12983)
+    * Fuzz fixes bmp (#12986)
+    * [core,gateway] fix const warning (#12987)
+    * [channels] bound dynamic channel message header to received length (#12988)
+    * cmake: add minimal preset for lightweight builds (#12989)
+    * Cleanup all (#12991)
+    * Range checks (#12993)
+    * Deprecations (#12994)
+    * [winpr,string] fix winpr_strnstr needle length (gateway SIGSEGV) (#12995)
+    * Bmp cache (#12999)
+    * [codec,dsp] ensure out capacity in opus encode (#13001)
+    * [winpr,string] match winpr_strnstr fallback to native strnstr (#13002)
+    * Smartcard fixes (#13009)
+    * [client,common] /smartcard-logon pass PEM directly (#13011)
+    * Correct UTF-8 to UTF-16 length (#13012)
+
+-------------------------------------------------------------------
+Thu Jun 18 03:31:15 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 3.27.1:
+  + Bugfix/regression fix and android feature release
+    * Fixed a regression with gateway connections
+    * Android client RDPECAM support
+    * Android client RAILS support
+  + CVE fixes:
+    * CVE-2026-55827
+  + Changes:
+    * [core,utils] fix guid2str (#12898)
+    * [client,android] Add RAIL/RemoteApp window support (#12887)
+    * Bitmap decode (#12899)
+    * [client,rdpecam,android] Add camera redirection support (#12894)
+    * [tools] make the generator create more clang-format friendly code (#12900)
+
+- Update to version 3.27.0:
+  + A major feature / bugfix / cleanup release
+    * Password hash now uses a custom SSPI attribute on non windows systems
+    * TLS seclevel now defaults to 2 and a minimum of TLS 1.2 is required.
+      Client side the /tls:seclevel: and /tls:enforce: allow to override these.
+      Server implementations can manually set these with rdpSettings::FreeRDP_TLSMinVersion and
+      rdpSettings::FreeRDP_TlsSecLevel
+      (See https://docs.openssl.org/3.0/man3/SSL_CTX_set_security_level/ for more details)
+    * The RDP proxy got a fix which removed (unstable) structs from public headers. There are no
+      known users of that (internal) API, but if you happen to be one please ping us.
+    * Android client got some huge updates again (thank @svncibrahim)
+    * Enhancements with Azure/Entra support: some (known but not officially documented) extensions
+      have been added to make these connections more stable.
+    * keyboard mapping
+    * Allow RDPDR channel to pass additional arguments to the channel. Does not break existing behaviour
+      but allows a channel supporting this to query the additional arguments for further use.
+    * Fix some WinPR deprecation handling, add WITHOUT_WINPR_3x_DEPRECATED that allows building
+      without any symbol deprecated during the stable 3 series
+    * Some client side statistics logging API was added. By default prints a (trace) log at the
+      end of a session, but it can be queried at any time for some connection details.
+  + CVE fixes:
+    * CVE-2026-55194
+    * CVE-2026-55193
+    * CVE-2026-55192
+    * CVE-2026-55191
+    * CVE-2026-55648
+  + Changes:
+    * Call winpr_InitializeSSL in TestWinPRUtils/TestNTLM (#12746)
+    * [core,codec] Fix invalid overlap check (#12753)
+    * Improve clipboard massive files copying performance (#12743)
+    * [crypto,certificate] Honor BIO_should_retry (#12755)
+    * Unify PEM read routines (#12758)
+    * Build updates (#12772)
+    * Fix sdl3 clipboard for files (#12759)
+    * url: replace http://www.freerdp.com (#12781)
+    * Fuzz/analyzer fixes (#12791)
+    * [winpr,sspi] replace password-length heuristic with explicit hash (#12782)
+    * Claude suggestions (#12792)
+    * Disp check fix (#12795)
+    * [core,settings] Raise default security level (#12752)
+    * [clang,tidy] use workflow from ZedThree (#12806)
+    * Improve FIPS mode support (#12811)
+    * Lots of android specific improvements (#12773, #12777, #12783, #12784, #12785,
+      #12786, #12787, #12788, #12807, #12812, #12815, #12818, #12819, #12820, #12822,
+      #12748, #12750)
+    * [channels,audin] fix opensles error handling (#12751)
+    * [channels,audin] fix iOS and mac backends (#12864)
+    * [channels,cliprdr] refactor server channel (#12810)
+    * [channels,cliprdr] reset stream after use (#12855)
+    * [channels,drdynvc] add new PubSub events (#12760)
+    * [channels,rail] fix client handshake response (#12780)
+    * [channels,rdpdr] various enhancements (#12800, #12797, #12803)
+    * [channels,rdpgfx] fix server frame command returning success on write failure (#12828)
+    * [channels,rdpsnd] reject client audio formats with zero nChannels/nBlockAlign (server-side DoS) (#12829)
+    * [channels,rdpsnd] skip unusable playback backend during selection (#12830)
+    * Refactor printer queue (#12817)
+    * [ci,freebsd] update ci (#12823, #12824, #12825)
+    * [cmake,simd] guard CMAKE_OSX_ARCHITECTURES (#12802)
+    * [cmake] replace find_package(GLOBAL) (#12837)
+    * [cmake] fix use of pkg_check_module (#12838)
+    * [winpr,input] complete japanese keyboard mapping (#12836)
+    * winpr/input: Fix numpad mapping for japanese keyboards (#12845)
+    * [core,gateway] validate auth blob length in rdg_process_extauth_sspi (#12856)
+    * Restore fullscreen when maximizing a toggled fullscreen window (#12849)
+    * Fix(wfreerdp): Refresh Windows frame after fullscreen restore (#12848)
+    * Fix copying multiple items of the same type between xfreerdp sessions (#12834)
+    * [core,event] add StateChanged event (#12858)
+    * [core,nego] bound cookie tag check to remaining length (#12862)
+    * codec stats (#12860)
+    * Various warning fixes (#12749, #12813, #12866, #12831)
+    * [core,client] add PubSub events (#12757)
+    * [core,client] use correct interface pointer (#12766)
+    * [client,rdpewa] filter UserNotify events (#12767)
+    * [client,windows] honor /from-stdin in wfreerdp (#12821)
+    * [client,x11] release normal keys before modifiers (#12868)
+    * fix(client/SDL): do not treat an unrecognized mouse button as fatal (#12847)
+    * Proxy client context (#12865)
+    * [core,update] filter out unused/unknown (#12870)
+    * Azure/Entra undocumented stuff and request compaction (#12872, #12871, #12770)
+    * Various bounds checks (#12873, #12857)
+    * Sspi separate ansi unicode (#12874)
+    * Ci update qa (#12875)
+    * [channels,gfx] extract remaining header length (#12876)
+    * [cache,glyph] bound offset read to buffer length (#12881)
+    * Expose the correlationId in settings (#12879)
+    * [winpr,wtypes] fix WINPR_C23_ENUM_TYPE (#12882)
+    * [server,proxy] pass ntlm hostname (#12877)
+
+-------------------------------------------------------------------
 Wed May 20 03:15:55 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
 
 - Enable Fido2/WebAuthN forwarding (RDPEWA) via libfido2/libcbor

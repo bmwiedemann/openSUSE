@@ -891,4 +891,20 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment></comment>
     <requestid>1356961</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>abc1c8cdba514bca865d6f10c4400a05</srcmd5>
+    <version>3.27.1</version>
+    <time>1781879526</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360381</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>8f3ed63574a7b33eec806d328c0130c5</srcmd5>
+    <version>3.28.0</version>
+    <time>1784029665</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365349</requestid>
+  </revision>
 </revisionlist>
