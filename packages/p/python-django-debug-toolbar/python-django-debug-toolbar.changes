@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Wed Jul  1 12:42:18 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 7.0.0
+  * Prevent check from erroring when ROOT_URLCONF is not defined in #2342
+  * Add browser based JavaScript via vitest in #2348
+  * Exclude package-lock.json from pre-commit autoformatting in #2355
+  * Resolve debounce race condition in #2356
+  * Refs #2356: Add a note to the prerequisites section about requiring a modern browser in #2357
+  * Add contribution documentation on running JS tests in #2359
+  * Drop support for Django 4.2 and Django 5.1 . in #2360
+  * Drop Promise.try and change documented Baseline target to Widely-Available in #2361
+  * Use shadow dom to render the toolbar in #2266
+  * Add graceful degradation for large SQL queries in #2291
+  * Update the version for biome schema. in #2364
+  * Update JS syntax to Baseline 2025 using esupgrade in #2346
+  * Treat some warnings as errors in CI in #2258
+  * Export getDebugElement utility javascript function. in #2373
+  * Clarified configuration documentation about SHOW_TOOLBAR_CALLBACK in #2372
+  * Handle non-JSON mapping keys in toolbar storage in #2376
+  * Fixed cookie expires calculation in #2377
+  * Handle cache culling and boolean lookup changes in Django 6.2 in #2385
+  * Change the SQL panel to show the select and explain buttons for all queries in #2393
+  * Mention @gzip_page explicitly as a reason why the toolbar doesn't show up in #2392
+  * Fix binary parameter handling in SQL panel in #2391
+  * Version 7.0.0 in #2386
+
+-------------------------------------------------------------------
+Sat Apr  4 11:58:23 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 6.3.0
+  * remove requirement_dev.txt from project #2277
+  * Upgraded ReadTheDocs Python version to 3.13. in #2307
+  * Modernize some panel styles and colors in #2285
+  * Update the translatable strings for the application. in #2311
+  * Update translations 2026-02-09 in #2312
+  * Add a py.typed file, to make types available downstream in #2314
+  * Emit RedirectsPanel warning on usage rather than set up. in #2326
+  * Highlighted docs on disabling browser caching. in #2302
+  * Only patch the cache methods once. in #2332
+  * Add CacheStore, a store that uses Django's cache framework in #2304
+
+-------------------------------------------------------------------
 Wed Apr 16 13:10:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.1.0
