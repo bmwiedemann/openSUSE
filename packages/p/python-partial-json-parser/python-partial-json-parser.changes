@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:54:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-partial-json-parser 0.2.1.1.post7
+- Parse partial and incomplete JSON strings such as the streamed
+  output of a large language model
