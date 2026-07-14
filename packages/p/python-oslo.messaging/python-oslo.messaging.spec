@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.messaging
-Version:        18.1.0
+Version:        18.2.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
@@ -34,7 +34,7 @@ BuildRequires:  %{python_module eventlet >= 0.23.0}
 BuildRequires:  %{python_module fixtures >= 3.0.0}
 BuildRequires:  %{python_module futurist >= 1.2.0}
 BuildRequires:  %{python_module greenlet >= 0.4.15}
-BuildRequires:  %{python_module kombu >= 4.6.8}
+BuildRequires:  %{python_module kombu >= 5.2.0}
 BuildRequires:  %{python_module oslo.config >= 5.2.0}
 BuildRequires:  %{python_module oslo.context >= 5.3.0}
 BuildRequires:  %{python_module oslo.i18n}
@@ -60,7 +60,7 @@ Requires:       python-cachetools >= 2.0.0
 Requires:       python-debtcollector >= 1.2.0
 Requires:       python-futurist >= 1.2.0
 Requires:       python-greenlet >= 0.4.15
-Requires:       python-kombu >= 4.6.8
+Requires:       python-kombu >= 5.2.0
 Requires:       python-oslo.config >= 5.2.0
 Requires:       python-oslo.context >= 5.3.0
 Requires:       python-oslo.i18n

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:27:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.2.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Bump kombu
+
+-------------------------------------------------------------------
 Mon Jun  8 07:02:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.1.0 (bsc#1267828, CVE-2026-44393):

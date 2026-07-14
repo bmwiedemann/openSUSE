@@ -751,4 +751,17 @@
   * Replace deprecated datetime.datetime.utcnow</comment>
     <requestid>1357874</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>e274fec7d07cf01c7aa743e4d60aa446</srcmd5>
+    <version>18.2.0</version>
+    <time>1784029760</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 18.2.0:
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove Python 3.10 support
+  * Bump kombu</comment>
+    <requestid>1365418</requestid>
+  </revision>
 </revisionlist>
