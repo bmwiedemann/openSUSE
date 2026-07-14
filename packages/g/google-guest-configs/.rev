@@ -503,4 +503,19 @@
   * set_multiqueue: Consider c4n a &quot;multinic accelerator&quot; (forwarded request 1350639 from glaubitz)</comment>
     <requestid>1350664</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d49d34e58ee7e01221f4f8c5084a623d</srcmd5>
+    <version>20260707.00</version>
+    <time>1784029722</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260707.00
+  * add nic naming support for CX-9 with VR200
+- from version 20260623.00
+  * Avoid eval in google-dhclient-script
+- from version 20260617.00
+  * Enable SR-IOV for specific Intel PCI devices.
+- from version 20260521.00
+  * Set max queue count for IDPF devices; remove broken virtio logic (forwarded request 1364729 from glaubitz)</comment>
+    <requestid>1365367</requestid>
+  </revision>
 </revisionlist>

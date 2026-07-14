@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:48:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260707.00
+  * add nic naming support for CX-9 with VR200
+- from version 20260623.00
+  * Avoid eval in google-dhclient-script
+- from version 20260617.00
+  * Enable SR-IOV for specific Intel PCI devices.
+- from version 20260521.00
+  * Set max queue count for IDPF devices; remove broken virtio logic
+
+-------------------------------------------------------------------
 Mon May  4 09:19:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260428.00
