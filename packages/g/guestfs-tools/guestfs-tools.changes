@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul  9 10:47:49 MDT 2026 - carnold@suse.com
+
+- Update to version 1.56.0
+  mlcustomize: Drop setfiles -F flag
+  mlcustomize/inject_virtio_win.ml: Rewrite qemu-ga firstboot using {| |}
+  mlcustomize/inject_virtio_win.ml: Abstract $msi and $logfile
+  mlcustomize/inject_virtio_win.ml: Retry qemu-ga installation
+  customize: Document location of Windows sentinel file
+
+-------------------------------------------------------------------
 Thu May 21 09:22:14 MDT 2026 - carnold@suse.com
 
 - Update to version 1.55.8 (jsc#PED-14625)
