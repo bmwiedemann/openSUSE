@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:54:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-opentelemetry-semantic-conventions-ai 0.5.1
+  * OpenTelemetry semantic-convention extension defining extra span
+    attributes, metrics and enums for tracing generative-AI/LLM apps
