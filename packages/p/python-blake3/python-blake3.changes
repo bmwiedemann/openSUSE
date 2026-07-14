@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Sun Jul 12 19:10:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-blake3 1.0.9
+  * Python bindings for the official Rust BLAKE3 cryptographic hash

@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>32a3bd98188b9215b9d6168c0ec2a77f</srcmd5>
+    <version>1.0.9</version>
+    <time>1784029835</time>
+    <user>dimstar_suse</user>
+    <comment>New package: Python bindings for the BLAKE3 cryptographic hash function; runtime dependency for python-vllm.</comment>
+    <requestid>1365439</requestid>
+  </revision>
+</revisionlist>
