@@ -1,4 +1,5 @@
 <package name="gtk4-layer-shell" project="openSUSE:Factory">
   <title></title>
   <description>Library to create panels and other desktop components for Wayland using the Layer Shell protocol and GTK4</description>
+  <devel project="X11:Wayland" package="gtk4-layer-shell"/>
 </package>

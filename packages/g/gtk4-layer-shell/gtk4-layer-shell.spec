@@ -1,7 +1,7 @@
 #
 # spec file for package gtk4-layer-shell
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname lib%{name}0
 Name:           gtk4-layer-shell
-Version:        1.2.0+git2.df49531
+Version:        1.3.0+git21.cbfdd73
 Release:        0
 Summary:        Library to create desktop components for Wayland with GTK4
 License:        MIT
