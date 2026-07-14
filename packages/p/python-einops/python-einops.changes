@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:53:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-einops 0.8.2
+  * Flexible and readable tensor operations (rearrange, reduce, repeat)
+    for numpy, pytorch, tensorflow, jax and other array frameworks
