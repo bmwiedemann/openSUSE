@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 13:11:51 UTC 2026 - Jesús Bermúdez Velázquez <jesus.bv@suse.com>
+
+- Update to version 1.1.1 (bsc#1269423)
+  + Fix UnboundLocalError when using --xml with --query
+  + Update comment
+
+-------------------------------------------------------------------
 Wed Jan 28 19:19:51 UTC 2026 - Sean Marlow <sean.marlow@suse.com>
 
 - Update to version 1.1.0 (jsc#PCT-590, jsc#PED-8945)
