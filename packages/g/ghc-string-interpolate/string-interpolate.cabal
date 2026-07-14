@@ -2,7 +2,7 @@ cabal-version: 1.18
 
 name:           string-interpolate
 version:        0.3.4.0
-x-revision: 6
+x-revision: 7
 synopsis:       Haskell string/text/bytestring interpolation that just works
 description:    Unicode-aware string interpolation that handles all textual types.
                 .
@@ -75,7 +75,7 @@ library
       , bytestring <0.13
       , text <2.2
       , split <0.3
-      , haskell-src-exts <1.24
+      , haskell-src-exts <1.25
       , haskell-src-meta <0.9
       , template-haskell <2.25
       , text-conversions <0.4
