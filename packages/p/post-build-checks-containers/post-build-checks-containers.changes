@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jun 21 08:19:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update for new NeuVector code (bsc#1268574)
+
+-------------------------------------------------------------------
 Sun Nov 23 15:32:37 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - scan the generated container, not base containers

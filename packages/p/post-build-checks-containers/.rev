@@ -19,4 +19,12 @@
 - rename clamav output to clamav_vuln.intoto.json</comment>
     <requestid>1319766</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>b601537c205255ae699e6b6de1dc85e7</srcmd5>
+    <version>0.1</version>
+    <time>1784029663</time>
+    <user>dimstar_suse</user>
+    <comment>- update for new NeuVector code (bsc#1268574)</comment>
+    <requestid>1365344</requestid>
+  </revision>
 </revisionlist>
