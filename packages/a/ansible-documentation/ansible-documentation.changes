@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:17:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.2:
+  * Add note about role argument_specs coercion (#3803) (#3810)
+  * removed orphan pages - I (#3754) (#3786)
+  * Add the Ansible community 13.8.0 porting guide (#3781) (#3784)
+  * Add the Ansible community 14.1.0 porting guide (#3780) (#3783)
+  * dev_guide: Fix link (#3742) (#3779)
+  * Review requests (#3472) (#3775)
+
+-------------------------------------------------------------------
+Fri Jun 19 05:29:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.1:
+  * dev_guide: Fix link (#3742) (#3779)
+  * Review requests (#3472) (#3775)
+  * get_started_inventory.rst: fix small typo (#3769) (#3772)
+  * ci: refresh dev dependencies (#3766)
+  * ci: refresh dev dependencies (#3761)
+  * fix(getting_started_ee): remove unnecessary become from EE
+    examples (#3737) (#3751)
+  * ci: refresh dev dependencies (#3745)
+  * Add PowerShell 7 documentation (#3692) (#3741)
+  * Add note to roadmap index pointing to devel branch for upcoming
+    releases (#3660) (#3740)
+  * updated documentation for networking collections (#3722)
+    (#3733)
+  * chore: remove stable-2.19 note from banner (#3725) (#3730)
+  * chore: remove banner about Red Hat Summit (#3726) (#3728)
+  * ci: refresh dev dependencies (#3716)
+  * Add the Ansible community 14 porting guide (#3723) (#3724)
+  * Add warning about module_utils import restriction (#3668)
+    (#3715)
+  * ansible-galaxy: update skeleton_ignore parameter docs (#3470)
+    (#3712)
+  * Add multi-parent metagroup example and clarify group_vars
+    inheritance (#3493) (#3708)
+  * Add 'module' in 'The crypt _module_ is used' (#3675) (#3710)
+  * Add note on Collection Testing with ansible-test (#3654)
+    (#3702)
+  * Document expected --start-at-task behavior (#3589) (#3704)
+  * Fix minor grammar mistakes and typos (#3667) (#3699)
+  * Add the Ansible community 14.0.0rc1 porting guide (#3694)
+    (#3695)
+  * ci: refresh dev dependencies (#3688)
+  * Add the Ansible community 14.0.0b1 porting guide (#3685)
+    (#3686)
+  * Update style_guide, add AGENTS.md file. Assisted-by: Claude
+    Opus, Gemini (#3662) (#3684)
+  * Add the Ansible community 13.7.0 porting guide (#3677) (#3679)
+
+-------------------------------------------------------------------
 Tue May 19 12:03:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.0:

@@ -303,4 +303,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355192</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>c742c9407681fbae5e84f13e3301652e</srcmd5>
+    <version>2.21.1</version>
+    <time>1781879837</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360465</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>44409c0b0446d75a46080fbe9a424b75</srcmd5>
+    <version>2.21.2</version>
+    <time>1784029893</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365473</requestid>
+  </revision>
 </revisionlist>

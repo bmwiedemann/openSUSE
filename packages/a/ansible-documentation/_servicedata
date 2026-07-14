@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/ansible/ansible-documentation</param>
-              <param name="changesrevision">aae9ad5e41d13c8cc2eb327d161c9874cb13d322</param></service></servicedata>
+              <param name="changesrevision">24dc86db4bb88b47a8f4f12e35f32508510ce69d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/ansible/ansible-documentation.git</param>
+              <param name="changesrevision">9c065609c8e15db88b41cff07462f8ef25c6795a</param></service></servicedata>
