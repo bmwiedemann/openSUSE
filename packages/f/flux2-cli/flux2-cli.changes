@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:05:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.9.2:
+  Flux v2.9.2 is a patch release. The main fix addresses a
+  regression introduced in v2.9.1 where a Kustomization with
+  openapi.path pointing to a URL failed to reconcile with failed to
+  read OpenAPI schema. This release also corrects several CRD field
+  descriptions that contained inaccurate or leaked content. Users
+  are encouraged to upgrade for the best experience.
+  * Components changelog
+    - source-controller v1.9.3
+    - kustomize-controller v1.9.3
+    - helm-controller v1.6.2
+    - notification-controller v1.9.2
+    - image-reflector-controller v1.2.3
+    - image-automation-controller v1.2.3
+    - source-watcher v2.2.2
+  * CLI changelog
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5984
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #5990
+    - Update toolkit components by @fluxcdbot in #5994
+
+-------------------------------------------------------------------
 Wed Jul 08 06:03:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.1:
