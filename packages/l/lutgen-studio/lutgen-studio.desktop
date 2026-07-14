@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Lutgen Studio
+Comment=GUI for LUT generation and palette editing
+Exec=lutgen-studio
+Icon=lutgen
+Terminal=false
+Type=Application
+Categories=Graphics;Utility;

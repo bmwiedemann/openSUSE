@@ -1,0 +1,20 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="url">https://github.com/ozwaldorf/lutgen-rs.git</param>
+		<param name="scm">git</param>
+		<param name="revision">lutgen-studio-v0.4.0</param>
+		<param name="match-tag">lutgen-studio-v*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+		<param name="versionrewrite-pattern">lutgen-studio-v(.*)</param>
+		<param name="changesgenerate">enable</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="cargo_vendor" mode="manual">
+		<param name="srcdir">lutgen-rs-*</param>
+		<param name="update">true</param>
+	</service>
+</services>
