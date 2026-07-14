@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:11:04 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260714.d9bb736:
+  * tukit: do not fail if service is not found
+
+-------------------------------------------------------------------
 Mon Jul 13 08:05:45 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260713.d869cf8:
