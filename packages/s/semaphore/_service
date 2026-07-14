@@ -3,7 +3,7 @@
     <param name="url">https://github.com/ansible-semaphore/semaphore.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">refs/tags/v2.18.25</param>
+    <param name="revision">refs/tags/v2.18.26</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

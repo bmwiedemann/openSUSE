@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:34:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.26:
+  * feat(auth): verify current password to fix CWE-620
+
+-------------------------------------------------------------------
 Fri Jul 10 05:44:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.25:
