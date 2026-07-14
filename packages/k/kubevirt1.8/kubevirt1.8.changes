@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 10 17:05:24 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Only build the manifests package and kubevirt containers meta
+  service for Tumbleweed
+
+-------------------------------------------------------------------
 Fri Jun 19 11:15:20 UTC 2026 - victor.carvalho@suse.com
 
 - Provide/Obsolete the dashed kubevirt-1.8-* subpackages in addition to
