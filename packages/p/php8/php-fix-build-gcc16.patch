@@ -1,0 +1,102 @@
+From 39c678215ce605817937d29c095ec9a880742b0a Mon Sep 17 00:00:00 2001
+From: Yuriy Azorsky <yura224k@gmail.com>
+Date: Fri, 5 Jun 2026 00:38:48 +0300
+Subject: [PATCH] Fix GH-22206: [opcache] avoid musttail in zend_runtime_jit()
+ (GCC 16)
+
+---
+ .github/workflows/opcache-tailcall-vm.yml | 64 +++++++++++++++++++++++
+ ext/opcache/jit/zend_jit.c                |  8 +++
+ 2 files changed, 72 insertions(+)
+ create mode 100644 .github/workflows/opcache-tailcall-vm.yml
+
+diff --git a/.github/workflows/opcache-tailcall-vm.yml b/.github/workflows/opcache-tailcall-vm.yml
+new file mode 100644
+index 000000000000..bec874fce95a
+--- /dev/null
++++ b/.github/workflows/opcache-tailcall-vm.yml
+@@ -0,0 +1,64 @@
++# Regression guard for the opcache JIT tail-call VM build.
++#
++# When global register variables are unavailable but musttail is, opcache is
++# built with ZEND_VM_KIND_TAILCALL (see Zend/zend_vm_opcodes.h). In that mode
++# ZEND_OPCODE_RETURN() expands to a guaranteed tail call (ZEND_MUSTTAIL). A
++# function that uses setjmp() (e.g. zend_runtime_jit() via zend_try()) must not
++# perform such a tail call; GCC 16 diagnoses this as
++#   error: cannot tail-call: caller uses setjmp
++# and the build fails (php-src issues #21960 and #22206).
++#
++# This job forces the tail-call VM via --disable-gcc-global-regs and compiles
++# opcache, so the otherwise-uncovered TAILCALL path is exercised on every run.
++# NOTE: the error is only emitted by compilers that enforce it (GCC >= 16).
++# On older GCC / Clang this job still builds the path but will not turn red,
++# so point `cc` at a GCC 16+ toolchain to get full regression coverage.
++name: opcache tail-call VM build
++
++on:
++  pull_request:
++    paths:
++      - 'ext/opcache/**'
++      - 'Zend/zend_vm_opcodes.h'
++      - 'Zend/zend_vm_execute.h'
++      - 'Zend/zend_portability.h'
++      - '.github/workflows/opcache-tailcall-vm.yml'
++  workflow_dispatch:
++
++permissions:
++  contents: read
++
++jobs:
++  TAILCALL_VM:
++    name: LINUX_X64_TAILCALL_VM
++    runs-on: ubuntu-24.04
++    steps:
++      - name: git checkout
++        uses: actions/checkout@v4
++      - name: apt
++        run: |
++          sudo apt-get update
++          sudo apt-get install -y \
++            autoconf bison re2c pkg-config \
++            libxml2-dev libsqlite3-dev
++      - name: System info
++        run: cc --version
++      - name: ./buildconf
++        run: ./buildconf --force
++      - name: ./configure
++        # --disable-gcc-global-regs drops HYBRID; with musttail available on
++        # x86_64 this selects ZEND_VM_KIND_TAILCALL, the path that broke under
++        # GCC 16. JIT must stay enabled so ext/opcache/jit/zend_jit.c is built.
++        run: |
++          ./configure \
++            --enable-option-checking=fatal \
++            --disable-all \
++            --enable-opcache \
++            --enable-cli \
++            --disable-gcc-global-regs
++      - name: make
++        run: make -j$(nproc)
++      - name: Verify tail-call VM was actually built
++        run: |
++          ./sapi/cli/php --ri opcache > /dev/null
++          ./sapi/cli/php -r 'echo PHP_VERSION, PHP_EOL;'
+diff --git a/ext/opcache/jit/zend_jit.c b/ext/opcache/jit/zend_jit.c
+index 5de9c81484ba..9a94532347fa 100644
+--- a/ext/opcache/jit/zend_jit.c
++++ b/ext/opcache/jit/zend_jit.c
+@@ -3138,7 +3138,15 @@ static ZEND_OPCODE_HANDLER_RET ZEND_OPCODE_HANDLER_FUNC_CCONV zend_runtime_jit(Z
+ 	return; // ZEND_VM_CONTINUE
+ #else
+ 	opline = orig_opline;
++# if ZEND_VM_KIND == ZEND_VM_KIND_TAILCALL
++	/* This function uses setjmp() via zend_try(), so a guaranteed tail call
++	 * (ZEND_MUSTTAIL, as used by ZEND_OPCODE_RETURN() in the tail-call VM) is
++	 * not allowed here and is rejected by GCC 16. As this is a cold one-shot
++	 * JIT trigger rather than a hot VM handler, a plain call is fine. */
++	return ((zend_vm_opcode_handler_t)opline->handler)(ZEND_OPCODE_HANDLER_ARGS_PASSTHRU);
++# else
+ 	ZEND_OPCODE_RETURN();
++# endif
+ #endif
+ }
+ 

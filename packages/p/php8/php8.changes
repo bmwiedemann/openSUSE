@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 10 16:11:27 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- fix build with GCC 16 (gh#php/php-src#22206) [boo#1267259]
+- added patch
+  + php-fix-build-gcc16.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 11:47:59 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- use system liburiparser [bsc#1270538] [bsc#1270539]
+
+-------------------------------------------------------------------
+Fri Jul  3 10:17:17 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.5.8 (CVE-2026-14355 [bsc#1270351])
+    CLI:
+        Fixed bug GH-21901 (Stale getopt() optional value).
+   Date:
+      Fixed bug GH-18422 (int overflow in php_date_llabs).
+   DOM:
+      Fixed bug GH-22077 (UAF in custom XPath function).
+   Opcache:
+      Fixed tracing JIT crash when a VM interrupt is handled during an observed user function call.
+      Fixed bug GH-21746 (Segfault with tracing JIT).
+      Fixed bug GH-22004 (Assertion failure at ext/opcache/jit/zend_jit_trace.c).
+      Fixed tailcall VM crash when a VM interrupt is handled from a VM helper.
+   OpenSSL:
+      Fix compatibility issues with OpenSSL 4.0.
+   Standard:
+      Fixed bug GH-21689 (version_compare() incorrectly handles versions ending with a dot).
+   URI:
+      Fixed CVE-2026-44927 (In uriparser before 1.0.2, there is pointer difference truncation to int in various places). (CVE-2026-44927)
+      Fixed CVE-2026-44928 (In uriparser before 1.0.2, the function family EqualsUri can misclassify two unequal URIs as equal). (CVE-2026-44928)
+- Revert changes for building with GCC 16
+
+-------------------------------------------------------------------
 Thu Jun  4 18:37:02 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.5.7
@@ -99,6 +135,7 @@ Thu May  7 19:08:59 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-6104 [bsc#1264777]
         CVE-2026-6735 [bsc#1264775]
         CVE-2026-7262 [bsc#1264771]
+        CVE-2026-12184 [bsc#1270712]
 
 -------------------------------------------------------------------
 Tue Apr 21 17:29:13 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>

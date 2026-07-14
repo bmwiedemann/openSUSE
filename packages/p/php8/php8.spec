@@ -57,7 +57,7 @@
 %bcond_without	sodium
 
 Name:           %{pprefix}%{php_name}%{psuffix}
-Version:        8.5.7
+Version:        8.5.8
 Release:        0
 Summary:        Interpreter for the PHP scripting language version 8
 License:        MIT AND PHP-3.01
@@ -93,6 +93,8 @@ Patch5:         php-systemd-unit.patch
 Patch22:        php-date-regenerate-lexers.patch
 # PATCH-FEATURE-UPSTREAM https://github.com/php/php-src/pull/6564
 Patch19:        php-build-reproducible-phar.patch
+# PATCH-FIX-OPENSUSE https://github.com/php/php-src/issues/22206
+Patch20:        php-fix-build-gcc16.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  autoconf
 BuildRequires:  bison
@@ -139,6 +141,9 @@ BuildRequires:  pkgconfig(libedit)
 BuildRequires:  pkgconfig(libffi) >= 3.0.11
 BuildRequires:  pkgconfig(libpcre2-8) >= 10.30
 BuildRequires:  pkgconfig(libsasl2)
+%if 0%{suse_version} >= 1610
+BuildRequires:  pkgconfig(liburiparser)
+%endif
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(libxslt) >= 1.1.0
 BuildRequires:  pkgconfig(libzip) >= 0.11
@@ -259,6 +264,9 @@ Requires:       pkgconfig(capstone)
 Requires:       pkgconfig(libpcre2-8) >= 10.30
 Requires:       pkgconfig(libxml-2.0) >= 2.9.0
 Requires:       pkgconfig(tinfo)
+%if 0%{suse_version} >= 1610
+Requires:       pkgconfig(liburiparser)
+%endif
 %if %{with argon2}
 Requires:       pkgconfig(libargon2)
 %endif
@@ -1063,6 +1071,7 @@ Build()
     sapi=$1
     shift
     %configure \
+        --disable-gcc-global-regs \
         --datadir=%{_datadir}/%{php_name} \
         --with-libdir=%{_lib} \
         --includedir=%{_includedir} \
@@ -1084,6 +1093,9 @@ Build()
         --enable-re2c-cgoto \
         --with-system-tzdata=%{_datadir}/zoneinfo \
         --with-external-libcrypt \
+%if 0%{suse_version} >= 1610
+        --with-external-uriparser \
+%endif
         --with-mhash \
         --disable-phpdbg \
 %if %{with argon2}
