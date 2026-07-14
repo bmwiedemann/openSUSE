@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:41:02 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix build with Nettle 4.0 [be1caa2d] (bsc#1257934)
+  * Upstream PR in #2358
+  * Add aria2-Fix-build-with-nette4.patch
+
+-------------------------------------------------------------------
 Mon Nov 20 15:04:16 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.37.0

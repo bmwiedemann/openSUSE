@@ -1,7 +1,7 @@
 #
 # spec file for package aria2
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,11 @@ Name:           aria2
 Version:        1.37.0
 Release:        0
 Summary:        Parallelizing Multi-Protocol Utility for Downloading Files
-License:        SUSE-GPL-2.0-with-openssl-exception
+License:        LicenseRef-SUSE-GPL-2.0-with-openssl-exception
 URL:            https://aria2.github.io
 Source0:        https://github.com/aria2/aria2/releases/download/release-%{version}/%{name}-%{version}.tar.xz
+#PATCH-FIX-UPSTREAM bsc#1257934 Fix build with Nettle 4.0
+Patch0:         aria2-Fix-build-with-nette4.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)
@@ -79,7 +81,7 @@ implemented in a single-thread model.
 This package contains development files for its shared library.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure \

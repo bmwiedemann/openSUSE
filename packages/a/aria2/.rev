@@ -802,4 +802,12 @@ SPDX format for this license - which has an openssl exception (forwarded request
     <comment></comment>
     <requestid>1127870</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>145d47f9c0cc717ff9f63ecf894a3107</srcmd5>
+    <version>1.37.0</version>
+    <time>1784030082</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365619</requestid>
+  </revision>
 </revisionlist>
