@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 13 14:34:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.11.0
+  * Strict builds are now the default behavior.
+  * UI packages can now explicitly say if systemd and/or openrc
+    are supported (previously they could only set the default).
+  * Default to 512MB for /boot (previously 256 MiB).
+  * 32-bit capable aarch64 CPUs can now compile armhf packages
+    natively.
+  * Improved rust cross compilation.
+  * Lots of fixes and maintenance improvements.
+
+-------------------------------------------------------------------
 Thu May 21 12:23:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.10.3
