@@ -812,4 +812,12 @@ on CentOS, Fedora, and RHEL systems.</comment>
     <comment></comment>
     <requestid>1364362</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>19a234e15d8dc7e63f5f2c1eea8f0ab0</srcmd5>
+    <version>7.7</version>
+    <time>1784029497</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1364958</requestid>
+  </revision>
 </revisionlist>

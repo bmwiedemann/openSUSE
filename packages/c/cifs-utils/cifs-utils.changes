@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 10 14:40:35 UTC 2026 - Enzo Matsumiya <ematsumiya@suse.com>
+
+- Update cifs-utils to 7.7:
+  * cifs.upcall: fix regression with krb5 + creduid
+  * cifs.upcall: Avoid int overflow after year 2038
+  * mount.cifs: fix const correctness in parse_options
+  * cifs.upcall: fix compiler warning with -Wvla
+  * smbinfo: parse action and filename from change notifications
+
+-------------------------------------------------------------------
 Thu Jun 25 13:25:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing dependencies for "modern" distros (>= SLE-16).
