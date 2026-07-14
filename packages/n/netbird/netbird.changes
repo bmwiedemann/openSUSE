@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 11 12:23:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.4
+  - [management] fix: prevent reverse proxy domain from being
+    pushed as DNS search domain by @blaugrau90 in #6498
+  - [client] Recover from rosenpass key desync by @lixmal in #6714
+  - [client] Bump golang.org/x/crypto to v0.54.0 by @lixmal in
+    #6709
+
+-------------------------------------------------------------------
 Wed Jul  8 19:08:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.74.3
