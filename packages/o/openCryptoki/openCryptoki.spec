@@ -234,6 +234,12 @@ cat >> %{buildroot}%{_prefix}/lib/tmpfiles.d/opencryptoki.conf <<EOF
 d /var/log/opencryptoki 0770 root pkcs11 - -
 L+ /etc/pkcs11 - - - - /var/lib/opencryptoki
 EOF
+# Install a systemd service drop-in to open up sandboxed write paths for immutable mode
+mkdir -p %{buildroot}%{_unitdir}/pkcsslotd.service.d
+cat > %{buildroot}%{_unitdir}/pkcsslotd.service.d/10-immutable-paths.conf <<EOF
+[Service]
+ReadWritePaths=/var/lib/opencryptoki/ /var/lock/opencryptoki/
+EOF
 
 # Remove manual directory creation in %%install that belongs in /var
 rm -rf %{buildroot}%{_localstatedir}/lib/opencryptoki
@@ -333,6 +339,8 @@ cd -
 %endif
 %{_sbindir}/p11sak
 %{_unitdir}/pkcsslotd.service
+%dir %{_unitdir}/pkcsslotd.service.d
+%{_unitdir}/pkcsslotd.service.d/10-immutable-paths.conf
 %{_tmpfilesdir}/opencryptoki.conf
 %{_sbindir}/rcpkcsslotd
   # utilities

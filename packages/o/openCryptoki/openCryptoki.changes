@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:05:04 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Ammended the .spec file (bsc#1268745)
+- Fixed pkcsslotd directory creation failures on immutable/transactional systems:
+  * Added systemd service drop-in to allow dynamic token slot path creation 
+    (e.g., icatok_X) via ReadWritePaths. 
+
+-------------------------------------------------------------------
 Mon Jun 22 15:09:34 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Updated the .spec file (bsc#126874)
