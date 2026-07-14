@@ -179,7 +179,7 @@ BuildRequires:  cmake(manifold)
 BuildRequires:  cmake(OpenImageDenoise)
 %endif
 BuildRequires:  cmake(TBB)
-BuildRequires:  cmake(Tiff)
+BuildRequires:  (cmake(tiff) or cmake(Tiff))
 BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(epoxy)
