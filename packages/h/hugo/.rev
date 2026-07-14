@@ -2014,4 +2014,13 @@
   * releaser: Prepare repository for 0.164.0-DEV (forwarded request 1364133 from jfkw)</comment>
     <requestid>1364134</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>b71b55080c2e6daccc1a99fad4344a87</srcmd5>
+    <version>0.164.0</version>
+    <time>1784029742</time>
+    <user>dimstar_suse</user>
+    <comment>- Add AND MPL-2.0 to main license tag to cover
+  the vendored hashicorp/golang-lru dependency (forwarded request 1365295 from lkocman)</comment>
+    <requestid>1365388</requestid>
+  </revision>
 </revisionlist>

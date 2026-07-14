@@ -20,7 +20,7 @@ Name:           hugo
 Version:        0.164.0
 Release:        0
 Summary:        Static website generator written in Go
-License:        Apache-2.0
+License:        Apache-2.0 AND MPL-2.0
 Group:          System/Management
 URL:            https://github.com/gohugoio/hugo
 Source:         %{name}-%{version}.tar.gz

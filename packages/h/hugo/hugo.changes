@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:39:18 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add AND MPL-2.0 to main license tag to cover
+  the vendored hashicorp/golang-lru dependency
+
+-------------------------------------------------------------------
 Mon Jul 06 21:09:09 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.164.0:
