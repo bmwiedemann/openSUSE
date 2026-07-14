@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:10:40 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 14.3
+  * dh_shlibdeps: fix off-by-one in compat check and migrate
+    to `dpkg`'s `--package` option. Thanks to Sven Joachim <svenjoac@gmx.de>
+    (Closes: #1141433)
+  * debhelper.pod: Explicitly mention that a global `DH_COMPAT` is not
+    recommended. Thanks to Nilesh Patra <nilesh@debian.org>
+  * Test autoscripts templates with shellcheck in `debhelper`'s own
+    test suite
+
+-------------------------------------------------------------------
 Thu Jul  2 11:18:44 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 14.2

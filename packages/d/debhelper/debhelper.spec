@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        14.2
+Version:        14.3
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ Patch0:         debhelper-no-localized-manpages.patch
 Patch1:         debhelper-pod2man-no-utf8.patch
 # PATCH-FIX-UPSTREAM debhelper-fix-perl-version-requirement.patch https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1001403
 Patch2:         debhelper-fix-perl-version-requirement.patch
+BuildRequires:  ShellCheck
 BuildRequires:  dpkg-devel >= 1.18
 BuildRequires:  perl-Test-Pod
 Requires:       dh-autoreconf >= 17
