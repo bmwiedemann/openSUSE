@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 11 23:55:25 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Fix backend plugin path to align with what openvino seems to
+  expect: /lib64/openvino-%{version}/*.so
+- Added intel-opencl as runtime requirement for gpu-plugin
+
+-------------------------------------------------------------------
+Sat Jul 11 08:26:32 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to 2026.2.1
+  * Fixed issue where YOLO26 fails to compile on GPU
+  * Resolved an issue in NPU plugin with shared L0 command queue
+    causing violation of app/inference priorities
+
+-------------------------------------------------------------------
 Wed Jun  3 10:01:44 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2026.2.0

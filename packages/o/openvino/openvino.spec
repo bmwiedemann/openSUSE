@@ -1,7 +1,6 @@
 #
 # spec file for package openvino
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2024 Alessandro de Oliveira Faria (A.K.A. CABELO) <cabelo@opensuse.org> or <alessandro.faria@owasp.org>
 #
@@ -32,13 +31,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2620
+%define so_ver 2621
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2026.2.0
+Version:        2026.2.1
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -200,6 +199,7 @@ This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 
 %package -n %{name}-intel-gpu-plugin
 Summary:        Intel GPU plugin for OpenVINO toolkit
+Requires:       intel-opencl
 
 %description -n %{name}-intel-gpu-plugin
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
@@ -383,43 +383,43 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %{_libdir}/libopenvino_c.so.*
 
 %files -n %{name}-auto-batch-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_auto_batch_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_auto_batch_plugin.so
 
 %files -n %{name}-auto-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_auto_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_auto_plugin.so
 
 %ifarch %{x86_64}
 %files -n %{name}-intel-cpu-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_intel_cpu_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_intel_cpu_plugin.so
 
 %files -n %{name}-intel-gpu-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/cache.json
-%{_libdir}/%{prj_name}/libopenvino_intel_gpu_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/cache.json
+%{_libdir}/%{name}-%{version}/libopenvino_intel_gpu_plugin.so
 
 %files -n %{name}-intel-npu-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_intel_npu_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_intel_npu_plugin.so
 %endif
 
 %ifarch %{arm64}
 %files -n %{name}-arm-cpu-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_arm_cpu_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_arm_cpu_plugin.so
 %endif
 
 %ifarch riscv64
 %files -n %{name}-riscv-cpu-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_riscv_cpu_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_riscv_cpu_plugin.so
 %endif
 
 %files -n %{name}-hetero-plugin
-%dir %{_libdir}/%{prj_name}
-%{_libdir}/%{prj_name}/libopenvino_hetero_plugin.so
+%dir %{_libdir}/%{name}-%{version}
+%{_libdir}/%{name}-%{version}/libopenvino_hetero_plugin.so
 
 %files -n lib%{name}_onnx_frontend%{so_ver}
 %{_libdir}/libopenvino_onnx_frontend.so.*

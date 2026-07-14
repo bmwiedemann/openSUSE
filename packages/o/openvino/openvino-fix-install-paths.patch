@@ -40,7 +40,7 @@ diff -uNr openvino-2024.6.0.orig/cmake/developer_package/packaging/archive.cmake
 +        set(OV_CPACK_ARCHIVEDIR ${CMAKE_INSTALL_LIBDIR})
      endif()
 -    set(OV_CPACK_PLUGINSDIR ${OV_CPACK_RUNTIMEDIR})
-+    set(OV_CPACK_PLUGINSDIR ${OV_CPACK_RUNTIMEDIR}/${PROJECT_NAME})
++    set(OV_CPACK_PLUGINSDIR ${OV_CPACK_RUNTIMEDIR}/openvino-${OpenVINO_VERSION})
 +
  endmacro()
  
