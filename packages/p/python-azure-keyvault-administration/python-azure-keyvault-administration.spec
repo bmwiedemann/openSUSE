@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 4.8.0b1
+%define realversion 4.8.0b2
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-keyvault-administration
-Version:        4.8.0~b1
+Version:        4.8.0~b2
 Release:        0
 Summary:        Microsoft Azure Key Vault Administration Client Library for Python
 License:        MIT
