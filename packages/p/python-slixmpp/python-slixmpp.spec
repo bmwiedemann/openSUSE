@@ -20,7 +20,7 @@ Name:           python-slixmpp
 Version:        1.16.0
 Release:        0
 Summary:        Python XMPP (Jabber) Library that Implements Everything as a Plugin
-License:        MIT
+License:        MIT AND MPL-2.0
 URL:            https://slixmpp.readthedocs.io/
 Source:         https://codeberg.org/poezio/slixmpp/archive/slix-%{version}.tar.gz
 Source1:        vendor.tar.zst
