@@ -1,7 +1,7 @@
 #
 # spec file for package gccmakedep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,15 @@
 
 
 Name:           gccmakedep
-Version:        1.0.4
+Version:        1.0.5
 Release:        0
 Summary:        Utility to list the resource database of an X application
 License:        MIT
 Group:          Development/Tools/Building
 URL:            https://xorg.freedesktop.org/
 Source0:        https://www.x.org/releases/individual/util/%{name}-%{version}.tar.xz
+BuildRequires:  meson >= 0.60.0
+BuildRequires:  ninja
 # This was part of the xorg-x11-util-devel package up to version 7.6
 Conflicts:      xorg-x11-util-devel <= 7.6
 BuildArch:      noarch
@@ -37,15 +39,15 @@ which object files must be recompiled when a dependency has changed.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
-%doc ChangeLog
+%doc ChangeLog README.md
 %{_bindir}/gccmakedep
 %{_mandir}/man1/gccmakedep.1%{?ext_man}
 

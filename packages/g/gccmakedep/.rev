@@ -70,4 +70,20 @@
   * autogen.sh: use exec instead of waiting for configure to finish</comment>
     <requestid>1154349</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8b344117b59fc57421ecb4f9cd3b70c4</srcmd5>
+    <version>1.0.5</version>
+    <time>1784029577</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.5
+  * gccmakedep.1: Some editorial changes for this man page
+  * Improve man page formatting
+  * gccmakedep.in: add license into header
+  * add COPYING file
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * meson: Add option to build with meson
+- Switch to meson build</comment>
+    <requestid>1365284</requestid>
+  </revision>
 </revisionlist>

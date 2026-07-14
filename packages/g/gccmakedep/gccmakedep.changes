@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 13 10:00:58 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.5
+  * gccmakedep.1: Some editorial changes for this man page
+  * Improve man page formatting
+  * gccmakedep.in: add license into header
+  * add COPYING file
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * meson: Add option to build with meson
+- Switch to meson build
+
+-------------------------------------------------------------------
 Sun Mar  3 03:39:23 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.4
