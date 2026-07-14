@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Sun Jul 12 14:05:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-pydantic-extra-types 2.11.1
+- Provides extra Pydantic 2 field types and validators (colors,
+  coordinates, country/currency codes, phone numbers, payment card
+  numbers, MAC addresses, semantic versions and more)

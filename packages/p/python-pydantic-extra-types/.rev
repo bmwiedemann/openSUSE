@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>21d5b9c673b1379625870425d0e011c7</srcmd5>
+    <version>2.11.1</version>
+    <time>1784029603</time>
+    <user>dimstar_suse</user>
+    <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
+    <requestid>1365175</requestid>
+  </revision>
+</revisionlist>
