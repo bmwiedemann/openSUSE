@@ -34,7 +34,7 @@
 
 %define _name   ibus
 Name:           %{_name}%{?nsuffix}
-Version:        1.5.33
+Version:        1.5.34
 Release:        0
 Summary:        The "Intelligent Input Bus" input method
 License:        LGPL-2.1-or-later

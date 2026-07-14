@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sun Jul 12 03:33:32 UTC 2026 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.34
+
+- Upstream update to 1.5.34
+  * no source changes from 1.5.34-rc2
+  * replace a tar artifact with the released one
+
+-------------------------------------------------------------------
+Mon Apr 20 14:13:47 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.5.34-rc2(1.5.33.92)
+  * Enhance panel --enable-wayland-im option without daemon
+  * Enhance mouse position in Emojier category list
+  * Enhance Emoji and Unicode notifications
+  * Show Emoji annotations in GNOME
+  * Refer QT_IM_MODULES to check Wayland configuration
+  * Support input purpose and hints in ibus-wayland
+  * Update simple.xml with xkeyboard-config 2.46
+  * Fix locale compose features
+  * Fix Backspace after commit-text in Ghostty
+  * Fix "no memory" error with focus changes in Sway
+  * Fix latch key in Latvian(tilde) keymap in ibus-wayland
+  * Fix memory leaks
+  * Fix SEGV in ibus-x11
+  * Fix Panel bugs
+  * Fix build issues
+  * Replace ibus-daemon with ibus start in Github issue templace
+  * IBus Wayland panel can run without --exec-daemon option for the debugging purpose
+  * Follow mouse cursor in Emojier category list
+  * Enhance the order of the loading locale compose file
+  * Support to delete surrounding text feature with the Wayland input-method protocol
+  * Add IBUS_INPUT_HINT_HIDDEN_TEXT
+  * Enhance the pre-edit text in GNOME-Shell password including GDM
+  * Show Emoji annotations in the candidate popup in GNOME
+  * Update translators
+- Refresh setup-switch-im.patch
+
+-------------------------------------------------------------------
 Mon Jan 19 02:51:42 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update ibus.spec to get rid of update-desktop-files:
