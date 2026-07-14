@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Sun Jul 12 13:54:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-depyf 0.20.0
+  * Decompiler that turns Python bytecode back into readable source
+    code, aimed at understanding and debugging torch.compile output
+  * Add depyf-no-git-in-build.patch: do not fail metadata
+    generation when git is unavailable in the build environment

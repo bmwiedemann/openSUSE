@@ -1,0 +1,22 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Do not fail metadata generation when git is unavailable
+Upstream: https://github.com/thuml/depyf/pull/94
+
+setup.py's get_version() shells out to `git rev-parse HEAD` to append a
+commit id to the version. In a source-tarball build (no git binary, no
+repository) the subprocess raises FileNotFoundError, which the handler
+does not catch, aborting metadata generation. Catch it alongside
+CalledProcessError so the clean release version from depyf/VERSION.txt
+is used.
+
+--- a/setup.py
++++ b/setup.py
+@@ -11,7 +11,7 @@
+         # Decode bytes to string (Python 3.x)
+         commit_id = commit_id.decode('utf-8')
+         return commit_id[:n_digits]
+-    except subprocess.CalledProcessError as e:
++    except (subprocess.CalledProcessError, FileNotFoundError) as e:
+         print("Failed to get Git commit ID:", e)
+         return None
+ 
