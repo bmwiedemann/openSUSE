@@ -43,15 +43,13 @@
 %endif
 
 Name:           ansible-core
-Version:        2.21.0
+Version:        2.21.2
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/ansible_core-%{version}.tar.gz#/ansible_core-%{version}.tar.gz
 Source1:        ansible_core-%{version}.tar.gz.sha256
-# CVE-2026-11332 (bsc#1267822): argument injection in ansible-galaxy role install
-Patch0:         ansible-core-CVE-2026-11332.patch
 BuildArch:      noarch
 
 # cannot be installed with ansible < 3 or ansible-base

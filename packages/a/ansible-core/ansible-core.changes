@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:15:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.21.2:
+  * Minor Changes
+    - ansible-test - Added a timeout callback that dumps thread
+      stacks when the test execution deadline defined by
+      ansible-test env --timeout is approaching.
+    - parallel fact gathering - the async wrapper now considers the
+      timeout when determining whether to kill the process running
+      the module. Previously, a 5 second sleep occurred twice
+      before checking if the job had remaining time.
+  * Bugfixes
+    - encrypt - fix bcrypt salt string formatting on musl libc by
+      ensuring it is always zero-padded to 2 digits (#87180).
+    - parallel fact gathering - fix hang caused by corrupt async
+      job files.
+
+-------------------------------------------------------------------
+Fri Jun 19 05:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.21.1:
+  * Security Fixes
+    - ansible-galaxy install - Ensure role requirements are passed
+      as positional arguments to :command:`git clone`. Previously,
+      a malicious role author could inject arbitrary git
+      configuration in role dependencies. (CVE-2026-11332)
+    - psrp - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+    - winrm - Do not log raw stdout/stderr on verbosity 5 when task
+      has no_log: true set
+  * Bugfixes
+    - cli - handle empty value for PAGER (#86898).
+    - config - use correct key value for inject_invocation setting
+      (#86999).
+    - free strategy - Fix IndexError when hosts become unreachable
+      during playbook execution (#87027).
+    - meta pseudo-action - Fixed callback args passed to
+      v2_runner_on_skipped when any meta action was skipped by a
+      when condition; added test coverage. A previous regression
+      caused the callback dispatch to be omitted and a warning
+      issued.
+    - module_utils sanitize_keys and remove_value functions now
+      sort their input to ensure matching subsets are always
+      obscured.
+    - module_utils/basic.py - Fix AnsibleModule.run_command() to
+      handle None return from non-blocking pipe reads (#86920).
+    - wait_for - use errno.ENOENT symbolic constant instead of
+      hardcoded value for improved code portability.
+- remove patch ansible-core-CVE-2026-11332.patch as this is
+  included in the release
+
+-------------------------------------------------------------------
 Wed Jun 10 08:20:57 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Security fix for CVE-2026-11332 (bsc#1267822): argument injection in
