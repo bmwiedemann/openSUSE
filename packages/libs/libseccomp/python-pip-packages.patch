@@ -1,0 +1,176 @@
+From ebb2593df1df93007705a62527f40845330277ca Mon Sep 17 00:00:00 2001
+From: Tom Hromatka <tom.hromatka@oracle.com>
+Date: Wed, 9 Jul 2025 12:50:44 -0600
+Subject: [PATCH 1/4] python: Rename setup.py to setup.py.in
+X-SUSE-Subject: Add support for building python pip packages
+References: https://github.com/seccomp/libseccomp/pull/467
+
+Rename setup.py to setup.py.in so that the version variables can be
+autopopulated by automake/m4.
+
+This will be used in subsequent commits for building python wheels.
+Wheels are often built in containers, and the build containers don't
+have knowledge of automake, its configurations, and its environment
+variables, so we need to pre-populate the version information.
+
+Signed-off-by: Tom Hromatka <tom.hromatka@oracle.com>
+---
+ Makefile.am               |   10 ++++++++++
+ configure.ac              |    1 +
+ include/seccomp.h.in      |    2 +-
+ src/python/MANIFEST.in    |    6 ++++++
+ src/python/Makefile.am    |   14 +++++++++++++-
+ src/python/pyproject.toml |    2 ++
+ src/python/setup.py       |   45 ---------------------------------------------
+ src/python/setup.py.in    |   46 ++++++++++++++++++++++++++++++++++++++++++++++
+ 8 files changed, 79 insertions(+), 47 deletions(-)
+ rename src/python/{setup.py => setup.py.in} (89%)
+
+Index: libseccomp-2.6.1/Makefile.am
+===================================================================
+--- libseccomp-2.6.1.orig/Makefile.am
++++ libseccomp-2.6.1/Makefile.am
+@@ -75,6 +75,14 @@ coverity-tarball: coverity-build
+ 	ls -l libseccomp-coverity_$$rev.tar.gz
+ endif
+ 
++if ENABLE_PYTHON
++python-wheel: all
++	${MAKE} ${AM_MAKEFLAGS} -C src/python $@
++
++python-wheels: all
++	${MAKE} ${AM_MAKEFLAGS} -C src/python $@
++endif
++
+ help:
+ 	@echo "libseccomp build system"
+ 	@echo " make targets:"
+@@ -86,6 +94,8 @@ help:
+ 	@echo "  distcheck:        verify the build for distribution"
+ 	@echo "  dist-gzip:        build a release tarball"
+ 	@echo "  coverity-tarball: build a tarball for use with Coverity (opt)"
++	@echo "  python-wheel:     build a python wheel for this system"
++	@echo "  python-wheels:    build python wheels for distribution to pip"
+ 
+ clean-local:
+ 	${RM} -rf cov-int libseccomp-coverity_*.tar.gz
+Index: libseccomp-2.6.1/configure.ac
+===================================================================
+--- libseccomp-2.6.1.orig/configure.ac
++++ libseccomp-2.6.1/configure.ac
+@@ -146,6 +146,7 @@ dnl ####
+ AC_CONFIG_FILES([
+ 	libseccomp.pc
+ 	include/seccomp.h
++	src/python/setup.py
+ ])
+ 
+ dnl ####
+Index: libseccomp-2.6.1/include/seccomp.h.in
+===================================================================
+--- libseccomp-2.6.1.orig/include/seccomp.h.in
++++ libseccomp-2.6.1/include/seccomp.h.in
+@@ -897,7 +897,7 @@ int seccomp_precompute(const scmp_filter
+ #define __NR_SCMP_ERROR		-1
+ #define __NR_SCMP_UNDEF		-2
+ 
+-#include <seccomp-syscalls.h>
++#include "seccomp-syscalls.h"
+ 
+ #ifdef __cplusplus
+ }
+Index: libseccomp-2.6.1/src/python/MANIFEST.in
+===================================================================
+--- /dev/null
++++ libseccomp-2.6.1/src/python/MANIFEST.in
+@@ -0,0 +1,6 @@
++include seccomp.pyx
++include libseccomp.pxd
++include libseccomp.a
++include seccomp.h
++include seccomp-syscalls.h
++include __init__.py
+Index: libseccomp-2.6.1/src/python/pyproject.toml
+===================================================================
+--- /dev/null
++++ libseccomp-2.6.1/src/python/pyproject.toml
+@@ -0,0 +1,2 @@
++[build-system]
++requires = ["cython", "setuptools"]
+Index: libseccomp-2.6.1/src/python/setup.py.in
+===================================================================
+--- /dev/null
++++ libseccomp-2.6.1/src/python/setup.py.in
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python
++
++#
++# Enhanced Seccomp Library Python Module Build Script
++#
++# Copyright (c) 2012-2025 Red Hat <pmoore@redhat.com>
++# Author: Paul Moore <paul@paul-moore.com>
++# Author: Tom Hromatka <tom.hromatka@oracle.com>
++#
++
++#
++# This library is free software; you can redistribute it and/or modify it
++# under the terms of version 2.1 of the GNU Lesser General Public License as
++# published by the Free Software Foundation.
++#
++# This library is distributed in the hope that it will be useful, but WITHOUT
++# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
++# FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser General Public License
++# for more details.
++#
++# You should have received a copy of the GNU Lesser General Public License
++# along with this library; if not, see <http://www.gnu.org/licenses>.
++#
++
++import os
++
++from setuptools import setup
++from setuptools.extension import Extension
++from Cython.Build import cythonize
++
++setup(
++	name = "seccomp",
++	version = "@VERSION_MAJOR@.@VERSION_MINOR@.@VERSION_MICRO@",
++	description = "Python binding for libseccomp",
++	long_description = "Python API for the Linux Kernel's syscall filtering capability, seccomp.",
++	url = "https://github.com/seccomp/libseccomp",
++	maintainer = "Paul Moore",
++	maintainer_email = "paul@paul-moore.com",
++	license = "LGPLv2.1",
++	platforms = "Linux",
++	ext_modules = cythonize([
++		Extension("seccomp", ["seccomp.pyx"],
++			# unable to handle libtool libraries directly
++			extra_objects=["../.libs/libseccomp.a"]),
++	])
++)
+Index: libseccomp-2.6.1/src/python/Makefile.am
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/Makefile.am
++++ libseccomp-2.6.1/src/python/Makefile.am
+@@ -37,12 +37,21 @@ all-local: build
+ 
+ build: ../libseccomp.la libseccomp.pxd seccomp.pyx setup.py
+ 	[ -f ${builddir}/seccomp.pyx ] || cp ${srcdir}/seccomp.pyx ${builddir}
++	cp ${srcdir}/../.libs/libseccomp.a ${builddir}
++	cp ${top_srcdir}/include/seccomp.h ${builddir}
++	cp ${top_srcdir}/include/seccomp-syscalls.h ${builddir}
+ 	${PY_BUILD} && touch build
+ 
+ install-exec-local: build
+ 	${PY_INSTALL} --install-lib=${DESTDIR}/${pyexecdir} \
+ 		--record=${DESTDIR}/${pyexecdir}/install_files.txt
+ 
++python-wheel: build
++	${PYTHON} -m build --no-isolation
++
++python-wheels: build
++	${PYTHON} -m cibuildwheel --output-dir wheelhouse
++
+ uninstall-local:
+ 	cat ${DESTDIR}/${pyexecdir}/install_files.txt | xargs ${RM} -f
+ 	${RM} -f ${DESTDIR}/${pyexecdir}/install_files.txt

@@ -1,0 +1,101 @@
+From: mcepl@suse.com
+References: https://bugzilla.opensuse.org/1258203
+Subject: Convert Python build from setup.py to pyproject.toml
+
+---
+ src/python/MANIFEST.in    |    2 +-
+ src/python/Makefile.am    |    6 +++---
+ src/python/Makefile.in    |   10 ++++++++--
+ src/python/pyproject.toml |   20 +++++++++++++++++++-
+ src/python/setup.py.in    |    2 +-
+ 5 files changed, 32 insertions(+), 8 deletions(-)
+
+Index: libseccomp-2.6.1/src/python/MANIFEST.in
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/MANIFEST.in
++++ libseccomp-2.6.1/src/python/MANIFEST.in
+@@ -1,6 +1,6 @@
+ include seccomp.pyx
+ include libseccomp.pxd
+-include libseccomp.a
++include libseccomp.so
+ include seccomp.h
+ include seccomp-syscalls.h
+ include __init__.py
+Index: libseccomp-2.6.1/src/python/Makefile.am
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/Makefile.am
++++ libseccomp-2.6.1/src/python/Makefile.am
+@@ -35,9 +35,9 @@ EXTRA_DIST = libseccomp.pxd seccomp.pyx
+ 
+ all-local: build
+ 
+-build: ../libseccomp.la libseccomp.pxd seccomp.pyx setup.py
++build: ../libseccomp.la libseccomp.pxd seccomp.pyx pyproject.toml
+ 	[ -f ${builddir}/seccomp.pyx ] || cp ${srcdir}/seccomp.pyx ${builddir}
+-	cp ${srcdir}/../.libs/libseccomp.a ${builddir}
++	cp ${srcdir}/../.libs/libseccomp.so ${builddir}
+ 	cp ${top_srcdir}/include/seccomp.h ${builddir}
+ 	cp ${top_srcdir}/include/seccomp-syscalls.h ${builddir}
+ 	${PY_BUILD} && touch build
+Index: libseccomp-2.6.1/src/python/Makefile.in
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/Makefile.in
++++ libseccomp-2.6.1/src/python/Makefile.in
+@@ -300,7 +300,7 @@ PY_BUILD_1 = ${PY_DISTUTILS} build
+ PY_BUILD_ = ${PY_BUILD_0}
+ PY_BUILD = ${PY_BUILD_@AM_V@}
+ PY_INSTALL = ${PY_DISTUTILS} install
+-EXTRA_DIST = libseccomp.pxd seccomp.pyx setup.py
++EXTRA_DIST = libseccomp.pxd seccomp.pyx setup.py pyproject.toml
+ all: all-am
+ 
+ .SUFFIXES:
+@@ -512,6 +512,9 @@ uninstall-local:
+ 
+ clean-local:
+ 	[ ${srcdir} = ${builddir} ] || ${RM} -f ${builddir}/seccomp.pyx
++	${RM} -f ${builddir}/libseccomp.so
++	${RM} -f ${builddir}/seccomp.h
++	${RM} -f ${builddir}/seccomp-syscalls.h
+ 	${RM} -rf seccomp.c build dist seccomp.egg-info
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+Index: libseccomp-2.6.1/src/python/pyproject.toml
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/pyproject.toml
++++ libseccomp-2.6.1/src/python/pyproject.toml
+@@ -1,2 +1,20 @@
+ [build-system]
+-requires = ["cython", "setuptools"]
++requires = [
++  "setuptools>=61",
++  "wheel",
++  "Cython",
++]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "seccomp"
++dynamic = ["version"]
++description = "Python binding for libseccomp"
++readme = {text = "Python API for the Linux Kernel's syscall filtering capability, seccomp.", content-type = "text/plain"}
++maintainers = [
++  {name = "Paul Moore", email = "paul@paul-moore.com"}
++]
++license = "LGPL-2.1-only"
++
++[project.urls]
++Homepage = "https://github.com/seccomp/libseccomp"
+Index: libseccomp-2.6.1/src/python/setup.py.in
+===================================================================
+--- libseccomp-2.6.1.orig/src/python/setup.py.in
++++ libseccomp-2.6.1/src/python/setup.py.in
+@@ -41,6 +41,6 @@ setup(
+ 	ext_modules = cythonize([
+ 		Extension("seccomp", ["seccomp.pyx"],
+ 			# unable to handle libtool libraries directly
+-			extra_objects=["../.libs/libseccomp.a"]),
++			extra_objects=["libseccomp.so"]),
+ 	])
+ )

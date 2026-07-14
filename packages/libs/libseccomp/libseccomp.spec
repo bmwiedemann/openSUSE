@@ -1,7 +1,7 @@
 #
-# spec file for package python3-seccomp
+# spec file for package libseccomp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,16 +20,18 @@
 %global lname   libseccomp2
 %global flavor @BUILD_FLAVOR@%nil
 
-%if "%flavor" == "python3"
-Name:           python3-seccomp
-Summary:        Python 3 bindings for seccomp
-Group:          Development/Tools/Debuggers
+%if "%flavor" == "python"
+%bcond_without python
+%define namesuf -%flavor
 %else
-Name:           libseccomp
+%bcond_with python
+%define namesuf %nil
+%endif
+
+Name:           libseccomp%namesuf
 Summary:        A Seccomp (mode 2) helper library
 Group:          Development/Libraries/C and C++
-%endif
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 License:        LGPL-2.1-only
 URL:            https://github.com/seccomp/libseccomp
@@ -37,17 +39,24 @@ Source:         https://github.com/seccomp/libseccomp/releases/download/v%versio
 Source2:        https://github.com/seccomp/libseccomp/releases/download/v%version/libseccomp-%version.tar.gz.asc
 Source3:        %pname.keyring
 Source99:       baselibs.conf
+Patch0:         python-pip-packages.patch
 Patch1:         make-python-build.patch
-Patch2:         62-sim-arch_transactions-remove-fuzzer.patch
+Patch3:         modernize-python-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake >= 1.11
 BuildRequires:  fdupes
 BuildRequires:  libtool >= 2
 BuildRequires:  pkgconfig
-%if "%flavor" == "python3"
+%if %{with python}
+BuildRequires:  %python_module Cython >= 0.29
+BuildRequires:  %python_module build
+BuildRequires:  %python_module pip
+BuildRequires:  %python_module setuptools
+BuildRequires:  %python_module wheel
+BuildRequires:  ca-certificates-mozilla-prebuilt
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-Cython >= 0.29
-BuildRequires:  python3-setuptools
+%define python_subpackage_only 1
+%python_subpackages
 %endif
 
 %description
@@ -55,10 +64,6 @@ The libseccomp library provides an interface to the Linux Kernel's
 syscall filtering mechanism, seccomp. The libseccomp API abstracts
 away the underlying BPF-based syscall filter language and presents a
 more conventional function-call based filtering interface.
-
-%if "%flavor" == "python3"
-This subpackage contains the python3 bindings for seccomp.
-%endif
 
 %package -n %lname
 Summary:        An enhanced Seccomp (mode 2) helper library
@@ -93,6 +98,20 @@ syscall filtering mechanism, seccomp.
 
 This subpackage contains debug utilities for the seccomp interface.
 
+%if %{with python}
+%package -n python-seccomp
+Summary:        Python bindings for seccomp
+Group:          Development/Tools/Debuggers
+
+%description -n python-seccomp
+The libseccomp library provides an interface to the Linux Kernel's
+syscall filtering mechanism, seccomp. The libseccomp API abstracts
+away the underlying BPF-based syscall filter language and presents a
+more conventional function-call based filtering interface.
+
+This subpackage contains the python3 bindings for seccomp.
+%endif
+
 %prep
 %autosetup -p1 -n %pname-%version
 
@@ -105,42 +124,55 @@ echo 'int main () { return 0; }' >tests/52-basic-load.c
 
 %build
 autoreconf -fiv
+export LD_LIBRARY_PATH="$PWD/src/.libs${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+%if %{with python}
+%{python_expand \
+  %configure \
+    --includedir="%_includedir/%pname" \
+    --enable-python \
+    --disable-static \
+    --disable-silent-rules \
+    GPERF=/bin/true \
+    PYTHON=$python
+%make_build all python-wheel
+}
+%else
 %configure \
-	 --includedir="%_includedir/%pname" \
-%if "%flavor" == "python3"
-	 --enable-python \
-%endif
-	 --disable-static \
-	 --disable-silent-rules \
-	 GPERF=/bin/true
+    --includedir="%_includedir/%pname" \
+    --disable-static \
+    --disable-silent-rules \
+    GPERF=/bin/true
 %make_build
+%endif
 
 %install
+%if %{with python}
+%{python_expand \
+  %make_install PYTHON=$python pyexecdir=%$python_sitearch
+}
+b="%buildroot"
+rm -Rf "$b/%_bindir" "$b/%_libdir"/libsec* "$b/%_libdir/pkgconfig" \
+	"$b/%_includedir" "$b/%_datadir"
+%else
 %make_install
+%endif
 find "%buildroot/%_libdir" -type f -name "*.la" -delete
-rm -fv %buildroot/%python3_sitearch/install_files.txt
-%if "%flavor" == "python3"
-rm %buildroot/%_libdir/%pname.so*
-rm -r %buildroot/%_mandir/
-rm -r %buildroot/%_includedir/%pname/
-rm -r %buildroot/%_libdir/pkgconfig
-rm -r %buildroot/%_bindir/
+%if %{with python}
+%python_expand rm -fv %buildroot/%$python_sitearch/install_files.txt
 %endif
 %fdupes %buildroot/%_prefix
 
-%if "%flavor" != "python3"
 %check
+%if %{with python}
 export LD_LIBRARY_PATH="$PWD/src/.libs"
-make check
+%{python_expand \
+  make PYTHON=$python PYTHONPATH="${PYTHONPATH:+$PYTHONPATH:}%buildroot%{$python_sitearch}" PYTHONDONTWRITEBYTECODE=1 check
+}
 %endif
 
 %ldconfig_scriptlets -n %lname
 
-%if "%flavor" == "python3"
-%files
-%python3_sitearch/seccomp*
-%else
-
+%if "%flavor" == ""
 %files -n %lname
 %_libdir/%pname.so.2*
 %license LICENSE
@@ -154,6 +186,12 @@ make check
 %files tools
 %_bindir/scmp_sys_resolver
 %_mandir/man1/scmp_sys_resolver.1*
+%endif
+
+%if %{with python}
+%files %{python_files seccomp}
+%python_sitearch/seccomp*.so
+%python_sitearch/seccomp-%{version}*-info
 %endif
 
 %changelog

@@ -371,4 +371,13 @@
   (https://github.com/seccomp/libseccomp/issues/455)</comment>
     <requestid>1243229</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>9b2e8519b36a4e59dc003ebfa0b67ed9</srcmd5>
+    <version>2.6.1</version>
+    <time>1784029485</time>
+    <user>dimstar_suse</user>
+    <comment>- Produce unique .src.rpm files per multibuild flavor.
+- Update to release 2.6.1</comment>
+    <requestid>1365159</requestid>
+  </revision>
 </revisionlist>

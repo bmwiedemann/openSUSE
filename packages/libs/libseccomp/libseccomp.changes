@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul  8 15:02:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Produce unique .src.rpm files per multibuild flavor.
+
+-------------------------------------------------------------------
+Thu Jul  2 10:44:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.1
+  * Fixed incorrect 64-bit comparison merge that can weaken
+    libseccomp filters.
+  * Fixed issue where oversized libseccomp filters can trigger a
+    double free.
+  * Fixed issue where oversized libseccomp filters can trigger a
+    heap corruption.
+  * Fixed struct aliasing undefined behavior in the internal
+    libseccomp hash algorithm.
+  * Fixed issue where extraneous bytes were being copied to the
+    destination buffer in seccomp_export_bpf_mem().
+  * Fix a bug where merged libseccomp filters failed to merge the
+    notify_used flag, leading to no listener file descriptor being
+    generated.
+- 62-sim-arch_transactions-remove-fuzzer.patch: removed upstream
+
+-------------------------------------------------------------------
+Mon Jun 29 20:50:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fixes in SPEC file.
+- Update make-python-build.patch to work with multiple versions
+  of Python interpreters.
+- Add python-pip-packages.patch, modernize-python-build.patch
+
+-------------------------------------------------------------------
+Wed Mar 25 16:57:09 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable _multibuild back.
+
+-------------------------------------------------------------------
+Thu Mar 12 00:27:05 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add support for generating of multiple versions of Python
+  subpackages (using %python_subpackage_only). 
+
+-------------------------------------------------------------------
 Tue Feb  4 22:11:41 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
 
 - add 62-sim-arch_transactions-remove-fuzzer.patch to fix s390x build
