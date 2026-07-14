@@ -1,0 +1,5 @@
+<package name="lutgen-cli" project="openSUSE:Factory">
+  <title></title>
+  <description>A blazingly fast interpolated [LUT](https://en.wikipedia.org/wiki/3D_lookup_table) utility for arbitrary and popular color palettes. Theme any image to your desktop colorscheme!</description>
+  <url>https://github.com/ozwaldorf/lutgen-rs</url>
+</package>
