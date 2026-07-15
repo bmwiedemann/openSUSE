@@ -11,7 +11,7 @@ Wed Mar 18 13:44:02 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 -------------------------------------------------------------------
 Mon Jan 19 07:47:28 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
-- Update to 0.6.2 (fixes CVE-2026-2141, bsc#1256331)
+- Update to 0.6.2 (fixes CVE-2026-23490, bsc#1256902)
   * Fixed continuation octet limits in OID/RELATIVE-OID decoder (CVE-2026-23490).
   * Added support for Python 3.14.
   * Added SECURITY.md policy.

@@ -462,4 +462,12 @@
   * Fixed asDateTime incorrect fractional seconds parsing.</comment>
     <requestid>1340912</requestid>
   </revision>
+  <revision rev="49" vrev="2">
+    <srcmd5>0f203fc7b223d597c98047234949de28</srcmd5>
+    <version>0.6.3</version>
+    <time>1784125552</time>
+    <user>dimstar_suse</user>
+    <comment>fix bug reference in changelog</comment>
+    <requestid>1365666</requestid>
+  </revision>
 </revisionlist>
