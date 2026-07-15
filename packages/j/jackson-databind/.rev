@@ -161,4 +161,20 @@
     <comment>Missing CVE number</comment>
     <requestid>1361938</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>819cb3f41304187c23f8af8deee04a08</srcmd5>
+    <version>2.18.9</version>
+    <time>1784127379</time>
+    <user>dimstar_suse</user>
+    <comment>2.18.9</comment>
+    <requestid>1365955</requestid>
+  </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>6cc31b494cb1b9a59fd78749f5ed5ca5</srcmd5>
+    <version>2.18.9</version>
+    <time>1784146822</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changelog typos</comment>
+    <requestid>1366001</requestid>
+  </revision>
 </revisionlist>

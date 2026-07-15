@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:52:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.9
+  * Changes
+    + #5962: Case-insensitive deserialization may use wrong
+      '@JsonIgnoreProperties' (bsc#1268902, CVE-2026-54515)
+    + #6054: Honor '@JsonView' for external-type-id
+      ('EXTERNAL_PROPERTY') properties [GHSA-mhm7-754m-9p8w]
+    + #6058: Do not allow DNS resolution when deserializing
+      'InetAddress'
+    + #6060: '@JsonView' by-passed for '@JsonUnwrapped'
+      Field/Setter properties (bsc#1271440, CVE-2026-59889)
+- Removed patch
+  * jackson-databind-CVE-2026-54515.patch
+    + integrated in this version
+
+-------------------------------------------------------------------
 Thu Jun 25 12:05:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.8
@@ -10,7 +27,7 @@ Thu Jun 25 12:05:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       properties
     + #5971: '@JsonView' by-passed for unwrapped creator parameters
     + #5974: '@JsonIgnore' on Record property ignored with
-      'PropertyNamingStrategy'
+      'PropertyNamingStrategy' (bsc#1271442, CVE-2026-59888)
     + #5981: 'BasicPolymorphicTypeValidator' setting
       'allowIfSubTypeIsArray()' should validate element type
       (bsc#1268898, CVE-2026-54513)
@@ -54,7 +71,8 @@ Thu Jun 25 12:05:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + #4777: 'StdValueInstantiator.withArgsCreator' is now set for
       creators with no arguments
     + #4783 Possibly wrong behavior of @JsonMerge
-    + #4787: Wrong 'String.format()' in 'StdDelegatingDeserializer'
+    + #4787: Wrong 'String.format()' in 'StdDelegatingDeserializer'  * jackson-databind-CVE-2026-54515.patch
+
       hides actual error
     + #4788: 'EnumFeature.WRITE_ENUMS_TO_LOWERCASE' overrides
       '@JsonProperty' values

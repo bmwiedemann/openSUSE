@@ -20,14 +20,13 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           jackson-databind
-Version:        2.18.8
+Version:        2.18.9
 Release:        0
 Summary:        General data-binding package for Jackson (2.x)
 License:        Apache-2.0
 URL:            https://github.com/FasterXML/jackson-databind/
 Source0:        https://github.com/FasterXML/jackson-databind/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         %{name}-CVE-2026-54515.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  jackson-annotations
@@ -51,7 +50,6 @@ This package contains API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} build.xml
-%patch -P 0 -p1
 mkdir -p lib
 
 cp -p src/main/resources/META-INF/NOTICE .
