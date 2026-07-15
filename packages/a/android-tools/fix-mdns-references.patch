@@ -1,0 +1,57 @@
+--- a/vendor/adb/docs/user/adb.1
++++ b/vendor/adb/docs/user/adb.1
+@@ -133,16 +133,6 @@
+ .PP
+ \f[B]--remove-all\f[R] \ \ \ \ Remove all reverse socket connections
+ from device.
+-.PP
+-mdns \f[B]check\f[R] | \f[B]services\f[R] \ \ \ \ Perform mDNS
+-subcommands.
+-.PP
+-\f[B]check\f[R] \ \ \ \ Check if mdns discovery is available.
+-.PP
+-\f[B]services\f[R] \ \ \ \ List all discovered services.
+-.PP
+-\f[B]track-services\f[R] \ \ \ \ Stream discovered services.
+-Supports flags \[lq]\[en]proto-text\[rq] and \[lq]proto-binary\[rq].
+ .SH FILE TRANSFER:
+ .PP
+ push [\f[B]\[en]sync\f[R]] [\f[B]-z\f[R] \f[B]ALGORITHM\f[R]]
+@@ -280,8 +270,8 @@
+ .PP
+ logcat \ \ \ \ Show device log (logcat \[en]help for more).
+ .PP
+-server-status Display server configuration (USB backend, mDNS backend,
+-log location, binary path.
++server-status Display server configuration (USB backend, log location,
++binary path.
+ See adb_host.proto (AdbServerStatus) for details.
+ .SH SECURITY:
+ .PP
+@@ -371,8 +361,7 @@
+ .SH ENVIRONMENT VARIABLES
+ .PP
+ $ADB_TRACE \ \ \ \ Comma (or space) separated list of debug info to log:
+-all,adb,sockets,packets,rwx,usb,sync,sysdeps,transport,jdwp,services,auth,fdevent,shell,incremental,
+-mdns.
++all,adb,sockets,packets,rwx,usb,sync,sysdeps,transport,jdwp,services,auth,fdevent,shell,incremental.
+ .PP
+ $ADB_VENDOR_KEYS \ \ \ \ Colon-separated list of keys (files or
+ directories).
+@@ -385,16 +374,6 @@
+ $ADB_LOCAL_TRANSPORT_MAX_PORT \ \ \ \ Max emulator scan port (default
+ 5585, 16 emulators).
+ .PP
+-$ADB_MDNS_AUTO_CONNECT \ \ \ \ Comma-separated list of mdns services to
+-allow auto-connect (default adb-tls-connect).
+-.PP
+-$ADB_MDNS_OPENSCREEN \ \ \ \ The default mDNS-SD backend is Bonjour
+-(mdnsResponder).
+-For machines where Bonjour is not installed, adb can spawn its own,
+-embedded, mDNS-SD back end, openscreen.
+-If set to \[lq]1\[rq], this env variable forces mDNS backend to
+-openscreen.
+-.PP
+ $ADB_LIBUSB \ \ \ \ ADB has its own USB backend implementation but can
+ also employ libusb.
+ use \f[V]adb devices -l\f[R] (\f[V]usb:\f[R] prefix is omitted for

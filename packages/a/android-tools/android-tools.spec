@@ -25,22 +25,17 @@
 %endif
 
 Name:           android-tools
-Version:        35.0.2
+Version:        36.0.1
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
-URL:            https://developer.android.com/studio/releases/platform-tools
-Source0:        https://github.com/nmeum/android-tools/releases/download/%{version}/%{name}-%{version}.tar.xz
+# https://developer.android.com/tools/releases/platform-tools
+URL:            https://github.com/nmeum/android-tools
+Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE fix-install-completion.patch boo#1185883 munix9@googlemail.com -- Simplify completion
 Patch0:         fix-install-completion.patch
-# PATCH-FIX-UPSTREAM fix-protobuf-30-compat.patch -- based on commit 0c4d799
-Patch1:         fix-protobuf-30-compat.patch
-# PATCH-FIX-UPSTREAM fix-libusb-enumeration.patch gh#nmeum/android-tools#153
-Patch2:         fix-libusb-enumeration.patch
-# PATCH-FIX-UPSTREAM fix-legacy-USB-driver-default.patch gh#nmeum/android-tools#190
-Patch3:         fix-legacy-USB-driver-default.patch
-# PATCH-FIX-UPSTREAM fix-missing-cstdint-includes-for-gcc16.patch gh#nmeum/android-tools#191
-Patch4:         fix-missing-cstdint-includes-for-gcc16.patch
+# PATCH-FIX-OPENSUSE fix-mdns-references.patch munix9@googlemail.com -- Remove all references to mDNS from the man page
+Patch1:         fix-mdns-references.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
@@ -57,28 +52,35 @@ BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-mkbootimg
 Suggests:       %{name}-partition
 Suggests:       android-udev-rules
-Provides:       %{name}-python3 = %{version}-%{release}
-Obsoletes:      %{name}-python3 < %{version}-%{release}
+Provides:       %{name}-bash-completion = %{version}
+Obsoletes:      %{name}-bash-completion < %{version}
+Provides:       %{name}-python3 = %{version}
+Obsoletes:      %{name}-python3 < %{version}
+Provides:       adb = 1.0.41
+Provides:       avbtool = 1.3.0
+Provides:       sload_f2fs = 1.16.0
 Provides:       bundled(boringssl)
 ExcludeArch:    ppc ppc64 ppc64le s390x
 %if 0%{?suse_version} < 1600
 BuildRequires:  clang15
 BuildRequires:  gcc11-c++
-BuildRequires:  python311
+BuildRequires:  python311-base
+Requires:       python311-base
 %else
 BuildRequires:  clang
-BuildRequires:  python3
+BuildRequires:  python3-base
+Requires:       python3-base
 %endif
 %if %{with bundled_libfmt}
-Provides:       bundled(fmt) = 10.2.0
+Provides:       bundled(fmt) = 11.0.2
 %else
-BuildRequires:  pkgconfig(fmt) >= 10.2.0
+BuildRequires:  pkgconfig(fmt) >= 11.0.2
 %endif
 %if %{with bundled_libusb}
 BuildRequires:  pkgconfig(libudev)
-Provides:       bundled(libusb-1_0)
+Provides:       bundled(libusb-1_0) = 1.0.29
 %else
-BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.28
+BuildRequires:  pkgconfig(libusb-1.0) >= 1.0.29
 %endif
 
 %description
@@ -100,22 +102,16 @@ Requires:       %{name} = %{version}
 %description partition
 This package contains the Android dynamic partition tools.
 
-%package bash-completion
-Summary:        Bash completion for android-tools
-BuildRequires:  bash-completion
-Requires:       bash-completion
-Supplements:    (%{name} and bash-completion)
-BuildArch:      noarch
-
-%description bash-completion
-Bash command line completion support for android-tools.
-
 %prep
 %autosetup -p1
 
+# fix empty adb man page title
+%define man_date %(LC_ALL=C date -u -d@$SOURCE_DATE_EPOCH '+%%B %%Y')
+sed -e 's/^\.TH .*/.TH ADB "1" "%{man_date}" "%{name} %{version}" "User Commands"/' \
+    -i vendor/adb/docs/user/adb.1
+
 %build
 %define __builder ninja
-
 %cmake \
 %if 0%{?suse_version} < 1600
 	-DCMAKE_C_COMPILER=clang-15 \
@@ -135,7 +131,6 @@ Bash command line completion support for android-tools.
 	-DANDROID_TOOLS_LIBUSB_ENABLE_UDEV=ON \
 %endif
 	-DBUILD_SHARED_LIBS=OFF
-
 %cmake_build
 
 %install
@@ -182,6 +177,14 @@ mkbootimg --help
 %{_bindir}/mke2fs.android
 %{_bindir}/simg2img
 %{_bindir}/sload_f2fs
+%dir %{_datadir}/bash-completion
+%dir %{_datadir}/bash-completion/completions
+%if 0%{?suse_version} < 1600
+%exclude %{_datadir}/bash-completion/completions/adb
+%else
+%{_datadir}/bash-completion/completions/adb
+%endif
+%{_datadir}/bash-completion/completions/fastboot
 %{_mandir}/man1/adb.1%{?ext_man}
 
 %files mkbootimg
@@ -195,13 +198,5 @@ mkbootimg --help
 %license LICENSE
 %doc vendor/extras/partition_tools/README.md
 %{_bindir}/lp{add,dump,flash,make,unpack}
-
-%files bash-completion
-%if 0%{?suse_version} < 1600
-%exclude %{_datadir}/bash-completion/completions/adb
-%else
-%{_datadir}/bash-completion/completions/adb
-%endif
-%{_datadir}/bash-completion/completions/fastboot
 
 %changelog

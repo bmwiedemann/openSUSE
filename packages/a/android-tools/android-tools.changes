@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Jul  8 10:48:10 UTC 2026 - munix9@googlemail.com
+
+- Update to version 36.0.1
+  * Fix typos in README.md
+  * Add support for LoongArch64
+  * CI: Add protobuf-compiler dependency for ubuntu
+  * CI: Replace macos-12 with macos-15 due to deprecation
+  * patches/extras: Fix incompatibility with protobuf v30
+  * Fix missing whitespace in patches
+  * Backport "Make legacy USB driver default on Linux" from 16.0.0_r4
+  * Add missing includes for GCC 16 (Fedora Rawhide affected)
+  * Remove deprecated macos-13 from CI
+  * Drop gcc11-c++ dependency from opensuse/leap
+  * Update to 36.0.1 (android-16.0.0_r4)
+  * Add macos-26 to CI build matrix
+
+- Remove patches (merged/solved upstream)
+  * fix-legacy-USB-driver-default.patch
+  * fix-libusb-enumeration.patch
+  * fix-missing-cstdint-includes-for-gcc16.patch
+  * fix-protobuf-30-compat.patch
+- Add fix-mdns-references.patch
+  * Remove all references to mDNS from the man page
+    (gh#nmeum/android-tools#118)
+- Merge bash-completion into main package (consolidation)
+
+-------------------------------------------------------------------
 Tue Feb  3 20:43:56 UTC 2026 - munix9@googlemail.com
 
 - Use system libusb library (>= 1.0.28 with SuperSpeedPlus
