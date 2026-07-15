@@ -1,0 +1,86 @@
+From c1abd5d8dd4dd08a501707a8540be2f157ae77af Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:33 +0800
+Subject: [PATCH 04/10] grub.texi: Add net_dhcp6 document
+
+Update grub documentation for net_dhcp6 command.
+
+Signed-off-by: Ken Lin <ken.lin@hpe.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ docs/grub.texi | 30 ++++++++++++++++++++++++++++++
+ 1 file changed, 30 insertions(+)
+
+diff --git a/docs/grub.texi b/docs/grub.texi
+index c948e1ee7..94d08d85d 100644
+--- a/docs/grub.texi
++++ b/docs/grub.texi
+@@ -5477,6 +5477,12 @@ This includes the following commands:
+ @item
+ @command{net_dhcp} - @pxref{net_dhcp}
+ 
++@item
++@command{net_bootp6} - @pxref{net_bootp6}
++
++@item
++@command{net_dhcp6} - @pxref{net_dhcp6}
++
+ @item
+ @command{net_get_dhcp_option} - @pxref{net_get_dhcp_option}
+ 
+@@ -8791,10 +8797,12 @@ Note: The command is not allowed when lockdown is enforced (@pxref{Lockdown}).
+ * net_add_dns::                 Add a DNS server
+ * net_add_route::               Add routing entry
+ * net_bootp::                   Perform a bootp/DHCP autoconfiguration
++* net_bootp6::                  Perform a DHCPv6 autoconfiguration
+ * net_del_addr::                Remove IP address from interface
+ * net_del_dns::                 Remove a DNS server
+ * net_del_route::               Remove a route entry
+ * net_dhcp::                    Perform a DHCP autoconfiguration
++* net_dhcp6::                   Perform a DHCPv6 autoconfiguration
+ * net_get_dhcp_option::         Retrieve DHCP options
+ * net_ipv6_autoconf::           Perform IPv6 autoconfiguration
+ * net_ls_addr::                 List interfaces
+@@ -8849,6 +8857,17 @@ command (@pxref{net_dhcp}).
+ @end deffn
+ 
+ 
++@node net_bootp6
++@subsection net_bootp6
++
++@deffn Command net_bootp6 [@var{card}]
++Alias for net_dhcp6, for compatibility with older version of the downstream
++patch set. It will perform the same DHCPv6 handshake with the net_dhcp6 command
++(@pxref{net_dhcp6}).
++
++@end deffn
++
++
+ @node net_del_addr
+ @subsection net_del_addr
+ 
+@@ -8917,6 +8936,17 @@ Sets environment variable @samp{net_}@var{<card>}@samp{_boot_file}
+ @end deffn
+ 
+ 
++@node net_dhcp6
++@subsection net_dhcp6
++
++@deffn Command net_dhcp6 [@var{card}]
++Perform configuration of @var{card} using DHCPv6 protocol. If no card name is
++specified, try to configure all existing cards. If configuration was
++successful, interface with name @var{card}@samp{:dhcp6} and configured address
++is added to @var{card}.
++@end deffn
++
++
+ @node net_get_dhcp_option
+ @subsection net_get_dhcp_option
+ 
+-- 
+2.54.0
+

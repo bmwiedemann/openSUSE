@@ -1,0 +1,78 @@
+From 3b2f1c791eab603086cc40497e97ff59a3671376 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:37 +0800
+Subject: [PATCH 08/10] kern/efi/efi: Print URI and DNS device path info
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ grub-core/kern/efi/efi.c | 51 ++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index 77456835e..d332d7d16 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -856,6 +856,57 @@ grub_efi_print_device_path (grub_efi_device_path_t *dp)
+ 	      dump_vendor_path ("Messaging",
+ 				(grub_efi_vendor_device_path_t *) dp);
+ 	      break;
++	    case GRUB_EFI_URI_DEVICE_PATH_SUBTYPE:
++	      {
++		grub_efi_uri_device_path_t *uri;
++		grub_uint8_t *buf;
++		grub_efi_uint16_t uri_len;
++
++		uri = (grub_efi_uri_device_path_t *) dp;
++		uri_len = len - sizeof (uri->header);
++		buf = grub_malloc (uri_len + 1);
++		if (!buf)
++		  {
++		    grub_print_error();
++		    break;
++		  }
++		grub_memcpy (buf, uri->uri, uri_len);
++		buf[uri_len] = '\0';
++
++		grub_printf ("/Uri(%s)", buf);
++		grub_free (buf);
++	      }
++	      break;
++	    case GRUB_EFI_DNS_DEVICE_PATH_SUBTYPE:
++	      {
++		grub_efi_dns_device_path_t *dns;
++		dns = (grub_efi_dns_device_path_t *) dp;
++		if (dns->is_ipv6)
++		  grub_printf ("/Dns(%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x:%02x%02x)",
++		      dns->dns_server_ip->v6.addr[0],
++		      dns->dns_server_ip->v6.addr[1],
++		      dns->dns_server_ip->v6.addr[2],
++		      dns->dns_server_ip->v6.addr[3],
++		      dns->dns_server_ip->v6.addr[4],
++		      dns->dns_server_ip->v6.addr[5],
++		      dns->dns_server_ip->v6.addr[6],
++		      dns->dns_server_ip->v6.addr[7],
++		      dns->dns_server_ip->v6.addr[8],
++		      dns->dns_server_ip->v6.addr[9],
++		      dns->dns_server_ip->v6.addr[10],
++		      dns->dns_server_ip->v6.addr[11],
++		      dns->dns_server_ip->v6.addr[12],
++		      dns->dns_server_ip->v6.addr[13],
++		      dns->dns_server_ip->v6.addr[14],
++		      dns->dns_server_ip->v6.addr[15]);
++		else
++		  grub_printf ("/Dns(%u.%u.%u.%u)",
++		      dns->dns_server_ip->v4.addr[0],
++		      dns->dns_server_ip->v4.addr[1],
++		      dns->dns_server_ip->v4.addr[2],
++		      dns->dns_server_ip->v4.addr[3]);
++	      }
++	      break;
+ 	    default:
+ 	      grub_printf ("/UnknownMessaging(%x)", (unsigned) subtype);
+ 	      break;
+-- 
+2.54.0
+

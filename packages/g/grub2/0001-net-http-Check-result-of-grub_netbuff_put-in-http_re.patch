@@ -1,0 +1,38 @@
+From 89d347ef476dcff038d769eacde170904e052258 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:30 +0800
+Subject: [PATCH 01/10] net/http: Check result of grub_netbuff_put() in
+ http_receive()
+
+Co-authored-by: Peter Jones <pjones@redhat.com>
+Signed-off-by: Peter Jones <pjones@redhat.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ grub-core/net/http.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/grub-core/net/http.c b/grub-core/net/http.c
+index f389bf03d..a81e5fe61 100644
+--- a/grub-core/net/http.c
++++ b/grub-core/net/http.c
+@@ -291,7 +291,12 @@ http_receive (grub_net_tcp_socket_t sock __attribute__ ((unused)),
+ 	  nb2 = grub_netbuff_alloc (data->chunk_rem);
+ 	  if (!nb2)
+ 	    return grub_errno;
+-	  grub_netbuff_put (nb2, data->chunk_rem);
++	  err = grub_netbuff_put (nb2, data->chunk_rem);
++	  if (err)
++	    {
++	      grub_netbuff_free (nb2);
++	      return grub_errno;
++	    }
+ 	  grub_memcpy (nb2->data, nb->data, data->chunk_rem);
+ 	  if (file->device->net->packs.count >= 20)
+ 	    {
+-- 
+2.54.0
+

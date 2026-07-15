@@ -1,40 +1,48 @@
-From 0c7ae6d7527d08e54a6eeebddb6c5c697c4b37d2 Mon Sep 17 00:00:00 2001
+From 9f6c8a42c7a4c605adf5dfc3f24b15f4d80850c8 Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
-Date: Thu, 14 Jul 2016 17:48:45 +0800
-Subject: [PATCH 8/8] efinet: Setting DNS server from UEFI protocol
+Date: Mon, 16 Dec 2024 16:03:36 +0800
+Subject: [PATCH 07/10] efinet: Set DNS server from UEFI protocol
 
-In the URI device path node, any name rahter than address can be used for
-looking up the resources so that DNS service become needed to get answer of the
-name's address. Unfortunately the DNS is not defined in any of the device path
-nodes so that we use the EFI_IP4_CONFIG2_PROTOCOL and EFI_IP6_CONFIG_PROTOCOL
-to obtain it.
+In the URI device path node, any string of characters (i.e., a name),
+rather than a network address, can be used to look up resources. This
+requires DNS services to resolve the name to an IP address. However,
+since the DNS device path requires a later UEFI version and may not
+always be available, we use the EFI_IP4_CONFIG2_PROTOCOL and
+EFI_IP6_CONFIG_PROTOCOL to obtain the DNS server information.
 
-These two protcols are defined the sections of UEFI specification.
+These two protocols are defined in the following sections of the UEFI
+specification:
 
- 27.5 EFI IPv4 Configuration II Protocol
- 27.7 EFI IPv6 Configuration Protocol
+    27.5 EFI IPv4 Configuration II Protocol
+    27.7 EFI IPv6 Configuration Protocol
 
 include/grub/efi/api.h:
-Add new structure and protocol UUID of EFI_IP4_CONFIG2_PROTOCOL and
+Added new structures and protocol UUIDs for EFI_IP4_CONFIG2_PROTOCOL and
 EFI_IP6_CONFIG_PROTOCOL.
 
 grub-core/net/drivers/efi/efinet.c:
-Use the EFI_IP4_CONFIG2_PROTOCOL and EFI_IP6_CONFIG_PROTOCOL to obtain the list
-of DNS server address for IPv4 and IPv6 respectively. The address of DNS
-servers is structured into DHCPACK packet and feed into the same DHCP packet
-processing functions to ensure the network interface is setting up the same way
-it used to be.
+Uses the EFI_IP4_CONFIG2_PROTOCOL and EFI_IP6_CONFIG_PROTOCOL to obtain
+the DNS server addresses for IPv4 and IPv6, respectively. The DNS server
+addresses are incorporated into the DHCPACK packet and passed into the
+shared DHCP packet processing routines to ensure the network interface
+is configured as it was previously.
 
-Signed-off-by: Michael Chang <mchang@suse.com>
 Signed-off-by: Ken Lin <ken.lin@hpe.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
 ---
- grub-core/net/drivers/efi/efinet.c | 163 +++++++++++++++++++++++++++++++++++++
- include/grub/efi/api.h             |  76 +++++++++++++++++
- 2 files changed, 239 insertions(+)
+ grub-core/net/drivers/efi/efinet.c | 171 +++++++++++++++++++++++++++++
+ include/grub/efi/api.h             |  78 +++++++++++++
+ 2 files changed, 249 insertions(+)
 
+diff --git a/grub-core/net/drivers/efi/efinet.c b/grub-core/net/drivers/efi/efinet.c
+index 98ea75e9a..47424184b 100644
 --- a/grub-core/net/drivers/efi/efinet.c
 +++ b/grub-core/net/drivers/efi/efinet.c
-@@ -30,6 +30,8 @@
+@@ -30,6 +30,8 @@ GRUB_MOD_LICENSE ("GPLv3+");
  /* GUID.  */
  static grub_guid_t net_io_guid = GRUB_EFI_SIMPLE_NETWORK_GUID;
  static grub_guid_t pxe_io_guid = GRUB_EFI_PXE_GUID;
@@ -43,12 +51,12 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
  static grub_err_t
  send_card_buffer (struct grub_net_card *dev,
-@@ -343,6 +345,125 @@
+@@ -343,6 +345,125 @@ grub_efinet_findcards (void)
    grub_free (handles);
  }
  
 +static grub_efi_handle_t
-+grub_efi_locate_device_path (grub_efi_guid_t *protocol, grub_efi_device_path_t *device_path,
++grub_efi_locate_device_path (grub_guid_t *protocol, grub_efi_device_path_t *device_path,
 +			    grub_efi_device_path_t **r_device_path)
 +{
 +  grub_efi_handle_t handle;
@@ -169,7 +177,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  static struct grub_net_buff *
  grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *use_ipv6)
  {
-@@ -395,6 +516,8 @@
+@@ -414,6 +535,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        grub_efi_ipv4_device_path_t *ipv4 = (grub_efi_ipv4_device_path_t *) ldp;
        struct grub_net_bootp_packet *bp;
        grub_uint8_t *ptr;
@@ -178,7 +186,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
        bp = (struct grub_net_bootp_packet *) nb->tail;
        err = grub_netbuff_put (nb, sizeof (*bp) + 4);
-@@ -456,6 +579,25 @@
+@@ -476,6 +599,32 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        *ptr++ = sizeof ("HTTPClient") - 1;
        grub_memcpy (ptr, "HTTPClient", sizeof ("HTTPClient") - 1);
  
@@ -187,10 +195,17 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
 +	{
 +	  grub_efi_uintn_t size_dns = sizeof (*dns) * num_dns;
 +
++	  if (size_dns > GRUB_UCHAR_MAX)
++	    {
++	      num_dns = GRUB_UCHAR_MAX / sizeof (*dns);
++	      size_dns = sizeof (*dns) * num_dns;
++	    }
++
 +	  ptr = nb->tail;
 +	  err = grub_netbuff_put (nb, size_dns + 2);
 +	  if (err)
 +	    {
++	      grub_free (dns);
 +	      grub_free (ddp);
 +	      grub_netbuff_free (nb);
 +	      return NULL;
@@ -204,7 +219,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
        ptr = nb->tail;
        err = grub_netbuff_put (nb, 1);
        if (err)
-@@ -488,6 +630,8 @@
+@@ -518,6 +667,8 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        struct grub_net_dhcp6_option *opt;
        struct grub_net_dhcp6_option_iana *iana;
        struct grub_net_dhcp6_option_iaaddr *iaaddr;
@@ -213,7 +228,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
  
        d6p = (struct grub_net_dhcp6_packet *)nb->tail;
        err = grub_netbuff_put (nb, sizeof(*d6p));
-@@ -551,6 +695,25 @@
+@@ -581,6 +732,26 @@ grub_efinet_create_dhcp_ack_from_device_path (grub_efi_device_path_t *dp, int *u
        opt->len = grub_cpu_to_be16 (uri_len);
        grub_memcpy (opt->data, uri_dp->uri, uri_len);
  
@@ -226,6 +241,7 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
 +	  err = grub_netbuff_put (nb, sizeof(*opt) + size_dns);
 +	  if (err)
 +	  {
++	    grub_free (dns);
 +	    grub_free (ddp);
 +	    grub_netbuff_free (nb);
 +	    return NULL;
@@ -239,10 +255,12 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
        *use_ipv6 = 1;
      }
  
+diff --git a/include/grub/efi/api.h b/include/grub/efi/api.h
+index 04193692b..cc98e3d65 100644
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -399,6 +399,16 @@
-     { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 } \
+@@ -374,6 +374,16 @@
+     { 0x86, 0x2e, 0xc0, 0x1c, 0xdc, 0x29, 0x1f, 0x44 } \
    }
  
 +#define GRUB_EFI_IP4_CONFIG2_PROTOCOL_GUID \
@@ -255,21 +273,22 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
 +      { 0x89, 0x29, 0x48, 0xbc, 0xd9, 0x0a, 0xd3, 0x1a } \
 +  }
 +
- struct grub_efi_sal_system_table
- {
-   grub_uint32_t signature;
-@@ -1919,4 +1929,70 @@
+ #define LINUX_EFI_INITRD_MEDIA_GUID  \
+   { 0x5568e427, 0x68fc, 0x4f3d, \
+     { 0xac, 0x74, 0xca, 0x55, 0x52, 0x31, 0xcc, 0x68 } \
+@@ -2008,4 +2018,72 @@ struct grub_efi_memory_attribute_protocol
  };
  typedef struct grub_efi_memory_attribute_protocol grub_efi_memory_attribute_protocol_t;
  
-+enum grub_efi_ip4_config2_data_type {
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_POLICY,
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MANUAL_ADDRESS,
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_GATEWAY,
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_DNSSERVER,
-+  GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MAXIMUM
-+};
++enum grub_efi_ip4_config2_data_type
++  {
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_INTERFACEINFO,
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_POLICY,
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MANUAL_ADDRESS,
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_GATEWAY,
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_DNSSERVER,
++    GRUB_EFI_IP4_CONFIG2_DATA_TYPE_MAXIMUM,
++  };
 +typedef enum grub_efi_ip4_config2_data_type grub_efi_ip4_config2_data_type_t;
 +
 +struct grub_efi_ip4_config2_protocol
@@ -294,16 +313,17 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
 +};
 +typedef struct grub_efi_ip4_config2_protocol grub_efi_ip4_config2_protocol_t;
 +
-+enum grub_efi_ip6_config_data_type {
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_ALT_INTERFACEID,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_POLICY,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_DUP_ADDR_DETECT_TRANSMITS,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_GATEWAY,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_DNSSERVER,
-+  GRUB_EFI_IP6_CONFIG_DATA_TYPE_MAXIMUM
-+};
++enum grub_efi_ip6_config_data_type
++  {
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_INTERFACEINFO,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_ALT_INTERFACEID,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_POLICY,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_DUP_ADDR_DETECT_TRANSMITS,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_MANUAL_ADDRESS,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_GATEWAY,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_DNSSERVER,
++    GRUB_EFI_IP6_CONFIG_DATA_TYPE_MAXIMUM,
++  };
 +typedef enum grub_efi_ip6_config_data_type grub_efi_ip6_config_data_type_t;
 +
 +struct grub_efi_ip6_config_protocol
@@ -329,3 +349,6 @@ Signed-off-by: Ken Lin <ken.lin@hpe.com>
 +typedef struct grub_efi_ip6_config_protocol grub_efi_ip6_config_protocol_t;
 +
  #endif /* ! GRUB_EFI_API_HEADER */
+-- 
+2.54.0
+

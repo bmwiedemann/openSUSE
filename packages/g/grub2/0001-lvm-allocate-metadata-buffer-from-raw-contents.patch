@@ -1,24 +1,54 @@
+From 19ea3208a1ff43cc7f1fe81651c1060d7909300a Mon Sep 17 00:00:00 2001
 From: Michael Chang <mchang@suse.com>
-Date: Fri, 9 Apr 2021 19:58:24 +0800
-Subject: [PATCH] Allocate LVM metadata buffer from raw contents
+Date: Fri, 29 May 2026 11:17:56 +0800
+Subject: [PATCH] lvm: allocate metadata buffer from raw contents
 
-The size reserved for on disk LVM metadata area can be exceedingly large that
-may trigger out of memory error for allocating buffer based on it. Refine the
-buffer allocation to use size of raw LVM metadata contents and read them from
-within the metadata area as we only need to parse the JSON formatted contents
-rather than the entire metadata area. This reduced the size significantly and
-the likelihood to out of memory error.
+Previously, the buffer for LVM metadata parsing was set to twice the
+size of the metadata area, which caused excessive memory use.
+
+This patch changes the allocation to read the actual raw metadata blocks
+directly from the metadata area. Instead of using twice the entire
+metadata area size, we now allocate just what's needed for the raw
+metadata.
+
+To illustrate, We can determine the size of the LVM metadata area by
+running the command:
+
+  pvs -o pv_name,pv_mda_size
+
+As a result, grub will allocate 2 * pv_mda_size, and since 1MiB is a
+common default for pv_mda_size nowadays (it seems), this results in 2MiB
+being allocated.
+
+However, most of the blocks in the metadata area are not useful to grub.
+A lot of space gets wasted because it is occupied by a pre-allocated
+circular buffer, which is used to track changes over time. To eliminate
+this overhead, we can teach grub to use the raw metadata block to locate
+the active metadata within the circular buffer.
+
+This change effectively reduces the buffer size while still working
+correctly. In my test system on openSUSE, the buffer size for LVM
+metadata dropped from 2,088,960 bytes to 1,119 bytes, which is a big
+improvement.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Reviewed-By: Sudhakar Kuppusamy <sudhakar@linux.ibm.com>
+Reviewed-By: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/136>
 ---
- grub-core/disk/lvm.c | 79 ++++++++++++++++++++++++--------------------
- 1 file changed, 43 insertions(+), 36 deletions(-)
+ grub-core/disk/lvm.c | 98 ++++++++++++++++++++++++++++----------------
+ 1 file changed, 62 insertions(+), 36 deletions(-)
 
+diff --git a/grub-core/disk/lvm.c b/grub-core/disk/lvm.c
+index af6a8e93c..42f96eaa0 100644
 --- a/grub-core/disk/lvm.c
 +++ b/grub-core/disk/lvm.c
-@@ -138,9 +138,11 @@
+@@ -138,9 +138,11 @@ grub_lvm_detect (grub_disk_t disk,
    grub_err_t err;
    grub_uint64_t mda_offset, mda_size;
    grub_size_t ptr;
-+  grub_uint64_t mda_raw_offset, mda_raw_size;
++  grub_uint64_t mda_raw_offset, mda_raw_size, mda_raw_end;
    char buf[GRUB_LVM_LABEL_SIZE];
    char vg_id[GRUB_LVM_ID_STRLEN+1];
    char pv_id[GRUB_LVM_ID_STRLEN+1];
@@ -26,12 +56,18 @@ the likelihood to out of memory error.
    char *metadatabuf, *mda_end, *vgname;
    const char *p, *q;
    struct grub_lvm_label_header *lh = (struct grub_lvm_label_header *) buf;
-@@ -218,21 +220,15 @@
- 
-   dlocn++;
+@@ -220,19 +222,22 @@ grub_lvm_detect (grub_disk_t disk,
    mda_offset = grub_le_to_cpu64 (dlocn->offset);
--  mda_size = grub_le_to_cpu64 (dlocn->size);
+   mda_size = grub_le_to_cpu64 (dlocn->size);
  
++  if (mda_size < GRUB_LVM_MDA_HEADER_SIZE)
++    {
++#ifdef GRUB_UTIL
++      grub_util_info ("LVM metadata area is too small");
++#endif
++      goto fail;
++    }
++
    /* It's possible to have multiple copies of metadata areas, we just use the
       first one.  */
 -
@@ -51,7 +87,7 @@ the likelihood to out of memory error.
    if ((grub_strncmp ((char *)mdah->magic, GRUB_LVM_FMTT_MAGIC,
  		     sizeof (mdah->magic)))
        || (grub_le_to_cpu32 (mdah->version) != GRUB_LVM_FMTT_VERSION))
-@@ -242,42 +238,58 @@
+@@ -242,42 +247,68 @@ grub_lvm_detect (grub_disk_t disk,
  #ifdef GRUB_UTIL
        grub_util_info ("unknown LVM metadata header");
  #endif
@@ -62,14 +98,20 @@ the likelihood to out of memory error.
    rlocn = mdah->raw_locns;
 -  if (grub_le_to_cpu64 (rlocn->offset) >= grub_le_to_cpu64 (mda_size))
 +
-+  mda_size = grub_le_to_cpu64 (mdah->size);
 +  mda_raw_size = grub_le_to_cpu64 (rlocn->size);
 +  mda_raw_offset = grub_le_to_cpu64 (rlocn->offset);
 +
-+  if (mda_raw_offset >= mda_size)
++  if (grub_add (mda_raw_offset, mda_raw_size, &mda_raw_end) ||
++      grub_le_to_cpu64 (mdah->size) > mda_size ||
++      grub_le_to_cpu64 (mdah->size) < GRUB_LVM_MDA_HEADER_SIZE ||
++      mda_raw_size > grub_le_to_cpu64 (mdah->size) - GRUB_LVM_MDA_HEADER_SIZE ||
++      mda_raw_offset >= grub_le_to_cpu64 (mdah->size) ||
++      mda_raw_offset < GRUB_LVM_MDA_HEADER_SIZE)
      {
++      grub_error (GRUB_ERR_OUT_OF_RANGE, "invalid LVM metadata area size/offset");
  #ifdef GRUB_UTIL
-       grub_util_info ("metadata offset is beyond end of metadata area");
+-      grub_util_info ("metadata offset is beyond end of metadata area");
++      grub_util_info ("invalid LVM metadata area size/offset");
  #endif
 -      goto fail2;
 +      goto fail;
@@ -77,12 +119,17 @@ the likelihood to out of memory error.
  
 -  if (grub_le_to_cpu64 (rlocn->offset) + grub_le_to_cpu64 (rlocn->size) >
 -      grub_le_to_cpu64 (mdah->size))
-+  metadatabuf = grub_malloc (mda_raw_size);
++  if (mda_raw_size > GRUB_SIZE_MAX - 1)
++    goto fail;
++
++  metadatabuf = grub_malloc (mda_raw_size + 1);
 +
 +  if (! metadatabuf)
 +    goto fail;
 +
-+  if (mda_raw_offset + mda_raw_size > mda_size)
++  metadatabuf[mda_raw_size] = '\0';
++
++  if (mda_raw_end > grub_le_to_cpu64 (mdah->size))
      {
 -      if (2 * mda_size < GRUB_LVM_MDA_HEADER_SIZE ||
 -          (grub_le_to_cpu64 (rlocn->offset) + grub_le_to_cpu64 (rlocn->size) -
@@ -95,7 +142,7 @@ the likelihood to out of memory error.
 -	}
 +      err = grub_disk_read (disk, 0,
 +			    mda_offset + mda_raw_offset,
-+			    mda_size - mda_raw_offset,
++			    grub_le_to_cpu64 (mdah->size) - mda_raw_offset,
 +			    metadatabuf);
 +      if (err)
 +	goto fail2;
@@ -108,8 +155,8 @@ the likelihood to out of memory error.
 -		   grub_le_to_cpu64 (mdah->size));
 +      err = grub_disk_read (disk, 0,
 +			    mda_offset + GRUB_LVM_MDA_HEADER_SIZE,
-+			    mda_raw_offset + mda_raw_size - mda_size,
-+			    metadatabuf + mda_size - mda_raw_offset);
++			    mda_raw_end - grub_le_to_cpu64 (mdah->size),
++			    metadatabuf + grub_le_to_cpu64 (mdah->size) - mda_raw_offset);
 +      if (err)
 +	goto fail2;
 +    }
@@ -132,7 +179,7 @@ the likelihood to out of memory error.
      {
   error_parsing_metadata:
  #ifdef GRUB_UTIL
-@@ -286,11 +298,6 @@
+@@ -286,11 +317,6 @@ grub_lvm_detect (grub_disk_t disk,
        goto fail2;
      }
  
@@ -144,3 +191,6 @@ the likelihood to out of memory error.
    mda_end = (char *)ptr;
  
    while (*q != ' ' && q < mda_end)
+-- 
+2.54.0
+

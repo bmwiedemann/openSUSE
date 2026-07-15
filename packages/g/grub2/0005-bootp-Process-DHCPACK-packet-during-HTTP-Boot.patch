@@ -1,0 +1,138 @@
+From 63a340f776a56934260b106f73263d6ee8853910 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:34 +0800
+Subject: [PATCH 05/10] bootp: Process DHCPACK packet during HTTP Boot
+
+The vendor class identifier with the string "HTTPClient" is used to
+indicate that the packet is responding to an HTTP boot request. In the
+DHCPv4 configuration, the boot_file for HTTP boot specifies the URL of
+the boot file, while for PXE boot, it specifies the path to the boot
+file. Consequently, the next-server field becomes obsolete, as the HTTP
+URL already encodes the server address for the boot file.
+
+In DHCPv6 configuration, no ambiguity in the boot_file, as
+dhcp6.bootfile-url is used to specify the URL for both HTTP and PXE boot
+files.
+
+This update adds processing for the "HTTPClient" vendor class identifier
+in DHCPACK packets, interpreting it as an HTTP format rather than a PXE
+format.
+
+Signed-off-by: Ken Lin <ken.lin@hpe.com>
+Signed-off-by: Robbie Harwood <rharwood@redhat.com>
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ grub-core/net/bootp.c | 38 ++++++++++++++++++++++++++++++++++++--
+ include/grub/net.h    |  1 +
+ 2 files changed, 37 insertions(+), 2 deletions(-)
+
+diff --git a/grub-core/net/bootp.c b/grub-core/net/bootp.c
+index d9988908f..79019aeb1 100644
+--- a/grub-core/net/bootp.c
++++ b/grub-core/net/bootp.c
+@@ -20,6 +20,7 @@
+ #include <grub/env.h>
+ #include <grub/i18n.h>
+ #include <grub/command.h>
++#include <grub/net.h>
+ #include <grub/net/ip.h>
+ #include <grub/net/netbuff.h>
+ #include <grub/net/udp.h>
+@@ -348,6 +349,9 @@ grub_net_configure_by_dhcp_ack (const char *name,
+   grub_uint8_t opt_len, overload = 0;
+   const char *boot_file = 0, *server_name = 0;
+   grub_size_t boot_file_len, server_name_len;
++  char *vci_server_name = NULL;
++  char *vci_boot_file = NULL;
++  char *vci_protocol = NULL;
+ 
+   addr.type = GRUB_NET_NETWORK_LEVEL_PROTOCOL_IPV4;
+   addr.ipv4 = bp->your_ip;
+@@ -397,6 +401,22 @@ grub_net_configure_by_dhcp_ack (const char *name,
+       boot_file_len = sizeof (bp->boot_file);
+     }
+ 
++  opt = find_dhcp_option (bp, size, GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER, &opt_len);
++  if (opt && opt_len)
++    {
++      grub_env_set_net_property (name, "vendor_class_identifier", (const char *) opt, opt_len);
++      if (opt_len == sizeof ("HTTPClient") - 1
++	  && grub_strncmp ((const char *) opt, "HTTPClient", opt_len) == 0
++	  && (boot_file && boot_file_len)
++	  && dissect_url (boot_file, boot_file_len, &vci_protocol, &vci_server_name, &vci_boot_file))
++	{
++	  server_name = vci_server_name;
++	  server_name_len = grub_strlen (vci_server_name);
++	  boot_file = vci_boot_file;
++	  boot_file_len = grub_strlen (vci_boot_file);
++	}
++    }
++
+   if (bp->server_ip)
+     {
+       grub_snprintf (server_ip, sizeof (server_ip), "%d.%d.%d.%d",
+@@ -424,7 +444,7 @@ grub_net_configure_by_dhcp_ack (const char *name,
+ 
+   if (device && !*device && bp->server_ip)
+     {
+-      *device = grub_xasprintf ("tftp,%s", server_ip);
++      *device = grub_xasprintf ("%s,%s", vci_protocol ? : "tftp", server_ip);
+       grub_print_error ();
+     }
+ 
+@@ -438,7 +458,13 @@ grub_net_configure_by_dhcp_ack (const char *name,
+ 	}
+       if (device && !*device)
+ 	{
+-	  *device = grub_xasprintf ("tftp,%s", server_name);
++	  *device = grub_xasprintf ("%s,%s", vci_protocol ? : "tftp", server_name);
++	  grub_print_error ();
++	}
++      else if (device && vci_protocol)
++	{
++	  grub_free (*device);
++	  *device = grub_xasprintf ("%s,%s", vci_protocol, server_name);
+ 	  grub_print_error ();
+ 	}
+     }
+@@ -541,7 +567,12 @@ grub_net_configure_by_dhcp_ack (const char *name,
+ 
+       val = grub_malloc (2 * opt_len + 4 + 1);
+       if (!val)
++	{
++	  grub_free (vci_protocol);
++	  grub_free (vci_boot_file);
++	  grub_free (vci_server_name);
+           return inter;
++	}
+ 
+       for (i = 0; i < opt_len; i++)
+         {
+@@ -567,6 +598,9 @@ grub_net_configure_by_dhcp_ack (const char *name,
+   else
+     grub_errno = GRUB_ERR_NONE;
+ 
++  grub_free (vci_protocol);
++  grub_free (vci_boot_file);
++  grub_free (vci_server_name);
+   return inter;
+ }
+ 
+diff --git a/include/grub/net.h b/include/grub/net.h
+index 16f0e764d..33f0ce6de 100644
+--- a/include/grub/net.h
++++ b/include/grub/net.h
+@@ -530,6 +530,7 @@ enum
+     GRUB_NET_DHCP_MESSAGE_TYPE = 53,
+     GRUB_NET_DHCP_SERVER_IDENTIFIER = 54,
+     GRUB_NET_DHCP_PARAMETER_REQUEST_LIST = 55,
++    GRUB_NET_BOOTP_VENDOR_CLASS_IDENTIFIER = 60,
+     GRUB_NET_BOOTP_CLIENT_ID = 61,
+     GRUB_NET_DHCP_TFTP_SERVER_NAME = 66,
+     GRUB_NET_DHCP_BOOTFILE_NAME = 67,
+-- 
+2.54.0
+

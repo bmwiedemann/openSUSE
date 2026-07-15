@@ -1,0 +1,59 @@
+From 49a031bb4f237baa452dbd7d2155e4cfea95152a Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:38 +0800
+Subject: [PATCH 09/10] kern/efi/efi: Correct endianness in IPv6 device path
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ grub-core/kern/efi/efi.c | 32 ++++++++++++++++----------------
+ 1 file changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/grub-core/kern/efi/efi.c b/grub-core/kern/efi/efi.c
+index d332d7d16..0b5a128f6 100644
+--- a/grub-core/kern/efi/efi.c
++++ b/grub-core/kern/efi/efi.c
+@@ -790,22 +790,22 @@ grub_efi_print_device_path (grub_efi_device_path_t *dp)
+ 		grub_efi_ipv6_device_path_t *ipv6
+ 		  = (grub_efi_ipv6_device_path_t *) dp;
+ 		grub_printf ("/IPv6(%x:%x:%x:%x:%x:%x:%x:%x,%x:%x:%x:%x:%x:%x:%x:%x,%u,%u,%x,%x)",
+-			     (unsigned) ipv6->local_ip_address[0],
+-			     (unsigned) ipv6->local_ip_address[1],
+-			     (unsigned) ipv6->local_ip_address[2],
+-			     (unsigned) ipv6->local_ip_address[3],
+-			     (unsigned) ipv6->local_ip_address[4],
+-			     (unsigned) ipv6->local_ip_address[5],
+-			     (unsigned) ipv6->local_ip_address[6],
+-			     (unsigned) ipv6->local_ip_address[7],
+-			     (unsigned) ipv6->remote_ip_address[0],
+-			     (unsigned) ipv6->remote_ip_address[1],
+-			     (unsigned) ipv6->remote_ip_address[2],
+-			     (unsigned) ipv6->remote_ip_address[3],
+-			     (unsigned) ipv6->remote_ip_address[4],
+-			     (unsigned) ipv6->remote_ip_address[5],
+-			     (unsigned) ipv6->remote_ip_address[6],
+-			     (unsigned) ipv6->remote_ip_address[7],
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 2)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 4)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 6)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 8)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 10)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 12)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->local_ip_address + 14)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 2)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 4)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 6)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 8)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 10)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 12)),
++			     (unsigned) grub_be_to_cpu16 (grub_get_unaligned16 (ipv6->remote_ip_address + 14)),
+ 			     (unsigned) ipv6->local_port,
+ 			     (unsigned) ipv6->remote_port,
+ 			     (unsigned) ipv6->protocol,
+-- 
+2.54.0
+

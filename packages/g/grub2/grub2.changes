@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul  7 05:52:20 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Backport merged upstream patch
+  * 0001-lvm-allocate-metadata-buffer-from-raw-contents.patch
+- Drop local patch
+  * grub2-lvm-allocate-metadata-buffer-from-raw-contents.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 03:43:38 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Backport merged upstream patch
+  * 0001-net-http-Check-result-of-grub_netbuff_put-in-http_re.patch
+  * 0002-efinet-Add-structures-for-PXE-messages.patch
+  * 0003-efinet-bootp-add-net_dhcp6-command-supporting-dhcpv6.patch
+  * 0004-grub.texi-Add-net_dhcp6-document.patch
+  * 0005-bootp-Process-DHCPACK-packet-during-HTTP-Boot.patch
+  * 0006-efinet-Configure-network-from-UEFI-device-path.patch
+  * 0007-efinet-Set-DNS-server-from-UEFI-protocol.patch
+  * 0008-kern-efi-efi-Print-URI-and-DNS-device-path-info.patch
+  * 0009-kern-efi-efi-Correct-endianness-in-IPv6-device-path.patch
+  * 0010-bootp-Fix-logical-operator-in-DHCP-option-overload-c.patch
+- Drop local patch
+  * 0003-bootp-New-net_bootp6-command.patch
+  * 0004-efinet-UEFI-IPv6-PXE-support.patch
+  * 0005-grub.texi-Add-net_bootp6-doument.patch
+  * 0006-bootp-Add-processing-DHCPACK-packet-from-HTTP-Boot.patch
+  * 0007-efinet-Setting-network-from-UEFI-device-path.patch
+  * 0008-efinet-Setting-DNS-server-from-UEFI-protocol.patch
+- Refreshed patch
+  * 0001-add-support-for-UEFI-network-protocols.patch
+  * grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+
+-------------------------------------------------------------------
 Fri Jul  3 04:01:19 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Fix broken bash completion on arm64 images when the bash-completion package

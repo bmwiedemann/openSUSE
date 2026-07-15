@@ -15,10 +15,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
  include/grub/efi/api.h         |  5 +++++
  2 files changed, 36 insertions(+)
 
-Index: grub-2.12/grub-core/disk/key_protector.c
-===================================================================
---- grub-2.12.orig/grub-core/disk/key_protector.c
-+++ grub-2.12/grub-core/disk/key_protector.c
+--- a/grub-core/disk/key_protector.c
++++ b/grub-core/disk/key_protector.c
 @@ -25,6 +25,10 @@
  
  GRUB_MOD_LICENSE ("GPLv3+");
@@ -30,7 +28,7 @@ Index: grub-2.12/grub-core/disk/key_protector.c
  struct grub_key_protector *grub_key_protectors = NULL;
  
  grub_err_t
-@@ -53,11 +57,34 @@ grub_key_protector_unregister (struct gr
+@@ -53,11 +57,34 @@
    return GRUB_ERR_NONE;
  }
  
@@ -65,7 +63,7 @@ Index: grub-2.12/grub-core/disk/key_protector.c
  
    if (grub_key_protectors == NULL)
      return grub_error (GRUB_ERR_OUT_OF_RANGE, "No key protector registered");
-@@ -69,5 +96,9 @@ grub_key_protector_recover_key (const ch
+@@ -69,5 +96,9 @@
    if (kp == NULL)
      return grub_error (GRUB_ERR_OUT_OF_RANGE, "Key protector '%s' not found", protector);
  
@@ -75,12 +73,10 @@ Index: grub-2.12/grub-core/disk/key_protector.c
 +
    return kp->recover_key (key, key_size);
  }
-Index: grub-2.12/include/grub/efi/api.h
-===================================================================
---- grub-2.12.orig/include/grub/efi/api.h
-+++ grub-2.12/include/grub/efi/api.h
-@@ -389,6 +389,11 @@
-       { 0x89, 0x29, 0x48, 0xbc, 0xd9, 0x0a, 0xd3, 0x1a } \
+--- a/include/grub/efi/api.h
++++ b/include/grub/efi/api.h
+@@ -409,6 +409,11 @@
+     { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 } \
    }
  
 +#define GRUB_EFI_SYSTEMD_GUID \

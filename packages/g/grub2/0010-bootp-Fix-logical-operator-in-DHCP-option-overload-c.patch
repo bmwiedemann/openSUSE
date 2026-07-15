@@ -1,0 +1,30 @@
+From ff4a61585af0b84c7bf6d95dd3691c2d4658f7c3 Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 16 Dec 2024 16:03:39 +0800
+Subject: [PATCH 10/10] bootp: Fix logical operator in DHCP option overload
+ check
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Reviewed-by: Andrew Hamilton <adhamilt@gmail.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/127>
+---
+ grub-core/net/bootp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/net/bootp.c b/grub-core/net/bootp.c
+index 79019aeb1..627b26810 100644
+--- a/grub-core/net/bootp.c
++++ b/grub-core/net/bootp.c
+@@ -394,7 +394,7 @@ grub_net_configure_by_dhcp_ack (const char *name,
+       boot_file = (const char *) opt;
+       boot_file_len = opt_len;
+     }
+-  else if (size > OFFSET_OF (boot_file, bp) && !(overload && GRUB_DHCP_OPT_OVERLOAD_FILE) &&
++  else if (size > OFFSET_OF (boot_file, bp) && !(overload & GRUB_DHCP_OPT_OVERLOAD_FILE) &&
+           bp->boot_file[0])
+     {
+       boot_file = bp->boot_file;
+-- 
+2.54.0
+
