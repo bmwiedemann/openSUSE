@@ -1023,4 +1023,12 @@
     <comment>weekly release</comment>
     <requestid>1361725</requestid>
   </revision>
+  <revision rev="49" vrev="49">
+    <srcmd5>d7f4405c821a7de2a8f916afb7e63c18</srcmd5>
+    <version>0</version>
+    <time>1784125536</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1365620</requestid>
+  </revision>
 </revisionlist>
