@@ -620,4 +620,12 @@
     <comment>weekly release</comment>
     <requestid>1361726</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>b71a330877cf52b1bf3b12825897d6f3</srcmd5>
+    <version>22.0.0</version>
+    <time>1784125542</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1365624</requestid>
+  </revision>
 </revisionlist>
