@@ -16,15 +16,16 @@
 #
 
 
+# run go list -f '{{.Version}}' -m gitea.dev/sdk inside the git repo
+%define         sdkversion 1.1.0
 Name:           gitea-tea
-Version:        0.14.1
+Version:        0.14.2
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT
 URL:            https://gitea.com/gitea/tea
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch1:         Use-git-command-instead-of-go-git-1005.patch
 # 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
 BuildRequires:  go1.26 >= 1.26.0
 Conflicts:      tea
@@ -70,7 +71,7 @@ go build \
    -o tea \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags "-X main.Version=%{version}"
+   -ldflags "-X gitea.dev/tea/modules/version.Version=%{version} -X gitea.dev/tea/modules/version.Tags=%{version} -X gitea.dev/tea/modules/version.SDK=%{sdkversion}"
 
 # building docs
 go run \
@@ -78,7 +79,7 @@ go run \
    -o docs/CLI.md \
    -mod=vendor \
    -buildmode=pie \
-   -ldflags "-X main.Version=%{version}"
+   -ldflags "-X gitea.dev/tea/modules/version.Version=%{version} -X gitea.dev/tea/modules/version.Tags=%{version} -X gitea.dev/tea/modules/version.SDK=%{sdkversion}"
 
 %install
 install -v -m 0755 -D -t %{buildroot}%{_bindir} tea

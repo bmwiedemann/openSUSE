@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 15 16:56:42 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.14.2:
+  + fix(labels): add org label for ls and pr
+  + fix(oauth): pass resolved redirect_uri to token exchange
+  + feat(pulls): show PR URL in detail view
+  + feat(comments): add list/edit/delete subcommands to tea comment
+  + feat(pulls): add --draft to create and --draft/--ready to edit
+  + fix(pulls): restore standard fork-flow PR creation
+  + fix(comment): don't block on stdin when body is given positionally
+  + docs(login): make the git credential helper discoverable
+  + fix(print): distinguish draft PRs from conflicting PRs
+  + feat: add wiki CLI commands
+  + fix(context): improve local repo detection logic and test
+- Remove Use-git-command-instead-of-go-git-1005.patch, as Upstream
+  included it
+- Fix version which is shown with `tea --version`
+
+-------------------------------------------------------------------
 Thu May 28 18:52:33 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Fix access to sha256 repositories
