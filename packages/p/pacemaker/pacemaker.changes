@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 13 08:27:59 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.2+20260710.e64afeb692 (Pacemaker-3.0.3-rc1):
+- Build: update version information for 3.0.3
+- libraries: update shared object versions for 3.0.3
+- NLS: update translations before 3.0.3-rc1
+- cibadmin: allow altering status section without triggering refresh (gh#ClusterLabs/pacemaker#4147)
+- tools: Use g_spawn_sync in cibsecret.
+- tools: Handle UTF-8 parameters in crm_resource.
+- tools: Handle UTF-8 parameters in cibsecret.
+
+-------------------------------------------------------------------
 Mon Jun 19 09:30:14 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.2+20260616.4544f351:

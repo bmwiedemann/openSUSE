@@ -128,7 +128,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.2+20260616.4544f351
+Version:        3.0.2+20260710.e64afeb692
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary

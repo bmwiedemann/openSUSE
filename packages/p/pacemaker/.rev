@@ -2670,4 +2670,19 @@ jsc#PED-14899
 - libcrmcommon: Fix checks in localized_remote_header. (CVE-2026-10649, bsc#1268381, rh#2462817, gh#ClusterLabs/pacemaker#4129) (forwarded request 1361166 from yan_gao)</comment>
     <requestid>1361167</requestid>
   </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>ed4e93e9be0556b5c2f4aedaa3acd096</srcmd5>
+    <version>3.0.2+20260710.e64afeb692</version>
+    <time>1784125532</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.2+20260710.e64afeb692 (Pacemaker-3.0.3-rc1):
+- Build: update version information for 3.0.3
+- libraries: update shared object versions for 3.0.3
+- NLS: update translations before 3.0.3-rc1
+- cibadmin: allow altering status section without triggering refresh (gh#ClusterLabs/pacemaker#4147)
+- tools: Use g_spawn_sync in cibsecret.
+- tools: Handle UTF-8 parameters in crm_resource.
+- tools: Handle UTF-8 parameters in cibsecret. (forwarded request 1365616 from yan_gao)</comment>
+    <requestid>1365617</requestid>
+  </revision>
 </revisionlist>
