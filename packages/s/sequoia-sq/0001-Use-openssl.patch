@@ -1,0 +1,25 @@
+From ef1e0ceb43a70657478a659e5617fb34f7c7acad Mon Sep 17 00:00:00 2001
+From: phoenix <felix.niederwanger@suse.com>
+Date: Tue, 14 Jul 2026 19:41:14 +0200
+Subject: [PATCH] Modifications
+
+---
+ Cargo.toml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Cargo.toml b/Cargo.toml
+index 5292d9cd..bb39bbcf 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -113,7 +113,7 @@ required-features = ["subplot"]
+ 
+ [features]
+ default = [
+-    "crypto-nettle",
++    "crypto-openssl",
+ ]
+ crypto-nettle = ["sequoia-openpgp/crypto-nettle"]
+ crypto-openssl = ["sequoia-openpgp/crypto-openssl"]
+-- 
+2.55.0
+

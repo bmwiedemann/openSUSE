@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 18:03:08 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update dependencies
+
+-------------------------------------------------------------------
+Tue Jul 14 17:54:15 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Switch crypto backend from nettle to openssl due to bsc#1257934 (Patch 0001-Use-openssl.patch)
+
+-------------------------------------------------------------------
 Wed Jul 08 09:23:05 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 1.4.0:

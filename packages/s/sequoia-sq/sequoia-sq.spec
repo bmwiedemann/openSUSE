@@ -26,9 +26,11 @@ License:        GPL-2.0-only
 URL:            https://sequoia-pgp.org/
 Source0:        sequoia-sq-%{version}.tar.xz
 Source1:        vendor.tar.xz
+Patch1:         0001-Use-openssl.patch
 BuildRequires:  capnproto
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
+BuildRequires:  git
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(openssl)
@@ -75,7 +77,7 @@ BuildArch:      noarch
 Zsh command-line completion support for %{name}.
 
 %prep
-%autosetup -a1 -n sequoia-sq-%{version}
+%autosetup -Sgit -p1 -a1 -n sequoia-sq-%{version}
 mkdir -p .cargo
 
 %build
