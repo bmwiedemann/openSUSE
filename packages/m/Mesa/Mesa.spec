@@ -615,7 +615,14 @@ This package contains the Mesa VA-API implementation provided through gallium.
 %package -n libvulkan_intel
 Summary:        Mesa vulkan driver for Intel GPU
 Group:          System/Libraries
-Supplements:    modalias(pci:v00008086d*sv*sd*bc03sc*i*)
+Supplements:    modalias(kernel-default:pci:v00008086d*sv*sd*bc03sc*i*)
+%ifarch aarch64
+Supplements:    modalias(kernel-64kb:pci:v00008086d*sv*sd*bc03sc*i*)
+%endif
+%if 0%{?suse_version} >= 1699
+Supplements:    modalias(kernel-longterm:pci:v00008086d*sv*sd*bc03sc*i*)
+%endif
+
 Requires:       Mesa-vulkan-device-select = %{version}
 # get rid of this package, which is no longer neeeded at all
 Provides:       Mesa-libVulkan-devel = 22.0.0
@@ -672,7 +679,14 @@ This package contains the Vulkan parts for Mesa.
 %package -n libvulkan_radeon
 Summary:        Mesa vulkan driver for AMD GPU
 Group:          System/Libraries
-Supplements:    modalias(pci:v00001002d*sv*sd*bc03sc*i*)
+Supplements:    modalias(kernel-default:pci:v00001002d*sv*sd*bc03sc*i*)
+%ifarch aarch64
+Supplements:    modalias(kernel-64kb:pci:v00001002d*sv*sd*bc03sc*i*)
+%endif
+%if 0%{?suse_version} >= 1699
+Supplements:    modalias(kernel-longterm:pci:v00001002d*sv*sd*bc03sc*i*)
+%endif
+
 Requires:       Mesa-vulkan-device-select = %{version}
 Recommends:     Mesa-vulkan-anti-lag = %{version}
 

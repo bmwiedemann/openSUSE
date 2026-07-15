@@ -6852,4 +6852,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   --&gt; https://docs.mesa3d.org/relnotes/26.1.4</comment>
     <requestid>1363019</requestid>
   </revision>
+  <revision rev="582" vrev="2">
+    <srcmd5>6c25bc45dc0fcd3c4aaff46ed7a111b2</srcmd5>
+    <version>26.1.4</version>
+    <time>1784125549</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed hardware supplements for libvulkan_intel/libvulkan_radeon
+  (boo#1271268)</comment>
+    <requestid>1365662</requestid>
+  </revision>
 </revisionlist>

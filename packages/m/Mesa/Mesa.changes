@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:41:34 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed hardware supplements for libvulkan_intel/libvulkan_radeon
+  (boo#1271268)
+
+-------------------------------------------------------------------
 Wed Jul  1 14:58:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 26.1.4 bugfix release
