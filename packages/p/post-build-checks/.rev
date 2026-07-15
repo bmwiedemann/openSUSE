@@ -1024,4 +1024,18 @@ Marcus
   * try to sort all searches for built rpms to make it more consistent</comment>
     <requestid>1295772</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>7fe36bbbfeba2458421378fb2f6a0e91</srcmd5>
+    <version>84.87+git20260421.8ed5e73</version>
+    <time>1784125333</time>
+    <user>dimstar_suse</user>
+    <comment>(NOTE: this needs to be combined with the new package suse-reproducible-builds
+
+- Update to version 84.87+git20260421.8ed5e73:
+  * drop reproducible build config, this is moving to a separate package
+  * 99-check-remove-rpms: don't remove libsframe*
+  * 50-check-permissions: Fix wrong use of quotes in command
+  * 50-check-permissions: Fix permctl level changes</comment>
+    <requestid>1348451</requestid>
+  </revision>
 </revisionlist>

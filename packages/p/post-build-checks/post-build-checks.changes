@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Apr 21 09:12:01 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20260421.8ed5e73:
+  * drop reproducible build config, this is moving to a separate package
+  * 99-check-remove-rpms: don't remove libsframe*
+  * 50-check-permissions: Fix wrong use of quotes in command
+  * 50-check-permissions: Fix permctl level changes
+
+-------------------------------------------------------------------
 Fri Jul 25 12:50:58 UTC 2025 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 84.87+git20250725.0c3a172:
