@@ -1,17 +1,20 @@
 -------------------------------------------------------------------
-Thu Jul  9 06:45:37 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Thu Jul  9 06:36:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.16
+- Update to 6.0.7
   * CVE-2026-48588: Potential exposure of private data via cached
     Set-Cookie response (bsc#1271029)
   * CVE-2026-53877: Heap buffer over-read in GDALRaster (bsc#1271030)
   * CVE-2026-53878: Header injection possibility since
     DomainNameValidator accepted newlines in input (bsc#1271031)
+  * Fixed a regression in Django 6.0 where the PBKDF2 and MD5 password
+    hashers raised UnicodeDecodeError for bytes passwords that were not
+    valid UTF-8.
 
 -------------------------------------------------------------------
-Tue Jun  9 12:19:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Tue Jun  9 12:23:30 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.15
+- Update to 6.0.6
   * CVE-2026-6873: Signed cookie salt namespace collision (bsc#1267578)
   * CVE-2026-7666: Potential unencrypted email transmission via STARTTLS
     in the SMTP backend (bsc#1267579)
@@ -21,22 +24,30 @@ Tue Jun  9 12:19:52 UTC 2026 - Markéta Machová <mmachova@suse.com>
     Vary: Authorization (bsc#1267576)
   * CVE-2026-48587: Potential exposure of private data via whitespace
     padding in Vary header (bsc#1267577)
+  * Fixed a bug in Django 6.0 where an alert message on an admin changelist
+    with ModelAdmin.list_editable referred to the “Run” button by its
+    previous name
 
 -------------------------------------------------------------------
-Wed May  6 08:30:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Wed May  6 08:23:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.14
+- Update to 6.0.5
   * CVE-2026-5766: Potential denial-of-service vulnerability in ASGI
     requests via file upload limit bypass (bsc#1264153)
   * CVE-2026-35192: Session fixation via public cached pages and
     SESSION_SAVE_EVERY_REQUEST (bsc#1264154)
   * CVE-2026-6907: Potential exposure of private data due to incorrect
     handling of Vary: * in UpdateCacheMiddleware (bsc#1264152)
+  * Fixed a misplaced </div> in the django/contrib/admin/templates/admin/change_list.html
+    template added in Django 6.0 that could be problematic when
+    overriding the pagination block
+  * Fixed a bug in Django 6.0 where deprecation warnings incorrectly
+    skipped lines from third-party packages prefixed with “django”
 
 -------------------------------------------------------------------
-Thu Apr  9 06:54:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Thu Apr  9 06:57:36 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.13
+- Update to 6.0.4
   * CVE-2026-3902: ASGI header spoofing via underscore/hyphen
     conflation (bsc#1261729)
   * CVE-2026-4277: Privilege abuse in GenericInlineModelAdmin
@@ -47,25 +58,35 @@ Thu Apr  9 06:54:26 UTC 2026 - Markéta Machová <mmachova@suse.com>
     MultiPartParser via base64-encoded file upload (bsc#1261722)
   * CVE-2026-33034: Potential denial-of-service vulnerability in
     ASGI requests via memory upload limit bypass (bsc#1261724)
+  * Fixed a regression in Django 6.0 where alogin() and alogout() did not
+    respectively set or clear request.user if it had already been materialized
+  * Fixed a regression in Django 6.0 in admin forms where RelatedFieldWidgetWrapper
+    incorrectly wrapped all widgets in a <fieldset>
+  * Fixed a bug in Django 6.0 where the fields.E348 system check did not
+    detect name clashes between model managers and related_names for
+    non-self-referential relationships
 
 -------------------------------------------------------------------
-Wed Mar  4 09:35:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Wed Mar  4 09:23:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.12
+- Update to 6.0.3
   * CVE-2026-25674: Potential incorrect permissions on newly created
     file system objects (bsc#1259142)
   * Fixed NameError when inspecting functions making use of deferred
     annotations in Python 3.14
+  * Fixed AttributeError when subclassing builtin lookups and neglecting
+    to override as_sql() to accept any sequence
+  * Fixed TypeError when deprecation warnings are emitted in environments
+    importing Django by namespace
+  * Fixed a visual regression where fieldset legends were misaligned
+    in the admin
+  * Prevented the django.tasks.signals.task_finished signal from writing
+    extraneous log messages when no exceptions are encountered
 
 -------------------------------------------------------------------
-Fri Feb 20 11:45:55 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Wed Feb  4 09:14:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Add skip-flaky-tests.patch to skip tests which randomly fail
-
--------------------------------------------------------------------
-Tue Feb  3 14:07:21 UTC 2026 - Markéta Machová <mmachova@suse.com>
-
-- Update to 5.2.11
+- Update to 6.0.2 
   * CVE-2025-13473: Username enumeration through timing difference
     in mod_wsgi authentication handler (bsc#1257401)
   * CVE-2025-14550: Potential denial-of-service vulnerability via
@@ -78,17 +99,62 @@ Tue Feb  3 14:07:21 UTC 2026 - Markéta Machová <mmachova@suse.com>
     control characters (bsc#1257407)
   * CVE-2026-1312: Potential SQL injection via QuerySet.order_by
     and FilteredRelation (bsc#1257408)
+  * Fixed a visual regression in Django 6.0 that caused the admin
+    filter sidebar to wrap below the changelist when filter elements
+    contained long text
+  * Fixed a visual regression in Django 6.0 for admin form fields
+    grouped under a <fieldset> aligned horizontally
+  * Fixed a regression in Django 6.0 where auto_now_add field values
+    were not populated during INSERT operations, due to incorrect
+    parameters passed to field.pre_save()
 
 -------------------------------------------------------------------
-Fri Jan  9 09:41:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+Fri Jan  9 10:21:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
-- Update to 5.2.10
+- Update to 6.0.1
   * Fixed a bug in Django 5.2 where data exceeding max_length was
     silently truncated by QuerySet.bulk_create() on PostgreSQL
-  * Fixed a bug where management command colorized help (introduced
-    in Python 3.14) ignored the --no-color option and the DJANGO_COLORS
+  * Fixed a regression in Django 6.0 where querystring mishandled
+    multi-value QueryDict keys, both by only preserving the last
+    value and by incorrectly handling None values
+  * Fixed a regression in Django 6.0 that prevented changing the name
+    of a ManyToManyField from taking effect when applying migrations
+  * Fixed a bug where management command colorized help (introduced in
+    Python 3.14) ignored the --no-color option and the DJANGO_COLORS
     setting
+  * Fixed a regression in Django 6.0 that caused bulk_create() to
+    crash when introspecting the connection on SQLite
+  * Fixed a visual regression in Django 6.0 for admin form fields
+    grouped under a <fieldset> in Safari
+  * Fixed a crash in Django 6.0 caused by infinite recursion when
+    calling repr() on an unevaluated django.utils.csp.LazyNonce
+    instance
+  * Fixed a regression in Django 6.0 where path() routes defined using
+    gettext_lazy() failed to resolve correctly
+  * Fixed a regression in Django 6.0 where the Widget.use_fieldset
+    attribute of ClearableFileInput was flipped from False to True
+  * Reverted an undocumented optimization in Django 6.0 that modified
+    permission name and codename values when renaming models via a
+    migration
 - Drop merged test_strip_tags_incomplete.patch
+
+-------------------------------------------------------------------
+Tue Dec 30 08:45:31 UTC 2025 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.0
+  * Django 6.0 supports Python 3.12, 3.13, and 3.14.
+  * Built-in support for the Content Security Policy (CSP) standard
+    is now available.
+  * The Django Template Language now supports template partials.
+  * Django now includes a built-in Tasks framework for running code
+    outside the HTTP request–response cycle.
+  * Email handling in Django now uses Python’s modern email API,
+    introduced in Python 3.6.
+  * Dropped support for MariaDB 10.5.
+  * DEFAULT_AUTO_FIELD setting now defaults to BigAutoField.
+  * Many more new features or removed deprecations, see upstream
+    https://docs.djangoproject.com/en/6.0/releases/6.0/
+- Drop no-longer-needed support-msgfmt-0.25.patch
 
 -------------------------------------------------------------------
 Mon Dec 29 09:10:21 UTC 2025 - Markéta Machová <mmachova@suse.com>

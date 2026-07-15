@@ -1568,4 +1568,41 @@
     DomainNameValidator accepted newlines in input (bsc#1271031)</comment>
     <requestid>1364659</requestid>
   </revision>
+  <revision rev="151" vrev="1">
+    <srcmd5>d7a2d2645370bdf65b6f0aeb51824a76</srcmd5>
+    <version>6.0.7</version>
+    <time>1784125506</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 6.0.7
+  * Fixed a regression in Django 6.0 where the PBKDF2 and MD5 password
+    hashers raised UnicodeDecodeError for bytes passwords that were not
+    valid UTF-8.
+- Update to 6.0.6
+  * Fixed a bug in Django 6.0 where an alert message on an admin changelist
+    with ModelAdmin.list_editable referred to the “Run” button by its
+    previous name
+- Update to 6.0.5
+  * Fixed a misplaced &lt;/div&gt; in the django/contrib/admin/templates/admin/change_list.html
+    template added in Django 6.0 that could be problematic when
+    overriding the pagination block
+  * Fixed a bug in Django 6.0 where deprecation warnings incorrectly
+    skipped lines from third-party packages prefixed with “django”
+- Update to 6.0.4
+  * Fixed a regression in Django 6.0 where alogin() and alogout() did not
+    respectively set or clear request.user if it had already been materialized
+  * Fixed a regression in Django 6.0 in admin forms where RelatedFieldWidgetWrapper
+    incorrectly wrapped all widgets in a &lt;fieldset&gt;
+  * Fixed a bug in Django 6.0 where the fields.E348 system check did not
+    detect name clashes between model managers and related_names for
+    non-self-referential relationships
+- Update to 6.0.3
+  * Fixed AttributeError when subclassing builtin lookups and neglecting
+    to override as_sql() to accept any sequence
+  * Fixed TypeError when deprecation warnings are emitted in environments
+    importing Django by namespace
+  * Fixed a visual regression where fieldset legends were misaligned
+    in the admin
+  * Prevented the django.tasks.signals.task_finished signal from writing</comment>
+    <requestid>1365378</requestid>
+  </revision>
 </revisionlist>

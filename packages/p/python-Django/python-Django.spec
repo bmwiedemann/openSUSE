@@ -25,28 +25,25 @@
 %else
 %bcond_with libalternatives
 %endif
+%define skip_python311 1
 Name:           python-Django
-Version:        5.2.16
+Version:        6.0.7
 Release:        0
 Summary:        A high-level Python Web framework
 License:        BSD-3-Clause
 URL:            https://www.djangoproject.com
-Source:         https://www.djangoproject.com/m/releases/5.2/django-%{version}.tar.gz
+Source:         https://www.djangoproject.com/m/releases/6.0/django-%{version}.tar.gz
 Source1:        https://www.djangoproject.com/m/pgp/Django-%{version}.checksum.txt
 Source2:        %{name}.keyring
 Source99:       python-Django-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19530 Fixed #36421 -- Made test_msgfmt_error_including_non_ascii compatible with with msgfmt 0.25.
-Patch1:         support-msgfmt-0.25.patch
 # PATCH-FIX-UPSTREAM https://github.com/django/django/pull/19639 Fixed #36499 -- Adjusted utils_tests.test_html.TestUtilsHtml.test_strip_tags following Python's HTMLParser new behavior.
 # fixed and refined upstream, but some of our interpreters weren't updated to a new version yet and still only carry the patch, so providing the non-conditional version
-Patch2:         test_strip_tags.patch
-# PATCH-FIX-OPENSUSE skip-flaky-tests.patch skip tests which are erratic on OBS
-Patch3:         skip-flaky-tests.patch
+Patch1:         test_strip_tags.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module argon2-cffi >= 19.1.0}
-BuildRequires:  %{python_module asgiref >= 3.7.0}
+BuildRequires:  %{python_module argon2-cffi >= 23.1.0}
+BuildRequires:  %{python_module asgiref >= 3.9.1}
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module bcrypt}
 BuildRequires:  %{python_module docutils}
@@ -55,16 +52,16 @@ BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module sqlparse >= 0.3.1}
-BuildRequires:  %{python_module tblib >= 1.5.0}
+BuildRequires:  %{python_module sqlparse >= 0.5.0}
+BuildRequires:  %{python_module tblib >= 3.0.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  gpg2
 BuildRequires:  python-rpm-macros
 Requires:       python
-Requires:       python-asgiref >= 3.7.0
-Requires:       python-sqlparse >= 0.3.1
+Requires:       python-asgiref >= 3.9.1
+Requires:       python-sqlparse >= 0.5.0
 Requires:       python-tzdata
 Recommends:     python-Jinja2 >= 2.9.2
 Recommends:     python-Pillow >= 6.2.0
