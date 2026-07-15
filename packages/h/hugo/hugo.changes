@@ -39,7 +39,7 @@ Mon Jul 06 21:09:09 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 -------------------------------------------------------------------
 Sun Jun 28 21:30:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.163.3:
+- update to 0.163.3 (bsc#1269014):
   * markup/highlight: Escape lang in default code block rendering
     ce1a7e0b @bep thanks to @k0ngj1 for reporting this issue.
   * parser/pageparser: Preserve non-ASCII whitespace after e.g.
@@ -57,7 +57,7 @@ Sun Jun 28 21:30:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Jun 24 17:06:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- Update to version 0.163.1 (bsc#1269014, bsc#1269015):
+- Update to version 0.163.1 (bsc#1269015):
   * releaser: Bump versions for release of 0.163.1
   * build(deps): bump golang.org/x/image from 0.41.0 to 0.42.0
   * Fix multi --renderSegments merge behavior
