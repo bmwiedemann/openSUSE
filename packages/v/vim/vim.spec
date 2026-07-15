@@ -72,9 +72,9 @@ Patch10:        %{name}-7.3-filetype_changes.patch
 Patch11:        %{name}-7.4-filetype_mine.patch
 Patch12:        %{name}73-no-static-libpython.patch
 Patch13:        %{name}-8.0.1568-defaults.patch
-Patch14:        %{name}-8.2.2411-globalvimrc.patch
 Patch15:        %{name}-9.1.1134-revert-putty-terminal-colors.patch
 Patch16:        %{name}-9.1.1732-fix-inc-detection.patch
+Patch17:        %{name}-9.2.0780-modelinestrict-allow-wrap.patch
 BuildRequires:  autoconf >= 2.71
 BuildRequires:  db-devel
 BuildRequires:  fdupes
@@ -87,7 +87,7 @@ BuildRequires:  ruby-devel
 BuildRequires:  wayland-utils
 BuildRequires:  pkgconfig(form)
 BuildRequires:  pkgconfig(formw)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libacl)
 BuildRequires:  pkgconfig(lua)
@@ -225,9 +225,9 @@ cp %{SOURCE23} runtime/syntax/apparmor.vim
 %patch -P 11 -p1
 %patch -P 12 -p1
 %patch -P 13 -p1
-%patch -P 14 -p1
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
 cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build
@@ -269,8 +269,10 @@ export GUI_OPTIONS="\
     --disable-icon-cache-update \
     --enable-xim \
     --enable-fontset \
-    --enable-gui=gtk4 \
-    --enable-wayland"
+    --enable-gui=gtk3 \
+    --enable-wayland \
+    --with-x=yes \
+    "
 
 export NOGUI_OPTIONS="\
     --disable-gui \

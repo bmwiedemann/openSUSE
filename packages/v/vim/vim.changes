@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Jul 13 21:47:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add vim-9.2.0780-modelinestrict-allow-wrap.patch: allow 'wrap' and
+  'linebreak' to be set from a modeline (bsc#1268162). Upstream patch
+  9.2.0350 added the 'modelinestrict' option, enabled by default, whose
+  hardcoded whitelist omits these two purely visual window-local
+  options, so 'nowrap' in a modeline was silently ignored while every
+  other setting on the same line was applied.
+- Update vim-7.3-name_vimrc.patch: point SYS_VIMRC_FILE at
+  $VIMRUNTIME/suse.vimrc rather than /etc/vimrc, which we no longer own
+  (bsc#1268162).
+- Update suse.vimrc: source /etc/vimrc at the end of the file, so that a
+  local system vimrc still overrides the distribution defaults.
+- Drop vim-8.2.2411-globalvimrc.patch: its main.c fallback to suse.vimrc
+  fired only when do_source() of /etc/vimrc returned FAIL, which an
+  empty /etc/vimrc does not. A stale or empty /etc/vimrc therefore
+  suppressed the distribution defaults entirely, losing 'syntax on', the
+  cursor position restore and 'nomodeline' (bsc#1268162).
+- Build gvim against GTK 3 instead of GTK 4 (bsc#1270238).
+  The GTK 4 clipboard code spins a nested main loop around
+  gdk_clipboard_read_async(), which deadlocks gvim on paste, and its
+  mime type negotiation does not interoperate with Qt clipboard
+  owners.
+  --enable-gui=gtk4 also forces with_x=no in vim's configure, so gvim
+  lost +X11, +xterm_clipboard, +xsmp and the CUT_BUFFER0 fallback. GTK 3
+  keeps native Wayland support:
+  * Replace BuildRequires pkgconfig(gtk4) with pkgconfig(gtk+-3.0).
+  * Pass --enable-gui=gtk3 and --with-x=yes in GUI_OPTIONS.
+
+-------------------------------------------------------------------
 Fri Jul  3 11:47:33 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 9.2.0780 

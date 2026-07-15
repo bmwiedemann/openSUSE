@@ -1,7 +1,7 @@
-" /usr/etc/vimrc (configuration file for vim only)
+" $VIMRUNTIME/suse.vimrc (configuration file for vim only)
 " author: Klaus Franken     <kfr@suse.de>
-" author: Werner Fink       <werner@suse.de> 
-" author: Florian La Roche  <florian@suse.de> 
+" author: Werner Fink       <werner@suse.de>
+" author: Florian La Roche  <florian@suse.de>
 " version: 2021/02/22
 " commented lines start with `"'
 
@@ -314,5 +314,12 @@ endif " has("autocmd")
 " that it potentially can open for malicious users to do harmful things.
 set nomodeline
 
+" Let a local system vimrc override the defaults above. This file is the
+" compiled-in SYS_VIMRC_FILE, so /etc/vimrc is no longer sourced by Vim
+" itself and has to be chained from here (bsc#1268162).
+if filereadable("/etc/vimrc")
+    source /etc/vimrc
+endif
+
 " get easier to use and more user friendly vim defaults
-" /etc/vimrc ends here
+" suse.vimrc ends here

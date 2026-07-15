@@ -1,13 +1,36 @@
-Index: vim-9.2.0677/src/feature.h
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Date: Sun, 12 Jul 2026 00:00:00 +0000
+Subject: [PATCH] Define the system-wide vimrc and gvimrc locations
+Bug-SUSE: https://bugzilla.suse.com/show_bug.cgi?id=1268162
+Origin: other
+Forwarded: no
+
+Upstream ships both defines commented out. Enable them.
+
+SYS_VIMRC_FILE points at $VIMRUNTIME/suse.vimrc rather than /etc/vimrc,
+because we no longer own /etc/vimrc. do_source() expands environment
+variables in the file name, so $VIMRUNTIME resolves at startup. suse.vimrc
+sources /etc/vimrc at its end, so a local system vimrc still overrides the
+distribution defaults.
+
+This replaces the previous arrangement, where main.c fell back to
+suse.vimrc only when do_source() of /etc/vimrc returned FAIL. An empty
+/etc/vimrc sources successfully, so that fallback never fired and the
+distribution defaults were silently dropped: no 'syntax on', no
+cursor-position restore, and 'modeline' left enabled instead of the
+'nomodeline' we ship (bsc#1268162). vim-8.2.2411-globalvimrc.patch is
+therefore dropped.
+
+Index: vim-9.2.0780/src/feature.h
 ===================================================================
---- vim-9.2.0677.orig/src/feature.h
-+++ vim-9.2.0677/src/feature.h
+--- vim-9.2.0780.orig/src/feature.h
++++ vim-9.2.0780/src/feature.h
 @@ -714,11 +714,12 @@
   * SYS_VIMRC_FILE	Name of the system-wide .vimrc file.
   */
  // #define SYS_VIMRC_FILE	"/etc/vimrc"
 -
-+#define SYS_VIMRC_FILE	"/etc/vimrc"
++#define SYS_VIMRC_FILE	"$VIMRUNTIME/suse.vimrc"
  /*
   * SYS_GVIMRC_FILE	Name of the system-wide .gvimrc file.
   */

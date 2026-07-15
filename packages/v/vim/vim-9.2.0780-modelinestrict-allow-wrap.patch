@@ -1,0 +1,44 @@
+From: Martin Jungblut Schreiner <martin.schreiner@suse.com>
+Date: Sun, 12 Jul 2026 00:00:00 +0000
+Subject: [PATCH] Allow 'wrap' and 'linebreak' in modelines under 'modelinestrict'
+Bug-SUSE: https://bugzilla.suse.com/show_bug.cgi?id=1268162
+Origin: other
+Forwarded: no
+
+Upstream patch 9.2.0350 introduced the global 'modelinestrict' option
+(default on), which silently ignores any modeline setting that is not in
+a hardcoded whitelist. 'wrap' is not in that whitelist, so a modeline of
+the form
+
+  # vim: ts=2 shiftwidth=2 noexpandtab nowrap
+
+applies every setting except 'nowrap'. This is a user-visible behaviour
+change between 9.2.0280 and 9.2.0398.
+
+'wrap' and 'linebreak' are purely window-local display options with no
+security relevance: they change how an already-loaded buffer is
+rendered, they execute nothing and they read nothing from disk. They
+belong in the whitelist on the same grounds as 'rightleft' and
+'foldcolumn', which are already permitted. Precedent for extending the
+list exists upstream in 9.2.0465, which added 'foldmarker'.
+
+Index: vim-9.2.0780/src/option.c
+===================================================================
+--- vim-9.2.0780.orig/src/option.c
++++ vim-9.2.0780/src/option.c
+@@ -1556,6 +1556,7 @@
+     "foldenable",
+     "foldmarker",
+     "foldmethod",
++    "linebreak",
+     "modifiable",
+     "readonly",
+     "rightleft",
+@@ -1568,6 +1569,7 @@
+     "textwidth",
+     "varsofttabstop",
+     "vartabstop",
++    "wrap",
+     NULL
+ };
+ 
