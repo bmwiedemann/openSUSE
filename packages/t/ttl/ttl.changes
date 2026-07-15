@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:55:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Drop cap_net_admin, only cap_net_raw is needed (boo#1270714)
+
+-------------------------------------------------------------------
 Wed Jul  8 06:41:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.21.0:

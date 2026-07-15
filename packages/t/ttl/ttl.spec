@@ -55,6 +55,6 @@ enrich hop data with DNS, ASN, geolocation, and PeeringDB information.
 %files
 %license LICENSE-APACHE LICENSE-MIT
 %doc CHANGELOG.md README.md
-%verify(not mode caps) %attr(0755,root,root) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/ttl
+%verify(not mode caps) %attr(0755,root,root) %caps(cap_net_raw=ep) %{_bindir}/ttl
 
 %changelog
