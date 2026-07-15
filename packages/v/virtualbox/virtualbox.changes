@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 05:17:52 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- support for kernel 7.2
+  * 0001-7.2-Backported-r174461-Linux-vboxdrv-Add-initial-sup.patch
+  * 0002-7.2-Backported-r174462-Linux-vboxnetadp-Add-initial-.patch
+
+-------------------------------------------------------------------
 Wed Jul  1 16:00:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.12

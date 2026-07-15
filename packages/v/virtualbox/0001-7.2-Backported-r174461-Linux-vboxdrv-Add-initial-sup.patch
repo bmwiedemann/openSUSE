@@ -1,0 +1,75 @@
+From: Vadim Galitsyn <vadim.galitsyn@oracle.com>
+Date: Wed, 8 Jul 2026 10:36:41 +0000
+Subject: 7.2: Backported r174461: Linux: vboxdrv: Add initial support for
+ kernel 7.2, bugref:11119.
+References: kernel 7.2
+Git-repo: https://github.com/VirtualBox/virtualbox/
+Git-commit: 4dd5694a9cf70703a47d4de5fd082ec76386b5ba
+Patch-mainline: yes
+
+svn:sync-xref-src-repo-rev: r174492
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ .../HostDrivers/Support/linux/SUPDrv-linux.c  | 29 +++++++++++++++++--
+ 1 file changed, 27 insertions(+), 2 deletions(-)
+
+diff --git a/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c b/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+index 90ccf2ba5c04..5e4653fb2de8 100644
+--- a/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
++++ b/src/VBox/HostDrivers/Support/linux/SUPDrv-linux.c
+@@ -1719,8 +1719,25 @@ void VBOXCALL   supdrvOSLdrReleaseWrapperModule(PSUPDRVDEVEXT pDevExt, PSUPDRVLD
+ int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *puValue)
+ {
+ # ifdef SUPDRV_LINUX_HAS_SAFE_MSR_API
+-    uint32_t u32Low, u32High;
+     int rc;
++#  if RTLNX_VER_MIN(7,2,0)
++    u64 val;
++
++    IPRT_LINUX_SAVE_EFL_AC();
++    if (idCpu == NIL_RTCPUID)
++        rc = rdmsrq_safe(uMsr, &val);
++    else if (RTMpIsCpuOnline(idCpu))
++        rc = rdmsrq_safe_on_cpu(idCpu, uMsr, &val);
++    else
++        return VERR_CPU_OFFLINE;
++    IPRT_LINUX_RESTORE_EFL_AC();
++    if (rc == 0)
++    {
++        *puValue = val;
++        return VINF_SUCCESS;
++    }
++#  else
++    uint32_t u32Low, u32High;
+ 
+     IPRT_LINUX_SAVE_EFL_AC();
+     if (idCpu == NIL_RTCPUID)
+@@ -1735,6 +1752,7 @@ int VBOXCALL    supdrvOSMsrProberRead(uint32_t uMsr, RTCPUID idCpu, uint64_t *pu
+         *puValue = RT_MAKE_U64(u32Low, u32High);
+         return VINF_SUCCESS;
+     }
++#  endif /* < 7.2.0 */
+     return VERR_ACCESS_DENIED;
+ # else
+     return VERR_NOT_SUPPORTED;
+@@ -1748,10 +1766,17 @@ int VBOXCALL    supdrvOSMsrProberWrite(uint32_t uMsr, RTCPUID idCpu, uint64_t uV
+     int rc;
+ 
+     IPRT_LINUX_SAVE_EFL_AC();
++#  if RTLNX_VER_MIN(7,2,0)
++    if (idCpu == NIL_RTCPUID)
++        rc = wrmsrq_safe(uMsr, uValue);
++    else if (RTMpIsCpuOnline(idCpu))
++        rc = wrmsrq_safe_on_cpu(idCpu, uMsr, uValue);
++#  else
+     if (idCpu == NIL_RTCPUID)
+         rc = wrmsr_safe(uMsr, RT_LODWORD(uValue), RT_HIDWORD(uValue));
+     else if (RTMpIsCpuOnline(idCpu))
+         rc = wrmsr_safe_on_cpu(idCpu, uMsr, RT_LODWORD(uValue), RT_HIDWORD(uValue));
++#  endif /* < 7.2.0 */
+     else
+         return VERR_CPU_OFFLINE;
+     IPRT_LINUX_RESTORE_EFL_AC();
+-- 
+2.54.0
+

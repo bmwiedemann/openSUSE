@@ -1,0 +1,113 @@
+From: Vadim Galitsyn <vadim.galitsyn@oracle.com>
+Date: Wed, 8 Jul 2026 10:37:19 +0000
+Subject: 7.2: Backported r174462: Linux: vboxnetadp: Add initial support for
+ kernel 7.2, bugref:11119.
+References: kernel 7.2
+Git-repo: https://github.com/VirtualBox/virtualbox/
+Git-commit: d386e530e4dd488ec7df995e4e73e806520473e7
+Patch-mainline: yes
+
+svn:sync-xref-src-repo-rev: r174493
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdp.c         |  4 ++--
+ src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h | 12 +++++++++++-
+ .../VBoxNetAdp/darwin/VBoxNetAdp-darwin.cpp          |  4 ++--
+ .../VBoxNetAdp/freebsd/VBoxNetAdp-freebsd.c          |  6 +++---
+ .../HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.c  |  6 +++---
+ 5 files changed, 21 insertions(+), 11 deletions(-)
+
+diff --git a/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdp.c b/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdp.c
+index c290f249ca28..978086880378 100644
+--- a/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdp.c
++++ b/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdp.c
+@@ -129,7 +129,7 @@ int vboxNetAdpCreate(PVBOXNETADP *ppNew, const char *pcszName)
+             {
+                 Log(("vboxNetAdpCreate: using name: %s\n", pcszName));
+                 pThis->iUnit = vboxNetAdpGetUnitByName(pcszName);
+-                strncpy(pThis->szName, pcszName, sizeof(pThis->szName) - 1);
++                vboxNetAdpStrncpy(pThis->szName, pcszName, sizeof(pThis->szName) - 1);
+                 pThis->szName[sizeof(pThis->szName) - 1] = '\0';
+             }
+             else
+diff --git a/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h b/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h
+index 770be256c448..8502f3144dee 100644
+--- a/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h
++++ b/src/VBox/HostDrivers/VBoxNetAdp/VBoxNetAdpInternal.h
+@@ -162,6 +162,16 @@ DECLHIDDEN(int) vboxNetAdpDestroy(PVBOXNETADP pThis);
+ DECLHIDDEN(PVBOXNETADP) vboxNetAdpFindByName(const char *pszName);
+ DECLHIDDEN(void) vboxNetAdpComposeMACAddress(PVBOXNETADP pThis, PRTMAC pMac);
+ 
++# if defined(RT_OS_LINUX)
++#  if RTLNX_VER_MIN(7,2,0)
++#   define vboxNetAdpStrncpy strscpy
++#  else  /* 7.2.0 */
++#   define vboxNetAdpStrncpy strncpy
++#  endif /* < 7.2.0 */
++# else /* !RT_OS_LINUX */
++#  define vboxNetAdpStrncpy strncpy
++# endif
++
+ 
+ /**
+  * This is called to perform OS-specific structure initializations.
+diff --git a/src/VBox/HostDrivers/VBoxNetAdp/darwin/VBoxNetAdp-darwin.cpp b/src/VBox/HostDrivers/VBoxNetAdp/darwin/VBoxNetAdp-darwin.cpp
+index a61322718c3b..e35e827fadf6 100644
+--- a/src/VBox/HostDrivers/VBoxNetAdp/darwin/VBoxNetAdp-darwin.cpp
++++ b/src/VBox/HostDrivers/VBoxNetAdp/darwin/VBoxNetAdp-darwin.cpp
+@@ -416,7 +416,7 @@ static int VBoxNetAdpDarwinIOCtl(dev_t Dev, u_long iCmd, caddr_t pData, int fFla
+                 return rc == VERR_OUT_OF_RESOURCES ? ENOMEM : EINVAL;
+ 
+             Assert(strlen(pReq->szName) < sizeof(pReq->szName));
+-            strncpy(pReq->szName, pNew->szName, sizeof(pReq->szName) - 1);
++            vboxNetAdpStrncpy(pReq->szName, pNew->szName, sizeof(pReq->szName) - 1);
+             pReq->szName[sizeof(pReq->szName) - 1] = '\0';
+             Log(("VBoxNetAdpDarwinIOCtl: Added '%s'\n", pReq->szName));
+             break;
+diff --git a/src/VBox/HostDrivers/VBoxNetAdp/freebsd/VBoxNetAdp-freebsd.c b/src/VBox/HostDrivers/VBoxNetAdp/freebsd/VBoxNetAdp-freebsd.c
+index 2118d9c20466..e4c08fd1d572 100644
+--- a/src/VBox/HostDrivers/VBoxNetAdp/freebsd/VBoxNetAdp-freebsd.c
++++ b/src/VBox/HostDrivers/VBoxNetAdp/freebsd/VBoxNetAdp-freebsd.c
+@@ -184,7 +184,7 @@ VBoxNetAdpFreeBSDCtrlioctl(struct cdev *dev, u_long iCmd, caddr_t data, int flag
+             if (RT_FAILURE(rc))
+                 return EINVAL;
+ 
+-            strncpy(pReq->szName, pAdp->szName, sizeof(pReq->szName) - 1);
++            vboxNetAdpStrncpy(pReq->szName, pAdp->szName, sizeof(pReq->szName) - 1);
+             pReq->szName[sizeof(pReq->szName) - 1] = '\0';
+             break;
+ 
+@@ -321,7 +321,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMac)
+     ether_ifattach(ifp, (void *)pMac);
+     ifp->if_baudrate = 0;
+ 
+-    strncpy(pThis->szName, ifp->if_xname, VBOXNETADP_MAX_NAME_LEN);
++    vboxNetAdpStrncpy(pThis->szName, ifp->if_xname, VBOXNETADP_MAX_NAME_LEN);
+     pThis->u.s.ifp = ifp;
+     VBOXCURVNET_RESTORE();
+     return 0;
+diff --git a/src/VBox/HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.c b/src/VBox/HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.c
+index 76cd18c9e532..5389180efc03 100644
+--- a/src/VBox/HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.c
++++ b/src/VBox/HostDrivers/VBoxNetAdp/linux/VBoxNetAdp-linux.c
+@@ -342,7 +342,7 @@ int vboxNetAdpOsCreate(PVBOXNETADP pThis, PCRTMAC pMACAddress)
+             err = register_netdev(pNetDev);
+             if (!err)
+             {
+-                strncpy(pThis->szName, pNetDev->name, sizeof(pThis->szName));
++                vboxNetAdpStrncpy(pThis->szName, pNetDev->name, sizeof(pThis->szName));
+                 pThis->szName[sizeof(pThis->szName) - 1] = '\0';
+                 pThis->u.s.pNetDev = pNetDev;
+                 Log2(("vboxNetAdpOsCreate: pThis=%p pThis->szName = %p\n", pThis, pThis->szName));
+@@ -465,7 +465,7 @@ static long VBoxNetAdpLinuxIOCtlUnlocked(struct file *pFilp,
+             }
+ 
+             Assert(strlen(pAdp->szName) < sizeof(Req.szName));
+-            strncpy(Req.szName, pAdp->szName, sizeof(Req.szName) - 1);
++            vboxNetAdpStrncpy(Req.szName, pAdp->szName, sizeof(Req.szName) - 1);
+             Req.szName[sizeof(Req.szName) - 1] = '\0';
+ 
+             if (RT_UNLIKELY(copy_to_user((void *)ulArg, &Req, sizeof(Req))))
+-- 
+2.54.0
+
