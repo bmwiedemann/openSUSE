@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:03:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.12.4:
+  + gupnp-tools fails to build with libxml 2.15.1
+  + common: Do not use deprecated xmlIndentTreeOutput
+  + Rename app icons to match with the desktop files
+- Drop gupnp-tools-ignore-deprecated.patch: Fixed upstream.
+
+-------------------------------------------------------------------
 Fri Jun 26 22:08:48 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.12.3:
