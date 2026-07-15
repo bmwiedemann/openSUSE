@@ -328,4 +328,14 @@
   + Updated translations (forwarded request 1349457 from rrahl0)</comment>
     <requestid>1349458</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>0de22ac58467d4f53c27d44e84b96549</srcmd5>
+    <version>0.5.21</version>
+    <time>1784146828</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.21:
+  + Fix GE-Proton asset position
+  + Updated translations (forwarded request 1366007 from rrahl0)</comment>
+    <requestid>1366008</requestid>
+  </revision>
 </revisionlist>
