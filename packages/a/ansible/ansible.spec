@@ -17,7 +17,7 @@
 
 
 %define ansible_community_major_version 14
-%define required_ansible_core_version 2.21.0
+%define required_ansible_core_version 2.21.1
 %define next_ansible_core_version 2.22.0
 
 
@@ -43,7 +43,7 @@
 %endif
 
 Name:           ansible
-Version:        14.0.0
+Version:        14.1.0
 Release:        0
 Summary:        Radically simple IT automation
 License:        GPL-3.0-or-later

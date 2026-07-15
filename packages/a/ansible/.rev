@@ -1371,4 +1371,12 @@ numbers for further reference.
     <comment>update to 14.0.0, fix boo#1266358 (please stage with SR#1356836)</comment>
     <requestid>1356837</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>c1d39cef730b83613cc5f55b1cbce800</srcmd5>
+    <version>14.1.0</version>
+    <time>1781879852</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360466</requestid>
+  </revision>
 </revisionlist>
