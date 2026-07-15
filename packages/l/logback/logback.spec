@@ -17,36 +17,27 @@
 
 
 Name:           logback
-Version:        1.5.36
+Version:        1.5.38
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
+Group:          Development/Libraries/Java
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         new-janino.patch
-Patch1:         filtering.patch
+Patch0:         filtering.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
+BuildRequires:  mvn(ch.qos.reload4j:reload4j)
+BuildRequires:  mvn(jakarta.activation:jakarta.activation-api)
 BuildRequires:  mvn(jakarta.mail:jakarta.mail-api)
 BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
-BuildRequires:  mvn(javax.mail:mail)
-BuildRequires:  mvn(javax.servlet:javax.servlet-api)
-BuildRequires:  mvn(junit:junit)
-BuildRequires:  mvn(log4j:log4j)
-BuildRequires:  mvn(org.apache.ant:ant-junit)
-BuildRequires:  mvn(org.apache.ant:ant-junitlauncher)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-catalina)
-BuildRequires:  mvn(org.apache.tomcat:tomcat-coyote)
-BuildRequires:  mvn(org.codehaus.janino:janino)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-server)
-BuildRequires:  mvn(org.eclipse.jetty:jetty-util)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
-BuildRequires:  mvn(org.slf4j:slf4j-api:2)
-BuildRequires:  mvn(org.slf4j:slf4j-ext:2)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildRequires:  mvn(org.slf4j:slf4j-ext)
+BuildRequires:  mvn(org.tukaani:xz)
 BuildArch:      noarch
 
 %description
@@ -66,12 +57,14 @@ could easily build your own module on top of logback-core.
 
 %package javadoc
 Summary:        Javadoc for %{name}
+Group:          Documentation/HTML
 
 %description javadoc
 API documentation for the Logback library
 
 %package access
 Summary:        Logback-access module for Servlet integration
+Group:          Development/Libraries/Java
 
 %description access
 The logback-access module integrates with Servlet containers, such as Tomcat
@@ -80,6 +73,7 @@ easily build your own module on top of logback-core.
 
 %package examples
 Summary:        Logback Examples Module
+Group:          Development/Libraries/Java
 
 %description examples
 logback-examples module.
@@ -95,6 +89,8 @@ chmod +x %{name}-examples/src/main/resources/setClasspath.sh
 %pom_remove_plugin :findbugs-maven-plugin
 %pom_remove_plugin -r :maven-dependency-plugin
 %pom_remove_plugin -r :central-publishing-maven-plugin
+# needed for tests only
+%pom_remove_plugin -r :maven-antrun-plugin
 
 rm -r %{name}-*/src/test/java/*
 # remove test deps
@@ -112,8 +108,6 @@ rm -r %{name}-*/src/test/java/*
 
 %pom_xpath_remove "pom:build/pom:extensions"
 %pom_xpath_remove "pom:profiles"
-
-%pom_xpath_set "pom:project/pom:properties/pom:slf4j.version" 2
 
 %{mvn_package} ":%{name}-access" access
 %{mvn_package} ":%{name}-examples" examples

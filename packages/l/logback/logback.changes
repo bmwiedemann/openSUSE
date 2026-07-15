@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 15 15:16:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.5.38
+  * Change of 1.5.38
+    + In HardenedObjectInputStream, fixed a typo preventing
+      Throwable objects from being white-filtered
+  * Change of 1.5.37
+    + Given the numerous vulnerabilities related to conditional
+      configuration processing based on the evaluation of Java
+      expressions using the Janino library, support for such
+      expressions has been removed
+- Removed patch:
+  * new-janino.patch
+    + not needed
+
+-------------------------------------------------------------------
+Mon Jul 13 12:11:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use the slf4j2 compatibility package, as the base slf4j
+  package is now on version 2.0.18
+
+-------------------------------------------------------------------
 Fri Jun 26 05:56:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.5.36
