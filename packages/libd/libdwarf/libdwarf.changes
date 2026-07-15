@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Mar  5 14:56:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.1
+  * Fixed vulnerability oss fuzz 4475563464 (aka libdwarf
+    DW202602-001) reading frame data from a fuzzed (corrupted)
+    DWARF frame section. See DW202602-001 in the text file
+    bugxml/data.txt in the source release. The bug first appeared
+    in changes made 26 January 2026.
+  * Now allows DW_AT_dwo_id and DW_AT_GNU_dwo_id in any DWARF4 or
+    DWARF5 object where such an attribute makes sense.
+  * Now allows access to a .eh_frame section (APPLE names it
+    __eh_frame) in a Mach-o executable. Corrects a sanity check of
+    Mach-o objects by eliminating an inappropriate multiply of the
+    sizeofcmds header field.
+- Update to version 2.3.0
+  * Added function dwarf_iterate_fde_all_regs3() which lets callers
+    get all rows of the .debug_frame and .eh_frame sections via
+    callbacks the function makes to a function you write. Simple to
+    use and, for FDEs with many rows, sixty times faster.
+  * Added function dwarf_set_harmless_errors_enabled() which
+    enables turning off tests for harmless errors and that makes a
+    performance improvement for some calls.
+    dwarf_set_frame_rule_table_size() now allows setting register
+    rules table size as low as 50 entries, though the default
+    remains DW_FRAME_LAST_REG_NUM (189).
+
+-------------------------------------------------------------------
 Thu Oct  9 07:54:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.2.0
