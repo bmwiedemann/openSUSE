@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul  3 16:40:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 26.07.0:
+  + core:
+    * Remove deprecated DCT and JPX decoders.
+    * Fix signature regression in some cases.
+    * Fix added annotations getting lost in some cases.
+    * GPG based signature improvements.
+    * Internal code improvements.
+    * Fix crashes in malformed documents.
+  + utils: pdfinfo: sanitize output.
+  + cpp: Add render_hint::ignore_paper_color to allow transparent
+    paper.
+  + glib: construct PopplerPage::mutex (fixes crash on macOS).
+  + qt5: Fix crash in some signature operations.
+  + qt6: Fix crash in some signature operations.
+- Bump poppler_sover to 162 following upstream changes.
+
+-------------------------------------------------------------------
 Wed Jun  3 07:07:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 26.06.0:
