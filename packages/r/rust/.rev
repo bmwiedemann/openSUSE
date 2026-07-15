@@ -993,4 +993,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.96.1 - for details see the rust1.96 package</comment>
     <requestid>1364163</requestid>
   </revision>
+  <revision rev="117" vrev="1">
+    <srcmd5>c50704a3dc2d664fe19a500cda609df8</srcmd5>
+    <version>1.97.0</version>
+    <time>1784125517</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365457</requestid>
+  </revision>
 </revisionlist>
