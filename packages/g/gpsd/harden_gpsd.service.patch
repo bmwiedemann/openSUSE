@@ -1,8 +1,12 @@
-Index: systemd/gpsd.service.in
+---
+ systemd/gpsd.service.in |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+Index: gpsd-3.27.5/systemd/gpsd.service.in
 ===================================================================
---- systemd/gpsd.service.in
-+++ systemd/gpsd.service.in
-@@ -5,6 +5,18 @@ Requires=gpsd.socket
+--- gpsd-3.27.5.orig/systemd/gpsd.service.in	2023-01-10 23:38:26.000000000 +0100
++++ gpsd-3.27.5/systemd/gpsd.service.in	2026-06-11 11:37:56.930368279 +0200
+@@ -5,6 +5,18 @@
  After=chronyd.service
  
  [Service]
@@ -17,7 +21,7 @@ Index: systemd/gpsd.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=forking
  EnvironmentFile=-/etc/default/gpsd
  EnvironmentFile=-/etc/sysconfig/gpsd

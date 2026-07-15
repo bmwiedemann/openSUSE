@@ -1120,4 +1120,20 @@ For more please read usr/share/doc/packages/gpsd/NEWS
     <comment></comment>
     <requestid>1328177</requestid>
   </revision>
+  <revision rev="70" vrev="2">
+    <srcmd5>8943d8f4e111519acbb23fe314f5718b</srcmd5>
+    <version>3.27.5</version>
+    <time>1781879398</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1360078</requestid>
+  </revision>
+  <revision rev="71" vrev="3">
+    <srcmd5>dcf3ed782e2d70b4f08010f6605315e3</srcmd5>
+    <version>3.27.5</version>
+    <time>1784125545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365660</requestid>
+  </revision>
 </revisionlist>

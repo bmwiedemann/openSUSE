@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 10 07:32:57 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- Fix for gpsprof gnuplot command injection via attacker-controlled
+  GPS metadata (CVE-2026-58459 [bsc#1271191])
+  + 4c06658.patch
+  + 5581ba1.patch
+  + 1a6bb7b.patch
+
+-------------------------------------------------------------------
+Thu Jun 11 14:03:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Rewrite the SPEC file to build, remove Python 2 building, and
+  clean up.
+- Needs more work to support building via wheels.
+- Add update-desktop-files.patch and remove
+  `%suse_update_desktop_file` and dependency on
+  `update-desktop-files` package
+  (https://en.opensuse.org/openSUSE:Update-desktop-files_deprecation).
+
+-------------------------------------------------------------------
 Thu Jan 15 19:50:28 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Update to version 3.27.5

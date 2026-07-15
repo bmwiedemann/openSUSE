@@ -1,0 +1,35 @@
+---
+ packaging/X11/xgps.desktop.in      |    5 +++--
+ packaging/X11/xgpsspeed.desktop.in |    5 +++--
+ 2 files changed, 6 insertions(+), 4 deletions(-)
+
+Index: gpsd-3.27.5/packaging/X11/xgps.desktop.in
+===================================================================
+--- gpsd-3.27.5.orig/packaging/X11/xgps.desktop.in	2023-01-10 23:38:26.000000000 +0100
++++ gpsd-3.27.5/packaging/X11/xgps.desktop.in	2026-06-11 11:38:03.229500189 +0200
+@@ -4,7 +4,8 @@
+ GenericName=GPS information
+ Comment=Display GPS information from a gpsd daemon
+ Exec=xgps
+-Icon=@ICONPATH@/gpsd-logo.png
++Icon=gpsd-logo
+ Terminal=false
+ Type=Application
+-Categories=Application;Maps;Utility;
++Categories=System;Monitor;
++
+Index: gpsd-3.27.5/packaging/X11/xgpsspeed.desktop.in
+===================================================================
+--- gpsd-3.27.5.orig/packaging/X11/xgpsspeed.desktop.in	2023-01-10 23:38:26.000000000 +0100
++++ gpsd-3.27.5/packaging/X11/xgpsspeed.desktop.in	2026-06-11 11:38:03.229778223 +0200
+@@ -4,7 +4,8 @@
+ GenericName=GPS speedometer
+ Comment=Display GPS speed from a gpsd daemon
+ Exec=xgpsspeed
+-Icon=@ICONPATH@/gpsd-logo.png
++Icon=gpsd-logo
+ Terminal=false
+ Type=Application
+-Categories=Application;Maps;Utility;
++Categories=System;Monitor;
++

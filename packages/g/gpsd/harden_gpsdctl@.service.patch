@@ -1,8 +1,12 @@
-Index: systemd/gpsdctl@.service.in
+---
+ systemd/gpsdctl@.service.in |   12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+Index: gpsd-3.27.5/systemd/gpsdctl@.service.in
 ===================================================================
---- systemd/gpsdctl@.service.in
-+++ systemd/gpsdctl@.service.in
-@@ -5,6 +5,18 @@ BindsTo=dev-%i.device
+--- gpsd-3.27.5.orig/systemd/gpsdctl@.service.in	2023-01-10 23:38:26.000000000 +0100
++++ gpsd-3.27.5/systemd/gpsdctl@.service.in	2026-06-11 11:38:00.627176696 +0200
+@@ -5,6 +5,18 @@
  After=dev-%i.device
  
  [Service]
@@ -17,7 +21,7 @@ Index: systemd/gpsdctl@.service.in
 +ProtectKernelLogs=true
 +ProtectControlGroups=true
 +RestrictRealtime=true
-+# end of automatic additions 
++# end of automatic additions
  Type=oneshot
  Environment="GPSD_SOCKET=@RUNDIR@/gpsd.sock"
  EnvironmentFile=-/etc/default/gpsd
