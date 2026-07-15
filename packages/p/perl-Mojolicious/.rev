@@ -1776,4 +1776,17 @@ Tons of changes, just the peak of the ice berg:
     - Fixed Mojo::File::list_tree to no longer follow symbolic links to directories.</comment>
     <requestid>1364270</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>d667e09fce337b21e99efe30f9ef8707</srcmd5>
+    <version>9.480.0</version>
+    <time>1784146476</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 9.480.0 (9.48)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+  9.48  2026-07-14
+    - Fixed a security issue where CSRF tokens were vulnerable to BREACH attacks. Tokens are now masked with a fresh
+      random value on every request, instead of being reused for the whole lifetime of a session.
+      CVE-2026-15747 bsc#1271431</comment>
+    <requestid>1365998</requestid>
+  </revision>
 </revisionlist>

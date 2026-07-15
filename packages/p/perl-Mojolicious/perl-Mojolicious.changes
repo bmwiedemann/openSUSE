@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:26:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 9.480.0 (9.48)
+   see /usr/share/doc/packages/perl-Mojolicious/Changes
+
+  9.48  2026-07-14
+    - Fixed a security issue where CSRF tokens were vulnerable to BREACH attacks. Tokens are now masked with a fresh
+      random value on every request, instead of being reused for the whole lifetime of a session.
+      CVE-2026-15747 bsc#1271431
+
+-------------------------------------------------------------------
 Mon Jul  6 09:12:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 9.470.0 (9.47)
