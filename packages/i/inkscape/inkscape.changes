@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 10:00:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.4.4+git2.3454cb1dab:
+  * update translations
+- Add fix_build_with_poppler_26.07.patch:
+  + Fix support for poppler >= 26.07
+    https://gitlab.com/inkscape/inkscape/-/merge_requests/8034
+- Adjust _Service: strip +git0 when we're actually on the tag.
+
+-------------------------------------------------------------------
 Thu Jun 11 04:08:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add fix_build_with_poppler_26.06.patch: Fix support for poppler

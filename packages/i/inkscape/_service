@@ -5,8 +5,8 @@
     <param name="url">https://gitlab.com/inkscape/inkscape.git</param>
     <param name="revision">1.4.x</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
-    <param name="versionrewrite-pattern">INKSCAPE_1_4_4</param>
-    <param name="versionrewrite-replacement">1.4.4</param>
+    <param name="versionrewrite-pattern">INKSCAPE_([0-9]+)_([0-9]+)_([0-9]+)(?:\+git0\.[0-9a-f]+)?</param>
+    <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="buildtime"/>

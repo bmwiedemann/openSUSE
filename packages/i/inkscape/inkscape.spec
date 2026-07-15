@@ -17,7 +17,7 @@
 
 
 Name:           inkscape
-Version:        1.4.4+git0.dcaf3e7d9e
+Version:        1.4.4+git2.3454cb1dab
 Release:        0
 Summary:        Vector Illustration Program
 License:        GPL-3.0-only
@@ -31,7 +31,8 @@ Source2:        inkscape-split-extensions-extra.py
 Patch0:         https://gitlab.com/inkscape/inkscape/-/commit/98828255aa0c1212329236b3ff4ac7f41efb4a67.patch
 # PATCH-FIX-UPSTREAM fix_build_with_poppler_26.06.patch -- Fix support for poppler >= 26.06
 Patch1:         fix_build_with_poppler_26.06.patch
-
+# PATCH-FIX-UPSTREAM https://gitlab.archlinux.org/archlinux/packaging/packages/inkscape/-/raw/main/fix_build_with_poppler_26.07.patch?ref_type=heads
+Patch2:         fix_build_with_poppler_26.07.patch
 BuildRequires:  cmake
 BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
