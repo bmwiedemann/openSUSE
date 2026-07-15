@@ -880,4 +880,25 @@
   * Update action to use gosec version v2.26.1 (#1660) (forwarded request 1357964 from ph03nix)</comment>
     <requestid>1357994</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>af0b4e7eb1d731ed158df687f8d69093</srcmd5>
+    <version>2.28.0</version>
+    <time>1784146473</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.28.0:
+  * feat(G101): detect AWS temporary access keys (#1702)
+  * Update to go version 1.26.5 and 1.25.12 (#1704)
+  * Update all dependencies (#1703)
+  * Update all dependencies (#1699)
+  * Update all dependencies (#1698)
+  * fix: min+max G115 false positives (#1697)
+  * Update all dependencies (#1696)
+  * fix(G404): flag missing math/rand weak-random functions (#1694)
+  * Update all dependencies (#1695)
+  * Update all dependencies (#1693)
+  * Update to go version 1.26.4 and 1.25.11 (#1690)
+  * Update the gosec in the Github action to v2.27.1 (#1688)
+- Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio (forwarded request 1365826 from ph03nix)</comment>
+    <requestid>1366000</requestid>
+  </revision>
 </revisionlist>

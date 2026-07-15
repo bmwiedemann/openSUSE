@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 15 06:32:23 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.28.0:
+  * feat(G101): detect AWS temporary access keys (#1702)
+  * Update to go version 1.26.5 and 1.25.12 (#1704)
+  * Update all dependencies (#1703)
+  * Update all dependencies (#1699)
+  * Update all dependencies (#1698)
+  * fix: min+max G115 false positives (#1697)
+  * Update all dependencies (#1696)
+  * fix(G404): flag missing math/rand weak-random functions (#1694)
+  * Update all dependencies (#1695)
+  * Update all dependencies (#1693)
+  * Update to go version 1.26.4 and 1.25.11 (#1690)
+  * Update the gosec in the Github action to v2.27.1 (#1688)
+
+-------------------------------------------------------------------
+Tue Jun 16 12:07:53 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Remove unnecessary files: _scmsync.obsinfo build.specials.obscpio
+
+-------------------------------------------------------------------
 Mon Jun 08 12:05:13 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.27.1:
