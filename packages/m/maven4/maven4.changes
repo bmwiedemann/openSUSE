@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul  1 05:03:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jline-4.1.x.patch
+    + implements a new interface funcion added in jline3 4.1.0
+    + applied if the jline3 version is >= 4.1
+    + allows upgrading to jline3 versions >= 4.1 if needed
+
+-------------------------------------------------------------------
 Fri May 15 23:37:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Generate the build.propertis file containing properties needed for

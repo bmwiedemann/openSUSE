@@ -42,6 +42,7 @@ Patch3:         0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
 Patch4:         0001-Fix-a-ConcurrentModificationException-11429.patch
 Patch5:         0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
 Patch6:         maven4-resolver2017.patch
+Patch7:         jline-4.1.x.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
@@ -195,6 +196,9 @@ BuildArch:      noarch
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal >= 4.1}%{!?pkg_vcmp:0}
+%patch -P 7 -p1
+%endif
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
 %pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2

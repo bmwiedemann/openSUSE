@@ -79,4 +79,12 @@
     <comment>Generate the build.propertis file dynamically during the build</comment>
     <requestid>1353472</requestid>
   </revision>
+  <revision rev="11" vrev="10">
+    <srcmd5>734a879414b150e393d9320880bf807b</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1782916737</time>
+    <user>anag_factory</user>
+    <comment>Allow building against jline3 &gt;= 4.1</comment>
+    <requestid>1362764</requestid>
+  </revision>
 </revisionlist>

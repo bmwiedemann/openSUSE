@@ -1,0 +1,21 @@
+--- a/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
++++ b/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
+@@ -34,6 +34,7 @@
+ import org.jline.terminal.Cursor;
+ import org.jline.terminal.MouseEvent;
+ import org.jline.terminal.Size;
++import org.jline.terminal.Sized;
+ import org.jline.terminal.Terminal;
+ import org.jline.terminal.spi.SystemStream;
+ import org.jline.terminal.spi.TerminalExt;
+@@ -170,6 +171,10 @@ public void setSize(Size size) {
+         getTerminal().setSize(size);
+     }
+ 
++    public void setSize(Sized sized) {
++        getTerminal().setSize(sized);
++    }
++
+     @Override
+     public int getWidth() {
+         return getTerminal().getWidth();
