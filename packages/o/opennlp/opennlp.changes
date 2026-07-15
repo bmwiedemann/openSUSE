@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:27:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.9.5
+  * Changes of version 1.9.5
+    + OPENNLP-1819: Align DictionaryEntryPersistor XML parsing with
+      XmlUtil helper (bsc#1263874, CVE-2026-40682)
+    + OPENNLP-1820: Restrict ExtensionLoader to allowlisted package
+      prefixes (bsc#1263873,CVE-2026-42027)
+    + OPENNLP-1821: Prevent OutOfMemory due to huge array allocation
+      (bsc#1263872, CVE-2026-42440)
+    + OPENNLP-1826: Fix for XML parser security options
+      (bsc#1263874, CVE-2026-40682)
+    + OPENNLP-1835: Tolerate unsupported XML parser security options
+      (bsc#1263874, CVE-2026-40682)
+  * Changes of version 1.9.4
+    + Refactorings to improve code quality and performance
+    + Fix Parser top k parses doesn't show "top" (highest
+      probability) parses
+    + Use LinkedHashMap for deterministic iteration order
+    + Fix spelling errors in the documentation
+  * Changes of version 1.9.3
+    + Resolve issues building on Java 11
+    + Use strict math for calculations for consistent evaluations
+    + Implement Serializable in langdetect and normalize
+    + Fix issue where language detector fails to predict language on
+      long input texts
+    + Add support for Catalan and Indonesian stemmers
+    + Documentation improvements
+  * Changes of version 1.9.2
+    + Add SHA-512 checksum files for artifacts
+    + Fix LanguageDetectorEvaluatorTest failure in Windows
+    + Fix Build Warnings due to deprecated pom.version
+    + Add support for Arabic and Greek stemmers
+  * Changes of version 1.9.1
+    + Various minor bug fixes and dependency updates
+  * Changes of version 1.9.0
+    + Update FeatureGeneratorUtil to recognize Japanese Hiragana and
+      Katakana letters
+    + Unify the code used to sum up input context features
+    + Update the Penn Treebank URL
+    + Provide explanations for the new format of the feature
+      generator XML configuration
+  * Changes of version 1.8.0
+    + Fix XML External Entity (XXE) vulnerability in Dictionary
+      component (CVE-2017-12620)
+    + Add support for the CONLL-U format
+    + Add support for subword embeddings and WordPiece tokenization
+    + Change Lemmatizer API to return the actual lemma directly
+    + Add stemmer, detokenizer, and sentence detection abbreviations
+      for the Irish language
+    + Add feature generation via XML for the POS Tagger context
+      generator
+  * Changes of version 1.7.0
+    + Increase the minimum requirements to Java 1.8 and Maven 3.3.9
+    + Improve content analysis performance by up to 50%
+    + Add a Naive Bayesian Classifier implementation
+    + Add a language model component and a brat annotation service
+    + Include the Morfologik addon
+    + Introduce a supervised statistical lemmatizer and a CLI for
+      the lemmatizer component
+  * Changes of version 1.6.0
+    + Increase the minimum Java requirement to Java 1.7
+    + Add evaluation support to the doccat and parser components
+    + Add support for Brat, OntoNotes, and Evalita 07/09 corpus formats
+    + Introduce pluggable machine learning support and add Liblinear
+      as a Machine Learning addon
+    + Add a lemmatizer module and sequence classification support
+    + Add a new command-line interface for the Entity Linker component
+
+-------------------------------------------------------------------
 Sat Sep  9 14:44:02 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Reproducible builds: use SOURCE_DATE_EPOCH for timestamp

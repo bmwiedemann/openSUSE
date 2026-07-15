@@ -31,4 +31,12 @@
     <comment>Reproducible builds improvement</comment>
     <requestid>1109990</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5f9018c9d4c468505796fdd8633f0534</srcmd5>
+    <version>1.9.5</version>
+    <time>1784146466</time>
+    <user>dimstar_suse</user>
+    <comment>1.9.5 with security fixes</comment>
+    <requestid>1365976</requestid>
+  </revision>
 </revisionlist>
