@@ -1,7 +1,78 @@
 -------------------------------------------------------------------
+Tue Jul 14 15:40:23 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.8:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix a data race in JACK that could cause lost MIDI events in
+      ardour.
+    - Fix some unbounded memory allocations.
+    - Various small fixes.
+  * PipeWire
+    - Avoid some graph recalcs, which fixes a bug when suspending
+      a node while it is active.
+  * Modules
+    - Do Content-Length and allocation check in RAOP to avoid
+      OOM errors.
+    - Fix a potential memory leak in the error path of client-node.
+      (#5348 (closed))
+  * SPA
+    - Fix filter-graph dynamic graph updates.
+    - Avoid 100% when unplugging a card.
+    - Fix filter-graph volumes when the filter is loaded inside a
+      node with hardware volume. (#5344 (closed))
+    - Add normalize and latency options to the SOFA filter. (#5322)
+  * Bluetooth
+    - Fix a potential leak when transport fails to start.
+  * Pulse-server
+    - Avoid stack exhaustion via unbounded alloca.
+  * JACK
+    - Fix a data race in jack_port_get_buffer() when called from
+      concurrent threads, like in ardour. (#5324 (closed))
+  * GStreamer
+    - Skip invalid crop metadata.
+    - Avoid crash because metadata listener was registered twice. 
+
+-------------------------------------------------------------------
+Thu Jun 18 09:10:18 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.7:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Fix a race issue where some ports would stay silent after a
+      rate change.
+    - Fix sync regressions between ALSA cards in some cases.
+    - Small fixes and improvements.
+  * PipeWire
+    - Fix a scheduler regression where some driver nodes would not
+      run correctly and cause sync issues. (#5210 (closed))
+    - Fix a race issue with suspend on samplerate changes. It can
+      cause ports to be silent. (#3547 (closed))
+  * Modules
+    - There are some locking issues in the RT portal, for now 
+      reduce the DBus timeout to something more sane. Also disable
+      portal RT for pipewire and the pulse server. These are not
+      usually run in a sandbox and can go directly to RTKit.
+    - Fix potential incorrect delay in combine-stream.
+  * SPA
+    - Fix a regression in ALSA period_size calculations. For
+      non-power-of-2 periods, it would in some cases round down a
+      a power-of-2, causing a mismatch between requested and
+      configured period_size. (#5302 (closed))
+    - Fix a potential segfault when removing a card because of bad
+      ALSA api usage. (#5255 (closed))
+    - Emit a route param update when card properties change.
+      Otherwise, jack port updates are not always reflected
+      correctly.
+  * Misc
+    - Make sure we don't deal with uninitialized spa_dict.
+
+-------------------------------------------------------------------
 Tue May 26 16:34:26 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
-- Update to version 1.6.6
+- Update to version 1.6.6:
   * This is a bugfix release that is API and ABI compatible with
     the previous 1.6.x releases.
   * Highlights
