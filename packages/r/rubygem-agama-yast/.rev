@@ -745,4 +745,12 @@
     <comment>weekly release</comment>
     <requestid>1361728</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>f4643c766d48cf16dc744564af78ba10</srcmd5>
+    <version>22.devel398.d23cf880d</version>
+    <time>1784125540</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1365623</requestid>
+  </revision>
 </revisionlist>
