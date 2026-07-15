@@ -1,0 +1,144 @@
+Index: gnutls-3.8.10/configure.ac
+===================================================================
+--- gnutls-3.8.10.orig/configure.ac
++++ gnutls-3.8.10/configure.ac
+@@ -890,6 +890,29 @@ LIBGNUTLS_CHECK_SONAME([hogweed], [AC_LA
+ LIBS="$save_LIBS"
+ CFLAGS="$save_CFLAGS"
+ 
++AC_ARG_WITH([leancrypto],
++  [AS_HELP_STRING([--with-leancrypto], [enable leancrypto library HMAC check])],
++  [with_leancrypto=$withval],
++  [with_leancrypto=no])
++
++AS_IF([test "x$with_leancrypto" != "xno"], [
++  save_CFLAGS=$CFLAGS
++  CFLAGS="$CFLAGS $LEANCRYPTO_CFLAGS"
++  save_LIBS=$LIBS
++  LIBS="$LIBS $LEANCRYPTO_LIBS -lleancrypto"
++
++  LIBGNUTLS_CHECK_SONAME([leancrypto], [
++    AC_LANG_PROGRAM([
++      extern void lc_fips_integrity_checker(void);
++    ],[
++      lc_fips_integrity_checker();
++    ])
++  ])
++
++  LIBS="$save_LIBS"
++  CFLAGS="$save_CFLAGS"
++])
++
+ gnutls_so=libgnutls.so.`expr "$LT_CURRENT" - "$LT_AGE"`
+ AC_DEFINE_UNQUOTED([GNUTLS_LIBRARY_SONAME], ["$gnutls_so"], [The soname of gnutls library])
+ AC_SUBST([gnutls_so])
+Index: gnutls-3.8.10/lib/fips.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/fips.c
++++ gnutls-3.8.10/lib/fips.c
+@@ -178,6 +178,9 @@ struct hmac_file {
+ #ifdef GMP_LIBRARY_SONAME
+ 	struct hmac_entry gmp;
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	struct hmac_entry leancrypto;
++#endif
+ };
+ 
+ struct lib_paths {
+@@ -191,6 +194,9 @@ struct lib_paths {
+ #ifdef GMP_LIBRARY_SONAME
+ 	char gmp[GNUTLS_PATH_MAX];
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	char leancrypto[GNUTLS_PATH_MAX];
++#endif
+ };
+ 
+ /*
+@@ -262,6 +268,10 @@ static int handler(void *user, const cha
+ 	} else if (!strcmp(section, GMP_LIBRARY_SONAME)) {
+ 		return lib_handler(&p->gmp, section, name, value);
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	} else if (!strcmp(section, LEANCRYPTO_LIBRARY_SONAME)) {
++		return lib_handler(&p->leancrypto, section, name, value);
++#endif
+ 	} else {
+ 		return 0;
+ 	}
+@@ -527,6 +537,10 @@ static int callback(struct dl_phdr_info
+ 	else if (!strncmp(soname, GMP_LIBRARY_SONAME, strlen(GMP_LIBRARY_SONAME)))
+ 		_gnutls_str_cpy(paths->gmp, GNUTLS_PATH_MAX, path);
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	else if (!strncmp(soname, LEANCRYPTO_LIBRARY_SONAME, strlen(LEANCRYPTO_LIBRARY_SONAME)))
++		_gnutls_str_cpy(paths->leancrypto, GNUTLS_PATH_MAX, path);
++#endif
+ 	return 0;
+ }
+ 
+@@ -557,6 +571,12 @@ static int load_lib_paths(struct lib_pat
+ 		return gnutls_assert_val(GNUTLS_E_FILE_ERROR);
+ 	}
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	if (paths->leancrypto[0] == '\0') {
++		_gnutls_debug_log("Leancrypto library path was not found\n");
++		return gnutls_assert_val(GNUTLS_E_FILE_ERROR);
++	}
++#endif
+ 
+ 	return GNUTLS_E_SUCCESS;
+ }
+@@ -621,6 +641,11 @@ static int check_binary_integrity(void)
+ 	if (ret < 0)
+ 		return ret;
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	ret = check_dep_lib_hmac(paths.leancrypto);
++	if (ret < 0)
++		return ret;
++#endif
+ 
+ 	return 0;
+ }
+Index: gnutls-3.8.10/lib/fipshmac.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/fipshmac.c
++++ gnutls-3.8.10/lib/fipshmac.c
+@@ -121,6 +121,11 @@ static int callback(struct dl_phdr_info
+ 	if (!strcmp(soname, GMP_LIBRARY_SONAME))
+ 		return print_lib(path, soname);
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	if (!strncmp(soname, LEANCRYPTO_LIBRARY_SONAME, strlen(LEANCRYPTO_LIBRARY_SONAME)))
++		return print_lib(path, soname);
++#endif
++
+ 	return 0;
+ }
+ 
+Index: gnutls-3.8.10/lib/global.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/global.c
++++ gnutls-3.8.10/lib/global.c
+@@ -610,6 +610,9 @@ static const struct gnutls_library_confi
+ #ifdef GMP_LIBRARY_SONAME
+ 	{ "libgmp-soname", GMP_LIBRARY_SONAME },
+ #endif
++#ifdef LEANCRYPTO_LIBRARY_SONAME
++	{ "libleancrypto-soname", LEANCRYPTO_LIBRARY_SONAME },
++#endif
+ 	{ "hardware-features", HW_FEATURES },
+ 	{ "tls-features", TLS_FEATURES },
+ #ifdef DEFAULT_TRUST_STORE_PKCS11
+@@ -643,6 +646,8 @@ static const struct gnutls_library_confi
+  *
+  *  - libgmp-soname: the library SONAME of linked libgmp
+  *
++ *  - libleancrypto-soname: the library SONAME of linked libleancrypto
++ *
+  *  - hardware-features: enabled hardware support features
+  *
+  *  - tls-features: enabled TLS protocol features

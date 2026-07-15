@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri May 15 12:23:28 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Add NIST SP800-56Brev2 6.4.2.2 check:
+  * Partial public-key validation for RSA OAEP (bsc#1262397)
+  * Add gnutls-FIPS-RSA-OAEP-PK-validation.patch
+
+-------------------------------------------------------------------
+Tue May 12 10:12:34 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Perform the integrity checks for libleancrypto-fips and
+  libleancrypto with the HMACs provided by the library (bsc#1262399)
+  * Add gnutls-FIPS-HMAC-leancrypto.patch
+
+-------------------------------------------------------------------
+Tue May 12 09:30:13 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- FIPS: Remove GNUTLS_MAC_SHA1 FIPS self-test (bsc#1262400)
+  * Add gnutls-FIPS-Remove-SHA1-self-test.patch
+
+-------------------------------------------------------------------
 Thu Apr 30 07:47:18 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.8.13:

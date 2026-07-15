@@ -1,0 +1,91 @@
+Index: gnutls-3.8.10/lib/nettle/pk.c
+===================================================================
+--- gnutls-3.8.10.orig/lib/nettle/pk.c
++++ gnutls-3.8.10/lib/nettle/pk.c
+@@ -1015,6 +1015,67 @@ static inline int _rsa_oaep_encrypt(gnut
+ 			    message, ciphertext);
+ }
+ 
++
++
++static const size_t small_primes[] = {
++        3,     5,     7,     11,    13,    17,    19,    23,    29,    31,
++        37,    41,    43,    47,    53,    59,    61,    67,    71,    73,
++        79,    83,    89,    97,    101,   103,   107,   109,   113,   127,
++        131,   137,   139,   149,   151,   157,   163,   167,   173,   179,
++        181,   191,   193,   197,   199,   211,   223,   227,   229,   233,
++        239,   241,   251,   257,   263,   269,   271,   277,   281,   283,
++        293,   307,   311,   313,   317,   331,   337,   347,   349,   353,
++        359,   367,   373,   379,   383,   389,   397,   401,   409,   419,
++        421,   431,   433,   439,   443,   449,   457,   461,   463,   467,
++        479,   487,   491,   499,   503,   509,   521,   523,   541,   547,
++        557,   563,   569,   571,   577,   587,   593,   599,   601,   607,
++        613,   617,   619,   631,   641,   643,   647,   653,   659,   661,
++        673,   677,   683,   691,   701,   709,   719,   727,   733,   739,
++        743,   751
++};
++
++static int
++_gnutls_rsa_oaep_public_key_validate_nist(const struct rsa_public_key *pub)
++{
++	/* 1. The length of the modulus is one of the specified values in FIPS 186-5.
++	 * SP 800-56B rev2 dictates 2048 bits or larger. */
++	if (unlikely(mpz_sizeinbase(pub->n, 2) < 2048)) {
++		return GNUTLS_E_PK_INVALID_PUBKEY;
++	}
++
++	/* 3. The modulus and the public exponent are odd numbers. */
++	if (unlikely(mpz_even_p(pub->n) || mpz_even_p(pub->e))) {
++		return GNUTLS_E_PK_INVALID_PUBKEY;
++	}
++
++	/* 2. The value of the public exponent is in the valid range.
++	 * FIPS 186-5 specifies: 65537 <= e < 2^256. */
++	if (unlikely(mpz_cmp_ui(pub->e, 65537) < 0 || mpz_sizeinbase(pub->e, 2) > 256)) {
++		return GNUTLS_E_PK_INVALID_PUBKEY;
++	}
++
++	/* 4. The modulus is composite, but not a power of a prime.
++	 * mpz_probab_prime_p returns >0 if prime/probable prime, 0 if composite. */
++	if (unlikely(mpz_probab_prime_p(pub->n, 25) > 0)) {
++		return GNUTLS_E_PK_INVALID_PUBKEY;
++	}
++
++	/* GMP's built-in perfect power checker identifies if n == p^k. */
++	if (unlikely(mpz_perfect_power_p(pub->n))) {
++		return GNUTLS_E_PK_INVALID_PUBKEY;
++	}
++
++	/* 5. The modulus has no factors smaller than 752. */
++	size_t num_primes = sizeof(small_primes) / sizeof(small_primes[0]);
++	for (size_t i = 0; i < num_primes; i++) {
++		if (unlikely(mpz_divisible_ui_p(pub->n, small_primes[i]))) {
++			return GNUTLS_E_PK_INVALID_PUBKEY;
++		}
++	}
++
++	return 0;
++}
++
+ static int _wrap_nettle_pk_encrypt(gnutls_pk_algorithm_t algo,
+ 				   gnutls_datum_t *ciphertext,
+ 				   const gnutls_datum_t *plaintext,
+@@ -1088,6 +1149,18 @@ static int _wrap_nettle_pk_encrypt(gnutl
+ 		else
+ 			random_func = rnd_nonce_func;
+ 
++#ifdef ENABLE_FIPS140
++		if (_gnutls_fips_mode_enabled()) {
++			/* Perform partial public-key validation before using the
++			 * recipient's RSA public key for OAEP key transport
++			 * according to NIST SP800-56Brev2 6.4.2.2.
++			 */
++			if (_gnutls_rsa_oaep_public_key_validate_nist(&pub)) {
++				not_approved = true;
++			}
++		}
++#endif
++
+ 		buf = gnutls_malloc(pub.size);
+ 		if (!buf) {
+ 			ret = gnutls_assert_val(GNUTLS_E_MEMORY_ERROR);

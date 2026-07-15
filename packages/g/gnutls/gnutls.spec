@@ -70,6 +70,13 @@ Patch4:         gnutls-FIPS-disable-mac-sha1.patch
 Patch5:         gnutls-FIPS-140-3-references.patch
 #PATCH-FIX-SUSE bsc#1260395 Fix build with autoconf 2.73
 Patch6:         gnutls-C23.patch
+#PATCH-FIX-SUSE bsc#1262400 FIPS: Remove GNUTLS_MAC_SHA1 FIPS self-test
+Patch7:         gnutls-FIPS-Remove-SHA1-self-test.patch
+#PATCH-FIX-SUSE bsc#1262399 FIPS: Perform integrity check for libleancrypto
+Patch8:         gnutls-FIPS-HMAC-leancrypto.patch
+#PATCH-FIX-SUSE bsc#1262397 Add NIST SP800-56Brev2 6.4.2.2 check: Partial public-key validation for RSA OAEP
+Patch9:         gnutls-FIPS-RSA-OAEP-PK-validation.patch
+
 BuildRequires:  autogen
 BuildRequires:  automake
 BuildRequires:  datefudge
