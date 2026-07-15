@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:12:51 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop tunable in require to avoid policy loading issues
+  with toolchain 3.11 (bsc#1271417).
+  Can be dropped, once this is accepted upstream: 
+  https://github.com/stefanberger/swtpm/pull/1139
+  - Add patch: 1271417-drop-tunable-requires.patch
+
+-------------------------------------------------------------------
 Thu Nov 19 08:05:47 UTC 2025 - Zdenek Kubala <zkubala@suse.com>
 
 - Update SELinux module dir as macro to allow root path move from /var/lib/selinux

@@ -1,7 +1,7 @@
 #
 # spec file for package swtpm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -42,6 +42,8 @@ Source100:      swtpm-rpmlintrc
 Patch0:         swtpm-fix-build.patch
 # PATCH-FIX-UPSTREAM
 Patch1:         https://patch-diff.githubusercontent.com/raw/stefanberger/swtpm/pull/1027.patch
+# PATCH-FIX-UPSTREAM - cahu@suse.de bsc#1271417 drop tunable requires as it overrides booleanif
+Patch2:         1271417-drop-tunable-requires.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  expect

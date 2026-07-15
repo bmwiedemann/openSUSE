@@ -372,4 +372,16 @@
 As discussed before we are going to move SELinux modules from /var/lib/selinux to /etc/selinux (bsc#1221342). This small change allows you to build your packages dynamically (not depending on selinux-package version) and us to change module directory macro in upcoming versions of selinux-policy package without interfering with other packages using custom SELinux modules. (forwarded request 1318580 from djz88)</comment>
     <requestid>1318598</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>d012176666a87d3c057942661929b8c2</srcmd5>
+    <version>0.10.1</version>
+    <time>1784125577</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop tunable in require to avoid policy loading issues
+  with toolchain 3.11 (bsc#1271417).
+  Can be dropped, once this is accepted upstream: 
+  https://github.com/stefanberger/swtpm/pull/1139
+  - Add patch: 1271417-drop-tunable-requires.patch (forwarded request 1365931 from cahu)</comment>
+    <requestid>1365938</requestid>
+  </revision>
 </revisionlist>
