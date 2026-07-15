@@ -169,4 +169,12 @@
     <comment>- Convert to libalternatives on SLE-16-based and newer systems</comment>
     <requestid>1301259</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ce98842a63d2992598fc5e487155aedc</srcmd5>
+    <version>0.33</version>
+    <time>1784125513</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365443</requestid>
+  </revision>
 </revisionlist>

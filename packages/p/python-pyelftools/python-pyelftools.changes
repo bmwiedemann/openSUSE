@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  6 20:15:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.33:
+  * Remove remaining legacy Python 2 code
+  * Fixed found while adding type hints
+  * Convert to pyproject.toml
+  * Upgrade code to modern Python 3.9+
+  * Modernize python code for construct and add types
+  * pyproject: Fix py.typed marker
+  * clean up whitespace in scripts/readelf.py
+  * More GNU DWARF opcodes
+
+-------------------------------------------------------------------
 Mon Aug 25 12:08:01 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives on SLE-16-based and newer systems
