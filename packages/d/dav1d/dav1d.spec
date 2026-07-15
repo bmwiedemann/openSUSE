@@ -1,7 +1,7 @@
 #
 # spec file for package dav1d
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define sover   7
 
 Name:           dav1d
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        An AV1 decoder
 License:        BSD-2-Clause

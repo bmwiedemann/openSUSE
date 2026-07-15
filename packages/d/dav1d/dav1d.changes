@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:27:16 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.5.4
+  * Switch to external checkasm
+  * Add Armv9.3-A GCS (Guarded Control Stack) support
+  * AArch64: optimize ipred_v, ipred_h and ipred_smooth_* 8bpc
+    functions, and reduce .text size
+  * ARM32: optimize prep_neon
+  * RISC-V: ipred_(dc, h, v, pal) optimizations for 8 and 16bpc,
+    generate_grain_y for 8bpc, and optimizations (prep/put_8tap,
+    6-tap and copy paths)
+  * Schedule tile tasks for all passes at once, improving
+    threading
+  * Precompute the quantization matrix tables at build time
+  * Move loop-invariant computations out of hot loops
+
+-------------------------------------------------------------------
 Wed Dec 31 19:42:15 UTC 2025 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 1.5.3
