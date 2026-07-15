@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        150.0.7871.114
+Version:        150.0.7871.124
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -585,7 +585,7 @@ WebDriver is an open source tool for automated testing of webapps across many br
 %patch -p1 -P 1051
 %endif
 
-clang_version="$(clang --version | sed -n 's/clang version //p')"
+clang_version="$(clang-%{llvm_version} --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
 %patch -p1 -R -P 1060
 %patch -p1 -P 1061
@@ -694,11 +694,14 @@ cp %{SOURCE106} chrome/installer/linux/common/wrapper
 # from our Fedora friends
 export RUSTC_BOOTSTRAP=1
 rustc_version="$(rustc --version | cut -d' ' -f2)"
-clang_version="$(clang --version | sed -n 's/clang version //p')"
+clang_version="$(clang-%{llvm_version} --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -ge 16 ]]; then
   clang_version="$(echo ${clang_version} | cut -d. -f1)"
 fi
-clang_base_path="$(clang --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')"
+clang_base_path="$(clang-%{llvm_version} --version | grep InstalledDir | cut -d' ' -f2 | sed 's#/bin##')"
+
+# fix lld version
+ln -snf /usr/bin/ld.lld-%{llvm_version} $HOME/bin/ld.lld
 
 # Remove bundled libs
 keeplibs=(
@@ -1237,6 +1240,7 @@ myconf_gn+=" use_thin_lto=true"
 %endif
 %endif
 myconf_gn+=" use_lld=true"
+myconf_gn+=" lld_path=\"$HOME/bin\""
 %else
 myconf_gn+=" is_clang=false"
 myconf_gn+=" use_gold=true"

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 14 22:29:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 150.0.7871.124 (boo#1271415):
+  * CVE-2026-15764: Use after free in Ozone
+  * CVE-2026-15765: Use after free in Ozone
+  * CVE-2026-15766: Uninitialized Use in Skia
+  * CVE-2026-15767: Heap buffer overflow in libyuv
+  * CVE-2026-15768: Insufficient policy enforcement in HTML-in-Canvas
+  * CVE-2026-15769: Insufficient validation of untrusted input in Linux Toolkit Theming
+  * CVE-2026-15770: Uninitialized Use in V8
+  * CVE-2026-15771: Insufficient validation of untrusted input in Media
+  * CVE-2026-15772: Use after free in GPU
+  * CVE-2026-15773: Use after free in Core
+  * CVE-2026-15774: Use after free in Skia
+  * CVE-2026-15775: Insufficient policy enforcement in V8
+  * CVE-2026-15776: Type Confusion in V8
+  * CVE-2026-15777: Use after free in UI
+  * CVE-2026-15778: Insufficient validation of untrusted input in Navigation
+
+-------------------------------------------------------------------
 Thu Jul  9 07:16:03 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 150.0.7871.114 (boo#1271093):
