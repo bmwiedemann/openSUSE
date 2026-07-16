@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-stdlib-shims
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Shim to substitute Pervasives with Stdlib before 4.08
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/stdlib-shims
-Source0:        %{name}-%{version}.tar.xz
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/stdlib-shims/
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 Compiling against this library allows replacing uses of Pervasives
@@ -37,13 +36,12 @@ instead of Pervasives.compare. It does not, however, provide
 the new functions and modules that were added in the Stdlib module.
 
 %package        devel
-Summary:        Development files for %{name}
-Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
@@ -60,10 +58,8 @@ dune_release_pkgs='stdlib-shims'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
-%defattr(-,root,root,-)
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
-%defattr(-,root,root,-)
+%files devel -f %name.files.devel
 
 %changelog
