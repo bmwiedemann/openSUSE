@@ -123,4 +123,12 @@ ocaml 4.03 (fate#320836)</comment>
   contain a dot are not considered valid anymore with dune 3.13</comment>
     <requestid>1139279</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>42811c45d857b05140252f9eedf66d01</srcmd5>
+    <version>1.2.5</version>
+    <time>1784245124</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365566</requestid>
+  </revision>
 </revisionlist>
