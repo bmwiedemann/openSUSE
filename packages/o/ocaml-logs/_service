@@ -1,7 +1,7 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-logs</param>
-    <param name="revision">52d9dbde9d72fd029fe6df0fa4867c343aaed493</param>
+    <param name="revision">350985691e41c4be23b3aadd0e875af669dfc702</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/dbuenzli/logs.git</param>
