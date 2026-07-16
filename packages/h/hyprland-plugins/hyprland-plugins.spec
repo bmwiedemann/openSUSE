@@ -15,10 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.54.0
-%define pkg_version 0.53.0
-
-%define debian_patch_rev b772e7e4d8b8f764d2b359dc4dd299f50b2b9e50
+%define hypr_tgt 0.55.0
+%define pkg_version 0.55.0
 
 Name:           hyprland-plugins
 Version:        %{pkg_version}
@@ -27,12 +25,11 @@ Summary:        Official plugins for Hyprland
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprland-plugins
 Source0:        https://github.com/hyprwm/hyprland-plugins/archive/refs/tags/v%{pkg_version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch10:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/all-chase-hyprland.patch
-Patch11:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/Fix-hyprtrails-compilation-errors.patch
-Patch12:        https://salsa.debian.org/hyprland-team/hyprland-plugins/-/raw/%{debian_patch_rev}/debian/patches/expo-Chase-new-gesture-param-disableInhibit-581.patch
 BuildRequires:  gcc-c++
+BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(hyprland) >= %{hypr_tgt}
+BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pangocairo)
 %requires_eq    hyprland
 
@@ -40,11 +37,7 @@ BuildRequires:  pkgconfig(pangocairo)
 	['borders-plus-plus'] = 'This plugin adds one or two additional borders to windows',
 	['csgo-vulkan-fix'] = 'This fixes custom resolutions on CS:GO with -vulkan',
 	['hyprbars'] = 'This plugin adds title bars to windows',
-	['hyprexpo'] = 'This plugin adds an expo-like workspace overview',
 	['hyprfocus'] = 'This plugin adds flashfocus for hyprland',
-	['hyprtrails'] = 'This plugin adds smooth trails behind moving windows',
-	['hyprwinwrap'] = 'This plugin is a clone of xwinwrap, allows you to put any app as a\nwallpaper',
-	['xtra-dispatchers'] = 'This plugin adds some new dispatchers',
 }}
 %{lua: plugins_iter = {}
 for plugin,_ in pairs(plugins) do table.insert(plugins_iter, plugin) end
@@ -76,6 +69,7 @@ end
 
 %build
 %set_build_flags
+export CXXFLAGS="$CXXFLAGS $(pkg-config --cflags lua)"
 %{lua:
 for _,plugin in ipairs(plugins_iter) do
 	print(rpm.expand("%make_build").." -C "..plugin.." all\n")
