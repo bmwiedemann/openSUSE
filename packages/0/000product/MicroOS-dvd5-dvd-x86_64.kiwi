@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260714" schemaversion="4.1">
+<image name="OBS__MicroOS___20260715" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260714</productvar>
+      <productvar name="VERSION">20260715</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260714,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260715,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260714/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260715/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -639,7 +639,6 @@
       <repopackage name="libelf1"/>
       <repopackage name="libell0"/>
       <repopackage name="libepoxy0"/>
-      <repopackage name="libepub0"/>
       <repopackage name="liberation-fonts"/>
       <repopackage name="libevdev2"/>
       <repopackage name="libexif12"/>
@@ -1016,7 +1015,7 @@
       <repopackage name="libpolkit-qt6-1-1"/>
       <repopackage name="libpoppler-cpp3"/>
       <repopackage name="libpoppler-qt6-3"/>
-      <repopackage name="libpoppler161"/>
+      <repopackage name="libpoppler162"/>
       <repopackage name="libpopt0"/>
       <repopackage name="libppd"/>
       <repopackage name="libppd2"/>
@@ -1363,7 +1362,6 @@
       <repopackage name="libzck1"/>
       <repopackage name="libzimg2"/>
       <repopackage name="libzio1"/>
-      <repopackage name="libzip5"/>
       <repopackage name="libzix-0-0"/>
       <repopackage name="libzmq5"/>
       <repopackage name="libzopfli1"/>
