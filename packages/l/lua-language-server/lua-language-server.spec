@@ -19,7 +19,7 @@
 
 %bcond_with     tests
 Name:           lua-language-server
-Version:        3.15.0
+Version:        3.18.2
 Release:        0
 Summary:        Lua Language Server coded by Lua
 License:        MIT
