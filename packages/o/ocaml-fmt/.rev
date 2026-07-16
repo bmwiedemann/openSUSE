@@ -42,4 +42,12 @@
   see included CHANGES.md file for details</comment>
     <requestid>1317327</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>818852a6351c7ac94aebc956ac1c6ac3</srcmd5>
+    <version>0.11.0</version>
+    <time>1784245086</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365547</requestid>
+  </revision>
 </revisionlist>
