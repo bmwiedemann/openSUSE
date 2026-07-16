@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Mon May  5 05:05:05 UTC 2025 - ohering@suse.de
 
 - Remove unused dependency to stdlib-shims with ocaml-dose.patch

@@ -69,4 +69,12 @@ It is a dependency of opam.</comment>
     <comment>- Remove unused dependency to stdlib-shims with ocaml-dose.patch</comment>
     <requestid>1274656</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>426aba3c6c8ed187198d4d236fc822fd</srcmd5>
+    <version>7.0.0</version>
+    <time>1784245073</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365541</requestid>
+  </revision>
 </revisionlist>

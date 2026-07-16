@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-dose
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@
 %if %{without ocaml_dose_testsuite}
 ExclusiveArch:  do-not-build
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -35,12 +37,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        An OCaml dependency toolkit
 License:        LGPL-3.0-or-later
-URL:            https://opam.ocaml.org/packages/dose3
+URL:            https://opam.ocaml.org/packages/dose3/
 Source0:        %pkg-%version.tar.xz
 Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(cudf)
 BuildRequires:  ocamlfind(extlib)
@@ -70,12 +72,13 @@ dose3 also implements algorithms for solving more complex problems (monitoring
 package evolutions, correct and complete dependency resolution, repository-wide
 uninstallability checks).
 
-%package devel
-Summary:        An OCaml dependency toolkit -- Development files
-Requires:       %name = %version
+%package        devel
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
-%description devel
-This package contains development files for package %name.
+%description    devel
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1 -n %pkg-%version
