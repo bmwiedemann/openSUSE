@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sexplib0
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,24 @@
 
 
 Name:           ocaml-sexplib0
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Library containing the definition of S-expressions and some base converters
 License:        MIT
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/sexplib0
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/sexplib0/
 Source0:        %name-%version.tar.xz
-BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
-BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml(ocaml_base_version) >= 5.1
+BuildRequires:  ocaml-dune >= 3.11
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 Library containing the definition of S-expressions and some base converters.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -59,9 +56,7 @@ dune_release_pkgs='sexplib0'
 %ocaml_dune_test
 
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %changelog
