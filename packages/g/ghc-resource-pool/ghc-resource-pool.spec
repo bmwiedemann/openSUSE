@@ -1,7 +1,7 @@
 #
 # spec file for package ghc-resource-pool
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,8 +18,9 @@
 
 %global pkg_name resource-pool
 %global pkgver %{pkg_name}-%{version}
+%bcond_with tests
 Name:           ghc-%{pkg_name}
-Version:        0.5.0.0
+Version:        0.5.0.1
 Release:        0
 Summary:        A high-performance striped resource pooling implementation
 License:        BSD-3-Clause
@@ -40,6 +41,14 @@ BuildRequires:  ghc-text-prof
 BuildRequires:  ghc-time-devel
 BuildRequires:  ghc-time-prof
 ExcludeArch:    %{ix86}
+%if %{with tests}
+BuildRequires:  ghc-async-devel
+BuildRequires:  ghc-async-prof
+BuildRequires:  ghc-tasty-devel
+BuildRequires:  ghc-tasty-hunit-devel
+BuildRequires:  ghc-tasty-hunit-prof
+BuildRequires:  ghc-tasty-prof
+%endif
 
 %description
 A high-performance striped pooling abstraction for managing flexibly-sized
@@ -79,6 +88,9 @@ This package provides the Haskell %{pkg_name} profiling library.
 
 %install
 %ghc_lib_install
+
+%check
+%cabal_test
 
 %post devel
 %ghc_pkg_recache
