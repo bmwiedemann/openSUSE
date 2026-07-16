@@ -479,4 +479,16 @@
     romanian, svedish</comment>
     <requestid>1298794</requestid>
   </revision>
+  <revision rev="55" vrev="2">
+    <srcmd5>b560317b0e5e3511d617a105fb8903c6</srcmd5>
+    <version>2.5.32</version>
+    <time>1784245515</time>
+    <user>dimstar_suse</user>
+    <comment>- Workaround upstream libgphoto2 XDG settings directory creation
+  bug by running mkdir -p ~/.config in %prep
+  (gh#gphoto/libgphoto2#1276).
+
+That allows gphoto to at least build for now (forwarded request 1366223 from dimstar)</comment>
+    <requestid>1366233</requestid>
+  </revision>
 </revisionlist>

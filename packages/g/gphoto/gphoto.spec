@@ -1,7 +1,7 @@
 #
 # spec file for package gphoto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -48,6 +48,7 @@ or by running
 gphoto2 --list-cameras
 
 %prep
+mkdir -p ~/.config
 %setup -q -n gphoto2-%{version}
 
 %build
@@ -60,7 +61,7 @@ export LDFLAGS="-pie"
 make
 
 %check
-make check
+make check VERBOSE=1
 
 %install
 make DESTDIR=$RPM_BUILD_ROOT mandir=%{_mandir} install
