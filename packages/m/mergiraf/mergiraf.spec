@@ -18,7 +18,7 @@
 
 
 Name:           mergiraf
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        A syntax-aware git merge driver
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
+BuildRequires:  jujutsu
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description

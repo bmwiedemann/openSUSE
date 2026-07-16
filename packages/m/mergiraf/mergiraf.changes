@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jul 15 16:45:25 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- add jujutsu to BuildRequires (test suite)
+- Update to version 0.18.0:
+  * Features
+    + Basic bash support (#766) by @djugei
+    + (starlark) The visibility list argument in BUILD files is also 
+      commutative (#781) by @wesalvaro
+    + (supported_langs) Add buck2 and starlark related extensions 
+      (#772) by @jakebailey
+    + Add basic support for Scheme (#749) by @jchrist
+    + Support Kotlin script (.kts) files (#793) by @davinkevin
+    + Support for Gleam (#756) by @helloyuki
+  * Bug Fixes
+    + Typo in Liberapay URL by @wetneb
+    + (solve) Downgrade jj being detected from error to a warning 
+      (#790) by @ada4a
+  * Other
+    + Add a script to detect outdated dependencies
+    + Update `itertools` to 0.15
+    + Update `etcetera` to 0.11
+    + Update `oneshot` to 0.2
+    + Update `zip` to 8.0
+    + Update `tree-sitter-devicetree` to 0.15
+    + Update `tree-sitter-fortran` to 0.6
+    + Update `tree-sitter-java-orchard` to 0.5
+    + Update `tree-sitter-lua` to 0.5
+    + Update `tree-sitter-ocaml` to 0.25
+    + Update `tree-sitter-rust-orchard` to 0.16
+    + Update `tree-sitter-scala` to 0.26
+    + Update `tree-sitter-systemverilog` to 0.3
+    + Update `tree-sitter` to 0.26
+  * Refactor
+    + Don't require `Arc` for `line_merge_and_structured_resolution` 
+      (#791) by @ada4a
+    + (`ParsedMerge::parse`) Minor clean-ups (#792) by @ada4a
+  * Documentation
+    + Add a donation option (Liberapay) (#762) by @ada4a
+    + (readme) Acknowledge Zulip sponsorship of the public Zulip 
+      instance (#783) by @mathstuf
+    + Document `line_based_merge_parsed` panicking when input sides 
+      contain conflicts (#763) by @ada4a
+  * Governance
+    + Add ipsavitsky to the Developers team (#778) by @wetneb
+  * Testing
+    + (CMake) Add reformatting example (#776) by @OvidiusCicero
+  * Miscellaneous Tasks
+    + Install jj (#768) by @ada4a
+    + Add a nix image (#777) by @ipsavitsky
+    + Use 'cargo run' in helpers/run.sh (#784) by @wetneb
+    + Turn off sandbox inside the nix container (#786) by @ipsavitsky
+    + Set HOME in the nix runner container (#787) by @ipsavitsky
+    + Add `cargo-outdated` report to CI results
+    + Add a workflow to check for outdated deps weekly
+    + Check for outdated dependencies less frequently (#794) by @wetneb
+    + Update dependencies by @wetneb
+  * New Contributors
+    + @helloyuki made their first contribution in #756
+    + @davinkevin made their first contribution in #793
+    + @jchrist made their first contribution
+    + @wesalvaro made their first contribution in #781
+    + @djugei made their first contribution in #766
+
+-------------------------------------------------------------------
 Fri May 08 11:53:59 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.17.0:

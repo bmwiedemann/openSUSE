@@ -99,4 +99,41 @@
     <comment>Update to version 0.17.0 (forwarded request 1352029 from develop7)</comment>
     <requestid>1352032</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>67a1555e0ea98311eaa5f59f82969b05</srcmd5>
+    <version>0.18.0</version>
+    <time>1784245420</time>
+    <user>dimstar_suse</user>
+    <comment>- add jujutsu to BuildRequires (test suite)
+- Update to version 0.18.0:
+  * Features
+    + Basic bash support (#766) by @djugei
+    + (starlark) The visibility list argument in BUILD files is also 
+      commutative (#781) by @wesalvaro
+    + (supported_langs) Add buck2 and starlark related extensions 
+      (#772) by @jakebailey
+    + Add basic support for Scheme (#749) by @jchrist
+    + Support Kotlin script (.kts) files (#793) by @davinkevin
+    + Support for Gleam (#756) by @helloyuki
+  * Bug Fixes
+    + Typo in Liberapay URL by @wetneb
+    + (solve) Downgrade jj being detected from error to a warning 
+      (#790) by @ada4a
+  * Other
+    + Add a script to detect outdated dependencies
+    + Update `itertools` to 0.15
+    + Update `etcetera` to 0.11
+    + Update `oneshot` to 0.2
+    + Update `zip` to 8.0
+    + Update `tree-sitter-devicetree` to 0.15
+    + Update `tree-sitter-fortran` to 0.6
+    + Update `tree-sitter-java-orchard` to 0.5
+    + Update `tree-sitter-lua` to 0.5
+    + Update `tree-sitter-ocaml` to 0.25
+    + Update `tree-sitter-rust-orchard` to 0.16
+    + Update `tree-sitter-scala` to 0.26
+    + Update `tree-sitter-systemverilog` to 0.3
+    + Update `tree-sitter` to 0.26 (forwarded request 1366113 from develop7)</comment>
+    <requestid>1366114</requestid>
+  </revision>
 </revisionlist>
