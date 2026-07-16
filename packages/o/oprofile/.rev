@@ -423,4 +423,12 @@
 </comment>
     <requestid>1222903</requestid>
   </revision>
+  <revision rev="59" vrev="5">
+    <srcmd5>298d9fde46a67628447cdc5c72e19fc4</srcmd5>
+    <version>1.4.0</version>
+    <time>1784245483</time>
+    <user>dimstar_suse</user>
+    <comment>Fix build in factory (forwarded request 1366183 from fstrba)</comment>
+    <requestid>1366185</requestid>
+  </revision>
 </revisionlist>

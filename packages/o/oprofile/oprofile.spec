@@ -1,7 +1,7 @@
 #
 # spec file for package oprofile
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,6 @@ URL:            http://oprofile.sourceforge.net/
 Source0:        http://prdownloads.sourceforge.net/oprofile/oprofile-%{version}.tar.gz
 Source2:        %{name}.rpmlintrc
 Source3:        baselibs.conf
-Source4:        jvmpi.h
 Source5:        README-BEFORE-ADDING-PATCHES
 Patch1:         %{name}-no-libjvm-version.patch
 Patch2:         %{name}-pfm-ppc.patch
@@ -102,23 +101,10 @@ from supported virtual machines.
 %prep
 %autosetup -p1
 
-mkdir -p java/include
-# copy files necessary to build Java agent libraries
-# libjvmpi_oprofile.so and libjvmti_oprofile.so
-ln -s %{_libdir}/jvm/java/include/* java/include
-test -f java/include/jvmpi.h || ln -s %{SOURCE4} java/include
-
 %build
 ./autogen.sh
 %configure \
-  --with-java=$PWD/java
-# Change DATE/TIME macros to use last change time of oprofile.changes
-# See http://lists.opensuse.org/opensuse-factory/2011-05/msg00304.html
-modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{name}.changes")"
-DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
-TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec grep -E -e __DATE__ -e __TIME__ {} +
-find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+  --with-java=${JAVA_HOME}
 %make_build
 
 %install

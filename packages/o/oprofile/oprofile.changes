@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:47:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the enviromental variable JAVA_HOME to detect the build JDK
+  home directory. This fixes build with both update-alternatives and
+  libalternatives
+- Remove unnecessary patching of DATE and TIME macros. Our gcc
+  knows about SOURCE_DATE_EPOCH since about 8 years and processes
+  the DATE and TIME to the SOURCE_DATE_EPOCH just fine
+- Do not use Java Virtual Machine Profiler Interface (JVMPI). It was
+  deprecated in Java 5 (2004) and  removed from the JDK starting
+  with Java 6 (2006). The package uses also the "new" Java Virtual
+  Machine Tool Interface (JVMTI) that works with all our supported
+  JDKs
+
+-------------------------------------------------------------------
 Fri Nov  8 21:30:32 UTC 2024 - Tony Jones <tonyj@suse.com>
 
 - Feature detection of perf_events API (required) was failing causing the
@@ -692,4 +707,3 @@ Thu Sep 12 13:28:38 CEST 2002 - mmj@suse.de
 
 - Initial package, version 0.3 (x86 only for now)
 
--------------------------------------------------------------------
