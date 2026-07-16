@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Sat Jul 11 07:33:43 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 19.9:
+  * [Client] Sort server browser by favorites
+  * [Client] Quad clipping for unbuffered backends
+  * [Client] Show actual map in Discord activity
+  * [Client] Color tune regions by tune zone number
+  * [Client] Disable predict events by default, add checkbox
+    in settings
+  * [Client] Keep selected player highlighted while scoreboard
+    popup is open
+  * [Client] Add tooltips to demo browser buttons
+  * [Client] Improve fatal error popups for graphics errors
+  * [Client] Prevent binding to escape and hide it as completion
+    option
+  * [Client] Fix visual hook delay
+  * [Client] Fix hook collision line of unpredicted players having
+    wrong tunings
+  * [Client] Fix input data not being stored with
+    cl_dummy_control 1
+  * [Client] Fix airjump being detected if you only have 1 jump
+  * [Client] Fix warmup timer positioning
+  * [Client] Fix default graphics blend mode with OpenGL 1
+  * [Client] Fix client crash connecting to same websockets port
+    after shutdown
+  * [Client] Close console by clicking outside of it
+  * [Client] Disable semicolons being interpreted in ExecuteLine
+  * [Client] Fix console argument handling for strings
+    ending in \\
+  * [Client] Overhaul crash log parsing
+  * [Client] Separate prediction margin graphs for main and
+    dummy connection
+  * [Client] Fix sending wrong camera info
+  * [Client] Fix projectile glitches
+  * [Client] Add floating back button for touch inputs
+  * [Client] Show flying laser projectiles to dead players
+  * [Client] Update server browser pings after own location
+    is changed
+  * [Client&Server] Lots of assertions and improved error handling
+    to improve security
+  * [Client] Auto-updater fixes
+  * [Editor] Add time bar to envelope editor
+  * [Editor] Improve changing animation speed
+  * [Editor] More hotkeys to adjust brush physics tile properties
+    (ctrl+shift+wheel, ctr+shift+alt+mouse)
+  * [Editor] Fix tele/switch/tune/XY tile finder centering
+  * [Editor] Fix "Project onto" button
+  * [Server] Lower memory usage
+  * [Server] Allow instantly switching team after server reload
+  * [Editor] Optimize ingame entities, render entities in
+    switch layer
+  * [Editor] Use resize-H/V cursors while using axis lock
+  * [Editor] Preserve quad art group for undo/redo
+  * [Editor] Fix layer/group dragging stuck when loading/clearing
+    map
+  * [Editor] Fix brush selection rectangle being rendered
+    multiple times
+  * [Editor] Fix envelope point clamping when multiple points
+    selected
+  * [Editor] Fix speedup angle 0 not reachable with tile adjust
+    hotkey
+  * [Client&Server] Fix speedups not working at 0/0 and top left
+    map border
+  * [Client&Server] Implement more precise millisecond
+    time function
+  * [Client&Server] Enable STL debug mode
+  * [Server] Give unpractice caller strong hook on respawn
+  * [Server] Fix set_team_ddr and uninvite applying to empty player slots
+  * [Server] Make start and end round virtual
+  * [Server] Add FindPlayerByName() helper
+  * [Server] Don't assert if weapon = -1
+- Add ddnet-fix-vulkan-shaders-installation.patch,
+  https://github.com/ddnet/ddnet/issues/12361
+
+-------------------------------------------------------------------
 Sun May  3 18:56:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 19.8.2:
