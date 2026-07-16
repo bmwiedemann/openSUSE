@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-cudf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@
 %if %{without ocaml_cudf_testsuite}
 ExclusiveArch:  do-not-build
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -35,13 +37,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml CUDF library
 License:        LGPL-3.0-or-later WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/cudf
+URL:            https://opam.ocaml.org/packages/cudf/
 Source0:        %pkg-%version.tar.xz
 Patch0:         allow_underscore.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(extlib)
 
 %if "%build_flavor" == "testsuite"
@@ -53,8 +54,7 @@ CUDF (for Common Upgradeability Description Format) is a format for describing u
 
 %package devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for

@@ -51,4 +51,12 @@ It is a dependency of opam, which is used for building some dependencies of the 
     <comment>- This software is licensed under LGPL-3.0 since 2009</comment>
     <requestid>1277491</requestid>
   </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>7faac6dfadeba798d28db2405b074341</srcmd5>
+    <version>0.10</version>
+    <time>1784245068</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365539</requestid>
+  </revision>
 </revisionlist>
