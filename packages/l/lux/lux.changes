@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 16 09:54:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- CVE-2026-25680,CVE-2026-42502,CVE-2026-27136,CVE-2026-25681,CVE-2026-42506: Issues when parsing HTML files (bsc#1267110)
+- CVE-2024-45338: Denial of service due to non-linear parsing of case-insensitive content (bsc#1235304)
+- CVE-2025-22872: Incorrectly interpreted tags can cause content to be placed wrong scope during DOM construction (bsc#1241766)
+- CVE-2025-47911: Various algorithms with quadratic complexity when parsing HTML documents (bsc#1251460)
+- CVE-2025-58190: Excessive memory consumption (bsc#1251627)
+  Bump x/net to 0.57.0
+
+-------------------------------------------------------------------
+Mon May  6 08:37:13 UTC 2024 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.24.1:
+  * ci: bump go version to 1.22 #1350
+
+-------------------------------------------------------------------
 Tue Apr 23 19:18:29 UTC 2024 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.24.0:
