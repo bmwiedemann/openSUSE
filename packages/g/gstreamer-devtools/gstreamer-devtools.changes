@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 15:21:16 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.28.5:
+  + No changes, stable versionbump only.
+
+-------------------------------------------------------------------
 Fri Jun 12 16:07:27 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 1.28.4:
-  + Update Rust dependencies
+  + use relative paths in the printed validate command, fix flaky
+    tests due to non-deterministic pad task unref
   
 -------------------------------------------------------------------
 Tue May 12 07:24:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>

@@ -391,4 +391,26 @@
     <comment></comment>
     <requestid>1359029</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>08e10654aff27dc5ba5d639199e74b1e</srcmd5>
+    <version>1.28.5</version>
+    <time>1784126463</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.5:
+  + No changes, stable versionbump only.
+- Update vendored dependencies tarball.
+
+  + use relative paths in the printed validate command, fix flaky
+    tests due to non-deterministic pad task unref</comment>
+    <requestid>1365709</requestid>
+  </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>4804952e3e78c05075fac6fda67216c4</srcmd5>
+    <version>1.28.5</version>
+    <time>1784245423</time>
+    <user>dimstar_suse</user>
+    <comment>Remove &quot;Update vendored dependencies tarball&quot; from the changelog
+since there wasn't really any update in this release.</comment>
+    <requestid>1366124</requestid>
+  </revision>
 </revisionlist>
