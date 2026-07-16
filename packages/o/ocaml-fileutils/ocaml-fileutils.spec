@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-fileutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,12 +30,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for common file and filename operations
 License:        SUSE-LGPL-2.0-with-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/fileutils
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/fileutils/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.14
 BuildRequires:  ocaml-dune >= 2.9
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(fileutils)
@@ -54,8 +54,7 @@ abstract filenames.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
