@@ -372,4 +372,12 @@ Without this, the theme can't be selected:
     <comment>Plasma 6.7.2 with qmk integration enabled. Untested. (forwarded request 1362741 from Vogtinator)</comment>
     <requestid>1362855</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a5c1a7714bbab142fe3ae31d8fc6804f</srcmd5>
+    <version>6.7.3</version>
+    <time>1784245236</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
+    <requestid>1365894</requestid>
+  </revision>
 </revisionlist>
