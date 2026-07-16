@@ -26,7 +26,7 @@
 %{!?_plasma6_version: %define _plasma6_version %(echo %{_plasma6_bugfix} | awk -F. '{print $1"."$2}')}
 %bcond_without released
 Name:           union6
-Version:        6.7.2
+Version:        6.7.3
 Release:        0
 Summary:        Qt style supporting both QtQuick and QtWidgets
 License:        LGPL-2.1-or-later
