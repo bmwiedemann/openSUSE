@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-findlib
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010-2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,24 +18,23 @@
 
 
 Name:           ocaml-findlib
-Version:        1.9.5
+Version:        1.9.8
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Objective CAML package manager and build helper
 License:        MIT
-Group:          Development/Languages/OCaml
-URL:            https://github.com/ocaml/ocamlfind
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/ocamlfind/
 Source0:        %name-%version.tar.xz
 #
 Requires:       ocaml-compiler-libs
 Requires:       ocaml-runtime
 #
-Provides:       ocamlfind = %version
+Provides:       ocamlfind = %version-%release
 BuildRequires:  ocaml
 BuildRequires:  ocaml-ocamldoc
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20260707
 #
-BuildRoot:      %_tmppath/%name-%version-build
 
 %description
 Findlib is a library manager for Objective Caml. It provides a
@@ -45,15 +44,14 @@ for interpreting the META files, so that it is very easy to use
 libraries in programs and scripts.
 
 %package        devel
-Summary:        Development files for ocaml-findlib
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 Provides:       %name-camlp4 = %version-%release
 Obsoletes:      %name-camlp4 < %version-%release
 
 %description    devel
-The ocaml-findlib-devel package contains libraries and signature files
-for developing applications that use ocaml-findlib.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
@@ -77,14 +75,12 @@ rm -rfv %buildroot%ocaml_standard_library/findlib/Makefile.packages
 %ocaml_create_file_list
 
 %files -f %name.files
-%defattr(-,root,root,-)
 %ocaml_standard_library/ocamlfind.conf
 %ocaml_standard_library/topfind
 %_bindir/*
 #
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 %ocaml_standard_library/*/Makefile.config
 
 %changelog

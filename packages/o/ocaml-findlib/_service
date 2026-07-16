@@ -1,7 +1,7 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-findlib</param>
-    <param name="revision">19b0334c467f97328d5005511c34ac9c36235efe</param>
+    <param name="revision">bd9aad183f0d1c2caf3ec29e4f52bc69361f266d</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/ocamlfind.git</param>
@@ -9,9 +9,9 @@
     <param name="versionrewrite-pattern">findlib-([^\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Update to version 1.9.8
+  Fix an incomaptibility with ocaml-5.2
+
+-------------------------------------------------------------------
 Mon Jun 13 13:13:13 UTC 2022 - ohering@suse.de
 
 - Update to version 1.9.5
@@ -264,8 +270,9 @@ Fri Jun 17 13:43:16 UTC 2011 - ampsaltis@gmail.com
 
 - Use ocaml-camlp4-devel in BuildRequires
 
-Wed May 18 19:12:42 UTC 2011 - ampsaltis@gmail.com
 -------------------------------------------------------------------
+Wed May 18 19:12:42 UTC 2011 - ampsaltis@gmail.com
+
 - Add this file.
 - New upstream version 1.2.7
 - Fix: if a META file defines several packages, and one of the packages
