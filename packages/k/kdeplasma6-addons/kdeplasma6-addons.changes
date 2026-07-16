@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:22:21 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.3
+- Changes since 6.7.2:
+  * Update version for new release 6.7.3
+  * applets/colorpicker: allow space for all previews (kde#522377)
+  * applets/quicklaunch: avoid infinite regression on edge change
+  * Fix colorpicker button sizing (kde#522377)
+  * [Vietnamese Lunar Calendar] Force using Vietnamese translation (kde#521787)
+  * MediaFrame: Set proper sourceSize to both Image instances (kde#521534)
+  * kdeds/kameleon: Disable kameleon by default (kde#521793)
+
+-------------------------------------------------------------------
 Tue Jun 30 20:11:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.2:
