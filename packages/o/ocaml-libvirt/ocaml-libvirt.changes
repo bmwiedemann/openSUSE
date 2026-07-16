@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Tue Jan 16 16:16:16 UTC 2024 - ohering@suse.de
 
 - Remove usage of dune.configurator because ocamlfind names which
