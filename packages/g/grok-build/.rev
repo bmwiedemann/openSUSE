@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>11be2eee9be9bfe601118bfe29199500</srcmd5>
+    <version>0+git20260716.c68e39f</version>
+    <time>1784245439</time>
+    <user>dimstar_suse</user>
+    <comment>New package: grok-build - xAI's terminal AI coding agent (grok CLI/TUI). Rust, Apache-2.0, /usr/bin/grok. Self-updater and telemetry disabled; offline build; build-memory constrained to avoid OOM on low-RAM aarch64 workers. Devel: devel:tools.</comment>
+    <requestid>1366158</requestid>
+  </revision>
+</revisionlist>

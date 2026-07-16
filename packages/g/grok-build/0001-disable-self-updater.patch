@@ -1,0 +1,17 @@
+diff --git a/crates/codegen/xai-grok-update/src/auto_update.rs b/crates/codegen/xai-grok-update/src/auto_update.rs
+index 7a3f970..c9bdad0 100644
+--- a/crates/codegen/xai-grok-update/src/auto_update.rs
++++ b/crates/codegen/xai-grok-update/src/auto_update.rs
+@@ -292,6 +292,12 @@ fn env_installer() -> Option<&'static str> {
+ }
+ 
+ pub async fn get_installer() -> Option<&'static str> {
++    // openSUSE: the binary is managed by the distribution package manager.
++    // Report "no installer" so every update path (automatic, leader and the
++    // explicit `grok update` command) treats the binary as up to date and
++    // never downloads or overwrites itself.
++    return None;
++    #[allow(unreachable_code)]
+     if let Some(i) = env_installer() {
+         return Some(i);
+     }

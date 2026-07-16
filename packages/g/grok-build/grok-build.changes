@@ -1,0 +1,13 @@
+-------------------------------------------------------------------
+Thu Jul 16 06:50:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0+git20260716.c68e39f)
+- Add 0001-disable-self-updater.patch: report no installer so the
+  agent never downloads or overwrites the distribution-managed
+  binary (automatic, leader and explicit "grok update" paths)
+- Add 0002-disable-telemetry-by-default.patch: force telemetry off
+  unconditionally so it cannot be enabled via config, environment
+  or server-pushed remote settings
+- Constrain build memory via _constraints and %limit_build: a single
+  rustc (xai-grok-shell) peaks around 7 GB and was OOM-killed on
+  many-core, low-RAM aarch64 workers

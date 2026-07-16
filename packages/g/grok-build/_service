@@ -1,0 +1,21 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/xai-org/grok-build.git</param>
+    <param name="scm">git</param>
+    <param name="revision">c68e39f60462f28d9be5e683d9cbe2c57b1a5027</param>
+    <param name="version">0</param>
+    <param name="versionformat">0+git%cd.%h</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">grok-build</param>
+    <param name="compression">zst</param>
+    <param name="update">true</param>
+  </service>
+</services>
