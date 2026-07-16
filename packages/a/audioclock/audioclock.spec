@@ -17,14 +17,15 @@
 
 
 Name:           audioclock
-Version:        1.3.2
+Version:        1.3.4
 Release:        0
 Summary:        An audible clock
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Url:            https://github.com/bmwiedemann/audioclock
 Group:          Amusements/Toys/Clocks
 BuildArch:      noarch
 Source0:        %name-%version.tar.gz
+BuildRequires:  systemd-rpm-macros
 Requires:       perl(Alien::SDL)
 Requires:       perl(SDL::Mixer)
 
@@ -38,11 +39,15 @@ It shall help to notice the passing of time.
 %build
 
 %install
-make install DESTDIR=%{buildroot}/usr
+%make_install
+install -d %{buildroot}%{_userunitdir}
+install -p -m 644 %name.service %{buildroot}%{_userunitdir}/%name.service
 
 %files
 %{_bindir}/audioclock
 %{_datadir}/%name
-%license COPYING README.md
+%{_userunitdir}/%name.service
+%license COPYING
+%doc README.md
 
 %changelog
