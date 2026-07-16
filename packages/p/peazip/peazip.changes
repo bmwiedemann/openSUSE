@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 16 09:48:25 UTC 2026 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 11.2.0:
+   * https://peazip.github.io/changelog.html 
+   
+   PeaZip 11.2.0 is focused on multiple QOL improvements: functions picker (F12) searching
+   supported functions and applying chosen function to selected items, improved keyboard
+   shortcuts, drag and drop, and file manager's auto-refresh.
+
+   Backend are updated to 7z/p7zip 26.02 and Pea 1.32.
+
+   Sources are compiled with Lazarus 4.x, and are still compatible with Lazarus 3.x and 2.x.
+
+   A total of 243 file extensions are now supported as archives by PeaZip, with the addition
+   of .ZIM files (Wikipedia and Project Gutenberg data dumps).
+
+-------------------------------------------------------------------
 Wed May 20 14:38:27 UTC 2026 - PragmaticLinux <info@pragmaticlinux.com>
 
 - Update to 11.1.0:
