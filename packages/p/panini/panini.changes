@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 15:01:25 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.75.0:
+  * Port to Qt6 (#18)
+  * Easily navigate to the next image in the directory via page up and page down keys
+
+-------------------------------------------------------------------
 Wed Dec 20 14:34:54 UTC 2023 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.74.0:

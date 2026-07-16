@@ -1,7 +1,7 @@
 #
 # spec file for package panini
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,20 @@
 
 
 Name:           panini
-Version:        0.74.0
+Version:        0.75.0
 Release:        0
 Summary:        A tool for creating perspective views from panoramic and wide angle images
 License:        GPL-3.0-only
 Group:          Productivity/Graphics/Viewers
 URL:            https://github.com/lazarus-pkgs/panini
-Source:         https://github.com/lazarus-pkgs/panini/archive/v%{version}.tar.gz
+Source:         https://github.com/lazarus-pkgs/panini/archive/%{version}.tar.gz
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  qt6-macros
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Gui)
+BuildRequires:  pkgconfig(Qt6OpenGL)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Widgets)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(zlib)
 # Disable on Arm, since build fails
@@ -40,12 +43,11 @@ Visual tool for creating perspective views from panoramic and wide angle photogr
 %setup -q
 
 %build
-# use qmake macro is present (fedora)
-%{?qmake_qt5}%{?!qmake_qt5:qmake-qt5} PREFIX=%{buildroot}%{_prefix}/
-make %{?_smp_mflags}
+%qmake6 PREFIX=%{_prefix}
+%qmake6_build
 
 %install
-%make_install
+%qmake6_install
 
 %files
 %license LICENSE

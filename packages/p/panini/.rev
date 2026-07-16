@@ -43,4 +43,14 @@
   * Fix C++17 does not allow register storage class specifier (#16)</comment>
     <requestid>1134277</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4f4a15ed7105ed6f1f6839b8c00892be</srcmd5>
+    <version>0.75.0</version>
+    <time>1784245492</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.75.0:
+  * Port to Qt6 (#18)
+  * Easily navigate to the next image in the directory via page up and page down keys</comment>
+    <requestid>1366214</requestid>
+  </revision>
 </revisionlist>
