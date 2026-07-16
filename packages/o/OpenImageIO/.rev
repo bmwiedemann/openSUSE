@@ -701,4 +701,14 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     <comment></comment>
     <requestid>1363525</requestid>
   </revision>
+  <revision rev="86" vrev="2">
+    <srcmd5>d34864fd9a1d12b5ec3235aae73f90fc</srcmd5>
+    <version>3.1.15.0</version>
+    <time>1784245499</time>
+    <user>dimstar_suse</user>
+    <comment>- some adjustments to libjxl made the jxl tests fail, disable jxl 
+  tests: to be enabled again in the next release! See:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5305</comment>
+    <requestid>1366217</requestid>
+  </revision>
 </revisionlist>

@@ -51,6 +51,7 @@
 %global major_minor_ver 3.1
 
 Name:           OpenImageIO
+# Next version will have the jxl checks fixed - please correct disabled_tests below: remove jxl
 Version:        3.1.15.0
 Release:        0
 Summary:        Library for Reading and Writing Images
@@ -280,10 +281,11 @@ export PYTHONDONTWRITEBYTECODE=1
 #
 # heif -> our libheif does not support h265
 # ptex -> fileformat which we do not support
+# jxl -> issue with icc profiles fails the test: fixed in next major upstream version
 # jpeg-ultrahdr -> fileformat which we do not support
 # cmake-consumer docs-examples-cpp -> currently failing tests as they assume normal cmake search paths will work to find the OIIO devel files in the final location
 # docs-examples-python -> fails if docs-examples-cpp was not attempted
-export disabled_tests="heif|ptex|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python"
+export disabled_tests="heif|ptex|jxl|jpeg-ultrahdr|cmake-consumer|docs-examples-cpp|docs-examples-python"
 %ifarch x86_64
 %ctest '-E' ${disabled_tests}
 %else

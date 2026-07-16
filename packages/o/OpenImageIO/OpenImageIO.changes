@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 14:51:27 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- some adjustments to libjxl made the jxl tests fail, disable jxl 
+  tests: to be enabled again in the next release! See:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/pull/5305
+
+-------------------------------------------------------------------
 Wed Jul  1 21:08:24 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.1.15.0 (boo#1270101)
