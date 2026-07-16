@@ -1,7 +1,7 @@
 #
 # spec file for package unison
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,18 +24,16 @@
 
 %define     pkg unison
 Name:           %pkg%nsuffix
-Version:        2.53.8
+Version:        2.54.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        File synchronization tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Other
-BuildRoot:      %_tmppath/%name-%version-build
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://github.com/bcpierce00/unison
 Source0:        %pkg-%version.tar.xz
-Source1:        %pkg.desktop
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 %if "%build_flavor" == "doc"
 BuildRequires:  hevea
 BuildRequires:  lynx
@@ -61,7 +59,6 @@ replica to the other.
 %package text
 Summary:        File synchronization tool
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Other
 
 %description text
 Text based userinterface for Unison.
@@ -80,6 +77,7 @@ replica to the other.
 %make_build docs -j1
 %else
 %make_build PREFIX=%_prefix
+mv -vb src/%name-gui .
 %endif
 
 %install
@@ -111,17 +109,19 @@ fi
 %make_install PREFIX=%_prefix
 
 mv %buildroot%_bindir/%name %buildroot%_bindir/%name-text
-mv %buildroot%_bindir/%name-gui %buildroot%_bindir/%name
+mv %name-gui %buildroot%_bindir/%name
 install -m 644 -D icons/U.svg %buildroot%_datadir/pixmaps/%name.svg
+mkdir -vp %buildroot%_datadir/applications
+sed '
+s|^Exec=.*|Exec=%name|
+s|^Icon=.*|Icon=%name|
+' data/unison-gui.desktop |tee %buildroot%_datadir/applications/%name.desktop
 %if %{defined suse_update_desktop_file}
 %suse_update_desktop_file -i %name Utility SyncUtility
-%else
-install -m 644 -D %{SOURCE1} %buildroot/%_datadir/applications/%name.desktop
 %endif
 %endif
 
 %files -f files
-%defattr(-,root,root,-)
 %if "%build_flavor" == ""
 %_datadir/applications/*
 %_datadir/pixmaps/*
@@ -130,7 +130,6 @@ install -m 644 -D %{SOURCE1} %buildroot/%_datadir/applications/%name.desktop
 %_mandir/man1/*
 
 %files text
-%defattr(-,root,root,-)
 %_bindir/%name-text
 %endif
 
