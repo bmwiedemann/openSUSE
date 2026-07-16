@@ -535,4 +535,12 @@
     <comment>CVE-2026-59948, [bsc#1271123], CVE-2026-59947, [bsc#1271130], CVE-2026-59946, [bsc#1271152]</comment>
     <requestid>1365485</requestid>
   </revision>
+  <revision rev="37" vrev="2">
+    <srcmd5>bc74c4fad11840889227b4f9f9ca8138</srcmd5>
+    <version>2.10.2</version>
+    <time>1784245418</time>
+    <user>dimstar_suse</user>
+    <comment>CVE-2026-45793, [bsc#1271504]</comment>
+    <requestid>1366106</requestid>
+  </revision>
 </revisionlist>

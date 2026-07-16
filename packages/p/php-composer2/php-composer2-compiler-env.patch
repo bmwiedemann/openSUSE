@@ -1,0 +1,26 @@
+diff --git a/src/Composer/Compiler.php b/src/Composer/Compiler.php
+index c11617e43..9217da4a6 100644
+--- a/src/Composer/Compiler.php
++++ b/src/Composer/Compiler.php
+@@ -49,6 +49,13 @@ public function compile(string $pharFile = 'composer.phar'): void
+             unlink($pharFile);
+         }
+ 
++        if (getenv('COMPOSER_VERSION') && getenv('COMPOSER_DATE')) {
++            $this->version = getenv('COMPOSER_VERSION');
++            $this->versionDate = new \DateTime(getenv('COMPOSER_DATE'));
++            $this->versionDate->setTimezone(new \DateTimeZone('UTC'));
++            goto skip_git;
++        }
++
+         $process = new ProcessExecutor();
+ 
+         $command = Git::buildRevListCommand($process, ['-n1', '--format=%H', 'HEAD']);
+@@ -77,6 +84,7 @@ public function compile(string $pharFile = 'composer.phar'): void
+             }
+         }
+ 
++        skip_git:
+         if ('' === $this->version) {
+             throw new \UnexpectedValueException('Version detection failed');
+         }

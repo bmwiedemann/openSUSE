@@ -23,11 +23,13 @@ Summary:        Dependency Management for PHP
 License:        MIT
 Group:          Development/Libraries/Other
 URL:            https://getcomposer.org/
-Source0:        https://github.com/composer/composer/releases/download/%{version}/composer.phar
-Source1:        https://github.com/composer/composer/releases/download/%{version}/composer.phar.asc
-Source2:        https://github.com/composer/composer/raw/%{version}/LICENSE
+Source0:        https://github.com/composer/composer/archive/refs/tags/%{version}/composer-%{version}.tar.gz
+Source1:        https://github.com/composer/composer/releases/download/%{version}/composer.phar
+Source2:        https://github.com/composer/composer/releases/download/%{version}/composer.phar.asc
 # 161DFBE342889F01DDAC4E61CBB3D576F2A0946F
 Source3:        %{name}.keyring
+Patch0:         php-composer2-compiler-env.patch
+BuildRequires:  php-cli
 BuildRequires:  php-phar
 Requires:       php >= 7.2.5
 Requires:       php-curl
@@ -48,15 +50,33 @@ Composer is a dependency manager tracking local dependencies of your projects
 and libraries.
 
 %prep
-%setup -q -c -T
-cp %{SOURCE2} .
+# 1. Unpack upstream source tarball
+%setup -q -n composer-%{version}
+# 2. Extract vendor directory from composer.phar (Source1)
+mkdir PHAR_EXTRACT
+cd PHAR_EXTRACT
+cp %{SOURCE1} .
+phar extract -f composer.phar
+cd ..
+mv PHAR_EXTRACT/vendor .
+rm -rf PHAR_EXTRACT
+# Create empty installed.json so that the Compiler class satisfies its checks
+echo '{}' > vendor/composer/installed.json
+# 3. Apply custom compiler env support patch
+%autopatch -p1
 
 %build
+# Build the phar file using our environment-driven Compiler
+export COMPOSER_VERSION="%{version}"
+# Hardcode a fixed and reproducible release date for version 2.10.2
+export COMPOSER_DATE="2026-07-15 12:00:00"
+echo 'phar.readonly=Off' > php.ini
+PHPRC=./php.ini php -d phar.readonly=Off -r 'require "src/bootstrap.php"; $c = new Composer\Compiler(); $c->compile();'
 
 %install
 # Install compiled phar file
-install -d -m 0750 %{buildroot}%{_bindir}
-install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}/composer2
+install -d -m 0755 %{buildroot}%{_bindir}
+install -m 0755 composer.phar %{buildroot}%{_bindir}/composer2
 ln -s ./composer2 %{buildroot}%{_bindir}/composer
 
 %files

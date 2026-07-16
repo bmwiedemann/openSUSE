@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:31:25 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- refactor packaging to use upstream sources instead of phar
+- added patches
+  * php-composer2-compiler-env.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 06:35:44 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.10.2
@@ -22,9 +29,6 @@ Tue Jul 14 06:35:44 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Fixed source -> dist package updates wiping the .git dir without checking for local changes first (#12912)
   * Fixed GitHub token prompt happening multiple times on parallel auth failures (#12913)
   * Fixed warnings from Composer repositories being printed twice in some cases (#12907)
-- fixes CVE-2026-59948 [bsc#1271123]
-        CVE-2026-59947 [bsc#1271130]
-        CVE-2026-59946 [bsc#1271152]
  
 -------------------------------------------------------------------
 Tue Jun  2 07:29:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -42,6 +46,7 @@ Tue Jun  2 07:29:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Fixed audit command returning a success code when the vendor dir was not present (#12880)
 - modified sources
   * composer.phar
+- fixes CVE-2026-45793 [bsc#1271504]
 
 -------------------------------------------------------------------
 Mon Apr 27 07:22:50 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -73,6 +78,9 @@ Mon Apr 27 07:22:50 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Fixed git rev-list usages to support older pre-2.33 git versions (#12705)
   * Fixed issue handling paths with = in them on Windows (#12726)
 - fixes [bsc#1262254], [bsc#1262255]
+- fixes CVE-2026-59948 [bsc#1271123]
+        CVE-2026-59947 [bsc#1271130]
+        CVE-2026-59946 [bsc#1271152]
 
 -------------------------------------------------------------------
 Thu Jan 15 13:17:09 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
