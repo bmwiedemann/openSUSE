@@ -43,4 +43,12 @@ It is part of the dependency tree of opam.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1252036</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>2919c9322d56e5825f3d9c4ecde57547</srcmd5>
+    <version>1.0.4</version>
+    <time>1784245166</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365586</requestid>
+  </revision>
 </revisionlist>
