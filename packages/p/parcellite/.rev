@@ -319,4 +319,23 @@
   + parcellite-gcc15.patch</comment>
     <requestid>1282745</requestid>
   </revision>
+  <revision rev="39" vrev="4">
+    <srcmd5>98732d02063dd5704b641bd483745fe8</srcmd5>
+    <version>1.2.5</version>
+    <time>1784127448</time>
+    <user>dimstar_suse</user>
+    <comment>- bsc#1220103 Fix lockup:
+  Add parcellite-lock.patch</comment>
+    <requestid>1365984</requestid>
+  </revision>
+  <revision rev="40" vrev="5">
+    <srcmd5>2942a455e92c627243fe460d839ff1c2</srcmd5>
+    <version>1.2.5</version>
+    <time>1784245321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add menu popup fixes
+  + Don-t-delay-showing-the-menu-on-click.patch
+  + Use-gtk_status_icon_position_menu-to-position-the-po.patch</comment>
+    <requestid>1366097</requestid>
+  </revision>
 </revisionlist>

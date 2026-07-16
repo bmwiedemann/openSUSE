@@ -1,0 +1,38 @@
+From 3f84f4de857aa63e5eb70df25f1ad73ecefcf16c Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 26 Oct 2025 09:53:58 +0100
+Subject: [PATCH] Don't delay showing the menu on click
+
+This fixes the problem that the menu is closed as soon as the user release
+the mouse button. If `gtk_menu_popup()` is delayed, the
+`gtk_get_current_event_time()` is not the same as the click event.
+
+Link: https://github.com/rickyrockrat/parcellite/pull/119
+Fixes: https://github.com/rickyrockrat/parcellite/issues/133
+---
+ src/main.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 2029fba..53b09c6 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -2229,13 +2229,13 @@ static void status_icon_clicked(GtkStatusIcon *status_icon, gpointer user_data)
+ 		g_fprintf(stderr,"Got Ctrl-click\n");
+     if (actions_lock == FALSE)
+     {
+-      g_timeout_add(POPUP_DELAY, show_actions_menu, NULL);
++      show_actions_menu(NULL);
+     }
+   }
+   /* Normal click */
+   else
+   {
+-    g_timeout_add(POPUP_DELAY, show_history_menu, GINT_TO_POINTER(figure_histories()));
++    show_history_menu(GINT_TO_POINTER(figure_histories()));
+   }
+ }
+ /***************************************************************************/
+-- 
+2.51.0
+

@@ -31,6 +31,12 @@ Patch2:         parcellite-1.2.4.0-simple.patch
 Patch3:         fix-manpage-name.patch
 # https://github.com/rickyrockrat/parcellite/issues/113
 Patch4:         parcellite-gcc15.patch
+# bsc#1220103 gh/rickyrockrat/parcellite#132
+Patch5:         parcellite-lock.patch
+# https://github.com/rickyrockrat/parcellite/pull/119
+Patch6:         Don-t-delay-showing-the-menu-on-click.patch
+# https://github.com/rickyrockrat/parcellite/pull/120
+Patch7:         Use-gtk_status_icon_position_menu-to-position-the-po.patch
 BuildRequires:  gnome-icon-theme
 BuildRequires:  intltool >= 0.23
 BuildRequires:  pkgconfig

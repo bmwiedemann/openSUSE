@@ -1,0 +1,48 @@
+From a616725aa8486d115d035128f553b2c846a13e25 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ball=C3=B3=20Gy=C3=B6rgy?= <ballogyor@gmail.com>
+Date: Sun, 26 Oct 2025 10:04:07 +0100
+Subject: [PATCH] Use gtk_status_icon_position_menu() to position the popup
+ menu
+
+This ensures that the menu appears at the right position.
+
+Closes: https://github.com/rickyrockrat/parcellite/issues/110
+Link: https://github.com/rickyrockrat/parcellite/pull/120
+---
+ src/main.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/src/main.c b/src/main.c
+index 2029fba..6afb1ec 100644
+--- a/src/main.c
++++ b/src/main.c
+@@ -1312,7 +1312,7 @@ static gboolean show_actions_menu(gpointer data)
+   gtk_menu_shell_append((GtkMenuShell*)menu, menu_item);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, NULL, NULL, 1, gtk_get_current_event_time());
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, status_icon ? gtk_status_icon_position_menu : NULL, status_icon, 1, gtk_get_current_event_time());
+   /* Return false so the g_timeout_add() function is called only once */
+   return FALSE;
+ }
+@@ -2122,7 +2122,7 @@ next_loop:
+ 	g_signal_connect(menu,"selection-done",(GCallback)destroy_history_menu,(gpointer)&h);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, get_pref_int32("history_pos")?postition_history:set_menu_xy, NULL, 1, gtk_get_current_event_time());
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, get_pref_int32("history_pos")?postition_history:status_icon ? gtk_status_icon_position_menu : set_menu_xy, status_icon, 1, gtk_get_current_event_time());
+ 	/**set last entry at first -fixes bug 2974614 */
+ 	if(get_pref_int32("reverse_history") && NULL != h.clip_item)
+ 		gtk_menu_shell_select_item((GtkMenuShell*)menu,h.clip_item);
+@@ -2206,7 +2206,7 @@ GtkWidget *create_parcellite_menu(guint button, guint activate_time)
+   gtk_menu_shell_append((GtkMenuShell*)menu, menu_item);
+   /* Popup the menu... */
+   gtk_widget_show_all(menu);
+-  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, set_menu_xy, (gpointer)1, button, activate_time);
++  gtk_menu_popup((GtkMenu*)menu, NULL, NULL, status_icon ? gtk_status_icon_position_menu : set_menu_xy, status_icon, button, activate_time);
+   return menu;
+ }
+ 
+-- 
+2.51.0
+

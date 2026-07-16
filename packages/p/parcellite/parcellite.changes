@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 15 15:02:02 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Add menu popup fixes
+  + Don-t-delay-showing-the-menu-on-click.patch
+  + Use-gtk_status_icon_position_menu-to-position-the-po.patch
+
+-------------------------------------------------------------------
+Wed Jul 15 13:10:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- bsc#1220103 Fix lockup:
+  Add parcellite-lock.patch
+
+-------------------------------------------------------------------
 Tue May 20 08:21:41 UTC 2025 - pgajdos@suse.com
 
 - added patches
