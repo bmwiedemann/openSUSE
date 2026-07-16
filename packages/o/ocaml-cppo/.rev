@@ -107,4 +107,12 @@
   See included Changes.md for details</comment>
     <requestid>1249871</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>a22bd973ba4b721b532a183592f4cb8b</srcmd5>
+    <version>1.8.0</version>
+    <time>1784245063</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365536</requestid>
+  </revision>
 </revisionlist>
