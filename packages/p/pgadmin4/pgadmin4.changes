@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:09:30 UTC 2026 - Marco Varlese <mvarlese@suse.com>
+
+- Fix the dependency on passlib (now called libpass), boo#1271198.
+
+-------------------------------------------------------------------
 Fri Jan  9 09:47:30 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Use new urllib3 with newer python version

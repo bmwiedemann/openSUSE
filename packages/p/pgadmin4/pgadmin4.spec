@@ -51,7 +51,7 @@
 %global python3_pillow_min_version 9.0
 %global python3_pyotp_min_version 2.0
 %global python3_keyring_min_version 25.0
-%global python3_passlib_min_version 1.7.2
+%global python3_libpass_min_version 1.9.0
 %global python3_psutil_min_version 6.1.0
 %global python3_psycopg_min_version 3.2.4
 %global python3_python_dateutil_min_version 2.8.0
@@ -127,7 +127,7 @@ BuildRequires:  %{python_module jsonformatter >= %{python3_jsonformatter_min_ver
 BuildRequires:  %{python_module keyring >= %{python3_keyring_min_version}}
 BuildRequires:  %{python_module ldap3 >= %{python3_ldap3_min_version}}
 BuildRequires:  %{python_module libgravatar >= %{python3_libgravatar_min_version}}
-BuildRequires:  %{python_module passlib >= %{python3_passlib_min_version}}
+BuildRequires:  %{python_module libpass >= %{python3_libpass_min_version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil >= %{python3_psutil_min_version}}
 BuildRequires:  %{python_module psycopg >= %{python3_psycopg_min_version}}
@@ -135,6 +135,7 @@ BuildRequires:  %{python_module pyotp >= %{python3_pyotp_min_version}}
 BuildRequires:  %{python_module python-dateutil >= %{python3_python_dateutil_min_version}}
 BuildRequires:  %{python_module pytz >= %{python3_pytz_min_version}}
 BuildRequires:  %{python_module qrcode >= %{python3_qrcode_min_version}}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module sqlparse >= %{python3_sqlparse_min_version}}
 BuildRequires:  %{python_module sshtunnel >= %{python3_sshtunnel_min_version}}
 BuildRequires:  %{python_module testscenarios}
@@ -177,7 +178,7 @@ Requires:       %{python_module jsonformatter >= %{python3_jsonformatter_min_ver
 Requires:       %{python_module keyring >= %{python3_keyring_min_version}}
 Requires:       %{python_module ldap3 >= %{python3_ldap3_min_version}}
 Requires:       %{python_module libgravatar >= %{python3_libgravatar_min_version}}
-Requires:       %{python_module passlib >= %{python3_passlib_min_version}}
+Requires:       %{python_module libpass >= %{python3_libpass_min_version}}
 Requires:       %{python_module psutil >= %{python3_psutil_min_version}}
 Requires:       %{python_module psycopg >= %{python3_psycopg_min_version}}
 Requires:       %{python_module pyotp >= %{python3_pyotp_min_version}}
