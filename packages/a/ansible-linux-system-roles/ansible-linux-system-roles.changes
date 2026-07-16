@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 16 10:33:12 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update suseconnect role 1.0.1 -> 1.0.2
+  - add HTTP proxy support
+  - change required-package handling
+  - fix false Azure detection on on-prem Hyper-V 
+
+-------------------------------------------------------------------
 Fri May 15 20:58:08 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update to version 1.4.0: add new role

@@ -25,7 +25,7 @@
 %global systemd_version 1.3.7
 %global ha_cluster_version 1.29.1
 %global mssql_version 2.6.6
-%global suseconnect_version 1.0.1
+%global suseconnect_version 1.0.2
 %global auto_maintenance_version 1.120.5
 %global certificate_version 1.5.0
 %global selinux_version 1.11.1
