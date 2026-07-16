@@ -17,10 +17,11 @@
 
 
 Name:           opam
-Version:        2.5.1
+Version:        2.5.2
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://opam.ocaml.org/
 Source:         %name-%version.tar.xz
 BuildRequires:  autoconf

@@ -39,7 +39,7 @@
     <param name="exclude">src_ext</param>
     <param name="exclude">tests</param>
     <param name="filename">opam</param>
-    <param name="revision">6218d0c4c022106034a93c8ecb5b80fa213d7356</param>
+    <param name="revision">ad0564f20c6306bc83085fe663cab903fe887208</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocaml/opam.git</param>

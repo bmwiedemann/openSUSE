@@ -188,4 +188,12 @@
   see included CHANGES file for details</comment>
     <requestid>1347738</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>36cf2ea39d4fe6f13800e163967cc317</srcmd5>
+    <version>2.5.2</version>
+    <time>1784245177</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2.5.2 (CVE-2026-57825)</comment>
+    <requestid>1365591</requestid>
+  </revision>
 </revisionlist>
