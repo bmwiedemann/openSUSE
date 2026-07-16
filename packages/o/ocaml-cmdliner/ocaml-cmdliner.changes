@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Update to version 2.1.1
+  see included CHANGES.md file for details
+- Add ocaml-cmdliner.patch
+
+-------------------------------------------------------------------
 Fri Jul  7 07:07:07 UTC 2023 - ohering@suse.de
 
 - Update to version 1.2.0

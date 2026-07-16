@@ -1,0 +1,15 @@
+--- /dev/null
++++ a/dune
+@@ -0,0 +1 @@
++(env (_ (flags -g -bin-annot -safe-string))) ; Use the same flags as with ocamlbuild
+--- /dev/null
++++ a/dune-project
+@@ -0,0 +1,2 @@
++(lang dune 1.4)
++(name cmdliner)
+--- /dev/null
++++ a/src/dune
+@@ -0,0 +1,3 @@
++(library
++ (public_name cmdliner)
++ (wrapped false))
