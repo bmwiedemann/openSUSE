@@ -22,9 +22,11 @@
 %if %{without ocaml_pcre2_testsuite}
 ExclusiveArch:  do-not-build
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -35,11 +37,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Bindings to the Perl Compatibility Regular Expressions library (version 2)
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
-URL:            https://opam.ocaml.org/packages/pcre2
+URL:            https://opam.ocaml.org/packages/pcre2/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version)
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpcre2-8)
@@ -54,7 +56,7 @@ substitution, similar to the functionality offered by the Perl language.
 
 %package        devel
 Summary:        Development files for %name
-Requires:       %name = %version
+Requires:       %name = %version-%release
 Requires:       pkgconfig(libpcre2-8)
 
 %description    devel
@@ -84,10 +86,8 @@ dune_release_pkgs='pcre2'
 
 %if "%build_flavor" == ""
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 %doc README.md
 
 %endif

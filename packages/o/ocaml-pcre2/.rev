@@ -24,4 +24,12 @@
   see included CHANGELOG.md file for details</comment>
     <requestid>1317329</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>301396808fdc1075803c31405ad96653</srcmd5>
+    <version>8.0.4</version>
+    <time>1784245128</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365568</requestid>
+  </revision>
 </revisionlist>
