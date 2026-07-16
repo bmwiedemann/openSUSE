@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-facile
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml Constraint Programming Library
 License:        LGPL-2.1+
-Group:          Development/Languages/OCaml
-Url:            https://github.com/Emmanuel-PLF/facile
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/facile/
 Source0:        %name-%version.tar.xz
 Patch0:         %name.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(stdlib-shims)
 
 %description
@@ -51,8 +51,7 @@ efficient language.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 Requires:       ocamlfind(stdlib-shims)
 
 %description    devel

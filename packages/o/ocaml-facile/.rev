@@ -169,4 +169,12 @@
 - Remove obsolete ocaml-4.patch</comment>
     <requestid>967048</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>20d875f7c9f02d78f7478d847a23bc94</srcmd5>
+    <version>1.1.4</version>
+    <time>1784245082</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365544</requestid>
+  </revision>
 </revisionlist>
