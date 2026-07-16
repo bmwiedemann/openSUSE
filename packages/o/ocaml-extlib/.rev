@@ -108,4 +108,12 @@
   * add ExtString.empty</comment>
     <requestid>1277575</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>835a871b73fdb93615c454362ddbe2dc</srcmd5>
+    <version>1.8.0</version>
+    <time>1784245079</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365543</requestid>
+  </revision>
 </revisionlist>

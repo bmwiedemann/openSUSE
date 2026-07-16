@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-extlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Andrew Psaltis <ampsaltis at gmail dot com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,13 +23,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml ExtLib additions to the standard library
 License:        LGPL-2.1-or-later WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/extlib
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/extlib/
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-cppo
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220707
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 ExtLib is a project aiming at providing a complete - yet small -
@@ -41,8 +41,7 @@ should be useful for the average OCaml programmer.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
