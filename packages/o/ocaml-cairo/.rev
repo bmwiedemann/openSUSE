@@ -61,4 +61,12 @@
   See included CHANGES.md for details</comment>
     <requestid>1249869</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>f4d5d8f2eff881bf7c984154fa6d7a81</srcmd5>
+    <version>0.6.5</version>
+    <time>1784245052</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365531</requestid>
+  </revision>
 </revisionlist>
