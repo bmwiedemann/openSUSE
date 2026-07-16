@@ -1,5 +1,9 @@
 # Changes
 
+## 2026/02/09
+
+* Avoid a stupid problem: the file name `aux.ml` is illegal on Windows.
+
 ## 2026/02/03
 
 * Fix a printing bug in the Rocq back-end, which was introduced in 20260112:
