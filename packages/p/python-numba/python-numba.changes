@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul  6 19:47:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.66.0:
+  * numba now upgrades to llvmlite 0.48 with LLVM 22 and restores
+    sys.monitoring on Python 3.14.4 and later.
+  * This release also adds support for typed set containers and
+    multi-dimensional fancy indexing.
+  * see https://numba.readthedocs.io/en/stable/release/0.66.0-notes.html
+
+-------------------------------------------------------------------
 Sat Apr 25 08:30:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.65.1:

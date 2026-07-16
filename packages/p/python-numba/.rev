@@ -588,4 +588,18 @@ Python2 support was turned off by accident.  I don't go out of my way to support
    set to a non-zero value.</comment>
     <requestid>1349199</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>60f41e9292308e62ac63b388259e51c0</srcmd5>
+    <version>0.66.0</version>
+    <time>1784245040</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.66.0:
+  * numba now upgrades to llvmlite 0.48 with LLVM 22 and restores
+    sys.monitoring on Python 3.14.4 and later.
+  * This release also adds support for typed set containers and
+    multi-dimensional fancy indexing.
+  * see https://numba.readthedocs.io/en/stable/release/0.66.0-notes.html
+</comment>
+    <requestid>1366084</requestid>
+  </revision>
 </revisionlist>

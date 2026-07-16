@@ -44,6 +44,9 @@ ExclusiveArch:  x86_64 %ix86 ppc64le %arm aarch64
 %if "%{flavor}" != "test-py314"
 %define skip_python314 1
 %endif
+%if "%{flavor}" != "test-py315"
+%define skip_python315 1
+%endif
 # Skip empty buildsets on tumbleweed and leap16 or flavors other than python311 on leap with sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -54,7 +57,7 @@ ExcludeArch:    s390x ppc64 %ix86 %arm
 %endif
 %endif
 Name:           python-numba%{?psuffix}
-Version:        0.65.1
+Version:        0.66.0
 Release:        0
 Summary:        NumPy-aware optimizing compiler for Python using LLVM
 License:        BSD-2-Clause
@@ -72,7 +75,7 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  (tbb-devel >= 2021)
-Requires:       (python-llvmlite >= 0.47 with python-llvmlite < 0.48)
+Requires:       (python-llvmlite >= 0.48 with python-llvmlite < 0.49)
 Requires:       (python-numpy >= %{min_numpy_ver} with python-numpy < %{max_numpy_ver})
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -92,8 +95,9 @@ BuildRequires:  %{python_module numba-devel = %{version}}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module psutil}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module scipy >= 1.0}
+BuildRequires:  %{python_module scipy > 1.0}
 BuildRequires:  %{python_module tbb}
+BuildRequires:  openblas-devel
 %endif
 %python_subpackages
 
