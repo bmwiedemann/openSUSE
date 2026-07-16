@@ -91,4 +91,12 @@ update: fixed license ID (used wrong casing)</comment>
 - JaneStreet libraries are 64bit, this pkg depends on them</comment>
     <requestid>1144323</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>edf440b4fab1d6f7a6572d10f2152c72</srcmd5>
+    <version>1.1</version>
+    <time>1784245090</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365549</requestid>
+  </revision>
 </revisionlist>
