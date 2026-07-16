@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:23:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.3
+- Changes since 6.7.2:
+  * Update version for new release 6.7.3
+  * kcm: Use Kirigami.StyleHints.showFramedBackground for ScrollView
+
+-------------------------------------------------------------------
 Tue Jun 30 20:14:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.2:
