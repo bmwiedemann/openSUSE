@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rresult
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,12 +22,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Result value combinators for OCaml
 License:        ISC
-URL:            https://opam.ocaml.org/packages/rresult
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/rresult/
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-rresult.patch
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(result)
 
@@ -39,7 +40,7 @@ standard library.
 
 %package        devel
 Summary:        Development files for %name
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for

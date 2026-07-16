@@ -7,4 +7,12 @@
     <comment>new dependency of ocaml-bos and ocaml-camlp5</comment>
     <requestid>1077063</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9291e40d7a594cd20ebc9d7a193a79d2</srcmd5>
+    <version>0.7.0</version>
+    <time>1784245146</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365578</requestid>
+  </revision>
 </revisionlist>
