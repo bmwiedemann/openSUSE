@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:26:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.10:
+  * Enhancements
+    - Add PHP language support (#2314)
+    - Add freeze option to update settings (#2323)
+    - Add tag filters to update configuration (#2354)
+    - Identify 'mts' and 'cts' as TypeScript files (#2209)
+    - Publish Alpine Docker images (#2352)
+    - Support builtin and meta in try-repo (#2350)
+  * Bug fixes
+    - Fix Python discovery order (#2348)
+    - Fix Windows progress rendering (#2328)
+    - Preserve configured repo values for updates (#2324)
+    - Scope synthetic GIT_WORK_TREE to git commands (#2356)
+  * Documentation
+    - Expand common workflows guide (#2351)
+  * Dependencies
+    - Update Rust crate indicatif to v0.18.6 (#2330)
+    - Update Rust crate fs-err to v3.3.1 (#2329)
+    - Update Rust crate bstr to v1.12.3 (#2335)
+    - Update Rust crate serde-saphyr to 0.0.29 (#2341)
+    - Update Rust crate rustc-hash to v2.1.3 (#2340)
+    - Update Rust crate clap_complete to v4.6.7 (#2336)
+    - Update Rust crate anyhow to v1.0.103 (#2333)
+    - Update Rust crate liblzma to v0.4.7 (#2339)
+    - Update Rust crate ignore to v0.4.27 (#2338)
+    - Update dependency uv to v0.11.26
+    - Update Rust crate console to v0.16.4
+    - Update Rust crate aws-lc-rs to v1.17.1 (#2334)
+
+-------------------------------------------------------------------
 Mon Jul 13 04:52:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.4.9:
