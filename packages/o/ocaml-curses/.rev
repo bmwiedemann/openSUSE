@@ -86,4 +86,12 @@
   contain a dot are not considered valid anymore with dune 3.13</comment>
     <requestid>1139273</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>41f27ee5a83378f97a9797902acfeb92</srcmd5>
+    <version>1.0.11</version>
+    <time>1784245071</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365540</requestid>
+  </revision>
 </revisionlist>
