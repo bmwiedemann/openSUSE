@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ppx_derivers
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Deriving plugin registry
 License:        BSD-3-Clause
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://github.com/ocaml-ppx/ppx_derivers
-Source0:        %{name}-%{version}.tar.xz
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/ppx_derivers/
+Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210409
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 Ppx_derivers is a tiny package whose sole purpose is to allow
@@ -36,13 +35,12 @@ ppx_deriving and ppx_type_conv to inter-operate gracefully when
 linked as part of the same ocaml-migrate-parsetree driver.
 
 %package        devel
-Summary:        Development files for %{name}
-Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
@@ -59,10 +57,8 @@ dune_release_pkgs='ppx_derivers'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
-%defattr(-,root,root,-)
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
-%defattr(-,root,root,-)
+%files devel -f %name.files.devel
 
 %changelog
