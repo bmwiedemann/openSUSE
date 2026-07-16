@@ -1,7 +1,7 @@
 #
 # spec file for package weston
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,22 +22,19 @@
 
 Name:           weston
 %define lname	libweston0
-%define major   14
-Version:        14.0.2
+%define major   16
+Version:        16.0.0
 Release:        0
 Summary:        Wayland Reference Compositor
 License:        CC-BY-SA-3.0 AND MIT
 Group:          System/X11/Servers
 URL:            https://wayland.freedesktop.org/
-#Git-Clone:	git://anongit.freedesktop.org/wayland/weston
-#Git-Web:	https://cgit.freedesktop.org/wayland/weston/
 Source:         https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz
 Source2:        https://gitlab.freedesktop.org/wayland/weston/-/releases/%version/downloads/%name-%version.tar.xz.sig
-# PATCH-FIX-UPSTREAM -- weston-libdisplay-info-0.3.0.patch
-Patch0:         weston-libdisplay-info-0.3.0.patch
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  gcc%{?gcc_version}-c++ >= %gcc_version
 BuildRequires:  glibc-devel >= 2.27
+BuildRequires:  glslang-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libxml2-tools
 BuildRequires:  meson >= 0.63
@@ -69,6 +66,7 @@ BuildRequires:  pkgconfig(libudev) >= 136
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(pixman-1) >= 0.25.2
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(wayland-client) >= 1.22.0
 BuildRequires:  pkgconfig(wayland-egl)
 BuildRequires:  pkgconfig(wayland-protocols) >= 1.24
@@ -81,7 +79,7 @@ BuildRequires:  pkgconfig(xcb-shm)
 BuildRequires:  pkgconfig(xcb-xfixes)
 BuildRequires:  pkgconfig(xcb-xkb) >= 1.9
 BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xkbcommon) >= 0.3.0
+BuildRequires:  pkgconfig(xkbcommon) >= 0.5.0
 Requires:       vpx-tools
 Requires:       xkeyboard-config
 
@@ -144,10 +142,11 @@ export CC="gcc%{?gcc_version:-%{gcc_version}}" CXX="g++%{?gcc_version:-%{gcc_ver
 %endif
 
 # includedir intentional, cf. bugzilla.opensuse.org/795968
-%meson -Ddemo-clients=false -Dremoting=false -Dsimple-clients= \
-	-Dtest-junit-xml=false -Dpipewire=false -Dbackend-vnc=false \
+%meson -Ddemo-clients=false -Dsimple-clients= \
+	-Dtest-junit-xml=false -Dbackend-vnc=false \
+	-Dshell-lua=false \
 	--includedir="%_includedir/%name"
-%meson_build
+%meson_build -j1
 
 %install
 %meson_install

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 16 16:55:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16
+  * Protocols support like like fifo, commit-timing and
+    color-representation
+  * Vulkan renderer
+  * New shell
+  * Further HDR and color management improvements, support for new
+    DRM properties like color-format or background color
+  * Removed fullscreen-shell entirely and deprecated xdg-shell-v6
+    together with pipewire and remoting plug-ins
+- Delete weston-libdisplay-info-0.3.0.patch
+
+-------------------------------------------------------------------
 Wed Sep 17 10:13:00 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(freerdp2) with pkgconfig(freerdp3)
