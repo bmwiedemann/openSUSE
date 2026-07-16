@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 16 01:16:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.42:
+  * Update help concerning math formulas (#97, #855, @jendrikseipp).
+  * Fix X11 forwarding (#726, #847, @jendrikseipp).
+  * Don't store/restore window position on Wayland (#806, @jendrikseipp).
+  * Replace deprecated GTK 3 API with modern alternatives (@jendrikseipp).
+  * Upgrade to PyInstaller 6.16 (#871, @jendrikseipp).
+  * Declare required and optional Python dependencies to setup.py (#871,
+    @przemub).
+  * Simplify instructions for macOS installation (#871, @przemub).
+  * Fix sorting words that are incompatible with the current locale (#778,
+    #779, Oussama Jarrousse).
+  * Add dark mode instructions to built-in help documentation (#848,
+    @jendrikseipp).
+  * Fix options dialog not closing when OK button is clicked (#857,
+    @jendrikseipp).
+  * Fix black WebKit panes on KDE by disabling compositing on this platform
+    (#828, @jendrikseipp).
+  * Fix empty WebKit preview with Nvidia drivers by auto-applying DMA-BUF
+    workaround (#820, @jendrikseipp).
+  * Only instantiate Gtk.StatusIcon on Windows to fix Wayland crash (#840,
+    @jendrikseipp).
+- Add patch support-journal-files-days-as-strings.patch (bsc#1270015)
+
+-------------------------------------------------------------------
 Wed Jul  2 05:28:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

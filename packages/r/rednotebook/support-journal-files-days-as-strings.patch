@@ -1,0 +1,41 @@
+From 46d10a8830de9ab1539f6cbe857336740915966f Mon Sep 17 00:00:00 2001
+From: Sai Asish Y <say.apm35@gmail.com>
+Date: Thu, 2 Jul 2026 02:57:57 -0700
+Subject: [PATCH] Fix reading journal files with string day numbers (#897)
+
+Signed-off-by: Sai Asish Y <say.apm35@gmail.com>
+---
+ CHANGELOG.md        | 1 +
+ rednotebook/data.py | 1 +
+ tests/test_day.py   | 6 ++++++
+ 3 files changed, 8 insertions(+)
+
+Index: rednotebook-2.42/rednotebook/data.py
+===================================================================
+--- rednotebook-2.42.orig/rednotebook/data.py
++++ rednotebook-2.42/rednotebook/data.py
+@@ -294,6 +294,7 @@ class Month:
+         month_content = month_content or {}
+         self.days = {}
+         for day_number, day_content in month_content.items():
++            day_number = int(day_number)
+             self.days[day_number] = Day(self, day_number, day_content)
+ 
+         self.edited = False
+Index: rednotebook-2.42/tests/test_day.py
+===================================================================
+--- rednotebook-2.42.orig/tests/test_day.py
++++ rednotebook-2.42/tests/test_day.py
+@@ -12,6 +12,12 @@ def test_to_string():
+     assert str(day) == str_version
+ 
+ 
++def test_string_day_keys():
++    month = Month(2026, 7, {"1": {"text": "hello"}})
++    assert list(month.days) == [1]
++    assert month.get_day(1).text == "hello"
++
++
+ def test_hashtags():
+     month = Month(2000, 10)
+     day = Day(month, 20)

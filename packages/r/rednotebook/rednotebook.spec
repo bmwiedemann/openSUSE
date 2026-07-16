@@ -1,7 +1,7 @@
 #
 # spec file for package rednotebook
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           rednotebook
-Version:        2.39
+Version:        2.42
 Release:        0
 Summary:        Graphical diary and journal
 # See note at the end of README: code is using some LGPL-3.0+ module, so the resulting work is GPL-3.0+.
@@ -26,6 +26,8 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            http://rednotebook.sourceforge.net/
 Source:         https://github.com/jendrikseipp/rednotebook/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#jendrikseipp/rednotebook#898
+Patch0:         support-journal-files-days-as-strings.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
@@ -53,7 +55,7 @@ entries.
 %lang_package
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %pyproject_wheel
