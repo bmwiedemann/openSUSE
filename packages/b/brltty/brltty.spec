@@ -16,6 +16,11 @@
 #
 
 
+%ifarch aarch64 ppc64le riscv64 s390x x86_64
+%bcond_without brltty_ocaml_bindings
+%else
+%bcond_with    brltty_ocaml_bindings
+%endif
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
 %define api_version 0.8.8
 %define sover 0_8
@@ -25,7 +30,6 @@ Version:        6.9.1
 Release:        0
 Summary:        Braille display driver for Linux/Unix
 License:        LGPL-2.1-or-later
-Group:          System/Daemons
 URL:            https://brltty.app/
 
 Source0:        https://brltty.app/archive/%name-%version.tar.xz
@@ -45,8 +49,6 @@ BuildRequires:  gpm-devel
 BuildRequires:  java-devel >= 1.6.0
 BuildRequires:  jpackage-utils
 BuildRequires:  ncurses-devel
-BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros > 20240101
 BuildRequires:  python3
@@ -78,7 +80,6 @@ complete screen review functionality.
 
 %package driver-at-spi2
 Summary:        AT-SPI 2 driver for BRLTTY
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (brltty and at-spi2-core)
 
@@ -92,7 +93,6 @@ This package contains the AT-SPI 2 screen driver.
 
 %package driver-brlapi
 Summary:        BrlAPI driver for BRLTTY
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (brltty and %{soname})
 
@@ -106,7 +106,6 @@ This package contains the BrlAPI braille driver.
 
 %package driver-espeak
 Summary:        ESpeak driver for BRLTTY
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (brltty and espeak-ng-compat)
 
@@ -120,7 +119,6 @@ This package contains the eSpeak speech driver.
 
 %package driver-speech-dispatcher
 Summary:        Speech Dispatcher driver for BRLTTY
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (brltty and libspeechd2)
 
@@ -134,7 +132,6 @@ This package contains the Speech Dispatcher speech driver.
 
 %package driver-xwindow
 Summary:        XWindow driver for BRLTTY
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (brltty and xorg-x11-server)
 
@@ -148,7 +145,6 @@ This package contains the XWindow braille driver.
 
 %package udev-generic
 Summary:        BRLTTY Udev rules for braille devices that use a generic USB to serial adapter
-Group:          System/Daemons
 Requires:       %name = %version-%release
 
 %description udev-generic
@@ -158,7 +154,6 @@ Install this package in order to support braille devices that use a generic USB 
 
 %package utils
 Summary:        Braille display driver for Linux/Unix
-Group:          System/Daemons
 Requires:       %name = %version
 
 %description utils
@@ -171,7 +166,6 @@ This package contain various utilities related to BRLTTY.
 
 %package -n xbrlapi
 Summary:        X BrlAPI helper
-Group:          System/Daemons
 Requires:       %name = %version
 Supplements:    (%{soname} and xorg-x11-server)
 
@@ -180,7 +174,6 @@ The xbrlapi utility is a helper to have BrlAPI work on a X system.
 
 %package -n %{soname}
 Summary:        Library to use BRLTTY from applications
-Group:          System/Daemons
 Requires(post): coreutils
 #!BuildIgnore:  group(brlapi)
 Requires(post): group(brlapi)
@@ -201,7 +194,6 @@ sent to the application, rather than to brltty.
 
 %package -n brlapi-devel
 Summary:        Library to use BRLTTY from applications -- Development Files
-Group:          Development/Libraries/C and C++
 Requires:       %{soname} = %version
 
 %description -n brlapi-devel
@@ -218,7 +210,6 @@ sent to the application, rather than to brltty.
 
 %package -n brlapi-java
 Summary:        Library to use BRLTTY from applications -- Java Bindings
-Group:          System/Daemons
 Requires:       java
 Requires:       jpackage-utils
 
@@ -234,9 +225,11 @@ brltty sends to the braille terminal in the application's console is
 ignored, whereas each piece of data coming from the braille terminal is
 sent to the application, rather than to brltty.
 
+%if %{with brltty_ocaml_bindings}
 %package -n ocaml-brlapi
 Summary:        Library to use BRLTTY from applications -- OCaml Bindings
-Group:          System/Daemons
+BuildRequires:  ocaml
+BuildRequires:  ocaml-rpm-macros
 Requires:       ocaml
 
 %description -n ocaml-brlapi
@@ -250,10 +243,10 @@ While an application communicates with the braille terminal, everything
 brltty sends to the braille terminal in the application's console is
 ignored, whereas each piece of data coming from the braille terminal is
 sent to the application, rather than to brltty.
+%endif
 
 %package -n python3-brlapi
 Summary:        Library to use BRLTTY from applications -- Python Bindings
-Group:          System/Daemons
 
 %description -n python3-brlapi
 BrlAPI is a service provided by the brltty daemon.
@@ -269,7 +262,6 @@ sent to the application, rather than to brltty.
 
 %package -n tcl-brlapi
 Summary:        Library to use BRLTTY from applications -- Tcl Bindings
-Group:          System/Daemons
 Requires:       tcl
 
 %description -n tcl-brlapi
@@ -286,7 +278,6 @@ sent to the application, rather than to brltty.
 
 %package -n system-user-brltty
 Summary:        System user and group named brltty
-Group:          System/Base
 Requires(pre):  group(pulse-access)
 Requires(pre):  group(root)
 Requires(pre):  group(tty)
@@ -326,6 +317,9 @@ done
 export PYTHON=/usr/bin/python3
 %configure CPPFLAGS="$java_inc" \
         --with-tables-directory=%_datadir/%name \
+%if %{without brltty_ocaml_bindings}
+	--disable-ocaml-bindings \
+%endif
         --disable-stripping
 make TCL_DIR=%tcl_archdir
 
@@ -345,9 +339,9 @@ sed -i "s/#api-parameters Auth=polkit/api-parameters Auth=polkit/" Documents/brl
 install -D -m644 Documents/brltty.conf %buildroot%_sysconfdir/brltty.conf
 # ghost brlapi.key
 touch %buildroot%_sysconfdir/brlapi.key
-# OCaml
+%if %{with brltty_ocaml_bindings}
 %ocaml_create_file_list
-#
+%endif
 rm %buildroot%_libdir/libbrlapi.a
 rm %buildroot/etc/X11/Xsession.d/90xbrlapi # TODO: install this somewhere?
 # fix missing executable bits
@@ -523,7 +517,9 @@ rm -f %_localstatedir/adm/update-messages/%name-%version-%release-something
 %{_jnidir}/libbrlapi_java.so
 %{_javadir}/brlapi.jar
 
+%if %{with brltty_ocaml_bindings}
 %files -n ocaml-brlapi -f %name.files.devel
+%endif
 
 %files -n python3-brlapi
 %{python3_sitearch}/brlapi.cpython*.so

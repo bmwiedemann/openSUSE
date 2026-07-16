@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove OCaml bindings on 32bit architectures
+
+-------------------------------------------------------------------
 Tue Apr  7 14:21:44 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 6.9.1:

@@ -685,4 +685,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1346908</requestid>
   </revision>
+  <revision rev="73" vrev="2">
+    <srcmd5>d24cb338f0fcf23014fb9b6a40b026f3</srcmd5>
+    <version>6.9.1</version>
+    <time>1784244914</time>
+    <user>dimstar_suse</user>
+    <comment>Remove OCaml bindings on 32bit architectures (forwarded request 1365830 from olh)</comment>
+    <requestid>1365831</requestid>
+  </revision>
 </revisionlist>
