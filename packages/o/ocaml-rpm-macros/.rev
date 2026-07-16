@@ -246,4 +246,12 @@ trim changes file</comment>
     <comment>Adjust regex for stricter gawk 5.4</comment>
     <requestid>1355189</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>a3d9f8e4f00519fab551d2353569e3ba</srcmd5>
+    <version>20260707</version>
+    <time>1784244911</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365577</requestid>
+  </revision>
 </revisionlist>

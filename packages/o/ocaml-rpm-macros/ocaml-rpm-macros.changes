@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Tue May 26 12:34:56 UTC 2026 - ohering@suse.de
 
-- Adjust regex for stricter gawk 5.4
+- Adjust regex for stricter gawk 5.4 (bsc#1265617)
 
 -------------------------------------------------------------------
 Sat May 17 14:53:11 UTC 2025 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-rpm-macros
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,13 @@
 
 
 Name:           ocaml-rpm-macros
-Version:        20260526
+Version:        20260707
 Release:        0
 Summary:        RPM macros for building OCaml source packages
 License:        GPL-2.0-only
 Group:          Development/Languages/OCaml
 BuildRoot:      %_tmppath/%name-%version-build
-ExclusiveArch:  %arm aarch64 %ix86 ppc ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://build.opensuse.org/project/show/devel:languages:ocaml
 Source0:        ocaml-ocaml.rpm.prov_req.attr.sh
 Source1:        ocaml-findlib.rpm.prov_req.attr.sh
@@ -506,7 +506,14 @@ ocaml setup.ml -configure \\\
 		${dune_for_release} \\\
 		${_smp_mflags} \\\
 		--prefix=%%_prefix \\\
+		--bindir=%%_bindir \\\
+		--datadir=%%_datadir \\\
+		--docdir=%%_prefix/doc \\\
+		--etcdir=%%_sysconfdir \\\
 		--libdir=%%ocaml_standard_library \\\
+		--libexecdir=%%ocaml_standard_library \\\
+		--mandir=%%_mandir \\\
+		--sbindir=%%_sbindir \\\
 		--destdir=%%buildroot \\\
 		${dune_release_pkgs//,/ } \\\
 		$OCAML_DUNE_INSTALL_ARGS ;\
