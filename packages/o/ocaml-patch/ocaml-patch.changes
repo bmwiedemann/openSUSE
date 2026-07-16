@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Update to version 3.1.2
+  see included CHANGES.md file for details
+
+-------------------------------------------------------------------
 Thu Apr 16 16:16:16 UTC 2026 - ohering@suse.de
 
 - Relax requirement for ocaml-rpm-macros, remove ExclusiveArch

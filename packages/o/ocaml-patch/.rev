@@ -24,4 +24,12 @@
     <comment>- Relax requirement for ocaml-rpm-macros, remove ExclusiveArch</comment>
     <requestid>1347801</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>3066bb69a17e087ba1fd954e87544285</srcmd5>
+    <version>3.1.2</version>
+    <time>1784245127</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.1.2</comment>
+    <requestid>1365567</requestid>
+  </revision>
 </revisionlist>

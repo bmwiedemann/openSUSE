@@ -21,25 +21,27 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_patch_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
 %define     pkg ocaml-patch
 Name:           %pkg%nsuffix
-Version:        3.1.0
+Version:        3.1.2
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Patch library purely in OCaml
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/patch
+URL:            https://opam.ocaml.org/packages/patch/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(alcotest)
@@ -52,8 +54,7 @@ apply a patch in memory.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
