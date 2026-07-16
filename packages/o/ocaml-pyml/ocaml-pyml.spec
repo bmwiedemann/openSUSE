@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pyml
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,12 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_pyml_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -34,23 +37,18 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library
 License:        BSD-2-Clause
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/pyml
+URL:            https://opam.ocaml.org/packages/pyml/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(bigarray)
 BuildRequires:  ocamlfind(stdcompat)
 BuildRequires:  ocamlfind(unix)
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(pyml)
-%if 0%{?suse_version} > 1315
 BuildRequires:  python3-numpy
-%else
-BuildRequires:  python-numpy
-%endif
 BuildRequires:  which
 %endif
 
@@ -59,8 +57,8 @@ Stdcompat is a compatibility layer allowing programs to use some recent addition
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
+Requires:       python3-base
 Requires:       which
 
 %description    devel

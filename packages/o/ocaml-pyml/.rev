@@ -64,4 +64,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1318715</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c96f0a26ccd2734707d7f6c4f2870983</srcmd5>
+    <version>20250807</version>
+    <time>1784245139</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365574</requestid>
+  </revision>
 </revisionlist>
