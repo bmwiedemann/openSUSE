@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:23:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.115.0 (2.114.0 does not exist):
+  * New Features
+    - [build-info-go] add ci env check for buid info duration
+      capture #397 (@reshmifrog)
+    - [jfrog-cli] Add OpenAPI spec embed for jf api operation
+      discovery #3595 (@ehl-jf)
+  * Bug Fixes
+    - [build-info-go] RTECO-1401 Fix/Publish Build Info with Build
+      Duration #395 (@reshmifrog)
+    - [jfrog-cli] fix build info build duration issue #3575
+      (@reshmifrog)
+    - [jfrog-cli-artifactory] Updating oras.land/oras-go/v2 version
+      to 2.6.2 #507 (@naveenku-jfrog)
+
+-------------------------------------------------------------------
 Thu Jul 09 05:21:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.113.0:
