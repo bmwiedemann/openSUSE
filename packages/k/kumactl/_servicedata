@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kumahq/kuma</param>
-              <param name="changesrevision">51c6d3819be75d9587942242cdec709bc9934321</param></service></servicedata>
+              <param name="changesrevision">51c6d3819be75d9587942242cdec709bc9934321</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kumahq/kuma.git</param>
+              <param name="changesrevision">d525a79bc2a90ee496d2efe7206400c10e10e37f</param></service></servicedata>

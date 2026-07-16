@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 16 07:39:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.1:
+  Dependencies
+  * chore(deps): bump kumahq/kuma-gui to
+    8cbc690630521e832c935031b249ac17d22da66c (#17385)
+  * chore(deps): track coredns-builds via renovate (backport of
+    #17366) (#17378)
+  * chore(deps): bump kumahq/kuma-gui to
+    185e46a46bf475b0d64c816f5081a22f8c45c453 (#17350)
+  * chore(deps): bump kumahq/kuma-gui to
+    8c1a7bdd58e20d00b7508c29963a1d3f250379f4 (#17314)
+  * chore(deps): bump kumahq/kuma-gui to
+    cbb093ecef3cb588f3db6996817ce1ed55637a2b (#17311)
+
+-------------------------------------------------------------------
 Sat Jun 13 10:35:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.0:
