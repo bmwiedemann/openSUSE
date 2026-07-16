@@ -45,4 +45,12 @@
   see included Changes file for details</comment>
     <requestid>1249886</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>538d7f175c53697c1af5548de00757ef</srcmd5>
+    <version>1.14</version>
+    <time>1784245171</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365588</requestid>
+  </revision>
 </revisionlist>
