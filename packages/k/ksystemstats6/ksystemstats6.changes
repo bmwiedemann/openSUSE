@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:22:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.3
+- Changes since 6.7.2:
+  * Update version for new release 6.7.3
+  * Fix crashes in KSysGuard::SensorObject::id()
+  * Guard ksystemstats_intel_helper against path traversal
+- Drop patches, now upstream:
+  * 0001-Guard-ksystemstats_intel_helper-against-path-travers.patch
+
+-------------------------------------------------------------------
 Wed Jul  1 21:50:36 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Prepare for CAP_PERFMON on ksystemstats_intel_helper

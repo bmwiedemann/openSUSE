@@ -360,4 +360,12 @@
   * Update version for new release 6.7.2</comment>
     <requestid>1363498</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>8cd1e65192ae82a26ba80734eacae2e3</srcmd5>
+    <version>6.7.3</version>
+    <time>1784244961</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
+    <requestid>1365858</requestid>
+  </revision>
 </revisionlist>
