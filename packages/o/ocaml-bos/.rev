@@ -7,4 +7,12 @@
     <comment>new dependency of ocaml-camlp5</comment>
     <requestid>1077064</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>002fdced7dcbac36b1580bb66f7461e8</srcmd5>
+    <version>0.3.0</version>
+    <time>1784245049</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.3.0</comment>
+    <requestid>1365530</requestid>
+  </revision>
 </revisionlist>

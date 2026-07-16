@@ -1,3 +1,10 @@
+---
+ dune-project   |    2 ++
+ src/dune       |    8 ++++++++
+ src/setup/dune |    6 ++++++
+ src/top/dune   |    7 +++++++
+ 4 files changed, 23 insertions(+)
+
 --- /dev/null
 +++ b/dune-project
 @@ -0,0 +1,2 @@
@@ -5,27 +12,31 @@
 +(name bos)
 --- /dev/null
 +++ b/src/dune
-@@ -0,0 +1,23 @@
+@@ -0,0 +1,8 @@
 +(library
 + (name bos)
 + (public_name bos)
-+ (libraries rresult astring fpath fmt unix logs)
++ (libraries astring fpath fmt unix logs)
 + (modules bos bos_base bos_cmd bos_log bos_os_arg bos_os_cmd bos_os_dir
 +   bos_os_env bos_os_file bos_os_path bos_os_tmp bos_os_u bos_pat)
 + (flags :standard -w -6-27-33-39)
 + (wrapped false))
-+
+--- /dev/null
++++ b/src/setup/dune
+@@ -0,0 +1,6 @@
++(library
++ (name bos_setup)
++ (public_name bos.setup)
++ (libraries rresult fmt.tty logs.fmt bos)
++ (modules bos_setup)
++ (wrapped false))
+--- /dev/null
++++ b/src/top/dune
+@@ -0,0 +1,7 @@
 +(library
 + (name bos_top)
 + (public_name bos.top)
 + (libraries compiler-libs.toplevel rresult.top astring.top fpath.top fmt.top
 +   logs.top bos)
 + (modules bos_top)
-+ (wrapped false))
-+
-+(library
-+ (name bos_setup)
-+ (public_name bos.setup)
-+ (libraries fmt.tty logs.fmt bos)
-+ (modules bos_setup)
 + (wrapped false))

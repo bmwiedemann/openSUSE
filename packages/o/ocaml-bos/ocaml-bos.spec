@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-bos
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           ocaml-bos
-Version:        0.2.1
+Version:        0.3.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Basic OS interaction for OCaml
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/bos
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/bos/
 Source0:        %name-%version.tar.xz
 Patch0:         ocaml-bos.patch
-BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml(ocaml_base_version) >= 4.14
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(astring)
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(fmt)
 BuildRequires:  ocamlfind(fpath)
 BuildRequires:  ocamlfind(logs)
 BuildRequires:  ocamlfind(rresult)
-BuildRequires:  ocamlfind(unix)
 
 %description
 Bos provides support for basic and robust interaction with the operating system 
@@ -44,8 +43,7 @@ arguments, interact with the file system and run command line programs.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
