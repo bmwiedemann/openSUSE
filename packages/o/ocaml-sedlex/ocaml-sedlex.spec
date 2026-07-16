@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sedlex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,29 +22,28 @@
 %if %{without ocaml_sedlex_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
 %define nsuffix %nil
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 
 %define     pkg ocaml-sedlex
 Name:           %pkg%nsuffix
-Version:        3.3
+Version:        3.7
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Unicode-friendly lexer generator
 License:        MIT
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/sedlex
+URL:            https://opam.ocaml.org/packages/sedlex/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(gen)
-BuildRequires:  ocamlfind(ppxlib)
+BuildRequires:  ocamlfind(ppxlib) >= 0.36.0
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(ppx_expect)
@@ -59,8 +58,7 @@ regular OCaml source files.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
