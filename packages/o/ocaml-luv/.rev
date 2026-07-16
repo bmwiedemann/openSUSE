@@ -86,4 +86,12 @@
 - Refresh ocaml-luv.patch (forwarded request 1277561 from jaimeMF)</comment>
     <requestid>1277574</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>a326d3e253fcf6bd681ad35738cdfa75</srcmd5>
+    <version>0.5.13</version>
+    <time>1784245107</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365557</requestid>
+  </revision>
 </revisionlist>

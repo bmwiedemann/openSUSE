@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-luv
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,12 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_luv_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -34,13 +37,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to libuv cross-platform asynchronous I/O
 License:        MIT
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/luv
+URL:            https://opam.ocaml.org/packages/luv/
 Source0:        %pkg-%version.tar.xz
 Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(ctypes)
 BuildRequires:  pkgconfig(libuv)
 
@@ -60,8 +62,7 @@ alternative to the standard module Unix.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 Requires:       pkgconfig(libuv)
 
 %description    devel
