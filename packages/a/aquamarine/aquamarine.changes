@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jul 14 10:52:32 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to aquamarine version 0.12.1:
+  - New major release, includes a new ABI-breaking release (0.12.0)
+  - Changes in version 0.12.1:
+    * drm: avoid redundant identity ctm modesets
+    * headless: don't use raw this in lambda capture without checking
+    * backend/headless: fix framecb never firing
+  - Changes from version 0.12.0:
+    - A New ABI-breaking release
+    * drm: CRTC starvation recovery + clear stale page-flip state after suspend
+    * FormatUtils: null-check drmGetFormatModifierName result
+    * drm: skip unchanged connector_state on page-flips
+    * backend: avoid duplicate auto-named outputs
+    * drm: clear stale color state on modeset
+    * drm: re-read EDID on resume to detect dock port swaps
+    * drm: fall back to first render node on single-renderD systems when parent-syspath match fails
+    * output/state: init ctm to identity
+    * session: Add AQ_NO_KMS_REQUIREMENT environment variable for bypassing KMS requirement
+    * backend: remove trailing newlines from libseat and libinput logs
+    * Fix DisplayLink/evdi monitor hotplug
+    * drm: fix crash on null crtc in getGammaSize/getDeGammaSize
+  - Changes from version 0.11.0:
+    * headless: hold ref in next frame timer
+    * headless: verify fn is valid before calling
+    * backend/headless: implement FPS caps for headless outputs
+    * backend: move logger to backend
+    * backend: add freeDrmDevice on error in initDmabuf
+    * drm: convert vd path before compare with explicit device path
+    * Remove Unnecessary Modeset After Restoring from VT
+    * output: fix degammalut typo
+    * libinput: fix pad groups not being ref'd
+    * modifiers: add drmModifierToName and print names
+    * backend: read idle timer
+    * renderer: set EGL_CONTEXT_RELEASE_BEHAVIOR_KHR if supported
+    * atomic fixes
+    * drm: use parent device matching for render nodes
+    * drm: ignore redundant tiled display connectors
+    * drm: keep secondary renderers alive only when they're needed
+    * backend: fix use-after-free of logger during teardown
+    * drm: make pageflips drive the frames
+    * Split input and output buffer attachments
+    * drm: re-send HDR metadata blob on modeset
+    * drm: reduce duplicated code in render creation
+    * output: add a pendingPageFlips() method
+    * drm/renderer: glFlush when clearing buffers
+    * drm: re-send ctm blob on modeset
+    * Improve and optimize timer FD logic
+    * backend/drm: fix multi-GPU buffer import failure during restoreAfterVT
+    * backend: include algorithm header
+    * backend: handle unhandled libinput switch enum with default case
+    * drm: guard logging in connector disconnect to avoid null dereference
+    * libinput: method to get libinput_tablet_tool from ITabletTool
+    * CI: use org-wide actions
+    * refactor: avoid repeated vector access in backend and DRM loops
+    
+-------------------------------------------------------------------
 Mon Dec 29 22:10:17 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
 
 - Update to aquamarine-0.10.0:
