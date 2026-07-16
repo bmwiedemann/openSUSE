@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:02:36 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.8.0:
+  * chore: release v17.8.0 (#2157)
+  * fix(antidote): stop the zsh probe suspending topgrade (#2185)
+  * docs: ask for title to be descriptive commit message in PR template (#2091)
+  * chore(deps): update github/codeql-action action to v4.37.0 (#2149)
+  * chore(deps): lock file maintenance (#2175)
+  * fix: fix formatting of a `zh_CN` message to be the same as `zh_TW` (#2174)
+  * fix(powershell): capitalize “Powershell” as “PowerShell” in strings (#2173)
+  * feat(step): add sera (KDE Plasma addon updater) (#2134)
+  * feat(step): add OpenCode upgrade (#2144)
+  * fix(pi): skip self update if disabled or installed with homebrew (#2156)
+
+-------------------------------------------------------------------
 Sat Jul 11 01:46:50 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.7.0:
