@@ -23,4 +23,12 @@
     <comment>- Remove ExclusiveArch 64bit</comment>
     <requestid>1267066</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>2758ba000a820ae4cd5006612877cd8d</srcmd5>
+    <version>0.1</version>
+    <time>1784245165</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365585</requestid>
+  </revision>
 </revisionlist>
