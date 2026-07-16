@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:16:53 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1784178984.04ce3617:
+  * chore(deps): Dependency cron 2026-07-16
+  * feat(job-restart): Allow restarting parent job skipping OK children
+  * test: Fix check `Consistent Test::More call` to exclude comments
+  * feat(overview-page): Reload automatically after adding comments
+  * test: Unify raw port socket reuse across create_* helpers
+  * test: reuse reserved socket in create_webapi
+  * feat(overview-page): Allow restarting jobs with advanced options
+  * feat(overview-page): Improve displaying number of restarts
+  * fix(overview-page): Remove surplus spaces after buttons
+  * chore(deps): Dependency cron 2026-07-14
+  * chore: Update `Perl::Tidy` to 20260705
+  * feat: Change worker job lock limit to be in line with config example
+  * docs: Remove example from `LOCK_NAME` worker setting
+  * fix(mergify): prevent endless dependabot PR recreation loops
+  * feat: optionally fail ISO API if no jobs created
+  * test(worker): Cover rejecting job when acquiring job lock failed
+  * refactor: Rename `OpenQA::CacheService::DB`
+  * feat(worker): Re-evaluate unavailability due to job lock quickly
+  * feat(worker): Allow configuring lock to throttle job execution
+  * feat(worker): Add local locking on worker-instance scope
+  * refactor: Move database setup of cache service to separate module
+
+-------------------------------------------------------------------
 Fri Jul 10 11:31:25 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783672871.e689eb3c:
