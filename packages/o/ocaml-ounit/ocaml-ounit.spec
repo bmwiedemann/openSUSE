@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ounit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,12 +24,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml OUnit test framework
 License:        MIT
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/ounit
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/ounit/
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(seq)
 BuildRequires:  ocamlfind(str)
 BuildRequires:  ocamlfind(threads)
@@ -45,13 +45,13 @@ create unit-tests for OCaml code. It is based on HUnit, a unit testing
 framework for Haskell. It is similar to JUnit, and other xUnit testing
 frameworks.
 
-%package devel
+%package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
-%description devel
-Development files needed for application based on %name.
+%description    devel
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
