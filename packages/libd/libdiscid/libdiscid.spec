@@ -1,7 +1,7 @@
 #
 # spec file for package libdiscid
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,24 @@
 
 
 %define libname libdiscid0
+
 Name:           libdiscid
-Version:        0.6.5
+Version:        0.7.0
 Release:        0
 Summary:        Library for gathering DiscIDs and ISRCs from audio CDs
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://musicbrainz.org/doc/libdiscid
-Source:         http://ftp.musicbrainz.org/pub/musicbrainz/libdiscid/%{name}-%{version}.tar.gz
-Source1000:     baselibs.conf
-# PATCH-FEATURE-OPENSUSE libdiscid-no-crypto.patch
-Patch0:         libdiscid-no-crypto.patch
-BuildRequires:  libtool
-BuildRequires:  openssl-devel
+Source:         https://data.metabrainz.org/pub/musicbrainz/%{name}/%{name}-%{version}.tar.gz
+# PATCH-FEATURE-OPENSUSE use-openssl.patch
+Patch0:         use-openssl.patch
+
+BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libmusicbrainz5)
+BuildRequires:  pkgconfig(libopenssl)
+
+BuildSystem:    cmake
 
 %description
 libdiscid is a C library for creating MusicBrainz and freedb DiscIDs
@@ -66,33 +69,15 @@ which can be used to lookup the CD at MusicBrainz.
 Additionally, it provides a submission URL for adding the DiscID to the
 database and gathers ISRCs and the MCN from disc.
 
-%prep
-%autosetup -p1
-
-%build
-autoreconf -fiv
-%configure \
-    --disable-silent-rules \
-    --disable-static
-%make_build
-
-%install
-%make_install
-find %{buildroot} -type f -name "*.la" -delete -print
-
-%check
-%make_build check
-
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%{_libdir}/libdiscid.so.0*
+%{_libdir}/libdiscid.so.*
 
 %files devel
-%dir %{_includedir}/discid
-%{_includedir}/discid/*.h
 %{_libdir}/libdiscid.so
 %{_libdir}/pkgconfig/libdiscid.pc
+%dir %{_includedir}/discid
+%{_includedir}/discid/discid.h
 
 %changelog

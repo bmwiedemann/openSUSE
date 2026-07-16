@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Jul  9 13:08:44 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- Update Source URL.
+- Switch to declarative cmake build.
+  * Update libdiscid-no-crypto.patch for the cmake build system and
+    rename to use-openssl.patch.
+- Drop baselibs.conf, as its not used/needed anymore.
+- Update to version 0.7.0:
+  * Add DISCID_USE_HTTPS build flag: If set, the functions
+    discid_get_submission_url and discid_get_webservice_url will
+    generate URLs using the HTTPS protocol instead of HTTP. This
+    might break existing applications that rely on the exact URL
+    structure being returned, hence this flag is disabled by
+    default. NOTE: DISCID_USE_HTTPS will become the default in
+    a future release. Please update your software to not rely on
+    the exact URL structure being returned.
+  * CMake: Fix pkg-config .pc file not being relocatable
+  * Autotools: Fix "make docs" not including examples
+  * Mac: Fix compiler warning about deprecated use of IOMasterPort
+  * Fix compiler warnings about use of strncpy
+  * Consistently use CRLF for newlines in versioninfo.rc
+  * Provide Windows ARM64 binary builds
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Tue May 27 13:02:45 UTC 2025 - Yunus Acar <yunus.acar@suse.com>
 
 - Update to version 0.6.5:
@@ -52,7 +77,7 @@ Mon Jul  4 21:53:59 UTC 2016 - jengelh@inai.de
 -------------------------------------------------------------------
 Tue Feb 17 10:55:42 UTC 2015 - idonmez@suse.com
 
-- Add baselibs.conf as source 
+- Add baselibs.conf as source
 
 -------------------------------------------------------------------
 Tue Feb 17 03:01:01 UTC 2015 - p.drouand@gmail.com
@@ -72,7 +97,7 @@ Tue Feb 17 03:01:01 UTC 2015 - p.drouand@gmail.com
   * LIB-48: assert successful read/put when API is used
   * the discisrc example prints the name of the device used
 - Add pkgconfig(libmusicbrainz5) build require; new upstream dependency
-- Update libdiscid-no-crypto.patch 
+- Update libdiscid-no-crypto.patch
 
 -------------------------------------------------------------------
 Fri Aug  2 09:49:06 UTC 2013 - Johannes Dewender <novell@JonnyJD.net>
@@ -168,7 +193,7 @@ Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
 -------------------------------------------------------------------
 Wed Oct  7 15:45:49 UTC 2009 - crrodriguez@opensuse.org
 
-- support GCC visilibity features 
+- support GCC visilibity features
 
 -------------------------------------------------------------------
 Thu Aug 14 06:37:47 CEST 2008 - crrodriguez@suse.de
@@ -190,5 +215,4 @@ Sat Sep  1 02:58:21 CEST 2007 - crrodriguez@suse.de
 -------------------------------------------------------------------
 Sat Aug 18 22:17:42 CEST 2007 - crrodriguez@suse.de
 
-- firs version for the opensuse buildservice 
-
+- firs version for the opensuse buildservice
