@@ -62,4 +62,12 @@ It is a dependency of the next version of Haxe (v4.0.0).</comment>
     <comment>- Remove usage of ocaml-dune-bootstrap, following changes in ocaml-dune</comment>
     <requestid>968053</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>c55245ee18b3aa1f4dc9df7d5afe0baf</srcmd5>
+    <version>1.5</version>
+    <time>1784245143</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365576</requestid>
+  </revision>
 </revisionlist>

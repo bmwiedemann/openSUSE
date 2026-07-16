@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-result
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,30 +22,25 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Compatibility OCaml Result module
 License:        BSD-3-Clause
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/result
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/result/
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220409
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 Projects that want to use the new result type defined in OCaml >= 4.03 while
 staying compatible with older version of OCaml should use the Result module
 defined in this library.
 
-%package devel
-Summary:        Development files for the Compatibility OCaml Result module
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+%package        devel
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
-%description devel
-Projects that want to use the new result type defined in OCaml >= 4.03 while
-staying compatible with older version of OCaml should use the Result module
-defined in this library.
-
-This package contains development files for %name.
+%description    devel
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
@@ -63,9 +58,7 @@ dune_release_pkgs='result'
 %ocaml_dune_test
 
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %changelog

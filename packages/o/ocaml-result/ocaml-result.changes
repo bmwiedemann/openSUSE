@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Sat Apr  9 12:34:56 UTC 2022 - ohering@suse.de
 
 - Remove usage of ocaml-dune-bootstrap, following changes in ocaml-dune
