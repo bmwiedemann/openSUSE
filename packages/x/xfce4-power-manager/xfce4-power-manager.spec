@@ -63,6 +63,7 @@ BuildRequires:  pkgconfig(xrandr) >= 1.5.0
 BuildRequires:  xfce4-dev-tools
 %endif
 Requires:       pkexec
+Suggests:       pkexec-rpm
 Requires:       systemd
 Requires:       upower
 Recommends:     %{name}-lang = %{version}

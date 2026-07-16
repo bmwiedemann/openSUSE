@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:02:57 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Suggest pkexec-rpm to tell solver we prefer the original one
+  [bsc#1267899]
+
+-------------------------------------------------------------------
 Thu Jan 22 14:27:03 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require pkexec instead of /usr/bin/pkexec: the package split
