@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-web
-Version:        11.0.0
+Version:        11.0.1
 Release:        0
 Summary:        Microsoft Azure Web Apps Management Client Library
 License:        MIT

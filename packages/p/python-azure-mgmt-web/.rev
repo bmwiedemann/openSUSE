@@ -291,4 +291,15 @@
 - Update Requires from pyproject.toml (forwarded request 1354159 from glaubitz)</comment>
     <requestid>1354196</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>7300fc8c3f9eac55e6b8e20f537a19e3</srcmd5>
+    <version>11.0.1</version>
+    <time>1784245449</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 11.0.1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1366138 from glaubitz)</comment>
+    <requestid>1366160</requestid>
+  </revision>
 </revisionlist>
