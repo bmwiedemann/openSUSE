@@ -1,7 +1,7 @@
 #
 # spec file for package opam-file-format
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,12 @@
 %if "%build_flavor" == "testsuite"
 %if %{without opam_file_format_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -34,12 +37,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Parser and printer for the opam file syntax
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/
+URL:            https://opam.ocaml.org/packages/opam-file-format/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 3.13
-BuildRequires:  ocaml-rpm-macros >= 20250517
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(menhir)
 
 %if "%build_flavor" == "testsuite"
@@ -51,15 +53,13 @@ BuildRequires:  ocamlfind(opam-file-format) = %version
 %description
 This is a parser and a printer for the opam file syntax.
 
-%package devel
-Summary:        Development files for the opam file syntax parser
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+%package        devel
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
-%description devel
-This is a parser and a printer for the opam file syntax.
-
-This package contains development files for package %name.
+%description    devel
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1 -n %pkg-%version

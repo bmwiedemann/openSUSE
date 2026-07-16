@@ -67,4 +67,12 @@ This is a dependency of opam 2.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1293542</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>67c30209bd94d0c4ec2a969e44bea057</srcmd5>
+    <version>2.2.0</version>
+    <time>1784245174</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365590</requestid>
+  </revision>
 </revisionlist>
