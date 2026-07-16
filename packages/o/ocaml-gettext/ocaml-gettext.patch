@@ -1,0 +1,22 @@
+File "src/bin/ocaml-xgettext/xgettext.ml", line 115, characters 8-32:
+Error: The variable f on the left-hand side of this or-pattern has type
+         string
+       but on the right-hand side it has type string Location.loc
+---
+ src/bin/ocaml-xgettext/xgettext.ml |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/src/bin/ocaml-xgettext/xgettext.ml
++++ b/src/bin/ocaml-xgettext/xgettext.ml
+@@ -112,7 +112,11 @@
+   | [] -> false
+   | func :: functions -> (
+       match lid with
++#if OCAML_VERSION >= (5, 4, 0)
++      | (Lident f | Ldot (_, {txt = f; _})) when f = func -> true
++#else
+       | (Lident f | Ldot (_, f)) when f = func -> true
++#endif
+       | _ -> is_like lid functions )
+ 
+ let visit_expr (iterator : Ast_iterator.iterator) expr =

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-gettext
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,26 +21,28 @@
 %if "%build_flavor" == "testsuite"
 %if %{without ocaml_gettext_testsuite}
 ExclusiveArch:  do-not-build
+%else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
 %define     pkg ocaml-gettext
 Name:           %pkg%nsuffix
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        OCaml library for i18n
 License:        SUSE-LGPL-2.0-with-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/gettext
+URL:            https://opam.ocaml.org/packages/gettext/
 Source0:        %pkg-%version.tar.xz
-Patch0:         2f4079f9d0beb60568cf4f4e024c6fda5581f995.patch
+Patch0:         %pkg.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 %if 1
 BuildRequires:  ocamlfind(compiler-libs.common)
 BuildRequires:  ocamlfind(cppo)
@@ -79,8 +81,7 @@ Constraints :
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 Obsoletes:      ocaml-gettext-camomile-devel < %version-%release
 Provides:       ocaml-gettext-camomile-devel = %version-%release
 

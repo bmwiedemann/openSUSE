@@ -1,8 +1,8 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
     <param name="exclude">patches</param>
     <param name="filename">ocaml-gettext</param>
-    <param name="revision">9b7afc702bccace9a544b8efa2a28bc2b13371ed</param>
+    <param name="revision">6591d7a502a0df0be81057e5961931a37214285d</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/gildor478/ocaml-gettext.git</param>
@@ -10,9 +10,9 @@
     <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

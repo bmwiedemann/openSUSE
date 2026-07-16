@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Update to version 0.5.0
+  see included CHANGES.md file for details
+- Remove 2f4079f9d0beb60568cf4f4e024c6fda5581f995.patch
+- Add ocaml-gettext.patch
+
+-------------------------------------------------------------------
 Mon May 13 13:13:13 UTC 2024 - ohering@suse.de
 
 - Use caml_copy_string API
