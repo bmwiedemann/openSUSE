@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:48:34 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.11.1:
+  * Addresses an issue in OECEReader where very large DataFrames could be
+    constructed.
+  * Restored import and runtime compatibility with pandas 3 by removing the
+    dependency on pandas internal decorator APIs.
+  * Vendored deprecate_kwarg to remove dependency on the private
+    pandas.util._decorators module.
+  * Fixed default date sanitisation on pandas 3, where to_datetime(None)
+    now yields NaT instead of preserving None.
+  * Added a new high-level pandas_datareader.macro API providing unified
+    access to FRED, Eurostat, and OECD macro datasets via read_macro,
+    search_macro_datasets, and describe_macro_dataset.
+  * Narrowed the default public API surface to focus on macro and widely-used
+    data sources; securities-related readers that relied on defunct or broken
+    upstream APIs have been removed.
+- Drop patch pandas-datareader-pr978-setup.patch, no longer required.
+- Run a very small part of the testsuite.
+
+-------------------------------------------------------------------
 Wed Feb  7 11:23:55 UTC 2024 - Ben Greiner <code@bnavigator.de>
 
 - Add pandas-datareader-pr978-setup.patch because versioneer is not
