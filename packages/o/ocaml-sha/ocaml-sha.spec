@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-sha
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,13 +30,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Binding to the SHA cryptographic functions
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/sha
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/sha/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.9
 BuildRequires:  ocamlfind(stdlib-shims)
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(ounit2)
@@ -50,8 +50,7 @@ It's currently providing SHA1, SHA256 and SHA512 hash functions.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
