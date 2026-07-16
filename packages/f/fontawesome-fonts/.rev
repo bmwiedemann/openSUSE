@@ -201,4 +201,12 @@
     <comment>Update to Font Awesome Free 7.3.0 (new and updated icons). Also drop deprecated Group tags.</comment>
     <requestid>1361857</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>6023e2931dc1139779aec6c4e6fa5c1d</srcmd5>
+    <version>7.3.1</version>
+    <time>1784245316</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366102</requestid>
+  </revision>
 </revisionlist>
