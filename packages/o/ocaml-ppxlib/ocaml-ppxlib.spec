@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ppxlib
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,39 +22,38 @@
 %if %{without ocaml_ppxlib_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
 %define     pkg ocaml-ppxlib
 Name:           %pkg%nsuffix
-Version:        0.35.0
+Version:        0.38.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Base library and tools for ppx rewriters
 License:        MIT
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/ppxlib
+URL:            https://opam.ocaml.org/packages/ppxlib/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 3.8
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(cmdliner)
 BuildRequires:  ocamlfind(compiler-libs)
 BuildRequires:  ocamlfind(ocaml-compiler-libs)
 BuildRequires:  ocamlfind(ppx_derivers)
 BuildRequires:  ocamlfind(sexplib0)
 BuildRequires:  ocamlfind(stdlib-shims)
+BuildRequires:  ocamlfind(yojson)
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(cinaps)
 BuildRequires:  ocamlfind(findlib)
-BuildRequires:  ocamlfind(ppxlib)
+BuildRequires:  ocamlfind(ppxlib) = %version
 BuildRequires:  ocamlfind(re)
 %endif
 
@@ -66,8 +65,7 @@ OCaml projects.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -96,11 +94,9 @@ dune_release_pkgs='ppxlib,ppxlib-tools'
 
 %if "%build_flavor" == ""
 %files -f %name.files
-%defattr(-,root,root,-)
 %_bindir/*
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %endif
 
