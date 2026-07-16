@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:23:35 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.3
+- Changes since 6.7.2:
+  * Update version for new release 6.7.3
+  * applets/kicker: Fix counting of m_queryingModels in RunnerModel
+  * runners/services: handle malformed .desktop file names better
+  * applets/kicker: return empty url for systemmodel
+  * components/calendar: fix use-after-free of shared calendar event plugins (kde#520465)
+  * kcm_soundtheme: fix preview sounds not playing (kde#521699)
+  * libkworkspace: make sure outputOrderChanged() is always triggered (kde#518058)
+  * klipper: fix spacing on shortcuts configuration page
+  * kcm_nightlight.json, kcm_notifications.json: fix BugReportUrl
+  * startkde: Log the global theme that gets applied
+  * applets/digital-clock: fix timezone offset (kde#522037)
+  * Klipper: Fix spacing on the action configuration page
+
+-------------------------------------------------------------------
 Tue Jun 30 20:14:59 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.2:
