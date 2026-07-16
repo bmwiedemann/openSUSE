@@ -384,4 +384,12 @@
     <comment>Plasma 6.7.2 with qmk integration enabled. Untested. (forwarded request 1362741 from Vogtinator)</comment>
     <requestid>1362830</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>ccec9e7fc85da1b461852410f3c371f6</srcmd5>
+    <version>6.7.3</version>
+    <time>1784245201</time>
+    <user>dimstar_suse</user>
+    <comment>Plasma 6.7.3 (forwarded request 1365832 from Vogtinator)</comment>
+    <requestid>1365869</requestid>
+  </revision>
 </revisionlist>
