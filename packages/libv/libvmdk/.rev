@@ -175,4 +175,12 @@
     <comment>build with fuse 3 boo#1242079 (forwarded request 1273734 from AndreasStieger)</comment>
     <requestid>1273779</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ac77d522bd14cb74789873637ea8533</srcmd5>
+    <version>20260714</version>
+    <time>1784245436</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260714</comment>
+    <requestid>1366115</requestid>
+  </revision>
 </revisionlist>
