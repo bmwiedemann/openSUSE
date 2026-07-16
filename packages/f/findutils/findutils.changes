@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 11 10:53:03 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 4.11.0.
+  Announcement: https://savannah.gnu.org/news/?id=10912
+  Most prominent change in behavior:
+  As announced since the release of 4.7.0 (2019) and mandated by POSIX 2024,
+  the behaviour of the -mount option changed: while it was a mere alias for
+  the -xdev option to prevent descending into directories of another device,
+  the -mount option now makes find(1) ignore files on another device, i.e.,
+  'find -mount' will skip the entry of active mount points already.
+  Example, assuming the PROC filesystem is mounted on '/proc':
+    $ find / -mount -path /proc -print
+    $ find / -xdev -path /proc -print
+    /proc
+- findutils-avoid-crash-system-loop.patch: Remove now-upstream patch.
+- findutils-xautofs.patch: Refresh.
+
+-------------------------------------------------------------------
 Tue Feb  4 08:37:08 UTC 2025 - pgajdos@suse.com
 
 - do not crash when file system loop was encountered [bsc#1231472]

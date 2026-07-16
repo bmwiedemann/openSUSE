@@ -644,4 +644,12 @@ Prompted by an error of 'osc service localrun download_files'.
   % findutils-xautofs.patch (p1)</comment>
     <requestid>1243066</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>28bda7cc9a092c11a4cbdea1d6a3a771</srcmd5>
+    <version>4.11.0</version>
+    <time>1784244906</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365029</requestid>
+  </revision>
 </revisionlist>

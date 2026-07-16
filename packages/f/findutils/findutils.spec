@@ -1,7 +1,7 @@
 #
 # spec file for package findutils
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           findutils
-Version:        4.10.0
+Version:        4.11.0
 Release:        0
 Summary:        The GNU versions of find utilities (find and xargs)
 License:        GPL-3.0-or-later
@@ -41,8 +41,6 @@ Source1:        https://ftp.gnu.org/gnu/%{name}/%{name}-%{version}.tar.xz.sig
 Source2:        https://savannah.gnu.org/project/release-gpgkeys.php?group=%{name}&download=1&file=./%{name}.keyring
 # adds a new option -xautofs to find to not descend into directories on autofs file systems
 Patch0:         findutils-xautofs.patch
-# https://git.savannah.gnu.org/cgit/findutils.git/commit/?id=e5d6eb919b9
-Patch1:         findutils-avoid-crash-system-loop.patch
 
 BuildRequires:  automake
 
