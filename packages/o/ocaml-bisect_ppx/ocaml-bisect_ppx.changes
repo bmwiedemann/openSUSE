@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Support ppxlib 0.36.0
+- Add e30265643e77bcf2c9eba7322429c779122106fc.patch
+- Add f35fdf4bdcb82c308d70f7c9c313a77777f54bdf.patch
+- Add 07bfceec652773de4b140cebc236a15e2429809e.patch
+- Add 4f0cb2a2e1b0b786b6b5f1c94985b201aa012f12.patch
+- Add 2d8dffbbfc0c431a37319d4d9a143836c9ec542e.patch
+- Add ebb352612bf32d74f26a9318dc668a54872b0cad.patch
+- Add a0ff8cf6ea06d7f052c8d0fceac92a42d57e7809.patch
+- Add a64e135a91b6fedbc25c743816b6208f7e5874c4.patch
+
+-------------------------------------------------------------------
 Mon Jul 31 12:34:56 UTC 2023 - ohering@suse.de
 
 - Update to version 2.8.3

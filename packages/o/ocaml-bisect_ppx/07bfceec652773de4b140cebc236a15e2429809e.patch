@@ -1,0 +1,77 @@
+From 07bfceec652773de4b140cebc236a15e2429809e Mon Sep 17 00:00:00 2001
+From: Nathan Rebours <nathan.rebours@ocamlpro.com>
+Date: Thu, 18 Sep 2025 15:01:30 +0200
+Subject: Add regression test for function_cases instrumentation bug
+
+Signed-off-by: Nathan Rebours <nathan.rebours@ocamlpro.com>
+---
+ bisect_ppx.opam            |  2 +-
+ dune-project               |  2 +-
+ test/instrument/dune       |  4 +++-
+ test/instrument/function.t | 38 ++++++++++++++++++++++++++++++++++++++
+ 4 files changed, 43 insertions(+), 3 deletions(-)
+ create mode 100644 test/instrument/function.t
+
+diff --git a/dune-project b/dune-project
+index e1e4354..ae73029 100644
+--- a/dune-project
++++ b/dune-project
+@@ -1,2 +1,2 @@
+-(lang dune 2.7)
++(lang dune 2.9)
+ (cram enable)
+diff --git a/test/instrument/dune b/test/instrument/dune
+index a29f94b..49a57bb 100644
+--- a/test/instrument/dune
++++ b/test/instrument/dune
+@@ -1,3 +1,5 @@
+ (cram
+- (deps test.sh)
++ (deps
++  test.sh
++  (package bisect_ppx))
+  (alias compatible))
+diff --git a/test/instrument/function.t b/test/instrument/function.t
+new file mode 100644
+index 0000000..bc706c5
+--- /dev/null
++++ b/test/instrument/function.t
+@@ -0,0 +1,38 @@
++This is a regression test for #450: https://github.com/aantron/bisect_ppx/issues/450
++
++  $ cat > dune-project <<'EOF'
++  > (lang dune 2.7)
++  > EOF
++
++  $ cat > dune <<'EOF'
++  > (library
++  >  (name lib)
++  >  (modules lib)
++  >  (instrumentation (backend bisect_ppx)))
++  > 
++  > (test
++  >  (name test)
++  >  (libraries lib)
++  >  (modules test))
++  > EOF
++
++  $ cat > lib.ml <<'EOF'
++  > let is_hex_digit = function '0' .. '9' | 'a' .. 'f' -> true | _ -> false
++  > EOF
++
++  $ cat > test.ml <<'EOF'
++  > let () =
++  > if Lib.is_hex_digit '1' then begin
++  >   Printf.printf "Test success!";
++  >   exit 0
++  > end else
++  >   Printf.printf "Test failure!";
++  >   exit 1
++  > EOF
++
++  $ dune runtest --instrument-with bisect_ppx
++  File "lib.ml", line 1, characters 19-72:
++  1 | let is_hex_digit = function '0' .. '9' | 'a' .. 'f' -> true | _ -> false
++                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++  Error: broken invariant in parsetree: Function without any value parameters
++  [1]

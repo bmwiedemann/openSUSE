@@ -1,0 +1,78 @@
+From 4f0cb2a2e1b0b786b6b5f1c94985b201aa012f12 Mon Sep 17 00:00:00 2001
+From: Nathan Rebours <nathan.rebours@ocamlpro.com>
+Date: Thu, 18 Sep 2025 15:33:15 +0200
+Subject: Fix instrumentation of [function _ ->] expressions
+
+Signed-off-by: Nathan Rebours <nathan.rebours@ocamlpro.com>
+---
+ src/ppx/instrument.ml      | 25 +++++++++++++++----------
+ test/instrument/function.t |  6 +-----
+ 2 files changed, 16 insertions(+), 15 deletions(-)
+
+diff --git a/src/ppx/instrument.ml b/src/ppx/instrument.ml
+index bd72711..884b2d2 100644
+--- a/src/ppx/instrument.ml
++++ b/src/ppx/instrument.ml
+@@ -1327,8 +1327,8 @@ class instrumenter =
+             Ppxlib.With_errors.combine_errors new_params
+             >>= fun new_params ->
+ 
+-            traverse_function_body ~is_in_tail_position:true body
+-            >>| fun new_body ->
++            traverse_function_body ~is_in_tail_position:true ~params:new_params body
++            >>| fun (new_body, new_params) ->
+             let new_body =
+               match new_body with
+               | Pfunction_body { pexp_desc = Pexp_function _; _ } -> new_body
+@@ -1648,24 +1648,29 @@ class instrumenter =
+         end
+         |> collect_errors
+ 
+-      and traverse_function_body ~is_in_tail_position body =
++      and traverse_function_body ~is_in_tail_position ~params body =
+         let open Ppxlib in
+         match body with
+         | Pfunction_body e ->
+           traverse ~is_in_tail_position e
+-          >>| fun e -> Pfunction_body e
++          >>| fun e -> (Pfunction_body e, params)
+         | Pfunction_cases (cases, loc, attrs) ->
+             traverse_cases ~is_in_tail_position:true cases
+             >>| fun cases_new ->
+             let cases, _, _, need_binding = instrument_cases cases_new in
+             if need_binding then
+-              Pfunction_body
+-              (Exp.fun_ ~loc ~attrs
+-                Ppxlib.Nolabel None ([%pat? ___bisect_matched_value___])
+-                (Exp.match_ ~loc
+-                  ([%expr ___bisect_matched_value___]) cases))
++              let extra_param =
++                Ast_builder.Default.pparam_val ~loc Nolabel None
++                  [%pat? ___bisect_matched_value___]
++              in
++              let body =
++                Pfunction_body
++                  (Exp.match_ ~loc
++                   ([%expr ___bisect_matched_value___]) cases)
++              in
++              (body, params @ [extra_param])
+             else
+-              Pfunction_cases (cases, loc, attrs)
++              (Pfunction_cases (cases, loc, attrs), params)
+ 
+       in
+ 
+diff --git a/test/instrument/function.t b/test/instrument/function.t
+index bc706c5..6441de3 100644
+--- a/test/instrument/function.t
++++ b/test/instrument/function.t
+@@ -31,8 +31,4 @@ This is a regression test for #450: https://github.com/aantron/bisect_ppx/issues
+   > EOF
+ 
+   $ dune runtest --instrument-with bisect_ppx
+-  File "lib.ml", line 1, characters 19-72:
+-  1 | let is_hex_digit = function '0' .. '9' | 'a' .. 'f' -> true | _ -> false
+-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-  Error: broken invariant in parsetree: Function without any value parameters
+-  [1]
++  Test success!

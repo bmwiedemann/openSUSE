@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-bisect_ppx
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 %if %{without ocaml_bisect_ppx_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -37,22 +37,25 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Code coverage for OCaml and Reason
 License:        GPL-2.0-only
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/bisect_ppx
+URL:            https://opam.ocaml.org/packages/bisect_ppx/
 Source0:        %pkg-%version.tar.xz
+Patch4480001:   e30265643e77bcf2c9eba7322429c779122106fc.patch
+Patch4480003:   f35fdf4bdcb82c308d70f7c9c313a77777f54bdf.patch
+Patch4480006:   07bfceec652773de4b140cebc236a15e2429809e.patch
+Patch4480007:   4f0cb2a2e1b0b786b6b5f1c94985b201aa012f12.patch
+Patch4480009:   2d8dffbbfc0c431a37319d4d9a143836c9ec542e.patch
+Patch4480010:   ebb352612bf32d74f26a9318dc668a54872b0cad.patch
+Patch4480011:   a0ff8cf6ea06d7f052c8d0fceac92a42d57e7809.patch
+Patch4480012:   a64e135a91b6fedbc25c743816b6208f7e5874c4.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 3.0
-BuildRequires:  ocaml-rpm-macros >= 20230101
-%if 1
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(cmdliner)
-BuildRequires:  ocamlfind(ppxlib)
-BuildRequires:  ocamlfind(str)
-BuildRequires:  ocamlfind(unix)
-%endif
+BuildRequires:  ocamlfind(ppxlib) >= 0.36.0
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  git-core
-BuildRequires:  ocamlfind(bisect_ppx)
+BuildRequires:  ocamlfind(bisect_ppx) = %version
 BuildRequires:  ocamlfind(ocamlformat)
 %endif
 
@@ -61,8 +64,7 @@ Bisect_ppx is a code coverage tool for OCaml and Reason. It helps you test thoro
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for

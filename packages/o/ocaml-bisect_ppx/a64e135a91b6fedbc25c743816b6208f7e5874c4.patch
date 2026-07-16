@@ -1,0 +1,99 @@
+From a64e135a91b6fedbc25c743816b6208f7e5874c4 Mon Sep 17 00:00:00 2001
+From: Nathan Rebours <nathan.rebours@ocamlpro.com>
+Date: Tue, 4 Nov 2025 17:53:26 +0100
+Subject: Fix instrumentation of Pexp_function
+
+Signed-off-by: Nathan Rebours <nathan.rebours@ocamlpro.com>
+---
+ src/ppx/instrument.ml      | 35 ++++++++++++++++++++---------------
+ test/instrument/function.t |  7 +------
+ 2 files changed, 21 insertions(+), 21 deletions(-)
+
+diff --git a/src/ppx/instrument.ml b/src/ppx/instrument.ml
+index fe86238..f147da1 100644
+--- a/src/ppx/instrument.ml
++++ b/src/ppx/instrument.ml
+@@ -1315,10 +1315,14 @@ class instrumenter =
+ 
+           (* The case where we have [function A -> ... | B -> ...] *)
+           | Pexp_function ([], constraint_, (Pfunction_cases _ as cases)) ->
+-            traverse_function_body ~is_in_tail_position ~params:[] cases 
+-            >>| fun (new_body, new_params) ->
+-            let e = Ast_builder.Default.pexp_function ~loc new_params constraint_ new_body in
+-            { e with pexp_attributes = attrs }
++            traverse_function_body ~is_in_tail_position cases
++            >>| fun new_body ->
++            (match (new_body : Parsetree.function_body) with
++            | Pfunction_body e ->
++              { e with pexp_attributes = attrs }
++            | Pfunction_cases _ ->
++              let e = Ast_builder.Default.pexp_function ~loc [] constraint_ new_body in
++              { e with pexp_attributes = attrs })
+ 
+           (* Expressions that have subexpressions that might not get visited. *)
+           | Pexp_function (params, constraint_, body) ->
+@@ -1334,8 +1338,8 @@ class instrumenter =
+             Ppxlib.With_errors.combine_errors new_params
+             >>= fun new_params ->
+ 
+-            traverse_function_body ~is_in_tail_position:true ~params:new_params body
+-            >>| fun (new_body, new_params) ->
++            traverse_function_body ~is_in_tail_position:true body
++            >>| fun new_body ->
+             let new_body =
+               match new_body with
+               | Pfunction_body { pexp_desc = Pexp_function _; _ } -> new_body
+@@ -1655,12 +1659,12 @@ class instrumenter =
+         end
+         |> collect_errors
+ 
+-      and traverse_function_body ~is_in_tail_position ~params body =
++      and traverse_function_body ~is_in_tail_position body =
+         let open Ppxlib in
+         match body with
+         | Pfunction_body e ->
+           traverse ~is_in_tail_position e
+-          >>| fun e -> (Pfunction_body e, params)
++          >>| fun e -> Pfunction_body e
+         | Pfunction_cases (cases, loc, attrs) ->
+             traverse_cases ~is_in_tail_position:true cases
+             >>| fun cases_new ->
+@@ -1670,14 +1674,15 @@ class instrumenter =
+                 Ast_builder.Default.pparam_val ~loc Nolabel None
+                   [%pat? ___bisect_matched_value___]
+               in
+-              let body =
+-                Pfunction_body
+-                  (Exp.match_ ~loc
+-                   ([%expr ___bisect_matched_value___]) cases)
+-              in
+-              (body, params @ [extra_param])
++              Pfunction_body
++                (Ast_builder.Default.pexp_function ~loc
++                   [extra_param]
++                   None
++                   (Pfunction_body
++                      (Exp.match_ ~loc
++                         ([%expr ___bisect_matched_value___]) cases)))
+             else
+-              (Pfunction_cases (cases, loc, attrs), params)
++              Pfunction_cases (cases, loc, attrs)
+ 
+       in
+ 
+diff --git a/test/instrument/function.t b/test/instrument/function.t
+index a94fd85..d8db1c5 100644
+--- a/test/instrument/function.t
++++ b/test/instrument/function.t
+@@ -52,10 +52,5 @@ This is a regression test for https://github.com/aantron/bisect_ppx/pull/448#iss
+   > EOF
+ 
+   $ dune runtest --instrument-with bisect_ppx
+-  File "lib.ml", line 2, characters 31-37:
+-  2 |   | '0' .. '9' | 'a' .. 'f' -> f true
+-                                     ^^^^^^
+-  Error: This expression has type bool but an expression was expected of type
+-           char -> bool
+-  [1]
++  Test success!
+ 

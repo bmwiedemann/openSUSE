@@ -1,0 +1,60 @@
+From ebb352612bf32d74f26a9318dc668a54872b0cad Mon Sep 17 00:00:00 2001
+From: Patrick Ferris <patrick@sirref.org>
+Date: Tue, 21 Oct 2025 10:05:54 +0100
+Subject: Catch function cases earlier in instrumentation
+
+---
+ src/ppx/instrument.ml             | 9 ++++++++-
+ test/instrument/control/newtype.t | 3 ++-
+ test/instrument/recent/dune       | 2 +-
+ 3 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/ppx/instrument.ml b/src/ppx/instrument.ml
+index 884b2d2..fe86238 100644
+--- a/src/ppx/instrument.ml
++++ b/src/ppx/instrument.ml
+@@ -1313,6 +1313,13 @@ class instrumenter =
+             >>| fun e_new ->
+             instrument_expr ~use_loc_of:e ~post:true (Exp.assert_ e_new)
+ 
++          (* The case where we have [function A -> ... | B -> ...] *)
++          | Pexp_function ([], constraint_, (Pfunction_cases _ as cases)) ->
++            traverse_function_body ~is_in_tail_position ~params:[] cases 
++            >>| fun (new_body, new_params) ->
++            let e = Ast_builder.Default.pexp_function ~loc new_params constraint_ new_body in
++            { e with pexp_attributes = attrs }
++
+           (* Expressions that have subexpressions that might not get visited. *)
+           | Pexp_function (params, constraint_, body) ->
+             let open Parsetree in
+@@ -1440,7 +1447,7 @@ class instrumenter =
+             >>| fun e ->
+             let e =
+               match e.pexp_desc with
+-              | Pexp_function _ -> e
++              | Pexp_function ([], _, Pfunction_cases _) -> e
+               | _ -> instrument_expr e
+             in
+             Exp.poly ~loc ~attrs e t
+diff --git a/test/instrument/control/newtype.t b/test/instrument/control/newtype.t
+index 630a122..5ff9268 100644
+--- a/test/instrument/control/newtype.t
++++ b/test/instrument/control/newtype.t
+@@ -12,7 +12,8 @@ Recursive instrumentation of subexpression.
+   > let _ = fun (type _t) -> fun x -> x
+   > EOF
+   let _ =
+-    fun (type _t) x ->
++   fun (type _t) ->
++    fun x ->
+      ___bisect_visit___ 0;
+      x
+ 
+diff --git a/test/instrument/recent/dune b/test/instrument/recent/dune
+index 6327a6c..3f97365 100644
+--- a/test/instrument/recent/dune
++++ b/test/instrument/recent/dune
+@@ -1,2 +1,2 @@
+ (cram
+- (deps ../test.sh))
++  (deps ../test.sh (package bisect_ppx)))

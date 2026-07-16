@@ -1,0 +1,128 @@
+From e30265643e77bcf2c9eba7322429c779122106fc Mon Sep 17 00:00:00 2001
+From: Mathieu Barbin <mathieu.barbin@gmail.com>
+Date: Mon, 12 Feb 2024 04:24:27 +0100
+Subject: Add --sort-by-stats flag to HTML reporter (#433)
+
+---
+ src/report/html.ml  | 43 +++++++++++++++++++++++++++++++++++++++++--
+ src/report/html.mli |  1 +
+ src/report/main.ml  | 12 ++++++++++--
+ 3 files changed, 52 insertions(+), 4 deletions(-)
+
+diff --git a/src/report/html.ml b/src/report/html.ml
+index 85dc053..ebf70b9 100644
+--- a/src/report/html.ml
++++ b/src/report/html.ml
+@@ -31,7 +31,36 @@ type index_element =
+   | File of index_file
+   | Directory of (string * index_element list * (int * int))
+ 
+-let output_html_index ~tree title theme filename files =
++module Index_element :
++sig
++  val sort_by_stats : index_element list -> index_element list
++  val flatten : index_element list -> index_element list
++end =
++struct
++  let percentage = function
++    | File (_, _, stat) -> percentage stat
++    | Directory (_, _, stat) -> percentage stat
++
++  let compare_by_stat e1 e2 =
++    compare (percentage e1, e1) (percentage e2, e2)
++
++  let rec sort_by_stats files =
++    files
++    |> List.map (function
++      | (File _) as f -> f
++      | Directory (name, files, stats) ->
++        Directory (name, sort_by_stats files, stats))
++    |> List.sort compare_by_stat
++
++  let rec flatten files =
++    files
++    |> List.map (function
++      | (File _) as f -> [f]
++      | Directory (_, files, _) -> flatten files)
++    |> List.concat
++end
++
++let output_html_index ~tree ~sort_by_stats title theme filename files =
+   Util.info "Writing index file...";
+ 
+   let add_stats (visited, total) (visited', total') =
+@@ -138,6 +167,14 @@ let output_html_index ~tree title theme filename files =
+ 
+     let (files, stats) = collate files in
+ 
++    let files =
++      match sort_by_stats, tree with
++      | false, _ -> files
++      | true, false ->
++        files |> Index_element.flatten |> Index_element.sort_by_stats
++      | true, true -> files |> Index_element.sort_by_stats
++    in
++
+     let overall_coverage =
+       Printf.sprintf "%.02f%%" (floor ((percentage stats) *. 100.) /. 100.) in
+     write {|<!DOCTYPE html>
+@@ -501,7 +538,8 @@ let output_string_to_separate_file content filename =
+ 
+ let output
+     ~to_directory ~title ~tab_size ~theme ~coverage_files ~coverage_paths
+-    ~source_paths ~ignore_missing_files ~expect ~do_not_expect ~tree =
++    ~source_paths ~ignore_missing_files ~expect ~do_not_expect ~tree
++    ~sort_by_stats =
+ 
+   (* Read all the [.coverage] files and get per-source file visit counts. *)
+   let coverage =
+@@ -535,6 +573,7 @@ let output
+   (* Write the coverage report landing page. *)
+   output_html_index
+     ~tree
++    ~sort_by_stats
+     title
+     theme
+     (Filename.concat to_directory "index.html")
+diff --git a/src/report/html.mli b/src/report/html.mli
+index aac2f4e..b5d3c4d 100644
+--- a/src/report/html.mli
++++ b/src/report/html.mli
+@@ -16,4 +16,5 @@ val output :
+   expect:string list ->
+   do_not_expect:string list ->
+   tree:bool ->
++  sort_by_stats:bool ->
+     unit
+diff --git a/src/report/main.ml b/src/report/main.ml
+index 4beec68..9f4f719 100644
+--- a/src/report/main.ml
++++ b/src/report/main.ml
+@@ -179,17 +179,25 @@ let html =
+       info ["tree"] ~doc:
+         ("Generate collapsible directory tree with per-directory summaries."))
+   in
++  let sort_by_stats =
++    Arg.(value @@ flag @@
++      info ["sort-by-stats"] ~doc:
++        ("Sort files in order of increasing coverage stats."))
++  in
+ 
+   let call_with_labels
+       to_directory title tab_size theme coverage_files coverage_paths
+-      source_paths ignore_missing_files expect do_not_expect tree =
++      source_paths ignore_missing_files expect do_not_expect tree
++      sort_by_stats =
+     Html.output
+       ~to_directory ~title ~tab_size ~theme ~coverage_files ~coverage_paths
+       ~source_paths ~ignore_missing_files ~expect ~do_not_expect ~tree
++      ~sort_by_stats
+   in
+   Term.(const set_verbose $ verbose $ const call_with_labels $ to_directory
+     $ title $ tab_size $ theme $ coverage_files 0 $ coverage_paths
+-    $ source_paths $ ignore_missing_files $ expect $ do_not_expect $ tree),
++    $ source_paths $ ignore_missing_files $ expect $ do_not_expect $ tree
++    $ sort_by_stats),
+   term_info "html" ~doc:"Generate HTML report locally."
+     ~man:[
+       `S "USAGE EXAMPLE";
