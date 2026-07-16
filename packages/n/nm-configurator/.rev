@@ -47,4 +47,22 @@
   * Bump serde from 1.0.219 to 1.0.223 (#191)</comment>
     <requestid>1322643</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>01b97f340046d6e410a8246f9ecf243a</srcmd5>
+    <version>0.3.5</version>
+    <time>1784126149</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar.gz to address
+  https://github.com/advisories/GHSA-434x-w66g-qw3r (bsc#1271347,
+  CVE-2026-25541)</comment>
+    <requestid>1365648</requestid>
+  </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>bc146805b826d694fc393fe08ba38da0</srcmd5>
+    <version>0.3.5</version>
+    <time>1784245488</time>
+    <user>dimstar_suse</user>
+    <comment>  https://github.com/advisories/GHSA-434x-w66g-qw3r (bsc#1271392,</comment>
+    <requestid>1366205</requestid>
+  </revision>
 </revisionlist>

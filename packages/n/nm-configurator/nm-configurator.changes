@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 11:27:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar.gz to address
+  https://github.com/advisories/GHSA-434x-w66g-qw3r (bsc#1271392,
+  CVE-2026-25541)
+
+-------------------------------------------------------------------
 Fri Dec 12 13:07:21 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 0.3.5:
