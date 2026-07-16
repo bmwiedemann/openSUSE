@@ -1,7 +1,7 @@
 #
 # spec file for package nwg-displays
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           nwg-displays
-Version:        0.3.26
+Version:        0.4.3
 Release:        0
-Summary:        A GTK3 wrapper to display text on the desktop for wlroots
+Summary:        Output management utility for sway, Hyprland and Niri
 License:        MIT
 URL:            https://github.com/nwg-piotr/nwg-displays
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -28,8 +28,6 @@ BuildRequires:  gtk-layer-shell-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
-Requires:       libgtk-3-0
-Requires:       libgtk-layer-shell0
 Requires:       python3-gobject
 Requires:       python3-i3ipc
 Requires:       typelib(GtkLayerShell)
@@ -37,7 +35,7 @@ BuildArch:      noarch
 
 %description
 
-nwg-displays is Output management utility for sway Wayland compositor,
+nwg-displays is an output management utility for the Sway, Hyprland and Niri Wayland compositors,
 inspired by wdisplays and wlay.
 
 %prep
@@ -50,27 +48,25 @@ inspired by wdisplays and wlay.
 %py3_install
 
 install -Dpm 0644 %{name}.svg -t %{buildroot}%{_datadir}/pixmaps/
-install -Dpm 0644 nwg-displays.svg -t %{buildroot}%{_datadir}/pixmaps/
-install -Dpm 0755 %{name}.desktop -t %{buildroot}%{_datadir}/applications/
+install -Dpm 0644 %{name}.desktop -t %{buildroot}%{_datadir}/applications/
 
-# fix env-script-interpreter
-sed -i '1s|#!/usr/bin/env python|#!/usr/bin/python3|' \
-   %{buildroot}%{python_sitelib}/nwg_displays/main.py
+# remove unnecessary shebangs
+sed -i '1{/^#!.*python.*/d;}' \
+   %{buildroot}%{python3_sitelib}/nwg_displays/main.py \
+   %{buildroot}%{python3_sitelib}/nwg_displays/profiles.py \
+   %{buildroot}%{python3_sitelib}/nwg_displays/tools.py
 
-# fix non-executable-script
-for file in %{buildroot}%{python_sitelib}/nwg_displays/main.py; do
-   chmod a+x $file
-done
-
-%fdupes %{buildroot}%{python_sitelib}/nwg_displays/__pycache__
+%fdupes %{buildroot}%{python3_sitelib}/nwg_displays
 
 %files
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
-%{_datadir}/applications/*.desktop
+%{_bindir}/%{name}-apply
+%{_bindir}/%{name}-toggle-wallpapers
+%{_datadir}/applications/%{name}.desktop
 %{_datadir}/pixmaps/*.svg
-%{python_sitelib}/nwg_displays
-%{python_sitelib}/nwg_displays-*.egg-info
+%{python3_sitelib}/nwg_displays
+%{python3_sitelib}/nwg_displays-*.egg-info
 
 %changelog

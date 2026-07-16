@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 15 17:19:17 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.4.3:
+  * This version generates ~/.config/hypr/monitors.lua and
+    ~/.config/hypr/workspaces.lua for Hyprland v0.55.x. #132
+- Updates from 0.4.2:
+  * Niri: removed refresh rate rounding #130 (closes #129)
+- Updates from 0.4.1:
+  * Fixed empty workspaces dialog on Hyprland regression #128
+- Update from 0.4.0:
+  * Added support for Niri #124
+- Updates from 0.3.28:
+  * Restored 10-bit check button & Mirror combo box (deleted
+    accidentally in 9afbd69) (closes #114)
+  * Restored check if monitors.conf is writable (closes #115)
+  * Combo boxes forced to expand upwards, to avoid off-screen items.
+- Updates from 0.3.27:
+  * Added profile management, together with optional profile-bound
+    wallpapers #106
+  * Added support for wallpaper management (Azote/swaybg)
+
+-------------------------------------------------------------------
 Sat Dec 13 20:53:45 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 0.3.26
