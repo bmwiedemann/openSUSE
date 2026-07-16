@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Thu Jul 16 11:23:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 1.17.0)
+- Add 0001-proto-dispatch-support-protobuf-7-via-v6-gencode.patch:
+  route protobuf >= 6 to the bundled v6 gencode so the SDK imports on
+  protobuf 7.x (the version shipped by Tumbleweed); the v6 stubs are
+  forward-compatible with newer runtimes per protobuf's cross-version
+  runtime guarantee

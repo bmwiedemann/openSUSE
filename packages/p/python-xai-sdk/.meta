@@ -1,0 +1,4 @@
+<package name="python-xai-sdk" project="openSUSE:Factory">
+  <title>Python SDK for CubeSandbox</title>
+  <description>Python SDK for CubeSandbox, a lightweight microVM sandbox service for AI agents built on RustVMM and KVM.</description>
+</package>

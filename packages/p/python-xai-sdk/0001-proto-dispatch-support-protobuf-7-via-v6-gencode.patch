@@ -1,0 +1,24 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] proto: route protobuf >= 6 to the v6 gencode
+
+The bundled v6 protobuf stubs are forward-compatible with newer protobuf
+runtimes per protobuf's cross-version runtime guarantee
+(https://protobuf.dev/support/cross-version-runtime-guarantee):
+ValidateProtobufRuntimeVersion only rejects a runtime OLDER than the linked
+gencode, never a newer one. openSUSE Tumbleweed and Arch already ship
+protobuf 7.x (Python runtime major 7), on which the previous strict
+`major == 6` check raised "Unsupported protobuf version: 7.x". Routing
+major >= 6 to the v6 stubs restores import on protobuf 7+ while staying
+correct for protobuf 6.
+---
+--- a/src/xai_sdk/proto/__init__.py
++++ b/src/xai_sdk/proto/__init__.py
+@@ -34,7 +34,7 @@
+         video_pb2,
+         video_pb2_grpc,
+     )
+-elif version.parse(google.protobuf.__version__).major == 6:
++elif version.parse(google.protobuf.__version__).major >= 6:
+     from .v6 import (
+         auth_pb2,
+         auth_pb2_grpc,
