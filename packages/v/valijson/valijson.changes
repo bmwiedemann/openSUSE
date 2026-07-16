@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:23:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.2:
+  Another small bug fix release to address two issues found in
+  v1.1.1.
+  Issues fixed in this release:
+  - Provide alternatives to std::from_char (fixes #239)
+  - Fix relative URI resolution (fixes #240)
+
+-------------------------------------------------------------------
 Wed Jul 01 09:08:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.1:
