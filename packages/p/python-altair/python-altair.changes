@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 16 02:05:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 6.2.2:
+  * Upgraded the foundational chart rendering layer to compile directly
+    against Vega-Lite v6 specifications.
+  * Re-engineered internal spec evaluation frameworks to ensure chart
+    configurations are perfectly stable across parallel execution threads.
+  * Modernized the library runtime parameters to fully accommodate
+    environments running Python 3.14.
+  * Dropping support for deprecated Python 3.9 environments.
+  * Cleaned up the top-level namespace by pruning redundant classes and
+    reducing the sheer number of available module entries.
+  * Bumped the underlying backend parser to Vega-Lite 6.4.1, inheriting
+    native engine features.
+  * Enabled multi-line text blocks and structural formatting breaks inside
+    rendered chart tooltips.
+  * Adjusted default rendering behavior so the visual stacking order of bar
+    and area marks aligns perfectly with their color domain.
+  * Enabled seamless layering of simple faceted charts that use matching
+    facet variables, skipping the requirement to layer prior to faceting.
+  * Adjusted internal structural logic to ensure full out-of-the-box
+    compatibility with Pandas 3 dataframes.
+  * Added native type handlers to seamlessly evaluate ZoneInfo(key='UTC')
+    temporal input objects.
+  * Integrated a dedicated ensure_ascii toggle (defaulting to False) inside
+    the standard to_json() exporter.
+  * Resolved an issue to prevent internal view name collisions inside
+    complex, multi-layered concatenation charts.
+  * Fixed parameter filtering to ensure layered concatenated views correctly
+    map to external selection parameters.
+  * Patched a parameter distribution glitch by properly carrying arguments
+    up to the outer structural layer following an add_params operation.
+  * Adjusted fingerprinting logic to force unique internal hashes when
+    entirely different data blocks use identical structural chart specs.
+  * Cleaned up static verification structures tied to base chart mark_*
+    definitions to handle newer configuration inputs cleanly.
+  * Hardened internal disk tracking routines by forcing dataset cache
+    operations to execute atomically, mitigating file-corruption risks.
+
+-------------------------------------------------------------------
 Mon Oct 28 12:22:04 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - build for modern python on sle15

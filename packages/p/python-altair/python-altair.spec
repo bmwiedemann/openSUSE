@@ -1,7 +1,7 @@
 #
 # spec file for package python-altair
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,39 +18,43 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-altair
-Version:        5.2.0
+Version:        6.2.2
 Release:        0
 Summary:        Declarative statistical visualization library for Python
 License:        BSD-3-Clause
 URL:            https://github.com/altair-viz/altair
 Source:         https://github.com/altair-viz/altair/archive/refs/tags/v%{version}.tar.gz#/altair-%{version}.tar.gz
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module anywidget if %python-base >= 3.10}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module anywidget}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module jsonschema >= 3}
-BuildRequires:  %{python_module jupyter_ipython if %python-base >= 3.10}
+BuildRequires:  %{python_module jupyter_ipython}
+BuildRequires:  %{python_module narwhals >= 2.4.0}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pandas >= 1.1.3}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module versioningit}
 ##BuildRequires:  %%{python_module vl-convert-python}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module toolz}
-BuildRequires:  %{python_module typing-extensions if %python-base < 3.11}
+BuildRequires:  %{python_module typing-extensions >= 4.12 if %python-base < 3.15}
 BuildRequires:  %{python_module vega_datasets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
 Requires:       python-jsonschema >= 3
-Requires:       python-numpy
+Requires:       python-narwhals >= 2.4.0
 Requires:       python-packaging
-Requires:       python-pandas >= 0.25
-Requires:       python-toolz
-%if 0%{?python_version_nodots} < 311
-Requires:       python-typing-extensions
+%if 0%{?python_version_nodots} < 315
+Requires:       python-typing-extensions >= 4.12
 %endif
 Recommends:     python-jupyter_ipython
+Recommends:     python-numpy
+Recommends:     python-pandas >= 1.1.3
 Recommends:     python-pyarrow
+Recommends:     python-toolz
 Recommends:     python-vega_datasets
 ##Recommends:     python-vl-convert-python
 BuildArch:      noarch
@@ -75,13 +79,15 @@ seamlessly display client-side renderings in the Jupyter notebook.
 
 %check
 # disable tests that require network
-donttest="test_examples or test_to_url"
+ignore="--ignore tests/test_datasets.py --ignore altair/datasets/_data.py"
+donttest="test_examples or test_to_url or test_theme_remote_lambda"
 # vega requires vl-convert-python, not packaged
-donttest="$donttest or test_vegalite_compiler or with_format_vega"
-# anywidget and jupyter_ipython not available anymore in python39
-python39_ignore="--ignore tests/test_jupyter_chart.py"
-python39_donttest=" or test_check_renderer_options or test_display_options"
-%pytest -k "not ($donttest ${$python_donttest})" ${$python_ignore}
+# ... or polars, also not packaged
+ignore+=" --ignore tests/test_toplevel.py"
+ignore+=" --ignore tests/utils/test_data.py"
+ignore+=" --ignore tests/utils/test_schemapi.py"
+ignore+=" --ignore tests/vegalite/v6/test_api.py"
+%pytest $ignore -k "not ($donttest ${$python_donttest})" tests
 
 %files %{python_files}
 %doc README.md
