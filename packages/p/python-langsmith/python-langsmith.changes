@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:54:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.5:
+  * Capture realtime/voice model costs for the optional OpenAI
+    Agents realtime and Google ADK Live (Gemini) integrations
+    (extras not enabled in this package)
+  * Capture the realtime user transcript for the optional LiveKit
+    voice integration
+  * Sync the bundled LangSmith backend API schema definitions
+
+-------------------------------------------------------------------
+Tue Jul 14 11:41:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.3:
+  * Fix a cross-tenant data leak where auto-batch run processing
+    could drop a request's workspace override and send runs to the
+    wrong workspace
+  * Raise the minimum supported LangSmith backend to 0.16.13rc1
+  * Capture realtime/TTS model costs for the optional LiveKit and
+    Pipecat voice integrations (extras not enabled in this package)
+- Security references for tracking (already fixed in this package; not
+  newly fixed by 0.10.3, verified while updating):
+  * CVE-2026-45134 (boo#1266666): the prompt-pull methods deserialized
+    attacker-controlled prompt manifests (serialized LangChain objects
+    and model configuration); fixed upstream in langsmith 0.8.0 and
+    shipped here since 0.9.3
+  * CVE-2026-41182 (boo#1262699): output redaction (hide_outputs) was
+    not applied to streaming token events, leaking streamed content;
+    fixed upstream in langsmith 0.7.31 and shipped here since 0.9.3
+  * CVE-2026-40190 (boo#1262017): prototype pollution in a vendored
+    lodash set() helper affects only the JavaScript/TypeScript SDK
+    (Node.js); this Python package does not ship that code and is not
+    affected
+
+-------------------------------------------------------------------
 Sat Jul 11 05:34:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.2:

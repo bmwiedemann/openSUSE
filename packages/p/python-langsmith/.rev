@@ -71,4 +71,20 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment>Update to 0.10.2 (runs= param for annotation queue, re-export OpenAPI exception classes)</comment>
     <requestid>1364972</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>4d9f0d68e531b1c2f7cccb55ab111b64</srcmd5>
+    <version>0.10.3</version>
+    <time>1784126202</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.3: fix a cross-tenant data leak in auto-batch run processing; raise minimum backend to 0.16.13rc1. Changelog also references already-fixed langsmith CVEs for tracking (boo#1266666, boo#1262699, boo#1262017).</comment>
+    <requestid>1365651</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83be130e2915c4374cda823f798bf7fa</srcmd5>
+    <version>0.10.5</version>
+    <time>1784245403</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366100</requestid>
+  </revision>
 </revisionlist>
