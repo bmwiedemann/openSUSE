@@ -55,4 +55,12 @@
     <comment>- Update to release 4.9.3</comment>
     <requestid>1287616</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ab570841dffa7270f0f76963f0646328</srcmd5>
+    <version>4.10.0</version>
+    <time>1784245517</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.10.0</comment>
+    <requestid>1366228</requestid>
+  </revision>
 </revisionlist>

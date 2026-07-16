@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:03:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10.0
+  * Handle chunked HTTP responses without waiting for the server to
+    close the connection.
+  * Avoid hangs in the external HTTP test by requesting connection
+    closure.
+
+-------------------------------------------------------------------
 Sat Jun 21 23:44:50 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.9.3
