@@ -29,7 +29,7 @@
 %endif
 
 Name:           obs-scm-bridge
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        A help service to work with git repositories in OBS
 License:        GPL-2.0-or-later
@@ -37,7 +37,7 @@ URL:            https://github.com/openSUSE/obs-scm-bridge
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  %{primary_python}
 BuildRequires:  %{primary_python}-PyYAML
-Requires:       %{build_pkg_name} >= 20211125
+Requires:       %{build_pkg_name} >= 20260323
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
 Requires:       git-lfs

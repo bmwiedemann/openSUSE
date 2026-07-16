@@ -248,4 +248,16 @@
     <comment></comment>
     <requestid>1341140</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>b717e518d838f6c1562f7ec1739fa15d</srcmd5>
+    <version>0.7.5</version>
+    <time>1784245427</time>
+    <user>dimstar_suse</user>
+    <comment>- 0.7.5
+  * Fix handling of x-bit files
+  * fixed mtime handling when creating obscpio server side
+  * respect onlybuild filter on local links
+  * general code cleanup</comment>
+    <requestid>1366151</requestid>
+  </revision>
 </revisionlist>

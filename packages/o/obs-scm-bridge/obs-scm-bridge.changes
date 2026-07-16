@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:41:49 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- 0.7.5
+  * Fix handling of x-bit files
+  * fixed mtime handling when creating obscpio server side
+  * respect onlybuild filter on local links
+  * general code cleanup
+
+-------------------------------------------------------------------
 Thu Mar 19 10:12:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - use git-core on suse like distributions
