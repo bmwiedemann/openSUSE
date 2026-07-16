@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ocaml-compiler-libs
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,17 @@
 
 
 Name:           ocaml-ocaml-compiler-libs
-Version:        0.12.4
+Version:        0.17.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Compiler libraries repackaged
 License:        MIT
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/ocaml-compiler-libs
-Source0:        %{name}-%{version}.tar.xz
-BuildRequires:  ocaml(ocaml_base_version) >= 4.04
-BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20210911
-BuildRequires:  ocamlfind(compiler-libs.bytecomp)
-BuildRequires:  ocamlfind(compiler-libs.common)
-BuildRequires:  ocamlfind(compiler-libs.optcomp)
-BuildRequires:  ocamlfind(compiler-libs.toplevel)
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/ocaml-compiler-libs/
+Source0:        %name-%version.tar.xz
+BuildRequires:  ocaml(ocaml_base_version) >= 5.1
+BuildRequires:  ocaml-dune >= 3.11
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 This package simply repackage the OCaml compiler libraries so they
@@ -40,13 +35,12 @@ don't expose everything at toplevel. For instance Ast_helper is now
 Ocaml_common.Ast_helper.
 
 %package        devel
-Summary:        Development files for %{name}
-Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %setup -q
@@ -63,10 +57,8 @@ dune_release_pkgs='ocaml-compiler-libs'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
-%defattr(-,root,root,-)
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
-%defattr(-,root,root,-)
+%files devel -f %name.files.devel
 
 %changelog
