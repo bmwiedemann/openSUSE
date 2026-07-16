@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubernetes-sigs/cluster-api</param>
-              <param name="changesrevision">cf0f6c00fbf7d5c5dbf37bd09554c6389de93861</param></service></servicedata>
+              <param name="changesrevision">cf0f6c00fbf7d5c5dbf37bd09554c6389de93861</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubernetes-sigs/cluster-api.git</param>
+              <param name="changesrevision">27f464418c195d96ae2ef4b96f3b6a047ea89310</param></service></servicedata>
