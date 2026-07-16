@@ -568,4 +568,12 @@
   * 8. The --traditional option has been rationalized to bring</comment>
     <requestid>1351829</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>0eaa7162e9f1a3c3f1ea998e1c5a90d0</srcmd5>
+    <version>5.4.1</version>
+    <time>1784244908</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365262</requestid>
+  </revision>
 </revisionlist>

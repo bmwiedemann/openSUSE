@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 10 19:49:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 5.4.1:
+  * Fix a performance problem in PMA with backing store files 1G or
+    more in size
+  * Fix a bug in gensub() when using MinRX
+  * Unary plus and minus now force their operands to be numeric
+  * Add man page and documentation for the intdiv extension
+  * Enable and update the Georgian translation (ka.po)
+  * Parse time division by zero is no longer a fatal error, but
+    rather a lint warning.  Division by zero at runtime remains
+    fatal
+  * Some subtle issues with respect to formatting numeric fields
+    have been fixed
+  * small bug fixes
+
+-------------------------------------------------------------------
 Fri May  8 09:22:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.4.0:
