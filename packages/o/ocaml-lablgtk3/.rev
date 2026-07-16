@@ -67,4 +67,12 @@
     <comment>- Handle newer camlp5 versions</comment>
     <requestid>1249875</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>abc6d004a41adb52bfc45d06e32ac4b7</srcmd5>
+    <version>3.1.5</version>
+    <time>1784245099</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.1.5</comment>
+    <requestid>1365554</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-lablgtk3
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,21 +16,23 @@
 #
 
 %bcond_without ocaml_lablgtk3_gtksourceview3
+%bcond_without ocaml_lablgtk3_gtkrsvg2
 %bcond_without ocaml_lablgtk3_gtkspell
 %global  _buildshell /bin/bash
 
 Name:           ocaml-lablgtk3
-Version:        3.1.3
+Version:        3.1.5
 Release:        0
 Summary:        Binding to Cairo, a 2D Vector Graphics Library.  
 License:        LGPL-3.0-or-later
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/lablgtk3
-Source:         %name-%version.tar.xz
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/lablgtk3/
+Source0:        %name-%version.tar.xz
+Patch0:         %name.patch
 BuildRequires:  bash
 BuildRequires:  ocaml(ocaml_base_version) >= 4.09
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(cairo2)
 BuildRequires:  ocamlfind(camlp-streams)
 BuildRequires:  ocamlfind(camlp5)
@@ -42,6 +44,9 @@ BuildRequires:  pkgconfig(gtk+-3.0) >= 3.18
 %if %{with ocaml_lablgtk3_gtksourceview3}
 BuildRequires:  pkgconfig(gtksourceview-3.0) >= 3.18
 %endif
+%if %{with ocaml_lablgtk3_gtkrsvg2}
+BuildRequires:  pkgconfig(librsvg-2.0) >= 2.40
+%endif
 %if %{with ocaml_lablgtk3_gtkspell}
 BuildRequires:  pkgconfig(gtkspell3-3.0) >= 3.0.4
 %endif
@@ -51,11 +56,13 @@ This is an OCaml binding for the Cairo library, a 2D graphics library with suppo
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 Requires:       pkgconfig(gtk+-3.0) >= 3.18
 %if %{with ocaml_lablgtk3_gtksourceview3}
 Requires:       pkgconfig(gtksourceview-3.0) >= 3.18
+%endif
+%if %{with ocaml_lablgtk3_gtkrsvg2}
+Requires:       pkgconfig(librsvg-2.0) >= 2.40
 %endif
 %if %{with ocaml_lablgtk3_gtkspell}
 Requires:       pkgconfig(gtkspell3-3.0) >= 3.0.4
@@ -71,19 +78,12 @@ developing applications that use %name.
 %build
 sed -i~ '/mode promote/d' tools/dune
 diff -u "$_"~ "$_" && exit 1
-read < <(camlp5 -version)
-case "${REPLY}" in
-7*) ;;
-8.00.*) ;;
-8.02.*) ;;
-*)
-sed -i~ 's@camlp5o pr_o.cmo -impl@camlp5o o_keywords.cmo pr_o.cmo -impl@' tools/dune
-diff -u "$_"~ "$_" && exit 1
-;;
-esac
 dune_release_pkgs='lablgtk3'
 %if %{with ocaml_lablgtk3_gtksourceview3}
 dune_release_pkgs="${dune_release_pkgs},lablgtk3-sourceview3"
+%endif
+%if %{with ocaml_lablgtk3_gtkrsvg2}
+dune_release_pkgs="${dune_release_pkgs},lablgtk3-rsvg2"
 %endif
 %if %{with ocaml_lablgtk3_gtkspell}
 dune_release_pkgs="${dune_release_pkgs},lablgtk3-gtkspell3"
