@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ocamlbuild
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Generic build tool for building OCaml library and programs
 License:        LGPL-2.0-only WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/ocamlbuild
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/ocamlbuild/
 Source:         %name-%version.tar.xz
 BuildRequires:  ocaml
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 Requires:       %name-devel = %version
 
 %description
@@ -39,8 +39,7 @@ OCaml versions between 3.10.0 and 4.02.3. Starting from OCaml
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for

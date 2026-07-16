@@ -88,4 +88,12 @@
   see included Changes file for details</comment>
     <requestid>1249878</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>3bee099b47e2f6688a4e3338037c74ba</srcmd5>
+    <version>0.16.1</version>
+    <time>1784245116</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365562</requestid>
+  </revision>
 </revisionlist>
