@@ -16,39 +16,37 @@
 #
 
 
-%global base_name maven-resolver
 %define _buildshell /bin/bash
-Name:           %{base_name}
-Version:        1.9.27
+Name:           maven-resolver
+Version:        2.0.20
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/resolver/
-Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
-Source1:        %{base_name}-build.tar.xz
+Source0:        https://archive.apache.org/dist/maven/resolver/%{name}-%{version}-source-release.zip
+Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
-BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
+BuildRequires:  bouncycastle
+BuildRequires:  bouncycastle-pg
 BuildRequires:  fdupes
-BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-gson
-BuildRequires:  google-guice
 BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
-BuildRequires:  javapackages-local
-BuildRequires:  jcl-over-slf4j
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-wagon-provider-api
+BuildRequires:  methanol
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xmvn-install
-BuildRequires:  xmvn-resolve
+Obsoletes:      %{name}-supplier
+Obsoletes:      %{name}2
 BuildArch:      noarch
 
 %description
@@ -60,6 +58,8 @@ artifact transports and artifact resolution.
 %package api
 Summary:        Maven Artifact Resolver API
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-api
 
 %description api
 The application programming interface for the repository system.
@@ -67,6 +67,8 @@ The application programming interface for the repository system.
 %package spi
 Summary:        Maven Artifact Resolver SPI
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-spi
 
 %description spi
 The service provider interface for repository system implementations and
@@ -75,6 +77,8 @@ repository connectors.
 %package util
 Summary:        Maven Artifact Resolver Utilities
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-util
 
 %description util
 A collection of utility classes to ease usage of the repository system.
@@ -82,20 +86,43 @@ A collection of utility classes to ease usage of the repository system.
 %package named-locks
 Summary:        Maven Artifact Resolver Named Locks
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-named-locks
 
 %description named-locks
 A synchronization utility implementation using Named locks
 
+%package named-locks-ipc
+Summary:        Maven Artifact Resolver Named Locks using IPC
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-named-locks-ipc
+
+%description named-locks-ipc
+A synchronization utility implementation using IPC.
+
 %package impl
 Summary:        Maven Artifact Resolver Implementation
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-impl
 
 %description impl
 An implementation of the repository system.
 
+%package generator-gnupg
+Summary:        Maven Artifact Resolver GnuPG Signer Generator
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-generator-gnupg
+
+%description generator-gnupg
+A generator implementation for GnuPG signatures.
+
 %package test-util
 Summary:        Maven Artifact Resolver Test Utilities
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-test-util
 
 %description test-util
 A collection of utility classes to ease testing of the repository system.
@@ -103,13 +130,27 @@ A collection of utility classes to ease testing of the repository system.
 %package connector-basic
 Summary:        Maven Artifact Resolver Connector Basic
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-connector-basic
 
 %description connector-basic
 A repository connector implementation for repositories using URI-based layouts.
 
+%package transport-apache
+Summary:        Maven Artifact Resolver Transport Apache
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}-transport-http
+Obsoletes:      %{name}2-transport-apache
+
+%description transport-apache
+A transport implementation for repositories using http:// and https:// URLs.
+
 %package transport-classpath
 Summary:        Maven Artifact Resolver Transport Classpath
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-transport-classpath
 
 %description transport-classpath
 A transport implementation for repositories using classpath:// URLs.
@@ -117,20 +158,45 @@ A transport implementation for repositories using classpath:// URLs.
 %package transport-file
 Summary:        Maven Artifact Resolver Transport File
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}2-transport-file
 
 %description transport-file
 A transport implementation for repositories using file:// URLs.
 
-%package transport-http
-Summary:        Maven Artifact Resolver Transport HTTP
+%package transport-jdk11
+Summary:        Maven Artifact Resolver Transport JDK 11
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-transport-jdk-11
+Obsoletes:      %{name}2-transport-jdk11
 
-%description transport-http
-A transport implementation for repositories using http:// and https:// URLs.
+%description transport-jdk11
+Maven Artifact Transport JDK Java 11+.
+
+%package transport-jdk8
+Summary:        Maven Artifact Resolver Transport JDK 8
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-transport-jdk-8
+Obsoletes:      %{name}2-transport-jdk8
+
+%description transport-jdk8
+Maven Artifact Transport JDK Java 8+.
+
+%package transport-jdk
+Summary:        Maven Artifact Resolver Transport JDK (mr)
+Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-transport-jdk
+
+%description transport-jdk
+Maven Artifact Transport JDK - Multi Release.
 
 %package transport-wagon
 Summary:        Maven Artifact Resolver Transport Wagon
 Group:          Development/Libraries/Java
+Obsoletes:      %{name}
+Obsoletes:      %{name}2-transport-wagon
 
 %description transport-wagon
 A transport implementation based on Maven Wagon.
@@ -138,98 +204,93 @@ A transport implementation based on Maven Wagon.
 %package        javadoc
 Summary:        API documentation for %{name}
 Group:          Documentation/HTML
+Obsoletes:      %{name}2-javadoc
 
 %description    javadoc
 This package provides %{summary}.
 
 %prep
-%setup -q -n %{base_name}-%{version} -a1
+%setup -q -a1
 
-# requires internet connection
-rm maven-resolver-transport-http/src/test/java/org/eclipse/aether/transport/http/{HttpServer,HttpTransporterTest}.java
-%pom_remove_dep org.eclipse.jetty: maven-resolver-transport-http
-
-%pom_remove_plugin -r :bnd-maven-plugin
-%pom_remove_plugin -r org.codehaus.mojo:animal-sniffer-maven-plugin
-%pom_remove_plugin -r :japicmp-maven-plugin
-%pom_remove_plugin -r :maven-enforcer-plugin
-
-%pom_disable_module maven-resolver-demos
-%pom_disable_module maven-resolver-named-locks-hazelcast
-%pom_disable_module maven-resolver-named-locks-redisson
-%pom_disable_module maven-resolver-transport-classpath
-
-# generate OSGi manifests
-for pom in $(find -mindepth 2 -name pom.xml) ; do
-  %pom_add_plugin "org.apache.felix:maven-bundle-plugin" $pom \
-  "<configuration>
-    <instructions>
-      <Bundle-SymbolicName>\${project.groupId}$(sed 's:./maven-resolver::;s:/pom.xml::;s:-:.:g' <<< $pom)</Bundle-SymbolicName>
-      <Export-Package>!org.eclipse.aether.internal*,org.eclipse.aether*</Export-Package>
-      <_nouses>true</_nouses>
-    </instructions>
-  </configuration>
-  <executions>
-    <execution>
-      <id>create-manifest</id>
-      <phase>process-classes</phase>
-      <goals><goal>manifest</goal></goals>
-    </execution>
-  </executions>"
-done
-%pom_add_plugin "org.apache.maven.plugins:maven-jar-plugin" pom.xml \
-"<configuration>
-  <archive>
-    <manifestFile>\${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
-  </archive>
-</configuration>"
-
-%{mvn_package} :maven-resolver
-%{mvn_package} :maven-resolver-{*}  @1
-%{mvn_alias} 'org.apache.maven.resolver:maven-resolver{*}' 'org.eclipse.aether:aether@1'
-%{mvn_alias} 'org.apache.maven.resolver:maven-resolver-transport-wagon' 'org.eclipse.aether:aether-connector-wagon'
-%{mvn_file} ':%{base_name}{*}' %{base_name}/%{base_name}@1 aether/aether@1
-
-# Try to avoid sucking in dependencies on packages that are not built at this moment
-%pom_remove_parent .
-%pom_remove_plugin :maven-jar-plugin .
+%pom_remove_dep :jetty-bom
 
 %build
 mkdir -p lib
 build-jar-repository -s lib \
   atinject \
-  commons-lang3 \
-  glassfish-annotation-api \
+  bcpg \
+  bcprov \
   google-gson/gson \
-  guice/google-guice-no_aop \
   httpcomponents/httpclient \
   httpcomponents/httpcore \
   maven-wagon/provider-api \
+  methanol \
   objectweb-asm/asm \
   org.eclipse.sisu.inject \
   org.eclipse.sisu.plexus \
   plexus-classworlds \
-  plexus/utils \
   plexus/xml \
   slf4j/api
+
 ant \
   -Dtest.skip=true \
   package javadoc
 
-%{mvn_artifact} pom.xml
-
-mkdir -p target/site/apidocs
-for i in api spi test-util util named-locks impl connector-basic transport-classpath transport-file transport-http transport-wagon; do
-  cp -r %{base_name}-${i}/target/site/apidocs target/site/apidocs/%{base_name}-${i}
-  %{mvn_artifact} %{base_name}-${i}/pom.xml %{base_name}-${i}/target/%{base_name}-${i}-%{version}.jar
-done
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+  for module in named-locks-ipc generator-gnupg; do
+    ant -f %{name}-${module} \
+%if %{without tests}
+      -Dtest.skip=true \
+%endif
+      package javadoc
+  done
+%endif
 
 %install
-%mvn_install
-%fdupes -s %{buildroot}%{_javadocdir}
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+for i in \
+    api \
+    connector-basic \
+    impl \
+    named-locks \
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+    named-locks-ipc \
+    generator-gnupg \
+%endif
+    spi \
+    test-util \
+    transport-apache \
+    transport-classpath \
+    transport-file \
+    transport-wagon \
+    util; do
+  cp -r %{name}-${i}/target/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
+  install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
+  %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+  if [ "${i}" == transport-wagon ]; then
+    %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i} -a org.eclipse.aether:aether-${i}:org.eclipse.aether:aether-connector-wagon
+  else
+    %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i} -a org.eclipse.aether:aether-${i}
+  fi
+done
 
-%files -f .mfiles
-%license LICENSE NOTICE
+for i in \
+    transport-jdk11 \
+    transport-jdk8 \
+    transport-jdk; do
+  if [ -e %{name}-transport-jdk-parent/%{name}-${i}/site/apidocs ]; then
+    cp -r %{name}-transport-jdk-parent/%{name}-${i}/site/apidocs %{buildroot}%{_javadocdir}/%{name}/%{name}-${i}
+  fi
+  install -pm 0644 %{name}-transport-jdk-parent/%{name}-${i}/target/%{name}-${i}-%{version}.jar \
+    %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
+  %{mvn_install_pom} %{name}-transport-jdk-parent/%{name}-${i}/pom.xml \
+    %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
+  %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i}
+done
+
+%fdupes -s %{buildroot}%{_javadocdir}
 
 %files api -f .mfiles-api
 %license LICENSE NOTICE
@@ -250,11 +311,25 @@ done
 
 %files transport-file -f .mfiles-transport-file
 
-%files transport-http -f .mfiles-transport-http
-
 %files transport-wagon -f .mfiles-transport-wagon
 
-%files javadoc -f .mfiles-javadoc
+%files transport-apache -f .mfiles-transport-apache
+
+%files transport-jdk11 -f .mfiles-transport-jdk11
+
+%files transport-jdk8 -f .mfiles-transport-jdk8
+
+%files transport-jdk -f .mfiles-transport-jdk
+
+%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 17}%{!?pkg_vcmp:0}
+%files named-locks-ipc -f .mfiles-named-locks-ipc
+
+%files generator-gnupg -f .mfiles-generator-gnupg
+
+%endif
+
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE NOTICE
 
 %changelog

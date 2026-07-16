@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:20:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.20
+  * Breaking Changes & Compatibility
+    + Major Version API/SPI Shift: Version 2.0.x is a major
+      architectural overhaul designed to support the upcoming Maven
+      4.x and Maven 3.10.x branches. The 1.x lineage is now
+      officially in "bugfix only" maintenance mode.
+    + Removal of ServiceLocator: The long-deprecated Plexus
+      ServiceLocator integration has been entirely removed. It
+      conflicted with modern constructor-based Dependency Injection
+      (Eclipse Sisu).
+    + Scope Unawareness: Maven Resolver 2.x is now completely
+      scope-unaware. Dependency scopes are treated merely as
+      transparent labels by the core resolver. Scope handling is now
+      fully delegated to the consumer project (e.g., Maven itself).
+    + Delegation of Classpaths: Classpath generation
+      (NodeListGenerator) and classpath filtering
+      (DependencyFilterUtils), as well as default ArtifactType
+      implementations, have been deprecated/removed from the core
+      and delegated to consumer applications via the
+      maven-resolver-provider module.
+  * Architectural & Lifecycle Enhancements
+    + Session Lifecycle Redesign (Resource Leaks): Introduced
+      SessionBuilder and CloseableSession nested interfaces to
+      replace the legacy DefaultRepositorySystemSession constructor
+      mechanism. Sessions now utilize onSessionEnd hooks and must be
+      explicitly closed when finished. This change is critical to
+      prevent resource leaks when using modern networking features
+      like HTTP/2 transports.
+
+-------------------------------------------------------------------
 Mon Feb 23 13:38:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 1.9.27

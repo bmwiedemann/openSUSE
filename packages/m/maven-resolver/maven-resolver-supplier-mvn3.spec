@@ -1,0 +1,117 @@
+#
+# spec file for package maven-resolver-supplier-mvn3
+#
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+%define base_name maven-resolver
+%define fragment_name supplier-mvn3
+%define _buildshell /bin/bash
+Name:           %{base_name}-%{fragment_name}
+Version:        2.0.20
+Release:        0
+Summary:        Maven Artifact Resolver Instance Supplier Maven3
+License:        Apache-2.0
+Group:          Development/Libraries/Java
+URL:            https://maven.apache.org/resolver/
+Source0:        https://archive.apache.org/dist/maven/resolver/%{base_name}-%{version}-source-release.zip
+Source1:        %{base_name}-build.tar.xz
+BuildRequires:  %{base_name}-api
+BuildRequires:  %{base_name}-connector-basic
+BuildRequires:  %{base_name}-impl
+BuildRequires:  %{base_name}-named-locks
+BuildRequires:  %{base_name}-spi
+BuildRequires:  %{base_name}-transport-apache
+BuildRequires:  %{base_name}-transport-file
+BuildRequires:  %{base_name}-util
+BuildRequires:  ant
+BuildRequires:  atinject
+BuildRequires:  fdupes
+BuildRequires:  java-devel >= 1.8
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-bootstrap
+BuildRequires:  unzip
+BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
+Obsoletes:      %{base_name}-supplier
+Obsoletes:      %{base_name}2-%{fragment_name}
+BuildArch:      noarch
+
+%description
+A helper module to provide RepositorySystem instances.
+
+Apache Maven Artifact Resolver is a library for working with artifact
+repositories and dependency resolution. Maven Artifact Resolver deals with the
+specification of local repository, remote repository, developer workspaces,
+artifact transports and artifact resolution.
+
+%package        javadoc
+Summary:        API documentation for %{name}
+Group:          Documentation/HTML
+Obsoletes:      %{base_name}-supplier-javadoc
+
+%description    javadoc
+This package provides %{summary}.
+
+%prep
+%setup -q -n %{base_name}-%{version} -a1
+
+%pom_remove_dep :jetty-bom
+
+# Use newer maven4 version
+%pom_xpath_set pom:project/pom:properties/pom:maven4Version 4
+
+%build
+mkdir -p lib
+build-jar-repository -s lib \
+    atinject \
+    maven/maven-model-builder \
+    maven/maven-resolver-provider \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-connector-basic \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
+    maven-resolver/maven-resolver-spi \
+    maven-resolver/maven-resolver-transport-apache \
+    maven-resolver/maven-resolver-transport-file \
+    maven-resolver/maven-resolver-util
+
+ant -f %{base_name}-%{fragment_name} \
+%if %{without tests}
+  -Dtest.skip=true \
+%endif
+  package javadoc
+
+%install
+install -dm 0755 %{buildroot}%{_javadir}/%{base_name}
+install -pm 0644 %{base_name}-%{fragment_name}/target/%{base_name}-%{fragment_name}-%{version}.jar \
+    %{buildroot}%{_javadir}/%{base_name}/%{base_name}-%{fragment_name}.jar
+
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{base_name}
+%{mvn_install_pom} %{base_name}-%{fragment_name}/pom.xml \
+    %{buildroot}%{_mavenpomdir}/%{base_name}/%{base_name}-%{fragment_name}.pom
+%add_maven_depmap %{base_name}/%{base_name}-%{fragment_name}.pom %{base_name}/%{base_name}-%{fragment_name}.jar
+
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+cp -r %{base_name}-%{fragment_name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
+%fdupes -s %{buildroot}%{_javadocdir}
+
+%files -f .mfiles
+%license LICENSE NOTICE
+
+%files javadoc
+%{_javadocdir}/%{name}
+%license LICENSE NOTICE
+
+%changelog

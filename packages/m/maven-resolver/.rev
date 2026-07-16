@@ -216,4 +216,20 @@
     <comment>1.9.27</comment>
     <requestid>1334507</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>56a7362e0a301f843b1059a916625b29</srcmd5>
+    <version>2.0.20</version>
+    <time>1784126065</time>
+    <user>dimstar_suse</user>
+    <comment>2.0.20</comment>
+    <requestid>1365406</requestid>
+  </revision>
+  <revision rev="29" vrev="2">
+    <srcmd5>b3540fc3fe515b136ffc40c0f660645b</srcmd5>
+    <version>2.0.20</version>
+    <time>1784245507</time>
+    <user>dimstar_suse</user>
+    <comment>Lower Java requirement for modules where it is possible</comment>
+    <requestid>1366225</requestid>
+  </revision>
 </revisionlist>

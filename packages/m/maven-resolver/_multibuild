@@ -1,3 +1,5 @@
 <multibuild>
-  <flavor>maven-resolver-supplier</flavor>
+  <package>maven-resolver-supplier-mvn3</package>
+  <package>maven-resolver-supplier-mvn4</package>
 </multibuild>
+

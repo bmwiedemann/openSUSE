@@ -1,9 +1,8 @@
 -------------------------------------------------------------------
-Thu Jul 16 16:31:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+Thu Jul 16 16:32:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Allow building the modules that can be built using Java 8 on
-  distribution that don't provide Java 17. This allows to build
-  maven 3.10.x everywhere where it could be built before.
+- Require Java 8 or higher for build, since this is module is
+  buildable and usable with Java 8
 
 -------------------------------------------------------------------
 Mon Jul 13 11:20:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
