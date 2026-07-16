@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 16 10:52:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.0:
+  * Features
+    - add automatic deploy dependency detection for KEDA
+      ScaledObjects (#631) (6ccf7ec), closes #456
+  * Bug Fixes
+    - hangs on very long pod log lines (#638) (6e75224)
+    - no more "no match for resource kind" errors (679e6ec)
+    - retry also on conversion webhooks unavailability (7f5713b)
+    - show actual error if webhook retries fail (17a4604)
+
+-------------------------------------------------------------------
 Mon Jul 13 08:40:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - add %check section
