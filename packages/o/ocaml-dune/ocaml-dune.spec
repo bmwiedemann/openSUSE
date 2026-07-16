@@ -25,16 +25,15 @@
 %define     pkg ocaml-dune
 %global  _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        3.21.1
+Version:        3.24.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 License:        MIT
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/dune
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/dune/
 Source0:        %pkg-%version.tar.xz
 Requires:       ocamlfind(compiler-libs)
-BuildRequires:  ocaml-rpm-macros >= 20250517
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 %if "%build_flavor" == ""
 Provides:       %name-bootstrap = %version-%release
@@ -47,7 +46,6 @@ This package provides the dune binary and the documentation.
 %endif
 %if "%build_flavor" == "devel"
 Summary:        Various libraries
-Group:          Development/Languages/OCaml
 BuildRequires:  ocaml-dune = %version
 BuildRequires:  ocamlfind(csexp)
 BuildRequires:  ocamlfind(pp)
@@ -147,7 +145,6 @@ tee -a %name.files < %name.files.devel
 %endif
 
 %files -f %name.files
-%defattr(-,root,root,-)
 %if "%build_flavor" == ""
 %doc CHANGES.md README.md
 %doc doc/*.rst
