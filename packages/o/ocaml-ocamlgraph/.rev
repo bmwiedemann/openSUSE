@@ -52,4 +52,12 @@ It is a dependency of opam.</comment>
   see included CHANGES.md file for details</comment>
     <requestid>1274660</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>84d66d4b14a22b584a1d1fc99857220c</srcmd5>
+    <version>2.2.0</version>
+    <time>1784245118</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365563</requestid>
+  </revision>
 </revisionlist>
