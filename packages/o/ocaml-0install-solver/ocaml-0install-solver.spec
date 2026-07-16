@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-0install-solver
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@
 %if %{without ocaml_0install_solver_testsuite}
 ExclusiveArch:  do-not-build
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -35,12 +37,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Package dependency solver
 License:        LGPL-2.1-or-later
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/0install-solver
+URL:            https://opam.ocaml.org/packages/0install-solver/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.5
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(ounit2)
@@ -57,8 +58,7 @@ quickly (even for a SAT-based solver).
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
