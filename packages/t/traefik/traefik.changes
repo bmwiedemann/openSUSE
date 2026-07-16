@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:36:56 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.8
+
+ Bugs fixed
+  * k8s/ingress-nginx
+    - Sanitize rewritten target on ingress-nginx provider
+  * logs
+    - Remove unrelated error from nonexistent cert resolver log
+  * middleware
+    - Fix panic in retry middleware with Websockets
+  * middleware, k8s/crd
+    - Add missing ErrorRequestHeaders field to CRDs
+
+-------------------------------------------------------------------
 Wed Jul  8 15:56:08 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.7.7
