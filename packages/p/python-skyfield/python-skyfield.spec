@@ -51,6 +51,7 @@ BuildRequires:  %{python_module jplephem >= 2.13}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module sgp4 >= 2.13}
 # /SECTION
 BuildRequires:  fdupes

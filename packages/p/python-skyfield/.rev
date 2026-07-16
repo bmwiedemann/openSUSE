@@ -409,4 +409,12 @@ research-grade positions for planets and Earth satellites.</comment>
     with multiple segments per target, like DE441, was raising an</comment>
     <requestid>1349121</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>2feb0b814b458b6c298071772b5c07a5</srcmd5>
+    <version>1.54</version>
+    <time>1784245288</time>
+    <user>dimstar_suse</user>
+    <comment>- Due to pandas changes, add pytz to BuildRequires.</comment>
+    <requestid>1366049</requestid>
+  </revision>
 </revisionlist>
