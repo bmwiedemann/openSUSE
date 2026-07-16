@@ -107,4 +107,12 @@ Update: Package LICENSE files as %license.</comment>
     <comment>- Remove ExclusiveArch 64bit</comment>
     <requestid>1267061</requestid>
   </revision>
+  <revision rev="13" vrev="4">
+    <srcmd5>09e093ae9f7e6e30ad52373c396484db</srcmd5>
+    <version>1.1+19</version>
+    <time>1784245109</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365558</requestid>
+  </revision>
 </revisionlist>

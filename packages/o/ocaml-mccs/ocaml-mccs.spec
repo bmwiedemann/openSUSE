@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-mccs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,26 +22,27 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stripped-down version of mccs with OCaml bindings
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception AND BSD-3-Clause AND GPL-3.0-only
-URL:            https://github.com/AltGr/ocaml-mccs
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/mccs/
 Source0:        %name-%version.tar.xz
 Patch0:         %name.patch
 BuildRequires:  gcc-c++
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(cudf)
 
 %description
 mccs (which stands for Multi Criteria CUDF Solver) is a CUDF problem solver
 developed at UNS during the European MANCOOSI project.
 
-%package devel
+%package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/Other
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
-%description devel
-This package contains development files for %name.
+%description    devel
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
