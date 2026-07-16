@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-integers
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 Name:           ocaml-integers
-Version:        0.7.0
+Version:        0.8.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Various signed and unsigned integer types for OCaml
 License:        MIT
-Group:          Development/Languages/OCaml
-
-URL:            https://github.com/ocamllabs/ocaml-integers
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/integers/
 Source0:        %name-%version.tar.xz
-
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20220222
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(stdlib-shims)
 
 %description
@@ -38,8 +36,7 @@ and size_t whose sizes depend on the host platform.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
