@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-camlp-streams
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,12 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stream and Genlex libraries for use with Camlp5
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/camlp-streams
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/camlp-streams/
 Source0:        %name-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 The camlp-streams package provides two library modules:
@@ -48,8 +47,7 @@ The Stream and Genlex modules have been part of the OCaml standard library for a
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -69,12 +67,11 @@ dune_release_pkgs='camlp-streams'
 %ocaml_create_file_list
 
 %check
+touch test/equality.expected test/issue4.expected
 %ocaml_dune_test
 
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %changelog
