@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Jul 13 07:21:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.11.2:
+  + build: fix install name when linking with static library
+  + interpreter: do not apply CARGO_SUBDIR if subproject has a
+    meson.build
+  + cargo: allow git dependencies with slash in branch name
+  + introspect: do not print umask as octal in JSON
+  + Update default Qt version to 6
+
+-------------------------------------------------------------------
+Fri May 15 16:10:48 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Require %{pythons}-base (basically python3-base, package
+  providing /usr/bin/python3), so consumers of meson can rely on it
+  being present (meson itself uses the versioned binary).
+
+-------------------------------------------------------------------
 Tue Apr 21 06:27:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.11.1:

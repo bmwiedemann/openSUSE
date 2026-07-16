@@ -35,7 +35,7 @@
 %{!?vim_data_dir:%global vim_data_dir %{_datadir}/vim}
 %bcond_without  mono
 Name:           meson%{name_ext}
-Version:        1.11.1
+Version:        1.11.2
 Release:        0
 Summary:        Python-based build system
 License:        Apache-2.0
@@ -60,6 +60,8 @@ Requires:       ninja >= 1.8.2
 Provides:       meson-gui = %{version}
 Obsoletes:      meson-gui < %{version}
 BuildArch:      noarch
+# meson.build requires python3 executable
+Requires:       %{pythons}-base
 %else
 ExclusiveArch:  x86_64
 BuildRequires:  %{python_module devel}
