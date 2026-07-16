@@ -7,4 +7,12 @@
     <comment>new BuildRequires for ocaml-bos</comment>
     <requestid>868384</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c5c899912e7cf6398a2c7d3185e71046</srcmd5>
+    <version>0.8.5</version>
+    <time>1784245044</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365527</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-astring
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,13 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Alternative String module for OCaml
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/astring
-Source:         %{name}-%{version}.tar.xz
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/astring/
+Source:         %name-%version.tar.xz
 Patch0:         ocaml-astring.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
-BuildRequires:  ocaml-rpm-macros >= 20210121
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(compiler-libs.toplevel)
 
 %description
@@ -37,13 +37,12 @@ Astring exposes an alternative String module for OCaml. This module tries to bal
 Remaining compatible with the OCaml String module is a non-goal. The String module exposed by Astring has exception safe functions, removes deprecated and rarely used functions, alters some signatures and names, adds a few missing functions and fully exploits OCaml's newfound string immutability.
 
 %package        devel
-Summary:        Development files for %{name}
-Group:          Development/Languages/OCaml
-Requires:       %{name} = %{version}
+Summary:        Development files for %name
+Requires:       %name = %version-%release
 
 %description    devel
-The %{name}-devel package contains libraries and signature files for
-developing applications that use %{name}.
+The %name-devel package contains libraries and signature files for
+developing applications that use %name.
 
 %prep
 %autosetup -p1
@@ -60,8 +59,8 @@ dune_release_pkgs='astring'
 %check
 %ocaml_dune_test
 
-%files -f %{name}.files
+%files -f %name.files
 
-%files devel -f %{name}.files.devel
+%files devel -f %name.files.devel
 
 %changelog
