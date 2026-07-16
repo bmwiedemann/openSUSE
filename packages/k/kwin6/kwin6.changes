@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:22:45 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.3:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.3
+- Changes since 6.7.2:
+  * Update version for new release 6.7.3
+  * wayland: Implement wl_fixes v2
+  * wayland/tools: Make generated globals set "withdrawn" callbacks
+  * workspace: remove sleep inhibitor if the dpms animation is canceled (kde#523001)
+  * pointer_input: fix waking up screens that temporarily disconnect during dpms (kde#518271)
+  * vulkan/vulkan_device: use a graphics queue instead of transfer
+  * opengl/eglcontext: always bind the desired EGL API before context creation (kde#521742)
+  * backends/drm: allow triple buffering on Nvidia again
+  * autotests: Rework how EI events are drained
+  * effects: Forward tablet events to OffscreenQuickView (kde#468396,kde#522677)
+  * core/drmdevice: also print the error when opening a render node fails
+  * autotests/integration/drm_test: filter out broken VM drivers
+  * autotests/integration/drm_test: fix cases not currently tested in CI
+  * autotests/integration: use framebuffer IDs for comparing buffers
+  * opengl/icc_shader: don't use GL_TEXTURE_1D
+  * plugins/overview: fix middle click with touchpads (kde#522015)
+  * compositor: also set dmabuf feedback if buffer import fails
+  * core/gpumanager: fix the Vulkan device check
+  * libinput: Fix Device::serializeMatrix (kde#521464)
+  * dpmsinputeventfilter: also wake screens on laptop lid open (kde#466748)
+  * backends/drm: apply the amdgpu workaround in both matchPipeline methods
+  * backends/drm: match color pipelines already in importScanoutBuffer (kde#522075)
+  * compositor: attempt direct scanout before preparing rendering
+  * plugins/screencast: in testCreateDmaBuf, also create a framebuffer
+  * wayland/alphamodifier: track the per-surface object
+  * Avoid updating shape when an override-redirect window is moved
+
+-------------------------------------------------------------------
 Tue Jun 30 20:10:14 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.2:
