@@ -1,17 +1,37 @@
 <services>
-  <service name="tar_scm" mode="disabled">
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.git*</param>
+    <param name="exclude">Dockerfile</param>
+    <param name="exclude">INSTALL</param>
+    <param name="exclude">Jenkinsfile</param>
+    <param name="exclude">Makefile.bootstrap</param>
+    <param name="exclude">Makefile.config.in</param>
+    <param name="exclude">Makefile.in</param>
+    <param name="exclude">NEWS</param>
+    <param name="exclude">aclocal.m4</param>
+    <param name="exclude">autogen</param>
+    <param name="exclude">ci</param>
+    <param name="exclude">compile</param>
+    <param name="exclude">config.h.in</param>
+    <param name="exclude">configure</param>
+    <param name="exclude">dockerfiles</param>
+    <param name="exclude">install-sh</param>
+    <param name="exclude">interfaces/3*</param>
+    <param name="exclude">interfaces/4.0*</param>
+    <param name="exclude">interfaces/4.10</param>
+    <param name="exclude">test_all_switches.sh</param>
     <param name="filename">ocaml-stdcompat</param>
-    <param name="revision">56a7e25a1101b3d689a8bb23b7c47925e4981381</param>
+    <param name="revision">c7e6dda451f5f145d439d5243e8b2eef4597f94b</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
-    <param name="url">https://github.com/thierry-martinez/stdcompat.git</param>
+    <param name="url">https://github.com/ocamllibs/stdcompat.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">[v]?([^+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
-  <service name="recompress" mode="disabled">
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="disabled"/>
+  <service name="set_version" mode="manual"/>
 </services>

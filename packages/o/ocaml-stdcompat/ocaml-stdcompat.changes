@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Update to version 21.1
+  see included CHANGES.md file for details
+- Add 5ce5b7819b39c654ef90f890f5f0c71b5d0107fb.patch
+
+-------------------------------------------------------------------
 Sun Jan  1 01:01:01 UTC 2023 - ohering@suse.de
 
 - Upstream moved the v19 git tag

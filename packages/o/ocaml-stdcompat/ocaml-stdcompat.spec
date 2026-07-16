@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-stdcompat
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,29 @@
 
 
 Name:           ocaml-stdcompat
-Version:        19
+Version:        21.1
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library 
 License:        BSD-2-Clause
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/stdcompat
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
+URL:            https://opam.ocaml.org/packages/stdcompat/
 Source0:        %name-%version.tar.xz
 Source1:        %name-rpmlintrc
+Patch0:         5ce5b7819b39c654ef90f890f5f0c71b5d0107fb.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bash
-BuildRequires:  ocaml
+BuildRequires:  ocaml(ocaml_base_version) >= 4.11
 BuildRequires:  ocaml-dune >= 2.0
-BuildRequires:  ocaml-rpm-macros >= 20230101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 
 %description
 Stdcompat is a compatibility layer allowing programs to use some recent additions to the OCaml standard library while preserving the ability to be compiled on former versions of OCaml.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -49,12 +49,14 @@ developing applications that use %name.
 %autosetup -p1
 
 %build
+autoreconf -fi
 dune_release_pkgs='stdcompat'
 %ocaml_dune_setup
 %ocaml_dune_build
 
 %install
 %ocaml_dune_install
+echo '/* dummy %name */' > %buildroot%ocaml_standard_library/${dune_release_pkgs}/stdcompat.h
 %ocaml_create_file_list
 
 %files -f %name.files

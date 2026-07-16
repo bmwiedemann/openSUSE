@@ -48,4 +48,12 @@
     <comment>- Upstream moved the v19 git tag</comment>
     <requestid>1056082</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>534221821fe4414b2b7099784830346e</srcmd5>
+    <version>21.1</version>
+    <time>1784245160</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 21.1</comment>
+    <requestid>1365583</requestid>
+  </revision>
 </revisionlist>
