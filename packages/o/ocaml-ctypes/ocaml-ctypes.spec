@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-ctypes
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,11 @@
 %if %{without ocaml_ctypes_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -37,12 +37,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Combinators for binding to C libraries without writing any C
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/ctypes
+URL:            https://opam.ocaml.org/packages/ctypes/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune >= 3.9
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(bisect_ppx)
 BuildRequires:  ocamlfind(dune-configurator)
 BuildRequires:  ocamlfind(findlib)
@@ -61,8 +60,7 @@ The core of ctypes is a set of combinators for describing the structure of C typ
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -93,10 +91,8 @@ dune_release_pkgs='ctypes,ctypes-foreign'
 
 %if "%build_flavor" == ""
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %endif
 

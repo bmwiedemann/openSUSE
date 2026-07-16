@@ -84,4 +84,12 @@
   remove ocaml-ctypes.patch</comment>
     <requestid>1317333</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>74750fccc7bc07b1539ff7a1d9ec1ab9</srcmd5>
+    <version>0.24.0</version>
+    <time>1784245066</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365538</requestid>
+  </revision>
 </revisionlist>
