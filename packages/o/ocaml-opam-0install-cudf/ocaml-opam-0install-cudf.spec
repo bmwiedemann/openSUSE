@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-opam-0install-cudf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,11 @@
 %if %{without ocaml_opam_0install_cudf_testsuite}
 ExclusiveArch:  do-not-build
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -35,12 +37,11 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        JSON parsing and pretty-printing library
 License:        ISC
-Group:          Development/Languages/OCaml
-URL:            https://opam.ocaml.org/packages/opam-0install-cudf
+URL:            https://opam.ocaml.org/packages/opam-0install-cudf/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 BuildRequires:  ocaml-dune >= 2.7
-BuildRequires:  ocaml-rpm-macros >= 20231101
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocamlfind(0install-solver)
 BuildRequires:  ocamlfind(cudf)
 
@@ -61,8 +62,7 @@ deserializers from type definitions.
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
