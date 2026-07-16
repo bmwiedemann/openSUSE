@@ -65,4 +65,12 @@
     <comment>sync obsolete changes from SLE15</comment>
     <requestid>1132759</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>e042dc0d82cd9719bc4e45fffa87b7d8</srcmd5>
+    <version>3.0.0</version>
+    <time>1784245054</time>
+    <user>dimstar_suse</user>
+    <comment>Remove 32bit architectures</comment>
+    <requestid>1365532</requestid>
+  </revision>
 </revisionlist>
