@@ -120,4 +120,16 @@
   * Improve type checking</comment>
     <requestid>1346052</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ab0679921c5c63ecbab76e5d12012cbd</srcmd5>
+    <version>1.49.0</version>
+    <time>1784245459</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.49.0
+  * regenerate google-cloud-compute (#17576)
+- from version 1.48.0
+  * regenerate google-cloud-c packages (#17091)
+- Update BuildRequires and Requires from setup.py (forwarded request 1366171 from glaubitz)</comment>
+    <requestid>1366176</requestid>
+  </revision>
 </revisionlist>

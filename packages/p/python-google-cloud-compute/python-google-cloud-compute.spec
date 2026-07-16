@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-compute
-Version:        1.47.0
+Version:        1.49.0
 Release:        0
 Summary:        Google Cloud Compute API client library
 License:        Apache-2.0
@@ -30,20 +30,20 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.11.0}
-BuildRequires:  %{python_module proto-plus >= 1.25.0}
-BuildRequires:  %{python_module protobuf >= 4.25.8}
+BuildRequires:  %{python_module google-api-core >= 2.24.2}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 # /SECTION
 BuildRequires:  fdupes
 %if %python_version_nodots < 314
-Requires:       python-grpcio >= 1.33.2
+Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 2.11.0
+Requires:       python-google-api-core >= 2.24.2
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-proto-plus >= 1.25.0
-Requires:       python-protobuf >= 4.25.8
+Requires:       python-proto-plus >= 1.26.1
+Requires:       python-protobuf >= 6.33.5
 BuildArch:      noarch
 %python_subpackages
 
