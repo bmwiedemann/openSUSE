@@ -1,7 +1,7 @@
 #
 # spec file for package ocaml-pp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,10 +22,11 @@
 %if %{without ocaml_pp_testsuite}
 ExclusiveArch:  do-not-build
 %else
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %endif
 %define nsuffix -testsuite
 %else
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define nsuffix %nil
 %endif
 
@@ -36,12 +37,10 @@ Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Pretty-printing library
 License:        MIT
-Group:          Development/Languages/OCaml
-BuildRoot:      %_tmppath/%name-%version-build
-URL:            https://opam.ocaml.org/packages/pp
+URL:            https://opam.ocaml.org/packages/pp/
 Source0:        %pkg-%version.tar.xz
 BuildRequires:  ocaml-dune >= 2.8
-BuildRequires:  ocaml-rpm-macros >= 20240909
+BuildRequires:  ocaml-rpm-macros >= 20260707
 BuildRequires:  ocaml(ocaml_base_version) >= 4.08
 
 %if "%build_flavor" == "testsuite"
@@ -56,8 +55,7 @@ Pp uses the same concepts of boxes and break hints, and the final rendering is d
 
 %package        devel
 Summary:        Development files for %name
-Group:          Development/Languages/OCaml
-Requires:       %name = %version
+Requires:       %name = %version-%release
 
 %description    devel
 The %name-devel package contains libraries and signature files for
@@ -86,10 +84,8 @@ dune_release_pkgs='pp'
 
 %if "%build_flavor" == ""
 %files -f %name.files
-%defattr(-,root,root,-)
 
 %files devel -f %name.files.devel
-%defattr(-,root,root,-)
 
 %endif
 
