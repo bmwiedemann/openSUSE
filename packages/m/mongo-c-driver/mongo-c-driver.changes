@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 15 09:20:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  libbson
+  * No changes since 2.3.2. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  * Fix error configuring with CMake 4.4.0.
+  * Add stricter validation to HTTP handling.
+
+-------------------------------------------------------------------
 Wed Jul  8 09:09:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2
