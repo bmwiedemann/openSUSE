@@ -174,4 +174,13 @@
   * Tested with Python 3.14.</comment>
     <requestid>1337356</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>03b987b2573c72ae3f3f8e2f180a200e</srcmd5>
+    <version>3.4.0.post5</version>
+    <time>1784306938</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-load-module.patch:
+  * Do not use load_module(), it has been removed in Python 3.15.</comment>
+    <requestid>1366279</requestid>
+  </revision>
 </revisionlist>

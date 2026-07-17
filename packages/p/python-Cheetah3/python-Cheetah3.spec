@@ -23,9 +23,10 @@ Version:        3.4.0.post5
 Release:        0
 Summary:        Template engine and code generation tool
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://cheetahtemplate.org/
 Source:         https://github.com/CheetahTemplate3/cheetah3/archive/refs/tags/%{version}.tar.gz#/%{modname}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#CheetahTemplate3/cheetah3#73
+Patch0:         no-more-load-module.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -56,8 +57,7 @@ Python code.
 It is a fork of the original CheetahTemplate library.
 
 %prep
-%setup -q -n %{modname}-%{version}
-%autopatch -p1
+%autosetup -p1 -n %{modname}-%{version}
 find . -name \*.py -print0 |xargs -0 -t -l sed -i -e '1{\@^#!%{_bindir}/env python@d}'
 
 # Disable some tests which fail on Python 3.6
