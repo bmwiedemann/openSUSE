@@ -3073,4 +3073,12 @@ git 2.48.0</comment>
     limited to a specified number of lanes, preventing overly wide</comment>
     <requestid>1364402</requestid>
   </revision>
+  <revision rev="337" vrev="2">
+    <srcmd5>81011c774c6c1dbfc722415ee547a4ac</srcmd5>
+    <version>2.55.0</version>
+    <time>1784306816</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365936</requestid>
+  </revision>
 </revisionlist>

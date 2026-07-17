@@ -61,6 +61,7 @@ Tue Jul  7 20:50:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
   * Various AsciiDoc markup fixes in git config documentation and
     related files to ensure lists and formatting are rendered
     correctly.
+- enable rust support for Tumbleweed
 
 -------------------------------------------------------------------
 Fri May 15 22:39:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>

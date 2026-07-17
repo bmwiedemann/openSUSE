@@ -88,6 +88,7 @@ BuildRequires:  tcsh
 BuildRequires:  update-desktop-files
 BuildRequires:  xz
 %if 0%{?suse_version} > 1600
+BuildRequires:  cargo-packaging
 BuildRequires:  pkgconfig(zlib-ng)
 %else
 BuildRequires:  pkgconfig(zlib)
@@ -341,7 +342,9 @@ cat > .make <<'EOF'
        DESTDIR=%{buildroot} \
        NO_CROSS_DIRECTORY_HARDLINKS=1 \
        NO_INSTALL_HARDLINKS=1 \
+%if 0%{?suse_version} && 0%{?suse_version} <= 1600
        NO_RUST=1 \
+%endif
 %if 0%{?suse_version} > 1320
        DC_SHA1_EXTERNAL=YesPlease \
 %endif
