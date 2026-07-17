@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 17 01:00:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Loosen nspkg.pth glob due to removal of Python 3.11. 
+
+-------------------------------------------------------------------
 Tue Apr 22 02:19:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Support both lowercased and unnormalized metadata directory names.

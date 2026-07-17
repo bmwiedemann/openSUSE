@@ -1,7 +1,7 @@
 #
 # spec file for package python-Flask-Versioned
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -56,7 +56,7 @@ Add version info to file paths.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "from flaskext.versioned import Versioned"
 
 %files %{python_files}
-%{python_sitelib}/Flask_Versioned-%{full_version}-py3.11-nspkg.pth
+%{python_sitelib}/Flask_Versioned-%{full_version}-py3.*-nspkg.pth
 %dir %{python_sitelib}/flaskext/
 %dir %{python_sitelib}/flaskext/versioned/
 %{python_sitelib}/flaskext/versioned/__init__.py
