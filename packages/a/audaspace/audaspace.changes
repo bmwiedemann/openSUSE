@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 16 21:08:38 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to release 1.10.0
+  - Improved audio capture support with OpenAL adding the
+    possibility to choose a device (thanks Yogeshgouda Patil)
+  - More build fixes for Mac and SDL3 support (thanks Jonas
+    Holzman)
+  - Fixed cancellation of mixdown (thanks Kévin Dietrich)
+  - Several more build and bug fixes (thanks Aras Pranckevicius and
+    Ted Rodgers)
+- replace sdl2 module with the sdl3 module
+
+-------------------------------------------------------------------
 Fri Mar 20 17:48:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to release 1.9.0

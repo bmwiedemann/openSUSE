@@ -18,8 +18,8 @@
 
 # See also http://en.opensuse.org/openSUSE:Shared_library_packaging_policy
 # NOTE: sover follows version.
-%define sover 1_9
-%define soversion 1.9
+%define sover 1_10
+%define soversion 1.10
 
 %if %{pkg_vcmp pipewire-devel >= 1.4.0}
 %bcond_without pipewire
@@ -28,7 +28,7 @@
 %endif
 
 Name:           audaspace
-Version:        1.9.0
+Version:        1.10.0
 Release:        0
 Summary:        A High-Level Audio Library
 License:        Apache-2.0
@@ -52,7 +52,8 @@ BuildRequires:  pkgconfig(libavutil) >= 59.8.100
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(openal)
-BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(rubberband)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(sndfile)
 
 %description
@@ -111,14 +112,14 @@ Audaspace (pronounced "outer space") is a high-level audio library.
 This package contains the Pipewire plugin
 %endif
 
-%package        plugin-sdl2
-Summary:        SDL2 plugin for %{name}
+%package        plugin-sdl3
+Summary:        sdl3 plugin for %{name}
 Group:          System/Libraries
 Provides:       audaspace-deviceplugin
 
-%description    plugin-sdl2
+%description    plugin-sdl3
 Audaspace (pronounced "outer space") is a high-level audio library.
-This package contains the SDL2 plugin
+This package contains the sdl3 plugin
 
 %package        plugin-sndfile
 Summary:        Sndfile plugin for %{name}
@@ -234,7 +235,7 @@ developing applications that use %{name}.
 %{_libdir}/%{name}-%{soversion}/libaudpipewire.so
 %endif
 
-%files plugin-sdl2
+%files plugin-sdl3
 %{_libdir}/%{name}-%{soversion}/libaudsdl.so
 
 %files plugin-sndfile
