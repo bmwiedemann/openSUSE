@@ -1,9 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 16 14:30:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.3 (bsc#1268275, CVE-2026-41579):
+  * [CVE-2026-41579][] allowed a malicious image with a `/dev`
+    symlink to have limited write access to the host filesystem in
+    ways that our analysis indicates was too limited to be
+    problematic in practice. This bug was very similar to those
+    fixed in [CVE-2025-31133][], [CVE-2025-52565][],
+    [CVE-2025-31133][] and was simply missed at the time when we
+    hardened the rootfs preparation code. We have conducted a
+    deeper audit and not found any other problematic cases.
+  * Various integration test improvements. (#5222, #5237, #5226,
+    #5229, #5239, #5249, #5269, #5287, #5295, #5304)
+  * When masking directories with `maskPaths`, runc will now re-
+    use a single `tmpfs` instance (which is not writeable) to
+    reduce the number `tmpfs` superblocks that need to be reaped
+    when containers die (in particular, Kubernetes applies masks
+    to per-CPU sysfs directories which get expensive quickly).
+- add vendor.tar.gz to bump x/net
+
+-------------------------------------------------------------------
 Wed May 27 07:23:06 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to runc v1.4.2. Upstream changelog is available from
   <https://github.com/opencontainers/runc/releases/tag/v1.4.2>.
-- runc.keyring has been updated to match the new version from upstream. 
+- runc.keyring has been updated to match the new version from upstream.
 
 -------------------------------------------------------------------
 Fri Mar 13 12:34:11 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>

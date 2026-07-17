@@ -21,13 +21,13 @@
 %bcond_with libpathrs
 
 # MANUAL: Make sure you update this each time you update runc.
-%define git_version c67132530367ecd401dbe800bf13b96052212f3f
-%define git_short   c67132530367
+%define git_version bb14dabeb7185bb72c8c86735d090dcb20f36587
+%define git_short   bb14dabe
 
 %define project github.com/opencontainers/runc
 
 Name:           runc
-Version:        1.4.2
+Version:        1.4.3
 %define upstream_version %{version}
 Release:        0
 Summary:        Tool for spawning and running OCI containers
@@ -37,12 +37,13 @@ URL:            https://github.com/opencontainers/runc
 Source0:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz#/runc-%{upstream_version}.tar.xz
 Source1:        https://github.com/opencontainers/runc/releases/download/v%{upstream_version}/runc.tar.xz.asc#/runc-%{upstream_version}.tar.xz.asc
 Source2:        runc.keyring
+Source9:        vendor.tar.zst
 BuildRequires:  diffutils
 BuildRequires:  fdupes
-BuildRequires:  go >= 1.23
 BuildRequires:  go-go-md2man
 BuildRequires:  libseccomp-devel
 BuildRequires:  libselinux-devel
+BuildRequires:  golang(API) >= 1.24
 %if 0%{with libpathrs}
 BuildRequires:  libpathrs-devel
 %endif

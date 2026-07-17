@@ -1,0 +1,7 @@
+<services>
+  <service name="go_modules" mode="manual">
+    <param name="compression">zst</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.56.0</param>
+  </service>
+</services>
+
