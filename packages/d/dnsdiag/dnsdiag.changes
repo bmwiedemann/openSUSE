@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 15 16:34:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.9.4
+  Fixes
+  * reset shutdown flag at the start of each CLI invocation.
+  * validate source IP address family against -4/-6 flag.
+  * fix variable shadowing and div-by-zero in stats.
+  * reuse TCP connection for fixed source port queries.
+
+-------------------------------------------------------------------
 Tue Feb  3 18:44:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.9.3
