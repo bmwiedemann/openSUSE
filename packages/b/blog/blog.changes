@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Wed Jul 15 12:29:23 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.47
+  This addresses several race conditions, file descriptor leaks, and
+  architectural issues regarding virtual terminal (VT) handling in blogd.
+
+* VT Encapsulation: Extracted all kernel-specific terminal ioctls and
+  macros (e.g., KD_GRAPHICS, KD_TEXT) into a dedicated vt.c module.
+  Added clean abstractions like vt_is_graphics(), vt_is_text(), and
+  vt_set_text_mode() to decouple blogd.c and console.c from kernel headers.
+* List Management & FD Leaks: Fixed dynamic VT allocation in console.c.
+  By resetting the console pointer to NULL before consalloc() and
+  explicitly searching the doubly linked list for the target device ID
+  afterward, we ensure the exact newly allocated terminal node is referenced.
+  This fixes incorrect node assignments and prevents file descriptor leaks.
+* Smart VT Switching: Optimized the password prompt logic. If the
+  currently active VT is a text console, the prompt is displayed there
+  directly without unnecessary context switches. If the active VT is
+  running a GUI (X11/Wayland), it safely switches to a newly allocated
+  text VT and returns afterward.
+* EBUSY Race Condition: The child process now explicitly closes the
+  temporary VT file descriptor before initiating the vt_switch back to
+  the original console. This allows the parent process to safely perform
+  vt_disallocate without encountering EBUSY kernel errors.
+* Timeout Handling: Replaced the infinite wait loop in request_tty()
+  (tty.c) with a safe 2000ms timeout via can_read(). This prevents the
+  daemon from hanging indefinitely on locked terminals and allowed the
+  removal of error-prone alarm() signal hacks.
+* Lifecycle Management: Ensured newly allocated dynamic VTs are properly
+  initialized via consinitIO() and reliably deallocated upon daemon
+  exit (lcons_shutdown).
+
+  Fix epoll EEXIST crash and prevent infinite waits on busy terminals
+
+  This also addresses two critical edge cases that could cause the blogd
+  daemon to either crash or hang during concurrent or blocked prompt requests.
+
+  Key changes:
+* epoll.c: Prevent an `EEXIST` crash in `epoll_addition()`. If a file
+  descriptor is already registered in the watch list, the daemon now
+  gracefully updates it using `EPOLL_CTL_MOD` instead of blindly calling
+  `EPOLL_CTL_ADD`. This makes the socket handling robust against rapid,
+  overlapping client requests.
+* console.c: Add a 2-second deadline (`alarm(2)`) around the `request_tty()`
+  call inside the password-prompt child process. Previously, if a terminal
+  was exclusively locked (e.g. by an X11 server returning EPERM), the child
+  would fall into an infinite inotify wait-loop. With the timeout, the child
+  now dies cleanly, allowing the parent's reaping logic to properly cancel
+  the prompt and send an ANSWER_ENQ (abort) to the waiting client.
+
+-------------------------------------------------------------------
 Thu Jul  9 13:40:53 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.46

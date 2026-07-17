@@ -451,4 +451,41 @@ use private glib API but implement a share memory mkstemp</comment>
     process state (asking) from the requested prompt type (ask_mode),</comment>
     <requestid>1364730</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>08b642d6396cb264975458b5d36e47a6</srcmd5>
+    <version>2.47</version>
+    <time>1784306824</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.47
+  This addresses several race conditions, file descriptor leaks, and
+  architectural issues regarding virtual terminal (VT) handling in blogd.
+* VT Encapsulation: Extracted all kernel-specific terminal ioctls and
+  macros (e.g., KD_GRAPHICS, KD_TEXT) into a dedicated vt.c module.
+  Added clean abstractions like vt_is_graphics(), vt_is_text(), and
+  vt_set_text_mode() to decouple blogd.c and console.c from kernel headers.
+* List Management &amp; FD Leaks: Fixed dynamic VT allocation in console.c.
+  By resetting the console pointer to NULL before consalloc() and
+  explicitly searching the doubly linked list for the target device ID
+  afterward, we ensure the exact newly allocated terminal node is referenced.
+  This fixes incorrect node assignments and prevents file descriptor leaks.
+* Smart VT Switching: Optimized the password prompt logic. If the
+  currently active VT is a text console, the prompt is displayed there
+  directly without unnecessary context switches. If the active VT is
+  running a GUI (X11/Wayland), it safely switches to a newly allocated
+  text VT and returns afterward.
+* EBUSY Race Condition: The child process now explicitly closes the
+  temporary VT file descriptor before initiating the vt_switch back to
+  the original console. This allows the parent process to safely perform
+  vt_disallocate without encountering EBUSY kernel errors.
+* Timeout Handling: Replaced the infinite wait loop in request_tty()
+  (tty.c) with a safe 2000ms timeout via can_read(). This prevents the
+  daemon from hanging indefinitely on locked terminals and allowed the
+  removal of error-prone alarm() signal hacks.
+* Lifecycle Management: Ensured newly allocated dynamic VTs are properly
+  initialized via consinitIO() and reliably deallocated upon daemon
+  exit (lcons_shutdown).
+  Fix epoll EEXIST crash and prevent infinite waits on busy terminals
+  This also addresses two critical edge cases that could cause the blogd</comment>
+    <requestid>1365970</requestid>
+  </revision>
 </revisionlist>
