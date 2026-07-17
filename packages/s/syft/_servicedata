@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/anchore/syft</param>
-              <param name="changesrevision">b15c5dbfe2bb21c9d73002c1056a829c8c411c75</param></service></servicedata>
+              <param name="changesrevision">b15c5dbfe2bb21c9d73002c1056a829c8c411c75</param></service><service name="tar_scm">
+                <param name="url">https://github.com/anchore/syft.git</param>
+              <param name="changesrevision">3e2bc6ed095f7ec1a415fb38cfe1c319e95dfed6</param></service></servicedata>
