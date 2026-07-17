@@ -6861,4 +6861,13 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
   (boo#1271268)</comment>
     <requestid>1365662</requestid>
   </revision>
+  <revision rev="583" vrev="1">
+    <srcmd5>685c3957b7334a3cc7ebf46052c84868</srcmd5>
+    <version>26.1.5</version>
+    <time>1784306860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 26.1.5 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.1.5</comment>
+    <requestid>1366200</requestid>
+  </revision>
 </revisionlist>
