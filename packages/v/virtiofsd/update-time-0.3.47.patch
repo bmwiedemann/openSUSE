@@ -1,0 +1,145 @@
+From 97efc05058a832dd8ec1c67ed047ede49110218f Mon Sep 17 00:00:00 2001
+From: Dario Faggioli <dfaggioli@suse.com>
+Date: Wed, 15 Jul 2026 12:49:07 +0200
+Subject: [PATCH] [PATCH] Update the time crate (bsc#1257912, CVE-2026-25727)
+
+Update the time crate to version 0.3.47 to deal
+with bsc#1257912, CVE-2026-25727.
+
+Of course, this does not work if the vendor.tar.zst. So, in order for
+this patch to be effective, the package maintainers need to run the
+following commands (in the package sources):
+
+osc service manualrun
+cd virtiofsd
+patch -p1 < ../update-time-0.3.47.patch
+mkdir .cargo
+cargo vendor > .cargo/config.toml
+tar -I zstd -cf vendor.tar.zst vendor/ .cargo/
+mv vendor.tar.zst ..
+
+Signed-off-by: Dario Faggioli <dfaggioli@suse.com>
+---
+ Cargo.lock | 65 +++++++++++++++++++++++++++++++++++++++++++++++++-----
+ 1 file changed, 59 insertions(+), 6 deletions(-)
+
+diff --git a/Cargo.lock b/Cargo.lock
+index bdbed36..9b4b054 100644
+--- a/Cargo.lock
++++ b/Cargo.lock
+@@ -223,6 +223,15 @@ version = "1.1.2"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "7059fff8937831a9ae6f0fe4d658ffabf58f2ca96aa9dec1c889f936f705f216"
+ 
++[[package]]
++name = "deranged"
++version = "0.5.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7cd812cc2bc1d69d4764bd80df88b4317eaef9e773c75226407d9bc0876b211c"
++dependencies = [
++ "powerfmt",
++]
++
+ [[package]]
+ name = "env_logger"
+ version = "0.8.4"
+@@ -494,6 +503,12 @@ version = "2.5.0"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+ checksum = "2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d"
+ 
++[[package]]
++name = "num-conv"
++version = "0.2.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "cf97ec579c3c42f953ef76dbf8d55ac91fb219dde70e49aa4a6b7d74e9919050"
++
+ [[package]]
+ name = "num_cpus"
+ version = "1.13.1"
+@@ -542,6 +557,12 @@ dependencies = [
+  "serde",
+ ]
+ 
++[[package]]
++name = "powerfmt"
++version = "0.2.0"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "439ee305def115ba05938db6eb1644ff94165c5ab5e9420d1c1bcedbba909391"
++
+ [[package]]
+ name = "ppv-lite86"
+ version = "0.2.20"
+@@ -658,18 +679,28 @@ checksum = "b0293b4b29daaf487284529cc2f5675b8e57c61f70167ba415a463651fd6a918"
+ 
+ [[package]]
+ name = "serde"
+-version = "1.0.168"
++version = "1.0.228"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d614f89548720367ded108b3c843be93f3a341e22d5674ca0dd5cd57f34926af"
++checksum = "9a8e94ea7f378bd32cbbd37198a4a91436180c5bb472411e48b5ec2e2124ae9e"
++dependencies = [
++ "serde_core",
++ "serde_derive",
++]
++
++[[package]]
++name = "serde_core"
++version = "1.0.228"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "41d385c7d4ca58e59fc732af25c3983b67ac852c1a25000afe1175de458b67ad"
+ dependencies = [
+  "serde_derive",
+ ]
+ 
+ [[package]]
+ name = "serde_derive"
+-version = "1.0.168"
++version = "1.0.228"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "d4fe589678c688e44177da4f27152ee2d190757271dc7f1d5b6b9f68d869d641"
++checksum = "d540f220d3187173da220f885ab66608367b6574e925011a9353e4badda91d79"
+ dependencies = [
+  "proc-macro2",
+  "quote",
+@@ -778,13 +809,35 @@ dependencies = [
+ 
+ [[package]]
+ name = "time"
+-version = "0.3.11"
++version = "0.3.47"
+ source = "registry+https://github.com/rust-lang/crates.io-index"
+-checksum = "72c91f41dcb2f096c05f0873d667dceec1087ce5bcf984ec8ffb19acddbb3217"
++checksum = "743bd48c283afc0388f9b8827b976905fb217ad9e647fae3a379a9283c4def2c"
+ dependencies = [
++ "deranged",
+  "itoa",
+  "libc",
++ "num-conv",
+  "num_threads",
++ "powerfmt",
++ "serde_core",
++ "time-core",
++ "time-macros",
++]
++
++[[package]]
++name = "time-core"
++version = "0.1.8"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "7694e1cfe791f8d31026952abf09c69ca6f6fa4e1a1229e18988f06a04a12dca"
++
++[[package]]
++name = "time-macros"
++version = "0.2.27"
++source = "registry+https://github.com/rust-lang/crates.io-index"
++checksum = "2e70e4c5a0e0a8a4823ad65dfe1a6930e4f4d756dcd9dd7939022b5e8c501215"
++dependencies = [
++ "num-conv",
++ "time-core",
+ ]
+ 
+ [[package]]
+-- 
+2.55.0
+

@@ -23,15 +23,16 @@
 %endif
 
 Name:           virtiofsd
-Version:        1.13.2
+Version:        1.14.0
 Release:        0
 Summary:        A vhost-user virtio-fs device backend written in Rust
 Group:          Development/Libraries/Rust
 License:        Apache-2.0
 URL:            https://gitlab.com/virtio-fs/virtiofsd
 Source0:        %{name}-%{version}.tar.xz
-Source1:        vendor.tar.xz
+Source1:        vendor.tar.zst
 Source2:        50-virtiofsd.json
+Patch0:         update-time-0.3.47.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  libcap-ng-devel
@@ -47,6 +48,18 @@ A vhost-user virtio-fs device backend written in Rust
 # Adjust libvirt/virtiofsd interop config file to handle differences in
 # the definition of libexecdir macro on SLE and Tumbleweed (bsc#1219772)
 sed -i 's#@@LIBEXECDIR@@#%{_virtiofsd_libexecdir}#' %{SOURCE2}
+
+# Special checks for making sure that bsc#1257912 (CVE-2026-25727)
+# has been correctly handled.
+TIME_VERSION=$(awk '/^name = "time"/{flag=1} flag && /^version =/{print $3; exit}' Cargo.lock | tr -d '"')
+MIN_TIME_VERSION="0.3.47"
+HIGHEST=$(printf "%s\n%s" "$MIN_TIME_VERSION" "$TIME_VERSION" | sort -V | tail -n1)
+if [ "$HIGHEST" != "$TIME_VERSION" ]; then
+    echo "=== ERROR! bsc#1257912 (CVE-2026-25727) not handled properly."
+    echo " The time crate is at version $TIME_VERSION. It must be at least $MIN_TIME_VERSION."
+    echo " Check the changelog of the patch update-time-0.3.47.patch and follow the instructions"
+    exit 1
+fi
 
 %build
 %{cargo_build}

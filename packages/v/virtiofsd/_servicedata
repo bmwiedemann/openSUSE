@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gitlab.com/virtio-fs/virtiofsd.git</param>
+              <param name="changesrevision">c2540f8db14caba81c1e37fba23fc7bf2cd7f0dd</param></service></servicedata>

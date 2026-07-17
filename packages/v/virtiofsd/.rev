@@ -122,4 +122,46 @@ Use macros to exclude 32-bit archs</comment>
     <comment></comment>
     <requestid>1336413</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d2800a125433ed0735d44cf190e11e3e</srcmd5>
+    <version>1.14.0</version>
+    <time>1784306820</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.14.0:
+  * Bump version to v1.14.0
+  * passthrough: only clear capabilities on regular files
+  * Track the file type on HandleData
+  * read_dir: add tests for u64 cookie fallback path
+  * read_dir: handle u64 directory cookies that exceed i64::MAX
+  * passthrough: add negotiation modes to --security-label
+  * passthrough: add negotiation modes to --posix-acl
+  * vhost_user: exit gracefully on queue processing errors
+  * vhost_user: extract process_message() from queue processing loops
+  * deps: bump vhost 0.15-&gt;0.16, vhost-user-backend 0.21-&gt;0.22
+  * passthrough: remove redundant inode lookups in open_inode()
+  * server: do not reject oversized readdir requests
+  * server: reject malformed extension lengths with a minimal local check
+  * passthrough: avoid panic in setxattr on non-UTF-8 names
+  * Support multiple supplementary groups
+  * Update rust-vmm dependencies
+  * seccomp: Don't allow newfstatat syscall on sparc64
+  * README: --announce-submounts is enabled by default
+  * sandbox: only canonicalize shared_dir for chroot
+  * sandbox: fix pivot_root to relative paths
+- Add explicit handling of (and checking that is has
+  actually been handled) bsc#1257912 (CVE-2026-25727).
+  Patch added:
+  * update-time-0.3.47.patch
+- Service file cleanup and refactoring
+- Update to version 1.13.3:
+  * Bump version to v1.13.3
+  * Allow readv() seccomp
+  * Allow pwritev() seccomp
+  * Extend traits methods to support ReadvFlag
+  * Replace preadv64() with preadv2()
+  * Update pwritev2() flags
+  * Add Intellij IDEA configuration to .gitignore
+</comment>
+    <requestid>1365937</requestid>
+  </revision>
 </revisionlist>
