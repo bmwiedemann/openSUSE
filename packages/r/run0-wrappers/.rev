@@ -28,4 +28,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1347654</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5e645fac0c39c013ae6dd27d6a951582</srcmd5>
+    <version>0.5.0+git20260717.efd7268</version>
+    <time>1784307037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.0+git20260717.efd7268:
+  * Release version 0.5.0
+  * run0-sudo: support environment variables in commandline (#5)
+  * run0-sudo: add test for -k/-K option handling
+  * sudo/su: Fix handling of environment variables with newlines
+  * run0-sudo: improved version of -k/-K options (#6)</comment>
+    <requestid>1366431</requestid>
+  </revision>
 </revisionlist>
