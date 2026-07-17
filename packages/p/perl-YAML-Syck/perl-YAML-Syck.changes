@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:27:12 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.470.0 (1.47)
+   see /usr/share/doc/packages/perl-YAML-Syck/Changes
+
+  1.47 Jul 13 2026
+    [Security]
+    - Fix four libsyck memory-safety CVEs reachable from the default
+      YAML::Syck::Load() path on untrusted input with no special flags
+      (reported by Paul Johnson via CPANSec, PR #213):
+      - CVE-2026-57075 (CWE-125): out-of-bounds read in the base64 decoder
+        caused by signed-char indexing of the decode table on !!binary input
+        bsc#1271632
+      - CVE-2026-57076 (CWE-416): use-after-free of an anchor key string
+        shared between the node and the anchors table
+        bsc#1271633
+      - CVE-2026-57077 (CWE-125): one-byte out-of-bounds read in the lexer
+        newline scan during block-scalar parsing (incomplete-fix follow-on
+        to CVE-2025-11683)
+        bsc#1271634
+      - CVE-2026-13713 (CWE-416/CWE-415): use-after-free / double-free of an
+        anchor node on anchor redefinition, a remote-crash DoS from a
+        7-byte input
+        bsc#1271631
+    - Harden syck_base64dec() to bounds-check each read so it cannot run past
+      a non-NUL-terminated input buffer (defense-in-depth for callers passing
+      raw buffers; PR #213)
+    [Bug Fixes]
+    - Fix: enforce $MaxDepth on Load to prevent C-stack exhaustion from
+      deeply nested YAML/JSON input; YAML::Syck and JSON::Syck Load now
+      default to 512, matching Dump (PR #204)
+    - Fix: emit YAML canonical forms (.nan, .inf, -.inf) for NaN/Inf values
+      in Dump so they roundtrip with ImplicitTyping instead of reloading as
+      plain strings (PR #201)
+    [Maintenance]
+    - CI: add an AddressSanitizer job that builds the XS with
+      -fsanitize=address and runs the suite plus the CVE trigger inputs to
+      catch libsyck memory-safety defects; de-pin the libasan version so it
+      tracks the runner's GCC (PR #213)
+
+-------------------------------------------------------------------
 Mon May 25 09:09:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.460.0 (1.46)
