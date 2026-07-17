@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 17 14:17:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60.5 (bsc#1266645, CVE-2026-39821):
+  * build: discover bootstrap image tag instead of pinning it
+  * lib/manager: allow disabling container discovery
+  * **Full Changelog**:
+    https://github.com/google/cadvisor/compare/v0.60.4...v0.60.5
+  * build: discover bootstrap image tag instead of pinning it
+  * lib/manager: allow disabling container discovery
+  * **Full Changelog**:
+    https://github.com/google/cadvisor/compare/v0.60.4...v0.60.5
+- update to 0.60.4:
+  * build(deps): bump the go_modules group across 2 directories
+    with 1 update
+  * Update containerd ttrpc and typeurl
+  * build(deps): bump the go_modules group across 3 directories
+    with 1 update
+  * crio: add retry to ContainerInfo call
+  * build(deps): bump golang.org/x/crypto from 0.51.0 to 0.54.0
+    in the go_modules group across 0 directory
+
+-------------------------------------------------------------------
 Sun Jun 28 20:49:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.60.3:

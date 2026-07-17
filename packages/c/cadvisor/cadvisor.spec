@@ -19,7 +19,7 @@
 
 %global goipath github.com/google/cadvisor
 Name:           cadvisor
-Version:        0.60.3
+Version:        0.60.5
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
