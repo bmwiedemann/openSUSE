@@ -1,7 +1,7 @@
 #
 # spec file for package bcg729
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %define sover   0
 Name:           bcg729
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Encoder and decoder of the ITU G.729 Annex A/B speech codec
 License:        GPL-3.0-only
 URL:            https://www.linphone.org/technical-corner/bcg729
 Source:         https://gitlab.linphone.org/BC/public/bcg729/-/archive/%{version}/bcg729-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FIX-OPENSUSE bcg729-fix-pkgconfig.patch sor.alexei@meowr.ru -- Install libbcg729.pc.
-Patch0:         bcg729-fix-pkgconfig.patch
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 
@@ -64,8 +62,7 @@ application which will use libbcg729.
 %install
 %cmake_install
 
-%post -n lib%{name}-%{sover} -p /sbin/ldconfig
-%postun -n lib%{name}-%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}-%{sover}
 
 %files -n lib%{name}-%{sover}
 %license LICENSE.txt
@@ -75,7 +72,7 @@ application which will use libbcg729.
 %files devel
 %{_includedir}/%{name}/
 %{_libdir}/lib%{name}.so
-%{_datadir}/Bcg729/
+%{_datadir}/BCG729/
 %{_libdir}/pkgconfig/lib%{name}.pc
 
 %changelog

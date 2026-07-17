@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:56:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.2:
+  * Fix possible division by zero in LP2LSP conversion
+  * Improve cmake scripts
+- Drop bcg729-fix-pkgconfig.patch: upstream now installs
+  libbcg729.pc itself
+
+-------------------------------------------------------------------
 Thu Feb 22 10:09:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
