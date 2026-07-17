@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:26:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.4.0
+  * Implement `GLSL_EXT_structured_descriptor_heap` with SPIR-V
+    layout generation, heap offset access, buffer references,
+    matrix layout decorations, and correct `readonly`/`writeonly`
+    qualifier propagation for buffer and image descriptors
+  * Fix descriptor heap-bound buffer access to use typed pointers
+  * Omit `NonUniform` decoration when using descriptor heaps, as
+    the SPIR-V spec does not require it
+  * Add `--relax-set-binding-limits` option to allow large
+    `layout(set)` and `layout(binding)` values for descriptor
+    heap-style workflows with sparse set spaces
+  * Reject combined image samplers with `descriptor_heap`
+  * Fix `GL_KHR_compute_shader_derivatives` regressions on shaders
+    using the `GL_NV` variant
+  * Update compute shader derivative rules to allow texture
+    operations with implicit derivatives without extensions,
+    falling back to LoD 0
+  * New extensions: `GL_EXT_ocp_microscaling_types`,
+    `GL_NV_cooperative_matrix_decode_vector`,
+    `GL_EXT_opacity_micromap_ray_query_mode` and basic support for
+    `GL_NV_desktop_lowp_mediump`
+
+-------------------------------------------------------------------
 Tue May  5 08:08:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.3.0

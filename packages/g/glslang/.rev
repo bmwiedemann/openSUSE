@@ -507,4 +507,12 @@
     <comment>- Update to release 16.3.0</comment>
     <requestid>1351022</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>d608d1ff3ad2431d59fe227ab2985f88</srcmd5>
+    <version>16.4.0</version>
+    <time>1784306809</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 16.4.0</comment>
+    <requestid>1365781</requestid>
+  </revision>
 </revisionlist>
