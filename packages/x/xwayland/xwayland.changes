@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul  8 08:44:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 24.1.13:
+  * This release contains the fixes for the issues reported in this
+    security advisory:
+    https://lists.x.org/archives/xorg-announce/2026-July/003716.html
+  * CVE-2026-55999: glamor Font Atlas Heap Buffer Overflow
+  * CVE-2026-56000: GLX contextTags Use-After-Free in CommonMakeCurrent()
+  * In addition we have a few other smaller cleanup fixes.
+- Drop patches fixed upstream:
+  * bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
+  * bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
+  * bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
+
+-------------------------------------------------------------------
 Wed Jul  8 08:22:16 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch

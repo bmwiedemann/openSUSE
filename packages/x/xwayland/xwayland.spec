@@ -27,7 +27,7 @@
 %endif
 
 Name:           xwayland
-Version:        24.1.12
+Version:        24.1.13
 Release:        0
 URL:            http://xorg.freedesktop.org
 Summary:        Xwayland Xserver
@@ -37,9 +37,6 @@ Source0:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz
 Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
-Patch1268893:   bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
-Patch1268894:   bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
-Patch1268895:   bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
 
 BuildRequires:  meson
 BuildRequires:  ninja
