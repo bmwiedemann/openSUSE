@@ -1,8 +1,8 @@
-diff --git a/configure.ac b/configure.ac
-index b17beff..1659cfc 100644
---- a/configure.ac
-+++ b/configure.ac
-@@ -368,9 +368,9 @@ if test "x$with_avahi" != "xno"; then
+Index: x11vnc-0.9.17/configure.ac
+===================================================================
+--- x11vnc-0.9.17.orig/configure.ac
++++ x11vnc-0.9.17/configure.ac
+@@ -396,9 +396,9 @@ if test "x$with_avahi" != "xno"; then
  		AVAHI_LIBS="-L$with_avahi/lib -lavahi-common -lavahi-client"
  		echo "using $with_avahi"
  		with_avahi=yes

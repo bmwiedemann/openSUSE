@@ -1,8 +1,8 @@
-diff --git a/src/Makefile.am b/src/Makefile.am
-index 11168c7..12015cd 100644
---- a/src/Makefile.am
-+++ b/src/Makefile.am
-@@ -146,3 +146,8 @@ x11vnc_LDADD = \
+Index: x11vnc-0.9.17/src/Makefile.am
+===================================================================
+--- x11vnc-0.9.17.orig/src/Makefile.am
++++ x11vnc-0.9.17/src/Makefile.am
+@@ -147,3 +147,8 @@ x11vnc_LDADD = \
  	@XI2_LIBS@ \
  	@CAIRO_LIBS@ \
  	$(LD_CYGIPC)

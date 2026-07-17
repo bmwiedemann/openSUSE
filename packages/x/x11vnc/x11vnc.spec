@@ -18,7 +18,7 @@
 
 
 Name:           x11vnc
-Version:        0.9.16
+Version:        0.9.17
 Release:        0
 Summary:        VNC Server for Real X Displays
 License:        GPL-2.0-or-later
@@ -31,7 +31,6 @@ Source3:        x11vnc.png
 Source99:       %{name}-rpmlintrc
 Patch1:         stack-check
 Patch2:         x11vnc-thread-auth.diff
-Patch3:         x11vnc-examples.diff
 Patch4:         x11vnc.desktop.generics
 Patch5:         10_usepkgconfig.diff
 BuildRequires:  autoconf
@@ -92,13 +91,9 @@ This package adds a simple GUI frontend to run x11vnc.
 %prep
 %setup -q
 %patch -P 1 -p1
-# workaround for Factory, as maintaining that patch with fuzz==0 is
-# too annoying (it patches files that are modified by other patches):
-patch -p1 -i "%{PATCH2}"
-%patch -P 3 -p1
+%patch -P 2 -p1
 %patch -P 4 -p1
 %patch -P 5 -p1
-mv misc examples
 
 %build
 autoreconf -fiv
@@ -123,14 +118,12 @@ install -m 0755 tkx11vnc "%{buildroot}%{_bindir}/"
 install -m 0755 "%{SOURCE2}" "%{buildroot}%{_bindir}/"
 install -D -m 0644 "%{SOURCE3}" "%{buildroot}%{_datadir}/pixmaps/x11vnc.png"
 install -D -m 0644 "%{SOURCE1}" "%{buildroot}%{_datadir}/applications/tkx11vnc.desktop"
-for d in tkx11vnc x11vnc; do
-    %suse_update_desktop_file -r "$d" System RemoteAccess
-done
 
 rm -rf "%{buildroot}%{_includedir}/rfb"
 
-find examples -name 'Makefile*' -exec rm {} \;
-find examples -type f -exec chmod 0644 {} \;
+find misc -name 'Makefile*' -exec rm {} \;
+find misc -type f -exec chmod 0644 {} \;
+mv misc examples
 
 %files
 %license COPYING
