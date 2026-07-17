@@ -17,7 +17,7 @@
 
 %define sover 0
 Name:           libresidfp
-Version:        1.1.1
+Version:        1.1.2
 Release:        0
 Summary:        Cycle exact SID emulation
 License:        GPL-2.0-or-later
@@ -59,14 +59,14 @@ Development files for libresidfp.
 %configure --disable-static --enable-lto=yes
 %make_build
 
-%check
-%make_build check
-
 %install
 %make_install
 rm %{buildroot}%{_libdir}/%{name}.la
 
 %ldconfig_scriptlets -n lib%{name}%{sover}
+
+%check
+%make_build check
 
 %files -n lib%{name}%{sover}
 %license COPYING
