@@ -172,4 +172,13 @@
     <comment></comment>
     <requestid>1364954</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>e28a9769ed501106eb6d37cab7740c83</srcmd5>
+    <version>3.21.3</version>
+    <time>1784307032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.21.1 (bsc#1270127, CVE-2026-48978
+    bsc#1271660, CVE-2026-50151):</comment>
+    <requestid>1366425</requestid>
+  </revision>
 </revisionlist>
