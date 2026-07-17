@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-serialconsole
-Version:        1.0.1
+Version:        2.0.0
 Release:        0
 Summary:        Microsoft Azure SerialConsole Client Library
 License:        MIT

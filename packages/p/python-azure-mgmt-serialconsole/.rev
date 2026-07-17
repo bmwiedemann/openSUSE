@@ -69,4 +69,15 @@
     <comment></comment>
     <requestid>1354666</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>14f88136989c638eed8830748211b604</srcmd5>
+    <version>2.0.0</version>
+    <time>1784306990</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 2.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1366327 from glaubitz)</comment>
+    <requestid>1366378</requestid>
+  </revision>
 </revisionlist>
