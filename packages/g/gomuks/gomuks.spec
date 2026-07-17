@@ -1,7 +1,7 @@
 #
 # spec file for package gomuks
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,25 @@
 
 %define __arch_install_post export NO_BRP_STRIP_DEBUG=true
 Name:           gomuks
-Version:        0.3.1
+Version:        26.03+git.1780250926.564a8707
 Release:        0
 Summary:        A terminal Matrix client written in Go
 License:        AGPL-3.0-only
-URL:            https://github.com/tulir/gomuks
-Source:         https://github.com/tulir/gomuks/archive/refs/tags/v%{version}.tar.gz#/gomuks-%{version}.tar.gz
+URL:            https://github.com/gomuks/gomuks
+# Source0:        https://github.com/gomuks/gomuks/archive/refs/tags/v%%{upstream_tag}.tar.gz#/gomuks-%%{upstream_tag}.tar.gz
+Source0:        gomuks-%{version}.tar.bz2
 Source1:        vendor.tar.gz
-# Revendorization because of bsc#1251459
-Patch0:         patch-go-mod.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  go >= 1.21
+BuildRequires:  go >= 1.26.2
 BuildRequires:  go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  olm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
-ExcludeArch:    s390
-%if 0%{?is_opensuse}
-ExcludeArch:    s390x
-%endif
+BuildRequires:  pkgconfig(dav1d)
+BuildRequires:  pkgconfig(libheif)
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 A terminal Matrix client written in Go using mautrix and mauview.
@@ -49,18 +47,22 @@ Basic usage is possible, but expect bugs and missing features.
 %autosetup -p1 -a1
 
 %build
-export FZF_VERSION=%{version} FZF_REVISION=tarball
-go build -v -mod=vendor -buildmode=pie
+mkdir -p web/dist
+touch web/dist/empty
+export BINARY_NAME=%{name} MAU_VERSION_PACKAGE=go.mau.fi/gomuks/version
+go tool maubuild -v -mod=vendor -buildmode=pie
+export BINARY_NAME=%{name}-terminal MAU_VERSION_PACKAGE=go.mau.fi/gomuks/version
+go tool maubuild -v -mod=vendor -buildmode=pie
 
 %install
 # Install the binary.
-install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0755 -t "%{buildroot}/%{_bindir}/" %{name} %{name}-terminal
 # Build the man page.
 go-md2man -in README.md -out %{name}.1
+go-md2man -in README.md -out %{name}-terminal.1
 
 # Install the man page.
-install -D -m 0644 %{name}.1 "%{buildroot}/%{_mandir}/man1/%{name}.1"
-rm %{name}.1
+install -D -m 0644 -t "%{buildroot}/%{_mandir}/man1/" %{name}.1 %{name}-terminal.1
 
 %fdupes %{buildroot}
 
@@ -68,6 +70,7 @@ rm %{name}.1
 %license LICENSE
 %doc README.md
 %{_bindir}/%{name}
+%{_bindir}/%{name}-terminal
 %{_mandir}/man1/%{name}*.1%{?ext_man}
 
 %changelog

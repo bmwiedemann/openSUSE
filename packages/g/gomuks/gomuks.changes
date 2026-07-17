@@ -1,4 +1,235 @@
 -------------------------------------------------------------------
+Mon Jun 01 14:49:19 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 26.03+git.1780250926.564a8707:
+  * hicli/commands: add /powerlevel
+  * media: handle heic rotation correctly
+  * server: fix description of upload endpoint
+  * ci: fix rpc.html not being propagated to deploy step
+  * server: add initial openapi docs
+  * rpcdocgen: add documentation generator for RPC commands
+  * hicli/jsoncmd: move general RPC docs here
+  * media: allow Accept header in place of progress param
+  * hicli/send: fix /raw in unencrypted rooms
+  * hicli/jsoncmd: add notes for ffi-only commands
+  * media: ensure progress callback isn't called after finishing upload
+  * media: reduce avatar size limits further
+  * hicli/jsoncmd: add more docstrings
+  * web/statestore: don't require decrypted_type if decrypted is set
+  * server: add http wrapper for SubmitJSONCommand
+  * web/menu: add primary button to open thread sidebar
+  * web/util: add helper for getting thread root id
+  * desktop: disable windows delta updates
+  * ci: add certificates for mono
+  * ci: fix windows path on update.gomuks.app
+  * ci: keep old desktop builds on update.gomuks.app
+  * web/timeline: add max width for reaction images
+  * hicli/send: don't add fallbacks for /raw
+  * media: fix error check for image uploads
+  * web: disable custom context menus when shift is held
+  * desktop: enable context menu
+  * media: use animated webp decoder for uploads too
+  * changelog: update
+  * media: add support for thumbnailing animated webp
+  * desktop: allow overriding individual backend environment variables
+  * desktop: use shared cache directory for all embedded backends
+  * main,terminal: prioritize GOMUKS_*_HOME over GOMUKS_ROOT
+  * desktop: hide check for updates option on linux
+  * web,desktop: update dependencies
+  * desktop: fix libolm.3.dylib permissions
+  * ci: fix rsync flags
+  * desktop: increase update check interval
+  * ci: fix deleting directories in desktop deploy
+  * ci: fix typo and remove empty directories
+  * ci: update paths on update.gomuks.app
+  * desktop: enable autoupdater
+  * web,desktop: add .npmrc
+  * desktop: add support for multiple profiles (#718)
+  * desktop: send notifications via main process
+  * desktop: don't store logs with rest of backend data
+  * desktop: fix authenticating with external backend
+  * desktop: handle opening matrix URIs in a new process
+  * desktop: handle downloading files properly
+  * desktop: use simpler image for tray
+  * desktop: wrap tray icon creation in nativeImage
+  * desktop: fix mac icon path
+  * desktop: fix tray icon path
+  * desktop: add tray icon and keep running in background
+  * desktop: reorder main
+  * desktop: rewrite in electron (#716)
+  * Bump version to v26.05
+  * web/rightpanel: allow user and event links in /join
+  * web/rightpanel: fix user info view outside rooms
+  * web/settings: rename explore room state button
+  * dependencies: update mautrix-go
+  * dependencies: update mautrix-go
+  * dependencies: update mautrix-go
+  * hicli/send: don't persist fallbacks for outgoing messages
+  * hicli/send: allow using per-message profile key as prefix
+  * hicli/send: add /pmp command for using MSC4461 profiles
+  * readme: link to issue for terminal with embedded backend
+  * hicli/pushrules: switch GetEvent signature back to old version
+  * dependencies: update mautrix-go
+  * dependencies: update mautrix-go
+  * web/vite: change dnd-kit special casing
+  * web: add support for stable image packs
+  * hicli/paginate: apply refetch state reset detection to world-readable rooms too
+  * web/settings: only save preference changes on blur
+  * web/preferences: implement changing notification sounds
+  * media: add accept-ranges for streamed downloads
+  * dependencies: update
+  * media: add support for range requests
+  * web/composer: add option to force send attachment as file
+  * web/dependencies: update
+  * web/modal: ignore failed reaction events in list
+  * hicli/html: allow value attribute on li
+  * dependencies: update mautrix-go
+  * hicli/verify: fix check with no SSSS set up
+  * dependencies: update mautrix-go
+  * web: suppress eslint warnings
+  * web/dependencies: update
+  * web/login: use proper method for setting query param
+  * hicli/database: fix scoping of event queries
+  * web/login: fix forming SSO URL
+  * web: use class instead of inline style for bidi-isolate
+  * web/all: add various missing bidi-isolates
+  * Bump version to v26.04
+  * dependencies: update mautrix-go
+  * web/login: add support for generating recovery key
+  * hicli/verify: add support for resetting cross-signing and key backup
+  * hicli/verify: expose crypto setup status to frontend
+  * hicli: don't fail accepting DM if it's already in m.direct
+- CVE-2026-25681: Parsing arbitrary HTML which is then rendered
+  using Render can result in an unexpected HTML tree. This can be
+  leveraged to execute XSS attacks in applications that attempt
+  to sanitize input HTML before rendering. (bsc#1267157,
+  GO-2026-5029)
+- CVE-2026-27136: Invoking duplicate attributes can cause XSS
+  (bsc#1267157, GO-2026-5030)
+- CVE-2026-42502: Invoking incorrect handling of HTML elements in
+  foreign content (bsc#1267157, GO-2026-5027)
+- CVE-2026-42506: Invoking incorrect handling of namespaced
+  elements in foreign content (bsc#1267157, GO-2026-5025)
+- CVE-2026-39821: The ToASCII and ToUnicode functions incorrectly
+  accept Punycode-encoded labels that decode to an ASCII-only
+  label with possibility of privlege escalation. (bsc#1267157,
+  GO-2026-5026)
+- Revendoring to golang.org/x/net@v0.55.0.
+
+-------------------------------------------------------------------
+Mon Apr 13 10:39:27 UTC 2026 - mcepl@cepl.eu
+
+- Update to version 26.03+git.1776074915.894dfddb:
+  * dependencies: update goheif to fix vendoring
+  * ci: add -headerpad_max_install_names for macOS builds
+  * dependencies: update mautrix-go
+  * web/roomlist: don't try to open pseudo-space home
+  * web/modal: fix shortcode trimming
+  * web/modal: adjust gap between reactions
+  * web/menu: add reaction view
+  * ffi: add root directory param to `GomuksInit` (#702)
+  * web/roomlist: open space view when clicking again
+  * web/dependencies: update wasm sqlite
+
+-------------------------------------------------------------------
+Mon Apr 13 06:36:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 26.03 (change of version number series):
+  Program was split into backend, CLI, and Web frontend modules.
+- Backend
+    - Added option to build with dynamic libheif.
+    - Added automatic logout on unknown token errors.
+    - Switched to m.direct event for classifying direct chats.
+    - Fixed weirdness after login by sending the normal init
+      payloads instead of the Matrix init sync payload to
+      frontends.
+    - Fixed option to disable auth not working correctly.
+    - Fixed voice message metadata incorrectly being added to all
+      attachments.
+    - Bumped minimum Go version to 1.25.
+    - Added C FFI package for embedding the backend into any kind
+      of client.
+    - Added triggered push rule ID to local content of events for
+      debugging.
+    - Added support for handling recovery keys with no
+      verification metadata or broken verification metadata
+      generated by nheko.
+    - Added config option to set sync presence to always online
+      instead of the default always offline.
+    - Changed DM detection to allow the rooms to have an explicit
+      room name set.
+    - Added some documentation for the RPC API.
+    - Added local calculation of heroes when fetching full member
+      list as a workaround for servers that don't provide
+      accurate lazy loading summaries.
+    - Fixed DM flag being cleared if the recipient leaves.
+    - Added commands to remove and add aliases (thanks to
+      @nexy7574 in #672).
+    - Fixed /myroomnick/avatar commands failing after joining
+      a room with restricted join rules.
+    - Fixed race condition where a recovery key input screen
+      would show up if the backend hadn't finished initializing
+      when the frontend was loaded.
+    - Fixed /roomname command not accepting an argument.
+- Web
+    - Added support for klipy in gif picker.
+    - Added button to re-request megolm sessions from key backup
+      and other devices.
+    - Added fallback name for invites with no name information
+      included.
+    - Removed rainbow background on dark theme (can be restored
+      using the make dark gay again theme).
+    - Added support for always on screen widgets that follow you
+      between rooms.
+    - Added loading indicator to action modals like reporting
+      messages.
+    - Added support for hiding events in JS to have accurate date
+      separators even if all events are hidden.
+    - Added support for showing read receipts of hidden events on
+      previous visible event.
+    - Added option to hide profile changes while showing other
+      member events.
+    - Added blurhashes for URL preview images.
+    - Added button for creating new image packs.
+    - Added support for being a share target when using the
+      Android wrapper app.
+    - Added button to show composer in tombstoned rooms.
+    - Updated delayed event widget API to fix Element Call.
+    - Changed timeline rendering to ignore nested encrypted
+      events.
+    - Fixed font size of header tags.
+    - Fixed alignment of reaction emoji picker on small screens.
+    - Fixed giphy gifs not showing up in composer correctly.
+    - Added notification center in right panel.
+    - Added option to reply to messags using ctrl+arrow up/down.
+    - Added blurred URL preview images and click-to-view support
+      in rooms with media previews disabled.
+    - Added metadata in room preview for non-invite rooms.
+    - Switched command system from MSC4332 to MSC4391.
+    - Switched default GIF provider to Giphy as Tenor is being
+      shut down in June.
+    - Removed power level check for sticker picker to allow
+      subscribing to packs even if the image pack room doesn't
+      allow sending messages.
+    - Fixed room list previews having incorrect sender
+      information if it was updated by a message being decrypted
+      late.
+    - Fixed timeline crash if a message timestamp was outside
+      what JS's Date allows.
+    - Added voice message recorder.
+    - Added image pack editor.
+    - Added support for downloading media on the Android wrapper.
+- Terminal
+    - Added basic support for MSC4391 commands.
+    - Improved error message when trying to log in with an
+      invalid backend address.
+    - Fixed replying to messages.
+- Revendor to use updated golang.org/x/image/tiff (bsc#1260726,
+  CVE-2026-33809), require GoLang >= 1.26.2
+- Remove obsolete patch:
+  - patch-go-mod.patch
+
+-------------------------------------------------------------------
 Thu Oct 30 11:09:07 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add patch-go-mod.patch revendoring the package to get in
