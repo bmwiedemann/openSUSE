@@ -22,7 +22,7 @@
 
 %define lname   libpwaccess0
 Name:           account-utils
-Version:        1.3.0+git20260618.66fbd03
+Version:        1.4.0+git20260717.3914e08
 Release:        0
 Summary:        Service for authentication and account management
 License:        GPL-2.0-or-later AND BSD-2-Clause AND LGPL-2.1-or-later
@@ -131,7 +131,11 @@ fi
 %{_mandir}/man1/chfn.1%{?ext_man}
 %{_mandir}/man1/chsh.1%{?ext_man}
 %{_mandir}/man1/expiry.1%{?ext_man}
+%{_mandir}/man1/newgidmap.1%{?ext_man}
+%{_mandir}/man1/newuidmap.1%{?ext_man}
 %{_mandir}/man1/passwd.1%{?ext_man}
+%{_mandir}/man5/pwaccessd.conf.5%{?ext_man}
+%{_mandir}/man8/newidmapd.8%{?ext_man}
 %{_mandir}/man8/pam_debuginfo.8%{?ext_man}
 %{_mandir}/man8/pam_unix_ng.8%{?ext_man}
 %{_mandir}/man8/pwaccessd.8%{?ext_man}

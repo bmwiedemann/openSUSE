@@ -129,4 +129,29 @@ Add conflicts to busybox-adduser</comment>
   * Fix several errors</comment>
     <requestid>1360277</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>529dbb08ac7b97e0560a779993067a09</srcmd5>
+    <version>1.4.0+git20260717.3914e08</version>
+    <time>1784306999</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.4.0+git20260717.3914e08:
+  * Release version 1.4.0
+  * CI: add tests for newuidmap/newgidmap/newidmapd
+  * newidmapd: fix usage of uid for gid mapping, add more debug output
+  * newxidmap/newidmapd: fix strto*l error checks
+  * Add newgidmap, newidmapd and newuidmap manual pages
+  * newidmapd: use long long to avoid variable overflows
+  * Add function is_uid() to check if a token is a UID
+  * CI: check that chage help does not contain mindays option
+  * CI: print failed test suites
+  * TODO: add more things to the list
+  * pam_unix_ng/pwaccessd: make expire check configurable (use_sp_min)
+  * Add pwaccessd.conf.5 manual page
+  * tst-read_config: adjust for new struct config_t
+  * chage: deprecate sp_min
+  * passwd: deprecate sp_min
+  * read_config: add support for SpMin key
+  * read_config: make name of configuration file configureable</comment>
+    <requestid>1366398</requestid>
+  </revision>
 </revisionlist>
