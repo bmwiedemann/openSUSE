@@ -36,7 +36,7 @@
 %endif
 
 Name:           xorg-x11-server
-Version:        21.1.21
+Version:        21.1.24
 Release:        0
 URL:            http://xorg.freedesktop.org/
 Summary:        X
@@ -242,28 +242,6 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
-Patch1260922:   bsc1260922_CVE-2026-33999_xkb-fix-buffer-re-use-in-_XkbSetCompatMap.patch
-Patch1260923:   bsc1260923_CVE-2026-34000_xkb-Fix-bounds-check-in-_CheckSetGeom.patch
-Patch1260924:   bsc1260924_CVE-2026-34001_miext-sync-Fix-use-after-free-in-miSyncTriggerFence.patch
-Patch1260925:   bsc1260925_CVE-2026-34002_0001-xkb-Fix-out-of-bounds-read-in-CheckModifierMap.patch
-Patch1260926:   bsc1260925_CVE-2026-34002_0002-xkb-Add-more-_XkbCheckRequestBounds.patch
-Patch1260927:   bsc1260926_CVE-2026-34003_0001-xkb-Add-additional-bound-checking-in-CheckKeyTypes.patch
-
-Patch1266294:   bsc1266294_CVE-2026-XXXX1_0007-dix-increase-XLFDMAXFONTNAMELEN-to-match-libXfont2-s.patch
-Patch1266295:   bsc1266295_CVE-2026-XXXX2_0001-sync-fix-deletion-of-counters-and-fences.patch
-Patch1266296:   bsc1266296_CVE-2026-XXXX3_0003-xkb-reject-key-types-with-num_levels-exceeding-XkbMa.patch
-Patch1266297:   bsc1266297_CVE-2026-XXXX4_0004-xkb-clamp-nMaps-to-mapWidths-buffer-size-in-CheckKey.patch
-Patch1266299:   bsc1266299_CVE-2026-XXXX6_0002-sync-restart-trigger-list-iteration-in-SyncChangeCou.patch
-Patch1266300:   bsc1266300_CVE-2026-XXXX7_0005-glx-fix-reversed-length-check-in-ChangeDrawableAttri.patch
-Patch1266301:   bsc1266301_CVE-2026-XXXX8_0006-saver-re-fetch-screen-private-after-CheckScreenPriva.patch
-Patch1266302:   bsc1266302_CVE-2026-XXXX9_0001-dri2-Use-booleans-for-fake-front-buffer-tracking-in-.patch
-Patch1266303:   bsc1266302_CVE-2026-XXXX9_0002-dri2-Deduplicate-attachments-in-do_get_buffer.patch
-
-Patch1268893:   bsc1268893_CVE-2026-55999_0002-fb-mi-glamor-reject-glyphs-with-negative-dimensions.patch
-Patch1268894:   bsc1268893_CVE-2026-55999_0003-glamor-reject-fonts-with-per-glyph-metrics-exceeding.patch
-Patch1268895:   U_GLX-Free-the-tag-of-the-old-context-later.patch
-Patch1268896:   bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch
-
 %description
 This package contains the X.Org Server.
 
@@ -416,28 +394,6 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1960 -p1
 
 %patch -P 1218176 -p1
-
-%patch -P 1260922 -p1
-%patch -P 1260923 -p1
-%patch -P 1260924 -p1
-%patch -P 1260925 -p1
-%patch -P 1260926 -p1
-%patch -P 1260927 -p1
-
-%patch -P 1266294 -p1
-%patch -P 1266295 -p1
-%patch -P 1266296 -p1
-%patch -P 1266297 -p1
-%patch -P 1266299 -p1
-%patch -P 1266300 -p1
-%patch -P 1266301 -p1
-%patch -P 1266302 -p1
-%patch -P 1266303 -p1
-
-%patch -P 1268893 -p1
-%patch -P 1268894 -p1
-%patch -P 1268895 -p1
-%patch -P 1268896 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
