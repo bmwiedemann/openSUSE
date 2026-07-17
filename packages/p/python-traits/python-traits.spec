@@ -1,7 +1,7 @@
 #
 # spec file for package python-traits
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,7 +26,7 @@
 %bcond_with test
 %endif
 Name:           python-traits%{psuffix}
-Version:        6.4.3
+Version:        7.1.0
 Release:        0
 Summary:        Explicitly typed attributes for Python
 # Images have different licenses. For image license breakdown check
@@ -36,8 +36,7 @@ Summary:        Explicitly typed attributes for Python
 License:        BSD-3-Clause AND EPL-1.0 AND LGPL-2.1-only
 URL:            https://github.com/enthought/traits
 Source:         https://github.com/enthought/traits/archive/%{version}.tar.gz#/traits-%{version}.tar.gz
-Patch1:         https://github.com/enthought/traits/commit/a20f2154b2c79eb8550ea9228d1a4415ff51b72a.patch#/py313-ctraits.patch
-BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

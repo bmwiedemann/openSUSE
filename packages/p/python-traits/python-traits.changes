@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Jul 17 06:02:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 7.1.0:
+  ## Features
+  * The traits package now ships with stub files directly, instead of
+    requiring those files to be installed via the separate traits-stubs
+    package.
+  * Experimental support for async dispatch has been added.
+  * Python versions through 3.13 are now supported.
+  ## Changes
+  * The behaviour of observers using dispatch="ui" when no GUI system is
+    present (in particular, if Pyface has not performed toolkit selection)
+    has changed.
+  * AttributeError's raised by some_trait_default methods are no longer
+    swallowed.
+  * The Date trait type no longer accepts datetime instances unless
+    allow_datetime=True is used.
+  * The Date, Time and Datetime trait types no longer accept a value of None
+    unless allow_none=True is used.
+  * Calling an interface class no longer performs implicit adaptation.
+  ## Removals
+  * Python versions earlier than 3.8 are no longer supported.
+  ## Fixes
+  * Make Instance type hints more useful.
+  * Remove type hints on IntEnum members.
+  * Fixed subclassing support in trait-documenter.
+  * Fix TraitChangeNotifyWrapper handling of compiled methods; the previous
+    strict type check was causing issues with Nuitka.
+  * Fix failure of clone_traits in the presence of dynamic traits.
+  * Make traits.trait_notifiers.ui_handler public again, since Pyface relies
+    on importing it directly.
+  * Fixed build error on Python 3.13 triggered by removal of the
+    PyTRASHCAN_SAFE_BEGIN and PyTRASHCAN_SAFE_END macros.
+  * Fixed warning messages from use of PyDict_GetItem in Python >= 3.13.
+  * Fixed a race condition in test of background thread notification.
+  * Fixed missing observer registration when inserting into a nested list.
+  * Fixed a use of the deprecated datetime.datetime.utcnow method.
+  * Fixed a use of a deprecated TraitsUI version check.
+  * Fixed various type stubs.
+- Dropped patch py313-ctraits.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri May  9 05:19:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.
