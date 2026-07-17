@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 17 05:16:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.2:
+  * Bug Fixes
+    - only upload cache if vunnel provider succeeded [PR #1063
+      @willmurphyscode]
+  * Additional Changes
+    - chore(deps): update anchore dependencies (#1069)
+    - chore(deps): update anchore dependencies (#1055)
+    - chore(deps): update tool versions (#1067)
+    - chore(deps): Bump the go-minor-patch group with 2 updates
+      (#1064)
+    - chore(deps): Bump boto3 in the actions-minor-patch group
+      (#1065)
+
+-------------------------------------------------------------------
 Wed Jul 01 05:50:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.1:
