@@ -17,7 +17,7 @@
 
 
 Name:           gap-automata
-Version:        1.16
+Version:        1.17
 Release:        0
 Summary:        GAP: A package on automata
 License:        GPL-2.0-or-later
