@@ -21,6 +21,7 @@ Version:        0.7
 Release:        0
 Summary:        OCaml bindings for Augeas configuration API
 License:        LGPL-2.1-or-later
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://download.libguestfs.org/ocaml-augeas/
 Source0:        https://download.libguestfs.org/ocaml-augeas/%{name}-%{version}.tar.gz
 Source1:        %{name}-%{version}.tar.gz.sig
@@ -53,7 +54,8 @@ developing applications that use %{name}.
 %define _lto_cflags %{nil}
 
 %configure
-make all
+LDFLAGS=
+make all LDFLAGS=${LDFLAGS}
 make doc
 
 %check
