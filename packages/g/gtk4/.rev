@@ -1150,4 +1150,19 @@ New upstream release</comment>
   + Updated translations.</comment>
     <requestid>1355869</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>cb1f595fb7b8eec5c61fe0cfb9210872</srcmd5>
+    <version>4.22.4+29</version>
+    <time>1784306829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.22.4+29:
+  + gl: Actually report partial damage
+  + gtkapplication-wayland: Add a missing NULL check when
+    forgetting a window
+  + Fix the build with pango main
+  + Revert &quot;filechooserutils: Stop using pixbufs&quot;
+  + gskvulkanimage: fix building on 32-bit
+  + Updated translations.</comment>
+    <requestid>1366022</requestid>
+  </revision>
 </revisionlist>
