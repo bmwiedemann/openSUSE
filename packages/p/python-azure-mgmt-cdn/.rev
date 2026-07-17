@@ -164,4 +164,19 @@
 - Update Requires from setup.py (forwarded request 1180139 from glaubitz)</comment>
     <requestid>1180266</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>1d97d0c672363faaa8dda45f2fbb70eb</srcmd5>
+    <version>14.0.0</version>
+    <time>1784306997</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 14.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Adjust upstream source name in spec file
+- Drop extra LICENSE.txt as upstream now ships its own
+- Rename LICENSE.txt to LICENSE in %files section
+- Update Requires from pyproject.toml (forwarded request 1366338 from glaubitz)</comment>
+    <requestid>1366383</requestid>
+  </revision>
 </revisionlist>
