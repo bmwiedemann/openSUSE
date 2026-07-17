@@ -1412,4 +1412,12 @@ This is a bug fix only release.
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1258688</comment>
   </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>6cf525d957c95472cf912da963b6ebbc</srcmd5>
+    <version>2.3.2</version>
+    <time>1784306807</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365735</requestid>
+  </revision>
 </revisionlist>

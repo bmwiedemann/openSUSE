@@ -1,7 +1,7 @@
 #
 # spec file for package firewalld
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -46,7 +46,7 @@
 %global modprobe_d_files firewalld-sysctls.conf
 
 Name:           firewalld%{?pkg_suffix}
-Version:        2.1.2
+Version:        2.3.2
 Release:        0
 Summary:        A firewall daemon with D-Bus interface providing a dynamic firewall
 License:        GPL-2.0-or-later
@@ -56,6 +56,7 @@ Source0:        https://github.com/firewalld/firewalld/releases/download/v%{vers
 Source1:        docker-zone.xml
 Patch0:         0001-Disable-FlushAllOnReload-option.patch
 Patch1:         0002-firewalld-runstatedir.patch
+Patch2:         0003-CVE-2026-4948-fix-dbus-setter-authorization.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  desktop-file-utils
@@ -370,7 +371,6 @@ fi
 %dir %{_modprobedir}
 %{_modprobedir}/firewalld-sysctls.conf
 %config(noreplace) %{_sysconfdir}/firewalld/firewalld.conf
-%config(noreplace) %{_sysconfdir}/firewalld/lockdown-whitelist.xml
 %if 0%{?suse_version} > 1550
 %{_distconfdir}/logrotate.d/firewalld
 %else
@@ -426,7 +426,7 @@ fi
 %attr(0755,root,root) %{_datadir}/firewalld/gtk3_chooserbutton.py*
 %attr(0755,root,root) %{_datadir}/firewalld/gtk3_niceexpander.py*
 %{_datadir}/applications/firewall-config.desktop
-%{_datadir}/metainfo/firewall-config.appdata.xml
+%{_datadir}/metainfo/org.firewalld.firewall-config.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/firewall-config*.*
 %{_datadir}/glib-2.0/schemas/org.fedoraproject.FirewallConfig.gschema.xml
 %{_mandir}/man1/firewall-config*.1%{?ext_man}
