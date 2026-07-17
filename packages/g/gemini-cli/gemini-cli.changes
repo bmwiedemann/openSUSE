@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:42:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.51.0:
+  * Fix no_proxy test
+  * Vertex base url update
+  * fix(security): enforce case-insensitive sensitive path
+    blocklist and vscode hitl
+  * fix(core-tools): resolve defensive path resolution for at-
+    reference files and fix macOS tests
+  * feat(caretaker): implement Cloud Run webhook ingestion
+    service
+  * fix(core): resolve symbolic link directory escape in memory
+    import processor
+  * feat(caretaker): egress cloud run service skeleton
+  * fix(sandbox): make ~/.gitconfig read-only in the macOS
+    sandbox
+  * fix(core): preserve escape sequences in string literals for
+    modern models
+  * fix(core): strip thoughts from scrubbed history turns and
+    resolve thought leakage
+
+-------------------------------------------------------------------
 Thu Jul  9 08:18:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.50.0:

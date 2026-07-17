@@ -826,4 +826,29 @@
     cli/compare/v0.49.0...v0.50.0</comment>
     <requestid>1364674</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>47846f9371e0d8bf2f3c5cd19e32f7f7</srcmd5>
+    <version>0.51.0</version>
+    <time>1784307022</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.51.0:
+  * Fix no_proxy test
+  * Vertex base url update
+  * fix(security): enforce case-insensitive sensitive path
+    blocklist and vscode hitl
+  * fix(core-tools): resolve defensive path resolution for at-
+    reference files and fix macOS tests
+  * feat(caretaker): implement Cloud Run webhook ingestion
+    service
+  * fix(core): resolve symbolic link directory escape in memory
+    import processor
+  * feat(caretaker): egress cloud run service skeleton
+  * fix(sandbox): make ~/.gitconfig read-only in the macOS
+    sandbox
+  * fix(core): preserve escape sequences in string literals for
+    modern models
+  * fix(core): strip thoughts from scrubbed history turns and
+    resolve thought leakage</comment>
+    <requestid>1366413</requestid>
+  </revision>
 </revisionlist>
