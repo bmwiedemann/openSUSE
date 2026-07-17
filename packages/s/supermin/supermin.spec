@@ -21,6 +21,7 @@ Version:        5.3.5
 Release:        0
 Summary:        Bootstrapping tool for creating supermin appliances
 License:        GPL-3.0-or-later
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 Group:          System/Filesystems
 URL:            https://libguestfs.org/
 Source0:        https://download.libguestfs.org/supermin/5.3-development/supermin-5.3.5.tar.gz

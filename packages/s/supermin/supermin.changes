@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Mon May 18 09:33:16 MDT 2026 - carnold@suse.com
 
 - Detect the correct kernel on s390x (bsc#1206361, jsc#PED-14625)
