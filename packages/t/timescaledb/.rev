@@ -671,4 +671,41 @@ Stop storing build machine kernel version (boo#1101107)</comment>
   - #9908 Skip ColumnarIndexScan when the qual contains a SubPlan</comment>
     <requestid>1356677</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>b3febc373e1335c3605cc4745ffb05fc</srcmd5>
+    <version>2.28.3</version>
+    <time>1784306874</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.28.3
+  This release contains performance improvements and bug fixes
+  since the 2.28.2 release. We recommend that you upgrade at the
+  next available opportunity.
+  Bugfixes
+  - #10082 Wrong result when evaluating a function returning NULL
+    in the columnar query execution pipeline
+  - #10178 Fix incorrect usage of sort transformation for sort key
+    expressions with negative constants
+  - #10179 Allow enabling and disabling triggers on hypertables
+    with columnstore enabled
+  - #10182 Fix columnstore sort pushdown to check for different
+    query sort key collation
+  - #10209 Fix potentially wrong results for stddev(float4) and
+    stddev(float8) when used with avg() in the columnar query
+    execution pipeline
+  - #10212 Fix race condition when enabling compression on a
+    hypertable
+  - #10230 Batch filtering for compressed DML should respect
+    collation
+  - #10254 Direct delete failed to handle array predicates with
+    NULL values and deleted more rows than intended (#10129)
+  - #10257 Reuse existing dimension_slice IDs when possible
+  - #10265 Truncate constraint name before trying to rename
+
+- Update to 2.28.2
+  This release contains bug fixes since the 2.28.1 release. We
+  recommend that you upgrade at the next available opportunity.
+  - Bugfixes
+    - #10126 Fix bgw_job_stat_history migration for 2.28.1</comment>
+    <requestid>1366252</requestid>
+  </revision>
 </revisionlist>
