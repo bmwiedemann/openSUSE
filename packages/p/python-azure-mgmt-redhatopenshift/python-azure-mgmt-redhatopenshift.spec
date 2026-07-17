@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-redhatopenshift
-Version:        3.0.0
+Version:        4.0.0
 Release:        0
 Summary:        Microsoft Azure Red Hat Openshift Management Client Library
 License:        MIT
