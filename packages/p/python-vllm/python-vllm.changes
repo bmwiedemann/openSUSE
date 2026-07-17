@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Thu Jul 16 17:24:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix runtime requirements to use canonical openSUSE package
+  names so the package is installable in staging (reported by
+  dimstar on sr#1365523):
+  * python-pillow -> python-Pillow
+  * python-pyyaml -> python-PyYAML
+  * python-mistral_common -> python-mistral-common
+  * python-prometheus_client -> python-prometheus-client
+
+-------------------------------------------------------------------
+Mon Jul 13 06:48:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of vllm 0.25.0 (CPU variant):
+  * Built with VLLM_TARGET_DEVICE=empty: inference runs through
+    PyTorch's native CPU operators.  The CUDA/GPU kernels and vLLM's
+    optional compiled CPU kernels are not built, and the nvidia-*/
+    flashinfer runtime dependencies are not pulled in.
+  * Only the primary python3 flavour is built (not python-singlespec),
+    since vllm is tied to the flavour python-torch is built for.
+  * Add vllm-relax-cpu-requirements.patch: relax the exact torch,
+    numba and setuptools pins to what Factory ships and drop the
+    optional torchvision, torchaudio, torchcodec and intel-openmp
+    dependencies (text inference only for this first build).
+  * Add vllm-cpu-disable-rust-frontend.patch: do not build the
+    optional Rust frontend (~575 unvendored crates); it is a
+    runtime-optional, lazily-imported accelerator and the Python
+    implementations remain fully functional.

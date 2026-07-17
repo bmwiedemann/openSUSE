@@ -1,0 +1,22 @@
+--- a/setup.py	2026-07-13 08:06:59.849797035 +0200
++++ b/setup.py	2026-07-13 08:12:53.729680498 +0200
+@@ -1231,9 +1231,16 @@
+ 
+ # Rust artifacts, built via setuptools-rust and installed into the package
+ # directory alongside the Python modules.
+-rust_extensions = rust_build.rust_extensions(
+-    optional=not should_require_rust_frontend()
+-)
++# openSUSE: the Rust frontend (~575 crates) cannot be built in the network-less
++# OBS build root without a vendored crate tree.  It is a runtime-optional,
++# lazily-imported accelerator (Rust tool parser / rust serve frontend), so it is
++# disabled here; the Python fallbacks remain fully functional.
++if os.getenv("VLLM_DISABLE_RUST_FRONTEND", "").strip().lower() in ("1", "true"):
++    rust_extensions = []
++else:
++    rust_extensions = rust_build.rust_extensions(
++        optional=not should_require_rust_frontend()
++    )
+ 
+ setup(
+     # static metadata should rather go in pyproject.toml

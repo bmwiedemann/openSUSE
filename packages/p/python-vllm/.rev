@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>82ae9ea1bec907ef478795047c3b1bd2</srcmd5>
+    <version>0.25.0</version>
+    <time>1784306870</time>
+    <user>dimstar_suse</user>
+    <comment>Fix runtime Requires to use canonical openSUSE package names (python-Pillow, python-PyYAML, python-mistral-common, python-prometheus-client) so the package is installable - addresses dimstar's staging report on sr#1365523. All deps verified present in Factory.</comment>
+    <requestid>1366231</requestid>
+  </revision>
+</revisionlist>
