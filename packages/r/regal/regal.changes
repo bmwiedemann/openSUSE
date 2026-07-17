@@ -1,4 +1,108 @@
 -------------------------------------------------------------------
+Fri Jul 17 05:16:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.42.0:
+  * Language Server
+    - Find References and Rename
+      This release brings initial support for finding references
+      and renaming symbols in the workspace. This first version is
+      limited to function arguments and some bindings, but we plan
+      to expand this in future releases.
+      Video see
+      https://github.com/open-policy-agent/regal/releases/tag/v0.42.0
+      References are checked across the whole workspace, and
+      renames work even when for example, a function is
+      incrementally defined in several different files.
+    - New future.keywords completion provider
+      The language server will now suggest future.keywords in
+      completions for import lines — notably the new import
+      future.keywords.not for now, with a few more to follow soon
+      in OPA.
+  * Debug Adapter
+    - Evaluate
+      Regal's debug adapter protocol (DAP) implementation now
+      supports evaluating variables and expressions inside of stack
+      frames in debugging sessions! This also allows setting up
+      watch expressions in clients like VS Code.
+      Video see
+      https://github.com/open-policy-agent/regal/releases/tag/v0.42.0
+      Make sure to download the latest version of the OPA VS Code
+      extension to try it out. More clients hopefully supported
+      soon!
+  * Various Improvements
+    - Add --aggregate flag to regal new rule command to create
+      aggregate rules. Thanks @mvanhorn!
+    - Allocate less memory while linting with this one simple trick
+    - Make common rule name provider provide suggestions for
+      default rules
+    - Make input.json completion provider provide suggestion for
+      imports
+    - Have boolean value completion provider provide suggestions in
+      many more locations
+    - Add inline docs to import provider
+    - Add label details to built-in function completion provider
+    - Bump OPA dependency to v1.18.2
+  * Bugs Fixed
+    - Override return type of object.subset while waiting for the
+      next OPA release to fix this. Thanks @mvanhorn!
+    - Fix wrong end location of reported for unresolved functions
+    - Fix wrong end location reported by rule-shadows-builtin
+  * Documentation
+    - Update defunct styra.com links to point to archived copies
+      until we find a better home for them
+    - Documentation added for how GitHub Copilot breaks
+      autocomplete in VS Code and a recommendation not to use it.
+  * Changelog
+    - 22365a3: docs: Document Copilot breaking language servers in
+      VS Code (#2021) (@anderseknert)
+    - b842742: docs: Archive some styra.com references (#2022)
+      (@charlieegan3)
+    - a2539ef: roast: adjust not test locations (#2023) (@srenatus)
+    - 81d6485: feat: add --aggregate flag to regal new rule (#341)
+      (#1966) (@mvanhorn)
+    - 75ce34c: lsp: first implementation of find references and
+      rename (#2029) (@anderseknert)
+    - efa9106: perf: remove a million allocations with this one
+      simple trick (#2024) (@anderseknert)
+    - c64b3a3: build(deps): bump the dependencies group with 3
+      updates (#2027) (@dependabot[bot])
+    - b3594a4: docs: Small updates to address some inconsistencies
+      (#2030) (@charlieegan3)
+    - dd92373: [lsp] Update find references and rename request to
+      support "some" variables (#2031) (@SeanLedford)
+    - a107bea: build(deps): bump markdown-it and markdownlint-cli
+      in /build (#2032) (@dependabot[bot])
+    - 656cb56: [feature] Extending find references variable support
+      (#2035) (@SeanLedford)
+    - c78887b: build(deps): bump the dependencies group across 1
+      directory with 4 updates (#2037) (@dependabot[bot])
+    - 4e5e4a2: build(deps): bump the dependencies group with 5
+      updates (#2043) (@dependabot[bot])
+    - 9b380f4: build(deps): bump golang.org/x/net from 0.53.0 to
+      0.55.0 in /build/lsp (#2041) (@dependabot[bot])
+    - ce12d08: OPA v1.18.2 (#2040) (@anderseknert)
+    - 4f5d1dc: fix: override object.subset return type to boolean
+      (#2048) (@mvanhorn)
+    - 75fd9d3: build(deps): bump golang.org/x/crypto from 0.50.0 to
+      0.52.0 in /build/ws (#2044) (@dependabot[bot])
+    - c2328a5: build(deps): bump the dependencies group with 4
+      updates (#2049) (@dependabot[bot])
+    - 758630a: Fix wrong end location of reported unresolved
+      functions (#2053) (@anderseknert)
+    - 9a74766: Fix wrong end location reported by
+      rule-shadows-builtin (#2054) (@anderseknert)
+    - 2bb3592: dap: Implement Evaluate feature (#2051)
+      (@anderseknert)
+    - 76ed1f0: Raise test timeout threshold to 3 seconds (#2058)
+      (@anderseknert)
+    - d7aaf8f: Use new inmem.NewFromASTObject to set up Regal store
+      (#2056) (@anderseknert)
+    - 98fc359: Add import future.keywords completion provider
+      (#2055) (@anderseknert)
+    - bcdaa1d: Various completion provider improvements (#2057)
+      (@anderseknert)
+
+-------------------------------------------------------------------
 Wed Jun  3 04:50:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.41.1:

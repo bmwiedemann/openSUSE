@@ -3,4 +3,6 @@
                 <param name="url">https://github.com/StyraInc/regal</param>
               <param name="changesrevision">92d1ba9bffa4eae59ae848714097e4125c82ff93</param></service><service name="tar_scm">
                 <param name="url">https://github.com/open-policy-agent/regal</param>
-              <param name="changesrevision">118f8d3203f54cf087f07ea41200ef4cc11653ff</param></service></servicedata>
+              <param name="changesrevision">118f8d3203f54cf087f07ea41200ef4cc11653ff</param></service><service name="tar_scm">
+                <param name="url">https://github.com/open-policy-agent/regal.git</param>
+              <param name="changesrevision">bcdaa1dd41259a0bf964e2b7c0938d28bc35db26</param></service></servicedata>
