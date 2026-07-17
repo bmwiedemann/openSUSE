@@ -103,7 +103,7 @@ Name:           blender-4.5
 Version:        4.5.11
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
-License:        GPL-2.0-or-later AND CC-BY-4.0
+License:        GPL-2.0-or-later AND CC-BY-4.0 AND Apache-2.0 WITH Trademark-Clause AND Apache-2.0
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # Please leave the source url intact
@@ -169,7 +169,7 @@ BuildRequires:  (pkgconfig(libavutil) >= 59.39.100  with pkgconfig(libavutil) < 
 BuildRequires:  (pkgconfig(libswresample) >= 5.3.100 with pkgconfig(libswresample) < 6.1.100)
 BuildRequires:  (pkgconfig(libswscale) >= 8.3.100    with pkgconfig(libswscale) < 9.1.100)
 BuildRequires:  cmake(TBB)
-BuildRequires:  cmake(Tiff)
+BuildRequires:  (cmake(tiff) or cmake(Tiff))
 BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(epoxy)

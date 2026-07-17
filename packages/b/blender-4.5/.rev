@@ -81,4 +81,20 @@
     <comment></comment>
     <requestid>1361852</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>8db38251017cda061496016fb6ed7536</srcmd5>
+    <version>4.5.11</version>
+    <time>1784126396</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365689</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>295cebfa41ba7f1452210d8fe8e94a92</srcmd5>
+    <version>4.5.11</version>
+    <time>1784306959</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366331</requestid>
+  </revision>
 </revisionlist>
