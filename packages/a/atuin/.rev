@@ -1580,4 +1580,23 @@
     + Document store purge workflow (#3544) (forwarded request 1365296 from develop7)</comment>
     <requestid>1365297</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>2ab0a1012956b1360b3c802ab4d4b156</srcmd5>
+    <version>18.17.1</version>
+    <time>1784307010</time>
+    <user>dimstar_suse</user>
+    <comment>- bump MSRV to 1.97
+- Update to version 18.17.1:
+  * chore(release): prepare for release 18.17.1 (#3621)
+  * fix: Default to non-Hub mode for custom AI endpoints (#3620)
+  * chore(deps): bump lukemathwalker/cargo-chef from latest-rust-1.96.1-slim-bookworm to latest-rust-1.97.0-slim-bookworm (#3615)
+  * chore: update to rust 1.97 (#3617)
+  * fix: Various prefix mode bugs (#3616)
+  * chore(logging): remove the `log` crate in favor of `tracing` (#3608)
+  * feat(tui): truncate long commands from middle to show start...end (#3602)
+  * fix(import): fix import order of nushell history entries (#3598)
+  * fix(import): fix order of entries imported from zsh history (#3597)
+  * docs: document output capture and mcp (#3595) (forwarded request 1366402 from develop7)</comment>
+    <requestid>1366403</requestid>
+  </revision>
 </revisionlist>
