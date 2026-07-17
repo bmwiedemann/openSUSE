@@ -25,6 +25,7 @@ Version:        1.3.24
 Release:        0
 Summary:        Windows "Registry Hive" extraction library
 License:        GPL-2.0-only AND LGPL-2.1-only
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            http://libguestfs.org/hivex.3.html
 Source:         http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz
 Source2:        http://libguestfs.org/download/hivex/%{name}-%{version}.tar.gz.sig

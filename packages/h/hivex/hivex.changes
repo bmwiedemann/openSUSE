@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
+
+- Remove 32bit architectures
+
+-------------------------------------------------------------------
 Thu Jul  2 10:26:17 MDT 2026 - carnold@suse.com
 
 - Add BuildRequires for python3-base
