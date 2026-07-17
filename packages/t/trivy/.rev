@@ -1642,4 +1642,14 @@ dropped patch file
   * feat(dotnet): detect bundled runtime in self-contained deployments (#10786)</comment>
     <requestid>1363713</requestid>
   </revision>
+  <revision rev="97" vrev="2">
+    <srcmd5>1bb2dbc6898b17360b813682d65f829c</srcmd5>
+    <version>0.72.0</version>
+    <time>1784307015</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/net to 0.57.0 (bsc#1266495, CVE-2026-39821)
+- update x/text to 0.40.0 (bsc#1271661, CVE-2026-56852)
+- update oras-go to 2.6.1 (bsc#1271658, CVE-2026-50151)</comment>
+    <requestid>1366418</requestid>
+  </revision>
 </revisionlist>
