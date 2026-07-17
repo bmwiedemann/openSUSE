@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:01:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.0.39:
+  * Add SQLModel Agent Library Skill, install with uvx library-skills
+  * Fix type of __sqlmodel_relationships__
+
+-------------------------------------------------------------------
 Sat Apr 25 21:40:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.0.38:

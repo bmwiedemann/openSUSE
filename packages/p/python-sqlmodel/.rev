@@ -97,4 +97,14 @@
   * Fix small typos in the documentation. PR #1641</comment>
     <requestid>1349299</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>da0a7b250d2c3a853022609e5355b852</srcmd5>
+    <version>0.0.39</version>
+    <time>1784306867</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.0.39:
+  * Add SQLModel Agent Library Skill, install with uvx library-skills
+  * Fix type of __sqlmodel_relationships__</comment>
+    <requestid>1366376</requestid>
+  </revision>
 </revisionlist>
