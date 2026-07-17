@@ -1,7 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:24:19 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Fix test failure
+
+-------------------------------------------------------------------
 Sat Jun 20 17:53:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 3.4.0:
+- update to 3.4.0 (bsc#1271593, GHSA-r3hx-x5rh-p9vv):
   * Remove obsolete ElasticSearch2 support and tests
   * Add Django v5.1 to the testing
   * GitHub Actions: Add Python 3.13 to the testing

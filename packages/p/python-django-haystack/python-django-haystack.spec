@@ -38,6 +38,7 @@ Suggests:       python-Whoosh >= 2.5.4
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Django >= 2.2}
+BuildRequires:  %{python_module GDAL}
 BuildRequires:  %{python_module Whoosh >= 2.5.4}
 BuildRequires:  %{python_module elasticsearch}
 BuildRequires:  %{python_module geopy >= 2.0.0}
@@ -46,7 +47,7 @@ BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module requests}
-BuildRequires:  python3-GDAL
+BuildRequires:  compatlibopenblas_serial0
 # /SECTION
 %python_subpackages
 
