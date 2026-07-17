@@ -1,10 +1,140 @@
 -------------------------------------------------------------------
+Thu Jul 16 10:52:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.4.0:
+  * Breaking: Remove the historical from click_extra.version import
+    prebake_* compatibility imports; the pre-baking helpers are
+    only importable from click_extra.prebake.
+  * Breaking: Remove the leaked annotations and warnings entries
+    from the package's public API: both were star-import artifacts,
+    not Click, Cloup or Click Extra API.
+  * Breaking: Move args_cleanup, format_cli_prompt, PROMPT and
+    INDENT from click_extra.testing to click_extra.execution; all
+    but PROMPT stay importable from their historical home.
+  * Breaking: Remove the dead CarapaceCompletion.is_empty() method
+    and the deprecated alert parser's current_depth().
+  * Add a --tree flag to the default option set: it prints the
+    whole hierarchy of nested subcommands as a tree (names,
+    aliases, operand metavars and one-line descriptions), then
+    exits. The new click_extra.tree module exposes
+    render_command_tree(), TreeOption and @tree_option.
+  * Add a --tree mode to click-extra wrap: prints the subcommand
+    tree of any foreign Click CLI without running it, with the same
+    target resolution as --show-params and --man.
+  * Help screens and the --tree view now style subcommand aliases
+    with the alias theme slot and their parenthetical punctuation
+    with alias_secondary; aliases used to take the subcommand slot
+    and the punctuation stayed plain.
+  * Table formats able to express styles natively (html,
+    unsafehtml, mediawiki, textile, jira and the four latex*
+    variants) now translate the ANSI codes carried by cells and
+    headers to the format's own styling markup instead of stripping
+    them.
+  * An explicit --color no longer injects raw ANSI codes into the
+    markup formats supporting native styling; the raw passthrough
+    escape hatch remains for the formats without.
+  * Add split_ansi() and render_ansi() plus the ansi_to_html(),
+    ansi_to_jira(), ansi_to_latex() and ansi_to_textile()
+    converters to click_extra.styling.
+  * Add run_cli(args) to click_extra.execution: a subprocess.run
+    work-alike that logs the invocation as a copy-pasteable prompt
+    line and streams the child's output to the logger as it is
+    produced; a per-call label tags each streamed record.
+  * format_cli_prompt now styles each token family with the theme
+    slot it holds elsewhere in a CLI's output; the binary-path
+    renderer behind it is public as highlight_bin_name(program).
+  * Add the Duration parameter type to click_extra.types: parses a
+    friendly duration (7 days, 12h), an ISO 8601 duration (P7D) or
+    an RFC 3339 timestamp into a datetime.timedelta; zero, empty
+    and future values parse to None.
+  * One --sort-by can now serve subcommands rendering heterogeneous
+    tables: SortByOption accepts bare column IDs resolved per
+    table, print_table() and render_table() headers accept
+    ColumnSpec instances and (label, column_id) pairs, and
+    column_sort_key() is public. An explicit default=() declares no
+    default sort.
+  * Add the isolated_app_dir fixture to click_extra.pytest:
+    repoints click.get_app_dir-based configuration discovery at a
+    fresh per-test directory, so in-process CLI invocations never
+    read the host's real configuration folder.
+  * Add install_interrupt_handler(ctx) and
+    terminate_live_processes() to click_extra.execution: the first
+    Ctrl+C now SIGTERMs every subprocess spawned through run_cli.
+  * Log records emitted while a Spinner animates on the same stream
+    are now printed through Spinner.echo(), on their own line above
+    the animation, instead of garbling the in-progress frame. Adds
+    active_spinner() to click_extra.spinner.
+  * Add temporary_env() to click_extra.envvar: a context manager
+    applying environment variable changes for the duration of a
+    block, then restoring every touched variable.
+  * Expose generator_tag() in click_extra.parameters: the
+    provenance tag stamped into generated man pages and Carapace
+    completion specs.
+  * Unify the palettes materializing the 16 ANSI colors as concrete
+    RGB: Style CSS output, contrast math and the first 16 slots of
+    the indexed palette now share the palette the documentation
+    renders terminal sessions with.
+  * select_row accepts any Mapping, not just dict, so read-only row
+    shapes project without a copy.
+  * test-suite now runs its target binaries through run_cli: each
+    invocation is disclosed as a themed prompt line and its output
+    streams live to DEBUG logs.
+  * print_table() now honors a --color forced on a parent group:
+    the raw-ANSI escape hatch used to be ignored when the color
+    option was not declared on the very command printing the table.
+  * --color/--no-color now reach output produced from background
+    threads: StreamHandler consults the process-wide
+    invocation_color() instead of click.echo's thread-local context
+    lookup.
+  * Formatter no longer mutates a record's levelname in place: a
+    record formatted several times no longer accumulates styling or
+    glued labels.
+  * Style.from_ansi() now parses the parameter-less reset escape
+    (\x1b[m) and ignores all selective reset codes (22-29, 39, 49,
+    55), not just the full 0 reset.
+  * ConfigOption.excluded_params now resolves the CLI's --help
+    option ID from Click at runtime instead of assuming it is named
+    help; the option keeps being excluded from configuration files
+    if Click ever renames it.
+  * ExtraOption.handle_parse_result now pre-records the parameter
+    source of every option, not just eager ones, so non-eager
+    callbacks and types keep introspecting their provenance on
+    Click 8.4.0.
+  * The --jobs sequential-execution warning now fires only for an
+    explicit auto/max request; the option's own default logs it at
+    info level.
+  * test-suite no longer crashes on non-UTF-8 binary output:
+    undecodable bytes are escaped into the captured stream, and the
+    subprocess inherits PYTHONIOENCODING=utf8.
+  * A test-suite case skipped by only_platforms now reports the
+    platforms it requires; the message used to name the current
+    platform.
+  * regex_fullmatch_line_by_line now reports a regular line
+    mismatch instead of crashing with an IndexError when the regex
+    and the checked content do not have the same number of lines.
+  * Add a binaries page to the documentation: a searchable,
+    sortable catalog of every released standalone executable with
+    download links, VirusTotal analyses and a detection trend
+    chart.
+  * Coverage now uploads to Codecov from one runner per OS and
+    Python version, on released Click and Cloup only; the Test
+    Analytics upload and its junit.xml artifact are dropped.
+
+-------------------------------------------------------------------
 Wed Jul  8 08:47:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.3.0:
-Add a click:config Sphinx directive documenting a CLI's config_schema: a summary table plus one section per option, with docstring, type, default, and a TOML example. Adds schema_field_infos(), field_docstrings() and SchemaFieldInfo to the public API.
-Disable mouse zoom on the class inheritance diagrams of the documentation's API sections, so they no longer hijack page scrolling; the fullscreen viewer keeps zoom.
-Add tests covering 256-color palette index 0 and empty-string colors in Style, gated on runtime probes of Click 8.5.0's color validation.
+  * Add a click:config Sphinx directive documenting a CLI's
+    config_schema: a summary table plus one section per option, with
+    docstring, type, default, and a TOML example. Adds
+    schema_field_infos(), field_docstrings() and SchemaFieldInfo to
+    the public API.
+  * Disable mouse zoom on the class inheritance diagrams of the
+    documentation's API sections, so they no longer hijack page
+    scrolling; the fullscreen viewer keeps zoom.
+  * Add tests covering 256-color palette index 0 and empty-string
+    colors in Style, gated on runtime probes of Click 8.5.0's color
+    validation.
 
 -------------------------------------------------------------------
 Thu Jul  2 05:49:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
