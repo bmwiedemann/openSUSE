@@ -167,4 +167,12 @@
     <comment>- Update to release 2.2.7</comment>
     <requestid>1364929</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>c6cdaef5adce2019ec10418aa5f866a7</srcmd5>
+    <version>2.3.0</version>
+    <time>1784313501</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.3.0</comment>
+    <requestid>1366445</requestid>
+  </revision>
 </revisionlist>

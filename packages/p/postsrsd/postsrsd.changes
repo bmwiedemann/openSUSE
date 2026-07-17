@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 17:09:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * Improved diagnostics for errors in the worker process,
+    especially if the worker process is killed due to a seccomp
+    violation.
+
+-------------------------------------------------------------------
 Fri Jul 10 12:10:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.7
