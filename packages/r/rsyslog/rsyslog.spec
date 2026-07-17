@@ -566,6 +566,30 @@ package.
 This module provides an output module for TCL.
 %endif
 
+%package devel
+Requires:       glibc-devel
+Requires:       krb5-devel
+Requires:       libbrotli-devel
+Requires:       libestr-devel
+Requires:       libfastjson-devel
+Requires:       libgcrypt-devel
+Requires:       liblognorm-devel
+Requires:       libmariadb-devel
+Requires:       libnet-devel
+Requires:       libnl3-devel
+Requires:       librelp-devel
+Requires:       libzstd-devel
+Requires:       linux-glibc-devel
+Requires:       net-snmp-devel
+Requires:       postgresql18-devel-mini
+Requires:       zlib-devel
+Summary:        Development files for rsyslog
+Group:          System/Daemons
+
+%description devel
+The rsyslog-devel package includes header files, libraries necessary for
+developing the rsyslog logging daemon.
+
 %prep
 %autosetup -p1 -a 14
 #
@@ -831,6 +855,9 @@ install -m0600 %{SOURCE19} %{buildroot}%{_sysconfdir}/rsyslog.d/
 %if %{with udpspoof}
   install -m0640 %{SOURCE9} %{buildroot}%{APPARMOR_PROFILE_PATH}/rsyslog.d/
 %endif
+
+mkdir -p %{buildroot}%{_includedir}/rsyslog
+find %{_builddir} -type f -name '*.h' -exec install -m644 '{}' %{buildroot}%{_includedir}/rsyslog \;
 
 %define post_for_mark_daemon_restart() \
 %if 0%{?suse_version} < 1600 \
@@ -1231,5 +1258,8 @@ fi
 %defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omtcl.so*
 %endif
+
+%files devel
+%{_includedir}/rsyslog
 
 %changelog

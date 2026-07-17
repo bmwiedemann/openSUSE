@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:48:23 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- added a devel subpackage, with requires (jsc#PED-16301)
+
+-------------------------------------------------------------------
 Mon Jan 19 15:10:35 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - switch to tmpfiles based file creation in specfile (jsc#PED-14852)
