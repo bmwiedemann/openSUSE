@@ -349,7 +349,6 @@ unsorted:
   - Vc-devel-doc 
   - Vc-devel-static 
   - VecCore-devel 
-  - ViTables 
   - VirtualGL 
   - VirtualGL-devel 
   - WPEWebDriver 
@@ -1119,7 +1118,7 @@ unsorted:
   - audaspace-plugin-openal 
   - audaspace-plugin-pipewire 
   - audaspace-plugin-pulse 
-  - audaspace-plugin-sdl2 
+  - audaspace-plugin-sdl3 
   - audaspace-plugin-sndfile 
   - audex 
   - audex-lang 
@@ -1521,6 +1520,9 @@ unsorted:
   - blender-5.1 
   - blender-5.1-demo 
   - blender-5.1-lang 
+  - blender-5.2 
+  - blender-5.2-demo 
+  - blender-5.2-lang 
   - blender-demo 
   - blender-lang 
   - blender-lts 
@@ -11713,7 +11715,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2026_2-32bit 
+  - libSPIRV-Tools-2026_3_rc1-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -12213,9 +12215,9 @@ unsorted:
   - libattr1-32bit 
   - libaubio-devel 
   - libaubio5 
-  - libaudaspace-c1_9 
-  - libaudaspace-py1_9 
-  - libaudaspace1_9 
+  - libaudaspace-c1_10 
+  - libaudaspace-py1_10 
+  - libaudaspace1_10 
   - libaudcore6 
   - libaudgui7 
   - libaudiofile1 
@@ -14810,6 +14812,7 @@ unsorted:
   - libmemcachedutil2 
   - libmemkind0 
   - libmenu-cache3 
+  - libmeshoptimizer-1_2 
   - libmetacity3 
   - libmetaio1 
   - libmetal-devel 
@@ -16813,7 +16816,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent46 
+  - libtorrent48 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -18954,6 +18957,8 @@ unsorted:
   - mesheryctl-fish-completion 
   - mesheryctl-zsh-completion 
   - meshlab 
+  - meshoptimizer 
+  - meshoptimizer-devel 
   - meslo-lg-dz-fonts 
   - meslo-lg-fonts 
   - meson 
@@ -24357,7 +24362,6 @@ unsorted:
   - python311-32bit 
   - python311-CSXCAD 
   - python311-Fiona 
-  - python311-Flask-Versioned 
   - python311-argcomplete 
   - python311-base 
   - python311-base-32bit 
@@ -24397,7 +24401,6 @@ unsorted:
   - python311-pluggy 
   - python311-pymathics-graph 
   - python311-pysaml2 
-  - python311-pytest-mypy-plugins 
   - python311-pytest-mypy-testing 
   - python311-python-subunit 
   - python311-setuptools 
@@ -28253,6 +28256,7 @@ unsorted:
   - python313-visitor 
   - python313-vistir 
   - python313-visvis 
+  - python313-vllm 
   - python313-vncdotool 
   - python313-vobject 
   - python313-volatile 
@@ -33635,6 +33639,7 @@ unsorted:
   - rsvg-convert 
   - rsvndump 
   - rsvndump-lang 
+  - rsyslog-devel 
   - rsyslog-diag-tools 
   - rsyslog-doc 
   - rsyslog-module-elasticsearch 
@@ -34497,6 +34502,7 @@ unsorted:
   - sisu-plexus 
   - sisu-plexus-extender 
   - sitar 
+  - sixteen-fonts 
   - skaffold 
   - skaffold-bash-completion 
   - skaffold-fish-completion 
@@ -46254,6 +46260,7 @@ unsorted:
   - unknown-horizons-lang 
   - unmass 
   - unoconv 
+  - unordered_dense-devel 
   - unpack-install-jammer 
   - unpaper 
   - unshield 
