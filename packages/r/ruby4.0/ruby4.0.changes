@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Jul 15 01:13:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.6
+  - Bug #22070: Thread.each_caller_location(1, 1) segfaults when
+    called from a cfunc
+  - Bug #22075: heap-use-after-free in rb_vm_ci_lookup under
+    parallel Ractors
+  - Bug #22076: defined? returns nil for protected methods defined
+    in a module even when callable
+  - Bug #22072: [BUG] should have cvar cache entry
+  - Bug #22074: YJIT misaligns locals when there are > 256 local
+    variables
+  - Bug #22064: GC compaction breaks compare-by-identity sets
+  - Bug #22084: invokesuper from define_method in Ractor can call
+    wrong super method or crash
+  - Bug #22092: Array#sum takes slow path, does not perform
+    compensated summation of Float elements when init argument is a
+    Float
+  - Bug #14635: Float#round(n) returns a wrong result when n is big
+  - Bug #22079: Float#ceil gives incorrect result
+  - Bug #22096: Freeing a mutex locked by a fiber inside fiber
+    scheduler can crash
+  - Bug #21996: Crash when modifying instance variables during
+    inspect or Marshal dump
+  - Bug #22101: ASAN heap-use-after-free in rb_data_free after
+    TypedData dfree frees dynamic rb_data_type_t
+  - Bug #22103: Constant-folded /o regexp crashes with dupstring of
+    a Regexp
+  - Bug #21991: $! stays as the first exception in Ruby Box
+  - Feature #21881: Split the root box into the (newer) root box
+    and the master of copied user boxes
+  - Bug #22120: Segfault caused by ar_find_entry_hint() not
+    checking for conversion to st_table
+  - Bug #22129: error_highlight raises NotImplementedError for
+    ArgumentErrors that get wrapped
+  - Bug #21864: Inconsistencies in type coercion error messages for
+    integers
+  - Bug #21882: IO::Buffer#locked leaves the buffer locked when the
+    block raises
+  - Bug #22127: parse.y regexp crash on invalid encoding
+  - Bug #22126: Stack underflow for partial DCE and loops
+  - Bug #22124: void value missed in parse.y
+  - Bug #22104: Segfault in PRISM while Bootsnap compiles aws-sdk
+    client_api.rb
+  - Bug #21685: Unnecessary context-switching, especially bad on
+    multi-core machines.
+  - Bug #22099: Keyword-only method silently accepts a positional
+    argument
+  - Bug #22183: parse.y interpolation inside lambda literal
+  - Bug #22181: SEGV in branch peephole optimization due to
+    label/insn struct aliasing
+  - Bug #22133: Ruby's default SIGINT handling ignores
+    Thread.handle_interrupt masking.
+  - Bug #22189: Enumerator::Lazy#to_enum does not accept method
+    names as strings
+  - Bug #22191: Signal.trap(:EXIT) exception only shown if at_exit
+    also raises
+
+-------------------------------------------------------------------
 Wed May 20 09:47:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.5 (boo#1265890 boo#1265891)
