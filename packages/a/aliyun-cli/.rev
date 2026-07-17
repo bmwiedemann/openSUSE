@@ -268,4 +268,36 @@
     by @LCLSpring in (#1364) (forwarded request 1364725 from glaubitz)</comment>
     <requestid>1365365</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>22706d58891482b62bdd4bd506d82da9</srcmd5>
+    <version>3.4.8</version>
+    <time>1784306995</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.8
+  * fix(test): mock plugin index for offline-stable Windows CI by @yndu13 in (#1379)
+  * fix: correct waiter timeout/interval range validation by @yndu13 in (#1382)
+  * feat(openapi): add --cli-dry-run flag for built-in PascalCase commands
+    by @CodeSpaceiiii in (#1383)
+  * fix: persist configure read-timeout as read_timeout by @yndu13 in (#1384)
+  * fix: ignore empty --mode so env credentials still apply by @yndu13 in (#1386)
+  * feat: add mseutil command to aliyun CLI by @yndu13 in (#1381)
+  * fix(oss): honor profile endpoint and endpoint-type vpc by @yndu13 in (#1385)
+  * fix: correct import order in openapi/library_test.go by @CodeSpaceiiii
+    with @Copilot in (#1388)
+  * Fix invisible API parameter names in help output (bold-black on dark terminals)
+    by @mvanhorn in (#1362)
+  * feat: integrate flow-cli into Aliyun CLI by @yndu13 in (#1380)
+  * fix(esacli): harden exec override and shorthand flags by @yndu13 in (#1389)
+- from version 3.4.7
+  * {plugin} Add alias support for plugin by @AllyW in (#1376)
+  * feat(mock): add response_body_size for controllable mock stdout size
+    by @yndu13 in (#1378)
+  * fix(plugin): prevent bulk update plugin pointer aliasing by @yndu13 in (#1377)
+- from version 3.4.6
+  * feat(openapi): add --estimate-cost-context to pass PricingContext to quotes
+    by @LCLSpring in (#1373)
+  * feat(mock): add delay_ms field to simulate command execution latency
+    by @yndu13 in (#1375) (forwarded request 1366357 from glaubitz)</comment>
+    <requestid>1366384</requestid>
+  </revision>
 </revisionlist>
