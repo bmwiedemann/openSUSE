@@ -1,7 +1,7 @@
 #
 # spec file for package libyui
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 
 %define         so_version 16
@@ -47,7 +47,6 @@ Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - GUI abstraction library
 
@@ -67,7 +66,6 @@ Originally developed for YaST, it can also be used independently of
 YaST for generic (C++) applications. This package has very few
 dependencies.
 
-
 %package devel
 Summary:        Libyui header files and examples
 
@@ -83,7 +81,6 @@ applications based on libyui, the user interface engine that provides
 the abstraction from graphical user interfaces (Qt, Gtk) and text
 based user interfaces (ncurses).
 
-
 %prep
 %setup -q -n %{name}-%{version}
 
@@ -94,10 +91,6 @@ cd build
 
 export CFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
 export CXXFLAGS="$RPM_OPT_FLAGS -DNDEBUG $(getconf LFS_CFLAGS)"
-# avoid -std=gny++20 default
-if test `rpm -q --queryformat "%%{version}" gcc` -ge 16; then
-  export CXXFLAGS="$CXXFLAGS -std=gnu++17"
-fi
 
 %if %{?_with_debug:1}%{!?_with_debug:0}
 CMAKE_OPTS="-DCMAKE_BUILD_TYPE=RELWITHDEBINFO"

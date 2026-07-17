@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-rest-api
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui-rest-api
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 
 %define         so_version 16
@@ -43,7 +43,6 @@ This package provides a libyui REST API plugin.
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API, it is designed for automated tests.
 
-
 %package -n %{bin_name}
 Summary:        Libyui - REST API plugin, the shared part
 Requires:       libyui%{so_version}
@@ -55,7 +54,6 @@ This package provides a libyui REST API plugin.
 
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API, it is designed for automated tests.
-
 
 %package devel
 Summary:        Libyui - REST API header files
@@ -72,7 +70,6 @@ Requires:       libyui-devel >= %{version}
 This package provides a libyui REST API plugin.
 
 This is a development subpackage.
-
 
 %prep
 %setup -q -n libyui-%{version}

@@ -1,7 +1,7 @@
 #
 # spec file for package libyui-qt-rest-api
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           libyui-qt-rest-api
 
 # DO NOT manually bump the version here; instead, use rake version:bump
-Version:        4.7.6
+Version:        4.7.7
 Release:        0
 
 %define         so_version 16
@@ -45,7 +45,7 @@ URL:            http://github.com/libyui/
 Source:         libyui-%{version}.tar.bz2
 
 %if 0%{?suse_version} == 1600 && ! 0%{?is_openSUSE}
-ExclusiveArch: donotbuild
+ExclusiveArch:  donotbuild
 %endif
 
 %description
@@ -53,7 +53,6 @@ This package provides a libyui REST API plugin for the Qt frontend.
 
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API. This is designed for automated tests.
-
 
 %package -n %{bin_name}
 Summary:        Libyui - The REST API plugin for the Qt frontend
@@ -71,7 +70,6 @@ This package provides a libyui REST API plugin for the Qt frontend.
 It allows inspecting and controlling the UI remotely via
 an HTTP REST API. This is designed for automated tests.
 
-
 %package devel
 Summary:        Libyui - Header files for the Qt REST API plugin
 
@@ -88,7 +86,6 @@ This package contains the header files for the plugin.
 
 This is not needed for using the REST API, only for developing
 extensions for it.
-
 
 %prep
 %setup -q -n libyui-%{version}

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:45:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against GCC 16 (boo#1243674#c5, boo#1256972):
+  + ncurses: Fix wchar_t stream insertion
+  + Qt: Fix deprecated enum conversion in YQWizard
+  + ncurses-pkg: remove unused-but-set variable 'idx'
+  + ncurses-pkg: Replace deprecated SolvAttr provides and requires
+  + qt-pkg: remove unused-but-set variables
+- 4.7.7
+
+-------------------------------------------------------------------
+Thu Jul 16 07:00:00 UTC 2026 - Martin Vidner <mvidner@suse.com>
+
+- Remove the -std=gnu++17 workaround in favor of the upcoming
+  clean fix (boo#1256972)
+
+-------------------------------------------------------------------
 Wed Apr 15 11:42:28 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Force -std=gnu++17 to avoid build breakage with the default of
