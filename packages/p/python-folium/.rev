@@ -158,4 +158,41 @@
     <comment>- switch to modern python on sle15</comment>
     <requestid>1252475</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a7153195b41d58597f15177e1dca68de</srcmd5>
+    <version>0.20.0</version>
+    <time>1784306951</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.20.0:
+  * docs: Update switcher.json for v0.19.7
+  * Add leaflet_method decorator
+  * Update README to point to a new plugin
+  * Bump actions/setup-python from 4 to 5 in the github-actions
+    group
+  * Coverage testing
+  * Issue 1359
+  * **Full Changelog**: https://github.com/python-
+    visualization/folium/compare/v0.19.7...v0.20.0
+- update to 0.19.7:
+  * docs: Update switcher.json for v0.19.6
+  * [pre-commit.ci] pre-commit autoupdate
+  * Fix or mitigate https://github.com/python-
+    visualization/folium/issues…
+- update to 0.19.6:
+  * Fix numeric keys for dict inputs in tojavascript
+  * Docs: explain which layer kinds are base layer / overlay by
+    default
+  * Docs: update switcher.json for v0.19.5 manually
+  * Docs: User guide LayerControl example doesn't work
+  * Docs: `utilities.image_to_url()` `'image'` and related
+    docstrings
+  * Docs: add entry on Search plugin with FeatureGroup
+  * Docs: update ImageOverlay with local file example
+  * CI: run Geopandas tests
+  * Fix Mypy
+  * Cleanup MacroElements
+  * CI: Run streamlit-folium tests as part of our CI
+  * Issue 2125: Fix broken selenium tests</comment>
+    <requestid>1366322</requestid>
+  </revision>
 </revisionlist>

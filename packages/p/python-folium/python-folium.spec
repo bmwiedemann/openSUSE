@@ -1,7 +1,7 @@
 #
 # spec file for package python-folium
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,7 +27,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-folium%{psuffix}
-Version:        0.19.4
+Version:        0.20.0
 Release:        0
 Summary:        Make beautiful maps with Leafletjs and Python
 License:        MIT
@@ -49,6 +49,7 @@ BuildRequires:  %{python_module folium = %{version}}
 BuildRequires:  %{python_module geopandas}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pixelmatch}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module xyzservices}
@@ -87,7 +88,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %check
 %if %{with test}
 # no working chromedriver for selenium
-ignoretests="--ignore tests/selenium"
+ignoretests="--ignore tests/selenium --ignore tests/snapshots/test_snapshots.py"
 # requires network access
 donttest="test_json_request or test_timedynamic_geo_json"
 # also uses selenium

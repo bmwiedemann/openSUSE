@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Sat Mar 21 14:24:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * docs: Update switcher.json for v0.19.7
+  * Add leaflet_method decorator
+  * Update README to point to a new plugin
+  * Bump actions/setup-python from 4 to 5 in the github-actions
+    group
+  * Coverage testing
+  * Issue 1359
+  * **Full Changelog**: https://github.com/python-
+    visualization/folium/compare/v0.19.7...v0.20.0
+- update to 0.19.7:
+  * docs: Update switcher.json for v0.19.6
+  * [pre-commit.ci] pre-commit autoupdate
+  * Fix or mitigate https://github.com/python-
+    visualization/folium/issues…
+- update to 0.19.6:
+  * Fix numeric keys for dict inputs in tojavascript
+  * Docs: explain which layer kinds are base layer / overlay by
+    default
+  * Docs: update switcher.json for v0.19.5 manually
+  * Docs: User guide LayerControl example doesn't work
+  * Docs: `utilities.image_to_url()` `'image'` and related
+    docstrings
+  * Docs: add entry on Search plugin with FeatureGroup
+  * Docs: update ImageOverlay with local file example
+  * CI: run Geopandas tests
+  * Fix Mypy
+  * Cleanup MacroElements
+  * CI: Run streamlit-folium tests as part of our CI
+  * Issue 2125: Fix broken selenium tests
+  * CI: Add a scheduled trigger to the workflow
+  * Issue 2138: Fix awesome markers
+  * CI: Install geopandas and dependencies using Conda to fix a
+    build error
+  * Make DivIcon and CustomIcon work with the new Marker approach
+  * Make DivIcon and CustomIcon work with the new Marker approach
+  * Issue 1877: Fix `_to_png` when using `fit_bounds`
+  * Add the GeoMan plugin
+  * Issue 1989: Convert null values to empty strings in popup and
+    tooltip
+  * Issue 1770: Add on_each_feature handler to GeoJson
+  * Allow users to add new Control classes without implementing a
+    plugin
+  * Fix add_child on Marker not returning self
+  * CI: Add snapshot tests
+- update to 0.19.5:
+  * Fix icon when passing Marker to GeoJson
+  * **Full Changelog**: https://github.com/python-
+    visualization/folium/compare/v0.19.4...v0.19.5
+
+-------------------------------------------------------------------
 Wed Mar 12 13:36:31 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - switch to modern python on sle15
