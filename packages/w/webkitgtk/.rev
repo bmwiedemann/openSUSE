@@ -66,4 +66,18 @@
   malloc is enabled.</comment>
     <requestid>1357670</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>8f11519e7ef8fd13a2190bd9eb352f6d</srcmd5>
+    <version>2.52.5</version>
+    <time>1784306829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.52.5:
+  + Fire scrollend event for instant programmatic scrolls.
+  + Increase network idle connection timeout to 115 seconds.
+  + Add User-Agent quirk for HBO Max.
+  + Fix the build with system malloc.
+  + Fix several crashes and rendering issues.
+- Drop webkitgtk-ppc64le-build-fix.patch: Applied upstream.</comment>
+    <requestid>1366019</requestid>
+  </revision>
 </revisionlist>
