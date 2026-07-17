@@ -2,7 +2,7 @@
 # spec file for package ispc
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2020-2023 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2020-2026 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,13 @@
 #
 
 
-%global min_llvm_version 16
-%global max_llvm_version 21.9
 %define libname libispcrt1
+
+%define minimum_llvm_version 20
+
+#if 0%{?suse_version} < 1699
+#define force_llvm_version 21
+#endif
 
 # LLVM is build with OpenMP support only on 64bit archs and x86
 %ifarch aarch64 ppc64 ppc64le %{ix86} x86_64
@@ -29,7 +33,7 @@
 %endif
 
 Name:           ispc
-Version:        1.30.0
+Version:        1.31.0
 Release:        0
 Summary:        C-based SPMD programming language compiler
 License:        BSD-3-Clause
@@ -38,19 +42,13 @@ URL:            https://ispc.github.io/
 Source0:        https://github.com/%{name}/%{name}/archive/v%{version}/v-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        series
 Patch1:         skip-tests.patch
-#!BuildIgnore:  clang15
 BuildRequires:  bison
+BuildRequires:  clang%{?force_llvm_version}-devel >= %{minimum_llvm_version}
 BuildRequires:  cmake >= 3.13
 BuildRequires:  flex
-%if %{suse_version} < 1550
-# Leap/SLE 15 does not understand boolean requires
-BuildRequires:  cmake(Clang) >= 19
-#!BuildConflicts: cmake(Clang) >= 20
-%endif
-BuildRequires:  (cmake(Clang) >= %{min_llvm_version} with cmake(Clang) =< %{max_llvm_version})
-BuildRequires:  (cmake(LLVM)  >= %{min_llvm_version} with cmake(LLVM)  =< %{max_llvm_version})
+BuildRequires:  llvm%{?force_llvm_version}-devel >= %{minimum_llvm_version}
 %if %{with openmp_task_model}
-BuildRequires:  (libomp-devel-provider >= %{min_llvm_version} with libomp-devel-provider  =< %{max_llvm_version})
+BuildRequires:  libomp%{?force_llvm_version}-devel >= %{minimum_llvm_version}
 %else
 BuildRequires:  tbb-devel
 %endif
@@ -101,9 +99,21 @@ sed -i 's|set(CLANG_LIBRARY_LIST .*)|set(CLANG_LIBRARY_LIST clang-cpp)|' CMakeLi
 sed -i -e '/build_ispcrt(STATIC/ s@.*@#\0@' ispcrt/CMakeLists.txt
 
 %build
+%if 0%{?force_llvm_version}
+perl -p -i -e "s:'clang':'clang-%{force_llvm_version}':g; s:'clang++':'clang++-%{force_llvm_version}':g" tests/lit-tests/lit.cfg
+perl -p -i -e "s:llvm-dis:llvm-dis-%{force_llvm_version}:g" tests/lit-tests/avx10.2dmr-x8.ispc
+%endif
+
 %define _lto_cflags "-flto=thin"
 echo "optflags: %{optflags}"
 %cmake \
+%if 0%{?force_llvm_version}
+        -DCLANG_EXECUTABLE:STRING="clang-%{force_llvm_version}" \
+        -DCLANGPP_EXECUTABLE:STRING="clang++-%{force_llvm_version}" \
+        -DLLVM_AS_EXECUTABLE:STRING="llvm-as-%{force_llvm_version}" \
+        -DCMAKE_C_COMPILER:STRING="clang-%{force_llvm_version}" \
+        -DCMAKE_CXX_COMPILER:STRING="clang++-%{force_llvm_version}" \
+%endif
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
         -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIE" \

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 16 21:23:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Prepare for building with locked llvm/clang versions similar to
+  the force gcc version
+
+  https://nordisch.org/posts/rpm-spec-files-conditionals-and-forcing/
+
+-------------------------------------------------------------------
+Wed Jul 15 09:13:15 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Update to 1.31.0
+  https://github.com/ispc/ispc/releases/tag/v1.31.0
+
+-------------------------------------------------------------------
+Tue Jul 14 07:50:58 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Fix llvm 22 update fallout: we now rely on the default llvm/clang 
+  builds to be operational
+- Adjust skip-tests.patch to not XFAIL tests, that succeed now with 
+  llvm 22
+
+-------------------------------------------------------------------
 Tue Jun  2 21:30:47 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.30.0

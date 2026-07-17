@@ -139,4 +139,26 @@ Now as full llvm build using thin lto, thanks to Ismail.
     <comment></comment>
     <requestid>1356958</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>3973655f2a08490dcaeac269231175b8</srcmd5>
+    <version>1.31.0</version>
+    <time>1784126277</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.31.0
+  https://github.com/ispc/ispc/releases/tag/v1.31.0
+
+- Fix llvm 22 update fallout: we now rely on the default llvm/clang 
+  builds to be operational
+- Adjust skip-tests.patch to not XFAIL tests, that succeed now with 
+  llvm 22</comment>
+    <requestid>1365928</requestid>
+  </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>6bdab75052cafeb2f6f60935d4ca475f</srcmd5>
+    <version>1.31.0</version>
+    <time>1784306957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366335</requestid>
+  </revision>
 </revisionlist>
