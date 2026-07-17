@@ -164,4 +164,12 @@
     <comment>Update to upstream release 1.10</comment>
     <requestid>1363789</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4e98beb8187520aaf8d61cd249117db4</srcmd5>
+    <version>1.10.1</version>
+    <time>1784306886</time>
+    <user>dimstar_suse</user>
+    <comment>Update to upstream release 1.10.1</comment>
+    <requestid>1366271</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 17 01:56:20 UTC 2026 - Stephane Thiell <stephane@thiell.com>
+
+- Update to upstream release 1.10.1:
+  * setup: install the ansible.conf.example group source example,
+    which was missing from binary packages in 1.10 (#645)
+  * NodeSet: fix stepped slices across multiple patterns on
+    Python 3 (#661)
+  * RangeSet: fix unpickling of empty sets (#658)
+  * Communication: pin the pickle protocol used for gateway
+    messages, fixing tree mode across mixed Python versions,
+    including Python 3.14 (#658)
+  * Communication: fix TypeError when reporting channel errors
+    (#673)
+  * Tree: report gateway errors received before channel setup
+    (#674)
+  * Tree: fix rcopy extraction error reporting (#663)
+  * EngineClient: remove stream on broken pipe, fixing a possible
+    hang with the select engine (#651, #652)
+  * Engine: fix error handling in the EPoll and Select event
+    loops (#662)
+  * conf: remove the deprecated Cray ACE group source example
+    (#644)
+  * doc: refresh the installation guide, port library examples to
+    Python 3, and improve man page and Sphinx documentation
+
+-------------------------------------------------------------------
 Sat Jul  4 19:48:40 UTC 2026 - Stephane Thiell <sthiell@stanford.edu>
 
 - Update to upstream release 1.10:

@@ -20,7 +20,7 @@
 %global srcname ClusterShell
 %define pythons python3
 Name:           clustershell
-Version:        1.10
+Version:        1.10.1
 Release:        1%{?dist}
 Summary:        Python framework for efficient cluster administration
 License:        LGPL-2.1-or-later
