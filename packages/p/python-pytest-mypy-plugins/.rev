@@ -7,4 +7,25 @@
     <comment>Required by other packages for testing.</comment>
     <requestid>1277899</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9e8b9b7c8df1e37efef87c077114ca0b</srcmd5>
+    <version>4.0.3</version>
+    <time>1784306872</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0.3
+  * Adds official python3.14 support
+  * Allow --mypy-testing-base to be relative by resolving
+    execution_path before cd
+  * Breaking: Errors are now ignored in site-packages by default.
+    The --mypy-only-local-stub flag has been removed and replaced
+    with --mypy-no-silence-site-packages which can be used to
+    restore the previous behavior if needed. 
+  * Breaking: When running in a subprocess (the default),
+    PYTHONPATH is no longer set. With the above change, violations
+    would still be raised in the main module for a test case, but
+    those that were flagged in imported modules would no longer be
+    raised.
+- Skip broken tests</comment>
+    <requestid>1366401</requestid>
+  </revision>
 </revisionlist>

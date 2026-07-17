@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:25:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 4.0.3
+  * Adds official python3.14 support
+  * Allow --mypy-testing-base to be relative by resolving
+    execution_path before cd
+  * Breaking: Errors are now ignored in site-packages by default.
+    The --mypy-only-local-stub flag has been removed and replaced
+    with --mypy-no-silence-site-packages which can be used to
+    restore the previous behavior if needed. 
+  * Breaking: When running in a subprocess (the default),
+    PYTHONPATH is no longer set. With the above change, violations
+    would still be raised in the main module for a test case, but
+    those that were flagged in imported modules would no longer be
+    raised.
+- Skip broken tests
+
+-------------------------------------------------------------------
 Tue May  6 23:39:39 UTC 2025 - Guang Yee <gyee@suse.com>
 
 - Version 3.2.0

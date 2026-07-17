@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-mypy-plugins
-Version:        3.2.0
+Version:        4.0.3
 Release:        0
 Summary:        pytest plugin for mypy plugins
 License:        MIT
@@ -67,7 +67,10 @@ pytest plugin for writing tests for mypy plugins
 
 %check
 export PYTHONPATH=%{buildroot}:$PYTHONPATH
-%pytest
+# mypy cache does not work in OBS environment
+rm pytest_mypy_plugins/tests/test_mypy_cache.py
+# test_no_silence_site_packages_only and test_no_silence_site_packages_and_modify_pythonpath fail with mypy 2.3.0 (no idea why it surfaces with our mypy): https://github.com/typeddjango/pytest-mypy-plugins/pull/201
+%pytest -k "not test_no_silence_site_packages"
 
 %files %{python_files}
 %{python_sitelib}/pytest_mypy_plugins
