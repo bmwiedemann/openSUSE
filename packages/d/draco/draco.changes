@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 23:38:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Add disable-static-library.patch:
+  - disable building the static library
+  From https://github.com/google/draco/pull/1001/changes
+
+-------------------------------------------------------------------
 Sat Aug  2 19:34:44 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - Fix missing include required by GCC 155 by adding

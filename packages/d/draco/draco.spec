@@ -1,7 +1,7 @@
 #
 # spec file for package draco
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source0:        https://github.com/google/%{name}/archive/refs/tags/%{version}.t
 Source1:        https://github.com/google/googletest/archive/%{commit}.zip#/googletest-%{commit}.zip
 # https://github.com/google/draco/pull/1113
 Patch0:         draco-gcc15.patch
+# PATCH-OPENSUSE do not build static libraries unconditionally taken from https://github.com/google/draco/pull/1001/changes
+Patch1:         disable-static-library.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  gcc-c++
 BuildRequires:  help2man
@@ -80,7 +82,7 @@ mv googletest-%{commit}/* third_party/googletest/
 
 %install
 %cmake_install
-rm -v %{buildroot}/%{_libdir}/*.a
+# rm -v %{buildroot}/%{_libdir}/*.a
 
 # Create missing man files downstream
 install -dm 0755 %{buildroot}%{_mandir}/man1

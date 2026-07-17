@@ -1,0 +1,78 @@
+From b86055f97717acac2f477e0461be2d580887d008 Mon Sep 17 00:00:00 2001
+From: topazus <77263945+topazus@users.noreply.github.com>
+Date: Sat, 27 Jan 2024 07:22:22 +0000
+Subject: [PATCH] Build as shared library or static library
+
+---
+ CMakeLists.txt            | 20 ++++++++++----------
+ cmake/draco_install.cmake |  9 +++++----
+ 2 files changed, 15 insertions(+), 14 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index e7b8f1521..597a77acf 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1029,15 +1029,6 @@ else()
+     add_library(draco::draco ALIAS draco)
+ 
+   else()
+-    draco_add_library(
+-      NAME draco_static
+-      OUTPUT_NAME draco
+-      TYPE STATIC
+-      DEFINES ${draco_defines}
+-      INCLUDES ${draco_include_paths}
+-      OBJLIB_DEPS ${draco_object_library_deps}
+-      LIB_DEPS ${draco_lib_deps})
+-
+     if(BUILD_SHARED_LIBS)
+       draco_add_library(
+         NAME draco_shared
+@@ -1046,10 +1037,19 @@ else()
+         TYPE SHARED
+         DEFINES ${draco_defines}
+         INCLUDES ${draco_include_paths}
+-        LIB_DEPS draco_static)
++        OBJLIB_DEPS ${draco_object_library_deps}
++        LIB_DEPS ${draco_lib_deps})
+       add_library(draco::draco ALIAS draco_shared)
+       set_target_properties(draco_shared PROPERTIES EXPORT_NAME draco)
+     else()
++      draco_add_library(
++        NAME draco_static
++        OUTPUT_NAME draco
++        TYPE STATIC
++        DEFINES ${draco_defines}
++        INCLUDES ${draco_include_paths}
++        OBJLIB_DEPS ${draco_object_library_deps}
++        LIB_DEPS ${draco_lib_deps})
+       add_library(draco::draco ALIAS draco_static)
+       set_target_properties(draco_static PROPERTIES EXPORT_NAME draco)
+     endif()
+diff --git a/cmake/draco_install.cmake b/cmake/draco_install.cmake
+index b9dda265a..f626accec 100644
+--- a/cmake/draco_install.cmake
++++ b/cmake/draco_install.cmake
+@@ -66,10 +66,6 @@ macro(draco_setup_install_target)
+         ARCHIVE DESTINATION "${libs_path}"
+         LIBRARY DESTINATION "${libs_path}")
+     else()
+-      install(
+-        TARGETS draco_static
+-        EXPORT dracoExport
+-        DESTINATION "${libs_path}")
+ 
+       if(BUILD_SHARED_LIBS)
+         install(
+@@ -78,6 +74,11 @@ macro(draco_setup_install_target)
+           RUNTIME DESTINATION "${bin_path}"
+           ARCHIVE DESTINATION "${libs_path}"
+           LIBRARY DESTINATION "${libs_path}")
++      else()
++        install(
++          TARGETS draco_static
++          EXPORT dracoExport
++          DESTINATION "${libs_path}")
+       endif()
+     endif()
+ 
