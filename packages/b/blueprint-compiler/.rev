@@ -308,4 +308,32 @@
   + Docs: Fixed the syntax documentation for TryExpression.</comment>
     <requestid>1364083</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3e9fb9d61dbec0f5ba8f69b5d9a93bff</srcmd5>
+    <version>0.22.2</version>
+    <time>1784306831</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.22.2:
+  + Build/Packaging Changes:
+    - The meson build now checks the minimum Python version
+      (currently 3.9)
+    - The installed blueprint-compiler executable's shebang line
+      now hardcodes the absolute path to the python executable that
+      blueprint was built with `__pycache__` files from the source
+      directory are no longer installed
+  + Added:
+    - Added support for extern enum types
+    - Added support for GList in expressions
+  + Fixed:
+    - Fixed a bug where casting from uint to bool didn't work
+    - Fixed test failures when using GTK &lt;4.22
+    - Fixed decompilation for try expressions
+    - Fixed the decompiler adding unnecessary casts
+    - Fixed a crash when running with some older Python versions
+    - Fixed batch-compile to not allow input files that aren't in
+      the input directory
+    - Fixed a crash when the GTK typelib fails to load.
+  + Documentation: Fixed the TryExpression syntax example</comment>
+    <requestid>1366024</requestid>
+  </revision>
 </revisionlist>
