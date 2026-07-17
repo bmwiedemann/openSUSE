@@ -17,7 +17,7 @@
 
 
 Name:           codespell
-Version:        2.4.2
+Version:        2.4.3
 Release:        0
 Summary:        Source code checker for common misspellings
 License:        GPL-2.0-only
@@ -66,7 +66,5 @@ export PATH=$PATH:%{buildroot}%{_bindir}
 %{_bindir}/codespell
 %{python3_sitelib}/codespell_lib
 %{python3_sitelib}/codespell-%{version}.dist-info
-%dir %{python3_sitelib}/tools
-%{python3_sitelib}/tools/gen_OX.sh
 
 %changelog

@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:52:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.4.3:
+  * Add 'radback' to dictionary with correction #3883
+  * Add 'repetirion' to dictionary corrections #3885
+  * Need to specify a version of Python version after all #3887
+  * Add cases for "modulle" -> "module" #3888
+  * Add case "auido" -> "audio" #3890
+  * Add credentilas->credentials and friends #3895
+  * Add the case "cubid" -> "cubic" #3891
+  * Add magntiude->magnitude #3899
+  * Add the case "instanc" -> "instance" #3896
+  * gampad -> gamepad (and plural) #3906
+  * Add typos of monotonic and monotonicity #3898
+  * Add spelling correction for multipile(s)/vulnerabities. #3905
+  * Add 'simpilfy -> simplify' #3913
+  * fix(packaging): prevent unwanted files and tests from being installed #3911
+  * Add skarhoj->SKAARHOJ to dictionary corrections #3908
+  * Improve the dictionary #3914
+  * Add spelling correction for accorss/accors. #3916
+  * Bump autofix-ci/action from 1.3.3 to 1.3.4 #3921
+  * Add influecer->influencer and influnce* typos to dictionary #3925
+  * Add typos for excavate and variants #3926
+  * Dict: Add corrections for memoy #3924
+  * overheda -> overhead #3919
+  * inclusize->inclusive and variants #3918
+  * Add spelling corrections for authorization #3922
+  * Don't fix Voight #3929
+  * Add spelling corrections for interstect and interstection #3928
+  * Improve output in interactive mode #3884
+  * feat: support codespell:ignore-next-line directive #3931
+  * Add woork->work and formace->format and friends #3828
+  * shortctu -> shortcut #3934
+  * A couple typos #3935
+  * reclaculate->recalculate #3936
+  * Add spelling correction for improprt. #3939
+  * Dictionary plasic-plastic #3938
+  * Add rourter->router and friends #3943
+  * Add new spelling correction for 'strucutr' to 'structure' #3944
+  * adding zone spelling correction #3945
+  * Add correction for 'egineering' to 'engineering' #3946
+  * adding seet spelling corrections #3947
+  * Add spelling correction for flwa/flwas. #3948
+  * PEP 735 compliance: dependency groups #3877
+  * Allow use --builtin=all to use every builtin dictionary #3917
+  * feat: add --ignore-sic to skip misspellings marked with [sic] #3950
+  * Bump codecov/codecov-action from 6 to 7 #3953
+  * Add common misspellings for 'dispplay' variations #3955
+  * Add spelling corrections for simpe and variants. #3960
+  * Bump actions/checkout from 6 to 7 #3961
+  * Add common misspellings for reseeve->reserve to dictionary #3967
+  * Read only [tool.codespell] from TOML config #3975
+
+-------------------------------------------------------------------
 Tue Jun 23 09:12:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base BR
