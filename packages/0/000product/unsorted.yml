@@ -8070,6 +8070,7 @@ unsorted:
   - grisbi-lang 
   - grml-zsh-config 
   - groff-doc 
+  - grok-build 
   - gromacs 
   - gromacs-bash-completion 
   - gromacs-data 
@@ -8772,11 +8773,7 @@ unsorted:
   - hyprland-plugin-borders-plus-plus 
   - hyprland-plugin-csgo-vulkan-fix 
   - hyprland-plugin-hyprbars 
-  - hyprland-plugin-hyprexpo 
   - hyprland-plugin-hyprfocus 
-  - hyprland-plugin-hyprtrails 
-  - hyprland-plugin-hyprwinwrap 
-  - hyprland-plugin-xtra-dispatchers 
   - hyprland-protocols-devel 
   - hyprland-qt-support 
   - hyprland-qtutils 
@@ -11724,7 +11721,7 @@ unsorted:
   - libSciTokens0 
   - libShowMySky-Qt6-15 
   - libShowMySky-Qt6-devel 
-  - libSimGearCore-2024_1_5 
+  - libSimGearCore-2024_1_6 
   - libSingular-4_4_1 
   - libSingular-devel 
   - libSoQt20 
@@ -12139,7 +12136,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine9 
+  - libaquamarine11 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -17233,8 +17230,8 @@ unsorted:
   - libwebsockets-devel 
   - libwebsockets-evlib_uv 
   - libwebsockets21 
-  - libweston-14 
-  - libweston-14-0 
+  - libweston-16 
+  - libweston-16-0 
   - libwf-config1 
   - libwf-utils0 
   - libwget4 
@@ -20515,6 +20512,8 @@ unsorted:
   - ocaml-uutf-devel 
   - ocaml-xml-light 
   - ocaml-xml-light-devel 
+  - ocaml-yojson 
+  - ocaml-yojson-devel 
   - ocaml-zarith 
   - ocaml-zarith-devel 
   - occt-DRAWEXE 
@@ -28314,6 +28313,7 @@ unsorted:
   - python313-wurlitzer 
   - python313-wxPython 
   - python313-wyoming 
+  - python313-xai-sdk 
   - python313-xapian 
   - python313-xapian-haystack 
   - python313-xapp 
@@ -32380,6 +32380,7 @@ unsorted:
   - python314-wxPython 
   - python314-wyoming 
   - python314-x86-64-v3 
+  - python314-xai-sdk 
   - python314-xapian 
   - python314-xapian-haystack 
   - python314-xapp 
