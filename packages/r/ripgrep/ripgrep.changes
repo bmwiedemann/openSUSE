@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 16 06:41:12 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 15.2.0:
+  * Improve directory traversal time on very large corpora (#3293)
+  * ripgrep now respects GIT_CONFIG_GLOBAL and GIT_CONFIG_SYSTEM (#3275)
+  * Don't check for the existence of .jj when --no-ignore is used (#3212)
+  * Fix gitignore matching bug when searching across multiple directories
+    (#3320, #3376, #3419)
+
+-------------------------------------------------------------------
 Sun Oct 26 15:20:59 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 15.1.0:
