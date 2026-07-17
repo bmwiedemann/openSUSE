@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Jul 17 14:40:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 1.24.0:
+  * Jobs can now be given an optional name, via the --name flag on the
+    CLI and the name parameter of run_job, run_uv_job, create_scheduled_job
+    and create_scheduled_uv_job; existing jobs can be named with
+    hf jobs labels <job_id> --name
+  * Fix xet download rate reporting to show the summed rather than the
+    per-file speed
+
+-------------------------------------------------------------------
+Sun Jul 12 20:03:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 1.23.0:
+  * HTTP layer migrated from requests to httpx, adding native
+    async support and HTTP/2
+  * command line client migrated from typer to click; the legacy
+    "huggingface-cli" command is provided again alongside "hf"
+  * optional Xet storage backend (hf-xet) for faster uploads and
+    downloads of large files; unbundled here as it is not packaged
+  * expanded Inference client with more providers and tasks
+  * numerous new Hub API helpers and bug fixes
+- switch Source to the PyPI sdist
+- drop the hard hf-xet dependency (not packaged, imported lazily)
+
+-------------------------------------------------------------------
 Mon May 18 07:46:28 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Require update-alternarives for installation 

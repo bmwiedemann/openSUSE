@@ -47,4 +47,27 @@
     <comment>- Require update-alternarives for installation</comment>
     <requestid>1353717</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b3e1fe45f68904ffa91b6924b7aca6e4</srcmd5>
+    <version>1.23.0</version>
+    <time>1784126103</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-huggingface-hub (client library for the Hugging Face Hub); required by the python-vllm stack.</comment>
+    <requestid>1365516</requestid>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>edf6ad200118053ee1760d28093f10e4</srcmd5>
+    <version>1.24.0</version>
+    <time>1784307040</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.24.0
+
+- Jobs can be given an optional name (--name on the CLI, name parameter on
+  run_job/run_uv_job/create_scheduled_job/create_scheduled_uv_job)
+- Fix xet download rate reporting to show summed rather than per-file speed
+
+Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness, %check import
+smoke test passes for both python313 and python314, source_validator clean.</comment>
+    <requestid>1366430</requestid>
+  </revision>
 </revisionlist>
