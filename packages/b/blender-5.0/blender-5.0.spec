@@ -103,7 +103,7 @@ Name:           blender-5.0
 Version:        5.0.1
 Release:        0
 Summary:        A 3D Modelling And Rendering Package
-License:        GPL-2.0-or-later AND CC-BY-4.0
+License:        GPL-2.0-or-later AND CC-BY-4.0 AND Apache-2.0 WITH Trademark-Clause AND Apache-2.0
 Group:          Productivity/Graphics/3D Editors
 URL:            https://www.blender.org/
 # Please leave the source url intact
@@ -162,7 +162,7 @@ BuildRequires:  cmake(manifold)
 BuildRequires:  cmake(OpenImageDenoise)
 %endif
 BuildRequires:  cmake(TBB)
-BuildRequires:  cmake(Tiff)
+BuildRequires:  (cmake(tiff) or cmake(Tiff))
 BuildRequires:  cmake(pugixml)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(epoxy)

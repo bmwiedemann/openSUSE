@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 16 20:50:49 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add Apache-2.0 WITH Trademark-Clause and Apache-2.0 licenses
+  found during legal review
+
+-------------------------------------------------------------------
+Mon Jul 13 07:31:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- the cmake finder for the tiff library got rename from "Tiff" to
+  "tiff". This change was also backported to the maintenance
+  updates. To keep building versus the older library working, look
+  for the new name first and fallback to the old one.
+
+-------------------------------------------------------------------
 Tue Apr 28 11:42:24 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add CC-BY-4.0 to the main license from demos
