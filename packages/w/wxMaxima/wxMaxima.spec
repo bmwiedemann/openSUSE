@@ -23,7 +23,7 @@
 %define __builder ninja
 %define tarname wxmaxima
 Name:           wxMaxima
-Version:        26.06.1
+Version:        26.07.0
 Release:        0
 Summary:        Graphical User Interface for the maxima Computer Algebra System
 License:        GPL-2.0-or-later
@@ -98,14 +98,15 @@ popd
 %license COPYING GPL.txt
 %doc %{_datadir}/doc/%{tarname}/
 %{_bindir}/wxmaxima
+%{_bindir}/wxmxdiff
 %{_datadir}/wxMaxima/
 %{_datadir}/icons/hicolor/*/apps/io.github.wxmaxima_developers.wxMaxima.*
 %{_datadir}/icons/hicolor/*/mimetypes/text-x-wx*.svg
 %{_datadir}/applications/*.desktop
 %{_datadir}/bash-completion/completions/wxmaxima
 %{_datadir}/metainfo/*.appdata.xml
-%{_mandir}/man1/wxmaxima*%{ext_man}
-%{_mandir}/*/man1/wxmaxima*%{ext_man}
+%{_mandir}/man1/wxm*%{ext_man}
+%{_mandir}/*/man1/wxm*%{ext_man}
 %{_datadir}/mime/packages/*.xml
 %{_datadir}/pixmaps/*
 

@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Tue Jul 14 10:56:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 26.07.0:
+  * Fixed a crash on loading a worksheet containing an empty
+    <img/> or <slideshow/> tag (found by the parser fuzzer).
+  * No longer lose an embedded image on save if the current build
+    cannot decode it.
+  * The license dialog now has a second tab listing third-party
+    component notices (e.g. the Microsoft Edge WebView2 loader
+    shipped with the Windows builds).
+  * Added a regression test guarding matrix column widths against
+    being frozen by a layout-time deadline.
+  * The "follow evaluation" toolbar button now lights up
+    immediately when needed.
+  * Fixed matrices keeping stale (too narrow or too wide) column
+    widths when a layout-time deadline interrupted their
+    recalculation.
+  * Fixed short Text and Title cells flickering.
+  * Fixed data loss when trying to embedd .svg.gz files into .wxmx
+    files.
+  * wxWidgets 3.3 compatibility.
+  * A proper Dark mode (dark sidebars, toolbars and menus require
+    wxWidgets 3.3 and up)
+  * Many improvoements to the automatic tests
+  * Many batch mode improvements
+  * Many stability improvements
+  * Many diff viewer enhancements
+  * Corrected the find algorithm
+  * A correctness review for all wizards.
+  * EditorCells again grow and shrink when the user adds and
+    removes lines
+- Changes from version 26.06.2:
+  * A whole AI-driven safety review
+  * Many diff viewer improvements
+  * Many find dialogue improvements
+  * Corrected the table of contents showing only part of sections,
+    sometimes.
+  * More responsivity when loading many images.
+  * Removed some visible glitches.
+  * Better implementation of the layout timeout.
+  * Fix layout of fractions inside exponents (e.g. x^((a+b)/c)).
+  * Don't leave orphaned Maxima processes behind when wxMaxima is
+    killed by a
+  * signal or crashes.
+  * The crash dialogue now works on more systems.
+  * Another layout fix.
+  * Add a new command wxmxdiff (symlinked to wxmaxima on
+    installation) which automatically opens in side-by-side diff
+    comparison mode.
+  * More preparation for packaging
+  * Improve the randomness of the authentication token passed to
+    Maxima.
+  * Add a "Math layout strategy" radio box to the config.
+  * Better undo handling.
+  * Another try to make accessibility work.
+
+-------------------------------------------------------------------
 Wed Jun 10 08:59:58 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 26.06.1:
