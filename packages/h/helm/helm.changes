@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 17 14:35:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/net to 0.57.0 (bsc#1266598, CVE-2026-39821)
+
+-------------------------------------------------------------------
 Fri Jul 10 05:31:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.2.3:
@@ -16,7 +21,8 @@ Fri Jun 19 10:13:31 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 -------------------------------------------------------------------
 Sat Jun 13 10:12:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.2.1 (bsc#1270127, CVE-2026-48978):
+- update to 4.2.1 (bsc#1270127, CVE-2026-48978,
+      bsc#1271660, CVE-2026-50151):
   * Fixed data race detected by -race flag when concurrent
     goroutines (upgrade + rollback, install + uninstall) both call
     GetWaiterWithOptions on the same FailingKubeClient instance

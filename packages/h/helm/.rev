@@ -1237,4 +1237,15 @@ See changelog in:
     <comment></comment>
     <requestid>1364955</requestid>
   </revision>
+  <revision rev="109" vrev="2">
+    <srcmd5>4834151ca012e32db3ac853a320d6958</srcmd5>
+    <version>4.2.3</version>
+    <time>1784307034</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/net to 0.57.0 (bsc#1266598, CVE-2026-39821)
+
+- update to 4.2.1 (bsc#1270127, CVE-2026-48978,
+      bsc#1271660, CVE-2026-50151):</comment>
+    <requestid>1366426</requestid>
+  </revision>
 </revisionlist>
