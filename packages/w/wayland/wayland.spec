@@ -16,12 +16,6 @@
 #
 
 
-%define _version 1.25.0
-%if 0%{?suse_version} >= 1500 && 0%{?suse_version} < 1550
-%define eglversion 99~%_version
-%else
-%define eglversion %_version
-%endif
 %define lname	libwayland0
 %define enable_test 1
 %if 0%{?qemu_user_space_build}
@@ -30,7 +24,7 @@
 %endif
 %bcond_with doc
 Name:           wayland
-Version:        %_version
+Version:        1.26.0
 Release:        0
 Summary:        Wayland Compositor Infrastructure
 License:        MIT
@@ -89,8 +83,7 @@ loads them directly into an shm pool making it easy for the clients
 to get buffer for each cursor image.
 
 %package -n libwayland-egl1
-Version:        %eglversion
-Summary:        Additional egl functions for wayland
+Summary:        Additional EGL functions for Wayland
 Group:          System/Libraries
 
 %description -n libwayland-egl1
@@ -113,20 +106,12 @@ fullscreen) or other display servers.
 %package devel
 Summary:        Development files for the Wayland Compositor Infrastructure
 Group:          Development/Libraries/C and C++
-Requires:       libwayland-client0 = %_version
-Requires:       libwayland-cursor0 = %_version
-Requires:       libwayland-egl1 = %eglversion
-Requires:       libwayland-server0 = %_version
-%if 0%{?suse_version} >= 1500
-# egl1 was once provided by Mesa 17.x.
-%if (0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150400)
+Requires:       libwayland-client0 = %version
+Requires:       libwayland-cursor0 = %version
+Requires:       libwayland-egl1 = %version
+Requires:       libwayland-server0 = %version
 Provides:       libwayland-egl-devel = 18.1.5
 Obsoletes:      libwayland-egl-devel < 18.1.5
-%else
-Provides:       libwayland-egl-devel = 18.0.2
-Obsoletes:      libwayland-egl-devel < 18.0.2
-%endif
-%endif
 
 %description devel
 Wayland is a protocol for a compositor to talk to its clients as well
@@ -149,7 +134,6 @@ This subpackage contains the documentation to Wayland.
 
 %prep
 %autosetup -p1
-sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 
 %build
 # includedir intentional, cf. bugzilla.opensuse.org/795968
@@ -170,21 +154,10 @@ sed -i 's/<eglversion>/%eglversion/' "%_sourcedir/baselibs.conf"
 %meson_test
 %endif
 
-%if 0%{?suse_version} >= 1550
 %ldconfig_scriptlets -n libwayland-client0
 %ldconfig_scriptlets -n libwayland-cursor0
 %ldconfig_scriptlets -n libwayland-egl1
 %ldconfig_scriptlets -n libwayland-server0
-%else
-%post   -n libwayland-client0 -p /sbin/ldconfig
-%postun -n libwayland-client0 -p /sbin/ldconfig
-%post   -n libwayland-cursor0 -p /sbin/ldconfig
-%postun -n libwayland-cursor0 -p /sbin/ldconfig
-%post   -n libwayland-egl1 -p /sbin/ldconfig
-%postun -n libwayland-egl1 -p /sbin/ldconfig
-%post   -n libwayland-server0 -p /sbin/ldconfig
-%postun -n libwayland-server0 -p /sbin/ldconfig
-%endif
 
 %files -n libwayland-client0
 %_libdir/libwayland-client.so.0*

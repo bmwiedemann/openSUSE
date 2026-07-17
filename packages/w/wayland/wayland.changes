@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 16 16:01:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.26
+  * A new wl_pointer.warp event, to notify a new pointer position
+    without an end-user-initiated motion event.
+  * A new wl_fixes.ack_global_remove request, to address races
+    related to global remove events.
+  * A new wl_display_remove_socket_fd() function to remove sockets
+    previously added via wl_display_add_socket_fd().
+  * WAYLAND_DEBUG timestamps now use the "HH:MM:ss.xxxxxx" format,
+    making them easier to read and compare with other logs.
+- Drop pre-Leap-16.x build logic
+
+-------------------------------------------------------------------
 Thu Mar 19 19:50:50 UTC 2026 - llyyr <llyyr@yukari.in>
 
 - Update to release 1.25
