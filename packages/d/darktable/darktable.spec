@@ -276,7 +276,7 @@ Recommends:     google-roboto-fonts
 %endif
 #
 Summary:        A virtual Lighttable and Darkroom
-License:        GPL-3.0-or-later
+License:        AGPL-3.0-or-later AND GPL-3.0-or-later
 Group:          Productivity/Graphics/Viewers
 Obsoletes:      darktable-docs < %{version}-%{release}
 Provides:       darktable-docs = %{version}-%{release}
