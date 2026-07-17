@@ -503,4 +503,24 @@
   * update-ca-certificates requires mv and ln from coreutils</comment>
     <requestid>1348148</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>88ffa6c868f364486b1f9d2aa83aacf2</srcmd5>
+    <version>2+git20260717.2e3a23b</version>
+    <time>1784313496</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20260717.2e3a23b:
+  * Fix for 458d37d, logic got wrong
+
+- Update to version 2+git20260708.2380cdb:
+  * Remove duplicate I from help text
+  * Blacken test_update_ca_certificates
+  * Replace backticks in shell scripts
+  * Unify quoting in shell scripts
+  * Refactor to POSIX sh
+  * Reduce slashes in shell paths
+  * Unify indentation style in shell scripts
+  * CI: remove black format check and update actions
+  * CI: create /etc/ca-certificates in the container</comment>
+    <requestid>1366313</requestid>
+  </revision>
 </revisionlist>

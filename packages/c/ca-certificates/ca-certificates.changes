@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Jul 17 06:18:20 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20260717.2e3a23b:
+  * Fix for 458d37d, logic got wrong
+
+-------------------------------------------------------------------
+Wed Jul 08 12:18:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20260708.2380cdb:
+  * Remove duplicate I from help text
+  * Blacken test_update_ca_certificates
+  * Replace backticks in shell scripts
+  * Unify quoting in shell scripts
+  * Refactor to POSIX sh
+  * Reduce slashes in shell paths
+  * Unify indentation style in shell scripts
+  * CI: remove black format check and update actions
+  * CI: create /etc/ca-certificates in the container
+
+-------------------------------------------------------------------
 Mon Apr 20 08:02:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2+git20260420.2a8e251:

@@ -35,7 +35,7 @@ BuildRequires:  git-core
 %bcond_without cabundle
 
 Name:           ca-certificates
-Version:        2+git20260420.2a8e251%{git_version}
+Version:        2+git20260717.2e3a23b%{git_version}
 Release:        0
 Summary:        Utilities for system wide CA certificate installation
 License:        GPL-2.0-or-later
