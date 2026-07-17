@@ -753,4 +753,12 @@
     <comment>Automatic update from systemsmanagement:Agama:Release</comment>
     <requestid>1365623</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>5a8da69fff599997239add905cc1d5f6</srcmd5>
+    <version>22.devel456.ce0fb8baf</version>
+    <time>1784306846</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1366196</requestid>
+  </revision>
 </revisionlist>
