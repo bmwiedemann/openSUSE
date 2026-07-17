@@ -538,4 +538,20 @@
       * Extra Cwd::abs_path required for Windows</comment>
     <requestid>1364468</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>e248833fbd317f3de5ed97ba436551b3</srcmd5>
+    <version>1.651.0</version>
+    <time>1784306853</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.651.0 (1.651)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+  1.651 - 2026-07-14, H.Merijn Brand &amp; Robert Rothenberg
+      * Fix inverted comparisons for strings in DBI::SQL::Nano  (CVE-2026-15043) bsc#1271399
+      * Document that IS NULL matches empty strings in DBI::SQL::Nano
+      * Fix DBD::File to ensure that the table is not a symlink outside of f_dir (CVE-2026-15392) bsc#1271629
+      * Fix an out-of-bounds error when a statement handle has no fields but the source row is not empty (CVE-2026-60082) bsc#1271459
+      * Add an overridable upper bound $MAX_PATH_DEPTH for DBI::ProfileData (CVE-2026-60081) bsc#1271458
+      * *** WARNING: Next release will require perl-5.12 ***</comment>
+    <requestid>1366351</requestid>
+  </revision>
 </revisionlist>
