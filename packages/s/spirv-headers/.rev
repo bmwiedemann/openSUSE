@@ -453,4 +453,12 @@
     <comment>- Update to tag SDK-1.4.350.0 (Git ad9184e)</comment>
     <requestid>1352998</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>d40dc8a669a5dc698cc6d789f425fcd1</srcmd5>
+    <version>1.6.4+sdk350.1+g26</version>
+    <time>1784306858</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to post-snapshot SDK-1.4.350.0 commit 29981f6</comment>
+    <requestid>1366166</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 14 22:18:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to post-snapshot SDK-1.4.350.0 commit 29981f6
+  * Grammar and header changes for SPV_INTEL_predicated_io
+  * Header updates for SPV_INTEL_rounded_divide_sqrt
+  * Fix OpReadPipeBlockingINTEL/OpWritePipeBlockingINTEL operands
+
+-------------------------------------------------------------------
 Wed May 13 06:16:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.350.0 (Git ad9184e)
