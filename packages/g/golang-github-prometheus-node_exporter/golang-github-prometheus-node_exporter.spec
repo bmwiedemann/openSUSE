@@ -18,7 +18,7 @@
 
 
 Name:           golang-github-prometheus-node_exporter
-Version:        1.11.1
+Version:        1.12.1
 Release:        0
 Summary:        Prometheus exporter for machine metrics
 License:        Apache-2.0
