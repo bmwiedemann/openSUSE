@@ -18,18 +18,18 @@
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%-1.%RELEASE%
 #!BuildTag: opensuse/bci/rust:%%RUST_VERSION%%
 #!BuildTag: opensuse/bci/rust:stable
-#!BuildTag: opensuse/bci/rust:1.96
+#!BuildTag: opensuse/bci/rust:1.97
 #!BuildTag: opensuse/bci/rust:latest
 
 FROM opensuse/tumbleweed:latest
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends rust1.96 cargo1.96
+    zypper -n install --no-recommends rust1.97 cargo1.97
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
@@ -41,8 +41,8 @@ RUN set -euo pipefail; sed -i 's/^\([^:]*:[^:]*:\)[^:]*\(:.*\)$/\1\2/' /etc/shad
 
 # Define labels according to https://en.opensuse.org/Building_derived_containers
 # labelprefix=org.opensuse.bci.rust
-LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.96"
-LABEL org.opencontainers.image.description="Rust 1.96 container based on the openSUSE Tumbleweed Base Container Image."
+LABEL org.opencontainers.image.title="openSUSE Tumbleweed BCI Rust 1.97"
+LABEL org.opencontainers.image.description="Rust 1.97 container based on the openSUSE Tumbleweed Base Container Image."
 LABEL org.opencontainers.image.version="%%RUST_VERSION%%"
 LABEL org.opencontainers.image.url="https://www.opensuse.org"
 LABEL org.opencontainers.image.created="%BUILDTIME%"
