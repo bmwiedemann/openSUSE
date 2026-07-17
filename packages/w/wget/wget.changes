@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:02:15 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- ftp validate PASV/LPSV response address against control connection peer
+  [bsc#1271320, CVE-2026-15146]
+  * CVE-2026-15146.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 13:06:45 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix buffer underflow in clean_metalink_link

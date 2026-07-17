@@ -44,6 +44,8 @@ Patch7:         CVE-2026-58470.patch
 Patch8:         CVE-2026-58471.patch
 #PATCH-FIX-UPSTREAM commit dd692d9cea5335b181d877ae917fe6e75587a812
 Patch9:         CVE-2026-58472.patch
+#PATCH-FIX-UPSTREAM commit 4f85853f641863d5915786a8413e1a213726a62b
+Patch10:        CVE-2026-15146.patch
 BuildRequires:  makeinfo
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(gpgme) >= 0.4.2
