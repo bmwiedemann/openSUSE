@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 15 14:32:10 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Stabilize testsuite tests and fix AllEventsHandler
+- Switch apache2ctl to apachectl for SUSE OSes (bsc#1252286)
+- Support attrlist in ldap.managed (bsc#1257151)
+
+- Added:
+  * stabilize-testsuite-tests-and-fix-alleventshandler-7.patch
+  * switch-apache2ctl-to-apachectl-for-suse-oses-bsc-125.patch
+  * support-attrlist-in-ldap.managed-746.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 10:03:47 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
 
 - Fix the tests failing after switching to non-vendored tornado

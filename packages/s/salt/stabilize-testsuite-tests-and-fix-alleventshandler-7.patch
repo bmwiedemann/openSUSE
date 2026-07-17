@@ -1,0 +1,106 @@
+From b3cfcc374b8ec706cea002f6dd48dbbb380fdb9b Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 15 Jul 2026 15:55:21 +0200
+Subject: [PATCH] Stabilize testsuite tests and fix AllEventsHandler (#770)
+
+In AllEventsHandler, new Tornado uses async method for
+tornado.websocket.WebSocketHandler:get, which means
+calls to ws://IP:PORT/all_events/ are broken with
+Tornados >= 6. Consequently, AllEventsHandler:get
+now uses tornado.gen.coroutine to work on old and
+new Tornado versions.
+
+Changes to test_utils.py and test_webhooks_handler.py
+are partial cherrypick of:
+- https://github.com/saltstack/salt/commit/4c4d017ddb45e4e689d978ae1deb975ad7a4c220
+---
+ .../rest_tornado/saltnado_websockets.py       |  3 ++-
+ .../netapi/rest_tornado/test_utils.py         |  2 ++
+ .../rest_tornado/test_webhooks_handler.py     | 21 ++++++++++++-------
+ 3 files changed, 18 insertions(+), 8 deletions(-)
+
+diff --git a/salt/netapi/rest_tornado/saltnado_websockets.py b/salt/netapi/rest_tornado/saltnado_websockets.py
+index 98d64000909..74cc3f89ed4 100644
+--- a/salt/netapi/rest_tornado/saltnado_websockets.py
++++ b/salt/netapi/rest_tornado/saltnado_websockets.py
+@@ -313,6 +313,7 @@ class AllEventsHandler(
+     """
+ 
+     # pylint: disable=W0221
++    @tornado.gen.coroutine
+     def get(self, token):
+         """
+         Check the token, returns a 401 if the token is invalid.
+@@ -326,7 +327,7 @@ class AllEventsHandler(
+             log.debug("Refusing websocket connection, bad token!")
+             self.send_error(401)
+             return
+-        super().get(token)
++        yield super().get(token)
+ 
+     def open(self, token):  # pylint: disable=W0221
+         """
+diff --git a/tests/pytests/functional/netapi/rest_tornado/test_utils.py b/tests/pytests/functional/netapi/rest_tornado/test_utils.py
+index a32de85de1d..bb725626332 100644
+--- a/tests/pytests/functional/netapi/rest_tornado/test_utils.py
++++ b/tests/pytests/functional/netapi/rest_tornado/test_utils.py
+@@ -20,6 +20,7 @@ async def test_any_future():
+     futures[0].set_result("foo")
+ 
+     await futures[0]
++    await any_
+ 
+     assert any_.done() is True
+     assert futures[0].done() is True
+@@ -34,6 +35,7 @@ async def test_any_future():
+     any_ = saltnado.Any(futures)
+     futures[0].set_result("foo")
+     await futures[0]
++    await any_
+ 
+     assert any_.done() is True
+     assert futures[0].done() is True
+diff --git a/tests/pytests/functional/netapi/rest_tornado/test_webhooks_handler.py b/tests/pytests/functional/netapi/rest_tornado/test_webhooks_handler.py
+index 3b199b6e209..b87bda110b8 100644
+--- a/tests/pytests/functional/netapi/rest_tornado/test_webhooks_handler.py
++++ b/tests/pytests/functional/netapi/rest_tornado/test_webhooks_handler.py
+@@ -1,6 +1,7 @@
+ import urllib.parse
+ 
+ import pytest
++import tornado
+ 
+ import salt.utils.json
+ from salt.netapi.rest_tornado import saltnado
+@@ -28,15 +29,21 @@ async def test_hook_can_handle_get_parameters(http_client, app, content_type_map
+             )
+             assert response.code == 200
+             host = urllib.parse.urlparse(response.effective_url).netloc
++
++            expected_headers = {
++                "Content-Length": "2",
++                "Connection": "close",
++                "Content-Type": "application/json",
++                "Host": host,
++                "Accept-Encoding": "gzip",
++            }
++
++            if tornado.version_info >= (6,):
++                expected_headers["User-Agent"] = f"Tornado/{tornado.version}"
++
+             event.fire_event.assert_called_once_with(
+                 {
+-                    "headers": {
+-                        "Content-Length": "2",
+-                        "Connection": "close",
+-                        "Content-Type": "application/json",
+-                        "Host": host,
+-                        "Accept-Encoding": "gzip",
+-                    },
++                    "headers": expected_headers,
+                     "post": {},
+                     "get": {"param": ["1", "2"]},
+                 },
+-- 
+2.55.0
+

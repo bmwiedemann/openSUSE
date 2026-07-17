@@ -2818,4 +2818,12 @@ let build start it or we will get libvirt errors.
     <comment></comment>
     <requestid>1361354</requestid>
   </revision>
+  <revision rev="200" vrev="64">
+    <srcmd5>443bfa8318f2953ac9c747fba3a41443</srcmd5>
+    <version>3006.0</version>
+    <time>1784306838</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366128</requestid>
+  </revision>
 </revisionlist>

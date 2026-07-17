@@ -1,0 +1,183 @@
+From 7a953241ed4371aac8f8c758a4a45e5143493cf5 Mon Sep 17 00:00:00 2001
+From: Georg <georg.pfuetzenreuter@suse.com>
+Date: Mon, 13 Jul 2026 14:27:50 +0000
+Subject: [PATCH] Support attrlist in ldap.managed (#746)
+
+This resolves not being able to manage operational attributes by
+introducing a way to pass the list to filter in the LDAP search through
+to the search function. Passing a customizable list was deemed most
+flexible, as one might not want to control all but only specific
+operational attributes. For example, one can set attrlist to ["*",
+"aci"] to manage all user attributes plus the "aci" operational
+attribute.
+
+
+(cherry picked from commit 443bcb8473d4c3958c3ad87fba4a31b9e89b07b1)
+
+Signed-off-by: Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
+---
+ changelog/53364.fixed.md               |  1 +
+ salt/states/ldap.py                    | 14 ++++++++----
+ tests/pytests/unit/states/test_ldap.py | 31 ++++++++++++++++++--------
+ 3 files changed, 33 insertions(+), 13 deletions(-)
+ create mode 100644 changelog/53364.fixed.md
+
+diff --git a/changelog/53364.fixed.md b/changelog/53364.fixed.md
+new file mode 100644
+index 00000000000..91c6a5733d2
+--- /dev/null
++++ b/changelog/53364.fixed.md
+@@ -0,0 +1 @@
++Support attrlist in ldap.managed
+diff --git a/salt/states/ldap.py b/salt/states/ldap.py
+index 227182b828b..16ca1fae189 100644
+--- a/salt/states/ldap.py
++++ b/salt/states/ldap.py
+@@ -19,7 +19,7 @@ from salt.utils.stringutils import to_bytes
+ log = logging.getLogger(__name__)
+ 
+ 
+-def managed(name, entries, connect_spec=None):
++def managed(name, entries, connect_spec=None, attrlist=None):
+     """Ensure the existence (or not) of LDAP entries and their attributes
+ 
+     Example:
+@@ -183,6 +183,12 @@ def managed(name, entries, connect_spec=None):
+         the ``'url'`` entry is set to the value of the ``name``
+         parameter.
+ 
++    :param attrlist:
++        Passed directly to :py:func:`ldap3.connect <salt.modules.ldap3.search>`
++        to filter the attributes returned by the LDAP server. By default, all
++        user attributes will be requested, and this should only need to be
++        modified if management of operational attributes is desired.
++
+     :returns:
+         A dict with the following keys:
+ 
+@@ -254,7 +260,7 @@ def managed(name, entries, connect_spec=None):
+ 
+     with connect(connect_spec) as l:
+ 
+-        old, new = _process_entries(l, entries)
++        old, new = _process_entries(l, attrlist, entries)
+ 
+         # collect all of the affected entries (only the key is
+         # important in this dict; would have used an OrderedSet if
+@@ -366,7 +372,7 @@ def managed(name, entries, connect_spec=None):
+     return ret
+ 
+ 
+-def _process_entries(l, entries):
++def _process_entries(l, attrlist, entries):
+     """Helper for managed() to process entries and return before/after views
+ 
+     Collect the current database state and update it according to the
+@@ -419,7 +425,7 @@ def _process_entries(l, entries):
+             olde = new.get(dn, None)
+             if olde is None:
+                 # next check the database
+-                results = __salt__["ldap3.search"](l, dn, "base")
++                results = __salt__["ldap3.search"](l, dn, "base", attrlist=attrlist)
+                 if len(results) == 1:
+                     attrs = results[dn]
+                     olde = {
+diff --git a/tests/pytests/unit/states/test_ldap.py b/tests/pytests/unit/states/test_ldap.py
+index bf57549fd9c..f8c8d41cd24 100644
+--- a/tests/pytests/unit/states/test_ldap.py
++++ b/tests/pytests/unit/states/test_ldap.py
+@@ -29,7 +29,7 @@ class LdapDB:
+     def dummy_connect(self, connect_spec):
+         return _dummy_ctx()
+ 
+-    def dummy_search(self, connect_spec, base, scope):
++    def dummy_search(self, connect_spec, base, scope, attrlist):
+         if base not in self.db:
+             return {}
+         return {
+@@ -37,6 +37,7 @@ class LdapDB:
+                 attr: list(self.db[base][attr])
+                 for attr in self.db[base]
+                 if len(self.db[base][attr])
++                and (attrlist is None or attr in attrlist or "*" in attrlist)
+             }
+         }
+ 
+@@ -199,7 +200,7 @@ def configure_loader_modules(db):
+     return {salt.states.ldap: {"__opts__": {"test": False}, "__salt__": salt_dunder}}
+ 
+ 
+-def _test_helper(init_db, expected_ret, replace, delete_others=False):
++def _test_helper(init_db, expected_ret, replace, delete_others=False, attrlist=None):
+     old = init_db.dump_db()
+     new = init_db.dump_db()
+     expected_db = copy.deepcopy(init_db.db)
+@@ -262,13 +263,13 @@ def _test_helper(init_db, expected_ret, replace, delete_others=False):
+         {dn: [{"replace": attrs}, {"delete_others": delete_others}]}
+         for dn, attrs in replace.items()
+     ]
+-    actual = salt.states.ldap.managed(name, entries)
++    actual = salt.states.ldap.managed(name, entries, attrlist=attrlist)
+     assert expected_ret == actual
+     assert expected_db == init_db.db
+ 
+ 
+-def _test_helper_success(db, replace, delete_others=False):
+-    _test_helper(db, {}, replace, delete_others)
++def _test_helper_success(db, replace, delete_others=False, attrlist=None):
++    _test_helper(db, {}, replace, delete_others, attrlist)
+ 
+ 
+ def _test_helper_nochange(db, replace, delete_others=False):
+@@ -279,7 +280,7 @@ def _test_helper_nochange(db, replace, delete_others=False):
+     _test_helper(db, expected, replace, delete_others)
+ 
+ 
+-def _test_helper_add(db, expected_ret, add_items, delete_others=False):
++def _test_helper_add(db, expected_ret, add_items, delete_others=False, attrlist=None):
+     old = db.dump_db()
+     new = db.dump_db()
+     expected_db = copy.deepcopy(db.db)
+@@ -346,13 +347,13 @@ def _test_helper_add(db, expected_ret, add_items, delete_others=False):
+         {dn: [{"add": attrs}, {"delete_others": delete_others}]}
+         for dn, attrs in add_items.items()
+     ]
+-    actual = salt.states.ldap.managed(name, entries)
++    actual = salt.states.ldap.managed(name, entries, attrlist=attrlist)
+     assert expected_ret == actual
+     assert expected_db == db.db
+ 
+ 
+-def _test_helper_success_add(db, add_items, delete_others=False):
+-    _test_helper_add(db, {}, add_items, delete_others)
++def _test_helper_success_add(db, add_items, delete_others=False, attrlist=None):
++    _test_helper_add(db, {}, add_items, delete_others, attrlist)
+ 
+ 
+ def test_managed_empty(db):
+@@ -374,10 +375,22 @@ def test_managed_add_entry(db):
+ def test_managed_add_attr(complex_db):
+     _test_helper_success_add(complex_db, {"dnfoo": {"attrfoo1": ["valfoo1.3"]}})
+     _test_helper_success_add(complex_db, {"dnfoo": {"attrfoo4": ["valfoo4.1"]}})
++    _test_helper_success_add(
++        complex_db, {"dnfoo": {"attrfoo10": ["valfoo10"]}}, attrlist=["*"]
++    )
++    _test_helper_success_add(
++        complex_db, {"dnfoo11": {"attrfoo11": ["valfoo11"]}}, attrlist=["attrfoo11"]
++    )
+ 
+ 
+ def test_managed_replace_attr(complex_db):
+     _test_helper_success(complex_db, {"dnfoo": {"attrfoo3": ["valfoo3.1"]}})
++    _test_helper_success(
++        complex_db, {"dnfoo": {"attrfoo12": ["valfoo12"]}}, attrlist=["*"]
++    )
++    _test_helper_success(
++        complex_db, {"dnfoo13": {"attrfoo13": ["valfoo13"]}}, attrlist=["attrfoo13"]
++    )
+ 
+ 
+ def test_managed_simplereplace(complex_db):
+-- 
+2.55.0
+

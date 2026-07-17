@@ -1,0 +1,40 @@
+From fa61d25e275c7549cb3097db60d6edf79ab5781a Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 15 Jul 2026 15:54:50 +0200
+Subject: [PATCH] Switch apache2ctl to apachectl for SUSE OSes
+ (bsc#1252286) (#771)
+
+---
+ salt/modules/apache.py      | 2 +-
+ salt/modules/suse_apache.py | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/salt/modules/apache.py b/salt/modules/apache.py
+index 4b867706d10..b3a8c05e1be 100644
+--- a/salt/modules/apache.py
++++ b/salt/modules/apache.py
+@@ -45,7 +45,7 @@ def _detect_os():
+     os_family = __grains__["os_family"]
+     if os_family == "RedHat":
+         return "apachectl"
+-    elif os_family == "Debian" or os_family == "Suse":
++    elif os_family == "Debian":
+         return "apache2ctl"
+     else:
+         return "apachectl"
+diff --git a/salt/modules/suse_apache.py b/salt/modules/suse_apache.py
+index 7c599b34a83..fc0899bfe86 100644
+--- a/salt/modules/suse_apache.py
++++ b/salt/modules/suse_apache.py
+@@ -19,7 +19,7 @@ def __virtual__():
+     """
+     Only load the module if apache is installed.
+     """
+-    if salt.utils.path.which("apache2ctl") and __grains__["os_family"] == "Suse":
++    if salt.utils.path.which("apachectl") and __grains__["os_family"] == "Suse":
+         return __virtualname__
+     return (False, "apache execution module not loaded: apache not installed.")
+ 
+-- 
+2.55.0
+
