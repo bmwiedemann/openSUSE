@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 12:56:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- pkexec: add provides pkexec-rpm to be able to give the solver a
+  hint that this is the real pkexec.rpm [bsc#1267899] 
+
+-------------------------------------------------------------------
 Fri Jun 12 13:51:17 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - remove memory limits in systemd service, this causes performance loss (bsc#1266994)

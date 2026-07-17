@@ -111,6 +111,7 @@ Summary:        Pkexec component of polkit
 Group:          System/Libraries
 Requires:       %{name} = %{version}-%{release}
 Requires(post): permissions
+Provides:       pkexec-rpm
 Provides:       polkit:/usr/bin/pkexec
 
 %description -n pkexec
