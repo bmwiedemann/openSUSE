@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Jul 17 12:51:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.18
+  * Use *_CLOEXEC for most fds.
+  * Use std::shared_ptr to track CurlSocket's and throw error when
+    error events don't delete them.
+  * Added net_http logging category.
+  * Recognize LoongArch CPUs and use a 64-byte alignment
+    on such platforms.
+  * Added runtime::MemoryManager to split out unrelated features
+    from ChunkManager.
+  * Moved all sync/diskspace related methods to MemoryManager.
+  * Moved ChunkManager out of public header directory.
+  * Changing the Listen/DHT port now actually changes them.
+
+-------------------------------------------------------------------
 Sun Jul  5 17:01:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.16
