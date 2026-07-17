@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:21:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.4.2
+  * Avoid undefined behavior in HashValueToObjInt
+
+-------------------------------------------------------------------
 Fri Dec 26 21:58:55 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.4.1

@@ -1,7 +1,7 @@
 #
 # spec file for package gap-datastructures
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-datastructures
-Version:        0.4.1
+Version:        0.4.2
 Release:        0
 Summary:        GAP: Collection of standard data structures for GAP
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  c_compiler
 BuildRequires:  gap-devel >= 4.12
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.12
-Requires:       gap-gapdoc >= 1.5
 
 %description
 The "datastructures" package provides some standard data structures
