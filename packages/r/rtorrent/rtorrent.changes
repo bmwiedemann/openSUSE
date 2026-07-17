@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:04:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.18
+  * Encryption settings have changed to be easier to use, and
+    changing listen or DHT ports can be done while rtorrent is
+    running.
+
+-------------------------------------------------------------------
 Sun Jul  5 18:23:00 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.16
