@@ -18,7 +18,7 @@
 
 %define _SO_nr  2
 Name:           p8-platform
-Version:        2.1.0.1
+Version:        2.2.0
 Release:        0
 Summary:        Platform support library used by libCEC and binary add-ons for Kodi
 License:        GPL-2.0-or-later

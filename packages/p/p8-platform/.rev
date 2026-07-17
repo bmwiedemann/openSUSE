@@ -42,4 +42,12 @@
     <comment>Spec cleanup: pass -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to keep building under CMake 4+ (upstream requires cmake 2.8.9); use %autosetup; drop obsolete Group tags</comment>
     <requestid>1356428</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>cbf2ba739b26e2e11fd0b9bbe9d1e0fd</srcmd5>
+    <version>2.2.0</version>
+    <time>1784306953</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0 (first upstream release since 2015; SOVERSION unchanged at 2, no rdep rebuild needed)</comment>
+    <requestid>1366323</requestid>
+  </revision>
 </revisionlist>
