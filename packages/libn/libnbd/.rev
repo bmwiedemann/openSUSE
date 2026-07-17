@@ -264,4 +264,12 @@ Factory, SLE15-SP7:GA, and SLFO:Main.</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1364763</requestid>
   </revision>
+  <revision rev="32" vrev="4">
+    <srcmd5>fa715c4ada5e55675ec8116db61a2694</srcmd5>
+    <version>1.25.5</version>
+    <time>1784307046</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366434</requestid>
+  </revision>
 </revisionlist>

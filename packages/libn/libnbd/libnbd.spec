@@ -24,6 +24,7 @@ Version:        1.25.5
 Release:        0
 Summary:        NBD client library in userspace
 License:        LGPL-2.1-or-later
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://gitlab.com/nbdkit/libnbd
 Source0:        %{name}-%{version}.tar.bz2
 BuildRequires:  autoconf
