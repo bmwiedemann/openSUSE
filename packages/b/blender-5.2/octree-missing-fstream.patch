@@ -1,0 +1,13 @@
+Index: blender-5.1.0/intern/cycles/bvh/octree.cpp
+===================================================================
+--- blender-5.1.0.orig/intern/cycles/bvh/octree.cpp
++++ blender-5.1.0/intern/cycles/bvh/octree.cpp
+@@ -18,6 +18,8 @@
+ 
+ #include <fstream>
+ 
++#include <fstream>
++
+ CCL_NAMESPACE_BEGIN
+ 
+ __forceinline int Octree::flatten_index(int x, int y, int z) const

@@ -1,0 +1,13 @@
+Index: blender-5.1.0/source/creator/CMakeLists.txt
+===================================================================
+--- blender-5.1.0.orig/source/creator/CMakeLists.txt
++++ blender-5.1.0/source/creator/CMakeLists.txt
+@@ -2138,7 +2138,7 @@ detect_leaks=0\"\n\
+   execute_process(\n\
+     COMMAND\n\
+     $\{PYTHON_EXECUTABLE\} $\{MANPAGE_GEN\}\n\
+-    --blender $\{BLENDER_BIN\}\n\
++    --blender bin/blender\n\
+     --output $\{MANPAGE_OUT\}\n\
+   )\n\
+ endif()\n\
