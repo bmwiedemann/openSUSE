@@ -1,0 +1,21 @@
+[Unit]
+Description=Zabbix Agent 2
+After=syslog.target
+After=network.target
+
+[Service]
+Environment="CONFFILE=/etc/zabbix/zabbix_agent2.conf"
+EnvironmentFile=-/etc/sysconfig/zabbix-agent2
+Type=simple
+Restart=on-failure
+PIDFile=/run/zabbix/zabbix_agent2.pid
+KillMode=control-group
+ExecStart=/usr/sbin/zabbix_agent2 -c $CONFFILE
+ExecStop=/bin/kill -SIGTERM $MAINPID
+RestartSec=10s
+User=zabbix
+Group=zabbix
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target

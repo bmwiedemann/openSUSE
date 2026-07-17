@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jul 16 21:06:46 UTC 2026 - Boris Manojlovic <boris@steki.net>
+
+- Update to version 7.0.28 LTS
+- Cumulative update from 7.0.26 to 7.0.28 including all intermediate releases
+- Fix golang.org/x/net/html vendored dependency vulnerabilities
+  (bsc#1267045, CVE-2026-25680, CVE-2026-25681, CVE-2026-27136,
+   CVE-2026-42502, CVE-2026-42506)
+- Add systemd service file for zabbix-agent2 package
+
+- New Features and Improvements
+  + ZBXNEXT-10478 Updated maximum supported MariaDB version to 12.3 API Proxy Server
+  + ZBXNEXT-10211 Updated alarm discovery in vmware template Templates
+  + ZBXNEXT-10611 Added real host name for native vmware.*.alarms.get item keys Proxy Server
+  + ZBXNEXT-10618 Updated maximum supported TimescaleDB version to 2.27 API Server
+  + ZBXNEXT-10592 Updated maximum supported MySQL version to 9.7 API Proxy Server
+
+- Bug Fixes
+  + ZBX-27883 Fixed inability to copy trigger prototypes that depend on same trigger prototype when cloning template or host Frontend
+  + ZBX-27900 Fixed Windows job handle not being closed on Zabbix agent 2 Agent
+  + ZBX-27594 Fixed sorting of discovered hosts Frontend
+  + ZBX-27770 Fixed validation of HTTP response data for scenario-level dynamic variables in web monitoring Server
+  + ZBX-27561 Mitigated recurring system errors when editing groups for users or hosts in parallel API requests API Server
+  + ZBX-26766 Fixed code error when updating host, template, or user groups with duplicate group set entries API
+  + ZBX-27382 Fixed incorrect tag-based service permission check API
+  + ZBX-27200 Fixed invalid statuses for hosts and services during network discovery when host is found on several IP addresses Proxy Server
+  + ZBX-27144 Fixed legend text clipping at bottom of downloaded widget images Frontend
+  + ZBX-27732 Fixed auto refresh to continue running in Latest data view Frontend
+  + ZBX-26048 Fixed long error title visibility in frontend modal window Frontend
+  + ZBX-25461 Fixed contrast problems with severity icons in high-contrast themes Frontend
+  + ZBX-26788 Fixed duplicate announcement of month and year in datepicker for assistive technologies Frontend
+  + ZBX-27777 Fixed dashboard widget decimals for Azure SQL Managed Instance by HTTP template Templates
+  + ZBX-27698 Fixed Clock widget "Server time" displaying same time as browser local time Frontend
+  + ZBX-24054 Fixed template cloning with extended amount of mappings Frontend
+  + ZBX-27809 Fixed QR code generation by using integer pixel alignment to eliminate module distortion Frontend
+  + ZBX-27510 Fixed Geomap widget not resizing map on container resize Frontend
+  + ZBX-22504 Improved memory usage in LLD worker processes with large low-level discovery Server
+  + ZBX-27780 Restored support of LLD macros in LLD rule override operations Update interval, History, and Trends API
+  + ZBX-27736 Fixed no_data trigger flickering into unknown state for unsupported items Server
+  + ZBX-27708 Fixed error being displayed instead of graph for graphs with maximum height Frontend
+  + ZBX-27304 Fixed missing gap between tag badges when widget overlay dialog is open Frontend
+  + ZBX-25509 Fixed z-select re-rendering after sorting Frontend
+  + ZBX-27210 Fixed infinite loading on widgets after removing maps from Map Navigation Tree widget Frontend
+  + ZBX-27694 Updated dependent item key from vm.memory.utilization to vm.memory.util in Linux by Zabbix agent active and passive templates Templates
+  + ZBX-27399 Fixed possible deadlocks in configuration cache sync Proxy
+  + ZBX-27675 Improved configuration syncer not to reserve large amounts of memory Proxy Server
+  + ZBX-27475 Fixed typo in Mattermost webhook "fallback" field name Templates
+  + ZBX-26742 Fixed text overlap in pop-ups for Portuguese Frontend
+  + ZBX-27632 Fixed trigger severity checkboxes update to checked state after validation error Frontend
+  + ZBX-27022 Fixed preprocessing step "Discard unchanged" for string types Proxy Server
+  + ZBX-27688 Removed checks to prevent bulk enabling of Gmail and Office 365 media types with incomplete configuration Frontend
+  + ZBX-27652 Fixed incorrect documentation link for Administration/General/Other Frontend
+  + ZBX-27517 Fixed "page not found" issue when exporting template that contains inaccessible dashboard element Frontend
+  + ZBX-27121 Fixed issue where repeatedly clicking Close button on notifications floating pop-up caused error Frontend
+
+-------------------------------------------------------------------
 Tue May 20 06:50:00 UTC 2026 - Boris Manojlovic <boris@steki.net>
 
 - Update to version 7.0.26 LTS
