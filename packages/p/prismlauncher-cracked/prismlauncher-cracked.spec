@@ -17,14 +17,13 @@
 
 
 %define _name PrismLauncher
-%define _version 11.0.2-1
 Name:           prismlauncher-cracked
-Version:        11.0.2.1
+Version:        11.0.3
 Release:        0
 Summary:        A custom launcher for Minecraft
 License:        GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-3-Clause
 URL:            https://github.com/Diegiwg/%{_name}-Cracked
-Source0:        https://github.com/Diegiwg/%{_name}-Cracked/releases/download/%{_version}/%{_name}-%{_version}.tar.gz
+Source0:        https://github.com/Diegiwg/%{_name}-Cracked/releases/download/%{version}/%{_name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  gcc-c++
@@ -40,7 +39,6 @@ BuildRequires:  cmake(Qt6OpenGL)
 BuildRequires:  cmake(Qt6Test)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
-BuildRequires:  cmake(VulkanHeaders)
 BuildRequires:  pkgconfig(gamemode)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libcmark)
@@ -66,7 +64,7 @@ A custom launcher for Minecraft that allows you to easily manage multiple instal
 with unblocked the use of Offline Accounts, disabling the restriction of having a functional Online Account.
 
 %prep
-%autosetup -p1 -n %{_name}-%{_version}
+%autosetup -p1 -n %{_name}-%{version}
 sed -i -e 's|\$ORIGIN/||' -e 's/\${TODAY}/unknown/' CMakeLists.txt
 # https://github.com/PrismLauncher/PrismLauncher?tab=readme-ov-file#forkingredistributingcustom-builds-policy
 sed -i -e '/Launcher_MSA_CLIENT_ID/d' -e '/Launcher_CURSEFORGE_API_KEY/d' CMakeLists.txt
@@ -77,11 +75,11 @@ sed -i -e '/Launcher_MSA_CLIENT_ID/d' -e '/Launcher_CURSEFORGE_API_KEY/d' CMakeL
        -DLauncher_QT_VERSION_MAJOR="6"
 %cmake_build
 
-%check
-%ctest
-
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license COPYING.md LICENSE
