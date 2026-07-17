@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 13:54:20 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to versin 0.4.6
+  * Generate protocol specific dummy_type names
+  * Add OpenBSD support (no librt)
+  * Core: use rvalue refs and move std::functions
+  * Core: fix types table size for untyped new_id args
+
+-------------------------------------------------------------------
 Wed Jul 16 16:31:12 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 0.4.5
