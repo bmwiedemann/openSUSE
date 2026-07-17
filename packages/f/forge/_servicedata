@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/git-pkgs/forge</param>
-              <param name="changesrevision">d55745795f6ff530b5ead079df1b281a6b4a2743</param></service></servicedata>
+              <param name="changesrevision">d55745795f6ff530b5ead079df1b281a6b4a2743</param></service><service name="tar_scm">
+                <param name="url">https://github.com/git-pkgs/forge.git</param>
+              <param name="changesrevision">6fa3f00cd25eec5e1debce1f2064dc19e022b449</param></service></servicedata>

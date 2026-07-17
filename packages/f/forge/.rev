@@ -17,4 +17,26 @@
   * Add a bunch of aliases to align with gh (#91)</comment>
     <requestid>1354779</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ee6cc35c39069ff6394067754e3f6fff</srcmd5>
+    <version>0.6.0</version>
+    <time>1784307254</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.0:
+  * Add subcommand `branch show-base` (#118)
+  * Implement forge pr view for current branch (#109)
+  * Bump golang.org/x/crypto from 0.52.0 to 0.53.0 (#123)
+  * Fix pr checkout for agit-based workflows in forgejo (#117)
+  * Add custom helptext when --json is used (#110)
+  * Add FORGEJO_TOKEN environment variable support (#116)
+  * When viewing a pipeline, print the corresponding job ids (#108)
+  * Support URLs in forge pr checkout (#104)
+  * Add git_protocol setting to defaults and per-domain configs
+    (#103)
+  * Support dest and gitflags in `forge repo clone` (#101)
+  * Normalize gitlabs opened and open states in issues and
+    milestones (#85)
+  * Initial implementation of PR checkout (#97)</comment>
+    <requestid>1366428</requestid>
+  </revision>
 </revisionlist>

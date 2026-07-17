@@ -17,7 +17,7 @@
 
 
 Name:           forge
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        A command line tool to interact with git forges
 License:        MIT
@@ -69,6 +69,9 @@ go test -v \
    -mod=vendor \
    -buildmode=pie \
    -ldflags "-X main.Version=%{version}"
+
+# check version output
+%{buildroot}%{_bindir}/forge version | grep %{version}
 
 %install
 install -v -m 0755 -D -t %{buildroot}%{_bindir} forge
