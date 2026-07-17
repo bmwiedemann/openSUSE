@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:01:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.3~rc1
+  * Support SPV_QCOM_multiple_wait_queues,
+    SPV_KHR_opacity_micromap, and SPV_EXT_ocp_microscaling_types
+  * Add ArmExperimentalMLOperations and NonSemantic.Graph.DebugInfo
+    instruction sets
+  * Fix unbounded memory usage in FriendlyNameMapper
+  * Optimizer:
+  * Stability fixes for DeadBranchElimPass, CodeSinkingPass, and
+    OrderBlocks [boo#1271501]
+  * Improved handling of tensor constants, non-semantic
+    instructions, and loop decorations
+  * Add folding rule for extract from copy logical and prevent word
+    limit overflows
+  * Validator:
+  * Support SPV_EXT_ocp_microscaling_types, SPV_EXT_split_barrier,
+    SPV_ARM_graph,
+    SPV_NV_cooperative_matrix_decode_vector and Intel extensions
+  * Disallow duplicate targets for OpGroupDecorate and multiple
+    graph entry points
+
+-------------------------------------------------------------------
 Fri May 29 04:29:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.2
