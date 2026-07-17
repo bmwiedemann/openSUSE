@@ -1871,4 +1871,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1364688</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>a8c1160dcc0a9b630414b39b5ff76f3f</srcmd5>
+    <version>1.2.24</version>
+    <time>1784306880</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.24
+  + Fixed playback hanging with no error shown when trying to play a track whose file no longer exists on disk (#2232)
+  + Fixed the tag fetcher dialog showing a generic message instead of the actual error when a Musicbrainz/AcoustID lookup fails
+  + Hardened Chromaprinter decoding against malformed or oversized files and capped its in-memory PCM usage
+  + Fixed the context menu using the wrong item when invoked via keyboard in the playlist and smart playlists views (#2219)
+  + Fixed blurry star rating icons by enabling smooth pixmap scaling (#2220)
+  + Added F64LE (64-bit float) sample format support for the spectrum analyzer
+  + Numerous stability, crash-safety and thread-safety fixes throughout the application
+  + Added more keyboard shortcuts for playlist navigation: jump to last/active playlist and close playlist (#2197) 
+</comment>
+    <requestid>1366257</requestid>
+  </revision>
 </revisionlist>
