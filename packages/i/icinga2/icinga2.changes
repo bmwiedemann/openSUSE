@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 17 09:10:07 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 2.16.4:
+  * Release v2.16.4
+  * Work around a compiler segfault on SLES 15.7 aarch64
+  * Fix that NewClientHandler() could hang indefinitely, preventing new connection attempts
+  * Prune runtime-deleted object dictionary every 15 Minutes
+  * Track deleted runtime objects to avoid erroneous recreation
+  * Check object version on deletion
+  * Make `Dictionary::Remove(Iterator)` return the next iterator
+  * Freeze perfdata arrays and remove locks in code using them
+  * doc/: don't mention Amazon Linux 2
+  * GitHub actions: drop EOL Amazon Linux 2
+  * GitHub actions: add Fedora 45 which provides OpenSSL 4
+  * Use `i2a_ASN1_INTEGER()`, don't access `ASN1_INTEGER` data directly
+  * Use `const X509_NAME*`, not `X509_NAME*`, on newer OpenSSL
+  * Pass `std::exception_ptr` to `SendJsonError`
+  * Consistently use `std::exception_ptr`
+  * Replace explicit `rethrow(current)` pattern with just throw;
+  * Fix unreachable fallback in `DiagnosticInformation(<eptr>)`
+  * Set `www_authenticate` header field after `SendJsonError()`
+
+-------------------------------------------------------------------
 Wed Jul 01 12:11:44 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 2.16.3:
