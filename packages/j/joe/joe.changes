@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:38:36 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1269379 / CVE-2026-13412
+- Add CVE-2026-13412.patch
+
+-------------------------------------------------------------------
 Thu Feb 22 08:09:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

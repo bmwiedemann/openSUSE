@@ -1,7 +1,7 @@
 #
 # spec file for package joe
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,7 @@ Patch7:         joe-3.7-additional_key_mappings.patch
 Patch8:         joe-3.7-spec_association.patch
 Patch10:        joe-sigiot.patch
 Patch12:        joe-4.6-nonvoid-functions.patch
+Patch13:        CVE-2026-13412.patch
 BuildRequires:  automake
 BuildRequires:  libselinux-devel
 BuildRequires:  ncurses-devel
@@ -48,6 +49,7 @@ WordStar keybindings used in Borland's development environment.
 %patch -P 8
 %patch -P 10
 %patch -P 12 -p1
+%patch -P 13 -p1
 
 %build
 autoreconf -fiv

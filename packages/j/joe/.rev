@@ -262,4 +262,13 @@
     <comment></comment>
     <requestid>1149381</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>fae68054f7b69dc34ed94ac674ba60e4</srcmd5>
+    <version>4.6</version>
+    <time>1784306851</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix bsc#1269379 / CVE-2026-13412
+- Add CVE-2026-13412.patch</comment>
+    <requestid>1366232</requestid>
+  </revision>
 </revisionlist>
