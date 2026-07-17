@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:16:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260717
+  * FUSE 3 support
+  * Reworked the command-line option parsing
+
+-------------------------------------------------------------------
 Sun Feb  8 11:42:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260208

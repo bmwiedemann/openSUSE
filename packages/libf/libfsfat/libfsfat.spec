@@ -20,7 +20,7 @@
 
 Name:           libfsfat
 %define lname	libfsfat1
-Version:        20260208
+Version:        20260717
 Release:        0
 Summary:        Library and tools for accessing the FAT filesystem
 License:        LGPL-3.0-or-later
@@ -34,22 +34,23 @@ BuildRequires:  %python_module setuptools
 BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20251224
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfcrypto) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libhmac) >= 20240417
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfcrypto) >= 20260521
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libhmac) >= 20260522
+BuildRequires:  pkgconfig(libuna) >= 20260602
+BuildRequires:  pkgconfig(fuse3)
 BuildRequires:  pkgconfig(python3)
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
@@ -127,6 +128,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 %_mandir/man1/fsfat*
 
 %files %python_files
-%python_sitearch/py*.so
+%python_sitearch/pyfs*
 
 %changelog
