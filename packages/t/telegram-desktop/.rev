@@ -1683,4 +1683,15 @@
     <comment></comment>
     <requestid>1359114</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>f5f3681084a18b30111692cf5186bb05</srcmd5>
+    <version>7.0.3</version>
+    <time>1784406282</time>
+    <user>dimstar_suse</user>
+    <comment>- Updated td to git20260717.
+  * No changes provides.
+- Updated telegram-desktop to 7.0.3
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.3</comment>
+    <requestid>1366514</requestid>
+  </revision>
 </revisionlist>
