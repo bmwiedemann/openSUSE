@@ -46,7 +46,7 @@ BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.22
+BuildRequires:  golang(API) >= 1.25
 ExclusiveArch:  %{_exclusive_arch}
 
 %description
@@ -142,6 +142,18 @@ Group:          System/Packages
 %description    manifests
 This contains the built YAML manifests used to install CDI into a
 kubernetes installation with kubectl apply.
+
+%package        tests
+Summary:        Compiled end-to-end test suite for CDI
+Provides:       containerized-data-importer-tests = %{version}-%{release}
+Obsoletes:      containerized-data-importer-tests < %{version}-%{release}
+Provides:       containerized-data-importer-1.65-tests = %{version}-%{release}
+Obsoletes:      containerized-data-importer-1.65-tests < %{version}-%{release}
+
+%description    tests
+The upstream CDI functional (ginkgo) test suite compiled to a single
+binary, for running the e2e tests against a deployed CDI. Test fixture
+images are not included; a test runner supplies them.
 
 %package -n     obs-service-cdi1.65_containers_meta
 Provides:       obs-service-cdi_containers_meta = %{version}-%{release}
@@ -267,6 +279,12 @@ CGO_ENABLED=0 ./hack/build/build-go.sh build \
 
 env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version}-%{release} ./hack/build/build-manifests.sh
 
+# Compiled ginkgo e2e suite (-tests subpackage). Static (CGO off) so the
+# test-runner container needs no extra libs; runs in the repo's go workspace
+# with the vendored deps like the main build.
+mkdir -p _out/tests
+CGO_ENABLED=0 GOFLAGS="-mod=vendor" go test -c -o _out/tests/cdi-tests ./tests/
+
 %install
 mkdir -p %{buildroot}%{_bindir}
 
@@ -292,6 +310,10 @@ install -p -m 0755 _out/cmd/cdi-uploadserver/cdi-uploadserver %{buildroot}%{_bin
 mkdir -p %{buildroot}%{_datadir}/cdi-1.65/manifests/release
 install -m 0644 _out/manifests/release/cdi-operator.yaml %{buildroot}%{_datadir}/cdi-1.65/manifests/release/
 install -m 0644 _out/manifests/release/cdi-cr.yaml %{buildroot}%{_datadir}/cdi-1.65/manifests/release/
+
+# Install the compiled e2e suite
+mkdir -p %{buildroot}%{_datadir}/cdi-1.65/tests
+install -p -m 0755 _out/tests/cdi-tests %{buildroot}%{_datadir}/cdi-1.65/tests/
 
 # Install cdi_containers_meta build service
 mkdir -p %{buildroot}%{_prefix}/lib/obs/service
@@ -342,6 +364,11 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %doc README.md
 %dir %{_datadir}/cdi-1.65
 %{_datadir}/cdi-1.65/manifests
+
+%files tests
+%dir %{_datadir}/cdi-1.65
+%dir %{_datadir}/cdi-1.65/tests
+%{_datadir}/cdi-1.65/tests/cdi-tests
 
 %files -n obs-service-cdi1.65_containers_meta
 %license LICENSE
