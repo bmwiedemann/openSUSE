@@ -5719,4 +5719,12 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1362481</requestid>
   </revision>
+  <revision rev="543" vrev="1">
+    <srcmd5>92e015d2e86ed46b743f7d388233a9ae</srcmd5>
+    <version>2.9.0+git20260715.7b097339</version>
+    <time>1784406252</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365933</requestid>
+  </revision>
 </revisionlist>

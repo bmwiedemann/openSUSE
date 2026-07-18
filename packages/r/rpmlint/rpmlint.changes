@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 15 10:50:55 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260715.7b097339:
+  * sysctl-whitelist: adjusted 50-coredump.conf digest for systemd (bsc#1267504)
+  * filedigestcheck: use custom socket unit parser to support multiple keys
+  * dbus-services: whitelist cosmic-greeter (bsc#1259401)
+  * dbus-services: adjust iwd configuration digest (bsc#1270347)
+
+-------------------------------------------------------------------
 Mon Jun 29 14:54:17 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260629.bd947d09:
