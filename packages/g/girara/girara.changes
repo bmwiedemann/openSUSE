@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:25:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.07.18:
+  * Require glib 2.84
+  * Drop G_GNUC_CONST from *_get_type functions for glib
+    compatibility
+  * Simplify type checks
+  * Fix documentation
+
+-------------------------------------------------------------------
 Wed Jul  8 07:25:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.07.07:

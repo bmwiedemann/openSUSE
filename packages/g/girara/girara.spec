@@ -22,7 +22,7 @@
 %bcond_without gcc15
 %endif
 Name:           girara
-Version:        2026.07.07
+Version:        2026.07.18
 Release:        0
 Summary:        Graphical user interface library
 License:        Zlib
@@ -33,9 +33,9 @@ Source2:        girara.keyring
 BuildRequires:  c_compiler
 BuildRequires:  meson >= 1.5
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.72
-BuildRequires:  pkgconfig(glib-2.0) >= 2.72
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.72
+BuildRequires:  pkgconfig(gio-2.0) >= 2.84
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.84
 %if %{with gcc15}
 BuildRequires:  gcc15
 %endif
