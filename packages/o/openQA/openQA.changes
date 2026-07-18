@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 17 22:54:52 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1784324412.123ebeb6:
+  * fix: avoid foreign key error in screenshot_links
+  * fix(test): Drop test for token equality
+  * fix: Call open_sqlite_database with correct arguments
+  * chore(deps): Dependency cron 2026-07-17
+  * feat: Improve scalability of dependency tree computation
+
+-------------------------------------------------------------------
 Thu Jul 16 05:16:53 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1784178984.04ce3617:
