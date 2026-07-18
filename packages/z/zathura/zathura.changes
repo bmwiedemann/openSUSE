@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:28:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.07.18:
+  * Fix version handling of plugins
+  * Fix scroll sensitivity and feedkeys handling
+  * Bump glib dependencies to 2.84 in alignment with girara
+  * Remove gtk4 from the pkg-config dependencies
+  * Fix several memory leaks and malloc error checks
+  * Update translations and make completion group names
+    translatable
+
+-------------------------------------------------------------------
 Thu Jul  9 05:29:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.07.08:

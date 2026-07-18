@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura
-Version:        2026.07.08
+Version:        2026.07.18
 Release:        0
 Summary:        A customizable document viewer
 License:        Zlib
@@ -42,11 +42,11 @@ BuildRequires:  weston
 BuildRequires:  xvfb-run
 BuildRequires:  zsh
 BuildRequires:  pkgconfig(cairo)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.84
 BuildRequires:  pkgconfig(girara) >= 2026.07.07
-BuildRequires:  pkgconfig(glib-2.0) >= 2.76
-BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.72
-BuildRequires:  pkgconfig(gthread-2.0) >= 2.72
+BuildRequires:  pkgconfig(glib-2.0) >= 2.84
+BuildRequires:  pkgconfig(gmodule-no-export-2.0) >= 2.84
+BuildRequires:  pkgconfig(gthread-2.0) >= 2.84
 BuildRequires:  pkgconfig(gtk4) >= 4.12
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libmagic)
