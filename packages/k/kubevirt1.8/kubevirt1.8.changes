@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 17 23:15:18 UTC 2026 - victor.carvalho@suse.com
+
+- Update to version 1.8.4:
+  * Bump vendored github.com/moby/spdystream v0.5.0 -> v0.5.1 to fix
+    CVE-2026-35469 (bsc#1262264, GHSA-pc3f-x583-g7j2): resource
+    exhaustion in the SPDY/3 protocol implementation.
+  * node-labeller: use new libvirt flags for full feature expansion.
+  * Fix gRPC connection leak in GetLauncherClient; clean up ghost
+    launcher record on connection setup failure.
+  * api: validate VMI VSOCK CID and checksum status fields as uint32.
+  * virt-operator: refine canary flow to fully support out-of-band
+    changes.
+  * New virt-api/virt-handler/virt-operator ready and down metrics,
+    alerts and recording rules.
+- Refresh disks-images-provider.yaml to the v1.8.4 image tag.
+
+-------------------------------------------------------------------
 Fri Jul 10 17:05:24 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Only build the manifests package and kubevirt containers meta

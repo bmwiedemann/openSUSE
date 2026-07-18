@@ -20,7 +20,7 @@
 
 %define upstream_name kubevirt
 Name:           kubevirt1.8
-Version:        1.8.3
+Version:        1.8.4
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0

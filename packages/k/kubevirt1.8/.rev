@@ -15,4 +15,28 @@
     <comment>Only build the manifests package and kubevirt containers meta service for Tumbleweed</comment>
     <requestid>1365288</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>f5d07f9cd65805bb11f79d340e8bd18d</srcmd5>
+    <version>1.8.4</version>
+    <time>1784406309</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.8.4.
+
+Security: CVE-2026-35469 (bsc#1262264) — resource exhaustion in the
+vendored moby/spdystream SPDY/3 implementation, fixed by the upstream
+v0.5.0 -&gt; v0.5.1 bump.
+
+Also from upstream 1.8.4: node-labeller uses the new libvirt
+feature-expansion flags; fix a gRPC connection leak in
+GetLauncherClient and clean up the ghost launcher record on connection
+setup failure; validate VMI VSOCK CID and checksum status fields as
+uint32; virt-operator canary-flow refinement for out-of-band changes;
+new virt-api/virt-handler/virt-operator ready/down metrics, alerts and
+recording rules. disks-images-provider.yaml refreshed to the v1.8.4
+image tag.
+
+Validated with a full sig-compute e2e run against this build
+(915 specs, 717 passed, 3 known environmental flakes).</comment>
+    <requestid>1366526</requestid>
+  </revision>
 </revisionlist>
