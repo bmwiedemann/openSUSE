@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:38:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.1
+  * Derive CLI version from build info.
+- Update to version 0.10
+  * Create rdap.1
+  * Change the registry accessor functions in bootstrap/client to
+    call c.freshenFromCache with the corresponding RegistryType.
+  * Implement AS search requests.
+  * Use XDG_CACHE_HOME for the bootstrap cache directory.
+  * Modernize, optimize, and document the RDAP library.
+  * Rename 'Registrar WHOIS Server' to 'WHOIS Server'.
+- Install manpage.
+
+-------------------------------------------------------------------
 Mon Mar 17 12:49:01 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - Initial package (0.9.1)

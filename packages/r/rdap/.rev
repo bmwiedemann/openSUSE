@@ -7,4 +7,24 @@
     <comment></comment>
     <requestid>1253774</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b2d9bca3f5bfc0c70bb9225cc3237896</srcmd5>
+    <version>0.10.1</version>
+    <time>1784406261</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1366414 from mnhauke
+
+- Update to version 0.10.1
+  * Derive CLI version from build info.
+- Update to version 0.10
+  * Create rdap.1
+  * Change the registry accessor functions in bootstrap/client to
+    call c.freshenFromCache with the corresponding RegistryType.
+  * Implement AS search requests.
+  * Use XDG_CACHE_HOME for the bootstrap cache directory.
+  * Modernize, optimize, and document the RDAP library.
+  * Rename 'Registrar WHOIS Server' to 'WHOIS Server'.
+- Install manpage.</comment>
+    <requestid>1366453</requestid>
+  </revision>
 </revisionlist>

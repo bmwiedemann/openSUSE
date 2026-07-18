@@ -1,7 +1,7 @@
 #
-# spec file for package yq
+# spec file for package rdap
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,15 @@
 
 %global provider_prefix github.com/openrdap/rdap
 %global import_path     %{provider_prefix}
-
 Name:           rdap
-Version:        0.9.1
+Version:        0.10.1
 Release:        0
 Summary:        RDAP command line client
 License:        MIT
 URL:            https://github.com/openrdap/rdap
 Source0:        https://github.com/openrdap/rdap/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.25
 
 %description
 OpenRDAP is an command line Registration Data Access Protocol (RDAP) client implementation in Go.
@@ -46,10 +45,12 @@ go test ./...
 
 %install
 install -D -m 0755 %{name} "%{buildroot}/%{_bindir}/%{name}"
+install -D -m 0644 %{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 
 %files
-%{_bindir}/%{name}
 %license LICENSE
 %doc README.md
+%{_bindir}/%{name}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %changelog
