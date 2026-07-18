@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 18 15:35:36 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.8.1
+
+- Update to 2.8.1
+  * Bug Fixes
+    - fix multiple bugs in AddExisting that could sometimes add duplicate image entries and skip some xhtml imports
+    - fix bug that caused altimage urls on math tags to not be properly updated when moved or renamed
+    - prevent crash in python function replace when re can not handle an expression that PCRE2 recognizes
+    - fix bug when using OpenWith to re-open BBEdit.app on MacOS if BBEdit was already open
+    - make launching PageEdit on MacOS via the Preferred XEditor always spawn a new copy of the PageApp
+    - fix bugs when newlines were sometimes added to css files that threw off sync to Style.
+    - fix bug that prevented Mend and Prettify from working in CV after a resource name change
+    - fix bug in TOCHTMLWriter that dropped a needed newline causing Preview to be misaligned. Thank you BeckyEbook!
+    - add workarounds to macOS Tahoe bugs that prevent modal native dialogs from working
+    - fix bug in Create an HTML TOC that did not drop the busy cursor during requests for import
+
+-------------------------------------------------------------------
 Mon Jun  8 11:31:51 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.8.0
 
 - Update to 2.8.0

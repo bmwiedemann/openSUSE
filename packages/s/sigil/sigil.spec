@@ -20,7 +20,7 @@
 %define pythons python313
 
 Name:           sigil
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        WYSIWYG Ebook Editor
 License:        GPL-3.0-only
