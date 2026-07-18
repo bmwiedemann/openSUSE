@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Jul 18 08:19:18 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.1:
+  * build(deps): bump github.com/zclconf/go-cty from 1.18.1 to
+    1.19.0 by @dependabot[bot] in #2692
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.27 to 1.32.28 by @dependabot[bot] in #2693
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.104.2 to 1.105.0 by @dependabot[bot] in #2694
+  * build(deps): bump golang.org/x/sync from 0.21.0 to 0.22.0 by
+    @dependabot[bot] in #2695
+  * build(deps): bump golang.org/x/term from 0.44.0 to 0.45.0 by
+    @dependabot[bot] in #2696
+  * chore: bump helm to v4.2.3 and v3.21.3 by @yxxhero in #2699
+  * feat: center section divider to match table width by @yxxhero
+    in #2698
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.28 to 1.32.29 by @dependabot[bot] in #2697
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.19 to
+    0.0.24 by @dependabot[bot] in #2700
+  * docs: add OCI auth troubleshooting by @dashitongzhi in #2679
+  * fix: ensure OCI registry login when SkipRepos is set by @yxxhero
+    in #2701
+  * build(deps): bump github.com/helmfile/chartify from 0.27.0 to
+    0.28.0 by @dependabot[bot] in #2702
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.105.0 to 1.105.1 by @dependabot[bot] in #2703
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.29 to 1.32.30 by @dependabot[bot] in #2704
+  * feat: support disabling hooks by @fabiobaiao in #2691
+  * build(deps): bump github.com/helmfile/vals from 0.44.4 to
+    0.44.5 by @dependabot[bot] in #2706
+  * build(deps): bump actions/setup-go from 6 to 7 by
+    @dependabot[bot] in #2705
+  * feat: support disabling insecure template functions only by
+    @fabiobaiao in #2689
+
+-------------------------------------------------------------------
 Sun Jul  5 07:59:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.0:
