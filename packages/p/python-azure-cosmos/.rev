@@ -266,4 +266,15 @@
     <comment></comment>
     <requestid>1364722</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>28563b958093bccb6d0ab636933322ae</srcmd5>
+    <version>4.16.2</version>
+    <time>1784406258</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 4.16.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1366326 from glaubitz)</comment>
+    <requestid>1366448</requestid>
+  </revision>
 </revisionlist>
