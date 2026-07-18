@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:15:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 150.0.7871.128 (boo#1271656):
+  * CVE-2026-15899: Use after free in CameraCapture
+  * CVE-2026-15900: Use after free in GPU
+  * CVE-2026-15901: Use after free in Network
+  * CVE-2026-15902: Use after free in Cast
+  * CVE-2026-15903: Out of bounds read and write in V8
+  * CVE-2026-15904: Use after free in Ozone
+  * CVE-2026-15905: Use after free in Aura
+
+-------------------------------------------------------------------
 Tue Jul 14 22:29:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 150.0.7871.124 (boo#1271415):
