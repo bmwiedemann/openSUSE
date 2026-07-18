@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:02:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 3.1.2
+  ## Deprecations
+
+  * Deprecate --payload for sign and verify commands (#4991)
+
+  ## Features
+
+  * docs: add OVHcloud KMS in available external plugins (#4962)
+  * Add insecure registry flag to ko publish in kind-verify-attestation workflow (#4970)
+  * Deprecate --output-attestation (#4958)
+  * Add bundle inspect command (#4842)
+
+  ## Fixes
+
+  * Guard against empty certificate PEM in mutate.Signature (#4998)
+  * fix(download): Validate predicate type for new bundle format
+  * Skip nil subject entries in IntotoSubjectClaimVerifier (#5016)
+  * Fix Makefile: fall back to "unknown" version info when built outside a git repo (#5000)
+  * fix(verify): skip identity validation for security keys (#5012)
+  * fix: include artifactType in OCI 1.1 signature referrer manifest
+  * Allow attestation download to handle both bundle types (#4996)
+  * Fix panic in dockerfile verify on malformed FROM lines (#4979)
+  * fix(release): restore signing-step auth and fail on image signing errors (#4978)
+  * feat(signing-config): add --base-config flag to override services from base config (#4977)
+  * fix: pass NewBundleFormat to KeyOpts in sign command (#4981)
+  * fix: ignore build stage references in dockerfile verify (#4961)
+  * fix: allow '=' in annotation values (#4957)
+
+  ## Cleanup
+
+  * Remove unused policy evaluation code (#4936)
+  * Remove unused signing code (#4918)
+  * Remove unused OCI code (#4935)
+  * Remove unused ephemeral signer (#4938)
+
+  ## Documentation
+
+  * feat: improve verify flag shell completions (#4965)
+  * docs: fix Short style and add Example fields to piv-tool subcommands (#4942)
+  * docs: add Example fields to env and bundle create commands (#4941)
+  * docs: fix Short style and add Example fields to pkcs11-tool subcommands
+
+-------------------------------------------------------------------
 Tue Jul  7 10:20:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.1 (bsc#1267044,
