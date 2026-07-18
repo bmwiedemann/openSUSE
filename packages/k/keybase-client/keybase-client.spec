@@ -35,6 +35,7 @@ Patch2:         ensure-service-stop-unmounts-filesystem.patch
 Patch3:         update-filippo.io-edwards25519.patch
 Patch4:         update-golang-image-1.patch
 Patch5:         update-golang-image-2.patch
+Patch6:         update-golang-net.patch
 BuildRequires:  fdupes
 BuildRequires:  go1.25
 BuildRequires:  golang-packaging

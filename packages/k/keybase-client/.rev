@@ -386,4 +386,13 @@
     to backport upstreams fix.</comment>
     <requestid>1362545</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>637b0471a506f3c58793f8d43ac69fe8</srcmd5>
+    <version>6.6.3</version>
+    <time>1784406302</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-39824: failure to reject ASCII-only Punycode-encoded labels
+  * Add update-golang-net.patch to update affected dependency.</comment>
+    <requestid>1366516</requestid>
+  </revision>
 </revisionlist>

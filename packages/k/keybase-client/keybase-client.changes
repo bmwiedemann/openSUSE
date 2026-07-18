@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 18 10:12:34 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- CVE-2026-39824: failure to reject ASCII-only Punycode-encoded labels
+  * Add update-golang-net.patch to update affected dependency.
+
+-------------------------------------------------------------------
 Mon Jun 29 20:36:43 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - CVE-2026-46604: TIFF decoder can panic when decoding an invalid
