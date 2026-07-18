@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 18 05:55:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.6:
+  * Spread OpenAI request metadata into the traced metadata
+  * Capture Pipecat realtime tool calls, transcripts and OpenAI
+    realtime history
+  * Dependency and packaging fixes
+
+-------------------------------------------------------------------
 Thu Jul 16 05:54:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.5:

@@ -87,4 +87,19 @@ Thu May  2 14:17:48 UTC 2024 - Christian Goll &lt;cgoll@suse.com&gt;
     <comment></comment>
     <requestid>1366100</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>a012308689adbed7f42e7785b143edf0</srcmd5>
+    <version>0.10.6</version>
+    <time>1784406288</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.6
+
+- Spread OpenAI request metadata into traced metadata
+- Capture Pipecat realtime tool calls, transcripts and OpenAI realtime history
+- Dependency and packaging fixes
+
+Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
+(354 tests); source_validator clean.</comment>
+    <requestid>1366477</requestid>
+  </revision>
 </revisionlist>
