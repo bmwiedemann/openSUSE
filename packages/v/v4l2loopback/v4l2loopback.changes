@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 18 04:57:47 UTC 2026 - <munix9@googlemail.com>
+
+- Update to version 0.15.4:
+  * Released 0.15.4
+  * Make sure that user-provided max_buffers does not exceed MAX_BUFFERS
+  * Lock image during memcpy access
+  * Use full ordering for buffer mapped flag
+  * trim req_count early
+  * [ci] try again to run kmod-compile on fedora>=41
+
+-------------------------------------------------------------------
 Mon Apr 27 11:11:14 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Adjust suse_version condition since the value of suse_version is
