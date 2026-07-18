@@ -31,9 +31,9 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    260.3
+%define systemd_version    261.1
 %define systemd_release    0
-%define archive_version    +suse.9.ga6ea105861
+%define archive_version    %{nil}
 %endif
 
 %define _testsuitedir %{_systemd_util_dir}/tests
@@ -797,6 +797,7 @@ for the C APIs.
         -Dhomed=%{enabled_with homed} \
         -Dhtml=%{enabled_with docs} \
         -Dhwdb=%{when_not bootstrap} \
+        -Dimds=%{disabled_with bootstrap} \
         -Dimportd=%{enabled_with importd} \
         -Dlocaled=%{when_not bootstrap} \
         -Dmachined=%{when machined} \
@@ -806,6 +807,7 @@ for the C APIs.
         -Dportabled=%{when portabled} \
         -Dremote=%{enabled_with journal_remote} \
         -Dselinux=%{enabled_with selinux} \
+        -Dsysinstall=%{when_not bootstrap} \
         -Dsysusers=true \
         -Dtmpfiles=true \
         -Dvconsole=%{when_not bootstrap} \
@@ -1001,7 +1003,7 @@ echo 'disable *' >%{buildroot}%{_systemd_util_dir}/initrd-preset/99-default.pres
 # the definitions used by SUSE distros diverged from the ones defined by
 # systemd. For lack of a better place some (deprecated) paths are still shipped
 # along with the systemd package.
-rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var}.conf
+rm -f %{buildroot}%{_tmpfilesdir}/{etc,home,legacy,tmp,var,root}.conf
 install -m 644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/systemd-suse.conf
 
 # These 2 following file are useless because on SUSE distros ssh can parse

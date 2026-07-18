@@ -48,14 +48,14 @@
 %doc %{_udevhwdbdir}/README
 %endif
 %doc %{_udevrulesdir}/README
-%ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
-%ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
-%ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 # Main config files have been replaced in favor of drop-ins.
 %ghost %attr(0644,root,root) %{_sysconfdir}/systemd/pstore.conf
 %ghost %attr(0644,root,root) %{_sysconfdir}/systemd/sleep.conf
 %ghost %attr(0644,root,root) %{_sysconfdir}/systemd/timesyncd.conf
 %ghost %attr(0644,root,root) %{_sysconfdir}/udev/iocost.conf
+%ghost %attr(444, root, root) %{_sysconfdir}/udev/hwdb.bin
+%ghost %attr(644, root, root) %{_prefix}/lib/udev/compat-symlink-generation
+%ghost %config(noreplace) %{_sysconfdir}/vconsole.conf
 %{_bindir}/bootctl
 %if %{without bootstrap}
 %{_bindir}/kernel-install
@@ -207,6 +207,7 @@
 %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/300-present.pcrlock
 %{_prefix}/lib/pcrlock.d/700-action-efi-exit-boot-services.pcrlock.d/600-absent.pcrlock
 %{_prefix}/lib/pcrlock.d/750-enter-initrd.pcrlock
+%{_prefix}/lib/pcrlock.d/750-os-separator.pcrlock
 %{_prefix}/lib/pcrlock.d/770-nvpcr-separator.pcrlock
 %{_prefix}/lib/pcrlock.d/800-leave-initrd.pcrlock
 %{_prefix}/lib/pcrlock.d/850-sysinit.pcrlock
@@ -323,9 +324,7 @@
 %{_udevhwdbdir}/70-analyzers.hwdb
 %{_udevhwdbdir}/70-av-production.hwdb
 %{_udevhwdbdir}/70-cameras.hwdb
-%if %{with upstream}
 %{_udevhwdbdir}/70-debug-appliance.hwdb
-%endif
 %{_udevhwdbdir}/70-hardware-wallets.hwdb
 %{_udevhwdbdir}/70-joystick.hwdb
 %{_udevhwdbdir}/70-lights.hwdb

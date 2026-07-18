@@ -407,9 +407,7 @@
 %{_mandir}/man8/systemd-boot-check-no-failures.8.gz
 %{_mandir}/man8/systemd-boot-check-no-failures.service.8.gz
 %{_mandir}/man8/systemd-confext-initrd.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-confext-sysroot.service.8.gz
-%endif
 %{_mandir}/man8/systemd-confext.8.gz
 %{_mandir}/man8/systemd-confext.service.8.gz
 %{_mandir}/man8/systemd-coredump.8.gz
@@ -446,9 +444,7 @@
 %{_mandir}/man8/systemd-sysctl.8.gz
 %{_mandir}/man8/systemd-sysctl.service.8.gz
 %{_mandir}/man8/systemd-sysext-initrd.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-sysext-sysroot.service.8.gz
-%endif
 %{_mandir}/man8/systemd-sysext.8.gz
 %{_mandir}/man8/systemd-sysext.service.8.gz
 %{_mandir}/man8/systemd-system-update-generator.8.gz
@@ -569,9 +565,6 @@
 %{_tmpfilesdir}/credstore.conf
 %{_tmpfilesdir}/journal-nocow.conf
 %{_tmpfilesdir}/provision.conf
-%if %{with upstream}
-%{_tmpfilesdir}/root.conf
-%endif
 %{_tmpfilesdir}/systemd-nologin.conf
 %{_tmpfilesdir}/systemd-suse.conf
 %{_tmpfilesdir}/systemd-tmp.conf
@@ -718,9 +711,7 @@
 %{_unitdir}/systemd-binfmt.service
 %{_unitdir}/systemd-boot-check-no-failures.service
 %{_unitdir}/systemd-confext-initrd.service
-%if %{with upstream}
 %{_unitdir}/systemd-confext-sysroot.service
-%endif
 %{_unitdir}/systemd-confext.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-coredump.socket
@@ -755,9 +746,7 @@
 %{_unitdir}/systemd-soft-reboot.service
 %{_unitdir}/systemd-sysctl.service
 %{_unitdir}/systemd-sysext-initrd.service
-%if %{with upstream}
 %{_unitdir}/systemd-sysext-sysroot.service
-%endif
 %{_unitdir}/systemd-sysext.service
 %{_unitdir}/systemd-sysext.socket
 %{_unitdir}/systemd-sysext@.service

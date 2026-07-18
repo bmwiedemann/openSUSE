@@ -25,7 +25,7 @@
 %dir %{_unitdir}/initrd.target.wants
 %dir %{_unitdir}/storage-target-mode.target.wants
 %endif
-%if %{with upstream}
+%if %{without bootstrap}
 %dir %{_unitdir}/system-install.target.wants
 %endif
 # Main config files have been replaced in favor of drop-ins.
@@ -33,23 +33,17 @@
 %if %{without bootstrap}
 %{_bindir}/oomctl
 %endif
-%if %{with upstream}
 %{_bindir}/storagectl
-%endif
 %{_bindir}/systemd-mstack
 %{_bindir}/systemd-mute-console
 %if %{without bootstrap}
-%if %{with upstream}
 %{_bindir}/systemd-sysinstall
 %{_bindir}/systemd-sysupdate
-%endif
 %{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
-%if %{with upstream}
 %{_datadir}/bash-completion/completions/storagectl
 %{_datadir}/bash-completion/completions/systemd-sysinstall
-%endif
 %{_datadir}/bash-completion/completions/systemd-vmspawn
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Job.xml
@@ -59,29 +53,23 @@
 %{_datadir}/dbus-1/system-services/org.freedesktop.sysupdate1.service
 %{_datadir}/dbus-1/system.d/org.freedesktop.oom1.conf
 %{_datadir}/dbus-1/system.d/org.freedesktop.sysupdate1.conf
-%if %{with upstream}
 %{_datadir}/polkit-1/actions/io.systemd.imds.policy
-%{_datadir}/polkit-1/actions/io.systemd.storage.policy
 %endif
+%{_datadir}/polkit-1/actions/io.systemd.storage.policy
+%if %{without bootstrap}
 %{_datadir}/polkit-1/actions/org.freedesktop.sysupdate1.policy
 %{_datadir}/zsh/site-functions/_oomctl
-%if %{with upstream}
 %{_datadir}/zsh/site-functions/_storagectl
 %{_datadir}/zsh/site-functions/_systemd-sysinstall
-%endif
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
 %if %{with docs}
 %{_mandir}/man1/mount.mstack.1.gz
-%if %{with upstream}
 %{_mandir}/man1/mount.storage.1.gz
-%endif
 %{_mandir}/man1/oomctl.1.gz
-%if %{with upstream}
 %{_mandir}/man1/storagectl.1.gz
 %{_mandir}/man1/systemd-imds-import.service.1.gz
 %{_mandir}/man1/systemd-imds.1.gz
-%endif
 %{_mandir}/man1/systemd-keyutil.1.gz
 %{_mandir}/man1/systemd-measure.1.gz
 %{_mandir}/man1/systemd-mstack.1.gz
@@ -109,12 +97,12 @@
 %{_mandir}/man8/systemd-factory-reset.8.gz
 %{_mandir}/man8/systemd-factory-reset.socket.8.gz
 %{_mandir}/man8/systemd-factory-reset@.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-imds-generator.8.gz
 %{_mandir}/man8/systemd-imdsd-early-network.service.8.gz
 %{_mandir}/man8/systemd-imdsd.8.gz
 %{_mandir}/man8/systemd-imdsd.socket.8.gz
 %{_mandir}/man8/systemd-imdsd@.service.8.gz
+%if %{with upstream}
 %{_mandir}/man8/systemd-machine-tag@.service.8.gz
 %endif
 %{_mandir}/man8/systemd-oomd.8.gz
@@ -130,16 +118,10 @@
 %{_mandir}/man8/systemd-pcrlock-make-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-pcrlogin@.service.8.gz
-%endif
 %{_mandir}/man8/systemd-pcrmachine.service.8.gz
 %{_mandir}/man8/systemd-pcrnvdone.service.8.gz
-%endif
-%if %{with upstream}
 %{_mandir}/man8/systemd-pcrosseparator.service.8.gz
-%endif
-%if %{with sd_boot}
 %{_mandir}/man8/systemd-pcrphase-factory-reset.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
 %{_mandir}/man8/systemd-pcrphase-storage-target-mode.service.8.gz
@@ -159,20 +141,16 @@
 %{_mandir}/man8/systemd-report-sign-tsm@.service.8.gz
 %endif
 %{_mandir}/man8/systemd-ssh-generator.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-storage-block.8.gz
 %{_mandir}/man8/systemd-storage-block.socket.8.gz
 %{_mandir}/man8/systemd-storage-block@.service.8.gz
 %{_mandir}/man8/systemd-storage-fs.8.gz
 %{_mandir}/man8/systemd-storage-fs.socket.8.gz
 %{_mandir}/man8/systemd-storage-fs@.service.8.gz
-%endif
 %{_mandir}/man8/systemd-storagetm.8.gz
 %{_mandir}/man8/systemd-storagetm.service.8.gz
-%if %{with upstream}
 %{_mandir}/man8/systemd-sysinstall.8.gz
 %{_mandir}/man8/systemd-sysinstall.service.8.gz
-%endif
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
 %if %{with upstream}
@@ -190,8 +168,6 @@
 %{_mandir}/man8/systemd-tpm2-setup-early.service.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.8.gz
 %{_mandir}/man8/systemd-tpm2-setup.service.8.gz
-%endif
-%if %{with upstream}
 %{_mandir}/man8/systemd-tpm2-swtpm.8.gz
 %{_mandir}/man8/systemd-tpm2-swtpm.service.8.gz
 %endif
@@ -200,18 +176,11 @@
 %if %{with sd_boot}
 %{_prefix}/lib/nvpcr/cryptsetup.nvpcr
 %{_prefix}/lib/nvpcr/hardware.nvpcr
-%if %{with upstream}
 %{_prefix}/lib/nvpcr/login.nvpcr
-%endif
 %{_prefix}/lib/nvpcr/verity.nvpcr
-%if %{with upstream}
-%{_prefix}/lib/pcrlock.d/750-os-separator.pcrlock
-%endif
 %endif
 %{_sbindir}/mount.mstack
-%if %{with upstream}
 %{_sbindir}/mount.storage
-%endif
 %if %{with importd}
 %{_systemd_util_dir}/oci-registry/default.oci-registry
 %{_systemd_util_dir}/oci-registry/image.alpine.oci-registry
@@ -229,10 +198,8 @@
 %endif
 %{_systemd_util_dir}/systemd-factory-reset
 %if %{without bootstrap}
-%if %{with upstream}
 %{_systemd_util_dir}/systemd-imds
 %{_systemd_util_dir}/systemd-imdsd
-%endif
 %{_systemd_util_dir}/systemd-keyutil
 %{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-oomd
@@ -241,9 +208,9 @@
 %{_systemd_util_dir}/systemd-pcrextend
 %endif
 %{_systemd_util_dir}/systemd-report
-%if %{with upstream}
 %{_systemd_util_dir}/systemd-report-basic
 %{_systemd_util_dir}/systemd-report-cgroup
+%if %{with upstream}
 %{_systemd_util_dir}/systemd-report-files
 %{_systemd_util_dir}/systemd-report-sign-plain
 %{_systemd_util_dir}/systemd-report-sign-tsm
@@ -253,10 +220,8 @@
 %endif
 %{_systemd_util_dir}/systemd-ssh-issue
 %{_systemd_util_dir}/systemd-ssh-proxy
-%if %{with upstream}
 %{_systemd_util_dir}/systemd-storage-block
 %{_systemd_util_dir}/systemd-storage-fs
-%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-storagetm
 %{_systemd_util_dir}/systemd-sysupdate
@@ -265,9 +230,7 @@
 %if %{with sd_boot}
 %{_systemd_util_dir}/systemd-tpm2-clear
 %{_systemd_util_dir}/systemd-tpm2-setup
-%if %{with upstream}
 %{_systemd_util_dir}/systemd-tpm2-swtpm
-%endif
 %endif
 %{_systemd_util_dir}/systemd-validatefs
 %if %{without bootstrap}
@@ -275,25 +238,17 @@
 %endif
 %{_systemdgeneratordir}/systemd-factory-reset-generator
 %if %{without bootstrap}
-%if %{with upstream}
 %{_systemdgeneratordir}/systemd-imds-generator
-%endif
 %endif
 # ssh-generator: in the futur to be moved to the main package
 %{_systemdgeneratordir}/systemd-ssh-generator
 %if %{with sd_boot}
 %{_systemdgeneratordir}/systemd-tpm2-generator
-%if %{with upstream}
+%endif
+%if %{without bootstrap}
 %{_sysusersdir}/systemd-imds.conf
-%endif
-%endif
-%if %{without bootstrap}
 %{_sysusersdir}/systemd-oom.conf
-%endif
-%if %{with upstream}
 %{_udevhwdbdir}/40-imds.hwdb
-%endif
-%if %{without bootstrap}
 %{_unitdir}/dbus-org.freedesktop.sysupdate1.service
 %endif
 %{_unitdir}/factory-reset-now.target
@@ -313,9 +268,9 @@
 %if %{with sd_boot}
 %{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
 %endif
-%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-storage-block.socket
 %{_unitdir}/sockets.target.wants/systemd-storage-fs.socket
+%if %{with upstream}
 %{_unitdir}/sockets.target.wants/systemd-sysupdate.socket
 %endif
 %if %{without bootstrap}
@@ -325,17 +280,15 @@
 %{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrnvdone.service
-%if %{with upstream}
 %{_unitdir}/sysinit.target.wants/systemd-pcrosseparator.service
-%endif
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrproduct.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup-early.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup.service
 %endif
-%if %{with upstream}
 %{_unitdir}/system-install.target
+%if %{without bootstrap}
 %{_unitdir}/system-install.target.wants/systemd-sysinstall.service
 %endif
 %{_unitdir}/system-systemd\x2dmute\x2dconsole.slice
@@ -347,15 +300,17 @@
 %{_unitdir}/systemd-factory-reset-request.service
 %{_unitdir}/systemd-factory-reset.socket
 %{_unitdir}/systemd-factory-reset@.service
-%if %{with upstream}
 %if %{without bootstrap}
 %{_unitdir}/systemd-imds-early-network.service
 %{_unitdir}/systemd-imds-import.service
+%if %{with upstream}
 %{_unitdir}/systemd-imds-metrics.socket
 %{_unitdir}/systemd-imds-metrics@.service
+%endif
 %{_unitdir}/systemd-imdsd.socket
 %{_unitdir}/systemd-imdsd@.service
 %endif
+%if %{with upstream}
 %{_unitdir}/systemd-journalctl-metrics.socket
 %{_unitdir}/systemd-journalctl-metrics@.service
 %endif
@@ -386,14 +341,10 @@
 %{_unitdir}/systemd-pcrlock-secureboot-authority.service
 %{_unitdir}/systemd-pcrlock-secureboot-policy.service
 %{_unitdir}/systemd-pcrlock@.service
-%if %{with upstream}
 %{_unitdir}/systemd-pcrlogin@.service
-%endif
 %{_unitdir}/systemd-pcrmachine.service
 %{_unitdir}/systemd-pcrnvdone.service
-%if %{with upstream}
 %{_unitdir}/systemd-pcrosseparator.service
-%endif
 %{_unitdir}/systemd-pcrphase-factory-reset.service
 %{_unitdir}/systemd-pcrphase-initrd.service
 %{_unitdir}/systemd-pcrphase-storage-target-mode.service
@@ -401,11 +352,11 @@
 %{_unitdir}/systemd-pcrphase.service
 %{_unitdir}/systemd-pcrproduct.service
 %endif
-%if %{with upstream}
 %{_unitdir}/systemd-report-basic.socket
 %{_unitdir}/systemd-report-basic@.service
 %{_unitdir}/systemd-report-cgroup.socket
 %{_unitdir}/systemd-report-cgroup@.service
+%if %{with upstream}
 %{_unitdir}/systemd-report-files.socket
 %{_unitdir}/systemd-report-files@.service
 %{_unitdir}/systemd-report-sign-plain.socket
@@ -414,16 +365,15 @@
 %{_unitdir}/systemd-report-sign-tsm@.service
 %{_unitdir}/systemd-report.socket
 %{_unitdir}/systemd-report@.service
+%endif
 %{_unitdir}/systemd-storage-block.socket
 %{_unitdir}/systemd-storage-block@.service
 %{_unitdir}/systemd-storage-fs.socket
 %{_unitdir}/systemd-storage-fs@.service
-%endif
 %if %{without bootstrap}
 %{_unitdir}/systemd-storagetm.service
-%endif
-%if %{with upstream}
 %{_unitdir}/systemd-sysinstall.service
+%if %{with upstream}
 %{_unitdir}/systemd-sysupdate-notify-bootctl.socket
 %{_unitdir}/systemd-sysupdate-notify-bootctl@.service
 %{_unitdir}/systemd-sysupdate-notify-pcrlock.socket
@@ -431,7 +381,6 @@
 %{_unitdir}/systemd-sysupdate-notify-sysext.socket
 %{_unitdir}/systemd-sysupdate-notify-sysext@.service
 %endif
-%if %{without bootstrap}
 %{_unitdir}/systemd-sysupdate-reboot.service
 %{_unitdir}/systemd-sysupdate-reboot.timer
 %if %{with upstream}
@@ -452,22 +401,16 @@
 %{_unitdir}/systemd-tpm2-clear.service
 %{_unitdir}/systemd-tpm2-setup-early.service
 %{_unitdir}/systemd-tpm2-setup.service
-%if %{with upstream}
 %{_unitdir}/systemd-tpm2-swtpm.service
-%endif
 %endif
 %{_unitdir}/systemd-validatefs@.service
 %if %{without bootstrap}
 %{_unitdir}/systemd-vmspawn@.service
 %endif
 %{_userunitdir}/sockets.target.wants/systemd-journalctl.socket
-%if %{with upstream}
 %{_userunitdir}/sockets.target.wants/systemd-storage-fs.socket
-%endif
 %{_userunitdir}/systemd-journalctl.socket
 %{_userunitdir}/systemd-journalctl@.service
-%if %{with upstream}
 %{_userunitdir}/systemd-storage-fs.socket
 %{_userunitdir}/systemd-storage-fs@.service
-%endif
 /usr/etc/profile.d/80-systemd-osc-context.sh

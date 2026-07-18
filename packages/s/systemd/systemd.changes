@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 08:29:34 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Upgrade to v261 (commit eff9446d505d62c075bed37d606860b38cfe51fb)
+
+  See https://github.com/openSUSE/systemd/blob/SUSE/v261/NEWS for details.
+
+-------------------------------------------------------------------
 Mon Jun 29 16:31:14 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit a6ea105861b47842aed56242325ac1f33603c9c6 (merge of v260.3)
@@ -10711,7 +10718,6 @@ Wed Feb 26 12:43:17 UTC 2014 - werner@suse.de
   device as this ensures at shutdown that the NFS share becomes
   unmounted before the interface is down (bnc#861489)
 
-+-------------------------------------------------------------------
 -------------------------------------------------------------------
 Sun Feb 23 23:47:06 UTC 2014 - stefan.bruens@rwth-aachen.de
 

@@ -8092,4 +8092,13 @@ handle manual pages that consist only of a .so directive such as
   v260.3.</comment>
     <requestid>1362701</requestid>
   </revision>
+  <revision rev="472" vrev="1">
+    <srcmd5>a251d717c3f669e8045b6a7953361bc1</srcmd5>
+    <version>261.1</version>
+    <time>1784406250</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to v261 (commit eff9446d505d62c075bed37d606860b38cfe51fb)
+  See https://github.com/openSUSE/systemd/blob/SUSE/v261/NEWS for details.</comment>
+    <requestid>1365923</requestid>
+  </revision>
 </revisionlist>

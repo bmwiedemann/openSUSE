@@ -28,9 +28,7 @@
 %{_mandir}/man5/resolved.conf.5.gz
 %{_mandir}/man5/resolved.conf.d.5.gz
 %{_mandir}/man5/systemd.dns-delegate.5.gz
-%if %{with upstream}
 %{_mandir}/man5/systemd.rr.5.gz
-%endif
 %{_mandir}/man8/libnss_resolve.so.2.8.gz
 %{_mandir}/man8/nss-resolve.8.gz
 %{_mandir}/man8/systemd-resolved.8.gz
