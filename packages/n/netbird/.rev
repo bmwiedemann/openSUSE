@@ -470,4 +470,24 @@
     <comment></comment>
     <requestid>1365434</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>da18920c8e43df601d123b909315ad7e</srcmd5>
+    <version>0.74.5</version>
+    <time>1784126664</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.74.5
+  - [proxy] enforce model allowlist for URL-routed providers
+    (Bedrock/Vertex) by @mlsmaycon in #6764
+  - [management] Remove proxy peer stale deduplication logic by
+    @mlsmaycon in #6768 (forwarded request 1365778 from darix)</comment>
+    <requestid>1365779</requestid>
+  </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>ae52253846a7852110fb8f17efdb0aed</srcmd5>
+    <version>0.74.7</version>
+    <time>1784406271</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366456</requestid>
+  </revision>
 </revisionlist>

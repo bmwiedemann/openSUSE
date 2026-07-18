@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:31:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.7
+  - [relay] Handle QUIC connections concurrently to prevent
+    handshake head-of-line blocking by @lixmal in #6784
+  - [client] Reject leading hyphen in getent input to prevent flag
+    injection by @lixmal in #6787
+  - [client] Sanitize peer FQDN/hostname in generated SSH config by
+    @riccardomanfrin in #6805
+  - [client] Disable gVisor TCP RACK loss detection on Windows by
+    @lixmal in #6808
+  - [client] Rename isValidAccessToken to reflect audience-only
+    check by @riccardomanfrin in #6806
+  - [client] Bind netstack SOCKS5 proxy to 127.0.0.1 by default by
+    @riccardomanfrin in #6812
+  - [client] Evaluate IP fragments against firewall ACLs by @lixmal
+    in #6781
+
+-------------------------------------------------------------------
+Thu Jul 16 00:52:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.6
+  - [client] ios: preserve WireGuard key on interactive re-login
+    (#6777)
+
+-------------------------------------------------------------------
+Tue Jul 14 21:28:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.74.5
+  - [proxy] enforce model allowlist for URL-routed providers
+    (Bedrock/Vertex) by @mlsmaycon in #6764
+  - [management] Remove proxy peer stale deduplication logic by
+    @mlsmaycon in #6768
+
+-------------------------------------------------------------------
 Sat Jul 11 12:23:48 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.74.4
