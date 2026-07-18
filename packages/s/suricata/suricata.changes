@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 11 13:56:39 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.6:
+  * CVE-2026-57227: HIGH
+  * CVE-2026-57229: MODERATE
+  * CVE-2026-57224: MODERATE
+  * CVE-2026-57222: MODERATE
+  * CVE-2026-57228: HIGH
+  * Multiple vulnerabilities still pending a CVE
+
+-------------------------------------------------------------------
 Mon Jul  6 12:38:00 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Fix TOCTOU issue in %post (bsc#1270362, CVE-2026-59674)
