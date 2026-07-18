@@ -248,4 +248,20 @@ support for software auditability among other things</comment>
     <comment></comment>
     <requestid>1355644</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b293f40890f2b8d440c168f5c64c28a8</srcmd5>
+    <version>2.34.8</version>
+    <time>1784127311</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365947</requestid>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>9162141096bb8b022d1b3f21bf6c07cd</srcmd5>
+    <version>2.35.1</version>
+    <time>1784406298</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366512</requestid>
+  </revision>
 </revisionlist>

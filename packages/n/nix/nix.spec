@@ -26,7 +26,7 @@
 %bcond_with docs
 
 Name:           nix
-Version:        2.34.7
+Version:        2.35.1
 Release:        0
 Summary:        The purely functional package manager
 License:        LGPL-2.1-only
@@ -36,7 +36,6 @@ Source1:        nix.conf
 Source2:        sysusers.conf
 Source3:        README.SUSE
 Source9:        series
-Patch1:         0001-port-option-to-disable-functional-tests-to-meson.patch
 Patch2:         0002-restrict-nix-daemon-socket.patch
 BuildRequires:  bison
 BuildRequires:  boost-devel
@@ -79,6 +78,7 @@ BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(mimalloc)
 # Needed by -Dembedded-sandbox-shell
 Requires:       busybox-static
 Requires:       jq
@@ -166,7 +166,7 @@ echo %{version} > .version
     --localstatedir=%{_sharedstatedir}/nix \
     --libdir=%{_libdir}/nix/ \
     -Dunit-tests=false \
-    -Dfunctional-tests=disabled \
+    -Dfunctional-tests=false \
     -Djson-schema-checks=false \
     -Dlibcmd:readline-flavor=readline \
     -Dlibstore:embedded-sandbox-shell=true \
@@ -187,11 +187,13 @@ mv %{buildroot}%{_prefix}%{_sysconfdir} %{buildroot}
 # fix pkgconfig installation location
 mv %{buildroot}%{_libdir}/nix/pkgconfig/ %{buildroot}%{_libdir}
 
+%if %{with perl}
 # fix perl bindings installation location
 install_dir="%{buildroot}%{_prefix}/lib/perl5/vendor_perl"
 mkdir -p "$install_dir"
 mv %{buildroot}%{_libdir}/nix/perl5/site_perl/* "$install_dir/"
 rm -rf %{buildroot}%{_libdir}/nix/perl5
+%endif
 
 # nix.conf
 install -D -m 0644 -t %{buildroot}%{_sysconfdir}/%{name}/ %{SOURCE1}
@@ -201,6 +203,8 @@ install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}.conf
 # add nix libdir to ld.so.conf.d
 mkdir -p %{buildroot}%{_sysconfdir}/ld.so.conf.d
 echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
+
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_localstatedir}/adm/update-messages/%{name}-security
 
 %fdupes %{buildroot}
 
@@ -217,11 +221,6 @@ echo "%{_libdir}/nix/" > %{buildroot}/%{_sysconfdir}/ld.so.conf.d/nix.conf
 %tmpfiles_create %{_tmpfilesdir}/nix-daemon.conf
 %service_add_post %{services}
 %{ldconfig}
-%if "%{version}" == "2.34.7"
-# inform users about the restricted socket access
-mkdir -p %{_localstatedir}/adm/update-messages/
-cat %{_docdir}/nix/README.SUSE > %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-security
-%endif
 
 %postun
 %service_del_postun %{services}
@@ -229,7 +228,8 @@ cat %{_docdir}/nix/README.SUSE > %{_localstatedir}/adm/update-messages/%{name}-%
 
 %files
 %license COPYING
-%doc doc/manual/source/release-notes/rl-2.34.md
+%{_localstatedir}/adm/update-messages/%{name}-security
+%doc doc/manual/source/release-notes/rl-2.35.md
 %doc CONTRIBUTING.md README.md README.SUSE
 # config files
 %config(noreplace) %{_sysconfdir}/nix/
@@ -271,10 +271,12 @@ cat %{_docdir}/nix/README.SUSE > %{_localstatedir}/adm/update-messages/%{name}-%
 %{_includedir}/nix_api_store/
 %{_libdir}/pkgconfig/nix*
 
+%if %{with perl}
 # perl bindings
 %{perl_vendorarch}/Nix
 %dir %{perl_vendorarch}/auto
 %{perl_vendorarch}/auto/Nix
+%endif
 
 %files bash-completion
 %{_datadir}/bash-completion/completions/nix
