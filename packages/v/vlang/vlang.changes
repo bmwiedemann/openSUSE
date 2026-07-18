@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 18 13:37:02 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 0.5.2:
+  * v2 eval backend
+  * Implement @[soa] struct attribute for Structure of Arrays
+    transformation
+  * Initial version of ownership via -ownership
+  * VGC, a concurrent tri-color mark-and-sweep GC
+  * Enable the new V2 backend via v -v2 file.v
+  * Allow negative indexing of array like arr#[-1]
+  * Add power operator **
+  * Comptime $if bsd
+  * vweb removed entirely
+  * Add operator overloading for []
+  * Add new standard module: mcp
+  * Full changelog at
+    https://github.com/vlang/v/releases/tag/0.5.2
+
+- Fix stage0 bootstrap linking by placing libm and other libraries
+  after the generated C source.
+
+-------------------------------------------------------------------
 Sat Jul 11 11:53:55 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Require mbedtls-3-devel explicitly to fix compilation.

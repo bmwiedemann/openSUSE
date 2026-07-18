@@ -108,4 +108,28 @@ focus on simplicity and maintainability</comment>
   * Add OS-specific headers support for #include directives</comment>
     <requestid>1364987</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e4ad9458a38058b530fbbca4c4b95e55</srcmd5>
+    <version>0.5.2</version>
+    <time>1784406312</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.5.2:
+  * v2 eval backend
+  * Implement @[soa] struct attribute for Structure of Arrays
+    transformation
+  * Initial version of ownership via -ownership
+  * VGC, a concurrent tri-color mark-and-sweep GC
+  * Enable the new V2 backend via v -v2 file.v
+  * Allow negative indexing of array like arr#[-1]
+  * Add power operator **
+  * Comptime $if bsd
+  * vweb removed entirely
+  * Add operator overloading for []
+  * Add new standard module: mcp
+  * Full changelog at
+    https://github.com/vlang/v/releases/tag/0.5.2
+- Fix stage0 bootstrap linking by placing libm and other libraries
+  after the generated C source.</comment>
+    <requestid>1366528</requestid>
+  </revision>
 </revisionlist>

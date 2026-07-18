@@ -17,7 +17,7 @@
 #
 
 # git revision
-%global vc_gitrev   f461dfebcdfac3c75fdf28fec80c07f0a7a9a53d
+%global vc_gitrev   bd654de8a3e275178908fe824d29f58c70baaae5
 
 # custom paths and variables
 %global vflags      -cc gcc -d dynamic_boehm
@@ -25,7 +25,7 @@
 %global vexe        %{vexe_root}/%{name}
 
 Name:           vlang
-Version:        0.5.1
+Version:        0.5.2
 Release:        0
 Summary:        The V Programming Language
 License:        MIT AND BSD-2-Clause
@@ -48,11 +48,13 @@ BuildRequires:  findutils
 BuildRequires:  pkgconfig
 # For VFLAGS="-d dynamic_boehm"
 BuildRequires:  pkgconfig(bdw-gc)
+BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(libcjson)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  mbedtls-3-devel
 # For vshare tool
 BuildRequires:  pkgconfig(x11)
+Requires:       pkgconfig(sqlite3)
 Requires:       pkgconfig(bdw-gc)
 Requires:       pkgconfig(libcjson)
 Requires:       pkgconfig(libzstd)
@@ -104,7 +106,7 @@ export STAGE2_FLAGS='-nocache'
 
 # stage 0: build the V compiler from the transpiled C code
 # Build intermediate stages without LTO to speed up bootstrapping
-${CC} ${CFLAGS/-flto=auto/} ${LDFLAGS/-flto=auto/} ${STAGE0_FLAGS} -o %{name}-stage0 %{SOURCE1}
+${CC} ${CFLAGS/-flto=auto/} -o %{name}-stage0 %{SOURCE1} ${LDFLAGS/-flto=auto/} ${STAGE0_FLAGS}
 # stage 1: build without parallelism
 ./%{name}-stage0 ${VFLAGS} ${STAGE1_FLAGS} -o %{name}-stage1 cmd/v
 # stage 2: build with parallelism and -prod

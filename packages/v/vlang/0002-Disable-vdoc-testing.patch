@@ -7,11 +7,11 @@ Subject: [PATCH 2/2] Disable vdoc testing
  cmd/tools/vtest-self.v | 1 -
  1 file changed, 1 deletion(-)
 
-Index: v-0.5.1/cmd/tools/vtest-self.v
+Index: v-0.5.2/cmd/tools/vtest-self.v
 ===================================================================
---- v-0.5.1.orig/cmd/tools/vtest-self.v
-+++ v-0.5.1/cmd/tools/vtest-self.v
-@@ -25,7 +25,6 @@ const vroot = os.dir(os.real_path(os.get
+--- v-0.5.2.orig/cmd/tools/vtest-self.v
++++ v-0.5.2/cmd/tools/vtest-self.v
+@@ -27,7 +27,6 @@ const temporarily_disabled_self_test_vli
  
  const essential_list = [
  	'cmd/tools/vvet/vet_test.v',

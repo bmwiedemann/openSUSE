@@ -14,20 +14,20 @@ shared library.
  vlib/builtin/builtin_d_gcboehm.c.v | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: v-0.5.1/vlib/builtin/builtin_d_gcboehm.c.v
+Index: v-0.5.2/vlib/builtin/builtin_d_gcboehm.c.v
 ===================================================================
---- v-0.5.1.orig/vlib/builtin/builtin_d_gcboehm.c.v
-+++ v-0.5.1/vlib/builtin/builtin_d_gcboehm.c.v
-@@ -61,7 +61,7 @@ $if dynamic_boehm ? {
- 						#flag -Xlinker -rpath -Xlinker "@VEXEROOT/thirdparty/tcc/lib"
+--- v-0.5.2.orig/vlib/builtin/builtin_d_gcboehm.c.v
++++ v-0.5.2/vlib/builtin/builtin_d_gcboehm.c.v
+@@ -100,7 +100,7 @@ $if dynamic_boehm ? {
+ 						}
+ 						#flag -lgc
+ 					} $else {
+-						#flag @VEXEROOT/thirdparty/tcc/lib/libgc.a
++						#flag -lgc
  					}
- 				} $else {
--					#flag @VEXEROOT/thirdparty/tcc/lib/libgc.a
-+					#flag -lgc
  				}
  			}
- 		}
-@@ -107,7 +107,7 @@ $if dynamic_boehm ? {
+@@ -155,7 +155,7 @@ $if dynamic_boehm ? {
  			#flag -DGC_BUILTIN_ATOMIC=1
  			#flag -I @VEXEROOT/thirdparty/libgc/include
  			$if !use_bundled_libgc ? {

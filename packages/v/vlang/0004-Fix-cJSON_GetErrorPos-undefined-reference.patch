@@ -13,11 +13,11 @@ functionally equivalent as error_ptr points into the root string.
  vlib/v/gen/c/json.v | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: v-0.5.1/vlib/v/gen/c/json.v
+Index: v-0.5.2/vlib/v/gen/c/json.v
 ===================================================================
---- v-0.5.1.orig/vlib/v/gen/c/json.v
-+++ v-0.5.1/vlib/v/gen/c/json.v
-@@ -87,7 +87,7 @@ ${dec_fn_dec} {
+--- v-0.5.2.orig/vlib/v/gen/c/json.v
++++ v-0.5.2/vlib/v/gen/c/json.v
+@@ -113,7 +113,7 @@ ${dec_fn_dec} {
  	if (!root) {
  		const char *error_ptr = cJSON_GetErrorPtr();
  		if (error_ptr != NULL) {
