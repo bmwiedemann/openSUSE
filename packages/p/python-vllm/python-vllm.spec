@@ -66,7 +66,7 @@ Requires:       python-blake3
 Requires:       python-cachetools
 Requires:       python-cbor2
 Requires:       python-cloudpickle
-Requires:       python-compressed-tensors = 0.17.0
+Requires:       python-compressed-tensors = 0.17.1
 Requires:       python-depyf = 0.20.0
 Requires:       python-diskcache = 5.6.3
 Requires:       python-einops

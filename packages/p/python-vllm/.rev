@@ -7,4 +7,12 @@
     <comment>Fix runtime Requires to use canonical openSUSE package names (python-Pillow, python-PyYAML, python-mistral-common, python-prometheus-client) so the package is installable - addresses dimstar's staging report on sr#1365523. All deps verified present in Factory.</comment>
     <requestid>1366231</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a6a1a6eb87076a798833f0d1374df1c3</srcmd5>
+    <version>0.25.0</version>
+    <time>1784406318</time>
+    <user>dimstar_suse</user>
+    <comment>Require python-compressed-tensors 0.17.1 (depends on SR 1366537 for python-compressed-tensors; please co-stage)</comment>
+    <requestid>1366538</requestid>
+  </revision>
 </revisionlist>

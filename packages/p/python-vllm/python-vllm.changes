@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:34:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Track the python-compressed-tensors 0.17.1 update: require
+  python-compressed-tensors = 0.17.1 (API-compatible patch
+  release; the quantization code path is unaffected).
+
+-------------------------------------------------------------------
 Thu Jul 16 17:24:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix runtime requirements to use canonical openSUSE package
