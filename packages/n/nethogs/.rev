@@ -99,4 +99,23 @@
   * determineVersion.sh: prevent traversing into outer git repo for git-describe call by @BubuOT in #279</comment>
     <requestid>1240892</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ff16023e272d8157ec6089e083aa13cd</srcmd5>
+    <version>0.9.0</version>
+    <time>1784406263</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1365291 from mnhauke
+
+- Update to version 0.9.0
+  * meson: cleanup version detection. #285
+  * meson: fix library name. #288
+  * Add missing security flags and include CPPFLAGS in libnethogs.
+  * Allow overriding VERSION from environment. #292
+  * src/meson.build: remove unused ncurses++ dependency. #304
+  * main,inode2prog: add missing time.h includes. #305
+  * Fix 'Error opening terminal' with unknown TERM under sudo. #308
+  * Exit on Ctrl-C in the curses UI. #310
+- Use meson instead of classic Makefiles.</comment>
+    <requestid>1366455</requestid>
+  </revision>
 </revisionlist>

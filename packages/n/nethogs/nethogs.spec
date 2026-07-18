@@ -1,7 +1,7 @@
 #
 # spec file for package nethogs
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nethogs
-Version:        0.8.8
+Version:        0.9.0
 Release:        0
 Summary:        Network Bandwidth Usage Monitor
 License:        GPL-2.0-or-later
@@ -28,6 +28,7 @@ Source:         https://github.com/raboof/nethogs/archive/v%{version}/nethogs-v%
 Source3:        https://keybase.io/raboof/key.asc#/%{name}.keyring
 BuildRequires:  gcc-c++
 BuildRequires:  libpcap-devel
+BuildRequires:  meson
 BuildRequires:  ncurses-devel
 
 %description
@@ -42,24 +43,14 @@ gone wild and are suddenly taking up your bandwidth.
 %autosetup -p1
 
 %build
-%make_build \
-    sbin="%{_sbindir}" \
-    bin="%{_sbindir}" \
-    man8="%{_mandir}/man8" \
-    CFLAGS="%{optflags}" \
-    CXXFLAGS="%{optflags}" \
-    CXX="g++" \
-    nethogs
+%meson \
+    --bindir=/usr/sbin \
+    -Denable-libnethogs=disabled
+%meson_build
 
 %install
-make  %{?_smp_mflags} \
-    sbin="%{buildroot}%{_sbindir}" \
-    bin="%{buildroot}%{_sbindir}" \
-    man8="%{buildroot}%{_mandir}/man8" \
-    CFLAGS="%{optflags}" \
-    CXXFLAGS="%{optflags}" \
-    CXX="g++" \
-    install
+%meson_install
+install -Dpm 0644 doc/nethogs.8 -t %{buildroot}%{_mandir}/man8/
 
 %check
 %make_build test
