@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Jul 12 12:28:21 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.8.33:
+  This release brings significant improvements to the msmtpq
+  script, and important bug fixes to the msmtpd daemon, along
+  with an assortment of smaller bug fixes.
+- add fix_base64_build.patch from pull request 226:
+  fix build with older gcc versions
+
+-------------------------------------------------------------------
 Sun Oct 12 16:13:38 UTC 2025 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.8.32:

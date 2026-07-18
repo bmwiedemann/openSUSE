@@ -569,4 +569,15 @@ update to version 1.8.30</comment>
 update to version 1.8.32</comment>
     <requestid>1311050</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>3b12d082bf3d859e663a5e173650e62c</srcmd5>
+    <version>1.8.33</version>
+    <time>1784406268</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1365062 from benoit_monin
+
+- update to version 1.8.33
+- add fix_base64_build.patch from pull request 226: fix build with older gcc versions</comment>
+    <requestid>1366454</requestid>
+  </revision>
 </revisionlist>

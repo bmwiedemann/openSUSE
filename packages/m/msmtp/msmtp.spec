@@ -1,7 +1,7 @@
 #
 # spec file for package msmtp
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           msmtp
-Version:        1.8.32
+Version:        1.8.33
 Release:        0
 BuildRequires:  gnutls-devel >= 3.4
 BuildRequires:  libidn2-devel
@@ -51,6 +51,8 @@ URL:            https://marlam.de/msmtp/
 Source:         https://marlam.de/msmtp/releases/msmtp-%{version}.tar.xz
 Source1:        https://marlam.de/msmtp/releases/msmtp-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
+# PATCH-FIX-UPSTREAM https://patch-diff.githubusercontent.com/raw/marlam/msmtp/pull/226.patch
+Patch1:         fix_base64_build.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -94,7 +96,7 @@ This subpackage provides a mail transfer agent that can be used as
 a minimalistic replacement of sendmail and a minimal SMTP server.
 
 %prep
-%setup -q
+%autosetup -p1
 # fix bash and sh scripts shebang while preserving mtime
 for i in scripts/msmtpqueue/*.sh \
          scripts/msmtpq/msmtpq \
