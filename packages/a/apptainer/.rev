@@ -633,4 +633,15 @@
     has been removed with this version of apptainer.</comment>
     <requestid>1364264</requestid>
   </revision>
+  <revision rev="47" vrev="4">
+    <srcmd5>54d4d06d80918edd25ae8b0dc06c96eb</srcmd5>
+    <version>1.5.1</version>
+    <time>1784406293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1266656).
+  The fix in v0.55.0 only applied to Unicode versions &gt;=16.0.0
+  which aren't yet available on any Golang versions released.</comment>
+    <requestid>1366478</requestid>
+  </revision>
 </revisionlist>

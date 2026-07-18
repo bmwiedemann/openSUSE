@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Jul 18 04:58:31 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1266656).
+  The fix in v0.55.0 only applied to Unicode versions >=16.0.0
+  which aren't yet available on any Golang versions released.
+
+-------------------------------------------------------------------
 Mon Jun 29 18:34:42 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Enable building of SUID starter for SLES 15 (jsc#PED-16347).
