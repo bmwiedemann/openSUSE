@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Sat Jul 18 18:33:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.1:
+  * Support loading safetensors on the meta device
+  * Use explicit class patching for load_offloaded_model
+  * Ignore non-linear MoE gate layers
+
+-------------------------------------------------------------------
+Sun Jul 12 13:54:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-compressed-tensors 0.17.0
+  * Library extending the safetensors format to store and manage
+    compressed (quantized and sparse) tensor data for neural
+    network models
