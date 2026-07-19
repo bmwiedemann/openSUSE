@@ -405,7 +405,7 @@
     <package name="fprintd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="fprintd-pam" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="fprintd-pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="freecell-solver-presets" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fribidi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="fuse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -677,7 +677,7 @@
     <package name="gvfs" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gvfs-backend-afc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs-backend-goa" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gvfs-backend-gphoto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="gvfs-backend-gphoto" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="gvfs-backend-samba" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gvfs-backends" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
     <package name="gvfs-fuse" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1005,8 +1005,8 @@
     <package name="kio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kio_audiocd-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
-    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="kio_kamera" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="kio_kamera-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="kirigami-addons6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kirigami-addons6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="kiten" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
@@ -1644,7 +1644,7 @@
     <package name="libatspi0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libattr1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libaudit1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libaudit1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libaudit1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libaugeas0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libauparse0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libavahi-client3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1781,11 +1781,11 @@
     <package name="libcpuinfo-suse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcpupower1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcreaterepo_c1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcroco-0_6-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcrypt1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libcrypt1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcryptmount0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libcrypto-awslc0" supportstatus="unsupported"/> <!-- reason: dvd:sendmail -->
     <package name="libcryptsetup12" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -1855,7 +1855,7 @@
     <package name="libebur128-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libecal-2_0-3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libeconf0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libeconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libeconf0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libedata-book-1_2-27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedata-cal-2_0-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libedataserver-1_2-27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2018,9 +2018,9 @@
     <package name="libgpg-error0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgpgme45" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libgpgmepp7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libgphoto2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
-    <package name="libgphoto2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
-    <package name="libgphoto2_port12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_imaging -->
+    <package name="libgphoto2-6" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libgphoto2-6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libgphoto2_port12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libgpm2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libgpod-lang" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
     <package name="libgpod-tools" supportstatus="unsupported"/> <!-- reason: dvd:amarok -->
@@ -2441,7 +2441,7 @@
     <package name="libpcre2-16-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpcre2-32-0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libpcre2-8-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libpcre2-8-0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpcre2-posix3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libpcsclite1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpeas-1_0-1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
@@ -2506,7 +2506,7 @@
     <package name="libpulse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpwquality1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libpwquality1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libpxbackend-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpython3_13-1_0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libpython3_13-1_0-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2602,7 +2602,7 @@
     <package name="libsecret-1-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libsecret-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libselinux1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libselinux1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libsemanage-conf" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsemanage2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsensors4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2687,7 +2687,7 @@
     <package name="libsynctex2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libsysfs2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libsystemd0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libsystemd0-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libtag2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libtag_c2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="libtalloc2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -2920,7 +2920,7 @@
     <package name="libyuv0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz-ng-compat1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libz1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libz1-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libz1-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libzbar0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libzck1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3147,7 +3147,7 @@
     <package name="p11-kit-server" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="p11-kit-tools" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="pam-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="pam-config" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-extra" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="pam-manpages" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3157,7 +3157,7 @@
     <package name="pam_mount" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="pam_pkcs11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="pam_pwquality" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="pam_pwquality-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="paperkey" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="paratype-pt-mono-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="paratype-pt-sans-fonts" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

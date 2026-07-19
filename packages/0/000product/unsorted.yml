@@ -2531,8 +2531,6 @@ unsorted:
   - combustion 
   - comet 
   - commandergenius 
-  - commons-compiler 
-  - commons-compiler-jdk 
   - compartm 
   - compat-usrmerge 
   - compat-usrmerge-build 
@@ -2630,6 +2628,7 @@ unsorted:
   - containerized-data-importer1.65-importer 
   - containerized-data-importer1.65-manifests 
   - containerized-data-importer1.65-operator 
+  - containerized-data-importer1.65-tests 
   - containerized-data-importer1.65-uploadproxy 
   - containerized-data-importer1.65-uploadserver 
   - containers-systemd 
@@ -9328,8 +9327,6 @@ unsorted:
   - janet 
   - janet-devel 
   - janet-devel-static 
-  - janino 
-  - janino-javadoc 
   - jansi 
   - jansi-javadoc 
   - jaq 
@@ -16651,7 +16648,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_5 
+  - libsuricata8_0_6 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
