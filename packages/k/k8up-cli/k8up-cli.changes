@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:54:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.16.0:
+  * Features
+    - Add unit tests for restic config validation and API types
+      (#1166)
+    - Add BACKUP_GLOBAL_SKIP_SNAPSHOT_SYNC flag (#1196)
+    - monitoring: add k8up_schedule_last_job_succeeded gauge
+      (#1216)
+    - Preserve volumeMounts from PodConfig (#1223)
+    - On schedule creation, create labeled metrics with value 0
+      (#1203)
+  * Fixes
+    - Fix trailing slash in S3 endpoint causing empty bucket name
+      (#1160)
+    - Fix nil pointer panic in S3Spec.RestoreEnvVars with nil
+      receiver (#1156)
+    - Fix relaxed scheduling for mounted RWO volumes (#1198)
+    - Restrict job history cleanup to siblings of the same owner
+      (#1213)
+    - Fix potentially duplicate volumes and mounts (#1234)
+  * Dependency Updates
+    - Update mergo to v1 (dario.cat/mergo) (#1173)
+    - Update module github.com/restic/restic to v0.19.0 (#1217)
+    - Update module github.com/urfave/cli/v2 to v2.27.7 (#1194)
+    - Update module dario.cat/mergo to v1.0.2 (#1209)
+
+-------------------------------------------------------------------
+Wed Mar 25 12:58:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.0:
+  * Add flag to enable websocket fallback
+  * Document shell completion for the K8up CLI
+  * Update CLI greeting and copyright notice
+
+-------------------------------------------------------------------
 Sat Mar 21 07:33:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.0:

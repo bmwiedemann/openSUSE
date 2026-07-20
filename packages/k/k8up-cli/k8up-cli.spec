@@ -19,13 +19,14 @@
 %define executable_name k8up
 
 Name:           k8up-cli
-Version:        2.14.0
+Version:        2.16.0
 Release:        0
 Summary:        CLI for the K8up Kubernetes and OpenShift Backup Operator
 License:        Apache-2.0
 URL:            https://github.com/k8up-io/k8up
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+Source2:        k8up-cli_completion.bash
 BuildRequires:  go1.26 >= 1.26.1
 
 %description
@@ -39,6 +40,17 @@ Prometheus endpoint for monitoring.
 K8up is production ready. It is used in production deployments since 2019.
 
 This package contains the CLI.
+
+%package -n %{name}-bash-completion
+Summary:        Bash Completion for %{name}
+Group:          System/Shells
+Requires:       %{name} = %{version}
+Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
+BuildArch:      noarch
+
+%description -n %{name}-bash-completion
+Bash command line completion support for %{name}.
 
 %prep
 %autosetup -p 1 -a 1
@@ -62,9 +74,16 @@ go build \
 # Install the binary.
 install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
 
+# create the bash completion file
+mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
+install -D -m 0644 %{SOURCE2} %{buildroot}%{_datarootdir}/bash-completion/completions/%{executable_name}
+
 %files
 %doc README.md
 %license LICENSE
 %{_bindir}/%{executable_name}
+
+%files -n %{name}-bash-completion
+%{_datarootdir}/bash-completion/completions/%{executable_name}
 
 %changelog
