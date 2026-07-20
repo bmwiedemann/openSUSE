@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b70a512d688fbff525b2257a0f06276d</srcmd5>
+    <version>0.27.0</version>
+    <time>1784534308</time>
+    <user>dimstar_suse</user>
+    <comment>New package: kimi-code 0.27.0
+
+Kimi Code, Moonshot AI's command-line coding agent (MIT). Packaged from the
+self-contained npm bundle; the interactive shell backend (node-pty 1.1.0) is
+compiled from source offline with node-addon-api 7.1.1 as a vendored native
+addon. Runtime code search uses the system ripgrep and fd.
+
+Built for Leap 16.0/aarch64 with 0 rpmlint badness, source_validator clean,
+%check (kimi --version) passes. ExclusiveArch x86_64 aarch64 (native addon).</comment>
+    <requestid>1366481</requestid>
+  </revision>
+</revisionlist>

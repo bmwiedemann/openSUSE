@@ -1,0 +1,4 @@
+# node-pty's PTY forking code legitimately calls setuid without a preceding
+# setgroups; this is inherent to how it drops privileges when spawning the
+# child process for a pseudo-terminal, not a packaging defect.
+addFilter("missing-call-to-setgroups-before-setuid.*node-pty/build/Release/pty\.node")
