@@ -1,0 +1,53 @@
+Index: jsonpickle-4.1.2/tests/jsonpickle_test.py
+===================================================================
+--- jsonpickle-4.1.2.orig/tests/jsonpickle_test.py
++++ jsonpickle-4.1.2/tests/jsonpickle_test.py
+@@ -719,7 +719,7 @@ def test_warnings():
+     data = os.fdopen(os.pipe()[0])
+     with warnings.catch_warnings(record=True) as w:
+         jsonpickle.encode(data, warn=True)
+-        assert len(w) == 1
++        assert len(w) == 2
+         assert issubclass(w[-1].category, UserWarning)
+         assert "replaced with None" in str(w[-1].message)
+ 
+Index: jsonpickle-4.1.2/tests/numpy_test.py
+===================================================================
+--- jsonpickle-4.1.2.orig/tests/numpy_test.py
++++ jsonpickle-4.1.2/tests/numpy_test.py
+@@ -191,7 +191,7 @@ def test_weird_arrays():
+     a.strides = 1
+ 
+     # this is kinda fishy; a has overlapping memory, _a does not
+-    warn_count = 1
++    warn_count = 3
+     with warnings.catch_warnings(record=True) as w:
+         _a = roundtrip(a)
+         assert len(w) == warn_count
+@@ -242,7 +242,7 @@ def test_transpose():
+     b = a[1:, 1:]
+     assert b.base is a
+ 
+-    warn_count = 1
++    warn_count = 3
+     with warnings.catch_warnings(record=True) as w:
+         _a, _b = roundtrip([a, b])
+         assert len(w) == warn_count
+@@ -261,7 +261,7 @@ def test_buffer():
+     """test behavior with memoryviews which are not ndarrays"""
+     bstring = b'abcdefgh'
+     a = np.frombuffer(bstring, dtype=np.byte)
+-    warn_count = 1
++    warn_count = 3
+     with warnings.catch_warnings(record=True) as w:
+         _a = roundtrip(a)
+         npt.assert_array_equal(a, _a)
+@@ -275,7 +275,7 @@ def test_as_strided():
+     is not an ndarray.
+ 
+     """
+-    warn_count = 1
++    warn_count = 3
+     a = np.arange(10)
+     b = np.lib.stride_tricks.as_strided(a, shape=(5,), strides=(a.dtype.itemsize * 2,))
+     data = [a, b]

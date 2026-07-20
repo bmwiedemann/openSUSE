@@ -364,4 +364,18 @@
 - Exclude testing with pandas on Leap 16.0</comment>
     <requestid>1323721</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>395075a86c8b1fab11a25f1a81000322</srcmd5>
+    <version>4.1.2</version>
+    <time>1784534361</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch increase-warning-counts.patch:
+  * Don't trip over newly added deprecation warnings in the testsuite.
+
+- update to 4.1.2:
+  * Add deprecation warnings for the pending removal of the safe,
+    numeric_keys, and use_decimal arguments, as well as the
+    pending change of keys parameter to default to True. (+600)</comment>
+    <requestid>1366631</requestid>
+  </revision>
 </revisionlist>

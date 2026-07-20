@@ -1,8 +1,8 @@
-Index: jsonpickle-3.0.2/tests/ecdsa_test.py
+Index: jsonpickle-4.1.2/tests/ecdsa_test.py
 ===================================================================
---- jsonpickle-3.0.2.orig/tests/ecdsa_test.py
-+++ jsonpickle-3.0.2/tests/ecdsa_test.py
-@@ -7,6 +7,7 @@ import pytest
+--- jsonpickle-4.1.2.orig/tests/ecdsa_test.py
++++ jsonpickle-4.1.2/tests/ecdsa_test.py
+@@ -4,6 +4,7 @@ import pytest
  from helper import SkippableTest
  
  import jsonpickle

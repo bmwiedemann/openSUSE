@@ -1,7 +1,7 @@
 #
 # spec file for package python-jsonpickle
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,24 +18,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jsonpickle
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Python library for serializing any arbitrary object graph into JSON
 License:        BSD-3-Clause
 URL:            https://github.com/jsonpickle/jsonpickle
 Source:         https://files.pythonhosted.org/packages/source/j/jsonpickle/jsonpickle-%{version}.tar.gz
 Patch1:         enable_gmpy_test.patch
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module importlib_metadata if %python-base < 3.8}
+# PATCH-FIX-OPENSUSE Increase warning counts for new warnings added with 4.1.2, remove with 5.0.0
+Patch2:         increase-warning-counts.patch
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools >= 42}
-BuildRequires:  %{python_module setuptools_scm >= 3.4.1}
+BuildRequires:  %{python_module setuptools >= 61.2}
+BuildRequires:  %{python_module setuptools_scm >= 6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if %python_version_nodots < 38
-Requires:       python-importlib_metadata
-%endif
 BuildArch:      noarch
 # SECTION test requirements
 %if 0%{?suse_version} <= 1600

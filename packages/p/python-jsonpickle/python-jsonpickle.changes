@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 20 03:03:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch increase-warning-counts.patch:
+  * Don't trip over newly added deprecation warnings in the testsuite.
+
+-------------------------------------------------------------------
+Sun Jun 14 15:38:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.2:
+  * Add deprecation warnings for the pending removal of the safe,
+    numeric_keys, and use_decimal arguments, as well as the
+    pending change of keys parameter to default to True. (+600)
+
+-------------------------------------------------------------------
 Mon Dec 15 10:20:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Exclude testing with pandas on Leap 16.0
