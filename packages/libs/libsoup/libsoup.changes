@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 16 13:47:29 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Rename libsoup-CVE-2026-0716.patch to
+  libsoup-CVE-2026-12478.patch to reflect the new CVE assignment
+  (bsc#1271401 CVE-2026-12478).
+
+-------------------------------------------------------------------
+Wed Jul 15 12:52:55 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add fix-samsung-tv-playback.patch: Update the content length
+  decimal value when encoding is set to
+  SOUP_ENCODING_CONTENT_LENGTH
+- Refresh patches with quilt.
+
+-------------------------------------------------------------------
 Fri May 29 10:33:40 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch

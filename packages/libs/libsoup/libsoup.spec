@@ -34,10 +34,14 @@ Patch2:         libsoup-CVE-2025-32049.patch
 Patch3:         libsoup-CVE-2026-2708.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-1539.patch bsc#1257441, CVE-2026-1539, glgo#GNOME/libsoup#489 -- Also remove Proxy-Authorization header on cross origin redirect
 Patch4:         libsoup-CVE-2026-1539.patch
-# PATCH-FIX-UPSTREAM libsoup-CVE-2026-0716.patch bsc#1256418 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
-Patch5:         libsoup-CVE-2026-0716.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-12478.patch bsc#1271401 mgorse@suse.com -- websocket: Fix out-of-bounds read when reading unmasked frame
+Patch5:         libsoup-CVE-2026-12478.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-4271.patch bsc#1259767 xwang@suse.com -- protect message io while reading and writing
 Patch6:         libsoup-CVE-2026-4271.patch
+# PATCH-FIX-UPSTREAM fix-samsung-tv-playback.patch -- Update the content length decimal value when encoding is set to SOUP_ENCODING_CONTENT_LENGTH
+Patch7:         fix-samsung-tv-playback.patch
+
+
 # PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch qzhao@suse.com -- Revert upstream e315cf2d to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
 Patch1000:      libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
 # PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch qzhao@suse.com -- Revert upstream 6b34bc58 to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
@@ -46,6 +50,7 @@ Patch1001:      libsoup-revert-dep-meson-0.62-shim02-6b34bc58.patch
 Patch1002:      libsoup-revert-dep-meson-0.62-part01-4209dbec.patch
 # PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch qzhao@suse.com -- Revert upstream fd7ce01a to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
 Patch1003:      libsoup-revert-dep-meson-0.62-part02-fd7ce01a.patch
+
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.53
 BuildRequires:  pkgconfig

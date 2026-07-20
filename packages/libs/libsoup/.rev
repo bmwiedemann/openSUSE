@@ -1458,4 +1458,19 @@
   Protect message io while reading and writing.</comment>
     <requestid>1359806</requestid>
   </revision>
+  <revision rev="171" vrev="7">
+    <srcmd5>fc8890b046607a51b76ec8abab124606</srcmd5>
+    <version>3.6.6</version>
+    <time>1784534236</time>
+    <user>dimstar_suse</user>
+    <comment>- Rename libsoup-CVE-2026-0716.patch to
+  libsoup-CVE-2026-12478.patch to reflect the new CVE assignment
+  (bsc#1271401 CVE-2026-12478).
+
+- Add fix-samsung-tv-playback.patch: Update the content length
+  decimal value when encoding is set to
+  SOUP_ENCODING_CONTENT_LENGTH
+- Refresh patches with quilt.</comment>
+    <requestid>1366370</requestid>
+  </revision>
 </revisionlist>
