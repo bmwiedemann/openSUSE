@@ -1703,4 +1703,16 @@ https://github.com/numba/numba/issues/9760
 </comment>
     <requestid>1354811</requestid>
   </revision>
+  <revision rev="57" vrev="3">
+    <srcmd5>ddc973b992fd7d94d193470bc97d098d</srcmd5>
+    <version>2026.02.0</version>
+    <time>1784534394</time>
+    <user>dimstar_suse</user>
+    <comment>- Add missing BuildRequires: python-pytz
+ * xarray/tests/test_variable.py imports pytz directly since 2026.02.0,
+   causing test collection errors on openSUSE_Tumbleweed x86_64:
+   ModuleNotFoundError: No module named 'pytz'
+</comment>
+    <requestid>1366375</requestid>
+  </revision>
 </revisionlist>

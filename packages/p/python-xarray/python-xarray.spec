@@ -60,8 +60,10 @@ BuildRequires:  %{python_module pytest-env}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module ruff >= 0.8.0}
 BuildRequires:  %{python_module xarray-complete = %{version}}
+BuildRequires:  compatlibopenblas_serial0
 %endif
 # /SECTION
 %python_subpackages

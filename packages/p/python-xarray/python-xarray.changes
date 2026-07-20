@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 15 12:07:23 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Add missing BuildRequires: python-pytz
+ * xarray/tests/test_variable.py imports pytz directly since 2026.02.0,
+   causing test collection errors on openSUSE_Tumbleweed x86_64:
+   ModuleNotFoundError: No module named 'pytz'
+
+-------------------------------------------------------------------
 Sat May 23 06:44:36 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - skip builds for python311
