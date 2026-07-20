@@ -2226,4 +2226,116 @@ by an upstream reviewed commit. (forwarded request 1109432 from mwilck)</comment
     (bsc#1257007)</comment>
     <requestid>1331722</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>ccb80e7a31fc41f5974a9a12cf054650</srcmd5>
+    <version>0.15~1+222+suse.cdcde840</version>
+    <time>1784534249</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.15~1+222+suse.cdcde840 (0.15 pre-release)
+
+
+old: openSUSE:Factory/multipath-tools
+new: Base:System/multipath-tools rev 375y
+Index: _scmsync.obsinfo
+===================================================================
+--- _scmsync.obsinfo (revision 178)
++++ _scmsync.obsinfo (revision 375)
+@@ -1,4 +1,4 @@
+-mtime: 1770396361
+-commit: 20d8c067b3e63c3dacf5d66343b41b1c60d96edcbb779b29276cc4f4b171a6e0
++mtime: 1784318919
++commit: 603ac24ce1a66faaf353b6b15e7a475b4d4f145e0812b18783f5da689f498391
+ url: https://src.opensuse.org/mwilck/multipath-tools
+ revision: factory
+Index: _servicedata
+===================================================================
+--- _servicedata (revision 178)
++++ _servicedata (revision 375)
+@@ -1,4 +1,4 @@
+ &lt;servicedata&gt;
+ &lt;service name=&quot;tar_scm&quot;&gt;
+                 &lt;param name=&quot;url&quot;&gt;https://github.com/openSUSE/multipath-tools.git&lt;/param&gt;
+-              &lt;param name=&quot;changesrevision&quot;&gt;f5d32098a7857c93d1d44fc932b5e134808e6741&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
++              &lt;param name=&quot;changesrevision&quot;&gt;cdcde84008fa4b8a9d99add7ae5e0e464e9a9e3a&lt;/param&gt;&lt;/service&gt;&lt;/servicedata&gt;
+\ No newline at end of file
+Index: build.specials.obscpio
+===================================================================
+--- build.specials.obscpio (revision 178)
++++ build.specials.obscpio (revision 375)
+Binary files build.specials.obscpio (revision 178) and build.specials.obscpio (revision 375) differ
+Index: multipath-tools.changes
+===================================================================
+--- multipath-tools.changes (revision 178)
++++ multipath-tools.changes (revision 375)
+@@ -1,4 +1,44 @@
+ -------------------------------------------------------------------
++Fri Jul 17 19:25:13 UTC 2026 - Martin Wilck &lt;mwilck@suse.com&gt;
++
++- Update to version 0.15~1+222+suse.cdcde840 (0.15 pre-release)
++
++  * All path checkers run in asynchronous mode now by default, using a new
++    generic asynchronous checker framework. This improves the stability of
++    multipathd in the presence of non-responsive devices when using path
++    checkers other than `tur` and `directio`. Use the `force_sync`
++    parameter in `multipath.conf` to switch back to the previous, synchronous
++    behavior, especially if you observe strong spikes of CPU load on systems
++    with a lot of path devices. Note that the likelihood of such spikes should
++    be strongly reduced since multipath-tools 0.10.0. Commit 6f7daba ff.
++  * The configuration options `rr_min_io`, `rr_min_io_rq`, and `rr_weight` are now
++    deprecated and have no effect. These options have not been supported by the
++    kernel since version 4.6. Users should remove them from `multipath.conf`.
++  * Fix ALUA asymmetric access state descriptions in multipathd logs, so that
++    the same terms are used as by the kernel (&quot;lba-dependent&quot;, &quot;transitioning&quot;).
++  * Don't set a hardware handler for bio-based multipath devices. The kernel
++    rejects this anyway.
++
++- Bug fixes:
++
++  * Fix WWID detection for legacy devices that use the older SCSI-2 VPD page
++    0x83 format for their device identifier.
++  * kpartx: Fix an integer overflow in the GPT partition table size calculation.
++    A crafted partition table with an extremely large number of partition entries
++    could trigger the overflow. (bsc#1268145)
++  * kpartx: Fix several issues in the DASD partition table reader that could be
++    triggered by a maliciously crafted disk image. (bsc#1268144)
++  * Fix duplicate &quot;checker timed out&quot; log messages when `log_checker_err` is
++    set to `once`. (bsc#1254094)
++  * Avoid potential buffer overflows in the iet and datacore prioritizers.
++  * iet prioritizer: avoid misleading error message with systemd 256 and
++    newer, and properly use udev to derive path parameters.
++    (gh#opensvc/multipath-tools#145)
++  * An overlong partition delimiter (-p option) could cause kpartx to crash.
++    Fix it.
++  * Man page improvements.
++
++-------------------------------------------------------------------
+ Fri Feb  6 16:45:11 UTC 2026 - Martin Wilck &lt;mwilck@suse.com&gt;
+ 
+ - Re-add the %ghost entry for /run/multipath (jsc#PED-14758)
+Index: multipath-tools.spec
+===================================================================
+--- multipath-tools.spec (revision 178)
++++ multipath-tools.spec (revision 375)
+@@ -35,7 +35,7 @@
+ %define libdmmp_version %(echo %{_libdmmp_version} | tr . _)
+ 
+ Name:           multipath-tools
+-Version:        0.14.3+212+suse.f5d32098
++Version:        0.15~1+222+suse.cdcde840
+ Release:        0
+ Summary:        Tools to Manage Multipathed Devices with the device-mapper
+ License:        GPL-2.0-only AND GPL-3.0-or-later
+Index: multipath-tools-0.15~1+222+suse.cdcde840.tar.xz
+===================================================================
+--- multipath-tools-0.15~1+222+suse.cdcde840.tar.xz (added)
++++ multipath-tools-0.15~1+222+suse.cdcde840.tar.xz (revision 375)
+Binary file multipath-tools-0.15~1+222+suse.cdcde840.tar.xz (revision 375) added
+Index: multipath-tools-0.14.3+212+suse.f5d32098.tar.xz
+===================================================================
+--- multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178)
++++ multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (deleted)
+Binary file multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178) deleted</comment>
+    <requestid>1366452</requestid>
+  </revision>
 </revisionlist>

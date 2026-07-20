@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Fri Jul 17 19:25:13 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.15~1+222+suse.cdcde840 (0.15 pre-release)
+
+  * All path checkers run in asynchronous mode now by default, using a new
+    generic asynchronous checker framework. This improves the stability of
+    multipathd in the presence of non-responsive devices when using path
+    checkers other than `tur` and `directio`. Use the `force_sync`
+    parameter in `multipath.conf` to switch back to the previous, synchronous
+    behavior, especially if you observe strong spikes of CPU load on systems
+    with a lot of path devices. Note that the likelihood of such spikes should
+    be strongly reduced since multipath-tools 0.10.0. Commit 6f7daba ff.
+  * The configuration options `rr_min_io`, `rr_min_io_rq`, and `rr_weight` are now
+    deprecated and have no effect. These options have not been supported by the
+    kernel since version 4.6. Users should remove them from `multipath.conf`.
+  * Fix ALUA asymmetric access state descriptions in multipathd logs, so that
+    the same terms are used as by the kernel ("lba-dependent", "transitioning").
+  * Don't set a hardware handler for bio-based multipath devices. The kernel
+    rejects this anyway.
+
+- Bug fixes:
+
+  * Fix WWID detection for legacy devices that use the older SCSI-2 VPD page
+    0x83 format for their device identifier.
+  * kpartx: Fix an integer overflow in the GPT partition table size calculation.
+    A crafted partition table with an extremely large number of partition entries
+    could trigger the overflow. (bsc#1268145)
+  * kpartx: Fix several issues in the DASD partition table reader that could be
+    triggered by a maliciously crafted disk image. (bsc#1268144)
+  * Fix duplicate "checker timed out" log messages when `log_checker_err` is
+    set to `once`. (bsc#1254094)
+  * Avoid potential buffer overflows in the iet and datacore prioritizers.
+  * iet prioritizer: avoid misleading error message with systemd 256 and
+    newer, and properly use udev to derive path parameters.
+    (gh#opensvc/multipath-tools#145)
+  * An overlong partition delimiter (-p option) could cause kpartx to crash.
+    Fix it.
+  * Man page improvements.
+
+-------------------------------------------------------------------
 Fri Feb  6 16:45:11 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Re-add the %ghost entry for /run/multipath (jsc#PED-14758)
