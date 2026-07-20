@@ -1404,4 +1404,15 @@ Pushing GNOME 45.rc packages</comment>
   containing a recursive CNAME record (bsc#1257235).</comment>
     <requestid>1350966</requestid>
   </revision>
+  <revision rev="179" vrev="45">
+    <srcmd5>3236be17352237871738200265b74d9d</srcmd5>
+    <version>0.8</version>
+    <time>1784534238</time>
+    <user>dimstar_suse</user>
+    <comment>- Add avahi-CVE-2025-59529.patch: limit the number of simple
+  clients (bsc#1255451 CVE-2025-59529).
+
+  (jsc#PED-14835).</comment>
+    <requestid>1366382</requestid>
+  </revision>
 </revisionlist>

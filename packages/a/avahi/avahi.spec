@@ -150,6 +150,8 @@ Patch42:        avahi-CVE-2025-68276.patch
 Patch43:        avahi-CVE-2026-34933.patch
 # PATCH-FIX-UPSTREAM avahi-CVE-2026-24401.patch bsc#1257235 alynx.zhou@suse.com -- detect loop in CNAME record
 Patch44:        avahi-CVE-2026-24401.patch
+# PATCH-FIX-UPSTREAM avahi-CVE-2025-59529.patch bsc#1255451 mgorse@suse.com -- limit the number of simple clients.
+Patch45:        avahi-CVE-2025-59529.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdbm-devel

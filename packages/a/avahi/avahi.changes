@@ -1,9 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:06:58 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add avahi-CVE-2025-59529.patch: limit the number of simple
+  clients (bsc#1255451 CVE-2025-59529).
+
+-------------------------------------------------------------------
 Tue May  5 01:48:13 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add avahi-CVE-2026-24401.patch: Fix unsolicited mDNS response
   containing a recursive CNAME record (bsc#1257235).
-	
+
 -------------------------------------------------------------------
 Mon Apr 27 02:40:59 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
@@ -21,7 +27,7 @@ Wed Apr 22 15:36:01 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 Tue Mar  3 22:38:46 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Use libalternative instead of update-alternatives in TW and SLFO
-  (jsc#PED-14835). 
+  (jsc#PED-14835).
 
 -------------------------------------------------------------------
 Tue Jan 13 04:23:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
