@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:52:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.3:
+  * chore(goreleaser): enable more builds (#2539)
+  * build(deps): bump the gomod group with 2 updates (#2595)
+  * build(deps): bump the gomod group with 4 updates (#2594)
+
+-------------------------------------------------------------------
 Mon Jul 13 04:50:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.2:
