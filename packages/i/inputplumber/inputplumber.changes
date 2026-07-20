@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Sun Jul 19 13:55:57 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to version 0.77.7:
+
+  * Remove polkit-unused-actions.patch, requested in boo#1249149
+  * Add 0001-fix-compilation-Fix-Rust-1.97-clippy-build-errors.patch
+  * chore(release): 0.77.7 [skip ci]
+  * fix(CapabilityMap): use signed normalization for buttons on bipolar axes
+  * fix(Hardware Support): Add Missing OneXPlayer 2 Pro variants
+  * fix(Hardware Support): Fix missing rumble on OneXFly devices
+  * fix(Hardware Support): Add OneXFly Pro Limited Edition Variant
+  * fix(Hardware Support): Fix Legion Go Regressions
+  * chore(release): 0.77.6 [skip ci]
+  * fix(Hardware Support): Fix MSI Claw Button Regression - MSI Claw devices might have the newer firmware on multiple devices that use the new keycodes. Enable all keycodes for all models to ensure nothing gets lost.
+  * chore(release): 0.77.5 [skip ci]
+  * fix(Hardware Support): Add guide button support for MSI Claw A8
+  * chore(release): 0.77.4 [skip ci]
+  * fix(Hardware Support): Update MSI Claw Driver Setup Rules Again - Adds 'change' to the rules actions. Without this flag the rules only   apply when you use 'udevadm trigger' and not during startup. Manually   setting desktop is preserved through suspend and session switching but   will properly set the gamepad mode upon startup.
+  * chore(release): 0.77.3 [skip ci]
+  * fix(Hardware Support): Update MSI Claw Driver Setup Rules - Devices that boot up in desktop mode are unable to present events that   function as gamepad, and there is no way for a user to switch the mode   without writing to the CLI path at   /sys/class/hidraw/hidraw0/device/gamepad_mode. Xinput mode and Dinput   mode express themselves with unique PIDs (1901/1902 respectively), and   trigger a device disconnect/reconnect. Desktop mode, by contrast, adopts   the PID of the input mode that was last set and does not trigger a   reset. This provides the opportunity to ensure the device is in a   gamepad mode at startup without hard forcing a retrigger loop, as   setting xinput/dinput explicitly would. The rules only trigger on   "add|bind"" to prevent loops on "change", permitting a user to select   desktop mode later. - While at it, prevent the device from ever showing as PID 1903, which is   a bugged BIOS mode.
+  * chore(release): 0.77.2 [skip ci]
+  * fix(Hardware Support): Update MSI Claw Driver Name (#587)
+  * chore(release): 0.77.1 [skip ci]
+  * fix(devices/onexplayer_apex): target xbox-elite to surface oxp8 paddles (#585)
+  * chore(release): 0.77.0 [skip ci]
+  * feat(Hardware Support): add OXP HID driver for OneXPlayer X1 and APEX
+  * fix(CapabilityMap): use min/max range for unsigned axis normalization
+  * fix(iio): improve AccelGyro3d driver for HID Sensor Hub devices Summary
+  * fix(zotac-zone): add IMU mount matrix
+  * feat(Hardware Support): Add support for hid-msi-claw - Add udev rule to configure MSI Claw HID device driver (hid-msi-claw) - Remove no longer needed rust driver
+  * chore(release): 0.76.1 [skip ci]
+  * fix(udev): run udev rule on bind event
+  * chore(release): 0.76.0 [skip ci]
+  * fix(udev): search PATH for rule executables
+  * fix(Hardware Support): Fix rare double input bug on Legion devices
+  * fix(GPD WinMini): update physical path for gamepad source device
+  * Revert "fix(GPD WinMini): update device profile and improve macro keyboard handling"
+  * fix(GPD WinMini): update device profile and improve macro keyboard handling
+  * feat(iio): add InvenSense ICM42xxx IMU support
+  * fix(pkg): use release 1
+  * fix(Target): rename Rumble to GenericRumble and route to source devices
+  * feat(target): add Screenshot support for 8BitDo Ultimate 2 Wireless
+  * refactor(target): decode 8BitDo U2 rumble output report using packed_struct
+  * feat(udev): add hidraw access rule for 8BitDo Ultimate 2 Wireless
+  * feat(target): add 8BitDo Ultimate 2 Wireless controller emulation
+  * fix(Event Filtering): enable filtering if '*' is in exclude list with an empty include list
+  * chore(docs): update to include notice about tool generated content
+  * chore(release): 0.75.2 [skip ci]
+  * fix(PS4): add match for PS4 gamepads with PID 05c4
+  * fix: add environment variable to disable polkit auth
+  * fix(Hardware Support): Split ROG Xbox Ally models into their own profile
+  * fix: add vendor_id and product_id matching for switch pro controllers via bluetooth
+  * fix: add evdev mapping for BTN_TL2 and BTN_TR2 to support switch pro controller triggers and fix LED dbus naming parsing (#545)
+  * fix(horipad_steam): negate gyroscope values to match SDL sign convention
+  * fix(horipad-steam): swap yaw/roll field names in HID report struct
+  * fix(horipad_steam): reply to GET_REPORT requests to prevent UHID timeout
+  * chore(release): 0.75.1 [skip ci]
+  * fix(NixOS): check nix paths for binaries in udev hiding rules
+  * chore(release): 0.75.0 [skip ci]
+  * fix(Target): re-add starting deck device after receiving config
+  * feat(CapabilityMap): add config for inverting axis values
+  * chore(release): 0.74.2 [skip ci]
+  * fix(Target): use sync channel for sending touchscreen config
+  * chore(release): 0.74.1 [skip ci]
+  * fix(ForceFeedback): send fferase ok result back to composite device
+  * fix(Target): use async task for capability updates in debug and ucis targets
+  * fix(ForceFeedback): use blocking task to send effect id
+  * fix(Target): use sync channel for config transmission
+  * chore(release): 0.74.0 [skip ci]
+  * fix(Hardware Support): Invert pitch axis for Legion Go 2
+  * fix(Target Device): Combine all xbox devices into a single target - Combines the xb360, xbox-series, and xbox-elite targets into a single   unified target device. Matching on the controller name determines the   capabilities, exposed evdev events, and device info.
+  * fix(Hardware Support): Add new PID's for Steam Deck target
+  * refactor: make quadratic scaling configurable and off by default
+  * Improve analog scaling to scale quadratically instead of linearly to make movement less abrupt and smooth it out for more precise control.
+  * feat(Hardware Support): Support tap-hold to drag on GPD Win Mini
+  * feat(Hardware Support): Ignore tap during movement
+  * feat(Hardware Support): Debounce GPD Win Mini macro keys
+  * feat(Hardware Support): Add tap-to-click for GPD Win Mini
+  * fix(Hardware Support): Add scroll wheel to legion go devices
+  * feat: add mouse wheel support
+  * fix: add wild card matching for claw8 to match Polar Tempest Edition as well
+  * fix: improve attribute matching time by only querying specified attribute
+  * chore(docs): add documentation for enable latency metrics
+  * fix(TargetDevice): support immediate write events
+  * chore(release): 0.73.0 [skip ci]
+  * fix(HardwareSupport): Ensure default capabilities & misc fixes - Adds (temporary) target device translations for screenshot capability   for all target gamepads. Each device uses a different combination, and   some devices (steam deck, horipad) need to queue events to avoid   issues with input collision. These will be fairly difficult to manage   with profiles. This makes them unsuitable for the default profile. - Adds (temporary) target device translations for CenterPad -> RightPad   and RightPad -> CenterPad for all target gamepads with touch   capabilities. Ensures that any source -> target combination has a   working default behavior. Fixes multiple reports of "Dualsense   Touchpad doesn't work in InputPlumber" from devices with right pads.   As some devices need CenterPad -> RightPad, some need RightPad ->   CenterPad, and some need no translations, depending on the target,   they are not suitable for the defualt profile. - Fixed touchpad translation for Dualsense source device. It was using   normalize_signed when it should have been unsigned. - Reduce poll rate of dualsense target to match the real hardware (250Hz) - Add IMU timestamp to dualsense target. - Fix logic for touch events in Dualsense target. Previously it was   assumed that 127 = touching and 128 = released, but it is actually a   touch counter that ranged 0-127, and the "off" state for each touch is   + 128 of the current counter. - Fix max value for X and Y of the Dualsense (off by 1). - Switch dualsense to use the new pitch/roll/yaw names for gyro events. - Implement new gyro/accel events for Steam Deck, Dualsense, and horipad   targets. We should review any remaining source devices for the   deprecated Gamepad:Gyrosope|Accelerometer events and update them in   another PR to remove the Composite Device direct translations. (This   one already got out of hand a bit) - Switch Legion Go 2 driver to use QuickAccess2 instead of Screenshot for   one of the new buttons. This will still be Screenshot when using the   default capability map. - Change a few debug statements to trace. - Clean up some target device match trees with catch all's to improve   readability and reduce nesting in some cases.
+  * fix(Polkit): remove duplicate SetInterceptMode action
+  * feat(Config): add udev matching for composite device configs
+  * fix(Device Hiding): add 'hide_from_root' option to allow moving devnode during hide logic
+  * fix: add device unhiding on SIGINT and SIGTERM
+  * fix(Device Hiding): move hidden device nodes to /dev/inputplumber/sources
+  * chore: add readthedocs config
+  * chore(Docs): add diagrams to documentation
+  * chore(Docs): Update README with additional doc links
+  * chore(Docs): update docs link and add short install instructions
+  * chore(Docs): add awesome-nav plugin
+  * chore(Docs): use material for mkdocs for documentation
+
+-------------------------------------------------------------------
+Sat Mar 14 11:47:41 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Remove unused actions patch
+  Requested in boo#1249149
+
+-------------------------------------------------------------------
 Mon Jan 19 18:14:23 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Initial version 0.72.0:

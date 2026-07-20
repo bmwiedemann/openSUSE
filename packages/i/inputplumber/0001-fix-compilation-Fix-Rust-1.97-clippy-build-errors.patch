@@ -1,0 +1,63 @@
+From cede0f5305a5b4bec089bafaac2e329d965dbcfe Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tobias=20G=C3=B6rgens?=
+ <19935382+TobiPeterG@users.noreply.github.com>
+Date: Sun, 19 Jul 2026 16:12:46 +0200
+Subject: [PATCH] fix(compilation): Fix Rust 1.97 clippy build errors
+
+---
+ src/dbus/interface/mod.rs             | 2 +-
+ src/drivers/iio_imu/driver.rs         | 2 +-
+ src/input/composite_device/targets.rs | 4 ++--
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/dbus/interface/mod.rs b/src/dbus/interface/mod.rs
+index 83afcf3..447cd3b 100644
+--- a/src/dbus/interface/mod.rs
++++ b/src/dbus/interface/mod.rs
+@@ -193,7 +193,7 @@ impl DBusInterfaceManager {
+ impl Debug for DBusInterfaceManager {
+     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+         let mut dbus_ifaces: HashMap<String, &str> = HashMap::with_capacity(self.dbus_ifaces.len());
+-        for (key, _value) in self.dbus_ifaces.iter() {
++        for key in self.dbus_ifaces.keys() {
+             dbus_ifaces.insert(key.to_string(), "<UnregisterFn>");
+         }
+         f.debug_struct("DBusInterfaceManager")
+diff --git a/src/drivers/iio_imu/driver.rs b/src/drivers/iio_imu/driver.rs
+index 1942274..9e23672 100644
+--- a/src/drivers/iio_imu/driver.rs
++++ b/src/drivers/iio_imu/driver.rs
+@@ -464,7 +464,7 @@ fn read_sample_rates_available(
+     channels: &HashMap<String, Channel>,
+     channel_type: &ChannelType,
+ ) -> Vec<f64> {
+-    for (_, channel) in channels.iter() {
++    for channel in channels.values() {
+         if let Ok(val) = channel.attr_read_str("sampling_frequency_available") {
+             let rates: Vec<f64> = val
+                 .split_whitespace()
+diff --git a/src/input/composite_device/targets.rs b/src/input/composite_device/targets.rs
+index ab2c5b7..f433c3a 100644
+--- a/src/input/composite_device/targets.rs
++++ b/src/input/composite_device/targets.rs
+@@ -186,7 +186,7 @@ impl CompositeDeviceTargets {
+         for (path, target) in targets_to_stop.clone().into_iter() {
+             log::debug!("[{dbus_path}] Stopping old target device: {path}");
+             self.target_devices.remove(&path);
+-            for (_, target_devices) in self.target_devices_by_capability.iter_mut() {
++            for target_devices in self.target_devices_by_capability.values_mut() {
+                 target_devices.remove(&path);
+             }
+             stop_tasks.spawn(async move { target.stop().await });
+@@ -560,7 +560,7 @@ impl CompositeDeviceTargets {
+ 
+             self.target_devices_suspended.push(target_type);
+             self.target_devices.remove(&path);
+-            for (_, target_devices) in self.target_devices_by_capability.iter_mut() {
++            for target_devices in self.target_devices_by_capability.values_mut() {
+                 target_devices.remove(&path);
+             }
+             if let Err(e) = target.stop().await {
+-- 
+2.53.0
+
