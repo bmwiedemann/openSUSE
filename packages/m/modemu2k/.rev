@@ -7,4 +7,20 @@
     <comment>Initial package</comment>
     <requestid>1362455</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>3c7f2b8ab7a5a432134eb75895112148</srcmd5>
+    <version>0.2.3</version>
+    <time>1784126725</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.2.3</comment>
+    <requestid>1365786</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8950c3b94f8b376ed20c4f26ca89684f</srcmd5>
+    <version>0.2.4</version>
+    <time>1784534321</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.2.4</comment>
+    <requestid>1366549</requestid>
+  </revision>
 </revisionlist>

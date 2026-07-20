@@ -20,15 +20,13 @@
 %define devname lib%{name}%{soname}-devel
 
 Name:           modemu2k
-Version:        0.2.2
+Version:        0.2.4
 Release:        0
 Summary:        Hayes-style AT-command modem emulator bridging serial-style I/O to TCP/Telnet
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 URL:            https://theimpossibleastronaut.github.io/modemu2k/
 Source:         https://github.com/theimpossibleastronaut/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM modemu2k-network-suite.patch -- https://github.com/theimpossibleastronaut/modemu2k/commit/3c783de721705a13e59f459888d94cf1d49a69e4
-Patch0:         modemu2k-network-suite.patch
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  groff
@@ -37,12 +35,13 @@ Suggests:       minicom
 Suggests:       picocom
 
 %description
-modemu2k is a Hayes-style AT-command modem emulator that bridges a
-serial-style interface to a TCP or Telnet endpoint. It ships as a C
-library (libmodemu2k) exposing the modem state machine, plus a small
-CLI built on top that allocates a PTY and either reads stdin/stdout
-directly, forks a comm program (minicom, picocom) on the slave, or
-accepts an incoming TCP connection as the TTY. IPv4 and IPv6.
+modemu2k is a Hayes-style AT-command modem emulator bridging a
+serial-style interface to TCP/Telnet ("dials" out and answers incoming
+connections). It ships as a C library (libmodemu2k) exposing the modem
+state machine, plus a small CLI built on top that allocates a PTY and
+either reads stdin/stdout directly, forks a comm program (minicom,
+picocom) on the slave, or accepts an incoming TCP connection as the
+TTY. IPv4 and IPv6.
 
 modemu2k is based on modemu, originally developed by Toru Egashira.
 
@@ -84,7 +83,7 @@ rm %{buildroot}%{_docdir}/%{name}/COPYING
 %fdupes %{buildroot}%{_docdir}/%{name}/html
 
 %check
-%meson_test --no-suite network
+%meson_test
 
 %ldconfig_scriptlets -n %{libname}
 

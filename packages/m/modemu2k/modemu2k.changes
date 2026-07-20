@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Sat Jul 18 22:06:18 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- modemu2k 0.2.4:
+  * Fix ATD aborting when the command line arrives as CR LF (DOS-style
+    DTEs): stray CR/LF/NUL during dialing no longer cancel the call;
+    any other input still does (V.250 abort-on-input)
+  * Hide internal symbols from the shared library; only m2k_* is
+    exported now (flex's yylex leaked and collided with dosemu2's
+    config lexer, silently breaking all AT parsing when embedded)
+  * m2k_setup_answer now errors out if the listener can't be set
+    non-blocking, instead of risking a hung m2k_step
+
+-------------------------------------------------------------------
+Tue Jul 14 18:55:38 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- modemu2k 0.2.3:
+  - Drop modemu2k-network-suite.patch: Fixed upstream
+  * Add -a/--answer and ATA/RING/S0 answer-side modem semantics, so a
+    BBS on the PTY can receive incoming TCP calls (new m2k_setup_answer
+    / m2k_get_answer_fd API)
+  * -v/--verbose is now repeatable: -vv adds byte-level buffer
+    narration (new VERB_BYTES category, AT%V4)
+  * Add m2k_set_log_level() / m2k_get_log_level() — severity-threshold
+    log filter (ERROR/WARN/INFO/DEBUG/TRACE); AT%V category semantics
+    unchanged
+  * Add m2k_describe_state() — one-call state snapshot for bug reports
+    and host-side debugging
+  * Stop treating the comm-program command as a printf format string;
+    substitute the slave path safely (overflow / format-string fix)
+  * Fix out-of-bounds read of telopts[] when a telnet peer sends a
+    malformed subnegotiation option byte
+  * Fix telnet IAC parser state being shared between modem contexts
+    (two m2k_t instances online at once corrupted each other's stream)
+  * Close the library-owned PTY / dev / accepted-client fd in
+    m2k_free() (was leaked every session)
+  * m2k-minicom: pass options after `--` to minicom (e.g.
+    `m2k-minicom -- -R CP437` to convert a BBS's CP437 characters
+    for a UTF-8 terminal)
+  * Rewrite test_connect / test_ipv6 to use loopback only; the dial
+    docblock @snippet moves to examples/m2k_dial.c. Removes hardcoded
+    GitHub IP and the need for any `network` suite tag
+
+-------------------------------------------------------------------
 Sat May 30 18:53:40 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
 
 - modemu2k 0.2.2, initial package
