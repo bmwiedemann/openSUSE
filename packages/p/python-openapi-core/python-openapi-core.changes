@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:40:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.23.1+git55.0337b43b. Patching
+  pyproject.toml like support-openapi-schema-validator-0.9.patch did
+  for spec(!)-validator-0.9 would still fail the build.
+  * Support for spec-validator-0.9
+- Delete support-openapi-schema-validator-0.9.patch (integrated)
+
+-------------------------------------------------------------------
 Mon May 25 02:28:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-openapi-schema-validator-0.9.patch:

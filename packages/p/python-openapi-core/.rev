@@ -351,4 +351,12 @@
   * Support openapi-schema-validator 0.9.0.</comment>
     <requestid>1354995</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>472814c5dbc0306a04b58c663e13d4ff</srcmd5>
+    <version>0.23.1+git55</version>
+    <time>1784534363</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366633</requestid>
+  </revision>
 </revisionlist>
