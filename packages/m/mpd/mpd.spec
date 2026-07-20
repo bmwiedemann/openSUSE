@@ -18,18 +18,16 @@
 
 %define ver 0.24
 Name:           mpd
-Version:        %{ver}.12
+Version:        %{ver}.13
 Release:        0
 Summary:        Music Player Daemon
 License:        GPL-2.0-or-later
 URL:            https://musicpd.org
 Source0:        https://musicpd.org/download/%{name}/%{ver}/%{name}-%{version}.tar.xz
 Source1:        https://musicpd.org/download/%{name}/%{ver}/%{name}-%{version}.tar.xz.sig
-Source2:        README.%{name}
+Source2:        %{name}.keyring
 Source3:        %{name}-user.conf
-Source4:        %{name}.firewalld
-Source5:        %{name}.tmpfiles.d
-Source9:        %{name}.keyring
+Source4:        %{name}.tmpfiles.d
 Patch0:         %{name}-conf.patch
 Patch1:         %{name}-sndfile.patch
 BuildRequires:  gcc-c++
@@ -106,9 +104,7 @@ played through the server's audio device.  The daemon stores info
 about all available music, and this info can be easily searched and
 retrieved.  Player control, info retrieval, and playlist management
 can all be managed remotely. There a bunch of clients to control mpd:
-for Gnome, KDE, console and Apache (PHP).
-
-Please read README.mpd how to configure it.
+for GTK, Qt, and console.
 
 %package doc
 Summary:        Additional Package Documentation
@@ -134,9 +130,8 @@ This package contains optional documentation provided in addition to this packag
 %meson_install
 mv %{buildroot}%{_datadir}/doc/%{name}/html .
 rm -r %{buildroot}%{_datadir}/doc/%{name}
-install -pm0644 %{SOURCE2} %{SOURCE3} .
-install -Dpm0644 %{SOURCE4} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
-install -Dpm0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -pm0644 %{SOURCE3} .
+install -Dpm0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 install -Dpm0644 doc/mpdconf.example %{buildroot}%{_sysconfdir}/%{name}.conf
 # Remove duplicate for mpd.socket and replace it with a symlink.
 rm %{buildroot}%{_userunitdir}/%{name}.socket
@@ -160,7 +155,7 @@ getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/fa
 
 %files
 %license COPYING
-%doc AUTHORS NEWS README.md README.%{name} %{name}-user.conf doc/mpdconf.example
+%doc AUTHORS NEWS README.md %{name}-user.conf doc/mpdconf.example
 %config(noreplace) %{_sysconfdir}/%{name}.conf
 %{_bindir}/%{name}
 %attr(0755,mpd,audio) %{_localstatedir}/lib/%{name}
@@ -171,9 +166,6 @@ getent passwd %{name} >/dev/null || useradd -rc 'Music Player Daemon' -s /bin/fa
 %{_unitdir}/%{name}.socket
 %{_userunitdir}/%{name}.socket
 %{_userunitdir}/%{name}.service
-%dir %{_prefix}/lib/firewalld
-%dir %{_prefix}/lib/firewalld/services
-%{_prefix}/lib/firewalld/services/%{name}.xml
 %{_tmpfilesdir}/%{name}.conf
 %ghost %dir %attr(0755,%{name},audio) /run/%{name}
 
