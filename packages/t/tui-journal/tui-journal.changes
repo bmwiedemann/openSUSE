@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 18 14:24:04 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.17.0:
+  * Return focus to the entries list when pressing Escape in the editor's 
+    normal mode
+  * Improve JSON backend performance when assigning entry IDs and priorities
+  * Rename misspelled theme cursor keys while retaining compatibility with 
+    existing themes
+  * Use unique temporary files when opening entries in an external editor
+  * Add operation and path context to backend I/O errors
+  * Increase the minimum supported Rust version to 1.92.0
+  * Switch release automation to tag-based releases and remove Aeruginous 
+    changelog tooling
+  * Preserve an entry's original ID when undoing its deletion
+
+-------------------------------------------------------------------
 Thu Sep 18 04:57:47 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.16.1:
