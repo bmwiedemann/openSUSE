@@ -17,7 +17,7 @@
 
 
 Name:           mihomo
-Version:        1.19.28
+Version:        1.19.29
 Release:        0
 Summary:        The universal proxy platform
 License:        GPL-3.0-only

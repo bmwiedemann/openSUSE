@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jul 18 18:30:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.29:
+  * Add JLS (TLS obfuscation) support across many outbounds and
+    listeners (anytls, vmess/vless/trojan, shadowsocks, snell) and
+    align its handshake handling with JLS v3
+  * Add ReSTLS and ShadowTLS support for anytls, snell and the
+    vmess/vless/trojan proxies; reimplement ShadowTLS and make its
+    v2/v3 read deadlines recoverable
+  * Add a ShadowQUIC outbound and listener with JLS pre-flight
+    fallback handling
+  * Improve OpenVPN: TLS rekey and data-ciphers negotiation,
+    tls-crypt-v2 and TLSAuth support, reconnect on server soft
+    reset (#2989, #2978, #2969)
+  * Sync anytls to v0.0.13 and fix anytls listener config parsing
+  * Add name-cert-verify and per-provider override-expr options
+  * Fix DNS and rule handling: full-width IP-SUFFIX panic, CNAME
+    query matching a hosts domain-entry and DOMAIN-WILDCARD
+    ignoring the sniffed hostname (#2975, #2965, #2956)
+  * Fix wireguard per-peer reserved, a TUIC stream leak, a reaper
+    goroutine busy-loop and listener duplicate-name checks
+    (#2958, #2959, #2964, #2948)
+
+-------------------------------------------------------------------
 Wed Jul  8 07:20:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.28:
