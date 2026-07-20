@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:46:05 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to 0.27.0
+  *  Update metavar printing.
+
+-------------------------------------------------------------------
 Sun Jun 28 17:49:26 UTC 2026 - Matthias Bach <marix@marix.org>
 
-- Update to 0.27.8
+- Update to 0.26.8
   * Make second column of Rich help output reflect the type
     consistently, even when using metavar.
   * Fix formatting in NoSuchOption.format_message().
