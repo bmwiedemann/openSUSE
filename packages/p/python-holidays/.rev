@@ -580,4 +580,41 @@
     <comment></comment>
     <requestid>1352491</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8bf592beab11656a1fe147d3e0cdc456</srcmd5>
+    <version>0.100</version>
+    <time>1784534380</time>
+    <user>dimstar_suse</user>
+    <comment>- Sprinkle in alts for the new holiday-ics cli tool.
+
+- update to 0.100:
+  * Refactor Zambia holidays and tests
+  * Add Chicago Mercantile Exchange (XCME) holidays
+  * Add Bolsa Mexicana de Valores (BMV) holidays
+  * Change standard name of &quot;Whit Sunday&quot; holiday to &quot;Pentecost&quot;
+  * Update India holidays: national holidays significant
+    improvement
+  * Update Saudi Arabia holidays
+  * Update Singapore holidays: add 2027 public holidays
+  * Update calendar download page
+  * Update documentation: enhance iCalendar export examples
+  * Update iCalendar generation tool
+  * Update some holidays Ukrainian translations
+  * Migrate Malawi tests to new test case standards
+  * Migrate Mexico tests to new test case standards
+  * Migrate Norway tests to new test case standards
+  * Migrate Zimbabwe tests to new test case standards
+  * Refactor Australia holidays and tests
+  * Refactor holiday names translation
+  * Fix documentation tests
+  * Update .py files formatting
+  * Update Algeria holidays: add Kabyle language support
+  * Update Bangladesh holidays, improve Islamic calendar
+  * Update Colombia holidays: add new Jul 9 holiday
+  * Update Indonesia holidays: add 2026 special holidays
+  * Update Maldives holidays: add l10n support
+  * Update United States holidays: fix special holiday names with
+    format labels</comment>
+    <requestid>1366639</requestid>
+  </revision>
 </revisionlist>

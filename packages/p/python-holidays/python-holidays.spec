@@ -16,9 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-holidays
-Version:        0.96
+Version:        0.100
 Release:        0
 Summary:        Python library for generating holidays on the fly
 License:        MIT
@@ -38,6 +41,10 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%endif
 BuildArch:      noarch
 %python_subpackages
 
@@ -54,6 +61,7 @@ scripts/l10n/generate_mo_files.py
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/holidays-ics
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -63,6 +71,7 @@ sed -i '/"--cov-fail-under=100",/d' pyproject.toml
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.md README.md
+%python_alternative %{_bindir}/holidays-ics
 %{python_sitelib}/holidays
 %{python_sitelib}/holidays-%{version}.dist-info
 

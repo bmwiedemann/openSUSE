@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:09:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Sprinkle in alts for the new holiday-ics cli tool.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:18:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.100:
+  * Refactor Zambia holidays and tests
+  * Add Chicago Mercantile Exchange (XCME) holidays
+  * Add Bolsa Mexicana de Valores (BMV) holidays
+  * Change standard name of "Whit Sunday" holiday to "Pentecost"
+  * Update India holidays: national holidays significant
+    improvement
+  * Update Saudi Arabia holidays
+  * Update Singapore holidays: add 2027 public holidays
+  * Update calendar download page
+  * Update documentation: enhance iCalendar export examples
+  * Update iCalendar generation tool
+  * Update some holidays Ukrainian translations
+  * Migrate Malawi tests to new test case standards
+  * Migrate Mexico tests to new test case standards
+  * Migrate Norway tests to new test case standards
+  * Migrate Zimbabwe tests to new test case standards
+  * Refactor Australia holidays and tests
+  * Refactor holiday names translation
+  * Fix documentation tests
+  * Update .py files formatting
+  * Update Algeria holidays: add Kabyle language support
+  * Update Bangladesh holidays, improve Islamic calendar
+  * Update Colombia holidays: add new Jul 9 holiday
+  * Update Indonesia holidays: add 2026 special holidays
+  * Update Maldives holidays: add l10n support
+  * Update United States holidays: fix special holiday names with
+    format labels
+  * Update XNYS holidays: add l10n support
+  * Update assets generation and processing
+  * Update pre-commit config
+  * Add CLI tool for generating iCalendar (.ics) files
+  * Migrate Mozambique tests to new test case standards
+  * Add NASDAQ (XNAS) holidays
+  * Update United Arab Emirates holidays: fix Thai localization
+  * Update Bhutan holidays
+  * Update l10n test: check .po files for missing entries
+    comments
+  * Add 2025-2026 Islamic holidays exact dates for Indonesia and
+    Philippines
+  * Add Tibetan calendar generator
+  * Add pre-commit cache
+  * Refactor calendar generators
+  * Update Bangladesh holidays: add Islamic holidays
+  * Update CI/CD workflows: set default Python and uv versions
+  * Update China holidays: update official reference links
+  * Update European Central Bank holidays: correct historical
+    closures for 1999-2001
+  * Update India holidays: add Maharishi Valmiki Jayanti holiday
+  * Update Islamic generator: add support for holidays of "n-th
+    weekday of Hijri month" type
+  * Update Makefile and make script
+  * Update Nepal holidays: add Kannada language support
+  * Update PO generator: fix .po files refresh
+  * Update `HolidayBase::__repr__` method
+
+-------------------------------------------------------------------
 Mon May 11 10:37:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.96
