@@ -17,7 +17,7 @@
 
 
 Name:           python-cyclopts
-Version:        4.21.1
+Version:        4.22.0
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0

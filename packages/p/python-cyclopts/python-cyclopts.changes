@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:51:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.22.0:
+  * Reject malformed timedelta strings instead of silently
+    ignoring garbage input
+  * Fix parsing of signed base-prefixed integers (-0xFF, +0o17)
+  * Honour config search_parents=False so parent directories are
+    no longer walked
+- Changes from 4.21.2:
+  * Fix the "--" delimiter leaking into an "Unknown option" error
+
+-------------------------------------------------------------------
 Fri Jul 17 06:58:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.21.1:
