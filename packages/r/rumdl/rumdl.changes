@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:53:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.37:
+  * Added
+    - reflow: add atomic_spans configuration and refactor inline
+      wrapping (#742) (aeabec1)
+  * Changed
+    - BREAKING: the MD013 emphasis-spans option is renamed to
+      atomic-spans (default true), with inverted meaning
+      (emphasis-spans = true is now atomic-spans = false). Configs
+      setting the old key should migrate; it is no longer
+      recognized
+  * Fixed
+    - reflow: keep code spans atomic when wrapping would collapse
+      whitespace (d43618b)
+- Update to version 0.2.36:
+  * Added
+    - code-block-tools: add shuck:format as a built-in shell
+      formatter (5b23261)
+  * Fixed
+    - wasm: stop double-converting already-character-based columns
+      (4178cdf)
+    - tests: resolve String addition compilation errors under Rust
+      1.96 (#737) (38f36cf)
+- Update to version 0.2.35:
+  * Added
+    - cli: honor --deny-config-warnings on the stdin path (0f93ca5)
+    - cli: make --deny-config-warnings cover inline disable-comment
+      rule names (96d75f5)
+    - cli: add --deny-config-warnings for config-file and CLI-flag
+      problems (5045daf)
+    - reflow: support breaking within emphasis spans (2e8bded)
+  * Fixed
+    - reflow: preserve non-breaking spaces and the space before
+      French double punctuation (f66021f)
+    - cli: walk directory arguments even when file paths are also
+      passed (d058273)
+    - lsp: honor line anchors in goto-definition (17a21e7)
+    - md077: attribute middle-level continuation lines to their own
+      list item (c73763b)
+
+-------------------------------------------------------------------
+Wed Jul 15 04:50:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.34:
+  * Added
+    - code-block-tools: restore shuck as a built-in shell linter
+      (da66447)
+  * Performance
+    - reflow: probe inline math at the cursor instead of rescanning
+      the suffix (1e6ea3b)
+    - reflow: merge emphasis and code span extraction into a single
+      cmark pass (8e03537)
+    - reflow: optimize MyST inline role parsing using pre-extracted
+      code spans (e966899)
+
+-------------------------------------------------------------------
+Tue Jul 14 12:41:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.33:
+  * Fixed
+    - md044: stop flagging proper names inside bare URLs (5e9b51a)
+    - md040: recognize file-extension fence labels as known
+      languages (686ba20)
+    - cli: replace unhelpful panic message with an actionable one
+      (#717) (37ac880)
+    - reflow: re-search cached inline-math after a dollar sign
+      (a30a4f9)
+    - reflow: support multiple backticks and optimize code span
+      parsing (81944c5)
+    - md013: stop reflow from starting lines with block markers
+      (eebd18b)
+  * Performance
+    - reflow: implement cached match lookups to prevent quadratic
+      suffix scanning (1cc8d2b)
+
+-------------------------------------------------------------------
+Mon Jul 13 12:49:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.32:
+  * Fixed
+    - md032: stop flagging ordered lists nested in MkDocs
+      admonitions (80f896e)
+    - md013: recognize sentence boundaries followed by footnote
+      references (04a8c78)
+    - md036,md023: skip admonition and content tab bodies under
+      MkDocs flavor (e8d1421)
+    - md040: recognize py and py3 as Python language aliases
+      (6e7f8bf)
+    - md057: anchor URL extraction so links cannot borrow a
+      sibling's destination (5a643ca)
+  * Performance
+    - reflow: skip pulldown-cmark parses when a span kind cannot be
+      present (66d7f7b)
+
+-------------------------------------------------------------------
 Mon Jul 13 04:49:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.31:
