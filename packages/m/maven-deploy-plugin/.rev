@@ -39,4 +39,12 @@
     <comment>3.1.4</comment>
     <requestid>1352357</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>6587b162d1dfb7e44e44814f6d93321f</srcmd5>
+    <version>3.1.4</version>
+    <time>1784534345</time>
+    <user>dimstar_suse</user>
+    <comment>Make maven-deploy-plugin buildable with plexus-xml 3.x and 4.x alike</comment>
+    <requestid>1366607</requestid>
+  </revision>
 </revisionlist>

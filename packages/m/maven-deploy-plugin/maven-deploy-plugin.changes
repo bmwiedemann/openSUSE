@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 19 13:51:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * plexus-xml4-compat.patch
+    + make this code buildable with both plexus-xml 3.x and 4.x
+
+-------------------------------------------------------------------
 Mon May 11 05:41:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 3.1.4

@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-deploy-plugin/
 Source0:        https://github.com/apache/%{name}/archive/refs/tags/%{name}-%{version}.tar.gz
 Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
+Patch0:         plexus-xml4-compat.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -56,6 +57,7 @@ API documentation for %{name}.
 %prep
 %setup -q -n %{name}-%{name}-%{version}
 cp %{SOURCE1} LICENSE
+%patch -P 0 -p1
 
 %build
 

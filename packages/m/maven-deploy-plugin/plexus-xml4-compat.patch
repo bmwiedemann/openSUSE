@@ -1,0 +1,31 @@
+--- maven-deploy-plugin-maven-deploy-plugin-3.1.4/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java	2026-07-19 15:30:02.135489215 +0200
++++ maven-deploy-plugin-maven-deploy-plugin-3.1.4/src/main/java/org/apache/maven/plugins/deploy/DeployFileMojo.java	2026-07-19 15:33:55.380869408 +0200
+@@ -44,8 +44,8 @@
+ import org.codehaus.plexus.util.FileUtils;
+ import org.codehaus.plexus.util.IOUtil;
+ import org.codehaus.plexus.util.StringUtils;
+-import org.codehaus.plexus.util.xml.ReaderFactory;
+-import org.codehaus.plexus.util.xml.WriterFactory;
++import org.codehaus.plexus.util.xml.XmlStreamReader;
++import org.codehaus.plexus.util.xml.XmlStreamWriter;
+ import org.codehaus.plexus.util.xml.pull.XmlPullParserException;
+ import org.eclipse.aether.RepositorySystemSession;
+ import org.eclipse.aether.artifact.Artifact;
+@@ -454,7 +454,7 @@
+      * @throws MojoExecutionException If the file doesn't exist or cannot be read.
+      */
+     Model readModel(File pomFile) throws MojoExecutionException {
+-        try (Reader reader = ReaderFactory.newXmlReader(pomFile)) {
++        try (Reader reader = new XmlStreamReader(pomFile)) {
+             return new MavenXpp3Reader().read(reader);
+         } catch (FileNotFoundException e) {
+             throw new MojoExecutionException("POM not found " + pomFile, e);
+@@ -478,7 +478,7 @@
+             File tempFile = File.createTempFile("mvndeploy", ".pom");
+             tempFile.deleteOnExit();
+ 
+-            try (Writer fw = WriterFactory.newXmlWriter(tempFile)) {
++            try (Writer fw = new XmlStreamWriter(tempFile)) {
+                 new MavenXpp3Writer().write(fw, model);
+             }
+ 
