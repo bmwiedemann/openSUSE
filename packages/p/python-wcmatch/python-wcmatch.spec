@@ -1,7 +1,7 @@
 #
 # spec file for package python-wcmatch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %{?sle15_python_module_pythons}
 %{?python_enable_dependency_generator}
 Name:           python-wcmatch
-Version:        10.1
+Version:        11.0
 Release:        0
 Summary:        Wildcard/glob file name matcher
 License:        MIT
 URL:            https://github.com/facelessuser/wcmatch
 Source:         https://files.pythonhosted.org/packages/source/w/wcmatch/wcmatch-%{version}.tar.gz
 BuildRequires:  %{python_module base > 3.6}
-BuildRequires:  %{python_module bracex}
-BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module bracex >= 3.0}
+BuildRequires:  %{python_module hatchling >= 0.21.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
