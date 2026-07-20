@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:51:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.27:
+  * build(deps): bump chainguard.dev/sdk from 0.1.119 to 0.1.127
+    (#2330)
+- Update to version 1.2.26:
+  * chore(release): add more arches (#2242)
+  * build(deps): bump github/codeql-action/init from 4.36.3 to
+    4.37.0 (#2326)
+  * build(deps): bump github/codeql-action/analyze from 4.36.3 to
+    4.37.0 (#2327)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.26 to 1.6.27 (#2329)
+
+-------------------------------------------------------------------
 Mon Jul 13 04:49:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.25:
