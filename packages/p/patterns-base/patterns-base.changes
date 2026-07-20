@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 12:48:15 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Suggest sudo-rpm to give the solver a hint to prefer sudo.rpm
+  over alternative dropins [bsc#1267899]
+
+-------------------------------------------------------------------
 Mon Jun 22 10:22:02 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Disambiguate 32bit patterns and x11 patterns summaries

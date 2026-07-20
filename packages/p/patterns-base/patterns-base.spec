@@ -486,6 +486,7 @@ Recommends:     sed
 Recommends:     sg3_utils
 Recommends:     smartmontools
 Recommends:     sudo
+Suggests:       sudo-rpm
 %if !0%{?is_opensuse}
 Recommends:     supportutils
 %endif
@@ -826,6 +827,7 @@ Requires:       openssh
 Requires:       read-only-root-fs
 Requires:       rebootmgr
 Requires:       sudo
+Suggests:       sudo-rpm
 Requires:       zypp-boot-plugin
 Requires:       (health-checker if grub2)
 Requires:       (health-checker-plugins-MicroOS if health-checker)
