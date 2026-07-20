@@ -773,4 +773,12 @@ sepolgen: Add back attributes flag to fix exception crash from Dan Walsh.
     <comment>selinux toolchain 3.11 + drop sandbox subpkg in favor of selinux-sandbox</comment>
     <requestid>1364579</requestid>
   </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>5b94a73890a6ba15db8ce00586c96a29</srcmd5>
+    <version>3.11</version>
+    <time>1784534242</time>
+    <user>dimstar_suse</user>
+    <comment>toctou issue fix</comment>
+    <requestid>1366399</requestid>
+  </revision>
 </revisionlist>

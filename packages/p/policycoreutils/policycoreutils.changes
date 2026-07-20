@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 11:33:32 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Drop /tmp cleanup to avoid TOCTOU issues (bsc#1271645)
+  - can be dropped once "policycoreutils/scripts/fixfiles: drop /tmp cleanup" is
+    in the upstream release
+  - Add patch: 1271645-drop-tmp-cleanup.patch 
+
+-------------------------------------------------------------------
 Tue Jul  7 11:47:35 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Move the sandbox subpackage to the separate selinux-sandbox package (bsc#1270534)

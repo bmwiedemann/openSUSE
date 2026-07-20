@@ -59,6 +59,8 @@ Patch0:         make_targets.patch
 Patch2:         get_os_version.patch
 Patch3:         run_init.pamd.patch
 Patch4:         usr_etc.patch
+# PATCH-FIX-UPSTREAM cahu@suse.de bsc#1271645 2026-07-17 upstream patch, can be dropped in next release 
+Patch5:		1271645-drop-tmp-cleanup.patch
 BuildRequires:  audit-devel >= %{libaudit_ver}
 BuildRequires:  bison
 BuildRequires:  dbus-1-glib-devel
@@ -211,6 +213,7 @@ semodule_utils_pwd="$PWD/semodule-utils-%{version}"
 %patch -P2 -p2 -d selinux-python-%{version}
 %patch -P3 -p1
 %patch -P4 -p1
+%patch -P5 -p2
 mv ${setools_python_pwd}/audit2allow ${setools_python_pwd}/chcat ${setools_python_pwd}/semanage ${setools_python_pwd}/sepolgen ${setools_python_pwd}/sepolicy .
 mv ${semodule_utils_pwd}/semodule_expand ${semodule_utils_pwd}/semodule_link ${semodule_utils_pwd}/semodule_package .
 
