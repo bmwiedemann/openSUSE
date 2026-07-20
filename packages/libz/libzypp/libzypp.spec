@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+# by now build without libzyppng by default.
+%bcond_with build_libzyppng
+
 # Switched to single_rpmtrans as default install backed.
 # SUSE distros stay with classic_rpmtrans as default.
 # Code16: Want's to switch to single_rpmtrans as default
@@ -64,13 +68,6 @@
 %bcond_with sigc_block_workaround
 %endif
 
-
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150600
-%bcond_without visibility_hidden
-%else
-%bcond_with visibility_hidden
-%endif
-
 # We're going successively to move our default configuration into /usr/etc/.
 # The final configuration data will then be merged according to the rules
 # defined by the UAPI.6 Configuration Files Specification from:
@@ -98,7 +95,7 @@
 %endif
 
 Name:           libzypp
-Version:        17.38.13
+Version:        17.38.14
 Release:        0
 License:        GPL-2.0-or-later
 URL:            https://github.com/openSUSE/libzypp
@@ -263,7 +260,7 @@ BuildRequires:  bzip2-devel
 BuildRequires:  xz-devel
 %endif
 
-%if 0%{?suse_version} >= 1600
+%if %{with build_libzyppng}
 BuildRequires: gobject-introspection-devel
 %endif
 
@@ -377,8 +374,8 @@ cmake .. $CMAKE_FLAGS \
       -DCMAKE_SKIP_RPATH=1 \
       -DCMAKE_INSTALL_LIBEXECDIR=%{_libexecdir} \
       -DZYPPCONFDIR=%{zyppconfdir} \
+      %{?with_build_libzyppng:-DBUILD_LIBZYPPNG=1} \
       %{?with_keep_legacy_zyppconf:-DKEEP_LEGACY_ZYPPCONF=1} \
-      %{?with_visibility_hidden:-DENABLE_VISIBILITY_HIDDEN=1} \
       %{?with_zchunk:-DENABLE_ZCHUNK_COMPRESSION=1} \
       %{?with_zstd:-DENABLE_ZSTD_COMPRESSION=1} \
       %{?with_sigc_block_workaround:-DENABLE_SIGC_BLOCK_WORKAROUND=1} \
