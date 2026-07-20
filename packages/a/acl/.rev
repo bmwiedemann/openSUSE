@@ -452,4 +452,12 @@ SPDX format (forwarded request 94532 from babelworx)</comment>
     <comment></comment>
     <requestid>1171081</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>0de8d07b397c3d3a19c358669936b3c4</srcmd5>
+    <version>2.4.0</version>
+    <time>1784534200</time>
+    <user>dimstar_suse</user>
+    <comment>Update to v2.4.0, with CVE/bsc# (forwarded request 1362654 from goldwynr)</comment>
+    <requestid>1363513</requestid>
+  </revision>
 </revisionlist>
