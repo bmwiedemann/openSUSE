@@ -734,4 +734,12 @@
   pulled in by the default OBS build root.</comment>
     <requestid>1355641</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>7d39c3f7671b8f49aa82c00aea3e6e10</srcmd5>
+    <version>3.5.2</version>
+    <time>1784534365</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.2: new M_EPSS column, stable tree view, sticky_follow, hot-add vCPU segfault fix, zram/systemd/Flatpak fixes; switch to official release tarball</comment>
+    <requestid>1366667</requestid>
+  </revision>
 </revisionlist>

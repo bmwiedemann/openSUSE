@@ -17,14 +17,12 @@
 
 
 Name:           htop
-Version:        3.5.1
+Version:        3.5.2
 Release:        0
 Summary:        An Interactive text-mode Process Viewer for Linux
 License:        GPL-2.0-or-later
 URL:            https://htop.dev
-Source0:        https://github.com/htop-dev/htop/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.xz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source0:        https://github.com/htop-dev/htop/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  binutils-devel
 BuildRequires:  gcc
 BuildRequires:  libsensors4-devel
@@ -47,7 +45,6 @@ better 'top' and requires ncurses.
 %autosetup -p1
 
 %build
-./autogen.sh
 %configure \
   --enable-unicode \
   --enable-hwloc \

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:48:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5.2:
+  * New M_EPSS column showing effective proportional set size
+    (Linux)
+  * Add stable tree view mode (optional argument to -t)
+  * Introduce sticky_follow setting and improve process
+    following across screens
+  * Shift/Alt-Up and Shift/Alt-Down now scroll the panel without
+    changing the selection
+  * Fix segfault when vCPUs are hot-added
+  * Fix reading of zram values and avoid repeated ENOENT probes
+  * Fix SystemdMeter parsing when falling back to systemctl show
+  * Resolve the real executable path for Flatpak processes
+  * Prevent integer overflow in drawScreenTab() and guard title
+    truncation on narrow terminals
+  * Several Darwin fixes (used memory calculation, Mach port
+    leak)
+  * Remove obsolete OpenVZ and VServer support
+- Switch to the official release tarball and drop autoconf,
+  automake and the autogen.sh call (configure is shipped)
+
+-------------------------------------------------------------------
 Thu May 28 13:33:49 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Modernise spec file:
