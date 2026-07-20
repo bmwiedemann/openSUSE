@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 23:12:02 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 0.14.0:
+  * animations: advance springs by elapsed time
+  * animation: expose spring
+  * animation/variable: set m_Begun for setValueAndWarp
+  * memory: add move assignment to CWeakPointer
+  * memory: fix implicit comparison of unrelated types
+  * memory: fix virtual inheritance casts
+  * memory: add operators, fix a nullptr deref, and follow #115 with uniqueptr
+  * memory: assert on locking unique pointer
+
+-------------------------------------------------------------------
 Sat May  9 14:36:45 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.13.1:
