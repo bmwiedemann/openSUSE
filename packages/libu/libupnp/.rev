@@ -392,4 +392,20 @@
     <comment>- Update to release 1.18.5</comment>
     <requestid>1349318</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>a33a94f0ae8b7406eb258a7b927666ae</srcmd5>
+    <version>2.0.2</version>
+    <time>1781879424</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.0.2</comment>
+    <requestid>1360143</requestid>
+  </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>b18f4f7154fa2ad412134d5381b3f074</srcmd5>
+    <version>22.0.4</version>
+    <time>1784534218</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 22.0.4</comment>
+    <requestid>1366243</requestid>
+  </revision>
 </revisionlist>

@@ -17,10 +17,9 @@
 #
 
 
-%define pnpver 20
-%define ixmlver 11
+%define pnpver 22
 Name:           libupnp
-Version:        1.18.5
+Version:        22.0.4
 Release:        0
 Summary:        An implementation of Universal Plug and Play (UPnP)
 License:        BSD-3-Clause
@@ -37,28 +36,28 @@ The Portable Universal Plug and Play (UPnP) SDK provides support for building
 UPnP-compliant control points, devices, and bridges on several operating
 systems.
 
-%package -n %name%pnpver
+%package -n libupnp%pnpver
 Summary:        An implementation of Universal Plug and Play (UPnP)
 Group:          System/Libraries
 
-%description -n %name%pnpver
+%description -n libupnp%pnpver
 The Portable Universal Plug and Play (UPnP) SDK provides support for building
 UPnP-compliant control points, devices, and bridges on several operating
 systems
 
-%package -n libixml%ixmlver
+%package -n libixml%pnpver
 Summary:        The Portable UPnP SDK's XML library
 Group:          System/Libraries
 
-%description -n libixml%ixmlver
+%description -n libixml%pnpver
 A C XML parsing library originally created for the Intel UPnP SDK for Linux.
 
 %package devel
 Summary:        The Portable Universal Plug and Play (UPnP) SDK
 Group:          Development/Libraries/C and C++
 Provides:       libixml-devel = %version-%release
-Requires:       %name%pnpver = %version
-Requires:       libixml%ixmlver = %version
+Requires:       libixml%pnpver = %version
+Requires:       libupnp%pnpver = %version
 
 %description devel
 The Portable Universal Plug and Play (UPnP) SDK provides support for building
@@ -77,23 +76,22 @@ systems.
 	-DUPNP_MINISERVER_REUSEADDR=ON \
 	-DUPNP_ENABLE_OPEN_SSL=OFF \
 	-DUPNP_ENABLE_UNSPECIFIED_SERVER=ON \
-	-DBUILD_TESTING=ON
+	-DUPNP_ENABLE_TESTING=OFF
 %cmake_build
 
 %install
 %cmake_install
-find "%buildroot" -type f -name "*.la" -delete -print
 
-%ldconfig_scriptlets -n %name%pnpver
-%ldconfig_scriptlets -n libixml%ixmlver
+%ldconfig_scriptlets -n libupnp%pnpver
+%ldconfig_scriptlets -n libixml%pnpver
 
-%files -n %name%pnpver
+%files -n libupnp%pnpver
 %license COPYING
 %_libdir/libupnp.so.%{pnpver}*
 
-%files -n libixml%ixmlver
+%files -n libixml%pnpver
 %license COPYING
-%_libdir/libixml.so.%{ixmlver}*
+%_libdir/libixml.so.%{pnpver}*
 
 %files devel
 %doc ChangeLog

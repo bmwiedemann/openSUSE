@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 16 16:43:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.0.4
+  * Raise default SOAP content-length limit from 16K to 64K bytes.
+  * Avoid potential double-unlocking of `GlobalHndRWLock` in
+    function `UpnpSetContentLength`.
+  * Stop resolving DNS during URI/GENA callback parsing
+    [CWE-400 class issue].
+  * Removed deprecated function `UpnpSetContentLength`.
+
+-------------------------------------------------------------------
+Thu Jun 18 05:26:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.2
+  * Fixed Transfer-Encoding: chunked bodies bypassing the
+    g_maxContentLength limit.
+  * Fixed a NULL dereference in ixmlNode_compare.
+  * Fixed a integer truncation in raw_to_int().
+
+-------------------------------------------------------------------
+Wed Jun 17 15:27:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.0.1
+  * miniserver: Nagle algorithm on accepted TCP sockets is now
+    disabled.
+  * Use poll() to support fds higher than 1024.
+  * chore: Normalized HTTP response header names to title-case.
+  * Added UpnpGetSsdpReqPort4/6() to query SSDP M-SEARCH source
+    port.
+  * Explicitly-named non-multicast interfaces in UpnpGetIfInfo are
+    now allowed.
+  * Now rejects oversized HTTP POST body before buffering.
+  * Now accepts RFC 1918 cross-subnet delivery URLs in GENA
+    subscriptions.
+  * Removed UpnpPrintf from public API.
+
+-------------------------------------------------------------------
 Sat Apr 25 22:50:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.18.5
