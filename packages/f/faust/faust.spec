@@ -1,7 +1,7 @@
 #
 # spec file for package faust
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2025-2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 %define _lto_cflags %{nil}
 
 Name:           faust
-Version:        2.85.5
+Version:        2.85.9
 Release:        0
 Summary:        Functional Programming Language for Real Time Signal Processing
 License:        GPL-2.0-only

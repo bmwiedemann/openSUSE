@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Jul 19 13:28:27 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- update to 2.85.9
+  - New
+
+  * Add spcap.dsp example.
+  * architecture/rust: register N×M JACK ports based on DSP channel count.
+
+  - Fixed bugs
+
+  * Fix division by zero in uiNumEntry when step is 0.
+  * Changed types on inputs and outputs to compute! from overly constrained Matrix to the more useable AbstractMatrix.
+  * Correct faustmini/faustmaxi prototypes.
+  * Rework JACK and PortAudio Rust architectures.
+
+  - Libraries
+  * Add spcap et spcap_ui in spats.lib.
+
+-------------------------------------------------------------------
 Mon May  4 11:59:16 UTC 2026 - Edgar Aichinger <edogawa@aon.at>
 
 - update to 2.85.5
