@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:21:35 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 16.1.6:
+  * Add 65-md-raid-properties.rules (bsc#1261555, jsc#PED-16120)
+    Always set serialize_policy sysfs attribute to 1 for RAID1 arrays
+
+-------------------------------------------------------------------
 Fri May 15 14:02:29 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 16.1.5:
