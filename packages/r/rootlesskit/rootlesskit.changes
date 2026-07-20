@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 14 12:30:31 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 3.0.2:
+  * v3.0.2
+  * Build(deps): Bump golang.org/x/sync from 0.21.0 to 0.22.0
+  * api: expose IPv6 capability in NetworkDriverInfo
+  * Build(deps): Bump golang.org/x/sys from 0.46.0 to 0.47.0
+  * Build(deps): Bump golang.org/x/sync from 0.20.0 to 0.21.0
+  * Build(deps): Bump golang.org/x/sys from 0.45.0 to 0.46.0
+  * chore(deps): update golang.org/x/crypto v0.52.0, golang.org/x/net v0.55.0
+  * Build(deps): Bump actions/checkout from 6 to 7
+  * v3.0.1+dev
+
+-------------------------------------------------------------------
 Mon Jun 22 05:09:35 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 3.0.1:
