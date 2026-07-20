@@ -1,0 +1,36 @@
+From d0e20ad652fd03192ed779bd1da1e4613d7c68b3 Mon Sep 17 00:00:00 2001
+From: Steve McIntyre <93sam@debian.org>
+Date: Sat, 4 Nov 2023 17:58:17 +0000
+Subject: [PATCH] Make.defaults: disable arm32 warnings about wchar_t
+
+Signed-off-by: Steve McIntyre <93sam@debian.org>
+---
+ Make.defaults | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/Make.defaults b/Make.defaults
+index f8be19b..6879f7f 100644
+--- a/Make.defaults
++++ b/Make.defaults
+@@ -23,7 +23,7 @@ EFI_ARCHES ?= aa64 ia32 x64
+ enabled = $(if $(filter undefined,$(origin $(1))),$(3),$(2))
+ 
+ HOSTARCH   = $(shell uname -m | sed s,i[3456789]86,ia32,)
+-ARCH	   := $(shell uname -m | sed s,i[3456789]86,ia32,)
++ARCH	   := $(shell uname -m | sed 's,i[3456789]86,ia32,;s,arm.*,arm,')
+ 
+ 
+ PKG_CONFIG ?= $(CROSS_COMPILE)pkg-config
+@@ -73,6 +73,9 @@ gcc_ccldflags = -fno-merge-constants \
+ 	-Wl,--fatal-warnings,--no-allow-shlib-undefined,--default-symver \
+ 	-Wl,-O2 -Wl,--no-undefined-version -Wl,-z,relro,-z,now \
+ 	-Wl,--no-add-needed,--no-copy-dt-needed-entries,--as-needed -pie
++ifeq ($(ARCH),arm)
++  gcc_ccldflags += -Wl,--no-wchar-size-warning
++endif
+ ccldflags = $(cflags) $(CCLDFLAGS) $(LDFLAGS) \
+ 	$(if $(filter $(CCLD),clang),$(clang_ccldflags),) \
+ 	$(if $(filter $(CCLD),gcc),$(gcc_ccldflags),) \
+-- 
+2.51.0
+

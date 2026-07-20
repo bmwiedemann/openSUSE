@@ -1,7 +1,7 @@
 #
 # spec file for package pesign
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -43,6 +43,7 @@ Patch11:        pesign-bsc1221694-fix-reversed-calloc-arguments.patch
 # PATCH-FIX-UPSTREAM pesign-bsc1238023-initialize-pwdata.patch bsc#1238023 glin@suse.com -- Fall back to password prompt correctly
 Patch12:        pesign-bsc1238023-initialize-pwdata.patch
 Patch13:        pesign-bsc1258751-constify-return-of-strrchr.patch
+Patch14:        pesign-disable-arm32-wchar_t-warnings.patch
 BuildRequires:  efivar-devel >= 38
 BuildRequires:  libuuid-devel
 BuildRequires:  mandoc
@@ -131,7 +132,7 @@ systemd-tmpfiles --create %{_tmpfilesdir}/pesign.conf || :
 %dir %{_libexecdir}/pesign
 %{_libexecdir}/pesign/pesign-rpmbuild-helper
 %dir %{_sysconfdir}/pki/
-%dir %attr(0775,pesign,pesign) %{_sysconfdir}/pki/pesign
+%dir %attr(0755,pesign,pesign) %{_sysconfdir}/pki/pesign
 
 %files systemd
 %{_sbindir}/rcpesign
