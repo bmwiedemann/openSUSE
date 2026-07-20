@@ -137,4 +137,12 @@
     <comment></comment>
     <requestid>1335267</requestid>
   </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>b79669e18522ffd0506f0967ecd73589</srcmd5>
+    <version>3.4.4</version>
+    <time>1784534360</time>
+    <user>dimstar_suse</user>
+    <comment>- Tweak support-python-313.patch yet again, for another change in argparse.</comment>
+    <requestid>1366630</requestid>
+  </revision>
 </revisionlist>
