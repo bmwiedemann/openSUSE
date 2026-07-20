@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 11 12:28:14 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 5.8.7.1+git20260615.fc158d1:
+  * docs: Mention successful build for v7.1
+  * Fix transition from net_device to wireless_dev II
+  * Fix transition from net_device to wireless_dev
+  * Fix accesses on trailing arrays with pointer arithmetic
+  * docs: Mention successful builds for v7.0
+  * docs: Mention successful builds for v6.19
+  * Annotate thread_exit() as noreturn
+  * docs: Mention successful builds for v6.17 and v6.18
+  * docs: Add note regarding not using the driver anymore
+
+-------------------------------------------------------------------
 Fri Oct 03 22:26:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 5.8.7.1+git20250805.cc1e66f:

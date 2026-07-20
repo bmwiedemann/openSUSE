@@ -99,4 +99,21 @@
   * fix: Add radio_idx parameter where required</comment>
     <requestid>1308928</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>712abb3ea2624aa379454926e5345417</srcmd5>
+    <version>5.8.7.1+git20260615.fc158d1</version>
+    <time>1784534314</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.8.7.1+git20260615.fc158d1:
+  * docs: Mention successful build for v7.1
+  * Fix transition from net_device to wireless_dev II
+  * Fix transition from net_device to wireless_dev
+  * Fix accesses on trailing arrays with pointer arithmetic
+  * docs: Mention successful builds for v7.0
+  * docs: Mention successful builds for v6.19
+  * Annotate thread_exit() as noreturn
+  * docs: Mention successful builds for v6.17 and v6.18
+  * docs: Add note regarding not using the driver anymore</comment>
+    <requestid>1366551</requestid>
+  </revision>
 </revisionlist>

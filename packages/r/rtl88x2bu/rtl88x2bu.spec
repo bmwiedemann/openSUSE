@@ -1,7 +1,7 @@
 #
 # spec file for package rtl88x2bu
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rtl88x2bu
-Version:        5.8.7.1+git20250805.cc1e66f
+Version:        5.8.7.1+git20260615.fc158d1
 Release:        0
 Summary:        Kernel driver for Realtek 88x2bu wifi cards
 License:        GPL-2.0-only
