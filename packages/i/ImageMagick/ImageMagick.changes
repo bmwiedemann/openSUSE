@@ -197,7 +197,24 @@ Wed Jul  8 13:56:22 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-55510 [bsc#1270075]
         CVE-2026-55594 [bsc#1270077]
         CVE-2026-55595 [bsc#1270079]
-        
+        CVE-2026-61857 [bsc#1271312]
+        CVE-2026-61861 [bsc#1271294]
+        CVE-2026-61870 [bsc#1271293]
+        CVE-2026-61465 [bsc#1271313]
+        CVE-2026-61858 [bsc#1271311]
+        CVE-2026-61871 [bsc#1271485]
+        CVE-2026-61868 [bsc#1271487]
+        CVE-2026-61860 [bsc#1271494]
+        CVE-2026-61859 [bsc#1271497]
+        CVE-2026-61872 [bsc#1271484]
+        CVE-2026-61869 [bsc#1271486]
+        CVE-2026-61867 [bsc#1271488]
+        CVE-2026-61866 [bsc#1271489]
+        CVE-2026-61865 [bsc#1271490]
+        CVE-2026-61864 [bsc#1271491]
+        CVE-2026-61863 [bsc#1271492]
+        CVE-2026-61862 [bsc#1271493]
+        CVE-2026-61464 [bsc#1271496]
 
 -------------------------------------------------------------------
 Wed Jun 17 09:43:28 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -388,6 +405,7 @@ Wed Apr 15 08:30:48 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
         CVE-2026-56365 [bsc#1270004]
         CVE-2026-56361 [bsc#1270001]
         CVE-2026-56374 [bsc#1271099]
+        CVE-2026-56372 [bsc#1271314]
 
 -------------------------------------------------------------------
 Mon Mar 30 12:36:54 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -411,6 +429,8 @@ Mon Mar 23 10:25:17 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * ImageMagick_policy_etc.patch
 - fixes CVE-2026-33535 [bsc#1260874]
         CVE-2026-33536 [bsc#1260879]
+        CVE-2026-56366 [bsc#1271316]
+        CVE-2026-56375 [bsc#1271495]
 
 -------------------------------------------------------------------
 Tue Mar 17 11:03:31 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
@@ -522,6 +542,7 @@ Mon Feb 23 21:16:44 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
         CVE-2026-56376 [bsc#1268880]
         CVE-2026-56368 [bsc#1269064]
         CVE-2026-56362 [bsc#1271100]
+        CVE-2026-56373 [bsc#1271315]
 - actually patch SUSE default security policy 
   * modified ImageMagick-configuration-SUSE.patch
 
