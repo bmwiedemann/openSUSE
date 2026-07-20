@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 02:05:48 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.4
+  + Support TPM PCR snapshot on PowerPC 64 platform
+  + Fix SBAT string length calculations (bsc#1270265)
+
+-------------------------------------------------------------------
 Thu May 21 06:19:01 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.6.3
