@@ -704,4 +704,17 @@ Update required for libgit2-glib, a new lib depending on libgit2 and used by ged
     <comment>libgit2 1.9.4 (forwarded request 1354837 from AndreasStieger)</comment>
     <requestid>1354838</requestid>
   </revision>
+  <revision rev="74" vrev="1">
+    <srcmd5>d706740fefb3e82d2bb516d4574ff642</srcmd5>
+    <version>1.9.6</version>
+    <time>1784534305</time>
+    <user>dimstar_suse</user>
+    <comment>libgit2 1.9.6:
+CVE-2026-53586 (boo#1271694)
+CVE-2026-53587 (boo#1271695)
+CVE-2026-53585 (boo#1271696)
+CVE-2026-53584 (boo#1271697)
+CVE-2026-53583 (boo#1271698) (forwarded request 1366583 from AndreasStieger)</comment>
+    <requestid>1366584</requestid>
+  </revision>
 </revisionlist>

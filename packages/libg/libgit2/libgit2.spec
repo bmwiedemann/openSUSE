@@ -29,7 +29,7 @@
 %bcond_with expt_sha256
 %endif
 Name:           %{pname}%{?psuffix}
-Version:        1.9.4
+Version:        1.9.6
 Release:        0
 Summary:        C git library
 License:        GPL-2.0-only WITH GCC-exception-2.0
