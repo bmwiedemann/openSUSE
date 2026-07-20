@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Jul 19 17:41:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.22
+  * Fixed: The "All files" mode in Disk Op. had consistency issues
+    when changing the Disk Op. item.
+  * Fixed a bug where exiting text editing mode with the
+    enter/return key could cause a sample trigger to happen
+    afterwards. This also applied to certain System Request dialogs
+
+-------------------------------------------------------------------
+Sun Jul  5 12:15:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.21
+  * Windows: Dropped support for Windows XP (it's 25 years old,
+    time to move on!). The earliest supported Windows version is
+    now Windows 7 SP1.
+  * Windows: Upgraded the Visual Studio project from vs2019 to
+    vs2026 for taking advantage of vs2026's new compiler (should
+    result in faster code).
+
+-------------------------------------------------------------------
 Wed Jul  1 17:38:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.20
