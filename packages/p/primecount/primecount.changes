@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 12:05:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
+
+- Update to primecount-8.6 (API & ABI are backwards compatible).
+- count_simd.hpp: Prevent loop unrolling to reduce branch mispredictions.
+- Sieve.cpp: New sieving algorithm for small primes, GitHub#122.
+- Sieve_count_simd.hpp: Fix undefined behavior, GitHub#120.
+- Sieve.hpp: Use Vector<uint64_t> sieve to fix undefined behavior, GitHub#120.
+- Move the sieve source files into the new src/sieve directory, GitHub#123.
+- Fix LLVM/Clang -Wunused-template warning, GitHub#125.
+- Improve ARM SVE runtime dispatch.
+- multiarch_arm_sve.cmake: Update the ARM SVE compiler support check to match.
+
+-------------------------------------------------------------------
 Sun May 10 07:46:00 UTC 2026 - Kim Walisch <kim.walisch@gmail.com>
 
 - Update to primecount-8.5 (API & ABI are backwards compatible).
