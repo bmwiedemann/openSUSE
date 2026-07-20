@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Jul 18 22:12:02 UTC 2026 - victor.carvalho@suse.com
+
+- Security: re-vendor the bundled Go dependencies (no upstream source
+  changes; tarball rebuilt from v1.8.4 with updated go.mod/vendor):
+  * golang.org/x/net v0.48.0 -> v0.55.0: CVE-2026-33814 (bsc#1265736),
+    CVE-2026-39821 (bsc#1266575), CVE-2026-25680, CVE-2026-25681,
+    CVE-2026-27136, CVE-2026-42502, CVE-2026-42506 (bsc#1267120)
+  * golang.org/x/crypto v0.46.0 -> v0.52.0: CVE-2026-39827,
+    CVE-2026-39828, CVE-2026-39829, CVE-2026-39830, CVE-2026-39831,
+    CVE-2026-39832, CVE-2026-39833, CVE-2026-39834, CVE-2026-39835,
+    CVE-2026-42508, CVE-2026-46595, CVE-2026-46597, CVE-2026-46598
+    (bsc#1266151)
+- Build with Go >= 1.25 (required by golang.org/x/net 0.55; go.mod and
+  go.work directives bumped accordingly).
+
+-------------------------------------------------------------------
 Fri Jul 17 23:15:18 UTC 2026 - victor.carvalho@suse.com
 
 - Update to version 1.8.4:

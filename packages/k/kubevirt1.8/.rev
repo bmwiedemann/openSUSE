@@ -39,4 +39,14 @@ Validated with a full sig-compute e2e run against this build
 (915 specs, 717 passed, 3 known environmental flakes).</comment>
     <requestid>1366526</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>13d9567dddcfbc1a623f5bceb33410fe</srcmd5>
+    <version>1.8.4</version>
+    <time>1784534313</time>
+    <user>dimstar_suse</user>
+    <comment>Security re-vendor: golang.org/x/net 0.55.0 + golang.org/x/crypto 0.52.0
+Fixes bsc#1265736, bsc#1266575, bsc#1267120, bsc#1266151. No code changes:
+vendored dependency refresh only, upstream tag 1.8.4 unchanged.</comment>
+    <requestid>1366554</requestid>
+  </revision>
 </revisionlist>
