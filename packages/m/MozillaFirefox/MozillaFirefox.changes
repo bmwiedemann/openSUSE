@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Tue Jul 14 09:45:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.6
+  https://www.firefox.com/en-US/firefox/152.0.6/releasenotes/
+  MFSA 2026-67 (boo#1271403)
+  * CVE-2026-15718 (bmo#2045443)
+    Invalid pointer in the JavaScript: WebAssembly component
+  * CVE-2026-15719 (bmo#2043820)
+    Site isolation in the DOM: Navigation component
+  * Smart Window includes several enhancements:
+    Select text on a page and get quick access to summarize,
+    explain, and more using the built-in assistant.
+    (bmo#2034921)
+    Added a row of shortcuts to New Tab, making it easier to
+    get back to sites.
+    (bmo#2048338)
+  * Fix an issue that prevented email tracking protection from
+    being disabled in the redesigned Firefox Settings.
+    (bmo#2049331)
+  * Fix the homepage not loading for some enterprise configurations
+    that set it using a legacy autoconfig format.
+    (bmo#2047962)
+
+-------------------------------------------------------------------
+Mon Jul  6 19:23:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.5
+  https://www.firefox.com/en-US/firefox/152.0.5/releasenotes/
+  * Fixed the Manage payment methods list in Settings appearing
+    empty when a saved payment card had no expiration date
+    (bmo#2048383)
+
+-------------------------------------------------------------------
 Sun Jul  5 11:21:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 152.0.4
@@ -16,7 +49,7 @@ Sun Jul  5 11:21:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
     submitting (bmo#2033002)
   * Fixed copy, paste, undo, redo, and similar keyboard shortcuts
     not working inside macOS system dialogs such as the Save and
-    Open panels. (Bug 2040851, Bug 2040844)
+    Open panels. (bmo#2040851, bmo#2040844)
   * Fixed the Manage Cookies and Site Data dialog opening with an
     empty list when opened from the Settings search results.
     (bmo#2041077)
