@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:55:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.20.0:
+  * build: release v0.20.0
+  * build: bump go version to 1.25.12
+  * build: bump tzdata version to 2026c
+  * ci: fix helm chart oci release redeployment issue
+  * build: bump dependencies 2026-06-27
+  * helm: fix chart blank lines validation error
+  * chore: update license date for pkg/admission/annotations.go
+  * docs: update imageVolume recommendation
+  * feat: add pod ownership annotations lookup
+
+-------------------------------------------------------------------
 Mon Mar 09 07:39:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.19.0:
