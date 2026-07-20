@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 13 16:01:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add tar-acl_-prefix.patch: Avoid acl_ prefix for functions
+  The acl.h header from libacl uses acl_ prefix for its functions.
+  Avoid defining functions with the same name in order to protect
+  its namespace.
+
+-------------------------------------------------------------------
 Mon Jun 22 16:07:49 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Fix CVE-2026-5704.patch causing errors when extracting certain archives

@@ -66,6 +66,8 @@ Patch22:        fix-dereference.patch
 # PATCH-FIX-UPSTREAM antonio.teixeira@suse.com bsc#1267189
 # Fix extraction failure for paths like "a/./b" caused by the gnulib openat2 implementation
 Patch23:        openat2-fix-dotlike-failure.patch
+# PATCH-FIX-UPSTREAM https://cgit.git.savannah.gnu.org/cgit/tar.git/patch/?id=08c3fc2e9337094aff01a511170fd35fdb8f1ee3
+Patch24:        tar-acl_-prefix.patch
 BuildRequires:  automake >= 1.15
 BuildRequires:  libacl-devel
 BuildRequires:  libselinux-devel
