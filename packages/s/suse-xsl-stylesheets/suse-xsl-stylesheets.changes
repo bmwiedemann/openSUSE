@@ -1,5 +1,13 @@
 -------------------------------------------------------------------
-Thu Jul  2 14:05:01 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.28
+Fri Jul 17 06:33:29 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.39
+
+- Update 2.95.39
+  * Update doc.survey.url parameter in #812
+  * Add missing normalize-space for name key in #815
+  * Fix #813: Make TRD PDF similar to HTML in #814
+
+-------------------------------------------------------------------
+Thu Jul  2 14:05:01 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.38
 
 - Update 2.95.38
   * Fix survey button in single HTML in #810
