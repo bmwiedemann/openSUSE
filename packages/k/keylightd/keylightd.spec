@@ -27,8 +27,6 @@ Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  rust
-BuildRequires:  systemd
-Requires:       systemd
 
 %description
 keylightd is a system daemon for Framework laptops that listens to

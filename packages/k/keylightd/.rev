@@ -16,4 +16,12 @@
 - correct permissions of service file</comment>
     <requestid>1265419</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>1aee0aca78f099d5bb94b676840c000d</srcmd5>
+    <version>1+git20240806.b7b17e3</version>
+    <time>1784534343</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366596</requestid>
+  </revision>
 </revisionlist>
