@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 19 08:03:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 734
+  * Update recommended OmniDrive version.
+  * Fix off by one in joliet UCS-2BE to UTF-8 conversion code.
+  * Remove xml tags from dvd key printing.
+  * Implement generic drive lead-in reading.
+  * Automatic sector order detection for generic drives.
+  * Support hp rebadges in flash_tsst.
+
+-------------------------------------------------------------------
 Mon Jul  6 09:01:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 729
