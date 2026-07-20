@@ -7,4 +7,12 @@
     <comment>New package: grok-build - xAI's terminal AI coding agent (grok CLI/TUI). Rust, Apache-2.0, /usr/bin/grok. Self-updater and telemetry disabled; offline build; build-memory constrained to avoid OOM on low-RAM aarch64 workers. Devel: devel:tools.</comment>
     <requestid>1366158</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>bc7f0b221fe7cde52daa39ff02af71ac</srcmd5>
+    <version>0+git20260717.98c3b24</version>
+    <time>1784534311</time>
+    <user>dimstar_suse</user>
+    <comment>Update to git snapshot 0+git20260717.98c3b24</comment>
+    <requestid>1366543</requestid>
+  </revision>
 </revisionlist>
