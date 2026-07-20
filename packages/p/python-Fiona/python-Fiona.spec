@@ -1,7 +1,7 @@
 #
 # spec file for package python-Fiona
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,10 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gdal
 BuildRequires:  libgdal-devel
+# libgdal pulls in libarmadillo, which links OpenBLAS; the %check imports the
+# GDAL-backed fiona._env extension, so the BLAS runtime must be present in the
+# build root (it is otherwise only a weak dependency and is left out).
+BuildRequires:  libopenblas_pthreads0
 BuildRequires:  proj
 BuildRequires:  proj-devel
 BuildRequires:  python-rpm-macros
@@ -93,6 +97,11 @@ skiptests="$skiptests or GPSTrackMaker"
 skiptests="$skiptests or (test_no_append_driver_cannot_append and (FlatGeobuf or GeoJSONSeq))"
 # Issues with click 8.2.1 on tests: https://github.com/pallets/click/issues/2939
 skiptests="$skiptests or test_fio"
+# July 2026: GDAL 3.13 changed GeoJSON output formatting and dataset removal
+# behaviour, so these output-string assertions and GeoJSON removals no longer
+# match what fiona 1.10.1 expects.
+skiptests="$skiptests or test_open_kwargs or test_write_bool_subtype"
+skiptests="$skiptests or (test_remove and GeoJSON)"
 
 mv fiona fiona_temp
 export GDAL_DATA=$(pkg-config --variable=datadir gdal)
