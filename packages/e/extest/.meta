@@ -1,4 +1,5 @@
 <package name="extest" project="openSUSE:Factory">
   <title>Extest</title>
   <description>X11 XTEST reimplementation primarily for Steam Controller on Wayland.</description>
+  <devel project="hardware" package="extest"/>
 </package>

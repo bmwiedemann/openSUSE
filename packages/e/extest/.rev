@@ -20,4 +20,12 @@ I added the baselibs.conf to the sources :)
 I added the reason for this change in the changelog</comment>
     <requestid>1302018</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>36540ad9a87124480dca216eb4909c62</srcmd5>
+    <version>1.0.3</version>
+    <time>1784534347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366608</requestid>
+  </revision>
 </revisionlist>

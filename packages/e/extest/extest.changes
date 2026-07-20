@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Jul 19 13:52:16 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to version 1.0.3:
+  * Support SIDE and EXTRA mouse buttons
+  * Update dependencies
+  * Fixed warning about redundancy. cliippy lint
+
+-------------------------------------------------------------------
 Fri Aug 29 14:34:42 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Publish 32bit version in 64bit repo
