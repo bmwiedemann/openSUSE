@@ -1,9 +1,19 @@
 #!/bin/bash
 set -euxo pipefail
 
-echo "####### BOOTLOADER INSTALL (disk.sh)"
+if [ -x /usr/bin/snapper ]; then
+	echo "Adjusting snapper configuration"
+	if ! [ -f /etc/snapper/configs/root ]; then
+		echo "Snapper config missing?"
+		exit 1
+	fi
+	sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
+	sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
+	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
+fi
 
 if [ -x /usr/bin/sdbootutil ]; then
+	echo "Installing bootloader using sdbootutil"
 	arch="$(uname -m)"
 	case "$arch" in
 		aarch64) arch=aa64 ;;
@@ -37,5 +47,3 @@ if [ -x /usr/bin/sdbootutil ]; then
 
 	find /boot
 fi
-
-echo "####### END BOOTLOADER INSTALL (disk.sh)"

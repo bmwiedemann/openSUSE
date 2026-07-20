@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 11:23:37 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Move snapper configuration from config.sh to disk.sh (boo#1259633)
+- Sync snapper number limits with MicroOS
+
+-------------------------------------------------------------------
 Tue Jun 16 07:06:31 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Enable KubeVirt-Cloud flavor for aarch64 as well
