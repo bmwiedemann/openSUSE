@@ -1,4 +1,5 @@
 <package name="steamdeck-dsp" project="openSUSE:Factory">
   <title>Steamdeck DSP</title>
   <description>Steamdeck Audio Processing</description>
+  <devel project="multimedia:proaudio" package="steamdeck-dsp"/>
 </package>

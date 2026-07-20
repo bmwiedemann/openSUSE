@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Jul 19 12:35:45 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
+
+- Update to version 0.69:
+  * wireplumber: Unrestrict use of wpctl
+  * wireplumber: Unrestrict use of pw-top
+  * wireplumber: Disable Pro Audio profiles in Jupier and Galileo
+  * pipewire-confs: Increase the device latency to 512/48000
+  * Revert "pipewire: pipewire-pulse: set the minimum latency to 384/48000"
+  * Revert "pipewire-confs: Increase the minimum latency to 512/48000"
+
+-------------------------------------------------------------------
 Sat Aug 30 13:16:19 UTC 2025 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Initial version 0.61:
