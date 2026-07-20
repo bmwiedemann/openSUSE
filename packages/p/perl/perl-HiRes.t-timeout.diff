@@ -1,5 +1,5 @@
---- ./dist/Time-HiRes/t/alarm.t.orig	2020-06-14 23:01:25.000000000 +0000
-+++ ./dist/Time-HiRes/t/alarm.t	2020-10-27 10:52:36.824741858 +0000
+--- dist/Time-HiRes/t/alarm.t.orig	2026-06-22 14:48:00.000000000 +0000
++++ dist/Time-HiRes/t/alarm.t	2026-07-16 09:05:28.465359987 +0000
 @@ -8,7 +8,7 @@ BEGIN { require_ok "Time::HiRes"; }
  
  use Config;
@@ -8,9 +8,9 @@
 +my $limit = 0.60; # 25% is acceptable slosh for testing timers
  
  my $xdefine = '';
- if (open(XDEFINE, "<", "xdefine")) {
---- ./dist/Time-HiRes/t/clock.t.orig	2020-06-14 23:01:25.000000000 +0000
-+++ ./dist/Time-HiRes/t/clock.t	2020-10-27 10:52:36.824741858 +0000
+ if (open(my $fh, "<", "xdefine")) {
+--- dist/Time-HiRes/t/clock.t.orig	2026-06-22 14:48:00.000000000 +0000
++++ dist/Time-HiRes/t/clock.t	2026-07-16 09:05:28.465359987 +0000
 @@ -29,7 +29,7 @@ printf("# have_clock           = %d\n",
  # completes fine with (say) 30% slosh, and fail otherwise.  If you do that,
  # consider changing over to test.pl at the same time.
@@ -20,8 +20,8 @@
  
  SKIP: {
      skip "no clock_gettime", 1
---- ./dist/Time-HiRes/t/itimer.t.orig	2020-06-14 23:01:25.000000000 +0000
-+++ ./dist/Time-HiRes/t/itimer.t	2020-10-27 10:52:36.824741858 +0000
+--- dist/Time-HiRes/t/itimer.t.orig	2026-06-22 14:48:00.000000000 +0000
++++ dist/Time-HiRes/t/itimer.t	2026-07-16 09:05:28.465359987 +0000
 @@ -29,7 +29,7 @@ use Test::More tests => 2;
  BEGIN { push @INC, '.' }
  use t::Watchdog;
@@ -31,8 +31,8 @@
  
  my $i = 3;
  my $r = [Time::HiRes::gettimeofday()];
---- ./dist/Time-HiRes/t/usleep.t.orig	2020-06-14 23:01:25.000000000 +0000
-+++ ./dist/Time-HiRes/t/usleep.t	2020-10-27 10:52:36.824741858 +0000
+--- dist/Time-HiRes/t/usleep.t.orig	2026-06-22 14:48:00.000000000 +0000
++++ dist/Time-HiRes/t/usleep.t	2026-07-16 09:05:28.465359987 +0000
 @@ -16,7 +16,7 @@ eval { Time::HiRes::usleep(-2) };
  like $@, qr/::usleep\(-2\): negative time not invented yet/,
          "negative time error";

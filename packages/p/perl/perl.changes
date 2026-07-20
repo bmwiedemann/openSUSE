@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:04:28 CEST 2026 - Michael Schroeder <mls@suse.de>
+
+- update to 5.44.0
+  * support named parameters in signatures
+  * support aliased refs in mult-var foreach
+  * enhanced /xx regexp pattern modifier
+  * unicode 17.0 is supported
+  * use of getentropy() for PRNG initialization
+  * refreshed patches: perl-HiRes.t-timeout.diff
+
+-------------------------------------------------------------------
 Mon Mar  9 13:54:32 CET 2026 - Michael Schroeder <mls@suse.de>
 
 - update to 5.42.1

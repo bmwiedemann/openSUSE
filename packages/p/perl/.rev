@@ -1214,4 +1214,12 @@ I hope I got it right now. It export both 5.34.0 and 5.34.1 COMPAT. That should 
   * fix autovivification for ternary condition operators</comment>
     <requestid>1350185</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>db7069cbb3b010e6a66463fea5674621</srcmd5>
+    <version>5.44.0</version>
+    <time>1784534203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.44.0</comment>
+    <requestid>1366325</requestid>
+  </revision>
 </revisionlist>
