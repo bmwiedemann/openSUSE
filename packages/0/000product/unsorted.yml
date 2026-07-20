@@ -5023,6 +5023,7 @@ unsorted:
   - gcrane-fish-completion 
   - gcrane-zsh-completion 
   - gcstar 
+  - gd 
   - gd-devel 
   - gd-devel-32bit 
   - gdal 
@@ -9023,6 +9024,7 @@ unsorted:
   - ini4j-javadoc 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
+  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -9911,6 +9913,7 @@ unsorted:
   - k8tz-fish-completion 
   - k8tz-zsh-completion 
   - k8up-cli 
+  - k8up-cli-bash-completion 
   - k9s 
   - kColorPicker-Qt5-devel 
   - kColorPicker-Qt6-devel 
@@ -10321,6 +10324,7 @@ unsorted:
   - kime-gtk4 
   - kime-qt5 
   - kime-qt6 
+  - kimi-code 
   - kind 
   - kind-bash-completion 
   - kind-fish-completion 
@@ -10337,6 +10341,8 @@ unsorted:
   - kio_perldoc 
   - kio_perldoc-lang 
   - kirigami-addons6-devel 
+  - kirigami-app-components6 
+  - kirigami-app-components6-devel 
   - kirigami-gallery 
   - kirigami-gallery-lang 
   - kirigami2 
@@ -11344,6 +11350,7 @@ unsorted:
   - libKWeatherCore6 
   - libKWeatherCore6-lang 
   - libKasten4 
+  - libKirigamiActionCollection6 
   - libLASi-devel 
   - libLASi2 
   - libLHAPDF-6_5_5 
@@ -12867,6 +12874,7 @@ unsorted:
   - libcpuid-devel 
   - libcpuid-tools 
   - libcpuid18 
+  - libcpuinfo-suse0 
   - libcpuset-devel 
   - libcpuset1 
   - libcrc32c-devel 
@@ -14142,7 +14150,7 @@ unsorted:
   - libhyprgraphics4 
   - libhyprlang2 
   - libhyprtoolkit5 
-  - libhyprutils12 
+  - libhyprutils13 
   - libhyprwire3 
   - libi2c0 
   - libi2c0-devel 
@@ -22092,6 +22100,7 @@ unsorted:
   - perl-Furl 
   - perl-Future 
   - perl-Future-IO 
+  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -24358,13 +24367,11 @@ unsorted:
   - python311 
   - python311-32bit 
   - python311-CSXCAD 
-  - python311-Fiona 
   - python311-argcomplete 
   - python311-base 
   - python311-base-32bit 
   - python311-base-x86-64-v3 
   - python311-bqplot 
-  - python311-calmjs 
   - python311-calver 
   - python311-cfn-lint 
   - python311-click 
@@ -24386,7 +24393,6 @@ unsorted:
   - python311-mediafile 
   - python311-modern-colorthief 
   - python311-onnxruntime 
-  - python311-openapi-core 
   - python311-oslo.cache 
   - python311-packaging 
   - python311-parfive 
@@ -35217,6 +35223,7 @@ unsorted:
   - system-user-mktex 
   - system-user-msr 
   - system-user-nagios 
+  - system-user-news 
   - system-user-ntp 
   - system-user-openbao 
   - system-user-osc-collab 
@@ -35227,6 +35234,7 @@ unsorted:
   - system-user-qgsd 
   - system-user-rustdesk 
   - system-user-transmission 
+  - system-user-uucp 
   - system-user-uuidd 
   - system-user-vault-sync 
   - system-user-velociraptor 

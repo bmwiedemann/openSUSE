@@ -434,7 +434,6 @@
     <package name="gcr3-prompter" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gcr3-ssh-agent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="gcr3-ssh-askpass" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="gd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="gdb" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gdbm-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="gdk-pixbuf-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -748,7 +747,6 @@
     <package name="inkscape-extensions-extra" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
     <package name="inkscape-extensions-gimp" supportstatus="unsupported"/> <!-- reason: common_locks:expansion -->
     <package name="inkscape-lang" supportstatus="unsupported"/> <!-- reason: dvd:inkscape -->
-    <package name="inn" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="intel-vaapi-driver" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="intlfonts-euro-bitmap-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="inxi" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -1520,7 +1518,7 @@
     <package name="libSM6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSPIRV-Tools-2026_3_rc1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libSoundTouch1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="libSvtAv1Enc3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libSvtAv1Enc4" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libUsageEnvironment3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libX11-6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libX11-data" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -1778,7 +1776,6 @@
     <package name="libcom_err2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libcomposefs1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libconfig++15" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libcpuinfo-suse0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcpupower1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libcrack2" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libcrack2-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -2161,7 +2158,7 @@
     <package name="libitm1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="libiw30" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libixion-0_20-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libixml11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="libixml22" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libjack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjansson4" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libjansson4-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3272,7 +3269,6 @@
     <package name="perl-Exporter-Tiny" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-File-Listing" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="perl-File-ShareDir" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="perl-GD" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Geography-Countries" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="perl-Git" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="perl-HTML-Parser" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3880,7 +3876,6 @@
     <package name="system-user-lp" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="system-user-mail" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="system-user-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_plasma -->
-    <package name="system-user-news" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-nobody" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-pulse" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-qemu" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -3889,7 +3884,6 @@
     <package name="system-user-tftp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="system-user-tss" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="system-user-upsd" supportstatus="unsupported"/> <!-- reason: dvd:system-user-upsd -->
-    <package name="system-user-uucp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-vscan" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="system-user-wwwrun" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="systemd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->

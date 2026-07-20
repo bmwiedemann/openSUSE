@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260718" schemaversion="4.1">
+<image name="OBS__MicroOS___20260720" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260718</productvar>
+      <productvar name="VERSION">20260720</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260718,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260720,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260718/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260720/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -587,7 +587,6 @@
       <repopackage name="libconfig15"/>
       <repopackage name="libcontainers-common"/>
       <repopackage name="libcontainers-default-policy"/>
-      <repopackage name="libcpuinfo-suse0"/>
       <repopackage name="libcrack2"/>
       <repopackage name="libcreaterepo_c1"/>
       <repopackage name="libcrypt1"/>
@@ -742,7 +741,7 @@
       <repopackage name="libip4tc2"/>
       <repopackage name="libip6tc2"/>
       <repopackage name="libisl23"/>
-      <repopackage name="libixml11"/>
+      <repopackage name="libixml22"/>
       <repopackage name="libjansson4"/>
       <repopackage name="libjasper7"/>
       <repopackage name="libjbig2"/>
@@ -1203,7 +1202,7 @@
       <repopackage name="libstemmer1d"/>
       <repopackage name="libstoken1"/>
       <repopackage name="libsubid5"/>
-      <repopackage name="libSvtAv1Enc3"/>
+      <repopackage name="libSvtAv1Enc4"/>
       <repopackage name="libswresample6"/>
       <repopackage name="libswscale9"/>
       <repopackage name="libsystemd0"/>
