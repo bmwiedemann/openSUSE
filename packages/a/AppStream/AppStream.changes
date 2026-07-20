@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Jul 18 07:14:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream changes:
+  * 0001-yaml-Fix-potential-crashes-when-encountering-missing.patch
+  * 0001-yaml-Adjust-tests-and-emitter-to-work-around-libfyam.patch
+  * 0001-yaml-Ensure-version-relations-are-consistently-quote.patch
+  * 0001-trivial-yaml-Ensure-branding-color-values-are-also-c.patch
+- Drop patch, no longer needed:
+  * 0001-Disable-failing-test-with-old-libfyaml.patch
+
+-------------------------------------------------------------------
+Fri Jun 19 12:09:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.3
+  Features:
+ * Officially support & read JXL images for icons, validate permitted filetypes
+ * meson: Allow disabling command-line tools
+ * news-convert: Recognize "=" as release block header
+ * news-convert: Handle extra linebreaks better and add support for issue-blocks
+ * compose: Create content hashes with Blake3 instead of MD5
+ * Update static data for category and license additions
+ * validator: Tags without namespace are an error
+  Specification:
+ * docs: Convert to Docbook 5
+  Bugfixes:
+ * yaml: Ensure certain values are always explicitly emitted as strings
+ * Never emit usertags that are missing a namespace
+ * compose: add bounds checks when parsing malformed translation files
+ * Explicitly add fcfreetype.h include to asc-font.c
+ * compose: Unref icon_policy in asc_compose_finalize
+ * compose: Free array from asc_result_get_component_ids_with_hints
+  Miscellaneous:
+ * yaml: Improve string quoting heuristics
+ * meson: Drop -Winline from maintainer flags
+- Drop patch, merged upstream:
+  * 0001-Explicitly-add-fcfreetype.h-include-to-asc-font.c.patch
+- Drop no longer needed patch:
+  * support-meson0.59.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 07:58:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream change:

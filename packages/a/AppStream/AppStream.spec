@@ -16,25 +16,24 @@
 #
 
 
-%define min_qt_version 6.2.4
-%if 0%{?sle_version} >= 150400 && 0%{?is_opensuse} || 0%{?sle_version} >= 150600 || 0%{?suse_version} > 1500
-%bcond_without vala
-%endif
+%define min_qt_version 6.4.2
 
-# Use the same compiler that was used to build Qt 6 packages in the devel project
-# Mixing gcc 13 and 15 on Leap 16 causes linker errors ('undefined reference to __cxa_call_terminate@CXXABI_1.3.15')
-%if 0%{?suse_version} == 1500
-%bcond_without gcc14
-%endif
+%bcond_without vala
+#
 %if 0%{?suse_version} == 1600
 %bcond_without gcc15
 %endif
+# Not available in Leap 16
+%if 0%{?suse_version} >= 1699
+%bcond_without libblake3
+%endif
+#
 %define rname AppStream
 %define libappstream_sover 5
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream
-Version:        1.1.2
+Version:        1.1.3
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -42,20 +41,13 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz.asc
 Source2:        AppStream.keyring
-# PATCH-FIX-OPENSUSE
-Patch0:         support-meson0.59.patch
-# PATCH-FIX-OPENSUSE
-# TODO: Only apply to Leap when libfyaml >= 0.9.3 will be in factory
-Patch1:         0001-Disable-failing-test-with-old-libfyaml.patch
 # PATCH-FIX-UPSTREAM
-Patch2:         0001-Explicitly-add-fcfreetype.h-include-to-asc-font.c.patch
+Patch0:         0001-yaml-Fix-potential-crashes-when-encountering-missing.patch
+Patch1:         0001-yaml-Adjust-tests-and-emitter-to-work-around-libfyam.patch
+Patch2:         0001-yaml-Ensure-version-relations-are-consistently-quote.patch
+Patch3:         0001-trivial-yaml-Ensure-branding-color-values-are-also-c.patch
 BuildRequires:  cairo-devel
-BuildRequires:  docbook-xsl-stylesheets
-%if %{with gcc14}
-BuildRequires:  gcc14
-BuildRequires:  gcc14-PIE
-BuildRequires:  gcc14-c++
-%endif
+BuildRequires:  docbook5-xsl-stylesheets
 %if %{with gcc15}
 BuildRequires:  gcc15
 BuildRequires:  gcc15-PIE
@@ -72,25 +64,28 @@ BuildRequires:  gperf
 BuildRequires:  itstool
 BuildRequires:  meson >= 0.59
 BuildRequires:  pkgconfig
+%if %{with vala}
+BuildRequires:  vala
+%endif
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+%if %{with libblake3}
+BuildRequires:  pkgconfig(libblake3)
+%endif
+BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
+BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libfyaml)
 BuildRequires:  pkgconfig(librsvg-2.0)
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
-BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
-BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
 BuildRequires:  pkgconfig(xmlb) >= 0.3.14
 Recommends:     curl
-%if %{with vala}
-BuildRequires:  vala
-%endif
 
 %description
 AppStream-Core makes it easy to access application information from the
@@ -206,12 +201,14 @@ GObject introspection bindings for interfaces provided by AppStream.
 %else
 %define build_vapi false
 %endif
-
-%define options -Dqt=true -Dcompose=true -Dvapi=%{build_vapi}
-
-%if %{with gcc14}
-export CC=gcc-14 CXX=g++-14
+%if %{with libblake3}
+%define blake3_support true
+%else
+%define blake3_support false
 %endif
+
+%define options -Dqt=true -Dcompose=true -Dvapi=%{build_vapi} -Dblake3-support=%{blake3_support}
+
 %if %{with gcc15}
 export CC=gcc-15 CXX=g++-15
 %endif

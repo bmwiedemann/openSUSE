@@ -1,0 +1,105 @@
+From 46cf6296663aabf82207a3191482a6ce5b94875f Mon Sep 17 00:00:00 2001
+From: Matthias Klumpp <matthias@tenstral.net>
+Date: Sat, 18 Jul 2026 02:51:51 +0200
+Subject: [PATCH] yaml: Adjust tests and emitter to work around libfyaml
+ string-quoting change
+
+Resolves: #756
+---
+ meson.build           | 2 ++
+ src/as-yaml.c         | 9 ++++++---
+ src/as-yaml.h         | 8 +++++---
+ tests/test-yamldata.c | 8 +++++++-
+ 4 files changed, 20 insertions(+), 7 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 5d989419..0d0704ca 100644
+--- a/meson.build
++++ b/meson.build
+@@ -221,8 +221,10 @@ gperf = find_program('gperf')
+ fyaml_ver_parts = fyaml_dep.version().split('.')
+ fyaml_major = fyaml_ver_parts[0].to_int()
+ fyaml_minor = fyaml_ver_parts[1].to_int()
++fyaml_micro = fyaml_ver_parts.length() > 2 ? fyaml_ver_parts[2].to_int() : 0
+ conf.set('_FYAML_MAJOR_VERSION', fyaml_major)
+ conf.set('_FYAML_MINOR_VERSION', fyaml_minor)
++conf.set('_FYAML_MICRO_VERSION', fyaml_micro)
+ 
+ # configure config.h file (finally)
+ configure_file(output: 'config.h', configuration: conf)
+diff --git a/src/as-yaml.c b/src/as-yaml.c
+index 522f646d..84e9efeb 100644
+--- a/src/as-yaml.c
++++ b/src/as-yaml.c
+@@ -392,11 +392,14 @@ as_yaml_emit_scalar_str (struct fy_emitter *emitter, const gchar *value)
+ 	 * is a good tradeoff for speed (comparing a bunch of bytes is very fast).
+ 	 * We use double-quoting, since English strings are more likely to contain apostrophes, so
+ 	 * double-quotes may lead to less escaping than single-quotes.
+-	 * By using FYSS_ANY, libfyaml will handle any dangerous internal punctuation ("=", "#", etc.)
+-	 * for us, so we only need to test for numerics and booleans. */
++	 * Leading punctuation would make libfyaml quote the string as well, but which quoting
++	 * style it selects changed between versions, so we pin double-quoting ourselves to get
++	 * deterministic output.
++	 * By using FYSS_ANY otherwise, libfyaml will handle any dangerous internal punctuation
++	 * ("=", "#", etc.) for us. */
+ 	if (as_is_empty (value))
+ 		style = FYSS_DOUBLE_QUOTED;
+-	else if (g_ascii_isdigit (value[0]) || value[0] == '-' || value[0] == '+')
++	else if (g_ascii_isdigit (value[0]) || g_ascii_ispunct (value[0]))
+ 		style = FYSS_DOUBLE_QUOTED;
+ 	else if (as_str_equal0 (value, "true") || as_str_equal0 (value, "false"))
+ 		style = FYSS_DOUBLE_QUOTED;
+diff --git a/src/as-yaml.h b/src/as-yaml.h
+index 3547ef30..b70e256e 100644
+--- a/src/as-yaml.h
++++ b/src/as-yaml.h
+@@ -39,14 +39,16 @@ AS_BEGIN_PRIVATE_DECLS
+  * AS_FYAML_CHECK_VERSION:
+  * @major: major version number
+  * @minor: minor version number
++ * @micro: micro version number
+  *
+  * Check whether a libfyaml version equal to or greater than
+- * major.minor is present.
++ * major.minor.micro is present.
+  */
+-#define AS_FYAML_CHECK_VERSION(major, minor)                                    \
++#define AS_FYAML_CHECK_VERSION(major, minor, micro)                             \
+ 	(_FYAML_MAJOR_VERSION > (major) ||                                      \
+ 	 (_FYAML_MAJOR_VERSION == (major) && _FYAML_MINOR_VERSION > (minor)) || \
+-	 (_FYAML_MAJOR_VERSION == (major) && _FYAML_MINOR_VERSION == (minor)))
++	 (_FYAML_MAJOR_VERSION == (major) && _FYAML_MINOR_VERSION == (minor) && \
++	  _FYAML_MICRO_VERSION >= (micro)))
+ 
+ /**
+  * Helper macro for iterating through YAML sequences more compactly - we do this a lot!
+diff --git a/tests/test-yamldata.c b/tests/test-yamldata.c
+index 18f8cc95..6dca4f25 100644
+--- a/tests/test-yamldata.c
++++ b/tests/test-yamldata.c
+@@ -1445,7 +1445,7 @@ static const gchar *yamldata_screenshots = "Type: generic\n"
+ 					   "- environment: plasma:mobile\n"
+ 					   "  caption:\n"
+ 					   "    C: The app, on mobile!\n"
+-#if AS_FYAML_CHECK_VERSION(0, 9)
++#if AS_FYAML_CHECK_VERSION(0, 9, 0)
+ 					   "  thumbnails: []\n"
+ #else
+ 					   "  thumbnails:\n"
+@@ -2098,7 +2098,13 @@ test_yaml_write_weird_strings (void)
+ 				     "  de: \"# why?\"\n"
+ 				     "Keywords:\n"
+ 				     "  la:\n"
++	/* which quoting style libfyaml auto-selects for strings that contain
++	 * special characters (but need quoting for other reasons) changed with 0.9.5 */
++#if AS_FYAML_CHECK_VERSION(0, 9, 5)
++				     "  - 'Auxilium: Help Contents=Adiuvantes Res'\n"
++#else
+ 				     "  - \"Auxilium: Help Contents=Adiuvantes Res\"\n"
++#endif
+ 				     "  eo:\n"
+ 				     "  - \"2048\"\n"
+ 				     "  C:\n"
+-- 
+2.55.0
+
