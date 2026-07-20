@@ -18,7 +18,7 @@
 
 
 %global version_suffix 1.97
-%global version_current 1.97.0
+%global version_current 1.97.1
 %global version_previous 1.96.1
 
 %if 0%{?gcc_version} < 15 && 0%{?suse_version} < 1600
