@@ -110,4 +110,12 @@
     <comment></comment>
     <requestid>1351522</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a573ea95602c4cf68cb6c52fecbd8322</srcmd5>
+    <version>1.1.9</version>
+    <time>1784534326</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.1.9 (fixes GDAL 3.13 build, gh#pramsey/pgsql-ogr-fdw#273, + PG19); package LLVM JIT bitcode via generated file list so it builds on both Leap 16.0 (emits bitcode) and Tumbleweed (does not)</comment>
+    <requestid>1366578</requestid>
+  </revision>
 </revisionlist>

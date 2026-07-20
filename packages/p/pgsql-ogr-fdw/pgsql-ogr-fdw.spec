@@ -21,7 +21,7 @@
 %{pg_version_from_name}
 
 Name:           %{pg_name}-%{ext_name}
-Version:        1.1.7
+Version:        1.1.9
 Release:        0
 Summary:        PostgreSQL OGR Foreign Data Wrapper
 License:        MIT
@@ -60,21 +60,23 @@ export PATH="$PATH:%{pg_config_bindir}"
 mkdir -p %{buildroot}/%{pg_config_bindir}
 make V=1 USE_PGXS=1 install DESTDIR=%{buildroot}
 
+# PGXS emits LLVM JIT bitcode only where the PostgreSQL server itself was built
+# with LLVM (e.g. Leap 16.0); current Tumbleweed produces none. Record whatever
+# landed under the bitcode directory so the file list is valid on every product.
+( cd %{buildroot} && find ".%{pg_config_pkglibdir}/bitcode" -mindepth 1 -maxdepth 1 2>/dev/null | sed -e 's,^\.,,' ) > bitcode.files
+
 %post
 %{_datadir}/postgresql/install-alternatives %pg_version
 
 %postun
 %{_datadir}/postgresql/install-alternatives %pg_version
 
-%files
+%files -f bitcode.files
 %defattr(-, root, root)
 %license LICENSE.md
 %doc README.md FAQ.md
 %{pg_config_bindir}/ogr_fdw_info
 %{pg_config_pkglibdir}/ogr_fdw.so
-%if %{postgresql_has_llvm}
-%{pg_config_pkglibdir}/bitcode/*
-%endif
 %dir %{pg_config_sharedir}/extension/
 %{pg_config_sharedir}/extension/ogr_fdw--1.0--1.1.sql
 %{pg_config_sharedir}/extension/ogr_fdw--1.1.sql

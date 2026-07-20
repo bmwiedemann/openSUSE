@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 19 06:17:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.1.9:
+  * Fix the build failure with GDAL 3.13
+    (gh#pramsey/pgsql-ogr-fdw#273)
+  * Add PostgreSQL 19 support and fix compilation warnings under
+    PG19
+  * Use PG_MODULE_MAGIC_EXT and pass the version from the control
+    file
+  * Use strncpy in ogr_fdw_info
+- Package the LLVM JIT bitcode through a generated file list
+  instead of a fixed glob: Leap 16.0 still emits per-extension
+  bitcode while current Tumbleweed emits none, and the old
+  bitcode/* glob failed on whichever product did not match.
+
+-------------------------------------------------------------------
 Wed May  6 09:44:31 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Disable postgresql13 because it is EOL.
