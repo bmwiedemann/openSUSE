@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:56:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.4 (fixes CVE-2026-59884 (bsc#1271464),
+  CVE-2026-59885 (bsc#1271465), CVE-2026-59886 (bsc#1271466))
+  * CVE-2026-59885 (GHSA-8ppf-4f7h-5ppj): Fixed quadratic time complexity in
+    the OBJECT IDENTIFIER and RELATIVE-OID decoders. A small crafted substrate
+    encoding many arcs could consume excessive CPU. Arcs are now accumulated in
+    linear time; decoded values are unchanged
+  * CVE-2026-59884 (GHSA-m4p7-r5rc-7g4j): Limited BER long-form tag IDs to 20
+    octets (140 bits), matching the OID arc limit introduced in 0.6.2.
+    Unbounded tag IDs allowed a crafted substrate to consume excessive CPU and
+    memory; longer tag IDs are now rejected with PyAsn1Error. Also fixed Tag
+    and TagSet repr() failing on huge tag IDs due to the integer-to-string
+    conversion limit
+  * CVE-2026-59886 (GHSA-hm4w-wwcw-mr6r): Fixed excessive memory and CPU
+    consumption in Real.__float__() for values with large base-10 exponents.
+    Conversion no longer materializes huge intermediate integers; values too
+    large to represent as a Python float raise OverflowError promptly, and
+    prettyPrint() renders them as '<overflow>' as before. Also fixed base-10
+    mantissa normalization to use exact integer arithmetic; mantissas larger
+    than 2**53 could previously lose precision through float division
+  * Pinned PyPI publish GitHub Action to an immutable commit
+
+-------------------------------------------------------------------
 Wed Mar 18 13:44:02 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 0.6.3 (bsc#1259803, CVE-2026-30922)

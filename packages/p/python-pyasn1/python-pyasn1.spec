@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pyasn1
-Version:        0.6.3
+Version:        0.6.4
 Release:        0
 Summary:        ASN.1 types and codecs
 License:        BSD-2-Clause
