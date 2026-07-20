@@ -460,4 +460,12 @@ We're in the process of easing the installation process across different Linux d
     <comment>- Require mbedtls-devel &lt; 4 since newer versions are not supported</comment>
     <requestid>1361986</requestid>
   </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>740825e6b890a6a41fb2df4b4c719d6d</srcmd5>
+    <version>4.3.7</version>
+    <time>1784534322</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1366555</requestid>
+  </revision>
 </revisionlist>

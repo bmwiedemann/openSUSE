@@ -23,7 +23,7 @@ Version:        4.3.7
 Release:        0
 Summary:        Multiplatform programming language
 License:        GPL-2.0-or-later AND MIT
-ExclusiveArch:  aarch64 ppc64 ppc64le riscv64 s390x x86_64
+ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 Group:          Development/Languages/Other
 # As described in http://haxe.org/foundation/open-source.html:
 #   * The Haxe Compiler - GPLv2+
