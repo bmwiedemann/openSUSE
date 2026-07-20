@@ -229,4 +229,12 @@
     <comment>- Update to release 3.0.1</comment>
     <requestid>1253028</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>69c3e72cf906c9e0a6512d073d055c98</srcmd5>
+    <version>4.2.0</version>
+    <time>1784534243</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.2.0</comment>
+    <requestid>1366400</requestid>
+  </revision>
 </revisionlist>

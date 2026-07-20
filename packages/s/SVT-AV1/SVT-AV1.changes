@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jul 17 11:44:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.2.0
+  * encoder: Optimized still-image screen content detection
+  * Added more ARM architecture optimizations
+  * OD/Random Access:
+  * Added TUNE-VMAF mode targeting ~15% VMAF BD-rate improvement at
+    minimal PSNR loss
+  * Implemented single-thread processing mode with RA handling
+  * New CLI options: --cqp, --enable-intrabc, --hbd-mds,
+    --enable-kf-tf
+  * RTC/Low Delay:
+  * Added CBR rate control with Kalman-filter QP estimation, cyclic
+    refresh, and frame re-encode
+  * Added on-the-fly MG size, preset, bitrate, and frame rate
+    changes
+  * Added reference frame management API with LTR support and
+    two-layer RPS structure
+
+-------------------------------------------------------------------
+Mon Jan 26 11:32:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.0.0
+  * Extended the CRF range to 70, reducing the impact or QP scaling
+    allowing the encoder to reach lower bitrates.
+  * Added quarter steps between CRF increments to allow for further
+    granularity in QP selection.
+  * Added ability to calculate per-frame PSNR and SSIM metrics.
+  * Added tune IQ and MS-SSIM for Still Image coding mode.
+  * ~5-8x speedup M11-M0 at the same quality levels with tune
+    MS-SSIM, and ~5-8% BD-Rate improvements at the same complexity
+    with tune MS-SSIM.
+  * ~5-15% speedup at similar quality levels in `--rtc` mode across
+    presets 7–11.
+  * Tradeoff improvements for the Random Access mode (VOD use case)
+    showing a 10–25% speedup across presets M7 down to M0 for
+    `--fast-decode 1` and 2.
+  * Added AC Bias, a psychovisual feature that improves detail
+    preservation and film grain retention.
+  * Update S-Frame support to allow setting it in a specific decode
+    order option and with more QP options.
+
+-------------------------------------------------------------------
 Fri Mar 14 10:08:16 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.0.1

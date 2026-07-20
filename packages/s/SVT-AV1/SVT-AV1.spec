@@ -1,7 +1,7 @@
 #
 # spec file for package SVT-AV1
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,8 @@
 
 
 Name:           SVT-AV1
-Version:        3.0.1
+%define lname libSvtAv1Enc4
+Version:        4.2.0
 Release:        0
 Summary:        An AV1 decoder/encoder for video streams
 License:        BSD-3-Clause-Clear
@@ -29,14 +30,13 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-c++ >= 5.4.0
 BuildRequires:  help2man
 BuildRequires:  pkg-config
-BuildRequires:  pkgconfig(libcpuinfo)
 BuildRequires:  yasm
+BuildRequires:  pkgconfig(libcpuinfo)
 # broken package
 # BuildRequires:  cpuinfo-devel
-Provides: bundled(fastfeat)
-Provides: bundled(safestringlib)
+Provides:       bundled(fastfeat)
+Provides:       bundled(safestringlib)
 ExclusiveArch:  aarch64 riscv64 x86_64
-
 
 %description
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
@@ -45,11 +45,11 @@ a work-in-progress targeting performance levels applicable to both VOD and Live
 encoding / transcoding video applications. The SVT-AV1 decoder implementation
 is targeting future codec research activities.
 
-%package -n libSvtAv1Enc3
+%package -n %lname
 Summary:        An AV1 decoder/encoder for video streams
 Group:          System/Libraries
 
-%description -n libSvtAv1Enc3
+%description -n %lname
 The Scalable Video Technology for AV1 (SVT-AV1 Encoder and Decoder) is an
 AV1-compliant encoder/decoder library core. The SVT-AV1 encoder development is
 a work-in-progress targeting performance levels applicable to both VOD and Live
@@ -59,7 +59,7 @@ is targeting future codec research activities.
 %package devel
 Summary:        Development files for %name
 Group:          Development/Libraries/C and C++
-Requires:       libSvtAv1Enc3 = %version
+Requires:       %lname = %version
 
 %description devel
 An AV1 encoder for video streams from Intel.
@@ -73,18 +73,20 @@ This package contains the header files for svt-av1.
 mv third_party/safestringlib/LICENSE third_party/safestringlib/LICENSE.safestringlib
 mv third_party/fastfeat/LICENSE third_party/fastfeat/LICENSE.fastfeat
 
-#sanitize third_party
-# rm -rf  third_party/cpuinfo
-rm -rf  third_party/aom*
-rm -rf  third_party/googletest
-
+rm -Rf third_party/googletest
 
 %build
+# ABI break, https://gitlab.com/AOMediaCodec/SVT-AV1/-/issues/2337
+sv="$PWD/lib.v"
+ver=$(echo %version | cut -d+ -f1)
+echo "SVT_$ver { global: *; };" >"$sv"
+
 %cmake \
+	-DCMAKE_SHARED_LINKER_FLAGS:STRING="-Wl,--version-script=$sv" \
         -DNATIVE=OFF \
         -DSVT_AV1_LTO=ON \
         -DENABLE_AVX512=ON \
-        -DSVT_AV1_PGO=ON 
+        -DSVT_AV1_PGO=ON
         # -DUSE_EXTERNAL_CPUINFO=ON \
         # cpuinfo cmake is broken, force fallback to pkg-config
 %cmake_build
@@ -103,9 +105,9 @@ mkdir -p "$b"
 cp -a Docs README.md "$b/"
 %fdupes %buildroot/%_prefix
 
-%ldconfig_scriptlets -n libSvtAv1Enc3
+%ldconfig_scriptlets -n %lname
 
-%files -n libSvtAv1Enc3
+%files -n %lname
 %license LICENSE.md PATENTS.md third_party/fastfeat/LICENSE.fastfeat third_party/safestringlib/LICENSE.safestringlib
 %_libdir/libSvtAv1Enc.so.*
 
@@ -117,6 +119,7 @@ cp -a Docs README.md "$b/"
 %files devel
 %_libdir/libSvtAv1Enc.so
 %_libdir/pkgconfig/*.pc
+%_libdir/cmake/
 %_includedir/svt-av1/
 
 %changelog
