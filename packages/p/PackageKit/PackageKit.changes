@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 06:24:12 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add PackageKit-zypp-respect-libzypp-package-locks.patch:
+  zypp: respect libzypp package locks
+  (bsc#1263252, gh#PackageKit/PackageKit/commit/1263252).
+
+-------------------------------------------------------------------
 Mon May  4 09:12:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - spec: requires_ge takes a package name as parameter, not a full

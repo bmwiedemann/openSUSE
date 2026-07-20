@@ -44,6 +44,8 @@ Patch0:         PackageKit-systemd-timers.patch
 Patch1:         PackageKit-remove-polkit-rules.patch
 # PATCH-FIX-OPENSUSE PackageKit-alias-dnf-to-dnf5.patch ngompa@opensuse.org -- Handle replacing dnf with dnf5
 Patch2:         PackageKit-alias-dnf-to-dnf5.patch
+# PATCH-FIX-UPSTREAM PackageKit-zypp-respect-libzypp-package-locks.patch bsc#1263252, gh#PackageKit/PackageKit/commit/1263252 sckang@suse.com -- zypp: respect libzypp package locks
+Patch3:         PackageKit-zypp-respect-libzypp-package-locks.patch
 
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes
