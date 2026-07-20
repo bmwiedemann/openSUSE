@@ -380,4 +380,22 @@ Update to version 0.12.2</comment>
     <comment></comment>
     <requestid>1364910</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>2ad3c25d838c2cd9c82f2099de6af7ca</srcmd5>
+    <version>0.14.5</version>
+    <time>1784534333</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1366527 from mnhauke
+
+- Update to version 0.14.5
+  * Fix bug with Linux signals 34 or higher being off by 2.
+  * Fix parsing issue certain comm entries to be missing.
+  * Fix draw bug with the pipe gauge in basic mode if the value
+    was 100%.
+  * Fix missing deserialize options for read/write columns in the
+    disk widget.
+  * Fix first disk I/O value reported at startup being way too
+    high.</comment>
+    <requestid>1366592</requestid>
+  </revision>
 </revisionlist>

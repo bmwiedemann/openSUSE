@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 18 16:19:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.5
+  * Fix bug with Linux signals 34 or higher being off by 2.
+  * Fix parsing issue certain comm entries to be missing.
+  * Fix draw bug with the pipe gauge in basic mode if the value
+    was 100%.
+  * Fix missing deserialize options for read/write columns in the
+    disk widget.
+  * Fix first disk I/O value reported at startup being way too
+    high.
+
+-------------------------------------------------------------------
 Fri Jul 10 09:30:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.4:
