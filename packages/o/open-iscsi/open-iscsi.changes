@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 16 17:56:39 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 2.1.12.suse+0.8f77cf16:
+  * Preparing for version 2.1.12 (#536)
+  * Fix security issues recently discovered by Keith at Linneman Labs (#535)
+    (CVE-2026-44943 and CVE-2026-44944)
+  * iscsi-init.service: Use iscsi-gen-initiatorname
+  * iscsi-gen-initiatorname use @IQN_PREFIX@ as default
+  * avoid possible double free of found in idbm_rec_update_param (#528)
+  * iscsi: validate interface IP against target address family (#527)
+
+-------------------------------------------------------------------
 Wed Mar 11 21:11:54 UTC 2026 - Lee Duncan <lduncan@suse.com>
 
 - Update to version 2.1.11.suse+88.8e0635b3:

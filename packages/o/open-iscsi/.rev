@@ -1135,4 +1135,19 @@
     file, no longer in the database directory.</comment>
     <requestid>1338787</requestid>
   </revision>
+  <revision rev="140" vrev="112">
+    <srcmd5>3109ccef3857c51be1eb91307c83ca38</srcmd5>
+    <version>unknown</version>
+    <time>1784534219</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.1.12.suse+0.8f77cf16:
+  * Preparing for version 2.1.12 (#536)
+  * Fix security issues recently discovered by Keith at Linneman Labs (#535)
+    (CVE-2026-44943 and CVE-2026-44944)
+  * iscsi-init.service: Use iscsi-gen-initiatorname
+  * iscsi-gen-initiatorname use @IQN_PREFIX@ as default
+  * avoid possible double free of found in idbm_rec_update_param (#528)
+  * iscsi: validate interface IP against target address family (#527)</comment>
+    <requestid>1366256</requestid>
+  </revision>
 </revisionlist>

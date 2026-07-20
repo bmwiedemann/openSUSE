@@ -4,7 +4,7 @@
                 <param name="scm">git</param>
                 <param name="filename">open-iscsi</param>
                 <param name="version">HEAD</param>
-                <param name="versionformat">2.1.11.suse+@TAG_OFFSET@.%h</param>
+                <param name="versionformat">2.1.12.suse+@TAG_OFFSET@.%h</param>
                 <param name="match-tag">2.1.[0-9]*</param>
                 <param name="revision">openSUSE-Factory</param>
                 <param name="changesgenerate">enable</param>
