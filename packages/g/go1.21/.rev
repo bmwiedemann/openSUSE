@@ -431,4 +431,24 @@ Expand previous changelog entry for go1.21 boostrap with gccgo (forwarded reques
   * No Go application packages in Factory use go1.x-libstd (forwarded request 1361822 from jfkw)</comment>
     <requestid>1361823</requestid>
   </revision>
+  <revision rev="29" vrev="11">
+    <srcmd5>1dd5e46782869762734cb7c9acc4d878</srcmd5>
+    <version>1.21.13</version>
+    <time>1784667190</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Revert %ghost /usr/bin/go /usr/bin/gofmt which prevents install
+    of a working go command. Refs boo#1245878 bsc#1264390
+  * Based on feedback from Factory maintainers restore the original
+    lifecycle for these files: Each go1.x toolchain shares
+    ownership of a go and gofmt symlink managed by the alternatives
+    system (update-alternatives and libalternatives). When the last
+    go1.x package is uninstalled the symlinks will be removed.
+  * Context: %ghost was introduced to prevent file conflicts among
+    go1.x toolchain packages reported by installcheck dev tool.
+    %ghost prevents the files from being installed, which results
+    in no installed go command. The shared ownership of the go and
+    gofmt symlinks is intentional. (forwarded request 1366801 from jfkw)</comment>
+    <requestid>1366802</requestid>
+  </revision>
 </revisionlist>

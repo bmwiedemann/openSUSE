@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Jul 17 14:14:48 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Revert %ghost /usr/bin/go /usr/bin/gofmt which prevents install
+    of a working go command. Refs boo#1245878 bsc#1264390
+  * Based on feedback from Factory maintainers restore the original
+    lifecycle for these files: Each go1.x toolchain shares
+    ownership of a go and gofmt symlink managed by the alternatives
+    system (update-alternatives and libalternatives). When the last
+    go1.x package is uninstalled the symlinks will be removed.
+  * Context: %ghost was introduced to prevent file conflicts among
+    go1.x toolchain packages reported by installcheck dev tool.
+    %ghost prevents the files from being installed, which results
+    in no installed go command. The shared ownership of the go and
+    gofmt symlinks is intentional.
+
+-------------------------------------------------------------------
+Mon Jul 13 19:16:58 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Define go_bootstrap_version with digits without go1.x prefix.
+    Correct path spelling to align with current toolchain layout
+    GOROOT_BOOTSTRAP=%{_libdir}/go/%{go_bootstrap_version},
+    noting interstitial /go/ in path. Fixes bootstrap
+    ERROR: Cannot find /usr/lib64/go1.x/bin/go.
+    Set $GOROOT_BOOTSTRAP to a working Go tree >= Go 1.x.y.
+    Bootstrap error first observed when using %ghost /usr/bin/go.
+    Fixed by Eugenio Paolantonio. Refs boo#1245878 bsc#1264390
+  * Mark %ghost /usr/bin/go /usr/bin/gofmt to avoid file conflicts
+    among go1.x toolchain packages. These files are managed by the
+    alternatives system. Refs boo#1245878 bsc#1264390
+
+-------------------------------------------------------------------
+Fri Jul 10 01:27:59 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Packaging improvements:
+  * Drop unused conditional %define with_shared refs jsc#PED-1962
+  * Uniqify %define go_libalternatives 1219 to accommodate parallel
+    installed toolchain variants per go1.x major version.
+    go1.x has highest alternatives priority and uses suffix 9.
+    refs boo#1245878 bsc#1264390
+
+-------------------------------------------------------------------
 Thu Jun 25 12:51:11 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:

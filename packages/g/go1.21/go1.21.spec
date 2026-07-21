@@ -24,11 +24,11 @@
 # Usually ahead of bootstrap version specified by upstream Go
 # Use Tumbleweed default gccgo and N-1 go1.x for testing
 %define gcc_go_version 13
-%define go_bootstrap_version go1.18
+%define go_bootstrap_version 1.18
 %else
 # Use gccgo and go1.x specified by upstream Go
 %define gcc_go_version 13
-%define go_bootstrap_version go1.17
+%define go_bootstrap_version 1.17
 %endif
 
 # Bootstrap go toolchain using existing go package go_bootstrap_version
@@ -82,7 +82,7 @@
 
 # go_libalternatives is the name for the libalternatives configuration file
 # which denotes its priority and numbered as go_api sans dot separator
-%define go_libalternatives 121
+%define go_libalternatives 1219
 
 # Use libalternatives for SLE 16.1+ and Tumbleweed.
 # Older distributions keep using update-alternatives, as before.
@@ -94,16 +94,6 @@
 %define with_update_alternatives 1
 %endif
 
-# shared library support
-%if "%{rpm_vercmp %{go_api} 1.5}" > "0"
-%ifarch %ix86 %arm x86_64 aarch64
-%define with_shared 1
-%else
-%define with_shared 0
-%endif
-%else
-%define with_shared 0
-%endif
 # setup go_arch (BSD-like scheme)
 %ifarch %ix86
 %define go_arch 386
@@ -158,7 +148,7 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc%{gcc_go_version}-go
 %else
 # no gcc-go
-BuildRequires:  %{go_bootstrap_version}
+BuildRequires:  go%{go_bootstrap_version}
 %endif
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
@@ -260,7 +250,7 @@ cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %if %{with gccgo_go121}
 export GOROOT_BOOTSTRAP=%{_prefix}
 %else
-export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
+export GOROOT_BOOTSTRAP=%{_libdir}/go/%{go_bootstrap_version}
 %endif
 # Ensure ARM arch is set properly - boo#1169832
 %ifarch armv6l armv6hl
