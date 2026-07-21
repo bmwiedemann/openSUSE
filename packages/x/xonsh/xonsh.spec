@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           xonsh
-Version:        0.23.8
+Version:        0.24.0
 Release:        0
 Summary:        A general purpose, Python-powered shell
 License:        BSD-2-Clause AND BSD-3-Clause
