@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 19 20:46:19 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- rework spec file
+- fix build on Tumbleweed, wfview-2.11-cachingqueue-const.patch
+
+-------------------------------------------------------------------
 Sat Jan 10 18:25:08 UTC 2026 - Wojciech Kazubski <wk@ire.pw.edu.pl>
 
 - Use Qt6 for Tumbleweed and Leap 16

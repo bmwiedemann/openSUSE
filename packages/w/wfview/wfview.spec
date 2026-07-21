@@ -2,6 +2,7 @@
 # spec file for package wfview
 #
 # Copyright (c) 2025 Wojciech Kazubski <wk@ire.pw.edu.pl>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,12 +16,6 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?suse_version} >= 1600
-%define with_qt6 1
-%else
-%define with_qt6 0
-%endif
-
 Name:           wfview
 Version:        2.11
 Release:        0
@@ -28,34 +23,26 @@ Summary:        ICOM SDR transceiver control software
 License:        GPL-3.0-or-later
 Group:          Productivity/Hamradio/Other
 URL:            https://wfview.org/
-Source:         https://gitlab.com/eliggett/%{name}/-/archive/v%{version}/%{name}-v%{version}.tar.bz2
+Source:         https://github.com/wf-group/wfview/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         wfview-add-qcustomplot-library-name.patch
-BuildRequires:  eigen3-devel
-BuildRequires:  gcc-c++
+Patch1:         wfview-2.11-cachingqueue-const.patch
+BuildRequires:  c++_compiler
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  libhidapi-devel
-BuildRequires:  libopus-devel
-%if 0%{with_qt6}
-BuildRequires:  qt6-multimedia-devel
-BuildRequires:  qt6-printsupport-devel
-BuildRequires:  qt6-serialport-devel
-BuildRequires:  qt6-websockets-devel
-BuildRequires:  qt6-xml-devel
-%else
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  libqt5-qtgamepad-devel
-BuildRequires:  libqt5-qtmultimedia-devel
-BuildRequires:  libqt5-qtserialport-devel
-BuildRequires:  libqt5-qtwebsockets-devel
-%endif
+BuildRequires:  pkgconfig
 BuildRequires:  portaudio-devel
-%if 0%{with_qt6}
-BuildRequires:  qcustomplot-qt6-devel
-%else
-BuildRequires:  qcustomplot-devel
-%endif
-BuildRequires:  rtaudio-devel
-BuildRequires:  update-desktop-files
+BuildRequires:  cmake(Qt6)
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Multimedia)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6SerialPort)
+BuildRequires:  cmake(Qt6WebSockets)
+BuildRequires:  cmake(Qt6Xml)
+BuildRequires:  pkgconfig(eigen3)
+BuildRequires:  pkgconfig(opus)
+BuildRequires:  pkgconfig(qcustomplot-qt6)
+BuildRequires:  pkgconfig(rtaudio)
 Requires:       hicolor-icon-theme
 
 %description
@@ -66,14 +53,10 @@ CIV bus using the pseudo-terminal device (linux and macOS), virtual serial port
 loopback (windows), or hamlib-compatible rigctld server.
 
 %prep
-%autosetup -p1 -n %{name}-v%{version}
+%autosetup -p1
 
 %build
-%if 0%{with_qt6}
-%qmake6 \
-%else
-%qmake5 \
-%endif
+%{qmake6} \
 	%{name}.pro \
 	PREFIX=%{_prefix} \
 	%{nil}
@@ -81,9 +64,6 @@ loopback (windows), or hamlib-compatible rigctld server.
 
 %install
 %make_install INSTALL_ROOT=%{buildroot}
-
-#install desktop file
-%suse_update_desktop_file %{name} HamRadio
 
 %files
 %doc CHANGELOG CI-V.md CONTRIBUTING.md README.md WHATSNEW

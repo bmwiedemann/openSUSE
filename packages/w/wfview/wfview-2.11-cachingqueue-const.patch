@@ -1,0 +1,30 @@
+[   23s] In file included from /usr/include/qt6/QtCore/qdebug.h:42,
+[   23s]                  from /usr/include/qt6/QtCore/qloggingcategory.h:9,
+[   23s]                  from /usr/include/qt6/QtCore/QLoggingCategory:1,
+[   23s]                  from logcategories.h:4,
+[   23s]                  from cachingqueue.cpp:8:
+[   23s] /usr/include/qt6/QtCore/qmap.h: In instantiation of ‘QMultiMap<Key, T>::size_type QMultiMap<Key, T>::remove(const Key&, const T&) [with Key = queuePriority; T = queueItem; size_type = long long int]’:
+[   23s] cachingqueue.cpp:190:47:   required from here
+[   23s]   190 |                         int count=queue.remove(prio,item);
+[   23s]       |                                   ~~~~~~~~~~~~^~~~~~~~~~~
+[   23s] /usr/include/qt6/QtCore/qmap.h:1168:34: error: passing ‘const queueItem’ as ‘this’ argument discards qualifiers [-fpermissive]
+[   23s]  1168 |                 if (!(it->second == value))
+[   23s]       |                      ~~~~~~~~~~~~^~~~~~~~~
+[   23s] In file included from cachingqueue.cpp:9:
+[   23s] cachingqueue.h:42:10: note:   in call to ‘bool queueItem::operator==(const queueItem&)’
+[   23s]    42 |     bool operator==(const queueItem& lhs)
+[   23s]       |          ^~~~~~~~
+
+Index: wfview-2.11/cachingqueue.h
+===================================================================
+--- wfview-2.11.orig/cachingqueue.h
++++ wfview-2.11/cachingqueue.h
+@@ -39,7 +39,7 @@ struct queueItem {
+     uchar receiver;
+     bool recurring;
+     qint64 id = QDateTime::currentMSecsSinceEpoch();
+-    bool operator==(const queueItem& lhs)
++    bool operator==(const queueItem& lhs) const
+     {
+         return (lhs.command == command && lhs.receiver == receiver && lhs.recurring == recurring);
+     }
