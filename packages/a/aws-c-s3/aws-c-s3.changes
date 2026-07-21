@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:47:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.13.1
+  * Restore enums values that were deleted on accident. (#658)
+- from version 0.13.0
+  * fix ordering of read from stream by @DmitriyMusatkin in (#655)
+- from version 0.12.8
+  * Regression Labeler Fix by @azkrishpy in (#648)
+  * fix(auto-ranged-get): honor object_size_hint by @azkrishpy in (#644)
+  * Add request_body option to send body from caller-owned memory
+    by @yerzhan7 in (#651)
+
+-------------------------------------------------------------------
 Wed Jul  8 12:08:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.12.7
