@@ -1,7 +1,7 @@
 #
 # spec file for package xclipboard
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xclipboard
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        X clipboard client
 License:        MIT
@@ -26,13 +26,13 @@ URL:            http://xorg.freedesktop.org/
 Source0:        http://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        xclipboard.desktop
 Source2:        xclipboard.png
+BuildRequires:  meson >= 1.1.0
 BuildRequires:  pkg-config
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xaw7)
 BuildRequires:  pkgconfig(xkbfile)
 BuildRequires:  pkgconfig(xmu)
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
 BuildRequires:  pkgconfig(xproto) >= 7.0.17
 BuildRequires:  pkgconfig(xt)
 # This was part of the xorg-x11 package up to version 7.6
@@ -50,11 +50,11 @@ selection as a separate string, each of which can be selected.
 cp %{SOURCE1} .
 
 %build
-%configure
-make %{?_smp_mflags}
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %suse_update_desktop_file -i -u xclipboard Utility DesktopUtility
 install -m0644 -D %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/xclipboard.png
 

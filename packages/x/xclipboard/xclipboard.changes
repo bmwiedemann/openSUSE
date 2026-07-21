@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:00:03 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6:
+  * man pages: fix warnings from `mandoc -T lint` and `groff -rCHECKSTYLE=10`
+  * gitlab CI: drop the ci-fairy check-mr job
+  * Strip trailing whitespace from source files
+  * meson: Add option to build with meson
+- Switch to meson build system.
+
+-------------------------------------------------------------------
 Tue Aug 27 08:01:52 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5
