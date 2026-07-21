@@ -1,0 +1,22 @@
+From bf77bd1c26c268e5973cace1dc21807b42148539 Mon Sep 17 00:00:00 2001
+From: Jasem Mutlaq <mutlaqja@ikarustech.com>
+Date: Tue, 16 Jun 2026 15:34:06 +0300
+Subject: [PATCH] Possible fix for GCC 16 + LTO
+
+---
+ drivers/focuser/celestronauxpacket.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/focuser/celestronauxpacket.h b/drivers/focuser/celestronauxpacket.h
+index 670c1474a0..8231d1f0a4 100644
+--- a/drivers/focuser/celestronauxpacket.h
++++ b/drivers/focuser/celestronauxpacket.h
+@@ -110,7 +110,7 @@ class Packet
+         Packet(Target source, Target destination, Command command);
+ 
+         // packet contents
+-        static const uint8_t AUX_HDR = 0x3b;
++        static constexpr uint8_t AUX_HDR = 0x3b;
+         uint32_t length;
+         Target source;
+         Target destination;

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:05:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add fix-gcc16.patch: fixes compilation against GCC 16
+
+-------------------------------------------------------------------
+Thu Jul  9 13:15:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 2.2.3.1:
+  * SVBONYPowerBox: Enhance handshake process with debug logging
+    and retry mechanism by @jctk in #2406
+  * Driver Improvements Pegasus Flatmaster Neo by @DomMer2587 in
+    #2411
+  * Add MX-HD telescope driver by @botchASTRO in #2409
+  * driverio: Fix multi-device BLOB interleave crash in unix IO
+    path by @cfuture81 in #2410
+  * simulators: extract shared rendering into SkyRenderer by
+    @ckemper67 in #2412
+  * cmake: enable FIX_WARNINGS by default by @ckemper67 in #2413
+  * wake_on_lan, lx200_10micron: replace raw socket WoL with
+    wakeonlan by @fenriques in #2414
+  * V4L2: Apply software binning after frame stacking by @cfuture81
+    in #2407
+  * lx200_10micron: add shutdown command, guard behind parked state
+    by @fenriques in #2415
+
+-------------------------------------------------------------------
 Fri Jun  5 06:43:14 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 2.2.2:
