@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:56:05 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Add gh-CVE-2026-39821-idna-punycode.patch: reject all-ASCII xn--
+  Punycode labels in the vendored golang.org/x/net/idna package
+  regardless of Go's unicode.Version (bsc#1266618, CVE-2026-39821).
+  Bumping the vendored x/net version alone does not fix this, as the
+  upstream check is gated behind unicode.Version >= 16.0.0, which our
+  Go toolchain does not yet report.
+
+-------------------------------------------------------------------
 Wed Jul 08 09:02:31 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.96.0:

@@ -27,6 +27,10 @@ License:        MIT
 URL:            https://cli.github.com/
 Source0:        %{sname}-%{version}.tar.zst
 Source1:        vendor.tar.gz
+# PATCH-FIX-UPSTREAM gh-CVE-2026-39821-idna-punycode.patch bsc#1266618 pdostal@suse.com
+# Backport of golang.org/x/net commit f05f21be5927155a88b371674c298ada54b71cf5:
+# reject all-ASCII xn-- Punycode labels regardless of Go's unicode.Version.
+Patch0:         gh-CVE-2026-39821-idna-punycode.patch
 BuildRequires:  fish
 BuildRequires:  golang(API) >= 1.26
 # This is needed for some tests
