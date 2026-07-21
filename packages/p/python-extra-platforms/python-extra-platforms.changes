@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:14:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.3.1 (fix bsc#1262985):
+  * Fix test_current_funcs failing under nested shells: extra
+    shells backed by real ancestor processes (like a fish session
+    running an OBS chroot build) are now accounted for. Addresses
+    #619
+  * Document detection semantics on every trait page: which traits
+    can match simultaneously (shells, platforms, terminals), which
+    are exclusive (architectures, CI systems, agents), and how each
+    current_*() function arbitrates or reports absences.
+  * Skip the whole test workflow on version-bump pushes and pull
+    requests.
+  * Skip the package install checks on pull requests: they exercise
+    the released package, not the change under review.
+  * Run the test suite in parallel outside CI too, by moving
+    --numprocesses=auto and --dist=loadgroup to pytest addopts.
+
+-------------------------------------------------------------------
+Fri Jul 17 10:47:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.3.0:
+  * Deprecate the TUMBLEWEED platform: openSUSE Tumbleweed is now
+    detected as OPENSUSE. TUMBLEWEED, is_tumbleweed() and the
+    skip_tumbleweed/unless_tumbleweed decorators still resolve to
+    their OPENSUSE counterparts with a DeprecationWarning, and will
+    be removed in 14.0.0.
+  * Detect all openSUSE release channels (Tumbleweed, Leap,
+    Slowroll, MicroOS, ...) as OPENSUSE. Closes #619
+  * Platform.info() now reports the raw os-release ID of
+    distribution sub-variants in its distro_id field (like ol or
+    opensuse-slowroll) instead of aliasing it to the canonical
+    platform ID.
+  * Rename NON_OVERLAPPING_GROUPS to CANONICAL_GROUPS and
+    EXTRA_GROUPS to NON_CANONICAL_GROUPS, matching the
+    Group.canonical vocabulary. The old names still resolve with a
+    DeprecationWarning, and will be removed in 14.0.0.
+  * Trait.info() is now implemented by the base class with identity
+    metadata: custom Trait subclasses are no longer forced to
+    override it.
+  * Rename the ALL_CI group to "All CI systems" and ALL_AGENTS to
+    "All AI coding agents", aligning with the other "all" group
+    names.
+  * current_traits() now returns an immutable frozenset: mutating
+    the previously returned set corrupted its cache.
+  * linux_info() now returns None for missing fields instead of
+    empty strings, like macos_info() and windows_info().
+  * Fix pytest decorator skip reasons mangling acronyms and brand
+    names ("Skip cI systems" is now "Skip All CI systems").
+  * Fix grammar and labels of the current_*() multiple-match errors
+    ("Multiple CI matches:" is now "Multiple CI systems match:").
+  * Fix the cff-version schema field in citation.cff being
+    overwritten with the package version on every version bump.
+  * Fix stale agent tables, Sankey and mindmap diagrams in the
+    documentation: they are now regenerated like the other trait
+    categories.
+  * Document the platform granularity policy: independent
+    derivative distributions get a dedicated platform, while
+    channels and variants of the same distribution fold into their
+    parent.
+  * Replace the hand-maintained per-architecture, per-platform,
+    per-CI and per-agent exclusivity test blocks with generic
+    mutual-exclusion conformance tests.
+  * Convert test_platform_info.py from test classes to parametrized
+    top-level functions.
+- contains a partial fix for bsc#1262985, but another test is
+  failing on Slowroll, hence keeping the bug open
+
+-------------------------------------------------------------------
 Thu Jul 16 05:23:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.2.0:

@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-extra-platforms
-Version:        13.2.0
+Version:        13.3.1
 Release:        0
 Summary:        Detect platforms and group them by family
 License:        Apache-2.0
@@ -32,6 +32,7 @@ Source:         https://github.com/kdeldycke/extra-platforms/archive/refs/tags/v
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
+BuildRequires:  %{python_module uv}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  openSUSE-release
