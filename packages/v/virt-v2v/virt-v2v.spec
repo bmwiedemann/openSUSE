@@ -20,10 +20,10 @@
 # If there are patches which touch autotools files, set this to 1.
 %global patches_touch_autotools 1
 # The source directory.
-#%%global source_directory 2.10-stable
-%global source_directory 2.11-development
+%global source_directory 2.12-stable
+#%%%global source_directory 2.11-development
 Name:           virt-v2v
-Version:        2.11.8
+Version:        2.12.0
 Release:        0
 Summary:        Tools to convert a virtual machine to run on KVM
 License:        GPL-2.0-or-later
@@ -216,6 +216,7 @@ mkdir -p %{buildroot}/%{_datadir}/virt-tools
 %{_mandir}/man1/virt-v2v-release-notes-2.6.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-2.8.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-release-notes-2.10.1%{?ext_man}
+%{_mandir}/man1/virt-v2v-release-notes-2.12.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-support.1%{?ext_man}
 %{_mandir}/man1/virt-v2v-inspector.1.gz
 %{_mandir}/man1/virt-v2v-release-notes-2.2.1.gz

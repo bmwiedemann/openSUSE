@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:33:38 MDT 2026 - carnold@suse.com
+
+- Update to virt-v2v 2.12.0
+  * convert: windows: Fix online-disks script for PowerShell
+    Constrained Language Mode
+  * mlcustomize/inject_virtio_win.ml: Rewrite qemu-ga firstboot
+    using {| |}
+  * mlcustomize/inject_virtio_win.ml: Abstract $msi and $logfile
+  * mlcustomize/inject_virtio_win.ml: Retry qemu-ga installation
+  * tests/test-collect.sh: Set environment for fake virt-tools
+  * convert: Skip fsck after conversion for RHEL 7
+  * Add new --collect option to collect pre-conversion Windows
+    information
+  * inspector, in-place: Add <disk> <boot-order>#</boot-order> to
+    XML output
+  * configure.ac: reorder autoconf macros
+  * docs/virt-v2v.pod: Note that immutable /etc/resolv.conf is
+    fixed now
+  * convert: fix ubuntu conversion regression
+  * mlcustomize: Drop setfiles -F flag
+  * docs: Add note about PowerShell ExecutionPolicy AllSigned
+
+-------------------------------------------------------------------
 Tue Jun 16 16:00:16 MDT 2026 - carnold@suse.com
 
 - bsc#1268361 - virt-v2v prevents vmdp from running on first boot

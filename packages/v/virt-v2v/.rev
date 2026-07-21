@@ -271,4 +271,12 @@
     <comment>Fix for bsc#1268361 - virt-v2v prevents vmdp from running on first boot for Windows VMs</comment>
     <requestid>1359861</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9d53fb642d00ca566760e5bfa29e5260</srcmd5>
+    <version>2.12.0</version>
+    <time>1784668171</time>
+    <user>dimstar_suse</user>
+    <comment>Update virt-v2v to version 2.12.0</comment>
+    <requestid>1366843</requestid>
+  </revision>
 </revisionlist>
