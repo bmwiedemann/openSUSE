@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Mon Jul 20 12:29:20 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add remove-six-and-mock.patch to drop dependency on six and mock
+  * submitted upstream https://github.com/python-escpos/python-escpos/pull/738
+
+-------------------------------------------------------------------
+Wed Jul 15 14:32:43 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Initial Checkin
