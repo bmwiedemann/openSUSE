@@ -17,7 +17,7 @@
 
 
 Name:           yast2-packager
-Version:        5.0.11
+Version:        5.0.13
 Release:        0
 Summary:        YaST2 - Package Library
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-packager
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 BuildRequires:  yast2-devtools >= 4.2.2
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:cfa) >= 0.5.0
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:nokogiri)
@@ -114,7 +113,6 @@ This package contains the libraries and modules for software management.
 
 %install
 %yast_install
-%suse_update_desktop_file org.opensuse.yast.Packager
 %yast_metainfo
 
 %files
