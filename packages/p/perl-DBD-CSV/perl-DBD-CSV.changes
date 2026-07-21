@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 15 07:24:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.640.0 (0.64)
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+
+  0.64	- 2026-07-14, H.Merijn Brand
+      * Next version will require perl-5.12, following DBI
+
+-------------------------------------------------------------------
 Mon Jun 22 10:49:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.630.0 (0.63)

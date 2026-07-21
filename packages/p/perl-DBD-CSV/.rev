@@ -374,4 +374,15 @@
       * Raise recommended versions for fixed CVE's</comment>
     <requestid>1361941</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>9820a38623c9c5d7aeb547b2c34a074e</srcmd5>
+    <version>0.640.0</version>
+    <time>1784668319</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.640.0 (0.64)
+   see /usr/share/doc/packages/perl-DBD-CSV/ChangeLog
+  0.64	- 2026-07-14, H.Merijn Brand
+      * Next version will require perl-5.12, following DBI</comment>
+    <requestid>1366956</requestid>
+  </revision>
 </revisionlist>

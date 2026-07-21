@@ -18,10 +18,10 @@
 
 %define cpan_name DBD-CSV
 Name:           perl-DBD-CSV
-Version:        0.630.0
+Version:        0.640.0
 Release:        0
-# 0.63 -> normalize -> 0.630.0
-%define cpan_version 0.63
+# 0.64 -> normalize -> 0.640.0
+%define cpan_version 0.64
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        DBI driver for CSV files
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -44,9 +44,9 @@ Requires:       perl(Text::CSV_XS) >= 1.10
 Provides:       perl(DBD::CSV) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(DBD::File) >= 0.450
-Recommends:     perl(DBI) >= 1.649
+Recommends:     perl(DBI) >= 1.651
 Recommends:     perl(SQL::Statement) >= 1.414
-Recommends:     perl(Text::CSV_XS) >= 1.620
+Recommends:     perl(Text::CSV_XS) >= 1.640
 %{perl_requires}
 
 %description
