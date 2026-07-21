@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 13 09:26:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.4.0 (bsc#1271307, bsc#1271306):
+  * **NOTE: 2026-06-05: Bleach is no longer maintained. There
+    will be no future releases including for security issues.**
+  * Dropped support for pypy 3.10. (#764)
+  * Fix bug 2023812 / GHSA-8rfp-98v4-mmr6.
+  * Fix XSS issue with sanitize_uri_value where disallowed
+    schemes with
+  * Unicode invisible characters wouldn't be rejected.
+  * Fix GHSA-gj48-438w-jh9v.
+  * Fix issue where URI sanitization wasn't happening in
+    formaction attributes.
+
+-------------------------------------------------------------------
 Mon Mar 30 12:00:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 6.3.0

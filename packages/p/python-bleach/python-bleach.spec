@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-bleach
-Version:        6.3.0
+Version:        6.4.0
 Release:        0
 Summary:        A whitelist-based HTML-sanitizing tool
 License:        Apache-2.0
@@ -67,7 +67,7 @@ rm -rf bleach/_vendor
 
 %check
 # gh#mozilla/bleach#503
-%pytest -k 'not (test_uri_value_allowed_protocols or test_self_closing_tags_self_close)'
+%pytest -k 'not (test_uri_value_allowed_protocols or test_self_closing_tags_self_close or test_formaction_attribute)'
 
 %files %{python_files}
 %license LICENSE
