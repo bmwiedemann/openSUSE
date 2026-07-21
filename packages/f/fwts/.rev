@@ -1364,4 +1364,18 @@
   * Quote %{ix86} arch macro in ExclusiveArch.</comment>
     <requestid>1355624</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>dccf7ca8e84b815b68720f551275357f</srcmd5>
+    <version>26.07.00</version>
+    <time>1784668214</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 26.07.00:
+- New klog database entries (x86 E820 overflow, ACPI FFH LPI, fan status/extension, RIMT IOMMU, AGDI, MPAM)
+- tpm2: accept Arm FF-A Start Method and validate parameters
+- tpmevlog: handle PCR[0] replay for EV_EFI_HCRTM_EVENT
+- dmicheck: off-by-one SMBIOS size boundary + bus-error copy fixes
+- uefibootpath: correct UART stop bits validation message
+- Numerous acpi/tpm format-string fixes; link explicitly to zlib</comment>
+    <requestid>1366865</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           fwts
-Version:        26.05.00
+Version:        26.07.00
 Release:        0
 Summary:        Firmware Test Suite
 License:        GPL-2.0-or-later

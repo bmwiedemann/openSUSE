@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:52:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.07.00:
+  * Add new klog database entries for x86 E820 table overflow,
+    ACPI FFH LPI, fan status/extension, RIMT IOMMU lookup, AGDI
+    interrupt registration and MPAM error messages.
+  * tpm2: accept Arm FF-A Start Method and validate its parameters.
+  * tpmevlog: handle PCR[0] replay for EV_EFI_HCRTM_EVENT.
+  * dmicheck: fix off-by-one in SMBIOS table size boundary check
+    and fix bus error when copying SMBIOS tables from memory.
+  * uefibootpath: correct error message for UART stop bits
+    validation.
+  * Fix numerous format strings across acpi (fadt, hest, madt,
+    mcfg, gpedump, tpm2) and tpm event-log dumping.
+  * acpi: madt: silence compiler warning when using Clang.
+  * build: link explicitly to zlib.
+
+-------------------------------------------------------------------
 Thu May 28 11:41:50 UTC 2026 - mpluskal@suse.com
 
 - Update to version 26.05.00:

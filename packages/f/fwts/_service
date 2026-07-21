@@ -2,6 +2,7 @@
 <service name="obs_scm" mode="manual">
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="url">https://github.com/fwts/fwts.git</param>
+    <param name="revision">V26.07.00</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <param name="exclude">.*</param>
