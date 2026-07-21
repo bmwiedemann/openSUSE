@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:58:48 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- New upstream release 5.3.1:
+  * Fixed MiniMagick.cli_prefix being mutated when set to an array. 
+
+-------------------------------------------------------------------
 Mon Nov  4 17:02:21 UTC 2024 - Dan Čermák <dan.cermak@posteo.net>
 
 - New upstream release 5.0.1, no changelog found
