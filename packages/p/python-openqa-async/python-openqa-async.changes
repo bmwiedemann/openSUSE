@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 10:32:07 UTC 2026 - Ondřej Súkup <osukup@suse.com>
+
+- update to 1.0.0
+ * harden retry mechanics
+ * set longer timeout by default
+
+-------------------------------------------------------------------
 Wed Jun  3 08:25:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.1.0)

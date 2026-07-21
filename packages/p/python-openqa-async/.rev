@@ -7,4 +7,14 @@
     <comment>openqa client library with sync and async api</comment>
     <requestid>1357123</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a60fbb7dedb38193120afa412aaa25c4</srcmd5>
+    <version>1.0.0</version>
+    <time>1784667629</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.0
+ * harden retry mechanics
+ * set longer timeout by default</comment>
+    <requestid>1366734</requestid>
+  </revision>
 </revisionlist>

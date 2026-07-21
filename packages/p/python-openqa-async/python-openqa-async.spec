@@ -19,7 +19,7 @@
 %global         skip_python311 1
 %global         skip_python312 1
 Name:           python-openqa-async
-Version:        0.1.0
+Version:        1.0.0
 Release:        0
 Summary:        Client library for openQA with async support
 License:        GPL-2.0-or-later
