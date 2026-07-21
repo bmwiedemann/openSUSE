@@ -41,4 +41,15 @@
 </comment>
     <requestid>1285220</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fdf704f123502bb8f1fbf6f0bc458fac</srcmd5>
+    <version>0.100.0</version>
+    <time>1784668323</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker-CPANfile/Changes
+  0.10  2026/07/19
+      - merge prereqs using CPAN::Meta::Requirements (GH#1, XSven++)</comment>
+    <requestid>1366960</requestid>
+  </revision>
 </revisionlist>

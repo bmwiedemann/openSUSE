@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Jul 19 07:37:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.100.0 (0.10)
+   see /usr/share/doc/packages/perl-ExtUtils-MakeMaker-CPANfile/Changes
+
+  0.10  2026/07/19
+      - merge prereqs using CPAN::Meta::Requirements (GH#1, XSven++)
+
+-------------------------------------------------------------------
 Thu Jun 12 17:29:46 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version
