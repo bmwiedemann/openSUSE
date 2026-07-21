@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Tue Jul 21 18:00:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.1.2
+  - Incompatible changes
+    - lua_task: the orig address flavour now returns only the wire
+      (transmitted) addresses when a rewrite preserved the
+      originals
+    - WebUI: all tables migrated from FooTable to Tabulator
+      (per-column filters, global history/scan search); FooTable
+      has been removed
+  - Features
+    - Composites: per-symbol Lua conditions and explicit
+      dependencies
+    - Neural: new static_embed provider (WordPiece subword
+      tokenizer over a static embedding matrix, with per-token
+      vector access); forced-learn minimal-scan fast path and
+      train.frozen control to stop automatic training
+    - Settings: new apply policy option implicit_allow with
+      additive symbols_enabled, plus strict explicit_enable gating
+    - Rspamadm: command modules can be discovered from external
+      directories (rspamadm.d, RSPAMADM_COMMAND_PATH); the
+      controller password can be read from the environment for
+      automation
+    - Configdump: show symcache flags in --symbol-details
+  - Bug fixes
+    - Security: bound message/rfc822 recursion depth in the MIME
+      parser (remote DoS via deeply nested messages); pass the
+      padded nonce to secretbox encrypt/decrypt (out-of-bounds read
+      with short nonces)
+    - Sender identity vs aliases: the aliases rule no longer
+      rewrites From address domains (and never rewrites
+      googlemail.com to gmail.com); DMARC, SPF and
+      forged_recipients now evaluate addresses as seen in the
+      message, not after alias rewriting
+    - MIME: split address lists on semicolons as well as commas
+      (Outlook-style recipient lists)
+    - Fuzzy: skip injected (computed) parts on learn and check
+    - Phishing: don't penalise the same label under another TLD
+      (brand.co.uk displayed over brand.com)
+    - Maps: glob map patterns are now anchored to match the whole
+      subject; entries relying on substring matching need explicit
+      wildcards
+    - Selectors: reject selectors that parse only as a prefix
+      instead of silently evaluating the truncated part; don't
+      crash the scan on a method call missing on the extracted
+      value
+    - Lua: fix lua_kann load({filename}) argument index and save()
+      return value; Lua 5.5 compatibility fix for Jinja templates
+      (no assignment to for-loop variables)
+    - Plugins: don't send a duplicate GPT request when
+      context_augment invokes its callback synchronously; fix HTTP
+      header insertion in ICAP get_http_headers; don't call
+      blocking sleep from an async callback when throttling DMARC
+      report batches
+
+-------------------------------------------------------------------
 Fri Jun 19 16:28:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.1.1

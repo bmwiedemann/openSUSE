@@ -68,7 +68,7 @@
 %endif
 
 Name:           rspamd
-Version:        4.1.1
+Version:        4.1.2
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -769,7 +769,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_wwwdir}/%{name}/js/app/upload.js
 %{_wwwdir}/%{name}/js/app/common.js
 %{_wwwdir}/%{name}/js/app/libft.js
-%{_wwwdir}/%{name}/js/app/footable-fontawesome.js
+%{_wwwdir}/%{name}/js/app/tab-utils.js
 
 %{_wwwdir}/%{name}/js/lib
 

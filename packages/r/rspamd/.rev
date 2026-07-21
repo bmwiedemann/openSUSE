@@ -586,4 +586,12 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
     <comment>- Update to 4.1.1</comment>
     <requestid>1360640</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>73991d1feb8ce653a776c4c7a92520c3</srcmd5>
+    <version>4.1.2</version>
+    <time>1784668464</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.2</comment>
+    <requestid>1367021</requestid>
+  </revision>
 </revisionlist>
