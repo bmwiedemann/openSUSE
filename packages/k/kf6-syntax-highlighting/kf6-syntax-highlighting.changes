@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sun Jul 19 12:14:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream fix:
+  * 0001-Fix-listening-for-language-changes-just-react-on-the.patch
+
+-------------------------------------------------------------------
+Fri Jul 10 12:16:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * Invalidate cached translations when language changes
+  * Powershell: fix parentheses matching in command substitution with function calls (kde#519774)
+  * Powershell: fix Numeric Suffix when the previous line ends with number
+  * Update dependency version to 6.28.0
+  * make build reproducable
+  * adapt refs to fixed scope highlighting
+  * Fixes formatting for scopes containing types like 'std::char' or 'std::str::Bytes' which contain 'str' and 'char'
+  * systemd unit: update to systemd v261
+  * YAML: fix some bad indentation detection, add Timestamp and fix some defects
+  * Fish: end keyword of function as Keyword instead of Control Flow
+  * Fish: use the "Function Doc" style for strings with --description followed by spaces (kde#521369)
+  * Theme: Add preview icon
+  * Zsh: remove String Transl. which does not exist in zsh
+  * Bash: fix String Transl. highlingting (was a String DoubleQ)
+  * Bash: fix context pop of brace command substitution (${ cmd}/${|cmd}) (kde#521069)
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0

@@ -223,4 +223,21 @@
     <comment>KDE Frameworks 6.27 (forwarded request 1358688 from krop)</comment>
     <requestid>1358926</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>fc01246450c298e0dea877e449f40712</srcmd5>
+    <version>6.28.0</version>
+    <time>1784125965</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.28 (forwarded request 1364956 from krop)</comment>
+    <requestid>1365149</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>c288daabfb1ed6db6f3978d736976fe3</srcmd5>
+    <version>6.28.0</version>
+    <time>1784667211</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream fix:
+  * 0001-Fix-listening-for-language-changes-just-react-on-the.patch</comment>
+    <requestid>1366593</requestid>
+  </revision>
 </revisionlist>

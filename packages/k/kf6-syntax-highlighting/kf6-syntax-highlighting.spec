@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname syntax-highlighting
-# Full KF6 version (e.g. 6.27.0)
+# Full KF6 version (e.g. 6.28.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-syntax-highlighting
-Version:        6.27.0
+Version:        6.28.0
 Release:        0
 Summary:        Syntax highlighting engine and library
 License:        LGPL-2.1-or-later AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND MIT AND BSD-3-Clause AND Artistic-1.0
@@ -33,6 +33,8 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Fix-listening-for-language-changes-just-react-on-the.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  pkgconfig
