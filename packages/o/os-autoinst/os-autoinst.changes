@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:51:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1784551853.234e380:
+  * ci: Add tool to check line coverage
+  * git subrepo pull (merge) external/os-autoinst-common
+  * style(testapi): apply Modules::ProhibitAutomaticExportation on testapi
+  * style(testapi.pm): apply Subroutines::RequireArgUnpacking on testapi.pm
+  * style(perlcritic): RegularExpressions::ProhibitSingleCharAlternation
+  * build(deps): bump actions/checkout (#3018)
+  * fix(backend): bring back support for legacy BIOS
+
+-------------------------------------------------------------------
 Fri Jul 10 12:56:21 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1783672666.346fbe5:
