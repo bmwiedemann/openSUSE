@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Jul  5 08:15:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.223.0 (2.223)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.223 4 July 2026
+      * Fix typo in Makefile.PL Fixes #79
+        Sat Jul 4 09:22:42 2026 +0100
+        5e2d96044b22be0c6cd0ba408b671281d15e5a9c
+      * * Error:  Compress::Raw::Zlib version 2.222 required--this is only version 2.221
+        * Update to version 2.223 Fixes #79
+        Sat Jul 4 09:16:41 2026 +0100
+        b9031b0fc30ad378e6cfda5c3dfbede82ec6ac59
+      * Update to version 2.222
+        Fri Jul 3 13:08:15 2026 +0100
+        68f1713d94521e8990fa92f7947d0f5f92ead6ce
+      * Tag `:constants` no longer exports all constants Fixes #78, #64
+        Fri Jul 3 11:55:19 2026 +0100
+        a2a91df2d64c5731287e6ca9ad47462cd8907f32
+      * Bump actions/checkout from 6 to 7
+        Fri Jul 3 00:06:22 2026 +0100
+        941a75e143d7fc707483a30fc4b8097f406485e5
+
+-------------------------------------------------------------------
+Wed Jun 17 10:03:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.221.0 (2.221)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.221 16 June 2026
+      * Version 2.221
+        Tue Jun 16 15:45:21 2026 +0100
+        245a6818d4215bb5ee6c27bb509caee5f8c4dd68
+      * update zipdetails  to version 4.008
+        Tue Jun 16 15:29:27 2026 +0100
+        1da3c5fcecf6fbe230a17ea9b358f50ef27d70f7
+      * Update reference for  the info-zip estrafld  file.
+        Tue Jun 16 15:25:06 2026 +0100
+        914f39406bc164221bfa94905ac1335669ddf446
+      * Add hex values for utf8 encoding as a comment
+        Tue Jun 16 14:30:54 2026 +0100
+        9d5ead52df529f96645e38f3a49924235f74092b
+      * Fix File::GlobMapper wildcard replacement after ordinary letters
+        Sat Jun 13 23:49:17 2026 +0100
+        3651e9eb3fca0bd3718d1d8b12e96b9e80096144
+      * Update to zipdetails 4.007
+        Mon Jun 1 22:55:05 2026 +0100
+        865b8388aa5d1028724ddde5e411c0868aa077c7
+      * Remove test for filename when not needed. Helps with EBCDIC support. #73
+        Sun May 31 15:23:31 2026 +0100
+        6a477fc83776a0fa5d2aea5d923cadd323985ad1
+      * IO-Compress: generalize for EBCDIC
+        Sat May 30 00:39:09 2026 +0100
+        648120dfc768a1de22ee2a76aacf17c61d13cac6
+
+-------------------------------------------------------------------
 Sun May 17 07:45:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.220.0 (2.220)
