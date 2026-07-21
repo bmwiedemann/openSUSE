@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 19 10:20:35 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Remove the redundant %python_flavored_alternatives which is
+  called in %pyunittest.
+
+-------------------------------------------------------------------
 Mon Apr 20 05:54:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install the module.

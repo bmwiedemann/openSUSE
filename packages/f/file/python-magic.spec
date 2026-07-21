@@ -62,7 +62,6 @@ popd
 %check
 export LC_ALL=C.UTF-8
 pushd python
-%python_flavored_alternatives
 %pyunittest -v tests
 popd
 
