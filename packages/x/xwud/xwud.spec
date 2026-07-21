@@ -1,7 +1,7 @@
 #
 # spec file for package xwud
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           xwud
-Version:        1.0.7
+Version:        1.0.8
 Release:        0
 Summary:        Image displayer for X
 License:        MIT
 Group:          System/X11/Utilities
 URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
+BuildRequires:  meson >= 1.1.0
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xorg-macros) >= 1.8
-BuildRequires:  pkgconfig(xproto) >= 7.0.17
+BuildRequires:  pkgconfig(xproto) >= 7.0.25
 # This was part of the xorg-x11 package up to version 7.6
 Conflicts:      xorg-x11 <= 7.6
 
@@ -39,11 +40,11 @@ specially formatted dump file, such as produced by xwd.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 
 %files
 %license COPYING
