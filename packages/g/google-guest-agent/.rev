@@ -1098,4 +1098,15 @@
     <comment>- Add missing Bugzilla reference for bsc#1266171 (multiple CVEs in x/crypto) (forwarded request 1359513 from glaubitz)</comment>
     <requestid>1359527</requestid>
   </revision>
+  <revision rev="65" vrev="3">
+    <srcmd5>8356aa7096373c6b4130e2f9d24b364b</srcmd5>
+    <version>20260529.00</version>
+    <time>1784667685</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-39821: golang.org/x/net/idna: failure to reject ASCII-only
+  Punycode-encoded labels allows for validation bypass and privilege
+  escalation (bsc#1266603)
+  * CVE-2026-39821.patch (forwarded request 1366718 from mcalabkova)</comment>
+    <requestid>1366767</requestid>
+  </revision>
 </revisionlist>

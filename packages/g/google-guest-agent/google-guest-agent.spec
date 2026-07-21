@@ -29,6 +29,8 @@ Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
+# PATCH-FIX-UPSTREAM - golang.org/x/net/idna: failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation
+Patch1:         CVE-2026-39821.patch
 BuildRequires:  golang(API) = 1.26
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
@@ -42,6 +44,9 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{shortname}-%{version} -a1
 %patch -P 0 -p1
+pushd vendor/golang.org/x/net
+%patch -P 1 -p1
+popd
 
 %build
 %ifnarch ppc64
