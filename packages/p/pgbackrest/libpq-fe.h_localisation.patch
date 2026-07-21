@@ -1,10 +1,10 @@
-Index: pgbackrest-release-2.54.1/src/postgres/client.c
+Index: pgbackrest-2.59.0/src/postgres/client.c
 ===================================================================
---- pgbackrest-release-2.54.1.orig/src/postgres/client.c
-+++ pgbackrest-release-2.54.1/src/postgres/client.c
+--- pgbackrest-2.59.0.orig/src/postgres/client.c
++++ pgbackrest-2.59.0/src/postgres/client.c
 @@ -3,7 +3,7 @@ Postgres Client
  ***********************************************************************************************************************************/
- #include "build.auto.h"
+ #include <build.h>
  
 -#include <libpq-fe.h>
 +#include <pgsql/libpq-fe.h>

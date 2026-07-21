@@ -19,13 +19,13 @@
 
 %define services pgbackrest.target pgbackrest-diff@.service pgbackrest-full@.service pgbackrest-incr@.service pgbackrest.service pgbackrest-diff@.timer pgbackrest-full@.timer pgbackrest-incr@.timer
 Name:           pgbackrest
-Version:        2.58.0
+Version:        2.59.0
 Release:        0
 Summary:        Reliable PostgreSQL Backup & Restore
 License:        MIT
 Group:          Productivity/Databases/Tools
 URL:            https://www.pgbackrest.org
-Source:         https://github.com/%{name}/%{name}/archive/release/%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/pgbackrest/pgbackrest/releases/download/release%2F%{version}/pgbackrest-%{version}.tar.gz
 Source1:        pgbackrest.conf
 Source10:       pgbackrest-diff@.service
 Source11:       pgbackrest-diff@.timer
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libpq)
 BuildRequires:  pkgconfig(libssh2)
+BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(systemd)
@@ -58,7 +59,7 @@ Requires(pre):  postgresql-server
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(liblz4)
 %endif
-%if 0%{?is_opensuse} || 0%{?sle_version} >= 150100
+%if 0%{?is_opensuse} || 0%{?sle_version} >= 150100 || 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libzstd)
 %endif
 
@@ -84,7 +85,7 @@ The following features are available:
 - Compatibility with PostgreSQL >= 8.3
 
 %prep
-%autosetup -p1 -n %{name}-release-%{version}
+%autosetup -p1
 
 %build
 cp %{SOURCE98} .

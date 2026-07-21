@@ -1,100 +1,7 @@
-Index: pgbackrest-release-2.58.0/CODING.md
+Index: pgbackrest-2.59.0/src/config/parse.auto.c.inc
 ===================================================================
---- pgbackrest-release-2.58.0.orig/CODING.md
-+++ pgbackrest-release-2.58.0/CODING.md
-@@ -268,11 +268,11 @@ Continuation characters should be aligne
- 
- This function can be called without variable parameters:
- ```c
--storagePathCreateP(storageLocal(), "/tmp/pgbackrest");
-+storagePathCreateP(storageLocal(), "/run/pgbackrest");
- ```
- Or with variable parameters:
- ```c
--storagePathCreateP(storageLocal(), "/tmp/pgbackrest", .errorOnExists = true, .mode = 0777);
-+storagePathCreateP(storageLocal(), "/run/pgbackrest", .errorOnExists = true, .mode = 0777);
- ```
- If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.
- 
-Index: pgbackrest-release-2.58.0/doc/resource/git-history.cache
-===================================================================
---- pgbackrest-release-2.58.0.orig/doc/resource/git-history.cache
-+++ pgbackrest-release-2.58.0/doc/resource/git-history.cache
-@@ -9664,7 +9664,7 @@
-     {
-         "commit": "a1365b26d4c2383eaacea3714eeb521435ca79aa",
-         "date": "2021-01-18 23:41:09 -0500",
--        "subject": "Remove duplicate mkdir for /tmp/pgbackrest in Vagrantfile."
-+        "subject": "Remove duplicate mkdir for /run/pgbackrest in Vagrantfile."
-     },
-     {
-         "commit": "8322dfd7af97e307b952cfb37e6a65b65f55be0f",
-@@ -12480,8 +12480,8 @@
-     {
-         "commit": "3fbfcba811499a59b943dd893eef9ff52090f7b6",
-         "date": "2020-03-16 17:27:01 -0400",
--        "subject": "Forbid access to /tmp/pgbackrest in the Vagrantfile.",
--        "body": "This matches the error that will be thrown in the vm=none test on Travis CI if a unit test writes to /tmp/pgbackrest."
-+        "subject": "Forbid access to /run/pgbackrest in the Vagrantfile.",
-+        "body": "This matches the error that will be thrown in the vm=none test on Travis CI if a unit test writes to /run/pgbackrest."
-     },
-     {
-         "commit": "46911c64c19dc8ff76d2a6ff4548fc01647043e0",
-@@ -14381,7 +14381,7 @@
-         "commit": "45881c74aeff4bb25559ec0254fa7fc1960d9cab",
-         "date": "2019-10-08 12:06:30 -0400",
-         "subject": "Allow most unit tests to run outside of a container.",
--        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /tmp/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
-+        "body": "Three major changes were required to get this working:\n\n1) Provide the path to pgbackrest in the build directory when running outside a container. Tests in a container will continue to install and run against /usr/bin/pgbackrest.\n\n1) Set a per-test lock path so tests don't conflict on the default /run/pgbackrest path. Also set a per-test log-path while we are at it.\n\n2) Use localhost instead of a custom host for TLS test connections. Tests in containers will continue to update /etc/hosts and use the custom host.\n\nAdd infrastructure and update harnessCfgLoad*() to get the correct exe and paths loaded for testing.\n\nSince new tests are required to verify that running outside a container works, also rework the tests in Travis CI to provide coverage within a reasonable amount of time. Mainly, break up to doc tests by VM and run an abbreviated unit test suite on co6 and co7."
-     },
-     {
-         "commit": "77b0c6c993a0e6ff45a6a99f343c3709a016d152",
-@@ -22868,7 +22868,7 @@
-         "commit": "18fd25233b1db7b3197f5d8dc537d239dcfc7aba",
-         "date": "2016-04-14 09:30:54 -0400",
-         "subject": "New simpler configuration and consistent project/exe/path naming.",
--        "body": "* The repo-path option now always refers to the repository where backups and archive are stored, whether local or remote, so the repo-remote-path option has been removed. The new spool-path option can be used to define a location for queueing WAL segments when archiving asynchronously. Otherwise, a local repository is no longer required.\n\n* Implemented a new config format which should be far simpler to use. See the User Guide and Configuration Reference for details but for a simple configuration all options can now be placed in the stanza section. Options that are shared between stanzas can be placed in the [global] section. More complex configurations can still make use of command sections though this should be a rare use case.\n\n* The default configuration filename is now pgbackrest.conf instead of pg_backrest.conf. This was done for consistency with other naming changes but also to prevent old config files from being loaded accidentally.\n\n* The default repository name was changed from /var/lib/backup to /var/lib/pgbackrest.\n\n* Lock files are now stored in /tmp/pgbackrest by default. These days /run/pgbackrest would be the preferred location but that would require init scripts which are not part of this release. The lock-path option can be used to configure the lock directory.\n\n* Log files are now stored in /var/log/pgbackrest by default and no longer have the date appended so they can be managed with logrotate. The log-path option can be used to configure the lock directory.\n\n* Executable filename changed from pg_backrest to pgbackrest."
-+        "body": "* The repo-path option now always refers to the repository where backups and archive are stored, whether local or remote, so the repo-remote-path option has been removed. The new spool-path option can be used to define a location for queueing WAL segments when archiving asynchronously. Otherwise, a local repository is no longer required.\n\n* Implemented a new config format which should be far simpler to use. See the User Guide and Configuration Reference for details but for a simple configuration all options can now be placed in the stanza section. Options that are shared between stanzas can be placed in the [global] section. More complex configurations can still make use of command sections though this should be a rare use case.\n\n* The default configuration filename is now pgbackrest.conf instead of pg_backrest.conf. This was done for consistency with other naming changes but also to prevent old config files from being loaded accidentally.\n\n* The default repository name was changed from /var/lib/backup to /var/lib/pgbackrest.\n\n* Lock files are now stored in /run/pgbackrest by default. These days /run/pgbackrest would be the preferred location but that would require init scripts which are not part of this release. The lock-path option can be used to configure the lock directory.\n\n* Log files are now stored in /var/log/pgbackrest by default and no longer have the date appended so they can be managed with logrotate. The log-path option can be used to configure the lock directory.\n\n* Executable filename changed from pg_backrest to pgbackrest."
-     },
-     {
-         "commit": "885797e4b58a675487a3531ba16908c1d1e9f970",
-Index: pgbackrest-release-2.58.0/doc/xml/coding.xml
-===================================================================
---- pgbackrest-release-2.58.0.orig/doc/xml/coding.xml
-+++ pgbackrest-release-2.58.0/doc/xml/coding.xml
-@@ -365,13 +365,13 @@ void storagePathCreate(const Storage *th
-             <p>This function can be called without variable parameters:</p>
- 
-             <code-block type="c">
--storagePathCreateP(storageLocal(), "/tmp/pgbackrest");
-+storagePathCreateP(storageLocal(), "/run/pgbackrest");
-             </code-block>
- 
-             <p>Or with variable parameters:</p>
- 
-             <code-block type="c">
--storagePathCreateP(storageLocal(), "/tmp/pgbackrest", .errorOnExists = true, .mode = 0777);
-+storagePathCreateP(storageLocal(), "/run/pgbackrest", .errorOnExists = true, .mode = 0777);
-             </code-block>
- 
-             <p>If the majority of functions in a module or object are variadic it is best to provide macros for all functions even if they do not have variable parameters. Do not use the base function when variadic macros exist.</p>
-Index: pgbackrest-release-2.58.0/src/build/config/config.yaml
-===================================================================
---- pgbackrest-release-2.58.0.orig/src/build/config/config.yaml
-+++ pgbackrest-release-2.58.0/src/build/config/config.yaml
-@@ -834,7 +834,7 @@ option:
-   lock-path:
-     section: global
-     type: path
--    default: /tmp/pgbackrest
-+    default: /run/pgbackrest
-     command:
-       annotate: {}
-       archive-get: {}
-Index: pgbackrest-release-2.58.0/src/config/parse.auto.c.inc
-===================================================================
---- pgbackrest-release-2.58.0.orig/src/config/parse.auto.c.inc
-+++ pgbackrest-release-2.58.0/src/config/parse.auto.c.inc
+--- pgbackrest-2.59.0.orig/src/config/parse.auto.c.inc
++++ pgbackrest-2.59.0/src/config/parse.auto.c.inc
 @@ -16,7 +16,7 @@ static const StringPubConst parseRuleVal
      PARSE_RULE_STRPUB("-20"),                                                                                             // val/str
      PARSE_RULE_STRPUB("-5"),                                                                                              // val/str
@@ -104,31 +11,154 @@ Index: pgbackrest-release-2.58.0/src/config/parse.auto.c.inc
      PARSE_RULE_STRPUB("/var/lib/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/log/pgbackrest"),                                                                             // val/str
      PARSE_RULE_STRPUB("/var/spool/pgbackrest"),                                                                           // val/str
-Index: pgbackrest-release-2.58.0/test/ci.pl
+Index: pgbackrest-2.59.0/doc/html/command.html
 ===================================================================
---- pgbackrest-release-2.58.0.orig/test/ci.pl
-+++ pgbackrest-release-2.58.0/test/ci.pl
-@@ -186,8 +186,8 @@ eval
-             $strPackage .= " libdbd-pg-perl";
-         }
- 
--        processBegin('/tmp/pgbackrest owned by root so tests cannot use it');
--        processExec('sudo mkdir -p /tmp/pgbackrest && sudo chown root:root /tmp/pgbackrest && sudo chmod 700 /tmp/pgbackrest');
-+        processBegin('/run/pgbackrest owned by root so tests cannot use it');
-+        processExec('sudo mkdir -p /run/pgbackrest && sudo chown root:root /run/pgbackrest && sudo chmod 700 /run/pgbackrest');
-         processEnd();
- 
-         processBegin('install test packages');
-Index: pgbackrest-release-2.58.0/test/src/module/command/helpTest.c
+--- pgbackrest-2.59.0.orig/doc/html/command.html
++++ pgbackrest-2.59.0/doc/html/command.html
+@@ -195,7 +195,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-annotate/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -1120,7 +1120,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-archive-get/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -2200,7 +2200,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-archive-push/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -3395,7 +3395,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-backup/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -5783,7 +5783,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-expire/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -6830,7 +6830,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-info/category-general/option-priority"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Set Process Priority Option (<span class="id">--priority</span>)
+@@ -9721,7 +9721,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-restore/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -11232,7 +11232,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-stanza-create/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -12317,7 +12317,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-stanza-delete/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -13397,7 +13397,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-stanza-upgrade/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -14399,7 +14399,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-start/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+@@ -14588,7 +14588,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: --lock-path=/backup/db/lock</pre>
+ </div></div><div class="section3"><a id="command-stop/category-general/option-neutral-umask"></a><div class="section3-header"><div class="section3-number"></div><div class="section3-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+Index: pgbackrest-2.59.0/doc/html/configuration.html
 ===================================================================
---- pgbackrest-release-2.58.0.orig/test/src/module/command/helpTest.c
-+++ pgbackrest-release-2.58.0/test/src/module/command/helpTest.c
-@@ -267,7 +267,7 @@ testRun(void)
-             "                                      [default=n]\n"
-             "  --io-timeout                        I/O timeout [default=1m]\n"
-             "  --lock-path                         path where lock files are stored\n"
--            "                                      [default=/tmp/pgbackrest]\n"
-+            "                                      [default=/run/pgbackrest]\n"
-             "  --neutral-umask                     use a neutral umask [default=y]\n"
-             "  --priority                          set process priority\n"
-             "  --process-max                       max processes to use for\n"
+--- pgbackrest-2.59.0.orig/doc/html/configuration.html
++++ pgbackrest-2.59.0/doc/html/configuration.html
+@@ -762,7 +762,7 @@ Path where lock files are stored.
+ </div><div class="section-body-text">
+ The lock path provides a location for <span class="backrest">pgBackRest</span> to create lock files to prevent conflicting operations from being run concurrently.
+ </div>
+-<pre class="code-block">default: /tmp/pgbackrest
++<pre class="code-block">default: /run/pgbackrest
+ example: lock-path=/backup/db/lock</pre>
+ </div></div><div class="section2"><a id="section-general/option-neutral-umask"></a><div class="section2-header"><div class="section2-number"></div><div class="section2-title">
+ Neutral Umask Option (<span class="id">--neutral-umask</span>)
+Index: pgbackrest-2.59.0/doc/html/release.html
+===================================================================
+--- pgbackrest-2.59.0.orig/doc/html/release.html
++++ pgbackrest-2.59.0/doc/html/release.html
+@@ -2923,7 +2923,7 @@ The default configuration filename is no
+ </li><li class="list-unordered">
+ The default repository name was changed from <span class="path">/var/lib/backup</span> to <span class="path">/var/lib/pgbackrest</span>. (<i>Suggested by Michael Renner, Stephen Frost.</i>)
+ </li><li class="list-unordered">
+-Lock files are now stored in <span class="path">/tmp/pgbackrest</span> by default. These days <span class="path">/run/pgbackrest</span> is the preferred location but that would require init scripts which are not part of this release. The <span class="br-setting">lock-path</span> option can be used to configure the lock directory.
++Lock files are now stored in <span class="path">/run/pgbackrest</span> by default. These days <span class="path">/run/pgbackrest</span> is the preferred location but that would require init scripts which are not part of this release. The <span class="br-setting">lock-path</span> option can be used to configure the lock directory.
+ </li><li class="list-unordered">
+ Log files are now stored in <span class="path">/var/log/pgbackrest</span> by default and no longer have the date appended so they can be managed with <span class="id">logrotate</span>. The <span class="br-setting">log-path</span> option can be used to configure the log directory. (<i>Suggested by Stephen Frost.</i>)
+ </li><li class="list-unordered">
+Index: pgbackrest-2.59.0/doc/man/pgbackrest.1.txt
+===================================================================
+--- pgbackrest-2.59.0.orig/doc/man/pgbackrest.1.txt
++++ pgbackrest-2.59.0/doc/man/pgbackrest.1.txt
+@@ -312,7 +312,7 @@ FILES
+   /var/lib/pgbackrest
+   /var/log/pgbackrest
+   /var/spool/pgbackrest
+-  /tmp/pgbackrest
++  /run/pgbackrest
+ 
+ EXAMPLES
+   * Create a backup of the PostgreSQL `main` cluster:

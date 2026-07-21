@@ -1,4 +1,112 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:40:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Also build with libzstd on anything newer than 16.0
+
+-------------------------------------------------------------------
+Mon Jul 20 10:25:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.59.0
+  NOTE TO PACKAGERS: A new distribution tarball is available which
+  simplifies the build process by providing pregenerated HTML
+  documentation, man page, and code. The tarball is attached to
+  each release as an asset and is named
+  pgbackrest-{version}.tar.gz. See the README.md in the tarball for
+  details. Please use the new distribution tarball to avoid the
+  additional build tooling required to generate code in future
+  releases.
+
+  NOTE TO PACKAGERS: There is a new optional dependency on
+  libsystemd.
+
+  IMPORTANT NOTE: Starting with this release, only the restore
+  command may be run as root by default. Use allow-root to run
+  other commands as root (though this is not recommended).
+
+  - Bug Fixes:
+    - Fix expire removing a backup in progress on another host.
+      (Reviewed by Douglas J Hunley. Reported by Dmitrii.)
+    - Fix archive-push-queue-max not enforced when a WAL file
+      errors. (Reviewed by Stefan Fercot. Reported by vut12.)
+    - Fix async archive-get failure during recovery across a
+      timeline switch. (Reviewed by Douglas J Hunley. Reported by
+      Jimmy Yih.)
+    - Fix potential buffer overrun in error module. (Fixed by
+      Christophe Pettus. Reviewed by David Steele.)
+    - Fix use-after-free of parallel protocol client. (Reviewed by
+      Douglas J Hunley. Reported by Georgy Shelkovy.)
+    - Fix heap overflow when a pg option is set without pg1.
+      (Reviewed by Douglas J Hunley. Reported by Naveen.)
+  - Features:
+    - PostgreSQL 19beta2 support. (Reviewed by Stefan Fercot.)
+    - Add archive-expire-before option to clean up WAL archive.
+      (Contributed by Stefan Fercot. Reviewed by David Steele.)
+    - Add batch delete for Azure storage. (Reviewed by Douglas J
+      Hunley, Crispy.)
+    - Add support for S3 Outposts. (Contributed by Shiva Kumar
+      Ambigi. Reviewed by David Steele, Roberto Mello.)
+    - Add S3 process authentication. (Reviewed by Andrew Charlton.
+      Suggested by Andrew Charlton.)
+  - Improvements:
+    - Reconnect SFTP storage after the server drops an idle
+      connection. (Reviewed by Stefan Fercot. Suggested by
+      mustafa0x, tisserat.)
+    - Add user/group caching for faster manifest build.
+      (Contributed by Gunnar Lindholm. Reviewed by David Steele.)
+    - Add per-repo backup progress to info command output.
+      (Contributed by Will Morland. Reviewed by David Steele,
+      Stefan Fercot.)
+    - Add backup.info checks to verify command. (Contributed by
+      Denis Garsh. Reviewed by David Steele, Douglas J Hunley.)
+    - Allow the S3 STS endpoint to be configured. (Contributed by
+      Simon Gratton. Reviewed by David Steele.)
+    - Add archive-push-batch-size to limit WAL pushed per
+      asynchronous run. (Reviewed by Stefan Fercot.)
+    - Exit async archive-push on first error. (Reviewed by Stefan
+      Fercot. Suggested by Lardière Sébastien.)
+    - Harden HTTP chunked response parsing. (Contributed by
+      Shubham. Reviewed by David Steele.)
+    - Error when running as root unless allow-root is enabled.
+      (Reviewed by Douglas J Hunley.)
+    - Fewer binary searches when building manifest. (Contributed by
+      Gunnar Lindholm. Reviewed by David Steele.)
+    - Improve seek performance during block incremental delta
+      restore. (Reviewed by David Christensen, Douglas J Hunley.)
+    - Bundle backup files in order rather than scanning for a
+      better fit. (Reviewed by Stefan Fercot.)
+    - Report the underlying error when a query fails to complete.
+      (Reviewed by Andrew Pogrebnoi. Suggested by Marco Fontana.)
+    - Report the actual error when an S3 credential request fails.
+      (Reviewed by Douglas J Hunley. Suggested by Mitchell Grice.)
+    - Report archive-push spool path errors to the PostgreSQL log.
+      (Reviewed by Douglas J Hunley. Suggested by Don Seiler.)
+    - Hint that pgBackRest may be out of date when a version is
+      unsupported.
+    - Add systemd notify integration. (Contributed by Andrew
+      Jackson. Reviewed by David Steele.)
+    - Suppress unused parameter errors in meson compiler probes.
+      (Contributed by Jörg Plate. Reviewed by David Steele.)
+    - C11 is now the minimum C standard. (Reviewed by Mohammad Ali
+      Nazir Kosar.)
+  - Documentation Improvements:
+    - Make stanza option internal for the repo-* commands.
+      (Reviewed by Stefan Fercot.)
+    - Document that info reads encryption settings from global
+      section. (Reviewed by Stefan Fercot. Suggested by Ron
+      Johnson.)
+    - Document that expire-auto uses the backup command
+      configuration. (Reviewed by Stefan Fercot. Suggested by
+      Lardière Sébastien.)
+    - Document adjusting the logrotate su directive for a dedicated
+      user. (Reviewed by Douglas J Hunley. Suggested by lkanbus.)
+    - Document that end-of-line comments are not supported in
+      config files. (Reviewed by Douglas J Hunley. Suggested by
+      Alex Richman.)
+- refresh patches:
+  libpq-fe.h_localisation.patch
+  use-run-pgbackrest.patch
+
+-------------------------------------------------------------------
 Mon Jan 19 11:41:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.58.0

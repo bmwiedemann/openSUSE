@@ -254,4 +254,14 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
     - Optimize S3/GCS/Azure chunk size for small files. (Reviewed</comment>
     <requestid>1328079</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>93fcd69a2a5eab501d9de6e8bc3de573</srcmd5>
+    <version>2.59.0</version>
+    <time>1784667632</time>
+    <user>dimstar_suse</user>
+    <comment>- Also build with libzstd on anything newer than 16.0
+
+- update to 2.59.0</comment>
+    <requestid>1366785</requestid>
+  </revision>
 </revisionlist>
