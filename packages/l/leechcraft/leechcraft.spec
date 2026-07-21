@@ -28,7 +28,7 @@
 %define qml_dir %{_datadir}/leechcraft/qml6
 
 %define so_ver -qt6-0_6_75
-%define LEECHCRAFT_VERSION 0.6.70-18450-gabe19ee3b0
+%define LEECHCRAFT_VERSION 0.6.70-18808-g3467692359
 
 %define azoth_postfix %{so_ver}
 %define db_postfix %{so_ver}
@@ -50,7 +50,7 @@
 %define xsd_postfix %{so_ver}
 
 Name:           leechcraft
-Version:        0.6.70+git.18450.gabe19ee3b0
+Version:        0.6.70+git.18808.g3467692359
 Release:        0
 Summary:        Modular Internet Client
 License:        BSL-1.0
@@ -60,15 +60,12 @@ Source0:        https://dist.leechcraft.org/LeechCraft/0.6.75/leechcraft-%{LEECH
 Source4:        %{name}-rpmlintrc
 Source8:        leechcraft-session.1
 
-# PATCH-FIX-UPSTREAM to resolve bnc#1261205 from
-# https://github.com/0xd34df00d/leechcraft/commit/68abb98d2f83f41d820fcd35901ff1a21972a65f
-Patch0:         leechcraft-0.6.70-18450-gabe19ee3b0_68abb98.diff
 
 BuildRequires:  cmake >= 3.8
 BuildRequires:  fdupes
 BuildRequires:  file-devel
 %if 0%{?suse_version} > 1600
-BuildRequires:  clang21
+BuildRequires:  clang >= 21
 BuildRequires:  llvm-gold-provider >= 21
 %else
 BuildRequires:  gcc16-c++
@@ -93,7 +90,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  wt-devel
 %endif
 BuildRequires:  cmake(Qca-qt6)
-BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6LinguistTools) >= 6.10
 BuildRequires:  pkgconfig(Qt6NetworkAuth)
 BuildRequires:  pkgconfig(Qt6QuickWidgets)
 BuildRequires:  pkgconfig(Qt6Qwt6)
@@ -103,12 +100,12 @@ BuildRequires:  pkgconfig(Qt6Test)
 %ifarch x86_64 aarch64
 BuildRequires:  cmake(Qt6WebEngineWidgets)
 %endif
-BuildRequires:  pkgconfig(QXmppQt6)
+BuildRequires:  pkgconfig(QXmppQt6) >= 1.15
 BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ddjvuapi)
 BuildRequires:  pkgconfig(gstreamer-app-1.0)
-BuildRequires:  pkgconfig(hunspell)
+BuildRequires:  pkgconfig(hunspell) >= 1.5.1
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
@@ -122,7 +119,7 @@ BuildRequires:  pkgconfig(libidn)
 BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnl-3.0)
-BuildRequires:  pkgconfig(libotr)
+BuildRequires:  pkgconfig(libotr) >= 4
 %if %{with ffmpeg}
 BuildRequires:  pkgconfig(libpostproc)
 %endif
@@ -142,9 +139,6 @@ BuildRequires:  pkgconfig(libtorrent-rasterbar) >= 1.2
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(poppler-cpp)
 BuildRequires:  pkgconfig(poppler-qt6)
-%if 0%{?suse_version} > 1600
-BuildRequires:  pkgconfig(purple)
-%endif
 BuildRequires:  pkgconfig(qtermwidget6)
 BuildRequires:  pkgconfig(quazip1-qt6)
 BuildRequires:  pkgconfig(speex)
@@ -191,6 +185,8 @@ Obsoletes:      %{name}-krigstask
 %if 0%{?suse_version} <= 1600
 Obsoletes:      %{name}-lastfmscrobble
 %endif
+Obsoletes:      %{name}-textogroose
+Obsoletes:      %{name}-touchstreams
 
 %description
 LeechCraft is a modular "Internet client" application.
@@ -292,12 +288,11 @@ Requires:       %{name} = %{version}
 Requires:       %{name}-azoth-standardstyles
 Requires:       %{name}-azoth-protocolplugin
 Requires:       %{name}-securestorage = %{version}
-Obsoletes:      %{name}-azoth-juick
-%if 0%{?suse_version} <= 1600
-Obsoletes:      %{name}-azoth-velvetbird
-%endif
 Obsoletes:      %{name}-azoth-adiumstyles
+Obsoletes:      %{name}-azoth-juick
+Obsoletes:      %{name}-azoth-metacontacts
 Obsoletes:      %{name}-azoth-murm
+Obsoletes:      %{name}-azoth-velvetbird
 
 %description azoth
 This package provides a modular, multi-protocol IM client for LeechCraft.
@@ -451,15 +446,6 @@ This package provides a plugin for LeechCraft Azoth which records
 contacts' last online and availability time on the client side. It
 does not depend on a concrete protocol implementation.
 
-%package azoth-metacontacts
-Summary:        LeechCraft Azoth Metacontacts Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-
-%description azoth-metacontacts
-This package provides a metacontacts support plugin for LeechCraft Azoth.
-
 %package azoth-modnok
 Summary:        LeechCraft Azoth LaTeX support Module
 License:        BSL-1.0
@@ -561,20 +547,6 @@ Requires:       %{name}-azoth = %{version}
 This package provides a support for color-indicating contacts activity
 tracker plugin for LeechCraft Azoth.
 
-%if 0%{?suse_version} > 1600
-%package azoth-velvetbird
-Summary:        LeechCraft Azoth libpurple Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-azoth = %{version}
-Provides:       %{name}-azoth-protocolplugin
-
-%description azoth-velvetbird
-This package provides a plugin for LeechCraft Azoth which
-makes the various protocols supported by libpurple available
-in Azoth.
-%endif
-
 %package azoth-xoox
 Summary:        LeechCraft Azoth XMPP Module
 License:        BSL-1.0
@@ -646,6 +618,7 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
 Requires:       %{name}-blasq-subplugin = %{version}
+Obsoletes:      %{name}-blasq-vangog
 
 %description blasq
 This package provides a modular image storage plugin for LeechCraft
@@ -682,17 +655,6 @@ Provides:       %{name}-blasq-subplugin = %{version}
 
 %description blasq-spegnersi
 This package provides a Flickr image storage client subplugin
-for LeechCraft Blasq.
-
-%package blasq-vangog
-Summary:        LeechCraft Blasq Picasa client Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-blasq = %{version}
-Provides:       %{name}-blasq-subplugin = %{version}
-
-%description blasq-vangog
-This package provides a Picasa image storage client subplugin
 for LeechCraft Blasq.
 
 %package blogique
@@ -1220,6 +1182,7 @@ Recommends:     gstreamer-plugins-bad
 Recommends:     gstreamer-plugins-libav
 Provides:       %{name}-audioplayer
 Provides:       %{name}-soundnotifications = %{version}
+Obsoletes:      %{name}-lmp-mp3tunes
 
 %description lmp
 This package provides an audio player plugin for LeechCraft.
@@ -1284,19 +1247,6 @@ Requires:       %{name}-lmp = %{version}
 This package provides a streamer plugin for LeechCraft player
 to stream music from LMP via HTTP.
 
-%package lmp-mp3tunes
-Summary:        LeechCraft mp3tunes.com Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-lmp = %{version}
-
-%description lmp-mp3tunes
-This package provides a LeechCraft plugin to
-synchronizing with, and use the mp3tunes.com service.
-
-Features:
- * Using many accounts.
- * Getting playlists.
 
 %package lmp-mtpsync
 Summary:        LeechCraft MtpSync Module
@@ -1657,31 +1607,12 @@ License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name}-poshuku = %{version}
 Requires:       %{name}-securestorage
+Obsoletes:      %{name}-poshuku-onlinebookmarks-delicious
+Obsoletes:      %{name}-poshuku-onlinebookmarks-readitlater
 
 %description poshuku-onlinebookmarks
 This package provides an online bookmarks plugin for LeechCraft Poshuku
-for synchronization of bookmarks with services like Read It Later
-or Del.icio.us.
-
-%package poshuku-onlinebookmarks-delicious
-Summary:        LeechCraft Poshuku Onlinebookmarks Delicious Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-poshuku-onlinebookmarks = %{version}
-
-%description poshuku-onlinebookmarks-delicious
-This package contains a plugin for LeechCraft Poshuku Online Bookmarks
-to support the Del.icio.us service.
-
-%package poshuku-onlinebookmarks-readitlater
-Summary:        LeechCraft Poshuku Onlinebookmarks ReadItLater Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-poshuku-onlinebookmarks = %{version}
-
-%description poshuku-onlinebookmarks-readitlater
-This package contains a plugin for LeechCraft Poshuku Online Bookmarks
-to support the Read it Later service.
+for synchronization of bookmarks with services.
 
 %package poshuku-speeddial
 Summary:        LeechCraft Poshuku Speed Dial Module
@@ -1846,31 +1777,6 @@ Requires:       %{name} = %{version}
 This package provides a tabs list plugin for Leechcraft
 which can show the list of currently opened tabs
 and allows to navigate between them.
-
-%package textogroose
-Summary:        LeechCraft Script-Based Lyrics Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name}-http = %{version}
-Requires:       %{name}-summaryrepresentation = %{version}
-Provides:       %{name}-lyricsprovider
-
-%description textogroose
-This package provides a lyrics finder plugin for LeechCraft.
-
-Textogroose is a kind of supplement to DeadLyrics for sites
-too complex to be described by DeadLyrics rules.
-
-%package touchstreams
-Summary:        LeechCraft VK.com Streaming Module
-License:        BSL-1.0
-Group:          Productivity/Networking/Other
-Requires:       %{name} = %{version}
-Requires:       %{name}-lmp = %{version}
-Requires:       %{name}-musiczombie = %{version}
-
-%description touchstreams
-This package provides a VK.com music streaming plugin for Leechcraft.
 
 %package tpi
 Summary:        LeechCraft Task Progress Indicator Module
@@ -2151,7 +2057,6 @@ cmake ../src \
                 -DENABLE_AZOTH_ISTERIQUE=True \
                 -DENABLE_AZOTH_KEESO=True \
                 -DENABLE_AZOTH_LASTSEEN=True \
-                -DENABLE_AZOTH_METACONTACTS=True \
                 -DENABLE_AZOTH_MODNOK=True \
                 -DENABLE_AZOTH_MUCOMMANDS=True \
                 -DENABLE_AZOTH_MUCOMMANDS_TESTS=True \
@@ -2162,11 +2067,6 @@ cmake ../src \
                 -DENABLE_AZOTH_STANDARDSTYLES=True \
                 -DENABLE_AZOTH_SHX=True \
                 -DENABLE_AZOTH_TRACOLOR=True \
-%if 0%{?suse_version} > 1600
-                -DENABLE_AZOTH_VELVETBIRD=True \
-%else
-                -DENABLE_AZOTH_VELVETBIRD=False \
-%endif
                 -DENABLE_AZOTH_XTAZY=True \
                 -DENABLE_AZOTH_XOOX=True \
                 -DENABLE_CRYPT=True \
@@ -2178,7 +2078,6 @@ cmake ../src \
                 -DENABLE_BLASQ_DEATHNOTE=True \
                 -DENABLE_BLASQ_RAPPOR=True \
                 -DENABLE_BLASQ_SPEGNERSI=True \
-                -DENABLE_BLASQ_VANGOG=True \
         -DENABLE_BLOGIQUE=True \
                 -DENABLE_BLOGIQUE_HESTIA=True \
                 -DENABLE_BLOGIQUE_METIDA=True \
@@ -2205,7 +2104,6 @@ cmake ../src \
         -DENABLE_KRIGSTASK=False \
         -DENABLE_LACKMAN=True \
                 -DTESTS_LACKMAN=True \
-        -DENABLE_LADS=False \
 %if 0%{?suse_version} > 1600
         -DENABLE_LASTFMSCROBBLE=True \
 %else
@@ -2257,7 +2155,6 @@ cmake ../src \
         -DENABLE_NACHEKU=False \
         -DENABLE_NAMAUTH=True \
         -DENABLE_NETSTOREMANAGER=True \
-                -DENABLE_NETSTOREMANAGER_DROPBOX=False \
                 -DENABLE_NETSTOREMANAGER_GOOGLEDRIVE=True \
         -DENABLE_NEWLIFE=True \
         -DENABLE_OORONEE=True \
@@ -2265,7 +2162,6 @@ cmake ../src \
                 -DENABLE_OTLOZHU_SYNC=False \
         -DENABLE_PINTAB=True \
         -DENABLE_POGOOGLUE=True \
-        -DENABLE_POLEEMERY=False \
         -DENABLE_POPISHU=False \
 %ifarch x86_64 aarch64
         -DENABLE_POSHUKU=True \
@@ -2278,8 +2174,6 @@ cmake ../src \
                 -DENABLE_POSHUKU_FUA=True \
                 -DENABLE_POSHUKU_KEYWORDS=True \
                 -DENABLE_POSHUKU_ONLINEBOOKMARKS=True \
-                        -DENABLE_POSHUKU_ONLINEBOOKMARKS_DELICIOUS=True \
-                        -DENABLE_POSHUKU_ONLINEBOOKMARKS_READITLATER=True \
                 -DENABLE_POSHUKU_QRD=False \
                 -DENABLE_POSHUKU_SPEEDDIAL=True \
                 -DENABLE_POSHUKU_WEBENGINEVIEW=True \
@@ -2295,10 +2189,8 @@ cmake ../src \
         -DENABLE_SYNCER=False \
         -DENABLE_TABSESSMANAGER=True \
         -DENABLE_TABSLIST=True \
-        -DENABLE_TEXTOGROOSE=True \
         -DENABLE_BITTORRENT=True \
                  -DENABLE_BITTORRENT_GEOIP=True \
-        -DENABLE_TOUCHSTREAMS=True \
         -DENABLE_TPI=True \
         -DENABLE_VROOBY=True \
         -DENABLE_XPROXY=True \
@@ -2375,8 +2267,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/coresettings.xml
 %{_datadir}/applications/%{name}-qt6.desktop
 %{_datadir}/icons/hicolor/*/*/*
-%dir %{_datadir}/icons/hicolor/14x14
-%dir %{_datadir}/icons/hicolor/14x14/apps
 %dir %{_datadir}/leechcraft
 %dir %{settings_dir}
 %dir %{translations_dir}
@@ -2498,10 +2388,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{plugin_dir}/*craft_azoth_lastseen*
 %{translations_dir}/*craft_azoth_lastseen*
 
-%files azoth-metacontacts
-%{plugin_dir}/*craft_azoth_metacontacts*
-%{translations_dir}/*craft_azoth_metacontacts*
-
 %files azoth-modnok
 %{plugin_dir}/*craft_azoth_modnok*
 %{settings_dir}/azothmodnoksettings.xml
@@ -2544,11 +2430,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{settings_dir}/azothtracolorsettings.xml
 %{translations_dir}/*craft_azoth_tracolor*
 
-%if 0%{?suse_version} > 1600
-%files azoth-velvetbird
-%{plugin_dir}/*craft_azoth_velvetbird.so
-%endif
-
 %files azoth-xoox
 %{translations_dir}/*craft_azoth_xoox*
 %{plugin_dir}/*craft_azoth_xoox.so
@@ -2585,10 +2466,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files blasq-spegnersi
 %{plugin_dir}/lib%{name}_blasq_spegnersi.so
 %{translations_dir}/*craft_blasq_spegnersi*.qm
-
-%files blasq-vangog
-%{plugin_dir}/lib%{name}_blasq_vangog.so
-%{translations_dir}/*craft_blasq_vangog*.qm
 
 %files blogique
 %{plugin_dir}/lib%{name}_blogique.so
@@ -2833,10 +2710,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_lmp_httstream_??.qm
 %{translations_dir}/*craft_lmp_httstream_??_??.qm
 
-%files lmp-mp3tunes
-%{plugin_dir}/*craft_lmp_mp3tunes.so
-%{settings_dir}/lmpmp3tunessettings.xml
-
 %files lmp-mtpsync
 %{plugin_dir}/*craft_lmp_mtpsync.so
 %{translations_dir}/*craft_lmp_mtpsync_*.qm
@@ -2992,12 +2865,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %{translations_dir}/*craft_poshuku_onlinebookmarks*.qm
 %{plugin_dir}/*craft_poshuku_onlinebookmarks.so
 
-%files poshuku-onlinebookmarks-delicious
-%{plugin_dir}/*craft_poshuku_onlinebookmarks_delicious*
-
-%files poshuku-onlinebookmarks-readitlater
-%{plugin_dir}/*craft_poshuku_onlinebookmarks_readitlater.*
-
 %files poshuku-speeddial
 %{plugin_dir}/lib%{name}_poshuku_speeddial.so
 %{settings_dir}/poshukuspeeddialsettings.xml
@@ -3051,14 +2918,6 @@ cp %{SOURCE8} %{buildroot}%{_mandir}/man1
 %files tabslist
 %{plugin_dir}/*craft_tabslist.so
 %{translations_dir}/*craft_tabslist*
-
-%files textogroose
-%{plugin_dir}/lib%{name}_textogroose.so
-
-%files touchstreams
-%{plugin_dir}/lib%{name}_touchstreams.so
-%{translations_dir}/*craft_touchstreams*.qm
-%{settings_dir}/touchstreamssettings.xml
 
 %files tpi
 %{plugin_dir}/lib%{name}_tpi.so

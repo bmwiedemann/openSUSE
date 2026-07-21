@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:37:09 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
+
+- Fixed clang >= 21 build requirenment;
+- Updated to 0.6.70-18808-g3467692359 snapshot:
+  * Removed leechcraft-0.6.70-18450-gabe19ee3b0_68abb98.diff,
+  * Qt >= 5.10 became required,
+  * Obsoleted plugins: azoth-metacontacts, azoth-velvetbird,
+    blasq-vangog, lmp-mp3tunes, poshuku-onlinebookmarks-delicious,
+    poshuku-onlinebookmarks-readitlater.
+
+-------------------------------------------------------------------
 Wed Apr  1 12:54:43 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Updated to 0.6.70-18450-gabe19ee3b0 snapshot:
