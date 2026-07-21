@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Jul 14 21:38:21 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Add missing python3-base BR (bsc#1270341).
+
+-------------------------------------------------------------------
 Fri Jun 20 04:53:21 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros from python-rpm-macros to build and install.

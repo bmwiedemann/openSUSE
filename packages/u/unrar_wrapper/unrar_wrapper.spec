@@ -1,7 +1,7 @@
 #
 # spec file for package unrar_wrapper
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            https://github.com/openSUSE/unrar_wrapper
 Source:         https://github.com/openSUSE/unrar_wrapper/archive/unrar_wrapper-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-base
 BuildRequires:  python3-pip
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
