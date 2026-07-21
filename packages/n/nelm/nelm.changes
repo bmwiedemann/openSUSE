@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:12:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.25.3:
+  * Bug Fixes
+    - HelmCompatibleTracking mode should allow annotations override
+      (6c7e6f4)
+- Update to version 1.25.2:
+  * Bug Fixes
+    - increase default webhook retry timeout (594eb86)
+- Update to version 1.25.1:
+  * Bug Fixes
+    - match more webhook errors to retry on them (6f90689)
+
+-------------------------------------------------------------------
 Thu Jul 16 10:52:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.0:
