@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:16:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.38:
+  * Added
+    - md044: add ignore-frontmatter-fields option (b664e5a)
+    - config: warn when an inline enable cannot re-enable a
+      config-disabled rule (a74a923)
+  * Fixed
+    - md044: stop flagging proper names inside frontmatter file
+      paths (35649d9)
+    - md022: stop panicking when one blank-line requirement is
+      unlimited (8a25eb2)
+    - config: report unknown option keys in inline configure-file
+      comments (8f4c0ea)
+    - config: apply markdownlint-configure-file when the comment
+      spans lines (7a023a5)
+    - config: honor booleans and alias keys in
+      markdownlint-configure-file (#745) (acefc19)
+
+-------------------------------------------------------------------
 Mon Jul 20 04:53:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.37:
