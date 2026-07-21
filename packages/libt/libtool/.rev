@@ -516,4 +516,12 @@ insprired by a patch in https://bugs.debian.org/819767 (forwarded request 605522
     <comment></comment>
     <requestid>1285434</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>731bf06882bec7aed21e825552586097</srcmd5>
+    <version>2.6.2</version>
+    <time>1784667169</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366703</requestid>
+  </revision>
 </revisionlist>

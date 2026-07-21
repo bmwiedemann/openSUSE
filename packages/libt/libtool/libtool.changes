@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Jul 18 06:12:53 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to version 2.6.2
+  - Add a new tool, libtool-next-version, to guide users through updating
+    library versions.
+  - Add tagging for Objective-C and Objective-C++, OBJC and OBJCXX.
+  - Increase 5 digit limit on revision value for libraries to 19 digits,
+    which is referencing Unix epoch time in nanoseconds.
+  - Add configuration options to choose whether to use '-nostdlib' to let
+    the compiler frontend decide what standard libraries to link when
+    building C++ shared libraries and modules, --enable-cxx-stdlib and
+    --disable-cxx-stdlib.
+  - Allow statically linking GCC and Clang compiler support libraries
+    into shared libraries.
+  - Add linking clang_rt static archives compiler internal libraries by
+    their absolute path.
+  - Pass '--target' architecture flag for Clang.
+  - Pass 'resource-dir=*' flag for Clang.
+  - Recognise explicit shared library arguments when linking dependency
+    libraries to a shared library, like exists when linking a program.
+
+-------------------------------------------------------------------
 Sat Jun  7 08:03:48 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.5 (2.5.4):

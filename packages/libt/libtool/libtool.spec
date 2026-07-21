@@ -1,7 +1,7 @@
 #
 # spec file for package libtool
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %define psuffix %{nil}
 %endif
 Name:           libtool%{psuffix}
-Version:        2.5.4
+Version:        2.6.2
 Release:        0
 Summary:        A Tool to Build Shared Libraries
 License:        GFDL-1.2-or-later AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -97,6 +97,7 @@ sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %license COPYING
 %doc AUTHORS NEWS README THANKS ChangeLog
 %{_bindir}/libtool
+%{_bindir}/libtool-next-version
 %{_bindir}/libtoolize
 %{_includedir}/libltdl
 %{_includedir}/ltdl.h
@@ -108,6 +109,7 @@ sed -i "/uname -n/d" %{buildroot}%{_datadir}/aclocal/libtool.m4
 %{_infodir}/libtool.info-1%{?ext_info}
 %{_infodir}/libtool.info-2%{?ext_info}
 %{_mandir}/man1/libtool.1%{?ext_man}
+%{_mandir}/man1/libtool-next-version.1%{?ext_man}
 %{_mandir}/man1/libtoolize.1%{?ext_man}
 %{_datadir}/libtool
 
