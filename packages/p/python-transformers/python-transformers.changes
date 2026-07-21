@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Tue Jul 21 05:52:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.14.1:
+  * Add Inkling multimodal model (975B total, 41B active)
+    accepting text, image and audio input
+  * Fix sdpa prefill with position_bias and assisted decoding
+    for models using EncoderDecoderCache and OlmoHybrid
+  * Bump FP8 kernels and fix DeepGEMM on multiple devices
+
+-------------------------------------------------------------------
+Sun Jul 12 19:07:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-transformers 5.13.1
+  * State-of-the-art machine learning library providing thousands of
+    pretrained models for text, vision and audio tasks

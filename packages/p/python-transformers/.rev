@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>47e487f432324a9e80515aab7ad576c8</srcmd5>
+    <version>5.13.1</version>
+    <time>1784126131</time>
+    <user>dimstar_suse</user>
+    <comment>New package: Hugging Face Transformers; core dependency for python-vllm.</comment>
+    <requestid>1365522</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b2a003d0c6d663230a79823fc50b9953</srcmd5>
+    <version>5.14.1</version>
+    <time>1784668222</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.14.1:
+  * Add Inkling multimodal model (975B total, 41B active)
+  * Fix sdpa prefill with position_bias and assisted decoding
+    for EncoderDecoderCache/OlmoHybrid models
+  * Bump FP8 kernels and fix DeepGEMM on multiple devices</comment>
+    <requestid>1366861</requestid>
+  </revision>
+</revisionlist>
