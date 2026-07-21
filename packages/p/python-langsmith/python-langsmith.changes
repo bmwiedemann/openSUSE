@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 20 15:39:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.7:
+  * Raise the minimum supported LangSmith backend version to
+    0.16.14rc1
+  * Refresh the generated langsmith_api client bindings
+- Align websockets (>= 15.0) and zstandard (>= 0.23.0) minimum
+  versions with the versions declared upstream
+
+-------------------------------------------------------------------
 Sat Jul 18 05:55:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.6:

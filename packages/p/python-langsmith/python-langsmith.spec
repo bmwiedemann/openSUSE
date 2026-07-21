@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.10.6
+Version:        0.10.7
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -38,9 +38,9 @@ Requires:       python-requests-toolbelt >= 1.0.0
 Requires:       python-sniffio >= 1.1
 Requires:       python-typing_extensions >= 4.0.0
 Requires:       python-uuid-utils >= 0.12.0
-Requires:       python-websockets >= 14.2
+Requires:       python-websockets >= 15.0
 Requires:       python-xxhash >= 3.0.0
-Requires:       python-zstandard >= 0.22.0
+Requires:       python-zstandard >= 0.23.0
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module anyio >= 3.5.0}
@@ -61,9 +61,9 @@ BuildRequires:  %{python_module requests-toolbelt >= 1.0.0}
 BuildRequires:  %{python_module sniffio >= 1.1}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
 BuildRequires:  %{python_module uuid-utils >= 0.12.0}
-BuildRequires:  %{python_module websockets >= 14.2}
+BuildRequires:  %{python_module websockets >= 15.0}
 BuildRequires:  %{python_module xxhash >= 3.0.0}
-BuildRequires:  %{python_module zstandard >= 0.22.0}
+BuildRequires:  %{python_module zstandard >= 0.23.0}
 # /SECTION
 %python_subpackages
 

@@ -102,4 +102,17 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
 (354 tests); source_validator clean.</comment>
     <requestid>1366477</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e8b68d486f3d1bea86e75857ffda29e3</srcmd5>
+    <version>0.10.7</version>
+    <time>1784668144</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.7
+
+- Raise the minimum supported LangSmith backend version to 0.16.14rc1
+- Refresh the generated langsmith_api client bindings
+- Align websockets (&gt;= 15.0) and zstandard (&gt;= 0.23.0) minimum versions
+  with the versions declared upstream</comment>
+    <requestid>1366804</requestid>
+  </revision>
 </revisionlist>
