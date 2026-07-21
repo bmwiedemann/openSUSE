@@ -71,6 +71,7 @@ BuildRequires:  pkgconfig(libavutil)
 Requires:       qt6-multimedia
 Provides:       goldendict = %{version}
 Obsoletes:      goldendict < 1.5.1
+ExclusiveArch:  aarch64 x86_64 %{x86_64} riscv64
 
 %description
 The Next Generation GoldenDict: A feature-rich dictionaries lookup program,

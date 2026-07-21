@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 16 02:34:11 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Only build on architectures where qt6-webengine is available.
+
+-------------------------------------------------------------------
 Fri Apr 17 12:25:21 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 26.5.0:
