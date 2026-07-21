@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 21 13:47:48 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1784641659.4dee7d1f:
+  * fix: Escape `@` sign in strings and regexes
+  * chore(deps): Dependency cron 2026-07-21
+  * chore(deps-dev): bump brace-expansion from 5.0.5 to 5.0.7 (#7647)
+  * feat(admin): show exact timestamp on hover in product log
+  * feat(admin): query parameter search in product log
+  * feat(admin): search in settings in product log
+  * chore(deps): bump actions/setup-node in the all-actions group (#7645)
+  * fix: filter out md files when collecting python files
+  * feat(BCI): dedicated report template for BCI
+  * chore(deps): Dependency cron 2026-07-19
+  * docs: remove blank lines from variable precedence list
+  * feat: support global instance-wide test settings
+
+-------------------------------------------------------------------
 Fri Jul 17 22:54:52 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1784324412.123ebeb6:
