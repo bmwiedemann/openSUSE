@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:53:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.7.7:
+  Material for MkDocs is approaching end of life
+  Material for MkDocs is scheduled to reach end of life on November
+  5, 2026. Until then, maintenance is limited to critical bug fixes
+  and security updates.
+  The path forward is Zensical, our next-generation static site
+  generator built from first principles. If you’re planning a new
+  documentation project or thinking about your long-term setup, we
+  encourage you to start exploring Zensical.
+  * Changes
+    - Fixed a DOM-based XSS vulnerability in search suggestions
+
+-------------------------------------------------------------------
 Fri Mar 20 06:46:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 9.7.6:

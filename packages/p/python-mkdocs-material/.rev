@@ -848,4 +848,12 @@ update to 9.6.20</comment>
     <comment></comment>
     <requestid>1341975</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>98888038231ff7a5597154b33f3b12fc</srcmd5>
+    <version>9.7.7</version>
+    <time>1784667571</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366697</requestid>
+  </revision>
 </revisionlist>
