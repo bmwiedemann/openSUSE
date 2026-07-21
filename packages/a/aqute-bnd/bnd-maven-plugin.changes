@@ -1,7 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:01:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Port to slf4j 2.x
+
+-------------------------------------------------------------------
 Fri May  8 20:37:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - The maven build considers the SOURCE_DATE_EPOCH automatically now
+
+-------------------------------------------------------------------
+Fri May  8 20:36:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Remove unnecessary dependency on jline
+
+-------------------------------------------------------------------
+Mon Oct  7 22:55:46 UTC 2024 - Fridrich Strba <fstrba@suse.com>
+
+- Add dependency on osgi-service-subsystem to allow upgrade to
+  osgi-compendium 8.0.0
 
 -------------------------------------------------------------------
 Mon Sep 23 09:26:03 UTC 2024 - Fridrich Strba <fstrba@suse.com>

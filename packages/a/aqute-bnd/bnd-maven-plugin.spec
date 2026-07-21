@@ -1,7 +1,7 @@
 #
 # spec file for package bnd-maven-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,11 @@ BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib) >= %{version}
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
 BuildRequires:  mvn(org.apache.maven.shared:maven-mapping)
+BuildRequires:  mvn(org.apache.maven:maven-artifact)
+BuildRequires:  mvn(org.apache.maven:maven-core)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-component-metadata)
+BuildRequires:  mvn(org.slf4j:slf4j-api)
+BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 BuildArch:      noarch
 
 %description
@@ -58,6 +62,9 @@ API documentation for %{name}.
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+
+# Port to slf4j 2.x
+sed -i "s/org.slf4j.impl.SimpleLogger/org.slf4j.simple.SimpleLogger/g" `find . -name \*.java | xargs`
 
 cp -r biz.aQute.bnd.maven/src/aQute/bnd/maven/lib/configuration maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/lib
 cp -r biz.aQute.bnd.maven/src/aQute/bnd/maven/lib/executions maven/bnd-maven-plugin/src/main/java/aQute/bnd/maven/lib

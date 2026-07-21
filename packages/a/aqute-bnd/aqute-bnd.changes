@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 13 12:01:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Port to slf4j 2.x
+
+-------------------------------------------------------------------
+Fri May  8 20:37:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- The maven build considers the SOURCE_DATE_EPOCH automatically now
+
+-------------------------------------------------------------------
 Fri May  8 20:36:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Remove unnecessary dependency on jline

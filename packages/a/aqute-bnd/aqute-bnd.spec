@@ -1,7 +1,7 @@
 #
 # spec file for package aqute-bnd
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,6 +93,9 @@ build-jar-repository -s lib \
 %patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
+
+# Port to slf4j 2.x
+sed -i "s/org.slf4j.impl.SimpleLogger/org.slf4j.simple.SimpleLogger/g" `find . -name \*.java | xargs`
 
 # the commands pull in more dependencies than we want (felix-resolver, jetty)
 rm biz.aQute.bnd/src/aQute/bnd/main/{ExportReportCommand,MbrCommand,RemoteCommand,ReporterLogger,ResolveCommand,Shell}.java
