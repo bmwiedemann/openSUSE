@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jun 30 22:28:22 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Add sqlite3-tools and sqlite3-tools-tcl subpackages
+  * Most other distributions have included a separate -tools
+    package with these for a while, but we seemingly haven't been
+    packaging them at all in openSUSE.
+  * New tools include the ones packaged by debian trixie (showdb,
+    showjournal, showstat4, showwal, sqldiff, and sqlite3_analyzer)
+    along with sqlite3_rsync, which is recommended in sqlite3 docs
+  * All tools are in -tools subpackage except for sqlite3_analyzer
+    which is in -tools-tcl
+
+-------------------------------------------------------------------
 Fri Jun  5 10:03:45 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Update to version 3.53.2:

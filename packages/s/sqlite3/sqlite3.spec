@@ -145,6 +145,21 @@ that can be used to eliminate resource leaks, making is suitable for
 use in long-running programs such as graphical user interfaces or
 embedded controllers.
 
+%package tools
+Summary:        Command line interface for SQLite 3 (tools)
+
+%description tools
+This package contains the extra CLI tools from sqlite3 source code.
+Namely, these are showdb, showjournal, showstat4, showwal, sqldiff,
+and sqlite3_rsync.
+
+%package tools-tcl
+Summary:        Command line interface for SQLite 3 (tools)
+
+%description tools-tcl
+This package contains the extra CLI tools from sqlite3 source code that
+require TCL. This is currently only sqlite3_analyzer.
+
 %prep
 # Version and %%tarversion need to match, but %%docversion might be different,
 IFS=. read a b c d <<< "%version"
@@ -198,6 +213,13 @@ export CFLAGS="%{optflags} \
 %endif
   --enable-session
 %make_build sqlite3.c
+%make_build showdb \
+	showjournal \
+	showstat4 \
+	showwal \
+	sqldiff \
+	sqlite3_analyzer \
+	sqlite3_rsync
 %make_build
 
 %if %{with check}
@@ -209,6 +231,13 @@ export CFLAGS="%{optflags} \
 %make_install
 install -Dpvm 0644 -t %{buildroot}/%{_mandir}/man1 sqlite3.1
 install -Dpvm 0755 -t %{buildroot}%{_bindir} lemon
+install -Dpvm 0755 -t %{buildroot}%{_bindir} showdb \
+	showjournal \
+	showstat4 \
+	showwal \
+	sqldiff \
+	sqlite3_analyzer \
+	sqlite3_rsync
 install -Dpvm 0644 -t %{buildroot}%{_datadir}/lemon tool/lempar.c
 # tcl bindings are provided by tcl itself
 #rm -rf %%{buildroot}%%{_libdir}/tcl/tcl8.?/sqlite3*
@@ -242,5 +271,16 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files -n lemon
 %{_bindir}/lemon
 %{_datadir}/lemon
+
+%files tools
+%{_bindir}/showdb
+%{_bindir}/showjournal
+%{_bindir}/showstat4
+%{_bindir}/showwal
+%{_bindir}/sqldiff
+%{_bindir}/sqlite3_rsync
+
+%files tools-tcl
+%{_bindir}/sqlite3_analyzer
 
 %changelog
