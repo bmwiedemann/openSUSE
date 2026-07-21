@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:28:20 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Drop obsolete BuildRoot tag and no-op %defattr lines
+- Package NOTICE as %license unconditionally
+- Fix scope of the systemd guard around %preun
+
+-------------------------------------------------------------------
 Fri Nov 28 15:41:43 UTC 2025 - Jan Kara <jack@suse.cz>
 
 - Update to 1.47.3:

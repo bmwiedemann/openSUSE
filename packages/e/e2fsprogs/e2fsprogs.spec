@@ -90,7 +90,6 @@ Requires:       libcom_err2 >= %{version}
 Requires:       libext2fs2 >= %{version}
 Suggests:       e2fsprogs-scrub
 # Do not suppress make commands
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Utilities needed to create and maintain ext2 and ext3 file systems
@@ -295,12 +294,12 @@ done
 %service_add_post e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
 
-%if %{with systemd}
 %if 0%{?suse_version} <= 1530
 %preun
 %install_info_delete --info-dir=%{_infodir} %{_infodir}/libext2fs.info.gz
 %endif
 
+%if %{with systemd}
 %preun -n e2fsprogs-scrub
 %service_del_preun e2scrub@.service e2scrub_all.service e2scrub_all.timer e2scrub_fail@.service e2scrub_reap.service
 %endif
@@ -326,11 +325,8 @@ done
 %postun -n libcom_err2 -p /sbin/ldconfig
 
 %files -f e2fsprogs.lang
-%defattr(-, root, root)
 %doc doc/RelNotes/v%{version}.txt README
-%if 0%{?sle_version} > 120200
 %license NOTICE
-%endif
 %config /etc/mke2fs.conf
 %if 0%{?suse_version} < 1550
 /sbin/badblocks
@@ -386,11 +382,9 @@ done
 %{_mandir}/man8/*.8.gz
 
 %files devel
-%defattr(-,root,root)
 %doc README.SUSE
 
 %files -n e2fsprogs-scrub
-%defattr(-,root,root)
 %config /etc/e2scrub.conf
 %{_sbindir}/e2scrub
 %{_sbindir}/e2scrub_all
@@ -405,7 +399,6 @@ done
 %endif
 
 %files -n libext2fs2
-%defattr(-, root, root)
 %if 0%{?suse_version} < 1550
 /%{_lib}/libext2fs.so.*
 /%{_lib}/libe2p.so.*
@@ -414,7 +407,6 @@ done
 %{_libdir}/libe2p.so.*
 
 %files -n libext2fs-devel
-%defattr(-, root, root)
 %{_libdir}/libext2fs.so
 %{_libdir}/libe2p.so
 /usr/include/ext2fs
@@ -423,7 +415,6 @@ done
 %_libdir/pkgconfig/ext2fs.pc
 
 %files -n libcom_err2
-%defattr(-, root, root)
 %if 0%{?suse_version} < 1550
 /%{_lib}/libcom_err.so.*
 /%{_lib}/libss.so.*
@@ -432,7 +423,6 @@ done
 %{_libdir}/libss.so.*
 
 %files -n libcom_err-devel
-%defattr(-, root, root)
 %_bindir/compile_et
 %_bindir/mk_cmds
 %{_libdir}/libcom_err.so
@@ -449,12 +439,10 @@ done
 %{_mandir}/man3/com_err.3.gz
 
 %files -n libcom_err-devel-static
-%defattr(-, root, root)
 %{_libdir}/libcom_err.a
 %{_libdir}/libss.a
 
 %files -n libext2fs-devel-static
-%defattr(-, root, root)
 %{_libdir}/libext2fs.a
 %{_libdir}/libe2p.a
 
