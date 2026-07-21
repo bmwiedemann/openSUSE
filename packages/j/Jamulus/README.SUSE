@@ -14,11 +14,12 @@ You can find more information about the configuration in the PipeWire wiki.
 
 To set up your system:
 
-    Open pavucontrol (the audio mixer) and choose the “pro-audio” profile for your sound hardware in the configuration tab.
-    In a terminal use the following two commands to force PipeWire’s rate and quantum:
-
-    pw-metadata -n settings 0 clock.force-rate 48000
-    pw-metadata -n settings 0 clock.force-quantum 128
+    1.) Open pavucontrol (the audio mixer) and choose the “pro-audio” profile for your sound hardware in the configuration tab.
+        The pro-audio profile is extremely important!
+    
+    2.) In a terminal use the following two commands to force PipeWire’s rate and quantum:
+        pw-metadata -n settings 0 clock.force-rate 48000
+        pw-metadata -n settings 0 clock.force-quantum 128
 
 
 
