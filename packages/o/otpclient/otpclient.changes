@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 20 06:27:59 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.1.5:
+  * FIX: a database stored on a filesystem without lock support
+    (the Flatpak document portal, and some NFS/SMB mounts) could
+    not be opened or created, failing with Failed to acquire
+    database lock: Function not implemented. Locking is now best-
+    effort, so the database opens normally on those filesystems,
+    while real locking is unchanged everywhere else (#466)
+  * FIX: the secure-memory pool reserved the whole RLIMIT_MEMLOCK
+    budget, so the GTK password entry could not lock its own buffer
+    and warned couldn't lock 16384 bytes of memory (gtk): Cannot
+    allocate memory, falling back to unlocked memory for the typed
+    password on every unlock. The pool now leaves headroom for it
+    (Debian #1141809)
+
+-------------------------------------------------------------------
 Fri Jul 10 10:02:17 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 5.1.4:
