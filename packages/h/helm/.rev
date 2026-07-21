@@ -1248,4 +1248,13 @@ See changelog in:
       bsc#1271660, CVE-2026-50151):</comment>
     <requestid>1366426</requestid>
   </revision>
+  <revision rev="110" vrev="3">
+    <srcmd5>60e67bba93bb2293f64b802e91719241</srcmd5>
+    <version>4.2.3</version>
+    <time>1784668346</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.2.3 (bsc#1271997, CVE-2026-56852):
+  * bump golang.org/x/text to v.0.40.0</comment>
+    <requestid>1366975</requestid>
+  </revision>
 </revisionlist>

@@ -6,9 +6,10 @@ Fri Jul 17 14:35:16 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Jul 10 05:31:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.2.3:
+- update to 4.2.3 (bsc#1271997, CVE-2026-56852):
   * chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0
     43e8b7f (Terry Howe)
+  * bump golang.org/x/text to v.0.40.0
 
 -------------------------------------------------------------------
 Fri Jun 19 10:13:31 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
