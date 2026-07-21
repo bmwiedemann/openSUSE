@@ -152,4 +152,14 @@
 </comment>
     <requestid>1278638</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>cce0d4a2f5f7c93735dd4eeb772009a4</srcmd5>
+    <version>0.140.0</version>
+    <time>1784667699</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix spec to remove wrong modules from Provides
+- Normalize CPAN versions
+  See https://github.com/openSUSE/cpanspec/issues/47 for details</comment>
+    <requestid>1366779</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-GlobalDestruction
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,13 +27,13 @@ Summary:        Provides function returning the equivalent of ${^GLOBAL_PHASE} e
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/H/HA/HAARG/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sub::Exporter::Progressive) >= 0.001011
-Requires:       perl(Sub::Exporter::Progressive) >= 0.001011
+BuildRequires:  perl(Sub::Exporter::Progressive) >= 0.1.11
+Requires:       perl(Sub::Exporter::Progressive) >= 0.1.11
 Provides:       perl(Devel::GlobalDestruction) = %{version}
-Provides:       perl(ExtUtils::HasCompiler) = 0.16.0
 %undefine       __perllib_provides
 %{perl_requires}
 
@@ -49,7 +49,7 @@ For these constructors you can avoid the mess by simply bailing out if
 global destruction is in effect.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
