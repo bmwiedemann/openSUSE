@@ -1,0 +1,12 @@
+diff --git a/src/CMakeLists.txt b/src/CMakeLists.txt
+index 1d78c6e2..4a8adbfe 100644
+--- a/src/CMakeLists.txt
++++ b/src/CMakeLists.txt
+@@ -11,6 +11,7 @@ add_definitions(
+ 
+ set(INSTALL_HEADER_FILES
+     # Base
++    base/Algorithms.h
+     base/QXmppArchiveIq.h
+     base/QXmppBindIq.h
+     base/QXmppBitsOfBinaryContentId.h

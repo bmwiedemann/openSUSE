@@ -28,6 +28,10 @@ URL:            https://invent.kde.org/libraries/qxmpp
 Source0:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz
 Source1:        https://download.kde.org/unstable/qxmpp/qxmpp-%{version}.tar.xz.sig
 Source2:        qxmpp.keyring
+
+# PATCH-FIX-UPSTREAM to install Algorithms private header
+Patch0:         qxmpp-1.16.1-install-Algorithms-private-header.patch
+
 BuildRequires:  fdupes
 # The default GCC version is too old in Leap 16
 %if 0%{?suse_version} >= 1600 && 0%{?suse_version} < 1699
