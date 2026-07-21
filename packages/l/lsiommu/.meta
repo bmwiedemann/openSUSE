@@ -1,0 +1,7 @@
+<package name="lsiommu" project="openSUSE:Factory">
+  <title>List IOMMU groups and their devices</title>
+  <description>A hardware inspection utility that shows the relationships between IOMMU groups, physical PCIe hardware, and nested USB buses.
+
+It is commonly used when setting up Kernel-based Virtual Machines (KVM) with VFIO hardware passthrough (i.e., PCIe passthrough of a host device, such as a graphics card or a network interface) to a guest VM.
+</description>
+</package>

@@ -1,0 +1,46 @@
+.TH LSIOMMU 1 "July 2026" "Linux System Utilities" "User Commands"
+.SH NAME
+lsiommu \- Enumerate IOMMU groups, and list the PCIe devices and USB
+controllers associated with each group
+.SH DESCRIPTION
+lsiommu is a hardware inspection utility that shows the relationships between
+IOMMU groups, physical PCIe hardware, and nested USB buses.
+.PP
+It is commonly used when setting up Kernel-based Virtual Machines (KVM) with
+VFIO hardware passthrough (i.e., PCIe passthrough of a host device, such as a
+graphics card or a network interface, to a guest VM).
+.PP
+The utility performs four core actions:
+.TP
+.BR "Group Mapping"
+Iterates sequentially through the system kernel directory
+.I /sys/kernel/iommu_groups/
+to discover physical hardware isolation clusters.
+.TP
+.BR "Hardware Details"
+Executes
+.BR lspci (8)
+queries to extract and cleanly format vendor names, hardware descriptions, and
+precise hardware IDs for graphics cards, network interfaces, and storage
+drives.
+.TP
+.BR "Reset Support Flag"
+Checks the system tree for device reset capabilities.
+It appends an
+.B [R]
+flag if a hardware device natively supports a function-level reset, which is
+required for reliable virtual machine attach/detach cycles.
+.TP
+.BR "USB Mapping"
+Correlates nested USB controllers via
+.BR lsusb (8)
+with their parent PCIe buses.  This exposes exactly which physical USB ports
+belong to which isolated IOMMU group.
+.SH NOTES
+IOMMU groups are a part of the kernel's VFIO (Virtual Function IO) driver
+framework:
+.TP
+.BR https://docs.kernel.org/driver-api/vfio.html
+.SH SEE ALSO
+.BR lspci (8),
+.BR lsusb (8),
