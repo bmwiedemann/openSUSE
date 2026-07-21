@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Devel-OverloadInfo
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,13 +33,14 @@ BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(MRO::Compat)
 BuildRequires:  perl(Package::Stash) >= 0.140
+BuildRequires:  perl(Sub::Util) >= 1.40
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(parent)
 Requires:       perl(MRO::Compat)
 Requires:       perl(Package::Stash) >= 0.140
+Requires:       perl(Sub::Util) >= 1.40
 Provides:       perl(Devel::OverloadInfo) = %{version}
-Provides:       perl(ExtUtils::HasCompiler) = 0.25.0
 %undefine       __perllib_provides
 %{perl_requires}
 

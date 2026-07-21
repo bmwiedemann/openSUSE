@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:53:23 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Fix spec: Remove wrong modules from Provides list
+
+-------------------------------------------------------------------
 Fri Aug 22 20:49:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.8.0 (0.008)

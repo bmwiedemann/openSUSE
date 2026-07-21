@@ -53,4 +53,12 @@
     - Move git repository to Codeberg</comment>
     <requestid>1301450</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>c1c27d04d9c944890d6e9b45fe9e2fa4</srcmd5>
+    <version>0.8.0</version>
+    <time>1784668160</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix spec: Remove wrong modules from Provides list</comment>
+    <requestid>1366824</requestid>
+  </revision>
 </revisionlist>
