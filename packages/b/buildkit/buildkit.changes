@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Mon Jul 20 06:16:31 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 0.31.2:
+  * vendor: update fsutil to 6d9dc2ebad62
+  * executor/oci: avoid delete access for WCOW pin
+  * executor/oci: pin resolved WCOW cache source
+  * executor/oci: pin WCOW cache mount source across mount realization
+  * executor/oci: confine WCOW cache mount source within cache root
+  * fileop: contain rm parent traversal
+  * solver: reject negative LLB input indexes
+  * solver: add tests for op input index validation
+  * solver: validate op input indices to avoid panics
+  * source/git: reject option-like refs in git bundle operations
+  * build(deps): bump actions/setup-go from 6.5.0 to 7.0.0
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * oci: don't override build-provided OpenTelemetry env vars
+  * build(deps): bump softprops/action-gh-release from 3.0.1 to 3.0.2
+  * vendor: golang.org/x/net v0.57.0
+  * vendor: golang.org/x/crypto v0.54.0
+  * vendor: golang.org/x/text v0.40.0
+  * vendor: golang.org/x/mod v0.38.0
+  * vendor: golang.org/x/term v0.45.0
+  * vendor: golang.org/x/sys v0.47.0
+  * vendor: golang.org/x/sync v0.22.0
+  * dockerfile: use containerd's defaults.DefaultMax{Recv,Send}MsgSize where constants were hardcoded
+  * Dockerfile: update to containerd v2.3.3, v2.2.6, v1.7.34
+  * vendor: github.com/containerd/containerd/v2 v2.2.6
+  * Use bolt hashmap freelist for metadata databases
+  * use consistent alias for go.etcd.io/bbolt
+  * dockerfile: fix Windows SBOM scanner temp mount
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump docker/github-builder/.github/workflows/bake.yml
+  * build(deps): bump actions/labeler from 6.1.0 to 6.2.0
+  * client: remove use of deprecated proxy.Director (staticcheck)
+  * fix: G118: Goroutine uses context.Background/TODO (gosec)
+  * README: remove Go Report Card badge
+  * buildctl: revert trace shutdown timeout
+  * dockerfile: split integration tests
+  * docs: clarify WORKDIR tilde path behavior
+  * vendor: github.com/klauspost/compress v1.19.0
+  * Revert "exporter: sanitize platform IDs in paths"
+  * client: split client integration tests by area
+  * dockerfile: fix CopyIgnoredFile for context root
+  * build(deps): bump docker/setup-buildx-action from 4.1.0 to 4.2.0
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump docker/login-action from 4.2.0 to 4.4.0
+  * build(deps): bump docker/bake-action/subaction/matrix
+  * build(deps): bump docker/setup-qemu-action from 4.1.0 to 4.2.0
+  * ci: remove vagrant dependency workaround
+  * build(deps): bump docker/bake-action from 7.2.0 to 7.3.0
+  * exporter: sanitize platform IDs in paths
+  * build(deps): bump docker/build-push-action from 7.2.0 to 7.3.0
+  * solver: use read locks for state snapshots
+  * solver: fix job value iteration race
+  * exporter: default attestations to OCI artifacts
+  * Dockerfile: containerd v2.3.2, runc v1.4.3
+  * build(deps): bump the crazy-max-dot-github group across 1 directory with 2 updates
+  * build(deps): bump actions/cache from 5.0.5 to 6.1.0
+  * vendor: github.com/moby/sys/user v0.4.1
+  * fs: reject special files for ref reads
+  * build(deps): bump actions/setup-go from 6.4.0 to 6.5.0
+  * build(deps): bump softprops/action-gh-release from 3.0.0 to 3.0.1
+  * Updated Coverage (provenance,mount,outline,exclude_patterns,and jobs)
+  * build(deps): bump crazy-max/.github from 1.10.0 to 1.10.1
+
+-------------------------------------------------------------------
 Mon Jun 29 07:54:09 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 0.31.1:
