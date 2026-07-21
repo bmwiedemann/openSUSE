@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jul 20 15:41:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.3:
+  * tcpreplay: fix --multiplier timing drift and miscalibrated
+    overflow guards in calc_sleep_time
+  * sendpacket: retry EAGAIN/ENOBUFS a bounded number of times
+    instead of retrying endlessly; warn when sending on a
+    down/no-carrier interface on Linux
+  * sendpacket: fix AF_XDP transmission by no longer inhibiting
+    libbpf's default XDP program load; route "zc:" PF_RING ZC
+    device names through libpcap
+  * netmap: bound and make abortable the TX-ring drain wait;
+    remove stray switch defaults in nm_do_ioctl() that broke
+    --netmap
+  * tcprewrite: fix adding a VLAN tag with missing options;
+    rewrite addresses embedded in ICMPv6 error messages
+  * tcpprep: fix buffer overflow on truncated packets
+  * tcpedit: fix wrong end-of-buffer pointer in TCP-sequence and
+    portmap rewrite
+  * tcpliveplay: call pcap_breakloop() from the SIGALRM handler so
+    an unresponsive peer is reported promptly
+  * fragroute: fix overflow on packets carrying too many MPLS
+    labels; fix TAILQ_FOREACH_REVERSE portability across queue.h
+    variants
+  * tcpr_random: fix signed left-shift undefined behaviour
+  * configure: stop --with-netmap from leaking -I<DIR>/sys into
+    CFLAGS
+- Convert BuildRequires to pkgconfig() style and drop the obsolete
+  Group tag
+- Add tcpreplay-fix-txring-includes.patch: fix the __GLIBC_MINOR
+  typo in txring.h (the macro is __GLIBC_MINOR__, so the version
+  check silently evaluated to 0) and include <linux/if_packet.h>,
+  which is what actually defines the PACKET_TX_RING API - glibc's
+  <netpacket/packet.h> never provided it, so correcting the typo
+  alone does not compile.  Sent upstream
+- Restore Linux TX_RING packet injection support, which was
+  disabled by accident: configure probes it by including both
+  <netpacket/packet.h> and <linux/if_packet.h>, and before C23
+  those two collide on struct sockaddr_ll, so the probe always
+  failed and tcpreplay fell back to the slower PF_PACKET send()
+  path.  configure now reports "Linux TX_RING: yes"
+- Narrow the -std=gnu11 pin to the bundled libopts directory
+  rather than the whole tree.  The pin is still required there
+  (autoopts is not C23-clean under gcc >= 15), but applying it
+  globally is what dragged the TX_RING probe below C23
+
+-------------------------------------------------------------------
 Thu Nov  6 07:06:09 UTC 2025 - Michal Kubecek <mkubecek@suse.cz>
 
 - update to version 4.5.2:

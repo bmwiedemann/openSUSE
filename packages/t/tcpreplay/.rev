@@ -148,4 +148,41 @@
 - drop build workarounds for SLE11</comment>
     <requestid>1317016</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>0def2498fc34a4da8d95315cb3b4b8bc</srcmd5>
+    <version>4.5.3</version>
+    <time>1784668141</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.5.3
+
+Upstream bugfix release: bounded EAGAIN/ENOBUFS retry in sendpacket,
+--multiplier timing drift fix, tcpprep buffer overflow on truncated
+packets, fragroute MPLS-label overflow, tcpedit end-of-buffer pointer
+fix, AF_XDP and netmap transmission fixes.
+
+Supersedes SR 1366805, which contained only the version bump and spec
+cleanup.  This revision additionally restores Linux TX_RING packet
+injection, which openSUSE has been shipping disabled by accident:
+
+- src/common/txring.h tests __GLIBC_MINOR instead of __GLIBC_MINOR__,
+  so the check evaluates to 0 and the #else branch is always taken.
+  Correcting the typo alone does not compile, because the glibc header
+  the true branch selects (&lt;netpacket/packet.h&gt;) never provided the
+  PACKET_TX_RING API - struct tpacket_hdr/tpacket_req and TPACKET_HDRLEN
+  come only from &lt;linux/if_packet.h&gt;.  Fixed in
+  tcpreplay-fix-txring-includes.patch (sent upstream).
+- configure's TX_RING probe includes both &lt;netpacket/packet.h&gt; and
+  &lt;linux/if_packet.h&gt;, which collide on struct sockaddr_ll before C23.
+  The global 'export CFLAGS=&quot;%optflags -std=gnu11&quot;' (added for the
+  bundled, non-C23-clean libopts) therefore made the probe fail, leaving
+  tcpreplay on the slower PF_PACKET send() path.  The pin is now applied
+  to the libopts directory only, so libopts still gets gnu11 while the
+  rest of the tree builds at the gcc default.
+
+configure now reports 'Linux TX_RING: yes'.  Built and run-tested on
+aarch64: replayed frames were captured on a veth peer, 3/3 successful,
+0 failed.  rpmlint unchanged from the previous revision (0 errors,
+1 warning: no-%check-section, 0 badness).</comment>
+    <requestid>1366810</requestid>
+  </revision>
 </revisionlist>

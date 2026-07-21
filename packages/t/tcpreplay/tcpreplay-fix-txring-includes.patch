@@ -1,0 +1,66 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: Mon, 20 Jul 2026 16:20:00 +0200
+Subject: [PATCH] txring: fix __GLIBC_MINOR typo and include the header that
+ actually defines the TX_RING API
+
+txring.h guards its includes with
+
+    #if __GLIBC__ >= 2 && __GLIBC_MINOR >= 1
+
+but the macro is spelled __GLIBC_MINOR__; __GLIBC_MINOR is not defined by
+any header, so the preprocessor substitutes 0 and the condition is always
+false.  The #else branch has therefore been taken unconditionally on every
+glibc system since the check was introduced.
+
+That accident is the only reason this file has ever compiled.  The glibc
+header <netpacket/packet.h> selected by the "true" branch defines just
+struct sockaddr_ll and struct packet_mreq -- it has never provided the
+PACKET_TX_RING API.  struct tpacket_hdr, struct tpacket_req and
+TPACKET_HDRLEN, all of which txring.h and txring.c use, come only from
+<linux/if_packet.h>, which is included in the #else branch.  Simply
+correcting the macro name makes the true branch compile-fail with
+
+    error: storage size of 'h' isn't known           (struct tpacket_hdr)
+    error: 'TPACKET_HDRLEN' undeclared
+
+so fix the include as well: take <linux/if_packet.h> in both branches and
+drop <netpacket/packet.h>, which supplies nothing this header needs.
+
+Dropping it also avoids a second problem.  Before C23, <netpacket/packet.h>
+and <linux/if_packet.h> cannot be included together -- both define struct
+sockaddr_ll and struct packet_mreq, and the __UAPI_DEF_* de-duplication does
+not kick in:
+
+    /usr/include/linux/if_packet.h:14:8: error: redefinition of 'struct sockaddr_ll'
+    /usr/include/linux/if_packet.h:297:8: error: redefinition of 'struct packet_mreq'
+
+Because configure's TX_RING probe includes both headers, that collision makes
+the probe fail whenever the package is built with -std=gnu11 or -std=gnu17,
+silently disabling HAVE_TX_RING and taking the slower PF_PACKET send() path
+instead.  With this change txring.h no longer pulls in <netpacket/packet.h>
+and compiles under -std=gnu11, -std=gnu17 and -std=gnu23 alike.
+
+Signed-off-by: Martin Pluskal <mpluskal@suse.com>
+---
+ src/common/txring.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/common/txring.h b/src/common/txring.h
+index 3f14cac..832f325 100644
+--- a/src/common/txring.h
++++ b/src/common/txring.h
+@@ -38,9 +38,9 @@
+
+ #ifdef HAVE_TX_RING
+
+-#if __GLIBC__ >= 2 && __GLIBC_MINOR >= 1
++#if __GLIBC__ >= 2 && __GLIBC_MINOR__ >= 1
+ #include <net/ethernet.h> /* the L2 protocols */
+-#include <netpacket/packet.h>
++#include <linux/if_packet.h>
+ #else
+ #include <asm/types.h>
+ #include <linux/if_ether.h> /* The L2 protocols */
+--
+2.51.0
+
