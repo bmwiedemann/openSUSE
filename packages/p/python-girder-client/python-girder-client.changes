@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Jul 20 08:42:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.12:
+  * Added "My Folders" to left navigation.
+  * Fix checked-resource count and picked-resource merge bugs
+  * Remember picked selections even after they are de-selected
+  * For javascript coverage, also generate cobertura style
+    reports
+  * In tox, build the girder web client
+  * Fix a test fixture to work with uvicorn 0.50
+  * Check if /dev/fuse exists before running tests requiring it
+  * add `-e` flag to `pip install` for web tests
+  * Update packages in the package locks
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.11...v5.0.12
+- update to 5.0.11:
+  * Upgrade to node 22 for testing
+  * Adjust where tox builds docs
+  * Correct registration policy values in docs
+  * Fix an RST format issue
+  * #2416 Rename "Quick Search" to "Search"
+  * Check that a local worker is running
+  * Propagate policy errors in OAuth2 flow
+  * Hide search popovers when clicking away
+  * Allow to overwrite emails sent due to various auth policies
+  * Update the vite config
+- update to 5.0.10:
+  * Add sphinx-llm
+  * Adjust redis socket_timeout
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.9...v5.0.10
+- update to 5.0.9:
+  * Reduce spurious warning about index creation
+  * Fix unbuffered asgi downloads.
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.8...v5.0.9
+- update to 5.0.8:
+  * Update environment docs
+  * Ensure we are not using stale or duplicate headers
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.7...v5.0.8
+- update to 5.0.7:
+  * When uploading, add a default mime type
+  * docs: update migration guide for async events
+  * Add the ability to reserve space on filesystem assetstores
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.6...v5.0.7
+
+-------------------------------------------------------------------
 Sun May 17 14:02:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.0.6:

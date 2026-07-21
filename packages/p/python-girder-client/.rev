@@ -90,4 +90,41 @@
   * Updated tarball directory name to girder_client.</comment>
     <requestid>1353589</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>04fcb63802e905fb7a1fa99e29f42862</srcmd5>
+    <version>5.0.12</version>
+    <time>1784667611</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 5.0.12:
+  * Added &quot;My Folders&quot; to left navigation.
+  * Fix checked-resource count and picked-resource merge bugs
+  * Remember picked selections even after they are de-selected
+  * For javascript coverage, also generate cobertura style
+    reports
+  * In tox, build the girder web client
+  * Fix a test fixture to work with uvicorn 0.50
+  * Check if /dev/fuse exists before running tests requiring it
+  * add `-e` flag to `pip install` for web tests
+  * Update packages in the package locks
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.11...v5.0.12
+- update to 5.0.11:
+  * Upgrade to node 22 for testing
+  * Adjust where tox builds docs
+  * Correct registration policy values in docs
+  * Fix an RST format issue
+  * #2416 Rename &quot;Quick Search&quot; to &quot;Search&quot;
+  * Check that a local worker is running
+  * Propagate policy errors in OAuth2 flow
+  * Hide search popovers when clicking away
+  * Allow to overwrite emails sent due to various auth policies
+  * Update the vite config
+- update to 5.0.10:
+  * Add sphinx-llm
+  * Adjust redis socket_timeout
+  * **Full Changelog**:
+    https://github.com/girder/girder/compare/v5.0.9...v5.0.10
+- update to 5.0.9:</comment>
+    <requestid>1366717</requestid>
+  </revision>
 </revisionlist>
