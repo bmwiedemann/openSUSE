@@ -17,13 +17,13 @@
 
 
 Name:           domtrip
-Version:        1.5.2
+Version:        1.6.0
 Release:        0
 Summary:        Lossless XML Editing for Java
 License:        EPL-2.0
 URL:            https://github.com/maveniverse/domtrip
 Source0:        https://github.com/maveniverse/%{name}/archive/refs/tags/%{version}.tar.gz
-Patch0:         %{name}-ant-build-system.patch
+Source1:        %{name}-build.tar.xz
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 9
@@ -44,8 +44,7 @@ Group:          Documentation/HTML
 This package contains the API documentation for %{name}.
 
 %prep
-%setup -q
-%patch -P 0 -p1
+%setup -q -a1
 
 %pom_xpath_inject pom:project/pom:properties "
 <nisse.jgit.dynamicVersion>%{version}</nisse.jgit.dynamicVersion>"
