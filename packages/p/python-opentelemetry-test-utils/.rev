@@ -177,4 +177,12 @@
   * Drop Python 3.9 support</comment>
     <requestid>1361878</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>a3a8faf4c65457b700cfeff8961ea313</srcmd5>
+    <version>0.64b0</version>
+    <time>1784667188</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365764</requestid>
+  </revision>
 </revisionlist>
