@@ -1,0 +1,130 @@
+Index: NoiseTorch-0.12.2/capability.go
+===================================================================
+--- NoiseTorch-0.12.2.orig/capability.go
++++ NoiseTorch-0.12.2/capability.go
+@@ -3,7 +3,6 @@ package main
+ import (
+ 	"log"
+ 	"os"
+-	"os/exec"
+ 
+ 	"github.com/syndtr/gocapability/capability"
+ )
+@@ -44,33 +43,3 @@ func getSelfFileCaps() *capability.Capab
+ func hasCapSysResource(caps *capability.Capabilities) bool {
+ 	return (*caps).Get(capability.EFFECTIVE, capability.CAP_SYS_RESOURCE)
+ }
+-
+-func makeBinarySetcapped() error {
+-	fileCaps := *getSelfFileCaps()
+-	if !hasCapSysResource(&fileCaps) {
+-		fileCaps.Set(capability.EFFECTIVE|capability.PERMITTED|capability.INHERITABLE, capability.CAP_SYS_RESOURCE)
+-		err := fileCaps.Apply(capability.EFFECTIVE | capability.PERMITTED | capability.INHERITABLE)
+-		if err != nil {
+-			return err
+-		}
+-	}
+-	return nil
+-}
+-
+-func pkexecSetcapSelf() error {
+-	self, err := os.Executable()
+-	if err != nil {
+-		log.Fatalf("Couldn't find path to own binary\n")
+-		return err
+-	}
+-
+-	cmd := exec.Command("pkexec", self, "-setcap")
+-	log.Printf("Calling: %s\n", cmd.String())
+-	err = cmd.Run()
+-	if err != nil {
+-		log.Printf("Couldn't setcap self as root: %v\n", err)
+-		return err
+-	}
+-
+-	return nil
+-}
+Index: NoiseTorch-0.12.2/cli.go
+===================================================================
+--- NoiseTorch-0.12.2.orig/cli.go
++++ NoiseTorch-0.12.2/cli.go
+@@ -25,7 +25,6 @@ type CLIOpts struct {
+ func parseCLIOpts() CLIOpts {
+ 	var opt CLIOpts
+ 	flag.BoolVar(&opt.doLog, "log", false, "Print debugging output to stdout")
+-	flag.BoolVar(&opt.setcap, "setcap", false, "for internal use only")
+ 	flag.StringVar(&opt.sinkName, "s", "", "Use the specified source/sink device ID")
+ 	flag.BoolVar(&opt.loadInput, "i", false, "Load supressor for input. If no source device ID is specified the default pulse audio source is used.")
+ 	flag.BoolVar(&opt.loadOutput, "o", false, "Load supressor for output. If no source device ID is specified the default pulse audio source is used.")
+@@ -54,14 +53,6 @@ func doCLI(opt CLIOpts, config *config,
+ 		}
+ 		cleanupExit(librnnoise, 0)
+ 	}
+-
+-	if opt.setcap {
+-		err := makeBinarySetcapped()
+-		if err != nil {
+-			cleanupExit(librnnoise, 1)
+-		}
+-		cleanupExit(librnnoise, 0)
+-	}
+ 
+ 	paClient, err := pulseaudio.NewClient()
+ 	if err != nil {
+Index: NoiseTorch-0.12.2/update.go
+===================================================================
+--- NoiseTorch-0.12.2.orig/update.go
++++ NoiseTorch-0.12.2/update.go
+@@ -127,7 +127,6 @@ func update(ctx *ntcontext) {
+ 	}
+ 
+ 	untar(bytes.NewReader(tgz), os.Getenv("HOME"))
+-	pkexecSetcapSelf()
+ 
+ 	log.Printf("Update installed!\n")
+ 	ctx.update.updatingText = "Update installed! (Restart NoiseTorch to apply)"
+Index: NoiseTorch-0.12.2/ui.go
+===================================================================
+--- NoiseTorch-0.12.2.orig/ui.go
++++ NoiseTorch-0.12.2/ui.go
+@@ -6,7 +6,6 @@ import (
+ 	"log"
+ 	"os"
+ 	"os/exec"
+-	"syscall"
+ 	"time"
+ 
+ 	"github.com/aarzilli/nucular"
+@@ -395,7 +394,7 @@ func capabilitiesView(ctx *ntcontext, w
+ 	w.Row(15).Dynamic(1)
+ 	w.Label("NoiseTorch currently does not have the capabilities to function properly.", "CB")
+ 	w.Row(15).Dynamic(1)
+-	w.Label("We require CAP_SYS_RESOURCE. If that doesn't mean anything to you, don't worry. I'll fix it for you.", "CB")
++	w.Label("We require CAP_SYS_RESOURCE. openSUSE manages this via permissions profiles. Try `permctl --system` as root.", "CB")
+ 	if ctx.capsMismatch {
+ 		w.Row(15).Dynamic(1)
+ 		w.LabelColored("Warning: File has CAP_SYS_RESOURCE but our process doesn't.", "CB", orange)
+@@ -404,23 +403,6 @@ func capabilitiesView(ctx *ntcontext, w
+ 	}
+ 	w.Row(40).Dynamic(1)
+ 	w.Row(25).Dynamic(1)
+-	if w.ButtonText("Grant capability (requires root)") {
+-		err := pkexecSetcapSelf()
+-		if err != nil {
+-			ctx.views.Push(makeErrorView(ctx, err.Error()))
+-			return
+-		}
+-		self, err := os.Executable()
+-		if err != nil {
+-			ctx.views.Push(makeErrorView(ctx, err.Error()))
+-			return
+-		}
+-		err = syscall.Exec(self, []string{""}, os.Environ())
+-		if err != nil {
+-			ctx.views.Push(makeErrorView(ctx, err.Error()))
+-			return
+-		}
+-	}
+ }
+ 
+ func makeErrorView(ctx *ntcontext, errorMsg string) ViewFunc {

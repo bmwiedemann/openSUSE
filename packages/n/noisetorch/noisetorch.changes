@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 10:06:40 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- add remove-self-cap-assignment.patch (bsc#1270715): capabilities are
+  exclusively managed by the permissions package. We don't want self-modifying
+  applications. Thus patch out the problematic code portions and display an
+  openSUSE-specific hint instead.
+
+-------------------------------------------------------------------
 Wed Aug 20 12:50:10 UTC 2025 - Michael Matz <matz@suse.com>
 
 - Use current distro go version.  Don't force CGO off, that doesn't

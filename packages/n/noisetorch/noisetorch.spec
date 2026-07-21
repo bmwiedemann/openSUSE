@@ -1,7 +1,7 @@
 #
 # spec file for package noisetorch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            https://github.com/NoiseTorch/NoiseTorch
 Source0:        NoiseTorch-%{version}.tar.gz
 # osc service disabledrun
 Source1:        vendor.tar.gz
+Patch0:         remove-self-cap-assignment.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  git-core
