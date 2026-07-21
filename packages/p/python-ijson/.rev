@@ -140,4 +140,21 @@
   * Introdued `tox` for common task execution.</comment>
     <requestid>1339146</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>dc65b91d338facd10061c79e1a827f90</srcmd5>
+    <version>3.5.1</version>
+    <time>1784667346</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 3.5.1:
+  * The internal `ijson.common.ObjectBuilder` no longer creates
+    internal reference cycles, so discarded builders are freed by
+    reference counting instead of waiting for a cyclic garbage
+    collection pass. This lowers peak memory usage for code that
+    builds and discards one large object at a time. As a side
+    effect, `builder.value` is now `None` before any
+    event is processed (previously accessing it raised
+    `AttributeError`), and the undocumented `containers` attribute
+    holds the in-progress containers rather than setter closures.</comment>
+    <requestid>1365759</requestid>
+  </revision>
 </revisionlist>
