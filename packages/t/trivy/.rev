@@ -1652,4 +1652,12 @@ dropped patch file
 - update oras-go to 2.6.1 (bsc#1271658, CVE-2026-50151)</comment>
     <requestid>1366418</requestid>
   </revision>
+  <revision rev="98" vrev="3">
+    <srcmd5>b97e29d56efa6132a00c92033d41ba2d</srcmd5>
+    <version>0.72.0</version>
+    <time>1784667363</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/text to 0.40.0 (bsc#1271670, CVE-2026-56852)</comment>
+    <requestid>1366689</requestid>
+  </revision>
 </revisionlist>

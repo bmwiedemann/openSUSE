@@ -2,7 +2,7 @@
 Fri Jul 17 13:57:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update x/net to 0.57.0 (bsc#1266495, CVE-2026-39821)
-- update x/text to 0.40.0 (bsc#1271661, CVE-2026-56852)
+- update x/text to 0.40.0 (bsc#1271670, CVE-2026-56852)
 - update oras-go to 2.6.1 (bsc#1271658, CVE-2026-50151)
 
 -------------------------------------------------------------------
