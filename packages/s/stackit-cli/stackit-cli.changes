@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:04:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.67.0:
+  * chore(deps): bump actions/stale from 10.3.0 to 10.4.0 (#1480)
+  * feat(opensearch): region adjustments and migration to new SDK
+    structure (#1474)
+  * feat(mongodbflex): migrate to v2 API (#1467)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1470)
+  * feat(observability): migrate to multi version SDK (#1453)
+  * chore(deps): bump github.com/zalando/go-keyring from 0.2.6 to
+    0.2.8 (#1461)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1465)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.10
+    to 6.8.2 (#1466)
+  * chore(deps): bump golang.org/x/term from 0.42.0 to 0.44.0
+    (#1462)
+  * chore(deps): bump golang.org/x/oauth2 from 0.35.0 to 0.36.0
+    (#1463)
+  * feat(redis): region adjustments and migration to new SDK
+    structure (#1458)
+  * feat(ske): Check service enablement only in error case (#1457)
+  * chore(mariadb): sdk migration (#1447)
+  * chore(deps): bump actions/setup-go from 6.4.0 to 6.5.0 (#1450)
+  * chore(deps): bump goreleaser/goreleaser-action from 7.2.2 to
+    7.2.3 (#1459)
+  * chore(logme): sdk migration (#1440)
+  * feat(rabbitmqa): region adjustment (#1449)
+  * feat(docs): homebrew: trust stackit cli cask (#1455)
+  * SDK migration Secrets-Manager (#1454)
+  * Refac/no issue use generic enum flags for string backed enums
+    (#1441)
+  * feat(intake): add force flag for deleting intake runners
+    (#1442)
+
+-------------------------------------------------------------------
 Thu Jul 02 05:27:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.66.0:
