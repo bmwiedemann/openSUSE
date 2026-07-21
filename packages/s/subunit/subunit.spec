@@ -1,7 +1,7 @@
 #
 # spec file for package subunit
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +21,7 @@
 %bcond_with python2
 %{?sle15_python_module_pythons}
 Name:           subunit
-Version:        1.4.2
+Version:        1.4.6
 %global majver  %(awk 'BEGIN { OFS="."; FS="[\\.\\+]+" } {print $1, $2, $3}' <<< %{version})
 # %%global majver  1.4
 Release:        0
@@ -32,13 +32,13 @@ URL:            https://github.com/testing-cabal/subunit
 # Source0:        %%{name}-%%{version}.tar.xz
 Source0:        https://github.com/testing-cabal/%{name}/archive/refs/tags/%{version}.tar.gz
 BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module extras}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module iso8601}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module testscenarios}
-BuildRequires:  %{python_module testtools >= 1.8.0}
+BuildRequires:  %{python_module testtools >= 2.7}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  check-devel
 BuildRequires:  cppunit-devel
@@ -47,7 +47,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  perl(ExtUtils::MakeMaker)
 %python_subpackages
 
 %description
@@ -90,16 +89,6 @@ Requires:       subunit-devel%{?_isa} = %{version}-%{release}
 Header files and libraries for developing applications that use cppunit
 and subunit.
 
-%package -n perl-subunit
-Summary:        Perl bindings for subunit
-Group:          Development/Libraries/Perl
-Requires:       perl-base = %{perl_version}
-BuildArch:      noarch
-
-%description -n perl-subunit
-Subunit Perl bindings.  See the python3-python-subunit package for test
-processing functionality.
-
 %package shell
 Summary:        Shell bindings for subunit
 Group:          Development/Libraries/Other
@@ -113,8 +102,8 @@ processing functionality.
 %package -n python-python-%{name}
 Summary:        Streaming protocol for test results
 Group:          Development/Libraries/Python
-Requires:       python-extras
-Requires:       python-testtools >= 1.8.0
+Requires:       python-iso8601
+Requires:       python-testtools >= 2.7
 BuildArch:      noarch
 
 %description -n python-python-%{name}
@@ -144,8 +133,8 @@ A number of useful things can be done easily with subunit:
 %package -n python3-python-%{name}
 Summary:        Streaming protocol for test results
 Group:          Development/Libraries/Python
-Requires:       python3-extras
-Requires:       python3-testtools >= 1.8.0
+Requires:       python3-iso8601
+Requires:       python3-testtools >= 2.7
 BuildArch:      noarch
 
 %description -n python3-python-%{name}
@@ -200,7 +189,6 @@ done
 %build
 # Generate the configure script
 autoreconf -fvi
-export INSTALLDIRS=perl
 # any python will do, this is only for the non-python part of the package
 PYTHON=$(find %_bindir -name 'python3*[0-9]' -print -quit)
 export PYTHON
@@ -217,7 +205,6 @@ export PYTHON
 %{python_expand chmod 0755 %{buildroot}%{$python_sitelib}/%{name}/run.py
 
 # Eliminate duplicates
-rm -fr %{buildroot}%{$python_sitelib}/subunit/tests
 %fdupes %{buildroot}%{$python_sitelib}
 }
 
@@ -232,19 +219,10 @@ cp -p shell/share/%{name}.sh %{buildroot}%{_sysconfdir}/profile.d
 # Remove unwanted libtool files
 find %{buildroot} -type f -name "*.la" -delete -print
 
-# Fix perl installation
-mkdir -p %{buildroot}%{perl_vendorlib}
-mv %{buildroot}%{perl_sitelib}/Subunit* %{buildroot}%{perl_vendorlib}
-rm -fr %{buildroot}%{perl_archlib} %{buildroot}%{perl_sitearch}
-
-# Fix permissions
-chmod 0755 %{buildroot}%{_bindir}/subunit-diff
-
 # Fix timestamps
 touch -r c/include/%{name}/child.h %{buildroot}%{_includedir}/%{name}/child.h
 touch -r c++/SubunitTestProgressListener.h \
       %{buildroot}%{_includedir}/%{name}/SubunitTestProgressListener.h
-touch -r perl/subunit-diff %{buildroot}%{_bindir}/subunit-diff
 
 %check
 %if 0%{?suse_version} > 1500
@@ -264,11 +242,11 @@ sed -i '/testtools.run/ s#$(PYTHON)#/usr/bin/python%{$python_version}#' Makefile
 %postun -n libcppunit_subunit0 -p /sbin/ldconfig
 
 %files
-%doc NEWS README.rst
+%doc NEWS README.md
 %license Apache-2.0 BSD COPYING
 
 %files -n libsubunit0
-%doc NEWS README.rst
+%doc NEWS README.md
 %license Apache-2.0 BSD COPYING
 %{_libdir}/lib%{name}.so.*
 
@@ -287,11 +265,6 @@ sed -i '/testtools.run/ s#$(PYTHON)#/usr/bin/python%{$python_version}#' Makefile
 %{_includedir}/%{name}/SubunitTestProgressListener.h
 %{_libdir}/libcppunit_%{name}.so
 %{_libdir}/pkgconfig/libcppunit_%{name}.pc
-
-%files -n perl-subunit
-%license Apache-2.0 BSD COPYING
-%{_bindir}/%{name}-diff
-%{perl_vendorlib}/*
 
 %files shell
 %doc shell/README

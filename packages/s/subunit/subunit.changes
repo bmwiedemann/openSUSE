@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul 16 05:01:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.6:
+  * Fix compatibility with testtools 2.8.2.
+  * Fix ExecTestCase to work without executable permissions on the test
+    script.
+  * Fix ExecTestCase to properly handle shell scripts.
+  * Stop installing tests.
+  * Add subunit-combine script that runs multiple subunit-producing commands
+    and merges their streams, optionally prefixing each command's test ids.
+  * subunit-combine supports testr-style $LISTOPT, $IDOPTION, $IDFILE and
+    $IDLIST placeholders in command argv, along with --list, --load-list and
+    positional test ids for per-command filtering.
+  * Add gojson2subunit script for converting go test -json streams to
+    subunit.
+  * Add junitxml2subunit script for converting JUnit XML test reports to
+    subunit.
+- Add BuildRequires on setuptools to allow building with Python 3.15.
+- Drop patch support-testtools-2.8.2.patch, merged upstream.
+- Remove _service and friends.
+
+-------------------------------------------------------------------
+Wed Apr  8 03:14:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.4.5:
+  * Migrate Python config to pyproject.toml
+  * Fix spelling errors
+  * Support addDuration
+  * Add vim syntax highlighting files for subunit v1
+  * Drop Python 3.9 support/add Python 3.14 support
+  * Drop use of Python26TestResult and Python27TestResult
+  * Remove use of deprecated datetime.datetime methods
+  * Fix typo in exception handler
+  * Add support for Python 3.12
+  * Remove perl support from the main subunit repo ￼…
+  * Bump minimum python to 3.7, add 3.11.
+  * Avoid use of extras - python3's hasattr is safe
+  * Drop compatibility wrappers for memoryview in older Python versions
+  * Improve unittest calls
+  * Rely on external copy of iso8601
+- Add patch support-testtools-2.8.2.patch:
+  * Support testtools 2.8.2 changes.
+
+-------------------------------------------------------------------
 Thu Jul 13 08:59:30 UTC 2023 - Johannes Kastl <kastl@b1-systems.de>
 
 - remove hardcoded python executable names from Makefile and test
