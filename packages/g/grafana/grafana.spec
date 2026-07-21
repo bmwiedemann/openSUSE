@@ -22,10 +22,11 @@
 %endif
 
 Name:           grafana
-Version:        12.4.4
+Version:        12.4.5
 Release:        0
 Summary:        The open-source platform for monitoring and observability
 License:        AGPL-3.0-only
+# Legal-Review-Notice: Darwin/APSL, NetBSD/BSD-4-Clause and illumos/CDDL files are not included in the shipped Linux RPM
 Group:          System/Monitoring
 URL:            https://github.com/grafana/grafana
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz

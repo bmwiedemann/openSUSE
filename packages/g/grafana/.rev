@@ -1343,4 +1343,20 @@
     <comment></comment>
     <requestid>1361365</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>fa905b6e3507fb0a01ba75530f5c6418</srcmd5>
+    <version>12.4.5</version>
+    <time>1784126407</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365682</requestid>
+  </revision>
+  <revision rev="92" vrev="2">
+    <srcmd5>ad8ca3a626e4b6092becf09a5bb01039</srcmd5>
+    <version>12.4.5</version>
+    <time>1784667545</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366684</requestid>
+  </revision>
 </revisionlist>
