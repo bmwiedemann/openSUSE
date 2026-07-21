@@ -200,6 +200,7 @@ This package provides the intel CPU plugin for OpenVINO for %{x86_64} archs.
 %package -n %{name}-intel-gpu-plugin
 Summary:        Intel GPU plugin for OpenVINO toolkit
 Requires:       intel-opencl
+Requires:       libze_intel_gpu1
 
 %description -n %{name}-intel-gpu-plugin
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
@@ -208,6 +209,7 @@ This package provides the intel GPU plugin for OpenVINO for %{x86_64} archs.
 
 %package -n %{name}-intel-npu-plugin
 Summary:        Intel NPU plugin for OpenVINO toolkit
+Requires:       linux-npu-driver
 
 %description -n %{name}-intel-npu-plugin
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.

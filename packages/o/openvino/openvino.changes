@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 23:23:54 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Add required runtime library/driver dependencies to
+  the gpu and npu plugins
+
+-------------------------------------------------------------------
 Sat Jul 11 23:55:25 UTC 2026 - Markus Ebner <info@ebner-markus.de>
 
 - Fix backend plugin path to align with what openvino seems to
