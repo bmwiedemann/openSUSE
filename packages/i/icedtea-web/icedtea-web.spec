@@ -29,7 +29,7 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         icedtea-web-suse-desktop-files.patch
 Patch1:         more-java-versions.patch
 Patch2:         reproducible-timestamps.patch
-Patch3:         standalone-pack200.patch
+Patch3:         commons-compress-pack200.patch
 Patch4:         remove-pack200-support.patch
 Patch5:         java17.patch
 Patch6:         java21.patch
@@ -53,7 +53,6 @@ BuildConflicts: java >= 22
 BuildConflicts: java-devel >= 22
 BuildConflicts: java-headless >= 22
 Requires:       java >= 1.8
-Requires:       pack200
 Requires:       rhino
 Requires:       tagsoup
 Suggests:       %{name}-javadoc
@@ -69,7 +68,8 @@ Provides:       java-1_9_0-openjdk-plugin = %{version}-%{release}
 Provides:       java-plugin = 1.8.0
 BuildArch:      noarch
 %if %{with pack200}
-BuildRequires:  pack200
+BuildRequires:  apache-commons-compress
+Requires:       apache-commons-compress
 %endif
 
 %description
@@ -111,9 +111,6 @@ autoreconf -fiv
 export bashcompdir=%{_datadir}/bash-completion/completions
 %configure \
     --with-jdk-home=${JAVA_HOME} \
-%if %{with pack200}
-    --with-pack200=%{_bindir}/pack200 \
-%endif
     --bindir=%{_datadir}/%{name} \
     --disable-native-plugin \
     --disable-pluginjar \

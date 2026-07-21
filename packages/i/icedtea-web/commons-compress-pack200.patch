@@ -6,34 +6,34 @@
  
 +AC_DEFUN_ONCE([IT_CHECK_FOR_PACK200],
 +[
-+  AC_MSG_CHECKING([for pack200])
++  AC_MSG_CHECKING([for commons-compress])
 +  AC_ARG_WITH([tagsoup],
-+             [AS_HELP_STRING([--with-pack200],
-+                             [pack200.jar])],
++             [AS_HELP_STRING([--with-commons-compress],
++                             [commons-compress.jar])],
 +             [
-+                PACK200_JAR=${withval}
++                COMMONS_COMPRESS_JAR=${withval}
 +             ],
 +             [
-+                PACK200_JAR=
++                COMMONS_COMPRESS_JAR=
 +             ])
-+  if test -z "${PACK200_JAR}"; then
++  if test -z "${COMMONS_COMPRESS_JAR}"; then
 +    for dir in /usr/share/java /usr/local/share/java ; do
-+      if test -f $dir/pack200.jar; then
-+        PACK200_JAR=$dir/pack200.jar
++      if test -f $dir/commons-compress.jar; then
++        COMMONS_COMPRESS_JAR=$dir/commons-compress.jar
 +	    break
 +      fi
 +    done
 +  fi
 +  AM_COND_IF([WINDOWS], [
-+    PACK200_JAR=$(cygpath -m ${PACK200_JAR})
++    COMMONS_COMPRESS_JAR=$(cygpath -m ${COMMONS_COMPRESS_JAR})
 +  ])
-+  AC_MSG_RESULT(${PACK200_JAR})
-+  if test -z "${PACK200_JAR}"; then
-+    AC_MSG_ERROR(***********************************************)
-+    AC_MSG_ERROR(*     Needed pack200 library was not found    *)
-+    AC_MSG_ERROR(***********************************************)
++  AC_MSG_RESULT(${COMMONS_COMPRESS_JAR})
++  if test -z "${COMMONS_COMPRESS_JAR}"; then
++    AC_MSG_ERROR(*************************************************)
++    AC_MSG_ERROR(* Needed commons-compress library was not found *)
++    AC_MSG_ERROR(*************************************************)
 +  fi
-+  AC_SUBST(PACK200_JAR)
++  AC_SUBST(COMMONS_COMPRESS_JAR)
 +])
 +
 +
@@ -65,7 +65,7 @@
  #  - we want full privileges
  #
 -export UNIFIED_CLASSPATH_SEGMENTS=$(NETX_JAR) $(PLUGIN_JAR) $(JSOBJECT_JAR) $(RHINO_JAR) $(TAGSOUP_JAR) $(MSLINKS_JAR)
-+export UNIFIED_CLASSPATH_SEGMENTS=$(NETX_JAR) $(PLUGIN_JAR) $(JSOBJECT_JAR) $(RHINO_JAR) $(TAGSOUP_JAR) $(PACK200_JAR) $(MS $(PACK200_JAR)LINKS_JAR)
++export UNIFIED_CLASSPATH_SEGMENTS=$(NETX_JAR) $(PLUGIN_JAR) $(JSOBJECT_JAR) $(RHINO_JAR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR) $(MSLINKS_JAR)
  export UNIFIED_JACOCO_CLASSPATH_SEGMENTS=$(UNIFIED_CLASSPATH_SEGMENTS) $(JACOCO_CLASSPATH)
  export UNIFIED_CLASSPATH=$(call joinsegments, $(UNIFIED_CLASSPATH_SEGMENTS))
  export UNIFIED_JACOCO_CLASSPATH=$(call joinsegments, $(UNIFIED_JACOCO_CLASSPATH_SEGMENTS))
@@ -73,7 +73,7 @@
    -e "s|[@]JSOBJECT_JAR[@]|$(JSOBJECT_JAR)|g" \
    -e "s|[@]MSLINKS_JAR[@]|$(MSLINKS_JAR)|g" \
    -e "s|[@]TAGSOUP_JAR[@]|$(TAGSOUP_JAR)|g" \
-+  -e "s|[@]PACK200_JAR[@]|$(PACK200_JAR)|g" \
++  -e "s|[@]COMMONS_COMPRESS_JAR[@]|$(COMMONS_COMPRESS_JAR)|g" \
    -e "s|[@]RHINO_JAR[@]|$(RHINO_JAR)|g" \
    -e "s|[@]PROGRAM_NAME[@]|$${PROGRAM_NAME}|g" \
    -e "s|[@]MODULARJDK_ARGS_LOCATION[@]|$(MODULARJDK_ARGS_LOCATION)|g"
@@ -82,7 +82,7 @@
  	  $(SYSTEM_JDK_DIR)/bin/javac $(IT_JAVACFLAGS) \
  	      -d $(TOP_BUILD_DIR)/liveconnect \
 -	      $(call composeclasspath,$(NETX_DIR) $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR)) \
-+	      $(call composeclasspath,$(NETX_DIR) $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR) $(PACK200_JAR)) \
++	      $(call composeclasspath,$(NETX_DIR) $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR) $(COMMONS_COMPRESS_JAR)) \
  	      -sourcepath $(LIVECONNECT_SRCS) \
  	      @liveconnect-source-files.txt ; \
  	fi
@@ -91,7 +91,7 @@
  		-d $(NETX_DIR) \
  		-sourcepath $(NETX_SRCDIR) \
 -		$(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR)) \
-+		$(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(PACK200_JAR) $(RHINO_JAR)) \
++		$(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR) $(RHINO_JAR)) \
  	    @netx-source-files.txt
  	(cd $(NETX_RESOURCE_DIR); \
  	 for files in $$(find . -type f); \
@@ -99,7 +99,7 @@
  	  export NETX_JAR=$(NETX_JAR) ; \
  	  export JSOBJECT_JAR=$(JSOBJECT_JAR) ; \
  	  export TAGSOUP_JAR=$(TAGSOUP_JAR) ; \
-+	  export PACK200_JAR=$(PACK200_JAR) ; \
++	  export COMMONS_COMPRESS_JAR=$(COMMONS_COMPRESS_JAR) ; \
  	  export RHINO_JAR=$(RHINO_JAR) ; \
  	  export MSLINKS_JAR=$(MSLINKS_JAR) ; \
  	  export MODULARJDK_ARGS_LOCATION=$(MODULARJDK_ARGS_LOCATION) ; \
@@ -107,7 +107,7 @@
  	  export NETX_JAR=$(NETX_JAR) ; \
  	  export JSOBJECT_JAR=$(JSOBJECT_JAR) ; \
  	  export TAGSOUP_JAR=$(TAGSOUP_JAR) ; \
-+	  export PACK200_JAR=$(PACK200_JAR) ; \
++	  export COMMONS_COMPRESS_JAR=$(COMMONS_COMPRESS_JAR) ; \
  	  export RHINO_JAR=$(RHINO_JAR) ; \
  	  export MODULARJDK_ARGS_LOCATION=$(MODULARJDK_ARGS_LOCATION) ; \
  	  export MAIN_CLASS=net.sourceforge.jnlp.runtime.Boot ; \
@@ -116,7 +116,7 @@
  	 -windowtitle 'IcedTea-Web: NetX ' \
  	 -header '<strong>IcedTea-Web<br/>NetX</strong>' \
 -	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR)) \
-+	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(PACK200_JAR) $(RHINO_JAR)) \
++	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR) $(RHINO_JAR)) \
  	 $(NETX_PKGS)
  endif
  	mkdir -p stamps
@@ -125,7 +125,7 @@
  	 -windowtitle 'IcedTea-Web: Plugin ' \
  	 -header '<strong>IcedTea-Web<br/>Plugin</strong>' \
 -	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(RHINO_JAR)) \
-+	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(PACK200_JAR) $(RHINO_JAR)) \
++	 $(call composeclasspath, $(MSLINKS_JAR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR) $(RHINO_JAR)) \
  	 $(PLUGIN_PKGS)
  endif
  endif
@@ -134,7 +134,7 @@
  	$(SYSTEM_JDK_DIR)/bin/javac $(IT_JAVACFLAGS) \
  	 -d $(NETX_UNIT_TEST_DIR) \
 -	 $(call composeclasspath, $(JUNIT_RUNTIME) $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(NETX_DIR)/lib/classes.jar $(MSLINKS_JAR)  $(TEST_EXTENSIONS_DIR) $(TAGSOUP_JAR)) \
-+	 $(call composeclasspath, $(JUNIT_RUNTIME) $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(NETX_DIR)/lib/classes.jar $(MSLINKS_JAR)  $(TEST_EXTENSIONS_DIR) $(TAGSOUP_JAR) $(PACK200_JAR)) \
++	 $(call composeclasspath, $(JUNIT_RUNTIME) $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(NETX_DIR)/lib/classes.jar $(MSLINKS_JAR)  $(TEST_EXTENSIONS_DIR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR)) \
  	 @netx-unit-tests-source-files.txt && \
  	mkdir -p stamps && \
  	touch $@
@@ -143,7 +143,7 @@
  	cd $(NETX_UNIT_TEST_DIR) ; \
  	class_names=`cat $(UNIT_CLASS_NAMES)` ; \
 -	CLASSPATH="$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(MSLINKS_JAR) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) . $(TEST_EXTENSIONS_SRCDIR) $(TAGSOUP_JAR))" ; \
-+	CLASSPATH="$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(MSLINKS_JAR) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) . $(TEST_EXTENSIONS_SRCDIR) $(TAGSOUP_JAR) $(PACK200_JAR))" ; \
++	CLASSPATH="$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(MSLINKS_JAR) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) . $(TEST_EXTENSIONS_SRCDIR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR))" ; \
  	  $(SYSTEM_JRE_DIR)/bin/java "-Xbootclasspath/a:$$CLASSPATH" CommandLine $$class_names 
  if WITH_XSLTPROC
  	-$(XSLTPROC) --stringparam logs logs_unit.html $(TESTS_SRCDIR)/$(REPORT_STYLES_DIRNAME)/jreport.xsl $(NETX_UNIT_TEST_DIR)/tests-output.xml > $(TESTS_DIR)/index_unit.html
@@ -152,7 +152,7 @@
  	done ;\
  	class_names=`cat $(UNIT_CLASS_NAMES)` ; \
 -	CLASSPATH=$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) $(JACOCO_CLASSPATH) . $(TEST_EXTENSIONS_SRCDIR) $(MSLINKS_JAR) $(TAGSOUP_JAR)) ; \
-+	CLASSPATH=$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) $(JACOCO_CLASSPATH) . $(TEST_EXTENSIONS_SRCDIR) $(MSLINKS_JAR) $(TAGSOUP_JAR) $(PACK200_JAR))) ; \
++	CLASSPATH=$(call joinsegments, $(NETX_DIR)/lib/classes.jar $(TOP_BUILD_DIR)/liveconnect/lib/classes.jar $(JUNIT_RUNTIME) $(JUNIT_RUNNER_JAR) $(TEST_EXTENSIONS_DIR) $(JACOCO_CLASSPATH) . $(TEST_EXTENSIONS_SRCDIR) $(MSLINKS_JAR) $(TAGSOUP_JAR) $(COMMONS_COMPRESS_JAR))) ; \
  	  $(SYSTEM_JRE_DIR)/bin/java $(JACOCO_AGENT_SWITCH) -Xbootclasspath/a:$$CLASSPATH CommandLine $$class_names ; \
  	for file in $(COVERAGE_MODIFIED_FILES) ; do \
  	  mv $(NETX_UNIT_TEST_DIR)/$$file  $(NETX_UNIT_TEST_DIR)/"$$file""$(EMMA_SUFFIX)" ; \
@@ -162,7 +162,7 @@
  import static net.sourceforge.jnlp.cache.Resource.Status.PRECONNECT;
  import static net.sourceforge.jnlp.cache.Resource.Status.PREDOWNLOAD;
  
-+import io.pack200.Pack200;
++import org.apache.commons.compress.java.util.jar.Pack200;
 +
  import java.io.BufferedInputStream;
  import java.io.BufferedOutputStream;
@@ -181,7 +181,7 @@
  const PLUGIN_JAR: Option<&'static str> = option_env!("PLUGIN_JAR");
  const JSOBJECT_JAR: Option<&'static str> = option_env!("JSOBJECT_JAR");
  const TAGSOUP_JAR: Option<&'static str> = option_env!("TAGSOUP_JAR");
-+const PACK200_JAR: Option<&'static str> = option_env!("PACK200_JAR");
++const COMMONS_COMPRESS_JAR: Option<&'static str> = option_env!("COMMONS_COMPRESS_JAR");
  const RHINO_JAR: Option<&'static str> = option_env!("RHINO_JAR");
  const ITW_LIBS: Option<&'static str> = option_env!("ITW_LIBS");
  const MODULARJDK_ARGS_LOCATION: Option<&'static str> = option_env!("MODULARJDK_ARGS_LOCATION");
@@ -189,7 +189,7 @@
  
  pub fn get_tagsoup() -> Option<&'static str> { sanitize(TAGSOUP_JAR) }
  
-+pub fn get_pack200() -> Option<&'static str> { sanitize(PACK200_JAR) }
++pub fn get_commons-compress() -> Option<&'static str> { sanitize(COMMONS_COMPRESS_JAR) }
 +
  pub fn get_rhino() -> Option<&'static str> { sanitize(RHINO_JAR) }
  
@@ -200,7 +200,7 @@
  set "PLUGIN_JAR=@PLUGIN_JAR@"
  set "JSOBJECT_JAR=@JSOBJECT_JAR@"
  set "TAGSOUP_JAR=@TAGSOUP_JAR@"
-+set "PACK200_JAR=@PACK200_JAR@"
++set "COMMONS_COMPRESS_JAR=@COMMONS_COMPRESS_JAR@"
  set "RHINO_JAR=@RHINO_JAR@"
  set "MSLINKS_JAR=@MSLINKS_JAR@"
  
@@ -209,7 +209,7 @@
    set "PLUGIN_JAR=%ITW_HOME%/share/icedtea-web/plugin.jar"
    set "JSOBJECT_JAR=%ITW_HOME%/share/icedtea-web/jsobject.jar"
 -  set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:!NETX_JAR!;!PLUGIN_JAR!;!JSOBJECT_JAR!;%ITW_HOME%/win-deps-runtime/tagsoup.jar;%ITW_HOME%/win-deps-runtime/js.jar;%ITW_HOME%/win-deps-runtime/mslinks.jar"
-+  set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:!NETX_JAR!;!PLUGIN_JAR!;!JSOBJECT_JAR!;%ITW_HOME%/win-deps-runtime/tagsoup.jar;%ITW_HOME%/win-deps-runtime/pack200.jar;%ITW_HOME%/win-deps-runtime/js.jar;%ITW_HOME%/win-deps-runtime/mslinks.jar"
++  set "LAUNCHER_BOOTCLASSPATH=-Xbootclasspath/a:!NETX_JAR!;!PLUGIN_JAR!;!JSOBJECT_JAR!;%ITW_HOME%/win-deps-runtime/tagsoup.jar;%ITW_HOME%/win-deps-runtime/commons-compress.jar;%ITW_HOME%/win-deps-runtime/js.jar;%ITW_HOME%/win-deps-runtime/mslinks.jar"
  )
  
  
@@ -219,7 +219,7 @@
  PLUGIN_JAR=@PLUGIN_JAR@
  JSOBJECT_JAR=@JSOBJECT_JAR@
  TAGSOUP_JAR=@TAGSOUP_JAR@
-+PACK200_JAR=@PACK200_JAR@
++COMMONS_COMPRESS_JAR=@COMMONS_COMPRESS_JAR@
  RHINO_JAR=@RHINO_JAR@
  # windows only:
  #MSLINKS_JAR=@MSLINKS_JAR@
@@ -238,7 +238,7 @@
  import static org.junit.Assert.assertEquals;
  import static org.junit.Assert.assertTrue;
  
-+import io.pack200.Pack200;
++import org.apache.commons.compress.java.util.jar.Pack200;
 +
  import java.io.ByteArrayOutputStream;
  import java.io.File;

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:09:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Modified patch:
+  * standalone-pack200.patch -> commons-compress-pack200.patch
+    + Use the widely available Pack200 implementation in
+      apache-commons-compress rather then the standalone package
+      extracted from JDK 13
+
+-------------------------------------------------------------------
 Fri May 29 13:07:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Allow building with JDK that uses libalternatives instead of
