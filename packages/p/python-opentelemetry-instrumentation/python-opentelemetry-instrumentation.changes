@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Jul  7 19:03:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.64b0:
+  * ### Added
+  * `opentelemetry-instrumentation-exceptions`: add
+    instrumentation to emit OpenTelemetry logs for uncaught
+    process, thread, and asyncio exceptions.
+  * `opentelemetry-instrumentation-botocore`: loosen aiobotocore
+    version constraints to allow for 3.x
+  * `opentelemetry-instrumentation-logging`: add optional
+    `inject_trace_context` argument for injecting trace context
+    attributes
+  * `opentelemetry-instrumentation-redis`: gracefully handle hook
+    exceptions
+  * ### Changed
+  * opentelemetry-instrumentation-requests: remove multiple calls
+    to sanitize_method
+  * ### Fixed
+  * `opentelemetry-instrumentation-django`: Remove duplicate
+    query logging in SQLCommenter middleware that broke Django's
+    `assertNumQueries`
+  * `opentelemetry-instrumentation-flask`: wrap wsgi_app call in
+    try/except to prevent active_requests gauge leak
+  * `opentelemetry-instrumentation-asyncpg`: instrument prepared
+    statements
+  * `opentelemetry-instrumentation-aiokafka`, `opentelemetry-
+    instrumentation-confluent-kafka`, `opentelemetry-
+    instrumentation-kafka-python`: fix malformed RST formatting
+    in module docstrings
+  * `opentelemetry-instrumentation-dbapi`: Fix pyodbc DB-API
+    instrumentation examples to wrap `connect`.
+  * `opentelemetry-instrumentation-tornado`: reduce cardinality
+    of `http.target` metrics attribute with old semantic
+    conventions
+  * `opentelemetry-instrumentation-dbapi`: implement proper
+    handling of t-string queries
+  * `opentelemetry-instrumentation-fastapi`: fix `AttributeError`
+    when resolving routes added via `include_router` on FastAPI
+    0.137+
+  * `opentelemetry-instrumentation-tornado`: sanitize the request
+    http method in server and client spans and metrics
+
+-------------------------------------------------------------------
 Sat Jun 20 16:02:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.63b1:
