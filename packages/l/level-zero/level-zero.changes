@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Jul 13 22:48:50 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.31.0:
+  * Fix .mako drift from actual headers
+  * Fix static analysis issues
+  * Enable System Resource Tracker on Windows
+  * Remove unnecessary size_t for to_string in 32-bit builds
+  * Use PROJECT_DIR instead of CMAKE_DIR to support
+    subproject builds
+  * Fix ZeLogger use-after-free during teardown
+- Update to version 1.30.0:
+  * Add lifetime handle validation to zeInitDrivers
+  * Introduce new logger and reduce code bloat
+- Update to version 1.29.0:
+  * Add support for Level Zero Specification v1.16.24
+  * Fix legacy single-driver function assignment for
+    versioning
+  * Fix null driver DDI assigning invalid functions
+  * Add to_string support for callbacks
+- Update to version 1.28.6:
+  * Add Ubuntu-specific .deb packages to CPack
+  * Fix typo in build debug command line
+  * Fix handling when no Level Zero drivers initialize the
+    global DDIs
+  * Fix logging to stdout during import
+  * Fix Level Zero devel package config filesystem conflict
+    on SLES
+  * Allow .pc file installation with Windows MSI installer
+  * Fix version details for release
+  * Remove unneeded RPM and DEB packages from builds
+
+-------------------------------------------------------------------
 Fri Mar 13 03:47:20 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to version 1.28.2:
