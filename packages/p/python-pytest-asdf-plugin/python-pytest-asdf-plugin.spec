@@ -17,13 +17,13 @@
 
 
 Name:           python-pytest-asdf-plugin
-Version:        0.1.2
+Version:        0.2.0
 Release:        0
 Summary:        Pytest plugin for testing ASDF schemas
 License:        BSD-3-Clause
 URL:            https://github.com/asdf-format/pytest-asdf-plugin
 Source:         https://files.pythonhosted.org/packages/source/p/pytest_asdf_plugin/pytest_asdf_plugin-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 60}
 BuildRequires:  %{python_module setuptools_scm >= 8}
@@ -58,6 +58,7 @@ sed -i "/'--color=yes',$/d" pyproject.toml
 
 %files %{python_files}
 %license LICENSE
+%doc README.rst
 %{python_sitelib}/pytest_asdf_plugin
 %{python_sitelib}/pytest_asdf_plugin-%{version}.dist-info
 
