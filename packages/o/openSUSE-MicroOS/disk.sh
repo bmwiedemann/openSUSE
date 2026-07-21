@@ -1,11 +1,15 @@
 #!/bin/bash
 set -euxo pipefail
 
+echo "Setting up /etc as subvolume"
 /usr/libexec/setup-etc-subvol
 
-echo "####### BOOTLOADER INSTALL (disk.sh)"
+echo "Adjusting snapper configuration"
+grep -E '^SNAPPER_CONFIGS="root"' /etc/sysconfig/snapper # assert that kiwi created and registered the default config
+snapper --no-dbus set-config TIMELINE_CREATE=no NUMBER_LIMIT=2-10 NUMBER_LIMIT_IMPORTANT=4-10
 
 if [ -x /usr/bin/sdbootutil ]; then
+	echo "Installing bootloader using sdbootutil"
 	arch="$(uname -m)"
 	case "$arch" in
 		aarch64) arch=aa64 ;;
@@ -39,5 +43,3 @@ if [ -x /usr/bin/sdbootutil ]; then
 
 	find /boot
 fi
-
-echo "####### END BOOTLOADER INSTALL (disk.sh)"

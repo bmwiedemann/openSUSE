@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:08:13 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- disk.sh: Simplify snapper configuration and add assertion for the
+  setup done by kiwi
+
+-------------------------------------------------------------------
+Tue Jul 14 13:45:10 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Move snapper configuration from config.sh to disk.sh (boo#1259633)
+
+-------------------------------------------------------------------
 Fri Apr 10 08:47:11 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Drop root=UUID requirement, as sdbootutil will select it

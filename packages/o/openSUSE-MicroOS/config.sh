@@ -63,25 +63,6 @@ if [ -x /usr/sbin/add-yast-repos ]; then
 fi
 
 #=====================================
-# Configure snapper
-#-------------------------------------
-if [ -x /usr/bin/snapper ]; then
-	echo "creating initial snapper config ..."
-	cp /etc/snapper/config-templates/default /etc/snapper/configs/root \
-		|| cp /usr/share/snapper/config-templates/default /etc/snapper/configs/root
-	baseUpdateSysConfig /etc/sysconfig/snapper SNAPPER_CONFIGS root
-
-	# Adjust parameters
-	sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
-	sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
-	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
-else
-	# Avoid boo#1237466 from reoccuring
-	echo "snapper not installed?"
-	exit 1
-fi
-
-#=====================================
 # Enable chrony if installed
 #-------------------------------------
 if [ -f /etc/chrony.conf ]; then
