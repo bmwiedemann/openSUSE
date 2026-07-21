@@ -1,0 +1,11 @@
+--- gnucash-5.16/CMakeLists.txt	2026-06-27 20:10:15.000000000 +0200
++++ gnucash-5.16/CMakeLists.txt2	2026-07-14 13:06:37.192187093 +0200
+@@ -800,7 +800,7 @@
+ 
+ test_big_endian(IS_BIGENDIAN)
+ if (IS_BIGENDIAN)
+-  add_compile_definition (WORDS_BIGENDIAN)
++  add_compile_definitions (WORDS_BIGENDIAN)
+ endif()
+ 
+ if (NOT DISABLE_NLS)

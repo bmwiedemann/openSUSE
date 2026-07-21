@@ -34,24 +34,17 @@
 %endif
 
 Name:           gnucash
-Version:        5.13
+Version:        5.16
 Release:        0
 Summary:        Personal Finance Manager
-License:        SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
+License:        LicenseRef-SUSE-GPL-2.0-with-openssl-exception OR SUSE-GPL-3.0-with-openssl-exception
 Group:          Productivity/Office/Finance
 URL:            http://www.gnucash.org/
 Source:         https://github.com/Gnucash/gnucash/releases/download/%{version}/%{name}-%{version}.tar.bz2
 Source1:        %{name}-rpmlintrc
-## Cpan-warning patch must always be applied.
-# PATCH-FIX-UPSTREAM gnucash-cpan-warning.patch -- Add a warning about the danger of using gnc-fq-update to update the perl modules used by GnuCash.
-Patch0:         gnucash-cpan-warning.patch
-# PATCH-FIX-UPSTREAM gnucash-libm.patch gh#gnucash/gnucash#632 dimstar@opensuse.org -- Link libm: gnucash uses e.g. log10 without explicitly requesting libm
-Patch1:         gnucash-libm.patch
-Patch2:         gnucash-4.1-fix-gtest-path.patch
-Patch3:         gnucash-boost-1.89.patch
-# PATCH-FIX-UPSTREAM gh#gnucash/gnucash#2152 -- test-userdata-dir-invalid-home: Unset XDG_DATA_HOME
-Patch4:         gnucash-fix-test-userdata-dir-invalid-home.patch
-Patch5:         gcc16.patch
+Patch0:         gnucash-boost-1.89.patch
+# PATCH-FIX-UPSTREAM gh#Gnucash/gnucash/pull/2271 - Missing s for builds on s390x
+Patch1:         fix-BigEndian-s390x.patch
 
 BuildRequires:  cmake >= 3.14
 BuildRequires:  doxygen
@@ -142,6 +135,7 @@ a personal finance manager.
 Summary:        Development files for GnuCash
 Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
+BuildArch:      noarch
 
 %description devel
 This package provides all the necessary files for development of GnuCash,
@@ -159,20 +153,23 @@ a personal finance manager.
 export CXX=g++-13
 %endif
 %cmake \
+    -DBUILD_GMOCK=ON ../ \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_RPATH=OFF \
     -DCMAKE_BUILD_WITH_INSTALL_RPATH=ON \
     -DCMAKE_INSTALL_DOCDIR=%{_docdir}/%{name} \
     -DGMOCK_ROOT=%{_includedir}/gmock \
-    -DGTEST_ROOT=%{_includedir}/gtest \
 %if %{with python}
     -DWITH_PYTHON=ON \
 %else
     -DWITH_PYTHON=OFF \
 %endif
     -DCOMPILE_GSCHEMAS=OFF \
-    -DCMAKE_CXX_FLAGS=-Wno-error
+    -DCMAKE_CXX_FLAGS="-Wno-error" \
+    -DCMAKE_SHARED_LINKER_FLAGS="-lm"
+
 %cmake_build
+export GTEST_ROOT=%{_includedir}/gtest
 
 %install
 %cmake_install
@@ -214,7 +211,7 @@ pushd build
 %{_libdir}/guile/%{guile_version}/site-ccache/gnucash
 %{_mandir}/man?/*%{?ext_man}
 %dir %{_sysconfdir}/gnucash
-%config %{_sysconfdir}/gnucash/environment
+%config(noreplace) %{_sysconfdir}/gnucash/*
 %exclude %{_datadir}/gnucash/python
 
 %if %{with python}

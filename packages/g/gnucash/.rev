@@ -1180,4 +1180,41 @@
     <comment></comment>
     <requestid>1328957</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>70036f84096525b612edd2e565283632</srcmd5>
+    <version>5.16</version>
+    <time>1784668166</time>
+    <user>dimstar_suse</user>
+    <comment>- fix s390x builds (boo#1268177): fix-BigEndian-s390x.patch
+
+- Update to 5.16:
+  + RFE: Include logical dates for View-&gt;Filter by &quot;date range&quot;
+  + Enable the escape key to cancel a field edit
+  + Next gen UI for stock transactions
+  + Add &quot;enter now&quot; option in scheduled transaction editor
+  + Allow the Enabled box in the list of scheduled transactions to be 
+    operated instead of having to open the transaction editor dialog
+  + Numeric values may now be selected to copy in the Accounts page
+  + Add new Finance::Quote source Finnhub.io
+  + The Investment Lots report has new optional columns for Computed Annual Growth Rate
+  + Python Bindings: Improved translation of primary object 
+  + Python Bindings: Better conversion of GLists to Python lists
+  + Python Bindings: Destroy the QofSession in the Python Session dtor to prevent 
+    leaving the database locked
+  + [engine] Add first-class online_id accessors for Split and Account
+  + Improve C++ implementation of QofBook
+  + Correct the Doxygen doc for qof_instance_get/set_kvp
+  + [gnc-log-replay.cpp] fix incorrect guid dump
+  + Add some Boost library requirements needed by libgnucash-guile to CMakeLists.txt
+  + Use Compile-time Regular Expressions instead of std::regex in gnc-filepath-utils.cpp
+  + [gnc-filepath-utils.cpp] null check char* arguments
+  + Add ChartJS licenses
+  + Removed AEX from list of commodities. euronext.com is now using JS based anti-webscraping
+  + [report-core] always offer options summary in reports
+  + Remove remaining obsolete IMContext from sheet
+  + Fix blurry text in HiDPI offscreen-rendered widgets
+  + Add port field to database connection dialog: The convention of appending the port 
+    number after the host isn't obvious</comment>
+    <requestid>1366836</requestid>
+  </revision>
 </revisionlist>

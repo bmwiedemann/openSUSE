@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Tue Jul 14 16:08:18 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- fix s390x builds (boo#1268177): fix-BigEndian-s390x.patch
+
+-------------------------------------------------------------------
+Tue Jul  7 18:01:41 UTC 2026 - Sarah Kriesch <sarah.kriesch@opensuse.org>
+
+- Update to 5.16:
+  + RFE: Include logical dates for View->Filter by "date range"
+  + Enable the escape key to cancel a field edit
+  + Next gen UI for stock transactions
+  + Add "enter now" option in scheduled transaction editor
+  + Allow the Enabled box in the list of scheduled transactions to be 
+    operated instead of having to open the transaction editor dialog
+  + Numeric values may now be selected to copy in the Accounts page
+  + Add new Finance::Quote source Finnhub.io
+  + The Investment Lots report has new optional columns for Computed Annual Growth Rate
+  + Python Bindings: Improved translation of primary object 
+  + Python Bindings: Better conversion of GLists to Python lists
+  + Python Bindings: Destroy the QofSession in the Python Session dtor to prevent 
+    leaving the database locked
+  + [engine] Add first-class online_id accessors for Split and Account
+  + Improve C++ implementation of QofBook
+  + Correct the Doxygen doc for qof_instance_get/set_kvp
+  + [gnc-log-replay.cpp] fix incorrect guid dump
+  + Add some Boost library requirements needed by libgnucash-guile to CMakeLists.txt
+  + Use Compile-time Regular Expressions instead of std::regex in gnc-filepath-utils.cpp
+  + [gnc-filepath-utils.cpp] null check char* arguments
+  + Add ChartJS licenses
+  + Removed AEX from list of commodities. euronext.com is now using JS based anti-webscraping
+  + [report-core] always offer options summary in reports
+  + Remove remaining obsolete IMContext from sheet
+  + Fix blurry text in HiDPI offscreen-rendered widgets
+  + Add port field to database connection dialog: The convention of appending the port 
+    number after the host isn't obvious
+  + Return immediately from qof_book_destroy if hash_of_collections is null
+  + Be consistent in naming GncPluginPage and GncPluginPageRegister
+  + Implement better can't-balance messages for scheduled transactions with more than one template transaction
+  + Display namespaces and allow selecting particular namespaces in the Remove Old Prices dialog.
+  + Use "Business Item" in messages that could apply to any of Bill, Credit Note, or Invoice, 
+    including where we reuse the same message in different cases.
+  + Enable copy-and-paste in Scheduled Transaction template transactions.
+  + Disable the Transaction Paste or Split Paste menu items in the register's Transaction menu 
+    when there is no transaction or split in the clipboard.
+  + Fix the last reconcile date sort in the Accounts page so that unreconciled accounts sort 
+    after reconciled ones instead of before
+  + Import Matcher: Add trace messages to make it easier to track why some transactions aren't considered possible matches 
+  + Fix segfault in gnc_gsettings_get_settings_obj when GSettings schemas are not installed.
+  + [new-owner-report.scm] fix display/due-date tooltip
+  + Transaction report efficiency improvements
+  + Ensure that gnc_commodity_compare produces a stable sort
+  + Remove unused qof_collection_from_glist function
+  + New function gnc_account_get_earliest_date returns the account's earliest split date
+  + Provide an earliest-date sort option in the Accounts page and the balance-forecast report
+  + Update GncDateTime to handle new exceptions from Boost::DateTime
+  + Fix GUI leaks in register completion cell, GncPluginPageRegister, and GNCPluginPageReport
+  + Fixed Cut, Copy and Paste when focus is not in GnucashSheet
+  + Fix crashes in processing invoices and creating mulit-commodity transactions due to premature 
+    destruction of the account tree view. This unfortunately un-fixes
+  + Change the Transaction report when show subtotals only is selected
+  + Make the version information and the configured paths part of the About Dialog selectable
+  + Protect the special environment file prefix variables
+- Add BUILD_GMOCK as build option for successful googletest
+- Add CMAKE_SHARED_LINKER_FLAGS="-lm" for not readable library files
+- Add noarch as BuildArch to devel package
+- Drop patches:
+  * gnucash-libm.patch
+  * gnucash-4.1-fix-gtest-path.patch
+  * gnucash-fix-test-userdata-dir-invalid-home.patch
+  * gnucash-cpan-warning.patch
+  * gcc16.patch
+
+-------------------------------------------------------------------
 Mon Jan 19 14:17:55 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Add gcc16.patch, so that the package builds with GCC 16 
