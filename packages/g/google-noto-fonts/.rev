@@ -318,4 +318,20 @@ add: README.FAQ to answer some questions about Noto Fonts packaging
  * Base Noto Sans and Noto Serif is updated</comment>
     <requestid>1227622</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d9049618e89ea21f7c5736f0878381e3</srcmd5>
+    <version>20260701</version>
+    <time>1784667220</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop stale file
+- Update Source in the spec file to include the download URL
+
+- Update to 20260701
+ * Various updates to the font collection, Too many changes to list
+ * New fonts :
+   - Todhri Fonts (google-noto-serif-todhri-fonts)
+   - Hentaigana Fonts (google-noto-serif-hentaigana-fonts)
+   - Sunuwar Fonts (google-noto-sans-sunuwar-fonts)</comment>
+    <requestid>1366698</requestid>
+  </revision>
 </revisionlist>

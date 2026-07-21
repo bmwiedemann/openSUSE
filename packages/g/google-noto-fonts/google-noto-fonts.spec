@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define hyear     2024
-%define hmonth    12
+%define hyear     2026
+%define hmonth    07
 %define hday      01
 
 %define src_name  NotoFonts
@@ -30,8 +30,7 @@ Release:        0
 Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
 URL:            https://notofonts.github.io/
-# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.9.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz
+Source0:        https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz#/notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
@@ -172,6 +171,7 @@ Requires:       google-noto-sans-sogdian-fonts
 Requires:       google-noto-sans-sorasompeng-fonts
 Requires:       google-noto-sans-soyombo-fonts
 Requires:       google-noto-sans-sundanese-fonts
+Requires:       google-noto-sans-sunuwar-fonts
 Requires:       google-noto-sans-sylotinagri-fonts
 Requires:       google-noto-sans-symbols-fonts
 Requires:       google-noto-sans-symbols2-fonts
@@ -215,6 +215,7 @@ Requires:       google-noto-serif-grantha-fonts
 Requires:       google-noto-serif-gujarati-fonts
 Requires:       google-noto-serif-gurmukhi-fonts
 Requires:       google-noto-serif-hebrew-fonts
+Requires:       google-noto-serif-hentaigana-fonts
 Requires:       google-noto-serif-kannada-fonts
 Requires:       google-noto-serif-khitansmallscript-fonts
 Requires:       google-noto-serif-khmer-fonts
@@ -233,6 +234,7 @@ Requires:       google-noto-serif-tangut-fonts
 Requires:       google-noto-serif-telugu-fonts
 Requires:       google-noto-serif-thai-fonts
 Requires:       google-noto-serif-tibetan-fonts
+Requires:       google-noto-serif-todhri-fonts
 Requires:       google-noto-serif-toto-fonts
 Requires:       google-noto-serif-vithkuqi-fonts
 Requires:       google-noto-serif-yezidi-fonts
@@ -2044,6 +2046,19 @@ Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Sundanese Sans Serif font, hinted.
 
+%package -n google-noto-sans-sunuwar-fonts
+Summary:        Noto Sunuwar Sans Serif Font
+Obsoletes:      noto-sans-sunuwar < %{version}
+Provides:       noto-sans-sunuwar = %{version}
+Obsoletes:      noto-sans-sunuwar-fonts < %{version}
+Provides:       noto-sans-sunuwar-fonts = %{version}
+%reconfigure_fonts_prereq
+
+%description -n google-noto-sans-sunuwar-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Sunuwar Sans Serif font, hinted.
+
 %package -n google-noto-sans-sylotinagri-fonts
 Summary:        Noto Syloti Nagri Sans Serif Font
 Obsoletes:      noto-sans-sylotinagri < %{version}
@@ -2667,6 +2682,19 @@ Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Hebrew Serif font, hinted.
 
+%package -n google-noto-serif-hentaigana-fonts
+Summary:        Noto Hentaigana Serif Font
+Obsoletes:      noto-serif-hentaigana < %{version}
+Provides:       noto-serif-hentaigana = %{version}
+Obsoletes:      noto-serif-hentaigana-fonts < %{version}
+Provides:       noto-serif-hentaigana-fonts = %{version}
+%reconfigure_fonts_prereq
+
+%description -n google-noto-serif-hentaigana-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Hentaigana Serif font, hinted.
+
 %package -n google-noto-serif-kannada-fonts
 Summary:        Noto Kannada Serif Font
 Obsoletes:      noto-serif-kannada < %{version}
@@ -2908,6 +2936,19 @@ Provides:       noto-sans-tibetan-fonts = %{version}
 Noto's design goal is to achieve visual harmonization (e.g., compatible
 heights and stroke thicknesses) across languages. This package contains
 Tibetan Serif font, hinted.
+
+%package -n google-noto-serif-todhri-fonts
+Summary:        Noto Todhri Serif Font
+Obsoletes:      noto-serif-todhri < %{version}
+Provides:       noto-serif-todhri = %{version}
+Obsoletes:      noto-serif-todhri-fonts < %{version}
+Provides:       noto-serif-todhri-fonts = %{version}
+%reconfigure_fonts_prereq
+
+%description -n google-noto-serif-todhri-fonts
+Noto's design goal is to achieve visual harmonization (e.g., compatible
+heights and stroke thicknesses) across languages. This package contains
+Todhri Serif font, hinted.
 
 %package -n google-noto-serif-toto-fonts
 Summary:        Noto Toto Serif Font
@@ -3254,6 +3295,8 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 
 %reconfigure_fonts_scriptlets -n google-noto-sans-sundanese-fonts
 
+%reconfigure_fonts_scriptlets -n google-noto-sans-sunuwar-fonts
+
 %reconfigure_fonts_scriptlets -n google-noto-sans-sylotinagri-fonts
 
 %reconfigure_fonts_scriptlets -n google-noto-sans-symbols-fonts
@@ -3340,6 +3383,8 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 
 %reconfigure_fonts_scriptlets -n google-noto-serif-hebrew-fonts
 
+%reconfigure_fonts_scriptlets -n google-noto-serif-hentaigana-fonts
+
 %reconfigure_fonts_scriptlets -n google-noto-serif-kannada-fonts
 
 %reconfigure_fonts_scriptlets -n google-noto-serif-khitansmallscript-fonts
@@ -3375,6 +3420,8 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %reconfigure_fonts_scriptlets -n google-noto-serif-thai-fonts
 
 %reconfigure_fonts_scriptlets -n google-noto-serif-tibetan-fonts
+
+%reconfigure_fonts_scriptlets -n google-noto-serif-todhri-fonts
 
 %reconfigure_fonts_scriptlets -n google-noto-serif-toto-fonts
 
@@ -4061,6 +4108,11 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSansSundanese-*.?tf
 
+%files -n google-noto-sans-sunuwar-fonts
+%license LICENSE
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSansSunuwar-*.?tf
+
 %files -n google-noto-sans-sylotinagri-fonts
 %license LICENSE
 %dir %{_ttfontsdir}
@@ -4278,6 +4330,11 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifHebrew-*.?tf
 
+%files -n google-noto-serif-hentaigana-fonts
+%license LICENSE
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifHentaigana-*.?tf
+
 %files -n google-noto-serif-kannada-fonts
 %license LICENSE
 %dir %{_ttfontsdir}
@@ -4367,6 +4424,11 @@ install -Dm 644 -t %{buildroot}%{_ttfontsdir} notofonts.github.io-noto-monthly-r
 %license LICENSE
 %dir %{_ttfontsdir}
 %{_ttfontsdir}/NotoSerifTibetan-*.?tf
+
+%files -n google-noto-serif-todhri-fonts
+%license LICENSE
+%dir %{_ttfontsdir}
+%{_ttfontsdir}/NotoSerifTodhri-*.?tf
 
 %files -n google-noto-serif-toto-fonts
 %license LICENSE

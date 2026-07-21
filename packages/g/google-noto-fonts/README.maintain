@@ -1,9 +1,9 @@
-Last reviewed: 2024-12-01
+Last reviewed: 2026-07-11
 1. Download the latest release tarball from here: https://github.com/notofonts/notofonts.github.io/releases
-2. Rename the current specfile to old.spec then edit the versions in generate-specfile.sh and google-noto-fonts.spec.in
+2. Rename the current specfile to spec.old then edit the versions in generate-specfile.sh and google-noto-fonts.spec.in
 3. Run generate-specfile.sh to get the new specfile
   - generate-specfile.sh untars your tarball and then based on the folders in fonts, generates a specfile with every package being a folder
-4. Compare the two specfiles with some sort of diffing program and note any added, deleted, or renamed packages
+4. Compare the two specfiles with some sort of diffing program (eg: meld) and note any added, deleted, or renamed packages
 5. Push to your branch (osc ci) to see if the package builds, osc build is of limited use
    as your local vm will likely crash before the build is fully completed
 6. If there are no noteworthy errors, then write the osc vc with the changes,

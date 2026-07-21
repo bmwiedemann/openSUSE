@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-fonts
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,8 +16,8 @@
 #
 
 
-%define hyear     2024
-%define hmonth    12
+%define hyear     2026
+%define hmonth    07
 %define hday      01
 
 %define src_name  NotoFonts
@@ -30,8 +30,7 @@ Release:        0
 Summary:        All Noto Fonts except CJK and Emoji
 License:        OFL-1.1
 URL:            https://notofonts.github.io/
-# https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-24.9.1.tar.gz
-Source0:        notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz
+Source0:        https://github.com/notofonts/notofonts.github.io/archive/refs/tags/noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz#/notofonts.github.io-noto-monthly-release-%{hyear}.%{hmonth}.%{hday}.tar.gz
 Source1:        generate-specfile.sh
 Source2:        README.FAQ
 Source3:        README.maintain
