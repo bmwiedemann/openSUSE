@@ -1,7 +1,7 @@
 #
 # spec file for package python-mkdocstrings
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,17 +15,18 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %{?sle15_python_module_pythons}
 Name:           python-mkdocstrings
-Version:        1.0.3
+Version:        1.0.6
 Release:        0
 Summary:        Automatic documentation from sources, for MkDocs
 License:        ISC
-URL:            https://github.com/mkdocstrings/mkdocstrings 
+URL:            https://github.com/mkdocstrings/mkdocstrings
 Source:         https://files.pythonhosted.org/packages/source/m/mkdocstrings/mkdocstrings-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2 >= 2.11.1}
 BuildRequires:  %{python_module Markdown >= 3.3}
