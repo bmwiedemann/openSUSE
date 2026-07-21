@@ -109,4 +109,25 @@
 </comment>
     <requestid>1363672</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e413910a0982585876fc965b7701e722</srcmd5>
+    <version>1.7.3</version>
+    <time>1784126619</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.3:
+  * Add default claims validation for iss, sub and aud.
+  * Add size validation even for self-provided payload.</comment>
+    <requestid>1365767</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>35758e30aa691edd5b9b6bfcfc9056e5</srcmd5>
+    <version>1.7.4</version>
+    <time>1784668148</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.7.4:
+  * Reject JWS general JSON serialization when signatures is
+    empty.
+  * Raises DecodeError when encrypted_key is None in JWE.</comment>
+    <requestid>1366811</requestid>
+  </revision>
 </revisionlist>

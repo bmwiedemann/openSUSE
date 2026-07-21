@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 20 16:15:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.4:
+  * Reject JWS general JSON serialization when signatures is
+    empty.
+  * Raises DecodeError when encrypted_key is None in JWE.
+
+-------------------------------------------------------------------
+Tue Jul 14 20:12:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.7.3:
+  * Add default claims validation for iss, sub and aud.
+  * Add size validation even for self-provided payload.
+
+-------------------------------------------------------------------
 Wed Jul  1 16:04:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.7.2:
