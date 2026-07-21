@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 08:49:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-39821: golang.org/x/net/idna: failure to reject ASCII-only
+  Punycode-encoded labels allows for validation bypass and privilege
+  escalation (bsc#1266603)
+  * CVE-2026-39821.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 13:29:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260708.00

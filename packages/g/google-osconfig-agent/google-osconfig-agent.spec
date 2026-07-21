@@ -25,6 +25,8 @@ Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
 Group:          System/Daemons
 URL:            https://github.com/GoogleCloudPlatform/osconfig
+# PATCH-FIX-UPSTREAM - golang.org/x/net/idna: failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation
+Patch0:         CVE-2026-39821.patch
 Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
@@ -37,6 +39,9 @@ Google Cloud OSConfig Agent
 
 %prep
 %setup -n %{shortname}-%{version} -a1
+pushd vendor/golang.org/x/net
+%patch -P 0 -p1
+popd
 
 %build
 %ifnarch ppc64

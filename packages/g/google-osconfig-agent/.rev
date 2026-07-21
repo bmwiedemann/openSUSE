@@ -940,4 +940,15 @@
   * Add unit tests for policies/recipes/steps.go PART 1 (#974) (forwarded request 1364724 from glaubitz)</comment>
     <requestid>1365363</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>5fe4a4ceca5e13afd97148a0f333235d</srcmd5>
+    <version>20260708.00</version>
+    <time>1784667691</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-39821: golang.org/x/net/idna: failure to reject ASCII-only
+  Punycode-encoded labels allows for validation bypass and privilege
+  escalation (bsc#1266603)
+  * CVE-2026-39821.patch (forwarded request 1366724 from mcalabkova)</comment>
+    <requestid>1366769</requestid>
+  </revision>
 </revisionlist>
