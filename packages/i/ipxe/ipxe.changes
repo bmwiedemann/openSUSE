@@ -1,4 +1,429 @@
 -------------------------------------------------------------------
+Thu Jul 16 19:51:32 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Packaging cleanups:
+  - Drop unused fix-i586.patch and the no_aarch64_cc machinery
+  - Version the qemu-ipxe Provides/Obsoletes
+  - Add license files to the qemu subpackage
+  - Single-source the QEMU NIC list in %build
+  - Merge the config/general.h sed calls
+  - Drop obsolete %defattr
+  - Remove unused ipxe.efi directory creation
+  - _service: use mode="manual" instead of the deprecated mode="disabled"
+  - Add ipxe-rpmlintrc to filter the bogus no-binary error
+
+-------------------------------------------------------------------
+Tue Jul 14 15:18:07 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Disable serial. We have -nographic for that, and having both
+  enabled causes the output to be mangled (bsc#1271154).
+
+-------------------------------------------------------------------
+Mon Jul 13 08:25:50 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 2.0.0+git20260710.58ee55b3c:
+  * [image] Make text-based image data usable by string functions
+  * [xferbuf] Provide an image-backed data transfer buffer
+  * [libc] Add strchrnul()
+  * [hermon] Check for failure from pci_ioremap()
+  * [tls] Retain a reference in the key schedule to the bound identity
+  * [tls] Reject incorrect server names before completing validation
+  * [tls] Guard against resuming from an empty resumption master secret
+  * [tls] Poison initial resumption master secret
+  * [tls] Poison initial key derivation function master secret
+  * [tls] Track and check key schedule state
+  * [tls] Guard against a premature server Finished
+  * [tls] Send closure alert only when we are initiating the closure
+  * [tls] Handle key exchange within key schedule
+  * [cloud] Use "param" command to provide Google metadata request header
+  * [tls] Restructure to use a single key derivation function master secret
+  * [tls] Treat session secret as "resumption master secret"
+  * [virtio] Allow for long delays in processing transmit queue submissions
+  * [virtio] Fix queue size calculations
+  * [tls] Move handshake digest within the scope of the key schedule
+  * [tls] Clarify TLS key schedule function names
+  * [crypto] Define a structure for holding hybrid MD5+SHA1 HMAC keys
+  * [crypto] Make maximum TLS version a configurable option
+  * [crypto] Re-add missing digestInfo prefix for MD5+SHA1
+  * [build] Use dynamic keyboard map by default in UEFI builds
+  * [crypto] Allow for the construction of fixed-size HMAC keys
+  * [s390x] Add time source based on the architectural Time-of-Day clock
+  * [s390x] Add support for the PRNO TRNG as an entropy source
+  * [s390x] Provide a mechanism for checking installed CPU facilities
+  * [crypto] Remove redundant DHE algorithm
+  * [tls] Use generic key exchange algorithm abstraction for DHE
+  * [crypto] Allocate FFDHE temporary space on demand
+  * [crypto] Allow construction of shared public key to return an error
+  * [crypto] Correct maximum length of FFDHE prime modulus
+  * [crypto] Generalise implementation of Merkle-Damgård hash algorithms
+  * [aqc1xx] Free outstanding receive I/O buffers on close
+  * [aqc1xx] Set netdev->dma for operation with an IOMMU
+  * [http] Remove knowledge of MD5 digest context internal structure
+  * [bnxt] Prevent out-of-bounds memory access
+  * [tls] Centralise pseudorandom data generation
+  * [crypto] Allow for input keying material to overlap output
+  * [crypto] Use private data field for public-key algorithms
+  * [crypto] Allow cipher_setiv() to return an error
+  * [crypto] Use private data field for cipher algorithms
+  * [crypto] Use private data field for digest algorithms
+  * [crypto] Generalise notion of uncompressed elliptic curve points
+  * [crypto] Use private data field for elliptic curve algorithms
+  * [crypto] Use verbs in key exchange method names
+  * [tls] Accept only explicitly supported FFDHE groups
+  * [crypto] Add TLS named groups for FFDHE key exchange algorithms
+  * [tls] Allow for the existence of anonymous named groups
+  * [tls] Prefer X25519 as a key exchange mechanism
+  * [crypto] Provide a mechanism to check FFDHE group parameters
+  * [crypto] Use private data field for key exchange algorithms
+  * [crypto] Add RFC 3526 FFDHE key exchange algorithms
+  * [crypto] Use inline assembly for bigint_grow() and bigint_shrink()
+  * [s390x] Use XOR-in-place to zero small fixed-length blocks
+  * [tls] Rename "named curve" to "named group"
+  * [virtio] Ignore capabilities that describe inaccessible PCI BARs
+  * [settings] Allow system time to be modified via builtin/unixtime
+  * [settings] Allow for writable built-in settings
+  * [scsi] Use data-transfer buffers for data-in and data-out
+  * [s390x] Add optimised TCP/IP checksumming
+  * [ci] Add s390x self-tests
+  * [s390x] Add support for the IBM s390x CPU architecture
+  * [test] Fix RFC 1071 checksum calculation for big-endian targets
+  * [linux] Fix console output on big-endian targets
+  * [efi] Fix parsing of EFI signature lists on big-endian targets
+  * [peerdist] Fix segment identifier constant on big-endian targets
+  * [build] Fix building for big-endian targets
+  * [crypto] Use generic implementations of slow-path big integer functions
+  * [iscsi] Ensure SCSI sense data is present before parsing
+  * [crypto] Add RFC 7919 FFDHE key exchange algorithms
+  * [test] Allow for large values in key exchange self-tests
+  * [test] Verify test vector lengths for key exchange self-tests
+  * [crypto] Remove redundant ECDHE algorithm
+  * [crypto] Remove elliptic curve abstraction for X25519
+  * [tls] Use generic key exchange algorithm abstraction for ECDHE
+  * [crypto] Provide Weierstrass curves as generic key exchange algorithms
+  * [crypto] Provide X25519 as a generic key exchange algorithm
+  * [crypto] Add a generic concept of a key exchange algorithm
+  * [nfs] Fix off-by-one heap overflow in nfs_uri_symlink()
+  * [linux] Disable implicit linking against libatomic
+  * [tg3] Use updated DMA APIs
+  * [loong64] Port the RISC-V optimised TCP/IP checksum implementation
+  * [riscv] Simplify TCP/IP checksum calculation
+  * [ci] Update action versions to silence GitHub warnings
+  * [ci] Include UEFI Secure Boot builds for RISC-V 64 and LoongArch64
+  * [loong64] Replace optimised string operations
+  * [build] Mark core riscv64 files as permitted for UEFI Secure Boot
+  * [neighbour] Discard deferred packets before discarding complete entries
+  * [build] Mark core loong64 headers as permitted for UEFI Secure Boot
+  * [doc] Add an AI contribution policy
+  * [virtio] Replace the virtio core and network device driver
+  * [lacp] Use the same system identifier for all ports
+  * [pci] Provide pci_bar_is_io() to determine BAR type
+  * [ioapi] Allow combined port accessors to be used in Secure Boot builds
+  * [tls] Add support for RSA-PSS signature scheme
+  * [tls] Split out hybrid MD5+SHA1 algorithm used in TLS version 1.1
+  * [crypto] Add support for RSA-PSS signature scheme
+  * [crypto] Allow for alternative RSA signature schemes
+  * [test] Use mock random data for public key self-tests
+  * [bnxt] Do not abort teardown on command failure
+  * [bnxt] Improve code readability and debug output
+  * [librm] Specify regparm function attribute only for i386
+  * [build] Remove redundant regparm function attribute for x86_64
+  * [w89c840] Fix build warnings with GCC 16
+  * [intel] Add PCI ID for I219-V and -LM existing of 18-29
+  * [efi] Register EFI IPv6 device path settings as netX.ndp
+  * [tls] Treat signature algorithm identifiers as opaque 16-bit values
+  * [crypto] Fail all operations for the null public-key algorithm
+  * [efi] Fix operator precedence in autoexec network download
+  * [crypto] Add support for HKDF key derivation
+  * [cloud] Separate snapshot deletion from image deletion for Alibaba Cloud
+  * [virtio] Ensure that device is closed before unmapping regions
+  * [virtio] Fix assertion failures when interface is closed
+  * [virtio] Set MTU for both modern and legacy devices
+  * [cloud] Mark imported images as supporting NVMe for Alibaba Cloud
+  * [cloud] Delete underlying snapshots when deleting Alibaba Cloud images
+  * [ci] Add a workflow to import images to Alibaba Cloud
+  * [cloud] Retry all Alibaba Cloud API calls
+  * [cloud] Do not rely on CopyImage to import images to Alibaba Cloud
+  * [cloud] Do not rely on ECS instances to import images to Alibaba Cloud
+  * [cloud] Do not rely on Function Compute to import images to Alibaba Cloud
+  * [cloud] Support creation of a censorship bypass role for Alibaba Cloud
+  * [cloud] Add utility to set up VPCs and security groups in Alibaba Cloud
+  * [cloud] Update disk log console tool descriptions
+  * [cloud] Fix architecture detection for partitioned disk images
+  * [efi] Add disk log console support
+  * [disklog] Generalise disk log console mechanism
+  * [disklog] Generalise CONSOLE_INT13 to CONSOLE_DISKLOG
+  * [undi] Pad transmit buffer length to work around vendor driver bugs
+  * [efi] Remove the Dhcp6Dxe driver veto
+  * [efi] Drop to external TPL when unloading vetoed images
+  * [efi] Add partition information protocol header and GUID definition
+  * [efi] Update to current EDK2 headers
+  * [build] Add Ubuntu/Debian syslinux mbr.bin search path
+  * [build] Allow binaries to request a log partition from genfsimg
+  * [build] Work around syslinux bugs in FAT cluster counting
+  * [build] Use sector count values consistently in genfsimg
+  * [build] Use a partition table in generated USB disk images
+  * [build] Ensure that generated filesystem images retain no stale content
+  * [cloud] Omit uploading empty blocks to EBS snapshots
+  * [cloud] Add utility to read INT13CON partition in Alibaba Cloud
+  * [bnxt] Update conditions for invoking short commands
+  * [cloud] Add utility for importing images to Alibaba Cloud
+  * [undi] Drag in PCI-specific configuration
+  * [efi] Add a dummy SBOM PE section
+  * [ci] Add a workflow to import images to Google Cloud
+  * [cloud] Specify Google Cloud project explicitly for storage client
+  * [test] Assign unique MAC addresses for test network devices
+  * [ci] Fix family name used for AWS image imports
+  * [ci] Add a workflow to import images to AWS EC2
+  * [cloud] Add ability to upload AMI list to an S3 bucket
+  * [release] Update version number after release
+  * [release] Release version 2.0.0
+  * [doc] Update change log in preparation for release
+  * [efi] Do not unconditionally raise back to internal TPL
+  * [efi] Allow creating an image device handle with no parent device
+  * [efi] Install protocols onto a dedicated device handle
+  * [efi] Allow executing images even with no open network devices
+  * [efi] Try all supported autoexec protocols
+  * [efi] Treat a URI device path as higher priority than a cached DHCP packet
+  * [github] Add organization to sponsorship links
+  * [doc] Add contribution guidelines
+  * [cachedhcp] Set current working URI to cached DHCP filename
+  * [ci] Include Secure Boot ISO and USB images in release artifacts
+  * [build] Use Markdown consistently within release notes
+  * [build] Add support for including a UEFI shim in filesystem images
+  * [efi] Automatically open network device matching loaded image device path
+  * [tftp] Use TFTP server URI only if no other working URI is set
+  * [tls] Transmit a closure alert when closing the connection
+  * [tls] Respond to received closure alerts
+  * [cachedhcp] Automatically open network device matching cached DHCPACK
+  * [dynui] Allow for duplicate shortcut keys
+  * [doc] Add release process documentation
+  * [bnxt] Update link speed definitions
+  * [efi] Allow for the existence of multiple shim lock protocols
+  * [efi] Support the EFI_PXE_BASE_CODE_TFTP_GET_FILE_SIZE operation
+  * [xferbuf] Silently discard data written to a void data transfer buffer
+  * [xferbuf] Record maximum required size
+  * [ci] Remove now-redundant "netboot" job
+  * [build] Create util/gensrvimg for building network boot server images
+  * [bnxt] Fix memory leak in probe()
+  * [bnxt] Skip unnecessary calls for VFs
+  * [tls] Remove current time from client random bytes
+  * [ipv6] Obtain MTU setting from NDP
+  * [bnxt] Remove access of deprecated link speed variables
+  * [bnxt] Fix typo in function declaration
+  * [bnxt] Fix coding style
+  * [bnxt] Correct port index usage
+  * [pxeprefix] Add a minimal iPXE NBP metadata header
+  * [build] Use little-endian word values in genfsimg
+  * [ci] Add a job to automatically create releases
+  * [ci] Remove redundant duplicate creation of version.txt
+  * [build] Allow for generation of all release information
+  * [doc] Fix header levels in Markdown files
+  * [doc] Update README
+  * [doc] Add an initial changelog
+  * [build] Allow for construction of a text file containing the version
+  * [build] Mark system logger as permitted for UEFI Secure Boot
+  * [ci] Create a network bootable files archive as a build artifact
+  * [ci] Include latest iPXE shim in build artifacts
+  * [ci] Use ipxe-builder-utils container for combined BIOS/UEFI images
+  * [ci] Include CA certificate file alongside signed binaries
+  * [ci] Allow for manually triggered workflow runs
+  * [ci] Add support for building UEFI Secure Boot signed binaries
+  * [ci] Schedule Coverity Scan run via GitHub Actions
+  * [build] Include USB drivers in the all-drivers build by default
+  * [build] Handle all driver list construction via parserom.pl
+  * [build] Mark Xen HVM files as permitted for UEFI Secure Boot
+  * [ci] Include Linux userspace build artifacts
+  * [slirp] Disable warnings for uncleanly deprecated libslirp functions
+  * [build] Include PCI drivers only in BIOS and UEFI builds
+  * [build] Include devicetree drivers in the SBI all-drivers build
+  * [dt] Add DT_ROM() and DT_ID() macros
+  * [build] Include Xen and Hyper-V drivers only in x86 BIOS and UEFI builds
+  * [build] Include Linux network drivers in the Linux all-drivers build
+  * [linux] Remove unused can_probe field from driver definition
+  * [build] Include ISA drivers only in 32-bit BIOS builds
+  * [ci] Include Secure Boot build artifacts
+  * [build] Filter out non-permitted drivers for UEFI Secure Boot
+  * [build] Drag in Xen and Hyper-V support via network device drivers
+  * [build] Construct driver rules for USB devices
+  * [build] Construct driver lists for each bus type
+  * [build] Allow PCI_ROM() and ISA_ROM() to span multiple lines
+  * [usb] Add USB_ROM() and USB_ID() macros
+  * [librm] Work around two errata in the 386's "popal" instruction
+  * [syslog] Allow port number to be specified for encrypted syslog server
+  * [ci] Include supported network device list in build artifacts
+  * [loong64] Fix error identifier generation for LoongArch64
+  * [ci] Include error identifier list in build artifacts
+  * [pci] Ignore invalid subordinate bus numbers
+  * [ci] Show rolling release publication URL
+  * [efi] Cache identified PCI root bridge I/O protocol handle
+  * [uri] Ensure "##params=" separator is correct
+  * [ci] Run tests on pull requests
+  * [build] Mark MS-CHAPv2 as permitted for UEFI Secure Boot
+  * [build] Ensure dependencies of version.c are always rebuilt as expected
+  * [build] Exclude local named config headers from annotation checks
+  * [ci] Publish rolling release binaries via https://boot.ipxe.org
+  * [ci] Publish rolling release build artifacts with stable URLs
+  * [ci] Produce combined BIOS/UEFI ISO and USB images
+  * [ci] Upload a selection of build artifacts from each run
+  * [build] Exclude external files from annotation checks
+  * [build] Mark compressed image tools as permitted for UEFI Secure Boot
+  * [build] Mark FDT management tools as permitted for UEFI Secure Boot
+  * [build] Mark core arm64 files as permitted for UEFI Secure Boot
+  * [xen] Update to latest stable release headers
+  * [build] Mark dummy architecture headers as permitted for UEFI Secure Boot
+  * [build] Mark direct kernel loading as forbidden for UEFI Secure Boot
+  * [build] Mark GDB stub as forbidden for UEFI Secure Boot
+  * [build] Mark Realtek driver as permitted for UEFI Secure Boot
+  * [efi] Avoid dragging in IPv4, IPv6, and DNS support unconditionally
+  * [build] Mark EFI SNP/MNP driver wrappers as permitted for UEFI Secure Boot
+  * [prefix] Make unlzma.S compatible with 386 class CPUs
+  * [ci] Use prebuilt containers to build and test iPXE
+  * [build] Allow GITVERSION to be specified as an environment variable
+  * [build] Do not use "git log" to construct build timestamp
+  * [build] Do not use "git describe" to construct version number
+  * [build] Allow for per-architecture sysroots
+  * [ci] Update to ubuntu-24.04 GitHub actions runner
+  * [build] Extend default configuration for non-BIOS builds
+  * [usb] Drag in USB commands only when USB support is present
+  * [pci] Drag in PCI commands only when PCI support is present
+  * [build] Canonicalise console type configuration
+  * [build] Canonicalise USB configuration
+  * [build] Canonicalise settings sources configuration
+  * [build] Sort general configuration in order of approachability
+  * [build] Canonicalise remaining portions of general configuration
+  * [build] Canonicalise SAN boot protocol configuration
+  * [build] Canonicalise download protocol configuration
+  * [build] Canonicalise network protocol configuration
+  * [build] Canonicalise command list configuration
+  * [build] Canonicalise image type configuration
+  * [build] Mark more reviewed files as permitted for UEFI Secure Boot
+  * [build] Fail Secure Boot builds unless all files are permitted
+  * [build] Mark MD4 and MD5 as forbidden for UEFI Secure Boot
+  * [build] Mark known reviewed files as permitted for UEFI Secure Boot
+  * [build] Mark core files as permitted for UEFI Secure Boot
+  * [build] Check for standalone FILE_LICENCE() and FILE_SECBOOT() declarations
+  * [console] Mark generated keymaps as permitted for Secure Boot
+  * [build] Mark existing files as explicitly forbidden for Secure Boot
+  * [efi] Mark imported EDK2 headers as permitted for Secure Boot
+  * [efi] Update to current EDK2 headers
+  * [build] Define a mechanism for marking Secure Boot permissibility
+  * [neighbour] Treat delayed transmissions as pending operations
+  * [tcp] Report TCP statistics via the "ipstat" command
+  * [malloc] Increase heap size to 4MB
+  * [tcp] Discard packets that lie immediately before the receive window
+  * [neighbour] Add the ability to artificially delay outbound packets
+  * [neighbour] Split out deferred transmission from discovery completion
+  * [neighbour] Use discovery protocol field to identify incomplete neighbours
+  * [neighbour] Always use network device's own link-layer address
+  * [crypto] Allow for zero-length big integer literals
+  * [test] Update big integer tests to use okx()
+  * [crypto] Fix identification of non-wrapped elliptic curve identifiers
+  * [crypto] Add ECDSA-based TLS cipher suites
+  * [test] Add test cases for X.509 certificates with ECDSA signatures
+  * [crypto] Add OID-identified algorithms for ECDSA with SHA2 hash family
+  * [crypto] Allow ecPublicKey to be identified as a public-key algorithm
+  * [test] Ensure OID-identified algorithms are present for X.509 tests
+  * [x509] Correct debug message
+  * [crypto] Add support for ECDSA signatures
+  * [test] Test verification of constructed signature
+  * [crypto] Allow for an explicit representation of point at infinity
+  * [test] Test signature verification independently of signing
+  * [intel] Add PCI ID for I219-V and -LM 24
+  * [efi] Retry calls to GetRNG() as needed
+  * [crypto] Generalise rsa_parse_integer() to asn1_enter_unsigned()
+  * [crypto] Allow for addition of arbitrary Weierstrass curve points
+  * [crypto] Split out Weierstrass point initialisation and finalisation
+  * [crypto] Expose the (prime) group order as an elliptic curve property
+  * [crypto] Verify that weierstrass_multiply() result is not point at infinity
+  * [test] Allow for elliptic curve tests other than multiplication
+  * [crypto] Expose the base point as an explicit elliptic curve property
+  * [http] Abort connections after a long period of inactivity
+  * [http] Rename connection retry timer
+  * [crypto] Allow for OID-identified elliptic curve algorithms
+  * [test] Include key matching in existing public-key tests
+  * [crypto] Remove obsolete maximum output length method
+  * [crypto] Construct asymmetric ciphered data using ASN.1 builders
+  * [crypto] Construct signatures using ASN.1 builders
+  * [crypto] Pass signatures for verification as ASN.1 cursors
+  * [crypto] Restructure handling of ASN.1 bit strings
+  * [intel] Add PCI IDs for I225 and I226 chipsets
+  * [efi] Allow for creating devices with no EFI parent device
+  * [pci] Use runtime selectable PCI I/O API for EFI cloud builds
+  * [pci] Allow probing permission to vary by range
+  * [pci] Use linker tables for runtime selectable PCI APIs
+  * [pci] Allow PCI configuration space access mechanism to vary by range
+  * [arm] Avoid unaligned accesses for memcpy() and memset()
+  * [efi] Wrap a selection of runtime services calls
+  * [efi] Allow SAN-booted images to be traced via DEBUG=efi_wrap
+  * [efi] Add image security database GUID definition
+  * [efi] Add Microsoft vendor GUID definition
+  * [efi] Add storage security command protocol header and GUID definition
+  * [efi] Update to current EDK2 headers
+  * [efi] Mark Arm/ProcessorBind.h as a non-imported header
+  * [efi] Mark Ip4Config.h as a non-imported header
+  * [efi] Mark UgaDraw.h as a non-imported header
+  * [efi] Switch back to VA_START() etc macros for EFIAPI functions
+  * [efi] Skip including the EDK2 ProcessorBind.h header for 32-bit RISC-V
+  * [pci] Move ECAM pci_can_probe() definition to correct header file
+  * [spcr] Accept alternative type value for a 16550-compatible UART
+  * [acpi] Allow acpi_ioremap() to map a port I/O address
+  * [ioapi] Allow iounmap() to be called for port I/O addresses
+  * [spcr] Use the serial port defined by the ACPI SPCR by default
+  * [spcr] Add support for the ACPI Serial Port Console Redirection table
+  * [acpi] Add acpi_ioremap() to map an ACPI-described address
+  * [uart] Make baud rate a property of the UART
+  * [uart] Support 16550 UARTs accessed via either MMIO or port I/O
+  * [ioapi] Provide combined MMIO and port I/O accessors
+  * [pci] Disable decoding while setting a BAR value
+  * [cloud] Display instance type in AWS EC2
+  * [ena] Leave queue base address empty when creating a low latency queue
+  * [riscv] Correct page table stride calculation
+  * [librm] Correct page table stride calculation
+  * [cloud] Display build architecture in AWS EC2
+  * [cloud] Remove AWS public image access block only if not already unblocked
+  * [cloud] Remove AWS public image access block automatically if needed
+  * [ena] Limit receive queue size to work around hardware bugs
+  * [ena] Increase transmit queue size to match receive fill level
+  * [ena] Add memory barrier after writing to on-device memory
+  * [ena] Increase receive fill level
+  * [ena] Add support for low latency transmit queues
+  * [ena] Record supported device features
+  * [ena] Cancel uncompleted transmit buffers on close
+  * [ena] Map the on-device memory, if present
+  * [ena] Add descriptive messages for any admin queue command failures
+  * [pci] Record prefetchable memory window for PCI bridges
+  * [ena] Use pci_bar_set() to place device within bridge memory window
+  * [pci] Handle sizing of 64-bit BARs
+  * [tls] Disable renegotiation unless extended master secret is used
+  * [tls] Refuse to resume sessions with mismatched master secret methods
+  * [tls] Add support for the Extended Master Secret
+  * [tls] Generate master secret only after sending Client Key Exchange
+  * [gve] Rearm interrupts unconditionally on every poll
+  * [gve] Use raw DMA addresses in descriptors in DQO-QPL mode
+  * [gve] Report only packet completions for the transmit ring
+  * [gve] Use dummy interrupt to trigger completion writeback in DQO mode
+  * [gve] Add missing memory barriers
+  * [intelxl] Use default dummy MSI-X target address
+  * [pci] Map all MSI-X interrupts to a dummy target address by default
+  * [gve] Select preferred operating mode
+  * [gve] Add support for out-of-order queues
+  * [gve] Cancel pending transmissions when closing device
+  * [bnxt] Handle link related async events
+  * [gve] Allow for descriptor and completion lengths to vary by mode
+  * [gve] Rename GQI-specific data structures and constants
+  * [gve] Allow for out-of-order buffer consumption
+  * [gve] Add support for raw DMA addressing
+  * [gve] Add concept of a queue page list base device address
+  * [gve] Set descriptor and completion ring sizes when creating queues
+  * [gve] Add concept of operating mode
+  * [gve] Remove separate concept of "packet descriptor"
+  * [gve] Parse option list returned in device descriptor
+  * [bnxt] Add error recovery support
+  * [efi] Use current boot option as a fallback for obtaining the boot URI
+  * [efi] Add ability to extract device path from an EFI load option
+  * [libc] Add wcsnlen()
+
+-------------------------------------------------------------------
 Tue Jun 30 08:35:01 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Fix QEMU live migration (bsc#1269260) issues by match the legacy

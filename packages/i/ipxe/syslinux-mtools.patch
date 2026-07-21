@@ -1,11 +1,13 @@
---- ipxe-1.21.1+git20231006.ff0f8604/src/util/genfsimg~	2023-10-06 13:50:43.000000000 +0200
-+++ ipxe-1.21.1+git20231006.ff0f8604/src/util/genfsimg	2023-10-18 18:30:45.850946442 +0200
-@@ -273,7 +273,7 @@
-     mformat -v iPXE -i "${FATIMG}" ${FATARGS} ::
-     mcopy -i "${FATIMG}" -s "${FATDIR}"/* ::
+diff --git a/src/util/genfsimg b/src/util/genfsimg
+index 611d3350a..469edad27 100755
+--- a/src/util/genfsimg
++++ b/src/util/genfsimg
+@@ -426,7 +426,7 @@ if [ -n "${FATIMG}" ] ; then
+     mformat -v iPXE ${FATARGS} F:
+     mcopy -s "${FATDIR}"/* F:
      if [ "${BIOSDIR}" = "${FATDIR}" ] ; then
--	syslinux "${FATIMG}"
-+	syslinux-mtools "${FATIMG}"
+-	syslinux --offset "$(( FATOFFS * 512 ))" "${FATIMG}"
++	syslinux-mtools --offset "$(( FATOFFS * 512 ))" "${FATIMG}"
      fi
  fi
  

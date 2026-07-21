@@ -1,0 +1,6 @@
+# The iPXE ROMs and boot images are raw binary blobs, not ELF binaries.
+# The packages must not be noarch anyway: the images are built for and
+# differ per architecture.
+addFilter("no-binary")
+# iPXE has no testsuite that could be run in OBS
+addFilter("no-%check-section")

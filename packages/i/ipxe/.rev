@@ -249,4 +249,41 @@ use xorrisofs for creating iso
   - Pad all EFI ROMs to exactly 256KB via truncate (forwarded request 1363653 from dfaggioli)</comment>
     <requestid>1363673</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>0bd3339a18e1fcb9c0bea0d91bd3b033</srcmd5>
+    <version>2.0.0+git20260710.58ee55b3c</version>
+    <time>1784668302</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging cleanups:
+  - Drop unused fix-i586.patch and the no_aarch64_cc machinery
+  - Version the qemu-ipxe Provides/Obsoletes
+  - Add license files to the qemu subpackage
+  - Single-source the QEMU NIC list in %build
+  - Merge the config/general.h sed calls
+  - Drop obsolete %defattr
+  - Remove unused ipxe.efi directory creation
+  - _service: use mode=&quot;manual&quot; instead of the deprecated mode=&quot;disabled&quot;
+  - Add ipxe-rpmlintrc to filter the bogus no-binary error
+
+- Disable serial. We have -nographic for that, and having both
+  enabled causes the output to be mangled (bsc#1271154).
+
+- Update to version 2.0.0+git20260710.58ee55b3c:
+  * [image] Make text-based image data usable by string functions
+  * [xferbuf] Provide an image-backed data transfer buffer
+  * [libc] Add strchrnul()
+  * [hermon] Check for failure from pci_ioremap()
+  * [tls] Retain a reference in the key schedule to the bound identity
+  * [tls] Reject incorrect server names before completing validation
+  * [tls] Guard against resuming from an empty resumption master secret
+  * [tls] Poison initial resumption master secret
+  * [tls] Poison initial key derivation function master secret
+  * [tls] Track and check key schedule state
+  * [tls] Guard against a premature server Finished
+  * [tls] Send closure alert only when we are initiating the closure
+  * [tls] Handle key exchange within key schedule
+  * [cloud] Use &quot;param&quot; command to provide Google metadata request header
+  * [tls] Restructure to use a single key derivation function master secret</comment>
+    <requestid>1366933</requestid>
+  </revision>
 </revisionlist>

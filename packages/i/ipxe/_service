@@ -1,5 +1,5 @@
 <services>
-  <service mode="disabled" name="tar_scm">
+  <service mode="manual" name="tar_scm">
     <param name="scm">git</param>
     <param name="url">https://github.com/ipxe/ipxe.git</param>
     <param name="exclude">.git</param>
@@ -9,9 +9,9 @@
     <param name="extension">tar</param>
     <param name="changesgenerate">enable</param>
   </service>
-  <service mode="disabled" name="recompress">
+  <service mode="manual" name="recompress">
     <param name="file">*.tar</param>
     <param name="compression">xz</param>
   </service>
-  <service mode="disabled" name="set_version"/>
+  <service mode="manual" name="set_version"/>
 </services>

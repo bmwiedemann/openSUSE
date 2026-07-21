@@ -24,22 +24,16 @@
 %endif
 
 Name:           ipxe
-Version:        1.21.1+git20250827.61b4585e2
+Version:        2.0.0+git20260710.58ee55b3c
 Release:        0
 Summary:        A Network Boot Firmware
 License:        GPL-2.0-only
 Group:          System/Boot
 URL:            https://ipxe.org/
 Source:         %{name}-%{version}.tar.xz
+Source1:        %{name}-rpmlintrc
 Patch0:         syslinux-mtools.patch
-Patch9:         fix-i586.patch
 BuildRequires:  binutils-devel
-# Do not build i586 for Leap/SLE: no such port available
-%ifarch i586
-%if 0%{?sle_version}
-%define no_aarch64_cc 1
-%endif
-%endif
 %ifnarch %{ix86} x86_64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-x86_64-gcc7
@@ -47,13 +41,11 @@ BuildRequires:  cross-x86_64-gcc7
 BuildRequires:  cross-x86_64-gcc%{gcc_version}
 %endif
 %endif
-%if !0%{?no_aarch64_cc}
 %ifnarch aarch64
 %if 0%{?sle_version} >= 150000 && 0%{?sle_version} < 159999
 BuildRequires:  cross-aarch64-gcc7
 %else
 BuildRequires:  cross-aarch64-gcc%{gcc_version}
-%endif
 %endif
 %endif
 BuildRequires:  perl
@@ -99,28 +91,20 @@ Summary:        PXE and EFI ROMs for QEMU network devices
 Group:          System/Emulators/PC
 Provides:       qemu-ipxe
 Obsoletes:      qemu-ipxe
-Provides:       ipxe-qemu-roms = %{version}
+Provides:       ipxe-qemu-roms = %{version}-%{release}
 
 %description qemu
 This package contains the iPXE ROMs (legacy PXE and EFI) compiled specifically
 for QEMU emulated network devices.
 
 %prep
-%autosetup -N
-%autopatch -p1 -M 8
-%ifarch %{ix86}
-%autopatch -p1 -m 9
-%endif
+%autosetup -p1
 cd src
 
-# enable compressed images
-sed -i.bak \
+# enable compressed images and HTTPS downloads
+sed -i \
     -e 's,//\(#define.*IMAGE_ZLIB.*\),\1,' \
     -e 's,//\(#define.*IMAGE_GZIP.*\),\1,' \
-    config/general.h
-
-# enable HTTPS downloads
-sed -i.bak \
     -e 's,#undef\(.*DOWNLOAD_PROTO_HTTPS.*\),#define\1,' \
     config/general.h
 
@@ -137,9 +121,10 @@ make_ipxe() {
 # Building QEMU ROMs
 
 # QEMU's legacy virtio ROM must fit in 64KB. For that to happen, let's get
-# rid of HTTPS, ZLIB, GZIP and all the SAN features (just for the QEMU ROMs
-# of course, using iPXE's local config mechanism).
+# rid of HTTPS, ZLIB, GZIP, all the SAN features and some switch protocols
+# (just for the QEMU ROMs of course, using iPXE's local config mechanism).
 cat <<EOF > config/local/general.h
+#undef NET_PROTO_IPV6
 #undef DOWNLOAD_PROTO_HTTPS
 #undef IMAGE_ZLIB
 #undef IMAGE_GZIP
@@ -147,33 +132,40 @@ cat <<EOF > config/local/general.h
 #undef SANBOOT_PROTO_AOE
 #undef SANBOOT_PROTO_IB_SRP
 #undef SANBOOT_PROTO_FCP
+#undef NET_PROTO_STP
+#undef NET_PROTO_LACP
+#undef NET_PROTO_EAPOL
+#undef NET_PROTO_LLDP
 EOF
 
-# Enable serial output (so, e.g., -nographic, works).
+# Disable serial. We have -nographic for that, and having both
+# enabled causes the output to be mangled.
 cat <<EOF > config/local/console.h
-#define CONSOLE_SERIAL
+#undef CONSOLE_SERIAL
 EOF
 
-QEMU_NICS="e1000:8086:100e eepro100:8086:1209 ne2k_pci:10ec:8029 pcnet:1022:2000 rtl8139:10ec:8139 virtio:1af4:1000 e1000e:8086:10d3 vmxnet3:15ad:07b0"
+# NICs for which QEMU expects both legacy PXE and EFI ROMs
+LEGACY_NICS="e1000:8086:100e eepro100:8086:1209 ne2k_pci:10ec:8029 pcnet:1022:2000 rtl8139:10ec:8139 virtio:1af4:1000"
+# NICs for which QEMU expects EFI ROMs only
+EFI_ONLY_NICS="e1000e:8086:10d3 vmxnet3:15ad:07b0"
 
 CROSS_PREFIX=""
 %ifnarch %{ix86} x86_64
 CROSS_PREFIX="CROSS=x86_64-suse-linux-"
 %endif
 
-for nic in $QEMU_NICS; do
-    name=$(echo "$nic" | cut -d: -f1)
-    vid=$(echo "$nic" | cut -d: -f2)
-    did=$(echo "$nic" | cut -d: -f3)
+for nic in $LEGACY_NICS $EFI_ONLY_NICS; do
+    IFS=: read -r name vid did <<< "$nic"
     # for EfiRom: -f Vendor ID, -i Device ID, -l 0x02 (Network Controller PCI Class)
     EFI_ARGS="-f 0x${vid} -i 0x${did} -l 0x02"
 
     # Build legacy ROMs
-    if [ "$name" != "e1000e" ] && [ "$name" != "vmxnet3" ]; then
+    case " $LEGACY_NICS " in *" $nic "*)
         make_ipxe $CROSS_PREFIX bin/${vid}${did}.rom
         cp bin/${vid}${did}.rom pxe-${name}.rom
         EFI_ARGS="$EFI_ARGS -b bin/${vid}${did}.rom"
-    fi
+        ;;
+    esac
 
     # Build EFI drivers
     %ifnarch %{ix86}
@@ -186,7 +178,8 @@ for nic in $QEMU_NICS; do
 done
 
 # QEMU's padding logic (for legacy and EFI ROMs)
-for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio; do
+for nic in $LEGACY_NICS; do
+    name=${nic%%%%:*}
     size=$(stat -c '%s' pxe-${name}.rom)
     if [ "$name" = "virtio" ]; then
         if [ $size -gt 65536 ]; then echo "virtio rom too large"; exit 1; fi
@@ -198,7 +191,8 @@ for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio; do
         fi
     fi
 done
-for name in e1000 eepro100 ne2k_pci pcnet rtl8139 virtio e1000e vmxnet3; do
+for nic in $LEGACY_NICS $EFI_ONLY_NICS; do
+    name=${nic%%%%:*}
     size=$(stat -c '%s' efi-${name}.rom)
     # This is the size of the ROMs provided by the old qemu-ipxe package.
     # If this one is larger, we'll have live migration issues (bsc#1269260).
@@ -233,7 +227,7 @@ make_ipxe CROSS="x86_64-suse-linux-" bin-x86_64-efi/snp.efi
 %ifarch aarch64
 make_ipxe bin-arm64-efi/snp.efi
 %else
-%{!?no_aarch64_cc:make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi}
+make_ipxe CROSS="aarch64-suse-linux-" bin-arm64-efi/snp.efi
 %endif
 
 make_ipxe \
@@ -244,17 +238,16 @@ make_ipxe \
 
 %install
 mkdir -p %{buildroot}/%{_datadir}/%{name}/
-mkdir -p %{buildroot}/%{_datadir}/%{name}.efi/
 
-install -D -m0644 src/bin/undionly.kpxe %{buildroot}/%{_datadir}/%{name}/
-install -D -m0644 src/bin/ipxe.{%{buildtargets}} %{buildroot}/%{_datadir}/%{name}/
-install -D -m0644 src/bin-i386-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-i386.efi
-install -D -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-i386.efi
+install -m0644 src/bin/undionly.kpxe %{buildroot}/%{_datadir}/%{name}/
+install -m0644 src/bin/ipxe.{%{buildtargets}} %{buildroot}/%{_datadir}/%{name}/
+install -m0644 src/bin-i386-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-i386.efi
+install -m0644 src/bin-i386-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-i386.efi
 %ifnarch %{ix86}
-install -D -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-x86_64.efi
-install -D -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
+install -m0644 src/bin-x86_64-efi/ipxe.efi %{buildroot}/%{_datadir}/%{name}/ipxe-x86_64.efi
+install -m0644 src/bin-x86_64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-x86_64.efi
 %endif
-%{!?no_aarch64_cc:install -D -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi}
+install -m0644 src/bin-arm64-efi/snp.efi %{buildroot}/%{_datadir}/%{name}/snp-arm64.efi
 %if 0%{?do_floppy}
 ln -s ipxe.sdsk %{buildroot}/%{_datadir}/%{name}/floppy.img
 %endif
@@ -264,7 +257,6 @@ install -m0644 src/pxe-*.rom %{buildroot}/%{_datadir}/qemu/
 install -m0644 src/efi-*.rom %{buildroot}/%{_datadir}/qemu/
 
 %files bootimgs
-%defattr(-,root,root)
 %dir %{_datadir}/%{name}
 %{_datadir}/%{name}/ipxe.{%{buildtargets}}
 %if 0%{?do_floppy}
@@ -276,12 +268,12 @@ install -m0644 src/efi-*.rom %{buildroot}/%{_datadir}/qemu/
 %{_datadir}/%{name}/ipxe-x86_64.efi
 %{_datadir}/%{name}/snp-x86_64.efi
 %endif
-%{!?no_aarch64_cc:%{_datadir}/%{name}/snp-arm64.efi}
+%{_datadir}/%{name}/snp-arm64.efi
 %{_datadir}/%{name}/undionly.kpxe
 %license COPYING COPYING.GPLv2 COPYING.UBDL
 
 %files qemu
-%defattr(-,root,root)
+%license COPYING COPYING.GPLv2 COPYING.UBDL
 %dir %{_datadir}/qemu
 %{_datadir}/qemu/pxe-*.rom
 %{_datadir}/qemu/efi-*.rom
