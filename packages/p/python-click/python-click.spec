@@ -27,7 +27,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-click%{psuffix}
-Version:        8.4.1
+Version:        8.4.2
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
@@ -75,7 +75,7 @@ donttest="test_echo_via_pager"
 %if %{without test}
 %files %{python_files}
 %license LICENSE.txt
-%doc CHANGES.rst README.md
+%doc README.md
 %{python_sitelib}/click
 %{python_sitelib}/click-%{version}.dist-info
 %endif

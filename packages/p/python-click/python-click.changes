@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul  8 12:17:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.4.2
+  * Fix Fish shell completion broken in 8.4.0 by #3126. Newlines and
+    tabs in option help text are now escaped, keeping the original
+    completion format while still supporting multi-line help.
+  * Deprecated commands and options with empty or missing help text no
+    longer render a stray leading space before the (DEPRECATED) label.
+  * A Group with invoke_without_command=True marks its subcommand as
+    optional in the usage help, showing [COMMAND] instead of COMMAND.
+  * echo_via_pager flushes after each write, so passing a generator
+    streams output to the pager incrementally instead of staying hidden
+    until the pipe buffer fills.
+  * Fix CLI usage symopsis for optional arguments producing double
+    square brackets whose type already brackets their metavar.
+  * version_option() resolves a package_name that does not match an
+    installed distribution as an import (top-level module) name via
+    importlib.metadata.packages_distributions().
+
+-------------------------------------------------------------------
 Mon Jun 15 07:40:40 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 8.4.1:
