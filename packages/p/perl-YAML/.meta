@@ -8,5 +8,4 @@ readability. It can be used to express the data structures of most modern
 programming languages. (Including Perl!!!)
 
 For information on the YAML syntax, please refer to the YAML specification.</description>
-  <devel project="devel:languages:perl" package="perl-YAML"/>
 </package>

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-YAML
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,43 +18,22 @@
 
 %define cpan_name YAML
 Name:           perl-YAML
-Version:        1.310.0
+Version:        1.320.0
 Release:        0
-%define cpan_version 1.31
+# v1.320.0 -> normalize -> 1.320.0
+%define cpan_version v1.320.0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML Ain't Markup Language™
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/I/IN/INGY/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/T/TI/TINITA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::YAML) >= 1.05
-Provides:       perl(YAML) = %{version}
-Provides:       perl(YAML::Any) = %{version}
-Provides:       perl(YAML::Dumper)
-Provides:       perl(YAML::Dumper::Base)
-Provides:       perl(YAML::Error)
-Provides:       perl(YAML::Loader)
-Provides:       perl(YAML::Loader::Base)
-Provides:       perl(YAML::Marshall)
-Provides:       perl(YAML::Mo)
-Provides:       perl(YAML::Node)
-Provides:       perl(YAML::Tag)
-Provides:       perl(YAML::Type::blessed)
-Provides:       perl(YAML::Type::code)
-Provides:       perl(YAML::Type::glob)
-Provides:       perl(YAML::Type::ref)
-Provides:       perl(YAML::Type::regexp)
-Provides:       perl(YAML::Type::undef)
-Provides:       perl(YAML::Types)
-Provides:       perl(YAML::Warning)
-Provides:       perl(yaml_mapping)
-Provides:       perl(yaml_scalar)
-Provides:       perl(yaml_sequence)
-%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -68,7 +47,7 @@ programming languages. (Including Perl!!!)
 For information on the YAML syntax, please refer to the YAML specification.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

@@ -388,4 +388,16 @@
 </comment>
     <requestid>1156524</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>fc4dacc8cff6eadf48b824b4e938aa72</srcmd5>
+    <version>1.320.0</version>
+    <time>1784667310</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.320.0 (v1.320.0)
+   see /usr/share/doc/packages/perl-YAML/Changes
+  v1.320.0 2026-07-20 13:38:21+02:00
+   - Security: Avoid backtracking leading to exponential load time.
+     CVE-2026-63676 Thanks CPANSec</comment>
+    <requestid>1366768</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:21:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.320.0 (v1.320.0)
+   see /usr/share/doc/packages/perl-YAML/Changes
+
+  v1.320.0 2026-07-20 13:38:21+02:00
+   - Security: Avoid backtracking leading to exponential load time.
+     CVE-2026-63676 Thanks CPANSec
+
+-------------------------------------------------------------------
 Fri Mar  8 23:12:07 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides
