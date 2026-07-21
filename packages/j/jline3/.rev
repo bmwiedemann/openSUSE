@@ -127,4 +127,12 @@
     <comment>Add bug number</comment>
     <requestid>1363904</requestid>
   </revision>
+  <revision rev="17" vrev="3">
+    <srcmd5>d545cfa6646a7346479f85e1f68fab72</srcmd5>
+    <version>3.30.15</version>
+    <time>1784668246</time>
+    <user>dimstar_suse</user>
+    <comment>Add CVE numbers + juniversalchardet configurable</comment>
+    <requestid>1366911</requestid>
+  </revision>
 </revisionlist>

@@ -30,6 +30,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %bcond_with ffm
 %endif
 %bcond_with ssh
+%bcond_with juniversalchardet
 Name:           jline3
 Version:        3.30.15
 Release:        0
@@ -48,6 +49,9 @@ BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jna
 BuildRequires:  jsr-305
+%if %{with juniversalchardet}
+BuildRequires:  juniversalchardet
+%endif
 %if %{with ssh}
 BuildRequires:  apache-sshd
 BuildRequires:  slf4j
@@ -221,7 +225,11 @@ BuildArch:      noarch
 API documentation for %{name}.
 
 %prep
-%autosetup -n %{name}-jline-%{version} -p1 -a1
+%setup -q -n %{name}-jline-%{version} -a1
+%if %{without juniversalchardet}
+%patch -P 0 -p1
+%pom_remove_dep -r :juniversalchardet . jline
+%endif
 
 sed "s;@SYSTEMLIBRARYPATH@;%{_libdir}/%{name}/;g" < %{SOURCE100} | patch -p1
 
@@ -232,9 +240,6 @@ rm -r native/src/main/resources/org/jline/nativ/*/
 
 # -Werror is considered harmful for downstream packaging
 sed -i /-Werror/d $(find -name pom.xml)
-
-# Optional dependency on juniversalchardet was removed via a patch
-%pom_remove_dep -r :juniversalchardet . jline
 
 %if %{without ffm}
 %pom_disable_module terminal-ffm
@@ -321,6 +326,10 @@ build-jar-repository -s lib \
     jansi/jansi \
     jna/jna \
     jsr-305
+%if %{with juniversalchardet}
+  build-jar-repository -s lib \
+    juniversalchardet/juniversalchardet
+%endif
 %if %{with ssh}
   build-jar-repository -s lib \
     apache-sshd/sshd-common \

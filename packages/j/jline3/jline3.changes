@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 09:28:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Make the building with juniversalchardet configurable, but keep
+  it disabled by default
+
+-------------------------------------------------------------------
 Wed Jul  1 13:32:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.30.15
@@ -34,9 +40,9 @@ Tue Jun 30 08:35:57 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 - Update to upstream version 3.30.14
   * Security fixes
     + fix: clamp NAWS terminal dimensions to prevent CPU exhaustion
-      (GHSA-2r2c-cx56-8933, bsc#1270083)
+      (CVE-2026-56741, GHSA-2r2c-cx56-8933, bsc#1270083)
     + fix: cap NEW-ENVIRON variable count to prevent heap exhaustion
-      (GHSA-47qp-hqvx-6r3f, bsc#1269021)
+      (CVE-2026-56740, GHSA-47qp-hqvx-6r3f, bsc#1269021)
 - Removed patch:
   * jline3-GHSA-47qp-hqvx-6r3f.patch
     + integrated in this version
