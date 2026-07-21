@@ -97,4 +97,15 @@
   * Do not use return inside a finally block.</comment>
     <requestid>1319607</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>195ef43ad55c5c4f94e8d3e9e0e02974</srcmd5>
+    <version>2.3.1</version>
+    <time>1784668204</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.3.1:
+  * If a HEAD request raises an exception fallback to a GET
+  * Drop Python 3.9, and do not use return in a finally block
+- Drop patch support-python314.patch, merged upstream.</comment>
+    <requestid>1366858</requestid>
+  </revision>
 </revisionlist>

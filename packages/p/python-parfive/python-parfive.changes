@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:41:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.3.1:
+  * If a HEAD request raises an exception fallback to a GET
+  * Drop Python 3.9, and do not use return in a finally block
+- Drop patch support-python314.patch, merged upstream.
+
+-------------------------------------------------------------------
 Mon Nov 24 01:39:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

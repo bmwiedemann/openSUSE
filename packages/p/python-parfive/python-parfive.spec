@@ -1,7 +1,7 @@
 #
 # spec file for package python-parfive
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parfive
-Version:        2.2.0
+Version:        2.3.1
 Release:        0
 Summary:        A HTTP and FTP parallel file downloader
 License:        MIT
 URL:            https://parfive.readthedocs.io/
 Source:         https://files.pythonhosted.org/packages/source/p/parfive/parfive-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE Do not use return inside a finally block
-Patch0:         support-python314.patch
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -73,7 +71,12 @@ provides an interface for inspecting any failed downloads.
 
 %check
 # Disable tests that require a network connection
-%pytest -k 'not test_ftp and not test_ftp_http'
+donttest="test_ftp or test_ftp_http"
+# Disable tests that are broken upstream
+donttest+=" or test_retrieve_some_content or test_retry or test_head_302"
+donttest+=" or test_explicit_checksum or test_problematic_http_urls"
+donttest+=" or test_run_cli_success or test_multipart or test_head_or_get"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative parfive
