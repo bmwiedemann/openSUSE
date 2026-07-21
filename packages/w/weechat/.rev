@@ -1018,4 +1018,12 @@
     <comment>Update to 4.9.3</comment>
     <requestid>1363873</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>75537741123c261ebf5f1ed509cbcec9</srcmd5>
+    <version>4.9.4</version>
+    <time>1784668134</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.9.4</comment>
+    <requestid>1366796</requestid>
+  </revision>
 </revisionlist>
