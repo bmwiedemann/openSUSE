@@ -163,4 +163,12 @@
   * `opentelemetry-instrumentation`: update auto-instrumentation</comment>
     <requestid>1361293</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>b0fd211135ef90a58050a7dabb58c25d</srcmd5>
+    <version>0.64b0</version>
+    <time>1784667351</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365763</requestid>
+  </revision>
 </revisionlist>
