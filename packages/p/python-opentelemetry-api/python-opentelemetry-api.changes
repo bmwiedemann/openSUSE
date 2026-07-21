@@ -1,4 +1,103 @@
 -------------------------------------------------------------------
+Sun Jul  5 10:00:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.43.0:
+  * ### Added
+  * `opentelemetry-sdk`: add `add_metric_reader` /
+    `remove_metric_reader` public APIs to register / unregister
+    metric readers at runtime.
+  * `opentelemetry-exporter-prometheus`: add support for
+    configuring metric scope labels
+  * `opentelemetry-exporter-otlp-proto-grpc`: Add grpc error
+    details to the log message that's written when the grpc call
+    fails.
+  * `opentelemetry-exporter-http-transport`: add 'opentelemetry-
+    exporter-http-transport' package for HTTP exporters
+  * `opentelemetry-sdk`: Add `composite/development` samplers
+    support to declarative file configuration
+  * `opentelemetry-exporter-otlp-json-file`: Add OTLP JSON File
+    exporter implementation
+  * `opentelemetry-sdk`: add `_resolve_component` shared utility
+    for declarative config plugin loading, reducing boilerplate
+    in exporter factory functions
+  * `opentelemetry-sdk`: add pull metric reader support to
+    declarative file configuration, including Prometheus metric
+    reader via the `prometheus_development` config field
+  * `opentelemetry-proto-json`: update to use opentelemetry-proto
+    v1.10.0
+  * `opentelemetry-proto`: bump maximum supported protobuf
+    version to 7.x.x
+  * `opentelemetry-sdk`: add `ServiceInstanceIdResourceDetector`
+    for populating `service.instance.id`
+  * `opentelemetry-sdk`: declarative config loader now
+    recursively converts parsed dicts into typed dataclass
+    instances, including nested dataclasses, lists of
+    dataclasses, and enum values. End-to-end YAML/JSON → SDK
+    configuration now works via the factory functions.
+  * `opentelemetry-sdk`: add `configure_sdk(config)` to the
+    declarative configuration API. Single entry point that takes
+    a parsed `OpenTelemetryConfiguration`, builds the resource,
+    and applies the tracer/meter/logger providers and propagator
+    globally. Honors the top-level `disabled` flag.
+  * `opentelemetry-sdk`: the SDK configurator now honors the
+    `OTEL_CONFIG_FILE` environment variable. When set, the SDK
+    loads and applies the referenced declarative configuration
+    file (YAML or JSON) in place of the env-var-based init path.
+  * `opentelemetry-sdk`: update declarative config to use
+    `ServiceInstanceIdResourceDetector`
+  * `opentelemetry-exporter-otlp-proto-common`, `opentelemetry-
+    exporter-otlp-json-common`: encoders now always accept null,
+    and encode it as an empty `AnyValue` in accordance with the
+    spec.
+  * `opentelemetry-sdk`: validate the declarative config
+    `file_format` version — reject an unsupported major version
+    and warn on a newer minor version, per the configuration spec
+    versioning rules
+  * `opentelemetry-exporter-http-transport`: enable entry-point
+    loading of transport implementations
+  * ### Changed
+  * `opentelemetry-sdk`: introduce experimental entry points for
+    OpAMP agent integration
+  * `opentelemetry-api`: conditionally import entrypoints for
+    `opentelemetry_context` only if the `OTEL_PYTHON_CONTEXT` env
+    variable is defined, return `ContextVarsRuntimeContext`
+    otherwise
+  * `opentelemetry-sdk`: rename "known/unknown" to "built-
+    in/user-defined" terminology in declarative config component
+    loading code
+  * `opentelemetry-proto`: regenerate protobuf code from
+    opentelemetry-proto v1.10.0
+  * `opentelemetry-sdk`: remove unnecessary `copy` in Span
+    creation
+  * opentelemetry-sdk: remove unnecessary dict in set_attribute
+    method
+  * `opentelemetry-sdk`: inline the method
+    `_clean_attribute_value`
+  * Remove typing aliases deprecated in python 3.9 and replace
+    all usages of `typing.Union` and `typing.Optional` with `|`.
+  * opentelemetry-sdk: remove generator in the accessor for
+    links/events
+  * opentelemetry-api: remove unnecessary copy in iterator
+  * `opentelemetry-api`: update `EnvironmentGetter` to ignore
+    non-normalized environment variable names
+  * opentelemetry-sdk: update iterator for BoundedList
+  * opentelemetry-sdk: reduce lock contention in attributes
+  * opentelemetry-sdk: merge doesn't need a copy, dict already
+    does this
+  * `opentelemetry-api`: normalize empty environment propagation
+    names to `_` in `EnvironmentSetter` and `EnvironmentGetter`
+  * ### Fixed
+  * Add missing `.rst` files to Sphinx documentation build for
+    SDK logs, propagators, and exporter submodules.
+  * Preserve the random trace ID flag when creating child spans
+    instead of always setting the random trace id bit depending
+    on the available trace id generator.
+  * `opentelemetry-api`: fix SelectableGroups deprecation warning
+  * `opentelemetry-sdk`: make
+    `SynchronousMeasurementConsumer.consume_measurement` lock
+    free to avoid deadlocks
+
+-------------------------------------------------------------------
 Tue Jun 16 09:57:08 UTC 2026 - Jordi Massaguer <jmassaguerpla@suse.com>
 
 - update to 1.42.1:
