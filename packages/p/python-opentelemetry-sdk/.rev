@@ -381,4 +381,12 @@
     spec's PluginComponentProvider mechanism</comment>
     <requestid>1361876</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ed5b6ce57d5e9e2412d2063db8f0137f</srcmd5>
+    <version>1.43.0</version>
+    <time>1784667182</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365751</requestid>
+  </revision>
 </revisionlist>
