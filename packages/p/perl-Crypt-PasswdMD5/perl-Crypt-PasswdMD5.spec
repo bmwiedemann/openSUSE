@@ -18,10 +18,10 @@
 
 %define cpan_name Crypt-PasswdMD5
 Name:           perl-Crypt-PasswdMD5
-Version:        1.450.0
+Version:        1.460.0
 Release:        0
-# 1.45 -> normalize -> 1.450.0
-%define cpan_version 1.45
+# 1.46 -> normalize -> 1.460.0
+%define cpan_version 1.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Provide interoperable MD5-based crypt() functions
 URL:            https://metacpan.org/release/%{cpan_name}

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:46:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+
+  [V 1.46]
+  Date=2026-07-08T08:50:14
+  Comments= <<EOT
+  - Update Software::License from CPAN.
+  - Re-generate the LICENSE file.
+  EOT
+
+-------------------------------------------------------------------
 Tue Jul  7 11:15:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.450.0 (1.45)

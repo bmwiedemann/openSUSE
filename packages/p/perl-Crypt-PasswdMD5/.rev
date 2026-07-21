@@ -79,4 +79,19 @@
   EOT</comment>
     <requestid>1364272</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>0697531e318374eccd7edc6c5c9b7de1</srcmd5>
+    <version>1.460.0</version>
+    <time>1784668317</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Crypt-PasswdMD5/Changelog.ini
+  [V 1.46]
+  Date=2026-07-08T08:50:14
+  Comments= &lt;&lt;EOT
+  - Update Software::License from CPAN.
+  - Re-generate the LICENSE file.
+  EOT</comment>
+    <requestid>1366955</requestid>
+  </revision>
 </revisionlist>
