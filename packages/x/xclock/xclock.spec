@@ -16,8 +16,13 @@
 #
 
 
+%if 0%{?sle_version} == 150600 && 0%{?is_opensuse}
+%define meson_build /usr/bin/meson compile -C %{_vpath_builddir} %{_smp_mflags} --verbose
+%define meson_install /usr/bin/meson install -C %{_vpath_builddir} --no-rebuild --destdir=%{buildroot}
+%endif
+
 Name:           xclock
-Version:        1.2.0
+Version:        1.2.1
 Release:        0
 Summary:        Analog / digital clock for X
 License:        X11
@@ -61,6 +66,8 @@ frequency which may be specified by the user.
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/XClock
 %{_datadir}/X11/app-defaults/XClock-color
+%{_datadir}/X11/app-defaults/XClock-ampm
+%{_datadir}/X11/app-defaults/XClock-grandfather
 %{_mandir}/man1/xclock.1%{?ext_man}
 
 %changelog

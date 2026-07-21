@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:05:11 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1
+  * This release fixes the build on systems like NetBSD that support
+    setlocale() but not uselocale(), and adds example app-defaults
+    files for the new shapes configurations introduced in the 1.2.0 release.
+
+-------------------------------------------------------------------
 Tue Jun 30 11:26:21 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.0

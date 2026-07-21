@@ -111,4 +111,15 @@
 - switch to meson</comment>
     <requestid>1362647</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c22bbadfb47e02f1a281fe4c12e150b7</srcmd5>
+    <version>1.2.1</version>
+    <time>1784667695</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1
+  * This release fixes the build on systems like NetBSD that support
+    setlocale() but not uselocale(), and adds example app-defaults
+    files for the new shapes configurations introduced in the 1.2.0 release.</comment>
+    <requestid>1366782</requestid>
+  </revision>
 </revisionlist>
