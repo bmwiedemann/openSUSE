@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:49:28 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.9: 
+  * Fix a regression when both the '--gui-touch-before' and
+    '--gui-threshold' options are selected at the same time, which may
+    prevent the thresholds from working correctly. Now, the content file
+    is unconditionally saved before scanning for differences if any touch
+    is performed.
+  * Fixed the smartctl type detection retry during probe on Windows
+    to properly preserve the standby check option, preventing standby disks
+    from spinning up if a retry is needed.
+  * Save the content file before aborting 'sync' due to safety
+    thresholds if files were touched by '--gui-touch-before', preventing timestamp
+    desynchronization and false diff reports on subsequent runs.
+
+-------------------------------------------------------------------
 Thu Jun 11 15:03:44 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.7:

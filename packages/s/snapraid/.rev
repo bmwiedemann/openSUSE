@@ -139,4 +139,24 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1360281</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c3db7767a22b059381ca2e3367715e30</srcmd5>
+    <version>14.9</version>
+    <time>1784667635</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 14.9: 
+  * Fix a regression when both the '--gui-touch-before' and
+    '--gui-threshold' options are selected at the same time, which may
+    prevent the thresholds from working correctly. Now, the content file
+    is unconditionally saved before scanning for differences if any touch
+    is performed.
+  * Fixed the smartctl type detection retry during probe on Windows
+    to properly preserve the standby check option, preventing standby disks
+    from spinning up if a retry is needed.
+  * Save the content file before aborting 'sync' due to safety
+    thresholds if files were touched by '--gui-touch-before', preventing timestamp
+    desynchronization and false diff reports on subsequent runs.
+</comment>
+    <requestid>1366754</requestid>
+  </revision>
 </revisionlist>
