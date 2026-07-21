@@ -17,4 +17,15 @@
 </comment>
     <requestid>1282371</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2f47de5d0cb3648341c83a85a1eab7f5</srcmd5>
+    <version>0.7.0</version>
+    <time>1784668321</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.7.0 (0.007)
+   see /usr/share/doc/packages/perl-Devel-TakeHashArgs/Changes
+  0.007  2026-07-13
+          - Maintenance update - verified module is still working</comment>
+    <requestid>1366959</requestid>
+  </revision>
 </revisionlist>
