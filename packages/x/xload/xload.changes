@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:23:57 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.2.1:
+  * meson: include headers when checking for other functions
+  * meson: include libintl.h when checking for gettext()
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * man page: fix warnings from mandoc -T lint
+  * Improve man page formatting
+- Switch to meson build system
+
+-------------------------------------------------------------------
 Sun Mar 24 21:50:21 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.0:

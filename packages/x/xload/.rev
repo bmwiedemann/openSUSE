@@ -85,4 +85,19 @@
     <comment></comment>
     <requestid>1161218</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>c1d41b427c4e432daa09f76889597c13</srcmd5>
+    <version>1.2.1</version>
+    <time>1784668283</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.1:
+  * meson: include headers when checking for other functions
+  * meson: include libintl.h when checking for gettext()
+  * Strip trailing whitespace from source files
+  * gitlab CI: drop the ci-fairy check-mr job
+  * man page: fix warnings from mandoc -T lint
+  * Improve man page formatting
+- Switch to meson build system</comment>
+    <requestid>1366934</requestid>
+  </revision>
 </revisionlist>
