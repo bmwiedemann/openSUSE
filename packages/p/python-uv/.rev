@@ -2852,4 +2852,41 @@
   * Avoid allocations when formatting requirements</comment>
     <requestid>1364570</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>923c988809ddffa8f9e63395af86336c</srcmd5>
+    <version>0.11.30</version>
+    <time>1784668130</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.30 
+ * Preview features
+  * Allow uv workspace metadata --sync to target the active virtual environment with --active 
+  * Reuse centralized project environments when workspaces are accessed through symlinks 
+ * Performance
+  * Skip resolver candidates whose files are all excluded by exclude-newer 
+  * Limit parallel cache reads to reduce resolver scheduling and allocation overhead 
+  * Accelerate lockfile serialization with toml_writer 
+  * Compact cached Simple API distribution metadata and hashes
+  * Decode stale cache entries in a single blocking task 
+  * Decode cached payloads outside resolver workers 
+  * Cache resolver Python requirement markers 
+  * Reuse resolver fork markers while recording preferences 
+ * Bug fixes
+  * Prevent skipped tar-wheel entries from causing unrelated files to be removed during uninstall 
+  * Preserve literal extends-environment paths in pyvenv.cfg on Unix 
+ * Documentation
+  * Add a contribution guide
+
+- update to 0.11.29:
+  * Add JSON output to `uv tree`
+  * Add CUDA 13.2 as a supported PyTorch backend
+  * Prefer local artifacts over URLs when installing from
+    pylock.toml
+  * Clarify diagnostics for unsatisfiable direct requirement
+    ranges
+  * Numerous resolver and workspace-discovery performance
+    improvements (no-op sync, frozen sync, uv tree/export/audit)
+  * Bug fixes for pylock.toml handling and uv pip freeze hashes
+- Drop support conditionals for EOL SLE/openSUSE releases: remove</comment>
+    <requestid>1367015</requestid>
+  </revision>
 </revisionlist>

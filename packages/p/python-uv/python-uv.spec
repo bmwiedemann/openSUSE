@@ -16,24 +16,17 @@
 #
 
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1550
-%global force_gcc_version 13
-%endif
-
 %if 0%{?suse_version} >= 1699
 %bcond_without mold
 %else
 %bcond_with    mold
 %endif
-
-%if %{with mold}
-%global build_rustflags -C linker=clang -C link-arg=-fuse-ld=/usr/bin/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
-%endif
-
 %bcond_without libalternatives
-%{?sle15_python_module_pythons}
+%if %{with mold}
+%global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
+%endif
 Name:           python-uv
-Version:        0.11.28
+Version:        0.11.30
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 License:        Apache-2.0 OR MIT
@@ -48,6 +41,12 @@ BuildRequires:  cargo >= 1.94
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+BuildRequires:  zstd
+Requires:       alts
+Requires:       python3
+Obsoletes:      uv < %{version}
+Provides:       uv = %{version}
 %if 0%{?suse_version} >= 1699
 BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
@@ -58,22 +57,16 @@ BuildRequires:  gcc13
 BuildRequires:  gcc13-c++
 BuildRequires:  libstdc++6-devel-gcc13
 %endif
-BuildRequires:  python-rpm-macros
-BuildRequires:  zstd
 %ifarch %{ix86} x86_64
 BuildRequires:  nasm
 %endif
-Obsoletes:      uv < %{version}
-Provides:       uv = %{version}
-Requires:       alts
-Requires:       python3
 
 %package        -n uv-fish-completion
 Summary:        Fish Completion for %{name}
-Provides:       python-uv-fish-completion = %{version}
-Supplements:    (uv and fish)
 Requires:       fish
 Requires:       uv
+Supplements:    (uv and fish)
+Provides:       python-uv-fish-completion = %{version}
 BuildArch:      noarch
 
 %description    -n uv-fish-completion
@@ -81,10 +74,10 @@ Fish command-line completion support for %{name}.
 
 %package        -n uv-zsh-completion
 Summary:        Zsh Completion for %{name}
-Provides:       python-uv-zsh-completion = %{version}
-Supplements:    (uv and zsh)
 Requires:       uv
 Requires:       zsh
+Supplements:    (uv and zsh)
+Provides:       python-uv-zsh-completion = %{version}
 BuildArch:      noarch
 
 %description    -n uv-zsh-completion
@@ -92,10 +85,10 @@ Zsh command-line completion support for %{name}.
 
 %package        -n uv-bash-completion
 Summary:        Bash Completion for %{name}
-Provides:       python-uv-bash-completion = %{version}
-Supplements:    (uv and bash-completion)
 Requires:       bash-completion
 Requires:       uv
+Supplements:    (uv and bash-completion)
+Provides:       python-uv-bash-completion = %{version}
 BuildArch:      noarch
 
 %description    -n uv-bash-completion
@@ -118,21 +111,17 @@ sed -i '/lto = "fat"/d' Cargo.toml
 export CARGO_AUDITABLE="auditable"
 export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1
-export RUSTFLAGS="%build_rustflags"
+export RUSTFLAGS="%{build_rustflags}"
 export CARGO_NET_OFFLINE=true
-%ifarch %arm %ix86
+%ifarch %{arm} %{ix86}
 # Debuginfo needs too much memory for 32-bit architectures.
 export CARGO_PROFILE_RELEASE_DEBUG=none
-export RUSTFLAGS="%build_rustflags -C debuginfo=0"
+export RUSTFLAGS="%{build_rustflags} -C debuginfo=0"
 %else
 export CARGO_PROFILE_RELEASE_DEBUG=full
 %endif
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 export CARGO_PROFILE_RELEASE_STRIP=false
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
-%endif
 %pyproject_wheel
 
 %install
@@ -143,16 +132,12 @@ mkdir -p %{buildroot}%{_datadir}/zsh/site-functions
 export CARGO_AUDITABLE="auditable"
 export CARGO_INCREMENTAL=0
 export CARGO_FEATURE_VENDORED=1
-export RUSTFLAGS="%build_rustflags"
+export RUSTFLAGS="%{build_rustflags}"
 export CARGO_NET_OFFLINE=true
-%ifarch %rust_tier1_arches
+%ifarch %{rust_tier1_arches}
 export CARGO_PROFILE_RELEASE_DEBUG=full
 %else
 export CARGO_PROFILE_RELEASE_DEBUG=limited
-%endif
-%if 0%{?force_gcc_version}
-export CC="gcc-%{?force_gcc_version}"
-export CXX="g++-%{?force_gcc_version}"
 %endif
 export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 export CARGO_PROFILE_RELEASE_STRIP=false
