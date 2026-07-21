@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 19 07:36:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.430.0 (4.43)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.43 2026-07-18 (rurban)
+  	- Fix canonical sort: compare by UTF-16 code units per RFC 8785 (GH #248, leont)
+          - Fix canonical sort on Perl 5.8-5.18: utf16_cmp now always attempts
+            UTF-8 decoding instead of checking SvUTF8 flag, since older Perls
+            may store valid UTF-8 hash keys without the flag set.
+          - Fix quadmath encode dropping ".0" for large floats (GH #246, reported by Tux).
+            The .0 guard condition that suppressed appending for NV values > UV_MAX was
+            incorrect on high-precision FP (quadmath, 128-bit long double on arm64) where
+            %g uses fixed-point notation for values like 1.01e30. Guarded with #if NV_DIG < 31
+            to skip only on double/80-bit-ld where %g naturally uses %e for large values.
+
+-------------------------------------------------------------------
 Mon Jun  8 09:55:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.420.0 (4.42)
