@@ -325,4 +325,12 @@
     `opentelemetry-exporter-otlp-proto-grpc` and `opentelemetry-</comment>
     <requestid>1361869</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>2211bf6fbc7a54ef34c77b02870b5002</srcmd5>
+    <version>1.43.0</version>
+    <time>1784667334</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365744</requestid>
+  </revision>
 </revisionlist>
