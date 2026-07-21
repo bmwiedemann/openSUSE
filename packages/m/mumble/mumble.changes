@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 20 17:27:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.5.915:
+  * Print Mumble version to log on startup
+  * Reduce the quantity of window state information in settings file
+  * Fix a Memory leak related to input devices being connected
+  * Prevent crash loop due to incompatible window state information
+    in settings file
+  * Fix a server crash related to malformed packets
+
+-------------------------------------------------------------------
 Sun May 24 10:52:32 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.5.901:
