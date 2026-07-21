@@ -100,4 +100,19 @@
     XGetKeyboardMapping Fix warning about number of mouse buttons</comment>
     <requestid>988379</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>bd9a783109bfb4d0bbbe7575e93b7448</srcmd5>
+    <version>1.0.12</version>
+    <time>1784667320</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.0.12:
+  * Accept --help and --version as aliases to -help and -version.
+  * Avoid -Wuse-after-free warning from GCC 15 in handle.c.
+  * Handle possible NULL return from copy_to_scratch() in parse_keysym.
+  * Improve man page formatting and text.
+  * Assume target platforms have strncasecmp now (Unix98/SUSv2).
+  * Add support for building with Meson.
+- Switch to meson build system</comment>
+    <requestid>1366788</requestid>
+  </revision>
 </revisionlist>

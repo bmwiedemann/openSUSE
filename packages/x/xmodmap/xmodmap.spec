@@ -1,7 +1,7 @@
 #
 # spec file for package xmodmap
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define UsrEtcMove 1
 %endif
 Name:           xmodmap
-Version:        1.0.11
+Version:        1.0.12
 Release:        0
 Summary:        Utility to modify keymaps and pointer button mappings in X
 License:        MIT
@@ -29,6 +29,7 @@ URL:            https://xorg.freedesktop.org/
 Source0:        https://xorg.freedesktop.org/releases/individual/app/%{name}-%{version}.tar.xz
 Source1:        Xmodmap.template
 Source2:        Xmodmap.remote.template
+BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xorg-macros) >= 1.8
@@ -47,11 +48,11 @@ tastes.
 %setup -q
 
 %build
-%configure
-%make_build
+%meson
+%meson_build
 
 %install
-%make_install
+%meson_install
 %if 0%{?UsrEtcMove}
 install -m0644 -D %{SOURCE1} %{buildroot}%{_distconfdir}/X11/Xmodmap
 install -m0644 -D %{SOURCE2} %{buildroot}%{_distconfdir}/X11/Xmodmap.remote

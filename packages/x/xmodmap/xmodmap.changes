@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:51:20 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.0.12:
+  * Accept --help and --version as aliases to -help and -version.
+  * Avoid -Wuse-after-free warning from GCC 15 in handle.c.
+  * Handle possible NULL return from copy_to_scratch() in parse_keysym.
+  * Improve man page formatting and text.
+  * Assume target platforms have strncasecmp now (Unix98/SUSv2).
+  * Add support for building with Meson.
+- Switch to meson build system
+
+-------------------------------------------------------------------
 Mon Jul 11 12:55:19 UTC 2022 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.0.11 
