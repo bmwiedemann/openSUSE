@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 02:26:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros to build and install the module.
+- Sprinkle in fdupes after install.
+- Remove devel module from BuildRequires, this is noarch.
+
+-------------------------------------------------------------------
 Fri Mar 21 14:04:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - follow the salt change in 15.7

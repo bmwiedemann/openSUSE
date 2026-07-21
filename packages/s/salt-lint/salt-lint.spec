@@ -1,7 +1,7 @@
 #
 # spec file for package salt-lint
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,9 @@ Summary:        A command-line utility that checks for best practices in SaltSta
 URL:            https://github.com/warpnet/salt-lint
 Group:          Development/Languages/Python
 Source:         https://files.pythonhosted.org/packages/source/s/salt-lint/salt-lint-%{version}.tar.gz
-BuildRequires:  %{pythons}-devel
+BuildRequires:  %{pythons}-pip
 BuildRequires:  %{pythons}-setuptools
+BuildRequires:  %{pythons}-wheel
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{pythons}-pathspec >= 0.6.0
@@ -227,16 +228,17 @@ salt-lint is heavily based on `ansible-lint`_ with the modified work by `Roald N
 %setup -q -n salt-lint-%{version}
 
 %build
-%python_build
+%pyproject_wheel
 
 %install
-%python_install
+%pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files
 %doc *.md
 %license LICENSE*
 %{_bindir}/salt-lint
-%{python_sitelib}/salt_lint*egg*
+%{python_sitelib}/salt_lint-%{version}.dist-info
 %{python_sitelib}/saltlint/
 
 %changelog
