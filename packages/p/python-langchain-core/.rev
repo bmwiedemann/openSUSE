@@ -15,4 +15,12 @@
     <comment>Update to 1.4.9 (docstring parsing, partial parser flag, clearer errors, asyncio.get_running_loop)</comment>
     <requestid>1364713</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef4b1c6f3562a97adcb9029e49ebea15</srcmd5>
+    <version>1.5.0</version>
+    <time>1784668208</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.5.0 (add reasoning_effort standard chat model parameter). Minor bump stays within all dependents' declared ranges (langchain-openai/langgraph require langchain-core&lt;2).</comment>
+    <requestid>1366862</requestid>
+  </revision>
 </revisionlist>
