@@ -103,4 +103,12 @@
     <comment>2.18.0 with security fixes</comment>
     <requestid>1356318</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2758480e388ffaa903b6a26d81ae2dff</srcmd5>
+    <version>2.19.0</version>
+    <time>1784668344</time>
+    <user>dimstar_suse</user>
+    <comment>2.19.0 + security fixes</comment>
+    <requestid>1366970</requestid>
+  </revision>
 </revisionlist>

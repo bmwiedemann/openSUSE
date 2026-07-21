@@ -23,7 +23,7 @@
 %bcond_with extras
 %endif
 %global homedir %{_datadir}/apache-sshd
-Version:        2.18.0
+Version:        2.19.0
 Release:        0
 Summary:        Apache SSHD
 # One file has ISC licensing:

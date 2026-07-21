@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 21 13:05:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.19.0
+  * Bug Fixes
+    + GH-899 Fix ProcessShellFactory on Linux
+    + GH-902 Fix client-side handling of sk-* public key signatures
+      (also in the agent interfaces)
+    + Limit size of decompressed SSH packets
+    + Improve checking SSH user certificates in public-key
+      authentication (CVE-2026-56624, bsc#1271992)
+    + Improve handling of repository paths in sshd-git on Windows
+      (CVE-2026-56623, bsc#1271993)
+    + Validate file names in SCP
+    + Escape newlines in filenames in the SCP protocol
+    + Restrict JGit commands accessible via GitPgmCommandFactory in
+      sshd-git (CVE-2026-58624, bsc#1271991)
+
+-------------------------------------------------------------------
 Mon Jun  1 08:40:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.18.0
