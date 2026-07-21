@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 21 04:59:32 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 2.3.5
+  * Cherry-picks from main to release/2.3
+  * nerdctl-full: Update containerd (2.3.3), RootlessKit (3.0.2), BuildKit (0.31.2), runc (1.5.1)
+
+-------------------------------------------------------------------
+Tue Jul 14 11:48:58 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 2.3.4 
+  * nerdctl run: allow -i and -d together when -t is set
+  * nerdctl run: remove the non-Docker rw option from --mount
+  * nerdctl network create: match each gateway to its subnet for dual-stack
+  * nerdctl (container|image|network) inspect: fix format errors
+  * nerdctl version: show RootlessKit version
+  * nerdctl-full: update runc (1.5.0), BuildKit (0.31.1)
+
+-------------------------------------------------------------------
 Fri Jun 19 11:07:43 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 2.3.3 
