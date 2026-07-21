@@ -1,7 +1,7 @@
 #
 # spec file for package colordiff
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           colordiff
-Version:        1.0.21
+Version:        1.0.22
 Release:        0
 Summary:        Colour-highlighted 'diff' output
 License:        GPL-2.0-or-later
@@ -46,7 +46,9 @@ customized.
 %license COPYING
 %doc README CHANGES BUGS colordiffrc colordiffrc-lightbg colordiffrc-gitdiff
 %config(noreplace) %{_sysconfdir}/colordiffrc
-%{_bindir}/*
-%{_mandir}/man1/*.1%{?ext_man}
+%{_bindir}/cdiff
+%{_bindir}/colordiff
+%{_mandir}/man1/cdiff.1%{?ext_man}
+%{_mandir}/man1/colordiff.1%{?ext_man}
 
 %changelog

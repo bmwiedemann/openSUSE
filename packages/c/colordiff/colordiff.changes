@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:15:34 UTC 2026 - munix9@googlemail.com
+
+- Remove the last line containing hyphens in the changelog,
+  which causes an error in source_validator (see sr#1366676)
+
+-------------------------------------------------------------------
+Fri Jul 17 16:23:04 UTC 2026 - munix9@googlemail.com
+
+- update to 1.0.22:
+  * Various improvements for side-by-side diffs and binary comparisons.
+
+-------------------------------------------------------------------
 Fri Dec 23 20:46:49 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.21:
@@ -101,4 +113,3 @@ Sun Jun 24 21:29:42 CEST 2007 - bwalle@suse.de
 
 - initial SUSE package
 
--------------------------------------------------------------------
