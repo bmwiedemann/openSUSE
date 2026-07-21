@@ -63,4 +63,14 @@
     <comment></comment>
     <requestid>1360816</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>502e88566340a8da37b4a4062a76547d</srcmd5>
+    <version>0.2.0+git.1784281563.0b756ed</version>
+    <time>1784667624</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.2.0+git.1784281563.0b756ed:
+  * cib/live is handled in the hawk-apiserver instead of hawk
+</comment>
+    <requestid>1366726</requestid>
+  </revision>
 </revisionlist>

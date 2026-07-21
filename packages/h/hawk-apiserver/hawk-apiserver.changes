@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 13:00:01 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Version 0.2.0+git.1784281563.0b756ed:
+  * cib/live is handled in the hawk-apiserver instead of hawk
+
+-------------------------------------------------------------------
 Sun Jun 21 09:55:02 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
 
 - Version 0.1.1+git.1782032932.309de44:
