@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 17 12:04:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.9
+  * Prevent use-after-free in list-view (#1861)
+  * Fix use-after-free in tree-view-model (#1860)
+  * Fix -Wdiscarded-qualifiers compiler warnings (#1859)
+  * Remove G_GNUC_CONST qualifiers
+  * Check/Update view-type on reload (#1799)
+  * Prevent Criticals in some use-cases (#1799)
+  * Prevent crash on reload when unmounted (#1799)
+  * Fix crash when open unknown gvfs location (#1834)
+  * Prevent use-after-free on re-login (#1831)
+  * Keep a global ref. to job operation history (#1823)
+  * Disconnect from 'action_mgr' on finalize (#1816)
+  * Translation Updates
+
+-------------------------------------------------------------------
 Sun Mar 29 08:00:25 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.8
