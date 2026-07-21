@@ -194,4 +194,12 @@
     operation duration and returned rows metrics</comment>
     <requestid>1361877</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>a069f319dbe4bb2136990c1db3928482</srcmd5>
+    <version>0.64b0</version>
+    <time>1784667185</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1365752</requestid>
+  </revision>
 </revisionlist>
