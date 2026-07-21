@@ -19,53 +19,51 @@
 # sphinx_copybutton not in Factory
 %bcond_with docs
 Name:           kitty
-Version:        0.47.4
+Version:        0.48.0
 Release:        0
 Summary:        A GPU-based terminal emulator
 License:        GPL-3.0-only
 Group:          System/X11/Terminals
-URL:            https://github.com/kovidgoyal/kitty
-### TEMPORARILY USE ADJUSTED TARBALL FOR golang.org/x/image v0.43.0 [CVE-2026-46604]
-#Source:         https://github.com/kovidgoyal/kitty/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.gz
-Source:         %{name}-%{version}.tar.gz
-#####
+URL:            https://sw.kovidgoyal.net/kitty/
+#Git-Clone:     https://github.com/kovidgoyal/kitty
+Source:         https://github.com/kovidgoyal/kitty/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        kitty-rpmlintrc
 Patch0:         buildmode-and-skip_docs.diff
 #Patch1:         351ee9f-smb.diff
-BuildRequires:  ImageMagick-devel
-BuildRequires:  Mesa-libGL-devel
-BuildRequires:  fdupes
-BuildRequires:  fontconfig-devel
-BuildRequires:  freetype2-devel
 ### Avoiding any 'have choice for go' issues ...
 BuildRequires:  go >= 1.26
 #####
 ### Disabled until go1.2# (1.26) is default
 #BuildRequires:  golang-packaging
 #####
-BuildRequires:  harfbuzz-devel >= 1.5.0
-BuildRequires:  libXcursor-devel
-BuildRequires:  libXi-devel
-BuildRequires:  libXinerama-devel
-BuildRequires:  libXrandr-devel
-BuildRequires:  libcanberra-devel
-BuildRequires:  liblcms2-devel
-BuildRequires:  libpng16-compat-devel
+BuildRequires:  fdupes
 BuildRequires:  librsync-devel
-BuildRequires:  libxkbcommon-devel
-BuildRequires:  libxkbcommon-x11-devel
-BuildRequires:  ncurses-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  symbols-only-nerd-fonts
 BuildRequires:  terminfo
 BuildRequires:  wayland-devel
 BuildRequires:  wayland-protocols-devel
-BuildRequires:  xxhash-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(ImageMagick)
 BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(harfbuzz) >= 1.5.0
+BuildRequires:  pkgconfig(lcms2)
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libxxhash)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(simde)
+BuildRequires:  pkgconfig(xcursor)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xrandr)
+BuildRequires:  pkgconfig(zlib)
 # Python requirements for Factory and Leap
 %if 0%{?suse_version} > 1500
 BuildRequires:  python3-devel >= 3.7

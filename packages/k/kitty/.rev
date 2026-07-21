@@ -931,4 +931,41 @@
     golang.org/x/image v0.43.0 and refreshed vendor.tar.gz</comment>
     <requestid>1363531</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>4085a774c68f4f0c100158c6faec9d64</srcmd5>
+    <version>0.48.0</version>
+    <time>1784668152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.48.0:
+  * Implement vertical tabs by setting tab_bar_edge to left or right (#9855)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_bar_edge
+  * Graphics protocol: Add a new transient usage hint that clients can send to
+    terminals to indicate an image is meant for only short duration use (#10092)
+    - https://sw.kovidgoyal.net/kitty/graphics-protocol/#image-usage-hints
+  * On first press in an unfocused OS Window/kitty window give it focus and
+    pass the mouse event through to the clicked element. This is a behavior
+    change but aligns with platform defaults on macOS. Linux has no platform
+    defaults here as far as I can tell, so it gets to follow along. (#10233)
+  * kitten @ get-text: Add support for `alternate` and `alternate_scrollback`
+    extents to fetch text from the alternate screen buffer (#10165)
+  * Wayland: Fix first OS window being a few cells too small when
+    `initial_window_width`/`initial_window_height` are set in cells and a
+    fractional display scale is in use (#10146)
+  * macOS: New option `macos_ns_window_layer` to more precisely control what
+    layer panel OS windows are placed on (#10116)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_ns_window_layer
+  * macOS: New option `macos_use_physical_screen_frame` to allow panel OS
+    Windows to cover the macOS global dock bar (#10116)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_use_physical_screen_frame
+  * kitty binary builds are now built on Ubuntu 22 upgraded from Ubuntu 18 for
+    improved performance from better compilers
+  * macOS: Fix incorrect horizontal alignment when using text sizing
+    protocol (#10179)
+  * `edit-in-kitty`: Return exit code from underlying editor process on
+    exit (#10198)
+  * Make erasing last command robust against commands with no output and
+    commands in the scrollback (#10201)
+  * Fix superfluous margin visible to the left and right of the tab bar when</comment>
+    <requestid>1366831</requestid>
+  </revision>
 </revisionlist>

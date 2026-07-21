@@ -1,4 +1,79 @@
 -------------------------------------------------------------------
+Mon Jul 20 17:25:56 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to 0.48.0:
+  * Implement vertical tabs by setting tab_bar_edge to left or right (#9855)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_bar_edge
+  * Graphics protocol: Add a new transient usage hint that clients can send to
+    terminals to indicate an image is meant for only short duration use (#10092)
+    - https://sw.kovidgoyal.net/kitty/graphics-protocol/#image-usage-hints
+  * On first press in an unfocused OS Window/kitty window give it focus and
+    pass the mouse event through to the clicked element. This is a behavior
+    change but aligns with platform defaults on macOS. Linux has no platform
+    defaults here as far as I can tell, so it gets to follow along. (#10233)
+  * kitten @ get-text: Add support for `alternate` and `alternate_scrollback`
+    extents to fetch text from the alternate screen buffer (#10165)
+  * Wayland: Fix first OS window being a few cells too small when
+    `initial_window_width`/`initial_window_height` are set in cells and a
+    fractional display scale is in use (#10146)
+  * macOS: New option `macos_ns_window_layer` to more precisely control what
+    layer panel OS windows are placed on (#10116)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_ns_window_layer
+  * macOS: New option `macos_use_physical_screen_frame` to allow panel OS
+    Windows to cover the macOS global dock bar (#10116)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.macos_use_physical_screen_frame
+  * kitty binary builds are now built on Ubuntu 22 upgraded from Ubuntu 18 for
+    improved performance from better compilers
+  * macOS: Fix incorrect horizontal alignment when using text sizing
+    protocol (#10179)
+  * `edit-in-kitty`: Return exit code from underlying editor process on
+    exit (#10198)
+  * Make erasing last command robust against commands with no output and
+    commands in the scrollback (#10201)
+  * Fix superfluous margin visible to the left and right of the tab bar when
+    `background_opacity` is less than one and the window width is not a
+    multiple of the cell width (#10212)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.background_opacity
+  * hints kitten: Add a new flag `kitty +kitten hints --prefix-free` to
+    generate hints without a shared prefix (#10210)
+    - https://sw.kovidgoyal.net/kitty/kittens/hints/#cmdoption-kitty-kitten-hints-prefix-free
+  * Wayland GNOME: Fix dragging a window title bar to the “+” button failing
+    to create a new tab when there is only a single tab (#10222)
+  * choose-files kitten: Add a `--mode=all` to select either an existing file
+    or directory (#10208)
+  * Add support for editing files in sublime text and zed at specified line
+    number (#10224)
+  * choose-file kitten: Use a full readline editor for the search box. Also
+    allow remapping the up/down/home/end keys to use for editing instead of
+    navigating the file list (#10225)
+  * Fix `remote_control_script` not working in a kitty instance run from
+    inside another kitty instance
+    - https://sw.kovidgoyal.net/kitty/actions/#action-remote_control_script
+  * quick-access-terminal kitten: Allow configuring the layer on which to
+    display the terminal (#10242)
+  * `cursor_trail_start_threshold` now optionally accepts two values to set
+    x (horizontal) and y (vertical) thresholds independently (#10246)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.cursor_trail_start_threshold
+  * scroll-window remote control command: Fix a regression that broke
+    scrolling by pages (#10253)
+  * Bypass libc malloc for history buffer to avoid libc pool policies causing
+    apparent memory leak (#10254)
+  * Cursor trail: Do not run the trail shader when the cursor is hidden,
+    saving resources (#10255)
+  * Graphics: Fix incorrect calculated cursor position when placing images
+    with X/Y cell offsets (#10256)
+  * macOS: Disable macOS one time code autofill popups (#10250)
+  * Add support for DECSTR soft screen reset escape code (#10263)
+  * macOS: Fix quick-access-terminal appearing on the wrong space
+    (the fullscreen app’s space) when triggered from a different space on
+    macOS Tahoe (#8740)
+
+-------------------------------------------------------------------
+Thu Jul 16 15:09:31 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Incorporating jengelh pkgconfig suggestions and URL reference
+
+-------------------------------------------------------------------
 Mon Jun 29 19:21:03 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Addressing bsc#1269601 -> CVE-2026-46604
