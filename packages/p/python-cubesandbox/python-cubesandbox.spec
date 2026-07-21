@@ -17,7 +17,7 @@
 
 
 Name:           python-cubesandbox
-Version:        0.3.0
+Version:        0.5.0
 Release:        0
 Summary:        Python SDK for CubeSandbox
 License:        Apache-2.0
@@ -30,14 +30,14 @@ BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-httpx >= 0.27
+Requires:       python-requests >= 2
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module httpx >= 0.27}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2}
 # /SECTION
-Requires:       python-httpx >= 0.27
-Requires:       python-requests >= 2
-BuildArch:      noarch
 %python_subpackages
 
 %description

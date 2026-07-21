@@ -7,4 +7,12 @@
     <comment>New package, forwarded from devel:languages:python.</comment>
     <requestid>1365177</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>103d19d4d8d776ea045b0444bf2b53a1</srcmd5>
+    <version>0.5.0</version>
+    <time>1784668207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.0 (no runtime dependency changes)</comment>
+    <requestid>1366860</requestid>
+  </revision>
 </revisionlist>
