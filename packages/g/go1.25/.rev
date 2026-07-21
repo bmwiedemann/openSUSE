@@ -429,4 +429,24 @@
   * go#80216 net: TestLookupCNAME failures (forwarded request 1364415 from jfkw)</comment>
     <requestid>1364416</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>a8dcef2979a193683f51e8c8d0e32488</srcmd5>
+    <version>1.25.12</version>
+    <time>1784667206</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Revert %ghost /usr/bin/go /usr/bin/gofmt which prevents install
+    of a working go command. Refs boo#1245878 bsc#1264394
+  * Based on feedback from Factory maintainers restore the original
+    lifecycle for these files: Each go1.x toolchain shares
+    ownership of a go and gofmt symlink managed by the alternatives
+    system (update-alternatives and libalternatives). When the last
+    go1.x package is uninstalled the symlinks will be removed.
+  * Context: %ghost was introduced to prevent file conflicts among
+    go1.x toolchain packages reported by installcheck dev tool.
+    %ghost prevents the files from being installed, which results
+    in no installed go command. The shared ownership of the go and
+    gofmt symlinks is intentional. (forwarded request 1366817 from jfkw)</comment>
+    <requestid>1366818</requestid>
+  </revision>
 </revisionlist>

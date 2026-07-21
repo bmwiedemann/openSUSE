@@ -17,7 +17,7 @@
 
 
 # Specify Go toolchain version used to bootstrap this package's Go toolchain
-%define go_bootstrap_version go1.22
+%define go_bootstrap_version 1.22
 
 # Build go-race only on platforms where C++14 is supported (SLE-15)
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} >= 150000
@@ -51,7 +51,7 @@
 
 # go_libalternatives is the name for the libalternatives configuration file
 # which denotes its priority
-%define go_libalternatives 125
+%define go_libalternatives 1259
 
 # Use libalternatives for SLE 16.1+ and Tumbleweed.
 # Older distributions keep using update-alternatives, as before.
@@ -63,19 +63,6 @@
 %define with_update_alternatives 1
 %endif
 
-# shared library support
-%if "%{rpm_vercmp %{go_api} 1.5}" > "0"
-%ifarch %ix86 %arm x86_64 aarch64
-%define with_shared 1
-%else
-%define with_shared 0
-%endif
-%else
-%define with_shared 0
-%endif
-%ifarch ppc64
-%define with_shared 0
-%endif
 # setup go_arch (BSD-like scheme)
 %ifarch %ix86
 %define go_arch 386
@@ -122,7 +109,7 @@ Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 Patch9:         go-fixseccomp.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
-BuildRequires:  %{go_bootstrap_version}
+BuildRequires:  go%{go_bootstrap_version}
 BuildRequires:  fdupes
 Suggests:       %{name}-doc = %{version}
 %ifarch %{tsan_arch}
@@ -228,7 +215,7 @@ cp -v "$TSAN_DIR/race_linux_%{go_arch}.syso" src/runtime/race/
 %endif
 
 # Now, compile Go.
-export GOROOT_BOOTSTRAP=%{_libdir}/%{go_bootstrap_version}
+export GOROOT_BOOTSTRAP=%{_libdir}/go/%{go_bootstrap_version}
 # Ensure ARM arch is set properly - boo#1169832
 %ifarch armv6l armv6hl
 export GOARCH=arm
