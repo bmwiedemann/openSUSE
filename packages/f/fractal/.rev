@@ -197,4 +197,15 @@
   GNOME 50 (and add the glycin dependency)</comment>
     <requestid>1359809</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>f20e908b473e2a35f1d7f68184872afb</srcmd5>
+    <version>14.1</version>
+    <time>1784668244</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 14.1:
+  + A regression in Fractal 14 meant that display names could not
+    be changed in account settings anymore for some servers. This
+    minor release addresses this issue.</comment>
+    <requestid>1366880</requestid>
+  </revision>
 </revisionlist>

@@ -21,7 +21,7 @@
 %define         glib_version       2.82
 %define         gstreamer_version  1.20
 Name:           fractal
-Version:        14
+Version:        14.1
 Release:        0
 Summary:        Matrix group messaging app
 License:        GPL-3.0-or-later
