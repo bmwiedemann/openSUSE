@@ -1,7 +1,7 @@
 #
 # spec file for package onednn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -47,7 +47,7 @@ BuildRequires:  texlive-dvips-bin
 Provides:       mkl-dnn = %{version}
 Obsoletes:      mkl-dnn <= %{version}
 Provides:       oneDNN = %{version}
-ExclusiveArch:  x86_64 aarch64 ppc64le
+ExclusiveArch:  x86_64 aarch64 ppc64le riscv64
 %if %{with acl}
 BuildRequires:  ComputeLibrary-devel >= 24.11.1
 %endif
@@ -124,7 +124,11 @@ to implement deep neural networks (DNN) with C and C++ interfaces.
 %cmake \
   -DCMAKE_INSTALL_LIBDIR=%{_lib} \
   -DMKLDNN_ARCH_OPT_FLAGS="" \
+%ifarch riscv64
+  -DDNNL_CPU_RUNTIME=SEQ \
+%else
   -DDNNL_CPU_RUNTIME=OMP \
+%endif
 %if %{with acl}
   -DDNNL_AARCH64_USE_ACL=ON \
   -DACL_INCLUDE_DIR=%{_includedir} \
