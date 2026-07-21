@@ -222,4 +222,17 @@
 </comment>
     <requestid>1359790</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dbaa0d994b0a8bd4b56f295b0d0117fb</srcmd5>
+    <version>0.77.1</version>
+    <time>1784668233</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.77.1:
+  * Fix commandline search
+  * Fix window geometry and positioning
+  * Fix config dirs initialization for windows install
+  * Add menu items in editbar to toggle checkboxes
+</comment>
+    <requestid>1366876</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 06:55:48 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 0.77.1:
+  * Fix commandline search
+  * Fix window geometry and positioning
+  * Fix config dirs initialization for windows install
+  * Add menu items in editbar to toggle checkboxes
+
+-------------------------------------------------------------------
 Tue Jun 16 13:43:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 0.77.0:
