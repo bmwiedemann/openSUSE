@@ -181,4 +181,14 @@
     bsc#1271660, CVE-2026-50151):</comment>
     <requestid>1366425</requestid>
   </revision>
+  <revision rev="18" vrev="3">
+    <srcmd5>4eef6c3eff882487419ec8925a6b20c2</srcmd5>
+    <version>3.21.3</version>
+    <time>1784668387</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/text to 0.40.0 (bsc#1271997, CVE-2026-56852)
+
+- update x/net to 0.57.0 (bsc#1266598, CVE-2026-39821)</comment>
+    <requestid>1366992</requestid>
+  </revision>
 </revisionlist>

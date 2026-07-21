@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 21 14:27:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/text to 0.40.0 (bsc#1271997, CVE-2026-56852)
+
+-------------------------------------------------------------------
+Fri Jul 17 14:36:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/net to 0.57.0 (bsc#1266598, CVE-2026-39821)
+
+-------------------------------------------------------------------
 Fri Jul 10 05:31:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.21.3:
