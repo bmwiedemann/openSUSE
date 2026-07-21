@@ -230,4 +230,14 @@
    CVE-2026-46597,CVE-2026-46598,CVE-2026-46595,CVE-2026-39835)</comment>
     <requestid>1355719</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>1fd23a1c9ca3d3b9d459bb2f0492d20f</srcmd5>
+    <version>3.1.1</version>
+    <time>1784667364</time>
+    <user>dimstar_suse</user>
+    <comment>- update x/net to 0.57.0 (bsc#1266629, CVE-2026-39821)
+- update x/text to 0.40.0 (bsc#1272132, CVE-2026-56852)
+- update x/crypto to 0.54</comment>
+    <requestid>1367009</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:48:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update x/net to 0.57.0 (bsc#1266629, CVE-2026-39821)
+- update x/text to 0.40.0 (bsc#1272132, CVE-2026-56852)
+- update x/crypto to 0.54
+
+-------------------------------------------------------------------
 Thu May 28 22:25:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - use vendor.tar.zst generation

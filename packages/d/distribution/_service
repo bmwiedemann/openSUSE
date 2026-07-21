@@ -10,8 +10,9 @@
   </service>
   <service name="go_modules" mode="manual">
     <param name="compression">zst</param>
-    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.52.0</param>
-    <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
+    <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.54.0</param>
+    <param name="replace">golang.org/x/net=golang.org/x/net@v0.57.0</param>
+    <param name="replace">golang.org/x/text=golang.org/x/text@v0.40.0</param>
   </service>
   <service name="recompress" mode="manual">
     <param name="file">distribution-*.tar</param>
