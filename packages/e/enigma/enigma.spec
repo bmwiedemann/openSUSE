@@ -1,7 +1,7 @@
 #
 # spec file for package enigma
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,7 @@ Source3:        %{name}.png
 Source4:        %{name}-help.png
 Source5:        enigma_de.pdf
 Source6:        french_russian.tar.bz2
+Patch0:         enigma-imagemagick-policy.patch
 BuildRequires:  ImageMagick
 BuildRequires:  enet-devel
 BuildRequires:  fdupes
@@ -52,6 +53,7 @@ Enigma is similar to the well known game Oxyd.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 %build
 %configure \

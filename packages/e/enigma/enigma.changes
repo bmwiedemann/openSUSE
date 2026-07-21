@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:46:14 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add enigma-imagemagick-policy.patch: Fix build failure caused by
+  ImageMagick's path security policy restricting relative path
+  traversals (..). Replace GFXDIR with abs_top_srcdir.
+
+-------------------------------------------------------------------
 Tue Apr  8 08:38:27 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Require libx11-devel to fix build

@@ -1,0 +1,22 @@
+--- a/doc/reference/images/Makefile.am
++++ b/doc/reference/images/Makefile.am
+@@ -5,7 +5,7 @@
+ CONVERTOPT = -density 112x112 -units PixelsPerCentimeter
+ 
+ # Enable out of source build
+-GFXDIR = $(abs_srcdir)/../../../data/gfx48
++GFXDIR = $(abs_top_srcdir)/data/gfx48
+ 
+ # List of files to copy from GFXDIR
+ SIMPLEPNG = \
+--- a/doc/reference/images/Makefile.in
++++ b/doc/reference/images/Makefile.in
+@@ -320,7 +320,7 @@
+ CONVERTOPT = -density 112x112 -units PixelsPerCentimeter
+ 
+ # Enable out of source build
+-GFXDIR = $(abs_srcdir)/../../../data/gfx48
++GFXDIR = $(abs_top_srcdir)/data/gfx48
+ 
+ # List of files to copy from GFXDIR
+ SIMPLEPNG = \
