@@ -111,4 +111,12 @@
     <comment>Update to 1.12.1</comment>
     <requestid>1354952</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>818666296c9e9e3de64dc80e314bae26</srcmd5>
+    <version>1.13.0</version>
+    <time>1784667214</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.13.0</comment>
+    <requestid>1366599</requestid>
+  </revision>
 </revisionlist>

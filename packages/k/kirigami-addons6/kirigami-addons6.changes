@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Jul 19 13:07:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.13.0
+  * Fix reference error in about page program icon
+  * Avoid unneeded KCoreAddons version include
+  * FormComboBoxDelegate: Forward more ComboBox APIs
+  * Add a button to reset a time picker back to the current time
+  * Enable KCrash integration on Android
+  * AboutPage: Sync with Kirigami changes to program icon
+  * Replace image in qml-check-i18n job
+  * FormDelegateBackground: Use Kirigami.Units.cornerRadius
+  * Do not explicitly link against Qt6::QuickEffect in onboarding module
+  * Add explicit linkage against Qt6::QuickEffects for apps using the onboarding module
+  * Add org.kde.kirigamiaddons.onboarding module documentation
+  * Fix org.kde.kirigamiaddons.onboarding issues on Android/iOS
+  * Make KCrash and Linux sandbox integration optional on iOS
+  * FormSpinBoxDelegate: Alias more properties and signals
+  * Add new org.kde.kirigamiaddons.onboarding module
+  * KirigamiAppDefaults: Clean up ifdefs
+  * Require Qt 6.9 for unconditional use of the SafeArea API
+  * Form*FieldDelegate: Fix text property not yet updated on signal trigger
+  * Form*FieldDelegate: Add more aliases to input field
+  * FormCard: Fix implicitWidth
+  * Add missing QML module dependencies to Qt.labs.qmlmodels
+
+-------------------------------------------------------------------
 Sun May 24 11:58:20 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.1

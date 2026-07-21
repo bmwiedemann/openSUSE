@@ -17,13 +17,13 @@
 
 
 %define kf6_version 6.16.0
-%define qt6_version 6.8.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 
 %define rname kirigami-addons
 Name:           kirigami-addons6
-Version:        1.12.1
+Version:        1.13.0
 Release:        0
 Summary:        Add-ons for the Kirigami framework
 License:        LGPL-3.0-only
@@ -45,6 +45,7 @@ BuildRequires:  cmake(KF6IconThemes) >= %{kf6_version}
 BuildRequires:  cmake(KF6KirigamiPlatform) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Quick) >= %{qt6_version}
+BuildRequires:  cmake(Qt6QuickEffects) >= %{qt6_version}
 BuildRequires:  cmake(Qt6QuickControls2) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Tools) >= %{qt6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
