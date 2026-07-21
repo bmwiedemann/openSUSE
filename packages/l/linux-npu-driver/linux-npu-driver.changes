@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 16 22:47:35 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to version 1.33.0
+  * No upstream release notes available.
+- Update to version 1.32.1
+  * Switched Ubuntu installation procedure from dpkg to apt
+    for improved dependency handling.
+- Update to version 1.32.0
+  * Add support for Intel Wildcat Lake platform.
+  * Remove bundled third_party/level-zero submodule.
+  * Add automatic detection and download of Level Zero when
+    not available on the system.
+  * Add support for Ubuntu 24.04 snapshot packages.
+  * Add documentation for UMD driver features.
+
+-------------------------------------------------------------------
 Mon Jun  8 02:07:50 UTC 2026 - Jeffrey Cheung <jcheung@suse.com>
 
 - Fix _service info

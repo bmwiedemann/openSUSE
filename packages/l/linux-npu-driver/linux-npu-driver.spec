@@ -18,22 +18,23 @@
 
 %define _firmwaredir /lib/firmware
 Name:           linux-npu-driver
-Version:        1.30.0
+Version:        1.33.0
 Release:        0
-Summary:        Driver for Intel NPU device.
+Summary:        Driver for Intel NPU device
 License:        MIT
 URL:            https://github.com/intel/linux-npu-driver
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         gtest.patch
 BuildRequires:  cmake
-BuildRequires:  gtest level-zero-devel gmock
-BuildRequires:  gmock
 BuildRequires:  git
 %if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
 BuildRequires:  gcc-c++ gcc
 %else
 BuildRequires:  gcc12-c++ gcc12
 %endif
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(level-zero)
+BuildRequires:  pkgconfig(gmock)
 BuildRequires:  xz
 ExclusiveArch:  x86_64
 
@@ -51,7 +52,6 @@ neural network tasks.
 export CC=gcc-12 CXX=g++-12
 %endif
 
-cat third_party/CMakeLists.txt 
 %cmake \
 	-DENABLE_NPU_COMPILER_BUILD=OFF \
 	-DCMAKE_CXX_FLAGS="-fcf-protection=none" \
@@ -60,6 +60,7 @@ cat third_party/CMakeLists.txt
 
 %install
 %cmake_install
+DESTDIR=%{buildroot} /usr/bin/cmake --install build --component fw-npu
 
 %ldconfig_scriptlets
 
