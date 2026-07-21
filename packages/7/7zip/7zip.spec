@@ -17,9 +17,9 @@
 #
 
 
-%define stripped_version 2601
+%define stripped_version 2602
 Name:           7zip
-Version:        26.01
+Version:        26.02
 Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause

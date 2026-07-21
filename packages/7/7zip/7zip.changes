@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 17 16:23:04 UTC 2026 - munix9@googlemail.com
+
+- Update to 26.02:
+  * Some bugs and vulnerabilities were fixed.
+  * CVE-2026-14266 / ZDI-26-444 : 7-Zip XZ Decompression Heap-based
+    Buffer Overflow Remote Code Execution Vulnerability
+
+-------------------------------------------------------------------
 Mon Jun  1 06:01:28 UTC 2026 - munix9@googlemail.com
 
 - Update to 26.01:
