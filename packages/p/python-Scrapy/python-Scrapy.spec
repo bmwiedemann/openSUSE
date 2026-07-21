@@ -32,10 +32,10 @@
 %endif
 # Upstream (and Twisted) are unclear about Python 3.14 support
 # https://github.com/scrapy/scrapy/pull/6604
-%define release_version 2.15.2
+%define release_version 2.17.0
 %{?sle15_python_module_pythons}
 Name:           python-Scrapy%{?psuffix}
-Version:        2.15.2+git.1778596491.3b34ab88c
+Version:        2.17.0+git7
 Release:        0
 Summary:        A high-level Python Screen Scraping framework
 License:        BSD-3-Clause
@@ -146,6 +146,8 @@ skiplist="$skiplist or test_response_ip_address"
 skiplist="$skiplist or test_asyncio_enabled_reactor_same_loop"
 # Deprecationwarnings not firing
 skiplist="$skiplist or test_pos_string or test_key_resp_or_url"
+# needs online DNS lookups
+skiplist="$skiplist or test_verify_certs or test_tls_logging or test_download or test_download_with_spider"
 %{pytest \
     -k "not (${skiplist})" \
     -W ignore::DeprecationWarning \

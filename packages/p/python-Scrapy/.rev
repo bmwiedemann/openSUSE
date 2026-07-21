@@ -401,4 +401,12 @@ Requires python-setuptools 78 to build successfully.
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1354101</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>f9cab491e39520ffecd36e7eba24b8d8</srcmd5>
+    <version>2.17.0+git7</version>
+    <time>1784667576</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366699</requestid>
+  </revision>
 </revisionlist>
