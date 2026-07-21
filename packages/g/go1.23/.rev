@@ -323,4 +323,24 @@
   * No Go application packages in Factory use go1.x-libstd (forwarded request 1361832 from jfkw)</comment>
     <requestid>1361833</requestid>
   </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>a46112beb8cf3b5b835d2d4a80424fe8</srcmd5>
+    <version>1.23.12</version>
+    <time>1784667197</time>
+    <user>dimstar_suse</user>
+    <comment>- Packaging improvements:
+  * Revert %ghost /usr/bin/go /usr/bin/gofmt which prevents install
+    of a working go command. Refs boo#1245878 bsc#1264392
+  * Based on feedback from Factory maintainers restore the original
+    lifecycle for these files: Each go1.x toolchain shares
+    ownership of a go and gofmt symlink managed by the alternatives
+    system (update-alternatives and libalternatives). When the last
+    go1.x package is uninstalled the symlinks will be removed.
+  * Context: %ghost was introduced to prevent file conflicts among
+    go1.x toolchain packages reported by installcheck dev tool.
+    %ghost prevents the files from being installed, which results
+    in no installed go command. The shared ownership of the go and
+    gofmt symlinks is intentional. (forwarded request 1366809 from jfkw)</comment>
+    <requestid>1366812</requestid>
+  </revision>
 </revisionlist>
