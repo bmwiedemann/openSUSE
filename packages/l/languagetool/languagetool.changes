@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:50:13 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- We downgraded opennlp to 1.9.5, so we don't need to force
+  java 17+ for build
+
+-------------------------------------------------------------------
+Wed Jul  1 04:55:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use the jline3 bundle jar to make an eventual upgrade of jline3
+  easier
+
+-------------------------------------------------------------------
+Mon May  4 11:57:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Require Java 17+ for build, since opennlp requires it
+
+-------------------------------------------------------------------
 Mon Oct  6 06:57:53 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Fix Requires so that they correspond to reality

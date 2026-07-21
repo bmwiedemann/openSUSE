@@ -1,7 +1,7 @@
 #
 # spec file for package languagetool
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -96,12 +96,7 @@ Requires:       java-diff-utils
 Requires:       java-jwt
 Requires:       javassist
 Requires:       jetbrains-annotations
-Requires:       jline3-builtins
-Requires:       jline3-native
-Requires:       jline3-reader
-Requires:       jline3-style
-Requires:       jline3-terminal
-Requires:       jline3-terminal-jna
+Requires:       jline3
 Requires:       jna
 Requires:       jna-contrib
 Requires:       jspecify
