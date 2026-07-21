@@ -34,6 +34,17 @@ Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
 Patch0:         ntfs3g-unistr-use-after-free.patch
 # PATCH-FIX-UPSTREAM ntfs3g-heap-overflow.patch bsc#1262216 sreeves@suse.com -- fix heap overflow
 Patch1:         ntfs3g-heap-overflow.patch
+Patch2:         1_ntfs-3g_2022.10.3-CVE-2026-42618.patch
+Patch3:         2_ntfs-3g_2022.10.3-CVE-2026-42616.patch
+Patch4:         3_ntfs-3g_2022.10.3-CVE-2026-42617.patch
+Patch5:         4_ntfs-3g_2022.10.3-CVE-2026-46569.patch
+Patch6:         5_ntfs-3g_2022.10.3-CVE-2026-46571.patch
+Patch7:         6_ntfs-3g_2022.10.3-CVE-2026-46570.patch
+# This is the same as 3_...42617.patch
+#Patch8:         7_ntfs-3g_2022.10.3-CVE-2026-46572.patch
+Patch9:         8_ntfs-3g_2022.10.3-CVE-2026-56135.patch
+# This is the same as 3_...42617.patch
+#Patch10:        9_ntfs-3g_2022.10.3-CVE-2026-56136.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
 BuildRequires:  libgcrypt-devel

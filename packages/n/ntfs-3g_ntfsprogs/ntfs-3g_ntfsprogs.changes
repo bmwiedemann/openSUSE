@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Jul 14 14:26:30 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adding patch bundle from upstream (download.tuxera.com/opensource)
+  re:cve_2026-04 for v2022.10.3
+  * bsc#1271104 -> 1_ntfs-3g_2022.10.3-CVE-2026-42618.patch
+  * bsc#1271102 -> 2_ntfs-3g_2022.10.3-CVE-2026-42616.patch
+  * bsc#1271103 -> 3_ntfs-3g_2022.10.3-CVE-2026-42617.patch
+  * bsc#1271105 -> 4_ntfs-3g_2022.10.3-CVE-2026-46569.patch
+  * bsc#1271107 -> 5_ntfs-3g_2022.10.3-CVE-2026-46571.patch
+  * bsc#1271106 -> 6_ntfs-3g_2022.10.3-CVE-2026-46570.patch
+  * bsc#1271108 -> 7_ntfs-3g_2022.10.3-CVE-2026-46572.patch
+    - This file is identical to 3_...42617.patch
+  * bsc#1271109 -> 8_ntfs-3g_2022.10.3-CVE-2026-56135.patch
+  * bsc#1271110 -> 9_ntfs-3g_2022.10.3-CVE-2026-56136.patch
+    - This file is identical to 3_...42617.patch
+
+-------------------------------------------------------------------
 Sat May  9 17:24:12 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Remove last remnants of update-alternatives. 
