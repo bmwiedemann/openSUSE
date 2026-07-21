@@ -1,5 +1,34 @@
 -------------------------------------------------------------------
-Tue Dec 17 08:17:01 2024 UTC - shap-staff@suse.de
+Tue Jul 21 12:13:41 UTC 2026 - shap-staff@suse.de
+
+- Release 1.4.2
+
+  ## What's Changed
+  * Use proper obs time format on changes generation by @arbulu89 in https://github.com/ClusterLabs/ha_cluster_exporter/pull/292
+  * Upgrade x/net to 0.57 by @arbulu89 in https://github.com/ClusterLabs/ha_cluster_exporter/pull/293 (CVE-2026-39821, bsc#1266552)
+
+
+  **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.4.1...1.4.2
+
+-------------------------------------------------------------------
+Mon Jul 20 14:46:24 UTC 2026 - shap-staff@suse.de
+
+- Release 1.4.1
+
+  ## What's Changed
+  * Upgrade to use go 1.25 by @arbulu89 in https://github.com/ClusterLabs/ha_cluster_exporter/pull/286
+
+  ### Dependabot updates
+  * Bump github.com/prometheus/common from 0.59.1 to 0.61.0 by @dependabot[bot] in https://github.com/ClusterLabs/ha_cluster_exporter/pull/271
+  * Bump golang.org/x/net from 0.33.0 to 0.55.0 in the go_modules group across 1 directory by @dependabot[bot] in https://github.com/ClusterLabs/ha_cluster_exporter/pull/273 . Fix for: https://bugzilla.suse.com/show_bug.cgi?id=1266552
+
+  ## New Contributors
+  * @arbulu89 made their first contribution in https://github.com/ClusterLabs/ha_cluster_exporter/pull/286
+
+  **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.4.0...1.4.1
+
+-------------------------------------------------------------------
+Tue Dec 17 08:17:01 UTC 2024 - shap-staff@suse.de
 
 - Release 1.4.0
 
@@ -37,7 +66,7 @@ Tue Dec 17 08:17:01 2024 UTC - shap-staff@suse.de
   **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.3.3...1.4.0
 
 -------------------------------------------------------------------
-Mon May 29 08:54:11 2023 UTC - shap-staff@suse.de
+Mon May 29 08:54:11 UTC 2023 - shap-staff@suse.de
 
 - Release 1.3.3
 
@@ -48,7 +77,7 @@ Mon May 29 08:54:11 2023 UTC - shap-staff@suse.de
   **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.3.2...1.3.3
 
 -------------------------------------------------------------------
-Tue May  2 17:18:33 2023 UTC - shap-staff@suse.de
+Tue May  2 17:18:33 UTC 2023 - shap-staff@suse.de
 
 - Release 1.3.2
 
@@ -62,7 +91,7 @@ Tue May  2 17:18:33 2023 UTC - shap-staff@suse.de
   **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.3.1...1.3.2
 
 -------------------------------------------------------------------
-Fri Feb 10 11:26:55 2023 UTC - shap-staff@suse.de
+Fri Feb 10 11:26:55 UTC 2023 - shap-staff@suse.de
 
 - Release 1.3.1
 
@@ -75,7 +104,7 @@ Fri Feb 10 11:26:55 2023 UTC - shap-staff@suse.de
   **Full Changelog**: https://github.com/ClusterLabs/ha_cluster_exporter/compare/1.3.0...1.3.1
 
 -------------------------------------------------------------------
-Tue May 24 15:42:59 2022 UTC - shap-staff@suse.de
+Tue May 24 15:42:59 UTC 2022 - shap-staff@suse.de
 
 - Release 1.3.0
 
@@ -90,7 +119,7 @@ Tue May 24 15:42:59 2022 UTC - shap-staff@suse.de
   - Rename dashboard provider subpackage (#196)
 
 -------------------------------------------------------------------
-Fri May 28 07:36:31 2021 UTC - shap-staff@suse.de
+Fri May 28 07:36:31 UTC 2021 - shap-staff@suse.de
 
 - Release 1.2.3
 
@@ -104,7 +133,7 @@ Fri May 28 07:36:31 2021 UTC - shap-staff@suse.de
   - Remove the `make download` target, which was mostly useless. (#194)
 
 -------------------------------------------------------------------
-Wed May 12 11:35:32 2021 UTC - shap-staff@suse.de
+Wed May 12 11:35:32 UTC 2021 - shap-staff@suse.de
 
 - Release 1.2.2
 
@@ -118,7 +147,7 @@ Wed May 12 11:35:32 2021 UTC - shap-staff@suse.de
   - Avoid duplicate metric recording errors for non-running OCFS resources. (#191)
 
 -------------------------------------------------------------------
-Wed Dec  2 17:29:46 2020 UTC - shap-staff@suse.de
+Wed Dec  2 17:29:46 UTC 2020 - shap-staff@suse.de
 
 - Release 1.2.1
 
@@ -126,7 +155,7 @@ Wed Dec  2 17:29:46 2020 UTC - shap-staff@suse.de
   - Remove Pacemaker dependency from systemd unit (#180)
 
 -------------------------------------------------------------------
-Fri Sep 11 13:41:08 2020 UTC - shap-staff@suse.de
+Fri Sep 11 13:41:08 UTC 2020 - shap-staff@suse.de
 
 - Release 1.2.0
 
@@ -137,7 +166,7 @@ Fri Sep 11 13:41:08 2020 UTC - shap-staff@suse.de
   - Handle correctly corosync membership parsing with qdevice enabled (#172)
 
 -------------------------------------------------------------------
-Mon Jul 13 11:09:48 2020 UTC - shap-staff@suse.de
+Mon Jul 13 11:09:48 UTC 2020 - shap-staff@suse.de
 
 - Release 1.1.0
 
@@ -162,7 +191,7 @@ Mon May 18 10:00:39 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 - Backport to SLE12SP3 and SLE15. (jsc#SLE-10902, jsc#SLE-10903, jsc#ECO-817, jsc#ECO-818) 
 
 -------------------------------------------------------------------
-Mon May  4 16:05:22 2020 UTC - shap-staff@suse.de
+Mon May  4 16:05:22 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.1
 
@@ -170,7 +199,7 @@ Mon May  4 16:05:22 2020 UTC - shap-staff@suse.de
   - Corosync membership parsing (#154)
 
 -------------------------------------------------------------------
-Mon May  4 09:26:45 2020 UTC - shap-staff@suse.de
+Mon May  4 09:26:45 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0
 
@@ -188,7 +217,7 @@ Mon May  4 09:26:45 2020 UTC - shap-staff@suse.de
   - Unnecessary file I/O in DRBD collector. (#150)
 
 -------------------------------------------------------------------
-Tue Mar 31 13:46:16 2020 UTC - shap-staff@suse.de
+Tue Mar 31 13:46:16 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0rc1
 
@@ -201,7 +230,7 @@ Tue Mar 31 13:46:16 2020 UTC - shap-staff@suse.de
   - Updated some documentation and boilerplate (3de9c59)
 
 -------------------------------------------------------------------
-Thu Mar 12 11:45:23 2020 UTC - shap-staff@suse.de
+Thu Mar 12 11:45:23 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta8
 
@@ -214,7 +243,7 @@ Thu Mar 12 11:45:23 2020 UTC - shap-staff@suse.de
   - Regression in CI changelog generator. (#136)
 
 -------------------------------------------------------------------
-Fri Feb 28 15:13:01 2020 UTC - shap-staff@suse.de
+Fri Feb 28 15:13:01 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta7
 
@@ -229,7 +258,7 @@ Fri Feb 28 15:13:01 2020 UTC - shap-staff@suse.de
   - A few edge cases previously uncovered in the CI pipeline are now handled correctly. (#135)
 
 -------------------------------------------------------------------
-Wed Feb 12 10:22:03 2020 UTC - shap-staff@suse.de
+Wed Feb 12 10:22:03 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta6
 
@@ -237,7 +266,7 @@ Wed Feb 12 10:22:03 2020 UTC - shap-staff@suse.de
   - Revert full Source url usage and reinstate OBS source service in the build pipeline (#129)
 
 -------------------------------------------------------------------
-Tue Feb 11 14:18:15 2020 UTC - shap-staff@suse.de
+Tue Feb 11 14:18:15 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta5
 
@@ -245,7 +274,7 @@ Tue Feb 11 14:18:15 2020 UTC - shap-staff@suse.de
   - Source url in spec file (#128)
 
 -------------------------------------------------------------------
-Tue Feb 11 11:50:22 2020 UTC - shap-staff@suse.de
+Tue Feb 11 11:50:22 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta4
 
@@ -253,7 +282,7 @@ Tue Feb 11 11:50:22 2020 UTC - shap-staff@suse.de
   - Use a full source url in the spec file (#127)
 
 -------------------------------------------------------------------
-Mon Feb 10 17:23:30 2020 UTC - shap-staff@suse.de
+Mon Feb 10 17:23:30 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta3
 
@@ -266,7 +295,7 @@ Mon Feb 10 13:40:46 UTC 2020 - Stefano Torresi <stefano.torresi@suse.com>
 - SR to Factory and SLES 15 SP2 (jsc#SLE-10545)
 
 -------------------------------------------------------------------
-Wed Feb  5 16:58:21 2020 UTC - shap-staff@suse.de
+Wed Feb  5 16:58:21 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0beta2
 
@@ -276,7 +305,7 @@ Wed Feb  5 16:58:21 2020 UTC - shap-staff@suse.de
 
 
 -------------------------------------------------------------------
-Tue Feb  4 10:16:05 2020 UTC - shap-staff@suse.de
+Tue Feb  4 10:16:05 UTC 2020 - shap-staff@suse.de
 
 - Release 1.0.0-beta
 
@@ -285,7 +314,7 @@ Tue Feb  4 10:16:05 2020 UTC - shap-staff@suse.de
   - **BC Break** - Default TCP listening port changed from 9002 to 9964. The old behaviour can be kept via the `--port` CLI flags / config option. (#122)
 
 -------------------------------------------------------------------
-Fri Dec 13 15:20:50 2019 UTC - shap-staff@suse.de
+Fri Dec 13 15:20:50 UTC 2019 - shap-staff@suse.de
 
 - Release 0.4.0
 
@@ -302,7 +331,7 @@ Fri Dec 13 15:20:50 2019 UTC - shap-staff@suse.de
   - Useless warning about missing DRBD split-brain notifications directory (#110)
 
 -------------------------------------------------------------------
-Thu Nov 28 12:40:53 2019 UTC - shap-staff@suse.de
+Thu Nov 28 12:40:53 UTC 2019 - shap-staff@suse.de
 
 - Release 0.3.0
 
