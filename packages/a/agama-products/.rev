@@ -403,4 +403,12 @@
     <comment>- Version 22</comment>
     <requestid>1359652</requestid>
   </revision>
+  <revision rev="36" vrev="36">
+    <srcmd5>379ac16efa771783d39c933034992cd9</srcmd5>
+    <version>0</version>
+    <time>1784667305</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic update from systemsmanagement:Agama:Release</comment>
+    <requestid>1366760</requestid>
+  </revision>
 </revisionlist>
