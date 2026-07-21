@@ -37,7 +37,7 @@ Tue Jul 07 13:49:46 UTC 2026 - Jan Zerebecki <jan.suse@zerebecki.de>
   * Sync repo templates ⚙
   * Sync repo templates ⚙
   * build(deps): bump bytes from 1.10.1 to 1.11.1
-    fixes CVE-2026-25541
+    fixes CVE-2026-25541 AKA bsc#1271348
   * util/dhcp: Fix clippy lints
   * Sync repo templates ⚙
   * build(deps): bump actions/checkout from 4 to 6
@@ -66,6 +66,7 @@ Tue Jul 07 10:54:13 UTC 2026 - Jan Zerebecki <jan.suse@zerebecki.de>
   * providers/azure: switch SSH key retrieval from certs endpoint to IMDS
   * build(deps): bump the build group with 8 updates
   * build(deps): bump slab from 0.4.10 to 0.4.11
+    fixes CVE-2025-55159 AKA bsc#1248058
   * build(deps): bump actions/checkout from 4 to 5
   * upcloud: implement UpCloud provider
   * build(deps): bump the build group with 4 updates

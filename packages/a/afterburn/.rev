@@ -189,4 +189,12 @@ Prepare for RPM 4.20</comment>
     <comment>- Update to version 5.10.0.git73.b97f772</comment>
     <requestid>1364949</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>8302966ca0f721fc605340b114e6fcfe</srcmd5>
+    <version>5.10.0.git73.b97f772</version>
+    <time>1784668253</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1366902</requestid>
+  </revision>
 </revisionlist>
