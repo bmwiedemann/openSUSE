@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:35:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.73.2:
+  * Bug Fixes
+    - build, stapel: introspect failed stage from committed image,
+      not temp UUID (#7607) (a0bc374)
+
+-------------------------------------------------------------------
+Wed Jul 15 04:50:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.73.1:
+  * Bug Fixes
+    - build: useUUID-based naming for scratch base images to
+      prevent buildah misinterpretation (#7602) (9ce7545)
+- Update to version 2.73.0:
+  * Features
+    - deploy: move dockerconfigjson to .global.werf (#7583)
+      (79d90cb)
+  * Bug Fixes
+    - build, buildah, dockerfile, staged: resolve staged Dockerfile
+      RUN --mount from=<stage> to built image (#7594) (b1933b3)
+
+-------------------------------------------------------------------
 Thu Jul 02 11:03:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.72.2:

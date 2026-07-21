@@ -615,4 +615,20 @@
     <comment></comment>
     <requestid>1363473</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>6e6515decc94f2d69881bd271151713e</srcmd5>
+    <version>2.73.1</version>
+    <time>1784127001</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365798</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>8a1a19db5a79d1c7086a7f1071f9b9e6</srcmd5>
+    <version>2.73.2</version>
+    <time>1784668286</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366941</requestid>
+  </revision>
 </revisionlist>
