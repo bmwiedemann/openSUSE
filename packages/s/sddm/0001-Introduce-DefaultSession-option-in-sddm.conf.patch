@@ -1,0 +1,96 @@
+From c1b8b0bcbbba6471d568b5da551c1f72d3e37185 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 28 Jun 2025 16:09:32 +0200
+Subject: [PATCH 1/2] Introduce DefaultSession option in sddm.conf
+
+This allows to set a default entry for the session selector in case
+there is no remembered last session. Useful for the first use of SDDM
+after installation and if RememberLastSession is disabled.
+---
+ data/man/sddm.conf.rst.in    |  4 ++++
+ src/common/Configuration.h   |  1 +
+ src/daemon/Display.cpp       | 15 +++++++++++++++
+ src/greeter/SessionModel.cpp |  6 +++++-
+ 4 files changed, 25 insertions(+), 1 deletion(-)
+
+diff --git a/data/man/sddm.conf.rst.in b/data/man/sddm.conf.rst.in
+index 0d00919..5e55f88 100644
+--- a/data/man/sddm.conf.rst.in
++++ b/data/man/sddm.conf.rst.in
+@@ -69,6 +69,10 @@ OPTIONS
+         or "compose" for dead keys support.
+         Leave this empty if unsure.
+ 
++`DefaultSession=`
++    Path to session file that is selected by default if there is no
++    remembered last session.
++
+ `Namespaces=`
+ 	Comma-separated list of paths bound to Linux namespaces to enter with
+ 	setns() before starting the user session.  For example, to enter network
+diff --git a/src/common/Configuration.h b/src/common/Configuration.h
+index 4c3572d..e94206a 100644
+--- a/src/common/Configuration.h
++++ b/src/common/Configuration.h
+@@ -48,6 +48,7 @@ namespace SDDM {
+         Entry(InputMethod,         QString,     QStringLiteral("qtvirtualkeyboard"),                   _S("Input method module"));
+         Entry(Namespaces,          QStringList, QStringList(),                                  _S("Comma-separated list of Linux namespaces for user session to enter"));
+         Entry(GreeterEnvironment,  QStringList, QStringList(),                                  _S("Comma-separated list of environment variables to be set"));
++        Entry(DefaultSession,      QString,     QString(),                                      _S("Path to session file that is selected by default. RememberLastSession takes precedence over this."));
+         //  Name   Entries (but it's a regular class again)
+         Section(Theme,
+             Entry(ThemeDir,            QString,     _S(DATA_INSTALL_DIR "/themes"),             _S("Theme directory path"));
+diff --git a/src/daemon/Display.cpp b/src/daemon/Display.cpp
+index e10977e..6182017 100644
+--- a/src/daemon/Display.cpp
++++ b/src/daemon/Display.cpp
+@@ -181,12 +181,27 @@ namespace SDDM {
+             if (autologinSession.isEmpty()) {
+                 autologinSession = stateConfig.Last.Session.get();
+             }
++            // still not configured: try configured default
++            if (autologinSession.isEmpty()) {
++                autologinSession = mainConfig.DefaultSession.get();
++            }
++
+             if (findSessionEntry(mainConfig.Wayland.SessionDir.get(), autologinSession)) {
+                 m_autologinSession.setTo(Session::WaylandSession, autologinSession);
+             } else if (findSessionEntry(mainConfig.X11.SessionDir.get(), autologinSession)) {
+                 m_autologinSession.setTo(Session::X11Session, autologinSession);
+             } else {
+                 qCritical() << "Unable to find autologin session entry" << autologinSession;
++
++                // not found: use configured default
++                autologinSession = mainConfig.DefaultSession.get();
++                if (findSessionEntry(mainConfig.Wayland.SessionDir.get(), autologinSession)) {
++                   m_autologinSession.setTo(Session::WaylandSession, autologinSession);
++                } else if (findSessionEntry(mainConfig.X11.SessionDir.get(), autologinSession)) {
++                   m_autologinSession.setTo(Session::X11Session, autologinSession);
++                } else {
++                    qCritical() << "Unable to find fallback autologin session entry" << autologinSession;
++                }
+             }
+         }
+ 
+diff --git a/src/greeter/SessionModel.cpp b/src/greeter/SessionModel.cpp
+index 61b115b..2ec17f9 100644
+--- a/src/greeter/SessionModel.cpp
++++ b/src/greeter/SessionModel.cpp
+@@ -164,9 +164,13 @@ namespace SDDM {
+                 delete si;
+             }
+         }
++        QString lastSession = stateConfig.Last.Session.get();
++        if (lastSession.isEmpty() || !QFile::exists(lastSession))
++            lastSession = mainConfig.DefaultSession.get();
++
+         // find out index of the last session
+         for (int i = 0; i < d->sessions.size(); ++i) {
+-            if (d->sessions.at(i)->fileName() == stateConfig.Last.Session.get()) {
++            if (d->sessions.at(i)->fileName() == lastSession) {
+                 d->lastIndex = i;
+                 break;
+             }
+-- 
+2.54.0
+

@@ -1,0 +1,54 @@
+From 22321b6e859b11cc6e00ecfdf2054dd06d9a24d6 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Sat, 18 Jul 2026 21:49:52 +0200
+Subject: [PATCH 2/2] Migrate from default.desktop to [General] DefaultSession
+
+If the last login was through autologin, state.conf will have
+[Last] Session=/usr/share/xsessions/default.desktop.
+If the used desktop drops the X11 session, this may point to some other desktop
+that still supports X11 (e.g. the default fallback: IceWM), which is unexpected
+for users.
+
+A similar case applies to [Autologin] Session. This is set to "default.desktop"
+by kcm_sddm by default, but without indicating a specific session type.
+
+Try to avoid the unexpected flip by using [General] DefaultSession= instead of
+"default.desktop". That can be set through sddm config dropins supplied by
+desktops in a similar priority based system as update-alternatives did for
+default.desktop.
+---
+ src/daemon/Display.cpp       | 4 ++++
+ src/greeter/SessionModel.cpp | 2 +-
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/src/daemon/Display.cpp b/src/daemon/Display.cpp
+index 6182017..0cf8443 100644
+--- a/src/daemon/Display.cpp
++++ b/src/daemon/Display.cpp
+@@ -185,6 +185,10 @@ namespace SDDM {
+             if (autologinSession.isEmpty()) {
+                 autologinSession = mainConfig.DefaultSession.get();
+             }
++            // migrate away from default.desktop
++            if (QFileInfo(autologinSession).fileName() == QStringLiteral("default.desktop")) {
++                autologinSession = mainConfig.DefaultSession.get();
++            }
+ 
+             if (findSessionEntry(mainConfig.Wayland.SessionDir.get(), autologinSession)) {
+                 m_autologinSession.setTo(Session::WaylandSession, autologinSession);
+diff --git a/src/greeter/SessionModel.cpp b/src/greeter/SessionModel.cpp
+index 2ec17f9..9ee98cc 100644
+--- a/src/greeter/SessionModel.cpp
++++ b/src/greeter/SessionModel.cpp
+@@ -165,7 +165,7 @@ namespace SDDM {
+             }
+         }
+         QString lastSession = stateConfig.Last.Session.get();
+-        if (lastSession.isEmpty() || !QFile::exists(lastSession))
++        if (lastSession.isEmpty() || !QFile::exists(lastSession) || QFileInfo(lastSession).fileName() == QStringLiteral("default.desktop"))
+             lastSession = mainConfig.DefaultSession.get();
+ 
+         // find out index of the last session
+-- 
+2.54.0
+

@@ -1,7 +1,7 @@
 #
 # spec file for package sddm
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -73,10 +73,13 @@ Patch55:        0003-Load-autologin-configuration-in-Display-Display.patch
 Patch56:        0004-Reset-daemonApp-first-in-the-Display-constructor.patch
 Patch57:        0005-If-autologin-is-used-avoid-starting-a-display-server.patch
 # Patch100-?: PATCH-FIX-OPENSUSE
+# Patch100 may be useful for upstream as well
+Patch100:       0001-Introduce-DefaultSession-option-in-sddm.conf.patch
 Patch101:       0001-Write-the-daemon-s-PID-to-a-file-on-startup.patch
 Patch102:       0001-Set-XAUTHLOCALHOSTNAME-in-sessions.patch
 Patch103:       0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
 Patch104:       sddm-service-handle-plymouth.patch
+Patch105:       0002-Migrate-from-default.desktop-to-General-DefaultSessi.patch
 Patch107:       0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes

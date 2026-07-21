@@ -6,8 +6,6 @@ Subject: [PATCH] Read the DISPLAYMANAGER_AUTOLOGIN value from
 
 Support DISPLAYMANAGER_AUTOLOGIN entry from /etc/sysconfig/displaymanager,
 the value overwrites any entry in sddm.conf/[Autologin]/User.
-Patch also defaults to default.desktop as default autologin session.
-This is controlled only by sddm.conf file.
 ---
  CMakeLists.txt             | 1 +
  src/common/Configuration.h | 5 +++--
@@ -27,19 +25,6 @@ Index: sddm-0.21.0/CMakeLists.txt
  set(LOG_FILE                    "${CMAKE_INSTALL_FULL_LOCALSTATEDIR}/log/sddm.log"  CACHE PATH      "Path of the sddm log file")
  set(DBUS_CONFIG_FILENAME        "org.freedesktop.DisplayManager.conf"               CACHE STRING    "Name of the sddm config file")
  set(COMPONENTS_TRANSLATION_DIR  "${DATA_INSTALL_DIR}/translations-qt${QT_MAJOR_VERSION}" CACHE PATH      "Components translations directory")
-Index: sddm-0.21.0/src/common/Configuration.h
-===================================================================
---- sddm-0.21.0.orig/src/common/Configuration.h
-+++ sddm-0.21.0/src/common/Configuration.h
-@@ -108,7 +108,7 @@ namespace SDDM {
- 
-     Config(StateConfig, []()->QString{auto tmp = getpwnam("sddm"); return tmp ? QString::fromLocal8Bit(tmp->pw_dir) : QStringLiteral(STATE_DIR);}().append(QStringLiteral("/state.conf")), QString(), QString(),
-         Section(Last,
--            Entry(Session,         QString,     QString(),                                      _S("Name of the session for the last logged-in user.\n"
-+            Entry(Session,         QString,     _S("/usr/share/xsessions/default.desktop"),     _S("Name of the session for the last logged-in user.\n"
-                                                                                                    "This session will be preselected when the login screen appears."));
-             Entry(User,            QString,     QString(),                                      _S("Name of the last logged-in user.\n"
-                                                                                                    "This user will be preselected when the login screen appears"));
 Index: sddm-0.21.0/src/common/Constants.h.in
 ===================================================================
 --- sddm-0.21.0.orig/src/common/Constants.h.in

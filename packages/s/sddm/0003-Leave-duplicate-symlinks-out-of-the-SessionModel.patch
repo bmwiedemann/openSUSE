@@ -8,11 +8,11 @@ Used for autologin (default.desktop) and backwards-compat.
  src/greeter/SessionModel.cpp | 13 ++++++++++++-
  1 file changed, 12 insertions(+), 1 deletion(-)
 
-diff --git a/src/greeter/SessionModel.cpp b/src/greeter/SessionModel.cpp
-index 3a89d42..9eaab10 100644
---- a/src/greeter/SessionModel.cpp
-+++ b/src/greeter/SessionModel.cpp
-@@ -136,6 +136,15 @@ namespace SDDM {
+Index: sddm-0.21.0/src/greeter/SessionModel.cpp
+===================================================================
+--- sddm-0.21.0.orig/src/greeter/SessionModel.cpp
++++ sddm-0.21.0/src/greeter/SessionModel.cpp
+@@ -137,6 +137,15 @@ namespace SDDM {
          sessions.removeDuplicates();
          for (auto& session : qAsConst(sessions)) {
              Session *si = new Session(type, session);
@@ -28,18 +28,16 @@ index 3a89d42..9eaab10 100644
              bool execAllowed = true;
              QFileInfo fi(si->tryExec());
              if (fi.isAbsolute()) {
-@@ -164,8 +173,10 @@ namespace SDDM {
-             }
-         }
+@@ -168,9 +177,11 @@ namespace SDDM {
+         if (lastSession.isEmpty() || !QFile::exists(lastSession) || QFileInfo(lastSession).fileName() == QStringLiteral("default.desktop"))
+             lastSession = mainConfig.DefaultSession.get();
+ 
++        lastSession = QFileInfo(lastSession).canonicalFilePath();
++
          // find out index of the last session
-+        const QString canonicalLastSession = QFileInfo(stateConfig.Last.Session.get()).canonicalFilePath();
          for (int i = 0; i < d->sessions.size(); ++i) {
--            if (d->sessions.at(i)->fileName() == stateConfig.Last.Session.get()) {
-+            const QString canonicalSession = QFileInfo(d->sessions.at(i)->fileName()).canonicalFilePath();
-+            if (canonicalSession == canonicalLastSession) {
+-            if (d->sessions.at(i)->fileName() == lastSession) {
++            if (QFileInfo(d->sessions.at(i)->fileName()).canonicalFilePath() == lastSession) {
                  d->lastIndex = i;
                  break;
              }
--- 
-2.39.1
-

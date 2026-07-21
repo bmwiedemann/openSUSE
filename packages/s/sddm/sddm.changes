@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 18 16:54:48 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Introduce patch to make the default session configurable
+  beyond xsessions/default.desktop and migrate to it:
+  * 0001-Introduce-DefaultSession-option-in-sddm.conf.patch
+  * 0002-Migrate-from-default.desktop-to-General-DefaultSessi.patch
+- Drop then unnecessary hunk from
+  0001-Read-the-DISPLAYMANAGER_AUTOLOGIN-value-from-sysconf.patch
+- Rebase 0003-Leave-duplicate-symlinks-out-of-the-SessionModel.patch
+
+-------------------------------------------------------------------
 Mon Jun 23 12:16:04 UTC 2025 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Change patch to start plymouth-quit.service explicitly
