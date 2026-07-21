@@ -33,6 +33,7 @@ BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(pango)
+Requires:       neovim >= 0.3.2
 
 %description
 GTK UI for Neovim written in Rust using gtk-rs bindings. With ligatures

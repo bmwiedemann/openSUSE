@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 15 23:11:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add missing neovim Requires, neovim-gtk can not function without
+
+-------------------------------------------------------------------
 Wed Jun 17 06:16:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.1+279 (git snapshot):

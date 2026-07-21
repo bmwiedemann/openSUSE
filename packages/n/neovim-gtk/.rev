@@ -114,4 +114,12 @@
   nightly tag no longer breaks version detection</comment>
     <requestid>1359890</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>28e8b08d0dbb98d946bdcb25f88c3f2c</srcmd5>
+    <version>1.0.1+279</version>
+    <time>1784668261</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366912</requestid>
+  </revision>
 </revisionlist>
