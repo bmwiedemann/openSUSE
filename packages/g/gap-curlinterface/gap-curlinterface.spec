@@ -17,7 +17,7 @@
 
 
 Name:           gap-curlinterface
-Version:        2.4.3
+Version:        2.4.4
 Release:        0
 Summary:        GAP: Web Access via curl
 License:        GPL-2.0-or-later
@@ -29,7 +29,6 @@ BuildRequires:  gap-devel
 BuildRequires:  gap-rpm-devel
 BuildRequires:  pkgconfig(libcurl)
 Requires:       gap-core >= 4.12
-Requires:       gap-gapdoc >= 1.5
 
 %description
 This package provides a wrapper around libcurl, to allow downloading
