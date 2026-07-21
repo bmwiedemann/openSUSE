@@ -35,6 +35,7 @@ Source101:      README
 Patch1:         reproducible-builds.patch
 Patch2:         drop-initviocons-from-package-list.patch
 Patch3:         Ensure-fds-0-1-2-are-open-in-the-subcommand.patch
+Patch4:         add-support-for-initrd-compression-formats.patch
 Patch100:       use-fuse3-for-build.patch
 
 BuildRequires:  bison

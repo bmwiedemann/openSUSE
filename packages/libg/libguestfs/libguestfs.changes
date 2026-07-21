@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 14 13:01:08 MDT 2026 - carnold@suse.com
+
+- bsc#1271111 - guestfish initrd-list can't list our initrd due to
+  zstd compression. (Jiri Belka and AI)
+  add-support-for-initrd-compression-formats.patch
+
+-------------------------------------------------------------------
 Mon Jul 13 13:45:38 MDT 2026 - carnold@suse.com
 
 - bsc#1266992 - network does not work when running guestfish as

@@ -1350,4 +1350,12 @@
     <comment>Update libguestfs to version 1.60.0. A few bug fixes included.</comment>
     <requestid>1365441</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>e53a2742d7f63b7197ba6b4d046aed79</srcmd5>
+    <version>1.60.0</version>
+    <time>1784668475</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367026</requestid>
+  </revision>
 </revisionlist>
