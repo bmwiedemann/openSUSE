@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Jul 15 05:49:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.23.1:
+  * First stable release in the 0.23 series (0.23.0 was never
+    published as a stable version)
+  * Add support for Python 3.14, including the free-threaded
+    (3.14t) interpreter
+  * Ship complete type hints (.pyi stubs) for all public classes
+  * Performance improvements on the BPE and added-vocabulary
+    tokenization paths
+  * add_tokens() now normalizes token content when tokens are
+    added; a re-saved tokenizer.json may differ in its
+    added_tokens block, but existing files load unchanged
+  * Drop support for Python 3.9 (now requires Python 3.10 or newer)
+- Recompile the installed modules as hash-based bytecode and drop a
+  stray %fdupes call in %build, clearing the
+  python-bytecode-inconsistent-mtime and rpm-buildroot-usage rpmlint
+  errors the package previously carried
+
+-------------------------------------------------------------------
 Sun Feb 15 12:56:42 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.22.0:

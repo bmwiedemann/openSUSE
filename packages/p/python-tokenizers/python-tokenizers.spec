@@ -19,10 +19,9 @@
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 13
 %endif
-
 %{?sle15_python_module_pythons}
 Name:           python-tokenizers
-Version:        0.22.0
+Version:        0.23.1
 Release:        0
 Summary:        Provides an implementation of today's most used tokenizers
 License:        Apache-2.0
@@ -38,8 +37,8 @@ BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
-ExclusiveArch:  %{rust_tier1_arches} riscv64
 Requires:       python-huggingface-hub
+ExclusiveArch:  %{rust_tier1_arches} riscv64
 %python_subpackages
 
 %description
@@ -59,7 +58,7 @@ performance and versatility.
 %prep
 %autosetup -p1 -n tokenizers-%{version}
 rm -rfv .cargo
-tar xf %{S:1} -C $PWD
+tar xf %{SOURCE1} -C $PWD
 
 %build
 export CARGO_HOME=$PWD/.cargo
@@ -73,7 +72,6 @@ export CXX="g++-%{?force_gcc_version}"
 %endif
 pushd bindings/python
 %pyproject_wheel
-%python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %install
 export CARGO_NET_OFFLINE=true
@@ -82,6 +80,10 @@ export CARGO_PROFILE_RELEASE_SPLIT_DEBUGINFO=off
 export CARGO_PROFILE_RELEASE_STRIP=false
 pushd bindings/python
 %pyproject_install
+# Recompile the installed modules as hash-based bytecode so .pyc invalidation
+# does not depend on the reproducibility-clamped .py mtimes (otherwise trips
+# python-bytecode-inconsistent-mtime).
+%python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitearch}/tokenizers
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}/*
 
 %check
