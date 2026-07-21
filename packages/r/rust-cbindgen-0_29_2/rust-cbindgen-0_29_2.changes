@@ -1,0 +1,480 @@
+-------------------------------------------------------------------
+Tue Jul 21 13:33:31 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- renamed package for temporary use in Tumbleweed
+
+-------------------------------------------------------------------
+Wed Apr 01 03:42:29 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.29.2+git0:
+  * ci: Add a meta job to block the merge queue on it.
+  * Check for CMSE ABI's as well
+  * Fix doc attribute parsing to properly handle block comments
+  * Expose the line_endings config option to use with the builder
+  * fix env in workflow file
+  * use env to pass output parameters
+  * Explicitly request serde's std features to avoid issues with newer toml versions.
+  * Account for master -> main rename.
+  * Update changelog and bump version.
+  * enum: Track dependencies properly in enumerations.
+
+-------------------------------------------------------------------
+Fri Nov 21 05:29:47 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.29.2+git0:
+  * Explicitly request serde's std features to avoid issues with newer toml versions.
+  * Account for master -> main rename.
+  * Update changelog and bump version.
+  * enum: Track dependencies properly in enumerations.
+  * Allow must_use if a reason is specified
+  * constant: Handle cfg in associated constants.
+  * tests: Add a test for bitflags + disjoint cfg.
+  * Remove "display" feature from the toml crate
+  * DOC: Add metatensor
+  * Fix #1085 - Incorrect detection of duplicated constants
+  * chore: More clippy fixes.
+  * docs: Correct after_include type in example config
+  * cargo update
+  * cfg: Remove another clippy warning.
+  * Fix `clippy::uninlined_format_args`
+  * Update toml to 0.9
+  * Release 0.29.0
+  * Support no-export annotation for statics and functions.
+  * conditional fields of constexpr literal structs
+  * Add LiteralStructField
+  * Github action: Add aarch64 to deploy
+  * Add rename rule for generated associated constant
+  * Upgrade heck to 0.5
+  * Add support for an optional nullable attribute
+  * docs.md: Fix deprecated_with_note and deprecated_variant_with_note being spelled as 'notes'
+  * Fix generic with "void" default
+  * The return of Cast is simplified
+  * Added tests for as keyword inside array into structs
+  * Fixed error generation of structures using the keyword of as inside arrays
+  * Added test for unsafe(no_mangle) attribute
+  * Added tests for unsafe methotd's atributs
+  * Fixed handling of trait methods containing the unsafe attribute
+  * Rename -Zparse-only
+  * Release 0.28.0
+  * tests: Fix symbol file and tests.
+  * Appease clippy.
+  * tests: Run rustfmt.
+
+-------------------------------------------------------------------
+Tue Feb 04 04:32:59 UTC 2025 - william.brown@suse.com
+
+- Update to version 0.28.0+git0:
+  * Release 0.28.0
+  * tests: Fix symbol file and tests.
+  * Appease clippy.
+  * tests: Run rustfmt.
+  * Add a way to generate a list of symbols for dynamic linkage, resolves #907
+  * Add `unstable_ir` feature flag that makes the ir pub
+  * Refactor arm64 build to matrix strategy
+  * Add aarch64/arm64 to CI
+  * Fix clippy warnings
+  * newlines for constexpr
+  * replace is_first_field to enumerate
+  * Fix: avoid potential race in tests/profile.rs
+  * Fix: Ignore `CARGO_BUILD_TARGET` in lib tests too
+  * Fix: Ignore `CARGO_BUILD_TARGET` in tests
+  * Add a test for mangling of array generics.
+  * Implement mangling for arrays
+  * ir: add support for UnsafeCell and SyncUnsafeCell
+  * rename: Add a test for rename-all=prefix:
+  * Less clone for rename-all.
+  * Add rename-all=prefix:
+  * Fix local override of enum prefix-with-name
+  * Also update syn in the Cargo.toml.
+  * utilities: Minor clean-up.
+  * Parse `unsafe` attributes
+  * Deduplicate the code that turns transparent structs into typedefs
+  * Bump MSRV again for clap.
+  * Cargo update and version bump.
+  * Update CHANGES since v0.26.0
+  * Output condition for globals.
+  * Add missing parens to log message
+  * Update cython expectations from the previous patch.
+  * Fix variadic arguments when used in function pointer
+  * deps: Update syn to 2.0
+  * Generalize Item to expose documentation and generic params
+  * Used documented method of specifying variadic arguments `va_list` -> `...` * https://en.cppreference.com/w/c/language/variadic * https://en.cppreference.com/w/cpp/language/variadic_arguments
+  * Parse function argument type first so it can be used to determine name
+  * Improved test coverage of va_list
+  * Point out issue with failing builds due to syntax errors
+  * Add support for NonZero<T> and simplify handling of int primitives
+  * support generics with defaulted args
+  * handle constants of nested transparent types
+  * make it a dev dependency only
+  * tests use pretty_assertions for readable diffs
+  * chore: Update dependencies.
+  * revert accidentally committed debug code
+  * Exclude all test crates
+  * Exclude test depfile crates
+  * Rename duplicate crates in workspace
+  * bug fixed, update test and expectations
+  * add panic to check whether parser even sees it
+  * Expand ignored.rs test to cover associated items
+  * chore: Fix clippy lints.
+  * Fix cpplint warnings
+  * Add `cpp_compat` to template.toml
+  * parser: Treat omitted ABI in extern block as "C".
+  * Account for cfg items in foreign mods.
+  * bindgen: More language-backend clean-up.
+  * Remove code duplication for function writing, and other minor clean-ups.
+  * introduce the concept of language backend
+  * ir: Write documentation on static items.
+  * Run CI jobs on the merge queue.
+  * Added support for integrating the package_version information in a comment of the header file.
+  * feat: support #[deprecated] on enum variants
+  * Use `retain` in `ItemMap::filter`
+  * fix: select package for bindgen based on name and manifest path
+  * Update README.md
+  * Update doc link in Readme so it works from docs.rs
+  * Quote envvar to match documentation
+  * ci: Use GITHUB_OUTPUT envvar instead of set-output command
+  * Bump Serial-test
+  * Update clap further
+  * Update dependencies and bump MSRV to 1.70
+  * Fix clippy warning
+  * Fix clap 4 update.
+  * Upgrade clap 3 to clap 4
+  * Fix `..Default::default()` for struct `Config`
+  * Add docs for no-export
+
+-------------------------------------------------------------------
+Wed Sep 13 23:31:17 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.26.0+git0:
+  * v0.26.0
+  * Update MSRV in Readme
+  * Add support for out-of-line bitfields declarations
+  * Update URLs
+  * Bump clippy msrv to 1.64
+  * Handle bitflags bits method calls
+  * CHANGES: Note #[deprecated] support.
+  * utilities: annotation: Clean-up deprecated parsing and getter.
+  * Add support for #[deprecated].
+  * Support "C-unwind" ABI
+
+-------------------------------------------------------------------
+Mon Sep 04 23:21:09 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.25.0+git0:
+  * Fix minimal Rust version in CI
+  * Revert "Upgrade clap 3 to clap 4"
+  * Fix clippy warning
+  * Fix CI
+  * Update changelog for v0.25.0
+  * CI: Replace forbidden actions with cli code
+  * CI: Add semver checks to CI deploy job
+  * msrv 1.64
+  * Upgrade clap 3 to clap 4
+  * Add: Add rust-toolchain.toml
+
+-------------------------------------------------------------------
+Tue Jul 11 04:12:33 UTC 2023 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Tue Jul 11 03:53:57 UTC 2023 - william.brown@suse.com
+
+- Update to version 0.24.3+git0:
+  * Bump version.
+  * tests: Add a test for struct constants going through typedefs.
+  * bindings: Peel through typedefs for struct constant generation.
+  * Rustfmt recent changes.
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+
+-------------------------------------------------------------------
+Wed Jul 27 07:30:01 UTC 2022 - wolfgang@rosenauer.org
+
+- Update to version 0.24.3+git0:
+  * Bump version.
+  * tests: Add a test for struct constants going through typedefs.
+  * bindings: Peel through typedefs for struct constant generation.
+  * Rustfmt recent changes.
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+
+-------------------------------------------------------------------
+Wed Jun 08 04:11:38 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.24.2+git0:
+  * Version bump.
+  * bitflags: Be explicit in binary operators and such.
+  * Version bump.
+  * constant: Add support for unary negation.
+  * bitflags: Make more operations constexpr.
+  * Fix changelog typo.
+  * Version bump.
+  * constant: Support suffixes for integers that otherwise would be narrowed.
+  * Fix specialization of `SomeType<N>` when `N` is a const parameter.
+  * Minor refactor of ConstExpr::load().
+
+-------------------------------------------------------------------
+Thu Apr 21 22:18:35 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.23.0+git0:
+  * v0.23.0
+  * constant: Make const.allow_constexpr default to true.
+  * constant: Allow more constexpr constants.
+  * Update syn dependency to at least 1.0.88
+  * Fix #753
+
+-------------------------------------------------------------------
+Wed Apr 20 00:14:13 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.22.0+git0:
+  * v0.22.0
+  * Support rename rule for union body members.
+  * constant: Add support for other expressions WebRender uses.
+  * constant: Add support for associated constant expressions.
+  * Fix regression in CamelCase rename rule (should be lowerCamelCase)
+  * enumeration: simplify standard types in variants.
+  * Avoid generating and writing bindings when called recursively
+  * Cython: Omit per-variant tags in unions generated for Rust enums
+  * Update various dependencies.
+  * v0.21.0
+
+-------------------------------------------------------------------
+Tue Apr  5 05:36:24 UTC 2022 - William Brown <william.brown@suse.com>
+
+- Automatic update of vendored dependencies
+
+-------------------------------------------------------------------
+Sun Mar 27 22:39:33 UTC 2022 - william.brown@suse.com
+
+- Update to version 0.21.0+git0:
+  * v0.21.0
+  * Update MSRV to 1.54.0
+  * Update clap to 3.1
+  * Update heck to 0.4.0
+  * Remove etesync from readme.
+  * Update docs.md
+  * Remove wgpu-native from users.
+  * Address clippy lint.
+  * unraw the identifiers
+  * Silence some dead_code warnings.
+
+-------------------------------------------------------------------
+Fri Jul 30 02:55:28 UTC 2021 - william.brown@suse.com
+
+- Update to version 0.20.0+git0:
+  * v0.20.0
+  * Don't use `check` profile when expanding code on a release build
+  * Update --pretty=expanded to -Zunpretty=expanded
+  * Fix some clippy lints.
+  * Simplify Pin<T> to T
+  * add `Builder::with_using_namespaces`
+  * Ignore PhantomPinned
+  * Move the target-guessing code from #676 to its own function.
+  * Only fetch dependencies for current platform by default (#676)
+  * v0.19.0
+
+-------------------------------------------------------------------
+Mon Jul  5 05:14:40 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Update vendored dependencies to resolve potential memory corruption
+  in dependency ( RUSTSEC-2021-0003 )
+
+-------------------------------------------------------------------
+Mon Jun 21 04:09:06 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Remove unnecessary dependency on rust-std-static (implied by rust)
+
+-------------------------------------------------------------------
+Wed Jun  9 01:55:17 UTC 2021 - William Brown <william.brown@suse.com>
+
+- Resolve issue with UPDATING.md in submission
+
+-------------------------------------------------------------------
+Wed Jun 02 05:23:06 UTC 2021 - william.brown@suse.com
+
+- Update to to build from _service with cargo-audit integration
+
+-------------------------------------------------------------------
+Mon Apr 19 12:16:37 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.19.0
+   * Simplify types in generics
+   * Use --profile=check for macro expansion
+   * Use exported name to prefix enum variants
+   * Fix path attribute handling in inline submodules
+   * Fix a stack overflow with some recursive typedefs
+
+- Update to 0.18.0
+   * Simplify types in nested types such as pointed-to types and 
+     function signatures
+
+- Update to 0.17.0
+     * Add with_parse_extra_bindings to builder.
+     * Support NonZero and fix incorrect simplification of Option<ptr> into ptr.
+     * Deal with name conflicts correctly in declaration type resolution.
+     * Support pointers to ZSTs.
+
+-------------------------------------------------------------------
+Tue Jan 12 08:25:59 UTC 2021 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- Update to 0.16.0
+   * Remove artificial restriction on lifetime parameters on enums
+   * Add an option for converting usize/isize into size_t/ptrdiff_t.
+   * Allow controlling the cargo profile used for expansion.
+   * Support wider range of expressions in enum discriminants
+   * Support generation of Cython bindings
+   * Fixed some issues with style=tag and recursive structs
+   * Default C style to Both (as specified in docs)
+   * Fix resolution of path dependencies from certain modules.
+   * Support inlined definitions for tuple variants with a single field in C
+
+-------------------------------------------------------------------
+Tue Oct 13 08:18:32 UTC 2020 - Martin Sirringhaus <martin.sirringhaus@suse.com>
+
+- update to 0.15.0
+  * Allow customizing mangling of generic parameters in C
+  * Box<T> simplifies to T* in C
+  * ManuallyDrop<T> and MaubeUninit<T> simplify to T in C, and are opaque in C++
+  * C++ supports a derive-ostream annotation to derive serialization 
+    of structs, unions and enums
+  * Large character constants have been fixed on Windows
+  * Constants are now generated for typedefs, etc
+  * The `sort_by` configuration option has been made to work for constants
+  * Default sort order is source order now (sort_by = "None"), and can 
+    be changed by the above option
+
+- update to 0.14.6
+  * Fixed the builds with older versions of rustc.
+
+- update to 0.14.5
+  * Add support to specify line ending style
+  * Add cbindgen:ptrs-as-arrays annotation to allow making function
+       arguments C/C++ arrays.
+
+- update to 0.14.4
+  * Allow to override the mangling separator
+  * cbindgen now handles better having ZSTs in template parameters, and
+       default template parameters.
+  * Support for annotating nonnull pointers
+  * Fixed bitflags that overflow a signed integer
+  * Support for wildcard argument names
+  * Support for the never return type, with configurable annotation
+  * Properly reject arrays as function arguments
+
+-------------------------------------------------------------------
+Thu Jul 23 14:26:02 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to 0.14.3
+  * Introduce cbindgen:ignore comment annotation, to allow ignoring items or modules.
+  * Support for casts in constant expressions.
+  * Make a non-fatal error a warning message.
+  * Add a --metadata option to the CLI, to allow passing pre-computed cargo metadata.
+  0.14.2
+  * Fixed minimal dependency versions.
+  * Add an option to write pragma once.
+  * Fix submodule scanning for implicit Rust 2018 modules.
+  * Fix dependency parsing / scanning to handle target-specific versions.
+  * Use heck for case conversion.
+  * Add support for verbatim content after includes.
+  * Allow to add attributes to most generated functions.
+
+-------------------------------------------------------------------
+Wed May 27 07:39:14 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.14.1
+  0.14.1
+  * Handle mangling pointers.
+  * Unconditionally generate a return statement in partialeq implementations.
+  0.14.0
+  * Minor tweak at how [export.exclude] is handled to allow excluding
+    generic instantiations in C mode.
+  * Documented cpp_compat option.
+  * Fixed a panic when parsing associated constants for a built-in type.
+  0.13.2
+  * Constants now have suitable documentation.
+  * Fixed some C warnings by emitting void when there are no arguments.
+  * Avoids reading cargo.toml when not needed, which can cause panics
+    in workspace situations.
+  * Only write `default` cases if the switch is not exhaustive.
+  * Some warnings have been refined.
+  * Code generation for static arrays has been fixed.
+  * Opt-in support for constexpr in constants.
+  * Fix C code generation and some warnings when extremely large
+    constants are used.
+  * Proper escaping of enum variants and fields.
+  * Added support for RefCell (as an opaque type) and Cell.
+- required for Firefox >= 77.0
+
+-------------------------------------------------------------------
+Mon Mar 30 20:12:18 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.13.1
+  * Support `#[cfg]` on individual enum variants
+- required for Firefox >= 75
+- remove more irrelevant build artefacts
+
+-------------------------------------------------------------------
+Sat Mar  7 09:05:08 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.13.0
+  * https://docs.rs/crate/cbindgen/0.13.0/source/CHANGES
+- required for Firefox >= 74
+
+-------------------------------------------------------------------
+Sun Feb  9 07:54:07 UTC 2020 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.12.0
+  * https://docs.rs/crate/cbindgen/0.12.0/source/CHANGES
+- required for Firefox >= 73
+
+-------------------------------------------------------------------
+Fri Oct 18 20:27:55 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Update to version 0.9.1
+  * Various improvements to comment output.
+  * Fixed expand when ran from build.rs.
+  * More debugging output for expansion.
+  * New option to add a default private constructor in C++ tagged enums.
+  * Syn and related dependencies updated to 1.0.
+
+-------------------------------------------------------------------
+Thu Aug  8 20:44:33 UTC 2019 - Luke Jones <luke@ljones.dev>
+
+- Update to version 0.9.0
+    * Support to generate C headers with C++ compatibility
+    * Fix include guard generation when no_includes is set
+    * Fix crate parsing order so that types from the binding crate
+      are preferred in presence of conflicting names
+    * Add extra_bindings option to generate bindings for dependencies
+    * Clap dependency is optional now so it's feasible to avoid
+      building it if cbindgen is used as a library
+
+-------------------------------------------------------------------
+Tue May 14 11:57:41 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 0.8.7
+  * there is no upstream changelog provided
+
+-------------------------------------------------------------------
+Sun Mar 17 13:43:36 UTC 2019 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to version 0.6.8 to satisfy Firefox 66.0 build requirements
+
+-------------------------------------------------------------------
+Mon Nov 19 15:00:09 UTC 2018 - astieger@suse.com
+
+- use a source URL
+
+-------------------------------------------------------------------
+Wed Nov 14 00:34:16 UTC 2018 - Luke Jones <jones_ld@protonmail.com>
+
+- Initial packaging - boo#1115645
