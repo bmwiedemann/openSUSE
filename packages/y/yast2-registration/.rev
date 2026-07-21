@@ -2106,4 +2106,12 @@
     <comment>submit new version 5.0.3</comment>
     <requestid>1203027</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>3a5396bd0d88e1c7615240cb129f49bc</srcmd5>
+    <version>5.0.5</version>
+    <time>1784667299</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.5</comment>
+    <requestid>1366738</requestid>
+  </revision>
 </revisionlist>

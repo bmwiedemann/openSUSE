@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-registration
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-registration
-Version:        5.0.3
+Version:        5.0.5
 Release:        0
 Summary:        YaST2 - Registration Module
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-registration
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 # Y2Packager::NewRepositorySetup
 BuildRequires:  yast2 >= 4.4.42
 BuildRequires:  yast2-devtools >= 4.2.2
