@@ -858,4 +858,13 @@
   * Use GitHub latest release endpoint for stable releases</comment>
     <requestid>1364196</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>11113709816a4308a1b96cd76e6750cf</srcmd5>
+    <version>5.15.0</version>
+    <time>1784668340</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 5.15.0
+  * OrcaSlicer: Load binary with correct architecture (fixes #222)</comment>
+    <requestid>1366947</requestid>
+  </revision>
 </revisionlist>
