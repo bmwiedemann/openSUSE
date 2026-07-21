@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:26:54 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.7:
+  * Accept --help and --version as aliases to -help and -version.
+  * Exit with status 0 on -help (instead of status 1).
+  * Fix memory leaks in Select_Window and Display_Window_Id.
+  * Modernize codebase using stdbool.h.
+  * Improve man page formatting and fix warnings from mandoc and groff.
+  * Add support for building with Meson.
+- Switch to meson build system
+
+-------------------------------------------------------------------
 Mon Apr 10 08:21:05 UTC 2023 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.6

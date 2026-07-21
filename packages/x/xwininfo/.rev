@@ -80,4 +80,19 @@
     To enable it, pass --with-xcb-errors to configure.</comment>
     <requestid>1078235</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>020646b6c9f35d5117bb8d8fb6329a2c</srcmd5>
+    <version>1.1.7</version>
+    <time>1784668127</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.7:
+  * Accept --help and --version as aliases to -help and -version.
+  * Exit with status 0 on -help (instead of status 1).
+  * Fix memory leaks in Select_Window and Display_Window_Id.
+  * Modernize codebase using stdbool.h.
+  * Improve man page formatting and fix warnings from mandoc and groff.
+  * Add support for building with Meson.
+- Switch to meson build system</comment>
+    <requestid>1366783</requestid>
+  </revision>
 </revisionlist>
