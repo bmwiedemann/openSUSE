@@ -17,7 +17,7 @@
 
 
 Name:           python-hstspreload
-Version:        2026.6.1
+Version:        2026.7.1
 Release:        0
 Summary:        Python Chromium HSTS Preload list
 License:        BSD-3-Clause
