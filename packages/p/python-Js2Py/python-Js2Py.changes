@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:09:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Support Python 3.15 changes with code objects.
+
+-------------------------------------------------------------------
 Fri Jun 27 02:47:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

@@ -1,0 +1,22 @@
+Index: Js2Py-0.74/js2py/utils/injector.py
+===================================================================
+--- Js2Py-0.74.orig/js2py/utils/injector.py
++++ Js2Py-0.74/js2py/utils/injector.py
+@@ -193,12 +193,14 @@ def append_arguments(code_obj, new_local
+                 else:
+                     modified.extend(write_instruction(dis.opmap["NOP"], 0))
+     code = bytes(modified)
+-    args = (co_argcount + new_locals_len, 0,
++    args = [co_argcount + new_locals_len, 0,
+             code_obj.co_nlocals + new_locals_len, code_obj.co_stacksize,
+             code_obj.co_flags, code, code_obj.co_consts, names, varnames,
+             code_obj.co_filename, code_obj.co_name,
+-            code_obj.co_firstlineno, code_obj.co_lnotab,
+-            code_obj.co_freevars, code_obj.co_cellvars)
++            code_obj.co_firstlineno,
++            code_obj.co_freevars, code_obj.co_cellvars]
++    if sys.version_info[:2] < (3, 15):
++        args.insert(12, code_obj.co_lnotab)
+     # Done modifying codestring - make the code object
+     if hasattr(code_obj, "replace"):
+         # Python 3.8+

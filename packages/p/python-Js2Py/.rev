@@ -104,4 +104,13 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1288765</requestid>
   </revision>
+  <revision rev="13" vrev="6">
+    <srcmd5>88d9c61e5eaf6892284e32323aa79518</srcmd5>
+    <version>0.74</version>
+    <time>1784668202</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support Python 3.15 changes with code objects.</comment>
+    <requestid>1366854</requestid>
+  </revision>
 </revisionlist>
