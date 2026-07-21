@@ -17,7 +17,7 @@
 
 
 Name:           geoipupdate
-Version:        7.1.1
+Version:        8.0.0
 Release:        0
 Summary:        GeoIP update client code
 License:        Apache-2.0 OR MIT
@@ -89,6 +89,7 @@ install -m 0644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 %service_add_pre %{name}.service %{name}.timer
 
 %endif
+
 %post
 %tmpfiles_create %{name}.conf
 %if 0%{?suse_version} >= 1500

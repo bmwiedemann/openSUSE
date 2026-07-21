@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:31:09 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 8.0.0:
+  * BREAKING CHANGE: geoipupdate stops updating on the first error.
+  * A config file can now be used to configure the Docker image. This was
+    documented but was not functional. Fixed by Shizun Ge. GitHub #433.
+  * NewUpdater in the unexported internal/geoipupdate package no longer
+    mutates http.DefaultTransport when a proxy is configured. The CLI is the
+    only caller, so there is no user-visible behavior change. Reported by B.
+    Conners. GitHub #488.
+  * Do not retry proxy CONNECT 4xx errors. These are now treated as permanent
+    failures.
+
+-------------------------------------------------------------------
 Tue Apr 28 08:33:15 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Move config files in systemd tmpfiles dir for immutable mode
