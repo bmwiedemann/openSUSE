@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:56:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.58:
+  * General
+    - [Chore]: Bump meshery/schemas to v1.3.34 @l5io (#20776)
+    - [Chore]: Bump meshery/schemas to v1.3.33 @l5io (#19633)
+    - [Server] Surface real connection failures from state machine
+      SendEvent @marblom007 (#20756)
+    - [Server] Record failed Kubernetes connections as Error
+      notifications @leecalcote (#20728)
+  * Meshery CLI
+    - Rename meshmodel API routes to /api/registry with deprecated
+      aliases @marblom007 (#20775)
+  * Maintenance
+    - Rename meshmodel API routes to /api/registry with deprecated
+      aliases @marblom007 (#20775)
+  * Documentation
+    - [Docs] Correct meshery.io/blog link at
+      security-vulnerabilities page @SHIVIKA330 (#20790)
+    - Rename meshmodel API routes to /api/registry with deprecated
+      aliases @marblom007 (#20775)
+    - [Docs] fix: improve code block copy button feedback and
+      spacing consistency @akshatsinghai6682-sketch (#20251)
+- update to 1.0.57:
+  No CLI-related changes
+
+-------------------------------------------------------------------
+Tue Jul 14 12:41:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.56:
+  * General
+    - [Model] Add F5 BIG-IP Controller for Kubernetes model
+      @YASHMAHAKAL (#20570)
+  * Meshery CLI
+    - [Connections] Migrate Kubernetes connection & controller
+      subscriptions from GraphQL to SSE/REST @aabidsofi19 (#20456)
+  * Maintenance
+    - [Connections] Migrate Kubernetes connection & controller
+      subscriptions from GraphQL to SSE/REST @aabidsofi19 (#20456)
+  * Documentation
+    - docs: remove duplicate heading from HTTP Error Response
+      Contract page @Ayush-kr-giga (#20543)
+    - [Connections] Migrate Kubernetes connection & controller
+      subscriptions from GraphQL to SSE/REST @aabidsofi19 (#20456)
+    - Docs add permission key guide @rishiraj38 (#19620)
+
+-------------------------------------------------------------------
+Wed Jul  8 05:57:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.55:
+  No CLI-related changes
+
+-------------------------------------------------------------------
 Mon Jul  6 07:17:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.54:

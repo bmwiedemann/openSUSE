@@ -1375,4 +1375,20 @@
     <comment></comment>
     <requestid>1363999</requestid>
   </revision>
+  <revision rev="173" vrev="1">
+    <srcmd5>61cdb510a28efd6516faf98f24260e3b</srcmd5>
+    <version>1.0.56</version>
+    <time>1784126743</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365791</requestid>
+  </revision>
+  <revision rev="174" vrev="1">
+    <srcmd5>fa715c71bf8c7dd7302ec2d093f4522d</srcmd5>
+    <version>1.0.58</version>
+    <time>1784667371</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366685</requestid>
+  </revision>
 </revisionlist>
