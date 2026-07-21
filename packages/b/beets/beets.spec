@@ -61,7 +61,7 @@ Requires:       python3-confuse >= 2.2.0
 Requires:       python3-jellyfish
 Requires:       python3-lap
 Requires:       python3-mediafile >= 0.16.0
-Requires:       python3-numpy >= 2.3.5
+Requires:       python3-numpy
 Requires:       python3-packaging >= 24.0
 Requires:       python3-platformdirs
 Requires:       python3-requests >= 2.32.5

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 20 06:55:06 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove min requirement for python-numpy, that's only required for
+  python313 and for librosa support so it should be solved in
+  python-librosa package:
+  https://github.com/beetbox/beets/issues/5822
+  boo#1263988
+
+-------------------------------------------------------------------
 Tue May 26 20:29:28 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - update to 2.11.0:
