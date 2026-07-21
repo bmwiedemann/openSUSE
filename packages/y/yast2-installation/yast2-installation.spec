@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-installation
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-installation
-Version:        5.0.19
+Version:        5.0.21
 Release:        0
 Summary:        YaST2 - Installation Parts
 License:        GPL-2.0-only
@@ -27,7 +27,6 @@ Source0:        %{name}-%{version}.tar.bz2
 Source1:        YaST2-Second-Stage.service
 Source2:        YaST2-Firstboot.service
 
-BuildRequires:  update-desktop-files
 # Kernel: Use is_zvm from Yast::Arch
 BuildRequires:  yast2 >= 5.0.5
 # systemd-boot kernel parameters
@@ -145,10 +144,6 @@ System installation code as present on installation media.
 %install
 %yast_install
 %yast_metainfo
-
-for f in `find %{buildroot}%{_datadir}/autoinstall/modules -name "*.desktop"`; do
-    %suse_update_desktop_file $f
-done
 
 mkdir -p %{buildroot}%{yast_vardir}/hooks/installation
 mkdir -p %{buildroot}%{yast_ystartupdir}/startup/hooks/preFirstCall

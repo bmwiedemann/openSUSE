@@ -4178,4 +4178,12 @@
     <comment>submit new version 5.0.19</comment>
     <requestid>1314106</requestid>
   </revision>
+  <revision rev="542" vrev="1">
+    <srcmd5>bb155ef1569139138eab62e7f3140577</srcmd5>
+    <version>5.0.21</version>
+    <time>1784667296</time>
+    <user>dimstar_suse</user>
+    <comment>submit new version 5.0.21</comment>
+    <requestid>1366732</requestid>
+  </revision>
 </revisionlist>
