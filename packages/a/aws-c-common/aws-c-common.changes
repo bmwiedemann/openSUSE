@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:50:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.14.2
+  * CI improvements by @azkrishpy in (#1252)
+  * Byte Buf Helper Func Dynamic or Static by @sbSteveK in (#1253)
+  * Update deprecated OpenBSD CI job by @sfod in (#1255)
+  * XML Parser Fixes by @sbSteveK in (#1254)
+
+-------------------------------------------------------------------
 Fri Jul  3 12:47:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.1
