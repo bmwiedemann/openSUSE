@@ -18,7 +18,7 @@
 
 
 Name:           python-redfish
-Version:        3.3.5
+Version:        3.3.6
 Release:        0
 Summary:        Redfish Python Library
 License:        BSD-3-Clause
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-jsonpatch
-Requires:       python-jsonpath-rw
+Requires:       python-jsonpath-ng
 Requires:       python-jsonpointer
 Requires:       python-requests
 Requires:       python-requests-toolbelt
