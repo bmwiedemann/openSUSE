@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:10:59 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- added new rsyslog (imdtls/omdtls) DTLS modules (jsc#PED-16623)
+
+-------------------------------------------------------------------
 Mon Jul 13 12:48:23 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - added a devel subpackage, with requires (jsc#PED-16301)

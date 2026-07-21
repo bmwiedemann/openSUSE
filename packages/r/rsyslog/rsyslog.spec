@@ -39,6 +39,7 @@ Release:        0
 %else
 %bcond_with     journal
 %endif
+%bcond_without  dtls
 %bcond_without  gssapi
 %bcond_without  gnutls
 %bcond_without  openssl
@@ -261,6 +262,23 @@ package.
 
 This package provides additional diagnostic tools (small helpers,
 usually not needed).
+
+%endif
+
+%if %{with dtls}
+
+%package module-dtls
+Requires:       %{name} = %{version}
+Requires:       rsyslog-module-ossl
+Summary:        dtls support module for rsyslog
+Group:          System/Daemons
+
+%description module-dtls
+Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
+package.
+
+This module provides support for securely transporting syslog messages over
+the network using the Datagram Transport Layer Security (DTLS) protocol.
 
 %endif
 
@@ -631,6 +649,11 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../..
 %endif
 %if %{with openssl}
 	--enable-openssl	\
+%endif
+%if %{with dtls}
+	--enable-openssl	\
+	--enable-imdtls		\
+	--enable-omdtls		\
 %endif
 %if %{with gssapi}
 	--enable-gssapi-krb5	\
@@ -1257,6 +1280,13 @@ fi
 %files module-omtcl
 %defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omtcl.so*
+%endif
+
+%if %{with dtls}
+%files module-dtls
+%defattr(-,root,root)
+%{rsyslog_module_dir_withdeps}/imdtls.so
+%{rsyslog_module_dir_withdeps}/omdtls.so
 %endif
 
 %files devel
