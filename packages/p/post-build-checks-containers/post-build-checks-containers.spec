@@ -37,11 +37,13 @@ Requires:       jq
 
 # neuvector stuff
 %ifarch x86_64 aarch64
+%if 0%{?suse_version} < 1600
 Requires:       neuvector-scanner
 Requires:       neuvector-scanner-database
 # docker needs bridge, need kernel-default
 Requires:       docker
 Requires:       kernel-default
+%endif
 %endif
 
 # Trivy
@@ -78,7 +80,10 @@ install -D -m 0755 -t %{buildroot}%{_prefix}/lib/build/post-build-checks %{SOURC
 
 # neuvector scanner did not build on anything but x86_64 and aarch64 yet
 %ifarch x86_64 aarch64
+# not on SLE 16.0
+%if 0%{?suse_version} < 1600
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/build/post-build-checks %{SOURCE2}
+%endif
 %endif
 %endif
 

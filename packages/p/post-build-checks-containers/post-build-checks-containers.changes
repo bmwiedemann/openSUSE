@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 20 11:50:37 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- do not require neuvector-scanner on 16.0 or newer either
+
+-------------------------------------------------------------------
+Wed Jul 15 12:06:38 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- do not use neuvector on 16.0 and newer
+
+-------------------------------------------------------------------
 Sun Jun 21 08:19:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update for new NeuVector code (bsc#1268574)

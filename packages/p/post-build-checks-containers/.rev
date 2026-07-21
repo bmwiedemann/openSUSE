@@ -27,4 +27,20 @@
     <comment>- update for new NeuVector code (bsc#1268574)</comment>
     <requestid>1365344</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>7b36f9e75ea4c8a1ebd087e830a6b4c9</srcmd5>
+    <version>0.1</version>
+    <time>1784127347</time>
+    <user>dimstar_suse</user>
+    <comment>- do not use neuvector on 16.0 and newer</comment>
+    <requestid>1365951</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>5f5221ddf4a2c27ca3517547baf62759</srcmd5>
+    <version>0.1</version>
+    <time>1784667662</time>
+    <user>dimstar_suse</user>
+    <comment>- do not require neuvector-scanner on 16.0 or newer either (forwarded request 1366751 from msmeissn)</comment>
+    <requestid>1366752</requestid>
+  </revision>
 </revisionlist>
