@@ -156,4 +156,24 @@
   * Fix monitor selection issue #78</comment>
     <requestid>1277324</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e3ee3a172b7d354e5e947a0780c65a8a</srcmd5>
+    <version>1.9</version>
+    <time>1784667542</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9:
+  * New &quot;--auto-mode/-a FULL/MAX&quot; option to detect fullscreen and/or maximized windows f2961c6
+    This option expands(not replaces) the capabilities of &quot;--auto-pause/-p&quot; and &quot;--auto-stop/-s&quot;
+    Functionality will vary between compositor implementations of the wlr-foreign-toplevel protocol
+  * Allow for quoted and escaped characters in &quot;--mpv-options/-o&quot; #81
+  * Created a potential temporary solution to mpv memory leaks #132
+  * Replaced self-pipe trick with eventfd for main render loop #115
+  * Modified how monitor names are found by searching for whole words instead of partials 05b9bc3
+    So issues like &quot;eDP-1&quot; also selecting &quot;DP-1&quot; is fixed.
+  * Fix meson build #124
+  * Minor changes in documentation with the &quot;--help&quot; command and man page 77a21bf 1bf3d77
+  * Patched a bunch of minor memory leaks
+  * More code formatting and various fixes</comment>
+    <requestid>1366678</requestid>
+  </revision>
 </revisionlist>

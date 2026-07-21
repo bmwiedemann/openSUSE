@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 20 07:03:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9:
+  * New "--auto-mode/-a FULL/MAX" option to detect fullscreen and/or maximized windows f2961c6
+    This option expands(not replaces) the capabilities of "--auto-pause/-p" and "--auto-stop/-s"
+    Functionality will vary between compositor implementations of the wlr-foreign-toplevel protocol
+  * Allow for quoted and escaped characters in "--mpv-options/-o" #81
+  * Created a potential temporary solution to mpv memory leaks #132
+  * Replaced self-pipe trick with eventfd for main render loop #115
+  * Modified how monitor names are found by searching for whole words instead of partials 05b9bc3
+    So issues like "eDP-1" also selecting "DP-1" is fixed.
+  * Fix meson build #124
+  * Minor changes in documentation with the "--help" command and man page 77a21bf 1bf3d77
+  * Patched a bunch of minor memory leaks
+  * More code formatting and various fixes
+
+-------------------------------------------------------------------
 Wed May 14 07:11:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.8:
