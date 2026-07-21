@@ -1207,4 +1207,25 @@
 </comment>
     <requestid>1354730</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>dc78677931fc565175f7e45816cca568</srcmd5>
+    <version>2.71.1</version>
+    <time>1784668438</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.71.1:
+  - Features
+    * feat: Add --verbose flag to upgrade command
+    * feat: Add --skip-secrets flag
+  - Fixes
+    * fix: Ensure that external target paths are in target dir
+- Update to version 2.71.0:
+  - Features
+    * feat: Add --error-on-conflict flag
+    * feat: Switch to github.com/bartventer/httpcache for HTTP caching
+    * feat: Add --revision and --tag flags to init command
+  - Documentation
+    * docs: Document merge command explainer
+</comment>
+    <requestid>1367010</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Jul 21 16:35:21 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.71.1:
+  - Features
+    * feat: Add --verbose flag to upgrade command
+    * feat: Add --skip-secrets flag
+  - Fixes
+    * fix: Ensure that external target paths are in target dir
+
+-------------------------------------------------------------------
+Tue Jul 21 16:32:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.71.0:
+  - Features
+    * feat: Add --error-on-conflict flag
+    * feat: Switch to github.com/bartventer/httpcache for HTTP caching
+    * feat: Add --revision and --tag flags to init command
+  - Documentation
+    * docs: Document merge command explainer
+
+-------------------------------------------------------------------
 Fri May 22 12:54:10 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.70.4:
