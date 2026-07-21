@@ -1,7 +1,7 @@
 #
 # spec file for package apache-ivy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,9 +20,8 @@
 %bcond_without  oro
 %bcond_without  sftp
 %bcond_without  vfs
-%bcond_without  pack200
 Name:           apache-ivy
-Version:        2.5.3
+Version:        2.6.0
 Release:        0
 Summary:        Java-based dependency manager
 License:        Apache-2.0
@@ -33,24 +32,16 @@ Source1:        ivy.1
 Source2:        https://repo1.maven.org/maven2/org/apache/ivy/ivy/%{version}/ivy-%{version}.pom
 Patch0:         apache-ivy-global-settings.patch
 Patch1:         apache-ivy-publication-date.patch
-Patch2:         apache-ivy-pack200.patch
 BuildRequires:  ant
+BuildRequires:  apache-commons-compress
 BuildRequires:  bouncycastle-pg
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jsch
-BuildRequires:  oro
 Provides:       ivy = %{version}-%{release}
 Obsoletes:      ivy < %{version}-%{release}
 BuildArch:      noarch
-%if %{with pack200}
-BuildRequires:  pack200
-%else
-BuildConflicts: java >= 14
-BuildConflicts: java-devel >= 14
-BuildConflicts: java-headless >= 14
-%endif
 %if %{with vfs}
 BuildRequires:  apache-commons-vfs2
 %endif
@@ -125,16 +116,11 @@ rm src/java/org/apache/ivy/plugins/resolver/SFTPResolver.java
 rm src/java/org/apache/ivy/plugins/resolver/SshResolver.java
 %endif
 
-%if %{with pack200}
-%pom_add_dep io.pack200:pack200:14:provided
-%patch -P 2 -p1
-%endif
-
 %build
 # Craft class path
 mkdir -p lib
-build-jar-repository -s lib ant ant/ant-nodeps jsch bcprov bcpg
-export CLASSPATH=$(build-classpath ant ant/ant-nodeps jsch httpcomponents bcprov bcpg)
+build-jar-repository -s lib ant ant/ant-nodeps jsch bcprov bcpg commons-compress
+export CLASSPATH=$(build-classpath ant ant/ant-nodeps jsch httpcomponents bcprov bcpg commons-compress)
 %if %{with httpclient}
 build-jar-repository -s lib httpcomponents
 export CLASSPATH=${CLASSPATH}:$(build-classpath httpcomponents)
@@ -152,10 +138,6 @@ build-jar-repository -s lib jsch.agentproxy.core \
                          jsch.agentproxy.connector-factory \
                          jsch.agentproxy.jsch
 export CLASSPATH=${CLASSPATH}:$(build-classpath jsch.agentproxy.core jsch.agentproxy.connector-factory jsch.agentproxy.jsch)
-%endif
-%if %{with pack200}
-build-jar-repository -s lib pack200
-export CLASSPATH=${CLASSPATH}:$(build-classpath pack200)
 %endif
 
 # Build
@@ -179,7 +161,7 @@ cp -rp build/reports/api/. %{buildroot}%{_javadocdir}/%{name}
 
 # Command line script
 MAIN_CLASS=`sed -rn 's/^Main-Class: (.*)$/\1/gp' META-INF/MANIFEST.MF | tr -d '\r'`
-%jpackage_script "${MAIN_CLASS}" "" "" ant:ant/ant-nodeps:ivy:oro:jsch:commons-httpclient ivy
+%jpackage_script "${MAIN_CLASS}" "" "" ant:ant/ant-nodeps:ivy:oro:jsch:commons-compress:commons-httpclient ivy
 
 mkdir -p %{buildroot}%{_sysconfdir}/ant.d
 echo "ivy" > %{buildroot}%{_sysconfdir}/ant.d/%{name}

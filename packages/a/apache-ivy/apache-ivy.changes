@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Jul 20 10:02:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.6.0
+  * Security fix
+    + CVE-2026-26032, bsc#1271727: Apache Ivy: PackagerResolver path
+      traversal vulnerability
+  * Bug fixes
+    + the ivy:retrieve task failed when the retrieve pattern
+      contained some text in parentheses before the first token, for
+      instance: /jobs/lib (JDK 17)/[artifact].[ext] (IVY-1660)
+    + when the ivy:deliver task is configured to replace dynamic
+      revisions, it now replaces these revisions to the resolved
+      revision before any conflict resolution was done, which was
+      the original behavior before Ivy 2.3.0. This way, the
+      delivered ivy.xml can be used to have reproducible dependency
+      resolution, especially when multiple configurations are used.
+      It also fixes issues where the dynamic revisions were replaced
+      by versions from other configurations. (IVY-1485, IVY-1661)
+    + the ivy:deliver task didn’t replace dynamic revision from
+      inherited dependencies. (IVY-1410)
+    + the ivy:install task didn’t take the from resolver into
+      account when resolving Maven parent modules or
+      source/javadoc artifacts.
+    + the ivy:checkdepsupdate task could suggest a lesser version as
+      update. (IVY-1665)
+    + the ivy:makepom task no longer adds a dependency to the
+      <dependencyManagement> section. (IVY-1667)
+    + the ivy:deliver task didn’t include XML namespaces from a
+      parent ivy module when merging the descriptors. (IVY-1658)
+    + the ivy:checkdepsupdate task no longer shows evicted versions.
+      (IVY-1662)
+  * Improvements
+    + use Apache Commons Compress for pack200 handling to avoid
+      issues on Java 14 and later. If pack200 is needed, make sure
+      to add Apache Commons Compress to your classpath. (IVY-1652)
+    + ivy:retrieve and the 'post resolve tasks' now support the
+      override child element. (IVY-1664)
+    + ivy:makepom will now add override elements of the ivy.xml to
+      the dependencyManagement section of the generated pom.
+      (IVY-1663)
+    + ivy:deliver and ivy:publish now writes inherited dependencies
+      first to preserve resolve order (IVY-1656)
+    + ModuleRevisionId.encodeToString now returns a deterministic
+      string that doesn’t rely on a implmentation of HashMap
+  * New feature
+    + added a new nearest conflict manager, which handles conflicts
+      in the same way that Maven does. (IVY-813)
+- Removed patch:
+  * apache-ivy-pack200.patch
+    + not needed with this version
+- Modified patches:
+  * apache-ivy-global-settings.patch
+  * apache-ivy-publication-date.patch
+    + rediff and adapt to different line-endings
+
+-------------------------------------------------------------------
 Wed Apr 30 13:27:47 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Use standalone pack200 implementation and allow wider variety
@@ -52,7 +108,7 @@ Mon Aug 21 23:30:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.5.2 (bsc#1214422)
   * Fixes:
-    + ivy:retrieve could fail because of a 'NullPointerException' 
+    + ivy:retrieve could fail because of a 'NullPointerException'
       (jira:IVY-1641[])
     + reading POMs may loose dependencies when multiple Maven
       dependencies only differ in 'classifier' (jira:IVY-1642[])
@@ -63,23 +119,23 @@ Mon Aug 21 23:30:17 UTC 2023 - Fridrich Strba <fstrba@suse.com>
 Mon Nov  7 08:10:54 UTC 2022 - David Anes <david.anes@suse.com>
 
 - Upgrade to version 2.5.1 (bsc#1205142, bsc#1205138)
-  * Breaking: 
-    + Removed old fr\jayasoft\ivy\ant\antlib.xml AntLib definition 
+  * Breaking:
+    + Removed old fr\jayasoft\ivy\ant\antlib.xml AntLib definition
       file.
   * Fixes:
     + CVE-2022-37865 allow create/overwrite any file on the system.
       (see https://ant.apache.org/ivy/security.html)
     + CVE-2022-37866 Path traversal in patterns.
       (see https://ant.apache.org/ivy/security.html)
-    + ResolveEngine resets dictator resolver to null in the global 
+    + ResolveEngine resets dictator resolver to null in the global
       configuration.
-    + ConcurrentModificationException in 
+    + ConcurrentModificationException in
       MessageLoggerHelper.sumupProblems.
     + useOrigin="true" fails with file-based ibiblio.
-    + ivy:retrieve Ant task didn’t create an empty fileset when no 
+    + ivy:retrieve Ant task didn’t create an empty fileset when no
       files were retrieved to a non-empty directory.
-    + ivy:retrieve Ant task relied on the default HTTP header 
-      "Accept" which caused problems with servers that interpret it 
+    + ivy:retrieve Ant task relied on the default HTTP header
+      "Accept" which caused problems with servers that interpret it
       strictly (e.g. AWS CodeArtifact).
   * Improvements:
     + Ivy command now accepts a URL for the -settings option.
@@ -165,7 +221,7 @@ Sun May 21 08:01:08 UTC 2017 - tchvatal@suse.com
 -------------------------------------------------------------------
 Fri May 19 10:07:03 UTC 2017 - pcervinka@suse.com
 
-- New build dependency: javapackages-local 
+- New build dependency: javapackages-local
 
 -------------------------------------------------------------------
 Wed Mar 18 09:46:01 UTC 2015 - tchvatal@suse.com
