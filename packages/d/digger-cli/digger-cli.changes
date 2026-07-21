@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:38:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.148:
+  * fix: allow digger apply when digger/apply is the sole required
+    blocking check by @joshuamkite-nfb in #2661
+  * Feat/terragrunt parallelism by @s1ntaxe770r in #2667
+  * fix: paginate ListReviews in GetApprovals so approvals beyond
+    30 comments by @s1ntaxe770r in #2674
+
+-------------------------------------------------------------------
 Wed Jul 01 06:45:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.147:
