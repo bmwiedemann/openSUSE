@@ -2889,4 +2889,12 @@
 - Drop support conditionals for EOL SLE/openSUSE releases: remove</comment>
     <requestid>1367015</requestid>
   </revision>
+  <revision rev="108" vrev="1">
+    <srcmd5>0ad82c93734f7d25f4e1b5f936db645c</srcmd5>
+    <version>0.11.31</version>
+    <time>1784740002</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.31</comment>
+    <requestid>1367141</requestid>
+  </revision>
 </revisionlist>
