@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:28:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- New upstream release
+  + Version 2.5.4
+    - Visual adjustments and optimizations to the graphical user interface.
+    - Fixed a potential crash when using accessibility features.
+    - Optimized individual accessibility features.
+    - Compatibility with OpenSSL 4.0.0 has been established
+      using -DUSE_LEGACY_OPENSSL_API=ON.
+    - Fixed a potential deadlock in the WebSocket SDK.
+    - Added new features to the SDK (see changelog).
+
+-------------------------------------------------------------------
 Tue Jun 23 08:30:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - New upstream release
