@@ -17,7 +17,7 @@
 #
 
 # either firefox-esr or MozillaFirefox
-%if 0%{?suse_version} > 1549
+%if 0%{?suse_version} >= 1699
 # On Tumbleweed this package is always called firefox-esr
 %define pkgname  firefox-esr
 %else
@@ -41,8 +41,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.12.0
-%define orig_version   140.12.0
+%define mainver        %major.13.0
+%define orig_version   140.13.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
@@ -155,8 +155,8 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.28
-%if 0%{?suse_version} > 1600
+BuildRequires:  rust-cbindgen-0_29_2
+%if 0%{?suse_version} >= 1699
 BuildRequires:  translate-suse-desktop
 %endif
 BuildRequires:  unzip
@@ -248,7 +248,6 @@ Patch18:        mozilla-silence-no-return-type.patch
 Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch24:        mozilla-bmo1746799.patch
 Patch26:        mozilla-bmo1999625.patch
 Patch27:        mozilla-bmo2016618.patch
 Patch28:        mozilla-bmo2048250.patch
@@ -361,7 +360,7 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 cp %{SOURCE1} %{desktop_file_name}.desktop.in.in
 %else
 cp %{SOURCE5} %{desktop_file_name}.desktop
@@ -372,7 +371,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 
 %build
 # desktop file
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 sed "s:%%NAME:%{appname}:g
 s:%%EXEC:%{progname}:g
 s:%%ICON:%{progname}:g
