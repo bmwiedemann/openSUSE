@@ -24,7 +24,9 @@ Summary:        Transport classes and utilities shared among Python Elastic clie
 License:        Apache-2.0
 URL:            https://github.com/elastic/elastic-transport-python
 Source:         https://github.com/elastic/elastic-transport-python/archive/refs/tags/v%{version}.tar.gz#/elastic-transport-python-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+# PATCH-FIX-UPSTREAM gh#elastic/elastic-transport-python#290
+Patch0:         support-new-httpbin.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,0 +1,46 @@
+From 3e100bf9dca8724a38c65f3953dcf0d103cacfde Mon Sep 17 00:00:00 2001
+From: Miguel Grinberg <miguel.grinberg@gmail.com>
+Date: Fri, 19 Jun 2026 17:05:57 +0100
+Subject: [PATCH] Update debug logging tests for new httpbin release
+
+---
+ tests/test_logging.py | 24 ++++++++++++------------
+ 1 file changed, 12 insertions(+), 12 deletions(-)
+
+diff --git a/tests/test_logging.py b/tests/test_logging.py
+index bb04dfcf..d85abed4 100644
+--- a/tests/test_logging.py
++++ b/tests/test_logging.py
+@@ -84,20 +84,20 @@ async def test_debug_logging(node_class, anyio_backend, httpbin_node_config, htt
+         "< Access-Control-Allow-Origin: *",
+         "< Content-Type: application/json",
+         "< {",
+-        '"args":{},',
+-        '"data":"{\\"key\\":\\"value\\"}",',
+-        '"files":{},',
+-        '"form":{},',
+-        '"headers":{',
+-        '"Content-Type":"application/json",',
+-        f'"Host":"{httpbin.host}:{httpbin.port}",',
+-        f'"User-Agent":"{DEFAULT_USER_AGENT}"',
++        '"args": {},',
++        '"data": "{\\"key\\":\\"value\\"}",',
++        '"files": {},',
++        '"form": {},',
++        '"headers": {',
++        '"Content-Type": "application/json",',
++        f'"Host": "{httpbin.host}:{httpbin.port}",',
++        f'"User-Agent": "{DEFAULT_USER_AGENT}"',
+         "},",
+-        '"json":{',
+-        '"key":"value"',
++        '"json": {',
++        '"key": "value"',
+         "},",
+-        '"method":"GET",',
+-        f'"url":"{httpbin.url}/anything"',
++        '"method": "GET",',
++        f'"url": "{httpbin.url}/anything"',
+         "}",
+     ]:
+         assert line in response

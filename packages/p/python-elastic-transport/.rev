@@ -202,4 +202,13 @@
   * Add support for an httpx synchronous node</comment>
     <requestid>1362531</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>2118c4bb38923cd220c1037f6be9df17</srcmd5>
+    <version>9.4.2</version>
+    <time>1784739668</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-new-httpbin.patch:
+  * Support new release of httpbin that injects whitespace into JSON.</comment>
+    <requestid>1366632</requestid>
+  </revision>
 </revisionlist>

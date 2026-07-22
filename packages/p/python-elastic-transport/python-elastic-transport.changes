@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 04:47:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-new-httpbin.patch:
+  * Support new release of httpbin that injects whitespace into JSON.
+
+-------------------------------------------------------------------
 Mon Jun 29 20:33:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.4.2:
