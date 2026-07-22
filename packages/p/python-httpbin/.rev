@@ -105,4 +105,26 @@
   * Remove use of six.</comment>
     <requestid>1240684</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ec3864670d31e22b7df6f6baaf81fb5f</srcmd5>
+    <version>0.10.4</version>
+    <time>1784739644</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.4:
+  * Made flasgger an optional dependency (falls back to a static
+    landing page when absent)
+  * Fixed invalid escape sequence SyntaxWarnings on Python 3.12+
+  * Included tox.ini and the tests in the source distribution
+  * Added Python 3.13 and 3.14 to the test matrix and classifiers
+  * Fixed the /bytes endpoint to return bytes (not bytearray)
+    for WSGI compliance with newer Werkzeug (from 0.10.3)
+  * Dropped support for Python 3.7
+- Increase Werkzeug minimum version to 2.2.2.
+- Refresh remove-six.patch
+
+- Use of raven has been removed, drop it from {Build,}Requires.
+  * Drop raven and fix brotli in setup.py
+- Modify werkzeug.patch to support Werkzeug 2.0, update Requires.</comment>
+    <requestid>1364122</requestid>
+  </revision>
 </revisionlist>

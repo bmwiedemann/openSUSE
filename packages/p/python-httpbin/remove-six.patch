@@ -9,24 +9,27 @@ Subject: [PATCH] cleanup remaining usage of "six"
  pyproject.toml     | 1 -
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/httpbin/filters.py b/httpbin/filters.py
-index 4deeaaad..a656279e 100644
---- a/httpbin/filters.py
-+++ b/httpbin/filters.py
-@@ -12,7 +12,7 @@
+Index: httpbin-0.10.4/httpbin/filters.py
+===================================================================
+--- httpbin-0.10.4.orig/httpbin/filters.py
++++ httpbin-0.10.4/httpbin/filters.py
+@@ -10,9 +10,9 @@ This module provides response filter dec
+ import gzip as gzip2
+ import zlib
  
- import brotlicffi as _brotli
+-import brotlicffi as _brotli
++import brotli as _brotli
  
 -from six import BytesIO
 +from io import BytesIO
  from decimal import Decimal
  from time import time as now
  
-diff --git a/httpbin/helpers.py b/httpbin/helpers.py
-index 836c8026..cdf045c0 100644
---- a/httpbin/helpers.py
-+++ b/httpbin/helpers.py
-@@ -13,6 +13,8 @@
+Index: httpbin-0.10.4/httpbin/helpers.py
+===================================================================
+--- httpbin-0.10.4.orig/httpbin/helpers.py
++++ httpbin-0.10.4/httpbin/helpers.py
+@@ -13,6 +13,8 @@ import re
  import time
  import os
  from hashlib import md5, sha256, sha512
@@ -35,7 +38,7 @@ index 836c8026..cdf045c0 100644
  from werkzeug.datastructures import WWWAuthenticate
  from werkzeug.http import dump_header
  
-@@ -23,7 +25,6 @@
+@@ -23,7 +25,6 @@ except ImportError: # werkzeug < 2.3
      parse_authorization_header = Authorization.from_header
  
  from flask import request, make_response
@@ -43,10 +46,10 @@ index 836c8026..cdf045c0 100644
  
  
  from .structures import CaseInsensitiveDict
-diff --git a/pyproject.toml b/pyproject.toml
-index c5bdb811..b82f7b6f 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
+Index: httpbin-0.10.4/pyproject.toml
+===================================================================
+--- httpbin-0.10.4.orig/pyproject.toml
++++ httpbin-0.10.4/pyproject.toml
 @@ -38,7 +38,6 @@ dependencies = [
      'greenlet < 3.0; python_version<"3.12"',
      'greenlet >= 3.0.0a1; python_version>="3.12.0rc0"',
