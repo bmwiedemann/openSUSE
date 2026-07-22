@@ -115,4 +115,12 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
   with the versions declared upstream</comment>
     <requestid>1366804</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>715d3670334ef8ccc239547ccc126fb1</srcmd5>
+    <version>0.10.9</version>
+    <time>1784739999</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.9</comment>
+    <requestid>1367136</requestid>
+  </revision>
 </revisionlist>
