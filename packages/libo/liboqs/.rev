@@ -316,4 +316,41 @@
     - Updated license info for ML-KEM (#2250) (forwarded request 1321746 from pmonrealgonzalez)</comment>
     <requestid>1321757</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>60e7bc7d5f41b863e999352ed97bef27</srcmd5>
+    <version>0.16.0</version>
+    <time>1784740005</time>
+    <user>dimstar_suse</user>
+    <comment>- disabled network using testcases.
+- Updated to 0.16.0:
+  Deprecation notice:
+  - SPHINCS+ was removed in 0.16.0.
+  Security issues:
+  - Fixed uninitialized `encaps_derand` pointer dereference [#2460](https://github.com/open-quantum-safe/liboqs/pull/2460)
+  - Fixed out-of-bounds read in XMSS/XMSS^MT signature verification [077e32a](https://github.com/open-quantum-safe/liboqs/commit/077e32a), [#2384](https://github.com/open-quantum-safe/liboqs/pull/2384)
+  - Fixed Integer underflow in CROSS `crypto_sign_open()` [25d0a9e](https://github.com/open-quantum-safe/liboqs/commit/25d0a9e)
+  - Fixed incorrect array size when calling `secure_clean` [ab0e07c](https://github.com/open-quantum-safe/liboqs/commit/ab0e07c)
+  - Implemented optimization barrier `OQS_MEM_BLACK_BOX` and applied to
+  `ct_select` in FrodoKEM [#2431](https://github.com/open-quantum-safe/liboqs/pull/2431)
+  Significant change:
+  FrodoKEM algorithm change:
+  * Existing FrodoKEM in 0.15.0 was renamed to ephemeral
+    FrodoKEM (`KEM_efrodokem_&lt;640|976|1344&gt;_&lt;aes|shake&gt;`), and
+    the salted variant of FrodoKEM was added under the prior names
+    (`KEM_frodokem_&lt;640|976|1344&gt;_&lt;aes|shake&gt;`).
+    Ephemeral FrodoKEM is recommended for applications
+    where each keypair will encapsulate only a small number
+    of shared secrets and ciphertexts. Standard (salted)
+    FrodoKEM is recommended for applications where each keypair
+    is expected to encapsulate large number of ciphertexts. Please consult
+    [upstream](https://github.com/microsoft/PQCrypto-LWEKE/#frodokem-learning-with-errors-key-encapsulation)
+    for more details.
+  * mldsa-native integration:
+    mldsa-native is a secure, fast, and portable C90 implementation of the
+    ML-DSA post-quantum signature standard. It also includes optimized
+    builds for x86_64 and aarch64. It is now the default implementation
+    behind `SIG_ml_dsa_&lt;44|65|87&gt;`.
+  * Updated HQC implementation: (forwarded request 1367140 from msmeissn)</comment>
+    <requestid>1367143</requestid>
+  </revision>
 </revisionlist>

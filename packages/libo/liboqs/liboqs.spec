@@ -1,7 +1,7 @@
 #
 # spec file for package liboqs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define         liboqs_sover 9
 Name:           liboqs
-Version:        0.15.0
+Version:        0.16.0
 Release:        0
 Summary:        C library for quantum-resistant cryptographic algorithms
 License:        MIT
@@ -34,8 +34,9 @@ BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  libopenssl-devel
 # for tests
-BuildRequires:  python3-pytest
+BuildRequires:  python3-requests
 BuildRequires:  python3-PyYAML
+BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-xdist
 
 %description
@@ -87,6 +88,10 @@ rmdir %{buildroot}%{_prefix}/local/
 
 %check
 pushd build
+# needs network
+rm ../tests/test_acvp_vectors.py
+rm ../tests/test_wycheproof_vectors.py
+
 make run_tests
 popd
 
@@ -107,7 +112,8 @@ popd
 %{_libdir}/pkgconfig/liboqs.pc
 %dir %{_libdir}/cmake/
 %dir %{_libdir}/cmake/liboqs/
-%{_libdir}/cmake/liboqs/liboqsTargets-noconfig.cmake
+#{_libdir}/cmake/liboqs/liboqsTargets-noconfig.cmake
+%{_libdir}/cmake/liboqs/liboqsTargets-release.cmake
 %{_libdir}/cmake/liboqs/liboqsTargets.cmake
 %{_libdir}/cmake/liboqs/liboqsConfig.cmake
 %{_libdir}/cmake/liboqs/liboqsConfigVersion.cmake
