@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:31:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.109.0:
+  * Features
+    - e89c6798: feat(df): add dependency firewall engine
+      foundations (Michael Eddington meddington@gitlab.com)
+    - 94b7b4bc: feat(gen-docs): prune and remove deprecated command
+      pages (Brendan Lynch blynch@gitlab.com)
+    - 8fa2aa34: feat(securefile): Ability to Update existing files
+      (Jack 30406998-jack1902@users.noreply.gitlab.com)
+    - 910ce9df: feat: add variable import command (Olayinka Vaughan
+      vaughanolayinka@gmail.com)
+  * Bug Fixes
+    - 4d1604f2: fix(api): skip auth header for unauthenticated
+      source (Kai Armstrong karmstrong@gitlab.com)
+  * Documentation
+    - 34c48d54: docs(release): document CI/CD authentication for
+      release create (Kai Armstrong karmstrong@gitlab.com)
+    - d5e2bc73: docs: Document XDG Base Directory support for glab
+      config (Olayinka Vaughan vaughanolayinka@gmail.com)
+    - b8912857: docs: add dependency management and vulnerability
+      reporting sections (Kai Armstrong karmstrong@gitlab.com)
+    - 5767eed5: docs: note gen-docs pruning of deprecated command
+      pages (Brendan Lynch blynch@gitlab.com)
+  * Dependencies
+    - 463e2b39: chore(deps): bump go to v1.26.5 (Ahmed Hemdan
+      ahemdan@gitlab.com)
+    - 715df97b: chore(deps): update dependency @commitlint/cli to
+      ^21.2.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 6ee8a7c7: chore(deps): update module
+      github.com/gdamore/tcell/v2 to v2.13.10 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 94b4d856: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.49.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8bf5fe51: chore(deps): update module golang.org/x/term to
+      v0.45.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 56ebadc9: chore(deps): update module golang.org/x/text to
+      v0.40.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 05959c35: chore: run docs Hugo test with latest docs Hugo
+      container image (Evan Read eread@gitlab.com)
+
+-------------------------------------------------------------------
+Tue Jul 14 13:17:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.108.0:
+  * Features
+    - ff181daa: feat(mr): show absolute time alongside relative in
+      note output (Tomas Vik tvik@gitlab.com)
+    - 2b6946d7: feat(mr): show note and discussion IDs in mr note
+      list (Tomas Vik tvik@gitlab.com)
+    - b3fafd19: feat(securefile): remove by name (Jack
+      30406998-jack1902@users.noreply.gitlab.com)
+    - 53756300: feat: Add Wait Flag for CI Status Subcommand
+      (Jonathan Bowe jonathan@bowedev.com)
+  * Bug Fixes
+    - 33acf839: fix(auth): preserve saved values on
+      re-authentication (Kai Armstrong karmstrong@gitlab.com)
+    - 76c823ef: fix(changelog): strip newline from git describe
+      output (Kai Armstrong karmstrong@gitlab.com)
+    - 3860206d: fix(issue): avoid panic when viewing a closed issue
+      with no closer (Kai Armstrong karmstrong@gitlab.com)
+    - 24f5e59c: fix(mr): fall back to raw body when markdown
+      rendering fails (Tomas Vik tvik@gitlab.com)
+  * Documentation
+    - f30aa8d1: docs(config): list missing user-settable global
+      keys in help (Kai Armstrong karmstrong@gitlab.com)
+    - 215c18e8: docs(security): mark experimental subcommands and
+      clarify synopsis (Brendan Lynch blynch@gitlab.com)
+    - 2cabe0db: docs: updates for GitLab Duo CLI GA (Uma Chandran
+      uchandran@gitlab.com)
+  * Dependencies
+    - 1f440305: chore(deps): update dependency @commitlint/cli to
+      ^21.2.0 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 9d222d04: chore(deps): update module charm.land/bubbletea/v2
+      to v2.0.8 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 1dcfc3c9: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.47.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 9ba9110d: chore(git): remove duplicate mockgen directive for
+      GitRunner (Tomas Vik tvik@gitlab.com)
+    - a9044ba3: refactor: enforce IOStreams output helpers over
+      direct fmt.Fprint calls (Oscar Tovar otovar@gitlab.com)
+  * Others
+    - 152be15c: test(mrutils): parallelize noteTimeAgo test (Tomas
+      Vik tvik@gitlab.com)
+
+-------------------------------------------------------------------
 Tue Jul 07 13:08:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.107.0:
