@@ -1,7 +1,7 @@
 #
 # spec file for package seidl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 Name:           seidl
 Summary:        Complementary light pint client
 URL:            https://github.com/grisu48/seidl
-Version:        0.2
+Version:        0.3
 Release:        0
 License:        MIT
 Group:          Metapackages

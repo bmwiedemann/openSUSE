@@ -27,4 +27,19 @@
     <comment>- Switch to obscpio (forwarded request 1279184 from ph03nix)</comment>
     <requestid>1280531</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>13a4cdfa179116077ef247204c08c8d7</srcmd5>
+    <version>0.3</version>
+    <time>1784739830</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.3:
+  * Update version
+  * Add release target
+  * Update screenshot
+  * Refactor Print functions
+  * Reformat README.md
+  * Update README
+  * Add Install section (forwarded request 1367071 from ph03nix)</comment>
+    <requestid>1367073</requestid>
+  </revision>
 </revisionlist>
