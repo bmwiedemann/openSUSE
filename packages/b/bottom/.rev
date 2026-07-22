@@ -398,4 +398,18 @@ Update to version 0.12.2</comment>
     high.</comment>
     <requestid>1366592</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>45d44704bb6298b35b2946a31e0794df</srcmd5>
+    <version>0.14.6</version>
+    <time>1784739759</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1366878 from mnhauke
+
+- Update to version 0.14.6:
+  * remove rfind optimization for linux process stat parsing.
+  * bug: fix incorrect bound length for comm parentheses searching.
+  * bug: fix incorrect header text being used for the process
+    widget.</comment>
+    <requestid>1367029</requestid>
+  </revision>
 </revisionlist>

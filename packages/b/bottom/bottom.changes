@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 21 07:12:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.14.6:
+  * remove rfind optimization for linux process stat parsing.
+  * bug: fix incorrect bound length for comm parentheses searching.
+  * bug: fix incorrect header text being used for the process
+    widget.
+
+-------------------------------------------------------------------
 Sat Jul 18 16:19:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.14.5
