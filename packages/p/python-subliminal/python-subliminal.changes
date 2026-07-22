@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:41:18 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.7.0
+  Changes:
+  * Rename language_type to category. Deprecate
+    --language-type-suffix for --category-suffix
+  * make EmbeddedSubtitle subtitle_id unique
+  * Safely call Guessit and format output
+  CLI Changes:
+  * add a --subtitle-categories option to replace -hi/-HI and
+    -fo/-FO
+  * check for undefined or deprecated entries in the config file
+  * Allow --name to be a sed-like s/pattern/replacement/flags
+    substitution, applied to the path of each file individually,
+    to parameterize the guessed name per file
+  * allow multiple use of sed-like --name options
+  Documentation:
+  * fix docs for config file with the subtitle_categories option
+  Misc:
+  * Drop Python 3.9
+  * fix gestdown tests
+
+-------------------------------------------------------------------
 Fri Feb 20 19:16:08 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.6.0
