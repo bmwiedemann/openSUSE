@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:12:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.0:
+  * Add signed wrapper to render a value with an explicit sign.
+
+-------------------------------------------------------------------
 Sun May 17 19:28:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.5.0:

@@ -214,4 +214,13 @@
     decoration time.</comment>
     <requestid>1353618</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>3f696919d7479d0849ec1e146ad073a9</srcmd5>
+    <version>4.6.0</version>
+    <time>1784739648</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.6.0:
+  * Add signed wrapper to render a value with an explicit sign.</comment>
+    <requestid>1365768</requestid>
+  </revision>
 </revisionlist>
