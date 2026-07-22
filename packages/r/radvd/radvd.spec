@@ -29,7 +29,7 @@ Name:           radvd
 Version:        2.21
 Release:        0
 Summary:        Router ADVertisement Daemon for IPv6
-License:        BSD-3-Clause
+License:        radvd
 Group:          Productivity/Networking/Routing
 URL:            https://v6web.litech.org/radvd
 Source0:        https://github.com/radvd-project/radvd/releases/download/v%{version}/%{name}-%{version}.tar.xz
