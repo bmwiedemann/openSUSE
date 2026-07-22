@@ -949,4 +949,30 @@
     preventing corrupted localStorage from breaking the UI.</comment>
     <requestid>1344124</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>5bd4efa1ce1be5bfe350525d9ee9d221</srcmd5>
+    <version>1.11</version>
+    <time>1784739817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11:
+  * Added automatic, crash-safe migration of persisted databases to storage format version 3.
+  * Added configured zlib and AddressSanitizer options to the version output.
+  * Added fullscreen expand and collapse controls to geolocation maps in the HTML report.
+  * Added Traditional Chinese translation.
+  * Expanded Debian package builds to Ubuntu 26.04 and additional
+    architectures, and updated the packaging workflow actions.
+  * Fixed a heap buffer overflow when parsing malformed Opera user agents.
+  * Fixed an infinite loop while writing log parsing errors from multiple input files.
+  * Fixed city lookups ignoring the City database when a Country database was listed first.
+  * Fixed geolocation maps appearing grey after restoring persisted city data.
+    New databases preserve the exact country-to-continent mapping, while older
+    databases use a compatible built-in fallback.
+  * Fixed `.gz` file extensions being interpreted as macros in the man page.
+  * Fixed iOS version parsing from user-agent strings.
+  * Fixed unique visitor undercounting caused by collisions between reversed data and visitor key pairs.
+  * Fixed WebSocket payload size checks for large and fragmented messages.
+  * Grouped Lynx, Links, ELinks, w3m and Chawan under a new &quot;Text-based&quot; browser category.
+  * Reduced storage memory usage by about 20% and parsing time by about 35%.</comment>
+    <requestid>1367051</requestid>
+  </revision>
 </revisionlist>
