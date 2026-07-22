@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 15 11:40:44 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Set LD_LIBRARY_PATH for openblas-serial in %check to fix test
+  failures (scipy links directly to libopenblas.so.0 but the path
+  is not in ldconfig).
+
+-------------------------------------------------------------------
 Thu Apr 23 06:03:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros to build and install.

@@ -73,6 +73,8 @@ sed -i -e '/^#!\//, 1d' src/*.py
 %check
 # other tests looks more like a integration tests, needs
 # mupdf, imagemagick, pdftocairo, pdfimages, tiff-tools
+# scipy links directly to libopenblas.so.0 but the library path is not in ldconfig
+export LD_LIBRARY_PATH=/usr/lib64/openblas-serial:/usr/lib/openblas-serial${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
 %pytest -k '(test_general or test_layout) and not animation.gif'
 
 %post
