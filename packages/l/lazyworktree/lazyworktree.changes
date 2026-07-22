@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:34:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.49.0:
+  This release introduces precise AI agent session tracking with
+  lifecycle hooks, a new CLI cleanup command for stale worktrees,
+  and customizable CI remote targeting. It also significantly
+  reduces idle CPU consumption and hardens concurrent worktree note
+  editing.
+  Note
+  Run lazyworktree setup-hooks to migrate to the new LLM session
+  detection
+  * Features
+    - Agent Lifecycle Hooks: Added session tracking lifecycle hooks
+      for Claude Code, Codex CLI, and GitHub Copilot CLI. This
+      allows precise status monitoring (such as "thinking" vs.
+      "waiting for input") and replaces expensive process-table
+      scans. Run lazyworktree setup-hooks to install.
+    - Stale Worktree Cleanup Command: Introduced a new cleanup CLI
+      subcommand to identify and remove merged worktrees, stale
+      branches, and orphaned directories. Users can run this
+      interactively or automate it non-interactively using the
+      --all flag.
+    - Structured Cleanup Output: Integrated a --json flag into the
+      cleanup command to emit machine-readable results, and updated
+      the command's visual summary to display a bulleted list of
+      removed worktrees.
+    - Configurable CI Remote: Added a ci_remote setting (with an
+      "auto" sentinel) to target a specific remote (such as
+      upstream) for GitHub CI and PR status queries. This ensures
+      fork workflows query the upstream repository without changing
+      the worktree's core local repository identity.
+    - Prevent Git Optional Locks: Injected GIT_OPTIONAL_LOCKS=0
+      into executed Git commands to prevent concurrent automated
+      operations from performing optional index locks, eliminating
+      index modification conflicts.
+  * Bug Fixes
+    - Split Notes Concurrency: Switched split-mode worktree notes
+      to targeted, single-file saves instead of bulk directory
+      writes. This ensures a stale in-memory map from one process
+      cannot accidentally erase or overwrite notes concurrently
+      edited by another process.
+    - Weekly PR Merge Strategy: Changed the weekly workflow PR
+      merge strategy from merge to rebase to maintain a linear git
+      history.
+  * Performance Improvements
+    - Reduced Idle CPU: Dropped idle tick resource consumption by
+      skipping expensive process scans when the agent process set
+      remains unchanged, suspending auto-refresh loops when the TUI
+      is unfocused, and revalidating cached Git details using cheap
+      HEAD/status probes. Added a hidden LAZYWORKTREE_PPROF CPU
+      profiling hook.
+  * Maintenance
+    - Reorganized AI agent contribution guidelines in AGENTS.md for
+      better visibility of README.md modification constraints.
+    - Configured Dependabot to group GitHub Actions updates into a
+      single weekly pull request.
+  * Dependencies
+    - Upgraded Go terminal dependencies (golang.org/x/term,
+      golang.org/x/sync, golang.org/x/sys) via weekly maintenance
+      (PR #82)
+    - Upgraded charm.land Bubble Tea libraries (bubbles, bubbletea,
+      lipgloss) and ultraviolet (PR #77, PR #83)
+
+-------------------------------------------------------------------
 Fri Jul 03 04:57:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.48.0:
