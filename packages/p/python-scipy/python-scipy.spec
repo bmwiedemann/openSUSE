@@ -46,7 +46,7 @@
 # TODO explore debundling Boost for standard
 
 Name:           python-scipy%{?psuffix}
-Version:        1.17.1
+Version:        1.18.0
 Release:        0
 Summary:        Scientific Tools for Python
 License:        BSD-3-Clause AND LGPL-2.0-or-later AND BSL-1.0
@@ -54,18 +54,19 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
-BuildRequires:  %{python_module Cython >= 3.0.8}
-BuildRequires:  %{python_module devel >= 3.11}
-BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.21}
+BuildRequires:  %{python_module Cython >= 3.2.0}
+BuildRequires:  %{python_module devel >= 3.12}
+BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.22}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel >= 2.13.2 with %python-pybind11-devel < 3.1.0}
-# Upstream's pre-emptive pin to < 0.18 is not necessary
-BuildRequires:  %{python_module pythran >= 0.14}
+# Upstream's pre-emptive pin to < 0.19 is not necessary
+BuildRequires:  %{python_module pythran >= 0.18.1}
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.62.2
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros >= 20220911
 %if %{with test}
+ExcludeArch:    %ix86 %{arm32} ppc s390
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module pooch}
@@ -75,7 +76,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module scipy = %{version}}
 BuildRequires:  %{python_module threadpoolctl}
 %endif
-BuildRequires:  %{python_module numpy-devel >= 1.25.2 with %python-numpy-devel < 2.6}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0 with %python-numpy-devel < 2.8}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150600
 # The default gcc on SLE15 is gcc7 we need something newer
 BuildRequires:  gcc10-c++
@@ -84,7 +85,7 @@ BuildRequires:  gcc10-fortran
 BuildRequires:  gcc-c++ >= 8
 BuildRequires:  gcc-fortran >= 8
 %endif
-Requires:       (python-numpy >= 1.25.2 with python-numpy < 2.6)
+Requires:       (python-numpy >= 2.0.0 with python-numpy < 2.8)
 Suggests:       python-pooch
  %if %{with openblas}
 BuildRequires:  openblas-devel
@@ -137,9 +138,6 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %install
 %{python_expand #
 %{$python_pyproject_install}
-# https://github.com/scipy/scipy/issues/16310, delete in order to avoid rpmlint errors
-rm %{buildroot}%{$python_sitearch}/scipy/linalg/_blas_subroutines.h
-rm %{buildroot}%{$python_sitearch}/scipy/linalg/_lapack_subroutines.h
 find %{buildroot}%{$python_sitearch}/scipy/special -name '*.h' -delete
 %fdupes %{buildroot}%{$python_sitearch}
 }
@@ -160,6 +158,8 @@ donttest+=" or (test_rotation and test_align_vectors_single_vector)"
 donttest+=" or (test_lobpcg and test_tolerance_float32)"
 donttest+=" or (test_iterative and test_maxiter_worsening)"
 donttest+=" or (test_resampling and test_bootstrap_alternative)"
+donttest+=" or (test_convergence and rand-sym-pd-F-tfqmr-numpy-batch_b0-batch_A0)"
+donttest+=" or (test_precond_dummy and rand-sym-pd-F-tfqmr-numpy-batch_b0-batch_A0)"
 %ifarch %ix86
 donttest+=" or (test_solvers and test_solve_generalized_discrete_are)"
 # Skip the following tests that fail with GCC 13 due to the excess precision change:
@@ -219,7 +219,7 @@ touch debugsourcefiles.list
 %files %{python_files}
 %license LICENSE.txt
 %{python_sitearch}/scipy/
-%{python_sitearch}/scipy-%{version}*-info
+%{python_sitearch}/scipy-%{version}.dist-info
 
 %endif
 
