@@ -1,7 +1,7 @@
 #
 # spec file for package espanso
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define         __rustflags -Clink-arg=-I/usr/include/libxkbcommon
 
 Name:           espanso
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        A cross-platform Text Expander written in Rust
 License:        GPL-3.0-only
