@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 22 00:04:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 150.0.7871.181 (boo#1272156):
+  * CVE-2026-16420: Type Confusion in WebAudio
+  * CVE-2026-16421: Inappropriate implementation in WebAudio
+  * CVE-2026-16413: Out of bounds write in ANGLE
+  * CVE-2026-16414: Insufficient validation of untrusted input in Chromecast
+  * CVE-2026-16415: Insufficient validation of untrusted input in Extensions
+  * CVE-2026-16416: Integer overflow in Chromecast
+  * CVE-2026-16417: Uninitialized Use in Skia
+  * CVE-2026-16418: Stack buffer overflow in V8
+  * CVE-2026-16419: Out of bounds read and write in ANGLE
+  * CVE-2026-16422: Insufficient validation of untrusted input in Certificate
+  * CVE-2026-16423: Use after free in UI
+  * CVE-2026-16424: Use after free in GPU
+
+-------------------------------------------------------------------
 Fri Jul 17 13:15:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 150.0.7871.128 (boo#1271656):
