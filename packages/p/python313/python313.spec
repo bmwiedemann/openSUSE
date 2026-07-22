@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.13
+Version:        3.13.14
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -236,21 +236,22 @@ Patch45:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
-# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
-# NULL dangling pointer to avoid use-after-free error
-Patch49:        CVE-2026-6100-use-after-free-decompression.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
-# Fix webbrowser %action substitution bypass of dash-prefix check
-Patch50:        CVE-2026-4786-webbrowser-open-action.patch
-# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
-# Reject CR/LF in HTTP tunnel request headers
-Patch51:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
-# PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
-# Base64-encode cookie values embedded in JS
-Patch52:        CVE-2026-6019-Morsel-js_output.patch
+# PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
+# improve testing of the presence of IPPROTO_UDPLITE support
+Patch53:        test_UDPLITE_support.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
+# Reject control characters in wsgiref.headers.Headers
+Patch54:        CVE-2025-15366-imap-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2025-15366-pop3-ctrl-chars.patch bsc#1257041 mcepl@suse.com
+# Reject control characters in POP3 commands
+Patch55:        CVE-2025-15366-pop3-ctrl-chars.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
+# Fix symlink escape via tarfile hardlink-extraction fallback
+Patch56:        CVE-2026-11940-tarfile-escape.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
+BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
@@ -901,6 +902,19 @@ rm %{buildroot}%{_bindir}/pydoc%{python_version}
 rm %{buildroot}%{_bindir}/python%{python_version}-config
 rm %{buildroot}%{_mandir}/man1/python%{python_version}.1*
 %endif
+
+# Deal with python3 shebangs
+echo Fix shebangs
+for f in %{buildroot}%{sitedir}/turtledemo/*.py ; do
+  if [ -f "$f" -a  -x "$f" -a -w "$f" ]
+  then
+    # in i586, sed fails when following symlinks to long paths, so
+    # changing to the target directory avoid this problem
+    cd "$(dirname "$f")"
+    sed -i --follow-symlinks "1s@#\\!.*python\\S*@#\\!%{_bindir}/python%{python_abi}@" "$(basename "$f")"
+    cd -
+  fi
+done
 
 %endif
 

@@ -4,14 +4,14 @@ Date: Tue, 23 Sep 2025 10:20:16 +0200
 Subject: [PATCH 1/2] gh-139257: Support docutils >= 0.22
 
 ---
- Doc/tools/extensions/pyspecific.py |   69 +++++++++++++++++++++++++------------
- 1 file changed, 47 insertions(+), 22 deletions(-)
+ Doc/tools/extensions/pyspecific.py |   57 +++++++++++++++++++++++++------------
+ 1 file changed, 40 insertions(+), 17 deletions(-)
 
-Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
+Index: Python-3.13.14/Doc/tools/extensions/pyspecific.py
 ===================================================================
---- Python-3.13.11.orig/Doc/tools/extensions/pyspecific.py	2025-12-05 17:06:33.000000000 +0100
-+++ Python-3.13.11/Doc/tools/extensions/pyspecific.py	2025-12-18 23:38:44.804668556 +0100
-@@ -1,12 +1,12 @@
+--- Python-3.13.14.orig/Doc/tools/extensions/pyspecific.py	2026-06-10 14:24:04.000000000 +0200
++++ Python-3.13.14/Doc/tools/extensions/pyspecific.py	2026-06-17 15:12:29.013047826 +0200
+@@ -1,20 +1,38 @@
  # -*- coding: utf-8 -*-
  """
 -    pyspecific.py
@@ -29,14 +29,12 @@ Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
  """
  
  import re
-@@ -22,30 +22,50 @@
- from sphinx.util.docutils import SphinxDirective
  
- # Used in conf.py and updated here by python/release-tools/run_release.py
--SOURCE_URI = 'https://github.com/python/cpython/tree/3.13/%s'
-+SOURCE_URI = "https://github.com/python/cpython/tree/3.13/%s"
-+
-+
++from docutils.parsers.rst.states import Body
+ from sphinx import addnodes
+ from sphinx.domains.python import PyFunction, PyMethod
+ 
+ 
 +# monkey-patch reST parser to disable alphabetic and roman enumerated lists
 +def _disable_alphabetic_and_roman(text):
 +    try:
@@ -49,43 +47,15 @@ Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
 +        return None
 +
 +
-+from docutils.parsers.rst.states import Body
-+
 +Body.enum.converters["loweralpha"] = Body.enum.converters["upperalpha"] = (
 +    Body.enum.converters["lowerroman"]
 +) = Body.enum.converters["upperroman"] = _disable_alphabetic_and_roman
 +
- 
++
  class PyAwaitableMixin(object):
      def handle_signature(self, sig, signode):
          ret = super(PyAwaitableMixin, self).handle_signature(sig, signode)
--        signode.insert(0, addnodes.desc_annotation('awaitable ', 'awaitable '))
-+        signode.insert(0, addnodes.desc_annotation("awaitable ", "awaitable "))
-         return ret
- 
- 
- class PyAwaitableFunction(PyAwaitableMixin, PyFunction):
-     def run(self):
--        self.name = 'py:function'
-+        self.name = "py:function"
-         return PyFunction.run(self)
- 
- 
- class PyAwaitableMethod(PyAwaitableMixin, PyMethod):
-     def run(self):
--        self.name = 'py:method'
-+        self.name = "py:method"
-         return PyMethod.run(self)
- 
- 
- # Support for documenting Opcodes
- 
--opcode_sig_re = re.compile(r'(\w+(?:\+\d)?)(?:\s*\((.*)\))?')
-+opcode_sig_re = re.compile(r"(\w+(?:\+\d)?)(?:\s*\((.*)\))?")
- 
- 
- def parse_opcode_signature(env, sig, signode):
-@@ -64,7 +84,7 @@
+@@ -55,7 +73,7 @@
  
  # Support for documenting pdb commands
  
@@ -94,7 +64,7 @@ Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
  
  # later...
  # pdbargs_tokens_re = re.compile(r'''[a-zA-Z]+  |  # identifiers
-@@ -80,16 +100,16 @@
+@@ -71,16 +89,16 @@
      if m is None:
          raise ValueError
      name, args = m.groups()
@@ -114,7 +84,7 @@ Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
      signode += addnodes.desc_name(sig, sig)
      return sig
  
-@@ -102,7 +122,7 @@
+@@ -93,7 +111,7 @@
      As such, we link this to ``env-check-consistency``, even though it has
      nothing to do with the environment consistency check.
      """
@@ -123,7 +93,7 @@ Index: Python-3.13.11/Doc/tools/extensions/pyspecific.py
          return
  
      # allow translating deprecated index entries
-@@ -119,10 +139,15 @@
+@@ -110,10 +128,15 @@
  
  
  def setup(app):

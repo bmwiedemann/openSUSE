@@ -1281,4 +1281,42 @@
       end of the encoded data (bsc#1261970, CVE-2026-3446).</comment>
     <requestid>1349656</requestid>
   </revision>
+  <revision rev="42" vrev="3">
+    <srcmd5>48ed73f44f531a4923be426fdeeb244d</srcmd5>
+    <version>3.13.13</version>
+    <time>1781879376</time>
+    <user>anag_factory</user>
+    <comment>REVERT the restructuralization of Python interpreters.
+
+- Add test_UDPLITE_support.patch (bsc#1263787,
+  gh#python/cpython!149081) improving testing for the support of
+  IPPROTO_UDPLITE, which could be not present although header
+  files are.
+
+- Add missing BR `crypto-policies-scripts` (need for the fix of
+  bsc#1211301).
+
+- CVE-2026-6019: protect against HTML injection by
+  Base64-encoding cookie values embedded in JS (bsc#1262654,
+  gh#python/cpython#90309)
+  CVE-2026-6019-Morsel-js_output.patch
+- CVE-2026-1502: reject CR/LF in HTTP tunnel request headers
+  (bsc#1261969, gh#python/cpython#146211)
+  CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+- CVE-2026-4786: fix webbrowser %action substitution bypass of
+  dash-prefix check (bsc#1262319, gh#python/cpython#148169)
+  CVE-2026-4786-webbrowser-open-action.patch
+- CVE-2026-6100: prevent dangling pointer, which can end in the
+  use-after-free error (bsc#1262098, gh#python/cpython#148395)
+  CVE-2026-6100-use-after-free-decompression.patch</comment>
+    <requestid>1360031</requestid>
+  </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>488b8b242f508e444cd24052de720b02</srcmd5>
+    <version>3.13.14</version>
+    <time>1784739665</time>
+    <user>dimstar_suse</user>
+    <comment>Resubmit proper HEAD</comment>
+    <requestid>1366438</requestid>
+  </revision>
 </revisionlist>
