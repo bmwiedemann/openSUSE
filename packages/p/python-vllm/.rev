@@ -15,4 +15,12 @@
     <comment>Require python-compressed-tensors 0.17.1 (depends on SR 1366537 for python-compressed-tensors; please co-stage)</comment>
     <requestid>1366538</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>273b516dd70e575313587e12ae6d2050</srcmd5>
+    <version>0.25.1</version>
+    <time>1784740009</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.25.1</comment>
+    <requestid>1367145</requestid>
+  </revision>
 </revisionlist>

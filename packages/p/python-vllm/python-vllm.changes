@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:46:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.25.1
+- Both CPU patches rebased cleanly; dependency set unchanged from
+  0.25.0
+
+-------------------------------------------------------------------
 Sat Jul 18 18:34:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Track the python-compressed-tensors 0.17.1 update: require

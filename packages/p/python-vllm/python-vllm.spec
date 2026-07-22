@@ -29,7 +29,7 @@
 # compiled kernels is tracked as a follow-up once that is resolved.
 %define vllm_target_device empty
 Name:           python-vllm
-Version:        0.25.0
+Version:        0.25.1
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
