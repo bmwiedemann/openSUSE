@@ -18,7 +18,7 @@
 
 Name:           permissions
 # NOTE: the version prefix is synced with %%suse_version currently
-Version:        1699_20260707
+Version:        1699_20260715
 Release:        0
 Summary:        SUSE Linux Default Permissions
 # Maintained in github by the security team.

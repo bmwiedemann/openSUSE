@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 15 13:58:50 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1699_20260715:
+  * profiles: add cap_net_raw for ttl (bsc#1270714)
+
+-------------------------------------------------------------------
 Tue Jul 07 11:58:51 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1699_20260707:
