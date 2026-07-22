@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:48:06 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use correct spdx reference for BSD-4-Clause
+
+-------------------------------------------------------------------
+Thu Jul 16 20:21:23 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Add most representeed missing licenses to the main license tag
+  found during legaldb review.
+
+-------------------------------------------------------------------
 Sun May 17 08:29:13 UTC 2026 - oota toshiya <jm@ribbon.or.jp>
 
 - update to version 20260515:

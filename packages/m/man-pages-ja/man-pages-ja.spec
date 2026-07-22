@@ -20,7 +20,7 @@ Name:           man-pages-ja
 Version:        20260515
 Release:        0
 Summary:        LDP Manual Pages (Japanese)
-License:        BSD-3-Clause AND GPL-2.0-only AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
+License:        Apache-2.0 AND BSD-3-Clause AND BSD-4-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND GFDL-1.1-only AND GFDL-1.2-only AND GFDL-1.3-only
 Group:          Documentation/Man
 Summary(ja):    Linux 日本語マニュアルページ
 URL:            https://linuxjm.sourceforge.io/#download

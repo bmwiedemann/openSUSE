@@ -384,4 +384,12 @@
 - remove old manuals (gnumaniak,GNU_fileutils,GNU_sh-utils,GNU_textutils) (forwarded request 1354883 from ribbon)</comment>
     <requestid>1355013</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>9cf852b502071e12d8c4d23f1f85b0b7</srcmd5>
+    <version>20260515</version>
+    <time>1784739709</time>
+    <user>dimstar_suse</user>
+    <comment>- Use correct spdx reference for BSD-4-Clause (forwarded request 1367137 from lkocman)</comment>
+    <requestid>1367138</requestid>
+  </revision>
 </revisionlist>
