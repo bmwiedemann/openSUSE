@@ -11,7 +11,7 @@ Tue Jul 21 13:05:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       authentication (CVE-2026-56624, bsc#1271992)
     + Improve handling of repository paths in sshd-git on Windows
       (CVE-2026-56623, bsc#1271993)
-    + Validate file names in SCP
+    + Validate file names in SCP (CVE-2026-56452, bsc#1272158)
     + Escape newlines in filenames in the SCP protocol
     + Restrict JGit commands accessible via GitPgmCommandFactory in
       sshd-git (CVE-2026-58624, bsc#1271991)

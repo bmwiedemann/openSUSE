@@ -111,4 +111,12 @@
     <comment>2.19.0 + security fixes</comment>
     <requestid>1366970</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>507739c5abb7e4dd0b87319cea5d09ff</srcmd5>
+    <version>2.19.0</version>
+    <time>1784739925</time>
+    <user>dimstar_suse</user>
+    <comment>Mention additional CVE/bsc number</comment>
+    <requestid>1367083</requestid>
+  </revision>
 </revisionlist>
