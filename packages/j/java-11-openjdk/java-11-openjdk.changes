@@ -1,4 +1,128 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:52:04 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream tag jdk-11.0.32+9 (July 2026 CPU)
+  * CVEs
+    + CVE-2026-46968 (bsc#1272224)
+    + CVE-2026-46917 (bsc#1272223)
+    + CVE-2026-47010 (bsc#1272225)
+    + CVE-2026-47021 (bsc#1272227)
+    + CVE-2026-47027 (bsc#1272228)
+    + CVE-2026-60147 (bsc#1272237)
+    + CVE-2026-47059 (bsc#1272235)
+    + CVE-2026-47063 (bsc#1272236)
+    + CVE-2026-47057 (bsc#1272233)
+    + CVE-2026-47058 (bsc#1272234)
+    + CVE-2026-41254 (bsc#1264994)
+  * Changes
+    + JDK-8200566: DistributionPointFetcher fails to fetch CRLs if
+      the DistributionPoints field contains more than one
+      DistributionPoint and the first one fails
+    + JDK-8242314: use reproducible random in vmTestbase shared code
+    + JDK-8252412: [macos11] system dynamic libraries removed from
+      filesystem
+    + JDK-8275405: Linking error for classes with lambda template
+      parameters and virtual functions
+    + JDK-8275843: Random crashes while the UI code is executed
+    + JDK-8286562: GCC 12 reports some compiler warnings
+    + JDK-8287491: compiler/jvmci/errors/TestInvalidDebugInfo.java
+      fails new assert:  assert((uint)t < T_CONFLICT + 1) failed:
+      invalid type #
+    + JDK-8292177: InitialSecurityProperty JFR event
+    + JDK-8293691: converting a defined BasicType value to a string
+      should not crash the VM
+    + JDK-8298730: Refactor subsystem_file_line_contents and add
+      docs and tests
+    + JDK-8314555: Build with mawk fails on Windows
+    + JDK-8323672: Suppress unwanted autoconf added flags in CC and
+      CXX
+    + JDK-8324243: Compilation failures in java.desktop module with
+      gcc 14
+    + JDK-8325766: Extend CertificateBuilder to create trust and end
+      entity certificates programmatically
+    + JDK-8327071: [Testbug] g-tests for cgroup leave files in /tmp
+      on linux
+    + JDK-8336498: [macos] [build]: install-file macro may run into
+      permission denied error
+    + JDK-8342858: Make target mac-jdk-bundle fails on chmod command
+    + JDK-8347740: java/io/File/createTempFile/SpecialTempFile.java
+      failing
+    + JDK-8347811: Container detection code for cgroups v2 should
+      use cgroup.controllers
+    + JDK-8349988: Change cgroup version detection logic to not
+      depend on /proc/cgroups
+    + JDK-8350749: Upgrade JLine to 3.29.0
+    + JDK-8351359: OperatingSystemMXBean: values from getCpuLoad and
+      getProcessCpuLoad are stale after 24.8 days (Windows)
+    + JDK-8353714: [17u] Backport of 8347740 incomplete
+    + JDK-8354878: File Leak in
+      CgroupSubsystemFactory::determine_type of
+      cgroupSubsystem_linux.cpp:300
+    + JDK-8355077: Compiler error at splashscreen_gif.c due to
+      unterminated string initialization
+    + JDK-8363966: GHA: Switch cross-compiling sysroots to Debian
+      trixie
+    + JDK-8365098: make/RunTests.gmk generates a wrong path to test
+      artifacts on Alpine
+    + JDK-8365660: test/jdk/sun/security/pkcs11/KeyAgreement/ tests
+      skipped without SkipExceprion
+    + JDK-8366159: SkippedException is treated as a pass for
+      pkcs11/KeyStore, pkcs11/SecretKeyFactory and
+      pkcs11/SecureRandom
+    + JDK-8367766: [11u] src/jdk.crypto.ec/share/native/libsunec/
+      /impl/mpi.c:321:3: error: 'tmp.dp' may be used uninitialized
+    + JDK-8368041: Enhance TLS certificate handling
+    + JDK-8368670: Deadlock in JFR on event register + class load
+    + JDK-8369032: Add test to ensure serialized ICC_Profile stores
+      only necessary optional data
+    + JDK-8369506: Bytecode rewriting causes Java heap corruption on
+      AArch64
+    + JDK-8371559: Intermittent timeouts in test
+      javax/net/ssl/Stapling/HttpsUrlConnClient.java
+    + JDK-8372351: Add 2 WISeKey roots
+    + JDK-8373275: Improve DTLS handshaking
+    + JDK-8374058: Enhance JPEG handling
+    + JDK-8374888: Implement internal test cache to help
+      UserIterCount test performance
+    + JDK-8375065: Update LCMS to 2.18
+    + JDK-8377158: Enhance XBM image support
+    + JDK-8377167: javax/imageio/ReadAbortTest.java throw NPE when
+      x11 unavailable
+    + JDK-8377498: Improve HttpServer handling
+    + JDK-8377833: Enhance Jar file processing
+    + JDK-8378218: MSYS2 reports cygwin triplet causing bash
+      configure failure
+    + JDK-8378631: Update Zlib Data Compression Library to Version
+      1.3.2
+    + JDK-8378687: Improve delegation of HttpURLConnection
+    + JDK-8378823: AIX build fails after zlib updated by JDK-8378631
+    + JDK-8379685: Bump update version of OpenJDK: 11.0.32
+    + JDK-8380672: Improve certification checking
+    + JDK-8380947: Add pull request template
+    + JDK-8381039: Enhance AWT ImagingLib
+    + JDK-8381049: Enhance Jar handling
+    + JDK-8381185: Improve Nashorn index handling
+    + JDK-8381195: Enhance Dataview Implementation
+    + JDK-8381519: Enhance Der Value Handling
+    + JDK-8381551: DisabledCurve test fails on Windows after
+      disabling SHA1
+    + JDK-8381796: Enhance Certificate parsing
+    + JDK-8383175: (tz) Update Timezone Data to 2026b
+    + JDK-8383354: Update LCMS to 2.19.1
+    + JDK-8383473: Follow on from tzdata2026b time change to include
+      temporary hack BC time change
+    + JDK-8384158: GHA: Downgrade Windows GHA runners to
+      windows-2022 temporarily
+    + JDK-8384495: Update Libpng to 1.6.58
+    + JDK-8384902: Update GIFlib to 6.1.3
+    + JDK-8386551: Windows build broken because of MSys2/Make update
+    + JDK-8387976: [11u] Remove designator
+      DEFAULT_PROMOTED_VERSION_PRE=ea for release 11.0.32
+- Modified patch:
+  * fips.patch
+    + rediff
+
+-------------------------------------------------------------------
 Thu Jun  4 07:19:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Make post scripts less noisy (bsc#1267355)
@@ -22,7 +146,7 @@ Sat Apr 25 17:27:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + CVE-2026-23865 (bsc#1259118)
     + CVE-2026-34268 (bsc#1262500)
     + CVE-2026-34282 (bsc#1262501)
-* Changes
+  * Changes
     + JDK-8209362: sun/security/ssl/SSLSocketImpl/ReuseAddr.java
       failed due to "BindException: Address already in use (Bind
       failed)"

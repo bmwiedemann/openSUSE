@@ -73,7 +73,7 @@
 +])
 --- a/make/autoconf/spec.gmk.in
 +++ b/make/autoconf/spec.gmk.in
-@@ -848,6 +848,10 @@ INSTALL_SYSCONFDIR=@sysconfdir@
+@@ -855,6 +855,10 @@ INSTALL_SYSCONFDIR=@sysconfdir@
  # Libraries
  #
  
@@ -389,15 +389,15 @@
 +}
 --- a/src/java.base/share/classes/java/security/Security.java
 +++ b/src/java.base/share/classes/java/security/Security.java
-@@ -32,6 +32,7 @@ import java.net.URL;
- 
+@@ -33,6 +33,7 @@ import java.net.URL;
  import jdk.internal.event.EventHelper;
  import jdk.internal.event.SecurityPropertyModificationEvent;
+ import jdk.internal.misc.JavaSecurityPropertiesAccess;
 +import jdk.internal.misc.JavaSecuritySystemConfiguratorAccess;
  import jdk.internal.misc.SharedSecrets;
  import jdk.internal.util.StaticProperty;
  import sun.security.util.Debug;
-@@ -50,12 +51,20 @@ import sun.security.jca.*;
+@@ -51,12 +52,20 @@ import sun.security.jca.*;
   * @implNote If the properties file fails to load, the JDK implementation will
   * throw an unspecified error when initializing the {@code Security} class.
   *
@@ -418,7 +418,7 @@
      /* Are we debugging? -- for developers */
      private static final Debug sdebug =
                          Debug.getInstance("properties");
-@@ -70,6 +79,19 @@ public final class Security {
+@@ -74,6 +83,19 @@ public final class Security {
      }
  
      static {
@@ -438,7 +438,7 @@
          // doPrivileged here because there are multiple
          // things in initialize that might require privs.
          // (the FileInputStream call and the File.exists call,
-@@ -85,6 +107,7 @@ public final class Security {
+@@ -96,6 +118,7 @@ public final class Security {
      private static void initialize() {
          props = new Properties();
          boolean overrideAll = false;
@@ -446,11 +446,10 @@
  
          // first load the system properties file
          // to determine the value of security.overridePropertiesFile
-@@ -105,9 +128,63 @@ public final class Security {
+@@ -124,9 +147,62 @@ public final class Security {
              }
-             loadProps(null, extraPropFile, overrideAll);
          }
-+
+ 
 +        boolean sysUseProps = Boolean.valueOf(System.getProperty(SYS_PROP_SWITCH, "false"));
 +        boolean secUseProps = Boolean.valueOf(props.getProperty(SEC_PROP_SWITCH));
 +        if (sdebug != null) {
@@ -796,27 +795,17 @@
 +    boolean isSystemFipsEnabled();
 +    boolean isPlainKeySupportEnabled();
 +}
-diff --git a/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java b/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
-index 688ec9f091..8489b940c4 100644
 --- a/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
 +++ b/src/java.base/share/classes/jdk/internal/misc/SharedSecrets.java
-@@ -36,6 +36,7 @@ import java.io.FilePermission;
- import java.io.ObjectInputStream;
- import java.io.RandomAccessFile;
- import java.security.ProtectionDomain;
-+import java.security.Security;
- import java.security.Signature;
- 
- /** A repository of "shared secrets", which are a mechanism for
-@@ -76,6 +77,7 @@ public class SharedSecrets {
-     private static JavaIORandomAccessFileAccess javaIORandomAccessFileAccess;
+@@ -78,6 +78,7 @@ public class SharedSecrets {
+     private static JavaSecurityPropertiesAccess javaSecurityPropertiesAccess;
      private static JavaSecuritySignatureAccess javaSecuritySignatureAccess;
      private static JavaxCryptoSealedObjectAccess javaxCryptoSealedObjectAccess;
 +    private static JavaSecuritySystemConfiguratorAccess javaSecuritySystemConfiguratorAccess;
  
      public static JavaUtilJarAccess javaUtilJarAccess() {
          if (javaUtilJarAccess == null) {
-@@ -361,4 +363,15 @@ public class SharedSecrets {
+@@ -376,4 +377,15 @@ public class SharedSecrets {
          }
          return javaxCryptoSealedObjectAccess;
      }
@@ -1485,7 +1474,7 @@ index 688ec9f091..8489b940c4 100644
              if (omitInitialize == false) {
                  try {
                      pkcs11.C_Initialize(pInitArgs);
-@@ -1909,4 +1933,69 @@ static class SynchronizedPKCS11 extends PKCS11 {
+@@ -1945,4 +1969,69 @@ static class SynchronizedPKCS11 extends PKCS11 {
          super.C_GenerateRandom(hSession, randomData);
      }
  }
