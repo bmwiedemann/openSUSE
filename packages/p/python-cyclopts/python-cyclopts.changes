@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:26:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.22.1:
+  * Split iterable Parameter(env_var=...) values via env_var_split
+  * Report the offending value when a boolean flag gets a non-bool
+    =value
+
+-------------------------------------------------------------------
 Mon Jul 20 05:51:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.22.0:

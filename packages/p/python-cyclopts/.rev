@@ -39,4 +39,12 @@
     <comment>Update to 4.22.0</comment>
     <requestid>1366649</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6597562a08538fcf64f712d7d323bf3b</srcmd5>
+    <version>4.22.1</version>
+    <time>1784739991</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.22.1</comment>
+    <requestid>1367133</requestid>
+  </revision>
 </revisionlist>
