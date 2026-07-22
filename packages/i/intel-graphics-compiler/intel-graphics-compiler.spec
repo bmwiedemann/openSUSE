@@ -16,16 +16,16 @@
 #
 
 
-%global llvm_ref llvmorg-16.0.6
-%global opencl_clang_ref 7161d7c6
-%global spirv_llvm_translator_ref de396f26
+%global llvm_ref llvmorg-17.0.6
+%global opencl_clang_ref 059ad9df
+%global spirv_llvm_translator_ref 6798e157
 %global vc_intrinsics_ref v0.25.0
 
-%global llvm_version 16.0.6
+%global llvm_version 17.0.6
 %global llvm_major %gsub %{llvm_version} %{quote:%..+} %{quote: }
 
 Name:           intel-graphics-compiler
-Version:        2.30.1
+Version:        2.38.2
 Release:        0%{?dist}
 Summary:        Intel Graphics Compiler for OpenCL
 License:        MIT
@@ -51,7 +51,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  python3-Mako
 BuildRequires:  python3-PyYAML
-BuildRequires:  spirv-headers
+BuildRequires:  spirv-headers >= 1.6.4+sdk350.1
 BuildRequires:  spirv-tools-devel > 2025.1
 BuildRequires:  unzip
 ExclusiveArch:  x86_64

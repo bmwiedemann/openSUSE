@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 14 23:06:49 UTC 2026 - Markus Ebner <info@ebner-markus.de>
+
+- Update to 2.38.2
+  * No changelog was made available
+- Update llvm to 17.0.6
+- Update opencl_clang to 059ad9df
+- Update spirv_llvm_translator to 6798e157
+
+-------------------------------------------------------------------
 Sun Mar 22 20:27:28 UTC 2026 - Patrik Jakobsson <patrik.jakobsson@suse.com>
 
 - Remove release-keys.asc 
