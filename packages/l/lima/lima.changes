@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Wed Jul 22 07:48:41 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 2.2.0:
+  * go.mod: github.com/lima-vm/sshocker v0.3.11
+  * templates: update
+  * fix: only extend Windows guest timeout on initial boot
+  * don't follow symlinks when writing copyToHost destination
+  * fix: guard against nil instance Config in loadOrCreateInstance to stop limactl panic on invalid template
+  * Extend default timeout for Windows guest
+  * add qemu-xhci once for windows guests
+  * nerdctl: update from v2.3.4 to v2.3.5
+  * block ssh ports on every guest IP, not just 0.0.0.0
+  * build(deps): bump github.com/mattn/go-shellwords from 1.0.13 to 1.0.14
+  * build(deps): bump github.com/pkg/sftp from 1.13.10 to 1.13.11
+  * pkg/ioutilx: move UTF-16 helpers to pkg/strutil
+  * pkg/ioutilx: move Windows path helpers to pkg/fsutil
+  * templates: update
+  * cidata: write password.txt without a UTF-8 BOM
+  * verify cached image digest before raw conversion
+  * contain github symlink targets within the source repo
+  * sshutil: run ssh-keygen from the selected ssh toolchain
+  * ioutilx: fail on cygpath errors instead of converting natively
+  * hack: preserve variant field when updating image templates
+  * add newline to windows.md
+  * sshutil: detect Windows SSH toolchain and pair its companion tools
+  * ioutilx: add native fallback for cygpath path conversion
+  * docs(driver): document external driver gRPC API contract
+  * reject backslash parent-dir traversal in template locators
+  * Update windows.md to clarify the caveats for experimental Windows 11 guest support.
+  * upgrade contribution policy and AI usage
+  * validate network names and fields used in sudoers commands
+  * docs: clarify community meeting information
+  * build(deps): bump the golang-x group across 1 directory with 2 updates
+  * use Powershell/Win32-OpenSSH instead of Add-WindowsCapability
+  * Treat instances created before Lima 0.20 as older than any release
+  * introduce a marker file for Windows guest
+  * reject qemu packet exceeding the read buffer size
+  * build(deps): bump github/codeql-action/init from 4.36.3 to 4.37.0
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump github/codeql-action/analyze from 4.36.3 to 4.37.0
+  * fix limactl list to skip broken instances during clone/delete
+  * fix(downloader): add regression test for cached-image fallback (#5188)
+  * update the breaking-changes docs page for external driver transport changes
+  * build(deps): bump golang/govulncheck-action from 1.0.4 to 1.1.0
+  * Create the guest home symlink after the data volume is mounted
+  * Don't try to copy admin.conf on the k8s worker
+  * feat: allow opting out of passwordless sudo
+  * feat(prune): sweep leftover partial downloads from the cache
+  * reject line breaks in ssh config option values
+  * Don't add FreeBSD comments in cloud-config.yaml
+  * merge Configure() and FillConfig()
+  * make server reuse + pid-based shutdown reliable for stop/rm -f
+  * Use regular name for node in k3s and k8s
+  * Use param instead of yq for k8s and k3s
+  * networks: change default sudoers group from `everyone` to `admin`
+  * docs(config): document plain mode
+  * Ensure only RAW images in cache while keeping orginal image
+  * build(deps): bump lycheeverse/lychee-action from 2.8.0 to 2.9.0
+  * implement Windows 11 ARM64
+  * refactor: drop sudo for cloud-init log streaming
+  * portfwdserver: fix socket FD leak per forwarded connection
+  * templates: experimental/ubuntu-next: point to ubuntu-26.10
+  * alpine: support `--plain` mode
+  * Add separate ADOPTERS.md for the CNCF project.yaml
+  * Windows: change the default VM driver from wsl2 to qemu
+  * build(deps): bump github/codeql-action/upload-sarif
+  * build(deps): bump github/codeql-action/init from 4.36.2 to 4.36.3
+  * build(deps): bump github/codeql-action/analyze from 4.36.2 to 4.36.3
+  * build(deps): bump the golang-x group across 1 directory with 3 updates
+  * feat: add image-variant flag to limactl and implement filtering during instance start
+  * build(deps): bump google.golang.org/grpc in /hack/tools
+  * build(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.0
+  * templates: fedora-44: support riscv64
+  * Add parameter for Kubernetes registry
+  * fix out-of-bounds slice in detectValidPublicKey
+  * feat(cli): add --user-shell flag
+  * cidata: use cp to rewrite /etc/fstab, clarify unescape_fstab comment
+  * downloader: fall back to built-in gzip decompression
+  * build(deps): bump golangci/golangci-lint-action from 9.2.1 to 9.3.0
+  * build(deps): bump github.com/cilium/ebpf from 0.21.0 to 0.22.0
+  * keep the grpc server socket file inside instance dir
+  * Reduce redundant driver.Info() calls
+  * feat:add virtio-sound interface
+  * Implementation for Windows 11 x86_64
+  * build(deps): bump actions/attest-build-provenance from 4.1.0 to 4.1.1
+  * cidata: fix virtiofs mounts with a space in the path
+  * wsl2: improve image validation and document custom rootfs building
+  * hack: fail early when host prerequisites are missing
+  * implement Windows server 2025 guest
+  * cmd/limactl: include name in network list --json output
+  * CodeQL: fix setting up Go toolchain
+  * templates/freebsd-15: support 9p mounts
+  * build(deps): bump actions/setup-go from 6.4.0 to 6.5.0
+  * build(deps): bump actions/cache from 5.0.5 to 6.1.0
+  * shell: clean up stale ssh.sock on --reconnect when the master is already dead
+  * implement TPM emulation
+  * templates: update
+  * nerdctl: update from v2.3.3 to v2.3.4
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.6 to 0.5.7
+  * Add parameters for Kubernetes installation
+  * feat(screenshot): add limactl screenshot command for VZ GUI VMs
+  * refactor: drop sudo for SSH host-services setup
+  * fix(networks): only retry socket_vmnet daemon on early exit
+  * fix port-forward tunnel Read exceeding the supplied buffer
+  * feat: log all host-side sudo invocations with non-debug level
+  * refactor: make sudo optional for copyToHost
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0
+  * fix(networks): fail fast and retry socket_vmnet startup
+  * fix(qemu): fallback from hvf to tcg on macOS
+  * refactor: drop sudo requirement for fuse.conf check
+  * nerdctl: update from v2.2.2 to v2.3.3
+  * Only add xorrisofs flag to the xorrisofs command
+  * Move the kubeadm config file to /etc
+  * templates: update
+  * Change %q in logs and errors to %#q and modify bat (part4)
+  * build(deps): bump golang.org/x/net
+  * fix(makefile): propagate build failure for additional drivers
+  * guestagent: limit the socket access to the main user
+  * krunkit: disable ssh.overVsock by default
+  * build(deps): bump golang.org/x/text
+  * build(deps): bump github.com/mikefarah/yq/v4 from 4.53.2 to 4.53.3
+  * hack/tools: gosocialcheck v0.1.3
+  * Fix off-by-one error in 00-systemd-user-group.sh
+  * Bump k8s flannel version from 0.28.4 to 0.28.5
+  * cidata: fix ubuntu-26.04 first-boot NIC rename failure
+  * templates: switch the default image from `ubuntu-25.10` to `ubuntu-26.04`
+  * hack/tools: gosocialcheck v0.1.2
+  * Revert "Support host block-device attachment on macOS VZ"
+  * CI: run gosocialcheck for checking social reputation of Go dependencies
+  * build(deps): bump golang.org/x/sync
+  * build(deps): bump github/codeql-action from 4.36.1 to 4.36.2
+  * Move almalinux-kitten to experimental/
+  * limayaml: clarify TestContainerdUserDefaultPerOS comment scope
+  * build(deps): bump github/codeql-action from 4.36.0 to 4.36.1
+  * build(deps): bump golang.org/x/sys
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3
+  * limayaml: clarify containerd.user default is Linux-only in default.yaml
+  * fix(copytool): fallback to scp for remote src and dest in auto mode
+  * limayaml: do not default containerd.user=true on non-Linux guests
+  * feat(vz): set descriptive window title for VZ VMs using the graphical display
+  * Change %q in logs and errors to %#q and modify bat (part3)
+  * feat(autostart): add LaunchDaemon support for headless macOS servers
+  * build(deps): bump github.com/mdlayher/vsock from 1.2.1 to 1.3.0
+  * Remove deprecated `_LIMA_QEMU_UEFI_IN_BIOS` feature
+  * restart: accept editflags to modify configuration before restarting
+  * MountTag hashing using ":" instead of "\0" separator
+  * docs: document missing LIMA_CIDATA_* environment variables
+  * qemu: use stream netdev with reconnect for socketVMNet networking
+  * Support host block-device attachment on macOS VZ
+
+-------------------------------------------------------------------
 Fri Jul 03 08:53:11 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 2.1.4:

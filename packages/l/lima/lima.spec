@@ -17,7 +17,7 @@
 
 
 Name:           lima
-Version:        2.1.4
+Version:        2.2.0
 Release:        0
 Summary:        Linux virtual machines, with a focus on running containers
 License:        Apache-2.0
