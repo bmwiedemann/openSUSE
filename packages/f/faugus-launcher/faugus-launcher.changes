@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Tue Jul 21 06:28:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- For .spec:
+  * Added/removed deps to support version 2.x.x
+  * Removed unused code from version 1.x.x
+- Bump to version 2.0.1:
+  * Updated mo
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Norwegian Bokmål translation
+  * chore(l10n): update Romanian translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Serbian translation
+  * chore(l10n): update Arabic translation
+  * chore(l10n): update Chinese (Traditional Han script) translation
+  * chore(l10n): update Georgian translation
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update Japanese translation
+  * chore(l10n): update Chinese (Simplified Han script) translation
+  * chore(l10n): update German translation
+  * chore(l10n): update German translation
+  * chore(l10n): update Nepali translation
+  * chore(l10n): update Nepali translation
+  * chore(l10n): update Turkish translation
+  * chore(l10n): update Spanish translation
+  * chore(l10n): update Spanish translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Dutch translation
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Persian translation
+  * Updated Dutch translation
+  * Update po
+  * Update translation template (faugus-launcher.pot)
+  * Added missing translation tokens
+  * Attempt to fix Nvidia Optimus crash part 2
+  * Auto update po
+  * Create faugus-launcher.mo
+  * Attempt to fix migration memory leak
+  * Update translation template (faugus-launcher.pot)
+  * Attempt to fix Nvidia Optimus crashes
+  * Update po files
+  * Auto updates the .po files
+  * Fixed date
+  * Update translation template (faugus-launcher.pot)
+  * Separated strings
+  * Refine workflow for update-pot.yml
+  * Update translation template (faugus-launcher.pot) 
+- For version 2.0.0:
+  * Update translation template (faugus-launcher.pot)
+  * Migrate only when config.ini
+  * Flatpak known issue
+  * Update translation template (faugus-launcher.pot)
+  * Migration prompt
+  * Reorder dependencies
+  * Update translation template (faugus-launcher.pot)
+  * AppImage support
+  * Updated mo
+  * Update translation template (faugus-launcher.pot)
+  * Updated translations
+  * chore(l10n): update Portuguese (Brazil) translation
+  * Update metadata
+  * Updated metadata and readme
+  * Updated screenshots
+  * Update faugus-launcher
+  * Update strings
+  * Update translation template (faugus-launcher.pot)
+  * Update strings
+  * Update faugus-launcher.pot
+  * Update translation template (faugus-launcher.pot)
+  * Fixed some strings
+  * Update translation template (faugus-launcher.pot)
+  * Update README.md
+  * Update faugus-launcher.pot
+  * Removed vulkan tools
+  * Replaced imagick magic with pillow
+  * Popen xdg-open
+  * Fixed settings being reset when closing a game
+  * Fixed Flatpak stop and kill buttons
+  * Restoration complete
+  * Reworked restoration
+  * Backup before migration
+  * Fixed some windows modals
+  * Improved some tooltips
+  * Tray startup adjustment
+  * Some renaming
+  * Lossless location to its own window
+  * Strings rename
+  * Expand relative paths
+  * Update games json to migration process
+  * Added Weblate section
+  * Update translation template (faugus-launcher.pot)
+  * Weblate migration
+  * Merged translation files
+  * Removed non updated translation files
+  * Updated tooltips
+  * Improved Steam user detection
+  * Fixed edit Steam gaame
+  * Added Steam user for Steam game
+  * Added Steam user for shortcuts
+  * Roundless tint
+  * Some visual improvements
+  * More gamepad navigation improvements
+  * Improved gamepad navigation
+  * Improved gamepad navigation
+  * Added steamgrid images to launchers installation screen
+  * Final icon corruption fix
+  * icon bug
+  * Another attempt to fix icon bug
+  * Bugged icon
+  * Fixed icon extraction regression
+  * X11 corrupted icon
+  * Update launcher.py
+  * X11 again
+  * Another X11 placeholder fix
+  * Revert "X11 hero placeholder visibility"
+  * Revert "X11 hero placeholder visibility part 2"
+  * Revert "X11 hero placeholder visibility part 3"
+  * X11 hero placeholder visibility part 3
+  * X11 hero placeholder visibility part 2
+  * X11 hero placeholder visibility
+  * Keep hero aspect ratio
+  * Don't show suggestions for launchers
+  * Pre and Post commands
+  * Delete and Launch arguments frame
+  * Added Steam user selection
+  * Improved navigation and backup filechooser folders
+  * Some code refactoring
+  * SteamGridDB + Filechooser folders + Json files
+  * Include new files in backup
+  * Gamepad navigation fix popover
+  * Proton logs and backup behavior
+  * Fixed memory leak part 2
+  * Fixed memory leak
+  * Standardized dialogs
+  * Fixed config being reset
+  * Updated icons
+  * More warnings
+  * Hide warnings
+  * Fix other dialogs alignment
+  * Fixed splash window alignment
+  * Another X11 systray fix
+  * Systray X11 fix
+  * Another system tray fix
+  * Attempt to fix new system tray
+  * Reworked system tray icon
+  * Improved image quality
+  * Fixed delete window alignment
+  * Removed libcanberra
+  * Fix magick convert
+  * Removed old faugus_run workaround
+  * Some gamepad navigation fixes
+  * Fixed entry border
+  * Fix button shortcut icon again
+  * Fixed button shortcut icon alignment
+  * Fixed some alignments
+  * Fix icons size
+  * More color adjustments
+  * Removed debug messages
+  * Fixed launch arguments list width
+  * Some color adjustments
+  * Removed button apply and update theme and color instant
+  * Fixed new systray issues
+  * One metadata
+  * Changed appid
+  * Fixed accent color
+  * Faugus 2.0 experimental release
+  * Manage shortcut for all Steam users
+  * merge extra_ico_simple and extra_ico_frames into single function
+  * code cleanup
+
+-------------------------------------------------------------------
 Mon Jul 06 21:58:28 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 1.22.8

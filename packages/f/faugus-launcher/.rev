@@ -730,4 +730,15 @@
   * centralize path constants in path_manager.py</comment>
     <requestid>1364131</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>a73f9ff96d180d2ca2dc8e91b7e614cb</srcmd5>
+    <version>2.0.1</version>
+    <time>1784739765</time>
+    <user>dimstar_suse</user>
+    <comment>- For .spec:
+  * Added/removed deps to support version 2.x.x
+  * Removed unused code from version 1.x.x
+- Bump to version 2.0.1</comment>
+    <requestid>1367033</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?single_pythons_311plus}
 
 Name:           faugus-launcher
-Version:        1.22.8
+Version:        2.0.1
 Release:        0
 Summary:        A simple and lightweight app for running Windows games using UMU-Launcher
 License:        MIT and CC-BY-4.0
@@ -45,8 +45,7 @@ BuildRequires:  fdupes
 # Python version management
 BuildRequires:  python-rpm-macros
 
-Requires:       ImageMagick
-Requires:       canberra-gtk-play
+# Runtime python module dependencies
 Requires:       %{python_module base}
 Requires:       %{python_module Pillow}
 Requires:       %{python_module gobject}
@@ -54,7 +53,12 @@ Requires:       %{python_module icoextract}
 Requires:       %{python_module psutil}
 Requires:       %{python_module requests}
 Requires:       %{python_module vdf}
-Requires:       typelib-1_0-AyatanaAppIndicator3-0_1
+Requires:       %{python_module psutil}
+Requires:       %{python_module dbus-python}
+
+# GObject Introspection typelibs for GTK4 and libadwaita
+Requires:       typelib(Gtk) = 4.0
+Requires:       typelib(Adw) = 1
 
 # Only install gaming selinux policy on SLE +16 / Leap +16 / Tumbleweed / Slowroll
 %if 0%{?suse_version} >= 1600 || 0%{?is_opensuse}
@@ -82,12 +86,8 @@ A simple and lightweight app for running Windows games using UMU-Launcher/UMU-Pr
 %autosetup -n %{name}-%{version}
 
 # Fix for shebangs & executable bits on current versions
-sed -i '1{/^#!.*python/d}' faugus/launcher.py
-sed -i '1{/^#!.*python/d}' faugus/proton_manager.py
-sed -i '1{/^#!.*python/d}' faugus/runner.py
-sed -i '1{/^#!.*python/d}' faugus/shortcut.py
-chmod 0644 faugus/backup.py
-sed -i '1s|#!/usr/bin/env python3|#!%{__python3}|' faugus/proton_downloader.py
+find faugus/ -type f -name '*.py' -exec sed -i '1{/^#!.*python/d}' {} +
+find faugus/ -type f -name '*.py' -exec chmod 0644 {} +
 
 %build
 # Compile faugus-launcher
@@ -102,7 +102,7 @@ sed -i '1s|#!/usr/bin/env python3|#!%{__python3}|' faugus/proton_downloader.py
 find %{buildroot}%{python3_sitelib} -name "*.pyc" -delete
 %{__python3} -m compileall -d %{python3_sitelib} %{buildroot}%{python3_sitelib}/faugus/
 
-# Version 1.18.5 has executable bit enabled on some SVG files, so we fix that here.
+# Faugus ships SVG files with the executable bit enabled, so we fix that here.
 chmod 0644 %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/*.svg
 
 # Handle license files
@@ -115,9 +115,6 @@ cp assets/LICENSE %{buildroot}%{_defaultlicensedir}/%{name}/LICENSE.assets
 
 # Lang files
 %find_lang faugus-launcher %{name}.lang
-%find_lang faugus-proton-manager faugus-proton-manager.lang
-%find_lang faugus-run faugus-run.lang
-cat faugus-proton-manager.lang faugus-run.lang >> %{name}.lang
 
 %check
 # Checks for desktop files and appstream metadata
@@ -135,7 +132,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 
 # Binaries
 %{_bindir}/faugus-launcher
-%{_bindir}/faugus-run
 
 # Icons
 %{_datadir}/icons/hicolor/*
@@ -144,7 +140,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/applications/*.desktop
 
 # Metainfo
-%{_datadir}/metainfo/faugus-launcher.metainfo.xml
+%{_datadir}/metainfo/io.github.Faugus.faugus-launcher.metainfo.xml
 
 # Python modules
 %{python3_sitelib}/faugus/
