@@ -1371,4 +1371,13 @@
    see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
     <requestid>1366821</requestid>
   </revision>
+  <revision rev="169" vrev="1">
+    <srcmd5>9af2487f0b0fb5ca31acab8f261600d2</srcmd5>
+    <version>5.202.607.200</version>
+    <time>1784739977</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 5.202.607.200 (5.20260720)
+   see /usr/share/doc/packages/perl-CPAN-Perl-Releases/Changes</comment>
+    <requestid>1367112</requestid>
+  </revision>
 </revisionlist>
