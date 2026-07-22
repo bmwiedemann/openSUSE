@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:24:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.117.1:
+  * Handle AWS credentials correctly when using AnthropicAWS.copy()
+  * Add support for new refusal category
+
+-------------------------------------------------------------------
 Fri Jul 17 06:57:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.117.0:

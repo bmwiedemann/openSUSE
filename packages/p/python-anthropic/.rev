@@ -31,4 +31,12 @@
     <comment>- Update to 0.117.0: dreaming API, MCP Tunnels support, SecretStr credential-in-traceback fix</comment>
     <requestid>1366320</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>2d19195f963c873ff44d252510315b03</srcmd5>
+    <version>0.117.1</version>
+    <time>1784739990</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.117.1</comment>
+    <requestid>1367132</requestid>
+  </revision>
 </revisionlist>
