@@ -34,4 +34,16 @@
   - fix: Report lines with any covered statement as covered</comment>
     <requestid>1364273</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>99fe7e4f26df754683020af267ff1a9b</srcmd5>
+    <version>0.43.0</version>
+    <time>1784739975</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.43.0 (v0.43.0)
+   see /usr/share/doc/packages/perl-Devel-Cover-Report-Codecovbash/Changes
+  v0.43.0 2026-07-21 13:39:37+02:00
+  - feature: Add DEVEL_COVER_CODECOVBASH_COVER_ALL_STATEMENTS to require
+    having all statements in a line covered</comment>
+    <requestid>1367111</requestid>
+  </revision>
 </revisionlist>

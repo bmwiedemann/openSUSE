@@ -18,10 +18,10 @@
 
 %define cpan_name Devel-Cover-Report-Codecovbash
 Name:           perl-Devel-Cover-Report-Codecovbash
-Version:        0.42.0
+Version:        0.43.0
 Release:        0
-# v0.42.0 -> normalize -> 0.42.0
-%define cpan_version v0.42.0
+# v0.43.0 -> normalize -> 0.43.0
+%define cpan_version v0.43.0
 License:        MIT
 Summary:        Generate a JSON file to be uploaded with the codecov bash script
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,8 +31,11 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Devel::Cover::DB)
 BuildRequires:  perl(JSON::MaybeXS)
+BuildRequires:  perl(Test::MockModule) >= 0.130
 BuildRequires:  perl(Test::More) >= 0.98
+BuildRequires:  perl(YAML::PP::Perl)
 BuildRequires:  perl(namespace::autoclean)
 Requires:       perl(JSON::MaybeXS)
 Requires:       perl(namespace::autoclean)
