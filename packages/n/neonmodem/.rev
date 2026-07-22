@@ -83,4 +83,22 @@
     <comment>- Update golang.org/x/net dependency to v0.55.0 due to bsc#1267193 (forwarded request 1358308 from ph03nix)</comment>
     <requestid>1358550</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e890de7671cf045275e4127374e4d77e</srcmd5>
+    <version>1.1.0</version>
+    <time>1784739811</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.1.0:
+  * Update workflow, clean up
+  * Update README.md
+  * Add Hyperuplink system, refactor connect input, fixes
+  * Fix UI lag
+  * Add pull_request_template.md
+  * Bump github.com/go-viper/mapstructure/v2 from 2.3.0 to 2.4.0
+  * Update README.md
+  * Bump github.com/go-viper/mapstructure/v2 from 2.2.1 to 2.3.0
+  * Update README.md, FUNDING.yml
+  * Update goreleaser config, workflow (forwarded request 1367018 from ph03nix)</comment>
+    <requestid>1367045</requestid>
+  </revision>
 </revisionlist>
