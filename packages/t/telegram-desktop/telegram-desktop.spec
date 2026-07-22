@@ -24,7 +24,7 @@
 %define owt_ver   git20250512
 %define td_ver    git20260717
 Name:           telegram-desktop
-Version:        7.0.3
+Version:        7.0.4
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
