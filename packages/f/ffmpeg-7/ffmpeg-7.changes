@@ -194,6 +194,10 @@ Wed Oct  2 08:20:18 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
   * avcodec/rkmppdec: Fix double-free on error (CVE-2024-35368, bsc#1234028)
   * avcodec/wavarc: fix signed integer overflow in block type 6/19 (CVE-2024-36619, bsc#1234023)
   * avcodec/vp9: Fix race when attaching side-data for show-existing frame (CVE-2024-36615, bsc#1234017)
+  * lavc/vp9: Fix regression introduced in 0ba0585. It is possible that ff_progress_frame_await() is
+    calledbut ff_progress_frame_report() isn't called when a hardware acceleration method is used, so
+    a thread for vp9 decoding might get stuck.
+    (CVE-2024-36615, bsc#1234017).
 - Delete patches/ffmpeg-7-fix-crashes.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch (merged)
 

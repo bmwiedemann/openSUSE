@@ -232,4 +232,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>add bugIDs</comment>
     <requestid>1358764</requestid>
   </revision>
+  <revision rev="28" vrev="4">
+    <srcmd5>b2dfb6de763f2b60ab2b805e8992da17</srcmd5>
+    <version>7.1.4</version>
+    <time>1784739974</time>
+    <user>dimstar_suse</user>
+    <comment>add bugrefs</comment>
+    <requestid>1367103</requestid>
+  </revision>
 </revisionlist>
