@@ -7826,6 +7826,7 @@ unsorted:
   - google-noto-sans-sorasompeng-fonts 
   - google-noto-sans-soyombo-fonts 
   - google-noto-sans-sundanese-fonts 
+  - google-noto-sans-sunuwar-fonts 
   - google-noto-sans-sylotinagri-fonts 
   - google-noto-sans-syriac-fonts 
   - google-noto-sans-syriaceastern-fonts 
@@ -7868,6 +7869,7 @@ unsorted:
   - google-noto-serif-gujarati-fonts 
   - google-noto-serif-gurmukhi-fonts 
   - google-noto-serif-hebrew-fonts 
+  - google-noto-serif-hentaigana-fonts 
   - google-noto-serif-hk-fonts 
   - google-noto-serif-jp-fonts 
   - google-noto-serif-kannada-fonts 
@@ -7891,6 +7893,7 @@ unsorted:
   - google-noto-serif-telugu-fonts 
   - google-noto-serif-thai-fonts 
   - google-noto-serif-tibetan-fonts 
+  - google-noto-serif-todhri-fonts 
   - google-noto-serif-toto-fonts 
   - google-noto-serif-vithkuqi-fonts 
   - google-noto-serif-yezidi-fonts 
@@ -11045,7 +11048,6 @@ unsorted:
   - leechcraft-azoth-isterique 
   - leechcraft-azoth-keeso 
   - leechcraft-azoth-lastseen 
-  - leechcraft-azoth-metacontacts 
   - leechcraft-azoth-modnok 
   - leechcraft-azoth-mucommands 
   - leechcraft-azoth-nativeemoticons 
@@ -11055,7 +11057,6 @@ unsorted:
   - leechcraft-azoth-shx 
   - leechcraft-azoth-standardstyles 
   - leechcraft-azoth-tracolor 
-  - leechcraft-azoth-velvetbird 
   - leechcraft-azoth-xoox 
   - leechcraft-azoth-xtazy 
   - leechcraft-bittorrent 
@@ -11063,7 +11064,6 @@ unsorted:
   - leechcraft-blasq-deathnote 
   - leechcraft-blasq-rappor 
   - leechcraft-blasq-spegnersi 
-  - leechcraft-blasq-vangog 
   - leechcraft-blogique 
   - leechcraft-blogique-hestia 
   - leechcraft-blogique-metida 
@@ -11109,7 +11109,6 @@ unsorted:
   - leechcraft-lmp-fradj 
   - leechcraft-lmp-graffiti 
   - leechcraft-lmp-httstream 
-  - leechcraft-lmp-mp3tunes 
   - leechcraft-lmp-mtpsync 
   - leechcraft-lmp-ppl 
   - leechcraft-mellonetray 
@@ -11139,8 +11138,6 @@ unsorted:
   - leechcraft-poshuku-fua 
   - leechcraft-poshuku-keywords 
   - leechcraft-poshuku-onlinebookmarks 
-  - leechcraft-poshuku-onlinebookmarks-delicious 
-  - leechcraft-poshuku-onlinebookmarks-readitlater 
   - leechcraft-poshuku-speeddial 
   - leechcraft-poshuku-webengineview 
   - leechcraft-rosenthal 
@@ -11153,8 +11150,6 @@ unsorted:
   - leechcraft-sysnotify 
   - leechcraft-tabsessionmanager 
   - leechcraft-tabslist 
-  - leechcraft-textogroose 
-  - leechcraft-touchstreams 
   - leechcraft-tpi 
   - leechcraft-vrooby 
   - leechcraft-xproxy 
@@ -17948,6 +17943,7 @@ unsorted:
   - lshw 
   - lshw-gui 
   - lshw-lang 
+  - lsiommu 
   - lskat 
   - lskat-lang 
   - lsof-devel 
@@ -24395,7 +24391,6 @@ unsorted:
   - python311-onnxruntime 
   - python311-oslo.cache 
   - python311-packaging 
-  - python311-parfive 
   - python311-pathspec 
   - python311-pip 
   - python311-pip-wheel 
@@ -24405,7 +24400,6 @@ unsorted:
   - python311-pymathics-graph 
   - python311-pysaml2 
   - python311-pytest-mypy-testing 
-  - python311-python-subunit 
   - python311-setuptools 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
@@ -25589,6 +25583,7 @@ unsorted:
   - python313-dask-dataframe 
   - python313-dask-diagnostics 
   - python313-dask-distributed 
+  - python313-dask-glm 
   - python313-dask-image 
   - python313-dask-test 
   - python313-dataclasses-json 
@@ -27517,6 +27512,7 @@ unsorted:
   - python313-python-dotenv 
   - python313-python-editor 
   - python313-python-engineio 
+  - python313-python-escpos 
   - python313-python-for-android 
   - python313-python-gflags 
   - python313-python-gitlab 
@@ -29590,6 +29586,7 @@ unsorted:
   - python314-dask-dataframe 
   - python314-dask-diagnostics 
   - python314-dask-distributed 
+  - python314-dask-glm 
   - python314-dask-image 
   - python314-dask-test 
   - python314-dataclasses-json 
@@ -31563,6 +31560,7 @@ unsorted:
   - python314-python-dotenv 
   - python314-python-editor 
   - python314-python-engineio 
+  - python314-python-escpos 
   - python314-python-for-android 
   - python314-python-gflags 
   - python314-python-gitlab 
@@ -33645,6 +33643,7 @@ unsorted:
   - rsyslog-devel 
   - rsyslog-diag-tools 
   - rsyslog-doc 
+  - rsyslog-module-dtls 
   - rsyslog-module-elasticsearch 
   - rsyslog-module-gcrypt 
   - rsyslog-module-gssapi 
@@ -34040,6 +34039,7 @@ unsorted:
   - rust 
   - rust-bindgen 
   - rust-cbindgen 
+  - rust-cbindgen-0_29_2 
   - rust-grass 
   - rust-src 
   - rust-stakeholder 
@@ -34792,6 +34792,8 @@ unsorted:
   - sqlite-jdbc-javadoc 
   - sqlite3-devel 
   - sqlite3-doc 
+  - sqlite3-tools 
+  - sqlite3-tools-tcl 
   - sqlitebrowser 
   - sqliteodbc 
   - sqliteodbc-doc 
