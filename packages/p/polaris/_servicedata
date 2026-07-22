@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/FairwindsOps/polaris</param>
-              <param name="changesrevision">1fdfec73a1a6611078cad745340ad2f0ae0f7db7</param></service></servicedata>
+              <param name="changesrevision">1fdfec73a1a6611078cad745340ad2f0ae0f7db7</param></service><service name="tar_scm">
+                <param name="url">https://github.com/FairwindsOps/polaris.git</param>
+              <param name="changesrevision">4bdf5315b6a8d05490070f07262c689d25af02e7</param></service></servicedata>
