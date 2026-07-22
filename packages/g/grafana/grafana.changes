@@ -21,6 +21,8 @@ Thu Jun 18 14:10:51 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
                     processing it at several Grafana API endpoints
                     (bsc#1271331)
     CVE-2026-8595: Fix stored XSS in the table panel (bsc#1271557)
+    CVE-2026-42127: Fix DoS through memory exhaustion in grafana'a
+                    public dashboard query endpoint (bsc#1268868)
   * Various bug fixes and enhancements.
 
 - Update to version 12.4.3:
