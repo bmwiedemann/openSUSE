@@ -240,6 +240,9 @@ Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-OPENSUSE bsc1260884-llvm21-support.patch bsc#1260884 mcepl@suse.com
 # update JIT builds to use LLVM 21
 Patch57:        bsc1260884-llvm21-support.patch
+# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
+# Fix symlink escape via tarfile hardlink-extraction fallback
+Patch58:        CVE-2026-11940-tarfile-escape.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

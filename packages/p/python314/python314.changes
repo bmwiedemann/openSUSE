@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  1 23:10:26 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-11940: fix the symlink escape via tarfile
+  hardlink-extraction fallback (bsc#1268977)
+  CVE-2026-11940-tarfile-escape.patch
+
+-------------------------------------------------------------------
 Tue Jun 30 02:46:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - add gcc and g++ dependencies to the -devel package (and BR for
