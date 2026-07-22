@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Jul 22 02:09:22 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.2.8:
+  * Updated NEWS
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Romanian)
+  * Bump actions/checkout from 7.0.0 to 7.0.1
+  * soundtouch: Update soundtouch.git to 2.4.1
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Czech)
+  * Bump actions/setup-python from 6 to 7
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Czech)
+  * soundtouch: Update soundtouch.git to 2.4.1
+  * Translated using Weblate (Romanian)
+  * Updated translation template
+  * improve option description
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Improved equalizer handling in our local server
+  * Bump github/codeql-action from 4.37.0 to 4.37.1
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Spanish)
+  * Translated using Weblate (Spanish)
+  * Replacing deprecated calls
+  * Added a configuration option that allows our virtual devices volume and mute state to be controlled
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * tbb: Update v2023.0.0.tar.gz to 2023.1.0
+  * Bump github/codeql-action from 4.36.3 to 4.37.0
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (French)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Update translation templates
+  * Add audio sharing global shortcut
+  * Bump github/codeql-action from 4.36.2 to 4.36.3
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Finnish)
+
+-------------------------------------------------------------------
 Wed Jul 01 12:09:43 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 8.2.7:
