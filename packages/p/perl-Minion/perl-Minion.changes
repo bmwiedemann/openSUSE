@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:41:09 UTC 2026 - Dominik Heidler <dheidler@suse.de>
+
+- Remove mojo-pg-dependency-workaround.patch
+  Mojo::SQL is now in factory
+
+-------------------------------------------------------------------
 Fri May 22 11:19:30 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Add mojo-pg-dependency-workaround.patch

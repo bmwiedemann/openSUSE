@@ -28,8 +28,6 @@ URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/S/SR/SRI/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
 Source100:      README.md
-# PATCH-FIX-OPENSUSE
-Patch0:         mojo-pg-dependency-workaround.patch
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros

@@ -688,4 +688,13 @@
     <comment>- Add mojo-pg-dependency-workaround.patch</comment>
     <requestid>1354723</requestid>
   </revision>
+  <revision rev="82" vrev="3">
+    <srcmd5>e49530b8a4b01d23cf86ba6f4b92c143</srcmd5>
+    <version>12.0.0</version>
+    <time>1784739978</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove mojo-pg-dependency-workaround.patch
+  Mojo::SQL is now in factory</comment>
+    <requestid>1367118</requestid>
+  </revision>
 </revisionlist>
