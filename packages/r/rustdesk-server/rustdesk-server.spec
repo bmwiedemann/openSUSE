@@ -1,7 +1,7 @@
 #
 # spec file for package rustdesk-server
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           rustdesk-server
-Version:        1.1.14
+Version:        1.1.16
 Release:        0
 Summary:        RustDesk Server Program
 License:        AGPL-3.0-only
@@ -75,7 +75,10 @@ Self-host your own RustDesk server.
 %{cargo_build}
 
 %install
-%{cargo_install} --frozen
+install -D -m 0755 ./target/release/rustdesk-utils %{buildroot}/%{_bindir}/rustdesk-utils
+install -D -m 0755 ./target/release/hbbr %{buildroot}/%{_bindir}/hbbr
+install -D -m 0755 ./target/release/hbbs %{buildroot}/%{_bindir}/hbbs
+
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/system-user-rustdesk.conf
 install -D -m 0644 %{SOURCE3} %{buildroot}/%{_unitdir}/hbbr.service
 install -D -m 0644 %{SOURCE4} %{buildroot}/%{_unitdir}/hbbs.service
@@ -109,7 +112,7 @@ mkdir -p %{buildroot}/var/lib/%{name}
 
 %files
 %license LICENSE
-%doc README.md README-DE.md README-NL.md
+%doc README.md
 
 %files -n system-user-rustdesk
 %{_sysusersdir}/system-user-rustdesk.conf

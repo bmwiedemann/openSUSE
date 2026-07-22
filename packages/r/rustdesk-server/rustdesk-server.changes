@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 21 05:21:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.1.16:
+  * Fix i32 overflow: peers offline 24.9–49.7 days wrongly reported
+    online #676
+  * Fix critical issue in mio via minor version upgrade from 0.8.5 to
+    0.8.11 in ui
+  * Fix unauthenticated UDP punch-hole request enables
+    reflection/amplification abuse
+
+-------------------------------------------------------------------
+Tue Jun 16 13:22:54 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.1.15:
+  + Fix: 127.0.0.1 is not loopback
+  + Higher default bandwidth
+  + Define the HOME env to allow running rootless
+  + Connection log query
+  + Add option to log (failed) authentication attempts to enable the usage of
+    tools like fail2ban and crowdsec
+- remove %cargo_install macro, so we don't build the software twice
+
+-------------------------------------------------------------------
 Thu Mar  6 10:34:36 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.14:
