@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:33:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.3:
+  This release includes bug fixes and a new QVariantAdapter for Qt
+  6.
+  * Issues fixed in this release:
+    - Fixed Boost.JSON validation of unsigned integer values
+    - Improved RapidJSON support for custom allocators
+    - Avoid out of bounds access on normalizedPath() by
+      @dirkmueller in #244
+    - Catch std::out_of_range from stoul in resolveJsonPointer() by
+      @94xhn in #246
+  * Other changes in this release:
+    - Added a Qt 6 QVariant adapter and JSON document-loading
+      utilities by @u19809 in #243
+    - Substantial updates to README to cover C++17 compatibility,
+      Qt support, examples, etc.
+    - Improved CI coverage for Qt 5 and 6, as well as the included
+      JSON Inspector project
+
+-------------------------------------------------------------------
 Thu Jul 16 05:23:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.2:
