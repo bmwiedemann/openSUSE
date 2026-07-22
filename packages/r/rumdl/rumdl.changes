@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:31:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.39:
+  * Added
+    - config: expand ~ to the home directory in path settings
+      (70f91aa)
+  * Fixed
+    - md013: wrap over-long emphasis spans that contain nested
+      markup (ddc73f4)
+    - discovery: strip Windows verbatim prefix from canonicalized
+      paths (a85ab87)
+    - discovery: apply absolute exclude patterns during directory
+      discovery (0d20fc8)
+
+-------------------------------------------------------------------
 Tue Jul 21 05:16:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.38:
