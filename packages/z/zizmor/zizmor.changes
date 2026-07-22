@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:31:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.28.0:
+  * Security
+    - v1.27.0 contained a logging defect that would print any
+      configured GitHub credentials as part of zizmor's cleartext
+      logging. No versions other than v1.27.0 were affected. See
+      GHSA-f42p-wjw5-97qh for full information.
+    - Many thanks to @shaanmajid for finding and reporting this
+      vulnerability.
+  * Enhancements
+    - The JSON (v1) output format now includes metadata for each
+      finding's fixes, if the finding has fixes (#2186)
+    - The dependabot-cooldown audit is now aware of GitHub's new
+      three-day default cooldown (#2193)
+    - sbt is now recognized as a package-ecosystem in
+      dependabot.yml (#2211)
+  * Bug Fixes
+    - Fixed a bug where the template-injection audit would
+      incorrectly flag steps..outcome and steps..conclusion as
+      injection risks in the default persona (#2199)
+    - Fixed a bug where the github-env audit would incorrectly flag
+      some printf calls as exploitable (#2201)
+    - Fixed a bug where zizmor would produce a misleading and
+      confusing error message when asked to audit an ambiguous
+      remote input (#2205)
+
+-------------------------------------------------------------------
+Tue Jul 14 09:06:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.0:
+  * New Features
+    - zizmor now has experimental support for workflows that
+      specify parallel steps. See Usage - Parallel steps for more
+      information (#2153)
+  * Enhancements
+    - zizmor's handling of paths is now more consistent,
+      particularly when run on Windows (#2163)
+    - zizmor now emits a helpful warning when being run in implicit
+      offline mode (#2180)
+  * Bug Fixes
+    - Fixed a bug where the secrets-outside-env audit would not
+      honor ignore comments within the same job scope (#2157)
+    - Fixed a bug where the ref-version-mismatch audit would not
+      honor ignore comments within the same steps scope (#2177)
+    - Fixed a bug where --collect=[MODE] was not correctly handled
+      when auditing remote inputs (#2185)
+
+-------------------------------------------------------------------
 Sun Jun 21 12:19:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.26.1:
