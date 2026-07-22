@@ -909,4 +909,41 @@ All packages broken by this update should be fixed now.</comment>
     <comment></comment>
     <requestid>1361563</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>3e086ef2fb625049633fb5f61d137a82</srcmd5>
+    <version>3.0.3</version>
+    <time>1784739671</time>
+    <user>dimstar_suse</user>
+    <comment>- avoid xdist - makes troubleshooting testsuite failures quite hard
+
+- revert to 3.0.3: 3.0.4 was yanked due to crashes in date-time
+  related functions
+
+- Update to 3.0.4:
+  ## Core Architecture &amp; Structural Enhancements
+  * String columns are now inferred as a dedicated str data type by default
+    instead of the generic NumPy object type.
+  * Columns with the new str dtype can only store strings or missing values,
+    entirely rejecting non-string inputs.
+  * Copy-on-Write (CoW) is now the default and only mode, ensuring
+    predictable data mutations across indexing operations.
+  * Because modifications now strictly return copies, traditional multi-step
+    chained assignments will no longer work.
+  * The option mode.copy_on_write no longer has an impact.
+  * Support for the pd.col() syntax simplifies referencing columns by name to
+    build expressions natively.
+  * The pd.col() syntax provides an elegant alternative to using complex
+    lambda functions inside DataFrame.assign().
+  * DataFrame and Series natively support the Arrow PyCapsule Interface for
+    efficient, zero-copy data exchanges.
+  * The default resolution for constructing datetime-like data shifts from
+    nanoseconds to microseconds.
+  * Version 3.0 explicitly requires Python 3.11 or higher.
+  ## Data Merging &amp; Transformation Updates
+  * Added support for pd.col() expressions in Series.case_when()
+  * Merging methods now officially support left_anti and right_anti arguments
+    within the how parameter.
+  * The how parameter string inputs are now rigorously validated during a</comment>
+    <requestid>1367011</requestid>
+  </revision>
 </revisionlist>

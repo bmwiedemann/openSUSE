@@ -34,6 +34,9 @@
 %if "%{flavor}" != "test-py314"
 %define skip_python314 1
 %endif
+%if "%{flavor}" != "test-py315"
+%define skip_python315 1
+%endif
 # Skip empty buildsets on tumbleweed or flavors other than python311 on leap with sle15_python_module_pythons
 %if "%{shrink:%{pythons}}" == "" || ("%pythons" == "python311" && 0%{?skip_python311})
 ExclusiveArch:  donotbuild
@@ -49,7 +52,6 @@ ExclusiveArch:  donotbuild
 %bcond_with gcp
 # xlsb not available
 %bcond_with xslb
-%bcond_with consortium_standard
 %bcond_with calamine
 %bcond_with adbc
 # depend/not depend on python-pyarrow and apache-arrow [bsc#1218592]
@@ -61,7 +63,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        2.3.3
+Version:        3.0.3
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -69,21 +71,11 @@ URL:            https://pandas.pydata.org/
 # SourceRepository: https://github.com/pandas-dev/pandas
 # Must be created by cloning through `osc service runall`: gh#pandas-dev/pandas#54903, gh#pandas-dev/pandas#54907
 Source0:        pandas-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM pandas-pr61132-dropna.patch gh#pandas-dev/pandas#61132 BUG: .mode(dropna=False) doesn't work with nullable integers
-Patch1:         pandas-pr61132-dropna.patch
-# PATCH-FIX-UPSTREAM pandas-pr62553-numexpr.patch gh#pandas-dev/pandas#62553 TST: remove expected warnings for new numexpr version
-Patch2:         pandas-pr62553-numexpr.patch
-# PATCH-FIX-UPSTREAM pandas-pr63406-meson-types.patch gh#pandas-dev/pandas#63406 BLD: newer versions of meson are pickier about types
-Patch3:         pandas-pr63406-meson-types.patch
-# PATCH-FIX-UPSTREAM pandas-pr62863.patch gh#pandas-dev/pandas#62863 BUG: fix polluted window in skewness computation
-Patch4:         pandas-pr62863.patch
-# PATCH-FIX-UPSTREAM pandas-pr63143.patch gh#pandas-dev/pandas#63143 BUG: fix polluted window in rolling kurt
-Patch5:         pandas-pr63143.patch
 %if !%{with test}
-BuildRequires:  %{python_module Cython >= 3.0.5}
-BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module meson-python >= 0.13.1}
-BuildRequires:  %{python_module numpy-devel >= 1.22.4}
+BuildRequires:  %{python_module Cython >= 3.1.0}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module meson-python >= 0.17.1}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module versioneer-toml}
 BuildRequires:  %{python_module wheel}
@@ -94,18 +86,13 @@ BuildRequires:  (meson >= 1.2.1 with meson < 2)
 %endif
 BuildRequires:  python-rpm-macros
 Requires:       python-python-dateutil >= 2.8.2
-Requires:       python-pytz >= 2020.1
 Requires:       timezone >= 2022a
 Obsoletes:      python-pandas-doc < %{version}
 Provides:       python-pandas-doc = %{version}
-%if 0%{python_version_nodots} < 311
-Requires:       python-numpy >= 1.22.4
-%else
-%if 0%{python_version_nodots} == 311
-Requires:       python-numpy >= 1.23.2
-%else
+%if 0%{python_version_nodots} < 314
 Requires:       python-numpy >= 1.26.0
-%endif
+%else
+Requires:       python-numpy >= 2.3.3
 %endif
 # SECTION extras
 Recommends:     python-pandas-performance
@@ -132,6 +119,7 @@ Suggests:       python-pandas-xml
 %{?with_pyarrow:Suggests: python-pandas-feather}
 # /SECTION
 %if %{with test}
+ExcludeArch:    %ix86 %{arm32} ppc s390
 # required for sqlite3 tests
 BuildRequires:  %{pythons}
 BuildRequires:  %{python_module pandas-test = %{version}}
@@ -157,13 +145,15 @@ BuildRequires:  %{python_module pandas-performance = %{version}}
 BuildRequires:  %{python_module pandas-plot = %{version}}
 BuildRequires:  %{python_module pandas-postgresql = %{version}}
 %{?with_pyarrow:BuildRequires:  %{python_module pandas-pyarrow = %{version}}}
+BuildRequires:  %{python_module lxml}
+BuildRequires:  %{python_module numexpr}
 BuildRequires:  %{python_module pandas-spss = %{version}}
 BuildRequires:  %{python_module pandas-sql-other = %{version}}
 BuildRequires:  %{python_module pandas-xml = %{version}}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  xclip
 %{?with_aws:BuildRequires:                  %{python_module pandas-aws = %{version}}}
 %{?with_gcp:BuildRequires:                  %{python_module pandas-gcp = %{version}}}
-%{?with_consortium_standard:BuildRequires:  %{python_module pandas-consortium-standard = %{version}}}
 %endif
 %endif
 %python_subpackages
@@ -176,10 +166,9 @@ block for doing data analysis in Python.
 
 %package test
 Summary:        The python pandas[test] extra
-Requires:       python-hypothesis >= 6.46.1
+Requires:       python-hypothesis >= 6.116.0
 Requires:       python-pandas = %{version}
-Requires:       python-pytest >= 7.3.2
-Requires:       python-pytest-xdist >= 2.2.0
+Requires:       python-pytest >= 8.3.4
 BuildArch:      noarch
 
 %description test
@@ -188,7 +177,7 @@ This package provides the [test] extra for python-pandas
 %package pyarrow
 Summary:        The python pandas[pyarrow] extra
 Requires:       python-pandas = %{version}
-Requires:       python-pyarrow >= 10.0.1
+Requires:       python-pyarrow >= 13.0.0
 BuildArch:      noarch
 
 %description pyarrow
@@ -196,9 +185,9 @@ This package provides the [pyarrow] extra for python-pandas
 
 %package performance
 Summary:        The python pandas[performance] extra
-Requires:       python-Bottleneck >= 1.3.6
-Requires:       python-numba >= 0.56.4
-Requires:       python-numexpr >= 2.8.4
+Requires:       python-Bottleneck >= 1.4.2
+Requires:       python-numba >= 0.60.0
+Requires:       python-numexpr >= 2.10.2
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -211,8 +200,8 @@ provide speed improvements, especially when working with large data sets.
 %package computation
 Summary:        The python pandas[computation] extra
 Requires:       python-pandas = %{version}
-Requires:       python-scipy >= 1.12.0
-Requires:       python-xarray >= 2022.12.0
+Requires:       python-scipy >= 1.14.1
+Requires:       python-xarray >= 2024.10.0
 BuildArch:      noarch
 
 %description computation
@@ -220,7 +209,7 @@ This package provides the [computation] extra for python-pandas
 
 %package fss
 Summary:        The python pandas[fss] extra
-Requires:       python-fsspec >= 2023.12.2
+Requires:       python-fsspec >= 2024.10.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -230,7 +219,7 @@ This package provides the [fss] extra for python-pandas
 %package aws
 Summary:        The python pandas[aws] extra
 Requires:       python-pandas = %{version}
-Requires:       python-s3fs >= 2022.11
+Requires:       python-s3fs >= 2024.10.0
 BuildArch:      noarch
 
 %description aws
@@ -238,7 +227,7 @@ This package provides the [aws] extra for python-pandas
 
 %package gcp
 Summary:        The python pandas[gcp] extra
-Requires:       python-gcsfs >= 2022.11
+Requires:       python-gcsfs >= 2024.10.0
 Requires:       python-pandas = %{version}
 Requires:       python-pandas-gbq >= 0.19.0
 BuildArch:      noarch
@@ -249,12 +238,12 @@ This package provides the [gcp] extra for python-pandas
 %package excel
 Summary:        The python pandas[excel] extra
 Requires:       python-odfpy >= 1.4.1
-Requires:       python-openpyxl >= 3.1.0
+Requires:       python-openpyxl >= 3.1.5
 Requires:       python-pandas = %{version}
 %{?with_xlsb:Requires: python-pyxlsb >= 1.0.10}
-Requires:       python-XlsxWriter >= 3.0.5
+Requires:       python-XlsxWriter >= 3.2.0
 Requires:       python-xlrd >= 2.0.1
-%{?with_calamine:Requires:       python-calamine >= 0.1.7}
+%{?with_calamine:Requires:       python-calamine >= 0.3.0}
 BuildArch:      noarch
 
 %description excel
@@ -264,7 +253,7 @@ This package provides the [excel] extra for python-pandas.
 %package parquet
 Summary:        The python pandas[parquet] extra
 Requires:       python-pandas = %{version}
-Requires:       python-pyarrow >= 10.0.1
+Requires:       python-pyarrow >= 13.0.0
 BuildArch:      noarch
 
 %description parquet
@@ -273,7 +262,7 @@ This package provides the [parquet] extra for python-pandas
 %package feather
 Summary:        The python pandas[feather] extra
 Requires:       python-pandas = %{version}
-Requires:       python-pyarrow >= 10.0.1
+Requires:       python-pyarrow >= 13.0.0
 BuildArch:      noarch
 
 %description feather
@@ -283,7 +272,7 @@ This package provides the [feather] extra for python-pandas
 Summary:        The python pandas[hdf5] extra
 Requires:       python-blosc
 Requires:       python-pandas = %{version}
-Requires:       python-tables >= 3.8.0
+Requires:       python-tables >= 3.10.1
 BuildArch:      noarch
 
 %description hdf5
@@ -292,7 +281,7 @@ This package provides the [hdf5] extra for python-pandas
 %package spss
 Summary:        The python pandas[spss] extra
 Requires:       python-pandas = %{version}
-Requires:       python-pyreadstat >= 1.2.0
+Requires:       python-pyreadstat >= 1.2.8
 BuildArch:      noarch
 
 %description spss
@@ -300,10 +289,10 @@ This package provides the [spss] extra for python-pandas
 
 %package postgresql
 Summary:        The python pandas[postgresql] extra
-Requires:       python-SQLAlchemy >= 2.0.0
+Requires:       python-SQLAlchemy >= 2.0.36
 Requires:       python-pandas = %{version}
-Requires:       python-psycopg2 >= 2.9.6
-%{?with_adbc:Requires:       python-adbc-driver-postgresql >= 0.8}
+Requires:       python-psycopg2 >= 2.9.10
+%{?with_adbc:Requires:       python-adbc-driver-postgresql >= 1.2.0}
 BuildArch:      noarch
 
 %description postgresql
@@ -311,8 +300,8 @@ This package provides the [postgresql] extra for python-pandas
 
 %package mysql
 Summary:        The python pandas[mysql] extra
-Requires:       python-PyMySQL >= 1.0.2
-Requires:       python-SQLAlchemy >= 2.0.0
+Requires:       python-PyMySQL >= 1.1.1
+Requires:       python-SQLAlchemy >= 2.0.36
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -321,9 +310,9 @@ This package provides the [mysql] extra for python-pandas
 
 %package sql-other
 Summary:        The python pandas[sql-other] extra
-Requires:       python-SQLAlchemy >= 2.0.0
-%{?with_adbc:Requires:       python-adbc-driver-postgresql >= 0.8}
-%{?with_adbc:Requires:       python-adbc-driver-sqlite >= 0.8}
+Requires:       python-SQLAlchemy >= 2.0.36
+%{?with_adbc:Requires:       python-adbc-driver-postgresql >= 1.2.0}
+%{?with_adbc:Requires:       python-adbc-driver-sqlite >= 1.2.0}
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -332,9 +321,9 @@ This package provides the [sql-other] extra for python-pandas
 
 %package html
 Summary:        The python pandas[html] extra
-Requires:       python-beautifulsoup4 >= 4.11.2
+Requires:       python-beautifulsoup4 >= 4.12.3
 Requires:       python-html5lib >= 1.1
-Requires:       python-lxml >= 4.9.2
+Requires:       python-lxml >= 5.3.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -343,7 +332,7 @@ This package provides the [html] extra for python-pandas
 
 %package xml
 Summary:        The python pandas[xml] extra
-Requires:       python-lxml >= 4.9.2
+Requires:       python-lxml >= 5.3.0
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -352,7 +341,7 @@ This package provides the [xml] extra for python-pandas
 
 %package plot
 Summary:        The python pandas[plot] extra
-Requires:       python-matplotlib >= 3.6.3
+Requires:       python-matplotlib >= 3.9.3
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -361,7 +350,7 @@ This package provides the [plot] extra for python-pandas
 
 %package output_formatting
 Summary:        The python pandas[output_formatting] extra
-Requires:       python-Jinja2 >= 3.1.2
+Requires:       python-Jinja2 >= 3.1.5
 Requires:       python-pandas = %{version}
 Requires:       python-tabulate >= 0.9.0
 BuildArch:      noarch
@@ -372,7 +361,7 @@ This package provides the [output_formatting] extra for python-pandas
 %package clipboard
 Summary:        The python pandas[clipboard] extra
 Requires:       python-PyQt5 >= 5.15.9
-Requires:       python-QtPy >= 2.3.0
+Requires:       python-QtPy >= 2.4.2
 Requires:       python-pandas = %{version}
 BuildArch:      noarch
 
@@ -382,62 +371,51 @@ This package provides the [clipboard] extra for python-pandas
 %package compression
 Summary:        The python pandas[compression] extra
 Requires:       python-pandas = %{version}
-Requires:       python-zstandard >= 0.19.0
+Requires:       python-zstandard >= 0.23.0
 BuildArch:      noarch
 
 %description compression
 This package provides the [compression] extra for python-pandas
 
-%package consortium-standard
-Summary:        The python pandas[consortium-standard] extra
-Requires:       python-dataframe-api-compat >= 0.1.7
-Requires:       python-pandas = %{version}
-BuildArch:      noarch
-
-%description consortium-standard
-This package provides the [consortium-standard] extra for python-pandas
-
 %package all
 Summary:        The python pandas[all] extra
-Requires:       python-Bottleneck >= 1.3.6
-Requires:       python-Jinja2 >= 3.1.2
-Requires:       python-PyMySQL >= 1.0.2
+Requires:       python-Bottleneck >= 1.4.2
+Requires:       python-Jinja2 >= 3.1.5
+Requires:       python-PyMySQL >= 1.1.1
 Requires:       python-PyQt5 >= 5.15.9
-Requires:       python-QtPy >= 2.3.0
-Requires:       python-SQLAlchemy >= 2
-Requires:       python-XlsxWriter >= 3.0.5
-Requires:       python-beautifulsoup4 >= 4.11.2
-%{?with_adbc:Requires:           python-adbc-driver-postgresql >= 0.8}
-%{?with_adbc:Requires:           python-adbc-driver-sqlite >= 0.8}
+Requires:       python-QtPy >= 2.4.2
+Requires:       python-SQLAlchemy >= 2.0.36
+Requires:       python-XlsxWriter >= 3.2.0
+Requires:       python-beautifulsoup4 >= 4.12.3
+%{?with_adbc:Requires:           python-adbc-driver-postgresql >= 1.2.0}
+%{?with_adbc:Requires:           python-adbc-driver-sqlite >= 1.2.0}
 Requires:       python-blosc
-%{?with_calamine:Requires:       python-calamine >= 0.1.7}
-%{?with_pyarrow:Requires:   python-fastparquet >= 2022.12}
-Requires:       python-fsspec >= 2023.12.2
-Requires:       python-gcsfs >= 2022.11
+%{?with_calamine:Requires:       python-calamine >= 0.3.0}
+%{?with_pyarrow:Requires:   python-fastparquet >= 2024.11.0}
+Requires:       python-fsspec >= 2024.10.0
+Requires:       python-gcsfs >= 2024.10.0
 Requires:       python-html5lib >= 1.1
-Requires:       python-hypothesis >= 6.46.1
-Requires:       python-lxml >= 4.9.2
-Requires:       python-matplotlib >= 3.6.3
-Requires:       python-numba >= 0.56.4
-Requires:       python-numexpr >= 2.8.4
+Requires:       python-hypothesis >= 6.116.0
+Requires:       python-lxml >= 5.3.0
+Requires:       python-matplotlib >= 3.9.3
+Requires:       python-numba >= 0.60.0
+Requires:       python-numexpr >= 2.10.2
 Requires:       python-odfpy >= 1.4.1
-Requires:       python-openpyxl >= 3.1.0
+Requires:       python-openpyxl >= 3.1.5
 Requires:       python-pandas = %{version}
-Requires:       python-psycopg2 >= 2.9.6
-%{?with_pyarrow:Requires:       python-pyarrow >= 10.0.1}
-Requires:       python-pyreadstat >= 1.2.0
-Requires:       python-pytest >= 7.3.2
-Requires:       python-pytest-xdist >= 2.2.0
-Requires:       python-scipy >= 1.12.0
-Requires:       python-tables >= 3.8.0
-Requires:       python-tabulate >= 0.9
-Requires:       python-xarray >= 2022.12
+Requires:       python-psycopg2 >= 2.9.10
+%{?with_pyarrow:Requires:       python-pyarrow >= 13.0.0}
+Requires:       python-pyreadstat >= 1.2.8
+Requires:       python-pytest >= 8.3.4
+Requires:       python-scipy >= 1.14.1
+Requires:       python-tables >= 3.10.1
+Requires:       python-tabulate >= 0.9.0
+Requires:       python-xarray >= 2024.10.0
 Requires:       python-xlrd >= 2.0.1
-Requires:       python-zstandard >= 0.19.0
-%{?with_aws:Requires:                  python-s3fs >= 2022.05.0}
+Requires:       python-zstandard >= 0.23.0
+%{?with_aws:Requires:                  python-s3fs >= 2024.10.0}
 %{?with_gcp:Requires:                  python-pandas-gbq >= 0.19}
 %{?with_xslb:Requires:                 python-pyxlsb >= 1.0.10}
-%{?with_consortium_standard: Requires: python-dataframe-api-compat >= 0.1.7}
 BuildArch:      noarch
 
 %description all
@@ -520,10 +498,6 @@ SKIP_TESTS+=" or test_git_version"
 %if "%{flavor}" == "test-py312" || "%{flavor}" == "test-py313"
 SKIP_TESTS+=" or (test_scalar_unary and numexpr-pandas)"
 %endif
-# https://github.com/pandas-dev/pandas/pull/55901, not gonna merge this huge patch to fix one test failing with new timezone, will be included in 3.0
-SKIP_TESTS+=" or test_array_inference[data7-expected7]"
-# too new xarray, gh#pandas-dev/pandas#60109 backport too much
-SKIP_TESTS+=" or (TestDataFrameToXArray and test_to_xarray_index_types)"
 # xpass strict: our xarray seems to handle this fine
 SKIP_TESTS+=" or (TestSeriesToXArray and test_to_xarray_index_types)"
 %ifarch %{ix86} %{arm32}
@@ -538,6 +512,7 @@ SKIP_TESTS+=" or test_pandas_nullable_without_missing_values"
 SKIP_TESTS+=" or (test_to_datetime and TestOrigin and test_epoch)"
 SKIP_TESTS+=" or test_td_mul_numeric_ndarray_0d"
 SKIP_TESTS+=" or test_get_indexer_non_unique_wrong_dtype"
+SKIP_TESTS+=" or test_ignore_downcast_cannot_convert_float"
 # pyarrow read-only errors
 SKIP_TESTS+=" or test_left_join_multi_index"
 SKIP_TESTS+=" or test_join_on_single_col_dup_on_right"
@@ -579,11 +554,11 @@ SKIP_MARKERS+=" or slow or db"
 %endif
 
 # The test collection consumes a lot of memory per worker. This sets %%jobs.
-%limit_build -m 3072
+%limit_build -m 3972
 
 %{python_expand $python -c 'import pandas; print(pandas.__path__); print(pandas.show_versions())'
 # cache: can't just say no cacheprovider, because one test checks for the --lf option of pytest-cache
-xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
+xvfb-run pytest-%{$python_bin_suffix} -v -rsfE \
                                       -o cache_dir=$PWD/.pytest_cache --cache-clear \
                                       -m "not (${SKIP_MARKERS})" \
                                       -k "not (${SKIP_TESTS})" \
@@ -692,12 +667,6 @@ xvfb-run pytest-%{$python_bin_suffix} -v -n %{jobs} -rsfE --dist=loadfile \
 %files %{python_files compression}
 %license LICENSE
 %doc README.md
-
-%if %{with consortium_standard}
-%files %{python_files consortium-standard}
-%license LICENSE
-%doc README.md
-%endif
 
 %files %{python_files all}
 %license LICENSE

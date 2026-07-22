@@ -1,4 +1,114 @@
 -------------------------------------------------------------------
+Tue Jul 21 15:35:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- avoid xdist - makes troubleshooting testsuite failures quite hard
+
+-------------------------------------------------------------------
+Thu Jul 16 06:10:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- revert to 3.0.3: 3.0.4 was yanked due to crashes in date-time
+  related functions
+
+-------------------------------------------------------------------
+Wed Jul 15 05:49:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.4:
+  ## Core Architecture & Structural Enhancements
+  * String columns are now inferred as a dedicated str data type by default
+    instead of the generic NumPy object type.
+  * Columns with the new str dtype can only store strings or missing values,
+    entirely rejecting non-string inputs.
+  * Copy-on-Write (CoW) is now the default and only mode, ensuring
+    predictable data mutations across indexing operations.
+  * Because modifications now strictly return copies, traditional multi-step
+    chained assignments will no longer work.
+  * The option mode.copy_on_write no longer has an impact.
+  * Support for the pd.col() syntax simplifies referencing columns by name to
+    build expressions natively.
+  * The pd.col() syntax provides an elegant alternative to using complex
+    lambda functions inside DataFrame.assign().
+  * DataFrame and Series natively support the Arrow PyCapsule Interface for
+    efficient, zero-copy data exchanges.
+  * The default resolution for constructing datetime-like data shifts from
+    nanoseconds to microseconds.
+  * Version 3.0 explicitly requires Python 3.11 or higher.
+  ## Data Merging & Transformation Updates
+  * Added support for pd.col() expressions in Series.case_when()
+  * Merging methods now officially support left_anti and right_anti arguments
+    within the how parameter.
+  * The how parameter string inputs are now rigorously validated during a
+    merge operation.
+  * The pandas.merge() function now successfully propagates the attrs
+    dictionary when inputs contain identical tags.
+  * DataFrame.pivot_table() now accepts flexible, additional keyword
+    arguments forwarded to aggfunc.
+  * Passing ignore_index=True while simultaneously defining keys inside
+    concat() now throws a strict ValueError.
+  * Using DataFrame.agg() on axis=1 with a function that attempts to relabel
+    the index will raise a NotImplementedError.
+  ## Missing Value Handling & Styling Improvements
+  * The missing value sentinel for the new default string types is uniformly
+    set as NaN (np.nan).
+  * fillna() can accept a literal None, automatically resolving it to the
+    appropriate data-type-specific NA value.
+  * Users can now seamlessly execute DataFrame.fillna() along axis=1 using
+    dictionary or Series mappings.
+  * The Styler object introduces Styler.to_typst() to write formatted data
+    directly to Typst-compliant files.
+  * Users can now apply dedicated format treatments to index and column
+    header names using Styler.format_index_names().
+  * Frozenset elements contained within pandas data structures are now
+    natively recognized and printed cleanly.
+  ## Input / Output (I/O) Enhancements
+  * The errors.DtypeWarning is upgraded to include specific column names when
+    mixed types are caught.
+  * The merge_cells parameter in to_excel() accepts "columns" to target
+    MultiIndex header columns uniquely.
+  * A brand-new autofilter parameter within to_excel() automatically applies
+    native filters to columns.
+  * The if_exists parameter in to_sql() gains a "delete_rows" option to wipe
+    records prior to writing new entries.
+  ## Groupby & System Configurations
+  * DataFrameGroupBy.prod() now evaluates unobserved groups as 1 rather than
+    evaluating them as missing values.
+  * The all() and any() operations on DataFrameGroupBy now evaluate
+    unobserved groups as True and False.
+  * DataFrameGroupBy.groups() has been updated to fully include tracking data
+    for unobserved categorical groups.
+  * Configuring system configurations is streamlined as set_option() now
+    accepts a dictionary of multiple parameters.
+  ## Bug fixes
+  * Fixed a bug in Series.rank() with period dtype and missing values, always
+    sorting missing values at the top, regardless of the na_option value
+  * Fixed a bug in Series.var() computing the variance of complex numbers
+    incorrectly
+  * Fixed a bug in to_hdf() with string columns raising an error when using
+    compression
+  * Fixed a bug in the sum() method with python-backed string dtype returning
+    incorrect value for an empty Series and ignoring the min_count argument
+  * Fixed a bug when using col() with Python functions bool(), iter(),
+    copy(), and deepcopy() either failed or produced incorrect results; these
+    now all raise a TypeError
+  * Fixed a bug where col() and expressions derived from it failed with
+    power (**) and matrix multiplication (@) operators
+  * Fixed a bug where DataFrame.div() ignored the axis argument when used
+    with level for MultiIndex columns
+  * Fixed a bug in the DataFrame constructor when passed a Series or Index
+    correctly handling Copy-on-Write
+  * Allow ExtensionArray to have dtypes involving numpy.void
+  * Fixed a bug in col() where unary operators (-, +, abs) were not supported
+  * Prevent buffer overflow in Rolling.corr() and Rolling.cov() with variable
+    windows when passing other with a longer index than the original window
+- The consortium-standard package is no longer built, since that extra has
+  been removed.
+- Dropped patches, merged upstream:
+  * pandas-pr61132-dropna.patch
+  * pandas-pr62553-numexpr.patch
+  * pandas-pr63406-meson-types.patch
+  * pandas-pr62863.patch
+  * pandas-pr63143.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 09:30:04 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Add upstream pandas-pr62863.patch and pandas-pr63143.patch to
