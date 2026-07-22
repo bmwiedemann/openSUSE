@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/go-acme/lego</param>
-              <param name="changesrevision">3d5a6695e027d625bd34334d516d77f578d43f11</param></service></servicedata>
+              <param name="changesrevision">3d5a6695e027d625bd34334d516d77f578d43f11</param></service><service name="tar_scm">
+                <param name="url">https://github.com/go-acme/lego.git</param>
+              <param name="changesrevision">589c84af4f26629fbdaa7fbca712f806632ccb7e</param></service></servicedata>

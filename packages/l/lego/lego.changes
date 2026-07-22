@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:41:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.3.1:
+  (Re-release of 5.3.0 due to some Github release issues)
+- Update to version 5.3.0:
+  * c7b207a Add DNS provider for Openprovider (#3196)
+  * 25d46b6 allinkl: fix credentials (#3191)
+  * 0ac5744 designate: get region name from clouds.yaml (#3199)
+  * 7c5bc44 euserv: enforce order ID selection (#3177)
+  * a35702f excedo: increase default propagation timeout (#3184)
+  * 6015692 feat(cfg): improve configuration validation (#3172)
+  * af599be feat: skip already migrated elements (#3170)
+  * d321688 fix: always-deactivate-authorizations as bool (#3207)
+  * 3482ada fix: check EAB requirement after zerossl (#3181)
+  * 8d9f64b fix: forced renewal when the certificate profile is
+    changed (#3211)
+  * 89b5c1f gigahostno: add option to set the API Key (#3179)
+  * 40f2509 nederhost: fix add record response parsing (#3201)
+  * 2a8fe3b selectelv2: fix zone detection (#3209)
+  * a47af0c selfhostde: update API endpoint (#3187)
+
+-------------------------------------------------------------------
 Wed Jun 03 04:47:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.2.2:
