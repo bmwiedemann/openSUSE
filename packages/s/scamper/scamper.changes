@@ -1,4 +1,120 @@
 -------------------------------------------------------------------
+Tue Jul 14 20:07:27 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to version 20260713:
+ * scamper:
+  * do not allow number-of-responses values in data containers to wrap
+    to zero (ping, dealias, udpprobe, owamp, tracelb, tbit,
+    neighbourdisc).
+  * rework checksum calculations throughout, fix checksums for
+    odd-length packets on big endian processors (verified with
+    earmv7hfeb).
+  * check buffers have enough valid bytes to support subsequent reads.
+  * trace: fix calculation of lower and upper TTL bounds when doing MTU
+    inference.
+  * trace/tracelb: if scamper_icmpext_parse cannot malloc, don't stop
+    the measurement, continue on.
+  * http: better detection of end-of-headers sequence (catch
+    \r\n\r\r\n\r\n).
+  * http: defensively check that ECH retry config supplied by server is
+    less than 4GB.
+  * http: only shutdown(fd, SHUT_WR) once.
+  * http: do not store trailing null byte in internal copy of
+    transmitted HTTP headers.
+  * http/tbit: allow an empty port in urls (http://example.net:/). if a
+    port is provided, enforce base10 with no leading sign, and ensure no
+    garbage after port number.
+  * ping: fix icmp-timestamp method.
+  * owamp: do not reduce owamp->txc when receiving out-of-order packets
+    in rx mode.
+  * owamp: fix processing of ACKs from server.
+  * dealias: always render error message into errbuf.
+  * prevent double-frees and memory leaks in unlikely error paths.
+  * remove more use of *snprintf, replace with string_concat.
+  * fix scamper_fd_write_unpause() in compiled-out-by-default select()
+    path.
+  * fix compilation and running on windows.
+  * tidy privsep code.
+  * increase minimum pps to 2, so that gap math works.
+  * fix compilation with ./configure --disable-scamper-owamp.
+  * add cmsg_data_as_uint8(): handle int and uint8_t return types, save
+    to uint8_t.
+  * timeval_div and timeval_mul: fix on platforms with 32-bit long
+    time_t (affects dealias with unlikely probe schedules).
+  * scamper_addr_bit(): fix firewire implementation.
+  * add asserts in internal functions to define contracts.
+  * json_esc(): escape all uint8_t values, not just '"' and '\'.
+  * PF firewall: copy correct address for IPv6 into rule.
+  * fix embedding of fast-open option in TCP header for IPv6.
+  * refactor gz/bz2/xz code so each follows the same pattern, does not
+    leak in unlikely scenarios.
+ * sc_rxifd:
+  * add HTTP/3 (quic) endpoint.
+  * add chroot option, support running setuid to bind to low ports.
+  * update documentation:
+    https://www.caida.org/catalog/software/scamper/man/sc_rxifd.1.pdf
+ * libscamperfile:
+  * fix scamper_http_buf_type_tostr (use htb->type rather than htb->dir).
+  * fix scamper_http_url_get (check length correctly, do not store newline)
+  * warts: do not read beyond end of read buf.
+  * fix scamper_ping_stats calculation of lost packets when reading from
+    warts.
+  * read/write payload specified with trace -p in warts.
+ * libscamperctrl:
+  * add scamper_inst_isdone() function, that signals whether
+    scamper_inst_done() was previously called on the instance.
+ * configure:
+  * convert --enable-scamper-select into an auto, so select is enabled
+    by default on platforms without any of poll, kqueue, or epoll
+    (windows).
+  * use consistent style in config.h function checks.
+  * do not allow both --with-pcre and --with-pcre2.
+ * Python module:
+  * add ScamperPingReply.reply_tos, ScamperIcmpExt.class_num,
+    ScamperIcmpExt.class_type, ScamperIcmpExt.data_len, ScamperIcmpExt.data,
+    ScamperHost.wait_timeout, ScamperInst.tags, ScamperPingReply.reply_tos.
+  * correct scamper.pyi for ScamperTrace.reply_tos, ScamperTrace.icmp_q_tos,
+    ScamperTrace.hops(), ScamperHost.start, ScamperHost.ecs, ScamperList.id,
+    ScamperFile.read(), ScamperFile.filter_types(), ScamperDealias.aliases().
+  * ScamperTrace reply_tos and icmp_q_tos both returned None for IPv6
+    traceroutes but should not have.
+  * ScamperCtrl.do_[ally|prefixscan](): use the attempts parameter.
+  * ScamperFile: do proper context manager (with ScamperFile() as foo)
+    so that a file is immediately closed outside of the with block, rather
+    than waiting for garbage collection.
+  * ScamperCtrl.do_*(): call scamper_inst_strerror to get detail to
+    put in RuntimeError message.
+  * remove cdef public objects from ScamperInst, ScamperCtrl classes.
+  * ScamperHttp: do not lower-case HTTP header values.
+  * ScamperHttp.[transmit|response]_hdr_byname: raise rather than
+    return exceptions.
+  * establish patterns: add and use _tv_to_datetime, _tv_to_timedelta
+    throughout, turn most iterators into cdef objects with a predictable
+    pattern, and have all iterators be outside of the data class.
+  * many bugfixes, e.g. fix ScamperTrace.is_stop_[icmp|gaplimit]()
+    enums with typos, replace timedelta.seconds with
+    timedelta.total_seconds(), tidy up use of o_type in RuntimeError
+    exceptions, etc.
+ * tests:
+  * expand string_* tests: string_isnumber, string_isfloat,
+    string_addrport, string_concaf, and correct their implementations.
+  * expand timeval_div and timeval_mul tests.
+  * unit_probe_build: add more tests, check produced packets.
+  * unit_warts: add many more tests for ping, host, trace, and some more
+    for udpprobe and dealias.
+  * unit_icmpext and fuzz_icmpext_parse: add tests / fuzzer.
+  * add fuzz_icmp4_parse and fuzz_icmp6_parse
+  * unit_rxifd_h3_request and fuzz_rxifd_h3_request: add tests / fuzzer.
+  * add unit_huffman -- tests for huffman decoding.
+  * expand tests for unit_prefixtree.
+ * throughout:
+  * fd_lines(): prevent a '\n' at the start of the malloc'd buffer from
+    acting as an end of line character for a zero-length file.
+  * fix bitshifts that could have undefined behavior (shifting by 32 or
+    0, and shifting of signed integers).
+  * fix benign typos.
+
+-------------------------------------------------------------------
 Fri May  1 13:45:10 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 20260204:
