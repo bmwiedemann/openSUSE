@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jul 14 19:59:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.29.7:
+  * asyncio: detect cross-instance reentrant deadlocks before the
+    poll loop
+  * fix(soft_rw): evict non-regular write marker without
+    reading it
+  * _util: drop the dead st_mtime=0 short-circuit in
+    raise_on_not_writable_file
+- update to 3.29.6:
+  * serialise singleton construction in FileLockMeta
+  * _util: drop the dead st_mtime=0 short-circuit in
+    raise_on_not_writable_file
+  * test: silence fork DeprecationWarning on 3.15
+- update to 3.29.5:
+  * serialise read/write release rollback against a concurrent
+    acquire
+  * fix(soft_rw): refresh held marker through the verified fd
+  * only unlink the writer marker on release if it is still ours
+  * don't follow symlinks in raise_on_not_writable_file
+  * don't complete a writer acquire on a peer's reclaimed marker
+  * use a private break name in break_lock_file
+  * Keep Unix lock files after release
+  * test: fix Windows type check broken by #577
+  * roll back a read acquire's open transaction when its SELECT
+    fails
+  * lifetime: reject negative, non-numeric, and bool values at
+    the setter
+
+-------------------------------------------------------------------
 Sat Jun 27 15:15:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.29.4:
