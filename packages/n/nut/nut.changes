@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 18:56:16 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Fix CVE-2026-54161, remote OS command injection via ups.alarm in NOTIFYCMD
+  (CVE-2026-54161, bsc#1270050)
+   * CVE-2026-54161.patch
+
+-------------------------------------------------------------------
 Mon Apr 27 18:42:07 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.8.5 (jsc#PED-16186):

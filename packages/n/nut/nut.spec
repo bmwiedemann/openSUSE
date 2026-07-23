@@ -81,6 +81,8 @@ Patch2:         nut-doc-fixed-date.patch
 Patch3:         harden_nut-driver.service.patch
 Patch4:         harden_nut-monitor.service.patch
 Patch5:         harden_nut-server.service.patch
+# PATCH-FIX-SUSE bsc#1270050 marius.grossu@suse.com CVE-2026-54161
+Patch6:         CVE-2026-54161.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
