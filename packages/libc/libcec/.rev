@@ -166,4 +166,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
     <comment>Update to 7.1.1 (incl 7.1.0): new vendor IDs, system audio mode support, RPi/cmake fixes; drop now-upstreamed libcec-cmake_install_lib_dir.patch; stop shipping the static library; convert ncurses-devel to pkgconfig(ncurses), drop Group tags</comment>
     <requestid>1356416</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f6bdaa111138cd979950a6ae4c31b9f9</srcmd5>
+    <version>8.0.0</version>
+    <time>1784845121</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 8.0.0. SONAME bump libcec.so.7 -&gt; libcec.so.8; versioned subpackage renamed libcec7 -&gt; libcec8 (coexistence, no Provides/Obsoletes needed). Drop obsolete p8-platform dependency. Install upstream CMake package config (-devel). Build with -DDISABLE_STATIC=ON. Sole Factory reverse-dependency plasma6-bigscreen was build-tested against libcec 8.0.0: compiles cleanly and links libcec.so.8 with no source change; Factory staging will rebuild it against the new soname.</comment>
+    <requestid>1367536</requestid>
+  </revision>
 </revisionlist>

@@ -17,11 +17,11 @@
 #
 
 
-%define sover   7
+%define sover   8
 %define libname	%{name}%{sover}
 %bcond_with enable_rpi_build
 Name:           libcec
-Version:        7.1.1
+Version:        8.0.0
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
 License:        GPL-2.0-or-later
@@ -33,7 +33,6 @@ BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(ncurses)
-BuildRequires:  pkgconfig(p8-platform)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(xrandr)
@@ -109,14 +108,12 @@ This subpackage contains the headers for libcec.
 
 %build
 %cmake \
+  -DDISABLE_STATIC=ON \
   -Wno-dev
 %cmake_build
 
 %install
 %cmake_install
-
-# do not ship the static library
-rm -f %{buildroot}%{_libdir}/libcec.a
 
 %ldconfig_scriptlets -n %{libname}
 
@@ -139,6 +136,7 @@ rm -f %{buildroot}%{_libdir}/libcec.a
 
 %files devel
 %{_includedir}/libcec
+%{_libdir}/cmake/libcec
 %{_libdir}/pkgconfig/libcec.pc
 %{_libdir}/libcec.so
 

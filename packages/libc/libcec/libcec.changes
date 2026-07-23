@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:53:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.0.0 (major release):
+  * SONAME bump: the shared library is now libcec.so.8, so the
+    versioned library subpackage is renamed libcec7 -> libcec8.
+  * Drop the p8-platform dependency entirely; threading, time and
+    IO now use the C++ standard library. Removes the
+    pkgconfig(p8-platform) BuildRequires.
+  * Install a CMake package config (%{_libdir}/cmake/libcec),
+    now picked up by the -devel subpackage.
+  * New: configurable adapter autonomous mode (interactive "am"
+    command in cec-client, bAutonomousMode).
+  * New: configurable device vendor id (--vendor-id option,
+    iDeviceVendorId in libcec_configuration).
+  * New: per-adapter display name in the adapter descriptor and an
+    iButtonRepeatDelayMs configuration option.
+  * Enumerate every /dev/cec* node for multi-HDMI board port
+    selection.
+  * cec-client: new -c/--command and -H/--help-command options,
+    improved --help, and exit on stdin EOF instead of spinning.
+  * Security hardening: buffer-overflow and bounds fixes across
+    EDID physical-address parsing, the C API string helpers, OSD
+    name/menu-language handling and received-frame parsing in the
+    RPi, TDA995x, Exynos, AOCEC, Linux, IMX and Tegra backends.
+  * Many bug fixes: suppress double taps and split the auto-repeat
+    delay, emit key release on held-key timeout, fix reconnect and
+    teardown races, and several Python binding corrections.
+  * Build system: enable -Wall -Wextra for all targets, switch to
+    GNUInstallDirs, and add DISABLE_CLIENT/DISABLE_BUILDINFO/
+    DISABLE_STATIC options.
+- Build with -DDISABLE_STATIC=ON instead of deleting the static
+  library by hand in %install.
+
+-------------------------------------------------------------------
 Mon Jun  1 16:38:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 7.1.1 (includes 7.1.0):
