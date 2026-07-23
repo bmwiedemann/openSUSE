@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 14:43:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.10.0
+  * http: uri decode and encode.
+
+-------------------------------------------------------------------
 Wed Jun 17 12:28:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.9.0
