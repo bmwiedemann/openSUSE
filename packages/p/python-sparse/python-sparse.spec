@@ -30,7 +30,7 @@ ExcludeArch:    %{ix86} %{arm} ppc
 
 %{?sle15_python_module_pythons}
 Name:           python-sparse%{psuffix}
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Sparse n-dimensional arrays for Python
 License:        BSD-3-Clause

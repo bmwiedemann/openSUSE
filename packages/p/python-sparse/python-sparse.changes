@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul  6 06:08:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.0:
+  * fix: return 0-D array for full reductions per Array API
+    standard
+  * perf: short-circuit COO.reshape when -1 resolves to
+    self.shape
+  * test: bump `array-api-tests` to v2025.12
+  * fix: treat NaN values as distinct in unique_values and
+    unique_counts
+  * Array API 2025.12 support
+
+-------------------------------------------------------------------
 Thu Jun 18 16:46:26 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Don't test dask-array on python311: No longer available, SPEC 0
