@@ -16,4 +16,12 @@
 - Add missing dependency python3-toml</comment>
     <requestid>1328719</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3a10719c39f99e7df86dac618c5a9bcf</srcmd5>
+    <version>0.3</version>
+    <time>1784841375</time>
+    <user>dimstar_suse</user>
+    <comment>- Version 0.3: Fix too heigh menu entries</comment>
+    <requestid>1367488</requestid>
+  </revision>
 </revisionlist>
