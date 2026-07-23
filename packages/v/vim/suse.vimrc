@@ -5,8 +5,22 @@
 " version: 2021/02/22
 " commented lines start with `"'
 
+" Guard against re-entry. /etc/vimrc is chained at the end of this file,
+" and on some systems /etc/vimrc is a symlink back to this file (or itself
+" sources it), which would recurse until E169. Source this file at most
+" once per session (bsc#1268162, bsc#1271684).
+" Both branches sit inside the :if so that a build without +eval (vim-small)
+" skips the whole block instead of tripping over :let (E319). Such builds
+" also skip the /etc/vimrc source at the end of this file, so they cannot
+" recurse and need no guard.
+if !exists("g:loaded_suse_vimrc")
+    let g:loaded_suse_vimrc = 1
+else
+    finish
+endif
+
 " get easier to use and more user friendly vim defaults
-" CAUTION: This option breaks some vi compatibility. 
+" CAUTION: This option breaks some vi compatibility.
 "          Switch it off if you prefer real vi compatibility
 set nocompatible
 
@@ -36,7 +50,7 @@ set showmode
 " Required to be able to use keypad keys and map missed escape sequences
 set esckeys
 
-" allow backspacing over everything in insert mode 
+" allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 " Complete longest common string, then each full match

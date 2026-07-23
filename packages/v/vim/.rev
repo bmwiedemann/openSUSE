@@ -8539,4 +8539,13 @@ always built-in because vim has direct perl dependencies anyway.
 </comment>
     <requestid>1365706</requestid>
   </revision>
+  <revision rev="404" vrev="3">
+    <srcmd5>664fa81be821d40cd8e5816d32acfc6d</srcmd5>
+    <version>9.2.0780</version>
+    <time>1784840905</time>
+    <user>dimstar_suse</user>
+    <comment>- Guard suse.vimrc against re-entry to prevent an infinite sourcing
+  loop (bsc#1271684).</comment>
+    <requestid>1366841</requestid>
+  </revision>
 </revisionlist>

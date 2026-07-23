@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 18 17:44:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Guard suse.vimrc against re-entry to prevent an infinite sourcing
+  loop (bsc#1271684).
+
+-------------------------------------------------------------------
 Mon Jul 13 21:47:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add vim-9.2.0780-modelinestrict-allow-wrap.patch: allow 'wrap' and
