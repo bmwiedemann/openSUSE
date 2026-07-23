@@ -1,8 +1,7 @@
 #
 # spec file for package kismet
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -436,10 +435,10 @@ install -D plugin-alertsyslog/alertsyslog.so %{buildroot}%{_libdir}/kismet/alert
 %{_bindir}/kismetdb_to_wiglecsv
 
 %files capture-linux-bluetooth
-%verify(not mode caps) %attr(0750,root,kismet) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/kismet_cap_linux_bluetooth
+%verify(not mode caps) %attr(0750,root,kismet) %{_bindir}/kismet_cap_linux_bluetooth
 
 %files capture-linux-wifi
-%verify(not mode caps) %attr(0750,root,kismet) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/kismet_cap_linux_wifi
+%verify(not mode caps) %attr(0750,root,kismet) %{_bindir}/kismet_cap_linux_wifi
 
 %files capture-nrf-mousejack
 %{_bindir}/kismet_cap_nrf_mousejack

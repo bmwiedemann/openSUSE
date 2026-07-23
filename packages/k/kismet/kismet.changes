@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 08:58:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- don't package capabilities in RPM directly, but rely on the permissions
+  package to apply them during %post (bsc#1268674). An upcoming change in
+  rpmlint will raise badness for capabilities directly packaged in RPM.
+  Therefore drop the capabilities from the spec file and solely rely on the
+  invocation of permctl during %post.
+
+-------------------------------------------------------------------
 Wed Sep 10 18:58:55 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2025-09-R1

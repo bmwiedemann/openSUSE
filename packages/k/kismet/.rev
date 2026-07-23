@@ -671,4 +671,16 @@ better packaging for distros, and various other quirks.
   * kismet-capture-serial-radview</comment>
     <requestid>1306558</requestid>
   </revision>
+  <revision rev="63" vrev="2">
+    <srcmd5>7e1e729ef258411a499f299c9f7967dc</srcmd5>
+    <version>2025_09_R1</version>
+    <time>1784841268</time>
+    <user>dimstar_suse</user>
+    <comment>- don't package capabilities in RPM directly, but rely on the permissions
+  package to apply them during %post (bsc#1268674). An upcoming change in
+  rpmlint will raise badness for capabilities directly packaged in RPM.
+  Therefore drop the capabilities from the spec file and solely rely on the
+  invocation of permctl during %post. (forwarded request 1367359 from mgerstner)</comment>
+    <requestid>1367371</requestid>
+  </revision>
 </revisionlist>
