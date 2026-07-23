@@ -108,21 +108,23 @@ check_custom_selinux_modules () {
     echo
 }
 
+
 # Deletes the old /var/lib/selinux directory and updates marker files.
 delete_var_lib_selinux () {
-    if [ ! -d "/var/lib/selinux" ]; then
-        echo "INFO: Directory \`/var/lib/selinux\` does not exist. Nothing to do."
-        return
-    fi
-    echo "INFO: Deleting /var/lib/selinux..."
-    if find /var/lib/selinux -depth -print -delete; then
+    if [ -d "/var/lib/selinux" ]; then
+        echo "INFO: Deleting /var/lib/selinux..."
+        if ! find /var/lib/selinux -depth -print -delete; then
+            echo "ERROR: Failed to delete /var/lib/selinux." >&2
+            exit 1
+        fi
         echo "INFO: Successfully deleted /var/lib/selinux."
-        rm --preserve-root=all -f "${target_dir}/selinux_modules_migrated-"{minimum,mls,targeted} && \
-        echo "DO NOT DELETE THIS FILE - Part of SELinux policy root path migration on transactional or snapshoted systems." > "${target_dir}/${target_file_deletion}"
     else
-        echo "ERROR: Failed to delete /var/lib/selinux." >&2
-        exit 1
+        echo "INFO: Directory \`/var/lib/selinux\` does not exist. Nothing to do."
     fi
+
+    # Remove migration marker files in both cases (/var/lib/selinux exists or does not - e.g. after clean os installation)
+    rm --preserve-root=all -f "${target_dir}/selinux_modules_migrated-"{minimum,mls,targeted} && \
+    echo "DO NOT DELETE THIS FILE - Part of SELinux policy root path migration on transactional or snapshoted systems." > "${target_dir}/${target_file_deletion}"
 }
 
 # Checks a specific location (snapshot or overlay) for the migration marker file.

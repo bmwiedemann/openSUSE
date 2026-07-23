@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 20 12:34:12 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
+
+- fix cleanoldsepoldir.sh to properly handle migration markers
+  when /var/lib/selinux doesn't exists (backported from SLFO_Main codebase)
+
+-------------------------------------------------------------------
+Wed Jul 15 14:39:30 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260715:
+  * Allow snapper_sdbootutil_plugin_t status and stop unit files(bsc#1271391)
+  * Allow sdbootutil_t read and write snapperd_t pipes (bsc#1271391)
+
+-------------------------------------------------------------------
+Mon Jul 13 09:13:57 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260713:
+  * Fix wrong gen_requires in snapper_read_data_files (bsc#1271282)
+
+-------------------------------------------------------------------
 Wed Jul  8 13:27:15 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update selinux-policy-sandbox description (bsc#1270534)

@@ -2448,4 +2448,12 @@ Needs to go together with libsemanage change</comment>
     <comment>20260702 second try</comment>
     <requestid>1364941</requestid>
   </revision>
+  <revision rev="168" vrev="1">
+    <srcmd5>a716a342229881ef6fd4f832a2b0e897</srcmd5>
+    <version>20260715</version>
+    <time>1784840944</time>
+    <user>dimstar_suse</user>
+    <comment>bugfixes</comment>
+    <requestid>1366982</requestid>
+  </revision>
 </revisionlist>
