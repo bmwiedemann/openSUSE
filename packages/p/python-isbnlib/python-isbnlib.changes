@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:39:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- avoid using pytest-forked
+
+-------------------------------------------------------------------
 Tue May 26 02:08:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-more-pkg_resources.patch:

@@ -31,7 +31,6 @@ BuildRequires:  %{python_module flaky}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module setuptools}
