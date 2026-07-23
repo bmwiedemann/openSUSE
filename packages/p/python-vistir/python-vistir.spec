@@ -1,7 +1,7 @@
 #
 # spec file for package python-vistir
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,7 +35,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module colorama >= 0.3.4}
 BuildRequires:  %{python_module hypothesis-fspaths}
 BuildRequires:  %{python_module hypothesis}
-BuildRequires:  %{python_module pytest-flake8}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}

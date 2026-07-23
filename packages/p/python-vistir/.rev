@@ -147,4 +147,17 @@
     <comment>- Add missing pytest plugins to BuildRequires, and disable strict mode.</comment>
     <requestid>1323585</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>c3206b35625367fcf3cc3031d0af0c4b</srcmd5>
+    <version>0.8.0</version>
+    <time>1784841170</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pyflakes-flake8
+
+    from vistir.&lt;module&gt;.
+  * Reimplemented vistir.contextmanagers.open_file to fall back to
+  * Fixed a bug which caused path_to_url to sometimes fail to properly
+  `#65 &lt;https://github.com/sarugaku/vistir/issues/65&gt;`_</comment>
+    <requestid>1367325</requestid>
+  </revision>
 </revisionlist>

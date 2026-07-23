@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:36:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove pyflakes-flake8
+
+-------------------------------------------------------------------
 Fri Dec 19 00:59:27 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing pytest plugins to BuildRequires, and disable strict mode.
@@ -15,7 +20,7 @@ Tue May  9 21:43:26 UTC 2023 - Dirk Müller <dmueller@suse.com>
   * Drop spinner
   * Drop deprecated functions
   * Drop ability to import all from the package, instead user
-    from vistir.<module>. 
+    from vistir.<module>.
 
 -------------------------------------------------------------------
 Fri Oct 14 13:44:57 UTC 2022 - pgajdos@suse.com
@@ -53,9 +58,9 @@ Wed Jul 22 12:40:25 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 Thu Feb  6 17:47:56 UTC 2020 - Marketa Calabkova <mcalabkova@suse.com>
 
 - update to 0.5.0
-  * Reimplemented vistir.contextmanagers.open_file to fall back to 
+  * Reimplemented vistir.contextmanagers.open_file to fall back to
     urllib.urlopen in the absence of requests, which is now an optional extra.
-  * Fixed a bug which caused path_to_url to sometimes fail to properly 
+  * Fixed a bug which caused path_to_url to sometimes fail to properly
     encode surrogates using utf-8 on windows using python 3.
 - drop upstreamed patch fix-test_Account-for-encoded-length.patch
 
@@ -101,7 +106,7 @@ Mon May  6 09:37:57 UTC 2019 - pgajdos@suse.com
 - version update to 0.4.0
 - Fixed a bug which caused test failures due to generated paths on
   *nix based operating systems which were too long.
-  `#65 <https://github.com/sarugaku/vistir/issues/65>`_  
+  `#65 <https://github.com/sarugaku/vistir/issues/65>`_
 - Fixed a bug which caused spinner output to sometimes attempt to
   double encode on python 2, resulting in failed output encoding.
   `#69 <https://github.com/sarugaku/vistir/issues/69>`_
