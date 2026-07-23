@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 23 17:46:31 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.5.0:
+  * Try all addresses from DNS before failing to connect
+  * Fix potential heap-buffer-overflow in cluster error reply parsing
+  * RDMA: Fix lost EPOLLIN/POLLIN events
+  * Additional overflow protection for MAP/ATTR
+  * Fix gcc warnings
+- includes changes from 0.4.0:
+  * Add support for runtime dynamic (lazy) loading of RDMA libraries
+- add libvalkey-0.5.0-Fix-unused-variable.patch
+- disable RDMA support due to linker errors
+
+-------------------------------------------------------------------
+Wed Feb 25 10:58:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 0.3.0:
+  * Add option to select a logical database (Cluster API)
+  * Add latest commands from Valkey 9 and official modules (Cluster API)
+  * Fix the long-blocking read for Valkey RDMA
+  * Avoid heap buffer overflow in valkeyAsyncFormattedCommand
+  * Fix linker errors when building with CMake, TLS and -Wl,--no-undefined
+    drop libvalkey-0.2.1-linker-errors.patch
+  * Use a uintptr_t hop for casting pointers to ints
+  * Support slotmap updates using CLUSTER NODES in RESP3
+  * Make libvalkey initialization thread-safe
+- drop libvalkey-0.2.1-32-bit.patch
+
+-------------------------------------------------------------------
 Thu Oct 16 17:10:18 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - enable RDMA support

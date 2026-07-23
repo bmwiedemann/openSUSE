@@ -1,7 +1,7 @@
 #
 # spec file for package libvalkey
 #
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,15 @@
 
 %define sover 0
 %bcond_without tls
-%bcond_without rdma
+%bcond_with rdma
 Name:           libvalkey
-Version:        0.2.1
+Version:        0.5.0
 Release:        0
 Summary:        Valkey client library in C
 License:        BSD-3-Clause
 URL:            https://github.com/valkey-io/libvalkey
 Source:         https://github.com/valkey-io/libvalkey/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# https://github.com/valkey-io/libvalkey/issues/247
-# https://github.com/valkey-io/libvalkey/pull/248
-Patch0:         libvalkey-0.2.1-linker-errors.patch
-# https://github.com/valkey-io/libvalkey/issues/251
-# https://github.com/valkey-io/libvalkey/pull/252/commits/2cb723cb9c7a3831b43f144d3fa38c24a97b962b
-Patch1:         libvalkey-0.2.1-32-bit.patch
+Patch0:         libvalkey-0.5.0-Fix-unused-variable.patch
 BuildRequires:  cmake
 %if %{with tls}
 BuildRequires:  pkgconfig(libcrypto)

@@ -7,4 +7,20 @@
     <comment>libvalkey, a client library for valkey</comment>
     <requestid>1318270</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a9aa242fbf887c47d8d368111c266f13</srcmd5>
+    <version>0.3.0</version>
+    <time>1772050367</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1335073</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>01e24565f7a1f87eebb5592c3079d0d3</srcmd5>
+    <version>0.5.0</version>
+    <time>1784845102</time>
+    <user>dimstar_suse</user>
+    <comment>libvalkey 0.5.0 (forwarded request 1367509 from AndreasStieger)</comment>
+    <requestid>1367513</requestid>
+  </revision>
 </revisionlist>

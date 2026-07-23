@@ -1,0 +1,69 @@
+From 2cdedcf710d9739b7b2f1b2237587bd23c8d4a9b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Bj=C3=B6rn=20Svensson?= <bjorn.a.svensson@est.tech>
+Date: Tue, 23 Jun 2026 09:47:47 +0200
+Subject: [PATCH] Fix unused variable warnings in rdma.c with NDEBUG (#312)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Remove unnecessary local variables `ctx` and `event` in
+`valkeyRdmaWaitConn` that only existed to make an `assert()` more
+readable. When built with `-DNDEBUG -Werror`, the assert is removed and
+both variables become unused, causing a build failure.
+
+Also enable Release build types in the RDMA CI job so that NDEBUG is
+defined and this class of issue is caught going forward.
+
+---------
+
+Signed-off-by: Björn Svensson <bjorn.a.svensson@est.tech>
+---
+ .github/workflows/ci.yml | 4 ++--
+ src/rdma.c               | 8 ++++----
+ 2 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index 589c5792..f0924506 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -206,12 +206,12 @@ jobs:
+       - name: Build shared libraries using CMake
+         run: |
+           mkdir build-shared && cd build-shared
+-          cmake -DENABLE_RDMA=ON ..
++          cmake -DENABLE_RDMA=ON -DCMAKE_BUILD_TYPE=Release ..
+           sudo make install
+       - name: Build static libraries using CMake
+         run: |
+           mkdir build-static && cd build-static
+-          cmake -DBUILD_SHARED_LIBS=OFF -DENABLE_RDMA=ON ..
++          cmake -DBUILD_SHARED_LIBS=OFF -DENABLE_RDMA=ON -DCMAKE_BUILD_TYPE=RelWithDebInfo ..
+           sudo make install
+       - name: Build using Makefile
+         run: |
+diff --git a/src/rdma.c b/src/rdma.c
+index 8a310863..6b8ef6ef 100644
+--- a/src/rdma.c
++++ b/src/rdma.c
+@@ -1035,8 +1035,7 @@ static int valkeyRdmaCM(valkeyContext *c, long timeout) {
+ 
+ static int valkeyRdmaWaitConn(valkeyContext *c, long timeout) {
+     long now, end;
+-    RdmaContext *ctx = c->privctx;
+-    struct epoll_event events[1], *event;
++    struct epoll_event events[1];
+     int nevent;
+ 
+     assert(timeout >= 0);
+@@ -1062,8 +1061,9 @@ static int valkeyRdmaWaitConn(valkeyContext *c, long timeout) {
+             return VALKEY_ERR;
+         }
+ 
+-        event = &events[0];
+-        assert(event->data.fd == ctx->cm_channel->fd); /* CM channel fd wakes up only now */
++        /* Only the CM channel fd is polled here */
++        assert(events[0].data.fd == ((RdmaContext *)c->privctx)->cm_channel->fd);
++
+         if (valkeyRdmaCM(c, end - now) == VALKEY_ERR) {
+             return VALKEY_ERR;
+         }
