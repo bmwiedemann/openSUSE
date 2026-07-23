@@ -1,7 +1,7 @@
 #
 # spec file for package python-readme_renderer
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,29 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-readme_renderer
-Version:        44.0
+Version:        45.0
 Release:        0
 Summary:        A library for rendering "readme" descriptions
 License:        Apache-2.0
 URL:            https://github.com/pypa/readme_renderer
 Source:         https://files.pythonhosted.org/packages/source/r/readme_renderer/readme_renderer-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/pypa/readme_renderer/pull/325 fix: update test outputs to fix tests fail
-Patch:          pygments.patch
+# PATCH-FIX-OPENSUSE Support Python 3.15+, based on gh#pypa/readme_renderer#361
+Patch0:         support-importlib-metadata-changes.patch
 BuildRequires:  %{python_module Pygments >= 2.5.1}
-BuildRequires:  %{python_module cmarkgfm >= 0.7.0}
-BuildRequires:  %{python_module docutils >= 0.13.1}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module docutils >= 0.21.2}
 BuildRequires:  %{python_module nh3 >= 0.2.14}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Pygments >= 2.5.1
-Requires:       python-docutils >= 0.13.1
+Requires:       python-docutils >= 0.21.2
 Requires:       python-nh3 >= 0.2.14
-Recommends:     python-cmarkgfm >= 0.7.0
+# Not packaged yet
+#Suggests:       python-comrak
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,9 +61,7 @@ long_description for packages.
 
 %check
 export LANG=en_US.UTF-8
-# gh#pypa/readme_renderer#332
-donttest="test_cli_explicit_format"
-%pytest -k "not $donttest"
+%pytest
 
 %files %{python_files}
 %license LICENSE

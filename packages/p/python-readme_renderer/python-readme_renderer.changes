@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 21 04:29:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 45.0:
+  * Replace cmarkgfm with comrak
+  * Support footnotes in Markdown
+  * Support inline link anchors
+  * Allow class attribute on <pre> tags
+  * Advertise support for Python 3.13, Python 3.14, pypy 3.11
+  * Remove support for Python 3.9, pypy 3.9, 3.10
+  * Remove python3 alias from Pygments
+  * Fix test suite for Pygments update
+  * Fix mypy annotations
+  * Fix test failure with docutils 0.22
+  * Fix ignored allowlists on clean()
+  * Don't abort reStructuredText rendering when a :scale: image can't be
+    sized
+  * Disable active input controls in rendered output
+  * Remove executable bit from tests
+- Explicitly BuildRequires setuptools.
+- No longer skip any tests.
+- Drop patch pygments.patch, merged upstream.
+- Add patch support-importlib-metadata-changes.patch:
+  * Support importlib.metadata changes, now included in Python 3.15.
+
+-------------------------------------------------------------------
 Mon Sep 22 12:01:13 UTC 2025 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Skip broken test with latest docutils, gh#pypa/readme_renderer#332

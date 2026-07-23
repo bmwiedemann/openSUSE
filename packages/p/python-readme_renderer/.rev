@@ -195,4 +195,32 @@
 - Skip broken test with latest docutils, gh#pypa/readme_renderer#332</comment>
     <requestid>1306508</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>7516a5896bc7cf39cc0a9846b3734870</srcmd5>
+    <version>45.0</version>
+    <time>1784840907</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 45.0:
+  * Replace cmarkgfm with comrak
+  * Support footnotes in Markdown
+  * Support inline link anchors
+  * Allow class attribute on &lt;pre&gt; tags
+  * Advertise support for Python 3.13, Python 3.14, pypy 3.11
+  * Remove support for Python 3.9, pypy 3.9, 3.10
+  * Remove python3 alias from Pygments
+  * Fix test suite for Pygments update
+  * Fix mypy annotations
+  * Fix test failure with docutils 0.22
+  * Fix ignored allowlists on clean()
+  * Don't abort reStructuredText rendering when a :scale: image can't be
+    sized
+  * Disable active input controls in rendered output
+  * Remove executable bit from tests
+- Explicitly BuildRequires setuptools.
+- No longer skip any tests.
+- Drop patch pygments.patch, merged upstream.
+- Add patch support-importlib-metadata-changes.patch:
+  * Support importlib.metadata changes, now included in Python 3.15.</comment>
+    <requestid>1366853</requestid>
+  </revision>
 </revisionlist>
