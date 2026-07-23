@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:25:57 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- add a patch to fix CVE-2026-15811:
+  * 0001-CVE-2026-15811-encryption-key-exposure-in-memory-aft.patch
+- add a patch to fix CVE-2026-15812:
+  * 0002-CVE-2026-15812-access-control-list-bypass-via-link-I.patch
+- add a patch to fix CVE-2026-15813:
+  * 0003-CVE-2026-15813-memory-corruption-and-out-of-bounds-a.patch
+- add patches to make the tests of previous fixes run on 1.33:
+  * 0004-tests-Add-runtime-log-filter-callback-infrastructure.patch
+  * 0005-tests-Add-packet-injection-helper-for-RX-validation-.patch
+  * adapt-backported-tests-to-1.33.patch
+
+-------------------------------------------------------------------
 Thu Jan 29 05:58:53 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - kronosnet-1.33

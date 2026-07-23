@@ -111,6 +111,12 @@ License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Clustering/HA
 URL:            https://kronosnet.org
 Source0:        https://kronosnet.org/releases/kronosnet-%{version}.tar.xz
+Patch0:         0001-CVE-2026-15811-encryption-key-exposure-in-memory-aft.patch
+Patch1:         0002-CVE-2026-15812-access-control-list-bypass-via-link-I.patch
+Patch2:         0003-CVE-2026-15813-memory-corruption-and-out-of-bounds-a.patch
+Patch3:         0004-tests-Add-runtime-log-filter-callback-infrastructure.patch
+Patch4:         0005-tests-Add-packet-injection-helper-for-RX-validation-.patch
+Patch5:         adapt-backported-tests-to-1.33.patch
 
 ## Setup/build bits
 # Build dependencies
@@ -166,7 +172,7 @@ BuildRequires:  libnl3-devel
 %endif
 
 %prep
-%setup -q -n %{name}-%{version}%{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
+%autosetup -p1 -n %{name}-%{version}%{?numcomm:.%{numcomm}}%{?alphatag:-%{alphatag}}%{?dirty:-%{dirty}}
 
 %build
 %if %{with runautogen}

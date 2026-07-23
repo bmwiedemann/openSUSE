@@ -1,0 +1,144 @@
+From 2159c4c0b7f260692f8c629b091a83d2b6b7ab91 Mon Sep 17 00:00:00 2001
+From: "Fabio M. Di Nitto" <fdinitto@redhat.com>
+Date: Tue, 19 May 2026 10:18:13 +0200
+Subject: [PATCH 4/5] [tests] Add runtime log filter callback infrastructure
+
+Add thread-safe log filter callback mechanism for runtime pattern matching
+in test logs. The log thread invokes registered callbacks for each log line,
+allowing tests to detect specific messages without parsing log files.
+
+Features:
+- install_log_filter() to register/unregister callbacks
+- check_log_pattern_found() to query if pattern was matched
+- Thread-safe via mutex protection
+- Callback receives logfd for use with log_test() facility
+
+Signed-off-by: Fabio M. Di Nitto <fabbione@kronosnet.org>
+Co-Authored-By: Claude Sonnet 4.5 <noreply@anthropic.com>
+---
+ libknet/tests/test-common.c | 58 ++++++++++++++++++++++++++++++++++---
+ libknet/tests/test-common.h | 23 +++++++++++++++
+ 2 files changed, 77 insertions(+), 4 deletions(-)
+
+diff --git a/libknet/tests/test-common.c b/libknet/tests/test-common.c
+index 812e24a2..a5247591 100644
+--- a/libknet/tests/test-common.c
++++ b/libknet/tests/test-common.c
+@@ -150,6 +150,13 @@ out_clean0:
+ 	return err;
+ }
+ 
++/* Log filter state for runtime pattern matching */
++static pthread_mutex_t log_filter_mutex = PTHREAD_MUTEX_INITIALIZER;
++static log_filter_fn log_filter_callback = NULL;
++static int log_filter_logfd = -1;
++static void *log_filter_private_data = NULL;
++static int log_pattern_found = 0;
++
+ int is_memcheck(void)
+ {
+ 	char *val;
+@@ -222,6 +229,7 @@ void flush_logs(int logfd, FILE *std)
+ {
+ 	struct knet_log_msg msg;
+ 	int len;
++	char log_line[1024];
+ 
+ 	while (1) {
+ 		len = read(logfd, &msg, sizeof(msg));
+@@ -235,10 +243,22 @@ void flush_logs(int logfd, FILE *std)
+ 
+ 		msg.msg[sizeof(msg.msg) - 1] = 0;
+ 
+-		fprintf(std, "[knet]: [%s] %s: %.*s\n",
+-			knet_log_get_loglevel_name(msg.msglevel),
+-			knet_log_get_subsystem_name(msg.subsystem),
+-			KNET_MAX_LOG_MSG_SIZE, msg.msg);
++		snprintf(log_line, sizeof(log_line),
++			 "[knet]: [%s] %s: %.*s",
++			 knet_log_get_loglevel_name(msg.msglevel),
++			 knet_log_get_subsystem_name(msg.subsystem),
++			 KNET_MAX_LOG_MSG_SIZE, msg.msg);
++
++		fprintf(std, "%s\n", log_line);
++
++		/* Check log filter if installed */
++		pthread_mutex_lock(&log_filter_mutex);
++		if (log_filter_callback != NULL) {
++			if (log_filter_callback(log_filter_logfd, log_line, log_filter_private_data)) {
++				log_pattern_found = 1;
++			}
++		}
++		pthread_mutex_unlock(&log_filter_mutex);
+ 	}
+ }
+ 
+@@ -992,3 +1012,33 @@ void knet_handle_stop_everything(knet_handle_t knet_h[], uint8_t numnodes)
+ 		}
+ 	}
+ }
++
++/*
++ * Install a runtime log filter callback
++ * Thread-safe via mutex protection
++ */
++void install_log_filter(int logfd, log_filter_fn filter_fn, void *private_data)
++{
++	pthread_mutex_lock(&log_filter_mutex);
++	log_filter_callback = filter_fn;
++	log_filter_logfd = logfd;
++	log_filter_private_data = private_data;
++	log_pattern_found = 0; /* Reset flag when installing new filter */
++	pthread_mutex_unlock(&log_filter_mutex);
++}
++
++/*
++ * Check if log filter found a pattern match
++ * Returns current value and resets the flag
++ */
++int check_log_pattern_found(void)
++{
++	int found;
++
++	pthread_mutex_lock(&log_filter_mutex);
++	found = log_pattern_found;
++	log_pattern_found = 0; /* Reset after reading */
++	pthread_mutex_unlock(&log_filter_mutex);
++
++	return found;
++}
+diff --git a/libknet/tests/test-common.h b/libknet/tests/test-common.h
+index c726f6ff..143a6695 100644
+--- a/libknet/tests/test-common.h
++++ b/libknet/tests/test-common.h
+@@ -149,4 +149,27 @@ int wait_for_nodes_state(knet_handle_t knet_h, size_t numnodes,
+ 			 uint8_t state, uint32_t timeout,
+ 			 int logfd, FILE *std);
+ 
++/*
++ * Log filter callback type
++ * Called by log thread for each log line. Return 1 to set pattern_found flag.
++ */
++typedef int (*log_filter_fn)(int logfd, const char *log_line, void *private_data);
++
++/*
++ * Install a runtime log filter
++ * The filter callback is invoked for each log line by the log thread.
++ * Thread-safe via mutex protection.
++ *
++ * filter_fn: callback function to check log lines (NULL to disable filtering)
++ * private_data: opaque pointer passed to filter callback
++ */
++void install_log_filter(int logfd, log_filter_fn filter_fn, void *private_data);
++
++/*
++ * Check if log filter found a match
++ * Returns 1 if filter callback returned 1 for any log line, 0 otherwise
++ * Resets the found flag after reading it.
++ */
++int check_log_pattern_found(void);
++
+ #endif
+-- 
+2.55.0
+
