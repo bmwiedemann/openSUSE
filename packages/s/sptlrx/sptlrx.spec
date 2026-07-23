@@ -1,7 +1,7 @@
 #
 # spec file for package sptlrx
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sptlrx
-Version:        1.2.3
+Version:        1.3.1
 Release:        0
 Summary:        Synchronized lyrics in your terminal
 License:        MIT
