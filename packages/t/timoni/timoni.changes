@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:32:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.1:
+  * Update `google.golang.org/grpc` to v1.82.1
+  * Update dependencies to Kubernetes v1.36.3
+  * Update `cuelang.org/go` to v0.17.1
+  * fix: bump defaultKubeVersion
+  * build(deps): bump the ci group across 1 directory with 5
+    updates
+
+-------------------------------------------------------------------
 Thu Jul 02 08:10:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.27.0:
