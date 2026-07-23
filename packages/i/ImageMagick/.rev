@@ -4591,4 +4591,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>[bsc#1271484], [bsc#1271485], [bsc#1271486], [bsc#1271487], [bsc#1271488], [bsc#1271489], [bsc#1271490], [bsc#1271491], [bsc#1271492], [bsc#1271493], [bsc#1271494], [bsc#1271495], [bsc#1271496], [bsc#1271497], CVE-2026-56375, CVE-2026-61464, CVE-2026-61859, CVE-2026-61860, CVE-2026-61862, CVE-2026-61863, CVE-2026-61864, CVE-2026-61865, CVE-2026-61866, CVE-2026-61867, CVE-2026-61868, CVE-2026-61869, CVE-2026-61871, CVE-2026-61872</comment>
     <requestid>1366365</requestid>
   </revision>
+  <revision rev="344" vrev="4">
+    <srcmd5>d51649093adc85fcd7b71ea3ab41ab97</srcmd5>
+    <version>7.1.2.27</version>
+    <time>1784840929</time>
+    <user>dimstar_suse</user>
+    <comment>- remove logo.eps (propriatery licence)</comment>
+    <requestid>1366935</requestid>
+  </revision>
 </revisionlist>

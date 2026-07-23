@@ -274,6 +274,8 @@ sed -i 's:type1:otf:'      config/type-urw-base35.xml.in
 sed -i 's:metrics=[^ ]*::' config/type-urw-base35.xml.in
 sed -i 's:\.t1:.otf:'      config/type-urw-base35.xml.in
 %endif
+# Legal-Review-Notice: removed because of proprietary license
+rm images/logo.eps
 # make library binary package parallel installable
 export MODULES_DIRNAME="modules%{libspec}%{clibver}"
 export SHAREARCH_DIRNAME="config%{libspec}%{clibver}"
