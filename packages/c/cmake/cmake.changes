@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Jul 21 18:18:47 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- Include upstream patch cmake-4.4.0-meson-compatibility.patch for
+  compatibility with Meson
+
+-------------------------------------------------------------------
+Thu Jun 18 15:21:12 UTC 2026 - Christoph G <foss@grueninger.de>
+
+- update to CMake 4.4.0
+  Changelog https://cmake.org/cmake/help/latest/release/4.4.html
+- Drop cmake-fix-ruby-test.patch which is part of upstream
+
+-------------------------------------------------------------------
 Thu Jun 18 15:21:12 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - Reintroduce "cmake-fix-ruby-test.patch", this time as an

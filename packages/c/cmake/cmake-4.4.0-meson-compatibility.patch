@@ -1,0 +1,72 @@
+From 39cc425791394dd8c48e132fb8789ccea8249500 Mon Sep 17 00:00:00 2001
+From: Brad King <brad.king@kitware.com>
+Date: Mon, 20 Jul 2026 14:17:22 -0400
+Subject: [PATCH] try_compile: Restore toleration of toolchain file setting
+ internal variable
+
+Prior to commit 243462fafe (try_compile: Tolerate compile features from
+non-enabled languages, 2026-05-18, v4.4.0-rc1~84^2) we accidentally
+tolerated toolchain files setting `CMAKE_<LANG>_COMPILER_LOADED`.
+Meson accidentally relied on this, so restore toleration of it.
+
+Fixes: #27971
+---
+ Source/cmGlobalGenerator.cxx                               | 7 +++++--
+ Tests/RunCMake/ToolchainFile/RunCMakeTest.cmake            | 1 +
+ .../ToolchainFile/SetCompilerLoaded-toolchain.cmake        | 1 +
+ Tests/RunCMake/ToolchainFile/SetCompilerLoaded.cmake       | 5 +++++
+ 4 files changed, 12 insertions(+), 2 deletions(-)
+ create mode 100644 Tests/RunCMake/ToolchainFile/SetCompilerLoaded-toolchain.cmake
+ create mode 100644 Tests/RunCMake/ToolchainFile/SetCompilerLoaded.cmake
+
+diff --git a/Source/cmGlobalGenerator.cxx b/Source/cmGlobalGenerator.cxx
+index cb2f82171c..13cee3e560 100644
+--- a/Source/cmGlobalGenerator.cxx
++++ b/Source/cmGlobalGenerator.cxx
+@@ -850,8 +850,11 @@ void cmGlobalGenerator::EnableLanguage(
+       this->SetLanguageEnabled("NONE", mf);
+       continue;
+     }
+-    std::string loadedLang = cmStrCat("CMAKE_", lang, "_COMPILER_LOADED");
+-    if (!mf->GetDefinition(loadedLang)) {
++    // Compiler information may have already been detected and saved.
++    // Load it if we have not enabled the language anywhere yet, or
++    // if we have not loaded compiler information in this directory.
++    if (!this->GetLanguageEnabled(lang) ||
++        !mf->GetDefinition(cmStrCat("CMAKE_", lang, "_COMPILER_LOADED"))) {
+       fpath = cmStrCat(rootBin, "/CMake", lang, "Compiler.cmake");
+ 
+       // If the existing build tree was already configured with this
+diff --git a/Tests/RunCMake/ToolchainFile/RunCMakeTest.cmake b/Tests/RunCMake/ToolchainFile/RunCMakeTest.cmake
+index b588ce03d1..5105e7afa9 100644
+--- a/Tests/RunCMake/ToolchainFile/RunCMakeTest.cmake
++++ b/Tests/RunCMake/ToolchainFile/RunCMakeTest.cmake
+@@ -14,6 +14,7 @@ run_cmake_toolchain(LinkFlagsInit)
+ run_cmake_toolchain(CMP0126-NEW)
+ run_cmake_toolchain(CMP0126-OLD)
+ run_cmake_toolchain(CMP0126-WARN)
++run_cmake_toolchain(SetCompilerLoaded)
+ run_cmake_toolchain(SetCrossCompiling)
+ 
+ function(run_IncludeDirectories)
+diff --git a/Tests/RunCMake/ToolchainFile/SetCompilerLoaded-toolchain.cmake b/Tests/RunCMake/ToolchainFile/SetCompilerLoaded-toolchain.cmake
+new file mode 100644
+index 0000000000..b127236eaa
+--- /dev/null
++++ b/Tests/RunCMake/ToolchainFile/SetCompilerLoaded-toolchain.cmake
+@@ -0,0 +1 @@
++set(CMAKE_C_COMPILER_LOADED 1)
+diff --git a/Tests/RunCMake/ToolchainFile/SetCompilerLoaded.cmake b/Tests/RunCMake/ToolchainFile/SetCompilerLoaded.cmake
+new file mode 100644
+index 0000000000..e731cbc29e
+--- /dev/null
++++ b/Tests/RunCMake/ToolchainFile/SetCompilerLoaded.cmake
+@@ -0,0 +1,5 @@
++enable_language(C)
++try_compile(SHOULD_PASS SOURCE_FROM_CONTENT "main.c" "int main(void) { return 0; }")
++if(NOT SHOULD_PASS)
++  message(FATAL_ERROR "try_compile failed but should have passed!")
++endif()
+-- 
+GitLab
+
