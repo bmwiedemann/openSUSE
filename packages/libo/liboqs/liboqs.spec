@@ -32,6 +32,9 @@ Patch1:         liboqs-fix-prototypemismatch.patch
 Patch2:         reproducible.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
+%if 0%{?suse_version} > 0  && 0%{?suse_version} < 1600
+BuildRequires:  gcc12
+%endif
 BuildRequires:  libopenssl-devel
 # for tests
 BuildRequires:  python3-requests
@@ -65,6 +68,10 @@ See the bundled README.md for particular limitations on intended use.
 
 %build
 export RPM_OPT_FLAGS="%{optflags} -std=gnu11"
+
+%if 0%{?suse_version} > 0  && 0%{?suse_version} < 1600
+export CC=gcc-12
+%endif
 
 # 20220702: The %%cmake macro can't be used because a 'CMakeLists.txt' folder
 # exists

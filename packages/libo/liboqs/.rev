@@ -353,4 +353,19 @@
   * Updated HQC implementation: (forwarded request 1367140 from msmeissn)</comment>
     <requestid>1367143</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1dce4ccec65832ef111d2a4ba2f2d814</srcmd5>
+    <version>0.16.0</version>
+    <time>1784841232</time>
+    <user>dimstar_suse</user>
+    <comment>- Fixed uninitialized `encaps_derand` pointer dereference
+  - CVE-2026-46344, CVE-2026-44518: Fixed out-of-bounds read in XMSS/XMSS^MT signature verification
+    (bsc#1267007 bsc#1267001)
+  - Fixed Integer underflow in CROSS `crypto_sign_open()`
+  - Fixed incorrect array size when calling `secure_clean`
+  - Implemented optimization barrier `OQS_MEM_BLACK_BOX` and applied to `ct_select` in FrodoKEM
+- use gcc12 to build, as aarch64 code uses primitives not understood
+  by gcc7. bsc#1215751 (forwarded request 1367358 from msmeissn)</comment>
+    <requestid>1367360</requestid>
+  </revision>
 </revisionlist>

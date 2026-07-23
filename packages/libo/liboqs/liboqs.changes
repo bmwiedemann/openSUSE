@@ -9,12 +9,12 @@ Mon Jul 13 15:26:19 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
   Security issues:
 
-  - Fixed uninitialized `encaps_derand` pointer dereference [#2460](https://github.com/open-quantum-safe/liboqs/pull/2460)
-  - Fixed out-of-bounds read in XMSS/XMSS^MT signature verification [077e32a](https://github.com/open-quantum-safe/liboqs/commit/077e32a), [#2384](https://github.com/open-quantum-safe/liboqs/pull/2384)
-  - Fixed Integer underflow in CROSS `crypto_sign_open()` [25d0a9e](https://github.com/open-quantum-safe/liboqs/commit/25d0a9e)
-  - Fixed incorrect array size when calling `secure_clean` [ab0e07c](https://github.com/open-quantum-safe/liboqs/commit/ab0e07c)
-  - Implemented optimization barrier `OQS_MEM_BLACK_BOX` and applied to
-  `ct_select` in FrodoKEM [#2431](https://github.com/open-quantum-safe/liboqs/pull/2431)
+  - Fixed uninitialized `encaps_derand` pointer dereference
+  - CVE-2026-46344, CVE-2026-44518: Fixed out-of-bounds read in XMSS/XMSS^MT signature verification
+    (bsc#1267007 bsc#1267001)
+  - Fixed Integer underflow in CROSS `crypto_sign_open()`
+  - Fixed incorrect array size when calling `secure_clean`
+  - Implemented optimization barrier `OQS_MEM_BLACK_BOX` and applied to `ct_select` in FrodoKEM
 
   Significant change:
 
@@ -306,6 +306,12 @@ Fri Oct 13 07:31:49 UTC 2023 - Marcus Meissner <meissner@suse.com>
   for Kyber,   Dilithium, and Falcon.
 
 - major library version 4
+
+-------------------------------------------------------------------
+Wed Sep 27 10:21:56 UTC 2023 - Marcus Meissner <meissner@suse.com>
+
+- use gcc12 to build, as aarch64 code uses primitives not understood
+  by gcc7. bsc#1215751
 
 -------------------------------------------------------------------
 Thu Jun  8 07:14:12 UTC 2023 - Marcus Meissner <meissner@suse.com>
