@@ -1,0 +1,35 @@
+-------------------------------------------------------------------
+Thu Jul 23 19:52:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.5:
+  * Add a Lark grammar frontend.
+  * Store FSM end states sparsely, removing quadratic memory use
+    during FSM construction.
+  * Prevent XML whitespace state explosion.
+- Changes from 0.2.4:
+  * Support whitespace control for structural tags.
+  * Make JSON Schema "multipleOf" sound for integers and warn for
+    numbers; reject unsupported overlapping "oneOf" schemas.
+  * Fix tool_choice="required" structural tags to terminate instead
+    of looping.
+  * Fix a "\S" regex escape wrongly rejecting a literal "[".
+  * Warn when apply_token_bitmask_inplace leaves logits unmasked due
+    to an undersized bitmask.
+  * Deduplicate identical repetition expansions and resolve FSM trie
+    back edges via Aho-Corasick failure links.
+- Switch the source to a git-tag tarball generated via _service:
+  upstream no longer ships an sdist on PyPI and the C++ build needs
+  the bundled 3rdparty submodules.
+- Temporarily tolerate the transformers ImportError in the %%check
+  smoke test: Factory currently ships python-transformers 5.14.1
+  (which caps tokenizers<=0.23.0) alongside python-tokenizers 0.23.1,
+  so "import transformers" is broken distro-wide. The native C++
+  binding is still asserted to load; drop this guard once the
+  transformers/tokenizers skew is resolved in Factory.
+
+-------------------------------------------------------------------
+Sun Jul 12 19:07:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package python-xgrammar 0.2.3
+  * Efficient, flexible and portable structured generation engine for
+    constrained LLM decoding against JSON schemas, regex and grammars

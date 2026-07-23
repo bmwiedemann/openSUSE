@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>979777bf89902123e28576fa0d1a31ed</srcmd5>
+    <version>0.2.3</version>
+    <time>1784126126</time>
+    <user>dimstar_suse</user>
+    <comment>New package: efficient, flexible structured-generation grammar engine; dependency for python-vllm.</comment>
+    <requestid>1365521</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1915534d1f7c5ca29272dd013d0a7ffc</srcmd5>
+    <version>0.2.5</version>
+    <time>1784846582</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.2.5: Lark grammar frontend; sparse FSM end states (removes quadratic FSM-construction memory); prevent XML whitespace state explosion; plus 0.2.4 fixes. Source now generated from the git tag via _service (upstream dropped the PyPI sdist; C++ build needs bundled 3rdparty submodules). %check smoke test temporarily tolerates the transformers ImportError caused by the current Factory python-transformers 5.14.1 (tokenizers&lt;=0.23.0) vs python-tokenizers 0.23.1 skew, while still asserting the native C++ binding loads.</comment>
+    <requestid>1367538</requestid>
+  </revision>
+</revisionlist>
