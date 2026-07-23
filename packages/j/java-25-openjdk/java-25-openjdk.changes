@@ -1,4 +1,469 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:23:31 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream tag jdk-25.0.4+7 (July 2026 CPU)
+  * CVEs
+    + CVE-2026-46968 (bsc#1272224)
+    + CVE-2026-46917 (bsc#1272223)
+    + CVE-2026-47010 (bsc#1272225)
+    + CVE-2026-47021 (bsc#1272227)
+    + CVE-2026-47027 (bsc#1272228)
+    + CVE-2026-60147 (bsc#1272237)
+    + CVE-2026-47059 (bsc#1272235)
+    + CVE-2026-47063 (bsc#1272236)
+    + CVE-2026-41254 (bsc#1264994)
+  * Changes
+    + JDK-7184899: Test sun/java2d/X11SurfaceData/
+      /SharedMemoryPixmapsTest/SharedMemoryPixmapsTest.sh fail
+    + JDK-8015444: java/awt/Focus/KeyStrokeTest.java sometimes
+      fails
+    + JDK-8064922: [macos] Test javax/swing/JTabbedPane/4624207/
+      /bug4624207.java fails
+    + JDK-8068293: [TEST_BUG] Test closed/com/sun/java/swing/plaf/
+      /motif/InternalFrame/4150591/bug4150591.java fails with
+      GTKLookAndFeel
+    + JDK-8068310: [TEST_BUG] Test javax/swing/JColorChooser/
+      /Test4234761.java fails with GTKL&F
+    + JDK-8144124: [macosx] The tabs can't be aligned when we
+      pressing the key of 'R','B','L','C' or 'T'.
+    + JDK-8203004: UnixMultiResolutionSplashTest.java fails on
+      Ubuntu16.04
+    + JDK-8213530: Test java/awt/Modal/ToFront/
+      /DialogToFrontModeless1Test.java fails on Linux
+    + JDK-8221451: PIT: sun/java2d/X11SurfaceData/
+      /SharedMemoryPixmapsTest/SharedMemoryPixmapsTest.sh fails
+    + JDK-8225787: java/awt/Window/GetScreenLocation/
+      /GetScreenLocationTest.java fails on Ubuntu
+    + JDK-8241066: Shenandoah: fix or cleanup SH::do_full_collection
+    + JDK-8261743: Shenandoah: enable String deduplication with
+      compact heuristics
+    + JDK-8264851: Shenandoah: Rework control loop mechanics to use
+      timed waits
+    + JDK-8278102: containers/docker/TestJcmd.java failed with
+      "RuntimeException: Could not find specified process"
+    + JDK-8279196: Test: jdk/jfr/event/gc/stacktrace/
+      /TestG1OldAllocationPendingStackTrace.java timed out
+    + JDK-8297191: [macos] Printing a page range with starting
+      page > 1 results in missing pages
+    + JDK-8298823: [macos] java/awt/Mouse/EnterExitEvents/
+      /DragWindowTest.java continues to fail with "No MouseReleased
+      event on label!"
+    + JDK-8319326: GC: Make TestParallelRefProc use
+      createTestJavaProcessBuilder
+    + JDK-8319540: GC: Make TestSelectDefaultGC use
+      createTestJavaProcessBuilder
+    + JDK-8321303: Intermittent open/test/jdk/java/awt/
+      /KeyboardFocusmanager/ConsumeNextMnemonicKeyTypedTest/
+      /ConsumeNextMnemonicKeyTypedTest.java failure on Linux
+    + JDK-8321687: Test vmTestbase/nsk/jvmti/scenarios/contention/
+      /TC03/tc03t002/TestDescription.java failed:
+      JVMTI_ERROR_THREAD_NOT_ALIVE
+    + JDK-8323792: ThreadSnapshot::initialize can cause assert in
+      Thread::check_for_dangling_thread_pointer (possibility of
+      dangling Thread pointer)
+    + JDK-8325482: Test that distinct seeds produce distinct traces
+      for compiler stress flags
+    + JDK-8335355: Shenandoah: Fix race condition in gc/shenandoah/
+      /mxbeans/TestPauseNotifications.java
+    + JDK-8339526: C2: store incorrectly removed for clone()
+      transformed to series of loads/stores
+    + JDK-8340182: Java HttpClient does not follow default retry
+      limit of 3 retries
+    + JDK-8341735: Rewrite the build/AbsPathsInImage.java test to
+      not load the entire file at once
+    + JDK-8344345: test/hotspot/gtest/x86/x86-asmtest.py has
+      trailing whitespaces
+    + JDK-8345631: TestRegionSamplingLogging.java
+      #generational-rotation intermittent fails
+    + JDK-8347167: Reduce allocation in
+      com.sun.net.httpserver.Headers::normalize
+    + JDK-8347938: Add Support for the Latest ML-KEM and ML-DSA
+      Private Key Encodings
+    + JDK-8351010: Test java/io/File/GetXSpace.java failed: / usable
+      space 56380809216 > free space 14912244940
+    + JDK-8352914: Shenandoah: Change definition of
+      ShenandoahSharedValue to int32_t to leverage platform atomics
+    + JDK-8353115: GenShen: mixed evacuation candidate regions need
+      accurate live_data
+    + JDK-8354650: [PPC64] Try to reduce register definitions
+    + JDK-8355339: Test java/io/File/GetCanonicalPath.java failed:
+      The specified network name is no longer available
+    + JDK-8357086: os::xxx functions returning memory size should
+      return size_t
+    + JDK-8358600: Template-Framework Library: Template for
+      TestFramework test class
+    + JDK-8358772: Template-Framework Library: Primitive Types
+    + JDK-8359083: Test jdkCheckHtml.java should report
+      SkippedException rather than report fails when miss tidy
+    + JDK-8359223: HttpClient: Remove leftovers from the
+      SecurityManager cleanup
+    + JDK-8359412: Template-Framework Library: Operations and
+      Expressions
+    + JDK-8359433: The final modifier on Windows L&F internal UI
+      classes prevents extending them in apps
+    + JDK-8361339: Test gc/shenandoah/TestLargeObjectAlignment.java
+      #generational fails on macOS aarch64 with OOM: Java heap space
+    + JDK-8361606: ConsumeNextMnemonicKeyTypedTest.java fails on
+      Windows: character typed with VK_A: a
+    + JDK-8361699: C2: assert(can_reduce_phi(n->as_Phi())) failed:
+      Sanity: previous reducible Phi is no longer reducible before
+      SUT
+    + JDK-8361726: Shenandoah: More detailed evacuation
+      instrumentation
+    + JDK-8362428: Update IANA Language Subtag Registry to Version
+      2025-08-25
+    + JDK-8363943: ARM32: Represent Registers as values
+    + JDK-8363949: Incorrect jtreg header in
+      MonitorWithDeadObjectTest.java
+    + JDK-8363986: Heap region in CDS archive is not at
+      deterministic address
+    + JDK-8364315: Remove unused xml files from test/jaxp/javax/xml/
+      /jaxp/functional/javax/xml/transform/xmlfiles
+    + JDK-8364657: Crash for SecureRandom.generateSeed(0) on Windows
+      x86-64
+    + JDK-8364927: Add @requires annotation to
+      TestReclaimStringsLeaksMemory.java
+    + JDK-8365057: Add support for java.util.concurrent lock
+      information to Thread.dump_to_file
+    + JDK-8365379: SU3.applyInsets may produce wrong results
+    + JDK-8365423: [macos26] java/awt/MenuBar/8007006/
+      /bug8007006.java fails on macOS 26
+    + JDK-8365424: [macos26] java/awt/Frame/DisposeTest.java fails
+      on macOS 26
+    + JDK-8365623: test/jdk/sun/security/pkcs11/tls/ tests skipped
+      without skip exception
+    + JDK-8365625: Can't change accelerator colors in Windows L&F
+    + JDK-8365792: GenShen: assertion "Generations aren't
+      reconciled"
+    + JDK-8366692: Several gc/shenandoah tests timed out
+    + JDK-8366695: Test sun/jvmstat/monitor/MonitoredVm/
+      /MonitorVmStartTerminate.java timed out
+    + JDK-8366852: java/awt/Choice/ChoiceMouseWheelTest/
+      /ChoiceMouseWheelTest.java test is failing
+    + JDK-8367096: jdk/open/test/jdk/sun/security/pkcs11/ rsa, ec,
+      config, secmod and sslecc tests are skipping but showing as
+      pass
+    + JDK-8367450: Shenandoah: Log the composition of the collection
+      set
+    + JDK-8367451: GenShen: Remove the option to compute age census
+      during evacuation
+    + JDK-8367473: Shenandoah: Make the detailed evacuation metrics
+      a runtime diagnostic option
+    + JDK-8367485: os::physical_memory is broken in 32-bit JVMs when
+      running on 64-bit OSes
+    + JDK-8367531: Template Framework: use scopes and tokens instead
+      of misbehaving immediate-return-queries
+    + JDK-8367646: [GenShen] Control thread may overwrite gc
+      cancellation cause set by mutator
+    + JDK-8367708: GenShen: Reduce total evacuation burden
+    + JDK-8367709: GenShen: Dirty cards for objects that get
+      promoted by safepoint that intervenes between allocation and
+      stores
+    + JDK-8367722: [GenShen] ShenandoahEvacuationStats is always
+      empty
+    + JDK-8367949: JFR: MethodTrace double-counts methods that catch
+      their own exceptions
+    + JDK-8368001: java/text/Format/NumberFormat/
+      /NumberRoundTrip.java timed out
+    + JDK-8368015: Shenandoah: fix error in computation of average
+      allocation rate
+    + JDK-8368041: Enhance TLS certificate handling
+    + JDK-8368159: Significant performance overhead when started
+      with jdwp agent and unattached debugger
+    + JDK-8368181: ProblemList java/awt/Dialog/ModalExcludedTest/
+      /ModalExcludedTest.java
+    + JDK-8368307: Shenandoah: get_next_bit_impl should special case
+      weak and strong mark bits
+    + JDK-8368499: GenShen: Do not collect age census during evac
+      when adaptive tenuring is disabled
+    + JDK-8368501: Shenandoah: GC progress evaluation does not use
+      generation
+    + JDK-8368524: Tests are skipped and shown as passed in test/
+      /jdk/sun/security/pkcs11/Cipher/KeyWrap
+    + JDK-8368681: Shenandoah: Add documentation comments for
+      ShenandoahAllocationRate
+    + JDK-8369128: ProblemList jdk/jfr/event/profiling/
+      /TestCPUTimeSampleQueueAutoSizes.java in Xcomp configs
+    + JDK-8369132: Disable vmTestbase/gc/vector/CircularListLow and
+      LinearListLow with SerialGC
+    + JDK-8369133: Disable gc/g1/TestShrinkAuxiliaryDataRunner.java
+      with UseLargePages option
+    + JDK-8369251: Opensource few tests
+    + JDK-8369561: sun/java2d/OpenGL/DrawBitmaskImage.java#id0:
+      Incorrect color for first pixel (actual=ff000000)
+    + JDK-8369683: Exclude runtime/Monitor/
+      /MonitorWithDeadObjectTest.java#DumpThreadsBeforeDetach on
+      Alpine Linux debug
+    + JDK-8369736: Add management interface for AOT cache creation
+    + JDK-8369817: [TESTBUG] EmptyPath::toString is ignored
+    + JDK-8369912: [TESTBUG] testlibrary_tests/template_framework/
+      /examples/TestExpressions.java fails with ArithmeticException:
+      / by zero - forgot to respect Expression.info
+    + JDK-8369950: TLS connection to IPv6 address fails with BCJSSE
+      due to IllegalArgumentException
+    + JDK-8370370: Add still more cases to WorstCaseTests
+    + JDK-8370489: Some compiler tests miss the @key randomness
+    + JDK-8370502: C2: segfault while adding node to IGVN worklist
+    + JDK-8370521: GenShen: Various code cleanup related to
+      promotion
+    + JDK-8370939: C2: SIGSEGV in SafePointNode::verify_input when
+      processing MH call from
+      Compile::process_late_inline_calls_no_inline()
+    + JDK-8371284: GenShen: Avoid unnecessary card marking
+    + JDK-8371381: [Shenandoah] Setting ergo flags should use
+      FLAG_SET_ERGO
+    + JDK-8371503: RETAIN_IMAGE_AFTER_TEST do not work for some
+      tests
+    + JDK-8371792: Refactor barrier loop tests out of TestIfMinMax
+    + JDK-8371893: [macOS] use dead_strip linker option to reduce
+      binary size
+    + JDK-8372272: Hotspot shared lib loading - add load attempts to
+      Events::log
+    + JDK-8372351: Add 2 WISeKey roots
+    + JDK-8372380: Make hs_err reporting more robust for unattached
+      threads
+    + JDK-8372513: Shenandoah: ShenandoahMaxRegionSize can produce
+      an unaligned heap alignment
+    + JDK-8372851: Modify java/io/File/GetXSpace.java to print path
+      on failure of native call
+    + JDK-8372861: Genshen: Override parallel_region_stride of
+      ShenandoahResetBitmapClosure to a reasonable value for better
+      parallelism
+    + JDK-8373039: Remove Incorrect Asserts in
+      shenandoahScanRemembered
+    + JDK-8373120: Virtual thread stuck in BLOCKED state
+    + JDK-8373239: Test java/awt/print/PrinterJob/PageRanges.java
+      fails with incorrect selection of printed pages
+    + JDK-8373275: Improve DTLS handshaking
+    + JDK-8373515: Migrate "test/jdk/java/net/httpclient/" to
+      null-safe "SimpleSSLContext" methods
+    + JDK-8373579: Problem list compiler/runtime/Test7196199.java
+    + JDK-8373650: Test "javax/swing/JMenuItem/6458123/
+      /ManualBug6458123.java" fails because the check icons are not
+      aligned properly as expected
+    + JDK-8373676: Test javax/net/ssl/HttpsURLConnection/
+      /SubjectAltNameIP.java fails on a machine without IPV6
+    + JDK-8373690: Unexpected Keystore message using
+      jdk.crypto.disabledAlgorithms
+    + JDK-8373714: Shenandoah: Register heuristic penalties
+      following a degenerated GC
+    + JDK-8373718: jdk/internal/misc/VM/RuntimeArguments.java test
+      fails in Virtual threads mode
+    + JDK-8373796: Refactor java/net/httpclient/
+      /ThrowingPublishers*.java tests to use JUnit5
+    + JDK-8373847: Test javax/swing/JMenuItem/MenuItemTest/
+      /bug6197830.java failed because The test case automatically
+      fails when clicking any items in the “Nothing” menu in all
+      four windows (Left-to-right)-Menu Item Test and
+      (Right-to-left)-Menu Item Test
+    + JDK-8373866: Refactor java/net/httpclient/
+      /ThrowingSubscribers*.java tests to use JUnit5
+    + JDK-8373893: Refactor networking http server tests to use
+      JUnit
+    + JDK-8373913: Refactor serialization tests to use JUnit
+    + JDK-8373928: 4 Dangling pointer defect groups in java.c
+    + JDK-8374001: sun/security/ skip without Exceptions
+    + JDK-8374058: Enhance JPEG handling
+    + JDK-8374168: Resolve disabled warnings in JDWP agent
+    + JDK-8374304: MultiResolutionSplashTest.java fails in CI:
+      "Image with wrong resolution is used for splash screen!"
+    + JDK-8374322: TestMemoryWithSubgroups.java fails Permission
+      denied
+    + JDK-8374343: Fix SIGSEGV when lib/modules is unreadable
+    + JDK-8374449: Shenandoah: Leaf locks used by Shenandoah need
+      lower ranks
+    + JDK-8374506: Incorrect positioning of arrow icon in parent
+      JMenu in Windows L&F
+    + JDK-8374712: AOTMappedHeapWriter::relocate_field_in_buffer
+      should use CompressedOops::narrow_oop_cast
+    + JDK-8374727: Audio configuration Platform class - use nio for
+      getting endianness of the underlying platform
+    + JDK-8374744: Enable dumping of APX EGPRs (R16–R31) in JVM
+      fatal error logs
+    + JDK-8374769: PPC: MASM::pop_cont_fastpath() should reset
+      _cont_fastpath if SP == _cont_fastpath
+    + JDK-8374888: Implement internal test cache to help
+      UserIterCount test performance
+    + JDK-8374998: Failing os::write - remove bad file
+    + JDK-8375065: Update LCMS to 2.18
+    + JDK-8375177: Gtest
+      os_linux.decoder_get_source_info_valid_vm fails with
+      -ffunction-sections
+    + JDK-8375294: (fs) Files.copy can fail with EOPNOTSUPP when
+      copy_file_range not supported
+    + JDK-8376031: HttpsURLConnection.getServerCertificates() throws
+      "java.lang.IllegalStateException: connection not yet open" for
+      the HEAD method
+    + JDK-8376104: C2 crashes in PhiNode::Ideal(PhaseGVN*, bool)
+      accessing NULL pointer
+    + JDK-8376151: Test javax/swing/JFileChooser/4966171/
+      /bug4966171.java is failing with OOME
+    + JDK-8376152: Test javax/sound/sampled/Clip/bug5070081.java
+      timed out then completed
+    + JDK-8376185: NoSuchFieldError thrown after a record with type
+      annotation retransformed
+    + JDK-8376233: Clean up code in Desktop native peer
+    + JDK-8376287: Crashes when using -XX:ObjArrayMarkingStride=0
+    + JDK-8376402: Dependencies::print_statistics() and
+      AbstractClassHierarchyWalker::print_statistics() are not
+      called from PRODUCT code
+    + JDK-8376684: Compile OpenJDK in headless mode without required
+      X11 libraries
+    + JDK-8376956: Add JVMTI phase entering/setting to hserr event
+      log
+    + JDK-8376969: Shenandoah: GC state getters should be inlineable
+    + JDK-8376970: Shenandoah: Verifier should do basic verification
+      before touching oops
+    + JDK-8377158: Enhance XBM image support
+    + JDK-8377167: javax/imageio/ReadAbortTest.java throw NPE when
+      x11 unavailable
+    + JDK-8377498: Improve HttpServer handling
+    + JDK-8377512: AOT cache creation fails with invalid native
+      pointer
+    + JDK-8377602: Create automated test for PageRange
+    + JDK-8377727: Ghost caret and focus appear in non‑editable
+      text fields
+    + JDK-8377833: Enhance Jar file processing
+    + JDK-8377907: (process) Race in ProcessBuilder can cause JVM
+      hangs
+    + JDK-8377910: Minor cleanup of java/io/FileDescriptor/
+      /Sharing.java
+    + JDK-8377932: AOT cache is not rejected when JAR file has
+      changed
+    + JDK-8377944: LowMemoryTest2.java#id1 intermittent fails OOME:
+      Metaspace
+    + JDK-8377949: TestZRelocationSetEvent.java intermittent fails
+      OOME
+    + JDK-8378083: Mark shenandoah/generational/
+      /TestOldGrowthTriggers.java as flagless
+    + JDK-8378201: [OGL] glXMakeContextCurrent() drops the buffers
+      of the unbound drawable
+    + JDK-8378417: Printing All pages results in NPE for 1.1
+      PrintJob
+    + JDK-8378561: Mark gc/shenandoah/compiler/
+      /TestLinkToNativeRBP.java as /native
+    + JDK-8378687: Improve delegation of HttpURLConnection
+    + JDK-8378727: [macOS] Missing dispatch_release for semaphores
+      in CDesktopPeer
+    + JDK-8378746: ZGC: jdk/jfr/event/gc/detailed/
+      /TestZRelocationSetGroupEvent.java intermittent OOME
+    + JDK-8378764: fileStream::fileSize() fails for >2GB files on
+      Windows
+    + JDK-8378774: Bump update version for OpenJDK: jdk-25.0.4
+    + JDK-8378810: Enable missing FFM test via jtreg requires for
+      RISC-V
+    + JDK-8378836: Enable linktime-gc by default on Linux ppc64le
+    + JDK-8378878: Refactor java/nio/channels/
+      /AsynchronousSocketChannel test to use JUnit
+    + JDK-8378888: jdk/incubator/vector/
+      /Float16OperationsBenchmark.java uses wrong package name
+    + JDK-8379021: Shenandoah: Speedup ShenandoahSimpleBitMapTest
+    + JDK-8379202: Support linktime-gc on Linux with clang
+    + JDK-8379416: AIX build fails if system (not GNU) date tool is
+      in PATH
+    + JDK-8379425: Windows and macOS should not allow unsupported
+      headless-only build
+    + JDK-8379457: Test EATests.java#id0 ERROR: monitor list errors:
+      error_cnt=1
+    + JDK-8379464: Enable missing stack walking test via jtreg
+      requires for RISC-V
+    + JDK-8379499: [AIX] headless-only build of libjawt.so fails
+    + JDK-8379515: draft-ietf-lamps-kyber-certificates is now
+      RFC 9935
+    + JDK-8380011: Path-to-gcroots search should not trigger stack
+      overflows
+    + JDK-8380041: PPC: remove POWER6 remnants
+    + JDK-8380222: Refactor test/jdk/java/lang/Character TestNG
+      tests to JUnit
+    + JDK-8380316: Test runtime/os/AvailableProcessors.java fails
+      Invalid argument
+    + JDK-8380409: JVM crashes when -XX:AOTMode=create uses
+      app.aotconf generated with JVMTI agent
+    + JDK-8380428: ProblemList containers/docker/
+      /TestJcmdWithSideCar.java on linux-all
+    + JDK-8380431: Shenandoah: Concurrent modification of
+      stack-chunk objects during evacuation
+    + JDK-8380474: Crash SEGV in ThreadIdTable::lazy_initialize
+      after JDK-8323792
+    + JDK-8380565: PPC64: deoptimization stub should save vector
+      registers
+    + JDK-8380663: Update jcmd man page to include AOT.end_recording
+      diagnostic command
+    + JDK-8380672: Improve certification checking
+    + JDK-8380846: GenShen: Remove the experimental option to
+      disable adaptive tenuring
+    + JDK-8380947: Add pull request template
+    + JDK-8381039: Enhance AWT ImagingLib
+    + JDK-8381049: Enhance Jar handling
+    + JDK-8381205: GHA: Upgrade Node.js 20 to 24
+    + JDK-8381315: compiler/vectorapi/TestVectorReallocation.java
+      fails with -XX:UseAVX=1 after JDK-8380565
+    + JDK-8381382: Shenandoah: assert(capacity > 0) failed: free
+      regions must have allocation capacity
+    + JDK-8381519: Enhance Der Value Handling
+    + JDK-8381796: Enhance Certificate parsing
+    + JDK-8381871: GenShen: ShenandoahGCHeuristics flag not reset
+      after ignoring non-adaptive value
+    + JDK-8381935: Improve numChunks range in the PPC64 CallAranger
+    + JDK-8381937: Make exceptions in
+      Java_sun_security_mscapi_CKeyPairGenerator generateCKeyPair
+      more specific
+    + JDK-8382018: test/jdk/java/nio/file/spi/
+      /SetDefaultProvider.java leaves a directory in /tmp
+    + JDK-8382020: Time Zone Abbreviation Not Localized for
+      Non-English Locales
+    + JDK-8382035: [ubsan] Under UBSAN builds, disable tests that
+      rely on simulated JVM crashes
+    + JDK-8382090: Remove .rej and .orig from .gitignore
+    + JDK-8382242: JFR: Metadata reconstruction invalidates
+      ConstantMap for java.lang.String
+    + JDK-8382295: Shenandoah: wrong denominator in full gc summary
+    + JDK-8382395: Disable stringop-overflow in
+      shenandoahGenerationalHeap.cpp
+    + JDK-8382419: Add missed @key randomness after JDK-8370489
+    + JDK-8382522: Disable stringop-overflow in
+      safepointMechanism.cpp
+    + JDK-8382740: JFR: Disable jdk.OldObjectSample event for
+      generational ZGC
+    + JDK-8382878: RISC-V: Missing InlineSkippedInstructionsCounter
+      in ZGC barriers stubs
+    + JDK-8382932: [25u] Test java/lang/instrument/
+      /RetransformRecordTypeAnn/TestRetransformRecord.java‎ fails
+      with compilation error
+    + JDK-8383161: [PPC64]
+      MachCallDynamicJavaNode::ret_addr_offset() needs adaptation
+      for COH
+    + JDK-8383175: (tz) Update Timezone Data to 2026b
+    + JDK-8383183: Shenandoah: Mangle trashed regions up to top
+      instead of end
+    + JDK-8383354: Update LCMS to 2.19.1
+    + JDK-8383473: Follow on from tzdata2026b time change to
+      include temporary hack BC time change
+    + JDK-8383601: RISC-V:
+      ShenandoahBarrierSetAssembler::load_reference_barrier calls
+      "weak" on "phantom" path
+    + JDK-8383630: Fix iteration in tests doing class redefinition
+    + JDK-8384043: [REDO] Incorrect handling of Hawaii_Aleutian
+      metazone
+    + JDK-8384158: GHA: Downgrade Windows GHA runners to
+      windows-2022 temporarily
+    + JDK-8384163: (so) SocketChannel.connect and finishConnect()
+      exception messages could be improved
+    + JDK-8384223: RISC-V: entry_barrier_offset should consider
+      UseZtso
+    + JDK-8384486: NTLM tests fail on Windows 11 and Windows Server
+      2025
+    + JDK-8384495: Update Libpng to 1.6.58
+    + JDK-8384540: [25u, 21u, 17u] Update GHA JDKs after Apr/26
+      updates
+    + JDK-8384815: SelectOneKeyOutOfMany and PreferredKey fail after
+      expired test certificate
+    + JDK-8384902: Update GIFlib to 6.1.3
+    + JDK-8385390: Update FreeType to 2.14.3
+    + JDK-8385490: Update HarfBuzz to 14.2.0
+    + JDK-8386551: Windows build broken because of MSys2/Make update
+
+-------------------------------------------------------------------
 Thu Jun  4 07:21:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Make post scripts less noisy (bsc#1267355)
