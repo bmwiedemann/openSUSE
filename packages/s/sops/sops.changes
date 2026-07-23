@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:05:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.13.3:
+  * Add ini to supported input/output type descriptions by
+    @TheKhanj in #2239
+  * build(deps): Bump the go group with 10 updates by
+    @dependabot[bot] in #2242
+  * build(deps): Bump the ci group with 6 updates by
+    @dependabot[bot] in #2241
+  * fix: include decrypted sequence comments in the MAC (fixes
+    #2243) by @cbcoutinho in #2245
+  * build(deps): Bump the go group with 14 updates by
+    @dependabot[bot] in #2251
+  * build(deps): Bump the ci group with 2 updates by
+    @dependabot[bot] in #2250
+  * build(deps): Bump the go group with 11 updates by
+    @dependabot[bot] in #2261
+  * build(deps): Bump the ci group with 3 updates by
+    @dependabot[bot] in #2260
+  * build(deps): Bump the rust group in /functional-tests with 3
+    updates by @dependabot[bot] in #2259
+  * Update dependencies with 'go get -t -u ./...' by @felixfontein
+    in #2248
+  * Completion scripts: remove leading newline by @felixfontein in
+    #2253
+
+-------------------------------------------------------------------
 Wed Jul 01 05:55:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.13.2:
