@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:48:50 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 6.80.0 (6.08)
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+
+  6.08      2026-07-09 02:04:21Z
+
+      - [SECURITY] Reject input longer than 64 characters in parse_date()
+        to prevent quadratic regex backtracking (a denial of service) on
+        hostile date strings. Fixes CVE-2026-14741. (Olaf Alders)
+        bsc#1271705
+
+-------------------------------------------------------------------
 Fri Jun 26 08:39:21 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 6.70.0 (6.07)

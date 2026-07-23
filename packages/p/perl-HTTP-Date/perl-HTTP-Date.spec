@@ -18,10 +18,10 @@
 
 %define cpan_name HTTP-Date
 Name:           perl-HTTP-Date
-Version:        6.70.0
+Version:        6.80.0
 Release:        0
-# 6.07 -> normalize -> 6.70.0
-%define cpan_version 6.07
+# 6.08 -> normalize -> 6.80.0
+%define cpan_version 6.08
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTTP::Date - date conversion routines
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,6 +31,7 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Time::Local) >= 1.28
 BuildRequires:  perl(Time::Zone)
 Requires:       perl(Time::Local) >= 1.28
@@ -86,6 +87,12 @@ In scalar context the numbers are interpolated in a string of the
 
 If the date is unrecognized, then the empty list is returned ('undef' in
 scalar context).
+
+As a safeguard against pathological input, strings longer than 64
+characters are rejected without being parsed. The length is measured on the
+string as given, before any leading or trailing whitespace is trimmed, so
+heavily padded input may be rejected even if its trimmed payload would fit.
+Every date format this module recognizes is far shorter than this limit.
 
 The function is able to parse the following formats:
 

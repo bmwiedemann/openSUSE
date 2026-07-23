@@ -120,4 +120,18 @@
         Alders)</comment>
     <requestid>1362458</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>50e2b2bbe5ecd1c11be2b6b85239e3d2</srcmd5>
+    <version>6.80.0</version>
+    <time>1784840901</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 6.80.0 (6.08)
+   see /usr/share/doc/packages/perl-HTTP-Date/Changes
+  6.08      2026-07-09 02:04:21Z
+      - [SECURITY] Reject input longer than 64 characters in parse_date()
+        to prevent quadratic regex backtracking (a denial of service) on
+        hostile date strings. Fixes CVE-2026-14741. (Olaf Alders)
+        bsc#1271705</comment>
+    <requestid>1366823</requestid>
+  </revision>
 </revisionlist>
