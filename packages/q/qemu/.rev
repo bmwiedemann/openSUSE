@@ -4969,4 +4969,14 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1363032</requestid>
   </revision>
+  <revision rev="309" vrev="2">
+    <srcmd5>81bbbee1771cc2990ddd85bfcf012db7</srcmd5>
+    <version>11.0.2</version>
+    <time>1784840920</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly fix bsc#1268245:
+  * [openSUSE][RPM] spec: fix missing unversioned ppc64 linker (bsc#1268245)
+</comment>
+    <requestid>1366930</requestid>
+  </revision>
 </revisionlist>

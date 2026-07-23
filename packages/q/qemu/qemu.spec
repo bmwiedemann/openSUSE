@@ -543,6 +543,7 @@ mkdir -p %{_builddir}/cross-tools
 PPC_GCC=$(ls /usr/bin/powerpc64-suse-linux-gcc-* 2>/dev/null | head -n1)
 if [ -n "$PPC_GCC" ]; then
     ln -sf "$PPC_GCC" %{_builddir}/cross-tools/powerpc64-suse-linux-gcc
+    ln -sf /usr/bin/powerpc64-suse-linux-ld %{_builddir}/cross-tools/powerpc64-suse-linux-ld
     export PATH=%{_builddir}/cross-tools:$PATH
 fi
 %endif

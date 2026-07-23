@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 21 10:28:48 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Properly fix bsc#1268245:
+  * [openSUSE][RPM] spec: fix missing unversioned ppc64 linker (bsc#1268245)
+
+-------------------------------------------------------------------
 Tue Jun 30 17:43:26 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Update to latest stable release (11.0.2)
