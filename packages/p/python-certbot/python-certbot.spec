@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-certbot
-Version:        5.6.0
+Version:        5.7.0
 Release:        0
 Summary:        ACME client
 License:        Apache-2.0

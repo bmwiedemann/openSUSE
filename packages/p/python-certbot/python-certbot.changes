@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:32:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.7.0
+  * Fixed nginx configuration parsing when comments appear between
+    tokens of a multi-line directive
+
+-------------------------------------------------------------------
 Thu May 14 09:13:21 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.6.0
