@@ -75,13 +75,13 @@ Self-host your own RustDesk server.
 %{cargo_build}
 
 %install
-install -D -m 0755 ./target/release/rustdesk-utils %{buildroot}/%{_bindir}/rustdesk-utils
-install -D -m 0755 ./target/release/hbbr %{buildroot}/%{_bindir}/hbbr
-install -D -m 0755 ./target/release/hbbs %{buildroot}/%{_bindir}/hbbs
+install -D -m 0755 ./target/release/rustdesk-utils %{buildroot}%{_bindir}/rustdesk-utils
+install -D -m 0755 ./target/release/hbbr %{buildroot}%{_bindir}/hbbr
+install -D -m 0755 ./target/release/hbbs %{buildroot}%{_bindir}/hbbs
 
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysusersdir}/system-user-rustdesk.conf
-install -D -m 0644 %{SOURCE3} %{buildroot}/%{_unitdir}/hbbr.service
-install -D -m 0644 %{SOURCE4} %{buildroot}/%{_unitdir}/hbbs.service
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_unitdir}/hbbr.service
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_unitdir}/hbbs.service
 mkdir -p %{buildroot}/var/lib/%{name}
 
 %pre -n system-user-rustdesk -f system-user-rustdesk.pre
