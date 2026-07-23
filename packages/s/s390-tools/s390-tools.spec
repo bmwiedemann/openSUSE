@@ -24,7 +24,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.43.0
+Version:        2.43.1
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT

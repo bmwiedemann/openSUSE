@@ -1,6 +1,7 @@
-diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
---- a/dasdfmt/dasdfmt.8	2025-12-11 17:03:28.000000000 +0100
-+++ b/dasdfmt/dasdfmt.8	2026-02-06 11:00:31.937570213 +0100
+Index: s390-tools-2.43.1/dasdfmt/dasdfmt.8
+===================================================================
+--- s390-tools-2.43.1.orig/dasdfmt/dasdfmt.8
++++ s390-tools-2.43.1/dasdfmt/dasdfmt.8
 @@ -7,18 +7,18 @@
  dasdfmt \- formatting of DASD (ECKD) disk drives.
  
@@ -24,7 +25,7 @@ diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
  .br
  
  \fBWARNING\fR: Careless usage of \fBdasdfmt\fR can result in
-@@ -41,6 +41,10 @@
+@@ -41,6 +41,10 @@ out, what it \fBwould\fR do.
  Increases verbosity.
  
  .TP
@@ -35,7 +36,7 @@ diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
  \fB\-y\fR
  Start formatting without further user-confirmation.
  
-@@ -95,7 +99,7 @@
+@@ -95,7 +99,7 @@ Do not use this option if you are using
  running in background or redirecting the output to a file.
  
  .TP
@@ -44,7 +45,7 @@ diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
  Print one line for each formatted cylinder showing the number of the
  cylinder and percentage of formatting process.
  Intended to be used by higher level interfaces.
-@@ -112,6 +116,11 @@
+@@ -112,6 +116,11 @@ The value will be at least as big as the
  .br
  
  .TP
@@ -56,7 +57,7 @@ diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
  \fB\-M\fR \fImode\fR or \fB\-\-mode\fR=\fImode\fR
  Specify the \fImode\fR to be used to format the device. Valid modes are:
  .RS
-@@ -164,6 +173,18 @@
+@@ -164,6 +173,18 @@ and always be a power of two. The recomm
  
  .TP
  \fB\-l\fR \fIvolser\fR or \fB\-\-label\fR=\fIvolser\fR
@@ -75,9 +76,10 @@ diff -Naur a/dasdfmt/dasdfmt.8 b/dasdfmt/dasdfmt.8
  Specify the volume serial number or volume identifier to be written
  to disk after formatting. If no label is specified, a sensible default
  is used. \fIvolser\fR is interpreted as ASCII string and is automatically
-diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
---- a/dasdfmt/dasdfmt.c	2025-12-11 17:03:28.000000000 +0100
-+++ b/dasdfmt/dasdfmt.c	2026-02-06 11:34:15.367040138 +0100
+Index: s390-tools-2.43.1/dasdfmt/dasdfmt.c
+===================================================================
+--- s390-tools-2.43.1.orig/dasdfmt/dasdfmt.c
++++ s390-tools-2.43.1/dasdfmt/dasdfmt.c
 @@ -13,6 +13,8 @@
  #include <sys/sysmacros.h>
  #include <sys/time.h>
@@ -96,7 +98,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  #define BUSIDSIZE  8
  #define SEC_PER_DAY (60 * 60 * 24)
  #define SEC_PER_HOUR (60 * 60)
-@@ -58,7 +62,9 @@
+@@ -58,7 +62,9 @@ static const struct util_prg prg = {
  static struct dasdfmt_globals {
  	dasd_information2_t dasd_info;
  	char *dev_path; /* device path entered by user */
@@ -106,7 +108,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	int   verbosity;
  	int   testmode;
  	int   withoutprompt;
-@@ -78,6 +84,8 @@
+@@ -78,6 +84,8 @@ static struct dasdfmt_globals {
  	int   mode_specified;
  	int   ese;
  	int   no_discard;
@@ -115,7 +117,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  } g = {
  	.dasd_info = { 0 },
  };
-@@ -202,7 +210,9 @@
+@@ -202,7 +210,9 @@ static void draw_progress(int cyl, unsig
  	}
  
  	if (g.print_hashmarks && (cyl / g.hashstep - hashcount) != 0) {
@@ -126,7 +128,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  		fflush(stdout);
  		hashcount++;
  	}
-@@ -276,7 +286,7 @@
+@@ -276,7 +286,7 @@ static void evaluate_format_error(format
  	unsigned int kl = 0;
  	int blksize = cdata->expect.blksize;
  
@@ -135,7 +137,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  		printf("\n");
  
  	/*
-@@ -379,15 +389,15 @@
+@@ -379,15 +389,15 @@ static void program_interrupt_signal(int
  	program_interrupt_in_progress = 1;
  
  	if (disk_disabled) {
@@ -154,7 +156,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	} else {
  		printf("Exiting...\n");
  	}
-@@ -407,9 +417,6 @@
+@@ -407,9 +417,6 @@ static void get_device_name(int optind,
  	unsigned int maj, min;
  	struct stat dev_stat;
  
@@ -164,7 +166,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	if (optind >= argc)
  		error("No device specified!");
  
-@@ -497,7 +504,7 @@
+@@ -497,7 +504,7 @@ static void check_layout(unsigned int in
   */
  static void check_disk(void)
  {
@@ -173,7 +175,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	bool ro;
  
  	err = dasd_is_ro(g.dev_node, &ro);
-@@ -505,10 +512,27 @@
+@@ -505,10 +512,27 @@ static void check_disk(void)
  		error("the ioctl call to retrieve read/write status information failed: %s",
  		      strerror(err));
  	if (ro)
@@ -203,7 +205,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	}
  	if (strncmp(g.dasd_info.type, "ECKD", 4) != 0) {
  		warnx("Unsupported disk type");
-@@ -595,7 +619,7 @@
+@@ -595,7 +619,7 @@ static void set_geo(unsigned int *cylind
  	struct dasd_eckd_characteristics *characteristics;
  
  	if (g.verbosity > 0)
@@ -212,7 +214,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	characteristics = (struct dasd_eckd_characteristics *)
  				&g.dasd_info.characteristics;
-@@ -623,13 +647,13 @@
+@@ -623,13 +647,13 @@ static void set_label(volume_label_t *vl
  			       "Cylinders above this limit will not be"
  			       " accessible as a linux partition!\n"
  			       "Type \"yes\" to continue, no will leave"
@@ -229,7 +231,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  				return;
  			}
  		}
-@@ -667,8 +691,9 @@
+@@ -667,8 +691,9 @@ static void check_hashmarks(void)
  			g.hashstep = 10;
  		}
  
@@ -241,7 +243,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	}
  }
  
-@@ -767,7 +792,7 @@
+@@ -767,7 +792,7 @@ static void check_disk_format(unsigned i
  	check_params->start_unit = 0;
  	check_params->stop_unit = (cylinders * heads) - 1;
  
@@ -250,7 +252,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	if (g.testmode) {
  		printf("Test mode active, omitting ioctl.\n");
-@@ -791,7 +816,7 @@
+@@ -791,7 +816,7 @@ static void check_disk_format(unsigned i
  	if (process_tracks(cylinders, heads, check_params))
  		error("Use --mode=full to perform a clean format.");
  
@@ -259,7 +261,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  }
  
  /*
-@@ -841,8 +866,8 @@
+@@ -841,8 +866,8 @@ static void dasdfmt_print_info(volume_la
  
  	printf("Device Type: %s Provisioned\n",
  	       g.ese ? "Thinly" : "Fully");
@@ -270,7 +272,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	printf("   Device number of device : 0x%x\n", g.dasd_info.devno);
  	printf("   Labelling device        : %s\n",
  	       (g.writenolabel) ? "no" : "yes");
-@@ -907,7 +932,7 @@
+@@ -907,7 +932,7 @@ static void dasdfmt_write_labels(volume_
  	int ipl1_record_len, ipl2_record_len;
  
  	if (g.verbosity > 0)
@@ -279,7 +281,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	get_blocksize(&blksize);
  
-@@ -925,7 +950,7 @@
+@@ -925,7 +950,7 @@ static void dasdfmt_write_labels(volume_
  
  	/* write empty bootstrap (initial IPL records) */
  	if (g.verbosity > 0)
@@ -288,7 +290,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	/*
  	 * Note: ldl labels do not contain the key field
-@@ -1015,7 +1040,7 @@
+@@ -1015,7 +1040,7 @@ static void dasdfmt_write_labels(volume_
  	}
  
  	if (g.verbosity > 0)
@@ -297,7 +299,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	label_position = (VTOC_START_CC * heads + VTOC_START_HH) *
  		geo.sectors * blksize;
-@@ -1137,7 +1162,7 @@
+@@ -1137,7 +1162,7 @@ static void dasdfmt_release_space(void)
  	if (!g.ese || g.no_discard)
  		return;
  
@@ -306,7 +308,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	err = dasd_release_space(g.dev_node, &r);
  	if (err)
  		error("Could not release space: %s", strerror(err));
-@@ -1156,20 +1181,21 @@
+@@ -1156,20 +1181,21 @@ static void dasdfmt_prepare_and_format(u
  	int err;
  
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -333,7 +335,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	/* except track 0 from standard formatting procss */
  	p->start_unit = 1;
-@@ -1177,19 +1203,19 @@
+@@ -1177,19 +1203,19 @@ static void dasdfmt_prepare_and_format(u
  	process_tracks(cylinders, heads, p);
  
  	if (g.verbosity > 0)
@@ -356,7 +358,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	disk_enable();
  }
-@@ -1201,18 +1227,18 @@
+@@ -1201,18 +1227,18 @@ static void dasdfmt_expand_format(unsign
  				  format_data_t *p)
  {
  	if (!(g.withoutprompt && g.verbosity < 1))
@@ -379,7 +381,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	if (g.verbosity > 0)
  		printf("Re-accessing the device...\n");
-@@ -1321,16 +1347,16 @@
+@@ -1321,16 +1347,16 @@ static void do_format_dasd(volume_label_
  		if (!g.withoutprompt) {
  			printf("\n");
  			if (mode != EXPAND)
@@ -400,7 +402,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  				return;
  			}
  		}
-@@ -1348,17 +1374,19 @@
+@@ -1348,17 +1374,19 @@ static void do_format_dasd(volume_label_
  			break;
  		}
  
@@ -423,7 +425,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  			printf("ok\n");
  		}
  	}
-@@ -1367,7 +1395,7 @@
+@@ -1367,7 +1395,7 @@ static void do_format_dasd(volume_label_
  static void eval_format_mode(void)
  {
  	if (!g.force && g.mode_specified && g.ese && mode == EXPAND) {
@@ -432,7 +434,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  		warnx("Format mode 'expand' is not feasible.");
  		error("Use --mode=full or --mode=quick to perform a clean format");
  	}
-@@ -1390,7 +1418,7 @@
+@@ -1390,7 +1418,7 @@ static void set_prog_name(char *s)
  		prog_name = p + 1;
  }
  
@@ -441,7 +443,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  {
  	volume_label_t vlabel;
  	char old_volser[7];
-@@ -1398,12 +1426,93 @@
+@@ -1398,12 +1426,93 @@ int main(int argc, char *argv[])
  	char str[ERR_LENGTH];
  	char buf[7];
  
@@ -537,7 +539,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  
  	/* Establish a handler for interrupt signals. */
  	signal(SIGTERM, program_interrupt_signal);
-@@ -1447,6 +1556,12 @@
+@@ -1447,6 +1556,12 @@ int main(int argc, char *argv[])
  			}
  			g.layout_specified = 1;
  			break;
@@ -550,7 +552,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  		case 'y':
  			g.withoutprompt = 1;
  			break;
-@@ -1466,7 +1581,7 @@
+@@ -1466,7 +1581,7 @@ int main(int argc, char *argv[])
  				g.print_hashmarks = 1;
  			}
  			break;
@@ -559,7 +561,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  			if (!(g.print_hashmarks || g.print_progressbar))
  				g.print_percentage = 1;
  			break;
-@@ -1525,6 +1640,13 @@
+@@ -1525,6 +1640,13 @@ int main(int argc, char *argv[])
  		case OPT_NODISCARD:
  			g.no_discard = 1;
  			break;
@@ -573,7 +575,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  		case OPT_CHECK:
  			g.check = 1;
  			break;
-@@ -1539,6 +1661,9 @@
+@@ -1539,6 +1661,9 @@ int main(int argc, char *argv[])
  			break; /* exit loop if finished */
  	}
  
@@ -583,7 +585,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
  	CHECK_SPEC_MAX_ONCE(g.blksize_specified, "blocksize");
  	CHECK_SPEC_MAX_ONCE(g.labelspec, "label");
  	CHECK_SPEC_MAX_ONCE(g.writenolabel, "omit-label-writing flag");
-@@ -1554,54 +1679,70 @@
+@@ -1554,54 +1679,70 @@ int main(int argc, char *argv[])
  		reqsize = DEFAULT_REQUESTSIZE;
  	}
  
@@ -601,7 +603,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 +                       hashstep_str = "10";
 +               }
 +       }
-+
++	
  	if (g.print_hashmarks)
  		PARSE_PARAM_INTO(g.hashstep, hashstep_str, 10, "hashstep");
  
@@ -610,32 +612,6 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 -	rc = dasd_get_info(g.dev_node, &g.dasd_info);
 -	if (rc != 0)
 -		error("the ioctl call to retrieve device information failed: %s", strerror(rc));
--
--	g.ese = dasd_sys_ese(g.dev_node);
--	eval_format_mode();
--
--	/* Either let the user specify the blksize or get it from the kernel */
--	if (!g.blksize_specified) {
--		if (!(mode == FULL ||
--		      g.dasd_info.format == DASD_FORMAT_NONE) || g.check)
--			get_blocksize(&format_params.blksize);
--		else
--			format_params = ask_user_for_blksize(format_params);
--	}
--
--	if (g.keep_volser) {
--		if (g.labelspec)
--			error("The -k and -l options are mutually exclusive");
--		if (!(format_params.intensity & DASD_FMT_INT_COMPAT))
--			error("WARNING: VOLSER cannot be kept when using the ldl format!");
--
--		if (dasdfmt_get_volser(old_volser) == 0)
--			vtoc_volume_label_set_volser(&vlabel, old_volser);
--		else
--			error("VOLSER not found on device %s", g.dev_path);
--	}
--
--	check_disk();
 +        while (optind < argc) {
 +                get_device_name(optind, argc, argv);
 +                strncpy(g.dev_path_array[numdev], g.dev_path, strlen(g.dev_path));
@@ -643,7 +619,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 +
 +                optind++;
 +                numdev++;
-+	}
++       }
 +
 +        if (numdev > 1 && g.labelspec)
 +                error("Specifying a volser to be written doesn't make sense when formatting multiple DASD volumes.");
@@ -654,7 +630,7 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 + 
 +        }
 +
-+	for (numproc = 0; numproc < numdev; numproc++) {
++       for (numproc = 0; numproc < numdev; numproc++) {
 +                chpid = fork();
 +                if (chpid == -1 )
 +                        ERRMSG_EXIT(EXIT_FAILURE,
@@ -683,6 +659,32 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 +                if (WEXITSTATUS(status))
 +                        rc = WEXITSTATUS(status);
  
+-	g.ese = dasd_sys_ese(g.dev_node);
+-	eval_format_mode();
+-
+-	check_disk();
+-
+-	/* Either let the user specify the blksize or get it from the kernel */
+-	if (!g.blksize_specified) {
+-		if (!(mode == FULL ||
+-		      g.dasd_info.format == DASD_FORMAT_NONE) || g.check)
+-			get_blocksize(&format_params.blksize);
+-		else
+-			format_params = ask_user_for_blksize(format_params);
+-	}
+-
+-	if (g.keep_volser) {
+-		if (g.labelspec)
+-			error("The -k and -l options are mutually exclusive");
+-		if (!(format_params.intensity & DASD_FMT_INT_COMPAT))
+-			error("WARNING: VOLSER cannot be kept when using the ldl format!");
+-
+-		if (dasdfmt_get_volser(old_volser) == 0)
+-			vtoc_volume_label_set_volser(&vlabel, old_volser);
+-		else
+-			error("VOLSER not found on device %s", g.dev_path);
+-	}
+-
 -	if (check_param(str, ERR_LENGTH, &format_params) < 0)
 -		error("%s", str);
 -
@@ -698,12 +700,13 @@ diff -Naur a/dasdfmt/dasdfmt.c b/dasdfmt/dasdfmt.c
 -	free(g.dev_node);
 -
 -	return 0;
-+	return rc;
++       return rc;
  }
-diff -Naur a/dasdfmt/dasdfmt_cli.h b/dasdfmt/dasdfmt_cli.h
---- a/dasdfmt/dasdfmt_cli.h	2025-12-11 17:03:28.000000000 +0100
-+++ b/dasdfmt/dasdfmt_cli.h	2026-02-06 11:01:52.002323129 +0100
-@@ -34,6 +34,11 @@
+Index: s390-tools-2.43.1/dasdfmt/dasdfmt_cli.h
+===================================================================
+--- s390-tools-2.43.1.orig/dasdfmt/dasdfmt_cli.h
++++ s390-tools-2.43.1/dasdfmt/dasdfmt_cli.h
+@@ -30,6 +30,11 @@ UTIL_OPT_SECTION("FORMAT ACTIONS"),
  		.desc = "Perform complete format check on device",
  		.flags = UTIL_OPT_FLAG_NOSHORT,
  	},
@@ -715,7 +718,7 @@ diff -Naur a/dasdfmt/dasdfmt_cli.h b/dasdfmt/dasdfmt_cli.h
  	UTIL_OPT_SECTION("FORMAT OPTIONS"),
  	{
  		.option = { "blocksize", required_argument, NULL, 'b' },
-@@ -80,6 +85,10 @@
+@@ -76,6 +81,10 @@ UTIL_OPT_SECTION("FORMAT ACTIONS"),
  		.desc = "Start formatting without further user-confirmation",
  		.flags = UTIL_OPT_FLAG_NOLONG,
  	},
@@ -726,7 +729,7 @@ diff -Naur a/dasdfmt/dasdfmt_cli.h b/dasdfmt/dasdfmt_cli.h
  	UTIL_OPT_SECTION("DISPLAY PROGRESS"),
  	{
  		.option = { "hashmarks", required_argument, NULL, 'm' },
-@@ -91,9 +100,13 @@
+@@ -87,9 +96,13 @@ UTIL_OPT_SECTION("FORMAT ACTIONS"),
  		.desc = "Show a progressbar",
  	},
  	{

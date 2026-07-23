@@ -1,6 +1,7 @@
-diff -Naur a/etc/sysconfig/dumpconf b/etc/sysconfig/dumpconf
---- a/etc/sysconfig/dumpconf	2025-12-11 17:03:28.000000000 +0100
-+++ b/etc/sysconfig/dumpconf	2026-02-06 14:03:46.482188674 +0100
+Index: s390-tools-2.43.1/etc/sysconfig/dumpconf
+===================================================================
+--- s390-tools-2.43.1.orig/etc/sysconfig/dumpconf
++++ s390-tools-2.43.1/etc/sysconfig/dumpconf
 @@ -1,3 +1,4 @@
 +###########################################################################################
  #
@@ -142,9 +143,10 @@ diff -Naur a/etc/sysconfig/dumpconf b/etc/sysconfig/dumpconf
 +VMCMD_8=""
 +
 +############################### End Definitions ##############################################
-diff -Naur a/etc/udev/rules.d/59-dasd.rules b/etc/udev/rules.d/59-dasd.rules
---- a/etc/udev/rules.d/59-dasd.rules	2025-12-11 17:03:28.000000000 +0100
-+++ b/etc/udev/rules.d/59-dasd.rules	2026-02-06 15:49:49.132244953 +0100
+Index: s390-tools-2.43.1/etc/udev/rules.d/59-dasd.rules
+===================================================================
+--- s390-tools-2.43.1.orig/etc/udev/rules.d/59-dasd.rules
++++ s390-tools-2.43.1/etc/udev/rules.d/59-dasd.rules
 @@ -6,16 +6,17 @@
  SUBSYSTEM!="block", GOTO="dasd_symlinks_end"
  KERNEL!="dasd*", GOTO="dasd_symlinks_end"
@@ -165,7 +167,7 @@ diff -Naur a/etc/udev/rules.d/59-dasd.rules b/etc/udev/rules.d/59-dasd.rules
  
  # for partitions import parent information
  KERNEL=="dasd*[0-9]", IMPORT{parent}=="ID_*"
-@@ -24,6 +25,14 @@
+@@ -24,6 +25,14 @@ KERNEL=="dasd*[0-9]", ENV{ID_SERIAL}=="?
  KERNEL=="dasd*[0-9]", ENV{ID_UID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_UID}-part%n"
  KERNEL=="dasd*[0-9]", ENV{ID_XUID}=="?*", SYMLINK+="disk/by-id/$env{ID_BUS}-$env{ID_XUID}-part%n"
  
@@ -180,10 +182,11 @@ diff -Naur a/etc/udev/rules.d/59-dasd.rules b/etc/udev/rules.d/59-dasd.rules
  LABEL="dasd_symlinks_end"
  
  # on device add set request queue scheduler to none
-diff -Naur a/fdasd/fdasd.c b/fdasd/fdasd.c
---- a/fdasd/fdasd.c	2025-12-11 17:03:28.000000000 +0100
-+++ b/fdasd/fdasd.c	2026-02-06 14:10:08.461803766 +0100
-@@ -1232,10 +1232,13 @@
+Index: s390-tools-2.43.1/fdasd/fdasd.c
+===================================================================
+--- s390-tools-2.43.1.orig/fdasd/fdasd.c
++++ s390-tools-2.43.1/fdasd/fdasd.c
+@@ -1189,10 +1189,13 @@ static int fdasd_get_volser(fdasd_anchor
   */
  static void fdasd_reread_partition_table(fdasd_anchor_t *anc)
  {
@@ -198,12 +201,12 @@ diff -Naur a/fdasd/fdasd.c b/fdasd/fdasd.c
  		fdasd_error(anc, unable_to_ioctl, "Error while rereading "
  			    "partition table.\nPlease reboot!");
  	}
-Index: s390-tools-2.41.0/zdev/dracut/95zdev/parse-dasd.sh
+Index: s390-tools-2.43.1/zdev/dracut/95zdev/parse-dasd.sh
 ===================================================================
---- s390-tools-2.41.0.orig/zdev/dracut/95zdev/parse-dasd.sh
-+++ s390-tools-2.41.0/zdev/dracut/95zdev/parse-dasd.sh
+--- s390-tools-2.43.1.orig/zdev/dracut/95zdev/parse-dasd.sh
++++ s390-tools-2.43.1/zdev/dracut/95zdev/parse-dasd.sh
 @@ -27,9 +27,21 @@ zdev_vinfo() {
-
+ 
  zdev_parse_rd_dasd() {
      local _zdev_dasd _zdev_dasd_list
 -    for _zdev_dasd in $(getargs rd.dasd -d 'rd_DASD='); do
@@ -227,9 +230,10 @@ Index: s390-tools-2.41.0/zdev/dracut/95zdev/parse-dasd.sh
      echo "$_zdev_dasd_list"
  }
  
-diff -Naur a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
---- a/zdev/dracut/95zdev/parse-zfcp.sh	2025-12-11 17:03:28.000000000 +0100
-+++ b/zdev/dracut/95zdev/parse-zfcp.sh	2026-02-12 10:49:05.939509610 +0100
+Index: s390-tools-2.43.1/zdev/dracut/95zdev/parse-zfcp.sh
+===================================================================
+--- s390-tools-2.43.1.orig/zdev/dracut/95zdev/parse-zfcp.sh
++++ s390-tools-2.43.1/zdev/dracut/95zdev/parse-zfcp.sh
 @@ -11,26 +11,43 @@
  #
  
@@ -293,10 +297,11 @@ diff -Naur a/zdev/dracut/95zdev/parse-zfcp.sh b/zdev/dracut/95zdev/parse-zfcp.sh
 +
  unset zdev_zfcp_arg
  unset zdev_zfcp_base_args
-diff -Naur a/zdev/dracut/95zdev-kdump/module-setup.sh b/zdev/dracut/95zdev-kdump/module-setup.sh
---- a/zdev/dracut/95zdev-kdump/module-setup.sh	2025-12-11 17:03:28.000000000 +0100
-+++ b/zdev/dracut/95zdev-kdump/module-setup.sh	2026-02-06 14:20:29.803412303 +0100
-@@ -78,6 +78,7 @@
+Index: s390-tools-2.43.1/zdev/dracut/95zdev-kdump/module-setup.sh
+===================================================================
+--- s390-tools-2.43.1.orig/zdev/dracut/95zdev-kdump/module-setup.sh
++++ s390-tools-2.43.1/zdev/dracut/95zdev-kdump/module-setup.sh
+@@ -78,6 +78,7 @@ install() {
      inst_multiple /lib/s390-tools/zdev-from-dasd_mod.dasd
  
      inst_rules "59-dasd.rules"
@@ -304,10 +309,11 @@ diff -Naur a/zdev/dracut/95zdev-kdump/module-setup.sh b/zdev/dracut/95zdev-kdump
  
      # Obtain kdump target device configuration
  
-diff -Naur a/zdev/src/zdev-root-update.dracut b/zdev/src/zdev-root-update.dracut
---- a/zdev/src/zdev-root-update.dracut	2025-12-11 17:03:28.000000000 +0100
-+++ b/zdev/src/zdev-root-update.dracut	2026-02-06 14:25:03.817945754 +0100
-@@ -20,10 +20,4 @@
+Index: s390-tools-2.43.1/zdev/src/zdev-root-update.dracut
+===================================================================
+--- s390-tools-2.43.1.orig/zdev/src/zdev-root-update.dracut
++++ s390-tools-2.43.1/zdev/src/zdev-root-update.dracut
+@@ -20,10 +20,4 @@ dracut -f || {
  	exit 1
  }
  
@@ -318,10 +324,11 @@ diff -Naur a/zdev/src/zdev-root-update.dracut b/zdev/src/zdev-root-update.dracut
 -}
 -
  exit 0
-diff -Naur a/zipl/boot/menu.c b/zipl/boot/menu.c
---- a/zipl/boot/menu.c	2025-12-11 17:03:28.000000000 +0100
-+++ b/zipl/boot/menu.c	2026-02-06 14:29:07.392321346 +0100
-@@ -191,8 +191,11 @@
+Index: s390-tools-2.43.1/zipl/boot/menu.c
+===================================================================
+--- s390-tools-2.43.1.orig/zipl/boot/menu.c
++++ s390-tools-2.43.1/zipl/boot/menu.c
+@@ -191,8 +191,11 @@ int menu(void)
  	/* print config list */
  	menu_list();
  
