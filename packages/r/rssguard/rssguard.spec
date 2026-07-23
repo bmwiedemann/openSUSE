@@ -16,9 +16,9 @@
 #
 
 
-%define libver  5_1_2
+%define libver  5_2_2
 Name:           rssguard
-Version:        5.1.2
+Version:        5.2.2
 Release:        0
 Summary:        RSS/ATOM/RDF feed reader
 Group:          Productivity/Networking/News/Clients
@@ -42,7 +42,7 @@ BuildRequires:  gcc-c++
 %endif
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core) >= 6.3.0
+BuildRequires:  cmake(Qt6Core) >= 6.5.0
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6GuiPrivate)

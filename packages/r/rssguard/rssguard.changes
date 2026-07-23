@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Mon Jul 06 16:22:22 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.2:
+  * changelog
+  * fix #2343
+  * fix #2342
+  * New Crowdin updates (#2338)
+  * Bump golang.org/x/net in /resources/scripts/standalone/article-extractor (#2337)
+  * some fixes
+  * lang
+  * bug hunting
+  * fixed regression in initial list sorting, particularly for feedsview
+  * fixed #2315
+  * fix dbl click on tabbar empty space not working
+  * Chinese Simplified translation for rssguard_en.ts
+  * bug fixing
+  * New Crowdin updates (#2330)
+  * fix #2329
+  * fix problematic column/order when loading app for feedsview
+  * English, United Kingdom translation for rssguard_en.ts
+
+-------------------------------------------------------------------
+Wed Jul 01 12:17:02 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.1:
+  * changelog
+  * splash screen
+  * same for acc dialogs
+  * ability to use scrollarea in feed edi dialog
+  * enahcen gumbo parsing
+  * docs
+  * New Crowdin updates (#2323)
+  * lang gener
+  * maybe fixed #2146
+  * work on #2311
+  * work on #2311
+  * New Crowdin updates (#2322)
+  * New Crowdin updates (#2321)
+  * enhance homepage of a article/feed
+  * some fixes in gmail
+  * fixed strings typos and errors with codex
+  * fixed #1297
+  * qol enhancements for tree menu
+  * mujs sharun heresy
+  * work on columns
+  * streamline column management
+  * streamline basetreevieew
+  * Japanese translation for rssguard_en.ts
+  * Bump actions/checkout from 6 to 7 (#2316)
+
+-------------------------------------------------------------------
+Tue Jun 23 10:35:27 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 5.2.0:
+  * 5.2.0
+  * New Crowdin updates (#2310)
+  * add `patchelf` (#2312)
+  * tackle problematic expand/collapse when filtering
+  * fixed #2060
+  * less eager filtering state detection
+  * fixed #873
+  * Deep discover (#2309)
+  * New Crowdin updates (#2307)
+  * docs
+  * docs
+  * Optimize PNG images (#2304)
+  * refactoring textfactory
+  * retrieved date for filtering
+  * fixed #947
+  * XMPP "feeds" can now be edited
+  * mariadb
+  * 5.2.0 will be next
+  * fixed #1973
+  * prepare for #1973
+  * new bug report template
+  * more detailed info on how to generate dump file
+  * always deploy PDB symbols!
+  * fix #2300
+  * Finnish translation for rssguard_en.ts [skip ci] (#2301)
+  * New Crowdin updates (#2298)
+  * bit simpler timeout handlings
+  * New Crowdin updates (#2296)
+  * readme
+  * fixed #1023
+  * lbl
+  * fixed #1754
+  * fixed #2039
+  * save
+  * fixed #2275
+  * refactor
+  * icons
+  * fix #2295
+  * bit more allowing gemlog format
+  * bigger auto-search time
+  * fix #2282
+  * fix #2293
+  * #2294 - add feed-specific ability to ignore cookies - can be found in Network tab of feed edit dialog
+  * fixed #2294
+  * Bump richardsimko/update-tag from 1 to 2 (#2292)
+  * bit more universal layouting when images are turned off
+  * files
+  * reintroduce the option to open articles directly with per-feed setting, beucase now our article-viewers support loading URLs again
+  * Italian translation for rssguard_en.ts [skip ci] (#2287)
+  * save
+  * unify ext. browser opening a bit
+  * work on #2273
+  * refactoring
+  * Fix build
+  * generating base domain extra rules for PAC automatically
+  * new module
+  * process more specific domains first, less specific after that
+  * more elegant PAC
+  * fixed #2272
+  * bit more logging for PAC server
+  * better host matching
+  * partial support for #2273, so far without automatic auth insertion
+  * dialog for auth
+  * save
+  * skip auto-fetch on startup if gamemode is active
+  * change default proxy type to DEFAULT
+  * one more debugging line
+  * update misleading comments
+  * treat clientcount as property
+  * fix build
+  * Arabic translation for rssguard_en.ts [skip ci] (#2268)
+  * only use dbus for gamemode detection
+  * use dbus for gamemode detection first
+  * fix #2265
+  * New Crowdin updates (#2266)
+  * Fix parallel feed update result handling
+  * changelog
+- Rework rssguard-add_library_version.patch.
+
+-------------------------------------------------------------------
 Mon May 11 21:13:22 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 5.1.2:
