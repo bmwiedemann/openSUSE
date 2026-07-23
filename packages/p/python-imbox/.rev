@@ -95,4 +95,12 @@
   * fix append and join of param parts</comment>
     <requestid>1349222</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>f1b70bec1db82588ea2e30fbb9309942</srcmd5>
+    <version>0.10.1</version>
+    <time>1784841350</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367457</requestid>
+  </revision>
 </revisionlist>

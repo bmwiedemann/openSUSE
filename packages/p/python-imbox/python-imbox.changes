@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 16 12:40:29 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Build against python311 on Leap 15.x (%{?sle15_python_module_pythons}):
+  imbox 0.10.1 requires Python >= 3.11, but the default python3
+  flavor on 15.7 is still 3.6, which made pip build an "UNKNOWN"
+  0.0.0 wheel instead of imbox and broke the %install step
+
+-------------------------------------------------------------------
 Sat Apr 25 09:11:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.1:
