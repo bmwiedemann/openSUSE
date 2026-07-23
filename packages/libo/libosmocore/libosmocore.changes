@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 22 14:39:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.1
+  * socket: osmo_sockaddr_from_str_and_uint(): fix memleak
+  * osmo_io: Rewrite iofd_handle_send_completion() to fix multiple
+    issues
+  * osmo_io: Fix msgb memleak if iofd is unregistered during
+    write_cb with >1 io buffers
+  * netdev: Add API osmo_netdev_del_addr()
+
+-------------------------------------------------------------------
 Sat Mar 14 10:25:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.13.1
