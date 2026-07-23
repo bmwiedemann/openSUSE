@@ -778,4 +778,16 @@
     changes for British Columbia, CA.</comment>
     <requestid>1352974</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>46ad9015a2f533314c08158a7b42f0ef</srcmd5>
+    <version>2.690.0</version>
+    <time>1784840932</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.690.0 (2.69)
+   see /usr/share/doc/packages/perl-DateTime-TimeZone/Changes
+  2.69    2026-07-08
+  - This release is based on version 2026c of the Olson database. This release includes contemporary
+    changes for Alberta, CA and Morocco.</comment>
+    <requestid>1366957</requestid>
+  </revision>
 </revisionlist>
