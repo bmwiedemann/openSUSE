@@ -15261,7 +15261,7 @@ unsorted:
   - libopencascade-modelingalgorithms7_9_3 
   - libopencascade-modelingdata7_9_3 
   - libopencascade-visualization7_9_3 
-  - libopencl-clang16 
+  - libopencl-clang17 
   - libopencloudsync-devel 
   - libopencloudsync0 
   - libopencore-amr-devel 
@@ -21772,6 +21772,7 @@ unsorted:
   - perl-Carp-Clan 
   - perl-Carton 
   - perl-Catalyst-Manual 
+  - perl-Cavil-Matcher 
   - perl-Chart 
   - perl-Class-Accessor 
   - perl-Class-Accessor-Chained 
