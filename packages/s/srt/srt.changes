@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Tue Jul 21 08:54:19 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.5.6:
+  + Security Notice: This release includes important security
+    updates that address two significant CVE vulnerabilities
+    affecting previous versions of the library. Users are strongly
+    encouraged to upgrade to this version as soon as possible to
+    benefit from these fixes and reduce exposure to the associated
+    security risks.
+  + The resolved CVEs are listed below:
+    - CVE-2026-55869: Heap-Based Buffer Overflow in KMREQ Handling
+    - CVE-2026-55868: Encryption State Machine Downgrade
+  + Security Improvements:
+    - Implemented security improvements for KMREQ buffer
+      validation. This fix addresses a vulnerability where received
+      message sizes were not verified against the destination
+      buffer size during the copy process. The update enforces
+      word-aligned validation to prevent overflows when copying to
+      internal arrays.
+    - Added strict validation of KMRSP wire length to prevent stack
+      overflows.
+    - Resolved an OOB read in LOSSREPORT range parsing. The logic
+      previously read a "HI" sequence number word following a "LO"
+      marker without verifying if the "HI" word existed in the wire
+      payload.
+    - Fixed an OOB read vulnerability in DROPREQ payload parsing.
+      The handler now verifies that the wire payload meets the
+      minimum 8-byte length requirement (two 32-bit sequence
+      numbers) before attempting to process the request, preventing
+      reads beyond the packet slot.
+    - Introduced a guard in CRcvBuffer::dropMessage to reject
+      requested drop ranges that extend beyond the end of the
+      receiver buffer.
+  + Important Bug Fixes:
+    - Streamlined the library cleanup sequence by removing
+      redundant post-cleaning of closed sockets. Architecture logic
+      dictates that the Garbage Collector (GC) thread is the
+      primary owner of socket deletion. Once the GC thread is
+      joined, all sockets are considered deleted; further
+      post-checks are unnecessary and avoid potential undefined
+      behavior in cases where the library state might be corrupted.
+    - Fixed a segmentation fault (SEGV) occurring during global or
+      static initialization when ENABLE_HEAVY_LOGGING was active.
+  + Build System Enhancements:
+    - Transitioned the CI/CD pipeline to a robust Linux
+      configuration matrix, serving as the modern replacement for
+      Travis CI. The new system includes various platform and
+      compiler combinations and incorporates specific fixes for
+      MinGW builds and C++11 syntax compatibility.
+  + Documentation Updates: Corrected a typographical error in the
+    documentation regarding the separator used for
+    searchParameters.
+
+-------------------------------------------------------------------
 Tue Apr 28 21:59:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.5.5:
