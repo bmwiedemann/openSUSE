@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Jul 17 22:57:42 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.8.1:
+  * On non-macOS platforms, alt-backspace, alt-delete, alt-left
+    and alt-right operate on words again instead of tokens (#12122)
+    eliminating cross-platform differences in input handling.
+  * Builtin and function commands can now be colored separately
+    via new variables fish_color_builtin and fish_color_function (#12837)
+  * Add fish_darcs_prompt for Darcs repository status.
+  * Fixed a crash in commandline --current-process when the
+    cursor is inside a &| pipe (#12868)
+  * Since prompt marking (via OSC 133) causes an issue in Konsole’s
+    default configuration, prompt marking had been disabled for
+    Konsole in 4.8.0. Now the omit-term-workarounds feature flag
+    can be enabled to enable prompt marking on Konsole again (#12859)
+  * fix: (From 4.8.0) abbr --position=anywhere completions are no
+    longer offered in argument position, to avoid cluttering the
+    completion pager (#12838).
+  * fix: (From 4.8.0) pacman -Q short option completions (#12857)
+
+-------------------------------------------------------------------
+Thu Jul  2 21:11:35 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update to version 4.8.0:
+  * Translatable messages defined in Rust source code can and
+    should now be translated using Fluent instead of GNU gettext.
+    For now, GNU gettext continues to be used for translating
+    messages defined in fish scripts. To make Fluent easy to work
+    with, we have added tooling based on the new fluent-ftl-tools
+    library. See Contributing Translations (#11928)
+  * Builtin complete’s --command and --path options no longer
+    unescape their argument.
+  * History search would sometimes forget about commands after
+    those were re-run in concurrent sessions. This has been fixed (#10300)
+  * fish_hg_prompt, fish_git_prompt and fish_fossil_prompt now
+    strip control characters from VCS state read off disk, matching prompt_pwd
+  * Abbreviations with --position=anywhere can now be completed
+    in argument position, not just in command position (#12630)
+  * Path component movement (ctrl-w) skips escaped characters.
+  * Completion of short option groups will now handle --condition correctly (#12821)
+  * Fixed an issue where ctrl-c might fail to cancel certain functions (#12802)
+  * On the first run after upgrading from an older version, fish
+    will try harder to check if the current theme matches a
+    historical default. If it does match, fish won’t create ~/.
+    config/fish/conf.d/fish_frozen_theme.fish when upgrading from
+    fish < 4.3. In particular, on systems where fish version 3.x
+    was installed originally, fish will now avoid creating that
+    file on upgrade (#12725).
+  * cd supports the -L and -P options, like other shells, to
+    allow specifying whether symbolic links (symlinks) are
+    resolved when changing directories (#7206)
+  * cd with a relative path will now retry using the real current
+    directory, if $PWD has been moved (#12700)
+  * Nested brace expansions now strip unquoted leading and
+    trailing spaces from entries consistently (#12794)
+  * bind shows the files where bindings were defined (#12504)
+  * fish no longer creates the __fish_initialized universal
+    variable on startup. If you don’t expect to need to downgrade
+    to earlier versions, you can remove it with set --erase
+    __fish_initialized. This means that fish now only creates
+    universal variables if instructed by the user.
+  * fix: (from 4.4.0) Vi mode c,W key binding wrongly deleted
+    trailing spaces (#12790)
+  * fix: (from 4.4.0) Vi mode x in builtin read (#12724)
+  * fix: (from 4.3.3) Repeated tab would sometimes insert
+    smartcase completions redundantly.
+  * fix: (from 4.3.0) Pressing escape during command execution
+    could insert garbage text into the command line (#12379)
+
+-------------------------------------------------------------------
 Fri May  8 19:20:39 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to version 4.7.1:
