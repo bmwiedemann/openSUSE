@@ -80,7 +80,7 @@ Name:           %{package_name}
 Summary:        Command-line programs for the NetCDF scientific data format
 License:        NetCDF
 Group:          Productivity/Scientific/Other
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
 URL:            https://www.unidata.ucar.edu/software/netcdf/
 Source:         https://downloads.unidata.ucar.edu/netcdf-c/%{version}/%{pname}-c-%{version}.tar.gz

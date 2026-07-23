@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:13:30 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 4.10.1
+  https://github.com/Unidata/netcdf-c/releases/tag/v4.10.1
+- Rebase val_NC_check_voff-Fix-uninitialized-variable-warning.patch
+
+-------------------------------------------------------------------
 Wed Apr  8 01:48:32 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 4.10.0
