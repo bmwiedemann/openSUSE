@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Jul 21 09:22:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-61870: Memory leak in VIFF encoder when allocation fails [bsc#1271293]
+  * GraphicsMagick-CVE-2026-61870.patch
+
+-------------------------------------------------------------------
 Thu Jul  9 12:07:43 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

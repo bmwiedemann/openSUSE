@@ -39,6 +39,8 @@ Patch7:         GraphicsMagick-CVE-2026-42050.patch
 Patch8:         GraphicsMagick-CVE-2026-46523.patch
 # CVE-2026-13606: memory corruption via crafted Photo CD (PCD) file [bsc#1269891]
 Patch9:         GraphicsMagick-CVE-2026-13606.patch
+# CVE-2026-61870: Memory leak in VIFF encoder when allocation fails [bsc#1271293]
+Patch10:        GraphicsMagick-CVE-2026-61870.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
