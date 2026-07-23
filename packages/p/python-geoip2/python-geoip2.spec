@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geoip2
-Version:        5.2.0
+Version:        5.3.0
 Release:        0
 Summary:        MaxMind GeoIP2 Python API
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/maxmind/GeoIP2-python
 Source:         https://files.pythonhosted.org/packages/source/g/geoip2/geoip2-%{version}.tar.gz#/%{name}-%{version}.tar.gz
-%if 0%{?suse_version} <= 1600
+%if 0%{?suse_version} <= 1700
 # partial reversion of 83825a8 ("Switch to uv build")
 Patch0:         pyproject-setuptools.patch
 BuildRequires:  %{python_module setuptools}

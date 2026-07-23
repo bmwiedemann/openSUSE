@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Jul 21 11:32:46 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 5.3.0:
+  * The version is now retrieved from package metadata at runtime using
+    importlib.metadata. This reduces the chance of version inconsistencies
+    during releases.
+  * The async client now builds its Authorization header with
+    aiohttp.encode_basic_auth() instead of the aiohttp.BasicAuth /
+    auth= parameter, which are deprecated as of aiohttp 3.14.0. As a result,
+    the minimum required aiohttp version is now 3.14.0.
+  * A new residential attribute has been added to
+    geoip2.records.Anonymizer. This is a geoip2.records.AnonymizerFeed
+    object providing residential proxy data for the network and contains the
+    following fields: confidence, network_last_seen, and
+    provider_name. This attribute may be populated even when no other
+    anonymizer attributes are set, so the anonymizer object may now
+    contain only this attribute.
+
+-------------------------------------------------------------------
 Thu Jan 29 18:42:21 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Require uv-build on Tumbleweed

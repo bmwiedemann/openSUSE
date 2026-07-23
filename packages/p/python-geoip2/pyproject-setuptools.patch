@@ -1,14 +1,14 @@
---- a/pyproject.toml	1970-01-01 01:00:00.000000000 +0100
-+++ b/pyproject.toml	2026-01-29 19:40:59.478833382 +0100
-@@ -43,19 +43,11 @@
+Index: geoip2-5.3.0/pyproject.toml
+===================================================================
+--- geoip2-5.3.0.orig/pyproject.toml
++++ geoip2-5.3.0/pyproject.toml
+@@ -42,19 +42,11 @@ lint = [
  ]
  
  [build-system]
--requires = ["uv_build>=0.7.19,<0.8.0"]
+-requires = ["uv_build>=0.11.26,<0.12.0"]
 -build-backend = "uv_build"
-+requires = ["setuptools"]
-+build-backend = "setuptools.build_meta"
- 
+-
 -[tool.uv.build-backend]
 -source-include = [
 -    "HISTORY.rst",
@@ -19,8 +19,11 @@
 -    "tests/*.py",
 -    "tests/data/test-data/*.mmdb"
 -]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
++ 
 +[tool.setuptools.package-data]
 +geoip2 = ["py.typed"]
  
  [project.urls]
- Homepage = "https://www.maxmind.com/"
+ Homepage = "https://www.maxmind.com/en/home"
