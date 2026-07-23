@@ -828,4 +828,17 @@
   	* data update for 2026-07-04</comment>
     <requestid>1364269</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>40fc397325cfe74672091bf26a9eb4ae</srcmd5>
+    <version>20260717.1.0</version>
+    <time>1784840901</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 20260717.1.0 (20260717.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260717.001 2026-07-17T18:35:00Z
+  	* data update for 2026-07-17
+  20260715.001 2026-07-15T15:27:04Z
+  	* data update for 2026-07-15</comment>
+    <requestid>1366822</requestid>
+  </revision>
 </revisionlist>
