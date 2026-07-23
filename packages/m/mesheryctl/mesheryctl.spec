@@ -17,7 +17,7 @@
 
 
 Name:           mesheryctl
-Version:        1.0.58
+Version:        1.0.62
 Release:        0
 Summary:        CLI for the meshery cloud native management plane
 License:        Apache-2.0

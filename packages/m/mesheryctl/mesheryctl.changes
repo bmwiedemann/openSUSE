@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:05:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.62:
+  * General
+    - [Server] Stop per-request Error-notification spam for broken
+      connections (SendEvent NoOp-halt bypasses de-dup) @marblom007
+      (#20826)
+    - [Server] Stop controller-status poll from spamming
+      meshkit-11180 on a nil machine context @marblom007 (#20812)
+  * Meshery CLI
+    - feat(mesheryctl): add registry purge subcommand @simihablo
+      (#20851)
+  * Maintenance
+    - [UI] Type the host/extension event contract so renames fail
+      at compile time @marblom007 (#20880)
+  * Documentation
+    - feat(mesheryctl): add registry purge subcommand @simihablo
+      (#20851)
+- update to 1.0.61:
+  * General
+    - fix(server): fix environment creation failing on remote
+      provider @simihablo (#20861)
+- update to 1.0.60:
+  * General
+    - [Chore]: Bump meshery/schemas to v1.3.35 @l5io (#20833)
+    - Bump shell-quote from 1.8.4 to 1.10.0 in
+      /install/docker-extension/ui @dependabot[bot] (#20836)
+    - Bump body-parser from 1.20.4 to 1.20.6 in
+      /install/docker-extension/ui @dependabot[bot] (#20842)
+    - purge old model versions @simihablo (#20846)
+    - upgrade to schemas 1.3.35 @simihablo (#20838)
+    - [Server] Fix variable name typo sucess to success in design
+      engine handler @shivv23 (#20816)
+    - [Server] Fix master build break: restore loop in
+      auto_register.go toConnectionDefinitions @marblom007 (#20814)
+    - [Server] Fix nil pointer crash in MeshSync auto-registration
+      @Atishyy27 (#20733)
+    - [Server] Accept camelCase sort keys in SanitizeOrderInput
+      @leecalcote (#20717)
+    - [Server] Fix typo respone body to response body in remote
+      provider error strings @shivv23 (#20811)
+  * Maintenance
+    - Bump js-yaml from 5.2.0 to 5.2.1 in /ui @dependabot[bot]
+      (#20834)
+    - Bump axios from 1.16.1 to 1.18.1 in /ui @dependabot[bot]
+      (#20828)
+    - [CI] Add Self-paced Contributor Trainings link to playground
+      issue template @Sathwik-parimi-07 (#20792)
+  * Documentation
+    - Bump tar from 7.5.11 to 7.5.20 in /docs @dependabot[bot]
+      (#20835)
+    - docs: fix broken MetalLB installation link #20810 @Zara-5
+      (#20815)
+- update to 1.0.59:
+  * General
+    - [Server] Log human-readable summary in SaveConnection debug
+      line @leecalcote (#20797)
+  * Documentation
+    - [Docs] Fix illegible contrast on secondary alerts @SHIVIKA330
+      (#20796)
+
+-------------------------------------------------------------------
 Mon Jul 20 05:56:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.58:
