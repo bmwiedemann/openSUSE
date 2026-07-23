@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:20:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.5.0:
+  * Breaking: Rename the --show-params flag to --params. Its
+    parameter ID changes from show_params to params, its
+    environment variable suffix from _SHOW_PARAMS to _PARAMS, and
+    click-extra wrap --show-params becomes click-extra wrap
+    --params. ShowParamsOption and @show_params_option keep their
+    names.
+  * Add the click_extra.sphinx.myst_docstrings Sphinx extension:
+    write Python docstrings in MyST markdown, transparently
+    converted to reST at build time, keeping sphinx.ext.autodoc and
+    sphinx_autodoc_typehints unmodified. Absorbed from
+    repomatic.myst_docstrings.
+  * Add a convert-to-myst subcommand migrating a package's reST
+    docstrings and comments to MyST in place, idempotently: string
+    literals and other runtime code pass through byte-for-byte.
+    Absorbed from repomatic, along with the sphinx-apidoc stub
+    converter click_extra.rst_to_myst and the public
+    convert_source().
+  * Add a :mirror: flag to the python:render Sphinx directive: the
+    block's generated Markdown is mirrored into the source .md
+    between <!-- mirror --> markers, reviewable in raw diffs;
+    builds regenerate it in memory, never writing to the source.
+  * Extend click-extra refresh-directives to also refresh
+    python:render :mirror: regions, alongside {matrix} blocks, by
+    executing each mirror block's Python.
+  * Add a start_new_session option to run_cli(): the child leads
+    its own POSIX session and process group, and every kill path
+    signals the whole group, so grandchildren are reaped. Off by
+    default to keep interactive prompts working; no-op on Windows.
+  * Add a themes demo subcommand (click-extra themes) printing a
+    sample help screen rendered under every built-in theme, for a
+    quick terminal preview of all palettes.
+  * Promote ctx.render_table and ctx.print_table to methods on
+    click_extra.Context, reading the --table-format and --sort-by
+    selections from the context's shared meta so they work from any
+    subcommand. TableFormatOption and SortByOption remain drop-ins
+    on click and cloup commands; ctx.render_table now honors
+    --sort-by.
+  * Warn on configuration keys unknown to the config_schema when
+    the section is schema-only, instead of dropping them silently;
+    strict mode still raises, and sections mixing CLI parameters
+    stay silent. Exposed as warn_unknown on make_schema_callable()
+    and schema_warn_unknown on run_config_validation().
+  * Convert all of click-extra's own docstrings and comments from
+    reST to MyST.
+  * Fix a group-level --theme not reaching the CLI wrapped by
+    click-extra wrap: the target's help now renders in the chosen
+    palette instead of falling back to the default dark theme.
+  * Fix click-extra refresh-directives rewriting {matrix} examples
+    nested inside longer code fences: documented illustrations are
+    copied verbatim, never refreshed or executed.
+
+-------------------------------------------------------------------
 Thu Jul 16 10:52:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.4.0:
