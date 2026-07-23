@@ -223,4 +223,21 @@
     <comment>KDE Frameworks 6.27 (forwarded request 1358688 from krop)</comment>
     <requestid>1358890</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e2a50429f74927bfc9169a23180792cd</srcmd5>
+    <version>6.28.0</version>
+    <time>1784125793</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.28 (forwarded request 1364956 from krop)</comment>
+    <requestid>1365112</requestid>
+  </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>cc0a6b7416c91ce1d55262d21d7855ea</srcmd5>
+    <version>6.28.0</version>
+    <time>1784840903</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream change (kde#523105)
+  * 0001-HEIF-keep-reader-callback-table-alive.patch</comment>
+    <requestid>1366839</requestid>
+  </revision>
 </revisionlist>

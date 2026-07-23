@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Jul 20 20:22:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#523105)
+  * 0001-HEIF-keep-reader-callback-table-alive.patch
+
+-------------------------------------------------------------------
+Fri Jul 10 12:15:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.28.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.28.0
+- Changes since 6.27.0:
+  * EXR: added support for additional metadata
+  * Update dependency version to 6.28.0
+  * JP2: limits the maximum number of channels to the global value defined
+  * ossfuzz: replace INITGUID with __ANSI__
+  * JXR: remove INITGUID define
+  * ossfuzz: update libaom and libavif
+  * HEIF: use heif_reader for random access devices
+  * avif: If we only have single image, return false at jumpToNextImage (kde#521200)
+  * Added limit to maximum number of channels
+  * Improve buffer memory management
+  * Update version to 6.28.0
+
+-------------------------------------------------------------------
 Sat Jun  6 11:42:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.27.0
