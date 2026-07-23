@@ -1,7 +1,7 @@
 #
 # spec file for package inn
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -248,8 +248,8 @@ find %{buildroot} ! -type d -printf "/%%P\n" | awk '
 { pfx="" }
 /^\/%{search}\/news\/include/              { next }
 /^\/%{search}\/news\/lib\/.*\.a/             { next }
-$0 == "%{_libexecdir}/news/bin/inews"           { pfx="%attr(2555,news,news) " }
-$0 == "%{_libexecdir}/news/bin/rnews"           { pfx="%attr(4550,news,uucp) " }
+$0 == "%{_libexecdir}/news/bin/inews"           { pfx="%verify(not mode) %attr(2555,news,news) " }
+$0 == "%{_libexecdir}/news/bin/rnews"           { pfx="%verify(not mode) %attr(4550,news,uucp) " }
 $0 == "%{_libexecdir}/news/bin/innbind"         { pfx="%verify(not mode) %attr(4550,root,news) " }
 /^\/(etc\/news|%{search}\/news\/bin\/filter|var\/lib\/news)\// {
 	pfx="%config(noreplace) "pfx
@@ -328,8 +328,8 @@ fi
 %defattr(-,root,root)
 %config(noreplace)      /etc/news/inn.conf
 %dir                    %{_libexecdir}/news/bin
-%attr(4550,news,uucp)   %{_libexecdir}/news/bin/rnews
-%attr(2555,news,news)   %{_libexecdir}/news/bin/inews
+%verify(not mode) %attr(4550,news,uucp)   %{_libexecdir}/news/bin/rnews
+%verify(not mode) %attr(2555,news,news)   %{_libexecdir}/news/bin/inews
                         /usr/bin/[ri]news
                         %{_libexecdir}/news/[ri]news
 %doc                    %{_mandir}/*/inn.conf.*

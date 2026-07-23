@@ -405,4 +405,13 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     <comment></comment>
     <requestid>1195653</requestid>
   </revision>
+  <revision rev="48" vrev="4">
+    <srcmd5>662b494878ce72c79f93be4bdc242774</srcmd5>
+    <version>2.6.5</version>
+    <time>1784841366</time>
+    <user>dimstar_suse</user>
+    <comment>- Properly set %verify(not mode) for files that have their
+  permissions set/adjusted by set_permissions. (forwarded request 1367356 from dimstar)</comment>
+    <requestid>1367466</requestid>
+  </revision>
 </revisionlist>

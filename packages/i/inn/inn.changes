@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:18:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly set %verify(not mode) for files that have their
+  permissions set/adjusted by set_permissions.
+
+-------------------------------------------------------------------
 Mon Aug 19 11:58:32 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - replace /var/run/news with /run/news in /usr/lib/tmpfiles.d/inn.conf
