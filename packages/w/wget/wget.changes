@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:31:44 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Fix metalink regression from CVE-2026-58469 fix
+  See: commit 7b1cdecc49bc77bde220fc575c8a00386c3f3bcf from
+  https://gitlab.com/gnuwget/wget
+  [bsc#1272219, CVE-2026-58469]
+  * CVE-2026-58469.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 13:02:15 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - ftp validate PASV/LPSV response address against control connection peer
