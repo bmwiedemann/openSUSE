@@ -1003,4 +1003,41 @@
   * chore(deps): bump github.com/tomwright/dasel/v3 from 3.3.2 to 3.10.1 (#1104) (forwarded request 1364798 from jfkw)</comment>
     <requestid>1364799</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>62aebb3d67d615b8010b465944862b72</srcmd5>
+    <version>3.15.2</version>
+    <time>1784842480</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.15.2:
+  * chore: golangci
+  * docs: spelling
+  * docs: add cms
+  * docs: update build badge [skip ci]
+  * test: cover style-local action script lookup
+  * fix: allow action scripts to be found inside the style directory (#1121)
+  * test: add AsciiDoc source-position regression (#1113)
+  * fix: preserve AsciiDoc heading scopes with anchors and xrefs
+  * fix: preserve source whitespace around inline markup (#1111, #1119)
+  * chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0 (#1120)
+  * chore(deps): bump golang.org/x/net from 0.47.0 to 0.55.0 (#1115)
+  * fix: parse condition-less affix rules; floor compound segment length (#776)
+  * fix: guard against negative span in AddAlert (#808)
+  * feat: recognize affix-flag compound words (#848)
+  * fix: position scope:raw matches by byte offset, not search (#869)
+  * feat: skip display math ($$…$$) when linting Markdown (#878)
+  * fix: position repeated tokens correctly in assignLoc (#892)
+  * fix: handle broken symlinks gracefully during walks (#919, #968)
+  * fix: name the offending path in symlink-resolution errors (#968)
+  * fix: don't rename a local package's .vale.ini during sync (#991)
+  * fix: locate punctuation-only matches within their block (#994)
+  * fix: surface a concise MDX parse error instead of a Node trace (#995)
+  * feat: re-case regex vocab terms in Vale.Terms output (#997)
+  * fix: honor inline vale off/on spans (#1001)
+  * fix: locate quote-normalized matches in smart-quote source (#1003)
+  * fix: don't abort dictionary search on a failed readlink (#1014)
+  * fix: make missing-Vocab error show the searched paths (#1015)
+  * fix: allow array document roots in Views (#1017)
+  * fix: don't leak line comments into a following block comment (#1020) (forwarded request 1367510 from jfkw)</comment>
+    <requestid>1367518</requestid>
+  </revision>
 </revisionlist>
