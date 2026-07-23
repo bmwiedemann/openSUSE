@@ -5,6 +5,8 @@ Fri May 22 19:11:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
   * Codec, format, filter and various other bugfixes.
   * avcodec/av1dec: check that primary_ref_frame is within range.
     (CVE-2026-30997, bsc#1262047)
+  * avcodec/rasc: fix heap use-after-free in decode_move().
+    (CVE-2026-12706, bsc#1268595)
 - Drop patches fixed upstream:
   * ffmpeg-7-CVE-2026-40962.patch
 - Rebase patches with quilt.
