@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:03:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.15:
+  * fix(talos): skip multidoc patching if no docs generated
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.14
+  * chore(container): update registry.k8s.io/kubectl docker tag to
+    v1.36.3
+  * feat: update Scoop for talhelper version v3.1.14
+  * feat: update flake (#1699)
+
+-------------------------------------------------------------------
+Thu Jul 23 05:55:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.14:
+  * docs: update CLI reference documentation (#1697)
+  * chore(deps): update dependency siderolabs/talos to v1.13.7
+  * chore(container): update ghcr.io/siderolabs/talosctl docker tag
+    to v1.13.7
+  * chore(schema): update talos-extensions.yaml JSON schema (#1696)
+  * chore(github-action): update actions/checkout action to v7.0.1
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.20
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update actions/checkout digest to 3d3c42e
+    (#1692)
+  * chore(github-action)!: Update actions/setup-go action to v7
+  * fix(nix): not sure what happened but something changed with GH
+    archive
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * chore(github-action): update renovatebot/github-action action
+    to v46.1.19
+  * chore(schema): update talos-extensions.yaml JSON schema
+  * fix(deps): update module github.com/budimanjojo/talhelper/v3 to
+    v3.1.13
+  * feat: update Scoop for talhelper version v3.1.13
+  * feat: update flake (#1682)
+
+-------------------------------------------------------------------
 Mon Jul 13 05:57:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.1.13:
