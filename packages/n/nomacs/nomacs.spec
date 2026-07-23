@@ -1,7 +1,7 @@
 #
 # spec file for package nomacs
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2024 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           nomacs
-Version:        3.22.0
+Version:        3.23.3
 Release:        0
 Summary:        Lightweight image viewer
 License:        GPL-3.0-or-later

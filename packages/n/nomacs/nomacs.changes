@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 22 17:46:35 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 3.23.3
+  * Fully migrated to Qt 6 and dropped Qt 5 support
+  * Overhauled CMake build system and modernized dependencies
+  * Added format support for AVIF, HEIF/HEIC, JXL, EXR, WEBP, EPS
+  * Added option to disable UI animations
+  * Improved theme styling, dark mode, and 4K/HiDPI rendering
+  * Fixed keyboard shortcuts when menu bar is hidden
+  * Fixed dock input focus, cropping keys, and HUD responsiveness
+  * Fixed Pseudocolor mode regression and image orientation
+  * Optimized CPU/RAM usage for thumbnails and folder scanning
+  * Fixed ZIP archive browsing and single-file directory loading
+  * Fixed EXIF handling for star ratings and comments
+  * Updated translations and performed code quality cleanup
+
+-------------------------------------------------------------------
 Mon Dec 29 04:27:54 UTC 2025 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 -  Add cmake(QuaZip-Qt6) BuildRequires: enable quazip support
