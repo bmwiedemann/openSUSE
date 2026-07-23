@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 22 12:06:17 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update license to GPL-3.0-only AND GPL-3.0-or-later
+  legal review showed that 212 source files carry GPL-3.0-only headers
+
+-------------------------------------------------------------------
 Thu Jul 16 02:34:11 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Only build on architectures where qt6-webengine is available.

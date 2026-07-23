@@ -24,7 +24,7 @@ Name:           goldendict-ng
 Version:        26.5.0
 Release:        0
 Summary:        Dictionary Lookup Program
-License:        GPL-3.0-or-later
+License:        GPL-3.0-only AND GPL-3.0-or-later
 Group:          Productivity/Office/Dictionary
 URL:            https://xiaoyifang.github.io/goldendict-ng/
 Source0:        %{name}-%{version}.tar.xz
