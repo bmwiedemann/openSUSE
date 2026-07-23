@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Jul 14 15:13:07 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Update to 3.14.3:
+ - Fix HTTPS httpx mocking in `wrap_bio()` plus regressions occurred (#324)
+ - fix httpx https wrap_bio address handling
+ - refine ssl wrap_bio regression fix
+ - clarify ssl wrap_bio address assignment
+ - harden ssl wrap_bio hostname decoding
+ - simplify ssl wrap_bio fallback logic
+ - handle empty ssl wrap_bio hostnames explicitly
+ - rename ssl wrap_bio hostname locals
+ - preserve ssl wrap_bio port state consistently
+ - Prevent deadlock when mocking large async HTTP responses.
+ - Fix SSL host fallback check for empty server_hostname
+ - Preserve empty SSL host when filling missing peer cert fields
+ - Add more tests for coverage and preventing regressions.
+
+-------------------------------------------------------------------
 Mon Jul  6 19:15:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.2:
