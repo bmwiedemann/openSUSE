@@ -1,7 +1,7 @@
 #
 # spec file for package python-ipympl
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,8 @@
 #
 
 
-%define pyver   0.9.7
+%define pyver   0.10.0
+%define pydistver 0.10
 %define jsver   0.11.7
 %bcond_with     test
 Name:           python-ipympl
@@ -78,7 +79,7 @@ Summary:        Matplotlib Jupyter Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-notebook
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(ipympl) = %{pyver}
+Requires:       python3dist(ipympl) = %{pydistver}
 Suggests:       python3-ipympl
 Provides:       jupyter-ipympl = %{jsver}
 Obsoletes:      jupyter-ipympl < %{jsver}
@@ -95,7 +96,7 @@ Summary:        Matplotlib JupyterLab Extension
 Group:          Development/Languages/Python
 Requires:       jupyter-jupyterlab
 # Any flavor is okay, but suggest the primary one for automatic zypper choice -- boo#1214354
-Requires:       python3dist(ipympl) = %{pyver}
+Requires:       python3dist(ipympl) = %{pydistver}
 Suggests:       python3-ipympl
 Provides:       jupyter-ipympl-jupyterlab = %{jsver}
 Obsoletes:      jupyter-ipympl-jupyterlab < %{jsver}
@@ -108,6 +109,8 @@ This package provides the JupyterLab extension.
 %prep
 %autosetup -p1 -n ipympl-%{pyver}
 sed -i '/prepublish/d' package.json
+sed -i 's/jlpm/npm run/g' package.json
+sed -i 's/jlpm/npm/g' pyproject.toml
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
 
 %build

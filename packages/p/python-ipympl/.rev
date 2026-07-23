@@ -211,4 +211,35 @@
     #571</comment>
     <requestid>1294597</requestid>
   </revision>
+  <revision rev="17" vrev="17">
+    <srcmd5>a14fdca3a81c1a9ea5d4ea1845d04c65</srcmd5>
+    <version>unknown</version>
+    <time>1774470152</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342527</requestid>
+  </revision>
+  <revision rev="18" vrev="18">
+    <srcmd5>04f175e58ebd19a75dc790fa2ec74133</srcmd5>
+    <version>unknown</version>
+    <time>1784841353</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix distver
+- Update to 0.10.0 (CVE-2026-48779, bsc#1268935)
+  * Update snapshots bot checkout and permission check by @martinRenou in #614
+  * Add Pixi setup by @ianhi in #613
+  * FIX: Toolbar savefig respects rcparams by @ianhi in #615
+0.9.8:
+  * Make 'Usage' section in README consistent with current Basic
+    Example at current documentation by @fomightez in #583
+  * build: update release workflow by @ianhi in #590
+  * Use thread lock to support comms via subshells by @ianthomas23 in #603
+  * Use intersphinx_registry to keep intersphinx_mapping up to date.
+    by @Carreau in #604
+  * Test on python 3.14 by @ianthomas23 in #606
+  * Fix doc build issues by @ianthomas23 in #605
+  * Release 0.9.8 by @ianthomas23 in #607
+</comment>
+    <requestid>1367456</requestid>
+  </revision>
 </revisionlist>

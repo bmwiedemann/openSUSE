@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:41:58 UTC 2026 - Benjamin Greiner <code@bnavigator.de>
+
+- Fix distver
+
+-------------------------------------------------------------------
+Tue Jul 21 08:16:32 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 0.10.0 (CVE-2026-48779, bsc#1268935)
+  * Update snapshots bot checkout and permission check by @martinRenou in #614
+  * Add Pixi setup by @ianhi in #613
+  * FIX: Toolbar savefig respects rcparams by @ianhi in #615
+0.9.8:
+  * Make 'Usage' section in README consistent with current Basic
+    Example at current documentation by @fomightez in #583
+  * build: update release workflow by @ianhi in #590
+  * Use thread lock to support comms via subshells by @ianthomas23 in #603
+  * Use intersphinx_registry to keep intersphinx_mapping up to date.
+    by @Carreau in #604
+  * Test on python 3.14 by @ianthomas23 in #606
+  * Fix doc build issues by @ianthomas23 in #605
+  * Release 0.9.8 by @ianthomas23 in #607
+
+-------------------------------------------------------------------
+Wed Mar 25 15:07:12 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update node modules including "underscore" to 1.13.8
+  (CVE-2026-27601, bsc#1259163)
+
+-------------------------------------------------------------------
 Sun Jul 20 15:39:43 UTC 2025 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.9.7
