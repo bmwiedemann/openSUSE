@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netutils
-Version:        1.17.2
+Version:        1.17.3
 Release:        0
 Summary:        Common helper functions useful in network automation
 License:        Apache-2.0

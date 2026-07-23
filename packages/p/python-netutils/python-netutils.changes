@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 22 19:34:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.17.3:
+  * #841 - Added TenGigE to TenGigabitEthernet interface mapping
+    in BASE_INTERFACES.
+  * #843 - Added a PYNTC lib mapper entry mapping the `cisco_xr`
+    network driver to pyntc's `cisco_iosxr_ssh` device type.
+
+-------------------------------------------------------------------
 Fri Apr 10 05:38:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.17.2:

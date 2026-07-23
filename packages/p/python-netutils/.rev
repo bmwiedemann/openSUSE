@@ -218,4 +218,16 @@
   * Add support for Python 3.14.</comment>
     <requestid>1345736</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>266d2c10920bc49f1cf7066e94ba5633</srcmd5>
+    <version>1.17.3</version>
+    <time>1784841023</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.17.3:
+  * #841 - Added TenGigE to TenGigabitEthernet interface mapping
+    in BASE_INTERFACES.
+  * #843 - Added a PYNTC lib mapper entry mapping the `cisco_xr`
+    network driver to pyntc's `cisco_iosxr_ssh` device type.</comment>
+    <requestid>1367181</requestid>
+  </revision>
 </revisionlist>
