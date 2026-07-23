@@ -17,9 +17,8 @@
 
 
 %bcond_without libalternatives
-%{?sle15_python_module_pythons}
 Name:           python-ruff
-Version:        0.15.20
+Version:        0.15.22
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 License:        MIT
@@ -28,12 +27,12 @@ Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{ver
 Source1:        vendor.tar.zst
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Provides:       ruff = %{version}-%{release}
 Requires:       alts
-BuildRequires:  alts
+Provides:       ruff = %{version}-%{release}
 %python_subpackages
 
 %description
@@ -55,6 +54,8 @@ Ruff extremely fast Python linter written in rust supperseding many other lintin
 %python_libalternatives_reset_alternative ruff
 
 %files %{python_files}
+%license LICENSE
+%doc README.md
 %python_alternative %{_bindir}/ruff
 %{python_sitearch}/ruff
 %{python_sitearch}/ruff-%{version}.dist-info

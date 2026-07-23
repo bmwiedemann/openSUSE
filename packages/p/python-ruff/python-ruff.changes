@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Jul 20 13:57:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 0.15.22:
+  * New rules (preview): RUF105/RUF106 for human-readable
+    `ruff:ignore` comments, RUF201 for config selectors, UP051
+    for deprecated `abc` decorators; E402 autofix for pycodestyle
+  * Add `--add-ignore` to insert `ruff:ignore` comments
+  * Bug fixes: PYI053 false positive in `__all__`, refined
+    f-string detection, per-cell notebook syntax errors, ISC003
+    autofix no longer strips `+` from comments
+  * Rule changes: EXE004 and PYI061 fixes marked unsafe; PLW2901
+    ignores mutable type updates; D418 skipped in stub files
+  * Assorted parser/lexer performance improvements
+- Drop the sle15 python flavors macro (EOL SLE/openSUSE < 1600)
+- Ship the LICENSE file (%license) and README.md (%doc)
+- Vendor against upstream's pinned Cargo.lock (set update=false in
+  the cargo_vendor service): cargo update otherwise pulled a
+  duplicate compact_str that broke the get_size2 GetSize derive
+
+-------------------------------------------------------------------
 Sun Jun 28 23:52:57 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.15.20
