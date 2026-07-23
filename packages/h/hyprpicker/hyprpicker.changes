@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 16 09:13:13 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.4.7:
+  * Include <mutex> to make pickier compilers happy
+  * Input: Made Scroll Zooming More Natural
+  * Add missing include to main.cpp
+  * Input: include cursor in frozen preview
+  * Fix: clean up files on SIGTERM
+- Remove 089dd8a448c12e1066486892de096590cddb4195.patch (boo#1260616) 
+  as it's been merged in #148
+
+-------------------------------------------------------------------
 Wed Apr  1 18:12:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.6:
