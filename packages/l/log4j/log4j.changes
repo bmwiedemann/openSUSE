@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:56:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.26.1
+  * Changed
+    + Improve logging for LinkageError scenarios involving the LMAX
+      Disruptor library
+  * Fixed
+    + Fix the createOnDemand behavior of RollingFileAppender to
+      correctly defer file and directory creation until the first
+      log event, while preserving eager creation when disabled
+    + Improve documentation for locale handling in the Pattern
+      Layout date pattern converter
+    + Fix handling of non-finite numbers while encoding MapMessage
+      to JSON
+    + Fix encoding of MSGID and SD-ID fields of
+      StructuredDataMessage to XML
+    + Fix stack trace rendering for exceptions with identity
+      malfunction (e.g., colliding equals() and/or hashCode()
+      implementations)
+    + Fix resource leaks in ConfigurationSource when loading
+      configuration via URL fails
+    + Fix KafkaAppender reporting error to error handler even after
+      a successful retry
+- Generate META-INF/services files using bnd-maven-plugin
+
+-------------------------------------------------------------------
 Tue Jun 16 14:43:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.26.0

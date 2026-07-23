@@ -21,7 +21,7 @@
 %define __requires_exclude java-headless
 %bcond_without extra_modules
 Name:           log4j
-Version:        2.26.0
+Version:        2.26.1
 Release:        0
 Summary:        Java logging package
 License:        Apache-2.0
@@ -34,6 +34,7 @@ BuildRequires:  java-devel >= 9
 BuildRequires:  maven-local
 BuildRequires:  unzip
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bnd.annotation)
+BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
 BuildRequires:  mvn(com.fasterxml.jackson.core:jackson-annotations)
 BuildRequires:  mvn(com.fasterxml.jackson.dataformat:jackson-dataformat-xml)
 BuildRequires:  mvn(com.lmax:disruptor)
@@ -226,6 +227,21 @@ rm log4j-core/src/main/java/org/apache/logging/log4j/core/filter/MutableThreadCo
 
 %pom_remove_dep org.eclipse.angus:angus-activation log4j-jakarta-smtp
 %pom_remove_dep org.eclipse.angus:jakarta.mail log4j-jakarta-smtp
+
+%pom_add_plugin biz.aQute.bnd:bnd-maven-plugin:6.4.1 log4j-parent '
+    <executions>
+        <execution>
+            <goals>
+                <goal>bnd-process</goal>
+            </goals>
+        </execution>
+    </executions>
+    <configuration>
+        <bnd><![CDATA[
+            # Enable automatic META-INF/services generation from SPI annotations
+            -serviceloader: *
+        ]]></bnd>
+    </configuration>'
 
 %if %{?pkg_vcmp:%pkg_vcmp slf4j >= 2}%{!?pkg_vcmp:0}
 %pom_disable_module %{name}-slf4j-impl
