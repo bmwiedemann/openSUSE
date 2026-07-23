@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 06:37:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 2.4.6
+  * Return rank 0 for empty matrices in matrix_rank
+  * fix heap buffer overflow in timedelta to string casts
+  * fix memory leak in np.zeros when fill-zero loop raises
+  * Don’t call INCREF/DECREF on descr in NpyStringAcquireAllocator
+
+-------------------------------------------------------------------
 Mon May 11 16:06:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Force "none" cpu-baseline on x86_64 and %{ix86} only

@@ -1479,4 +1479,12 @@ This was now merged upstream, so I added relevant metadata
     <comment></comment>
     <requestid>1352728</requestid>
   </revision>
+  <revision rev="147" vrev="1">
+    <srcmd5>df0abfd0979f3dbe9c668b1f17f48bdd</srcmd5>
+    <version>2.4.6</version>
+    <time>1784840915</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366906</requestid>
+  </revision>
 </revisionlist>

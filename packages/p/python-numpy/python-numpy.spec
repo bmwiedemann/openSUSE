@@ -30,7 +30,7 @@
 %{?sle15_python_module_pythons}
 
 Name:           python-numpy
-Version:        2.4.4
+Version:        2.4.6
 Release:        0
 Summary:        NumPy array processing for numbers, strings, records and objects
 License:        BSD-3-Clause
