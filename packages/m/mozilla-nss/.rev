@@ -3693,4 +3693,13 @@
   * bmo#2031042 - remove dead condition in sec_asn1d_check_and_subtract_length</comment>
     <requestid>1359233</requestid>
   </revision>
+  <revision rev="242" vrev="1">
+    <srcmd5>589e80c34bc24db8c4d6761ca901ba25</srcmd5>
+    <version>3.125</version>
+    <time>1784840935</time>
+    <user>dimstar_suse</user>
+    <comment>- update to NSS 3.125
+  * no public releasenotes yet</comment>
+    <requestid>1366976</requestid>
+  </revision>
 </revisionlist>

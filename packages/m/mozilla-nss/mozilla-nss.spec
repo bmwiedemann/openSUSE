@@ -24,9 +24,9 @@
 %global crypto_policies_version 20210218
 %define fips 0
 Name:           mozilla-nss
-Version:        3.124
+Version:        3.125
 Release:        0
-%define underscore_version 3_124
+%define underscore_version 3_125
 Summary:        Network Security Services
 License:        MPL-2.0
 Group:          System/Libraries
