@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:44:01 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.24.0:
+  * crypto: Add openssl libs to cryptotest
+  * Add --disable-crypto configure option
+  * crypto: Add ngtcp2_crypto_ossl_free
+  * examples: Avoid the deprecated nghttp3 APIs
+  * lib: Add recv_stop_sending callback
+  * lib: Add ngtcp2_conn_set_max_stream_data_thresh
+  * lib: Tweak ngtcp2_conn_set_max_stream_data_thresh
+  * Remove max stream data thresh
+  * Rewrite window filter from scratch
+  * lib: Tweak app-limited detection
+  * lib: Simplify app-limited conditions
+  * Bump openssl to v4.0.1
+  * Bump boringssl
+  * Bump aws-lc to v5.1.0
+  * Bump picotls
+  * Bump wolfssl to v5.9.2-stable
+
+-------------------------------------------------------------------
+Wed Jul 22 08:42:51 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.23.0:
+  * log: Faster logging
+  * Use ULL consistently
+  * Transit to closing state when sending application close
+  * Specify QualifierOrder
+  * Provide generic ngtcp2_max and ngtcp2_min
+  * Add ngtcp2_secure_clear
+  * Clear sensitive secrets and keys after use
+  * Add const version
+  * crypto: Add tests for token validation
+  * Add const and remove duplicated code
+  * Remove stale function declarations
+  * crypto: Deal with overflow when computing token timeout
+  * build(deps): bump actions/github-script from 8 to 9
+  * Revert "fix: prevent max_idle_timeout multiplication overflow
+    in transport params decode"
+  * Deal with large max_idle_timeout that could overflow in computation
+  * Fix qlog params set stack overflow
+  * Log enhancement
+  * Bump LibreSSL to v4.3.1 by @nak3 in #2161
+  * pq: Adopt designated initializers
+  * Add missing initialization for fields that are not used for CRYPTO
+  * rst: Rename TCP centric variable names
+  * bbr: Cap maximum drain rounds
+  * GHA: Avoid azure Ubuntu mirror
+  * Bump openssl to v4.0.0
+  * Bump boringssl
+  * Bump picotls
+  * Bump wolfssl to v5.9.1-stable
+  * Bump aws-lc to v1.73.0
+  * Bump wolfssl to v5.9.1-stable in interop Dockerfile
+  * lib: Apply absolute upper bound against CRYPTO data offset
+  * Adopt sphinx version-add and version-deprecated directives
+  * ppe: Robust ngtcp2_ppe_padding_size
+  * ppe: Ensure packet protection sample with ngtcp2_ppe_dgram_padding_size
+  * cubic: Add missing is_cwnd_limited reset after exiting slow start
+  * Make bitwise operations robust
+  * Make all private hex constants unsigned
+  * lib: Ensure that unidirectional stream shutdown flags properly set
+  * More unsigned hex integer literals
+  * Fix strict aliasing issue in ngtcp2_get_varint
+  * Net cleanup
+  * Bump boringssl
+  * Bump picotls
+  * Bump libressl to v4.3.2
+  * Consider static const if possible
+
+-------------------------------------------------------------------
 Mon Apr 20 21:11:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.22.1 (bsc#1262273, CVE-2026-40170):

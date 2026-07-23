@@ -333,4 +333,41 @@
   * Fixes CVE-2026-40170</comment>
     <requestid>1348327</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b5d1a2612269be92010df8e199a2530c</srcmd5>
+    <version>1.24.0</version>
+    <time>1784840957</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.24.0:
+  * crypto: Add openssl libs to cryptotest
+  * Add --disable-crypto configure option
+  * crypto: Add ngtcp2_crypto_ossl_free
+  * examples: Avoid the deprecated nghttp3 APIs
+  * lib: Add recv_stop_sending callback
+  * lib: Add ngtcp2_conn_set_max_stream_data_thresh
+  * lib: Tweak ngtcp2_conn_set_max_stream_data_thresh
+  * Remove max stream data thresh
+  * Rewrite window filter from scratch
+  * lib: Tweak app-limited detection
+  * lib: Simplify app-limited conditions
+  * Bump openssl to v4.0.1
+  * Bump boringssl
+  * Bump aws-lc to v5.1.0
+  * Bump picotls
+  * Bump wolfssl to v5.9.2-stable
+
+- Update to 1.23.0:
+  * log: Faster logging
+  * Use ULL consistently
+  * Transit to closing state when sending application close
+  * Specify QualifierOrder
+  * Provide generic ngtcp2_max and ngtcp2_min
+  * Add ngtcp2_secure_clear
+  * Clear sensitive secrets and keys after use
+  * Add const version
+  * crypto: Add tests for token validation
+  * Add const and remove duplicated code
+  * Remove stale function declarations (forwarded request 1367105 from pmonrealgonzalez)</comment>
+    <requestid>1367107</requestid>
+  </revision>
 </revisionlist>
