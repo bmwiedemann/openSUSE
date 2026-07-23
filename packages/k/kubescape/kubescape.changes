@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Jul 23 05:59:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.11:
+  * fix(scan): don't let
+    --exceptions/--controls-config/--attack-tracks trigger
+    air-gapped mode (#2532)
+  * fix(scan): restore root PersistentPreRun for kubescape scan
+    invocations (#2530)
+  * feat: run CEL controls as part of the scan (#2525)
+  * [Fix] : severity-based image exceptions in JSON, SARIF, and
+    patch output -- use filtered Matches instead of
+    RemainingMatches (#2522)
+  * rbac file todo to check api version is resolved (#2523)
+  * fix(imagescan): preserve matches on metadata lookup errors
+    (#2519)
+  * Fix control-inputs fallback to return real local getter instead
+    of unloaded store (#2515)
+  * docs: fix stale KS_CACHE TODO comment in customerloader.go
+    (#2516)
+  * fix(vap): deploy-library serves the embedded bundle, downloads
+    only via --from-release (#2507) (#2514)
+  * docs(cli): improve report protection help and examples (#2510)
+  * feat(mcp): Add headless OPAProcessor for low-latency Network
+    Policy s… (#2512)
+  * Fix/helm templates plain yaml warnings (#2509)
+  * docs(cli): document report protection workflow (#2508)
+  * feat(printer): add GitLab SAST report output format (#2505)
+  * fix(mcp): add double-checked mutex locking to k8sClient lazy
+    init (#2506)
+  * Cache compiled CEL programs across scanned objects (#2503)
+  * feat(mcp): implement headless OPAProcessor rbac scanner (#2492)
+  * fix(sarif): don't os.Exit on unencodable fix, avoid empty SARIF
+    file (#2499)
+  * fix(printer): don't append .txt to /dev/null in
+    PrettyPrinter.SetWriter (#2502)
+  * feat(reportcrypto): add decryption support for encrypted
+    resource metadata (#2493)
+  * docs: add ICS/OT workload scanning guide (#2475)
+  * fix(sarif): surface PrettyWrite errors instead of silently
+    writing empty file (#2497)
+  * fix: preserve explicit exceptions/inputs with
+    use-artifacts-from (#2490)
+  * feat: implement AWS ECR vulnerability adaptor (#2488)
+  * add unit tests for GetPreReqCmd and kubeconfig flag (#2486)
+  * Derive cmd/vap policy metadata from the embedded VAP bundle
+    (#2485)
+  * fix(httphandler): populate report in synchronous scan response
+    (#2483)
+  * feat: introduce Container Image Vulnerability (CIV) Adaptor
+    interfaces (#2482)
+  * Embed and load VAP YAML from the vendored bundle (#2474)
+  * feat(anonymizer): support reversible container metadata
+    transformation (#2473)
+  * refactor: decompose monolithic Results API handler (#2477)
+  * feat: add container profile tools and resources to MCP server
+    (#2479)
+  * [ LFX 2026] feat(exceptions): honor
+    objectSelector.matchExpressions via
+    PostureExceptionPolicy.ObjectSelector (#2480)
+  * feat(patch): add support for OCI and Local exports (#2471)
+  * test(core): cover Kubescape.Download unknown-target error path
+    (#2468)
+  * Fix local control cache (#2463)
+  * core: Add test coverage for Kubescape.Diff pretty-printer
+    output path (#2467)
+  * fix(httphandler): add missing panic recovery to Metrics handler
+    (#2465)
+  * feat(operator): add quarantine action to remediate CLI
+    subcommand (#2461)
+  * fix: support namespace/kind/name workload format (#2459)
+    (#2460)
+  * Fix air-gapped mode -- thread explicit offline flag to policy
+    getters instead of relying on nil (#2458)
+  * Vendor the CEL admission policy bundle (#2455)
+  * Expand encryption and decryption coverage for resource metadata
+    (#2442)
+  * fix(httphandler): decouple prometheus metrics scan from request
+    context (#2451)
+
+-------------------------------------------------------------------
 Wed Jul 01 06:32:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.10:
