@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 17 02:50:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Switch to pyproject macros to build and install the module.
+- Support both uppercase and lowercase metadata directories.
+
+-------------------------------------------------------------------
 Wed Jul  1 22:31:32 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.11.0:

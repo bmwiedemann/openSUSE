@@ -38,7 +38,9 @@ Source0:        https://github.com/gwastro/pycbc/archive/v%{version}.tar.gz#/%{m
 BuildRequires:  %{python_module Cython >= 0.29}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module numpy-devel >= 1.16.0}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  python-rpm-macros
@@ -120,12 +122,12 @@ sed -E -i "1{/^#\!\s*\/usr\/bin/d}" \
 
 %build
 %if !%{with test}
-%python_build
+%pyproject_wheel
 %endif
 
 %install
 %if !%{with test}
-%python_install
+%pyproject_install
 sed -E -i "1 s|^#\!\s*/usr/bin/env\s*bash|#\!/bin/bash|" %{buildroot}%{_bindir}/run_pycbc_inference
 
 %python_expand chmod -x %{buildroot}%{$python_sitearch}/pycbc/results/static/js/fancybox/2.1.5/jquery.fancybox*.js
@@ -149,6 +151,7 @@ rm -r \
    test/test_live_coinc_compare.py \
    test/test_infmodel.py \
    test/test_skymax.py \
+   test/test_time.py \
    test/test_tmpltbank.py \
    test/test_transforms.py \
    test/test_waveform.py \
@@ -169,7 +172,7 @@ popd
 
 %files %{python_files}
 %{python_sitearch}/pycbc
-%{python_sitearch}/%{modname}-%{version}*-info
+%{python_sitearch}/[Pp]y[Cc][Bb][Cc]-%{version}.dist-info
 %endif
 
 %changelog

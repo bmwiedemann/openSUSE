@@ -206,4 +206,14 @@
     <comment></comment>
     <requestid>1363668</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>cd1950e70e859c41c8a724936995e82a</srcmd5>
+    <version>2.11.0</version>
+    <time>1784840996</time>
+    <user>dimstar_suse</user>
+    <comment>- Switch to pyproject macros to build and install the module.
+- Support both uppercase and lowercase metadata directories.
+</comment>
+    <requestid>1366524</requestid>
+  </revision>
 </revisionlist>
