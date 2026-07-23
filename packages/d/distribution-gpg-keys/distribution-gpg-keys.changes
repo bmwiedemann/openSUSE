@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 22 17:54:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.120:
+  * Update RPM-GPG-KEY-openSUSE-2022 boo#1272293
+  * add Teams for Linux repository key
+  * add Oracle Linux 10 key
+  * Add NetBSD security officer key
+  * update copr keys
+  * Add EndeavourOS, Tuxedo OS, and Linux Mint keys
+
+-------------------------------------------------------------------
 Sat Apr 25 18:03:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.119:

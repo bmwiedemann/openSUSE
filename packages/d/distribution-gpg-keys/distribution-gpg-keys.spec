@@ -20,7 +20,7 @@
 
 
 Name:           distribution-gpg-keys
-Version:        1.119
+Version:        1.120
 Release:        0
 Summary:        GPG keys of various Linux distributions
 Group:          System/Packages
