@@ -1805,4 +1805,17 @@ mostly-working synapse than nothing at all) and the package has been update to
 - Update to 1.157.0</comment>
     <requestid>1367000</requestid>
   </revision>
+  <revision rev="164" vrev="1">
+    <srcmd5>8a42eef89debc29c5a58987c78b58ebe</srcmd5>
+    <version>1.157.1</version>
+    <time>1784841025</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1367186 from darix
+
+- Update to 1.157.1
+  - Bugfixes
+    - Fix config regression around falsy experimental_features no
+      longer being accepted. (#19987)</comment>
+    <requestid>1367187</requestid>
+  </revision>
 </revisionlist>
