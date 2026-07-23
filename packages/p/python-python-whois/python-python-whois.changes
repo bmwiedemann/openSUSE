@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Jul 16 11:23:00 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Add python-python-whois-py36-compat.patch for compat with 15.7.
+
+-------------------------------------------------------------------
+Wed Mar 18 21:48:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.9.6:
+  * Fix AFNIC contact parsing: dispatch holder/admin/tech into
+    separate fields￼
+  * Add future annotations import to whois.py
+  * Allow IPv6 outbound and prioritizes IPv6 if prefer_ipv6 is set
+  * date parsing for .kz
+  * update fields and test case for .id
+  * fix creation_date field for .ar
+  * creation date updates for .il and .nz
+
+-------------------------------------------------------------------
 Fri Jan 10 13:02:36 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.9.5

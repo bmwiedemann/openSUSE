@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-whois
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,14 @@
 
 
 Name:           python-python-whois
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Whois querying and parsing of domain registration information
 License:        MIT
 URL:            https://github.com/richardpenman/whois
 Source:         https://files.pythonhosted.org/packages/source/p/python_whois/python_whois-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM python-python-whois-py36-compat.patch -- replace builtin generic type annotations (list[]/dict[]/tuple[]) with typing.List/Dict/Tuple so the module imports on Python < 3.9 such as py3.6 on 15.7
+Patch0:         python-python-whois-py36-compat.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module python-dateutil}
 BuildRequires:  %{python_module setuptools}

@@ -91,4 +91,20 @@
     <comment></comment>
     <requestid>1236880</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>196f60a4660176ec5446ab0a671c80fd</srcmd5>
+    <version>0.9.6</version>
+    <time>1774555696</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1342633</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>66d9fcbb928083820abc7fc7bea6710c</srcmd5>
+    <version>0.9.6</version>
+    <time>1784841326</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367429</requestid>
+  </revision>
 </revisionlist>
