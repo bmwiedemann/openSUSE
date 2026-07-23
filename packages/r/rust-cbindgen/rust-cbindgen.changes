@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jun 12 06:29:20 UTC 2026 - william.brown@suse.com
+
+- Update to version v0.29.4+git0:
+  * Bump version.
+  * tests: Add some tests for constant enums.
+  * ir: Add support for arrays.
+  * ir: Allow constant literals with enum variants.
+  * ir: Use Path for ConstExprs.
+  * Bump version to 0.29.3 and update CHANGES doc
+  * tests: Fix tests with modern gcc.
+  * Use C++ fixed-type enumeration syntax under C23 (or higher) as well
+  * Allow `pub` access to `ReprType` fields
+
+-------------------------------------------------------------------
 Wed Apr 01 03:42:29 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.29.2+git0:

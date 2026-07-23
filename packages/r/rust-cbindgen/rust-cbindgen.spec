@@ -1,8 +1,7 @@
 #
 # spec file for package rust-cbindgen
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,7 +20,7 @@
 %global crate_name cbindgen
 %global rustflags -Clink-arg=-Wl,-z,relro,-z,now
 Name:           rust-%{crate_name}
-Version:        0.29.2+git0
+Version:        0.29.4+git0
 Release:        0
 Summary:        A tool for generating C bindings from Rust code
 License:        MPL-2.0
