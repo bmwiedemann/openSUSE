@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:59:11 UTC 2026 - varkoly@suse.com
+
+- Update to version 4.18.0+git66.efe7eefd4:
+  * pgsql: add dynamic replication mode management for out-of-cluster standbys (#2142)
+  * ibm-cloud-vpc-move-par: new resource agent (#2190)
+  * nvmet-*: When the nvmet kernel module is not detected, attempt to load it to avoid manual execution (#2189)
+  * oralsnr: enable support for multiple listeners per SID
+  * rkt: delete deprecated container agent
+  * IPaddr2: fix loop variable
+  * OCPBUGS-84695: fix(podman-etcd): single-node crash recovery and hardened detection
+  * IPaddr2: replace clusterip with cluster module
+  * podman-etcd: remove cert monitoring infrastructure
+
+-------------------------------------------------------------------
 Mon Jun 22 10:29:35 UTC 2026 - varkoly@suse.com
 
 - Update to version 4.18.0+git51.4e6bf13c5:

@@ -1,158 +1,7 @@
---- a/heartbeat/Makefile.am.orig	2026-06-22 13:58:33.841075476 +0200
-+++ a/heartbeat/Makefile.am	2026-06-22 14:05:34.756308258 +0200
-@@ -50,39 +50,24 @@
- send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
- send_ua_LDADD           = $(LIBNETLIBS)
- 
--ocf_SCRIPTS	      = AoEtarget		\
--			AudibleAlarm		\
--			ClusterMon		\
--			CTDB			\
-+ocf_SCRIPTS	      = CTDB			\
- 			Delay			\
- 			Dummy			\
--			EvmsSCC			\
--			Evmsd			\
- 			Filesystem		\
--			ICP			\
--			IPaddr			\
- 			IPaddr2			\
- 			IPsrcaddr		\
- 			LVM			\
--			LinuxSCSI		\
- 			lvmlockd		\
- 			LVM-activate		\
- 			MailTo			\
--			ManageRAID		\
--			ManageVE		\
- 			NodeUtilization		\
--			Pure-FTPd		\
- 			Raid1			\
- 			Route			\
- 			SAPDatabase		\
- 			SAPInstance		\
- 			SendArp			\
--			ServeRAID		\
--			SphinxSearchDaemon	\
- 			Squid			\
- 			Stateful		\
--			SysInfo			\
--			VIPArip			\
- 			VirtualDomain		\
- 			WAS			\
- 			WAS6			\
-@@ -93,14 +78,11 @@
- 			aliyun-vpc-move-ip	\
- 			anything		\
- 			apache			\
--			asterisk		\
- 			aws-vpc-move-ip		\
- 			aws-vpc-route53		\
- 			awseip			\
- 			awsvip			\
- 			azure-lb		\
--			clvm			\
--			conntrackd		\
- 			corosync-qnetd		\
- 			crypt			\
- 			db2			\
-@@ -109,11 +91,8 @@
- 			dummypy			\
- 			docker			\
- 			docker-compose		\
--			dovecot			\
--			eDir88			\
- 			ethmonitor		\
- 			exportfs		\
--			fio			\
- 			galera			\
- 			ganesha-nfs		\
- 			garbd			\
-@@ -121,24 +100,14 @@
- 			gcp-vpc-move-ip		\
- 			iSCSILogicalUnit	\
- 			iSCSITarget		\
--			ids			\
- 			iface-bridge		\
- 			iface-macvlan		\
- 			iface-vlan		\
--			ipsec			\
--			iscsi			\
--			jboss			\
--			jira			\
--			kamailio		\
--			lxc			\
--			lxd-info		\
--			machine-info		\
- 			mariadb			\
- 			mdraid			\
--			minio			\
-+			mpathpersist		\
- 			mysql			\
- 			mysql-proxy		\
--			nagios			\
- 			named			\
- 			nfsnotify		\
- 			nfsserver		\
-@@ -146,11 +115,6 @@
- 			nvmet-subsystem		\
- 			nvmet-namespace		\
- 			nvmet-port		\
--			ocivip \
--			openstack-cinder-volume \
--			openstack-floating-ip   \
--			openstack-info          \
--			openstack-virtual-ip    \
- 			oraasm			\
- 			oracle			\
- 			oralsnr			\
-@@ -158,39 +122,21 @@
- 			ovsmonitor		\
- 			pgagent			\
- 			pgsql			\
--			pingd			\
- 			podman			\
- 			podman-etcd		\
- 			portblock		\
- 			postfix			\
--			pound			\
--			proftpd			\
- 			rabbitmq-cluster	\
- 			rabbitmq-server-ha	\
- 			redis			\
--			rkt			\
- 			rsyncd			\
--			rsyslog			\
--			scsi2reservation	\
--			sfex			\
- 			sg_persist              \
--			mpathpersist		\
--			slapd			\
--			smb-share		\
- 			storage-mon		\
--			sybaseASE		\
--			symlink			\
--			syslog-ng		\
--			tomcat			\
--			varnish			\
--			vdo-vol			\
--			vmware			\
--			vsftpd			\
--			zabbixserver
-+			symlink
- 
--if BUILD_AZURE_EVENTS
--ocf_SCRIPTS	     += azure-events
--endif
-+#if BUILD_AZURE_EVENTS
-+#ocf_SCRIPTS	     += azure-events
-+#endif
- 
- if BUILD_AZURE_EVENTS_AZ
- ocf_SCRIPTS	     += azure-events-az
---- a/doc/man/Makefile.am.orig	2026-06-22 14:07:57.167065776 +0200
-+++ a/doc/man/Makefile.am	2026-06-22 14:10:43.679951496 +0200
-@@ -77,69 +77,46 @@
+diff -urp resource-agents-4.18.0+git66.efe7eefd4-orig/doc/man/Makefile.am resource-agents-4.18.0+git66.efe7eefd4/doc/man/Makefile.am
+--- resource-agents-4.18.0+git66.efe7eefd4-orig/doc/man/Makefile.am	2026-07-15 15:25:44.000000000 +0200
++++ resource-agents-4.18.0+git66.efe7eefd4/doc/man/Makefile.am	2026-07-21 15:10:29.187358962 +0200
+@@ -77,69 +77,46 @@ clean-local:
  # 12126 on savannah.gnu.org. But, maybe it gets fixed soon, it was
  # first reported in 1995 and added to Savannah in in 2005...
  if BUILD_DOC
@@ -223,7 +72,7 @@
                            ocf_heartbeat_galera.7 \
                            ocf_heartbeat_ganesha-nfs.7 \
                            ocf_heartbeat_garbd.7 \
-@@ -150,23 +127,12 @@
+@@ -150,23 +127,12 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_iface-bridge.7 \
                            ocf_heartbeat_iface-macvlan.7 \
                            ocf_heartbeat_iface-vlan.7 \
@@ -247,7 +96,7 @@
                            ocf_heartbeat_named.7 \
                            ocf_heartbeat_nfsnotify.7 \
                            ocf_heartbeat_nfsserver.7 \
-@@ -175,10 +141,6 @@
+@@ -175,10 +141,6 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_nvmet-namespace.7 \
                            ocf_heartbeat_nvmet-port.7 \
                            ocf_heartbeat_openstack-info.7 \
@@ -258,7 +107,7 @@
                            ocf_heartbeat_oraasm.7 \
                            ocf_heartbeat_oracle.7 \
                            ocf_heartbeat_oralsnr.7 \
-@@ -186,42 +148,25 @@
+@@ -186,41 +148,25 @@ man_MANS                = ocf_heartbeat_
                            ocf_heartbeat_ovsmonitor.7 \
                            ocf_heartbeat_pgagent.7 \
                            ocf_heartbeat_pgsql.7 \
@@ -272,7 +121,6 @@
                            ocf_heartbeat_rabbitmq-cluster.7 \
                            ocf_heartbeat_rabbitmq-server-ha.7 \
                            ocf_heartbeat_redis.7 \
--                          ocf_heartbeat_rkt.7 \
                            ocf_heartbeat_rsyncd.7 \
 -                          ocf_heartbeat_rsyslog.7 \
 -                          ocf_heartbeat_scsi2reservation.7 \
@@ -305,3 +153,157 @@
  
  if BUILD_AZURE_EVENTS_AZ
  man_MANS           	+= ocf_heartbeat_azure-events-az.7
+Nur in resource-agents-4.18.0+git66.efe7eefd4/doc/man: Makefile.am.orig.
+diff -urp resource-agents-4.18.0+git66.efe7eefd4-orig/heartbeat/Makefile.am resource-agents-4.18.0+git66.efe7eefd4/heartbeat/Makefile.am
+--- resource-agents-4.18.0+git66.efe7eefd4-orig/heartbeat/Makefile.am	2026-07-15 15:25:44.000000000 +0200
++++ resource-agents-4.18.0+git66.efe7eefd4/heartbeat/Makefile.am	2026-07-21 15:07:58.041521405 +0200
+@@ -50,39 +50,24 @@ IPv6addr_LDADD          = -lplumb $(LIBN
+ send_ua_SOURCES         = send_ua.c IPv6addr_utils.c
+ send_ua_LDADD           = $(LIBNETLIBS)
+ 
+-ocf_SCRIPTS	      = AoEtarget		\
+-			AudibleAlarm		\
+-			ClusterMon		\
+-			CTDB			\
++ocf_SCRIPTS	      = CTDB			\
+ 			Delay			\
+ 			Dummy			\
+-			EvmsSCC			\
+-			Evmsd			\
+ 			Filesystem		\
+-			ICP			\
+-			IPaddr			\
+ 			IPaddr2			\
+ 			IPsrcaddr		\
+ 			LVM			\
+-			LinuxSCSI		\
+ 			lvmlockd		\
+ 			LVM-activate		\
+ 			MailTo			\
+-			ManageRAID		\
+-			ManageVE		\
+ 			NodeUtilization		\
+-			Pure-FTPd		\
+ 			Raid1			\
+ 			Route			\
+ 			SAPDatabase		\
+ 			SAPInstance		\
+ 			SendArp			\
+-			ServeRAID		\
+-			SphinxSearchDaemon	\
+ 			Squid			\
+ 			Stateful		\
+-			SysInfo			\
+-			VIPArip			\
+ 			VirtualDomain		\
+ 			WAS			\
+ 			WAS6			\
+@@ -93,14 +78,11 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			aliyun-vpc-move-ip	\
+ 			anything		\
+ 			apache			\
+-			asterisk		\
+ 			aws-vpc-move-ip		\
+ 			aws-vpc-route53		\
+ 			awseip			\
+ 			awsvip			\
+ 			azure-lb		\
+-			clvm			\
+-			conntrackd		\
+ 			corosync-qnetd		\
+ 			crypt			\
+ 			db2			\
+@@ -109,11 +91,8 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			dummypy			\
+ 			docker			\
+ 			docker-compose		\
+-			dovecot			\
+-			eDir88			\
+ 			ethmonitor		\
+ 			exportfs		\
+-			fio			\
+ 			galera			\
+ 			ganesha-nfs		\
+ 			garbd			\
+@@ -121,24 +100,14 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			gcp-vpc-move-ip		\
+ 			iSCSILogicalUnit	\
+ 			iSCSITarget		\
+-			ids			\
+ 			iface-bridge		\
+ 			iface-macvlan		\
+ 			iface-vlan		\
+-			ipsec			\
+-			iscsi			\
+-			jboss			\
+-			jira			\
+-			kamailio		\
+-			lxc			\
+-			lxd-info		\
+-			machine-info		\
+ 			mariadb			\
+ 			mdraid			\
+-			minio			\
++			mpathpersist		\
+ 			mysql			\
+ 			mysql-proxy		\
+-			nagios			\
+ 			named			\
+ 			nfsnotify		\
+ 			nfsserver		\
+@@ -146,11 +115,6 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			nvmet-subsystem		\
+ 			nvmet-namespace		\
+ 			nvmet-port		\
+-			ocivip \
+-			openstack-cinder-volume \
+-			openstack-floating-ip   \
+-			openstack-info          \
+-			openstack-virtual-ip    \
+ 			oraasm			\
+ 			oracle			\
+ 			oralsnr			\
+@@ -158,38 +122,21 @@ ocf_SCRIPTS	      = AoEtarget		\
+ 			ovsmonitor		\
+ 			pgagent			\
+ 			pgsql			\
+-			pingd			\
+ 			podman			\
+ 			podman-etcd		\
+ 			portblock		\
+ 			postfix			\
+-			pound			\
+-			proftpd			\
+ 			rabbitmq-cluster	\
+ 			rabbitmq-server-ha	\
+ 			redis			\
+ 			rsyncd			\
+-			rsyslog			\
+-			scsi2reservation	\
+-			sfex			\
+ 			sg_persist              \
+-			mpathpersist		\
+-			slapd			\
+-			smb-share		\
+ 			storage-mon		\
+-			sybaseASE		\
+-			symlink			\
+-			syslog-ng		\
+-			tomcat			\
+-			varnish			\
+-			vdo-vol			\
+-			vmware			\
+-			vsftpd			\
+-			zabbixserver
++			symlink
+ 
+-if BUILD_AZURE_EVENTS
+-ocf_SCRIPTS	     += azure-events
+-endif
++#if BUILD_AZURE_EVENTS
++#ocf_SCRIPTS	     += azure-events
++#endif
+ 
+ if BUILD_AZURE_EVENTS_AZ
+ ocf_SCRIPTS	     += azure-events-az
+Nur in resource-agents-4.18.0+git66.efe7eefd4/heartbeat: Makefile.am.orig.
