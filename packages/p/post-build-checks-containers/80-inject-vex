@@ -1,0 +1,54 @@
+#!/bin/bash
+#
+# Perform vulnerability scan of a container image built by OBS using ClamAV.
+
+# Strict mode
+set -euo pipefail
+
+TOPDIR="/usr/src/packages"
+
+# Helper functions
+log() {
+	echo "$@" >&2
+}
+
+log "Retrieving container image metadata"
+CONTAINERINFO="$(find "$TOPDIR" -name '*.containerinfo' -print -quit)"
+OUTPUTDIR="$(dirname $CONTAINERINFO)"
+
+CONTAINER_NAME="$(basename "$CONTAINERINFO" | sed 's/\.containerinfo$//')"
+CONTAINER_TAG="$(python3 -c \
+    'import json, sys; print(json.load(sys.stdin)["tags"][0])' \
+    <"$CONTAINERINFO")"
+
+log "Container image tag to check: $CONTAINER_TAG"
+
+CONTAINER_UNPACKED_DIR=$(mktemp -d)
+
+fn=`find $TOPDIR -name "*vex.json" | head -n 1`
+if [ "x$fn" == "x" ]; then
+	log "No VEX file found"
+	exit 0
+fi
+
+# NOTE: The subject will be filled by OBS during publishing
+SCAN_TIMESTAMP="$(date '+%Y-%m-%dT%H:%M:%S.%N%:z')"
+jq --rawfile result "$fn" '.predicate.data = $result' \
+    >"$OUTPUTDIR/$CONTAINER_NAME.vex_openvex.intoto.json" <<EOF
+{
+  "_type": "https://in-toto.io/Statement/v0.1",
+  "predicateType": "https://cosign.sigstore.dev/attestation/v1",
+  "subject": [
+    {
+      "name": "",
+      "digest": {
+        "sha256": ""
+      }
+    }
+  ],
+  "predicate": {
+    "data": "",
+    "timestamp": "$SCAN_TIMESTAMP"
+  }
+}
+EOF

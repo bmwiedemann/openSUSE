@@ -26,6 +26,7 @@ URL:            http://www.suse.com/security
 Source0:        80-antivirus-scan-clamav
 Source1:        80-vulnerability-scan-trivy
 Source2:        80-vulnerability-scan-neuvector
+Source3:        80-inject-vex
 
 # the scanner-databases and neuvector-scanner are only on SLES.
 %if ! 0%{?is_opensuse}
@@ -65,13 +66,19 @@ be attached to relevant OCI container image artifacts as OCI attestations.
 %build
 
 %install
-%if 0%{?is_opensuse}
 mkdir  -p %{buildroot}%{_prefix}/lib/build/post-build-checks
-ln -s  /bin/true %{buildroot}%{_prefix}/lib/build/post-build-checks/brp-99-true
-%else
-# sles
 
+# vex injector works without database artefacts
+install -D -m 0755 -t %{buildroot}%{_prefix}/lib/build/post-build-checks %{SOURCE3}
+
+%if 0%{?is_opensuse}
+
+echo "no database artefacts possible"
+
+%else
+# sles ... they need to use stored artefacts, so not on openSUSE
 install -D -m 0755 -t %{buildroot}%{_prefix}/lib/build/post-build-checks %{SOURCE0}
+
 
 %ifnarch s390x
 # currently have a bit of endianess issue with the trivy db

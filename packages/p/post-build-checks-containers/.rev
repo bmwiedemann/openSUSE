@@ -43,4 +43,12 @@
     <comment>- do not require neuvector-scanner on 16.0 or newer either (forwarded request 1366751 from msmeissn)</comment>
     <requestid>1366752</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>b18554f34826f3099cb2928d74fee781</srcmd5>
+    <version>0.1</version>
+    <time>1784841364</time>
+    <user>dimstar_suse</user>
+    <comment>addd (forwarded request 1367489 from msmeissn)</comment>
+    <requestid>1367490</requestid>
+  </revision>
 </revisionlist>
