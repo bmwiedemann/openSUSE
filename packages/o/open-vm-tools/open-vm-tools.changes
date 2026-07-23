@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 21:16:21 UTC 2026 - Kirk Allan <kallan@suse.com>
+
+- Remove all dependencies on update-desktop-files - open-vm-tools (PED-15231)
+  Remove BuildRequires:  update-desktop-files and
+  %suse_update_desktop_file vmware-user-autostart from the spec file.
+
+-------------------------------------------------------------------
 Fri May 15 07:22:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.1.0 release based on build 25218885: (boo#1265304)

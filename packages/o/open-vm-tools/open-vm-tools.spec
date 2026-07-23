@@ -67,7 +67,6 @@ BuildRequires:  libtool
 BuildRequires:  openssl-devel
 BuildRequires:  pam-devel
 BuildRequires:  procps-devel
-BuildRequires:  update-desktop-files
 %if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
 BuildRequires:  containerd-devel
 BuildRequires:  grpc-devel
@@ -370,8 +369,6 @@ sed -i '/openSUSE/,+2d' %{buildroot}%{_sysconfdir}/vmware-tools/tools.conf
 # Thus we drop the 'original' autostartup
 rm %{buildroot}%{_sysconfdir}/xdg/autostart/vmware-user.desktop
 
-# handle the .destop files for translations
-%suse_update_desktop_file vmware-user-autostart
 %endif
 
 # modprobe configuration for vmnics - only include if before SLE-12
