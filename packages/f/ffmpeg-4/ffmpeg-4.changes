@@ -4,6 +4,10 @@ Fri Jun 26 08:19:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 - Add pcmbluray-bigendian.patch to address a build failure on s390x
 - Update to release 4.4.8
   * Various bug fixes to codecs
+  * avcodec/magicyuv: Fix 1 line MEDIAN slices
+    avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
+    avcodec/magicyuv: reject slice_height misaligned with chroma vshift
+    (CVE-2026-8461, bsc#1269490)
 - Delete ffmpeg-4-CVE-2025-22921.patch (merged)
 
 -------------------------------------------------------------------
@@ -25,6 +29,8 @@ Fri May 22 17:28:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2025-9951, bsc#1249393)
   * avcodec/av1dec: check that primary_ref_frame is within range.
     (CVE-2026-30997, bsc#1262047)
+  * avcodec/rasc: fix heap use-after-free in decode_move().
+    (CVE-2026-12706, bsc#1268595)
 - Drop patches fixed upstream:
   * ffmpeg-4-CVE-2024-35368.patch
   * ffmpeg-4-CVE-2024-36618.patch
