@@ -1,0 +1,34 @@
+Index: pytest_mypy_testing-0.2.0/tests/test_basics.mypy-testing
+===================================================================
+--- pytest_mypy_testing-0.2.0.orig/tests/test_basics.mypy-testing
++++ pytest_mypy_testing-0.2.0/tests/test_basics.mypy-testing
+@@ -53,25 +53,25 @@ def mypy_test_use_reveal_type():
+ @pytest.mark.mypy_testing
+ def mypy_test_use_reveal_type__float_var():
+     some_float = 123.03
+-    reveal_type(some_float)  # R: builtins.float
++    reveal_type(some_float)  # R: float
+ 
+ 
+ @pytest.mark.mypy_testing
+ def mypy_test_use_reveal_type__int_var():
+     some_int = 123
+-    reveal_type(some_int)  # R: builtins.int
++    reveal_type(some_int)  # R: int
+ 
+ 
+ @pytest.mark.mypy_testing
+ def mypy_test_use_reveal_type__int_list_var():
+     some_list = [123]
+-    reveal_type(some_list)  # R: builtins.list[builtins.int]
++    reveal_type(some_list)  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing
+ def mypy_test_use_reveal_type__int_list_var__with__inferred_asterisk():
+     some_list = [123]
+-    reveal_type(some_list)  # R: builtins.list[builtins.int*]
++    reveal_type(some_list)  # R: list[int]
+ 
+ 
+ @pytest.mark.mypy_testing

@@ -25,6 +25,8 @@ Summary:        Pytest plugin to check mypy output
 License:        Apache-2.0 OR MIT
 URL:            https://github.com/davidfritzsche/pytest-mypy-testing
 Source:         https://files.pythonhosted.org/packages/source/p/pytest-mypy-testing/pytest_mypy_testing-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Do not use 'builtins.foo' for revealed types
+Patch0:         do-not-use-builtins-for-revealed-types.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core >= 3.12}
 BuildRequires:  %{python_module pip}

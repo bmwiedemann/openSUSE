@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 00:28:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-use-builtins-for-revealed-types.patch:
+  * Do not use 'builtins.foo' for revealed types.
+
+-------------------------------------------------------------------
 Mon Mar  2 02:19:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.2.0:

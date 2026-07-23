@@ -45,4 +45,13 @@
 - Drop patch support-new-mypy.patch, no longer required.</comment>
     <requestid>1335931</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>4a0e544a8d6c92101df347d35ae206d5</srcmd5>
+    <version>0.2.0</version>
+    <time>1784841034</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch do-not-use-builtins-for-revealed-types.patch:
+  * Do not use 'builtins.foo' for revealed types.</comment>
+    <requestid>1367200</requestid>
+  </revision>
 </revisionlist>
