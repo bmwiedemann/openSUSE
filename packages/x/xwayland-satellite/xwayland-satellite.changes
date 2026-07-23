@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 22 17:26:40 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 0.8.2:
+  * A fix for panicking when there are no outputs present
+  * Fixes for some popup regressions (the eternal battle).
+  * Some general refactoring/code cleanup that will still be useful
+    even after my rewrite.
+
+-------------------------------------------------------------------
 Sat Feb 21 21:55:46 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.8.1:
