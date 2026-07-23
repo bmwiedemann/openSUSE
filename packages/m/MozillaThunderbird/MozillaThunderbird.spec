@@ -30,8 +30,8 @@
 # major 69
 # mainver %%major.99
 %define major          140
-%define mainver        %major.12.0
-%define orig_version   140.12.0
+%define mainver        %major.13.0
+%define orig_version   140.13.0
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -136,7 +136,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.27
+BuildRequires:  rust-cbindgen-0_29_2
 BuildRequires:  translate-suse-desktop
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-libXt-devel
