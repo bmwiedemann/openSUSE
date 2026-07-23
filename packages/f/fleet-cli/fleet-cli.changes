@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Jul 23 05:59:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.16.0:
+  * Breaking changes
+    - Helm repository credentials are no longer forwarded to a
+      chart repository by default. They are only sent when the
+      repository URL matches the pattern configured in
+      helmRepoURLRegex. A pre-upgrade migration Job and a hidden
+      fleet migrate gitrepo-helm-url-regex CLI command populate the
+      field on existing GitRepos. Require helmRepoURLRegex for Helm
+      credential forwarding (GHSA-hx4v-cxpf-vh8m) by @thardeck in
+      #5141
+  * Future Deprecation notice
+    - GitRepoRestriction will be deprecated in v0.17 and may be
+      removed as soon as v0.18. It remains supported until removed,
+      but has known security limitations: its repo patterns are
+      matched unanchored, and it does not cover HelmOp or Bundle
+      resources. Migration to the new Policy resource is strongly
+      recommended.
+  * CLI
+    - fleet-cli: add missing flag wiring for apply, cleanup
+      subcommands (#5170) by @apoorvajagtap in #5171
+    - Return CLI List error closer to where it was returned by
+      @0xavi0 in #4822
+  * Notable dependency updates
+    - Update Kubernetes dependencies to v0.36.2 by @thardeck in
+      #5094
+    - Update Go toolchain to 1.26.4 by @thardeck in #4947
+    - Update github.com/go-git/go-git/v5 to v5.19.1 [security] by
+      @thardeck in #5165
+    - Update module helm.sh/helm/v4 to v4.2.2 [security] by
+      renovate in #5353
+    - Update module github.com/rancher/wrangler/v3 to v3.7.0 by
+      renovate in #5142
+    - Update module golang.org/x/net to v0.55.0 [security] by
+      renovate in #5190
+    - Update oras.land/oras-go/v2 to v2.6.2 and golang.org/x/crypto
+      to v0.54.0 [security] by @thardeck in #5429
+
+-------------------------------------------------------------------
+Thu Jul 23 05:50:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.5:
+  No changes related to the fleet CLI
+  Dependencies
+  * Bump oras-go, x/crypto, and Go toolchain (#5430)
+
+-------------------------------------------------------------------
 Sun Jun 28 06:56:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.15.4:
