@@ -167,4 +167,20 @@
     <comment></comment>
     <requestid>1360202</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>3d376a694968d87c448092d3b44cc111</srcmd5>
+    <version>2.6.0</version>
+    <time>1784127149</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365823</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8a7ad632d9797569b04d96b193083e22</srcmd5>
+    <version>2.6.1</version>
+    <time>1784841173</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367322</requestid>
+  </revision>
 </revisionlist>

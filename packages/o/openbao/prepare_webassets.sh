@@ -18,8 +18,8 @@ zypper -n install \
     gawk \
     make \
     git-core \
-    yarn \
     npm \
+    pnpm \
     "${nodejs_package}"
 
 version="$( awk '/^Version:/ {print $2;exit;}' "${package_name}.spec" )"

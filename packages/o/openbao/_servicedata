@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/openbao/openbao</param>
-              <param name="changesrevision">028992583c693c4de6350b8aa52ff85e30375a99</param></service></servicedata>
+              <param name="changesrevision">028992583c693c4de6350b8aa52ff85e30375a99</param></service><service name="tar_scm">
+                <param name="url">https://github.com/openbao/openbao.git</param>
+              <param name="changesrevision">ba7ad8861d0578cd4da4f7b9e5a6756d30484f8f</param></service></servicedata>

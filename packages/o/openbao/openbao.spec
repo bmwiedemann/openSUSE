@@ -23,7 +23,7 @@
 %define short_executable_name bao
 
 Name:           openbao
-Version:        2.5.5
+Version:        2.6.1
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
@@ -155,6 +155,8 @@ SDK_PACKAGES="$(go list ./... | grep -v vendor/)"
 go generate $SDK_PACKAGES
 cd ..
 
+COMMIT_HASH="$(sed -n 's/commit: \(.*\)/\1/p' %_sourcedir/%{name}.obsinfo)"
+
 DATE_FMT="+%%Y-%%m-%%dT%%H:%%M:%%SZ"
 BUILD_DATE=$(date -u -d "@${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u -r "${SOURCE_DATE_EPOCH}" "${DATE_FMT}" 2>/dev/null || date -u "${DATE_FMT}")
 
@@ -168,9 +170,10 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags=" \
-    -X github.com/openbao/openbao/version.GitCommit=v%{version} \
-    -X github.com/openbao/openbao/version.BuildDate=${BUILD_DATE}" \
-   -tags="openbao ui" \
+    -X github.com/openbao/openbao/version.fullVersion=%{version} \
+    -X github.com/openbao/openbao/version.GitCommit=${COMMIT_HASH} \
+    -X github.com/openbao/openbao/version.CommitDate=${BUILD_DATE}" \
+   -tags="ui" \
    -o bin/openbao .
 
 #
@@ -273,7 +276,8 @@ done
 %service_del_postun %{agent_service_name}
 
 %check
-%{buildroot}/%{_bindir}/%{name} version | grep v%{version}
+%{buildroot}/%{_bindir}/%{name} version
+%{buildroot}/%{_bindir}/%{name} version | grep %{version}
 
 %files
 %doc README.md
