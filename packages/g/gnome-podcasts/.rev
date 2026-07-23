@@ -87,4 +87,12 @@
     <comment>- Update vendored dependencies.</comment>
     <requestid>1355873</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>43318c9b2077f7d2b8b08fd916beb580</srcmd5>
+    <version>25.3</version>
+    <time>1784841228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update vendored dependencies (boo#1272273).</comment>
+    <requestid>1367352</requestid>
+  </revision>
 </revisionlist>
