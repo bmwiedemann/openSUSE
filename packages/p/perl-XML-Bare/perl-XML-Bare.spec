@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Bare
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,25 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
+%define cpan_name XML-Bare
 Name:           perl-XML-Bare
 Version:        0.53
 Release:        0
-%define cpan_name XML-Bare
-Summary:        Minimal XML parser implemented via a C state engine
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/XML-Bare/
-Source:         http://www.cpan.org/authors/id/C/CO/CODECHILD/%{cpan_name}-%{version}.tar.gz
-Patch0:         fix-pointers.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Minimal XML parser / schema checker / pretty-printer using C internally
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/C/CO/CODECHILD/%{cpan_name}-%{version}.tar.gz
+Source1:        cpanspec.yml
+Source100:      README.md
+# PATCH-FIX-UPSTREAM https://github.com/nanoscopic/perl-XML-Bare/pull/2
+Patch0:         CVE-2026-13401-r1.patch
+# PATCH-FIX-UPSTREAM https://github.com/nanoscopic/perl-XML-Bare/pull/1
+Patch1:         CVE-2026-57074-r1.patch
+Patch2:         fix-pointers.diff
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::More) >= 0.94
@@ -49,15 +53,16 @@ based loosely around the way multiplicity is handled in Perl regular
 expressions.
 
 %prep
-%autosetup -p1 -n %{cpan_name}-%{version}
-find . -type f -print0 | xargs -0 chmod 644
+%autosetup -n %{cpan_name}-%{version} -p1
+
+find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -65,7 +70,6 @@ find . -type f -print0 | xargs -0 chmod 644
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog

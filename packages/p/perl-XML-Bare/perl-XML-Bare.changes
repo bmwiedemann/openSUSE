@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Jul 20 18:29:37 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add CVE-2026-57074-r1.patch (CVE-2026-57074, bsc#1271637)
+
+-------------------------------------------------------------------
+Mon Jul 20 17:49:38 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add CVE-2026-13401-r1.patch (CVE-2026-13401, bsc#1271640)
+- Add cpanspec.yml for overriding spec values
+
+-------------------------------------------------------------------
 Mon Mar  4 15:52:17 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

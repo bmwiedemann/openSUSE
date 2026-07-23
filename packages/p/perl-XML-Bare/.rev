@@ -235,4 +235,15 @@
     <comment></comment>
     <requestid>1155449</requestid>
   </revision>
+  <revision rev="30" vrev="7">
+    <srcmd5>a55a79280f447f497110d033530605f9</srcmd5>
+    <version>0.53</version>
+    <time>1784840902</time>
+    <user>dimstar_suse</user>
+    <comment>- Add CVE-2026-57074-r1.patch (CVE-2026-57074, bsc#1271637)
+
+- Add CVE-2026-13401-r1.patch (CVE-2026-13401, bsc#1271640)
+- Add cpanspec.yml for overriding spec values</comment>
+    <requestid>1366830</requestid>
+  </revision>
 </revisionlist>
