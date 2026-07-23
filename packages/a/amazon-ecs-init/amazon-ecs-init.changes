@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:08:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on
+  truncated/invalid UTF-8 input (bsc#1272128)
+  * CVE-2026-56852.patch
+
+-------------------------------------------------------------------
 Mon Jun 29 14:11:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.105.0

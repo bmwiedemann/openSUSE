@@ -28,6 +28,8 @@ Source0:        https://github.com/aws/amazon-ecs-agent/archive/refs/tags/v%{ver
 Source1:        %{short_name}.service
 Source2:        amazon-ecs-init.tmpfiles
 Patch0:         reproducible.patch
+# PATCH-FIX-UPSTREAM CVE-2026-56852.patch bsc#1272128
+Patch1:         CVE-2026-56852.patch
 BuildRequires:  go  >= 1.25.11
 BuildRequires:  pkgconfig(systemd)
 # We cannot handle cross module dependencies properly, i.e. one module can
@@ -140,6 +142,9 @@ Amazon EC2.
 %prep
 %setup -q -n amazon-ecs-agent-%{version}
 %patch -P0 -p1
+pushd ecs-agent/vendor/golang.org/x/text
+%patch -P1 -p1
+popd
 
 %build
 env
