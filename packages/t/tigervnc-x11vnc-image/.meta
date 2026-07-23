@@ -1,0 +1,4 @@
+<package name="tigervnc-x11vnc-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed TigerVNC VNC Server</title>
+  <description>TigerVNC VNC Server container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
