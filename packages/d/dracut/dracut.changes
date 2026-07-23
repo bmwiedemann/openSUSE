@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 22 06:10:56 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 110+suse.45.geaec47e4:
+  * fix(systemd-networkd): escape values from DHCP options (bsc#1264833, GHSA-x37p-6hhc-6628)
+  * feat(base): add escape function implementing printf %q
+  * fix(systemd-networkd): get DHCP options values from networkctl
+  * fix(kernel-modules): include xhci-pci-prom21 for early USB
+
+-------------------------------------------------------------------
 Mon Jul 06 06:03:20 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 110+suse.41.g38f7c003:
