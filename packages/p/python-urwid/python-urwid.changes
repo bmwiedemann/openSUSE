@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:44:54 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 4.0.5
+  * Copy signal handlers before emission
+  * Implement _scrollbar_layout and left click handling for Scrollable
+  * Fix rle_product for zero-len elements
+  * typing: fix Filler typing annotations
+  * typing: extend widget_decoration module typing coverage
+  * Typing: annotate and fix attr_map
+  * Migrate Edit widget to use WidgetWrap as base class and update methods
+- Update to 4.0.4
+  * urwid.Colmns: re-calculate column_widths only if pack widgets changed
+  * Fix IndexError in decompose_tagmarkup when a nested sublist is empty
+  * Typing: partially annotate examples and fix annotations
+  * urwid.WidgetContainerMixin: return use protocol base class
+- Update to 4.0.3
+  * Deprecation: Deprecate content_delta as unused
+  * Fix shard_body_row: falsy content_iter raises ValueError
+- Update to 4.0.2 (fixes CVE-2026-9323, bsc#1271868)
+  * Initial typing support for urwid package
+  * Fix ListBoxError in _keypress_page_down when snapping to a widget above
+    the top
+  * Fix lazy_import of display modules if package is not defined
+  * Adjust typing for urwid.display and urwid.event_loop
+  * Typing: extend typing information for urwid.display
+  * Typing: adjust event loop type
+  * Typing: adjust types for vterm, numedit and graphics
+  * Typing: adjust types for urwid.widget
+  * Feat: refactor urwid.widget.scrollable
+  * Web display: tighten security by using more complex identifiers
+- Update to 4.0.1
+  * fix three return type annotations
+  * Web display: use secure random session identifiers
+  * Add SECURITY.md
+
+-------------------------------------------------------------------
 Sat Apr 25 20:26:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.0.0:

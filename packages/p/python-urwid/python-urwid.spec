@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-urwid
-Version:        4.0.0
+Version:        4.0.5
 Release:        0
 Summary:        A full-featured console (xterm et al.) user interface library
 License:        LGPL-2.1-or-later
