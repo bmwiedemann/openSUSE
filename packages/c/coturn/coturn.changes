@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:11:27 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Update to version 4.15.0
+Security
+  * Ignore STUN attributes after MESSAGE-INTEGRITY (GHSA-5538-7cxj-5jcc). Per
+    RFC 8489 §9 / RFC 5389 §15.4, attributes following MESSAGE-INTEGRITY (other
+    than FINGERPRINT) must be ignored, but coturn processed the full attribute
+    list. This also fixes an interop bug where an RFC 8489 client sending
+    MESSAGE-INTEGRITY-SHA256 after MESSAGE-INTEGRITY was wrongly answered with
+    error 420.
+
+  * Bind mobility session-resume to the original allocation owner
+    (gh#coturn/coturn#1969) — a MOBILITY-TICKET resume is now only accepted
+    from the user that created the allocation.
+
+  * Reject ACME requests via signed 400 response (gh#coturn/coturn#1965)
+    instead of silently dropping them.
+
+  * Reset the reused UDP receive-buffer offset in the DTLS listener
+    (gh#coturn/coturn#1986).
+
+  * Zeroed channel-data padding in stun_init_channel_message_str so
+    uninitialized stack bytes never reach the wire (gh#coturn/coturn#1984).
+
+  * Fixed a uint16_t truncation overflow when computing STUN message length
+    (gh#coturn/coturn#1964).
+
+  * Fixed an off-by-one write past the realm buffer in redis_list_admin_users
+    (gh#coturn/coturn#1978).
+
+  * Fixed a size_t underflow in the telnet (CLI) _process data emit
+    (gh#coturn/coturn#1980) and bounded MSSP subnegotiation parsing to the
+    buffer end (gh#coturn/coturn#1972).
+
+  * NULL-terminated the HTTP request buffer before it is logged verbatim
+    (gh#coturn/coturn#1967); switched apputils.c to bounded snprintf
+    (gh#coturn/coturn#1966).
+
+New features
+  * RFC 8016 graceful dual-5-tuple mobility handoff (gh#coturn/coturn#1975). A
+    MOBILITY-TICKET resume no longer hard-switches the allocation at REFRESH
+    time. The server now does a make-before-break transition: peer→client
+    traffic stays on the old 5-tuple until the client's first packet arrives on
+    the new one, and only then is the old socket discarded.
+
+  * --drain-min-allocations (gh#coturn/coturn#1997) — a shutdown threshold for
+    drain mode: the server exits once the live allocation count falls to the
+    configured value instead of waiting for zero.
+
+  * --log-min-level (log_min_level in the config file) (gh#coturn/coturn#1222)
+    — a real minimum-log-level filter, since -v/--verbose had little effect on
+    turnserver logging.
+
+  * Alternate-server TCP/UDP distinction (gh#coturn/coturn#1605) — alternate
+    servers are now tracked per transport, so TCP and UDP clients can be
+    redirected to different alternate servers.
+
+  * Fail-fast allocation wrappers (gh#coturn/coturn#1981) — all heap allocation
+    in coturn-owned code goes through
+    turn_malloc/turn_calloc/turn_realloc/turn_strdup, which log the call site
+    and abort on OOM rather than risking NULL-dereference or silent degradation
+    in a long-running server.
+
+Reliability and correctness fixes
+  * Fixed the remaining misaligned wire-buffer accesses and added
+    alignment-safe turn_read_u16/u32/u64 / turn_write_* helpers
+    (gh#coturn/coturn#1995, gh#coturn/coturn#1994) — misaligned reads of STUN
+    attribute values were undefined behavior and a SIGBUS on strict-alignment
+    targets.
+
+  * Fixed uint32_t counter wraparound in the relay port allocator
+    (gh#coturn/coturn#1992).
+
+  * Worker threads are now joined on shutdown, fixing an exit-time OpenSSL race
+    (gh#coturn/coturn#1991); OpenSSL atexit cleanup is disabled in turnserver
+    (gh#coturn/coturn#1990).
+
+  * Released the alternate-server list mutex when del_alt_server removes the
+    last entry, fixing a deadlock (gh#coturn/coturn#1988, tests in
+    gh#coturn/coturn#1989).
+
+  * setgroups is no longer called unconditionally in mainrelay, fixing startup
+    under environments where it's not permitted (gh#coturn/coturn#1508).
+
+  * Freed EVP_CIPHER_CTX on error paths in the OAuth GCM encode/decode
+    (gh#coturn/coturn#1962) and avoided leaks on realloc failure in TCP relay
+    allocation (gh#coturn/coturn#1977).
+
+  * Cast to unsigned char before isspace() in config-file parsing
+    (gh#coturn/coturn#1968).
+
+  * Log an explicit error when a configured tls-listening-port cannot start
+    (gh#coturn/coturn#1974).
+
+  * Autotools build now detects hiredis_ssl, enabling Redis TLS in the
+    ./configure build (gh#coturn/coturn#1963).
+
+Metrics
+
+  * Every STUN Binding response is now counted in the Prometheus metrics
+    (gh#coturn/coturn#1996).
+
+Client utilities
+
+  * turnutils_uclient now sends the SNI host name on TLS connections
+    (gh#coturn/coturn#1973)
+  
+  * heap-allocates its STUN message buffers instead of using large stack
+    buffers (gh#coturn/coturn#1976).
+
+-------------------------------------------------------------------
 Mon Jun 22 14:04:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.14.0
