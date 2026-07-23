@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0811a3ab00f16f62a73dbe680a389cdf</srcmd5>
+    <version>0.16.0</version>
+    <time>1784841234</time>
+    <user>dimstar_suse</user>
+    <comment>New package mcp-bugzilla: rename of bugzilla-mcp to match the upstream project name (github.com/openSUSE/mcp-bugzilla). Carries Provides/Obsoletes: bugzilla-mcp (and python313-bugzilla-mcp) for clean migration. A separate delete request for the old bugzilla-mcp package accompanies this.</comment>
+    <requestid>1367354</requestid>
+  </revision>
+</revisionlist>
