@@ -40,7 +40,6 @@ BuildRequires:  %{python_module pybind11 >= 3.0.0}
 BuildRequires:  %{python_module pybind11-devel >= 3.0.0}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-cov >= 3.0.0}
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-helpers-namespace >= 2019.1.8}
 # Upstream use pytest-timeout >= 1.4.2
 BuildRequires:  %{python_module pytest-timeout >= 2.1.0}

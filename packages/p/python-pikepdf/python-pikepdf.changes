@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:50:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove pytest-forked dependency
+
+-------------------------------------------------------------------
 Mon Mar 23 20:57:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.5.1:

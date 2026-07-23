@@ -410,4 +410,12 @@
     ``std::pair`` in pybind11 headers.</comment>
     <requestid>1342102</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>b789548d1cf08cd211edda50bf418d74</srcmd5>
+    <version>10.5.1</version>
+    <time>1784841324</time>
+    <user>dimstar_suse</user>
+    <comment>- remove pytest-forked dependency</comment>
+    <requestid>1367406</requestid>
+  </revision>
 </revisionlist>
