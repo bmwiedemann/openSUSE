@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          152
-%define mainver        %major.0.6
-%define orig_version   152.0.6
+%define major          153
+%define mainver        %major.0
+%define orig_version   153.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -50,6 +50,11 @@
 
 # define if ccache should be used or not
 %define useccache     1
+
+# ccache doesn't work with pgo
+%if 0%{?do_profiling}
+%define useccache     0
+%endif
 
 # ccache doesn't work with pgo
 %if 0%{?do_profiling}
@@ -125,7 +130,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.39
-BuildRequires:  mozilla-nss-devel >= 3.124
+BuildRequires:  mozilla-nss-devel >= 3.125
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -148,8 +153,8 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen >= 0.29.1
-%if 0%{?suse_version} > 1560
+BuildRequires:  rust-cbindgen >= 0.29.4
+%if 0%{?suse_version} >= 1699
 BuildRequires:  translate-suse-desktop
 %endif
 BuildRequires:  unzip
@@ -162,11 +167,8 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-%if 0%{?suse_version} < 1599
-BuildRequires:  clang19-devel
-%else
 BuildRequires:  clang-devel
-%endif
+#!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -234,10 +236,8 @@ Patch17:        mozilla-libavcodec58_91.patch
 Patch18:        mozilla-silence-no-return-type.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch24:        mozilla-bmo1746799.patch
 Patch25:        mozilla-sandbox-lto.patch
 Patch26:        mozilla-bmo2030493.patch
-Patch27:        mozilla-bmo2041150.patch
 Patch28:        mozilla-bmo2048250.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
@@ -345,7 +345,7 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
-%if 0%{?suse_version} > 1560
+%if 0%{?suse_version} >= 1699
 cp %{SOURCE1} %{desktop_file_name}.desktop.in.in
 %else
 cp %{SOURCE5} %{desktop_file_name}.desktop
@@ -356,7 +356,7 @@ cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 
 %build
 # desktop file
-%if 0%{?suse_version} > 1560
+%if 0%{?suse_version} >= 1699
 sed "s:%%NAME:%{appname}:g
 s:%%EXEC:%{progname}:g
 s:%%ICON:%{progname}:g

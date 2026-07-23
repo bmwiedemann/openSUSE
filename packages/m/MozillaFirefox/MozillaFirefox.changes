@@ -1,4 +1,184 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:13:38 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 153.0
+  https://www.firefox.com/en-US/firefox/153.0/releasenotes/
+  MFSA 2026-68 (bsc#1271649)
+  * CVE-2026-16349 (bmo#2034682)
+    Same-origin policy bypass in the DOM: Navigation component
+  * CVE-2026-16350 (bmo#2042033)
+    Incorrect boundary conditions in the Audio/Video: cubeb component
+  * CVE-2026-16362 (bmo#2043188)
+    Use-after-free in the WebRTC: Audio/Video component
+  * CVE-2026-16351 (bmo#2045468)
+    Sandbox escape due to use-after-free in the DOM: Navigation component
+  * CVE-2026-16352 (bmo#2046416)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-16363 (bmo#2047689)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-16364 (bmo#2047802)
+    Incorrect boundary conditions in the Audio/Video: Playback component
+  * CVE-2026-16365 (bmo#2049149)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-16366 (bmo#2049181)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-16353 (bmo#2049523)
+    Invalid pointer in the DOM: Bindings (WebIDL) component
+  * CVE-2026-16354 (bmo#2050626)
+    Information disclosure in the Graphics: ImageLib component
+  * CVE-2026-16367 (bmo#2050627)
+    Sandbox escape due to invalid pointer in the Disability
+    Access APIs component
+  * CVE-2026-16368 (bmo#2051015)
+    Incorrect boundary conditions in the JavaScript: WebAssembly component
+  * CVE-2026-16369 (bmo#2051854)
+    Integer overflow in the JavaScript: WebAssembly component
+  * CVE-2026-16355 (bmo#2052207)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-16356 (bmo#2052562)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-16357 (bmo#2053326)
+    Incorrect boundary conditions in the Graphics component
+  * CVE-2026-16370 (bmo#1996495)
+    Mitigation bypass in the DOM: Networking component
+  * CVE-2026-16371 (bmo#2008369)
+    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-16372 (bmo#2013800)
+    Privilege escalation in the DOM: Content Processes component
+  * CVE-2026-16373 (bmo#2021964)
+    Information disclosure in the Privacy component in Firefox
+    for Android
+  * CVE-2026-16374 (bmo#2027519)
+    Information disclosure in the Framework component in DevTools
+  * CVE-2026-16375 (bmo#2032140)
+    Site isolation issue in the Networking: HTTP component
+  * CVE-2026-16376 (bmo#2035733)
+    Denial-of-service in the Graphics: WebGPU component
+  * CVE-2026-16377 (bmo#2037770)
+    Mitigation bypass in the PDF Viewer component
+  * CVE-2026-16378 (bmo#2038868)
+    Other issue in the DOM: Copy & Paste and Drag & Drop component
+  * CVE-2026-16379 (bmo#2039452)
+    Privilege escalation in the DOM: Content Processes component
+  * CVE-2026-16358 (bmo#2040119)
+    Site isolation issue in the Graphics: WebRender component
+  * CVE-2026-16380 (bmo#2040386)
+    Mitigation bypass in the Networking component
+  * CVE-2026-16381 (bmo#2041001)
+    Same-origin policy bypass in the Networking: DNS component
+  * CVE-2026-16382 (bmo#2041864)
+    Mitigation bypass in the DOM: Service Workers component
+  * CVE-2026-16383 (bmo#2041902)
+    Mitigation bypass in the DOM: Networking component
+  * CVE-2026-16384 (bmo#2041911)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
+  * CVE-2026-16385 (bmo#2041912)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
+  * CVE-2026-16386 (bmo#2041916)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
+  * CVE-2026-16387 (bmo#2043200)
+    Site isolation issue in the Networking component
+  * CVE-2026-16388 (bmo#2043845)
+    Sandbox escape in the DOM: Networking component
+  * CVE-2026-16389 (bmo#2043887)
+    Incorrect boundary conditions, integer overflow in the
+    Libraries component in NSS
+  * CVE-2026-16390 (bmo#2044527)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-16391 (bmo#2044536)
+    Information disclosure in the Storage: IndexedDB component
+  * CVE-2026-16392 (bmo#2044606)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-16393 (bmo#2045410)
+    Incorrect boundary conditions in the Graphics: WebGPU component
+  * CVE-2026-16359 (bmo#2045424)
+    Incorrect boundary conditions in the Audio/Video: GMP component
+  * CVE-2026-16394 (bmo#2046748)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-16395 (bmo#2047221)
+    Integer overflow in the Audio/Video component
+  * CVE-2026-16396 (bmo#2047240)
+    Privilege escalation in WebExtensions
+  * CVE-2026-16397 (bmo#2047608)
+    Clickjacking issue in the WebExtensions component in Firefox
+    for Android
+  * CVE-2026-16398 (bmo#2048345)
+    Site isolation issue in the Graphics component
+  * CVE-2026-16399 (bmo#2049981)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-16400 (bmo#2050430)
+    Information disclosure in the DOM: Security component
+  * CVE-2026-16401 (bmo#2052565)
+    Privilege escalation in the Data Loss Prevention component
+  * CVE-2026-16402 (bmo#2052703)
+    Integer overflow in the Graphics: ImageLib component
+  * CVE-2026-16403 (bmo#1972244)
+    Spoofing issue in the Address Bar component
+  * CVE-2026-16404 (bmo#2020253)
+    Spoofing issue in Firefox for Android
+  * CVE-2026-16405 (bmo#2036591)
+    Information disclosure in the Networking: WebSockets component
+  * CVE-2026-16406 (bmo#2040382)
+    Mitigation bypass in the Networking component
+  * CVE-2026-16407 (bmo#2044063)
+    Mitigation bypass in the DOM: Service Workers component
+  * CVE-2026-16408 (bmo#2050477)
+    Integer overflow in the Audio/Video: Playback component
+  * CVE-2026-16409 (bmo#2052134)
+    Invalid pointer in the Security: PSM component
+  * CVE-2026-16410 (bmo#2053680)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-16411 (bmo#1420800, bmo#1598946, bmo#1767921, bmo#2006467,
+    bmo#2013993, bmo#2025417, bmo#2027325, bmo#2027346, bmo#2027349,
+    bmo#2027353, bmo#2027362, bmo#2027364, bmo#2027371, bmo#2027373,
+    bmo#2028954, bmo#2029433, bmo#2029694, bmo#2029807, bmo#2029901,
+    bmo#2029922, bmo#2030102, bmo#2030563, bmo#2032110, bmo#2036906,
+    bmo#2037801, bmo#2038964, bmo#2039460, bmo#2040522, bmo#2040834,
+    bmo#2042756, bmo#2043275, bmo#2044625, bmo#2045394, bmo#2045606,
+    bmo#2045609, bmo#2047920, bmo#2048491, bmo#2048492, bmo#2048800,
+    bmo#2048936, bmo#2049804, bmo#2050534, bmo#2050662, bmo#2050871,
+    bmo#2052060)
+    Memory safety bugs fixed in Firefox 153
+  * CVE-2026-16412 (bmo#2005113, bmo#2025369, bmo#2026301, bmo#2028663,
+    bmo#2029761, bmo#2042242, bmo#2043035, bmo#2043271, bmo#2043300,
+    bmo#2044612, bmo#2045057, bmo#2045187, bmo#2045378, bmo#2045402,
+    bmo#2045406, bmo#2045407, bmo#2045413, bmo#2045417, bmo#2045482,
+    bmo#2045611, bmo#2045616, bmo#2045618, bmo#2045626, bmo#2045730,
+    bmo#2045732, bmo#2045756, bmo#2045769, bmo#2045771, bmo#2046917,
+    bmo#2047718, bmo#2047957, bmo#2048934, bmo#2049818, bmo#2049822,
+    bmo#2050151, bmo#2050368, bmo#2051653, bmo#2051658, bmo#2053635,
+    bmo#2053637)
+    Memory safety bugs fixed in Firefox ESR 140.13 and Firefox 153
+  * CVE-2026-16360 (bmo#2022635, bmo#2028004, bmo#2035756, bmo#2043739,
+    bmo#2045184, bmo#2045185, bmo#2045198, bmo#2045281, bmo#2045392,
+    bmo#2045395, bmo#2045396, bmo#2045397, bmo#2045405, bmo#2045414,
+    bmo#2045415, bmo#2045451, bmo#2045454, bmo#2045508, bmo#2045510,
+    bmo#2045513, bmo#2045515, bmo#2045518, bmo#2045604, bmo#2045607,
+    bmo#2045612, bmo#2045614, bmo#2045617, bmo#2045619, bmo#2045624,
+    bmo#2045625, bmo#2045729, bmo#2045737, bmo#2045741, bmo#2045742,
+    bmo#2045744, bmo#2045763, bmo#2045767, bmo#2045770, bmo#2045772,
+    bmo#2045773, bmo#2045775, bmo#2045783, bmo#2045833, bmo#2045848,
+    bmo#2045865, bmo#2045875, bmo#2045957, bmo#2047719, bmo#2047723,
+    bmo#2047729, bmo#2048795, bmo#2048799, bmo#2048801, bmo#2049392,
+    bmo#2049397, bmo#2049398, bmo#2049399, bmo#2049404, bmo#2049405,
+    bmo#2049407, bmo#2049805, bmo#2049812, bmo#2050657, bmo#2050668,
+    bmo#2050990, bmo#2051666, bmo#2053166, bmo#2053273, bmo#2053576,
+    bmo#2053583, bmo#2053587)
+    Memory safety bugs fixed in Firefox ESR 115.38, Firefox ESR
+    140.13 and Firefox 153
+- requires
+  NSS >= 3.125
+  rust-cbindgen >= 0.29.4
+- removed obsolete patches
+  mozilla-bmo1746799.patch
+  mozilla-bmo2041150.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 09:45:37 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Mozilla Firefox 152.0.6
