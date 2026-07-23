@@ -41,21 +41,16 @@
 %preamble_string libswscale-devel %comparator %conflicts_version \
 %nil
 
-%if 0%{?BUILD_ORIG}
-%bcond_without amf_sdk
-%bcond_without cuda_sdk
-%else
-# If software H264 is disabled, the hw driver must be as well:
-# HW drivers can fail to initialize, namely when the hardware is absent.
-# Browsers choose video formats on sites like youtube based on `ffmpeg
-# -codecs` rather than the success/failure status of libav* initialization.
-# This becomes a problem when a format only has a HW driver;
-# the browser thinks it can do H264 but never succeeds.
-%bcond_with    amf_sdk
-%bcond_with    cuda_sdk
-%endif
+# Many programs only look for one decoder and implement no fallback to other
+# drivers or codecs. For this reason, the decoder list is trimmed in
+# BUILD_ORIG=0 so that no decoder with potential to initialization failure
+# (mostly concerns HW accelerators) ever becomes first preference, even if that
+# means completely throwing away an entire codec (group of decoders).
 
+# By default, start with a disabled state
+%bcond_with    amf_sdk
 %bcond_with    amrwb
+%bcond_with    cuda_sdk
 %bcond_with    fdk_aac_dlopen
 %bcond_with    opencore
 %bcond_with    smbclient
@@ -64,31 +59,38 @@
 %bcond_with    x265
 %bcond_with    xvid
 
-%if 0%{?suse_version} > 1600
-%bcond_without mysofa
-%bcond_without vidstab
-%bcond_without codec2
-%bcond_without rubberband
-%bcond_without vulkan
-%bcond_without amrwb
-%bcond_without opencore
-%bcond_without xvid
-%else
-%if 0%{?suse_version} > 1500
-%bcond_without mysofa
-%bcond_without vidstab
-%bcond_without codec2
-%bcond_without rubberband
-%bcond_without vulkan
-%bcond_without amrwb
-%bcond_without opencore
-%else
-%bcond_with mysofa
-%bcond_with vidstab
-%bcond_with codec2
-%bcond_with rubberband
-%bcond_with vulkan
+# Then we enable them one by one for various targets
+%if 0%{?BUILD_ORIG}
+%bcond_without amf_sdk
+%bcond_without cuda_sdk
 %endif
+
+%if 0%{?suse_version} >= 1699
+# TW has all the deps
+%bcond_without amrwb
+%bcond_without codec2
+%bcond_without mysofa
+%bcond_without opencore
+%bcond_without rubberband
+%bcond_without vidstab
+%bcond_without vulkan
+%bcond_without xvid
+%elif 0%{?suse_version} >= 1600
+# Leap 16 is missing xvid
+%bcond_without amrwb
+%bcond_without codec2
+%bcond_without mysofa
+%bcond_without opencore
+%bcond_without rubberband
+%bcond_without vidstab
+%bcond_without vulkan
+%else
+# Even fewer things in Leap 15
+%bcond_with codec2
+%bcond_with mysofa
+%bcond_with rubberband
+%bcond_with vidstab
+%bcond_with vulkan
 %endif
 
 %define _name ffmpeg
@@ -96,7 +98,7 @@
 %define _major_expected 9
 
 Name:           ffmpeg-8
-Version:        8.1.1
+Version:        8.1.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -791,7 +793,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-8
 Name:           ffmpeg-8-mini
-Version:        8.1.1
+Version:        8.1.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later

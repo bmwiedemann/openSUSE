@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jun 17 18:20:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1.2
+  * Fix some buffer overflows, integer overflows, negative
+    indices, off-by-one erros and double frees in various codecs,
+    muxers and filters.
+  * avcodec/magicyuv: Fix 1 line MEDIAN slices
+    avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
+    avcodec/magicyuv: reject slice_height misaligned with chroma vshift
+    (CVE-2026-8461, bsc#1269490)
+
+-------------------------------------------------------------------
 Fri May 15 00:10:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable glslang filters
@@ -10,6 +22,8 @@ Sat May  9 09:36:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
   * Various codec, filter and other changes, stable bugfix update.
   * avcodec/av1dec: check that primary_ref_frame is within range.
     (CVE-2026-30997, bsc#1262047)
+  * avcodec/rasc: fix heap use-after-free in decode_move().
+    (CVE-2026-12706, bsc#1268595)
 
 -------------------------------------------------------------------
 Thu Apr 30 19:22:32 UTC 2026 - Mia Herkt <mia@0x0.st>
