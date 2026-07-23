@@ -110,4 +110,23 @@ new request since download source check failed the first time</comment>
     <comment>update</comment>
     <requestid>1356031</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>5f28424e8121a691f52b230b0942f4ec</srcmd5>
+    <version>0.36.0</version>
+    <time>1784841036</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.36.0
+  * 1013 fix csapi failing tests
+  * Remove legacy setuptools.command.text
+  * remove comments from xml, because it may fail parsing it
+  * Fix FutureWarning when truth-testing XML element
+  * docs: update WMS example
+  * capture dct:spatial as bbox, if it contains a box
+  * use only pyproject configuration
+  * delegate HTTP 401 and 403 to Python requests (#1033)
+  * Update dev setup docs to pyproject.toml
+  * Handle WFS version mismatch
+</comment>
+    <requestid>1367296</requestid>
+  </revision>
 </revisionlist>

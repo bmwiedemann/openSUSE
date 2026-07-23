@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:29:08 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- update to 0.36.0
+  * 1013 fix csapi failing tests
+  * Remove legacy setuptools.command.text
+  * remove comments from xml, because it may fail parsing it
+  * Fix FutureWarning when truth-testing XML element
+  * docs: update WMS example
+  * capture dct:spatial as bbox, if it contains a box
+  * use only pyproject configuration
+  * delegate HTTP 401 and 403 to Python requests (#1033)
+  * Update dev setup docs to pyproject.toml
+  * Handle WFS version mismatch
+
+-------------------------------------------------------------------
 Sat May 30 10:17:27 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.35.0

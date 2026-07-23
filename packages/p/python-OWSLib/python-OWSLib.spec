@@ -20,13 +20,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-OWSLib
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        Python interface to OGC Web Services
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other
 URL:            https://owslib.readthedocs.io/
-# get the test suite form Github
+# get the test suite from Github
 Source:         https://github.com/geopython/OWSLib/archive/refs/tags/%{version}.tar.gz#/OWSLib-%{version}-gh.tar.gz
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
