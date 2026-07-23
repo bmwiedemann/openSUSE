@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 22 09:27:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+  * Lots of little fixes all over the place.
+  * The major change deals with the radio code. afskmdm has been
+    renamed to fsk (though the old name is still available) and
+    can do most and FSK type of modulation.
+  * HDLC and convolutional coding gensios have been added.
+
+-------------------------------------------------------------------
 Sun Apr 12 10:26:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.2
