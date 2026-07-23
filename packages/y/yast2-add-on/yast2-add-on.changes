@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jul 21 07:02:56 UTC 2026 - Josef Reidinger <jreidinger@suse.com>
+
+- fix invalid entry in changelog ( needed to submit jsc#PED-14507)
+- 5.0.2
+
+-------------------------------------------------------------------
+Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
+
+- jsc#PED-14507
+  - Removed reference to update-desktop-files from spec file
+  - 5.0.1
+-------------------------------------------------------------------
 Wed Aug 30 20:16:10 UTC 2023 - Josef Reidinger <jreidinger@suse.cz>
 
 - 5.0.0 (bsc#1185510)
@@ -294,7 +306,7 @@ Fri Nov 23 17:08:05 UTC 2018 - Stasiek Michalski <hellcp@mailbox.org>
 Tue Nov 20 11:10:09 CET 2018 - schubi@suse.de
 
 - Function SelectProduct removed in order NOT to select All
-  available products (bsc#1116332). 
+  available products (bsc#1116332).
 - 4.1.8
 
 -------------------------------------------------------------------
@@ -446,7 +458,6 @@ Mon Apr  3 11:20:57 UTC 2017 - schubi@suse.de
 - 3.2.0
 
 -------------------------------------------------------------------
-
 Thu Aug 11 15:59:06 CEST 2016 - schubi@suse.de
 
 - Added "confirm_license" to the RNC file.

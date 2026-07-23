@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-add-on
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-add-on
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        YaST2 - Add-On media installation code
 License:        GPL-2.0-only
@@ -26,7 +26,6 @@ URL:            https://github.com/yast/yast-add-on
 
 Source0:        %{name}-%{version}.tar.bz2
 
-BuildRequires:  update-desktop-files
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:rspec)
 BuildRequires:  rubygem(%{rb_default_ruby_abi}:yast-rake)
 # UIExtensionChecker
