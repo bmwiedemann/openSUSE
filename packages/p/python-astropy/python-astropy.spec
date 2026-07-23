@@ -49,7 +49,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-astropy%{psuffix}
-Version:        8.0.0
+Version:        8.0.1
 Release:        0
 Summary:        Community-developed python astronomy tools
 License:        BSD-3-Clause
@@ -74,7 +74,7 @@ BuildRequires:  hdf5-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6.0.0
-Requires:       python-astropy-iers-data >= 0.2026.6.1.17.39.59
+Requires:       python-astropy-iers-data >= 0.2026.6.22.1.23.34
 Requires:       python-numpy >= 2.0
 Requires:       python-packaging >= 25.0
 Requires:       python-pyerfa >= 2.0.1.3
@@ -90,7 +90,6 @@ Recommends:     python-narwhals >= 1.42.0
 Suggests:       libxml2-tools
 Suggests:       python-beautifulsoup4
 Suggests:       python-html5lib
-Suggests:       python-bleach
 Suggests:       python-dask-dataframe >= 2024.8.0
 Suggests:       python-h5py >= 3.11.0
 Suggests:       python-pandas >= 2.2.2
@@ -116,7 +115,6 @@ BuildRequires:  (pkgconfig(wcslib) >= 8.3 with pkgconfig(wcslib) < 8.8)
 BuildRequires:  %{python_module Bottleneck}
 BuildRequires:  %{python_module asdf-astropy >= 0.7.0}
 BuildRequires:  %{python_module beautifulsoup4}
-BuildRequires:  %{python_module bleach}
 BuildRequires:  %{python_module dask-dataframe >= 2024.8.0 if %python-base > 3.12}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py >= 3.11.0}
