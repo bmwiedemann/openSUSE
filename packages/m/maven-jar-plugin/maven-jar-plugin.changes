@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 22 17:43:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.5.1
+  * Documentation updates
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+  * Maintenance
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+    + Use plugin version properties (3.x)
+  * Dependency updates
+    + Bump org.apache.maven.plugins:maven-plugins from 45 to 49
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.4 to 4.12.0
+    + Bump mavenVersion from 3.9.11 to 3.9.16
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.4.0 to 3.5.1
+    + Bump org.apache.maven:maven-archiver from 3.6.5 to 3.6.6
+- Added pom_properties.py: To create a build.properties file, gather
+  the properties from the pom.xml file instead of hand-crafting them
+- Modified patch:
+  * maven-jar-plugin-bootstrap-resources.patch
+    + regenerate from non-bootstrap build 
+
+-------------------------------------------------------------------
 Sat Nov 15 13:36:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.5.0

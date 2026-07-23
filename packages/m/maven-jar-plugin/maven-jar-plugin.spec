@@ -1,7 +1,7 @@
 #
 # spec file for package maven-jar-plugin
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %bcond_with bootstrap
 %endif
 %global base_name maven-jar-plugin
-Version:        3.5.0
+Version:        3.5.1
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
@@ -31,8 +31,10 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-jar-plugin/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
 Source1:        %{base_name}-build.xml
+Source100:      pom_properties.py
 Patch0:         %{base_name}-bootstrap-resources.patch
-BuildRequires:  atinject apache-commons-io
+BuildRequires:  apache-commons-io
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
@@ -89,6 +91,7 @@ API documentation for %{name}.
 %if %{with bootstrap}
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
+python3 %{SOURCE100} pom.xml >build.properties
 %endif
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
