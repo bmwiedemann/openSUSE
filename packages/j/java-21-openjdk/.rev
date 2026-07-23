@@ -207,4 +207,12 @@
     <comment>Make post scripts less noisy (bsc#1267355)</comment>
     <requestid>1357139</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>061e9f8ec0dcfe5e1d5afb1a5be9f644</srcmd5>
+    <version>21.0.12.0</version>
+    <time>1784840959</time>
+    <user>dimstar_suse</user>
+    <comment>July 2026 CPU fixes</comment>
+    <requestid>1367109</requestid>
+  </revision>
 </revisionlist>
