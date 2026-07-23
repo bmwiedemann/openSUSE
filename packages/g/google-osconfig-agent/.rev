@@ -951,4 +951,14 @@
   * CVE-2026-39821.patch (forwarded request 1366724 from mcalabkova)</comment>
     <requestid>1366769</requestid>
   </revision>
+  <revision rev="59" vrev="3">
+    <srcmd5>233423a8bf37d6ea256fae67c546f90f</srcmd5>
+    <version>20260708.00</version>
+    <time>1784841372</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on
+  truncated/invalid UTF-8 input (bsc#1272118)
+  * CVE-2026-56852.patch (forwarded request 1367485 from mcalabkova)</comment>
+    <requestid>1367487</requestid>
+  </revision>
 </revisionlist>
