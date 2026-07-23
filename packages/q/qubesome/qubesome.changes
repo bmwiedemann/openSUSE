@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 23 20:05:30 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.20:
+  * Redact container env vars in logs
+  * entire enable
+  * build(deps): bump the go_modules group across 1 directory with 2 updates
+  * chore(deps): update dependency protocolbuffers/protobuf to v35.1
+  * fix(deps): update golang
+  * Fix timezone symlink
+  * chore(deps): update dependency protocolbuffers/protobuf to v35
+  * fix(deps): update module golang.org/x/sys to v0.45.0
+  * chore(deps): update dependency protocolbuffers/protobuf to v34.2
+  * fix: resolve make verify failures with golangci v2.12.2
+  * chore(deps): update dependency golangci/golangci-lint to v2.12.2
+
+-------------------------------------------------------------------
 Tue May 19 17:24:55 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.19:
