@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:50:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.3:
+  * Updated boto3 dependency floor from 1.42.42 to 1.43.32
+
+-------------------------------------------------------------------
 Tue Jul  7 07:42:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.2:

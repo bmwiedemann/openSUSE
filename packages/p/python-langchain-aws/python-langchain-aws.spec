@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.6.2
+Version:        1.6.3
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT
@@ -27,13 +27,13 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-boto3 >= 1.42.42
+Requires:       python-boto3 >= 1.43.32
 Requires:       python-langchain-core >= 1.4.7
 Requires:       python-numpy >= 1.0.0
 Requires:       python-pydantic >= 2.10.6
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module boto3 >= 1.42.42}
+BuildRequires:  %{python_module boto3 >= 1.43.32}
 BuildRequires:  %{python_module langchain-core >= 1.4.7}
 BuildRequires:  %{python_module numpy >= 1.0.0}
 BuildRequires:  %{python_module pydantic >= 2.10.6}
