@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 14:55:42 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on
+  truncated/invalid UTF-8 input (bsc#1272118)
+  * CVE-2026-56852.patch
+
+-------------------------------------------------------------------
 Mon Jul 20 08:49:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - CVE-2026-39821: golang.org/x/net/idna: failure to reject ASCII-only
