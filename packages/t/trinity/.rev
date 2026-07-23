@@ -852,4 +852,12 @@
   * and many more...</comment>
     <requestid>1344918</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7c149ae13fcaab9ed99e12dd147d24bf</srcmd5>
+    <version>1.9+git.20260411</version>
+    <time>1784842488</time>
+    <user>dimstar_suse</user>
+    <comment>Forward stranded devel update to Factory (devel ahead of Factory 1.9)</comment>
+    <requestid>1367523</requestid>
+  </revision>
 </revisionlist>

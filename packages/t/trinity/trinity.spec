@@ -17,13 +17,13 @@
 
 
 Name:           trinity
-Version:        1.9+git.20260403
+Version:        1.9+git.20260411
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-fix-build-on-aarch-s390x.patch
+Patch0:         0001-net-proto-vsock.c-fix-build-on-older-distros.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls

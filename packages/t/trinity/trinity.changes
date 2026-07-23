@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Apr 17 09:00:14 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- fix build on 16.0
+  add 0001-net-proto-vsock.c-fix-build-on-older-distros.patch
+
+-------------------------------------------------------------------
+Thu Apr 16 08:16:15 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 1.9+git.20260411:
+  * Add FUSE ioctl sanitise functions
+  * Add NVMe ioctl sanitise functions
+  * cdrom: add sanitise functions for SCSI passthrough and key ioctls
+  * ioctls/epoll: add sanitise for EPIOCSPARAMS and EPIOCGPARAMS
+  * ioctls/pidfd: add sanitise for PIDFD_GET_INFO
+  * statmount: add #ifdef guards for newer STATMOUNT_* constants
+  * setsockopt: add #ifdef guard for SCM_TS_OPT_ID
+  * Add /dev/userfaultfd as alternative fd creation path
+  * Add UFFDIO_MOVE ioctl sanitise function
+  * Add UFFDIO_POISON ioctl sanitise function
+  * and many more...
+- drop 0001-fix-build-on-aarch-s390x.patch (upstream)
+
+-------------------------------------------------------------------
 Tue Apr 07 08:47:46 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 1.9+git.20260403:

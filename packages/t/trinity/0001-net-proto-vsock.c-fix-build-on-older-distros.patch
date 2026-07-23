@@ -1,0 +1,44 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Fri, 17 Apr 2026 10:55:25 +0200
+Subject: net/proto-vsock.c: fix build on older distros
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+References: build-fix
+Patch-mainline: submitted https://github.com/kernelslacker/trinity/pull/57
+
+Older distros do not include sys/socket.h -- added only by commit
+22bbc1dcd0d6 ("vsock/uapi: fix linux/vm_sockets.h userspace compilation
+errors") upstream.
+
+So the build fails with:
+In file included from net/proto-vsock.c:3:
+/usr/include/linux/vm_sockets.h:182:39: error: invalid application of ‘sizeof’ to incomplete type ‘struct sockaddr’
+  182 |         unsigned char svm_zero[sizeof(struct sockaddr) -
+      |                                       ^~~~~~
+/usr/include/linux/vm_sockets.h:183:39: error: ‘sa_family_t’ undeclared here (not in a function)
+  183 |                                sizeof(sa_family_t) -
+      |                                       ^~~~~~~~~~~
+
+Include the file before vm_sockets.h.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ net/proto-vsock.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/net/proto-vsock.c b/net/proto-vsock.c
+index 975243674579..f53687a8f368 100644
+--- a/net/proto-vsock.c
++++ b/net/proto-vsock.c
+@@ -1,5 +1,7 @@
+ #include <sys/time.h>
+ #include <stdlib.h>
++/* for struct sockaddr and sa_family_t, needed in vm_sockets.h, fixed by 22bbc1dcd0d6 */
++#include <sys/socket.h>
+ #include <linux/vm_sockets.h>
+ #include "net.h"
+ #include "random.h"
+-- 
+2.53.0
+
