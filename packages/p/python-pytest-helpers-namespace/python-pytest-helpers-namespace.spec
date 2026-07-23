@@ -34,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-pytest
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 %python_subpackages
@@ -55,7 +54,7 @@ sed -i '/setuptools/d' setup.cfg
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -ra --forked
+%pytest -ra
 
 %files %{python_files}
 %doc README.rst docs/*.rst

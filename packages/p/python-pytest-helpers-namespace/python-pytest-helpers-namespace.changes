@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:11:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove use of pytest-forked. 
+
+-------------------------------------------------------------------
 Wed May  7 06:50:18 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

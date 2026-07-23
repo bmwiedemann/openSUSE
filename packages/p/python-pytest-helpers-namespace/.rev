@@ -67,4 +67,12 @@
     <comment>- Switch to pyproject macros.</comment>
     <requestid>1275102</requestid>
   </revision>
+  <revision rev="9" vrev="4">
+    <srcmd5>9752ec417ced6d63098102e578d5328e</srcmd5>
+    <version>2021.12.29</version>
+    <time>1784841172</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove use of pytest-forked.</comment>
+    <requestid>1367320</requestid>
+  </revision>
 </revisionlist>
