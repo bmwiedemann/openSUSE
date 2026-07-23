@@ -1,7 +1,7 @@
 #
 # spec file for package packetdrill
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@ Name:           packetdrill
 Version:        2.0+git.20260514
 Release:        0
 Summary:        Testing tool for kernel networking stack
-License:        GPL-2.0-only
+License:        GPL-2.0-only AND GPL-2.0-or-later
 URL:            https://github.com/google/packetdrill
 Source:         %{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE make-build-more-consistent-with-openSUSE-packaging.patch mkubecek@suse.cz -- respect CFLAGS/LDFLAGS from the build environment

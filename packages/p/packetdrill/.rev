@@ -7,4 +7,12 @@
     <comment>Re-add packetdrill to Factory (was removed). Update to 2.0+git.20260514 (PSP support, AccECN, tcp_info sync to v6.16). Rebase the SUSE Makefile patch. Build with -fno-strict-aliasing (checksum code type-puns the packet buffer; -O2 strict aliasing miscompiled it, failing checksum_test) and use the distro %optflags as-is. Builds green on all enabled arches incl. s390x/ppc64le.</comment>
     <requestid>1356020</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>f48d64ebfa6c0b4f1a51f8fcd76b5b7e</srcmd5>
+    <version>2.0+git.20260514</version>
+    <time>1784841230</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367366</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 16 08:40:10 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Use GPL-2.0-only AND GPL-2.0-or-later for the main license tag
+  95% of files are actually licensed as GPL-2.0-or-later
+
+-------------------------------------------------------------------
 Sat May 30 05:33:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0+git.20260514:
