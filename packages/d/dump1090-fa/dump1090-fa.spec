@@ -18,7 +18,7 @@
 
 
 Name:           dump1090-fa
-Version:        11.0
+Version:        11.1
 Release:        0
 Summary:        An ADS-B Mode S decoder for RTLSDR devices (Flightaware fork)
 License:        GPL-2.0-only
