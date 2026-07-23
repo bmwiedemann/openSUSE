@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Jul 23 20:49:30 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.7.1:
+  * deps: bump google.golang.org/grpc to 1.82.1
+  * Fix unsynchronized range over leaseCache.entries
+  * Fix unbounded io.ReadAll on peer lease HTTP handler body
+  * Set a reasonable value for snapshotLimitByte
+  * Set a 5-minutes ReadHeaderTimeout for client http.Server
+  * Set a tlsHandshakeTimeout for tlsListener
+  * Fix the costTxnReq ignores nested RequestTxn issue
+  * Add an unit test to reproduce the issue of costTxnReq ignores nested RequestTxn
+  * Fix the security issue where a user granted read permission on one key could receive watch responses for every key starting from that key
+
+-------------------------------------------------------------------
 Sat Jul 11 23:57:14 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version to 3.7.0:
