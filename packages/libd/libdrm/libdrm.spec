@@ -42,6 +42,9 @@ Source:         https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
 Source3:        n_libdrm-drop-valgrind-dep-generic.patch
 Source4:        n_libdrm-drop-valgrind-dep-intel.patch
+Source5:        https://dri.freedesktop.org/libdrm/%{name}-%{version}.tar.xz.sig
+# 0xE88F5E48 from https://emersion.fr/about/
+Source6:        %{name}.keyring
 BuildRequires:  fdupes
 BuildRequires:  meson >= 0.43
 BuildRequires:  pkgconfig
