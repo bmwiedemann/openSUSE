@@ -1,7 +1,7 @@
 #
 # spec file for package ssl-cert-check
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,15 @@
 #
 
 
+%global ver 906d34b9e2c495bbed82edcb19404a01f7196b8f
 Name:           ssl-cert-check
-Version:        4.11git.1556282902.f3fc941
+Version:        5.0
 Release:        0
 Summary:        Shell script to send notifications when SSL certificates are about to expire
 License:        GPL-2.0-only
 Group:          Productivity/Security
-URL:            https://prefetch.net/articles/checkcertificate.html
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/Matty9191/ssl-cert-check
+Source0:        https://github.com/Matty9191/ssl-cert-check/archive/%{ver}.tar.gz
 BuildRequires:  xz
 Requires:       bash
 Requires:       coreutils
@@ -43,7 +44,7 @@ SSL certificates. The script was designed to be run from cron and can e-mail
 warnings or log alerts through nagios.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{ver}
 
 %build
 
