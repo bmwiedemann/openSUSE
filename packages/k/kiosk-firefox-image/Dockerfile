@@ -24,7 +24,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends MozillaFirefox MozillaFirefox-branding-openSUSE libavcodec58_134 libpulse0 noto-sans-cjk-fonts xorg-x11-fonts
 RUN set -euo pipefail; useradd -m -u 1000 -U user
 RUN set -euo pipefail; mkdir -p /home/user/.mozilla/firefox
@@ -36,7 +36,7 @@ RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
     t=$(mktemp -d); mv /target/usr/lib/sysimage/rpm/Packages.db $t; rpmdb --rebuilddb --dbpath=$t; \
     rm /target/usr/lib/sysimage/rpm/*.db && mv $t/Packages.db /target/usr/lib/sysimage/rpm/; \
     rm -rf {/target,}/var/log/{alternatives.log,lastlog,suseconnect.log,tallylog,zypper.log,zypp/history,YaST2}; \
-    rm -rf /target/run/*; \
+    rm -rf {/target,}/run/{zypp.pid,regenerate-initrd,systemd}; \
     rm -f {/target,}/etc/{shadow-,group-,passwd-,.pwd.lock}; \
     rm -f {/target,}/usr/lib/sysimage/rpm/.rpm.lock; \
     rm -f {/target,}/var/lib/zypp/AnonymousUniqueId; \
