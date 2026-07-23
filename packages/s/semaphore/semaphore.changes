@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:03:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.18.28:
+  * Bugfixes
+    - Validate schedule cron format using backend endpoint instead
+      of JS library
+- Update to version 2.18.27:
+  * fix(templates): validate app
+
+-------------------------------------------------------------------
 Tue Jul 14 05:34:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.18.26:
