@@ -17,7 +17,7 @@
 
 
 Name:           python-magic-wormhole
-Version:        0.23.0
+Version:        0.24.0
 Release:        0
 Summary:        Tool for transferring files through a secure channel
 License:        MIT

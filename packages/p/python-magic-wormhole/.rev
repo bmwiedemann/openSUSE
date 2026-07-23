@@ -202,4 +202,25 @@
       gh#magic-wormhole/magic-wormhole#642</comment>
     <requestid>1349241</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>299a0603578bc3b8234026e87db828b5</srcmd5>
+    <version>0.24.0</version>
+    <time>1784842486</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.24.0 (bsc#1272449, CVE-2026-42448):
+  * **SECURITY**: @marduc812 noticed that there is also a missing
+    &quot;basename()&quot; when a receiving user specifies an output
+    directory (via &quot;--output&quot;) that already exists. Users on past
+    releases can mitigate this bug by ensuring that any specified
+    &quot;--output&quot; filename is not an already-existing directory.
+    CVE-2026-42448
+
+- add python-rpm-macros dependency
+    approves the transfer. (#349)
+- Update to version 0.11.2
+  * The client version is now sent to the mailbox server for each
+  * We removed the Rendezvous Server (now named the &quot;Mailbox
+    Server&quot;) out to a separate package and repository named</comment>
+    <requestid>1367526</requestid>
+  </revision>
 </revisionlist>
