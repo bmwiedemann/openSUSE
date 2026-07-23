@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Jul 22 00:00:00 UTC 2026 - David Sterba <dsterba@suse.com>
+
+- update to 7.1
+  * mkfs:
+    * use GET_CSUMS ioctl (if provided by kernel, 7.2) to reuse existing
+      checksums for --rootdir, works with --reflink to avoid reading file data
+    * fix last block handling for reflink
+    * fix handling of incompressible data extents
+    * fix --rootdir size estimation when using hardlinks
+  * fi mkswapfile: add option to specify page size, useful on ARM64
+  * check: add option to skip qgroup verification to speed up check
+  * in experimental build, use V2 of tree search ioctl, this can use larger
+    buffer
+  * preliminary fscrypt support
+  * enhance filesystem opening modes with more fine-grained support of
+    partially damaged trees and allow to skip non-essential trees
+  * other:
+    * stability and error handling fixes
+    * CI updates
+    * updated tests
+    * documentation updates
+
+-------------------------------------------------------------------
 Sat Jun 20 17:01:39 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Modernize building of Python bindings, to generate binary
