@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul 23 11:07:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.41:
+  * Added
+    - flavor: add Hugo flavor and skip block attribute lists in
+      blanks-around rules (e6bb033)
+  * Fixed
+    - md044: recognize indented HTML comments so links and code
+      escape the rule (3d6191c)
+    - md013: keep an attr list whole inside a wrapped span
+      (e06f03d)
+    - md013: keep a reference-style link whole inside a wrapped
+      span (de42709)
+    - md013: wrap an over-long span whose whole content is another
+      span (f6c7c9c)
+
+-------------------------------------------------------------------
+Thu Jul 23 06:04:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.40:
+  * Fixed
+    - md003: consume the setext underline when converting a heading
+      to ATX. Converting a setext heading left the underline
+      behind, where a following blank line turned it into a
+      thematic break, so rumdl fmt added a horizontal rule the
+      document never had (7363c34)
+    - md077: stop scoping list items inside blockquotes, which made
+      a lazy continuation line gain indentation on every pass so
+      the formatter never converged (58fb25b)
+    - reflow: keep wiki links, shortcodes and math whole inside a
+      wrapped span (db12c2c)
+    - config: honor the documented MD033 table_allowed alias, which
+      silently dropped the configured value (db2c204)
+    - config: stop reporting MD013's documented
+      semantic-link-understanding alias as an unknown option
+      (1539a64)
+    - parity: make the markdownlint comparison harness actually run
+      (182763c)
+  * Documentation
+    - md013: document that ignore-link-urls affects reporting only.
+      Reflow measures the markdown as written, matching prettier
+      and mdformat (c4f8bad)
+
+-------------------------------------------------------------------
 Wed Jul 22 06:31:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.39:
