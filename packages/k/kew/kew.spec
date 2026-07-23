@@ -1,7 +1,7 @@
 #
 # spec file for package kew
 #
-# Copyright (c) 2025 mantarimay
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %bcond_without aac
 Name:           kew
-Version:        3.7.3
+Version:        4.2.7
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
@@ -71,6 +71,8 @@ sed -i '1s|gcc|clang|' Makefile
 %{_bindir}/kew
 %{_datadir}/kew
 %{_mandir}/man1/kew.1%{?ext_man}
+%{_datadir}/applications/kew.desktop
+%{_datadir}/icons
 
 %files lang -f %{name}.lang
 

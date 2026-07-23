@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 22 18:07:19 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 4.2.7
+  * Updated UI with new layouts, animations, and visual polish
+  * Added MPRIS media player control support
+  * Added Opus, DSF, and DFF audio format support
+  * Added replaygain parsing and loudness normalization support
+  * Added mouse support for track seeking and library navigation
+  * Improved CUE sheet handling and multi-track file support
+  * Improved search filter performance and keybinding options
+  * Improved audio backend stability and seamless playback
+  * Optimized memory usage and startup indexing time
+  * Fixed track duration calculation and metadata parsing bugs
+  * Fixed playlist saving, loading, and auto-sorting issues
+  * Updated build scripts and updated project dependencies
+
+-------------------------------------------------------------------
 Fri Jan  2 21:50:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.7.3:

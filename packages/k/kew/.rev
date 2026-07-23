@@ -278,4 +278,12 @@
   * Symlinked directories should work better now. Works best if</comment>
     <requestid>1325187</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>8ae2125eac19cd4dc652d2ec330f5fd9</srcmd5>
+    <version>4.2.7</version>
+    <time>1784841021</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367176</requestid>
+  </revision>
 </revisionlist>
