@@ -3,13 +3,8 @@ set -euxo pipefail
 
 if [ -x /usr/bin/snapper ]; then
 	echo "Adjusting snapper configuration"
-	if ! [ -f /etc/snapper/configs/root ]; then
-		echo "Snapper config missing?"
-		exit 1
-	fi
-	sed -i'' 's/^TIMELINE_CREATE=.*$/TIMELINE_CREATE="no"/g' /etc/snapper/configs/root
-	sed -i'' 's/^NUMBER_LIMIT=.*$/NUMBER_LIMIT="2-10"/g' /etc/snapper/configs/root
-	sed -i'' 's/^NUMBER_LIMIT_IMPORTANT=.*$/NUMBER_LIMIT_IMPORTANT="4-10"/g' /etc/snapper/configs/root
+	grep -E '^SNAPPER_CONFIGS="root"' /etc/sysconfig/snapper # assert that kiwi created and registered the default config
+	snapper --no-dbus set-config TIMELINE_CREATE=no NUMBER_LIMIT=2-10 NUMBER_LIMIT_IMPORTANT=4-10
 fi
 
 if [ -x /usr/bin/sdbootutil ]; then

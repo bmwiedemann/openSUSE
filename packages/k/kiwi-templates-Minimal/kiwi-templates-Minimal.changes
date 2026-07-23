@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 20 14:32:49 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- disk.sh: Simplify snapper configuration and add assertion for the
+  setup done by kiwi
+
+-------------------------------------------------------------------
 Fri Jul 17 11:23:37 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Move snapper configuration from config.sh to disk.sh (boo#1259633)
