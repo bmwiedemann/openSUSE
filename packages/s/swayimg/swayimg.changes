@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Jul 22 18:04:42 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
+
+- Update to version 5.4
+  * Added JPEG2000 and X BitMap image format support
+  * Added IPTC and XMP tag reading support
+  * Added support for embedded thumbnails in RAW images
+  * Added support for previewing TTF/OTF fonts as images
+  * Added drag-and-drop support to receive images
+  * Improved thumbnail visual quality in gallery mode
+  * Optimized memory usage for non-image files
+  * Improved orientation handling for HEIF and RAW formats
+  * Improved Hyprland overlay mode support and fixes
+  * Fixed 16-bit image decoding for TGA format
+  * Fixed Wayland thread sync undefined behavior
+  * Updated Lua API with stack trace reporting and config options 
+- Add pkgconfig(libopenjp2) BuildRequires: enable JPEG2000 support
+
+-------------------------------------------------------------------
 Tue Mar 17 07:09:24 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Fix build errors on Leap

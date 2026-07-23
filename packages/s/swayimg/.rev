@@ -223,4 +223,26 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1342179</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>31b159b979edd9234cdd8a83300379c3</srcmd5>
+    <version>5.4</version>
+    <time>1784841020</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 5.4
+  * Added JPEG2000 and X BitMap image format support
+  * Added IPTC and XMP tag reading support
+  * Added support for embedded thumbnails in RAW images
+  * Added support for previewing TTF/OTF fonts as images
+  * Added drag-and-drop support to receive images
+  * Improved thumbnail visual quality in gallery mode
+  * Optimized memory usage for non-image files
+  * Improved orientation handling for HEIF and RAW formats
+  * Improved Hyprland overlay mode support and fixes
+  * Fixed 16-bit image decoding for TGA format
+  * Fixed Wayland thread sync undefined behavior
+  * Updated Lua API with stack trace reporting and config options 
+- Add pkgconfig(libopenjp2) BuildRequires: enable JPEG2000 support
+</comment>
+    <requestid>1367390</requestid>
+  </revision>
 </revisionlist>

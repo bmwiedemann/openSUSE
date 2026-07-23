@@ -22,12 +22,12 @@
 %global force_gcc_version 13
 %endif
 Name:           swayimg
-Version:        5.0
+Version:        5.4
 Release:        0
 Summary:        Image viewer for Sway/Wayland
 License:        MIT
 URL:            https://github.com/artemsen/swayimg
-Source:         %{url}/archive/v.%{version}/%{name}-v.%{version}.tar.gz
+Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 BuildRequires:  giflib-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  meson >= 0.60.0
@@ -50,6 +50,7 @@ BuildRequires:  pkgconfig(libheif)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libraw)
 BuildRequires:  pkgconfig(libsixel)
+BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(libwebpdemux)
@@ -66,7 +67,7 @@ the currently active window, which gives the illusion that you are
 opening the image directly in a terminal window.
 
 %prep
-%autosetup -n %{name}-v.%{version} -p1
+%autosetup -p1
 
 %build
 %if 0%{?force_gcc_version}
