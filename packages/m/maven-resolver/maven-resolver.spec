@@ -18,7 +18,7 @@
 
 %define _buildshell /bin/bash
 Name:           maven-resolver
-Version:        2.0.20
+Version:        2.0.21
 Release:        0
 Summary:        Apache Maven Artifact Resolver library
 License:        Apache-2.0
