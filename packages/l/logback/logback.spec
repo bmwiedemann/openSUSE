@@ -17,7 +17,7 @@
 
 
 Name:           logback
-Version:        1.5.38
+Version:        1.6.0
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later

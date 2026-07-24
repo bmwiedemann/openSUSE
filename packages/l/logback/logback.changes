@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Jul 24 02:40:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.6.0
+  * Notable changes
+    In version 1.5.37 and subsequently in 1.6.x, support for
+    Janino-based conditional expressions was removed. Evaluating
+    arbitrary Java expressions with the Janino library had led to
+    numerous security vulnerabilities.
+    If you are upgrading from a version earlier than 1.5.37 and
+    your configuration files still use those older Janino-style
+    conditionals, you must migrate them to the new format using
+    the <condition> element (available since version version
+    1.5.20).
+    The <condition> element accepts implementations of the
+    PropertyCondition interface to decide whether a branch of the
+    configuration should apply. Logback-core ships with several
+    implementations of said interface. For details, see the
+    https://logback.qos.ch/manual/configuration.html#conditional
+  * Changes
+    + Removed deprecated variables
+      ° ch.qos.logback.classic.PatternLayout#DEFAULT_CONVERTER_MAP
+      ° ch.qos.logback.classic.PatternLayout#defaultConverterMap
+      ° ch.qos.logback.classic.util.ContextInitializer
+        #AUTOCONFIG_FILE
+      ° ch.qos.logback.classic.util.ContextInitializer
+        #TEST_AUTOCONFIG_FILE
+      ° ch.qos.logback.classic.util.ContextInitializer
+        #CONFIG_FILE_PROPERTY
+    + Remove deprecated methods
+      ° ch.qos.logback.classic.PatternLayout
+        #getDefaultConverterMap()
+      ° ch.qos.logback.core.util.ExecutorServiceUtil
+        #newExecutorService()
+      ° ch.qos.logback.core.util.VersionUtil
+        #getVersionOfArtifact(Class<?>)
+      ° ch.qos.logback.core.pattern.PatternLayoutBase
+        #setContextForConverters
+      ° ch.qos.logback.core.pattern.PatternLayoutEncoderBase
+        #setOutputPatternAsPresentationHeader
+      ° ch.qos.logback.core.joran.spi.ConfigurationWatchList
+        #changeDetected
+      ° ch.qos.logback.core.joran.GenericXMLConfigurator
+        #informContextOfURLUsedForConfiguration
+      ° ch.qos.logback.core.model.ModelUtil#setProperty
+      ° ch.qos.logback.core.model.ModelUtil#setProperties
+      ° ch.qos.logback.core.joran.action.PreconditionValidator
+        #generic
+      ° ch.qos.logback.core.util.EnvUtil#logbackVersion
+      ° ch.qos.logback.classic.util.ClassicEnvUtil
+        #getVersionOfLogbackClassic
+    + Remove deprecated class
+      ° ch.qos.logback.classic.turbo.ReconfigureOnChangeFilter
+    + In AsyncAppenderBase, the put(ILoggingEvent) method now has
+      the protected modifier to allow access from derived classes
+    + Bump SLF4J dependency to version 2.0.18.
+
+-------------------------------------------------------------------
 Wed Jul 15 15:16:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.5.38
