@@ -2897,4 +2897,22 @@
     <comment>Update to 0.11.31</comment>
     <requestid>1367141</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>9381a0167661230e6f4918b7a1f32e80</srcmd5>
+    <version>0.11.32</version>
+    <time>1784923633</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.11.32 
+ * Preview features
+  * Add --package and --all-packages selection to uv check 
+  * Allow uv upgrade to update multiple marker-specific declarations of the same package 
+  * Reject non-canonically formatted lockfiles in uv lock --check and commands using --locked 
+  * Regenerate non-canonically formatted lockfiles with uv lock --refresh 
+  * Include best-effort information about the active environment in uv workspace metadata by default 
+ * Performance
+  * Skip dependency-group conflict expansion when no additional conflicts can be inferred 
+ * Bug fixes
+  * Fork universal resolutions when Requires-Python is discovered only from distribution metadata</comment>
+    <requestid>1367683</requestid>
+  </revision>
 </revisionlist>
