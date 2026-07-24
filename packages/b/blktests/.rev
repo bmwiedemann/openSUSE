@@ -116,4 +116,20 @@ from https://github.com/osandov/blktests
     <comment></comment>
     <requestid>1361691</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e51bbb4854bf92df025a58e614c8b7d4</srcmd5>
+    <version>0+20260630.3494185</version>
+    <time>1782916785</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362765</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>21ebe45f04c8452332b86af11b27c3ef</srcmd5>
+    <version>0+20260723.8f6020e</version>
+    <time>1784923548</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367577</requestid>
+  </revision>
 </revisionlist>

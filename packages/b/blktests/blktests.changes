@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Fri Jul 24 03:32:16 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260723.8f6020e:
+  * loop/006: settle udev before completing the test
+  * loop/009: only skip on a genuinely unrecognized --ping option
+  * new: guide long command options
+  * CONTRIBUTING: clarify that GPL-2.0 is not applicable
+  * nvme/rc: use _set_attr() in _create_nvmet_passthru()
+  * check: fix exit status code handling
+  * nvme/050: skip cleanly when debugfs is not mounted
+  * nvme/039: skip cleanly when debugfs is not mounted
+  * common/rc: add _have_debugfs()
+  * nvme/069: add a test for multipath cdev lifetime
+  * loop: test cleanup of manually added partitions
+  * docs: add fully annotated configuration example
+  * nvme/{033,036,037}: skip when the test target namespace has metadata
+  * nvme/039: drain udev events before passthru error injection
+  * block/044: basic block error injection sanity test
+  * common/rc: Fix _get_page_size()
+  * README.md, check: require getconf
+
+-------------------------------------------------------------------
+Wed Jul 01 04:51:55 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260630.3494185:
+  * src/Makefile: escape '#' in HAVE_C_DEF
+
+-------------------------------------------------------------------
+Sun Jun 28 11:57:22 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260628.dbff8ef:
+  * src/miniublk: fall back to legacy opcodes on older kernels
+  * src/miniublk: switch to ioctl-encoded ublk commands
+  * nvme/060: suppress "nvme connect" failure for rdma transport
+  * nvme/060: suppress state file write error
+
+-------------------------------------------------------------------
 Wed Jun 25 00:00:00 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Use %autosetup -p1 instead of explicit %setup + %patch
