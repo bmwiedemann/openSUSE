@@ -1,5 +1,5 @@
 #
-# spec file for package libjwt
+# spec file for package sso-mib
 #
 # Copyright (c) 2026 SUSE LLC
 #
@@ -18,7 +18,7 @@
 %global soversion 0
 
 Name:           sso-mib
-Version:        0.10.0
+Version:        0.10.1
 Release:        1%{?dist}
 Summary:        Tools and library for Single-Sign-On with CA for Entra via Himmelblau
 

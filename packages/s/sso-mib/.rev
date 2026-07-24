@@ -50,4 +50,12 @@ Requires libjwt as a build dependency which will also be sent.</comment>
     <comment></comment>
     <requestid>1363692</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7e40a4486e2af4d11a4f80e77f47b402</srcmd5>
+    <version>0.10.1</version>
+    <time>1784923623</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367668</requestid>
+  </revision>
 </revisionlist>

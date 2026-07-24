@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:28:51 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
+
+- Import version 0.10.1
+  Fix bug to avoid activating broker on app creation
+
+-------------------------------------------------------------------
 Fri Jul 3 13:23:40 UTC 2026 - Luca Boccassi <luca.boccassi@gmail.com>
 
 - Import version 0.10.0
