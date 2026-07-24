@@ -185,4 +185,12 @@ aarch64: replayed frames were captured on a veth peer, 3/3 successful,
 1 warning: no-%check-section, 0 badness).</comment>
     <requestid>1366810</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>048f83d49418882f9150f8334a419230</srcmd5>
+    <version>4.5.4</version>
+    <time>1784923583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367610</requestid>
+  </revision>
 </revisionlist>

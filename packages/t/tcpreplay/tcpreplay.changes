@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:52:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.4 (security-only release):
+  * Fix heap buffer overflow in the tcprewrite fragroute
+    tcp_opt module (GHSA-pfqg-243f-8q25, CWE-787, CVSS 8.4):
+    tcp_opt_apply() passed sizeof(pkt->pkt_data) - ETH_HDR_LEN
+    as the capacity bound, but pkt_data is a pointer so
+    sizeof() was 8 and the subtraction underflowed size_t,
+    disabling the bounds check and allowing an out-of-bounds
+    heap write. Now bounded by the real buffer extent.
+  * Fix heap buffer overflow in the tcprewrite fragroute
+    ip6_opt module (GHSA-2wmf-4p77-784q, CWE-787): IPv6
+    routing/extension-header insertion used memmove()/memcpy()
+    without checking the inserted bytes fit the remaining
+    buffer headroom.
+  * Fix the same class of unchecked option-insertion overflow
+    in the fragroute ip_opt module (src/fragroute/mod_ip_opt.c).
+  * Fix SEGV in the tcpedit DLT_JUNIPER_ETHER plugin used as a
+    decoder (GHSA-ww62-mxv7-pg55, CWE-704, CWE-843): the plugin
+    read ctx->encoder->config although it only ever decodes,
+    a type confusion that crashed tcpedit on DLT_JUNIPER_ETHER
+    input (e.g. tcprewrite --dlt=enet); now reads
+    ctx->decoder->config.
+  * Fix crash in remove_settings() on failed text_mmap
+    (GHSA-5cjx-62pj-pmgq, CVE-2025-8746, CWE-476): the
+    AutoOpts option-file save/rewrite path dereferenced the
+    text_mmap() result without checking for MAP_FAILED.
+  * Fix buffer overflow in the KHIAL sendpacket() path
+    (GHSA-pjh6-6hrw-vcwr, CWE-787, CVSS 6.6):
+    buffer_payload_size added instead of subtracted the
+    pcap_pkthdr size, overstating the send buffer by 48 bytes
+    and overflowing it for packets >= 10024 bytes.
+- Drop tcpreplay-CVE-2025-8746.patch: the remove_settings()
+  MAP_FAILED guard (CVE-2025-8746 / GHSA-5cjx-62pj-pmgq) is
+  now fixed upstream in 4.5.4.
+
+-------------------------------------------------------------------
 Mon Jul 20 15:41:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.3:

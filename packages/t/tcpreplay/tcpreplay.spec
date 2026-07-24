@@ -17,7 +17,7 @@
 
 
 Name:           tcpreplay
-Version:        4.5.3
+Version:        4.5.4
 Release:        0
 Summary:        Network analysis and testing tools
 License:        GPL-3.0-only
@@ -25,11 +25,9 @@ URL:            https://tcpreplay.appneta.com/
 Source0:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/appneta/tcpreplay/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        %{name}.keyring
-# CVE-2025-8746 [bsc#1247917], improper input validation and memory bounds checking when processing certain malformed configuration files
-Patch0:         tcpreplay-CVE-2025-8746.patch
 # Fix the __GLIBC_MINOR typo in txring.h and include <linux/if_packet.h>,
 # which is what actually defines the PACKET_TX_RING API - sent upstream
-Patch1:         tcpreplay-fix-txring-includes.patch
+Patch0:         tcpreplay-fix-txring-includes.patch
 BuildRequires:  libdnet-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
