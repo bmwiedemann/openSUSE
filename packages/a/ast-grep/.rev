@@ -1286,4 +1286,41 @@
   * chore(deps): update oxlint monorepo (#2765)</comment>
     <requestid>1363970</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>5dfcc95f5caacda802aa6b4f616f8cd6</srcmd5>
+    <version>0.45.0</version>
+    <time>1784923593</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.45.0:
+  * 0.45.0 bump version
+  * feat: deprecate the sg command (#2843)
+  * fix: avoid Defender false positive for Windows sg (#2842)
+  * chore(deps): update dependency @napi-rs/cli to v3.7.4 (#2834)
+  * chore(deps): update dependency oxlint to v1.75.0 (#2838)
+  * chore(deps): update actions/setup-node action to v7 (#2810)
+  * chore(deps): update actions/setup-python action to v7 (#2829)
+  * chore: bump versions
+  * fix: specify correct MSRV in Cargo.toml (#2837)
+  * Revert &quot;chore(deps): update dependency typescript to v7 (#2795)&quot; (#2831)
+  * feat(outline): support ambient TypeScript modules
+  * fix: add namespace/module
+  * fix: make smart strictness ignore comment by default
+  * fix: unify skip metavar / skip comment
+  * fix: use is_extra instead of comment heuristic
+  * fix: add threadlocal parser cache
+  * chore(deps): update astral-sh/setup-uv action to v8.3.2 (#2790)
+  * chore(deps): update dependency typescript to v7 (#2795)
+  * chore(deps): update rust crate thiserror to v2.0.19 (#2819)
+  * fix: stop using ignore files outside rule_dirs
+  * chore: update
+  * chore(deps): update dependency @napi-rs/cli to v3.7.3 (#2801)
+  * chore(deps): update dependency web-tree-sitter to v0.26.11 (#2802)
+  * chore(deps): update rust crate target-triple to v1.0.1 (#2817)
+  * fix: clippy
+  * chore: update deps
+  * fix: fix new clippy
+  * chore(deps): update dependency oxlint to v1.74.0 (#2809)
+  * chore(deps): update dependency dprint to v0.55.2 (#2808)</comment>
+    <requestid>1367625</requestid>
+  </revision>
 </revisionlist>
