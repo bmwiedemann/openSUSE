@@ -15,4 +15,16 @@
     <comment>Update to git snapshot 0+git20260717.98c3b24</comment>
     <requestid>1366543</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d069bedd7e0ac2f38b88de226dde50f3</srcmd5>
+    <version>0+git20260723.69f0ba8</version>
+    <time>1784923574</time>
+    <user>dimstar_suse</user>
+    <comment>Update to git snapshot 0+git20260723.69f0ba8
+
+- Update to git snapshot 0+git20260723.69f0ba8:
+  * Periodic sync from the upstream xAI monorepo
+  * Refresh the vendored Rust crate dependencies</comment>
+    <requestid>1367576</requestid>
+  </revision>
 </revisionlist>

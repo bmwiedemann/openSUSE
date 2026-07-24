@@ -17,7 +17,7 @@
 
 
 Name:           grok-build
-Version:        0+git20260717.98c3b24
+Version:        0+git20260723.69f0ba8
 Release:        0
 Summary:        Terminal AI coding agent by xAI
 License:        Apache-2.0
