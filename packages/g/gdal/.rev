@@ -1078,4 +1078,20 @@ Note: SONAME bump libgdal38 -&gt; libgdal39 (rebuilds consumers)</comment>
     <comment>Build the GDAL Python bindings for all supported Python flavors (python_module(GDAL) triplet, boo#1246076) + noarch gdal-python-tools; enable CFITSIO/Qhull/HEIF/JPEG-XL/AVIF/Blosc drivers; drop EOL Leap 15 constructs. (Supersedes SR#1361277 to add the AVIF driver; Arrow/Parquet kept in-spec but disabled until apache-arrow is rebuilt against current protobuf.)</comment>
     <requestid>1361288</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>db501cf54795ecc081ab5a90156340cb</srcmd5>
+    <version>3.13.1</version>
+    <time>1782916770</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362767</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>f7034107ec9f360476e2babf7d6f58ee</srcmd5>
+    <version>3.13.2</version>
+    <time>1784923541</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.13.2 (bug fix release): security fixes (NITF/Envisat/SXF/liblerc), core integer-overflow/NoData fixes, /vsicurl/ fixes, gdal CLI pipeline fixes, driver fixes (COG/GTiff libtiff 4.7.2rc3/netCDF/JP2Grok/etc.), Python bindings require &gt;=3.9 + SWIG 4.5.0dev, CMake 4.4 + Poppler 26.08dev build fixes</comment>
+    <requestid>1367588</requestid>
+  </revision>
 </revisionlist>

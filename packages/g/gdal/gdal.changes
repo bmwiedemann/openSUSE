@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:51:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.13.2 (bug fix release):
+  * Security-relevant fixes: heap-buffer-overflow in NITF user TRE
+    parsing; heap overflow in Envisat ScanForGCPs_ASAR from an
+    unchecked NUM_DSR; out-of-bounds write in the SXF driver from a
+    signed attribute-length byte; security fixes imported into the
+    internal liblerc; MRF caching-mode fixes (MRF_BYPASSCACHING
+    replaced by MRF_ENABLE_CACHING)
+  * Core: fix integer overflow in BlockBasedRasterIO on huge rasters;
+    ComputeRasterMinMax and GetHistogram now match integers exactly
+    against the NoData value; fix multidim IAdviseRead parent-bounds
+    computation for step != 1
+  * /vsicurl/: fix file size with nginx 'autoindex_exact_size off'
+    (3.12.0 regression); restrict filenames allowed in the header_file
+    key-value pair; more robust S3-like Sync() locking; VSISync() no
+    longer misses empty files in multithreaded mode
+  * Utilities (gdal CLI): numerous pipeline / materialize / raster
+    stack / mosaic fixes and clearer error messages
+  * Drivers: COG always creates the temp file as BigTIFF; DIMAP2
+    reports CLOUD_COVERAGE and SNOW_COVERAGE; FAST caps band count;
+    GTiff internal libtiff resynced with 4.7.2rc3; netCDF rotated-pole
+    SRS handling; JP2Grok buffer-handling improvements; FlatGeoBuf,
+    PMTiles, SQLite, WFS and MiraMonVector (memory-leak) fixes
+  * Python bindings: require Python >= 3.9 with setuptools >= 77;
+    add compatibility with SWIG 4.5.0dev
+  * Build: CMake 4.4 compatibility; fix build against Poppler 26.08dev
+
+-------------------------------------------------------------------
+Mon Jun 29 08:44:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Drop the redundant %add_python python311 (it is already in the
+  default flavour set); build the default python interpreters
+- Enable SFCGAL support for 3D geometry operations
+  (-DGDAL_USE_SFCGAL=ON)
+- Split heavy-dependency GDAL drivers into standalone loadable
+  plugin subpackages (gdal-hdf5, gdal-kea, gdal-pdf,
+  gdal-postgresql, gdal-mysql, gdal-fits, gdal-netcdf), to slim the
+  core libgdal dependency footprint; each plugin is independently
+  toggleable via its own bcond (default on) and no longer pulled in
+  through a meta-package. This aligns the packaging with other
+  distributions (Fedora, Debian), which ship these heavy-dependency
+  drivers as separate plugin packages
+
+-------------------------------------------------------------------
 Tue Jun 23 07:13:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the Python bindings for all supported interpreters

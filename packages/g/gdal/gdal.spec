@@ -26,15 +26,11 @@
 %else
 %bcond_without netcdf_support
 %endif
-# Build the GDAL Python bindings for the additional supported flavors in
-# addition to the default interpreter, so other packages can depend on
-# the full set and not just the primary one (boo#1246076)
-%add_python python311
 %bcond_with ecw_support
 %bcond_with ecw5_support
 %bcond_with fgdb_support
 %bcond_with kml_support
-%bcond_with sfcgal_support
+%bcond_without sfcgal_support
 %bcond_with hdf4_support
 %bcond_without heif_support
 %bcond_without qhull_support
@@ -48,8 +44,18 @@
 %bcond_with arrow_support
 %bcond_without avif_support
 %bcond_with tests_support
+# Each heavy-dependency driver is shipped as a separately-toggleable
+# loadable plugin subpackage (gdal-<driver>); turning a bcond off builds
+# the driver into the core (or drops it) and omits its subpackage
+%bcond_without hdf5_plugin
+%bcond_without kea_plugin
+%bcond_without pdf_plugin
+%bcond_without postgresql_plugin
+%bcond_without mysql_plugin
+%bcond_without fits_plugin
+%bcond_without netcdf_plugin
 Name:           gdal
-Version:        3.13.1
+Version:        3.13.2
 Release:        0
 Summary:        GDAL/OGR - a translator library for raster and vector geospatial data formats
 License:        BSD-3-Clause AND MIT AND LicenseRef-SUSE-Public-Domain
@@ -244,6 +250,72 @@ BuildArch:      noarch
 %description bash-completion
 bash command line completion support for GDAL
 
+%if %{with hdf5_plugin}
+%package -n %{name}-hdf5
+Summary:        GDAL HDF5 driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-hdf5
+GDAL loadable driver plugin for the HDF5 raster format, including the
+derived BAG and S-102/S-104/S-111 product drivers.
+%endif
+
+%if %{with kea_plugin}
+%package -n %{name}-kea
+Summary:        GDAL KEA driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-kea
+GDAL loadable driver plugin for the KEA raster format (libkea/HDF5).
+%endif
+
+%if %{with pdf_plugin}
+%package -n %{name}-pdf
+Summary:        GDAL PDF driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-pdf
+GDAL loadable driver plugin for reading and writing geospatial PDF files
+(rendering via Poppler).
+%endif
+
+%if %{with postgresql_plugin}
+%package -n %{name}-postgresql
+Summary:        GDAL PostgreSQL/PostGIS driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-postgresql
+GDAL/OGR loadable driver plugins for PostgreSQL/PostGIS: the OGR PostgreSQL
+vector driver and the PostGISRaster raster driver.
+%endif
+
+%if %{with mysql_plugin}
+%package -n %{name}-mysql
+Summary:        GDAL MySQL driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-mysql
+OGR loadable driver plugin for the MySQL/MariaDB vector format.
+%endif
+
+%if %{with cfitsio_support} && %{with fits_plugin}
+%package -n %{name}-fits
+Summary:        GDAL FITS driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-fits
+GDAL loadable driver plugin for the FITS raster format (cfitsio).
+%endif
+
+%if %{with netcdf_support} && %{with netcdf_plugin}
+%package -n %{name}-netcdf
+Summary:        GDAL netCDF driver plugin
+Requires:       %{name} = %{version}-%{release}
+
+%description -n %{name}-netcdf
+GDAL loadable driver plugin for the netCDF raster/multidimensional format.
+%endif
+
 %define python_subpackage_only 1
 %python_subpackages
 
@@ -364,7 +436,29 @@ sed -e 's|gdal_optional_format(libertiff "GeoTIFF support through libertiff libr
   -DGDAL_USE_XERCESC=ON \
   -DGDAL_USE_ZLIB=ON \
   -DGDAL_USE_ZSTD=ON \
-  -DOGR_BUILD_OPTIONAL_DRIVERS=ON
+  -DOGR_BUILD_OPTIONAL_DRIVERS=ON \
+%if %{with hdf5_plugin}
+  -DGDAL_ENABLE_DRIVER_HDF5_PLUGIN=ON \
+%endif
+%if %{with kea_plugin}
+  -DGDAL_ENABLE_DRIVER_KEA_PLUGIN=ON \
+%endif
+%if %{with pdf_plugin}
+  -DGDAL_ENABLE_DRIVER_PDF_PLUGIN=ON \
+%endif
+%if %{with postgresql_plugin}
+  -DGDAL_ENABLE_DRIVER_POSTGISRASTER_PLUGIN=ON \
+  -DOGR_ENABLE_DRIVER_PG_PLUGIN=ON \
+%endif
+%if %{with mysql_plugin}
+  -DOGR_ENABLE_DRIVER_MYSQL_PLUGIN=ON \
+%endif
+%if %{with cfitsio_support} && %{with fits_plugin}
+  -DGDAL_ENABLE_DRIVER_FITS_PLUGIN=ON \
+%endif
+%if %{with netcdf_support} && %{with netcdf_plugin}
+  -DGDAL_ENABLE_DRIVER_NETCDF_PLUGIN=ON \
+%endif
 
 %cmake_build
 
@@ -450,6 +544,7 @@ popd
 %files
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
+%dir %{_libdir}/gdalplugins
 %{_bindir}/gdal
 %{_bindir}/gdal_contour
 %{_bindir}/gdal_create
@@ -698,5 +793,41 @@ popd
 %files bash-completion
 %license LICENSE.TXT
 %{_datadir}/bash-completion/completions/*
+
+%if %{with hdf5_plugin}
+%files -n %{name}-hdf5
+%{_libdir}/gdalplugins/gdal_HDF5.so
+%endif
+
+%if %{with kea_plugin}
+%files -n %{name}-kea
+%{_libdir}/gdalplugins/gdal_KEA.so
+%endif
+
+%if %{with pdf_plugin}
+%files -n %{name}-pdf
+%{_libdir}/gdalplugins/gdal_PDF.so
+%endif
+
+%if %{with postgresql_plugin}
+%files -n %{name}-postgresql
+%{_libdir}/gdalplugins/ogr_PG.so
+%{_libdir}/gdalplugins/gdal_PostGISRaster.so
+%endif
+
+%if %{with mysql_plugin}
+%files -n %{name}-mysql
+%{_libdir}/gdalplugins/ogr_MySQL.so
+%endif
+
+%if %{with cfitsio_support} && %{with fits_plugin}
+%files -n %{name}-fits
+%{_libdir}/gdalplugins/gdal_FITS.so
+%endif
+
+%if %{with netcdf_support} && %{with netcdf_plugin}
+%files -n %{name}-netcdf
+%{_libdir}/gdalplugins/gdal_netCDF.so
+%endif
 
 %changelog
