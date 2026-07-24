@@ -31,7 +31,7 @@ RUN set -euo pipefail; \
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' tigervnc-x11vnc | \
     cut -d '.' -f -1)" = "1" ]
-RUN useradd -m -u 1000 -g 100 user
+RUN useradd -m -u 1000 -U user
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n --installroot /target clean -a; \
