@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:51:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.2:
+  * Fix wallet generation during first use
+  * Fix stale subaddress selection after switching accounts
+  * Fix precision loss when generating payment requests with
+    large amounts
+  * Create wallets in memory in the wizard; only validate
+    custom wallet locations
+  * Warn when adjusting KDF rounds
+  * libwalletqt: fix potential out-of-bounds read
+  * Allow graceful application shutdown
+  * Replace deprecated Qt APIs and the languages XmlListModel
+  * Remove direct X11 dependency (used only for Caps Lock
+    detection, which never worked on Wayland)
+  * Assorted QML/UI fixes (maximize button icon state, title
+    bar signal calls, warning message spacing, language overlap)
+
+-------------------------------------------------------------------
 Wed Jul 08 07:23:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.1:

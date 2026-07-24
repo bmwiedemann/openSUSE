@@ -15,4 +15,12 @@
     <comment>Update to 0.18.5.1: embedded P2Pool v4.17.1; security fixes (prevent CSV formula injection in history export, escape untrusted RichText, require SSL for HTTPS); confirm unauthenticated OpenAlias addresses; assorted wizard/UI fixes.</comment>
     <requestid>1364472</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>a4cbc004e9b6349c543b364ef1842cd8</srcmd5>
+    <version>0.18.5.2</version>
+    <time>1784923591</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.18.5.2</comment>
+    <requestid>1367622</requestid>
+  </revision>
 </revisionlist>
