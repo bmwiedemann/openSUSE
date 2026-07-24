@@ -39,4 +39,12 @@
     <comment>1.9.5 with security fixes</comment>
     <requestid>1365976</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>638c3794bbb3b1eb38502633bd71fde5</srcmd5>
+    <version>1.9.5</version>
+    <time>1784923626</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1272520, CVE-2026-63317</comment>
+    <requestid>1367685</requestid>
+  </revision>
 </revisionlist>

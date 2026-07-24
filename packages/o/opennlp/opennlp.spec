@@ -23,6 +23,7 @@ Summary:        A machine learning based toolkit for the processing of natural l
 License:        Apache-2.0
 URL:            https://opennlp.apache.org/
 Source0:        https://archive.apache.org/dist/opennlp/%{name}-%{version}/apache-%{name}-%{version}-src.tar.gz
+Patch0:         opennlp-CVE-2026-63317.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  maven-local
@@ -77,6 +78,8 @@ This package contains javadoc for %{name}.
 find . -name '*.jar' -print -delete
 find . -name '*.bat' -print -delete
 find . -name '*.class' -print -delete
+# Patches
+%patch -P 0 -p1
 
 # use latest OSGi implementation
 %pom_change_dep -r :org.osgi.core org.osgi:osgi.core

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:34:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * opennlp-CVE-2026-63317.patch
+    + Backport of 2.x fixes for bsc#1272520, CVE-2026-63317:
+      Arbitrary Class Instantiation via XML Feature Generator
+      Descriptor and Format Name in Apache OpenNLP
+
+-------------------------------------------------------------------
 Wed Jul 15 07:27:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.9.5
