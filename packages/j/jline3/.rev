@@ -135,4 +135,12 @@
     <comment>Add CVE numbers + juniversalchardet configurable</comment>
     <requestid>1366911</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>bf8a5db0efcbd663a2d1d8675ee1e9a0</srcmd5>
+    <version>3.30.16</version>
+    <time>1784923537</time>
+    <user>dimstar_suse</user>
+    <comment>3.30.16</comment>
+    <requestid>1367573</requestid>
+  </revision>
 </revisionlist>

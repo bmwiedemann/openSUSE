@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Jul 24 03:39:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.30.16
+  * bugfix release with security hardening, SSH agent forwarding
+    fix, and terminal compatibility improvements.
+  * Breaking Changes
+    + SSH agent forwarding is no longer enabled by default;
+      pass -A to explicitly request it
+  * Bug Fixes
+    + reject overlong hex components in OSC color responses
+    + strip OSC and other escape sequences in ansiAppend
+    + search multiple lib paths for versioned libutil.so
+    + use Path.resolve instead of URI.resolve in cat and sort to
+      prevent SSRF
+    + check closed flag in PtyInputStream to prevent hang on empty
+      input
+    + confine ConfigurationPath lookups to the config directory
+    + disable Read File command in nano restricted mode
+    + drain buffered data before EOF in NonBlockingPumpInputStream
+    + look up openpty in libc.so.6 for glibc 2.34+
+    + guard styleMatches and highlighter rules against ReDoS
+    + backport telnet DoS mitigations (GHSA-47qp, GHSA-2r2c)
+    + propagate EOF in PtyInputStream to avoid infinite loop
+  * Dependency Updates
+    + bump org.apache.ivy:ivy from 2.5.3 to 2.6.0
+    + bump actions/setup-node from 6 to 7
+    + bump com.palantir.javaformat:palantir-java-format from 2.94.0
+      to 2.96.0
+    + bump sshd.version from 2.18.0 to 2.19.0
+    + bump org.codehaus.gmavenplus:gmavenplus-plugin from 5.0.0 to
+      5.1.0
+    + bump org.graalvm.sdk:graal-sdk from 25.0.3 to 25.1.3
+    + bump com.diffplug.spotless:spotless-maven-plugin
+
+-------------------------------------------------------------------
 Tue Jul 21 09:28:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Make the building with juniversalchardet configurable, but keep

@@ -32,7 +32,7 @@ JLine 3.x is an evolution of JLine 2.x.
 %bcond_with ssh
 %bcond_with juniversalchardet
 Name:           jline3
-Version:        3.30.15
+Version:        3.30.16
 Release:        0
 Summary:        Java library for handling console input
 License:        BSD-3-Clause
