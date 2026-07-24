@@ -20,10 +20,10 @@
 #!BuildTag: opensuse/bci/bci-ci:3
 #!BuildTag: opensuse/bci/bci-ci:latest
 
-FROM opensuse/bci/python:latest
+FROM opensuse/bci/python:3.14-base
 
 RUN set -euo pipefail; \
-    zypper -n install --no-recommends build buildah fish gcc git-core iproute2 jq osc patch python314-devel python314-base python314-pipx python314-poetry
+    zypper -n install --no-recommends build buildah fish gcc git-core iproute2 jq osc patch python314-base python314-poetry
 
 # cleanup logs and temporary files
 RUN set -euo pipefail; zypper -n clean -a; \
