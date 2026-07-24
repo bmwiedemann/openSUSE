@@ -18,15 +18,11 @@ Date:   Mon Jun 22 20:59:25 2026 +0800
     compositor. This layout synchronization restores proper cursor tracking for
     all native Wayland-based input methods, including IBus and Fcitx5.
 
-Author: Manfred Hollstein <manfred.h@gmx.net>
-Date:   Sun Jun 28 08:13:29 +0000
-
-    Reformat the patch against current Firefox ESR 140.12.0
-
-diff -rup a/widget/gtk/IMContextWrapper.cpp b/widget/gtk/IMContextWrapper.cpp
---- a/widget/gtk/IMContextWrapper.cpp	2026-06-09 20:34:24.000000000 +0200
-+++ b/widget/gtk/IMContextWrapper.cpp	2026-06-28 10:10:54.605711414 +0200
-@@ -25,6 +25,9 @@
+diff --git a/widget/gtk/IMContextWrapper.cpp b/widget/gtk/IMContextWrapper.cpp
+index 28fe91351fd0..f553dac2f8ab 100644
+--- a/widget/gtk/IMContextWrapper.cpp
++++ b/widget/gtk/IMContextWrapper.cpp
+@@ -23,6 +23,9 @@
  #include "mozilla/TextEvents.h"
  #include "mozilla/ToString.h"
  #include "mozilla/WritingModes.h"
@@ -36,9 +32,9 @@ diff -rup a/widget/gtk/IMContextWrapper.cpp b/widget/gtk/IMContextWrapper.cpp
  
  // For collecting other people's log, tell `MOZ_LOG=IMEHandler:4,sync`
  // rather than `MOZ_LOG=IMEHandler:5,sync` since using `5` may create too
-@@ -3008,6 +3011,24 @@ void IMContextWrapper::SetCursorPosition
-   GdkRectangle area = rootWindow->DevicePixelsToGdkRectRoundOut(rect);
+@@ -3045,6 +3048,24 @@ void IMContextWrapper::SetCursorPosition(GtkIMContext* aContext) {
  
+   GdkRectangle area = rootWindow->DevicePixelsToGdkRectRoundOut(rect);
    gtk_im_context_set_cursor_location(aContext, &area);
 +#ifdef MOZ_WAYLAND
 +  if (GDK_IS_WAYLAND_DISPLAY(gdk_display_get_default())) {

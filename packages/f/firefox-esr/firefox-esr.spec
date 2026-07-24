@@ -40,24 +40,32 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          140
-%define mainver        %major.13.0
-%define orig_version   140.13.0
+%define major          153
+%define mainver        %major.0
+%define orig_version   153.0
 %define orig_suffix    esr
 %define update_channel esr
 %define branding       1
 %define devpkg         0
-
-# PGO builds do not work in TW currently (bmo#1680306)
-%define do_profiling   0
+%define do_profiling   1
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 %bcond_with only_print_mozconfig
 
 # define if ccache should be used or not
+%define useccache     1
+
+# ccache doesn't work with pgo
+%if 0%{?do_profiling}
 %define useccache     0
+%endif
+
+# ccache doesn't work with pgo
+%if 0%{?do_profiling}
+%define useccache     0
+%endif
 
 # SLE-12 doesn't have this macro
 %{!?_rpmmacrodir: %global _rpmmacrodir %{_rpmconfigdir}/macros.d}
@@ -121,8 +129,8 @@ BuildRequires:  libstdc++6-devel-gcc13
 BuildRequires:  gcc15-c++
 BuildRequires:  libstdc++6-devel-gcc15
 %endif
-BuildRequires:  cargo1.86
-BuildRequires:  rust1.86
+BuildRequires:  cargo1.93
+BuildRequires:  rust1.93
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
@@ -131,8 +139,8 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
-BuildRequires:  mozilla-nspr-devel >= 4.36
-BuildRequires:  mozilla-nss-devel >= 3.110
+BuildRequires:  mozilla-nspr-devel >= 4.39
+BuildRequires:  mozilla-nss-devel >= 3.125
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -155,7 +163,7 @@ BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
 %endif
-BuildRequires:  rust-cbindgen-0_29_2
+BuildRequires:  rust-cbindgen >= 0.29.4
 %if 0%{?suse_version} >= 1699
 BuildRequires:  translate-suse-desktop
 %endif
@@ -169,10 +177,7 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
-BuildRequires:  clang19-devel
-%if 0%{?suse_version} > 1600
-BuildRequires:  llvm19-libclang13
-%endif
+BuildRequires:  clang-devel
 #!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -234,7 +239,6 @@ Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig
 Source22:       firefox-esr.changes.txt
 Source23:       MozillaFirefox.changes.txt
 # Gecko/Toolkit
-Patch1:         mozilla-nongnome-proxies.patch
 Patch3:         mozilla-ntlm-full-path.patch
 Patch4:         mozilla-aarch64-startup-crash.patch
 Patch6:         mozilla-s390-context.patch
@@ -242,14 +246,12 @@ Patch7:         mozilla-pgo.patch
 Patch8:         mozilla-reduce-rust-debuginfo.patch
 Patch10:        mozilla-bmo1504834-part1.patch
 Patch14:        mozilla-bmo849632.patch
-Patch15:        mozilla-bmo998749.patch
 Patch17:        mozilla-libavcodec58_91.patch
 Patch18:        mozilla-silence-no-return-type.patch
-Patch19:        mozilla-bmo531915.patch
 Patch20:        one_swizzle_to_rule_them_all.patch
 Patch21:        svg-rendering.patch
-Patch26:        mozilla-bmo1999625.patch
-Patch27:        mozilla-bmo2016618.patch
+Patch25:        mozilla-sandbox-lto.patch
+Patch26:        mozilla-bmo2030493.patch
 Patch28:        mozilla-bmo2048250.patch
 # Firefox/browser
 Patch102:       firefox-branded-icons.patch
@@ -278,7 +280,7 @@ Recommends:     MozillaFirefox
 %if 0%{?devpkg} == 0
 Obsoletes:      %{name}-devel < %{version}
 %endif
-ExcludeArch:    armv6l armv6hl ppc ppc64
+ExcludeArch:    armv6l armv6hl ppc ppc64 i586
 
 %description
 Mozilla Firefox is a standalone web browser, designed for standards
@@ -395,7 +397,7 @@ ln -f "%{_sourcedir}/MozillaFirefox.changes.txt" "%{_sourcedir}/MozillaFirefox.c
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
 
 # SLE-12 provides python39, but that package does not provide a python3 binary
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
@@ -424,20 +426,8 @@ export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
 %if 0%{?clang_build} != 0
-export CC=clang-19
-export CXX=clang++-19
-export AR=llvm-ar-19
-export NM=llvm-nm-19
-export OBJCOPY=llvm-objcopy-19
-export OBJDUMP=llvm-objdump-19
-export RANLIB=llvm-ranlib-19
-export READELF=llvm-readelf-19
-export LLVM_AR=llvm-ar-19
-export LLVM_NM=llvm-nm-19
-export LLVM_OBJCOPY=llvm-objcopy-19
-export LLVM_OBJDUMP=llvm-objdump-19
-export LLVM_RANLIB=llvm-ranlib-19
-export LLVM_READELF=llvm-readelf-19
+export CC=clang
+export CXX=clang++
 %else
 %if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
 export CC=gcc-13
@@ -557,10 +547,15 @@ ac_add_options --enable-optimize="-O1"
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
+export CCACHE_DISABLE=1
 %endif
 %endif
 %endif
 EOF
+
+%if 0%{?do_profiling}
+export CCACHE_DISABLE=1
+%endif
 
 %if %{with only_print_mozconfig}
 cat ./.obsenv.sh
@@ -639,7 +634,7 @@ export MOZ_SOURCE_REPO=$RELEASE_REPO
 # need to remove default en-US firefox-l10n.js before it gets
 # populated into browser's omni.ja; it only contains general.useragent.locale
 # which should be loaded from each language pack (set in firefox.js)
-rm dist/bin/browser/defaults/preferences/firefox-l10n.js
+rm -f dist/bin/browser/defaults/preferences/firefox-l10n.js
 make -C browser/installer STRIP=/bin/true MOZ_PKG_FATAL_WARNINGS=0
 #DEBUG (break the build if searchplugins are missing / temporary)
 grep amazondotcom dist/firefox/browser/omni.ja
@@ -786,6 +781,7 @@ exit 0
 %if 0%{wayland_supported}
 %{progdir}/vaapitest
 %endif
+%{progdir}/vulkantest
 %ifarch aarch64 riscv64 %arm
 %{progdir}/v4l2test
 %endif

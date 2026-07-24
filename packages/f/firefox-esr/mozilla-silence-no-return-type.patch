@@ -1,15 +1,7 @@
-# HG changeset patch
-# Parent  4fbe42370941f5652d0735686debee5f4b0d6e0e
-
-diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
---- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-+++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
-@@ -36,16 +36,17 @@ static inline SkMatrix SkEncodedOriginTo
-         case kBottomRight_SkEncodedOrigin: return SkMatrix::MakeAll(-1,  0, w,  0, -1, h, 0, 0, 1);
-         case  kBottomLeft_SkEncodedOrigin: return SkMatrix::MakeAll( 1,  0, 0,  0, -1, h, 0, 0, 1);
-         case     kLeftTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0,  1,  0, 0, 0, 0, 1);
-         case    kRightTop_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, w,  1,  0, 0, 0, 0, 1);
-         case kRightBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0, -1, w, -1,  0, h, 0, 0, 1);
+diff -rup a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/include/codec/SkEncodedOrigin.h
+--- a/gfx/skia/skia/include/codec/SkEncodedOrigin.h	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/include/codec/SkEncodedOrigin.h	2026-07-18 12:59:37.462584783 +0200
+@@ -41,6 +41,7 @@ static inline SkMatrix SkEncodedOriginTo
          case  kLeftBottom_SkEncodedOrigin: return SkMatrix::MakeAll( 0,  1, 0, -1,  0, h, 0, 0, 1);
      }
      SK_ABORT("Unexpected origin");
@@ -17,20 +9,10 @@ diff --git a/gfx/skia/skia/include/codec/SkEncodedOrigin.h b/gfx/skia/skia/inclu
  }
  
  /**
-  * Return true if the encoded origin includes a 90 degree rotation, in which case the width
-  * and height of the source data are swapped relative to a correctly oriented destination.
-  */
- static inline bool SkEncodedOriginSwapsWidthHeight(SkEncodedOrigin origin) {
-     return origin >= kLeftTop_SkEncodedOrigin;
-diff --git a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
---- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-+++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
-@@ -296,16 +296,17 @@ static inline bool GrTextureTypeHasRestr
-             return false;
-         case GrTextureType::kRectangle:
-             return true;
-         case GrTextureType::kExternal:
-             return true;
+diff -rup a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h
+--- a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h	2026-07-18 12:53:40.982863915 +0200
+@@ -301,6 +301,7 @@ static inline bool GrTextureTypeHasRestr
          default:
              SK_ABORT("Unexpected texture type");
      }
@@ -38,20 +20,10 @@ diff --git a/gfx/skia/skia/include/private/gpu/ganesh/GrTypesPriv.h b/gfx/skia/s
  }
  
  //////////////////////////////////////////////////////////////////////////////
- 
- /**
-  * Types used to describe format of vertices in arrays.
-  */
- enum GrVertexAttribType {
-diff --git a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkDescriptor.cpp
---- a/gfx/skia/skia/src/core/SkDescriptor.cpp
-+++ b/gfx/skia/skia/src/core/SkDescriptor.cpp
-@@ -21,16 +21,17 @@ std::unique_ptr<SkDescriptor> SkDescript
-     SkASSERT(length >= sizeof(SkDescriptor) && SkAlign4(length) == length);
-     void* allocation = ::operator new(length);
-     return std::unique_ptr<SkDescriptor>(new (allocation) SkDescriptor{});
- }
- 
+diff -rup a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/SkDescriptor.cpp
+--- a/gfx/skia/skia/src/core/SkDescriptor.cpp	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/src/core/SkDescriptor.cpp	2026-07-18 12:53:40.982987240 +0200
+@@ -26,6 +26,7 @@ std::unique_ptr<SkDescriptor> SkDescript
  void SkDescriptor::operator delete(void* p) { ::operator delete(p); }
  void* SkDescriptor::operator new(size_t) {
      SK_ABORT("Descriptors are created with placement new.");
@@ -59,20 +31,10 @@ diff --git a/gfx/skia/skia/src/core/SkDescriptor.cpp b/gfx/skia/skia/src/core/Sk
  }
  
  void SkDescriptor::flatten(SkWriteBuffer& buffer) const {
-     buffer.writePad32(static_cast<const void*>(this), this->fLength);
- }
- 
- void* SkDescriptor::addEntry(uint32_t tag, size_t length, const void* data) {
-     SkASSERT(tag);
-diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
---- a/gfx/skia/skia/src/core/SkGeometry.h
-+++ b/gfx/skia/skia/src/core/SkGeometry.h
-@@ -277,28 +277,30 @@ static inline bool SkCubicIsDegenerate(S
-         case SkCubicType::kLocalCusp:
-         case SkCubicType::kCuspAtInfinity:
-             return false;
-         case SkCubicType::kQuadratic:
-         case SkCubicType::kLineOrPoint:
+diff -rup a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeometry.h
+--- a/gfx/skia/skia/src/core/SkGeometry.h	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/src/core/SkGeometry.h	2026-07-18 12:53:40.983065483 +0200
+@@ -284,6 +284,7 @@ static inline bool SkCubicIsDegenerate(S
              return true;
      }
      SK_ABORT("Invalid SkCubicType");
@@ -80,12 +42,7 @@ diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeom
  }
  
  static inline const char* SkCubicTypeName(SkCubicType type) {
-     switch (type) {
-         case SkCubicType::kSerpentine: return "kSerpentine";
-         case SkCubicType::kLoop: return "kLoop";
-         case SkCubicType::kLocalCusp: return "kLocalCusp";
-         case SkCubicType::kCuspAtInfinity: return "kCuspAtInfinity";
-         case SkCubicType::kQuadratic: return "kQuadratic";
+@@ -296,6 +297,7 @@ static inline const char* SkCubicTypeNam
          case SkCubicType::kLineOrPoint: return "kLineOrPoint";
      }
      SK_ABORT("Invalid SkCubicType");
@@ -93,20 +50,10 @@ diff --git a/gfx/skia/skia/src/core/SkGeometry.h b/gfx/skia/skia/src/core/SkGeom
  }
  
  /** Returns the cubic classification.
- 
-     t[],s[] are set to the two homogeneous parameter values at which points the lines L & M
-     intersect with K, sorted from smallest to largest and oriented so positive values of the
-     implicit are on the "left" side. For a serpentine curve they are the inflection points. For a
-     loop they are the double point. For a local cusp, they are both equal and denote the cusp point.
-diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
---- a/gfx/skia/skia/src/core/SkTextBlob.cpp
-+++ b/gfx/skia/skia/src/core/SkTextBlob.cpp
-@@ -208,16 +208,17 @@ unsigned SkTextBlob::ScalarsPerGlyph(Gly
- }
- 
- void SkTextBlob::operator delete(void* p) {
-     sk_free(p);
- }
+diff -rup a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTextBlob.cpp
+--- a/gfx/skia/skia/src/core/SkTextBlob.cpp	2026-07-16 18:13:41.000000000 +0200
++++ b/gfx/skia/skia/src/core/SkTextBlob.cpp	2026-07-18 12:53:40.983169697 +0200
+@@ -212,6 +212,7 @@ void SkTextBlob::operator delete(void* p
  
  void* SkTextBlob::operator new(size_t) {
      SK_ABORT("All blobs are created by placement new.");
@@ -114,20 +61,10 @@ diff --git a/gfx/skia/skia/src/core/SkTextBlob.cpp b/gfx/skia/skia/src/core/SkTe
  }
  
  void* SkTextBlob::operator new(size_t, void* p) {
-     return p;
- }
- 
- SkTextBlobRunIterator::SkTextBlobRunIterator(const SkTextBlob* blob)
-     : fCurrentRun(SkTextBlob::RunRecord::First(blob)) {
-diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
---- a/gfx/skia/skia/src/core/SkTypeface_remote.h
-+++ b/gfx/skia/skia/src/core/SkTypeface_remote.h
-@@ -103,83 +103,97 @@ public:
- 
-     SkTypefaceID remoteTypefaceID() const {return fTypefaceID;}
- 
-     int glyphCount() const {return fGlyphCount;}
- 
+diff -rup a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core/SkTypeface_remote.h
+--- a/gfx/skia/skia/src/core/SkTypeface_remote.h	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/src/core/SkTypeface_remote.h	2026-07-18 12:53:40.983257540 +0200
+@@ -108,12 +108,14 @@ public:
      bool isLogging() const {return fIsLogging;}
  
  protected:
@@ -143,20 +80,19 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
      }
      bool onGlyphMaskNeedsCurrentColor() const override {
          return fGlyphMaskNeedsCurrentColor;
-     }
-     int onGetVariationDesignPosition(SkFontArguments::VariationPosition::Coordinate coordinates[],
-                                      int coordinateCount) const override {
+@@ -121,9 +123,11 @@ protected:
+     int onGetVariationDesignPosition(
+                          SkSpan<SkFontArguments::VariationPosition::Coordinate>) const override {
          SK_ABORT("Should never be called.");
 +        SkUNREACHABLE;
      }
-     int onGetVariationDesignParameters(SkFontParameters::Variation::Axis parameters[],
-                                        int parameterCount) const override {
+     int onGetVariationDesignParameters(SkSpan<SkFontParameters::Variation::Axis>) const override {
          SK_ABORT("Should never be called.");
 +        SkUNREACHABLE;
      }
      void onGetFamilyName(SkString* familyName) const override {
          // Used by SkStrikeCache::DumpMemoryStatistics.
-         *familyName = "";
+@@ -131,15 +135,19 @@ protected:
      }
      bool onGetPostScriptName(SkString*) const override {
          SK_ABORT("Should never be called.");
@@ -166,7 +102,7 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
          SK_ABORT("Should never be called.");
 +        SkUNREACHABLE;
      }
-     int onGetTableTags(SkFontTableTag tags[]) const override {
+     int onGetTableTags(SkSpan<SkFontTableTag>) const override {
          SK_ABORT("Should never be called.");
 +        SkUNREACHABLE;
      }
@@ -176,39 +112,7 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
      }
      std::unique_ptr<SkScalerContext> onCreateScalerContext(
          const SkScalerContextEffects& effects, const SkDescriptor* desc) const override
-     {
-         return std::make_unique<SkScalerContextProxy>(
-                 *const_cast<SkTypefaceProxy*>(this), effects, desc, fDiscardableManager);
-     }
-     void onFilterRec(SkScalerContextRec* rec) const override {
-         // The rec filtering is already applied by the server when generating
-         // the glyphs.
-     }
-     void onGetFontDescriptor(SkFontDescriptor*, bool*) const override {
-         SK_ABORT("Should never be called.");
-+        SkUNREACHABLE;
-     }
-     void getGlyphToUnicodeMap(SkUnichar*) const override {
-         SK_ABORT("Should never be called.");
-+        SkUNREACHABLE;
-     }
- 
-     void getPostScriptGlyphNames(SkString*) const override {
-         SK_ABORT("Should never be called.");
-+        SkUNREACHABLE;
-     }
- 
-     std::unique_ptr<SkAdvancedTypefaceMetrics> onGetAdvancedMetrics() const override {
-         SK_ABORT("Should never be called.");
-+        SkUNREACHABLE;
-     }
-     void onCharsToGlyphs(const SkUnichar* chars, int count, SkGlyphID glyphs[]) const override {
-         SK_ABORT("Should never be called.");
-+        SkUNREACHABLE;
-     }
-     int onCountGlyphs() const override {
-         return this->glyphCount();
-     }
+@@ -174,6 +182,7 @@ protected:
  
      void* onGetCTFontRef() const override {
          SK_ABORT("Should never be called.");
@@ -216,20 +120,10 @@ diff --git a/gfx/skia/skia/src/core/SkTypeface_remote.h b/gfx/skia/skia/src/core
      }
  
  private:
-     const SkTypefaceID                              fTypefaceID;
-     const int                                       fGlyphCount;
-     const bool                                      fIsLogging;
-     const bool                                      fGlyphMaskNeedsCurrentColor;
-     sk_sp<SkStrikeClient::DiscardableHandleManager> fDiscardableManager;
-diff --git a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
---- a/gfx/skia/skia/src/sksl/SkSLOperator.cpp
-+++ b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
-@@ -46,17 +46,17 @@ OperatorPrecedence Operator::getBinaryPr
-         case Kind::SLASHEQ:      // fall through
-         case Kind::PERCENTEQ:    // fall through
-         case Kind::SHLEQ:        // fall through
-         case Kind::SHREQ:        // fall through
-         case Kind::BITWISEANDEQ: // fall through
+diff -rup a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/SkSLOperator.cpp
+--- a/gfx/skia/skia/src/sksl/SkSLOperator.cpp	2026-07-16 18:13:41.000000000 +0200
++++ b/gfx/skia/skia/src/sksl/SkSLOperator.cpp	2026-07-18 12:53:40.983302182 +0200
+@@ -51,7 +51,7 @@ OperatorPrecedence Operator::getBinaryPr
          case Kind::BITWISEXOREQ: // fall through
          case Kind::BITWISEOREQ:  return OperatorPrecedence::kAssignment;
          case Kind::COMMA:        return OperatorPrecedence::kSequence;
@@ -238,20 +132,10 @@ diff --git a/gfx/skia/skia/src/sksl/SkSLOperator.cpp b/gfx/skia/skia/src/sksl/Sk
      }
  }
  
- const char* Operator::operatorName() const {
-     switch (this->kind()) {
-         case Kind::PLUS:         return " + ";
-         case Kind::MINUS:        return " - ";
-         case Kind::STAR:         return " * ";
-diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
---- a/gfx/skia/skia/src/sksl/ir/SkSLType.h
-+++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h
-@@ -463,16 +463,17 @@ public:
-      * always match `componentType()`.
-      */
-     virtual const Type& slotType(size_t) const {
-         return *this;
-     }
+diff -rup a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/SkSLType.h
+--- a/gfx/skia/skia/src/sksl/ir/SkSLType.h	2026-07-16 18:13:41.000000000 +0200
++++ b/gfx/skia/skia/src/sksl/ir/SkSLType.h	2026-07-18 12:53:40.983350133 +0200
+@@ -474,6 +474,7 @@ public:
  
      virtual SkSpan<const Field> fields() const {
          SK_ABORT("Internal error: not a struct");
@@ -259,20 +143,10 @@ diff --git a/gfx/skia/skia/src/sksl/ir/SkSLType.h b/gfx/skia/skia/src/sksl/ir/Sk
      }
  
      /**
-      * For generic types, returns the types that this generic type can substitute for.
-      */
-     virtual SkSpan<const Type* const> coercibleTypes() const {
-         SkDEBUGFAIL("Internal error: not a generic type");
-         return {};
-diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
---- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-+++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
-@@ -137,16 +137,17 @@ struct SpotVerticesFactory {
-                 }
-                 return false;
-             case OccluderType::kDirectional:
-             case OccluderType::kDirectionalTransparent:
-                 *translate = that.fOffset - fOffset;
+diff -rup a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils/SkShadowUtils.cpp
+--- a/gfx/skia/skia/src/utils/SkShadowUtils.cpp	2026-07-16 18:13:40.000000000 +0200
++++ b/gfx/skia/skia/src/utils/SkShadowUtils.cpp	2026-07-18 12:53:40.983411406 +0200
+@@ -142,6 +142,7 @@ struct SpotVerticesFactory {
                  return true;
          }
          SK_ABORT("Uninitialized occluder type?");
@@ -280,20 +154,10 @@ diff --git a/gfx/skia/skia/src/utils/SkShadowUtils.cpp b/gfx/skia/skia/src/utils
      }
  
      sk_sp<SkVertices> makeVertices(const SkPath& path, const SkMatrix& ctm,
-                                    SkVector* translate) const {
-         bool transparent = fOccluderType == OccluderType::kPointTransparent ||
-                            fOccluderType == OccluderType::kDirectionalTransparent;
-         bool directional = fOccluderType == OccluderType::kDirectional ||
-                            fOccluderType == OccluderType::kDirectionalTransparent;
-diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
---- a/intl/icu/source/i18n/number_rounding.cpp
-+++ b/intl/icu/source/i18n/number_rounding.cpp
-@@ -282,27 +282,29 @@ Precision IncrementPrecision::withMinFra
- }
- 
- FractionPrecision Precision::constructFraction(int32_t minFrac, int32_t maxFrac) {
-     FractionSignificantSettings settings{};
-     settings.fMinFrac = static_cast<digits_t>(minFrac);
+diff -rup a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/number_rounding.cpp
+--- a/intl/icu/source/i18n/number_rounding.cpp	2026-07-16 18:13:41.000000000 +0200
++++ b/intl/icu/source/i18n/number_rounding.cpp	2026-07-18 12:53:40.983480888 +0200
+@@ -287,6 +287,7 @@ FractionPrecision Precision::constructFr
      settings.fMaxFrac = static_cast<digits_t>(maxFrac);
      settings.fMinSig = -1;
      settings.fMaxSig = -1;
@@ -301,11 +165,7 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
      PrecisionUnion union_{};
      union_.fracSig = settings;
      return {RND_FRACTION, union_};
- }
- 
- Precision Precision::constructSignificant(int32_t minSig, int32_t maxSig) {
-     FractionSignificantSettings settings{};
-     settings.fMinFrac = -1;
+@@ -298,6 +299,7 @@ Precision Precision::constructSignifican
      settings.fMaxFrac = -1;
      settings.fMinSig = static_cast<digits_t>(minSig);
      settings.fMaxSig = static_cast<digits_t>(maxSig);
@@ -313,41 +173,10 @@ diff --git a/intl/icu/source/i18n/number_rounding.cpp b/intl/icu/source/i18n/num
      PrecisionUnion union_{};
      union_.fracSig = settings;
      return {RND_SIGNIFICANT, union_};
- }
- 
- Precision
- Precision::constructFractionSignificant(
-         const FractionPrecision &base,
-diff --git a/js/src/irregexp/imported/regexp-parser.cc b/js/src/irregexp/imported/regexp-parser.cc
---- a/js/src/irregexp/imported/regexp-parser.cc
-+++ b/js/src/irregexp/imported/regexp-parser.cc
-@@ -2785,16 +2785,17 @@ bool MayContainStrings(ClassSetOperandTy
-       return false;
-     case ClassSetOperandType::kCharacterClassEscape:
-     case ClassSetOperandType::kClassStringDisjunction:
-       return operand->AsClassSetOperand()->has_strings();
-     case ClassSetOperandType::kNestedClass:
-       if (operand->IsClassRanges()) return false;
-       return operand->AsClassSetExpression()->may_contain_strings();
-   }
-+  UNREACHABLE();
- }
- 
- }  // namespace
- 
- template <class CharT>
- void RegExpParserImpl<CharT>::AddMaybeSimpleCaseFoldedRange(
-     ZoneList<CharacterRange>* ranges, CharacterRange new_range) {
-   DCHECK(unicode_sets());
-diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
---- a/third_party/libwebrtc/api/adaptation/resource.cc
-+++ b/third_party/libwebrtc/api/adaptation/resource.cc
-@@ -17,16 +17,17 @@ namespace webrtc {
- const char* ResourceUsageStateToString(ResourceUsageState usage_state) {
-   switch (usage_state) {
-     case ResourceUsageState::kOveruse:
-       return "kOveruse";
-     case ResourceUsageState::kUnderuse:
+diff -rup a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libwebrtc/api/adaptation/resource.cc
+--- a/third_party/libwebrtc/api/adaptation/resource.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/api/adaptation/resource.cc	2026-07-18 12:54:18.155548220 +0200
+@@ -22,6 +22,7 @@ const char* ResourceUsageStateToString(R
        return "kUnderuse";
    }
    RTC_CHECK_NOTREACHED();
@@ -355,20 +184,10 @@ diff --git a/third_party/libwebrtc/api/adaptation/resource.cc b/third_party/libw
  }
  
  ResourceListener::~ResourceListener() {}
- 
- Resource::Resource() {}
- 
- Resource::~Resource() {}
- 
-diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
---- a/third_party/libwebrtc/api/rtp_parameters.cc
-+++ b/third_party/libwebrtc/api/rtp_parameters.cc
-@@ -32,16 +32,17 @@ const char* DegradationPreferenceToStrin
-     case DegradationPreference::MAINTAIN_FRAMERATE:
-       return "maintain-framerate";
-     case DegradationPreference::MAINTAIN_RESOLUTION:
-       return "maintain-resolution";
-     case DegradationPreference::BALANCED:
+diff -rup a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc/api/rtp_parameters.cc
+--- a/third_party/libwebrtc/api/rtp_parameters.cc	2026-07-16 18:59:08.000000000 +0200
++++ b/third_party/libwebrtc/api/rtp_parameters.cc	2026-07-18 12:54:18.155592091 +0200
+@@ -79,6 +79,7 @@ const char* DegradationPreferenceToStrin
        return "balanced";
    }
    RTC_CHECK_NOTREACHED();
@@ -376,20 +195,10 @@ diff --git a/third_party/libwebrtc/api/rtp_parameters.cc b/third_party/libwebrtc
  }
  
  const double kDefaultBitratePriority = 1.0;
- 
- RtcpFeedback::RtcpFeedback() = default;
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type) : type(type) {}
- RtcpFeedback::RtcpFeedback(RtcpFeedbackType type,
-                            RtcpFeedbackMessageType message_type)
-diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
---- a/third_party/libwebrtc/api/video/video_frame_buffer.cc
-+++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc
-@@ -109,16 +109,18 @@ const char* VideoFrameBufferTypeToString
-       return "kI210";
-     case VideoFrameBuffer::Type::kI410:
-       return "kI410";
-     case VideoFrameBuffer::Type::kNV12:
-       return "kNV12";
+diff -rup a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party/libwebrtc/api/video/video_frame_buffer.cc
+--- a/third_party/libwebrtc/api/video/video_frame_buffer.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/api/video/video_frame_buffer.cc	2026-07-18 12:54:18.155635493 +0200
+@@ -125,6 +125,8 @@ const char* VideoFrameBufferTypeToString
      default:
        RTC_DCHECK_NOTREACHED();
    }
@@ -398,20 +207,10 @@ diff --git a/third_party/libwebrtc/api/video/video_frame_buffer.cc b/third_party
  }
  
  int I420BufferInterface::ChromaWidth() const {
-   return (width() + 1) / 2;
- }
- 
- int I420BufferInterface::ChromaHeight() const {
-   return (height() + 1) / 2;
-diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
---- a/third_party/libwebrtc/api/video_codecs/video_codec.cc
-+++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc
-@@ -161,16 +161,17 @@ const char* CodecTypeToPayloadString(Vid
-     case kVideoCodecH264:
-       return kPayloadNameH264;
-     case kVideoCodecGeneric:
-       return kPayloadNameGeneric;
-     case kVideoCodecH265:
+diff -rup a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party/libwebrtc/api/video_codecs/video_codec.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_codec.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/api/video_codecs/video_codec.cc	2026-07-18 12:54:18.155681695 +0200
+@@ -158,6 +158,7 @@ const char* CodecTypeToPayloadString(Vid
        return kPayloadNameH265;
    }
    RTC_CHECK_NOTREACHED();
@@ -419,20 +218,10 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_codec.cc b/third_party
  }
  
  VideoCodecType PayloadStringToCodecType(const std::string& name) {
-   if (absl::EqualsIgnoreCase(name, kPayloadNameVp8))
-     return kVideoCodecVP8;
-   if (absl::EqualsIgnoreCase(name, kPayloadNameVp9))
-     return kVideoCodecVP9;
-   if (absl::EqualsIgnoreCase(name, kPayloadNameAv1) ||
-diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
---- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-+++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
-@@ -189,16 +189,17 @@ class VideoEncoderSoftwareFallbackWrappe
-         [[fallthrough]];
-       case EncoderState::kMainEncoderUsed:
-         return encoder_.get();
-       case EncoderState::kFallbackDueToFailure:
-       case EncoderState::kForcedFallback:
+diff -rup a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc
+--- a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc	2026-07-16 18:13:56.000000000 +0200
++++ b/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallback_wrapper.cc	2026-07-18 12:54:18.155732397 +0200
+@@ -192,6 +192,7 @@ class VideoEncoderSoftwareFallbackWrappe
          return fallback_encoder_.get();
      }
      RTC_CHECK_NOTREACHED();
@@ -440,17 +229,7 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
    }
  
    // Updates encoder with last observed parameters, such as callbacks, rates,
-   // etc.
-   void PrimeEncoder(VideoEncoder* encoder) const;
- 
-   // Settings used in the last InitEncode call and used if a dynamic fallback to
-   // software is required.
-@@ -387,16 +388,17 @@ int32_t VideoEncoderSoftwareFallbackWrap
-     case EncoderState::kMainEncoderUsed: {
-       return EncodeWithMainEncoder(frame, frame_types);
-     }
-     case EncoderState::kFallbackDueToFailure:
-     case EncoderState::kForcedFallback:
+@@ -390,6 +391,7 @@ int32_t VideoEncoderSoftwareFallbackWrap
        return fallback_encoder_->Encode(frame, frame_types);
    }
    RTC_CHECK_NOTREACHED();
@@ -458,20 +237,10 @@ diff --git a/third_party/libwebrtc/api/video_codecs/video_encoder_software_fallb
  }
  
  int32_t VideoEncoderSoftwareFallbackWrapper::EncodeWithMainEncoder(
-     const VideoFrame& frame,
-     const std::vector<VideoFrameType>* frame_types) {
-   int32_t ret = encoder_->Encode(frame, frame_types);
-   // If requested, try a software fallback.
-   bool fallback_requested = (ret == WEBRTC_VIDEO_CODEC_FALLBACK_SOFTWARE);
-diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
---- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-+++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
-@@ -163,16 +163,17 @@ const char* Adaptation::StatusToString(A
-     case Status::kInsufficientInput:
-       return "kInsufficientInput";
-     case Status::kAdaptationDisabled:
-       return "kAdaptationDisabled";
-     case Status::kRejectedByConstraint:
+diff -rup a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc
+--- a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc	2026-07-16 18:59:08.000000000 +0200
++++ b/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc	2026-07-18 12:54:18.155796999 +0200
+@@ -177,6 +177,7 @@ const char* Adaptation::StatusToString(A
        return "kRejectedByConstraint";
    }
    RTC_CHECK_NOTREACHED();
@@ -479,17 +248,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  Adaptation::Adaptation(int validation_id,
-                        VideoSourceRestrictions restrictions,
-                        VideoAdaptationCounters counters,
-                        VideoStreamInputState input_state)
-     : validation_id_(validation_id),
-       status_(Status::kValid),
-@@ -385,16 +386,17 @@ VideoStreamAdapter::RestrictionsOrState 
-     case DegradationPreference::MAINTAIN_RESOLUTION: {
-       // Scale up framerate.
-       return IncreaseFramerate(input_state, current_restrictions_);
-     }
-     case DegradationPreference::DISABLED:
+@@ -401,6 +402,7 @@ VideoStreamAdapter::RestrictionsOrState
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -497,17 +256,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  Adaptation VideoStreamAdapter::GetAdaptationDown() {
-   RTC_DCHECK_RUN_ON(&sequence_checker_);
-   VideoStreamInputState input_state = input_state_provider_->InputState();
-   ++adaptation_validation_id_;
-   RestrictionsOrState restrictions_or_state =
-       GetAdaptationDownStep(input_state, current_restrictions_);
-@@ -467,16 +469,17 @@ VideoStreamAdapter::GetAdaptationDownSte
-     }
-     case DegradationPreference::MAINTAIN_RESOLUTION: {
-       return DecreaseFramerate(input_state, current_restrictions);
-     }
-     case DegradationPreference::DISABLED:
+@@ -481,6 +483,7 @@ VideoStreamAdapter::GetAdaptationDownSte
        return Adaptation::Status::kAdaptationDisabled;
    }
    RTC_CHECK_NOTREACHED();
@@ -515,17 +264,7 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  VideoStreamAdapter::RestrictionsOrState VideoStreamAdapter::DecreaseResolution(
-     const VideoStreamInputState& input_state,
-     const RestrictionsWithCounters& current_restrictions) {
-   int target_pixels =
-       GetLowerResolutionThan(input_state.frame_size_pixels().value());
-   // Use single active stream if set, this stream could be lower than the input.
-@@ -620,16 +623,18 @@ Adaptation VideoStreamAdapter::GetAdaptD
-     case DegradationPreference::MAINTAIN_FRAMERATE:
-       return GetAdaptationDown();
-     case DegradationPreference::BALANCED: {
-       return RestrictionsOrStateToAdaptation(
-           GetAdaptDownResolutionStepForBalanced(input_state), input_state);
+@@ -634,6 +637,8 @@ Adaptation VideoStreamAdapter::GetAdaptD
      }
    }
    RTC_CHECK_NOTREACHED();
@@ -534,20 +273,10 @@ diff --git a/third_party/libwebrtc/call/adaptation/video_stream_adapter.cc b/thi
  }
  
  VideoStreamAdapter::RestrictionsOrState
- VideoStreamAdapter::GetAdaptDownResolutionStepForBalanced(
-     const VideoStreamInputState& input_state) const {
-   // Adapt twice if the first adaptation did not decrease resolution.
-   auto first_step = GetAdaptationDownStep(input_state, current_restrictions_);
-   if (!absl::holds_alternative<RestrictionsWithCounters>(first_step)) {
-diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
---- a/third_party/libwebrtc/call/rtp_payload_params.cc
-+++ b/third_party/libwebrtc/call/rtp_payload_params.cc
-@@ -426,17 +426,18 @@ std::optional<FrameDependencyStructure> 
-     case VideoCodecType::kVideoCodecH264:
-       return MinimalisticStructure(
-           /*num_spatial_layers=*/1,
-           /*num_temporal_layers=*/kMaxTemporalStreams);
-     case VideoCodecType::kVideoCodecAV1:
+diff -rup a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libwebrtc/call/rtp_payload_params.cc
+--- a/third_party/libwebrtc/call/rtp_payload_params.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/call/rtp_payload_params.cc	2026-07-18 12:54:18.155868352 +0200
+@@ -425,7 +425,8 @@ std::optional<FrameDependencyStructure>
      case VideoCodecType::kVideoCodecH265:
        return std::nullopt;
    }
@@ -557,20 +286,10 @@ diff --git a/third_party/libwebrtc/call/rtp_payload_params.cc b/third_party/libw
  }
  
  void RtpPayloadParams::GenericToGeneric(int64_t frame_id,
-                                         bool is_keyframe,
-                                         RTPVideoHeader* rtp_video_header) {
-   RTPVideoHeader::GenericDescriptorInfo& generic =
-       rtp_video_header->generic.emplace();
- 
-diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
---- a/third_party/libwebrtc/call/video_send_stream.cc
-+++ b/third_party/libwebrtc/call/video_send_stream.cc
-@@ -29,16 +29,17 @@ const char* StreamTypeToString(VideoSend
-     case VideoSendStream::StreamStats::StreamType::kMedia:
-       return "media";
-     case VideoSendStream::StreamStats::StreamType::kRtx:
-       return "rtx";
-     case VideoSendStream::StreamStats::StreamType::kFlexfec:
+diff -rup a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwebrtc/call/video_send_stream.cc
+--- a/third_party/libwebrtc/call/video_send_stream.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/call/video_send_stream.cc	2026-07-18 12:54:18.155914673 +0200
+@@ -34,6 +34,7 @@ const char* StreamTypeToString(VideoSend
        return "flexfec";
    }
    RTC_CHECK_NOTREACHED();
@@ -578,20 +297,10 @@ diff --git a/third_party/libwebrtc/call/video_send_stream.cc b/third_party/libwe
  }
  
  }  // namespace
- 
- VideoSendStream::StreamStats::StreamStats() = default;
- VideoSendStream::StreamStats::~StreamStats() = default;
- 
- std::string VideoSendStream::StreamStats::ToString() const {
-diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
---- a/third_party/libwebrtc/media/base/codec_comparators.cc
-+++ b/third_party/libwebrtc/media/base/codec_comparators.cc
-@@ -334,16 +334,17 @@ bool MatchesWithCodecRules(const Codec& 
-                 left_codec.bitrate == right_codec.bitrate) &&
-                ((right_codec.channels < 2 && left_codec.channels < 2) ||
-                 left_codec.channels == right_codec.channels);
- 
-       case Codec::Type::kVideo:
+diff -rup a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party/libwebrtc/media/base/codec_comparators.cc
+--- a/third_party/libwebrtc/media/base/codec_comparators.cc	2026-07-16 18:59:08.000000000 +0200
++++ b/third_party/libwebrtc/media/base/codec_comparators.cc	2026-07-18 12:54:18.155950255 +0200
+@@ -330,6 +330,7 @@ bool MatchesWithCodecRules(const Codec&
          return IsSameCodecSpecific(left_codec.name, left_codec.params,
                                     right_codec.name, right_codec.params);
      }
@@ -599,20 +308,10 @@ diff --git a/third_party/libwebrtc/media/base/codec_comparators.cc b/third_party
    };
  
    return matches_id && matches_type_specific();
- }
- 
- bool MatchesWithReferenceAttributes(const Codec& codec1, const Codec& codec2) {
-   return MatchesWithReferenceAttributesAndComparator(
-       codec1, codec2, [](int a, int b) { return a == b; });
-diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
-@@ -373,12 +373,12 @@ std::unique_ptr<ClippingPredictor> Creat
-           config.reference_window_delay, config.clipping_threshold,
-           /*adaptive_step_estimation=*/true);
-     case ClippingPredictorMode::kFixedStepClippingPeakPrediction:
-       return std::make_unique<ClippingPeakPredictor>(
-           num_channels, config.window_length, config.reference_window_length,
+diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predictor.cc	2026-07-18 12:54:18.155996136 +0200
+@@ -387,7 +387,7 @@ std::unique_ptr<ClippingPredictor> Creat
            config.reference_window_delay, config.clipping_threshold,
            /*adaptive_step_estimation=*/false);
    }
@@ -621,15 +320,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/clipping_predic
  }
  
  }  // namespace webrtc
-diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
-@@ -43,16 +43,17 @@ int ComputeAverageUpdate(int sum_updates
- constexpr absl::string_view MetricNamePrefix(
-     InputVolumeType input_volume_type) {
-   switch (input_volume_type) {
-     case InputVolumeType::kApplied:
-       return "WebRTC.Audio.Apm.AppliedInputVolume.";
+diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_stats_reporter.cc	2026-07-18 12:57:26.076221003 +0200
+@@ -48,6 +48,7 @@ constexpr absl::string_view MetricNamePr
      case InputVolumeType::kRecommended:
        return "WebRTC.Audio.Apm.RecommendedInputVolume.";
    }
@@ -637,20 +331,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/input_volume_st
  }
  
  metrics::Histogram* CreateVolumeHistogram(InputVolumeType input_volume_type) {
-   char buffer[64];
-   SimpleStringBuilder builder(buffer);
-   builder << MetricNamePrefix(input_volume_type) << "OnChange";
-   return metrics::HistogramFactoryGetCountsLinear(/*name=*/builder.str(),
-                                                   /*min=*/1,
-diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
---- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
-@@ -55,16 +55,18 @@ std::vector<float> PreprocessWeights(rtc
- rtc::FunctionView<float(float)> GetActivationFunction(
-     ActivationFunction activation_function) {
-   switch (activation_function) {
-     case ActivationFunction::kTansigApproximated:
-       return ::rnnoise::TansigApproximated;
+diff -rup a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc
+--- a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.cc	2026-07-18 12:54:18.156098610 +0200
+@@ -65,6 +65,8 @@ FunctionView<float(float)> GetActivation
      case ActivationFunction::kSigmoidApproximated:
        return ::rnnoise::SigmoidApproximated;
    }
@@ -659,20 +343,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/agc2/rnn_vad/rnn_fc.
  }
  
  }  // namespace
- 
- FullyConnectedLayer::FullyConnectedLayer(
-     const int input_size,
-     const int output_size,
-     const rtc::ArrayView<const int8_t> bias,
-diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
---- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-+++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
-@@ -94,16 +94,17 @@ GainControl::Mode Agc1ConfigModeToInterf
-     case Agc1Config::kAdaptiveAnalog:
-       return GainControl::kAdaptiveAnalog;
-     case Agc1Config::kAdaptiveDigital:
-       return GainControl::kAdaptiveDigital;
-     case Agc1Config::kFixedDigital:
+diff -rup a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc
+--- a/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/modules/audio_processing/audio_processing_impl.cc	2026-07-18 12:54:18.156173363 +0200
+@@ -117,6 +117,7 @@ GainControl::Mode Agc1ConfigModeToInterf
        return GainControl::kFixedDigital;
    }
    RTC_CHECK_NOTREACHED();
@@ -680,17 +354,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  }
  
  bool MinimizeProcessingForUnusedOutput(const FieldTrialsView& field_trials) {
-   return !field_trials.IsEnabled("WebRTC-MutedStateKillSwitch");
- }
- 
- // Maximum lengths that frame of samples being passed from the render side to
- // the capture side can have (does not apply to AEC3).
-@@ -161,17 +162,17 @@ int AudioFormatValidityToErrorCode(Audio
-     case AudioFormatValidity::kValidAndSupported:
-       return AudioProcessing::kNoError;
-     case AudioFormatValidity::kValidButUnsupportedSampleRate:  // fall-through
-     case AudioFormatValidity::kInvalidSampleRate:
-       return AudioProcessing::kBadSampleRateError;
+@@ -184,7 +185,7 @@ int AudioFormatValidityToErrorCode(Audio
      case AudioFormatValidity::kInvalidChannelCount:
        return AudioProcessing::kBadNumberChannelsError;
    }
@@ -699,17 +363,7 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
  }
  
  // Returns an AudioProcessing::Error together with the best possible option for
- // output audio content.
- std::pair<int, FormatErrorOutputOption> ChooseErrorOutputOption(
-     const StreamConfig& input_config,
-     const StreamConfig& output_config) {
-   AudioFormatValidity input_validity = ValidateAudioFormat(input_config);
-@@ -2062,16 +2063,17 @@ void AudioProcessingImpl::InitializeNois
-             case NoiseSuppresionConfig::kModerate:
-               return NsConfig::SuppressionLevel::k12dB;
-             case NoiseSuppresionConfig::kHigh:
-               return NsConfig::SuppressionLevel::k18dB;
-             case NoiseSuppresionConfig::kVeryHigh:
+@@ -2000,6 +2001,7 @@ void AudioProcessingImpl::InitializeNois
                return NsConfig::SuppressionLevel::k21dB;
            }
            RTC_CHECK_NOTREACHED();
@@ -717,20 +371,10 @@ diff --git a/third_party/libwebrtc/modules/audio_processing/audio_processing_imp
          };
  
      NsConfig cfg;
-     cfg.target_level = map_level(config_.noise_suppression.level);
-     submodules_.noise_suppressor = std::make_unique<NoiseSuppressor>(
-         cfg, proc_sample_rate_hz(), num_proc_channels());
-   }
- }
-diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
---- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
-+++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
-@@ -81,16 +81,18 @@ BandwidthLimitedCause GetBandwidthLimite
-       // Probes may not be sent in this state.
-       return BandwidthLimitedCause::kLossLimitedBwe;
-     case LossBasedState::kIncreasing:
-       // Probes may be sent in this state.
-       return BandwidthLimitedCause::kLossLimitedBweIncreasing;
+diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc
+--- a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc_network_control.cc	2026-07-18 12:54:18.156276697 +0200
+@@ -85,6 +85,8 @@ BandwidthLimitedCause GetBandwidthLimite
      case LossBasedState::kDelayBasedEstimate:
        return BandwidthLimitedCause::kDelayBasedLimited;
    }
@@ -739,41 +383,32 @@ diff --git a/third_party/libwebrtc/modules/congestion_controller/goog_cc/goog_cc
  }
  
  }  // namespace
+diff -rup a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h
+--- a/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/congestion_controller/goog_cc_scream_network_controller/goog_cc_scream_network_controller.h	2026-07-18 12:54:18.156323198 +0200
+@@ -63,6 +63,7 @@ class GoogCcScreamNetworkController : pu
+       case Mode::kScreamAfterCe:
+         return true;
+     }
++    return false;
+   }
  
- GoogCcNetworkController::GoogCcNetworkController(NetworkControllerConfig config,
-                                                  GoogCcConfig goog_cc_config)
-     : env_(config.env),
-       packet_feedback_only_(goog_cc_config.feedback_only),
-diff --git a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
---- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-+++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
-@@ -41,16 +41,17 @@ ScreenCastPortal::CaptureSourceType Scre
-   switch (type) {
-     case CaptureType::kScreen:
-       return ScreenCastPortal::CaptureSourceType::kScreen;
-     case CaptureType::kWindow:
-       return ScreenCastPortal::CaptureSourceType::kWindow;
+  private:
+diff -rup a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc
+--- a/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc	2026-07-16 18:59:08.000000000 +0200
++++ b/third_party/libwebrtc/modules/desktop_capture/linux/wayland/screencast_portal.cc	2026-07-18 12:54:18.156363010 +0200
+@@ -56,6 +56,7 @@ ScreenCastPortal::CaptureSourceType Scre
      case CaptureType::kAnyScreenContent:
        return ScreenCastPortal::CaptureSourceType::kAnyScreenContent;
    }
 +  RTC_CHECK_NOTREACHED();
  }
  
- ScreenCastPortal::ScreenCastPortal(CaptureType type, PortalNotifier* notifier)
-     : ScreenCastPortal(type,
-                        notifier,
-                        OnProxyRequested,
-                        OnSourcesRequestResponseSignal) {}
- 
-diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
---- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-+++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
-@@ -86,16 +86,17 @@ bool BitrateProber::ReadyToSetActiveStat
-         return true;
-       }
-       // If config_.min_packet_size > 0, a "large enough" packet must be
-       // sent first, before a probe can be generated and sent. Otherwise,
-       // send the probe asap.
+ ScreenCastPortal::ScreenCastPortal(CaptureType type,
+diff -rup a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc
+--- a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/modules/pacing/bitrate_prober.cc	2026-07-18 12:54:18.156407992 +0200
+@@ -91,6 +91,7 @@ bool BitrateProber::ReadyToSetActiveStat
        return packet_size >=
               std::min(RecommendedMinProbeSize(), config_.min_packet_size.Get());
    }
@@ -781,20 +416,10 @@ diff --git a/third_party/libwebrtc/modules/pacing/bitrate_prober.cc b/third_part
  }
  
  void BitrateProber::OnIncomingPacket(DataSize packet_size) {
-   MaybeSetActiveState(packet_size);
- }
- 
- void BitrateProber::CreateProbeCluster(
-     const ProbeClusterConfig& cluster_config) {
-diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
-@@ -41,11 +41,12 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
-       return std::make_unique<VideoRtpDepacketizerH265>();
- #else
-       return nullptr;
- #endif
-     case kVideoCodecGeneric:
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depacketizer.cc	2026-07-18 12:54:18.156432152 +0200
+@@ -47,6 +47,7 @@ std::unique_ptr<VideoRtpDepacketizer> Cr
        return std::make_unique<VideoRtpDepacketizerGeneric>();
    }
    RTC_CHECK_NOTREACHED();
@@ -802,36 +427,35 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/create_video_rtp_depa
  }
  
  }  // namespace webrtc
-diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
-@@ -108,16 +108,17 @@ uint16_t To2BitEcn(rtc::EcnMarking ecn_m
-       return 0;
-     case rtc::EcnMarking::kEct1:
-       return kEcnEct1 << 13;
-     case rtc::EcnMarking::kEct0:
-       return kEcnEct0 << 13;
-     case rtc::EcnMarking::kCe:
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtcp_packet/congestion_control_feedback.cc	2026-07-18 12:54:18.156458943 +0200
+@@ -113,6 +113,7 @@ uint16_t To2BitEcn(EcnMarking ecn_markin
+     case EcnMarking::kCe:
        return kEcnCe << 13;
    }
 +  return 0; // should not be reached
  }
  
- rtc::EcnMarking ToEcnMarking(uint16_t receive_info) {
-   const uint16_t ecn = (receive_info >> 13) & 0b11;
-   if (ecn == kEcnEct1) {
-     return rtc::EcnMarking::kEct1;
+ EcnMarking ToEcnMarking(uint16_t receive_info) {
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_format.cc	2026-07-18 12:54:18.156489065 +0200
+@@ -73,6 +73,10 @@ std::unique_ptr<RtpPacketizer> RtpPacket
+                                                     rtp_video_header);
+     }
    }
-   if (ecn == kEcnEct0) {
-diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
---- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-+++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
-@@ -145,16 +145,17 @@ bool IsNonVolatile(RTPExtensionType type
- #if defined(WEBRTC_MOZILLA_BUILD)
-     case kRtpExtensionCsrcAudioLevel:
-       // TODO: Mozilla implement for CsrcAudioLevel
-       RTC_CHECK(false);
-       return false;
++  // The following serves only to shut up the compiler about
++  //    "control reaches end of non-void function":
++  return std::make_unique<RtpPacketizerGeneric>(payload, limits,
++					        rtp_video_header);
+ }
+ 
+ std::vector<int> RtpPacketizer::SplitAboutEqually(
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc	2026-07-16 18:59:08.000000000 +0200
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc	2026-07-18 12:54:18.156525236 +0200
+@@ -149,6 +149,7 @@ bool IsNonVolatile(RTPExtensionType type
  #endif
    }
    RTC_CHECK_NOTREACHED();
@@ -839,20 +463,21 @@ diff --git a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender.cc b/third
  }
  
  bool HasBweExtension(const RtpHeaderExtensionMap& extensions_map) {
-   return extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber) ||
-          extensions_map.IsRegistered(kRtpExtensionTransportSequenceNumber02) ||
-          extensions_map.IsRegistered(kRtpExtensionAbsoluteSendTime) ||
-          extensions_map.IsRegistered(kRtpExtensionTransmissionTimeOffset);
+diff -rup a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc
+--- a/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/modules/rtp_rtcp/source/rtp_sender_video.cc	2026-07-18 12:54:18.156577198 +0200
+@@ -178,6 +178,7 @@ PacketizationFormat GetPacketizationForm
+     case kVideoCodecGeneric:
+       return PacketizationFormat::kGeneric;
+   }
++  return (PacketizationFormat) 0;
  }
-diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
---- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-+++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
-@@ -104,16 +104,17 @@ size_t BufferToIndex(Vp8BufferReference 
-       return 0;
-     case Vp8FrameConfig::Vp8BufferReference::kGolden:
-       return 1;
-     case Vp8FrameConfig::Vp8BufferReference::kAltref:
-       return 2;
+ 
+ }  // namespace
+diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_temporal_layers.cc	2026-07-18 12:54:18.156635280 +0200
+@@ -119,6 +119,7 @@ size_t BufferToIndex(Vp8BufferReference
      case Vp8FrameConfig::Vp8BufferReference::kNone:
        RTC_CHECK_NOTREACHED();
    }
@@ -860,20 +485,10 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/default_tempo
  }
  
  }  // namespace
- 
- constexpr size_t DefaultTemporalLayers::kNumReferenceBuffers;
- 
- std::vector<DefaultTemporalLayers::DependencyInfo>
- DefaultTemporalLayers::GetDependencyInfo(size_t num_layers) {
-diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
---- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-+++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
-@@ -25,16 +25,17 @@ TemporalLayersChecker::CreateTemporalLay
-     case Vp8TemporalLayersType::kFixedPattern:
-       return std::make_unique<DefaultTemporalLayersChecker>(
-           num_temporal_layers);
-     case Vp8TemporalLayersType::kBitrateDynamic:
-       // Conference mode temporal layering for screen content in base stream.
+diff -rup a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc
+--- a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_layers_checker.cc	2026-07-18 12:54:18.156672021 +0200
+@@ -34,6 +34,7 @@ TemporalLayersChecker::CreateTemporalLay
        return std::make_unique<TemporalLayersChecker>(num_temporal_layers);
    }
    RTC_CHECK_NOTREACHED();
@@ -881,20 +496,10 @@ diff --git a/third_party/libwebrtc/modules/video_coding/codecs/vp8/temporal_laye
  }
  
  TemporalLayersChecker::TemporalLayersChecker(int num_temporal_layers)
-     : num_temporal_layers_(num_temporal_layers),
-       sequence_number_(0),
-       last_sync_sequence_number_(0),
-       last_tl0_sequence_number_(0) {}
- 
-diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
---- a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
-+++ b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
-@@ -58,16 +58,17 @@ bool BeginningOfIdr(const H26xPacketBuff
-     case kH264StapA:
-     case kH264SingleNalu: {
-       return contains_idr_nalu;
-     }
-     case kH264FuA: {
+diff -rup a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc
+--- a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc	2026-07-18 12:54:18.156703483 +0200
+@@ -67,6 +67,7 @@ bool BeginningOfIdr(const H26xPacketBuff
        return contains_idr_nalu && IsFirstPacketOfFragment(h264_header);
      }
    }
@@ -902,20 +507,10 @@ diff --git a/third_party/libwebrtc/modules/video_coding/h26x_packet_buffer.cc b/
  }
  
  bool HasSps(const H26xPacketBuffer::Packet& packet) {
-   auto& h264_header =
-       absl::get<RTPVideoHeaderH264>(packet.video_header.video_type_header);
-   return absl::c_any_of(h264_header.nalus, [](const auto& nalu_info) {
-     return nalu_info.type == H264::NaluType::kSps;
-   });
-diff --git a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
---- a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
-+++ b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
-@@ -57,16 +57,17 @@ absl::string_view ToString(Reconfigurati
-     case ReconfigurationResponseParameter::Result::
-         kErrorRequestAlreadyInProgress:
-       return "Error: request already in progress";
-     case ReconfigurationResponseParameter::Result::kErrorBadSequenceNumber:
-       return "Error: bad sequence number";
+diff -rup a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc
+--- a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_response_parameter.cc	2026-07-18 12:54:18.156739744 +0200
+@@ -60,6 +60,7 @@ absl::string_view ToString(Reconfigurati
      case ReconfigurationResponseParameter::Result::kInProgress:
        return "In progress";
    }
@@ -923,20 +518,10 @@ diff --git a/third_party/libwebrtc/net/dcsctp/packet/parameter/reconfiguration_r
  }
  
  std::optional<ReconfigurationResponseParameter>
- ReconfigurationResponseParameter::Parse(rtc::ArrayView<const uint8_t> data) {
-   std::optional<BoundedByteReader<kHeaderSize>> reader = ParseTLV(data);
-   if (!reader.has_value()) {
-     return std::nullopt;
-   }
-diff --git a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
---- a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
-+++ b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
-@@ -38,16 +38,17 @@ constexpr absl::string_view HandoverUnre
-       return "RETRANSMISSION_QUEUE_FAST_RECOVERY";
-     case HandoverUnreadinessReason::kRetransmissionQueueNotEmpty:
-       return "RETRANSMISSION_QUEUE_NOT_EMPTY";
-     case HandoverUnreadinessReason::kPendingStreamReset:
-       return "PENDING_STREAM_RESET";
+diff -rup a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc
+--- a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc	2026-07-18 12:54:18.156761615 +0200
+@@ -44,6 +44,7 @@ constexpr absl::string_view HandoverUnre
      case HandoverUnreadinessReason::kPendingStreamResetRequest:
        return "PENDING_STREAM_RESET_REQUEST";
    }
@@ -944,20 +529,10 @@ diff --git a/third_party/libwebrtc/net/dcsctp/public/dcsctp_handover_state.cc b/
  }
  }  // namespace
  
- std::string HandoverReadinessStatus::ToString() const {
-   std::string result;
-   for (uint32_t bit = 1;
-        bit <= static_cast<uint32_t>(HandoverUnreadinessReason::kMax);
-        bit *= 2) {
-diff --git a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
---- a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
-+++ b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
-@@ -354,16 +354,17 @@ absl::string_view DataTracker::ToString(
-       return "IDLE";
-     case AckState::kBecomingDelayed:
-       return "BECOMING_DELAYED";
-     case AckState::kDelayed:
-       return "DELAYED";
+diff -rup a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc
+--- a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc	2026-07-18 12:54:18.156787806 +0200
+@@ -357,6 +357,7 @@ absl::string_view DataTracker::ToString(
      case AckState::kImmediate:
        return "IMMEDIATE";
    }
@@ -965,20 +540,10 @@ diff --git a/third_party/libwebrtc/net/dcsctp/rx/data_tracker.cc b/third_party/l
  }
  
  HandoverReadinessStatus DataTracker::GetHandoverReadiness() const {
-   HandoverReadinessStatus status;
-   if (!additional_tsn_blocks_.empty()) {
-     status.Add(HandoverUnreadinessReason::kDataTrackerTsnBlocksPending);
-   }
-   return status;
-diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
---- a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
-+++ b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
-@@ -249,16 +249,17 @@ bool DcSctpSocket::IsConsistent() const 
-               !t1_cookie_->is_running() && t2_shutdown_->is_running());
-     case State::kShutdownReceived:
-       return (tcb_ != nullptr && !t1_init_->is_running() &&
-               !t1_cookie_->is_running() && !t2_shutdown_->is_running());
-     case State::kShutdownAckSent:
+diff -rup a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc
+--- a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc	2026-07-18 12:54:18.156849908 +0200
+@@ -261,6 +261,7 @@ bool DcSctpSocket::IsConsistent() const
        return (tcb_ != nullptr && !t1_init_->is_running() &&
                !t1_cookie_->is_running() && t2_shutdown_->is_running());
    }
@@ -986,17 +551,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
  }
  
  constexpr absl::string_view DcSctpSocket::ToString(DcSctpSocket::State state) {
-   switch (state) {
-     case DcSctpSocket::State::kClosed:
-       return "CLOSED";
-     case DcSctpSocket::State::kCookieWait:
-       return "COOKIE_WAIT";
-@@ -270,16 +271,17 @@ constexpr absl::string_view DcSctpSocket
-       return "SHUTDOWN_PENDING";
-     case DcSctpSocket::State::kShutdownSent:
-       return "SHUTDOWN_SENT";
-     case DcSctpSocket::State::kShutdownReceived:
-       return "SHUTDOWN_RECEIVED";
+@@ -282,6 +283,7 @@ constexpr absl::string_view DcSctpSocket
      case DcSctpSocket::State::kShutdownAckSent:
        return "SHUTDOWN_ACK_SENT";
    }
@@ -1004,17 +559,7 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
  }
  
  void DcSctpSocket::SetState(State state, absl::string_view reason) {
-   if (state_ != state) {
-     RTC_DLOG(LS_VERBOSE) << log_prefix_ << "Socket state changed from "
-                          << ToString(state_) << " to " << ToString(state)
-                          << " due to " << reason;
-     state_ = state;
-@@ -588,16 +590,17 @@ SocketState DcSctpSocket::state() const 
-     case State::kEstablished:
-       return SocketState::kConnected;
-     case State::kShutdownPending:
-     case State::kShutdownSent:
-     case State::kShutdownReceived:
+@@ -656,6 +658,7 @@ SocketState DcSctpSocket::state() const
      case State::kShutdownAckSent:
        return SocketState::kShuttingDown;
    }
@@ -1022,35 +567,20 @@ diff --git a/third_party/libwebrtc/net/dcsctp/socket/dcsctp_socket.cc b/third_pa
  }
  
  void DcSctpSocket::SetMaxMessageSize(size_t max_message_size) {
-   options_.max_message_size = max_message_size;
- }
- 
- size_t DcSctpSocket::buffered_amount(StreamID stream_id) const {
-   return send_queue_.buffered_amount(stream_id);
-diff --git a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
---- a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
-+++ b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
-@@ -39,10 +39,11 @@ bool PacketSender::Send(SctpPacket::Buil
-       return false;
-     }
- 
-     case SendPacketStatus::kError: {
-       // Nothing that can be done.
+diff -rup a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc
+--- a/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/socket/packet_sender.cc	2026-07-18 12:54:18.156920121 +0200
+@@ -48,5 +48,6 @@ bool PacketSender::Send(SctpPacket::Buil
        return false;
      }
    }
 +  return false; // not reached
  }
  }  // namespace dcsctp
-diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwebrtc/net/dcsctp/timer/timer.cc
---- a/third_party/libwebrtc/net/dcsctp/timer/timer.cc
-+++ b/third_party/libwebrtc/net/dcsctp/timer/timer.cc
-@@ -44,16 +44,17 @@ TimeDelta GetBackoffDuration(const Timer
-         if (duration > options.max_backoff_duration) {
-           return options.max_backoff_duration;
-         }
-       }
- 
+diff -rup a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwebrtc/net/dcsctp/timer/timer.cc
+--- a/third_party/libwebrtc/net/dcsctp/timer/timer.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/net/dcsctp/timer/timer.cc	2026-07-18 12:54:18.156942932 +0200
+@@ -51,6 +51,7 @@ TimeDelta GetBackoffDuration(const Timer
        return TimeDelta(std::min(duration, Timer::kMaxTimerDuration));
      }
    }
@@ -1058,20 +588,43 @@ diff --git a/third_party/libwebrtc/net/dcsctp/timer/timer.cc b/third_party/libwe
  }
  }  // namespace
  
- constexpr TimeDelta Timer::kMaxTimerDuration;
+diff -rup a/third_party/libwebrtc/rtc_base/network_constants.cc b/third_party/libwebrtc/rtc_base/network_constants.cc
+--- a/third_party/libwebrtc/rtc_base/network_constants.cc	2026-07-16 16:13:58.000000000 +0000
++++ b/third_party/libwebrtc/rtc_base/network_constants.cc	2026-07-18 11:24:57.621285609 +0000
+@@ -54,6 +54,7 @@ absl::string_view NetworkSliceToString(N
+     case NetworkSlice::UNIFIED_COMMUNICATIONS:
+       return "UNIFIED_COMMUNICATIONS";
+   }
++  return "NOTREACHED";
+ }
  
- Timer::Timer(TimerID id,
-              absl::string_view name,
-              OnExpired on_expired,
-diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
---- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-+++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
-@@ -59,16 +59,17 @@ bool IsFramerateScalingEnabled(Degradati
- std::string ToString(VideoAdaptationReason reason) {
-   switch (reason) {
-     case VideoAdaptationReason::kQuality:
-       return "quality";
+ }  // namespace webrtc
+diff -rup a/third_party/libwebrtc/rtc_base/network_monitor.cc b/third_party/libwebrtc/rtc_base/network_monitor.cc
+--- a/third_party/libwebrtc/rtc_base/network_monitor.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/rtc_base/network_monitor.cc	2026-07-18 12:58:53.059199314 +0200
+@@ -21,6 +21,7 @@ absl::string_view NetworkPreferenceToStr
+     case NetworkPreference::NOT_PREFERRED:
+       return "NOT_PREFERRED";
+   }
++  return "NEUTRAL"; //unreached
+ }
+ 
+ NetworkMonitorInterface::NetworkMonitorInterface() {}
+diff -rup a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc
+--- a/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/video/adaptation/pixel_limit_resource.cc	2026-07-18 12:54:18.157016604 +0200
+@@ -88,6 +88,7 @@ const char* ToString(VideoAdaptationReas
      case VideoAdaptationReason::kCpu:
+       return "cpu";
+   }
++  return "shut-up-the-compiler";
+ }
+ 
+ }  // namespace
+diff -rup a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc
+--- a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/video/adaptation/video_stream_encoder_resource_manager.cc	2026-07-18 12:54:18.157053086 +0200
+@@ -87,6 +87,7 @@ std::string ToString(VideoAdaptationReas
        return "cpu";
    }
    RTC_CHECK_NOTREACHED();
@@ -1079,29 +632,65 @@ diff --git a/third_party/libwebrtc/video/adaptation/video_stream_encoder_resourc
  }
  
  std::vector<bool> GetActiveLayersFlags(const VideoCodec& codec) {
-   std::vector<bool> flags;
-   if (codec.codecType == VideoCodecType::kVideoCodecVP9) {
-     flags.resize(codec.VP9().numberOfSpatialLayers);
-     for (size_t i = 0; i < flags.size(); ++i) {
-       flags[i] = codec.spatialLayers[i].active;
-diff --git a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
---- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-+++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
-@@ -105,16 +105,17 @@ int GetDefaultMaxQp(VideoCodecType codec
-       return cricket::kDefaultVideoMaxQpH26x;
-     case webrtc::kVideoCodecVP8:
-     case webrtc::kVideoCodecVP9:
-     case webrtc::kVideoCodecGeneric:
-       return cricket::kDefaultVideoMaxQpVpx;
-     case webrtc::kVideoCodecAV1:
-       return cricket::kDefaultVideoMaxQpAv1;
+diff -rup a/third_party/libwebrtc/video/config/encoder_stream_factory.cc b/third_party/libwebrtc/video/config/encoder_stream_factory.cc
+--- a/third_party/libwebrtc/video/config/encoder_stream_factory.cc	2026-07-16 18:13:57.000000000 +0200
++++ b/third_party/libwebrtc/video/config/encoder_stream_factory.cc	2026-07-18 12:54:18.157102287 +0200
+@@ -124,6 +124,7 @@ int GetDefaultMaxQp(VideoCodecType codec
+     case kVideoCodecAV1:
+       return kDefaultVideoMaxQpAv1;
    }
-+  return cricket::kDefaultVideoMaxQpAv1; // fake return for hopefully not reached
++  return kDefaultVideoMaxQpAv1;
  }
  
- // Round size to nearest simulcast-friendly size.
- // Simulcast stream width and height must both be dividable by
- // |2 ^ (simulcast_layers - 1)|.
- int NormalizeSimulcastSize(const FieldTrialsView& field_trials,
-                            int size,
-                            size_t simulcast_layers) {
+ Resolution NormalizeResolution(const Resolution& resolution,
+diff -rup a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc
+--- a/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc	2026-07-16 18:13:58.000000000 +0200
++++ b/third_party/libwebrtc/video/corruption_detection/video_frame_sampler.cc	2026-07-18 12:54:18.157147499 +0200
+@@ -42,6 +42,7 @@ class I420FrameSampler : public VideoFra
+         RTC_DCHECK_LT(row, height(ChannelType::V));
+         return buffer_->DataV()[row * buffer_->StrideV() + col];
+     }
++    return 0;
+   }
+ 
+   int width(ChannelType channel) const override {
+@@ -52,6 +53,7 @@ class I420FrameSampler : public VideoFra
+       case ChannelType::V:
+         return buffer_->ChromaWidth();
+     }
++    return 0;
+   }
+ 
+   int height(ChannelType channel) const override {
+@@ -62,6 +64,7 @@ class I420FrameSampler : public VideoFra
+       case ChannelType::V:
+         return buffer_->ChromaHeight();
+     }
++    return 0;
+   }
+ 
+  private:
+@@ -90,6 +93,7 @@ class NV12FrameSampler : public VideoFra
+         RTC_DCHECK_LT(row, height(ChannelType::V));
+         return buffer_->DataUV()[row * buffer_->StrideUV() + (col * 2) + 1];
+     }
++    return 0;
+   }
+ 
+   int width(ChannelType channel) const override {
+@@ -100,6 +104,7 @@ class NV12FrameSampler : public VideoFra
+       case ChannelType::V:
+         return buffer_->ChromaWidth();
+     }
++    return 0;
+   }
+ 
+   int height(ChannelType channel) const override {
+@@ -110,6 +115,7 @@ class NV12FrameSampler : public VideoFra
+       case ChannelType::V:
+         return buffer_->ChromaHeight();
+     }
++    return 0;
+   }
+ 
+  private:

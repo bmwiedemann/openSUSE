@@ -1,15 +1,118 @@
 -------------------------------------------------------------------
-Tue Jul 21 12:54:27 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Jul 21 12:56:46 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Firefox Extended Support Release 140.13.0 ESR
+- Firefox Extended Support Release 153.0 ESR
+  * New: ## General
+    - Firefox now includes a new profile management system that
+    helps you separate your online life into distinct profiles
+    for work, school, vacation planning, or whatever you choose.
+    Profiles can be customized with names, avatars, and color
+    themes while keeping tabs, bookmarks, passwords, and browsing
+    history separate. Built-in profile backup and restore also
+    makes it easier to migrate to a new device or recover your
+    browsing data.
+    - Split View lets you view two webpages side-by-side in a
+    single browser window, with additional options to quickly
+    open links in Split View, rearrange pages, and search open
+    tabs.
+    - The Firefox address bar has gained several new
+    capabilities, including built-in unit and time zone
+    conversion, quick actions such as muting all browser audio,
+    and direct search results as you type.
+    - Firefox now supports copying links directly to highlighted
+    text on a webpage for easier sharing.
+    - Firefox Settings has been redesigned with improved
+    organization and navigation, making it easier to find and
+    customize browser preferences.
+  * New: ## AI
+    Firefox introduced several new AI-powered features, including
+    on-device tab organization, AI-assisted link previews,
+    integrated AI search, and centralized controls for managing
+    AI features. Whenever possible, these features perform
+    processing locally to help protect user privacy.
+  * New: ## Sidebar and Tabs
+    - Firefox continues to improve tab management with
+    enhancements to vertical tabs, tab groups, and the sidebar.
+    - Tab groups have gained numerous usability improvements,
+    including better support for collapsed groups, previews of
+    grouped tabs, and additional organization options.
+    - Passwords can now be accessed directly from the Firefox
+    sidebar without opening a separate tab.
+    - Firefox now supports copying links from one or multiple
+    background tabs directly from the tab context menu, and
+    multiple tabs can be copied or shared in a single action.
+    - A Send Tab toolbar button is now available through
+    Customize Toolbar.
+  * New: ## Security & Privacy
+    - Firefox has significantly expanded Fingerprinting
+    Protection, making it harder for websites to uniquely
+    identify users in both Standard and Strict Enhanced Tracking
+    Protection modes.
+    - Enhanced Tracking Protection includes stronger protections
+    against bounce tracking and additional safeguards that
+    restrict websites from accessing local network resources
+    without user permission.
+    - Firefox now uses Safe Browsing V5 for phishing and malware
+    protection.
+    - Firefox Password Manager now uses stronger AES-256
+    encryption to protect stored logins on disk.
+    - Private Browsing has been enhanced with new controls,
+    including the ability to instantly end a private browsing
+    session and temporarily relax tracker blocking for individual
+    sites when needed for compatibility.
+  * New: ## Translations
+    - Firefox has expanded on-device translation support with
+    many additional languages and continued improvements to
+    translation quality.
+    - A dedicated translations page now provides an easy way to
+    perform real-time translations directly within Firefox.
+  * New: ## Accessibility
+    - Firefox continues to improve accessibility with enhanced
+    support for assistive technologies, including Windows UI
+    Automation, improved keyboard navigation, more accessible
+    date and time controls, and better support for mathematical
+    content in PDFs.
+  * New: ## Windows
+    - Firefox now supports installing websites as standalone web
+    apps pinned to the Windows taskbar.
+    - Firefox web apps are also available for Microsoft Store
+    installations.
+    - Firefox now better integrates with Windows location
+    permissions when websites request geolocation access.
+  * New: ## macOS
+    - Firefox now uses a dedicated GPU process by default,
+    improving stability by allowing graphics failures to recover
+    without restarting the browser.
+    - WebGPU is now enabled by default on Apple Silicon Macs.
+  * New: ## Linux
+    - Firefox now supports native fractional scaling on Wayland,
+    improving rendering on high-DPI displays.
+    - Firefox no longer requires a restart after package manager
+    updates and uses less memory on Linux.
+    - Firefox now supports the XDG Base Directory Specification
+    and ships with RPM packages for Red Hat, Fedora, openSUSE,
+    and other RPM-based distributions.
+  * HTML5: - Firefox now supports the View Transitions API for
+    creating smooth animated transitions between application
+    views.
+    - WebGPU support has expanded across supported platforms,
+    including Windows and Apple Silicon Macs.
+    - Added support for several modern web platform APIs,
+    improving compatibility with modern web applications. Notable
+    additions include the Navigation API, URLPattern, Trusted
+    Types, Sanitizer API, and Prioritized Task Scheduling.
+  * Enterprise: - Enterprise administrators can now centrally
+    manage Firefox's Generative AI features through enterprise
+    policy.
+    - Fixed a performance regression affecting native messaging,
+    improving responsiveness for enterprise extensions that
+    communicate with external applications.
+    - Enterprise policy documentation has moved to
+    https://firefox-admin-docs.mozilla.org/.
   * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.13.0
-  https://www.mozilla.org/security/advisories/mfsa2026-70
-  MFSA 2026-70 (boo#1271649)
-  * CVE-2026-15718 (bmo#2045443)
-    Invalid pointer in the JavaScript: WebAssembly component
-  * CVE-2026-15719 (bmo#2043820)
-    Site isolation issue in the DOM: Navigation component
+- Mozilla Firefox ESR 153.0
+  https://www.mozilla.org/security/advisories/mfsa2026-68
+  MFSA 2026-68 (boo#1271649)
   * CVE-2026-16349 (bmo#2034682)
     Same-origin policy bypass in the DOM: Navigation component
   * CVE-2026-16350 (bmo#2042033)
@@ -25,10 +128,20 @@ Tue Jul 21 12:54:27 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     APIs component
   * CVE-2026-16363 (bmo#2047689)
     JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-16364 (bmo#2047802)
+    Incorrect boundary conditions in the Audio/Video: Playback
+    component
+  * CVE-2026-16365 (bmo#2049149)
+    Privilege escalation in the DOM: Workers component
+  * CVE-2026-16366 (bmo#2049181)
+    Privilege escalation in the DOM: Navigation component
   * CVE-2026-16353 (bmo#2049523)
     Invalid pointer in the DOM: Bindings (WebIDL) component
   * CVE-2026-16354 (bmo#2050626)
     Information disclosure in the Graphics: ImageLib component
+  * CVE-2026-16367 (bmo#2050627)
+    Sandbox escape due to invalid pointer in the Disability
+    Access APIs component
   * CVE-2026-16368 (bmo#2051015)
     Incorrect boundary conditions in the JavaScript: WebAssembly
     component
@@ -41,36 +154,115 @@ Tue Jul 21 12:54:27 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     APIs component
   * CVE-2026-16357 (bmo#2053326)
     Incorrect boundary conditions in the Graphics component
+  * CVE-2026-16370 (bmo#1996495)
+    Mitigation bypass in the DOM: Networking component
   * CVE-2026-16371 (bmo#2008369)
     Privilege escalation in the DOM: Navigation component
+  * CVE-2026-16372 (bmo#2013800)
+    Privilege escalation in the DOM: Content Processes component
+  * CVE-2026-16373 (bmo#2021964)
+    Information disclosure in the Privacy component in Firefox
+    for Android
   * CVE-2026-16374 (bmo#2027519)
     Information disclosure in the Framework component in DevTools
   * CVE-2026-16375 (bmo#2032140)
     Site isolation issue in the Networking: HTTP component
+  * CVE-2026-16376 (bmo#2035733)
+    Denial-of-service in the Graphics: WebGPU component
   * CVE-2026-16377 (bmo#2037770)
     Mitigation bypass in the PDF Viewer component
+  * CVE-2026-16378 (bmo#2038868)
+    Other issue in the DOM: Copy & Paste and Drag & Drop
+    component
   * CVE-2026-16379 (bmo#2039452)
     Privilege escalation in the DOM: Content Processes component
   * CVE-2026-16358 (bmo#2040119)
     Site isolation issue in the Graphics: WebRender component
+  * CVE-2026-16380 (bmo#2040386)
+    Mitigation bypass in the Networking component
   * CVE-2026-16381 (bmo#2041001)
     Same-origin policy bypass in the Networking: DNS component
+  * CVE-2026-16382 (bmo#2041864)
+    Mitigation bypass in the DOM: Service Workers component
   * CVE-2026-16383 (bmo#2041902)
     Mitigation bypass in the DOM: Networking component
+  * CVE-2026-16384 (bmo#2041911)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
+  * CVE-2026-16385 (bmo#2041912)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
+  * CVE-2026-16386 (bmo#2041916)
+    Information disclosure due to uninitialized memory in the
+    Graphics: WebGPU component
   * CVE-2026-16387 (bmo#2043200)
     Site isolation issue in the Networking component
+  * CVE-2026-16388 (bmo#2043845)
+    Sandbox escape in the DOM: Networking component
+  * CVE-2026-16389 (bmo#2043887)
+    Incorrect boundary conditions, integer overflow in the
+    Libraries component in NSS
   * CVE-2026-16390 (bmo#2044527)
     Mitigation bypass in the Enterprise Policies component
   * CVE-2026-16391 (bmo#2044536)
     Information disclosure in the Storage: IndexedDB component
+  * CVE-2026-16392 (bmo#2044606)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-16393 (bmo#2045410)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
   * CVE-2026-16359 (bmo#2045424)
     Incorrect boundary conditions in the Audio/Video: GMP
     component
+  * CVE-2026-16394 (bmo#2046748)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-16395 (bmo#2047221)
+    Integer overflow in the Audio/Video component
   * CVE-2026-16396 (bmo#2047240)
     Privilege escalation in WebExtensions
+  * CVE-2026-16397 (bmo#2047608)
+    Clickjacking issue in the WebExtensions component in Firefox
+    for Android
+  * CVE-2026-16398 (bmo#2048345)
+    Site isolation issue in the Graphics component
+  * CVE-2026-16399 (bmo#2049981)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-16400 (bmo#2050430)
+    Information disclosure in the DOM: Security component
+  * CVE-2026-16401 (bmo#2052565)
+    Privilege escalation in the Data Loss Prevention component
+  * CVE-2026-16402 (bmo#2052703)
+    Integer overflow in the Graphics: ImageLib component
+  * CVE-2026-16403 (bmo#1972244)
+    Spoofing issue in the Address Bar component
+  * CVE-2026-16404 (bmo#2020253)
+    Spoofing issue in Firefox for Android
   * CVE-2026-16405 (bmo#2036591)
     Information disclosure in the Networking: WebSockets
     component
+  * CVE-2026-16406 (bmo#2040382)
+    Mitigation bypass in the Networking component
+  * CVE-2026-16407 (bmo#2044063)
+    Mitigation bypass in the DOM: Service Workers component
+  * CVE-2026-16408 (bmo#2050477)
+    Integer overflow in the Audio/Video: Playback component
+  * CVE-2026-16409 (bmo#2052134)
+    Invalid pointer in the Security: PSM component
+  * CVE-2026-16410 (bmo#2053680)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-16411 (bmo#1420800, bmo#1598946, bmo#1767921,
+    bmo#2006467, bmo#2013993, bmo#2025417, bmo#2027325,
+    bmo#2027346, bmo#2027349, bmo#2027353, bmo#2027362,
+    bmo#2027364, bmo#2027371, bmo#2027373, bmo#2028954,
+    bmo#2029433, bmo#2029694, bmo#2029807, bmo#2029901,
+    bmo#2029922, bmo#2030102, bmo#2030563, bmo#2032110,
+    bmo#2036906, bmo#2037801, bmo#2038964, bmo#2039460,
+    bmo#2040522, bmo#2040834, bmo#2042756, bmo#2043275,
+    bmo#2044625, bmo#2045394, bmo#2045606, bmo#2045609,
+    bmo#2047920, bmo#2048491, bmo#2048492, bmo#2048800,
+    bmo#2048936, bmo#2049804, bmo#2050534, bmo#2050662,
+    bmo#2050871, bmo#2052060)
+    Memory safety bugs fixed in Firefox 153
   * CVE-2026-16412 (bmo#2005113, bmo#2025369, bmo#2026301,
     bmo#2028663, bmo#2029761, bmo#2042242, bmo#2043035,
     bmo#2043271, bmo#2043300, bmo#2044612, bmo#2045057,
@@ -104,142 +296,266 @@ Tue Jul 21 12:54:27 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#2053273, bmo#2053576, bmo#2053583, bmo#2053587)
     Memory safety bugs fixed in Firefox ESR 115.38, Firefox ESR
     140.13 and Firefox 153
-  * CVE-2026-16361 (bmo#2029734, bmo#2036518)
-    Memory safety bugs fixed in Firefox ESR 115.38 and Firefox
-    ESR 140.13
-- Remove obsolete mozilla-bmo1746799.patch
-- Depend on the new transitional package rust-cbindgen-0_29_2
-
--------------------------------------------------------------------
-Mon Jul 13 19:17:56 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
 - Guard the "desktop file" actions to be run only on real Factory,
   Slowroll or Tumbleweed builds, ie. suse_version >= 1699.
+- Refresh MozillaFirefox.desktop from a Factory build
+- Refresh mozilla-silence-no-return-type.patch
+- Remove obsolete mozilla-bmo1746799.patch, mozilla-bmo2041150.patch
+- clang_build is no longer needed; set it to 0 unconditionally.
 
 -------------------------------------------------------------------
-Sun Jun 28 08:13:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Jul  5 11:21:38 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Reformat the patch against current Firefox ESR 140.12.0 and add
-  it as Patch28 to the .spec file.
+- Mozilla Firefox 152.0.4
+  MFSA 2026-62 (boo#1270286)
+  * CVE-2026-14241 (bmo#2043241, bmo#2045514, bmo#2045576,
+    bmo#2045623, bmo#2045765, bmo#2046814, bmo#2049409,
+    bmo#2049840)
+    Memory safety bugs fixed in Firefox 152.0.4
+  * Smart Window includes several enhancements:
+    You can now ask it to close your tabs, with a confirmation step
+    when needed and the option to undo afterward (bmo#2040769)
+    Browsing history results now appear with images (bmo#2038069)
+    When you give feedback on a response, you can now choose from
+    common reasons and preview exactly what will be shared before
+    submitting (bmo#2033002)
+  * Fixed copy, paste, undo, redo, and similar keyboard shortcuts
+    not working inside macOS system dialogs such as the Save and
+    Open panels. (Bug 2040851, Bug 2040844)
+  * Fixed the Manage Cookies and Site Data dialog opening with an
+    empty list when opened from the Settings search results.
+    (bmo#2041077)
+  * Fixed keyboard focus landing in the wrong place after following
+    an in-page link, so pressing Tab continues from the link's
+    position as expected. (bmo#2049307)
+
+-------------------------------------------------------------------
+Sat Jun 27 16:56:29 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 152.0.3
+  https://www.firefox.com/en-US/firefox/152.0.3/releasenotes/
+  * Fix an issue that could cause extreme memory usage and freezing
+    on startup for users with language packs installed
+    (bmo#2049845, boo#1269477)
 
 -------------------------------------------------------------------
 Thu Jun 25 14:19:05 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Add mozilla-bmo2048250.patch, fix input method candidate window tracking by
-  explicitly committing Wayland surface after setting cursor location.
+  explicitly committing Wayland surface after setting cursor location. 
   (boo#1268447 and bmo#2048250)
 
 -------------------------------------------------------------------
-Wed Jun 17 16:23:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Jun 23 14:51:58 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Enable clang_build to allow building with the latest versions of
-  llvm/clang due to them dropping support for update-alternatives.
+- Mozilla Firefox 152.0.2
+  https://www.firefox.com/en-US/firefox/152.0.2/releasenotes/
+  * Fixed some Settings section headings showing placeholder text
+    instead of the translated name in certain languages
+    (bmo#2047983)
+  * Fixed New Tab content not matching the browser's display
+    language after it was changed. (bmo#2046945)
+  * Fixed a regression that could break playback of some MP4 video
+    files (bmo#2047467)
+  * Fixed a performance regression that could slow down sites
+    performing many encryption and decryption operations at once,
+    such as Proton Drive (bmo#2046401)
 
 -------------------------------------------------------------------
-Tue Jun 16 11:52:50 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Jun 18 16:27:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Firefox Extended Support Release 140.12.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.12.0
-  https://www.mozilla.org/security/advisories/mfsa2026-58
-  MFSA 2026-58 (boo#1268071)
+- Mozilla Firefox 152.0.1
+  https://www.firefox.com/en-US/firefox/152.0.1/releasenotes/
+  * Fix frequent crashes affecting users with Intel Raptor Lake
+    processors (bmo#2039575)
+
+-------------------------------------------------------------------
+Sun Jun 14 11:34:10 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 152.0
+  https://www.firefox.com/en-US/firefox/152.0/releasenotes/
+  MFSA 2026-57 (bsc#1268071)
   * CVE-2026-12289 (bmo#2023443)
     Privilege escalation in the Graphics: WebRender component
   * CVE-2026-12290 (bmo#2024852)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12291 (bmo#2036929)
     Use-after-free in the Networking: HTTP component
   * CVE-2026-12292 (bmo#2038465)
     Incorrect boundary conditions in the Web Audio component
+  * CVE-2026-12293 (bmo#2039568)
+    Use-after-free in the Graphics: WebGPU component
   * CVE-2026-12294 (bmo#2039873)
     Sandbox escape in the DOM: Workers component
   * CVE-2026-12295 (bmo#2040160)
     Sandbox escape in the DOM: Navigation component
-  * CVE-2026-12298 (bmo#2041981)
-    Memory safety bug fixed in Firefox ESR 140.12
   * CVE-2026-12296 (bmo#2040515)
     Sandbox escape in the Security: Process Sandboxing component
   * CVE-2026-12297 (bmo#2041610)
     Sandbox escape due to incorrect boundary conditions in the
     Networking component
+  * CVE-2026-12298 (bmo#2041981)
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12299 (bmo#2043139)
     JIT miscompilation in the DOM: Core & HTML component
-  * CVE-2026-12329 (bmo#2044738)
-    Memory safety bug fixed in Firefox ESR 140.12
+  * CVE-2026-12300 (bmo#1704114)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12301 (bmo#2015647)
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12302 (bmo#2034489)
     Mitigation bypass in the DOM: Security component
+  * CVE-2026-12303 (bmo#2034608)
+    Information disclosure due to incorrect boundary conditions
+    in the Graphics: WebGPU component
   * CVE-2026-12304 (bmo#2034944)
-    Same-origin policy bypass in the Networking: Cookies
-    component
+    Same-origin policy bypass in the Networking: Cookies component
   * CVE-2026-12305 (bmo#2037290)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12306 (bmo#2037323)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12307 (bmo#2038133)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12308 (bmo#2038302)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12309 (bmo#2038476)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12310 (bmo#2039707)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12311 (bmo#2040177)
     Information disclosure, sandbox escape in the Security:
     Process Sandboxing component
   * CVE-2026-12312 (bmo#2040383)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12313 (bmo#2040477)
     Information disclosure, sandbox escape in the Security:
     Process Sandboxing component
   * CVE-2026-12314 (bmo#2041856)
-    Memory safety bug fixed in Firefox ESR 140.12
+    Memory safety bug fixed in Firefox 152
   * CVE-2026-12315 (bmo#2042058)
     Mitigation bypass in the DOM: Security component
-  * CVE-2026-12330 (bmo#2029326)
-    Incorrect boundary conditions in the Internationalization
-    component
+  * CVE-2026-12316 (bmo#2045496)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-12317 (bmo#2007083)
+    Memory safety bug fixed in Firefox 152
+  * CVE-2026-12318 (bmo#2023478)
+    Incorrect boundary conditions in the Libraries component in NSS
+  * CVE-2026-12319 (bmo#2026933)
+    Denial-of-service in the Audio/Video: Playback component
+  * CVE-2026-12320 (bmo#2027572)
+    Information disclosure in the Password Manager component
+  * CVE-2026-12321 (bmo#2032943)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-12322 (bmo#2033848)
+    Clickjacking issue in the Widget: Gtk component
+  * CVE-2026-12323 (bmo#2035027)
+    Spoofing issue in the DOM: Core & HTML component
   * CVE-2026-12324 (bmo#2038444)
     Incorrect boundary conditions in the Graphics: CanvasWebGL
     component
   * CVE-2026-12325 (bmo#2039443)
     Denial-of-service in the Graphics: ImageLib component
-  * CVE-2026-12327 (bmo#2011842, bmo#2023902, bmo#2025512,
-    bmo#2027312, bmo#2029444, bmo#2036571, bmo#2036900,
-    bmo#2036936, bmo#2037995, bmo#2038551, bmo#2040717,
-    bmo#2042724)
+  * CVE-2026-12326 (bmo#1767455, bmo#2004308, bmo#2021955, bmo#2024445,
+    bmo#2025960, bmo#2028182, bmo#2029066, bmo#2029403, bmo#2029435,
+    bmo#2029765, bmo#2029803, bmo#2029883, bmo#2030110, bmo#2030149,
+    bmo#2030366, bmo#2030374, bmo#2030564, bmo#2030570, bmo#2030573,
+    bmo#2031120, bmo#2032264, bmo#2033234, bmo#2033411, bmo#2034816,
+    bmo#2035907, bmo#2035963, bmo#2036895, bmo#2036898, bmo#2036907,
+    bmo#2036909, bmo#2036928, bmo#2036931, bmo#2036932, bmo#2036934,
+    bmo#2038695, bmo#2039050, bmo#2039238, bmo#2039463, bmo#2041741,
+    bmo#2042465, bmo#2042718, bmo#2042760, bmo#2042781, bmo#2042907,
+    bmo#2044433, bmo#2044831, bmo#2045307, bmo#2045398, bmo#2045516,
+     bmo#2045572)
+    Memory safety bugs fixed in Firefox 152 and Thunderbird 152
+  * CVE-2026-12327 (bmo#2011842, bmo#2023902, bmo#2025512, bmo#2027312,
+    bmo#2029444, bmo#2036571, bmo#2036900, bmo#2036936, bmo#2037995,
+    bmo#2038551, bmo#2040717, bmo#2042724)
     Memory safety bugs fixed in Firefox ESR 140.12, Thunderbird
     ESR 140.12, Firefox 152 and Thunderbird 152
-  * CVE-2026-12328 (bmo#2029402, bmo#2038477, bmo#2039726,
-    bmo#2041373, bmo#2042268, bmo#2042451, bmo#2042782,
-    bmo#2042858, bmo#2042929, bmo#2042965, bmo#2043213)
+  * CVE-2026-12328 (bmo#2029402, bmo#2038477, bmo#2039726, bmo#2041373,
+    bmo#2042268, bmo#2042451, bmo#2042782, bmo#2042858, bmo#2042929,
+    bmo#2042965, bmo#2043213)
     Memory safety bugs fixed in Firefox ESR 115.37, Firefox ESR
-    140.12, Thunderbird ESR 140.12, Firefox 152 and Thunderbird
-    152
+    140.12, Thunderbird ESR 140.12, Firefox 152 and Thunderbird 152
+- requires NSS 3.124
+- rebased patches
 
 -------------------------------------------------------------------
-Tue May 19 12:41:51 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Jun  9 19:08:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Firefox Extended Support Release 140.11.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.11.0
-  https://www.mozilla.org/security/advisories/mfsa2026-48
-  MFSA 2026-48 (boo#1265212)
+- Mozilla Firefox 151.0.4
+  * Fixed an issue where Firefox could fall back to software
+    rendering on some older GPUs, reducing graphics performance
+    (bmo#2043249)
+  * Fixed an issue where some text input fields could incorrectly
+    show a resize handle (bmo#2044051)
+
+-------------------------------------------------------------------
+Sun Jun  7 09:17:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 151.0.3
+  MFSA 2026-54 (boo#1267841)
+  * CVE-2026-10701 (bmo#2038537)
+    Incorrect boundary conditions in the Graphics: Text component
+  * CVE-2026-10702 (bmo#2040903)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * Fixed an issue where selecting or pasting text in a text field
+    inside a table cell could disrupt the page layout.
+    (bmo#2041235)
+  * Fixed an issue where the VPN toolbar button icon could appear
+    larger than intended. (bmo#2042454)
+- includes changes from 151.0.2:
+  * Fixed an issue where adding another tab to an existing Split
+    View could unexpectedly close it. (bmo#2039795)
+  * Fixed an issue where Split View would close instead of
+    switching tabs when using the "Switch to Tab" option from the
+    address bar. (bmo#2039787)
+  * Fixed an issue where Firefox stopped caching new content once
+    the disk cache was full, causing pages and resources to be
+    re-downloaded from the network on every visit. (bmo#2031577)
+  * Fixed an issue where some websites could render incorrectly or
+    fail to load when they used JavaScript to insert WebKit-
+    specific style rules. (bmo#2040693)
+  * Fixed an issue where clicking and selecting text in some input
+    fields and text areas did not work on pages that styled them
+    with certain CSS rules. (bmo#2039504)
+  * Fixed an issue where the up and down buttons on number input
+    fields could overlap and hide the value when sites sized the
+    field to fit its contents. (bmo#2039315)
+  * Fixed an issue where sorting strings that include numbers could
+    produce an incorrect order on some websites and web
+    applications. (bmo#2027078)
+  * Fixed an issue where dropdown menus would not open for
+    `<select>` elements created inside an iframe and then moved
+    into the parent page. (bmo#2041720)
+
+-------------------------------------------------------------------
+Thu May 21 21:15:56 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 151.0.1
+  * Fixed a crash experienced by users with Intel Raptor Lake CPUs.
+    (bmo#1950764)
+  * Fixed an issue on Windows where some websites using WebSerial to
+    flash device firmware could fail unexpectedly. (bmo#2040754)
+- Mozilla Firefox 151.0
+  * https://www.firefox.com/en-US/firefox/151.0/releasenotes/
+  MFSA 2026-46 (bsc#1265212)
+  * CVE-2026-8945 (bmo#2003171)
+    Sandbox escape in Firefox and Firefox Focus for Android
   * CVE-2026-8946 (bmo#2029070)
     Incorrect boundary conditions in the Audio/Video: Web Codecs
     component
-  * CVE-2026-8388 (bmo#2036978)
-    Incorrect boundary conditions in the JavaScript Engine: JIT
-    component
   * CVE-2026-8947 (bmo#2038439)
     Use-after-free in the DOM: Bindings (WebIDL) component
-  * CVE-2026-8391 (bmo#2038575)
-    Other issue in the JavaScript Engine component
-  * CVE-2026-8401 (bmo#2038679)
-    Sandbox escape in the Profile Backup component
+  * CVE-2026-8948 (bmo#2038803)
+    Same-origin policy bypass in the DOM: Networking component
   * CVE-2026-8949 (bmo#1355639)
     Integer overflow in the Widget: Win32 component
   * CVE-2026-8950 (bmo#1965430)
     Same-origin policy bypass in the Networking: HTTP component
+  * CVE-2026-8951 (bmo#2018513)
+    Spoofing issue in the Toolbar component in Firefox for Android
+  * CVE-2026-8952 (bmo#2021727)
+    Privilege escalation in the Application Update component
   * CVE-2026-8953 (bmo#2029511)
     Sandbox escape due to use-after-free in the Disability Access
     APIs component
@@ -258,297 +574,379 @@ Tue May 19 12:41:51 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2026-8959 (bmo#2034754)
     Sandbox escape due to incorrect boundary conditions in the
     Widget: Win32 component
+  * CVE-2026-8960 (bmo#1940116)
+    Spoofing issue in WebExtensions
   * CVE-2026-8961 (bmo#1962625)
     Spoofing issue in the Form Autofill component
   * CVE-2026-8962 (bmo#2004804)
     Mitigation bypass in the DOM: Security component
+  * CVE-2026-8963 (bmo#2021222)
+    Spoofing issue in the Web Speech component
+  * CVE-2026-8964 (bmo#2025170)
+    Spoofing issue in the Popup Blocker component
+  * CVE-2026-8965 (bmo#2025740)
+    Information disclosure in the DOM: Security component
+  * CVE-2026-8966 (bmo#2025849)
+    Information disclosure in the IP Protection component
+  * CVE-2026-8967 (bmo#2027173)
+    Information disclosure in the Graphics: WebGPU component
   * CVE-2026-8968 (bmo#2030467)
     Denial-of-service due to invalid pointer in the Audio/Video:
     Web Codecs component
+  * CVE-2026-8969 (bmo#2031123)
+    Mitigation bypass in the DOM: Security component
   * CVE-2026-8970 (bmo#2032174)
     Privilege escalation in the Security component
-  * CVE-2026-8974 (bmo#1784128, bmo#1883230, bmo#1983677,
-    bmo#2022390, bmo#2023116, bmo#2023657, bmo#2024255,
-    bmo#2024418, bmo#2024441, bmo#2024447, bmo#2024966,
-    bmo#2025412, bmo#2025467, bmo#2025940, bmo#2025950,
-    bmo#2025956, bmo#2026284, bmo#2027247, bmo#2027255,
-    bmo#2027288, bmo#2027306, bmo#2027322, bmo#2027332,
-    bmo#2027333, bmo#2028266, bmo#2028292, bmo#2028319,
-    bmo#2028526, bmo#2028870, bmo#2028876, bmo#2028882,
-    bmo#2029062, bmo#2029309, bmo#2029414, bmo#2029422,
-    bmo#2029428, bmo#2029447, bmo#2029732, bmo#2029785,
-    bmo#2029793, bmo#2029813, bmo#2029899, bmo#2031028,
-    bmo#2031457, bmo#2032039, bmo#2033610, bmo#2033854,
-    bmo#2034498, bmo#2034628, bmo#2034978, bmo#2035966,
-    bmo#2036668, bmo#2036905, bmo#2036930)
-    Memory safety bugs fixed in Firefox ESR 140.11 and Firefox
-    151
+  * CVE-2026-8971 (bmo#2032604)
+    Same-origin policy bypass in the Networking: JAR component
+  * CVE-2026-8972 (bmo#2033275)
+    Privilege escalation in the WebRTC: Audio/Video component
+  * CVE-2026-8973 (bmo#1362365, bmo#1860538, bmo#1929005, bmo#1983353,
+    bmo#1998526, bmo#2023271, bmo#2023943, bmo#2024244, bmo#2024260,
+    bmo#2024443, bmo#2024665, bmo#2024774, bmo#2024916, bmo#2025346,
+    bmo#2025357, bmo#2025406, bmo#2025434, bmo#2025488, bmo#2025496,
+    bmo#2025942, bmo#2025947, bmo#2025968, bmo#2026279, bmo#2027159,
+    bmo#2027239, bmo#2027276, bmo#2027308, bmo#2027310, bmo#2027324,
+    bmo#2027329, bmo#2027363, bmo#2027381, bmo#2027382, bmo#2027383,
+    bmo#2028274, bmo#2028884, bmo#2029060, bmo#2029065, bmo#2029068,
+    bmo#2029281, bmo#2029293, bmo#2029297, bmo#2029303, bmo#2029439,
+    bmo#2029448, bmo#2029703, bmo#2029720, bmo#2029721, bmo#2029723,
+    bmo#2029770, bmo#2029771, bmo#2029782, bmo#2029818, bmo#2029885,
+    bmo#2030100, bmo#2030379, bmo#2030385, bmo#2030979, bmo#2031119,
+    bmo#2031122, bmo#2034119, bmo#2034791, bmo#2035209, bmo#2036666,
+    bmo#2037986)
+    Memory safety bugs fixed in Firefox 151
+  * CVE-2026-8974 (bmo#1784128, bmo#1883230, bmo#1983677, bmo#2022390,
+    bmo#2023116, bmo#2023657, bmo#2024255, bmo#2024418, bmo#2024441,
+    bmo#2024447, bmo#2024966, bmo#2025412, bmo#2025467, bmo#2025940,
+    bmo#2025950, bmo#2025956, bmo#2026284, bmo#2027247, bmo#2027255,
+    bmo#2027288, bmo#2027306, bmo#2027322, bmo#2027332, bmo#2027333,
+    bmo#2028266, bmo#2028292, bmo#2028319, bmo#2028526, bmo#2028870,
+    bmo#2028876, bmo#2028882, bmo#2029062, bmo#2029309, bmo#2029414,
+    bmo#2029422, bmo#2029428, bmo#2029447, bmo#2029732, bmo#2029785,
+    bmo#2029793, bmo#2029813, bmo#2029899, bmo#2031028, bmo#2031457,
+    bmo#2032039, bmo#2033610, bmo#2033854, bmo#2034498, bmo#2034628,
+    bmo#2034978, bmo#2035966, bmo#2036668, bmo#2036905, bmo#2036930)
+    Memory safety bugs fixed in Firefox ESR 140.11 and Firefox 151
   * CVE-2026-8975 (bmo#1860195, bmo#2029325, bmo#2029429,
     bmo#2029910, bmo#2035915, bmo#2038669, bmo#2038678)
     Memory safety bugs fixed in Firefox ESR 115.36, Firefox ESR
     140.11 and Firefox 151
-- Refresh mozilla-silence-no-return-type.patch
-- Remove now obsolete mozilla-bmo2031958.patch
+- requires NSS 3.123.1
+- rebase big endian patches
+- added mozilla-bmo2041150.patch to fix build with libproxy (bmo#2041150)
+- removed obsolete mozilla-bmo531915.patch
 
 -------------------------------------------------------------------
-Thu May  7 14:24:15 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Thu May  7 20:51:57 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Firefox Extended Support Release 140.10.2 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.10.2
-  https://www.mozilla.org/security/advisories/mfsa2026-41
-  MFSA 2026-41 (boo#1264378)
+- Mozilla Firefox 150.0.2
+  MFSA 2026-40 (bsc#1264378)
   * CVE-2026-8090 (bmo#2034352)
     Use-after-free in the DOM: Networking component
-  * CVE-2026-8091 (bmo#2029301)
-    Incorrect boundary conditions in the Audio/Video: Playback
-    component
-  * CVE-2026-8094 (bmo#2035939)
-    Other issue in the WebRTC component
-  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576,
-    bmo#2022722, bmo#2024439, bmo#2027883, bmo#2029463,
-    bmo#2030323, bmo#2032042, bmo#2032043, bmo#2033270,
-    bmo#2033637, bmo#2034422, bmo#2034496, bmo#2035879,
-    bmo#2036516)
+  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576, bmo#2022722,
+    bmo#2024439, bmo#2027883, bmo#2029463, bmo#2030323, bmo#2032042,
+    bmo#2032043, bmo#2033270, bmo#2033637, bmo#2034422, bmo#2034496,
+    bmo#2035879, bmo#2036516)
     Memory safety bugs fixed in Firefox ESR 115.35.2, Firefox ESR
     140.10.2 and Firefox 150.0.2
-- Refresh mozilla-libavcodec58_91.patch
-- Update MozillaFirefox.desktop from a current build in Factory
+  * CVE-2026-8093 (bmo#1981270, bmo#2027154, bmo#2028332, bmo#2029327,
+    bmo#2029428, bmo#2029894, bmo#2032189, bmo#2034837, bmo#2035968,
+    bmo#2036256)
+    Memory safety bugs fixed in Firefox 150.0.2
+  * Fixed an issue where websites on internal or corporate
+    networks that require a login prompt would show a blank page.
+    (bmo#2034752)
+  * Fixed an issue that prevented highlighting from
+    working on scanned images in the built-in PDF viewer. (bmo#2034980)
+  * Fixed an issue where the "New" badge persisted on
+    Split View menu items. (bmo#2027793)
+  * Fixed an issue that prevented some webcams from working
+    correctly in video calls. (bmo#2034722)
+  * Fixed an issue where a tab would crash when dragging and
+    dropping nested folders onto a webpage. (bmo#2030461)
+  * Improved how Firefox displays websites with advanced 3D
+    effects, fixing cases where parts of the page could
+    disappear or appear incorrectly. (bmo#2034283)
+  * Fixed an issue that could prevent Firefox’s local backup
+    feature from completing successfully. (bmo#2029240)
+  * Fixed an issue where the status and navigation bars would
+    flicker or show mismatched colors when editing a page’s
+    address. (bmo#2021596)
+  * Improved the appearance of search suggestions in the address
+    bar by preventing icons from appearing stretched or distorted.
+    (bmo#2035353)
 
 -------------------------------------------------------------------
-Mon May  4 15:11:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Apr 28 15:44:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Add patches to address glibc-2.43 related issues:
-  * mozilla-bmo1999625.patch
-  * mozilla-bmo2016618.patch
-
--------------------------------------------------------------------
-Fri May  1 08:54:47 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Add mozilla-bmo2031958.patch to fix incompatible pointer types
-  (bmo#2031958); this way we don't need to add
-  "-Wno-incompatible-pointer-types" to CFLAGS anymore.
-
--------------------------------------------------------------------
-Wed Apr 29 12:36:03 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Further tests have shown that the rule which llvm version should
-  be used, can be simplified: only on TW, Slowroll and Factory we
-  need to explicitly BuildRequire the llvm21 based packages, while
-  on all other (i.e. Leap) distribution versions we can stick with
-  the distro's default release of llvm.
-
--------------------------------------------------------------------
-Wed Apr 29 08:57:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Explicitly BuildIgnore: clang-tools to avoid pulling in the remaining
-  llvm22 packages. Also add BuildRequire for libclang13 provided by
-  the llvm version we use.
-
--------------------------------------------------------------------
-Tue Apr 28 13:56:41 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 140.10.1 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.10.1
-  https://www.mozilla.org/security/advisories/mfsa2026-36
-  MFSA 2026-36 (boo#1263110)
+- Mozilla Firefox 150.0.1
+  MFSA 2026-35 (boo#1263110)
   * CVE-2026-7320 (bmo#2027433)
     Information disclosure due to incorrect boundary conditions
     in the Audio/Video component
-  * CVE-2026-7321 (bmo#2029461)
-    Sandbox escape due to incorrect boundary conditions in the
-    WebRTC: Networking component
-  * CVE-2026-7322 (bmo#2021904, bmo#2022731, bmo#2027158,
-    bmo#2027733, bmo#2027973, bmo#2027976, bmo#2028231,
-    bmo#2028731, bmo#2028886, bmo#2029067, bmo#2029700,
-    bmo#2029724, bmo#2029806, bmo#2029814, bmo#2030108,
-    bmo#2030111, bmo#2031524, bmo#2031921, bmo#2032040)
+  * CVE-2026-7322 (bmo#2021904, bmo#2022731, bmo#2027158, bmo#2027733,
+    bmo#2027973, bmo#2027976, bmo#2028231, bmo#2028731, bmo#2028886,
+    bmo#2029067, bmo#2029700, bmo#2029724, bmo#2029806, bmo#2029814,
+    bmo#2030108, bmo#2030111, bmo#2031524, bmo#2031921, bmo#2032040)
     Memory safety bugs fixed in Firefox ESR 115.35.1, Firefox ESR
     140.10.1, Thunderbird ESR 140.10.1, Firefox 150.0.1 and
     Thunderbird 150.0.1
-  * CVE-2026-7323 (bmo#2028537, bmo#2029911, bmo#2031121,
-    bmo#2033602)
+  * CVE-2026-7323 (bmo#2028537, bmo#2029911, bmo#2031121, bmo#2033602)
     Memory safety bugs fixed in Firefox ESR 140.10.1, Thunderbird
     ESR 140.10.1, Firefox 150.0.1 and Thunderbird 150.0.1
-- Add "-Wno-incompatible-pointer-types" to CFLAGS to avoid an error
-  for mixing AVCodecParser with FFCodecParser in the latest additions
-  of Mozilla's vendored FFmpeg
+  * CVE-2026-7324 (bmo#2029419, bmo#2029717, bmo#2029769, bmo#2029886)
+    Memory safety bugs fixed in Firefox 150.0.1 and Thunderbird 150.0.1
+  * Fixed: Fixed an issue where Facebook and other websites might not
+    load properly for users with Bitdefender security software installed
+    (bmo#2034178)
+  * Fixed: Fixed an issue where denying a geolocation permission
+    prompt could cause Firefox to show the system permission
+    dialog again on a second attempt. (bmo#2034120)
+  * Fixed: Fixed an issue that prevented tabs from being added to
+    some older saved tab groups. (bmo#2031961)
+  * Fixed: Fixed a layout issue where some drop-down menus
+    expanded to display all list items at once. (bmo#2033117)
+- drop mozilla-bmo2031958.patch, included
+- requires NSS >= 3.122.2
 
 -------------------------------------------------------------------
-Mon Apr 27 08:41:54 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Mon Apr 27 12:18:31 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
-- Use clang19-devel on all distributions older than TW, Slowroll or
-  Factory. Since LLVM22 breaks building firefox-esr, restrict
-  clang-devel to clang21-devel on TW, Slowroll and Factory.
+- Fix failing builds (boo#1258744)
+  mozilla-bmo2030493.patch
 
 -------------------------------------------------------------------
-Tue Apr 21 12:42:20 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Wed Apr 22 05:46:04 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.10.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.10.0
-  https://www.mozilla.org/security/advisories/mfsa2026-32
-  MFSA 2026-32 (boo#1262230)
-  * MFSA-RESERVE-2026-2014596 (bmo#2014596)
+- Mozilla Firefox 150.0
+  * https://www.firefox.com/en-US/firefox/150.0/releasenotes
+  MFSA 2026-30 (bsc#1262230)
+  * CVE-2026-6746 (bmo#2014596)
     Use-after-free in the DOM: Core & HTML component
-  * MFSA-RESERVE-2026-2021769 (bmo#2021769)
+  * CVE-2026-6747 (bmo#2021769)
     Use-after-free in the WebRTC component
-  * MFSA-RESERVE-2026-2022604 (bmo#2022604)
+  * CVE-2026-6748 (bmo#2022604)
     Uninitialized memory in the Audio/Video: Web Codecs component
-  * MFSA-RESERVE-2026-2022610 (bmo#2022610)
+  * CVE-2026-6749 (bmo#2022610)
     Information disclosure due to uninitialized memory in the
     Graphics: Canvas2D component
-  * MFSA-RESERVE-2026-2023407 (bmo#2023407)
+  * CVE-2026-6750 (bmo#2023407)
     Privilege escalation in the Graphics: WebRender component
-  * MFSA-RESERVE-2026-2025883 (bmo#2025883)
+  * CVE-2026-6751 (bmo#2025883)
     Uninitialized memory in the Audio/Video: Web Codecs component
-  * MFSA-RESERVE-2026-2027499 (bmo#2027499)
+  * CVE-2026-6752 (bmo#2027499)
     Incorrect boundary conditions in the WebRTC component
-  * MFSA-RESERVE-2026-2027501 (bmo#2027501)
+  * CVE-2026-6753 (bmo#2027501)
     Incorrect boundary conditions in the WebRTC component
-  * MFSA-RESERVE-2026-2027541 (bmo#2027541)
+  * CVE-2026-6754 (bmo#2027541)
     Use-after-free in the JavaScript Engine component
-  * MFSA-RESERVE-2026-2013588 (bmo#2013588)
+  * CVE-2026-6755 (bmo#1880429)
+    Mitigation bypass in the DOM: postMessage component
+  * CVE-2026-6756 (bmo#1992585)
+    Mitigation bypass in Firefox for Android
+  * CVE-2026-6757 (bmo#2013588)
     Invalid pointer in the JavaScript: WebAssembly component
-  * MFSA-RESERVE-2026-2016164 (bmo#2016164)
+  * CVE-2026-6758 (bmo#2013619)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-6759 (bmo#2016164)
     Use-after-free in the Widget: Cocoa component
-  * MFSA-RESERVE-2026-2017857 (bmo#2017857)
+  * CVE-2026-6760 (bmo#2016923)
+    Mitigation bypass in the Networking: Cookies component
+  * CVE-2026-6761 (bmo#2017857)
     Privilege escalation in the Networking component
-  * MFSA-RESERVE-2026-2021080 (bmo#2021080)
+  * CVE-2026-6762 (bmo#2021080)
     Spoofing issue in the DOM: Core & HTML component
-  * MFSA-RESERVE-2026-2021666 (bmo#2021666)
+  * CVE-2026-6763 (bmo#2021666)
     Mitigation bypass in the File Handling component
-  * MFSA-RESERVE-2026-2022162 (bmo#2022162)
+  * CVE-2026-6764 (bmo#2022162)
     Incorrect boundary conditions in the DOM: Device Interfaces
     component
-  * MFSA-RESERVE-2026-2022419 (bmo#2022419)
+  * CVE-2026-6765 (bmo#2022419)
     Information disclosure in the Form Autofill component
-  * MFSA-RESERVE-2026-2023207 (bmo#2023207)
-    Incorrect boundary conditions in the Libraries component in
-    NSS
-  * MFSA-RESERVE-2026-2023209 (bmo#2023209)
+  * CVE-2026-6766 (bmo#2023207)
+    Incorrect boundary conditions in the Libraries component in NSS
+  * CVE-2026-6767 (bmo#2023209)
     Other issue in the Libraries component in NSS
-  * MFSA-RESERVE-2026-2023753 (bmo#2023753)
+  * CVE-2026-6768 (bmo#2023615)
+    Mitigation bypass in the Networking: Cookies component
+  * CVE-2026-6769 (bmo#2023753)
     Privilege escalation in the Debugger component
-  * MFSA-RESERVE-2026-2024220 (bmo#2024220)
+  * CVE-2026-6770 (bmo#2024220)
     Other issue in the Storage: IndexedDB component
-  * MFSA-RESERVE-2026-2025067 (bmo#2025067)
+  * CVE-2026-6771 (bmo#2025067)
     Mitigation bypass in the DOM: Security component
-  * MFSA-RESERVE-2026-2026089 (bmo#2026089)
-    Incorrect boundary conditions in the Libraries component in
-    NSS
-  * MFSA-RESERVE-2026-2021770 (bmo#2021770)
+  * CVE-2026-6772 (bmo#2026089)
+    Incorrect boundary conditions in the Libraries component in NSS
+  * CVE-2026-6773 (bmo#2015959)
+    Denial-of-service due to integer overflow in the Graphics:
+    WebGPU component
+  * CVE-2026-6774 (bmo#2016915)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-6775 (bmo#2021768)
+    Incorrect boundary conditions in the WebRTC component
+  * CVE-2026-6776 (bmo#2021770)
     Incorrect boundary conditions in the WebRTC: Networking
     component
-  * MFSA-RESERVE-2026-1 (bmo#1935995, bmo#1999158, bmo#2015952,
-    bmo#2021909, bmo#2022026, bmo#2022041, bmo#2022088,
-    bmo#2022276, bmo#2022335, bmo#2022338, bmo#2022373,
-    bmo#2022597, bmo#2022874, bmo#2023276, bmo#2023544,
-    bmo#2023551, bmo#2023599, bmo#2023608, bmo#2023814,
-    bmo#2024233, bmo#2024239, bmo#2024241, bmo#2024242,
-    bmo#2024250, bmo#2024251, bmo#2024343, bmo#2024422,
-    bmo#2024425, bmo#2024440, bmo#2024442, bmo#2024446,
-    bmo#2024458, bmo#2024463, bmo#2024478, bmo#2024650,
-    bmo#2024653, bmo#2024654, bmo#2024655, bmo#2024656,
-    bmo#2024661, bmo#2024662, bmo#2024668, bmo#2024919,
-    bmo#2025278, bmo#2025349, bmo#2025350, bmo#2025354,
-    bmo#2025360, bmo#2025363, bmo#2025370, bmo#2025379,
-    bmo#2025381, bmo#2025399, bmo#2025400, bmo#2025403,
-    bmo#2025407, bmo#2025415, bmo#2025420, bmo#2025427,
-    bmo#2025429, bmo#2025430, bmo#2025479, bmo#2025489,
-    bmo#2025493, bmo#2025497, bmo#2025502, bmo#2025515,
-    bmo#2025517, bmo#2025526, bmo#2025609, bmo#2025948,
-    bmo#2025949, bmo#2025951, bmo#2025953, bmo#2025955,
-    bmo#2025962, bmo#2025969, bmo#2025970, bmo#2025971,
-    bmo#2025973, bmo#2025976, bmo#2025977, bmo#2026280,
-    bmo#2026285, bmo#2026293, bmo#2026296, bmo#2026310,
-    bmo#2027237, bmo#2027260, bmo#2027268, bmo#2027277,
-    bmo#2027284, bmo#2027291, bmo#2027293, bmo#2027298,
-    bmo#2027330, bmo#2027342, bmo#2027345, bmo#2027359,
-    bmo#2027365, bmo#2027378, bmo#2027754, bmo#2027959,
-    bmo#2027962, bmo#2027964, bmo#2027971, bmo#2027974,
-    bmo#2027979, bmo#2027982, bmo#2027995, bmo#2028001,
-    bmo#2028267, bmo#2028268, bmo#2028275, bmo#2028288,
-    bmo#2028290, bmo#2028291, bmo#2028528, bmo#2028551,
-    bmo#2028627, bmo#2028879, bmo#2028889, bmo#2029061,
-    bmo#2029071, bmo#2029283, bmo#2029296, bmo#2029314,
-    bmo#2029323, bmo#2029411, bmo#2029423, bmo#2029424,
-    bmo#2029425, bmo#2029427, bmo#2029436, bmo#2029440,
-    bmo#2029449, bmo#2029450, bmo#2029458, bmo#2029462,
-    bmo#2029468, bmo#2029472, bmo#2029690, bmo#2029707,
-    bmo#2029708, bmo#2029728, bmo#2029802, bmo#2029896,
-    bmo#2029906, bmo#2030106, bmo#2030118, bmo#2030123,
-    bmo#2030135, bmo#2030230, bmo#2030320)
+  * CVE-2026-6777 (bmo#2022726)
+    Other issue in the Networking: DNS component
+  * CVE-2026-6778 (bmo#2022746)
+    Invalid pointer in the Audio/Video: Playback component
+  * CVE-2026-6779 (bmo#2023343)
+    Other issue in the JavaScript Engine component
+  * CVE-2026-6780 (bmo#2025179)
+    Denial-of-service in the Audio/Video: Playback component
+  * CVE-2026-6781 (bmo#2025583)
+    Denial-of-service in the Audio/Video: Playback component
+  * CVE-2026-6782 (bmo#2026571)
+    Information disclosure in the IP Protection component
+  * CVE-2026-6783 (bmo#2027564)
+    Incorrect boundary conditions, integer overflow in the
+    Audio/Video: Playback component
+  * CVE-2026-6784 (bmo#1536243, bmo#1745382, bmo#1851073, bmo#1893400,
+    bmo#1963301, bmo#2001319, bmo#2002899, bmo#2012436, bmo#2014435,
+    bmo#2016901, bmo#2019916, bmo#2020486, bmo#2020612, bmo#2020817,
+    bmo#2021788, bmo#2022051, bmo#2022367, bmo#2022431, bmo#2023302,
+    bmo#2023670, bmo#2024225, bmo#2024238, bmo#2024240, bmo#2024265,
+    bmo#2024367, bmo#2024369, bmo#2024424, bmo#2024760, bmo#2025281,
+    bmo#2025361, bmo#2025387, bmo#2025466, bmo#2025954, bmo#2025958,
+    bmo#2026278, bmo#2026292, bmo#2026297, bmo#2026378, bmo#2027148,
+    bmo#2027287, bmo#2027341, bmo#2027384, bmo#2027427, bmo#2027694,
+    bmo#2027993, bmo#2028009, bmo#2028270, bmo#2028416, bmo#2028524,
+    bmo#2029295, bmo#2029301, bmo#2029461, bmo#2029699, bmo#2029800,
+    bmo#2029801)
+    Memory safety bugs fixed in Firefox 150 and Thunderbird 150
+  * CVE-2026-6785 (bmo#1935995, bmo#1999158, bmo#2015952,
+    bmo#2021909, bmo#2022026, bmo#2022041, bmo#2022088, bmo#2022276,
+    bmo#2022335, bmo#2022338, bmo#2022373, bmo#2022597, bmo#2022874,
+    bmo#2023276, bmo#2023544, bmo#2023551, bmo#2023599, bmo#2023608,
+    bmo#2023814, bmo#2024233, bmo#2024239, bmo#2024241, bmo#2024242,
+    bmo#2024250, bmo#2024251, bmo#2024343, bmo#2024422, bmo#2024425,
+    bmo#2024440, bmo#2024442, bmo#2024446, bmo#2024458, bmo#2024463,
+    bmo#2024478, bmo#2024650, bmo#2024653, bmo#2024654, bmo#2024655,
+    bmo#2024656, bmo#2024661, bmo#2024662, bmo#2024668, bmo#2024919,
+    bmo#2025278, bmo#2025349, bmo#2025350, bmo#2025354, bmo#2025360,
+    bmo#2025363, bmo#2025370, bmo#2025379, bmo#2025381, bmo#2025399,
+    bmo#2025400, bmo#2025403, bmo#2025407, bmo#2025415, bmo#2025420,
+    bmo#2025427, bmo#2025429, bmo#2025430, bmo#2025479, bmo#2025489,
+    bmo#2025493, bmo#2025497, bmo#2025502, bmo#2025515, bmo#2025517,
+    bmo#2025526, bmo#2025609, bmo#2025948, bmo#2025949, bmo#2025951,
+    bmo#2025953, bmo#2025955, bmo#2025962, bmo#2025969, bmo#2025970,
+    bmo#2025971, bmo#2025973, bmo#2025976, bmo#2025977, bmo#2026280,
+    bmo#2026285, bmo#2026293, bmo#2026296, bmo#2026310, bmo#2027237,
+    bmo#2027260, bmo#2027268, bmo#2027277, bmo#2027284, bmo#2027291,
+    bmo#2027293, bmo#2027298, bmo#2027330, bmo#2027342, bmo#2027345,
+    bmo#2027359, bmo#2027365, bmo#2027378, bmo#2027754, bmo#2027959,
+    bmo#2027962, bmo#2027964, bmo#2027971, bmo#2027974, bmo#2027979,
+    bmo#2027982, bmo#2027995, bmo#2028001, bmo#2028267, bmo#2028268,
+    bmo#2028275, bmo#2028288, bmo#2028290, bmo#2028291, bmo#2028528,
+    bmo#2028551, bmo#2028627, bmo#2028879, bmo#2028889, bmo#2029061,
+    bmo#2029071, bmo#2029283, bmo#2029296, bmo#2029314, bmo#2029323,
+    bmo#2029411, bmo#2029423, bmo#2029424, bmo#2029425, bmo#2029427,
+    bmo#2029436, bmo#2029440, bmo#2029449, bmo#2029450, bmo#2029458,
+    bmo#2029462, bmo#2029468, bmo#2029472, bmo#2029690, bmo#2029707,
+    bmo#2029708, bmo#2029728, bmo#2029802, bmo#2029896, bmo#2029906,
+    bmo#2030106, bmo#2030118, bmo#2030123, bmo#2030135, bmo#2030230,
+    bmo#2030320)
     Memory safety bugs fixed in Firefox ESR 115.35, Firefox ESR
-    140.10, Thunderbird ESR 140.10, Firefox 150 and Thunderbird
-    150
-  * MFSA-RESERVE-2026-2 (bmo#2010727, bmo#2019004, bmo#2019224,
-    bmo#2019547, bmo#2020378, bmo#2022381, bmo#2022608,
-    bmo#2022785, bmo#2023120, bmo#2023128, bmo#2023140,
-    bmo#2023279, bmo#2023836, bmo#2023882, bmo#2023925,
-    bmo#2023950, bmo#2023959, bmo#2023965, bmo#2024243,
-    bmo#2024245, bmo#2024247, bmo#2024253, bmo#2024346,
-    bmo#2024357, bmo#2024416, bmo#2024420, bmo#2024429,
-    bmo#2024432, bmo#2024455, bmo#2024466, bmo#2024468,
-    bmo#2024476, bmo#2024664, bmo#2024666, bmo#2024669,
-    bmo#2024670, bmo#2024671, bmo#2024761, bmo#2024918,
-    bmo#2025292, bmo#2025332, bmo#2025348, bmo#2025384,
-    bmo#2025395, bmo#2025458, bmo#2025461, bmo#2025463,
-    bmo#2025481, bmo#2025483, bmo#2025485, bmo#2025494,
-    bmo#2025506, bmo#2025511, bmo#2025513, bmo#2025520,
-    bmo#2026277, bmo#2026282, bmo#2026288, bmo#2026289,
-    bmo#2026311, bmo#2026312, bmo#2026869, bmo#2027152,
-    bmo#2027161, bmo#2027238, bmo#2027261, bmo#2027269,
-    bmo#2027274, bmo#2027280, bmo#2027281, bmo#2027300,
-    bmo#2027302, bmo#2027331, bmo#2027339, bmo#2027340,
-    bmo#2027738, bmo#2027975, bmo#2028000, bmo#2028011,
-    bmo#2028289, bmo#2028525, bmo#2028728, bmo#2028887,
-    bmo#2028888, bmo#2028896, bmo#2029063, bmo#2029064,
-    bmo#2029290, bmo#2029291, bmo#2029294, bmo#2029300,
-    bmo#2029304, bmo#2029316, bmo#2029317, bmo#2029401,
-    bmo#2029415, bmo#2029430, bmo#2029457, bmo#2029727,
-    bmo#2029735, bmo#2029743, bmo#2029752, bmo#2029754,
-    bmo#2029776, bmo#2029809, bmo#2030324, bmo#2030370)
+    140.10, Thunderbird ESR 140.10, Firefox 150 and Thunderbird 150
+  * CVE-2026-6786 (bmo#2010727, bmo#2019004, bmo#2019224, bmo#2019547,
+    bmo#2020378, bmo#2022381, bmo#2022608, bmo#2022785, bmo#2023120,
+    bmo#2023128, bmo#2023140, bmo#2023279, bmo#2023836, bmo#2023882,
+    bmo#2023925, bmo#2023950, bmo#2023959, bmo#2023965, bmo#2024243,
+    bmo#2024245, bmo#2024247, bmo#2024253, bmo#2024346, bmo#2024357,
+    bmo#2024416, bmo#2024420, bmo#2024429, bmo#2024432, bmo#2024455,
+    bmo#2024466, bmo#2024468, bmo#2024476, bmo#2024664, bmo#2024666,
+    bmo#2024669, bmo#2024670, bmo#2024671, bmo#2024761, bmo#2024918,
+    bmo#2025292, bmo#2025332, bmo#2025348, bmo#2025384, bmo#2025395,
+    bmo#2025458, bmo#2025461, bmo#2025463, bmo#2025481, bmo#2025483,
+    bmo#2025485, bmo#2025494, bmo#2025506, bmo#2025511, bmo#2025513,
+    bmo#2025520, bmo#2026277, bmo#2026282, bmo#2026288, bmo#2026289,
+    bmo#2026311, bmo#2026312, bmo#2026869, bmo#2027152, bmo#2027161,
+    bmo#2027238, bmo#2027261, bmo#2027269, bmo#2027274, bmo#2027280,
+    bmo#2027281, bmo#2027300, bmo#2027302, bmo#2027331, bmo#2027339,
+    bmo#2027340, bmo#2027738, bmo#2027975, bmo#2028000, bmo#2028011,
+    bmo#2028289, bmo#2028525, bmo#2028728, bmo#2028887, bmo#2028888,
+    bmo#2028896, bmo#2029063, bmo#2029064, bmo#2029290, bmo#2029291,
+    bmo#2029294, bmo#2029300, bmo#2029304, bmo#2029316, bmo#2029317,
+    bmo#2029401, bmo#2029415, bmo#2029430, bmo#2029457, bmo#2029727,
+    bmo#2029735, bmo#2029743, bmo#2029752, bmo#2029754, bmo#2029776,
+    bmo#2029809, bmo#2030324, bmo#2030370)
     Memory safety bugs fixed in Firefox ESR 140.10, Thunderbird
     ESR 140.10, Firefox 150 and Thunderbird 150
+- requires NSS 3.122.1
+- rebased patches
+- added mozilla-bmo2031958.patch to fix incompatible pointer types
+  (bmo#2031958)
 
 -------------------------------------------------------------------
-Tue Apr  7 12:13:24 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Apr  7 05:09:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.9.1 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.9.1
-  https://www.mozilla.org/security/advisories/mfsa2026-27
-  MFSA 2026-27 (boo#1261663)
+- Mozilla Firefox 149.0.2
+  MFSA 2026-25
   * CVE-2026-5732 (bmo#2017867)
     Incorrect boundary conditions, integer overflow in the
     Graphics: Text component
-  * CVE-2026-5731 (bmo#2021894, bmo#2022225, bmo#2022252,
-    bmo#2022294, bmo#2023007, bmo#2023130, bmo#2023191,
-    bmo#2023364, bmo#2023829, bmo#2024074, bmo#2024417,
-    bmo#2024433, bmo#2024436, bmo#2024437, bmo#2024453,
-    bmo#2024461, bmo#2024462, bmo#2024472, bmo#2024474,
-    bmo#2024477, bmo#2025364, bmo#2025401, bmo#2025402,
-    bmo#2025472, bmo#2026287, bmo#2026299, bmo#2026305,
-    bmo#2026426)
+  * CVE-2026-5733 (bmo#2022554)
+    Incorrect boundary conditions in the Graphics: WebGPU component
+  * CVE-2026-5731 (bmo#2021894, bmo#2022225, bmo#2022252, bmo#2022294,
+    bmo#2023007, bmo#2023130, bmo#2023191, bmo#2023364, bmo#2023829,
+    bmo#2024074, bmo#2024417, bmo#2024433, bmo#2024436, bmo#2024437,
+    bmo#2024453, bmo#2024461, bmo#2024462, bmo#2024472, bmo#2024474,
+    bmo#2024477, bmo#2025364, bmo#2025401, bmo#2025402, bmo#2025472,
+    bmo#2026287, bmo#2026299, bmo#2026305, bmo#2026426)
     Memory safety bugs fixed in Firefox ESR 115.34.1, Firefox ESR
     140.9.1, Thunderbird ESR 140.9.1, Firefox 149.0.2 and
     Thunderbird 149.0.2
-  * CVE-2026-5734 (bmo#2022369, bmo#2023026, bmo#2023545,
-    bmo#2023555, bmo#2023958, bmo#2025422, bmo#2025468,
-    bmo#2025492, bmo#2025505)
+  * CVE-2026-5734 (bmo#2022369, bmo#2023026, bmo#2023545, bmo#2023555,
+    bmo#2023958, bmo#2025422, bmo#2025468, bmo#2025492, bmo#2025505)
     Memory safety bugs fixed in Firefox ESR 140.9.1, Thunderbird
     ESR 140.9.1, Firefox 149.0.2 and Thunderbird 149.0.2
+  * CVE-2026-5735 (bmo#2025475, bmo#2025477)
+    Memory safety bugs fixed in Firefox 149.0.2 and Thunderbird
+    149.0.2
+  * Enterprise: Introduced a new enterprise policy that allows
+    administrators to directly manage and control AI-related
+    features within Firefox. (bmo#2019983)
+  * Enterprise: Fixed an issue where enterprise policies for the
+    browser homepage and start page were not being applied
+    correctly. (bmo#2027888)
+  * Enterprise: Introduced a new enterprise policy that allows
+    administrators to prevent the built-in VPN and IP protection
+    features from being available to users. (bmo#2022365)
+  * Fixed: Fixed an issue where certain parts of web pages, such
+    as drop-down menus and specific styles, did not appear
+    correctly when printing. (bmo#2026109)
+  * Fixed: Fixed an issue where some website error pages
+    displayed generic connection messages instead of the specific
+    error code and description provided by the server. (bmo#2023800)
+  * Fixed: Fixed a crash that occurred when using certain
+    security keys or WebAuthn features for two-factor
+    authentication. (bmo#2026688)
+  * Fixed: Fixed an issue on Linux where the browser toolbar
+    could become unresponsive to mouse clicks after dragging a
+    tab when using Wayland. (bmo#2022238)
+  * Fixed: Fixed a layout issue where text inside certain
+    graphics (SVG) appeared shifted or misaligned from its
+    intended position. (bmo#2024647)
+  * Fixed: Fixed an issue where the "Send to device" option
+    failed to work when used from the Open Tabs section in
+    Firefox View. (bmo#2023201)
 
 -------------------------------------------------------------------
-Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Fri Mar 27 15:12:04 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Firefox Extended Support Release 140.9.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.9
-  https://www.mozilla.org/security/advisories/mfsa2026-22
-  MFSA 2026-22 (boo#1260083)
+- Building on Leap definitely needs to be clang based; define
+  clang_build appropriately. To make clang find a suitable STL
+  library, explicitly BuildRequire libstdc++6-devel-gcc?? which
+  corresponds to the version of which gcc would be used.
+
+-------------------------------------------------------------------
+Thu Mar 26 08:29:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 149.0
+  https://www.firefox.com/en-US/firefox/149.0/releasenotes
+  MFSA 2026-20 (bsc#1260083)
   * CVE-2026-4684 (bmo#2011129)
     Race condition, use-after-free in the Graphics: WebRender
     component
@@ -597,8 +995,14 @@ Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     Mitigation bypass in the Networking: HTTP component
   * CVE-2026-4701 (bmo#2009303)
     Use-after-free in the JavaScript Engine component
+  * CVE-2026-4722 (bmo#2010097)
+    Privilege escalation in the IPC component
   * CVE-2026-4702 (bmo#2013560)
     JIT miscompilation in the JavaScript Engine component
+  * CVE-2026-4723 (bmo#2013573)
+    Use-after-free in the JavaScript Engine component
+  * CVE-2026-4724 (bmo#2014865)
+    Undefined behavior in the Audio/Video component
   * CVE-2026-4704 (bmo#2014868)
     Denial-of-service in the WebRTC: Signaling component
   * CVE-2026-4705 (bmo#2014873)
@@ -611,13 +1015,16 @@ Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     component
   * CVE-2026-4708 (bmo#2015268)
     Incorrect boundary conditions in the Graphics component
-  * CVE-2026-4709 (bmo#2016329)
+  * CVE-2026-4709 (bmo#2016329, bmo#2016342)
     Incorrect boundary conditions in the Audio/Video: GMP
     component
   * CVE-2026-4710 (bmo#2016370)
     Incorrect boundary conditions in the Audio/Video component
   * CVE-2026-4711 (bmo#2017002)
     Use-after-free in the Widget: Cocoa component
+  * CVE-2026-4725 (bmo#2017108)
+    Sandbox escape due to use-after-free in the Graphics:
+    Canvas2D component
   * CVE-2026-4712 (bmo#2017666)
     Information disclosure in the Widget: Cocoa component
   * CVE-2026-4713 (bmo#2018113)
@@ -631,8 +1038,14 @@ Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     JavaScript Engine component
   * CVE-2026-4717 (bmo#2021695)
     Privilege escalation in the Netmonitor component
+  * CVE-2026-4726 (bmo#1955311)
+    Denial-of-service in the XML component
   * CVE-2025-59375 (bmo#1988467)
     Denial-of-service in the XML component
+  * CVE-2026-4727 (bmo#2008112)
+    Denial-of-service in the Libraries component in NSS
+  * CVE-2026-4728 (bmo#2013179)
+    Spoofing issue in the Privacy: Anti-Tracking component
   * CVE-2026-4718 (bmo#2014864)
     Undefined behavior in the WebRTC: Signaling component
   * CVE-2026-4719 (bmo#2016367)
@@ -641,6 +1054,9 @@ Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#2022567, bmo#2022733)
     Memory safety bugs fixed in Firefox ESR 140.9, Thunderbird
     ESR 140.9, Firefox 149 and Thunderbird 149
+  * CVE-2026-4729 (bmo#1944033, bmo#1997282, bmo#2009213,
+    bmo#2011412, bmo#2021925, bmo#2022034)
+    Memory safety bugs fixed in Firefox 149 and Thunderbird 149
   * CVE-2026-4721 (bmo#2013762, bmo#2015291, bmo#2016591,
     bmo#2016661, bmo#2016664, bmo#2017303, bmo#2017894,
     bmo#2018090, bmo#2018196, bmo#2018379, bmo#2019112,
@@ -648,36 +1064,84 @@ Tue Mar 24 07:53:07 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#2022676)
     Memory safety bugs fixed in Firefox ESR 115.34, Firefox ESR
     140.9, Thunderbird ESR 140.9, Firefox 149 and Thunderbird 149
+- requires NSS >= 3.121
+- removed obsolete mozilla-breakpad.patch
+- build using rust 1.93
+- fix the .spec file to not fail when trying to remove a non
+  existing firefox-l10n.js during installation
 
 -------------------------------------------------------------------
-Tue Feb 24 13:56:01 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Mar 19 09:58:02 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
-- Firefox Extended Support Release 140.8.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.8
-  https://www.mozilla.org/security/advisories/mfsa2026-15
-  MFSA 2026-15 (boo#1258568)
-  * CVE-2026-2757 (bmo#2001637)
-    Incorrect boundary conditions in the WebRTC: Audio/Video
+- Fix PGO builds with GCC
+  * add mozilla-sandbox-lto.patch
+
+-------------------------------------------------------------------
+Sun Mar 15 21:38:02 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Use current Clang on Tumbleweed.
+
+-------------------------------------------------------------------
+Tue Mar 10 19:52:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 148.0.2
+  * https://www.firefox.com/en-US/firefox/148.0.2/releasenotes
+    MFSA 2026-19 (boo#)
+  * CVE-2026-3846 (bmo#2018400)
+    Same-origin policy bypass in the CSS Parsing and Computation
     component
+  * CVE-2026-3847 (bmo#2017513, bmo#2017622, bmo#2019341)
+    Memory safety bugs fixed in Firefox 148.0.2
+  * Fixed an issue where searches entered in the Firefox Home
+    search field were incorrectly redirected to the address bar for
+    some users who had disabled search handoff behavior via
+    advanced settings. (bmo#2017049)
+  * Fixed an issue where some web-based rich text editors stopped
+    applying formatting, such as bold or italic. (bmo#2020927)
+  * Fixed an issue where videos could autoplay unexpectedly on
+    YouTube despite autoplay being blocked, particularly impacting
+    screen reader users. (bmo#2020233)
+  * Fixed an issue that caused some absolutely positioned elements
+    meant to be centered, for example, using `margin: auto with
+    inset: 0`, to appear left-aligned on initial load.
+    (bmo#2017440)
+  * Fixed an issue where the “Switch to Tab” suggestion in the
+    address bar appeared blank for pages without a title.
+    (bmo#2020341)
+
+-------------------------------------------------------------------
+Mon Feb 23 19:35:36 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 148.0
+  * https://www.firefox.com/en-US/firefox/148.0/releasenotes
+  MFSA 2026-13 (bsc#1258568)
+  * CVE-2026-2757 (bmo#2001637)
+    Incorrect boundary conditions in the WebRTC: Audio/Video component
+  * CVE-2026-2794 (bmo#2008365)
+    Information disclosure due to uninitialized memory in Firefox
+    and Firefox Focus for Android
   * CVE-2026-2758 (bmo#2009608)
     Use-after-free in the JavaScript: GC component
   * CVE-2026-2759 (bmo#2010933)
-    Incorrect boundary conditions in the Graphics: ImageLib
-    component
+    Incorrect boundary conditions in the Graphics: ImageLib component
+  * CVE-2026-2795 (bmo#2010940)
+    Use-after-free in the JavaScript: GC component
   * CVE-2026-2760 (bmo#2011062)
     Sandbox escape due to incorrect boundary conditions in the
     Graphics: WebRender component
   * CVE-2026-2761 (bmo#2011063)
     Sandbox escape in the Graphics: WebRender component
   * CVE-2026-2762 (bmo#2011649)
-    Integer overflow in the JavaScript: Standard Library
-    component
+    Integer overflow in the JavaScript: Standard Library component
   * CVE-2026-2763 (bmo#2012018)
     Use-after-free in the JavaScript Engine component
   * CVE-2026-2764 (bmo#2012608)
     JIT miscompilation, use-after-free in the JavaScript Engine:
     JIT component
+  * CVE-2026-2796 (bmo#2013165)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-2797 (bmo#2013561)
+    Use-after-free in the JavaScript: GC component
   * CVE-2026-2765 (bmo#2013562)
     Use-after-free in the JavaScript Engine component
   * CVE-2026-2766 (bmo#2013583)
@@ -686,8 +1150,12 @@ Tue Feb 24 13:56:01 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     Use-after-free in the JavaScript: WebAssembly component
   * CVE-2026-2768 (bmo#2014101)
     Sandbox escape in the Storage: IndexedDB component
+  * CVE-2026-2798 (bmo#2014136)
+    Use-after-free in the DOM: Core & HTML component
   * CVE-2026-2769 (bmo#2014550)
     Use-after-free in the Storage: IndexedDB component
+  * CVE-2026-2799 (bmo#2014551)
+    Use-after-free in the DOM: Core & HTML component
   * CVE-2026-2770 (bmo#2014585)
     Use-after-free in the DOM: Bindings (WebIDL) component
   * CVE-2026-2771 (bmo#2014593)
@@ -709,67 +1177,122 @@ Tue Feb 24 13:56:01 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     Sandbox escape due to incorrect boundary conditions in the
     DOM: Core & HTML component
   * CVE-2026-2779 (bmo#1164141)
-    Incorrect boundary conditions in the Networking: JAR
-    component
+    Incorrect boundary conditions in the Networking: JAR component
+  * CVE-2026-2800 (bmo#1988145)
+    Spoofing issue in the WebAuthn component in Firefox for Android
   * CVE-2026-2780 (bmo#2007829)
     Privilege escalation in the Netmonitor component
   * CVE-2026-2781 (bmo#2009552)
     Integer overflow in the Libraries component in NSS
+  * CVE-2026-2801 (bmo#2009901)
+    Incorrect boundary conditions in the JavaScript: WebAssembly
+    component
   * CVE-2026-2782 (bmo#2010743)
     Privilege escalation in the Netmonitor component
   * CVE-2026-2783 (bmo#2010943)
     Information disclosure due to JIT miscompilation in the
     JavaScript Engine: JIT component
+  * CVE-2026-2802 (bmo#2011069)
+    Race condition in the JavaScript: GC component
+  * CVE-2026-2803 (bmo#2012012)
+    Information disclosure, mitigation bypass in the Settings UI
+    component
   * CVE-2026-2784 (bmo#2012984)
     Mitigation bypass in the DOM: Security component
   * CVE-2026-2785 (bmo#2013549)
     Invalid pointer in the JavaScript Engine component
+  * CVE-2026-2804 (bmo#2013584)
+    Use-after-free in the JavaScript: WebAssembly component
   * CVE-2026-2786 (bmo#2013612)
     Use-after-free in the JavaScript Engine component
+  * CVE-2026-2805 (bmo#2014549)
+    Invalid pointer in the DOM: Core & HTML component
   * CVE-2026-2787 (bmo#2014560)
     Use-after-free in the DOM: Window and Location component
   * CVE-2026-2788 (bmo#2014824)
-    Incorrect boundary conditions in the Audio/Video: GMP
-    component
+    Incorrect boundary conditions in the Audio/Video: GMP component
   * CVE-2026-2789 (bmo#2015179)
     Use-after-free in the Graphics: ImageLib component
+  * CVE-2026-2806 (bmo#2006199)
+    Uninitialized memory in the Graphics: Text component
   * CVE-2026-2790 (bmo#2008426)
     Same-origin policy bypass in the Networking: JAR component
   * CVE-2026-2791 (bmo#2015220)
     Mitigation bypass in the Networking: Cache component
-  * CVE-2026-2792 (bmo#2008912, bmo#2010050, bmo#2010275,
-    bmo#2012331)
+  * CVE-2026-2807 (bmo#1756056, bmo#1999402, bmo#2004872,
+    bmo#2006037, bmo#2012855)
+    Memory safety bugs fixed in Firefox 148 and Thunderbird 148
+  * CVE-2026-2792 (bmo#2008912, bmo#2010050, bmo#2010275, bmo#2012331)
     Memory safety bugs fixed in Firefox ESR 140.8, Thunderbird
     ESR 140.8, Firefox 148 and Thunderbird 148
   * CVE-2026-2793 (bmo#2015196, bmo#2016423, bmo#2016498)
     Memory safety bugs fixed in Firefox ESR 115.33, Firefox ESR
     140.8, Thunderbird ESR 140.8, Firefox 148 and Thunderbird 148
+- requires NSS 3.120.1
+- added mozilla-breakpad.patch to fix build
 
 -------------------------------------------------------------------
-Mon Feb 16 10:29:19 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Feb 17 11:46:38 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.7.1 ESR
-  * Fixed: Security fix.
-- Mozilla Firefox ESR 140.7.1
-  https://www.mozilla.org/security/advisories/mfsa2026-10
-  MFSA 2026-10 (boo#???????)
+- Mozilla Firefox 147.0.4
+  * Fixed an issue that could cause the New Tab Page to appear
+    blank for some users (bmo#2014616)
+  MFSA 2026-10 (bsc#1258231)
   * CVE-2026-2447 (bmo#2014390)
     Heap buffer overflow in libvpx
 
 -------------------------------------------------------------------
-Sun Feb  8 12:50:09 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Feb  8 16:40:46 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
-  build.
+- Mozilla Firefox 147.0.3
+  * Interoperability improvements for the CSS anchor positioning
+    and Navigation web APIs
+  * Fix a regression where `position: sticky` elements on some
+    webpages could appear stuck or fail to update while
+    mousewheel-scrolling after certain `:hover` interactions
+    (bmo#2010481)
+  * Fix an issue where the Firefox Developer Tools could fail to
+    re-open after using the Inspector’s node picker and reloading
+    a page containing cross-origin iframes (bmo#2003810)
+  * Fix an issue where the DNS over HTTPS provider settings section
+    could appear as a blank box, preventing users from seeing the
+    current setting or changing it (bmo#2010501)
 
 -------------------------------------------------------------------
-Tue Jan 13 08:08:33 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+Wed Jan 28 20:36:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.7.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.7
-  https://www.mozilla.org/security/advisories/mfsa2026-03
-  MFSA 2026-03 (boo#1256340)
+- Mozilla Firefox 147.0.2
+  * Resolved various issues with missing or impaired browser
+    functionality when using XDG Base Directories on Linux. (bmo#2011300)
+  * Fixed an issue causing excess passkey prompts to appear when
+    logging into some sites. (bmo#2010919)
+  * Fixed an issue that could lead to sites being incorrectly
+    flagged as malicious by SafeBrowsing. (bmo#2010956)
+  MFSA 2026-06 (bsc#1257363)
+  * CVE-2026-24868 (bmo#2007302)
+    Mitigation bypass in the Privacy: Anti-Tracking component
+  * CVE-2026-24869 (bmo#2008698)
+    Use-after-free in the Layout: Scrolling and Overflow component
+
+-------------------------------------------------------------------
+Tue Jan 20 17:52:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 147.0.1
+  * Fixed compatibility problems with websites that use the new
+    Compression Dictionaries technology, such as ChatGPT, by
+    temporarily disabling the feature. (bmo#2010712)
+  * Fixed an issue where an unnecessary empty directory was created
+    on Linux systems. (bmo#2001887)
+  * Fixed an issue where time formats could cause certain
+    websites to display incorrectly. (bmo#2010411)
+- drop mozilla-bmo2008777.patch, included
+
+-------------------------------------------------------------------
+Sun Jan 11 08:55:43 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 147.0
+  https://www.firefox.com/en-US/firefox/147.0/releasenotes
+  MFSA 2026-01 (bsc#1256340)
   * CVE-2026-0877 (bmo#1999257)
     Mitigation bypass in the DOM: Security component
   * CVE-2026-0878 (bmo#2003989)
@@ -781,10 +1304,10 @@ Tue Jan 13 08:08:33 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2026-0880 (bmo#2005014)
     Sandbox escape due to integer overflow in the Graphics
     component
+  * CVE-2026-0881 (bmo#2005845)
+    Sandbox escape in the Messaging System component
   * CVE-2026-0882 (bmo#1924125)
     Use-after-free in the IPC component
-  * CVE-2025-14327 (bmo#1970743)
-    Spoofing issue in the Downloads Panel component
   * CVE-2026-0883 (bmo#1989340)
     Information disclosure in the Networking component
   * CVE-2026-0884 (bmo#2003588)
@@ -796,6 +1319,10 @@ Tue Jan 13 08:08:33 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2026-0887 (bmo#2006500)
     Clickjacking issue, information disclosure in the PDF Viewer
     component
+  * CVE-2026-0888 (bmo#1985996)
+    Information disclosure in the XML component
+  * CVE-2026-0889 (bmo#1999084)
+    Denial-of-service in the DOM: Service Workers component
   * CVE-2026-0890 (bmo#2005081)
     Spoofing issue in the DOM: Copy & Paste and Drag & Drop
     component
@@ -803,17 +1330,45 @@ Tue Jan 13 08:08:33 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#2003278)
     Memory safety bugs fixed in Firefox ESR 140.7, Thunderbird
     ESR 140.7, Firefox 147 and Thunderbird 147
+  * CVE-2026-0892 (bmo#1986912, bmo#1996718, bmo#1999633,
+    bmo#2001081, bmo#2004443)
+    Memory safety bugs fixed in Firefox 147 and Thunderbird 147
+- requires NSS >= 3.119
+- Added upstream patch mozilla-bmo2008777.patch to fix KDE crash (boo#1256513)
 
 -------------------------------------------------------------------
-Thu Dec 11 20:59:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Dec 18 17:45:32 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-* Remove the Build1 tag from the last changes entry; no other change *
+- Mozilla Firefox 146.0.1
+  https://www.firefox.com/en-US/firefox/146.0.1/releasenotes/
+  MFSA 2025-98 (boo#1255367)
+  * CVE-2025-14860 (bmo#2000597)
+    Use-after-free in the Disability Access APIs component
+  * CVE-2025-14861 (bmo#1996570, bmo#1999700)
+    Memory safety bugs fixed in Firefox 146.0.
+  * Improved overall stability by fixing crashes related
+    to browsing, graphics, and accessibility features.
+    (bmo#2001160, bmo#1998185, bmo#1998188)
+  * Fixed an issue where fingerprinting protection caused
+    incorrect font rendering on popular websites. (bmo#2000429)
+  * Fixed crashes related to media playback and GMP process
+    shutdown. (bmo#2002697)
+  * Fixed an issue where desktop profile shortcuts were being
+    unintentionally removed when changing copied profile
+    settings. (bmo#1998209)
+  * Improved sidebar text contrast when using vertical tabs with
+    certain themes. (bmo#2006091)
+  * When restoring from a backup, the restore success message will
+    appear over the new tab page instead of one of the tabs
+    restored from a backup, to avoid cases where the restored tab
+    canceled the restore success message. (bmo#2003307)
 
-- Firefox Extended Support Release 140.6.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.6
-  https://www.mozilla.org/security/advisories/mfsa2025-94
-  MFSA 2025-94 (boo#1254551)
+-------------------------------------------------------------------
+Tue Dec  9 06:51:14 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 146.0
+  https://www.firefox.com/en-US/firefox/146.0/releasenotes/
+  MFSA 2025-92 (bsc#1254551)
   * CVE-2025-14321 (bmo#1992760)
     Use-after-free in the WebRTC: Signaling component
   * CVE-2025-14322 (bmo#1996473)
@@ -825,6 +1380,10 @@ Thu Dec 11 20:59:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     JIT miscompilation in the JavaScript Engine: JIT component
   * CVE-2025-14325 (bmo#1998050)
     JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-14326 (bmo#1840666)
+    Use-after-free in the Audio/Video: GMP component
+  * CVE-2025-14327 (bmo#1970743)
+    Spoofing issue in the Downloads Panel component
   * CVE-2025-14328 (bmo#1996761)
     Privilege escalation in the Netmonitor component
   * CVE-2025-14329 (bmo#1997018)
@@ -833,108 +1392,251 @@ Thu Dec 11 20:59:32 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     JIT miscompilation in the JavaScript Engine: JIT component
   * CVE-2025-14331 (bmo#2000218)
     Same-origin policy bypass in the Request Handling component
+  * CVE-2025-14332 (bmo#1963153, bmo#1985058, bmo#1995637, bmo#1997118)
+    Memory safety bugs fixed in Firefox 146 and Thunderbird 146
   * CVE-2025-14333 (bmo#1966501, bmo#1997639)
     Memory safety bugs fixed in Firefox ESR 140.6, Thunderbird
     ESR 140.6, Firefox 146 and Thunderbird 146
-- BuildRequires: cargo1.86 and rust1.86
-- BuildRequires: clang19-devel on Leap 15.6
+- requires
+  NPSR 4.38.2
+  NSS 3.118
+  rust-cbindgen 0.29.1
+- switched back using gcc
+- rebased patches
 
 -------------------------------------------------------------------
-Tue Dec  9 08:53:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Nov 30 09:18:17 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Firefox Extended Support Release 140.6.0 ESR Build1
+- If clang_build is set, ensure to define CC and CXX accordingly.
+- Use clang19-devel on Leap.
+
+-------------------------------------------------------------------
+Wed Nov 26 19:23:29 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 145.0.2
+  * Fixed an issue that prevented typing in Baidu’s search box when
+    using Chinese IMEs on Windows. (bmo#2000479)
+
+-------------------------------------------------------------------
+Sat Nov 22 21:07:38 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 145.0.1
+  * Fixed: Fixed an issue causing breakage on sites using
+    Three.js. (bmo#1995939)
+  * Fixed: Fixed Web compatibility issues with Rogers. Rogers
+    customers would see a broken iframe with "Firefox Can’t Open
+    This Page" when viewing bills, rather than the billing info.
+    (bmo#1996823)
+  * Fixed: Fixed an issue in the Web Developer Tools preventing
+    copy all or save all requests as HAR. (bmo#1995694)
+
+-------------------------------------------------------------------
+Sun Nov  9 13:23:48 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 145.0
+  * New: Add, edit, and delete comments to make your own notes in
+    PDFs (summaries, questions, tasks, etc.). The comment sidebar
+    helps you scan all your comments and quickly jump to them,
+    which is handy for long or heavily marked-up PDFs.
+  * New: This version introduces a new phase of privacy
+    protections, building on our research on reducing browser
+    fingerprinting. These new defenses cut the percentage of
+    users seen as unique almost in half, ensuring a safer and
+    more private browsing experience in Private Browsing or when
+    using *Enhanced Tracking Protection* set to *Strict*.
+  * New: Need a reminder of what tabs are in a group? Hover over
+    the tab group name to get a preview of the tabs inside
+    without opening it. (bmo#1992228)
+  * New: You can now access and manage your saved passwords right
+    from the sidebar—no need to open a new tab or window. Stay on
+    the page you’re on and get to your logins faster.
+  * New: Copy Link to Highlight allows users to share arbitrary
+    sections of a page with others by copying a link through the
+    context menu with a given selection
+  * New: The Translations feature has an improved experience when
+    translating between languages with different script
+    directions.
+  * New: New brand-inspired wallpapers are available for New Tab
+    on desktop, with versions for both light and dark mode.
+  * New: With the new Open links from apps next to your active
+    tab setting, you can have links from other applications open
+    next to your active tab instead of at the end of the tab
+    strip.
+  * New: Enhanced Bounce Tracking Protection’s stateless mode is
+    now enabled by default in ETP Strict, blocking more advanced
+    tracking techniques based on redirection
+  * New: For most Windows users, the existing desktop shortcut
+    for launching Firefox has been replaced with the desktop
+    launcher, a small program that will launch Firefox if it is
+    installed, but if it is not installed will prompt the user to
+    install Firefox. This will provide an easy installation point
+    for Firefox users who acquire a new Windows device, where
+    Firefox will not be installed by default, but the desktop
+    launcher program may have synced via OneDrive or other cloud
+    storage product. Learn more.
+  * Changed: Firefox no longer supports 32-bit Linux systems. We
+    recommend installing the 64-bit version for continued updates
+    and support.
+  * Changed: Horizontal tabs are now slightly more rounded to
+    match the look of vertical tabs. Buttons and text inputs,
+    including the address bar, have also been updated for
+    consistency. (bmo#1988794)
+  * Changed: When no extensions are installed, clicking the
+    Extensions button now shows a message highlighting how
+    extensions can enhance your browsing, with links to the
+    Firefox Add-ons store. (bmo#1778684)
+  * Changed: Local translation models are now compressed with
+    Zstandard, reducing download sizes and on-device storage
+    consumption. As always, all Firefox translations happen
+    securely and privately on your local device, unlike other
+    browsers that translate using cloud services.
+  * Changed: We updated default automation preferences to better
+    support Agentic browsing, reducing the steps agents need to
+    complete a task and chances for the agent to get stuck.
+    (bmo#1991970)
+  * HTML5: Support has been added for the `Atomics.waitAsync`
+    proposal, which is a non-blocking, asynchronous version of
+    `Atomics.wait`. This allow synchronization of threads based
+    upon the value in a shared memory location, for more details
+    please consult our MDN documentation.
+  * HTML5: Firefox now supports the new `Integrity-Policy` header
+    for enforcing sub-resource integrity for scripts. Further
+    implementation of this header is underway.
+  * HTML5: Added Matroska support for the most commonly used
+    codecs: AVC, HEVC, VP8, VP9, AV1, AAC, Opus, and Vorbis.
+    (bmo#1991752)
+  * HTML5: The text-autospace property is now supported, allowing
+    automatic spacing adjustments between characters from
+    different scripts.
+  * HTML5: The WebGPU DOM API (spec; MDN) is now available on
+    macOS 26 (Tahoe) on Apple Silicon. For details, see the
+    Mozilla Graphics Team Blog.
+  * Developer: Microsoft UI Automation phased release rollout at
+    100%. Microsoft UI Automation is the new accessibility
+    framework for Microsoft Windows. This will provide better
+    assistive technology (AT) support and performance on Windows
+    for current and future assistive technologies.
+  * Enterprise: You can find information about policy updates and
+    enterprise specific bug fixes in the Firefox for Enterprise
+    145 Release Notes.
   * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.6
-  https://www.mozilla.org/security/advisories/mfsa2025-94
-  MFSA 2025-94 (boo#1254551)
-  * CVE-2025-14321 (bmo#1992760)
-    Use-after-free in the WebRTC: Signaling component
-  * CVE-2025-14322 (bmo#1996473)
-    Sandbox escape due to incorrect boundary conditions in the
-    Graphics: CanvasWebGL component
-  * CVE-2025-14323 (bmo#1996555)
-    Privilege escalation in the DOM: Notifications component
-  * CVE-2025-14324 (bmo#1996840)
-    JIT miscompilation in the JavaScript Engine: JIT component
-  * CVE-2025-14325 (bmo#1998050)
-    JIT miscompilation in the JavaScript Engine: JIT component
-  * CVE-2025-14328 (bmo#1996761)
-    Privilege escalation in the Netmonitor component
-  * CVE-2025-14329 (bmo#1997018)
-    Privilege escalation in the Netmonitor component
-  * CVE-2025-14330 (bmo#1997503)
-    JIT miscompilation in the JavaScript Engine: JIT component
-  * CVE-2025-14331 (bmo#2000218)
-    Same-origin policy bypass in the Request Handling component
-  * CVE-2025-14333 (bmo#1966501, bmo#1997639)
-    Memory safety bugs fixed in Firefox ESR 140.6, Thunderbird
-    ESR 140.6, Firefox 146 and Thunderbird 146
-- BuildRequires: cargo1.86 and rust1.86
-- BuildRequires: clang19-devel on Leap 15.6
-
--------------------------------------------------------------------
-Thu Nov 13 09:49:24 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
-  build.
-
--------------------------------------------------------------------
-Tue Nov 11 06:59:11 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 140.5.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.5
-  https://www.mozilla.org/security/advisories/mfsa2025-88
-  MFSA 2025-88 (boo#1253188)
-  * MFSA-RESERVE-2025-1991458 (bmo#1991458)
+  MFSA 2025-87 (bsc#1253188)
+  * CVE-2025-13021 (bmo#1986431)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13022 (bmo#1988488)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13012 (bmo#1991458)
     Race condition in the Graphics component
-  * MFSA-RESERVE-2025-1992130 (bmo#1992130)
+  * CVE-2025-13023 (bmo#1992032)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebGPU component
+  * CVE-2025-13016 (bmo#1992130)
     Incorrect boundary conditions in the JavaScript: WebAssembly
     component
-  * MFSA-RESERVE-2025-1980904 (bmo#1980904)
+  * CVE-2025-13024 (bmo#1992902)
+    JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2025-13025 (bmo#1994022)
+    Incorrect boundary conditions in the Graphics: WebGPU
+    component
+  * CVE-2025-13026 (bmo#1994441)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebGPU component
+  * CVE-2025-13017 (bmo#1980904)
     Same-origin policy bypass in the DOM: Notifications component
-  * MFSA-RESERVE-2025-1984940 (bmo#1984940)
+  * CVE-2025-13018 (bmo#1984940)
     Mitigation bypass in the DOM: Security component
-  * MFSA-RESERVE-2025-1988412 (bmo#1988412)
+  * CVE-2025-13019 (bmo#1988412)
     Same-origin policy bypass in the DOM: Workers component
-  * MFSA-RESERVE-2025-1991945 (bmo#1991945)
+  * CVE-2025-13013 (bmo#1991945)
     Mitigation bypass in the DOM: Core & HTML component
-  * MFSA-RESERVE-2025-1995686 (bmo#1995686)
+  * CVE-2025-13020 (bmo#1995686)
     Use-after-free in the WebRTC: Audio/Video component
-  * MFSA-RESERVE-2025-1994241 (bmo#1994241)
+  * CVE-2025-13014 (bmo#1994241)
     Use-after-free in the Audio/Video component
-  * MFSA-RESERVE-2025-1994164 (bmo#1994164)
+  * CVE-2025-13015 (bmo#1994164)
     Spoofing issue in Firefox
+  * CVE-2025-13027 (bmo#1987237, bmo#1990079, bmo#1991715,
+    bmo#1994994)
+    Memory safety bugs fixed in Firefox 145 and Thunderbird 145
+- Remove upstreamed patch mozilla-bmo998749.patch
 
 -------------------------------------------------------------------
-Wed Oct 15 08:14:11 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Wed Oct 29 08:48:09 UTC 2025 - Martin Sirringhaus <martin.sirringhaus@suse.com>
 
-- Run the "desktop file" actions only on non Leap/SLE distributions.
+- Mozilla Firefox 144.0.2
+  * Fixed: Fixed an issue where the list of available locales in
+    `about:settings` contained more locales than were downloaded
+    or currently supported. (bmo#1994642)
+  * Fixed: Fixed an issue where using the keyboard to open the
+    Unified Search dropdown was inconsistent. The dropdown now
+    expands properly, allowing users to select a search engine
+    using the keyboard. (bmo#1979826)
+  * Fixed: Fixed an issue where curated photo collections on
+    Microsoft OneDrive's Photos “For You” page failed to load,
+    showing a gray screen instead of content. Collections now
+    display as expected. (bmo#1986533)
+  * Fixed: Fixed a startup crash affecting Windows users with
+    Avast or other security software installed. (bmo#1992678)
+  * Fixed: Fixed an issue on macOS where the emoji picker
+    shortcut and menu entry stopped working after switching
+    between apps. (bmo#1980815)
+  * Fixed: Fixed an issue on macOS where dragging images from
+    Firefox into third-party apps like Preview could fail or
+    behave unexpectedly. (bmo#1995345)
+  * Fixed: Fixed performance and video playback issues on macOS
+    26 (Tahoe) that occurred when the system was under heavy
+    load. (bmo#1995638)
+  * Fixed: Fixed a browser hang on macOS 26 (Tahoe) that could
+    occur when bookmark folders contained loops or repeated
+    references to themselves. (bmo#1995621)
+  * Fixed: Security fix.
+  MFSA 2025-86 (bsc#1252815)
+  * CVE-2025-12380 (bmo#1993113)
+    Use-after-free in WebGPU internals triggered from a
+    compromised child process
+- Removed upstreamed mozilla-bmo1990430.patch
 
 -------------------------------------------------------------------
-Tue Oct 14 12:54:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Oct 19 12:40:45 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.4.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.4
-  https://www.mozilla.org/security/advisories/mfsa2025-83
-  MFSA 2025-83 (boo#1251263)
+- fix miscompilation with gcc and using it for build
+  (mozilla-bmo1990430.patch)
+
+-------------------------------------------------------------------
+Sun Oct 12 14:33:12 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 144.0
+  please check https://www.firefox.com/en-US/firefox/144.0/releasenotes
+  for all news
+  MFSA 2025-81 (bsc#1251263)
   * CVE-2025-11708 (bmo#1988931)
     Use-after-free in MediaTrackGraphImpl::GetInstance()
   * CVE-2025-11709 (bmo#1989127)
     Out of bounds read/write in a privileged process triggered by
     WebGL textures
   * CVE-2025-11710 (bmo#1989899)
-    Cross-process information leaked due to malicious IPC
-    messages
+    Cross-process information leaked due to malicious IPC messages
   * CVE-2025-11711 (bmo#1989978)
     Some non-writable Object properties could be modified
+  * CVE-2025-11716 (bmo#1818679)
+    Sandboxed iframes allowed links to open in external apps
+    (Android only)
+  * CVE-2025-11717 (bmo#1872601)
+    The password edit screen was not hidden in Android card view
   * CVE-2025-11712 (bmo#1979536)
     An OBJECT tag type attribute overrode browser behavior on web
     resources without a content-type
+  * CVE-2025-11718 (bmo#1980808)
+    Address bar could be spoofed on Android using visibilitychange
   * CVE-2025-11713 (bmo#1986142)
-    Potential user-assisted code execution in “Copy as cURL”
-    command
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-11719 (bmo#1991950)
+    Use-after-free caused by the native messaging web extension
+    API on Windows
+  * CVE-2025-11720 (bmo#1979534, bmo#1984370)
+    Spoofing risk in Android custom tabs
   * CVE-2025-11714 (bmo#1973699, bmo#1989945, bmo#1990970,
     bmo#1991040, bmo#1992113)
     Memory safety bugs fixed in Firefox ESR 115.29, Firefox ESR
@@ -943,57 +1645,103 @@ Tue Oct 14 12:54:02 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#1988912, bmo#1989734, bmo#1990085, bmo#1991899)
     Memory safety bugs fixed in Firefox ESR 140.4, Thunderbird
     ESR 140.4, Firefox 144 and Thunderbird 144
+  * CVE-2025-11721 (bmo#1986816)
+    Memory safety bug fixed in Firefox 144 and Thunderbird 144
+- requires
+  NSS >= 3.116
+  rust = 1.88
+    (upstream uses 1.89 already which is not available everywhere)
+- switched to clang build temporarily because of bmo#1990430
+  and use clang 20 max (21 fails to build)
+- stop building for i586 as it failing to build and Mozilla
+  officially discontinues any 32bit support for Linux with 145
+  https://blog.mozilla.org/futurereleases/2025/09/05/firefox-32-bit-linux-support-to-end-in-2026/
 
 -------------------------------------------------------------------
-Tue Sep 23 07:21:52 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Sep 30 16:43:10 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.3.1 ESR
-  * Fixed: Improved reliability when HTTP/3 connections fail:
-    Firefox no longer forces HTTP/2 during fallback, allowing the
-    server to choose the protocol and preventing stalls on some
-    sites. (bmo#1980812)
+- Mozilla Firefox 143.0.3
+  https://www.firefox.com/en-US/firefox/143.0.3/releasenotes
+  MFSA 2025-80 (bsc#1250678
+  * CVE-2025-11152 (bmo#1987246)
+    Sandbox escape due to integer overflow in the Graphics: Canvas2D component
+  * CVE-2025-11153 (bmo#1987481)
+    JIT miscompilation in the JavaScript Engine: JIT component
 
 -------------------------------------------------------------------
-Tue Sep 16 13:02:47 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sat Sep 20 18:43:54 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- Firefox Extended Support Release 140.3.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.3.0
-  https://www.mozilla.org/security/advisories/mfsa2025-75
-  MFSA 2025-75 (boo#1249391)
+- Mozilla Firefox 143.0.1:
+  https://www.firefox.com/en-US/firefox/143.0.1/releasenotes
+  * Fixed a tab crash experienced by some users caused by DLL
+    injection (bmo#1872261)
+
+-------------------------------------------------------------------
+Sun Sep 14 11:23:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 143.0
+  https://www.firefox.com/en-US/firefox/143.0/releasenotes
+  MFSA 2025-73 (bsc#1249391)
   * CVE-2025-10527 (bmo#1984825)
-    Sandbox escape due to use-after-free in the Graphics:
-    Canvas2D component
+    Sandbox escape due to use-after-free in the Graphics: Canvas2D component
   * CVE-2025-10528 (bmo#1986185)
     Sandbox escape due to undefined behavior, invalid pointer in
     the Graphics: Canvas2D component
   * CVE-2025-10529 (bmo#1970490)
     Same-origin policy bypass in the Layout component
+  * CVE-2025-10530 (bmo#1974025)
+    Spoofing issue in the WebAuthn component in Firefox for Android
+  * CVE-2025-10531 (bmo#1978453)
+    Mitigation bypass in the Web Compatibility: Tooling component
   * CVE-2025-10532 (bmo#1979502)
     Incorrect boundary conditions in the JavaScript: GC component
   * CVE-2025-10533 (bmo#1980788)
     Integer overflow in the SVG component
+  * CVE-2025-10534 (bmo#1665334)
+    Spoofing issue in the Site Permissions component
+  * CVE-2025-10535 (bmo#1979918)
+    Information disclosure, mitigation bypass in the Privacy
+    component in Firefox for Android
   * CVE-2025-10536 (bmo#1981502)
     Information disclosure in the Networking: Cache component
   * CVE-2025-10537 (bmo#1938220, bmo#1980730, bmo#1981280,
     bmo#1981283, bmo#1984505, bmo#1985067)
     Memory safety bugs fixed in Firefox ESR 140.3, Thunderbird
     ESR 140.3, Firefox 143 and Thunderbird 143
+- requires
+  NSPR 4.37
+  NSS 3.115.1
+- remove obsolete mozilla-nongnome-proxies.patch
 
 -------------------------------------------------------------------
-Fri Sep  5 09:34:40 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Fri Sep  5 10:48:18 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update MozillaFirefox.desktop from a fresh Factory/Tumbleweed
   build.
 
 -------------------------------------------------------------------
-Sun Aug 17 07:07:51 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sat Aug 30 09:00:47 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.2.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.2.0
-  https://www.mozilla.org/security/advisories/mfsa2025-67
-  MFSA 2025-67 (boo#1248162)
+- Mozilla Firefox 142.0.1
+  * Dragging multiple non-adjacent tabs in horizontal tab strip mode
+    now correctly moves them together as a group. (bmo#1982933)
+  * Dragging multiple tabs no longer causes toolbar unresponsiveness
+    or visual glitches. (bmo#1984342)
+  * Fixed an issue where the text cursor appeared in the wrong
+    location. (bmo#1984045)
+  * Fixed a crash related to gamepad use, particularly on macOS
+    (bmno#1870379)
+  * Fixed an issue where the expand on hover feature in the sidebar
+    would sometimes stop working. (bmo#1982129)
+  * Fixed a crash in KDE Plasma when using certain custom window
+    decorations. (bmo#1984823)
+
+-------------------------------------------------------------------
+Thu Aug 21 07:53:34 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Mozilla Firefox 142
+  https://www.mozilla.org/en-US/firefox/142.0/releasenotes/
+  MFSA 2025-64 (bsc#1248162)
   * CVE-2025-9179 (bmo#1979527)
     Sandbox escape due to invalid pointer in the Audio/Video: GMP
     component
@@ -1001,11 +1749,17 @@ Sun Aug 17 07:07:51 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     Same-origin policy bypass in the Graphics: Canvas2D component
   * CVE-2025-9181 (bmo#1977130)
     Uninitialized memory in the JavaScript Engine component
+  * CVE-2025-9186 (bmo#1445758)
+    Spoofing issue in the Address Bar component of Firefox Focus
+    for Android
   * CVE-2025-9182 (bmo#1975837)
     Denial-of-service due to out-of-memory in the Graphics:
     WebRender component
   * CVE-2025-9183 (bmo#1976102)
     Spoofing issue in the Address Bar component
+  * CVE-2025-9187 (bmo#1825621, bmo#1970079, bmo#1976736,
+    bmo#1979072)
+    Memory safety bugs fixed in Firefox 142 and Thunderbird 142
   * CVE-2025-9184 (bmo#1929482, bmo#1976376, bmo#1979163,
     bmo#1979955)
     Memory safety bugs fixed in Firefox ESR 140.2, Thunderbird
@@ -1014,27 +1768,45 @@ Sun Aug 17 07:07:51 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     Memory safety bugs fixed in Firefox ESR 115.27, Firefox ESR
     128.14, Thunderbird ESR 128.14, Firefox ESR 140.2,
     Thunderbird ESR 140.2, Firefox 142 and Thunderbird 142
+- Refresh mozilla-pgo.patch
+- requires NSS 3.114
 
 -------------------------------------------------------------------
-Tue Jul 22 15:02:34 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Aug  5 19:28:01 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Avoid file conflict with MozillaFirefox regarding
-  firefox-search-provider.ini; assume MozillaFirefox gets installed
-  anyway, so omit traces here. Add Recommends: MozillaFirefox for
-  this.
+- Mozilla Firefox 141.0.2
+  * Fixed a startup crash experienced by some Linux users with outdated
+    NVIDIA drivers. (bmo#1978911)
+  * Fixed a regression that caused canvas objects to be draggable,
+    causing web compatibility issues. (bmo#1978673)
+  * Fixed a crash in the Web Developer Tools panel that could occur
+    when inspecting pages with <iframe> elements. (bmo#1975277)
+  * Fixed minor visual issues across the user interface.
+    (bmo#1974269, bmo#1976031, bmo#1974876, bmo#1976701)
+  * Firefox wouldn't start on some systems where GTK+ was built
+    without Wayland support. (bmo#1978620)
+  * Fixed an issue where clicking a pinned tab could steal focus from
+    the content area, disrupting keyboard navigation. (bmo#1977005)
 
 -------------------------------------------------------------------
-Sat Jul 19 08:56:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Jul 27 17:03:10 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
-- Firefox Extended Support Release 140.1.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.1.0
-  https://www.mozilla.org/security/advisories/mfsa2025-59
-  MFSA 2025-59 (boo#1246664)
+- Update memory constraints
+
+-------------------------------------------------------------------
+Sun Jul 20 06:23:40 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 141.0
+  * https://www.mozilla.org/en-US/firefox/141.0/releasenotes/
+  MFSA 2025-56 (bsc#1246664)
   * CVE-2025-8027 (bmo#1968423)
     JavaScript engine only wrote partial return value to stack
   * CVE-2025-8028 (bmo#1971581)
     Large branch table could lead to truncated instruction
+  * CVE-2025-8041 (bmo#1670725)
+    Incorrect URL truncation in Firefox for Android
+  * CVE-2025-8042 (bmo#1791322)
+    Sandboxed iframe could start downloads
   * CVE-2025-8029 (bmo#1928021)
     javascript: URLs executed on object and embed tags
   * CVE-2025-8036 (bmo#1960834)
@@ -1042,8 +1814,9 @@ Sat Jul 19 08:56:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2025-8037 (bmo#1964767)
     Nameless cookies shadow secure cookies
   * CVE-2025-8030 (bmo#1968414)
-    Potential user-assisted code execution in “Copy as cURL”
-    command
+    Potential user-assisted code execution in “Copy as cURL” command
+  * CVE-2025-8043 (bmo#1970209)
+    Incorrect URL truncation
   * CVE-2025-8031 (bmo#1971719)
     Incorrect URL stripping in CSP reports
   * CVE-2025-8032 (bmo#1974407)
@@ -1054,207 +1827,107 @@ Sat Jul 19 08:56:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     Search terms persisted in URL bar
   * CVE-2025-8033 (bmo#1973990)
     Incorrect JavaScript state machine for generators
-  * CVE-2025-8034 (bmo#1970422, bmo#1970422, bmo#1970422,
-    bmo#1970422)
+  * CVE-2025-8044 (bmo#1933572, bmo#1971116)
+    Memory safety bugs fixed in Firefox 141 and Thunderbird 141
+  * CVE-2025-8034 (bmo#1970422, bmo#1970422, bmo#1970422, bmo#1970422)
     Memory safety bugs fixed in Firefox ESR 115.26, Firefox ESR
     128.13, Thunderbird ESR 128.13, Firefox ESR 140.1,
     Thunderbird ESR 140.1, Firefox 141 and Thunderbird 141
-  * CVE-2025-8040 (bmo#1975058, bmo#1975058, bmo#1975998,
-    bmo#1975998)
+  * CVE-2025-8040 (bmo#1975058, bmo#1975058, bmo#1975998, bmo#1975998)
     Memory safety bugs fixed in Firefox ESR 140.1, Thunderbird
     ESR 140.1, Firefox 141 and Thunderbird 141
   * CVE-2025-8035 (bmo#1975961, bmo#1975961, bmo#1975961)
     Memory safety bugs fixed in Firefox ESR 128.13, Thunderbird
     ESR 128.13, Firefox ESR 140.1, Thunderbird ESR 140.1, Firefox
     141 and Thunderbird 141
+- requires NSS 3.113
 
 -------------------------------------------------------------------
-Mon Jun 23 09:15:00 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Jun 29 07:33:44 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 140.0esr ESR
-  * New: ###General
-    - Reader View now has an enhanced Text and Layout menu with
-    new options for character spacing, word spacing, and text
-    alignment. These changes offer a more accessible reading
-    experience.
-    - Reader View now has a Theme menu with additional Contrast
-    and Gray options. You can also select custom colors for text,
-    background, and links from the Custom tab.
-    - Firefox will now offer to temporarily remember when users
-    grant permissions to sites (e.g. geolocation). Temporary
-    permissions will be removed either after one hour or when the
-    tab is closed.
-    - Firefox now includes safeguards to prevent sites from
-    abusing the history API by generating excessive history
-    entries, which can make navigating with the back and forward
-    buttons difficult by cluttering the history. This
-    intervention ensures that such entries, unless interacted
-    with by the user, are skipped when using the back and forward
-    buttons.
-    - Firefox now identifies all links in PDFs and turns them
-    into hyperlinks.
-    - You can now copy links from background tabs using the
-    tabstrip context menu on macOS and Linux.
-    - Users on macOS and Linux are now given the option to close
-    only the current tab if the Quit keyboard shortcut is used
-    while multiple tabs are open in the window.
-  * New: ###Sidebar and Tabs
-    - You can now enable the updated Firefox sidebar in Settings
-    > General > Browser Layout to quickly access multiple tools
-    in one click, without leaving your main view. Sidebar tools
-    include an AI chatbot of your choice, bookmarks, history, and
-    tabs from devices you sync with your Mozilla account.
-    - Keep a lot of tabs open? Try our new vertical tabs layout
-    to quickly scan your list of tabs. With vertical tabs, your
-    open and pinned tabs appear in the sidebar instead of along
-    the top of the browser. To turn on vertical tabs, right-click
-    on the toolbar near the top of the browser and select Turn on
-    Vertical Tabs. If you’ve enabled the updated sidebar, you can
-    also go to Customize sidebar and check Vertical tabs. Early
-    testers report feeling more organized after using vertical
-    tabs for a few days.
-    - Stay productive and organized with less effort by grouping
-    related tabs together. One simple way to create a group is to
-    drag a tab onto another, pause until you see a highlight,
-    then drop to create the group. Tab groups can be named,
-    color-coded, and are always saved. You can close a group and
-    reopen it later.
-    - A tab preview is now displayed when hovering the mouse over
-    background tabs, making it easier to locate the desired tab
-    without needing to switch tabs.
-    - The sidebar to view tabs from other devices can now be
-    opened via the Tab overview menu.
-  * New: ###Security & Privacy
-    - HTTPS is replacing HTTP as the default protocol in the
-    address bar on non-local sites. If a site is not available
-    via HTTPS, Firefox will fall back to HTTP.
-    - Firefox now blocks third-party cookie access when Enhanced
-    Tracking Protection's Strict mode is enabled.
-    - Firefox now has a new anti-tracking feature, Bounce
-    Tracking Protection, which is now available in Enhanced
-    Tracking Protection's "Strict" mode. This feature detects
-    bounce trackers based on their redirect behavior and
-    periodically purges their cookies and site data to block
-    tracking.
-    - Firefox now enforces certificate transparency, requiring
-    web servers to provide sufficient proof that their
-    certificates were publicly disclosed before they will be
-    trusted. This only affects servers using certificates issued
-    by a certificate authority in Mozilla's Root CA Program.
-    - Smartblock Embeds allows users to selectively unblock
-    certain social media embeds that are blocked in ETP Strict
-    and Private Browsing modes. Currently, support is limited to
-    a few embed types, with more to be added in future updates.
-    - Firefox now upgrades page loads to HTTPS by default and
-    gracefully falls back to HTTP if the secure connection fails.
-    This behavior is known as HTTPS-First.
-    - The "Copy Without Site Tracking" menu item was renamed to
-    "Copy Clean Link" to help clarify expectations around what
-    the feature does. "Copy Clean Link" is a list based approach
-    to remove - known tracking parameters from links. This option
-    can also now be used on plain text links.
-    - The Clear browsing data and cookies dialog now allows
-    clearing saved form info separately from browsing history.
-  * New: ###Translations
-    - Firefox now allows translating selected text portions to
-    different languages after a full-page translation.
-    - Full-Page Translations are now available within Firefox
-    extension pages that start with the moz-extension:// URL
-    scheme.
-    - When suggesting a default translation language, Firefox
-    will now take into consideration languages you have
-    previously used for translations.
-    - Added support for many new languages in Firefox
-    translation.
-  * New: ###Windows
-    - Canvas2D switched from Direct2D to a platform independent
-    acceleration backend on Windows.
-    - Hardware-accelerated playback of HEVC video content is now
-    supported on Windows.
-    - Firefox on Windows 11 now uses acrylic-style menus for
-    popup windows, which better match the operating system’s
-    aesthetic.
-  * New: ###macOS
-    - Added support for multiple languages in the same document
-    spoken in macOS VoiceOver.
-    - The macOS session resume feature has been enhanced. Firefox
-    will now automatically relaunch if it was open before a
-    system restart, like after an OS update.
-    - The macOS DMG installer packages now use LZMA for
-    compression, reducing download size and installation time.
-    - Due to recent changes in macOS Sequoia, the shortcut for
-    completing search strings to .com addresses has been changed
-    from Ctrl+Enter to Cmd+Enter.
-  * New: ###Linux
-    - Firefox now supports touchpad hold gestures on Linux. This
-    means that kinetic (momentum) scrolling can now be
-    interrupted by placing two fingers on the touchpad.
-  * Developer: - Firefox now supports text fragments, which
-    allows users to link directly to a specific portion of text
-    in a web document via a special URL fragment.
-    - Debugger log-point values are now automatically converted
-    into profiler markers, making it easy to add information to
-    the marker timeline directly from the Debugger.
-    - The Debugger's directory root is now scoped to the specific
-    domain where it was set, which aligns with typical usage and
-    avoids applying it across unrelated domains. This builds on
-    previous improvements such as a redesigned UI and easier
-    removal of the root setting. Setting a directory root updates
-    the Source List to show only the selected directory and its
-    children. (Learn more)
-    - The Network Blocking feature in the Network panel now
-    blocks HTTP requests in addition to blocking responses.
-    - The Network panel displays information about Early Hints,
-    including a dedicated indicator for the 103 HTTP status code
-    in the user interface.
-    - The Network panel now allows overriding network request
-    responses with local files.
-    - The filter setting in the Network panel is now preserved
-    across DevTools Toolbox sessions.
-    - A new column has been added to the Network panel to display
-    the full path of the request URL. This enhancement makes
-    helps developers quickly view and analyze complete request
-    paths.
-    - Introduced a new console command `$$$` that allows
-    searching the page, including within shadow roots.
-    - Improved support for debugging web extensions, such as
-    automatically reloading the web extension's source code in
-    the Debugger when the extension is reloaded. Workers are now
-    available in the Console panel’s context selector and
-    breakpoints function correctly in content scripts.
-    - In the Inspector Fonts panel, we now display fonts
-    metadata, like the font version, designer, vendor, license,
-    etc.
-    - Added support for the import map integrity field, allowing
-    you to ensure the integrity of dynamically or statically
-    imported modules.
-    - Implemented support for `Error.isError`, enabling brand
-    checks to determine whether an object is an instance of
-    Error. (Learn more)
-    - Added support for the `error.captureStackTrace` extension
-    to improve compatibility with other browsers. (Learn more)
-      [5]: http://github.com/tc39/proposal-error-
-    capturestacktrace
-  * Enterprise: - The UserMessaging policy has been updated with
-    a new option to allow disabling Firefox Labs in preferences.
-    - The Preferences policy has been updated to allow setting
-    the preference security.pki.certificate_transparency.mode.
-    - HTTPS-First is now on by default. You can manage this
-    behavior using the HttpsOnlyMode and HttpAllowlist policies.
-    - An internal change has been made to Firefox that removes
-    `XPCOMUtils.defineLazyGetter`. For most people, this
-    shouldn't matter, but if you encounter problems with
-    AutoConfig or third party software like PolicyPak, this might
-    be the cause. You'll need to reach out to your provider.
-    - Firefox now supports the Content Analysis SDK for
-    integrating DLP software. For more information, see this
-    post.
-    - The SearchEngines policy is now available on all versions
-    of Firefox (not just the ESR).
+- Mozilla Firefox 140.0.2
+  * Fixed a startup crash on Windows experienced by some users
+    (bmo#1974259)
+- Mozilla Firefox 140.0.1
+  * Fixed text contrast issues in the sidebar with some dark themes
+    (bmo#1971487)
+  * Fixed a startup crash experienced by some users caused by DLL
+    injection (mbo#1973947)
+
+-------------------------------------------------------------------
+Tue Jun 24 07:09:28 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 140.0 Release
+  * New: Vertical Tabs: You can now keep more — or fewer — pinned
+    tabs in view for quicker access to important windows. Just
+    drag the divider to resize your pinned tabs section.
+  * New: Custom Search Engines: Firefox now supports adding even
+    more search engines. To add a custom engine, right-click a
+    search field of a supported website and select “Add Search
+    Engine”, or go to Settings > Search > Add (below the search
+    shortcuts table) to manually enter a search URL.
+  * New: Firefox Extensions: Customize your toolbar with the
+    option to remove the extensions shortcut, giving you more
+    control over your browser. When the button is hidden, you can
+    access the extensions panel again at any time from the
+    Firefox menu by clicking the Extensions menu item.
+  * New: You can now unload tabs by right-clicking on a tab (or
+    multiple selected tabs) and selecting "Unload Tab". This can
+    speed up performance by reducing Firefox's memory and CPU
+    usage.
+  * New: Full-Page Translations now prioritizes translating only
+    the content near your current view, improving speed and
+    responsiveness. Content outside your view is skipped unless
+    you scroll to it, reducing unnecessary resource usage.
+  * New: Firefox builds in Arabic now come with a built-in Arabic
+    dictionary for the Firefox spellchecker.
+  * New: Address autofill enabled for users in Italy, Poland, and
+    Austria.
+  * Changed: The Pocket toolbar icon, as well as the Pocket
+    integrations on New Tab, have been removed per the service
+    shutdown announcement.
+  * HTML5: Added platform support for aria-keyshortcuts in Linux,
+    macOS, and Windows.
+  * HTML5: Added support for the CookieStore API, an asynchronous
+    cookie API for scripts running in HTML documents and service
+    workers.
+  * HTML5: Added support for the Custom Highlight API, which
+    allows styling arbitrary text ranges. Support for text-
+    decoration is not included and is planned for an upcoming
+    release.
+  * HTML5: Added support for the pointerrawupdate event. This
+    event provides lower-latency access to pointer movements by
+    firing as soon as the pointer data is available, typically
+    before the main `pointermove` event. Unlike `pointermove`, it
+    performs an additional hit test to determine the target and
+    fires more frequently, which may impact performance even if
+    only a listener is added. This event is intended for
+    applications that require high-precision input handling and
+    cannot achieve smooth interaction using coalesced
+    `pointermove` events alone.
+  * HTML5: Service Workers are now available in Private Browsing
+    Mode. This enhancement builds on our efforts to support
+    IndexedDB and the DOM Cache API in Private Browsing through
+    encrypted storage. With this change, more websites,
+    especially those that rely on background tasks, will be able
+    to benefit from Service workers.
+  * HTML5: Firefox now applies a uniform user agent (UA) style to
+    `<h1>` elements, regardless of whether they are used inside
+    `<article>`, `<aside>`, `<nav>`, or `<section>`.
+  * HTML5: Firefox will now escape less-than (`<`) and greater-
+    than (`>`) symbols when serializing HTML attributes, making
+    certain mXSS attacks on websites more difficult.
+  * Developer: Improved the search feature in the Inspector panel
+    to help developers more effectively search the DOM of the
+    current page. Sorting the results by the number of matching
+    elements, support “pseudo” selector state, etc.
+  * Enterprise: You can find information about policy updates and
+    enterprise specific bug fixes in the Firefox for Enterprise
+    140 Release Notes.
   * Fixed: Various security fixes.
-- Mozilla Firefox ESR 140.0
-  https://www.mozilla.org/security/advisories/mfsa2025-51
-  MFSA 2025-51 (boo#1244670)
+- Mozilla Firefox 140.0
+  https://www.mozilla.org/en-US/firefox/140.0/releasenotes/
+  MFSA 2025-51 (bsc#1244670)
   * CVE-2025-6424 (bmo#1966423)
     Use-after-free in FontFaceSet
   * CVE-2025-6425 (bmo#1717672)
@@ -1290,25 +1963,54 @@ Mon Jun 23 09:15:00 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2025-6436 (bmo#1941377, bmo#1960948, bmo#1966187,
     bmo#1966505, bmo#1970764)
     Memory safety bugs fixed in Firefox 140 and Thunderbird 140
-- Requires:
+- requires
   NSS >= 3.112
   cargo/rust 1.86
-  rust-cbindgen >= 0.28
 
 -------------------------------------------------------------------
-Sun Jun  8 14:58:17 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
+Wed Jun 11 16:59:31 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Replace usage of %jobs for reproducible builds (boo#1237231)
-
--------------------------------------------------------------------
-Sun May 25 08:47:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 128.11.0 ESR
+- Firefox 139.0.4 Release
+  * Fixed: Fixed Firefox freezing when switching between apps or
+    opening certain panels within the browser. (Bug 1969253 & Bug
+    1969346)
+  * Fixed: Fixed difficult selection of drop-down menu options in
+    the Firefox preferences page when selected via the in-page
+    search. (bmo#1968949)
+  * Fixed: Fixed various selection issues when triple-clicking
+    text in some situations. (Bug 1969100 & Bug 1969432)
+  * Fixed: Fixed an incorrect filename being used when setting an
+    image as the desktop wallpaper on Windows. (bmo#1969793)
   * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.11.0
-  https://www.mozilla.org/security/advisories/mfsa2025-44
-  MFSA 2025-44 (boo#1243353)
-  * CVE-2025-5262 (bmo#1962421)
+- Mozilla Firefox 139.0.4
+  https://www.mozilla.org/en-US/firefox/139.0.4/releasenotes/
+  MFSA 2025-47 (bsc#1244468)
+  * CVE-2025-49709 (bmo#1966083)
+    Memory corruption in canvas surfaces
+  * CVE-2025-49710 (bmo#1970095)
+    Integer overflow in OrderedHashTable
+
+-------------------------------------------------------------------
+Tue Jun  3 06:26:58 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix %{progdir}/crashhelper packaging
+
+-------------------------------------------------------------------
+Sat May 31 19:39:11 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Mozilla Firefox 139.0.1
+  https://www.mozilla.org/en-US/firefox/139.0.1/releasenotes/
+  * Fixed graphics corruption with certain NVIDIA graphics adapters
+    and multiple monitors running at mixed refresh rates after
+    updating to Firefox 139. (bmo#1968876)
+
+-------------------------------------------------------------------
+Mon May 26 17:41:31 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 139.0
+  https://www.mozilla.org/en-US/firefox/139.0/releasenotes/
+  MFSA 2025-42 (bsc#1243353)
+  * MFSA-TMP-2025-0001 (bmo#1962421)
     Double-free in libvpx encoder
   * CVE-2025-5263 (bmo#1960745)
     Error handling for script execution was incorrectly isolated
@@ -1319,130 +2021,226 @@ Sun May 25 08:47:26 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     Potential local code execution in “Copy as cURL” command
   * CVE-2025-5266 (bmo#1965628)
     Script element events leaked cross-origin resource status
+  * CVE-2025-5270 (bmo#1910298)
+    SNI was sometimes unencrypted
+  * CVE-2025-5271 (bmo#1920348)
+    Devtools' preview ignored CSP headers
   * CVE-2025-5267 (bmo#1954137)
     Clickjacking vulnerability could have led to leaking saved
     payment card details
-  * CVE-2025-5268 (bmo#1950136, bmo#1958121, bmo#1960499,
-    bmo#1962634)
+  * CVE-2025-5268 (bmo#1950136, bmo#1958121, bmo#1960499, bmo#1962634)
     Memory safety bugs fixed in Firefox 139, Thunderbird 139,
     Firefox ESR 128.11, and Thunderbird 128.11
-  * CVE-2025-5269 (bmo#1924108)
-    Memory safety bug fixed in Firefox ESR 128.11 and Thunderbird
-    128.11
-- create-tar.sh: Remove additional slash from candidates URL, which
-  upstream doesn't like, and protect against wiping the keyfile
-  accidentally. Fix typo.
+  * CVE-2025-5272 (bmo#1726254, bmo#1742738, bmo#1960121)
+    Memory safety bugs fixed in Firefox 139 and Thunderbird 139
 
 -------------------------------------------------------------------
-Mon May 19 06:09:30 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun May 18 17:04:52 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
-- create-tar.sh: Update keyring-file, if necessary
-
--------------------------------------------------------------------
-Sun May 18 17:21:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
-
-- Mozilla Firefox ESR 128.10.1
-  MFSA 2025-37 (boo#1243303)
+- Mozilla Firefox 138.0.4
+  MFSA 2025-36 (bsc#1243303)
   * CVE-2025-4918 (bmo#1966612)
     Out-of-bounds access when resolving Promise objects
   * CVE-2025-4919 (bmo#1966614)
     Out-of-bounds access when optimizing linear sums
+  * Fixed: Fixed a crash that could occur when viewing websites
+    that use WebGL. (bmo#1961191)
+  * Fixed: Fixed an issue where the browser could repeatedly
+    crash when certain SVG effects (like blur or drop shadow)
+    were applied to very small areas. (bmo#1924241)
+    (bmo#1924241)
+  * Fixed: On Linux, fixed an issue where video playback would
+    appear washed-out on Wayland when HDR support was
+    unavailable. (bmo#1961610)
+  * Fixed: Fixed an issue where the "Match Case" shortcut `Alt+C`
+    in the find-in-page toolbar did not toggle the checkbox as
+    expected. (bmo#1952611)
 
 -------------------------------------------------------------------
-Sat May 10 20:04:59 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+Fri May 16 05:39:13 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
-- build on s390x needs 14G memory - adjust _constraints
+- Replace usage of %jobs for reproducible builds (boo#1237231)
 
 -------------------------------------------------------------------
-Tue Apr 29 07:57:14 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Mon May 12 05:56:15 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.10.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.10
-  https://www.mozilla.org/security/advisories/mfsa2025-29
-  MFSA 2025-29 (boo#1241621)
+- Mozilla Firefox 138.0.1
+  * Fixed an issue which caused a blank page to be shown for Home
+    and New Tab pages for some users. (bmo#1963537)
+  * Added a workaround for a bug in outlook.office.com/outlook.live.com
+    where attachment filenames are incorrectly prefixed with UTF-8
+    when saved. (bmo#1961710)
+
+-------------------------------------------------------------------
+Sat May 10 18:26:26 UTC 2025 - Christian Boltz <suse-beta@cboltz.de>
+
+- build on s390x needs 15G memory, adjust _constraints
+
+-------------------------------------------------------------------
+Tue Apr 29 20:49:17 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 138.0
+  https://www.mozilla.org/en-US/firefox/138.0/releasenotes/
+  MFSA 2025-28 (bsc#1241621)
   * CVE-2025-2817 (bmo#1917536)
     Privilege escalation in Firefox Updater
-  * MFSA-RESERVE-2025-1937097 (bmo#1937097)
+  * CVE-2025-4082 (bmo#1937097)
     WebGL shader attribute memory corruption in Firefox for macOS
-  * MFSA-RESERVE-2025-1958350 (bmo#1958350)
-    Process isolation bypass using `javascript:` URI links in
+  * CVE-2025-4083 (bmo#1958350)
+    Process isolation bypass using "javascript:" URI links in
     cross-origin frames
-  * MFSA-RESERVE-2025-1949994 (bmo#1949994, bmo#1956698,
-    bmo#1960198)
-    Potential local code execution in "copy as cURL" command
-  * MFSA-RESERVE-2025-1952465 (bmo#1952465)
+  * CVE-2025-4085 (bmo#1915280)
+    Potential information leakage and privilege escalation in
+    UITour actor
+  * CVE-2025-4086 (bmo#1945705)
+    Specially crafted filename could be used to obscure download
+    type
+  * CVE-2025-4087 (bmo#1952465)
     Unsafe attribute access during XPath parsing
-  * MFSA-RESERVE-2025-3 (bmo#1951161, bmo#1952105)
+  * CVE-2025-4088 (bmo#1953521)
+    Cross-site request forgery via storage access API redirects
+  * CVE-2025-4089 (bmo#1949994, bmo#1956698, bmo#1960198)
+    Potential local code execution in "copy as cURL" command
+  * CVE-2025-4090 (bmo#1929478)
+    Leaked library paths in Firefox for Android
+  * CVE-2025-4091 (bmo#1951161, bmo#1952105)
     Memory safety bugs fixed in Firefox 138, Thunderbird 138,
     Firefox ESR 128.10, and Thunderbird 128.10
-  * MFSA-RESERVE-2025-7 (bmo#1894100)
-    Memory safety bug fixed in Firefox ESR 128.10 and Thunderbird
-    128.10
+  * CVE-2025-4092 (bmo#1924108, bmo#1950780, bmo#1959367)
+    Memory safety bugs fixed in Firefox 138 and Thunderbird 138
+- requires NSS 3.110
+- rebased patches
 
 -------------------------------------------------------------------
-Thu Apr  3 09:40:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Tue Apr 15 20:28:46 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- BuildRequires: clang-devel on Tumbleweed/Factory, which works for
-  both clang19-devel as well as clang20-devel
+- Mozilla Firefox 137.0.2
+  * Fixed file picker not being displayed when exporting passwords
+    on macOS in about:logins for some users. (bmo#1956266)
+  * Fixed accessibility issues with the new PDF signature feature.
+    (bmo#1956110, bmo#1952571)
+  * Fixed an issue where using the context menu to paste in the
+    Style Editor would insert the code twice. (bmo#1955854)
+  * Fixed functional regressions in our XSLT support introduced
+    in 137. (bmo#1954841)
+  * Fixed a tooltip flickering issue on Windows that affected some
+    users when hovering. (bmo#1958631)
+  * Fixed an issue where Firefox would not respond to clicks in some
+    HTML5 video players. (bmo#1959251)
+  * Fixed an issue where radio inputs behaved incorrectly when
+    preventDefault() was called on the click event. (bmo#1957956)
+  * Fixed an issue that caused some Firefox users to restart their
+    browser multiple times to complete an update. (bmo#1959492)
+  MFSA 2025-25
+  * CVE-2025-3608 (bmo#1951554)
+    Race condition in nsHttpTransaction could lead to memory corruption
+- Mozilla Firefox 137.0.1
+  * Fixed an issue where folder shortcuts on Windows were incorrectly
+    treated as files during file uploads, preventing selecting files
+    within the target folder. (bmo#1958222)
+  * Fixed a crash experienced by Windows users when downloading files
+    with Qihoo 360 Total Security Antivirus software installed. (bmo#1958112)
+  * Fixed an occasional startup crash. (bmo#1958293)
 
 -------------------------------------------------------------------
-Mon Mar 31 09:27:15 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Apr  6 13:51:28 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
-- Firefox Extended Support Release 128.9.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.9.0
-  https://www.mozilla.org/security/advisories/mfsa2025-22
-  MFSA 2025-22 (boo#1240083)
+- Migrate from deprecated %suse_update_desktop_file to
+  %translate_suse_desktop. (boo#1158957)
+- MozillaFirefox.desktop fixes done during the migration to
+  translate-suse-desktop:
+  * Remove English text from Burmese translation.
+  * Import translations from mis-named languages from
+    MozillaFirefox.desktop and move them to correct language codes.
+  * Remove en_GB translation that contains no real contents.
+
+-------------------------------------------------------------------
+Wed Apr  2 05:57:56 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 137.0
+  * https://www.mozilla.org/en-US/firefox/137.0/releasenotes/
+  MFSA 2025-20 (bsc#1240083)
   * CVE-2025-3028 (bmo#1941002)
     Use-after-free triggered by XSLTProcessor
+  * CVE-2025-3031 (bmo#1947141)
+    JIT optimization bug with different stack slot sizes
+  * CVE-2025-3032 (bmo#1949987)
+    Leaking file descriptors from the fork server
   * CVE-2025-3029 (bmo#1952213)
-    URL Bar Spoofing via non-BMP Unicode characters
+    URL bar spoofing via non-BMP Unicode characters
+  * CVE-2025-3035 (bmo#1952268)
+    Tab title disclosure across pages when using AI chatbot
+  * CVE-2025-3033 (bmo#1950056)
+    Opening local .url files could lead to another file being opened
   * CVE-2025-3030 (bmo#1850615, bmo#1932468, bmo#1942551,
     bmo#1951017, bmo#1951494)
     Memory safety bugs fixed in Firefox 137, Thunderbird 137,
     Firefox ESR 128.9, and Thunderbird 128.9
+  * CVE-2025-3034 (bmo#1894100, bmo#1934086, bmo#1950360)
+    Memory safety bugs fixed in Firefox 137 and Thunderbird 137
+- requires NSS 3.109
 
 -------------------------------------------------------------------
-Thu Mar 27 08:19:23 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Fri Mar 28 16:10:39 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.8.1 ESR
-  * Fixed: Security fix.
-- Mozilla Firefox 136.0.4, ESR 128.8.1, ESR 115.21.1
-  https://www.mozilla.org/security/advisories/mfsa2025-19
-  MFSA 2025-19 (boo#???????)
-  * CVE-2025-2857 (bmo#1956398,
-    bmo#https://www.cve.org/CVERecord?id=CVE-2025-2783)
+- Mozilla Firefox 136.0.4
+  MFSA 2025-19 (bsc#1240084)
+  * CVE-2025-2857, CVE-2025-2783 (bmo#1956398)
     Incorrect handle could lead to sandbox escapes
+  136.0.3
+  * Significantly improved responsiveness on TikTok by improving the
+    speed of date formatting. (bmo#1954323)
+  136.0.2
+  * Fixed a bug where "Cookies and site data" and "Temporary cached
+    files and pages" were unexpectedly enabled after updating to
+    Firefox 136 for users with "History" and/or "Site settings" set
+    to clear on shutdown in previous versions. (bmo#1952564)
+  * Fixed an issue where the Primary Password prompt appeared in
+    unexpected situations. (bmo#1946121)
+  * Fixed visibility issues with radio buttons on dark backgrounds
+    (bmo#1951930)
+  * Fixed high CPU usage on Windows when the screen was locked or the
+    laptop lid was closed. (bmo#1924932)
+- Use default clang version. (by Aaron Puchert)
 
 -------------------------------------------------------------------
-Sun Mar 16 11:29:41 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Sat Mar 15 07:34:21 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Don't build the various langpacks in parallel. This may be fixing
-  boo#1239446, but will have to be monitored.
+- Mozilla Firefox 136.0.1
+  * Fixed an issue where a cookie size limit caused problems with
+    website cookie management when using the CookieStore API.
+    This could cause login and other state-related issues. (bmo#1950565)
+  * Fixed an issue where Control/Command+L did not focus the
+    address bar in new windows. (bmo#1947723)
 
 -------------------------------------------------------------------
-Tue Mar  4 13:25:21 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Mar  6 07:18:59 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.8.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.8.0
-  https://www.mozilla.org/security/advisories/mfsa2025-16
-  MFSA 2025-16 (boo#1237683)
-  * CVE-2024-43097 (bmo#1945624)
-    Overflow when growing an SkRegion's RunArray
+- Mozilla Firefox 136.0
+  https://www.mozilla.org/en-US/firefox/136.0/releasenotes/
+  MFSA 2025-14 (bsc#1237683)
   * CVE-2025-1930 (bmo#1902309)
     AudioIPC StreamData could trigger a use-after-free in the
     Browser process
+  * CVE-2025-1939 (bmo#1928334)
+    Tapjacking in Android Custom Tabs using transition animations
   * CVE-2025-1931 (bmo#1944126)
     Use-after-free in WebTransportChild
   * CVE-2025-1932 (bmo#1944313)
-    Inconsistent comparator in XSLT sorting led to out-of-bounds
-    access
+    Inconsistent comparator in XSLT sorting led to out-of-bounds access
   * CVE-2025-1933 (bmo#1946004)
     JIT corruption of WASM i32 return values on 64-bit CPUs
+  * CVE-2025-1940 (bmo#1908488)
+    Android Intent confirmation prompt tapjacking using Select options
+  * CVE-2024-9956 (bmo#1922357)
+    Passkey phishing within Bluetooth range
   * CVE-2025-1934 (bmo#1942881)
     Unexpected GC during RegExp bailout processing
+  * CVE-2025-1941 (bmo#1944665)
+    Lock screen setting bypass in Firefox Focus for Android
+  * CVE-2025-1942 (bmo#1947139)
+    Disclosure of uninitialized memory when .toUpperCase() causes
+    string to get longer
   * CVE-2025-1935 (bmo#1866661)
     Clickjacking the registerProtocolHandler info-bar
   * CVE-2025-1936 (bmo#1940027)
@@ -1455,48 +2253,92 @@ Tue Mar  4 13:25:21 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     bmo#1943912, bmo#1948111)
     Memory safety bugs fixed in Firefox 136, Thunderbird 136,
     Firefox ESR 128.8, and Thunderbird 128.8
+  * CVE-2025-1943 (bmo#1869650, bmo#1938451, bmo#1940326,
+    bmo#1944052, bmo#1944063, bmo#1947281)
+    Memory safety bugs fixed in Firefox 136 and Thunderbird 136
+- requires
+  * NSS 3.108
+  * rust 1.84
 
 -------------------------------------------------------------------
-Mon Feb  3 15:12:37 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Mon Feb  3 10:55:18 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.7.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.7.0
-  https://www.mozilla.org/security/advisories/mfsa2025-09
-  MFSA 2025-09 (boo#1236539)
+- Mozilla Firefox 135.0
+  https://www.mozilla.org/en-US/firefox/135.0/releasenotes
+  MFSA 2025-07 (bsc#1236539)
   * CVE-2025-1009 (bmo#1936613)
     Use-after-free in XSLT
   * CVE-2025-1010 (bmo#1936982)
     Use-after-free in Custom Highlight
+  * CVE-2025-1018 (bmo#1910818)
+    Fullscreen notification is not displayed when fullscreen is
+    re-requested
   * CVE-2025-1011 (bmo#1936454)
     A bug in WebAssembly code generation could result in a crash
   * CVE-2025-1012 (bmo#1939710)
     Use-after-free during concurrent delazification
-  * CVE-2024-11704 (bmo#1899402)
-    Potential double-free vulnerability in PKCS#7 decryption
-    handling
+  * CVE-2025-1019 (bmo#1940162)
+    Fullscreen notification not properly displayed
   * CVE-2025-1013 (bmo#1932555)
-    Potential opening of private browsing tabs in normal browsing
-    windows
+    Potential opening of private browsing tabs in normal browsing windows
   * CVE-2025-1014 (bmo#1940804)
     Certificate length was not properly checked
-  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694,
-    bmo#1938469, bmo#1939583, bmo#1940994)
+  * CVE-2025-1016 (bmo#1936601, bmo#1936844, bmo#1937694, bmo#1938469,
+    bmo#1939583, bmo#1940994)
     Memory safety bugs fixed in Firefox 135, Thunderbird 135,
     Firefox ESR 115.20, Firefox ESR 128.7, Thunderbird 115.20,
     and Thunderbird 128.7
   * CVE-2025-1017 (bmo#1926256, bmo#1935471, bmo#1935984)
     Memory safety bugs fixed in Firefox 135, Thunderbird 135,
     Firefox ESR 128.7, and Thunderbird 128.7
+  * CVE-2025-1020 (bmo#1939063, bmo#1942169)
+    Memory safety bugs fixed in Firefox 135 and Thunderbird 135
+- requires rust 1.83
 
 -------------------------------------------------------------------
-Tue Jan  7 09:24:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Jan 23 12:00:05 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.6.0 ESR
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.6.0
-  https://www.mozilla.org/security/advisories/mfsa2025-02
-  MFSA 2025-02 (boo#1234991)
+- Mozilla Firefox 134.0.2
+  * Fixed a regression in Firefox 134 where anchored links in HTML
+    framesets pointing to local files did not work (bmo#1934807)
+  * Fixed an issue in developer tools preventing the resending of
+    network requests when debugging extensions (bmo#1934478)
+  * Fixed an issue where data consumption from service workers may
+    unexpectedly halt (bmo#1941210)
+
+-------------------------------------------------------------------
+Fri Jan 17 09:31:32 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 134.0.1
+  * Fixed UI hangs happening on YouTube and Google Docs in some situations
+    (bmo#1939295)
+  * Fixed a startup crash affecting some users upgrading from Firefox 133
+    (bmo#1941134)
+  * Fixed an issue where search engines selection menus and context
+    menus could be broken if a user had previously reverted to an
+    earlier version (bmo#1940533)
+- raised required rust version to 1.81
+
+-------------------------------------------------------------------
+Wed Jan  8 11:02:03 UTC 2025 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 134.0
+  https://www.mozilla.org/en-US/firefox/134.0/releasenotes
+  * Firefox now supports touchpad hold gestures on Linux. This means
+    that kinetic (momentum) scrolling can now be interrupted by placing
+    two fingers on the touchpad
+  * Ecosia's availability has been expanded to all languages in the
+    German region along with Austria, Belgium, Italy, Netherlands, Spain,
+    Sweden and Switzerland
+  MFSA 2025-01 (bsc#1234991)
+  * CVE-2025-0244 (bmo#1929584)
+    Address bar spoofing using an invalid protocol scheme on
+    Firefox for Android
+  * CVE-2025-0245 (bmo#1895342)
+    Lock screen setting bypass in Firefox Focus for Android
+  * CVE-2025-0246 (bmo#1912709)
+    Address bar spoofing using an invalid protocol scheme on
+    Firefox for Android
   * CVE-2025-0237 (bmo#1915257)
     WebChannel APIs susceptible to confused deputy attack
   * CVE-2025-0238 (bmo#1915535)
@@ -1507,89 +2349,107 @@ Tue Jan  7 09:24:50 UTC 2025 - Manfred Hollstein <manfred.h@gmx.net>
     Compartment mismatch when parsing JavaScript JSON module
   * CVE-2025-0241 (bmo#1933023)
     Memory corruption when using JavaScript Text Segmentation
-  * CVE-2025-0242 (bmo#1874523, bmo#1926454, bmo#1931873,
-    bmo#1932169)
+  * CVE-2025-0242 (bmo#1874523, bmo#1926454, bmo#1931873, bmo#1932169)
     Memory safety bugs fixed in Firefox 134, Thunderbird 134,
     Firefox ESR 115.19, Firefox ESR 128.6, Thunderbird 115.19,
     and Thunderbird 128.6
   * CVE-2025-0243 (bmo#1827142, bmo#1932783)
     Memory safety bugs fixed in Firefox 134, Thunderbird 134,
     Firefox ESR 128.6, and Thunderbird 128.6
+  * CVE-2025-0247 (bmo#1835193, bmo#1910021, bmo#1919803,
+    bmo#1931576, bmo#1931948, bmo#1932173)
+    Memory safety bugs fixed in Firefox 134 and Thunderbird 134
+- requires
+  NSS 3.107
+  NSPR 4.36 (since FF 133 already)
+- rebased patches
 
 -------------------------------------------------------------------
-Fri Dec 13 08:39:09 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sat Dec 14 14:16:06 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.5.2 ESR
-  * Fixed: Fixed a crash experienced by Windows users with Qihoo
-    360 Total Security Antivirus software installed (bmo#1934258)
-
--------------------------------------------------------------------
-Wed Dec 11 15:24:36 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Add MozillaFirefox.changes.txt as a hard link to firefox-esr.changes
-- Rename firefox-esr.changes into firefox-esr.changes.txt in order
-  to trick source_validator because of the two possible package
-  names "firefox-esr" vs. "MozillaFirefox" (in Leap).
+- Mozilla Firefox 133.0.3
+  * Fixed the missing scrollbar in the Library window, such as when
+    viewing History or Bookmarks. (bmo#1934482)
+  * Fixed blurry line drawing on some Canvas elements when hardware
+    acceleration is enabled. (bmo#1933668)
 
 -------------------------------------------------------------------
-Fri Nov 29 07:03:50 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Mon Nov 25 11:00:38 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.5.1 ESR
-  * Fixed: Fixed an issue that prevented some websites from
-    loading when using SSL Inspection. (bmo#1933747)
-
--------------------------------------------------------------------
-Tue Nov 26 07:41:26 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 128.5.0 ESR
-  * Fixed: Various security fixes and other quality improvements.
-- Mozilla Firefox ESR 128.5.0
-  https://www.mozilla.org/security/advisories/mfsa2024-64
-  MFSA 2024-64 (boo#1233695)
+- Mozilla Firefox 133.0
+  https://www.mozilla.org/en-US/firefox/133.0/releasenotes
+  MFSA 2024-63 (bsc#1233695)
   * CVE-2024-11691 (bmo#1914707, bmo#1924184)
     Memory corruption in Apple GPU drivers
+  * CVE-2024-11700 (bmo#1836921)
+    Potential Tapjacking Exploit for Intent Confirmation on Android
   * CVE-2024-11692 (bmo#1909535)
     Select list elements could be shown over another site
+  * CVE-2024-11701 (bmo#1914797)
+    Misleading Address Bar State During Navigation Interruption
+  * CVE-2024-11702 (bmo#1918884)
+    Inadequate Clipboard Protection in Private Browsing Mode on
+    Android
   * CVE-2024-11693 (bmo#1921458)
     Download Protections were bypassed by .library-ms files on
     Windows
   * CVE-2024-11694 (bmo#1924167)
     CSP Bypass and XSS Exposure via Web Compatibility Shims
   * CVE-2024-11695 (bmo#1925496)
-    URL Bar Spoofing via Manipulated Punycode and Whitespace
-    Characters
+    URL Bar Spoofing via Manipulated Punycode and Whitespace Characters
+  * CVE-2024-11703 (bmo#1928779)
+    Password access without authentication via PIN bypass on Android
   * CVE-2024-11696 (bmo#1929600)
     Unhandled Exception in Add-on Signature Verification
   * CVE-2024-11697 (bmo#1842187)
-    Improper Keypress Handling in Executable File Confirmation
-    Dialog
+    Improper Keypress Handling in Executable File Confirmation Dialog
+  * CVE-2024-11704 (bmo#1899402)
+    Potential Double-Free Vulnerability in PKCS#7 Decryption Handling
   * CVE-2024-11698 (bmo#1916152)
-    Fullscreen Lock-Up When Modal Dialog Interrupts Transition on
-    macOS
+    Fullscreen Lock-Up When Modal Dialog Interrupts Transition on macOS
+  * CVE-2024-11705 (bmo#1921768)
+    Null Pointer Dereference in NSC_DeriveKey
+  * CVE-2024-11706 (bmo#1923767)
+    Null Pointer Dereference in PKCS#12 Utility
+  * CVE-2024-11708 (bmo#1922912)
+    Data race with PlaybackParams
   * CVE-2024-11699 (bmo#1880582, bmo#1929911)
     Memory safety bugs fixed in Firefox 133, Firefox ESR 128.5,
     and Thunderbird 128.5
+- requires NSS 3.106
+- remove obsolete mozilla-python313.patch
 
 -------------------------------------------------------------------
-Mon Nov 18 14:20:51 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sat Nov 23 17:52:32 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
-- Add "mozilla-fix-cmath-issues.patch" to fix math issues on TW/i586
-
--------------------------------------------------------------------
-Mon Nov 18 09:18:03 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Remove old, unneeded patches:
-  * mozilla-bmo1504834-part3.patch
-  * mozilla-bmo1512162.patch
-  * mozilla-bmo1822730.patch
-  * mozilla-bmo531915.patch
-  * mozilla-fix-aarch64-libopus.patch
-  * mozilla-partial-revert-1768632.patch
+- add mozilla-python313.patch to fix build with python 3.13+
 
 -------------------------------------------------------------------
-Thu Nov 14 10:47:35 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Fri Nov 15 13:37:19 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 132.0.2
+  * Fixed possible errors when playing encrypted media content
+    through some streaming providers. (bmo#1929491)
+  * Added a mitigation to help reduce the frequency of duplicated
+    push notifications reported by some users. (bmo#1928868)
+  * Fixed hangs when printing from some sites when using the system
+    print dialog. (bmo#1898184)
+  * Fixed a crash which could occur when using Microsoft SSO on macOS
+    (bmo#1929622)
+  * Fixed a crash in the Network Monitor developer tool which could
+    occur in some circumstances. (bmo#1924882)
+
+-------------------------------------------------------------------
+Sun Nov 10 12:56:23 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - require xdg-desktop-portal (boo#1233166)
+
+-------------------------------------------------------------------
+Tue Nov  5 08:54:03 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 132.0.1
+  * Fixed issues causing intermittent video playback problems on
+    some sites. (bmo#1928484, bmo#1928798)
 - remove KDE integration patches
   - mozilla-kde.patch
   - firefox-kde.patch
@@ -1599,34 +2459,17 @@ Thu Nov 14 10:47:35 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
   (those are set by the latest branding package as well)
 
 -------------------------------------------------------------------
-Sun Nov 10 15:59:32 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Mon Oct 28 11:59:31 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Don't use clang-devel >= 19 on Tumbleweed!
-
--------------------------------------------------------------------
-Fri Nov  8 10:24:48 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Ensure this package is always called "firefox-esr" on Tumbleweed
-  and Slowroll. Use the ff_esr_name macro to override the default
-  name "MozillaFirefox" on SLE and Leap.
-  This allows parallel installation of firefox-esr and the
-  default version of MozillaFirefox.
-
--------------------------------------------------------------------
-Tue Oct 29 07:57:15 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 128.4.0 ESR
-  * Fixed: Various security fixes and other quality improvements.
-- Mozilla Firefox ESR 128.4.0
-  https://www.mozilla.org/security/advisories/mfsa2024-56
-  MFSA 2024-56 (boo#1231879)
+- Mozilla Firefox 132.0
+  https://www.mozilla.org/en-US/firefox/132.0/releasenotes
+  MFSA 2024-55 (bsc#1231879)
   * CVE-2024-10458 (bmo#1921733)
     Permission leak via embed or object elements
   * CVE-2024-10459 (bmo#1919087)
     Use-after-free in layout with accessibility
   * CVE-2024-10460 (bmo#1912537)
-    Confusing display of origin for external protocol handler
-    prompt
+    Confusing display of origin for external protocol handler prompt
   * CVE-2024-10461 (bmo#1914521)
     XSS due to Content-Disposition being ignored in
     multipart/x-mixed-replace response
@@ -1634,6 +2477,8 @@ Tue Oct 29 07:57:15 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     Origin of permission prompt could be spoofed by long URL
   * CVE-2024-10463 (bmo#1920800)
     Cross origin video frame leak
+  * CVE-2024-10468 (bmo#1914982)
+    Race conditions in IndexedDB
   * CVE-2024-10464 (bmo#1913000)
     History interface could have been used to cause a Denial of
     Service condition in the browser
@@ -1641,44 +2486,57 @@ Tue Oct 29 07:57:15 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     Clipboard "paste" button persisted across tabs
   * CVE-2024-10466 (bmo#1924154)
     DOM push subscription message could hang Firefox
-  * CVE-2024-10467 (bmo#1829029, bmo#1888538, bmo#1900394,
-    bmo#1904059, bmo#1917742, bmo#1919809, bmo#1923706)
+  * CVE-2024-10467 (bmo#1829029, bmo#1888538, bmo#1900394, bmo#1904059,
+    bmo#1917742, bmo#1919809, bmo#1923706)
     Memory safety bugs fixed in Firefox 132, Thunderbird 132,
     Firefox ESR 128.4, and Thunderbird 128.4
-- Remove obsolete patch mozilla-rust-disable-future-incompat.patch
+- requires NSS 3.105
+- rebased patches
 
 -------------------------------------------------------------------
-Wed Oct  9 08:44:21 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Thu Oct 17 06:18:12 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.3.1 ESR
-  * Fixed: Security fix.
-- Mozilla Firefox ESR 128.3.1
-  https://www.mozilla.org/security/advisories/mfsa2024-51
-  MFSA 2024-51 (boo#1231413)
+- Mozilla Firefox 131.0.3
+  * some users could not access the Bill Pay portion of their
+    bank's site (bmo#1923500)
+  * some VR180 and 360 videos were not properly rendering on YouTube
+    (bmo#1922278)
+  * Fixed a crash that Windows users with Avast or AVG security
+    software were experiencing when visiting certain sites. (bmo#1919678)
+  * "List all tabs" button was not able to be moved from the toolbar
+    (bmo#1918681)
+  NFSA 2024-53
+  * CVE-2024-9936 (bmo#1920381)
+    Undefined behavior in selection node cache
+- remove obsolete mozilla-rust-disable-future-incompat.patch
+
+-------------------------------------------------------------------
+Wed Oct  9 07:57:32 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 131.0.2
+  MFSA 2024-51 (bsc#1231413)
   * CVE-2024-9680 (bmo#1923344)
     Use-after-free in Animation timeline
 
 -------------------------------------------------------------------
-Mon Sep 30 16:08:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Sun Sep 29 10:38:36 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.3.0 ESR
-  * Fixed: Various security fixes and other quality improvements.
-- Mozilla Firefox ESR 128.3.0
-  https://www.mozilla.org/security/advisories/mfsa2024-47
-  MFSA 2024-47 (boo#1230979)
+- Firefox 131.0
+  https://www.mozilla.org/en-US/firefox/131.0/releasenotes/
+  MFSA 2024-46 (bsc#1230979)
+  * CVE-2024-9391 (bmo#1892407)
+    Prevent users from exiting full-screen mode in Firefox Focus
+    for Android
   * CVE-2024-9392 (bmo#1899154, bmo#1905843)
     Compromised content process can bypass site isolation
   * CVE-2024-9393 (bmo#1918301)
-    Cross-origin access to PDF contents through multipart
-    responses
+    Cross-origin access to PDF contents through multipart responses
   * CVE-2024-9394 (bmo#1918874)
-    Cross-origin access to JSON contents through multipart
-    responses
-  * CVE-2024-8900 (bmo#1872841)
-    Clipboard write permission bypass
+    Cross-origin access to JSON contents through multipart responses
+  * CVE-2024-9395 (bmo#1906024)
+    Specially crafted filename could be used to obscure download type
   * CVE-2024-9396 (bmo#1912471)
-    Potential memory corruption may occur when cloning certain
-    objects
+    Potential memory corruption may occur when cloning certain objects
   * CVE-2024-9397 (bmo#1916659)
     Potential directory upload bypass via clickjacking
   * CVE-2024-9398 (bmo#1881037)
@@ -1688,34 +2546,53 @@ Mon Sep 30 16:08:17 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     of service
   * CVE-2024-9400 (bmo#1915249)
     Potential memory corruption during JIT compilation
-  * CVE-2024-9401 (bmo#1872744, bmo#1897792, bmo#1911317,
-    bmo#1916476)
+  * CVE-2024-9401 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1916476)
     Memory safety bugs fixed in Firefox 131, Firefox ESR 115.16,
     Firefox ESR 128.3, Thunderbird 131, and Thunderbird 128.3
-  * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317,
-    bmo#1913445, bmo#1914106, bmo#1914475, bmo#1914963,
-    bmo#1915008, bmo#1916476)
+  * CVE-2024-9402 (bmo#1872744, bmo#1897792, bmo#1911317, bmo#1913445,
+    bmo#1914106, bmo#1914475, bmo#1914963, bmo#1915008, bmo#1916476)
     Memory safety bugs fixed in Firefox 131, Firefox ESR 128.3,
     Thunderbird 131, and Thunderbird 128.3
+  * CVE-2024-9403 (bmo#1917807)
+    Memory safety bugs fixed in Firefox 131 and Thunderbird 131
+- requires NSS 3.104
+- rebased patches
+
+------------------------------------------------------------------
+Sat Sep 21 08:14:29 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Don't use clang18-devel on Leap as they don't have that version.
+
+------------------------------------------------------------------
+Wed Sep 18 06:20:01 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 130.0.1 Release
+  https://www.mozilla.org/en-US/firefox/130.0.1/releasenotes
+  * Enterprise: Added an enterprise policy to disable the
+    *Firefox Labs* section in *Settings*. (bmo#1911826)
+  * Fixed a recent regression causing some UI elements to
+    be rendered as left-to-right instead of right-to-left for
+    users of our Saraiki localization. (bmo#1917175)
+  * Linux: Fixed black rendering of AVIF images when
+    Firefox is built with GCC. (bmo#1916038)
+- removed obsolete patches
+  mozilla-bmo1916038.patch
 
 -------------------------------------------------------------------
-Wed Sep  4 03:11:13 UTC 2024 - pallas wept <pallaswept@proton.me>
+Sat Sep  7 07:06:40 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Added mozilla-bmo1746799.patch to fix incorrect audio volume scaling
-
--------------------------------------------------------------------
-Tue Sep  3 05:21:00 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Firefox Extended Support Release 128.2.0 ESR
-  * Fixed: Various security fixes and other quality improvements.
-- Mozilla Firefox ESR 128.2.0
-  https://www.mozilla.org/security/advisories/mfsa2024-40
-  MFSA 2024-40 (boo#1229821)
+- Mozilla Firefox 130.0
+  https://www.mozilla.org/en-US/firefox/130.0/releasenotes
+  MFSA 2024-39 (bsc#1229821)
   * CVE-2024-8385 (bmo#1911909)
     WASM type confusion involving ArrayTypes
   * CVE-2024-8381 (bmo#1912715)
-    Type confusion when looking up a property name in a
-    &quot;with&quot; block
+    Type confusion when looking up a property name in a "with" block
+  * CVE-2024-8388 (bmo#1902996, bmo#1839074, bmo#1865413, bmo#1868970,
+    bmo#1873367, bmo#1877820, bmo#1884642, bmo#1886469, bmo#1894326,
+    bmo#1894891, bmo#1897648)
+    Fullscreen notice on Android could be hidden under various
+    panels and OS prompts
   * CVE-2024-8382 (bmo#1906744)
     Internal event interfaces were exposed to web content when
     browser EventHandler listener callbacks ran
@@ -1731,29 +2608,56 @@ Tue Sep  3 05:21:00 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
   * CVE-2024-8387 (bmo#1857607, bmo#1911858, bmo#1914009)
     Memory safety bugs fixed in Firefox 130, Firefox ESR 128.2,
     and Thunderbird 128.2
-- Remove mozilla-bmo1898476.patch and mozilla-bmo1907511.patch,
-  implemented upstream.
+  * CVE-2024-8389 (bmo#1907230, bmo#1909367)
+    Memory safety bugs fixed in Firefox 130
+- requires NSS 3.103
+- removed obsolete patches
+  mozilla-bmo1898476.patch
+  mozilla-bmo1907511.patch
+- added mozilla-bmo1916038.patch to fix AVIF decoding (bsc#1230500)
 
 -------------------------------------------------------------------
-Tue Aug  6 13:14:43 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Fri Sep  6 08:36:45 UTC 2024 - Marvin Friedrich <contact@marvinf.com>
 
-- Firefox Extended Support Release 128.1.0 ESR
-  * Fixed: Various security fixes and other quality improvements.
-- Mozilla Firefox ESR 128.1.0
-  https://www.mozilla.org/security/advisories/mfsa2024-35
-  MFSA 2024-35 (boo#1228648)
+- Update dependency on clang-devel from LLVM15 to LLVM18
+
+-------------------------------------------------------------------
+Wed Sep  4 03:11:13 UTC 2024 - pallas wept <pallaswept@proton.me>
+
+- Added mozilla-bmo1746799.patch to fix incorrect audio volume scaling
+
+-------------------------------------------------------------------
+Sat Aug 24 19:41:08 UTC 2024 - Christian Boltz <suse-beta@cboltz.de>
+
+- _constraints: increase RAM on s390x to fix the build
+
+-------------------------------------------------------------------
+Fri Aug 16 09:30:34 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0.1
+  * Fixed playback issues on some websites with copyrighted video
+    served via digital rights management. (bmo#1911283)
+  * Fixed a crash when dragging a video file onto some websites
+    (bmo#1910990)
+
+-------------------------------------------------------------------
+Thu Aug  8 06:06:13 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Firefox 129.0
+  https://www.mozilla.org/en-US/firefox/129.0/releasenotes
+  MFSA 2024-33 (bsc#1228648))
   * CVE-2024-7518 (bmo#1875354)
-    Fullscreen notification dialog can be obscured by document
-    content
+    Fullscreen notification dialog can be obscured by document content
   * CVE-2024-7519 (bmo#1902307)
-    Out of bounds memory access in graphics shared memory
-    handling
+    Out of bounds memory access in graphics shared memory handling
   * CVE-2024-7520 (bmo#1903041)
     Type confusion in WebAssembly
   * CVE-2024-7521 (bmo#1904644)
     Incomplete WebAssembly exception handing
   * CVE-2024-7522 (bmo#1906727)
     Out of bounds read in editor component
+  * CVE-2024-7523 (bmo#1908344)
+    Document content could partially obscure security prompts
   * CVE-2024-7524 (bmo#1909241)
     CSP strict-dynamic bypass using web-compatibility shims
   * CVE-2024-7525 (bmo#1909298)
@@ -1766,241 +2670,64 @@ Tue Aug  6 13:14:43 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     Use-after-free in IndexedDB
   * CVE-2024-7529 (bmo#1903187)
     Document content could partially obscure security prompts
+  * CVE-2024-7530 (bmo#1904011)
+    Use-after-free in JavaScript code coverage collection
   * CVE-2024-7531 (bmo#1905691)
     PK11_Encrypt using CKM_CHACHA20 can reveal plaintext on Intel
     Sandy Bridge machines
+- removed obsolete patches
+  mozilla-bmo1905018.patch
+  mozilla-bmo1504834-part3.patch
+  mozilla-bmo1512162.patch
+  mozilla-bmo1822730.patch
+  mozilla-fix-aarch64-libopus.patch
+  mozilla-partial-revert-1768632.patch
+- requires NSS 3.102.1
+- extended mozilla-silence-no-return-type.patch
+
+------------------------------------------------------------------
+Sun Jul 28 18:08:39 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox 128.0.3 Release
+  * Fixed: Fixed an issue causing some sites to not load when
+    connecting via HTTP/2. (bmo#1908161, bmo#1909666)
+  * Fixed: Fixed collapsed table rows not appearing when expected
+    in some situations. (bmo#1907789)
+  * Fixed: Fixed the Windows on-screen keyboard potentially
+    concealing the webpage when displayed. (bmo#1907766)
+
+- Firefox 128.0.2 Release
+  * Fixed: Fixed an audio echo in video calls on macOS under
+    certain conditions. (bmo#1908539)
+  * Fixed: Fixed an issue where the Adguard extension popup was
+    not displaying. (bmo#1906132)
+  * Fixed: Fixed an issue causing some screen readers to fail to
+    read when navigating by character in rich text editors. (Bug
+    1905021)
+  * Fixed: Fixed visual glitches when dark mode is enabled in
+    Windows ARM devices. (bmo#1897444)
+  * Fixed: Fixed an issue causing NTLM authentication failure.
+    (bmo#1908115)
+  * Fixed: Fixed an issue where content displayed on mouseover
+    was not captured in a screenshot. (bmo#1905468)
+  * Fixed: Various stability fixes.
+
+- renamed firefox-3781e3117706.patch to mozilla-bmo1905018.patch
+  to conform with patch structure and naming for the package
 
 -------------------------------------------------------------------
-Wed Jul 17 09:59:06 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
+Thu Jul 18 15:27:13 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
-- add wayland upstream fixes (bmo#1907511, bmo#1898476)
-  (mozilla-bmo1898476.patch and mozilla-bmo1907511.patch)
+- Add firefox-3781e3117706.patch to fix boo#1227856 aka bmo#1905018
+  where an incompatible pointer assignment is not accepted in C by
+  GCC 14.
 
 -------------------------------------------------------------------
-Tue Jul  9 14:35:47 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
+Mon Jul  8 20:25:10 UTC 2024 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Firefox Extended Support Release 128.0esr ESR
-  * New: ### General
-    * Windows 7-8.1 and macOS 10.12-10.14 are no longer supported
-    operating systems.
-    * Firefox now supports automated translation of web content.
-    Also, unlike cloud-based alternatives, translation is done
-    locally so that the text being translated never leaves the
-    machine.
-    * The line breaking rules of web content now match the
-    Unicode standard, improving cross-browser compatibility.
-    Additionally, for East Asian and South East Asian end users,
-    Firefox now supports proper language-aware word selection
-    when double-clicking on text for languages including Chinese,
-    Japanese, Burmese, Lao, Khmer, and Thai.
-    * Video effects and background blur are now available to
-    Firefox users on Google Meet.
-    Firefox now displays images and descriptions for search
-    suggestions when provided by the search engine.
-    * It is now possible to copy and paste any file from the
-    operating system into Firefox.
-    * Having any issues with a website on Firefox, yet the site
-    seems to be working as expected on another browser? You can
-    now let us know via the Web Compatibility Reporting Tool! By
-    filing a web compatibility issue, you’re directly helping us
-    detect, target, and fix the most impacted sites to make your
-    browsing experience on Firefox smoother.
-    * Firefox now prompts users in the US and Canada to save
-    their addresses upon submitting an address form, allowing
-    Firefox to autofill stored address information in the future.
-    * Support for credit card autofill has been extended to users
-    running Firefox in the IT, ES, AT, BE, and PL locales.
-    * Recently closed tabs now persist between sessions that
-    don't have automatic session restore enabled. Manually
-    restoring a previous session will continue to reopen any
-    previously open tabs or windows.
-    * When migrating data from Chrome, Firefox now offers the
-    ability to import certain extensions as well.
-    * The Screenshots feature in Firefox has been updated. It now
-    supports taking screenshots of file types like SVG, XML, and
-    more as well as various about: pages within Firefox. The
-    screenshot tool was also made more accessible to everyone by
-    implementing new keyboard shortcuts and adding theme
-    compatibility and High Contrast Mode (HCM) support. And
-    finally, performance for capturing large screenshots has been
-    improved. (bmo#None)
-  * New: ### PDF Viewer
-    * The Firefox PDF viewer has expanded PDF editing
-    capabilities:
-        * Text highlighting is now supported.
-        * Editing already-existing text annotations is now
-    supported.
-        * Images and alt text can be added in addition to text
-    and drawings.
-    * A floating button is now included to simplify deleting
-    drawings, text, and images added in PDFs.
-    * Caret browsing mode now also works in the PDF viewer.
-    (Learn more)
-  * New: ### Firefox View
-    * Firefox View includes more content. You can now see all
-    open tabs from all windows. If you sync open tabs, you’ll see
-    all tabs from other devices. Browsing history is now listed
-    and you can sort by date or by site. As before, recently
-    closed tabs are also listed on Firefox View.
-    To access Firefox View, select the file folder icon at the
-    top left of your tab strip.
-    * We’ve integrated search into Firefox View. You can now
-    search through all of the tabs on each of the section
-    subpages - Recent Browsing, Open Tabs, Recently Closed Tabs,
-    Tabs from other devices, or History.
-    * In Firefox View, open tabs can now be sorted by either
-    recent activity or tab order. Recent activity is the default
-    setting.
-    * Firefox View now displays pinned tabs in the Open tabs
-    section. Tab indicators have also been added to Open tabs, so
-    users can do things like see which tabs are playing media and
-    quickly mute or unmute across windows. Indicators were also
-    added for bookmarks, tabs with notifications, and more!
-    * It is now possible to close all duplicate tabs in a window
-    with the `Close duplicate tabs` command available from the
-    `List all tabs` widget in the tab bar or a tab context menu.
-  * New: ### Security & Privacy
-    * For added protection on macOS and Windows, a device sign in
-    (e.g. operating system password, fingerprint, face or voice
-    login if enabled) can be required when accessing and filling
-    stored passwords in the Firefox Password Manager about:logins
-    page.
-    * Firefox now supports creating and using passkeys stored in
-    the iCloud Keychain on macOS.
-    * Firefox now imports user-added TLS trust anchors (e.g.,
-    certificates) from the operating system root store. This will
-    be enabled by default on Windows, macOS, and Android, and if
-    needed, can be turned off in settings (Settings → Privacy &
-    Security → Certificates).
-    * The Storage Access API web standard was updated to improve
-    security while mitigating website breakages and further
-    enabling the phase out of third-party cookies in Firefox.
-    * Encrypted Client Hello (ECH) is now available to Firefox
-    users, delivering a more private browsing experience. ECH
-    extends the encryption used in TLS connections to cover more
-    of the handshake and better protect sensitive fields. Read
-    more about the launch of ECH on Mozilla Distilled.
-    * Firefox supports a new “Copy Link Without Site Tracking”
-    feature in the context menu which ensures that copied links
-    no longer contain tracking information.
-    * Firefox now supports a setting (in Preferences → Privacy &
-    Security) to enable Global Privacy Control. With this opt-in
-    feature, Firefox informs the websites that the user doesn’t
-    want their data to be shared or sold. This feature is enabled
-    in private browsing mode by default.
-    * Firefox now more proactively blocks downloads from URLs
-    that are considered to be potentially untrustworthy.
-  * New: ### Anti-Fingerprinting
-    * Web Audio in Firefox now uses the FDLIBM math library on
-    all systems to improve anonymity with Fingerprint Protection.
-    * As part of Total Cookie Protection, Firefox now supports
-    the partitioning of Blob URLs, this mitigates a potential
-    tracking vector that third-party agents could use to track an
-    individual.
-    * To mitigate font fingerprinting, the visibility of fonts to
-    websites has been restricted to system fonts and language
-    pack fonts when in Private Browsing Mode or with Enhanced
-    Tracking Protection set to strict mode.
-    * Firefox’s private windows and ETP-Strict privacy
-    configuration now enhance the Canvas APIs with Fingerprinting
-    Protection.
-    * To reduce user fingerprinting information and the risk of
-    some website compatibility issues, the CPU architecture for
-    32-bit x86 Linux will now be reported as x86_64 in Firefox's
-    User-Agent string and `navigator.platform` and
-    `navigator.oscpu` Web APIs.
-  * New: ### Windows
-    * Firefox can now be set to automatically launch whenever the
-    computer starts up. (Learn more)
-    * The background updater now updates properly when there are
-    multiple user accounts on a system.
-    * Firefox now populates the Windows taskbar jump list more
-    efficiently, which should allow for a smoother overall
-    browsing experience.
-  * New: ### macOS
-    * Firefox now supports Voice Control commands on macOS
-    systems.
-    * Links and other focusable elements are now tab-navigable by
-    default on macOS, instead of following macOS' "Keyboard
-    navigation" setting. This is a more accessible default and
-    matches the default in all other platforms. A checkbox in the
-    settings page still allows users to restore the old behavior.
-    * Firefox on Mac now uses the macOS fullscreen API for all
-    types of fullscreen windows. This should better match the
-    expected macOS user experience for fullscreen spaces, menubar
-    and the Dock.
-  * New: ### Linux
-    * Firefox now defaults to the Wayland compositor when
-    available instead of XWayland. This brings support for
-    touchpad & touchscreen gestures, swipe-to-nav, per-monitor
-    DPI settings, better graphics performance, and more.
-    * Firefox now ships with a new .deb package for Linux users
-    on Ubuntu, Debian, and Linux Mint.
-  * New: ### Video Playback
-    * Enabled AV1 hardware decode acceleration on macOS for M3
-    Macs.
-    * Firefox now supports the AV1 codec for Encrypted Media
-    Extensions (EME), enabling higher-quality playback from video
-    streaming providers.
-    * NVIDIA RTX Video Super Resolution (“VSR”) is now available
-    in Firefox. RTX VSR enhances and sharpens lower resolution
-    video when upscaled to higher resolutions and also removes
-    blocky artifacts commonly visible on low bitrate streamed
-    video. VSR requires at least a 20-series or higher NVIDIA RTX
-    GPU, Microsoft Windows 10/11 64-bit, and NVIDIA driver
-    version R530 or higher. The feature can be enabled in the
-    NVIDIA control panel.
-    * NVIDIA RTX Video HDR is now available in Firefox. RTX Video
-    HDR automatically converts SDR video to vibrant HDR10 in real
-    time, letting you enjoy video with improved clarity on your
-    HDR10 panel. It requires at least a 20-series NVIDIA RTX GPU,
-    Microsoft Windows 10/11 64-bit, and NVIDIA driver version 550
-    or higher. The feature can be enabled in the NVIDIA control
-    panel. (bmo#None)
-  * Developer: * Firefox now supports DNS prefetching for HTTPS
-    documents via the `rel="dns-prefetch"` link hint. This
-    standard allows web developers to specify domain names for
-    important assets that should be resolved preemptively.
-    * Firefox will now automatically try to upgrade &lt;img&gt;,
-    &lt;audio&gt;, and &lt;video&gt; elements from HTTP to HTTPS
-    if they are embedded within an HTTPS page. If these so-called
-    mixed content elements do not support HTTPS, they will no
-    longer load.
-    * Firefox now supports Content-encoding: zstd (zstandard
-    compression). This is an alternative to brotli and gzip
-    compression for web content, and can provide higher
-    compression levels for the same CPU used, or conversely lower
-    server CPU use to get the same compression.
-      [2]: http://facebook.github.io/zstd/ (bmo#None)
-  * Enterprise: * The FirefoxHome policy has been updated to
-    reflect that the Snippets option is now deprecated.
-    * The DNSOverHTTPS policy has been updated to support setting
-    a `Fallback` value to prevent falling back to your default
-    DNS Provider.
-    * The AllowFileSelectionDialogs policy has been added for
-    controlling file selection dialogs.
-    * The TranslateEnabled policy has been added.
-    * The DisableEncryptedClientHello policy has been added to
-    control Encrypted Client Hello.
-    * The PostQuantumKeyAgreementEnabled policy has been added to
-    control post-quantum key agreement for TLS.
-    * The HttpsOnlyMode policy has been added to control HTTPS-
-    Only Mode.
-    * The HttpAllowlist policy has been added to add exceptions
-    to HTTPS-Only Mode.
-    * The Preferences policy has been updated to allow setting
-    the preferences
-    `security.mixed_content.block_display_content` and
-    `security.mixed_content.upgrade_display_content`.
-    * The UserMessaging policy has been updated to remove the
-    WhatsNew option.
-    * The ExtensionSettings policy has been updated to add
-    `temporarily_allow_weak_signatures` to allow installing
-    extensions signed using deprecated signature algorithms.
-  * Fixed: Various security fixes.
-- Mozilla Firefox ESR 128.0
-  https://www.mozilla.org/security/advisories/mfsa2024-29
-  MFSA 2024-29 (boo#1226316)
+- Mozilla Firefox 128.0
+  https://www.mozilla.org/en-US/firefox/128.0/releasenotes
+  MFSA 2024-29 (bsc#1226316)
   * CVE-2024-6605 (bmo#1836786)
     Firefox Android missed activation delay to prevent tapjacking
   * CVE-2024-6606 (bmo#1902305)
@@ -2035,11 +2762,12 @@ Tue Jul  9 14:35:47 UTC 2024 - Manfred Hollstein <manfred.h@gmx.net>
     and Thunderbird 115.13
   * CVE-2024-6615 (bmo#1892875, bmo#1894428, bmo#1898364)
     Memory safety bugs fixed in Firefox 128
-- Update mozilla-bmo1504834-part1.patch,
-  mozilla-rust-disable-future-incompat.patch,
-  mozilla-silence-no-return-type.patch
-- Update create_tar.sh from our firefox-scripts git
-- Use cargo/rust1.78 for building.
+- requires
+  NSS 3.101.1
+  rust >= 1.78
+- update create-tar.sh
+- add wayland upstream fixes (bmo#1907511, bmo#1898476)
+  (mozilla-bmo1898476.patch and mozilla-bmo1907511.patch)
 
 -------------------------------------------------------------------
 Mon Jul  1 09:44:55 UTC 2024 - Andrei Dziahel <develop7@develop7.info>
@@ -6901,7 +7629,7 @@ Sat Jun 23 07:25:51 UTC 2018 - wr@rosenauer.org
     CSRF attacks through 307 redirects and NPAPI plugins
   * CVE-2018-12365 (bmo#1459206)
     Compromised IPC child process can list local filenames
-  * CVE-2018-12371 (bmo#1465686) 
+  * CVE-2018-12371 (bmo#1465686)
     Integer overflow in Skia library during edge builder allocation
   * CVE-2018-12366 (bmo#1464039)
     Invalid data handling during QCMS transformations
@@ -10933,8 +11661,8 @@ Fri Jul 16 06:48:44 CEST 2010 - wr@rosenauer.org
 Sun Jun 27 20:24:31 CEST 2010 - wr@rosenauer.org
 
 - update to 3.6.6 release
-  * modifies the crash protection feature to increase the amount 
-    of time that plugins are allowed to be non-responsive before 
+  * modifies the crash protection feature to increase the amount
+    of time that plugins are allowed to be non-responsive before
     being terminated.
 
 -------------------------------------------------------------------
@@ -11092,7 +11820,7 @@ Sat Oct 17 23:19:23 CEST 2009 - wr@rosenauer.org
   * MFSA 2009-64/CVE-2009-3380/CVE-2009-3381/CVE-2009-3383
     Crashes with evidence of memory corruption
 - removed upstreamed patch
-  * firefox-bug506901.patch 
+  * firefox-bug506901.patch
 
 -------------------------------------------------------------------
 Wed Oct  7 20:11:24 CEST 2009 - llunak@novell.com
@@ -11102,7 +11830,7 @@ Wed Oct  7 20:11:24 CEST 2009 - llunak@novell.com
 -------------------------------------------------------------------
 Fri Oct  2 20:26:49 CEST 2009 - wr@rosenauer.org
 
-- improve UI colors to be usable with dark themes at all 
+- improve UI colors to be usable with dark themes at all
   (firefox-browser-css.patch) (bnc#503351)
 - extend list of supported architectures as ABI identifier
   (mozilla-abi.patch) (bnc#543460)
@@ -11110,9 +11838,9 @@ Fri Oct  2 20:26:49 CEST 2009 - wr@rosenauer.org
 -------------------------------------------------------------------
 Mon Sep 14 00:07:55 CEST 2009 - wr@rosenauer.org
 
-- added KDE integration patch from llunak@novell.com  
-  (firefox-kde.patch)  
-  * support for knotify, making -kde4-addon obsolete  
+- added KDE integration patch from llunak@novell.com
+  (firefox-kde.patch)
+  * support for knotify, making -kde4-addon obsolete
   * KDE-specific support functional (bnc#170055)
 - do not build libnkgnomevfs (bmo#512671) (firefox-no-gnomevfs)
 
@@ -11135,8 +11863,8 @@ Wed Aug 19 22:14:07 CEST 2009 - wr@rosenauer.org
 
 - renamed patch firefox-contextmenu-gnome to firefox-cross-desktop
   as it contains more tweaks to handle non-Gnome environments and
-  especially KDE integration: 
-  * added the ability to set the KDE default browser 
+  especially KDE integration:
+  * added the ability to set the KDE default browser
     (still part of bnc#170055)
 
 -------------------------------------------------------------------
@@ -11302,16 +12030,16 @@ Wed Jan 28 13:48:00 CET 2009 - wr@rosenauer.org
 - security update to 3.0.6 (bnc#470074)
   * MFSA 2009-06/CVE-2009-0358: Directives to not cache pages ignored
     (bmo#441751)
-  * MFSA 2009-05/CVE-2009-0357: XMLHttpRequest allows reading 
+  * MFSA 2009-05/CVE-2009-0357: XMLHttpRequest allows reading
     HTTPOnly cookies (bmo#380418)
-  * MFSA 2009-04/CVE-2009-0356: Chrome privilege escalation via 
+  * MFSA 2009-04/CVE-2009-0356: Chrome privilege escalation via
     local .desktop files (bmo#460425)
   * MFSA 2009-03/CVE-2009-0355: Local file stealing with SessionStore
     (bmo#466937)
-  * MFSA 2009-02/CVE-2009-0354: XSS using a chrome XBL method 
+  * MFSA 2009-02/CVE-2009-0354: XSS using a chrome XBL method
     and window.eval (bmo#468581)
-  * MFSA 2009-01/CVE-2009-0352 - CVE-2009-0353: Crashes with 
-    evidence of memory corruption (rv:1.9.0.6) (bmo#452913, 
+  * MFSA 2009-01/CVE-2009-0352 - CVE-2009-0353: Crashes with
+    evidence of memory corruption (rv:1.9.0.6) (bmo#452913,
     bmo#449006, bmo#331088, bmo#401042, bmo#416461, bmo#422283,
     bmo#422301, bmo#431705, bmo#437142, bmo#421839, bmo#420697,
     bmo#461027)
@@ -11356,7 +12084,7 @@ Fri Nov 21 03:11:41 EST 2008 - hfiguiere@suse.de
   * Bookmark editing it now properly locked down. bnc#439335
   * Bookmars are properly hidden.
   * History is properly locked down. bnc#439343
-  * Make sure the search bar is not put back when resetting the 
+  * Make sure the search bar is not put back when resetting the
     toolbar. bnc#439358
 
 -------------------------------------------------------------------
@@ -11477,13 +12205,13 @@ Tue Jul 29 15:02:47 CEST 2008 - vuntz@novell.com
 -------------------------------------------------------------------
 Mon Jul 28 20:54:22 CEST 2008 - mauro@suse.de
 
-- Update to stability/security release 3.0.1 (bnc#407573) 
+- Update to stability/security release 3.0.1 (bnc#407573)
   (thanks, Wolfgang)
   + MFSA 2008-36  Crash with malformed GIF file on Mac OS X
-  + MFSA 2008-35 Command-line URLs launch multiple tabs when 
+  + MFSA 2008-35 Command-line URLs launch multiple tabs when
     Firefox not running
   + MFSA 2008-34 Remote code execution by overflowing CSS reference counter
-- Set browser.shell.checkDefaultBrowser to true (bnc#404119) 
+- Set browser.shell.checkDefaultBrowser to true (bnc#404119)
 
 -------------------------------------------------------------------
 Tue Jun 17 18:49:33 CEST 2008 - maw@suse.de
@@ -11694,7 +12422,7 @@ Fri Sep 14 23:13:06 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Wed Sep 12 15:21:06 CEST 2007 - dmueller@suse.de
 
-- fix hardlinks accross partitions 
+- fix hardlinks accross partitions
 
 -------------------------------------------------------------------
 Thu Sep  6 16:07:12 CEST 2007 - maw@suse.de
@@ -11705,12 +12433,12 @@ Thu Sep  6 16:07:12 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Mon Sep  3 22:33:09 CEST 2007 - ro@suse.de
 
-- move last change a bit further in specfile 
+- move last change a bit further in specfile
 
 -------------------------------------------------------------------
 Fri Aug 31 18:36:16 CEST 2007 - maw@suse.de
 
-- Mark a .png file as nonexecutable. 
+- Mark a .png file as nonexecutable.
 
 -------------------------------------------------------------------
 Tue Aug 28 16:44:08 CEST 2007 - maw@suse.de
@@ -11728,7 +12456,7 @@ Wed Aug 22 17:53:03 CEST 2007 - maw@suse.de
   + Add x11-session.patch, supporting X11 session management
     (#227047)
   + Update to version 2.0.0.6
-    * MFSA 2007-26  Privilege escalation through chrome-loaded 
+    * MFSA 2007-26  Privilege escalation through chrome-loaded
                     about:blank windows
     * MFSA 2007-27  Unescaped URIs passed to external programs
                     (only relevant on Windows)
@@ -11741,7 +12469,7 @@ Tue Aug 21 09:45:35 CEST 2007 - aj@suse.de
   page.
 
 -------------------------------------------------------------------
-Thu Aug 16 14:57:27 CEST 2007 - mauro@suse.de 
+Thu Aug 16 14:57:27 CEST 2007 - mauro@suse.de
 
 - Revert previous change.
 
@@ -11750,7 +12478,7 @@ Tue Aug 14 11:58:23 CEST 2007 - mauro@suse.de
 
 - Added support for ymp in the mimetypes.rdf
 - Added OneClickInstallUrlHandler for handing the actual call from firefox.
-- Fixes bnc #295677 
+- Fixes bnc #295677
 
 -------------------------------------------------------------------
 Mon Jul 23 18:57:07 CEST 2007 - maw@suse.de
@@ -11806,7 +12534,7 @@ Mon Jun  4 19:53:35 CDT 2007 - maw@suse.de
 -------------------------------------------------------------------
 Mon Apr 30 16:49:55 CEST 2007 - ro@suse.de
 
-- added unzip to BuildRequires 
+- added unzip to BuildRequires
 
 -------------------------------------------------------------------
 Wed Apr 18 14:16:44 CEST 2007 - mfabian@suse.de
@@ -11930,7 +12658,7 @@ Sun Nov 12 11:28:00 CET 2006 - aj@suse.de
 -------------------------------------------------------------------
 Thu Nov  9 19:09:46 CET 2006 - jhargadon@suse.de
 
-- updated tango theme 
+- updated tango theme
 
 -------------------------------------------------------------------
 Sun Oct 29 12:05:46 CET 2006 - aj@suse.de
@@ -11967,10 +12695,10 @@ Fri Oct 20 11:27:23 CEST 2006 - mkoenig@suse.de
 - update to version 2.0rc3:
   * New features: Visual Refresh, Built-in phishing protection,
     Enhanced search capabilities, Improved tabbed browsing,
-    Resuming your browsing session, Previewing and subscribing 
+    Resuming your browsing session, Previewing and subscribing
     to Web feeds, Inline spell checking, Live Titles,
-    Improved Add-ons manager, JavaScript 1.7, Extended search 
-    plugin format, Updates to the extension system, 
+    Improved Add-ons manager, JavaScript 1.7, Extended search
+    plugin format, Updates to the extension system,
     Client-side session and persistent storage, SVG text
 
 -------------------------------------------------------------------
@@ -11992,7 +12720,7 @@ Mon Aug 21 12:53:50 CEST 2006 - stark@suse.de
 -------------------------------------------------------------------
 Fri Aug 11 20:51:48 CEST 2006 - stark@suse.de
 
-- fixed crash in dbus component (patch by thoenig #197928) 
+- fixed crash in dbus component (patch by thoenig #197928)
 - use external adresses for PAC configuration (#196506)
 
 -------------------------------------------------------------------
@@ -12019,7 +12747,7 @@ Thu Jun 29 20:13:28 CEST 2006 - stark@suse.de
 
 - fixed printing crash if the last used printer is not available
   anymore (#187013)
-  
+
 -------------------------------------------------------------------
 Fri Jun 16 22:11:22 CEST 2006 - stark@suse.de
 
@@ -12096,7 +12824,7 @@ Mon Apr 24 08:04:16 CEST 2006 - stark@suse.de
 - get available paper sizes from CUPS (#65482)
 - replaced/removed complicated gconfd reload in %post (#167989)
 - fixed memory leak in clipboard caching (bmo #289897)
-  
+
 -------------------------------------------------------------------
 Tue Apr 11 08:35:53 CEST 2006 - stark@suse.de
 
@@ -12145,7 +12873,7 @@ Wed Feb 22 13:24:58 CET 2006 - stark@suse.de
 Tue Feb 14 06:45:24 CET 2006 - stark@suse.de
 
 - modified lockdown patches (#67281, #67282)
-- applied set of security patches (#148876) 
+- applied set of security patches (#148876)
   bmo bugs: 282105, 307989, 315625, 320459, 323634, 325403, 325947
 
 -------------------------------------------------------------------
@@ -12187,7 +12915,7 @@ Wed Jan 25 21:33:43 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Sun Jan 22 17:06:57 CET 2006 - stark@suse.de
 
-- disable Pango if MOZ_ENABLE_PANGO is not set 
+- disable Pango if MOZ_ENABLE_PANGO is not set
   and no typical language which needs Pango is used (#143428)
 
 -------------------------------------------------------------------
@@ -12251,7 +12979,7 @@ Tue Nov 29 21:33:13 CET 2005 - stark@suse.de
 -------------------------------------------------------------------
 Fri Nov 18 07:41:41 CET 2005 - stark@suse.de
 
-- update to 1.5rc3 (20051117) 
+- update to 1.5rc3 (20051117)
 
 -------------------------------------------------------------------
 Mon Oct 31 08:58:14 CET 2005 - stark@suse.de
@@ -12299,7 +13027,7 @@ Tue Sep 20 10:24:16 CEST 2005 - stark@suse.de
 - security update to 1.0.7 (#117619)
   * MFSA 2005-57: IDN heap overrun using soft-hyphens (bmo #307259)
     (enabled IDN pref again)
-  * MFSA 2005-58: 
+  * MFSA 2005-58:
       CAN-2005-2701 Heap overrun in XBM image processing
       CAN-2005-2702 Crash on "zero-width non-joiner" sequence
       CAN-2005-2703 XMLHttpRequest header spoofing
@@ -12344,7 +13072,7 @@ Mon Aug 22 06:10:12 CEST 2005 - stark@suse.de
 - install gconf schema for lockdown also on non-NLD
 - added backports (firefox-backports.patch)
   * gtk_im_context_set_cursor_location() is not used (bmo #281339)
-  * fixed crash in imgCacheValidator::OnStartRequest() 
+  * fixed crash in imgCacheValidator::OnStartRequest()
     (bmo #293307)
 - workaround for linking with pangoxft and pangox
   (broken by gtk 2.8 update) (#105764)
@@ -12507,7 +13235,7 @@ Sat Apr 23 15:56:08 CEST 2005 - stark@suse.de
 -------------------------------------------------------------------
 Fri Apr 22 02:06:06 CEST 2005 - ro@suse.de
 
-- use mozilla-gcc4.patch 
+- use mozilla-gcc4.patch
 
 -------------------------------------------------------------------
 Thu Apr 21 12:51:19 CEST 2005 - stark@suse.de
@@ -12522,14 +13250,14 @@ Sat Apr 16 13:05:37 CEST 2005 - stark@suse.de
 -------------------------------------------------------------------
 Fri Apr 15 00:10:54 CEST 2005 - ro@suse.de
 
-- fix problem in postinstall script 
+- fix problem in postinstall script
 
 -------------------------------------------------------------------
 Wed Apr 14 09:20:02 CEST 2005 - stark@suse.de
 
 - included fixed lockdown patch for NLD
 - linked proxies within Firefox with gnome settings (NLD)
-- added gconfd restart procedure to install script 
+- added gconfd restart procedure to install script
   (only needed if gconf changes are done) (#76852)
 
 -------------------------------------------------------------------
@@ -12552,7 +13280,7 @@ Tue Mar 22 12:33:15 CET 2005 - stark@suse.de
 - added default-plugin-less-annoying from mozilla
 - use GTK2 for Flash
 - use system NSPR on SUSE releases after 9.3
-- made startscript PIS aware 
+- made startscript PIS aware
 - set g-application-name correctly (bmo #281979)
 - added man-page
 - use GTK system colors
@@ -12574,7 +13302,7 @@ Mon Mar 21 18:20:39 CET 2005 - max@suse.de
 -------------------------------------------------------------------
 Thu Mar 17 21:01:11 CET 2005 - stark@suse.de
 
-- updates from upcoming 1.0.2 
+- updates from upcoming 1.0.2
 - added again logic to use Adobe Reader 7 (#70861)
 - fixed crash in ICO decoding (#67142, bmo #245631)
 - preinstall beagle extension (#72920)
@@ -12598,7 +13326,7 @@ Wed Mar  9 21:42:05 CET 2005 - stark@suse.de
 Mon Mar  7 20:47:00 CET 2005 - stark@suse.de
 
 - disable inclusion of acrobat plugin again (#70861)
-- don't use gconfd in registration phase (#66381) 
+- don't use gconfd in registration phase (#66381)
 
 -------------------------------------------------------------------
 Mon Mar  7 16:13:29 CET 2005 - adrian@suse.de
@@ -12652,10 +13380,10 @@ Tue Feb 15 10:26:04 CET 2005 - stark@suse.de
 Thu Feb 10 06:57:33 CET 2005 - stark@suse.de
 
 - additional fireflashing fix (#50635, bmo #280664)
-- some more security related fixes 
+- some more security related fixes
   (bmo #268483, #273498, #277322)
 - fire up GTK2 filepicker if GNOME is running
-  
+
 -------------------------------------------------------------------
 Tue Feb  8 07:51:13 CET 2005 - stark@suse.de
 
@@ -12729,7 +13457,7 @@ Thu Nov 18 21:48:05 CET 2004 - stark@suse.de
 -------------------------------------------------------------------
 Thu Nov 11 09:01:58 CET 2004 - stark@suse.de
 
-- made initial window height smaller again 
+- made initial window height smaller again
 
 -------------------------------------------------------------------
 Tue Nov  9 09:09:06 CET 2004 - stark@suse.de
@@ -12739,7 +13467,7 @@ Tue Nov  9 09:09:06 CET 2004 - stark@suse.de
 -------------------------------------------------------------------
 Thu Nov  4 08:22:36 CET 2004 - stark@suse.de
 
-- update to 1.0rc2 
+- update to 1.0rc2
 
 -------------------------------------------------------------------
 Sat Oct 30 21:27:29 CEST 2004 - stark@suse.de
@@ -12771,7 +13499,7 @@ Fri Oct 15 13:51:54 CEST 2004 - stark@suse.de
 
 -------------------------------------------------------------------
 Wed Oct  6 23:11:01 CEST 2004 - joeshaw@suse.de
- 
+
  - disable gconf settings as default (Ximian #67718)
 
 -------------------------------------------------------------------
@@ -12782,7 +13510,7 @@ Wed Oct  6 07:04:05 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Tue Oct  5 10:09:04 CEST 2004 - stark@suse.de
 
-- small important fix in firefox-download.patch (Ximian #65472) 
+- small important fix in firefox-download.patch (Ximian #65472)
 
 -------------------------------------------------------------------
 Sun Oct  3 00:02:09 CEST 2004 - stark@suse.de
@@ -12805,7 +13533,7 @@ Thu Sep 30 16:14:10 CEST 2004 - shprasad@suse.de
 -------------------------------------------------------------------
 Wed Sep 29 15:54:46 CEST 2004 - stark@suse.de
 
-- fix inclusion of RealPlayer plugin (Ximian #65711) 
+- fix inclusion of RealPlayer plugin (Ximian #65711)
 
 -------------------------------------------------------------------
 Mon Sep 27 17:51:24 CEST 2004 - joeshaw@suse.de
@@ -12839,7 +13567,7 @@ Wed Sep 22 10:23:01 CEST 2004 - stark@suse.de
 - synced NLD package with 9.2 version
 - GTK2 filepicker does now ask for confirmation when overwriting
   files (Ximian #65068) by sagarwala@novell.com
-- no direct update function (Ximian #65615) by rganesan@novell.com 
+- no direct update function (Ximian #65615) by rganesan@novell.com
 - throbber linked to Novell (Ximian #66283) by rganesan@novell.com
 - make industrial the default theme for NLD
   (Ximian #65542) by joeshaw@suse.de
@@ -12861,13 +13589,13 @@ Mon Sep 20 17:57:38 CEST 2004 - federico@ximian.com
 -------------------------------------------------------------------
 Sun Sep 19 15:42:30 CEST 2004 - stark@suse.de
 
-- use GNOME system prefs only for NLD by default 
+- use GNOME system prefs only for NLD by default
   (fixes bug #45575)
 
 -------------------------------------------------------------------
 Fri Sep 17 08:59:32 CEST 2004 - stark@suse.de
 
-- joeshaw@suse.de: Update GConf patch so that proxy settings work 
+- joeshaw@suse.de: Update GConf patch so that proxy settings work
   correctly (Ximian #64461)
 - don't search Java on every path (Ximian #65383)
 - added some missing fixes for official release
@@ -12878,7 +13606,7 @@ Sat Sep 11 13:25:41 CEST 2004 - stark@suse.de
 
 - update to official 1.0PR (0.10)
 - adopted gnome-filepicker patch
-- removed obsolete CUPS hack from start-script 
+- removed obsolete CUPS hack from start-script
   (Ximian #65635, #65560)
 
 -------------------------------------------------------------------
@@ -12894,7 +13622,7 @@ Mon Sep  6 17:33:07 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Mon Sep  6 13:48:03 CEST 2004 - stark@suse.de
 
-- update to 1.0PR (aka 0.10) 
+- update to 1.0PR (aka 0.10)
 
 -------------------------------------------------------------------
 Fri Sep  3 21:35:47 CEST 2004 - stark@suse.de
@@ -12904,12 +13632,12 @@ Fri Sep  3 21:35:47 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Thu Sep  2 03:08:59 CEST 2004 - dave@suse.de
 
-- Fixed up the .desktop installation on nld 
+- Fixed up the .desktop installation on nld
 
 -------------------------------------------------------------------
 Wed Sep  1 15:05:48 CEST 2004 - shprasad@suse.de
 
-- Doesn't ask to set Firefox as default web-browser. 
+- Doesn't ask to set Firefox as default web-browser.
 
 -------------------------------------------------------------------
 Tue Aug 31 14:01:18 CEST 2004 - stark@suse.de
@@ -12927,7 +13655,7 @@ Tue Aug 24 17:35:52 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Fri Aug 20 17:12:48 CEST 2004 - stark@suse.de
 
-- update to snapshot (20040820) 
+- update to snapshot (20040820)
 
 -------------------------------------------------------------------
 Thu Aug 19 08:46:42 CEST 2004 - stark@suse.de
@@ -12951,7 +13679,7 @@ Tue Aug 17 13:12:35 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Thu Aug  5 06:27:41 CEST 2004 - stark@suse.de
 
-- security update to 0.9.3 
+- security update to 0.9.3
   (including #43312 and others)
 - handle RealPlayer 9 plugin
 
@@ -12963,13 +13691,13 @@ Mon Aug  2 15:11:51 CEST 2004 - ro@suse.de
 -------------------------------------------------------------------
 Wed Jul 28 08:46:31 CEST 2004 - stark@suse.de
 
-- added fix against certificate spoofing (#43312) 
+- added fix against certificate spoofing (#43312)
 
 -------------------------------------------------------------------
 Fri Jul 23 06:31:41 CEST 2004 - stark@suse.de
 
 - update to 0.9.2
-- added workaround for extension registry 
+- added workaround for extension registry
 - removed old (incompatible) mozex extension
 
 -------------------------------------------------------------------
@@ -12981,7 +13709,7 @@ Tue Jun 29 06:27:59 CEST 2004 - stark@suse.de
 -------------------------------------------------------------------
 Tue Jun 15 12:42:28 CEST 2004 - stark@suse.de
 
-- update to 0.9 
+- update to 0.9
 - added patch for newer freetype
 
 -------------------------------------------------------------------
@@ -12997,7 +13725,7 @@ Mon Mar 29 11:43:51 CEST 2004 - stark@suse.de
   milestone builds
 - changed profile-dir to .firefox
 - added some needed files
-- enabled gnomevfs extension 
+- enabled gnomevfs extension
 
 -------------------------------------------------------------------
 Fri Mar 26 18:09:34 CET 2004 - uli@suse.de
@@ -13007,13 +13735,13 @@ Fri Mar 26 18:09:34 CET 2004 - uli@suse.de
 -------------------------------------------------------------------
 Wed Mar  3 06:52:00 CET 2004 - stark@suse.de
 
-- removed unused patches for GTK2 build 
+- removed unused patches for GTK2 build
 - more fixes for (#35179)
 
 -------------------------------------------------------------------
 Mon Mar  1 07:32:52 CET 2004 - stark@suse.de
 
-- improved start-script to interact with thunderbird (#35179) 
+- improved start-script to interact with thunderbird (#35179)
 
 -------------------------------------------------------------------
 Thu Feb 26 06:57:05 CET 2004 - stark@suse.de
@@ -13026,15 +13754,15 @@ Thu Feb 26 06:57:05 CET 2004 - stark@suse.de
 -------------------------------------------------------------------
 Tue Feb 24 16:43:17 CET 2004 - stark@suse.de
 
-- fixed optimization for non-x86 archs 
+- fixed optimization for non-x86 archs
 
 -------------------------------------------------------------------
 Tue Feb 24 07:43:35 CET 2004 - stark@suse.de
 
-- adopted file-list and build options to original distribution 
+- adopted file-list and build options to original distribution
 - added prdtoa fix (#32963)
 - added hook for static firefox build to rebuild-databases.sh
-- added compiler flags for security/ (nss-opt.patch) 
+- added compiler flags for security/ (nss-opt.patch)
 - included mozex (mozex.mozdev.org)
 - added -Os as optimization flag
 
@@ -13042,14 +13770,14 @@ Tue Feb 24 07:43:35 CET 2004 - stark@suse.de
 Mon Feb  9 21:59:37 CET 2004 - stark@suse.de
 
 - renamed to MozillaFirefox
-- update to final version 0.8 
+- update to final version 0.8
 
 -------------------------------------------------------------------
 Fri Feb  6 08:39:15 CET 2004 - stark@suse.de
 
 - update to Firebird 0.8 (20040205)
 - added mips build fix
-- set PS printer list in MozillaFirebird.sh 
+- set PS printer list in MozillaFirebird.sh
 - use lib64 again for biarch platforms
 
 -------------------------------------------------------------------
@@ -13089,20 +13817,20 @@ Thu Jul 10 09:45:49 CEST 2003 - stark@suse.de
 -------------------------------------------------------------------
 Fri Jun 20 06:53:08 CEST 2003 - stark@suse.de
 
-- update to snapshot 20030622 (0.7pre) 
+- update to snapshot 20030622 (0.7pre)
 
 -------------------------------------------------------------------
 Mon May 19 08:54:46 CEST 2003 - stark@suse.de
 
-- update to snapshot 20030518 (0.6) 
+- update to snapshot 20030518 (0.6)
 
 -------------------------------------------------------------------
 Sun May  7 10:11:16 CEST 2003 - stark@suse.de
 
-- update to snapshot 20030507 
+- update to snapshot 20030507
 
 -------------------------------------------------------------------
 Wed Apr 30 13:26:43 CEST 2003 - stark@suse.de
 
-- initial SuSE package 
+- initial SuSE package
 
