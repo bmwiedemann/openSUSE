@@ -1,7 +1,7 @@
 #
 # spec file for package ssh-tools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,14 +18,20 @@
 
 
 Name:           ssh-tools
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        A collection of various tools using ssh
 License:        GPL-3.0-or-later
 Group:          Productivity/Networking/SSH
 URL:            https://codeberg.org/vaporup/ssh-tools/
 Source:         https://codeberg.org/vaporup/ssh-tools/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Vendored Go module dependencies (golang.org/x/crypto, golang.org/x/sys,
+# sigs.k8s.io/yaml), regenerated from go.mod/go.sum via `go mod vendor`
+# since OBS build workers have no network access.
+Source1:        %{name}-%{version}-vendor.tar.xz
 BuildRequires:  bash
+BuildRequires:  perl
+BuildRequires:  golang(API) >= 1.21
 ## SECTION test requirements
 #BuildRequires:  ShellCheck
 #BuildRequires:  openssh
@@ -33,9 +39,9 @@ BuildRequires:  bash
 ## /SECTION
 Requires:       bash
 Requires:       openssh
+Requires:       perl
 Recommends:     colordiff
 Recommends:     jo
-BuildArch:      noarch
 
 %description
 A collection of various tools using ssh
@@ -54,14 +60,24 @@ The following tools are included
   * ssh-sig: make 'ssh-keygen -Y' easier to use
 
 %prep
-%autosetup -n %{name}
-sed -i 's|#!%{_bindir}/env bash|#!/bin/bash|g' ssh-*
-sed -i 's|#!%{_bindir}/env perl|#!/usr/bin/perl|g' ssh-*
+%autosetup -p1 -n %{name} -a1
+sed -i 's|#!%{_bindir}/env bash|#!/bin/bash|g' cmd/bash/*/ssh-*
+sed -i 's|#!%{_bindir}/env perl|#!/usr/bin/perl|g' cmd/perl/*/ssh-*
 
 %build
+export GOFLAGS=-mod=vendor
+export GOPROXY=off
+export GOSUMDB=off
+export GOCACHE=$(pwd)/.cache
+go build -o ssh-authorized-keys ./cmd/go/ssh-authorized-keys
+go build -o ssh-sig ./cmd/go/ssh-sig
 
 %install
-install -D -m0755 -t %{buildroot}/%{_bindir}/ ssh-*
+install -D -m0755 -t %{buildroot}%{_bindir}/ cmd/bash/*/ssh-*
+install -D -m0755 -t %{buildroot}%{_bindir}/ cmd/perl/*/ssh-*
+install -D -m0755 ssh-authorized-keys %{buildroot}%{_bindir}/ssh-authorized-keys
+install -D -m0755 ssh-sig %{buildroot}%{_bindir}/ssh-sig
+install -D -m0644 -t %{buildroot}%{_mandir}/man1/ man/*.1
 
 #%%check
 # test disabled since it requires a network connection to an external system
@@ -71,5 +87,6 @@ install -D -m0755 -t %{buildroot}/%{_bindir}/ ssh-*
 %license LICENSE
 %doc CHANGELOG.md
 %{_bindir}/ssh-*
+%{_mandir}/man1/ssh-*.1%{?ext_man}
 
 %changelog

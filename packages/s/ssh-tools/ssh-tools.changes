@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:03:21 UTC 2026 - Frantisek Simorda <frantisek.simorda@suse.com>
+
+- Update to version 1.9
+  * Added
+    + ssh-authorized-keys: collects info from authorized_keys files
+      from every user it can find (new Go tool)
+    + ssh-sig: makes 'ssh-keygen -Y' easier to use (new Go tool)
+    + proper troff man pages for all tools
+  * Upstream restructured the source tree: tool sources moved from
+    the repository root into cmd/bash/*, cmd/perl/*, cmd/go/*
+  * Packaging changes
+    + %prep/%install reworked for the new upstream layout
+    + package is no longer "noarch" since it now ships compiled
+      Go binaries (ssh-authorized-keys, ssh-sig)
+    + added vendor tarball (ssh-tools-1.9-vendor.tar.xz) with the
+      Go module dependencies (golang.org/x/crypto, golang.org/x/sys,
+      sigs.k8s.io/yaml) generated via "go mod vendor", since the
+      OBS build workers have no network access
+    + added BuildRequires: golang(API) >= 1.21, perl
+    + added Requires: perl (needed for ssh-last)
+    + install and package man pages
+
+-------------------------------------------------------------------
 Sun Mar 24 15:41:34 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.8
