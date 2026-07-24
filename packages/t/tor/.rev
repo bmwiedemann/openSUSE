@@ -1290,4 +1290,12 @@ Update to 0.4.9.8
       crafted onion descriptor. Fixes bugs 41259 and 41261; bugfix</comment>
     <requestid>1356643</requestid>
   </revision>
+  <revision rev="135" vrev="2">
+    <srcmd5>7698638d9b43d893d91f344e08d8b446</srcmd5>
+    <version>0.4.9.9</version>
+    <time>1784923578</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367614</requestid>
+  </revision>
 </revisionlist>

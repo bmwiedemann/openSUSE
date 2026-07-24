@@ -19,7 +19,6 @@
 
 %define toruser %{name}
 %define torgroup %{name}
-%define home_dir %{_localstatedir}/lib/empty
 Name:           tor
 Version:        0.4.9.9
 Release:        0
@@ -33,6 +32,7 @@ Source3:        tor.service
 Source4:        tor.tmpfiles
 Source5:        defaults-torrc
 Source6:        tor-master.service
+Source7:        system-user-tor.conf
 Source100:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum
 Source101:      https://www.torproject.org/dist/%{name}-%{version}.tar.gz.sha256sum.asc
 Patch0:         tor-0.2.5.x-logrotate.patch
@@ -40,8 +40,8 @@ Patch1:         fix-test.patch
 BuildRequires:  libscrypt-devel
 BuildRequires:  openssl-devel >= 1.0.1
 BuildRequires:  pkgconfig >= 0.9.0
-BuildRequires:  pwdutils
 BuildRequires:  python3-base
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libevent) >= 2.0.10
 BuildRequires:  pkgconfig(liblzma)
@@ -51,10 +51,8 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(zlib)
 Requires:       logrotate
-Requires(post): %fillup_prereq
 Recommends:     torsocks
-Provides:       group(%{torgroup})
-Provides:       user(%{toruser})
+%sysusers_requires
 %systemd_ordering
 
 %description
@@ -81,7 +79,7 @@ strength of the anonymity provided. Tor is not presently suitable
 for high-stakes anonymity.
 
 %prep
-( cd $(dirname %{SOURCE0}) && echo "$(cat %{SOURCE100} | cut -d' ' -f1) tor-%{version}.tar.gz" | sha256sum --check )
+( cd $(dirname %{SOURCE0}) && sha256sum --check %{SOURCE100} )
 %autosetup -p1
 
 %build
@@ -96,14 +94,13 @@ for high-stakes anonymity.
 	--enable-gcc-warnings-advisory \
 	--docdir=%{_docdir}/%{name}
 %make_build
+%sysusers_generate_pre %{SOURCE7} %{name} system-user-%{name}.conf
 
 %install
 %make_install
 
 # missing dirs
-install -d -m 700 \
-        %{buildroot}%{_localstatedir}/lib/%{name} \
-        %{buildroot}%{_localstatedir}/tmp/%{name}
+install -d -m 700 %{buildroot}%{_localstatedir}/lib/%{name}
 
 install -d -m 755 \
         %{buildroot}%{_localstatedir}/log/%{name} \
@@ -112,8 +109,8 @@ install -d -m 755 \
 install -m 644 -D %{SOURCE3} %{buildroot}/%{_unitdir}/%{name}.service
 install -m 644 -D %{SOURCE6} %{buildroot}/%{_unitdir}/%{name}-master.service
 install -m 644 %{SOURCE5} %{buildroot}%{_datadir}/tor/defaults-torrc
-install -d -m 0755 %{buildroot}%{_tmpfilesdir}/
-install -m 0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -m 0644 -D %{SOURCE4} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -m 0644 -D %{SOURCE7} %{buildroot}%{_sysusersdir}/system-user-%{name}.conf
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}
 ln -s -f service %{buildroot}%{_sbindir}/rc%{name}-master
 
@@ -133,15 +130,12 @@ install -D -m 644 contrib/operator-tools/tor.logrotate %{buildroot}/%{_sysconfdi
 )
 %endif
 
-%pre
-getent group %{torgroup} >/dev/null || groupadd -r %{torgroup}
-getent passwd %{toruser} >/dev/null || useradd -r -g %{torgroup} -d %{home_dir} -s /sbin/nologin -c "User for %{name}" %{toruser}
+%pre -f %{name}.pre
 %service_add_pre tor.service tor-master.service
 
 %post
-%fillup_only
 %service_add_post tor.service tor-master.service
-systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %preun
 %service_del_preun tor.service tor-master.service
@@ -161,11 +155,13 @@ systemd-tmpfiles --create %{_tmpfilesdir}/tor.conf || :
 %dir %attr(0755,root,%{torgroup}) %{_sysconfdir}/%{name}
 %config(noreplace) %attr(0644,root,%{torgroup}) %{_sysconfdir}/%{name}/torrc
 %config %attr(0644,root,%{torgroup}) %{_sysconfdir}/%{name}/torrc.*
+%ghost %dir %attr(0755,%{toruser},%{torgroup}) /run/%{name}
 %attr(0700,%{toruser},%{torgroup}) %dir %{_localstatedir}/lib/%{name}
 %attr(0750,%{toruser},%{torgroup}) %dir %{_localstatedir}/log/%{name}
 %{_unitdir}/%{name}.service
 %{_unitdir}/%{name}-master.service
 %{_tmpfilesdir}/%{name}.conf
+%{_sysusersdir}/system-user-%{name}.conf
 %{_sbindir}/rc%{name}
 %{_sbindir}/rc%{name}-master
 

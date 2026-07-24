@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 16 21:43:44 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Create the tor user and group via sysusers.d (new source:
+  system-user-tor.conf) instead of useradd in %pre, which lacked an
+  install-time dependency on shadow
+- Drop fillup usage: no sysconfig fillup template is shipped
+- Use %tmpfiles_create instead of calling systemd-tmpfiles directly
+- Own /run/tor as %ghost (fixes rpmlint tmpfile-not-in-filelist)
+- Simplify tarball checksum verification in %prep
+- Drop creation of the unpackaged /var/tmp/tor directory
+- tor.service: drop obsolete syslog.target ordering, drop the
+  deprecated no-op PermissionsStartOnly, drop ReadOnlyDirectories=/
+  (redundant with ProtectSystem=strict) and rename
+  ReadWriteDirectories to ReadWritePaths
+
+-------------------------------------------------------------------
 Tue Jun  2 06:15:12 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Update to 0.4.9.9
