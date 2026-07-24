@@ -25,7 +25,7 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends ca-certificates-mozilla-prebuilt coreutils timezone openSUSE-release openSUSE-release-appliance-docker
 
 RUN set -euo pipefail; rpm --root /target -e --noscripts --nodeps bash bash-sh glibc compat-usrmerge-tools coreutils terminfo-base \
