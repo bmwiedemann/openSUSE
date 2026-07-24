@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 24 11:42:35 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.3.0
+  * Fix sdist builds from littering files
+  * Add all special keyword args to .pyi stub file
+- Update to 2.2.6
+  * Include missing sdist files
+- Update to 2.2.5
+  * Single page doc for LLM context window
+  * Formal support for Python 3.13 and 3.14
+  * Allow boolean arguments to override baked arguments
+  * Added .pyi typing stub
+  * Improvements to str representation of Command
+  * Bugfix where rare ProcessLookupError can be thrown
+  * Various spelling corrections
+- Update to 2.2.4 
+  * Bugfix regression where correct gid was not set on the launched process
+- Update to 2.2.3 (fixes CVE-2026-54552, bsc#1272424)
+  * Bugfix where supplemental groups were not dropped when using _uid
+
+-------------------------------------------------------------------
 Tue Feb 25 20:17:05 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.2:

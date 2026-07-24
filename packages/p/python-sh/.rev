@@ -211,4 +211,12 @@
   * Formal support for Python 3.12</comment>
     <requestid>1248475</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f6969857c2277542d85fa8840857f49c</srcmd5>
+    <version>2.3.0</version>
+    <time>1784923630</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367679</requestid>
+  </revision>
 </revisionlist>

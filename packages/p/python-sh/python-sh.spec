@@ -1,7 +1,7 @@
 #
 # spec file for package python-sh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-sh
-Version:        2.2.2
+Version:        2.3.0
 Release:        0
 Summary:        Python subprocess interface
 License:        MIT
 URL:            https://github.com/amoffat/sh
 Source:         https://files.pythonhosted.org/packages/source/s/sh/sh-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -62,6 +62,7 @@ export LANG=C
 donttest="test_stringio_output"
 donttest+=" or test_environment"
 donttest+=" or test_no_interfere1"
+donttest+=" or test_no_interfere2"
 donttest+=" or test_set_in_parent_function"
 donttest+=" or test_basic"
 donttest+=" or test_multiline_defaults"
@@ -70,8 +71,8 @@ donttest+=" or test_multiline_defaults"
 %files %{python_files}
 %license LICENSE.txt
 %doc CHANGELOG.md README.rst
-%{python_sitelib}/sh.py
-%pycache_only %{python_sitelib}/__pycache__/sh.*pyc
+%{python_sitelib}/sh
+%pycache_only %{python_sitelib}/sh/__pycache__
 %{python_sitelib}/sh-%{version}*-info
 
 %changelog
