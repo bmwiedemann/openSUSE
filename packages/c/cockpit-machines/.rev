@@ -413,4 +413,33 @@ outside of Factory
     <comment>- Update suse_version requirement to function with the planned bump jsc#PED-15820</comment>
     <requestid>1336737</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4520ca2b1cf73b4d31be70025692f7ee</srcmd5>
+    <version>354</version>
+    <time>1784923615</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 354
+  * 354
+    - Bug fixes and translation updates
+  * 353
+    - Bug fixes and translation updates
+
+- Update to 352
+  * 352
+    - Improvements to the &quot;Add disk&quot; and &quot;Create Volume&quot; dialogs
+  * 351
+    - Bug fixes and translation updates
+
+- Update to 350
+  * 350 Latest
+    - Bug fixes and translation updates
+  * 349.1
+    - fix extra-args related regression in &quot;Create and edit&quot;
+  * 349
+    - Support virt-install --extra-args when creating machines
+    - Bug fixes and translation updates
+
+- Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904)</comment>
+    <requestid>1367650</requestid>
+  </revision>
 </revisionlist>

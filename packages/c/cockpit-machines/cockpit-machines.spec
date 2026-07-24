@@ -17,7 +17,7 @@
 
 
 Name:           cockpit-machines
-Version:        348
+Version:        354
 Release:        0
 Summary:        Cockpit user interface for virtual machines
 License:        LGPL-2.1-or-later AND MIT

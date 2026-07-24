@@ -8,18 +8,18 @@ Subject: Explicitly set UEFI as default firmware
  1 file changed, 5 insertions(+)
 
 diff --git a/src/libvirtApi/domain.ts b/src/libvirtApi/domain.ts
-index 963d25f4..9ac69e77 100644
+index cb0ebc47..aa2e6903 100644
 --- a/src/libvirtApi/domain.ts
 +++ b/src/libvirtApi/domain.ts
-@@ -361,6 +361,7 @@ interface DomainSpec {
-     userPassword: optString,
+@@ -493,6 +493,7 @@ interface DomainSpec {
      vmName: string,
      sshKeys: string[],
-+    firmware: 'bios' | 'uefi' | undefined
+     extraArguments: optString,
++    firmware: 'bios' | 'uefi' | undefined,
  }
  
  export async function domainCreate({
-@@ -398,6 +399,9 @@ export async function domainCreate({
+@@ -525,6 +526,9 @@ export async function domainCreate({
 
      type DomainCreateScriptArgs = { connectionName: ConnectionName, type: string } & DomainSpec;
 
@@ -29,10 +29,10 @@ index 963d25f4..9ac69e77 100644
      const args: DomainCreateScriptArgs = {
          connectionName,
          memorySize,
-@@ -416,6 +420,7 @@ export async function domainCreate({
-         userPassword,
+@@ -544,6 +548,7 @@ export async function domainCreate({
          vmName,
          sshKeys,
+         extraArguments,
 +        firmware: defaultFirmware,
      };
  
@@ -56,26 +56,26 @@ are set
  1 file changed, 10 insertions(+)
 
 diff --git a/src/libvirtApi/domain.ts b/src/libvirtApi/domain.ts
-index 61926d52..5ba12a0b 100644
+index cb0ebc47..6cde28c1 100644
 --- a/src/libvirtApi/domain.ts
 +++ b/src/libvirtApi/domain.ts
-@@ -1297,6 +1297,16 @@ export async function domainSetOSFirmware({
-     if (loaderElem)
-         loaderElem.remove();
+@@ -1193,6 +1193,16 @@ export async function domainSetOSFirmware({
+         if (loaderElem)
+             loaderElem.remove();
  
-+    // remove efi related things so it gets actually disabled
-+    if (!loaderType || loaderType === "bios") {
-+        const fwElem = getSingleOptionalElem(osElem, "firmware");
-+        if (fwElem)
-+            fwElem.remove();
-+        const nvramElem = getSingleOptionalElem(osElem, "nvram");
-+        if (nvramElem)
-+            nvramElem.remove();
-+    }
++        // remove efi related things so it gets actually disabled
++        if (!loaderType || loaderType === "bios") {
++            const fwElem = getSingleOptionalElem(osElem, "firmware");
++            if (fwElem)
++                fwElem.remove();
++            const nvramElem = getSingleOptionalElem(osElem, "nvram");
++            if (nvramElem)
++                nvramElem.remove();
++        }
 +
-     if (!loaderType)
-         osElem.removeAttribute("firmware");
-     else
+         if (!loaderType)
+             osElem.removeAttribute("firmware");
+         else
 -- 
 2.50.0
 

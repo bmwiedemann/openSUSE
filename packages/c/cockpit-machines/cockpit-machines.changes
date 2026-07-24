@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Jun 30 10:48:02 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 354
+  * 354
+    - Bug fixes and translation updates
+  * 353
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
+Wed Apr 22 09:51:05 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 352
+  * 352
+    - Improvements to the "Add disk" and "Create Volume" dialogs
+  * 351
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
+Tue Mar 24 13:47:39 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to 350
+  * 350 Latest
+    - Bug fixes and translation updates
+  * 349.1
+    - fix extra-args related regression in "Create and edit"
+  * 349
+    - Support virt-install --extra-args when creating machines
+    - Bug fixes and translation updates
+
+-------------------------------------------------------------------
 Wed Mar  4 09:44:23 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Update suse_version requirement to function with the planned bump jsc#PED-15820
@@ -8,7 +38,7 @@ Tue Feb 24 09:04:26 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Drop explict dependency on libvirt, this was added so libvirtd.socket was on the system
   this is now provided by the dependency on libvirt-daemon-qemu bsc#1258040, bsc#1236149
-- Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996)
+- Update to 348 (fixes bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904)
   * Translation updates
   * Convert license headers to SPDX format
   * Now requires cockpit-devel >= 356 due to the replacement of xterm/addon-canvas with xterm/addon-webgl
