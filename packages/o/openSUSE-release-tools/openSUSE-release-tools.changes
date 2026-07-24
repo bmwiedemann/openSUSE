@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 17 09:03:47 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260717.a122b2ed:
+  * devel_update: Use POSIX locale for sorting
+
+-------------------------------------------------------------------
+Mon Jul 13 12:58:50 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260713.81516a75:
+  * Add new command syncnewpackages to devel_update.sh
+  * Write "flavor" elements instead of deprecated "package" ones in _multibuild
+
+-------------------------------------------------------------------
 Fri Jun 19 15:08:53 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260619.fab48a07:
