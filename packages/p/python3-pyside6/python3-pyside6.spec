@@ -302,6 +302,9 @@ pushd sources/%{pyside_flavor}
 %{qt6_install}
 popd
 
+# Prepare scripts
+%{__mypython} setup.py --qtpaths=%{_qt6_bindir}/qtpaths install_scripts --install-dir=%{buildroot}%{_bindir}
+
 %if "%{pyside_flavor}" == "shiboken6"
 # Move shiboken_tools files to the right place
 _shiboken_generator_install_root=$(<sources/shiboken6_generator/_shiboken_generator_install_root)
@@ -314,12 +317,17 @@ sed -i 's@^#.*env python.*$@#!%{__mypython}@' %{buildroot}%{_bindir}/shiboken_to
 
 # Delete weird copies
 rm -r %{buildroot}%{_prefix}/shiboken6
+# They don't belong to this flavor
+rm %{buildroot}%{_bindir}/pyside6-*
 
 # and fix broken library location
 sed -i 's#/shiboken6/libshiboken6#/%{_lib}/libshiboken6#' %{buildroot}%{_qt6_cmakedir}/Shiboken6/Shiboken6Targets-*.cmake
 
 %else
 rm %{buildroot}%{_datadir}/PySide6/typesystems/*_{mac,win}.xml
+
+# Don't get them here
+rm %{buildroot}%{_bindir}/shiboken6*
 
 # Also fix pyside manually
 mv %{buildroot}%{_prefix}/PySide6/* %{buildroot}%{_libdir}
@@ -329,7 +337,14 @@ sed -i 's#/PySide6/libpyside6#/%{_lib}/libpyside6#' %{buildroot}%{_qt6_cmakedir}
 sed -i 's#/typesystems#/share/PySide6/typesystems#' %{buildroot}%{_qt6_cmakedir}/PySide6/*.cmake
 sed -i 's#/glue#/share/PySide6/glue#' %{buildroot}%{_qt6_cmakedir}/PySide6/*.cmake
 
+# Move required modules  to the sitearch
+mkdir -p %{buildroot}%{mypython_sitearch}/PySide6/scripts
+cp -r sources/pyside-tools/{android_deploy.py,deploy_lib,deploy.py,metaobjectdump.py,project_lib,project.py,pyside_tool.py,qml.py,qtpy2cpp_lib,qtpy2cpp.py,requirements-android.txt} %{buildroot}%{mypython_sitearch}/PySide6/scripts
+
+sed -i 's@^#.*env python.*$@#!%{__mypython}@' %{buildroot}%{_bindir}/pyside6-*
+
 %endif
+
 # Install egg-info
 # qtpaths is needed
 export PATH="%{_qt6_bindir}:$PATH"
@@ -337,6 +352,15 @@ export PATH="%{_qt6_bindir}:$PATH"
 # fdupes macro does not expand this (!?)
 sitearch=%{buildroot}%{mypython_sitearch}
 cp -r *.egg-info $sitearch
+
+# This will conflict otherwise as both flavors install the same egg-info
+%if "%{pyside_flavor}" == "shiboken6"
+rm -r $sitearch/PySide6.egg-info/
+%else
+rm -r $sitearch/shiboken6.egg-info/
+rm -r $sitearch/shiboken6_generator.egg-info/
+%endif
+
 %fdupes $sitearch
 
 %fdupes %{buildroot}%{_libdir}/cmake
@@ -424,12 +448,14 @@ popd
 %doc doc/changelogs/changes-*
 %{_libdir}/lib%{pyside_flavor}.abi3.so.*
 %if "%{pyside_flavor}" == "shiboken6"
-%{_bindir}/shiboken6
 %{_bindir}/shiboken_tool.py
+%{_bindir}/shiboken6-genpyi
+%{_bindir}/shiboken6
 %{mypython_sitearch}/shiboken6/
 %{mypython_sitearch}/shiboken6_generator/
 %endif
 %if "%{pyside_flavor}" == "pyside6"
+%{_bindir}/pyside6*
 # This library is used to interpret .rep files from Python
 # it is intentionally static (also see https://bugreports.qt.io/browse/PYSIDE-862)
 %{_libdir}/libpyside6remoteobjects.a

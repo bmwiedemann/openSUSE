@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Jul 22 19:38:33 UTC 2026 - Luca Beltrame <lbeltrame@kde.org>
+
+- Remove further conflicting files between flavors
+
+-------------------------------------------------------------------
+Sun Jul 19 19:00:37 UTC 2026 - Luca Beltrame <lbeltrame@kde.org>
+
+- Remove duplicate entry_points.txt across packages
+
+-------------------------------------------------------------------
+Wed Jul 15 11:56:16 UTC 2026 - Luca Beltrame <lbeltrame@kde.org>
+
+- Include per-flavor tools (boo#1271427)
+
+-------------------------------------------------------------------
 Thu May 14 15:05:36 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.1
@@ -93,7 +108,7 @@ Wed May  7 07:44:43 UTC 2025 - Christophe Marin <christophe@krop.fr>
 -------------------------------------------------------------------
 Thu Apr 24 10:40:36 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
-- Exclude a number of tests that segfault in ppc64le 
+- Exclude a number of tests that segfault in ppc64le
 
 -------------------------------------------------------------------
 Fri Apr  4 13:13:03 UTC 2025 - Christophe Marin <christophe@krop.fr>

@@ -435,4 +435,14 @@
     <comment>Qt 6.11.1 (+ backports) (forwarded request 1354945 from krop)</comment>
     <requestid>1355409</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>63eda85502741cf5754ebdf24b2eb0c9</srcmd5>
+    <version>6.11.1</version>
+    <time>1784923511</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove further conflicting files between flavors
+- Remove duplicate entry_points.txt across packages
+- Include per-flavor tools (boo#1271427)</comment>
+    <requestid>1367586</requestid>
+  </revision>
 </revisionlist>
