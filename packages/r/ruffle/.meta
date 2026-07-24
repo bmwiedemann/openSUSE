@@ -1,0 +1,5 @@
+<package name="ruffle" project="openSUSE:Factory">
+  <title>Adobe Flash Player emulator written in Rust</title>
+  <description>Ruffle is an Adobe Flash Player emulator written in the Rust programming language. Ruffle targets both the desktop and the web using WebAssembly.</description>
+  <url>https://github.com/ruffle-rs/ruffle</url>
+</package>
