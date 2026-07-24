@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 17 08:59:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Support-threaded-dependency-collection-in-maven-reso.patch
+    + Support threaded dependency collection in maven-resolver 2.x
+
+-------------------------------------------------------------------
 Tue Jun  3 10:35:57 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on objectweb-asm to build with sisu 0.9.0.M4

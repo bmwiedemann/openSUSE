@@ -207,4 +207,12 @@
     <comment>Tiny fixes</comment>
     <requestid>1352498</requestid>
   </revision>
+  <revision rev="27" vrev="5">
+    <srcmd5>dbf4d32a7b53624933bc7a635b5496da</srcmd5>
+    <version>4.3.0</version>
+    <time>1784923530</time>
+    <user>dimstar_suse</user>
+    <comment>Support threaded dependency collection in maven-resolver 2.x</comment>
+    <requestid>1367568</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,103 @@
+From 9320810116e42653d230da7a56e0f2855836c657 Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Fri, 17 Jul 2026 10:26:40 +0200
+Subject: [PATCH] Support threaded dependency collection in maven-resolver 2.x
+
+Maven resolver 2.x introduces parallel dependency collection. This
+caused an issue for XMvn: non-thread-safe collections could crash with
+ConcurrentModificationExceptions.
+
+To fix this, standard collections have been replaced with thread-safe
+alternatives. Additionally, explicit sorting has been added to the
+dependency resolution lists to keep the build output deterministic.
+---
+ .../maven/DependencyVersionReportGenerator.java     |  3 ++-
+ .../connector/maven/XMvnMojoExecutionListener.java  | 13 +++++++++++--
+ .../xmvn/connector/maven/XMvnWorkspaceReader.java   |  3 ++-
+ 3 files changed, 15 insertions(+), 4 deletions(-)
+
+diff --git a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/DependencyVersionReportGenerator.java b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/DependencyVersionReportGenerator.java
+index 76a94b47..6d4116c8 100644
+--- a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/DependencyVersionReportGenerator.java
++++ b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/DependencyVersionReportGenerator.java
+@@ -15,6 +15,7 @@
+  */
+ package org.fedoraproject.xmvn.connector.maven;
+ 
++import java.util.Collections;
+ import java.util.LinkedHashMap;
+ import java.util.Map;
+ import java.util.Set;
+@@ -41,7 +42,7 @@ class DependencyVersionReportGenerator
+ {
+     private final Logger logger;
+ 
+-    private final Map<Artifact, ResolutionResult> data = new LinkedHashMap<>();
++    private final Map<Artifact, ResolutionResult> data = Collections.synchronizedMap( new LinkedHashMap<>() );
+ 
+     public DependencyVersionReportGenerator( Logger logger )
+     {
+diff --git a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnMojoExecutionListener.java b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnMojoExecutionListener.java
+index 8b6726c1..61024960 100644
+--- a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnMojoExecutionListener.java
++++ b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnMojoExecutionListener.java
+@@ -26,8 +26,10 @@ import java.nio.file.Path;
+ import java.nio.file.Paths;
+ import java.util.ArrayList;
+ import java.util.Collections;
++import java.util.Comparator;
+ import java.util.List;
+ import java.util.Properties;
++import java.util.stream.Collectors;
+ 
+ import javax.inject.Inject;
+ import javax.inject.Named;
+@@ -140,7 +142,7 @@ public class XMvnMojoExecutionListener
+         trySetBeanProperty( buildPluginManager, "mavenPluginManager", proxy );
+     }
+ 
+-    private final List<String[]> resolutions = new ArrayList<>();
++    private final List<String[]> resolutions = Collections.synchronizedList( new ArrayList<>() );
+ 
+     private static String getBeanProperty( Object bean, String... getterNames )
+     {
+@@ -291,7 +293,14 @@ public class XMvnMojoExecutionListener
+         }
+         else if ( XMVN_BUILDDEP.equals( execution ) )
+         {
+-            trySetBeanProperty( mojo, "resolutions", Collections.unmodifiableList( new ArrayList<>( resolutions ) ) );
++            List<String[]> sortedResolutions;
++            synchronized ( resolutions )
++            {
++                sortedResolutions = resolutions.stream()
++                        .sorted( Comparator.comparing( a -> a[0] ) )
++                        .collect( Collectors.toList() );
++            }
++            trySetBeanProperty( mojo, "resolutions", Collections.unmodifiableList( sortedResolutions ) );
+         }
+     }
+ 
+diff --git a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnWorkspaceReader.java b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnWorkspaceReader.java
+index 15a33a15..c640953f 100644
+--- a/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnWorkspaceReader.java
++++ b/xmvn-connector/src/main/java/org/fedoraproject/xmvn/connector/maven/XMvnWorkspaceReader.java
+@@ -20,6 +20,7 @@ import java.nio.file.Path;
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.List;
++import java.util.concurrent.CopyOnWriteArrayList;
+ 
+ import javax.inject.Inject;
+ import javax.inject.Named;
+@@ -46,7 +47,7 @@ public class XMvnWorkspaceReader
+ 
+     private static final WorkspaceRepository REPOSITORY = new WorkspaceRepository();
+ 
+-    private final List<ResolutionListener> listeners = new ArrayList<>();
++    private final List<ResolutionListener> listeners = new CopyOnWriteArrayList<>();
+ 
+     public void addResolutionListener( ResolutionListener listener )
+     {
+-- 
+2.55.0
+
