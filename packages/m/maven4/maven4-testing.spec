@@ -18,9 +18,9 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-rc-5
+%global file_version 4.0.0-SNAPSHOT
 Name:           %{base_name}%{?maven_version_suffix}-testing
-Version:        4.0.0~rc5
+Version:        4.0.0~20260724.2b1209f9a3
 Release:        0
 Summary:        Maven Plugin Testing Mechanism
 # maven itself is ASL 2.0
@@ -28,29 +28,24 @@ Summary:        Maven Plugin Testing Mechanism
 License:        Apache-2.0 AND MIT
 Group:          Development/Tools/Building
 URL:            https://maven.apache.org/
-Source0:        https://archive.apache.org/dist/%{base_name}/%{base_name}-4/%{file_version}/source/apache-%{base_name}-%{file_version}-src.tar.gz
+Source0:        %{base_name}-%{version}.tar.xz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       apache-%{base_name}-build.tar.xz
+Source10:       %{base_name}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
-# Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
-Patch4:         0001-Fix-a-ConcurrentModificationException-11429.patch
-Patch5:         0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
-Patch6:         maven4-resolver2017.patch
 BuildRequires:  ant
 BuildRequires:  apiguardian
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
 BuildRequires:  junit5-minimal
-BuildRequires:  maven-resolver2-api >= 2.0.14
-BuildRequires:  maven-resolver2-connector-basic
-BuildRequires:  maven-resolver2-impl
-BuildRequires:  maven-resolver2-spi
-BuildRequires:  maven-resolver2-transport-apache
-BuildRequires:  maven-resolver2-transport-file
+BuildRequires:  maven-resolver-api >= 2.0.17
+BuildRequires:  maven-resolver-connector-basic
+BuildRequires:  maven-resolver-impl
+BuildRequires:  maven-resolver-spi
+BuildRequires:  maven-resolver-transport-apache
+BuildRequires:  maven-resolver-transport-file
 BuildRequires:  maven4-lib
 BuildRequires:  mockito
 BuildRequires:  opentest4j
@@ -58,7 +53,7 @@ BuildRequires:  plexus-classworlds
 BuildRequires:  plexus-sec-dispatcher4
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml4
-BuildRequires:  slf4j2
+BuildRequires:  slf4j
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
@@ -76,18 +71,12 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%setup -q -n apache-%{base_name}-%{file_version} -a10
+%setup -q -n %{base_name}-%{version} -a10
 
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
-%pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
@@ -97,8 +86,6 @@ BuildArch:      noarch
 %pom_remove_dep :jline-terminal-ffm impl/maven-jline
 %pom_remove_dep :jline-terminal-ffm apache-maven
 %pom_remove_dep -r :logback-classic
-
-%pom_disable_module maven-executor impl
 
 find -name '*.java' -exec sed -i 's/\r//' {} +
 find -name 'pom.xml' -exec sed -i 's/\r//' {} +
@@ -148,14 +135,14 @@ build-jar-repository -s lib \
   maven/maven-plugin-api-4 \
   maven/maven-support \
   maven/maven-xml \
-  maven-resolver/maven-resolver-api-2 \
-  maven-resolver/maven-resolver-connector-basic-2 \
-  maven-resolver/maven-resolver-impl-2 \
-  maven-resolver/maven-resolver-named-locks-2 \
-  maven-resolver/maven-resolver-spi-2 \
-  maven-resolver/maven-resolver-util-2 \
-  maven-resolver/maven-resolver-transport-apache-2 \
-  maven-resolver/maven-resolver-transport-file-2 \
+  maven-resolver/maven-resolver-api \
+  maven-resolver/maven-resolver-connector-basic \
+  maven-resolver/maven-resolver-impl \
+  maven-resolver/maven-resolver-named-locks \
+  maven-resolver/maven-resolver-spi \
+  maven-resolver/maven-resolver-util \
+  maven-resolver/maven-resolver-transport-apache \
+  maven-resolver/maven-resolver-transport-file \
   mockito/mockito-core \
   opentest4j/opentest4j \
   org.eclipse.sisu.plexus \
@@ -163,7 +150,7 @@ build-jar-repository -s lib \
   plexus/sec-dispatcher-4 \
   plexus/utils \
   plexus/xml-4 \
-  slf4j/api-2
+  slf4j/api
 
 %{ant} -f impl/maven-testing/build.xml \
   package javadoc

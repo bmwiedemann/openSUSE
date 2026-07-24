@@ -1,8 +1,48 @@
 -------------------------------------------------------------------
+Fri Jul 24 10:07:35 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to git revision 2b1209f9a38fb3e0f069efa39fd372871cc830f9
+  from 24th of July 2026
+  * Allow building against maven-resolver-2.0.21
+  * General improvements on the way to 4.0.0 release
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+    + rebase
+- Added patch:
+  * jline-3.30.x.patch
+    + allow building with jline3 < 4.1 on systems that
+      have jline3 3.30.x
+- Removed patches:
+  * 0001-Fix-a-ConcurrentModificationException-11429.patch
+  * 0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
+  * 0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
+  * maven4-resolver2017.patch
+  * jline-4.1.x.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
+Mon Jul 13 12:39:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not use the slf4j2 compatibility package, as the base slf4j
+  package is now on version 2.0.18
+- Do not use the maven-resolver2 compatibility package, as the base
+  maven-resolver package is now on version 2.0.20
+
+-------------------------------------------------------------------
+Wed Jul  1 05:03:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jline-4.1.x.patch
+    + implements a new interface funcion added in jline3 4.1.0
+    + applied if the jline3 version is >= 4.1
+    + allows upgrading to jline3 versions >= 4.1 if needed
+
+-------------------------------------------------------------------
 Fri May 15 23:37:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
-- Generate the build.propertis file containing properties needed for
-  resources filtering dynamically during the build
+- Generate the build.properties file containing properties needed
+  for resources filtering dynamically during the build
 
 -------------------------------------------------------------------
 Sun May 10 20:00:18 UTC 2026 - Fridrich Strba <fstrba@suse.com>

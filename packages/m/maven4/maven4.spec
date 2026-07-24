@@ -18,11 +18,11 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-rc-5
+%global file_version 4.0.0-SNAPSHOT
 %global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
 Name:           %{base_name}%{?maven_version_suffix}
-Version:        4.0.0~rc5
+Version:        4.0.0~20260724.2b1209f9a3
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -30,19 +30,14 @@ Summary:        Java project management and project comprehension tool
 License:        Apache-2.0 AND MIT
 Group:          Development/Tools/Building
 URL:            https://maven.apache.org/
-Source0:        https://archive.apache.org/dist/%{base_name}/%{base_name}-4/%{file_version}/source/apache-%{base_name}-%{file_version}-src.tar.gz
+Source0:        %{base_name}-%{version}.tar.xz
 Source1:        maven-bash-completion
 Source2:        mvn.1
-Source10:       apache-%{base_name}-build.tar.xz
+Source10:       %{base_name}-build.tar.xz
 Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
-# Downstream-specific, avoids dependency on logback
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0001-Maven-4.0.x-w-Resolver-2.0.14-SNAPSHOT-11530.patch
-Patch4:         0001-Fix-a-ConcurrentModificationException-11429.patch
-Patch5:         0002-Fix-field-accessibility-leak-in-EnhancedCompositeBea.patch
-Patch6:         maven4-resolver2017.patch
-Patch7:         jline-4.1.x.patch
+Patch3:         jline-3.30.x.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
 BuildRequires:  apache-commons-cli
@@ -50,6 +45,7 @@ BuildRequires:  apache-commons-codec
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-logging
 BuildRequires:  atinject
+BuildRequires:  domtrip >= 1.6.0
 BuildRequires:  fdupes
 BuildRequires:  glassfish-annotation-api
 BuildRequires:  google-gson
@@ -60,8 +56,7 @@ BuildRequires:  httpcomponents-core
 BuildRequires:  jakarta-inject
 BuildRequires:  java-devel >= 17
 BuildRequires:  javapackages-local
-BuildRequires:  jcl-over-slf4j2
-BuildRequires:  jdom2
+BuildRequires:  jcl-over-slf4j
 BuildRequires:  jline3
 BuildRequires:  jline3-builtins
 BuildRequires:  jline3-console
@@ -72,16 +67,17 @@ BuildRequires:  jline3-reader
 BuildRequires:  jline3-style
 BuildRequires:  jline3-terminal
 BuildRequires:  jline3-terminal-jni
-BuildRequires:  maven-resolver2-api >= 2.0.14
-BuildRequires:  maven-resolver2-connector-basic
-BuildRequires:  maven-resolver2-impl >= 2.0.14
-BuildRequires:  maven-resolver2-named-locks
-BuildRequires:  maven-resolver2-spi
-BuildRequires:  maven-resolver2-transport-apache
-BuildRequires:  maven-resolver2-transport-file
-BuildRequires:  maven-resolver2-transport-jdk
-BuildRequires:  maven-resolver2-transport-wagon
-BuildRequires:  maven-resolver2-util
+BuildRequires:  jul-to-slf4j
+BuildRequires:  maven-resolver-api >= 2.0.14
+BuildRequires:  maven-resolver-connector-basic
+BuildRequires:  maven-resolver-impl >= 2.0.14
+BuildRequires:  maven-resolver-named-locks
+BuildRequires:  maven-resolver-spi
+BuildRequires:  maven-resolver-transport-apache
+BuildRequires:  maven-resolver-transport-file
+BuildRequires:  maven-resolver-transport-jdk
+BuildRequires:  maven-resolver-transport-wagon
+BuildRequires:  maven-resolver-util
 BuildRequires:  maven-wagon-file
 BuildRequires:  maven-wagon-http
 BuildRequires:  maven-wagon-http-shared
@@ -99,7 +95,7 @@ BuildRequires:  plexus-xml4
 BuildRequires:  python3
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
-BuildRequires:  slf4j2
+BuildRequires:  slf4j
 BuildRequires:  stax2-api
 BuildRequires:  unix2dos
 BuildRequires:  woodstox-core
@@ -128,6 +124,7 @@ Requires:       apache-commons-codec
 Requires:       apache-commons-lang3
 Requires:       apache-commons-logging
 Requires:       atinject
+Requires:       domtrip
 Requires:       glassfish-annotation-api
 Requires:       google-gson
 Requires:       google-guice
@@ -135,7 +132,7 @@ Requires:       guava
 Requires:       httpcomponents-client
 Requires:       httpcomponents-core
 Requires:       jakarta-inject
-Requires:       jcl-over-slf4j2
+Requires:       jcl-over-slf4j
 Requires:       jline3-builtins
 Requires:       jline3-console
 Requires:       jline3-console-ui
@@ -145,16 +142,18 @@ Requires:       jline3-reader
 Requires:       jline3-style
 Requires:       jline3-terminal
 Requires:       jline3-terminal-jni
-Requires:       maven-resolver2-api
-Requires:       maven-resolver2-connector-basic
-Requires:       maven-resolver2-impl
-Requires:       maven-resolver2-named-locks
-Requires:       maven-resolver2-spi
-Requires:       maven-resolver2-transport-apache
-Requires:       maven-resolver2-transport-file
-Requires:       maven-resolver2-transport-jdk
-Requires:       maven-resolver2-transport-wagon
-Requires:       maven-resolver2-util
+Requires:       jspecify
+Requires:       jul-to-slf4j
+Requires:       maven-resolver-api
+Requires:       maven-resolver-connector-basic
+Requires:       maven-resolver-impl
+Requires:       maven-resolver-named-locks
+Requires:       maven-resolver-spi
+Requires:       maven-resolver-transport-apache
+Requires:       maven-resolver-transport-file
+Requires:       maven-resolver-transport-jdk
+Requires:       maven-resolver-transport-wagon
+Requires:       maven-resolver-util
 Requires:       maven-wagon-file
 Requires:       maven-wagon-http
 Requires:       maven-wagon-http-shared
@@ -170,7 +169,7 @@ Requires:       plexus-utils
 Requires:       plexus-xml4
 Requires:       sisu-inject
 Requires:       sisu-plexus
-Requires:       slf4j2
+Requires:       slf4j
 Requires:       stax2-api
 Requires:       woodstox-core
 Provides:       %{name}-bootstrap
@@ -188,21 +187,15 @@ BuildArch:      noarch
 %{summary}.
 
 %prep
-%setup -q -n apache-%{base_name}-%{file_version} -a10
+%setup -q -n %{base_name}-%{version} -a10
 
 %patch -P 1 -p1
 %patch -P 2 -p1
+%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal < 4.1}%{!?pkg_vcmp:0}
 %patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
-%if %{?pkg_vcmp:%pkg_vcmp jline3-terminal >= 4.1}%{!?pkg_vcmp:0}
-%patch -P 7 -p1
 %endif
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
-%pom_xpath_set pom:project/pom:properties/pom:resolverVersion 2
-%pom_xpath_set pom:project/pom:properties/pom:slf4jVersion 2
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom
@@ -212,8 +205,6 @@ BuildArch:      noarch
 %pom_remove_dep :jline-terminal-ffm impl/maven-jline
 %pom_remove_dep :jline-terminal-ffm apache-maven
 %pom_remove_dep -r :logback-classic
-
-%pom_disable_module maven-executor impl
 
 find -name '*.java' -exec sed -i 's/\r//' {} +
 find -name 'pom.xml' -exec sed -i 's/\r//' {} +
@@ -266,25 +257,26 @@ build-jar-repository -s lib \
     apache-commons-lang3 \
     atinject \
     commons-cli \
+    domtrip/core \
+    domtrip/maven \
     guice/google-guice \
     jakarta-inject \
-    jdom2/jdom2 \
     jline3/jansi-core \
     jline3/jline-builtins \
     jline3/jline-console \
     jline3/jline-console-ui \
     jline3/jline-reader \
     jline3/jline-terminal \
-    maven-resolver/maven-resolver-api-2 \
-    maven-resolver/maven-resolver-connector-basic-2 \
-    maven-resolver/maven-resolver-impl-2 \
-    maven-resolver/maven-resolver-named-locks-2 \
-    maven-resolver/maven-resolver-spi-2 \
-    maven-resolver/maven-resolver-transport-apache-2 \
-    maven-resolver/maven-resolver-transport-file-2 \
-    maven-resolver/maven-resolver-transport-jdk-2 \
-    maven-resolver/maven-resolver-transport-wagon-2 \
-    maven-resolver/maven-resolver-util-2 \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-connector-basic \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
+    maven-resolver/maven-resolver-spi \
+    maven-resolver/maven-resolver-transport-apache \
+    maven-resolver/maven-resolver-transport-file \
+    maven-resolver/maven-resolver-transport-jdk \
+    maven-resolver/maven-resolver-transport-wagon \
+    maven-resolver/maven-resolver-util \
     maven-wagon/provider-api \
     methanol \
     objectweb-asm/asm \
@@ -297,7 +289,8 @@ build-jar-repository -s lib \
     plexus/sec-dispatcher-4 \
     plexus/utils \
     plexus/xml-4 \
-    slf4j/api-2 \
+    slf4j/api \
+    slf4j/jul-to-slf4j \
     stax2-api \
     woodstox-core
 
@@ -339,7 +332,6 @@ for i in \
   impl/maven-cli \
   impl/maven-core \
   impl/maven-di \
-  impl/maven-executor \
   impl/maven-impl \
   impl/maven-jline \
   impl/maven-logging \
@@ -371,6 +363,8 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     atinject \
     commons-cli \
     commons-codec \
+    domtrip/core \
+    domtrip/maven \
     glassfish-annotation-api \
     google-gson/gson \
     guava/guava \
@@ -378,7 +372,6 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
     jakarta-inject \
-    jdom2/jdom2 \
     jline3/jansi-core \
     jline3/jline-builtins \
     jline3/jline-console \
@@ -388,16 +381,17 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     jline3/jline-style \
     jline3/jline-terminal \
     jline3/jline-terminal-jni \
-    maven-resolver/maven-resolver-api-2 \
-    maven-resolver/maven-resolver-connector-basic-2 \
-    maven-resolver/maven-resolver-impl-2 \
-    maven-resolver/maven-resolver-named-locks-2 \
-    maven-resolver/maven-resolver-spi-2 \
-    maven-resolver/maven-resolver-transport-apache-2 \
-    maven-resolver/maven-resolver-transport-file-2 \
-    maven-resolver/maven-resolver-transport-jdk-2 \
-    maven-resolver/maven-resolver-transport-wagon-2 \
-    maven-resolver/maven-resolver-util-2 \
+    jspecify \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-connector-basic \
+    maven-resolver/maven-resolver-impl \
+    maven-resolver/maven-resolver-named-locks \
+    maven-resolver/maven-resolver-spi \
+    maven-resolver/maven-resolver-transport-apache \
+    maven-resolver/maven-resolver-transport-file \
+    maven-resolver/maven-resolver-transport-jdk \
+    maven-resolver/maven-resolver-transport-wagon \
+    maven-resolver/maven-resolver-util \
     maven-wagon/file \
     maven-wagon/http \
     maven-wagon/http-shared \
@@ -412,8 +406,9 @@ build-jar-repository -p %{buildroot}%{homedir}/lib \
     plexus/sec-dispatcher-4 \
     plexus/utils \
     plexus/xml-4 \
-    slf4j/api-2 \
-    slf4j/jcl-over-slf4j-2 \
+    slf4j/api \
+    slf4j/jcl-over-slf4j \
+    slf4j/jul-to-slf4j \
     stax2-api \
     woodstox-core
 

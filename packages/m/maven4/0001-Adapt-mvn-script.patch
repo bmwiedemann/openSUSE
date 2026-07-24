@@ -1,4 +1,4 @@
-From 44801a454d940a22b80442386a08dd38ee5b21b9 Mon Sep 17 00:00:00 2001
+From b8fdd46aef22b8ade4a76298e33432dc472c7131 Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Wed, 1 Feb 2017 14:54:26 +0100
 Subject: [PATCH 1/2] Adapt mvn script
@@ -8,7 +8,7 @@ Subject: [PATCH 1/2] Adapt mvn script
  1 file changed, 9 insertions(+), 6 deletions(-)
 
 diff --git a/apache-maven/src/assembly/maven/bin/mvn b/apache-maven/src/assembly/maven/bin/mvn
-index 6fd203348f..c67528c9c9 100755
+index ea5cd1111a..383a635a87 100755
 --- a/apache-maven/src/assembly/maven/bin/mvn
 +++ b/apache-maven/src/assembly/maven/bin/mvn
 @@ -32,20 +32,22 @@
@@ -48,15 +48,15 @@ index 6fd203348f..c67528c9c9 100755
  
  # make it fully qualified
  MAVEN_HOME=`cd "$MAVEN_HOME" && pwd`
-@@ -174,7 +177,7 @@ concat_lines() {
- 
- MAVEN_PROJECTBASEDIR="`find_maven_basedir "$@"`"
- MAVEN_OPTS="$MAVEN_OPTS `concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config"`"
+@@ -226,7 +229,7 @@ fi
+ if [ -n "$MAVEN_DEBUG_SCRIPT" ]; then
+   echo "[DEBUG] Final MAVEN_OPTS: $MAVEN_OPTS" >&2
+ fi
 -LAUNCHER_JAR=`echo "$MAVEN_HOME"/boot/plexus-classworlds-*.jar`
 +LAUNCHER_JAR=`build-classpath plexus-classworlds`
  LAUNCHER_CLASS=org.codehaus.plexus.classworlds.launcher.Launcher
  
  # For Cygwin and MinGW, switch paths to Windows format before running java(1) command
 -- 
-2.48.1
+2.55.0
 

@@ -87,4 +87,20 @@
     <comment>Allow building against jline3 &gt;= 4.1</comment>
     <requestid>1362764</requestid>
   </revision>
+  <revision rev="12" vrev="11">
+    <srcmd5>73230e47ed0e3d96e028309c78d7d311</srcmd5>
+    <version>4.0.0~rc5</version>
+    <time>1784126079</time>
+    <user>dimstar_suse</user>
+    <comment>Use slf4j and maven-resolver, instead of their compatibility packages</comment>
+    <requestid>1365413</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c1b68d18e79cb6eb4f2198080611201e</srcmd5>
+    <version>4.0.0~20260724.2b1209f9a3</version>
+    <time>1784923611</time>
+    <user>dimstar_suse</user>
+    <comment>Upgrade to snapshot + fix build with maven-resolver-2.0.21</comment>
+    <requestid>1367653</requestid>
+  </revision>
 </revisionlist>
