@@ -11,7 +11,7 @@
 To deploy an application, install dependencies, copy the sources, and configure the application's main script:
 
 ```Dockerfile
-FROM registry.opensuse.org/opensuse/bci/python:3.13
+FROM registry.opensuse.org/opensuse/bci/python:3.13-base
 
 WORKDIR /app
 
@@ -33,7 +33,7 @@ $ podman run -it --rm my-python-app
 To run a single script inside a container, use the following command:
 
 ```ShellSession
-$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/python:3.13 python3 script.py
+$ podman run --rm -v "$PWD":/app:Z -w /app registry.opensuse.org/opensuse/bci/python:3.13-base python3 script.py
 ```
 
 ## Additional tools
