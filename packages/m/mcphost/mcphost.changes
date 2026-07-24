@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:50:00 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1266572).
+- Fix GO-2026-5764:
+  DoS due to Panic in AWS SDK for Go v2 SDK EventStream Decoder
+  in github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+- Fix CVE-2026-5160 (GO-2026-5320) (bsc#1272488):
+  Cross-site Scripting (XSS) in github.com/yuin/goldmark
+- Fix CVE-2026-56852 (GO-2026-5970) (bsc#1272131):
+  A norm.Iter can enter an infinite loop when handling input
+  containing invalid UTF-8 bytes.
+- Move vulncheck run into %install section. Running on stripped
+  binaires yields erroneous results.
+
+-------------------------------------------------------------------
 Fri May 29 06:17:10 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix CVE-2026-39821 (GO-2026-5026) (bsc#1266572)

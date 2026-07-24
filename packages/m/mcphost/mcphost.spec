@@ -87,16 +87,20 @@ install -D -m 0755 %{name} "%{buildroot}%{_bindir}/%{name}"
 install -Dm 644 %{name}-autocomplete.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 install -Dm 644 %{name}-autocomplete.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 install -Dm 644 %{name}-autocomplete.fish %{buildroot}%{_datadir}/fish/completions/_%{name}
+%if %{with vulncheck}
+status=0
+echo "VULNCHECK START ==================================================="
+for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i || status=$?
+done
+echo "VULNCHECK END ====================================================="
+[ $status -eq 0 ] || exit $status
+%endif
 
 %check
 # execute the binary as a basic check
 %{buildroot}/%{_bindir}/%{name} help
-%if %{with vulncheck}
-for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
-    file $i | grep -q "^$i: ELF" || continue
-    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
-done
-%endif
 
 %files
 %license LICENSE

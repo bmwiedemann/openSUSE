@@ -7,10 +7,19 @@
    github.com/buger/jsonparser=github.com/buger/jsonparser@v1.1.2
   </param>
   <param name="replace">
-   golang.org/x/net=golang.org/x/net@v0.55.0
+   golang.org/x/net=golang.org/x/net@v0.57.0
   </param>
   <param name="replace">
     golang.org/x/crypto=golang.org/x/crypto@v0.52.0
+  </param>
+  <param name="replace">
+   github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream=github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream@v1.7.8
+  </param>
+  <param name="replace">
+   github.com/yuin/goldmark=github.com/yuin/goldmark@v1.7.17
+  </param>
+  <param name="replace">
+   golang.org/x/text=golang.org/x/text@v0.39.0
   </param>
  </service>
 </services>

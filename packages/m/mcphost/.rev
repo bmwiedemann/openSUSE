@@ -153,4 +153,23 @@
       CVE-2026-42506 (GO-2026-5025) (bsc#1267109)</comment>
     <requestid>1356356</requestid>
   </revision>
+  <revision rev="12" vrev="9">
+    <srcmd5>f76f08f022b91cb22e49e85acf3eaaf3</srcmd5>
+    <version>0.34.0</version>
+    <time>1784923607</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1266572).
+- Fix GO-2026-5764:
+  DoS due to Panic in AWS SDK for Go v2 SDK EventStream Decoder
+  in github.com/aws/aws-sdk-go-v2/aws/protocol/eventstream
+- Fix CVE-2026-5160 (GO-2026-5320) (bsc#1272488):
+  Cross-site Scripting (XSS) in github.com/yuin/goldmark
+- Fix CVE-2026-56852 (GO-2026-5970) (bsc#1272131):
+  A norm.Iter can enter an infinite loop when handling input
+  containing invalid UTF-8 bytes.
+- Move vulncheck run into %install section. Running on stripped
+  binaires yields erroneous results.</comment>
+    <requestid>1367634</requestid>
+  </revision>
 </revisionlist>
