@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 24 06:33:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.9.1:
+  General:
+  * Document policy prohibiting the use of AI
+  * Use strict mode to disable unsafe Qt APIs
+  Bug Fixes:
+  * FIXED: Daily progress was sometimes incorrectly shown as negative
+  * FIXED: Scene list items overlapped on Windows 11
+  * FIXED: Did not play sound effects for composed text
+
+-------------------------------------------------------------------
 Wed Feb 11 15:51:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.9.0:

@@ -18,7 +18,7 @@
 
 
 Name:           focuswriter
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        A fullscreen, distraction-free writing program
 License:        GPL-3.0-or-later
