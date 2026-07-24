@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:19:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.9.3:
+  Flux v2.9.3 is a patch release. It fixes empty lines vanishing
+  from rendered Helm chart manifests, HelmReleases being marked as
+  tested when their Helm test hooks never ran, and spec.images
+  entries that set only some image fields discarding the remaining
+  fields already declared for the same image in the
+  kustomization.yaml. The latter affects both kustomize-controller
+  and the flux build|diff kustomization commands. Users are
+  encouraged to upgrade for the best experience.
+  * Components changelog
+    - kustomize-controller v1.9.4
+    - helm-controller v1.6.3
+  * CLI changelog
+    - [release/v2.9.x] Include source-watcher to oci flux-manifests
+      by @fluxcdbot in #5996
+    - Update fluxcd/pkg dependencies by @fluxcdbot in #6006
+    - Update toolkit components by @fluxcdbot in #6011
+
+-------------------------------------------------------------------
 Tue Jul 14 05:05:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.9.2:
