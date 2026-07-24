@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Jul 24 03:20:47 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.0.2:
+  * Update translation template (faugus-launcher.pot)
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update Arabic translation
+  * chore(l10n): update Chinese (Traditional Han script) translation
+  * chore(l10n): update Chinese (Traditional Han script) translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update Italian translation
+  * chore(l10n): update French translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Russian translation
+  * chore(l10n): update Romanian translation
+  * chore(l10n): update Georgian translation
+  * chore(l10n): update Georgian translation
+  * chore(l10n): update Finnish translation
+  * chore(l10n): update Finnish translation
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update Portuguese (Brazil) translation
+  * chore(l10n): update German translation
+  * chore(l10n): update German translation
+  * chore(l10n): update German translation
+  * chore(l10n): update Japanese translation
+  * chore(l10n): update Turkish translation
+  * chore(l10n): update Nepali translation
+  * chore(l10n): update Nepali translation
+  * chore(l10n): update Serbian translation
+  * chore(l10n): update Norwegian Bokmål translation
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Polish translation
+  * chore(l10n): update Persian translation
+  * chore(l10n): update Dutch translation
+  * chore(l10n): update Chinese (Simplified Han script) translation
+  * chore(l10n): update Spanish translation
+  * chore(l10n): update Spanish translation
+  * chore(l10n): add Finnish translation
+  * chore(l10n): add French translation
+  * Update update-pot.yml
+  * Update translation template (faugus-launcher.pot)
+  * Update update-pot.yml
+  * Update update-pot.yml
+  * Update translation template (faugus-launcher.pot)
+  * Allow protonfixes
+  * Updated gamepad navigation on settings
+  * Update translation template (faugus-launcher.pot)
+  * Added tabs to settings
+  * Updated fedora spec
+  * Update build artifact
+  * Deprecated artifact build
+  * Update release workflow
+  * Build artifacts
+  * Update release-packages.yml
+  * Update release workflow
+  * Release workflow
+  * Forgot to remove wayland for gog
+  * Ignore Steam user 0
+  * Update update-pot.yml
+  * Added support for GOG Galaxy
+  * Re-added Epic Games launcher
+  * Update translation template (faugus-launcher.pot)
+  * Incrementally loads images
+  * Update translation for zh-CN
+  * Update translation for zh-CN
+
+-------------------------------------------------------------------
 Tue Jul 21 06:28:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - For .spec:
