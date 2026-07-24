@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20260722" schemaversion="4.1">
+<image name="OBS__openSUSE___20260723" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260722</productvar>
+      <productvar name="VERSION">20260723</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260722,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20260723,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260722/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20260723/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -434,6 +434,7 @@
       <repopackage name="gcr3-prompter"/>
       <repopackage name="gcr3-ssh-agent"/>
       <repopackage name="gcr3-ssh-askpass"/>
+      <repopackage name="gd"/>
       <repopackage name="gdb"/>
       <repopackage name="gdbm-lang"/>
       <repopackage name="gdk-pixbuf-lang"/>
@@ -749,6 +750,7 @@
       <repopackage name="inkscape-extensions-extra"/>
       <repopackage name="inkscape-extensions-gimp"/>
       <repopackage name="inkscape-lang"/>
+      <repopackage name="inn"/>
       <repopackage name="intel-vaapi-driver"/>
       <repopackage name="intlfonts-euro-bitmap-fonts"/>
       <repopackage name="inxi"/>
@@ -3318,6 +3320,7 @@
       <repopackage name="perl-Exporter-Tiny"/>
       <repopackage name="perl-File-Listing"/>
       <repopackage name="perl-File-ShareDir"/>
+      <repopackage name="perl-GD"/>
       <repopackage name="perl-Geography-Countries"/>
       <repopackage name="perl-gettext"/>
       <repopackage name="perl-Git"/>
@@ -3923,6 +3926,7 @@
       <repopackage name="system-user-lp"/>
       <repopackage name="system-user-mail"/>
       <repopackage name="system-user-man"/>
+      <repopackage name="system-user-news"/>
       <repopackage name="system-user-nobody"/>
       <repopackage name="system-user-pulse"/>
       <repopackage name="system-user-qemu"/>
@@ -3931,6 +3935,7 @@
       <repopackage name="system-user-tftp"/>
       <repopackage name="system-user-tss"/>
       <repopackage name="system-user-upsd"/>
+      <repopackage name="system-user-uucp"/>
       <repopackage name="system-user-vscan"/>
       <repopackage name="system-user-wwwrun"/>
       <repopackage name="systemd"/>

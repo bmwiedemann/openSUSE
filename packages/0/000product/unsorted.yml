@@ -1756,7 +1756,6 @@ unsorted:
   - bugzilla 
   - bugzilla-apache 
   - bugzilla-lang-de 
-  - bugzilla-mcp 
   - build 
   - build-compare 
   - build-helper-maven-plugin 
@@ -5023,7 +5022,6 @@ unsorted:
   - gcrane-fish-completion 
   - gcrane-zsh-completion 
   - gcstar 
-  - gd 
   - gd-devel 
   - gd-devel-32bit 
   - gdal 
@@ -9027,7 +9025,6 @@ unsorted:
   - ini4j-javadoc 
   - inkscape-extensions-fig 
   - inkscape-extensions-scribus 
-  - inn 
   - inn-devel 
   - innoextract 
   - innotop 
@@ -9540,8 +9537,6 @@ unsorted:
   - jenkins-x-cli-zsh-completion 
   - jeromq 
   - jeromq-javadoc 
-  - jersey 
-  - jersey-javadoc 
   - jesusmgg-comicshanns-fonts 
   - jetbrains-annotations 
   - jetbrains-annotations-javadoc 
@@ -12691,7 +12686,7 @@ unsorted:
   - libcdr-devel-doc 
   - libcdr-tools 
   - libcec-devel 
-  - libcec7 
+  - libcec8 
   - libcelt-devel 
   - libcelt-devel-32bit 
   - libcelt0-2 
@@ -16000,7 +15995,7 @@ unsorted:
   - librdmacm-utils 
   - librdmacm1-32bit 
   - libre2-11 
-  - libre43 
+  - libre44 
   - libreadline-java 
   - libreadline-java-javadoc 
   - libreadline5 
@@ -16213,7 +16208,7 @@ unsorted:
   - librsb0 
   - librseq-devel 
   - librseq0 
-  - librssguard-5_1_2 
+  - librssguard-5_2_2 
   - librssguard-devel 
   - librsvg-2-2-32bit 
   - librsvg-devel 
@@ -17037,7 +17032,6 @@ unsorted:
   - libvaladoc-0_56-devel 
   - libvalkey-devel 
   - libvalkey0 
-  - libvalkey_rdma0 
   - libvalkey_tls0 
   - libvamp-hostsdk3 
   - libvamp-hostsdk3-32bit 
@@ -18885,6 +18879,7 @@ unsorted:
   - mchange-commons-javadoc 
   - mcjoin 
   - mcomix 
+  - mcp-bugzilla 
   - mcp-dap-server 
   - mcp-server-managesw 
   - mcp-server-snapper 
@@ -21158,8 +21153,6 @@ unsorted:
   - pacemaker-libs 
   - pacemaker-remote 
   - pacemaker-schemas 
-  - pack200 
-  - pack200-javadoc 
   - package-translations 
   - packagekitqt6-devel 
   - packetdrill 
@@ -22097,7 +22090,6 @@ unsorted:
   - perl-Furl 
   - perl-Future 
   - perl-Future-IO 
-  - perl-GD 
   - perl-GD-Barcode 
   - perl-GD-Graph3d 
   - perl-GDGraph 
@@ -24400,7 +24392,6 @@ unsorted:
   - python311-pluggy 
   - python311-pymathics-graph 
   - python311-pysaml2 
-  - python311-pytest-mypy-testing 
   - python311-setuptools 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
@@ -27367,6 +27358,7 @@ unsorted:
   - python313-pystache 
   - python313-pysubs2 
   - python313-pysvn 
+  - python313-pyswarms 
   - python313-pytaglib 
   - python313-pyte 
   - python313-pytesseract 
@@ -31415,6 +31407,7 @@ unsorted:
   - python314-pystache 
   - python314-pysubs2 
   - python314-pysvn 
+  - python314-pyswarms 
   - python314-pytaglib 
   - python314-pyte 
   - python314-pytesseract 
@@ -35226,7 +35219,6 @@ unsorted:
   - system-user-mktex 
   - system-user-msr 
   - system-user-nagios 
-  - system-user-news 
   - system-user-ntp 
   - system-user-openbao 
   - system-user-osc-collab 
@@ -35237,7 +35229,6 @@ unsorted:
   - system-user-qgsd 
   - system-user-rustdesk 
   - system-user-transmission 
-  - system-user-uucp 
   - system-user-uuidd 
   - system-user-vault-sync 
   - system-user-velociraptor 
