@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:23:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.24:
+  * Bug Fixes
+    - 247bc22: fix(go): update k8s.io/apimachinery ( v0.36.2 →
+      v0.36.3 ) (@mr-borboto[bot])
+    - 952aa77: fix(go): update k8s.io/client-go ( v0.36.2 → v0.36.3
+      ) (@mr-borboto[bot])
+  * Chores
+    - c9593bb: chore(mise): update aqua:goreleaser/goreleaser (
+      2.16.0 → 2.17.0 ) (#250) (@mr-borboto[bot])
+    - 5641781: chore(mise): update go ( 1.26.4 → 1.26.5 )
+      (@mr-borboto[bot])
+
+-------------------------------------------------------------------
 Mon Jul 06 04:59:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.23:
