@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:19:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.28:
+  * build(deps): bump github.com/klauspost/compress from 1.19.0 to
+    1.19.1 (#2345)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.27 to 1.6.28 (#2343)
+  * build(deps): bump chainguard.dev/sdk from 0.1.138 to 0.1.140
+    (#2344)
+  * build(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+    in the go_modules group across 1 directory (#2342)
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.7 to 0.6.0
+    (#2333)
+  * build(deps): bump go.step.sm/crypto from 0.84.1 to 0.85.0
+    (#2334)
+  * build(deps): bump google.golang.org/api from 0.288.0 to 0.289.0
+    (#2337)
+  * build(deps): bump actions/setup-go from 6.5.0 to 7.0.0 (#2335)
+  * build(deps): bump github/codeql-action/init from 4.37.0 to
+    4.37.1 (#2338)
+  * build(deps): bump github/codeql-action/analyze from 4.37.0 to
+    4.37.1 (#2339)
+  * build(deps): bump chainguard.dev/sdk from 0.1.127 to 0.1.138
+    (#2340)
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1 (#2341)
+
+-------------------------------------------------------------------
 Mon Jul 20 04:51:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.27:
