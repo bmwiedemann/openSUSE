@@ -380,4 +380,12 @@
 - Update to release 2.6.1</comment>
     <requestid>1365159</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>42e6b123ba0ab329ef27b5682154bc9d</srcmd5>
+    <version>2.6.1</version>
+    <time>1784923508</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip tests/52-basic-load.py under qemu emulation</comment>
+    <requestid>1367101</requestid>
+  </revision>
 </revisionlist>

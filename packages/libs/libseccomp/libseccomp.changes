@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:24:09 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Skip tests/52-basic-load.py under qemu emulation
+
+-------------------------------------------------------------------
 Wed Jul  8 15:02:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Produce unique .src.rpm files per multibuild flavor.

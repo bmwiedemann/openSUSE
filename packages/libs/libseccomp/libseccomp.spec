@@ -120,6 +120,7 @@ This subpackage contains the python3 bindings for seccomp.
 # prctl(PR_SET_SECCOMP), which breaks these tests.  Stub them out.
 echo 'int main () { return 0; }' >tests/11-basic-basic_errors.c
 echo 'int main () { return 0; }' >tests/52-basic-load.c
+echo >tests/52-basic-load.py
 %endif
 
 %build
