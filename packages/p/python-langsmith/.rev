@@ -123,4 +123,15 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
     <comment>Update to 0.10.9</comment>
     <requestid>1367136</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>55851d824b0a8718ad3786ff0d78a498</srcmd5>
+    <version>0.10.10</version>
+    <time>1784923515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.10.10:
+  * Require a project to be specified when calling get_run_stats()
+  * Add session_id and start_time to feedback generated from evaluations
+  * Merge sandbox request headers case-insensitively</comment>
+    <requestid>1367619</requestid>
+  </revision>
 </revisionlist>

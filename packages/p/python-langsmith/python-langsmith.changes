@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:49:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.10:
+  * Require a project to be specified when calling get_run_stats()
+  * Add session_id and start_time to feedback generated from
+    evaluations
+  * Merge sandbox request headers case-insensitively
+
+-------------------------------------------------------------------
 Wed Jul 22 13:38:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.9
