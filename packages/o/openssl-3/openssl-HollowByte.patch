@@ -1,0 +1,136 @@
+From 935246a7c9334580de727b289c5eb05c71407819 Mon Sep 17 00:00:00 2001
+From: Matt Caswell <matt@openssl.foundation>
+Date: Tue, 17 Mar 2026 13:41:21 +0000
+Subject: [PATCH] Grow the init_buf incrementally as we receive data
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Instead of growing the init_buf buffer immediately to the full size of the
+expected message, we grow it incrementally as we receive the data. This
+prevents abuse where the remote peer claims a very large message size, but
+then doesn't send it.
+
+This change is as a result of a security issue reported to the
+openssl-security team by Okta Red Team. The openssl-security
+team have decided to handle this as a "bug or hardening" only fix.
+
+Reviewed-by: Nikola Pajkovsky <nikolap@openssl.org>
+Reviewed-by: Saša Nedvědický <sashan@openssl.org>
+Reviewed-by: Tomas Mraz <tomas@openssl.foundation>
+MergeDate: Fri Apr 17 10:08:34 2026
+(Merged from https://github.com/openssl/openssl/pull/30792)
+---
+ ssl/statem/statem.c     | 24 ------------------------
+ ssl/statem/statem_lib.c | 40 ++++++++++++++++++++++++++++++++++------
+ 2 files changed, 34 insertions(+), 30 deletions(-)
+
+Index: openssl-3.5.3/ssl/statem/statem.c
+===================================================================
+--- openssl-3.5.3.orig/ssl/statem/statem.c
++++ openssl-3.5.3/ssl/statem/statem.c
+@@ -543,21 +543,6 @@ static void init_read_state_machine(SSL_
+     st->read_state = READ_STATE_HEADER;
+ }
+ 
+-static int grow_init_buf(SSL_CONNECTION *s, size_t size) {
+-
+-    size_t msg_offset = (char *)s->init_msg - s->init_buf->data;
+-
+-    if (!BUF_MEM_grow_clean(s->init_buf, (int)size))
+-        return 0;
+-
+-    if (size < msg_offset)
+-        return 0;
+-
+-    s->init_msg = s->init_buf->data + msg_offset;
+-
+-    return 1;
+-}
+-
+ /*
+  * This function implements the sub-state machine when the message flow is in
+  * MSG_FLOW_READING. The valid sub-states and transitions are:
+@@ -654,15 +639,6 @@ static SUB_STATE_RETURN read_state_machi
+                 return SUB_STATE_ERROR;
+             }
+ 
+-            /* dtls_get_message already did this */
+-            if (!SSL_CONNECTION_IS_DTLS(s)
+-                    && s->s3.tmp.message_size > 0
+-                    && !grow_init_buf(s, s->s3.tmp.message_size
+-                                         + SSL3_HM_HEADER_LENGTH)) {
+-                SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_BUF_LIB);
+-                return SUB_STATE_ERROR;
+-            }
+-
+             st->read_state = READ_STATE_BODY;
+             /* Fall through */
+ 
+Index: openssl-3.5.3/ssl/statem/statem_lib.c
+===================================================================
+--- openssl-3.5.3.orig/ssl/statem/statem_lib.c
++++ openssl-3.5.3/ssl/statem/statem_lib.c
+@@ -1655,9 +1655,25 @@ int tls_get_message_header(SSL_CONNECTIO
+     return 1;
+ }
+ 
++static int grow_init_buf(SSL_CONNECTION *s, size_t size)
++{
++
++    size_t msg_offset = (char *)s->init_msg - s->init_buf->data;
++
++    if (!BUF_MEM_grow_clean(s->init_buf, size))
++        return 0;
++
++    if (size < msg_offset)
++        return 0;
++
++    s->init_msg = s->init_buf->data + msg_offset;
++
++    return 1;
++}
++
+ int tls_get_message_body(SSL_CONNECTION *s, size_t *len)
+ {
+-    size_t n, readbytes;
++    size_t toread, readbytes;
+     unsigned char *p;
+     int i;
+     SSL *ssl = SSL_CONNECTION_GET_SSL(s);
+@@ -1669,18 +1685,30 @@ int tls_get_message_body(SSL_CONNECTION
+         return 1;
+     }
+ 
+-    p = s->init_msg;
+-    n = s->s3.tmp.message_size - s->init_num;
+-    while (n > 0) {
++    toread = s->s3.tmp.message_size - s->init_num;
++    while (toread > 0) {
++        size_t chunk = toread > SSL3_RT_MAX_PLAIN_LENGTH ? SSL3_RT_MAX_PLAIN_LENGTH : toread;
++
++        /*
++         * We incrementally allocate the buffer to guard against the peer
++         * claiming a very large message size and then not sending it.
++         */
++        if (!grow_init_buf(s, s->init_num + chunk + SSL3_HM_HEADER_LENGTH)) {
++            SSLfatal(s, SSL_AD_INTERNAL_ERROR, ERR_R_BUF_LIB);
++            return 0;
++        }
++
++        /* init_msg location can change after grow_init_buf */
++        p = s->init_msg;
+         i = ssl->method->ssl_read_bytes(ssl, SSL3_RT_HANDSHAKE, NULL,
+-                                        &p[s->init_num], n, 0, &readbytes);
++                                        &p[s->init_num], chunk, 0, &readbytes);
+         if (i <= 0) {
+             s->rwstate = SSL_READING;
+             *len = 0;
+             return 0;
+         }
+         s->init_num += readbytes;
+-        n -= readbytes;
++        toread -= readbytes;
+     }
+ 
+     /*

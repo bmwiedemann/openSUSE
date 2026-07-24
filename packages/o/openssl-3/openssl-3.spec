@@ -206,6 +206,8 @@ Patch88:        openssl-CVE-2026-9076.patch
 Patch89:        openssl-CVE-2026-7383.patch
 # PATCH-FIX-UPSTREAM: CVE-2026-34180 Heap Buffer Over-read in ASN.1 Content Parsing (bsc#1266342)
 Patch90:        openssl-CVE-2026-34180.patch
+# PATCH-FIX-UPSTREAM: Grow the init_buf incrementally as we receive data (bsc#1271712)
+Patch91:        openssl-HollowByte.patch
 
 # ulp-macros is available according to SUSE version.
 %if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1540

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 20 22:24:10 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Security fix: (bsc#1271712)
+  * "HollowByte" DoS via attacker-controlled memory allocation.
+  * Grow the init_buf incrementally as we receive data.
+  * Add openssl-HollowByte.patch
+
+-------------------------------------------------------------------
 Mon Jun  8 13:21:41 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Security fixes:
