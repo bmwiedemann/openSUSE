@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:20:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 24.0.0:
+  * BREAKING CHANGES
+    - The Bitbucket Cloud connector now uses API tokens instead of
+      app passwords, which are no longer supported by the Bitbucket
+      API. Please configure the new bitbucket-api-token setting.
+      The existing bitbucket-app-password setting is no longer used
+      (#6259).
+    - When using the API ship strategy, git town ship now merges
+      the proposal using the forge-generated commit message (the
+      same message used when merging through the web UI) instead of
+      opening an editor for you to write one. To enter a custom
+      commit message as before, run git town ship --enter-message
+      (#6256).
+    - git town ship -m now handles commit messages like Git's -m
+      flag: the first line becomes the squash-commit's subject, and
+      the remaining lines become its body (#6258).
+    - git town merge has been renamed to git town combine to avoid
+      confusion with git merge (#6205).
+    - git town config now redacts all secrets default. To display
+      secrets, use the new --show-secrets flag. The now obsolete
+      --redact flag has been removed (#6251).
+  * New Features
+    - git town status show now produces more readable output
+      (#6243).
+  * Bug Fixes
+    - git town propose now supports branches whose parent does not
+      have a tracking branch (#5937).
+    - When using the gh connector, git town propose now works in
+      non-interactive shells without requiring --title or --body
+      (#6224).
+    - git town ship now exits gracefully when the parent branch to
+      ship into is checked out in another worktree (#6223).
+    - The git-town binary in release.tar.gz on GitHub Releases is
+      now executable (#6241).
+
+-------------------------------------------------------------------
 Sun Jun 21 16:28:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 23.0.3:
