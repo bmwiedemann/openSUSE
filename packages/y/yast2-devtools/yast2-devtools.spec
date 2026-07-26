@@ -1,7 +1,7 @@
 #
 # spec file for package yast2-devtools
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           yast2-devtools
-Version:        5.0.3
+Version:        5.0.4
 Release:        0
 Summary:        YaST2 - Development Tools
 License:        GPL-2.0-or-later
@@ -80,14 +80,6 @@ for f in `find %{buildroot}%{_datadir}/applications/YaST2 -name "*.desktop"` ; d
     %suse_update_desktop_file -d ycc_${d%.desktop} ${d%.desktop}
 done
 
-%if 0%{?qemu_user_space_build}
-# disable testsuite on QEMU builds, will fail
-cat > "%{buildroot}%{_datadir}/YaST2/data/devtools/NO_MAKE_CHECK" <<EOF
-Disabling testsuite on QEMU builds, as the userspace emulation
-is not complete enough for yast2-core
-EOF
-%endif
-
 # Change false to true in the following line when yast2 core is broken
 false && cat > "%{buildroot}%{_datadir}/YaST2/data/devtools/NO_MAKE_CHECK" <<EOF
 When yast2 core is broken and the interpreter does not work,
@@ -146,9 +138,6 @@ EOF
 %dir %{_datadir}/YaST2/data/devtools/bin
 %{_datadir}/YaST2/data/devtools/admin
 %{_datadir}/YaST2/data/devtools/Doxyfile
-%if 0%{?qemu_user_space_build}
-%{_datadir}/YaST2/data/devtools/NO_MAKE_CHECK
-%endif
 # needed for doxygen, not nice
 %{_datadir}/YaST2/data/devtools/footer-notimestamp.html
 %dir %{_datadir}/YaST2/data/devtools/data

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Mar 10 18:25:48 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Add python source files to files processed by
+  get_domains_and_err so POT files can be generated;(boo#1199396).
+- 5.0.4
+
+-------------------------------------------------------------------
 Tue Mar 10 17:11:41 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507
@@ -11,6 +18,11 @@ Fri Jun  6 14:47:29 UTC 2025 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
 - Drop usage of %jobs (boo#1237231) for reproducible builds
   (by Bernhard M. Wiedemann).
 - 5.0.2
+
+-------------------------------------------------------------------
+Thu Jan 23 13:33:52 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Don't disable testsuites on qemu build
 
 -------------------------------------------------------------------
 Mon Sep 16 08:11:39 UTC 2024 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
