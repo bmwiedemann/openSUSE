@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:02:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.0 (SDK release accompanying the
+  CubeSandbox 0.6.0 platform):
+  * Add volume support (new cubesandbox._volume module) for the
+    E2B-compatible volume framework
+  * Send the X-API-Key header on all request paths
+- Deselect test_template_get_parses_network_fields: not updated
+  upstream for the new headers argument of template GET
+  (reported upstream)
+
+-------------------------------------------------------------------
 Tue Jul 21 05:50:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.0:

@@ -17,7 +17,7 @@
 
 
 Name:           python-cubesandbox
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        Python SDK for CubeSandbox
 License:        Apache-2.0
@@ -60,7 +60,9 @@ cp %{SOURCE1} .
 
 %check
 # e2e tests need a live CubeSandbox control plane; the rest mock all HTTP
-%pytest -m "not e2e"
+# test_template_get_parses_network_fields was not updated upstream for the
+# 0.6.0 X-API-Key change (the client now passes headers={} on template GET)
+%pytest -m "not e2e" --deselect tests/test_sandbox.py::TestTemplateAPI::test_template_get_parses_network_fields
 
 %files %{python_files}
 %doc README.md

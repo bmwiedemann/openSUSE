@@ -15,4 +15,12 @@
     <comment>Update to 0.5.0 (no runtime dependency changes)</comment>
     <requestid>1366860</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c735af6c15eaa5670c905b4ee6d2bb7e</srcmd5>
+    <version>0.6.0</version>
+    <time>1785058205</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.6.0: volume support (E2B-compatible volume framework), X-API-Key on all request paths; one stale upstream test deselected (reported upstream)</comment>
+    <requestid>1367773</requestid>
+  </revision>
 </revisionlist>
