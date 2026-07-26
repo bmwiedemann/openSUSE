@@ -340,4 +340,38 @@ outside of Factory
     <comment>- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996</comment>
     <requestid>1335034</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>70e286e9c7b6dddcc01d133377083db8</srcmd5>
+    <version>128</version>
+    <time>1785058037</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 128
+  * 128
+    - Translation and dependency updates
+  * 127
+    - Avoid bogus page reloads on firefox
+  * 126
+    - Bug fixes and translation updates
+
+- Update to 125
+  * 125
+    - Dependency updates
+  * 124
+    - Translation and dependency updates
+
+- Update to 123
+  * 123
+    - Don't show Quadlet template units
+    - Handle quadlet lifecycle errors
+    - Translation update
+  * 122
+    - Show description, version and documentation image labels
+    - Bug fixes and translation updates
+  * 120
+    - Update dependencies
+    - Convert license headers to SPDX format
+
+- Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904</comment>
+    <requestid>1367651</requestid>
+  </revision>
 </revisionlist>
