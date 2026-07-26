@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 25 08:15:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.4
+  * util: expose sng_strncpy() definition.
+  * sip: Manage active call list properly.
+  * rtp: Only check active calls when matching RTP streams.
+  * util: check valid length parameter in sng_strncpy.
+- Drop patch:
+  * 0001-util-expose-sng_strncpy-definition.patch
+
+-------------------------------------------------------------------
 Fri Oct 17 10:55:33 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.3
