@@ -111,4 +111,20 @@
     <comment>libmseed 3.4.0 (forwarded request 1344635 from AndreasStieger)</comment>
     <requestid>1344636</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dcc4e18b197b1cd6e2a656f832786875</srcmd5>
+    <version>3.4.1</version>
+    <time>1781879833</time>
+    <user>anag_factory</user>
+    <comment>libmseed 3.4.1 (forwarded request 1360455 from AndreasStieger)</comment>
+    <requestid>1360456</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a3f4ce48bc8992f21c9d363cd2a8a7be</srcmd5>
+    <version>3.5.1</version>
+    <time>1785058238</time>
+    <user>dimstar_suse</user>
+    <comment>libmseed 3.5.1 (forwarded request 1367807 from AndreasStieger)</comment>
+    <requestid>1367808</requestid>
+  </revision>
 </revisionlist>

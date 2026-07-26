@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Jul 26 07:06:21 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.5.1:
+  * Fixes to handling of time data
+  * Updates to Blockette 1001 handling is v2 records
+  * Correctness updates and memory handling fixes
+
+-------------------------------------------------------------------
+Fri Jun 19 06:04:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 3.4.1:
+  * A number of functional correctness bug fixes
+  * A number of memory handling fixes
+  * Fixes to undefined behavior and memory leaks
+
+-------------------------------------------------------------------
 Sun Apr  5 08:26:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.4.0:
