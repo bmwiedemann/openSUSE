@@ -247,4 +247,22 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * build(deps): Bump golangci/golangci-lint-action in the all group (forwarded request 1359834 from jfkw)</comment>
     <requestid>1359835</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a3dc7335945bcd39de4f5c1ca0d52a22</srcmd5>
+    <version>0.4.4+git20.5d61136</version>
+    <time>1785058152</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.4.4+git20.5d61136:
+  * build(deps): Bump github.com/sigstore/cosign/v2
+  * build(deps): Bump actions/setup-go from 6.5.0 to 7.0.0
+  * build(deps): Bump the all group across 1 directory with 5 updates
+  * build(deps): Bump github.com/sigstore/rekor in the all group
+  * build(deps): Bump the all group with 4 updates
+  * build(deps): Bump github.com/google/go-containerregistry
+  * build(deps): Bump actions/setup-go from 6.4.0 to 6.5.0 in the all group
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump actions/checkout from 6.0.3 to 7.0.0
+  * build(deps): Bump chainguard-dev/actions in the all group (forwarded request 1367708 from jfkw)</comment>
+    <requestid>1367709</requestid>
+  </revision>
 </revisionlist>

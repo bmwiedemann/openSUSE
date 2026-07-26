@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 25 03:27:20 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.4+git20.5d61136:
+  * build(deps): Bump github.com/sigstore/cosign/v2
+  * build(deps): Bump actions/setup-go from 6.5.0 to 7.0.0
+  * build(deps): Bump the all group across 1 directory with 5 updates
+  * build(deps): Bump github.com/sigstore/rekor in the all group
+  * build(deps): Bump the all group with 4 updates
+  * build(deps): Bump github.com/google/go-containerregistry
+  * build(deps): Bump actions/setup-go from 6.4.0 to 6.5.0 in the all group
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump actions/checkout from 6.0.3 to 7.0.0
+  * build(deps): Bump chainguard-dev/actions in the all group
+
+-------------------------------------------------------------------
 Tue Jun 16 17:22:48 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.4:
