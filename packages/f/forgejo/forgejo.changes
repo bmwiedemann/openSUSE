@@ -1,4 +1,234 @@
 -------------------------------------------------------------------
+Tue Jul 21 12:49:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 16.0.1:
+  * User Interface bug fixes
+    - PR (backported): fix(ui): use rtl alignment for options
+      dropdown in actions list
+    - PR (backported): fix: query the correct form for wiki editing
+  * Bug fixes
+    - PR (backported): fix: Initialize oauth2 only if enabled
+      (#13483)
+    - PR (backported): fix: allow OAuth access tokens to access LFS
+      endpoints
+    - PR (backported): fix: make assignment of projects to issues
+      consistent
+  * Included for completeness but not user-facing (chores, etc.)
+    - PR: Update module code.forgejo.org/forgejo/runner/v12 to
+      v12.13.1 (v16.0/forgejo)
+
+-------------------------------------------------------------------
+Tue Jul 21 12:20:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 16.0.0:
+  https://forgejo.org/2026-07-release-v16-0/
+  Git hooks are now stored in a centralized location instead of
+  being duplicated in every repository, and Git hook example files
+  are no longer generated for new repositories. While a
+  backwards-compatible change, your instance can benefit from
+  following an upgrade guide to clean up these files for the
+  existing repositories. As always, make sure you to have a usable
+  backup before upgrading!
+  Full changelog:
+  https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/16.0.0.md
+  * Breaking security bug fixes
+    - PR: Improved compliance with the config settings
+      [migrations].ALLOWED_DOMAINS, [migrations].BLOCKED_DOMAINS,
+      and [migrations].ALLOW_LOCALNETWORKS, which control the
+      remotes that Forgejo can access for git & LFS migration and
+      mirroring operations, fixing time-of-check vs. time-of-use
+      issue and missing checks in LFS. git mirror HTTP operations
+      have been adjusted to never follow HTTP redirects in order to
+      ensure that these settings are followed, which will break
+      HTTP mirroring if a redirect is served by the git HTTP
+      remote.
+  * Security bug fixes
+    - PR (backported): fix: ensure migrations allow/deny host lists
+      are applied to onedev, pagure, and codebase migrators
+  * Breaking bug fixes
+    - PR: use proper ${{ forgejo.ref }} in scheduled workflows
+    - PR: return API URL in the url field for pull requests using
+      the API
+  * User Interface features
+    - PR: enh: add suggestion to document reason for repository
+      archival
+    - PR: add nix highlighting to file editor
+    - PR: improve checkboxes
+    - PR: in-browser validation of website URLs for user,
+      repository, and organization profiles
+    - PR: feat(ui): mention quote searching and search docs in
+      search syntax popup
+    - PR: feat(ui): commit view redesign for pull request page
+    - PR: feat(ui): modernize hidden comment types checkboxes in
+      appearance settings
+    - PR: add hint to disable the "Enable more" units hint
+    - PR: show progress of issues and PRs migrations
+    - PR (backported): OSC 8 hyperlink escape sequences emitted by
+      Forgejo Actions jobs are rendered as clickable links in the
+      job log.
+    - PR: improve visibility of mismatched repository & package
+      visibility
+    - PR: feat(ui): provide ability to add a warning message to the
+      registration/login screens
+    - PR: show automerge if only one merge strategy is available
+    - PR: feat(ui): Support Pandoc style code blocks
+    - PR: migrate show-modal to native dialogs
+    - PR: render org-mode file links with line numbers
+    - PR: add missing tooltips in lfs_pointers.tmpl
+    - PR: show breadcrumb path in path filtered commit history view
+    - PR: feat(ui): Fix comma separated attributes in code blocks
+      language preventing syntax-highlighting
+    - PR: add admin views for federation configuration, hosts and
+      users
+  * User Interface bug fixes
+    - PR (backported): fix(ui): be able to edit a comment if
+      attachment is disabled
+    - PR: paginate list of repositories in a team
+    - PR (backported): fix: honor format="duration" on
+    - PR (backported): fix(ui): fix markdown editor monospace
+      preference in pages with multiple editors
+    - PR: switch search syntax modal from table to grid
+    - PR: fix(ui): absolute-date: wrong selection color
+    - PR: fix(ui): fall back to default theme from non-existent
+    - PR: fix(ui): adjust distances and remove a divider in the
+      issue sidebar
+    - PR: enable "Add more..." unit hint for new users
+    - PR: emoji's should not render in inline code blocks in issue
+      lists
+    - PR: fix(web): org projects assignment in issue view
+    - PR: fix(ui): fix and simplify org invite template view
+    - PR: fix(ui): use tab width from .editorconfig when editing
+      files
+  * Localization
+    - Translations updates from Codeberg Translate: !12728, !12284,
+      !12128, !11810, !11963, !13460 (backport of !13166)
+  * Features
+    - PR: Allow filtering for 2fa enabled users via
+      /api/v1/admin/users
+    - PR: apply service.VALID_SITE_URL_SCHEMES to repository and
+      organization profiles
+    - PR: add /actions/runs/{id}/jobs
+    - PR: Add code search with zoekt support
+    - PR: replace repository based server-side hooks with
+      centralised hooks. Migration guide is available in Admin
+      docs.
+    - PR: feat(api,ui): add multiline comment on pullrequest
+    - PR: feat(api): add REST API endpoints for Actions artifacts
+    - PR: The REST API can now download action logs: GET
+      /repos/{owner}/{repo}/actions/jobs/{job_id}/logs returns
+      plaintext for a single job (supports HTTP Range: and
+      ?step=N), and GET
+      /repos/{owner}/{repo}/actions/runs/{run_id}/logs streams a
+      zip of every job's logs in the run.
+    - PR: prevent default git templates to be created when
+      initialising a new repository. Migration guide is available
+      in Admin docs.
+    - PR: feat(api): include creation time in Organization API type
+    - PR: serve downsized versions of avatars
+    - PR (backported): feat: granular settings for watched repo
+      units
+    - PR: evaluate action job's if on the server-side when possible
+    - PR: add warnings for usage of unsupported permissions: in
+      Actions workflows
+    - PR: enable manual prioritization of workflow runs
+    - PR: setting to add team members by invitations
+    - PR: adds option to force overwrite new branch for /contents
+      route
+    - PR: feat(api): add new
+      /repos/{owner}/{repo}/actions/runs/{run_id}/cancel API
+      endpoint
+    - PR: add dynamic group mappings for OIDC
+    - PR: Update Microsoft Teams webhook to use AdaptiveCard
+    - PR: fsck incoming objects
+    - PR: add /api/v1/actions/run endpoint
+    - PR: Allow forgejo users to follow remote users and display
+      federated notes. This feature is still missing some some
+      other basic features for "production use": there is no
+      moderation support, UI for following federated users, and
+      federation is still limited to forgejo, Mastodon, and
+      GoToSocial.
+    - PR: feat(api): add base and head query filters to list pull
+      requests endpoint
+    - PR: mark skipped checks as skipped
+    - PR: "Add member" button in org members list
+    - PR: expose API fields for ssh keys (#12517)
+    - PR: expose access token creation date in API responses
+    - PR: expose AGit topic branch in API PR head label
+    - PR: add option to use preferred_username claim when
+      registering users via oauth2
+    - PR: persist OAuth2/OIDC sign-in via IdP re-validation
+    - PR: feat(api): add admin routes to manage user access tokens
+    - PR: make it possible to remove workflow runs
+    - PR: Hosted PyPI packages may be accessed via the simple JSON
+      API in addition to the simple HTML API already available.
+    - PR: add CLI command 'admin user
+      create-authorized-integration'
+    - PR: Improve repo file list table semantics for screen readers
+      (second attempt)
+    - PR: Improve repo file list table semantics for screen readers
+    - PR: support timezone in scheduled workflows
+  * Bug fixes
+    - PR: apply signed-merge checks by merge style
+    - PR (backported): fix: don't terminate subprocesses when SSH
+      connection is closed (internal SSH)
+    - PR (backported): fix: stop condition for github issue
+      pagination
+    - PR (backported): fix: only expand recognized variables when
+      generating repo
+    - PR (backported): fix: use net.JoinHostPort for joining acme
+      host and port
+    - PR: schedules re-registration after changing default branch
+    - PR: remove no-transform in Cache-Control header
+    - PR (backported): fix: detect schedules after merge if merged
+      branch remains
+    - PR: adjust workflow link for pull_request_target workflow
+      runs
+    - PR: remove duplicate indexes in package_blob table
+    - PR (backported): fix(api): return empty slice instead of null
+      from the branches API if the repository is empty
+    - PR: display code comments on removed lines-of-code to correct
+      locations in PR view
+    - PR: when reviewing in PRs, make comments relative to the
+      visible code's commit
+    - PR: when reviewing in PRs, make comments relative to viewed
+      base & head, not just viewed head
+    - PR: relocate PR review comments using git blame --reverse,
+      improving comment placement
+    - PR: mark code comments as Outdated based upon line-of-code
+      existence in current PR commit
+    - PR (backported): fix: archiver: also check valid commit ids
+      for existence
+    - PR (backported): fix: Update swift package registry to use
+      the metadata schema from the official Swift docs (#12200)
+    - PR: fix(ui): URL-encode login provider name in the href
+      attribute
+  * User Interface changes without a feature or bug label
+    - PR: fix(ui): dedup, fix, improve various strings
+    - PR: add "Forgejo Actions (Local)" authorized integration UI
+    - PR: chore: enforce RTL-friendly logical CSS properties with a
+      linter
+    - PR: feat(ui): view authorized integrations with generic view
+  * Other changes without a feature or bug label
+    - PR: chore: Update Zig gitignore
+    - PR: chore: remove EXIF stripping capability due to usage of
+      AGPL licensed exif-terminator library
+    - PR: correcting referrer policy in HTML <meta> tag
+    - PR: Configuration of JSON Web Token (JWT) signing secrets in
+      the app.ini file has been unified: [pfx]SIGNING_ALGORITHM
+      determines the algorithm, [pfx]SECRET is a literal secret for
+      symmetric algorithms, [pfx]SECRET_URI is the file: uri of a
+      secret for symmetric algorithms [pfx]SIGNING_PRIVATE_KEY_FILE
+      is the file with a private key for asymmetric algorithms. For
+      the following configuration keys, the existing behavior is
+      preserved: [oauth2] pfx = JWT_, [actions] pfx = ID_TOKEN_
+      only supports asymmetric algorithms. [server] pfx = LFS_JWT_
+      gained support for asymmetric algorithms. For consistency
+      with [pfx]SIGNING_PRIVATE_KEY_FILE, [pfx]SECRET_URI now also
+      accepts relative paths.
+    - PR: fix(api): package name in route not properly unescaped
+- rebase patch custom-app.ini.patch
+
+-------------------------------------------------------------------
 Thu Jun 11 10:13:31 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to 15.0.3:

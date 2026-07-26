@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo
-Version:        15.0.3
+Version:        16.0.1
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
@@ -34,7 +34,7 @@ URL:            https://forgejo.org
 Source0:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz
 Source1:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz.asc
 Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/EB114F5E6C0DC2BCDD183550A4B61A2DC5923710#/forgejo.keyring
-Source3:        package-lock.json
+Source3:        https://codeberg.org/forgejo/forgejo/raw/tag/v%{version}/package-lock.json
 Source4:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 Source5:        forgejo.service
