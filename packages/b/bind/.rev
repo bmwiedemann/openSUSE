@@ -2779,4 +2779,41 @@ New Features
   * Reject RRSIG records covering meta-types.</comment>
     <requestid>1361054</requestid>
   </revision>
+  <revision rev="235" vrev="1">
+    <srcmd5>7054d6420ce67d5894d3a88ee81ebe5c</srcmd5>
+    <version>9.20.26</version>
+    <time>1785058063</time>
+    <user>dimstar_suse</user>
+    <comment>- Upgrade to release 9.20.26
+  Security Fixes:
+  * Correct verification of NSEC3 signer name.
+    (CVE-2026-10723)
+    [bsc#1271982]
+  * Malformed DNSKEY records could trigger an assertion.
+    (CVE-2026-10822)
+    [bsc#1271983]
+  * Fix handling of RPZ CNAME expansion that returns too-long name.
+    (CVE-2026-11331)
+    [bsc#1271984]
+  * Prevent excessive validation work from crafted negative
+    responses.
+    (CVE-2026-11605)
+    [bsc#1271985]
+  * Prevent cache exhaustion under sustained attack.
+    (CVE-2026-11622)
+    [bsc#1271986]
+  * Stop accepting invalid signed wildcard records.
+    (CVE-2026-11721)
+    [bsc#1271987]
+  * Do not assert for some specific CNAME and DNAME queries.
+    (CVE-2026-12617)
+    [bsc#1271988]
+  * Prevent crash from malformed NSEC/NSEC3 response.
+    (CVE-2026-13204)
+    [bsc#1271989]
+  * Fix DNSSEC validation bypass via out-of-zone NSEC Next Field.
+    (CVE-2026-13321)
+    [bsc#1271990]</comment>
+    <requestid>1367361</requestid>
+  </revision>
 </revisionlist>

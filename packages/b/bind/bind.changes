@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Jul 23 09:40:24 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.26
+  Security Fixes:
+  * Correct verification of NSEC3 signer name.
+    (CVE-2026-10723)
+    [bsc#1271982]
+  * Malformed DNSKEY records could trigger an assertion.
+    (CVE-2026-10822)
+    [bsc#1271983]
+  * Fix handling of RPZ CNAME expansion that returns too-long name.
+    (CVE-2026-11331)
+    [bsc#1271984]
+  * Prevent excessive validation work from crafted negative
+    responses.
+    (CVE-2026-11605)
+    [bsc#1271985]
+  * Prevent cache exhaustion under sustained attack.
+    (CVE-2026-11622)
+    [bsc#1271986]
+  * Stop accepting invalid signed wildcard records.
+    (CVE-2026-11721)
+    [bsc#1271987]
+  * Do not assert for some specific CNAME and DNAME queries.
+    (CVE-2026-12617)
+    [bsc#1271988]
+  * Prevent crash from malformed NSEC/NSEC3 response.
+    (CVE-2026-13204)
+    [bsc#1271989]
+  * Fix DNSSEC validation bypass via out-of-zone NSEC Next Field.
+    (CVE-2026-13321)
+    [bsc#1271990]
+  * Reclaim memory promptly when DNSSEC validations are canceled.
+
+  Removed Features:
+  * Remove the secondary validator in query.c.
+
+  Bug Fixes:
+  * Fix a bug in DNS UPDATE processing with inline-signing enabled.
+  * Properly detect private records before copying.
+  * Tighten referral DS acceptance.
+  * Don't synthesize negative responses with pending NSEC.
+  * Check that an NSEC signer is at or above the name to be
+    validated.
+  * Don't evict DNSSEC-validated cache data on a CD=1 NXDOMAIN.
+  * Fix a deny-answer-aliases configuration bypass issue.
+  * Reject external referrals from forwarders.
+  * Fix a zone transfer over TLS (XoT) issue when using the
+    opportunistic TLS mode.
+  * Unvalidated opt-out NSEC3 could be accepted in insecurity
+    proof.
+  * Check wildcard signer and NOQNAME signer match.
+  * Fix CNAME resolution failure caused by a cached SERVFAIL
+    response.
+  * Reject unsupported RSA DNSKEY shapes during DNSSEC validation.
+  * Fix a bug in GeoIP2 string matching.
+  * Fix DNS-over-HTTPS (DoH) quota configuration issue.
+  * Truncated reply to a TSIG query no longer stalls the resolver.
+  * Ignore updates removing DNSKEY RRset with class ANY.
+  * Ignore 0-byte reads in the TCP read callback.
+  * Only print per-zone glue stats when zone-statistics is set to
+    full.
+  * CDS/CDNSKEY records were not removed when re-configuring the
+    server.
+  * Fix a crash when querying an empty non-terminal in a wildcard
+    zone in RBTDB.
+  * Stop reusing outgoing TCP connections the peer has already
+    closed.
+  * Fix DNSSEC validation failures for names under an apex DNAME.
+
+-------------------------------------------------------------------
 Mon Jun 22 09:59:31 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.24
