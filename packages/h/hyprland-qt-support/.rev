@@ -10,4 +10,12 @@ Dependency for hyprland-qtutils
 Replaces use of kf6-qqc2-desktop-style in hypr* apps</comment>
     <requestid>1237054</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>818c5df7a8a7aacfe12546ab048a398d</srcmd5>
+    <version>0.1.0</version>
+    <time>1785058151</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367706</requestid>
+  </revision>
 </revisionlist>

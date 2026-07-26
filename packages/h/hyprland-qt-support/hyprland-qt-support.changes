@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 24 22:42:01 UTC 2026 - malcolmlewis@opensuse.org
+
+- Install libraries to /usr/lib64, (boo#1271704).
+- Delete RPATH from libraries.
+
+-------------------------------------------------------------------
 Fri Jan 10 23:03:58 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Initial Commit, New Package
+
