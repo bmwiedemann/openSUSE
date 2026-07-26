@@ -1,0 +1,87 @@
+Subject: fix(file-xfers): Reject path traversal in file transfer filenames
+From: Vinz Spring vinzs@amazon.de Fri Jul 17 13:55:37 2026 +0000
+Date: Mon Jul 20 09:52:31 2026 +0000:
+Git: c2eaec460acb555d4c0ceb244a0782b50745b278
+
+Add is_safe_filename() validation in vdagent_file_xfers_create_file() that
+rejects filenames containing '..' path components or absolute paths. This
+prevents a malicious SPICE host from writing arbitrary files outside the
+intended save directory via crafted file transfer names.
+
+CVE: CVE-2026-57966
+
+diff --git a/src/vdagent/file-xfers.c b/src/vdagent/file-xfers.c
+index 4898fc0..2c3fac7 100644
+--- a/src/vdagent/file-xfers.c
++++ b/src/vdagent/file-xfers.c
+@@ -22,6 +22,7 @@
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
++#include <stdbool.h>
+ #include <inttypes.h>
+ #include <string.h>
+ #include <syslog.h>
+@@ -178,6 +179,29 @@ static uint64_t get_free_space_available(const char *path)
+     return stat.f_bsize * stat.f_bavail;
+ }
+ 
++/* File transfers may contain relative subdirectories, but must remain below
++ * the configured save directory. */
++static bool
++is_safe_relative_path(const char *filename)
++{
++    const char *component = filename;
++
++    if (filename[0] == '\0' || g_path_is_absolute(filename))
++        return false;
++
++    while (component != NULL) {
++        const char *separator = strchr(component, G_DIR_SEPARATOR);
++        size_t length = separator != NULL ? separator - component : strlen(component);
++
++        if (length == 2 && component[0] == '.' && component[1] == '.')
++            return false;
++
++        component = separator != NULL ? separator + 1 : NULL;
++    }
++
++    return true;
++}
++
+ int
+ vdagent_file_xfers_create_file(const char *save_dir, char **file_name_p)
+ {
+@@ -187,6 +211,11 @@ vdagent_file_xfers_create_file(const char *save_dir, char **file_name_p)
+     int file_fd = -1;
+     int i;
+ 
++    if (!is_safe_relative_path(*file_name_p)) {
++        syslog(LOG_ERR, "file-xfer: rejecting unsafe filename: %s", *file_name_p);
++        return -1;
++    }
++
+     file_path = g_build_filename(save_dir, *file_name_p, NULL);
+     dir = g_path_get_dirname(file_path);
+     if (g_mkdir_with_parents(dir, S_IRWXU) == -1) {
+diff --git a/tests/test-file-xfers.c b/tests/test-file-xfers.c
+index 9995336..b734f91 100644
+--- a/tests/test-file-xfers.c
++++ b/tests/test-file-xfers.c
+@@ -64,6 +64,16 @@ int main(int argc, char *argv[])
+     // create a file in a subdirectory not existing
+     test_file("subdir/test.txt", "./test-dir/subdir/test.txt");
+ 
++    // reject paths that can escape the destination directory
++    test_file("../escape.txt", NULL);
++    test_file("subdir/../../escape.txt", NULL);
++    test_file("/tmp/escape.txt", NULL);
++    test_file("", NULL);
++
++    // allow dots that are not parent-directory components
++    test_file(".hidden", "./test-dir/.hidden");
++    test_file("subdir/file..txt", "./test-dir/subdir/file..txt");
++
+     // create a file in a directory with no permissions
+     assert(system("ln -s /proc/1 test-dir/baddir") == 0);
+     test_file("baddir/test2.txt", NULL);

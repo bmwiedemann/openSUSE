@@ -1,0 +1,30 @@
+Subject: fix(udscs): Prevent integer overflow in udscs_write() buf_size calculation
+From: Vinz Spring vinzs@amazon.de Fri Jul 17 13:55:32 2026 +0000
+Date: Mon Jul 20 08:34:40 2026 +0000:
+Git: e379398607671764b23e92cb81b7fa729ba64a3c
+
+Add a bounds check rejecting messages where size > UINT32_MAX - sizeof(header)
+before computing buf_size = sizeof(header) + size. This prevents the 32-bit
+unsigned integer wraparound that leads to a tiny allocation followed by a
+massive heap-buffer-overflow memcpy, crashing the daemon (DoS).
+
+CVE: CVE-2026-57965
+
+diff --git a/src/udscs.c b/src/udscs.c
+index 6c50f76..4b121ff 100644
+--- a/src/udscs.c
++++ b/src/udscs.c
+@@ -141,6 +141,13 @@ void udscs_write(UdscsConnection *conn, uint32_t type, uint32_t arg1,
+     guint buf_size;
+     struct udscs_message_header header;
+ 
++    /* CVE-2026-57965: Prevent integer overflow in buf_size calculation.
++     * sizeof(header) + size must not wrap a 32-bit unsigned integer. */
++    if (size > UINT32_MAX - sizeof(header)) {
++        syslog(LOG_ERR, "udscs_write: message size %u too large, dropping", size);
++        return;
++    }
++
+     buf_size = sizeof(header) + size;
+     buf = g_malloc(buf_size);
+ 

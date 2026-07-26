@@ -30,6 +30,8 @@ URL:            http://spice-space.org/
 Source:         http://spice-space.org/download/releases/%{name}-%{version}.tar.bz2
 Source2:        %{name}.keyring
 Patch0:         harden_spice-vdagentd.service.patch
+Patch1:         Prevent-integer-overflow-in-udscs_write-buf_size-calculation.patch
+Patch2:         Reject-path-traversal-in-file-transfer-filenames.patch
 BuildRequires:  alsa-devel  >= 1.0.22
 BuildRequires:  desktop-file-utils
 BuildRequires:  libXfixes-devel

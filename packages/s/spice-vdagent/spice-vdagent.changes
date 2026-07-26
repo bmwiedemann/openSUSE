@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 24 11:35:30 MDT 2026 - carnold@suse.com
+
+- bsc#1269553 - VUL-0: CVE-2026-57965: spice-vdagent: integer
+  overflow in `udscs_write()` can lead to heap buffer overflow
+  Prevent-integer-overflow-in-udscs_write-buf_size-calculation.patch
+- bsc#1269554 - VUL-0: CVE-2026-57966: spice-vdagent: improper
+  sanitization allows a compromised SPICE host to write arbitrary
+  files to any location on the guest operating system
+  Reject-path-traversal-in-file-transfer-filenames.patch
+
+-------------------------------------------------------------------
 Thu May 21 16:42:47 UTC 2026 - Antoine Ginies <aginies@suse.com>
 
 - Move XDG autostart to _distconfdir and drop legacy rc symlink for immutable systems support.

@@ -269,4 +269,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1355680</requestid>
   </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>a29bd3fb55cf2d3b52dc9e24ae20d4ac</srcmd5>
+    <version>0.23.0</version>
+    <time>1785058076</time>
+    <user>dimstar_suse</user>
+    <comment>Fixes security issues reported in bsc#1269553 CVE-2026-57965, and bsc#1269554 CVE-2026-57966</comment>
+    <requestid>1367700</requestid>
+  </revision>
 </revisionlist>
