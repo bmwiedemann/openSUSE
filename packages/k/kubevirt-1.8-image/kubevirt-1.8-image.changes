@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:59:04 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- set SOURCE_DATE_EPOCH for reproducible package installation times
+
+-------------------------------------------------------------------
 Thu Jun 25 15:21:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - rename to kubevirt-1.8-image
