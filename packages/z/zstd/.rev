@@ -478,4 +478,12 @@
   Add 0002-fix-1.5.7-documentation.patch</comment>
     <requestid>1349603</requestid>
   </revision>
+  <revision rev="43" vrev="5">
+    <srcmd5>f51bb189928fc74e3d2b3956d3163e76</srcmd5>
+    <version>1.5.7</version>
+    <time>1785058027</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1367612</requestid>
+  </revision>
 </revisionlist>

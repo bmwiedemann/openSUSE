@@ -58,7 +58,7 @@ settings, a property shared by most LZ compression algorithms, such
 as zlib or lzma.
 
 At roughly the same ratio, zstd (v1.4.0) achieves ~870%% faster
-compression than gzip. For roughly the same time, zstd achives a
+compression than gzip. For roughly the same time, zstd achieves a
 ~12%% better ratio than gzip. LZMA outperforms zstd by ~10%% faster
 compression for same ratio, or ~1–4%% size reduction for same time.
 
@@ -87,7 +87,7 @@ Needed for compiling programs that link with the library.
 %package -n lib%{name}-devel-static
 Summary:        Development files for the Zstd compression library
 Group:          Development/Libraries/C and C++
-BuildRequires:  glibc-devel-static
+Requires:       glibc-devel-static
 Requires:       lib%{name}-devel = %{version}
 
 %description -n lib%{name}-devel-static
@@ -123,6 +123,7 @@ an optimized deflate/zlib handling.
 export CFLAGS="%{optflags}"
 export CXXFLAGS="%{optflags} -std=c++11"
 %if %{with cmake}
+# %%cmake chdirs into ./build, so ./cmake resolves to the build/cmake sources
 %cmake ./cmake -DZSTD_BUILD_CONTRIB:BOOL=ON -DZSTD_ZLIB_SUPPORT:BOOL=ON
 %cmake_build
 %else
