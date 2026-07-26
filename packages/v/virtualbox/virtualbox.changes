@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Jul 22 15:34:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.14
+  * VMM: Avoided querying/setting xcr0 for CPUs without xsave
+    feature when using Windows Hyper-V as the virtualization engine
+  * Linux Host: Added initial support for kernel 7.2
+  * Linux Guest: Fixed support for updated RHEL 9.8 and 9.9 kernels
+  * UEFI: Fixed possible bug check and reboot of Windows 11 when
+    updating Secure Boot DBX entries
+- Drop 0001-7.2-Backported-r174461-Linux-vboxdrv-Add-initial-sup.patch,
+  0002-7.2-Backported-r174462-Linux-vboxnetadp-Add-initial-.patch
+  (merged)
+
+-------------------------------------------------------------------
 Tue Jul 14 05:17:52 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - support for kernel 7.2

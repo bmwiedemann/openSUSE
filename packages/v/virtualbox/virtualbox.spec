@@ -69,8 +69,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.12
-%define rversion 7.2.12
+Version:        7.2.14
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -134,8 +133,6 @@ Patch10:        fix_for_leap15.5.patch
 Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
-Patch21:        0001-7.2-Backported-r174461-Linux-vboxdrv-Add-initial-sup.patch
-Patch22:        0002-7.2-Backported-r174462-Linux-vboxnetadp-Add-initial-.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
 BuildRequires:  %{kernel_module_package_buildreqs}
@@ -423,7 +420,7 @@ This package contains the kernel-modules that VirtualBox uses to create or run v
 %endif
 
 %prep
-%autosetup -n VirtualBox-%{rversion} -p1
+%autosetup -n VirtualBox-%version -p1
 
 ### Documents for virtualbox main package ###
 %if %{main_package}
@@ -563,7 +560,7 @@ install -d -m 755 %{buildroot}/media
 echo "entering VNC extension install section"
 cd out/linux.*/release/packages/
 mkdir -p "%{buildroot}%{_datadir}/virtualbox/extensions/"
-install -D -m 644 VNC-*.vbox-extpack "%{buildroot}%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack"
+install -D -m 644 VNC-*.vbox-extpack "%buildroot/%_datadir/virtualbox/extensions/VNC-%version.vbox-extpack"
 cd -
 
 echo "entering virtualbox(-qt) install section"
@@ -767,7 +764,7 @@ echo INFO: Transitioning between virtualbox 7.2.8-or-earlier and 7.2.10-or-newer
 %service_add_post vboxweb-service.service
 
 %post vnc
-EXTPACK="%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack"
+EXTPACK="%_datadir/virtualbox/extensions/VNC-%version.vbox-extpack"
 ACCEPT="$(tar --to-stdout -xf "${EXTPACK}" ./ExtPack-license.txt | sha256sum | head --bytes=64)"
 VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" > /dev/null
 
@@ -978,7 +975,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %files vnc
 %license COPYING
 %dir %{_datadir}/virtualbox/extensions
-%{_datadir}/virtualbox/extensions/VNC-%{rversion}.vbox-extpack
+%_datadir/virtualbox/extensions/VNC-%version.vbox-extpack
 
 # main_package
 %endif
