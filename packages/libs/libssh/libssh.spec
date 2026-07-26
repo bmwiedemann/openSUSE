@@ -32,7 +32,7 @@
 %endif
 
 Name:           libssh%{pkg_suffix}
-Version:        0.11.4
+Version:        0.11.5
 Release:        0
 Summary:        The SSH library
 License:        LGPL-2.1-or-later

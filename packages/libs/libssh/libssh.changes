@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:10:14 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.11.5:
+  * Security:
+    - CVE-2026-15370: Stack buffer overflow in SFTP server
+      longname construction (bsc#1272162)
+    - CVE-2026-59843: Denial of service via zero advertised
+      channel packet size (bsc#1272164)
+    - CVE-2026-59844: Denial of service via oversized SFTP read
+      length (bsc#1272165)
+    - CVE-2026-59845: Denial of service via unchecked ProxyCommand
+      fork() failure (bsc#1272166)
+    - CVE-2026-59846: Information disclosure via ProxyCommand %r
+      username expansion (bsc#1272167)
+    - CVE-2026-59847: Integrity downgrade via OpenSSL AES-GCM tag
+      verification (bsc#1272168)
+    - CVE-2026-59848: Denial of service via SFTP responses with
+      unknown request IDs (bsc#1272169)
+    - CVE-2026-59849: Denial of service via automatic certificate
+      authentication loop (bsc#1272170)
+    - CVE-2026-59850: Use-after-free via data callbacks on closed
+      channels (bsc#1272171)
+    - Zero-initialize every ssh_string
+  * Compatibility:
+    - Fix compatibility with C23 / gcc16
+  * Bugfixes:
+    - Fix multiple memory leaks, null checks, and error checks
+    - Validate peer public key in DH key exchange
+    - Avoid remote window overflow
+    - Avoid off-by-one overflow during kbdint authentication
+    - Avoid logging uninitialized sequence numbers
+    - Avoid double conversion of SFTP version number
+    - Send correct SFTP server version number
+    - Avoid handling repeated SFTP INIT messages
+    - Harmonize return values from SFTP server callbacks
+
+-------------------------------------------------------------------
 Thu Mar 26 15:01:40 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update %suse_version checks for SLES 16.x (jsc#PED-15815)

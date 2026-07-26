@@ -881,4 +881,12 @@ ProxyCommand parsing in ssh configuration files:
 - Update %suse_version checks for SLES 16.x (jsc#PED-15815)</comment>
     <requestid>1342930</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>9d215ea3e36a1645c98033c4468fa3f4</srcmd5>
+    <version>0.11.5</version>
+    <time>1785058069</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367382</requestid>
+  </revision>
 </revisionlist>
