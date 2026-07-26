@@ -74,4 +74,12 @@
   * fix: allow `django.shortcuts.resolve_url` to receive a str-promise</comment>
     <requestid>1329924</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>de049031771b6d41519e5d4f240e1e17</srcmd5>
+    <version>6.0.7</version>
+    <time>1785058091</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367454</requestid>
+  </revision>
 </revisionlist>

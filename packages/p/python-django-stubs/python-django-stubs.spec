@@ -26,7 +26,7 @@
 %{?sle15_python_module_pythons}
 %define short_name django-stubs
 Name:           python-django-stubs%{psuffix}
-Version:        5.2.9
+Version:        6.0.7
 Release:        0
 Summary:        PEP-484 stubs for Django
 License:        MIT
@@ -36,15 +36,14 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 %if %{with test}
-BuildRequires:  %{python_module Django >= 5.0}
 BuildRequires:  %{python_module django-stubs = %{version}}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mypy-plugins}
 BuildRequires:  %{python_module pytest-shard}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module psycopg2}
-BuildRequires:  %{python_module types-PyYAML}
 BuildRequires:  %{python_module redis}
+BuildRequires:  compatlibopenblas_serial0
 # Not needed since python-redis is >= 5.0.0
 # BuildRequires:  % {python_module types-redis}
 %endif
@@ -52,8 +51,8 @@ BuildRequires:  gdal-devel
 BuildRequires:  fdupes
 Requires:       python-Django >= 5.0
 Requires:       python-types-PyYAML
-Requires:       python-django-stubs-ext
-Requires:       python-typing-extensions
+Requires:       python-django-stubs-ext >= 6.0.2
+Requires:       python-typing-extensions >= 4.11
 BuildArch:      noarch
 %python_subpackages
 
