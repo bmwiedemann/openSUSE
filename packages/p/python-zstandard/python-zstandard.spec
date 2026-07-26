@@ -27,9 +27,9 @@ URL:            https://github.com/indygreg/python-zstandard
 Source:         https://files.pythonhosted.org/packages/source/z/zstandard/zstandard-%{version}.tar.gz
 Patch0:         feature-detection.patch
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  libzstd-devel >= 1.5.6
 BuildRequires:  python-rpm-macros
@@ -56,8 +56,7 @@ Zstandard bindings for Python
 
 %build
 export CFLAGS="%{optflags}"
-%define py_setup_args "--system-zstd"
-%pyproject_wheel
+%pyproject_wheel --config-settings=--build-option=--system-zstd .
 
 %install
 %pyproject_install
@@ -66,6 +65,8 @@ export CFLAGS="%{optflags}"
 %check
 # remove srcdir for tests collection of installed lib
 mv zstandard zstandard.moved
+# ensure the module was really linked against system libzstd
+%{python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c "import zstandard; assert 'system_zstd' in zstandard.backend_features"}
 %pytest_arch
 
 %files %{python_files}

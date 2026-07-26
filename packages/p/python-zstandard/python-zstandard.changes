@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 17 04:15:25 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Really build against system libzstd again: %pyproject_wheel does
+  not honor %py_setup_args, so since the switch to the pyproject
+  macros the bundled zstd copy was silently linked in statically.
+  Pass --system-zstd via pip --config-settings instead.
+- Add a check that the built module actually uses system libzstd,
+  so this cannot regress silently again.
+- BuildRequire packaging (imported by setup.py, previously pulled
+  in only indirectly) and drop no longer needed wheel.
+
+-------------------------------------------------------------------
 Mon Sep 29 08:02:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Update to 0.25.0
