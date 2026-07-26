@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Jul 26 02:08:09 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 1.32.0:
+- oneAPI Level Zero API Headers generated from:
+  * oneAPI Level Zero v1.17.24 Core API Headers
+  * oneAPI Level Zero v1.17.24 Tools API Headers
+  * oneAPI Level Zero v1.17.24 Sysman API Headers
+  * oneAPI Level Zero v1.17.24 runtime API Headers
+- oneAPI Level Zero Loader v1.32.0
+- oneAPI Level Zero Validation Layer v1.32.0
+- oneAPI Level Zero Tracing Layer v1.32.0
+
+-------------------------------------------------------------------
 Mon Jul 13 22:48:50 UTC 2026 - Markus Ebner <info@ebner-markus.de>
 
 - Update to version 1.31.0:
