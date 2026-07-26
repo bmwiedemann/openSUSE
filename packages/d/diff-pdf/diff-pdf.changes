@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:31:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.3:
+  * Left/right document isolated view with hotkeys (gh#92)
+- Includes 0.5.1 and 0.5.2:
+  * New --per-page-pixel-tolerance option for a per page pixel
+    difference tolerance
+  * Windows-only build and packaging changes (64-bit binaries,
+    usage message box)
+- Pin the obs_scm service to the v0.5.3 tag instead of tracking
+  the default branch
+- Drop the obsolete Group tag
+
+-------------------------------------------------------------------
 Mon Feb 13 06:20:28 UTC 2023 - munix9@googlemail.com
 
 - Pre-create diff-pdf.1 with help2man to work around GTK+ DISPLAY

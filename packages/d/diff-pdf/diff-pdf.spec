@@ -1,7 +1,7 @@
 #
 # spec file for package diff-pdf
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           diff-pdf
-Version:        0.5
+Version:        0.5.3
 Release:        0
 Summary:        Simple PDF comparison tool
 License:        GPL-2.0-only AND LGPL-2.0-only
-Group:          Productivity/Publishing/PDF
 URL:            https://vslavik.github.io/diff-pdf/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}.1

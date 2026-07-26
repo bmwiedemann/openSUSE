@@ -60,4 +60,12 @@
     <comment></comment>
     <requestid>1065417</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>b174763328e5f1214ca9b7dbff6df5c5</srcmd5>
+    <version>0.5.3</version>
+    <time>1785058216</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.5.3 (includes 0.5.1, 0.5.2): left/right isolated view with hotkeys, new --per-page-pixel-tolerance option; pin obs_scm to the v0.5.3 tag and drop the obsolete Group tag</comment>
+    <requestid>1367783</requestid>
+  </revision>
 </revisionlist>
