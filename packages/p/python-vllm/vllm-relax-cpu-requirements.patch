@@ -1,5 +1,5 @@
---- a/requirements/cpu.txt	2026-07-13 08:06:59.821793879 +0200
-+++ b/requirements/cpu.txt	2026-07-13 08:07:15.327541418 +0200
+--- a/requirements/cpu.txt
++++ b/requirements/cpu.txt
 @@ -1,25 +1,13 @@
  # Common dependencies
  -r common.txt
@@ -30,12 +30,12 @@
  
  # Use this to gather CPU info and optimize based on ARM Neoverse cores
  py-cpuinfo; platform_machine == "aarch64"
---- a/requirements/common.txt	2026-07-13 08:06:59.821793879 +0200
-+++ b/requirements/common.txt	2026-07-13 08:07:24.948625739 +0200
-@@ -25,7 +25,7 @@
+--- a/requirements/common.txt
++++ b/requirements/common.txt
+@@ -23,7 +23,7 @@
+ lm-format-enforcer == 0.11.3
+ llguidance >= 1.7.0, < 1.8.0; platform_machine == "x86_64" or platform_machine == "arm64" or platform_machine == "aarch64" or platform_machine == "ppc64le" or platform_machine == "s390x"
  outlines_core == 0.2.14
- # required for outlines backend disk cache
- diskcache == 5.6.3
 -lark == 1.2.2
 +lark >= 1.2.2
  xgrammar >= 0.2.1, < 1.0.0; platform_machine == "x86_64" or platform_machine == "aarch64" or platform_machine == "arm64" or platform_machine == "s390x" or platform_machine == "ppc64le"

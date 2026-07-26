@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:30:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.26.0:
+  * New Inkling model family support including speculative
+    decoding, LoRA and quantization; further new models:
+    BertForMaskedLM, Roberta/XLMRoberta token classification,
+    Cosmos3 Edge Reasoner, TranslateGemma-12b-it
+  * DeepSeek-V4 performance push: specialized routing kernel,
+    fused_topk_bias kernel, sparse decode/prefill optimizations
+  * fp32 lm_head for generation models via head_dtype, also on
+    the LoRA path
+  * Attention backend selectable per KV-cache group and
+    sliding-window support as an explicit backend capability
+  * Matured KV offloading and tiered secondary storage:
+    offloading metrics, object-store secondary tier,
+    encoder-cache connectors with CPU offloading
+  * Transformers 5.13 support with more models on the
+    Transformers modeling backend
+  * Requirements: diskcache and flashinfer-cubin dropped
+- Rebase vllm-relax-cpu-requirements.patch onto the 0.26.0
+  requirements (diskcache line removed upstream)
+- Drop the python-diskcache runtime requirement accordingly
+
+-------------------------------------------------------------------
 Wed Jul 22 13:46:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.25.1

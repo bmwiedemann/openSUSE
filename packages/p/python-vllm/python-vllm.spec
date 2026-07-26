@@ -29,7 +29,7 @@
 # compiled kernels is tracked as a follow-up once that is resolved.
 %define vllm_target_device empty
 Name:           python-vllm
-Version:        0.25.1
+Version:        0.26.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -60,6 +60,8 @@ BuildRequires:  fdupes
 # import torch dlopens libopenblas.so.0 at build time.
 BuildRequires:  libopenblas_pthreads0
 BuildRequires:  python-rpm-macros
+Requires:       python-Pillow
+Requires:       python-PyYAML
 Requires:       python-aiohttp >= 3.13.3
 Requires:       python-anthropic >= 0.71.0
 Requires:       python-blake3
@@ -68,7 +70,6 @@ Requires:       python-cbor2
 Requires:       python-cloudpickle
 Requires:       python-compressed-tensors = 0.17.1
 Requires:       python-depyf = 0.20.0
-Requires:       python-diskcache = 5.6.3
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
 Requires:       python-filelock >= 3.16.1
@@ -93,9 +94,8 @@ Requires:       python-opentelemetry-sdk >= 1.27.0
 Requires:       python-opentelemetry-semantic-conventions-ai >= 0.4.1
 Requires:       python-outlines_core = 0.2.14
 Requires:       python-partial-json-parser
-Requires:       python-Pillow
-Requires:       python-prometheus-fastapi-instrumentator >= 8.0.0
 Requires:       python-prometheus-client >= 0.18.0
+Requires:       python-prometheus-fastapi-instrumentator >= 8.0.0
 Requires:       python-protobuf >= 5.29.6
 Requires:       python-psutil
 Requires:       python-py-cpuinfo
@@ -103,7 +103,6 @@ Requires:       python-pybase64
 Requires:       python-pydantic >= 2.12.0
 Requires:       python-pydantic-extra-types
 Requires:       python-python-json-logger
-Requires:       python-PyYAML
 Requires:       python-pyzmq >= 25.0.0
 Requires:       python-regex
 Requires:       python-requests >= 2.26.0
