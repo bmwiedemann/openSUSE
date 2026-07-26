@@ -17,12 +17,13 @@
 
 
 Name:           python-agent-client-protocol
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        A Python implement of Agent Client Protocol (ACP, by Zed Industries)
 License:        Apache-2.0
 URL:            https://agentclientprotocol.github.io/python-sdk/
-Source:         https://files.pythonhosted.org/packages/source/a/agent-client-protocol/agent_client_protocol-%{version}.tar.gz
+# Source:         https://files.pythonhosted.org/packages/source/a/agent-client-protocol/agent_client_protocol-%%{version}.tar.gz
+Source:         agent_client_protocol-%{version}.tar.gz
 BuildRequires:  %{python_module datamodel-code-generator}
 BuildRequires:  %{python_module mkdocs-material}
 BuildRequires:  %{python_module mkdocs}
@@ -63,6 +64,7 @@ models, asyncio transports, helper builders, and runnable demos.
 
 %check
 export PYTEST_ADDOPTS="--import-mode=importlib"
+export PYTHONPATH="."
 # rpc tests are stalling endlessly
 %pytest -k 'not test_rpc'
 

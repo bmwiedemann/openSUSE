@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jul 25 20:11:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to version 0.11.0:
+  * docs: add 0.11 migration guide
+  * docs: fix quickstart prompt signature
+  * feat(schema): bump ACP schema to v1.16.0 (#114)
+  * fix: close run_agent connection on cancellation (#113)
+  * fix: recover from oversized JSON-RPC frames (#111)
+  * feat: update ACP schema to v0.13.6 (#110)
+  * feat: update ACP schema to v0.13.3 (#106)
+  * chore(deps): bump uv in the uv group across 1 directory (#107)
+  * release: 0.10.1 (#104)
+  * fix: assign receive-loop attributes before spawning recv task (#102)
+- Use tarball from GitHub release (gh#agentclientprotocol/python-sdk#119)
+
+-------------------------------------------------------------------
+Sat Jul 25 18:38:35 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.11.0:
+  - chore(deps): bump uv from 0.11.6 to 0.11.15 in the uv group across 1 directory
+  - feat: update ACP schema to v0.13.6
+  - fix: recover from oversized JSON-RPC frames
+  - fix: close run_agent connection on cancellation
+  - feat(schema): bump ACP schema to v1.16.0
+
+-------------------------------------------------------------------
 Wed Jun 10 14:47:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.10.1:
