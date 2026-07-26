@@ -438,4 +438,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00072</comment>
     <requestid>1364840</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>5cc4c337517e2d20a15447e9f7211109</srcmd5>
+    <version>20260720</version>
+    <time>1785058055</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260720 (git commit 18cf97993f06):
+  * linux-firmware: Add firmware file for Intel BlazarIW
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+
+- Update to version 20260703 (git commit c95059a3774b):
+  * QCA: Add Bluetooth firmware for WCN6855 ROM 1.0</comment>
+    <requestid>1367331</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Jul 21 06:59:20 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260720 (git commit 18cf97993f06):
+  * linux-firmware: Add firmware file for Intel BlazarIW
+  * linux-firmware: Update firmware file for Intel BlazarU core
+  * linux-firmware: Update firmware file for Intel BlazarI core
+  * linux-firmware: Update firmware file for Intel Scorpius core
+
+-------------------------------------------------------------------
+Mon Jul  6 09:05:43 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260703 (git commit c95059a3774b):
+  * QCA: Add Bluetooth firmware for WCN6855 ROM 1.0
+
+-------------------------------------------------------------------
 Mon Jun 29 13:24:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260629 (git commit 3ee099cd4a20):
