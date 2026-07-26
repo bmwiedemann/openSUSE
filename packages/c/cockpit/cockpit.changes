@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Jun 30 10:26:18 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
+
+- Update to 364
+  * 364
+    - Bug fixes and translation updates
+  * 363
+    - Translation updates
+  * 362
+    - Bug fixes and translation updates
+    - Drop CVE-2026-4802.patch as this was fixed upstream
+
+-------------------------------------------------------------------
 Mon May 18 03:33:13 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Add CVE-2026-4802.patch to backport upstreams fix for bsc#1265040/CVE-2026-4802

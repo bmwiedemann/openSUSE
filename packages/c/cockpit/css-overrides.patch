@@ -164,17 +164,17 @@ index dae84c4b7..e1e8fa7dc 100644
      <script src="plot.js"></script>
  </head>
 diff --git a/pkg/playground/react-patterns.html b/pkg/playground/react-patterns.html
-index a220e0a51..437bd2e39 100644
+index 10d5d97..2888ba5 100644
 --- a/pkg/playground/react-patterns.html
 +++ b/pkg/playground/react-patterns.html
 @@ -5,6 +5,7 @@
-     <title>Cockpit React Patterns Usage</title>
+     <title>Cockpit React Patterns</title>
      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
      <link href="react-patterns.css" type="text/css" rel="stylesheet" />
 +    <link href="../../static/css-overrides.css" type="text/css" rel="stylesheet" />
      <script src="../base1/cockpit.js"></script>
      <script src="react-patterns.js"></script>
- </head>
+   </head>
 diff --git a/pkg/playground/speed.html b/pkg/playground/speed.html
 index 603c7341a..e89d111de 100644
 --- a/pkg/playground/speed.html

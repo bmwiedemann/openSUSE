@@ -953,4 +953,19 @@ outside of Factory
 - Update dependencies bsc#1257836/CVE-2026-25547, bsc#1258641/CVE-2026-26996, bsc#1259013/CVE-2026-27904</comment>
     <requestid>1353668</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>438977990aeb8400febdc83e4299840d</srcmd5>
+    <version>364</version>
+    <time>1785058035</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 364
+  * 364
+    - Bug fixes and translation updates
+  * 363
+    - Translation updates
+  * 362
+    - Bug fixes and translation updates
+    - Drop CVE-2026-4802.patch as this was fixed upstream</comment>
+    <requestid>1367649</requestid>
+  </revision>
 </revisionlist>
