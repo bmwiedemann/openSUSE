@@ -1888,4 +1888,19 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1366257</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>d807c0df542359395fcda9ba4c6ff0d3</srcmd5>
+    <version>1.2.25</version>
+    <time>1785058225</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.2.25
+  + Fixed a possible deadlock during gapless track transition when an error occurs loading the next track (#2251)
+  + Fixed the wrong embedded cover being picked for FLAC/Ogg files with multiple untagged (&quot;Other&quot;) pictures (#2250)
+  + Fixed tag edits made in the playlist not being reflected immediately, and restored the previous metadata if saving a tag edit fails (#2239)
+  + Fixed the taskbar/dock icon not matching the running window on some desktops (#2242)
+  + Numerous stability, crash-safety and thread-safety fixes throughout the application
+  + Added recursive expansion of nested .m3u/.m3u8 playlist references so they load as a fully expanded, flat playlist (#2185)
+</comment>
+    <requestid>1367789</requestid>
+  </revision>
 </revisionlist>
