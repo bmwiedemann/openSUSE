@@ -1,7 +1,7 @@
 #
 # spec file for package python-click-plugins
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -65,11 +65,7 @@ export LANG=en_US.UTF-8
 
 %files %{python_files}
 %doc AUTHORS.txt CHANGES.md README.rst
-%if 0%{?leap_version} >= 420200 || 0%{?suse_version} > 1320
-%%license LICENSE.txt
-%else
 %license LICENSE.txt
-%endif
 %{python_sitelib}/click_plugins
 %{python_sitelib}/click_plugins-%{version}.dist-info
 

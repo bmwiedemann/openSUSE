@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Jul 19 07:29:56 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+- Drop obsolete leap_version/suse_version conditional around %license.
+
+-------------------------------------------------------------------
 Wed Jun 25 04:43:36 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 1.1.1.2:
