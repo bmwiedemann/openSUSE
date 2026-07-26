@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 19:31:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 8.8.1
+  Security fixes
+  - RedisBloom/RedisBloom#1044 Crafted RESTORE payloads in
+    RedisBloom and TDigest may trigger out-of-bounds writes,
+    potentially leading to remote code execution
+
+-------------------------------------------------------------------
 Mon May 25 12:08:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 8.8.0
