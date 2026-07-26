@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:11:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.0:
+  * Key-handling fixes for devices that repeat or press-and-hold
+    their own keys, on top of the 8.0.0 held-key work
+  * Add libcec_get_stats to the C API for adapter statistics
+  * New cross-platform C# binding and Node.js binding (not
+    packaged here)
+  * Published API reference for all bindings
+- Cleanup spec file: drop the obsolete %defattr from the
+  cec-client file list
+
+-------------------------------------------------------------------
 Thu Jul 23 19:53:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.0.0 (major release):

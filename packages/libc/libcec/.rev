@@ -174,4 +174,12 @@ Now with proper naming, thanks to Jan Engelhardt.</comment>
     <comment>Update to 8.0.0. SONAME bump libcec.so.7 -&gt; libcec.so.8; versioned subpackage renamed libcec7 -&gt; libcec8 (coexistence, no Provides/Obsoletes needed). Drop obsolete p8-platform dependency. Install upstream CMake package config (-devel). Build with -DDISABLE_STATIC=ON. Sole Factory reverse-dependency plasma6-bigscreen was build-tested against libcec 8.0.0: compiles cleanly and links libcec.so.8 with no source change; Factory staging will rebuild it against the new soname.</comment>
     <requestid>1367536</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>de84cc87c016a65037d6b2e61b5a4c54</srcmd5>
+    <version>8.1.0</version>
+    <time>1785058209</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 8.1.0 plus spec cleanup (drop obsolete %defattr): key-handling fixes, libcec_get_stats C API; soname unchanged</comment>
+    <requestid>1367782</requestid>
+  </revision>
 </revisionlist>

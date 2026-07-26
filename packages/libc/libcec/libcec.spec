@@ -21,7 +21,7 @@
 %define libname	%{name}%{sover}
 %bcond_with enable_rpi_build
 Name:           libcec
-Version:        8.0.0
+Version:        8.1.0
 Release:        0
 Summary:        Library to control devices with TV remote control via HDMI
 License:        GPL-2.0-or-later
@@ -118,7 +118,6 @@ This subpackage contains the headers for libcec.
 %ldconfig_scriptlets -n %{libname}
 
 %files -n cec-client
-%defattr(755,root,root)
 %{_bindir}/cec-client
 %{_bindir}/cec-client-%{version}
 %{_bindir}/cecc-client
