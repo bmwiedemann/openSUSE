@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:11:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.5.5 - a security release:
+  * Fix heap buffer over-read in get_layer4_v6(), reachable by
+    reading an untrusted pcap with any of the tools
+    (GHSA-jj65-mrgg-f5fx)
+  * Fix stack buffer overflow in the fragroute rules-file parser
+    (GHSA-777w-9599-w8g4)
+  * Fix out-of-bounds write on an empty fragroute rules file
+    (GHSA-p7xp-4gj2-x56c)
+  * Fix off-by-one heap overflows in the fragroute ip_chaff and
+    tcp_chaff modules (GHSA-m655-53p4-6qm8, GHSA-v8c4-9w98-9v6v)
+  * Fix heap overflow via negative fragment/segment sizes in the
+    fragroute ip_frag and tcp_seg modules (GHSA-27v4-xhfx-g2rx)
+  * Harden fragroute allocation-failure and rule-list cleanup
+    paths and add the first fragroute test cases
+
+-------------------------------------------------------------------
 Thu Jul 23 19:52:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.5.4 (security-only release):

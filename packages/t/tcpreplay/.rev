@@ -193,4 +193,12 @@ aarch64: replayed frames were captured on a veth peer, 3/3 successful,
     <comment></comment>
     <requestid>1367610</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>49c43e954122a970a271f672f3ceca7c</srcmd5>
+    <version>4.5.5</version>
+    <time>1785058211</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 4.5.5: security release fixing 6 memory-safety issues in the pcap/fragroute paths (GHSA-jj65-mrgg-f5fx, GHSA-777w-9599-w8g4, GHSA-p7xp-4gj2-x56c, GHSA-m655-53p4-6qm8, GHSA-v8c4-9w98-9v6v, GHSA-27v4-xhfx-g2rx)</comment>
+    <requestid>1367775</requestid>
+  </revision>
 </revisionlist>
