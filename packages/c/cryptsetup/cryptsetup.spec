@@ -18,7 +18,7 @@
 
 %define so_ver 12
 Name:           cryptsetup
-Version:        2.8.6
+Version:        2.8.7
 Release:        0
 Summary:        Setup program for dm-crypt Based Encrypted Block Devices
 License:        CC-BY-SA-4.0 AND LGPL-2.0-or-later WITH cryptsetup-OpenSSL-exception
@@ -30,14 +30,6 @@ Source1:        https://www.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetu
 Source2:        baselibs.conf
 Source3:        cryptsetup.keyring
 Patch0:         cryptsetup-fips140-3.patch
-# PATCH-FIX-UPSTREAM bsc#1270254 Load volume keys in intermediary keyring linked in thread keyring
-Patch1:         cryptsetup-Add-keyring-key-type.patch
-Patch2:         cryptsetup-Load-volume-keys-in-intermediary-keyring-linked-in-t.patch
-Patch3:         cryptsetup-Use-unique-intermediary-keyring-name-per-device.patch
-Patch4:         cryptsetup-tests-revoke-keys-instead-unlinking-from-thread-keyr.patch
-Patch5:         cryptsetup-tests-verify-VK-and-internal-keyring-cleanup-after-p.patch
-Patch6:         cryptsetup-tests-refactor-keyring-helpers.patch
-Patch7:         cryptsetup-tests-verify-intermediary-keyring-cleanup-after-cryp.patch
 # 2.6.38 has the required if_alg.h
 BuildRequires:  linux-glibc-devel >= 2.6.38
 BuildRequires:  fdupes
@@ -217,6 +209,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man8/cryptsetup-convert.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-create.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-erase.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-fvault2Dump.8%{?ext_man}
+%{_mandir}/man8/cryptsetup-fvault2Open.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-isLuks.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-loopaesOpen.8%{?ext_man}
 %{_mandir}/man8/cryptsetup-luksAddKey.8%{?ext_man}
@@ -245,7 +239,5 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_mandir}/man8/cryptsetup-token.8%{?ext_man}
 %{_mandir}/man8/integritysetup.8%{?ext_man}
 %{_mandir}/man8/veritysetup.8%{?ext_man}
-%{_mandir}/man8/cryptsetup-fvault2Dump.8%{?ext_man}
-%{_mandir}/man8/cryptsetup-fvault2Open.8%{?ext_man}
 
 %changelog
