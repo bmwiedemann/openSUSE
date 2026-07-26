@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 10:31:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- use BUILD_BUILDTIME if set, this is set by reproducible build jobs
+
+-------------------------------------------------------------------
 Mon Apr 27 12:01:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - script uses rpm2cpio and cpio, so require them

@@ -211,3 +211,24 @@ echo "Build: 42" > /var/log/build
 EOF
 
 rm test.kiwi config.sh
+
+# test different build time from reproducible buidls
+cat >.data <<EOF
+DISTURL="obs://build.suse.de/SUSE:SLE-15-SP3:Update:CR/images/5f0a221b7877396cbf977205e64690d2-sles15-image"
+RELEASE=4.2
+RECIPEFILE=_service:foobar:Dockerfile
+BUILD_ARCH=aarch64:aarch64_ilp32:armv8l
+BUILD_BUILDTIME=0
+EOF
+
+cat >Dockerfile <<EOF
+LABEL org.opencontainers.image.created="%BUILDTIME%"
+EOF
+
+bash "${script}"
+
+diff -u Dockerfile - <<EOF
+LABEL org.opencontainers.image.created="1970-01-01T00:00:00.000000000Z"
+EOF
+
+

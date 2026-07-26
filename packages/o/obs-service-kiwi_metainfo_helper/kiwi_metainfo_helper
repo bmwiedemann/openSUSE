@@ -158,10 +158,14 @@ if [ -f containers/annotation ]; then
     fi
 fi
 
+if [ -z "${BUILD_BUILDTIME:-}" ]; then
+    BUILD_BUILDTIME=$(date +%s.%N)
+fi
+
 sed -i"" \
     -e "s#%DISTURL%#${DISTURL}#g" \
     -e "s#%SOURCEURL%#${SOURCEURL}#g" \
     -e "s#%SOURCEURL_WITH(\([^)]\+\))%#${SOURCEURL_PLACEHOLDER}#g" \
     -e "s/%RELEASE%/${RELEASE}/g" \
     -e "s/%ARCH%/${BUILD_ARCH}/g" \
-    -e "s/%BUILDTIME%/$(date --utc +%FT%T.%NZ)/g" "${files[@]}"
+    -e "s/%BUILDTIME%/$(date -d @${BUILD_BUILDTIME} --utc +%FT%T.%NZ)/g" "${files[@]}"
