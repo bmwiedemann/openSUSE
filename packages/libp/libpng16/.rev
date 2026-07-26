@@ -1031,4 +1031,12 @@
     <comment>CVE-2026-34757, [bsc#1261957]</comment>
     <requestid>1346408</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>03156f9ab0b046a28fdaa1c3aabdedb9</srcmd5>
+    <version>1.6.58</version>
+    <time>1785057998</time>
+    <user>dimstar_suse</user>
+    <comment>version update to 1.6.58</comment>
+    <requestid>1367471</requestid>
+  </revision>
 </revisionlist>
