@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Thu Jul 23 18:12:06 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 1.16
+  - Behavior changes:
+    * Elements that have a single empty PCDATA child are now printed
+    as empty element tags (unless format_no_empty_element_tags is used)
+  - Improvements:
+    * "PUGIXML_CHARCONV_FLOAT" option can be enabled to switch floating
+     point conversions to <charconv>; this requires C++17, makes the
+     conversions locale-independent and can improve performance
+    * Add "xml_node::ensure_child" and "xml_node::ensure_attribute" that
+     return the child/attribute with the specified name, adding one if
+     it does not exist
+    * Improve performance of searching for nodes and attributes by name
+    * Loading a document from an empty buffer no longer performs unnecessary
+     memory allocations
+  - XPath improvements:
+    * Improve performance of queries that evaluate or compare attribute values
+     for example like "@attr > 5"
+    * Improve performance of queries that select nodes and attributes by name
+  - Bug fixes:
+    * Fix stack overflow when removing subtrees with extremely deep nesting
+    * Fix integer overflows that could lead to crashes when loading very
+     large (1+ GB) documents on 32-bit platforms in PUGIXML_WCHAR_MODE
+    * Fix null pointer dereference when copying xpath_variable_set objects
+     that contain string variables with unassigned values
+  - CMake improvements:
+    * Apple frameworks built with "PUGIXML_BUILD_APPLE_FRAMEWORK" now
+     include framework headers
+    * "PUGIXML_INSTALL_SOURCE" option can be used to install pugixml.cpp
+     (useful for header-only mode)
+  - Compatibility improvements:
+    * Add project files and NuGet packages for Visual Studio 2026
+    * Fix compatibility with C++20 modules when including pugixml.hpp
+     in the global module fragment
+    * Fix clang/gcc warnings -Wextra-semi-stmt, -Wsign-conversion and
+     -Wuninitialized (GCC16)
+    * Fix compilation for Embarcadero C++ XE5
+    * Work around several static analysis false positives
+- Drop pugixml-config.patch; upstream now automatically enables
+    "PUGIXML_HAS_LONG_LONG" when compiling with C++11 or newer
+- Enable "PUGIXML_CHARCONV_FLOAT" support (Force it on 15.x by forcing GCC++14
+    as the feature requires C++17)
+- Remove path tweak for Leap 15.3 and older as they are EOL versions
+
+-------------------------------------------------------------------
 Wed Jan 22 01:22:47 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to version 1.15:

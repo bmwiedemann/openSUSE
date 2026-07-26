@@ -1,7 +1,7 @@
 #
 # spec file for package pugixml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,23 @@
 #
 
 
+# PUGIXML_CHARCONV_FLOAT requires C++17
+%if 0%{?suse_version} < 1600
+%global force_gcc_version 14
+%endif
+
 %define _libname libpugixml1
 Name:           pugixml
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        Light-weight C++ XML Processing Library
 License:        MIT
 Group:          System/Libraries
 URL:            https://pugixml.org/
 Source0:        https://github.com/zeux/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
-Patch1:         pugixml-config.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  pkgconfig
 
 %description
@@ -65,11 +69,20 @@ pugixml is a light-weight C++ XML processing library. It features:
   conversions
 
 %prep
-%autosetup -p1
+%autosetup
 
 %build
-%cmake -DPUGIXML_BUILD_TESTS=ON
-%make_build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
+
+%cmake \
+  -DCMAKE_CXX_STANDARD=17 \
+  -DPUGIXML_BUILD_TESTS=ON \
+  -DPUGIXML_CHARCONV_FLOAT=ON
+
+%cmake_build
 
 %install
 %cmake_install
@@ -78,10 +91,6 @@ pugixml is a light-weight C++ XML processing library. It features:
 %postun -n %{_libname} -p /sbin/ldconfig
 
 %check
-%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150300
-# Tweak path to find libpugixml.so.1 for Leap 15.3 and older
-export LD_LIBRARY_PATH="$PWD/build"
-%endif
 %ctest
 
 %files devel
