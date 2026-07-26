@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Jul 23 12:13:54 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git26:
+  * test: Check if autorelabel files are removed after reboot
+  * Move cp of /.autorelabel to /etc into rd_microos_relabel
+
+-------------------------------------------------------------------
 Mon Mar 02 15:29:11 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.0+git24:

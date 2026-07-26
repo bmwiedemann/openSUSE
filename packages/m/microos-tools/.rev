@@ -493,4 +493,12 @@
   * selinux-autorelabel-generator: Ensure /etc is writable</comment>
     <requestid>1335861</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>9b7fba20cd8fbd206f690a3ec2ce64a7</srcmd5>
+    <version>4.0+git26</version>
+    <time>1785058003</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367480</requestid>
+  </revision>
 </revisionlist>
