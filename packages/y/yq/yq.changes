@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Jul 24 08:53:40 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- update to v4.53.3
+  Add --ini-preserve-quotes flag for INI round-trip quote preservation.
+  Fix: reset INI decoder state on init.
+  Fix: decode properties array bracket paths.
+  Fix: preserve floats with trailing zero when encoding YAML to JSON.
+  Fix: JSON to TOML root scope and null handling.
+  Fix: reset TOML decoder finished flag on Init for multi-doc evaluation.
+  Fix: reset TOML decoder between files when evaluating all at once.
+  Fix: preserve TOML inline table array scope.
+  Fix: preserve empty TOML arrays in tables
+  Fix: TOML encoder uses inline tables for YAML FlowStyle mappings.
+  Fix nested inline YAML merge explode.
+  Fix repeatString overflow test on 32-bit platforms.
+- Removed obsolete Fix-testcase-for-32bit-platforms.patch
+- Fix CVE-2026-56852 (GO-2026-5970) (bsc#1271994):
+  A norm.Iter can enter an infinite loop when handling input
+  containing invalid UTF-8 bytes.
+
+-------------------------------------------------------------------
 Mon Jun  1 13:29:09 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix multiple CVEs:

@@ -22,14 +22,13 @@
 %global import_path     %{provider_prefix}
 
 Name:           yq
-Version:        4.53.2
+Version:        4.53.3
 Release:        0
 Summary:        A portable command-line YAML processor
 License:        MIT
 URL:            https://github.com/mikefarah/yq
 Source0:        https://github.com/mikefarah/yq/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-Patch1:         Fix-testcase-for-32bit-platforms.patch
 # conflict with all python3X-yq packages since they install /usr/bin/yq
 # we need to handle Leap 15.4 specially since the python3dist() is not
 # generated there
@@ -85,13 +84,6 @@ go build -trimpath -buildmode=pie -mod=vendor -o bin/%{name}
 
 %check
 go test ./...
-%if %{with vulncheck}
-for i in $(find %{buildroot} -executable -and -not -type d \
-		-and -not -name "*.debug" -and -not -name "*.so*"); do
-    file $i | grep -q "^$i: ELF" || continue
-    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
-done
-%endif
 
 %install
 install -D -m 0755 ./bin/%{name} "%{buildroot}/%{_bindir}/%{name}"
@@ -101,6 +93,16 @@ mkdir -p %{buildroot}%{_datarootdir}/zsh/site-functions
 %{buildroot}/%{_bindir}/%{name} shell-completion zsh > %{buildroot}%{_datarootdir}/zsh/site-functions/_%{name}
 mkdir -p %{buildroot}%{_datadir}/fish/vendor_completions.d
 %{buildroot}/%{_bindir}/%{name} shell-completion fish > %{buildroot}%{_datarootdir}/fish/vendor_completions.d/%{name}.fish
+%if %{with vulncheck}
+status=0
+echo "VULNCHECK START ==================================================="
+for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
+    file $i | grep -q "^$i: ELF" || continue
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i || status=$?
+done
+echo "VULNCHECK END ====================================================="
+[ $status -eq 0 ] || exit $status
+%endif
 
 %files bash-completion
 %defattr(-,root,root)

@@ -261,4 +261,28 @@ IMO the Conflicts tag is unavoidable, hence adding.
   * CVE-2026-39821 (GO-2026-5026) (bsc#1267199)</comment>
     <requestid>1356374</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2975f5b3406dab18c5cb053c356d5706</srcmd5>
+    <version>4.53.3</version>
+    <time>1785058162</time>
+    <user>dimstar_suse</user>
+    <comment>- update to v4.53.3
+  Add --ini-preserve-quotes flag for INI round-trip quote preservation.
+  Fix: reset INI decoder state on init.
+  Fix: decode properties array bracket paths.
+  Fix: preserve floats with trailing zero when encoding YAML to JSON.
+  Fix: JSON to TOML root scope and null handling.
+  Fix: reset TOML decoder finished flag on Init for multi-doc evaluation.
+  Fix: reset TOML decoder between files when evaluating all at once.
+  Fix: preserve TOML inline table array scope.
+  Fix: preserve empty TOML arrays in tables
+  Fix: TOML encoder uses inline tables for YAML FlowStyle mappings.
+  Fix nested inline YAML merge explode.
+  Fix repeatString overflow test on 32-bit platforms.
+- Removed obsolete Fix-testcase-for-32bit-platforms.patch
+- Fix CVE-2026-56852 (GO-2026-5970) (bsc#1271994):
+  A norm.Iter can enter an infinite loop when handling input
+  containing invalid UTF-8 bytes.</comment>
+    <requestid>1367722</requestid>
+  </revision>
 </revisionlist>
