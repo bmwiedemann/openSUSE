@@ -60,7 +60,6 @@ BuildRequires:  %{python_module portend}
 BuildRequires:  %{python_module pyOpenSSL}
 BuildRequires:  %{python_module pytest >= 4.6}
 BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-mock >= 1.11.0}
 BuildRequires:  %{python_module pytest-rerunfailures}
 BuildRequires:  %{python_module pytest-xdist}
@@ -111,9 +110,6 @@ pushd testclean
 %endif
 # test_tls_client_auth[...-False-localhost-builtin] fails ocassionally on server-side OBS
 donttest="(test_tls_client_auth and False-localhost-builtin)"
-# looks like there's a bug with pytest.mark.forked
-# https://github.com/cherrypy/cheroot/issues/511
-donttest+=" or test_high_number_of_file_descriptor"
 # Openssl 3.2 test failures gh#cherrypy/cheroot#645
 donttest+=" or test_https_over_http_error"
 %pytest --pyargs cheroot $pytest_opts -k "not ($donttest)" -W ignore::DeprecationWarning -p no:unraisableexception

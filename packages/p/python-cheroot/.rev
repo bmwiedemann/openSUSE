@@ -295,4 +295,12 @@ It was a bug in requests-unixsocket
     the connection. -- by :user:`itamarst` Related issues and</comment>
     <requestid>1346176</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>4c5040ae6264a782922953264ffe55ca</srcmd5>
+    <version>11.1.2</version>
+    <time>1785058082</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove now unneeded BuildRequires on pytest-forked.</comment>
+    <requestid>1367323</requestid>
+  </revision>
 </revisionlist>

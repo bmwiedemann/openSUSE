@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:31:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove now unneeded BuildRequires on pytest-forked. 
+
+-------------------------------------------------------------------
 Sun Apr 12 11:48:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 11.1.2:
