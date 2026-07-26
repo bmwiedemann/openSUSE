@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Jul 23 13:52:54 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1699_20260723:
+  * profiles: add cap_net_admin for cloud-hypervisor (bsc#1270717)
+
+-------------------------------------------------------------------
+Thu Jul 23 07:00:19 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1699_20260722:
+  * profiles: fix ksystemstats6 bsc# reference syntax
+  * profiles: add noisetorch cap_sys_resource (bsc#1270715)
+
+-------------------------------------------------------------------
+Thu Jul 16 13:03:57 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 1699_20260716:
+  * profiles: reintroduce apptainer starter-suid (bsc#1268675)
+
+-------------------------------------------------------------------
 Wed Jul 15 13:58:50 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1699_20260715:
