@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 19:30:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.9:
+  * ndptool: add support for PREF64 option
+  * libndp: add support for PREF64 option
+  * libndp: valid route information option length
+  * SubmittingPatches: update mailing list
+- Drop libndp-CVE-2024-5564.patch: Fixed upstream.
+- Use modern macros, make_install and ldconfig_scriptlets.
+
+-------------------------------------------------------------------
 Thu Jun 27 20:52:57 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Add libndp-CVE-2024-5564.patch: add a check on the route

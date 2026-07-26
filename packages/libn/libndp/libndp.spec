@@ -1,7 +1,7 @@
 #
 # spec file for package libndp
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,13 @@
 
 
 Name:           libndp
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Library for Neighbor Discovery Protocol
 License:        LGPL-2.1-or-later
 Group:          Productivity/Networking/Other
 URL:            http://libndp.org/
 Source:         http://libndp.org/files/libndp-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM libndp-CVE-2024-5564.patch bsc#1225771 mgorse@suse.com -- add a check on the route information option length field.
-Patch0:         libndp-CVE-2024-5564.patch
 BuildRequires:  pkgconfig
 
 %description
@@ -59,11 +57,10 @@ programs using libndp.
 %make_build
 
 %install
-make install DESTDIR=%{buildroot} INSTALL="install -p"
+%make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libndp0 -p /sbin/ldconfig
-%postun -n libndp0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libndp0
 
 %files
 %license COPYING
