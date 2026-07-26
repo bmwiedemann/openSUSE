@@ -46,7 +46,7 @@ BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel >= 1.5.0
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
+BuildRequires:  python3-base
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gio-2.0) >= 2.42.0
 BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.42.0

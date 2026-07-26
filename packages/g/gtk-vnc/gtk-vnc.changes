@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 15 09:09:00 MDT 2026 - carnold@suse.com
+
+- Replace BuildRequires on python3-devel with python3-base
+
+-------------------------------------------------------------------
 Mon Jun 22 11:32:23 MDT 2026 - carnold@suse.com
 
 - bsc#1268264 - virt-manager crash when connecting to instance
