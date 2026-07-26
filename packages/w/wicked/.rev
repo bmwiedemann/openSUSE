@@ -2012,4 +2012,26 @@
   - utils: add support for refcounted objects in generic array (gh#openSUSE/wicked#1045)</comment>
     <requestid>1358674</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>54e72ef9cec364b25a70fb23b3d2ac89</srcmd5>
+    <version>0.6.80</version>
+    <time>1785058000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.6.80
+  - Immutable Mode: conditionally install configs, scripts and extensions in /usr,
+    document the /usr vs /etc config split in the manual pages, and render via new
+    util/templatepp.gawk preprocessor (gh#openSUSE/wicked#1075,gh#openSUSE/wicked#1076)
+  - xpath: fix gcc-15.x assignment discards 'const' warning (gh#openSUSE/wicked#1074)
+  - nanny: use opaque id for managed-netif dbus path (gh#openSUSE/wicked#1070)
+  - netlink: remove libnl-route dependency (gh#openSUSE/wicked#1068)
+  - spec: guard the sle_version macro (gh#openSUSE/wicked#1067)
+  - service: drop rcwicked* links on 16.x (jsc#PED-266,gh#openSUSE/wicked#1066)
+  - client: add iaid show,get --iaid-format option (gh#openSUSE/wicked#1064)
+  - ovs: suppress harmless ovs-vsctl discover call errors (gh#openSUSE/wicked#1063)
+  - teamd: fix TEAM_LACP_ACTIVE default to true (gh#openSUSE/wicked#1062)
+  - policy: cleanup managed objectmodel, fsm-policy match and transform processing
+    (gh#openSUSE/wicked#1055,gh#openSUSE/wicked#1056,gh#openSUSE/wicked#1057,
+     gh#openSUSE/wicked#1059,gh#openSUSE/wicked#1060)</comment>
+    <requestid>1367476</requestid>
+  </revision>
 </revisionlist>

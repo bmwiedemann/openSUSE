@@ -18,7 +18,7 @@
 
 %define		release_prefix  %{?snapshot:%{snapshot}}%{!?snapshot:0}
 Name:           wicked
-Version:        0.6.79
+Version:        0.6.80
 Release:        %{release_prefix}.0.0
 Summary:        Network configuration infrastructure
 License:        GPL-2.0-or-later
@@ -40,18 +40,25 @@ BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
 BuildRequires:  make
+BuildRequires:  gawk
 %if %{with wicked_devel}
 # libwicked-%%{version}.so shlib package compatible match for wicked-devel
-Provides:       libwicked-0_6_79 = %{version}-%{release}
+Provides:       libwicked-0_6_80 = %{version}-%{release}
 %endif
 # uninstall obsolete libwicked-0-6 (libwicked-0.so.6, wicked < 0.6.60)
 Provides:       libwicked-0-6 = %{version}
 Obsoletes:      libwicked-0-6 < %{version}
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150500
+%if 0%{?suse_version} > 1500
+%bcond_without  nbft
+%else
+# boo#1238724: guard the sle_version check inside a suse_version block as
+#              workaround for broken recursive sle_version on leap-16.0 …
+%if 0%{?sle_version} >= 150500
 %bcond_without  nbft
 %else
 %bcond_with     nbft
+%endif
 %endif
 %if 0%{?suse_version} >= 1500
 %bcond_without  rfc4361_cid
@@ -62,6 +69,21 @@ Obsoletes:      libwicked-0-6 < %{version}
 %bcond_without  dhcp6_nis
 %else
 %bcond_with     dhcp6_nis
+%endif
+
+%if 0%{?suse_version} >= 1600
+%bcond_with     rclinks
+%bcond_without  tmpfiles
+%bcond_without  dist_scripts
+%else
+%bcond_without  rclinks
+%bcond_with     tmpfiles
+%bcond_with     dist_scripts
+%endif
+%if %{defined _distconfdir}
+%bcond_without  dist_config
+%else
+%bcond_with     dist_config
 %endif
 
 # optional and disabled (not needed): enable man page
@@ -118,6 +140,24 @@ Requires:       %{name}-service = %{version}
 %define		dbus_config_base %_sysconfdir/dbus-1
 %define		dbus_config_tag	 %config
 %endif
+%if %{with dist_config}
+%define         system_configdir %_sysconfdir/%{name}
+%define         wicked_configdir %_distconfdir/%{name}
+%else
+%define         wicked_configdir %_sysconfdir/%{name}
+%endif
+%if %{with dist_scripts}
+%define         system_scriptdir %_sysconfdir/%{name}/scripts
+%define         system_extcmddir %_sysconfdir/%{name}/extensions
+%define         wicked_scriptdir %_libexecdir/%{name}/scripts
+%define         wicked_extcmddir %_libexecdir/%{name}/extensions
+%else
+%define         wicked_scriptdir %_sysconfdir/%{name}/scripts
+%define         wicked_extcmddir %_sysconfdir/%{name}/extensions
+%endif
+%if %{with tmpfiles}
+%define         ifcfgdir_factory %{_datadir}/factory%{_sysconfdir}/sysconfig/network
+%endif
 
 %description
 Wicked is a network configuration infrastructure incorporating a number
@@ -165,7 +205,7 @@ Summary:        Network configuration infrastructure - Development files
 Group:          Development/Libraries/C and C++
 Requires:       dbus-1-devel
 Requires:       libnl3-devel
-Requires:       libwicked-0_6_79 = %{version}-%{release}
+Requires:       libwicked-0_6_80 = %{version}-%{release}
 
 %description devel
 Wicked is a network configuration infrastructure incorporating a number
@@ -185,6 +225,9 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS -fPIC" LDFLAGS="-pie"
 	--with-piddir=%{wicked_piddir}	\
 	--with-statedir=%{wicked_statedir}\
 	--with-storedir=%{wicked_storedir}\
+	--with-configdir=%{wicked_configdir} \
+	--with-scriptsdir=%{wicked_scriptdir} \
+	--with-extensionsdir=%{wicked_extcmddir} \
 	--with-compat=suse		\
 	--with-fillup-templatesdir=%{_fillupdir}\
 %if %{without dhcp6_nis}
@@ -209,8 +252,43 @@ export CFLAGS="-std=gnu89 $RPM_OPT_FLAGS -fPIC" LDFLAGS="-pie"
 	--disable-static
 make %{?_smp_mflags}
 
+%if %{with tmpfiles}
+# Create tmpfiles.d config
+cat >  tmpfiles.conf << __EOF__
+# reboot-persistent (duid,iaid and leases) store
+d %{wicked_storedir}                        0750 root root
+# ifcfg config directory and default ifcfg-lo file
+d %{_sysconfdir}/sysconfig/network          0755 root root
+C %{_sysconfdir}/sysconfig/network/ifcfg-lo 0600 root root
+__EOF__
+
+%if %{with dist_config} || %{with dist_scripts}
+cat >> tmpfiles.conf << __EOF__
+# local system configuration directory
+d %{system_configdir}                       0755 root root
+__EOF__
+%endif
+
+%if %{with dist_config}
+cat >> tmpfiles.conf << __EOF__
+# wicked:xml system interface configurations
+d %{system_configdir}/ifconfig              0755 root root
+__EOF__
+%endif
+
+%if %{with dist_scripts}
+cat >> tmpfiles.conf << __EOF__
+# local system config hook scripts and extensions
+d %{system_configdir}/scripts               0755 root root
+d %{system_configdir}/extensions	    0755 root root
+__EOF__
+%endif
+
+%endif
+
 %install
 make install DESTDIR=${RPM_BUILD_ROOT}
+
 %if 0%{?suse_version} < 1550
 # install /sbin/{ifup,ifown,ifstatus,ifprobe} links
 %__mkdir_p -m 0755 ${RPM_BUILD_ROOT}/sbin
@@ -223,16 +301,42 @@ for i in ifdown ifstatus ifprobe; do
 %__ln_s ifup ${RPM_BUILD_ROOT}%{_sbindir}/$i
 %endif
 done
-# remove libwicked.a and la
-%__rm -f ${RPM_BUILD_ROOT}%_libdir/libwicked*.*a
-# create reboot-persistent (leases) store directory
-%__mkdir_p -m 0750 ${RPM_BUILD_ROOT}%{wicked_storedir}
+
+%if %{with rclinks}
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwicked
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwickedd
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwickedd-nanny
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwickedd-dhcp6
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwickedd-dhcp4
 ln -sf service ${RPM_BUILD_ROOT}%_sbindir/rcwickedd-auto4
+%endif
+
+%if %{with tmpfiles}
+
+# Move ifcfg-lo installed by make install from /etc to factory
+%__install -d -m 0755 %{buildroot}%{ifcfgdir_factory}
+%__mv %{buildroot}%{_sysconfdir}/sysconfig/network/ifcfg-lo %{buildroot}%{ifcfgdir_factory}/
+
+# Install tmpfiles.d config
+%__install -D -m 0644 tmpfiles.conf %{buildroot}/%{_tmpfilesdir}/%{name}.conf
+
+%else
+
+# create reboot-persistent (leases) store directory
+%__install -d -m 0750 %{buildroot}%{wicked_storedir}
+
+%if %{with dist_config}
+%__install -d -m 0755 %{buildroot}%{system_configdir}/ifconfig
+%endif
+%if %{with dist_scripts}
+%__install -d -m 0755 %{buildroot}%{system_configdir}/scripts
+%__install -d -m 0755 %{buildroot}%{system_configdir}/extensions
+%endif
+
+%endif
+
+# Remove libwicked.a and la
+%__rm -f ${RPM_BUILD_ROOT}%_libdir/libwicked*.*a
 
 %if %{without wicked_devel}
 pushd $RPM_BUILD_ROOT
@@ -271,6 +375,22 @@ esac
 %{service_del_postun wickedd.service}
 
 %pre
+%if %{with dist_config}
+# Move config(noreplace) config files to /usr/etc (distconfdir): save any old .rpmsave
+for c in common.xml client.xml server.xml nanny.xml ; do
+	test -f "%system_configdir/${c}.rpmsave" && %__mv -v "%system_configdir/${c}.rpmsave" "%system_configdir/${c}.rpmsave.old" || :
+done
+%endif
+%if %{with dist_scripts}
+# Move config(noreplace) pre/post scripts to /usr/lib[exec]: save any old .rpmsave
+for s in redfish-update ; do
+	test -f "%system_scriptdir/${s}.rpmsave" && %__mv -v "%system_scriptdir/${s}.rpmsave" "%system_scriptdir/${s}.rpmsave.old" || :
+done
+# Move config(noreplace) extension scripts to /usr/lib[exec]: save any old .rpmsave
+for s in dispatch firewall hostname netconfig ibft redfish-config ; do
+	test -f "%system_extcmddir/${s}.rpmsave" && %__mv -v "%system_extcmddir/${s}.rpmsave" "%system_extcmddir/${s}.rpmsave.old" || :
+done
+%endif
 version=$(wicked --version 2>/dev/null)
 version="${version#* }"
 version="9${version//./}"
@@ -281,6 +401,9 @@ fi
 
 %post
 /sbin/ldconfig
+%if %{with tmpfiles}
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf || :
+%endif
 %{fillup_only -dns config wicked network}
 %{fillup_only -dns dhcp wicked network}
 # reload dbus after install or upgrade to apply new policies
@@ -298,6 +421,22 @@ if test -d "%{wicked_statedir}/regenerate-initrd" ; then
 fi
 
 %posttrans
+%if %{with dist_config}
+# Move config(noreplace) config files to /usr/etc (distconfdir): save any old .rpmsave
+for c in common.xml client.xml server.xml nanny.xml ; do
+	test -f "%system_configdir/${c}.rpmsave" && %__mv -v "%system_configdir/${c}.rpmsave" "%system_configdir/${c}" || :
+done
+%endif
+%if %{with dist_scripts}
+# Move config(noreplace) pre/post scripts to /usr/lib[exec]: restore just created .rpmsave
+for s in redfish-update ; do
+	test -f "%system_scriptdir/${s}.rpmsave" && %__mv -v "%system_scriptdir/${s}.rpmsave" "%system_scriptdir/${s}" || :
+done
+# Move config(noreplace) extension scripts to /usr/lib[exec]: restore just created .rpmsave
+for s in dispatch firewall hostname netconfig ibft redfish-config ; do
+	test -f "%system_extcmddir/${s}.rpmsave" && %__mv -v "%system_extcmddir/${s}.rpmsave" "%system_extcmddir/${s}" || :
+done
+%endif
 if test -d "%{wicked_statedir}/regenerate-initrd" ; then
 	%{?regenerate_initrd_posttrans}
 	:
@@ -311,6 +450,30 @@ if [ ${FIRST_ARG:-$1} -eq 0 ]; then
 fi
 
 %if %{with nbft}
+
+%pre nbft
+%if %{with dist_config}
+# Move config(noreplace) config files to /usr/etc (distconfdir): save any old .rpmsave
+for c in client-nbft.xml ; do
+	test -f "%system_configdir/${c}.rpmsave" && %__mv -v "%system_configdir/${c}.rpmsave" "%system_configdir/${c}.rpmsave.old" || :
+done
+%endif
+%if %{with dist_scripts}
+# Move config(noreplace) extension script to /usr/lib[exec]: save any old .rpmsave
+test -f "%system_extcmddir/nbft.rpmsave" && %__mv -v "%system_extcmddir/nbft.rpmsave" "%system_extcmddir/nbft.rpmsave.old" || :
+%endif
+
+%posttrans nbft
+%if %{with dist_config}
+# Move config(noreplace) config files to /usr/etc (distconfdir): save any old .rpmsave
+for c in client-nbft.xml ; do
+	test -f "%system_configdir/${c}.rpmsave" && %__mv -v "%system_configdir/${c}.rpmsave" "%system_configdir/${c}" || :
+done
+%endif
+%if %{with dist_scripts}
+# Move config(noreplace) extension script to /usr/lib[exec]: restore just created .rpmsave
+test -f "%system_extcmddir/nbft.rpmsave" && %__mv -v "%system_extcmddir/nbft.rpmsave" "%system_extcmddir/nbft" || :
+%endif
 
 %postun nbft
 # revert nbft override in client-firmware.xml config
@@ -333,21 +496,61 @@ fi
 %_libexecdir/%{name}/bin/wickedd-auto4
 %_libexecdir/%{name}/bin/wickedd-dhcp4
 %_libexecdir/%{name}/bin/wickedd-dhcp6
-%dir %_sysconfdir/wicked
-%config(noreplace) %_sysconfdir/wicked/common.xml
-%config(noreplace) %_sysconfdir/wicked/client.xml
-%config(noreplace) %_sysconfdir/wicked/server.xml
-%config(noreplace) %_sysconfdir/wicked/nanny.xml
-%dir %_sysconfdir/wicked/scripts
-%config(noreplace) %_sysconfdir/wicked/scripts/*
-%dir %_sysconfdir/wicked/extensions
-%config(noreplace) %_sysconfdir/wicked/extensions/dispatch
-%config(noreplace) %_sysconfdir/wicked/extensions/firewall
-%config(noreplace) %_sysconfdir/wicked/extensions/hostname
-%config(noreplace) %_sysconfdir/wicked/extensions/ibft
-%config(noreplace) %_sysconfdir/wicked/extensions/netconfig
-%config(noreplace) %_sysconfdir/wicked/extensions/redfish-config
-%dir %_sysconfdir/wicked/ifconfig
+%if %{with tmpfiles}
+%if %{with dist_config} || %{with dist_scripts}
+%dir %attr(0755,root,root) %ghost %system_configdir
+%endif
+%if %{with dist_config}
+%dir %attr(0755,root,root) %ghost %system_configdir/ifconfig
+%endif
+%if %{with dist_scripts}
+%dir %attr(0755,root,root) %ghost %system_configdir/scripts
+%dir %attr(0755,root,root) %ghost %system_configdir/extensions
+%endif
+%else
+%if %{with dist_config} || %{with dist_scripts}
+%dir %attr(0755,root,root) %system_configdir
+%endif
+%if %{with dist_config}
+%dir %attr(0755,root,root) %system_configdir/ifconfig
+%endif
+%if %{with dist_scripts}
+%dir %attr(0755,root,root) %system_configdir/scripts
+%dir %attr(0755,root,root) %system_configdir/extensions
+%endif
+%endif
+%dir %wicked_configdir
+%if %{with dist_config}
+%wicked_configdir/common.xml
+%wicked_configdir/client.xml
+%wicked_configdir/server.xml
+%wicked_configdir/nanny.xml
+%else
+%config(noreplace) %wicked_configdir/common.xml
+%config(noreplace) %wicked_configdir/client.xml
+%config(noreplace) %wicked_configdir/server.xml
+%config(noreplace) %wicked_configdir/nanny.xml
+%dir %attr(0755,root,root) %wicked_configdir/ifconfig
+%endif
+%dir %wicked_extcmddir
+%dir %wicked_scriptdir
+%if %{with dist_scripts}
+%wicked_extcmddir/dispatch
+%wicked_extcmddir/firewall
+%wicked_extcmddir/hostname
+%wicked_extcmddir/ibft
+%wicked_extcmddir/netconfig
+%wicked_extcmddir/redfish-config
+%wicked_scriptdir/redfish-update
+%else
+%config(noreplace) %wicked_extcmddir/dispatch
+%config(noreplace) %wicked_extcmddir/firewall
+%config(noreplace) %wicked_extcmddir/hostname
+%config(noreplace) %wicked_extcmddir/ibft
+%config(noreplace) %wicked_extcmddir/netconfig
+%config(noreplace) %wicked_extcmddir/redfish-config
+%config(noreplace) %wicked_scriptdir/redfish-update
+%endif
 %dir %{dbus_config_base}
 %dir %{dbus_config_base}/system.d
 # mark the policies as config to keep backup, but replace on upgrade
@@ -394,13 +597,28 @@ fi
 %_mandir/man8/ifup.8*
 %_fillupdir/sysconfig.config-wicked
 %_fillupdir/sysconfig.dhcp-wicked
+%if %{with tmpfiles}
+%dir %{_tmpfilesdir}
+%{_tmpfilesdir}/%{name}.conf
+%dir %attr(0750,root,root) %ghost %wicked_storedir
+%else
 %attr(0750,root,root) %dir        %wicked_storedir
+%endif
 
 %if %{with nbft}
 
 %files nbft
-%config(noreplace) %_sysconfdir/wicked/client-nbft.xml
-%config(noreplace) %_sysconfdir/wicked/extensions/nbft
+%defattr (-,root,root)
+%if %{with dist_config}
+%wicked_configdir/client-nbft.xml
+%else
+%config(noreplace) %wicked_configdir/client-nbft.xml
+%endif
+%if %{with dist_scripts}
+%wicked_extcmddir/nbft
+%else
+%config(noreplace) %wicked_extcmddir/nbft
+%endif
 
 %endif
 
@@ -413,8 +631,18 @@ fi
 %_unitdir/wickedd.service
 %_unitdir/wicked.service
 %_unitdir/wickedd-pppd@.service
+%if %{with tmpfiles}
+%dir %{_datadir}/factory
+%dir %{_datadir}/factory%{_sysconfdir}
+%dir %{_datadir}/factory%{_sysconfdir}/sysconfig
+%dir %{ifcfgdir_factory}
+%{ifcfgdir_factory}/ifcfg-lo
+%dir %attr(0755,root,root) %ghost /etc/sysconfig/network
+%attr(0600,root,root) %ghost /etc/sysconfig/network/ifcfg-lo
+%else
 %dir /etc/sysconfig/network
 %attr(0600,root,root) %config /etc/sysconfig/network/ifcfg-lo
+%endif
 %_sbindir/ifup
 %if 0%{?suse_version} < 1550
 /sbin/ifup
@@ -426,12 +654,14 @@ fi
 %_sbindir/ifstatus
 %_sbindir/ifprobe
 %endif
+%if %{with rclinks}
 %_sbindir/rcwickedd-nanny
 %_sbindir/rcwickedd-dhcp6
 %_sbindir/rcwickedd-dhcp4
 %_sbindir/rcwickedd-auto4
 %_sbindir/rcwickedd
 %_sbindir/rcwicked
+%endif
 
 %if %{with wicked_devel}
 %files devel
