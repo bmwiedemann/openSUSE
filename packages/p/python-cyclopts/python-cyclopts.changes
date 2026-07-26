@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:01:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.22.2:
+  * Fix spurious MissingArgumentError for explicitly-supplied
+    empty mappings
+  * Honor an attached =value on Parameter.count=True flags
+    instead of silently dropping it
+  * Report a clean error when a config node expected to be a
+    table is not one
+
+-------------------------------------------------------------------
 Wed Jul 22 13:26:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.22.1:
