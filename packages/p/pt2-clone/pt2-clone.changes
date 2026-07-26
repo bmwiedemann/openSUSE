@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 25 08:21:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.92
+  * Fully ignore effect Bxx (Position Jump) and Dxx (Pattern Break)
+    during row step-play (enter/backspace key). They were partially
+    ignored already, but could glitch out the song position number
+    in the UI.
+  * Fixed: The song playback counter was ticking during row
+    step-play.
+
+-------------------------------------------------------------------
 Sun Jul  5 12:38:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.91
