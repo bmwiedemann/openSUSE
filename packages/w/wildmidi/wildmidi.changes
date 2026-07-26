@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sat Jul 25 08:09:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.5.0
+  * SoundFont2 (SF2) rendering support via TinySoundFont. Enabled
+    by default, cmake configuration: WANT_SF2=ON. Pass either an
+    .sf2 file, or a config file with a soundfont directive to
+    WildMidi_Init().
+  * Built-in OPL3 FM softsynth using the Nuked OPL3 emulator. Pass
+    @opl3 to WildMidi_Init(), or use the player's -O/--opl3 switch
+    to play MIDI files without any patch, soundfont, or bank files.
+    The GM voice bank is embedded in the library.
+  * GENMIDI (OP2) FM bank support: an .op2 bank, such as the one
+    shipped with Doom, can be given to WildMidi_Init() in place of
+    a config file, and is rendered through the OPL3 emulator.
+  * HMP and HMI to MIDI converters: WildMidi_ConvertToMidi() and
+    the player's -x/--tomidi switch now convert HMP and HMI files
+    in addition to XMI and MUS (bug #181).
+  * Support for playing and converting compressed ("mangled") HMP
+    files as shipped by Gremlin Interactive games such as Fatal
+    Racing / Whiplash.
+  * Fix XMI looping / wrong duration issues (bug #149.)
+  * Fix GUS patch handling to obey scale frequency and scale factor
+    (bug #264.)
+  * Find and use a GUS patch with neareset patchid in case of
+    missing patches: 349_Jesu_meiner_Freuden_Freude.mid, for e.g.,
+    now plays well with alternative patches instead of producing
+    silence. (PR #254)
+  * Discard extraneous end-of-track events in Type 1 MIDI files:
+    Fixes certain midis from Rise of the Triad looping too soon.
+  * Fix infinite loop when looping empty channels. (PR #263)
+  * Fix certain notes ending too soon and excessive
+    echo/reverb/sustain issues (bugs #229 and #230.)
+  * Fix certain midis having breaks (bug #158.)
+  * Support spaces in config files using quoted strings.
+  * Hardened event-pool and mix-buffer growth against realloc
+    failure across the Linear/Gauss/SF2 renderers; the event-setup
+    helpers now propagate allocation errors instead of writing past
+    the buffer.
+  * Fix a possible double-free on library shutdown.
+  * Fix player WAV writer not closing its output properly
+    (0.4.6 bug).
+  * Security hardening across the file parsers.
+  * Assorted overflow guards.
+  * Added Zig bindings (PR #260).
+  * Cmake build system fixes, other minor fixes/clean-ups.
+
+-------------------------------------------------------------------
 Tue Oct 15 18:34:21 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Add baselibs.conf
