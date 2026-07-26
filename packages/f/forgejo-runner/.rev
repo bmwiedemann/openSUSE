@@ -669,4 +669,41 @@
   + fix: make look-up of matrix values case-insensitive when expanding workflows (forwarded request 1360764 from rrahl0)</comment>
     <requestid>1360765</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>db1a326381143576aa83cc9d8dd085c8</srcmd5>
+    <version>12.13.2</version>
+    <time>1785058099</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 12.13.2:
+  fix: EvaluateIf() loses ${{ inputs.x }} on reusable workflow
+  expansion (#1643)
+  Fixes https://codeberg.org/forgejo/forgejo/issues/13558.
+  When expanding a workflow, a new set of inputs is created in a
+  new parse context for evaluation.  But that parse context was
+  being lost, rather than being preserved, causing future access to
+  `EvaluateIf` to have no access to the expanded workflow's inputs.
+
+- Update to version 12.13.1:
+  - bug fixes
+    - PR: fix(jobparser): nil dereference when EvaluateIf is called
+      w/ cancelled() expr
+- Update to version 12.13.0:
+  - features
+    - PR: feat(interpreter): Add support for case statements
+  - bug fixes
+    - PR: fix: standardize runner.os and runner.arch
+  - other
+    - PR: Update dependency buildx to v0.35.0
+    - PR: Update
+      https://data.forgejo.org/forgejo/forgejo-build-publish action
+      to v5.7.3
+    - PR: Update https://data.forgejo.org/actions/setup-forgejo
+      action to v3.2.3
+    - PR: Update dependency forgejo/release-notes-assistant to
+      v1.7.3
+    - PR: Update data.forgejo.org/forgejo/forgejo Docker tag to
+      v11.0.15
+    - PR: Update go toolchain directive to v1.25.12 (forwarded request 1367549 from darix)</comment>
+    <requestid>1367690</requestid>
+  </revision>
 </revisionlist>

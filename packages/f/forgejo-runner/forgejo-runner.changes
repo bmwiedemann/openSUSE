@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Thu Jul 23 21:10:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 12.13.2:
+  fix: EvaluateIf() loses ${{ inputs.x }} on reusable workflow
+  expansion (#1643)
+
+  Fixes https://codeberg.org/forgejo/forgejo/issues/13558.
+
+  When expanding a workflow, a new set of inputs is created in a
+  new parse context for evaluation.  But that parse context was
+  being lost, rather than being preserved, causing future access to
+  `EvaluateIf` to have no access to the expanded workflow's inputs.
+
+-------------------------------------------------------------------
+Thu Jul 23 11:02:45 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 12.13.1:
+  - bug fixes
+    - PR: fix(jobparser): nil dereference when EvaluateIf is called
+      w/ cancelled() expr
+- Update to version 12.13.0:
+  - features
+    - PR: feat(interpreter): Add support for case statements
+  - bug fixes
+    - PR: fix: standardize runner.os and runner.arch
+  - other
+    - PR: Update dependency buildx to v0.35.0
+    - PR: Update
+      https://data.forgejo.org/forgejo/forgejo-build-publish action
+      to v5.7.3
+    - PR: Update https://data.forgejo.org/actions/setup-forgejo
+      action to v3.2.3
+    - PR: Update dependency forgejo/release-notes-assistant to
+      v1.7.3
+    - PR: Update data.forgejo.org/forgejo/forgejo Docker tag to
+      v11.0.15
+    - PR: Update go toolchain directive to v1.25.12
+    - PR: Update forgejo-runner to v12.12.0
+    - PR: test: use flags instead of env variables for skipping
+      tests
+    - PR: docs: revise testing section of README
+    - PR: test: use environment variable for skipping Docker tests
+
+-------------------------------------------------------------------
 Sat Jun 20 19:42:32 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 12.12.0:
@@ -96,6 +140,12 @@ Tue Mar 17 10:44:55 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 - Update to version 12.7.1:
   * fix: implement idempotent FetchTask API calls to reduce risk of lost tasks
   * fix: accept boolean workflow_call inputs that are booleans
+
+-------------------------------------------------------------------
+Thu Mar  5 14:10:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- fix --version output the prefix of the gopath changed from v11 to
+  v12
 
 -------------------------------------------------------------------
 Mon Feb 23 13:06:09 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
