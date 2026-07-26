@@ -45,6 +45,9 @@ Patch3:         0003-Move-the-GPT-header-on-resized-disks.patch
 Patch4:         0004-Order-ignition-disks.service-before-systemd-fsck-roo.patch
 Patch5:         CVE-2026-33186.patch
 Patch6:         CVE-2026-33814.patch
+Patch7:         CVE-2026-39821.patch
+Patch8:         CVE-2026-34986.patch
+Patch9:         CVE-2026-56852.patch
 BuildRequires:  dracut
 BuildRequires:  libblkid-devel
 BuildRequires:  systemd-rpm-macros
