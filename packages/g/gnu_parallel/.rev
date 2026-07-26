@@ -866,4 +866,12 @@
     <comment>- Update to release 20260622</comment>
     <requestid>1362737</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>fe80c5d86c82b046af9ec6605f5f13dc</srcmd5>
+    <version>20260722</version>
+    <time>1785058044</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 20260722</comment>
+    <requestid>1367160</requestid>
+  </revision>
 </revisionlist>

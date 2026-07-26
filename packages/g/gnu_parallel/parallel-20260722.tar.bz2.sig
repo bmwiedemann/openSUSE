@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# To check the signature run:
+#   echo | gpg
+#   gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve parallel-20260722.tar.bz2.sig
+
+echo | gpg 2>/dev/null
+gpg --auto-key-locate keyserver --keyserver-options auto-key-retrieve $0
+exit $?
+
+-----BEGIN PGP SIGNATURE-----
+
+iQUHBAABCgAdFiEEzaAaQgjE90UGEH570atFFoiIiIgFAmpfhgEACgkQ0atFFoiI
+iIiWoyafYDf2HRl+2zTj/7h6Xpe1XzYSgYQ1A/h6uPUM+zaWujETMTEtvz2LO3iK
+BGYE6nUZeFm3Tar/qF2YgmOGd43MMPLL7w/8d3B1HGjRCXvasf3qzTfzXP764mrc
+/WGaiWtS1xUutO1D6HA+kFAMLFW/TX/JJX8SQu7nCM9DQkRAHvfJ/zOdZKk4RQ0C
+9OjJnWTz4DKOIE0EMkk0LwFKAQTBk7EeaKhHrataopqGVUu6/GC7QEKChFjUxU/F
+0jAZQm+NiuM0aw3GIteWzb5NbBRryUT6KL+xIi9LaW36CLgJg0/c2qVfZzuYQ1lV
+BXvy7Ko+DUEJnYPujPuf+b22jEPZa6QuIKq6MS5cuJwealK/dqSB4F0/utGp9+Hc
+qPsDVk7jZCcoNARzLdurp0XO4BLZ+1D3H9tXSPK/Dp3kzPkJudDZJthS+QCH0sTV
+tl4XBL7mAvjmDRKqeAgfs4n+ApnmUjW4V1VZO2W5eiV7iej9aGDxhCZSyGxd46oU
+lNbn33bOBkOaEh3SpQPG2801013tKWmEuQsaOo5ZSCoCrfUxNBmmEB2XeRDunGmr
+N8TAeQkK1UR2ORJDs6EYwMlXI6Ppfohk3IIBQUdvmWyC7x4OllQOfDuhLphwLIhu
+7FoLhKMhJZOTjlkXE9ZzWNi8UMOXVOEgTRXloxGoFYuNjEFWJZ/Cv7JyCqt4Z3/m
+MS5h/Hf7FTYbJY7ztDiTaZwM60j6dscdpA+mHbbMSG8SVMM0TxL1dcIQ+8hDy/p5
+XhGW6PATlu+QlJwGdeUDoy7HS+BedWWZx1WI/vRbhDVbI6I4BckoosZtGzTJ0SfI
+YfOiAibBb5V5M0lNDAGu1w3Am2H+VtdMxEizFEdvUQBe8dk0Hvd9iSFBikHDoLzm
+a5kNM0W3DyOm0OVN8v3VGpqoT0KDFVqAJ8ctdc0kF1O/PcNwHuqJJmleNNrMKw6+
+3BBmnTRpFCkiiiNMlPYs/M8C9tpxwnLHYVuYKbl7Apd9x+mpkAnBEOGtVIJaJZxQ
+xRcYI/7JkeRopMMFWYjyfskpfihl2L5ORdh6ptxDFpMlSSc240uJqrBVNBR2svC3
+Yov/jkZwjPlH5eW4iHcsDx7NvLxbBweBboITqWkpXR2MbYzemvmAK3fuB+xgLxIu
+Z6ZTtE3KlmXdwurVw4IUwl1sGsFdqNomdnF0rn4Sewlfskh7StLs9DIH1QPmXss1
+uUnme0+2TcQCrUPPh/di1udjVJhA60cxC3wTE7xnBDhnaztab+8DK8bUXXRpYRcH
+GvkMLWQJ3B1l23mn40SRIRg4+HKfjMel8DWRmduYauCHWxd+M+irhH1ENo8BPT76
+M5m9SB2N3a05Ef/B9VuAK/+wNY78VrTLY08TCYNLWwRBhdtjZ6kt+pJz3Z9cRQyG
+pcQFH2L9daP8TFO3q009iqyZpVmi0zeukn2HLLZEwaF4/CliUdVkEjDJ7Hohem4T
+g95SUFbYaaoNl6pxCTdiSF+p/qqK9EOiOUxFYxvL7v811KWXt0PRv47uTzn8ccnd
+Ma3NWOLQJLOw6kJHwJUMnx1NSaShrS0/rpiCZnMmNaNtlzN+RWlfGn4NGWyitTt2
+JLfFZ8mHno4OwpbEz63UDHQweuPgC/ePzd0A5q9wc3kvay6wcRKOwY64
+=rSED
+-----END PGP SIGNATURE-----

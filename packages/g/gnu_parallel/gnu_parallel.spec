@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20260622
+Version:        20260722
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -29,6 +29,7 @@ Source:         https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2
 Source2:        https://ftp.gnu.org/gnu/parallel/parallel-%version.tar.bz2.sig
 Source3:        %name.keyring
 Source9:        %name-rpmlintrc
+BuildRequires:  socat
 BuildArch:      noarch
 Obsoletes:      %name-bash-completion < %version-%release
 Provides:       %name-bash-completion = %version-%release
@@ -63,11 +64,8 @@ This subpackage contains the documentation for Parallel.
 
 %install
 %make_install
-perl -i -lpe 's{^__END__}{sub citation_notice() {}\n__END__}' "%buildroot/%_bindir/parallel"
-out="$(echo echo openSUSE | %buildroot/%_bindir/parallel 2>&1)"
-if [ "$out" != "openSUSE" ]; then
-	exit 1
-fi
+perl -i -lpe 's{^(?=use strict)}{BEGIN{\$opt::willcite=1}}' "%buildroot/%_bindir/parallel"
+[ "$(echo echo openSUSE | socat -u EXEC:%buildroot/%_bindir/parallel,pty,stderr -)" != openSUSE ]
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps
