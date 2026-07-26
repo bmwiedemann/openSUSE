@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura-plugin-pdf-mupdf
-Version:        2026.05.10
+Version:        2026.07.18
 Release:        0
 Summary:        Zathura PDF support through MuPDF
 License:        Zlib
@@ -41,8 +41,8 @@ BuildRequires:  pkgconfig(glib-2.0)
 # link against the shared MuPDF library (carries the system codec deps in its
 # own NEEDED); the static libmupdf.a left them undefined at load (boo#1165273)
 BuildRequires:  pkgconfig(mupdf) >= 1.26
-BuildRequires:  pkgconfig(zathura) >= 2026.01.30
-Requires:       zathura >= 2026.01.30
+BuildRequires:  pkgconfig(zathura) >= 2026.07.18
+Requires:       zathura >= 2026.07.18
 Conflicts:      zathura-plugin-pdf-poppler
 Provides:       %{realname}-plugin
 %if %{with gcc15}
