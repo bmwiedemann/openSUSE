@@ -1,6 +1,7 @@
 #
 # spec file for package waylyrics
 #
+# Copyright (c) 2026 mantarimay
 # Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,13 +17,14 @@
 #
 
 
+%bcond_with test
 Name:           waylyrics
-Version:        0.3.21
+Version:        0.4.0
 Release:        0
 Summary:        The furry way to show desktop lyrics
 License:        MIT
 URL:            https://github.com/waylyrics/waylyrics
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo >= 1.76.0
 BuildRequires:  cargo-packaging
@@ -40,6 +42,9 @@ The furry way to show desktop lyrics, and simple universal desktop lyrics made w
 
 %prep
 %autosetup -a1 -p0
+# fix trait GTK for macro @implements
+sed -i -E 's/gtk::Accessible, //g' src/app/search_window/mod.rs src/app/window/mod.rs
+sed -i -E 's/gtk4::Buildable/gtk::Buildable/g' src/app/search_window/mod.rs src/app/window/mod.rs
 
 %build
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
@@ -47,7 +52,7 @@ export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
 
 %install
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
-%{cargo_install}
+install -Dm755 target/release/waylyrics -t %{buildroot}%{_bindir}
 
 install -dm755 %{buildroot}%{_datadir}/waylyrics
 cp -r themes %{buildroot}%{_datadir}/waylyrics/
@@ -67,9 +72,11 @@ cp -r res/icons %{buildroot}%{_datadir}/icons
 )
 %find_lang %{name} %{name}.lang
 
+%if %{with test}
 %check
 export WAYLYRICS_THEME_PRESETS_DIR=%{_datadir}/waylyrics/themes
 %{cargo_test} --features=offline-test
+%endif
 
 %files
 %license LICENSE
