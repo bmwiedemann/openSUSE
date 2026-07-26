@@ -100,4 +100,12 @@
 - Rebase soversion.patch for restructured CMakeLists</comment>
     <requestid>1359848</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e9b02a629590de905fc513210d72970d</srcmd5>
+    <version>6.3.3</version>
+    <time>1785058196</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 6.3.3 (swift-6.3.3-RELEASE re-tag, no source changes); split libBlocksRuntime1_3 out per shared library policy, move unversioned .so symlinks to the now archful devel package, drop the blanket rpmlint filter</comment>
+    <requestid>1367766</requestid>
+  </revision>
 </revisionlist>

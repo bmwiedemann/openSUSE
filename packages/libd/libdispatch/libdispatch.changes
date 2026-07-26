@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 25 18:36:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.3.3 (swift-6.3.3-RELEASE):
+  * No source changes - the swift-6.3.3-RELEASE tag points at the
+    same tree as swift-6.3.2-RELEASE
+- Split libBlocksRuntime1_3 out of libdispatch1_3: one library
+  subpackage per soname, as the shared library policy requires
+- Move the unversioned .so symlinks from the library package into
+  the now archful devel package and drop libdispatch-rpmlintrc,
+  whose blanket devel-file-in-non-devel-package filter only masked
+  them
+- Derive the release-tag macro from Version and store the tarball
+  under a versioned filename
+
+-------------------------------------------------------------------
 Tue Jun 16 20:46:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.3.2 (swift-6.3.2-RELEASE), tracking the

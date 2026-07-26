@@ -16,15 +16,14 @@
 #
 
 
-%define reltag 6.3.2-RELEASE
+%define reltag %{version}-RELEASE
 Name:           libdispatch
-Version:        6.3.2
+Version:        6.3.3
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
 URL:            https://github.com/swiftlang/swift-corelibs-libdispatch
-Source0:        https://github.com/swiftlang/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch.tar.gz
-Source1:        libdispatch-rpmlintrc
+Source0:        https://github.com/swiftlang/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE set library versions
 Patch0:         soversion.patch
 BuildRequires:  chrpath
@@ -49,12 +48,21 @@ Provides:       libdispatch = %{version}-%{release}
 Grand Central Dispatch (GCD or libdispatch) provides support for
 concurrent code execution on multicore hardware.
 
+%package -n libBlocksRuntime1_3
+Summary:        Clang Blocks runtime library
+# libBlocksRuntime.so.1.3 was part of libdispatch1_3 up to 6.3.2
+Conflicts:      libdispatch1_3 < 6.3.3
+
+%description -n libBlocksRuntime1_3
+The BlocksRuntime library provides the runtime support for the Blocks
+(C closures) language extension used by libdispatch.
+
 %package        devel
 Summary:        Development files for %{name}
+Requires:       libBlocksRuntime1_3 = %{version}-%{release}
 Requires:       libdispatch1_3 = %{version}-%{release}
 # Wrong location for manpages in older version
 Conflicts:      libdispatch < %{version}-%{release}
-BuildArch:      noarch
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
@@ -96,12 +104,19 @@ export LDFLAGS="-flto -Wl,--as-needed -Wl,--no-undefined -Wl,-z,now"
 chrpath --delete %{buildroot}%{_libdir}/libdispatch.so.1.3
 
 %ldconfig_scriptlets -n libdispatch1_3
+%ldconfig_scriptlets -n libBlocksRuntime1_3
 
 %files -n libdispatch1_3
 %license LICENSE
-%{_libdir}/*.so*
+%{_libdir}/libdispatch.so.1.3
+
+%files -n libBlocksRuntime1_3
+%license LICENSE
+%{_libdir}/libBlocksRuntime.so.1.3
 
 %files devel
+%{_libdir}/libBlocksRuntime.so
+%{_libdir}/libdispatch.so
 %dir %{_includedir}/block
 %{_includedir}/block/*
 %dir %{_includedir}/dispatch
