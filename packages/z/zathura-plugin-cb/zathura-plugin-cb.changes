@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Jul 25 18:28:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add pkgconfig(gtk4) BuildRequires: zathura-cb depends on GTK 4
+  directly since the GTK 4 port, fixing the build
+
+-------------------------------------------------------------------
+Sat Jul 25 11:53:16 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Update to version 2026.07.18:
+  * Update for new version handling
+
+-------------------------------------------------------------------
 Tue Jul  7 10:16:40 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %check (boo#1227364)

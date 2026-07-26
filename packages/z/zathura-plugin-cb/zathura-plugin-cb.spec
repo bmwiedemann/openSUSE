@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura-plugin-cb
-Version:        2026.05.10
+Version:        2026.07.18
 Release:        0
 Summary:        Comic book support for zathura
 License:        Zlib
@@ -37,9 +37,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara)
 BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(libarchive) >= 3
-BuildRequires:  pkgconfig(zathura) >= 2026.01.30
-Requires:       zathura >= 2026.01.30
+BuildRequires:  pkgconfig(zathura) >= 2026.07.18
+Requires:       zathura >= 2026.07.18
 Provides:       %{realname}-plugin
 %if %{with gcc15}
 BuildRequires:  gcc15

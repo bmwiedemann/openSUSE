@@ -78,4 +78,12 @@
     <comment></comment>
     <requestid>1364261</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8b69e4d87e08ee4ac42a5cc26c0fe3f0</srcmd5>
+    <version>2026.07.18</version>
+    <time>1785058195</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 2026.07.18; add missing pkgconfig(gtk4) BuildRequires (zathura-cb requires GTK 4 since the GTK 4 port)</comment>
+    <requestid>1367763</requestid>
+  </revision>
 </revisionlist>
