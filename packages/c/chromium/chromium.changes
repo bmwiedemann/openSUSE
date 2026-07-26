@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 24 06:21:00 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 150.0.7871.186 (boo#1272460):
+  * CVE-2026-16807: Out of bounds write in Codecs
+  * CVE-2026-16806: Use after free in WebMCP
+  * CVE-2026-16805: Use after free in Blink
+  * CVE-2026-16804: Use after free in Input
+
+-------------------------------------------------------------------
 Wed Jul 22 00:04:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 150.0.7871.181 (boo#1272156):
