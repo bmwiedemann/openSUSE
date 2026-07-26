@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul  8 09:19:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.3
+  * Replace CC0 license with NLPL license for documentation files
+    because Fedora project does not accept CC0 for documentation.
+
+-------------------------------------------------------------------
 Sun Jul  5 07:15:25 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.2
