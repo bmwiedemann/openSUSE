@@ -34,6 +34,8 @@ License:        MIT
 URL:            https://github.com/Instagram/LibCST
 Source0:        https://files.pythonhosted.org/packages/source/l/libcst/%{modname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM https://github.com/Instagram/LibCST/pull/1454
+Patch1:         support-py315.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools-rust}

@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-     <param name="srcdir">libcst-*.tar.gz</param>
+     <param name="srcdir">libcst-1.8.6/</param>
      <param name="cargotoml">native/Cargo.toml</param>
      <param name="update">true</param>
   </service>

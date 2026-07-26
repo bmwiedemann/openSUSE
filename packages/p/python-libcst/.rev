@@ -196,4 +196,12 @@
 - Update to v0.3.8</comment>
     <requestid>1344189</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>9c4583e46f003b80c575deb938a1a060</srcmd5>
+    <version>1.8.6</version>
+    <time>1785058030</time>
+    <user>dimstar_suse</user>
+    <comment>- add support-py315.patch to support py315</comment>
+    <requestid>1367641</requestid>
+  </revision>
 </revisionlist>
