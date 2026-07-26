@@ -21,7 +21,7 @@
 %bcond_without gcc15
 %endif
 Name:           zathura-plugin-ps
-Version:        2026.02.03
+Version:        2026.07.18
 Release:        0
 Summary:        PS support for zathura via libspectre
 License:        Zlib
@@ -38,8 +38,8 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(girara)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libspectre)
-BuildRequires:  pkgconfig(zathura) >= 2026.01.30
-Requires:       zathura >= 2026.01.30
+BuildRequires:  pkgconfig(zathura) >= 2026.07.18
+Requires:       zathura >= 2026.07.18
 Provides:       %{realname}-plugin
 %if %{with gcc15}
 BuildRequires:  gcc15
