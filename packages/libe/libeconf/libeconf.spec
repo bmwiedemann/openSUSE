@@ -1,7 +1,7 @@
 #
 # spec file for package libeconf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define lname	libeconf0
 Name:           libeconf
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Enhanced config file parser ala systemd
 License:        MIT

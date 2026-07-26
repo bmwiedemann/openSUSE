@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:37:11 UTC 2026 - schubi@suse.com
+
+- Update to version 0.8.4:
+  * Described content of key_file in econf_readConfig* (#248)
+  * Fix a missing word in README.md (#247)
+
+-------------------------------------------------------------------
 Mon Dec 15 16:48:57 UTC 2025 - schubi@suse.com
 
 - Update to version 0.8.3:
