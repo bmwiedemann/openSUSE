@@ -1,0 +1,23 @@
+From: valkey-py upstream (PR #302)
+Subject: tests: skip (not error) when a queried module is absent
+
+Backport of https://github.com/valkey-io/valkey-py/pull/302 .
+Since Valkey 9.1 loads a static "lua" module, MODULE LIST is no longer
+empty, so skip_ifmodversion_lt() falls through to the final branch. Make
+that branch skip the test instead of raising AttributeError, which
+otherwise aborts collection of the Redis-Stack module test files
+(bloom/json/search/timeseries) that Valkey does not ship.
+---
+diff --git a/tests/conftest.py b/tests/conftest.py
+index e551897..173b68d 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -244,7 +244,7 @@ def skip_ifmodversion_lt(min_version: str, module_name: str):
+             check = version < mv
+             return pytest.mark.skipif(check, reason="Valkey module version")
+ 
+-    raise AttributeError(f"No valkey module named {module_name}")
++    return pytest.mark.skipif(True, reason=f"No valkey module named {module_name}")
+ 
+ 
+ def skip_if_nocryptography() -> _TestDecorator:

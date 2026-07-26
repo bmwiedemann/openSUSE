@@ -1,0 +1,44 @@
+From: Kurt McKee <contactme@kurtmckee.org>
+Subject: tests: handle new `databases` field in ACL GETUSER selectors
+
+Based on upstream commit 046c7fb9e8260c2d69d05141b1519903c4e40efe, but
+made version-conditional so the test also passes against valkey < 9.1:
+the databases/alldbs selector field is new in valkey 9.1 (upstream tests
+unconditionally against valkey:latest, but the package may rebuild against
+an older valkey). Mirrors the existing version check in fix-tests-valkey-9.0.
+---
+diff --git a/tests/test_commands.py b/tests/test_commands.py
+index dace6ca..544494b 100644
+--- a/tests/test_commands.py
++++ b/tests/test_commands.py
+@@ -330,11 +330,28 @@ class TestValkeyCommands:
+         assert set(acl["keys"]) == {"~cache:*", "~objects:*"}
+         assert len(acl["passwords"]) == 2
+         assert set(acl["channels"]) == {"&message:*"}
++        # Valkey 9.1 adds a databases/alldbs field to each ACL selector.
++        if Version(VALKEY_INFO.get("version", "0")) >= Version("9.1.0"):
++            resp2_selectors = [
++                ["commands", "-@all +set", "keys", "%W~app*", "channels", "",
++                 "databases", "alldbs"]
++            ]
++            resp3_selectors = [
++                {"commands": "-@all +set", "keys": "%W~app*", "channels": "",
++                 "databases": "alldbs"}
++            ]
++        else:
++            resp2_selectors = [
++                ["commands", "-@all +set", "keys", "%W~app*", "channels", ""]
++            ]
++            resp3_selectors = [
++                {"commands": "-@all +set", "keys": "%W~app*", "channels": ""}
++            ]
+         assert_resp_response(
+             r,
+             acl["selectors"],
+-            [["commands", "-@all +set", "keys", "%W~app*", "channels", ""]],
+-            [{"commands": "-@all +set", "keys": "%W~app*", "channels": ""}],
++            resp2_selectors,
++            resp3_selectors,
+         )
+ 
+     @skip_if_server_version_lt("6.0.0")

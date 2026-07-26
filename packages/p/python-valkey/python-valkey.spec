@@ -1,7 +1,7 @@
 #
 # spec file for package python-valkey
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,20 +29,26 @@ Source2:        sentinel.conf
 # PATCH-FIX-UPSTREAM fix-tests-valkey-9.0.patch
 # https://github.com/valkey-io/valkey-py/pull/239
 Patch0:         fix-tests-valkey-9.0.patch
+# PATCH-FIX-UPSTREAM fix-tests-valkey-9.1-module-list.patch
+# https://github.com/valkey-io/valkey-py/pull/302
+Patch1:         fix-tests-valkey-9.1-module-list.patch
+# PATCH-FIX-UPSTREAM fix-tests-valkey-9.1-acl-databases.patch
+# https://github.com/valkey-io/valkey-py/commit/046c7fb9e8260c2d69d05141b1519903c4e40efe
+Patch2:         fix-tests-valkey-9.1-acl-databases.patch
 BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
-BuildRequires:  python-rpm-macros
 # Tests
 BuildRequires:  %{python_module cachetools}
+BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
 BuildRequires:  valkey
-Suggests:       python-cryptography >= 36.0.1
 Suggests:       python-PyOpenSSL >= 23.2.1
+Suggests:       python-cryptography >= 36.0.1
 Suggests:       python-requests >= 2.31.0
 BuildArch:      noarch
 %python_subpackages
@@ -62,10 +68,10 @@ Python client for Valkey forked from redis-py
 
 %check
 # Start a server
-valkey-server %SOURCE1 --port 6379 &
+valkey-server %{SOURCE1} --port 6379 &
 server_pid=$!
 # We also need a sentinel service running
-cp %SOURCE2 .
+cp %{SOURCE2} .
 valkey-sentinel sentinel.conf &
 sentinel_pid=$!
 # Requires entire stunnel setup and certs
@@ -75,7 +81,10 @@ donttest="test_psync"
 # Requires module setting
 donttest+=" or test_module"
 %pytest $ignore -m 'not onlycluster' -k "not ($donttest)"
-kill -9 $server_pid $sentinel_pid
+# Best-effort teardown: a tail-end sentinel/shutdown test may already have
+# stopped the server or sentinel, and killing an already-gone PID must not
+# fail the build (upstream tears the helpers down via docker, never kill).
+kill -9 $server_pid $sentinel_pid || :
 
 %files %{python_files}
 %doc README.md

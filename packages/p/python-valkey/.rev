@@ -24,4 +24,12 @@
   * Fixes tests with valkey &gt;= 9.0.0 (forwarded request 1315504 from ateixeira)</comment>
     <requestid>1315506</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>da5d1268dd67ff65551c1d1e7522d3b4</srcmd5>
+    <version>6.1.1</version>
+    <time>1785058089</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367680</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:03:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add fix-tests-valkey-9.1-module-list.patch and
+  fix-tests-valkey-9.1-acl-databases.patch:
+  * Fix the test suite with valkey >= 9.1. The scripting engine is now
+    a static "lua" module, so MODULE LIST is no longer empty and the
+    Redis Stack module tests (bloom/json/search/timeseries) raised
+    during collection instead of being skipped (gh#valkey-io/valkey-py#302)
+  * ACL GETUSER selectors now carry a databases/alldbs field
+- Make the %check helper teardown best-effort (kill ... || :) so an
+  already-stopped valkey-server/sentinel PID no longer fails an
+  otherwise green test run
+
+-------------------------------------------------------------------
 Tue Nov  4 13:27:33 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Add fix-tests-valkey-9.0.patch
