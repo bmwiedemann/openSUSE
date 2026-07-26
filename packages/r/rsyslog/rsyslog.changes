@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Jul 23 06:47:30 UTC 2026 - Thomas Blume <thomas.blume@suse.com>
+
+- fix imptcp regex-framing remote denial of service (bsc#1271910)
+  * add 0001-imptcp-guard-regex-framing-match-at-line-start.patch
+
+-------------------------------------------------------------------
 Mon Jul 20 07:10:59 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - added new rsyslog (imdtls/omdtls) DTLS modules (jsc#PED-16623)

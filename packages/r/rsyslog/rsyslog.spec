@@ -222,6 +222,8 @@ Source18:       firewall.frule
 Source19:       NetworkManager.frule
 Source20:       rsyslog-tmpfiles.conf
 
+Patch0:         0001-imptcp-guard-regex-framing-match-at-line-start.patch
+
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
 %define APPARMOR_PROFILE_PATH /usr/share/apparmor/extra-profiles
