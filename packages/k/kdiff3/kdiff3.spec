@@ -16,12 +16,12 @@
 #
 
 
-%define kf6_version 6.0.0
+%define kf6_version 6.2.0
 %define qt6_version 6.6.0
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.12.4
+Version:        1.12.5
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later

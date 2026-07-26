@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 18 12:00:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.5
+  * Fix crash when dealing with encoder errors.
+  * Fix paste crash while diff data is reinitialized
+  * Remove unneeded '(' nd ')'
+  * Fix minor standard conformance issue.
+  * Update inline linting suppression
+  * Fix incorrect copy size in - DefaultFileAccessJobHandler::slotGetData
+  * restore clang-analyzer-cplusplus.NewDeleteLeaks no longer
+    trigering in Qt headers as of Qt6
+  * Fix unintended narrowing cast
+  * Hide progress dialog during folders comparing before status
+    message is shown.
+  * Fix ctype(3) abuse. Avoids crashes on certain systems
+
+-------------------------------------------------------------------
 Fri Mar  6 10:06:43 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.4
