@@ -1,7 +1,7 @@
 #
 # spec file for package libfastjson
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define somajor 4
 Name:           libfastjson
-Version:        1.2304.0
+Version:        1.2304.0+ga630254
 Release:        0
 Summary:        JSON parsing library, a fork of json-c
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rsyslog/libfastjson
-Source:         https://download.rsyslog.com/libfastjson/%{name}-%{version}.tar.gz
+Source:         libfastjson-1.2304.0+ga630254.tar.gz
+BuildRequires:  autoconf
+BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 
 %description
@@ -57,6 +60,7 @@ using the libfastjson library
 %autosetup
 
 %build
+./autogen.sh
 %configure --disable-static
 %make_build
 

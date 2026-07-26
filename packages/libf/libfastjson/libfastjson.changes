@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 24 14:34:53 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- update to upstream git revision ga630254 (boo#1272151)
+  * fix: handle small buffered dump workspaces
+  * docs: explain object child lookup traversal
+  * benchmarks: address reproducibility review findings
+  * speed up object child lookup
+  * build: fix calloc transposed args
+  * build: Use AC_CHECK_LIB to ensure libfastjson links against libm
+  * Revert "build: link libfastjson against libm for modf()"
+  * doc: clarify string buffer lifetime and thread safety
+  * build: link libfastjson against libm for modf()
+  * increment version number for next release cycle
+
+-------------------------------------------------------------------
 Wed May  3 20:13:04 UTC 2023 - Andreas Stieger <Andreas.Stieger@gmx.de>
 
 - update to 1.2304.0:
