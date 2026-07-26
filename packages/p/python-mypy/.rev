@@ -722,4 +722,12 @@ reveal_type(Context[MyBot]().bot)
     nested in functions</comment>
     <requestid>1364645</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>b90e5647a44ee6633fa38428d6cb2924</srcmd5>
+    <version>2.2.0</version>
+    <time>1785058084</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove unneeded BuildRequires on pytest-forked.</comment>
+    <requestid>1367324</requestid>
+  </revision>
 </revisionlist>
