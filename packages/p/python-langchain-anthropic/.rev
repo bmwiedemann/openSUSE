@@ -15,4 +15,12 @@
     <comment>Update to 1.5.0</comment>
     <requestid>1367134</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d6ee02c9bcc758558777b90a60afbabe</srcmd5>
+    <version>1.5.2</version>
+    <time>1785058201</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.5.2: Claude Opus 5 support, structured output for Opus 4.8, langsmith gateway env var; floors: anthropic &gt;= 0.120.0, langchain-core &gt;= 1.5.1</comment>
+    <requestid>1367770</requestid>
+  </revision>
 </revisionlist>

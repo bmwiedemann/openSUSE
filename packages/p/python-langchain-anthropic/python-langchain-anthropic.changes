@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:03:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.2:
+  * Add Claude Opus 5 support
+  * Enable structured output for Claude Opus 4.8
+  * Support the langsmith gateway through an environment
+    variable
+- Raise the anthropic floor to 0.120.0 and the langchain-core
+  floor to 1.5.1, following upstream requires
+
+-------------------------------------------------------------------
 Wed Jul 22 13:36:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.0

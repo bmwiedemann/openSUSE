@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langchain-anthropic
-Version:        1.5.0
+Version:        1.5.2
 Release:        0
 Summary:        Integration package connecting Claude (Anthropic) APIs and LangChain
 License:        MIT
@@ -28,8 +28,8 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anthropic >= 0.96.0
-Requires:       python-langchain-core >= 1.5.0
+Requires:       python-anthropic >= 0.120.0
+Requires:       python-langchain-core >= 1.5.1
 Requires:       python-pydantic >= 2.7.4
 BuildArch:      noarch
 # SECTION test requirements
