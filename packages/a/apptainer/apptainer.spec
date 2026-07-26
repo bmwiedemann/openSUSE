@@ -31,7 +31,7 @@ Summary:        Application and environment virtualization
 License:        BSD-3-Clause-LBNL AND OpenSSL
 Group:          Productivity/Clustering/Computing
 Name:           apptainer
-Version:        1.5.1
+Version:        1.5.3
 Release:        0
 # https://spdx.org/licenses/BSD-3-Clause-LBNL.html
 URL:            https://apptainer.org
@@ -184,14 +184,19 @@ install -D -m 644 system-group-%{name}.conf %{buildroot}%{_sysusersdir}/system-g
 sed -i -e "/allow setuid/s@\(.* =\).*@\1 no@" \
     %{buildroot}%{_sysconfdir}/apptainer/apptainer.conf
 %endif
-
-%check
 %if %{with vulncheck}
+status=0
+echo "VULNCHECK START ==================================================="
 for i in $(find %{buildroot} -executable -and -not -type d -and -not -name "*.debug" -and -not -name "*.so*"); do
     file $i | grep -q "^$i: ELF" || continue
-    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i
+    govulncheck -mode=binary -db file:///usr/share/vulndb/ $i || status=$?
 done
+echo "VULNCHECK END ====================================================="
+[ $status -eq 0 ] || exit $status
 %endif
+
+
+%check
 
 %pre suid -f %{name}.pre
 

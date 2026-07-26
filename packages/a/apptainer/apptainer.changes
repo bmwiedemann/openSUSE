@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Jul 25 16:00:39 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update apptainer to version 1.5.3
+
+  * If the ptrace() system call does not work while building an image as
+    an unprivileged user, skip using PRoot to preserve file ownership and
+    print an INFO message.
+  * Bind getopt from the host when using fakeroot command mode, to make
+    the fakeroot command work with base containers which no longer contain
+    getopt by default.
+  * Update fixes CVE-2026-56852 (GO-2026-5970) (bsc#1272115)
+    golang.org/x/text/unicode/norm:
+    A norm.Iter can enter an infinite loop when handling input
+    containing invalid UTF-8 bytes.
+- From version 1.5.2:
+  * Extended the mksquashfs segmentation fault workaround for cases
+    where mksquashfs uses many processor cores.
+
+-------------------------------------------------------------------
 Sat Jul 18 04:58:31 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Update the golang.org/x/net dependency to version v0.57.0
