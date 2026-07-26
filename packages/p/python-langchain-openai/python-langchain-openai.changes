@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:03:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.4.1:
+  * Support the langsmith gateway through an environment
+    variable
+  * Correct the gpt-5.3-chat-latest model profile
+- Raise the langchain-core floor to 1.5.1, following upstream
+  requires
+
+-------------------------------------------------------------------
 Wed Jul 22 13:43:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.0

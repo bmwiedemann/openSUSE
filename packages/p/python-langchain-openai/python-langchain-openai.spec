@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.4.0
+Version:        1.4.1
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT
@@ -27,7 +27,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-langchain-core >= 1.5.0
+Requires:       python-langchain-core >= 1.5.1
 Requires:       python-openai >= 2.45.0
 Requires:       python-tiktoken >= 0.7.0
 BuildArch:      noarch

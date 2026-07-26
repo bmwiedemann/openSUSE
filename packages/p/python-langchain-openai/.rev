@@ -31,4 +31,12 @@
     <comment>Update to 1.4.0</comment>
     <requestid>1367142</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e88123317ddca5c978f537b3d65373b9</srcmd5>
+    <version>1.4.1</version>
+    <time>1785058202</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.4.1: langsmith gateway env var support, gpt-5.3-chat-latest profile fix; langchain-core floor 1.5.1</comment>
+    <requestid>1367771</requestid>
+  </revision>
 </revisionlist>
