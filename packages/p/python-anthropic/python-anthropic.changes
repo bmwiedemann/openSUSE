@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:01:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.120.0:
+  * Add the claude-opus-5 model
+  * Add tool addition/removal blocks and tool_change streaming
+    events
+  * Expand client-side fallback credit token types and add a
+    server-side fallbacks default option
+
+-------------------------------------------------------------------
 Thu Jul 23 19:49:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.119.0:

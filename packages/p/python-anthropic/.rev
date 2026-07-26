@@ -47,4 +47,12 @@
     <comment>Update to 0.119.0</comment>
     <requestid>1367525</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>289fa877bdd2e87d78cdd4c0a77d9d0c</srcmd5>
+    <version>0.120.0</version>
+    <time>1785058198</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.120.0: claude-opus-5 model, tool change streaming events, fallback credit token types</comment>
+    <requestid>1367768</requestid>
+  </revision>
 </revisionlist>

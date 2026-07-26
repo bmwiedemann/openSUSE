@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        0.119.0
+Version:        0.120.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 License:        MIT
