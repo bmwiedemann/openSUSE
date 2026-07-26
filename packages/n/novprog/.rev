@@ -107,4 +107,12 @@
   * Improved Linux deployment</comment>
     <requestid>1143622</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>efb31452fe6f869698fb0ccd8b8016fe</srcmd5>
+    <version>3.2.7</version>
+    <time>1785058207</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 3.2.7 (includes 3.2.4-3.2.6) plus spec cleanup: drop Group tag, the Leap 15.x gcc11 fallback and the deprecated %suse_update_desktop_file call</comment>
+    <requestid>1367781</requestid>
+  </revision>
 </revisionlist>

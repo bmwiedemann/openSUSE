@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:11:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.7:
+  * Use strict mode to disable unsafe Qt APIs
+  * Document upstream policy prohibiting the use of AI
+  * Translation updates: Croatian
+- Includes the 3.2.4-3.2.6 maintenance releases: improved
+  deployment and translation build code, replaced shadowed
+  variable names, Romanian translation update
+- Follow the upstream tarball rename (-src suffix dropped) in
+  Source
+- Cleanup spec file:
+  * Drop the obsolete Group tag
+  * Drop the gcc11 fallback for Leap 15.x, which is out of
+    support
+  * Drop the deprecated %suse_update_desktop_file call; the
+    upstream desktop file already carries valid categories
+    (Qt;Office;Chart instead of the previous Office;Publishing)
+
+-------------------------------------------------------------------
 Fri Feb  2 12:02:29 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.2.3:
