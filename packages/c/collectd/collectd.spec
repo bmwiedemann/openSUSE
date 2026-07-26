@@ -53,11 +53,7 @@
 %bcond_with intel_rdt
 %define rdt_plugin %{nil}
 %endif
-%if 0%{?suse_version} >= 1330 && 0%{?suse_version} <= 1500
 %bcond_without nut
-%else
-%bcond_with nut
-%endif
 %bcond_with epics
 Name:           collectd
 Version:        5.12.0.382.g2cd055fe

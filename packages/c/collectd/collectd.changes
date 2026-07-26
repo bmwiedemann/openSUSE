@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 07:24:12 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Enable plugin-nut (boo#1271687)
+
+-------------------------------------------------------------------
 Thu Mar 26 15:51:10 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Fix compile error in intel_rdt.c

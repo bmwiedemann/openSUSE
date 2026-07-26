@@ -439,4 +439,12 @@ Packaging :
     <comment></comment>
     <requestid>1343138</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>d6a04acef268ac4795d7f9d6539921f6</srcmd5>
+    <version>5.12.0.382.g2cd055fe</version>
+    <time>1785058144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367693</requestid>
+  </revision>
 </revisionlist>
