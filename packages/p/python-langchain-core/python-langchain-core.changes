@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:01:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.1:
+  * Support the langsmith gateway through an environment
+    variable
+  * Use the tool_call_schema cache for BaseTool token counting
+    in count_tokens_approximately
+
+-------------------------------------------------------------------
 Tue Jul 21 05:53:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.0:
