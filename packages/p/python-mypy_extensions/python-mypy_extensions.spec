@@ -1,7 +1,7 @@
 #
 # spec file for package python-mypy_extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mypy_extensions
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Experimental type system extensions for programs checked with mypy typechecker
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://www.mypy-lang.org/
 Source:         https://files.pythonhosted.org/packages/source/m/mypy_extensions/mypy_extensions-%{version}.tar.gz
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -46,6 +47,10 @@ standard "typing" module that are supported by the mypy typechecker.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+
+%check
+# test_py36_class_syntax_usage fails on python314: https://github.com/python/mypy_extensions/issues/65
+%pytest tests/* -k "not test_py36_class_syntax_usage"
 
 %files %{python_files}
 %license LICENSE

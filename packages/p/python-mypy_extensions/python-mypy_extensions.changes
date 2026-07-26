@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 16 12:16:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.1.0
+  * Deprecate mypy_extensions.TypedDict
+  * Add support for Python 3.12
+  * Deprecate mypy_extensions.NoReturn
+- Launch tests
+
+-------------------------------------------------------------------
 Mon Jun  2 14:24:53 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
