@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Mar 12 10:03:34 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Bump GCC version to 16, leave -build flavor at 13.
+- Add packages for Algol 68.
+
+-------------------------------------------------------------------
+Wed Feb 25 03:00:22 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Disable gccgo for loongarch64.
+
+-------------------------------------------------------------------
 Tue Jan 27 14:12:22 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Improve go/gofmt alternative removal upon migration to an

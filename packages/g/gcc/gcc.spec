@@ -24,8 +24,8 @@
 %define gcc_suffix 13
 %else
 %define gccsuffix %{nil}
-%define gcc_version 15
-%define gcc_suffix 15
+%define gcc_version 16
+%define gcc_suffix 16
 %endif
 
 Name:           gcc%{gccsuffix}
@@ -63,8 +63,18 @@ Name:           gcc%{gccsuffix}
 %else
 %define build_cobol 0
 %endif
+%ifarch loongarch64
+%define build_go 0
+%else
+%define build_go 1
+%endif
 %define quadmath_arch %ix86 x86_64 ia64 ppc64le
 %define libgccjit_sover 0
+%if %{gcc_version} >= 16
+%define build_algol68 1
+%else
+%define build_algol68 0
+%endif
 
 URL:            http://gcc.gnu.org/
 Version:        %{gcc_version}
@@ -83,7 +93,9 @@ BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  gcc%{gcc_version}-c++
 BuildRequires:  gcc%{gcc_version}-fortran
+%if %{build_go}
 BuildRequires:  gcc%{gcc_version}-go
+%endif
 %if %{build_ada}
 BuildRequires:  gcc%{gcc_version}-ada
 %endif
@@ -95,6 +107,9 @@ BuildRequires:  gcc%{gcc_version}-m2
 %endif
 %if %{build_cobol}
 BuildRequires:  gcc%{gcc_version}-cobol
+%endif
+%if %{build_algol68}
+BuildRequires:  gcc%{gcc_version}-algol68
 %endif
 Source:         cpp
 %if "%{gccsuffix}" != "" && 0%{?is_opensuse}
@@ -627,6 +642,49 @@ Requires:       gcc%{gccsuffix} = %{version}
 %description -n gcc%{gccsuffix}-cobol
 The system GNU Cobol Compiler.
 
+%package -n gcc%{gccsuffix}-algol68
+Summary:        The system GNU Algol 68 Compiler
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-algol68 = %{version}
+Conflicts:      gcc-algol68
+%endif
+Requires:       gcc%{gcc_version}-algol68
+Requires:       gcc%{gccsuffix} = %{version}
+
+%description -n gcc%{gccsuffix}-algol68
+The system GNU Algol 68 Compiler.
+
+%package -n gcc%{gccsuffix}-algol68-32bit
+Summary:        The system GNU Algol 68 Compiler 32bit support
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-algol68-32bit = %{version}
+Conflicts:      gcc-algol68-32bit
+%endif
+Requires:       gcc%{gcc_version}-algol68-32bit
+Requires:       gcc%{gccsuffix}-algol68 = %{version}
+
+%description -n gcc%{gccsuffix}-algol68-32bit
+The system GNU Algol 68 Compiler 32bit support
+
+%package -n gcc%{gccsuffix}-algol68-64bit
+Summary:        The system GNU Algol 68 Compiler 64bit support
+License:        GPL-3.0-or-later
+Group:          Development/Languages/C and C++
+%if "%{gccsuffix}" != ""
+Provides:       gcc-algol68-64bit = %{version}
+Conflicts:      gcc-algol68-64bit
+%endif
+Requires:       gcc%{gcc_version}-algol68-64bit
+Requires:       gcc%{gccsuffix}-algol68 = %{version}
+
+%description -n gcc%{gccsuffix}-algol68-64bit
+The system GNU Algol 68 Compiler 64bit support
+
+
 %prep
 
 %install
@@ -642,7 +700,9 @@ for program in \
         g++ \
         cpp \
         gfortran \
+%if %{build_go}
 	gccgo \
+%endif
 %if %{build_ada}
 	gnat gnatbind gnatchop gnatclean gnatkr \
 	gnatlink gnatls gnatmake gnatname gnatprep \
@@ -655,6 +715,9 @@ for program in \
 %endif
 %if %{build_cobol}
 	gcobol gcobc \
+%endif
+%if %{build_algol68}
+	ga68 \
 %endif
 	gcc-ar gcc-nm gcc-ranlib \
     ; do
@@ -669,7 +732,9 @@ for man1 in \
         g++ \
         cpp \
         gfortran \
+%if %{build_go}
 	gccgo \
+%endif
 %if %{build_d}
 	gdc \
 %endif
@@ -678,6 +743,9 @@ for man1 in \
 %endif
 %if %{build_cobol}
 	gcobol \
+%endif
+%if %{build_algol68}
+	ga68 \
 %endif
     ; do
   ln -sf $man1-%{gcc_suffix}.1.gz $RPM_BUILD_ROOT%{_mandir}/man1/$man1.1.gz
@@ -802,10 +870,12 @@ fi
 %defattr(-,root,root)
 # empty - only for the dependency
 
+%if %{build_go}
 %files -n gcc%{gccsuffix}-go
 %defattr(-,root,root)
 %{_bindir}/gccgo
 %doc %{_mandir}/man1/gccgo.1.gz
+%endif
 
 %if %{build_d}
 %files -n gcc%{gccsuffix}-d
@@ -827,6 +897,13 @@ fi
 %{_bindir}/gcobol
 %{_bindir}/gcobc
 %doc %{_mandir}/man1/gcobol.1.gz
+%endif
+
+%if %{build_algol68}
+%files -n gcc%{gccsuffix}-algol68
+%defattr(-,root,root)
+%{_bindir}/ga68
+%doc %{_mandir}/man1/ga68.1.gz
 %endif
 
 %if %{separate_bi32}
@@ -857,9 +934,11 @@ fi
 # empty - only for the dependency
 %endif
 
+%if %{build_go}
 %files -n gcc%{gccsuffix}-go-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
+%endif
 
 %if %{build_d}
 %files -n gcc%{gccsuffix}-d-32bit
@@ -869,6 +948,12 @@ fi
 
 %if %{build_m2}
 %files -n gcc%{gccsuffix}-m2-32bit
+%defattr(-,root,root)
+# empty - only for the dependency
+%endif
+
+%if %{build_algol68}
+%files -n gcc%{gccsuffix}-algol68-32bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif
@@ -903,9 +988,11 @@ fi
 # empty - only for the dependency
 %endif
 
+%if %{build_go}
 %files -n gcc%{gccsuffix}-go-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
+%endif
 
 %if %{build_d}
 %files -n gcc%{gccsuffix}-d-64bit
@@ -915,6 +1002,12 @@ fi
 
 %if %{build_m2}
 %files -n gcc%{gccsuffix}-m2-64bit
+%defattr(-,root,root)
+# empty - only for the dependency
+%endif
+
+%if %{build_algol68}
+%files -n gcc%{gccsuffix}-algol68-64bit
 %defattr(-,root,root)
 # empty - only for the dependency
 %endif

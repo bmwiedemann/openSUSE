@@ -706,4 +706,17 @@ this would switch building packages to gcc14.  Thus Staging:Gcc7.
   alternative-less system.</comment>
     <requestid>1329508</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>9376e3c479fd55bafcab98843d2f6318</srcmd5>
+    <version>16</version>
+    <time>1785076643</time>
+    <user>dimstar_suse</user>
+    <comment>**** This is for staging in the usual :Gcc7 staging to make gcc16 the default compiler in Factory ****
+
+- Bump GCC version to 16, leave -build flavor at 13.
+- Add packages for Algol 68.
+
+- Disable gccgo for loongarch64.</comment>
+    <requestid>1338440</requestid>
+  </revision>
 </revisionlist>
