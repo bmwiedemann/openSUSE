@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 25 13:11:15 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
+
+Update to 5.11.28.1
+- fix: measure the started profile through the live instance
+- fix: cap MTU of nested WG/AWG hops, let their IPv6 socket bind
+- fix: sort endpoint-type chain hops into "endpoints" when
+testing
+
+-------------------------------------------------------------------
 Tue Jul 14 08:31:34 UTC 2026 - qr243vbi <qr243vbi@atomicmail.io>
 
 Update to 5.11.28
