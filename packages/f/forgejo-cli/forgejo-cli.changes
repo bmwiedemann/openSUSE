@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Mon Jul 20 05:12:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.6.0:
+  * Localization!
+    - forgejo-cli has gained localization support!
+      You can now use it in your preferred language, just like
+      Forgejo itself.
+      Currently de-DE and zh-Hans are included, with several more
+      being in-progress.
+      See the project on Codeberg Translate if you want to help out
+      with any languages you know!
+      https://translate.codeberg.org/projects/forgejo-cli/forgejo-cli/
+  * Additions
+    - (!586) fj issue/pr view assignees to see who is assigned to
+      an issue or pull request
+    - (!582) --avatar/--unset-avatar options on fj repo edit
+    - (!554) fj repo star-status to check if you've starred a repo
+    - (!547) --cwd option to set the working directory a command is
+      run in
+    - (!533, !561) Commands to watch and unwatch repos
+    - (!462) Resolve SSH host names from SSH config
+    - (!279, !464, !472, !489, !491, !513, !594) Localization
+    - Added fj auth login support for the following instances:
+      - v16.next.forgejo.org
+      - v17.next.forgejo.org
+    - Removed fj auth login support for the following instances
+      that have shut down:
+      - v7.next.forgejo.org
+      - v12.next.forgejo.org
+  * Changes
+    - (!535) Added an error message when fj auth login fails to
+      open the browser
+    - (!523) fj auth add-key was renamed to fj auth add-token. An
+      alias still exists to add-key, so this isn't a breaking
+      change.
+    - (!514) The --host flag can now be anywhere in the command,
+      instead of only the beginning
+    - (!504) fj auth add-token no longer takes a username argument.
+  * Fixes
+    - (!579) Fixed fj issue unassign incorrectly unassigning
+      everyone except the intended users
+    - (!569) Fixed display of labels failing when a label is marked
+      as exclusive but does not contain a slash
+    - (!542) Fixed parsing of SSH shorthand urls
+    - (!510) Fixed fj pr checkout failing when the instance URL
+      contained a port
+    - (!437) Fixed incorrect parsing of activity info
+  * Other
+    - (!573) Use rust 2024 edition
+    - (!560) Simplify determining repo owner
+    - (!531) Fix clippy warnings
+    - (!527) Remove unused dependencies, narrow tokio features
+    - (!526) Replace crossterm with terminal_size
+    - (!520) Optimize cargo release profile
+    - (!469) Fix typo
+    - (!449) Restricted file permissions at creation time
+    - (!443) Add oneline helptext to 'repo migrate' command
+
+-------------------------------------------------------------------
 Fri Apr 17 20:34:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.5.0:
