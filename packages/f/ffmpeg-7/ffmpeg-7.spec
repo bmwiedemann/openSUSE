@@ -97,7 +97,7 @@
 %define _major_expected 8
 
 Name:           ffmpeg-7
-Version:        7.1.4
+Version:        7.1.5
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -118,10 +118,8 @@ Patch2:         ffmpeg-new-coder-errors.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch10:        ffmpeg-chromium.patch
-Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
-Patch19:        ffmpeg-7-CVE-2025-22921.patch
-
+Patch6:         ffmpeg-chromium.patch
+Patch7:         11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  nasm
@@ -818,7 +816,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-7
 Name:           ffmpeg-7-mini
-Version:        7.1.4
+Version:        7.1.5
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -832,8 +830,8 @@ Patch1:         ffmpeg-arm6l.diff
 Patch3:         ffmpeg-codec-choice.diff
 Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
-Patch10:        ffmpeg-chromium.patch
-Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch6:         ffmpeg-chromium.patch
+Patch7:         11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  c_compiler
 BuildRequires:  pkgconfig(openh264)
 Requires:       this-is-only-for-build-envs

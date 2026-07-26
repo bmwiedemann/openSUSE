@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:34:32 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Update to version 7.1.5:
+  * Various crash, out-of-bounds access, add boundary check
+    fixes. Affected: .mov parser, DASH parser, Snow encoder,
+    Icecast, RTSP decoder, RV10/RV34 RealVideo, Truespeech,
+    ADPCM, Matroska decoder
+  * avcodec/jpeg2000dec: clear array length when freeing it
+    (CVE-2025-22921, bsc#1237382)
+  * avcodec/magicyuv: Fix 1 line MEDIAN slices
+    (CVE-2026-8461, bsc#1269490)
+- Drop ffmpeg-7-CVE-2025-22921.patch (merged)
+
+-------------------------------------------------------------------
 Fri May 22 19:11:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 7.1.4:
