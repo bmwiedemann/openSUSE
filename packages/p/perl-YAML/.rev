@@ -400,4 +400,16 @@
      CVE-2026-63676 Thanks CPANSec</comment>
     <requestid>1366768</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>0ce8fcb2bb7fbe6d6e10934baab7f878</srcmd5>
+    <version>1.321.0</version>
+    <time>1785057996</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.321.0 (1.321)
+   see /usr/share/doc/packages/perl-YAML/Changes
+  1.321 2026-07-22 23:11:40+02:00
+   - Going back to decimal version numbering to make existing comparisons
+     like 'if $YAML::VERSION &gt;= 1.15' work. issue#233</comment>
+    <requestid>1367464</requestid>
+  </revision>
 </revisionlist>

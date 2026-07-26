@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Jul 23 07:49:28 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.321.0 (1.321)
+   see /usr/share/doc/packages/perl-YAML/Changes
+
+  1.321 2026-07-22 23:11:40+02:00
+   - Going back to decimal version numbering to make existing comparisons
+     like 'if $YAML::VERSION >= 1.15' work. issue#233
+
+-------------------------------------------------------------------
 Mon Jul 20 12:21:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.320.0 (v1.320.0)

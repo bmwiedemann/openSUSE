@@ -18,10 +18,10 @@
 
 %define cpan_name YAML
 Name:           perl-YAML
-Version:        1.320.0
+Version:        1.321.0
 Release:        0
-# v1.320.0 -> normalize -> 1.320.0
-%define cpan_version v1.320.0
+# 1.321 -> normalize -> 1.321.0
+%define cpan_version 1.321
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        YAML Ain't Markup Language™
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -34,6 +34,29 @@ BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::YAML) >= 1.05
+Provides:       perl(YAML) = %{version}
+Provides:       perl(YAML::Any) = %{version}
+Provides:       perl(YAML::Dumper)
+Provides:       perl(YAML::Dumper::Base)
+Provides:       perl(YAML::Error)
+Provides:       perl(YAML::Loader)
+Provides:       perl(YAML::Loader::Base)
+Provides:       perl(YAML::Marshall)
+Provides:       perl(YAML::Mo)
+Provides:       perl(YAML::Node)
+Provides:       perl(YAML::Tag)
+Provides:       perl(YAML::Type::blessed)
+Provides:       perl(YAML::Type::code)
+Provides:       perl(YAML::Type::glob)
+Provides:       perl(YAML::Type::ref)
+Provides:       perl(YAML::Type::regexp)
+Provides:       perl(YAML::Type::undef)
+Provides:       perl(YAML::Types)
+Provides:       perl(YAML::Warning)
+Provides:       perl(yaml_mapping)
+Provides:       perl(yaml_scalar)
+Provides:       perl(yaml_sequence)
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
