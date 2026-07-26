@@ -968,4 +968,24 @@
   * Fix superfluous margin visible to the left and right of the tab bar when</comment>
     <requestid>1366831</requestid>
   </revision>
+  <revision rev="66" vrev="1">
+    <srcmd5>b50ac6f19580ac9815cb3f00eae4489c</srcmd5>
+    <version>0.48.1</version>
+    <time>1785058147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.48.1:
+  * Wayland: fix a regression in the previous release that broke window sizing
+    for on Hyprland/Sway with fractional scales and an initial specified
+    size (#10268)
+  * Wayland: fix a regression in 0.47.3 that broke dragging on the Niri
+    compositor (#10271)
+  * Wayland: get initial window size in cells working in most cases on
+    Hyprland/Sway with fractional scaling by using the fractional scale of
+    the primary monitor
+  * Wayland: fix using remote control to resize OS windows on some tiling
+    compositors leading to broken rendering
+  * macOS: fix edge=none panel height shrinking when margin_top is non-zero
+    in the panel/quick-access-terminal kittens (#10278)</comment>
+    <requestid>1367697</requestid>
+  </revision>
 </revisionlist>
