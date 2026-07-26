@@ -23,8 +23,8 @@ Date:   Thu Jun 20 23:54:11 2019 +0200
 --- a/servconf.c
 +++ b/servconf.c
 @@ -503,9 +503,9 @@
- 	if (options->permit_tun == -1)
- 		options->permit_tun = SSH_TUNMODE_NO;
+ 		    _PATH_SSH_USER_PERMITTED_KEYS2);
+ 	}
  	if (options->ip_qos_interactive == -1)
 -		options->ip_qos_interactive = IPTOS_DSCP_EF;
 +		options->ip_qos_interactive = IPTOS_LOWDELAY;

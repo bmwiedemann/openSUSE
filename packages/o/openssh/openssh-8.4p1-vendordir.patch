@@ -35,7 +35,7 @@ Index: openssh-10.3p1/pathnames.h
  #ifndef _PATH_SSH_PIDDIR
  #define _PATH_SSH_PIDDIR		"/var/run"
  #endif
-@@ -35,11 +37,15 @@
+@@ -35,12 +37,16 @@
   * should be world-readable.
   */
  #define _PATH_SERVER_CONFIG_FILE	SSHDIR "/sshd_config"
@@ -45,6 +45,7 @@ Index: openssh-10.3p1/pathnames.h
  #define _PATH_HOST_ECDSA_KEY_FILE	SSHDIR "/ssh_host_ecdsa_key"
  #define _PATH_HOST_RSA_KEY_FILE		SSHDIR "/ssh_host_rsa_key"
  #define _PATH_HOST_ED25519_KEY_FILE	SSHDIR "/ssh_host_ed25519_key"
+ #define _PATH_HOST_MLDSA44_ED25519_KEY_FILE SSHDIR "/ssh_host_mldsa44_ed25519_key"
  #define _PATH_DH_MODULI			SSHDIR "/moduli"
 +#define	_PATH_VENDOR_DH_MODULI		VENDORDIR "/moduli"
 +
@@ -104,7 +105,7 @@ Index: openssh-10.3p1/ssh_config.5
 +.Pq Pa /usr/etc/ssh/ssh_config
  .El
  .Pp
- Unless noted otherwise, for each parameter, the first obtained value
+ Unless noted otherwise, for each configuration directive, the first
 @@ -2515,6 +2518,11 @@ This file provides defaults for those
  values that are not specified in the user's configuration file, and
  for those users who do not have a configuration file.

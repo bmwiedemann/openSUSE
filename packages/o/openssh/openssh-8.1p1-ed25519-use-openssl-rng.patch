@@ -23,21 +23,21 @@ index 767ec24..5d506a9 100644
  #define uint8 crypto_uint8
  #define int16 crypto_int16
 @@ -33,7 +40,15 @@ int crypto_sign_ed25519_keypair(
-   sc25519 scsk;
-   ge25519 gepk;
+   unsigned char seed[32];
+   int r;
  
 +#ifdef WITH_OPENSSL
 +  /* Use FIPS approved RNG */
-+  if (RAND_bytes(sk, 32) <= 0)
++  if (RAND_bytes(seed, 32) <= 0)
 +    fatal("Couldn't obtain random bytes (error 0x%lx)",
 +          (unsigned long)ERR_get_error());
 +#else
-   randombytes(sk,32);
+   randombytes(seed, 32);
 +#endif
 +
-   crypto_hash_sha512(az,sk,32);
-   az[0] &= 248;
-   az[31] &= 127;
+   r = crypto_sign_ed25519_keypair_from_seed(pk, sk, seed);
+   explicit_bzero(seed, sizeof(seed));
+   return r;
 diff --git a/kexc25519.c b/kexc25519.c
 index f13d766..2604eda 100644
 --- a/kexc25519.c

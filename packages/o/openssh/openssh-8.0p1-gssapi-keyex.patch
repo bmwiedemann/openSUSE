@@ -110,9 +110,9 @@ Index: openssh-10.3p1/auth2-gss.c
  
 -	authenticated = mm_ssh_gssapi_userok(authctxt->user);
 + 	authenticated = mm_ssh_gssapi_userok(authctxt->user, authctxt->pw, 1);
+ 	if (!authenticated)
+ 		auth_failure_delay(authctxt, tstart);
  
- 	authctxt->postponed = 0;
- 	ssh_dispatch_set(ssh, SSH2_MSG_USERAUTH_GSSAPI_TOKEN, NULL);
 @@ -308,7 +350,7 @@ input_gssapi_mic(int type, uint32_t plen
  	gssbuf.length = sshbuf_len(b);
  
@@ -3051,94 +3051,38 @@ Index: openssh-10.3p1/servconf.c
 +#include "ssh-gss.h"
  #include "fips.h"
  
- #if !defined(SSHD_PAM_SERVICE)
-@@ -133,9 +134,12 @@ initialize_server_options(ServerOptions
- 	options->kerberos_ticket_cleanup = -1;
- 	options->kerberos_get_afs_token = -1;
- 	options->gss_authentication=-1;
-+	options->gss_keyex = -1;
- 	options->gss_cleanup_creds = -1;
- 	options->gss_deleg_creds = -1;
- 	options->gss_strict_acceptor = -1;
-+	options->gss_store_rekey = -1;
-+	options->gss_kex_algorithms = NULL;
- 	options->password_authentication = -1;
- 	options->kbd_interactive_authentication = -1;
- 	options->permit_empty_passwd = -1;
-@@ -397,12 +401,20 @@ fill_default_server_options(ServerOption
- 		options->kerberos_get_afs_token = 0;
- 	if (options->gss_authentication == -1)
- 		options->gss_authentication = 0;
-+	if (options->gss_keyex == -1)
-+		options->gss_keyex = 0;
- 	if (options->gss_cleanup_creds == -1)
- 		options->gss_cleanup_creds = 1;
- 	if (options->gss_deleg_creds == -1)
- 		options->gss_deleg_creds = 1;
- 	if (options->gss_strict_acceptor == -1)
- 		options->gss_strict_acceptor = 1;
-+	if (options->gss_store_rekey == -1)
-+		options->gss_store_rekey = 0;
+ #define SSHD_CONFIG_BLOB_VERSION	1
+@@ -365,6 +366,10 @@ fill_default_server_options(ServerOption
+ 	}
+ 	if (options->rekey_limit == -1)
+ 		options->rekey_limit = 0;
 +#ifdef GSSAPI
 +	if (options->gss_kex_algorithms == NULL)
 +		options->gss_kex_algorithms = strdup(GSS_KEX_DEFAULT_KEX);
 +#endif
- 	if (options->password_authentication == -1)
- 		options->password_authentication = 1;
- 	if (options->kbd_interactive_authentication == -1)
-@@ -592,6 +604,7 @@ typedef enum {
- 	sPerSourcePenalties, sPerSourcePenaltyExemptList,
- 	sClientAliveInterval, sClientAliveCountMax, sAuthorizedKeysFile,
- 	sGssAuthentication, sGssCleanupCreds, sGssDelegateCreds, sGssStrictAcceptor,
-+	sGssKeyEx, sGssKexAlgorithms, sGssStoreRekey,
- 	sAcceptEnv, sSetEnv, sPermitTunnel,
- 	sMatch, sPermitOpen, sPermitListen, sForceCommand, sChrootDirectory,
- 	sUsePrivilegeSeparation, sAllowAgentForwarding,
-@@ -679,14 +692,24 @@ static struct {
- #ifdef GSSAPI
- 	{ "gssapiauthentication", sGssAuthentication, SSHCFG_ALL },
- 	{ "gssapicleanupcredentials", sGssCleanupCreds, SSHCFG_GLOBAL },
-+	{ "gssapicleanupcreds", sGssCleanupCreds, SSHCFG_GLOBAL },
- 	{ "gssapidelegatecredentials", sGssDelegateCreds, SSHCFG_GLOBAL },
- 	{ "gssapistrictacceptorcheck", sGssStrictAcceptor, SSHCFG_GLOBAL },
-+	{ "gssapikeyexchange", sGssKeyEx, SSHCFG_GLOBAL },
-+	{ "gssapistorecredentialsonrekey", sGssStoreRekey, SSHCFG_GLOBAL },
-+	{ "gssapikexalgorithms", sGssKexAlgorithms, SSHCFG_GLOBAL },
- #else
- 	{ "gssapiauthentication", sUnsupported, SSHCFG_ALL },
- 	{ "gssapicleanupcredentials", sUnsupported, SSHCFG_GLOBAL },
-+	{ "gssapicleanupcreds", sUnsupported, SSHCFG_GLOBAL },
- 	{ "gssapidelegatecredentials", sUnsupported, SSHCFG_GLOBAL },
- 	{ "gssapistrictacceptorcheck", sUnsupported, SSHCFG_GLOBAL },
-+	{ "gssapikeyexchange", sUnsupported, SSHCFG_GLOBAL },
-+	{ "gssapistorecredentialsonrekey", sUnsupported, SSHCFG_GLOBAL },
-+	{ "gssapikexalgorithms", sUnsupported, SSHCFG_GLOBAL },
- #endif
-+	{ "gssusesessionccache", sUnsupported, SSHCFG_GLOBAL },
-+	{ "gssapiusesessioncredcache", sUnsupported, SSHCFG_GLOBAL },
- 	{ "passwordauthentication", sPasswordAuthentication, SSHCFG_ALL },
- 	{ "kbdinteractiveauthentication", sKbdInteractiveAuthentication, SSHCFG_ALL },
- 	{ "challengeresponseauthentication", sKbdInteractiveAuthentication, SSHCFG_ALL }, /* alias */
-@@ -1682,6 +1705,10 @@ process_server_config_line_depth(ServerO
+ 	if (options->rekey_interval == -1)
+ 		options->rekey_interval = 0;
+ 	if (options->fwd_opts.gateway_ports == -1)
+@@ -1461,6 +1466,10 @@ process_server_config_line_depth(ServerO
  		intptr = &options->gss_authentication;
  		goto parse_flag;
  
-+	case sGssKeyEx:
++	case sGSSAPIKeyExchange:
 +		intptr = &options->gss_keyex;
 +		goto parse_flag;
 +
- 	case sGssCleanupCreds:
+ 	case sGSSAPICleanupCredentials:
  		intptr = &options->gss_cleanup_creds;
  		goto parse_flag;
-@@ -1694,6 +1721,22 @@ process_server_config_line_depth(ServerO
+@@ -1694,6 +1703,21 @@ process_server_config_line_depth(ServerO
+ 	case sGSSAPIStrictAcceptorCheck:
  		intptr = &options->gss_strict_acceptor;
  		goto parse_flag;
- 
-+	case sGssStoreRekey:
++	case sGSSAPIStoreCredentialsOnRekey:
 +		intptr = &options->gss_store_rekey;
 +		goto parse_flag;
 +
-+	case sGssKexAlgorithms:
++	case sGSSAPIKexAlgorithms:
 +		arg = argv_next(&ac, &av);
 +		if (!arg || *arg == '\0')
 +			fatal("%.200s line %d: Missing argument.",
@@ -3149,17 +3093,16 @@ Index: openssh-10.3p1/servconf.c
 +		if (*activep && options->gss_kex_algorithms == NULL)
 +			options->gss_kex_algorithms = xstrdup(arg);
 +		break;
-+
+ #endif /* GSSAPI */
+
  	case sPasswordAuthentication:
- 		intptr = &options->password_authentication;
- 		goto parse_flag;
-@@ -3324,6 +3367,9 @@ dump_config(ServerOptions *o)
- 	dump_cfg_fmtint(sGssCleanupCreds, o->gss_cleanup_creds);
- 	dump_cfg_fmtint(sGssDelegateCreds, o->gss_deleg_creds);
- 	dump_cfg_fmtint(sGssStrictAcceptor, o->gss_strict_acceptor);
-+	dump_cfg_fmtint(sGssKeyEx, o->gss_keyex);
-+	dump_cfg_fmtint(sGssStoreRekey, o->gss_store_rekey);
-+	dump_cfg_string(sGssKexAlgorithms, o->gss_kex_algorithms);
+@@ -3324,6 +3349,9 @@ dump_config(ServerOptions *o)
+ 	dump_cfg_fmtint(sGSSAPICleanupCredentials, o->gss_cleanup_creds);
+ 	dump_cfg_fmtint(sGSSAPIDelegateCredentials, o->gss_deleg_creds);
+ 	dump_cfg_fmtint(sGSSAPIStrictAcceptorCheck, o->gss_strict_acceptor);
++	dump_cfg_fmtint(sGSSAPIKeyExchange, o->gss_keyex);
++	dump_cfg_fmtint(sGSSAPIStoreCredentialsOnRekey, o->gss_store_rekey);
++	dump_cfg_string(sGSSAPIKexAlgorithms, o->gss_kex_algorithms);
  #endif
  	dump_cfg_fmtint(sPasswordAuthentication, o->password_authentication);
  	dump_cfg_fmtint(sKbdInteractiveAuthentication,
@@ -3167,19 +3110,28 @@ Index: openssh-10.3p1/servconf.h
 ===================================================================
 --- openssh-10.3p1.orig/servconf.h
 +++ openssh-10.3p1/servconf.h
-@@ -151,9 +151,12 @@ typedef struct {
- 	int     kerberos_get_afs_token;		/* If true, try to get AFS token if
- 						 * authenticated with Kerberos. */
- 	int     gss_authentication;	/* If true, permit GSSAPI authentication */
-+	int     gss_keyex;		/* If true, permit GSSAPI key exchange */
- 	int     gss_cleanup_creds;	/* If true, destroy cred cache on logout */
- 	int     gss_deleg_creds;	/* If true, accept delegated GSS credentials */
- 	int     gss_strict_acceptor;	/* If true, restrict the GSSAPI acceptor name */
-+	int 	gss_store_rekey;
-+	char   *gss_kex_algorithms;	/* GSSAPI kex methods to be offered by client. */
- 	int     password_authentication;	/* If true, permit password
- 						 * authentication. */
- 	int     kbd_interactive_authentication;	/* If true, permit */
+@@ -317,13 +317,19 @@ typedef struct {
+ SSHCONF_INTFLAG(gss_authentication, GSSAPIAuthentication, SSHCFG_ALL, 0, SSHCFG_COPY_MATCH) \
+ SSHCONF_INTFLAG(gss_cleanup_creds, GSSAPICleanupCredentials, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
+ SSHCONF_INTFLAG(gss_deleg_creds, GSSAPIDelegateCredentials, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
+-SSHCONF_INTFLAG(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE)
++SSHCONF_INTFLAG(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
++SSHCONF_INTFLAG(gss_keyex, GSSAPIKeyExchange, SSHCFG_GLOBAL, 0, SSHCFG_COPY_NONE) \
++SSHCONF_INTFLAG(gss_store_rekey, GSSAPIStoreCredentialsOnRekey, SSHCFG_GLOBAL, 0, SSHCFG_COPY_NONE) \
++SSHCONF_STRING(gss_kex_algorithms, GSSAPIKexAlgorithms, SSHCFG_GLOBAL, SSHCFG_COPY_NONE)
+ #else /* GSSAPI */
+ #define SSHD_CONFIG_ENTRIES_GSS \
+ SSHCONF_UNSUPPORTED_INT(gss_authentication, GSSAPIAuthentication, SSHCFG_ALL) \
+ SSHCONF_UNSUPPORTED_INT(gss_cleanup_creds, GSSAPICleanupCredentials, SSHCFG_GLOBAL) \
+ SSHCONF_UNSUPPORTED_INT(gss_deleg_creds, GSSAPIDelegateCredentials, SSHCFG_GLOBAL) \
+-SSHCONF_UNSUPPORTED_INT(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL)
++SSHCONF_UNSUPPORTED_INT(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_INT(gss_keyex, GSSAPIKeyExchange, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_INT(gss_store_rekey, GSSAPIStoreCredentialsOnRekey, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_STRING(gss_kex_algorithms, GSSAPIKexAlgorithms, SSHCFG_GLOBAL)
+ #endif /* GSSAPI */
+ 
+ #define SSHD_CONFIG_ENTRIES \
 Index: openssh-10.3p1/session.c
 ===================================================================
 --- openssh-10.3p1.orig/session.c
@@ -3353,16 +3305,17 @@ Index: openssh-10.3p1/ssh.c
 ===================================================================
 --- openssh-10.3p1.orig/ssh.c
 +++ openssh-10.3p1/ssh.c
-@@ -811,6 +811,8 @@ main(int ac, char **av)
+@@ -811,6 +811,9 @@ main(int ac, char **av)
  			else if (strcmp(optarg, "kex") == 0 ||
  			    strcasecmp(optarg, "KexAlgorithms") == 0)
  				cp = kex_alg_list('\n');
-+			else if (strcmp(optarg, "kex-gss") == 0)
++                       else if (strcmp(optarg, "kex-gss") == 0 ||
++                           strcasecmp(optarg, "GSSAPIKexAlgorithms") == 0)
 +				cp = kex_gss_alg_list('\n');
  			else if (strcmp(optarg, "key") == 0)
  				cp = sshkey_alg_list(0, 0, 0, '\n');
  			else if (strcmp(optarg, "key-cert") == 0)
-@@ -841,8 +843,8 @@ main(int ac, char **av)
+@@ -841,8 +844,8 @@ main(int ac, char **av)
  			} else if (strcmp(optarg, "help") == 0) {
  				cp = xstrdup(
  				    "cipher\ncipher-auth\ncompression\nkex\n"
@@ -3472,9 +3425,9 @@ Index: openssh-10.3p1/sshconnect2.c
 +	char *gss_host = NULL;
 +#endif
 +
- 	xxx_host = host;
- 	xxx_hostaddr = hostaddr;
- 	xxx_conn_info = cinfo;
+ 	xxx_host = xstrdup(host);
+ 	xxx_hostaddr = *hostaddr;
+ 	xxx_conn_info = ssh_conn_info_dup(cinfo);
 @@ -256,6 +261,42 @@ ssh_kex2(struct ssh *ssh, char *host, st
  	    compression_alg_list(options.compression),
  	    hkalgs ? hkalgs : options.hostkeyalgorithms);
@@ -3762,7 +3715,7 @@ Index: openssh-10.3p1/sshd-auth.c
 +	 * host key algorithm we support
 +	 */
 +	if (gss && (strlen(myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS])) == 0)
-+		myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS] = "null";
++		myproposal[PROPOSAL_SERVER_HOST_KEY_ALGS] = xstrdup("null");
 +
 +	if (newstr)
 +		myproposal[PROPOSAL_KEX_ALGS] = newstr;
@@ -3822,9 +3775,9 @@ Index: openssh-10.3p1/sshd_config.5
  Determines whether to be strict about the identity of the GSSAPI acceptor
  a client authenticates against.
 @@ -771,6 +776,32 @@ machine's default store.
- This facility is provided to assist with operation on multi homed machines.
  The default is
  .Cm yes .
+ This option may not be effective in Windows Active Directory environments.
 +.It Cm GSSAPIStoreCredentialsOnRekey
 +Controls whether the user's GSSAPI credentials should be updated following a
 +successful connection rekeying. This option can be used to accepted renewed
@@ -3956,9 +3909,9 @@ Index: openssh-10.3p1/sshkey.h
 --- openssh-10.3p1.orig/sshkey.h
 +++ openssh-10.3p1/sshkey.h
 @@ -67,6 +67,7 @@ enum sshkey_types {
- 	KEY_ECDSA_SK_CERT,
- 	KEY_ED25519_SK,
  	KEY_ED25519_SK_CERT,
+ 	KEY_MLDSA44_ED25519,
+ 	KEY_MLDSA44_ED25519_CERT,
 +	KEY_NULL,
  	KEY_UNSPEC
  };

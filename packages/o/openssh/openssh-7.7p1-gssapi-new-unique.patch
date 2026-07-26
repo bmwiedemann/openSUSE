@@ -497,78 +497,45 @@ Index: openssh-10.3p1/servconf.c
 ===================================================================
 --- openssh-10.3p1.orig/servconf.c
 +++ openssh-10.3p1/servconf.c
-@@ -133,6 +133,7 @@ initialize_server_options(ServerOptions
- 	options->kerberos_or_local_passwd = -1;
- 	options->kerberos_ticket_cleanup = -1;
- 	options->kerberos_get_afs_token = -1;
-+	options->kerberos_unique_ccache = -1;
- 	options->gss_authentication=-1;
- 	options->gss_keyex = -1;
- 	options->gss_cleanup_creds = -1;
-@@ -397,6 +398,8 @@ fill_default_server_options(ServerOption
- 		options->kerberos_ticket_cleanup = 1;
- 	if (options->kerberos_get_afs_token == -1)
- 		options->kerberos_get_afs_token = 0;
-+	if (options->kerberos_unique_ccache == -1)
-+		options->kerberos_unique_ccache = 0;
- 	if (options->gss_authentication == -1)
- 		options->gss_authentication = 0;
- 	if (options->gss_keyex == -1)
-@@ -586,7 +589,7 @@ typedef enum {
- 	sPort, sHostKeyFile, sLoginGraceTime,
- 	sPermitRootLogin, sLogFacility, sLogLevel, sLogVerbose,
- 	sKerberosAuthentication, sKerberosOrLocalPasswd, sKerberosTicketCleanup,
--	sKerberosGetAFSToken, sPasswordAuthentication,
-+	sKerberosGetAFSToken, sKerberosUniqueCCache, sPasswordAuthentication,
- 	sKbdInteractiveAuthentication, sListenAddress, sAddressFamily,
- 	sPrintMotd, sPrintLastLog, sIgnoreRhosts,
- 	sX11Forwarding, sX11DisplayOffset, sX11UseLocalhost,
-@@ -679,11 +682,13 @@ static struct {
- #else
- 	{ "kerberosgetafstoken", sUnsupported, SSHCFG_GLOBAL },
- #endif
-+	{ "kerberosuniqueccache", sKerberosUniqueCCache, SSHCFG_GLOBAL },
- #else
- 	{ "kerberosauthentication", sUnsupported, SSHCFG_ALL },
- 	{ "kerberosorlocalpasswd", sUnsupported, SSHCFG_GLOBAL },
- 	{ "kerberosticketcleanup", sUnsupported, SSHCFG_GLOBAL },
- 	{ "kerberosgetafstoken", sUnsupported, SSHCFG_GLOBAL },
-+	{ "kerberosuniqueccache", sUnsupported, SSHCFG_GLOBAL },
- #endif
- 	{ "kerberostgtpassing", sUnsupported, SSHCFG_GLOBAL },
- 	{ "afstokenpassing", sUnsupported, SSHCFG_GLOBAL },
-@@ -1699,6 +1704,10 @@ process_server_config_line_depth(ServerO
+@@ -1699,6 +1699,11 @@ process_server_config_line_depth(ServerO
  		intptr = &options->kerberos_get_afs_token;
  		goto parse_flag;
- 
+ #endif /* USE_AFS */
++
 +	case sKerberosUniqueCCache:
 +		intptr = &options->kerberos_unique_ccache;
 +		goto parse_flag;
 +
- 	case sGssAuthentication:
- 		intptr = &options->gss_authentication;
- 		goto parse_flag;
-@@ -3359,6 +3368,7 @@ dump_config(ServerOptions *o)
+ #endif /* KRB5 */
+ 
+ #ifdef GSSAPI
+@@ -3363,6 +3368,7 @@ dump_config(ServerOptions *o)
  # ifdef USE_AFS
  	dump_cfg_fmtint(sKerberosGetAFSToken, o->kerberos_get_afs_token);
  # endif
 +	dump_cfg_fmtint(sKerberosUniqueCCache, o->kerberos_unique_ccache);
  #endif
  #ifdef GSSAPI
- 	dump_cfg_fmtint(sGssAuthentication, o->gss_authentication);
+ 	dump_cfg_fmtint(sGSSAPIAuthentication, o->gss_authentication);
 Index: openssh-10.3p1/servconf.h
 ===================================================================
 --- openssh-10.3p1.orig/servconf.h
 +++ openssh-10.3p1/servconf.h
-@@ -150,6 +150,8 @@ typedef struct {
- 						 * file on logout. */
- 	int     kerberos_get_afs_token;		/* If true, try to get AFS token if
- 						 * authenticated with Kerberos. */
-+	int     kerberos_unique_ccache;		/* If true, the acquired ticket will
-+						 * be stored in per-session ccache */
- 	int     gss_authentication;	/* If true, permit GSSAPI authentication */
- 	int     gss_keyex;		/* If true, permit GSSAPI key exchange */
- 	int     gss_cleanup_creds;	/* If true, destroy cred cache on logout */
+@@ -303,12 +303,14 @@ SSHCONF_UNSUPPORTED_INT(kerberos_get_afs_token, KerberosGetAFSToken, SSHCFG_GLOB
+ SSHCONF_INTFLAG(kerberos_authentication, KerberosAuthentication, SSHCFG_ALL, 0, SSHCFG_COPY_MATCH) \
+ SSHCONF_INTFLAG(kerberos_or_local_passwd, KerberosOrLocalPasswd, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
+ SSHCONF_INTFLAG(kerberos_ticket_cleanup, KerberosTicketCleanup, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
++SSHCONF_INTFLAG(kerberos_unique_ccache, KerberosUniqueCCache, SSHCFG_GLOBAL, 0, SSHCFG_COPY_NONE) \
+ SSHD_CONFIG_KRB5_AFS
+ #else /* KRB5 */
+ #define SSHD_CONFIG_ENTRIES_KRB5 \
+ SSHCONF_UNSUPPORTED_INT(kerberos_authentication, KerberosAuthentication, SSHCFG_ALL) \
+ SSHCONF_UNSUPPORTED_INT(kerberos_or_local_passwd, KerberosOrLocalPasswd, SSHCFG_GLOBAL) \
+ SSHCONF_UNSUPPORTED_INT(kerberos_ticket_cleanup, KerberosTicketCleanup, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_INT(kerberos_unique_ccache, KerberosUniqueCCache, SSHCFG_GLOBAL) \
+ SSHCONF_UNSUPPORTED_INT(kerberos_get_afs_token, KerberosGetAFSToken, SSHCFG_GLOBAL)
+ #endif /* KRB5 */
+
 Index: openssh-10.3p1/session.c
 ===================================================================
 --- openssh-10.3p1.orig/session.c

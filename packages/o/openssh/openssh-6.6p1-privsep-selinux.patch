@@ -89,13 +89,13 @@ Index: openssh-9.3p2/session.c
  		execl(_PATH_PASSWD_PROG, "passwd", s->pw->pw_name,
  		    (char *)NULL);
 @@ -1723,9 +1728,6 @@ do_child(struct ssh *ssh, Session *s, co
- 		argv[i] = NULL;
+ 		}
  		optind = optreset = 1;
- 		__progname = argv[0];
+ 		__progname = sftp_argv[0];
 -#ifdef WITH_SELINUX
 -		ssh_selinux_change_context("sftpd_t");
 -#endif
- 		exit(sftp_server_main(i, argv, s->pw));
+ 		exit(sftp_server_main(sftp_argc, sftp_argv, s->pw));
  	}
  
 Index: openssh-10/sshd-auth.c

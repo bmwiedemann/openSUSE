@@ -59,7 +59,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           openssh
-Version:        10.3p1
+Version:        10.4p1
 Release:        0
 Summary:        Secure Shell Client and Server (Remote Login Program)
 License:        BSD-2-Clause AND MIT
@@ -83,6 +83,8 @@ Source14:       sysusers-sshd.conf
 Source15:       sshd-sle.pamd
 Source16:       sshd@.service
 Source17:       sshd.socket
+# PATCH-FIX-UPSTREAM 0001-Fix-GSSAPI-server-option-names.diff  https://bugzilla.mindrot.org/show_bug.cgi?id=3974
+Patch0:         0001-Fix-GSSAPI-server-option-names.diff
 # PATCH-FEATURE-SUSE openssh-7.7p1-X11_trusted_forwarding.patch bsc#50836 -- Enable trusted X11 forwarding by default
 Patch1:         openssh-7.7p1-X11_trusted_forwarding.patch
 # PATCH-FEATURE-SUSE openssh-7.7p1-enable_PAM_by_default.patch bsc#46749 -- UsePAM yes in default sshd_config
@@ -137,10 +139,6 @@ Patch33:        openssh-7.7p1-sftp_print_diagnostic_messages.patch
 Patch34:        openssh-7.9p1-keygen-preserve-perms.patch
 # PATCH-FIX-SUSE openssh-7.9p1-revert-new-qos-defaults.patch bsc#1136402 hpj@suse.com -- Revert upstream IPQoS AF21/CS1 defaults
 Patch35:        openssh-7.9p1-revert-new-qos-defaults.patch
-# PATCH-FIX-SUSE openssh-8.1p1-seccomp-clock_nanosleep.patch -- Allow clock_nanosleep() in seccomp sandbox
-Patch36:        openssh-8.1p1-seccomp-clock_nanosleep.patch
-# PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_nanosleep_time64.patch boo#1164061 mindrot#3100 -- Allow clock_nanosleep_time64 (ARM)
-Patch37:        openssh-8.1p1-seccomp-clock_nanosleep_time64.patch
 # PATCH-FIX-UPSTREAM openssh-8.1p1-seccomp-clock_gettime64.patch boo#1164061 raj.khem@gmail.com -- Allow clock_gettime64() (mips)
 Patch38:        openssh-8.1p1-seccomp-clock_gettime64.patch
 # PATCH-FEATURE-SUSE openssh-8.1p1-use-openssl-kdf.patch jsc#SLE-9443 -- Use OpenSSL KDF API to stay in FIPS boundary
@@ -181,8 +179,6 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
 # PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
-# PATCH-FIX-SUSE fix-mac-validation-strsep-logic-bug.patch bsc#1264568 alarrosa@suse.com -- Fix strsep logic bug in mac validation
-Patch109:       fix-mac-validation-strsep-logic-bug.patch
 # 200..300 -- Patches submitted to upstream
 # 1000..2000 -- Conditional patches
 %if %{with crypto_policies}

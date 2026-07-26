@@ -73,7 +73,7 @@ Index: openssh-10.3p1/auth2-gss.c
 +		free(micuser);
  	free(mic.value);
  
- 	authctxt->postponed = 0;
+ 	if (!authenticated)
 Index: openssh-10.3p1/auth2-hostbased.c
 ===================================================================
 --- openssh-10.3p1.orig/auth2-hostbased.c

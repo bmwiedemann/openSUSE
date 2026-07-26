@@ -1,0 +1,88 @@
+From 35570cb2ae401a127b8b7f88d0938e759f83b5be Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Mon, 6 Jul 2026 13:27:43 +0100
+Subject: [PATCH] Fix GSSAPI server option names
+
+Broken by bebc855fdb3f8c7f96fd392f67bec2134cc42b1b, presumably because
+the previous `sGss*` enumeration item names didn't quite match the names
+documented in sshd_config(5).
+---
+ servconf.c | 16 ++++++++--------
+ servconf.h | 16 ++++++++--------
+ 2 files changed, 16 insertions(+), 16 deletions(-)
+
+diff --git a/servconf.c b/servconf.c
+index ce388f1dd..2f6c966b5 100644
+--- a/servconf.c
++++ b/servconf.c
+@@ -1433,19 +1433,19 @@ process_server_config_line_depth(ServerOptions *options, char *line,
+ #endif /* KRB5 */
+ 
+ #ifdef GSSAPI
+-	case sGssAuthentication:
++	case sGSSAPIAuthentication:
+ 		intptr = &options->gss_authentication;
+ 		goto parse_flag;
+ 
+-	case sGssCleanupCreds:
++	case sGSSAPICleanupCredentials:
+ 		intptr = &options->gss_cleanup_creds;
+ 		goto parse_flag;
+ 
+-	case sGssDelegateCreds:
++	case sGSSAPIDelegateCredentials:
+ 		intptr = &options->gss_deleg_creds;
+ 		goto parse_flag;
+ 
+-	case sGssStrictAcceptor:
++	case sGSSAPIStrictAcceptorCheck:
+ 		intptr = &options->gss_strict_acceptor;
+ 		goto parse_flag;
+ #endif /* GSSAPI */
+@@ -4215,10 +4215,10 @@ dump_config(ServerOptions *o)
+ # endif
+ #endif
+ #ifdef GSSAPI
+-	dump_cfg_fmtint(sGssAuthentication, o->gss_authentication);
+-	dump_cfg_fmtint(sGssCleanupCreds, o->gss_cleanup_creds);
+-	dump_cfg_fmtint(sGssDelegateCreds, o->gss_deleg_creds);
+-	dump_cfg_fmtint(sGssStrictAcceptor, o->gss_strict_acceptor);
++	dump_cfg_fmtint(sGSSAPIAuthentication, o->gss_authentication);
++	dump_cfg_fmtint(sGSSAPICleanupCredentials, o->gss_cleanup_creds);
++	dump_cfg_fmtint(sGSSAPIDelegateCredentials, o->gss_deleg_creds);
++	dump_cfg_fmtint(sGSSAPIStrictAcceptorCheck, o->gss_strict_acceptor);
+ #endif
+ 	dump_cfg_fmtint(sPasswordAuthentication, o->password_authentication);
+ 	dump_cfg_fmtint(sKbdInteractiveAuthentication,
+diff --git a/servconf.h b/servconf.h
+index 9e64e4673..de30d28f5 100644
+--- a/servconf.h
++++ b/servconf.h
+@@ -314,16 +314,16 @@ SSHCONF_UNSUPPORTED_INT(kerberos_get_afs_token, KerberosGetAFSToken, SSHCFG_GLOB
+ 
+ #ifdef GSSAPI
+ #define SSHD_CONFIG_ENTRIES_GSS \
+-SSHCONF_INTFLAG(gss_authentication, GssAuthentication, SSHCFG_ALL, 0, SSHCFG_COPY_MATCH) \
+-SSHCONF_INTFLAG(gss_cleanup_creds, GssCleanupCreds, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
+-SSHCONF_INTFLAG(gss_deleg_creds, GssDelegateCreds, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
+-SSHCONF_INTFLAG(gss_strict_acceptor, GssStrictAcceptor, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE)
++SSHCONF_INTFLAG(gss_authentication, GSSAPIAuthentication, SSHCFG_ALL, 0, SSHCFG_COPY_MATCH) \
++SSHCONF_INTFLAG(gss_cleanup_creds, GSSAPICleanupCredentials, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
++SSHCONF_INTFLAG(gss_deleg_creds, GSSAPIDelegateCredentials, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE) \
++SSHCONF_INTFLAG(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL, 1, SSHCFG_COPY_NONE)
+ #else /* GSSAPI */
+ #define SSHD_CONFIG_ENTRIES_GSS \
+-SSHCONF_UNSUPPORTED_INT(gss_authentication, GssAuthentication, SSHCFG_ALL) \
+-SSHCONF_UNSUPPORTED_INT(gss_cleanup_creds, GssCleanupCreds, SSHCFG_GLOBAL) \
+-SSHCONF_UNSUPPORTED_INT(gss_deleg_creds, GssDelegateCreds, SSHCFG_GLOBAL) \
+-SSHCONF_UNSUPPORTED_INT(gss_strict_acceptor, GssStrictAcceptor, SSHCFG_GLOBAL)
++SSHCONF_UNSUPPORTED_INT(gss_authentication, GSSAPIAuthentication, SSHCFG_ALL) \
++SSHCONF_UNSUPPORTED_INT(gss_cleanup_creds, GSSAPICleanupCredentials, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_INT(gss_deleg_creds, GSSAPIDelegateCredentials, SSHCFG_GLOBAL) \
++SSHCONF_UNSUPPORTED_INT(gss_strict_acceptor, GSSAPIStrictAcceptorCheck, SSHCFG_GLOBAL)
+ #endif /* GSSAPI */
+ 
+ #define SSHD_CONFIG_ENTRIES \
+-- 
+2.53.0
+
