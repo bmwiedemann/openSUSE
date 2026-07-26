@@ -61,7 +61,6 @@ BuildRequires:  %{python_module jaraco.collections}
 BuildRequires:  %{python_module more-itertools}
 BuildRequires:  %{python_module path.py}
 BuildRequires:  %{python_module portend >= 2.1.1}
-BuildRequires:  %{python_module pytest-forked}
 BuildRequires:  %{python_module pytest-services}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests-toolbelt}

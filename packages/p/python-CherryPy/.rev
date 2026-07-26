@@ -362,4 +362,12 @@
     <comment>- Temporarily mark test_queue_full as xfail with xfail.patch</comment>
     <requestid>1347085</requestid>
   </revision>
+  <revision rev="42" vrev="4">
+    <srcmd5>0f4c7445a0581b9c81157f0815c1ea39</srcmd5>
+    <version>18.10.0</version>
+    <time>1785058079</time>
+    <user>dimstar_suse</user>
+    <comment>- Remove use of pytest-forked.</comment>
+    <requestid>1367317</requestid>
+  </revision>
 </revisionlist>
