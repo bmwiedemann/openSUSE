@@ -2345,4 +2345,19 @@ Binary file multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178) delet
     <user>dimstar_suse</user>
     <comment>https://bugzilla.opensuse.org/show_bug.cgi?id=1272188</comment>
   </revision>
+  <revision rev="181" vrev="1">
+    <srcmd5>2d90406a77807249946f062168ead49a</srcmd5>
+    <version>0.15~1+230+suse.d36a6a70</version>
+    <time>1785058061</time>
+    <user>dimstar_suse</user>
+    <comment>Fix wrong bug reference in previous sr#1367193
+
+- Update to version 0.15~1+230+suse.d36a6a70:
+  * Even with the libudev wrapper code introduced in 0.14.0, multipathd ran into
+    use-after-free errors in tests where multipathd was restarted frequently.
+    Fix this by preventing thread cancellation during libudev calls.
+    (gh#opensvc/multipath-tools#152).
+  * libmultipath: async_checker: fix sync checker case (bsc#1272188)</comment>
+    <requestid>1367351</requestid>
+  </revision>
 </revisionlist>
