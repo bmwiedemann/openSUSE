@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Thu Jul 23 10:10:09 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.25.2:
+  * CVE-2026-14586: Assertion in libngtcp2 when under pressure in
+    high concurrency DNS-over-QUIC environments
+    [bsc#1271879]
+  * CVE-2026-32665: Remote DNS-over-QUIC denial of service due to
+    quic-size budget bypass
+    [bsc#1271873]
+  * CVE-2026-40691: Packet of death for DNSCrypt over TCP
+    [bsc#1271875]
+  * CVE-2026-41637: Degradation of resolution service from
+    improperly accounted client-terminated DNS-over-QUIC queries
+    [bsc#1271891]
+  * CVE-2026-42955: Extra fix for CVE-2026-40622 to also clamp the
+    TTL of A/AAAA records disallowing a one-time 'ghost domain'
+    delegation renewal via glue records
+    [bsc#1271892]
+  * CVE-2026-44621: Libunbound applications configured with
+    'unwanted-reply-threshold' could eventually be abruptly
+    terminated
+    [bsc#1271876]
+  * CVE-2026-44687: Off-by-one error in 'harden-below-nxdomain'
+    logic can shadow a stub/forward zone by a legitimate parent's
+    NXDOMAIN
+    [bsc#1271893]
+  * CVE-2026-44690: Cross-zone wildcard cache poisoning via
+    RRSIG.labels manipulation
+    [bsc#1271877]
+  * CVE-2026-46582: A wildcard replay, as another piece of data,
+    triggers poisoning in the serve expired reply path
+    [bsc#1271894]
+  * CVE-2026-50045: 'max-global-quota' reset by DNSSEC validation
+    restarts
+    [bsc#1271878]
+  * CVE-2026-50046: Possible heap use-after-free in an error path
+    when a DoT forwarded query is jostled out
+    [bsc#1271882]
+  * CVE-2026-50243: 'response-ip'/'rpz' can rewrite BOGUS answers
+    instead of returning SERVFAIL
+    [bsc#1271880]
+  * CVE-2026-50248: BOGUS configured primary hostname accepted for
+    XFR in auth/rpz zones
+    [bsc#1271881]
+  * CVE-2026-50251: Attacker supplied 0.0.0.0/:: glue triggers
+    defensive full-cache flush
+    [bsc#1271883]
+  * CVE-2026-50252: Possible cache poisoning attack by mapping
+    source port population per thread
+    [bsc#1271884]
+  * CVE-2026-52863: Memory corruption could lead to crash and
+    denial of service
+    [bsc#1271885]
+  * CVE-2026-54478: DNS Cookie bypass when combined with
+    proxy-protocol use
+    [bsc#1271895]
+  * CVE-2026-55708: Privacy/configuration issue when adding local
+    data in views through 'unbound-control'
+    [bsc#1271896]
+  * CVE-2026-55717: 'serve-expired-client-timeout' and
+    'response-ip' CNAME redirect could lead to a crash
+    [bsc#1271886]
+  * CVE-2026-55973: 'dns-error-reporting: yes' leads to stack
+    buffer overflow
+    [bsc#1271874]
+  * CVE-2026-55990: Packet of death for a DNSCrypt misconfigured
+    Unbound
+    [bsc#1271887]
+  * CVE-2026-55991: Remote DNS-over-QUIC (DoQ) flow-control
+    assertion failure in libngtcp2
+    [bsc#1271888]
+  * CVE-2026-56416: Possible heap buffer overflow when validator
+    canonicalizes RDATA that contains domain name
+    [bsc#1271889]
+  * CVE-2026-56444: Degradation of resolution service when
+    'discard-timeout' and 'serve-expired-client-timeout' are
+    combined in unusual configuration
+    [bsc#1271890]
+
+-------------------------------------------------------------------
 Thu May 28 11:51:49 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 1.25.1:
