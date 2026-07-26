@@ -1,7 +1,7 @@
-Index: valkey-9.0.4/sentinel.conf
+Index: valkey-9.1.0/sentinel.conf
 ===================================================================
---- valkey-9.0.4.orig/sentinel.conf
-+++ valkey-9.0.4/sentinel.conf
+--- valkey-9.1.0.orig/sentinel.conf
++++ valkey-9.1.0/sentinel.conf
 @@ -7,17 +7,18 @@ protected-mode no
  
  # port <sentinel-port>
@@ -83,11 +83,11 @@ Index: valkey-9.0.4/sentinel.conf
  
 -SENTINEL primary-reboot-down-after-period mymaster 0
 +# SENTINEL primary-reboot-down-after-period mymaster 0
-Index: valkey-9.0.4/valkey.conf
+Index: valkey-9.1.0/valkey.conf
 ===================================================================
---- valkey-9.0.4.orig/valkey.conf
-+++ valkey-9.0.4/valkey.conf
-@@ -395,7 +395,7 @@ daemonize no
+--- valkey-9.1.0.orig/valkey.conf
++++ valkey-9.1.0/valkey.conf
+@@ -411,7 +411,7 @@ daemonize no
  # The default is "no". To run under upstart/systemd, you can simply uncomment
  # the line below:
  #
@@ -96,7 +96,7 @@ Index: valkey-9.0.4/valkey.conf
  
  # If a pid file is specified, the server writes it where specified at startup
  # and removes it at exit.
-@@ -409,7 +409,7 @@ daemonize no
+@@ -425,7 +425,7 @@ daemonize no
  #
  # Note that on modern Linux systems "/run/valkey.pid" is more conforming
  # and should be used instead.
@@ -105,7 +105,7 @@ Index: valkey-9.0.4/valkey.conf
  
  # Specify the server verbosity level.
  # This can be one of:
-@@ -440,7 +440,8 @@ loglevel notice
+@@ -457,7 +457,8 @@ loglevel notice
  # Specify the log file name. Also the empty string can be used to force
  # the server to log on the standard output. Note that if you use standard
  # output for logging but daemonize, logs will be sent to /dev/null
@@ -115,7 +115,7 @@ Index: valkey-9.0.4/valkey.conf
  
  # To enable logging to the system logger, just set 'syslog-enabled' to yes,
  # and optionally update the other syslog parameters to suit your needs.
-@@ -631,7 +632,7 @@ rdb-del-sync-files no
+@@ -661,7 +662,7 @@ rdb-del-sync-files no
  # Note that modifying 'dir' during runtime may have unexpected behavior,
  # for example when a child process is running, related file operations may
  # have unexpected effects.
@@ -124,10 +124,10 @@ Index: valkey-9.0.4/valkey.conf
  
  ################################# REPLICATION #################################
  
-Index: valkey-9.0.4/valkey.default.conf
+Index: valkey-9.1.0/valkey.default.conf
 ===================================================================
 --- /dev/null
-+++ valkey-9.0.4/valkey.default.conf
++++ valkey-9.1.0/valkey.default.conf
 @@ -0,0 +1,7 @@
 +include /etc/valkey/includes/valkey.defaults.conf
 +
@@ -136,10 +136,10 @@ Index: valkey-9.0.4/valkey.default.conf
 +pidfile /run/valkey/default.pid
 +logfile /var/log/valkey/default.log
 +
-Index: valkey-9.0.4/sentinel.default.conf
+Index: valkey-9.1.0/sentinel.default.conf
 ===================================================================
 --- /dev/null
-+++ valkey-9.0.4/sentinel.default.conf
++++ valkey-9.1.0/sentinel.default.conf
 @@ -0,0 +1,9 @@
 +include /etc/valkey/includes/sentinel.defaults.conf
 +

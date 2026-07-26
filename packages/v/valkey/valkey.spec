@@ -26,7 +26,7 @@
 %global make_flags CFLAGS="%{build_cflags}" DEBUG="" V="echo" PREFIX=%{buildroot}%{_prefix} USE_SYSTEMD=yes BUILD_TLS=yes BUILD_RDMA=yes
 
 Name:           valkey
-Version:        9.0.4
+Version:        9.1.1
 Release:        0
 Summary:        Persistent key-value database
 License:        BSD-3-Clause
@@ -43,8 +43,6 @@ Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
 Source10:       macros.%{name}
 Source11:       migrate_redis_to_valkey.bash
-# PATCH-FIX-UPSTREAM fix-pointer-to-int.patch -- Fix pointer-to-int-cast build errors for i586 and armv7l
-Patch0:         fix-pointer-to-int.patch
 # PATCH-FIX-OPENSUSE -- Adjust configs for openSUSE
 Patch1001:      %{name}-conf.patch
 BuildRequires:  jemalloc-devel
