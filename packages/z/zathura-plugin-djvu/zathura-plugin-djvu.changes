@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Jul 25 11:46:31 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- Update to version 2026.07.18:
+  * Update for new version handling
+
+-------------------------------------------------------------------
 Tue Jul  7 10:19:06 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Fix build without %check (boo#1227364)
