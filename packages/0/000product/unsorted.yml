@@ -2492,6 +2492,7 @@ unsorted:
   - collectd-plugin-mqtt 
   - collectd-plugin-mysql 
   - collectd-plugin-notify-desktop 
+  - collectd-plugin-nut 
   - collectd-plugin-openldap 
   - collectd-plugin-ovs 
   - collectd-plugin-pcie 
@@ -2747,6 +2748,7 @@ unsorted:
   - cpp-httplib-devel 
   - cpp13 
   - cpp14 
+  - cpp15 
   - cpp7 
   - cppcheck 
   - cppcheck-gui 
@@ -4870,6 +4872,8 @@ unsorted:
   - gcc-PIE 
   - gcc-ada 
   - gcc-ada-32bit 
+  - gcc-algol68 
+  - gcc-algol68-32bit 
   - gcc-c++ 
   - gcc-c++-32bit 
   - gcc-cobol 
@@ -11195,6 +11199,7 @@ unsorted:
   - libArcus-devel 
   - libArcus3 
   - libAvogadro1 
+  - libBlocksRuntime1_3 
   - libBulletFileLoader3_25 
   - libBulletInverseDynamicsUtils3_25 
   - libBulletWorldImporter3_25 
@@ -24319,7 +24324,6 @@ unsorted:
   - python3-smbus 
   - python3-spglib 
   - python3-splinter 
-  - python3-spyder-notebook 
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
@@ -24380,7 +24384,6 @@ unsorted:
   - python311-ipdb 
   - python311-keystonemiddleware 
   - python311-mediafile 
-  - python311-modern-colorthief 
   - python311-onnxruntime 
   - python311-oslo.cache 
   - python311-packaging 
@@ -26647,7 +26650,6 @@ unsorted:
   - python313-mockito 
   - python313-model-bakery 
   - python313-model-hosting-container-standards 
-  - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
   - python313-more-itertools 
@@ -30673,7 +30675,6 @@ unsorted:
   - python314-mockito 
   - python314-model-bakery 
   - python314-model-hosting-container-standards 
-  - python314-modern-colorthief 
   - python314-mohawk 
   - python314-mongoengine 
   - python314-more-itertools 
