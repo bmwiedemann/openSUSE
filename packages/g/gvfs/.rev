@@ -1675,4 +1675,16 @@ New stable rel</comment>
 - Drop gvfs-fix-udisks2-crash.patch: Fixed upstream.</comment>
     <requestid>1361821</requestid>
   </revision>
+  <revision rev="210" vrev="2">
+    <srcmd5>ae62bb198b2b57b2ad9013536c15ab90</srcmd5>
+    <version>1.60.1</version>
+    <time>1785253731</time>
+    <user>dimstar_suse</user>
+    <comment>- don't package capabilities in RPM but rely on permissions profiles instead
+  (bsc#1268674). An upcoming change in rpmlint will raise badness when
+  capabilities are directly packaged in an RPM. gvfsd-nfsd is already
+  whitelisted in the permissions profiles and the proper capabilities will be
+  assigned during %post.</comment>
+    <requestid>1367736</requestid>
+  </revision>
 </revisionlist>

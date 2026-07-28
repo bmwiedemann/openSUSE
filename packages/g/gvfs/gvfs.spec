@@ -362,7 +362,7 @@ mv daemon/trashlib/COPYING daemon/trashlib/COPYING.trashlib
 %{_libexecdir}/%{name}/gvfsd-network
 %{_datadir}/%{name}/mounts/network.mount
 # allow priv ports for mounting nfs. Otherwise the nfs-service requires insecure (boo#1065864)
-%verify(not mode caps) %caps(cap_net_bind_service=+ep) %{_libexecdir}/%{name}/gvfsd-nfs
+%verify(not mode caps) %{_libexecdir}/%{name}/gvfsd-nfs
 %{_datadir}/%{name}/mounts/nfs.mount
 %{_libexecdir}/%{name}/gvfsd-recent
 %{_datadir}/%{name}/mounts/recent.mount

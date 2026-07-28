@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 23 08:46:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- don't package capabilities in RPM but rely on permissions profiles instead
+  (bsc#1268674). An upcoming change in rpmlint will raise badness when
+  capabilities are directly packaged in an RPM. gvfsd-nfsd is already
+  whitelisted in the permissions profiles and the proper capabilities will be
+  assigned during %post.
+
+-------------------------------------------------------------------
 Thu Jun 25 15:41:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.60.1:
