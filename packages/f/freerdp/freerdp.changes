@@ -1,4 +1,96 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:57:14 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Add build conditional for faad2, separate sdl package
+
+-------------------------------------------------------------------
+Thu Jul 23 20:16:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(faad2) BuildRequires and pass -DWITH_FAAD2=ON to
+  cmake: Support audio via optional faad2 codec.
+- Drop pkgconfig(gstreamer-1.0) and
+  pkgconfig(gstreamer-plugins-base-1.0) BuildRequires, and stop
+  passing -DWITH_GSTREAMER_1_0=ON and -DWITH_GSTREAMER_0_10=OFF to
+  cmake, they are off by default and deprecated.
+
+-------------------------------------------------------------------
+Thu Jul 23 04:00:53 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
+
+- Update to version 3.30.0:
+  + Security, bugfix and maintenance release.
+  + CVE fixes:
+    * CVE-XXXX-XXXXX (GHSA-m37j-jcr2-8gcc)
+    * CVE-XXXX-XXXXX (GHSA-vv64-95pc-vj9v)
+    * CVE-XXXX-XXXXX (GHSA-rqgv-grx4-xm6x)
+  + Changes:
+    * Logon info update (#13060)
+    * Websocket regression fix (#13064)
+    * Sdl clipbaord and bounds checks (#13065)
+    * [core,rdstls] improve version handling (#13066)
+    * [channels,drdynvc] fix channel unref on create request send failure (#13067)
+    * Audin checks (#13068)
+    * [channels,rdpsnd] tighten bounds checks (#13070)
+    * Pcap cleanup (#13071)
+
+- Update to version 3.29.0:
+  + Security, bugfix and maintenance release.
+  + CVE fixes:
+    * CVE-XXXX-XXXXX (GHSA-43hh-p3vw-hfx3)
+    * CVE-XXXX-XXXXX (GHSA-ph3q-f9w8-7jf3)
+    * CVE-XXXX-XXXXX (GHSA-mwwh-mhp9-q7vm)
+    * CVE-XXXX-XXXXX (GHSA-whq8-c3v3-p8v8)
+    * CVE-XXXX-XXXXX (GHSA-hgj8-g595-wfc6)
+    * CVE-XXXX-XXXXX (GHSA-8v6m-2cmc-chx9)
+    * CVE-XXXX-XXXXX (GHSA-5wr6-8m8j-3h7f)
+    * CVE-XXXX-XXXXX (GHSA-89c6-jjrw-96h4)
+    * CVE-XXXX-XXXXX (GHSA-8xqm-wp3f-rfp9)
+    * CVE-XXXX-XXXXX (GHSA-jm8r-22j6-4m4v)
+    * CVE-XXXX-XXXXX (GHSA-2c6r-4pr4-9x8m)
+    * CVE-XXXX-XXXXX (GHSA-qmvw-52ph-q5pv)
+    * CVE-XXXX-XXXXX (GHSA-34hq-hwjw-q8v3)
+    * CVE-XXXX-XXXXX (GHSA-33gg-h66j-3697)
+    * CVE-XXXX-XXXXX (GHSA-vxp3-7g6q-rq2w)
+    * CVE-XXXX-XXXXX (GHSA-v89x-pc32-hqr7)
+    * CVE-XXXX-XXXXX (GHSA-pfxq-3qmw-8vjx)
+    * CVE-XXXX-XXXXX (GHSA-78jj-45vh-jpm5)
+    * CVE-XXXX-XXXXX (GHSA-69xf-pqrw-596x)
+    * CVE-XXXX-XXXXX (GHSA-8jj2-67pg-j6mg)
+    * CVE-XXXX-XXXXX (GHSA-qrxx-7g3c-j6w3)
+    * CVE-XXXX-XXXXX (GHSA-cj9v-h4hq-29jr)
+  + Changes:
+    * [client,sdl] Handle requested clipboard MIME formats (#13007)
+    * [client,x11] Fix RAIL HiDef window maximize (#13010)
+    * [channels,rdpecam] filter devices without supported formats (#13015)
+    * [codec,planar] fix input checks (#13016)
+    * [client] do not build wayland and windows (#13017)
+    * [client,windows] add server response size check (#13018)
+    * fix processImageName length check in rail get appid resp ex (#13020)
+    * [channels,rdpecam] add data validity checks (#13021)
+    * Scard alloc update reorder (#13022)
+    * H264 decoder surface dimension mismatch (#13024)
+    * [core,security] reject short server random in security_establish_keys (#13023)
+    * Async update (#13025)
+    * [core,rdstls] add endpoint FedAuth token authentication (#13026)
+    * Resource limits (#13027)
+    * Path checks (#13028)
+    * [emu,scard] require Lc of 2 for select-by-FID in vgids_ins_select (#13030)
+    * runtime hardening (#13032)
+    * H264 fix (#13036)
+    * [crypto,x509] improve hardening against embedded \0 (#13035)
+    * [core,rail] unify RAIL_UNICODE_STRING handling (#13039)
+    * [channels,rail] rail_server_handle_messages (#13037)
+    * [channels,rdpecam] fix reading of config descriptor (#13042)
+    * [codec,av1] bound decode output to decoded frame size (#13044)
+    * Bounds check fixes (#13043)
+    * [codec,av1] add region rects checks like with AVC modes (#13045)
+    * Ios fixes (#13029)
+    * Ios warn fixes (#13047)
+    * [utils,smartcard] exclude ndr padding from returned buffer length (#13046)
+    * Serial alloc checks (#13049)
+    * Android build fixes (#13050)
+    * [client,android] update build (#13051)
+
+-------------------------------------------------------------------
 Sun Jul 12 04:24:58 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
 
 - Update to version 3.28.0:
@@ -13,13 +105,14 @@ Sun Jul 12 04:24:58 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
       see https://github.com/FreeRDP/FreeRDP/wiki/Compilation#presets
   + CVE fixes:
     * CVE-XXXX-XXXXX (GHSA-pjqx-v446-x7fc)
-    * CVE-XXXX-XXXXX (GHSA-9g22-w2gr-vcmp)
+    * CVE-2026-63652 (GHSA-9g22-w2gr-vcmp)
     * CVE-XXXX-XXXXX (GHSA-f27x-frr8-j9hc)
-    * CVE-XXXX-XXXXX (GHSA-72j9-356v-88xq)
-    * CVE-XXXX-XXXXX (GHSA-v64m-xxfw-hrv6)
-    * CVE-2026-57158
-    * CVE-2026-57157
-    * CVE-2026-57156
+    * CVE-2026-63633 (GHSA-72j9-356v-88xq)
+    * CVE-2026-63117 (GHSA-v64m-xxfw-hrv6)
+    * CVE-2026-57158 (bsc#1271305)
+    * CVE-2026-57157 (bsc#1271304)
+    * CVE-2026-57156 (bsc#1271303)
+
   + Changes:
     * feat(client): Modernize iOS client. (iFreeRDP) (#12949)
     * [client,ios] remove some deprecation warnings (#12981)
@@ -103,7 +196,7 @@ Thu Jun 18 03:31:15 UTC 2026 - Glen Masgai <glen.masgai@gmail.com>
     * Android client RDPECAM support
     * Android client RAILS support
   + CVE fixes:
-    * CVE-2026-55827
+    * CVE-2026-55827 (bsc#1271302)
   + Changes:
     * [core,utils] fix guid2str (#12898)
     * [client,android] Add RAIL/RemoteApp window support (#12887)

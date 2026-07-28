@@ -29,6 +29,7 @@
 %if 0%{?suse_version} >= 1699
 %global _with_sso_mib 1
 %global _with_sdl3 1
+%global _with_faad2 1
 %endif
 
 %global _with_gss 1
@@ -41,7 +42,7 @@
 %define uwac_package %{uwac_version}-%{uwac_version}
 
 Name:           freerdp
-Version:        3.28.0
+Version:        3.30.0
 Release:        0
 Summary:        Remote Desktop Viewer Client
 License:        Apache-2.0
@@ -67,9 +68,8 @@ BuildRequires:  libgsm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(cairo)
+%{?_with_faad2:BuildRequires:  pkgconfig(faad2)}
 BuildRequires:  pkgconfig(fuse3)
-BuildRequires:  pkgconfig(gstreamer-1.0)
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(icu-i18n)
 %{?_with_gss:BuildRequires:  pkgconfig(krb5) >= 1.13}
 %{?_with_ffmpeg:
@@ -123,15 +123,6 @@ FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
 following the Microsoft Open Specifications. This package provides the client
 application.
 
-%package sdl
-Summary:        Remote Desktop Viewer Client
-Group:          Productivity/Networking/Other
-
-%description sdl
-FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
-following the Microsoft Open Specifications. This package provides the
-sdl-based client application.
-
 %package wayland
 Summary:        Remote Desktop Viewer Client
 Group:          Productivity/Networking/Other
@@ -140,6 +131,15 @@ Group:          Productivity/Networking/Other
 FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
 following the Microsoft Open Specifications. This package provides the
 wayland-based client application.
+
+%package sdl
+Summary:        Remote Desktop Viewer Client
+Group:          Productivity/Networking/Other
+
+%description sdl
+FreeRDP is a client-side implementation of the Remote Desktop Protocol (RDP)
+following the Microsoft Open Specifications. This package provides the
+sdl-based client application.
 
 %package server
 Summary:        Remote Desktop Server
@@ -288,11 +288,11 @@ export CXX=g++-12
         -DWITH_PLUGIN_RPATH_ONLY=ON \
         -DWITH_CLIENT=ON \
         -DWITH_DIRECTFB=OFF \
+%{?_with_faad2: -DWITH_FAAD2=ON} \
         -DWITH_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
         -DWITH_DSP_FFMPEG=%{?_with_ffmpeg:ON}%{?!_with_ffmpeg:OFF} \
         -DWITH_GSM=ON \
         -DWITH_GSSAPI=%{?_with_gss:ON}%{?!_with_gss:OFF} \
-        -DWITH_GSTREAMER_1_0=ON -DWITH_GSTREAMER_0_10=OFF \
         -DWITH_ICU=ON \
         -DWITH_IPP=OFF \
         -DWITH_JPEG=ON \
@@ -366,7 +366,7 @@ export CXX=g++-12
 
 %files sdl
 %{_bindir}/sdl-%{name}
-%{_mandir}/man1/sdl-freerdp.1%{?ext_man}
+%{_mandir}/man1/sdl-%{name}.1%{?ext_man}
 
 %files wayland
 %{_bindir}/wl%{name}
