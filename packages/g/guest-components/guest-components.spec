@@ -20,7 +20,7 @@
 %define user_coco_cdh coco_cdh
 
 Name:           guest-components
-Version:        0.20.0~git0.f156103
+Version:        0.21.0~git0.da8d93f2
 Release:        0
 Summary:        Confidential Containers Guest Tools and Components
 License:        Apache-2.0
