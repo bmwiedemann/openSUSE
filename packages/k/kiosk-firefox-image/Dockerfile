@@ -19,6 +19,7 @@
 #!BuildTag: opensuse/kiosk-firefox:%%ff_ver%%
 #!BuildTag: opensuse/kiosk-firefox:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
