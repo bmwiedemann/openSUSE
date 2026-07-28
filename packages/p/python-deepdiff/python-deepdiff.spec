@@ -36,12 +36,13 @@ BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module jsonpickle >= 4.1.1}
 BuildRequires:  %{python_module orderly-set >= 5.5.0}
 BuildRequires:  %{python_module orjson >= 3.11.7}
-BuildRequires:  %{python_module pandas >= 2.2.0}
+BuildRequires:  %{python_module pandas >= 3.0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic >= 2.12.5}
 BuildRequires:  %{python_module pytest >= 9.0.2}
 BuildRequires:  %{python_module pytest-benchmark >= 5.2.3}
 BuildRequires:  %{python_module python-dateutil >= 2.9.0}
+BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module tomli >= 2.4.0}
 BuildRequires:  %{python_module tomli-w >= 1.2.0}
 BuildRequires:  %{python_module uuid6 == 2025.0.1}
@@ -91,8 +92,6 @@ chmod -x deepdiff/diff.py
 %check
 # we don't have the (optional) requirement CleverCSV for csv diffing
 donttest="(TestCommands and (csv or group_by)) or (test_load_path_content and csv) or (test_polars)"
-# failure on Python 3.13 https://github.com/seperman/deepdiff/issues/474
-donttest+=" or (TestCommands and test_diff_command and t1_corrupt)"
 %pytest -k "not ($donttest)"
 
 %pre
