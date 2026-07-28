@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Jul 27 08:20:17 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 3.7.9
+
+ Bugs fixed
+ * k8s/ingress-nginx
+   - Fix redirect with use-regex in IngressNGINX provider
+ * middleware
+   - Disable Zstd support in the gzhttp wrapper
+ * server
+   - Defer the CONNECT payload until the backend accepts the tunnel
+   - Discard CONNECT body in forwardauth and reject CONNECT requests with fast proxy
+   - Bump google.golang.org/grpc to v1.82.1, GHSA-hrxh-6v49-42gf, CVE-2026-33186
+   - Do not add back CONNECT requests to the pool
+
+-------------------------------------------------------------------
 Thu Jul 16 08:36:56 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.7.8
