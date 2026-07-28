@@ -1,0 +1,29 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 28 Jul 2026 06:30:39 +0200
+Subject: CMakeLists.txt: do not apply patches/* using git
+References: build-fix
+Patch-mainline: no
+
+We apply them in .spec directly.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index bfed4b6c0372..7ddb2bfa0f43 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -497,7 +497,7 @@ include_directories(# For extlib-constbv
+ # patch then needs rebasing or, if upstream has taken it, deleting.
+ file(GLOB STP_ABC_PATCHES "${PROJECT_SOURCE_DIR}/patches/*.patch")
+ list(SORT STP_ABC_PATCHES)
+-if(STP_ABC_PATCHES AND EXISTS "${PROJECT_SOURCE_DIR}/lib/extlib-abc/src/opt/dar/darCut.c")
++if(0)
+   if(NOT GIT_EXECUTABLE)
+     message(FATAL_ERROR
+             "patches/ contains patches for the vendored ABC but git was not "
+-- 
+2.55.0
+

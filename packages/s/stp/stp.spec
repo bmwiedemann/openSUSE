@@ -1,7 +1,7 @@
 #
 # spec file for package stp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,28 @@
 
 %define sover 2_3
 Name:           stp
-Version:        2.3.4+20240918
+Version:        2.3.4+20260728
 Release:        0
 Summary:        Constraint Solver
 License:        MIT
 URL:            https://github.com/stp/stp/wiki
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         py3.patch
-Patch1:         CMakeLists-use-absolute-libdir-in-rpath-handling.patch
+Patch0:         0001-python-use-proper-library-from-usr.patch
+Patch1:         0001-CMakeLists.txt-do-not-apply-patches-using-git.patch
+BuildRequires:  %{python_module base}
 BuildRequires:  bison
 BuildRequires:  cmake
+BuildRequires:  cmake(minisat)
 BuildRequires:  flex
 BuildRequires:  gcc-c++
-BuildRequires:  gmp-devel
 BuildRequires:  libboost_program_options-devel
-BuildRequires:  minisat-devel
 BuildRequires:  ninja
-BuildRequires:  python3-base
+BuildRequires:  pkgconfig(gmp)
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-setuptools
 BuildRequires:  xz
+
+%python_subpackages
 
 %description
 STP is an efficient decision procedure for the validity (or satisfiability) of
@@ -73,7 +76,7 @@ Requires:       boost-devel
 %endif
 
 %description devel
-Developmnet files for stp library.
+Development files for stp library.
 
 %package -n python3-stp
 Summary:        Python bindings for stp
@@ -86,16 +89,24 @@ Python bindings for stp library.
 %prep
 %autosetup -p1
 
+ROOT="$PWD"
+pushd lib/extlib-abc/
+for p in "$ROOT/patches/"*; do
+	patch -p1 -i "$p"
+done
+popd
+
 %build
 %define __builder ninja
-%cmake \
-	-DPython_ADDITIONAL_VERSIONS=3 \
-	-DALSO_BUILD_STATIC_LIB:BOOL="off" \
-	-DSTP_TIMESTAMPS:BOOL="off"
+%cmake -DSTP_TIMESTAMPS:BOOL="off"
 %cmake_build
 
 %install
 %cmake_install
+
+mv %{buildroot}/usr/lib/python*/site-packages/stp/ stp-py-install
+%python_expand install -d %{buildroot}/%{$python_sitelib}/
+%python_expand cp -ra stp-py-install %{buildroot}/%{$python_sitelib}/stp
 
 install -d %{buildroot}/%{_docdir}/%{name}/example
 install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
@@ -103,7 +114,7 @@ install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
 %post -n libstp%{sover} -p /sbin/ldconfig
 %postun -n libstp%{sover} -p /sbin/ldconfig
 
-%files
+%files -n %{name}
 %doc AUTHORS README.markdown
 %license LICENSE
 %{_bindir}/stp*
@@ -112,7 +123,7 @@ install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
 %files -n libstp%{sover}
 %{_libdir}/libstp.so.*
 
-%files devel
+%files -n %{name}-devel
 %dir %{_includedir}/stp/
 %{_includedir}/stp/*.h
 %dir %{_libdir}/cmake/
@@ -120,7 +131,7 @@ install -m 644 -t %{buildroot}/%{_docdir}/%{name}/example examples/simple/*
 %{_libdir}/cmake/STP/
 %{_docdir}/%{name}/example/
 
-%files -n python3-stp
-%{python3_sitelib}/*
+%files %{python_files}
+%{python_sitelib}/stp
 
 %changelog

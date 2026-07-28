@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Jul 28 04:10:13 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Update to version 2.3.4+20260728:
+  * Keep the full export set when building the extra tools (#677)
+  * Build deps CryptoMiniSat static so installed stp is self-contained (#677)
+  * Speed up the value-set analysis by evaluating natively on 67-bit words (#674)
+  * Type check both operands of comparison and overflow predicates (#677)
+  * cbitp: propagate multiplication through the inverse relation (#677)
+  * Read each width once in GetType, and skip the children fetch for symbols (#677)
+  * Add derived simplification rules that collapse to constants (#677)
+  * Fix quick-install: create deps/ in setup-gtest.sh, drop test-only deps from README (#677)
+  * Cut STP's fixed startup cost: inline the unique-table hashers, enable -fvisibility=hidden and -Bsymbolic-functions (#677)
+  * Evaluate value-set combinations directly on bit-vectors (#677)
+  * and a lot more
+- switch to tar_scm as stp sits in git now
+- produce py subpackage for all %pythons
+- Remove
+  * CMakeLists-use-absolute-libdir-in-rpath-handling.patch (upstream)
+  * py3.patch (superseded by the below)
+- Add
+  * 0001-python-use-proper-library-from-usr.patch
+  * 0001-CMakeLists.txt-do-not-apply-patches-using-git.patch
+
+-------------------------------------------------------------------
 Fri Mar 28 06:58:48 UTC 2025 - jslaby@suse.cz
 
 - Update to version 2.3.4+20240918:

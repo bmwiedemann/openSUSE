@@ -1,0 +1,40 @@
+From: Jiri Slaby <jslaby@suse.cz>
+Date: Tue, 28 Jul 2026 07:13:20 +0200
+Subject: python: use proper library from /usr
+References: python
+Patch-mainline: no
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ bindings/python/stp/CMakeLists.txt             | 2 +-
+ bindings/python/stp/library_path.py.in_install | 3 +--
+ 2 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/bindings/python/stp/CMakeLists.txt b/bindings/python/stp/CMakeLists.txt
+index 40fa07472038..941e4ad826c7 100644
+--- a/bindings/python/stp/CMakeLists.txt
++++ b/bindings/python/stp/CMakeLists.txt
+@@ -29,7 +29,7 @@
+ # file(MAKE_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/$<CONFIG>)
+ 
+ get_target_property(LIBSTP_BASENAME stp OUTPUT_NAME)
+-set(LIBSTP_FILENAME "${CMAKE_SHARED_LIBRARY_PREFIX}${LIBSTP_BASENAME}${CMAKE_SHARED_LIBRARY_SUFFIX}")
++set(LIBSTP_FILENAME "${CMAKE_SHARED_LIBRARY_PREFIX}${LIBSTP_BASENAME}${CMAKE_SHARED_LIBRARY_SUFFIX}.${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}")
+ 
+ #
+ # 'library_path.py.in' has some code that is conditional on being on Win32 or
+diff --git a/bindings/python/stp/library_path.py.in_install b/bindings/python/stp/library_path.py.in_install
+index e7053503501d..d0ab6540996c 100644
+--- a/bindings/python/stp/library_path.py.in_install
++++ b/bindings/python/stp/library_path.py.in_install
+@@ -28,6 +28,5 @@
+ 
+ # Search paths for the stp shared library
+ PATHS = [
+-    '@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_LIBDIR@/@LIBSTP_FILENAME@',
+-    '@CMAKE_INSTALL_PREFIX@/@CMAKE_INSTALL_BINDIR@/@LIBSTP_FILENAME@'
++    '@CMAKE_INSTALL_FULL_LIBDIR@/@LIBSTP_FILENAME@'
+ ]
+-- 
+2.55.0
+
