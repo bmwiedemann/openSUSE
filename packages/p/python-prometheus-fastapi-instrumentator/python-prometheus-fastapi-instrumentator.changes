@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Jul 26 18:13:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.0:
+  * Add the optional should_include_root_path parameter to the
+    Instrumentator constructor; when True the handler label of the
+    exported metrics includes the FastAPI app's effective
+    root_path (defaults to False, so existing metrics are
+    unchanged)
+  * Fix resolving route names when the FastAPI app sets a
+    root_path
+  * Fix incorrect handling of nested apps and routes in corner
+    cases introduced in 8.0.1
+
+-------------------------------------------------------------------
 Sun Jul 12 13:53:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-prometheus-fastapi-instrumentator 8.0.2
