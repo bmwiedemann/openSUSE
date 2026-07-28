@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/tektoncd/cli</param>
-              <param name="changesrevision">ce6edf3f84e96315ffba6752bf81620a9b90aa8d</param></service></servicedata>
+              <param name="changesrevision">ce6edf3f84e96315ffba6752bf81620a9b90aa8d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/tektoncd/cli.git</param>
+              <param name="changesrevision">4b7251b14349dc7a77afd7c53e22b196da6a2b6c</param></service></servicedata>

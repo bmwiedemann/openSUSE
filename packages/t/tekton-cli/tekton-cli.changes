@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:41:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.45.1:
+  This patch release addresses the following CVEs: CVE-2026-48702,
+  CVE-2026-49835, CVE-2026-39395, CVE-2026-49835. It also upgrades
+  Go to v1.25.6 to remediate vulnerabilities in the Go standard
+  library.
+  * Bump the go-k8s-dependencies group with 3 updates by
+    @dependabot[bot] in #2942
+  * Bump step-security/harden-runner from 2.19.1 to 2.19.4 by
+    @dependabot[bot] in #2935
+  * Bump actions/checkout from 6.0.2 to 6.0.3 by @dependabot[bot]
+    in #2936
+  * Bump chainguard-dev/actions/kind-diag from 1.6.19 to 1.6.25 by
+    @dependabot[bot] in #2937
+  * Bump github/codeql-action/analyze from 4.35.3 to 4.35.5 by
+    @dependabot[bot] in #2965
+  * [release-v0.45.x] CI: Use goinstall mode for golangci-lint
+    action by @vdemeester in #2986
+  * chore(deps): bump github.com/sigstore/sigstore from 1.10.5 to
+    1.10.8 by @dependabot[bot] in #2993
+  * chore(deps): bump the all group across 1 directory with 2
+    updates by @dependabot[bot] in #3004
+  * chore(deps): bump github.com/tektoncd/pipeline from 1.12.0 to
+    1.12.2 by @dependabot[bot] in #2973
+  * chore(deps): bump github.com/tektoncd/chains from 0.26.3 to
+    0.26.5 by @dependabot[bot] in #2958
+  * chore(deps): bump google.golang.org/grpc from 1.81.0 to 1.81.1
+    by @dependabot[bot] in #2944
+  * chore(deps): bump github.com/google/go-containerregistry from
+    0.21.6 to 0.21.7 by @dependabot[bot] in #2964
+  * [release-v0.45.x] bump github.com/tektoncd/chains from 0.26.5
+    to 0.26.6 by @dependabot[bot] in #3034
+  * [release-v0.45.x] bump chainguard-dev/actions/kind-diag from
+    1.6.26 to 1.6.27 in the all group by @dependabot[bot] in #3047
+  * [release-v0.45.x] bump github.com/sigstore/cosign/v2 from 2.6.3
+    to 2.6.4 by @dependabot[bot] in #3051
+  * [release-v0.45.x] chore(deps): remove unused tektoncd/chains
+    dependency by @pratap0007 in #3061
+  * fix(cve): fix few critical CVEs by @pratap0007 in #3063
+
+-------------------------------------------------------------------
 Wed May 13 04:55:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.45.0:
