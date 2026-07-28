@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:31:41 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
+
+- don't package capabilities in RPM but rely on permissions profiles instead
+  (bsc#1268674). An upcoming change in rpmlint will raise badness when
+  capabilities are directly packaged in an RPM. dumpcap is already whitelisted
+  in the permissions profiles and the proper capabilities will be assigned
+  during %post.
+
+-------------------------------------------------------------------
 Thu Jul  9 07:44:55 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.7

@@ -2141,4 +2141,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.6.7</comment>
     <requestid>1364681</requestid>
   </revision>
+  <revision rev="252" vrev="2">
+    <srcmd5>3969c16bab120bcbd44681e74f3f21ad</srcmd5>
+    <version>4.6.7</version>
+    <time>1785253732</time>
+    <user>dimstar_suse</user>
+    <comment>wireshark: fscap fix</comment>
+    <requestid>1368038</requestid>
+  </revision>
 </revisionlist>

@@ -263,7 +263,7 @@ exit 0
 %{_bindir}/sharkd
 %{_bindir}/text2pcap
 %{_bindir}/tshark
-%verify(not caps group mode) %attr(0750,root,wireshark) %caps(cap_net_raw,cap_net_admin=ep) %{_bindir}/dumpcap
+%verify(not caps group mode) %attr(0750,root,wireshark) %{_bindir}/dumpcap
 %{_libdir}/wireshark/
 %{_datadir}/wireshark/
 %{_libexecdir}/wireshark
