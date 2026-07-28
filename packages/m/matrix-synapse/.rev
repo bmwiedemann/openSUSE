@@ -1818,4 +1818,32 @@ mostly-working synapse than nothing at all) and the package has been update to
       longer being accepted. (#19987)</comment>
     <requestid>1367187</requestid>
   </revision>
+  <revision rev="165" vrev="1">
+    <srcmd5>47602829d2efded9c10f8fafabc5bb79</srcmd5>
+    <version>1.157.2</version>
+    <time>1785265272</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1368234 from darix
+
+- Update to 1.157.2 (boo#1272818)
+  This security release addresses several vulnerabilities.
+  Please upgrade when you can, particularly if your homeserver
+  participates in open federation and/or has untrusted local users.
+  - Security Fixes
+    - High severity:
+      - Fix ELEMENTSEC-2026-1071
+      - Fix ELEMENTSEC-2024-1520
+      - Fix ELEMENTSEC-2026-1717
+      - Fix ELEMENTSEC-2026-1721
+      - Fix ELEMENTSEC-2026-1729
+      - Fix ELEMENTSEC-2026-1740
+    - Moderate severity:
+      - Fix ELEMENTSEC-2026-1714
+      - Fix ELEMENTSEC-2026-1718
+      - Fix ELEMENTSEC-2026-1751
+    - Low severity:
+      - Fix ELEMENTSEC-2026-1703
+      - Fix ELEMENTSEC-2026-1760</comment>
+    <requestid>1368235</requestid>
+  </revision>
 </revisionlist>

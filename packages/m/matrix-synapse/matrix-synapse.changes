@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Jul 28 15:52:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.157.2 (boo#1272818)
+  This security release addresses several vulnerabilities.
+
+  Please upgrade when you can, particularly if your homeserver
+  participates in open federation and/or has untrusted local users.
+
+  - Security Fixes
+    - High severity:
+      - Fix ELEMENTSEC-2026-1071
+      - Fix ELEMENTSEC-2024-1520
+      - Fix ELEMENTSEC-2026-1717
+      - Fix ELEMENTSEC-2026-1721
+      - Fix ELEMENTSEC-2026-1729
+      - Fix ELEMENTSEC-2026-1740
+    - Moderate severity:
+      - Fix ELEMENTSEC-2026-1714
+      - Fix ELEMENTSEC-2026-1718
+      - Fix ELEMENTSEC-2026-1751
+    - Low severity:
+      - Fix ELEMENTSEC-2026-1703
+      - Fix ELEMENTSEC-2026-1760
+
+-------------------------------------------------------------------
 Wed Jul 22 21:57:00 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.157.1
