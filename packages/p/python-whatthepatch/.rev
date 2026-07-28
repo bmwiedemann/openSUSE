@@ -64,4 +64,14 @@
     <comment></comment>
     <requestid>1238509</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>7abb9bc458fb703ce9653ee3209d7faa</srcmd5>
+    <version>1.0.7</version>
+    <time>1785255405</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch more-time-huge-patch.patch:
+  * Allow OBS workers more time to process huge patches.
+- List directories under sitearch explicitly.</comment>
+    <requestid>1368121</requestid>
+  </revision>
 </revisionlist>

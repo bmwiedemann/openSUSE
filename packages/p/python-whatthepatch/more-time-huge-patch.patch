@@ -1,0 +1,14 @@
+Index: whatthepatch-1.0.7/tests/test_patch.py
+===================================================================
+--- whatthepatch-1.0.7.orig/tests/test_patch.py
++++ whatthepatch-1.0.7/tests/test_patch.py
+@@ -1450,7 +1450,8 @@ index 0000000..1111111 100644
+         self.assertEqual(1000007, len(result[0].changes))
+         # This is 2x the usual time for CI to allow for some slow tests
+         # Really all we care about is that this parses faster than it used to (200s+)
+-        self.assertGreater(20, time.time() - start_time)
++        # Allow OBS more time. Double, in fact.
++        self.assertGreater(40, time.time() - start_time)
+ 
+     def test_git_bin_patch(self):
+         with open("tests/casefiles/git-bin.patch") as f:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-whatthepatch
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ Version:        1.0.7
 Release:        0
 Summary:        A patch parsing and application library
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/cscorley/whatthepatch
 Source:         https://files.pythonhosted.org/packages/source/w/whatthepatch/whatthepatch-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Allow more time to process huge patches
+Patch0:         more-time-huge-patch.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -45,7 +46,7 @@ BuildArch:      noarch
 A patch parsing and application library.
 
 %prep
-%setup -q -n whatthepatch-%{version}
+%autosetup -p1 -n whatthepatch-%{version}
 dos2unix README.rst
 
 %build
@@ -61,6 +62,7 @@ dos2unix README.rst
 %files %{python_files}
 %doc README.rst
 %license LICENSE
-%{python_sitelib}/whatthepatch*/
+%{python_sitelib}/whatthepatch
+%{python_sitelib}/whatthepatch-%{version}.dist-info
 
 %changelog
