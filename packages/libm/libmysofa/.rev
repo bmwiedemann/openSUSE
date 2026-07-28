@@ -145,4 +145,17 @@
     <comment></comment>
     <requestid>1251959</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1ba27eed7151a134e975df06b6da2dfd</srcmd5>
+    <version>1.3.5</version>
+    <time>1785253736</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.3.5:
+  * Harden HDF/SOFA parser against malformed input
+  * Fixed issue with missing boundary check which lead to a stall
+- Changes in 1.3.4:
+  * “fixes issues with v1.3.3”
+  * added support for General FIR-E</comment>
+    <requestid>1367753</requestid>
+  </revision>
 </revisionlist>

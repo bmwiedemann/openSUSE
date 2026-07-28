@@ -1,7 +1,7 @@
 #
 # spec file for package libmysofa
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %define sover 1
 %define __builder ninja
 Name:           libmysofa
-Version:        1.3.3
+Version:        1.3.5
 Release:        0
 Summary:        Reader for AES SOFA HRTF files
 License:        BSD-3-Clause
@@ -84,7 +84,7 @@ This package contains the development libraries and headers for libmysofa.
 
 %files devel
 %license LICENSE
-%{_includedir}/*
+%{_includedir}/mysofa*.h
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 %{_libdir}/cmake/mysofa
