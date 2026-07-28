@@ -39,7 +39,7 @@
 
 %if %{with atf_optee}
 %define use_optee 1
-%if "%{platform}" == "" || "%{platform}" == "fvp" || "%{platform}" == "tegra186" || "%{platform}" == "tegra210" || "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "rpi4"
+%if "%{platform}" == "" || "%{platform}" == "fvp" || "%{platform}" == "tegra186" || "%{platform}" == "tegra210" || "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "rpi4" || "%{platform}" == "rk3568"
 # OP-TEE not available
 %define use_optee 0
 %endif
@@ -454,7 +454,7 @@ install -D -m 0644 plat/hisilicon/poplar/include/poplar_layout.h %{buildroot}%{_
 %else
 
 # u-boot for rockchip requires bl31.elf file
-%if "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "zynqmp"
+%if "%{platform}" == "rk3328" || "%{platform}" == "rk3368" || "%{platform}" == "rk3399" || "%{platform}" == "rk3568" || "%{platform}" == "zynqmp"
 install -D -m 0644 %{outdir}/bl31/bl31.elf %{buildroot}%{_datadir}/%{name}/bl31.elf
 %else
 install -D -m 0644 %{outdir}/bl31.bin %{buildroot}%{_datadir}/%{name}/bl31.bin

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 16:00:43 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Add open source rk3568 arm-trusted-firmware
+
+-------------------------------------------------------------------
 Wed Feb 25 13:17:52 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Disable build of a3700 since it fails to build for a while now
