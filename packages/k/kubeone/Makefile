@@ -1,13 +1,16 @@
 .ONESHELL:
-.SILENT: clean kubernetes_version osc_service_manualrun
 
 NAME = kubeone
 SPEC = kubeone.spec
 
-default: clean kubernetes_version osc_service_manualrun
+.SILENT: clean osc_service_manualrun kubernetes_version
+default: clean osc_service_manualrun kubernetes_version
 
 clean:
 	rm -rf $(NAME) *.obscpio *.tar.gz
+
+osc_service_manualrun:
+	osc service manualrun
 
 kubernetes_version:
 	set -u
@@ -17,6 +20,3 @@ kubernetes_version:
 	KUBERNETES_VERSION="$$(curl -SsL $${KUBERNETES_RELEASE_LINK})"
 	echo "KUBERNETES_VERSION is set to $${KUBERNETES_VERSION}"
 	sed -i "s/^%define KUBERNETES_STABLE_VERSION .*$$/%define KUBERNETES_STABLE_VERSION $${KUBERNETES_VERSION}/g" kubeone.spec
-
-osc_service_manualrun:
-	osc service manualrun
