@@ -1729,4 +1729,20 @@ on leap 15.6, selinux-policy-devel doesn't exist
     <comment></comment>
     <requestid>1364363</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>ce60cc3454817082ffe46081e4c56ef0</srcmd5>
+    <version>3.1.9+git0.1d7db0df</version>
+    <time>1784126511</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1365721</requestid>
+  </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>91197106063f5b060cab73e1e5aa08bb</srcmd5>
+    <version>3.1.10+git0.5d5bca33</version>
+    <time>1785255260</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368055</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Jul 23 22:40:27 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.10+git0.5d5bca33:
+  * version 3.1.10
+  * fix(nss): avoid locked shadow entries
+
+-------------------------------------------------------------------
+Wed Jul 08 17:19:52 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.9+git0.1d7db0df:
+  * Version 3.1.9
+  * Revert "Work around resume lockout on network down"
+  * Revert "dispatcher: refine Himmelblau restart workaround"
+  * Revert "packaging: disable duplicate NM workaround scripts"
+  * fix(resolver): release db lock before offline auth fallback to prevent deadlock
+
+-------------------------------------------------------------------
 Mon Jul 06 22:47:21 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.8+git0.f72b330e:
