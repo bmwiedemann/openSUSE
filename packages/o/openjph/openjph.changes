@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 27 13:39:30 UTC 2026 - Michael Vetter <jubalh@iodoru.org>
+
+- Update to 0.31.0:
+  * Refactor QCC and quantization step size generation #297
+  * Streamline set_irrev_quant() #307
+  * Bump actions/checkout from 6.0.3 to 7.0.0 #305
+  * Run the test with both clang and gcc. #306
+  * Add support for Qfactor #308
+  * Removes direct access to COC segment marker. #312
+  * Bump actions/checkout from 7.0.0 to 7.0.1 #324
+  * Combined codeql action #325
+  * Improving visual weighting code and implementation. #311
+  * For ppc64le, fixes CI and addresses clang warning #327
+
+-------------------------------------------------------------------
 Mon Jun 22 05:53:01 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.30.1:

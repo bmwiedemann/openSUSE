@@ -309,4 +309,22 @@
   * Improve CI</comment>
     <requestid>1360916</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>cbc21982637f492d3c3b143e3dd8a735</srcmd5>
+    <version>0.31.0</version>
+    <time>1785253787</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.31.0:
+  * Refactor QCC and quantization step size generation #297
+  * Streamline set_irrev_quant() #307
+  * Bump actions/checkout from 6.0.3 to 7.0.0 #305
+  * Run the test with both clang and gcc. #306
+  * Add support for Qfactor #308
+  * Removes direct access to COC segment marker. #312
+  * Bump actions/checkout from 7.0.0 to 7.0.1 #324
+  * Combined codeql action #325
+  * Improving visual weighting code and implementation. #311
+  * For ppc64le, fixes CI and addresses clang warning #327</comment>
+    <requestid>1368054</requestid>
+  </revision>
 </revisionlist>
