@@ -1,7 +1,7 @@
 #
 # spec file for package python-tree-sitter
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,14 @@
 
 
 %{?sle15_python_module_pythons}
+%define modname tree_sitter
 Name:           python-tree-sitter
-Version:        0.25.2
+Version:        0.26.0
 Release:        0
 Summary:        Python bindings to the Tree-sitter parsing library
 License:        MIT
 URL:            https://github.com/tree-sitter/py-tree-sitter
-Source:         https://files.pythonhosted.org/packages/source/t/tree-sitter/tree-sitter-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/t/%{modname}/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 43}
@@ -36,7 +37,7 @@ BuildRequires:  python-rpm-macros
 This module provides Python bindings to the tree-sitter parsing library.
 
 %prep
-%autosetup -p1 -n tree-sitter-%{version}
+%autosetup -p1 -n %{modname}-%{version}
 
 %build
 %pyproject_wheel
@@ -53,7 +54,7 @@ This module provides Python bindings to the tree-sitter parsing library.
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitearch}/tree_sitter
-%{python_sitearch}/tree_sitter-%{version}.dist-info
+%{python_sitearch}/%{modname}
+%{python_sitearch}/%{modname}-%{version}.dist-info
 
 %changelog

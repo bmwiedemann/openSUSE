@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Jul 27 09:36:54 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.26.0:
+  - Additions:
+    - Point.edit()
+    - Point.__repr__()
+    - QueryCursor.set_containing_byte_range()
+    - QueryCursor.set_containing_point_range()
+    - Range.edit()
+    - tree_sitter.__version__
+  - Removals:
+    - Language.version: use Language.abi_version !
+    - Language.query(source): use Query(language, source) !
+    - Parser.timeout_micros: use the progress_callback in parse()
+      !
+    - QueryCursor.timeout_micros: use the progress_callback in
+      matches() or captures() !
+  - Changes:
+    - Point is a tuple subclass rather than a namedtuple object
+
+-------------------------------------------------------------------
 Mon Nov 10 08:21:09 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.25.2:

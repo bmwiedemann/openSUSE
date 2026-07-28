@@ -43,4 +43,29 @@
   * build: bump tree_sitter/core from `a467ea8` to `da6fe9b`</comment>
     <requestid>1316815</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5abf652ff3ef032737f27010ea897218</srcmd5>
+    <version>0.26.0</version>
+    <time>1785254738</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.26.0:
+  - Additions:
+    - Point.edit()
+    - Point.__repr__()
+    - QueryCursor.set_containing_byte_range()
+    - QueryCursor.set_containing_point_range()
+    - Range.edit()
+    - tree_sitter.__version__
+  - Removals:
+    - Language.version: use Language.abi_version !
+    - Language.query(source): use Query(language, source) !
+    - Parser.timeout_micros: use the progress_callback in parse()
+      !
+    - QueryCursor.timeout_micros: use the progress_callback in
+      matches() or captures() !
+  - Changes:
+    - Point is a tuple subclass rather than a namedtuple object
+</comment>
+    <requestid>1367961</requestid>
+  </revision>
 </revisionlist>
