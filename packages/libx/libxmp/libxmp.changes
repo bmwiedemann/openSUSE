@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Jul 26 14:31:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.2
+  * Fix loading Startrekker modules from memory/handle/callbacks
+  * Fix stb-vorbis floor1 inverse_db_table indexing
+
+-------------------------------------------------------------------
 Tue Jul  7 18:23:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7.1
