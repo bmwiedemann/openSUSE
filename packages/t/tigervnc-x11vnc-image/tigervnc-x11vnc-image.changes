@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:02:51 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- filter basecontainer packages from installation for optimizing rebuilds
+
+-------------------------------------------------------------------
 Thu Jul 23 19:17:10 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - fix group of user to the default group id
