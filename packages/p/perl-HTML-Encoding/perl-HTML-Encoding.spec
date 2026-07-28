@@ -24,6 +24,7 @@ License:        GPL-1.0+ or Artistic-1.0
 Group:          Development/Libraries/Perl
 Url:            http://search.cpan.org/dist/HTML-Encoding/
 Source0:        http://www.cpan.org/authors/id/B/BJ/BJOERN/HTML-Encoding-%{version}.tar.gz
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-HTML-Parser
 BuildRequires:  perl-libwww-perl

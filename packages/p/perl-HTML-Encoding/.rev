@@ -37,4 +37,12 @@
     <user>adrianSuSE</user>
     <comment>Split 13.2 from Factory</comment>
   </revision>
+  <revision rev="6" vrev="9">
+    <srcmd5>0482feb0596a425a02b579dfbf864e18</srcmd5>
+    <version>0.61</version>
+    <time>1785255147</time>
+    <user>dimstar_suse</user>
+    <comment>Fix changelog formatting</comment>
+    <requestid>1367978</requestid>
+  </revision>
 </revisionlist>

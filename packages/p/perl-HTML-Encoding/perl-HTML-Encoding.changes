@@ -26,13 +26,13 @@ Mon Nov 29 18:30:08 UTC 2010 - coolo@novell.com
 - remove /var/adm/perl-modules
 
 -------------------------------------------------------------------
-Wed Aug 13 09:55:00 CEST 2008 sierkb@gmx.de
+Wed Aug 13 07:55:00 UTC 2008 - sierkb@gmx.de
 
 - Release version 0.60:
   - minor bugfixes
 
 -------------------------------------------------------------------
-Mon Jun 30 23:55:00 CEST 2008 sierkb@gmx.de
+Mon Jun 30 17:55:00 UTC 2008 - sierkb@gmx.de
 
 - Release version 0.59:
   - De-listed URI as dependency, not my bug
@@ -43,14 +43,14 @@ Mon Jun 30 23:55:00 CEST 2008 sierkb@gmx.de
   - marked private subs with an underscore
 
 -------------------------------------------------------------------
-Mon Jun 30 19:55:00 CEST 2008 sierkb@gmx.de
+Mon Jun 30 17:55:00 UTC 2008 - sierkb@gmx.de
 
 - Release version 0.58:
   - List URI as dependency to prevent test failure
   - Added LICENCE => 'perl' to Makefile.PL
 
 -------------------------------------------------------------------
-Wed Apr 9 21:22.00 CEST 2008 sierkb@gmx.de
+Wed Apr  9 19:22:00 UTC 2008 - sierkb@gmx.de
 
 - Release version 0.57:
   - updated the pitfyful README file
@@ -58,62 +58,61 @@ Wed Apr 9 21:22.00 CEST 2008 sierkb@gmx.de
 - Spec file: Changelog cleanup.
 
 -------------------------------------------------------------------
-Wed Dec 6 18:30:00 CET 2007 sierkb@gmx.de
+Thu Dec  6 17:30:00 UTC 2007 - sierkb@gmx.de
 
 - Release version 0.56:
   - updated changes file
   - fixed line end issues in test
 
 -------------------------------------------------------------------
-Wed Dec 5 15:40:00 CET 2007 sierkb@gmx.de
+Wed Dec  5 14:40:00 UTC 2007 - sierkb@gmx.de
 
 - Release version 0.55
 - Spec file: Changelog cleanup.
 
 -------------------------------------------------------------------
-Wed Dec 2 14:25:00 CET 2007 sierkb@gmx.de
+Sun Dec  2 13:25:00 UTC 2007 - sierkb@gmx.de
 
 - Release version 0.54:
   - Fixed http://www.w3.org/mid/64584787-9995-43F3-A34E-D010ED9811D6@w3.org
 
 -------------------------------------------------------------------
-Mon Sep 17 10:27:00 AST 2007 jfunk@funktronics.ca
+Mon Sep 17 14:27:00 UTC 2007 - jfunk@funktronics.ca
 
 - Cleanup files
 
 -------------------------------------------------------------------
-Thu Jun 21 00:00:00 CEST 2007 sierkb@gmx.de
+Wed Jun 20 22:00:00 UTC 2007 - sierkb@gmx.de
 
 - Spec file cleanups
                                                                    
 -------------------------------------------------------------------
-Wed May 23 10:25:00 CEST 2007 sierkb@gmx.de
+Wed May 23 08:25:00 UTC 2007 - sierkb@gmx.de
 
 - Release version 0.53:
   - Fixed http://rt.cpan.org/Public/Bug/Display.html?id=16351
                                                                    
 -------------------------------------------------------------------
-Tue May 22 00:00:00 CEST 2007 sierkb@gmx.de
+Mon May 21 22:00:00 UTC 2007 - sierkb@gmx.de
 
 - First openSUSE Build.
 
 -------------------------------------------------------------------
-Tue Dec 14 09:25:00 CET 2004 bjoern@hoehrmann.de
+Tue Dec 14 07:45:00 UTC 2004 - bjoern@hoehrmann.de
 
 - Release version 0.52:
   - encoding_from_http_message encoding defaulting did
     not work as intended, fixed.
 
 -------------------------------------------------------------------
-Tue Dec 14 08:45:00 CET 2004 bjoern@hoehrmann.de
+Tue Dec 14 07:45:00 UTC 2004 - bjoern@hoehrmann.de
 
 - Release version 0.51:
   - encoding_from_html_document returned a list in scalar
     context if the document had a XML declaration, fixed.
 
 -------------------------------------------------------------------
-
-Tue Nov 2 03:10:15 CET 2004 bjoern@hoehrmann.de
+Tue Nov  2 02:10:15 UTC 2004 - bjoern@hoehrmann.de
 
 - Release version 0.50:
   - rewrite from scratch
