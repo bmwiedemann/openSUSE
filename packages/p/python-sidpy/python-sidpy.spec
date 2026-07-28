@@ -17,20 +17,21 @@
 
 
 %global skip_python311 1
-%{?sle15_python_module_pythons}
 %define packagename sidpy
+%{?sle15_python_module_pythons}
 Name:           python-sidpy
-Version:        0.12.8
+Version:        0.12.9
 Release:        0
 Summary:        Utilities for processing Spectroscopic and Imaging Data
 License:        MIT
 URL:            https://pycroscopy.github.io/sidpy/
-Source:         https://github.com/pycroscopy/sidpy/archive/%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
+Source:         https://github.com/pycroscopy/sidpy/archive/refs/tags/v%{version}.tar.gz#/%{packagename}-%{version}.tar.gz
 Source99:       python-sidpy.rpmlintrc
 BuildRequires:  %{python_module ase}
 BuildRequires:  %{python_module cytoolz}
 BuildRequires:  %{python_module dask >= 0.10}
 BuildRequires:  %{python_module dask-array >= 0.10}
+BuildRequires:  %{python_module dask-ml}
 BuildRequires:  %{python_module dill}
 BuildRequires:  %{python_module distributed >= 2}
 BuildRequires:  %{python_module h5py >= 2.6.0}
@@ -40,6 +41,7 @@ BuildRequires:  %{python_module matplotlib >= 2.0.0}
 BuildRequires:  %{python_module mpi4py}
 BuildRequires:  %{python_module numpy >= 1.10}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pyswarms}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module qt5}
 BuildRequires:  %{python_module scikit-learn}
@@ -48,11 +50,15 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
+# scipy/scikit-learn are imported eagerly by the refactored fitter (0.12.9);
+# they dlopen libopenblas.so.0, which numpy only Recommends.
+BuildRequires:  libopenblas_pthreads0
 BuildRequires:  python-rpm-macros
 Requires:       python-ase
 Requires:       python-cytoolz
 Requires:       python-dask >= 0.10
 Requires:       python-dask-array >= 0.10
+Requires:       python-dask-ml
 Requires:       python-dill
 Requires:       python-distributed >= 2
 Requires:       python-h5py >= 2.6.0
@@ -63,6 +69,7 @@ Requires:       python-ipywidgets >= 5.2.2
 Requires:       python-joblib >= 0.11.0
 Requires:       python-matplotlib >= 2.0.0
 Requires:       python-numpy >= 1.10
+Requires:       python-pyswarms
 Requires:       python-scikit-learn
 Requires:       python-scipy
 Requires:       python-toolz
@@ -89,7 +96,8 @@ sed -i -e /pytest-runner/d -e /six/d setup.py
 %check
 # Broken test
 donttest="test_standard_serial_compute_few_jobs"
-%pytest -k "not $donttest"
+# test_fitter_refactor needs the unpackaged SciFiReaders test helper
+%pytest --ignore tests/proc/test_fitter_refactor.py -k "not $donttest"
 
 %files %{python_files}
 %doc README.rst

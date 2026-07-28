@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Jul 15 06:34:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.9:
+  * Refactor the curve fitter and add a utility for BEPS/loop
+    fitting
+  * Fix Python 3.10-3.13 compatibility and restore missing fitter
+    imports
+  * Add NeXus format compatibility
+- Switch Source to the versioned upstream tag (v%{version})
+- Add libopenblas_pthreads0 BuildRequires so scipy and
+  scikit-learn (now imported eagerly by the refactored fitter) can
+  load libopenblas.so.0 during the test suite
+- Add python-dask-ml and python-pyswarms dependencies, newly
+  required by the refactored fitter
+
+-------------------------------------------------------------------
 Thu Jun 18 08:13:30 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - skip build for python311 
