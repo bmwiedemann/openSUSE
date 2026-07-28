@@ -7,4 +7,15 @@
     <comment>Useful Perl dev tool</comment>
     <requestid>356779</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ba6e29d754ef507bb3ef3da789ff34d4</srcmd5>
+    <version>1.001003</version>
+    <time>1785255224</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.001003
+   see /usr/share/doc/packages/perl-WWW-PAUSE-CleanUpHomeDir/Changes
+  1.001003  2026-07-13
+          - Maintenance update - verified module is still working</comment>
+    <requestid>1368052</requestid>
+  </revision>
 </revisionlist>

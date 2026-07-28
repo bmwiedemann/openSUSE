@@ -1,7 +1,7 @@
 #
 # spec file for package perl-WWW-PAUSE-CleanUpHomeDir
 #
-# Copyright (c) 2015 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,21 +12,20 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-Name:           perl-WWW-PAUSE-CleanUpHomeDir
-Version:        1.001002
-Release:        0
 %define cpan_name WWW-PAUSE-CleanUpHomeDir
-Summary:        the module to clean up old dists from your PAUSE home directory
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/WWW-PAUSE-CleanUpHomeDir/
-Source:         http://www.cpan.org/authors/id/Z/ZO/ZOFFIX/%{cpan_name}-%{version}.tar.gz
+Name:           perl-WWW-PAUSE-CleanUpHomeDir
+Version:        1.001003
+Release:        0
+License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        The module to clean up old dists from your PAUSE home directory
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/Z/ZO/ZOFFIX/%{cpan_name}-%{version}.tar.gz
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Accessor::Grouped)
@@ -48,14 +47,14 @@ The module provides means to clean up your PAUSE home directory from old
 distributions with ability to undelete files if you so prefer.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{version} -p1
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make_build
 
 %check
-%{__make} test
+make test
 
 %install
 %perl_make_install
@@ -63,7 +62,7 @@ distributions with ability to undelete files if you so prefer.
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
-%doc Changes examples LICENSE README README.md
+%doc Changes examples README README.md
+%license LICENSE
 
 %changelog
