@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Jul 22 08:44:39 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260722.276b8fa5:
+  * scoring-strict: raise badness for permissions-missing-postin
+  * SUIDPermissionsCheck: enforce whitelistings for capabilities (bsc#1268674)
+
+-------------------------------------------------------------------
+Tue Jul 21 08:43:55 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
+
+- Update to version 2.9.0+git20260721.7a1b1a93:
+  * dbus-services: update keepalived (bsc#1271920)
+
+-------------------------------------------------------------------
 Wed Jul 15 10:50:55 UTC 2026 - Wolfgang Frisch <wolfgang.frisch@suse.com>
 
 - Update to version 2.9.0+git20260715.7b097339:
