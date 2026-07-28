@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 06:20:41 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1267199).
+
+-------------------------------------------------------------------
 Fri Jul 24 08:53:40 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - update to v4.53.3

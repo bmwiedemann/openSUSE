@@ -285,4 +285,13 @@ IMO the Conflicts tag is unavoidable, hence adding.
   containing invalid UTF-8 bytes.</comment>
     <requestid>1367722</requestid>
   </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>4e950b3fd4b5530118ecf8f2a9df0edb</srcmd5>
+    <version>4.53.3</version>
+    <time>1785254228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update the golang.org/x/net dependency to version v0.57.0
+  to fix CVE-2026-39821 for good (bsc#1267199).</comment>
+    <requestid>1367922</requestid>
+  </revision>
 </revisionlist>
