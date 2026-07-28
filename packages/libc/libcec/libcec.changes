@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:03:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.1.1:
+  * Never return a zero keypress poll delay, which would stall the
+    processor
+  * Make double-tap deduplication opt-in, defaulting
+    iDoubleTapTimeoutMs to 0
+  * Revert sending a Panasonic user-control power-on together with
+    image-view-on
+
+-------------------------------------------------------------------
 Sat Jul 25 19:11:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 8.1.0:
