@@ -1,0 +1,11 @@
+diff -Pdpru tg_owt-git20250512.orig/src/video/stats_counter.h tg_owt-git20250512/src/video/stats_counter.h
+--- tg_owt-git20250512.orig/src/video/stats_counter.h	2026-06-09 21:27:33.378189873 +0300
++++ tg_owt-git20250512/src/video/stats_counter.h	2026-07-27 20:54:09.041106746 +0300
+@@ -13,6 +13,7 @@
+ 
+ #include <memory>
+ #include <string>
++#include <cstdint>
+ 
+ namespace webrtc {
+ 

@@ -1710,4 +1710,16 @@
     <comment></comment>
     <requestid>1367555</requestid>
   </revision>
+  <revision rev="162" vrev="1">
+    <srcmd5>872d09619b121af4deba6156cf04bce5</srcmd5>
+    <version>7.0.6</version>
+    <time>1785255377</time>
+    <user>dimstar_suse</user>
+    <comment>- Added tg_owt-gcc16.patch to fix build with GCC16.
+- Updated ada to 4.0.0
+  * https://github.com/ada-url/ada/releases/tag/v4.0.0
+- Updated telegram-desktop to 7.0.6
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.6</comment>
+    <requestid>1368107</requestid>
+  </revision>
 </revisionlist>

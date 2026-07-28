@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Jul 28 01:10:01 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Added tg_owt-gcc16.patch to fix build with GCC16.
+- Updated ada to 4.0.0
+  * https://github.com/ada-url/ada/releases/tag/v4.0.0
+- Updated telegram-desktop to 7.0.6
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.6
+
+-------------------------------------------------------------------
 Thu Jul 23 18:22:16 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Updated telegram-desktop to 7.0.5

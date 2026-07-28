@@ -20,11 +20,11 @@
 # https://github.com/telegramdesktop/tdesktop/blob/8fab9167beb2407c1153930ed03a4badd0c2b59f/snap/snapcraft.yaml#L87-L88
 %define api_id    611335
 %define api_hash  d524b414d21f4d37f08684c1df41ac9c
-%define ada_ver   3.4.4
+%define ada_ver   4.0.0
 %define owt_ver   git20250512
 %define td_ver    git20260717
 Name:           telegram-desktop
-Version:        7.0.5
+Version:        7.0.6
 Release:        0
 Summary:        Messaging application with a focus on speed and security
 License:        GPL-3.0-only
@@ -35,6 +35,7 @@ Source1:        https://github.com/ada-url/ada/archive/refs/tags/v%{ada_ver}.tar
 Source2:        tg_owt-%{owt_ver}.tar.xz
 # n=td && cd /tmp && git clone --depth=1 https://github.com/tdlib/$n && pushd $n && v=git$(TZ=UTC date -d @`git log -1 --format=%at` +%Y%m%d) && d=$n-$v && f=$d.tar.xz && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source3:        td-%{td_ver}.tar.xz
+Patch0:         tg_owt-gcc16.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  glibc-devel
@@ -54,7 +55,7 @@ BuildRequires:  cmake(Qt6WaylandClientPrivate)
 BuildRequires:  cmake(Qt6WidgetsPrivate)
 BuildRequires:  cmake(range-v3)
 BuildRequires:  pkgconfig(KF6CoreAddons)
-BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6Core) >= 6.11
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Network)
@@ -130,6 +131,10 @@ The service also provides APIs to independent developers.
 mv ../ada-%{ada_ver} Telegram/ThirdParty/ada
 mv ../tg_owt-%{owt_ver} Telegram/ThirdParty/tg_owt
 mv ../td-%{td_ver} Telegram/ThirdParty/td
+
+pushd Telegram/ThirdParty/tg_owt
+%autopatch -p1 0
+popd
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
