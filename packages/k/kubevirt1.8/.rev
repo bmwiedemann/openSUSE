@@ -49,4 +49,43 @@ Fixes bsc#1265736, bsc#1266575, bsc#1267120, bsc#1266151. No code changes:
 vendored dependency refresh only, upstream tag 1.8.4 unchanged.</comment>
     <requestid>1366554</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3cb6ad28329a4615871682043e756b27</srcmd5>
+    <version>1.8.4</version>
+    <time>1785265263</time>
+    <user>dimstar_suse</user>
+    <comment>Two changes:
+
+1. Add a libguestfs-tools subpackage: upstream's
+cmd/libguestfs/entrypoint.sh plus the runtime dependency closure of the
+libguestfs-tools container image that virtctl guestfs spawns. It
+replaces the dead virt-libguestfs-tools-container package, which still
+installs the retired unversioned kubevirt-manifests and whose published
+image is frozen at kubevirt 1.4.0; the new image flavor goes into
+kubevirt-1.8-image.
+
+2. The previous update (SR 1366554) listed CVE-2026-39821 (bsc#1266575)
+as fixed by the golang.org/x/net 0.55.0 re-vendor. The idna fix in
+0.55.0 is compile-time gated on Unicode 16 tables, which only exist for
+go1.27 and newer; our packages build with go1.26, so they do not
+contain the active fix and the CVE was not addressed. This update
+re-vendors golang.org/x/net to 0.57.0, where the idna fix applies
+regardless of the Go toolchain version. Additionally:
+- golang.org/x/text 0.37.0 -&gt; 0.40.0: CVE-2026-56852 (bsc#1271661),
+  infinite loop on invalid input in unicode/norm.
+- golang.org/x/crypto 0.52.0 -&gt; 0.54.0, pulled in by the x/net bump
+  (no additional CVE claims).
+- Backports of the upstream release-1.8 fixes for CVE-2026-13201
+  (bsc#1269093): safepath did not detect a symlink as the last path
+  component; includes the related console-socket hardening.
+
+x/net 0.57.0 also contains the fix for CVE-2026-46600 (bsc#1272415) in
+dns/dnsmessage; kubevirt does not vendor that package (not affected).
+
+This request supersedes SR 1368109: as requested in its review, the
+.changes now retains the full changelog history of the Factory package,
+with a single new entry on top covering both changes above.
+</comment>
+    <requestid>1368214</requestid>
+  </revision>
 </revisionlist>

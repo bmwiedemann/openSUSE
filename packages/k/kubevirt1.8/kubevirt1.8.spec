@@ -30,6 +30,8 @@ Source0:        %{upstream_name}-%{version}.tar.gz
 Source1:        kubevirt1.8_containers_meta
 Source2:        kubevirt1.8_containers_meta.service
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
+Patch0001:      0001-safepath-make-sure-whole-path-has-no-symlink.patch
+Patch0002:      0002-console-use-JoinNoFollow-for-console-socket-path.patch
 Source100:      %{name}-rpmlintrc
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
@@ -186,6 +188,48 @@ Group:          System/Packages
 The package provides sidecar-shim binary than will call the respective
 hooks with the proper command-line arguments.
 
+%package        libguestfs-tools
+Provides:       kubevirt-libguestfs-tools = %{version}-%{release}
+Obsoletes:      kubevirt-libguestfs-tools < %{version}-%{release}
+Provides:       kubevirt-1.8-libguestfs-tools = %{version}-%{release}
+Obsoletes:      kubevirt-1.8-libguestfs-tools < %{version}-%{release}
+Summary:        Contents of the libguestfs-tools container
+Group:          System/Packages
+# The runtime closure of the libguestfs-tools container image (the pod
+# spawned by virtctl guestfs): the guestfs stack plus the filesystem
+# tools offered inside the appliance. Mirrors the rpm tree upstream
+# keeps in rpm/BUILD.bazel for its quay.io/kubevirt/libguestfs-tools.
+Requires:       btrfsprogs
+Requires:       cryptsetup
+Requires:       dosfstools
+Requires:       e2fsprogs
+Requires:       gptfdisk
+Requires:       guestfs-tools
+Requires:       jfsutils
+Requires:       ldmtool
+Requires:       libguestfs
+Requires:       libguestfs-appliance
+Requires:       libguestfs-winsupport
+Requires:       mdadm
+Requires:       parted
+Requires:       qemu-tools
+Requires:       supermin
+Requires:       xfsprogs
+Requires:       xorriso
+%ifarch x86_64
+Requires:       qemu-x86
+%endif
+%ifarch aarch64
+Requires:       qemu-arm
+Requires:       qemu-uefi-aarch64
+Requires:       qemu-x86
+%endif
+
+%description    libguestfs-tools
+The libguestfs-tools package provides the entrypoint script and the
+runtime dependency closure of the libguestfs-tools container image
+used by virtctl guestfs.
+
 %if 0%{?suse_version} >= 1699
 %package        manifests
 Provides:       kubevirt-manifests = %{version}-%{release}
@@ -334,6 +378,10 @@ install -p -m 0644 cmd/virt-handler/nsswitch.conf %{buildroot}%{_datadir}/kube-v
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.8/pr-helper
 install -p -m 0644 cmd/pr-helper/multipath.conf %{buildroot}%{_datadir}/kube-virt-1.8/pr-helper/
 
+# Entrypoint for the libguestfs-tools container
+mkdir -p %{buildroot}%{_datadir}/kube-virt-1.8/libguestfs-tools
+install -p -m 0755 cmd/libguestfs/entrypoint.sh %{buildroot}%{_datadir}/kube-virt-1.8/libguestfs-tools/
+
 # Configuration files for libvirt
 mkdir -p %{buildroot}%{_datadir}/kube-virt-1.8/virt-launcher
 install -p -m 0644 cmd/virt-launcher/virtqemud.conf %{buildroot}%{_datadir}/kube-virt-1.8/virt-launcher
@@ -424,6 +472,12 @@ install -m 0644 %{S:2} %{buildroot}%{_prefix}/lib/obs/service
 %doc README.md
 %dir %{_datadir}/kube-virt-1.8
 %{_datadir}/kube-virt-1.8/pr-helper
+
+%files libguestfs-tools
+%license LICENSE
+%doc README.md
+%dir %{_datadir}/kube-virt-1.8
+%{_datadir}/kube-virt-1.8/libguestfs-tools
 
 %files sidecar-shim
 %license LICENSE
