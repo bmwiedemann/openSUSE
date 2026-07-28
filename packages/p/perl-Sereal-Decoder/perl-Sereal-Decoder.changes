@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Jul 18 07:13:20 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.9.0 (5.009)
+   see /usr/share/doc/packages/perl-Sereal-Decoder/Changes
+
+  5.009
+      * Only use Perl's C<$Config{ccflags}> when building bundled zstd on
+        AIX / IBM toolchains, or when C<SEREAL_ZSTD_USE_CONFIG_CCFLAGS> is
+        set. Other platforms now use the normal zstd build flags again.
+
+  5.008
+      * Decoder now supports C<thaw_allow_classes> and C<thaw_deny_action>
+        to control thaw callbacks during decoding. Thanks to James Rouzier
+        for the patches.
+
+  5.007
+      * Use $Config{ccflags} to compile ztd with. Should fix AIX.
+        Thanks to Thomas Seeling for the suggestion.
+
+-------------------------------------------------------------------
 Thu May 21 10:05:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.6.0 (5.006)
