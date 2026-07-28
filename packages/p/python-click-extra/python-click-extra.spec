@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        8.5.0
+Version:        8.6.2
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module boltons >= 20.0.0}
 BuildRequires:  %{python_module click >= 8.3.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 1.0.1}
-BuildRequires:  %{python_module extra-platforms >= 8.0.0}
+BuildRequires:  %{python_module extra-platforms >= 13.4}
 BuildRequires:  %{python_module tabulate >= 0.10}
 BuildRequires:  %{python_module tomli >= 2 if %python-base < 3.11}
 BuildRequires:  %{python_module tomlkit >= 0.13}
@@ -74,7 +74,7 @@ Requires:       python-boltons >= 20.0.0
 Requires:       python-click >= 8.3.1
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 1.0.1
-Requires:       python-extra-platforms >= 8.0.0
+Requires:       python-extra-platforms >= 13.4
 Requires:       python-tabulate >= 0.10
 Requires:       python-wcmatch >= 10.0
 Requires:       python-wcwidth >= 0.2
