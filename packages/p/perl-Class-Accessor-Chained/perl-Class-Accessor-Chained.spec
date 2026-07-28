@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Class-Accessor-Chained
 #
-# Copyright (c) 2011 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,83 +12,55 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# norootforbuild
 
-
+%define cpan_name Class-Accessor-Chained
 Name:           perl-Class-Accessor-Chained
-%define cpan_name %( echo %{name} | %{__sed} -e 's,perl-,,' )
+Version:        0.10.0
+Release:        0
+# 0.01 -> normalize -> 0.10.0
+%define cpan_version 0.01
+License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Make chained accessors
-Version:        0.01
-Release:        1
-License:        Artistic-1.0 or GPL-1.0+
-Group:          Development/Libraries/Perl
-Url:            http://search.cpan.org/dist/Class-Accessor-Chained
-Source:         %{cpan_name}-%{version}.tar.gz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-%{perl_requires}
+URL:            https://metacpan.org/release/%{cpan_name}
+Source0:        https://cpan.metacpan.org/authors/id/R/RC/RCLAMP/%{cpan_name}-%{cpan_version}.tar.gz
+Source100:      README.md
+BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Test::More)
 BuildRequires:  perl(Class::Accessor)
+BuildRequires:  perl(Module::Build)
 Requires:       perl(Class::Accessor)
-
-Provides:       %{cpan_name}
-Provides:       %{cpan_name}-Fast
-Obsoletes:      %{cpan_name}-Fast
-
-#-------------------------------------------------------------------------------
+Provides:       perl(Class::Accessor::Chained) = %{version}
+Provides:       perl(Class::Accessor::Chained::Fast)
+%undefine       __perllib_provides
+%{perl_requires}
 
 %description
-#-------------------------------------------------------------------------------
 A chained accessor is one that always returns the object when called with
-parameters (to set), and the value of the field when called with no arguments.
+parameters (to set), and the value of the field when called with no
+arguments.
 
 This module subclasses Class::Accessor in order to provide the same
 mk_accessors interface.
 
-  Authors:	Richard Clamp <richardc@unixbeard.net>
--------------------------------------------------------------------------------
-#-------------------------------------------------------------------------------
 %prep
-#-------------------------------------------------------------------------------
-%setup -q -n %{cpan_name}-%{version}
-
-#-------------------------------------------------------------------------------
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
-#-------------------------------------------------------------------------------
-perl Makefile.PL OPTIMIZE="$RPM_OPT_FLAGS -Wall"
-%{__make}
+perl Build.PL --installdirs=vendor
+./Build build --flags=%{?_smp_mflags}
 
 %check
-%{__make} test
-
-#-------------------------------------------------------------------------------
+./Build test
 
 %install
-#-------------------------------------------------------------------------------
-%perl_make_install
-%perl_process_packlist
+./Build install --destdir=%{buildroot} --create_packlist=0
 %perl_gen_filelist
 
-#-------------------------------------------------------------------------------
-
-%clean
-#-------------------------------------------------------------------------------
-%{__rm} -rf $RPM_BUILD_ROOT
-
-#-------------------------------------------------------------------------------
-
 %files -f %{name}.files
-#-------------------------------------------------------------------------------
-# normally you only need to check for doc files
-%defattr(0644,root,root,0755)
 %doc Changes README
 
-#-------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------
 %changelog

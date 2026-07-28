@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:38:21 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Fix broken spec
+- Normalize CPAN version
+  See https://github.com/openSUSE/cpanspec/issues/47 for details
+
+-------------------------------------------------------------------
 Wed Dec  1 06:55:32 UTC 2010 - coolo@novell.com
 
 - switch to perl_requires macro
