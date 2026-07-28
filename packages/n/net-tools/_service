@@ -5,7 +5,6 @@
     <param name="versionformat">%cd.%h</param>
     <param name="versionprefix">3.14~alpha~git</param>
     <param name="changesgenerate">enable</param>
-    <param name="changesauthor">Stanislav Brabec &lt;sbrabec@suse.com&gt;</param>
   </service>
   <service name="tar" mode="buildtime"/>
   <service name="recompress" mode="buildtime">

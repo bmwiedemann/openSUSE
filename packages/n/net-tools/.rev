@@ -518,4 +518,12 @@ Add context about relation of bsc#142461 and bsc#1243581.</comment>
     <comment></comment>
     <requestid>1350600</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>ab1566ed7ab3f4aaefc89e2ed4b4b050</srcmd5>
+    <version>3.14~alpha~git.20260718.4f5bfb2</version>
+    <time>1785253800</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1366627</requestid>
+  </revision>
 </revisionlist>

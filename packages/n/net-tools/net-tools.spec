@@ -17,7 +17,7 @@
 
 
 Name:           net-tools
-Version:        3.14~alpha~git.20251212.7011617
+Version:        3.14~alpha~git.20260718.4f5bfb2
 Release:        0
 Summary:        Important Programs for Networking
 License:        GPL-2.0-or-later
@@ -26,8 +26,6 @@ URL:            https://github.com/ecki/net-tools
 Source:         net-tools-%{version}.tar.xz
 # PATCH-FEATURE-SUSE net-tools-configure.patch -- Set configure values to our liking as we do not need everything here.
 Patch0:         net-tools-configure.patch
-# PATCH-FIX-SECURITY net-tools-netstat-ansi-injection.patch bsc1254323 gh#ecki/net-tools#2109 CVE-2024-58251 sbrabec@suse.com -- Prevent denial of service via terminal escape sequences injection.
-Patch1:         net-tools-netstat-ansi-injection.patch
 BuildRequires:  bluez-devel
 BuildRequires:  help2man
 BuildRequires:  libselinux-devel
@@ -60,7 +58,6 @@ package:
 %lang_package
 
 %prep
-#E#%%setup -q
 %setup -q -n %{name}-%{version}
 %autopatch -p1
 
@@ -98,7 +95,7 @@ done
 
 %files
 %license COPYING
-%doc README ABOUT-NLS
+%doc README
 %{_sbindir}/nameif
 %{_sbindir}/plipconfig
 %{_sbindir}/slattach

@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Jul 19 22:47:11 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 3.14~alpha~git.20260718.4f5bfb2:
+  * Update config.in: disable AF and HW ROSE by default
+    (obsoletes Update_config.in.patch)
+  * netstat: Keep UTF-8 characters in process names (bsc#1254323,
+    obsoletes net-tools-netstat-ansi-injection.patch)
+
+-------------------------------------------------------------------
+Sun Jun 28 18:30:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.14~alpha~git.20260612.2ab3c5e:
+  * netstat: Update email address
+  * doc: describe missing headers
+  * passes -Wunused-parameter
+  * fix type limit warnings
+  * Remove anchient gettext ABOUT-NLS
+  * TODO: removed NLS, add -Wextra
+  * INSTALLING: musl, all features, compile warning todos
+  * netstat.8: minor edits
+  * chore: pedantic zizmor is happy on GH actions
+  * Unified man example format
+  * netstat.8: warn on trustworthyness of program name
+  * man: netstat: add two examples
+  * Rarp: fix nullpointer on unknown hosts
+  * netstat: safe cycles and fix comment
+  * Sanitize cmdline (bsc#1254323, CVE-2024-58251)
+  * Updated translations.
+- Add Update_config.in.patch: Update config.in: disable AF and HW
+  ROSE by default. This is longer part of the kernel 7.1 source
+  tree.
+
+-------------------------------------------------------------------
 Mon Apr 27 08:39:16 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Switch to the latest snapshot of the new active upstream:
