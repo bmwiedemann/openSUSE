@@ -415,4 +415,41 @@ Changed:
 Fixed:</comment>
     <requestid>1358206</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>34ee528168a3a6d567d8d0d76a07491a</srcmd5>
+    <version>2026.8</version>
+    <time>1785254140</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2026.8:
+Added:
+  * Channel Monitor internal buffer for viewing messages from all
+    joined channels
+  * Config editor internal buffer for editing the config file
+    in-app
+  * Sidebar:
+    + Collapse &amp; expand servers in sidebar
+    + Internal buffers (logs, highlights, etc) can be added to
+      sidebar
+    + Channel, query, and internal buffers can be muted (only shown
+      if an unread/highlight indicator should be shown) via
+      servers.&lt;name&gt;.channels, servers.&lt;name&gt;.queries,
+      and sidebar.internal_buffers.mute
+    + sidebar.unread_indicator.exclude &amp;
+      sidebar.unread_indicator.include no longer controls
+      highlight indicators
+    + New sidebar.highlight_indicator.title,
+      sidebar.highlight_indicator.show_on_open_buffers,
+      sidebar.highlight_indicator.exclude,
+      and sidebar.highlight_indicator.include settings
+      for independent highlight control
+  * Undo/redo in the message input and config editor
+    (ctrl/cmd + z, ctrl/cmd + shift + z)
+  * Link interactions:
+    + Context menu on channel links
+    + actions.buffer.click_nickname and
+      actions.nicklist.click_nickname can be used to specify
+      whether a nickname will: open query and how the query is
+      opened, insert nickname in the input box, or no action</comment>
+    <requestid>1367888</requestid>
+  </revision>
 </revisionlist>
