@@ -1753,6 +1753,7 @@ unsorted:
   - budgie-workspace-stopwatch-applet 
   - budgie-workspace-wallpaper-applet 
   - buffer 
+  - bugwarden 
   - bugzilla 
   - bugzilla-apache 
   - bugzilla-lang-de 
@@ -7605,6 +7606,9 @@ unsorted:
   - go1.26 
   - go1.26-doc 
   - go1.26-race 
+  - go1.27 
+  - go1.27-doc 
+  - go1.27-race 
   - goaccess 
   - goben 
   - gobject-introspection 
@@ -9826,6 +9830,8 @@ unsorted:
   - jupyter-bokeh 
   - jupyter-bqplot-jupyterlab 
   - jupyter-bqplot-notebook 
+  - jupyter-bqscales-jupyterlab 
+  - jupyter-bqscales-notebook 
   - jupyter-cadabra2-kernel 
   - jupyter-collaboration-ui 
   - jupyter-dash 
@@ -10802,6 +10808,7 @@ unsorted:
   - kubetui 
   - kubeval 
   - kubevirt1.8-container-disk 
+  - kubevirt1.8-libguestfs-tools 
   - kubevirt1.8-manifests 
   - kubevirt1.8-pr-helper-conf 
   - kubevirt1.8-sidecar-shim 
@@ -12137,7 +12144,7 @@ unsorted:
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
-  - libaquamarine11 
+  - libaquamarine13 
   - libaravis-0_8-0 
   - libaravis-0_8-devel 
   - libarchive-devel 
@@ -14617,7 +14624,7 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
-  - liblowdown3 
+  - liblowdown4 
   - liblpcnetfreedv0_5 
   - liblqr-1-0-32bit 
   - liblqr-devel 
@@ -15289,7 +15296,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_30-32bit 
+  - libopenjph0_31-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -24327,7 +24334,6 @@ unsorted:
   - python3-sss-murmur 
   - python3-sss_nss_idmap 
   - python3-sssd-config 
-  - python3-stp 
   - python3-talloc-32bit 
   - python3-talloc-devel 
   - python3-tdb-32bit 
@@ -24359,12 +24365,10 @@ unsorted:
   - python310-tools 
   - python311 
   - python311-32bit 
-  - python311-CSXCAD 
   - python311-argcomplete 
   - python311-base 
   - python311-base-32bit 
   - python311-base-x86-64-v3 
-  - python311-bqplot 
   - python311-calver 
   - python311-cfn-lint 
   - python311-click 
@@ -24819,7 +24823,6 @@ unsorted:
   - python313-asv 
   - python313-asv-runner 
   - python313-async-lru 
-  - python313-async-wrapper 
   - python313-async_generator 
   - python313-async_timeout 
   - python313-asyncclick 
@@ -25365,6 +25368,8 @@ unsorted:
   - python313-botocore 
   - python313-bottle 
   - python313-bpython 
+  - python313-bqplot 
+  - python313-bqscales 
   - python313-bracex 
   - python313-branca 
   - python313-breathe 
@@ -25580,6 +25585,7 @@ unsorted:
   - python313-dask-distributed 
   - python313-dask-glm 
   - python313-dask-image 
+  - python313-dask-ml 
   - python313-dask-test 
   - python313-dataclasses-json 
   - python313-datadiff 
@@ -26650,6 +26656,7 @@ unsorted:
   - python313-mockito 
   - python313-model-bakery 
   - python313-model-hosting-container-standards 
+  - python313-modern-colorthief 
   - python313-mohawk 
   - python313-mongoengine 
   - python313-more-itertools 
@@ -27986,6 +27993,7 @@ unsorted:
   - python313-stomper 
   - python313-stone 
   - python313-stopit 
+  - python313-stp 
   - python313-straight-plugin 
   - python313-streamdeck 
   - python313-streamz 
@@ -28076,7 +28084,6 @@ unsorted:
   - python313-time-machine 
   - python313-time-travel 
   - python313-timeout-decorator 
-  - python313-timeout-executor 
   - python313-tiny-proxy 
   - python313-tinyarray 
   - python313-tinydb 
@@ -28809,7 +28816,6 @@ unsorted:
   - python314-asv 
   - python314-asv-runner 
   - python314-async-lru 
-  - python314-async-wrapper 
   - python314-async_generator 
   - python314-async_timeout 
   - python314-asyncclick 
@@ -29358,6 +29364,8 @@ unsorted:
   - python314-botocore 
   - python314-bottle 
   - python314-bpython 
+  - python314-bqplot 
+  - python314-bqscales 
   - python314-bracex 
   - python314-branca 
   - python314-breathe 
@@ -29583,6 +29591,7 @@ unsorted:
   - python314-dask-distributed 
   - python314-dask-glm 
   - python314-dask-image 
+  - python314-dask-ml 
   - python314-dask-test 
   - python314-dataclasses-json 
   - python314-datadiff 
@@ -30675,6 +30684,7 @@ unsorted:
   - python314-mockito 
   - python314-model-bakery 
   - python314-model-hosting-container-standards 
+  - python314-modern-colorthief 
   - python314-mohawk 
   - python314-mongoengine 
   - python314-more-itertools 
@@ -32050,6 +32060,7 @@ unsorted:
   - python314-stomper 
   - python314-stone 
   - python314-stopit 
+  - python314-stp 
   - python314-straight-plugin 
   - python314-streamdeck 
   - python314-streamz 
@@ -32139,7 +32150,6 @@ unsorted:
   - python314-time-machine 
   - python314-time-travel 
   - python314-timeout-decorator 
-  - python314-timeout-executor 
   - python314-tiny-proxy 
   - python314-tinyarray 
   - python314-tinycss2 
