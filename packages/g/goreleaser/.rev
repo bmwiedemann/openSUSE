@@ -1102,4 +1102,41 @@
   * chore: auto-update generated files (#6671) (forwarded request 1363972 from ph03nix)</comment>
     <requestid>1364120</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fd1912e82f3e129b2c1aa6817da9fcb1</srcmd5>
+    <version>2.17.1</version>
+    <time>1785255137</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.17.1:
+  * chore: auto-update generated files (#6730)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/feature/s3/transfermanager from 0.3.3 to 0.3.5 in the gomod group (#6728)
+  * docs: update
+  * chore: svu config
+  * ci(deps): bump the actions group with 2 updates (#6729)
+  * fix: anchor goarm64 validation regex to reject invalid values (#6727)
+  * docs: publish to GitLab package registries with the http upload pipe (#6697)
+  * fix(notary): poll notarization status every 10s, not 10ns (#6726)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6718)
+  * chore(deps): bump the gomod group with 2 updates (#6719)
+  * chore(deps): bump google.golang.org/grpc from 1.81.1 to 1.82.1 (#6721)
+  * chore(ci): update deps
+  * chore(ci): update dependabot config
+  * chore(deps): bump the gomod group with 3 updates (#6712)
+  * chore(deps): bump anchore/syft from v1.46.0 to v1.48.0 in the docker group across 1 directory (#6713)
+  * ci(deps): bump the actions group with 10 updates (#6714)
+  * chore: auto-update generated files (#6707)
+  * docs: add /.well-known/security.txt (RFC 9116) (#6710)
+  * fix: migrate from deprecated s3/manager to s3/transfermanager (#6706)
+  * fix(builders/go): sort targets
+  * chore: auto-update generated files (#6705)
+  * fix(deps): go1.26.5
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#6702)
+  * ci(deps): bump the actions group with 8 updates (#6703)
+  * chore(deps): bump the gomod group with 6 updates (#6701)
+  * chore: auto-update generated files (#6700)
+  * docs(users): update charm domain (#6699)
+  * docs: update users
+  * fix(builder/go): parse GORISCV64 and GOPPC64 for riscv64 and ppc64le targets (#6698) (forwarded request 1367929 from ph03nix)</comment>
+    <requestid>1368023</requestid>
+  </revision>
 </revisionlist>
