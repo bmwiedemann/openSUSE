@@ -25,7 +25,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl gawk nginx findutils envsubst sed grep
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl envsubst findutils gawk grep nginx sed
 # changing user id and group id created by package installation to stable values
 RUN set -euo pipefail; \
     chroot /target chown -R --from=nginx:nginx 499:499 /; \
