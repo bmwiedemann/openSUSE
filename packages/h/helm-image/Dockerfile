@@ -21,6 +21,7 @@
 #!BuildTag: opensuse/helm:4
 #!BuildTag: opensuse/helm:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
