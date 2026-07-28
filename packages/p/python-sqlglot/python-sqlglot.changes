@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 04:24:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add missing BuildRequires on pytz due to new Pandas. 
+
+-------------------------------------------------------------------
 Tue Apr  7 22:38:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 30.3.0:

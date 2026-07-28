@@ -17,7 +17,6 @@
 
 
 %define modname sqlglot
-%{?!python_module:%define python_module() python-%{**} python3-%{**}}
 Name:           python-sqlglot
 Version:        30.3.0
 Release:        0
@@ -37,6 +36,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # FOR TESTS
 BuildRequires:  %{python_module pandas}
+BuildRequires:  %{python_module pytz}
 # END FOR TESTS
 BuildArch:      noarch
 %python_subpackages
@@ -70,6 +70,6 @@ depending on configurations.
 %doc README.md
 %license LICENSE
 %{python_sitelib}/sqlglot
-%{python_sitelib}/sqlglot-%{version}*-info
+%{python_sitelib}/sqlglot-%{version}.dist-info
 
 %changelog
