@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Thu Jul 23 12:48:00 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Cleanup specfile
+- Add check section
+- Mention patches added at initial packaging for obs workarounds
+  building the JS stuff offline
+  * remove-hatch-build-scripts-dep.patch
+  * use-npm.patch
+
+-------------------------------------------------------------------
+Tue Jul 21 10:45:56 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Initial version 0.3.7

@@ -1,0 +1,25 @@
+Index: bqscales-0.3.7/pyproject.toml
+===================================================================
+--- bqscales-0.3.7.orig/pyproject.toml
++++ bqscales-0.3.7/pyproject.toml
+@@ -3,7 +3,6 @@ requires = [
+     "hatch",
+     "hatchling",
+     "hatch-nodejs-version",
+-    "hatch-build-scripts",
+     "jupyterlab==4.*",
+ ]
+ build-backend = "hatchling.build"
+@@ -72,12 +71,6 @@ dependencies = [
+ ]
+ build-function = "hatch_jupyter_builder.npm_builder"
+ 
+-[[tool.hatch.build.hooks.build-scripts.scripts]]
+-work_dir = "."
+-commands = ['python scripts/write_version.py']
+-# _version.py is already mentioned in top-level build artifact
+-artifacts = []
+-
+ [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
+ path = "."
+ build_cmd = "build"
