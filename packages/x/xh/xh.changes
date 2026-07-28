@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:08:34 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.26.2:
+  * Fix --auth ignoring credentials when the username is empty (e.g. -a :password), see #467
+  * Decode all frames in concatenated zstd response bodies, see #470
+
+-------------------------------------------------------------------
 Tue Jun 23 11:41:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.26.1:
