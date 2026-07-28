@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:07:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.1:
+  * deps: Update crossplane/apis/v2 to v2.3.4
+  * fix(deps): update module google.golang.org/grpc to v1.82.1
+    [security]
+  * fix(deps): update module golang.org/x/text to v0.39.0
+    [security]
+  * chore(deps): update module github.com/sigstore/sigstore-go to
+    v1.2.0 [security]
+  * chore(deps): update module oras.land/oras-go/v2 to v2.6.2
+    [security]
+  * chore(deps): update module github.com/yuin/goldmark to v1.7.17
+    [security]
+  * chore(deps): update module oras.land/oras-go/v2 to v2.6.1
+    [security]
+  * chore(deps): update module github.com/sigstore/cosign/v3 to
+    v3.0.6 [security]
+  * chore(deps): update module github.com/sigstore/rekor to v1.5.2
+    [security]
+  * chore(deps): update module github.com/sigstore/cosign/v2 to
+    v2.6.3 [security]
+
+-------------------------------------------------------------------
 Sun Jun 28 14:25:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.0:
