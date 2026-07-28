@@ -20,7 +20,7 @@
 %define shortname hypr
 
 Name:           hyprland
-Version:        0.55.4
+Version:        0.56.1
 Release:        0
 Summary:        Dynamic tiling Wayland compositor
 License:        BSD-3-Clause
@@ -30,6 +30,7 @@ Source10:       Splashes.hpp.opensuse
 Source99:       %{name}.rpmlintrc
 Patch0:         disable-donation-nag-popup.patch
 Patch1:         start_hyprland_no_nixgl.patch
+Patch2:         revert-modernize-truthy.patch
 BuildRequires:  cmake
 %if 0%{?suse_version} == 1600 && 0%{?is_opensuse}
 BuildRequires:  gcc-c++ >= 13
@@ -50,12 +51,13 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(hyprcursor) >= 0.1.9
 BuildRequires:  pkgconfig(hyprgraphics) >= 0.5.1
 BuildRequires:  pkgconfig(hyprlang) >= 0.6.7
-BuildRequires:  pkgconfig(hyprutils) >= 0.13.1
+BuildRequires:  pkgconfig(hyprutils) >= 0.14.0
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.3.10
 BuildRequires:  pkgconfig(hyprwire) >= 0.3.0
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.118
-BuildRequires:  pkgconfig(libinput) >= 1.28.0
+BuildRequires:  pkgconfig(libeis-1.0)
+BuildRequires:  pkgconfig(libinput) >= 1.29.0
 BuildRequires:  pkgconfig(libudev)
 BuildRequires:  pkgconfig(lua5.5)
 BuildRequires:  pkgconfig(muparser)
@@ -63,12 +65,13 @@ BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pixman-1) >= 0.42.0
 BuildRequires:  pkgconfig(re2)
+BuildRequires:  pkgconfig(readline)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tomlplusplus)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vulkan) >= 1.2.182
 BuildRequires:  pkgconfig(wayland-client)
-BuildRequires:  pkgconfig(wayland-protocols) >= 1.47
+BuildRequires:  pkgconfig(wayland-protocols) >= 1.49
 BuildRequires:  pkgconfig(wayland-scanner)
 BuildRequires:  pkgconfig(wayland-server) >= 1.22.91
 BuildRequires:  pkgconfig(xcb)

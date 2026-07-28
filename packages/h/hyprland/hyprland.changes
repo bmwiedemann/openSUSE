@@ -1,4 +1,413 @@
 -------------------------------------------------------------------
+Mon Jul 27 21:56:20 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Updated to version 0.56.1:
+  + As usual, a patch release with a few fixes backported from main
+    onto 0.56.0
+  + Fixes backported:
+    - compositor: add a deprecation notice to .conf configs
+    - workspace: add changeworkspaceid to socket2
+    - desktop/windowRule: fix exec rules leaking
+    - hyprctl: fix json output for binds
+    - input-capture: fix allow_input_capture bind flag with
+	  capture_modifiers enabled
+    - monitor: fix rotate and mirror regression
+    - scrolling: fix in-band resize for the first window of a band
+    - build: update hyprutils dependency to 0.14.0
+    - compositor: init eventManager earlier
+    - config/lua: do not nuke package.path
+    - config/lua: use openLate for window.open events
+    - example: update hyprland.lua default springs
+    - input: nullptr check eis_client_get_name
+    - protocols/pointerwarp: send mouse frame event after motion
+    - renderer: round m_scale calculations
+    - view: do not render monitor for tearing if it's blocked
+
+-------------------------------------------------------------------
+Mon Jul 20 19:36:19 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.56.0:
+  + A big new release with tons of features and fixes, brought to you
+    by the Hyprland Corp.
+  + No breaking changes! :)
+  + New features:
+    - algo/master: add an option to focus master when window is
+      closed
+    - algo/scrolling: add inhibit_scroll dispatch for scrolling
+      algorithm
+    - algo/scrolling: add a "fit expand" layout message
+    - algo/scrolling: add new fit_into_view layout msg
+    - cm/icc: add Primaries to ICC-generated SImageDescription
+    - config/lua: add a change_id workspace API
+    - config/lua: add get_loaded_plugins
+    - config/lua: add hl.clear_crashed_lockscreen() and fix tty
+      instructions
+    - config/lua: add is_key_down and a key event
+    - config/lua: add lua-driven custom live gestures
+    - config/lua: add physicalWidth and physicalHeight to lua's
+      Monitor
+    - config/propRefresher: add capability to execute scheduled prop
+      refresh immediately with lua helper function, add event for
+      prop refresh
+    - crashreporter: fix SIGSEGV on dladdr1 failure
+    - decoration/glow: add gradient and angle animation
+    - decoration/shadow: add gradient and angle animation
+    - desktop/windowRule: add no_auto_hdr window rule
+    - desktop/windowRule: add stableid: window selector
+    - desktop/windowRule: add a suppressevent for X11 configure
+      requests
+    - desktop/windowrule: add silent option to monitor effect
+    - event/bus: add specialActive event to workspace
+    - groups: add groupbar disable_when_only option
+    - groups: sync window monitor/workspace when added to a group
+    - hyprctl: add config full-reload for performing a ground-up
+      reload
+    - hyprctl: add interactive Lua REPL mode
+    - hyprctl: add onCreatedEmpty field to workspacerules dispatcher
+      data
+    - hyprtester: add -t option for running specific tests
+    - input/tablet: add TabletTool config options for eraser button
+      and tool pressure
+    - lua/monitor: add set_ functions for raw workspace management
+    - lua/objects: add cm and reserved properties to monitor
+    - meta/lua: add missing notification text field and make timeout
+      required
+    - meta/lua: add proper lua stub types to the general config
+    - plugins: add api for registering and dispatching events
+    - protocols/xdg-shell: add support for xdg interactive drags
+    - renderer: add a motion blur option to windows
+    - renderer: add tonemap settings
+    - renderer: add wrapping options to SRenderData
+    - socket2: add back changefloatingmode and togglegroup events
+  + Fixes:
+    - Tests/scroll: fix window hiding test passing inconsistently
+    - algo/dwindle: fix moving windows across a split
+    - algo/master: fix drag-swap with two tiled windows
+    - animation: refactor manager, fixup desktopAnimationManager,
+      clean up code
+    - binds/submap: fix mouse binds inside submaps
+    - binds/submap: fix submap enter bind == bind inside submap
+    - code: fix clang-format
+    - compositor: fix monitor re-enabling on hotplug when dpms is off
+    - compositor: fix render unfocused for subsurfaces
+    - config/actions: fix null derefs in pin dispatcher
+    - config/lua: add hl.clear_crashed_lockscreen() and fix tty
+      instructions
+    - config/lua: fix layout ctx checking the wrong argument
+    - config/lua: fix missing event from know events lists
+    - config: fix VRR not applying on runtime change
+    - config: fix cycle_next using nonexist layoutmsg for prev
+    - config: fix decoration values to refresh on runtime
+      eval/keyword change
+    - config: fix description matching for default workspaces
+    - config: fix initial workspace tracking
+    - config: fix plugin variables with dashes
+    - config: fix slide animation direction param
+    - core: fix --verify-config crash
+    - core: fix a few fd leaks
+    - core: refactor fullscreen logic, improve maintainability and
+      add a lot of tests
+    - core: various SHM handling fixes
+    - crashreporter: fix SIGSEGV on dladdr1 failure
+    - decoration/glow: fix visibility when no decorate is set
+    - desktop/groups: fix crash on dissolution
+    - desktop/popup: fix crash on destroy
+    - desktop/popup: fix reposition artifacts
+    - desktop/popup: fix subsurface scaling
+    - desktop/view: fix IView virtual inheritance and erase_if ptr
+    - desktop/window: fix crash on requested workspace not having a
+      mon
+    - desktop/window: fix unwanted reswallow
+    - desktop/window: fix wrong scale being applied after workspace
+      rules
+    - desktopAnimation: fix crash in startAnimation on ws with no
+      parent
+    - dispatchers: fix fullscreen movefocus regression
+    - frame: fix frame scheduling being skipped or one vblank off
+    - fullscreen: fix some bars remaining invisible when
+      unfullscreening
+    - gestures: fix live cursorZoom anchoring to a mid-animation
+      value
+    - gestures: fix toggle cursorZoom sharing a single on/off flag
+    - glframebuffer: fix spurious incomplete framebuffer errors
+    - groups: fix border color for locked groups
+    - hyprtester: Fix some failing tests terminating early
+    - hyprtester: misc bug fixes & refactorings
+    - i18n: completed italian translation and fixed some previous
+      italian translation inaccuracies
+    - input/dnd: fix touch-driven drag-and-drop
+    - input/window: fix dragging pointer-locked and fullscreen game
+      windows (gamescope)
+    - input: fix inverted scrollwheel direction in keybinds
+    - input: fix missing a pointer frame after absolute pointer motion
+    - input: fix wheel scroll events from virtual pointers being dropped
+    - internal: fix bugs revealed by hu update
+    - internal: fix filename string not being computed at compile
+      time in RASSERT and GLCALL macros
+    - internal: fix more fd leaks
+    - internal: fix null deref in setWindowFullscreenInternal when
+      fullscreen state stale
+    - internal: fix tokens for xdg-desktop-portals
+    - internal: minor spelling fixes
+    - fix auto-generating hyprlang instead of lua config file by
+      default
+    - keybinds: fix nested submaps and resets
+    - layout/WindowTarget: fix crash when toggling float on oversized
+      windows
+    - layout/monocle: fix w[tv1] workspace rule not working on
+      monocle layout
+    - layout/scrolling: fix prop refresh triggering hard input
+    - layout/target: fix unmanaged configure loops in x11
+    - meta/lua: fix capture of lua events
+    - monitor: refactor inheritance, expand query, add unit tests for
+      position and query
+    - monitor: fix cursor default_monitor option
+    - monitor: fix special fade state update
+    - monitor: fix top-layer bar visibility on workspace change with
+      scrolling-layout fullscreen
+    - pointer-warp: fix forgetting enter serial
+    - pointer: fix cursor bounds not updating on monitor layout changes
+    - pointer: fix two stale cursor images clearings
+    - protocols/foreignToplevel: fix class and title reporting on map
+      and afterwards
+    - protocols/grab: fix refocus to unreachable windows
+    - protocols/pointerWarp: fix crash when warp is on a non
+      interactive surf
+    - protocols: Fix crash when creating inert workspace resource
+    - protocols: fix SHM cursor partial damage copy
+    - protocols: fix protocol null dereference paths
+    - render/cm: fix premult in shaders
+    - render/gl/framebuffer: fix swizzle comparisons
+    - renderer/cm: fix blur clipping with HDR
+    - renderer: fix SEGV on monitor disconnect
+    - renderer: fix cursor:zoom_rigid being ignored with detached
+      camera
+    - renderer: fix border cm for mirroring
+    - renderer: fix mirror draw buffers on rotating work buffers
+    - renderer: fix screenshader with fp16
+    - renderer: minor shader fixes
+    - screencopy: fix screenshare copyfb pending frames
+    - screenshare: minor fence and copy fixes
+    - scrolling/fullscreen: fix fullscreen/maximise behaviour,
+      existing bugs with scrolling fullscreen
+    - state/monitorQuery: fix monitor desc selector being treated as
+      "down" selector
+    - state/workspace: refactor workspace state, add querying, move
+      off of CCompositor
+    - tests: fix broken test and flakiness
+    - tests: fix failing cases
+    - xwayland: fix ICCCM synthetic event comparison
+  + Other:
+    - algo/dwindle: do not remove node before assigning
+    - algo/floating: do not alter pinned windows' state on ws move
+    - algo/master: avoid nullptr dereferences
+    - algo/master: guard target in remove
+    - algo/master: respect center_master_fallback when resizing slave
+      cols
+    - algo/scrolling: hide the top layer in workspace swipe to
+      scrolling layout fullscreen
+    - algo/scrolling: intelligently decide where to drop a dnd'd window
+    - algo: prevent shadowing of m_parent
+    - animation: dont .lock() a uniqueptr
+    - assets: update lockdead png with new dispatch commands
+    - buffer: wait on seperate fences instead of merging
+    - build: bump libinput to 1.29
+    - build: link Glaze to the compositor core
+    - cleanup: remove comment made for self
+    - compositor: allow to request focusing windows behind fullscreen
+    - compositor: give preference to same-workspace windows in
+      getWindowInDirection
+    - config: add path in stdout log disabling message
+    - config/actions: unfocus last window on changeWorkspace when
+      moving monitors
+    - config/lua: allow disabling workspace rules
+    - config/lua: allow manual group control
+    - config/lua: allow re-enabling monitors
+    - config/lua: allow wildcards or absolute paths in require
+    - config/lua: do not wrap std::function in std::optional
+    - config/lua: expose monitor serial/available modes
+    - config/lua: improve error handle-ability with Lua require
+    - config/lua: make resizewindow param accessible to lua
+    - config/lua: match lua output naming to hyprctl output and match
+      naming convention
+    - config/lua: report errors better without check*
+    - config/lua: restrict package module loading to lua-only modules
+    - config/lua: revert "restrict package module loading to lua-only
+      modules
+    - config/lua: use function pointers instead of std::function for
+      fields
+    - config/lua: use ref for workspace destroy events
+    - config/monitor: allow per-monitor vrr to inherit misc:vrr
+    - config/monitor: refresh splash texture on monitor reload
+    - config/monitorRule: default scale to auto
+    - config/propRefresher: avoid crash if event loop manager isn't
+      loaded
+    - config/propRefresher: schedule frames on screen shader refresh
+    - config/values: default no_hardware_cursors to 2
+    - config/values: update general:layout description
+    - config: monitors default to "preferred" res, "auto" pos and
+      scale
+    - core/output: don't destroy bound wl_output resources on
+      same-name global replace
+    - core: refactor more compositor state into separate classes and
+      states
+    - crashReporter: don't skip trailing zeros in the stack trace
+    - cursor: revert "transform hardware cursors within content bounds
+    - cursor: transform hardware cursors within content bounds
+    - debug: replace sizeof(x)/sizeof(x[0]) with std::size
+    - desktop/fadeout: extract bad logic, simplify fadeouts
+    - desktop/focusstate: restore keyboard focus after layer closed
+    - desktop/rule: optimize mapping rule properties to strings and
+      engines
+    - desktop/view: ignore client maximize requests for tiled windows
+    - desktop/view: sync layout's m_box in clampWindowSize
+    - desktop/window: allow focus while held to non-OR X11 windows
+    - desktop/windowRule: use original monitorstr if not silent
+    - desktop: extract a lot of view state from compositor
+    - desktop: move window manipulation functions out of compositor
+    - desktop: remove using directives, move to geometric functions
+    - dmabuf: ensure both create and create_immed verify v4
+    - dmabuf: revert "ensure both create and create_immed verify v4
+    - docs/hyprctl: update example code for hyprctl dispatch
+    - drm: init sync_merge_data::name field directly with a string
+      literal
+    - drm: refactor merging and exporting fences
+    - dwindle: avoid crashing on expired weakptr
+    - elementrenderer: allow smaller viewports near the top/left
+      edges of the buffer
+    - eventmanager: handle partial IPC writes
+    - gestures/scroll_move: guard col to avoid crash
+    - gestures: clamp toggle cursorZoom like mult and live
+    - gestures: configure client to final size on fullscreen/float
+      gesture completion
+    - helpers: include numbers header
+    - helpers: remove old header
+    - hyprctl: handle partial IPC transfers
+    - hyprctl: hide C++ symbols by default
+    - hyprctl: remove redundant mutex locking from
+      SRollingLogFollow::get()
+    - hyprctl: use .transform() instead of .and_then()
+    - hyprtester: handle empty Lua include path in plugin build
+    - hyprtester: improvements, remove some redundancy and other
+      things.
+    - hyprtester: report failures at the end
+    - i18n: Adjust some awkward English
+    - i18n: reduce the size of the machine code generated from
+      CI18nEngine constructor
+    - i18n: update italian translation
+    - init: gain real-time through rtkit
+    - init: revert "gain real-time through rtkit
+    - input-capture: impl protocol
+    - input-capture: permission type not in lua config
+    - input: aggregate modifier states from all keyboards on focus
+      enter
+    - input: disable libinput send events when pointer device is
+      disabled
+    - input: properly make input-blocked windows inaccessible
+    - internal: do not use std::make_pair()
+    - internal: extract rarely executed code from RASSERT macro to a
+      non-inline function
+    - internal: make ColorManagement constants inline to reduce
+      binary file size
+    - internal: make color constants inline to reduce binary file
+      size
+    - internal: optimize Env::envEnabled()
+    - internal: pass lua includes to hyprtester plugin
+    - internal: rename getWindows to getWindowCount to be more
+      descriptive.
+    - internal: replace O_CLOEXEC with FD_CLOEXEC for file descriptor
+      flags
+    - internal: replace PI macro with std::numbers::pi
+    - internal: replace std::vformat() with std::format() when the
+      format string is known at the compile time
+    - internal: use std::lerp()
+    - ipc/lua: rxpose tearingHint for windows
+    - keybinds: set a fallback releasePending flag for special lua
+      binds
+    - keybinds: store hit binds first, then execute callbacks
+    - layersurface: dont nullptr deref on compositor cleanup
+    - layersurface: inform layer surfaces of scale changes
+    - layout/dragController: reset floating offset on ended drag
+    - layout/scrolling: check if cursor overlaps with target in
+      focusOnInput
+    - layout: harden workspace layout refresh during monitor changes
+    - logger: avoid multiple instances of static variables being
+      created in CLogger::log()
+    - main: gain SCHED_RR and drop CAP_SYS_NICE earlier
+    - meta/lua-stubs: overwrite scale to accept float and int
+    - meta/lua: Gestures can accept a lua function
+    - meta: update lua stubs for permissions
+    - monitor: don't modeset on reserved changes
+    - monitor: don't refresh background textures on small changes
+    - monitor: don't set back to 8 bit when applying rules
+    - monitor: move floating windows with layout changes
+    - monitor: retry transient mode selection failures
+    - monitor: revert "set format back after failing DS activation
+    - monitor: skip fallback monitor on recovery flag evaluation
+    - opengl: optimize CShaderLoader::getDefines()
+    - output/icc: avoid unnecessary VCGT resampling
+    - output: simplify trying DRM formats
+    - perf: avoid unnecessary copies and allocation
+    - presentation: ensure feedbacks arent silently dropped
+    - protocols/background-effect: don't automatically destroy object
+      on surface destroy
+    - protocols/cm: implement WP CM v1.3
+    - protocols/dmabuf: don't send mods on v4 and above
+    - protocols/fractional-scale: track if scale is known and send
+      scales eagerly when known
+    - protocols/pointerwarp: allow warp on layer surfaces
+    - protocols/toplevelExport: null-check pixel format
+    - protocols/vicinae-hotkey-v1: implement client-managed global
+      shortcuts
+    - protocols: avoid crash in lease
+    - protocols: bump xdg-decoration to rev 2
+    - protocols: guard protocol callback resource lookups
+    - protocols: guard protocol output resource lookups
+    - protocols: implement ext-background-effect-v1 protocol
+    - render: handle explicit sync fallback safely
+    - render: rollback failed direct scanout state
+    - renderer/gl: release failed fence syncs
+    - renderer/gl: skip invalidation clear on empty damage
+    - renderer/rbo: avoid nullptr deref
+    - renderer: allow blurring of the session lock surface
+    - renderer: block solitary on fadeouts
+    - renderer: harden damage handling and workspace color cache
+    - renderer: intersect blur region with bbox to normalize it
+    - renderer: optimize text rendering
+    - renderer: reduce per-frame heap allocations
+    - renderer: reject invalid damage before region handling
+    - renderer: reject invalid damage regions
+    - renderer: send frame callbacks on presented if no change
+    - renderer: set proper image description in snapshots
+    - renderer: unbreak text rendering
+    - screenshare: only copy fb for pending frames
+    - screenshare: revert "only copy fb for pending frames
+    - shaders: replace SHADERS std::map with a constexpr sorted
+      std::array
+    - start: re-show display lock died screen on restart after crash
+    - state/monitor: refactor monitor state, init fallback state
+    - state/monitorQuery: implement monitor query, move logic off of
+      Compositor
+    - state: extract layout control functions from compositor
+    - tests/misc: remove isDirection(char)
+    - tests: check that we can auto-group floating windows
+    - tests: some code improvements
+    - texture: cache G and A swizzle channels aswell
+    - treewide: clean up and performance
+    - window: cache process environment lookups
+    - windows/focus: differentiate fullscreen focus reason into
+      default and layout handled reasons.
+    - windowstate/layerstate: don't dynamic_cast a view's self-ptr
+      during destruction
+    - xwayland: avoid unmanaged geometry configure loop
+    - xwayland: guard unknown selection events
+    - xwayland: lock focus while dragging an xwayland window
+    - xwayland: preserve title fallback state
+    - xwayland: validate ICCCM hint replies
+- Added revert-modernize-truthy.patch, as the original patch used a
+  feature, which was only introduced in GCC 16.
+
+-------------------------------------------------------------------
 Thu Jun 11 20:12:12 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
 
 - Update to version 0.55.4:

@@ -447,4 +447,12 @@ depends on 1159012</comment>
     <comment></comment>
     <requestid>1358792</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>c7581bae7939a701a8ceba9688b4e830</srcmd5>
+    <version>0.56.1</version>
+    <time>1785253815</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368099</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,46 @@
+From 58daf0c111c0e4491c062d4387e3e8181e43cdb9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Florian=20=22sp1rit=22=E2=80=8B?= <sp1rit@disroot.org>
+Date: Mon, 20 Jul 2026 23:43:20 +0200
+Subject: [PATCH] Revert "internal: modernize truthy(fix possible UB) (#15217)"
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+This reverts commit 9e499c595d1414028702cd99a0e4160bdac099d1, it
+requires a newer gcc.
+
+Signed-off-by: Florian "sp1rit"​ <sp1rit@disroot.org>
+---
+ src/helpers/MiscFunctions.cpp | 15 ++++-----------
+ 1 file changed, 4 insertions(+), 11 deletions(-)
+
+diff --git a/src/helpers/MiscFunctions.cpp b/src/helpers/MiscFunctions.cpp
+index be4f033a..aa16aec2 100644
+--- a/src/helpers/MiscFunctions.cpp
++++ b/src/helpers/MiscFunctions.cpp
+@@ -827,18 +827,11 @@ std::string getBuiltSystemLibraryNames() {
+ }
+ 
+ bool truthy(const std::string& str) {
+-    using std::operator""sv;
+-
+-    if (str == "1"sv)
++    if (str == "1")
+         return true;
+ 
+-    // clang-format off
+-    auto str_view = str | std::views::transform([](unsigned char ch) -> char {
+-        return sc<char>(std::tolower(ch));
+-    });
++    std::string cpy = str;
++    std::ranges::transform(cpy, cpy.begin(), ::tolower);
+ 
+-    return [&](auto&&... prefixes) -> bool {
+-        return (... || std::ranges::starts_with(str_view, prefixes));
+-    }("true"sv, "yes"sv, "on"sv);
+-    // clang-format on
++    return cpy.starts_with("true") || cpy.starts_with("yes") || cpy.starts_with("on");
+ }
+-- 
+2.54.0
+
