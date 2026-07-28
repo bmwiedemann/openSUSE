@@ -25,5 +25,4 @@ Suppose you have the following POD in your module.
 An user of your module would try copy-paste this synopsis code and find
 that this code doesn't compile because there's a typo in your variable name
 _$tempalte_. Test::Synopsis will catch that error before you ship it.</description>
-  <devel project="devel:languages:perl" package="perl-Test-Synopsis"/>
 </package>

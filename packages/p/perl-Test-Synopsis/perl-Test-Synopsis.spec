@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Synopsis
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,16 @@
 
 %define cpan_name Test-Synopsis
 Name:           perl-Test-Synopsis
-Version:        0.17
+Version:        0.180.0
 Release:        0
-Summary:        Test your SYNOPSIS code
+# 0.18 -> normalize -> 0.180.0
+%define cpan_version 0.18
 License:        Artistic-1.0 OR GPL-1.0-or-later
+Summary:        Test your SYNOPSIS code
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/Z/ZO/ZOFFIX/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/Z/ZO/ZOFFIX/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -33,6 +36,8 @@ BuildRequires:  perl(Test::Builder) >= 0.34
 BuildRequires:  perl(parent)
 Requires:       perl(Pod::Simple) >= 3.09
 Requires:       perl(parent)
+Provides:       perl(Test::Synopsis) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -64,7 +69,7 @@ that this code doesn't compile because there's a typo in your variable name
 _$tempalte_. Test::Synopsis will catch that error before you ship it.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

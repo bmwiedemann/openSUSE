@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 14 07:25:03 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+
+  0.18  2026-07-13
+          - Fixed #20: =for test_synopsis directives are now applied
+            regardless of their position relative to the SYNOPSIS code
+            block (regression since 0.14)
+
+-------------------------------------------------------------------
 Sat Dec 11 03:07:51 UTC 2021 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.17

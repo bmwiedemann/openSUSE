@@ -129,4 +129,17 @@
     <comment></comment>
     <requestid>941199</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>5c6234533bc5621cd98e1e437b8b8ba1</srcmd5>
+    <version>0.180.0</version>
+    <time>1785255214</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.180.0 (0.18)
+   see /usr/share/doc/packages/perl-Test-Synopsis/Changes
+  0.18  2026-07-13
+          - Fixed #20: =for test_synopsis directives are now applied
+            regardless of their position relative to the SYNOPSIS code
+            block (regression since 0.14)</comment>
+    <requestid>1368050</requestid>
+  </revision>
 </revisionlist>
