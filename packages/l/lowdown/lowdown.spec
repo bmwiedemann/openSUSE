@@ -16,11 +16,11 @@
 #
 
 
-%global soname liblowdown3
+%global soname liblowdown4
 #%%global version_string VERSION_1_1_0
 
 Name:           lowdown
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Simple markdown translator
 License:        ISC

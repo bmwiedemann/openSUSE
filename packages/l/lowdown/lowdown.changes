@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Jul 20 16:44:45 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 3.1.1:
+  * Fix path (copypasta)
+  * Version bump
+  * Tests for list-after-para and document
+  * Fix white-space in last commit
+  * Update oconfigure to 2.1.0
+  * Fix install source
+  * Allow lists to terminate paragraphs
+  * Bump version date
+  * Allow for hyphens in command names
+  * Bump version and library version
+  * Allow fence immediately in list
+  * Update to new file locations
+  * Rename hentry -> hbuf_entry for consistency
+  * Restructure sources for easier reading
+  * Restructure source tree
+  * Move into format-specific directories
+  * Move parse sources into their own home
+  * Move sources into src and refactor Makefile
+  * Paragraph-ending fenced code must be valid
+  * Refactor and enable fence-after-para
+  * Recognise ERRORS section errno values
+  * Use proper type for `MR` in SEE ALSO
+  * Recognise env vars in manpages
+  * Add un-recognised attribute printing
+  * Add attribute documentation and regressions
+  * Add ping and referrerpolicy to links
+  * Add common image HTML attributes
+  * Add rel, target, download, and loading attrs
+  * Simplify extended attributes as list
+  * Use dynamic array of attributes
+
+-------------------------------------------------------------------
+Thu Mar 19 16:15:47 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 3.0.1:
+  * Version notes
+  * Handle prefix case for mdoc macros
+  * Don't leak memory
+  * Add mdoc(7) to regression tests
+  * Properly handle compact mdoc and man lists
+  * Show -ttree block status for lists
+  * Handle multiple trailing mdoc(7) delimiters
+  * Add example of option with two-paragraph description
+
+-------------------------------------------------------------------
 Sun Mar 08 18:31:48 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Updating soname from liblowdown2 -> liblowdown3
