@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:33:23 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add upstream patch to fix build on aarch64 with gcc16:
+  * gcc16-aarch64.patch
+
+-------------------------------------------------------------------
 Fri Apr 24 09:18:03 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.4.0

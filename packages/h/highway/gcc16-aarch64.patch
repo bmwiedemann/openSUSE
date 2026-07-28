@@ -1,0 +1,25 @@
+From 8a0da774fe6b3f9ab02f5f33e763b8c2133f38fc Mon Sep 17 00:00:00 2001
+From: Benson Muite <bkmgit@users.noreply.github.com>
+Date: Fri, 1 May 2026 13:43:57 +0300
+Subject: [PATCH] Allow bug workaround for GCC 16
+References: https://github.com/google/highway/pull/3030
+
+Bug has not been fixed in GCC 16 yet.
+https://gcc.gnu.org/bugzilla/show_bug.cgi?id=115556
+---
+ hwy/tests/test_util.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hwy/tests/test_util.h b/hwy/tests/test_util.h
+index ab170f0d40..acbbe4e50f 100644
+--- a/hwy/tests/test_util.h
++++ b/hwy/tests/test_util.h
+@@ -174,7 +174,7 @@ HWY_TEST_DLLEXPORT void AssertArrayEqual(const TypeInfo& info,
+ }  // namespace detail
+ 
+ #if HWY_ARCH_ARM_A64 && \
+-    (HWY_COMPILER_GCC_ACTUAL && HWY_COMPILER_GCC_ACTUAL < 1600)
++    (HWY_COMPILER_GCC_ACTUAL && HWY_COMPILER_GCC_ACTUAL < 1700)
+ // The N argument to TypeName from Lanes() is a "poly constant" which triggers
+ // a GCC bug that can be worked around by disabling cloning. See #2813.
+ #define HWY_TYPENAME_ATTR __attribute__((noclone))

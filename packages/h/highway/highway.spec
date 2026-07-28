@@ -29,6 +29,7 @@ Source:         https://github.com/google/highway/archive/refs/tags/%version.tar
 Source1:        baselibs.conf
 Patch1:         no-forced-inline.diff
 Patch2:         avx10_2.patch
+Patch3:         gcc16-aarch64.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  memory-constraints
