@@ -17,7 +17,7 @@
 
 
 Name:           blktests
-Version:        0+20260723.8f6020e
+Version:        0+20260724.6f5a1dc
 Release:        0
 Summary:        Linux kernel block layer testing framework
 License:        GPL-2.0-or-later

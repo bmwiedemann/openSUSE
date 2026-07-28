@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:09:27 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260724.6f5a1dc:
+  * nvme: rely on nvme-cli status code
+  * nvme/054: rely on nvme-cli status code
+  * nvme/019: rely on nvme-cli status code
+  * nvme/014: rely on nvme-cli status code
+
+-------------------------------------------------------------------
 Fri Jul 24 03:32:16 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Update to version 0+20260723.8f6020e:
