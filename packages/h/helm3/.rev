@@ -191,4 +191,12 @@
 - update x/net to 0.57.0 (bsc#1266598, CVE-2026-39821)</comment>
     <requestid>1366992</requestid>
   </revision>
+  <revision rev="19" vrev="4">
+    <srcmd5>0b63a7667f0272f9381fc778ca46610c</srcmd5>
+    <version>3.21.3</version>
+    <time>1785255172</time>
+    <user>dimstar_suse</user>
+    <comment>- add CVE-2026-63308.patch (CVE-2026-63308, bsc#1272402)</comment>
+    <requestid>1368033</requestid>
+  </revision>
 </revisionlist>
