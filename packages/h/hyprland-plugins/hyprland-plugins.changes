@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 20 21:53:16 UTC 2026 - Florian "spirit" <sp1rit@disroot.org>
+
+- Update to version 0.56.0:
+  + The plugins were updated to use the plugin interface in use by
+    hyprland 0.56.0.
+
+-------------------------------------------------------------------
 Thu Jul 16 12:55:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.55.0:
@@ -15,6 +22,18 @@ Thu Jul 16 12:55:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   * glslang-devel (required by hyprland's public ShaderLoader.hpp header)
   * pkgconfig(lua) (required by hyprland's public LuaBindings.hpp header)
 - Export Lua compiler flags to CXXFLAGS during the build.
+
+-------------------------------------------------------------------
+Mon Jul 13 09:58:32 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>
+
+- Update to version 0.55.0:
+  + The plugins were updated to use the plugin interface in use by
+    hyprland 0.55.0.
+  + Packages for plugins no longer included upstream (hyprexpo,
+    hyprtrails, hyprwinwrap & xtra-dispatchers) were dropped:
+    - Dropped expo-Chase-new-gesture-param-disableInhibit-581.patch &
+      Fix-hyprtrails-compilation-errors.patch
+  + Dropped all-chase-hyprland.patch
 
 -------------------------------------------------------------------
 Fri Apr 17 15:23:54 UTC 2026 - Florian "sp1rit" <sp1rit@disroot.org>

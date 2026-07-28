@@ -15,8 +15,8 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define hypr_tgt 0.55.0
-%define pkg_version 0.55.0
+%define hypr_tgt 0.56.0
+%define pkg_version 0.56.0
 
 Name:           hyprland-plugins
 Version:        %{pkg_version}
@@ -32,6 +32,10 @@ BuildRequires:  pkgconfig(hyprland) >= %{hypr_tgt}
 BuildRequires:  pkgconfig(lua)
 BuildRequires:  pkgconfig(pangocairo)
 %requires_eq    hyprland
+
+# TODO: this should be provided by hyprland-devel
+BuildRequires:  glslang-devel
+BuildRequires:  pkgconfig(lua5.5)
 
 %{lua: plugins = {
 	['borders-plus-plus'] = 'This plugin adds one or two additional borders to windows',
