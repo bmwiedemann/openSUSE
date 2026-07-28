@@ -113,4 +113,12 @@
     <comment>Monthly Patch Release – June, 2026: Update to version 1.33.13</comment>
     <requestid>1363461</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>c4f60d903e489e896cceeb99c0cf611d</srcmd5>
+    <version>1.33.13</version>
+    <time>1785254162</time>
+    <user>dimstar_suse</user>
+    <comment>includes a changelog entry pointing to the mitigation steps suggested by the upstream Kubernetes project for CVE-2020-8561, bsc#1190099</comment>
+    <requestid>1367913</requestid>
+  </revision>
 </revisionlist>

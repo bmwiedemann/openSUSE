@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Jul 27 06:12:29 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- CVE-2020-8561: kubernetes: Webhook redirect in kube-apiserver, bsc#1190099
+
+  * TL;DR: Please refer to the official blogpost by the upstream Kubernetes project for details on mitigating the CVE: https://kubernetes.io/blog/2026/05/26/reconciling-unfixed-kubernetes-cves/#cve-2020-8561-webhook-redirect-in-kube-apiserver
+
+  ****Important note to users and administrators****
+  
+  The Issue: The kube-apiserver follows HTTP redirects when communicating with admission webhooks. An actor capable of configuring an AdmissionWebhookConfiguration can redirect API server requests to internal, private networks.
+
+  Why it remains unfixed: Restricting this behavior would require breaking the standard HTTP client behavior that many legitimate integrations rely on.
+
+  Mitigation: Set the API server log level to less than 10 (to prevent logging response bodies) and disable dynamic profiling (--profiling=false) to prevent unauthorized log-level changes. 
+
+-------------------------------------------------------------------
 Thu Jul  2 09:46:27 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.33.13:
