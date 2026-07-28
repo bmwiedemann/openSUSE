@@ -21,6 +21,7 @@
 #!BuildTag: opensuse/389-ds:latest
 
 #!BuildRelease: 35
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
