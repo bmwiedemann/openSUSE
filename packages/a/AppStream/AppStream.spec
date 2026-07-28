@@ -33,7 +33,7 @@
 %define libAppStreamQt_sover 3
 %define libappstream_compose_sover 0
 Name:           AppStream
-Version:        1.1.3
+Version:        1.1.5
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -41,11 +41,6 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz.asc
 Source2:        AppStream.keyring
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-yaml-Fix-potential-crashes-when-encountering-missing.patch
-Patch1:         0001-yaml-Adjust-tests-and-emitter-to-work-around-libfyam.patch
-Patch2:         0001-yaml-Ensure-version-relations-are-consistently-quote.patch
-Patch3:         0001-trivial-yaml-Ensure-branding-color-values-are-also-c.patch
 BuildRequires:  cairo-devel
 BuildRequires:  docbook5-xsl-stylesheets
 %if %{with gcc15}
@@ -85,6 +80,7 @@ BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(xmlb) >= 0.3.14
+BuildRequires:  pkgconfig(wayland-client)
 Recommends:     curl
 
 %description

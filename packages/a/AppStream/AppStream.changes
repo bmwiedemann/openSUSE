@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sun Jul 26 07:09:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.1.5
+  Features:
+  * sysinfo: Implement display size detection on macOS
+  * sysinfo: Assume a more modern display for the handset chassis template
+  * sysinfo: Assume a more modern display for the tablet chassis template
+  * sysinfo: Initial code to autodetect the display size on Wayland
+  * sysinfo: Handle fractional display scaling via xdg-output
+  * Implement support for GCVE as vulnerability database provider
+  * qt: Sync enum mirrors with the C library
+  * qt: Add Artifact, Checksum, Reference, Review and Agreement wrappers
+  * qt: Wrap missing C API on existing classes
+  * reviews: Add simple interface to fetch ODRS reviews for a component
+  * reviews: Implement support for submitting reviews
+  Specification:
+  * docs: Suggest using the longest display side for maximum size constraints
+  Bugfixes:
+  * qt: Add back wrong const Component::addBundle for ABI compatibility
+  * qt: Use strndup for C string-list conversion
+  * pool: Fix bidirectional wildcard search for modalias provides
+  * Make GResources we need outlive main thread destruction
+  * pool: Properly implement cancellation of load operations
+  * sysinfo: Fix display-length setter overriding the shortest edge
+  * relation-check: Don't zero the score if a required check errored
+  * curl: Harden downloader by restricting protocols to only HTTP(S)
+  * curl: Allow making POST requests and changing the user agent
+  * curl: Fix retry-loop data corruption and don't blindly retry POST requests
+  * yaml: Fix potential crashes when encountering missing relation entry values
+  * yaml: Adjust tests and emitter to work around libfyaml string-quoting change
+  * yaml: Ensure version relations are consistently quoted
+  * qt: Fix buffer overrun in stringListToCharArray
+- Drop patches:
+  * 0001-yaml-Fix-potential-crashes-when-encountering-missing.patch
+  * 0001-yaml-Adjust-tests-and-emitter-to-work-around-libfyam.patch
+  * 0001-yaml-Ensure-version-relations-are-consistently-quote.patch
+  * 0001-trivial-yaml-Ensure-branding-color-values-are-also-c.patch
+
+-------------------------------------------------------------------
 Sat Jul 18 07:14:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream changes:
