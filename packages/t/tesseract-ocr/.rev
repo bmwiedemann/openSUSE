@@ -343,4 +343,12 @@
     <comment>Drop the now-unused OpenCL build dependencies (opencl-headers, pkgconfig(OpenCL)). OpenCL support is experimental and already disabled; these were leftover. With OpenCL off libtesseract no longer links libOpenCL.so.1 (boo#1213370, boo#1232640).</comment>
     <requestid>1361707</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>79dabb47307b47faf26b91db2d0260e1</srcmd5>
+    <version>5.5.3</version>
+    <time>1785253748</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 5.5.3: multi-page PAGE XML closing tags fix, mutex fix preventing multiple instances, C API lifecycle docs. Switch doc BuildRequires to rubygem(asciidoctor) (upstream generates man pages with asciidoctor now) and drop the gcc13 fallback for the retired Leap 15.6 repository.</comment>
+    <requestid>1367793</requestid>
+  </revision>
 </revisionlist>

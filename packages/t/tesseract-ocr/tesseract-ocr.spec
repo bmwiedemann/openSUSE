@@ -18,19 +18,19 @@
 
 %define lname	libtesseract5
 Name:           tesseract-ocr
-Version:        5.5.2
+Version:        5.5.3
 Release:        0
 Summary:        Open Source OCR Engine
 License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/refs/tags/%{version}.tar.gz#/tesseract-%{version}.tar.gz
 Source99:       baselibs.conf
-BuildRequires:  asciidoc
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig >= 0.9.0
@@ -45,13 +45,9 @@ BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(pango) >= 1.38.0
 BuildRequires:  pkgconfig(pangocairo)
 BuildRequires:  pkgconfig(pangoft2)
+BuildRequires:  rubygem(asciidoctor)
 Requires:       tesseract-ocr-common
 %{?suse_build_hwcaps_libs}
-%if 0%{?suse_version} > 1550
-BuildRequires:  gcc-c++
-%else
-BuildRequires:  gcc13-c++
-%endif
 
 %description
 A commercial quality OCR engine originally developed at HP between 1985 and
@@ -92,11 +88,6 @@ open-sourced by HP and UNLV in 2005. From 2007 it is developed by Google.
 %autosetup -n tesseract-%{version} -p1
 
 %build
-%if 0%{?suse_version} < 1550
-export CC=gcc-13
-export CXX=g++-13
-%endif
-
 autoreconf -fiv
 %configure \
     --disable-static

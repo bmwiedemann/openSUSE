@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:11:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.5.3:
+  * Fix missing closing tags in multi-page PAGE XML output
+  * Correct a mutex call to prevent multiple instances
+  * Document memory ownership and lifecycle in the C API
+  * Fix CMAKE_SYSTEM_PROCESSOR detection when cross-compiling
+    on Apple platforms
+- Switch the documentation BuildRequires from asciidoc to
+  rubygem(asciidoctor): upstream now generates the man pages with
+  asciidoctor and silently skips them otherwise
+- Drop the gcc13 fallback for Leap 15.x: 15.6 is out of support
+  and its repository has been retired from the devel project
+
+-------------------------------------------------------------------
 Thu Jun 25 08:50:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop the now-unused OpenCL build dependencies opencl-headers and
