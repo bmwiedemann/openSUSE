@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 24 02:06:58 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 3.3.41:
+  * A few minor errors in gpu id led to a long needed update to gpu
+    data sources and detection logic, as well as forcing some known
+    gpu IDs to the right generation.
+
+-------------------------------------------------------------------
 Wed Nov 26 00:32:13 UTC 2025 - malcolmlewis@opensuse.org
 
 - Update to version 3.3.40:
