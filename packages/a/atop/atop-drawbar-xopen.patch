@@ -1,0 +1,12 @@
+Index: atop-2.13.0/drawbar.c
+===================================================================
+--- atop-2.13.0.orig/drawbar.c
++++ atop-2.13.0/drawbar.c
+@@ -104,7 +104,7 @@
+ // the other.
+ /////////////////////////////////////////////////////////////////////////////
+ #define _POSIX_C_SOURCE	200809L
+-#define _XOPEN_SOURCE
++#define _XOPEN_SOURCE	600
+ #define _GNU_SOURCE
+ #define _DEFAULT_SOURCE

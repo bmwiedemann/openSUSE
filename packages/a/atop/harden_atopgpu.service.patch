@@ -1,8 +1,8 @@
-Index: atop-2.10.0/atopgpu.service
+Index: atop-2.13.0/atopgpu.service
 ===================================================================
---- atop-2.10.0.orig/atopgpu.service
-+++ atop-2.10.0/atopgpu.service
-@@ -5,6 +5,19 @@ After=syslog.target
+--- atop-2.13.0.orig/atopgpu.service
++++ atop-2.13.0/atopgpu.service
+@@ -4,6 +4,19 @@ Documentation=man:atopgpud(8)
  Before=atop.service
  
  [Service]

@@ -1,7 +1,8 @@
-diff -urEbw atop-2.7.1/atop.service atop-2.7.1.new/atop.service
---- atop-2.7.1/atop.service	2022-01-08 12:49:00.000000000 +0100
-+++ atop-2.7.1.new/atop.service	2022-03-01 00:21:11.621320262 +0100
-@@ -3,6 +3,19 @@
+Index: atop-2.13.0/atop.service
+===================================================================
+--- atop-2.13.0.orig/atop.service
++++ atop-2.13.0/atop.service
+@@ -3,6 +3,19 @@ Description=Atop advanced performance mo
  Documentation=man:atop(1)
  
  [Service]

@@ -245,4 +245,12 @@
   * Fix not writing log file #346</comment>
     <requestid>1307638</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9e0451a7fc37d80d38bec06418cb0afa</srcmd5>
+    <version>2.13.0</version>
+    <time>1785253957</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367831</requestid>
+  </revision>
 </revisionlist>

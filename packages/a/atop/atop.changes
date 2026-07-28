@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Jul 26 14:35:12 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 2.13.0:
+  * Allow sorting of process list on any column.
+  * The 'oom_score' and 'oom_score_adj' values are added per process.
+  * Show system-wide available memory per category in bar graph.
+  * Proper handling of offline/online CPUs.
+  * Show full user names and group names.
+  * Support longer pod and container names for parsable/json output
+  * Solution for race condition in twin mode.
+  * Various other bug solutions.
+
+- added atop-drawbar-xopen.patch
+
+-------------------------------------------------------------------
 Mon Sep 29 05:46:12 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.12.1:

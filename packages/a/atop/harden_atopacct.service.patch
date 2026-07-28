@@ -1,8 +1,8 @@
-Index: atop-2.10.0/atopacct.service
+Index: atop-2.13.0/atopacct.service
 ===================================================================
---- atop-2.10.0.orig/atopacct.service
-+++ atop-2.10.0/atopacct.service
-@@ -5,6 +5,19 @@ After=syslog.target
+--- atop-2.13.0.orig/atopacct.service
++++ atop-2.13.0/atopacct.service
+@@ -4,6 +4,19 @@ Documentation=man:atopacctd(8)
  Before=atop.service
  
  [Service]

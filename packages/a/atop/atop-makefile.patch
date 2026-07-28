@@ -1,12 +1,13 @@
-diff -Naur a/Makefile b/Makefile
---- a/Makefile	2025-06-14 03:18:40.000000000 -0500
-+++ b/Makefile	2025-07-27 16:41:55.970428635 -0500
-@@ -22,7 +22,7 @@
+Index: atop-2.13.0/Makefile
+===================================================================
+--- atop-2.13.0.orig/Makefile
++++ atop-2.13.0/Makefile
+@@ -22,7 +22,7 @@ PMPATHD  = /usr/lib/systemd/system-sleep
  
  PKG_CONFIG ?= pkg-config
  
 -override CFLAGS  := -O2 -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
-+CFLAGS  := $(OPTFLAGS) -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
++CFLAGS  := $(OPTFLAGS) -D_XOPEN_SOURCE_EXTENDED=1 -I/usr/include/ncursesw -I. -Wall $(shell $(PKG_CONFIG) --cflags glib-2.0) -Wmissing-prototypes -Wmissing-declarations -Wformat-security $(CFLAGS) # -DNOPERFEVENT   # -DHTTPSTATS
  
  CC_CHECK := $(shell echo | $(CC) -dM -E - | grep -q __clang__ && echo clang || echo gcc)
  ifeq ($(CC_CHECK),gcc)
