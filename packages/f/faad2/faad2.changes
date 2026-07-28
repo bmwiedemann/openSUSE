@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 22 17:44:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.2.git18:
+  * fix signed overflow in fixed-point sample rounding before
+    saturation
+  * prevent num_bits_left underflow in ps_data extension parsing
+  * cap escape length in huffman_spectral_data_2
+  * fix signed overflow in estimate_current_envelope energy sum
+  * fix ssr_gc_function signature mismatch in ssr gain control
+
+-------------------------------------------------------------------
 Fri Jun 26 11:45:17 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.11.2.git13:

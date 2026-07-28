@@ -24,7 +24,7 @@
 %define so_name     libfaad%so_version
 %define so_name_drm libfaad_drm%so_version
 Name:           faad2
-Version:        2.11.2.git13
+Version:        2.11.2.git18
 Release:        0
 Summary:        Freeware Advanced Audio (AAC) Decoder including SBR decoding
 License:        GPL-2.0-or-later
