@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Jul 27 04:58:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.67.0:
+  * Removed deprecated Datacenter from Server and Primary IP
+    Removed the deprecated Datacenter property from the Server and
+    Primary IP resources. Since the property was already removed
+    from the Hetzner Cloud API, we do not consider this a breaking
+    change (see changelog entry).
+    The hcloud primary-ip create --datacenter and hcloud server
+    create --datacenter flags have been removed in favor of
+    --location. Additionally, hcloud primary-ip describe and hcloud
+    server describe will no longer show the Datacenter property.
+    In place of the --datacenter flag the --location flag can be
+    used. The Location name is the first part of the Datacenter
+    name, e.g. the part before -. Example:
+
+    Before:
+
+      $ hcloud server create --datacenter fsn1-dc14
+      $ hcloud primary-ip create --datacenter hel1-dc2
+
+    After:
+
+      $ hcloud server create --location fsn1
+      $ hcloud primary-ip create --location hel1
+
+  * Features
+    - add http-timeout option (#1445)
+    - remove datacenter property from server and primary_ip (#1460)
+  * Bug Fixes
+    - primary-ip: format IPv6 properly in describe (#1451)
+  * Dependencies
+    - deps: update module github.com/cheggaaa/pb/v3 to v3.2.0
+      (#1458)
+    - deps: update golang.org/x/ (#1454)
+    - deps: update dependency github:goreleaser/goreleaser to
+      v2.17.0 (#1452)
+    - deps: update dependency go to v1.26.5 (#1453)
+    - deps: update module golang.org/x/text to v0.39.0 (#1450)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.8.2
+      (#1447)
+    - deps: update dependency jdx/mise to v2026.6.14 (#1442)
+    - deps: update module github.com/guptarohit/asciigraph to
+      v0.10.0 (#1441)
+    - deps: update github actions (#1433)
+    - deps: update actions/checkout action to v7 (#1443)
+    - deps: update actions/cache action to v6 (#1444)
+    - deps: update dependency jdx/mise to v2026.6.11 (#1428)
+
+-------------------------------------------------------------------
 Sun Jun 28 06:36:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.66.0:
