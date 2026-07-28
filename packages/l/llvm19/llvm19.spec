@@ -450,6 +450,8 @@ Patch31:        clang-shlib-symbol-versioning.patch
 Patch32:        compiler-rt-remove-termio-interceptors.patch
 # PATCH-FIX-UPSTREAM: Fix crash in ConstantFolding on fp128 intrinsics.
 Patch33:        llvm-constant-folding-fp128-instrinsics.patch
+# PATCH-FIX-UPSTREAM https://github.com/llvm/llvm-project/commit/3dc4fd6dd41100f051a63642f449b16324389c96
+Patch34:        compiler-rt-Remove-linux-scc-h.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -918,6 +920,7 @@ popd
 
 pushd compiler-rt-%{_version}.src
 %patch -P 32 -p2
+%patch -P 34 -p2
 popd
 
 pushd lld-%{_version}.src
