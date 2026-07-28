@@ -20,6 +20,7 @@
 #!BuildTag: opensuse/kubectl:1.36
 #!BuildTag: opensuse/kubectl:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
