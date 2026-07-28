@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:03:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.5.0
+  Better Audio Experience
+  * Smoother Listening: Improved handling of audio drops and
+    glitches during poor reception.
+  * Reliable Playback: Optimized how audio starts and is buffered.
+  Modern Look & Feel
+  * New Visual Theme: Updated the application with a fresh, modern
+    blueish design.
+  * Enhanced Indicators: Redesigned status meters and visual
+    elements.
+  * Better Information: Added helpful tooltips and clearer labels.
+  Improved Usability
+  * Click-to-Jump Navigation: You can now click anywhere on a
+    slider to jump directly to that position.
+  * Easy-Access Info: A new information window to view version
+    details and related library information.
+  Performance & Stability
+  * Under-the-Hood Improvements: General maintenance and
+    optimizations.
+
+-------------------------------------------------------------------
 Mon Jul 13 07:19:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.4.0
