@@ -39,12 +39,13 @@
 %if %{without bootstrap}
 %{_bindir}/systemd-sysinstall
 %{_bindir}/systemd-sysupdate
-%{_bindir}/systemd-vmspawn
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
 %{_datadir}/bash-completion/completions/storagectl
 %{_datadir}/bash-completion/completions/systemd-sysinstall
-%{_datadir}/bash-completion/completions/systemd-vmspawn
+%if %{with upstream}
+%{_datadir}/bash-completion/completions/systemd-sysupdate
+%endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Job.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Manager.xml
@@ -57,10 +58,16 @@
 %endif
 %{_datadir}/polkit-1/actions/io.systemd.storage.policy
 %if %{without bootstrap}
+%if %{with upstream}
+%{_datadir}/polkit-1/actions/io.systemd.sysinstall.policy
+%endif
 %{_datadir}/polkit-1/actions/org.freedesktop.sysupdate1.policy
 %{_datadir}/zsh/site-functions/_oomctl
 %{_datadir}/zsh/site-functions/_storagectl
 %{_datadir}/zsh/site-functions/_systemd-sysinstall
+%if %{with upstream}
+%{_datadir}/zsh/site-functions/_systemd-sysupdate
+%endif
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
 %if %{with docs}
@@ -80,17 +87,27 @@
 %{_mandir}/man1/systemd-sbsign.1.gz
 %{_mandir}/man1/systemd-ssh-issue.1.gz
 %{_mandir}/man1/systemd-ssh-proxy.1.gz
-%{_mandir}/man1/systemd-vmspawn.1.gz
 %{_mandir}/man1/updatectl.1.gz
+%if %{with upstream}
+%{_mandir}/man5/clonetab.5.gz
+%endif
 %{_mandir}/man5/oomd.conf.5.gz
 %{_mandir}/man5/oomd.conf.d.5.gz
 %{_mandir}/man5/org.freedesktop.oom1.5.gz
 %{_mandir}/man5/org.freedesktop.sysupdate1.5.gz
+%if %{with upstream}
+%{_mandir}/man5/sysupdate.components.5.gz
+%endif
 %{_mandir}/man5/sysupdate.d.5.gz
 %{_mandir}/man5/sysupdate.features.5.gz
 %{_mandir}/man7/systemd.mstack.7.gz
 %{_mandir}/man8/systemd-bsod.8.gz
 %{_mandir}/man8/systemd-bsod.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-clonesetup-generator.8.gz
+%{_mandir}/man8/systemd-clonesetup.8.gz
+%{_mandir}/man8/systemd-clonesetup@.service.8.gz
+%endif
 %{_mandir}/man8/systemd-factory-reset-complete.service.8.gz
 %{_mandir}/man8/systemd-factory-reset-generator.8.gz
 %{_mandir}/man8/systemd-factory-reset-request.service.8.gz
@@ -151,6 +168,9 @@
 %{_mandir}/man8/systemd-storagetm.service.8.gz
 %{_mandir}/man8/systemd-sysinstall.8.gz
 %{_mandir}/man8/systemd-sysinstall.service.8.gz
+%if %{with upstream}
+%{_mandir}/man8/systemd-sysupdate-auto-enable.service.8.gz
+%endif
 %{_mandir}/man8/systemd-sysupdate-reboot.service.8.gz
 %{_mandir}/man8/systemd-sysupdate-reboot.timer.8.gz
 %if %{with upstream}
@@ -196,6 +216,9 @@
 %{_systemd_util_dir}/oomd.conf
 %{_systemd_util_dir}/systemd-bsod
 %endif
+%if %{with upstream}
+%{_systemd_util_dir}/systemd-clonesetup
+%endif
 %{_systemd_util_dir}/systemd-factory-reset
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-imds
@@ -233,8 +256,8 @@
 %{_systemd_util_dir}/systemd-tpm2-swtpm
 %endif
 %{_systemd_util_dir}/systemd-validatefs
-%if %{without bootstrap}
-%{_systemd_util_dir}/user/systemd-vmspawn@.service
+%if %{with upstream}
+%{_systemdgeneratordir}/systemd-clonesetup-generator
 %endif
 %{_systemdgeneratordir}/systemd-factory-reset-generator
 %if %{without bootstrap}
@@ -249,6 +272,9 @@
 %{_sysusersdir}/systemd-imds.conf
 %{_sysusersdir}/systemd-oom.conf
 %{_udevhwdbdir}/40-imds.hwdb
+%if %{with upstream}
+%{_unitdir}/clonesetup.target
+%endif
 %{_unitdir}/dbus-org.freedesktop.sysupdate1.service
 %endif
 %{_unitdir}/factory-reset-now.target
@@ -271,6 +297,7 @@
 %{_unitdir}/sockets.target.wants/systemd-storage-block.socket
 %{_unitdir}/sockets.target.wants/systemd-storage-fs.socket
 %if %{with upstream}
+%{_unitdir}/sockets.target.wants/systemd-sysinstall.socket
 %{_unitdir}/sockets.target.wants/systemd-sysupdate.socket
 %endif
 %if %{without bootstrap}
@@ -278,6 +305,9 @@
 %endif
 %if %{with sd_boot}
 %{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
+%if %{with upstream}
+%{_unitdir}/sysinit.target.wants/clonesetup.target
+%endif
 %{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrnvdone.service
 %{_unitdir}/sysinit.target.wants/systemd-pcrosseparator.service
@@ -374,6 +404,9 @@
 %{_unitdir}/systemd-storagetm.service
 %{_unitdir}/systemd-sysinstall.service
 %if %{with upstream}
+%{_unitdir}/systemd-sysinstall.socket
+%{_unitdir}/systemd-sysinstall@.service
+%{_unitdir}/systemd-sysupdate-auto-enable.service
 %{_unitdir}/systemd-sysupdate-notify-bootctl.socket
 %{_unitdir}/systemd-sysupdate-notify-bootctl@.service
 %{_unitdir}/systemd-sysupdate-notify-pcrlock.socket
@@ -404,9 +437,6 @@
 %{_unitdir}/systemd-tpm2-swtpm.service
 %endif
 %{_unitdir}/systemd-validatefs@.service
-%if %{without bootstrap}
-%{_unitdir}/systemd-vmspawn@.service
-%endif
 %{_userunitdir}/sockets.target.wants/systemd-journalctl.socket
 %{_userunitdir}/sockets.target.wants/systemd-storage-fs.socket
 %{_userunitdir}/systemd-journalctl.socket

@@ -180,7 +180,9 @@
 %{_mandir}/man8/systemd-tmpfiles-setup-dev-early.service.8.gz
 %{_mandir}/man8/systemd-tmpfiles-setup-dev.service.8.gz
 %{_mandir}/man8/systemd-udev-settle.service.8.gz
+%if %{without upstream}
 %{_mandir}/man8/systemd-udevd-control.socket.8.gz
+%endif
 %{_mandir}/man8/systemd-udevd-kernel.socket.8.gz
 %{_mandir}/man8/systemd-udevd-varlink.socket.8.gz
 %{_mandir}/man8/systemd-udevd.8.gz
@@ -353,6 +355,9 @@
 %{_udevrulesdir}/60-persistent-alsa.rules
 %{_udevrulesdir}/60-persistent-hidraw.rules
 %{_udevrulesdir}/60-persistent-input.rules
+%if %{with upstream}
+%{_udevrulesdir}/60-persistent-media-controller.rules
+%endif
 %{_udevrulesdir}/60-persistent-storage-mtd.rules
 %{_udevrulesdir}/60-persistent-storage-tape.rules
 %{_udevrulesdir}/60-persistent-storage.rules
@@ -424,7 +429,9 @@
 %if %{without bootstrap}
 %{_unitdir}/sockets.target.wants/systemd-repart.socket
 %endif
+%if %{without upstream}
 %{_unitdir}/sockets.target.wants/systemd-udevd-control.socket
+%endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-varlink.socket
 %{_unitdir}/suspend-then-hibernate.target

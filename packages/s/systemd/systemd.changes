@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 27 10:04:36 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 4925d9f07fc697efccd98a93046ff535b8832445 (merge of v261.2)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/eff9446d505d62c075bed37d606860b38cfe51fb...4925d9f07fc697efccd98a93046ff535b8832445
+
+-------------------------------------------------------------------
+Tue Jul 21 09:48:29 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Move systemd-vmspawn from the experimental sub-package to systemd-container
+
+-------------------------------------------------------------------
 Wed Jul 15 08:29:34 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Upgrade to v261 (commit eff9446d505d62c075bed37d606860b38cfe51fb)

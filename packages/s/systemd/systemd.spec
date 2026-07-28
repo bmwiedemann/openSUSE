@@ -31,7 +31,7 @@
 %bcond_with obs_service_set_version
 
 %if %{without obs_service_set_version}
-%define systemd_version    261.1
+%define systemd_version    261.2
 %define systemd_release    0
 %define archive_version    %{nil}
 %endif
@@ -657,7 +657,7 @@ Components that turn out to be stable and considered as fully supported will be
 merged into the main package or moved into a dedicated package.
 
 Currently this package contains the following features : bsod, oomd, measure,
-pcrextend, pcrlock, ssh-generator, storagetm, systemd-vmspawn, sysupdate,
+pcrextend, pcrlock, ssh-generator, storagetm, sysupdate.
 tpm2-setup and userwork.
 
 Have fun (at your own risk).
