@@ -1,0 +1,3 @@
+# Script needed to clear out admin-password after install
+gromox: debconf-is-not-a-registry
+

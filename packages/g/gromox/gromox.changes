@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Jul 23 23:13:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.9
+  * exmdb: The link_messages EXRPC was sped up, which is used by
+    g-web's indexed search to fill the results folder.
+  * The meeting processor now sends booking confirmation for
+    auto-accepted requests, now handles incoming cancellations, and
+    permits back-to-back room bookings (previously it wanted a gap
+    of at least 1 second).
+  * EWS: meetings are now sent with a fair bit more meeting
+    properties, making them actionable meetings rather than just
+    plain appointments.
+  * EWS: support for some more tags and request types that
+    previously had led to warning messages in the log.
+  * EWS now sends meeting cancellations when deleting a whole item.
+  * Synthesize the PR_RTF_IN_SYNC MAPI property, fixing a case
+    where Outlook could show HTML messages as plaintext.
+  * The hierarchy synchronization procedure for OL no longer emits
+    out-of-spec error codes for duplicate folders.
+  * Messages without mandatory ICS properties are no longer
+    advertised to OL Cached Mode for download.
+
+-------------------------------------------------------------------
+Tue Jun 30 16:39:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.8
+  * The Information Store now supports a per-store split-process
+    model.
+  * Support for custom per-message keywords (a.k.a. color
+    categories) in IMAP.
+  * Partial IMAP4rev2 support (ENABLE, NAMESPACE, SELECT/EXAMINE,
+    STATUS SIZE/DELETED, ESEARCH, (UID) MOVE, LIST-EXTENDED,
+    SEARCHRES).
+  * Conversions between HTML and RTF now support and prefer the use
+    of the external converter Pandoc, if installed.
+  * Conversions from HTML to plaintext now support the use of
+    Pandoc as a fallback if chawan/w3m is not present.
+  * Server side rule and meeting processor: On reception of meeting
+    updates, the prior calendar entry is replaced (rather than left
+    untouched, which caused duplicates).
+  * ruleproc now ignores stale meeting updates (e.g. if an older
+    update was held up in SMTP queues and was delivered late past
+    another).
+  * imap: searching by Bcc field is now supported.
+  * imap: STORE commands no longer fail when unrecognized flags are
+    used.
+  * midb: the SENTBEFORE/SENTON/SENTSINCE imap search keywords now
+    test against the Date header rather than
+    PR_LAST_MODIFICATION_TIME.
+  * midb: the SENT* keywords now disregard timezone as mandated.
+  * imap: FETCH/STORE/SEARCH no longer produce EXPUNGE replies.
+  * ews: no longer loses the attendee list of an appointment when
+    saved.
+- Add 9df950230.patch
+
+-------------------------------------------------------------------
 Thu Apr 30 09:55:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.7

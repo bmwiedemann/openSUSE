@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        3.7
+Version:        3.9
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -28,6 +28,7 @@ URL:            https://grommunio.com/
 Source:         https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.zst
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
+Source15:       debian.gromox.config
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
@@ -119,7 +120,7 @@ grommunio-web. The grommunio appliance ships these essentials and has a
 ready-to-run installation of Gromox.
 
 %prep
-%autosetup -p1
+%autosetup -p0
 
 %build
 %configure \

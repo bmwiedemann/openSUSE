@@ -36,10 +36,12 @@ xpostinst()
 	if test -x /usr/bin/systemctl; then
 		systemctl daemon-reload || :
 		systemctl try-restart \
+			grommunio-chat.service grommunio-keycloak.service \
 			php7.4-fpm.service php8.0-fpm.service php8.1-fpm.service \
 			php8.2-fpm.service php8.3-fpm.service \
 			saslauthd.service 2>/dev/null || :
 	fi
+
 }
 
 # summary of how this script can be called:
@@ -56,6 +58,12 @@ xpostinst()
 
 case "$1" in
 configure|reconfigure)
+	# Clean up after misadventure, remove stale config
+	rm -f /etc/apt/apt.conf.d/98zz-gromox.conf || true
+	if [ -e /usr/share/debconf/confmodule ]; then
+		. /usr/share/debconf/confmodule
+		db_purge
+	fi
 	;;
 abort-upgrade|abort-remove|abort-deconfigure)
 	;;

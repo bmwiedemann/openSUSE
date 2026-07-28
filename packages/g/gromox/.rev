@@ -472,4 +472,12 @@
     <comment>- Update to release 3.7</comment>
     <requestid>1350289</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c13cd9eab294380a2a1e9763e2b9c2d2</srcmd5>
+    <version>3.9</version>
+    <time>1785253975</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.9</comment>
+    <requestid>1367847</requestid>
+  </revision>
 </revisionlist>

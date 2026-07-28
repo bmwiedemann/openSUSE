@@ -1,7 +1,7 @@
 Format: 1.0
 Source: gromox
 Architecture: any
-Version: 3.7
+Version: 3.9
 DEBTRANSFORM-RELEASE: 1
 Maintainer: Gromox <dev@gromox.com>
 Homepage: https://gromox.com
@@ -18,6 +18,7 @@ Build-Depends:
  g++ (>= 12),
  gettext,
  libbfio-dev,
+ libcrypt-dev | libc6-dev,
  libcurl4-openssl-dev,
  libesedb-dev,
  libfmt-dev (>= 8),
