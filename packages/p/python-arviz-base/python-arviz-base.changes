@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 21 15:18:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.2.0:
+  * Update datatree notebook
+  * Add constant data to datatree_regression
+  * prepare relase and improve import times
+  * **Full Changelog**: https://github.com/arviz-devs/arviz-
+    base/compare/v1.1.0...v1.2.0
+
+-------------------------------------------------------------------
 Tue May 19 05:47:38 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 1.1.0:

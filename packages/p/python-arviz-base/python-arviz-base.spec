@@ -1,7 +1,7 @@
 #
 # spec file for package python-arviz-base
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,30 +19,30 @@
 # Upstream supports Python 3.12+
 %define skip_python311 1
 Name:           python-arviz-base
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Base ArviZ features and converters
 License:        Apache-2.0
 URL:            https://github.com/arviz-devs/arviz-base/
 Source:         https://github.com/arviz-devs/arviz-base/archive/refs/tags/v%{version}.tar.gz#/arviz_base-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module base >= 3.12}
 BuildRequires:  %{python_module flit-core >= 3.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module numpy >= 2}
+BuildRequires:  %{python_module lazy_loader}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module scipy}
 BuildRequires:  %{python_module typing-extensions >= 3.10}
 BuildRequires:  %{python_module xarray-complete >= 2024.11.0}
-BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module pytest-cov}
-BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module lazy_loader}
 # /SECTION
 BuildRequires:  fdupes
+Requires:       python-lazy_loader
 Requires:       python-numpy >= 2
 Requires:       python-typing-extensions >= 3.10
 Requires:       python-xarray >= 2024.11.0
-Requires:       python-lazy_loader
 Suggests:       python-h5netcdf
 Suggests:       python-netcdf4
 Suggests:       python-h5netcdf

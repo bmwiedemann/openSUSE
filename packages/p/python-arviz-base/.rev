@@ -30,4 +30,12 @@
   * Improve type hints in utils module</comment>
     <requestid>1353938</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c901573b0e3f1d16e8d420801a00670e</srcmd5>
+    <version>1.2.0</version>
+    <time>1785265268</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1368227</requestid>
+  </revision>
 </revisionlist>
