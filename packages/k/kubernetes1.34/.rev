@@ -74,4 +74,14 @@
     <comment>Monthly Patch Release – June, 2026: Update to version 1.34.9</comment>
     <requestid>1363460</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>08259cae8e4a32939323685214438c5d</srcmd5>
+    <version>1.34.10</version>
+    <time>1785254158</time>
+    <user>dimstar_suse</user>
+    <comment>Monthly Patch Release – July, 2026: Update to version 1.34.10
+
+Also, includes a changelog entry pointing to the mitigation steps suggested by the upstream Kubernetes project for CVE-2020-8561, bsc#1190099</comment>
+    <requestid>1367912</requestid>
+  </revision>
 </revisionlist>
