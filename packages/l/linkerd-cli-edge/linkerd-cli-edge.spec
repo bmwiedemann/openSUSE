@@ -19,7 +19,7 @@
 %define linkerd_executable_name linkerd
 
 Name:           linkerd-cli-edge
-Version:        26.6.2
+Version:        26.7.2
 Release:        0
 Summary:        CLI for the linkerd service mesh for Kubernetes
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.25 >= 1.25.11
+BuildRequires:  go1.26 >= 1.26.4
 BuildRequires:  zsh
 
 # cannot be installed in parallel to the stable version
@@ -85,11 +85,11 @@ go build \
    -tags prod \
    -buildmode=pie \
    -ldflags="-X github.com/linkerd/linkerd2/pkg/version.Version=stable-%{version}" \
-   -o bin/%{linkerd_executable_name} ./cli/
+   -o %{linkerd_executable_name} ./cli/
 
 %install
 # Install the binary.
-install -D -m 0755 bin/%{linkerd_executable_name} %{buildroot}/%{_bindir}/%{linkerd_executable_name}
+install -D -m 0755 %{linkerd_executable_name} %{buildroot}/%{_bindir}/%{linkerd_executable_name}
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
