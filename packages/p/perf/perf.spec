@@ -67,8 +67,6 @@ BuildRequires:  rubygem(asciidoctor)
 %ifarch aarch64 ia64 x86_64 ppc64 ppc64le ppc %sparc
 BuildRequires:  libnuma-devel
 %endif
-Recommends:     kernel >= 2.6.31
-Recommends:     perf-gtk
 %{perl_requires}
 %{?libperl_requires}
 

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:42:13 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Remove obsolete recommends:
+  * perf-gtk is based on GTK 2.0, don't install it by default
+  * Recommending kernel does not make sense: Either a kernel is already
+    installed and running, or it's a container/chroot/... and installing
+    a kernel won't do anything.
+
+-------------------------------------------------------------------
 Wed Feb 25 09:43:15 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - fix for 7.0 (no generate-cmdlist.sh)
