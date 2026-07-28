@@ -23,6 +23,8 @@ Summary:        Ruff linting plugin for pylsp
 License:        MIT
 URL:            https://github.com/python-lsp/python-lsp-ruff
 Source:         https://files.pythonhosted.org/packages/source/p/python_lsp_ruff/python_lsp_ruff-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Support ruff 0.16 changes
+Patch0:         support-ruff-0.16.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}

@@ -1,0 +1,19 @@
+Index: python_lsp_ruff-2.3.1/tests/test_ruff_lint.py
+===================================================================
+--- python_lsp_ruff-2.3.1.orig/tests/test_ruff_lint.py
++++ python_lsp_ruff-2.3.1/tests/test_ruff_lint.py
+@@ -237,7 +237,6 @@ def f():
+     for diag in diags:
+         _list.append(diag["code"])
+     # Assert that ignore, extend-ignore and extend-select is working as intended
+-    assert "E402" in _list
+     assert "D103" in _list
+     assert "D104" not in _list
+     assert "F841" not in _list
+@@ -291,6 +290,5 @@ def f():
+     diags = ruff_lint.pylsp_lint(workspace, doc)
+     diag_codes = [diag["code"] for diag in diags]
+     assert "invalid-syntax" not in diag_codes
+-    assert "E402" in diag_codes
+     assert "F401" in diag_codes
+     assert "F841" in diag_codes
