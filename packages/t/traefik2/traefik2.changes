@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Jul 27 08:24:44 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
+
+- Version 2.11.53
+ Bugs fixed
+ * middleware, k8s/crd
+   - Add missing ErrorRequestHeaders field to CRDs
+ * server
+   - Defer the CONNECT payload until the backend accepts the tunnel
+   - Bump google.golang.org/grpc to v1.82.1, GHSA-hrxh-6v49-42gf, CVE-2026-33186
+   - Do not add back CONNECT requests to the pool
+
+
+-------------------------------------------------------------------
 Wed Jul  8 15:00:04 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 2.11.52
