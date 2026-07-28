@@ -152,4 +152,13 @@
       GitHub #51 (for Date::Manip distribution). (forwarded request 1235355 from tinita)</comment>
     <requestid>1235368</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>f27fbb4cba4a8ba4f819219754fc10af</srcmd5>
+    <version>1.130.0</version>
+    <time>1785253783</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.130.0 (1.13)
+   see /usr/share/doc/packages/perl-Test-Inter/Changes</comment>
+    <requestid>1368049</requestid>
+  </revision>
 </revisionlist>
