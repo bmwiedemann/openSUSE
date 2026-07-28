@@ -1,4 +1,147 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:34:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.0:
+  Large update with breaking changes and deprecations in Kargo
+  itself, please check the release notes
+  https://github.com/akuity/kargo/releases/tag/v1.11.0
+  * fix(cli): use cliClientID when refreshing OIDC tokens (#6523)
+  * fix(cli): correct --username flag typo in repo-credentials
+    usage string (#6352)
+  * feat(cli): add delete freight command (#6178)
+  * fix: cli and server to match openapi spec (#6135)
+  * chore(deps): update dependencies and fix CVEs (#6513)
+  * chore(deps): bump the go-patch group with 8 updates (#6530)
+  * chore(deps): bump korthout/backport-action from 4.5.2 to 4.6.0
+    (#6527)
+  * chore(deps): bump imjasonh/setup-crane from 0.6 to 0.7 (#6526)
+  * chore(deps): ignore k8s.io and grpc in dependabot go groups
+    (#6524)
+  * chore(deps): bump vite from 8.0.8 to 8.0.16 in /ui (#6452)
+  * chore(deps): bump actions/cache from 5.0.5 to 6.1.0 (#6503)
+  * chore(deps): bump azure/setup-helm from 5.0.0 to 5.0.1 (#6504)
+  * chore(deps): bump curlimages/curl from 8.20.0 to 8.21.0 (#6509)
+  * chore(deps): bump aws-actions/configure-aws-credentials from
+    6.2.0 to 6.2.1 (#6507)
+  * chore(deps): bump library/node from 24.15.0 to 26.4.0 (#6508)
+  * chore(deps): bump actions/setup-go from 6.4.0 to 6.5.0 (#6505)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.32
+    to 1.7.33 (#6483)
+  * chore(deps/tools): bump github.com/containerd/containerd from
+    1.7.32 to 1.7.33 in /hack/tools (#6484)
+  * chore(deps): bump actions/checkout from 6.0.2 to 7.0.0 (#6476)
+  * chore(deps): bump imjasonh/setup-crane from 0.4 to 0.6 (#6475)
+  * chore(deps): bump github.com/oapi-codegen/runtime from 1.4.1 to
+    1.4.2 in the go-patch group (#6479)
+  * chore(deps/tools): bump github.com/go-chi/chi/v5 from 5.2.3 to
+    5.2.4 in /hack/tools (#6468)
+  * chore(deps): bump golang from 1.26.3-trixie to 1.26.4-trixie
+    (#6418)
+  * chore(deps): bump the go-patch group across 1 directory with 7
+    updates (#6448)
+  * chore(deps/tools): bump github.com/quic-go/quic-go from 0.57.0
+    to 0.59.1 in /hack/tools (#6402)
+  * chore(deps): bump github.com/quic-go/quic-go from 0.57.0 to
+    0.59.1 (#6403)
+  * chore(deps): bump actions/checkout from 6.0.2 to 6.0.3 (#6421)
+  * chore(deps): bump codecov/codecov-action from 6.0.1 to 7.0.0
+    (#6420)
+  * chore(deps): bump aws-actions/configure-aws-credentials from
+    6.1.1 to 6.2.0 (#6419)
+  * chore(deps): bump docker/setup-qemu-action from 4.0.0 to 4.1.0
+    (#6422)
+  * chore(deps): bump codecov/codecov-action from 6.0.0 to 6.0.1
+    (#6382)
+  * chore(deps): bump docker/metadata-action from 6.0.0 to 6.1.0
+    (#6384)
+  * chore(deps): bump docker/build-push-action from 7.1.0 to 7.2.0
+    (#6385)
+  * chore(deps): bump actions/stale from 10.2.0 to 10.3.0 (#6338)
+  * chore(deps): bump step-security/harden-runner from 2.19.3 to
+    2.19.4 (#6339)
+  * chore(deps): bump the go-patch group with 2 updates (#6344)
+  * chore(deps): bump docker/setup-buildx-action from 4.0.0 to
+    4.1.0 (#6341)
+  * chore(deps): bump docker/login-action from 4.1.0 to 4.2.0
+    (#6337)
+  * chore(deps): bump github.com/containerd/containerd from 1.7.29
+    to 1.7.32 (#6331)
+  * chore(deps/tools): bump github.com/containerd/containerd from
+    1.7.29 to 1.7.32 in /hack/tools (#6330)
+  * chore(deps): bump ws from 7.5.10 to 8.20.1 in
+    /docs/plugins/gtag (#6316)
+  * chore(deps): bump fast-uri from 3.0.6 to 3.1.2 in
+    /docs/plugins/gtag (#6289)
+  * chore(deps): bump @babel/plugin-transform-modules-systemjs from
+    7.27.1 to 7.29.4 in /docs/plugins/gtag (#6290)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.0 to
+    5.19.1 (#6317)
+  * chore(deps): bump korthout/backport-action from 4.5.1 to 4.5.2
+    (#6302)
+  * chore(deps): bump step-security/harden-runner from 2.19.1 to
+    2.19.3 (#6303)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.18.0 to
+    5.19.0 (#6263)
+  * chore(deps): bump golang from 1.26.2-trixie to 1.26.3-trixie
+    (#6256)
+  * chore(deps): bump github.com/go-openapi/runtime from 0.29.4 to
+    0.29.5 in the go-patch group (#6257)
+  * chore(deps): bump korthout/backport-action from 4.5.0 to 4.5.1
+    (#6255)
+  * chore(deps): bump sigstore/cosign-installer from 4.1.1 to 4.1.2
+    (#6252)
+  * chore(deps/api): bump connectrpc.com/connect from 1.19.1 to
+    1.19.2 in /api in the go-patch group (#6253)
+  * chore(deps): bump aws-actions/configure-aws-credentials from
+    6.1.0 to 6.1.1 (#6251)
+  * chore(deps): update UI dependencies (#6140)
+  * chore(deps): bump step-security/harden-runner from 2.19.0 to
+    2.19.1 (#6216)
+  * chore(deps): bump curlimages/curl from 8.19.0 to 8.20.0 (#6217)
+  * chore(deps): bump korthout/backport-action from 4.4.0 to 4.5.0
+    (#6218)
+  * chore(deps): bump the go-patch group with 9 updates (#6219)
+  * chore(deps): bump step-security/harden-runner from 2.18.0 to
+    2.19.0 (#6167)
+  * chore(deps): bump korthout/backport-action from 4.3.0 to 4.4.0
+    (#6169)
+  * chore(deps): bump actions/setup-node from 6.3.0 to 6.4.0
+    (#6170)
+  * chore(deps): bump connectrpc.com/connect from 1.19.1 to 1.19.2
+    in the go-patch group (#6172)
+  * chore(deps): bump golang from 1.26.1-trixie to 1.26.2-trixie
+    (#6066)
+  * chore(deps): bump library/node from 24.12.0 to 24.15.0 (#6121)
+  * chore(deps): bump step-security/harden-runner from 2.17.0 to
+    2.18.0 (#6119)
+  * chore(deps): bump actions/cache from 5.0.4 to 5.0.5 (#6123)
+  * chore(deps): bump the go-patch group across 1 directory with 9
+    updates (#6125)
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.17.2 to
+    5.18.0 (#6117)
+  * chore(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1
+    (#6118)
+  * chore(deps/tools): bump github.com/moby/spdystream from 0.5.0
+    to 0.5.1 in /hack/tools (#6105)
+  * chore(deps): bump github.com/moby/spdystream from 0.5.0 to
+    0.5.1 (#6104)
+  * chore(deps): bump step-security/harden-runner from 2.16.1 to
+    2.17.0 (#6072)
+  * chore(deps): bump curlimages/curl from 8.18.0 to 8.19.0 (#6073)
+  * chore(deps): bump actions/upload-pages-artifact from 4.0.0 to
+    5.0.0 (#6070)
+  * chore(deps): bump aws-actions/configure-aws-credentials from
+    6.0.0 to 6.1.0 (#6068)
+  * chore(deps): bump docker/build-push-action from 7.0.0 to 7.1.0
+    (#6069)
+
+-------------------------------------------------------------------
+Wed Jul 15 05:11:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.10.9:
+  no CLI-related changes or dependency updates
+
+-------------------------------------------------------------------
 Wed Jul 01 07:07:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.10.8:
