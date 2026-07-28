@@ -26,7 +26,7 @@
 %else
 %define lua_value  %(echo "%{flavor}" |sed -e 's:lua::')
 %endif
-Version:        1.1.0
+Version:        1.2.0
 Release:        0
 Summary:        Command-line tool for linting and static analysis of Lua code
 License:        MIT
@@ -38,6 +38,8 @@ Patch0:         env.patch
 # PATCH-FIX-UPSTREAM luacheck-lua55.patch gh#mpeterv/luacheck!238 mcepl@suse.com
 # Fix incompatibility with Lua 5.5 (changing of for cycle counters)
 Patch1:         luacheck-lua55.patch
+# PATCH-FIX-UPSTREAM - Initial lua 5.5 support https://github.com/lunarmodules/luacheck/pull/133
+Patch2: feat-Add-standard-support-for-Lua-5.5-132-133.patch
 BuildRequires:  %{flavor}
 BuildRequires:  %{flavor}-argparse
 BuildRequires:  %{flavor}-luafilesystem

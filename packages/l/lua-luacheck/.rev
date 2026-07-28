@@ -46,4 +46,26 @@
   alternatives_requires_exclude.</comment>
     <requestid>1335534</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71c3930629f3a87a9e0962d0294ec4ee</srcmd5>
+    <version>1.2.0</version>
+    <time>1785255315</time>
+    <user>dimstar_suse</user>
+    <comment>- Lua 5.5 support
+  + feat-Add-standard-support-for-Lua-5.5-132-133.patch
+- Update to 1.2.0
+  - Add builtin standards support for minetest
+  - Memoize results to addresses speed refression from new feature in v0.26
+- Update to 1.1.2
+  - Support NO_COLOR environment variable
+  - Update SILE builtin with more allowed variables
+- Update to 1.1.1
+  - Update Löve standard to 11.4
+  - Documentation improvements
+  - Correct compound operators to not crash on modifying upvalues
+  - Fix warning 582 (error prone negation) not applying to subexpressions
+
+  (gh#mpeterv/luacheck!238)</comment>
+    <requestid>1368062</requestid>
+  </revision>
 </revisionlist>

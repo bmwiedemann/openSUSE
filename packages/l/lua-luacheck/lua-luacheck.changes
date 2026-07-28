@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Jul 22 09:58:40 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Lua 5.5 support
+  + feat-Add-standard-support-for-Lua-5.5-132-133.patch
+- Update to 1.2.0
+  - Add builtin standards support for minetest
+  - Memoize results to addresses speed refression from new feature in v0.26
+- Update to 1.1.2
+  - Support NO_COLOR environment variable
+  - Update SILE builtin with more allowed variables
+- Update to 1.1.1
+  - Update Löve standard to 11.4
+  - Documentation improvements
+  - Correct compound operators to not crash on modifying upvalues
+  - Fix warning 582 (error prone negation) not applying to subexpressions
+
+-------------------------------------------------------------------
 Fri Feb 27 09:15:57 CET 2026 - Matej Cepl <mcepl@suse.com>
 
 - Don't fiddle with regexps, but use a macro
@@ -9,7 +26,7 @@ Thu Jan 22 15:20:04 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add luacheck-lua55.patch to make package buildable with Lua
   5.5, because of changing cycle counters.
-  (gh#mpeterv/luacheck!238) 
+  (gh#mpeterv/luacheck!238)
 
 -------------------------------------------------------------------
 Fri Oct 24 14:48:56 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
