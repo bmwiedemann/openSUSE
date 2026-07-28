@@ -190,4 +190,12 @@
   * Fix 'enable_tls' SIG algorithm mismatch (forwarded request 1326939 from pmonrealgonzalez)</comment>
     <requestid>1326941</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f8fcb3cf94ded73e874074af0cb0c8f1</srcmd5>
+    <version>0.11.0.32</version>
+    <time>1785255239</time>
+    <user>dimstar_suse</user>
+    <comment>- use temporary git take to build against liboqs 0.16.0 (forwarded request 1368045 from msmeissn)</comment>
+    <requestid>1368046</requestid>
+  </revision>
 </revisionlist>

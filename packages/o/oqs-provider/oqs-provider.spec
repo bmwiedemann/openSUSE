@@ -17,13 +17,14 @@
 
 
 Name:           oqs-provider
-Version:        0.11.0
+Version:        0.11.0.32
 Release:        0
 Summary:        Quantum-safe crypto provider for OpenSSL
 License:        MIT
 Group:          Productivity/Security
 URL:            https://github.com/open-quantum-safe/oqs-provider/
-Source:         https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
+#Source:         https://github.com/open-quantum-safe/oqs-provider/archive/refs/tags/%{version}.tar.gz#/%name-%version.tar.gz
+Source:         oqs-provider-%version.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  libopenssl-3-devel
 BuildRequires:  pkgconfig(liboqs)
