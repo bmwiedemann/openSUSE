@@ -1,0 +1,13 @@
+Index: liboqs-0.16.0/tests/CMakeLists.txt
+===================================================================
+--- liboqs-0.16.0.orig/tests/CMakeLists.txt
++++ liboqs-0.16.0/tests/CMakeLists.txt
+@@ -59,7 +59,7 @@ if(NOT WIN32)
+ 
+     set(UNIX_TESTS test_aes test_hash test_sha3 speed_common)
+ 
+-    set(PYTHON3_EXEC python3)
++    set(PYTHON3_EXEC python3.11)
+ else()
+     set(PYTHON3_EXEC python)
+ endif()

@@ -368,4 +368,13 @@
   by gcc7. bsc#1215751 (forwarded request 1367358 from msmeissn)</comment>
     <requestid>1367360</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>44f212bb8e2763d2aa55ac838f2107d1</srcmd5>
+    <version>0.16.0</version>
+    <time>1785254750</time>
+    <user>dimstar_suse</user>
+    <comment>- disable KEM_HQC and SIG_MQOM and KEM_NTRUPRIME on s390x for now,
+  testsuite fails. (forwarded request 1368068 from msmeissn)</comment>
+    <requestid>1368070</requestid>
+  </revision>
 </revisionlist>

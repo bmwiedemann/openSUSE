@@ -30,6 +30,8 @@ Patch0:         liboqs-fix-build.patch
 Patch1:         liboqs-fix-prototypemismatch.patch
 #PATCH-FIX-OPENSUSE boo#1101107 Do not embed the buildhost's kernel version
 Patch2:         reproducible.patch
+# only for SLE15, as python3.6 is too old to run tests
+Patch3:         liboqs-python311.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 %if 0%{?suse_version} > 0  && 0%{?suse_version} < 1600
@@ -37,10 +39,18 @@ BuildRequires:  gcc12
 %endif
 BuildRequires:  libopenssl-devel
 # for tests
-BuildRequires:  python3-requests
+%if 0%{?suse_version} > 0  && 0%{?suse_version} < 1600
+BuildRequires:  python311
+BuildRequires:  python311-PyYAML
+BuildRequires:  python311-pytest
+BuildRequires:  python311-pytest-xdist
+BuildRequires:  python311-requests
+%else
 BuildRequires:  python3-PyYAML
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-xdist
+BuildRequires:  python3-requests
+%endif
 
 %description
 liboqs is a C library for quantum-resistant cryptographic algorithms.
@@ -64,7 +74,13 @@ liboqs is a C library for quantum-resistant cryptographic algorithms.
 See the bundled README.md for particular limitations on intended use.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 0 -p1
+%patch -P 1 -p1
+%patch -P 2 -p1
+%if 0%{?suse_version} > 0  && 0%{?suse_version} < 1600
+%patch -P 3 -p1
+%endif
 
 %build
 export RPM_OPT_FLAGS="%{optflags} -std=gnu11"
@@ -75,7 +91,13 @@ export CC=gcc-12
 
 # 20220702: The %%cmake macro can't be used because a 'CMakeLists.txt' folder
 # exists
-cmake -S . -B build -DBUILD_SHARED_LIBS:BOOL=ON -DOQS_DIST_BUILD:BOOL=ON -DOQS_ENABLE_KEM_HQC=ON
+# s390x has issues with SIG_MQOM and KEM_HQC, likely not endian safe... disable for now
+cmake -S . -B build -DBUILD_SHARED_LIBS:BOOL=ON -DOQS_DIST_BUILD:BOOL=ON -DOQS_ENABLE_KEM_HQC=ON \
+%ifarch s390x
+-DOQS_ENABLE_SIG_MQOM:BOOL=OFF \
+-DOQS_ENABLE_KEM_HQC:BOOL=OFF \
+-DOQS_ENABLE_KEM_NTRUPRIME:BOOL=OFF
+%endif
 
 pushd build
 %cmake_build
