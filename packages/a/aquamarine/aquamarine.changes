@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Jul 28 06:59:50 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to aquamarine version 0.14.0:
+  - A New ABI breaking release:
+     * drm: do not stash failed commits
+     * drm: add support for COLOR_RANGE prop
+     * drm: add frameguard for idle frame
+     * drm: dont set HW_CLOCK on nvidia reporting seq 0
+
+-------------------------------------------------------------------
+Thu Jul 23 16:27:27 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to aquamarine version 0.13.0:
+  - A new major ABI breaking release for aquamarine:
+     * renderer: use version-compatible EGL debug context attributes
+     * drm: fix resource leaks
+     * atomic: fix undefined behavior in cursor plane position cast
+     * frame: ensure only one frame when pageflip occurs
+     * internal: chase hu fixes
+     * backend: fix implicit bool cast
+     * drm: deterministic page-flip scheduling + coalescing (#304,#306)
+     * drm: attach a right-sized swapchain buffer on modeset commits
+     * backend: enable libinput plugins if available
+     * drm: snapshot the commit for stashing
+     * backend/drm: fix dangling "this" in a callback
+     * drm: don't reset needFrame on stashing
+     
+-------------------------------------------------------------------
 Tue Jul 14 10:52:32 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to aquamarine version 0.12.1:
@@ -9,15 +37,18 @@ Tue Jul 14 10:52:32 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
     * backend/headless: fix framecb never firing
   - Changes from version 0.12.0:
     - A New ABI-breaking release
-    * drm: CRTC starvation recovery + clear stale page-flip state after suspend
+    * drm: CRTC starvation recovery + clear stale page-flip state
+      after suspend
     * FormatUtils: null-check drmGetFormatModifierName result
     * drm: skip unchanged connector_state on page-flips
     * backend: avoid duplicate auto-named outputs
     * drm: clear stale color state on modeset
     * drm: re-read EDID on resume to detect dock port swaps
-    * drm: fall back to first render node on single-renderD systems when parent-syspath match fails
+    * drm: fall back to first render node on single-renderD systems
+      when parent-syspath match fails
     * output/state: init ctm to identity
-    * session: Add AQ_NO_KMS_REQUIREMENT environment variable for bypassing KMS requirement
+    * session: Add AQ_NO_KMS_REQUIREMENT environment variable for
+      bypassing KMS requirement
     * backend: remove trailing newlines from libseat and libinput logs
     * Fix DisplayLink/evdi monitor hotplug
     * drm: fix crash on null crtc in getGammaSize/getDeGammaSize
@@ -47,13 +78,17 @@ Tue Jul 14 10:52:32 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
     * drm/renderer: glFlush when clearing buffers
     * drm: re-send ctm blob on modeset
     * Improve and optimize timer FD logic
-    * backend/drm: fix multi-GPU buffer import failure during restoreAfterVT
+    * backend/drm: fix multi-GPU buffer import failure during
+      restoreAfterVT
     * backend: include algorithm header
-    * backend: handle unhandled libinput switch enum with default case
-    * drm: guard logging in connector disconnect to avoid null dereference
+    * backend: handle unhandled libinput switch enum with
+      default case
+    * drm: guard logging in connector disconnect to avoid
+      null dereference
     * libinput: method to get libinput_tablet_tool from ITabletTool
     * CI: use org-wide actions
-    * refactor: avoid repeated vector access in backend and DRM loops
+    * refactor: avoid repeated vector access in backend
+      and DRM loops
     
 -------------------------------------------------------------------
 Mon Dec 29 22:10:17 UTC 2025 - Florian "sp1rit" <sp1rit@disroot.org>
