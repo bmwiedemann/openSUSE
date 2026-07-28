@@ -18,7 +18,7 @@
 
 %define shortname fresh
 Name:           fresh-editor
-Version:        0.4.4
+Version:        0.4.5
 Release:        0
 Summary:        A terminal text editor you can just use
 License:        GPL-2.0-only
