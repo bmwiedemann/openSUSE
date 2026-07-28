@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 16 12:06:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Avoid requiring the /usr/bin/rdoc binary wrapper in bindings/ruby/rdoc
+  This fixes build failures on systems where /usr/bin/rdoc is an ELF
+  executable wrapper instead of a Ruby script.
+  + openwsman-rdoc-no-binary-require.patch
+
+-------------------------------------------------------------------
 Thu Jan 15 14:36:39 UTC 2026 - Klaus Kämpf <kkaempf@suse.de>
 
 - fix Ruby 4.0 build

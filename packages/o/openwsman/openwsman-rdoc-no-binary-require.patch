@@ -1,0 +1,55 @@
+Index: openwsman-2.8.1/bindings/ruby/rdoc
+===================================================================
+--- openwsman-2.8.1.orig/bindings/ruby/rdoc
++++ openwsman-2.8.1/bindings/ruby/rdoc
+@@ -26,30 +26,26 @@
+   usage "Version argument malformed, must be X.Y"
+ end
+ 
+-# can't directly require /usr/bin/rdoc since it does not have a '.rb' extension
+-# work around: create temporary symlink
+-
+-rdoc = "rdoc#{major}_#{minor}.rb"
+-new_rdoc = File.join(home, rdoc)
+-
+-# Symlink ./rdoc.rb to /usr/bin/rdoc
+-#
+-File.symlink("/usr/bin/rdoc", new_rdoc) unless File.symlink?(new_rdoc)
+-
+-begin
+-  if major == 1 && minor == 8
++if major == 1 && minor == 8
++  rdoc = "rdoc#{major}_#{minor}.rb"
++  new_rdoc = File.join(home, rdoc)
++  File.symlink("/usr/bin/rdoc", new_rdoc) unless File.symlink?(new_rdoc)
++  begin
+     require 'parse_swig.rb' # load the swig parser
+-  else
+-    require 'rdoc'
+-
+-    require 'rdoc/encoding'
+-    require 'rdoc/parser'
+-
+-    # Simple must come first
+-    require 'rdoc/parser/simple'
+-    require File.join(home, 'rdoc_parser_swig')
++    require "./#{rdoc}" # load the original rdoc
++  ensure
++    File.delete new_rdoc # Discard the symlink
+   end
+-  require "./#{rdoc}" # load the original rdoc
+-ensure
+-  File.delete new_rdoc # Discard the symlink
++else
++  require 'rdoc'
++  require 'rdoc/rdoc'
++
++  require 'rdoc/encoding'
++  require 'rdoc/parser'
++
++  # Simple must come first
++  require 'rdoc/parser/simple'
++  require File.join(home, 'rdoc_parser_swig')
++
++  RDoc::RDoc.new.document(ARGV)
+ end
