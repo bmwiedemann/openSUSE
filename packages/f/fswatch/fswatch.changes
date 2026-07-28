@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 27 13:11:13 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
+
+- update to 1.22.0
+  * The inotify monitor now appends the kernel-provided child name
+    to MovedFrom and MovedTo event paths while forwarding
+    rename-correlation cookies unchanged.
+
+-------------------------------------------------------------------
 Tue May 12 12:00:31 UTC 2026 - Michal Vyskocil <mvyskocil@opensuse.org>
 
 - use sover macro avoiding the typos in a spec

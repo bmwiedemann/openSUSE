@@ -19,7 +19,7 @@
 %global sover 15
 
 Name:           fswatch
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        Multi platform file change monitor
 License:        GPL-3.0-or-later

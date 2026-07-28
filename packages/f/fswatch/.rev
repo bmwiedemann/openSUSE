@@ -57,4 +57,16 @@ will be a new file changed backend of neovim: https://github.com/neovim/neovim/p
     <comment></comment>
     <requestid>1352738</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9882b6cbe7b7d78f513cd008f71b2cc</srcmd5>
+    <version>1.22.0</version>
+    <time>1785255275</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.22.0
+  * The inotify monitor now appends the kernel-provided child name
+    to MovedFrom and MovedTo event paths while forwarding
+    rename-correlation cookies unchanged.
+</comment>
+    <requestid>1368044</requestid>
+  </revision>
 </revisionlist>
