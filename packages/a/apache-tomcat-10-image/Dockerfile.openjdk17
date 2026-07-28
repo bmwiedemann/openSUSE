@@ -20,6 +20,7 @@
 #!BuildTag: opensuse/apache-tomcat:10.1-openjdk17
 #!BcntSyncTag: apache-tomcat-10-image
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
