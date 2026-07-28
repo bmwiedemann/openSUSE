@@ -110,4 +110,12 @@
   + Update dependencies (forwarded request 1358682 from rrahl0)</comment>
     <requestid>1358683</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>ee9e42c179be6b14cb7f83ec0733209a</srcmd5>
+    <version>0.3.0</version>
+    <time>1785253830</time>
+    <user>dimstar_suse</user>
+    <comment> (forwarded request 1366894 from rrahl0)</comment>
+    <requestid>1366895</requestid>
+  </revision>
 </revisionlist>

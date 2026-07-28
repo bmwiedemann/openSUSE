@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 %define         pyname modern_colorthief
 Name:           python-modern-colorthief
 Version:        0.3.0
@@ -29,10 +30,12 @@ BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module maturin}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core}
+BuildRequires:  alts
 BuildRequires:  cargo
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
+Requires:       alts
 %python_subpackages
 
 %description
@@ -48,6 +51,7 @@ Python-modern-colorthief is a rewritten rust python-colorthief replacement
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/modern-colorthief
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_group_libalternatives modern-colorthief
 
 %check
 # the singular test is relying on the old abandoned python-colorthief.
