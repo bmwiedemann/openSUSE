@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Tue Jul 28 11:25:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.44:
+  * Added
+    - config: read .editorconfig when a project opts in (c215175)
+    - md085: add opt-in rule for paragraph continuation indentation
+      (f929e82)
+    - md063: add sentence-case-restart-after option (498d922)
+    - md041: add allow-preamble option (72ca4f4)
+    - md013: add math-blocks option to exempt display math from the
+      length check (e75ea67)
+  * Fixed
+    - md013: don't reflow display math blocks or the prose written
+      against their delimiters (bda0cc5, c03c883)
+    - watch: re-run when a config above the watched path changes
+      (d085756)
+    - lsp: stop caching a config that could not be resolved
+      (151f8e2)
+    - lsp: resolve to defaults when a file's config cannot be
+      loaded (76165f9)
+    - lsp: surface a broken user config instead of falling back to
+      a parent (0c315ea)
+    - lsp: resolve a discovered config the same way the CLI does
+      (a6724d2)
+    - md013: wrap paragraphs before numbers that only look like
+      list markers (099a900)
+    - md037,md052: check emphasis and references inside table cells
+      (0e4859c)
+
+-------------------------------------------------------------------
+Mon Jul 27 04:56:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.43:
+  * Added
+    - invisiblechars: new rule MD084 for detecting invisible
+      characters (#758) (0a6354a)
+  * Fixed
+    - md084: treat a zero width joiner between visible characters
+      as presentation (4fbb1cc)
+    - md084: keep attached variation selectors in
+      consecutive-character detection (f4e9fd3)
+    - md084: don't flag variation selectors attached to a base
+      character (14941bb)
+- Update to version 0.2.43:
+  * Added
+    - mojibake: new rule MD083 for mojibake detection (#753)
+      (552842b)
+  * Fixed
+    - lint_context: prevent panic when HTML tag window splits a
+      UTF-8 char (d14b252)
+
+-------------------------------------------------------------------
 Thu Jul 23 11:07:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.41:
