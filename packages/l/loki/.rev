@@ -1034,4 +1034,20 @@
     <comment></comment>
     <requestid>1353068</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>d6712fa3f56a4ff14893132403f33fa9</srcmd5>
+    <version>3.7.3</version>
+    <time>1782916905</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362771</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>6ad2ccf7a45b9542fd91de36fe029c98</srcmd5>
+    <version>3.7.4</version>
+    <time>1785253896</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367833</requestid>
+  </revision>
 </revisionlist>

@@ -27,7 +27,7 @@
 %global promtail_binaries promtail
 
 Name:           loki
-Version:        3.7.2
+Version:        3.7.4
 Release:        0
 Summary:        Loki: like Prometheus, but for logs
 License:        Apache-2.0
@@ -45,9 +45,9 @@ Source8:        promtail.target
 Source99:       series
 Patch0:         proper-data-directories.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  go1.26 >= 1.26.5
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-devel
-BuildRequires:  golang(API) >= 1.26
 Requires:       logcli = %{version}
 Requires(pre):  group(loki)
 Requires(pre):  user(loki)
@@ -179,11 +179,10 @@ install -D -m 0750 -d %{buildroot}%{promtail_datadir}
 %service_del_preun %{loki_services}
 
 %postun
-%service_del_postun %{loki_services} \
+%service_del_postun %{loki_services}
 %if %{with promtail}
-%{promtail_services} \
+%service_del_postun %{promtail_services}
 %endif
-%{nil}
 
 %if %{with promtail}
 %pre -n promtail
