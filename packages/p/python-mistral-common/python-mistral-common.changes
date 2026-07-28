@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Jul 21 06:13:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.11.6:
+  * Auto-select grammar variant from tokenizer
+  * Audio validation fixes: raise ValueError on invalid chunks and
+    reject AudioConfig with sampling_rate below frame_rate
+  * SentencePiece: decode normal tokens under SpecialTokenPolicy.RAISE
+  * Fix seed field not bridged in SpeechRequest OpenAI conversion
+- Drop stray macOS .DS_Store metadata shipped inside the sdist
+
+-------------------------------------------------------------------
 Sun Jul 12 13:56:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-mistral-common 1.11.5

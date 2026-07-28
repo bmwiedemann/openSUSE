@@ -1,7 +1,7 @@
 #
 # spec file for package python-mistral-common
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,8 @@
 #
 
 
-%{?sle15_python_module_pythons}
 Name:           python-mistral-common
-Version:        1.11.5
+Version:        1.11.6
 Release:        0
 Summary:        Library of common utilities for Mistral AI
 License:        Apache-2.0
@@ -58,6 +57,8 @@ so multimodal image inputs can be processed.
 
 %prep
 %autosetup -p1 -n mistral_common-%{version}
+# Drop stray macOS metadata accidentally shipped inside the sdist.
+find . -name .DS_Store -delete
 # The sdist omits the license file upstream declares; carry it in from Source1.
 cp %{SOURCE1} .
 

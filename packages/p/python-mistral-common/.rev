@@ -7,4 +7,17 @@
     <comment>New package, forwarded from devel:languages:python (dependency for vllm).</comment>
     <requestid>1365273</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>06d558eb66ffe25ffeac893847792587</srcmd5>
+    <version>1.11.6</version>
+    <time>1785253827</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.11.6:
+  * Auto-select grammar variant from tokenizer
+  * Audio validation fixes (invalid chunks, sampling_rate &lt; frame_rate)
+  * SentencePiece: decode normal tokens under SpecialTokenPolicy.RAISE
+  * Fix seed field not bridged in SpeechRequest OpenAI conversion
+- Drop stray macOS .DS_Store metadata shipped inside the sdist</comment>
+    <requestid>1366869</requestid>
+  </revision>
 </revisionlist>
