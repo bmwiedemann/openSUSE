@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 27 04:06:00 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * libreadline-java-javadoc.patch
+    + run javadoc with -notimestamp option for reproducible builds
+
+-------------------------------------------------------------------
 Sun Sep 29 19:46:58 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Fix build after removal of the default %%{java_home} define

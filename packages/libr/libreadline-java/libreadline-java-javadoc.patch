@@ -1,0 +1,11 @@
+--- libreadline-java-0.8.3/Makefile	2026-07-27 06:00:01.834822875 +0200
++++ libreadline-java-0.8.3/Makefile	2026-07-27 06:01:31.302262971 +0200
+@@ -179,7 +179,7 @@
+ apidoc: $(APIDIR)
+ 	$(JAVA_HOME)/bin/javadoc -sourcepath src -d $(APIDIR) -windowtitle $(WTITLE) \
+                 -doctitle $(DTITLE) -footer $(DFOOTER) -header $(DHEADER) \
+-                -bottom $(DBOTTOM) \
++                -bottom $(DBOTTOM) -notimestamp \
+                 -version -author org.gnu.readline $(JAVADOC_FLAGS) test
+ 
+ install: jar build-native apidoc
