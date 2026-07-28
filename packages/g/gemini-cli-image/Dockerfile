@@ -20,6 +20,7 @@
 #!BuildTag: opensuse/gemini-cli:0
 #!BuildTag: opensuse/gemini-cli:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/node:24-micro AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
