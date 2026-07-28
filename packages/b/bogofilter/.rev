@@ -388,4 +388,12 @@ Thanks Martin for the alternatives implementation!
     <comment>Spec cleanup: add gcc+make BuildRequires, convert -devel deps to pkgconfig(), use %make_build/%license/%{?ext_man}, drop %defattr and dead suse_version==1310 conflicts, https URLs</comment>
     <requestid>1356775</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>4f352986deb7d7b7d9d2b4717b787ac2</srcmd5>
+    <version>1.2.5</version>
+    <time>1785253744</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.2.5: KyotoCabinet const-ness fix (also speeds up LMDB/SQLite3 full-database operations), memory leaks plugged in bogoutil/bogotune, static library builds removed upstream. Drops bogofilter-kyotocabinet.patch (backend is upstream now) and the autoreconf step; switches to the .tar.xz tarball. All three multibuild flavors built clean.</comment>
+    <requestid>1367785</requestid>
+  </revision>
 </revisionlist>

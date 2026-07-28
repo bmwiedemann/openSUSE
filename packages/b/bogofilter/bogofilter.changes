@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:12:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.5:
+  * KyotoCabinet driver const-ness fix that also improves
+    performance of full-database operations for LMDB and SQLite3
+  * Plug one-shot memory leaks in bogoutil and bogotune
+  * Remove support for static library builds
+  * Add an OBITUARY file for founder David M. Relson; Matthias
+    Andree has been the maintainer since 2013
+- Drop bogofilter-kyotocabinet.patch: the Kyoto Cabinet backend
+  is part of the upstream release now
+- Drop the autoreconf call and the autoconf/automake
+  BuildRequires: nothing patches configure.ac anymore and the
+  tarball ships configure
+- Switch Source to the .tar.xz tarball; 1.2.5 is not published
+  as .tar.bz2
+- Drop doc/rpm.notes.BerkeleyDB from the doc subpackage: removed
+  upstream together with the RPM build scripts
+- Delete automake .dirstamp files from the buildroot; 1.2.5
+  installs them into the data directory
+- Cleanup spec file: drop an empty leftover suse_version
+  conditional in %prep
+
+-------------------------------------------------------------------
 Tue Jun  2 16:00:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

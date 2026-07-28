@@ -34,18 +34,15 @@ ExclusiveArch:  do-not-build
 %endif
 %define _name   bogofilter
 Name:           %{_name}%{?dash}%{?flavor}%{?src}
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Fast Anti-Spam Filtering by Bayesian Statistical Analysis
 License:        GPL-2.0-or-later
 URL:            https://bogofilter.sourceforge.net/
-Source:         https://downloads.sourceforge.net/bogofilter/bogofilter-%{version}.tar.bz2
+Source:         https://downloads.sourceforge.net/bogofilter/bogofilter-%{version}.tar.xz
 Source10:       README.SUSE
 # PATCH-FEATURE-OPENSUSE bogofilter-kyotocabinet.patch --replace tokyocabinet with kyotocabinet following
 # tokyocabinet recommendations
-Patch0:         bogofilter-kyotocabinet.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
 BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  make
@@ -133,12 +130,8 @@ This package contains %{_name} build with the libdb backend.
 
 %prep
 %setup -q -n %{_name}-%{version}
-%if 0%{?suse_version} > 1320
-%patch -P 0 -p1
-%endif
 
 %build
-autoreconf -fiv
 %configure \
 	--with-database=%{flavor} \
 	--program-suffix=-%{flavor}
@@ -185,6 +178,10 @@ rm %{buildroot}/%{_bindir}/bogoupgrade-*
 rm %{buildroot}/%{_mandir}/man1/bogoupgrade-*
 rm %{buildroot}/%{_sysconfdir}/bogofilter.cf.example
 %endif
+
+# the contrib/ copy loop above picks up automake's .dirstamp bookkeeping
+# files, which 1.2.5 leaves in the source tree
+find %{buildroot} -name '.dirstamp' -delete
 
 %if "%{flavor}" == "kyotocabinet"
 %post -n %{_name}-kyotocabinet
@@ -264,7 +261,7 @@ fi
 %doc AUTHORS GETTING.STARTED NEWS README* RELEASE.NOTES*
 %doc TODO bogofilter.cf.example
 %doc doc/README* doc/bogofilter-SA-* doc/*.html doc/integrating*
-%doc doc/programmer/ doc/rpm.notes.BerkeleyDB
+%doc doc/programmer/
 %doc %{_defaultdocdir}/bogofilter-doc/README.SUSE
 %{_mandir}/man1/bogofilter.1%{?ext_man}
 %{_mandir}/man1/bogolexer.1%{?ext_man}
