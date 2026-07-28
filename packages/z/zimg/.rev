@@ -536,4 +536,12 @@
   * zimg-s390x-unit-tests.patch</comment>
     <requestid>1306077</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>035076765847192eecc71a6781d1ad68</srcmd5>
+    <version>3.0.6+20260720.g1ad1895</version>
+    <time>1785253769</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367976</requestid>
+  </revision>
 </revisionlist>

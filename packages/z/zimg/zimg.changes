@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:57:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.6+20260720.g1ad1895:
+  * colorspace: add chromatic adaptation support, disabled by
+    default (new zfilter_graph_builder_params field, required by
+    VapourSynth R78)
+  * colorspace: add BT.1361 transfer characteristics, simplify the
+    xvYCC EOTF, add FMA and F16C feature checks, fix the hash
+    function and an assertion on 240M->709 gamma
+  * depth: add NEON-optimized error diffusion dithering
+  * resize: fix integer weight rounding compensation and impose a
+    maximum tap count on Lanczos
+  * Fix out-of-bounds accesses in several SIMD code paths: the
+    AVX2 u16 permute resizer load, AVX2 and NEON ordered dither
+    reads, NEON error diffusion read, NEON float-to-half write,
+    NEON byte-to-word left-shift read and the AVX2 unresize
+    buffer size calculation
+  * unresize: special-case the LU decomposition of a 1x1 matrix
+    and use double epsilon
+  * common: fix matrix row offset tracking after compaction
+  * graph: fix the 64-byte alignment check, rename factory to
+    observer
+  * Update the bundled graphengine
+  * Test-only, MSVC/Windows and example-code changes omitted here
+
+-------------------------------------------------------------------
 Sat Sep 20 00:34:55 UTC 2025 - Mia Herkt <mia@0x0.st>
 
 - Update to version 3.0.6+20250919.gdf9c147:
