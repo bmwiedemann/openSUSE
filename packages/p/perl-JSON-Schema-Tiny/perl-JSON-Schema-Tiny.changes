@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:49:29 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.34.0 (0.034)
+   see /usr/share/doc/packages/perl-JSON-Schema-Tiny/Changes
+
+  0.034     2026-07-03 17:38:43Z
+            - removed dependency on namespace::clean
+            - config option "max_traversal_depth" has been renamed to
+              "max_depth"
+            - marked a problematic bigint test as todo (see issue #9)
+
+-------------------------------------------------------------------
 Sat Jun 27 20:11:09 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.33.0 (0.033)
