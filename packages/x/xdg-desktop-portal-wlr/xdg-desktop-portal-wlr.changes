@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Jul 28 17:33:42 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
+
+- Update to 0.8.4:
+  * Fix source selection not working when portal client does not specify
+    source type.
+  * Fix stream freezing on PipeWire buffer starvation.
+
+-------------------------------------------------------------------
 Thu Jun 18 16:00:58 UTC 2026 - Arnav Singh <opensuse@arnavion.dev>
 
 - Update maintainer GPG key.

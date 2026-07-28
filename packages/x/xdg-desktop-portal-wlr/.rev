@@ -155,4 +155,15 @@
   * Update maintainer GPG key.</comment>
     <requestid>1360282</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>64704d4c3470eb5376c430dc4e864a29</srcmd5>
+    <version>0.8.4</version>
+    <time>1785266608</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.4:
+  * Fix source selection not working when portal client does not specify
+    source type.
+  * Fix stream freezing on PipeWire buffer starvation.</comment>
+    <requestid>1368241</requestid>
+  </revision>
 </revisionlist>
