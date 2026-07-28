@@ -20,6 +20,7 @@
 #!BuildTag: opensuse/bci/php-apache:8
 #!BuildTag: opensuse/bci/php-apache:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/tumbleweed:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
