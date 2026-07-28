@@ -17,7 +17,7 @@
 
 
 Name:           regreet
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        Customizable greeter for greetd
 License:        0BSD AND CC0-1.0 AND GPL-3.0-or-later AND MIT
@@ -32,7 +32,7 @@ BuildRequires:  greetd
 BuildRequires:  rust >= 1.75
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.16
 BuildRequires:  pkgconfig(pango)
 Requires:       greetd
 Recommends:     adwaita-icon-theme
