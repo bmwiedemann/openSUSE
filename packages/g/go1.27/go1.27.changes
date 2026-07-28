@@ -1,0 +1,17 @@
+-------------------------------------------------------------------
+Tue Jul  7 19:42:34 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.27rc2 (released 2026-07-07) is a release candidate version of
+  go1.27 cut from the master branch at the revision tagged
+  go1.27rc2.
+  Refs boo#1272545 go1.27 release tracking
+  * go1.27 requires go1.24.6 or later for bootstrap.
+
+-------------------------------------------------------------------
+Thu Jun 18 19:54:05 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.27rc1 (released 2026-06-18) is a release candidate version of
+  go1.27 cut from the master branch at the revision tagged
+  go1.27rc1.
+  Refs boo#1272545 go1.27 release tracking
+  * go1.27 requires go1.24.6 or later for bootstrap.
