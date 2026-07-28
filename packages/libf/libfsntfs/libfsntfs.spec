@@ -1,7 +1,7 @@
 #
 # spec file for package libfsntfs
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 %define lname	libfsntfs1
 Name:           libfsntfs
-Version:        20251028
+Version:        20260727
 Release:        0
 Summary:        Library and tools to access the NTFS filesystem
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -36,23 +36,23 @@ BuildRequires:  c_compiler
 BuildRequires:  pkg-config
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(fuse3) >= 3.0
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfusn) >= 20240416
-BuildRequires:  pkgconfig(libfwnt) >= 20240415
-BuildRequires:  pkgconfig(libhmac) >= 20240417
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfusn) >= 20260522
+BuildRequires:  pkgconfig(libfwnt) >= 20260602
+BuildRequires:  pkgconfig(libhmac) >= 20260522
+BuildRequires:  pkgconfig(libuna) >= 20260602
 %python_subpackages
 # Various notes: https://en.opensuse.org/libyal
 
@@ -121,7 +121,7 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files -n %name-tools
 %_bindir/fsntfs*
-%_mandir/man1/fsntfsinfo.1*
+%_mandir/man1/fsntfs*.1*
 
 %files -n %name-devel
 %_includedir/libfsntfs.h
@@ -132,6 +132,6 @@ find "%buildroot" -type f -name "*.la" -delete -print
 
 %files %python_files
 %license COPYING*
-%python_sitearch/pyfsntfs.so
+%python_sitearch/pyfsntfs*
 
 %changelog
