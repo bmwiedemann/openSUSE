@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:21:27 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 9.0.120
+  * Fixed CVEs:
+    + CVE-2026-59084: The requirements to secuely configure the
+      EncryptInterceptor were not clearly documented. (bsc#1271398)
+    + CVE-2026-59083: Incorrect decoding of + in rewritten URIs to a single
+      space could allow security control bypass for some configurations.
+      (bsc#1271397)
+  * Catalina
+    + Fix: Avoid a race condition with concurrent lookups for a singleton JNDI
+      resource. (markt)
+    + Fix: Improve the performance of range validation for the default
+      servlet. (markt)
+    + Fix: Avoid NPE in RewriteValve. (markt)
+    + Fix: 70127: Fix use of Bootstrap through reflection by restoring the
+      public constructor. Use through scripts was not affected. (remm)
+    + Fix: Restore ability to extend many element classes from
+      AbstractAccessLogValve. (remm)
+    + Fix: Align DIGEST authentication with RFC 7616 and require clients to
+      provide a valid qop parameter. (markt)
+    + Fix: Use Files API to create temporary docBase when antiLockingDocBase
+      is enabled. (markt)
+    + Fix: Improve validation of configuration when DataSourceRealm starts.
+      (remm)
+    + Fix: JAASRealm should do a logout if login does not fail outright but
+      does not produce a Principal. (remm)
+    + Fix: Various edge cases for SSI substitutions, quoting and escaping.
+      (remm)
+    + Fix: unintentional conversion of literal + to a space during rule
+      processing in the RewriteValve. (markt)
+  * Coyote
+    + Fix: Avoid a potential JVM crash if a suitable version of Tomcat Native
+      is not available when the connector is explicitly configured to use
+      Tomcat Native with OpenSSL for TLS. (markt)
+    + Fix: Correct a regression introduced in 9.0.119 that broke reading of
+      some request bodies via a Reader. (markt)
+  * Jasper
+    + Fix: 70120: The fix for 69399 (itself a fix for a regression in the fix
+      for 69333) was incomplete and tags that threw exceptions in doStartTag()
+      and doEndTag() were incorrectly re-used. This fix prevents tags from
+      being re-used if such an exception occurs. (markt)
+    + Fix: 70135: Fix security classload regression. (remm)
+    + Add: support for specifying Java 28 (with the value 28) as the compiler
+      source and/or compiler target for JSP compilation. If used with an
+      Eclipse JDT compiler version that does not support these values, a
+      warning will be logged and the default will be used. (markt)
+  * WebSocket
+    + Fix: 70126: Fix WebSocket extension permessage-deflate so that it does
+      not drop bytes if a compressed message inflates to more than the
+      available buffer. Fix written by GPT-5.5. Test case written by Hironori
+      Ichimiya. (markt)
+    + Fix: Optimise WebSocket client processing of server responses during
+      WebSocket HTTP upgrade process. (markt)
+  * Other
+    + Update: Byte Buddy to 1.18.9. (markt)
+    + Update: UnboundID to 7.0.5. (markt)
+    + Update: JaCoCo to 0.8.15. (markt)
+    + Update: BND to 7.3.0. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations provided by tak7iji. (markt)
+
+-------------------------------------------------------------------
 Wed Jul  1 12:44:51 UTC 2026 - Ricardo Mestre <ricardo.mestre@suse.com>
 
 - Update to Tomcat 9.0.119
