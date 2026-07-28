@@ -676,4 +676,23 @@ Personally I would make this even &quot;required&quot; instead of
    see /usr/share/doc/packages/perl-Net-DNS/Changes</comment>
     <requestid>1359243</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>90f304e273bcd09725a404d84b1df34e</srcmd5>
+    <version>1.560.0</version>
+    <time>1785253790</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.560.0 (1.56)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes
+  Fix rt.cpan.org #180088
+        Documentation issue for Net::DNS::RR::RRSIG::verify()
+  Fix rt.cpan.org #179946
+        Denial of Service via long DNS compression chains
+        CVE-2026-64194 bsc#1272214
+  Fix rt.cpan.org #179945
+        Remote code injection via EDNS EXTENDED ERROR
+        CVE-2026-64193 bsc#1272212
+  Fix rt.cpan.org #179692/#176900
+        UNIX.pm: Unreachable code warning using Apache/mod_perl</comment>
+    <requestid>1368056</requestid>
+  </revision>
 </revisionlist>

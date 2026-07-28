@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Jul 18 07:10:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.560.0 (1.56)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes
+
+  Fix rt.cpan.org #180088
+        Documentation issue for Net::DNS::RR::RRSIG::verify()
+  Fix rt.cpan.org #179946
+        Denial of Service via long DNS compression chains
+        CVE-2026-64194 bsc#1272214
+  Fix rt.cpan.org #179945
+        Remote code injection via EDNS EXTENDED ERROR
+        CVE-2026-64193 bsc#1272212
+  Fix rt.cpan.org #179692/#176900
+        UNIX.pm: Unreachable code warning using Apache/mod_perl
+
+-------------------------------------------------------------------
 Thu Jun 11 23:39:58 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.550.0 (1.55)

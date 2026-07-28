@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.550.0
+Version:        1.560.0
 Release:        0
-# 1.55 -> normalize -> 1.550.0
-%define cpan_version 1.55
+# 1.56 -> normalize -> 1.560.0
+%define cpan_version 1.56
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -74,7 +74,7 @@ Requires:       perl(overload) >= 1.06
 #Requires:       perl(warnings) >= 1.0501
 Provides:       perl(Net::DNS) = %{version}
 Provides:       perl(Net::DNS::Domain) = 2002.0.0
-Provides:       perl(Net::DNS::DomainName) = 2005.0.0
+Provides:       perl(Net::DNS::DomainName) = 2054.0.0
 Provides:       perl(Net::DNS::DomainName1035)
 Provides:       perl(Net::DNS::DomainName2535)
 Provides:       perl(Net::DNS::Header) = 2042.0.0
@@ -83,7 +83,7 @@ Provides:       perl(Net::DNS::Mailbox1035)
 Provides:       perl(Net::DNS::Mailbox2535)
 Provides:       perl(Net::DNS::Nameserver) = 2002.0.0
 Provides:       perl(Net::DNS::Packet) = 2003.0.0
-Provides:       perl(Net::DNS::Parameters) = 2046.0.0
+Provides:       perl(Net::DNS::Parameters) = 2054.0.0
 Provides:       perl(Net::DNS::Question) = 2002.0.0
 Provides:       perl(Net::DNS::RR) = 2037.0.0
 Provides:       perl(Net::DNS::RR::A) = 2003.0.0
@@ -98,7 +98,7 @@ Provides:       perl(Net::DNS::RR::CDS) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CERT) = 2042.0.0
 Provides:       perl(Net::DNS::RR::CNAME) = 2003.0.0
 Provides:       perl(Net::DNS::RR::CSYNC) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DELEG) = 2046.0.0
+Provides:       perl(Net::DNS::RR::DELEG) = 2053.0.0
 Provides:       perl(Net::DNS::RR::DHCID) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNAME) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNSKEY) = 2042.0.0
@@ -131,7 +131,7 @@ Provides:       perl(Net::DNS::RR::NSEC3) = 2003.0.0
 Provides:       perl(Net::DNS::RR::NSEC3PARAM) = 2003.0.0
 Provides:       perl(Net::DNS::RR::NULL) = 2002.0.0
 Provides:       perl(Net::DNS::RR::OPENPGPKEY) = 2003.0.0
-Provides:       perl(Net::DNS::RR::OPT) = 2005.0.0
+Provides:       perl(Net::DNS::RR::OPT) = 2054.0.0
 Provides:       perl(Net::DNS::RR::OPT::CHAIN)
 Provides:       perl(Net::DNS::RR::OPT::CLIENT_SUBNET)
 Provides:       perl(Net::DNS::RR::OPT::COOKIE)
@@ -150,9 +150,9 @@ Provides:       perl(Net::DNS::RR::PTR) = 2002.0.0
 Provides:       perl(Net::DNS::RR::PX) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RESINFO) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RP) = 2002.0.0
-Provides:       perl(Net::DNS::RR::RRSIG) = 2042.0.0
+Provides:       perl(Net::DNS::RR::RRSIG) = 2057.0.0
 Provides:       perl(Net::DNS::RR::RT) = 2003.0.0
-Provides:       perl(Net::DNS::RR::SIG) = 2042.0.0
+Provides:       perl(Net::DNS::RR::SIG) = 2057.0.0
 Provides:       perl(Net::DNS::RR::SMIMEA) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SOA) = 2002.0.0
 Provides:       perl(Net::DNS::RR::SPF) = 2003.0.0
@@ -167,10 +167,10 @@ Provides:       perl(Net::DNS::RR::URI) = 2003.0.0
 Provides:       perl(Net::DNS::RR::X25) = 2002.0.0
 Provides:       perl(Net::DNS::RR::ZONEMD) = 2003.0.0
 Provides:       perl(Net::DNS::Resolver) = 2017.0.0
-Provides:       perl(Net::DNS::Resolver::Base) = 2049.0.0
+Provides:       perl(Net::DNS::Resolver::Base) = 2057.0.0
 Provides:       perl(Net::DNS::Resolver::MSWin32) = 2002.0.0
 Provides:       perl(Net::DNS::Resolver::Recurse) = 2002.0.0
-Provides:       perl(Net::DNS::Resolver::UNIX) = 2046.0.0
+Provides:       perl(Net::DNS::Resolver::UNIX) = 2053.0.0
 Provides:       perl(Net::DNS::Resolver::android) = 2007.0.0
 Provides:       perl(Net::DNS::Resolver::cygwin) = 2002.0.0
 Provides:       perl(Net::DNS::Resolver::os2) = 2007.0.0
