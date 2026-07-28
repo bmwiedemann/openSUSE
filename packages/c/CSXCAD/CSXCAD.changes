@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 26 15:04:02 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Fix build broken after dependency changes, add
+  fix_cout_namespace.patch
+
+-------------------------------------------------------------------
 Thu Oct  2 10:10:29 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on libboost_system-devel,

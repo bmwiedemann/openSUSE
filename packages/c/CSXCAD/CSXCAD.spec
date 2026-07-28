@@ -1,7 +1,7 @@
 #
 # spec file for package CSXCAD
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,6 +30,8 @@ Source0:        https://github.com/thliebig/%{name}/archive/v%{version}.tar.gz#/
 Patch0:         boost.patch
 # PATCH-FIX-OPENSUSE CSXCAD-octave-AppCSXCAD-load.patch -- Fix AppCSXCAD.sh load
 Patch3:         CSXCAD-octave-AppCSXCAD-load.patch
+# PATCH-FIX-UPSTREAM -- https://github.com/thliebig/CSXCAD/commit/51ea4bbbdce6.patch
+Patch4:         fix_cout_namespace.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module matplotlib}
 BuildRequires:  %{python_module numpy}
