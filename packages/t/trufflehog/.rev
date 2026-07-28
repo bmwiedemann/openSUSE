@@ -2775,4 +2775,12 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>- Add LGPL-3.0-or-later (APK parsing lib) and MPL-2.0 (golang-lru) (forwarded request 1365342 from lkocman)</comment>
     <requestid>1365387</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>e7a9618997aadd66052ce8a28faa6679</srcmd5>
+    <version>3.96.0</version>
+    <time>1785254078</time>
+    <user>dimstar_suse</user>
+    <comment>update to 3.96.0 (forwarded request 1367861 from ojkastl_buildservice)</comment>
+    <requestid>1367865</requestid>
+  </revision>
 </revisionlist>

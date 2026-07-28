@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Jul 27 04:58:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.96.0:
+  * fix(handlers): apk handler now doesnt check for apk extension since json-enumerator and other byte stream methods wouldnt have it (#5151)
+  * fix(detectors/posthog): widen phx_ key body to {43,48} (#5133)
+  * [chore] Change job_id in metric to source_type (#5149)
+  * updated detector to include underscore char (#5121)
+  * Fix `scan_all_installations` Rejecting Org Member Personal Repos (#5142)
+  * Retry git clone on transient network errors (#5132)
+  * Update module github.com/go-git/go-git/v5 to v5.19.1 [SECURITY] (#5034)
+  * document Config.SourceManager (#5002)
+  * Log analyze errors for HuggingFace analyzer (#5130)
+  * Log analyze errors for Postgres analyzer (#5131)
+  * [INS-255] Updated datadog detector to set verificationError in case of a verification error (#4661)
+  * [Feature] Added SonarQube Cloud "Scoped Organization Token" Detector (#4739)
+  * [INS-312] Duo API Secret Key Detector (#4771)
+  * Update Cloudflare detectors for 2026+ prefixed credential formats (include upstream PR changes) (#5111)
+  * Add metrics for chunks and results (#5128)
+  * Log analyze errors for Anthropic Analyzer (#5120)
+  * Fix GitLab project metadata cache and switch to LRU (#4727)
+  * [INT-718] Add TargetNotFoundError for targeted scan targets missing from the source (#5123)
+  * fix(jiratoken/v1): only verify when the response body contains the authenticated user (#5122)
+  * [INS-355] Added Hashicorp vault token detector (#4819)
+
+-------------------------------------------------------------------
 Mon Jul 13 12:08:26 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Add LGPL-3.0-or-later (APK parsing lib) and MPL-2.0 (golang-lru)
