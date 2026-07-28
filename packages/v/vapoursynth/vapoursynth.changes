@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Jul 25 19:11:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version R78:
+  * Building now requires a C++20 capable compiler
+  * Fix multiple rare threading issues, most notably a deadlock
+    when a synchronous getFrame() is called from a filter while
+    a pipeline flush is in progress
+  * Add the AudioResample filter for sample rate, channel layout
+    and sample format conversion
+  * Add turn90 and turn270 functions
+  * Fix audiogain and audiomix corrupting audio with a bit depth
+    between 17 and 31 bits (most commonly 24 bit)
+  * Add a basic avx512 CPU instruction level on x86-64; zen4
+    level binaries now also run on Intel Ice Lake and later
+  * Add the chromatic_adaptation argument to the resize filters
+  * Fix the levels filter ignoring gamma/max_in/min_in values on
+    the second and third planes
+  * Many Python binding fixes around core destruction and frame
+    lifetime, including potential deadlocks
+- Rebase vapoursynth-fhs-install.patch onto the R78 meson.build
+  (upstream dropped link_with from the library target)
+- Require zimg-devel >= 3.0.6+20260720 instead of
+  pkgconfig(zimg) >= 3.0.5: the new chromatic_adaptation resize
+  argument needs a zimg with that field, and zimg.pc still
+  reports 3.0.6 for it
+
+-------------------------------------------------------------------
 Sun Jun 21 18:03:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Extend vapoursynth-fhs-install.patch to also fix vapoursynth.pc:

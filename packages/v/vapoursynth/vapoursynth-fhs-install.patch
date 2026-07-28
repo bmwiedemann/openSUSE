@@ -1,15 +1,15 @@
---- a/meson.build	2026-06-16 08:31:18.000000000 +0200
-+++ b/meson.build	2026-06-21 20:03:20.989544203 +0200
-@@ -200,7 +200,7 @@
+--- a/meson.build
++++ b/meson.build
+@@ -223,7 +223,7 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
 -    install_dir: install_dir,
 +    install_dir: get_option('libdir'),
-     link_with: libs,
      name_prefix: '',
      soversion: soversion,
-@@ -240,7 +240,8 @@
+ )
+@@ -262,7 +262,8 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
@@ -19,7 +19,7 @@
  )
  
  vsscript_dep = declare_dependency(
-@@ -266,7 +267,7 @@
+@@ -288,7 +289,7 @@
      dependencies: vsscript_dep,
      gnu_symbol_visibility: 'hidden',
      install: true,
@@ -28,7 +28,7 @@
      install_rpath: '$ORIGIN',
      link_args: link_args,
  )
-@@ -304,15 +305,19 @@
+@@ -494,15 +495,19 @@
      'include',
      exclude_directories: 'cython',
      exclude_files: ['VapourSynth.h', 'VSHelper.h'],
@@ -50,8 +50,8 @@
 +    install_dir: get_option('libdir') / 'pkgconfig',
      output: 'vapoursynth.pc',
  )
---- a/vapoursynth.pc.in	2026-06-16 08:31:18.000000000 +0200
-+++ b/vapoursynth.pc.in	2026-06-21 20:03:20.989544203 +0200
+--- a/vapoursynth.pc.in
++++ b/vapoursynth.pc.in
 @@ -1,7 +1,9 @@
 -prefix=${pcfiledir}/..
 -includedir=${prefix}/include

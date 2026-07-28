@@ -370,4 +370,12 @@ Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
     <comment>Fix vapoursynth.pc (FHS-correct prefix/includedir/libdir + Libs) so dependent software (mpv) builds again; addresses the pkgconfig part of boo#1268226 and the R77 review comment (forwarded request 1360908 from pluskalm)</comment>
     <requestid>1360909</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e60d3ee13a71b33735dcef351a91130</srcmd5>
+    <version>78</version>
+    <time>1785265256</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version R78: C++20 required, AudioResample filter, threading deadlock fixes, avx512 CPU level, chromatic_adaptation resize argument. NOTE: needs the zimg update submitted as SR 1367777 (multimedia:libs) - the new chromatic_adaptation field. FHS patch rebased.</comment>
+    <requestid>1367779</requestid>
+  </revision>
 </revisionlist>

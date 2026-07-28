@@ -18,7 +18,7 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        77
+Version:        78
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
@@ -41,7 +41,11 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tesseract)
-BuildRequires:  pkgconfig(zimg) >= 3.0.5
+# R78 uses zfilter_graph_builder_params.chromatic_adaptation, which zimg
+# only gained in its 2026-07-20 master snapshot; zimg.pc still reports
+# 3.0.6, so the constraint has to be expressed on the package instead of
+# pkgconfig(zimg).
+BuildRequires:  zimg-devel >= 3.0.6+20260720
 Obsoletes:      plugin-eedi3
 Obsoletes:      plugin-imwri
 Obsoletes:      plugin-miscfilters
