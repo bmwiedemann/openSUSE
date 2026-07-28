@@ -1,7 +1,7 @@
 #
 # spec file for package python-bqplot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,10 +16,7 @@
 #
 
 
-# https://github.com/bqplot/bqplot/issues/1639
-%define skip_python312 1
-%define skip_python313 1
-%define         pyver 0.12.45
+%define         pyver 0.13.1
 %define         jupver 0.5.46
 Name:           python-bqplot
 Version:        %{pyver}
@@ -28,11 +25,12 @@ Summary:        Interactive plotting package for the Jupyter notebook
 License:        Apache-2.0
 URL:            https://github.com/bqplot/bqplot
 Source0:        https://github.com/bqplot/bqplot/archive/refs/tags/%{pyver}.tar.gz#/bqplot-%{pyver}-gh.tar.gz
-Source1:        node_modules.tar.xz
-# Script to vendor node_modules sources
-Source2:        create_node_modules.sh
-# PATCH-FIX-OPENSUSE bqplot-js.patch boo#1248431 CVE-2025-9287 CVE-2025-9288
-Patch0:         bqplot-js.patch
+# package-lock.json file generated with command:
+# npm install --package-lock-only --legacy-peer-deps --ignore-scripts
+Source2:        package-lock.json
+# node_modules generated using "osc service mr" with the https://github.com/openSUSE/obs-service-node_modules
+Source3:        node_modules.spec.inc
+%include        %{_sourcedir}/node_modules.spec.inc
 BuildRequires:  %{python_module jupyter-packaging}
 BuildRequires:  %{python_module jupyterlab}
 BuildRequires:  %{python_module pip}
@@ -41,21 +39,24 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  jupyter-jupyterlab-filesystem >= 20211114
 BuildRequires:  jupyter-notebook-filesystem
+BuildRequires:  local-npm-registry
 BuildRequires:  python-rpm-macros
 Requires:       jupyter-bqplot-notebook = %{jupver}
+Requires:       (python-bqscales >= 0.3.3 with python-bqscales < 4)
 Requires:       python-numpy >= 1.10.4
+Requires:       python-pandas >= 1
 Requires:       python-traitlets >= 4.3.0
 Requires:       python-traittypes >= 0.0.6
 Requires:       (python-ipywidgets >= 7.5.0 with python-ipywidgets < 9)
-Requires:       (python-pandas >= 1 with python-pandas < 3)
 Provides:       python-jupyter_bqplot = %{pyver}
 Obsoletes:      python-jupyter_bqplot < %{pyver}
 BuildArch:      noarch
 # SECTION test requirements
+BuildRequires:  %{python_module bqscales >= 0.3.3 with %python-bqscales < 4}
 BuildRequires:  %{python_module ipywidgets >= 7.5.0 with %python-ipywidgets < 9}
 BuildRequires:  %{python_module nbval}
 BuildRequires:  %{python_module numpy >= 1.10.4}
-BuildRequires:  %{python_module pandas >= 1 with %python-pandas < 3}
+BuildRequires:  %{python_module pandas >= 1}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitlets >= 4.3.0}
 BuildRequires:  %{python_module traittypes >= 0.0.6}
@@ -96,13 +97,15 @@ interactive Jupyter widgets.
 This package provides the jupyterlab extension.
 
 %prep
-%autosetup -p1 -n bqplot-%{pyver} -a1
-rm bqplot/install.py
+%autosetup -p1 -n bqplot-%{pyver}
+pushd js
+sed -i 's/jlpm/npm/g' package.json
+local-npm-registry %{_sourcedir} install --legacy-peer-deps
+popd
 
 %build
 pushd js
-export PATH="${PATH}:node_modules/.bin"
-jlpm run build
+npm run build
 popd
 %pyproject_wheel
 

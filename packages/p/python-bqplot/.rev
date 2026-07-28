@@ -210,4 +210,244 @@
   (CVE-2025-54798, bsc#1247788)</comment>
     <requestid>1302183</requestid>
   </revision>
+  <revision rev="20" vrev="14">
+    <srcmd5>c4a23ef0d934a20fa39d51d01367f858</srcmd5>
+    <version>unknown</version>
+    <time>1774470138</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1342519</requestid>
+  </revision>
+  <revision rev="21" vrev="15">
+    <srcmd5>a9ce131b03653721aef16e893513a9a2</srcmd5>
+    <version>unknown</version>
+    <time>1785253864</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requirements
+- Update has deleted bqplot-js.patch and update-js-deps.patch
+- Use obs node_modules service to vendor javascript deps
+- Update to 0.13.1 (bsc#1268935, CVE-2026-48779):
+  - Fix: MarketMap not rendering and axis positioning in 0.13.0 by
+    @theomaillard in #1705
+- 0.13.0:
+  # Highlights
+  - bqplot is now split in three packages: bqplot's main package,
+    bqplot-gl's WebGL-based marks and bqscales.
+  - kiwi-based aspect ratio optimization
+  # What's Changed
+  - Add a default toolbar for figure by @trungleduc in #1394
+  - fix: changing an interaction causes it to remove the old view
+    twice by @maartenbreddels in #1391
+  - Use bqscales by @martinRenou in #904
+  - Remove trailing logs by @martinRenou in #1400
+  - Fix for jupyter_client &gt;= 7 by @martinRenou in #1407
+  - chore: fix deprecation warnings/issues and let pytest catch them
+    by @maartenbreddels in #1406
+  - feat: make a PNG export of the figure available in the kernel by
+    @mariobuikhuizen in #1397
+  - Speedup: Do not relayout if not needed by @martinRenou in #1405
+  - Fix codespell by @martinRenou in #1413
+  - Move WebGL Marks in a separate package by @martinRenou in #1389
+  - Bump axios from 0.21.1 to 0.21.4 in /ui-tests by @dependabot[bot]
+    in #1414
+  - Run black on Notebook examples by @martinRenou in #1418
+  - Bump jquery-ui from 1.12.1 to 1.13.0 in /js by @dependabot[bot] in
+    #1415
+  - Update Galata by @martinRenou in #1420
+  - Bump ansi-regex from 5.0.0 to 5.0.1 in /ui-tests by
+    @dependabot[bot] in #1421
+  - Fix index selector jumping back to 0 by @martinRenou in #1426
+  - Use jupyter-sphinx instead of nbsphinx by @martinRenou in #1428
+  - Make docs executable by @martinRenou in #1429
+  - Add project name to setup.py by @martinRenou in #1433
+  - Updated S&amp;P index performance nb by @ChakriCherukuri in #1438
+  - Fix CI by @martinRenou in #1440
+  - Bump follow-redirects from 1.14.2 to 1.14.7 in /js by
+    @dependabot[bot] in #1435
+  - removing us election nb by @ChakriCherukuri in #1441
+  - Bump follow-redirects from 1.14.4 to 1.14.7 in /ui-tests by
+    @dependabot[bot] in #1436
+  - Add bot for updating Galata tests automatically by @martinRenou in
+    #1448
+  - Bump log4js from 6.3.0 to 6.4.0 in /js by @dependabot[bot] in
+    #1443
+  - Bump nanoid from 3.1.25 to 3.2.0 in /js by @dependabot[bot] in
+    #1444
+  - Bump nanoid from 3.1.30 to 3.2.0 in /ui-tests by @dependabot[bot]
+    in #1445
+  - Bump node-fetch from 2.6.6 to 2.6.7 in /ui-tests by
+    @dependabot[bot] in #1451
+  - Bump node-fetch from 2.6.1 to 2.6.7 in /js by @dependabot[bot] in
+    #1452
+  - CI: Remove &quot;update snapshots&quot; step by @martinRenou in #1453
+  - Try fixing galata bot permissions by @martinRenou in #1455
+  - CI: Pass token to checkout by @martinRenou in #1456
+  - Try fixing bot permissions by @martinRenou in #1458
+  - Try setting up the remote using https by @martinRenou in #1460
+  - Galata bot update push ref by @martinRenou in #1462
+  - Yet another try to fix the Galata bot permissions by @martinRenou
+    in #1463
+  - fix: line label invisible in dark theme by @mariobuikhuizen in
+    #1465
+  - Add default color CSS selectors to node text by @ibdafna in #1447
+  - Bump simple-get from 3.1.0 to 3.1.1 in /ui-tests by
+    @dependabot[bot] in #1464
+  - Bump karma from 5.2.3 to 6.3.14 in /js by @dependabot[bot] in
+    #1474
+  - Bump follow-redirects from 1.14.7 to 1.14.8 in /js by
+    @dependabot[bot] in #1475
+  - Bump follow-redirects from 1.14.7 to 1.14.8 in /ui-tests by
+    @dependabot[bot] in #1476
+  - Bump url-parse from 1.5.3 to 1.5.7 in /js by @dependabot[bot] in
+    #1477
+  - Bump url-parse from 1.5.3 to 1.5.7 in /ui-tests by
+    @dependabot[bot] in #1478
+  - Bump karma from 6.3.14 to 6.3.16 in /js by @dependabot[bot] in
+    #1482
+  - Bump url-parse from 1.5.7 to 1.5.10 in /ui-tests by
+    @dependabot[bot] in #1479
+  - Bump url-parse from 1.5.7 to 1.5.10 in /js by @dependabot[bot] in
+    #1480
+  - Bump minimist from 1.2.5 to 1.2.6 in /js by @dependabot[bot] in
+    #1484
+  - fix: Figure.update_gl shim make for bqplot 0.12 compatibility by
+    @maartenbreddels in #1487
+  - Update bqscales by @martinRenou in #1488
+  - Add browser field to package.json by @timkpaine in #1495
+  - Bump moment from 2.29.1 to 2.29.3 in /ui-tests by @dependabot[bot]
+    in #1496
+  - Bump moment from 2.29.1 to 2.29.3 in /js by @dependabot[bot] in
+    #1497
+  - Try lazy-loading widgets in Lab by @bollwyvl in #1192
+  - docs: Fix a few typos by @timgates42 in #1504
+  - Pin NodeJS version in ui-testing environment by @ibdafna in #1509
+  - Fix missing interpolation options by @evertoncolling in #1511
+  - Update ipywidgets 8 by @martinRenou in #1514
+  - Bump moment from 2.29.3 to 2.29.4 in /ui-tests by @dependabot[bot]
+    in #1515
+  - Fix ipywidgets 8 dependency by @martinRenou in #1516
+  - exclude tests top-level package, add some JupyterLab trove
+    classifiers by @bollwyvl in #1513
+  - Fix processPhosphorMessage for ipywidgets 7 by @martinRenou in
+    #1521
+  - Forward port #1523 Fix pWidget accessor in the case of ipywidgets
+    7 by @martinRenou in #1524
+  - Add +, x and . as markers by @mwcraig in #1506
+  - Plotting Widgets by @ChakriCherukuri in #1505
+  - Backport PR #1526 on branch master (feature: custom axis labeling
+    from kernel side (tick_labels).) by @meeseeksmachine in #1528
+  - Update CI by @martinRenou in #1550
+  - mkdocs documentation by @ChakriCherukuri in #1548
+  - docs for usage-&gt;pyplot section by @ChakriCherukuri in #1553
+  - Improve API documentation and complete it by @martinRenou in #1554
+  - Deploy docs on Github pages by @martinRenou in #1555
+  - Fixing docs deployment by @martinRenou in #1556
+  - fixed doc homepage link and added navigation tabs by
+    @ChakriCherukuri in #1558
+  - added docs for usage section (pyplot and object-model) by
+    @ChakriCherukuri in #1559
+  - Usage-&gt;Figure doc by @ChakriCherukuri in #1560
+  - docs 404 page by @ChakriCherukuri in #1561
+  - fixed typo flagged by codespell by @ChakriCherukuri in #1562
+  - Improve docs API further by @martinRenou in #1563
+  - Add the new docs link to the README by @martinRenou in #1557
+  - Prevent 404 errors in the docs by @martinRenou in #1564
+  - Add contributing section to docs by @martinRenou in #1565
+  - Add bqplot logo to README and docs (theme dependent) by
+    @martinRenou in #1567
+  - Use versions of logos without background by @martinRenou in #1568
+  - Missing site_url config by @martinRenou in #1569
+  - Docs: Change main color + update favicon and theme icon by
+    @martinRenou in #1570
+  - Docs: Fix some broken links by @martinRenou in #1571
+  - Log console messages in UI-tests + fix visual regression tests by
+    @martinRenou in #1572
+  - Lazy CI + Remove JupyterLab 2 job by @martinRenou in #1573
+  - Mkdocs cleanup by @ChakriCherukuri in #1574
+  - Mkdocs usage-&gt;marks-&gt;lines by @ChakriCherukuri in #1575
+  - Mkdocs usage-marks-bars by @ChakriCherukuri in #1576
+  - Mkdocs misc by @ChakriCherukuri in #1577
+  - mkdocs scatter mark doc by @ChakriCherukuri in #1578
+  - Usage documentation for GridHeatMap by @Havaldar in #1579
+  - fix: figure is not updating when margins change by
+    @mariobuikhuizen in #1539
+  - Mkdocs usage-marks-maps by @ChakriCherukuri in #1582
+  - fix: display and resize plots when not in a lumino context by
+    @mariobuikhuizen in #1531
+  - Label Docs by @Havaldar in #1594
+  - EXP: Bump pandas maxversion to v2 by @pllim in #1587
+  - fix: axis formatting depended on initial values or changes by
+    @maartenbreddels in #1541
+  - Backport PR #1598 on branch master (fix: resize not always
+    working) by @meeseeksmachine in #1599
+  - CI: Installation verbose by @martinRenou in #1605
+  - Backport PR #1585: fix: panning in a by CSS rotated plot doesn't
+    work… by @mariobuikhuizen in #1595
+  - Backport PR #1601 on branch master (fix: remove numpy upper bound
+    pin) by @meeseeksmachine in #1604
+  - Backport #1603 fix: background color of figure was not computed
+    properly (#1603) by @martinRenou in #1606
+  - Bump vega-functions from 5.13.0 to 5.13.1 in /ui-tests by
+    @dependabot[bot] in #1590
+  - Update galata bot for using with JupyterLab 4 by @martinRenou in
+    #1609
+  - Build against JupyterLab 4 by @martinRenou in #1608
+  - Feature: use kiwi.js for controlling min and max aspect by
+    @maartenbreddels in #1046
+  - Remore leftover code by @martinRenou in #1616
+  - Migration guide by @martinRenou in #1617
+  - Update micromamba CI action by @martinRenou in #1621
+  - Forward port fix scale domain no data #1619 by @martinRenou in
+    #1620
+  - Bump systeminformation from 5.18.7 to 5.21.8 in /ui-tests by
+    @dependabot[bot] in #1625
+  - fix: properly treat Bar.base with stacked Bars by @maartenbreddels
+    in #1423
+  - Fix CI by @martinRenou in #1642
+  - Update snapshots by @martinRenou in #1643
+  - Bump release candidate by @martinRenou in #1641
+  - fix: save_png doesn't work when character \xa0 is used by
+    @mariobuikhuizen in #1644
+  - Update pyplot.md by @aroffe99 in #1649
+  - Update Introduction.ipynb by @aroffe99 in #1651
+  - Use mamba-org/setup-micromamba for visual job by @pllim in #1655
+  - BLD: Use modern jupyter_packaging by @pllim in #1653
+  - Create dependabot.yml by @pllim in #1654
+  - Bump the actions group in /.github/workflows with 5 updates by
+    @dependabot[bot] in #1656
+  - Use a valid SPDX identifier as license classifier by @ecederstrand
+    in #1680
+  - Fix deprecated library in test notebooks by @arjxn-py in #1677
+  - Remove six dependency in traits.py by @IanLucca12 in #1678
+  - docs: Clarify nbextension usage is for Jupyter Notebook &lt; 7 by
+    @arjxn-py in #1676
+  - Update JupyterLab packages. Fix CI by @martinRenou in #1681
+  - Prevent unfriendly error message when running plt.plot by
+    @martinRenou in #1682
+  - Prevent display of axes, interactions outside of a figure by
+    @martinRenou in #1683
+  - Include version in extension id by @martinRenou in #1684
+  - Forward port get_svg_data by @martinRenou in #1685
+  - Fix tooltips positioning by @martinRenou in #1686
+  - CSS scoping by @martinRenou in #1687
+  - Update snapshots bot checkout and permission check by @martinRenou
+    in #1689
+  - Adding nblink link by @martinRenou in #1690
+  - Refine contributor documentation and simplify README installation
+    notes by @fbourgey in #1697
+  - Add support for pandas&gt;=3 by @bmorris3 in #1698
+  - Trusted publisher (forward port #1701) by @martinRenou in #1703
+- 0.12.47:
+  - support for pandas&gt;=3 (Backport 0.12.x for real) by @martinRenou
+    in #1704
+- 0.12.46:
+  - Keep ScatterGL in sync when an axis scale's type changes at
+    runtime by @astrofrog in #1699
+  - Backport PR #1698 on branch 0.12.x (Add support for pandas&gt;=3) by
+    @meeseeksmachine in #1700
+  - ci: publish to PyPI and npm via trusted publishers by
+    @maartenbreddels in #1701
+</comment>
+    <requestid>1368191</requestid>
+  </revision>
 </revisionlist>
