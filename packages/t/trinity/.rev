@@ -860,4 +860,27 @@
     <comment>Forward stranded devel update to Factory (devel ahead of Factory 1.9)</comment>
     <requestid>1367523</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>b2fb8239c850bdcafd3167a888fefefa</srcmd5>
+    <version>1.9+git.20260727</version>
+    <time>1785255446</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.9+git.20260727:
+  * Large internal refactor: the stats, kcov, child, childops and
+    blob-mutator subsystems were carved into separate translation
+    units
+  * New struct catalog and comparison-hint infrastructure driving
+    smarter syscall argument generation
+  * Extended syscall, netlink, bpf, ioctl and networking coverage
+  * Fixes across the deferred-free, shared-freelist, healer and
+    make-it-fail paths
+  * Documentation and test suite updates
+- Drop 0001-net-proto-vsock.c-fix-build-on-older-distros.patch, upstream
+  moved the source to net/proto/vsock.c and now bundles its own
+  kernel/vm_sockets.h
+- Pass PREFIX to make install: upstream's install target now honours
+  PREFIX (default /usr/local) instead of installing straight below
+  DESTDIR</comment>
+    <requestid>1368139</requestid>
+  </revision>
 </revisionlist>

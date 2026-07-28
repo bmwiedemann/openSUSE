@@ -1,7 +1,7 @@
 #
 # spec file for package trinity
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           trinity
-Version:        1.9+git.20260411
+Version:        1.9+git.20260727
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-net-proto-vsock.c-fix-build-on-older-distros.patch
 
 %description
 The basic idea is fairly simple. As 'fuzz testing' suggests, we call syscalls
@@ -42,7 +41,7 @@ export CFLAGS="%{optflags}"
 %make_build DEVEL=0
 
 %install
-%make_install DESTDIR=%{buildroot}%{_prefix}
+%make_install PREFIX=%{_prefix}
 install -Dpm 0644 trinity.1 \
   %{buildroot}%{_mandir}/man1/trinity.1
 
