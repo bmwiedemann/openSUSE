@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Jul 22 13:09:47 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix non-alts build
+
+-------------------------------------------------------------------
 Fri Feb 27 09:15:57 CET 2026 - Matej Cepl <mcepl@suse.com>
 
 - Don't fiddle with regexps, but use a macro

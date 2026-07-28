@@ -1,7 +1,7 @@
 #
 # spec file for package lua-luacov
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,7 +110,7 @@ fi
 %dir %{_datadir}/libalternatives
 %{_datadir}/libalternatives/luacov
 %else
-%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/moon
+%ghost %attr(0644,root,root) %{_sysconfdir}/alternatives/luacov
 %endif
 
 %changelog
