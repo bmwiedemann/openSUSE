@@ -469,4 +469,12 @@
   for some reason the auto detection on code 15 does not work.</comment>
     <requestid>1347275</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>b2cc12c980cd22fcadf98bb52871d63a</srcmd5>
+    <version>2.4.3+git0.53701f56</version>
+    <time>1785253852</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367669</requestid>
+  </revision>
 </revisionlist>

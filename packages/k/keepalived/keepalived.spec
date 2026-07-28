@@ -35,9 +35,10 @@
 %bcond_with    keepalived_regex
 %endif
 %bcond_without json
+%bcond_without reproducible_build
 
 Name:           keepalived
-Version:        2.3.4+git23.b3631012
+Version:        2.4.3+git0.53701f56
 Release:        0
 Summary:        A keepalive facility for Linux
 License:        GPL-2.0-or-later
@@ -107,6 +108,9 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
 %configure \
   --disable-silent-rules \
   --docdir=%{_defaultdocdir}/%{name}/ \
+%if %{with reproducible_build}
+  --enable-reproducible-build \
+%endif
   --enable-bfd \
   %if %{with json}
   --enable-json \
@@ -129,7 +133,6 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-systemd \
   --with-init=systemd \
   --with-systemdsystemunitdir="%{_unitdir}" \
-  --enable-sha1 \
   --enable-gnu-std-paths \
   --enable-hardening \
   --enable-log-file \
@@ -141,8 +144,8 @@ export CFLAGS="%optflags -DOPENSSL_NO_SSL_INTERN"
   --enable-libnl \
   --with-iproute-etc-dir=%{_sysconfdir}/iproute2 \
   --enable-json
-make %{?_smp_mflags}
-%sysusers_generate_pre %{SOURCE12} %{name} %{S:4}
+%make_build
+%sysusers_generate_pre %{SOURCE4} %{name} %{name}.conf
 
 %install
 %make_install
@@ -158,7 +161,12 @@ cp -rv \
   %{buildroot}%{_defaultdocdir}/%{name}/
 
 mkdir -p %{buildroot}%{_tmpfilesdir}/
-install -D -m 0644 %{S:3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -D -m 0644 %{SOURCE3} %{buildroot}%{_tmpfilesdir}/%{name}.conf
+install -D -m 0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/%{name}.conf
+
+%if %{without reproducible_build}
+rm -fv %{buildroot}/etc/keepalived/keepalived.config-opts
+%endif
 
 %check
 # A build could silently have LVS support disabled if the kernel includes can't
@@ -187,7 +195,11 @@ fi
 %doc %{_defaultdocdir}/%{name}/
 %dir  %{_sysconfdir}/%{name}
 %{_tmpfilesdir}/%{name}.conf
+%{_sysusersdir}/%{name}.conf
 %ghost %dir /var/lib/%{name}
+%if %{with reproducible_build}
+/etc/keepalived/keepalived.config-opts
+%endif
 %config(noreplace) %ghost %attr(0640,root,root) %{_sysconfdir}/%{name}/%{name}.conf
 %config %attr(0640,root,root) %{_sysconfdir}/%{name}/%{name}.conf.sample
 %{_fillupdir}/sysconfig.%{name}

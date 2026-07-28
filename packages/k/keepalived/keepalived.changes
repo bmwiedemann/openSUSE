@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Thu Jul 23 15:51:50 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Remove unused sha1 configure option
+
+-------------------------------------------------------------------
+Thu Jul 23 15:42:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- do not delete the file which is now read in the reproducible
+  build case
+
+-------------------------------------------------------------------
+Mon Jul 20 22:25:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Fix sysusers support
+- Use reproducible build support
+
+-------------------------------------------------------------------
+Mon Jul 20 22:17:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.4.3+git0.53701f56:
+  https://www.keepalived.org/release-notes/Release-2.4.3/
+  https://www.keepalived.org/release-notes/Release-2.4.2/
+  https://www.keepalived.org/release-notes/Release-2.4.1/
+  https://www.keepalived.org/release-notes/Release-2.4.0/
+
+  * test: pin auth_hmac fixed wire vectors and widen negative coverage
+  * vrrp: expire an auth_hmac replay mark outside the freshness window
+  * vrrp: recover the auth_hmac sequence after a corrected clock step
+  * vrrp: sign the auth_hmac trailer once per advertisement
+  * www: rework the auth_hmac rollout around receive-only
+  * test: add an auth_hmac wire image regression test
+  * vrrp: add auth_hmac receive-only mode
+  * vrrp: read the VRRP checksum as zero in the auth_hmac input
+  * vrrp: align auth_hmac with the IETF draft
+  * www: fix download location
+  * vrrp: raise the auth_hmac key minimum to 32 bytes
+  * vrrp: add a systemd credential drop-in sample for auth_hmac keys
+  * vrrp: drop stale adverts before the auth_hmac digest
+  * vrrp: allow auth_hmac keys to be loaded from a file
+  * vrrp: reserve the auth_hmac trailer in the advert MTU budget
+  * vrrp: document the auth_hmac extension
+  * vrrp: report authentication extension counters
+  * vrrp: sign and verify adverts with the auth extension
+  * vrrp: parse and validate the auth_hmac extension
+  * vrrp: add HMAC authentication extension module
+  * parser: fix ${NAME param} substitution when trailing text follows
+  * dbus: deny keepalived methods by default
+  * check: set CLOEXEC on the IPVS netlink socket
+  * track_process: bound the /proc stat parse
+  * smtp: clamp the alert body offset
+  * netlink: require kernel origin and order the error length check
+  * notify: validate resolved symlink target and notify fifo
+  * vrrp: use a local ifreq for the ethtool link probe
+  * netlink: log an oversized broadcast address instead of dropping it
+  * vrrp: drop redundant always-true comparison in SNMP walk
+  * tools: close files via context manager in json_tracking
+  * vrrp: avoid sizeof on the side-effecting PTR_CAST macro
+  * check: fix stack buffer overflow in set_ping_group_range
+  * github: bump codeql-action to v4
+  * github: build keepalived explicitly for CodeQL
+  * doc: remove coverity related
+  * doc: Update global README.md
+  * www: Modernize keepalived.org website using Material for MkDocs
+  * doc: remove Sphinx documentation and its build dependencies
+  * Check PATH_MAX when resolving track file paths
+  * Resolve warnings and errors identified by gcc 16
+  * configure.ac: avoid bash substring expansion
+  * configure.ac: use command -v instead of type -p
+  * configure.ac: use the = test operator, not ==
+  * configure.ac: use printf instead of echo -e
+  * configure.ac: use add_to_var instead of += to append
+  * snmp: reject an out of range instance index
+  * vrrp: report notify FIFO write errors
+  * vrrp: bound interface name copies
+  * vrrp: validate the BFD event pipe read length
+  * vrrp: warn when iptables rules cannot be applied
+  * vrrp: remove VMAC firewall rules before deleting the link
+  * vrrp: mask the authentication password in dump and JSON output
+  * netlink: bound attribute access in the RX filters
+  * dbus: validate the object path and narrow the CreateInstance vrid
+  * parser: keep the full 64-bit value in read_unsigned64
+  * json: correct string escaping and tolerate a NULL string
+  * vrrp: bound hardware address length in the ARP and NDP senders
+  * vrrp: handle EVP allocation failure and wipe HMAC key material
+  * vrrp: validate VRRPv2 password against the checked length
+  * memory: abort on OOM in STRDUP, STRNDUP and REALLOC
+  * notify: harden script execution environment and quoting
+  * vrrp: reset rate-limit flags only after accepting a packet
+  * check: fix MD5 context leak and DNS length check
+  * config: fix invalid free and SIGFPE in builtin definitions
+  * check: resolve heap overflow in HTTP regex partial match
+  * snmp: fix operator precedence
+  * build: make OpenSSL pkg-config flags drive header checks and link flags
+
+-------------------------------------------------------------------
 Thu Apr 16 11:35:21 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - ensure we are always using /etc/iproute2 and not /etc/iproute2.d
