@@ -19,6 +19,7 @@
 #!BuildTag: opensuse/kea:3.2
 #!BuildTag: opensuse/kea:latest
 
+#!FilterBaseContainerPkgs
 FROM opensuse/bci/bci-micro:latest AS target
 FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
