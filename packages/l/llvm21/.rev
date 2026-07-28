@@ -190,4 +190,13 @@
   provide symbolic links to the current distro default version.</comment>
     <requestid>1358701</requestid>
   </revision>
+  <revision rev="16" vrev="8">
+    <srcmd5>fcaf6bfdd640bfdfb05015a53e0fcce4</srcmd5>
+    <version>21.1.8</version>
+    <time>1785253804</time>
+    <user>dimstar_suse</user>
+    <comment>- Add compiler-rt-Remove-linux-scc-h.patch to remove &lt;linux/scc.h&gt;
+  include that was removed in Linux 7.1 (boo#1271641).</comment>
+    <requestid>1367823</requestid>
+  </revision>
 </revisionlist>

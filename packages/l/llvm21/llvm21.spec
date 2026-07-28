@@ -459,6 +459,8 @@ Patch29:        clang-getdistro-android.patch
 Patch30:        bolt-link-shared-library.patch
 # PATCH-FIX-UPSTREAM Add missing triple to RISCV64Triples (gh#llvm/llvm-project#164228)
 Patch31:        clang-riscv-triple.patch
+# PATCH-FIX-UPSTREAM https://github.com/llvm/llvm-project/commit/3dc4fd6dd41100f051a63642f449b16324389c96
+Patch32:        compiler-rt-Remove-linux-scc-h.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -936,6 +938,7 @@ popd
 
 pushd compiler-rt-%{_version}.src
 %patch -P 12 -p2
+%patch -P 32 -p2
 popd
 
 pushd clang-tools-extra-%{_version}.src
