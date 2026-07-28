@@ -23,7 +23,7 @@
 %define zonesdir   %{configdir}/zones
 %define pidfile    %{_rundir}/nsd/nsd.pid
 Name:           nsd
-Version:        4.13.0
+Version:        4.14.3
 Release:        0
 #
 Summary:        An authoritative-only domain name server
@@ -34,15 +34,7 @@ URL:            https://nlnetlabs.nl/projects/nsd/about/
 Source:         https://nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz
 Source1:        nsd.service
 Source2:        tmpfiles-nsd.conf
-# Generated with from https://nlnetlabs.nl/people/
-#
-# curl -Ss https://nlnetlabs.nl/people/ | \
-#   grep 'PGP Key ID' | \
-#   sed 's,.*PGP Key ID: \([A-Z0-9 ]\+\).*,\1,' | \
-#   perl -e 'while($_=<>){chop; s, ,,g;print substr $_, -16; print(" ");}' | \
-#   xargs gpg --export-options export-minimal --export > nsd.keyring
-#
-Source4:        nsd.keyring
+Source4:        https://nlnetlabs.nl/downloads/keys/releases-g2.asc#/nsd.keyring
 Source5:        https://www.nlnetlabs.nl/downloads/nsd/nsd-%{version}.tar.gz.asc
 Source10:       README.md
 #
@@ -57,6 +49,7 @@ BuildRequires:  protobuf-c >= 1.0.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(libsystemd)
 Requires:       shadow
+Requires:       openssl
 Requires(post): coreutils
 Requires(post): findutils
 Requires(post): shadow

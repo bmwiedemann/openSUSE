@@ -379,4 +379,27 @@ BUG FIXES:
 - enable support for &gt;= 2038</comment>
     <requestid>1318736</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>97241bdcd69b63f1a95b96fc2b1a10c3</srcmd5>
+    <version>4.14.3</version>
+    <time>1785265290</time>
+    <user>dimstar_suse</user>
+    <comment>- Update nsd.keyring
+
+- update to 4.14.3:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_3_REL/doc/ChangeLog
+  * CVE-2026-12490: Bypass of client certificate verification with transfer over TLS (bsc#1269563)
+  * CVE-2026-12246: Out of bounds stack write with crafted APL RR (bsc#1269564)
+  * CVE-2026-12245: Denial of DNS over TLS service by any DoT client (bsc#1269565)
+  * CVE-2026-12244: Heap overflow and crash with crafted SVCB RR (bsc#1269566)
+- update to 4.14.2:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_2_REL/doc/ChangeLog
+- update to 4.14.1:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_1_REL/doc/ChangeLog
+- update to 4.14.0:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_0_REL/doc/ChangeLog
+- add new Requires for openssl, as this is needed for the
+  nsd-control-setup script to generate the certificates</comment>
+    <requestid>1368238</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Jul 28 15:38:09 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- Update nsd.keyring
+
+-------------------------------------------------------------------
+Fri Jul  3 16:16:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 4.14.3:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_3_REL/doc/ChangeLog
+  * CVE-2026-12490: Bypass of client certificate verification with transfer over TLS (bsc#1269563)
+  * CVE-2026-12246: Out of bounds stack write with crafted APL RR (bsc#1269564)
+  * CVE-2026-12245: Denial of DNS over TLS service by any DoT client (bsc#1269565)
+  * CVE-2026-12244: Heap overflow and crash with crafted SVCB RR (bsc#1269566)
+- update to 4.14.2:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_2_REL/doc/ChangeLog
+- update to 4.14.1:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_1_REL/doc/ChangeLog
+- update to 4.14.0:
+  https://github.com/NLnetLabs/nsd/blob/NSD_4_14_0_REL/doc/ChangeLog
+- add new Requires for openssl, as this is needed for the
+  nsd-control-setup script to generate the certificates
+
+-------------------------------------------------------------------
 Tue Nov 18 23:03:13 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 4.13.0:
