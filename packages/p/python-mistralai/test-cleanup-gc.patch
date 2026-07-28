@@ -1,0 +1,16 @@
+---
+ src/mistralai/extra/tests/test_workflow_encoding.py |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: mistralai-2.7.2/src/mistralai/extra/tests/test_workflow_encoding.py
+===================================================================
+--- mistralai-2.7.2.orig/src/mistralai/extra/tests/test_workflow_encoding.py	2020-02-02 01:00:00.000000000 +0100
++++ mistralai-2.7.2/src/mistralai/extra/tests/test_workflow_encoding.py	2026-07-26 21:25:08.535010934 +0200
+@@ -76,6 +76,7 @@
+     encryption_config: WorkflowEncodingConfig,
+ ):
+     """Test that PayloadEncoder is cleaned up when client is garbage collected."""
++    gc.collect()
+     initial_config_count = len(_workflow_configs)
+ 
+     # Create client and configure encoding

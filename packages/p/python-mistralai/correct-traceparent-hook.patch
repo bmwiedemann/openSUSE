@@ -1,8 +1,13 @@
-Index: mistralai-2.5.0/src/mistralai/client/_hooks/traceparent.py
+---
+ src/mistralai/client/_hooks/traceparent.py         |   13 ++++++++++++-
+ src/mistralai/extra/tests/test_traceparent_hook.py |    3 ++-
+ 2 files changed, 14 insertions(+), 2 deletions(-)
+
+Index: mistralai-2.7.2/src/mistralai/client/_hooks/traceparent.py
 ===================================================================
---- mistralai-2.5.0.orig/src/mistralai/client/_hooks/traceparent.py
-+++ mistralai-2.5.0/src/mistralai/client/_hooks/traceparent.py
-@@ -23,7 +23,18 @@ class TraceparentInjectionHook(BeforeReq
+--- mistralai-2.7.2.orig/src/mistralai/client/_hooks/traceparent.py	2020-02-02 01:00:00.000000000 +0100
++++ mistralai-2.7.2/src/mistralai/client/_hooks/traceparent.py	2026-07-26 21:24:13.101213801 +0200
+@@ -29,7 +29,18 @@
          carrier: Dict[str, str] = {}
          inject(carrier)
          traceparent = carrier.get("traceparent", "")
@@ -22,11 +27,11 @@ Index: mistralai-2.5.0/src/mistralai/client/_hooks/traceparent.py
              trace_id = random.getrandbits(128)
              span_id = random.getrandbits(64)
              traceparent = f"00-{trace_id:032x}-{span_id:016x}-01"
-Index: mistralai-2.5.0/src/mistralai/extra/tests/test_traceparent_hook.py
+Index: mistralai-2.7.2/src/mistralai/extra/tests/test_traceparent_hook.py
 ===================================================================
---- mistralai-2.5.0.orig/src/mistralai/extra/tests/test_traceparent_hook.py
-+++ mistralai-2.5.0/src/mistralai/extra/tests/test_traceparent_hook.py
-@@ -85,7 +85,8 @@ class TestTraceparentInjectionHook(unitt
+--- mistralai-2.7.2.orig/src/mistralai/extra/tests/test_traceparent_hook.py	2020-02-02 01:00:00.000000000 +0100
++++ mistralai-2.7.2/src/mistralai/extra/tests/test_traceparent_hook.py	2026-07-26 21:24:13.102213820 +0200
+@@ -86,7 +86,8 @@
  
          assert isinstance(result, httpx.Request)
          injected = result.headers["traceparent"]

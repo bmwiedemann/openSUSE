@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Jul 26 02:18:22 CEST 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add test-cleanup-gc.patch to fix garbage collection test
+  failures (inter-test interference on workflow configs cleanup).
+
+-------------------------------------------------------------------
+Sat Jul 25 18:41:52 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2.7.2:
+  Based on Speakeasy CLI 1.763.6 (2.884.13)
+- Update to 2.6.0:
+  - PII/secrets redaction features when activating OpenTelemetry.
+    Defaults to a regex-based redaction policy, redacting most
+    PII/secrets while keeping observability value.
+- Add SDKConfiguration-close.patch to fix failing tests.
+
+-------------------------------------------------------------------
 Tue Jun 30 09:57:18 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.5.0:

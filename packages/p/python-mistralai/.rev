@@ -57,4 +57,21 @@
     <comment>Update required by mistral-vibe 2.19.0</comment>
     <requestid>1364155</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>ad25831788da68e42fe772c71cfd1a20</srcmd5>
+    <version>2.7.2</version>
+    <time>1785253970</time>
+    <user>dimstar_suse</user>
+    <comment>- Add test-cleanup-gc.patch to fix garbage collection test
+  failures (inter-test interference on workflow configs cleanup).
+
+- Update to 2.7.2:
+  Based on Speakeasy CLI 1.763.6 (2.884.13)
+- Update to 2.6.0:
+  - PII/secrets redaction features when activating OpenTelemetry.
+    Defaults to a regex-based redaction policy, redacting most
+    PII/secrets while keeping observability value.
+- Add SDKConfiguration-close.patch to fix failing tests.</comment>
+    <requestid>1367846</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-mistralai
-Version:        2.5.0
+Version:        2.7.2
 Release:        0
 Summary:        Python Client SDK for the Mistral AI API
 License:        Apache-2.0
@@ -25,6 +25,12 @@ URL:            https://github.com/mistralai/client-python
 Source0:        https://files.pythonhosted.org/packages/source/m/mistralai/mistralai-%{version}.tar.gz
 Source99:       python-mistralai.rpmlintrc
 Patch0:         correct-traceparent-hook.patch
+# PATCH-FIX-UPSTREAM SDKConfiguration-close.patch mcepl@suse.com
+# Fix unfinished resources
+Patch1:         SDKConfiguration-close.patch
+# PATCH-FIX-UPSTREAM test-cleanup-gc.patch mcepl@suse.com
+# Avoid inter-test garbage collection interference in workflow encoding tests
+Patch2:         test-cleanup-gc.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes

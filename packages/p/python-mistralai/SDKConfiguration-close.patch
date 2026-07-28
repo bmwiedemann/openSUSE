@@ -1,0 +1,48 @@
+---
+ src/mistralai/client/httpclient.py |    7 ++-----
+ src/mistralai/client/sdk.py        |    1 -
+ 2 files changed, 2 insertions(+), 6 deletions(-)
+
+Index: mistralai-2.7.2/src/mistralai/client/httpclient.py
+===================================================================
+--- mistralai-2.7.2.orig/src/mistralai/client/httpclient.py	2020-02-02 01:00:00.000000000 +0100
++++ mistralai-2.7.2/src/mistralai/client/httpclient.py	2026-07-26 21:24:15.908267077 +0200
+@@ -92,7 +92,6 @@
+ 
+ 
+ def close_clients(
+-    owner: ClientOwner,
+     sync_client: Union[HttpClient, None],
+     sync_client_supplied: bool,
+     async_client: Union[AsyncHttpClient, None],
+@@ -104,16 +103,14 @@
+     collected.
+     """
+ 
+-    # Unset the client/async_client properties so there are no more references
+-    # to them from the owning SDK instance and they can be reaped.
+-    owner.client = None
+-    owner.async_client = None
++
+     if sync_client is not None and not sync_client_supplied:
+         try:
+             sync_client.close()
+         except Exception:
+             pass
+ 
++
+     if async_client is not None and not async_client_supplied:
+         try:
+             loop = asyncio.get_running_loop()
+Index: mistralai-2.7.2/src/mistralai/client/sdk.py
+===================================================================
+--- mistralai-2.7.2.orig/src/mistralai/client/sdk.py	2020-02-02 01:00:00.000000000 +0100
++++ mistralai-2.7.2/src/mistralai/client/sdk.py	2026-07-26 21:24:15.909267096 +0200
+@@ -160,7 +160,6 @@
+         weakref.finalize(
+             self,
+             close_clients,
+-            cast(ClientOwner, self.sdk_configuration),
+             self.sdk_configuration.client,
+             self.sdk_configuration.client_supplied,
+             self.sdk_configuration.async_client,
