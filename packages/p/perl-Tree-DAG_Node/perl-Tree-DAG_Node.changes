@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul  9 08:52:46 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.390.0 (1.39)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+
+  [V 1.39]
+  Date=2026-07-08T08:50:14
+  Comments= <<EOT
+  - Update Software::License from CPAN.
+  - Re-generate the LICENSE file.
+  EOT
+
+-------------------------------------------------------------------
 Tue Jul  7 11:20:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.380.0 (1.38)

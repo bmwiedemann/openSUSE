@@ -329,4 +329,19 @@
   EOT</comment>
     <requestid>1364275</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>200c1821e67f1841ac99c5cef696ad79</srcmd5>
+    <version>1.390.0</version>
+    <time>1785255219</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 1.390.0 (1.39)
+   see /usr/share/doc/packages/perl-Tree-DAG_Node/Changelog.ini
+  [V 1.39]
+  Date=2026-07-08T08:50:14
+  Comments= &lt;&lt;EOT
+  - Update Software::License from CPAN.
+  - Re-generate the LICENSE file.
+  EOT</comment>
+    <requestid>1368051</requestid>
+  </revision>
 </revisionlist>
