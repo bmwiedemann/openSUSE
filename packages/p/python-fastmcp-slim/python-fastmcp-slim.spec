@@ -17,7 +17,7 @@
 
 
 Name:           python-fastmcp-slim
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        The fast, Pythonic way to build MCP servers and clients (slim)
 License:        Apache-2.0
