@@ -79,6 +79,8 @@ rm -rv fuzzing
 donttest="test_multindex_dataframe_roundtrip"
 # https://github.com/jsonpickle/jsonpickle/issues/460
 donttest+=" or test_timedelta_index_roundtrip"
+# Pandas 3 fallout, remove when upgrading to 5.0.0
+donttest+=" or test_dataframe_roundtrip or test_pre_v3_4_df_decoding"
 %if 0%{?suse_version} >= 1550 && 0%{?suse_version} < 1600 || 0%{?suse_version} >= 1699
 %pytest -ra -k "not ($donttest)"
 %else

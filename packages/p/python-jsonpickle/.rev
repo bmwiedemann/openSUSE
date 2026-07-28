@@ -378,4 +378,12 @@
     pending change of keys parameter to default to True. (+600)</comment>
     <requestid>1366631</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>dbc97cc1cf83213da3457d52e525f5d9</srcmd5>
+    <version>4.1.2</version>
+    <time>1785254104</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip two tests broken by Pandas 3 while we wait for 5.0.0 to release.</comment>
+    <requestid>1367876</requestid>
+  </revision>
 </revisionlist>

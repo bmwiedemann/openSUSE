@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:19:51 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip two tests broken by Pandas 3 while we wait for 5.0.0 to release.
+
+-------------------------------------------------------------------
 Mon Jul 20 03:03:20 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch increase-warning-counts.patch:
