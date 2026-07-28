@@ -1,0 +1,7 @@
+<package name="bugwarden" project="openSUSE:Factory">
+  <title>MCP server for Bugzilla with operator-controlled security guards</title>
+  <description>bugwarden exposes Bugzilla to MCP clients (LLM tooling) through a guard
+policy that the client can neither see nor change. The policy is read once at
+startup from a TOML file and decides, per bug, which capabilities a client is
+granted.</description>
+</package>

@@ -1,0 +1,35 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>185de9794c7defa1a029ae935e2efda7</srcmd5>
+    <version>0.2.0</version>
+    <time>1785255346</time>
+    <user>dimstar_suse</user>
+    <comment>New package: bugwarden 0.2.0
+
+Supersedes SR#1368076 (0.1.0), which was still in staging review; this is the
+same new package at the newer upstream release.
+
+An MCP (Model Context Protocol) server that exposes Bugzilla to LLM clients
+behind a guard policy the client can neither read nor change. The policy is a
+TOML file read once at startup and decides, per bug, which of thirteen
+capabilities a client gets, so an operator can point an LLM client at a
+Bugzilla instance while keeping undisclosed security bugs, private comments
+and write access out of reach.
+
+New in 0.2.0: the create_bug and add_attachment tools (capability vocabulary
+grew from eleven to thirteen), and an optional append-only JSONL audit stream
+that records every tool call together with the guard's verdict -- written only
+when named with --audit-config / BUGWARDEN_AUDIT_CONFIG.
+
+Rust, vendored with obs-service-cargo; the upstream test suite runs in %check
+(249 tests, up from 129). Both worked example configurations are installed as
+%config(noreplace) under /etc/bugwarden: policy.toml and audit.toml. Neither
+is read implicitly -- the server only loads files named explicitly on the
+command line or via the environment, so an unconfigured server cannot pick one
+up.
+
+License: is the aggregate over the crates statically linked into the binary
+(unchanged from 0.1.0; recomputed against the new vendor set).</comment>
+    <requestid>1368198</requestid>
+  </revision>
+</revisionlist>

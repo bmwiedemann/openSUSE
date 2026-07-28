@@ -1,0 +1,82 @@
+#
+# spec file for package bugwarden
+#
+# Copyright (c) 2026 SUSE LLC
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
+Name:           bugwarden
+Version:        0.2.0
+Release:        0
+Summary:        MCP server for Bugzilla with operator-controlled security guards
+# Upstream is Apache-2.0; the rest is the aggregate of the crates statically
+# linked into the binary from vendor.tar.zst.
+License:        (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR LGPL-2.1-or-later OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (MIT OR Unlicense) AND Apache-2.0 AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND Unicode-3.0
+URL:            https://github.com/plusky/bugwarden
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+BuildRequires:  cargo-packaging
+# Workspace MSRV; the pinned toolchain upstream uses for its own checks is
+# dropped in %%prep so the distribution compiler is used instead.
+BuildRequires:  rust >= 1.85
+ExclusiveArch:  %{rust_tier1_arches}
+
+%description
+bugwarden exposes Bugzilla to MCP (Model Context Protocol) clients through a
+guard policy that the client can neither read nor change. The policy is a TOML
+file read once at startup and decides, per bug, which of thirteen capabilities
+a client is granted, so an operator can expose a Bugzilla instance to an LLM
+client while keeping undisclosed security bugs, private comments and write
+access out of reach.
+
+Denials are uniform: a bug hidden by policy is indistinguishable from one that
+does not exist, and search results filtered by policy are dropped silently.
+What the client may not see, the operator can: an optional append-only audit
+stream records every tool call together with the guard's verdict.
+
+%prep
+%autosetup -p1 -a1
+# Upstream pins an exact toolchain for its own reproducible checks, which would
+# make the build reach for rustup; build with the distribution compiler.
+rm -f rust-toolchain.toml
+
+%build
+%{cargo_build}
+
+%install
+install -D -m 0755 target/release/%{name} %{buildroot}%{_bindir}/%{name}
+# Worked example policy, shipped as the starting point an operator edits. The
+# server never reads it on its own: the policy file is named explicitly with
+# --policy / BUGWARDEN_POLICY, so an unconfigured server cannot silently pick
+# up a policy that happens to sit here.
+install -D -m 0644 examples/policy.toml \
+  %{buildroot}%{_sysconfdir}/%{name}/policy.toml
+# Worked example audit-stream configuration, shipped on the same terms:
+# it is read only when named with --audit-config / BUGWARDEN_AUDIT_CONFIG,
+# and without that flag no audit stream is written at all.
+install -D -m 0644 examples/audit.toml \
+  %{buildroot}%{_sysconfdir}/%{name}/audit.toml
+
+%check
+%{cargo_test}
+
+%files
+%license LICENSE
+%doc README.md docs/DESIGN.md
+%dir %{_sysconfdir}/%{name}
+%config(noreplace) %{_sysconfdir}/%{name}/audit.toml
+%config(noreplace) %{_sysconfdir}/%{name}/policy.toml
+%{_bindir}/%{name}
+
+%changelog

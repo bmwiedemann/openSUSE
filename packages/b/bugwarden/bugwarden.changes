@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+Tue Jul 28 13:08:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0:
+  * Added the create_bug and add_attachment tools, growing the guard
+    capability vocabulary from eleven to thirteen
+  * An existing policy file is not rewritten on upgrade, so wherever it
+    grants allow it starts permitting bug filing and attachment upload;
+    keep the previous behaviour with disabled_tools = ["create_bug",
+    "add_attachment"] under [global], or replace allow grants with
+    restrict rules naming the capabilities meant
+  * Added an optional append-only JSONL audit stream recording every
+    tool call together with the guard's verdict, written only when named
+    with --audit-config or BUGWARDEN_AUDIT_CONFIG
+  * bugs_quicksearch now paginates over the bugs a client may see, so a
+    policy-filtered page no longer returns short
+  * Denied bug ids are scrubbed from bug bodies, history and comments
+  * bug_info bodies are served on their own verdict
+  * The example policy denies security groups by name
+- Install the worked audit-stream example as %config(noreplace)
+  /etc/bugwarden/audit.toml, on the same terms as the policy example
+
+-------------------------------------------------------------------
+Mon Jul 27 16:40:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.1.0):
+  * MCP server exposing Bugzilla to Model Context Protocol clients,
+    gated by an operator-controlled guard policy the client can
+    neither read nor change
+  * worked example policy installed as %config(noreplace)
+    /etc/bugwarden/policy.toml; the server only reads a policy named
+    explicitly with --policy or BUGWARDEN_POLICY
+
