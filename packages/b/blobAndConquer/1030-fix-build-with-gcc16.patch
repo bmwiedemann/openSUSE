@@ -1,0 +1,104 @@
+Description: Fix build with gcc-16
+Author: Marcos Talau <talau@debian.org>
+Bug-Debian: https://bugs.debian.org/1133434
+Last-Update: 2026-04-20
+
+--- blobandconquer-1.11-dfsg+20.orig/src/cplusplus/CSwitch.cpp
++++ blobandconquer-1.11-dfsg+20/src/cplusplus/CSwitch.cpp
+@@ -54,7 +54,7 @@ void Switch::loadAdditional(Properties *
+ {
+ 	active = props->getInt("active", active);
+ 	switchType = props->getInt("switchType", switchType);
+-	requires = props->getString("requires", requires.getText());
++	requirement = props->getString("requirement", requirement.getText());
+ 	custom = props->getFloat("timeout", custom);
+ 	independent = props->getInt("independent", independent);
+ 	puzzleType = props->getInt("puzzleType", puzzleType);
+@@ -62,7 +62,7 @@ void Switch::loadAdditional(Properties *
+ 	altModel = props->getInt("altModel", altModel);
+ 	rotation.z -= props->getFloat("angle", 0);
+ 	
+-	if (requires != "")
++	if (requirement != "")
+ 	{
+ 		altModel = true;
+ 	}
+@@ -93,7 +93,7 @@ void Switch::saveAdditional(Properties *
+ 	
+ 	props->setProperty("active", active);
+ 	props->setProperty("switchType", switchType);
+-	props->setProperty("requires", requires.getText());
++	props->setProperty("requirement", requirement.getText());
+ 	props->setProperty("independent", independent);
+ 	props->setProperty("puzzleType", puzzleType);
+ 	props->setProperty("puzzleSeed", puzzleSeed);
+--- blobandconquer-1.11-dfsg+20.orig/src/cplusplus/CSwitch.h
++++ blobandconquer-1.11-dfsg+20/src/cplusplus/CSwitch.h
+@@ -33,7 +33,7 @@ class Switch : public Entity {
+ 		
+ 		bool altModel;
+ 		
+-		String requires;
++		String requirement;
+ 		
+ 		int switchType;
+ 		
+--- blobandconquer-1.11-dfsg+20.orig/src/entities/blobs.cpp
++++ blobandconquer-1.11-dfsg+20/src/entities/blobs.cpp
+@@ -1164,7 +1164,7 @@ void blobDoOrderUse()
+ 		
+ 		swt = (Switch*)entity;
+ 		
+-		if ((swt->owner != NULL) || (swt->requires != ""))
++		if ((swt->owner != NULL) || (swt->requirement != ""))
+ 		{
+ 			continue;
+ 		}
+--- blobandconquer-1.11-dfsg+20.orig/src/entities/switches.cpp
++++ blobandconquer-1.11-dfsg+20/src/entities/switches.cpp
+@@ -267,7 +267,7 @@ void pressurePlateTouch(Entity *other)
+ 			
+ 			swt->active = true;
+ 			
+-			if ((swt->requires == "") || ((swt->requires != "") && (swt->requires == other->getName())))
++			if ((swt->requirement == "") || ((swt->requirement != "") && (swt->requirement == other->getName())))
+ 			{
+ 				if (!swt->independent)
+ 				{
+@@ -566,21 +566,21 @@ void switchLookForPlayer()
+ 			{
+ 				game->resetControl(CTRL_ACTION);
+ 				
+-				if (swt->requires != "")
++				if (swt->requirement != "")
+ 				{
+-					if ((!game->hasItem(swt->requires.getText())) && (!game->cheatItems))
++					if ((!game->hasItem(swt->requirement.getText())) && (!game->cheatItems))
+ 					{
+-						game->setInfoMessage(INFO_HINT, _("%s required"), swt->requires.getText());
++						game->setInfoMessage(INFO_HINT, _("%s required"), swt->requirement.getText());
+ 						return;
+ 					}
+ 					else
+ 					{
+-						int i = game->getItemSlot(swt->requires.getText());
+-						game->setInfoMessage(INFO_HINT, _("Used %s"), swt->requires.getText());
++						int i = game->getItemSlot(swt->requirement.getText());
++						game->setInfoMessage(INFO_HINT, _("Used %s"), swt->requirement.getText());
+ 					
+ 						if (!swt->altModel)
+ 						{
+-							game->removeItem(swt->requires.getText());
++							game->removeItem(swt->requirement.getText());
+ 						}
+ 						else
+ 						{
+@@ -595,7 +595,7 @@ void switchLookForPlayer()
+ 							}
+ 						}
+ 						
+-						swt->requires = "";
++						swt->requirement = "";
+ 						String s;
+ 						s.setText("str_item_%d", i);
+ 						textureManager->removeTexture(s.getText());

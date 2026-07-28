@@ -1,7 +1,7 @@
 #
 # spec file for package blobAndConquer
 #
-# Copyright (c) 2014 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,13 +20,14 @@ Name:           blobAndConquer
 Version:        1.11
 Release:        0
 Summary:        Blob Wars: Blob and Conquer - a 3rd person action game
-License:        GPL-2.0+
+License:        GPL-2.0-or-later
 Group:          Amusements/Games/3D/Shoot
-Url:            http://sourceforge.net/projects/blobandconquer/
+URL:            http://sourceforge.net/projects/blobandconquer/
 Source0:        %{name}-%{version}.tar.gz
 Source1:        %{name}-icons.tar
 # PATCH-FIX-UPSTREAM for gcc 4.7
 Patch0:         blobandconquer-gcc47.patch
+Patch1:         https://sources.debian.org/data/main/b/blobandconquer/1.11-dfsg%2B20-6/debian/patches/1030-fix-build-with-gcc16.patch
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
@@ -52,7 +53,7 @@ without Galdov the aliens are still extremely well organised...
 They're Ready. Will You Be?
 
 %prep
-%autosetup -p0 -a 1
+%autosetup -p1 -a 1
 mv makefile Makefile
 
 # Fix paths, add -lX11, remove docs install via files,

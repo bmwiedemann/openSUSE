@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Jul 27 09:48:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1030-fix-build-with-gcc16.patch: Fix build with GCC 16
+  (boo#1261826).
+- Rebase blobandconquer-gcc47.patch to apply as -p1.
+
+-------------------------------------------------------------------
 Thu Feb 22 10:15:47 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
