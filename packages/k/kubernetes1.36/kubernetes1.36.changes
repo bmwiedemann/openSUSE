@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Jul 27 06:16:44 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- CVE-2020-8561: kubernetes: Webhook redirect in kube-apiserver, bsc#1190099
+
+  * TL;DR: Please refer to the official blogpost by the upstream Kubernetes project for details on mitigating the CVE: https://kubernetes.io/blog/2026/05/26/reconciling-unfixed-kubernetes-cves/#cve-2020-8561-webhook-redirect-in-kube-apiserver
+
+  ****Important note to users and administrators****
+  
+  The Issue: The kube-apiserver follows HTTP redirects when communicating with admission webhooks. An actor capable of configuring an AdmissionWebhookConfiguration can redirect API server requests to internal, private networks.
+
+  Why it remains unfixed: Restricting this behavior would require breaking the standard HTTP client behavior that many legitimate integrations rely on.
+
+  Mitigation: Set the API server log level to less than 10 (to prevent logging response bodies) and disable dynamic profiling (--profiling=false) to prevent unauthorized log-level changes.
+
+-------------------------------------------------------------------
+Mon Jul 27 05:28:14 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.36.3:
+  * DRA: roll back reserved state in allocateDevice
+  * Bump images and versions to golang 1.26.5 and update distroless-iptables
+  * stop logging missing optional container annotations
+  * Add e2e test for setting maps and slices to null via SSA
+  * Bump sigs.k8s.io/structured-merge-diff/v6 to v6.3.3
+  * kubelet startPodSync: reuse the previous context to fix memory leak regression
+  * Make utf8 replacement char test pass on Go 1.27
+  * Restore string JSON encoding of cri-api KeyValue
+  * kubeadm: treat already promoted learner as successful
+  * kubeadm: use KubernetesAPICallTimeout for mandatory kubeadm-config fetch
+  * Align DeviceTaintRule informer API version with handlers
+  * Fix job controller reporting active=0 during pod creation backoff
+  * flowcontrol: cover Required rule for spec.type and limitResponse.type
+  * flowcontrol: emit Required when spec.type or limitResponse.type is empty
+  * test/compatibility_lifecycle: resolve feature names from variables
+  * kubeadm: skip promote call when etcd member is already a voting member
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.5`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.36.3/.go-version 
+
+-------------------------------------------------------------------
 Wed Jul  1 10:27:34 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.36.2:
