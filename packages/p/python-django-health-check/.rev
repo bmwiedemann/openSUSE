@@ -172,4 +172,21 @@
   * Clean up storage probe files when validation fails</comment>
     <requestid>1349366</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>901b883f6c775981aa67a2db5e8bdf55</srcmd5>
+    <version>4.4.3</version>
+    <time>1785254111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.4.3:
+  * Remove blank lines in OpenMetrics output
+- Clean up {Build,}Requires.
+
+- update to 4.4.2:
+  * Add sponsors to readme
+- update to 4.4.1:
+  * Update deprecated redis_url test case
+  * Add atlassian extra depnency test group
+  * Fix Atlassian incident checks</comment>
+    <requestid>1367889</requestid>
+  </revision>
 </revisionlist>

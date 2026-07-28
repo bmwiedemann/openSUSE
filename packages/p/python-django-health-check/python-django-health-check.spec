@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-health-check
-Version:        4.4.0
+Version:        4.4.3
 Release:        0
 Summary:        Run checks on Django and is dependent services
 License:        MIT
@@ -29,7 +29,6 @@ BuildRequires:  %{python_module boto3}
 BuildRequires:  %{python_module celery >= 5.0.0}
 BuildRequires:  %{python_module django-storages}
 BuildRequires:  %{python_module dnspython >= 2.0.0}
-BuildRequires:  %{python_module feedparser}
 BuildRequires:  %{python_module flit-core >= 3.2}
 BuildRequires:  %{python_module flit-scm}
 BuildRequires:  %{python_module pip}
@@ -37,14 +36,11 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module redis >= 4.2.0}
-BuildRequires:  %{python_module setuptools_scm}
-BuildRequires:  %{python_module wheel}
 #
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django >= 5.2
 Requires:       python-dnspython >= 2.0.0
-Requires:       python-feedparser
 BuildArch:      noarch
 %python_subpackages
 
@@ -72,7 +68,12 @@ mv tests /tmp/testenv
 cd /tmp/testenv
 PYTHONPATH=${PWD}
 export DJANGO_SETTINGS_MODULE=tests.testapp.settings
-%pytest -k "not (test_run_check__dns_working or TestDNSExceptionHandling or test_feed_url)"
+donttest="test_run_check__dns_working or TestDNSExceptionHandling"
+donttest+=" or test_feed_url or test_check_status__live_summary_endpoint"
+if [ $(getconf LONG_BIT) -eq 32 ]; then
+    donttest+=" or test_redis__repr"
+fi
+%pytest -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:52:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.4.3:
+  * Remove blank lines in OpenMetrics output
+- Clean up {Build,}Requires.
+
+-------------------------------------------------------------------
+Sun Jun 14 09:55:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.4.2:
+  * Add sponsors to readme
+- update to 4.4.1:
+  * Update deprecated redis_url test case
+  * Add atlassian extra depnency test group
+  * Fix Atlassian incident checks
+
+-------------------------------------------------------------------
 Sun Apr 26 09:39:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.4.0:
