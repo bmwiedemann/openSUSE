@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:18:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a test broken by Pandas 3. 
+
+-------------------------------------------------------------------
 Mon Aug 19 05:46:38 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-8.patch:

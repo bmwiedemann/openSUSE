@@ -121,4 +121,12 @@
   * Do not use pytest.warns(None).</comment>
     <requestid>1194621</requestid>
   </revision>
+  <revision rev="15" vrev="3">
+    <srcmd5>c02ca422288e21178c9c175dac9446f7</srcmd5>
+    <version>3.17.3</version>
+    <time>1785254098</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip a test broken by Pandas 3.</comment>
+    <requestid>1367875</requestid>
+  </revision>
 </revisionlist>
