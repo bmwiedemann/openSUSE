@@ -70,4 +70,12 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness, %check import
 smoke test passes for both python313 and python314, source_validator clean.</comment>
     <requestid>1366430</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1f5fc124ffad5860fe1dc70afedd70b3</srcmd5>
+    <version>1.25.1</version>
+    <time>1785255333</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.25.1</comment>
+    <requestid>1368071</requestid>
+  </revision>
 </revisionlist>

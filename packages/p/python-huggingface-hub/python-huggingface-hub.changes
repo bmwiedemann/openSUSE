@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Jul 27 16:45:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 1.25.1:
+  * Stop injecting the HF token into sandbox jobs as SBX_DL_TOKEN
+  * Auto-name jobs on creation from the image plus a command hash
+  * Add a timeout parameter to the safetensors metadata methods
+  * Warn on cache inconsistencies and fix the file-count progress bar
+    on completion
+  * Fix catastrophic backtracking (ReDoS) in the model card YAML
+    block regular expression
+
+-------------------------------------------------------------------
 Fri Jul 17 14:40:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - update to 1.24.0:
