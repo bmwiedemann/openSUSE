@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Jul 28 04:57:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.5.1:
+  * Skip test_github_runner_detection unless
+    EXTRA_PLATFORMS_TEST_MATRIX is set, instead of whenever GitHub CI
+    is detected, so downstream packagers building the test suite
+    inside GitHub Actions no longer fail on the absent matrix
+    variable.
+- update to 13.5.0:
+  * Rename the GUIX_BUILD CI trait to HERMETIC_BUILD. GUIX_BUILD,
+    is_guix_build() and the skip_guix_build/unless_guix_build
+    decorators still resolve to their HERMETIC_BUILD counterparts with
+    a DeprecationWarning, and will be removed in 14.0.0.
+
+-------------------------------------------------------------------
+Mon Jul 27 06:41:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.4.0:
+  * Add write_fake_executable() to extra_platforms.pytest: a fake
+    command for tests that drive a real subprocess, runnable even
+    in a /bin/sh-less build sandbox.
+  * Add @skip_hermetic_build / @unless_hermetic_build as aliases of
+    the Guix-build decorators, covering any HOME=/homeless-shelter
+    build sandbox (Guix, Nixpkgs, ...).
+  * Ship the test suite in the PyPI sdist so downstream packagers
+    can build and test from it; a plain pytest run no longer needs
+    pytest-cov or pytest-xdist.
+  * Drop the repomatic documentation dependency: the
+    MyST-docstrings Sphinx extension now comes from
+    click-extra[sphinx]>=8.5.
+  * Add a "Downstream packaging" guide for distribution packagers.
+  * Extend the Sphinx cross-reference conformance tests to
+    MyST-style roles in Python docstrings, previously never
+    collected.
+
+-------------------------------------------------------------------
 Mon Jul 20 05:14:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.3.1 (fix bsc#1262985):
