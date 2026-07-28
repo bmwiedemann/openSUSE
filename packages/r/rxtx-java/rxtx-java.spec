@@ -40,6 +40,7 @@ Patch6:         rxtx-java-version.patch
 Patch7:         rxtx-java-missing-javah.patch
 Patch8:         rxtx-yield.patch
 Patch9:         rxtx-missing-sysmacros.patch
+Patch10:        rxtx-javadoc.patch
 BuildRequires:  automake
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  libtool
@@ -98,6 +99,7 @@ the specification for Sun's Java Communications API.
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
 
 %build
 export THREADS_FLAG=native
@@ -116,7 +118,7 @@ mv RXTXcomm-bnd.jar RXTXcomm.jar
 
 # build javadoc
 mkdir -p javadoc
-javadoc -d javadoc src/gnu/io/*.java
+javadoc -notimestamp -d javadoc src/gnu/io/*.java
 
 %install
 install -dm 0755 %{buildroot}%{_jnidir} %{buildroot}%{_libdir}

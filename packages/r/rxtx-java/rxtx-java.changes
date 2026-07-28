@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Jul 27 03:56:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * rxtx-javadoc.patch
+    + run javadoc with -notimestamp for reproducible builds
+- Add -notimestamp to the standalone javadoc invocation too
+
+-------------------------------------------------------------------
 Wed Aug 28 17:38:13 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Disable -Wimplicit-function-declaration
@@ -164,7 +172,6 @@ Sun Aug 22 06:59:34 UTC 2010 - kkaempf@novell.com
 - update to 2.2pre2
 
 -------------------------------------------------------------------
-Sat Mar 11 11:06:05 AEST 2007 - developer@jefferyfernandez.id.au
+Sun Mar 11 01:06:05 UTC 2007 - developer@jefferyfernandez.id.au
 
 - Initial Release for openSUSE
--------------------------------------------------------------------

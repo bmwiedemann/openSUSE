@@ -1,0 +1,20 @@
+--- rxtx-2.2pre2/configure.in	2026-07-27 05:46:58.774758682 +0200
++++ rxtx-2.2pre2/configure.in	2026-07-27 05:47:50.047912642 +0200
+@@ -474,7 +474,7 @@
+ 		find_java_native_include jni.h
+ 		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -h \$(DEST) -d \$(TOP)/ -O -source 1.8 -target 1.8"
+ 		JAR="\$(JPATH)/bin/jar"
+-		JAVADOC="\$(JPATH)/bin/javadoc -classpath \$(CLASSPATH)"
++		JAVADOC="\$(JPATH)/bin/javadoc -notimestamp -classpath \$(CLASSPATH)"
+ 		CFLAGS=$CFLAGS" -D_BSD_SOURCE"
+ 		JAVAINCLUDE=""
+ 		JAVAH_FIX="if test ! -d \$(target_triplet);then  mkdir \$(target_triplet);fi;"
+@@ -486,7 +486,7 @@
+ 		find_java_native_include jni_md.h
+ 		JAVAC="\$(JPATH)/bin/javac -classpath \$(CLASSPATH) -h \$(DEST) -d \$(TOP)/ -O -source 1.8 -target 1.8"
+ 		JAR="\$(JPATH)/bin/jar"
+-		JAVADOC="\$(JPATH)/bin/javadoc"
++		JAVADOC="\$(JPATH)/bin/javadoc -notimestamp"
+ 		CFLAGS=$CFLAGS" -D_BSD_SOURCE"
+ 		;;
+ 	esac
