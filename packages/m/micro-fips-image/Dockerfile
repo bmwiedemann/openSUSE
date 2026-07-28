@@ -25,11 +25,12 @@ FROM opensuse/tumbleweed:latest AS builder
 COPY --from=target / /target
 
 RUN set -euo pipefail; \
-    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1; \
+    export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends bash ca-certificates-mozilla-prebuilt coreutils-single libopenssl3 openSUSE-release openSUSE-release-appliance-docker patterns-base-fips
 
 RUN set -euo pipefail; zypper -n install jdupes crypto-policies-scripts update-bootloader \
     && env base_dir=/target/etc/crypto-policies fips-mode-setup --enable --no-bootcfg \
+    && zypper --root /target -n clean -a \
     && jdupes -1 -L -r /target/usr/
 
 # cleanup logs and temporary files
