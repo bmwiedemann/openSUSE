@@ -444,6 +444,8 @@ Patch25:        check-no-llvm-exegesis.patch
 Patch27:        clang-fix-openmp-test.patch
 # PATCH-FIX-UPSTREAM: Fix test with x87 floating-point.
 Patch28:        llvm-fix-cov-test-i586.patch
+# PATCH-FIX-UPSTREAM https://github.com/llvm/llvm-project/commit/3dc4fd6dd41100f051a63642f449b16324389c96
+Patch29:        compiler-rt-Remove-linux-scc-h.patch
 BuildRequires:  %{python_pkg}-base >= 3.8
 BuildRequires:  binutils-devel >= 2.21.90
 BuildRequires:  cmake >= 3.13.4
@@ -899,6 +901,10 @@ rm unittests/Driver/DistroTest.cpp
 # We hardcode i586
 rm test/Driver/x86_features.c
 rm test/Driver/nacl-direct.c
+popd
+
+pushd compiler-rt-%{_version}.src
+%patch -P 29 -p2
 popd
 
 pushd clang-tools-extra-%{_version}.src
