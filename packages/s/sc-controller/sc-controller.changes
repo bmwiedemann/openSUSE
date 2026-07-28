@@ -1,3 +1,17 @@
+Fri Jul 24 12:42:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.6.0
+  *Add rumble support for DualShock 4 (over USB, no Bluetooth support)
+  *DualSense Edge support without the extra buttons
+  *Fix crash when enabling OSD keyboard on Wayland
+  *Fix TriggerAction not being able to be used to set only a full action
+  *Fix triggers not always outputting analog values
+  *Fix broken BUTTON_ORDER import in Controller Registration
+  *Fix Steam Controller (2015) hotplug disconnecting the controller
+  *Fix TypeError on Failing to claim busy USB connected DS4/DS5
+  *Minimum Python version is now 3.11
+
+-------------------------------------------------------------------
 Thu Dec 18 15:12:00 UTC 2025 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.5.5
