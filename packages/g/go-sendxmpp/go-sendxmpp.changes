@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:01:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.17.0:
+  Added:
+  * Add --ox-transfer-private-key to transfer the encrypted private key to PEP
+    to transfer it to other devices (requires go-xmpp >= v0.3.7).
+  * Add --ox-receive-private-key to receive the encrypted private key from PEP.
+  * Add config option no_root_warning.
+  * Add config option no_legacy_pgp_warning.
+  * Also disable legacy PGP when running as root (Ox was already disabled).
+  * Disable pinning for not using PLAIN when running as root.
+  * Add config option ox_trust_mode with settings blind and tofu.
+  Changed:
+  * Due to new tofu trust mode for Ox, only one public key per contact is accepted for easier ID handling.
+  * Ox: Check that fingerprint of received key equals the advertised one.
+  * CVE-2026-39821: Failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation (bsc#1266617)
+    Bump net to 0.57.0
+
+-------------------------------------------------------------------
 Tue Jun 23 05:22:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.16.0:
@@ -18,8 +37,6 @@ Tue Jun 23 05:22:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
   * Deprecate legacy PGP.
   * CVE-2026-1229: The CombinedMult function produces an incorrect value (bsc#1265538)
     Bump circl to 1.6.3
-  * CVE-2026-39821: Failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation (bsc#1266617)
-    Bump net to 0.56.0
 
 -------------------------------------------------------------------
 Wed May 13 05:56:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
