@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 25 08:38:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.7
+  * Fix a bug where DLS files that contain a PGAL chunk may sound
+    incorrectly (#1804).
+  * Fix DLS sample invalidation logic to avoid possible use of
+    uninitialized memory (#1809).
+
+-------------------------------------------------------------------
 Sat Jul  4 13:52:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.6
