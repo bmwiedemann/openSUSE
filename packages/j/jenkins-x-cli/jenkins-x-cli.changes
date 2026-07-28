@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Mon Jul 27 05:03:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.60:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.26
+- Update to version 3.17.59:
+  * chore(deps): bump golang.org/x/net from 0.54.0 to 0.55.0
+- Update to version 3.17.58:
+  * chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+- Update to version 3.17.57:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.43
+- Update to version 3.17.56:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.42
+- Update to version 3.17.55:
+  * chore(deps): upgrade jenkins-x-plugins/jx-test to version
+    0.4.15
+- Update to version 3.17.54:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.15
+- Update to version 3.17.53:
+  * chore(deps): upgrade jenkins-x-plugins/jx-test to version
+    0.4.14
+- Update to version 3.17.52:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.31
+- Update to version 3.17.51:
+  * chore(deps): upgrade jenkins-x-plugins/jx-changelog to version
+    0.10.29
+- Update to version 3.17.50:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.41
+- Update to version 3.17.49:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.14
+- Update to version 3.17.48:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.91
+- Update to version 3.17.47:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.30
+- Update to version 3.17.46:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.87
+
+-------------------------------------------------------------------
 Thu Jul 16 05:20:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.45:
