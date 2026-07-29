@@ -43,13 +43,14 @@
 %define shlib_sover  3
 
 Name:           fwupd
-Version:        2.1.6
+Version:        2.1.7
 Release:        0
 Summary:        Device firmware updater daemon
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Management
 URL:            https://fwupd.org/
 Source:         %{name}-%{version}.tar.xz
+Source99:       fwupd-rpmlintrc
 Patch1:         fwupd-bsc1217138-fallback-shim-path.patch
 
 BuildRequires:  dejavu-fonts
@@ -117,7 +118,7 @@ BuildRequires:  pkgconfig(efivar) >= 33
 BuildRequires:  pkgconfig(libsmbios_c) >= 2.3.0
 %endif
 Obsoletes:      dbxtool <= 8
-Provides:       dbxtool
+Provides:       dbxtool = 8.1
 %if %{with efi_fw_update}
 Obsoletes:      fwupdate <= 12
 %ifarch x86_64 aarch64
@@ -325,12 +326,8 @@ rm -fr %{buildroot}%{_datadir}/fish
 %dir %{_sysconfdir}/pki
 %dir %{_sysconfdir}/pki/fwupd
 %dir %{_sysconfdir}/pki/fwupd-metadata
-#%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Foundation-Metadata
-#%{_sysconfdir}/pki/fwupd-metadata/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd-metadata/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd-metadata/LVFS-CA.pem
-#%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Foundation-Firmware
-#%{_sysconfdir}/pki/fwupd/GPG-KEY-Linux-Vendor-Firmware-Service
 %{_sysconfdir}/pki/fwupd/LVFS-CA-2025PQ.pem
 %{_sysconfdir}/pki/fwupd/LVFS-CA.pem
 %if %{with efi_fw_update}

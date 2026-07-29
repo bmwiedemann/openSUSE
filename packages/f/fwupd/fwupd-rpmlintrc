@@ -1,0 +1,8 @@
+# obsolete-not-provided fwupdate
+addFilter("obsolete-not-provided");
+
+# non-conffile-in-etc - these are certificates
+addFilter("non-conffile-in-etc");
+
+# files-duplicate - again certificates
+addFilter("files-duplicate");
