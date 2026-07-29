@@ -24,7 +24,7 @@
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2502
+%define rsyslog_major 8.2606
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
@@ -72,6 +72,11 @@ Release:        0
 # TODO: ... doesnt have a proper configure check but wants hdfs.h
 %bcond_with     hdfs
 %bcond_with     mongodb
+%if 0%{?suse_version} && 0%{?suse_version} < 1500
+  %bcond_with     protobuf
+%else
+  %bcond_without  protobuf
+%endif
 %bcond_with     hiredis
 %bcond_with     zeromq
 
@@ -101,8 +106,19 @@ BuildRequires:  pkgconfig(libsystemd) >= 234
 BuildRequires:  bison
 BuildRequires:  curl-devel
 BuildRequires:  flex
+BuildRequires:  libyaml-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(yaml-0.1)
+%if %{with protobuf}
+%if 0%{?suse_version}
+BuildRequires:  protobuf-c
+%else
+BuildRequires:  protobuf-c-devel
+%endif
+BuildRequires:  snappy-devel
+BuildRequires:  pkgconfig(libprotobuf-c) >= 1.0.0
+%endif
 BuildRequires:  zlib-devel
 %if %{with rfc3195}
 %if %{with pkgconfig}
@@ -215,13 +231,11 @@ Source6:        usr.sbin.rsyslogd
 Source7:        module-mysql
 Source8:        module-snmp
 Source9:        module-udpspoof
-Source14:       https://www.rsyslog.com/files/download/rsyslog/rsyslog-doc-%{rsyslog_major}.0.tar.gz
 Source16:       journald-rsyslog.conf
 Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
 Source20:       rsyslog-tmpfiles.conf
-
 Patch0:         0001-imptcp-guard-regex-framing-match-at-line-start.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
@@ -251,8 +265,6 @@ package.
 
 This package provides additional documentation for rsyslog.
 
-%if %{with diagtools}
-
 %package diag-tools
 Requires:       %{name} = %{version}
 Summary:        Diagnostic tools
@@ -265,14 +277,10 @@ package.
 This package provides additional diagnostic tools (small helpers,
 usually not needed).
 
-%endif
-
-%if %{with dtls}
-
 %package module-dtls
 Requires:       %{name} = %{version}
 Requires:       rsyslog-module-ossl
-Summary:        dtls support module for rsyslog
+Summary:        DTLS support module for rsyslog
 Group:          System/Daemons
 
 %description module-dtls
@@ -281,10 +289,6 @@ package.
 
 This module provides support for securely transporting syslog messages over
 the network using the Datagram Transport Layer Security (DTLS) protocol.
-
-%endif
-
-%if %{with gssapi}
 
 %package module-gssapi
 Requires:       %{name} = %{version}
@@ -298,10 +302,6 @@ package.
 This module provides the support to receive syslog messages from the
 network protected via Kerberos 5 encryption and authentication.
 
-%endif
-
-%if %{with mysql}
-
 %package module-mysql
 Requires:       %{name} = %{version}
 Summary:        MySQL support module for rsyslog
@@ -314,10 +314,6 @@ package.
 This package provides a module with the support for logging into MySQL
 databases.
 
-%endif
-
-%if %{with pgsql}
-
 %package module-pgsql
 Requires:       %{name} = %{version}
 Summary:        PostgreSQL support module for rsyslog
@@ -328,10 +324,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides the support for logging into PostgreSQL databases.
-
-%endif
-
-%if %{with dbi}
 
 %package module-dbi
 Requires:       %{name} = %{version}
@@ -345,10 +337,6 @@ package.
 This package provides a module with the support for logging into DBI
 supported databases.
 
-%endif
-
-%if %{with snmp}
-
 %package module-snmp
 Requires:       %{name} = %{version}
 Summary:        SNMP support module for rsyslog
@@ -361,10 +349,6 @@ package.
 This module provides the ability to send syslog messages as an SNMPv1 &
 v2c traps.
 
-%endif
-
-%if %{with gnutls}
-
 %package module-gtls
 Requires:       %{name} = %{version}
 Summary:        TLS encryption support module for rsyslog
@@ -376,9 +360,6 @@ package.
 
 This module provides the ability for TLS encrypted TCP logging using
 the GnuTLS library.
-%endif
-
-%if %{with openssl}
 
 %package module-ossl
 Requires:       %{name} = %{version}
@@ -391,9 +372,6 @@ package.
 
 This module provides the ability for TLS encrypted TCP logging using
 the OpenSSL library.
-%endif
-
-%if %{with gcrypt}
 
 %package module-gcrypt
 Requires:       %{name} = %{version}
@@ -406,26 +384,21 @@ package.
 
 This module provides log file encryption support using libgcrypt and
 a rsgtutil utility to manage the files.
-%endif
-
-%if %{with relp}
 
 %package module-relp
 Requires:       %{name} = %{version}
 Summary:        RELP protocol support module for syslog
 Group:          System/Daemons
 
+%if %{with relp}
 %requires_file %{_libdir}/librelp.so
+%endif
 
 %description module-relp
 Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides Reliable Event Logging Protocol support.
-
-%endif
-
-%if %{with mmnormalize}
 
 %package module-mmnormalize
 Requires:       %{name} = %{version}
@@ -438,10 +411,6 @@ package.
 
 This module provides log normalizing support.
 
-%endif
-
-%if %{with udpspoof}
-
 %package module-udpspoof
 Requires:       %{name} = %{version}
 Summary:        UDP spoof support module for syslog
@@ -452,10 +421,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides a UDP forwarder that allows changing the sender address.
-
-%endif
-
-%if %{with elasticsearch}
 
 %package module-elasticsearch
 Requires:       %{name} = %{version}
@@ -468,10 +433,6 @@ package.
 
 This module provides support to output to an ElasticSearch database.
 
-%endif
-
-%if %{with omhttpfs}
-
 %package module-omhttpfs
 Requires:       %{name} = %{version}
 Summary:        HDFS via HTTP output module for syslog
@@ -482,10 +443,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides support to output to HDFS via HTTP.
-
-%endif
-
-%if %{with hdfs}
 
 %package module-hdfs
 Requires:       %{name} = %{version}
@@ -498,10 +455,6 @@ package.
 
 This module provides support to output to an HDFS database.
 
-%endif
-
-%if %{with mongodb}
-
 %package module-mongodb
 Requires:       %{name} = %{version}
 Summary:        MongoDB output module for syslog
@@ -512,10 +465,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides support to output to a MongoDB database.
-
-%endif
-
-%if %{with hiredis}
 
 %package module-hiredis
 Requires:       %{name} = %{version}
@@ -528,10 +477,6 @@ package.
 
 This module provides support to output to a Redis database.
 
-%endif
-
-%if %{with zeromq}
-
 %package module-zeromq
 Requires:       %{name} = %{version}
 Summary:        ZeroMQ support module for syslog
@@ -542,10 +487,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides support for ZeroMQ.
-
-%endif
-
-%if %{with kafka}
 
 %package module-kafka
 Requires:       %{name} = %{version}
@@ -558,9 +499,6 @@ package.
 
 This module provides support for Kafka.
 
-%endif
-
-%if %{with omamqp1}
 %package module-omamqp1
 Requires:       %{name} = %{version}
 Summary:        AMQP support module for syslog
@@ -571,9 +509,7 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides support for AMQP.
-%endif
 
-%if %{with tcl}
 %package module-omtcl
 Requires:       %{name} = %{version}
 Summary:        TCL output module for rsyslog
@@ -584,7 +520,6 @@ Rsyslog is an enhanced multi-threaded syslog daemon. See rsyslog
 package.
 
 This module provides an output module for TCL.
-%endif
 
 %package devel
 Requires:       glibc-devel
@@ -611,7 +546,7 @@ The rsyslog-devel package includes header files, libraries necessary for
 developing the rsyslog logging daemon.
 
 %prep
-%autosetup -p1 -a 14
+%autosetup -p1
 #
 for file in rsyslog-service-prepare; do
 	sed \
@@ -621,7 +556,7 @@ for file in rsyslog-service-prepare; do
 done
 
 %build
-export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../../grammar"
+export CFLAGS="%{optflags} -fno-strict-aliasing -W -Wall -I../grammar -I../../grammar"
 # needs java
 #        --enable-gui            \
 
@@ -753,10 +688,10 @@ export CFLAGS="$RPM_OPT_FLAGS -fno-strict-aliasing -W -Wall -I../grammar -I../..
 	--enable-usertools	\
 	--disable-static
 
-make %{?_smp_mflags:%{_smp_mflags}} V=1
+%make_build V=1
 
 %install
-make install DESTDIR="%{buildroot}"  V=1
+%make_install V=1
 #
 rm -f %{buildroot}%{rsyslog_module_dir_nodeps}/*.la
 #
@@ -814,10 +749,10 @@ if test "%{rsyslog_module_dir_nodeps}" != "%{rsyslog_module_dir_withdeps}" ; the
 fi
 %if 0%{?suse_version} < 1550
 	install -d -m0755 %{buildroot}/sbin
-	ln -sf %{_sbindir}/rsyslogd $RPM_BUILD_ROOT/sbin/rsyslogd
+	ln -sf %{_sbindir}/rsyslogd %{buildroot}/sbin/rsyslogd
 %endif
 # it is simply broken (bnc#890228)
-rm -f $RPM_BUILD_ROOT%{_sbindir}/zpipe
+rm -f %{buildroot}/%{_sbindir}/zpipe
 #
 install -m755 rsyslog-service-prepare %{buildroot}%{_sbindir}/
 ln -svf service %buildroot/%{_sbindir}/rc%{name}
@@ -850,7 +785,7 @@ install -d -m0755 %{buildroot}%{rsyslogdocdir}/html/
 find ChangeLog README AUTHORS \
 	\( -type d -exec install -m755 -d   %{buildroot}%{rsyslogdocdir}/\{\} \; \) \
      -o \( -type f -exec install -m644 \{\} %{buildroot}%{rsyslogdocdir}/\{\} \; \)
-cp -av build/* %{buildroot}%{rsyslogdocdir}/html/
+cp -av doc/source/* %{buildroot}%{rsyslogdocdir}/html/
 #
 %if %{with mysql}
 install -m644 plugins/ommysql/createDB.sql \
@@ -936,85 +871,26 @@ fi
 # to switch when installing it and there is a provider conflict.
 /usr/bin/systemctl -f enable rsyslog.service >/dev/null 2>&1 || :
 
-%if %{with gssapi}
 %post_for_mark_daemon_restart module-gssapi
-%endif
-
-%if %{with mysql}
 %post_for_mark_daemon_restart module-mysql
-%endif
-
-%if %{with pgsql}
 %post_for_mark_daemon_restart module-pgsql
-%endif
-
-%if %{with dbi}
 %post_for_mark_daemon_restart module-dbi
-%endif
-
-%if %{with snmp}
 %post_for_mark_daemon_restart module-snmp
-%endif
-
-%if %{with gnutls}
 %post_for_mark_daemon_restart module-gtls
-%endif
-
-%if %{with openssl}
 %post_for_mark_daemon_restart module-ossl
-%endif
-
-%if %{with relp}
 %post_for_mark_daemon_restart module-relp
-%endif
-
-%if %{with mmnormalize}
 %post_for_mark_daemon_restart module-mmnormalize
-%endif
-
-%if %{with udpspoof}
 %post_for_mark_daemon_restart module-udpspoof
-%endif
-
-%if %{with elasticsearch}
 %post_for_mark_daemon_restart module-elasticsearch
-%endif
-
-%if %{with omhttpfs}
 %post_for_mark_daemon_restart module-omhttpfs
-%endif
-
-%if %{with hdfs}
 %post_for_mark_daemon_restart module-hdfs
-%endif
-
-%if %{with mongodb}
 %post_for_mark_daemon_restart module-mongodb
-%endif
-
-%if %{with hiredis}
 %post_for_mark_daemon_restart module-hiredis
-%endif
-
-%if %{with zeromq}
 %post_for_mark_daemon_restart module-zeromq
-%endif
-
-%if %{with kafka}
 %post_for_mark_daemon_restart module-kafka
-%endif
-
-%if %{with omamqp1}
 %post_for_mark_daemon_restart module-omamqp1
-%endif
-
-%if %{with gcrypt}
 %post_for_mark_daemon_restart module-gcrypt
-%endif
-
-%if %{with tcl}
 %post_for_mark_daemon_restart module-omtcl
-%endif
 
 %if 0%{?suse_version} < 1600
 %posttrans
@@ -1026,8 +902,7 @@ fi
 #
 # stop the rsyslogd daemon when it is running
 #
-%{service_del_preun syslog.socket}
-%{service_del_preun rsyslog.service}
+%{service_del_preun syslog.socket rsyslog.service}
 
 %postun
 #
@@ -1040,7 +915,6 @@ fi
 %{service_del_postun rsyslog.service}
 
 %files
-%defattr(-,root,root)
 %dir %{_sysconfdir}/rsyslog.d
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.conf
 %config(noreplace) %attr(600,root,root) %{_sysconfdir}/rsyslog.d/remote.conf
@@ -1119,14 +993,12 @@ fi
 %{_tmpfilesdir}/rsyslog.conf
 
 %files doc
-%defattr(-,root,root)
 %dir %{rsyslogdocdir}/
 %doc %{rsyslogdocdir}/html/
 
 %if %{with diagtools}
 
 %files diag-tools
-%defattr(-,root,root)
 %{_sbindir}/msggen
 %{_sbindir}/rsyslog_diag_hostname
 %{rsyslog_module_dir_nodeps}/imdiag.so
@@ -1135,7 +1007,6 @@ fi
 %if %{with gssapi}
 
 %files module-gssapi
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omgssapi.so
 %{rsyslog_module_dir_withdeps}/imgssapi.so
 %{rsyslog_module_dir_withdeps}/lmgssutil.so
@@ -1144,7 +1015,6 @@ fi
 %if %{with mysql}
 
 %files module-mysql
-%defattr(-,root,root)
 %doc %{rsyslogdocdir}/mysql-createDB.sql
 %{rsyslog_module_dir_withdeps}/ommysql.so
 %{APPARMOR_PROFILE_PATH}/rsyslog.d/module-mysql
@@ -1153,7 +1023,6 @@ fi
 %if %{with pgsql}
 
 %files module-pgsql
-%defattr(-,root,root)
 %doc %{rsyslogdocdir}/pgsql-createDB.sql
 %{rsyslog_module_dir_withdeps}/ompgsql.so
 %endif
@@ -1161,14 +1030,12 @@ fi
 %if %{with dbi}
 
 %files module-dbi
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omlibdbi.so
 %endif
 
 %if %{with snmp}
 
 %files module-snmp
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omsnmp.so
 %{rsyslog_module_dir_nodeps}/mmsnmptrapd.so
 %{APPARMOR_PROFILE_PATH}/rsyslog.d/module-snmp
@@ -1177,21 +1044,18 @@ fi
 %if %{with gnutls}
 
 %files module-gtls
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/lmnsd_gtls.so
 %endif
 
 %if %{with openssl}
 
 %files module-ossl
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/lmnsd_ossl.so
 %endif
 
 %if %{with relp}
 
 %files module-relp
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/imrelp.so
 %{rsyslog_module_dir_withdeps}/omrelp.so
 %endif
@@ -1199,16 +1063,15 @@ fi
 %if %{with mmnormalize}
 
 %files module-mmnormalize
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/mmnormalize.so
 %{rsyslog_module_dir_withdeps}/mmjsonparse.so
+%{rsyslog_module_dir_withdeps}/mmleefparse.so
 %{rsyslog_module_dir_withdeps}/mmaudit.so
 %endif
 
 %if %{with udpspoof}
 
 %files module-udpspoof
-%defattr(-,root,root)
 %{rsyslog_module_dir_nodeps}/omudpspoof.so
 %config %{APPARMOR_PROFILE_PATH}/rsyslog.d/module-udpspoof
 %endif
@@ -1216,42 +1079,36 @@ fi
 %if %{with elasticsearch}
 
 %files module-elasticsearch
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omelasticsearch.so
 %endif
 
 %if %{with omhttpfs}
 
 %files module-omhttpfs
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omhttpfs.so
 %endif
 
 %if %{with hdfs}
 
 %files module-hdfs
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omhdfs.so
 %endif
 
 %if %{with mongodb}
 
 %files module-mongodb
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/ommongodb.so
 %endif
 
 %if %{with hiredis}
 
 %files module-hiredis
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omhiredis.so
 %endif
 
 %if %{with zeromq}
 
 %files module-zeromq
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/imzmq3.so
 %{rsyslog_module_dir_withdeps}/omzmq3.so
 %endif
@@ -1259,34 +1116,29 @@ fi
 %if %{with kafka}
 
 %files module-kafka
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/imkafka.so
 %{rsyslog_module_dir_withdeps}/omkafka.so
 %endif
 
 %if %{with omamqp1}
 %files module-omamqp1
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omamqp1.so
 %endif
 
 %if %{with gcrypt}
 
 %files module-gcrypt
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/lmcry_gcry.so
 %{_bindir}/rscryutil
 %endif
 
 %if %{with tcl}
 %files module-omtcl
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/omtcl.so*
 %endif
 
 %if %{with dtls}
 %files module-dtls
-%defattr(-,root,root)
 %{rsyslog_module_dir_withdeps}/imdtls.so
 %{rsyslog_module_dir_withdeps}/omdtls.so
 %endif

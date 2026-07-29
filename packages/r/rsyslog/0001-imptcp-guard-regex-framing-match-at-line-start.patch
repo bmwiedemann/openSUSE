@@ -1,4 +1,4 @@
-From 9ef6c7c11f2555f4766b822983f8f49f44df0349 Mon Sep 17 00:00:00 2001
+From ccfdbe2613ef571655da48de0f753d7f43dc3b0f Mon Sep 17 00:00:00 2001
 From: Rainer Gerhards <rgerhards@adiscon.com>
 Date: Mon, 20 Jul 2026 17:19:28 +0200
 Subject: [PATCH] imptcp: guard regex framing match at line start
@@ -26,23 +26,24 @@ Reported-by: Raphael Eikenberg (@eikendev)
 With the help of AI-Agents: Codex
 
 (cherry picked from commit 07b3c40a5a78c79ed9109251f842ca7e955dd586)
+(cherry picked from commit 9ef6c7c11f2555f4766b822983f8f49f44df0349)
 ---
  plugins/imptcp/imptcp.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/plugins/imptcp/imptcp.c b/plugins/imptcp/imptcp.c
-index 9223f20d0..16d2c327b 100644
+index 91aa55157..d291979dd 100644
 --- a/plugins/imptcp/imptcp.c
 +++ b/plugins/imptcp/imptcp.c
-@@ -1054,7 +1054,7 @@ processDataRcvd_regexFraming(ptcpsess_t *const __restrict__ pThis,
- 		pThis->iCurrLine = pThis->iMsg;
- 	} else {
- 		const int isMatch = !regexec(&inst->start_preg, (char*)pThis->pMsg+pThis->iCurrLine, 0, NULL, 0);
--		if(isMatch) {
-+		if (pThis->iCurrLine > 0 && isMatch) {
- 			DBGPRINTF("regex match (%d), framing line: %s\n", pThis->iCurrLine, pThis->pMsg);
- 			strcpy((char*)pThis->pMsg_save, (char*) pThis->pMsg+pThis->iCurrLine);
- 			pThis->iMsg = pThis->iCurrLine - 1;
+@@ -1050,7 +1050,7 @@ static rsRetVal ATTR_NONNULL() processDataRcvd_regexFraming(ptcpsess_t *const __
+         pThis->iCurrLine = pThis->iMsg;
+     } else {
+         const int isMatch = !regexec(&inst->start_preg, (char *)pThis->pMsg + pThis->iCurrLine, 0, NULL, 0);
+-        if (isMatch) {
++        if (pThis->iCurrLine > 0 && isMatch) {
+             DBGPRINTF("regex match (%d), framing line: %s\n", pThis->iCurrLine, pThis->pMsg);
+             memmove(pThis->pMsg_save, pThis->pMsg + pThis->iCurrLine, ustrlen(pThis->pMsg + pThis->iCurrLine) + 1);
+             pThis->iMsg = pThis->iCurrLine - 1;
 -- 
 2.55.0
 
