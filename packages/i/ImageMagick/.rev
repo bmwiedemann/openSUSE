@@ -4599,4 +4599,41 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>- remove logo.eps (propriatery licence)</comment>
     <requestid>1366935</requestid>
   </revision>
+  <revision rev="345" vrev="1">
+    <srcmd5>5ec9f0d1587ff42103a2eb6289617ea4</srcmd5>
+    <version>7.1.2.28</version>
+    <time>1785344312</time>
+    <user>dimstar_suse</user>
+    <comment>- versn update to 7.1.2.28
+  * build(deps): bump ubuntu from b7f4819 to 3131b4c in /.devcontainer #8876
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1 #8882
+  * Fixes for PTIF writer to re-enable default creation of pyramid levels #8884
+  * build(deps): bump the codeql-action group with 3 updates #8881
+  * build(deps): bump actions/attest from 4.1.1 to 4.2.0 #8880
+  * fix: upgrade http:// to https:// in README.md #8867
+  * Fix memory leak in ASHLAR coder when action fails #8865
+  * build(deps): bump github/codeql-action/upload-sarif #8862
+  * build(deps): bump github/codeql-action/analyze from 4.36.3 to 4.37.0 #8863
+  * build(deps): bump github/codeql-action/init from 4.36.3 to 4.37.0 #8861
+  * Fix writing video output to stdout in Windows #8860
+  * build(deps): bump github/codeql-action/upload-sarif #8851
+  * build(deps): bump github/codeql-action/analyze from 4.36.2 to 4.36.3 #8849
+  * build(deps): bump github/codeql-action/init from 4.36.2 to 4.36.3 #8850
+  * re-add support for libheif 1.7.0 #8841
+  * Fix writing video output to stdout in Windows (#8860) #7900
+  * beta release 3dd3215
+  * Make sure git is configured properly when updating the website. 2e09a16
+  * address remote TOCTOU issues 99d821d
+  * eliminate compiler warning 8e835bd
+  * map Windows file identity into st_dev/st_ino. a15976c
+  * eliminate compiler warning c36f9ed
+  * check image file identity da02de3
+  * normalize the AE metric f85632e
+  * eliminate compiler warning 414297f
+  * support ImageInfo properties member 560f000
+  * improve formatting 23cfa27
+  * eliminate compiler warning 2f7deb8
+  * initialize image info properties ee20b08</comment>
+    <requestid>1368146</requestid>
+  </revision>
 </revisionlist>
