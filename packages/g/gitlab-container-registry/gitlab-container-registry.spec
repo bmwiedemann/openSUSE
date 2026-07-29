@@ -17,7 +17,7 @@
 
 
 Name:           gitlab-container-registry
-Version:        4.40.2
+Version:        4.41.0
 Release:        0
 Summary:        The GitLab Container Registry
 License:        Apache-2.0
@@ -27,10 +27,10 @@ Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        %{name}-configuration.yml
 Source3:        %{name}.service
-Source4:       system-user-%{name}.conf
-BuildRequires:  golang(API) >= 1.25
+Source4:        system-user-%{name}.conf
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  golang(API) >= 1.25
 
 %description
 The GitLab Container Registry originated as a fork of the Docker Distribution

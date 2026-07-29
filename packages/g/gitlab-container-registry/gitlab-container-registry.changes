@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:00:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.41.0:
+  * perf: instrument GCS chunk upload timing for blob PUT
+    diagnostics
+  * fix(sissue_router): migrate to GraphQL work items API
+  * build(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.32.29
+  * feat(datastore): add last_pulled_at column to tags table
+  * build: update gitlab.com/gitlab-org/labkit to v1.64.8
+  * build(deps): update module
+    github.com/aws/aws-sdk-go-v2/service/s3 to v1.105.0
+  * build(deps): update module
+    github.com/aws/aws-sdk-go-v2/feature/cloudfront/sign to v1.11.7
+  * build(deps): update module github.com/aws/aws-sdk-go-v2/config
+    to v1.32.27
+  * build(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/storage/azblob to v1.8.0
+  * build(deps): update module github.com/jackc/pgx/v5 to v5.10.0
+  * build(deps): update module
+    github.com/azure/azure-sdk-for-go/sdk/azidentity to v1.14.0
+  * build(deps): update module
+    github.com/aws/aws-sdk-go-v2/service/s3 to v1.104.0
+
+-------------------------------------------------------------------
 Sun Jun 28 06:50:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.40.2:
