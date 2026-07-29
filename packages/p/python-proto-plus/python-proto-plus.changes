@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 29 11:06:00 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org> - 1.28.2
+
+- update to 1.28.2
+  * make Marshal thread-safe and handle race conditions
+    (gh#googleapis/google-cloud-python#15100)
+- changes from 1.28.1
+  * add --cov-append to gapic-generator and proto-plus to preserve
+    monorepo coverage
+
+-------------------------------------------------------------------
 Sun Jun 28 09:41:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.28.0:
