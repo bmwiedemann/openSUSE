@@ -17,7 +17,7 @@
 
 
 Name:           python-mistral-common
-Version:        1.11.6
+Version:        1.11.7
 Release:        0
 Summary:        Library of common utilities for Mistral AI
 License:        Apache-2.0

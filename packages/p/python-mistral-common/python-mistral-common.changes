@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:38:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.11.7:
+  * Validate special_token_policy strings when decoding
+  * Add auto-detecting chat template generation from the tokenizer
+    file
+  * Reject thinking chunks in tool messages
+  * Emit all render_content macro arguments explicitly
+
+-------------------------------------------------------------------
 Tue Jul 21 06:13:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.11.6:
