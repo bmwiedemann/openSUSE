@@ -134,4 +134,12 @@ Built for openSUSE_Tumbleweed/aarch64 with 0 rpmlint badness; %check passes
   * Merge sandbox request headers case-insensitively</comment>
     <requestid>1367619</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>faa68cf8ac78f8a49d2a6186182486f9</srcmd5>
+    <version>0.10.11</version>
+    <time>1785344442</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.10.11</comment>
+    <requestid>1368286</requestid>
+  </revision>
 </revisionlist>

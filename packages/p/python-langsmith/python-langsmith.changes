@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:16:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.10.11:
+  * Remove the composite feedback formula APIs
+  * Restore _get_openapi_base_url stripping /api/v1 before it is
+    passed to the OpenAPI client
+  * Retry sandbox exec on a graceful close arriving before 'started'
+  * Fall back to HTTP exec only when the ws library is unavailable
+  * Keep dataplane_url after stop()
+
+-------------------------------------------------------------------
 Thu Jul 23 19:49:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.10.10:
