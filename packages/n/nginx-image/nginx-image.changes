@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jul 27 12:02:51 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- filter basecontainer packages from installation for optimizing rebuilds
+
+-------------------------------------------------------------------
 Mon Jul 27 06:49:55 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - order installation packages alphabetically for stability
