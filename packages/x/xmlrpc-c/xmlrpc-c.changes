@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 10:54:28 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix HTML injection; CVE-2026-15928; bsc#1272769; Add patch
+  0002-CVE-2026-15928-HTML-injection.patch
+
+-------------------------------------------------------------------
 Sat Jun 20 16:28:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to the current super-stable release 1.64.03

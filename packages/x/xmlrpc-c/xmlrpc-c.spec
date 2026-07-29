@@ -29,6 +29,7 @@ URL:            https://xmlrpc-c.sourceforge.net/
 Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-%{version}.tgz
 Source9:        %{name}-rpmlintrc
 Patch1:         skip-expat.patch
+Patch2:         0002-CVE-2026-15928-HTML-injection.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
