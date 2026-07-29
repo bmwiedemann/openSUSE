@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:24:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.2:
+  * Handle an empty string in the gateway environment variables
+
+-------------------------------------------------------------------
 Sat Jul 25 19:01:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.1:
