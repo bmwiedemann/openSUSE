@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Wed Jul 08 18:56:46 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 1.74.4:
+- Update to version 1.74.4 (boo#1267192):
   * Version v1.74.4
   * gui: update embedded release to 1.1.10
   * local: stop --links symlinks escaping the destination directory CVE-2026-54572
