@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Sat Jul 25 09:57:44 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Employ a Source URL for the tarball
+- Modernize some macros
+
+-------------------------------------------------------------------
 Fri Jul 24 14:34:53 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
-- update to upstream git revision ga630254 (boo#1272151)
+- update to upstream git revision a630254 (boo#1272151)
   * fix: handle small buffered dump workspaces
   * docs: explain object child lookup traversal
   * benchmarks: address reproducibility review findings

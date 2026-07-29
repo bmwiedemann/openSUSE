@@ -19,16 +19,17 @@
 %define somajor 4
 Name:           libfastjson
 Version:        1.2304.0+ga630254
+%define gitrev  a63025493539a11607ed6ab49a54f91a6b8d4e2a
 Release:        0
 Summary:        JSON parsing library, a fork of json-c
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rsyslog/libfastjson
-Source:         libfastjson-1.2304.0+ga630254.tar.gz
+Source:         https://github.com/rsyslog/libfastjson/archive/%{gitrev}.tar.gz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libtool
-BuildRequires:  pkgconfig
+BuildRequires:  pkg-config
 
 %description
 A JSON parsing library, a fork of json-c, developed by the rsyslog team
@@ -44,12 +45,12 @@ and used for rsyslog and liblognorm.
 
 This package includes the libfastjson library.
 
-%package -n libfastjson-devel
+%package devel
 Summary:        Development headers and libraries for libfastjson
 Group:          Development/Libraries/C and C++
 Requires:       libfastjson%{somajor} = %{version}
 
-%description -n libfastjson-devel
+%description devel
 A JSON parsing library, a fork of json-c, developed by the rsyslog team
 and used for rsyslog and liblognorm.
 
@@ -57,7 +58,7 @@ This package includes header files and scripts needed for developers
 using the libfastjson library
 
 %prep
-%autosetup
+%autosetup -p1 -n %{name}-%{gitrev}
 
 %build
 ./autogen.sh
@@ -71,14 +72,13 @@ using the libfastjson library
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -n libfastjson%{somajor} -p /sbin/ldconfig
-%postun -n libfastjson%{somajor} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfastjson%{somajor}
 
 %files -n libfastjson%{somajor}
 %license COPYING
 %{_libdir}/libfastjson.so.%{somajor}*
 
-%files -n libfastjson-devel
+%files devel
 %doc AUTHORS
 %license COPYING
 %{_libdir}/libfastjson.so
