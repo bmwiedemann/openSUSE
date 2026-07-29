@@ -737,4 +737,20 @@
     <comment>- Update to release 2.8.142</comment>
     <requestid>1349316</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>a00f289f426d038d6c102708b5b948f6</srcmd5>
+    <version>2.8.143</version>
+    <time>1781879426</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 2.8.143</comment>
+    <requestid>1360161</requestid>
+  </revision>
+  <revision rev="92" vrev="1">
+    <srcmd5>fce1fa3bf18162741f11fd30e8d2cb7e</srcmd5>
+    <version>2.8.144</version>
+    <time>1785344307</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 2.8.144</comment>
+    <requestid>1367969</requestid>
+  </revision>
 </revisionlist>

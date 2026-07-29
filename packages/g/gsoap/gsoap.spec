@@ -17,14 +17,13 @@
 
 
 Name:           gsoap
-%define lname	libgsoap-2_8_142
-Version:        2.8.142
+%define lname	libgsoap-2_8_144
+Version:        2.8.144
 Release:        0
 Summary:        Toolkit for SOAP/REST-based C/C++ server and client web service applications
 License:        SUSE-GPL-2.0+-with-openssl-exception
 Group:          Development/Libraries/C and C++
 URL:            http://www.genivia.com/dev.html
-
 Source:         gsoap-%version.tar.xz
 Source2:        sanitize_source.sh
 Patch2:         gsoap-01-sharedlibs.diff
