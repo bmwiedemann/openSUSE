@@ -1,0 +1,9 @@
+<package name="einstein" project="openSUSE:Factory">
+  <title>Einstein's Puzzle</title>
+  <description>
+Einstein's Puzzle is a logic game based on Einstein's famous riddle.
+The game goal is to open all cards in square of 6x6 cards.
+For this, a number of hints describing relations between card positions are given.
+  </description>
+  <url>https://web.archive.org/web/20121029043853/http://games.flowix.com/en/index.html</url>
+</package>
