@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:44:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.0:
+  * Accumulated correctness, safety and specification-compatibility
+    changes since 0.11.0, marked breaking out of caution; most
+    workflows upgrade without modification
+  * uv init now declares a build system and packages projects by
+    default again
+  * No breaking changes to the uv build backend configuration; an
+    upper bound on uv_build should be widened to allow 0.12
+
+-------------------------------------------------------------------
 Fri Jul 24 16:01:08 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - update to 0.11.32 

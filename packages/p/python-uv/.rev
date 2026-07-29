@@ -2915,4 +2915,12 @@
   * Fork universal resolutions when Requires-Python is discovered only from distribution metadata</comment>
     <requestid>1367683</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>98ee6293ffce0bec76d072f627716de3</srcmd5>
+    <version>0.12.0</version>
+    <time>1785344455</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.0</comment>
+    <requestid>1368311</requestid>
+  </revision>
 </revisionlist>
