@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:21:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.120.2:
+  * Support MCP SDK v2 alongside v1
+- Changes from 0.120.1:
+  * Pin the mcp extra to < 2
+
+-------------------------------------------------------------------
 Sat Jul 25 19:01:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.120.0:
