@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Jul 28 23:57:09 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.98.10: (boo#1272825)
+  - Tailscale SSH Unix socket forwarding respects symlink
+    permissions. This fix addresses a security vulnerability
+    described in TS-2026-004.
+  - Tailscale SSH preforms additional checks to disallow UIDs and
+    numeric-only usernames. This fix covers additional scenarios
+    described in TS-2026-006.
+
+-------------------------------------------------------------------
+Sun Jul 26 23:51:30 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.98.9: (boo#1272825)
+  - Tailscale SSH Unix socket forwarding respects symlink
+    permissions. This fix addresses a security vulnerability
+    described in TS-2026-004.
+  - Tailscale Serve Unix socket proxy targets are restricted to the
+    root user. This fix addresses a security vulnerability
+    described in TS-2026-005.
+  - Tailscale SSH does not allow the use of UIDs or numeric-only
+    usernames. This fix addresses a security vulnerability
+    described in TS-2026-006.
+  - Nodes advertising Tailscale Services filter and reject packets
+    from service IPs on ports they do not advertise. This fix
+    addresses a security vulnerability described in TS-2026-007.
+  - Tailscale Serve and Tailscale Funnel terminate path walks for
+    non-absolute paths, preventing CPU core pinning. This fix
+    addresses a security vulnerability described in TS-2026-008.
+  - Tailscale SSH does not allow the use of usernames with leading
+    dashes. This fix addresses a security vulnerability described
+    in TS-2026-009.
+  - An issue where a user could be logged out of Tailscale when
+    changing the tag on a device via CLI has been resolved.
+  - An issue that could cause a crash on 32-bit ARM platforms is
+    resolved.
+- Update to version 1.98.8:
+  - An issue causing connectivity disruptions when the operating
+    system wakes from sleep in wireguard-go is resolved.
+  - An issue causing excessive handshake initiation retries in
+    wireguard-go is resolved.
+  - An issue causing connection leaks in Tailscale SSH Session
+    Recording is resolved.
+
+-------------------------------------------------------------------
 Sat Jun 20 20:17:34 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 1.98.6:

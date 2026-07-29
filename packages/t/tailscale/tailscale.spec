@@ -17,7 +17,7 @@
 
 
 Name:           tailscale
-Version:        1.98.6
+Version:        1.98.10
 Release:        0
 Summary:        The easiest, most secure way to use WireGuard and 2FA
 License:        BSD-3-Clause
