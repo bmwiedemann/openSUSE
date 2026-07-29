@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:32:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.2.10:
+  * Type the v3 stream_events return and add native projections
+  * Expose trace_policy on add_node, then drop tags from
+    TracePolicy and revert its deletion
+
+-------------------------------------------------------------------
 Fri Jul 10 05:15:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.9:

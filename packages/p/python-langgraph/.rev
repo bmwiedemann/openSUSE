@@ -23,4 +23,12 @@
     <comment>Update to 1.2.9 (bug-fix release, no API/dependency changes)</comment>
     <requestid>1364812</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ed373fb670b619c8a09d966fd90df6d0</srcmd5>
+    <version>1.2.10</version>
+    <time>1785344404</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.2.10</comment>
+    <requestid>1368301</requestid>
+  </revision>
 </revisionlist>
