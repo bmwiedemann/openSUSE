@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Jul 29 08:12:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.5.0:
+  * Support for LAS 1.5
+  * Rename get/set_classification_uni to get/set_classification
+  * Merge from LAStools: LASMessage concept, warning and error
+    handling fixes
+  * Fix an integer overflow of number_of_point_records in
+    laszip_update_inventory
+  * Fix fseek with gcc for las/lax files larger than 2 GB
+  * Fix memory leaks in lasreaditemcompressed_v3 and laszip_dll
+  * Recover from bit-corrupted LAZ files whose chunk table is zeroed
+  * The shared library keeps soname 8; comparing exported symbols
+    against 3.4.3 shows 878 against 710, with four internal
+    LASindex/LASinterval symbols withdrawn and no consumer of them
+    in the distribution
+- Switch to the git archive: upstream stopped attaching a release
+  tarball, and its detached sha256sum, after 3.4.3
+- Add a %check: upstream ships no test suite, so exercise the
+  deliberately corrupt LAZ files under data/ through the public C
+  API and require each to be rejected rather than accepted or
+  crashed on, which also covers the dlopen path in liblaszip_api
+- Package the whole laszip include directory so a new upstream
+  header no longer breaks the build, as laszip_common.h did
+- Track the upstream rename of COPYING, AUTHORS and ChangeLog to
+  their .txt forms, and normalise CRLF line endings in README.md
+- Replace the hand-written ldconfig scriptlets with
+  %ldconfig_scriptlets, and drop Group tags
+
+-------------------------------------------------------------------
 Mon May 18 07:46:31 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.4.3:

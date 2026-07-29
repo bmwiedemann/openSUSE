@@ -74,4 +74,38 @@
   * Compatibility mode fix #60</comment>
     <requestid>806783</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>08ceb9349352d520bcd8afa58d9a44b1</srcmd5>
+    <version>3.5.0</version>
+    <time>1785344461</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.5.0 and clean up the spec
+
+Upstream 3.5.0 (first release since 3.4.3 in 2019) adds LAS 1.5 support,
+renames get/set_classification_uni to get/set_classification, merges the
+LASMessage concept from LAStools and fixes several leaks plus an integer
+overflow in laszip_update_inventory and fseek on &gt;2GB las/lax files.
+
+ABI: the shared library keeps soname 8 (upstream sets LASZIP_SO_VERSION
+8.0.6, compatibility version 8). Comparing exported symbols against the
+3.4.3 currently in Factory: 878 vs 710, with four internal
+LASindex/LASinterval symbols withdrawn. Nothing in Factory build-depends on
+laszip, so there is no consumer of the withdrawn symbols. Fedora carries a
+patch restoring the LASzipper/LASunzipper C++ API; it is not needed here
+because those symbols were never exported by our build and we never shipped
+the corresponding headers.
+
+Packaging: upstream stopped attaching a release tarball (and its detached
+sha256sum) after 3.4.3, so the source moves to the git archive. Adds a
+%check -- upstream has no test suite, so the deliberately corrupt LAZ files
+under data/ are pushed through the public C API and each must be rejected,
+which also covers the dlopen path in liblaszip_api. The whole laszip include
+directory is now packaged so a new upstream header cannot break the build
+again, as laszip_common.h did. Also tracks the upstream rename of COPYING,
+AUTHORS and ChangeLog to .txt, normalises CRLF in README.md, replaces the
+hand-written ldconfig scriptlets with %ldconfig_scriptlets and drops Group.
+
+Built on aarch64: 0 rpmlint badness, 0 warnings, source_validator clean.</comment>
+    <requestid>1368326</requestid>
+  </revision>
 </revisionlist>
