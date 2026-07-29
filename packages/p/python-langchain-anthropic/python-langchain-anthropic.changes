@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:30:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.3:
+  * Preserve an empty thinking field in signature_delta streaming
+  * Strip unsupported fields from system message content blocks
+- Raise the langchain-core requirement to >= 1.5.2 and the anthropic
+  build requirement to >= 0.120.0, matching upstream
+
+-------------------------------------------------------------------
 Sat Jul 25 19:03:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.2:
