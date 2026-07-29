@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Jul 29 05:07:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.32.2:
+  * build(deps): bump github.com/k0sproject/rig/v2 from 2.1.0 to
+    2.1.1 (#1127)
+  * build(deps): bump golang.org/x/text from 0.38.0 to 0.40.0
+    (#1113)
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.22 to
+    0.0.24 (#1125)
+  * build(deps): bump k8s.io/client-go from 0.36.2 to 0.36.3
+    (#1123)
+  * build(deps): bump actions/setup-python from 6 to 7 (#1119)
+  * build(deps): bump actions/setup-go from 6 to 7 (#1115)
+  * Fix corrupted Windows k0s install command (Flags
+    double-unquote, --kubelet-extra-args double-quote) (#1120)
+  * Remove long-removed podSecurityPolicy from k0sctl's init
+    default config (#1126)
+
+-------------------------------------------------------------------
 Mon Jul 06 12:35:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.1:
