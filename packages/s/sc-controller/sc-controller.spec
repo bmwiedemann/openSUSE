@@ -1,7 +1,7 @@
 #
 # spec file for package sc-controller
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           sc-controller
-Version:        0.6.0
+Version:        0.6.2
 Release:        0
 Summary:        User-mode driver and GTK3-based GUI for the Steam Controller
 License:        GPL-2.0-only
@@ -41,6 +41,7 @@ Requires:       python3-libusb1
 Requires:       python3-pycairo
 Requires:       python3-pylibacl
 Requires:       python3-setuptools
+Requires:       python3-vdf
 
 %description
 Application allowing to setup, configure and use the Steam Controller
@@ -60,7 +61,8 @@ python3 setup.py install --root=%{buildroot} --optimize=1
 %files
 %license LICENSE
 %doc README.md ADDITIONAL-LICENSES TODO.md
-%{_bindir}/*
+%{_bindir}/sc-controller
+%{_bindir}/scc*
 %{python3_sitearch}/*
 %{_datadir}/applications/*
 %{_datadir}/pixmaps/*
