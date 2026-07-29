@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:49:48 UTC 2026 - William Brown <william.brown@suse.com>
+
+- Update to version 7.2.2:
+  * Warn when an existing project vendor dir exists
+  * Allow tagging the vendor dir so that it can work in parallel
+  * Support merging existing project config.toml files into the config.toml that is created during vendoring
+  * Properly handle workspace excludes.
+
+-------------------------------------------------------------------
 Fri Feb 13 00:16:00 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 7.2.1:
