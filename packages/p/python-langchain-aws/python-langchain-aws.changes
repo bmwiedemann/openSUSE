@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:35:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.4:
+  * Support Bedrock Guardrails in ChatAnthropicBedrock, including
+    per-request guardrail configuration
+  * Support Claude Opus 5 default thinking in ChatBedrock
+  * Fix Opus 5 streaming
+
+-------------------------------------------------------------------
 Thu Jul 23 19:50:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.3:
