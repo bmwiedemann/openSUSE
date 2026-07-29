@@ -64,6 +64,8 @@ unsorted:
   - FlightGear 
   - FlightGear-data 
   - FlightGear-docs 
+  - FocusTimer 
+  - FocusTimer-lang 
   - Font-Downloader 
   - Font-Downloader-lang 
   - Fragments 
@@ -3692,6 +3694,7 @@ unsorted:
   - eid-viewer 
   - eigen3-devel 
   - eigen3-doc 
+  - einstein 
   - eiskaltdcpp-cli 
   - eiskaltdcpp-common 
   - eiskaltdcpp-common-lang 
@@ -7444,8 +7447,6 @@ unsorted:
   - gnome-packagekit-extras 
   - gnome-podcasts 
   - gnome-podcasts-lang 
-  - gnome-pomodoro 
-  - gnome-pomodoro-lang 
   - gnome-power-manager 
   - gnome-power-manager-lang 
   - gnome-radio 
@@ -13916,7 +13917,7 @@ unsorted:
   - libgsm-devel-32bit 
   - libgsm-utils 
   - libgsm1-32bit 
-  - libgsoap-2_8_143 
+  - libgsoap-2_8_144 
   - libgssdp-1_6-0-32bit 
   - libgssdp-devel 
   - libgstadaptivedemux-1_0-0-32bit 
@@ -34848,6 +34849,7 @@ unsorted:
   - sssd-ad 
   - sssd-cifs-idmap-plugin 
   - sssd-dbus 
+  - sssd-idp 
   - sssd-ipa 
   - sssd-kcm 
   - sssd-krb5 
