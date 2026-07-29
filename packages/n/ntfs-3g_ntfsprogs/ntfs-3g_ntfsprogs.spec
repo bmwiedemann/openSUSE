@@ -16,35 +16,20 @@
 #
 
 
-%define sover 89
+%define sover 90
 %if 0%{?suse_version} >= 1550
 %define sbindir %{_sbindir}
 %else
 %define sbindir /sbin
 %endif
 Name:           ntfs-3g_ntfsprogs
-Version:        2022.10.3
+Version:        2026.7.7
 Release:        0
 Summary:        NTFS Support in Userspace
 License:        GPL-2.0-or-later
 Group:          System/Filesystems
 URL:            https://github.com/tuxera/ntfs-3g/
 Source:         https://tuxera.com/opensource/%{name}-%{version}.tgz
-# PATCH-FIX-UPSTREAM ntfs3g-unistr-use-after-free.patch boo#1226007 mgorse@suse.com -- fix use after free in ntfs_uppercase_mbs.
-Patch0:         ntfs3g-unistr-use-after-free.patch
-# PATCH-FIX-UPSTREAM ntfs3g-heap-overflow.patch bsc#1262216 sreeves@suse.com -- fix heap overflow
-Patch1:         ntfs3g-heap-overflow.patch
-Patch2:         1_ntfs-3g_2022.10.3-CVE-2026-42618.patch
-Patch3:         2_ntfs-3g_2022.10.3-CVE-2026-42616.patch
-Patch4:         3_ntfs-3g_2022.10.3-CVE-2026-42617.patch
-Patch5:         4_ntfs-3g_2022.10.3-CVE-2026-46569.patch
-Patch6:         5_ntfs-3g_2022.10.3-CVE-2026-46571.patch
-Patch7:         6_ntfs-3g_2022.10.3-CVE-2026-46570.patch
-# This is the same as 3_...42617.patch
-#Patch8:         7_ntfs-3g_2022.10.3-CVE-2026-46572.patch
-Patch9:         8_ntfs-3g_2022.10.3-CVE-2026-56135.patch
-# This is the same as 3_...42617.patch
-#Patch10:        9_ntfs-3g_2022.10.3-CVE-2026-56136.patch
 BuildRequires:  gnutls-devel
 BuildRequires:  hwinfo-devel
 BuildRequires:  libgcrypt-devel
@@ -120,7 +105,7 @@ In particular ntfsck is just a place holder.  Distributions are expected not to 
 They have been orphaned for ten years and are unlikely to be upgraded (except ntfsfallocate, if there is some demand).
 
 %prep
-%autosetup -p1
+%autosetup -n ntfs-3g-%{version} -p1
 
 %build
 #

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Jul 22 23:42:55 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 2026.7.7:
+  * (ntfscat) Fix heap memory corruption when processing a corrupt
+    or maliciously crafted filesystem. (CVE-2026-42616).
+  * Fix heap memory corruption when copying index data from root to
+    an index block in a corrupt or maliciously crafted filesystem.
+    (CVE-2026-42617).
+  * Fix single-byte heap buffer overflow when decompressing
+    maliciously crafted compressed file data. (CVE-2026-42618).
+  * Fix heap buffer overflow when copying the tail data of an index
+    block to a freshly allocated block. (CVE-2026-46569).
+  * Fix out-of-bounds read when processing symlink reparse data in
+    a corrupt or maliciously crafted filesystem. (CVE-2026-46571).
+  * Fix heap memory corruption for maliciously crafted or corrupt
+    index data descending to an out-of-bounds tree depth.
+    (CVE-2026-46570).
+  * Fix heap buffer overflow for maliciously crafted or corrupt
+    index data during a node split. (CVE-2026-46572).
+  * Fix heap buffer overflow when building inherited ACL data.
+    (CVE-2026-56135).
+  * Fix out of bounds access when clearing an index root in
+    maliciously crafted or corrupt index data. (CVE-2026-56136).
+- Drop patches fixed upstream:
+  + ntfs3g-unistr-use-after-free.patch
+  + ntfs3g-heap-overflow.patch
+  + 1_ntfs-3g_2022.10.3-CVE-2026-42618.patch
+  + 2_ntfs-3g_2022.10.3-CVE-2026-42616.patch
+  + 3_ntfs-3g_2022.10.3-CVE-2026-42617.patch
+  + 4_ntfs-3g_2022.10.3-CVE-2026-46569.patch
+  + 5_ntfs-3g_2022.10.3-CVE-2026-46571.patch
+  + 6_ntfs-3g_2022.10.3-CVE-2026-46570.patch
+  + 8_ntfs-3g_2022.10.3-CVE-2026-56135.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 14:26:30 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adding patch bundle from upstream (download.tuxera.com/opensource)
