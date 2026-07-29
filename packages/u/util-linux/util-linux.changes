@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:51:37 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- BREAKING CHANGE:
+  Paths must always be canonicalized for unprivileged users to
+  ensure safe target resolution. X-mount.nocanonicalize is ignored
+  for them.
+- INCOMAPTIBLE CHANGE (for linux < 6.15):
+  X-mount.subdir: The safe detached subdirectory is no more
+  supported for unprivileged users for safety reasons.
+- INCOMAPTIBLE CHANGE:
+  LIBMOUNT_FORCE_MOUNT2 is ignored for unprivileged users for safety
+  reasons.
+- Update to version 2.42.2:
+  * Security fixes:
+    * CVE-2026-53613 - mount(8) TOCTOU race on target path.  The
+      SUID mount does not pin the mount target directory, allowing
+      a race between path resolution and the actual mount syscall.
+      A local attacker can swap an ancestor directory component
+      between these steps to redirect a mount to an arbitrary
+      location. (bsc#1268886, CVE-2026-53613, GHSA-8gj5-72r3-428g)
+    * CVE-2026-53612 - mount(8) TOCTOU race on post-mount
+      owner/mode change.  The X-mount.owner, X-mount.group, and
+      X-mount.mode options use path-based lchown()/chmod() after
+      mounting.  An attacker can swap the target between mount and
+      the ownership/mode change to gain control of arbitrary
+      files. (bsc#1268886, CVE-2026-53612, GHSA-g8wm-75wr-g2vh)
+    * CVE-2026-53614 - mount(8) SUID bypass via
+      LIBMOUNT_FORCE_MOUNT2.  The environment variable
+      LIBMOUNT_FORCE_MOUNT2 is not filtered via safe_getenv() in
+      SUID context.  A local attacker can force the legacy
+      mount(2) code path, which uses a two-step bind+remount or
+      propagation sequence with a window where security flags
+      (nosuid, noexec,...) are not yet applied. (bsc#1268886,
+      CVE-2026-53614, GHSA-67r7-8m5w-22wx)
+    * CVE-2026-27456 - mount(8) TOCTOU symlink attack via loop
+      device (follow-up).  The v2.42.1 fix used O_NOFOLLOW which
+      only rejects symlinks at the last path component.  This
+      update uses openat2(RESOLVE_NO_SYMLINKS) to reject symlinks
+      at any component of the backing file path. (bsc#1268886#c2,
+      bsc#1261606)
+    * libblkid: use-after-free in nested partition probing.  The
+      partitions list stores partitions in a contiguous array
+      grown by reallocarray().  When the array is reallocated, all
+      existing blkid_partition pointers become dangling.
+      (bsc#1269583, bsc#1268886#c2, CVE-2026-13595)
+  * fdisk-list:
+    * fix memory leak when partition returns empty string
+    * fix memory leak in partition listing
+  * fsck.minix: bound namelen guessed in get_dirsize
+  * hexdump: fix buffer overflow in color_cond()
+  * libblkid: fix use-after-free in nested partition probing
+  * libfdisk: fix use of on-disk sizeof_partition_entry in GPT
+  * libmount:
+    * add mount ID verification and man page TOCTOU note
+    * use fd_target in hook_idmap for move_mount()
+    * restrict X-mount.subdir for non-root to Linux >= 6.15
+    * use fd-based fchownat/chmod in hook_owner
+    * ignore X-mount.nocanonicalize for restricted users
+    * add fd_target to context for TOCTOU prevention
+    * fix SUID bypass via LIBMOUNT_FORCE_MOUNT2 and legacy mount
+      path
+    * detect fanotify queue overflow in monitor
+    * fix subvolid buffer overflow in get_btrfs_fs_root
+  * loopdev: use openat2(RESOLVE_NO_SYMLINKS) for backing file
+  * lscpu: free cputype ISA string
+  * lslogins: bound lastlog2 tty/host copy to destination size
+  * nsenter: Fix invalid fd check in enter_namespaces
+  * readprofile: replace popen() with fork/exec for .gz map files
+- Refreshed
+  Add-documentation-on-blacklisted-modules-to-mount-8-.patch.
+- If needed, display post installation message.
+
+-------------------------------------------------------------------
+Mon Jul 13 11:21:30 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Ignore pam-config error that prevents update failure if common*
+  pam configuration is not symlink to common-*-pc (bsc#1270219).
+
+-------------------------------------------------------------------
 Sun May 24 23:41:42 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Update to version 2.42.1:

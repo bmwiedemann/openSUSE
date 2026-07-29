@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.42.1
+Version:        2.42.2
 Release:        0
 License:        GPL-2.0-or-later
 #Git-Clone:     https://github.com/util-linux/util-linux
@@ -777,6 +777,8 @@ export TS_OPT_misc_mountpoint_known_fail="yes"
 export TS_OPT_lslocks_lslocks_known_fail=yes
 # FIXME: script/options sometimes fails on aarch64, arm7l and s390x
 export TS_OPT_script_options_known_fail=yes
+# New failure in 2.42.2.
+export TS_OPT_lsfd_column_mntid_nonroot_known_fail="yes"
 %ifarch ppc64le
 # util-linux-2.42.1 fails (small swap)
 export TS_OPT_mkswap_mkswap_known_fail=yes
@@ -861,6 +863,45 @@ done
 %endif
 %dnl # defined no_config
 
+DISPLAY_MESSAGE=false
+if grep -q -e '\([[:space:]]\|,\)user.*X-mount.nocanonicalize' /etc/fstab ; then
+	DISPLAY_MESSAGE=true
+fi
+if grep -q -e '\([[:space:]]\|,\)X-mount.nocanonicalize.*user' /etc/fstab ; then
+	DISPLAY_MESSAGE=true
+fi
+RAW_KERNEL_VERSION=$(uname -r)
+KERNEL_VERSION=${RAW_KERNEL_VERSION%%-*}
+OLD_IFS=$IFS
+IFS=.
+set -- $KERNEL_VERSION
+IFS=$OLD_IFS
+MAJOR=${1:-0}
+MINOR=${2:-0}
+if [ "$MAJOR" -le 6 ] || { [ "$MAJOR" -eq 6 ] && [ "$MINOR" -le 15 ]; }; then
+	if grep -q -e '\([[:space:]]\|,\)user.*X-mount.subdir' /etc/fstab ; then
+		DISPLAY_MESSAGE=true
+	fi
+	if grep -q -e '\([[:space:]]\|,\)X-mount.subdir.*user' /etc/fstab ; then
+		DISPLAY_MESSAGE=true
+	fi
+fi
+if $DISPLAY_MESSAGE ; then
+	cat >/var/adm/update-messages/%name-%version-%release-1 <<EOF
+New /etc/fstab limitations for mount(8)!
+
+For safety reasons, following mount options are now ignored for user mounts:
+
+X-mount.nocanonicalize:
+
+  Paths must always be canonicalized for unprivileged users.
+
+X-mount.subdir (for linux < 6.15):
+  The safe detached subdirectory is no more supported.
+
+EOF
+fi
+
 %post -n libblkid1 -p /sbin/ldconfig
 
 %postun -n libblkid1 -p /sbin/ldconfig
@@ -917,14 +958,14 @@ fi
 %post -n lastlog2
 %tmpfiles_create lastlog2.conf
 %service_add_post lastlog2-import.service
-%{_sbindir}/pam-config -a --lastlog2 --lastlog2-silent_if=gdm,gdm-password,lxdm,lightdm,mdm,sddm
+%{_sbindir}/pam-config -a --lastlog2 --lastlog2-silent_if=gdm,gdm-password,lxdm,lightdm,mdm,sddm || :
 
 %preun -n lastlog2
 %service_del_preun lastlog2-import.service
 
 %postun -n lastlog2
 if [ "$1" -eq 0 ]; then
-    %{_sbindir}/pam-config -d --lastlog2
+    %{_sbindir}/pam-config -d --lastlog2 || :
 fi
 %service_del_postun lastlog2-import.service
 
@@ -1420,6 +1461,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_mandir}/man1/lslogins.1.gz
 
 %exclude %{_mandir}/man8/uuidd.8.gz
+
+%ghost /var/adm/update-messages/%name-%version-%release-1
 %endif
 # ulsubset == core, ulbuild == base
 

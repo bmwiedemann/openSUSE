@@ -8,12 +8,14 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  sys-utils/mount.8 |   28 +++++++++++++++++++++++++++-
  1 file changed, 27 insertions(+), 1 deletion(-)
 
---- a/sys-utils/mount.8
-+++ b/sys-utils/mount.8
-@@ -205,6 +205,32 @@ Since util\-linux 2.35, \fBmount\fP does
- For more details, see \fBfstab\fP(5). Only the user that mounted a filesystem can unmount it again. If any user should be able to unmount it, then use \fBusers\fP instead of \fBuser\fP in the \fIfstab\fP line. The \fBowner\fP option is similar to the \fBuser\fP option, with the restriction that the user must be the owner of the special file. This may be useful e.g. for \fI/dev/fd\fP if a login script makes the console user owner of this device. The \fBgroup\fP option is similar, with the restriction that the user must be a member of the group of the special file.
- .sp
- The \fBuser\fP mount option is accepted if no username is specified. If used in the format \fBuser=someone\fP, the option is silently ignored and visible only for external mount helpers (/sbin/mount.<type>) for compatibility with some network filesystems.
+Index: util-linux-2.42.2/sys-utils/mount.8
+===================================================================
+--- util-linux-2.42.2.orig/sys-utils/mount.8
++++ util-linux-2.42.2/sys-utils/mount.8
+@@ -219,6 +219,32 @@ The \fBuser\fP mount option is accepted
+ When using the legacy \fBmount\fP(2) syscall (on older kernels without the new mount API), the mount target path is resolved by the kernel at syscall time. This means there is an inherent time\-of\-check\-to\-time\-of\-use (TOCTOU) window between the permission verification and the actual mount operation. If an ancestor directory of the mount target is writable by the unprivileged user, a path component could be swapped to redirect the mount to an unintended location. The new mount API (available since Linux 5.2) eliminates this issue by using file\-descriptor\-based target resolution. Administrators should ensure that mount target paths for \fBuser\fP mounts do not traverse directories writable by unprivileged users.
+ .sp .5v
+ .RE
 +.SS Blacklisted file systems
 +In the Linux kernel, file system types are implemented as kernel
 +modules. While many of these file systems are well maintained,
@@ -43,7 +45,7 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  .SS "Bind mount operation"
  .sp
  Remount part of the file hierarchy somewhere else. The call is:
-@@ -2571,4 +2597,4 @@ For bug reports, use the issue tracker a
+@@ -2772,4 +2798,4 @@ For bug reports, use the \c
  .SH "AVAILABILITY"
  .sp
  The \fBmount\fP command is part of the util\-linux package which can be downloaded from \c
