@@ -24,8 +24,6 @@ License:        LGPL-2.1-or-later
 URL:            https://git.kernel.org/pub/scm/network/wireless/iwd.git
 Source:         https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.xz
 Source1:        https://kernel.org/pub/linux/network/wireless/%{name}-%{version}.tar.sign
-# PATCH-FIX-OPENSUSe iwd-dbus_policy.patch
-Patch0:         iwd-dbus_policy.patch
 # https://kernel.org/doc/wot/holtmann.html
 Source2:        %{name}.keyring
 # needed for the tests to generate certificates

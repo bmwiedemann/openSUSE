@@ -580,4 +580,12 @@
   * Fix issue with using -std=c23 compiler setting. (forwarded request 1340752 from dirkmueller)</comment>
     <requestid>1340868</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>c8c799a64186e73ac7ba1aa3ac315889</srcmd5>
+    <version>3.12</version>
+    <time>1785344504</time>
+    <user>dimstar_suse</user>
+    <comment>- drop iwd-dbus_policy.patch (bsc#1265625)</comment>
+    <requestid>1359656</requestid>
+  </revision>
 </revisionlist>

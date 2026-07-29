@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Jun 15 19:08:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop iwd-dbus_policy.patch (bsc#1265625)
+
+-------------------------------------------------------------------
 Tue Mar 17 17:15:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.12:
