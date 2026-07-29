@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sglppow
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-sglppow
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        GAP: Database of groups of prime-power order for some prime powers
 License:        Artistic-2.0
@@ -27,7 +27,10 @@ URL:            https://gap-packages.github.io/sglppow/
 Source:         https://github.com/gap-packages/sglppow/releases/download/v%version/sglppow-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.10
+Requires:       gap-smallgrp >= 1.3
+Suggests:       gap-liepring >= 1.8
+Suggests:       gap-liering >= 2.2
 
 %description
 SglPPow is an extension to the GAP Small Groups Library; this package
