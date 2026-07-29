@@ -1,24 +1,47 @@
 -------------------------------------------------------------------
+Wed Jul 29 01:28:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.1.0:
+  * (operators) Add tap as an alias for do_action
+  * (gtk) Call gi.require_version before importing gi.repository
+  * (operators) Accept concurrent.futures.Future wherever futures are
+    accepted
+  * (scheduler) Use wall clock time for now() in event loop schedulers
+  * Operators: Fixed scheduler forwarding in pairwise, to_marbles, and
+    delay_with_mapper (subscription-delay path).
+  * Fix: reactivex.timer(duetime, period) now correctly resets the initial
+    delay on each resubscription (e.g. via repeat()).
+  * Fluent method chaining — operators are now available as methods on
+    Observable in addition to the existing pipe() style.
+  * Dropped Python 3.8; added support for Python 3.11, 3.12, 3.13.
+  * Added scheduler parameter to run() for consistent scheduling control.
+  * Fixed subscribe_on not forwarding scheduler to the source.
+- Reflow changelog.
+- Remove version mangling, the tarballs are now correct.
+- Drop patch fix-python314-test.patch, no longer required.
+
+-------------------------------------------------------------------
 Thu Nov 27 17:47:25 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
 
 - Upadate to version 4.1.0:
-  * Update Notebooks: Part One by @J0 
-  * Update get_started.rst 
+  * Update Notebooks: Part One by @J0
+  * Update get_started.rst
   * docs: fix miss typed operator name
-  * Fix flake8 in pre-commit 
+  * Fix flake8 in pre-commit
   * fix(docs): IO Concurrency for 3.10+
-  * Concat map 
-  * Docs on testing 
-  * [DOCS] Getting started: fix example 
-  * Update pyright to 1.1.286 
-  * Add CI check for Python-3.11 
-  * Switchmap operator 
-  * Fix deprecated calls to datetime by @ricardobranco777 
-  * CI: Update used actions and Python versions 
-  * Fix build 
-  * Drop Python 3.8 support 
-  * Support Python 3.11, 3.12 and 3.13 
-- Added fix-python314-test.patch: Fix tests to be compatible with Python3.14 until new version release
+  * Concat map
+  * Docs on testing
+  * [DOCS] Getting started: fix example
+  * Update pyright to 1.1.286
+  * Add CI check for Python-3.11
+  * Switchmap operator
+  * Fix deprecated calls to datetime by @ricardobranco777
+  * CI: Update used actions and Python versions
+  * Fix build
+  * Drop Python 3.8 support
+  * Support Python 3.11, 3.12 and 3.13
+- Added fix-python314-test.patch: Fix tests to be compatible with Python 3.14
+  until new version release
 
 -------------------------------------------------------------------
 Wed Mar 12 13:19:12 UTC 2025 - Dirk Müller <dmueller@suse.com>

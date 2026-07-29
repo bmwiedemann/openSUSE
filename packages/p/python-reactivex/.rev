@@ -42,4 +42,29 @@
   - Added fix-python314-test.patch: Fix tests to be compatible with Python3.14 until new version release</comment>
     <requestid>1320598</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>665ac26ccc404a17bb8745d7a310c6d9</srcmd5>
+    <version>5.1.0</version>
+    <time>1785344334</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 5.1.0:
+  * (operators) Add tap as an alias for do_action
+  * (gtk) Call gi.require_version before importing gi.repository
+  * (operators) Accept concurrent.futures.Future wherever futures are
+    accepted
+  * (scheduler) Use wall clock time for now() in event loop schedulers
+  * Operators: Fixed scheduler forwarding in pairwise, to_marbles, and
+    delay_with_mapper (subscription-delay path).
+  * Fix: reactivex.timer(duetime, period) now correctly resets the initial
+    delay on each resubscription (e.g. via repeat()).
+  * Fluent method chaining — operators are now available as methods on
+    Observable in addition to the existing pipe() style.
+  * Dropped Python 3.8; added support for Python 3.11, 3.12, 3.13.
+  * Added scheduler parameter to run() for consistent scheduling control.
+  * Fixed subscribe_on not forwarding scheduler to the source.
+- Reflow changelog.
+- Remove version mangling, the tarballs are now correct.
+- Drop patch fix-python314-test.patch, no longer required.</comment>
+    <requestid>1368262</requestid>
+  </revision>
 </revisionlist>
