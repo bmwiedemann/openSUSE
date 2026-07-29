@@ -82,6 +82,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libcrypto) >= 1.0.1
 %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(jose)
 %endif
 BuildRequires:  pkgconfig(libnfsidmap)
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.0
@@ -218,6 +219,18 @@ Requires(verify): permissions
 %description krb5-common
 Provides helper processes that the LDAP and Kerberos back ends can
 use for Kerberos user or host authentication.
+
+%package idp
+Summary:        The external identity provider (IdP) backend plugin for sssd
+License:        GPL-3.0-or-later
+Group:          System/Daemons
+Requires:       %name-krb5-common = %version-%release
+
+%description idp
+A back-end provider that the SSSD can utilize to authenticate against an
+external OpenID Connect identity provider, such as Keycloak. Also provides
+the Kerberos pre-authentication plugin and the oidc_child helper for the
+OAuth 2.0 device authorization grant.
 
 %package ldap
 Summary:        The LDAP backend plugin for sssd
@@ -423,7 +436,8 @@ autoreconf -fiv
 	--with-ldb-lib-dir="%ldbdir" \
 	--disable-ldb-version-check \
 	--without-python2-bindings \
-	--without-oidc-child \
+	--with-oidc-child \
+	--with-id-provider-idp \
 	--with-sssd-user="%sssd_user" \
 %if "%{?_distconfdir}" != ""
 	--with-vendordir="%_distconfdir/sssd" \
@@ -507,6 +521,8 @@ EOF
 mkdir -pv "$b/%_sysconfdir/krb5.conf.d"
 ln -sv %_datadir/%name/krb5-snippets/enable_sssd_conf_dir \
        "$b/%_sysconfdir/krb5.conf.d/enable_sssd_conf_dir"
+ln -sv %_datadir/%name/krb5-snippets/sssd_enable_idp \
+       "$b/%_sysconfdir/krb5.conf.d/sssd_enable_idp"
 
 %check
 %set_build_flags
@@ -773,13 +789,18 @@ fi
 %_mandir/man8/pam_sss_gss.8*
 %_mandir/man8/sssd_krb5_localauth_plugin.8*
 %_mandir/man8/sssd_krb5_locator_plugin.8*
-#
-# %%files sssd-idp
-#
-%exclude %_libdir/sssd/libsss_idp.so
-%exclude %_libdir/%name/modules/sssd_krb5_idp_plugin.so
-%exclude %_mandir/man5/sssd-idp*
-%exclude %_mandir/*/man5/sssd-idp*
+%files idp
+%dir %_libdir/%name/
+%_libdir/%name/libsss_idp.so
+%dir %_libdir/%name/modules/
+%_libdir/%name/modules/sssd_krb5_idp_plugin.so
+%dir %_libexecdir/%name/
+%_libexecdir/%name/oidc_child
+%dir %{_datadir}/sssd/krb5-snippets
+%_datadir/%name/krb5-snippets/sssd_enable_idp
+%config(noreplace,missingok) %{_sysconfdir}/krb5.conf.d/sssd_enable_idp
+%_mandir/man5/sssd-idp.5*
+%_mandir/??/man5/sssd-idp.5*
 
 %files ad
 %dir %_libdir/%name/
@@ -847,7 +868,6 @@ fi
 %verify(not caps) %attr(750,root,%sssd_user) %_libexecdir/%name/ldap_child
 %dir %{_datadir}/sssd/krb5-snippets
 %_datadir/%name/krb5-snippets/enable_sssd_conf_dir
-%_datadir/%name/krb5-snippets/sssd_enable_idp
 
 %files ldap
 %dir %_libdir/%name/

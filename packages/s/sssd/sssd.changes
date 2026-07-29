@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Jul 26 03:29:44 UTC 2026 - Perry Naseck <opensuse@perrynaseck.com>
+
+- Enable sssd-idp. This provides external Identity Provider
+  (OAuth2/OpenID Connect) support. Also enables the krb5 idp plugin.
+
+-------------------------------------------------------------------
 Thu Jun 11 17:24:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.13.1
