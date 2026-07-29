@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Jul 29 08:26:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build against Perl 5.44: pass -Dc_std=gnu99 to meson. Perl
+  has rewritten some headers to use inline variable definitions in
+  for loops, which gnu89 did not yet permit.
+
+-------------------------------------------------------------------
 Mon Nov 17 16:57:45 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - BuildRequite glycin-loaders: needed to embed hexchat.png into the

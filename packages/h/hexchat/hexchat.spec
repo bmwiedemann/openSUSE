@@ -1,7 +1,7 @@
 #
 # spec file for package hexchat
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -106,6 +106,7 @@ sed -i "s|@@LIBDIR@@|%{_libdir}|g" src/common/cfgfiles.c
 
 %build
 %meson \
+    -Dc_std=gnu99 \
     -Dgtk-frontend=true \
     -Dtls=enabled \
     -Ddbus=enabled \
