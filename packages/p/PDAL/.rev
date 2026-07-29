@@ -187,4 +187,40 @@
     <comment></comment>
     <requestid>1350321</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>1adb4393b6b707205ffb5dd02f353e95</srcmd5>
+    <version>2.10.2</version>
+    <time>1785344445</time>
+    <user>dimstar_suse</user>
+    <comment>Update to PDAL 2.10.2 plus a spec cleanup
+
+Supersedes SR#1368310 (2.10.2 alone), adding the cleanup below.
+
+Upstream 2.10.2:
+- Drop PDAL-remove-gtest.patch: external gtest works again upstream
+- StageExtensions.hpp is now included only once
+- Arbiter always uses concurrent HTTP requests
+- DimRange sorting no longer relies on undefined behaviour
+- Fix curl CA bundle support with arbiter
+
+Cleanup, the substantive part being the test suite:
+libopenblas_pthreads-devel arrived with the 2.10.2 bump unexplained. It is
+load-bearing -- gdal pulls BLAS in transitively and the ctest binaries link
+libopenblas.so.0, which only an openblas -devel provides unflavored. I
+removed it, and all 143 tests then failed to even start; since %check is
+non-fatal the build still went green with an empty test run. It is back,
+now with a comment saying why. With it: 139/143 pass.
+
+Also: libpsl5 dropped (nothing references it, and its comment claimed it
+provided proj.db); cmake requirement raised 2.8 -&gt; 3.13 to match upstream's
+cmake_minimum_required; the *.la cleanup fixed (the find expression bound as
+&quot;*.la OR (*.a AND -delete)&quot;, so no .la was ever removed); %make_build -&gt;
+%cmake_build with ninja; hand-written ldconfig scriptlets -&gt; %ldconfig_scriptlets;
+the per-arch %check branches collapsed since they had all converged on the same
+call; gcc12/CXX fallbacks for &lt; 15.5 dropped; Group tags removed and deps
+converted to pkgconfig() providers per spec-cleaner.
+
+Built on aarch64: 0 rpmlint badness, 0 warnings, source_validator clean.</comment>
+    <requestid>1368319</requestid>
+  </revision>
 </revisionlist>

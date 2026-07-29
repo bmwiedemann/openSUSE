@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:53:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Spec cleanup:
+  * Document why libopenblas_pthreads-devel is required: gdal pulls
+    BLAS in transitively and the ctest binaries link
+    libopenblas.so.0, which only an openblas -devel provides
+    unflavored; without it all 143 tests fail to start and the
+    non-fatal %check lets the build pass with an empty test run
+  * Drop libpsl5, which nothing in the tree references, and its
+    incorrect "needed to have proj.db for tests" comment
+  * Raise the cmake requirement from 2.8 to 3.13, upstream's actual
+    cmake_minimum_required
+  * Delete *.la as intended: the find expression bound as
+    "*.la OR (*.a AND -delete)", so only static libs were removed
+  * Build with ninja via %cmake_build instead of %make_build
+  * Replace the hand-written ldconfig scriptlets with
+    %ldconfig_scriptlets
+  * Collapse the per-architecture %check branches, which had all
+    converged on the same non-fatal ctest invocation
+  * Drop the gcc12 and CXX=g++-12 fallbacks for openSUSE older than
+    15.5, below the oldest target
+  * Drop Group tags and convert dependencies to their pkgconfig()
+    providers, per spec-cleaner
+
+-------------------------------------------------------------------
+Wed Jul 29 06:12:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the upstream checksum as a plain source file rather than a
+  service-generated one: the sha256sum arrived as
+  _service:download_files:PDAL-2.10.2-src.tar.bz2.sha256sum without
+  the _service that produced it, so a generated artifact would have
+  been submitted to Factory; Source1 now resolves to a committed
+  file again, as it did for 2.10.1
+
+-------------------------------------------------------------------
+Fri Jul 24 18:17:20 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
+
+- Update to PDAL 2.10.2
+  * Drop PDAL-remove-gtest.patch - using external gtest works now
+  * StageExtensions.hpp will now only be included once
+  * Arbiter will now always use conccurent http requests
+  * DimRange sorting now no longer relies on undefined behaviour
+  * Fixes curl ca bundle support with arbiter
+  * PointGrid will now never compute zero cells for small inputs
+  * Various other fixes
+
+-------------------------------------------------------------------
 Mon Apr 27 19:30:02 UTC 2026 - Enno Tensing <tenno+suse@suij.in>
 
 - Spec-file cleanups
