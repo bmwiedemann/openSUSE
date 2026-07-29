@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Jul 27 08:50:17 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260727:
+  * pwaccessd_t uses nsswitch and newidmapd connects to pwaccessd_t socket (bsc#1271860)
+  * adjust amavis spool path regex for openSUSE (bsc#1268627)
+  * Allow cupsd_t to communicate with fprintd via dbus (bsc#1268366)
+  * Support vfs_snapper to work with samba_share_t (bsc#1265400)
+  * vfs_samba uses dbus to communicate with snapper (bsc#1265400)
+
+-------------------------------------------------------------------
 Mon Jul 20 12:34:12 UTC 2026 - Zdenek Kubala <zkubala@suse.com>
 
 - fix cleanoldsepoldir.sh to properly handle migration markers
