@@ -18,14 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           xsimd
-Version:        14.1.0
+Version:        14.3.0
 Release:        0
 Summary:        C++ wrappers for SIMD intrinsics
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://xsimd.readthedocs.io/en/latest/
 Source0:        https://github.com/xtensor-stack/xsimd/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch1:         0001-Revert-Extend-1172-approach-to-arm-store-version.patch
 BuildRequires:  %{python_module breathe}
 BuildRequires:  %{python_module sphinx_rtd_theme}
 BuildRequires:  cmake

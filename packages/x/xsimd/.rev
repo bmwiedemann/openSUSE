@@ -194,4 +194,12 @@
   * Move to C++14</comment>
     <requestid>1346121</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3814dd3d71de3046b77444b48b10dac0</srcmd5>
+    <version>14.3.0</version>
+    <time>1785344302</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1367925</requestid>
+  </revision>
 </revisionlist>
