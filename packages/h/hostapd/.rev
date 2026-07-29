@@ -502,4 +502,26 @@ ChangeLog for hostapd since 2.4:
   [+ nl80211_NULL_pointer_check_for_link.patch]</comment>
     <requestid>1358931</requestid>
   </revision>
+  <revision rev="51" vrev="4">
+    <srcmd5>7ee6dc759d67cf74bdd0c5495138de9f</srcmd5>
+    <version>2.11</version>
+    <time>1784127236</time>
+    <user>dimstar_suse</user>
+    <comment>- Add Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
+  https://w1.fi/security/2026-2/
+- Add SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
+  https://w1.fi/security/2026-3/
+- Add CVE-2026-58374.patch: Missing multi-link parsing validation in
+  wpa_supplicant and hostapd (bsc#1269892)
+</comment>
+    <requestid>1365905</requestid>
+  </revision>
+  <revision rev="52" vrev="5">
+    <srcmd5>5823bc7e8c4e196f3d2fd2d15710ced4</srcmd5>
+    <version>2.11</version>
+    <time>1785344465</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368328</requestid>
+  </revision>
 </revisionlist>

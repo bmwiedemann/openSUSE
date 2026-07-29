@@ -13,9 +13,13 @@ ProtectKernelModules=true
 ProtectKernelLogs=true
 ProtectControlGroups=true
 RestrictRealtime=true
-# end of automatic additions 
-ExecStart=/usr/sbin/hostapd /etc/hostapd.conf 
+# end of automatic additions
+ExecStart=/usr/sbin/hostapd /etc/hostapd.conf
 ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
+RestartSec=5s
+StartLimitIntervalSec=60
+StartLimitBurst=3
 
 [Install]
 WantedBy=multi-user.target

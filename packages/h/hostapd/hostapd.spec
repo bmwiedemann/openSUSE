@@ -35,6 +35,12 @@ Source5:        apparmor-usr.sbin.hostapd
 Patch1:         CVE-2025-24912.patch
 # PATCH-FIX-UPSTREAM bsc#1268083 hostapd segmentation fault during fast restart cycles
 Patch2:         nl80211_NULL_pointer_check_for_link.patch
+# PATCH-FIX-UPSTREAM CVE-2026-58374, bsc#1269892 Missing multi-link parsing validation
+Patch3:         CVE-2026-58374.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-2/
+Patch4:         Require-network_ctx-and-AKMP-match-for-accepting-PMK.patch
+# PATCH-FIX-UPSTREAM https://w1.fi/security/2026-3/
+Patch5:         SAE-Fix-crash-due-to-NULL-pointer-dereference-in-H2E.patch
 BuildRequires:  libnl3-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
