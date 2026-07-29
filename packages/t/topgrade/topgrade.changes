@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Jul 29 03:17:21 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.9.0:
+  * chore: release v17.9.0 (#2188)
+  * feat: link new issue form and prefill Topgrade version (#2232)
+  * docs(github): new issue templates (#2230)
+  * fix: do not pass verbose through to steps (#2236)
+  * docs(contributing): describe testing from PR branches (#2231)
+  * chore(deps): update github/codeql-action action to v4.37.3 (#2208)
+  * chore(deps): update ossf/scorecard-action action to v2.4.4 (#2223)
+  * chore(deps): lock file maintenance (#2233)
+  * refactor: add a generic `require_one_path` function (#2234)
+  * feat(step): add OpenAI Codex (#2220)
+  * refactor: remove unnecessary #[expect(clippy::wildcard_imports)] (#2227)
+  * fix(macports): fix passing of -N for assume_yes (#2216)
+  * fix(atom): fix conflict with Agent Package Manager (#2221)
+  * feat(claude): split plugin updates into a separate claude_code_plugins step (#2215)
+  * refactor: migrate from merge to merge2 (#2211)
+  * feat(step): add Soar package manager (#2212)
+  * refactor: cache result of is_wsl (#2210)
+  * refactor: replace #[allow] with #[expect] where possible
+  * refactor: remove unused #[allow]s
+  * refactor: rename NPM structs to comply with clippy::upper_case_acronyms
+  * chore(deps): update dtolnay/rust-toolchain digest to 2c7215f (#2190)
+  * chore(deps): update release-plz/action action to v0.5.131 (#2179)
+  * chore(deps): update github/codeql-action action to v4.37.1 (#2191)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.5 (#2193)
+  * chore(deps): update actions/checkout action to v7.0.1 (#2206)
+  * chore(deps): lock file maintenance (#2205)
+  * feat(flutter): add config for force option (#2203)
+  * fix(zsh): drop redundant .zshrc source (#2182)
+  * fix(sudo): make the sudo loop refresh non-interactive
+  * fix(sudo): cache credentials at start when sudo_loop is enabled
+  * fix(nix): avoid symlink resolution when determining sudo user (#2194)
+  * feat(mise): run `mise prune` if `cleanup = true` (#2196)
+  * chore(deps): update rust to v1.97.1 (#2192)
+  * refactor(sudo): use `true` as no-op instead of `echo` (#2180)
+
+-------------------------------------------------------------------
 Thu Jul 16 00:02:36 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.8.0:
