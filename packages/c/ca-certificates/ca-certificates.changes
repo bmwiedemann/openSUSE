@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:50:09 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 2+git20260727.241e0ff:
+  * certbundle.run: fix case where cafile does not exist
+
+-------------------------------------------------------------------
 Fri Jul 17 06:18:20 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 2+git20260717.2e3a23b:

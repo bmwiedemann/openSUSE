@@ -523,4 +523,13 @@
   * CI: create /etc/ca-certificates in the container</comment>
     <requestid>1366313</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>c022956e780fa76a989cd1b87939812a</srcmd5>
+    <version>2+git20260727.241e0ff</version>
+    <time>1785344304</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2+git20260727.241e0ff:
+  * certbundle.run: fix case where cafile does not exist</comment>
+    <requestid>1367950</requestid>
+  </revision>
 </revisionlist>
