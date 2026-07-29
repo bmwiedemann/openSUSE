@@ -88,18 +88,18 @@ Recommends:     python-matplotlib >= 3.8.4
 Recommends:     python-narwhals >= 1.42.0
 # [all]
 Suggests:       libxml2-tools
-Suggests:       python-beautifulsoup4
-Suggests:       python-html5lib
+Suggests:       python-beautifulsoup4 >= 4.11.2
+Suggests:       python-html5lib >= 1.1
 Suggests:       python-dask-dataframe >= 2024.8.0
 Suggests:       python-h5py >= 3.11.0
 Suggests:       python-pandas >= 2.2.2
-Suggests:       python-sortedcontainers
-Suggests:       python-pytz
-Suggests:       python-jplephem
+Suggests:       python-sortedcontainers >= 2.1.0
+Suggests:       python-pytz >= 2016.10
+Suggests:       python-jplephem >= 2.17.0
 Suggests:       python-setuptools
-Suggests:       python-mpmath
+Suggests:       python-mpmath >= 1.2.1
 Suggests:       python-asdf-astropy >= 0.7.0
-Suggests:       python-Bottleneck
+Suggests:       python-Bottleneck >= 1.4.0
 Suggests:       python-pyarrow >= 16.0
 Suggests:       python-fsspec >= 2023.4.0
 # Suggests:     python-s3fs
@@ -112,21 +112,21 @@ BuildRequires:  (pkgconfig(wcslib) >= 8.3 with pkgconfig(wcslib) < 8.8)
 %endif
 %if %{with test}
 # SECTION [all]+[recommends]
-BuildRequires:  %{python_module Bottleneck}
+BuildRequires:  %{python_module Bottleneck >= 1.4.0}
 BuildRequires:  %{python_module asdf-astropy >= 0.7.0}
-BuildRequires:  %{python_module beautifulsoup4}
+BuildRequires:  %{python_module beautifulsoup4 >= 4.11.2}
 BuildRequires:  %{python_module dask-dataframe >= 2024.8.0 if %python-base > 3.12}
 BuildRequires:  %{python_module fsspec >= 2023.4.0}
 BuildRequires:  %{python_module h5py >= 3.11.0}
-BuildRequires:  %{python_module html5lib}
+BuildRequires:  %{python_module html5lib >= 1.1}
 BuildRequires:  %{python_module jplephem >= 2.17.0}
 BuildRequires:  %{python_module matplotlib >= 3.8.4}
-BuildRequires:  %{python_module mpmath}
+BuildRequires:  %{python_module mpmath >= 1.2.1}
 BuildRequires:  %{python_module pandas >= 2.2.2}
 %ifnarch %arm
 BuildRequires:  %{python_module pyarrow >= 16.0}
 %endif
-BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module pytz >= 2016.10}
 BuildRequires:  %{python_module scipy >= 1.13}
 BuildRequires:  %{python_module sortedcontainers >= 2.1.0}
 BuildRequires:  %{python_module typing_extensions >= 4.0.0}
@@ -137,15 +137,15 @@ BuildRequires:  libxml2-tools
 BuildRequires:  %{python_module astropy = %{version}}
 BuildRequires:  %{python_module ipython >= 8}
 BuildRequires:  %{python_module objgraph >= 3.1.2}
-BuildRequires:  %{python_module pytest >= 7.3}
-BuildRequires:  %{python_module pytest-astropy >= 0.10}
+BuildRequires:  %{python_module pytest >= 8.0.1}
+BuildRequires:  %{python_module pytest-astropy >= 0.11.0}
 BuildRequires:  %{python_module pytest-astropy-header >= 0.2.1}
-BuildRequires:  %{python_module pytest-doctestplus >= 0.12}
+BuildRequires:  %{python_module pytest-doctestplus >= 1.4.0}
 BuildRequires:  %{python_module pytest-mpl}
-BuildRequires:  %{python_module pytest-xdist >= 2.5}
-BuildRequires:  %{python_module sgp4 >= 2.3}
+BuildRequires:  %{python_module pytest-xdist >= 3.6.0}
+BuildRequires:  %{python_module sgp4 >= 2.22}
 BuildRequires:  %{python_module skyfield >= 1.42.0}
-BuildRequires:  %{python_module threadpoolctl >= 3}
+BuildRequires:  %{python_module threadpoolctl >= 3.0.0}
 # /SECTION
 %endif
 %python_subpackages
