@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Jul 26 15:22:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.12.4:
+- lsp: clean up semantic token initialization and debounce
+- lsp: use LspNotify for semantic tokens
+- lsp: overscan semantic_token range requests 
+- treesitter: reduce memory usage of _select.lua 
+- api: nvim_buf_set_text resets changelist to 0
+- api: preserve ArrayOf metadata
+- cmdline: avoid redraw loop after wrapped line
+- folds: foldcolumn is interrupted for virtual line above nested fold
+- health: always set 'modifiable'
+- health: don't check node package via yarn
+- highlight: keep guisp underline color in float with 'winblend'
+- lsp: allow specifying bufnr + client_id filter when enabling capabilities
+- lsp: catch another nil buffer state
+- lsp: fire LspNotify didChange autocmds after undo/redo
+- lsp: fix multiline semantic token processing
+- lsp: make LspNotify more robust
+- lsp: refresh codelens despite pending debounce
+- lsp: request semantic tokens in BufWinEnter
+- lsp: skip invalid file watcher globs
+- lsp: trailing blank line when edit inserts past end of buffer
+- lsp: use LspNotify for document_color
+- man.lua: highlight codeblocks
+- messages: "progress" kind for busy messages
+- messages: message kind for :recover and swapfile attention
+- net: set buftype=nofile (again)
+- pack: do not assert non-nil `stderr`
+- process: avoid inherited stdio for Windows jobs
+- startup: use `nvim.difftool` for `nvim -d` only for directories
+- statusline: prevent various buffer overflows with item groups
+- test: support multiple --filter-out
+- treesitter: incremental selection causes beeps when the bell is enabled
+- tui: more compatible way to reset cursor
+- tui: patch reset-cursor-style seq regardless of terminfo
+- xxd: buffer overread
+- xxd: signed left-shift overflow in -r mode
+
+-------------------------------------------------------------------
 Sat Jun 13 00:16:50 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 0.12.3:
