@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Jul 26 07:22:40 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2026.2:
+  * Fix GVariant memory leak during opaque whiteout scanning that
+    could cause bootc install to-disk to fail with EBUSY on unmount
+  * Fix a crash for invalid UTF-8 ref names during pull operations
+  * Fix Kernel argument handling was fixed to properly handle quoted
+    values in /proc/cmdline
+  * Correct staged deployment bootconfig merging to preserve
+    options across re-staging
+ 
+-------------------------------------------------------------------
 Sat Apr 11 10:47:17 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2026.1:

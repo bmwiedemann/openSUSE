@@ -539,4 +539,19 @@ CVE-2014-9862 boo#1201770 (forwarded request 991255 from AndreasStieger)</commen
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346716</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>123c1d1777a424c19ab5a1b1e6e3b299</srcmd5>
+    <version>2026.2</version>
+    <time>1785344294</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2026.2:
+  * Fix GVariant memory leak during opaque whiteout scanning that
+    could cause bootc install to-disk to fail with EBUSY on unmount
+  * Fix a crash for invalid UTF-8 ref names during pull operations
+  * Fix Kernel argument handling was fixed to properly handle quoted
+    values in /proc/cmdline
+  * Correct staged deployment bootconfig merging to preserve
+    options across re-staging</comment>
+    <requestid>1367816</requestid>
+  </revision>
 </revisionlist>
