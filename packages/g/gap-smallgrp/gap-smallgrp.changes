@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 22:14:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.5.5
+  * Drop spurious dependency on GAPDoc
+
+-------------------------------------------------------------------
 Sun Feb  9 20:51:22 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.4

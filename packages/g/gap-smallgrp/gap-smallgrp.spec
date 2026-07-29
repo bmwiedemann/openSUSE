@@ -1,7 +1,7 @@
 #
 # spec file for package gap-smallgrp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallgrp
-Version:        1.5.4
+Version:        1.5.5
 Release:        0
 Summary:        GAP: Small Groups Library
 License:        Artistic-2.0
@@ -28,7 +28,6 @@ Source:         https://github.com/gap-packages/SmallGrp/releases/download/v%ver
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
-Requires:       gap-gapdoc >= 1.5
 
 %description
 The SmallGrp package provides the library of groups of certain
