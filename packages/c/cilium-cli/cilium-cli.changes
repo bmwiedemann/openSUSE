@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Wed Jul 29 06:18:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.7:
+  * Minor Changes:
+    - Deprecate WireGuard Node Encryption (cilium/cilium#47219,
+      @pchaigno)
+  * Bugfixes:
+    - cilium-cli: Fix clustermesh enable command on cloud providers
+      (cilium/cilium#47452, @mauriciovasquezbernal)
+  * Misc Changes:
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#47310, @cilium-renovate[bot])
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#47475, @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang:1.26.5 docker
+      digest to 3aff665 (main) (cilium/cilium#47311,
+      @cilium-renovate[bot])
+    - Update stable release to v0.19.6 by @michi-covalent in #3271
+    - chore(deps): update actions/stale action to v10.4.0 by
+      @renovate[bot] in #3273
+    - chore(deps): update go to v1.26.5 by @renovate[bot] in #3274
+    - chore(deps): update actions/setup-go action to v7 by
+      @renovate[bot] in #3275
+    - chore(deps): update actions/checkout action to v7.0.1 by
+      @renovate[bot] in #3277
+    - chore(deps): update cilium/cilium action to v1.19.6 by
+      @renovate[bot] in #3276
+
+-------------------------------------------------------------------
+Wed Jul 15 05:02:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.19.6:
+  * Minor Changes:
+    - cilium-cli: bump minimum Cilium version to v1.16
+      (cilium/cilium#46803, @julianwiedmann)
+    - cilium-dbg: add table-json format to bgp/peers and bgp/routes
+      (cilium/cilium#45858, @martonra)
+    - gatewayapi: add listenersets to sysdump (cilium/cilium#46851,
+      @asauber)
+  * Misc Changes:
+    - Add support for hybrid routing mode (routing-mode: hybrid),
+      allowing Cilium to dynamically choose between native routing
+      and tunnel encapsulation based on subnet topology. Traffic
+      between pods in directly connected subnets is routed natively
+      for improved throughput, while cross-subnet traffic is
+      tunneled. (cilium/cilium#45001, @vanessachammas)
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#47033, @cilium-renovate[bot])
+    - chore(deps): update all-dependencies (main)
+      (cilium/cilium#47107, @cilium-renovate[bot])
+    - chore(deps): update base-images (main) (cilium/cilium#46653,
+      @cilium-renovate[bot])
+    - chore(deps): update base-images to v1.26.5 (main)
+      (cilium/cilium#46981, @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.26.4 (main) (cilium/cilium#46903, @cilium-renovate[bot])
+    - chore(deps): update docker.io/library/golang:1.26.5 docker
+      digest to 079e598 (main) (cilium/cilium#47108,
+      @cilium-renovate[bot])
+    - cilium-cli/connectivity: tolerate transient leader-election
+      lock-read timeouts (cilium/cilium#47023, @aanm)
+    - cilium-cli: Exclude vendored leader election error
+      (cilium/cilium#47090, @jrajahalme)
+    - cilium-cli: retry cilium features status pod exec on
+      transient API server exec-proxy failures (e.g. 502 Bad
+      Gateway, or a truncated empty response) so CI post-steps are
+      not failed by transient infrastructure blips.
+      (cilium/cilium#46881, @aanm)
+    - cilium-cli: retry transient exec errors in setup/teardown
+      exec sites (cilium/cilium#47169, @aanm)
+    - cli/connectivity: always write a JUnit report, including on
+      early failures (cilium/cilium#46990, @aanm)
+    - gateway-api: update TCPRoute and UDPRoute to v1
+      (cilium/cilium#46970, @eminaktas)
+    - chore(deps): update all github action dependencies by
+      @renovate[bot] in #3259
+    - chore(deps): update actions/setup-go action to v6.5.0 by
+      @renovate[bot] in #3262
+    - chore(deps): update
+      docker.io/library/golang:1.26.4-alpine3.23 docker digest to
+      18b460d by @renovate[bot] in #3261
+    - chore(deps): update golangci/golangci-lint-action action to
+      v9.3.0 by @renovate[bot] in #3263
+    - chore(deps): update docker/build-push-action action to v7.3.0
+      by @renovate[bot] in #3264
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to d5f030c by @renovate[bot] in #3266
+    - chore(deps): update docker.io/library/golang docker tag to
+      v1.26.4 by @renovate[bot] in #3267
+    - chore(deps): update docker/setup-buildx-action action to
+      v4.2.0 by @renovate[bot] in #3265
+    - chore(deps): update gcr.io/distroless/static:latest docker
+      digest to 9197324 by @renovate[bot] in #3268
+    - chore(deps): update softprops/action-gh-release digest to
+      3d0d988 by @renovate[bot] in #3269
+
+-------------------------------------------------------------------
 Sun Jun 28 06:59:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.19.5:
