@@ -2150,4 +2150,33 @@ Pushing GNOME 45.rc packages</comment>
   (bsc#1263252, gh#PackageKit/PackageKit/commit/1263252).</comment>
     <requestid>1366371</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>a9767f19e29ad50bdca97e30f0798ae3</srcmd5>
+    <version>1.3.6</version>
+    <time>1785344293</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.3.6 (bsc#1267250, CVE-2026-10294):
+  + Bugfixes:
+    - daemon: stop idle progress timer after flushing updates
+    - tests: Actually run the daemon tests on CI using a helper
+    - tests: daemon: Auto-answer interactive prompts from the test
+    - tests: Refactor and reorganize tests
+    - pk-client: Perform any state changes &amp; teardown before g_task_return_*()
+    - package-sack: Fix a double-free issue on PkTask
+    - Ensure we can send SIGQUIT to spawned backends
+    - Prevent a race between the test harness and pk_readline* for input
+    - daemon: Do not accept symlinks as frontend socket
+    - daemon: Return proper error codes for bad SetHints() input
+    - Don't leak TESTDATADIR into production binaries
+    - daemon: Whitelist ONLY_DOWNLOAD for specific transaction roles only
+    - lib: Don't warn on generic D-Bus errors
+    - Send SIGTERM to ask subprocesses to quit, instead of SIGQUIT
+    - daemon: Check errno instead of kill() return values to determine why it failed
+    - pk-client: Fix race between cancellation and TID/proxy assignment
+  + Miscellaneous:
+    - PkTransaction: Simplify the error quark creation
+    - ci: Ensure D-Bus is available and running for all tests
+    - docs: Add error-checking to PK usage example</comment>
+    <requestid>1367815</requestid>
+  </revision>
 </revisionlist>

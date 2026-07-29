@@ -27,7 +27,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.3.5
+Version:        1.3.6
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
