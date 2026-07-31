@@ -22,7 +22,7 @@ clean:
 mockgen:
 	echo "Installing mockgen"
 	mkdir -p ./tmpdir/
-	/usr/lib64/go/1.24/bin/go install go.uber.org/mock/mockgen@v0.5.2
+	/usr/lib64/go/$(GOLANG_EXECUTABLE_VERSION)/bin/go install go.uber.org/mock/mockgen@v0.6.0
 	ls -lh $(mkfile_dir)/tmpdir/bin
 
 osc_service:
