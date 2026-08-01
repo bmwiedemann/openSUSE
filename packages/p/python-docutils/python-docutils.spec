@@ -33,10 +33,10 @@
 %endif
 
 Name:           python-docutils%{psuffix}
-Version:        0.22.4
+Version:        0.23
 Release:        0
 Summary:        Python Documentation Utilities
-License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND SUSE-Public-Domain
+License:        BSD-2-Clause AND Python-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LicenseRef-SUSE-Public-Domain
 URL:            https://pypi.python.org/pypi/docutils/
 Source:         https://files.pythonhosted.org/packages/source/d/docutils/docutils-%{version}.tar.gz
 Source99:       python-docutils-rpmlintrc

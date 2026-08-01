@@ -1544,4 +1544,41 @@ this resolves build failure for python3-Sphinx (forwarded request 139388 from Hi
     numerals and of bullet lists to keep them looking similar.</comment>
     <requestid>1343407</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>cb5298e671c83492580a59e5bdf3ef8c</srcmd5>
+    <version>0.23</version>
+    <time>1785601692</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.23:
+    - docutils//frontend.py
+        Apply patch #216 by Dmitry Shachnev: fix type
+        annotations.
+    - docutils//nodes.py
+        transition.validate_position() now checks all siblings
+        (not just neighbours and also ignores &lt;pending&gt;,
+        &lt;substitution_definition&gt;, and &lt;target&gt; elements when
+        testing for a &lt;transition&gt; at the begin or end of
+        a &lt;section&gt; or the &lt;document&gt;.
+        If legacy_ids is False, note_implicit_target() does not
+        generate an ID. This allows an explicit target to use the
+        matching ID in case of a name conflict.
+            The new internal attribute document.names maps
+            reference names to the referenced elements (or None
+            if the name is a duplicate).
+            New method document.note_names().
+            document.set_id() also updates the document.nameids map.
+            document.set_duplicate_name() replaces set_duplicate_name_id().
+    - docutils//parsers/__init__.py
+        New configuration setting legacy_ids (provisional).
+    - docutils//readers/standalone.py
+        Load new transform references.SectionIDs.
+    - docutils//parsers/rst/directives/body.py
+        Add source and line info to &lt;rubric&gt; elements.
+    - docutils//parsers/rst/directives/misc.py,
+        &quot;Include&quot; options :start-after: and :end-before: may now
+        also be used without value (standing for an empty line).
+        Fix Sphinx issue #14261: The &quot;Include&quot; option
+        :number-lines: changed a start value 0 to 1.</comment>
+    <requestid>1368711</requestid>
+  </revision>
 </revisionlist>

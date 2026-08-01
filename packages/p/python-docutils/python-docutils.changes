@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed May 27 20:00:56 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- update to 0.23:
+    - docutils//frontend.py
+        Apply patch #216 by Dmitry Shachnev: fix type
+        annotations.
+    - docutils//nodes.py
+        transition.validate_position() now checks all siblings
+        (not just neighbours and also ignores <pending>,
+        <substitution_definition>, and <target> elements when
+        testing for a <transition> at the begin or end of
+        a <section> or the <document>.
+        If legacy_ids is False, note_implicit_target() does not
+        generate an ID. This allows an explicit target to use the
+        matching ID in case of a name conflict.
+            The new internal attribute document.names maps
+            reference names to the referenced elements (or None
+            if the name is a duplicate).
+            New method document.note_names().
+            document.set_id() also updates the document.nameids map.
+            document.set_duplicate_name() replaces set_duplicate_name_id().
+    - docutils//parsers/__init__.py
+        New configuration setting legacy_ids (provisional).
+    - docutils//readers/standalone.py
+        Load new transform references.SectionIDs.
+    - docutils//parsers/rst/directives/body.py
+        Add source and line info to <rubric> elements.
+    - docutils//parsers/rst/directives/misc.py,
+        "Include" options :start-after: and :end-before: may now
+        also be used without value (standing for an empty line).
+        Fix Sphinx issue #14261: The "Include" option
+        :number-lines: changed a start value 0 to 1.
+        The severity of "include" problems is lowered to 3:
+        ERROR.
+    - docutils//parsers/rst/directives/tables.py,
+        Add source and line info to <table> elements.
+        Remove CSVTable.check_requirements() (not required with
+        Python 3).
+    - docutils//parsers/rst/roles.py
+        Use the name of a custom role based on "code" as default
+        for its highlight language.
+    - docutils//parsers/rst/states.py
+        Add source and line info to <table> elements.
+        Fix bug #517: wrong "input_offset" when parsing table
+        cell content.
+    - docutils//transforms/misc.py:
+        Use nodes.transition.validate_position() to warn about
+        transitions at the beginning or end of the document or
+        a section.
+    - docutils//transforms/references.py:
+        New transform SectionIDs: ensure all sections have an
+        "identifier".
+    - docutils//writers/html5_polyglot/__init__.py
+        Use a section's last "ids" attribute for the
+        "section-self-link".
+    - docutils//writers/latex2e/__init__.py
+        Do not write \label commands for section titles and other
+        implicit targets if there is no matching reference in the
+        document.
+        Prevent LaTeX errors with footnotes in titles.
+        Improve rendering of unreferenced footnotes.
+        Implement --latex-footnotes. The "docutils_footnotes"
+        setting is renamed to latex_footnotes, the command line
+        options remain unchanged.
+    - docutils//write/latex2e/docutils.sty
+        Default styling for "semantic inline markup roles" (cf.
+        html-roles.txt standard definition file).
+        New command \DUbracketfootnotemark to render footnote
+        references with brackets.
+
+-------------------------------------------------------------------
 Sun Mar 29 10:17:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.4:
