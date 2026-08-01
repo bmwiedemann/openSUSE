@@ -24,7 +24,7 @@ Summary:        Helps troubleshoot SELinux problems
 License:        GPL-2.0-or-later
 Group:          Productivity/Security
 Name:           setroubleshoot
-Version:        3.3.36
+Version:        3.3.37
 Release:        0
 URL:            https://gitlab.com/setroubleshoot/setroubleshoot
 Source0:        https://gitlab.com/setroubleshoot/setroubleshoot/-/archive/%{version}/setroubleshoot-%{version}.tar.bz2
@@ -34,8 +34,7 @@ Source3:        %{name}.logrotate
 Patch0:         setroubleshoot-desktop.patch
 Patch1:         remove-pip-from-makefile.patch
 Patch2:         disable-send-bug-report-button.patch
-Patch3:         sealert_add_dependency_error_handling.patch
-Patch4:         setroubleshoot-3.3.36-libxml2_to_xml_etree_ElementTree.patch
+Patch3:         add_avc_denials_log_priority.patch
 # git format-patch -N 3.3.30
 # i=1; for j in 00*patch; do printf "Patch%04d: %s\n" $i $j; i=$((i+1));done
 BuildRequires:  autoconf

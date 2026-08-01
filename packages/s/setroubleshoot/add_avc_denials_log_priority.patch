@@ -1,0 +1,75 @@
+diff --git a/src/config.py.in b/src/config.py.in
+index 48a670a..6d6cb26 100644
+--- a/src/config.py.in
++++ b/src/config.py.in
+@@ -256,6 +256,12 @@ provide remote connections use this "{unix}%(path)s, hostname"
+ setroubleshootd logging level. Levels are the same as in the python logging
+ module, but are case insensitive. The defined levels in severity order
+ are:[CRITICAL, ERROR, WARNING, INFO, DEBUG]''',
++        },
++        'avc_level': {
++            'value': 'error',
++            'description': '''
++Log priority for AVC denial messages. Useful with SELinux in PERMISSIVE mode.
++Allowed: [CRITICAL, ERROR, WARNING, INFO, DEBUG]. Default: error.''',
+         },
+         'log_full_report': {
+             'value': 'True',
+diff --git a/src/setroubleshoot/server.py b/src/setroubleshoot/server.py
+index 3369af1..5b7ee94 100755
+--- a/src/setroubleshoot/server.py
++++ b/src/setroubleshoot/server.py
+@@ -98,7 +98,7 @@ from setroubleshoot.rpc_interfaces import (SETroubleshootServerInterface,
+ from setroubleshoot.util import (get_hostname,
+                                  make_database_filepath,
+                                  assure_file_ownership_permissions,
+-                                 get_identity, log_init, log_debug, syslog_trace
++                                 get_identity, log_init, log_debug, log_avc, syslog_trace
+                                  )
+ 
+ log_init('setroubleshootd_log')
+@@ -225,14 +225,18 @@ class AlertPluginReportReceiver(PluginReportReceiver):
+         log_debug("sending alert to all clients")
+ 
+         from setroubleshoot.html_util import html_to_text
+-        syslog.syslog(syslog.LOG_ERR, siginfo.summary() + _(" For complete SELinux messages run: sealert -l %s") % siginfo.local_id)
++        pid = None
+         for audit_record in siginfo.audit_event.records:
+             if audit_record.record_type == 'AVC':
+                 pid = audit_record.fields["pid"]
+                 break
+-        if get_config('setroubleshootd_log', 'log_full_report', bool):
+-            global pkg_name
+-            systemd.journal.send(siginfo.format_text(), OBJECT_PID=pid, SYSLOG_IDENTIFIER=pkg_name)
++        global pkg_name
++        journal_text = siginfo.format_text() if get_config('setroubleshootd_log', 'log_full_report', bool) else None
++        log_avc('setroubleshootd_log',
++                siginfo.summary() + _(" For complete SELinux messages run: sealert -l %s") % siginfo.local_id,
++                journal_text=journal_text,
++                OBJECT_PID=pid,
++                SYSLOG_IDENTIFIER=pkg_name)
+ 
+         for u in siginfo.users:
+             if u.username[0:6] == "email:":
+diff --git a/src/setroubleshoot/util.py b/src/setroubleshoot/util.py
+index b6125aa..3797ead 100755
+--- a/src/setroubleshoot/util.py
++++ b/src/setroubleshoot/util.py
+@@ -146,6 +146,17 @@ def log_debug(msg):
+         syslog.syslog(syslog.LOG_DEBUG, msg)
+ 
+ 
++def log_avc(section, msg, journal_text=None, **journal_fields):
++    avc_prio = log_levels.get(get_config(section, 'avc_level').upper(), syslog.LOG_ERR)
++    min_prio = log_levels.get(get_config(section, 'level').upper(), syslog.LOG_WARNING)
++    if avc_prio > min_prio:
++        return
++    syslog.syslog(avc_prio, msg)
++    if journal_text is not None:
++        import systemd.journal
++        systemd.journal.send(journal_text, PRIORITY=avc_prio, **journal_fields)
++
++
+ def syslog_trace(trace):
+     log_lines = trace.split('\n')
+     for line in log_lines:
