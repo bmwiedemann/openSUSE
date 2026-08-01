@@ -1,0 +1,145 @@
+-------------------------------------------------------------------
+Fri Jul 31 05:51:28 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 0.3.0:
+  + Optimizing a folder full of images is several times faster,
+    because they are now handled at the same time instead of one
+    after another
+  + Images are compressed further than before, JPEGs in particular
+  + Colour profiles are now kept, so wide-gamut photos no longer
+    shift colour after optimizing
+  + Modification times are kept on JPEGs as well, so a photo
+    library sorted by date stays in order
+  + Fixed a batch stopping early when one file had a quote or a
+    bracket in its name
+  + Fixed a crash when a selected file turned out not to be an image
+  + Fixed the button for adding more images being invisible on
+    some systems
+  + Bitmap files are no longer accepted, because they cannot be
+    optimized in place
+- Update to version 0.2.0:
+  + Support "open with" file manager action instead of Contractor
+  + Fix Ctrl + Q not working when opening the app with files
+  + Application: Remove unused using, deprecations, and Gtk.init
+  + Load custom icons from GResource instead of the absolute path
+  + meson: Replace deprecated source_root with project_source_root
+  + meson: Use gnome module instead of own python script
+  + Improve metainfo
+  + Port to GTK 4
+  + Use GLib.format_size instead of own method
+  + Migrate deprecated gtk4 apis
+
+-------------------------------------------------------------------
+Mon Nov 18 01:51:12 UTC 2024 - Richard Rahl <rrahl0@opensuse.org>
+
+- update to 0.1.25:
+  * Fixes various warnings
+  * Fixes various loggings
+- update to 0.1.23:
+  * Updated the AppStream config
+- update spec file for Leap 16.0:
+  * use autosetup
+  * remove %suse_update_desktop_file
+  * remove HiDPI workaround
+
+-------------------------------------------------------------------
+Thu Sep  9 22:30:18 UTC 2021 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.22:
+  * Fixed flatpak issue where dragging an image gives a 0 byte
+    sized image and would therefore not be optimized. Also fixed
+    issue where optimizing an image from the home directory would not
+    work.
+  * Updated flatpak runtime to version 6
+  * Fixed issue where the close and maximise buttons were shown
+    in white
+  * Updated screenshots
+  * Getting things ready for Elementary OS 6.
+  * Added the flatpak manifest file for elementary os 6. Also
+    fixes vala 0.48 build issue.
+
+-------------------------------------------------------------------
+Mon Dec 23 17:46:07 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.17:
+  * Merge pull request #43 from michalzkosmosu/master
+  * Add build status from Travis CI to README
+  * Merge pull request #41 from meisenzahl/master
+  * Add Travis CI file for automated tests
+  * Update README.md
+  * Added Flathub button to the README
+  * Merge pull request #39 from mirkobrombin/patch-1
+
+-------------------------------------------------------------------
+Tue Oct  8 17:07:53 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.16:
+  * The brand is untouchable.
+  * Merge pull request #38 from
+    IgorHordiichuk/ukrainian-localization
+
+-------------------------------------------------------------------
+Mon Aug 12 15:37:52 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.15:
+  * Update uk.po
+
+-------------------------------------------------------------------
+Mon Apr 15 19:11:02 UTC 2019 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.14:
+  * Added translation capability and French translations
+- Add a new package with translations
+
+-------------------------------------------------------------------
+Tue Oct 16 20:52:59 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fixed: script-without-shebang
+
+-------------------------------------------------------------------
+Tue Oct 16 17:32:30 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Fixed: directories not owned by a package
+
+-------------------------------------------------------------------
+Mon Oct  1 20:10:03 UTC 2018 - Alexei Podvalsky <avvissu@yandex.by>
+
+- Update to 0.1.13:
+  * Fixes #32 #31
+  * Update appdata
+- Remove contactor as dependency
+
+-------------------------------------------------------------------
+Wed Aug  8 14:49:12 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.11:
+  * Getting things ready for Juno, #27 should be fixed
+  * Fixed unmet dkpg dependancies
+  * Moved to Meson / Fixes for Juno / Fixed #25
+  * Getting things ready for Juno
+
+-------------------------------------------------------------------
+Tue Jul 10 12:09:37 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.10:
+  * Fixed unmet dependancies
+- Switch to meson
+- Switch to metainfo from appdata
+- Add HiDPI icons
+
+-------------------------------------------------------------------
+Tue Jan 30 19:57:17 UTC 2018 - avvissu@yandex.by
+
+- Update to 0.1.7:
+  * Fixed the contracter being installed in the wrong location
+  * Fixes #21 and #22
+  * Create LICENSE
+  * Added a new release 0.1.5
+  * Implemented #9
+- Add Requires: contractor
+
+-------------------------------------------------------------------
+Wed Jan 17 01:10:51 UTC 2018 - avvissu@yandex.by
+
+- Initial packaging
+
