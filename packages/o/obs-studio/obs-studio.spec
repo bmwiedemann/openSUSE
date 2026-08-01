@@ -16,7 +16,7 @@
 #
 
 Name:           obs-studio
-Version:        32.1.2
+Version:        32.2.1
 Release:        0
 Summary:        Free and open source software for video recording and live streaming
 License:        GPL-2.0-or-later
@@ -25,7 +25,6 @@ URL:            https://obsproject.com/
 Source:         obs-studio-%{version}.tar.xz
 Patch0:         disable-x264.patch
 Patch1:         optional-browser-websocket.patch
-#Patch2:         fix-mbedtls4.patch
 BuildRequires:  AMF-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.28

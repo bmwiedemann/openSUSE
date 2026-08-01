@@ -145,4 +145,12 @@ There are still minor multi-architecture adjustments to refine, but the package 
     OBS Studio no longer supports i586.</comment>
     <requestid>1360785</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f54ee7156202dadd3b7a212f9ab02dec</srcmd5>
+    <version>32.2.1</version>
+    <time>1785601902</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368717</requestid>
+  </revision>
 </revisionlist>

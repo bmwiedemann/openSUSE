@@ -1,15 +1,201 @@
 -------------------------------------------------------------------
-Sat Jun 20 19:56:22 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+Fri Jul 31 02:03:26 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 32.2.1:
+  * Refresh disable-x264.patch to fit upstream changes.
+  * libobs: Update version to 32.2.1
+  * win-capture: Log hook DLL install / update errors
+  * CI: Increase number of update deltas generated for macOS to 5
+  * win-capture: Resolve inject helper and hook path to absolute paths
+  * frontend: Fix default thumbnail positioning
+  * frontend: Fix deprecated header order in Add Source dialog
+  * CI: Disable fail-fast for Ubuntu builds
+  * CI: Increase number of update deltas generated for macOS
+  * frontend: Adjustments to Add Source window
+  * frontend: Change source window button label
+  * frontend: Update recent sources text
+  * build-aux: Update Flatpak to 2026-07-15 deps
+  * CI: Update deps to 2026-07-15 release
+  * frontend: Add Image SAFER to DLL blocklist
+  * frontend: Add defunct Twitch Soundtrack plugin to DLL blocklist
+  * rtmp-services: Update Piczel.tv ingest servers
+  * CI: Provide GitHub token for gh usage
+  * mac-capture: Don't capture cursor for macOS Audio Capture sources
+  * Update translations from Crowdin
+  * CI: Fix appcast generation job
+  * frontend: Fix empty volume name label
+  * frontend: Parent mixer context menu to window
+  * frontend: Fix resizing horizontal volume name
+  * frontend: Fix invokeMethod function name
+  * frontend: Remove What's New window padding
+  * frontend: Remove What's New bottom button
+  * nv-filters: Remove direct calls to CUDA in Audio FX
+  * frontend: Add missing <functional> include
+  * frontend: Show warning icon for Monitor Only
+  * frontend: Remove Monitor Only from UI
+  * frontend: Use same base theme on Win 10/11
+  * build-aux: Update Flatpak to 2026-06-26 deps
+  * win-capture: Add Hearthstone Deck Tracker to compatibility list
+  * CI: Update deps to 2026-06-25 release
+  * win-capture: Build with file descriptor
+  * obs-vst: Build with file descriptor
+  * obs-webrtc: Build with file descriptor
+  * frontend: Merge Windows process mitigation functions
+  * CI: Move Sparkle Appcast creation to Publish workflow
+  * CI: Update korelstar/xmllint-problem-matcher to v1.3.0
+  * CI: Update softprops/action-gh-release to v3.0.1
+  * CI: Install NSIS in the windows-patches action
+  * CI: Update sign-windows commit
+  * CI: Install NSIS in the windows-signing action
+  * frontend: Re-enable extension points
+  * libobs: Update version to 32.2.0
+  * frontend: Fix duplicate layout name
+  * frontend: Explicitly set plugin manager linkage to nlohmann_json
+  * obs-hook-config: Update graphics-hook version to 1.8.8
+  * CI: Use jq to transform SARIF files in macOS job
+  * CI: Skip automatic artifact creation for PR runs
+  * CI: Trust obsproject tools tap for format actions
+  * obs-nvenc: Only update Target Quality in CQVBR mode
+  * obs-websocket: Update to 5.7.4
+  * obs-browser: Update to 2.26.9
+  * CI: Add Ubuntu 26.04
+  * frontend: Fix pasting scene item on not the current scene
+  * frontend: Remove volume control tri-state logic
+  * libobs: Output monitor audio while muted
+  * frontend: Clean up function names
+  * frontend: Fix volume control state desync
+  * frontend: Apply clang-format 22 formatting
+  * plugins: Apply clang-format 22 formatting
+  * libobs: Apply clang-format 22 formatting
+  * shared: Force C language for clang-format
+  * plugins: Force C language for clang-format
+  * plugins: Force C language for clang-format
+  * libobs-opengl: Force C language for clang-format
+  * libobs: Force C language for clang-format
+  * CI: Update clang-format to 22.1.3
+  * CI: Update sign-windows commit
+  * CI: Update to Windows 2025 with VS 2026
+  * .git-blame-ignore-revs: Add change from forcing braces in C++
+  * Update C++ files with braces
+  * Update clang-format to insert braces in C++
+  * CI: Remove Homebrew's setup-homebrew action
+  * frontend: Use conditional custom Sparkle feed
+  * frontend: Add feedUrlStringForUpdater delegate
+  * cmake: Enable Swift language on macOS
+  * frontend: Fix build with Qt 6.12
+  * libobs-winrt: Fix compile error with MSVC 2026
+  * build-aux: Update Flatpak to 2026-06-06 deps
+  * CI: Fix broken CAS path for macOS analyze builds
+  * frontend: Fix OAuth and dock state save corruption
+  * frontend: Fix group bounds not resizing when removing items
+  * frontend: Fix Apple ifndef preprocessor check
+  * frontend: Adjust shutdown logic more
+  * frontend: Fix multitrack custom config handling
+  * cmake: Move frontend plugins into main plugins dir
+  * cmake: Fix frontend feature flag mismatch
+  * nv-filters: Improve handling of SDK DLL loading
+  * obs-ffmpeg, win-capture: Use better default DLL directory settings
+  * libobs: Avoid calling SetDllDirectory when looking for dependent DLLs
+  * frontend: Set better default DLL directory settings on Windows
+  * coreaudio-encoder: Avoid using SetDllDirectory, specify full path
+  * frontend: Replace implicit "=" with "this"
+  * frontend: Fix null settings and DBR for custom configs
+  * obs-outputs: Use multitrack DBR capability flag
+  * plugins: Apply multitrack dynamic bitrate flag
+  * libobs: Add multitrack dynamic bitrate capability
+  * frontend: Remove multitrack locale strings
+  * obs-ffmpeg: Rework AMF dynamic bitrate change behavior
+  * frontend: Add dynamic bitrate support to multitrack video
+  * obs-outputs: Implement multitrack dynamic bitrate
+  * libobs: Refactor `encoder_group` access
+  * cmake: Update Xcode version requirement on macOS
+  * CI: Update macos runners and used Xcode version
+  * CI: Update deps to 2026-06-02 release
+  * CI: Update deps to 2026-05-21 release
+  * frontend: Fix a dereference of `nullptr`
+  * frontend: Set up theme watcher during init
+  * frontend: Slight change to multi-track text
+  * frontend: Fix updates failing when configured without What's New
+  * cmake: Fix dependency download logic
+  * obs-filters: Add filter to compose SDR into HDR
+  * CI: Update sign-windows commit
+  * CI: Update yuzutech/annotations-action to v0.6.0
+  * CI: Update peter-evans/create-pull-request to v8.1.1
+  * CI: Update obsproject/obs-crowdin-sync
+  * CI: Update korelstar/xmllint-problem-matcher
+  * CI: Update google-github-actions/auth to v3.0.0
+  * CI: Update github/codeql-action/upload-sarif to v4.35.5
+  * CI: Update flatpak/flatpak-github-actions to v6.7
+  * CI: Update cloudflare/wrangler-action to v4.0.0
+  * CI: Update Homebrew/actions/setup-homebrew
+  * CI: Update CyberAndrii/steam-totp
+  * CI: Update CyberAndrii/setup-steamcmd
+  * CI: Update actions/upload-artifact/merge to v7.0.1
+  * CI: Update actions/upload-artifact to v7.0.1
+  * CI: Update actions/download-artifact to v8.0.1
+  * CI: Update actions/checkout to v6.0.2
+  * CI: Update actions/cache/save to v5.0.5
+  * CI: Update actions/cache/restore to v5.0.5
+  * CI: Update actions/cache to v5.0.5
+  * CI: Update actions/attest-build-provenance to v4.1.0
+  * plugins: Fix build issues in Xcode 26.4
+  * frontend: Add copy paste functions
+  * win-dshow: Fix CreateFileW return value check in virtualcam filter
+  * image-source: Include .webp files in directory source
+  * libobs-opengl: Reject external-only modifiers
+  * libobs: Correctly handle duplicator failure
+  * obs-nvenc: Fix resource destruction order
+  * frontend: Add spacing to properties hint icon
+  * libobs: Adjust obs_canvas_get_video_info() to get video info from mix
+  * frontend: Fix thumbnail update rate
+  * Update CONTRIBUTING.md
+  * libobs: Properly fix canvas video reset/restore
+  * Revert "libobs: Restore only canvases that have video info"
+  * frontend: Add minimum width to spinboxes
+  * frontend: Apply process mitigation policies for Windows
+  * libobs: Disallow overwriting the crash handler
+  * frontend: Fix warning for themeWatcher
+  * libobs: initialize peak values using absolute value in get_true_peak and get_sample_peak
+  * frontend, libobs: Add ability to set custom source icons
+  * frontend: Replace add source dropdown with dialog
+  * image-source: Set minimal size for color source to 1 pixel
+  * frontend: Add theming for checked QToolButtons
+  * libobs: Remove extra gs_flush calls
+  * mac-avcapture: Avoid possible bad access on device connect events
+  * frontend, obs-filters: Add missing file support for filters
+  * linux-v4l2: Fix vcam reset failure
+  * libobs/graphics: Add support for param assign with type constructor
+  * frontend: Remove move_to_xdg (again)
+  * frontend, libobs: Add OBSProperties OBSPtr type
+  * libobs/util: Add support for #if and #elif to CF parser
+  * frontend: Use vector for filters dialog signals
+  * frontend: Fix checked control button color not changing in System theme
+  * mac-avcapture: Use fallback frame rate by default for new devices
+  * frontend: Improve FPS selector UX
+  * frontend: Move source selection handling to parent
+  * frontend: Don't store QT_TO_UTF8 to std::string
+  * frontend: Clean up unneeded conversions on YouTube dialog close
+  * frontend: Pass std::string as result from RemoteTextThread
+  * libobs: Deprecate v1 of obs_properties_add_button
+  * obs-vst: Use v2 of obs_properties_add_button
+  * mac-syphon: Use v2 of obs_properties_add_button
+  * win-dshow: Use v2 of obs_properties_add_button
+  * frontend: Enable use of delete key on macOS
+  * frontend: Replace implicit "=" with "this"
+  * frontend: Fix includes in OBSUpdate
+
+-------------------------------------------------------------------
+Sat Jun 20 17:46:14 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Use mbedtls-2-devel instead of mbedtls-devel.
   * OBS 32.1.2 bundled librtmp is incompatible with newer
     mbedTLS API changes present in Factory, causing build
     failures during obs-outputs compilation.
   * Restrict builds to supported architectures (aarch64, x86_64).
-    OBS Studio no longer supports i586. 
+    OBS Studio no longer supports i586.
 
 -------------------------------------------------------------------
-Wed Jun 17 01:34:04 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+Tue Jun 16 23:53:13 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 32.1.2:
   * libobs: Update version to 32.1.2
@@ -26,8 +212,7 @@ Wed Jun 17 01:34:04 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
   * Update contributing and code style guidelines (#13296)
   * Clean up %files section and include SECURITY.md in %doc.
   * Move CONTRIBUTING.md and CODESTYLE.md to the -devel package
-  * Drop stale _scmsync.obsinfo
-
+  
 -------------------------------------------------------------------
 Wed Apr 08 22:25:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
