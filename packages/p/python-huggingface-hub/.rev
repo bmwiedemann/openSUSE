@@ -78,4 +78,12 @@ smoke test passes for both python313 and python314, source_validator clean.</com
     <comment>Update to 1.25.1</comment>
     <requestid>1368071</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>71e514a024a2e6bf6a56c27564d4669d</srcmd5>
+    <version>1.26.0</version>
+    <time>1785601951</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.26.0</comment>
+    <requestid>1368761</requestid>
+  </revision>
 </revisionlist>

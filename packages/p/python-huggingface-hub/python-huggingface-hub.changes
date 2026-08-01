@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:52:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.26.0:
+  * Add HfApi.resolve_revision() and ResolvedRevision so a revision
+    is resolved once and every subsequent download comes from the
+    same commit
+  * Reject absolute, drive-relative, root-relative, UNC and
+    traversal filenames when downloading or uploading to a local
+    directory, on all platforms (CVE-2026-15717)
+  * Stop forwarding the HF token to sandbox jobs unless
+    forward_hf_token=True is passed to Sandbox.create()
+  * Support organization resource groups for collections and jobs
+  * Surface the job name as a first-class CLI field with a --name
+    filter for hf jobs ls and hf jobs inspect
+  * Fix safetensors headers of 99994-100000 bytes being truncated
+  * Fix tilde expansion in CommitOperationAdd and reject redacted
+    Xet hashes from the tree cache
+
+-------------------------------------------------------------------
 Mon Jul 27 16:45:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - update to 1.25.1:

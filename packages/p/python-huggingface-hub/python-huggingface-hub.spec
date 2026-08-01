@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        1.25.1
+Version:        1.26.0
 Release:        0
 Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
