@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:25:18 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 2.11.0:
+  + Update npm registry command for GitLab LSP
+  + feat: fallow lsp
+  + feat: terraformls enable codelens
+  + added µcad lsp
+  + fix(hhvm): run server in project root
+  + Enable clangd lsp for c.doxygen / cpp.doxygen
+  + fix(svelte): support svelteserver installed in node_modules
+  + fix(ruff_lsp): deprecate ruff_lsp in favour of ruff
+  + feat: kdl_lsp
+  + feat: wolfram_lsp
+  + feat: pytest-language-server
+  + feat: terragrunt-ls
+  + fix(roslyn_ls): update diagnostics on project/solution initialization
+  + feat(pyright): disable tagged hints by default
+  + fix(eslint): convert workspaceFolder.uri to a proper URI
+  + fix(ast_grep): stop reuse_client from spawning duplicate lsp client
+  + refactor!: drop lsp/rls.lua
+
+-------------------------------------------------------------------
 Wed Jun 10 20:32:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 2.10.0:

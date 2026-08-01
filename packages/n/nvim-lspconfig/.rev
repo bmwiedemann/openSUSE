@@ -418,4 +418,29 @@
   + fix(emmylua_ls): move settings under emmylua section (forwarded request 1358684 from rrahl0)</comment>
     <requestid>1358685</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>37af86db2be4b5d15294dfe088797db2</srcmd5>
+    <version>2.11.0</version>
+    <time>1785601817</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.11.0:
+  + Update npm registry command for GitLab LSP
+  + feat: fallow lsp
+  + feat: terraformls enable codelens
+  + added µcad lsp
+  + fix(hhvm): run server in project root
+  + Enable clangd lsp for c.doxygen / cpp.doxygen
+  + fix(svelte): support svelteserver installed in node_modules
+  + fix(ruff_lsp): deprecate ruff_lsp in favour of ruff
+  + feat: kdl_lsp
+  + feat: wolfram_lsp
+  + feat: pytest-language-server
+  + feat: terragrunt-ls
+  + fix(roslyn_ls): update diagnostics on project/solution initialization
+  + feat(pyright): disable tagged hints by default
+  + fix(eslint): convert workspaceFolder.uri to a proper URI
+  + fix(ast_grep): stop reuse_client from spawning duplicate lsp client
+  + refactor!: drop lsp/rls.lua (forwarded request 1368451 from rrahl0)</comment>
+    <requestid>1368452</requestid>
+  </revision>
 </revisionlist>
