@@ -1,0 +1,72 @@
+From 859d4d98dc03c4dc17870be068944d47ea8fb1e5 Mon Sep 17 00:00:00 2001
+From: Marek Blaha <mblaha@redhat.com>
+Date: Tue, 23 Jun 2026 10:16:00 +0000
+Subject: [PATCH 3/4] gpgme: report "Signing key not found" when signing key is
+ missing
+
+The gpgme backend reported the generic "Bad GPG signature" for all
+verification failures including missing keys. dnf5 relies on the
+specific message "Signing key not found" to trigger automatic GPG key
+import on retry. Since the gpgme backend never produced this message,
+repo_gpgcheck=1 always failed on distros building librepo with
+USE_GPGME=ON (Arch Linux, openSUSE).
+
+Detect GPGME_SIGSUM_KEY_MISSING and GPG_ERR_NO_PUBKEY in the
+signature verification loop and report "Signing key not found" using
+the shared constant, matching the RPM backend. Also unify the
+remaining error messages with the RPM backend wording.
+
+Resolves: https://github.com/rpm-software-management/librepo/issues/376
+Signed-off-by: Marek Blaha <mblaha@redhat.com>
+---
+ librepo/gpg_gpgme.c | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/librepo/gpg_gpgme.c b/librepo/gpg_gpgme.c
+index 136f25e..8983799 100644
+--- a/librepo/gpg_gpgme.c
++++ b/librepo/gpg_gpgme.c
+@@ -286,8 +286,13 @@ lr_gpg_check_signature_fd(int signature_fd,
+     gboolean found_valid_signature = FALSE;
+     gboolean found_expired_key = FALSE;
+     gboolean found_expired_sig = FALSE;
++    gboolean found_missing_key = FALSE;
+     for (; sig; sig = sig->next) {
+-        // Check if this signature is from an expired key or is itself expired
++        if (sig->summary & GPGME_SIGSUM_KEY_MISSING ||
++            gpg_err_code(sig->status) == GPG_ERR_NO_PUBKEY) {
++            found_missing_key = TRUE;
++            continue;
++        }
+         if (sig->summary & GPGME_SIGSUM_KEY_EXPIRED) {
+             g_debug("%s: Skipping signature with expired key", __func__);
+             found_expired_key = TRUE;
+@@ -315,15 +320,18 @@ lr_gpg_check_signature_fd(int signature_fd,
+     }
+ 
+     // No valid signature found - report appropriate error
+-    if (found_expired_key) {
+-        g_debug("%s: GPG signature verification failed - key has expired", __func__);
+-        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "GPG signature verification failed - key has expired");
++    if (found_missing_key) {
++        g_debug("%s: " LR_GPG_ERR_SIGNING_KEY_NOT_FOUND, __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, LR_GPG_ERR_SIGNING_KEY_NOT_FOUND);
++    } else if (found_expired_key) {
++        g_debug("%s: " LR_GPG_ERR_BAD_SIGNATURE ": key has expired", __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, LR_GPG_ERR_BAD_SIGNATURE ": key has expired");
+     } else if (found_expired_sig) {
+-        g_debug("%s: GPG signature verification failed - signature has expired", __func__);
+-        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "GPG signature verification failed - signature has expired");
++        g_debug("%s: " LR_GPG_ERR_BAD_SIGNATURE ": signature has expired", __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, LR_GPG_ERR_BAD_SIGNATURE ": signature has expired");
+     } else {
+-        g_debug("%s: Bad GPG signature", __func__);
+-        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "Bad GPG signature");
++        g_debug("%s: " LR_GPG_ERR_BAD_SIGNATURE, __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, LR_GPG_ERR_BAD_SIGNATURE);
+     }
+     return FALSE;
+ }
+-- 
+2.52.0
+

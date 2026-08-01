@@ -1,0 +1,324 @@
+From 1002bffdd0f56c906229b51e994ecadded233bfb Mon Sep 17 00:00:00 2001
+From: Fellipe Henrique <me@fhbash.com>
+Date: Mon, 13 Oct 2025 16:54:38 -0300
+Subject: [PATCH 1/4] gpgme: Improve handling of expired GPG signatures with
+ key rotation support
+
+This change only affects the gpgme implementation of signature verification.
+The rpm implementation (gpg_rpm.c) is not modified as it already rejects
+expired keys during import.
+
+Changes:
+- Implements proper detection and handling of expired GPG keys and signatures
+  in the gpgme backend (gpg_gpgme.c)
+- Adds support for key rotation: if data is signed with multiple keys and
+  at least one valid, non-expired signature exists, verification succeeds
+- Only fails verification if ALL signatures are either invalid or expired
+- Provides clear error messages distinguishing between expired keys and
+  expired signatures
+- Adds test case to verify expired signature rejection
+
+type: enhancement
+resolves: https://github.com/rpm-software-management/librepo/issues/207
+
+Signed-off-by: Fellipe Henrique <me@fhbash.com>
+---
+ CMakeLists.txt                                |   1 +
+ librepo/gpg_gpgme.c                           |  47 ++++++-
+ tests/test_data/expired_test/expired_key.asc  |  18 +++
+ .../test_data/expired_test/expired_key_config |   9 ++
+ tests/test_data/expired_test/test_data.txt    |   1 +
+ .../test_data/expired_test/test_data.txt.asc  |  11 ++
+ tests/test_gpg.c                              | 126 ++++++++++++++++++
+ 7 files changed, 206 insertions(+), 7 deletions(-)
+ create mode 100644 tests/test_data/expired_test/expired_key.asc
+ create mode 100644 tests/test_data/expired_test/expired_key_config
+ create mode 100644 tests/test_data/expired_test/test_data.txt
+ create mode 100644 tests/test_data/expired_test/test_data.txt.asc
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index b030d4a..a8da4ea 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -39,6 +39,7 @@ PKG_CHECK_MODULES(LIBXML2 libxml-2.0 REQUIRED)
+ FIND_PACKAGE(CURL 7.52.0 REQUIRED)
+ 
+ IF (USE_GPGME)
++    ADD_DEFINITIONS(-DUSE_GPGME)
+     PKG_SEARCH_MODULE(GPGME gpgme)
+     IF (NOT GPGME_FOUND)
+         FIND_PACKAGE(Gpgme REQUIRED)
+diff --git a/librepo/gpg_gpgme.c b/librepo/gpg_gpgme.c
+index 8cda534..136f25e 100644
+--- a/librepo/gpg_gpgme.c
++++ b/librepo/gpg_gpgme.c
+@@ -279,19 +279,52 @@ lr_gpg_check_signature_fd(int signature_fd,
+ 
+     // Example of signature usage could be found in gpgme git repository
+     // in the gpgme/tests/run-verify.c
++    //
++    // For key rotation support: If the data is signed with multiple keys and at least
++    // one valid, non-expired signature exists, we should succeed. We only fail if ALL
++    // signatures are either invalid or expired.
++    gboolean found_valid_signature = FALSE;
++    gboolean found_expired_key = FALSE;
++    gboolean found_expired_sig = FALSE;
+     for (; sig; sig = sig->next) {
+-        if ((sig->summary & GPGME_SIGSUM_VALID) ||  // Valid
+-            (sig->summary & GPGME_SIGSUM_GREEN) ||  // Valid
+-            (sig->summary == 0 && sig->status == GPG_ERR_NO_ERROR)) // Valid but key is not certified with a trusted signature
++        // Check if this signature is from an expired key or is itself expired
++        if (sig->summary & GPGME_SIGSUM_KEY_EXPIRED) {
++            g_debug("%s: Skipping signature with expired key", __func__);
++            found_expired_key = TRUE;
++            continue;
++        }
++        if (sig->summary & GPGME_SIGSUM_SIG_EXPIRED) {
++            g_debug("%s: Skipping expired signature", __func__);
++            found_expired_sig = TRUE;
++            continue;
++        }
++        if ((sig->summary & GPGME_SIGSUM_VALID) || // Valid
++            (sig->summary & GPGME_SIGSUM_GREEN) || // Valid
++            (sig->summary == 0 && sig->status == GPG_ERR_NO_ERROR))
++        // Valid but key is not certified with a trusted signature
+         {
+-            gpgme_release(context);
+-            return TRUE;
++            found_valid_signature = TRUE;
++            break;
+         }
+     }
+ 
+     gpgme_release(context);
+-    g_debug("%s: Bad GPG signature", __func__);
+-    g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "Bad GPG signature");
++
++    if (found_valid_signature) {
++        return TRUE;
++    }
++
++    // No valid signature found - report appropriate error
++    if (found_expired_key) {
++        g_debug("%s: GPG signature verification failed - key has expired", __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "GPG signature verification failed - key has expired");
++    } else if (found_expired_sig) {
++        g_debug("%s: GPG signature verification failed - signature has expired", __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "GPG signature verification failed - signature has expired");
++    } else {
++        g_debug("%s: Bad GPG signature", __func__);
++        g_set_error(err, LR_GPG_ERROR, LRE_BADGPG, "Bad GPG signature");
++    }
+     return FALSE;
+ }
+ 
+diff --git a/tests/test_data/expired_test/expired_key.asc b/tests/test_data/expired_test/expired_key.asc
+new file mode 100644
+index 0000000..263d5a3
+--- /dev/null
++++ b/tests/test_data/expired_test/expired_key.asc
+@@ -0,0 +1,18 @@
++-----BEGIN PGP PUBLIC KEY BLOCK-----
++
++mQENBAAAB+MBCADlMUlDwWp8ME7QY1ta4ZksRK8wRyYEvxCCzJLA3MrMIOUydAkQ
++jTG2GEJJxYubF28Z48lhohhkxp1VOMNosaD2HzAJRc90fS6dhsqj3kbrJebxM56I
++d7BKY+2sNE0rb3+MH6xUCrhOmhMaM9jWWbrJHpS5+GpWSfNDPyUJhHBGfAUWhfc8
++6S3DanpRaz22krU0ZrehGLet8DPRaU6QLBuKDCt9WBGyrQpcYBdXTXqSB8sYDKhg
++oz6F37jloS19hr7HKTFzT9Xwy7nirW+/JQXRS/YQvXkPu+zpFukHrFU0i4it57g6
++835KDMxRIa7k2rpKaXX8JGaOIy5pDbVEB9gpABEBAAG0JmV4cGlyZWQgdGVzdCBr
++ZXkgPGV4cGlyZWRAZXhhbXBsZS5vcmc+iQFYBBMBCgBCFiEEwjdX5ZlIYBxrPLaf
++Xf+LndwbPB8FAgAAB+MDGy8EBQleDKwNBQsJCAcCAiICBhUKCQgLAgQWAgMBAh4H
++AheAAAoJEF3/i53cGzwfdusIAIW1Pf9X/wvP+BxOEUc7eb7INMEk2tYDb4W9Y8GR
++hV/4iJ74Ld29zWrxYdjNevbXalhX4I3mDz0VeuCSxVxVBkORun5a/d9LdyjnKBdS
++3D2QGqjmREg4D7tJf9reaiSNvtDlamf8c5Vs54Ce+Wcv02OvTWX4gF+B9M8QV0He
++Fj/hINgRYDaMCDV6lMf3IkKV1CjUE9N6ZsuhSfkXRLDKLTM9prM+QhhZCwGPMlV2
++UF1Dw/TEb7nRHvgWMqotJdWYv5bmCtTfEej31u5BGP7qgD4VXeaXC8YhTPpZupIo
++Ku36bs1JFuNC1PmylB9w4kqWC7UctXcLWzlRlfXujjMaGyA=
++=EnBs
++-----END PGP PUBLIC KEY BLOCK-----
+diff --git a/tests/test_data/expired_test/expired_key_config b/tests/test_data/expired_test/expired_key_config
+new file mode 100644
+index 0000000..7e94f64
+--- /dev/null
++++ b/tests/test_data/expired_test/expired_key_config
+@@ -0,0 +1,9 @@
++%echo Generating expired test key
++Key-Type: RSA
++Key-Length: 2048
++Name-Real: expired test key
++Name-Email: expired@example.org
++Expire-Date: 2020-01-01
++%no-protection
++%commit
++%echo done
+diff --git a/tests/test_data/expired_test/test_data.txt b/tests/test_data/expired_test/test_data.txt
+new file mode 100644
+index 0000000..6095fef
+--- /dev/null
++++ b/tests/test_data/expired_test/test_data.txt
+@@ -0,0 +1 @@
++This is test data for expired signature testing.
+diff --git a/tests/test_data/expired_test/test_data.txt.asc b/tests/test_data/expired_test/test_data.txt.asc
+new file mode 100644
+index 0000000..a88570a
+--- /dev/null
++++ b/tests/test_data/expired_test/test_data.txt.asc
+@@ -0,0 +1,11 @@
++-----BEGIN PGP SIGNATURE-----
++
++iQEzBAABCgAdFiEEwjdX5ZlIYBxrPLafXf+LndwbPB8FAgAAB+MACgkQXf+Lndwb
++PB/A3Qf/WMN0GRFeFVxOcGWkKEygs5FD3LI1pNdEV08gAhP3sFC4t55bTsLx7tsd
++gpNxcW/VkW0hc7FgZT4uYoJVAlr01sPHslbNI4HZA6P6OTVtMHLrRH2ZZ9ae0d2z
++xJc+fqiYxhRfbC8ERjDVt0HWiw1TxWKXb5scw80mxmkdaD6K1pTU1o+Qu90Q+IUT
++g04hKSw1+WRT6UVcqsuR00eUDw01W5tcZNJ72X0rp0GCLC9JU51o8ZtKTmliKRTc
+++PE5khUhwHnTV19Zp2JYLfGrFtAmvR3e5mpcRuRe7qYwZFXFBtkKR93hS3IpK9kl
++Ac4ZWncPlkUPlIMq3Hiha9WvXZ712w==
++=Szsq
++-----END PGP SIGNATURE-----
+diff --git a/tests/test_gpg.c b/tests/test_gpg.c
+index 6642cc7..7648657 100644
+--- a/tests/test_gpg.c
++++ b/tests/test_gpg.c
+@@ -246,6 +246,130 @@ START_TEST(test_gpg_check_binary_key_import_test_export)
+ END_TEST
+ 
+ 
++START_TEST(test_gpg_check_import_padded)
++{
++    // Verify that lr_gpg_import_key_from_memory properly respects the key_len
++    // argument and does not read any garbage beyond the key in memory.
++
++    gboolean ret;
++    char *key_path;
++    char *tmp_home_path;
++    GError *tmp_err = NULL;
++
++    tmp_home_path = lr_gettmpdir();
++    key_path = lr_pathconcat(test_globals.testdata_dir,
++                             "repo_yum_01/repodata/repomd.xml_bad.key.asc", NULL);
++    char *random_prefix_text = "The file with the key can have any text\n";
++    int prefix_len = strlen(random_prefix_text);
++    // The suffix represents arbitrary memory that is located after the key
++    char suffix_with_garbage_and_null_byte[] = {'\xf4', '\xc2', '\x7f', '\0',};
++    int suffix_len = sizeof(suffix_with_garbage_and_null_byte);
++
++    // Load the key into memory
++    gchar *contents;
++    gsize length;
++    ret = g_file_get_contents(key_path, &contents, &length, &tmp_err);
++    ck_assert_ptr_null(tmp_err);
++    ck_assert(ret);
++
++    // Wrap the loaded key with random text prefix and garbage suffix
++    gchar *padded_contents = g_malloc0(prefix_len + length + suffix_len);
++    memcpy(padded_contents, random_prefix_text, prefix_len);
++    memcpy(padded_contents + prefix_len, contents, length);
++    memcpy(padded_contents + prefix_len + length, suffix_with_garbage_and_null_byte, suffix_len);
++
++    ret = lr_gpg_import_key_from_memory(padded_contents, prefix_len + length, tmp_home_path, &tmp_err);
++    ck_assert(ret);
++    ck_assert_ptr_null(tmp_err);
++    g_free(contents);
++    g_free(padded_contents);
++
++    lr_remove_dir(tmp_home_path);
++    lr_free(key_path);
++    g_free(tmp_home_path);
++}
++END_TEST
++
++
++START_TEST(test_gpgme_expired_signature)
++{
++    // This test verifies that expired GPG signatures are properly rejected
++    // using the gpgme backend.
++
++#ifndef USE_GPGME
++    // Skip this test when not using gpgme backend
++    return;
++#endif
++
++    gboolean ret;
++    char *valid_key_path, *valid_data_path, *valid_signature_path;
++    char *tmp_home_path;
++    GError *tmp_err = NULL;
++
++    tmp_home_path = lr_gettmpdir();
++
++    // First test with valid key/signature (sanity check)
++    valid_key_path = lr_pathconcat(test_globals.testdata_dir,
++                                   "repo_yum_01/repodata/repomd.xml.key.asc", NULL);
++    valid_data_path = lr_pathconcat(test_globals.testdata_dir,
++                                    "repo_yum_01/repodata/repomd.xml", NULL);
++    valid_signature_path = lr_pathconcat(test_globals.testdata_dir,
++                                         "repo_yum_01/repodata/repomd.xml.asc", NULL);
++
++    // Import the valid key first
++    ret = lr_gpg_import_key(valid_key_path, tmp_home_path, &tmp_err);
++    ck_assert(ret);
++    ck_assert_ptr_null(tmp_err);
++
++    // This should pass with a valid signature (sanity check)
++    ret = lr_gpg_check_signature(valid_signature_path,
++                                 valid_data_path,
++                                 tmp_home_path,
++                                 &tmp_err);
++    ck_assert_msg(ret, "Valid signature should pass: %s",
++            (tmp_err && tmp_err->message) ? tmp_err->message : "");
++    ck_assert_ptr_null(tmp_err);
++
++    // Clean up for expired key test
++    lr_remove_dir(tmp_home_path);
++    tmp_home_path = lr_gettmpdir();
++
++    // Now test with expired key
++    char *expired_key_path = lr_pathconcat(test_globals.testdata_dir, "expired_test/expired_key.asc", NULL);
++    char *expired_data_path = lr_pathconcat(test_globals.testdata_dir, "expired_test/test_data.txt", NULL);
++    char *expired_signature_path = lr_pathconcat(test_globals.testdata_dir, "expired_test/test_data.txt.asc", NULL);
++
++    // Import the expired key
++    ret = lr_gpg_import_key(expired_key_path, tmp_home_path, &tmp_err);
++    ck_assert(ret);
++    ck_assert_ptr_null(tmp_err);
++
++    // This should FAIL with expired signature - gpgme will reject it
++    ret = lr_gpg_check_signature(expired_signature_path,
++                                 expired_data_path,
++                                 tmp_home_path,
++                                 &tmp_err);
++    ck_assert_msg(!ret, "Expired signature should be rejected");
++    ck_assert_ptr_nonnull(tmp_err);
++
++    // Just verify that we get an appropriate error message (no specific text required)
++    ck_assert_msg(tmp_err->message != NULL, "Error message should not be NULL");
++    g_debug("GPG verification failed as expected: %s", tmp_err->message);
++
++    // Cleanup
++    lr_remove_dir(tmp_home_path);
++    lr_free(valid_key_path);
++    lr_free(valid_data_path);
++    lr_free(valid_signature_path);
++    lr_free(expired_key_path);
++    lr_free(expired_data_path);
++    lr_free(expired_signature_path);
++    g_free(tmp_home_path);
++    if (tmp_err) g_error_free(tmp_err);
++}
++END_TEST
++
++
+ Suite *
+ gpg_suite(void)
+ {
+@@ -254,6 +378,8 @@ gpg_suite(void)
+     tcase_add_test(tc, test_gpg_check_signature);
+     tcase_add_test(tc, test_gpg_check_armored_key_import_test_export);
+     tcase_add_test(tc, test_gpg_check_binary_key_import_test_export);
++    tcase_add_test(tc, test_gpg_check_import_padded);
++    tcase_add_test(tc, test_gpgme_expired_signature);
+     suite_add_tcase(s, tc);
+     return s;
+ }
+-- 
+2.52.0
+

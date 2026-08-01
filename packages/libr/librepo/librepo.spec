@@ -1,7 +1,7 @@
 #
 # spec file for package librepo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2020-2021 Neal Gompa <ngompa13@gmail.com>.
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
@@ -44,6 +44,11 @@ License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/rpm-software-management/librepo
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+#pull 4 commits from upstream master to fix GPG signature checks for repo metadata
+Patch0:         0001-gpgme-Improve-handling-of-expired-GPG-signatures-wit.patch
+Patch1:         0002-PGP-define-shared-error-message-constants-for-both.patch
+Patch2:         0003-gpgme-report-Signing-key-not-found-when-signing-key.patch
+Patch3:         0004-test-verify-missing-key-error-message-consistency.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  pkgconfig

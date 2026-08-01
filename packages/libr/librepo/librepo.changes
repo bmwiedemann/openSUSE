@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Jul 17 07:41:56 UTC 2026 - Radoslav Kolev <radoslav.kolev@suse.com>
+
+- Pull some fixes from upstream master to fix GPG check of repo metadata
+  * 0001-gpgme-Improve-handling-of-expired-GPG-signatures-wit.patch
+  * 0002-PGP-define-shared-error-message-constants-for-both.patch
+  * 0003-gpgme-report-Signing-key-not-found-when-signing-key.patch
+  * 0004-test-verify-missing-key-error-message-consistency.patch
+
+-------------------------------------------------------------------
 Fri Jul 25 15:25:09 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update gpgme build requirement for future-proofing
