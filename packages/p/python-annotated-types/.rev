@@ -34,4 +34,24 @@
 - Initial release of 0.6.0</comment>
     <requestid>1181212</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1346427722adf540bbdcc9bd65bd6de7</srcmd5>
+    <version>0.8.0</version>
+    <time>1785601703</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.8.0:
+  * Rename DocInfo to Doc
+  * Add support for Python 3.13
+  * Fix docstring of `Timezone`
+  * Update license-files to be PEP-639 compliant
+  * fix: typo in README.md
+  * add CI for PyPy3.11 and fix test (issue 71)
+  * Fix string predicate names in doc
+  * Add SPDX license expression
+  * Added Python 3.14 to the test matrix
+  * Add support for Python 3.14 and drop EOL 3.8-3.9
+  * Fix typo in `Len` docstring
+  * Prepare for 0.8.0 release</comment>
+    <requestid>1368879</requestid>
+  </revision>
 </revisionlist>
