@@ -18,13 +18,12 @@
 
 
 Name:           partclone
-Version:        0.3.47
+Version:        0.3.48
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
 URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         partclone-0.3.47-fix-nilfs-utils-2.3.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  docbook-xsl-stylesheets
@@ -150,7 +149,7 @@ autoreconf -fiv
 
 %files bash-completion
 %license COPYING
-%{_datadir}/bash-completion/completions/partclone-completion
+%{_datadir}/bash-completion/completions/partclone
 
 %files lang -f %{name}.lang
 %license COPYING

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:53:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.48:
+  * Shell-escape the compress command and the target path before
+    handing them to popen, preventing command injection
+  * Fix an inverted assertion in the xfs superblock reader that
+    aborted instead of catching an allocation failure
+  * Accept the checksum and blocks-per-checksum options in dd mode
+    and warn about the ones dd mode ignores
+  * Look helper utilities up on PATH instead of relying on locate
+  * Keep building against nilfs-utils older than 2.3
+  * Add Georgian translation
+- Drop partclone-0.3.47-fix-nilfs-utils-2.3.patch, merged upstream
+- Bash completion is now installed as
+  %{_datadir}/bash-completion/completions/partclone
+
+-------------------------------------------------------------------
 Mon Jun 22 20:05:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Fix build with nilfs-utils >= 2.3
