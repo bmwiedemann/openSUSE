@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Jul 30 11:26:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 63033ac306aa26d32e1439417e59ae8f8a4c9820.patch: Menu: handle
+  Python 3.15 deprecations
+- Add fix-build-shared-mime-info.patch: test_mime: update test to
+  pass with >=shared-mime-info-2.5
+
+-------------------------------------------------------------------
 Mon Sep  8 06:52:30 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Add upstream py314.patch to fix tests with Python 3.14

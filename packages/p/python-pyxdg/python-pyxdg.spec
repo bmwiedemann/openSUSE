@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyxdg
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,10 @@ Source0:        https://files.pythonhosted.org/packages/source/p/pyxdg/pyxdg-%{v
 Source1:        https://gitlab.freedesktop.org/xdg/pyxdg/-/archive/rel-%{version}/pyxdg-rel-%{version}.tar.gz?path=test/example#/pyxdg-%{version}-test-example.tar.gz
 # PATCH-FIX-UPSTREAM https://cgit.freedesktop.org/xdg/pyxdg/patch/?id=9291d419017263c922869d79ac1fe8d423e5f929 Menu: handle Python 3.14 ast.Str changes
 Patch0:         py314.patch
+# PATCH-FIX-UPSTREAM Menu: handle Python 3.15 deprecations
+Patch1:         https://gitlab.freedesktop.org/xdg/pyxdg/-/commit/63033ac306aa26d32e1439417e59ae8f8a4c9820.patch
+# PATCH-FIX-UPSTREAM fix-build-shared-mime-info.patch -- test_mime: update test to pass with >=shared-mime-info-2.5
+Patch2:         fix-build-shared-mime-info.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}

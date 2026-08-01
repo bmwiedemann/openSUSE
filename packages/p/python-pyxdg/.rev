@@ -160,4 +160,15 @@
     <comment></comment>
     <requestid>1304353</requestid>
   </revision>
+  <revision rev="18" vrev="6">
+    <srcmd5>d4d7cd2c9ed320587adba9a3b4b890b8</srcmd5>
+    <version>0.28</version>
+    <time>1785601689</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 63033ac306aa26d32e1439417e59ae8f8a4c9820.patch: Menu: handle
+  Python 3.15 deprecations
+- Add fix-build-shared-mime-info.patch: test_mime: update test to
+  pass with &gt;=shared-mime-info-2.5</comment>
+    <requestid>1368657</requestid>
+  </revision>
 </revisionlist>
