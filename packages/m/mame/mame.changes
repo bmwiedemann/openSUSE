@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:24:44 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated to 0.289
+  * /usr/share/doc/packages/mame/whatsnew-0.289.txt
+  * Removed mame-sdl_ini_path.patch (upstreamed).
+
+-------------------------------------------------------------------
 Thu Jun  4 16:35:12 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Replaced mame-sdl_ini_path-hardcode.patch by mame-sdl_ini_path.patch

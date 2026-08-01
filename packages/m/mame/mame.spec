@@ -16,7 +16,7 @@
 #
 
 
-%define ver     288
+%define ver     289
 Name:           mame
 Version:        0.%{ver}
 Release:        0
@@ -34,7 +34,6 @@ Patch0:         use_thin_archives.patch
 Patch1:         fix-922619.patch
 Patch2:         %{name}-fortify.patch
 Patch3:         %{name}-bgfx.patch
-Patch4:         %{name}-sdl_ini_path.patch
 Patch5:         reproducible.patch
 BuildRequires:  asio-devel
 BuildRequires:  fdupes
