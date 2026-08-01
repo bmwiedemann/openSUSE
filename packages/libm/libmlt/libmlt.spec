@@ -18,17 +18,17 @@
 
 %define _name mlt
 %define libname lib%{_name}
-%define lversion 7.38.0
+%define lversion 7.40.0
 %define sover 7
 %define lib_pkgname %{libname}-%{sover}-%{sover}
 %define _name_pp %{_name}++
 %define libname_pp lib%{_name_pp}
 %define sover_pp 7
-%define lversion_pp 7.38.0
+%define lversion_pp 7.40.0
 %define libpp_pkgname %{libname_pp}-%{sover_pp}-%{sover_pp}
 %bcond_without rtaudio
 Name:           %{libname}
-Version:        7.38.0
+Version:        7.40.0
 Release:        0
 Summary:        Multimedia framework for television broadcasting
 License:        GPL-3.0-or-later
@@ -38,11 +38,6 @@ Source0:        https://github.com/mltframework/mlt/releases/download/v%{version
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} < 1600
-# Qt 6 requires a compiler that fully supports c++-17
-BuildRequires:  gcc13-c++
-BuildRequires:  gcc13-PIE
-%endif
 BuildRequires:  ladspa-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -75,12 +70,11 @@ BuildRequires:  pkgconfig(libswscale) >= 5
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(movit)
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(opencv4)
-%endif
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)
 BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(rnnoise)
 %if %{with rtaudio}
 BuildRequires:  pkgconfig(rtaudio)
 %endif
@@ -211,17 +205,9 @@ This package contains python bindings.
 %autosetup -p1 -n %{_name}-%{version}
 
 %build
-%if 0%{?sle_version}
-export CC=gcc-13 CXX=g++-13
-%endif
-
 # WARNING: building opencv module causes multicore issues - boo#1068792
 %cmake \
-%if 0%{?suse_version} > 1500
    -DMOD_OPENCV=ON \
-%else
-   -DMOD_OPENCV=OFF \
-%endif
    -DGPL=ON \
    -DGPL3=ON \
    -DSWIG_PYTHON=ON \

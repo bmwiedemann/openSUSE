@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Sat Aug  1 07:56:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 7.40.0
+  Framework:
+  * Some fixes for win32_fopen().
+  * Security fixes for time formatting in mlt_properties.
+  * Security fix to disable deprecated ante & post properties
+    in mlc_consumer.
+  * Added more properties to metaschema.yaml (new version 7.2):
+    * audio_formats
+    * video_formats
+    * layout-hint
+    * hide-label
+    * normalized_default
+  Modules:
+  * Added audio_formats and image_formats properties to all
+    service metadata.
+  * Many improvements to the openfx module:
+     * fixed potential overflows in snprintf() calls
+     * multi-threading: frame- and slice-based
+     * many compatibility fixes
+     * added support for 2D and 3D numeric parameters
+       (uses mlt_rect)
+     * fixed preview scaling
+     * fixed the default for choice (values in metaschema.yaml)
+       parameters
+     * fixed some effects rendering upside-down.
+  * Added rnnoise module for background audio noise reduction
+    (depends on librnnoise).
+  * Added HDR10 SMPTE ST 2084 (PQ) properties to the decklink
+    consumer:
+    * hdr_red_x
+    * hdr_red_y
+    * hdr_green_x
+    * hdr_green_y
+    * hdr_blue_x
+    * hdr_blue_y
+    * hdr_white_x
+    * hdr_white_y
+    * hdr_max_luminance
+    * hdr_min_luminance
+    * hdr_max_cll
+    * hdr_max_fall
+  * Added the .lot file name extension for the loader producer
+    to use glaxnimate.
+  * Visual quality improvements for animations in the qtblend
+    filter and transition.
+  * Updated spatialaudio module to the libspatialaudio 0.4.0 API.
+  * Fixed a signed int overflow in pgm producer.
+  * MSVC compatibility fixes for kdenlivetitle producer and
+    frei0r, plusgpl, jackrack, openfx, rtaudio, & resample modules.
+  * Fixed choppy playback and deadlocks in the decklink consumer.
+  * Fixed libopus audio encoder warning about frame_duration in
+    avformat consumer.
+  * Fixed crash in avformat consumer with unsupported
+    attached_pic format.
+  * Fixed plugin bundles for vst2 filters on macOS.
+  * Fixed the frame position in the consumer producer.
+  * Hardened string formatting for metadata properties in the
+    vorbis producer.
+  * Fixed typewriter in qtext filter lags when rate properties
+    changed.
+  Other:
+  * Skip Qt preflight for XML-only consumers in melt.
+- Drop obsolete Leap/SLE 15 conditions
+
+-------------------------------------------------------------------
 Fri Jun 19 18:08:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Make build recipe compatible with POSIX sh
