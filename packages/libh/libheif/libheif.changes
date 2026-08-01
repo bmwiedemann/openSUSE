@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.23.1:
+  + FFmpeg decoder plugin gains AV1, VVC, JPEG, and JPEG 2000/HTJ2K
+    decoding
+  + SVT-AV1 encoder: new tune=iq and ms-ssim tune parameters
+  + C++ API: added getters/setters for the CLLI and MDCV HDR
+    metadata boxes
+  + Sequence decoder now scales the alpha auxiliary track to the
+    main image size
+  + Fixed pixi box writing for multi-channel images
+  + Corrected the placement of the TAI clock_type field into the
+    top 2 bits
+  + Empty/unset plugin directory is no longer scanned
+  + CVE-2026-62289 (GHSA-jc8f-p23p-5hjg) Integer underflow in
+    Fraction constructor via double clap transform application
+  + CVE-2026-62291 (GHSA-xpw3-9rhw-482x) Heap out of bounds write in
+    libheif uncompressed encoder when writing images with mismatched
+    auxiliary alpha dimensions
+  + CVE-2026-62292 (GHSA-73p7-m7gg-w2jv) Out-of-bounds read in
+    uncompressed unci tile range slicing
+  + CVE-2026-62377 (GHSA-9ww4-9v47-m7pj) Reachable assertion in
+    HeifContext::get_track() aborts on a valid-but-empty HEIF
+    sequence file
+  + (GHSA-46rp-pcq2-rpmr) Heap out-of-bounds write in the
+    uncompressed encoder for RRGGBB images with interleaved
+    bit-depth ≤ 8
+
+-------------------------------------------------------------------
 Tue Jun  2 06:19:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.23.0:
