@@ -2685,4 +2685,13 @@ jsc#PED-14899
 - tools: Handle UTF-8 parameters in cibsecret. (forwarded request 1365616 from yan_gao)</comment>
     <requestid>1365617</requestid>
   </revision>
+  <revision rev="175" vrev="1">
+    <srcmd5>f58c745a611baaecdc50c895b72eaa72</srcmd5>
+    <version>3.0.3+20260728.7052efa194</version>
+    <time>1785601642</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.0.3+20260728.7052efa194 (Pacemaker-3.0.3):
+- ChangeLog: update for 3.0.3 release (forwarded request 1368362 from yan_gao)</comment>
+    <requestid>1368363</requestid>
+  </revision>
 </revisionlist>
