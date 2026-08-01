@@ -1,7 +1,7 @@
 #
 # spec file for package libmemcached
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://awesomized.github.io/%{name}/
 Source0:        https://github.com/awesomized/%{name}/archive/refs/tags/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#awesomized/libmemcached#aa0a58dbe4eff7948b529f7f2fbe0f63cc823878
+Patch0:         support-sphinx-9.patch
 # List of additional build dependencies
 BuildRequires:  automake >= 1.13
 BuildRequires:  bison
@@ -93,7 +95,7 @@ Libmemcached is a C/C++ client library and tools for the memcached server
 usage, thread safe, and provide full access to server side methods.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %cmake \

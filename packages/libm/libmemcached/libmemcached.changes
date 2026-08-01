@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 01:49:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-sphinx-9.patch:
+  * Changes required to build docs with Sphinx 9.
+
+-------------------------------------------------------------------
 Mon Feb  5 11:07:46 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - explicitly set docdir to converge cmake doc macro change

@@ -1,0 +1,50 @@
+From aa0a58dbe4eff7948b529f7f2fbe0f63cc823878 Mon Sep 17 00:00:00 2001
+From: Petr Sumbera <sumbera@volny.cz>
+Date: Tue, 20 Jan 2026 10:58:06 +0100
+Subject: [PATCH] Allow to build docs with Sphinx version 9
+
+---
+ docs/source/libmemcached/memcached_quit.rst  | 2 +-
+ docs/source/libmemcached/memcached_set.rst   | 2 +-
+ docs/source/libmemcached/memcached_stats.rst | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/docs/source/libmemcached/memcached_quit.rst b/docs/source/libmemcached/memcached_quit.rst
+index 3421d47be..c3357e615 100644
+--- a/docs/source/libmemcached/memcached_quit.rst
++++ b/docs/source/libmemcached/memcached_quit.rst
+@@ -1,7 +1,7 @@
+ Disconnecting a client from a server
+ ====================================
+ 
+-.. index:: object: memcached_st
++.. index:: pair: object; memcached_st
+ 
+ SYNOPSIS
+ --------
+diff --git a/docs/source/libmemcached/memcached_set.rst b/docs/source/libmemcached/memcached_set.rst
+index f887109f1..3b7e19092 100644
+--- a/docs/source/libmemcached/memcached_set.rst
++++ b/docs/source/libmemcached/memcached_set.rst
+@@ -1,7 +1,7 @@
+ Storing data on the server
+ ==========================
+ 
+-.. index:: object: memcached_st
++.. index:: pair: object; memcached_st
+ 
+ SYNOPSIS
+ --------
+diff --git a/docs/source/libmemcached/memcached_stats.rst b/docs/source/libmemcached/memcached_stats.rst
+index 745926b65..113c84900 100644
+--- a/docs/source/libmemcached/memcached_stats.rst
++++ b/docs/source/libmemcached/memcached_stats.rst
+@@ -3,7 +3,7 @@ Working with statistical information from a server
+ 
+ Get memcached statistics
+ 
+-.. index:: object: memcached_st
++.. index:: pair: object; memcached_st
+ 
+ SYNOPSIS
+ --------
