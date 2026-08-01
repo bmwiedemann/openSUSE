@@ -1,0 +1,108 @@
+Fix archive header consistency check on 64-bit (LP64) platforms
+
+The archive header stores zoo_start and zoo_minus as a 32-bit value and
+its two's complement, and every consistency check adds the two and tests
+the result against zero.  Both fields are declared "long", so on an LP64
+target (x86_64, aarch64, ...) the sum is 2^32 rather than 0 and the check
+misfires on every well-formed archive:
+
+    $ zoo ah test.zoo a.txt
+    $ mkdir out && cd out && zoo x ../test.zoo
+    Zoo:  WARNING:  Archive header failed consistency check.
+
+Extraction and packing only warn (the payload itself is unaffected and
+still round-trips byte-identically), but zoo D -- deleting a member from
+an archive -- calls prterror('f', ...) and therefore aborts outright:
+
+    Zoo:  FATAL:  Archive header failed consistency check.
+
+Compare only the low 32 bits when long is 64 bits wide.  Taken from
+Debian's 03-fix-manage-archive-under-AMD64.patch (zoo 2.10-28); the
+LONG64 guards in the four .c files are Debian's verbatim.  Debian
+supplies -DLONG64 from a separate "linux64" makefile target, which would
+need a per-architecture build flag here, so options.h derives LONG64 from
+LONG_MAX instead -- correct on 32-bit and 64-bit alike.
+
+Not sent upstream: zoo's last upstream release was 2.10pl1 in 1993 and
+the project has been dead since; there is nowhere to send it.
+
+--- options.h.orig
++++ options.h
+@@ -336,6 +336,21 @@
+ # define CHECK_TUINT	/* will do runtime check for correct size */
+ #endif
+ 
++/* zoo_start / zoo_minus in the archive header are a 32-bit value and its
++two's complement.  They only cancel out when added together in a 32-bit
++long; on an LP64 target (x86_64, aarch64, ...) the sum is 2^32 instead of
++0, so every consistency check below misfires.  Define LONG64 there, so the
++checks in misc.c, zooext.c, zoodel.c and zoopack.c compare the low 32 bits
++only.  Debian passes -DLONG64 from a dedicated "linux64" makefile target;
++detecting it here keeps the check correct on 32-bit and 64-bit alike
++without needing a per-architecture build flag. */
++#ifndef LONG64
++# include <limits.h>
++# if LONG_MAX > 0x7FFFFFFFL
++#  define LONG64
++# endif
++#endif
++
+ /* ANSI compatibility in declarations -- see zoofns.h for usage */
+ #ifndef PARMS
+ # ifdef ANSI_PROTO
+--- misc.c.orig
++++ misc.c
+@@ -178,7 +178,11 @@
+ 
+    frd_zooh (header, zoo_file);
+ 
++#ifdef LONG64
++   if ((int)(header->zoo_start + header->zoo_minus) != 0)
++#else
+    if ((header->zoo_start + header->zoo_minus) != 0L)
++#endif
+       prterror ('f', failed_consistency);
+    if (ver_too_high (header))
+       prterror ('f', wrong_version, header->major_ver, header->minor_ver);
+--- zoodel.c.orig
++++ zoodel.c
+@@ -138,7 +138,11 @@
+    
+    /* read archive header */
+    frd_zooh (&zoo_header, zoo_file);
++#ifdef LONG64
++   if ((int)(zoo_header.zoo_start + zoo_header.zoo_minus) != 0)
++#else
+    if ((zoo_header.zoo_start + zoo_header.zoo_minus) != 0L)
++#endif
+       prterror ('f', failed_consistency);
+    if (ver_too_high (&zoo_header))
+       prterror ('f', wrong_version, zoo_header.major_ver, zoo_header.minor_ver);
+--- zooext.c.orig
++++ zooext.c
+@@ -164,7 +164,11 @@
+ } else {
+    /* read header */
+    frd_zooh (&zoo_header, zoo_file);
++#ifdef LONG64
++   if ((int)(zoo_header.zoo_start + zoo_header.zoo_minus) != 0) {
++#else
+    if ((zoo_header.zoo_start + zoo_header.zoo_minus) != 0L) {
++#endif
+       prterror ('w', failed_consistency);
+       bad_header++;
+ 		exit_status = 1;
+--- zoopack.c.orig
++++ zoopack.c
+@@ -139,7 +139,11 @@
+ /* Read the header of the old archive. */
+ frd_zooh(&old_zoo_header, zoo_file);
+ 
++#ifdef LONG64
++if ((int)(old_zoo_header.zoo_start + old_zoo_header.zoo_minus) != 0) {
++#else
+ if ((old_zoo_header.zoo_start + old_zoo_header.zoo_minus) != 0L) {
++#endif
+    prterror ('w', failed_consistency);
+    ++bad_header;                    /* remember for future error message */
+ }

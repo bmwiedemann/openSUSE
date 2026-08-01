@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Jul 31 07:09:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add zoo-64bit-header-check.patch, taken from Debian, to fix the
+  archive header consistency check on 64-bit platforms:
+  * zoo_start and zoo_minus are a 32-bit value and its two's
+    complement, so they stopped cancelling out once long became
+    64 bits wide and the check misfired on valid archives
+  * extracting or packing an archive printed a spurious "Archive
+    header failed consistency check" warning
+  * deleting a member from an archive treated the same check as
+    fatal and aborted, making zoo D unusable on 64-bit
+
+-------------------------------------------------------------------
 Tue Jun  2 08:14:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Spec cleanup:

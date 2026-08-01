@@ -33,6 +33,8 @@ Patch6:         zoo-security_parse.patch
 Patch7:         zoo-%{version}-security-infinite_loop.patch
 Patch8:         zoo-fclose.patch
 Patch9:         zoo-gcc14.patch
+# PATCH-FIX-OPENSUSE zoo-64bit-header-check.patch mpluskal@suse.com -- Fix the archive header consistency check on LP64, from Debian; upstream is dead since 1993
+Patch10:        zoo-64bit-header-check.patch
 BuildRequires:  gcc
 BuildRequires:  make
 
