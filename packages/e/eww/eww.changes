@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 12:24:10 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add glib-macros.patch for reproducible builds
+
+-------------------------------------------------------------------
 Mon Jun 09 02:24:18 UTC 2025 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.6.0+git86.g98c220126d912b935987766f56650b55f3e226eb:

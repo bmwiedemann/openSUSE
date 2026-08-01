@@ -26,6 +26,8 @@ License:        MIT
 URL:            https://github.com/elkowar/eww
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM https://github.com/gtk-rs/gtk-rs-core/pull/1840
+Patch0:         glib-macros.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  gtk-layer-shell-devel
@@ -42,6 +44,9 @@ allows you to implement your own, custom widgets in any window manager.
 sed -i '1s|#!/bin/sh|#!/usr/bin/sh|' examples/eww-bar/scripts/getvol
 
 %build
+#export CONST_RANDOM_SEED="${SOURCE_DATE_EPOCH}"
+#global build_rustflags %{build_rustflags} -C lto=off
+#export RUSTFLAGS='%{build_rustflags}'
 %{cargo_build}
 
 %install
