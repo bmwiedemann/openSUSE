@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Jul 28 07:07:12 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.9.6:
+   * Fix: config file not found error message
+   * pam: start conversation right away
+   * Config: prevent crash on invalid numeric values
+   * core: more obvious api around isUnlocked related logic
+   * Background: fix condition for image reload when crossfade
+     is still in progress
+   * core: skip binding to dmabuf when SCMODE is 1
+   * LockSurface: set eglSwapInterval to 0
+   * screencopy: flip the right 10bit formats
+   * pam: fix behaviour when pam_fprintd.so is used
+   * Output: create session lock surface before mode commit
+   * base ubuntu dont exist libpam.pc only pam.pc
+   * core: move dbus connection from fprint to it's own thing
+   * Fix: use explicit cast for m_pSeat
+   * Fix: guard CSCDMAFrame destructor against destroyed EGL context
+
+-------------------------------------------------------------------
+Tue Jul 14 15:24:08 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to version 0.9.5:
+  - Changes in version 0.9.5:
+    * animation: copy active animations for save iteration
+    * core: eglReleaseThread when no outputs and egl error logging
+    * core: don't register dmabuf when screencopy is not required
+    * input-field: fix placeholder not updating correctly
+  - Changes from version 0.9.4:
+    * pam: get username once
+    * Add configurable `check_text` message, that is displayed
+      during authentication
+    * label: fix sigusr2 update when reload time is 0
+    * label: fix alpha rendering
+    * core: use Hyprutils::CLI
+    * input-field: allow smaller dots_size
+    * lock-surface: improved handling of egl window and
+      surface creation
+  - Changes from version 0.9.3:
+    * core: nvidia workaround destroy renderer before EGL
+    * misc: remove hyprland-protocols from README
+    * core: migrate to Hyprutils::CAsyncResourceGatherer and
+      improve resource handling
+    * cmake: add "libpam" as an alias for "pam"
+    * background: reload screenshot if reload_cmd specified
+    * animation: migrate PHLANIMVAR from SP to UP
+    * Prevent nullpointer crash when user password isn't found
+    * core: fix use-after-free segfault in async resource
+      widget callbacks
+    * background: run reload_cmd in configure if path is empty
+  - Changes from version 0.9.2:
+    * Make detection of PAM library more portable
+    * background: monitor transforms fixups
+    * core: remove dmabuf listeners after we are done with Screencopy
+    * renderer: move asyncResourceGatherer out of the renderer
+    * core: monitor replug workaround for nvidia
+    * lock-surface: remove redundant sendDestroy calls
+    * Refactor asset management to use shared_ptr
+    * renderer: fix nvidia workaround
+
+-------------------------------------------------------------------
 Tue Sep  2 19:52:38 UTC 2025 - Ali Q <ovmmu0ik7@mozmail.com>
 
 - Update to version 0.9.1:
