@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:49:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.5.3:
+  * Fall back to the LANGSMITH_API_KEY environment variable when
+    resolving credentials for the gateway
+
+-------------------------------------------------------------------
 Wed Jul 29 06:24:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.5.2:
