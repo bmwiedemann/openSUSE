@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Jul 31 10:15:09 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 4.0+git28:
+  * Use zypp.conf.d dropin for ZYPP_SINGLE_RPMTRANS=1
+
+-------------------------------------------------------------------
+Tue Jul 28 11:58:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.0+git27:
+  * Remove obsolete stuff (locale-check, salt-tmpdir)
+
+-------------------------------------------------------------------
 Thu Jul 23 12:13:54 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 4.0+git26:

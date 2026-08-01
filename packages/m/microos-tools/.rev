@@ -501,4 +501,16 @@
     <comment></comment>
     <requestid>1367480</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>f40f1f64e9b70ac571258c63af6efcaa</srcmd5>
+    <version>4.0+git28</version>
+    <time>1785601652</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0+git28:
+  * Use zypp.conf.d dropin for ZYPP_SINGLE_RPMTRANS=1
+
+- Update to version 4.0+git27:
+  * Remove obsolete stuff (locale-check, salt-tmpdir)</comment>
+    <requestid>1368819</requestid>
+  </revision>
 </revisionlist>

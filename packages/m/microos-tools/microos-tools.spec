@@ -19,7 +19,7 @@
 %{!?_distconfdir: %global _distconfdir %{_prefix}%{_sysconfdir}}
 
 Name:           microos-tools
-Version:        4.0+git26
+Version:        4.0+git28
 Release:        0
 Summary:        Files and Scripts for openSUSE MicroOS
 License:        GPL-2.0-or-later
@@ -34,6 +34,9 @@ BuildRequires:  pkgconfig(rpm)
 BuildRequires:  pkgconfig(systemd)
 Requires:       read-only-root-fs
 Requires:       selinux-autorelabel = %{version}
+# Was part of the main package previously, require it for
+# compatibility (for now).
+Requires:       zypp-single-rpmtrans
 # for man-online
 Requires:       mandoc-bin
 
@@ -60,7 +63,8 @@ Summary:        Disable recommends of libzypp by default
 Requires:       libzypp(econf)
 
 %description -n zypp-no-recommends
-This package installs a zypp.conf snippet to disable Recommends.
+This package installs a zypp.conf snippet to disable installation
+of soft dependencies (Recommends and Supplements) by default.
 
 %package -n zypp-excludedocs
 Summary:        Exclude installation of docs by libzypp
@@ -78,6 +82,15 @@ This package installs a zypp.conf snippet to disable multiversion
 settings. This is normally used to install the kernel in different
 versions at the same time, but not necessary with snapshots or
 transactional-update.
+
+%package -n zypp-single-rpmtrans
+Summary:        Use libzypp in RPM_SINGLETRANS mode
+Requires:       libzypp(econf)
+
+%description -n zypp-single-rpmtrans
+This package installs a zypp.conf snippet to enable ZYPP_RPM_SINGLETRANS.
+libzypp will then use a single RPM transaction for all package changes,
+instead of one RPM transaction per-package.
 
 %prep
 %autosetup -p1
@@ -137,17 +150,9 @@ transactional-update.
 %{_unitdir}/import-pubring-from-rpmdb.path
 %{_unitdir}/import-pubring-from-rpmdb.service
 %{_unitdir}/printenv.service
-%dir %{_unitdir}/salt-minion.service.d
-%{_unitdir}/salt-minion.service.d/TMPDIR.conf
-%{_tmpfilesdir}/salt-minion-tmpdir.conf
-%dir %{_distconfdir}/tukit.conf.d
-%{_distconfdir}/tukit.conf.d/salt-tukit.conf
 %{_bindir}/import-pubring-from-rpmdb
 %{_bindir}/man-online
 %{_distconfdir}/profile.d/man-online.sh
-%{_distconfdir}/profile.d/zypp-single-rpmtrans.sh
-%dir %{_systemd_util_dir}/system.conf.d
-%{_systemd_util_dir}/system.conf.d/10-zypp-single-rpmtrans.conf
 
 %files -n selinux-autorelabel
 %license COPYING
@@ -179,5 +184,10 @@ transactional-update.
 %dir %{_prefix}/etc/zypp
 %dir %{_prefix}/etc/zypp/zypp.conf.d
 %{_prefix}/etc/zypp/zypp.conf.d/no-multiversion.conf
+
+%files -n zypp-single-rpmtrans
+%dir %{_prefix}/etc/zypp
+%dir %{_prefix}/etc/zypp/zypp.conf.d
+%{_prefix}/etc/zypp/zypp.conf.d/single-rpmtrans.conf
 
 %changelog
