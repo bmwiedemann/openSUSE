@@ -457,4 +457,15 @@
 </comment>
     <requestid>1359862</requestid>
   </revision>
+  <revision rev="48" vrev="1">
+    <srcmd5>8481fb9b945b4d43e800ea8b334725ae</srcmd5>
+    <version>2026.7.22</version>
+    <time>1785601661</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2026.7.22:
+  - fix: update Requests docs link to canonical URL
+  - Include tests in the source distribution
+</comment>
+    <requestid>1367762</requestid>
+  </revision>
 </revisionlist>

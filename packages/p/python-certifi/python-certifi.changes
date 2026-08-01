@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Jul 25 17:49:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 2026.7.22:
+  - fix: update Requests docs link to canonical URL
+  - Include tests in the source distribution
+
+-------------------------------------------------------------------
 Tue Jun 16 22:22:02 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Modify python-certifi-shipped-requests-cabundle.patch so that
