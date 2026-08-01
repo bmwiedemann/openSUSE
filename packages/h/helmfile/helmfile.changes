@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:02:34 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.7.2:
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.105.1 to 1.105.2 by @dependabot[bot] in #2707
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.30 to 1.32.31 by @dependabot[bot] in #2708
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.105.2 to 1.106.0 by @dependabot[bot] in #2709
+  * build(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+    by @dependabot[bot] in #2711
+  * build(deps): bump gitpython from 3.1.50 to 3.1.52 in /docs by
+    @dependabot[bot] in #2710
+  * feat: add --repo-retries for helm repo and registry login
+    commands by @yxxhero in #2683
+  * build(deps): bump github.com/helmfile/vals from 0.44.5 to 0.45.0
+    by @dependabot[bot] in #2713
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.24 to
+    0.0.27 by @dependabot[bot] in #2714
+  * build(deps): bump gitpython from 3.1.52 to 3.1.54 in /docs by
+    @dependabot[bot] in #2715
+  * build(deps): bump go.yaml.in/yaml/v3 from 3.0.4 to 3.0.5 by
+    @dependabot[bot] in #2716
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.106.0 to 1.106.2 by @dependabot[bot] in #2719
+  * feat: support Helm 4 --rollback-on-failure alongside deprecated
+    --atomic by @yxxhero in #2722
+
+-------------------------------------------------------------------
 Sat Jul 18 08:19:18 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.1:
