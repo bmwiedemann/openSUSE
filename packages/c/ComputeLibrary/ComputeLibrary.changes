@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Jul 31 07:22:15 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 53.2.0:
+  * Public minor release
+  * Documentation (API, changelogs, build guide,
+    contribution guide, errata, etc.) available here:
+    https://arm-software.github.io/ComputeLibrary/v53.2.0
+- Drop upstream patch:
+  * 1299.patch
+
+-------------------------------------------------------------------
 Wed Jun 24 08:54:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Backport upstream patch to fix build of armnn:opencl

@@ -20,14 +20,12 @@
 # Disable validation tests by default due to opencl needing to be set up
 %bcond_with computelibrary_tests
 Name:           ComputeLibrary
-Version:        53.1.0
+Version:        53.2.0
 Release:        0
 Summary:        ARM Compute Library
 License:        MIT
 URL:            https://developer.arm.com/technologies/compute-library
 Source:         https://github.com/ARM-software/ComputeLibrary/archive/v%{version}.tar.gz#/ComputeLibrary-%{version}.tar.gz
-# PATCH-FIX-USPTREAM - https://github.com/ARM-software/ComputeLibrary/pull/1299
-Patch1:         1299.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git-core
 BuildRequires:  ocl-icd-devel
