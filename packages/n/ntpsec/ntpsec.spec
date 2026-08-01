@@ -1,7 +1,7 @@
 #
 # spec file for package ntpsec
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2016 Malcolm J Lewis <malcolmlewis@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           ntpsec
-Version:        1.2.4
+Version:        1.2.5
 Release:        0
 Summary:        Improved implementation of Network Time Protocol
 License:        BSD-2-Clause AND NTP AND BSD-3-Clause AND MIT
@@ -193,8 +193,7 @@ exit 0
 %postun utils
 %service_del_postun ntp-wait.service ntplogtemp.service ntpviz-daily.service ntpviz-weekly.service
 
-%post -n libntpc1 -p /sbin/ldconfig
-%postun -n libntpc1 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libntpc1
 
 %files -n python3-ntp
 %{python3_sitearch}/ntp
@@ -232,7 +231,8 @@ exit 0
 %{_unitdir}/ntpviz-*
 
 %files doc
-%{_datadir}/doc/ntpsec/
+%{_datadir}/doc/packages/ntpsec/
+%exclude %{_datadir}/doc/packages/ntpsec/{NEWS.adoc,README.adoc}
 
 %files -n libntpc1
 %{_libdir}/libntpc.so.1*
