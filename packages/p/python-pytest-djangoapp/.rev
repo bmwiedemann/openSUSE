@@ -63,4 +63,22 @@
 - No more greedy globs in %files.</comment>
     <requestid>1189145</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>81bfb840a785ed9fc374ba02181e77ec</srcmd5>
+    <version>1.8.0</version>
+    <time>1785601966</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.8.0:
+  * Fixture 'db_queries' now supports scopes (closes #37).
+  * Admin client. Added '.call_add()'.
+  * Admin client. Added support for data update in '.call_change()'.
+  * Admin client. Exposed 'url_listing' and 'url_add' attributes.
+  * Added 'signals' fixture.
+  * Utils. Added 'admin_client' fixture.
+  * Utils. Added 'test_registered_urls' fixture.
+  * Improved tests layout type detection.
+  * Fixed 'LocalPath' related issue (closes #36).
+  * Add 'run_app' fixture.</comment>
+    <requestid>1368768</requestid>
+  </revision>
 </revisionlist>

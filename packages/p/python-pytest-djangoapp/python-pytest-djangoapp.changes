@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:42:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.0:
+  * Fixture 'db_queries' now supports scopes (closes #37).
+  * Admin client. Added '.call_add()'.
+  * Admin client. Added support for data update in '.call_change()'.
+  * Admin client. Exposed 'url_listing' and 'url_add' attributes.
+  * Added 'signals' fixture.
+  * Utils. Added 'admin_client' fixture.
+  * Utils. Added 'test_registered_urls' fixture.
+  * Improved tests layout type detection.
+  * Fixed 'LocalPath' related issue (closes #36).
+  * Add 'run_app' fixture.
+
+-------------------------------------------------------------------
 Tue Jul 23 05:01:31 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add missing BuildRequires on timezone.
