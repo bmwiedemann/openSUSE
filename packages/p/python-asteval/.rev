@@ -261,4 +261,34 @@
   * update README, doc, remove cruft</comment>
     <requestid>1328623</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a82cdbabb17bd4088cfcb215c6cf35c7</srcmd5>
+    <version>1.0.9</version>
+    <time>1785602048</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 1.0.9 (bsc#1273147, CVE-2026-55244):
+  * This fixes some usage problem and is also meant to address
+    the securirty advisories https://github.com/lmfit/asteval/sec
+    urity/advisories/GHSA-89v8-rhwq-hf77
+  * and https://github.com/lmfit/asteval/security/advisories/GHSA
+    -9w56-46f6-3qhx
+  * Fix unpacking of nested tuples in comprehensions
+  * Fix error with lambda functions, so that calls from top level
+    should clear previous errors and exceptions should clear the
+    callstack before re-raising
+  * Add try/except for import of ctypes, so that this module is
+    not required from asteval to run
+  * Update PyPI stats link in README
+  * Remove the &quot;exiting exceptions&quot;, 'SystemExit' and
+    'GeneratorExit' from the symbol table to remove the possibily
+    of such an exception in asteval from exiting the calling
+    application.
+  * Make exception handling of BaseExceptions that are not also
+    Exceptions (most notably, KeyboardInterrupt, which is not
+    removed from the symbol table) more explicit, converting
+    these to RuntimeError.
+  * Add 'ctypes', 'dump, and 'tofile' as unsafe attributes of
+    numpyndarrays, so that these cannot be acccessed.</comment>
+    <requestid>1368877</requestid>
+  </revision>
 </revisionlist>

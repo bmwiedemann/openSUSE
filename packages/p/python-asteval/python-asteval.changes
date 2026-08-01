@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:44:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.0.9 (bsc#1273147, CVE-2026-55244):
+  * This fixes some usage problem and is also meant to address
+    the securirty advisories https://github.com/lmfit/asteval/sec
+    urity/advisories/GHSA-89v8-rhwq-hf77
+  * and https://github.com/lmfit/asteval/security/advisories/GHSA
+    -9w56-46f6-3qhx
+  * Fix unpacking of nested tuples in comprehensions
+  * Fix error with lambda functions, so that calls from top level
+    should clear previous errors and exceptions should clear the
+    callstack before re-raising
+  * Add try/except for import of ctypes, so that this module is
+    not required from asteval to run
+  * Update PyPI stats link in README
+  * Remove the "exiting exceptions", 'SystemExit' and
+    'GeneratorExit' from the symbol table to remove the possibily
+    of such an exception in asteval from exiting the calling
+    application.
+  * Make exception handling of BaseExceptions that are not also
+    Exceptions (most notably, KeyboardInterrupt, which is not
+    removed from the symbol table) more explicit, converting
+    these to RuntimeError.
+  * Add 'ctypes', 'dump, and 'tofile' as unsafe attributes of
+    numpyndarrays, so that these cannot be acccessed.
+
+-------------------------------------------------------------------
 Thu Jan 22 08:37:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.8:
