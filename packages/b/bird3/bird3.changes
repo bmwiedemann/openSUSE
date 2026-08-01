@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Jul 30 22:30:51 UTC 2026 - Michal Hrusecky <michal.hrusecky@opensuse.org>
+
+- Update to version 3.3.2
+  * BGP: Fix stack buffer overflow in Flowspec NLRI decoder
+  * BGP: Minor improvements in Flowspec parsing
+  * BGP: Fix minor issues with send hold timer
+  * Fix null byte handling in authentication keys
+  * Pipe, L3VPN: Fix hostentry stripping
+  * Filter: Fix zero arg handling
+  * Logging: Fix use-after-free on failed rotation
+  * CLI: Fix crashes in show route
+  * Allocator: Pre-fill hot pages when entering RCU critical section
+  * Fix obstacle cleanup
+  * Update bird-users mailing list links
+
+-------------------------------------------------------------------
 Wed Jun 10 06:37:21 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.1
