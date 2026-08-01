@@ -35,9 +35,10 @@ URL:            https://github.com/scrapy/itemadapter
 Source:         https://github.com/scrapy/itemadapter/archive/v%{version}.tar.gz#/itemadapter-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM: https://github.com/scrapy/itemadapter/commit/e2a28fcfa2b63a596cf26c0eae1a6f04235b348c
 Patch1:         fix-pydantic-tests.patch
+# PATCH-FIX-UPSTREAM gh#scrapy/itemadapter#119
+Patch2:         support-scrapy-2.17.patch
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if %{with test}
