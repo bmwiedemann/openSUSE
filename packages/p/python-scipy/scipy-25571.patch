@@ -1,0 +1,89 @@
+From 5cd79b026a26e1d0cd0812d394f7dec4606f7900 Mon Sep 17 00:00:00 2001
+From: wasimat404 <huaweiwasim7@gmail.com>
+Date: Sun, 5 Jul 2026 08:21:01 +0000
+Subject: [PATCH] TST: loosen signal test tolerances for FMA-contraction builds
+
+Tests fail under -march=znver5/skylake builds where FMA contraction
+changes floating-point rounding. Bump test_nyquist float32 atol to 2e-5,
+apply the float32 istft roundtrip tolerance regardless of platform since
+the drift is dtype-driven rather than i686-specific (also seen on aarch64,
+gh-25488), and give test_roundtrip_scaling an absolute tolerance since it
+compares against exact zeros where rtol has no effect.
+---
+ scipy/signal/tests/_scipy_spectral_test_shim.py | 10 +++++-----
+ scipy/signal/tests/test_fir_filter_design.py    |  2 +-
+ scipy/signal/tests/test_spectral.py             |  6 +++---
+ 3 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/scipy/signal/tests/_scipy_spectral_test_shim.py b/scipy/signal/tests/_scipy_spectral_test_shim.py
+index 90bf71879aca..33bde3b8ddd8 100644
+--- a/scipy/signal/tests/_scipy_spectral_test_shim.py
++++ b/scipy/signal/tests/_scipy_spectral_test_shim.py
+@@ -17,7 +17,6 @@
+ wrappers highlight the different philosophies of the implementations,
+ especially in the border handling.
+ """
+-import platform
+ from typing import cast, Literal
+ 
+ import numpy as np
+@@ -296,10 +295,11 @@ def istft_compare(Zxx, fs=1.0, window='hann', nperseg=None, noverlap=None,
+     atol = np.finfo(x.dtype).resolution*2  # instead of default atol = 0
+     rtol = 1e-7  # default for np.allclose()
+ 
+-    # Relax atol on 32-Bit platforms a bit to pass CI tests.
+-    #  - Not clear why there are discrepancies (in the FFT maybe?)
+-    #  - Not sure what changed on 'i686' since earlier on those test passed
+-    if x.dtype == np.float32 and platform.machine() == 'i686':
++    # Relax tolerances for float32, which loses precision in the FFT
++    # roundtrip. Originally observed on i686; also seen on aarch64 and on
++    # builds using FMA contraction (gh-25488), so the drift is dtype-driven
++    # rather than platform-specific.
++    if x.dtype == np.float32:
+         # float32 gets only used by TestSTFT.test_roundtrip_float32() so
+         # we are using the tolerances from there to circumvent CI problems
+         atol, rtol = 1e-4, 1e-5
+diff --git a/scipy/signal/tests/test_fir_filter_design.py b/scipy/signal/tests/test_fir_filter_design.py
+index bec6f21d485f..aee4cb1ef751 100644
+--- a/scipy/signal/tests/test_fir_filter_design.py
++++ b/scipy/signal/tests/test_fir_filter_design.py
+@@ -770,7 +770,7 @@ def test_nyquist(self, N, dtype, xp):
+         H_mag = xp.abs(rfft(h, N))
+         H_min_mag = xp.abs(rfft(h_min_sig, N))
+         error = H_mag - H_min_mag
+-        atol = dict(float32=1e-5, float64=1e-13)[dtype]
++        atol = dict(float32=2e-5, float64=1e-13)[dtype]
+         xp_assert_close(error, xp.zeros_like(error), atol=atol)
+ 
+ 
+diff --git a/scipy/signal/tests/test_spectral.py b/scipy/signal/tests/test_spectral.py
+index 54ecb4c45206..6194e5cc466e 100644
+--- a/scipy/signal/tests/test_spectral.py
++++ b/scipy/signal/tests/test_spectral.py
+@@ -1942,7 +1942,7 @@ def test_roundtrip_scaling(self):
+ 
+         # Test round trip:
+         x1 = istft(Zs, boundary=True, scaling='spectrum')[1]
+-        assert_allclose(x1, x)
++        assert_allclose(x1, x, atol=np.finfo(x.dtype).resolution)
+ 
+         # For a Hann-windowed 256 sample length FFT, we expect a peak at
+         # frequency 64 (since it is 1/4 the length of X) with a height of 1
+@@ -1972,7 +1972,7 @@ def test_roundtrip_scaling(self):
+ 
+         # Test round trip:
+         x1 = istft(Zp, input_onesided=False, boundary=True, scaling='psd')[1]
+-        assert_allclose(x1, x)
++        assert_allclose(x1, x, atol=np.finfo(x.dtype).resolution)
+ 
+         # The power of the one-sided psd-scaled STFT can be determined
+         # analogously (note that the two sides are not of equal shape):
+@@ -1992,7 +1992,7 @@ def test_roundtrip_scaling(self):
+ 
+         # Test round trip:
+         x1 = istft(Zp0, input_onesided=True, boundary=True, scaling='psd')[1]
+-        assert_allclose(x1, x)
++        assert_allclose(x1, x, atol=np.finfo(x.dtype).resolution)
+ 
+ 
+ class TestSampledSpectralRepresentations:

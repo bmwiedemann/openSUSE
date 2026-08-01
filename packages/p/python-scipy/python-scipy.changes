@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 08:56:29 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch to fix tests on aarch64:
+  * scipy-25571.patch
+
+-------------------------------------------------------------------
 Thu Jul 16 05:38:37 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.18.0:

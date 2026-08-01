@@ -1497,4 +1497,12 @@ bsc#1130564: Apply update from the openSUSE package
   * The performance of scipy.linalg.expm has been improved.</comment>
     <requestid>1366377</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>a9de696b6a76fa4d1d55c9f988cce027</srcmd5>
+    <version>1.18.0</version>
+    <time>1785601669</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368189</requestid>
+  </revision>
 </revisionlist>

@@ -54,6 +54,8 @@ URL:            https://www.scipy.org
 Source0:        https://files.pythonhosted.org/packages/source/s/scipy/scipy-%{version}.tar.gz
 # Create with pooch: `python3 scipy-%%{version}/scipy/datasets/_download_all.py scipy-datasets/scipy-data; tar czf scipy-datasets.tar.gz scipy-datasets`
 Source1:        scipy-datasets.tar.gz
+# PATCH-FIX-UPSTREAM - https://github.com/scipy/scipy/pull/25571
+Patch0:         scipy-25571.patch
 BuildRequires:  %{python_module Cython >= 3.2.0}
 BuildRequires:  %{python_module devel >= 3.12}
 BuildRequires:  %{python_module meson-python >= 0.15.0 with %python-meson-python < 0.22}
