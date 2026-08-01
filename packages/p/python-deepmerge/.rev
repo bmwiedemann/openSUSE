@@ -41,4 +41,15 @@
   * Add typing / drop Python &lt; 3.8 support</comment>
     <requestid>1204399</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4922c63efccac26c9ea260d99cee7ef1</srcmd5>
+    <version>2.1.0</version>
+    <time>1785602050</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.1.0:
+  * minor: add __all__ to strategy __init__
+  * fix: compare by equality, not just hash, in ExtendedSet
+  * docs: functools.reduce usage</comment>
+    <requestid>1368878</requestid>
+  </revision>
 </revisionlist>

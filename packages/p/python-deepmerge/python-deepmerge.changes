@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Jul 31 16:48:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.1.0:
+  * minor: add __all__ to strategy __init__
+  * fix: compare by equality, not just hash, in ExtendedSet
+  * docs: functools.reduce usage
+
+-------------------------------------------------------------------
 Sat Sep 28 19:46:24 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0:
