@@ -24,7 +24,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-guessit
-Version:        4.1.0
+Version:        4.4.0
 Release:        0
 Summary:        A library for guessing information from video files
 License:        LGPL-3.0-or-later

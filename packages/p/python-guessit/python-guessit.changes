@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sat Aug  1 04:51:49 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.4.0
+  Bug Fixes:
+  * other: Anchor the complete marker on a token boundary
+  Features:
+  * other: Read the French INTEGRALE as a complete run
+  * type: Let a complete series outweigh the year
+  * type: Type a yearless complete run as an episode
+
+-------------------------------------------------------------------
+Fri Jul 31 08:13:35 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.3.0
+  Bug Fixes:
+  * episodes: Claim the whole episode word before a roman
+    numeral
+  * episodes: Drop a lone digit that plainly numbers something
+    else
+  * episodes: Keep the fraction of a half episode out of the
+    numbering
+  * episodes: Know the "of" word of the languages the markers
+    cover
+  * other: Anchor the Complete marker on the numbered season
+    word
+  * release_group: Keep a trailing group out of an unclaimed
+    numeric run
+  * title: Count a falsy-valued match as a property in the gap
+  * title: Keep a leading country word that opens the title
+  * title: Keep the title when alternative_title is excluded
+  Features:
+  * episodes: Read the total that follows a number-first marker
+
+-------------------------------------------------------------------
+Thu Jul 30 17:23:25 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.1
+  Bug Fixes:
+  * episodes: Apply the codec-token guard to both
+    season-x-episode chains
+  * episodes: Keep a year anchoring the title when the type is
+    forced
+  * episodes: Scope the episode-word lookup to the match filepart
+
+-------------------------------------------------------------------
+Thu Jul 30 11:51:20 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 4.2.0
+  Bug Fixes:
+  * screen_size: Keep an absolute episode number when the codec
+    is quoted apart
+  * screen_size: Stop a p-less resolution from swallowing an x264
+    codec
+  Features:
+  * api: Export properties and suggested_expected from the
+    package
+  * schema: Add configuration-aware schema() and
+    json_schema() accessors
+  * schema: Deprecate the GUESSIT_SCHEMA constant in favour of
+    schema()
+
+-------------------------------------------------------------------
 Thu Jul  9 18:13:53 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 4.1.0

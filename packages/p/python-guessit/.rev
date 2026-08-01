@@ -318,4 +318,58 @@
     <comment></comment>
     <requestid>1364779</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>3796dd4114d93eb0430a37190bc9c9e8</srcmd5>
+    <version>4.4.0</version>
+    <time>1785601833</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.4.0
+  Bug Fixes:
+  * other: Anchor the complete marker on a token boundary
+  Features:
+  * other: Read the French INTEGRALE as a complete run
+  * type: Let a complete series outweigh the year
+  * type: Type a yearless complete run as an episode
+- Update to version 4.3.0
+  Bug Fixes:
+  * episodes: Claim the whole episode word before a roman
+    numeral
+  * episodes: Drop a lone digit that plainly numbers something
+    else
+  * episodes: Keep the fraction of a half episode out of the
+    numbering
+  * episodes: Know the &quot;of&quot; word of the languages the markers
+    cover
+  * other: Anchor the Complete marker on the numbered season
+    word
+  * release_group: Keep a trailing group out of an unclaimed
+    numeric run
+  * title: Count a falsy-valued match as a property in the gap
+  * title: Keep a leading country word that opens the title
+  * title: Keep the title when alternative_title is excluded
+  Features:
+  * episodes: Read the total that follows a number-first marker
+- Update to version 4.2.1
+  Bug Fixes:
+  * episodes: Apply the codec-token guard to both
+    season-x-episode chains
+  * episodes: Keep a year anchoring the title when the type is
+    forced
+  * episodes: Scope the episode-word lookup to the match filepart
+- Update to version 4.2.0
+  Bug Fixes:
+  * screen_size: Keep an absolute episode number when the codec
+    is quoted apart
+  * screen_size: Stop a p-less resolution from swallowing an x264
+    codec
+  Features:
+  * api: Export properties and suggested_expected from the
+    package
+  * schema: Add configuration-aware schema() and
+    json_schema() accessors
+  * schema: Deprecate the GUESSIT_SCHEMA constant in favour of
+    schema()
+</comment>
+    <requestid>1368937</requestid>
+  </revision>
 </revisionlist>
