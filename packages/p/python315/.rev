@@ -378,4 +378,28 @@ covered).</comment>
       Python frame.</comment>
     <requestid>1362257</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>0d7340d46b9e13a1d3fec0d8f5280920</srcmd5>
+    <version>3.15.0~b3</version>
+    <time>1784126637</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-11940: fix the symlink escape via tarfile
+  hardlink-extraction fallback (bsc#1268977)
+  CVE-2026-11940-tarfile-escape.patch
+
+- add gcc and g++ dependencies to the -devel package (and BR for
+  the whole package)</comment>
+    <requestid>1365775</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fd292dceee3a3b634d763fc2fc745db6</srcmd5>
+    <version>3.15.0~b4</version>
+    <time>1785601860</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.15.0~b4:
+
+- Remove upstreamed patches:
+  - CVE-2026-11940-tarfile-escape.patch</comment>
+    <requestid>1368661</requestid>
+  </revision>
 </revisionlist>

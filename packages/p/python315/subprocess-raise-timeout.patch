@@ -2,11 +2,11 @@
  Lib/test/test_subprocess.py |    6 +++++-
  1 file changed, 5 insertions(+), 1 deletion(-)
 
-Index: Python-3.14.0b1/Lib/test/test_subprocess.py
+Index: Python-3.15.0b4/Lib/test/test_subprocess.py
 ===================================================================
---- Python-3.14.0b1.orig/Lib/test/test_subprocess.py	2025-05-09 10:36:08.150615546 +0200
-+++ Python-3.14.0b1/Lib/test/test_subprocess.py	2025-05-09 10:36:21.907614565 +0200
-@@ -160,7 +160,11 @@
+--- Python-3.15.0b4.orig/Lib/test/test_subprocess.py	2026-07-30 17:01:51.784137045 +0200
++++ Python-3.15.0b4/Lib/test/test_subprocess.py	2026-07-30 17:02:03.865301397 +0200
+@@ -161,7 +161,11 @@
          # child.
          self.assertRaises(subprocess.TimeoutExpired, subprocess.call,
                            [sys.executable, "-c", "while True: pass"],

@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0~b3
-%define         tarversion 3.15.0b3
+Version:        3.15.0~b4
+%define         tarversion 3.15.0b4
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -235,6 +235,8 @@ BuildRequires:  autoconf-archive
 BuildRequires:  automake
 BuildRequires:  crypto-policies-scripts
 BuildRequires:  fdupes
+BuildRequires:  gcc
+BuildRequires:  gcc-c++
 BuildRequires:  gmp-devel
 BuildRequires:  lzma-devel
 BuildRequires:  netcfg
@@ -270,8 +272,8 @@ BuildRequires:  python3-Sphinx >= 4.0.0
 %if 0%{?suse_version} >= 1500
 BuildRequires:  python3-python-docs-theme >= 2022.1
 %endif
-
 %endif
+
 %endif
 # end of {with doc}
 
@@ -353,26 +355,6 @@ Requires:       %{python_pkg_name} = %{version}
 An easy to use interface for Unix DBM databases, and more specifically,
 the GNU implementation GDBM.
 
-%package -n %{python_pkg_name}-profiling
-Summary:        Python Statistical Sampling Profiler
-Requires:       %{python_pkg_name} = %{version}
-%obsolete_python_versioned profiling
-
-%description -n %{python_pkg_name}-profiling
-Statistical sampling profiler as profiling.sampling. This
-profiler enables low-overhead performance analysis of running
-Python processes without requiring code modification or process
-restart.
-
-Unlike deterministic profilers (cProfile and profile) that
-instrument every function call, the sampling profiler
-periodically captures stack traces from running processes.
-This approach provides virtually zero overhead while achieving
-sampling rates of up to 1,000,000 Hz, making it the fastest
-sampling profiler available for Python (at the time of its
-contribution) and ideal for debugging performance issues in
-production environments.
-
 %package -n %{python_pkg_name}-idle
 Summary:        An Integrated Development Environment for Python
 Requires:       %{python_pkg_name} = %{version}
@@ -422,6 +404,9 @@ Provides:       %{python_pkg_name}-typing = %{version}
 %obsolete_python_versioned typing
 # python3-xml was merged into python3, now moved into -base
 Provides:       %{python_pkg_name}-xml = %{version}
+# profiling subpackage was merged into the `base` subpackage
+Obsoletes:      %{python_pkg_name}-profiling < %{version}-%{release}
+Provides:       %{python_pkg_name}-profiling = %{version}-%{release}
 # Explicitly provided because rpm-build-python (which auto-generates this)
 # cannot be installed in the base flavor build root due to a bootstrap cycle:
 # rpm-build-python -> python3-base -> (this package)
@@ -459,6 +444,8 @@ and a set of demonstration programs.
 %package -n %{python_pkg_name}-devel
 Summary:        Include Files and Libraries Mandatory for Building Python Modules
 Requires:       %{python_pkg_name}-base = %{version}
+Requires:       gcc
+Requires:       gcc-c++
 %obsolete_python_versioned devel
 
 %description -n %{python_pkg_name}-devel
@@ -714,7 +701,7 @@ rm %{buildroot}%{sitedir}/*.*
 for module in \
     asyncio compression ctypes collections concurrent email encodings \
     ensurepip html http re pathlib _pyrepl \
-    importlib json logging multiprocessing pydoc_data unittest \
+    importlib json logging multiprocessing profiling pydoc_data unittest \
     urllib venv wsgiref test string sysconfig tomllib turtledemo \
     xml xmlrpc zipfile zoneinfo __phello__
 do
@@ -789,7 +776,7 @@ install -d -m 755 %{buildroot}%{sitedir}/site-packages/__pycache__
 mkdir -p %{buildroot}%{_prefix}/lib/python%{python_abi}/site-packages/__pycache__
 
 # cleanup parts that don't belong
-for dir in curses dbm sqlite3 tkinter idlelib profiling; do
+for dir in curses dbm sqlite3 tkinter idlelib; do
     find "%{buildroot}/%{sitedir}/$dir"/* -maxdepth 0 -name "test" -o -exec rm -rf {} +
 done
 
@@ -922,10 +909,6 @@ fi
 %dir %{_datadir}/icons/hicolor/32x32
 %dir %{_datadir}/icons/hicolor/48x48
 %dir %{_datadir}/icons/hicolor/*/apps
-
-%files -n %{python_pkg_name}-profiling
-%{sitedir}/profiling
-
 # endif for if general
 %endif
 
@@ -1095,6 +1078,7 @@ fi
 %{sitedir}/logging
 %{sitedir}/multiprocessing
 %{sitedir}/pathlib
+%{sitedir}/profiling
 %{sitedir}/pydoc_data
 %{sitedir}/re
 %{sitedir}/string
