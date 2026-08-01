@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Aug  1 04:15:48 UTC 2026 - Илья Индиго <ilya@ilya.top>
+
+- Updated telegram-desktop to 7.0.7
+  * https://github.com/telegramdesktop/tdesktop/releases/tag/v7.0.7
+
+-------------------------------------------------------------------
 Tue Jul 28 01:10:01 UTC 2026 - Илья Индиго <ilya@ilya.top>
 
 - Added tg_owt-gcc16.patch to fix build with GCC16.
