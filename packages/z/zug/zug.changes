@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Jul 31 15:44:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Use gcc 15 on Factory until https://github.com/arximboldi/zug/issues/54 gets fixed
+- Add patch:
+  * 0001-Basic-move-to-Catch2-3.patch
+
+-------------------------------------------------------------------
 Sat Jan 24 12:13:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.1.2

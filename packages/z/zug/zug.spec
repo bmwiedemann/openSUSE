@@ -23,11 +23,19 @@ Summary:        Transducers for C++
 License:        BSL-1.0
 URL:            https://sinusoid.es/zug/
 Source0:        https://github.com/arximboldi/zug/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM
+Patch0:         0001-Basic-move-to-Catch2-3.patch
+%if %{?suse_version} >= 1699
+# Stick to gcc 15 until https://github.com/arximboldi/zug/issues/54 gets a fix
+BuildRequires:  gcc15
+BuildRequires:  gcc15-c++
+BuildRequires:  gcc15-PIE
+%endif
 BuildRequires:  boost-devel
 BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
 # includes catch2/catch.hpp
-BuildRequires:  cmake(Catch2) < 3.0
+BuildRequires:  cmake(Catch2)
 
 %description
 zug is a C++ library providing transducers. Transducers are composable
@@ -50,6 +58,10 @@ based sequences (signals, events, asynchronous streams) in a generic way.
 sed -i 's#lib/cmake/Zug#%{_lib}/cmake/Zug#' CMakeLists.txt
 
 %build
+%if %{?suse_version} >= 1699
+export CC=gcc-15 CXX=g++-15
+%endif
+
 %cmake -Dzug_BUILD_EXAMPLES=FALSE \
        -Dzug_BUILD_DOCS:BOOL=FALSE
 
