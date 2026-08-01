@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:49:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.22.3:
+  * Fix parsing of Enum types that define their own __init__
+
+-------------------------------------------------------------------
 Sat Jul 25 19:01:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.22.2:

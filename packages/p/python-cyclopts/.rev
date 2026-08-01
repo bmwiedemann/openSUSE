@@ -55,4 +55,12 @@
     <comment>Update to version 4.22.2: MissingArgumentError fix for empty mappings, count-flag =value handling, cleaner config-node error</comment>
     <requestid>1367772</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a568131b6c62f63d2cae86d04fbb7275</srcmd5>
+    <version>4.22.3</version>
+    <time>1785601941</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 4.22.3</comment>
+    <requestid>1368760</requestid>
+  </revision>
 </revisionlist>
