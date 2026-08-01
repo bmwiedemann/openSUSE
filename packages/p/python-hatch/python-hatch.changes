@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 24 05:01:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.17.1:
+  ## Changed:
+  * The hatch fmt command is now deprecated in favor of the new hatch check
+    command group
+  * Migrate HTTP client from httpx to httpx2
+  ## Added:
+  * Add hatch check command group with subcommands for check code (linting),
+    check fmt (formatting), and check types (type checking)
+  * Add hatch check types command for type checking using Pyrefly, with
+    --summarize and --cover flags
+  * Add hatch env lock command to generate PEP 751 compliant lockfiles
+    (pylock.toml) for environments
+  * Add hatch dep lock and hatch lock commands as shortcuts for locking the
+    active environment
+  * Add hatch dep sync command for syncing dependencies from a lockfile
+  * Add pluggable dependency locker interface with built-in UV and pip
+    implementations
+  * Add --cover-xml and --cover-xml-output flags to the hatch test command
+    for generating XML coverage reports
+  * Add linehaul telemetry data to User-Agent header for PyPI download
+    statistics
+  * Auto-create environment when locking if it doesn't exist
+  ## Fixed:
+  * Use TemporaryDirectory and pylock*.toml for temporary lock files.
+  * Skip injection of ruff extend if a key already exists in ruff.toml.
+  * Pass --no-header to uv pip compile in the uv locker so that generated
+    lockfiles are deterministic.
+  * Fix env-dependency extras being dropped when a metadata hook is
+    configured and resolve workspace-member extras from the member's own
+    metadata.
+  * Fix help output formatting for the run command
+- Drop patch fix-pth-editables06.patch, merged upstream.
+
+-------------------------------------------------------------------
 Mon May 25 09:00:32 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.16.5

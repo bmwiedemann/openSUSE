@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-hatch%{psuffix}
-Version:        1.16.5
+Version:        1.17.1
 Release:        0
 Summary:        Modern, extensible Python project management
 License:        MIT
@@ -53,8 +53,6 @@ Source21:       https://files.pythonhosted.org/packages/py3/r/requests/requests-
 Source22:       https://files.pythonhosted.org/packages/py3/s/setuptools/setuptools-80.9.0-py3-none-any.whl
 Source23:       https://files.pythonhosted.org/packages/py3/t/trove_classifiers/trove_classifiers-2025.12.1.14-py3-none-any.whl
 Source24:       https://files.pythonhosted.org/packages/py3/u/urllib3/urllib3-2.6.2-py3-none-any.whl
-# PATCH-FIX-UPSTREAM https://github.com/pypa/hatch/pull/2248 Update editable-exact test templates for editables 0.6 .pth file rename
-Patch0:         fix-pth-editables06.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatch-vcs >= 0.3}
 BuildRequires:  %{python_module hatchling >= 1.27}
@@ -63,8 +61,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       git-core
 Requires:       python-click >= 8.0.6
+Requires:       python-distro >= 1.0
 Requires:       python-hatchling >= 1.27.0
-Requires:       python-httpx >= 0.22.0
+Requires:       python-httpx2 >= 0.22.0
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-keyring >= 23.5.0
 Requires:       python-packaging >= 24.2
@@ -77,9 +76,11 @@ Requires:       python-tomli-w >= 1.0
 Requires:       python-tomlkit >= 0.11.1
 Requires:       python-uv >= 0.5.23
 Requires:       python-virtualenv >= 21
-Requires:       (python-backports.zstd > 1 if python-base < 3.14)
 Requires:       (python-pexpect >= 4.8 with python-pexpect < 5)
 Requires:       (python-userpath >= 1.7 with python-userpath < 2)
+%if 0%{?python_version_nodots} < 314
+Requires:       python-backports.zstd > 1
+%endif
 %if %{with libalternatives}
 BuildRequires:  alts
 Requires:       alts
@@ -171,8 +172,6 @@ donttest+=" or test_workspace_multi_service_application"
 donttest+=" or test_workspace_documentation_generation"
 donttest+=" or test_workspace_development_workflow"
 donttest+=" or test_workspace_overrides_matrix_conditional_members"
-# multiple tests fail with rich 14.3 https://github.com/pypa/hatch/issues/2170
-rm tests/cli/env/test_show.py tests/cli/python/test_show.py tests/cli/dep/show/test_table.py
 # flaky test
 donttest+=" or test_workspace_overrides_combined_conditions"
 %pytest -n auto -v -k "not ($donttest)"
