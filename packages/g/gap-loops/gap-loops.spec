@@ -1,7 +1,7 @@
 #
 # spec file for package gap-loops
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-loops
-Version:        3.4.4
+Version:        3.4.5
 Release:        0
 Summary:        GAP: Computing with quasigroups and loops in GAP
 License:        GPL-3.0-only
@@ -29,7 +29,9 @@ BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 BuildRequires:  xz
 BuildArch:      noarch
-Requires:       gap-core >= 4.8
+Requires:       gap-core >= 4.12
+Requires:       gap-smallgrp >= 1.0
+Requires:       gap-transgrp >= 3.1
 
 %description
 The LOOPS package provides researchers in nonassociative algebra with

@@ -15,4 +15,12 @@
     <comment>- Update to release 3.4.4</comment>
     <requestid>1244533</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>7b5e4f337f0e4d0f6aadf725a1fd5706</srcmd5>
+    <version>3.4.5</version>
+    <time>1785601854</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 3.4.5</comment>
+    <requestid>1368649</requestid>
+  </revision>
 </revisionlist>
