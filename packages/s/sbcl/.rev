@@ -1811,4 +1811,49 @@ Thanks</comment>
     different used packages, the TAKE-NEW restart now shadowing-imports the (forwarded request 1357870 from glaubitz)</comment>
     <requestid>1357915</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>e85afcf12b5cd12b53f5f581340a513c</srcmd5>
+    <version>2.6.6</version>
+    <time>1782916685</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1362735</requestid>
+  </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>aef085158ffa1bf7d924f862d2148eeb</srcmd5>
+    <version>2.6.7</version>
+    <time>1785601988</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.6.7
+  * new contrib module: SB-MANUAL contains the SBCL manual in docstrings of
+    section definitions, which tie together the docstrings of normal Lisp
+    definitions. The manual can thus be explored interactively in the usual
+    way (e.g. with Slime's M-.), and it is browsable with the MGL-PAX library
+    (out of tree). Also, https://fixnum.com/ (similarly unrelated to the SBCL
+    project) provides alternative renderings of the SBCL manual as heavily
+    linked PDF and HTML documents as well as Markdown and plain text.
+  * new feature: DOCUMENTATION supports DOC-TYPE DECLARATION.
+  * platform support:
+    ** the SB-SIMD contrib now supports ARM64.  (Thanks to Sylvia Harrington)
+    ** AVX512 instructions are now supported on X86-64.  (Thanks to Robert
+       Smith and Arthur Miller)
+    ** additional support for SIMD instructions on ARM64 and X86-64.  (Thanks
+       to Arthur Miller)
+    ** fix miscompilation of SAP-REF-N on ARM64.  (Thanks to Hayley Patton)
+    ** implement INTEGER-LENGTH on primitive types without a loop on MIPS and
+       LoongArch.
+  * bug fix: READing with *READ-SUPPRESS* T no longer emits warnings like
+    &quot;&lt;internal-feature&gt; no longer present on *FEATURES*&quot;.
+  * bug fix: compiler type-error when compiling calls to CONCATENATE with
+    conditional known non-sequence arguments.  (lp#2160747)
+  * bug fix: (EQL &lt;complex&gt;) types were not being treated as numeric by the
+    type system.  (lp#2160429)
+  * bug fix: improve the handling of quiet (non-signalling) NaN inputs to LOG.
+    (lp#2160268, reported by Woodrow Kiang)
+  * bug fix: miscompilation of MULTIPLE-VALUE-CALL.  (lp#2160207, reported by
+    Vasily Postnicov)
+  * optimization: passing constant complex numbers to local functions can be
+    done without consing. (forwarded request 1368312 from glaubitz)</comment>
+    <requestid>1368790</requestid>
+  </revision>
 </revisionlist>
