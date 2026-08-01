@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Jul 31 00:32:55 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Force gcc 15 until Ardour builds with >= 16
+
+-------------------------------------------------------------------
 Fri Jun  5 18:36:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 9.7.0

@@ -16,6 +16,10 @@
 #
 
 
+%if 0%{?suse_version} >= 1699
+%global force_gcc_version 15
+%endif
+
 %define dirbase ardour9
 Name:           ardour
 Version:        9.7.0
@@ -33,7 +37,7 @@ BuildRequires:  boost-devel >= 1.68.0
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  fftw3-threads-devel
-BuildRequires:  gcc-c++
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
 BuildRequires:  graphviz
@@ -156,6 +160,10 @@ sed -i 's#/usr/local/lib/vst:/usr/lib/vst#/usr/local/lib64/vst:/usr/local/lib/vs
 # see https://discourse.ardour.org/t/tls-1295-lea-so-linux-vers-doesnt-work/111778/21
 # selinux would prevent this anyway, the gaming policy is necessary for this to work
 %build
+%if 0%{?force_gcc_version}
+export CC="gcc-%{?force_gcc_version}"
+export CXX="g++-%{?force_gcc_version}"
+%endif
 ./waf configure \
    --prefix=%{_prefix} \
    --libdir=%{_libdir} \
