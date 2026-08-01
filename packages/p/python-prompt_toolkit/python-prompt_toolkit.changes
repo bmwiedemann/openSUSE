@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Jul 27 07:12:02 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.53:
+  Fixes:
+  * Fix get_word_before_cursor behavior.
+  * Fix vt100 6x6x6 color cube range and missing grayscale shades (232, 254-255).
+  * Treat OSError on add_reader as EOFError (macOS kqueue).
+  * Handle surrogate pairs in FileHistory.store_string.
+  * Fix FuzzyWordCompleter meta_dict type hint to match WordCompleter.
+  * Handle ascii decode errors in terminal type decoding of telnet protocol.
+  * Update return types of dialog shortcuts to include None when cancelled.
+  * Set missing minimal requirement on wcwidth.
+  New features:
+  * Lazy load __version__.
+  * Allow to specify show_numbers in ChoiceInput.
+
+-------------------------------------------------------------------
 Thu Aug 28 11:19:10 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 3.0.52:

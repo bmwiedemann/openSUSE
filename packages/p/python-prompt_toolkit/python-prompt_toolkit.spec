@@ -1,7 +1,7 @@
 #
 # spec file for package python-prompt_toolkit
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-prompt_toolkit
-Version:        3.0.52
+Version:        3.0.53
 Release:        0
 Summary:        Library for building interactive command lines in Python
 License:        BSD-3-Clause
 URL:            https://github.com/prompt-toolkit/python-prompt-toolkit
 Source:         https://files.pythonhosted.org/packages/source/p/prompt_toolkit/prompt_toolkit-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
