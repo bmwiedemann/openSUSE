@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Aug  1 08:38:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.16.3
+  * Docs: Skip API documentation generation when Qt6::qdoc
+    is unavailable
+  * Utils: Fix installed private header QXmppUtils_p.h including
+    the non-installed Algorithms.h, which broke building against
+    the installed QXmpp headers
+  - Drop qxmpp-1.16.1-install-Algorithms-private-header.patch.
+    No longer needed.
+
+-------------------------------------------------------------------
 Mon Jul 20 06:02:11 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Added qxmpp-1.16.1-install-Algorithms-private-header.patch
