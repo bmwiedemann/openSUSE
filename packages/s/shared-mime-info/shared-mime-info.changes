@@ -1,4 +1,156 @@
 -------------------------------------------------------------------
+Tue Jul  7 09:00:44 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.5.1:
+  + Updated translations.
+- Changes from version 2.5:
+  + Add type for Git repository bundles
+  + Add application/vnd.ms-pki.seccat
+  + Add binary magic to PKCS#7 types
+  + Add common file extensions to PKCS and PKIX types
+  + Add PEM identifiers from RFC 7468
+  + Make application/x-x509-ca-cert a subclass of
+    application/pkix-cert
+  + DOS batch/cmd files: add magic, tests, and *.cmd extension
+  + Add application/x-hwpx
+  + Add Android App Bundles
+  + Fix APNG detection using non-fixed acTL chunk location; add
+    APNG test cases
+  + Add Farbfeld image support and fix its mime
+  + Add type for LRC lyrics
+  + Add text/vnd.plantuml
+  + Add text/n3
+  + Add text/x-gradle-kts (and remove subclass for Gradle)
+  + Add text/x-sed ("Sed script")
+  + Add application/x-coff
+  + Add application/vnd.ipld.car
+  + Add application/x-brotli and fix brotli magic bytes
+  + Add Playstation graphics (TIM) support
+  + Add text/scriptlet
+  + image/x-flic: fix and improve magic, add alias and generic icon
+  + Add image/x-aseprite (LibreSprite/Aseprite image) and improve
+    magic
+  + Give CSV and TSV files the spreadsheet icon
+  + application/texinfo: use IANA registered type
+  + application/vnd.adobe.flash.movie: add ZWS magic
+  + /matroska: use IANA registered non-x types
+  + application/vnd.bzip3: use IANA registered type
+  + Add PICO-8 (.p8/.p8.rom), TIC-80, Lowres NX, and CHIP-8
+    source/carts
+  + Add RWL (Leica RW2) and more RAW image mime types; fix MOS mime
+  + Add RVZ & WIA disc image files for GameCube & Wii
+  + AWK family: recognise GNU and New AWK; awk scripts now
+    text/x-awk
+  + Shell scripts now text/*, like file/libmagic
+  + Add MP4 Base Media v[2-5] alongside v1
+  + Add Slint language (text/slint) with magic and test
+  + Assign video icon to application/vnd.ms-asf
+  + Add ZX Spectrum & clone emulation formats
+  + Add Commodore emulation file support
+  + Add Nero Burning ROM NRG format
+  + Add application/x-lx-executable
+  + Add matches and test cases for .nds/.gba
+  + application/vnd.nintendo.nitro.rom: use IANA registered type
+  + Split audio/x-mod into correct formats; add audio/x-dsp and
+    audio/x-ult test
+  + Add text/x-nsis
+  + Add support for Alpine Linux packages (.apk)
+  + text/x-vala: add executable subclass and shebang magic support
+  + application/x-ruby: add text/x-ruby alias
+  + Add AMF 3D model mime-type
+  + Add mimetypes for Simple File Format Family (SF3) files
+  + Add mimetype for Microsoft Developer Studio files
+  + Add HTTP Archive (HAR) json type
+  + Add application/vnd.cyclonedx+xml and
+    application/vnd.cyclonedx+json
+  + Add text/spdx and application/spdx+json
+  + Add OpenCL C and C++ for OpenCL types
+  + image/vnd.radiance: add image/x-hdr alias; add Radiance HDR
+    image format
+  + Add application/x-pcapng and *.scap glob
+  + Add mimetype for AVCI image
+  + Detect OpenSSH public key and private key files
+  + Add Proxy Auto-Configuration (PAC)
+  + Add application/buildstream+yaml
+  + Add text/x-dockerfile
+  + Update mimetype for Typst source files
+  + Add Portable HalfMap images
+  + Update nushell mime type alias to text/x-nushell
+  + Clean up matches for OLE/CFB based Word files
+  + Add Apple Wallet passes bundle type
+    application/vnd.apple.pkpasses
+  + Add application/typescript; recognize *.cjs as text/javascript
+  + Add comment and keyword magic to C-like source code
+  + Move magic from text/x-csrc and text/x-objcsrc to
+    text/x-objc++src
+  + Add *.LRF glob to MPEG-4 videos
+  + Add PFM, PXR and SCT image formats
+  + Recognize *.sfs, *.sqfs, and *.squashfs as
+    application/vnd.squashfs
+  + Remove the relationship between AppImage and SquashFS
+  + Remove redundant "MZ" magic from application/x-executable
+  + Remove the office document icon from application/x-object
+  + Recognize *.lib as application/x-archive
+  + Rename back legacy OOoXML file formats
+  + text/calendar: add *.ifb and *.icalendar globs and the calendar
+    icon
+  + Add text/x-nix
+  + Add text/x-asm
+  + Add image/x-kiss-cel
+  + Prefer image/vnd.fpx over image/x-fpx and improve its detection
+  + Remove text/htmlh
+  + Add text/x-python2 and separate text/x-cython from
+    text/x-python
+  + Add application/vnd.oasis.opendocument.text-master-template;
+    adjust master/base priorities
+  + Add application/vnd.quark.quarkxpress
+  + Add application/x-qbrew for qbrew recipes
+  + Add application/vnd.apache.parquet
+  + Prefer application/x-sylk over text/spreadsheet and give it the
+    spreadsheet icon
+  + Give text/x-ldif the address book icon
+  + Add application/x-sony-bbeb
+  + Prefer application/docbook+xml over application/x-docbook+xml
+  + Add Nintendo Switch encrypted ROMs
+  + Remove relationships between C and C#, D, Groovy, Java, and
+    Vala
+  + Fix backwards relationships between C, C++, Objective-C, and
+    Objective-C++
+  + Add application/vnd.stardivision.impress-packed; separate
+    StarOffice 3-4 from 5 types
+  + Give email files the mail icon
+  + Improve Sega Genesis/Megadrive ROM detection, add *.md glob,
+    prioritise over StarOffice Mail
+  + Add STEP 3D model mime-type
+  + Add application/x-rzip
+  + Add application/microsoftpatch and application/microsoftupdate
+  + Give Microsoft Publisher documents the document icon
+  + Improve detection of application/x-ole-storage subtypes
+  + Add alias for Wavefront OBJ mime-type
+  + Add mimetype for HEJ2 format
+  + mime-detection: detect GPT disk images by contents, not just
+    suffix
+  + Add application/hta
+  + Make application/json5 a subclass of application/ecmascript
+  + Add AppStream mime type
+  + Build:
+    - Move xdgmime to a meson subproject; allow cross-compiling
+    - Make xmllint optional; HTML spec build no longer mandatory
+    - Build options now require their helper tools
+    - update-mime-database: improve use of g_string_free() and fix
+      signed/unsigned warnings
+    - Fix build with libxml2-2.12.0 and clang-17, and with older
+      versions of GCC
+    - ci: use modern meson subcommands; don't re-run tests when
+      checking dist
+  + Documentation:
+    - Rename HACKING.md to CONTRIBUTING.md
+    - Improve README formatting and update the rule on accepted
+      mime-types
+    - Update Transifex link
+- Switch to source service for tarball, and add new sub-module.
+
+-------------------------------------------------------------------
 Mon Nov 25 15:07:27 UTC 2024 - Michael Gorse <mgorse@suse.com>
 
 - Uninstall silently if update-mime-database is not present

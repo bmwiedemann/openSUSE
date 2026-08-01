@@ -18,14 +18,15 @@
 
 %global __requires_exclude ^/usr/bin/pkg-config$
 Name:           shared-mime-info
-Version:        2.4
+Version:        2.5.1
 Release:        0
 Summary:        Shared MIME Database
 License:        GPL-2.0-or-later
 Group:          System/X11/Utilities
 URL:            https://gitlab.freedesktop.org/xdg/shared-mime-info
-Source0:        %{url}/-/archive/%{version}/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz	
 Source1:        macros.shared-mime-info
+Source2:        xdgmime-0.gitmodule.tar.xz
 
 %define usegcc13 0%{?sle_version} && 0%{?sle_version} < 160000
 
@@ -58,6 +59,10 @@ This package contains:
 
 %prep
 %autosetup -p1
+pushd subprojects
+tar xf %{SOURCE2}
+mv xdgmime-0.gitmodule xdgmime
+popd
 
 %build
 %if %usegcc13
@@ -74,7 +79,7 @@ export CXX=g++-13
 install -D -m644 %{SOURCE1} %{buildroot}%{_rpmmacrodir}/macros.shared-mime-info
 
 %check
-%meson_test
+%meson_test shared-mime-info:
 
 %filetriggerin -- %{_datadir}/mime
 export PKGSYSTEM_ENABLE_FSYNC=0

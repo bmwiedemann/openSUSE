@@ -647,4 +647,41 @@
   (bsc#1231463). (forwarded request 1226311 from mgorse)</comment>
     <requestid>1226512</requestid>
   </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>bc287f30e2bdf2656bedec094c2000bb</srcmd5>
+    <version>2.5.1</version>
+    <time>1785601656</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.5.1:
+  + Updated translations.
+- Changes from version 2.5:
+  + Add type for Git repository bundles
+  + Add application/vnd.ms-pki.seccat
+  + Add binary magic to PKCS#7 types
+  + Add common file extensions to PKCS and PKIX types
+  + Add PEM identifiers from RFC 7468
+  + Make application/x-x509-ca-cert a subclass of
+    application/pkix-cert
+  + DOS batch/cmd files: add magic, tests, and *.cmd extension
+  + Add application/x-hwpx
+  + Add Android App Bundles
+  + Fix APNG detection using non-fixed acTL chunk location; add
+    APNG test cases
+  + Add Farbfeld image support and fix its mime
+  + Add type for LRC lyrics
+  + Add text/vnd.plantuml
+  + Add text/n3
+  + Add text/x-gradle-kts (and remove subclass for Gradle)
+  + Add text/x-sed (&quot;Sed script&quot;)
+  + Add application/x-coff
+  + Add application/vnd.ipld.car
+  + Add application/x-brotli and fix brotli magic bytes
+  + Add Playstation graphics (TIM) support
+  + Add text/scriptlet
+  + image/x-flic: fix and improve magic, add alias and generic icon
+  + Add image/x-aseprite (LibreSprite/Aseprite image) and improve
+    magic
+  + Give CSV and TSV files the spreadsheet icon</comment>
+    <requestid>1367298</requestid>
+  </revision>
 </revisionlist>
