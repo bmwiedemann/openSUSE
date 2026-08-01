@@ -283,4 +283,20 @@
   * Fix varlink definition for type WtmpdbEntry</comment>
     <requestid>1320664</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>5bf54848d367bc33a099cd14d71e781e</srcmd5>
+    <version>0.76.0+git20260730.89c0861</version>
+    <time>1785601754</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.76.0+git20260730.89c0861:
+  * Release version 0.76.0
+  * CI: get rid of obsolete actions
+  * Use _cleanup_, adjust formating
+  * rotate: keep open entries after last boot
+  * wtmpdb: use different variable for (const) char *
+  * Update mkdir_p to fix error code for last call
+  * ignore absence of systemd
+  * ignore absense of dbus</comment>
+    <requestid>1368614</requestid>
+  </revision>
 </revisionlist>

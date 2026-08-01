@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 13:05:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.76.0+git20260730.89c0861:
+  * Release version 0.76.0
+  * CI: get rid of obsolete actions
+  * Use _cleanup_, adjust formating
+  * rotate: keep open entries after last boot
+  * wtmpdb: use different variable for (const) char *
+  * Update mkdir_p to fix error code for last call
+  * ignore absence of systemd
+  * ignore absense of dbus
+
+-------------------------------------------------------------------
 Sun Nov 30 17:36:17 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 0.75.0+git20251130.0d8fe7a:
