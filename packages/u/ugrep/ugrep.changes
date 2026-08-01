@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Jul 30 17:39:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.8.3:
+  * update regular expression compilation to DFA memory threshold
+    (explosive DFA growth is theoretically possible, but should
+    never exceed a worst-case 1GB~2GB memory footprint in ugrep)
+  * fix man page formatting
+
+-------------------------------------------------------------------
 Mon May 18 05:27:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.8.2:

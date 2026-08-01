@@ -738,4 +738,12 @@
     <comment>ugrep 7.8.2 (forwarded request 1353665 from AndreasStieger)</comment>
     <requestid>1353666</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>d2c632cc180c63abf80f3e48e4aca012</srcmd5>
+    <version>7.8.3</version>
+    <time>1785601871</time>
+    <user>dimstar_suse</user>
+    <comment>ugrep 7.8.3 (forwarded request 1368671 from AndreasStieger)</comment>
+    <requestid>1368672</requestid>
+  </revision>
 </revisionlist>
