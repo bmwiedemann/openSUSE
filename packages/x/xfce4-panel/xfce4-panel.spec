@@ -19,7 +19,7 @@
 %define libname libxfce4panel-2_0-4
 
 Name:           xfce4-panel
-Version:        4.20.7
+Version:        4.20.8
 Release:        0
 Summary:        Panel for the Xfce Desktop Environment
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -59,9 +59,9 @@ BuildRequires:  pkgconfig(gtk-layer-shell-0) >= 0.7.0
 BuildRequires:  pkgconfig(libwnck-3.0) >= 3.0
 BuildRequires:  pkgconfig(libxfce4ui-2) >= 4.18.0
 BuildRequires:  pkgconfig(libxfce4util-1.0) >= 4.18.0
-BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.20.1
-BuildRequires:  pkgconfig(libxfce4windowing-x11-0) >= 4.20.1
-BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.20.1
+BuildRequires:  pkgconfig(libxfce4windowing-0) >= 4.20.6
+BuildRequires:  pkgconfig(libxfce4windowing-x11-0) >= 4.20.6
+BuildRequires:  pkgconfig(libxfce4windowingui-0) >= 4.20.6
 BuildRequires:  pkgconfig(libxfconf-0) >= 4.18.0
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(vapigen)
