@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:07:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.117.0:
+  * New Features
+    - [build-info-go] Added uv, pipenv package support to recognise
+      403 Forbidden output #403 (@Phavya-jfrog)
+    - [jfrog-cli] Add jf api docs search for local OpenAPI
+      operation discovery #3597 (@ehl-jf)
+    - [jfrog-cli] JFMIG-46 - Add new flags to support migration by
+      created time and dow… #3621 (@amithins)
+    - [jfrog-cli] RTECO-1647 - Add support for Maven Wrapper (mvnw)
+      command #3615 (@fluxxBot)
+    - [jfrog-cli-artifactory] RTECO-1647 - Add support for Maven
+      Wrapper in native mode #514 (@fluxxBot)
+    - [jfrog-client-go] XRAY-156516 - Add workspace name to the git
+      info #1361 (@VidrevichMichael)
+    - [jfrog-client-go] XRAY-132336 - Add get git scan results
+      route api #1359 (@attiasas)
+  * Bug Fixes
+    - [jfrog-cli-core] Scope Maven mirror to external:* instead of
+      * #1594 (@sverdlov93)
+    - [jfrog-cli-security] Run JAS scans if requested on WD that
+      has no tech, always #811 (@attiasas)
+  * Other Changes
+    - [jfrog-cli] State that jf setup configuration is user-level
+      and persistent #3627 (@sverdlov93)
+    - [jfrog-cli-core] JFMIG-46 -
+      Migration-transfer-file-timestamp-support #1588 (@amithins)
+    - [jfrog-cli-security] XRAY-156157 - Obtain configuration by
+      workspace #805 (@VidrevichMichael)
+    - [jfrog-cli-security] Updates dependencies #809 (@attiasas)
+
+-------------------------------------------------------------------
+Thu Jul 23 05:56:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.116.0:
+  * New Features
+    - [jfrog-client-go] XRAY-156161 - Add optional workspace for
+      config profile obtaining #1358 (@VidrevichMichael)
+  * Bug Fixes
+    - [jfrog-cli-security] XRAY-147280 - Fixed workplace issue for
+      jf audit #801 (@gauriy-tech)
+    - [jfrog-cli-security] Make sure default index in SARIF is int
+      #803 (@attiasas)
+    - [jfrog-cli-security] Add early stop if Artifact scan overall
+      status is done #804 (@attiasas)
+  * Internal Changes
+    - [jfrog-cli-artifactory] RTECO-1567 - Improve agent plugins'
+      publish, update and list commands #511 (@udaykb2)
+    - [jfrog-cli-security] Update dependencies #799 (@attiasas)
+  * Other Changes
+    - [jfrog-cli] RTECO-1644 - Introduced Support for pnpm-11 #3605
+      (@fluxxBot)
+
+-------------------------------------------------------------------
 Thu Jul 16 05:23:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.115.0 (2.114.0 does not exist):
