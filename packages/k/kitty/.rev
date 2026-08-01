@@ -988,4 +988,26 @@
     in the panel/quick-access-terminal kittens (#10278)</comment>
     <requestid>1367697</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>6f01e3c5f3b8ffc09ae9df9b804b5d81</srcmd5>
+    <version>0.48.2</version>
+    <time>1785601866</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.48.2:
+  * Wayland: Fix regression in previous release that broke drag and drop on
+    Plasma (#10284)
+  * diff kitten: Fix a rare crash when showing a large diff due to incorrect
+    locking when highlighting
+  * Allow the private DCS kitty-echo escape code to only echo numbers
+  * Linux: Fix an approx 1MB memory leak when reloading the config, introduced
+    in version 0.40.0 (#10290)
+  * Desktop file chooser integration: when the specified directory does not
+    exist, open file chooser at home directory (#10292)
+  * Add support for terminal visibility reports
+    - https://rockorager.dev/misc/visibility-reports/
+  * `tab_title_template`: Add a field that evaluates to the total memory used
+    by all child processes in the tab (#10293)
+    - https://sw.kovidgoyal.net/kitty/conf/#opt-kitty.tab_title_template</comment>
+    <requestid>1368667</requestid>
+  </revision>
 </revisionlist>
