@@ -1,7 +1,7 @@
 #
 # spec file for package libraqm
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define sover 0
 Name:           libraqm
-Version:        0.10.3
+Version:        0.11.0
 Release:        0
 Summary:        Complex Textlayout Library
 License:        MIT

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Jul 31 19:21:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.11.0:
+  * Update grapheme cluster boundary detection to Unicode 17,
+    conforming to Unicode UAX #29 and verified against the Unicode
+    conformance test.
+  * Reject input that spans multiple paragraphs; raqm_layout()
+    now fails when the text contains a paragraph separator.
+  * Fix out-of-bounds read in the UTF-8 and UTF-16 decoders.
+  * Build, CI and documentation updates.
+  * Check for NULL return from malloc in couple of places.
+  * Add build option to skip tests.
+  * Add dependency override for use as a subproject.
+  * Fix tests when b_ndebug=true.
+  * Build, CI and documentation updates.
+
+-------------------------------------------------------------------
 Sun Dec 28 23:31:41 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.10.3:
