@@ -674,6 +674,8 @@ Patch215:       support-attrlist-in-ldap.managed-746.patch
 Patch216:       switch-apache2ctl-to-apachectl-for-suse-oses-bsc-125.patch
 # PATCH-FIX_UPSTREAM: https://github.com/saltstack/salt/commit/4c4d017ddb45e4e689d978ae1deb975ad7a4c220
 Patch217:       stabilize-testsuite-tests-and-fix-alleventshandler-7.patch
+# PATCH-FIX_OPENSUSE: https://github.com/openSUSE/salt/pull/773
+Patch218:       stabilize-testsuite-773.patch
 
 ### IMPORTANT: The line below is used as a snippet marker. Do not touch it.
 ### SALT PATCHES LIST END

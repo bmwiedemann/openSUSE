@@ -1,0 +1,78 @@
+From ea44d9df827525c8dbbb5d4e3487a0e3d00fd24e Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Wed, 29 Jul 2026 09:36:58 +0200
+Subject: [PATCH] Stabilize testsuite (#773)
+
+* Fix test_query_proxy
+
+* Ensure tests have open event loop during test runs
+---
+ tests/pytests/unit/test_minion.py        | 4 ++--
+ tests/pytests/unit/transport/test_tcp.py | 3 +--
+ tests/unit/utils/test_http.py            | 6 +++++-
+ 3 files changed, 8 insertions(+), 5 deletions(-)
+
+diff --git a/tests/pytests/unit/test_minion.py b/tests/pytests/unit/test_minion.py
+index 7c5c14c0182..2f2faa741d6 100644
+--- a/tests/pytests/unit/test_minion.py
++++ b/tests/pytests/unit/test_minion.py
+@@ -65,7 +65,7 @@ def test_minion_load_grains_default(minion_opts):
+         ),
+     ],
+ )
+-def test_send_req_tries(req_channel, minion_opts):
++def test_send_req_tries(req_channel, minion_opts, io_loop):
+     channel_enter = MagicMock()
+     channel_enter.send.side_effect = req_channel[1]
+     channel = MagicMock()
+@@ -83,7 +83,7 @@ def test_send_req_tries(req_channel, minion_opts):
+             timeout = 60
+ 
+             if "Async" in req_channel[0]:
+-                rtn = minion._send_req_async(load, timeout).result()
++                rtn = io_loop.run_sync(lambda: minion._send_req_async(load, timeout))
+             else:
+                 rtn = minion._send_req_sync(load, timeout)
+ 
+diff --git a/tests/pytests/unit/transport/test_tcp.py b/tests/pytests/unit/transport/test_tcp.py
+index d6bdbf654ea..9e8ff71bb25 100644
+--- a/tests/pytests/unit/transport/test_tcp.py
++++ b/tests/pytests/unit/transport/test_tcp.py
+@@ -450,7 +450,7 @@ def test_presence_events_callback_passed(temp_salt_master, salt_message_client):
+         )
+ 
+ 
+-def test_presence_removed_on_stream_closed():
++def test_presence_removed_on_stream_closed(io_loop):
+     opts = {"presence_events": True}
+ 
+     io_loop_mock = MagicMock(spec=tornado.ioloop.IOLoop)
+@@ -468,7 +468,6 @@ def test_presence_removed_on_stream_closed():
+     client._closing = True
+     server.clients = {client}
+ 
+-    io_loop = tornado.ioloop.IOLoop.current()
+     package = {
+         "topic_lst": [],
+         "payload": "test-payload",
+diff --git a/tests/unit/utils/test_http.py b/tests/unit/utils/test_http.py
+index c1bd5c16589..31dbff26547 100644
+--- a/tests/unit/utils/test_http.py
++++ b/tests/unit/utils/test_http.py
+@@ -223,8 +223,12 @@ class HTTPPostTestCase(TestCase):
+         }
+ 
+         mock_curl = MagicMock()
++        def mock_sync_wrapper(cls, args=None, kwargs=None, **_):
++            return cls(*args or [], **kwargs or {})
+ 
+-        with patch("tornado.httpclient.HTTPClient.fetch", mock_curl):
++        with patch("salt.utils.http.SyncWrapper", side_effect=mock_sync_wrapper), patch(
++            "tornado.httpclient.AsyncHTTPClient.fetch", mock_curl
++        ):
+             ret = http.query(
+                 self.post_web_root,
+                 method="POST",
+-- 
+2.55.0
+

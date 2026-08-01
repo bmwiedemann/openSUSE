@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Jul 29 07:50:43 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Fix unit tests that fail due to async Tornado usage
+
+- Added:
+  * stabilize-testsuite-773.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 14:32:10 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Stabilize testsuite tests and fix AllEventsHandler
