@@ -113,4 +113,20 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1363835</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8a66db33f3f2d6288106efb31e9d62b6</srcmd5>
+    <version>1.5.0</version>
+    <time>1785601878</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.5.0:
+  + Grid(tiled) image encoding: options.GRID_TILE_SIZE option, tile_size
+    parameter for save and grid_tile_size parameter for register_*_opener
+  + info[&quot;tiling&quot;] dictionary with the grid info for tiled images
+  + PH_LIBHEIF_CMAKE_ARGS environment variable for build_libs.py to pass extra
+    cmake arguments to the libheif build
+  + Minimum required libheif version is 1.23.1
+  + pi-heif package is discontinued, 1.4.0 is its final release
+  + 32-bit support and the PH_LIGHT_ACTION environment variable (forwarded request 1368677 from rrahl0)</comment>
+    <requestid>1368678</requestid>
+  </revision>
 </revisionlist>

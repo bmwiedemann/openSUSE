@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Jul 30 04:21:25 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.5.0:
+  + Grid(tiled) image encoding: options.GRID_TILE_SIZE option, tile_size
+    parameter for save and grid_tile_size parameter for register_*_opener
+  + info["tiling"] dictionary with the grid info for tiled images
+  + PH_LIBHEIF_CMAKE_ARGS environment variable for build_libs.py to pass extra
+    cmake arguments to the libheif build
+  + Minimum required libheif version is 1.23.1
+  + pi-heif package is discontinued, 1.4.0 is its final release
+  + 32-bit support and the PH_LIGHT_ACTION environment variable
+
+-------------------------------------------------------------------
 Sun Jun 28 09:48:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

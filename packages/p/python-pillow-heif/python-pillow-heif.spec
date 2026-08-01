@@ -18,7 +18,7 @@
 
 %define         _name pillow_heif
 Name:           python-pillow-heif
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Python interface for libheif library
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(aom) >= 3.3.0
 BuildRequires:  pkgconfig(libavif)
-BuildRequires:  pkgconfig(libheif) >= 1.18.2
+BuildRequires:  pkgconfig(libheif) >= 1.23.1
 Requires:       python-Pillow >= 11.1.0
 Suggests:       python-pillow-heif-doc
 %python_subpackages
