@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Fri Jul 31 21:24:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.6.4:
+  * nemo-blank-desktop-window.c: Fix potential crash when actions
+    are updates.
+  * nemo-blank-desktop-window.c: Make sure there's a menu
+    available at startup.
+  * search: Restore implied 'AND' behavior in non-regex file
+    match mode (#3659)
+  * nemo-places-sidebar.c: Restore visibility of mounts with no
+    (#3670)
+  * Fix for progress handling (#3651)
+  * nemo-action.c: Fix issues in the recent:// folder.
+  * nemo-view.c: fix crash after some shortcuts (#3525)
+  * search: Remove unused search history code.
+  * search: Allow regular expression filename matching, improve
+    editor.
+  * nemo-file-management-properties.glade: Add translation
+    comments for tooltip options.
+  * list-view: Don't show folder expanders by default.
+  * nemo-list-view.c: Ignore expander size for click position
+    calculations if expanders are disabled.
+  * nemo-window.c: Remember the second pane's location until the
+    remaining pane's location changes.
+  * nemo-query-editor.c: Don't use new glib function.
+  * Add Matcha to Supported Theme Hints (#3573)
+  * preferences: Remove scripts widget from Plugins.
+  * preferences: Add templates to plugins tab.
+  * Action layout editor: put direction buttons in a more
+    traditional location, make the editor launcher button more
+    prominent in Nemo's preferences.
+  * nemo-template-config-widget.c: Don't use
+    g_strv_builder_take().
+  * nemo-template-config-widget: Allow editing of a template.
+
+-------------------------------------------------------------------
 Sat Jun 21 10:17:08 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
 
 - update to 6.4.5
@@ -10,7 +46,7 @@ Sat Jun 21 10:17:08 UTC 2025 - Michael Pujos <pujos.michael@gmail.com>
   * nemo-places-sidebar.c: Remove delete key action for removing
     bookmarks.
   * nemo-places-sidebar.c: Fix bookmark renaming.
-  
+
 -------------------------------------------------------------------
 Thu Mar 13 22:25:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
