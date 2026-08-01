@@ -1,4 +1,86 @@
 -------------------------------------------------------------------
+Fri Jul 31 05:53:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.111.0:
+  * Features
+    - bf4226d1: feat(auth): store credentials in OS keyring by
+      default (Stan Hu stanhu@gmail.com)
+    - 6c7b7d23: feat(git): treat altssh.gitlab.com as official
+      GitLab.com SSH alias (Mario Celi mcelicalderon@gitlab.com)
+  * Bug Fixes
+    - 5d6cad21: fix(api): isolate environment PATs from stored
+      OAuth (Tien Ray ray.tien0907@gmail.com)
+    - deb6f2d9: fix(auth): include configured subfolder in OAuth
+      URL (Yarra Vivek vivekyarra567@gmail.com)
+    - dade3568: fix(auth): preserve OAuth refresh token during
+      reauthentication (Yarra Vivek vivekyarra567@gmail.com)
+    - 18b8be9b: fix(auth): send a non-blank username with plain
+      token logins (ANBUCHELVAN GANESAN CSE
+      anbuchelvanganesan.cse2024@citchennai.net)
+    - 8abea3f9: fix(ci): drop the git gem pin now that danger 9.6.1
+      is out (Jay McCure jmccure@gitlab.com)
+    - 8e5156b5: fix(ci): order pipeline jobs by ID on ties (Tien
+      Ray ray.tien0907@gmail.com)
+    - afed8eb8: fix(ci): pin git gem to unblock danger-review (Kai
+      Armstrong karmstrong@gitlab.com)
+    - 880c8153: fix(cmdutils): write a JSON error object when
+      --output=json (ANBUCHELVAN GANESAN CSE
+      anbuchelvanganesan.cse2024@citchennai.net)
+    - 1061aead: fix(git): handle CRLF output lines (Tien Ray
+      ray.tien0907@gmail.com)
+    - ccbf62dc: fix(issue): paginate issue board entries (Yarra
+      Vivek vivekyarra567@gmail.com)
+    - f915db9f: fix(mr): allow title-only creation without a TTY
+      (Yarra Vivek vivekyarra567@gmail.com)
+    - 5cf6f404: fix(mr): show discussion prefixes in note list
+      (Tien Ray ray.tien0907@gmail.com)
+    - 8d26e5b7: fix(packages): accept absolute paths in download
+      (ANBUCHELVAN GANESAN CSE
+      anbuchelvanganesan.cse2024@citchennai.net)
+    - 6935c9b6: fix(project): preserve full namespace on create
+      (Tien Ray ray.tien0907@gmail.com)
+    - f7a96733: fix(repo): support cloning wiki repositories (Yarra
+      Vivek vivekyarra567@gmail.com)
+    - 93d8ccc9: fix(securefile): accept absolute paths in download
+      (ANBUCHELVAN GANESAN CSE
+      anbuchelvanganesan.cse2024@citchennai.net)
+    - a9a0f41d: fix(stack): fall back to USERNAME for branch prefix
+      (Tien Ray ray.tien0907@gmail.com)
+    - eae64695: fix(stack): stream hook output during sync (Tien
+      Ray ray.tien0907@gmail.com)
+  * Documentation
+    - 968dc517: docs(token): fix revoke command grammar (Mridankan
+      Mandal xerontitan90@gmail.com)
+  * Dependencies
+    - 0c2b2678: chore(deps): update dependency
+      @commitlint/config-conventional to ^21.2.0 (GitLab Renovate
+      Bot gitlab-bot@gitlab.com)
+    - 46e04383: chore(deps): update dependency @commitlint/read to
+      ^21.2.1 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+    - 6f4243d4: chore(deps): update module
+      github.com/mattn/go-isatty to v0.0.24 (GitLab Renovate Bot
+      gitlab-bot@gitlab.com)
+    - 3af2f826: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v2 to v2.52.0 (GitLab
+      Renovate Bot gitlab-bot@gitlab.com)
+    - 8d9c1572: chore(deps): update module k8s.io/client-go to
+      v0.36.3 (GitLab Renovate Bot gitlab-bot@gitlab.com)
+  * Maintenance
+    - 20265c43: ci: retry jobs on transient infrastructure failures
+      (Oscar Tovar otovar@gitlab.com)
+    - 5f47cd23: refactor(ci): use build state constants (Tien Ray
+      ray.tien0907@gmail.com)
+  * Others
+    - 48d2e49d: perf(mr): fewer API calls when opening an MR in the
+      browser (kang 6156568-kang8@users.noreply.gitlab.com)
+    - 6b8ea972: test(auth): avoid i686 OAuth expiry overflow (Tien
+      Ray ray.tien0907@gmail.com)
+    - 17ba5979: test(mr note create): cover 8277 usage examples
+      (Mridankan Mandal xerontitan90@gmail.com)
+    - d494afc5: test(project): fix pagination fixtures (Tien Ray
+      ray.tien0907@gmail.com)
+
+-------------------------------------------------------------------
 Wed Jul 29 05:08:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.110.0:
