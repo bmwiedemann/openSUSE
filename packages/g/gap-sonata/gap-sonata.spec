@@ -1,7 +1,7 @@
 #
 # spec file for package gap-sonata
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-sonata
-Version:        2.9.7
+Version:        2.9.8
 Release:        0
 Summary:        GAP: System of nearrings and their applications
 License:        GPL-2.0-or-later
@@ -29,6 +29,7 @@ BuildArch:      noarch
 BuildRequires:  fdupes
 BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.9
+Requires:       gap-smallgrp >= 1.3
 Suggests:       gap-xgap >= 0
 
 %description
