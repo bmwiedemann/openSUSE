@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:20:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.65:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.46
+- Update to version 3.17.64:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.32
+- Update to version 3.17.63:
+  * chore(deps): upgrade jenkins-x-plugins/jx-application to
+    version 0.3.14
+- Update to version 3.17.62:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.17
+- Update to version 3.17.61:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.16
+
+-------------------------------------------------------------------
 Mon Jul 27 05:03:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.60:
