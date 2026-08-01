@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Jul 31 17:09:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.15.0:
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * typing: Updates for latest cmd2
+  * Drop support for Python 3.10
+
+-------------------------------------------------------------------
 Sun May 17 19:05:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.14.0:

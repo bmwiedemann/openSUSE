@@ -699,4 +699,17 @@
   * Fix cliff sphinxextention for Python 3.14</comment>
     <requestid>1353615</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>88836dd6e3ce4da034731a42708a48db</srcmd5>
+    <version>4.15.0</version>
+    <time>1785602055</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.15.0:
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * typing: Updates for latest cmd2
+  * Drop support for Python 3.10</comment>
+    <requestid>1368880</requestid>
+  </revision>
 </revisionlist>

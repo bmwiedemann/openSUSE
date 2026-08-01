@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-cliff
-Version:        4.14.0
+Version:        4.15.0
 Release:        0
 Summary:        Command Line Interface Formulation Framework
 License:        Apache-2.0
