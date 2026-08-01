@@ -1,4 +1,169 @@
 -------------------------------------------------------------------
+Fri Jul 31 06:01:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.4:
+  * Features
+    - extend modal dialogs with TextBox UI control
+    - add separate color for input accept buttons
+    - add files transfer to and from containers
+  * Compatibility
+    - theme YAML files must be recreated or updated to match the
+      current schema
+
+-------------------------------------------------------------------
+Wed Jul 15 05:28:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.3:
+  * Features
+    - add ephemeral containers support
+    - highlight command palette accept button on mouse move
+  * Bug fixes
+    - fix cursor start position in the new resource view
+
+-------------------------------------------------------------------
+Wed Jul 08 05:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.2:
+  * Features
+    - add terminal settings (system_cursor and scrollback_lines) to
+      the configuration file
+    - new option auto_mouse for interactive plugins
+    - new option yaml_output to highlight plugin output as YAML
+  * Bug fixes
+    - fix command palette highlights wrong item on the list
+    - react to cursor shape changes in shell, attach, and plugin
+      views
+
+-------------------------------------------------------------------
+Thu Jul 02 05:31:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.1:
+  * Features
+    - add simple plugins system that can extend resources view
+    - use serde-saphyr instead of deprecated serde_yaml crate
+  * Bug fixes
+    - fix WINDOW column for PodMetrics kind
+    - fix key binding for show YAML command in describe view
+    - fix selection behaviour for left mouse button triple click
+  * Dependencies
+    - Update kube-rs to 4.0.0
+
+-------------------------------------------------------------------
+Sat Jun 20 10:06:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.0:
+  * Features
+    - add columns for CSIDriver, CSINode, CSIStorageCapacity and
+      PriorityLevelConfiguration kinds
+    - additional data sections for CronJobs, DaemonSets,
+      Deployments, PersistentVolumes, PersistentVolumeClaims,
+      ReplicaSets, Services and StatefulSets in describe view
+    - allow switching between YAML and describe views
+  * Bug fixes
+    - display more than 999 days in AGE column
+
+-------------------------------------------------------------------
+Mon Jun 01 05:17:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.9:
+  * Features
+    - possibility to save YAML and logs to a file
+    - additional sections for Pod and Node resources in describe
+      view
+    - allow to stop port forwarding rules from mouse menu in Pods
+      view
+  * Bug fixes
+    - disable filter pin on context change
+    - fix node status extraction
+    - do not send default terminal size in shell and attach views
+    - fix navigate into behaviour in command palette steps
+
+-------------------------------------------------------------------
+Mon May 04 18:22:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.8:
+  * Features
+    - prepend app name to app errors in logs view for clarity
+    - show port forward indicator in pods view
+    - add initial describe view for Kubernetes resources
+  * Bug fixes
+    - fix mouse triple-clicks in content views
+    - do not display the first stream timeout error in logs view
+    - fix the longest line calculation in edit mode
+    - fix header for views with no coordinates displayed
+  * Compatibility
+    - theme YAML files must be recreated or updated to match the
+      current schema
+
+-------------------------------------------------------------------
+Fri Apr 17 20:23:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.7:
+  * Features
+    - allow capturing mouse events in attach view and shell view
+    - automatically detect cursor key and mouse modes in shell view
+  * Bug fixes
+    - fix Backspace and Enter keys in attach view
+    - remember namespace for previously selected resource
+    - fix AGE column in container view
+
+-------------------------------------------------------------------
+Thu Apr 09 10:31:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.6:
+  * Features
+    - add prefixes for resources view filtering (ns: namespace, n:
+      name, a: annotations, l: labels)
+    - pin active filter across resources with Ctrl+P
+    - validate and remember manually entered namespaces
+    - add attach command for containers
+    - allow selecting and copying text in shell and attach view
+      when mouse support is enabled
+  * Bug fixes
+    - run save configuration tasks sequentially
+    - fix pasting clipboard text containing non-ASCII characters
+    - preserve filter on port forward list update
+  * Compatibility
+    - history YAML file schema has changed; the file will be
+      replaced on the first app run
+    - back up history.yaml file if needed
+    - theme YAML files must be recreated or updated to match the
+      current schema
+
+-------------------------------------------------------------------
+Fri Apr 03 07:02:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.5:
+  * Features
+    - fetch earlier logs by pressing UP key in logs view (one
+      container view only)
+    - add example themes with fixed colors
+  * Bug fixes
+    - fix filter settings on context change
+    - remember filter for previous resource view
+    - fix rmb behaviour for mouse menu
+  * Compatibility
+    - theme YAML files must be recreated or updated to match the
+      current schema
+
+-------------------------------------------------------------------
+Fri Apr 03 06:56:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.4.4:
+  * Features
+    - select whole line by mouse triple click
+    - allow pasting clipboard text in the shell view and in text
+      inputs
+    - add hover indicator for side selects
+  * Bug fixes
+    - fix filter settings in the resources view
+    - fix undo bug when cutting text from the line end
+    - allow pasting clipboard text even if it contains only a new
+      line
+    - do not show metrics columns when there is no metrics server
+    - allow namespace duplication with create new resource
+
+-------------------------------------------------------------------
 Thu Mar 12 11:44:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package b4n: Terminal user interface (TUI) for Kubernetes API written in
