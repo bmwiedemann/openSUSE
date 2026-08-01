@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 30 13:11:08 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix specfile for dtls module
+
+-------------------------------------------------------------------
 Mon Jul 27 12:53:09 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 - dropped separate tarball for rsyslog-doc, now included in main sources
   (https://www.rsyslog.com/downloads/download-v8-stable/)

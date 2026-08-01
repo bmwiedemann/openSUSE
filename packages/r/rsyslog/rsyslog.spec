@@ -709,6 +709,9 @@ if test "%{rsyslog_module_dir_nodeps}" != "%{rsyslog_module_dir_withdeps}" ; the
 %if %{with gcrypt}
 		lmcry_gcry.so \
 %endif
+%if %{with dtls}
+                imdtls.so omdtls.so \
+%endif
 %if %{with gssapi}
 		omgssapi.so imgssapi.so lmgssutil.so \
 %endif
@@ -872,6 +875,7 @@ fi
 /usr/bin/systemctl -f enable rsyslog.service >/dev/null 2>&1 || :
 
 %post_for_mark_daemon_restart module-gssapi
+%post_for_mark_daemon_restart module-dtls
 %post_for_mark_daemon_restart module-mysql
 %post_for_mark_daemon_restart module-pgsql
 %post_for_mark_daemon_restart module-dbi
