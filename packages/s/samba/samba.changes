@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Tue Jul 28 10:30:49 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.24.5
+  * CVE-2026-6949: TSIG packet with crafted name compression can
+    crash internal DNS server; (bso#16083);(bsc#1271672).
+  * CVE-2026-58224: CTDB: heap OOB read via unchecked packet
+    length fields;(bso#16085);(bsc#1271673).
+  * CVE-2026-58216: kpasswd service: 6-byte heap OOB read in
+    packet parser;(bso#16087);(bsc#1271674).
+  * CVE-2026-58218: DNS TKEY negotiation stores unauthenticated
+    GSS contexts in a fixed FIFO before authentication
+    completes;(bso#16115);(bsc#1271675).
+  * CVE-2026-58221: authenticated LDAP access to internal LDB
+    special DNs permits domain takeover;(bso#16147);(bsc#1271676).
+  * CVE-2026-58222: LDAP Compare filter injection and
+    trusted-request confusion disclose protected attributes;
+    (bso#16148);(bsc#1271677).
+
+-------------------------------------------------------------------
+Wed Jul  1 08:33:13 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.24.4
+  * Use-after-free in handling acls with claims and conditions;
+    (bso#16095).
+  * Compilers may ignore overflow checks - Fix tautological-
+    compare warnings; (bso#16092).
+  * restrict anonymous = 2 breaks RODC functionality;
+    (bso#14638).
+  * warning: assignment discards 'const' qualifier from pointer
+    target type [-Wdiscarded-qualifiers]; (bso#16006).
+  * Require NTLMv2 session security on Windows makes trusts to
+    Samba unusable; (bso#16067).
+  * winbindd stuck in init_dc_connection_rpc() returning
+    NT_STATUS_TRUSTED_DOMAIN_FAILURE; (bso#16151).
+  * domain\user not split when provided as username in
+    smbc_set_credentials_with_fallback(); (bso#16149).
+
+-------------------------------------------------------------------
 Wed May 27 13:33:58 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Update to 4.24.3
