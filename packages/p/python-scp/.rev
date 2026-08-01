@@ -139,4 +139,12 @@
   * Add bandwidth control (limit_bw)</comment>
     <requestid>1285090</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>447331b208ec5fe7e5f526de80dd74fb</srcmd5>
+    <version>0.16.1</version>
+    <time>1785601825</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368549</requestid>
+  </revision>
 </revisionlist>
