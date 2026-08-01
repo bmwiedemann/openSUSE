@@ -32,7 +32,9 @@ Summary:        Settings management using Pydantic
 License:        MIT
 URL:            https://github.com/pydantic/pydantic-settings
 Source:         https://files.pythonhosted.org/packages/source/p/pydantic-settings/pydantic_settings-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+# PATCH-FIX-OPENSUSE Support changes required by ruff 0.16
+Patch0:         support-ruff-0.16.patch
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

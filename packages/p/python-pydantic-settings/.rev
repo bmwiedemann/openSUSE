@@ -240,4 +240,13 @@
     <comment></comment>
     <requestid>1361573</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>328b4bb9cac903048284f8d62bf7a402</srcmd5>
+    <version>2.14.2</version>
+    <time>1785601685</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-ruff-0.16.patch:
+  * Support changes required by ruff 0.16.</comment>
+    <requestid>1368261</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jul 28 00:47:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-ruff-0.16.patch:
+  * Support changes required by ruff 0.16.
+
+-------------------------------------------------------------------
 Mon Jun 22 12:20:33 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update 2.14.2 (fixes bsc#1268680)

@@ -1,0 +1,24 @@
+Index: pydantic_settings-2.14.2/pyproject.toml
+===================================================================
+--- pydantic_settings-2.14.2.orig/pyproject.toml
++++ pydantic_settings-2.14.2/pyproject.toml
+@@ -136,6 +136,7 @@ keep-runtime-typing = true
+ 
+ [tool.ruff.lint]
+ extend-select = ['Q', 'RUF100', 'C90', 'UP', 'I']
++ignore = ['B015', 'FA102']
+ flake8-quotes = {inline-quotes = 'single', multiline-quotes = 'double'}
+ isort = { known-first-party = ['pydantic_settings', 'tests'] }
+ mccabe = { max-complexity = 14 }
+Index: pydantic_settings-2.14.2/docs/index.md
+===================================================================
+--- pydantic_settings-2.14.2.orig/docs/index.md
++++ pydantic_settings-2.14.2/docs/index.md
+@@ -412,7 +412,6 @@ class GenerationConfig(BaseSettings):
+     )
+ 
+     llm: LLMConfig
+-    ...
+ 
+ 
+ print(GenerationConfig().model_dump())
