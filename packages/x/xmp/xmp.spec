@@ -17,13 +17,12 @@
 
 
 Name:           xmp
-Version:        4.3.0
+Version:        4.3.1
 Release:        0
 Summary:        Extended Module Player for MOD/S3M/XM/IT/etc.
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            http://xmp.sf.net/
-
 #Git-Clone:	https://github.com/libxmp/xmp-cli
 Source:         https://github.com/libxmp/xmp-cli/releases/download/xmp-%version/xmp-%version.tar.gz
 BuildRequires:  pkgconfig
@@ -39,7 +38,7 @@ Amiga, Atari, Acorn, Apple IIgs, C64, and PC, including Protracker
 Tracker (IT) files.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
