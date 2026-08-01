@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Jul 30 14:19:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 1.1.1
+  * PdfColorSpaceFilterIndexed: Added support for fetching
+    /DeviceRGB images with /BitsPerComponent != 8
+  * PdfColorSpaceIndexed: Fixed handling of palette
+    out-of-bounds access (GHSA-f3j2-7846-h5gg)
+  * PdfDocument: Make PdfInfo lazy-loadable
+  * PdfImage: Handle color space for /ImageMask images
+  * Fixed devendoring of tcbspan and utf8proc
+  * Increased minimum compiler/toolchain requirements
+
+-------------------------------------------------------------------
+Fri Jun  5 02:56:34 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Update to 1.1.0:
+  * OpenSSLInternal: Fixed potential double-free in
+    compute_hash_to_sign(), GHSAi(bsc#1265320 CVE-2026-44348)
+  * Added support for ECDSA signing
+  * Added PdfXMPPAcket::PruneAndValidate(pdfaLevel) for XMP
+    validation
+  * PdfParser: Try to rebuild the index if cross reference
+    sections parsing fails
+  * Added initial support for several raw images with
+    /BitsPerComponent != 8
+  * Added support for updating/signing files with data offset
+    before %PDF- magic
+  * Added support for updating/signing files with broken XRef
+    sections
+  * Added support for devendoring 3rd party dependencies
+  * AFDKO: Integration made optional (still enabled by default)
+  * Added support for PEM encoded X509 certificate loading
+
+-------------------------------------------------------------------
 Wed Sep  3 18:52:33 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.0.2:

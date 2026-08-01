@@ -442,4 +442,20 @@ drop patches upstreamed</comment>
     <comment></comment>
     <requestid>1307720</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>4c3b6d571ca5b0b10ff028dec6ffd885</srcmd5>
+    <version>1.1.0</version>
+    <time>1780920331</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1357654</requestid>
+  </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4e591c29bf455635a4b5e24d611f5426</srcmd5>
+    <version>1.1.1</version>
+    <time>1785601760</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>1368655</requestid>
+  </revision>
 </revisionlist>

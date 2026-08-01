@@ -1,7 +1,7 @@
 #
 # spec file for package podofo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,9 +17,9 @@
 #
 
 
-%define libver 3
+%define libver 4
 Name:           podofo
-Version:        1.0.2
+Version:        1.1.1
 Release:        0
 Summary:        PDF parsing and creation library
 License:        GPL-2.0-or-later
@@ -102,12 +102,10 @@ cp -a html %{buildroot}%{_docdir}/libpodofo-devel/doc/
 %ldconfig_scriptlets -n libpodofo%{libver}
 
 %files -n libpodofo%{libver}
-%license COPYING
 %{_libdir}/libpodofo.so.%{libver}
 %{_libdir}/libpodofo.so.%{version}
 
 %files -n libpodofo-devel
-%license COPYING
 %doc %{_docdir}/libpodofo-devel/
 %{_includedir}/podofo/
 %{_libdir}/libpodofo.so
