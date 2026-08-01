@@ -113,6 +113,7 @@ BuildRequires:  glibc-devel-static
 BuildRequires:  libcryptsetup-devel >= 2.8.2
 BuildRequires:  libjson-c-devel
 BuildRequires:  libnl3-devel
+BuildRequires:  libudev-devel
 BuildRequires:  libxml2-devel
 BuildRequires:  mdevctl
 BuildRequires:  ncurses-devel
@@ -123,6 +124,7 @@ BuildRequires:  systemd-devel
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  tcpd-devel
+BuildRequires:  zlib-devel
 BuildRequires:  zlib-devel-static
 %{?sysusers_requires}
 ### s390x
@@ -142,6 +144,8 @@ BuildRequires:  openssl
 # Don't build with pie to avoid problems with zipl
 #!BuildIgnore:  gcc-PIE
 Requires:       coreutils
+Requires:       iproute2
+Requires:       makedumpfile
 Requires:       procps
 Requires:       util-linux
 %ifarch s390x
@@ -159,6 +163,13 @@ Requires(post): %fillup_prereq
 Requires(post): permissions
 Requires(pre):  shadow
 Recommends:     blktrace
+Recommends:     cryptsetup
+Recommends:     e2fsprogs
+Recommends:     lsscsi
+Recommends:     mdevctl
+Recommends:     multipath-tools
+Recommends:     net-tools-deprecated
+Recommends:     sg3_utils
 Provides:       s390utils:/sbin/dasdfmt
 %ifarch x86_64
 Recommends:     s390-tools-genprotimg-data
@@ -188,6 +199,7 @@ Summary:        OSA-Express SNMP subagent
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Other
 Requires:       perl
+Recommends:     snmpd
 
 %description -n osasnmpd
 Supports management information bases (MIBs) provided by OSA-Express
@@ -201,6 +213,7 @@ communicates with him via the AgentX protocol.
 Summary:        QSAM access to z/OS data
 License:        GPL-2.0-or-later AND NonFree
 Group:          Productivity/Networking/Other
+Requires:       fuse3
 
 %description zdsfs
 Use the zdsfs command for read access to z/OS data sets stored on one or more DASDs.
@@ -215,7 +228,7 @@ represented as a file in that directory.
 Summary:        HMC drive file system based on FUSE
 License:        GPL-2.0-only
 Group:          System/Filesystems
-Requires:       fuse
+Requires:       fuse3
 
 %description hmcdrvfs
 This package contains a HMC drive file system based on FUSE and a tool
